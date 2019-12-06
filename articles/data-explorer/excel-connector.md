@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 18c6499afe450a0387b0d9f0f13ee4378e0a21a9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173835"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849058"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Wizualizowanie danych przy użyciu łącznika usługi Azure Eksplorator danych dla programu Excel
 
@@ -23,7 +23,7 @@ Usługa Azure Eksplorator danych oferuje dwie opcje łączenia się z danymi w p
 ## <a name="define-kusto-query-as-an-excel-data-source-and-load-the-data-to-excel"></a>Zdefiniuj zapytanie Kusto jako źródło danych programu Excel i Załaduj dane do programu Excel
 
 1. Otwórz **program Microsoft Excel**.
-1. Na karcie **dane** wybierz pozycję **Pobierz dane** > **z platformy Azure** > **z usługi Azure Eksplorator danych**.
+1. Na karcie **dane** wybierz pozycję **Pobierz dane** > **z usługi azure** > **z usługi Azure Eksplorator danych**.
 
     ![Pobieranie danych z usługi Azure Data Explorer](media/excel-connector/get-data-from-adx.png)
 
@@ -44,9 +44,9 @@ Usługa Azure Eksplorator danych oferuje dwie opcje łączenia się z danymi w p
     |**Ogranicz liczbę rekordów wyników zapytania**     |     Ogranicz liczbę rekordów ładowanych do programu Excel  |    
     |**Ogranicz rozmiar danych wyników zapytania (w bajtach)**    |    Ograniczanie rozmiaru danych      |   
     |**Wyłącz obcinanie zestawu wyników**    |         |      
-    |**Dodatkowe instrukcje Set (oddzielone średnikami)**    |    Dodaj `set` instrukcje mające zastosowanie do źródła danych     |   
+    |**Dodatkowe instrukcje Set (oddzielone średnikami)**    |    Dodaj instrukcje `set`, które mają zostać zastosowane do źródła danych     |   
 
-1.  W okienku **Nawigator** przejdź do odpowiedniej tabeli. W okienku podglądu tabeli wybierz pozycję **Przekształć dane** , aby wprowadzić zmiany w danych, lub wybierz pozycję Załaduj, aby załadować ją do programu Excel.
+1.  W okienku **Nawigator** przejdź do odpowiedniej tabeli. W okienku podglądu tabeli wybierz pozycję **Przekształć dane** , aby wprowadzić zmiany w danych, lub wybierz pozycję **Załaduj** , aby załadować ją do programu Excel.
 
 ![Okno podglądu tabeli](media/excel-connector/navigate-table-preview-window.png)
 
@@ -57,15 +57,15 @@ Usługa Azure Eksplorator danych oferuje dwie opcje łączenia się z danymi w p
 
 Po załadowaniu danych do programu Excel i udostępnieniu ich w arkuszu programu Excel można analizować, podsumowywać i wizualizować dane, tworząc relacje i wizualizacje. 
 
-1.  Na karcie **Projektowanie tabeli** wybierz opcję **Podsumowanie z tabelą**przestawną. W oknie **Tworzenie tabeli** przestawnej wybierz odpowiednią tabelę, a następnie wybierz **przycisk OK**.
+1.  Na karcie **Projektowanie tabeli** wybierz opcję **Podsumowanie z tabelą przestawną**. W oknie **Tworzenie tabeli przestawnej** wybierz odpowiednią tabelę, a następnie wybierz **przycisk OK**.
 
     ![Utwórz tabelę przestawną](media/excel-connector/create-pivot-table.png)
 
-1. W okienku **pola tabeli** przestawnej wybierz odpowiednie kolumny tabeli, aby utworzyć tabele podsumowujące. W poniższym przykładzie wybrano **EventID** i **stan** .
+1. W okienku **pola tabeli przestawnej** wybierz odpowiednie kolumny tabeli, aby utworzyć tabele podsumowujące. W poniższym przykładzie wybrano **EventID** i **stan** .
     
     ![Wybieranie pól tabeli przestawnej](media/excel-connector/pivot-table-pick-fields.png)
 
-1. Na karcie **Analizowanie tabeli** przestawnej wybierz pozycję **Wykres** przestawny, aby utworzyć wizualizacje na podstawie tabeli. 
+1. Na karcie **Analizowanie tabeli przestawnej** wybierz pozycję **Wykres przestawny** , aby utworzyć wizualizacje na podstawie tabeli. 
 
     ![Wykres przestawny](media/excel-connector/pivot-table-analyze-pivotchart.png)
 
@@ -75,3 +75,6 @@ Po załadowaniu danych do programu Excel i udostępnieniu ich w arkuszu programu
 
 1. Utwórz pełne pulpity nawigacyjne, aby monitorować dane.
 
+## <a name="next-steps"></a>Następne kroki
+
+[Wizualizuj dane przy użyciu zapytania Kusto usługi Azure Eksplorator danych zaimportowanego do programu Microsoft Excel](excel-blank-query.md)

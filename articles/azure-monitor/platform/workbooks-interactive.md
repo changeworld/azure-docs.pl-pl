@@ -1,5 +1,5 @@
 ---
-title: Tworzenie interaktywnych raportów za pomocą Azure Monitor skoroszytów niestandardowych parametrów | Dokumentacja firmy Microsoft
+title: Azure Monitor skoroszytów z parametrami niestandardowymi
 description: Uprość złożone raportowanie za pomocą wstępnie skompilowanych i niestandardowych skoroszytów z parametrami
 services: azure-monitor
 author: mrbullwinkle
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: eeb6eb5d8b3ad6498ff90a9afe1fa4f2c18d30e5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165955"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872846"
 ---
-# <a name="interactive-workbooks"></a>Interaktywne skoroszyty
+# <a name="interactive-workbooks"></a>Interakcyjne skoroszyty
 
 Skoroszyty umożliwiają autorom tworzenie interaktywnych raportów i środowisk dla klientów. Interaktywność jest obsługiwana na wiele sposobów.
 

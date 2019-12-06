@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037532"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841935"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Tworzenie maszyny wirtualnej na podstawie zarządzanego obrazu
 
@@ -29,8 +29,7 @@ Przed utworzeniem nowej maszyny wirtualnej należy [utworzyć zarządzany obraz 
 
 ## <a name="use-the-portal"></a>Używanie portalu
 
-1. Otwórz [portal Azure](https://portal.azure.com).
-2. Z menu po lewej stronie wybierz pozycję **wszystkie zasoby**. Można sortować zasoby według **typu** , aby łatwo znaleźć obrazy.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby znaleźć obraz zarządzany. Wyszukaj i wybierz pozycję **images**.
 3. Wybierz z listy obraz, którego chcesz użyć. Zostanie otwarta strona **Przegląd** obrazu.
 4. Wybierz pozycję **Utwórz maszynę wirtualną** z menu.
 5. Wprowadź informacje o maszynie wirtualnej. Nazwa użytkownika i hasło wprowadzone w tym miejscu zostaną użyte do zalogowania się do maszyny wirtualnej. Po zakończeniu wybierz **przycisk OK**. Możesz utworzyć nową maszynę wirtualną w istniejącej grupie zasobów lub wybrać opcję **Utwórz nową** , aby utworzyć nową grupę zasobów do przechowywania maszyny wirtualnej.
@@ -39,7 +38,7 @@ Przed utworzeniem nowej maszyny wirtualnej należy [utworzyć zarządzany obraz 
 8. Na stronie Podsumowanie powinna zostać wyświetlona nazwa obrazu wyświetlana jako **obraz prywatny**. Wybierz **przycisk OK** , aby rozpocząć wdrażanie maszyny wirtualnej.
 
 
-## <a name="use-powershell"></a>Korzystanie z programu PowerShell
+## <a name="use-powershell"></a>Używanie programu PowerShell
 
 Za pomocą programu PowerShell można utworzyć maszynę wirtualną na podstawie obrazu przy użyciu uproszczonego parametru ustawianego dla polecenia cmdlet [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Obraz musi znajdować się w tej samej grupie zasobów, w której zostanie utworzona maszyna wirtualna.
 

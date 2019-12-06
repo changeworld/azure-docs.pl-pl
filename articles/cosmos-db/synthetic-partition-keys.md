@@ -1,17 +1,17 @@
 ---
 title: Utwórz syntetyczny klucz partycji w Azure Cosmos DB, aby równomiernie rozpowszechnić swoje dane i obciążenie.
-description: Dowiedz się, jak używać syntetycznych kluczy partycji w kontenerach usługi Azure Cosmos
+description: Dowiedz się, jak używać syntetycznych kluczy partycji w kontenerach usługi Azure Cosmos w celu równomiernego dystrybuowania danych i obciążenia między kluczami partycji
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 8b4e2b8abac39f3268e0da7838acd566f40fdccc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 093610777b150c90ad55f1ce18337f1de8b17219
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754815"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870500"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Tworzenie syntetycznego klucza partycji
 
@@ -44,13 +44,13 @@ W scenariuszach w czasie rzeczywistym można mieć tysiące elementów w bazie d
 
 Kolejną możliwą strategią do dystrybucji obciążenia jest bardziej równomierne dołączenie liczby losowej na końcu wartości klucza partycji. Podczas dystrybucji elementów w ten sposób można wykonywać równoległe operacje zapisu między partycjami.
 
-Przykładem jest to, że klucz partycji reprezentuje datę. Można wybrać liczbę losową z zakresu od 1 do 400 i połączyć ją jako sufiks do daty. Ta metoda powoduje użycie wartości klucza partycji, takich jak  `2018-08-09.1`, `2018-08-09.2` i tak dalej, przez  `2018-08-09.400`. Ponieważ klucz partycji jest losowo wykonywany, operacje zapisu w kontenerze każdego dnia są równomiernie rozłożone na wiele partycji. Ta metoda skutkuje lepszą równoległością i większą przepustowością.
+Przykładem jest to, że klucz partycji reprezentuje datę. Można wybrać liczbę losową z zakresu od 1 do 400 i połączyć ją jako sufiks do daty. Ta metoda powoduje użycie wartości klucza partycji, takich jak `2018-08-09.1`,`2018-08-09.2`i tak dalej, przez `2018-08-09.400`. Ponieważ klucz partycji jest losowo wykonywany, operacje zapisu w kontenerze każdego dnia są równomiernie rozłożone na wiele partycji. Ta metoda skutkuje lepszą równoległością i większą przepustowością.
 
 ## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Używanie klucza partycji z wstępnie obliczonymi sufiksami 
 
 Strategia losowego sufiksu może znacznie poprawić przepływność zapisu, ale trudno jest odczytywać określony element. Nie znasz wartości sufiksu, która została użyta podczas napisana elementu. Aby ułatwić odczytywanie pojedynczych elementów, Użyj strategii wstępnie obliczonych sufiksów. Zamiast używać liczby losowej do dystrybuowania elementów między partycjami, należy użyć liczby, która jest obliczana na podstawie elementu, który ma być wysyłany do zapytania.
 
-Rozważmy poprzedni przykład, w którym kontener używa daty jako klucza partycji. Teraz Załóżmy, że każdy element ma atrybut  `Vehicle-Identification-Number` (`VIN`), do którego chcemy uzyskać dostęp. Ponadto Załóżmy, że często uruchamiane są zapytania, aby znaleźć elementy `VIN`, a nie datę. Zanim aplikacja zapisze element do kontenera, może obliczyć sufiks skrótu na podstawie numeru VIN i dołączyć go do daty klucza partycji. Obliczenia mogą generować liczbę z przedziału od 1 do 400, która jest równomiernie dystrybuowana. Ten wynik jest podobny do wyników wytwarzanych przez metodę strategii losowego sufiksu. Wartość klucza partycji to data połączona z obliczonym wynikiem.
+Rozważmy poprzedni przykład, w którym kontener używa daty jako klucza partycji. Teraz Załóżmy, że każdy element ma atrybut `Vehicle-Identification-Number` (`VIN`), do którego chcemy uzyskać dostęp. Ponadto Załóżmy, że często uruchamiane są zapytania, aby znaleźć elementy `VIN`, a nie datę. Zanim aplikacja zapisze element do kontenera, może obliczyć sufiks skrótu na podstawie numeru VIN i dołączyć go do daty klucza partycji. Obliczenia mogą generować liczbę z przedziału od 1 do 400, która jest równomiernie dystrybuowana. Ten wynik jest podobny do wyników wytwarzanych przez metodę strategii losowego sufiksu. Wartość klucza partycji to data połączona z obliczonym wynikiem.
 
 Ta strategia polega na tym, że zapisy są równomiernie rozłożone w wartości kluczy partycji i między partycjami. Można łatwo odczytać określony element i datę, ponieważ można obliczyć wartość klucza partycji dla określonego `Vehicle-Identification-Number`. Zaletą tej metody jest to, że można uniknąć tworzenia jednego klucza partycji gorącej, tj. klucza partycji, który pobiera wszystkie obciążenia. 
 

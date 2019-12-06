@@ -1,80 +1,80 @@
 ---
 title: Zarządzanie danymi usługi Azure Automation
-description: Ten artykuł zawiera wiele tematów do zarządzania środowiskiem usługi Azure Automation.  Obecnie dotyczy to retencji danych i tworzenia kopii zapasowych usługi Azure Automation odzyskiwaniem w usłudze Azure Automation.
+description: Ten artykuł zawiera wiele tematów dotyczących zarządzania środowiskiem Azure Automation.  Obecnie obejmuje przechowywanie danych i wykonywanie kopii zapasowych Azure Automation odzyskiwania po awarii w Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9de5909ddca5fd36f3fafcb79e2a4ad519402c9c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476583"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850775"
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
-Ten artykuł zawiera wiele tematów do zarządzania środowiskiem usługi Azure Automation.
+Ten artykuł zawiera wiele tematów dotyczących zarządzania środowiskiem Azure Automation.
 
 ## <a name="data-retention"></a>Przechowywanie danych
-Jeśli usuniesz zasób w usłudze Azure Automation, wartość jest zachowywana przez 90 dni na potrzeby inspekcji są trwale usuwane.  Nie można wyświetlić ani użyć zasobu w tym czasie.  Te zasady mają zastosowanie również do zasobów, które należą do konta usługi automation, która jest usuwana.
+Po usunięciu zasobu w Azure Automation jest on zachowywany przez 90 dni do celów inspekcji przed ich trwałe usunięciem.  Nie można zobaczyć lub użyć zasobu w tym czasie.  Te zasady dotyczą także zasobów należących do konta usługi Automation, które zostało usunięte.
 
-Usługa Azure Automation automatycznie usuwa i trwale zadania starsze niż 90 dni.
+Azure Automation automatycznie usuwa i trwale usuwa zadania starsze niż 90 dni.
 
-W poniższej tabeli przedstawiono zasady przechowywania dla różnych zasobów.
+Poniższa tabela zawiera podsumowanie zasad przechowywania dla różnych zasobów.
 
-| Data | Zasady |
+| Dane | Zasady |
 |:--- |:--- |
-| Konta |Trwale usunięte po upływie 90 dni po usunięciu konta przez użytkownika. |
-| Elementy zawartości |Trwale usunięte po upływie 90 dni po usunięciu elementu zawartości przez użytkownika lub 90 dni od konta, który przechowuje, że zasób zostanie usunięty przez użytkownika. |
-| Moduły |Trwale usunięte po upływie 90 dni po usunięciu przez użytkownika modułu lub 90 dni od konta, które przechowuje moduł zostanie usunięty przez użytkownika. |
-| Elementy Runbook |Trwale usunięte po upływie 90 dni po usunięciu zasobu przez użytkownika lub 90 dni od konta, który przechowuje, że zasób zostanie usunięty przez użytkownika. |
-| Zadania |Usunięte i trwale usunięte 90 dni po ostatnio modyfikowany. Może to być po zadanie kończy, został zatrzymany lub jest wstrzymana. |
-| Pliki MOF/konfiguracji węzła |Starej konfiguracji węzła jest trwale usunięte 90 dni, po wygenerowaniu nową konfigurację węzła. |
-| Węzły DSC |Trwale usunięte 90 dni po węzeł, który jest wyrejestrowywany z konta usługi Automation przy użyciu witryny Azure portal lub [AzureRMAutomationDscNode Wyrejestruj](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) polecenia cmdlet programu Windows PowerShell. Węzły są również trwale usunięte 90 dni od konta, które zawiera węzeł jest usunięte przez użytkownika. |
-| Raporty węzła |Trwale usunięte 90 dni, po wygenerowaniu nowego raportu dla tego węzła |
+| Konta |Trwale usunięto 90 dni po usunięciu konta przez użytkownika. |
+| Elementy zawartości |Trwale usunięto 90 dni po usunięciu zasobu przez użytkownika lub 90 dni po usunięciu zasobu przez użytkownika. |
+| Moduły |Trwale usunięto 90 dni po usunięciu modułu przez użytkownika lub 90 dni po usunięciu przez użytkownika konta, które przechowuje moduł. |
+| Elementy Runbook |Trwale usunięto 90 dni od momentu usunięcia zasobu przez użytkownika lub 90 dni po usunięciu zasobu przez użytkownika. |
+| Stanowiska |Usunięte i trwale usunięte 90 dni po ostatniej modyfikacji. Może to być po zakończeniu zadania, zostanie zatrzymane lub wstrzymane. |
+| Konfiguracje węzłów/pliki MOF |Konfiguracja starego węzła została trwale usunięta 90 dni po wygenerowaniu nowej konfiguracji węzła. |
+| Węzły DSC |Trwale usunięto 90 dni po wyrejestrowaniu węzła z konta usługi Automation przy użyciu Azure Portal lub polecenia cmdlet [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) w programie Windows PowerShell. Węzły są również trwale usuwane 90 dni po usunięciu przez użytkownika konta, które przechowuje węzeł. |
+| Raporty węzła |Trwale usunięto 90 dni od momentu wygenerowania nowego raportu dla tego węzła |
 
-Zasady przechowywania ma zastosowanie do wszystkich użytkowników i obecnie nie można dostosować.
+Zasady przechowywania są stosowane dla wszystkich użytkowników i obecnie nie można ich dostosowywać.
 
-Jednak jeśli zachodzi potrzeba przechowywać dane przez dłuższy czas, możesz przekazywać elementu runbook z dziennikami zadań do dzienników usługi Azure Monitor.  Aby uzyskać więcej informacji, przejrzyj [przekazywanie danych zadania usługi Azure Automation do usługi Azure Monitor dzienników](automation-manage-send-joblogs-log-analytics.md).   
+Jeśli jednak zachodzi potrzeba zachowania danych przez dłuższy czas, można przesłać dzienniki zadań elementu Runbook do dzienników Azure Monitor.  Aby uzyskać więcej informacji, przejrzyj [Azure Automation danych zadania w celu przeprowadzenia Azure monitor dzienników](automation-manage-send-joblogs-log-analytics.md).   
 
 ## <a name="backing-up-azure-automation"></a>Tworzenie kopii zapasowych usługi Azure Automation
-Po usunięciu konta usługi automation w systemie Microsoft Azure, wszystkie obiekty w ramach konta są usuwane, łącznie z elementami runbook, moduły, konfiguracje, ustawienia, zadaniami i zasobami. Nie można odzyskać obiekty, po usunięciu konta.  Skorzystaj z poniższych informacji, aby utworzyć kopię zapasową zawartości konta usługi automation, przed jego usunięciem. 
+Po usunięciu konta usługi Automation w Microsoft Azure zostaną usunięte wszystkie obiekty w ramach konta, w tym elementy Runbook, moduły, konfiguracje, ustawienia, zadania i zasoby. Nie można odzyskać obiektów po usunięciu konta.  Poniższe informacje służą do utworzenia kopii zapasowej zawartości konta usługi Automation przed jego usunięciem. 
 
 ### <a name="runbooks"></a>Elementy Runbook
-Możesz wyeksportować elementy runbook do plików skryptu za pomocą witryny Azure portal lub [Get AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) polecenia cmdlet programu Windows PowerShell.  Nie można zaimportować te pliki skryptów do innego konta usługi automation, zgodnie z opisem w [Tworzenie lub importowanie elementu Runbook](/previous-versions/azure/dn643637(v=azure.100)).
+Elementy Runbook można eksportować do plików skryptów przy użyciu Azure Portal lub polecenia cmdlet [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) w programie Windows PowerShell.  Te pliki skryptów można zaimportować do innego konta usługi Automation, jak opisano w temacie [Tworzenie lub importowanie elementu Runbook](/previous-versions/azure/dn643637(v=azure.100)).
 
 ### <a name="integration-modules"></a>Moduły integracji
-Moduły integracji nie można wyeksportować z usługi Azure Automation.  Upewnij się, że są one dostępne poza konta usługi automation.
+Nie można eksportować modułów integracji z Azure Automation.  Musisz się upewnić, że są one dostępne poza kontem usługi Automation.
 
 ### <a name="assets"></a>Elementy zawartości
-Nie można wyeksportować [zasoby](/previous-versions/azure/dn939988(v=azure.100)) z usługi Azure Automation.  W witrynie Azure portal, należy zaznaczyć szczegóły zmiennych, poświadczenia, certyfikatów, połączeń i harmonogramy.  Następnie należy ręcznie utworzyć wszelkie zasoby, które są używane przez elementy runbook, który można zaimportować do innej usługi automation.
+Nie można eksportować [zasobów](/previous-versions/azure/dn939988(v=azure.100)) z Azure Automation.  Przy użyciu Azure Portal należy zanotować szczegóły zmiennych, poświadczeń, certyfikatów, połączeń i harmonogramów.  Następnie należy ręcznie utworzyć wszystkie zasoby, które są używane przez elementy Runbook importowane do innej automatyzacji.
 
-Możesz użyć [polecenia cmdlet programu Azure](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) można pobrać szczegółów niezaszyfrowanych zasobów, a następnie zapisz je w przyszłości lub twórz równoważne zasoby na innym koncie usługi automation.
+Za pomocą [poleceń cmdlet platformy Azure](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) można pobrać szczegóły nieszyfrowanych zasobów i zapisać je do użycia w przyszłości lub utworzyć równoważne zasoby na innym koncie usługi Automation.
 
-Nie można pobrać wartości szyfrowane zmienne lub pole hasła poświadczeń przy użyciu poleceń cmdlet.  Jeśli nie znasz tych wartości, a następnie pobierać je z elementu runbook za pomocą [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) i [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) działań.
+Nie można pobrać wartości szyfrowanych zmiennych lub pola hasła poświadczeń przy użyciu poleceń cmdlet.  Jeśli nie znasz tych wartości, możesz pobrać je z elementu Runbook za pomocą działań [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) i [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) .
 
-Nie można wyeksportować certyfikaty z usługi Azure Automation.  Upewnij się, że wszystkie certyfikaty są dostępne spoza platformy Azure.
+Nie można eksportować certyfikatów z Azure Automation.  Musisz się upewnić, że wszystkie certyfikaty są dostępne poza platformą Azure.
 
 ### <a name="dsc-configurations"></a>Konfiguracje DSC
-Konfiguracje można wyeksportować do plików skryptów za pomocą witryny Azure portal lub [AzureRmAutomationDscConfiguration eksportu](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) polecenia cmdlet programu Windows PowerShell. Te konfiguracje można importowane i używane na innym koncie usługi automation.
+Możesz wyeksportować konfiguracje do plików skryptów przy użyciu Azure Portal lub polecenia cmdlet [Export-AzureRmAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/export-azurermautomationdscconfiguration) w programie Windows PowerShell. Te konfiguracje mogą być importowane i używane na innym koncie usługi Automation.
 
-## <a name="geo-replication-in-azure-automation"></a>Replikacja geograficzna w usłudze Azure Automation
-Replikacja geograficzna, standard, w ramach kont usługi Azure Automation tworzy kopie zapasowe danych konta do innego regionu geograficznego nadmiarowości. Można wybrać regionu podstawowego, podczas konfigurowania konta, a następnie Azure w regionie pomocniczym jest do niej przypisany automatycznie. Pomocniczy, kopiować dane z regionu podstawowego, są stale aktualizowane w przypadku utraty danych.  
+## <a name="geo-replication-in-azure-automation"></a>Replikacja geograficzna w Azure Automation
+Replikacja geograficzna, standardowa na kontach Azure Automation, tworzy kopię zapasową danych konta w innym regionie geograficznym w celu zapewnienia nadmiarowości. Możesz wybrać region podstawowy podczas konfigurowania konta, a następnie automatycznie przypisywany region pomocniczy. Dane pomocnicze skopiowane z regionu podstawowego są stale aktualizowane na wypadek utraty danych.  
 
-W poniższej tabeli przedstawiono sparowania dostępnego regionu podstawowego i pomocniczego.
+W poniższej tabeli przedstawiono listę dostępnych par regionów podstawowych i pomocniczych.
 
 | Podstawowy | Pomocniczy |
 | --- | --- |
-| Środkowo-południowe stany USA |Środkowo-północne stany USA |
+| Południowo-środkowe stany USA |Północno-środkowe stany USA |
 | Wschodnie stany USA 2 |Środkowe stany USA |
 | Europa Zachodnia |Europa Północna |
-| Azja Południowo-Wschodnia |Azja Wschodnia |
+| Azja Południowo-wschodnia |Azja Wschodnia |
 | Japonia Wschodnia |Japonia Zachodnia |
 
-W tym przypadku mało prawdopodobne, że dane regionu podstawowego zostaną utracone Microsoft próbuje go odzyskać. Jeśli nie można odzyskać danych pierwotnych, jest przeprowadzane pracy awaryjnej geo i dotyczy klienci zostaną powiadomieni o tym za pośrednictwem swojej subskrypcji.
+W prawdopodobnym zdarzeniu, gdy dane regionu podstawowego zostaną utracone, firma Microsoft podejmie próbę jego odzyskania. Jeśli dane podstawowe nie mogą zostać odzyskane, wykonywana jest geograficzna przechodzenie w tryb failover, a klienci, których to dotyczy, otrzymają powiadomienie o tym w ramach subskrypcji.
 
 

@@ -4,17 +4,17 @@ description: W tym artykule opisano sposób zarządzania kontami Uruchom jako pr
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fd7e94261d8302224b0e31e5f4ac46978dfa812f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ae73188fa8818c84806709dc7518e3d5760ae187
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690877"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849534"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzaj kontami Azure Automation Uruchom jako
 
@@ -50,7 +50,7 @@ W celu utworzenia lub zaktualizowania konta Uruchom jako wymagane są określone
 |Tworzenie aplikacji usługi Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Rola dewelopera aplikacji<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Domowe Azure Active Directory > rejestracji aplikacji |
 |Dodaj poświadczenie do aplikacji.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Administrator aplikacji lub Administrator globalny<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Domowe Azure Active Directory > rejestracji aplikacji|
 |Tworzenie i pobieranie jednostki usługi Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Administrator aplikacji lub Administrator globalny<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>> Domowe Azure Active Directory > rejestracji aplikacji|
-|Przypisz lub uzyskaj rolę RBAC dla określonego podmiotu zabezpieczeń|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Wymagane są następujące uprawnienia:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Lub:</br></br>Administrator lub właściciel dostępu użytkowników        | [Subskrypcja](../role-based-access-control/role-assignments-portal.md)</br>Subskrypcje > domowej > \<subscription nazw \>-Access Control (IAM)|
+|Przypisz lub uzyskaj rolę RBAC dla określonego podmiotu zabezpieczeń|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Wymagane są następujące uprawnienia:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Lub:</br></br>Administrator lub właściciel dostępu użytkowników        | [Subskrypcja](../role-based-access-control/role-assignments-portal.md)</br>Subskrypcje > domu > \<nazw subskrypcji\>-Access Control (IAM)|
 |Utwórz lub Usuń certyfikat usługi Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Współautor w grupie zasobów         |Grupa zasobów konta usługi Automation|
 |Tworzenie lub usuwanie połączenia automatyzacji|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Współautor w grupie zasobów |Grupa zasobów konta usługi Automation|
 
@@ -407,7 +407,7 @@ Aby natychmiast przetestować proces odnawiania, wykonaj następujące czynnośc
 
 ## <a name="limiting-run-as-account-permissions"></a>Ograniczanie uprawnień konta Uruchom jako
 
-Aby kontrolować cel automatyzacji względem zasobów na platformie Azure, można uruchomić skrypt [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) w galerii programu PowerShell, aby zmienić nazwę główną usługi konta Uruchom jako, aby utworzyć rolę niestandardową i korzystać z niej. definicji. Ta rola będzie miała uprawnienia do wszystkich zasobów, z wyjątkiem [Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Aby kontrolować cel automatyzacji względem zasobów na platformie Azure, można uruchomić skrypt [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) w galerii programu PowerShell w celu zmiany istniejącej nazwy głównej usługi konta Uruchom jako w celu utworzenia i użycia niestandardowej definicji roli. Ta rola będzie miała uprawnienia do wszystkich zasobów, z wyjątkiem [Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
 > [!IMPORTANT]
 > Po uruchomieniu skryptu `Update-AutomationRunAsAccountRoleAssignments.ps1` elementy Runbook, które uzyskują dostęp do magazynu kluczy za pomocą kont Uruchom jako, nie będą już działać. Elementy Runbook na koncie należy przeglądać na potrzeby wywołań usługi Azure — Magazyn kluczy.
@@ -422,7 +422,7 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzureRMRoleDefinition
 ```
 
-Aby określić, czy nazwa główna usługi używana przez konto Uruchom jako znajduje się w **współautor** , czy niestandardowa definicja roli przejdź do konta usługi Automation i w obszarze **Ustawienia konta**wybierz pozycję **konta Uruchom jako** ,  > **konto Uruchom jako platformy Azure**. W obszarze **rola** znajdziesz definicję roli, która jest używana.
+Aby określić, czy nazwa główna usługi używana przez konto Uruchom jako znajduje się w **współautor** , czy niestandardowa definicja roli przejdź do konta usługi Automation i w obszarze **Ustawienia konta**wybierz pozycję **konta Uruchom jako** , > **konto Uruchom jako platformy Azure**. W obszarze **rola** znajdziesz definicję roli, która jest używana.
 
 [![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
@@ -435,7 +435,7 @@ Jeśli chcesz zezwolić Azure Automation na zarządzanie Key Vault, a nazwa gł�
 * Udziel uprawnień do Key Vault
 * Ustawianie zasad dostępu
 
-Aby uzyskać więcej informacji na temat ustawień, można użyć skryptu [extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](https://aka.ms/AA5hugb) w Galeria programu PowerShell, aby nadać mu uprawnienia konta Uruchom jako lub odwiedzić [Magazyn kluczy](../key-vault/key-vault-group-permissions-for-apps.md) . uprawnienia dotyczące magazynu kluczy.
+Możesz użyć skryptu [extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](https://aka.ms/AA5hugb) w Galeria programu PowerShell, aby nadać uprawnienia konta Uruchom jako do magazynu kluczy, lub odwiedzić [dostęp do aplikacji, aby](../key-vault/key-vault-group-permissions-for-apps.md) uzyskać więcej szczegółowych informacji na temat ustawień uprawnień dla magazynu.
 
 ## <a name="misconfiguration"></a>Błąd konfiguracji
 

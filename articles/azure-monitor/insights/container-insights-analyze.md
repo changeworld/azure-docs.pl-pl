@@ -1,20 +1,20 @@
 ---
-title: Monitorowanie wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów | Microsoft Docs
-description: W tym artykule opisano, jak wyświetlać i analizować dane wydajności i dzienników z usługą Azure Monitor dla kontenerów.
+title: Kubernetes monitorowanie za pomocą Azure Monitor dla kontenerów | Microsoft Docs
+description: W tym artykule opisano sposób wyświetlania i analizowania wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 8bb3ac1905167989e27d47304ae539e49a1412e8
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132339"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872982"
 ---
-# <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Informacje o wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów
+# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorowanie wydajności klastra Kubernetes za pomocą Azure Monitor dla kontenerów
 
 Za pomocą Azure Monitor dla kontenerów można użyć wykresów wydajności i stanu kondycji do monitorowania obciążenia klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS), Azure Stack lub innych środowiskach z dwóch perspektyw. Można monitorować bezpośrednio z klastra lub wyświetlać wszystkie klastry w ramach subskrypcji z Azure Monitor. Przeglądanie Azure Container Instances jest również możliwe podczas monitorowania określonego klastra AKS.
 
@@ -34,7 +34,7 @@ Główne różnice w monitorowaniu klastra z systemem Windows Server z Azure Mon
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+Zaloguj się do [portalu Azure](https://portal.azure.com). 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Wyświetlanie wielu klastrów z usługi Azure Monitor
 
@@ -81,17 +81,17 @@ W poniższej tabeli przedstawiono podział obliczeń kontrolujących Stany kondy
 |**Użytkownik pod**| | |  
 | |W dobrej kondycji |100% |  
 | |Ostrzeżenie |90 - 99% |  
-| |Krytyczny |< 90% |  
+| |Krytyczna |< 90% |  
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |  
 |**System pod**| | |  
 | |W dobrej kondycji |100% |
-| |Ostrzeżenie |Nie dotyczy |
-| |Krytyczny |< 100% |
+| |Ostrzeżenie |ND |
+| |Krytyczna |< 100% |
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
 |**Node** | | |
 | |W dobrej kondycji |> 85% |
 | |Ostrzeżenie |60 - 84% |
-| |Krytyczny |< 60% |
+| |Krytyczna |< 60% |
 | |Nieznane |Jeśli nie zostały zgłoszone w ciągu ostatnich 30 minut |
 
 Z listy klastrów możesz przejść do szczegółów na stronie **klaster** , wybierając nazwę klastra. Następnie przejdź do strony wydajność **węzłów** , wybierając pakiet zbiorczy węzłów w kolumnie **węzły** dla danego klastra. Możesz też przejść do szczegółów na stronie wydajność **kontrolerów** , wybierając zestawienie z kolumną **zasobników użytkownika** lub **system** .
@@ -138,7 +138,7 @@ W Eksploratorze metryk można wyświetlić zagregowane metryki dotyczące węzł
 | | memoryWorkingSetPercentage | Pamięć zestawu roboczego kontenera użyta w procentach. | 
 | | nodesCount | Liczba węzłów z Kubernetes.|
 | Szczegółowe informacje. kontenery/zasobniki | |
-| | PodCount | Liczba pod z Kubernetes.|
+| | podCount | Liczba pod z Kubernetes.|
 
 Można [podzielić](../platform/metrics-charts.md#apply-splitting-to-a-chart) metrykę, aby wyświetlić ją w wymiarze, i wizualizować, jak różne segmenty są porównywane ze sobą. Dla węzła można podzielić wykres na wymiar *hosta* . Z poziomu usługi można podzielić ją na segmenty według następujących wymiarów:
 

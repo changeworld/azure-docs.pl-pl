@@ -1,18 +1,18 @@
 ---
 title: Język zapytań w Azure Cosmos DB
-description: Dowiedz się więcej na temat funkcji SQL system FLOOR w Azure Cosmos DB.
+description: Dowiedz się więcej na temat funkcji systemowej SQL FLOOR w Azure Cosmos DB, aby zwrócić największą liczbę całkowitą mniejszą lub równą określonemu wyrażeniu liczbowym
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 94bcb6794dce9ccc22001e6d0e0e3e71d133ac42
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8faf223a4871f6f109f9d133716989b1bcfdee08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351216"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871180"
 ---
 # <a name="floor-azure-cosmos-db"></a>PIĘTRo (Azure Cosmos DB)
  Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą.  

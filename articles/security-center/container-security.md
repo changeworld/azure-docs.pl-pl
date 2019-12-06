@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769221"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868494"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpieczenia kontenera w Security Center
 
@@ -59,8 +59,7 @@ Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Ce
 
 Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym w środowiskach kontenerów i generuje alerty dla podejrzanych działań. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
 
-Wykrywamy zagrożenia na poziomie klastra hosta i AKS. Aby uzyskać szczegółowe informacje, zobacz [Azure Container Service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
-
+Wykrywamy zagrożenia na poziomie klastra hosta i AKS. Aby uzyskać szczegółowe informacje, zobacz [wykrywanie zagrożeń dla kontenerów platformy Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>Aby wyświetlić stan zabezpieczeń zasobów związanych z kontenerem
 1.  Otwórz stronę **& aplikacji obliczeniowych** Security Center.

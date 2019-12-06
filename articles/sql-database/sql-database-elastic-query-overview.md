@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 07/01/2019
-ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/05/2019
+ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823737"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873747"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database Elastic Query — omówienie (wersja zapoznawcza)
 
@@ -56,10 +56,10 @@ Elastyczne zapytanie umożliwia łatwy dostęp do całej kolekcji baz danych za 
 Scenariusze klientów dla elastycznego zapytania są scharakteryzowane przez następujące topologie:
 
 * **Partycjonowanie pionowe — zapytania obejmujące wiele baz danych** (topologia 1): dane są partycjonowane w pionie między liczbą baz danych w warstwie danych. Zwykle różne zestawy tabel znajdują się w różnych bazach danych. Oznacza to, że schemat różni się w różnych bazach danych. Na przykład wszystkie tabele dla spisu znajdują się w jednej bazie danych, podczas gdy wszystkie tabele związane z ewidencjonowanie aktywności znajdują się w drugiej bazie danych. Typowe przypadki użycia z tą topologią wymagają jednego do wykonywania zapytań między tabelami lub do kompilowania raportów w wielu bazach danych.
-* **Partycjonowanie poziome — fragmentowania** (topologia 2): dane są podzielone na partycje w celu rozłożenia wierszy w warstwie danych skalowanych w poziomie. W tym podejściu schemat jest identyczny we wszystkich uczestniczących bazach danych. Takie podejście jest również nazywane "fragmentowania". Fragmentowania można wykonywać i zarządzać nimi za pomocą (1) bibliotek narzędzi elastycznych baz danych lub (2) fragmentowania. Elastyczne zapytanie służy do wykonywania zapytań lub kompilowania raportów w wielu fragmentów.
+* **Partycjonowanie poziome — fragmentowania** (topologia 2): dane są podzielone na partycje w celu rozłożenia wierszy w warstwie danych skalowanych w poziomie. W tym podejściu schemat jest identyczny we wszystkich uczestniczących bazach danych. Takie podejście jest również nazywane "fragmentowania". Fragmentowania można wykonywać i zarządzać nimi za pomocą (1) bibliotek narzędzi elastycznych baz danych lub (2) fragmentowania. Elastyczne zapytanie służy do wykonywania zapytań lub kompilowania raportów w wielu fragmentów. Fragmentów są zwykle bazami danych w puli elastycznej. Elastyczne zapytanie można traktować jako wydajny sposób wykonywania zapytań dotyczących wszystkich baz danych w puli elastycznej, o ile bazy danych współużytkują wspólny schemat.
 
 > [!NOTE]
-> Elastyczne zapytanie działa najlepiej w scenariuszach raportowania, w których większość przetwarzania (filtrowanie, agregacja) można wykonać na stronie zewnętrznego źródła. Nie jest to odpowiednie dla operacji ETL, w których duża ilość danych jest transferowana z zdalnych baz danych. W przypadku dużych obciążeń raportowania lub scenariuszy magazynowania danych z bardziej złożonymi zapytaniami należy również rozważyć użycie [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
+> Elastyczne zapytanie działa najlepiej w scenariuszach raportowania, w których większość przetwarzania (filtrowanie, agregacja) można wykonać na stronie zewnętrznego źródła. Nie jest to odpowiednie dla operacji ETL, w których duża ilość danych jest transferowana z zdalnych baz danych. W przypadku dużych obciążeń raportowania lub scenariuszy magazynowania danych z bardziej złożonymi zapytaniami warto również rozważyć użycie [usługi Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics).
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>Partycjonowanie pionowe — zapytania między bazami danych
@@ -118,6 +118,9 @@ Więcej informacji na temat kroków wymaganych dla scenariusza partycjonowania p
 
 Aby rozpocząć kodowanie, zobacz [wprowadzenie do elastycznego zapytania na potrzeby partycjonowania poziomego (fragmentowania)](sql-database-elastic-query-getting-started.md).
 
+> [!IMPORTANT]
+> Pomyślne wykonanie zapytania elastycznego w dużym zestawie baz danych opiera się na dostępności poszczególnych baz danych podczas wykonywania zapytania. Jeśli jedna z baz danych jest niedostępna, całe zapytanie zakończy się niepowodzeniem. Jeśli planujesz wysyłać zapytania do setek lub tysięcy baz danych jednocześnie, upewnij się, że aplikacja kliencka ma wbudowaną logikę ponowień, lub Rozważ użycie [zadań Elastic Database](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (wersja zapoznawcza) i zbadanie mniejszych podzestawów baz danych, skonsolidowanie wyników każdego zapytania w jednym miejscu docelowym.
+
 ## <a name="t-sql-querying"></a>Zapytania T-SQL
 
 Po zdefiniowaniu zewnętrznych źródeł danych i tabel zewnętrznych można używać zwykłych parametrów połączenia SQL Server do łączenia się z bazami danych, w których zdefiniowano tabele zewnętrzne. Następnie można uruchomić instrukcje języka T-SQL względem tabel zewnętrznych w tym połączeniu z ograniczeniami opisanymi poniżej. Więcej informacji i przykłady zapytań T-SQL można znaleźć w tematach dotyczących [partycjonowania w poziomie](sql-database-elastic-query-horizontal-partitioning.md) i [partycjonowania pionowego](sql-database-elastic-query-vertical-partitioning.md).
@@ -129,7 +132,7 @@ Za pomocą regularnych SQL Server parametrów połączenia można połączyć sw
 > [!IMPORTANT]
 > Uwierzytelnianie przy użyciu Azure Active Directory z elastycznymi zapytaniami nie jest obecnie obsługiwane.
 
-## <a name="cost"></a>Koszty
+## <a name="cost"></a>Koszt
 
 Elastyczne zapytanie jest uwzględniane w kosztach baz danych Azure SQL Database. Należy zwrócić uwagę na to, że topologie, w których zdalne bazy danych znajdują się w innym centrum danych niż obsługiwane są elastyczne punkty końcowe zapytania, ale dane wychodzące ze zdalnych baz danych są często obciążane [stawkami platformy Azure](https://azure.microsoft.com/pricing/details/data-transfers/).
 

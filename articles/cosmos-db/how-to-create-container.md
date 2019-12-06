@@ -1,17 +1,17 @@
 ---
 title: Tworzenie kontenera w usłudze Azure Cosmos DB
-description: Dowiedz się, jak utworzyć kontener w usłudze Azure Cosmos DB
+description: Dowiedz się, jak utworzyć kontener w Azure Cosmos DB przy użyciu Azure Portal, .NET, Java, Python, Node. js i innych zestawów SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 911f56cef58e5d9c161a3ba947850bcfff073200
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242409"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873713"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Tworzenie kontenera usługi Azure Cosmos
 
@@ -21,7 +21,7 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
 ### <a id="portal-sql"></a>Interfejs API SQL
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account)lub Wybierz istniejące konto.
 
@@ -31,13 +31,13 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
    * Wprowadź identyfikator kontenera.
    * Wprowadź klucz partycji.
    * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
-   * Wybierz **OK**.
+   * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu przedstawiający okienko Eksplorator danych z wyróżnionym nowym kontenerem](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
@@ -47,13 +47,13 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
    * Wprowadź identyfikator kontenera.
    * Wprowadź klucz fragmentu.
    * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
-   * Wybierz **OK**.
+   * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu przedstawiający interfejs Azure Cosmos DB API dla MongoDB, okno dialogowe Dodawanie kontenera](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Interfejs API rozwiązania Cassandra
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
@@ -63,7 +63,7 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
    * Wprowadź nazwę tabeli.
    * Wprowadź właściwości i określ klucz podstawowy.
    * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
-   * Wybierz **OK**.
+   * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu interfejsu API Cassandra, okno dialogowe Dodawanie tabeli](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
 
@@ -72,7 +72,7 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
 ### <a id="portal-gremlin"></a>Interfejs API języka Gremlin
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-graph-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
@@ -83,13 +83,13 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
    * Wybierz pojemność magazynu **Bez ograniczeń**.
    * Wprowadź klucz partycji dla wierzchołków.
    * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
-   * Wybierz **OK**.
+   * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu interfejsu API Gremlin, okno dialogowe Dodawanie grafu](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
 ### <a id="portal-table"></a>Interfejs API tabel
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-table-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
@@ -97,7 +97,7 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
    * Wprowadź identyfikator tabeli.
    * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
-   * Wybierz **OK**.
+   * Kliknij przycisk **OK**.
 
     ![Zrzut ekranu interfejsu API tabel, okno dialogowe Dodawanie tabeli](./media/how-to-create-container/partitioned-collection-create-table.png)
 

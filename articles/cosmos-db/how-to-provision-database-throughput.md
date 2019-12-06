@@ -1,17 +1,17 @@
 ---
 title: Aprowizowanie przepływności bazy danych w usłudze Azure Cosmos DB
-description: Dowiedz się, jak aprowizować przepływność na poziomie bazy danych w usłudze Azure Cosmos DB
+description: Dowiedz się, jak zainicjować przepływność na poziomie bazy danych w Azure Cosmos DB przy użyciu Azure Portal, interfejsu wiersza polecenia, programu PowerShell i różnych zestawów SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575140"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873662"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Zapewnianie przepływności dla bazy danych w Azure Cosmos DB
 
@@ -21,7 +21,7 @@ W tym artykule wyjaśniono, jak zainicjować przepływność dla bazy danych w A
 
 ### <a id="portal-sql"></a>Interfejs API SQL (podstawowy)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account)lub Wybierz istniejące konto usługi Azure Cosmos.
 
@@ -79,6 +79,6 @@ session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisio
 Zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o aprowizacji przepływności w Azure Cosmos DB:
 
 * [Globalnie skalowanie przepływności aprowizacji](scaling-throughput.md)
-* [Obsługa przepływności na kontenerach i bazach danych](set-throughput.md)
+* [Aprowizacja przepływności kontenerów i baz danych](set-throughput.md)
 * [How to provision throughput for a container (Jak aprowizować przepływność dla kontenera)](how-to-provision-container-throughput.md)
 * [Jednostki żądania i przepływności w usłudze Azure Cosmos DB](request-units.md)

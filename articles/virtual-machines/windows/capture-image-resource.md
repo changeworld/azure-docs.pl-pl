@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033674"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842062"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure
 
-Zasób obrazu zarządzanego można utworzyć na podstawie uogólnionej maszyny wirtualnej, która jest przechowywana jako dysk zarządzany lub dysk niezarządzany na koncie magazynu. Obraz może następnie służyć do tworzenia wielu maszyn wirtualnych. Aby uzyskać informacje dotyczące sposobu rozliczania zarządzanych obrazów, zobacz [Managed disks Cennik](https://azure.microsoft.com/pricing/details/managed-disks/). 
+Zasób obrazu zarządzanego można utworzyć na podstawie uogólnionej maszyny wirtualnej, która jest przechowywana jako dysk zarządzany albo dysk niezarządzany na koncie magazynu. Obraz może następnie służyć do tworzenia wielu maszyn wirtualnych. Aby uzyskać informacje dotyczące sposobu rozliczania zarządzanych obrazów, zobacz [Managed disks Cennik](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
  
 
@@ -50,7 +50,7 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
    
 4. W obszarze **Opcje zamykania**wybierz pozycję **Zamknij**.
    
-5. Wybierz **OK**.
+5. Kliknij przycisk **OK**.
    
     ![Uruchom program Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 
@@ -70,9 +70,9 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Tworzenie obrazu zarządzanego w portalu 
 
-1. Otwórz [portal Azure](https://portal.azure.com).
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać obrazem maszyny wirtualnej. Wyszukaj i wybierz pozycję **maszyny wirtualne**.
 
-2. W menu po lewej stronie wybierz pozycję **maszyny wirtualne** , a następnie wybierz maszynę wirtualną z listy.
+2. Z listy wybierz maszynę wirtualną.
 
 3. Na stronie **maszyna wirtualna** dla maszyny wirtualnej w górnym menu wybierz pozycję **Przechwyć**.
 
@@ -80,7 +80,7 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
 
 4. W polu **Nazwa**Zaakceptuj wstępnie wypełnioną nazwę lub wprowadź nazwę, której chcesz użyć dla obrazu.
 
-5. W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową** i wprowadź nazwę lub wybierz pozycję **Użyj istniejącej** i wybierz grupę zasobów do użycia z listy rozwijanej.
+5. W obszarze **Grupa zasobów**wybierz pozycję **Utwórz nową** i wprowadź nazwę lub wybierz grupę zasobów do użycia z listy rozwijanej.
 
 6. Jeśli chcesz usunąć źródłową maszynę wirtualną po utworzeniu obrazu, zaznacz opcję **automatycznie Usuń tę maszynę wirtualną po utworzeniu obrazu**.
 
@@ -88,7 +88,7 @@ Aby uogólnić maszynę wirtualną z systemem Windows, wykonaj następujące kro
 
 8. Wybierz pozycję **Utwórz** , aby utworzyć obraz.
 
-9. Po utworzeniu obrazu można go znaleźć jako zasób **obrazu** na liście zasobów w grupie zasobów.
+Po utworzeniu obrazu można go znaleźć jako zasób **obrazu** na liście zasobów w grupie zasobów.
 
 
 
@@ -218,7 +218,7 @@ Można utworzyć obraz zarządzany na podstawie migawki uogólnionej maszyny wir
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Tworzenie obrazu na podstawie maszyny wirtualnej korzystającej z konta magazynu
 
-Aby utworzyć obraz zarządzany na podstawie maszyny wirtualnej, która nie korzysta z usługi Managed disks, musisz mieć identyfikator URI wirtualnego dysku twardego systemu operacyjnego na koncie magazynu w następującym formacie: https://*mojekontomagazynu*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD* . W tym przykładzie wirtualny dysk twardy znajduje się w *mojekontomagazynu*, w kontenerze o nazwie *vhdcontainer*, a nazwa pliku VHD to *vhdfilename. VHD*.
+Aby utworzyć obraz zarządzany na podstawie maszyny wirtualnej, która nie korzysta z usługi Managed disks, musisz mieć identyfikator URI wirtualnego dysku twardego systemu operacyjnego na koncie magazynu w następującym formacie: https://*mojekontomagazynu*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD*. W tym przykładzie wirtualny dysk twardy znajduje się w *mojekontomagazynu*, w kontenerze o nazwie *vhdcontainer*, a nazwa pliku VHD to *vhdfilename. VHD*.
 
 
 1.  Utwórz pewne zmienne.

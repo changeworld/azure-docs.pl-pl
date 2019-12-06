@@ -4,17 +4,17 @@ description: W tym artykule opisano ustawienia Windows Update, które można sko
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690836"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850418"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Skonfiguruj ustawienia Windows Update dla Update Management
 
@@ -34,7 +34,7 @@ $WUSettings.Save()
 
 ## <a name="disable-automatic-installation"></a>Wyłącz instalację automatyczną
 
-Domyślnie na maszynach wirtualnych platformy Azure jest włączona automatyczna instalacja aktualizacji. Może to spowodować zainstalowanie aktualizacji przed zaplanowaniem ich instalacji przez Update Management. To zachowanie można wyłączyć przez ustawienie klucza rejestru `NoAutoUpdate` na `1`. Poniższy fragment kodu programu PowerShell pokazuje, jak to zrobić:
+Domyślnie na maszynach wirtualnych platformy Azure jest włączona automatyczna instalacja aktualizacji. Może to spowodować zainstalowanie aktualizacji przed zaplanowaniem ich instalacji przez Update Management. To zachowanie można wyłączyć, ustawiając klucz rejestru `NoAutoUpdate` na `1`. Poniższy fragment kodu programu PowerShell pokazuje, jak to zrobić:
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"

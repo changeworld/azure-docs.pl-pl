@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac52fa7eab055a2b2e9154481019d49acdca65d9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420541"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842411"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
 
@@ -79,7 +79,7 @@ Aby utworzyć maszynę wirtualną z systemem Windows Server 2019 Datacenter na p
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)przy użyciu konta, które ma dostęp do tworzenia maszyn wirtualnych, a następnie wybierz pozycję **+ Utwórz zasób**.
 1. Wpisz **Windows Server** na pasku wyszukiwania portalu Marketplace.
    1. Kliknij pozycję **Windows Server** i wybierz opcję **Windows Server 2019 Datacenter** z listy rozwijanej wybierz plan oprogramowania.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 1. Na karcie Zarządzanie, Włącz opcję **Zaloguj się przy użyciu poświadczeń usługi AAD (wersja zapoznawcza)** w sekcji Azure Active Directory od pozycji wyłączone do **usługi.**
 1. Upewnij **się, że w sekcji**tożsamość jest ustawiona **tożsamość zarządzana przypisana przez system** . Ta akcja powinna nastąpić automatycznie po włączeniu logowania przy użyciu poświadczeń usługi Azure AD.
 1. Przejdź do reszty środowiska tworzenia maszyny wirtualnej. W tej wersji zapoznawczej konieczne będzie utworzenie nazwy użytkownika i hasła administratora dla maszyny wirtualnej.
@@ -116,6 +116,9 @@ az vm create \
     --admin-username azureuser \
     --admin-password yourpassword
 ```
+
+> [!NOTE]
+> Wymagane jest włączenie tożsamości zarządzanej przypisanej przez system na maszynie wirtualnej przed zainstalowaniem rozszerzenia maszyny wirtualnej logowania do usługi Azure AD.
 
 Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut.
 
@@ -230,24 +233,24 @@ Aby maszyna wirtualna mogła ukończyć proces przyłączania do usługi Azure A
 
    | Polecenie do uruchomienia | Oczekiwane dane wyjściowe |
    | --- | --- |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Popraw informacje o maszynie wirtualnej platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Popraw informacje o maszynie wirtualnej platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
+   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
 
    > [!NOTE]
    > Token dostępu można zdekodować przy użyciu narzędzia, takiego jak [http://calebb.net/](http://calebb.net/). Sprawdź, czy identyfikator "AppID" w tokenie dostępu jest zgodny z zarządzaną tożsamością przypisaną do maszyny wirtualnej.
 
 1. Upewnij się, że wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
    
-   - zwinięcie https://login.microsoftonline.com/-D —
-   - zwinięcie https://login.microsoftonline.com/`<TenantID>`/-D —
+   - zwinięcie https://login.microsoftonline.com/ -D —
+   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
 
    > [!NOTE]
    > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure.
 
-   - zwinięcie https://enterpriseregistration.windows.net/-D-
-   - zwinięcie https://device.login.microsoftonline.com/-D-
-   - zwinięcie https://pas.windows.net/-D-
+   - zwinięcie https://enterpriseregistration.windows.net/ -D-
+   - zwinięcie https://device.login.microsoftonline.com/ -D-
+   - zwinięcie https://pas.windows.net/ -D-
 
 1. Stan urządzenia można wyświetlić, uruchamiając `dsregcmd /status`. Celem jest stan urządzenia, który ma być wyświetlany jako `AzureAdJoined : YES`.
 
@@ -274,15 +277,15 @@ Ten kod zakończenia tłumaczy na DSREG_AUTOJOIN_DISC_FAILED, ponieważ rozszerz
 
 1. Sprawdź, czy wymagane punkty końcowe są dostępne z maszyny wirtualnej przy użyciu wiersza polecenia:
 
-   - zwinięcie https://login.microsoftonline.com/-D —
-   - zwinięcie https://login.microsoftonline.com/`<TenantID>`/-D —
+   - zwinięcie https://login.microsoftonline.com/ -D —
+   - zwinięcie https://login.microsoftonline.com/`<TenantID>` /-D —
    
    > [!NOTE]
    > Zastąp `<TenantID>` IDENTYFIKATORem dzierżawy usługi Azure AD skojarzonym z subskrypcją platformy Azure. Jeśli musisz znaleźć identyfikator dzierżawy, możesz umieścić wskaźnik myszy nad nazwą konta, aby uzyskać identyfikator katalogu/dzierżawy, lub wybrać Azure Active Directory właściwości > > identyfikator katalogu w Azure Portal.
 
-   - zwinięcie https://enterpriseregistration.windows.net/-D-
-   - zwinięcie https://device.login.microsoftonline.com/-D-
-   - zwinięcie https://pas.windows.net/-D-
+   - zwinięcie https://enterpriseregistration.windows.net/ -D-
+   - zwinięcie https://device.login.microsoftonline.com/ -D-
+   - zwinięcie https://pas.windows.net/ -D-
 
 1. Jeśli którekolwiek z poleceń zakończy się niepowodzeniem z "nie można rozpoznać `<URL>`hosta", spróbuj uruchomić to polecenie, aby określić serwer DNS, który jest używany przez maszynę wirtualną.
    

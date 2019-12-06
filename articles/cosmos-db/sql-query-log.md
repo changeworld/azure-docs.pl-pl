@@ -1,18 +1,18 @@
 ---
 title: Logowanie w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej o dzienniku funkcji systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej o funkcji rejestrowania w systemie SQL w Azure Cosmos DB, aby zwrócić logarytm naturalny określonego wyrażenia liczbowego
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 16f2321eb48afacbc9636b5c0588b1ea3a01a284
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349736"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873288"
 ---
 # <a name="log-azure-cosmos-db"></a>Dziennik (Azure Cosmos DB)
  Zwraca logarytm naturalny z określonego wyrażenia liczbowego.  
@@ -28,7 +28,7 @@ LOG (<numeric_expr> [, <base>])
 *numeric_expr*  
    To wyrażenie liczbowe.  
   
-*opiera*  
+*base*  
    Opcjonalny argument liczbowy, który ustawia podstawa logarytmu.  
   
 ## <a name="return-types"></a>Typy zwracane
@@ -41,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   Logarytm naturalny to logarytm o podstawie **e**, gdzie **e** jest stałą nieracjonalnej w przybliżeniu równa 2.718281828.  
   
-  Logarytm naturalny liczby wykładniczej jest tylko numerem: Dziennik (EXP (n)) = n. I wykładnicza logarytmu naturalnego liczby jest samą liczbą: EXP (LOG (n)) = n.  
+  Logarytm naturalny wykładniczą liczby jest to liczba sam: LOG (EXP (n)) = n. I wykładniczą logarytm naturalny liczby jest to liczba sam: EXP (dziennik (n)) = n.  
   
 ## <a name="examples"></a>Przykłady
   

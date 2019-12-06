@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acde7f30649e03d44fd891c959b53113b0e46f51
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793514"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868647"
 ---
 # <a name="what-is-identity-provisioning"></a>Co to jest inicjowanie obsługi tożsamości?
 
@@ -66,5 +66,5 @@ Jest to realizowane przez Azure AD Connect synchronizację, Azure AD Connect apr
  
 ## <a name="next-steps"></a>Następne kroki 
 
-- [Co to jest inicjowanie obsługi?](what-is-provisioning.md)
 - [Co to jest Azure AD Connect aprowizacji w chmurze?](what-is-cloud-provisioning.md)
+- [Zainstaluj aprowizacji w chmurze](how-to-install.md)

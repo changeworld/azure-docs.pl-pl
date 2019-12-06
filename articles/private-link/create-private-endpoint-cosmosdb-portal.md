@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229424"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851200"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Połącz się prywatnie z kontem usługi Azure Cosmos za pomocą prywatnego linku platformy Azure
 
@@ -19,7 +19,7 @@ Prywatny punkt końcowy platformy Azure to podstawowy blok konstrukcyjny dla pry
 
 W tym artykule dowiesz się, jak utworzyć maszynę wirtualną w sieci wirtualnej platformy Azure i konto usługi Azure Cosmos z prywatnym punktem końcowym przy użyciu Azure Portal. Następnie możesz bezpiecznie uzyskać dostęp do konta usługi Azure Cosmos z poziomu maszyny wirtualnej.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do [Azure Portal.](https://portal.azure.com)
 
@@ -61,7 +61,7 @@ W tej sekcji utworzysz sieć wirtualną i podsieć służącą do hostowania mas
     | Nazwa maszyny wirtualnej | Wprowadź *myVm*. |
     | Region | Wybierz pozycję **WestCentralUS**. |
     | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
-    | Image (Obraz) | Wybierz pozycję **Windows Server 2019 Datacenter**. |
+    | Obraz | Wybierz pozycję **Windows Server 2019 Datacenter**. |
     | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
     | **KONTO ADMINISTRATORA** |  |
     | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
@@ -93,7 +93,7 @@ W tej sekcji utworzysz sieć wirtualną i podsieć służącą do hostowania mas
 
 1. Gdy zobaczysz komunikat o **przekazaniu walidacji** , wybierz pozycję **Utwórz**.
 
-## <a name="create-an-azure-cosmos-account"></a>tworzenie konta usługi Azure Cosmos
+## <a name="create-an-azure-cosmos-account"></a>Tworzenie konta usługi Azure Cosmos
 
 Utwórz [konto interfejsu API SQL usługi Azure Cosmos](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account). Dla uproszczenia można utworzyć konto usługi Azure Cosmos w tym samym regionie, w którym są inne zasoby (czyli "WestCentralUS").
 
@@ -129,9 +129,6 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 ## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Dostęp do konta usługi Azure Cosmos do prywatnego z poziomu maszyny wirtualnej
 
 W tej sekcji nastąpi połączenie prywatne z kontem usługi Azure Cosmos za pomocą prywatnego punktu końcowego. 
-
-> [!IMPORTANT]
-> Konfiguracja usługi DNS dla konta usługi Azure Cosmos wymaga ręcznej modyfikacji pliku hosts w celu uwzględnienia nazwy FQDN określonego konta. W scenariuszach produkcyjnych serwer DNS zostanie skonfigurowany tak, aby używał prywatnych adresów IP. Jednak do celów demonstracyjnych można użyć uprawnień administratora na maszynie wirtualnej i zmodyfikować plik `c:\Windows\System32\Drivers\etc\hosts` (w systemie Windows) lub plik `/etc/hosts` (w systemie Linux) w celu uwzględnienia adresu IP i mapowania DNS.
 
 1. Aby uwzględnić adresy IP i mapowania DNS, zaloguj się do maszyny wirtualnej *myVM*, otwórz plik `c:\Windows\System32\Drivers\etc\hosts` i Uwzględnij informacje DNS z poprzedniego kroku w następującym formacie:
 

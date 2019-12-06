@@ -1,7 +1,7 @@
 ---
 title: Typ jednostki wyrażenia regularnego — LUIS
 titleSuffix: Azure Cognitive Services
-description: Wyrażenie regularne jest najlepsze dla nieprzetworzonego tekstu wypowiedź. Ignoruje wielkość liter i ignoruje odmianę kulturową.  Dopasowanie wyrażenia regularnego jest stosowane po zmianach sprawdzania pisowni na poziomie znaku, a nie na poziomie tokenu.
+description: Wyrażenie regularne jest najlepsze dla nieprzetworzonego tekstu wypowiedź. On ignoruje wielkość liter i ignoruje wariant kultury.  Dopasowywanie wyrażeń regularnych są stosowane po sprawdzania pisowni zmiany na poziomie znak, a nie na poziomie tokenu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: ae46df875d588186cd083134820f349158d7e307
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695214"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841221"
 ---
-# <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego 
+# <a name="regular-expression-entity"></a>Jednostka wyrażenia regularnego
 
 Jednostka wyrażenia regularnego wyodrębnia jednostkę na podstawie podania wzorca wyrażenia regularnego.
 
-Wyrażenie regularne jest najlepsze dla nieprzetworzonego tekstu wypowiedź. Ignoruje wielkość liter i ignoruje odmianę kulturową.  Dopasowanie wyrażenia regularnego jest stosowane po zmianach sprawdzania pisowni na poziomie znaku, a nie na poziomie tokenu. Jeśli wyrażenie regularne jest zbyt złożone, na przykład przy użyciu wielu nawiasów, nie można dodać wyrażenia do modelu. Używa części, ale nie całej biblioteki [wyrażeń regularnych programu .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) . 
+Wyrażenie regularne jest najlepsze dla nieprzetworzonego tekstu wypowiedź. On ignoruje wielkość liter i ignoruje wariant kultury.  Dopasowywanie wyrażeń regularnych są stosowane po sprawdzania pisowni zmiany na poziomie znak, a nie na poziomie tokenu. Jeśli wyrażenie regularne jest zbyt złożone, na przykład przy użyciu wielu nawiasów, nie można dodać wyrażenia do modelu. Używa części, ale nie całej biblioteki [wyrażeń regularnych programu .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) .
 
 **Jednostka jest dobrym dopasowaniem w przypadku:**
 
 * Dane są spójne z uwzględnieniem spójnych zmian.
-* Wyrażenie regularne nie wymaga więcej niż 2 poziomów zagnieżdżenia. 
+* Wyrażenie regularne nie wymaga więcej niż 2 poziomów zagnieżdżenia.
 
 ![Jednostka wyrażenia regularnego](./media/luis-concept-entities/regex-entity.png)
 
@@ -36,7 +36,7 @@ Wyrażenia regularne mogą odpowiadać więcej niż oczekiwano. Przykładem jest
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
+```
 
 To wyrażenie regularne również dopasowuje wszystkie wyrazy kończące się tymi liczbami, takie jak `phone`. Aby rozwiązać te problemy, należy się upewnić, że dopasowuje wyrażenie regularne uwzględnia granice wyrazu. Wyrażenie regularne do używania granic wyrazów dla tego przykładu jest używane w następujących wyrażeniach regularnych:
 
@@ -44,9 +44,9 @@ To wyrażenie regularne również dopasowuje wszystkie wyrazy kończące się ty
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
 ```
 
-### <a name="example-json"></a>Przykładowy kod JSON
+### <a name="example-json"></a>Przykładowy plik JSON
 
-W przypadku używania `kb[0-9]{6}` jako definicji jednostki wyrażenia regularnego następująca odpowiedź JSON to przykład wypowiedź z zwracanymi jednostkami wyrażenia regularnego dla zapytania:
+W przypadku używania `kb[0-9]{6}`, jako definicji jednostki wyrażenia regularnego następująca odpowiedź JSON to przykład wypowiedź z zwracanymi jednostkami wyrażenia regularnego dla zapytania:
 
 `When was kb123456 published?`:
 
@@ -67,7 +67,7 @@ W przypadku używania `kb[0-9]{6}` jako definicji jednostki wyrażenia regularne
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Odpowiedź punktu końcowego przewidywania v3](#tab/V3)
 
 
-Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=false`:
+Jest to kod JSON, jeśli `verbose=false` jest ustawiony w ciągu zapytania:
 
 ```json
 "entities": {
@@ -77,7 +77,7 @@ Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=false`:
 }
 ```
 
-Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=true`:
+Jest to kod JSON, jeśli `verbose=true` jest ustawiony w ciągu zapytania:
 
 ```json
 "entities": {
@@ -102,8 +102,8 @@ Jest to kod JSON, jeśli w ciągu zapytania jest ustawiony `verbose=true`:
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym [samouczku](luis-quickstart-intents-regex-entity.md)utworzysz aplikację do wyodrębniania spójnie sformatowanych danych z wypowiedź przy użyciu jednostki **wyrażenia regularnego** .
+W tym [samouczku](tutorial-regex-entity.md)utworzysz aplikację do wyodrębniania spójnie sformatowanych danych z wypowiedź przy użyciu jednostki **wyrażenia regularnego** .

@@ -1,17 +1,17 @@
 ---
 title: Podzapytania SQL dla Azure Cosmos DB
-description: Dowiedz się więcej na temat podzapytań SQL i ich typowych przypadków użycia w Azure Cosmos DB
+description: Dowiedz się więcej o podzapytaniach SQL i ich typowych przypadkach użycia oraz różnych typach podzapytań w Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003480"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870568"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Przykłady podzapytań SQL dla Azure Cosmos DB
 
@@ -23,16 +23,16 @@ W tym artykule opisano podzapytania SQL i ich typowe przypadki użycia w program
 
 Istnieją dwa główne typy podzapytań:
 
-* **Skorelowane**: Podzapytanie, które odwołuje się do wartości z zapytania zewnętrznego. Podzapytanie jest oceniane raz dla każdego wiersza, który przetwarza zapytanie zewnętrzne.
-* **Nieskorelowane**: Podzapytanie niezależne od zapytania zewnętrznego. Może być uruchamiany samodzielnie bez polegania na zewnętrznym zapytaniu.
+* **Skorelowane**: podzapytanie, które odwołuje się do wartości z zapytania zewnętrznego. Podzapytanie jest oceniane raz dla każdego wiersza, który przetwarza zapytanie zewnętrzne.
+* **Nieskorelowane**: podzapytanie, które jest niezależne od zapytania zewnętrznego. Może być uruchamiany samodzielnie bez polegania na zewnętrznym zapytaniu.
 
 > [!NOTE]
 > Azure Cosmos DB obsługuje tylko skorelowane podzapytania.
 
 Podzapytania można zaklasyfikować w oparciu o liczbę wierszy i kolumn, które zwracają. Istnieją trzy typy:
-* **Tabela**: Zwraca wiele wierszy i wiele kolumn.
-* **Wiele wartości**: Zwraca wiele wierszy i pojedynczą kolumnę.
-* **Skalarny**: Zwraca pojedynczy wiersz i pojedynczą kolumnę.
+* **Tabela**: zwraca wiele wierszy i wiele kolumn.
+* Wiele **wartości**: zwraca wiele wierszy i pojedynczą kolumnę.
+* **Skalarny**: zwraca pojedynczy wiersz i pojedynczą kolumnę.
 
 Zapytania SQL w Azure Cosmos DB zawsze zwracają pojedynczą kolumnę (prostą lub złożoną). W związku z tym w Azure Cosmos DB są stosowane tylko wielowartościowe i skalarne podzapytania. Można użyć wielowartościowego podzapytania tylko w klauzuli FROM jako wyrażenia relacyjnego. Można użyć podzapytania skalarnego jako wyrażenia skalarnego w klauzuli SELECT lub WHERE lub jako wyrażenie relacyjne w klauzuli FROM.
 
@@ -47,7 +47,7 @@ Podzapytania o wiele wartości zwracają zestaw dokumentów i są zawsze używan
 
 Podzapytania wielowartościowe mogą optymalizować wyrażenia SPRZĘŻENIa przez wypychanie predykatów po każdym wyrażeniu wyboru-wielu, a nie po wszystkich sprzężeniach krzyżowych w klauzuli WHERE.
 
-Rozważ następujące zapytanie:
+Rozpatrzmy następujące zapytanie:
 
 ```sql
 SELECT Count(1) AS Count
@@ -79,7 +79,7 @@ Załóżmy, że tylko jeden element w tablicy tagów pasuje do filtru i istnieje
 
 Podzapytania mogą pomóc zoptymalizować zapytania z kosztownymi wyrażeniami, takimi jak funkcje zdefiniowane przez użytkownika (UDF), ciągi złożone lub wyrażenia arytmetyczne. Możesz użyć podzapytania wraz z wyrażeniem SPRZĘŻENIa, aby obliczyć wyrażenie jeden raz, ale odwołują się do niego wiele razy.
 
-Następujące zapytanie uruchamia dwa razy klawisz `GetMaxNutritionValue` UDF:
+Następujące zapytanie uruchamia `GetMaxNutritionValue` UDF dwa razy:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -109,7 +109,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-Podejście nie jest ograniczone do UDF. Ma to zastosowanie do dowolnego potencjalnego wyrażenia. Na przykład można zastosować takie samo podejście z funkcją `avg`matematyczną:
+Podejście nie jest ograniczone do UDF. Ma to zastosowanie do dowolnego potencjalnego wyrażenia. Na przykład można zastosować takie samo podejście z funkcją matematyczną `avg`:
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -126,22 +126,22 @@ Na przykład rozważmy ten zestaw danych referencyjnych:
 
 | **Unit** | **Nazwa**            | **Mnożnik** | **Jednostka podstawowa** |
 | -------- | ------------------- | -------------- | ------------- |
-| gazu       | Nanogram            | 1.00 E-09       | Sprawdzanie          |
-| g       | Microgram           | 1.00 E-06       | Sprawdzanie          |
-| mg       | Ilość           | 1,00 E-03       | Sprawdzanie          |
-| g        | Sprawdzanie                | 1,00 E + 00       | Sprawdzanie          |
-| kg       | Kg            | 1,00 E + 03       | Sprawdzanie          |
-| mg       | Megagram            | 1,00 E + 06       | Sprawdzanie          |
-| GG       | Gigagram            | 1,00 E + 09       | Sprawdzanie          |
-| nJ       | Nanojoule           | 1.00 E-09       | Joule —         |
-| µJ       | Microjoule          | 1.00 E-06       | Joule —         |
-| mJ       | Millijoule          | 1,00 E-03       | Joule —         |
-| J        | Joule —               | 1,00 E + 00       | Joule —         |
-| kJ       | Kilojoule           | 1,00 E + 03       | Joule —         |
-| MJ       | Megajoule           | 1,00 E + 06       | Joule —         |
-| GJ       | Gigajoule           | 1,00 E + 09       | Joule —         |
-| cal      | Calorie             | 1,00 E + 00       | calorie       |
-| kcal     | Calorie             | 1,00 E + 03       | calorie       |
+| gazu       | Nanogram            | 1.00 e-09       | Sprawdzanie          |
+| g       | Microgram           | 1.00 e-06       | Sprawdzanie          |
+| mg       | Ilość           | 1,00 e-03       | Sprawdzanie          |
+| g        | Sprawdzanie                | 1,00 e + 00       | Sprawdzanie          |
+| kg       | Kg            | 1,00 e + 03       | Sprawdzanie          |
+| Mg       | Megagram            | 1,00 e + 06       | Sprawdzanie          |
+| GG       | Gigagram            | 1,00 e + 09       | Sprawdzanie          |
+| nJ       | Nanojoule           | 1.00 e-09       | Joule —         |
+| µJ       | Microjoule          | 1.00 e-06       | Joule —         |
+| mJ       | Millijoule          | 1,00 e-03       | Joule —         |
+| J        | Joule —               | 1,00 e + 00       | Joule —         |
+| kJ       | Kilojoule           | 1,00 e + 03       | Joule —         |
+| MJ       | Megajoule           | 1,00 e + 06       | Joule —         |
+| GJ       | Gigajoule           | 1,00 e + 09       | Joule —         |
+| cal      | Calorie             | 1,00 e + 00       | calorie       |
+| kcal     | Calorie             | 1,00 e + 03       | calorie       |
 | IU       | Jednostki międzynarodowe |                |               |
 
 
@@ -267,7 +267,7 @@ Wyniki zapytania:
 
 Zagregowane podzapytanie skalarne jest podzapytaniem, które zawiera funkcję agregującą w projekcji lub filtr, który daje w wyniku pojedynczą wartość.
 
-**Przykład 1:**
+**Przykład 1.**
 
 Oto podzapytanie zawierające wyrażenie pojedynczego funkcji agregującej w projekcji:
 
@@ -368,7 +368,7 @@ SELECT EXISTS (SELECT undefined)
 
 Podzapytanie będzie zawierać listę wartości z wybranej listy w obiekcie. Jeśli wybrana lista nie ma żadnych wartości, podzapytanie zwróci pojedynczą wartość "{}". Ta wartość jest zdefiniowana, a zatem istnieje wartość true.
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Przykład: Ponowne zapisywanie ARRAY_CONTAINS i dołączanie jako istnieje
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Przykład: zapisywanie ARRAY_CONTAINS i dołączanie jako istnieje
 
 Typowym przypadkiem użycia ARRAY_CONTAINS jest filtrowanie dokumentu przez istnienie elementu w tablicy. W tym przypadku Sprawdzamy, czy tablica tagów zawiera element o nazwie "pomarańczowy".
 
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-Ponadto ARRAY_CONTAINS może sprawdzić, czy wartość jest równa każdemu elementowi w tablicy. Jeśli potrzebujesz bardziej złożonych filtrów dla właściwości tablicy, użyj SPRZĘŻENIa.
+Ponadto ARRAY_CONTAINS można sprawdzić tylko wtedy, gdy wartość jest równa każdemu elementowi w tablicy. Jeśli potrzebujesz bardziej złożonych filtrów dla właściwości tablicy, użyj SPRZĘŻENIa.
 
-Rozważmy następujące zapytanie, które jest oparte na jednostkach `nutritionValue` i właściwościach tablicy: 
+Rozważmy następujące zapytanie, które jest oparte na jednostkach i właściwościach `nutritionValue` w tablicy: 
 
 ```sql
 SELECT VALUE c.description

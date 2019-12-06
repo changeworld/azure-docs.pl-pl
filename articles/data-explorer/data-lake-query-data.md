@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1299ca9192481c1cc914732d47823c1d8cbd0fae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383377"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849075"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
 
@@ -21,20 +21,15 @@ Azure Data Lake Storage to wysoce skalowalne i ekonomiczne rozwiązanie usługi 
 Platforma Azure Eksplorator danych integruje się z usługą Azure Blob Storage i Azure Data Lake Storage Gen2, zapewniając szybki, buforowany i indeksowany dostęp do danych w usłudze Lake. Można analizować i wysyłać zapytania dotyczące danych w usłudze Lake bez wcześniejszego pozyskiwania do Eksplorator danych platformy Azure. Możesz również wykonywać zapytania na wyzyskanych i nieprzezyskanych natywnych danych Lake.  
 
 > [!TIP]
-> Najlepsza wydajność zapytań wymaga pozyskiwania danych na platformie Azure Eksplorator danych. Możliwość wykonywania zapytań dotyczących danych w Azure Data Lake Storage Gen2 bez wcześniejszego pozyskiwania powinna być używana tylko w przypadku danych historycznych lub danych, które są rzadko wysyłane zapytania.
+> Najlepsza wydajność zapytań wymaga pozyskiwania danych na platformie Azure Eksplorator danych. Możliwość wykonywania zapytań dotyczących danych w Azure Data Lake Storage Gen2 bez wcześniejszego pozyskiwania powinna być używana tylko w przypadku danych historycznych lub danych, które są rzadko wysyłane zapytania. [Zoptymalizuj wydajność zapytań na Lake,](#optimize-your-query-performance) Aby uzyskać najlepsze wyniki.
  
-## <a name="optimize-query-performance-in-the-lake"></a>Optymalizowanie wydajności zapytań w Lake 
-
-* Podziel dane na partycje, aby zwiększyć wydajność i zoptymalizowany czas zapytania.
-* Kompresuj dane, aby zwiększyć wydajność (GZIP dla najlepszej kompresji, lz4 dla najlepszej wydajności).
-* Użyj usługi Azure Blob Storage lub Azure Data Lake Storage Gen2 z tym samym regionem co klaster Eksplorator danych platformy Azure. 
 
 ## <a name="create-an-external-table"></a>Tworzenie tabeli zewnętrznej
 
  > [!NOTE]
  > Obecnie obsługiwane konta magazynu to Azure Blob Storage lub Azure Data Lake Storage Gen2. Obecnie obsługiwane są formaty danych JSON, CSV, TSV i txt.
 
-1. Użyj polecenia `.create external table` , aby utworzyć tabelę zewnętrzną w usłudze Azure Eksplorator danych. Dodatkowe polecenia tabeli zewnętrznej, takie `.show`jak `.drop`, i `.alter` są udokumentowane w [poleceniach tabeli zewnętrznej](/azure/kusto/management/externaltables).
+1. Użyj `.create external table` polecenie, aby utworzyć tabelę zewnętrzną w usłudze Azure Eksplorator danych. Dodatkowe polecenia tabeli zewnętrznej, takie jak `.show`, `.drop`i `.alter` są udokumentowane w [poleceniach tabeli zewnętrznej](/azure/kusto/management/externaltables).
 
     ```Kusto
     .create external table ArchivedProducts(
@@ -50,7 +45,7 @@ Platforma Azure Eksplorator danych integruje się z usługą Azure Blob Storage 
     > * Oczekiwana jest zwiększona wydajność z bardziej szczegółowym partycjonowaniem. Na przykład zapytania dotyczące tabel zewnętrznych z partycjami dziennymi będą miały lepszą wydajność niż te zapytania z tabelami z podziałem na partycje.
     > * Podczas definiowania tabeli zewnętrznej z partycjami, struktura magazynu powinna być taka sama.
 Na przykład jeśli tabela jest zdefiniowana z partycją DateTime w formacie RRRR/MM/DD (domyślnie), ścieżka pliku magazynu URI powinna mieć wartość *container1/rrrr/mm/dd/all_exported_blobs*. 
-    > * Jeśli tabela zewnętrzna jest podzielona na partycje przez kolumnę datetime, zawsze Uwzględnij filtr czasu dla zamkniętego zakresu w zapytaniu (na przykład zapytanie- `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` -powinno być wykonywane lepiej niż ten (otwarty zakres) jeden — `ArchivedProducts | where Timestamp > ago(1h)` ). 
+    > * Jeśli tabela zewnętrzna jest podzielona na partycje przez kolumnę datetime, zawsze Uwzględnij filtr czasu dla zamkniętego zakresu w zapytaniu (na przykład zapytanie-`ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`-powinno działać lepiej niż ten (otwarty zakres) jeden `ArchivedProducts | where Timestamp > ago(1h)`). 
 
 1. Tabela zewnętrzna jest widoczna w lewym okienku interfejsu użytkownika sieci Web
 
@@ -60,7 +55,7 @@ Na przykład jeśli tabela jest zdefiniowana z partycją DateTime w formacie RRR
 
 Tabelę zewnętrzną można utworzyć przy użyciu formatu JSON. Aby uzyskać więcej informacji, zobacz [zewnętrzne polecenia tabel](/azure/kusto/management/externaltables)
 
-1. Użyj polecenia `.create external table` , aby utworzyć tabelę o nazwie *ExternalTableJson*:
+1. Użyj `.create external table` polecenie, aby utworzyć tabelę o nazwie *ExternalTableJson*:
 
     ```kusto
     .create external table ExternalTableJson (rownumber:int, rowguid:guid) 
@@ -91,7 +86,7 @@ Tabelę zewnętrzną można utworzyć przy użyciu formatu JSON. Aby uzyskać wi
  
 ## <a name="query-an-external-table"></a>Kwerenda tabeli zewnętrznej
  
-Aby zbadać tabelę zewnętrzną, użyj `external_table()` funkcji i podaj nazwę tabeli jako argument funkcji. Pozostała część zapytania to standardowy język zapytań Kusto.
+Aby zbadać tabelę zewnętrzną, użyj funkcji `external_table()` i podaj nazwę tabeli jako argument funkcji. Pozostała część zapytania to standardowy język zapytań Kusto.
 
 ```Kusto
 external_table("ArchivedProducts") | take 100
@@ -102,7 +97,7 @@ external_table("ArchivedProducts") | take 100
 
 ### <a name="query-an-external-table-with-json-format"></a>Zapytanie tabeli zewnętrznej z formatem JSON
 
-Aby zbadać tabelę zewnętrzną z formatem JSON, należy użyć `external_table()` funkcji i podać nazwę tabeli i nazwę mapowania jako argumenty funkcji. W zapytaniu poniżej, jeśli nie określono *mapowanianame* , zostanie użyte mapowanie, które zostało wcześniej utworzone.
+Aby zbadać tabelę zewnętrzną z formatem JSON, użyj funkcji `external_table()` i podaj nazwę tabeli i nazwę mapowania jako argumenty funkcji. W zapytaniu poniżej, jeśli nie określono *mapowanianame* , zostanie użyte mapowanie, które zostało wcześniej utworzone.
 
 ```kusto
 external_table(‘ExternalTableJson’, ‘mappingName’)
@@ -110,7 +105,7 @@ external_table(‘ExternalTableJson’, ‘mappingName’)
 
 ## <a name="query-external-and-ingested-data-together"></a>Wykonywanie zapytań dotyczących danych zewnętrznych i pozyskanych
 
-W ramach tego samego zapytania można wykonywać zapytania dotyczące tabel zewnętrznych i tabel pozyskanych danych. Ty [`join`](/azure/kusto/query/joinoperator) [lub`union`](/azure/kusto/query/unionoperator) tabela zewnętrzna z dodatkowymi danymi z usług Azure Eksplorator danych, SQL Server lub innych źródeł. Użyj, [`let( ) statement`](/azure/kusto/query/letstatement) aby przypisać nazwę skróconą do odwołania do tabeli zewnętrznej.
+W ramach tego samego zapytania można wykonywać zapytania dotyczące tabel zewnętrznych i tabel pozyskanych danych. Możesz [`join`](/azure/kusto/query/joinoperator) lub [`union`](/azure/kusto/query/unionoperator) tabelę zewnętrzną z dodatkowymi danymi z usług Azure Eksplorator danych, SQL Server lub innych źródeł. Użyj [`let( ) statement`](/azure/kusto/query/letstatement) , aby przypisać nazwę skróconą do odwołania do tabeli zewnętrznej.
 
 W poniższym przykładzie *produkty* są tabelą danych pozyskiwanych, a *ArchivedProducts* jest tabelą zewnętrzną, która zawiera dane w Azure Data Lake Storage Gen2:
 
@@ -199,7 +194,7 @@ Zestaw danych przykładowych *TaxiRides* zawiera dane o pozostałej stolicy w No
 
 ### <a name="query-taxirides-external-table-data"></a>Zapytanie *TaxiRides* zewnętrzne dane tabeli 
 
-Zaloguj się, [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) aby wysłać zapytanie do tabeli zewnętrznej *TaxiRides* . 
+Zaloguj się do [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples) , aby wykonać zapytanie dotyczące zewnętrznej tabeli *TaxiRides* . 
 
 #### <a name="query-taxirides-external-table-without-partitioning"></a>Zapytanie *TaxiRides* tabelę zewnętrzną bez partycjonowania
 
@@ -231,6 +226,37 @@ To zapytanie używa partycjonowania, które optymalizuje czas zapytania i wydajn
 ![Renderuj zapytanie partycjonowane](media/data-lake-query-data/taxirides-with-partition.png)
   
 Można napisać dodatkowe zapytania do uruchamiania w tabeli zewnętrznej *TaxiRides* i dowiedzieć się więcej na temat danych. 
+
+## <a name="optimize-your-query-performance"></a>Optymalizowanie wydajności zapytań
+
+Zoptymalizuj wydajność zapytań w Lake, wykonując następujące najlepsze rozwiązania dotyczące wykonywania zapytań dotyczących danych zewnętrznych. 
+ 
+### <a name="data-format"></a>Format danych
+ 
+Użyj formatu kolumn dla zapytań analitycznych od:
+* Można odczytać tylko kolumny istotne dla zapytania. 
+* Techniki kodowania kolumn znacznie zmniejszają rozmiar danych.  
+Usługa Azure Eksplorator danych obsługuje formaty kolumn Parquet i ORC. Format Parquet jest sugerowany ze względu na zoptymalizowaną implementację. 
+ 
+### <a name="azure-region"></a>Region platformy Azure 
+ 
+Upewnienie się, że dane zewnętrzne znajdują się w tym samym regionie świadczenia usługi Azure co klaster Eksplorator danych platformy Azure. Zmniejsza to koszty i czas pobierania danych.
+ 
+### <a name="file-size"></a>Rozmiar pliku
+ 
+Optymalny rozmiar pliku to setki MB (do 1 GB) dla każdego pliku. Unikaj wielu małych plików, które wymagają niepotrzebnych obciążeń, takich jak wolniejszy proces wyliczania plików i ograniczone użycie formatu kolumn. Należy pamiętać, że liczba plików musi być większa niż liczba rdzeni procesora CPU w klastrze usługi Azure Eksplorator danych. 
+ 
+### <a name="compression"></a>Kompresja
+ 
+Użyj kompresji, aby zmniejszyć ilość danych pobieranych z magazynu zdalnego. W przypadku formatu Parquet należy użyć wewnętrznego mechanizmu kompresji Parquet, który kompresuje grupy kolumn oddzielnie, dzięki czemu można je oddzielnie odczytać. Aby zweryfikować użycie mechanizmu kompresji, sprawdź, czy pliki są nazwane w następujący sposób: "<filename>. gz. Parquet" lub "<filename>. przyciąganie. Parquet" zamiast "<filename>. Parquet. gz"). 
+ 
+### <a name="partitioning"></a>Partycjonowanie
+ 
+Organizuj dane przy użyciu partycji "folder", które umożliwiają zapytanie pomijanie nieistotnych ścieżek. Podczas planowania partycjonowanie należy wziąć pod uwagę rozmiar pliku i typowe filtry w zapytaniach, takie jak sygnatura czasowa lub identyfikator dzierżawy.
+ 
+### <a name="vm-size"></a>Rozmiar maszyny wirtualnej
+ 
+Wybierz jednostki SKU maszyny wirtualnej z większą liczbą rdzeni i wyższą przepustowość sieci (pamięć jest mniej ważna). Aby uzyskać więcej informacji [, zobacz temat Wybieranie odpowiedniej jednostki SKU maszyny wirtualnej dla klastra Eksplorator danych platformy Azure](manage-cluster-choose-sku.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

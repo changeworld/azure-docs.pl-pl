@@ -1,78 +1,78 @@
 ---
-title: Zasobów certyfikatów w usłudze Azure Automation
-description: Certyfikaty są bezpieczne w usłudze Azure Automation, dzięki czemu są one dostępne przez elementy runbook i konfiguracje DSC do uwierzytelniania względem platformy Azure i innych zasobów.  W tym artykule opisano szczegóły certyfikaty i sposób pracy z nimi w tworzeniu tekstową i graficznego.
+title: Zasoby certyfikatów w Azure Automation
+description: Certyfikaty są bezpiecznie w Azure Automation, dzięki czemu można uzyskiwać dostęp do nich za pomocą elementów Runbook lub konfiguracji DSC w celu uwierzytelniania względem zasobów platformy Azure i innych firm.  W tym artykule opisano szczegóły certyfikatów i sposób pracy z nimi zarówno w tworzeniu tekstu, jak i w formie graficznej.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da116dd8c84e4aa96cc3254218f1ab5d14a8bd6b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a66f73e028594cf90f1fa1765910a3df3adbad1a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478190"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849483"
 ---
-# <a name="certificate-assets-in-azure-automation"></a>Zasobów certyfikatów w usłudze Azure Automation
+# <a name="certificate-assets-in-azure-automation"></a>Zasoby certyfikatów w Azure Automation
 
-Certyfikaty są bezpiecznie przechowywane w usłudze Azure Automation, dzięki czemu są one dostępne przez elementy runbook lub konfiguracji DSC przy użyciu **Get AzureRmAutomationCertificate** działania dla zasobów usługi Azure Resource Manager. Ta funkcja służy do tworzenia elementów runbook i konfiguracji DSC, które używają certyfikatów do uwierzytelniania lub dodaje je do platformy Azure lub zasoby innych firm.
+Certyfikaty są bezpiecznie przechowywane w Azure Automation, dzięki czemu można uzyskać do nich dostęp za pomocą elementów Runbook lub konfiguracji DSC przy użyciu działania **Get-AzureRmAutomationCertificate** dla Azure Resource Manager zasobów. Ta funkcja umożliwia tworzenie elementów Runbook i konfiguracji DSC, które używają certyfikatów do uwierzytelniania, lub dodaje je do platformy Azure lub zasobów innych firm.
 
 >[!NOTE]
->Bezpiecznych zasobów w usłudze Azure Automation obejmują poświadczeń, certyfikatów, połączeń i szyfrowane zmienne. Te zasoby są zaszyfrowane i przechowywane w usłudze Azure Automation za pomocą Unikatowy klucz, który jest generowany dla każdego konta usługi automation. Ten klucz jest przechowywany w systemie zarządzane usługi Key Vault. Przed zapisaniem zabezpieczonym zasobem, klucz jest ładowane z usługi Key Vault i następnie używany do szyfrowania elementu zawartości. Ten proces jest zarządzane przez usługę Azure Automation.
+>Zabezpieczanie zasobów w Azure Automation obejmuje poświadczenia, certyfikaty, połączenia i zmienne zaszyfrowane. Te zasoby są szyfrowane i przechowywane w Azure Automation przy użyciu unikatowego klucza wygenerowanego dla każdego konta usługi Automation. Ten klucz jest przechowywany w Key Vault zarządzanym przez system. Przed zapisaniem bezpiecznego elementu zawartości klucz jest ładowany z Key Vault a następnie używany do szyfrowania elementu zawartości. Ten proces jest zarządzany przez Azure Automation.
 
-## <a name="azurerm-powershell-cmdlets"></a>Polecenia cmdlet usługi AzureRM PowerShell
+## <a name="azurerm-powershell-cmdlets"></a>Polecenia cmdlet programu PowerShell AzureRM
 
-Dla usługi AzureRM poleceń cmdlet w poniższej tabeli służą do tworzenia i obsługi zasobów poświadczeń usługi automation przy użyciu programu Windows PowerShell. Są dostarczane jako część systemu [modułu z wersjami AzureRM.Automation](/powershell/azure/overview), który jest dostępny do użycia w elementach runbook automatyzacji i konfiguracji DSC.
+W przypadku AzureRM polecenia cmdlet w poniższej tabeli służą do tworzenia zasobów poświadczeń usługi Automation i zarządzania nimi za pomocą programu Windows PowerShell. Są one dostarczane jako część [modułu AzureRM. Automation](/powershell/azure/overview), który jest dostępny do użycia w elementach Runbook usługi Automation i konfiguracjach DSC.
 
 |Polecenia cmdlet|Opis|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Pobiera informacje o certyfikat do użycia w elemencie runbook lub konfiguracji DSC. Sam certyfikat można pobierać tylko z działania Get AutomationCertificate.|
-|[New-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Tworzy nowy certyfikat do usługi Azure Automation.|
-[Remove-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Usuwa certyfikat z usługi Azure Automation.|
-|[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Ustawia właściwości istniejącego certyfikatu, włącznie z przekazywaniem pliku certyfikatu i ustawianiem hasła dla pliku pfx.|
-|[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|Służy do przekazywania certyfikatu usługi dla określona usługa w chmurze.|
+|[Get-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Pobiera informacje o certyfikacie do użycia w elemencie Runbook lub konfiguracji DSC. Sam certyfikat można pobrać tylko z działania Get-AutomationCertificate.|
+|[New-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Tworzy nowy certyfikat do Azure Automation.|
+[Remove-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Usuwa certyfikat z Azure Automation.|
+|[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Ustawia właściwości istniejącego certyfikatu, włącznie z przekazywaniem pliku certyfikatu i ustawieniem hasła dla PFX.|
+|[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|Przekazuje certyfikat usługi dla określonej usługi w chmurze.|
 
 ## <a name="activities"></a>Działania
 
-Działania w poniższej tabeli są używane do dostępu do certyfikatów w elemencie runbook i konfiguracjach DSC.
+Działania w poniższej tabeli służą do uzyskiwania dostępu do certyfikatów w konfiguracjach elementów Runbook i DSC.
 
 | Działania | Opis |
 |:---|:---|
-|Get-AutomationCertificate|Pobiera certyfikat do użycia w elemencie runbook lub konfiguracji DSC. Zwraca [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) obiektu.|
+|Get-AutomationCertificate|Pobiera certyfikat do użycia w konfiguracji elementu Runbook lub DSC. Zwraca obiekt [System. Security. Cryptography. x509. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) .|
 
 > [!NOTE] 
-> Należy unikać używania zmiennych w parametrze Name **Get AutomationCertificate** w elemencie runbook lub konfiguracji DSC w postaci, w jakiej komplikuje wykrywanie zależności między elementami runbook lub konfiguracji DSC i zmienne automatyzacji w czasie projektowania.
+> Należy unikać używania zmiennych w parametrze-Name polecenia **Get-AutomationCertificate** w elemencie Runbook lub konfiguracji DSC, ponieważ powoduje to komplikację odnajdywania zależności między elementami Runbook i konfiguracją DSC oraz zmiennymi automatyzacji w czasie projektowania.
 
-## <a name="python2-functions"></a>Funkcje Python2
+## <a name="python2-functions"></a>Funkcje python2
 
-Funkcja w poniższej tabeli umożliwia dostęp certyfikaty na element runbook programu Python2.
+Funkcja w poniższej tabeli służy do uzyskiwania dostępu do certyfikatów w elemencie Runbook python2.
 
 | Funkcja | Opis |
 |:---|:---|
-| automationassets.get_automation_certificate | Pobiera informacje o zasób certyfikatu. |
+| automationassets.get_automation_certificate | Pobiera informacje o zasobach certyfikatu. |
 
 > [!NOTE]
-> Należy zaimportować **automationassets** modułu na początku elementu runbook języka Python w celu uzyskania dostępu do zasobów funkcji.
+> Aby uzyskać dostęp do funkcji zasobów, należy zaimportować moduł **automationassets** na początku elementu Runbook języka Python.
 
 ## <a name="creating-a-new-certificate"></a>Tworzenie nowego certyfikatu
 
-Podczas tworzenia nowego certyfikatu, możesz przekazać plik cer lub PFX do usługi Azure Automation. Po oznaczeniu certyfikatu jako eksportowalny dopiero później przenieść je z magazynu certyfikatów w usłudze Azure Automation. Jeśli nie jest eksportowalny, następnie go należy używać tylko do podpisywania w ramach elementu runbook lub konfiguracji DSC. Usługa Azure Automation wymaga certyfikatu, aby dostawca: **Microsoft Enhanced RSA and AES Cryptographic Provider**.
+Podczas tworzenia nowego certyfikatu należy przekazać plik cer lub PFX do Azure Automation. Jeśli oznaczesz certyfikat jako eksportowalny, możesz go przenieść z magazynu certyfikatów Azure Automation. Jeśli nie można go eksportować, może być używany tylko do podpisywania w ramach elementu Runbook lub konfiguracji DSC. Azure Automation wymaga, aby certyfikat miał dostawcę: **Zaawansowany dostawca usług kryptograficznych RSA i AES firmy Microsoft**.
 
-### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Aby utworzyć nowy certyfikat za pomocą witryny Azure portal
+### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Aby utworzyć nowy certyfikat z Azure Portal
 
-1. Na koncie usługi Automation kliknij **zasoby** Kafelek, aby otworzyć **zasoby** strony.
-2. Kliknij przycisk **certyfikaty** Kafelek, aby otworzyć **certyfikaty** strony.
-3. Kliknij przycisk **Dodaj certyfikat** w górnej części strony.
+1. Na koncie usługi Automation kliknij kafelek **elementy zawartości** , aby otworzyć stronę **zasoby** .
+2. Kliknij kafelek **Certyfikaty** , aby otworzyć stronę **Certyfikaty** .
+3. Kliknij pozycję **Dodaj certyfikat** w górnej części strony.
 4. Wpisz nazwę certyfikatu w **nazwa** pole.
-5. Aby przeglądać w poszukiwaniu pliku cer lub PFX, kliknij przycisk **wybierz plik** w obszarze **Przekaż plik certyfikatu**. Wybranie pliku PFX, należy określić hasło i czy mogą być eksportowane.
-6. Kliknij przycisk **Utwórz** Aby zapisać nowy element zawartości certyfikat.
+5. Aby wyszukać plik cer lub PFX, kliknij pozycję **Wybierz plik** w obszarze **Przekaż plik certyfikatu**. W przypadku wybrania pliku PFX należy określić hasło i zdecydować, czy można je wyeksportować.
+6. Kliknij przycisk **Utwórz** , aby zapisać nowy zasób certyfikatu.
 
-### <a name="to-create-a-new-certificate-with-powershell"></a>Aby utworzyć nowy certyfikat za pomocą programu PowerShell
+### <a name="to-create-a-new-certificate-with-powershell"></a>Aby utworzyć nowy certyfikat przy użyciu programu PowerShell
 
-Poniższy przykład pokazuje sposób tworzenia nowego certyfikatu usługi Automation i oznacz go jako możliwy do eksportu. Zaimportowane istniejącego pliku pfx.
+W poniższym przykładzie pokazano, jak utworzyć nowy certyfikat automatyzacji i oznaczyć go jako możliwy do eksportu. Spowoduje to zaimportowanie istniejącego pliku PFX.
 
 ```powershell-interactive
 $certificateName = 'MyCertificate'
@@ -83,9 +83,9 @@ $ResourceGroup = "ResourceGroup01"
 New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $certificateName -Path $PfxCertPath –Password $CertificatePassword -Exportable -ResourceGroupName $ResourceGroup
 ```
 
-### <a name="create-a-new-certificate-with-resource-manager-template"></a>Utwórz nowy certyfikat za pomocą szablonu usługi Resource Manager
+### <a name="create-a-new-certificate-with-resource-manager-template"></a>Utwórz nowy certyfikat przy użyciu szablonu Menedżer zasobów
 
-Poniższy przykład pokazuje, jak wdrożyć certyfikat do konta usługi Automation przy użyciu szablonu usługi Resource Manager za pomocą programu PowerShell:
+W poniższym przykładzie pokazano, jak wdrożyć certyfikat na koncie usługi Automation przy użyciu szablonu Menedżer zasobów za pomocą programu PowerShell:
 
 ```powershell-interactive
 $AutomationAccountName = "<automation account name>"
@@ -126,13 +126,13 @@ $json | out-file .\template.json
 New-AzureRmResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -TemplateFile .\template.json
 ```
 
-## <a name="using-a-certificate"></a>Za pomocą certyfikatu
+## <a name="using-a-certificate"></a>Korzystanie z certyfikatu
 
-Aby używać certyfikatu, należy użyć **Get AutomationCertificate** działania. Nie można użyć [Get AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate) polecenia cmdlet, ponieważ zwraca informacje o zasób certyfikatu, ale nie sam certyfikat.
+Aby użyć certyfikatu, Użyj działania **Get-AutomationCertificate** . Nie można użyć polecenia cmdlet [Get-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate) , ponieważ zwraca informacje o zasobie certyfikatu, ale nie sam certyfikat.
 
-### <a name="textual-runbook-sample"></a>Przykład tekstowy element runbook
+### <a name="textual-runbook-sample"></a>Przykład tekstu elementu Runbook
 
-Poniższy przykład kodu pokazuje, jak dodać certyfikat do usługi w chmurze w elemencie runbook. W tym przykładzie hasło zostanie pobrana z zmiennej automatyzacji zaszyfrowane.
+Poniższy przykładowy kod pokazuje, jak dodać certyfikat do usługi w chmurze w elemencie Runbook. W tym przykładzie hasło jest pobierane z zaszyfrowanej zmiennej automatyzacji.
 
 ```powershell-interactive
 $serviceName = 'MyCloudService'
@@ -142,19 +142,19 @@ $certPwd = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-sample"></a>Przykładowy graficzny element runbook
+### <a name="graphical-runbook-sample"></a>Przykład graficzny elementu Runbook
 
-Możesz dodać **Get AutomationCertificate** do graficznego elementu runbook, klikając prawym przyciskiem myszy certyfikat w okienku Biblioteka i wybierając polecenie **Dodaj do kanwy**.
+Aby dodać element **Get-AutomationCertificate** do graficznego elementu Runbook, kliknij prawym przyciskiem myszy certyfikat w okienku biblioteka i wybierz polecenie **Dodaj do kanwy**.
 
-![Dodawanie certyfikatu do obszaru roboczego](../media/certificates/automation-certificate-add-to-canvas.png)
+![Dodawanie certyfikatu do kanwy](../media/certificates/automation-certificate-add-to-canvas.png)
 
-Na poniższej ilustracji przedstawiono przykład użycia certyfikatu w graficznego elementu runbook. To jest taka sama, jak w poprzednim przykładzie, który pokazuje, jak dodać certyfikat do usługi w chmurze z tekstowej elementu runbook.
+Na poniższej ilustracji przedstawiono przykład użycia certyfikatu w graficznym elemencie Runbook. Jest to takie samo jak w poprzednim przykładzie, który pokazuje, jak dodać certyfikat do usługi w chmurze z tekstowego elementu Runbook.
 
-![Przykład tworzenie graficzne](../media/certificates/graphical-runbook-add-certificate.png)
+![Przykład tworzenia graficznego](../media/certificates/graphical-runbook-add-certificate.png)
 
-### <a name="python2-sample"></a>Przykładowe Python2
+### <a name="python2-sample"></a>Przykład python2
 
-Poniższy przykład pokazuje sposób certyfikaty elementami runbook programu Python2 dostępu.
+Poniższy przykład pokazuje, jak uzyskać dostęp do certyfikatów w elementach Runbook python2.
 
 ```python
 # get a reference to the Azure Automation certificate
@@ -164,6 +164,6 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 print cert
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat pracy z łączami do sterowania przepływem logiczne element runbook jest przeznaczony do wykonywania działań, zobacz [łącza w tworzenie graficzne](../automation-graphical-authoring-intro.md#links-and-workflow). 
+- Aby dowiedzieć się więcej na temat pracy z linkami w celu kontrolowania logicznego przepływu działań, które są przeznaczone do wykonania przez element Runbook, zobacz [linki w temacie Tworzenie graficzne](../automation-graphical-authoring-intro.md#links-and-workflow). 

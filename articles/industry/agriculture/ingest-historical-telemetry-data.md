@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 0ab2ba2c49dd0d0f946358c8f52a6daaf7428dd1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672570"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851421"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -27,10 +27,10 @@ Należy również włączyć dostęp partnera, jak wspomniano w poniższych krok
 
 Musisz włączyć integrację partnera z wystąpieniem usługi Azure FarmBeats. W tym kroku jest tworzony klient, który będzie miał dostęp do usługi Azure FarmBeats jako partner urządzenia i zawiera następujące wartości, które są wymagane w kolejnych krokach.
 
-- Punkt końcowy interfejsu API — jest to adres URL centrum danych, na przykład https://<datahub>. azurewebsites.net
+- Punkt końcowy interfejsu API — jest to adres URL centrum danych, na przykład https://\<datahub >. azurewebsites. NET
 - Identyfikator dzierżawy
 - Identyfikator klienta
-- Klucz tajny klienta
+- Wpis tajny klienta
 - Parametry połączenia EventHub
 
 Wykonaj poniższe kroki, aby je wygenerować:
@@ -84,7 +84,7 @@ Wykonaj poniższe kroki, aby je wygenerować:
 |     Nazwa                 |  Nazwa identyfikująca zasób. Na przykład nazwa modelu/Product Name.
       Opis     | Podaj znaczący opis modelu
 |    Właściwości          |    Dodatkowe właściwości producenta   |
-|    **Pliku**             |                      |
+|    **urządzenia**             |                      |
 |   DeviceModelId     |     Identyfikator skojarzonego modelu urządzenia  |
 |  HardwareId          | Unikatowy identyfikator urządzenia, na przykład adres MAC itp.,
 |  ReportingInterval        |   Interwał raportowania w sekundach
@@ -110,7 +110,7 @@ Wykonaj poniższe kroki, aby je wygenerować:
 |  SensorModelId     |    Identyfikator skojarzonego modelu czujnika   |
 | location          |  Czujnik Latitude (-90 do + 90)/Longitude (-180 do 180)/Elevation (w metrach)|
 |   Nazwa > portu        |  Nazwa i typ portu, z którym jest połączony czujnik na urządzeniu. Ta nazwa musi być taka sama, jak zdefiniowana w modelu urządzenia. |
-|    Identyfikator  |    Identyfikator urządzenia, z którym jest połączony czujnik     |
+|    ID urządzenia  |    Identyfikator urządzenia, z którym jest połączony czujnik     |
 | Nazwa            |   Nazwa identyfikująca zasób. Na przykład nazwa czujnika/Nazwa produktu i numer modelu/Kod produktu.|
 |    Opis      | Podaj znaczący opis |
 |    Właściwości        |Dodatkowe właściwości producenta |
@@ -119,14 +119,14 @@ Aby uzyskać więcej informacji na temat obiektów, zobacz [Swagger](https://aka
 
 **Żądanie interfejsu API do tworzenia metadanych**
 
-Aby wykonać żądanie interfejsu API, należy połączyć metodę HTTP (POST), adres URL usługi interfejsu API, identyfikator URI zasobu do wysłania zapytania, przesłać dane w celu utworzenia lub usunięcia żądania i dodania co najmniej jednego nagłówka żądania HTTP. Adres URL usługi interfejsu API to punkt końcowy interfejsu API, czyli adres URL centrum danych (https://<yourdatahub>. azurewebsites.net)  
+Aby wykonać żądanie interfejsu API, należy połączyć metodę HTTP (POST), adres URL usługi interfejsu API, identyfikator URI zasobu do wysłania zapytania, przesłać dane w celu utworzenia lub usunięcia żądania i dodania co najmniej jednego nagłówka żądania HTTP. Adres URL usługi interfejsu API to punkt końcowy interfejsu API, czyli adres URL centrum danych (https://\<yourdatahub >. azurewebsites. NET)  
 
 **Uwierzytelnianie**:
 
 FarmBeats centrum danych używa uwierzytelniania okaziciela, który wymaga następujących poświadczeń, które zostały wygenerowane w powyższej sekcji.
 
 - Identyfikator klienta
-- Klucz tajny klienta
+- Wpis tajny klienta
 - Identyfikator dzierżawy  
 
 Korzystając z powyższych poświadczeń, obiekt wywołujący może zażądać tokenu dostępu, który musi zostać wysłany w kolejnych żądaniach interfejsu API w sekcji nagłówka w następujący sposób:
@@ -134,6 +134,28 @@ Korzystając z powyższych poświadczeń, obiekt wywołujący może zażądać t
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
+
+Poniżej znajduje się przykładowy kod w języku Python, który zapewnia token dostępu, który może być używany do kolejnych wywołań interfejsu API FarmBeats: 
+
+```python
+import azure 
+
+from azure.common.credentials import ServicePrincipalCredentials 
+import adal 
+#FarmBeats API Endpoint 
+ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
+CLIENT_ID = "<Your Client ID>"   
+CLIENT_SECRET = "<Your Client Secret>"   
+TENANT_ID = "<Your Tenant ID>" 
+AUTHORITY_HOST = 'https://login.microsoftonline.com' 
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
+#Authenticating with the credentials 
+context = adal.AuthenticationContext(AUTHORITY) 
+token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
+#Should get an access token here 
+access_token = token_response.get('accessToken') 
+```
+
 
 **Nagłówki żądań HTTP**:
 
@@ -271,6 +293,26 @@ Musisz wysłać dane telemetryczne do centrum zdarzeń platformy Azure w celu pr
 **Wyślij komunikat telemetrii jako klienta**
 
 Po ustanowieniu połączenia jako klient usługi EventHub można wysyłać komunikaty do centrum zdarzeń jako dane JSON.  
+
+Oto przykładowy kod w języku Python, który wysyła dane telemetryczne jako klienta do określonego centrum zdarzeń:
+
+```python
+import azure
+from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
+EVENTHUBNAME = "<EventHub Name provided by customer>"
+
+write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+sender = write_client.add_sender(partition="0")
+write_client.run()
+for i in range(5):
+    telemetry = "<Canonical Telemetry message>"
+    print("Sending telemetry: " + telemetry)
+    sender.send(EventData(telemetry))
+write_client.stop()
+
+```
+
 Przekonwertuj historyczny format danych z czujnika na format kanoniczny, który jest rozpoznawany przez platformę Azure FarmBeats. Format komunikatu kanonicznego jest następujący:  
 
 ```json

@@ -1,26 +1,26 @@
 ---
 title: Praca z datami w usłudze Azure Cosmos DB
-description: Dowiedz się więcej na temat sposobu pracy z datami w usłudze Azure Cosmos DB.
+description: Dowiedz się, jak przechowywać, indeksować i wykonywać zapytania dotyczące obiektów czasu danych w Azure Cosmos DB
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: 9676642e96d437965fef041930b8223241cadeaa
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 162b1a4ad089e75f4ad953a339b9b4c15e245a70
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349025"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869685"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Praca z datami w usłudze Azure Cosmos DB
-Usługa Azure Cosmos DB zapewnia elastyczność schematu i rozbudowane indeksowanie za pomocą macierzystej [JSON](https://www.json.org) modelu danych. Wszystkie zasoby usługi Azure Cosmos DB, w tym baz danych, kontenerów, dokumenty i procedury składowane są modelowane i przechowywane jako dokumenty JSON. Jako wymaganie do przenośnego, JSON (i Azure Cosmos DB) obsługuje tylko niewielki zestaw typów podstawowych: Ciąg, liczba, wartość logiczna, tablica, obiekt i wartość null. Jednak JSON jest elastyczny i umożliwia deweloperom i struktur, do reprezentowania bardziej złożonych typów, przy użyciu tych wartości pierwotnych i tworzenie ich jako obiekty i tablice. 
+Usługa Azure Cosmos DB zapewnia elastyczność schematu i rozbudowane indeksowanie za pomocą macierzystej [JSON](https://www.json.org) modelu danych. Wszystkie zasoby usługi Azure Cosmos DB, w tym baz danych, kontenerów, dokumenty i procedury składowane są modelowane i przechowywane jako dokumenty JSON. Jako wymaganie jest przenośny, JSON (i usługi Azure Cosmos DB) obsługuje tylko niewielki zestaw typów podstawowych: ciąg, liczba, atrybut typu wartość logiczna, Array, obiekt i o wartości Null. Jednak JSON jest elastyczny i umożliwia deweloperom i struktur, do reprezentowania bardziej złożonych typów, przy użyciu tych wartości pierwotnych i tworzenie ich jako obiekty i tablice. 
 
 Oprócz typów podstawowych wiele aplikacji wymaga typu DateTime do reprezentowania dat i sygnatur czasowych. W tym artykule opisano, jak deweloperzy mogą przechowywanie, pobieranie i zapytania dat w usłudze Azure Cosmos DB przy użyciu zestawu .NET SDK.
 
 ## <a name="storing-datetimes"></a>Przechowywanie Data/Godzina
 
-Azure Cosmos DB obsługuje typy JSON, takie jak-String, Number, Boolean, null, Array i Object. Nie obsługuje bezpośrednio typu DateTime. Obecnie Azure Cosmos DB nie obsługuje lokalizacji dat. Dlatego należy przechowywać wartości DateTimes jako ciągi. Zalecany format ciągów DateTime w Azure Cosmos DB jest `YYYY-MM-DDThh:mm:ss.sssZ` następujący po standardzie ISO 8601 UTC. Zaleca się przechowywanie wszystkich dat w Azure Cosmos DB jako czas UTC. Konwersja ciągów daty na ten format umożliwi lexicographically dat sortowania. Jeśli są przechowywane daty inne niż UTC, logika musi być obsługiwana po stronie klienta. Aby skonwertować lokalną datę i godzinę do UTC, przesunięcie musi być znane/przechowywane jako właściwość w formacie JSON, a klient może użyć przesunięcia do obliczania wartości DateTime czasu UTC.
+Azure Cosmos DB obsługuje typy JSON, takie jak-String, Number, Boolean, null, Array i Object. Nie obsługuje bezpośrednio typu DateTime. Obecnie Azure Cosmos DB nie obsługuje lokalizacji dat. Dlatego należy przechowywać wartości DateTimes jako ciągi. Zalecany format ciągów DateTime w Azure Cosmos DB jest `YYYY-MM-DDThh:mm:ss.sssZ`, który jest zgodny ze standardem ISO 8601 UTC. Zaleca się przechowywanie wszystkich dat w Azure Cosmos DB jako czas UTC. Konwersja ciągów daty na ten format umożliwi lexicographically dat sortowania. Jeśli są przechowywane daty inne niż UTC, logika musi być obsługiwana po stronie klienta. Aby skonwertować lokalną datę i godzinę do UTC, przesunięcie musi być znane/przechowywane jako właściwość w formacie JSON, a klient może użyć przesunięcia do obliczania wartości DateTime czasu UTC.
 
 Większość aplikacji można użyć domyślnego ciągu reprezentującego daty/godziny z następujących powodów:
 

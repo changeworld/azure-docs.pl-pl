@@ -1,17 +1,17 @@
 ---
 title: Tworzenie aliasów w Azure Cosmos DB
-description: Informacje o aliasach wartości w Azure Cosmos DB zapytaniach SQL
+description: Dowiedz się, jak używać aliasów w Azure Cosmos DB zapytań SQL, aby odróżnić dwie właściwości o tej samej nazwie
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3b17cbc7710647b1e1875025a1db1849034ec1dc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 74849eec4c5808a584894321269c49c41f0b8a5c
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002082"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873475"
 ---
 # <a name="aliasing-in-azure-cosmos-db"></a>Tworzenie aliasów w Azure Cosmos DB
 

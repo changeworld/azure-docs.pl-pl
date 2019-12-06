@@ -6,21 +6,21 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 598f3bd8500a59cd41cc4126915e6cccbd4fb2f3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622715"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848565"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Wymagania licencyjne dotyczące funkcji samoobsługowego resetowania haseł w usłudze Azure AD
 
-Azure Active Directory (Azure AD) znajduje się w kilku wersjach: Bezpłatna, Premium P1 i Premium P2. Istnieje kilka różnych funkcji, które składają się na Samoobsługowe resetowanie hasła, w tym zmiany, resetowanie, odblokowywanie i zapisywanie zwrotne, które są dostępne w różnych wersjach usługi Azure AD. Ten artykuł próbuje wyjaśnić różnice. Więcej informacji o funkcjach dostępnych w poszczególnych wersjach usługi Azure AD można znaleźć na [stronie cennika Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory (Azure AD) jest dostępna w kilku wersjach: bezpłatna, Premium P1 i Premium P2. Istnieje kilka różnych funkcji, które składają się na Samoobsługowe resetowanie hasła, w tym zmiany, resetowanie, odblokowywanie i zapisywanie zwrotne, które są dostępne w różnych wersjach usługi Azure AD. Ten artykuł próbuje wyjaśnić różnice. Więcej informacji o funkcjach dostępnych w poszczególnych wersjach usługi Azure AD można znaleźć na [stronie cennika Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="compare-editions-and-features"></a>Porównanie wersji i funkcji
 
@@ -57,7 +57,7 @@ Dodatkowe informacje o licencjonowaniu, w tym koszty, można znaleźć na nastę
 
 Usługa Azure AD obsługuje teraz Licencjonowanie oparte na grupach. Administratorzy mogą przypisywać licencje zbiorczo do grupy użytkowników, a nie przypisywać ich pojedynczo. Aby uzyskać więcej informacji, zobacz [Przypisywanie, weryfikowanie i rozwiązywanie problemów z licencjami](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość **Lokalizacja użycia** dla użytkownika. Przypisanie licencji można wykonać w sekcji**ustawień** **profilu** >  **użytkownika** > w Azure Portal. *W przypadku korzystania z przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użycia dziedziczą lokalizację katalogu.*
+Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach. Aby można było przypisać licencję do użytkownika, administrator musi określić właściwość **Lokalizacja użycia** dla użytkownika. Przypisanie licencji można wykonać w sekcji **ustawienia** > **profilu** > **użytkownika** w Azure Portal. *W przypadku korzystania z przypisania licencji grupy Wszyscy użytkownicy bez określonej lokalizacji użycia dziedziczą lokalizację katalogu.*
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -70,5 +70,5 @@ Nie wszystkie usługi firmy Microsoft są dostępne we wszystkich lokalizacjach.
 * [Co to jest funkcja zapisywania zwrotnego haseł i dlaczego jest ona tak ważna?](howto-sspr-writeback.md)
 * [Jak zgłosić działanie funkcji samoobsługowego resetowania haseł?](howto-sspr-reporting.md)
 * [Jakie są dostępne opcje funkcji samoobsługowego resetowania haseł i do czego one służą?](concept-sspr-howitworks.md)
-* [Myślę, że coś działa niewłaściwie. Jak rozwiązywać problemy z funkcją samoobsługowego resetowania haseł?](active-directory-passwords-troubleshoot.md)
+* [Myślę, że coś jest zerwane. Jak mogę Rozwiązywanie problemów z SSPR?](active-directory-passwords-troubleshoot.md)
 * [Mam pytanie, na które nie mogę znaleźć odpowiedzi](active-directory-passwords-faq.md)

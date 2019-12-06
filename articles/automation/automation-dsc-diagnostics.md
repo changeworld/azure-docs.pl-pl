@@ -4,17 +4,17 @@ description: W tym artykule pokazano, jak wysyłać dane raportowania konfigurac
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5905afdb9832f32e837dc4496e4a951fca41b8b0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243547"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850350"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Przekazywanie danych Azure Automation konfiguracji stanu do dzienników Azure Monitor
 
@@ -136,7 +136,7 @@ Diagnostyka z Azure Automation tworzy dwie kategorie rekordów w Azure Monitor d
 | DscReportStatus |Czy sprawdzanie zgodności zostało pomyślnie wykonane. |
 | ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__ , __"ApplyandMonitior"__ i __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: Konfiguracja DSC stosuje konfigurację i nie wykonuje żadnych dalszych operacji, chyba że nowa konfiguracja jest wypychana do węzła docelowego lub gdy nowa konfiguracja zostanie pościągnięta z serwera. Po początkowej aplikacji nowej konfiguracji DSC nie sprawdza dryfu od wcześniej skonfigurowanego stanu. Konfiguracja DSC próbuje zastosować konfigurację do momentu, aż __ApplyOnly__ zacznie obowiązywać. </li><li> __ApplyAndMonitor__: jest to wartość domyślna. LCM stosuje wszelkie nowe konfiguracje. Po początkowej aplikacji nowej konfiguracji, jeśli węzeł docelowy zostanie przedryfem z żądanego stanu, DSC zgłosi niezgodność w dziennikach. Konfiguracja DSC próbuje zastosować konfigurację do momentu, aż __ApplyAndMonitor__ zacznie obowiązywać.</li><li>__ApplyAndAutoCorrect__: Konfiguracja DSC stosuje wszelkie nowe konfiguracje. Po początkowym zastosowaniu nowej konfiguracji, jeśli węzeł docelowy zostanie przedryfem z żądanego stanu, DSC zgłosi niezgodność w dziennikach, a następnie ponownie zastosuje bieżącą konfigurację.</li></ul> |
 | HostName_s | Nazwa zarządzanego węzła. |
-| Adresu | Adres IPv4 węzła zarządzanego. |
+| IPAddress | Adres IPv4 węzła zarządzanego. |
 | Kategoria | DscNodeStatus |
 | Zasób | Nazwa konta Azure Automation. |
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawcę dla obiektu wywołującego. |

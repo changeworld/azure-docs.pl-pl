@@ -1,21 +1,21 @@
 ---
-title: Funkcje agregujące w usłudze Azure Cosmos DB
-description: Dowiedz się więcej o składni funkcji agregującej SQL dla usługi Azure Cosmos DB.
+title: Funkcje agregujące w Azure Cosmos DB
+description: Dowiedz się więcej na temat składni funkcji agregującej SQL, typów funkcji agregujących obsługiwanych przez Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: a6937e9e811ea8e44eda6f2bcb5d2c7d78db4934
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342941"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871843"
 ---
-# <a name="aggregate-functions-in-azure-cosmos-db"></a>Funkcje agregujące w usłudze Azure Cosmos DB
+# <a name="aggregate-functions-in-azure-cosmos-db"></a>Funkcje agregujące w Azure Cosmos DB
 
-Funkcje agregujące wykonywanie obliczeń na zestaw wartości w klauzuli SELECT i zwracać pojedynczą wartość. Na przykład, następujące zapytanie zwraca liczbę elementów w obrębie `Families` kontenera:
+Funkcje agregujące wykonują obliczenia na zestawie wartości w klauzuli SELECT i zwracają pojedynczą wartość. Na przykład następujące zapytanie zwraca liczbę elementów w kontenerze `Families`:
 
 ## <a name="examples"></a>Przykłady
 
@@ -24,7 +24,7 @@ Funkcje agregujące wykonywanie obliczeń na zestaw wartości w klauzuli SELECT 
     FROM Families f
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -32,20 +32,20 @@ Wyniki są:
     }]
 ```
 
-Może również zwracać wartość skalarna agregacji za pomocą słowa kluczowego wartość. Na przykład poniższe zapytanie zwraca liczbę wartości jako pojedynczą liczbę:
+Możesz również zwrócić tylko wartość skalarną agregacji za pomocą słowa kluczowego VALUE. Na przykład poniższe zapytanie zwraca liczbę wartości jako pojedynczą liczbę:
 
 ```sql
     SELECT VALUE COUNT(1)
     FROM Families f
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [ 2 ]
 ```
 
-Można także połączyć agregacji za pomocą filtrów. Na przykład, następujące zapytanie zwraca liczbę elementów, stan adresu `WA`.
+Można również łączyć agregacje z filtrami. Na przykład następujące zapytanie zwraca liczbę elementów ze stanem adresu `WA`.
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -53,15 +53,15 @@ Można także połączyć agregacji za pomocą filtrów. Na przykład, następuj
     WHERE f.address.state = "WA"
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [ 1 ]
 ```
 
-## <a name="types-of-aggregate-functions"></a>Typy funkcji agregującej
+## <a name="types-of-aggregate-functions"></a>Typy funkcji agregujących
 
-Interfejs API SQL obsługuje następujące funkcje agregujące. Suma i średnia działają na wartości liczbowe i COUNT, MIN i MAX pracować na liczby, ciągi, wartości logicznych i wartości null.
+Interfejs API SQL obsługuje następujące funkcje agregujące. Suma i średni czas działania na wartościach liczbowych oraz liczba, minimum i maksimum pracy dla liczb, ciągów, wartości logicznych i wartości null.
 
 | Funkcja | Opis |
 |-------|-------------|
@@ -71,13 +71,13 @@ Interfejs API SQL obsługuje następujące funkcje agregujące. Suma i średnia 
 | MAX   | Zwraca maksymalną wartość w wyrażeniu. |
 | AVG   | Zwraca średnią wartości w wyrażeniu. |
 
-Możesz także agregować wynikami iterację tablicy.
+Można również agregować wyniki iteracji tablicy.
 
 > [!NOTE]
-> W Eksploratorze danych w witrynie Azure portal zapytania agregacji mogą zostać zagregowane wyniki częściowe za pośrednictwem strony tylko jedno zapytanie. Zestaw SDK tworzy pojedynczej wartości zbiorczej na wszystkich stronach. Do wykonywania zapytań agregacji, przy użyciu kodu, potrzebny jest zestaw SDK platformy .NET 1.12.0, zestaw SDK platformy .NET Core 1.1.0 lub zestawu Java SDK 1.9.5 lub nowszej.
+> W Eksplorator danych Azure Portal zapytania agregacji mogą agregować częściowe wyniki tylko przez jedną stronę zapytania. Zestaw SDK tworzy pojedynczą wartość skumulowaną na wszystkich stronach. Aby wykonywać zapytania agregacji przy użyciu kodu, należy użyć zestawu .NET SDK 1.12.0, zestaw .NET Core SDK 1.1.0 lub zestawu Java SDK 1.9.5 lub nowszego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)
+- [Wprowadzenie do Azure Cosmos DB](introduction.md)
 - [Funkcje systemowe](sql-query-system-functions.md)
 - [Funkcje zdefiniowane przez użytkownika](sql-query-udfs.md)

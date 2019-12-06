@@ -1,5 +1,5 @@
 ---
-title: Integracja Azure Monitor dla maszyn wirtualnych z System Center Operations Manager | Microsoft Docs
+title: Integracja Azure Monitor dla maszyn wirtualnych map z Operations Manager | Microsoft Docs
 description: Azure Monitor dla maszyn wirtualnych automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. W tym artykule omówiono używanie funkcji map do automatycznego tworzenia diagramów aplikacji rozproszonych w Operations Manager.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/12/2019
-ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553964"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849823"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>Integracja System Center Operations Manager z funkcją Azure Monitor dla maszyn wirtualnych map
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integracja System Center Operations Manager z funkcją Azure Monitor dla maszyn wirtualnych map
 
-W Azure Monitor dla maszyn wirtualnych można wyświetlić odnalezione składniki aplikacji na maszynach wirtualnych z systemem Windows i Linux, które działają na platformie Azure lub w środowisku. Dzięki integracji między funkcją mapy a System Center Operations Manager można automatycznie tworzyć diagramy aplikacji rozproszonych w Operations Manager, które są oparte na dynamicznych mapach zależności w Azure Monitor dla maszyn wirtualnych. 
+W Azure Monitor dla maszyn wirtualnych można wyświetlić odnalezione składniki aplikacji na maszynach wirtualnych z systemem Windows i Linux, które działają na platformie Azure lub w środowisku. Dzięki integracji między funkcją mapy a System Center Operations Manager można automatycznie tworzyć diagramy aplikacji rozproszonych w Operations Manager, które są oparte na dynamicznych mapach zależności w Azure Monitor dla maszyn wirtualnych. W tym artykule opisano sposób konfigurowania System Center Operations Manager grupy zarządzania w celu obsługi tej funkcji.
 
 >[!NOTE]
 >Jeśli wdrożono już Service Map, można wyświetlić mapy w Azure Monitor dla maszyn wirtualnych, co obejmuje dodatkowe funkcje do monitorowania kondycji i wydajności maszyn wirtualnych. Funkcja map Azure Monitor dla maszyn wirtualnych ma zastąpić rozwiązanie autonomiczne Service Map. Aby dowiedzieć się więcej, zobacz [Azure monitor dla maszyn wirtualnych Omówienie](vminsights-overview.md).
@@ -107,7 +107,7 @@ Folder Service Map ma cztery węzły:
 
 ## <a name="edit-or-delete-the-workspace"></a>Edytowanie lub usuwanie obszaru roboczego
 
-Skonfigurowany obszar roboczy można edytować lub usunąć za pomocą okienka **przegląd Service map** (okienko**Administracja** > **pakiet operations Management Suite**  > **Service map**).
+Skonfigurowany obszar roboczy można edytować lub usunąć za pomocą okienka **przegląd Service map** (okienko**Administracja** > **pakiet operations Management Suite** > **Service map**).
 
 >[!NOTE]
 >[Pakiet Operations Management Suite to zbiór usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) należących do log Analytics, które są teraz częścią [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).

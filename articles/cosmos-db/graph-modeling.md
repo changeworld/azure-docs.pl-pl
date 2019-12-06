@@ -1,18 +1,18 @@
 ---
 title: Modelowanie danych programu Graph dla Azure Cosmos DB API Gremlin
-description: Dowiedz się, jak modelować bazę danych grafów przy użyciu interfejsu API Cosmos DB Gremlin.
+description: Dowiedz się, jak modelować bazę danych Graph przy użyciu interfejsu API Azure Cosmos DB Gremlin. W tym artykule opisano, kiedy należy używać bazy danych grafu i najlepszych rozwiązań do modelowania jednostek i relacji.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 06/24/2019
+ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559125"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873730"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelowanie danych programu Graph dla Azure Cosmos DB API Gremlin
 

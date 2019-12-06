@@ -1,18 +1,18 @@
 ---
 title: NIŻSZY w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej o funkcji systemowej SQL, która jest niższa w Azure Cosmos DB.
+description: Zapoznaj się z NIŻSZą funkcją systemu SQL w Azure Cosmos DB, aby zwrócić wyrażenie ciągu po przekonwertowaniu wielkich liter na małe litery
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3a9c122ef65772458b832d3b1651e7e63e42985e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349710"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873305"
 ---
 # <a name="lower-azure-cosmos-db"></a>NIŻSZY (Azure Cosmos DB)
  Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery.  

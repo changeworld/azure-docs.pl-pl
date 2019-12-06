@@ -1,20 +1,20 @@
 ---
 title: Oficjalne dokumenty, które opisują pojęcia dotyczące usługi Azure Cosmos DB
-description: Te oficjalne dokumenty opisują głębokość pojęcia dotyczące usługi Azure Cosmos DB.
+description: Zapoznaj się z listą oficjalnych dokumentów dla Azure Cosmos DB. te oficjalne dokumenty opisują koncepcje.
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69e75af8481b21929b8d36a14a2ce72ec3f9f5f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: adbbdf39875e67552de2f797b94eae89e0aba409
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257164"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869786"
 ---
-# <a name="azure-cosmos-db-whitepapers"></a>Usługa Azure Cosmos DB oficjalne dokumenty 
+# <a name="azure-cosmos-db-whitepapers"></a>Usługa Azure Cosmos DB oficjalne dokumenty
 
 Oficjalne dokumenty pozwalają zapoznać się pojęcia dotyczące usługi Azure Cosmos DB, dokładniej. Ten artykuł zawiera listę dostępnych oficjalnych dokumentów dla usługi Azure Cosmos DB.
 

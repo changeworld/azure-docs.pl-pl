@@ -2,41 +2,38 @@
 title: Konta platformy tożsamości firmy Microsoft i profile dzierżawy (Android) | Azure
 description: Omówienie kont platformy tożsamości firmy Microsoft dla systemu Android
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7beab6759524037f86c83429644c1bb1fffe4d07
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 9af7d8c5a1793b34dd609c2cfd68fb468884ef8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679843"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845726"
 ---
-# <a name="accounts--tenant-profiles-android"></a>Konta & profile dzierżawców (Android)
+# <a name="accounts--tenant-profiles-android"></a>Konta i profile dzierżaw (Android)
 
-Ten artykuł zawiera omówienie `account` znajduje się na platformie tożsamości firmy Microsoft.
+Ten artykuł zawiera omówienie `account` na platformie tożsamości firmy Microsoft.
 
 Interfejs API Microsoft Authentication Library (MSAL) *zastępuje termin* *użytkownika* terminem. Jedną z przyczyn jest to, że użytkownik (Agent ludzki lub programowy) może mieć lub użyć wielu kont. Te konta mogą znajdować się w organizacji użytkownika i/lub w innych organizacjach, do których należy użytkownik.
 
 Konto na platformie tożsamości firmy Microsoft składa się z:
 
-  - Unikatowy identyfikator.
-  - Co najmniej jedno poświadczenie używane do zademonstrowania własności/kontroli konta.
-  - Co najmniej jeden profil składający się z atrybutów, takich jak:
-    - Zdjęcie, imię i nazwisko, tytuł, Lokalizacja biura
-- Konto ma źródło urzędu lub systemu rekordów. Jest to system, w którym konto zostanie utworzone, i miejsce, w którym są przechowywane poświadczenia skojarzone z tym kontem. W systemach z wieloma dzierżawcami, takimi jak platforma tożsamości firmy Microsoft, system rekordów to `tenant`, gdzie konto zostało utworzone. Ta dzierżawa jest również określana jako `home tenant`.
+- Unikatowy identyfikator.  
+- Co najmniej jedno poświadczenie używane do zademonstrowania własności/kontroli konta.
+- Co najmniej jeden profil składający się z atrybutów, takich jak:
+  - Zdjęcie, imię i nazwisko, tytuł, Lokalizacja biura
+- Konto ma źródło urzędu lub systemu rekordów. Jest to system, w którym konto zostanie utworzone, i miejsce, w którym są przechowywane poświadczenia skojarzone z tym kontem. W systemach wielodostępnych, takich jak platforma tożsamości firmy Microsoft, system rekordów to `tenant`, w którym konto zostało utworzone. Ta dzierżawa jest również nazywana `home tenant`.
 - Konta na platformie tożsamości firmy Microsoft mają następujące systemy rekordów:
   - Azure Active Directory, w tym Azure Active Directory B2C.
   - Konto Microsoft (na żywo).
@@ -49,7 +46,6 @@ Konto na platformie tożsamości firmy Microsoft składa się z:
   - Ten rekord lokalny, który jest reprezentacją konta, jest powiązany z oryginalnym kontem.
   - MSAL uwidacznia ten rekord lokalny jako `Tenant Profile`.
   - Profil dzierżawy może mieć różne atrybuty, które są odpowiednie dla kontekstu lokalnego, takie jak stanowisko, Lokalizacja biura, informacje kontaktowe itp.
- 
 - Ponieważ konto może być obecne w co najmniej jednej dzierżawie, konto może mieć więcej niż jeden profil.
 
 > [!NOTE]
@@ -72,7 +68,7 @@ Na powyższym diagramie:
   - contoso.com
   - fabrikam.com
   - Dla każdej z tych dzierżawców istnieje profil dzierżawy dla `tom@live.com`.
-- Informacje o postaci Tomasz i Roberta w innych dzierżawcach mogą się różnić od tego w systemie rejestrowania. Mogą się one różnić w zależności od atrybutów, takich jak stanowisko, Lokalizacja biura i tak dalej. Mogą być członkami grup i/lub ról w ramach każdej organizacji (Azure Active Directory dzierżawy). Ta informacja jest określana jako profil dzierżawy bob@contoso.com.
+- Informacje o postaci Tomasz i Roberta w innych dzierżawcach mogą się różnić od tego w systemie rejestrowania. Mogą się one różnić w zależności od atrybutów, takich jak stanowisko, Lokalizacja biura i tak dalej. Mogą być członkami grup i/lub ról w ramach każdej organizacji (Azure Active Directory dzierżawy). Te informacje są nazywane bob@contoso.com profilem dzierżawy.
 
 Na diagramie bob@contoso.com i tom@live.com mają dostęp do zasobów w różnych dzierżawach Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
 
@@ -102,7 +98,7 @@ IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>")
 Oprócz żądania tokenu dostępu MSAL również zawsze żąda tokenu identyfikatora od poszczególnych dzierżawców. Robi to, zawsze żądając następujących zakresów:
 
 - OpenID Connect
-- Profilu
+- profile
 
 Token identyfikatora zawiera listę oświadczeń. `Claims` to pary nazwa/wartość dotyczące konta i są używane do żądania.
 
@@ -126,7 +122,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 > Aby wyświetlić listę oświadczeń dostępnych w obiekcie konta, zapoznaj się z [oświadczeniami w id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
 
 > [!TIP]
-> Aby uwzględnić dodatkowe oświadczenia w id_token, zapoznaj się z opcjonalną dokumentacją oświadczeń w temacie [How to: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
+> Aby uwzględnić dodatkowe oświadczenia w id_token, zapoznaj się z opcjonalną dokumentacją dotyczącą oświadczeń w temacie [How to: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
 
 ### <a name="access-tenant-profile-claims"></a>Dostęp do oświadczeń profilu dzierżawy
 
@@ -145,7 +141,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 Tokeny odświeżania dla konta nie są współużytkowane przez zasady B2Cymi. W związku z tym nie jest możliwe logowanie jednokrotne przy użyciu tokenów. Nie oznacza to, że logowanie jednokrotne nie jest możliwe. Oznacza to, że logowanie jednokrotne musi korzystać z interaktywnego środowiska, w którym jest dostępny plik cookie umożliwiający logowanie jednokrotne.
 
-Oznacza to również, że w przypadku MSAL, Jeśli uzyskujesz tokeny przy użyciu różnych zasad B2C, są one traktowane jako osobne konta — z ich własnymi identyfikatorami. Jeśli chcesz użyć konta do żądania tokenu przy użyciu `acquireTokenSilent`, należy wybrać konto z listy kont, które są zgodne z zasadami używanymi z żądaniem tokenu. Na przykład:
+Oznacza to również, że w przypadku MSAL, Jeśli uzyskujesz tokeny przy użyciu różnych zasad B2C, są one traktowane jako osobne konta — z ich własnymi identyfikatorami. Jeśli chcesz użyć konta do żądania tokenu przy użyciu `acquireTokenSilent`, musisz wybrać konto z listy kont, które są zgodne z zasadami używanymi z żądaniem tokenu. Na przykład:
 
 ```java
 // Get Account For Policy

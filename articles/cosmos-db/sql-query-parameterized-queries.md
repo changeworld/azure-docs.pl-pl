@@ -1,17 +1,17 @@
 ---
 title: Zapytania sparametryzowane w Azure Cosmos DB
-description: Dowiedz się więcej na temat zapytań parametrycznych SQL
+description: Dowiedz się, w jaki sposób zapytania parametryczne SQL zapewniają niezawodne obsługiwanie i ucieczki danych wejściowych użytkownika, i Zapobiegaj przypadkowemu narażeniu danych przez wstrzyknięcie kodu SQL.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003610"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870823"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Zapytania sparametryzowane w Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Cosmos DB obsługuje zapytania z parametrami wyrażonymi przez znajomą @ Notati
 
 ## <a name="examples"></a>Przykłady
 
-Można na przykład napisać zapytanie, które `lastName` przyjmuje i `address.state` jako parametry, i wykonać `lastName` je dla różnych wartości i `address.state` na podstawie danych wejściowych użytkownika.
+Można na przykład napisać zapytanie, które przyjmuje `lastName` i `address.state` jako parametry, i wykonać je dla różnych wartości `lastName` i `address.state` na podstawie danych wejściowych użytkownika.
 
 ```sql
     SELECT *

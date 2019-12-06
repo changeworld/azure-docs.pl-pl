@@ -5,17 +5,17 @@ keywords: azure powershell, samouczek skryptu programu powershell, automatyzacja
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae9daaf797d3d82200ee094b63bad1f5c1ff68cc
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743817"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850877"
 ---
 # <a name="my-first-powershell-runbook"></a>Mój pierwszy element Runbook programu PowerShell
 
@@ -77,12 +77,12 @@ Przed opublikowaniem elementu runbook w celu udostępnienia go w środowisku pro
 
 Nowo utworzony element runbook nadal działa w trybie roboczym. Należy ją opublikować, aby można było uruchomić ją w środowisku produkcyjnym.  Podczas publikowania elementu Runbook można zastąpić istniejącą wersję opublikowaną wersją roboczą. W Twoim przypadku nie masz jeszcze opublikowanej wersji, ponieważ element Runbook został właśnie utworzony.
 
-1. Kliknij pozycję **Opublikuj**, aby opublikować element Runbook, a następnie kliknij pozycję **Tak** po wyświetleniu monitu.
+1. Kliknij przycisk **Opublikuj**, aby opublikować element Runbook, a następnie kliknij opcję **Tak** po wyświetleniu monitu.
 1. Jeśli przewiniesz w lewo, aby wyświetlić element Runbook w okienku **elementy Runbook** , zostanie wyświetlony **Stan tworzenia** **opublikowanych**.
 1. Przewiń w prawo, aby wyświetlić okienko elementu **MyFirstRunbook-PowerShell**.
    Opcje w górnej części umożliwiają uruchamianie elementu Runbook, wyświetlanie elementu Runbook, planowanie jego uruchomienia w przyszłości lub utworzenie [elementu webhook](automation-webhooks.md) w celu umożliwienia uruchamiania za pośrednictwem wywołania HTTP.
 1. Chcesz uruchomić element Runbook, a następnie kliknij przycisk **Start** , a następnie kliknij przycisk **OK** , gdy zostanie otwarta strona Uruchamianie elementu Runbook.
-1. Zostanie otwarta strona zadania dla utworzonego zadania elementu Runbook. Można zamknąć to okienko, ale w tym przypadku pozostawić otwarte, aby można było obserwować postęp zadania.
+1. Zostanie otwarta strona zadania dla utworzonego zadania elementu Runbook. można zamknąć to okienko, ale w tym przypadku pozostawić otwarte, aby można było obserwować postęp zadania.
 1. Stan zadania jest pokazywany w **podsumowaniu zadania** i jest zgodny z Stanami wyświetlonymi podczas testowania elementu Runbook.
 
    ![Podsumowanie zadania](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
@@ -134,7 +134,7 @@ Element runbook został przetestowany i opublikowany, ale jak do tej pory nie wy
    ```
 
 1. Otwórz Edytor tekstów, klikając pozycję **Edytuj** na stronie MyFirstRunbook-PowerShell.
-1. Nie jest już potrzebny wiersz **Write-Output** , dlatego należy go usunąć.
+1. nie jest już potrzebny wiersz **Write-Output** , dlatego należy go usunąć.
 1. Wpisz lub skopiuj i wklej poniższy kod, który obsługuje uwierzytelnianie za pomocą konta Uruchom jako w usłudze Automation:
 
    ```powershell
@@ -163,7 +163,7 @@ Element runbook został przetestowany i opublikowany, ale jak do tej pory nie wy
 1. Kliknij pozycję **okienko testowania** , aby umożliwić przetestowanie elementu Runbook.
 1. Kliknij opcję **Uruchom**, aby rozpocząć test. Po zakończeniu powinny pojawić się dane wyjściowe podobne do poniższych, zawierające podstawowe informacje powiązane z kontem. Dane wyjściowe potwierdzają, że konto Uruchom jako jest prawidłowe.
 
-   ![Uwierzytelnij](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
+   ![Uwierzytelnianie](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## <a name="add-code-to-start-a-virtual-machine"></a>Dodawanie kodu w celu uruchomienia maszyny wirtualnej
 

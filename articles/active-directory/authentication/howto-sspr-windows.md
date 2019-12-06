@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e25efcb068fe51f05dbbde50e8a96da492a735
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381233"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847290"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Instrukcje: Włączanie resetowania hasła na ekranie logowania systemu Windows
 
@@ -113,7 +113,7 @@ Po zresetowaniu hasła przez użytkownika na ekranie logowania urządzenia z sys
 > [!WARNING]
 > Protokół TLS 1,2 musi być włączony, a nie tylko na wartość Autonegocjowanie
 
-### <a name="install"></a>Instalowanie
+### <a name="install"></a>Instalacja
 
 1. Pobierz odpowiedni Instalator dla wersji systemu Windows, którą chcesz włączyć.
    - Oprogramowanie jest dostępne w centrum pobierania Microsoft w witrynie [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
@@ -124,7 +124,7 @@ Po zresetowaniu hasła przez użytkownika na ekranie logowania urządzenia z sys
 
 ![Przykładowo w systemie Windows 7 kliknięto "zapomniane hasło?" Przepływ SSPR](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Instalacja dyskretna
+#### <a name="silent-installation"></a>Instalacja w trybie dyskretnym
 
 - W przypadku instalacji dyskretnej Użyj polecenia "msiexec/i SsprWindowsLogon. PROD. msi/qn"
 - W przypadku dezinstalacji dyskretnej Użyj polecenia "msiexec/x SsprWindowsLogon. PROD. msi/qn"

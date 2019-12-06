@@ -3,33 +3,29 @@ title: Azure Active Directory struktura wyrażania zgody
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o strukturze wyrażania zgody w Azure Active Directory i sposobach tworzenia wielodostępnych aplikacji sieci Web i natywnych klientów z wieloma dzierżawcami.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5b60901e57392aaea504f96572801a878d707c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e850b58274a98fd18b84114552bbf7835a27417c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803846"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843380"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory struktura wyrażania zgody
 
 Struktura wyrażania zgody na Azure Active Directory (Azure AD) ułatwia tworzenie wielodostępnych aplikacji sieci Web i natywnych klientów. Te aplikacje umożliwiają logowanie się przy użyciu kont użytkowników z dzierżawy usługi Azure AD, która różni się od tej, w której jest zarejestrowana aplikacja. Mogą także mieć dostęp do interfejsów API sieci Web, takich jak interfejs API Microsoft Graph (Aby uzyskać dostęp do usług Azure AD, Intune i usługi w pakiecie Office 365) oraz innych interfejsów API usług firmy Microsoft, a także własnych interfejsów API sieci Web.
 
-Struktura jest oparta na użytkowniku lub administratorze, który wyraża zgodę na dostęp do aplikacji, która prosi o zarejestrowanie w ich katalogu, co może dotyczyć dostępu do danych katalogu. Na przykład, jeśli aplikacja kliencka sieci Web musi odczytać informacje kalendarza o użytkowniku z pakietu Office 365, ten użytkownik jest zobowiązany do wcześniejszego wyrażania zgody na aplikację klienta. Po udzieleniu zgody aplikacja kliencka będzie w stanie wywołać interfejs API Microsoft Graph w imieniu użytkownika i użyć informacji o kalendarzu zgodnie z wymaganiami. [Interfejs API Microsoft Graph](https://developer.microsoft.com/graph) zapewnia dostęp do danych w pakiecie Office 365 (takich jak kalendarze i komunikaty z programu Exchange, witryn i list z programu SharePoint, dokumentów z usługi OneDrive, notesów z programu OneNote, zadań z programu Planner i skoroszytów w programie Excel), a także użytkowników i grupy z usługi Azure AD i inne obiekty danych z większej liczby usług w chmurze firmy Microsoft.
+Struktura jest oparta na użytkowniku lub administratorze, który wyraża zgodę na dostęp do aplikacji, która prosi o zarejestrowanie w ich katalogu, co może dotyczyć dostępu do danych katalogu. Na przykład, jeśli aplikacja kliencka sieci Web musi odczytać informacje kalendarza o użytkowniku z pakietu Office 365, ten użytkownik jest zobowiązany do wcześniejszego wyrażania zgody na aplikację klienta. Po udzieleniu zgody aplikacja kliencka będzie w stanie wywołać interfejs API Microsoft Graph w imieniu użytkownika i użyć informacji o kalendarzu zgodnie z wymaganiami. [Interfejs API Microsoft Graph](https://developer.microsoft.com/graph) zapewnia dostęp do danych w pakiecie Office 365 (takich jak kalendarze i komunikaty z programu Exchange, witryn i list z programu SharePoint, dokumentów z usługi OneDrive, notesów z programu OneNote, zadań z usługi Planner i skoroszytów z programu Excel), a także użytkowników i grup z poziomu usługi Azure AD i innych obiektów danych z większej liczby usług w chmurze firmy Microsoft.
 
 Struktura zgody jest oparta na uwierzytelnianiu OAuth 2,0 i jego różnych przepływach, takich jak przyznawanie kodu autoryzacji i udzielanie poświadczeń klienta, przy użyciu klientów publicznych lub poufnych. Dzięki użyciu protokołu OAuth 2,0 usługa Azure AD umożliwia tworzenie wielu różnych typów aplikacji klienckich — takich jak telefon, tablet, serwer lub aplikacja sieci Web — i uzyskiwanie dostępu do wymaganych zasobów.
 

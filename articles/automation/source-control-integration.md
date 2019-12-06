@@ -4,17 +4,17 @@ description: W tym artykule opisano integrację kontroli źródła z usługą Gi
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886532"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850163"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
@@ -22,7 +22,7 @@ Kontrola źródła umożliwia zachowanie aktualności elementów Runbook na konc
 
 Azure Automation obsługuje trzy typy kontroli źródła:
 
-* GitHub
+* Witryna GitHub
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
@@ -48,8 +48,8 @@ Na stronie **Podsumowanie kontroli źródła** Wypełnij informacje i kliknij pr
 |Właściwość  |Opis  |
 |---------|---------|
 |Nazwa kontroli źródła     | Przyjazna nazwa dla kontroli źródła. *Ta nazwa może zawierać tylko litery i cyfry.*        |
-|Typ kontroli źródła     | Typ źródła kontroli źródła. Dostępne opcje:</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
-|Kopie     | Nazwa repozytorium lub projektu. Zwracane są pierwsze 200 repozytoriów. Aby wyszukać repozytorium, wpisz nazwę w polu, a następnie kliknij pozycję **Wyszukaj w witrynie GitHub**.|
+|Typ kontroli źródła     | Typ źródła kontroli źródła. Dostępne opcje:</br> Witryna GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
+|Repozytorium     | Nazwa repozytorium lub projektu. Zwracane są pierwsze 200 repozytoriów. Aby wyszukać repozytorium, wpisz nazwę w polu, a następnie kliknij pozycję **Wyszukaj w witrynie GitHub**.|
 |Branch     | Gałąź, z której mają zostać pobrane pliki źródłowe. Funkcja określania wartości docelowej gałęzi jest niedostępna dla typu kontroli źródła TFVC.          |
 |Ścieżka folderu     | Folder zawierający elementy Runbook do zsynchronizowania. Przykład:/Runbooks </br>*Synchronizowane są tylko elementy Runbook w określonym folderze. Rekursja nie jest obsługiwana.*        |
 |Synchronizacja autosynchronizacji<sup>1</sup>     | Włącza lub wyłącza automatyczną synchronizację po dokonaniu zatwierdzenia w repozytorium kontroli źródła         |
@@ -79,7 +79,7 @@ New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountnam
 New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
-### <a name="github"></a>GitHub
+### <a name="github"></a>Witryna GitHub
 
 ```powershell-interactive
 New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accountname>/<reponame>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -89,7 +89,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 Kontrola źródła wymaga pewnych minimalnych uprawnień do osobistych tokenów dostępu. Poniższe tabele zawierają minimalne uprawnienia wymagane w serwisie GitHub i Azure Repos.
 
-#### <a name="github"></a>GitHub
+#### <a name="github"></a>Witryna GitHub
 
 Aby uzyskać więcej informacji na temat tworzenia osobistego tokenu dostępu w usłudze GitHub, odwiedź stronę [Tworzenie osobistego tokenu dostępu dla wiersza polecenia](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
@@ -99,9 +99,9 @@ Aby uzyskać więcej informacji na temat tworzenia osobistego tokenu dostępu w 
 |repozytorium: stan     | Stan zatwierdzenia dostępu         |
 |repo_deployment      | Stan wdrożenia dostępu         |
 |public_repo     | Dostęp do publicznych repozytoriów         |
-|**Administrator: repo_hook**     |         |
-|zapis: repo_hook     | Zapisz punkty zaczepienia repozytorium         |
-|Odczytaj: repo_hook|Odczytaj punkty zaczepienia repozytorium|
+|**admin:repo_hook**     |         |
+|write:repo_hook     | Zapisz punkty zaczepienia repozytorium         |
+|read:repo_hook|Odczytaj punkty zaczepienia repozytorium|
 
 #### <a name="azure-repos"></a>Azure Repos
 

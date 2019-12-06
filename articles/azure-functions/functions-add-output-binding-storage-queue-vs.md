@@ -4,12 +4,12 @@ description: Dowiedz się, jak dodać powiązanie danych wyjściowych C# , aby p
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227423"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849211"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Łączenie funkcji z usługą Azure Storage przy użyciu programu Visual Studio
 
@@ -23,7 +23,7 @@ Większość powiązań wymaga przechowywanych parametrów połączenia używany
 
 Przed rozpoczęciem tego artykułu należy: 
 
- - Ukończ [część 1 przewodnika Szybki Start dla programu Visual Studio] [./Functions-Create-First-Function-vs-Code.MD]. 
+ - Ukończ [część 1 przewodnika Szybki Start dotyczącego programu Visual Studio](./functions-create-first-function-vs-code.md). 
 
 - Zaloguj się do subskrypcji platformy Azure z poziomu programu Visual Studio.
 
@@ -45,7 +45,7 @@ Powiązanie magazynu, które używa ustawienia `AzureWebJobsStorage` połączeni
 
 Ze względu na to, że jest używane powiązanie danych wyjściowych magazynu kolejek, przed uruchomieniem projektu należy zainstalować rozszerzenie powiązania magazynu. Z wyjątkiem wyzwalaczy HTTP i Timer, powiązania są implementowane jako pakiety rozszerzeń. 
 
-1. W menu **Narzędzia** wybierz kolejno pozycje **menedżer pakietów NuGet** > **konsola Menedżera pakietów**. 
+1. Z **narzędzia** menu, wybierz opcję **Menedżera pakietów NuGet** > **Konsola Menedżera pakietów**. 
 
 1. W konsoli programu uruchom następujące polecenie [instalacji pakietu](/nuget/tools/ps-ref-install-package) , aby zainstalować rozszerzenia magazynu:
 

@@ -4,17 +4,17 @@ description: Elementy Runbook i moduły firmy Microsoft oraz społeczność są 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 86eebf33f870780871e4c873936e491772c73b63
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231613"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850724"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów dla Azure Automation
 
@@ -38,7 +38,7 @@ Można importować tylko bezpośrednio z Galeria programu PowerShell przy użyci
 3. Wybierz **Źródło: Galeria programu PowerShell**.
 4. Znajdź żądany element galerii i wybierz go, aby wyświetlić jego szczegóły. Po lewej stronie możesz wprowadzić dodatkowe parametry wyszukiwania dla wydawcy i typu.
 
-   ![Przeglądaj Galerię](media/automation-runbook-gallery/browse-gallery.png)
+   ![Galeria przeglądania](media/automation-runbook-gallery/browse-gallery.png)
 
 5. Kliknij pozycję **Wyświetl projekt źródłowy** , aby wyświetlić element w [Centrum skryptów TechNet](https://gallery.technet.microsoft.com/).
 6. Aby zaimportować element, kliknij go, aby wyświetlić jego szczegóły, a następnie kliknij przycisk **Importuj** .

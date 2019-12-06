@@ -4,17 +4,17 @@ description: Zmienne zasoby to wartości, które są dostępne dla wszystkich el
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910062"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849432"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Zmienne zasoby w Azure Automation
 
@@ -41,10 +41,10 @@ Można przechowywać wiele wartości w pojedynczej zmiennej przez utworzenie tab
 
 Poniżej przedstawiono listę typów zmiennych dostępnych w usłudze Automation:
 
-* String
-* Integer
-* DateTime
-* Boolean
+* Ciąg
+* Liczba całkowita
+* Data i godzina
+* Wartość logiczna
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>Polecenia cmdlet programu PowerShell AzureRM

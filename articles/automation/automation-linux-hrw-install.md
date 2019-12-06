@@ -4,17 +4,17 @@ description: Ten artykuł zawiera informacje dotyczące instalowania Azure Autom
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129852"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850826"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
 
@@ -49,10 +49,10 @@ Minimalne wymagania dla hybrydowego procesu roboczego elementu Runbook systemu L
 | **Wymagany pakiet** | **Opis** | **Wersja minimalna**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |Biblioteka GNU C| 2.5-12 |
-|OpenSSL| Biblioteki OpenSSL | 1,0 (protokoły TLS 1,1 i TLS 1,2 są obsługiwane|
-|Odsłon | zazwinięcie klienta sieci Web | 7.15.5|
+|Openssl| Biblioteki OpenSSL | 1,0 (protokoły TLS 1,1 i TLS 1,2 są obsługiwane|
+|Narzędzie Curl | zazwinięcie klienta sieci Web | 7.15.5|
 |Python-ctypes | Wymagany jest język Python 2. x |
-|WYGASŁ | Moduły uwierzytelniania podłączane|
+|PAM | Podłączane moduły uwierzytelniania (PAM)|
 | **Opcjonalny pakiet** | **Opis** | **Wersja minimalna**|
 | Program PowerShell Core | Aby uruchomić elementy Runbook programu PowerShell, należy zainstalować program PowerShell, zobacz temat [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/install/installing-powershell-core-on-linux) , aby dowiedzieć się, jak go zainstalować.  | 6.0.0 |
 

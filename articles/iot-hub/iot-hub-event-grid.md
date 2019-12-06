@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151299"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851704"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagowanie na zdarzenia IoT Hub przy użyciu Event Grid do wyzwalania akcji
 
@@ -184,13 +184,11 @@ Aby filtrować komunikaty przed wysłaniem danych telemetrycznych, można zaktua
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Ograniczenia dotyczące zdarzeń podłączonych do urządzenia i rozłączonych urządzeń
 
-Aby odbierać zdarzenia połączone z urządzeniem i odłączone urządzenia, należy otworzyć link D2C lub link C2D dla urządzenia. Jeśli urządzenie korzysta z protokołu MQTT, IoT Hub będzie mieć otwarte łącze C2D. W przypadku AMQP można otworzyć łącze C2D, wywołując [asynchroniczny interfejs API odbierania](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet).
+Aby można było odbierać zdarzenia stanu połączenia z urządzeniem, urządzenie musi wykonać operację "C2D" lub "Odbierz komunikat" w usłudze IoT Hub. Należy jednak pamiętać, że jeśli urządzenie korzysta z protokołu AMQP do nawiązywania połączenia z usługą IoT Hub, zaleca się wykonanie operacji "C2D odbieranie komunikatu" w przeciwnym razie powiadomienia o stanie połączeń mogą zostać opóźnione o kilka minut. Jeśli urządzenie korzysta z protokołu MQTT, IoT Hub będzie mieć otwarte łącze C2D. W przypadku AMQP można otworzyć łącze C2D, wywołując [asynchroniczny interfejs API odbioru](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet), dla IoT Hub C# SDK lub [klienta urządzenia dla AMQP](iot-hub-amqp-support.md#device-client).
 
 Link D2C jest otwarty w przypadku wysyłania danych telemetrycznych. 
 
-Jeśli połączenie z urządzeniem jest migotane, co oznacza, że urządzenie jest często nawiązywane i rozłączane, nie wyśle wszystkich stanów pojedynczego połączenia, ale będzie publikować *ostatni* stan połączenia, który jest ostatecznie spójny. Na przykład jeśli urządzenie zostało początkowo w stanie połączonym, następnie przeprowadzono ruchy w ciągu kilku sekund, a następnie zostanie ono przywrócone w stanie połączonym. Żadne nowe zdarzenia stanu połączenia z urządzeniem nie zostaną opublikowane od momentu początkowego stanu połączenia. 
-
-W przypadku awarii IoT Hub stan połączenia urządzenia zostanie opublikowany zaraz po przekroczeniu awarii. Jeśli urządzenie rozłączy się podczas tej awarii, zdarzenie odłączone urządzenia zostanie opublikowane w ciągu 10 minut.
+Jeśli połączenie z urządzeniem jest migotane, co oznacza, że urządzenie łączy się i rozłącza często, nie wyśle wszystkich stanów pojedynczego połączenia, ale opublikuje bieżący stan połączenia, który zostanie pobrany na okresową migawkę, aż do kontynuowania migotania. Odbiór tego samego zdarzenia stanu połączenia z różnymi numerami sekwencji lub różnymi zdarzeniami stanu połączenia oznacza, że w stanie połączenia urządzenia wprowadzono zmianę.
 
 ## <a name="tips-for-consuming-events"></a>Porady dotyczące używania zdarzeń
 

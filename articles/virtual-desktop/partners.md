@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384295"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851183"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -28,16 +28,6 @@ Firma Citrix rozszerza wartość pulpitu wirtualnego systemu Windows z niezawodn
 
 - [Przejdź do witryny sieci Web partnera](https://more.citrix.com/wvd).
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Logo Cloudhouse](./media/partners/cloudhouse.png)
-
-Cloudhouse to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który oferuje klientom usługę migracji aplikacji gotowe, która może przenosić wszystkie aplikacje, w tym te, które są niezgodne z nowoczesnymi systemami operacyjnymi Windows, do systemu Windows Środowisko pulpitu wirtualnego, dzięki czemu klienci mogą wykorzystać wiele sesji systemu Windows 10. 
-
-Korzystając z sprawdzonej technologii Cloudhouse kontenerach, usługa Cloudhouse przyjmuje wszystkie aplikacje, w tym programy przeznaczone dla systemu Windows XP, Windows 7 lub Windows 8, i wdraża je na nowoczesnych pulpitach wirtualnych systemu Windows bez konieczności zmiany kodu lub wpływ na środowisko użytkownika. Cloudhouse dalsze Dodawanie do wartości pulpitu wirtualnego systemu Windows przez izolowanie aplikacji z bazowego systemu operacyjnego, co umożliwia wdrażanie aktualizacji systemu Windows bez wpływu na aplikacje kontenera. 
-
-- [Przejdź do witryny sieci Web partnera](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
-
 ## <a name="vmware"></a>VMware
 
 ![Logo VMware](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ Jako zatwierdzony dostawca korzyści z pulpitu wirtualnego systemu Windows zosta
 
 - [Zarejestruj się w celu uzyskania wersji zapoznawczej chmury horyzontowej w Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Przejdź do witryny sieci Web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Logo Cloudhouse](./media/partners/cloudhouse.png)
+
+Cloudhouse to dostawca usług dodanego pulpitu wirtualnego systemu Windows, który oferuje klientom usługę migracji aplikacji gotowe, która może przenosić wszystkie aplikacje, w tym te, które są niezgodne z nowoczesnymi systemami operacyjnymi Windows, do systemu Windows Środowisko pulpitu wirtualnego, dzięki czemu klienci mogą wykorzystać wiele sesji systemu Windows 10. 
+
+Korzystając z sprawdzonej technologii Cloudhouse kontenerach, usługa Cloudhouse przyjmuje wszystkie aplikacje, w tym programy przeznaczone dla systemu Windows XP, Windows 7 lub Windows 8, i wdraża je na nowoczesnych pulpitach wirtualnych systemu Windows bez konieczności zmiany kodu lub wpływ na środowisko użytkownika. Cloudhouse dalsze Dodawanie do wartości pulpitu wirtualnego systemu Windows przez izolowanie aplikacji z bazowego systemu operacyjnego, co umożliwia wdrażanie aktualizacji systemu Windows bez wpływu na aplikacje kontenera. 
+
+- [Przejdź do witryny sieci Web partnera](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="cloudjumper"></a>CloudJumper
 

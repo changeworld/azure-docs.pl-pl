@@ -1,105 +1,105 @@
 ---
 title: Zapytania SPRZĘŻENIa SQL dla Azure Cosmos DB
-description: Dowiedz się więcej na temat dołączania do składni SQL Azure Cosmos DB.
+description: Dowiedz się, jak dołączać wiele tabel w Azure Cosmos DB, aby wykonywać zapytania dotyczące danych
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: d78904fde53da0e800a69d2148a9c4e3acf57307
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494404"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871146"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Sprzężenia w Azure Cosmos DB
 
 W relacyjnej bazie danych sprzężenia między tabelami jest logicznym współrzutem do projektowania znormalizowanych schematów. W przeciwieństwie do interfejsu API SQL jest używany nieznormalizowany model danych elementów bez schematu, który jest logicznym odpowiednikiem *samosprzężenia*.
 
-Sprzężenia wewnętrzne powodują pełny iloczyn skrzyżowania zestawów uczestniczących w sprzężeniu. Wynik sprzężenia N-kierunkowego jest zestawem N-elementowych krotek, gdzie każda wartość w spójnej kolekcji jest skojarzona z zestawem aliasów uczestniczącym w sprzężeniu i można uzyskać do niego dostęp, odwołując się do tego aliasu w innych klauzulach.
+Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestniczących w sprzężenia. Wynikiem sprzężenia sposób N jest zestaw spójnych kolekcji N-elementowej, gdzie każda wartość w spójnej kolekcji jest skojarzony z aliasem, ustaw udział w sprzężeniu i jest dostępny, odwołując się do tego aliasu w innych klauzul.
 
 ## <a name="syntax"></a>Składnia
 
 Język obsługuje składnię `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`. To zapytanie zwraca zestaw krotek z wartościami `N`. Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach. 
 
-Przyjrzyjmy się następującej klauzuli FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Zezwól każdemu źródłu na definiowanie `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw N-krotek (krotka z N wartościami). Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach.  
+ Pozwól każdego źródła, zdefiniuj `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw (krotki wartości N) N-krotek. Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach.  
   
-**Przykładowe źródła 1** -2  
+**Przykład 1** -2 źródeł  
   
-- Niech `<from_source1>` być zakresem kontenera i reprezentuje zestaw {A, B, C}.  
+- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
   
-- Niech `<from_source2>` być odwołujące się do zakresu dokumentu input_alias1 i reprezentuje zestawy:  
+- Pozwól `<from_source2>` się dokument o zakresie odwołujące się do input_alias1 i reprezentują zestawów:  
   
     {1, 2} dla `input_alias1 = A,`  
   
-    {3} `input_alias1 = B,`  
+    {3} Aby uzyskać `input_alias1 = B,`  
   
     {4, 5} dla `input_alias1 = C,`  
   
-- Klauzula FROM `<from_source1> JOIN <from_source2>` spowoduje powstanie następujących krotek:  
+- Klauzula FROM `<from_source1> JOIN <from_source2>` spowoduje następujące kolekcje:  
   
     (`input_alias1, input_alias2`):  
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-**Przykładowe źródła 2** -3  
+**Przykład 2** -3 źródła  
   
-- Niech `<from_source1>` być zakresem kontenera i reprezentuje zestaw {A, B, C}.  
+- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
   
-- Pozwól `<from_source2>` być odwołujący się do zakresu dokumentu `input_alias1` i reprezentować zestawy:  
+- Pozwól `<from_source2>` być zakresem dokument odwołuje się do `input_alias1` i reprezentują zestawów:  
   
     {1, 2} dla `input_alias1 = A,`  
   
-    {3} `input_alias1 = B,`  
+    {3} Aby uzyskać `input_alias1 = B,`  
   
     {4, 5} dla `input_alias1 = C,`  
   
-- Pozwól `<from_source3>` być odwołujący się do zakresu dokumentu `input_alias2` i reprezentować zestawy:  
+- Pozwól `<from_source3>` być zakresem dokument odwołuje się do `input_alias2` i reprezentują zestawów:  
   
     {100, 200} dla `input_alias2 = 1,`  
   
-    {300} `input_alias2 = 3,`  
+    {300} Aby uzyskać `input_alias2 = 3,`  
   
-- Klauzula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` spowoduje powstanie następujących krotek:  
+- Klauzula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` spowoduje następujące kolekcje:  
   
     (input_alias1, input_alias2, input_alias3):  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
   > [!NOTE]
-  > Brak krotek dla innych wartości `input_alias1`, `input_alias2`, dla których `<from_source3>` nie zwróciła żadnych wartości.  
+  > Brak spójnych kolekcji dla innych wartości parametru `input_alias1`, `input_alias2`, dla którego `<from_source3>` nie zwrócił żadnych wartości.  
   
-**Przykładowe źródła 3** -3  
+**Przykład 3** -3 źródła  
   
-- Niech < from_source1 > być w zakresie kontenera i reprezentuje zestaw {A, B, C}.  
+- Pozwól < from_source1 > być należące do kontenera i reprezentują zestawu {A, B, C}.  
   
-- Niech `<from_source1>` być zakresem kontenera i reprezentuje zestaw {A, B, C}.  
+- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
   
-- Niech < from_source2 > być odwołujące się do zakresu dokumentu input_alias1 i reprezentuje zestawy:  
+- Pozwól < from_source2 > być zakresu w dokumencie input_alias1 odwołujący się i reprezentują zestawów:  
   
     {1, 2} dla `input_alias1 = A,`  
   
-    {3} `input_alias1 = B,`  
+    {3} Aby uzyskać `input_alias1 = B,`  
   
     {4, 5} dla `input_alias1 = C,`  
   
-- Zezwól na `<from_source3>` zakresem `input_alias1` i reprezentowania zestawów:  
+- Pozwól `<from_source3>` należeć do zakresu `input_alias1` i reprezentują zestawów:  
   
     {100, 200} dla `input_alias2 = A,`  
   
-    {300} `input_alias2 = C,`  
+    {300} Aby uzyskać `input_alias2 = C,`  
   
-- Klauzula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` spowoduje powstanie następujących krotek:  
+- Klauzula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` spowoduje następujące kolekcje:  
   
     (`input_alias1, input_alias2, input_alias3`):  
   
-    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300), (C, 5, 300)  
+    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), C, 4, 300, (C, 5, 300)  
   
   > [!NOTE]
-  > Spowodowało to przekroczenie iloczynu między `<from_source2>` i `<from_source3>`, ponieważ oba zakresy należą do tego samego `<from_source1>`.  Wynika to z 4 (2x2) krotek z wartością A, 0 krotek, które mają wartość B (1x0) i 2 (2x1) krotek mające wartość C.  
+  > Pozwoliło to odnotować iloczyn między `<from_source2>` i `<from_source3>` ponieważ zarówno dostosowanych do tej samej `<from_source1>`.  Pozwoliło to odnotować 4 (2 x 2) krotki o wartości A, 0 krotek mających wartość B (1 x 0) i 2 (2 x 1) krotek mających wartość C.  
   
 ## <a name="examples"></a>Przykłady
 
@@ -254,6 +254,6 @@ Wyniki są następujące:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie](sql-query-getting-started.md)
+- [Rozpoczęcie pracy](sql-query-getting-started.md)
 - [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [Podzapytania](sql-query-subquery.md)

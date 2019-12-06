@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9f340ad12fbf26190a17bc4df97bfc95473093c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bc2c68c53a7c03d1de08e5cde528f27aa61b0096
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381282"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847273"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Wdrażanie samoobsługowego resetowania haseł w usłudze Azure AD
 
@@ -31,7 +31,7 @@ Pomóż użytkownikom szybko rejestrować się, wdrażając SSPR obok innej apli
 
 Przed wdrożeniem SSPR organizacje mogą chcieć określić liczbę wywołań pomocy technicznej związanych z resetowaniem haseł w czasie i średni koszt każdego wywołania. Mogą one używać tego wdrożenia danych, aby pokazać, że wartość SSPR jest dołączana do organizacji.  
 
-## <a name="how-sspr-works"></a>Jak działa SSPR
+## <a name="how-sspr-works"></a>Jak działa samoobsługowe resetowanie hasła
 
 1. Gdy użytkownik spróbuje zresetować hasło, musi sprawdzić, czy wcześniej zarejestrowano metodę lub metody uwierzytelniania, aby potwierdzić swoją tożsamość.
 1. Następnie użytkownik wprowadzi nowe hasło.
@@ -66,7 +66,7 @@ Następujące ustawienia są wymagane do włączenia SSPR oraz zalecanych warto�
 | **Powiadomienia** | Czy powiadamiać użytkowników o resetowaniu hasła? | Tak |
 |   | Czy powiadamiać wszystkich administratorów, gdy inni administratorzy zresetują swoje hasło? | Tak |
 | **Customization** | Dostosuj link do pomocy technicznej | Tak |
-|   | Niestandardowa wiadomość e-mail lub adres URL pomocy technicznej | Witryna lub adres e-mail pomocy technicznej |
+|   | Niestandardowa wiadomość e-mail lub niestandardowy adres URL pomocy technicznej | Witryna lub adres e-mail pomocy technicznej |
 | **Integracja lokalna** | Zapisuj hasła do lokalnej usługi AD | Tak |
 |   | Zezwalaj użytkownikom na Odblokowywanie konta bez resetowania hasła | Tak |
 
@@ -183,7 +183,7 @@ Grupy, które mają zostać zaimplementowane, muszą mieć przypisaną licencję
 
 Informacje o przypisywaniu licencji do grup użytkowników można znaleźć w artykule, [przypisywać licencje użytkownikom według członkostwa w grupie w Azure Active Directory](../users-groups-roles/licensing-groups-assign.md).
 
-### <a name="configure-sspr"></a>Konfigurowanie SSPR
+### <a name="configure-sspr"></a>Konfigurowanie samoobsługowego resetowania hasła
 
 #### <a name="enable-groups-for-sspr"></a>Włącz grupy dla SSPR
 

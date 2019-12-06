@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132209"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849789"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Azure Monitor obsługuje śledzenie rozproszone, zbieranie metryk i rejestrowani
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Tworzenie zasobu Application Insights w Azure Monitor
 
@@ -268,7 +268,7 @@ Zestaw SDK używa trzech Azure Monitor eksportujących do wysyłania różnych t
     90
     ```
 
-3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane metryk do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
+3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane dziennika do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
 
     ```python
     import logging
@@ -295,7 +295,53 @@ Zestaw SDK używa trzech Azure Monitor eksportujących do wysyłania różnych t
 
 4. Eksporter wyśle dane dziennika do Azure Monitor. Dane można znaleźć w obszarze `traces`.
 
-5. Aby uzyskać szczegółowe informacje na temat wzbogacania dzienników przy użyciu danych kontekstu śledzenia, zobacz [integracja dzienników](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)OpenCensus języka Python.
+5. Aby sformatować komunikaty dziennika, można użyć `formatters` w wbudowanym [interfejsie API rejestrowania](https://docs.python.org/3/library/logging.html#formatter-objects)języka Python.
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
+        while True:
+            valuePrompt()
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+6. Do dzienników można także dodawać niestandardowe wymiary. Zostaną one wyświetlone jako pary klucz-wartość w `customDimensions` w Azure Monitor.
+> [!NOTE]
+> Aby ta funkcja działała, konieczne jest przekazanie słownika jako argumentu do dzienników, ponieważ wszystkie inne struktury danych zostaną zignorowane. Aby zachować formatowanie ciągów, Zapisz je w słowniku i przekaż je jako argumenty.
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+    ```
+
+7. Aby uzyskać szczegółowe informacje na temat wzbogacania dzienników przy użyciu danych kontekstu śledzenia, zobacz [integracja dzienników](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)OpenCensus języka Python.
 
 ## <a name="view-your-data-with-queries"></a>Wyświetlanie danych za pomocą zapytań
 

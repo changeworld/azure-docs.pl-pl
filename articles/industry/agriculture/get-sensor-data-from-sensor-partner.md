@@ -1,61 +1,60 @@
 ---
 title: Pobieranie danych z czujników partnerów
-description: Opisuje sposób uzyskiwania danych czujników od partnerów
+description: W tym artykule opisano, jak uzyskać dane czujnika z partnerów.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b985dfc1f16372c3fad1b0a5c0894931b4c15dcc
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406488"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851302"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Pobierz dane czujnika z partnerów czujników
 
-Usługa Azure FarmBeats ułatwia przenoszenie strumieniowych danych z urządzeń IoT i czujników do centrum danych. Obecnie obsługiwane są następujące partnerzy urządzeń czujnika:
+Usługa Azure FarmBeats ułatwia przenoszenie strumieniowych danych z urządzeń IoT i czujników do Datahub. Obecnie obsługiwane są następujące partnerzy urządzeń czujnika.
 
-  ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![Partnerzy FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Integrowanie danych urządzenia z usługą Azure FarmBeats ułatwia pobieranie danych z czujników IoT wdrożonych w farmie do centrum danych. Dane, które są dostępne, można wizualizować za pośrednictwem akceleratora FarmBeats i mogą być używane na potrzeby łączenia danych i modeli AI/ML przy użyciu FarmBeats.
+Integrowanie danych urządzenia z usługą Azure FarmBeats ułatwia pobieranie danych z czujników IoT wdrożonych w farmie do centrum danych. Dane, które są dostępne, można wizualizować za pomocą akceleratora FarmBeats. Dane mogą służyć do kompilowania modelu i uczenia maszynowego/sztucznej analizy danych (ML/AI) przy użyciu FarmBeats.
 
 Aby rozpocząć przesyłanie strumieniowe danych z czujnika, upewnij się, że:
 
--  Zainstalowano FarmBeats z witryny Azure Marketplace.
+-  Zainstalowano FarmBeats w portalu Azure Marketplace.
 -  Użytkownik zdecydował się na czujników i urządzeniach, które mają zostać zainstalowane w farmie.
--  Jeśli planujesz korzystanie z czujników wilgotności gleby, można użyć mapy położenia czujnika FarmBeats gleby, aby uzyskać zalecenie dotyczące liczby czujników i gdzie dokładnie powinny zostać umieszczone czujniki. Aby uzyskać więcej informacji, zobacz [generowanie map](generate-maps.md).
+-  Jeśli planujesz korzystanie z czujników odnoszących się do wilgotności gleby, Użyj mapy umieszczenia czujnika wilgoci FarmBeats, aby uzyskać zalecenie dotyczące liczby czujników i dokładnie je umieścić. Aby uzyskać więcej informacji, zobacz [generowanie map](generate-maps.md).
+- Możesz zakupić i wdrożyć urządzenia lub czujniki od partnera urządzenia w farmie. Upewnij się, że masz dostęp do danych czujników za pośrednictwem rozwiązania partnerów urządzeń.
 
-- Kup i Wdróż urządzenia/czujniki od partnera urządzenia w farmie. Upewnij się, że masz dostęp do danych czujników za pośrednictwem rozwiązania partnerów urządzeń.
+## <a name="enable-device-integration-with-farmbeats"></a>Włącz integrację urządzeń z usługą FarmBeats 
 
-### <a name="enable-device-integration-with-farmbeats"></a>Włącz integrację urządzeń z usługą FarmBeats   
+Po rozpoczęciu przesyłania strumieniowego danych czujników można rozpocząć proces uzyskiwania danych do systemu FarmBeats. Podaj następujące informacje dla dostawcy urządzenia, aby umożliwić integrację z usługą FarmBeats:
 
-Po rozpoczęciu przesyłania strumieniowego danych czujników można rozpocząć proces uzyskiwania danych do systemu FarmBeats. Aby umożliwić integrację z usługą FarmBeats, należy podać następujące informacje dla dostawcy urządzeń:  
-
- - Punkt końcowy interfejsu API  
- - Identyfikator dzierżawy  
- - Identyfikator klienta  
- - Wpis tajny klienta  
+ - Punkt końcowy interfejsu API
+ - Identyfikator dzierżawy
+ - Identyfikator klienta
+ - Klucz tajny klienta
  - Parametry połączenia EventHub
 
-Powyższe informacje są udostępniane przez Integrator systemu. W przypadku problemów związanych z integracją urządzeń należy skontaktować się z integratorem systemu.
+Poprzednie informacje są udostępniane przez Integrator systemu. W przypadku problemów, które mogą wystąpić po włączeniu integracji urządzeń, skontaktuj się z integratorem systemu.
 
-Alternatywnie można wygenerować poświadczenia, uruchamiając ten skrypt z Azure Cloud Shell. Wykonaj poniższe czynności:
+Alternatywnie można wygenerować poświadczenia, uruchamiając ten skrypt z Azure Cloud Shell. Wykonaj następujące kroki.
 
-1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscript) i wyodrębnij go na dysk lokalny. W pliku ZIP znajdują się dwa pliki.
-2. Zaloguj się do https://portal.azure.com/ i Otwórz Cloud Shell (Ta opcja jest dostępna w prawym górnym pasku portalu)  
+1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscript)i wyodrębnij go na dysk lokalny. Dwa pliki znajdują się w pliku zip.
+2. Zaloguj się do https://portal.azure.com/ i Otwórz Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu Azure Portal.
 
-    ![Farmy projektów](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Azure Portal pasek narzędzi](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Upewnij się, że środowisko jest ustawione na program **PowerShell** — domyślnie jest ono ustawione na bash.
+3. Upewnij się, że środowisko jest ustawione na **PowerShell**. Domyślnie jest ono ustawione na bash.
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+    ![Ustawienie paska narzędzi programu PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. Przekaż dwa pliki (z kroku 1 powyżej) do Cloud Shell.
+4. Przekaż dwa pliki z kroku 1 w wystąpieniu Cloud Shell.
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ![Przekaż przycisk paska narzędzi](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. Przejdź do katalogu, do którego pliki zostały przekazane (domyślnie są przekazywane do katalogu macierzystego > nazwa użytkownika).
+5. Przejdź do katalogu, do którego pliki zostały przekazane. Domyślnie są one przekazywane do katalogu macierzystego w ramach nazwy użytkownika.
 6. Uruchom następujący skrypt:
 
     ```azurepowershell-interactive 
@@ -63,96 +62,96 @@ Alternatywnie można wygenerować poświadczenia, uruchamiając ten skrypt z Azu
     ./generateCredentials.ps1   
 
     ```
-7. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości. (Punkt końcowy interfejsu API, identyfikator dzierżawy, identyfikator klienta, klucz tajny klienta i parametry połączenia EventHub). Parametry połączenia EventHub będą dostępne jako część odpowiedzi interfejsu API w strukturze Swagger.
+7. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości dla **punktów końcowych interfejsu API**, **identyfikatora dzierżawy**, **identyfikatora klienta**, **klucza tajnego klienta**i **parametrów połączenia centrum EventHub**. Parametry połączenia EventHub są dostępne jako część odpowiedzi interfejsu API w strukturze Swagger.
 
-**Integrowanie danych urządzenia przy użyciu wygenerowanych poświadczeń**
+### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrowanie danych urządzenia przy użyciu wygenerowanych poświadczeń
 
-Odwiedź portal partnera urządzeń, aby utworzyć link FarmBeats za pomocą zestawu poświadczeń wygenerowanych w poprzedniej sekcji.
+Przejdź do portalu partnera urządzeń, aby utworzyć link FarmBeats za pomocą zestawu poświadczeń wygenerowanych w poprzedniej sekcji:
 
- - Punkt końcowy interfejsu API  
- - Parametry połączenia EventHub  
- - Identyfikator klienta  
- - Wpis tajny klienta  
- - Identyfikator dzierżawy  
+ - Punkt końcowy interfejsu API
+ - Parametry połączenia EventHub
+ - Identyfikator klienta
+ - Klucz tajny klienta
+ - Identyfikator dzierżawy
 
  Dostawca urządzenia potwierdza pomyślną integrację. Po potwierdzeniu można wyświetlić wszystkie urządzenia i czujniki w usłudze Azure FarmBeats.
 
 ## <a name="view-devices-and-sensors"></a>Wyświetlanie urządzeń i czujników
 
-Skorzystaj z poniższej sekcji, aby wyświetlić urządzenia i czujniki w farmie.
+Skorzystaj z poniższej sekcji, aby wyświetlić urządzenia i czujniki dla farmy.
 
 ### <a name="view-devices"></a>Wyświetlanie urządzeń
 
 Obecnie FarmBeats obsługuje następujące urządzenia:
 
-- **Węzeł**: urządzenie, do którego jest dołączona co najmniej jedna czujników.
+- **Węzeł**: urządzenie, do którego dołączono co najmniej jedną czujników.
 - **Brama**: urządzenie, do którego dołączono co najmniej jeden węzeł.
 
-Wykonaj następujące czynności:
+Wykonaj następujące kroki.
 
 1. Na stronie głównej wybierz pozycję **urządzenia** z menu.
-  Na stronie urządzenia jest wyświetlany typ urządzenia, model, stan, Farma, w której znajduje się, oraz Data ostatniej aktualizacji metadanych. Domyślnie kolumna Farma ma wartość NULL. Możesz przypisać urządzenie do farmy. Aby uzyskać więcej informacji, zobacz [przypisywanie urządzeń](#assign-devices).
-2. Wybierz urządzenie, aby wyświetlić właściwości urządzenia, dane telemetryczne i urządzenia podrzędne połączone z urządzeniem.  
+  Na stronie **urządzenia** jest wyświetlany typ urządzenia, model, stan, Farma, w której znajduje się, oraz Data ostatniej aktualizacji metadanych. Domyślnie kolumna Farma ma *wartość null*. Możesz przypisać urządzenie do farmy. Aby uzyskać więcej informacji, zobacz [przypisywanie urządzeń](#assign-devices).
+2. Wybierz urządzenie, aby wyświetlić właściwości, dane telemetryczne i urządzenia podrzędne połączone z urządzeniem.
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
+    ![Strona urządzenia](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
 ### <a name="view-sensors"></a>Wyświetl czujniki
 
-Wykonaj następujące czynności:
+Wykonaj następujące kroki.
 
 1. Na stronie głównej wybierz z menu pozycję **czujniki** .
-  Na stronie czujników są wyświetlane szczegółowe informacje dotyczące typu czujnika, farmy, z którą jest ona połączona, urządzenie nadrzędne, nazwa portu, typ portu i ostatni zaktualizowany stan.
+  Na stronie **czujników** są wyświetlane szczegółowe informacje o typie czujnika, farmie, z którym jest połączona, urządzeniu nadrzędnym, nazwie portu, typie portu i ostatnim zaktualizowanym stanem.
 2. Wybierz czujnik, aby wyświetlić właściwości czujnika, aktywne alerty i dane telemetryczne z czujnika.
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Strona czujników](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
 ## <a name="assign-devices"></a>Przypisywanie urządzeń  
 
-Po przepływaniu danych z czujnika w programie można przypisać go do farmy, w której wdrożono czujniki.
+Po przejściu danych z czujnika w programie można przypisać go do farmy, w której zostały wdrożone czujniki.
 
-1. Na stronie głównej wybierz pozycję **farmy** z menu, zostanie wyświetlona strona listy **farmy** .  
-2. Wybierz farmę, do której chcesz przypisać urządzenie, a następnie wybierz pozycję **Dodaj urządzenia**.  
+1. Na stronie głównej wybierz z menu pozycję **farmy** . Zostanie wyświetlona strona listy **farmy** .
+2. Wybierz farmę, do której chcesz przypisać urządzenie, a następnie wybierz pozycję **Dodaj urządzenia**.
 3. Zostanie wyświetlone okno **Dodawanie urządzeń** . Wybierz urządzenie, które chcesz przypisać do farmy.
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Okno dodawania urządzeń](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Wybierz pozycję **Dodaj urządzenia**. Alternatywnie przejdź do menu **urządzenia** , wybierz urządzenia, które chcesz przypisać do farmy, a następnie wybierz pozycję **Skojarz urządzenia**.  
-5. W oknie **kojarzenie urządzeń** wybierz farmę z listy rozwijanej i wybierz pozycję **Zastosuj do wszystkich** , aby skojarzyć farmę ze wszystkimi wybranymi urządzeniami.
+4. Wybierz pozycję **Dodaj urządzenia**. Alternatywnie przejdź do menu **urządzenia** , wybierz urządzenia, które chcesz przypisać do farmy, a następnie wybierz pozycję **Skojarz urządzenia**.
+5. W oknie **kojarzenie urządzeń** wybierz farmę z listy rozwijanej, a następnie wybierz pozycję **Zastosuj do wszystkich** , aby skojarzyć farmę ze wszystkimi wybranymi urządzeniami.
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+    ![Okno kojarzenia urządzeń](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
-6. Aby skojarzyć każde urządzenie z inną farmą, wybierz listę rozwijaną w kolumnie **Przypisz do farmy** i wybierz farmę dla każdego wiersza urządzenia.  
+6. Aby skojarzyć każde urządzenie z inną farmą, wybierz strzałkę listy rozwijanej w kolumnie **Przypisz do farmy** , a następnie wybierz farmę dla każdego wiersza urządzenia.
 7. Wybierz pozycję **Przypisz** , aby zakończyć przypisanie urządzenia.
 
 ### <a name="visualize-sensor-data"></a>Wizualizuj dane czujnika
 
-Wykonaj następujące czynności:
+Wykonaj następujące kroki.
 
-1. Na stronie głównej wybierz pozycję **farmy** z menu, aby wyświetlić stronę **farmy** .  
-2. Wybierz **farmę** , dla której chcesz zobaczyć dane czujnika.  
-3. Na pulpicie nawigacyjnym **farmy** można wyświetlić dane telemetryczne. Możesz wybrać wyświetlanie telemetrii na żywo lub użyć **zakresu niestandardowego** do wyświetlania w określonym zakresie dat.
+1. Na stronie głównej wybierz pozycję **farmy** z menu, aby wyświetlić stronę **farmy** .
+2. Wybierz **farmę** , dla której chcesz zobaczyć dane czujnika.
+3. Na pulpicie nawigacyjnym **farmy** można wyświetlić dane telemetryczne. Możesz wyświetlić dane telemetryczne na żywo lub użyć **zakresu niestandardowego** , aby zobaczyć konkretny zakres dat.
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+    ![Pulpit nawigacyjny farmy](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
 
-## <a name="delete-sensor"></a>Usuń czujnik
+## <a name="delete-a-sensor"></a>Usuwanie czujnika
 
-Wykonaj następujące kroki:
+Wykonaj następujące kroki.
 
-1. Na stronie głównej wybierz z menu pozycję **czujniki** , aby wyświetlić stronę **czujników** .  
-2. Wybierz urządzenie, które chcesz usunąć, i wybierz pozycję **Usuń** z okna potwierdzenia.
+1. Na stronie głównej wybierz z menu pozycję **czujniki** , aby wyświetlić stronę **czujników** .
+2. Wybierz urządzenie, które chcesz usunąć, a następnie w oknie potwierdzenia wybierz pozycję **Usuń** .
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![Przycisk Usuń](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
-Zostanie wyświetlony komunikat z potwierdzeniem, że czujnik został pomyślnie usunięty.  
+Zostanie wyświetlony komunikat z potwierdzeniem, że czujnik został pomyślnie usunięty.
 
 ## <a name="delete-devices"></a>Usuwanie urządzeń
 
-Wykonaj następujące kroki:
+Wykonaj następujące kroki.
 
-1. Na stronie głównej wybierz pozycję **urządzenia** z menu, aby wyświetlić stronę urządzenia.  
-2. Wybierz urządzenie, które chcesz usunąć, a następnie wybierz pozycję **Usuń** z okna potwierdzenia.
+1. Na stronie głównej wybierz pozycję **urządzenia** z menu, aby wyświetlić stronę **urządzenia** .
+2. Wybierz urządzenie, które chcesz usunąć, a następnie w oknie potwierdzenia wybierz pozycję **Usuń** .
 
-    ![Farmy projektów](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
+    ![Przycisk Usuń](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2756d39a93751271c8c7bf2a51108b9fe5b09b1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208431"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846831"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Wskazówki dotyczące zabezpieczeń dotyczące korzystania z usługi Azure Multi-Factor Authentication z kontami usługi Azure AD
 
@@ -29,7 +29,7 @@ Istnieją dwa sposoby [włączania usługi Azure MFA dla wszystkich użytkownik�
 * Kupowanie licencji dla każdego użytkownika (Azure MFA, Azure AD — wersja Premium lub Enterprise Mobility + Security)
 * Tworzenie dostawcy usługi uwierzytelniania wieloskładnikowego i płatność za użytkownika lub za uwierzytelnianie
 
-### <a name="licenses"></a>Liczba
+### <a name="licenses"></a>Licencje
 
 ![Stosowanie licencji do użytkowników, Włączanie, powiadamianie](./media/multi-factor-authentication-security-best-practices/ems.png)
 
@@ -96,7 +96,7 @@ Jeśli Twoja organizacja jest federacyjnym logowaniem jednokrotnym w usłudze Az
 * Niektóre zaawansowane projekty architektury mogą wymagać użycia kombinacji nazwy użytkownika i haseł w organizacji oraz haseł aplikacji podczas przeprowadzania weryfikacji dwuetapowej z klientami, w zależności od tego, gdzie są uwierzytelniane. W przypadku klientów, którzy uwierzytelniają się w infrastrukturze lokalnej, należy użyć nazwy użytkownika i hasła organizacji. W przypadku klientów, którzy uwierzytelniają się w usłudze Azure AD, Użyj hasła aplikacji.
 * Domyślnie użytkownicy nie mogą tworzyć haseł aplikacji. Jeśli musisz zezwolić użytkownikom na tworzenie haseł aplikacji, wybierz opcję **Zezwalaj użytkownikom na tworzenie haseł aplikacji do logowania się do aplikacji niekorzystających z przeglądarki** .
 
-## <a name="additional-considerations"></a>Dodatkowe zagadnienia
+## <a name="additional-considerations"></a>Uwagi dodatkowe
 
 Skorzystaj z tej listy, aby uzyskać dodatkowe informacje i wskazówki dotyczące każdego składnika wdrożonego lokalnie:
 

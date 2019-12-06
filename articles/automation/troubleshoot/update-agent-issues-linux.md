@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: def0ac11edfa5a17a8e506c79d91885dd3c9ab66
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770399"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849263"
 ---
 # <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>Informacje o kondycji hybrydowego procesu roboczego elementu Runbook w systemie Linux w Update Management
 
@@ -36,15 +36,15 @@ W przypadku maszyn platformy Azure kliknij link **Rozwiązywanie problemów** w 
 ![Strona listy maszyn wirtualnych](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> Sprawdzanie wymaga, aby maszyna wirtualna była uruchomiona. Jeśli maszyna wirtualna nie jest uruchomiona, zobaczysz przycisk, aby **uruchomić maszynę wirtualną**.
+> Kontrole wymagają na maszynie Wirtualnej i działać. Jeśli maszyna wirtualna nie działa, zostanie wyświetlony przycisk, aby **Uruchom maszynę Wirtualną**.
 
-Na stronie **Rozwiązywanie problemów z aktualizacją agenta** kliknij pozycję **Uruchom testy**, aby uruchomić narzędzie do rozwiązywania problemów. Narzędzie do rozwiązywania problemów używa [polecenia Uruchom](../../virtual-machines/linux/run-command.md) , aby uruchomić skrypt na komputerze w celu zweryfikowania zależności. Po ukończeniu narzędzia do rozwiązywania problemów zwraca wynik kontroli.
+Na **Rozwiązywanie problemów z usługi Windows Update Agent** kliknij **uruchomienia sprawdza**, aby uruchomić narzędzie do rozwiązywania problemów. Narzędzie do rozwiązywania problemów używa [polecenia Uruchom](../../virtual-machines/linux/run-command.md) , aby uruchomić skrypt na komputerze w celu zweryfikowania zależności. Po zakończeniu rozwiązywania problemów, zwraca wynik kontroli.
 
-![Strona rozwiązywania problemów](../media/update-agent-issues-linux/troubleshoot-page.png)
+![Rozwiązywanie problemów z strony](../media/update-agent-issues-linux/troubleshoot-page.png)
 
 Po zakończeniu wyniki są zwracane w oknie. Sekcje sprawdzania zawierają informacje o tym, co szuka każdy test.
 
-![Strona sprawdzania agentów aktualizacji](../media/update-agent-issues-linux/update-agent-checks.png)
+![Usługi Windows Update agent sprawdza, czy strony](../media/update-agent-issues-linux/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Sprawdzanie wymagań wstępnych
 
@@ -57,13 +57,13 @@ Sprawdzanie systemu operacyjnego sprawdza, czy hybrydowy proces roboczy elementu
 |CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Stosowanie poprawek opartych na klasyfikacji wymaga, aby element "yum" zwracał dane zabezpieczeń, które nie znajdują się w polu CentOS.         |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
-|Ubuntu 14,04 LTS, 16,04 LTS i 18,04 LTS (x86/x64)      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
+|Ubuntu 14.04 LTS, 16.04 LTS i 18.04 LTS — x86/x64 64      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
 
-## <a name="monitoring-agent-service-health-checks"></a>Sprawdzanie kondycji usługi agenta monitorowania
+## <a name="monitoring-agent-service-health-checks"></a>Monitorowania kontrole kondycji usługi agenta
 
 ### <a name="log-analytics-agent"></a>Agent Log Analytics
 
-Ten test zapewnia, że Agent Log Analytics dla systemu Linux jest zainstalowany. Aby uzyskać instrukcje dotyczące sposobu instalacji, zobacz [Instalowanie agenta dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+Ten test zapewnia, że Agent Log Analytics dla systemu Linux jest zainstalowany. Aby uzyskać instrukcje dotyczące sposobu jego instalacji, zobacz [Instalacja agenta dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="log-analytics-agent-status"></a>Stan agenta Log Analytics
@@ -74,17 +74,17 @@ Ten test zapewnia, że Agent Log Analytics dla systemu Linux jest uruchomiony. J
 sudo /opt/microsoft/omsagent/bin/service_control restart
 ```
 
-### <a name="multihoming"></a>Wieloadresowości
+### <a name="multihoming"></a>Wiele kart sieciowych
 
-Ta kontrola określa, czy Agent wysyła raporty do wielu obszarów roboczych. Obsługa multihostingu nie jest obsługiwana przez Update Management.
+To sprawdzenie Określa, czy agent jest raportowanie do wielu obszarów roboczych. Obsługa wielu regionów nie jest obsługiwana przez rozwiązanie Update Management.
 
 ### <a name="hybrid-runbook-worker"></a>Hybrydowy proces roboczy elementu Runbook
 
-Ten test sprawdza, czy Agent Log Analytics dla systemu Linux ma pakiet hybrydowego procesu roboczego elementu Runbook. Ten pakiet jest wymagany do pracy Update Management.
+Ten test sprawdza, czy Agent Log Analytics dla systemu Linux ma pakiet hybrydowego procesu roboczego elementu Runbook. Ten pakiet jest wymagane do zarządzania aktualizacjami do pracy.
 
-### <a name="hybrid-runbook-worker-status"></a>Stan hybrydowego procesu roboczego elementu Runbook
+### <a name="hybrid-runbook-worker-status"></a>Hybrydowy proces roboczy elementu Runbook stanu
 
-To sprawdzenie gwarantuje, że hybrydowy proces roboczy elementu Runbook jest uruchomiony na komputerze. Jeśli hybrydowy proces roboczy elementu Runbook działa prawidłowo, powinny być obecne następujące procesy. Aby dowiedzieć się więcej, zobacz [Rozwiązywanie problemów z agentem log Analytics dla systemu Linux](hybrid-runbook-worker.md#oms-agent-not-running).
+Ta kontrola zapewnia, że hybrydowy proces roboczy elementu Runbook jest uruchomiony na komputerze. Następujące procesy powinny znajdować się, jeśli hybrydowego procesu roboczego Runbook działa poprawnie. Aby dowiedzieć się więcej, zobacz [Rozwiązywanie problemów z agenta usługi Log Analytics dla systemu Linux](hybrid-runbook-worker.md#oms-agent-not-running).
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -92,7 +92,7 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-## <a name="connectivity-checks"></a>Sprawdzenia łączności
+## <a name="connectivity-checks"></a>Sprawdzanie łączności
 
 ### <a name="general-internet-connectivity"></a>Ogólna łączność z Internetem
 
@@ -102,29 +102,29 @@ Ten test sprawdza, czy komputer ma dostęp do Internetu.
 
 Ta kontrola określa, czy hybrydowy proces roboczy elementu Runbook może prawidłowo komunikować się z Azure Automation Log Analytics obszaru roboczego.
 
-Konfiguracje serwera proxy i zapory muszą zezwalać agentowi hybrydowego procesu roboczego elementu Runbook na komunikowanie się z punktem końcowym rejestracji. Aby uzyskać listę adresów i portów do otwarcia, zobacz [Planowanie sieci dla hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning)
+Konfiguracji serwera proxy i zapory muszą zezwalać na agenta hybrydowego procesu roboczego Runbook, aby komunikował się z punktem końcowym rejestracji. Aby uzyskać listę adresów i portów, otwieranych zobacz [sieci, planowanie hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning)
 
 ### <a name="operations-endpoint"></a>Punkt końcowy operacji
 
-Ta kontrola określa, czy Agent może prawidłowo komunikować się z usługą danych czasu wykonywania zadania.
+To sprawdzenie decyduje o tym, jeśli agent prawidłowo może komunikować się z usługą danych czasu wykonywania zadania.
 
-Konfiguracje serwera proxy i zapory muszą zezwalać agentowi hybrydowego procesu roboczego elementu Runbook na komunikowanie się z usługą danych czasu wykonywania zadania. Aby uzyskać listę adresów i portów do otwarcia, zobacz [Planowanie sieci dla hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning)
+Konfiguracji serwera proxy i zapory muszą zezwalać na agenta hybrydowego procesu roboczego Runbook do komunikacji z usługą danych czasu wykonywania zadania. Aby uzyskać listę adresów i portów, otwieranych zobacz [sieci, planowanie hybrydowych procesów roboczych](../automation-hybrid-runbook-worker.md#network-planning)
 
-### <a name="log-analytics-endpoint-1"></a>Log Analytics punkt końcowy 1
+### <a name="log-analytics-endpoint-1"></a>Punkt końcowy usługi log Analytics 1
 
-Ten test sprawdza, czy komputer ma dostęp do punktów końcowych wymaganych przez agenta Log Analytics.
+Ten test sprawdza, czy komputer ma dostęp do punktów końcowych wymaganych przez agenta usługi Log Analytics.
 
-### <a name="log-analytics-endpoint-2"></a>Log Analytics punkt końcowy 2
+### <a name="log-analytics-endpoint-2"></a>Punkt końcowy usługi log Analytics 2
 
-Ten test sprawdza, czy komputer ma dostęp do punktów końcowych wymaganych przez agenta Log Analytics.
+Ten test sprawdza, czy komputer ma dostęp do punktów końcowych wymaganych przez agenta usługi Log Analytics.
 
-### <a name="log-analytics-endpoint-3"></a>Log Analytics punkt końcowy 3
+### <a name="log-analytics-endpoint-3"></a>Punkt końcowy usługi log Analytics 3
 
-Ten test sprawdza, czy komputer ma dostęp do punktów końcowych wymaganych przez agenta Log Analytics.
+Ten test sprawdza, czy komputer ma dostęp do punktów końcowych wymaganych przez agenta usługi Log Analytics.
 
 ## <a name="troubleshoot-offline"></a>Rozwiązywanie problemów w trybie offline
 
-Aby użyć narzędzia do rozwiązywania problemów w trybie offline w hybrydowym procesie roboczym elementu Runbook, należy uruchomić skrypt lokalnie. Skrypt w języku Python, [update_mgmt_health_check. PR](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) , można znaleźć w centrum skryptów. Przykład danych wyjściowych tego skryptu pokazano w następującym przykładzie:
+Narzędzie do rozwiązywania problemów w trybie offline można użyć w hybrydowym procesie roboczym elementu Runbook, uruchamiając skrypt lokalnie. Skrypt języka python [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) znajdują się w Centrum skryptów. W poniższym przykładzie przedstawiono przykładowy wynik tego skryptu:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2
@@ -179,4 +179,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozwiązać dodatkowe problemy dotyczące hybrydowych procesów roboczych elementów Runbook, zobacz [Rozwiązywanie problemów — hybrydowe procesy robocze elementów Runbook](hybrid-runbook-worker.md)
+Aby rozwiązać dodatkowe problemy dotyczące hybrydowych procesów roboczych elementów Runbook, zobacz [Rozwiązywanie problemów — hybrydowe procesy robocze elementów Runbook](hybrid-runbook-worker.md).

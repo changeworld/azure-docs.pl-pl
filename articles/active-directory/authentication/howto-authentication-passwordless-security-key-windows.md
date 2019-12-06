@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ce2b420c2124c86610058ce2f31cd6d7bf620a97
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766365"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848463"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Włącz klucz zabezpieczeń bezhasłem Zaloguj się na urządzeniach z systemem Windows 10 (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Ten dokument koncentruje się na włączaniu uwierzytelniania bezhaseł opartego
 
 ## <a name="requirements"></a>Wymagania
 
-- [Multi-Factor Authentication platformy Azure](howto-mfa-getstarted.md)
+- [Usługa Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Wersja zapoznawcza rejestracji informacji o zabezpieczeniach](concept-registration-mfa-sspr-combined.md)
 - Zgodne [FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN wymaga systemu Windows 10 w wersji 1809 lub nowszej
@@ -80,7 +80,7 @@ Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj n
    1. Typ profilu: niestandardowy
    1. Niestandardowe ustawienia OMA-URI:
       1. Nazwa: Włącz klucze zabezpieczeń FIDO dla logowania do systemu Windows
-      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Typ danych: liczba całkowita
       1. Wartość: 1
 1. Te zasady mogą być przypisane do określonych użytkowników, urządzeń lub grup. Więcej informacji można znaleźć w artykule [przypisywanie profilów użytkowników i urządzeń w Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).

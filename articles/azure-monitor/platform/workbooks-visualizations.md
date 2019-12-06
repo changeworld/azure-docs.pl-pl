@@ -1,5 +1,5 @@
 ---
-title: Tworzenie interaktywnych raportów za pomocą wizualizacji Azure Monitor skoroszytów | Dokumentacja firmy Microsoft
+title: Azure Monitor wizualizacje skoroszytu
 description: Dowiedz się więcej na temat wszystkich składników wizualizacji skoroszytów Azure Monitor, takich jak tekst, wykresy, siatki, drzewa i wykresy.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d878e8b5dd49ba517f85ebb74332bc6a245c33ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165058"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872795"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor wizualizacje skoroszytu
 
@@ -41,7 +41,7 @@ Tekst jest dodawany za pomocą kontrolki promocji, która zapewnia pełną kontr
 > [!TIP]
 > Skorzystaj z tego [arkusza Ściągawka z promocji](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) , aby poznać różne opcje formatowania.
 
-## <a name="charts"></a>schematy
+## <a name="charts"></a>Wykresy
 
 Skoroszyty umożliwiają prezentowanie danych monitorowania jako wykresów. Obsługiwane typy wykresów obejmują wiersz, słupek, pasek kategorii, obszar, wykresy punktowe, wykres kołowy i czas. Autorzy mogą zdecydować się na dostosowanie wysokości, szerokości, palety kolorów, legendy, tytułów, wiadomości bez danych itp. wykresu.
 
@@ -115,7 +115,7 @@ W poniższym przykładzie przedstawiono siatkę łączącą ikony, map cieplnych
 
 ![Zrzut ekranu przedstawiający kwerendę siatki opartą na dzienniku](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Okładzin
+## <a name="tiles"></a>Kafelki
 
 Kafelki to bardzo przydatny sposób prezentowania danych podsumowujących w skoroszytach. Na poniższej ilustracji przedstawiono typowy przypadek użycia kafelków — podsumowanie poziomu aplikacji na podstawie szczegółowej siatki.
 
@@ -197,7 +197,7 @@ W poniższym przykładzie przedstawiono wizualizacje metryk (rozmiar zestawu rob
 | `Show the expander on` | Kolumna, w której ma zostać wyświetlony Ekspander drzewa. Siatka drzewa jest często ukryta, aby ukryć swoje identyfikatory i pola identyfikatorów nadrzędnych, ponieważ nie są one bardzo czytelne. Zamiast tego, Ekspander pojawia się w polu o bardziej czytelnej wartości podobnej do nazwy jednostki |
 | `Expand the top level of the tree` | Jeśli ta opcja jest zaznaczona, Siatka drzewa zostanie rozwinięta na najwyższego poziomu. Przydatne, jeśli chcesz domyślnie wyświetlić więcej informacji |
 
-## <a name="graphs"></a>Diagram
+## <a name="graphs"></a>Wykresy
 
 Skoroszyty obsługują wizualizację dowolnych wykresów opartych na danych z dzienników, aby pokazać relacje między jednostkami monitorowania.
 

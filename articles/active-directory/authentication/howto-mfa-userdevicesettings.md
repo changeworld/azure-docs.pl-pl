@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 7a1e6dc3ed1c1f9af6f6b935cdd3a6ceaedbe7a4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404164"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848259"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Zarządzanie ustawieniami użytkownika przy użyciu usługi Azure Multi-Factor Authentication w chmurze
 
@@ -32,8 +32,8 @@ Jako administrator z przypisaną rolą Administrator uwierzytelniania można wym
 
 ![Zarządzanie metodami uwierzytelniania z poziomu Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. W obszarze po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
 1. Wybierz użytkownika, na którym chcesz wykonać akcję, i wybierz pozycję **metody uwierzytelniania**.
    - **Resetowanie hasła** spowoduje zresetowanie hasła użytkownika i przypisanie tymczasowego hasła, które należy zmienić przy następnym logowaniu.
    - **Wymagaj ponownej rejestracji usługi MFA** spowoduje to, że gdy użytkownik zaloguje się w następnym momencie, zostanie poproszony o skonfigurowanie nowej metody uwierzytelniania MFA.
@@ -45,8 +45,8 @@ To ustawienie usuwa wszystkie hasła aplikacji utworzone przez użytkownika. Apl
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Jak usunąć użytkowników istniejące hasła aplikacji
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+2. W obszarze po lewej stronie wybierz pozycję **Azure Active Directory** > **Użytkownicy** > **Wszyscy użytkownicy**.
 3. Po prawej stronie wybierz pozycję **Multi-Factor Authentication** na pasku narzędzi. Zostanie otwarta strona uwierzytelnianie wieloskładnikowe.
 4. Zaznacz pole wyboru obok użytkownika lub użytkowników, którym chcesz zarządzać. Lista opcji szybkiego kroku pojawia się po prawej stronie.
 5. Wybierz pozycję **Zarządzaj ustawieniami użytkownika**.

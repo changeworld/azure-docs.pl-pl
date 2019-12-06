@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4798b6908069af229c2bed4a2e5f38fa60e0d554
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219492"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849109"
 ---
 # <a name="common-cost-analysis-uses"></a>Często używane analizy kosztów
 
@@ -65,6 +65,8 @@ Codzienne i miesięczne koszty mogą pomóc lepiej zrozumieć, czy istnieje czas
 
 Wielu użytkowników platformy Azure stosuje znaczniki do swoich zasobów, takich jak centrum kosztów lub środowisko programistyczne (produkcyjne i testowe), aby lepiej klasyfikować opłaty. Tagi są wyświetlane jako wymiar w analizie kosztów. Możesz użyć wymiaru, aby uzyskać wgląd w niestandardowe kategoryzacje etykiet.
 
+Obsługa tagów ma zastosowanie do użycia zgłoszonego *po* zastosowaniu znacznika do zasobu. Tagi nie są stosowane z mocą wsteczną dla pakietów zbiorczych kosztów.
+
 1. W Azure Portal przejdź do analizy kosztów dla zakresu. Na przykład: **Cost Management + Rozliczanie** > **Cost Management** > **kosztów analizy**.
 1. Wybierz pozycję **Grupuj według** dla tagu.
 
@@ -112,5 +114,5 @@ Wyświetl łączne opłaty netto z upływem czasu, aby poznać ogólne wydatki d
 ![Zakumulowane koszty związane z rejestracją](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>Następne kroki
-- Jeśli nie zostało to jeszcze zrobione z pierwszego przewodnika Szybki Start dla Cost Management, zapoznaj się z tematem [Rozpocznij analizowanie kosztów](quick-acm-cost-analysis.md).
+- Jeśli nie została już zakończona pierwszym przewodniku Szybki Start usługi Cost Management, zapoznaj się z adresem [zacząć analizować koszty](quick-acm-cost-analysis.md).
 - Przeczytaj [dokumentację Cost Management](index.yml).

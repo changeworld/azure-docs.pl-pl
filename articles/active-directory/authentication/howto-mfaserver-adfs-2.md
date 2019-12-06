@@ -1,22 +1,22 @@
 ---
-title: Użyj serwera usługi Azure MFA z usługami AD FS 2.0 — usługa Azure Active Directory
+title: Korzystanie z serwera usługi Azure MFA z AD FS 2,0 — Azure Active Directory
 description: Ta strona dotyczy usługi Azure Multi-Factor Authentication i zawiera informacje umożliwiające rozpoczęcie korzystania z usługi Azure MFA i usług AD FS 2.0.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 231375c94163f098cce86bdbbf285a58957a9927
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b1654d306d50ff8521193b93da1ce4be624ed70
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056116"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848225"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication do współdziałania z usługami AD FS 2.0
 
@@ -25,7 +25,7 @@ Ten artykuł jest przeznaczony dla organizacji, które są sfederowane z usług�
 Ta dokumentacja dotyczy korzystania z serwera usługi Azure Multi-Factor Authentication z usługami AD FS 2.0. Aby dowiedzieć się więcej na temat usług AD FS, zobacz [Zabezpieczanie zasobów w chmurze i lokalnych przy użyciu serwera usługi Azure Multi-Factor Authentication i usług AD FS systemu Windows Server 2012 R2](howto-mfaserver-adfs-2012.md).
 
 > [!IMPORTANT]
-> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
+> Od 1 lipca 2019 firma Microsoft nie będzie już oferować serwera MFA dla nowych wdrożeń. Nowi klienci, którzy chcą wymagać uwierzytelniania wieloskładnikowego od użytkowników, powinni korzystać z usługi Azure Multi-Factor Authentication opartej na chmurze. Istniejący klienci, którzy aktywowali serwer usługi MFA przed 1 lipca, będą mogli pobrać najnowszą wersję, przyszłe aktualizacje i generować poświadczenia aktywacji w zwykły sposób.
 
 ## <a name="secure-ad-fs-20-with-a-proxy"></a>Zabezpieczanie usługi AD FS 2.0 przy użyciu serwera proxy
 
@@ -37,7 +37,7 @@ Aby zabezpieczyć usługi AD FS 2.0 za pomocą serwera proxy, zainstaluj serwer 
 2. Kliknij kartę **Oparte na formularzach**.
 3. Kliknij pozycję **Add** (Dodaj).
 
-   ![Okno uwierzytelnianie usług IIS na serwerze usługi MFA](./media/howto-mfaserver-adfs-2/setup1.png)
+   ![Okno uwierzytelniania programu IIS serwera MFA](./media/howto-mfaserver-adfs-2/setup1.png)
 
 4. Aby automatycznie wykryć zmienne nazwy użytkownika, hasła i domeny, podaj adres URL logowania (taki jak https://sso.contoso.com/adfs/ls) w oknie dialogowym Konfigurowana automatycznie witryna internetowa oparta na formularzach i kliknij przycisk **OK**.
 5. Zaznacz pole **Wymagaj dopasowania użytkownika usługi Azure Multi-Factor Authentication**, jeśli wszyscy użytkownicy zostali lub zostaną zaimportowani na serwer i będą podlegać weryfikacji dwuetapowej. Jeśli znaczna liczba użytkowników nie została jeszcze zaimportowana na serwer lub będzie wykluczona z weryfikacji dwuetapowej, należy pozostawić to pole puste.
@@ -71,13 +71,13 @@ Uwierzytelnianie usług IIS zostało włączone, ale aby przeprowadzić uwierzyt
 1. Kliknij ikonę **Integracja katalogu**.
 2. Na karcie Ustawienia wybierz przycisk radiowy **Użyj określonej konfiguracji LDAP**.
 
-   ![Konfigurowanie ustawień LDAP określonych ustawień LDAP](./media/howto-mfaserver-adfs-2/ldap1.png)
+   ![Konfigurowanie ustawień LDAP dla określonych ustawień LDAP](./media/howto-mfaserver-adfs-2/ldap1.png)
 
 3. Kliknij pozycję **Edytuj**.
 4. W oknie dialogowym Edycja konfiguracji LDAP wypełnij pola informacjami wymaganymi do nawiązania połączenia z kontrolerem domeny usługi AD. Opisy tych pól znajdują się w pliku pomocy serwera usługi Azure Multi-Factor Authentication.
 5. Przetestuj połączenie LDAP, klikając przycisk **Testuj**.
 
-   ![Testowanie konfiguracji LDAP na serwerze MFA](./media/howto-mfaserver-adfs-2/ldap2.png)
+   ![Testowanie konfiguracji LDAP na serwerze usługi MFA](./media/howto-mfaserver-adfs-2/ldap2.png)
 
 6. Jeśli test połączenia LDAP zakończył się pomyślnie, kliknij przycisk **OK**.
 
@@ -88,9 +88,9 @@ Uwierzytelnianie usług IIS zostało włączone, ale aby przeprowadzić uwierzyt
 3. Jeśli użytkownicy wprowadzają swoje nazwy użytkowników w formacie „domena\nazwa_użytkownika”, serwer musi być w stanie oddzielić domenę od nazwy użytkownika podczas tworzenia zapytania LDAP. Można to skonfigurować za pomocą ustawienia rejestru.
 4. W przypadku serwera 64-bitowego otwórz Edytor rejestru i przejdź do klucza HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor. W przypadku serwera 32-bitowego klucz nie zawiera elementu „Wow6432Node”. Utwórz klucz rejestru typu DWORD o nazwie „UsernameCxz_stripPrefixDomain” i ustaw jego wartość na 1. Po wykonaniu tych czynności serwer proxy usług AD FS jest chroniony przez usługę Azure Multi-Factor Authentication.
 
-Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Zobacz [sekcję zaufane adresy IP](#trusted-ips) Jeśli chcesz zezwolić na wewnętrzne adresy IP, tak aby Weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji.
+Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Zapoznaj się z [sekcją zaufane](#trusted-ips) adresy IP, jeśli chcesz zezwolić na używanie wewnętrznych adresów, tak aby weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji.
 
-![Edytor rejestru, aby skonfigurować ustawienia firmy](./media/howto-mfaserver-adfs-2/reg.png)
+![Edytor rejestru do konfigurowania ustawień firmy](./media/howto-mfaserver-adfs-2/reg.png)
 
 ## <a name="ad-fs-20-direct-without-a-proxy"></a>Bezpośrednie używanie usług AD FS 2.0 bez serwera proxy
 
@@ -112,7 +112,7 @@ Jeśli serwer proxy usług AD FS nie jest używany, można zabezpieczyć usługi
 
 Po wykonaniu tych czynności usługi AD FS są chronione przez usługę Azure Multi-Factor Authentication.
 
-Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Zobacz sekcję zaufane adresy IP, jeśli chcesz zezwolić na wewnętrzne adresy IP, tak aby Weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji.
+Upewnij się, że zaimportowano użytkowników z usługi Active Directory na serwer. Zapoznaj się z sekcją Zaufane adresy IP, jeśli chcesz zezwolić na używanie wewnętrznych adresów, tak aby weryfikacja dwuetapowa nie była wymagana podczas logowania się do witryny sieci Web z tych lokalizacji.
 
 ## <a name="trusted-ips"></a>Zaufane adresy IP
 
@@ -123,6 +123,6 @@ Zaufane adresy IP pozwalają użytkownikom pominąć uwierzytelnianie za pomocą
 1. W sekcji Uwierzytelnianie usług IIS kliknij kartę **Zaufane adresy IP**.
 2. Kliknij przycisk **Dodaj...** Dodaj...
 3. Gdy pojawi się okno dialogowe Dodawanie zaufanych adresów IP, wybierz jeden z przycisków radiowych: **Pojedynczy adres IP**, **Zakres adresów IP** albo **Podsieć**.
-4. Wprowadź adres IP lub zakres adresów IP albo podsieć, powinno być dozwolone. Jeśli wprowadzasz podsieć, wybierz odpowiednią maskę sieci i kliknij przycisk **OK**.
+4. Wprowadź adres IP, zakres adresów IP lub podsieć, które powinny być dozwolone. Jeśli wprowadzasz podsieć, wybierz odpowiednią maskę sieci i kliknij przycisk **OK**.
 
-![Konfiguruj zaufane adresy IP do serwera MFA](./media/howto-mfaserver-adfs-2/trusted.png)
+![Konfigurowanie zaufanych adresów IP na serwerze usługi MFA](./media/howto-mfaserver-adfs-2/trusted.png)

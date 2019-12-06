@@ -2,21 +2,42 @@
 title: Tagi zasobów dla organizacji logicznej
 description: Pokazuje, jak zastosować Tagi do organizowania zasobów platformy Azure na potrzeby rozliczeń i zarządzania nimi.
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: f3fca2030d33ba5a52d43924ff542801d435e4de
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/04/2019
+ms.openlocfilehash: c0a34204b5eb7080c6444e69def9d82d0193783b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484275"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850605"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
-[!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
+Znaczniki do zasobów platformy Azure są stosowane w celu logicznego organizowania ich w taksonomię. Każdy tag składa się z nazwy i pary wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
-Aby zastosować Tagi do zasobów, użytkownik musi mieć dostęp do zapisu dla tego typu zasobu. Aby zastosować Tagi do wszystkich typów zasobów, użyj roli [współautor](../role-based-access-control/built-in-roles.md#contributor) . Aby zastosować Tagi tylko do jednego typu zasobu, należy użyć roli współautor dla tego zasobu. Aby na przykład zastosować Tagi do maszyn wirtualnych, użyj [współautora maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+Po zastosowaniu tagów można pobrać wszystkie zasoby w subskrypcji o nazwie i wartości konkretnego tagu. Tagi umożliwiają pobranie powiązanych zasobów z różnych grup zasobów. To pomocne rozwiązanie, gdy trzeba zorganizować zasoby w celach rozliczeniowych lub zarządzania.
+
+Taksonomia powinna uwzględniać samoobsługową strategię tagowania metadanych, a także strategię automatycznego tagowania, która pozwala zmniejszyć obciążenie użytkownikami i zwiększyć dokładność.
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
+
+## <a name="limitations"></a>Ograniczenia
+
+Tagi mają następujące ograniczenia:
+
+* Nie wszystkie typy zasobów obsługują Tagi. Aby określić, czy można zastosować tag do typu zasobu, zobacz [obsługa tagów dla zasobów platformy Azure](tag-support.md).
+* Każdy zasób lub Grupa zasobów może mieć maksymalnie 50 par nazwa/wartość tagu. Jeśli musisz zastosować więcej tagów niż maksymalna dozwolona liczba, użyj ciągu JSON dla wartości tagu. Ciąg JSON może zawierać wiele wartości, które są stosowane do jednej nazwy tagu. Grupa zasobów może zawierać wiele zasobów, dla których każda z nich ma 50 par nazwa/wartość.
+* Nazwa tagu może zawierać maksymalnie 512 znaków, a wartość tagu jest ograniczona do 256 znaków. W przypadku kont magazynu nazwa tagu jest ograniczona do 128 znaków, a wartość tagu jest ograniczona do 256 znaków.
+* Uogólnione maszyny wirtualne nie obsługują tagów.
+* Tagi zastosowane do grupy zasobów nie są dziedziczone przez zasoby należące do tej grupy.
+* Nie można zastosować tagów do zasobów klasycznych, takich jak Cloud Services.
+* Nazwy tagów nie mogą zawierać następujących znaków: `<`, `>`, `%`, `&`, `\`, `?`, `/`
+
+   > [!NOTE]
+   > Obecnie Azure DNS strefy i usługi Traffic Manager nie umożliwiają również używania spacji w tagu. 
+
+## <a name="required-access"></a>Wymagany dostęp
+
+Aby zastosować Tagi do zasobów, użytkownik musi mieć dostęp do zapisu dla tego typu zasobu. Aby zastosować Tagi do wszystkich typów zasobów, użyj roli [współautor](../role-based-access-control/built-in-roles.md#contributor) . Aby zastosować Tagi tylko do jednego typu zasobu, należy użyć roli współautor dla tego zasobu. Aby na przykład zastosować Tagi do maszyn wirtualnych, użyj [współautora maszyny wirtualnej](../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 ## <a name="policies"></a>Zasady
 
@@ -25,8 +46,6 @@ Aby wymusić reguły tagowania i konwencje, można użyć [Azure Policy](../gove
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Aby wyświetlić istniejące tagi dla *grupy zasobów*, użyj:
 
@@ -400,7 +419,7 @@ Azure Portal i program PowerShell używają [interfejsu API REST Menedżer zasob
 
 ## <a name="tags-and-billing"></a>Znaczniki i rozliczanie
 
-Za pomocą tagów można grupować dane dotyczące rozliczeń. Jeśli na przykład używasz wielu maszyn wirtualnych dla różnych organizacji, użyj tagów, aby grupować użycie według centrum kosztów. Za pomocą tagów można również klasyfikować koszty według środowiska uruchomieniowego, takich jak użycie rozliczeń dla maszyn wirtualnych działających w środowisku produkcyjnym.
+Tagów można użyć do grupowania danych dotyczących rozliczeń. Na przykład jeśli jest uruchomionych wiele maszyn wirtualnych różnych organizacji, możesz użyć tagów do grupowania użycia według centrum kosztu. Tagi umożliwiają również kategoryzowanie kosztów według środowiska uruchomieniowego, na przykład na potrzeby rozliczania użycia maszyn uruchomionych w środowisku produkcyjnym.
 
 Informacje o tagach można uzyskać za pomocą [interfejsów API użycia zasobów platformy Azure i RateCard](../billing/billing-usage-rate-card-overview.md) lub pliku z wartościami rozdzielanymi przecinkami (CSV). Plik użycia można pobrać z [centrum konta platformy Azure](https://account.azure.com/Subscriptions) lub Azure Portal. Aby uzyskać więcej informacji, zobacz [pobieranie lub wyświetlanie faktury rozliczeń na platformie Azure oraz danych dziennego użycia](../billing/billing-download-azure-invoice-daily-usage-date.md). Podczas pobierania pliku użycia z Centrum konta platformy Azure wybierz pozycję **wersja 2**. W przypadku usług, które obsługują Tagi z rozliczeniami, Tagi są wyświetlane w kolumnie **Tagi** .
 

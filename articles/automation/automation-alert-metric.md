@@ -1,87 +1,87 @@
 ---
-title: Monitorowanie usługi Azure Automation runbook z alertów dotyczących metryk
-description: Ten artykuł przeprowadzi Cię przez elementy runbook usługi Azure Automation, na podstawie metryk monitorowania
+title: Monitorowanie elementów Runbook Azure Automation przy użyciu alertów metryk
+description: Ten artykuł przeprowadzi Cię przez proces monitorowania Azure Automation elementów Runbook opartych na metrykach
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 142fb84624c2b0d3d92868aae5794792ed90b577
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: bea99820bee107b8329dd3c36ac3ceb84a042b86
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478012"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850979"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorowanie elementów runbook z alertów dotyczących metryk
+# <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorowanie elementów Runbook przy użyciu alertów metryk
 
-W tym artykule dowiesz się, jak tworzyć alerty na podstawie stanu ukończenia elementów runbook.
+W tym artykule dowiesz się, jak tworzyć alerty na podstawie stanu ukończenia elementów Runbook.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 
 ## <a name="create-alert"></a>Tworzenie alertu
 
-Alerty umożliwiają zdefiniowanie warunku na potrzeby monitorowania i akcję do wykonania w przypadku spełnienia warunku.
+Alerty umożliwiają zdefiniowanie warunku do monitorowania oraz akcję podejmowaną po spełnieniu warunku.
 
-W witrynie Azure portal przejdź do swojego konta usługi Automation. W obszarze **monitorowanie**, wybierz opcję **alerty** i kliknij przycisk **+ Nowa reguła alertu**. Zakres docelowy został już zdefiniowany do konta usługi Automation.
+W Azure Portal przejdź do konta usługi Automation. W obszarze **monitorowanie**wybierz pozycję **alerty** , a następnie kliknij pozycję **+ Nowa reguła alertów**. Zakres dla elementu docelowego jest już zdefiniowany dla konta usługi Automation.
 
-### <a name="configure-alert-criteria"></a>Skonfiguruj kryteria alertu
+### <a name="configure-alert-criteria"></a>Konfigurowanie kryteriów alertów
 
-1. Kliknij przycisk **+ Dodaj kryteria**. Wybierz **metryki** dla **sygnał typu**i wybierz polecenie **łącznej liczby zadań** z tabeli.
+1. Kliknij pozycję **+ Dodaj kryteria**. Wybierz pozycję **metryki** dla **typu sygnału**i wybierz pozycję **całkowita liczba zadań** z tabeli.
 
-2. **Konfigurowanie logiki sygnału** strona jest, gdzie należy zdefiniować logikę, która wyzwala alert. W obszarze wykresu historycznych, dostępne są dwa wymiary **nazwa elementu Runbook** i **stan**. Wymiary są różne właściwości metryk, który może służyć do filtrowania wyników. Aby uzyskać **nazwa elementu Runbook**, wybierz element runbook ma być alert po wystąpieniu lub pozostaw pustą wartość alert na wszystkich elementów runbook. Aby uzyskać **stan**, wybierz stan z listy rozwijanej, aby monitorować. Element runbook nazwę i stan wartości, które pojawiają się na liście rozwijanej są tylko w przypadku zadań uruchomionych w ostatnim tygodniu.
+2. Na stronie **Konfiguruj logikę sygnału** jest definiowana logika, która wyzwala alert. W obszarze Graf historyczny prezentowane są dwa wymiary, **Nazwa elementu Runbook** i **stan**. Wymiary są różnymi właściwościami metryki, których można użyć do filtrowania wyników. W polu **Nazwa elementu Runbook**wybierz element Runbook, na którym chcesz utworzyć alert, lub pozostaw pustą wartość, aby otrzymywać alerty dotyczące wszystkich elementów Runbook. W polu **stan**wybierz pozycję stan z listy rozwijanej, która ma być monitorowana. Wartości Nazwa elementu Runbook i stan, które pojawiają się na liście rozwijanej, są przeznaczone tylko dla zadań uruchomionych w ciągu ostatniego tygodnia.
 
-   Jeśli chcesz utworzyć alerty dotyczące stanu lub element runbook, który nie jest wyświetlana na liście rozwijanej, kliknij przycisk **\+** obok wymiaru. Ta akcja powoduje otwarcie okna dialogowego, która pozwala na wprowadź wartość niestandardową nie zostało ostatnio wyemitowane dla tego wymiaru. Jeśli zostanie wprowadzona wartość, która nie istnieje dla właściwości alertu nie będą wyzwalane.
+   Jeśli chcesz otrzymywać alerty dotyczące stanu lub elementu Runbook, który nie jest wyświetlany na liście rozwijanej, kliknij **\+** obok wymiaru. Ta akcja powoduje otwarcie okna dialogowego, w którym można wprowadzić wartość niestandardową, która nie jest ostatnio emitowana dla tego wymiaru. Jeśli wprowadzisz wartość, która nie istnieje dla właściwości, alert nie zostanie wyzwolony.
 
    > [!NOTE]
-   > Jeśli nie zastosujesz nazwę **RunbookName** wymiaru, jeśli istnieją wszelkie elementy runbook spełniają kryteria stanu, w tym systemie ukryte elementy runbook, zostanie wyświetlony alert.
+   > Jeśli nie zastosowano nazwy dla wymiaru **runbookname** , jeśli istnieją jakiekolwiek elementy Runbook spełniające kryteria stanu, w tym ukryte elementy Runbook systemu, zostanie wyświetlony alert.
 
-3. W obszarze **Alert logic**, Zdefiniuj warunek i wartość progową alertu. Podgląd warunku zdefiniowany jest wyświetlana poniżej.
+3. W obszarze **logika alertu**Zdefiniuj warunek i próg alertu. Poniżej przedstawiono Podgląd zdefiniowanego warunku.
 
-4. W obszarze **Evaluated na podstawie**, wybierz przedział czasu dla zapytania i jak często ma to zapytanie został uruchomiony. Na przykład, jeśli wybierzesz **w ciągu ostatnich 5 minut** dla **okres** i **co 1 minutę** dla **częstotliwość**, alert szuka numer elementy runbook zostały spełnione kryteria w ciągu ostatnich 5 minut. To zapytanie jest uruchamiany co minutę, oraz po kryteria alertu, zdefiniowane przez użytkownika nie jest już znajduje się w oknie 5-minutowych, alert rozwiązanie sam. Na koniec kliknij przycisk **Gotowe**.
+4. W obszarze **oceniane na podstawie**wybierz pozycję przedział czasu dla zapytania i częstotliwość, z jaką ma ona być uruchomiona. Na przykład w przypadku wybrania **w ciągu ostatnich 5 minut** **okresu** i **co 1 minuty** dla **częstotliwości**, alert szuka liczby elementów Runbook, które spełniają kryteria w ciągu ostatnich 5 minut. To zapytanie jest uruchamiane co minutę, a gdy zdefiniowane kryteria alertu nie będą już znajdować się w oknie 5-minutowym, alert zostanie automatycznie rozwiązany. Na koniec kliknij przycisk **Gotowe**.
 
    ![Wybierz zasób dla alertu](./media/automation-alert-activity-log/configure-signal-logic.png)
 
 ### <a name="define-alert-details"></a>Definiowanie szczegółów alertu
 
-1. W obszarze **2. Zdefiniuj szczegóły alertu**, nadaj mu przyjazną nazwę i podaj opis. Ustaw **ważność** do dopasowania warunek alertu. Istnieje pięć ważności z zakresu od 0 do 5. Alerty są traktowane niezależnie od tego samego priorytetu, można dopasować ważności, aby dopasować logikę biznesową.
+1. W obszarze **2. Zdefiniuj szczegóły alertu**, nadaj Alertowi przyjazną nazwę i opis. Ustaw **ważność** na zgodną z warunkiem alertu. Istnieje pięć serwerów z zakresu od 0 do 5. Alerty są traktowane niezależnie od ważności, można dopasować ważność do dopasowania do logiki biznesowej.
 
-1. W dolnej części sekcji jest dostępny przycisk, który pozwala włączyć regułę po jego ukończeniu. Domyślnie reguły są włączone w momencie jego tworzenia. Jeśli wybierzesz nie, można utworzyć alertu i jest tworzony w **wyłączone** stanu. Z **reguły** strony w usłudze Azure Monitor, zaznacz go i kliknij **Włącz** umożliwiające alert, gdy wszystko będzie gotowe.
+1. W dolnej części sekcji jest przycisk, który umożliwia włączenie reguły po zakończeniu. Reguły domyślne są włączane podczas tworzenia. W przypadku wybrania opcji nie można utworzyć alertu, który zostanie utworzony w stanie **wyłączonym** . Na stronie **reguły** w Azure monitor możesz ją zaznaczyć, a następnie kliknij pozycję **Włącz** , aby włączyć alert, gdy wszystko będzie gotowe.
 
 ### <a name="define-the-action-to-take"></a>Zdefiniuj akcję do wykonania
 
-1. W obszarze **3. Zdefiniuj grupę akcji** kliknij przycisk **+ Nowa grupa akcji**. Grupy akcji jest grupą akcji, które można użyć w więcej niż jeden alert. Te mogą obejmować, ale nie są ograniczone do wiadomości e-mail powiadomienia, elementy runbook, elementy webhook i wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Tworzenie i zarządzanie grupami akcji](../azure-monitor/platform/action-groups.md)
+1. W obszarze **3. Zdefiniuj grupę akcji**, kliknij pozycję **+ Nowa grupa akcji**. Grupa akcji to grupa akcji, których można użyć w więcej niż jednym alercie. Mogą one obejmować, ale nie są ograniczone do powiadomień e-mail, elementów Runbook, elementy webhook i wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Tworzenie i zarządzanie grupami akcji](../azure-monitor/platform/action-groups.md)
 
 1. W polu **Nazwa grupy akcji** wpisz przyjazną nazwę i nazwę krótką. Nazwa krótka jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
 
-1. W **akcje** sekcji **typ akcji**, wybierz opcję **poczty E-mail/SMS/wypychania/rejestr**.
+1. W sekcji **Akcje** w obszarze **Typ akcji**wybierz pozycję **poczta e-mail/SMS/wypychanie/głos**.
 
 1. Na stronie **E-mail/SMS/Push/Głos** nadaj nazwę. Zaznacz pole wyboru **E-mail** i wpisz prawidłowy adres e-mail, który ma być używany.
 
    ![Skonfiguruj grupę akcji poczty e-mail](./media/automation-alert-activity-log/add-action-group.png)
 
-1. Kliknij przycisk **OK** na stronie **E-mail/SMS/Push/Głos**, aby ją zamknąć, a następnie kliknij przycisk **OK**, aby zamknąć stronę **Dodawanie grupy akcji**. Nazwa określona na tej stronie zostanie zapisany jako **nazwy akcji**.
+1. Kliknij przycisk **OK** na stronie **E-mail/SMS/Push/Głos**, aby ją zamknąć, a następnie kliknij przycisk **OK**, aby zamknąć stronę **Dodawanie grupy akcji**. Nazwa określona na tej stronie jest zapisywana jako **Nazwa akcji**.
 
-1. Po zakończeniu kliknij przycisk **Zapisz**. Ta akcja tworzy regułę, która ostrzega, gdy element runbook została ukończona z określonym stanie.
+1. Po zakończeniu kliknij przycisk **Zapisz**. Ta akcja tworzy regułę, która powiadamia użytkownika, gdy element Runbook został ukończony z określonym stanem.
 
 > [!NOTE]
-> Podczas dodawania adresu e-mail do grupy akcji, wiadomość e-mail z powiadomieniem są wysyłane, informujący, że adres został dodany do grupy akcji.
+> Po dodaniu adresu e-mail do grupy akcji zostanie wysłana wiadomość e-mail z powiadomieniem informującą o tym, że adres został dodany do grupy akcji.
 
 ## <a name="notification"></a>Powiadomienia
 
-Po spełnieniu kryteriów alertu grupy akcji uruchamia czynność zdefiniowana. W przykładzie w tym artykule zostanie wysłana wiadomość e-mail. Poniższy rysunek jest przykładem wiadomość e-mail, który pojawi się po wyzwoleniu alertu:
+Gdy spełnione są kryteria alertów, Grupa akcji uruchamia zdefiniowaną akcję. W tym artykule jest wysyłana wiadomość e-mail. Na poniższej ilustracji przedstawiono przykład wiadomości e-mail otrzymanej po wyzwoleniu alertu:
 
 ![Alert e-mail](./media/automation-alert-activity-log/alert-email.png)
 
-Po Metryka nie jest już poza próg zdefiniowany, dezaktywacji alert i grupę akcji uruchamia czynność zdefiniowana. Wybranie typu akcji poczty e-mail zostanie wysłana e-mail rozdzielczości, informujący, że zostanie rozwiązany.
+Gdy Metryka nie będzie już poza zdefiniowanym progiem, alert zostanie zdezaktywowany, a grupa akcji uruchamia zdefiniowaną akcję. W przypadku wybrania typu akcji e-mail zostanie wysłana wiadomość e-mail z informacją o rozwiązaniu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Kontynuuj z następującym artykułem, aby dowiedzieć się więcej o innych metodach, że można zintegrować alertings konta usługi Automation.
+Przejdź do poniższego artykułu, aby dowiedzieć się więcej na temat innych sposobów integrowania alertów z kontem usługi Automation.
 
 > [!div class="nextstepaction"]
-> [Użyj alertów do wyzwalania elementu runbook usługi Azure Automation](automation-create-alert-triggered-runbook.md)
+> [Użyj alertu, aby wyzwolić Azure Automation element Runbook](automation-create-alert-triggered-runbook.md)

@@ -4,21 +4,21 @@ description: Opisuje szczegóły dotyczące sposobu przetwarzania elementu Runbo
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2f8fa4c378ed394930a4018c58b99ed919cbc2c2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ddeeaeccc0a10d19a070a91d7bd9bef2b31c0570
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886963"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850758"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w Azure Automation
 
-Po uruchomieniu elementu Runbook w Azure Automation tworzone jest zadanie. Zadanie jest pojedynczym wystąpieniem wykonywania elementu Runbook. Azure Automation proces roboczy jest przypisywany do uruchamiania każdego zadania. Chociaż procesy robocze są współużytkowane przez wiele kont platformy Azure, zadania z różnych kont usługi Automation są od siebie odizolowane. Nie masz kontroli nad tym, które usługi procesu roboczego żądają danego zadania. Pojedynczy element Runbook może mieć wiele zadań uruchomionych jednocześnie. Środowisko wykonawcze dla zadań z tego samego konta usługi Automation może być ponownie używane. Im więcej zadań jest wykonywanych w tym samym czasie, tym częściej można je wysłać do tej samej piaskownicy. Zadania uruchomione w tym samym procesie piaskownicy mogą mieć wpływ na siebie nawzajem. na jednym przykładzie działa polecenie cmdlet `Disconnect-AzureRMAccount`. Uruchomienie tego polecenia cmdlet spowoduje rozłączenie każdego zadania elementu Runbook w udostępnionym procesie piaskownicy. Po wyświetleniu listy elementów Runbook w Azure Portal zostanie wyświetlona lista stanu wszystkich zadań uruchomionych dla każdego elementu Runbook. Możesz wyświetlić listę zadań dla każdego elementu Runbook, aby śledzić stan każdego z nich. Dzienniki zadań są przechowywane przez maksymalnie 30 dni. Opis różnych stanów [zadań zadań.](#job-statuses)
+Po uruchomieniu elementu Runbook w Azure Automation tworzone jest zadanie. Zadanie jest pojedynczym wystąpieniem wykonania elementu Runbook. Azure Automation proces roboczy jest przypisywany do uruchamiania każdego zadania. Chociaż procesy robocze są współużytkowane przez wiele kont platformy Azure, zadania z różnych kont usługi Automation są od siebie odizolowane. Nie masz kontroli nad tym, które usługi procesu roboczego żądają danego zadania. Pojedynczy element Runbook może mieć wiele zadań uruchomionych jednocześnie. Środowisko wykonawcze dla zadań z tego samego konta usługi Automation może być ponownie używane. Im więcej zadań jest wykonywanych w tym samym czasie, tym częściej można je wysłać do tej samej piaskownicy. Zadania uruchomione w tym samym procesie piaskownicy mogą mieć wpływ na siebie nawzajem. na jednym przykładzie działa polecenie cmdlet `Disconnect-AzureRMAccount`. Uruchomienie tego polecenia cmdlet spowoduje rozłączenie każdego zadania elementu Runbook w udostępnionym procesie piaskownicy. Po wyświetleniu listy elementów Runbook w Azure Portal zostanie wyświetlona lista stanu wszystkich zadań uruchomionych dla każdego elementu Runbook. Możesz wyświetlić listę zadań dla każdego elementu Runbook, aby śledzić stan każdego z nich. Dzienniki zadań są przechowywane przez maksymalnie 30 dni. Opis różnych stanów [zadań zadań.](#job-statuses)
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -34,9 +34,9 @@ Elementy Runbook w Azure Automation mogą być uruchamiane w piaskownicy na plat
 
 |Zadanie|Najlepszy wybór|Uwagi|
 |---|---|---|
-|Integracja z zasobami platformy Azure|Piaskownica systemu Azure|Uwierzytelnianie jest obsługiwane na platformie Azure. Jeśli używasz hybrydowego procesu roboczego elementu Runbook na maszynie wirtualnej platformy Azure, możesz używać [tożsamości zarządzanych dla zasobów platformy Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
-|Optymalna wydajność zarządzania zasobami platformy Azure|Piaskownica systemu Azure|Skrypt jest uruchamiany w tym samym środowisku, co z kolei ma mniejsze opóźnienia|
-|Minimalizuj koszty operacyjne|Piaskownica systemu Azure|Nie ma żadnych nakładów obliczeniowych, brak potrzeby dla maszyny wirtualnej|
+|Integracja z zasobami platformy Azure|Azure Sandbox|Uwierzytelnianie jest obsługiwane na platformie Azure. Jeśli używasz hybrydowego procesu roboczego elementu Runbook na maszynie wirtualnej platformy Azure, możesz używać [tożsamości zarządzanych dla zasobów platformy Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
+|Optymalna wydajność zarządzania zasobami platformy Azure|Azure Sandbox|Skrypt jest uruchamiany w tym samym środowisku, co z kolei ma mniejsze opóźnienia|
+|Minimalizuj koszty operacyjne|Azure Sandbox|Nie ma żadnych nakładów obliczeniowych, brak potrzeby dla maszyny wirtualnej|
 |Długi uruchomiony skrypt|Hybrydowy proces roboczy elementu Runbook|Piaskownice platformy Azure mają [ograniczenia dotyczące zasobów](../azure-subscription-service-limits.md#automation-limits)|
 |Korzystanie z usług lokalnych|Hybrydowy proces roboczy elementu Runbook|Może mieć dostęp bezpośrednio do komputera hosta|
 |Wymagaj oprogramowania i plików wykonywalnych innej firmy|Hybrydowy proces roboczy elementu Runbook|Zarządzasz systemem operacyjnym i można instalować oprogramowanie|
@@ -177,7 +177,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>Generować
+#### <a name="throw"></a>Rzuć
 
 [Throw](/powershell/module/microsoft.powershell.core/about/about_throw) można użyć do wygenerowania błędu kończącego. Może to być przydatne podczas definiowania własnej logiki w elemencie Runbook. Jeśli spełnione są pewne kryteria, które powinny zatrzymać skrypt, można użyć `throw`, aby zatrzymać skrypt. Poniższy przykład pokazuje, że komputer jest parametrem funkcji wymaganym przy użyciu `throw`.
 
@@ -199,22 +199,22 @@ Zadania elementu Runbook uruchamiane w piaskownicach platformy Azure nie mają d
 
 ## <a name="job-statuses"></a>Stany zadań
 
-W poniższej tabeli opisano różne stany, które są możliwe w przypadku danego zadania. Program PowerShell ma dwa typy błędów, błędy kończące się i niepowodujące zakończenia. Podczas kończenia błędów ustawienie stanu elementu Runbook **nie powiodło się** , jeśli wystąpi. Błędy niepowodujące zakończenia umożliwiają wykonywanie skryptu nawet po wystąpieniu. Przykładem błędu niekończącego jest użycie polecenia cmdlet `Get-ChildItem` ze ścieżką, która nie istnieje. Program PowerShell widzi, że ścieżka nie istnieje, zgłasza błąd i kontynuuje do następnego folderu. Ten błąd nie ustawi stanu elementu Runbook na **Niepowodzenie** i może zostać oznaczony jako **zakończony**. Aby wymusić zatrzymanie elementu Runbook na nieprzerwanym błędzie, można użyć `-ErrorAction Stop` w poleceniu cmdlet.
+W poniższej tabeli opisano różne stany, które może przyjmować zadanie. Program PowerShell ma dwa typy błędów, błędy kończące się i niepowodujące zakończenia. Podczas kończenia błędów ustawienie stanu elementu Runbook **nie powiodło się** , jeśli wystąpi. Błędy niepowodujące zakończenia umożliwiają wykonywanie skryptu nawet po wystąpieniu. Przykładem błędu niekończącego jest użycie polecenia cmdlet `Get-ChildItem` ze ścieżką, która nie istnieje. Program PowerShell widzi, że ścieżka nie istnieje, zgłasza błąd i kontynuuje do następnego folderu. Ten błąd nie ustawi stanu elementu Runbook na **Niepowodzenie** i może zostać oznaczony jako **zakończony**. Aby wymusić zatrzymanie elementu Runbook na nieprzerwanym błędzie, można użyć `-ErrorAction Stop` w poleceniu cmdlet.
 
 | Stan | Opis |
 |:--- |:--- |
 | Zakończone |Zadanie zostało ukończone pomyślnie. |
 | Niepowodzenie |W przypadku [elementów Runbook graficznych i programu PowerShell](automation-runbook-types.md)nie można skompilować elementu Runbook. W przypadku [elementów Runbook skryptu programu PowerShell](automation-runbook-types.md)nie można uruchomić elementu Runbook lub zadanie miało wyjątek. |
 | Niepowodzenie, oczekiwanie na zasoby |Zadanie nie powiodło się, ponieważ osiągnął limit [godziwego udziału](#fair-share) trzy razy i został uruchomiony z tego samego punktu kontrolnego lub od początku elementu Runbook za każdym razem. |
-| Umieszczony |Zadanie oczekuje na dostępność zasobów w procesie roboczym usługi Automation, aby można było je uruchomić. |
+| W kolejce |Zadanie oczekuje na dostępność zasobów dla procesu roboczego automatyzacji, tak aby można było je uruchomić. |
 | Uruchamianie |Zadanie zostało przypisane do procesu roboczego, a system go uruchamia. |
 | Wznawianie |System wznawia zadanie po jego wstrzymaniu. |
 | Działanie |Zadanie jest uruchomione. |
 | Uruchamianie, oczekiwanie na zasoby |Zadanie zostało zwolnione, ponieważ osiągnęło odpowiedni limit [udostępniania](#fair-share) . Wkrótce wznawia od ostatniego punktu kontrolnego. |
-| Zatrzymano |Zadanie zostało zatrzymane przez użytkownika przed jego ukończeniem. |
+| Zatrzymane |Zadanie zostało zatrzymane przez użytkownika przed jego ukończeniem. |
 | Zatrzymywanie |System zatrzymuje zadanie. |
-| Wieszon |Zadanie zostało zawieszone przez użytkownika, przez system lub za pomocą polecenia w elemencie Runbook. Jeśli element Runbook nie ma punktu kontrolnego, rozpocznie się od początku elementu Runbook. Jeśli ma punkt kontrolny, można go uruchomić ponownie i wznowić od ostatniego punktu kontrolnego. Element Runbook jest zawieszony tylko przez system w przypadku wystąpienia wyjątku. Domyślnie ErrorActionPreference jest ustawiony na **Kontynuuj**, co oznacza, że zadanie zachowuje się w przypadku błędu. Jeśli ta zmienna preferencji ma wartość **Zatrzymaj**, zadanie zawiesza się po błędzie. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
-| Wstrzymywania |System próbuje zawiesić zadanie na żądanie użytkownika. Element Runbook musi dotrzeć do swojego następnego punktu kontrolnego, zanim będzie można go wstrzymać. Jeśli przeszedł już ostatni punkt kontrolny, kończy się przed jego wstrzymaniem. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
+| Suspended |Zadanie zostało zawieszone przez użytkownika, przez system lub za pomocą polecenia w elemencie Runbook. Jeśli element Runbook nie ma punktu kontrolnego, rozpocznie się od początku elementu Runbook. Jeśli ma punkt kontrolny, można go uruchomić ponownie i wznowić od ostatniego punktu kontrolnego. Element Runbook jest zawieszony tylko przez system w przypadku wystąpienia wyjątku. Domyślnie ErrorActionPreference jest ustawiony na **Kontynuuj**, co oznacza, że zadanie zachowuje się w przypadku błędu. Jeśli ta zmienna preferencji ma wartość **Zatrzymaj**, zadanie zawiesza się po błędzie. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
+| Zawieszanie |System próbuje zawiesić zadanie na żądanie użytkownika. Przez zawieszeniem element Runbook musi dotrzeć do swojego następnego punktu kontrolnego. Jeśli przeszedł już ostatni punkt kontrolny, kończy się przed jego wstrzymaniem. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Wyświetlanie stanu zadania z Azure Portal
 
@@ -242,9 +242,9 @@ Możesz też wyświetlić szczegóły podsumowania zadania dla określonego elem
 
 ### <a name="job-summary"></a>Podsumowanie zadania
 
-Można wyświetlić listę wszystkich zadań, które zostały utworzone dla określonego elementu Runbook, oraz ich najnowszy stan. Tę listę można filtrować według stanu zadania i zakresu dat dla ostatniej zmiany zadania. Aby wyświetlić szczegółowe informacje i dane wyjściowe, kliknij nazwę zadania. Widok szczegółowy zadania zawiera wartości parametrów elementu Runbook, które zostały dostarczone do tego zadania.
+Można wyświetlić listę wszystkich zadań, które zostały utworzone dla określonego elementu Runbook, oraz ich najnowszy stan. Tę listę można filtrować według stanu zadania i zakresu dat dla ostatniej zmiany zadania. Aby wyświetlić szczegółowe informacje i dane wyjściowe, kliknij nazwę zadania. Widok szczegółowy zadania zawiera wartości parametrów elementu Runbook udostępnione danemu zadaniu.
 
-Poniższe kroki służą do wyświetlania zadań dla elementu Runbook.
+Następujące kroki służą do wyświetlania zadań elementu Runbook.
 
 1. W Azure Portal wybierz pozycję **Automatyzacja** , a następnie wybierz nazwę konta usługi Automation.
 2. Z poziomu centrum wybierz pozycję **elementy Runbook** , a następnie na stronie **elementy Runbook** wybierz element Runbook z listy.

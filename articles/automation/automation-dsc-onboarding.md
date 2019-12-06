@@ -4,17 +4,17 @@ description: Jak skonfigurować maszyny do zarządzania przy użyciu konfiguracj
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243432"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850333"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Dołączanie maszyn w celu zarządzania przez Azure Automation konfigurację stanu
 
@@ -102,7 +102,7 @@ Serwery z systemem Linux działające lokalnie lub w innych środowiskach w chmu
 1. Upewnij się, że Najnowsza wersja [konfiguracji żądanego stanu programu PowerShell dla systemu Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) jest zainstalowana na komputerach, które chcesz dołączyć do Azure Automation konfiguracji stanu.
 1. Jeśli [lokalne Configuration Manager konfiguracji DSC programu PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig4) są zgodne z przypadkiem użycia i chcesz dołączyć do nich maszyny, takie jak **zarówno** ściągają, jak i raportują Azure Automationą konfigurację stanu:
 
-   - Na każdym komputerze z systemem Linux do dołączenia do konfiguracji stanu Azure Automation należy użyć `Register.py` do dołączenia przy użyciu lokalnych Configuration Manager ustawień DSC programu PowerShell:
+   - Na każdym komputerze z systemem Linux, aby dołączać Azure Automation konfigurację stanu, należy użyć `Register.py` do dołączenia przy użyciu lokalnych Configuration Manager ustawień DSC programu PowerShell:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 

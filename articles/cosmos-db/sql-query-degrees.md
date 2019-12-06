@@ -1,18 +1,18 @@
 ---
 title: STOPnie w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej o STOPNIach funkcji systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej o STOPNIach funkcji systemowej SQL w Azure Cosmos DB, aby zwrócić odpowiedni kąt w stopniach dla kąta określonego w radianach
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d8c2109c2c11f137b1966741a95d1d0c02895016
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5f432f5ef57c8eccc0cf629f00d2231364785b9a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351206"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871333"
 ---
 # <a name="degrees-azure-cosmos-db"></a>STOPnie (Azure Cosmos DB)
  Zwraca kąt w stopniach odpowiadający kątowi określonemu w radianach.  

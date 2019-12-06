@@ -2,13 +2,13 @@
 title: Tworzenie zasad dla właściwości tablicy zasobów
 description: Dowiedz się, jak korzystać z parametrów tablicy i wyrażeń języka tablicowego, oszacować alias [*] i dołączać elementy z regułami definicji Azure Policy.
 ms.date: 11/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.topic: how-to
+ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555166"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873101"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Tworzenie zasad dla właściwości tablicy zasobów platformy Azure
 
@@ -185,14 +185,14 @@ Poniższe wyniki są wynikiem kombinacji warunku i przykładową regułę zasad 
 
 |Warunek |Wynik |Wyjaśnienie |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Wartość |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Nic |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_ , a efekt nie jest wyzwalany. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Efekt zasad |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_ i zostanie wyzwolony efekt. |
 |`"not":{<field>,"Equals":"127.0.0.1"}` |Efekt zasad |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
 |`"not":{<field>,"Equals":"10.0.4.1"}` |Efekt zasad |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **Equals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
 |`"not":{<field>,"notEquals":"127.0.0.1" }` |Efekt zasad |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Wartość |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_. Operator logiczny ma wartość false (**nie** _true_), więc efekt nie zostanie wyzwolony. |
-|`{<field>,"Equals":"127.0.0.1"}` |Wartość |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
-|`{<field>,"Equals":"10.0.4.1"}` |Wartość |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nic |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_. Operator logiczny ma wartość false (**nie** _true_), więc efekt nie zostanie wyzwolony. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nic |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nic |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
 
 ## <a name="the-append-effect-and-arrays"></a>Efekt dołączania i tablice
 

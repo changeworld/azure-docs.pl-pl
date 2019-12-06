@@ -1,17 +1,17 @@
 ---
-title: Indeksowanie w Azure Cosmos DB
-description: Dowiedz się, jak indeksowanie działa w Azure Cosmos DB.
+title: Indeksowanie w usłudze Azure Cosmos DB
+description: Dowiedz się, jak indeksowanie działa w Azure Cosmos DB, różne rodzaje indeksów, takie jak zakres, przestrzenny, obsługiwane indeksy złożone.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299786"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873628"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indeksowanie w Azure Cosmos DB — Omówienie
 
@@ -104,13 +104,13 @@ Indeks **zakresu** jest oparty na uporządkowanej strukturze podobnej do drzewa.
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
    ```
 
-- zapytania `ORDER BY`:
+- `ORDER BY` zapytania:
 
    ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- zapytania `JOIN`:
+- `JOIN` zapytania:
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -120,7 +120,7 @@ Indeksów zakresu można używać w przypadku wartości skalarnych (String lub N
 
 ### <a name="spatial-index"></a>Indeks przestrzenny
 
-Indeksy **przestrzenne** umożliwiają wydajne zapytania dotyczące obiektów geoprzestrzennych, takich jak punkty, linie, wielokąty i MultiPolygon. Te zapytania używają ST_DISTANCE, ST_WITHIN, ST_INTERSECTS słów kluczowych. Poniżej przedstawiono kilka przykładów, które używają rodzaju indeksu przestrzennego:
+Indeksy **przestrzenne** umożliwiają wydajne zapytania dotyczące obiektów geoprzestrzennych, takich jak punkty, linie, wielokąty i MultiPolygon. Te zapytania używają ST_DISTANCE, ST_WITHIN ST_INTERSECTS słów kluczowych. Poniżej przedstawiono kilka przykładów, które używają rodzaju indeksu przestrzennego:
 
 - Zapytania dotyczące odległości geograficznej:
 
@@ -146,7 +146,7 @@ Indeksów przestrzennych można używać w poprawnie sformatowanych obiektach [G
 
 Indeksy **złożone** zwiększają wydajność podczas wykonywania operacji na wielu polach. Typ indeksu złożonego jest używany dla:
 
-- zapytania `ORDER BY` dotyczące wielu właściwości:
+- `ORDER BY` zapytania dotyczące wielu właściwości:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
@@ -180,7 +180,7 @@ Rozważmy na przykład następujące zapytanie: `SELECT location FROM location I
 ![Dopasowanie określonej ścieżki w drzewie](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Klauzula `ORDER BY`, która porządkuje według pojedynczej właściwości, *zawsze* wymaga indeksu zakresu i zakończy się niepowodzeniem, jeśli ścieżka, do której się odwołuje, nie ma jednego. Podobnie kwerenda `ORDER BY`, która porządkuje według wielu właściwości, *zawsze* wymaga złożonego indeksu.
+> Klauzula `ORDER BY`, która porządkuje według pojedynczej właściwości *zawsze* wymaga indeksu zakresu i zakończy się niepowodzeniem, jeśli ścieżka, do której się odwołuje, nie ma takiej wartości. Podobnie `ORDER BY` zapytanie, które zamówienie według wielu właściwości *zawsze* wymaga indeksu złożonego.
 
 ## <a name="next-steps"></a>Następne kroki
 

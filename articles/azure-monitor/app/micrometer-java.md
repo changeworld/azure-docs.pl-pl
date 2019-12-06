@@ -1,18 +1,18 @@
 ---
-title: Jak używać Micrometer z usługą Azure Application Insights Java SDK | Microsoft Docs
-description: 'Przewodnik krok po kroku dotyczący używania Micrometer Application Insights z rozruchem wiosny i niesprężynowymi aplikacjami rozruchowymi. '
+title: Jak używać Micrometer z usługą Azure Application Insights Java SDK
+description: Przewodnik krok po kroku dotyczący używania Micrometer Application Insights z rozruchem wiosny i niesprężynowymi aplikacjami rozruchowymi.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c9f1c6f6742f36d376668422f9c37c6c5a2228a4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819311"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872999"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak używać Micrometer z usługą Azure Application Insights Java SDK
 Micrometer do monitorowania aplikacji miaruje metryki dla kodu aplikacji opartego na JVM i umożliwia eksportowanie danych do ulubionych systemów monitorowania. W tym artykule opisano, jak używać Micrometer z Application Insights zarówno dla aplikacji rozruchowych z systemem sprężyny, jak i bez sprężyny.
@@ -96,15 +96,15 @@ Metryki domyślne:
 Jak wyłączyć automatyczne zbieranie metryk: 
  
 - Metryki JVM: 
-    - Management. Metrics. Binders. JVM. Enabled = false 
+    - management.metrics.binders.jvm.enabled=false 
 - Metryki Logback: 
-    - Management. Metrics. Binders. logback. Enabled = false
+    - management.metrics.binders.logback.enabled=false
 - Metryki czasu przestoju: 
     - Management. Metrics. Binders. czas działania. Enabled = false 
 - Metryki procesora:
     -  Management. Metrics. Binders. Processor. Enabled = false 
 - FileDescriptorMetrics:
-    - Management. Metrics. Binders. Files. Enabled = false 
+    - management.metrics.binders.files.enabled=false 
 - Hystrix metryki w przypadku biblioteki na ścieżce klasy: 
     - Management. Metrics. Binders. Hystrix. Enabled = false 
 - AspectJ metryki w przypadku biblioteki na ścieżce klasy: 

@@ -1,85 +1,85 @@
 ---
-title: Uwierzytelnianie oparte na certyfikatach w systemie iOS — usługi Azure Active Directory
-description: Dowiedz się więcej o obsługiwanych scenariuszach i wymagania dotyczące konfigurowania uwierzytelniania opartego na certyfikatach w rozwiązaniach z urządzeń z systemem iOS
+title: Uwierzytelnianie oparte na certyfikatach w systemie iOS — Azure Active Directory
+description: Poznaj obsługiwane scenariusze i wymagania dotyczące konfigurowania uwierzytelniania opartego na certyfikatach w rozwiązaniach z urządzeniami z systemem iOS
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d2f9e7d71ab660c4df6f65d6bebe1d3854086bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60416007"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848803"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory na podstawie certyfikatu uwierzytelniania w systemie iOS
+# <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory uwierzytelniania opartego na certyfikatach w systemie iOS
 
-urządzenia z systemem iOS można użyć uwierzytelniania opartego na certyfikatach (CBA) do uwierzytelniania w usłudze Azure Active Directory przy użyciu certyfikatu klienta na swoim urządzeniu podczas nawiązywania połączenia:
+urządzenia z systemem iOS mogą uwierzytelniać się za pomocą uwierzytelniania opartego na certyfikatach (OBSŁUGIWANIE) w celu Azure Active Directory przy użyciu certyfikatu klienta na urządzeniu podczas nawiązywania połączenia z:
 
-* Aplikacje mobilne pakietu Office, takich jak Microsoft Outlook i Microsoft Word
+* Aplikacje mobilne pakietu Office, takie jak Microsoft Outlook i Microsoft Word
 * Klienci programu Exchange ActiveSync (EAS)
 
-Konfiguruje tę funkcję, eliminuje konieczność wprowadzania kombinację nazwy użytkownika i hasła w niektórych poczty i aplikacje Microsoft Office na urządzeniu przenośnym.
+Skonfigurowanie tej funkcji eliminuje konieczność wprowadzenia kombinacji nazwy użytkownika i hasła do określonych aplikacji poczty i Microsoft Office na urządzeniu przenośnym.
 
-W tym temacie przedstawiono wymagania i obsługiwane scenariusze dotyczące konfigurowania uwierzytelniania CBA na urządzeniu z systemem iOS(Android) dla użytkowników dzierżaw w Office 365 Enterprise, Business, edukacja, instytucji rządowych USA, Chiny i Niemcy planów.
+Ten temat zawiera wymagania i obsługiwane scenariusze dotyczące konfigurowania OBSŁUGIWANIE na urządzeniu z systemem iOS (Android) dla użytkowników dzierżaw w pakiecie Office 365 Enterprise, Business, Education, USA, Chinach i Niemczech.
 
-Ta funkcja jest dostępna w wersji zapoznawczej w planach usług Office 365 dla instytucji rządowych Obrony USA i agencje federalne.
+Ta funkcja jest dostępna w wersji zapoznawczej w pakiecie Office 365 Stany obrony i plany federalne dla instytucji rządowych USA.
 
 ## <a name="microsoft-mobile-applications-support"></a>Obsługa aplikacji mobilnych firmy Microsoft
 
 | Aplikacje | Pomoc techniczna |
 | --- | --- |
-| Usługa Azure Information Protection app |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| Portal firmy usługi Intune |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| Microsoft Teams |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| OneNote |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| OneDrive |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| Outlook |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| Power BI |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| Skype dla firm |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| Word / Excel / PowerPoint |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
-| Yammer |![Znacznik wyboru oznaczającą pomocy technicznej dla tej aplikacji][1] |
+| Aplikacja Azure Information Protection |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| Portal firmy usługi Intune |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| Microsoft Teams |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| OneNote |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| OneDrive |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| Outlook |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| Power BI |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| Skype dla firm |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| Word/Excel/PowerPoint |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
+| Yammer |![Znacznik wyboru oznaczający, że pomoc techniczna dla tej aplikacji][1] |
 
 ## <a name="requirements"></a>Wymagania
 
-Wersja systemu operacyjnego urządzenia musi mieć system iOS 9 i nowsze wersje
+Wersja systemu operacyjnego urządzenia musi działać pod kontrolą systemu iOS 9 lub nowszego
 
-Serwer federacyjny musi być skonfigurowany.
+Należy skonfigurować serwer federacyjny.
 
-Microsoft Authenticator jest wymagana dla aplikacji pakietu Office w systemie iOS.
+W przypadku aplikacji pakietu Office w systemie iOS jest wymagane Microsoft Authenticator.
 
-Usługi Azure Active Directory odwołać certyfikat klienta tokenu usług AD FS musi mieć następujące oświadczeń:
+Aby Azure Active Directory odwołać certyfikat klienta, token ADFS musi mieć następujące oświadczenia:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (Numer seryjny certyfikatu klienta)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (String dla wystawcy certyfikatu klienta)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (numer seryjny certyfikatu klienta)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (ciąg dla wystawcy certyfikatu klienta)
 
-Usługa Azure Active Directory dodaje te oświadczenia na token odświeżania, jeśli są one dostępne w tokenu usług AD FS (lub inne tokenu SAML). Gdy token odświeżania musi być weryfikowane, te informacje służy do sprawdzania odwołania.
+Azure Active Directory dodaje te oświadczenia do tokenu odświeżania, jeśli są dostępne w tokenie ADFS (lub dowolnym innym tokenie SAML). Gdy token odświeżania musi być zweryfikowany, te informacje są używane do sprawdzania odwołania.
 
-Najlepszym rozwiązaniem należy zaktualizować strony błędów usług AD FS w organizacji z następującymi informacjami:
+Najlepszym rozwiązaniem jest zaktualizowanie stron błędów organizacji ADFS z następującymi informacjami:
 
 * Wymagania dotyczące instalowania Microsoft Authenticator w systemie iOS
-* Instrukcje dotyczące sposobu uzyskania certyfikatu użytkownika.
+* Instrukcje dotyczące pobierania certyfikatu użytkownika.
 
-Aby uzyskać więcej informacji, zobacz [dostosowywania stron AD FS Zaloguj](https://technet.microsoft.com/library/dn280950.aspx).
+Aby uzyskać więcej informacji, zobacz [Dostosowywanie stron logowania AD FS](https://technet.microsoft.com/library/dn280950.aspx).
 
-Wyślij niektóre aplikacje pakietu Office (z włączoną nowoczesnego uwierzytelniania) " *= monit logowania*" do usługi Azure AD w żądaniu. Domyślnie program Azure AD tłumaczy " *= monit logowania*"w żądaniu usług AD FS jako"*wauth = usernamepassworduri*" (prosi usług AD FS w celu uwierzytelnienia użytkownik/hasło) i "*wfresh = 0*" (prosi usług AD FS do Ignoruj stanu logowania jednokrotnego i wykonać świeże uwierzytelnianie). Aby włączyć uwierzytelnianie oparte na certyfikatach dla tych aplikacji, należy zmodyfikować domyślne zachowanie usługi Azure AD. Ustaw wartość "*PromptLoginBehavior*"w ustawieniach domeny federacyjnej do"*wyłączone*".
-Możesz użyć [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) polecenia cmdlet do wykonania tego zadania:
+Niektóre aplikacje pakietu Office (z włączonym współczesnym uwierzytelnianiem) wysyłają jako żądanie "*Prompt = login*" do usługi Azure AD. Domyślnie usługa Azure AD tłumaczy wartość "*Prompt = login*" w żądaniu na usługi AD FS jako "*wauth = usernamepassworduri*" (żąda od usług AD FS uwierzytelniania U/P) i "*wfresh = 0*" (poprosi ADFS o zignorowanie stanu logowania jednokrotnego i przeprowadzenie nowego uwierzytelniania). Jeśli chcesz włączyć uwierzytelnianie oparte na certyfikacie dla tych aplikacji, musisz zmodyfikować domyślne zachowanie usługi Azure AD. Po prostu ustaw wartość "*PromptLoginBehavior*" w ustawieniach domeny federacyjnej na wartość "*Disabled*".
+Aby wykonać to zadanie, można użyć polecenia cmdlet [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) :
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
 ## <a name="exchange-activesync-clients-support"></a>Obsługa klientów programu Exchange ActiveSync
 
-W systemie iOS 9 lub nowszy klient poczty natywnych dla systemów iOS jest obsługiwany. Dla wszystkich innych aplikacji Exchange ActiveSync Aby ustalić, czy ta funkcja jest obsługiwana, skontaktuj się z usługi dla deweloperów aplikacji.
+W systemie iOS 9 lub nowszym jest obsługiwany natywny klient poczty systemu iOS. Aby określić, czy ta funkcja jest obsługiwana, należy skontaktować się z deweloperem aplikacji w przypadku wszystkich innych aplikacji programu Exchange ActiveSync.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz skonfigurować uwierzytelnianie oparte na certyfikatach w danym środowisku, zobacz [wprowadzenie do uwierzytelniania opartego na certyfikatach w systemie Android](../authentication/active-directory-certificate-based-authentication-get-started.md) instrukcje.
+Jeśli chcesz skonfigurować uwierzytelnianie oparte na certyfikacie w środowisku, zobacz Wprowadzenie do [uwierzytelniania opartego na certyfikatach w systemie Android](../authentication/active-directory-certificate-based-authentication-get-started.md) , aby uzyskać instrukcje.
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png

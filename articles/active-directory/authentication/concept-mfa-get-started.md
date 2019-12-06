@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98bf62dff3e6c642f5de775f2d5bf8682ecea169
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 84da00b7d6ef49fcdcc91bf6374d8c8f48a034da
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164928"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848701"
 ---
 # <a name="enable-multi-factor-authentication-for-your-organization"></a>Włączanie Multi-Factor Authentication dla Twojej organizacji
 
@@ -55,10 +55,10 @@ Zalecenie polega na użyciu [zasad dostępu warunkowego](../conditional-access/c
 
 |   | Domyślne ustawienia zabezpieczeń | Wszystkie inne metody |
 | --- | --- | --- |
-| Powiadomienie za poorednictwem aplikacji mobilnej | X | X |
+| Powiadomienie przez aplikację mobilną | X | X |
 | Kod weryfikacyjny z aplikacji mobilnej lub tokenu sprzętowego |   | X |
 | Wiadomość SMS na telefon |   | X |
-| Wywołanie telefonu |   | X |
+| Połączenie z telefonem |   | X |
 | Hasła aplikacji |   | X * * |
 
 \* * Hasła aplikacji są dostępne tylko w ramach usługi MFA dla poszczególnych użytkowników ze starszymi scenariuszami uwierzytelniania tylko wtedy, gdy są włączone przez administratorów.

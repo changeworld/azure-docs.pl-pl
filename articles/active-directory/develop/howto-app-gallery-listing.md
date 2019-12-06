@@ -2,28 +2,24 @@
 title: Utwórz listę aplikacji w galerii aplikacji Azure Active Directory | Microsoft Docs
 description: Dowiedz się, jak wyświetlić listę aplikacji, która obsługuje logowanie jednokrotne w galerii aplikacji Azure Active Directory
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374068"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842782"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -114,7 +110,7 @@ Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji usł
 
 ## <a name="list-requests-by-customers"></a>Wyświetlanie listy żądań według klientów
 
-Klienci mogą przesłać żądanie, aby wyświetlić listę aplikacji, wybierając pozycję **żądania aplikacji przez klientów** > **Prześlij nowe żądanie**.
+Klienci mogą przesłać żądanie, aby wyświetlić listę aplikacji, wybierając pozycję **żądania aplikacji według klientów** > **przesłać nowe żądanie**.
 
 ![Pokazuje kafelek aplikacje żądane przez klienta](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -122,7 +118,7 @@ Oto przepływ aplikacji żądanych przez klienta.
 
 ![Pokazuje przepływ aplikacji żądanych przez klienta](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Osi czasu
+## <a name="timelines"></a>Osie czasu
 
 Oś czasu procesu tworzenia listy aplikacji SAML 2,0 lub WS-karmione w galerii wynosi od 7 do 10 dni roboczych.
 
@@ -134,4 +130,4 @@ Oś czasu procesu tworzenia listy aplikacji OpenID Connect Connect w galerii to 
 
 ## <a name="escalations"></a>Ich eskalacji
 
-W przypadku wszelkich eskalacji Wyślij wiadomość e-mail do [zespołu integracji rejestracji jednokrotnej usługi Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com) pod adresem SaaSApplicationIntegrations@service.microsoft.com i będziemy reagować tak szybko, jak to możliwe.
+W przypadku wszelkich eskalacji Wyślij wiadomość e-mail do [zespołu integracji SSO usługi Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com) w SaaSApplicationIntegrations@service.microsoft.comi będziemy reagować tak szybko, jak to możliwe.

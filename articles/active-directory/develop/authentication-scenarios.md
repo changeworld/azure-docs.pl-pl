@@ -2,28 +2,24 @@
 title: Uwierzytelnianie na platformie tożsamości firmy Microsoft | Azure
 description: Poznaj podstawowe informacje o uwierzytelnianiu w usłudze Microsoft Identity platform (v 2.0).
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167800"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843992"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -43,7 +39,7 @@ Scentralizowany dostawca tożsamości jest jeszcze ważniejszy dla aplikacji, kt
 
 Platforma tożsamości firmy Microsoft upraszcza uwierzytelnianie dla deweloperów aplikacji, dostarczając tożsamość jako usługę, z obsługą standardowych protokołów, takich jak OAuth 2,0 i OpenID Connect Connect, a także bibliotek typu "open source" dla różnych platformy ułatwiające szybkie rozpoczęcie tworzenia kodu. Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania programu Microsoft Graph, innych interfejsów API firmy Microsoft lub interfejsów API opracowanych przez deweloperów. Aby uzyskać więcej informacji, zobacz [ewolucja platformy tożsamości firmy Microsoft](about-microsoft-identity-platform.md).
 
-### <a name="tenants"></a>Dzierżaw
+### <a name="tenants"></a>Dzierżawcy
 
 Dostawca tożsamości w chmurze służy do zapewniania wielu organizacji. Aby zapewnić, że użytkownicy z różnych organizacji są oddzielni, usługa Azure AD jest dzielona na dzierżawców z jedną dzierżawą na organizację.
 

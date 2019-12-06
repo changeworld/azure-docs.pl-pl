@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5844d440da768ae2647ea7f15c4c913f83078ce1
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e7600bffd8d00caa6e9b5fdda03aefe429d4788b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672963"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842581"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: wprowadź zmianę konfiguracji domyślnej
 W tym artykule opisano sposób wprowadzania zmian w konfiguracji domyślnej w programie Azure Active Directory (Azure AD) Connect Sync. Zawiera kroki dla niektórych typowych scenariuszy. Korzystając z tej wiedzy, powinno być możliwe wprowadzanie prostych zmian do własnej konfiguracji w oparciu o własne reguły biznesowe.
@@ -204,7 +204,7 @@ Domyślnie atrybut UserType nie jest włączony dla synchronizacji, ponieważ ni
 
 - Usługa Azure AD akceptuje tylko dwie wartości atrybutu UserType: **member** i **gość**.
 - Jeśli atrybut UserType nie jest włączony do synchronizacji w Azure AD Connect, użytkownicy usługi Azure AD utworzeni za pomocą synchronizacji katalogów będą mieli atrybut UserType ustawiony jako **member**.
-- Usługa Azure AD nie zezwala, aby atrybut UserType istniejących użytkowników usługi Azure AD został zmieniony przez Azure AD Connect. Można ją ustawić tylko podczas tworzenia użytkowników usługi Azure AD.
+- Usługa Azure AD nie zezwala, aby atrybut UserType istniejących użytkowników usługi Azure AD został zmieniony przez Azure AD Connect. Można ją ustawić tylko podczas tworzenia użytkowników usługi Azure AD i [zmieniać je za pomocą programu PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 Przed włączeniem synchronizacji atrybutu UserType należy najpierw zdecydować, jak atrybut pochodzi z Active Directory lokalnego. Poniżej przedstawiono najbardziej typowe podejścia:
 
@@ -271,7 +271,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
     | Nazwa | *Podaj nazwę* | Na przykład *w programie z usługi AD — User UserType* |
     | Opis | *Podaj opis* |  |
     | Połączony system | *Wybieranie lokalnego łącznika usługi AD* |  |
-    | Typ połączonego obiektu systemu | **Użytkownicy** |  |
+    | Typ połączonego obiektu systemu | **User** |  |
     | Typ obiektu metaverse | **Sprzedawca** |  |
     | Typ łącza | **Dołącz** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
@@ -286,15 +286,15 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
 
 6. Przejdź do karty **transformacja** i zaimplementuj żądaną regułę transformacji. Na przykład jeśli w atrybucie sourceType wyznaczono nieużywany lokalny atrybut usługi AD (na przykład extensionAttribute1), można zaimplementować bezpośredni przepływ atrybutów:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
-    | Direct | userType | extensionAttribute1 | Unchecked | Aktualizacja |
+    | Direct | UserType | extensionAttribute1 | Unchecked | Aktualizacja |
 
     W innym przykładzie, chcesz utworzyć wartość atrybutu UserType z innych właściwości. Na przykład chcesz zsynchronizować wszystkich użytkowników jako gościa, jeśli ich lokalny atrybut AD userPrincipalName kończy się z częścią domeny <em>@partners.fabrikam123.org</em>. Można zaimplementować wyrażenie podobne do tego:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
-    | Wyrażenie | userType | IIF (isobecny ([userPrincipalName]), IIF (CBool (InStr (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "member", "Gość"), błąd ("UserPrincipalName nie jest obecny w celu określenia typu użytkownika")) | Unchecked | Aktualizacja |
+    | Wyrażenie | UserType | IIF (isobecny ([userPrincipalName]), IIF (CBool (InStr (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "member", "Gość"), błąd ("UserPrincipalName nie jest obecny w celu określenia typu użytkownika")) | Unchecked | Aktualizacja |
 
 7. Kliknij przycisk **Dodaj** , aby utworzyć regułę ruchu przychodzącego.
 
@@ -313,7 +313,7 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
     | Nazwa | *Podaj nazwę* | Na przykład *do usługi AAD — User UserType* |
     | Opis | *Podaj opis* ||
     | Połączony system | *Wybieranie łącznika usługi AAD* ||
-    | Typ połączonego obiektu systemu | **Użytkownicy** ||
+    | Typ połączonego obiektu systemu | **User** ||
     | Typ obiektu metaverse | **Sprzedawca** ||
     | Typ łącza | **Dołącz** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
@@ -329,9 +329,9 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
 
 6. Przejdź do karty **transformacja** i zaimplementuj następującą regułę przekształcania:
 
-    | Typ przepływu | Atrybut docelowy | Element źródłowy | Zastosuj raz | Typ scalania |
+    | Typ przepływu | Atrybut docelowy | Źródło | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
-    | Direct | userType | userType | Unchecked | Aktualizacja |
+    | Direct | UserType | UserType | Unchecked | Aktualizacja |
 
 7. Kliknij przycisk **Dodaj** , aby utworzyć regułę wychodzącą.
 

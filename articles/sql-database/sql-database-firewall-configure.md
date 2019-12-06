@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ed13b5028341637d71dee95f38cc44cc91aa2376
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481445"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851834"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory Azure SQL Database i Azure SQL Data Warehouse IP
 
@@ -127,13 +127,15 @@ Aby ustawić regułę zapory adresów IP na poziomie serwera w Azure Portal, prz
 
 #### <a name="from-the-database-overview-page"></a>Na stronie Przegląd bazy danych
 
-1. Aby ustawić regułę zapory adresów IP na poziomie serwera na stronie Przegląd bazy danych, wybierz opcję **Ustaw zaporę serwera** na pasku narzędzi, jak pokazano na poniższej ilustracji. Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database.
+1. Aby ustawić regułę zapory adresów IP na poziomie serwera na stronie Przegląd bazy danych, wybierz opcję **Ustaw zaporę serwera** na pasku narzędzi, jak pokazano na poniższej ilustracji. 
 
-      ![Reguła zapory adresu IP serwera](./media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![Reguła zapory adresu IP serwera](./media/sql-database-get-started-portal/sql-database-server-set-firewall-rule.png)
+
+    Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database.
 
 2. Wybierz pozycję **Dodaj IP klienta** na pasku narzędzi, aby dodać adres IP komputera, którego używasz, a następnie wybierz pozycję **Zapisz**. Reguła zapory adresów IP na poziomie serwera jest tworzona dla bieżącego adresu IP.
 
-      ![Ustaw regułę zapory adresów IP na poziomie serwera](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+    ![Ustaw regułę zapory adresów IP na poziomie serwera](./media/sql-database-get-started-portal/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>Na stronie Przegląd serwera
 
@@ -223,7 +225,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Zarządzanie regułami zapory adresów IP na poziomie serwera przy użyciu interfejsu API REST
 
-| Interfejs API | Poziom | Opis |
+| API | Poziom | Opis |
 | --- | --- | --- |
 | [Wyświetlanie listy reguł zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Serwer |Wyświetla bieżące reguły zapory adresów IP na poziomie serwera |
 | [Utwórz lub zaktualizuj reguły zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Serwer |Tworzy lub aktualizuje reguły zapory adresów IP na poziomie serwera |

@@ -1,31 +1,27 @@
 ---
-title: Przejście z portalu rejestracji aplikacji do nowego środowiska Rejestracje aplikacji w Azure Portal
+title: Przejście z portalu rejestracji aplikacji do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
 titleSuffix: Microsoft identity platform
 description: Wprowadzenie do nowego środowiska rejestracji aplikacji w Azure Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/8/2019
 ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013024"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844520"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Przejście z portalu rejestracji aplikacji do nowego środowiska Rejestracje aplikacji w Azure Portal
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Przejście z portalu rejestracji aplikacji do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
 
 Istnieje wiele ulepszeń w nowych [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowiska Azure Portal. Jeśli masz więcej informacji na temat korzystania z portalu rejestracji aplikacji (apps.dev.microsoft.com) do rejestrowania aplikacji i zarządzania nimi, nazywanego starym doświadczeniem, ten przewodnik szkoleniowy umożliwi rozpoczęcie pracy przy użyciu nowego środowiska.
 
@@ -55,7 +51,7 @@ Istnieje wiele ulepszeń w nowych [rejestracje aplikacji](https://go.microsoft.c
 
 -   Nowa lista aplikacji ma dwie dodatkowe kolumny: **utworzono w** kolumnie i **certyfikatach &** Secret, która przedstawia stan (bieżące, wygasa wkrótce lub wygasłe) poświadczeń zarejestrowanych w aplikacji.
 
-## <a name="new-app-registration"></a>Rejestracja nowej aplikacji
+## <a name="new-app-registration"></a>Rejestrowanie nowej aplikacji
 
 Aby zarejestrować zbieżną aplikację w starym środowisku, musisz podać nazwę. Utworzone aplikacje zostały zarejestrowane jako aplikacje zbieżne obsługujące wszystkie katalogi organizacyjne (wielodostępne) oraz osobiste konta Microsoft.  Nie można jej zmodyfikować przy użyciu starego środowiska, co utrudnia Tworzenie aplikacji obsługujących tylko konta organizacji (z wieloma dzierżawami lub pojedynczym dzierżawcą). [Dowiedz się więcej o obsługiwanych typach kont](v2-supported-account-types.md)
 

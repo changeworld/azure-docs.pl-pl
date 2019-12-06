@@ -3,24 +3,24 @@ title: Dowiedz się, jak dołączyć rozwiązania Update Management, Change Trac
 description: Dowiedz się, jak dołączyć maszynę wirtualną platformy Azure przy użyciu rozwiązań Update Management, Change Tracking i spisu, które są częścią Azure Automation
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc6e3f3aaa77d7691e0443ee74405058bde2dfa0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372787"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850809"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązań Update Management, Change Tracking i spisu na wielu maszynach wirtualnych
 
 Azure Automation udostępnia rozwiązania do zarządzania aktualizacjami zabezpieczeń systemu operacyjnego, śledzenia zmian i spisu, co jest zainstalowane na komputerach. Istnieje wiele sposobów, aby dołączać maszyny, można dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md)do [konta usługi Automation](automation-onboard-solutions-from-automation-account.md)podczas przeglądania maszyn wirtualnych lub przez [element Runbook](automation-onboard-solutions.md). W tym artykule opisano dołączanie tych rozwiązań podczas przeglądania maszyn wirtualnych na platformie Azure.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do platformy Azure w witrynie https://portal.azure.com
 

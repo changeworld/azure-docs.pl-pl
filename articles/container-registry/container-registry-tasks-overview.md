@@ -3,12 +3,12 @@ title: Omówienie zadań usługi ACR
 description: Wprowadzenie do ACR zadań, zestaw funkcji w Azure Container Registry, który zapewnia bezpieczną, zautomatyzowaną kompilację, zarządzanie i stosowanie poprawek w chmurze.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: b4710591dfd78f0633d5071c78d80e300349f498
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456162"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840769"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
 
@@ -52,16 +52,19 @@ Dowiedz się, jak używać szybkich zadań w pierwszym samouczku ACR Tasks, [two
 
 ## <a name="trigger-task-on-source-code-update"></a>Wyzwalanie zadania na aktualizacji kodu źródłowego
 
-Wyzwalanie kompilacji obrazu kontenera lub zadania wieloetapowego podczas zatwierdzania kodu lub żądania ściągnięcia lub aktualizacji w repozytorium Git w witrynie GitHub lub Azure DevOps. Można na przykład skonfigurować zadanie kompilacji za pomocą polecenia interfejsu CLI platformy Azure [AZ ACR Task Create][az-acr-task-create] , określając repozytorium git i opcjonalnie gałąź i pliku dockerfile. Gdy Twój zespół zaktualizuje kod w repozytorium, ACR zadania — utworzony element webhook wyzwala kompilację obrazu kontenera zdefiniowanego w repozytorium. 
+Wyzwalanie kompilacji obrazu kontenera lub zadania wieloetapowego, gdy kod jest zatwierdzany lub żądanie ściągnięcia jest tworzone lub aktualizowane do publicznego lub prywatnego repozytorium Git w usłudze GitHub lub Azure DevOps. Można na przykład skonfigurować zadanie kompilacji za pomocą polecenia interfejsu CLI platformy Azure [AZ ACR Task Create][az-acr-task-create] , określając repozytorium git i opcjonalnie gałąź i pliku dockerfile. Gdy Twój zespół zaktualizuje kod w repozytorium, ACR zadania — utworzony element webhook wyzwala kompilację obrazu kontenera zdefiniowanego w repozytorium. 
 
 Zadania ACR obsługują następujące wyzwalacze podczas ustawiania repozytorium git jako kontekstu zadania:
 
-| Wyzwalacz | Włączona domyślnie |
+| Wyzwalacz | Domyślnie włączone |
 | ------- | ------------------ |
 | Zatwierdzenie | Tak |
 | Żądanie ściągnięcia | Nie |
 
-Aby skonfigurować wyzwalacz, należy podać osobisty token dostępu (DevOps) w celu ustawienia elementu webhook w repozytorium GitHub lub Azure.
+Aby skonfigurować wyzwalacz aktualizacji kodu źródłowego, należy podać zadanie w osobistym tokenie dostępu (źródła), aby ustawić element webhook w publicznym lub prywatnym repozytorium GitHub lub DevOps Azure.
+
+> [!NOTE]
+> Obecnie zadania ACR nie obsługują wyzwalaczy żądań zatwierdzenia lub ściągnięcia w ramach repozytoriów Enterprise usługi GitHub.
 
 Dowiedz się, jak wyzwolić kompilacje w ramach zatwierdzenia kodu źródłowego w drugim samouczku ACR zadania, [Automatyzuj kompilacje obrazów kontenerów za pomocą zadań Azure Container Registry](container-registry-tutorial-build-task.md).
 
@@ -116,11 +119,14 @@ W poniższej tabeli przedstawiono kilka przykładów obsługiwanych lokalizacji 
 | Lokalizacja kontekstu | Opis | Przykład |
 | ---------------- | ----------- | ------- |
 | Lokalny system plików | Pliki znajdujące się w katalogu w lokalnym systemie plików. | `/home/user/projects/myapp` |
-| Gałąź główna usługi GitHub | Pliki znajdujące się w głównej (lub innej domyślnej) gałęzi repozytorium GitHub.  | `https://github.com/gituser/myapp-repo.git` |
-| Gałąź GitHub | Określona gałąź repozytorium GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| Podfolder usługi GitHub | Pliki znajdujące się w podfolderze repozytorium GitHub. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderu. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Podfolder Azure DevOps | Pliki znajdujące się w podfolderze w repozytorium platformy Azure. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderów. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| Gałąź główna usługi GitHub | Pliki znajdujące się w głównej (lub innej domyślnej) gałęzi w publicznym lub prywatnym repozytorium GitHub.  | `https://github.com/gituser/myapp-repo.git` |
+| Gałąź GitHub | Określona gałąź publicznego lub prywatnego repozytorium GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| Podfolder usługi GitHub | Pliki znajdujące się w podfolderze w publicznym lub prywatnym repozytorium GitHub. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderu. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Podfolder Azure DevOps | Pliki znajdujące się w podfolderze w publicznym lub prywatnym repozytorium platformy Azure. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderów. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Plik tar zdalnego | Pliki skompresowanego Archiwum na zdalnym serwerze WebServer. | `http://remoteserver/myapp.tar.gz` |
+
+> [!NOTE]
+> W przypadku korzystania z prywatnego repozytorium git jako kontekstu dla zadania należy podać osobisty token dostępu.
 
 ## <a name="image-platforms"></a>Platformy obrazów
 
@@ -128,8 +134,8 @@ Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i archit
 
 | System operacyjny | Architektura|
 | --- | ------- | 
-| Linux | Procesor<br/>ARM<br/>arm64<br/>386 |
-| Windows | Procesor |
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
+| Windows | amd64 |
 
 ## <a name="view-task-logs"></a>Wyświetlanie dzienników zadań
 

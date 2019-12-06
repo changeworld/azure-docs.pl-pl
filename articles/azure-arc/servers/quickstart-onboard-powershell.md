@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 7fb24d53876ab8c06fca4fbfe929c06a889335f3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786354"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872693"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Szybki Start: łączenie maszyn z platformą Azure przy użyciu usługi Azure ARC dla serwerów — PowerShell
 
@@ -55,6 +55,12 @@ Id                    : 5be92c87-01c4-42f5-bade-c1c10af87758
 Type                  :
 ```
 
+> [!NOTE] 
+> Uzyskanie prawidłowych uprawnień dostępu do nazw SPN może chwilę potrwać. Uruchamianie następującego przypisania roli w celu znacznie szybszego ustawiania uprawnień.
+> ``` PowerShell
+> New-AzRoleAssignment -RoleDefinitionName "Azure Connected Machine Onboarding" -ServicePrincipalName $sp.ApplicationId
+> ```
+
 Teraz Pobierz hasło przy użyciu programu PowerShell.
 
 ```azurepowershell-interactive
@@ -73,7 +79,7 @@ W skrypcie instalacji dołączania agenta:
 
 Poniższy przewodnik pozwala połączyć maszynę z platformą Azure, logując się do maszyny i wykonując czynności. Możesz również łączyć maszyny z platformą Azure [z poziomu portalu](quickstart-onboard-portal.md).
 
-### <a name="download-and-install-the-agent"></a>Pobieranie i Instalowanie agenta
+### <a name="download-and-install-the-agent"></a>Pobierz i zainstaluj agenta
 
 Zainstalowanie pakietu agenta wymaga dostępu głównego lub administratora lokalnego na serwerze docelowym, ale nie ma dostępu do platformy Azure.
 

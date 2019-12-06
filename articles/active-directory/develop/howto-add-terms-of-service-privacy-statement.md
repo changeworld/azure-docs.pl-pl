@@ -1,79 +1,75 @@
 ---
-title: Warunków użytkowania usługi i zasady zachowania poufności dla aplikacji | Azure
-description: Dowiedz się, jak można skonfigurować warunki usługi i zasady zachowania poufności dla aplikacji zarejestrowana do korzystania z usługi Azure AD.
+title: Warunki użytkowania usługi i zasady zachowania poufności informacji dla aplikacji | Azure
+description: Dowiedz się, jak skonfigurować warunki użytkowania usługi i zasady zachowania poufności informacji dla aplikacji zarejestrowanych w celu korzystania z usługi Azure AD.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a01b50573405964b09339d03e84c62dbdd8582
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9ca59120bcfadc6c75e3687be84a0e70f97fc3c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482863"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842814"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Instrukcje: Konfigurowanie warunków użytkowania usługi i zasady zachowania poufności dla aplikacji
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Instrukcje: Konfigurowanie warunków użytkowania i zasad zachowania poufności informacji dla aplikacji
 
-Deweloperzy, którzy tworzenie i zarządzanie aplikacjami, które integrują się z kontami Microsoft i usługi Azure Active Directory (Azure AD) powinien zawierać linki do warunków aplikacji usługi i zasady zachowania poufności. Warunki usługi i zasady zachowania poufności są udostępniane użytkownikom za pośrednictwem środowiska zgody użytkownika. One pomóc użytkownikom dowiedzieć się, że ich zaufania aplikacji. Warunki usługi i zasady zachowania poufności są szczególnie istotne w przypadku aplikacji wielodostępnych widocznych dla użytkownika — aplikacje, które są używane przez wiele katalogów, lub są dostępne dla dowolnego konta Microsoft.
+Deweloperzy, którzy tworzą aplikacje, które integrują się z usługą Azure Active Directory (Azure AD) i konta Microsoft, powinny zawierać linki do warunków użytkowania i zasad zachowania poufności informacji aplikacji. Warunki użytkowania usługi i zasady zachowania poufności informacji są udostępniane użytkownikom za pomocą funkcji wyrażania zgody użytkownika. Pomagają użytkownikom wiedzieć, że mogą ufać aplikacji. Warunki użytkowania usługi i zasady zachowania poufności informacji są szczególnie ważne w przypadku aplikacji wielodostępnych przeznaczonych dla użytkowników — aplikacji, które są używane przez wiele katalogów lub są dostępne dla dowolnej konto Microsoft.
 
-Odpowiedzialność za tworzenie warunków użytkowania usługi i zasad zachowania poufności dokumentów dla twojej aplikacji i zapewniające adresy URL do tych dokumentów. Dla aplikacji wielodostępnych, które nie zapewniają te linki środowisko zgody użytkownika dla aplikacji wyświetli alert, który może zniechęcić użytkowników do wyrażanie zgody na aplikację.
+Użytkownik jest odpowiedzialny za tworzenie dokumentów dotyczących warunków użytkowania i zasad zachowania poufności informacji dla aplikacji oraz dostarczanie adresów URL do tych dokumentów. W przypadku aplikacji wielodostępnych, w przypadku których nie podano tych linków, środowisko zgody użytkownika dla aplikacji będzie zawierało alert, który może zniechęcać użytkowników do Twojej aplikacji.
 
 > [!NOTE]
-> * Aplikacje z jedną dzierżawą nie wyświetli alert.
-> * Jeśli brakuje co najmniej jeden z dwóch łączy, aplikacja wyświetli alert.
+> * Aplikacje z jedną dzierżawą nie będą wyświetlać alertu.
+> * Jeśli brakuje jednego lub obu dwóch linków, aplikacja wyświetli alert.
 
 ## <a name="user-consent-experience"></a>Środowisko zgody użytkownika
 
-W poniższych przykładach pokazano użytkownika zgody środowiska, gdy skonfigurowano warunki usługi i zasady zachowania poufności i kiedy te łącza nie są skonfigurowane.
+W poniższych przykładach przedstawiono sposób wyrażania zgody użytkownika w przypadku skonfigurowania warunków użytkowania usługi i zasad zachowania poufności informacji oraz gdy te linki nie są skonfigurowane.
 
-![Zrzuty ekranu z lub bez zasad zachowania poufności informacji i warunki usługi](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
+![Zrzuty ekranu z i bez zasad zachowania poufności informacji oraz dostarczonych warunków świadczenia usługi](./media/howto-add-terms-of-service-privacy-statement/user-consent-exp-privacy-statement-terms-service.png)
 
-## <a name="formatting-links-to-the-terms-of-service-and-privacy-statement-documents"></a>Formatowanie linki do warunków usługi i ochrony prywatności dokumentów — instrukcja
+## <a name="formatting-links-to-the-terms-of-service-and-privacy-statement-documents"></a>Formatowanie linków do dokumentów dotyczących warunków użytkowania i zasad zachowania poufności informacji
 
-Przed dodaniem linki do warunków Twojej aplikacji, usług i ochrony prywatności dokumentów instrukcji, upewnij się, że adresy URL przestrzegać następujących wytycznych.
+Przed dodaniem linków do dokumentów dotyczących warunków użytkowania i zasad zachowania poufności informacji upewnij się, że adresy URL są zgodne z tymi wskazówkami.
 
 | Wytyczna     | Opis                           |
 |---------------|---------------------------------------|
-| Format        | Nieprawidłowy adres URL                             |
-| Prawidłowe schematy | HTTP i HTTPS<br/>Firma Microsoft zaleca protokołu HTTPS |
-| Maksymalna długość    | 2048 znaków                       |
+| Format        | Prawidłowy adres URL                             |
+| Prawidłowe schematy | HTTP i HTTPS<br/>Zalecamy korzystanie z protokołu HTTPS |
+| Długość maksymalna    | 2048 znaków                       |
 
 Przykłady: `https://myapp.com/terms-of-service` i `https://myapp.com/privacy-statement`
 
-## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Dodawanie linków do warunków usługi i zasady zachowania poufności
+## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Dodawanie linków do warunków użytkowania usługi i zasad zachowania poufności informacji
 
-Jeśli warunki usługi i zasady zachowania poufności są gotowe, można dodać łącza do tych dokumentów, w swojej aplikacji za pomocą jednej z następujących metod:
+Gdy warunki użytkowania usługi i zasady zachowania poufności informacji są gotowe, możesz dodać linki do tych dokumentów w aplikacji przy użyciu jednej z następujących metod:
 
-* [W witrynie Azure portal](#azure-portal)
-* [Za pomocą aplikacji obiektu JSON](#app-object-json)
-* [Za pomocą programu MSGraph beta interfejsu API REST](#msgraph-beta-rest-api)
+* [Za pomocą Azure Portal](#azure-portal)
+* [Używanie pliku JSON obiektu App](#app-object-json)
+* [Korzystanie z interfejsu API REST MSGraph beta](#msgraph-beta-rest-api)
 
-### <a name="azure-portal"></a>Za pomocą witryny Azure portal
-Wykonaj następujące kroki w witrynie Azure portal.
+### <a name="azure-portal"></a>Korzystanie z Azure Portal
+Wykonaj następujące kroki w Azure Portal.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Przejdź do **rejestracje aplikacji** sekcji i wybierz swoją aplikację.
-3. Otwórz **znakowania** okienka.
-4. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+2. Przejdź do sekcji **rejestracje aplikacji** i wybierz aplikację.
+3. Otwórz okienko **znakowania** .
+4. Wypełnij pola adres **URL warunków** użytkowania i **zasady zachowania poufności informacji** .
 5. Zapisz zmiany.
 
-    ![Właściwości aplikacji zawiera warunki usług i ochrony prywatności adresów URL, instrukcja](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Właściwości aplikacji zawierają adresy URL warunków użytkowania usługi i zasad zachowania poufności informacji](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="app-object-json"></a>Za pomocą aplikacji obiektu JSON
+### <a name="app-object-json"></a>Używanie pliku JSON obiektu App
 
-Jeśli wolisz bezpośrednio zmodyfikować obiekt aplikacji JSON umożliwia Edytor manifestu w witrynie Azure portal lub portalu rejestracji aplikacji zawierają łącza do aplikacji warunków usługi i zasady zachowania poufności.
+Jeśli wolisz bezpośrednio modyfikować kod JSON obiektu App, możesz użyć edytora manifestu w portalu Azure Portal lub rejestracji aplikacji, aby dołączyć linki do warunków użytkowania i zasad zachowania poufności informacji aplikacji.
 
 ```json
     "informationalUrls": { 
@@ -82,9 +78,9 @@ Jeśli wolisz bezpośrednio zmodyfikować obiekt aplikacji JSON umożliwia Edyto
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>Za pomocą programu MSGraph beta interfejsu API REST
+### <a name="msgraph-beta-rest-api"></a>Korzystanie z interfejsu API REST MSGraph beta
 
-Programowe aktualizację wszystkich aplikacji, można użyć MSGraph wersji beta interfejsu API REST można zaktualizować wszystkie Twoje aplikacje zawierają linki do warunków usługi i ochrony prywatności dokumentów instrukcji.
+Aby programowo zaktualizować wszystkie swoje aplikacje, możesz użyć interfejsu API REST MSGraph beta w celu zaktualizowania wszystkich aplikacji, aby zawierały linki do dokumentów warunków użytkowania usługi i zasad zachowania poufności informacji.
 
 ```
 PATCH https://graph.microsoft.com/beta/applications/{application id}
@@ -101,5 +97,5 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 ```
 
 > [!NOTE]
-> * Uważaj, aby nie zastąpić wszelkie istniejące wartości, które zostały przypisane do żadnej z tych pól: `supportUrl`, `marketingUrl`, i `logoUrl`
-> * Program MSGraph wersji beta interfejsu API REST działa tylko po zalogowaniu się przy użyciu konta usługi Azure AD. Osobistych kont Microsoft nie są obsługiwane.
+> * Należy zachować ostrożność, aby nie zastąpić żadnych istniejących wcześniej wartości przypisanych do któregokolwiek z następujących pól: `supportUrl`, `marketingUrl`i `logoUrl`
+> * Interfejs API REST MSGraph beta będzie działał tylko po zalogowaniu się przy użyciu konta usługi Azure AD. Osobiste konta Microsoft nie są obsługiwane.

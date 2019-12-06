@@ -1,32 +1,28 @@
 ---
-title: Obiekty główne aplikacji i usług w Azure Active Directory
+title: Obiekty aplikacji i jednostki usługi w usłudze Azure Active Directory
 titleSuffix: Microsoft identity platform
 description: Informacje o relacji między obiektami obiektów głównych aplikacji i usług w Azure Active Directory.
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 services: active-directory
-editor: ''
 ms.assetid: adfc0569-dc91-48fe-92c3-b5b4833703de
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1a4d9301894c6a98abd8244fdd6c10a058a26ad
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 03054f328513c7356b02d296076c211cc1c3865e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803424"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844587"
 ---
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Obiekty główne aplikacji i usług w Azure Active Directory
+# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Obiekty aplikacji i jednostki usługi w usłudze Azure Active Directory
 
 Czasami znaczenie terminu "aplikacja" może być interpretowane w kontekście Azure Active Directory (Azure AD). W tym artykule wyjaśniono koncepcje i konkretne aspekty integracji aplikacji usługi Azure AD z ilustracją rejestracji i zgody dla [aplikacji wielodostępnych](developer-glossary.md#multi-tenant-application).
 
@@ -63,13 +59,13 @@ Podmiot zabezpieczeń definiuje zasady dostępu i uprawnienia dla użytkownika/a
 
 Gdy aplikacja uzyskuje uprawnienia dostępu do zasobów w dzierżawie (po rejestracji lub [zgodzie](developer-glossary.md#consent)), tworzony jest obiekt jednostki usługi. Jednostka Microsoft Graph [serviceprincipal][MS-Graph-Sp-Entity] definiuje schemat właściwości obiektu głównego usługi.
 
-### <a name="application-and-service-principal-relationship"></a>Relacja główna aplikacji i usługi
+### <a name="application-and-service-principal-relationship"></a>Relacja aplikacji i jednostki usługi
 
 Rozważmy obiekt aplikacji jako *globalną* reprezentację aplikacji do użycia we wszystkich dzierżawcach i nazwę główną usługi jako reprezentację *lokalną* do użycia w określonej dzierżawie.
 
-Obiekt Application służy jako szablon, z którego są *tworzone* właściwości wspólne i domyślne do użycia podczas tworzenia odpowiednich obiektów głównych usługi. W związku z tym obiekt aplikacji ma 1:1 relację z aplikacją oprogramowania i 1: wiele relacji z odpowiadającymi im obiektami głównych usług.
+Obiekt aplikacji służy jako szablon, z którego *pochodzą* typowe i domyślne właściwości do stosowania podczas tworzenia odpowiednich obiektów jednostki usługi. W związku z tym obiekt aplikacji ma 1:1 relację z aplikacją oprogramowania i 1: wiele relacji z odpowiadającymi im obiektami głównych usług.
 
-Należy utworzyć jednostkę usługi w każdej dzierżawie, w której jest używana aplikacja, umożliwiając jej ustalenie tożsamości logowania i/lub dostęp do zasobów zabezpieczonych przez dzierżawcę. Aplikacja o pojedynczej dzierżawie ma tylko jedną jednostkę usługi (w swojej dzierżawie domowej), która została utworzona i wysłana do użycia podczas rejestracji aplikacji. Wielodostępna aplikacja sieci Web/interfejs API ma także nazwę główną usługi utworzoną w każdej dzierżawie, w której użytkownik z tej dzierżawy wyraził zgodę na jego użycie.
+Należy utworzyć jednostkę usługi w każdej dzierżawie, w której jest używana aplikacja, umożliwiając jej ustalenie tożsamości logowania i/lub dostęp do zasobów zabezpieczonych przez dzierżawcę. Aplikacja jednej dzierżawy ma tylko jedną jednostkę usługi (w swojej głównej dzierżawie) utworzoną do użycia podczas rejestracji aplikacji i mającą na to zgodę. Wielodostępna aplikacja sieci Web/interfejs API ma także nazwę główną usługi utworzoną w każdej dzierżawie, w której użytkownik z tej dzierżawy wyraził zgodę na jego użycie.
 
 > [!NOTE]
 > Wszelkie zmiany wprowadzone w obiekcie aplikacji również są odzwierciedlone w jego obiekcie głównym usługi tylko w dzierżawie głównym aplikacji (dzierżawie, w której został zarejestrowany). W przypadku aplikacji wielodostępnych zmiany w obiekcie aplikacji nie są odzwierciedlane w obiektach głównych usługi dzierżawców klientów, dopóki dostęp nie zostanie usunięty za pomocą [panelu dostępu do aplikacji](https://myapps.microsoft.com) i ponownie udzielony.

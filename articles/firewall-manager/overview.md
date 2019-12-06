@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 12/06/2019
 ms.author: victorh
-ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267950"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869565"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Co to jest wersja zapoznawcza usługi Azure firewall Manager?
 
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji na temat zaufanych dostawców zabezpieczeń, zob
 
 Łatwo kieruj ruch do bezpiecznego centrum w celu filtrowania i rejestrowania bez konieczności ręcznego konfigurowania tras zdefiniowanych przez użytkownika (UDR) w sieciach wirtualnych szprych. Dostawców innych firm można używać do filtrowania ruchu z Internetu (B2I), obok siebie przy użyciu zapory platformy Azure dla gałęzi do sieci wirtualnej (B2V), sieci wirtualnej z siecią wirtualną (V2V) i Sieć wirtualna do Internetu (V2I). Dostawców innych firm można także używać do filtrowania ruchu V2I, o ile nie jest wymagana Zapora platformy Azure dla B2V lub V2V. 
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność w poszczególnych regionach
 
 W publicznej wersji zapoznawczej są obsługiwane następujące regiony:
 
@@ -70,12 +70,13 @@ Wersja zapoznawcza Menedżera zapory platformy Azure obejmuje następujące znan
 
 |Problem  |Opis  |Środki zaradcze  |
 |---------|---------|---------|
-|Ręcznie utworzone sieci wirtualnych centralne nie są obsługiwane|Obecnie Menedżer zapory platformy Azure obsługuje sieci utworzone za pomocą koncentratorów wirtualnych. Używanie własnej ręcznie utworzonej sieci wirtualnej centrum nie jest jeszcze obsługiwane.|Na razie użyj Menedżera zapory platformy Azure z sieciami piasty i szprych utworzonych przy użyciu centrów wirtualnych.<br>Obecnie trwa badanie.
+|Ręcznie utworzone sieci wirtualnych centralne nie są obsługiwane|Obecnie Menedżer zapory platformy Azure obsługuje sieci utworzone za pomocą koncentratorów wirtualnych. Używanie własnej ręcznie utworzonej sieci wirtualnej centrum nie jest jeszcze obsługiwane.|Na razie użyj Menedżera zapory platformy Azure z sieciami piasty i szprych utworzonych przy użyciu centrów wirtualnych.<br>Trwa rozwiązywanie.
 |Ograniczenia filtrowania innych firm|Filtrowanie ruchu V2I z dostawcami innych firm nie jest obsługiwane przez usługę Azure firewall B2V i V2V.|Obecnie trwa badanie.|
 |Dzielenie ruchu nie jest obecnie obsługiwane|Dzielenie pakietów Office 365 i Public PaaS nie jest obecnie obsługiwane. W związku z tym wybranie dostawcy innej firmy dla usługi V2I lub B2I spowoduje również wysłanie wszystkich usług Azure Public PaaS i Office 365 przez usługę partnera.|Obecnie badanie podziału ruchu w centrum.
 |Jeden koncentrator na region|Nie można mieć więcej niż jednego centrum na region|Utwórz wiele wirtualnych sieci WAN w regionie.|
 |Zasady podstawowe muszą znajdować się w tym samym regionie co zasady lokalne|Utwórz wszystkie zasady lokalne w tym samym regionie co zasady podstawowe. Można nadal stosować zasady, które zostały utworzone w jednym regionie w zabezpieczonym centrum z innego regionu.|Obecnie trwa badanie.|
 |Komunikacja między centrami nie działa z bezpiecznym koncentratorem wirtualnym|Zabezpieczona wirtualna koncentrator do bezpiecznej komunikacji z koncentratorem wirtualnym nie jest jeszcze obsługiwana.|Obecnie trwa badanie.|
+|Wszystkie zabezpieczone centra wirtualne współużytkujące tę samą wirtualną sieć WAN muszą znajdować się w tej samej grupie zasobów.|To zachowanie jest wyrównane z koncentratorami wirtualnych sieci WAN już dziś.|Utwórz wiele wirtualnych sieci WAN, aby umożliwić tworzenie zabezpieczonych koncentratorów wirtualnych w różnych grupach zasobów.|
 
 ## <a name="next-steps"></a>Następne kroki
 

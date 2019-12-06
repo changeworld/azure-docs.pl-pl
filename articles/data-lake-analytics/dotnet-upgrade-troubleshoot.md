@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 851a405e5143ea5bb3a26de76f713914aa4bb569
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648521"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873237"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics jest uaktualniana do .NET Framework v 4.7.2
 
@@ -39,7 +39,7 @@ Sprawdź, czy występują problemy z uszkodzeniem zgodności z poprzednimi wersj
 1. Uruchom narzędzie sprawdzania zgodności z poprzednimi wersjami w bibliotekach DLL platformy .NET przez
    1. Używanie rozszerzenia programu Visual Studio na [rozszerzeniu programu Visual Studio analizatora przenośności](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Pobieranie i używanie autonomicznego narzędzia z usługi [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport). Instrukcje dotyczące uruchamiania narzędzia autonomicznego znajdują się w witrynie [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md) .
-   1. Dla 4.7.2. zgodność Read isRetargeting = = true to istotne zmiany.
+   1. Dla 4.7.2. zgodność, `read isRetargeting == True` identyfikuje możliwe problemy.
 2. Jeśli narzędzie wskazuje na to, że na kod może mieć wpływ którykolwiek z możliwych do odróżnienia niezgodności (niektóre typowe przykłady niezgodności są wymienione poniżej), można kontynuować sprawdzanie według
    1. Analizowanie kodu i określanie, czy kod przekazuje wartości do interfejsów API, których to dotyczy
    1. Wykonaj sprawdzenie środowiska uruchomieniowego. Wdrożenie środowiska uruchomieniowego nie jest wykonywane obok siebie w ADLA. Przed uaktualnieniem można wykonać sprawdzanie środowiska uruchomieniowego, używając lokalnego VisualStudio z lokalną .NET Framework 4.7.2 względem reprezentatywnego zestawu danych.
@@ -60,12 +60,12 @@ Możesz przesłać zadanie do starej wersji środowiska uruchomieniowego (która
 Najbardziej typowe niezgodności z poprzednimi wersjami, które mogą identyfikować kontroler, to (Ta lista została wygenerowana przez uruchomienie narzędzia sprawdzania w ramach własnych wewnętrznych zadań ADLA), które biblioteki mają wpływ ważne, aby wykonać wymaganą akcję #1, aby sprawdzić, czy wpływ na zadania) i możliwe działania zaradcze. Uwaga: w prawie wszystkie przypadki związane z własnymi zadaniami ostrzeżenia zostały wyłączone, aby były fałszywie dodatnie ze względu na wąski charakter najnowszych zmian.
 
 - Właściwość IAsyncResult. CompletedSynchronously musi być poprawna, aby wynikowe zadanie zostało ukończone
-  - Podczas wywoływania metody TaskFactory. wywołaniach metody FromAsync implementacja właściwości IAsyncResult. CompletedSynchronously musi być poprawna, aby wynikowe zadanie zostało ukończone. Oznacza to, że właściwość musi zwracać wartość true, jeśli i tylko wtedy, gdy implementacja została ukończona synchronicznie. Wcześniej właściwość nie została sprawdzona.
+  - Podczas wywoływania metody TaskFactory. wywołaniach metody FromAsync implementacja właściwości IAsyncResult. CompletedSynchronously musi być poprawna, aby wynikowe zadanie zostało ukończone. Oznacza to, że właściwość musi zwracać wartość true, jeśli i tylko wtedy, gdy implementacja została ukończona synchronicznie. Wcześniej właściwość nie był sprawdzane.
   - Biblioteki, których dotyczy problem: mscorlib, system. Threading. Tasks
   - Sugerowana akcja: Upewnij się, że TaskFactory. wywołaniach metody FromAsync zwraca wartość PRAWDA prawidłowo
 
 - Obiekt DataObject. GetData teraz pobiera dane jako UTF-8
-  - W przypadku aplikacji przeznaczonych dla .NET Framework 4 lub uruchomionych w .NET Framework 4.5.1 lub wcześniejszych wersjach element DataObject. GetData pobiera dane sformatowane w formacie HTML jako ciąg ASCII. W związku z tym znaki inne niż ASCII (znaki, których kody ASCII są większe niż 0x7F) są reprezentowane przez dwa losowe znaki. #N # #N # dla aplikacji przeznaczonych dla .NET Framework 4,5 lub nowszych i uruchamianych na .NET Framework 4.5.2, `DataObject.GetData` pobiera dane sformatowane w formacie HTML jako UTF-8, która reprezentuje znaki większe niż 0x7F poprawnie.
+  - W przypadku aplikacji przeznaczonych dla .NET Framework 4 lub uruchomionych w .NET Framework 4.5.1 lub wcześniejszych wersjach element DataObject. GetData pobiera dane sformatowane w formacie HTML jako ciąg ASCII. W związku z tym znaki inne niż ASCII (znaki, których kody ASCII są większe niż 0x7F) są reprezentowane przez dwa losowe znaki. #N # #N # dla aplikacji przeznaczonych dla .NET Framework 4,5 lub nowszych i uruchamianych na .NET Framework 4.5.2, `DataObject.GetData` pobiera dane sformatowane w formacie HTML jako UTF-8, które reprezentują znaki większe niż 0x7F poprawnie.
   - Biblioteki, których dotyczy problem: GLO
   - Sugerowana akcja: Upewnij się, że pobrane dane są w żądanym formacie
 

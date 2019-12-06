@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3611e61b303997a4291f4436403bb0a95e647e65
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686035"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851285"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla Azure SQL Data Warehouse
 Wyświetl limity pamięci i współbieżności przydzielono do różnych poziomów wydajności i klas zasobów w Azure SQL Data Warehouse.  
@@ -50,19 +50,19 @@ Poziomy usług mieszczą się w zakresie od DW100c do DW30000c.
 Maksymalny poziom usług to DW30000c, który ma 60 węzłów obliczeniowych i jedną dystrybucję na węzeł obliczeniowy. Na przykład magazyn danych 600 TB w procesach DW30000c około 10 TB na węzeł obliczeniowy.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Maksymalne wartości współbieżności dla grup obciążeń
-Wraz z wprowadzeniem grup obciążeń — LINK do opracowania wstępnego nie ma już zastosowania koncepcja miejsc współbieżności.  Zasoby na żądanie są przypisywane na podstawie procentowej i określone w definicji grupy obciążeń.  Jednak nawet w przypadku usuwania miejsc współbieżności w poszczególnych zapytaniach jest wymagana minimalna ilość zasobów na podstawie poziomu usługi.  W poniższej tabeli zdefiniowano minimalną ilość zasobów wymaganych na zapytanie między poziomami usług i skojarzoną współbieżność, która może zostać osiągnięta. 
+Po wprowadzeniu [grup obciążeń](sql-data-warehouse-workload-isolation.md)nie ma już zastosowania koncepcji dotyczącej miejsc współbieżności.  Zasoby na żądanie są przypisywane na podstawie procentowej i określone w definicji grupy obciążeń.  Jednak nawet w przypadku usuwania miejsc współbieżności w poszczególnych zapytaniach jest wymagana minimalna ilość zasobów na podstawie poziomu usługi.  W poniższej tabeli zdefiniowano minimalną ilość zasobów wymaganych na zapytanie między poziomami usług i skojarzoną współbieżność, która może zostać osiągnięta. 
 
 |Poziom usług|Maksymalna liczba współbieżnych zapytań|Minimalna wartość% obsługiwana dla REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12,5%|
-|DW300c|12|0,8|
+|DW300c|12|8%|
 |DW400c|16|6,25%|
 |DW500c|20|5%|
-|DW1000c|32|r.3|
-|DW1500c|32|r.3|
-|DW2000c|48|dwóch|
-|DW2500c|48|dwóch|
+|DW1000c|32|3%|
+|DW1500c|32|3%|
+|DW2000c|48|2%|
+|DW2500c|48|2%|
 |DW3000c|64|1,5%|
 |DW5000c|64|1,5%|
 |DW6000c|128|0,75%|

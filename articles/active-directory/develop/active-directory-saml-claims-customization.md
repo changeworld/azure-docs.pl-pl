@@ -3,27 +3,24 @@ title: Dostosowywanie oświadczeń tokenów SAML dla aplikacji dla przedsiębior
 titleSuffix: Microsoft identity platform
 description: Informacje o dostosowywaniu oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1490a25e69ff22fde1f5c870868f20ea6f9a1cf7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5e9dd48695ab28879b151c4b3a37b72c551f9c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046983"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844791"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -75,7 +72,7 @@ Wybierz żądane źródło dla żądania `NameIdentifier` (lub NameID). Można w
 
 | Nazwa | Opis |
 |------|-------------|
-| Email | Adres e-mail użytkownika |
+| Adres e-mail | Adres e-mail użytkownika |
 | userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
 | onpremisessamaccount | Nazwa konta SAM, które zostało zsynchronizowane z lokalnej usługi Azure AD |
 | obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |

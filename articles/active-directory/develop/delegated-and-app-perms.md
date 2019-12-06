@@ -2,26 +2,22 @@
 title: Jak rozpoznać różnice między delegowanymi a uprawnieniami aplikacji | Microsoft Docs
 description: Dowiedz się więcej o uprawnieniach delegowanych i aplikacji, jak są używane przez klientów i udostępniane przez zasoby dla aplikacji opracowywanych za pomocą usługi Azure AD
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62a82fd71da5741b6ff7747f92dd38650f6a0fae
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 30371c1a8406b1d348277cf923a9d7fbe00e97c6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324642"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843312"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Jak rozpoznać różnice między delegowanymi a uprawnieniami aplikacji
 

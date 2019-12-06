@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066c4cb598d9a8c14ab5d6ee893376266e104d15
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 30006d0dcccdd1b160289c72769340d141198d3c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381530"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847596"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentnego blokowania
 
@@ -67,7 +67,7 @@ W zależności od wymagań organizacyjnych może być konieczne dostosowanie war
 
 Aby sprawdzić lub zmodyfikować wartości blokady inteligentnej dla organizacji, wykonaj następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **metody uwierzytelniania** > **Ochrona hasłem**.
 1. Ustaw **próg blokady**w zależności od liczby nieudanych logowań dozwolonych na koncie przed pierwszym zablokowaniem. Wartość domyślna to 10.
 1. Ustaw **czas trwania blokady (w sekundach**) na długość w sekundach każdej blokady. Wartość domyślna to 60 sekund (jedna minuta).

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d53d63b40ad62a4d21cbad22a67e9e9781b1f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381713"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847870"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -40,7 +40,7 @@ Istnieje również możliwość, że sprawdzanie poprawności hasła ma wpływ n
 
 Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić konfigurację z *inspekcji* w celu *wymuszenia* , aby wymagać bardziej bezpiecznych haseł. Ukierunkowane monitorowanie w tym czasie jest dobrym pomysłem.
 
-## <a name="deployment-requirements"></a>Wymagania dotyczące wdrażania
+## <a name="deployment-requirements"></a>Wymagania wdrożenia
 
 * Wymagania dotyczące licencjonowania usługi Azure AD Password Protection można znaleźć w artykule [eliminowanie nieprawidłowych haseł w organizacji](concept-password-ban-bad.md#license-requirements).
 * Na wszystkich maszynach, na których zostanie zainstalowane oprogramowanie agenta DC ochrony hasłem usługi Azure AD, musi działać system Windows Server 2012 lub nowszy. Ten wymóg nie oznacza, że domena lub las Active Directory muszą być również na poziomie funkcjonalności domeny lub lasu systemu Windows Server 2012. Jak wspomniano w [zasadach projektowania](concept-password-ban-bad-on-premises.md#design-principles), nie ma minimalnych DFL lub FFL wymaganych do uruchomienia agenta lub oprogramowania serwera proxy.
@@ -55,7 +55,7 @@ Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić
 * Połączenie sieciowe musi istnieć między co najmniej jednym kontrolerem domeny w każdej domenie i co najmniej jednym serwerem, który obsługuje usługę proxy na potrzeby ochrony hasłem. Ta łączność musi zezwalać kontrolerowi domeny na dostęp do portu mapowania punktów końcowych wywołań RPC 135 i portu serwera RPC w usłudze serwera proxy. Domyślnie port serwera RPC to dynamiczny port RPC, ale można go skonfigurować do [korzystania z portu statycznego](#static).
 * Wszystkie maszyny, na których zostanie zainstalowana usługa serwera proxy ochrony haseł usługi Azure AD, muszą mieć dostęp sieciowy do następujących punktów końcowych:
 
-    |**Punktu końcowego**|**Przeznaczenie**|
+    |**Punkt końcowy**|**Przeznaczenie**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Żądania uwierzytelniania|
     |`https://enterpriseregistration.windows.net`|Funkcja ochrony hasłem w usłudze Azure AD|

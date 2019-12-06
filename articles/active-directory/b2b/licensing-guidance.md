@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162268"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868851"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Wskazówki dotyczące licencjonowania funkcji współpracy między firmami przy użyciu usługi Azure Active Directory
 
@@ -25,7 +25,7 @@ Dzięki funkcji współpracy między firmami (B2B, Business-to-Business) w Azure
 > [!NOTE]
 > Zapoznaj się z [cennikiem Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) , aby uzyskać szczegółowe informacje na temat cen usługi Azure AD i funkcji współpracy B2B.
 
-Licencjonowanie użytkowników gościa B2B jest automatycznie obliczane i raportowane na podstawie współczynnika 1:5. Obecnie nie jest możliwe przypisanie licencji użytkownika gościa B2B bezpośrednio do użytkowników-Gości.
+Licencjonowanie użytkowników gościa B2B jest automatycznie obliczane i raportowane na podstawie współczynnika 1:5. 
 
 Ponadto użytkownicy-Goście mogą korzystać z bezpłatnych funkcji usługi Azure AD bez dodatkowych wymagań dotyczących licencjonowania. Użytkownicy-Goście mają dostęp do bezpłatnych funkcji usługi Azure AD, nawet jeśli nie masz żadnych płatnych licencji usługi Azure AD. 
 

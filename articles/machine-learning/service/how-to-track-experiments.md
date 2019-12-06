@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a60691222c6f5f31a5b5c97df029790c1fd690ed
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584527"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873888"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitoruj uruchomienia eksperymentów i metryki usługi Azure ML
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,29 +32,29 @@ Usprawnij proces tworzenia modelu, śledząc eksperymenty i monitorowane metryki
 
 ## <a name="available-metrics-to-track"></a>Dostępne metryki do śledzenia
 
-Następujące metryki można dodać do przebiegu podczas uczenia eksperymentu. Aby wyświetlić bardziej szczegółową listę elementów, które można śledzić w przebiegu, zobacz [dokumentację dotyczącą przebiegu klasy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
+Następujące metryki można dodać do uruchomienia podczas szkolenia eksperymentu. Aby wyświetlić bardziej szczegółowe listy mogą być śledzone przy uruchomieniu, zobacz [Uruchom dokumentację referencyjną klasę](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
 |Typ| Funkcja języka Python | Uwagi|
 |----|:----|:----|
-|Wartości skalarne |Funkcyjn<br>`run.log(name, value, description='')`<br><br>Przykład:<br>Run. log ("dokładność", 0,95) |Rejestruj wartość liczbową lub ciągu do uruchomienia o podaną nazwę. Zarejestrowanie metryki w przebiegu powoduje, że Metryka jest przechowywana w rekordzie uruchomienia w eksperymentie.  Tę samą metrykę można rejestrować wiele razy w ramach przebiegu, dlatego wynik jest uznawany za wektor tej metryki.|
-|Wyświetlany|Funkcyjn<br>`run.log_list(name, value, description='')`<br><br>Przykład:<br>Run. log _list ("dokładności", [0,6, 0,7, 0,87]) | Rejestruj listę wartości do uruchomienia o podanej nazwie.|
-|wiersza|Funkcyjn<br>`run.log_row(name, description=None, **kwargs)`<br>Przykład:<br>Run. log _row ("t over X", X = 1, Y = 0.4) | Użycie *log_row* tworzy metrykę z wieloma kolumnami, zgodnie z opisem w kwargs. Każdy nazwany parametr generuje kolumnę o określonej wartości.  *log_row* można wywołać raz, aby zarejestrować dowolną spójną krotkę lub wiele razy w pętli, aby wygenerować kompletną tabelę.|
-|Tabela|Funkcyjn<br>`run.log_table(name, value, description='')`<br><br>Przykład:<br>Run. log _table ("t over X", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Rejestruj obiekt słownika do uruchomienia o podaną nazwę. |
-|Obrazy|Funkcyjn<br>`run.log_image(name, path=None, plot=None)`<br><br>Przykład:<br>`run.log_image("ROC", plt)` | Rejestruj obraz do rekordu uruchomienia. Użyj log_image, aby zarejestrować plik obrazu lub wykres matplotlib do uruchomienia.  Te obrazy będą widoczne i porównywalne w rekordzie uruchomienia.|
-|Oznacz przebieg|Funkcyjn<br>`run.tag(key, value=None)`<br><br>Przykład:<br>Run. tag ("selected", "yes") | Oznacz przebieg z kluczem ciągu i opcjonalną wartością ciągu.|
-|Przekaż plik lub katalog|Funkcyjn<br>`run.upload_file(name, path_or_stream)`<br> <br> Przykład:<br>Run. upload_file ("best_model. PKL", "./model.PKL") | Przekaż plik do rekordu uruchomienia. Uruchamia Automatyczne przechwytywanie pliku w określonym katalogu wyjściowym, który domyślnie przyjmuje wartość "./Outputs" dla większości typów uruchomienia.  Używaj upload_file tylko wtedy, gdy trzeba przekazać dodatkowe pliki lub nie określono katalogu wyjściowego. Zalecamy dodanie `outputs` do nazwy, aby można było przekazać ją do katalogu danych wyjściowych. Wszystkie pliki, które są skojarzone z tym rekordem uruchamiania, można wyświetlić według nazwy `run.get_file_names()`|
+|Wartości skalarne |Funkcja:<br>`run.log(name, value, description='')`<br><br>Przykład:<br>Run.log ("dokładności" 0,95) |Dziennik w liczbowymi lub wartość ciągu do uruchomienia o podanej nazwie. Rejestrowanie metryki Uruchom powoduje, że w przypadku tej metryki, które mają być przechowywane w rekordu uruchomienia w eksperymencie.  Można rejestrować metryki tej samej kilka razy w ramach przebiegu, wynik jest traktowane jako wektor tej metryki.|
+|Listy|Funkcja:<br>`run.log_list(name, value, description='')`<br><br>Przykład:<br>Run.log_list ("dokładności" [Update 0.6, 0,7, 0.87]) | Zaloguj się listę wartości przebiegu o podanej nazwie.|
+|wiersz|Funkcja:<br>`run.log_row(name, description=None, **kwargs)`<br>Przykład:<br>Run.log_row ("Y za pośrednictwem X", x = 1, y = 0,4) | Za pomocą *log_row* tworzy metryki z wielu kolumn, zgodnie z opisem w kwargs. Każdy parametr o nazwie generuje kolumna z wartością określoną.  *log_row* można lze volat pouze jednou logowanie dowolnego spójnej kolekcji lub wiele razy w pętli, aby wygenerować pełny spis.|
+|Tabela|Funkcja:<br>`run.log_table(name, value, description='')`<br><br>Przykład:<br>Run.log_table ("Y za pośrednictwem X", {"x": [1, 2, 3], "y": [Update 0.6, 0,7 0.89]}) | Zaloguj się do uruchomienia o podanej nazwie obiekt słownika. |
+|Obrazy|Funkcja:<br>`run.log_image(name, path=None, plot=None)`<br><br>Przykład:<br>`run.log_image("ROC", plt)` | Zaloguj się obraz rekordu uruchomienia. Użyj log_image do logowania się plik obrazu lub matplotlib wykresu do uruchomienia.  Te obrazy będą widoczne i porównywalny rekordu uruchomienia.|
+|Tag przebiegu|Funkcja:<br>`run.tag(key, value=None)`<br><br>Przykład:<br>Run.tag ("wybrane", "yes") | Tag wykonywania za pomocą klucza typu ciąg i wartości opcjonalny ciąg.|
+|Przekazywanie pliku lub katalogu|Funkcja:<br>`run.upload_file(name, path_or_stream)`<br> <br> Przykład:<br>Run.upload_file ("best_model.pkl", ". / model.pkl") | Przekazywanie pliku do rekordu uruchomienia. Uruchamia automatyczne Przechwytywanie plików w katalogu określonym produktem wyjściowym wartością domyślną jest ". / wyjścia" dla większości uruchomienia typów.  Użyj upload_file tylko wtedy, gdy konieczne jest przekazanie dodatkowych plików lub nie określono katalogu wyjściowego. Zalecamy dodanie `outputs` nazwę, tak że pobiera przekazany do katalogu danych wyjściowych. Możesz wyświetlić listę wszystkich plików, które są skojarzone z tym uruchomienia rekord przy użyciu o nazwie `run.get_file_names()`|
 
 > [!NOTE]
-> Metryki dla skalarnych, list, wierszy i tabel mogą mieć typ: float, Integer lub String.
+> Metryki dla wartości skalarnych, wierszy i listy tabel może mieć typ: float, liczba całkowita lub ciąg.
 
 ## <a name="choose-a-logging-option"></a>Wybierz opcję rejestrowania
 
-Jeśli chcesz śledzić lub monitorować eksperyment, musisz dodać kod, aby rozpocząć rejestrowanie podczas przesyłania przebiegu. Poniżej przedstawiono sposoby wyzwalania przesłania przebiegu:
-* __Uruchom. start_logging__ — Dodaj funkcje rejestrowania do skryptu szkoleniowego i Rozpocznij interaktywną sesję rejestrowania w określonym doświadczeniu. **start_logging** tworzy interaktywny przebieg do użycia w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymentie.
-* __ScriptRunConfig__ — Dodaj funkcje rejestrowania do skryptu szkoleniowego i Załaduj cały folder skryptu z przebiegiem.  **ScriptRunConfig** jest klasą do konfigurowania konfiguracji do uruchamiania skryptów. Za pomocą tej opcji można dodać kod monitorowania, aby otrzymywać powiadomienia o zakończeniu lub aby wyświetlić widżet wizualny do monitorowania.
+Jeśli chcesz śledzić lub monitorowania eksperymentu, należy dodać kod, aby rozpocząć rejestrowanie, gdy prześlesz przebiegu. Poniżej przedstawiono sposoby przesyłania wykonywania wyzwalacza:
+* __Run.start_logging__ — Dodawanie funkcji rejestrowania skrypt szkolenia i uruchomić sesję logowania interakcyjnego w określonym eksperymentu. **start_logging** tworzy interakcyjnego wykonywania do użytku w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymencie.
+* __ScriptRunConfig__ — Dodawanie funkcji rejestrowania skrypt szkolenia i załadować folderu cały skrypt z przebiegiem.  **ScriptRunConfig** jest klasą konfigurowania konfiguracje skrypt jest uruchamiany. Po wybraniu tej opcji można dodać kod monitorowania, aby otrzymywać powiadomienia o zakończeniu lub można pobrać visual widżetu do monitorowania.
 
 ## <a name="set-up-the-workspace"></a>Konfigurowanie obszaru roboczego
-Przed dodaniem rejestrowania i przesłaniem eksperymentu należy skonfigurować obszar roboczy.
+Przed dodaniem rejestrowania i przesyłanie eksperymentu, należy skonfigurować obszar roboczy.
 
 1. Załaduj obszar roboczy. Aby dowiedzieć się więcej na temat ustawiania konfiguracji obszaru roboczego, zobacz [plik konfiguracji obszaru roboczego](how-to-configure-environment.md#workspace).
 
@@ -65,13 +65,13 @@ Przed dodaniem rejestrowania i przesłaniem eksperymentu należy skonfigurować 
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-start_logging"></a>Opcja 1: Użyj start_logging
+## <a name="option-1-use-start_logging"></a>Opcja 1: Użycie start_logging
 
-**start_logging** tworzy interaktywny przebieg do użycia w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymentie.
+**start_logging** tworzy interakcyjnego wykonywania do użytku w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymencie.
 
-Poniższy przykład pociągnie prostego modelu pierścienia skryptu sklearn lokalnie w lokalnym notesie Jupyter. Aby dowiedzieć się więcej o przesyłaniu eksperymentów do różnych środowisk, zobacz [Konfigurowanie celów obliczeniowych na potrzeby szkolenia modeli przy użyciu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
+Poniższy przykład przygotowuje prosty model Ridge skryptu sklearn lokalnie w przypadku lokalnego notesu programu Jupyter. Aby dowiedzieć się więcej o przesyłaniu eksperymentów do różnych środowisk, zobacz [Konfigurowanie celów obliczeniowych na potrzeby szkolenia modeli przy użyciu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets).
 
-1. Utwórz skrypt szkoleniowy w lokalnym notesie Jupyter. 
+1. Utwórz skrypt szkoleniowy w lokalnego notesu programu Jupyter. 
 
    ```python
    # load diabetes dataset, a well-known small dataset that comes with scikit-learn
@@ -95,7 +95,7 @@ Poniższy przykład pociągnie prostego modelu pierścienia skryptu sklearn loka
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Dodaj śledzenie eksperymentu przy użyciu zestawu SDK Azure Machine Learning i przekaż utrwalony model do rekordu przebiegu eksperymentu. Poniższy kod dodaje Tagi, dzienniki i przekazuje plik modelu do przebiegu eksperymentu.
+2. Dodaj śledzenie eksperymentu przy użyciu zestawu SDK Azure Machine Learning i przekaż utrwalony model do rekordu przebiegu eksperymentu. Poniższy kod dodaje znaczniki, dzienników i przekazuje plik modelu na uruchomienie eksperymentu.
 
    ```python
     # Get an experiment object from Azure Machine Learning
@@ -127,13 +127,13 @@ Poniższy przykład pociągnie prostego modelu pierścienia skryptu sklearn loka
     run.complete()
    ```
 
-    Skrypt kończy się ```run.complete()```, co oznacza, że przebieg jest zakończony.  Ta funkcja jest zwykle używana w scenariuszach interaktywnego notesu.
+    Skrypt kończy się ```run.complete()```, która oznacza Uruchom jako ukończone.  Ta funkcja jest zwykle używana w scenariuszach notesu interakcyjnego.
 
-## <a name="option-2-use-scriptrunconfig"></a>Opcja 2: korzystanie z ScriptRunConfig
+## <a name="option-2-use-scriptrunconfig"></a>Opcja 2: Użycie ScriptRunConfig
 
-[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) jest klasą do konfigurowania konfiguracji do uruchamiania skryptów. Za pomocą tej opcji można dodać kod monitorowania, aby otrzymywać powiadomienia o zakończeniu lub aby wyświetlić widżet wizualny do monitorowania.
+[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) jest klasą do konfigurowania konfiguracji do uruchamiania skryptów. Po wybraniu tej opcji można dodać kod monitorowania, aby otrzymywać powiadomienia o zakończeniu lub można pobrać visual widżetu do monitorowania.
 
-Ten przykład rozszerza się w oparciu o podstawowy model pierścieniowy skryptu sklearn z powyższych. Wykonuje proste odwzorowanie parametrów, aby wyrównać wartości alfa modelu do przechwytywania metryk i modeli przeszkolonych w ramach przebiegów w ramach eksperymentu. Przykład jest uruchamiany lokalnie w środowisku zarządzanym przez użytkownika. 
+W tym przykładzie stanowi rozszerzenie podstawowego modelu Ridge skryptu sklearn z góry. Proste parametru odchylenia do czyszczenia odbywa się za pośrednictwem wartości alfa modelu, aby przechwycić metryki i wytrenowane modele w działa w ramach eksperymentu. W przykładzie uruchamiane lokalnie przeciwko środowisku zarządzane przez użytkownika. 
 
 1. Utwórz skrypt szkoleniowy `train.py`.
 
@@ -201,7 +201,7 @@ Ten przykład rozszerza się w oparciu o podstawowy model pierścieniowy skryptu
       return np.arange(0.0, 1.0, 0.05)
    ```
 
-3. Skonfiguruj środowisko lokalne zarządzane przez użytkownika.
+3. Konfigurowanie środowiska lokalnego z zarządzana przez użytkownika.
 
    ```python
    from azureml.core import Environment
@@ -215,7 +215,7 @@ Ten przykład rozszerza się w oparciu o podstawowy model pierścieniowy skryptu
    #user_managed_env.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
    ```
 
-4. Prześlij skrypt ```train.py``` do uruchomienia w środowisku zarządzanym przez użytkownika. Ten cały folder skryptu jest przesyłany do szkoleń, w tym pliku ```mylib.py```.
+4. Prześlij ```train.py``` skrypt do uruchomienia w środowisku zarządzane przez użytkownika. Ten folder cały skrypt jest przesyłany w celu szkolenia, w tym ```mylib.py``` pliku.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -232,17 +232,36 @@ W artykule [Uruchamianie, monitorowanie i anulowanie szkoleń zostanie](how-to-m
 
 ## <a name="view-run-details"></a>Wyświetl szczegóły przebiegu
 
+### <a name="view-activequeued-runs-from-the-browser"></a>Wyświetl aktywne/kolejkowane uruchomienia z przeglądarki
+
+Cele obliczeniowe używane do uczenia modeli są zasobem udostępnionym. W związku z tym mogą mieć wiele uruchomionych w kolejce lub aktywnych w danym momencie. Aby zobaczyć przebiegi dla określonego elementu docelowego obliczeń z przeglądarki, wykonaj następujące czynności:
+
+1. W [Azure Machine Learning Studio](https://ml.azure.com/)wybierz swój obszar roboczy, a następnie wybierz pozycję __obliczenia__ z lewej strony.
+
+1. Wybierz pozycję __klastry szkoleniowe__ , aby wyświetlić listę celów obliczeniowych używanych na potrzeby szkolenia. Następnie wybierz klaster.
+
+    ![Wybierz klaster szkoleniowy](./media/how-to-track-experiments/select-training-compute.png)
+
+1. Wybierz pozycję __uruchomienia__. Zostanie wyświetlona lista przebiegów korzystających z tego klastra. Aby wyświetlić szczegóły określonego uruchomienia, Użyj linku w kolumnie __Run__ . Aby wyświetlić szczegóły eksperymentu, Użyj linku w kolumnie __eksperymenty__ .
+
+    ![Wybierz przebiegi dla klastra szkoleniowego](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > Przebieg może zawierać przebiegi podrzędne, więc jedno zadanie szkoleniowe może spowodować powstanie wielu wpisów.
+
+Po zakończeniu przebiegu nie jest on już wyświetlany na tej stronie. Aby wyświetlić informacje o zakończonych przebiegach, odwiedź sekcję __eksperymenty__ w programie Studio i wybierz eksperyment i Uruchom. Aby uzyskać więcej informacji, zobacz sekcję [kwerendy przebiegu zapytania](#queryrunmetrics) .
+
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>Widżet uruchamiania z Jupyter notesu
 Gdy używasz metody **ScriptRunConfig** do przesyłania przebiegów, możesz obserwować postęp przebiegu za pomocą [widżetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobnie jak przesyłanie przebiegu, widżet jest asynchroniczny i udostępnia aktualizacje na bieżąco co 10–15 sekund aż do zakończenia zadania.
 
-1. Wyświetl widżet Jupyter podczas oczekiwania na ukończenie przebiegu.
+1. Wyświetl element widget Jupyter podczas oczekiwania na przebieg zakończyć.
 
    ```python
    from azureml.widgets import RunDetails
    RunDetails(run).show()
    ```
 
-   ![Zrzut ekranu widżetu Jupyter Notes](./media/how-to-track-experiments/run-details-widget.png)
+   ![Zrzut ekranu aplikacji Jupyter notebook widżetu](./media/how-to-track-experiments/run-details-widget.png)
 
 Możesz również uzyskać link do tego samego ekranu w obszarze roboczym.
 
@@ -250,7 +269,7 @@ Możesz również uzyskać link do tego samego ekranu w obszarze roboczym.
 print(run.get_portal_url())
 ```
 
-2. **[Dla zautomatyzowanych przebiegów uczenia maszynowego]** Aby uzyskać dostęp do wykresów z poprzedniego przebiegu. Zastąp `<<experiment_name>>` odpowiednimi nazwami eksperymentu:
+2. **[Automatyczne uczenia maszynowego przebiegi]**  Dostęp do wykresów z poprzedniego uruchomienia. Zastąp `<<experiment_name>>` odpowiednimi nazwami eksperymentu:
 
    ``` 
    from azureml.widgets import RunDetails
@@ -262,55 +281,56 @@ print(run.get_portal_url())
    RunDetails(run).show()
    ```
 
-   ![Widżet Jupyter Notes dla zautomatyzowanych Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![Widżet notesu programu Jupyter dla automatycznego Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 Aby wyświetlić dalsze szczegóły potoku, kliknij potok, który chcesz zbadać w tabeli, a wykresy będą renderowane w wyskakującym okienku z Azure Machine Learning Studio.
 
 ### <a name="get-log-results-upon-completion"></a>Pobieranie wyników dziennika po zakończeniu
 
-Modelowanie szkoleń i monitorowania odbywa się w tle, dzięki czemu można uruchamiać inne zadania podczas oczekiwania. Możesz również poczekać, aż model ukończy szkolenie przed uruchomieniem większej liczby kodów. Gdy korzystasz z **ScriptRunConfig**, możesz użyć ```run.wait_for_completion(show_output = True)```, aby pokazać, kiedy szkolenie modelu zostało zakończone. Flaga ```show_output``` zapewnia pełne dane wyjściowe. 
+Model uczenia i monitorowania wystąpić w tle, aby uruchomić inne zadania podczas oczekiwania. Można również poczekać, aż modelu została zakończona szkolenia przed uruchomieniem więcej kodu. Kiedy używasz **ScriptRunConfig**, możesz użyć ```run.wait_for_completion(show_output = True)``` do wyświetlenia po zakończeniu szkolenia modelu. ```show_output``` Flagi zapewnia pełne dane wyjściowe. 
 
+<a id="queryrunmetrics"></a>
 
-### <a name="query-run-metrics"></a>Metryki uruchamiania zapytania
+### <a name="query-run-metrics"></a>Uruchomienie metryki zapytania
 
-Możesz wyświetlić metryki modelu przeszkolonego za pomocą ```run.get_metrics()```. Teraz można uzyskać wszystkie metryki, które zostały zarejestrowane w powyższym przykładzie, aby określić najlepszy model.
+Możesz wyświetlić metryki uczonego modelu przy użyciu ```run.get_metrics()```. Teraz można uzyskać wszystkie metryki, które zostały zarejestrowane w przykładzie powyżej, aby określić najlepszy model.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>Wyświetlanie eksperymentu w obszarze roboczym w programie [Azure Machine Learning Studio](https://ml.azure.com)
 
-Po zakończeniu eksperymentu możesz przejść do rekordu uruchomienia eksperymentu. Możesz uzyskać dostęp do historii z programu [Azure Machine Learning Studio](https://ml.azure.com).
+Po zakończeniu eksperymentu, możesz przejść do zarejestrowanych uruchomienie rekordu eksperymentu. Możesz uzyskać dostęp do historii z programu [Azure Machine Learning Studio](https://ml.azure.com).
 
-Przejdź do karty eksperymenty i wybierz swój eksperyment. Nastąpi przełączenie do pulpitu nawigacyjnego uruchamiania eksperymentu, w którym można zobaczyć śledzone metryki i wykresy, które są rejestrowane dla każdego przebiegu. W tym przypadku rejestrujemy MSE i wartości alpha.
+Przejdź do karty eksperymenty i wybierz swój eksperyment. Nastąpi przełączenie do pulpitu nawigacyjnego uruchamiania eksperymentu, w którym można zobaczyć śledzone metryki i wykresy, które są rejestrowane dla każdego przebiegu. W tym przypadku możemy rejestrowane MSE i wartości alfa.
 
   ![Szczegóły uruchamiania w programie Azure Machine Learning Studio](./media/how-to-track-experiments/experiment-dashboard.png)
 
 Możesz przejść do określonego przebiegu w celu wyświetlenia jego danych wyjściowych lub dzienników lub pobrać migawkę podanego eksperymentu, aby umożliwić udostępnienie folderu eksperymentu innym osobom.
 
-### <a name="viewing-charts-in-run-details"></a>Wyświetlanie wykresów w szczegółach uruchamiania
+### <a name="viewing-charts-in-run-details"></a>Wyświetlanie wykresów w szczegóły przebiegu
 
 Istnieją różne sposoby używania interfejsów API rejestrowania do rejestrowania różnych typów metryk podczas przebiegu i wyświetlania ich jako wykresów w programie Azure Machine Learning Studio.
 
-|Wartość rejestrowana|Przykładowy kod| Wyświetl w portalu|
+|Wartość zarejestrowane|Przykładowy kod| Wyświetl w portalu|
 |----|----|----|
-|Rejestruj tablicę wartości liczbowych| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Wykres liniowy z pojedynczą zmienną|
-|Rejestruj pojedynczą wartość liczbową o tej samej nazwie metryki wielokrotnie używanej (na przykład w pętli for)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Wykres liniowy z pojedynczą zmienną|
-|Rejestruj wiersz z 2 kolumnami numerycznymi wielokrotnie|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Wykres liniowy z dwoma zmiennymi|
-|Tabela dzienników z 2 kolumnami liczbowymi|`run.log_table(name='Sine Wave', value=sines)`|Wykres liniowy z dwoma zmiennymi|
+|Dziennik tablicę wartości liczbowych| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Wykres liniowy pojedynczej zmiennej|
+|Logowania jest pojedyncza wartość liczbowa o takiej samej nazwie metryki wielokrotnie używane (jak z poziomu pętli for)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Wykres liniowy pojedynczej zmiennej|
+|Zaloguj się wielokrotnie wiersz z 2 kolumny liczbowe|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Wykres liniowy z dwoma zmiennymi|
+|Tabela dziennika z 2 kolumny liczbowe|`run.log_table(name='Sine Wave', value=sines)`|Wykres liniowy z dwoma zmiennymi|
 
 
-## <a name="example-notebooks"></a>Przykładowe notesy
-W poniższych notesach przedstawiono Koncepcje opisane w tym artykule:
-* [jak to zrobić — Azure/szkolenia/uczenie w obrębie notesu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [Jak używać — Azure/szkolenia/uczenie lokalne](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [How-to-use-azureml/szkolenia/Logging-API/Logging-API. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+## <a name="example-notebooks"></a>Przykład notesów
+Następujące notesów zademonstrowania koncepcji w tym artykule:
+* [How-to-use-azureml/Training/Train-WITHIN-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [How-to-use-azureml/Training/Train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Spróbuj wykonać poniższe kroki, aby dowiedzieć się, jak używać zestawu SDK Azure Machine Learning dla języka Python:
+Wypróbuj podjęcie następujących kroków, aby dowiedzieć się, jak używać zestawu SDK usługi Azure Machine Learning dla języka Python:
 
-* Zapoznaj się z przykładem sposobu rejestracji najlepszego modelu i wdrożenia go w samouczku, [uczenie modelu klasyfikacji obrazów przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
+* Zobacz przykład sposobu rejestrowania najlepszy model i wdrożyć ją w tym samouczku [Wytrenuj model klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-* Dowiedz się, jak [uczenie modeli PyTorch za pomocą Azure Machine Learning](how-to-train-pytorch.md).
+* Dowiedz się, jak [uczyć modele PyTorch za pomocą usługi Azure Machine Learning](how-to-train-pytorch.md).

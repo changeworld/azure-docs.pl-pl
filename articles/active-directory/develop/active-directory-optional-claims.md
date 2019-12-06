@@ -2,28 +2,23 @@
 title: Dowiedz się, jak dostarczać opcjonalne oświadczenia do aplikacji usługi Azure AD
 titleSuffix: Microsoft identity platform
 description: Przewodnik dodawania niestandardowych lub dodatkowych oświadczeń do tokenów tokenów sieci Web SAML 2,0 i JSON (JWT) wystawionych przez Azure Active Directory.
-documentationcenter: na
 author: rwike77
-services: active-directory
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/03/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74e680979ccbcc94f8a49e993c6d64797ab80b1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a1364a491122ae15f86bec98afbfd4e5110e8e07
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803412"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844723"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD
 
@@ -35,7 +30,7 @@ Opcjonalne oświadczenia można używać do:
 - Zmień zachowanie niektórych oświadczeń zwracanych przez usługę Azure AD w tokenach.
 - Dodawanie niestandardowych oświadczeń do aplikacji i uzyskiwanie do nich dostępu.
 
-Listę oświadczeń standardowych można znaleźć w dokumentacji [token dostępu](access-tokens.md) i oświadczenia [id_token](id-tokens.md) . 
+Listę oświadczeń standardowych można znaleźć w dokumentacji [token dostępu](access-tokens.md) i [id_token](id-tokens.md) oświadczenia. 
 
 Chociaż opcjonalne oświadczenia są obsługiwane zarówno w tokenach w formacie v 1.0, jak i 2.0, jak również w przypadku tokenów języka SAML, zapewniają większość wartości podczas przechodzenia z wersji 1.0 do wersji 2.0. Jednym z celów [punktu końcowego platformy tożsamości w wersji 2.0 firmy Microsoft](active-directory-appmodel-v2-overview.md) jest mniejszy rozmiar tokenu, aby zapewnić optymalną wydajność przez klientów. W związku z tym kilka oświadczeń wcześniej uwzględnionych w tokenach dostępu i identyfikatorów nie jest już obecny w tokenach v 2.0 i musi być poproszony o odszukanie poszczególnych aplikacji.
 
@@ -92,7 +87,7 @@ Te oświadczenia są zawsze uwzględniane w tokenach usługi Azure AD w wersji 1
 | `pwd_url`     | Zmień adres URL hasła             | Adres URL, który użytkownik może odwiedzić, aby zmienić hasło.   |   |
 | `in_corp`     | Wewnątrz sieci firmowej        | Sygnalizuje, czy klient loguje się z sieci firmowej. W przeciwnym razie oświadczenia nie są uwzględniane.   |  Na podstawie ustawień [zaufanych adresów IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) w usłudze MFA.    |
 | `nickname`    | Pseudonim                        | Dodatkowa nazwa użytkownika, oddzielona od imię lub nazwisko. | 
-| `family_name` | Nazwisko                       | Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name": "Miller" | Obsługiwane w usłudze MSA i usłudze Azure AD   |
+| `family_name` | Nazwisko                       | Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w usłudze MSA i usłudze Azure AD   |
 | `given_name`  | Imię                      | Określa imię i nazwisko użytkownika, zgodnie z ustawieniem obiektu użytkownika.<br>"given_name": "Piotr"                   | Obsługiwane w usłudze MSA i usłudze Azure AD  |
 | `upn`         | Nazwa główna użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. |
 
@@ -220,7 +215,7 @@ W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia do
 
    Prawidłowe wartości to:
 
-   - Całą
+   - „All”
    - Grupy securitygroup
    - "DistributionList"
    - "DirectoryRole"
@@ -258,16 +253,16 @@ W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia do
    | Opcjonalny schemat oświadczeń | Wartość |
    |----------|-------------|
    | **Nazwij** | Musi być "grupami" |
-   | **zewnętrz** | Nieużywane. Pomiń lub określ wartość null |
-   | **olejk** | Nieużywane. Pomiń lub określ wartość false |
+   | **zewnętrz** | Nie jest używany. Pomiń lub określ wartość null |
+   | **olejk** | Nie jest używany. Pomiń lub określ wartość false |
    | **AdditionalProperties** | Lista dodatkowych właściwości.  Prawidłowe opcje to "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
    W additionalProperties są wymagane tylko jeden z "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name".  Jeśli istnieje więcej niż jeden, zostanie użyta pierwsza wartość i wszystkie pozostałe zostały zignorowane.
 
-   Niektóre aplikacje wymagają informacji o grupie dla użytkownika w ramach roszczeń ról.  Aby zmienić typ roszczeń na z na podstawie zgłoszenia do roli, należy dodać "emit_as_roles" do dodatkowych właściwości.  Wartości grupy będą emitowane w ramach roszczeń ról.
+   Niektóre aplikacje wymagają informacji o grupie dla użytkownika w ramach roszczeń ról.  Aby zmienić typ roszczeń na z na podstawie żądania grupy do roli, Dodaj "emit_as_roles" do dodatkowych właściwości.  Wartości grupy będą emitowane w ramach roszczeń ról.
 
    > [!NOTE]
-   > Jeśli jest używana wartość "emit_as_roles", wszystkie role aplikacji skonfigurowane do przypisania użytkownika nie będą wyświetlane w ramach roszczeń ról
+   > Jeśli zostanie użyta wartość "emit_as_roles", wszystkie role aplikacji skonfigurowane do przypisania użytkownika nie będą wyświetlane w ramach tego żądania
 
 **Przykłady:** Emituj grupy jako nazwy grup w tokenach dostępu OAuth w formacie dnsDomainName\sAMAccountName
 
@@ -340,7 +335,7 @@ Dostępnych jest wiele opcji aktualizowania właściwości konfiguracji tożsamo
 
     ```
 
-    W takim przypadku inne opcjonalne oświadczenia zostały dodane do każdego typu tokenu, który aplikacja może odebrać. Tokeny identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej formie (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu, które inne klienci żądają tej aplikacji, będą teraz zawierać auth_time. Tokeny SAML będą teraz zawierać rozszerzenie schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji to ab603c56068041afb2f6832e2a17e237). Tokeny SAML będą uwidaczniać identyfikator Skype jako `extension_skypeId`.
+    W takim przypadku inne opcjonalne oświadczenia zostały dodane do każdego typu tokenu, który aplikacja może odebrać. Tokeny identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej formie (`<upn>_<homedomain>#EXT#@<resourcedomain>`). Tokeny dostępu, które inne klienci żądają tej aplikacji, będą teraz zawierać auth_timeą. Tokeny SAML będą teraz zawierać rozszerzenie schematu katalogu skypeId (w tym przykładzie identyfikator aplikacji dla tej aplikacji to ab603c56068041afb2f6832e2a17e237). Tokeny SAML będą uwidaczniać identyfikator Skype jako `extension_skypeId`.
 
 1. Po zakończeniu aktualizowania manifestu kliknij przycisk **Zapisz** , aby zapisać manifest
 
@@ -348,5 +343,5 @@ Dostępnych jest wiele opcji aktualizowania właściwości konfiguracji tożsamo
 
 Dowiedz się więcej na temat standardowych oświadczeń dostarczonych przez usługę Azure AD.
 
-- [IDENTYFIKATORY tokenów](id-tokens.md)
+- [Tokeny identyfikatorów](id-tokens.md)
 - [Tokeny dostępu](access-tokens.md)

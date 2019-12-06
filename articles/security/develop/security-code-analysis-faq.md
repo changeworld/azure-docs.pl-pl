@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828248"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851523"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 Masz pytania? Zapoznaj się z poniższymi PYTANIAmi, aby uzyskać więcej informacji.
@@ -88,7 +88,7 @@ Zadania kompilacji mogą pobrać pakiety NuGet narzędzi z [kanału informacyjne
 
 Po zainstalowaniu zadania kompilacji zabezpieczeń udostępniane przez rozszerzenie staną się dostępne dla wszystkich użytkowników w organizacji. Podczas tworzenia lub edytowania potoku platformy Azure te zadania są dostępne z listy kolekcja zadań kompilacji. W przeciwnym razie instalacja rozszerzenia w organizacji usługi Azure DevOps nie przynosi żadnego efektu. Instalacja nie modyfikuje żadnych ustawień konta, ustawień projektu ani potoków.
 
-### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Czy zainstalowanie rozszerzenia modyfikuje moje istniejące potoki platformy Azure? 
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Czy zainstalowanie rozszerzenia modyfikuje istniejące Azure Pipelines? 
 
 Nie. Zainstalowanie rozszerzenia sprawia, że zadania kompilacji zabezpieczeń są dostępne dla wszystkich potoków. Nadal trzeba dodać lub zaktualizować definicje kompilacji, aby narzędzia mogły współpracowały z procesem kompilacji.
 
@@ -222,9 +222,6 @@ Zadanie kompilacji analizatorów Roslyn musi wysyłać zapytania do usługi Azur
 
 Jeśli potrzebujesz dodatkowej pomocy, obsługa analizy kodu zabezpieczeń firmy Microsoft jest dostępna od poniedziałku do piątku od 9:00 AM do 5:00 PM (pacyficzny czas standardowy).
 
-  - Dołączanie: Aby rozpocząć, skontaktuj się z kierownikami ds. klientów technicznych.
+- Dołączanie: Zapoznaj się z naszą [dokumentacją](security-code-analysis-onboard.md) dołączania
   
-  - Pomoc techniczna: Wyślij wiadomość E-mail do naszego zespołu przy [pomocy technicznej analizy kodu zabezpieczeń firmy Microsoft](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
-
-  >[!NOTE] 
-  >Być może nie masz płatnej pomocy technicznej z firmą Microsoft. Może też istnieć oferta pomocy technicznej, która uniemożliwia zakup usług z katalogu Phoenix. Jeśli spełniony jest dowolny z tych warunków, odwiedź [stronę główną usług pomocy technicznej](https://www.microsoft.com/enterprise/services/support) , aby uzyskać więcej informacji.
+- Pomoc techniczna: Wyślij wiadomość E-mail do naszego zespołu przy [pomocy technicznej analizy kodu zabezpieczeń firmy Microsoft](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)

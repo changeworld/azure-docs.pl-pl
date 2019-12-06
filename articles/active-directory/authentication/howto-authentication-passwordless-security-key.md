@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f87f1b2561b65590dfe29d7d2c8d1318e3d35e1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381852"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848446"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Włącz logowanie za hasłem klucza zabezpieczeń (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Ten dokument koncentruje się na włączaniu uwierzytelniania bezhaseł opartego
 
 ## <a name="requirements"></a>Wymagania
 
-- [Multi-Factor Authentication platformy Azure](howto-mfa-getstarted.md)
+- [Usługa Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Wersja zapoznawcza rejestracji informacji o zabezpieczeniach](concept-registration-mfa-sspr-combined.md)
 - Zgodne [FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN wymaga systemu Windows 10 w wersji 1809 lub nowszej * *
@@ -50,7 +50,7 @@ Funkcje rejestracji dla metod uwierzytelniania bezhaseł polegają na połączon
 
 ### <a name="enable-fido2-security-key-method"></a>Włącz metodę klucza zabezpieczeń FIDO2
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **metody uwierzytelniania** > **zasad metod uwierzytelniania (wersja zapoznawcza)** .
 1. W obszarze **klucz zabezpieczeń metody FIDO2**wybierz następujące opcje:
    1. **Włącz** — tak lub nie

@@ -1,32 +1,32 @@
 ---
 title: Zgodność Azure Cosmos DB
 description: W tym artykule opisano pokrycie certyfikacji Azure Cosmos DB ofert zgodności.
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 9ebec5498da8f7280179a48a6e3e3b10a9810e28
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881848"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872207"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Zgodność w usłudze Azure Cosmos DB 
 
 Azure Cosmos DB jest dostępna we wszystkich regionach świadczenia usługi Azure. Firma Microsoft udostępnia klientom pięć odrębnych środowisk chmury platformy Azure:
 
-* Chmura **publiczna platformy Azure** , która jest dostępna globalnie.
+* **Publicznej platformy Azure** chmury, co jest dostępne na całym świecie.
 
 * **Usługa Azure Chiny 21Vianet** jest dostępna za pomocą unikatowego powiązania między firmą Microsoft i firmę 21Vianet — jednym z największych dostawców Internetu w danym kraju.
 
-* **Platforma Azure (Niemcy** ) udostępnia usługi w ramach modelu zarządca danych, co zapewnia, że dane klienta pozostają w Niemczech pod kontrolą międzyplatformowych usług typu T-Systems.
+* **Azure (Niemcy)** świadczy usługi w modelu powiernika danych, który zapewnia tego klienta dane pozostają w Niemczech pod kontrolą T-Systems International GmbH, podmiot zależny firmy Deutsche Telecom, działają jako niemiecki powiernik danych.
 
-* **Azure Government** jest dostępna w czterech regionach Stany Zjednoczone do instytucji RZĄDowych Stanów Zjednoczonych i ich partnerów. 
+* **Platforma Azure Government** jest dostępna w czterech regionach na terenie Stanów Zjednoczonych do agencji rządowych Stanów Zjednoczonych oraz partnerzy. 
 
-* **Azure Government dla Departamentu Obrony (DoD)** jest dostępny w dwóch regionach w Stany Zjednoczone do Departamentu Obrony Stanów Zjednoczonych.
+* **Platforma Azure Government dla departamentu tajności** jest dostępna w dwóch regionach w Stanach Zjednoczonych, aby Departamentu Obrony USA.
 
 Aby pomóc klientom w spełnieniu własnych obowiązków związanych ze zgodnością w ramach regulowanych branż i rynków na całym świecie, platforma Azure utrzymuje największe portfolio zgodności w branży w zakresie obu (całkowitej liczby ofert) i głębokości (liczba dostępnych klientów usługi w zakresie oceny).  Oferty zgodności z platformą Azure są pogrupowane w cztery segmenty — mają zastosowanie globalnie, instytucje rządowe USA, specyficzne dla branży i regionu lub kraju/regionu.  Oferty zgodności są oparte na różnych typach gwarancji, w tym formalnych certyfikatach, zaświadczeniu, atestacji, autoryzacji i oceny wytwarzanych przez niezależne firmy wykonujące inspekcje innych firm, a także zmiany umowne, samooceny i dokumenty ze wskazówkami dla klientów wytwarzane przez firmę Microsoft.
 
@@ -71,4 +71,4 @@ Aby dowiedzieć się więcej na temat certyfikatów zgodności platformy Azure, 
 
 * Aby zapoznać się z omówieniem zabezpieczeń Azure Cosmos DB i najnowszych ulepszeń, zobacz artykuł dotyczący [zabezpieczeń usługi Azure Cosmos Database](database-security.md) .
 
-* Aby uzyskać więcej informacji o certyfikatach firmy Microsoft, zobacz [Centrum zaufania Azure](https://azure.microsoft.com/support/trust-center/).
+* Aby uzyskać więcej informacji o certyfikaty firmy Microsoft, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/).

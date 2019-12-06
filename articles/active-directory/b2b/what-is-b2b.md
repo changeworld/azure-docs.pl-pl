@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18d60614a07895c7e9468d35b2d389a28129af4d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f1ca0baa98336570d870a98c75c45a5303bdfaca
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271666"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868913"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co to jest dostęp użytkowników-gości w usłudze Azure Active Directory B2B?
 
@@ -61,7 +61,7 @@ Jako administrator możesz łatwo dodawać użytkowników-gości do organizacji 
 - Użytkownik-gość natychmiast otrzymuje możliwe do dostosowania zaproszenie, które pozwala mu na zalogowanie się do panelu dostępu.
 - Użytkowników-gości w katalogu można przypisywać do aplikacji lub grup.  
 
-![Zrzut ekranu przedstawiający nową stronę wpisu zaproszenia użytkownika-gościa](media/what-is-b2b/adding-b2b-users-admin.png)
+![Zrzut ekranu przedstawiający nową stronę wpisu zaproszenia użytkownika-gościa](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Zezwalanie właścicielom aplikacji i grup na zarządzanie własnymi użytkownikami-gośćmi
 

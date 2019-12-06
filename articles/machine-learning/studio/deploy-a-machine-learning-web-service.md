@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie usługi internetowej
+title: Wdrażanie usługi sieci Web
 titleSuffix: ML Studio (classic) - Azure
 description: Jak przekonwertować eksperyment szkoleniowy na eksperyment predykcyjny, przygotować go do wdrożenia, a następnie wdrożyć jako usługę sieci Web Azure Machine Learning Studio (klasyczną).
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 4324d33a9da66c5f49645e1c8014bd5f57d37bd9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837746"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851098"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Wdrażanie usługi sieci Web Azure Machine Learning Studio (klasycznej)
 
@@ -34,9 +34,9 @@ Z punktu widzenia wysokiego poziomu można wdrożyć model w trzech krokach:
 
 * **[Tworzenie eksperymentu szkoleniowego]** — w klasycznej wersji programu Studio można szkolić i testować model analizy predykcyjnej za pomocą dostarczonych danych szkoleniowych przy użyciu dużego zestawu wbudowanych algorytmów uczenia maszynowego.
 * **[Przekonwertuj ją na eksperyment predykcyjny]** — po przeszkoleniu modelu z istniejącymi danymi i przygotowaniu się do korzystania z niego do oceny nowych danych możesz przygotować i usprawnić eksperymenty do prognoz.
-* **Wdrażanie** go jako **[Nowa usługa sieci Web]** Web lub **[Klasyczna usługa sieci Web]** — w przypadku wdrożenia eksperymentu predykcyjnego jako usługi sieci Web platformy Azure użytkownicy mogą wysyłać dane do modelu i odbierać przewidywania modeli.
+* **Wdrażanie** go jako **[Nowa usługa sieci web]** Web lub **[Klasyczna usługa sieci web]** — w przypadku wdrożenia eksperymentu predykcyjnego jako usługi sieci Web platformy Azure użytkownicy mogą wysyłać dane do modelu i odbierać przewidywania modeli.
 
-## <a name="create-a-training-experiment"></a>Tworzenie eksperymentu szkoleniowego
+## <a name="create-a-training-experiment"></a>Tworzenie eksperymentu szkolenia
 
 Aby przeprowadzić uczenie modelu analizy predykcyjnej, należy użyć klasycznej wersji Azure Machine Learning Studio do utworzenia eksperymentu szkoleniowego, w którym są uwzględniane różne moduły służące do ładowania danych szkoleniowych, przygotowywania danych w razie potrzeby, stosowania algorytmów uczenia maszynowego i Oceń wyniki. Możesz wykonywać iterację eksperymentu i próbować użyć różnych algorytmów uczenia maszynowego, aby porównać i oszacować wyniki.
 
@@ -63,12 +63,12 @@ Poniższe kroki opisują wdrożenie eksperymentu predykcyjnego jako nowej usług
 
 ## <a name="deploy-it-as-a-new-web-service"></a>Wdróż ją jako nową usługę sieci Web
 
-Teraz, gdy eksperyment predykcyjny został przygotowany, możesz go wdrożyć jako nową usługę sieci Web platformy Azure (Menedżer zasobów). Korzystając z usługi sieci Web, użytkownicy mogą wysyłać dane do modelu, a model zwróci swoje przewidywania.
+Teraz, gdy eksperyment predykcyjny został przygotowany, możesz go wdrożyć jako nową usługę sieci Web platformy Azure (Menedżer zasobów). Przy użyciu usługi sieci web, użytkownicy mogą wysyłać dane do modelu i model zwróci jego prognozy.
 
 Aby wdrożyć eksperyment predykcyjny, kliknij pozycję **Uruchom** w dolnej części kanwy eksperymentu. Po zakończeniu eksperymentu kliknij pozycję **Wdróż usługę sieci Web** i wybierz pozycję **Wdróż usługę sieci Web [Nowy]** .  Zostanie otwarta strona wdrożenie portalu usługi sieci Web Machine Learning Studio (klasyczny).
 
 > [!NOTE] 
-> Aby wdrożyć nową usługę sieci Web, musisz mieć wystarczające uprawnienia w subskrypcji, w której wdrażana jest usługa sieci Web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci web Azure Machine Learning](manage-new-webservice.md). 
+> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md). 
 
 ### <a name="web-service-portal-deploy-experiment-page"></a>Strona wdrożenia portalu usługi sieci Web
 
@@ -121,7 +121,7 @@ Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usługi sieci W
 
 ### <a name="manage-your-new-web-service"></a>Zarządzanie nową usługą sieci Web
 
-Możesz zarządzać nowym portalem usług sieci Web usług sieci Web Machine Learning Studio (klasycznymi). Na [stronie Portal główny](https://services.azureml-test.net/)kliknij pozycję **usługi sieci Web**. Na stronie usługi sieci Web można usunąć lub skopiować usługę. Aby monitorować określoną usługę, kliknij usługę, a następnie kliknij pozycję **pulpit nawigacyjny**. Aby monitorować zadania wsadowe skojarzone z usługą sieci Web, kliknij pozycję **Dziennik żądań wsadowych**.
+Możesz zarządzać nowymi usługami sieci Web przy użyciu portalu usług sieci Web Machine Learning Studio (klasycznego). Na [stronie Portal główny](https://services.azureml.net/)kliknij pozycję **usługi sieci Web**. Na stronie usługi sieci Web można usunąć lub skopiować usługę. Aby monitorować określoną usługę, kliknij usługę, a następnie kliknij pozycję **pulpit nawigacyjny**. Aby monitorować zadania wsadowe skojarzone z usługą sieci Web, kliknij pozycję **Dziennik żądań wsadowych**.
 
 ### <a id="multi-region"></a>Wdrażanie nowej usługi sieci Web w wielu regionach
 
@@ -132,32 +132,32 @@ Cennik jest specyficzny dla regionu, dlatego należy zdefiniować plan rozliczen
 #### <a name="create-a-plan-in-another-region"></a>Tworzenie planu w innym regionie
 
 1. Zaloguj się do [usług sieci Web Microsoft Azure Machine Learning](https://services.azureml.net/).
-2. Kliknij opcję **plany** w menu.
-3. Na stronie plany na Widok kliknij pozycję **Nowy**.
-4. Z listy rozwijanej **subskrypcja** wybierz subskrypcję, w której będzie znajdować się nowy plan.
-5. Z listy rozwijanej **region** wybierz region dla nowego planu. Opcje planu dla wybranego regionu będą wyświetlane w sekcji **Opcje planu** na stronie.
-6. Z listy rozwijanej **Grupa zasobów** wybierz grupę zasobów dla planu. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Azure Resource Manager przegląd](../../azure-resource-manager/resource-group-overview.md).
-7. W polu **Nazwa planu** wpisz nazwę planu.
-8. W obszarze **Opcje planu**kliknij poziom rozliczenia dla nowego planu.
-9. Kliknij pozycję **Utwórz**.
+2. Kliknij przycisk **plany** opcji menu.
+3. W przypadku planów za pośrednictwem strony widoku kliknij przycisk **New**.
+4. Z **subskrypcji** listy rozwijanej wybierz subskrypcję, w którym będzie przechowywany nowy plan.
+5. Z **Region** listę rozwijaną, wybierz region dla nowego planu. Zostaną wyświetlone opcje planu dla wybranego regionu **opcje planu** części strony.
+6. Z **grupy zasobów** listy rozwijanej wybierz zasób grupy dla tego planu. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+7. W **Nazwa planu** wpisz nazwę planu.
+8. W obszarze **opcje planu**, kliknij odpowiedni poziom rozliczeń dla nowego planu.
+9. Kliknij przycisk **Utwórz**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Wdrażanie usługi sieci Web w innym regionie
 
 1. Na stronie Microsoft Azure Machine Learning Web Services kliknij opcję menu **usługi sieci Web** .
-2. Wybierz usługę sieci Web wdrażaną w nowym regionie.
-3. Kliknij przycisk **Kopiuj**.
-4. W polu **nazwa usługi sieci Web**wpisz nową nazwę usługi sieci Web.
-5. W polu **Opis usługi sieci Web**wpisz opis usługi sieci Web.
-6. Z listy rozwijanej **subskrypcja** wybierz subskrypcję, w której będzie znajdować się nowa usługa sieci Web.
-7. Z listy rozwijanej **Grupa zasobów** wybierz grupę zasobów dla usługi sieci Web. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Azure Resource Manager przegląd](../../azure-resource-manager/resource-group-overview.md).
-8. Z listy rozwijanej **region** wybierz region, w którym ma zostać wdrożona usługa sieci Web.
-9. Z listy rozwijanej **konto magazynu** wybierz konto magazynu, w którym ma być przechowywana usługa sieci Web.
-10. Z listy rozwijanej **Plan cen** wybierz plan w regionie wybranym w kroku 8.
-11. Kliknij przycisk **Kopiuj**.
+2. Wybierz usługę sieci Web są wdrażane w nowym regionie.
+3. Kliknij przycisk **kopiowania**.
+4. W **nazwa usługi sieci Web**, wpisz nową nazwę dla usługi sieci web.
+5. W **opisu usługi internetowej**, wpisz opis usługi sieci web.
+6. Z **subskrypcji** listy rozwijanej wybierz subskrypcję, w której będą znajdować się nowej usługi sieci web.
+7. Z **grupy zasobów** listy rozwijanej wybierz zasób grupy dla usługi sieci web. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+8. Z **Region** listę rozwijaną, wybierz region, w której ma zostać wdrożona usługa sieci web.
+9. Z **konta magazynu** listę rozwijaną, wybierz magazyn konta, w którym będzie przechowywany usługi sieci web.
+10. Z **Plan cenowy** listę rozwijaną, wybierz plan w regionie, który został wybrany w kroku 8.
+11. Kliknij przycisk **kopiowania**.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>Wdróż ją jako klasyczną usługę sieci Web
 
-Teraz, gdy eksperyment predykcyjny został wystarczająco przygotowany, możesz go wdrożyć jako klasyczną usługę sieci Web platformy Azure. Korzystając z usługi sieci Web, użytkownicy mogą wysyłać dane do modelu, a model zwróci swoje przewidywania.
+Teraz, gdy eksperyment predykcyjny został wystarczająco przygotowany, możesz go wdrożyć jako klasyczną usługę sieci Web platformy Azure. Przy użyciu usługi sieci web, użytkownicy mogą wysyłać dane do modelu i model zwróci jego prognozy.
 
 Aby wdrożyć eksperyment predykcyjny, kliknij pozycję **Uruchom** w dolnej części kanwy eksperymentu, a następnie kliknij pozycję **Wdróż usługę sieci Web**. Usługa sieci Web została skonfigurowana i zostanie umieszczona na pulpicie nawigacyjnym usługi sieci Web.
 
@@ -199,7 +199,7 @@ Istnieją różne akcje, które można wykonać, aby monitorować usługę sieci
 
 Aby uzyskać więcej informacji, zobacz temat [Zarządzanie obszarem roboczym Azure Machine Learning Studio (klasycznym)](manage-workspace.md) i [zarządzaniem usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning Studio (klasycznego)](manage-new-webservice.md).
 
-## <a name="update-the-web-service"></a>Aktualizowanie usługi sieci Web
+## <a name="update-the-web-service"></a>Aktualizacja usługi sieci web
 Możesz wprowadzić zmiany w usłudze sieci Web, takie jak aktualizowanie modelu z dodatkowymi danymi szkoleniowymi, i wdrożyć je ponownie, zastępując oryginalną usługę sieci Web.
 
 Aby zaktualizować usługę sieci Web, Otwórz oryginalny eksperyment predykcyjny, który został użyty do wdrożenia usługi sieci Web i Utwórz edytowalną kopię, klikając pozycję **Zapisz jako**. Wprowadź zmiany, a następnie kliknij przycisk **Wdróż usługę sieci Web**.
@@ -222,8 +222,8 @@ Jedną z opcji aktualizowania usługi sieci Web jest możliwość programowego p
 <!-- internal links -->
 [Tworzenie eksperymentu szkoleniowego]: #create-a-training-experiment
 [Przekonwertuj ją na eksperyment predykcyjny]: #convert-the-training-experiment-to-a-predictive-experiment
-[Nowa usługa sieci Web]: #deploy-it-as-a-new-web-service
-[Klasyczna usługa sieci Web]: #deploy-it-as-a-classic-web-service
+[Nowa usługa sieci web]: #deploy-it-as-a-new-web-service
+[Klasyczna usługa sieci web]: #deploy-it-as-a-classic-web-service
 [Nowy]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service

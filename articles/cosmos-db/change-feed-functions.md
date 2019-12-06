@@ -1,18 +1,18 @@
 ---
 title: Jak używać Azure Cosmos DB ze źródłem zmian Azure Functions
-description: Użyj Azure Cosmos DB źródła zmian z Azure Functions
+description: Użyj Azure Functions, aby nawiązać połączenie ze źródłem zmian Azure Cosmos DB. Później można tworzyć reaktywne usługi Azure Functions, które są wyzwalane dla każdego nowego zdarzenia.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 95fec1ef57c1d70ea484de9ad49b3410ed8594a4
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 215ecc1e392f8e7051173fb6f589fb940c26f17d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757049"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872251"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury oparte na zdarzeniach bezserwerowych z Azure Cosmos DB i Azure Functions
 
@@ -52,6 +52,6 @@ Teraz możesz dalej dowiedzieć się więcej na temat źródła zmian w następu
 
 * [Przegląd źródła zmian](change-feed.md)
 * [Sposoby odczytywania źródła zmian](read-change-feed.md)
-* [Korzystanie z biblioteki procesora kanału informacyjnego zmiany](change-feed-processor.md)
+* [Za pomocą zmian źródła danych z biblioteką procesora](change-feed-processor.md)
 * [Jak korzystać z biblioteki procesora źródła zmian](change-feed-processor.md)
 * [Przetwarzanie baz danych bezserwerowe przy użyciu Azure Cosmos DB i Azure Functions](serverless-computing-database.md)

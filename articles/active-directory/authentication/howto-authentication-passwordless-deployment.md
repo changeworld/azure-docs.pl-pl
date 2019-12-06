@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603449"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848497"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Ukończ wdrażanie uwierzytelniania przy użyciu hasła
 
@@ -61,7 +61,7 @@ Metody uwierzytelniania bezhaseł firmy Microsoft umożliwiają korzystanie z r�
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Zagadnienia techniczne dotyczące aplikacji Microsoft Authenticator
 
-**Integracja AD FS** — gdy użytkownik włączy Microsoft Authenticator poświadczenia bezhasła, uwierzytelnianie dla tego użytkownika jest domyślnie wysyłane powiadomienie o zatwierdzeniu. Użytkownicy w dzierżawie hybrydowej nie mogą być kierowani do usług AD FS w celu zalogowania się, chyba że wybierze opcję "Użyj hasła zamiast". Ten proces pomija również wszystkie lokalne zasady dostępu warunkowego i przepływy uwierzytelniania przekazywane. Jeśli jednak login_hint jest określony, użytkownik zostanie przekierowany do usług AD FS i ominąć opcję użycia poświadczeń bezhasła.
+**Integracja AD FS** — gdy użytkownik włączy Microsoft Authenticator poświadczenia bezhasła, uwierzytelnianie dla tego użytkownika jest domyślnie wysyłane powiadomienie o zatwierdzeniu. Użytkownicy w dzierżawie hybrydowej nie mogą być kierowani do usług AD FS w celu zalogowania się, chyba że wybierze opcję "Użyj hasła zamiast". Ten proces pomija również wszystkie lokalne zasady dostępu warunkowego i przepływy uwierzytelniania przekazywane. Jeśli jednak określono login_hint, użytkownik zostanie przekierowany do usług AD FS i pominięto opcję użycia poświadczeń bezhasła.
 
 **Serwer usługi Azure MFA** — użytkownicy końcowi korzystający z lokalnego serwera usługi Azure MFA w organizacji mogą nadal tworzyć i używać jednego poświadczenia logowania jednokrotnego bez hasła. Jeśli użytkownik próbuje uaktualnić wiele instalacji (5 +) Microsoft Authenticator przy użyciu poświadczenia, ta zmiana może spowodować wystąpienie błędu.
 
@@ -71,7 +71,7 @@ Metody uwierzytelniania bezhaseł firmy Microsoft umożliwiają korzystanie z r�
 
 Przed rozpoczęciem wdrażania bezhaseł, organizacje muszą spełniać następujące wymagania wstępne.
 
-| Wymagania wstępne | Aplikacja Authenticator | FIDO2 klucze zabezpieczeń |
+| Warunek wstępny | Aplikacja Authenticator | FIDO2 klucze zabezpieczeń |
 | --- | --- | --- |
 | [Połączona Rejestracja w ramach usługi Azure MFA i samoobsługowego resetowania hasła (SSPR)](howto-registration-mfa-sspr-combined.md) jest włączona (funkcja w wersji zapoznawczej) | √ | √ |
 | [Użytkownicy mogą korzystać z usługi Azure MFA](howto-mfa-getstarted.md) | √ | √ |
@@ -84,7 +84,7 @@ Przed rozpoczęciem wdrażania bezhaseł, organizacje muszą spełniać następu
 
 Wymagania wstępne dotyczące usługi Windows Hello są wysoce zależne od tego, czy są wdrażane w konfiguracji lokalnej, hybrydowej czy w chmurze. Aby uzyskać więcej informacji, zobacz [pełną listę wymagań wstępnych dotyczących usługi Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-multi-factor-authentication"></a>Usługa Azure Multi-Factor Authentication
 
 Użytkownicy rejestrują metodę bezhaseł w ramach przepływu rejestracji usługi Azure MFA. Uwierzytelnianie wieloskładnikowe przy użyciu nazwy użytkownika i hasła wraz z inną zarejestrowanej metody może być używane jako rezerwa w przypadku, gdy nie mogą korzystać z swojego telefonu ani klucza zabezpieczeń w niektórych scenariuszach.
 
@@ -133,8 +133,8 @@ W poniższej tabeli przedstawiono przypadki użycia do wdrożenia w ramach tego 
 | --- | --- |
 | **Dostęp** | Logowanie bez hasła jest dostępne z urządzenia firmowego lub osobistego w sieci firmowej lub poza nią. |
 | **Inspekcja** | Dane użycia są dostępne dla administratorów w celu przeprowadzania inspekcji niemal w czasie rzeczywistym. <br> Dane użycia są pobierane do systemów firmowych co najmniej co 29 dni lub używane jest narzędzie SIEM. |
-| **Dobrego** | Cykl życia przypisań użytkowników do odpowiedniej metody uwierzytelniania i skojarzonych grup jest zdefiniowany i monitorowany. |
-| **Zabezpieczenia** | Dostęp do odpowiedniej metody uwierzytelniania jest kontrolowany za pośrednictwem przypisań użytkowników i grup. <br> Tylko autoryzowani użytkownicy mogą korzystać z logowania bezhasłem. |
+| **Zarządzanie** | Cykl życia przypisań użytkowników do odpowiedniej metody uwierzytelniania i skojarzonych grup jest zdefiniowany i monitorowany. |
+| **Bezpieczeństwo** | Dostęp do odpowiedniej metody uwierzytelniania jest kontrolowany za pośrednictwem przypisań użytkowników i grup. <br> Tylko autoryzowani użytkownicy mogą korzystać z logowania bezhasłem. |
 | **Wydajność** | Osie czasu propagacji przydziału dostępu są udokumentowane i monitorowane. <br> Czasy logowania są mierzone w celu ułatwienia użycia. |
 | **Środowisko użytkownika** | Użytkownicy są świadomi zgodności urządzeń przenośnych. <br> Użytkownicy mogą konfigurować logowanie bezhasłem aplikacji uwierzytelniania. |
 | **Pomoc techniczna** | Użytkownicy wiedzą, jak znaleźć pomoc techniczną w przypadku problemów z logowaniem bezhasłem. |
@@ -210,7 +210,7 @@ Usługa Azure AD dodaje wpisy do dzienników inspekcji, gdy:
 
 W poniższej tabeli przedstawiono kilka przykładów typowych scenariuszy raportowania.
 
-|   | Zarządzanie ryzykiem | Zwiększ produktywność | Zarządzanie i zgodność |
+|   | Zarządzanie ryzykiem | Zwiększenie produktywności | Zarządzanie i zgodność |
 | --- | --- | --- | --- |
 | **Typy raportów** | Metody uwierzytelniania — Użytkownicy zarejestrowani do rejestracji zabezpieczeń połączonych | Metody uwierzytelniania — Użytkownicy zarejestrowani do powiadomień aplikacji | Logowania: Sprawdzanie, kto uzyskuje dostęp do dzierżawy i jak |
 | **Potencjalni akcje** | Użytkownicy docelowi nie są jeszcze zarejestrowani | Wdrażanie stacji Microsoft Authenticator aplikacji lub kluczy zabezpieczeń | Odwoływanie dostępu lub wymuszanie dodatkowych zasad zabezpieczeń dla administratorów |

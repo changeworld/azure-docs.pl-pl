@@ -4,17 +4,17 @@ description: W tym artykule został opisany sposób implementacji logiki obsług
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ed6620333382a1e43ee1b38a009c91e8d7038233
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cb4f6827f58b882b8b1ae0ef8c093a09e090f17a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476947"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850707"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Obsługa błędów w graficznych elementach Runbook w usłudze Azure Automation
 
@@ -26,11 +26,11 @@ Często w przypadku wystąpienia błędu działania runbook, który nie powoduje
 
 Typami błędów programu PowerShell, które mogą wystąpić podczas wykonywania, są błędy powodujące i niepowodujące zakończenia. Różnice między błędem powodującym zakończenie i niepowodującym zakończenia są następujące:
 
-* **Błąd powodujący zakończenie**: To poważny błąd podczas wykonywania, który całkowicie zatrzymuje polecenie (lub wykonywanie skryptu). Do przykładów należą nieistniejące polecenia cmdlet, błędy składniowe, które uniemożliwiają wykonanie polecenia cmdlet, lub inne błędy krytyczne.
+* **Błąd powodujący zakończenie**: Poważny błąd podczas wykonywania, który całkowicie zatrzymuje polecenie (lub wykonywanie skryptu). Do przykładów należą nieistniejące polecenia cmdlet, błędy składniowe, które uniemożliwiają wykonanie polecenia cmdlet, lub inne błędy krytyczne.
 
-* **Błąd niepowodujący**: Niezbyt poważny błąd, który umożliwia kontynuowanie wykonywania pomimo awarii. Do przykładów należą błędy operacyjne, takie jak niemożność odnalezienia pliku i problemy z uprawnieniami.
+* **Błąd niepowodujący zakończenia**: Niezbyt poważny błąd, który umożliwia kontynuowanie wykonywania pomimo awarii. Do przykładów należą błędy operacyjne, takie jak niemożność odnalezienia pliku i problemy z uprawnieniami.
 
-Usługa Azure graficznych elementów runbook usługi Automation zostały ulepszone o możliwość uwzględnienia obsługi błędów. Teraz możesz przekształcać wyjątki w błędy niepowodujące zakończenia oraz tworzyć linki błędów między działaniami. Ten proces umożliwia autorowi elementu runbook wychwytywanie błędów i zarządzanie zrealizowanymi lub nieoczekiwanymi warunkami.  
+Azure Automation graficzne elementy Runbook zostały ulepszone z możliwością dołączenia obsługi błędów. Teraz możesz przekształcać wyjątki w błędy niepowodujące zakończenia oraz tworzyć linki błędów między działaniami. Ten proces umożliwia autorowi elementu Runbook przechwytywanie błędów i zarządzanie zrealizowanymi lub nieoczekiwanymi warunkami.  
 
 ## <a name="when-to-use-error-handling"></a>Kiedy używać obsługi błędów
 
@@ -64,7 +64,7 @@ Działanie **Get-AutomationVariable** i **Start AzureRmVm** są skonfigurowane d
 Linki błędów z tych działań prowadzą do pojedynczego działania **zarządzania błędami** (działanie kodu). To działanie jest skonfigurowane za pomocą prostego wyrażenia programu PowerShell przy użyciu słowa kluczowego *Throw*, aby zatrzymać przetwarzanie, oraz *$Error.Exception.Message*, aby uzyskać komunikat, który opisuje bieżący wyjątek.<br><br> ![Przykład kodu obsługi błędu elementu runbook usługi Automation](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej o linkach i zrozumieć typy linków w graficznych elementach runbook, zobacz [Graphical authoring in Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow) (Tworzenie graficzne w usłudze Azure Automation).
 

@@ -4,17 +4,17 @@ description: Dowiedz się, jak wyzwolić Uruchamianie elementu Runbook, gdy zost
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c818114df436dbbd3ac1a51b6eeec00b9eec4d3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c4afcbced2879a2a6d50112b6388cdf5c8098b1d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915724"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850384"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Użyj alertu, aby wyzwolić Azure Automation element Runbook
 
@@ -25,7 +25,7 @@ Za pomocą [Azure monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomatio
 Można używać elementów Runbook usługi Automation z trzema typami alertów:
 
 * Typowe alerty
-* Alerty dziennika aktywności
+* Alerty dotyczące dziennika aktywności
 * Alerty metryk niemal w czasie rzeczywistym
 
 > [!NOTE]
@@ -33,10 +33,10 @@ Można używać elementów Runbook usługi Automation z trzema typami alertów:
 
 Gdy alert wywołuje element Runbook, rzeczywiste wywołanie to żądanie HTTP POST do elementu webhook. Treść żądania POST zawiera obiekt w formacie JSON, który ma użyteczne właściwości, które są związane z alertem. W poniższej tabeli przedstawiono linki do schematu ładunku dla każdego typu alertu:
 
-|Alerty  |Opis|Schemat ładunku  |
+|Alert  |Opis|Schemat ładunku  |
 |---------|---------|---------|
 |[Typowy alert](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Typowy schemat alertów, który umożliwia współczesne korzystanie z powiadomień o alertach na platformie Azure.|Schemat ładunku wspólnego alertu|
-|[Alert dziennika aktywności](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy dowolne nowe zdarzenie w dzienniku aktywności platformy Azure dopasowuje określone warunki. Na przykład po `Delete VM` wystąpieniu operacji w **myProductionResourceGroup** lub po wyświetleniu nowego zdarzenia Azure Service Health z aktywnym stanem.| [Schemat ładunku alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Alert dziennika aktywności](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy dowolne nowe zdarzenie w dzienniku aktywności platformy Azure dopasowuje określone warunki. Na przykład gdy zostanie wyświetlona operacja `Delete VM` w **myProductionResourceGroup** lub gdy zostanie wyświetlone nowe zdarzenie Azure Service Health z **aktywnym** stanem.| [Schemat ładunku alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
 |[Alert dotyczący metryki niemal w czasie rzeczywistym](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie szybciej niż alerty metryk, gdy jedna lub więcej metryk na poziomie platformy spełnia określone warunki. Na przykład, gdy wartość dla **procesora CPU%** na maszynie wirtualnej przekracza **90**, a wartość dla **sieci** jest większa niż **500 MB** w ciągu ostatnich 5 minut.| [Schemat ładunku alertu metryki niemal w czasie rzeczywistym](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 Ponieważ dane dostarczane przez każdy typ alertu różnią się od siebie, każdy typ alertu jest obsługiwany inaczej. W następnej sekcji dowiesz się, jak utworzyć element Runbook do obsługi różnych typów alertów.
@@ -45,9 +45,9 @@ Ponieważ dane dostarczane przez każdy typ alertu różnią się od siebie, ka�
 
 Aby korzystać z automatyzacji z alertami, potrzebny jest element Runbook, który ma logikę, która zarządza ładunkiem JSON, który jest przesyłany do elementu Runbook. Poniższy przykładowy element Runbook musi zostać wywołany z poziomu alertu platformy Azure.
 
-Zgodnie z opisem w poprzedniej sekcji każdy typ alertu ma inny schemat. Skrypt przyjmuje dane elementu webhook w `WebhookData` parametrze wejściowym elementu Runbook z poziomu alertu. Następnie skrypt oblicza ładunek JSON, aby określić, który typ alertu był używany.
+Zgodnie z opisem w poprzedniej sekcji każdy typ alertu ma inny schemat. Skrypt przyjmuje dane elementu webhook w parametrze wejściowym `WebhookData` Runbook z poziomu alertu. Następnie skrypt oblicza ładunek JSON, aby określić, który typ alertu był używany.
 
-Ten przykład używa alertu z maszyny wirtualnej. Pobiera dane dotyczące maszyn wirtualnych z ładunku, a następnie używa tych informacji do zatrzymania maszyny wirtualnej. Połączenie musi zostać skonfigurowane na koncie usługi Automation, na którym jest uruchomiony element Runbook. W przypadku wyzwalania elementów Runbook przy użyciu alertów ważne jest, aby sprawdzić stan alertu w elemencie Runbook, który zostanie wyzwolony. Element Runbook będzie wyzwalany przy każdym zmianie stanu alertu. Alerty mają wiele stanów, dwa najczęstsze Stany to `Activated` i `Resolved`. Sprawdź ten stan w logice elementu Runbook, aby upewnić się, że element Runbook nie działa więcej niż raz. W przykładzie w tym artykule przedstawiono sposób wyszukiwania `Activated` tylko alertów.
+Ten przykład używa alertu z maszyny wirtualnej. Pobiera dane dotyczące maszyn wirtualnych z ładunku, a następnie używa tych informacji do zatrzymania maszyny wirtualnej. Połączenie musi zostać skonfigurowane na koncie usługi Automation, na którym jest uruchomiony element Runbook. W przypadku wyzwalania elementów Runbook przy użyciu alertów ważne jest, aby sprawdzić stan alertu w elemencie Runbook, który zostanie wyzwolony. Element Runbook będzie wyzwalany przy każdym zmianie stanu alertu. Alerty mają wiele stanów, dwa najczęstsze Stany są `Activated` i `Resolved`. Sprawdź ten stan w logice elementu Runbook, aby upewnić się, że element Runbook nie działa więcej niż raz. W przykładzie przedstawionym w tym artykule przedstawiono sposób wyszukiwania tylko `Activated` alertów.
 
 Element Runbook używa [konta Uruchom jako](automation-create-runas-account.md) **AzureRunAsConnection** do uwierzytelniania za pomocą platformy Azure, aby wykonać akcję zarządzania względem maszyny wirtualnej.
 

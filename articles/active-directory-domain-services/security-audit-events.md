@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704287"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848899"
 ---
-# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Włącz inspekcje zabezpieczeń dla Azure Active Directory Domain Services (wersja zapoznawcza)
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Włącz inspekcje zabezpieczeń dla Azure Active Directory Domain Services
 
 Inspekcje zabezpieczeń w programie Azure Active Directory Domain Services (Azure AD DS) umożliwiają zdarzenia zabezpieczeń usługi Azure Stream do zasobów. Te zasoby obejmują usługę Azure Storage, obszary robocze platformy Azure Log Analytics lub usługę Azure Event Hub. Po włączeniu zdarzeń inspekcji zabezpieczeń usługa Azure AD DS wysyła wszystkie zdarzenia poddane inspekcji dla wybranej kategorii do zamierzonego zasobu. Zdarzenia można archiwizować do usługi Azure Storage i przesyłać strumieniowo zdarzenia do oprogramowania do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM) (lub równoważne) przy użyciu usługi Azure Event Hubs lub do własnej analizy oraz przy użyciu obszarów roboczych usługi Azure Log Analytics z Azure Portal.
 
@@ -33,7 +33,7 @@ Dostępne są następujące kategorie zdarzeń inspekcji:
 
 | Nazwa kategorii inspekcji | Opis |
 |:---|:---|
-| Logowanie do konta|Inspekcje próbują uwierzytelnić dane konta na kontrolerze domeny lub w lokalnym Menedżerze kont zabezpieczeń (SAM).</p>Ustawienia zasad logowania i wylogowywania oraz zdarzenia śledzą próby dostępu do określonego komputera. Ustawienia i zdarzenia w tej kategorii koncentrują się na używanej bazie danych kont. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja weryfikacji poświadczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Inspekcja usługi uwierzytelniania Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Inspekcja operacji biletów usługi Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Inspekcja innych zdarzeń logowania/wylogowywania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
+| Konto logowania|Inspekcje próbują uwierzytelnić dane konta na kontrolerze domeny lub w lokalnym Menedżerze kont zabezpieczeń (SAM).</p>Ustawienia zasad logowania i wylogowywania oraz zdarzenia śledzą próby dostępu do określonego komputera. Ustawienia i zdarzenia w tej kategorii koncentrują się na używanej bazie danych kont. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja weryfikacji poświadczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Inspekcja usługi uwierzytelniania Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Inspekcja operacji biletów usługi Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Inspekcja innych zdarzeń logowania/wylogowywania](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Zarządzanie kontami|Inspekcja zmian kont użytkowników i komputerów oraz grup. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja zarządzania grupami aplikacji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Inspekcja zarządzania kontami komputerów](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Inspekcja zarządzania grupami dystrybucyjnymi](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Inspekcja zarządzania innymi kontami](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Inspekcja zarządzania grupami zabezpieczeń](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Inspekcja zarządzania kontami użytkowników](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
 | Śledzenie szczegółów|Przeprowadza inspekcję działań poszczególnych aplikacji i użytkowników na tym komputerze oraz zrozumienie sposobu korzystania z komputera. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja aktywności DPAPI](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-dpapi-activity)</li><li>[Inspekcja aktywności PNP](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-pnp-activity)</li><li>[Tworzenie procesu inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-creation)</li><li>[Zakończenie procesu inspekcji](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-termination)</li><li>[Inspekcja zdarzeń RPC](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-rpc-events)</li></ul>|
 | Dostęp do usług katalogowych|Inspekcje próbują uzyskać dostęp i zmodyfikować obiekty w Active Directory Domain Services (AD DS). Te zdarzenia inspekcji są rejestrowane tylko na kontrolerach domeny. Ta kategoria zawiera następujące podkategorie:<ul><li>[Inspekcja szczegółowej replikacji usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-directory-service-replication)</li><li>[Inspekcja dostępu do usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-access)</li><li>[Inspekcja zmian usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes)</li><li>[Inspekcja replikacji usługi katalogowej](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-replication)</li></ul>|
@@ -83,7 +83,7 @@ Aby włączyć zdarzenia inspekcji usługi Azure AD DS Security przy użyciu Azu
 
 1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 1. W górnej części Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz domenę zarządzaną, taką jak *aadds.contoso.com*.
-1. W oknie AD DS platformy Azure wybierz pozycję **Ustawienia diagnostyczne (wersja zapoznawcza)** po lewej stronie.
+1. W oknie AD DS platformy Azure wybierz pozycję **Ustawienia diagnostyczne** po lewej stronie.
 1. Żadna Diagnostyka nie jest domyślnie skonfigurowana. Aby rozpocząć, wybierz pozycję **Dodaj ustawienie diagnostyczne**.
 
     ![Dodaj ustawienie diagnostyczne dla Azure AD Domain Services](./media/security-audit-events/add-diagnostic-settings.png)
@@ -175,7 +175,7 @@ Obszary robocze analityczne dzienników umożliwiają wyświetlanie i analizowan
 * [Dokumentacja usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 * [Wprowadzenie do Log Analytics w Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
 * [Wprowadzenie do zapytań dzienników w Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Tworzenie i udostępnianie pulpitów nawigacyjnych Log Analytics danych](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 Następujące przykładowe zapytania mogą służyć do rozpoczęcia analizowania zdarzeń inspekcji zabezpieczeń z usługi Azure AD DS.
 

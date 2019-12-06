@@ -2,25 +2,22 @@
 title: Błąd obsługi najlepszych rozwiązań dla klientów biblioteki uwierzytelniania usługi Azure AD (ADAL)
 description: Zapewnia wskazówki dotyczące obsługi błędów i najlepsze rozwiązania dla aplikacji klienckich ADAL.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 04ffeb85dc424396593d13f2cdc2681e26bd2db3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374186"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845199"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Błąd obsługi najlepszych rozwiązań dla klientów biblioteki uwierzytelniania Azure Active Directory (ADAL)
 
@@ -52,7 +49,7 @@ Istnieje zestaw błędów generowanych przez system operacyjny, co może wymaga�
 
 Zasadniczo istnieją dwa przypadki błędów AcquireTokenSilent:
 
-| Spraw | Opis |
+| Przypadek | Opis |
 |------|-------------|
 | **Przypadek 1**. błąd jest rozpoznawany przy użyciu interakcyjnego logowania | W przypadku błędów spowodowanych brakiem prawidłowych tokenów wymagane jest żądanie interaktywne. W każdym przypadku wyszukiwanie w pamięci podręcznej i nieprawidłowy/wygasły token odświeżania wymagają wywołania AcquireToken do rozwiązania.<br><br>W takich przypadkach użytkownik końcowy musi zostać poproszony o zalogowanie się. Aplikacja może natychmiast wykonać żądanie interaktywne, po interakcji z użytkownikiem końcowym (np. naciśnięciem przycisku logowania) lub nowszym. Wybór zależy od żądanego zachowania aplikacji.<br><br>Zapoznaj się z kodem w poniższej sekcji w tym konkretnym przypadku i błędami, które je Diagnozuj.|
 | **Przypadek 2**: błąd nie jest rozpoznawany przy użyciu interakcyjnego logowania | W przypadku błędów sieci i przejściowych/tymczasowych lub innych awarii wykonywanie interakcyjnego żądania AcquireToken nie rozwiąże problemu. Niezbędne interakcyjne komunikaty logowania mogą również frustrować użytkowników końcowych. Biblioteka ADAL automatycznie próbuje wykonać pojedynczej próby dla większości błędów w przypadku błędów AcquireTokenSilent.<br><br>Aplikacja kliencka może również próbować ponowić próbę w pewnym momencie, ale w przypadku i w zależności od zachowania aplikacji oraz odpowiedniego środowiska użytkownika końcowego. Na przykład aplikacja może wykonać AcquireTokenSilentą ponowną próbę po kilku minutach lub w odpowiedzi na pewną akcję użytkownika końcowego. Natychmiastowe ponowienie próby spowoduje ograniczenie ograniczenia aplikacji i nie powinno być podejmowane próby.<br><br>Kolejna próba nie powiedzie się z powodu tego samego błędu nie oznacza, że klient powinien wykonać interaktywne żądanie przy użyciu AcquireToken, ponieważ nie rozwiąże błędu.<br><br>Zapoznaj się z kodem w poniższej sekcji w tym konkretnym przypadku i błędami, które je Diagnozuj. |
@@ -61,8 +58,8 @@ Zasadniczo istnieją dwa przypadki błędów AcquireTokenSilent:
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireTokenSilentAsync(...)
-- acquireTokenSilentSync(...) 
+- acquireTokenSilentAsync(…)
+- acquireTokenSilentSync(…) 
 - [przestarzałe] acquireTokenSilent (...)
 - [przestarzałe] acquireTokenByRefreshToken (...) 
 
@@ -105,7 +102,7 @@ catch (AdalException e) {
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireTokenSilentSync(...)
+- acquireTokenSilentSync(…)
 - acquireTokenSilentAsync(...)
 - [przestarzałe] acquireTokenSilent (...)
 
@@ -141,7 +138,7 @@ public void onError(Exception e) {
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireTokenSilentWithResource(...)
+- acquireTokenSilentWithResource(…)
 
 Kod zostanie wdrożony w następujący sposób:
 
@@ -211,7 +208,7 @@ Obsługa błędów w natywnych aplikacjach może być definiowana przez dwa sytu
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu ze wszystkimi niecichymi AcquireToken (...) Metody ADAL, *z wyjątkiem*: 
 
-- AcquireTokenAsync(..., IClientAssertionCertification, ...)
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
 - AcquireTokenAsync (..., ClientCredential,...)
 - AcquireTokenAsync(..., ClientAssertion, ...)
 - AcquireTokenAsync (..., UserAssertion,...)   
@@ -255,7 +252,7 @@ catch (AdalException e) {
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireToken (..., PromptBehavior. Never)
+- acquireToken(…, PromptBehavior.Never)
 
 Kod zostanie wdrożony w następujący sposób:
 
@@ -347,7 +344,7 @@ W przypadku kompilowania aplikacji sieci Web platformy .NET, która wywołuje me
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- AcquireTokenByAuthorizationCodeAsync(...)
+- AcquireTokenByAuthorizationCodeAsync(…)
 
 Kod zostanie wdrożony w następujący sposób:
 
@@ -416,8 +413,8 @@ Dla *wszystkich* scenariuszy aplikacji między usługami, w tym w imieniu:
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- AcquireTokenAsync(..., IClientAssertionCertification, ...)
-- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync(…, IClientAssertionCertification, …)
+- AcquireTokenAsync(…,ClientCredential, …)
 - AcquireTokenAsync(...,ClientAssertion, ...)
 - AcquireTokenAsync(...,UserAssertion, ...)
 
@@ -577,6 +574,7 @@ window.Logging = {
     }
 };
 ```
+
 ## <a name="related-content"></a>Powiązana zawartość
 
 * [Przewodnik dewelopera usługi Azure AD][AAD-Dev-Guide]
@@ -586,7 +584,7 @@ window.Logging = {
 
 Skorzystaj z poniższej sekcji komentarzy, aby przekazać Opinie i pomóc nam udoskonalić naszą zawartość.
 
-[![Shows przycisk "Zaloguj się przy użyciu konta Microsoft"][AAD-Sign-In]][AAD-Sign-In]
+[![wyświetla przycisk "Zaloguj się przy użyciu konta Microsoft"][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

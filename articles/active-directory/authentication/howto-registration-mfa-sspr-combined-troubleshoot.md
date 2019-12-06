@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3f2a60367a8b76464611878e850fff0c4ba8803
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381399"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847392"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Rozwiązywanie problemów z rejestracją połączonych informacji zabezpieczeń (wersja zapoznawcza)
 
@@ -144,7 +144,7 @@ Poniższe kroki pomogą Ci wycofać użytkownika lub grupę użytkowników.
    }
    ```
 
-#### <a name="rollback"></a>Wycofywanie
+#### <a name="rollback"></a>Wycofuj
 
 W oknie programu PowerShell uruchom następujące polecenie, podając plik skryptu i lokalizacji plików użytkownika. Po wyświetleniu monitu wprowadź poświadczenia administratora globalnego. Skrypt będzie wyprowadzał wynik każdej operacji aktualizacji użytkownika.
 

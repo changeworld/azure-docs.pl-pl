@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b02d6468ede0d5748409a620a6641109cd523a09
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: b51c6284c0d7ee21f67d37465100f84d4b2f5ae2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404226"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848089"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integracja katalogu między serwerem Azure MFA i usługą Active Directory
 
@@ -86,8 +86,8 @@ Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na l
 | Nazwa użytkownika |Wprowadź nazwę atrybutu, który zawiera nazwę użytkownika w rekordzie użytkownika.  Wartość tego atrybutu jest używana jako nazwa użytkownika serwera usługi Multi-Factor Authentication.  Drugi atrybut może zostać określony jako atrybut zapasowy względem pierwszego.  Drugi atrybut jest używany tylko wtedy, gdy pierwszy atrybut nie zawiera wartości użytkownika.  Wartości domyślne to userPrincipalName i sAMAccountName. |
 | Imię |Wprowadź nazwę atrybutu, który zawiera imię w rekordzie użytkownika.  Wartość domyślna to givenName. |
 | Nazwisko |Wprowadź nazwę atrybutu, który zawiera nazwisko w rekordzie użytkownika.  Wartość domyślna to sn. |
-| Adres e-mail |Wprowadź nazwę atrybutu, który zawiera adres e-mail w rekordzie użytkownika.  Adres e-mail jest używany do przesłania użytkownikowi powitalnej wiadomości e-mail oraz w celu przesyłania wiadomości dotyczących aktualizacji.  Wartość domyślna to mail. |
-| Grupy użytkowników |Wprowadź nazwę atrybutu, który zawiera grupę użytkowników w rekordzie użytkownika.  Grupa użytkowników może służyć do filtrowania użytkowników w agencie i w raportach w portalu zarządzania serwerem usługi Multi-Factor Auth. |
+| Email address (Adres e-mail) |Wprowadź nazwę atrybutu, który zawiera adres e-mail w rekordzie użytkownika.  Adres e-mail jest używany do przesłania użytkownikowi powitalnej wiadomości e-mail oraz w celu przesyłania wiadomości dotyczących aktualizacji.  Wartość domyślna to mail. |
+| Grupa użytkowników |Wprowadź nazwę atrybutu, który zawiera grupę użytkowników w rekordzie użytkownika.  Grupa użytkowników może służyć do filtrowania użytkowników w agencie i w raportach w portalu zarządzania serwerem usługi Multi-Factor Auth. |
 | Opis |Wprowadź nazwę atrybutu, który zawiera opis w rekordzie użytkownika.  Opis jest wykorzystywany wyłącznie do celów wyszukiwania.  Wartością domyślną jest description. |
 | Język połączenia telefonicznego |Wprowadź nazwę atrybutu, który zawiera skróconą nazwę języka używanego na potrzeby połączeń głosowych użytkownika. |
 | Język wiadomości SMS |Wprowadź nazwę atrybutu, który zawiera skróconą nazwę języka używanego na potrzeby wiadomości SMS użytkownika. |
@@ -97,10 +97,10 @@ Atrybuty mogą być wprowadzane ręcznie i nie muszą odpowiadać atrybutom na l
 | Telefon domowy |Wprowadź nazwę atrybutu, który zawiera domowy numer telefonu w rekordzie użytkownika.  Wartość domyślna to homePhone. |
 | Pager |Wprowadź nazwę atrybutu, który zawiera numer pagera w rekordzie użytkownika.  Wartość domyślna to pager. |
 | Telefon komórkowy |Wprowadź nazwę atrybutu, który zawiera numer telefonu komórkowego w rekordzie użytkownika.  Wartość domyślna to mobile. |
-| Faksów |Wprowadź nazwę atrybutu, który zawiera numer faksu w rekordzie użytkownika.  Wartość domyślna to facsimileTelephoneNumber. |
+| Faks |Wprowadź nazwę atrybutu, który zawiera numer faksu w rekordzie użytkownika.  Wartość domyślna to facsimileTelephoneNumber. |
 | Telefon VoIP |Wprowadź nazwę atrybutu, który zawiera numer telefonu VoIP w rekordzie użytkownika.  Wartość domyślna to ipPhone. |
 | Niestandardowe |Wprowadź nazwę atrybutu, który zawiera niestandardowy numer telefonu w rekordzie użytkownika.  Pole jest domyślnie puste. |
-| Wewnętrzny |Wprowadź nazwę atrybutu, który zawiera numer wewnętrzny w rekordzie użytkownika.  Wartość pola numeru wewnętrznego jest używana wyłącznie dla podstawowego numeru telefonu.  Pole jest domyślnie puste. <br><br>Jeśli nie określono atrybutu Wewnętrzny, numer wewnętrzny można uwzględnić w atrybucie numeru telefonu. W takim przypadku poprzedź rozszerzenie znakiem „x”, aby zostało poprawnie przeanalizowane.  Na przykład wartość 555-123-4567 x890 zostanie zinterpretowana jako numer telefonu 555-123-4567 i numer wewnętrzny 890. |
+| Rozszerzenie |Wprowadź nazwę atrybutu, który zawiera numer wewnętrzny w rekordzie użytkownika.  Wartość pola numeru wewnętrznego jest używana wyłącznie dla podstawowego numeru telefonu.  Pole jest domyślnie puste. <br><br>Jeśli nie określono atrybutu Wewnętrzny, numer wewnętrzny można uwzględnić w atrybucie numeru telefonu. W takim przypadku poprzedź rozszerzenie znakiem „x”, aby zostało poprawnie przeanalizowane.  Na przykład wartość 555-123-4567 x890 zostanie zinterpretowana jako numer telefonu 555-123-4567 i numer wewnętrzny 890. |
 | Przycisk Przywróć domyślne |Kliknij przycisk **Przywróć domyślne**, aby przywrócić wartości domyślne wszystkich atrybutów.  Ustawienia domyślne powinny działać prawidłowo z normalnym schematem usługi Active Directory lub ADAM. |
 
 Aby edytować atrybuty, kliknij przycisk **Edytuj** na karcie Atrybuty.  Spowoduje to wyświetlenie okna, w którym można edytować atrybuty. Wybierz przycisk **...** obok dowolnego atrybutu, aby otworzyć okno, w którym można określić atrybuty do wyświetlenia.

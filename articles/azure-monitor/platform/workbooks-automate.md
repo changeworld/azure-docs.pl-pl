@@ -1,5 +1,5 @@
 ---
-title: Programowo zarządzać Azure Monitor skoroszytów z szablonami Azure Resource Manager | Dokumentacja firmy Microsoft
+title: Azure Monitor skoroszyty i szablony Azure Resource Manager
 description: Uprość złożone raportowanie ze wstępnie skompilowanymi i niestandardowymi skoroszytami Azure Monitor wdrożonymi za pośrednictwem Azure Resource Manager szablonów
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d5e22093fa796a9fbd60dc2bc242f37a6cac7cf0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e3d29beab7b1d82f73c706897af9650b68be11f5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166111"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872914"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programowe Zarządzanie skoroszytami
 

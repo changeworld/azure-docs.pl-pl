@@ -1,22 +1,22 @@
 ---
 title: Używanie unikatowych kluczy w Azure Cosmos DB
-description: Dowiedz się, jak używać unikatowych kluczy w bazie danych Azure Cosmos
+description: Dowiedz się, jak definiować i używać unikatowych kluczy dla bazy danych Azure Cosmos. W tym artykule opisano również, jak unikatowe klucze dodają warstwę integralność danych.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4a929566d464f8548c4bffeb9f89099e77722e67
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756791"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869837"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Ograniczenia unikatowego klucza w Azure Cosmos DB
 
-Klucze unikatowe umożliwiają dodanie warstwy integralności danych do kontenera usługi Azure Cosmos. Podczas tworzenia kontenera usługi Azure Cosmos można utworzyć unikatowe Zasady kluczy. Przy użyciu unikatowych kluczy upewnij się, że co najmniej jedna wartość w partycji logicznej jest unikatowa. Można również zagwarantować unikatowość dla każdego [klucza partycji](partition-data.md). 
+Klucze unikatowe umożliwiają dodanie warstwy integralności danych do kontenera usługi Azure Cosmos. Podczas tworzenia kontenera usługi Azure Cosmos można utworzyć unikatowe Zasady kluczy. Przy użyciu unikatowych kluczy upewnij się, że co najmniej jedna wartość w partycji logicznej jest unikatowa. Można również zagwarantować unikatowość dla każdego [klucza partycji](partition-data.md).
 
 Po utworzeniu kontenera z unikatowymi zasadami kluczy, utworzenie nowej lub aktualizacji istniejącego elementu, co spowodowało wystąpienie duplikatu w obrębie partycji logicznej, jest blokowane, zgodnie z ograniczeniami unikatowego klucza. Klucz partycji połączony z unikatowym kluczem gwarantuje unikatowość elementu w zakresie kontenera.
 
@@ -30,8 +30,8 @@ Na przykład kontener może zawierać elementy o następujących wartościach, g
 |---|---|---|---|
 |Contoso|Gaby|Duperre|gaby@contoso.com |
 |Contoso|Gaby|Duperre|gaby@fabrikam.com|
-|Firma|Gaby|Duperre|gaby@fabrikam.com|
-|Firma|Ivan|Duperre|gaby@fabrikam.com|
+|Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
+|Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
 |Fabrkam|   |Duperre|gaby@fabraikam.com|
 |Fabrkam|   |   |gaby@fabraikam.com|
 
@@ -45,7 +45,7 @@ Klucze unikatowe można definiować tylko podczas tworzenia kontenera usługi Az
 
 * Aby ustawić unikatowy klucz dla istniejącego kontenera, Utwórz nowy kontener z ograniczeniem Unique Key. Użyj odpowiedniego narzędzia do migracji danych, aby przenieść dane z istniejącego kontenera do nowego kontenera. W przypadku kontenerów SQL Użyj [Narzędzia do migracji danych](import-data.md) , aby przenieść dane. W przypadku kontenerów MongoDB Użyj [mongoimport. exe lub mongorestore. exe](mongodb-migrate.md) , aby przenieść dane.
 
-* Unikatowe Zasady kluczy mogą zawierać maksymalnie 16 wartości ścieżki. Na przykład wartości mogą być `/firstName`, `/lastName` i `/address/zipCode`. Każda unikatowa zasada klucza może mieć maksymalnie 10 unikatowych ograniczeń klucza lub kombinacji. Ścieżki połączone dla każdego unikatowego ograniczenia indeksu nie mogą przekraczać 60 bajtów. W poprzednim przykładzie pierwsze imię, nazwisko i adres e-mail są jednym ograniczeniem. To ograniczenie powoduje użycie 3 z 16 możliwych ścieżek.
+* Unikatowe Zasady kluczy mogą zawierać maksymalnie 16 wartości ścieżki. Na przykład wartości mogą być `/firstName`, `/lastName`i `/address/zipCode`. Każda unikatowa zasada klucza może mieć maksymalnie 10 unikatowych ograniczeń klucza lub kombinacji. Ścieżki połączone dla każdego unikatowego ograniczenia indeksu nie mogą przekraczać 60 bajtów. W poprzednim przykładzie pierwsze imię, nazwisko i adres e-mail są jednym ograniczeniem. To ograniczenie powoduje użycie 3 z 16 możliwych ścieżek.
 
 * Gdy kontener ma unikatowe Zasady kluczy, opłaty za [jednostkę żądania](request-units.md) do tworzenia, aktualizowania i usuwania elementu są nieco wyższe.
 
@@ -55,5 +55,5 @@ Klucze unikatowe można definiować tylko podczas tworzenia kontenera usługi Az
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej na temat [partycji logicznych](partition-data.md)
+* Dowiedz się więcej o [partycjami logicznymi](partition-data.md)
 * Zapoznaj [się z tematem Definiowanie unikatowych kluczy](how-to-define-unique-keys.md) podczas tworzenia kontenera

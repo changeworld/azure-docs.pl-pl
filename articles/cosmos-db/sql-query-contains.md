@@ -1,18 +1,18 @@
 ---
 title: ZAWIERA w Azure Cosmos DB języku zapytań
-description: Informacje o funkcji systemowej SQL zawiera Azure Cosmos DB.
+description: Dowiedz się, jak Funkcja systemowa SQL w Azure Cosmos DB zwraca wartość Boolean wskazującą, czy pierwsze wyrażenie ciągu zawiera sekundę
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5d5018d0173c316a0a31bd2f70e15e5ff972d153
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 59c0e2628bfde24200bd386adc858ba778790231
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351096"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871537"
 ---
 # <a name="contains-azure-cosmos-db"></a>ZAWIERA (Azure Cosmos DB)
  Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie.  

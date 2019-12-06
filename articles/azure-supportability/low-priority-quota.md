@@ -1,34 +1,34 @@
 ---
-title: Przydział o niskim priorytecie | Microsoft Docs
-description: Żądania limitu przydziału o niskim priorytecie
+title: Przydział na miejscu | Microsoft Docs
+description: Żądania limitu przydziału miejsca
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 11/19/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 49ac478330cf73dff050a3edcc15933692fa6448
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 09c9d7940314b691e6351353e6a0076510fdcb13
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535173"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850571"
 ---
-# <a name="low-priority-quota-limit-increase-for-all-vm-series"></a>Przydział o niskim priorytecie: zwiększenie limitu dla całej serii maszyn wirtualnych
+# <a name="spot-quota-limit-increase-for-all-vm-series"></a>Przydział punktowy: zwiększenie limitu dla całej serii maszyn wirtualnych
 
-Maszyny wirtualne o niskim priorytecie zapewniają inny model użycia platformy Azure, a także obniżają koszty związane z tym, że platforma Azure usunie maszynę wirtualną w miarę potrzeby dla wdrożeń z opcją płatność zgodnie z rzeczywistym użyciem lub zarezerwowanych wystąpień maszyn wirtualnych. Więcej informacji na temat maszyn wirtualnych o niskim priorytecie można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-low-priority).
+Maszyny wirtualne maszyn wirtualnych zapewniają inny model użycia platformy Azure, ale obniżają koszty, dzięki czemu platforma Azure usunie maszynę wirtualną w razie potrzeby w przypadku wdrożeń z opcją płatność zgodnie z rzeczywistym użyciem lub zastrzeżonych wystąpień maszyn wirtualnych. Przeczytaj więcej na [temat maszyn wirtualnych na miejscu.](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)
 
-Menedżer zasobów obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych. **Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych** używają standardowego limitu przydziału. **Maszyny wirtualne o niskim priorytecie** używają przydziału o niskim priorytecie. 
+Menedżer zasobów obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych. **Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych** używają standardowego limitu przydziału. **Miejsca na maszynach wirtualnych** używają limitu przydziału miejsca. 
 
-W przypadku typu **przydziału o niskim priorytecie** Menedżer zasobów przydziały vCPU są wymuszane na wszystkich dostępnych seriach maszyn wirtualnych jako pojedyncze limity regionalne.
+W przypadku typu **przydziału dodatkowego** Menedżer zasobów przydziały vCPU są wymuszane dla wszystkich dostępnych serii maszyn wirtualnych jako pojedyncze limity regionalne.
 
-W przypadku każdej maszyny wirtualnej o niskim priorytecie należy wdrożyć sumę nowych i istniejących procesorów wirtualnych vCPU użycie dla wszystkich wystąpień maszyn wirtualnych o niskim priorytecie, które nie mogą przekroczyć zatwierdzonego limitu przydziału vCPU o niskim priorytecie. W przypadku przekroczenia limitu przydziału o niskim priorytecie wdrożenie maszyny wirtualnej o niskim priorytecie nie będzie dozwolone. Można zażądać zwiększenia limitu przydziału procesorów wirtualnych vCPU o niskim priorytecie z Azure Portal. 
+Gdy zostanie wdrożona nowa maszyna wirtualna na miejscu, suma nowych i istniejących procesorów wirtualnych vCPU użycie dla wszystkich wystąpień maszyn wirtualnych nie może przekraczać zatwierdzonego limitu przydziału miejsca vCPU. W przypadku przekroczenia limitu przydziału miejsca do wdrożenia maszyny wirtualnej nie będą dozwolone. Możesz poprosić o zwiększenie limitu przydziału procesorów wirtualnych vCPU dodatkowych z Azure Portal. 
 
 Dowiedz się więcej o standardowych przydziałach vCPU na stronie limit przydziału vCPU maszyny wirtualnej oraz na stronie limity subskrypcji i usług platformy Azure. Dowiedz się więcej na temat zwiększania regionalnego limitu przydziału vCPU na tej [stronie](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests).
 
-Teraz można zażądać zwiększenia **limitów przydziału o niskim priorytecie dla wszystkich serii maszyn wirtualnych** za pośrednictwem bloku **Pomoc i obsługa techniczna** oraz bloku **użycie i przydział** w portalu.
+Teraz można zażądać zwiększenia **limitów przydziału miejsca dla wszystkich serii maszyn wirtualnych** za pośrednictwem bloku **Pomoc i obsługa techniczna** oraz bloku **użycie i przydział** w portalu.
 
-## <a name="request-low-priority-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>Poproś o zwiększenie limitu przydziału niskiego priorytetu dla wszystkich serii maszyn wirtualnych na subskrypcję przy użyciu bloku pomoc i obsługa techniczna
+## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>Poproś o zwiększenie limitu przydziału miejsca dla wszystkich serii maszyn wirtualnych na subskrypcję przy użyciu bloku pomoc i obsługa techniczna
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "pomoc i obsługa techniczna platformy Azure" dostępnego w Azure Portal.
 
@@ -63,7 +63,7 @@ Możesz także **zażądać przydziału dla wielu regionów** za pomocą jednego
 
 ![Podaj szczegóły](./media/resource-manager-core-quotas-request/3-7.png)
 
-8. Dla wybranej lokalizacji wybierz wartość **typu** **"niski priorytet"** . Można zażądać zarówno typów limitu przydziału standardowego, jak i o niskim priorytecie z jednego przypadku pomocy technicznej w ramach obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej o **zwiększaniu standardowego przydziału na serię maszyn wirtualnych** na tej [stronie](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+8. Dla wybranej lokalizacji wybierz opcję wartość **typu** jako **"spot"** . Możesz zażądać zarówno typów limitu przydziału standardowego, jak i punktowego z pojedynczego przypadku pomocy technicznej za pomocą obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej o **zwiększaniu standardowego przydziału na serię maszyn wirtualnych** na tej [stronie](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
 
 ![Podaj szczegóły](./media/resource-manager-core-quotas-request/3-8.png)
 
@@ -77,7 +77,7 @@ Możesz także **zażądać przydziału dla wielu regionów** za pomocą jednego
 
 11. Po wprowadzeniu żądanego limitu przydziału kliknij przycisk **Zapisz i Kontynuuj** w panelu Szczegóły przydziału, aby kontynuować tworzenie żądania obsługi.
 
-## <a name="request-low-priority-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>Poproś o zwiększenie limitu przydziału niskiego priorytetu dla wszystkich serii maszyn wirtualnych na subskrypcję przy użyciu bloku użycia i limitu przydziału
+## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>Poproś o zwiększenie limitu przydziału miejsca na miejscu dla wszystkich serii maszyn wirtualnych na subskrypcję przy użyciu bloku użycia i limitu przydziału
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "użycie i limit przydziału" platformy Azure dostępnego w Azure Portal.
 
@@ -107,7 +107,7 @@ Możesz także **zażądać przydziału dla wielu regionów** za pomocą jednego
 
   ![Wypełnij formularz](./media/resource-manager-core-quotas-request/3-2-6.png)
  
-7.  Dla wybranej lokalizacji wybierz wartość **typu** **"niski priorytet".** Można zażądać zarówno typów limitu przydziału standardowego, jak i o niskim priorytecie z jednego przypadku pomocy technicznej w ramach obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej o **zwiększaniu standardowego przydziału na serię maszyn wirtualnych** na tej [stronie](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+7.  Dla wybranej lokalizacji wybierz opcję wartość **typu** jako **"spot".** Możesz zażądać zarówno typów limitu przydziału standardowego, jak i punktowego z pojedynczego przypadku pomocy technicznej za pomocą obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej o **zwiększaniu standardowego przydziału na serię maszyn wirtualnych** na tej [stronie](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
 
   ![Wypełnij formularz](./media/resource-manager-core-quotas-request/3-2-7.png)
  
@@ -120,4 +120,5 @@ Możesz także **zażądać przydziału dla wielu regionów** za pomocą jednego
   ![Wypełnij formularz](./media/resource-manager-core-quotas-request/3-2-9.png)
  
 10. Po wprowadzeniu żądanego limitu przydziału kliknij przycisk **Zapisz i Kontynuuj** w panelu Szczegóły przydziału, aby kontynuować tworzenie żądania obsługi.
+
 

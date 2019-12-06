@@ -1,17 +1,17 @@
 ---
 title: Aprowizowanie przepływności kontenera w usłudze Azure Cosmos DB
-description: Dowiedz się, jak aprowizować przepływność na poziomie kontenera w usłudze Azure Cosmos DB
+description: Dowiedz się, jak zainicjować przepływność na poziomie kontenera w Azure Cosmos DB przy użyciu Azure Portal, interfejsu wiersza polecenia, programu PowerShell i różnych zestawów SDK.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b48652f7b181f1254a4b20af75b83593c2aba05
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147592"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872047"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Aprowizowanie przepływności dla kontenera usługi Azure Cosmos
 
@@ -19,7 +19,7 @@ W tym artykule wyjaśniono, jak zainicjować przepływność na kontenerze (kole
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account)lub Wybierz istniejące konto usługi Azure Cosmos.
 
@@ -43,7 +43,7 @@ Aby utworzyć kontener z dedykowaną przepływność, zobacz
 > [!Note]
 > W przypadku aprowizacji przepływności w kontenerze na koncie usługi Azure Cosmos skonfigurowanym za pomocą interfejsu API Azure Cosmos DB dla MongoDB Użyj `/myShardKey` dla ścieżki klucza partycji. W przypadku aprowizacji przepływności w kontenerze na koncie usługi Azure Cosmos skonfigurowanym pod warunkiem interfejs API Cassandra Użyj `/myPrimaryKey` dla ścieżki klucza partycji.
 
-## <a name="net-sdk"></a>Zestaw SDK .NET
+## <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
 
 > [!Note]
 > Użyj Cosmos SDK dla interfejsu API SQL, aby zainicjować przepływność dla wszystkich Cosmos DB interfejsów API, z wyjątkiem interfejs API Cassandra.
@@ -66,7 +66,7 @@ await client.CreateDocumentCollectionAsync(
 ### <a name="net-v3-sdk"></a>Zestaw SDK dla platformy .NET v3
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
 
-## <a name="javascript-sdk"></a>Zestaw SDK dla języka JavaScript
+## <a name="javascript-sdk"></a>Zestaw SDK języka JavaScript
 
 ```javascript
 // Create a new Client

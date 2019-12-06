@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f9f6fd2a01cdb325d543bc624d0c13bce1d84a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74785861"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848242"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -59,8 +59,8 @@ Wszyscy użytkownicy zaczynają *wyłączać*. Po zarejestrowaniu użytkowników
 Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można wyświetlać Stany użytkowników i zarządzać nimi:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **Użytkownicy** , > **Wszyscy użytkownicy**.
-3. Wybierz **Multi-Factor Authentication**.
+2. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **Użytkownicy** > **Wszyscy użytkownicy**.
+3. Wybierz pozycję **Multi-Factor Authentication**.
    ![wybierz Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Zostanie wyświetlona nowa strona wyświetlająca Stany użytkownika.
    ![stanu użytkownika usługi uwierzytelniania wieloskładnikowego — zrzut ekranu](./media/howto-mfa-userstates/userstate1.png)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077115"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851778"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu usługi Azure Blob Storage
 
@@ -32,7 +32,7 @@ Rozważmy scenariusz, w którym dane są często dostępne podczas wczesnych eta
 
 ## <a name="storage-account-support"></a>Obsługa kont magazynu
 
-Zasady zarządzania cyklem życia są dostępne z kontami Ogólnego przeznaczenia v2 (GPv2), kontami magazynu obiektów blob i blokami Premium BLOB Storage. W Azure Portal można uaktualnić istniejące konto Ogólnego przeznaczenia (GPv1) do konta GPv2. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).  
+Zasady zarządzania cyklem życia są dostępne z kontami Ogólnego przeznaczenia v2 (GPv2), kontami magazynu obiektów blob i blokami Premium BLOB Storage. W Azure Portal można uaktualnić istniejące konto Ogólnego przeznaczenia (GPv1) do konta GPv2. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Cennik
 
@@ -51,10 +51,12 @@ Można dodawać, edytować lub usuwać zasady przy użyciu dowolnej z następuj�
 * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Interfejsy API REST](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
-W tym artykule pokazano, jak zarządzać zasadami przy użyciu portalu i metod programu PowerShell.  
+Zasady mogą być odczytywane lub zapisywane w całości. Aktualizacje częściowe nie są obsługiwane. 
 
 > [!NOTE]
 > Jeśli włączysz reguły zapory dla konta magazynu, żądania zarządzania cyklem życia mogą zostać zablokowane. Można odblokować te żądania, dostarczając wyjątki dla zaufanych usług firmy Microsoft. Aby uzyskać więcej informacji, zobacz sekcję wyjątki w artykule [Konfigurowanie zapór i sieci wirtualnych](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+
+W tym artykule pokazano, jak zarządzać zasadami przy użyciu portalu i metod programu PowerShell.  
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -65,7 +67,7 @@ Istnieją dwa sposoby dodawania zasad za pomocą Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Widok listy Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. Wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje konto magazynu.
 
@@ -86,7 +88,7 @@ Istnieją dwa sposoby dodawania zasad za pomocą Azure Portal.
 9. Wybierz pozycję **Dodaj** , aby dodać nowe zasady.
 
 #### <a name="azure-portal-code-view"></a>Widok kodu Azure Portal
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. Wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje konto magazynu.
 
@@ -233,7 +235,7 @@ Każda reguła w ramach zasad ma kilka parametrów:
 | Nazwa parametru | Typ parametru | Uwagi | Wymagane |
 |----------------|----------------|-------|----------|
 | `name`         | Ciąg |Nazwa reguły może zawierać do 256 znaków alfanumerycznych. W nazwie reguły jest rozróżniana wielkość liter.  Musi być unikatowa w ramach zasad. | Prawda |
-| `enabled`      | Wartość logiczna | Opcjonalna wartość logiczna zezwalająca na tymczasowe wyłączenie reguły. Wartość domyślna to true, jeśli nie została ustawiona. | False | 
+| `enabled`      | Wartość logiczna | Opcjonalna wartość logiczna zezwalająca na tymczasowe wyłączenie reguły. Wartość domyślna to true, jeśli nie została ustawiona. | Fałsz | 
 | `type`         | Wartość wyliczenia | Bieżący prawidłowy typ to `Lifecycle`. | Prawda |
 | `definition`   | Obiekt, który definiuje regułę cyklu życia | Każda definicja składa się z zestawu filtrów i zestawu akcji. | Prawda |
 
@@ -282,11 +284,11 @@ Poniższa reguła Przykładowa filtruje konto, aby uruchomić akcje na obiektach
 
 Filtry ograniczają akcje reguły do podzbioru obiektów BLOB w ramach konta magazynu. Jeśli zdefiniowano więcej niż jeden filtr, `AND` logiczny jest uruchamiany na wszystkich filtrach.
 
-Filtry obejmują:
+Dostępne są następujące filtry:
 
 | Nazwa filtru | Typ filtru | Uwagi | Jest wymagana |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Yes |
+| blobTypes   | Tablica wstępnie zdefiniowanych wartości wyliczeniowych. | Bieżąca wersja obsługuje `blockBlob`. | Tak |
 | prefixMatch | Tablica ciągów dla prefiksów, które mają być zgodne. Każda reguła może definiować do 10 prefiksów. Ciąg prefiksu musi rozpoczynać się od nazwy kontenera. Na przykład jeśli chcesz dopasować wszystkie obiekty blob w obszarze `https://myaccount.blob.core.windows.net/container1/foo/...` dla reguły, prefixMatch jest `container1/foo`. | Jeśli nie zdefiniujesz prefixMatch, reguła będzie stosowana do wszystkich obiektów BLOB w ramach konta magazynu.  | Nie |
 
 ### <a name="rule-actions"></a>Akcje reguły
@@ -295,10 +297,10 @@ Akcje są stosowane do filtrowanych obiektów blob, gdy spełniony jest warunek 
 
 Zarządzanie cyklem życia obsługuje warstwowe i usuwanie obiektów blob oraz usuwanie migawek obiektów BLOB. Zdefiniuj co najmniej jedną akcję dla każdej reguły dla obiektów blob lub migawek obiektów BLOB.
 
-| Akcja        | Podstawowy obiekt BLOB                                   | Migawka      |
+| Działanie        | Podstawowy obiekt BLOB                                   | Migawka      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Obsługa obiektów BLOB obecnie w warstwie gorąca         | Nieobsługiwane |
-| tierToArchive | Obsługa obiektów BLOB obecnie w warstwie gorąca lub chłodna | Nieobsługiwane |
+| tierToCool    | Obsługa obiektów BLOB obecnie w warstwie gorąca         | Brak obsługi |
+| tierToArchive | Obsługa obiektów BLOB obecnie w warstwie gorąca lub chłodna | Brak obsługi |
 | delete        | Obsługiwane                                   | Obsługiwane     |
 
 >[!NOTE]

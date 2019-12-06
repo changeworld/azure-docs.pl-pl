@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1036d7e8aef29e3185452d5088e660d474726e4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381974"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848684"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Azure Multi-Factor Authentication
 
@@ -32,15 +32,15 @@ Bezpieczeństwo dwuetapowej weryfikacji polega na podejściu warstwowym. Narusze
 
 Usługa Azure Multi-Factor Authentication (MFA) pomaga w zabezpieczeniu dostępu do danych i aplikacji przy jednoczesnym zachowaniu prostoty dla użytkowników. Zapewnia dodatkowe zabezpieczenia, wymagając drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie za pośrednictwem różnych [metod uwierzytelniania](concept-authentication-methods.md). Użytkownicy mogą lub nie mogą zakwestionować usługi MFA w oparciu o decyzje konfiguracyjne wykonywane przez administratora.
 
-## <a name="how-to-get-multi-factor-authentication"></a>Jak uzyskać Multi-Factor Authentication?
+## <a name="how-to-get-multi-factor-authentication"></a>Jak uzyskać usługę Multi-Factor Authentication?
 
-Multi-Factor Authentication jest częścią następujących ofert:
+Usługa Multi-Factor Authentication jest częścią następujących ofert:
 
 * **Azure Active Directory — wersja Premium** lub **Microsoft 365 Business** — w pełni funkcjonalne korzystanie z platformy Azure Multi-Factor Authentication przy użyciu zasad dostępu warunkowego, aby wymagać uwierzytelniania wieloskładnikowego.
 
 * **Azure AD — wersja bezpłatna** lub autonomiczne licencje **pakietu Office 365** — Użyj wstępnie utworzonych [zasad ochrony punktu odniesienia dostępu warunkowego](../conditional-access/concept-baseline-protection.md) , aby wymagać uwierzytelniania wieloskładnikowego dla użytkowników i administratorów.
 
-* **Azure Active Directory Administratorzy globalni** — podzbiór funkcji Multi-Factor Authentication platformy Azure jest dostępny jako środek do ochrony kont administratorów globalnych.
+* **Administratorzy globalni usługi Azure Active Directory** — konta administratorów globalnych mogą być chronione za pomocą podzbioru funkcji usługi Azure Multi-Factor Authentication.
 
 > [!NOTE]
 > Nowi klienci nie mogą już kupować Multi-Factor Authentication platformy Azure jako autonomicznej oferty obowiązującej 1 września, 2018. Uwierzytelnianie wieloskładnikowe będzie nadal mieć dostępną funkcję w Azure AD — wersja Premium licencji.

@@ -1,18 +1,18 @@
 ---
 title: ARRAY_CONTAINS w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji ARRAY_CONTAINS systemu SQL w Azure Cosmos DB.
+description: Dowiedz się, w jaki sposób tablica zawiera funkcję systemową SQL w Azure Cosmos DB zwraca wartość Boolean wskazującą, czy tablica zawiera określoną wartość
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 247956ccc2718c9bf192b4d704a48014753c00dc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 115667c93bbb832926a7939cf250a02b6fef8baa
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348708"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873492"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
 Zwraca wartość logiczną wskazującą, czy tablica zawiera określoną wartość. Można wyszukać częściowe lub pełne dopasowanie obiektu za pomocą wyrażenia logicznego w poleceniu. 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6a87b5797ea5c8f4ac116d6df9e6a48204f1fd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381896"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848514"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Użycie metod uwierzytelniania & Insights (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Następujące role mogą uzyskać dostęp do użycia i szczegółowych informacj
 
 Do uzyskania dostępu do informacji o użyciu i szczegółowych informacji nie są wymagane żadne dodatkowe licencje. Informacje dotyczące licencjonowania Multi-Factor Authentication platformy Azure i samoobsługowego resetowania hasła (SSPR) znajdują się w [witrynie Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Aby uzyskać dostęp do informacji o użyciu metody uwierzytelniania i szczegółowych informacji:
 

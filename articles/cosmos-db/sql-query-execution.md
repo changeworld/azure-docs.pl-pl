@@ -1,17 +1,17 @@
 ---
 title: Wykonywanie zapytania SQL w Azure Cosmos DB
-description: Informacje o wykonywaniu zapytań SQL w Azure Cosmos DB
+description: Dowiedz się, jak utworzyć zapytanie SQL i wykonać je w Azure Cosmos DB. W tym artykule opisano sposób tworzenia i wykonywania zapytań SQL przy użyciu interfejsu API REST, zestawu SDK platformy .NET, zestawu SDK języka JavaScript i różnych zestawów SDK.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999909"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871265"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB wykonywania zapytania SQL
 
@@ -23,9 +23,9 @@ W poniższych przykładach pokazano, jak utworzyć zapytanie i przesłać je do 
 
 Usługa Cosmos DB oferuje otwarty model programowania RESTful używający protokołu HTTP. Model zasobów składa się z zestawu zasobów w ramach konta bazy danych, który jest objęty subskrypcją platformy Azure. Konto bazy danych składa się z zestawu *baz danych*, z których każdy może zawierać wiele *kontenerów*, które z kolei zawierają *elementy*, UDF i inne typy zasobów. Każdy zasób Cosmos DB jest adresowany przy użyciu logicznego i stabilnego identyfikatora URI. Zestaw zasobów nosi nazwę *źródła danych*. 
 
-Podstawowy model interakcji z tymi zasobami `GET`odbywa się za pośrednictwem czasowników `PUT`http `POST`,, `DELETE`i, przy użyciu standardowych interpretacji. Użyj `POST` , aby utworzyć nowy zasób, wykonać procedurę składowaną lub wydać zapytanie Cosmos DB. Zapytania są zawsze operacjami tylko do odczytu bez efektów ubocznych.
+Podstawowy model interakcji z tymi zasobami polega na zleceniach HTTP `GET`, `PUT`, `POST`i `DELETE`, przy użyciu standardowych interpretacji. Użyj `POST`, aby utworzyć nowy zasób, wykonać procedurę składowaną lub wydać zapytanie Cosmos DB. Zapytania są zawsze operacjami tylko do odczytu bez efektów ubocznych.
 
-W poniższych przykładach pokazano `POST` zapytanie interfejsu API SQL dotyczące przykładowych elementów. Zapytanie ma prosty filtr dla właściwości JSON `name` . I Content-Type: `application/query+json` Heads oznacza, że operacja jest kwerendą. `x-ms-documentdb-isquery` Zamień `mysqlapicosmosdb.documents.azure.com:443` na identyfikator URI konta Cosmos DB.
+W poniższych przykładach pokazano `POST` zapytania interfejsu API SQL względem przykładowych elementów. Zapytanie ma prosty filtr dla właściwości `name` JSON. `x-ms-documentdb-isquery` i Content-Type: nagłówki `application/query+json` oznacza, że operacja jest kwerendą. Zastąp `mysqlapicosmosdb.documents.azure.com:443` identyfikatorem URI dla konta Cosmos DB.
 
 ```json
     POST https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -143,15 +143,15 @@ Wyniki są następujące:
     }
 ```
 
-Jeśli wyniki zapytania nie mogą zmieścić się na jednej stronie, interfejs API REST zwraca token `x-ms-continuation-token` kontynuacji w nagłówku odpowiedzi. Klienci mogą podzielić na strony wyniki, dołączając nagłówek do kolejnych wyników. Możesz również kontrolować liczbę wyników na stronie za pomocą `x-ms-max-item-count` nagłówka Number.
+Jeśli wyniki zapytania nie mogą zmieścić się na jednej stronie, interfejs API REST zwraca token kontynuacji w nagłówku odpowiedzi `x-ms-continuation-token`. Klienci mogą podzielić na strony wyniki, dołączając nagłówek do kolejnych wyników. Możesz również kontrolować liczbę wyników na stronie za pomocą nagłówka `x-ms-max-item-count` numeru.
 
 Jeśli zapytanie zawiera funkcję agregującą, taką jak COUNT, Strona zapytania może zwrócić częściowo zagregowaną wartość tylko dla jednej strony wyników. Klienci muszą wykonać agregację drugiego poziomu dla tych wyników, aby wygenerować wyniki końcowe. Na przykład można obliczyć sumę względem liczb zwracanych na poszczególnych stronach w celu zwrócenia łącznej liczby.
 
-Aby zarządzać zasadami spójności danych dla zapytań, użyj `x-ms-consistency-level` nagłówka jako we wszystkich żądaniach interfejsu API REST. Spójność sesji wymaga również ECHA najnowszego `x-ms-session-token` nagłówka pliku cookie w żądaniu zapytania. Zasady indeksowania kontenera uwzględnionego w zapytaniu mogą również wpływać na spójność wyników zapytania. W przypadku domyślnych ustawień zasad indeksowania dla kontenerów indeks jest zawsze aktualny z zawartością elementu, a wyniki zapytania są zgodne ze spójnością wybraną dla danych. Aby uzyskać więcej informacji, zobacz [Azure Cosmos DB poziomów spójności] [poziom spójności].
+Aby zarządzać zasadami spójności danych dla zapytań, użyj nagłówka `x-ms-consistency-level` jako we wszystkich żądaniach interfejsu API REST. Spójność sesji wymaga również ECHA najnowszego nagłówka pliku cookie `x-ms-session-token` w żądaniu zapytania. Zasady indeksowania kontenera uwzględnionego w zapytaniu mogą również wpływać na spójność wyników zapytania. W przypadku domyślnych ustawień zasad indeksowania dla kontenerów indeks jest zawsze aktualny z zawartością elementu, a wyniki zapytania są zgodne ze spójnością wybraną dla danych. Aby uzyskać więcej informacji, zobacz [Azure Cosmos DB poziomów spójności] [poziom spójności].
 
-Jeśli skonfigurowane zasady indeksowania w kontenerze nie mogą obsługiwać określonego zapytania, serwer Azure Cosmos DB zwraca 400 "złe żądanie". Ten komunikat o błędzie zwraca zapytania o ścieżki jawnie wykluczone z indeksowania. Możesz określić `x-ms-documentdb-query-enable-scan` nagłówek, aby zezwolić na wykonywanie przez kwerendę skanowania, gdy indeks nie jest dostępny.
+Jeśli skonfigurowane zasady indeksowania w kontenerze nie mogą obsługiwać określonego zapytania, serwer Azure Cosmos DB zwraca 400 "złe żądanie". Ten komunikat o błędzie zwraca zapytania o ścieżki jawnie wykluczone z indeksowania. Możesz określić nagłówek `x-ms-documentdb-query-enable-scan`, aby umożliwić wykonywanie skanowania przez zapytanie, gdy indeks nie jest dostępny.
 
-Aby uzyskać szczegółowe metryki wykonywania zapytania, można ustawić `x-ms-documentdb-populatequerymetrics` nagłówek na. `true` Aby uzyskać więcej informacji, zobacz [SQL query metrics for Azure Cosmos DB (Metryki zapytań języka SQL dla usługi Azure Cosmos DB)](sql-api-query-metrics.md).
+Aby uzyskać szczegółowe metryki wykonywania zapytania, należy ustawić nagłówek `x-ms-documentdb-populatequerymetrics` na `true`. Aby uzyskać więcej informacji, zobacz [SQL query metrics for Azure Cosmos DB (Metryki zapytań języka SQL dla usługi Azure Cosmos DB)](sql-api-query-metrics.md).
 
 ## <a name="c-net-sdk"></a>C#(ZESTAW SDK DLA PLATFORMY .NET)
 
@@ -217,7 +217,7 @@ Poniższy przykład porównuje dwie właściwości dla równości w poszczególn
     }
 ```
 
-W następnym przykładzie pokazano sprzężenia wyrażone za `SelectMany`pomocą LINQ.
+W następnym przykładzie pokazano sprzężenia wyrażone za pomocą LINQ `SelectMany`.
 
 ```csharp
     foreach (var pet in client.CreateDocumentQuery(containerLink,
@@ -241,9 +241,9 @@ W następnym przykładzie pokazano sprzężenia wyrażone za `SelectMany`pomocą
     }
 ```
 
-Klient platformy .NET automatycznie wykonuje iterację na wszystkich stronach wyników zapytania w `foreach` blokach, jak pokazano w poprzednim przykładzie. Opcje zapytania wprowadzone w sekcji [interfejs API REST](#REST-API) są również dostępne w zestawie .NET SDK przy użyciu `FeedOptions` klas `CreateDocumentQuery` i `FeedResponse` w metodzie. Liczbę stron można kontrolować za pomocą `MaxItemCount` ustawienia.
+Klient platformy .NET automatycznie wykonuje iterację na wszystkich stronach wyników zapytania w blokach `foreach`, jak pokazano w poprzednim przykładzie. Opcje zapytania wprowadzone w sekcji [interfejs API REST](#REST-API) są również dostępne w zestawie .NET SDK przy użyciu klas `FeedOptions` i `FeedResponse` w metodzie `CreateDocumentQuery`. Liczbę stron można kontrolować przy użyciu ustawienia `MaxItemCount`.
 
-Można również jawnie kontrolować stronicowanie `IDocumentQueryable` `ResponseContinuationToken` , tworząc `IQueryable` przy użyciu obiektu, odczytując wartości i przekazując je ponownie jako `RequestContinuationToken`. `FeedOptions` Można ustawić `EnableScanInQuery` , aby włączyć skanowanie, gdy zapytanie nie jest obsługiwane przez skonfigurowane zasady indeksowania. W przypadku kontenerów partycjonowanych można użyć `PartitionKey` programu, aby uruchomić zapytanie względem pojedynczej partycji, chociaż Azure Cosmos DB może automatycznie wyodrębnić ten element z tekstu zapytania. Za pomocą `EnableCrossPartitionQuery` programu można uruchamiać zapytania dotyczące wielu partycji.
+Można również jawnie kontrolować stronicowanie, tworząc `IDocumentQueryable` przy użyciu obiektu `IQueryable`, a następnie odczytując wartości `ResponseContinuationToken` i przekazywać je ponownie jako `RequestContinuationToken` w `FeedOptions`. Można ustawić `EnableScanInQuery`, aby włączyć skanowanie, gdy zapytanie nie jest obsługiwane przez skonfigurowane zasady indeksowania. W przypadku kontenerów partycjonowanych można użyć `PartitionKey` do uruchamiania zapytania względem pojedynczej partycji, chociaż Azure Cosmos DB może automatycznie wyodrębnić ten element z tekstu zapytania. Za pomocą `EnableCrossPartitionQuery` można uruchamiać zapytania dotyczące wielu partycji.
 
 Aby uzyskać więcej przykładów platformy .NET z zapytaniami, zobacz [przykłady Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3) w witrynie GitHub.
 
@@ -251,7 +251,7 @@ Aby uzyskać więcej przykładów platformy .NET z zapytaniami, zobacz [przykła
 
 Azure Cosmos DB zapewnia model programowania do [wykonywania logiki aplikacji opartej na języku JavaScript](stored-procedures-triggers-udfs.md) bezpośrednio w kontenerach za pomocą procedur składowanych i wyzwalaczy. Logika JavaScript zarejestrowana na poziomie kontenera może następnie wystawiać operacje bazy danych na elementach danego kontenera, opakowanych w transakcjach w środowisku otoczenia.
 
-Poniższy przykład pokazuje, jak używać `queryDocuments` programu w interfejsie API serwera JavaScript do wykonywania zapytań w procedurach składowanych i wyzwalaczach:
+Poniższy przykład pokazuje, jak używać `queryDocuments` w interfejsie API serwera JavaScript do wykonywania zapytań z wewnątrz procedur składowanych i wyzwalaczy:
 
 ```javascript
     function findName(givenName, familyName) {

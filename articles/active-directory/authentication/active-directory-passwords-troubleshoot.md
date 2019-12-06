@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b72f0675569ea6f683e8e1f8d2e4bc468f82c71f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a22c0cc922e021edc37dfbb2d89fdd20c77b2c87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382032"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848769"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Rozwiązywanie problemów z funkcją samoobsługowego resetowania hasła
 
@@ -127,7 +127,7 @@ Najlepszym rozwiązaniem w przypadku rozwiązywania problemów z funkcją zapisy
 | 31018| KeyPairCreationSuccess| To zdarzenie wskazuje, że klucz szyfrowania hasła został pomyślnie utworzony. Ten klucz służy do szyfrowania haseł z chmury do wysłania do środowiska lokalnego.|
 | 32000| Nieznany błąd zostanie| To zdarzenie wskazuje, że podczas operacji zarządzania hasłami wystąpił nieznany błąd. Aby uzyskać więcej informacji, zobacz tekst wyjątku w zdarzeniu. Jeśli masz problemy, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł. Jeśli to nie pomoże, Dołącz kopię dziennika zdarzeń wraz z IDENTYFIKATORem śledzenia, który został określony dla inżyniera pomocy technicznej.|
 | 32001| Wystąpił błąd| To zdarzenie wskazuje, że wystąpił błąd podczas nawiązywania połączenia z usługą resetowania hasła w chmurze. Ten błąd występuje zazwyczaj, gdy Usługa lokalna nie może nawiązać połączenia z usługą sieci Web resetowania hasła.|
-| 32002| ServiceBusError| To zdarzenie wskazuje, że wystąpił błąd podczas nawiązywania połączenia z wystąpieniem Service Bus dzierżawy. Taka sytuacja może wystąpić, jeśli blokujesz połączenia wychodzące w środowisku lokalnym. Sprawdź zaporę, aby upewnić się, że zezwalasz na połączenia za pośrednictwem protokołu TCP 443 i https://ssprdedicatedsbprodncu.servicebus.windows.net, a następnie spróbuj ponownie. Jeśli nadal występują problemy, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł.|
+| 32002| ServiceBusError| To zdarzenie wskazuje, że wystąpił błąd podczas nawiązywania połączenia z wystąpieniem Service Bus dzierżawy. Taka sytuacja może wystąpić, jeśli blokujesz połączenia wychodzące w środowisku lokalnym. Sprawdź zaporę, aby upewnić się, że zezwalasz na połączenia za pośrednictwem protokołu TCP 443 i https://ssprdedicatedsbprodncu.servicebus.windows.net , a następnie spróbuj ponownie. Jeśli nadal występują problemy, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł.|
 | 32003| InPutValidationError| To zdarzenie oznacza, że dane wejściowe przesłane do naszego interfejsu API usługi sieci Web były nieprawidłowe. Spróbuj ponownie wykonać operację.|
 | 32004| DecryptionError| To zdarzenie wskazuje, że wystąpił błąd podczas odszyfrowywania hasła, które dotarło do chmury. Może to być spowodowane niezgodnością klucza odszyfrowywania między usługą w chmurze i środowiskiem lokalnym. Aby rozwiązać ten problem, Wyłącz, a następnie ponownie włącz funkcję zapisywania zwrotnego haseł w środowisku lokalnym.|
 | 32005| ConfigurationError| Podczas dołączania zapisujemy informacje specyficzne dla dzierżawy w pliku konfiguracji w środowisku lokalnym. To zdarzenie wskazuje, że wystąpił błąd podczas zapisywania tego pliku lub gdy usługa została uruchomiona, wystąpił błąd podczas odczytu pliku. Aby rozwiązać ten problem, spróbuj wyłączyć i ponownie włączyć funkcję zapisywania zwrotnego haseł w celu wymuszenia ponownego zapisania pliku konfiguracji.|
@@ -136,7 +136,7 @@ Najlepszym rozwiązaniem w przypadku rozwiązywania problemów z funkcją zapisy
 | 32009| AuthTokenError| To zdarzenie wskazuje, że nie można uzyskać tokenu autoryzacji dla konta administratora globalnego określonego podczas instalacji Azure AD Connect. Ten błąd może być spowodowany przez nieprawidłową nazwę użytkownika lub hasło określone dla konta administratora globalnego. Ten błąd może również wystąpić, jeśli określone konto administratora globalnego jest federacyjne. Aby rozwiązać ten problem, należy ponownie uruchomić konfigurację przy użyciu prawidłowej nazwy użytkownika i hasła oraz upewnić się, że administrator jest kontem zarządzanym (tylko w chmurze lub z synchronizacją).|
 | 32010| CryptoError| To zdarzenie wskazuje, że wystąpił błąd podczas generowania klucza szyfrowania hasła lub odszyfrowywania hasła przychodzącego z usługi w chmurze. Ten błąd najkorzystnie wskazuje na problem z Twoim środowiskiem. Zapoznaj się ze szczegółowymi informacjami o dzienniku zdarzeń, aby dowiedzieć się więcej o tym, jak rozwiązać ten problem. Możesz również spróbować wyłączyć i ponownie włączyć usługę zapisywania zwrotnego haseł.|
 | 32011| OnBoardingServiceError| To zdarzenie oznacza, że Usługa lokalna nie może prawidłowo skomunikować się z usługą sieci Web resetowania hasła w celu zainicjowania procesu dołączania. Może to być spowodowane regułą zapory lub problemem z uzyskaniem tokenu uwierzytelniania dla dzierżawy. Aby rozwiązać ten problem, upewnij się, że nie blokujesz połączeń wychodzących za pośrednictwem protokołów TCP 443 i TCP 9350-9354 lub https://ssprdedicatedsbprodncu.servicebus.windows.net. Upewnij się również, że konto administratora usługi Azure AD, które jest używane do dołączania, nie jest federacyjne.|
-| 32013| OffBoardingError| To zdarzenie oznacza, że Usługa lokalna nie może prawidłowo skomunikować się z usługą sieci Web resetowania hasła w celu zainicjowania procesu odłączania. Może to być spowodowane regułą zapory lub problemem z uzyskaniem tokenu autoryzacji dla dzierżawy. Aby rozwiązać ten problem, upewnij się, że nie blokujesz połączeń wychodzących przez 443 lub do https://ssprdedicatedsbprodncu.servicebus.windows.neti że konto administratora Azure Active Directory używane do odłączania nie jest federacyjne.|
+| 32013| OffBoardingError| To zdarzenie oznacza, że Usługa lokalna nie może prawidłowo skomunikować się z usługą sieci Web resetowania hasła w celu zainicjowania procesu odłączania. Może to być spowodowane regułą zapory lub problemem z uzyskaniem tokenu autoryzacji dla dzierżawy. Aby rozwiązać ten problem, upewnij się, że nie blokujesz połączeń wychodzących przez 443 lub do https://ssprdedicatedsbprodncu.servicebus.windows.net i że konto administratora Azure Active Directory używane do odłączania nie jest federacyjne.|
 | 32014| ServiceBusWarning| To zdarzenie wskazuje, że musiałeś ponowić próbę nawiązania połączenia z wystąpieniem Service Bus dzierżawy. W normalnych warunkach nie powinna to stanowić problemu, ale jeśli widzisz to zdarzenie wiele razy, rozważ sprawdzenie połączenia sieciowego w celu Service Bus, szczególnie jeśli jest to połączenie o dużej opóźnieniu lub niskiej przepustowości.|
 | 32015| ReportServiceHealthError| W celu monitorowania kondycji usługi zapisywania zwrotnego haseł wysyłamy dane pulsu do usługi sieci Web resetowania hasła co pięć minut. To zdarzenie wskazuje, że wystąpił błąd podczas wysyłania informacji o kondycji z powrotem do usługi sieci Web w chmurze. Te informacje o kondycji nie obejmują informacji o identyfikowalnym obiekcie (OII) ani danych osobowych (dane osobowe), a także są całkowicie Pulse i podstawowe statystyki usługi, dzięki czemu możemy zapewnić informacje o stanie usługi w chmurze.|
 | 33001| ADUnKnownError| To zdarzenie wskazuje, że wystąpił nieznany błąd zwrócony przez Active Directory. Aby uzyskać więcej informacji, sprawdź dziennik zdarzeń serwera Azure AD Connect pod kątem zdarzeń ze źródła ADSync.|
@@ -167,7 +167,7 @@ Najbardziej typowym punktem awarii jest to, że porty zapory i serwera proxy ora
 
 W przypadku Azure AD Connect w wersji wersji 1.1.443.0 lub nowszej wymagany jest wychodzący dostęp HTTPS do następujących:
 
-* \*. passwordreset.microsoftonline.com
+* \*.passwordreset.microsoftonline.com
 * \*.servicebus.windows.net
 
 Aby uzyskać więcej informacji, odwołując się do zaktualizowanej listy [zakresów adresów IP centrum](https://www.microsoft.com/download/details.aspx?id=41653) danych, Microsoft Azure które są aktualizowane w każdą środę i które mają obowiązywać w następnym poniedziałek.

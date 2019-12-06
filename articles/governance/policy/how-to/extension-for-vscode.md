@@ -2,13 +2,13 @@
 title: Azure Policy rozszerzenie dla Visual Studio Code
 description: Dowiedz się, jak używać rozszerzenia Azure Policy Visual Studio Code do wyszukiwania aliasów Menedżer zasobów.
 ms.date: 11/04/2019
-ms.topic: conceptual
-ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.topic: how-to
+ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072034"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873118"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Użyj rozszerzenia Azure Policy dla Visual Studio Code
 

@@ -3,28 +3,24 @@ title: Poświadczenia certyfikatu w usłudze Azure AD
 titleSuffix: Microsoft identity platform
 description: W tym artykule omówiono rejestrację i użycie poświadczeń certyfikatu na potrzeby uwierzytelniania aplikacji
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473962"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845369"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji
 
@@ -52,9 +48,9 @@ Aby obliczyć potwierdzenie, można użyć jednej z wielu bibliotek [tokenów si
 | `iss` | Wystawca: powinien być client_id (Identyfikator aplikacji usługi klienta). |
 | `jti` | GUID: Identyfikator JWT |
 | `nbf` | Nie przed: Data, przed upływem którego nie można użyć tokenu. Czas jest reprezentowany jako liczba sekund od 1 stycznia 1970 (1970-01-01T0:0: 0Z) UTC do momentu wystawienia tokenu. |
-| `sub` | Temat: w przypadku `iss`należy client_id (Identyfikator aplikacji usługi klienta). |
+| `sub` | Temat: zgodnie z `iss`należy client_id (Identyfikator aplikacji usługi klienta). |
 
-### <a name="signature"></a>podpisane
+### <a name="signature"></a>Podpis
 
 Sygnatura jest obliczana przy zastosowaniu certyfikatu zgodnie z opisem w [specyfikacji RFC7519 tokenu internetowego JSON](https://tools.ietf.org/html/rfc7519)
 
@@ -101,7 +97,7 @@ Poświadczenie certyfikatu można skojarzyć z aplikacją kliencką w usłudze A
 W usłudze Azure App Registration dla aplikacji klienckiej:
 1. Wybierz pozycję **certyfikaty & wpisy tajne**. 
 2. Kliknij pozycję **Przekaż certyfikat** i wybierz plik certyfikatu do przekazania.
-3. Kliknij pozycję **Dodaj**.
+3. Kliknij pozycję **Add** (Dodaj).
   Po przekazaniu certyfikatu zostaną wyświetlone wartości odcisku palca, Data rozpoczęcia i wygaśnięcie. 
 
 ### <a name="updating-the-application-manifest"></a>Aktualizowanie manifestu aplikacji

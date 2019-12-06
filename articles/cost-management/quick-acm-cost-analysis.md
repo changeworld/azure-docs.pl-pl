@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 858672a7fcfcfd5f50c91eb769fdd0d42578195f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 36b8a3bba82a338f3aab526d505c4d1e96061ddf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229993"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849126"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki Start: Eksplorowanie i analizowanie kosztów za pomocą analizy kosztów
 
@@ -36,7 +36,7 @@ Analiza kosztów obsługuje różne rodzaje typów kont platformy Azure. Aby wy�
 
 Aby uzyskać informacje o przypisywaniu dostępu do danych Azure Cost Management, zobacz [Przypisywanie dostępu do danych](assign-access-acm-data.md).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 - Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -48,7 +48,7 @@ Wybrany zakres jest używany w całym Cost Management, aby zapewnić konsolidacj
 
 Początkowy widok kosztów analizy obejmuje następujące obszary.
 
-**Widok skumulowanego kosztu**: przedstawia wstępnie zdefiniowaną konfigurację widoku analizy kosztów. Każdy widok obejmuje ustawienia zakres dat, stopień szczegółowości, grupowanie według i filtrowanie. Widok domyślny pokazuje skumulowane koszty bieżącego okresu rozliczeniowego, ale można je zmienić na inne wbudowane widoki. Aby uzyskać więcej informacji, zobacz [Dostosowywanie widoków kosztów](#customize-cost-views).
+**Widok skumulowanego kosztu**: przedstawia wstępnie zdefiniowaną konfigurację widoku analizy kosztów. Każdy widok obejmuje ustawienia zakresu dat, stopnia szczegółowości, grupowania i filtrowania. Widok domyślny pokazuje skumulowane koszty bieżącego okresu rozliczeniowego, ale można go zmienić na inne wbudowane widoki. Aby uzyskać więcej informacji, zobacz [Dostosowywanie widoków kosztów](#customize-cost-views).
 
 **Rzeczywisty koszt**: pokazuje łączne koszty użycia i zakupu dla bieżącego miesiąca, gdy są naliczane i będą wyświetlane na rachunku.
 
@@ -58,7 +58,7 @@ Początkowy widok kosztów analizy obejmuje następujące obszary.
 
 **Skumulowany stopień szczegółowości**: pokazuje łączną sumę dziennych kosztów od początku okresu rozliczeniowego. Po [utworzeniu budżetu](tutorial-acm-create-budgets.md) subskrypcji lub konta billingowego możesz szybko wyświetlić trend wydatków w odniesieniu do budżetu. Umieść kursor nad datą, aby wyświetlić skumulowany koszt w tym dniu.
 
-**Wykresy przestawne (pierścieniowe)** : zapewniają dynamiczne przestawne, dzieląc łączny koszt przez wspólny zestaw standardowych właściwości. Są one wyświetlane od największych do najmniejszych kosztów w bieżącym miesiącu. Wykresy przestawne można zmieniać w dowolnym momencie, wybierając inny element przestawny. Koszty są domyślnie klasyfikowane według usługi (kategorii licznika), lokalizacji (regionu) i zakresu podrzędnego. Na przykład konta rejestracji są w obszarze konta rozliczeń, grupy zasobów znajdują się w obszarze subskrypcje, a zasoby znajdują się w obszarze grupy zasobów.
+**Wykresy przestawne (pierścieniowe)** : zapewniają dynamiczne przestawne, dzieląc łączny koszt przez wspólny zestaw standardowych właściwości. Dzięki nim można wyświetlić koszty dla bieżącego miesiąca posortowane od największych do najmniejszych. Wykresy przestawne można zmieniać w dowolnym momencie, wybierając inny element przestawny. Koszty są domyślnie dzielone na kategorie według usługi (kategorii miernika), lokalizacji (regionu) i zakresu podrzędnego. Są to na przykład konta rejestracji w ramach kont rozliczeniowych, grupy zasobów w ramach subskrypcji i zasoby w ramach grup zasobów.
 
 ![Początkowy widok analizy kosztów w witrynie Azure Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
@@ -66,30 +66,30 @@ Początkowy widok kosztów analizy obejmuje następujące obszary.
 
 Analiza kosztów ma cztery wbudowane widoki zoptymalizowane pod kątem najpopularniejszych celów:
 
-Widok | Odpowiedzi na pytania
+Wyświetl | Odpowiedzi na pytania
 --- | ---
-Skumulowany koszt | Ile pozostało dotąd w tym miesiącu? Czy wydatki zmieściły się w budżecie?
-Koszt dzienny | Czy wystąpiły wzrost kosztów dziennie w ciągu ostatnich 30 dni?
+Koszt skumulowany | Jaka jest kwota dotychczasowych wydatków w bieżącym miesiącu? Czy wydatki zmieściły się w budżecie?
+Dzienny koszt | Czy w ciągu ostatnich 30 dni wystąpiły wzrost kosztów dziennych?
 Koszt według usługi | Jak moje miesięczne użycie różni się od ostatnich trzech faktur?
-Koszt według zasobu | Które zasoby są kosztowne do tej pory w tym miesiącu?
+Koszt według zasobu | Które zasoby wygenerowały do tej pory najwięcej kosztów w tym miesiącu?
 
 ![Selektor widoku pokazujący przykład wyboru dla tego miesiąca](./media/quick-acm-cost-analysis/view-selector.png)
 
 W większości przypadków będziesz jednak potrzebować dokładniejszej analizy. Dostosowywanie rozpoczyna się od wybrania daty w górnej części strony.
 
-Analiza kosztów domyślnie przedstawia dane z bieżącego miesiąca. Użyj selektora dat, aby szybko przełączać się do wspólnych zakresów dat. Przykładami mogą być ostatnie siedem dni, ostatni miesiąc, bieżący rok lub niestandardowy zakres dat. Subskrypcje z płatnością zgodnie z rzeczywistym użyciem obejmują również zakresy dat na podstawie okresu rozliczeniowego, który nie jest powiązany z miesiącem kalendarzowym, na przykład bieżącym okresem rozliczeniowym lub ostatnią fakturą. Użyj linków **< poprzednie** i **Next >** w górnej części menu, aby przejść odpowiednio do poprzedniego lub następnego okresu. Na przykład **< poprzedni** zostanie przełączony z **ostatnich 7 dni** do **8-14 dni temu** lub **15-21 dni temu**.
+Analiza kosztów domyślnie przedstawia dane z bieżącego miesiąca. Selektor dat ułatwia szybkie przełączanie się między najczęściej używanymi zakresami dat. Przykładowe zakresy: ostatnie siedem dni, ostatni miesiąc, bieżący rok lub niestandardowy zakres dat. Subskrypcje z płatnością zgodnie z rzeczywistym użyciem obejmują również zakresy dat bazujące na okresie rozliczeniowym, który nie jest powiązany z miesiącem kalendarzowym. Mogą to być na przykład bieżący okres rozliczeniowy lub ostatnia faktura. Użyj linków **< poprzednie** i **Next >** w górnej części menu, aby przejść odpowiednio do poprzedniego lub następnego okresu. Na przykład **< poprzedni** zostanie przełączony z **ostatnich 7 dni** do **8-14 dni temu** lub **15-21 dni temu**.
 
 ![Selektor daty przedstawiający przykładowy wybór dla tego miesiąca](./media/quick-acm-cost-analysis/date-selector.png)
 
-Analiza kosztów domyślnie przedstawia **skumulowane** koszty. Koszty skumulowane obejmują wszystkie koszty dla każdego dnia oraz poprzednie dni, co pozwala na stale rosnący wgląd w dzienne zagregowane koszty. Ten widok jest optymalizowany w celu pokazania trendów względem budżetu dla wybranego zakresu czasu.
+Analiza kosztów domyślnie przedstawia **skumulowane** koszty. Koszty skumulowane obejmują wszystkie koszty dla każdego dnia oraz poprzednich dni i umożliwiają tworzenie wciąż rosnącego widoku zagregowanych kosztów dziennych. Ten widok jest optymalizowany w celu pokazania trendów względem budżetu dla wybranego zakresu czasu.
 
-Widok Wykres prognozy służy do identyfikowania potencjalnych naruszeń budżetu. W przypadku wystąpienia potencjalnego naruszenia budżetu przewidywane przekroczenie jest pokazane na czerwono. Symbol wskaźnika jest również pokazywany na wykresie. Umieszczenie wskaźnika myszy nad symbolem pokazuje szacowaną datę naruszenia budżetu.
+Widok wykresu prognozy służy do identyfikowania potencjalnych naruszeń budżetu. W przypadku wystąpienia potencjalnego naruszenia budżetu przewidywane przekroczenie jest pokazane na czerwono. Symbol wskaźnika jest również pokazywany na wykresie. Umieszczenie wskaźnika myszy nad tym symbolem powoduje wyświetlenie szacowanej daty naruszenia budżetu.
 
 ![Przykład pokazujący potencjalne naruszenie budżetu](./media/quick-acm-cost-analysis/budget-breach.png)
 
-Istnieje również widok **dzienny** przedstawiający koszty danego dnia. Widok dzienny nie zawiera trendu wzrostu. Widok został zaprojektowany z myślą o wyświetlaniu nieprawidłowości, gdy koszt gwałtownie wzrasta lub spada z dnia na dzień. W przypadku wybrania budżetu dzienny widok zawiera również szacunkowy budżet dzienny.
+Istnieje również widok **dzienny** przedstawiający koszty danego dnia. Widok dzienny nie zawiera trendu wzrostu. Widok został zaprojektowany z myślą o wyświetlaniu nieprawidłowości, gdy koszt gwałtownie wzrasta lub spada z dnia na dzień. W przypadku wybrania budżetu widok dzienny pokazuje również szacowany budżet na dany dzień.
 
-Gdy dzienne koszty są spójne powyżej szacowanego dziennego budżetu, można oczekiwać, że zostanie przekroczony miesięczny budżet. Szacowany dzienny budżet jest środkiem ułatwiającym wizualizację budżetu na niższym poziomie. W przypadku wahań kosztów dziennych porównanie szacowanego budżetu dziennego z budżetem miesięcznym jest mniej dokładne.
+Jeśli koszty dzienne stale przekraczają szacowany budżet dzienny, można oczekiwać przekroczenia kwoty budżetu miesięcznego. Szacowany budżet dzienny to metoda ułatwiająca wizualizowanie budżetu na niższym poziomie. W przypadku wahań kosztów dziennych porównanie szacowanego budżetu dziennego z budżetem miesięcznym jest mniej dokładne.
 
 Oto dzienny widok ostatnich wydatków dzięki włączonej prognozie wydatków.
 Widok dzienny ![przedstawiający przykład dziennych kosztów dla bieżącego miesiąca](./media/quick-acm-cost-analysis/daily-view.png)
@@ -101,19 +101,21 @@ Ogólnie rzecz biorąc, można oczekiwać, że dane lub powiadomienia dotyczące
 
 **Grupuj według** wspólnych właściwości, aby podzielić koszty i identyfikować najważniejszych współautorów. Aby grupować według tagów zasobów, na przykład wybierz klucz tagu, według którego chcesz grupować. Koszt jest podzielony na poszczególne wartości tagów, z dodatkowym segmentem dla zasobów, które nie mają zastosowanych tagów.
 
-Większość [zasobów platformy Azure obsługuje tagowanie](../azure-resource-manager/tag-support.md). Niektóre Tagi nie są jednak dostępne w Cost Management i rozliczeń. Ponadto nie są obsługiwane tagi grup zasobów. Rozwiązanie Cost Management obsługuje tylko tagi zasobów od daty bezpośredniego zastosowania tagów do zasobu. Zapoznaj się z [tematem jak przeglądać zasady tagów za pomocą Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) wideo, aby dowiedzieć się więcej o korzystaniu z zasad tagów platformy Azure w celu zwiększenia widoczności danych kosztów
+Większość [zasobów platformy Azure obsługuje tagowanie](../azure-resource-manager/tag-support.md). Niektóre Tagi nie są jednak dostępne w Cost Management i rozliczeń. Ponadto nie są obsługiwane tagi grup zasobów. Obsługa tagów ma zastosowanie do użycia zgłoszonego *po* zastosowaniu znacznika do zasobu. Tagi nie są stosowane z mocą wsteczną dla pakietów zbiorczych kosztów.
+
+Zapoznaj się z [tematem jak przeglądać zasady tagów za pomocą Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) wideo, aby dowiedzieć się więcej o korzystaniu z zasad tagów platformy Azure w celu zwiększenia widoczności danych kosztów
 
 Oto widok kosztów usługi platformy Azure dla bieżącego miesiąca.
 
 ![Skumulowany, zgrupowany widok dzienny przedstawiający przykładowe koszty usług platformy Azure w ostatnim miesiącu](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Domyślnie analiza kosztów pokazuje wszystkie koszty użycia i zakupu w miarę ich naliczania i będzie wyświetlana na fakturze, znane także jako **rzeczywisty koszt**. Wyświetlanie rzeczywistego kosztu jest idealne do uzgadniania faktury. Jednak zakup skoków w koszcie może być alarmem, gdy nie ma żadnego efektu, aby zachować anomalie i inne zmiany kosztów. Aby spłaszczyć wzrosty wynikające z zastrzeżeń zakupu, należy przełączyć się na **amortyzowany koszt**.
+Domyślnie analiza kosztów pokazuje wszystkie koszty użycia i zakupu w miarę ich naliczania i będzie wyświetlana na fakturze, znane także jako **rzeczywisty koszt**. Wyświetlanie kosztu rzeczywistego nadaje się doskonale do uzgadniania faktury. Jednak widoczne w kosztach nagłe wzrosty kwot zakupów mogą być alarmujące, jeśli śledzisz anomalie wydatków i inne zmiany kosztów. Aby spłaszczyć wzrosty wynikające z zastrzeżeń zakupu, należy przełączyć się na **amortyzowany koszt**.
 
 ![Zmiana między rzeczywistym i amortyzowanym kosztem w celu wyświetlenia rezerwacji zakupów rozmieszczonych w całym okresie i przydzielenia do zasobów, które używały rezerwacji](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Amortyzowany koszt powoduje zerwanie zakupów rezerwacji w codzienne fragmenty i rozłożenie ich w czasie trwania okresu rezerwacji. Na przykład zamiast $1 korzystania z $365 zakupu w dniu 1 stycznia zobaczysz od 1 stycznia do 31 grudnia. Oprócz podstawowej amortyzacji te koszty są również ponownie przydzielone i skojarzone przy użyciu określonych zasobów, które używały rezerwacji. Na przykład, jeśli opłata dzienna $1 została podzielona między dwie maszyny wirtualne, zobaczysz $2 0,50 opłaty za dzień. Jeśli część rezerwacji nie zostanie wykorzystana na dzień, zobaczysz opłatę $1 0,50 skojarzoną z odpowiednią maszyną wirtualną i inną opłatą $0,50 z typem opłaty `UnusedReservation`. Należy pamiętać, że nieużywane koszty rezerwacji mogą być widoczne tylko w przypadku wyświetlania amortyzowanego kosztu.
+W widoku Koszt zamortyzowany zakupy rezerwacji są rozłożone na dzienne fragmenty obejmujące cały czas trwania okresu rezerwacji. Na przykład zamiast $1 korzystania z $365 zakupu w dniu 1 stycznia zobaczysz od 1 stycznia do 31 grudnia. Oprócz podstawowej amortyzacji te koszty są również ponownie przydzielane i kojarzone przy użyciu określonych zasobów, które używały rezerwacji. Na przykład, jeśli opłata dzienna $1 została podzielona między dwie maszyny wirtualne, zobaczysz $2 0,50 opłaty za dzień. Jeśli część rezerwacji nie zostanie wykorzystana na dzień, zobaczysz opłatę $1 0,50 skojarzoną z odpowiednią maszyną wirtualną i inną opłatą $0,50 z typem opłaty `UnusedReservation`. Należy pamiętać, że nieużywane koszty rezerwacji mogą być widoczne tylko w przypadku wyświetlania amortyzowanego kosztu.
 
-Ze względu na zmianę sposobu reprezentowania kosztów należy zauważyć, że rzeczywiste wartości w widokach koszt rzeczywisty i amortyzowany są różne. Ogólnie rzecz biorąc, łączny koszt miesięcy z zakupem rezerwacji będzie zmniejszany podczas wyświetlania amortyzowanych kosztów i miesięcy po zakupie zakupu. Amortyzacja jest dostępna tylko w przypadku zakupów rezerwacji i nie dotyczy zakupów w portalu Azure Marketplace.
+Ze względu na zmianę sposobu reprezentowania kosztów należy pamiętać, że widoki kosztu rzeczywistego i amortyzowanego będą wyświetlały różne łączne kwoty. Ogólnie rzecz biorąc, łączny koszt w miesiącach z zakupem rezerwacji będzie mniejszy, jeśli zostaną wyświetlone koszty zamortyzowane, a koszt w miesiącach następujących po zakupie rezerwacji będzie większy. Amortyzacja jest dostępna tylko w przypadku zakupów rezerwacji i nie dotyczy zakupów w portalu Azure Marketplace.
 
 Na poniższej ilustracji przedstawiono nazwy grup zasobów. Możesz grupować według tagów, aby wyświetlić łączne koszty na tag, lub użyć widoku **Koszt według zasobów** , aby wyświetlić wszystkie Tagi dla określonego zasobu.
 

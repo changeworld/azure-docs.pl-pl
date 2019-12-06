@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228091"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851166"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Połącz się prywatnie z kontem magazynu przy użyciu prywatnego punktu końcowego platformy Azure
 Prywatny punkt końcowy platformy Azure to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych.
@@ -20,7 +20,7 @@ Prywatny punkt końcowy platformy Azure to podstawowy blok konstrukcyjny dla pry
 W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną w sieci wirtualnej platformy Azure, konto magazynu z prywatnym punktem końcowym przy użyciu Azure Portal. Następnie możesz bezpiecznie uzyskać dostęp do konta magazynu z maszyny wirtualnej.
 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -62,7 +62,7 @@ W tej sekcji utworzysz sieć wirtualną i podsieć do hostowania maszyny wirtual
     | Nazwa maszyny wirtualnej | Wprowadź *myVm*. |
     | Region | Wybierz pozycję **WestCentralUS**. |
     | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
-    | Image (Obraz) | Wybierz pozycję **Windows Server 2019 Datacenter**. |
+    | Obraz | Wybierz pozycję **Windows Server 2019 Datacenter**. |
     | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
     | **KONTO ADMINISTRATORA** |  |
     | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
@@ -169,9 +169,6 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 ## <a name="access-storage-account-privately-from-the-vm"></a>Dostęp do konta magazynu prywatnego z maszyny wirtualnej
 
 W tej sekcji nastąpi połączenie prywatne z kontem magazynu przy użyciu prywatnego punktu końcowego.
-
-> [!IMPORTANT]
-> Konfiguracja usługi DNS dla magazynu wymaga ręcznej modyfikacji pliku hosts w celu uwzględnienia nazwy FQDN określonego konta. Zmodyfikuj następujący plik, używając uprawnień administratora w systemie Windows: c:\Windows\System32\Drivers\etc\hosts lub Linux/etc/hosts Uwzględnij informacje DNS dla konta z poprzedniego kroku w następującym formacie [prywatny adres IP] myaccount.blob.core.windows.net
 
 1. W Pulpit zdalny *myVM*Otwórz program PowerShell.
 2. Wprowadź `nslookup mystorageaccount.blob.core.windows.net` zostanie wyświetlony komunikat podobny do tego:

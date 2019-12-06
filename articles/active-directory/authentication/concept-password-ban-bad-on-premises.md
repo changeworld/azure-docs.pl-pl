@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/18/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 013a14505f7ac1382bce369e161fdae834f605fc
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200212"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848650"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wymuś ochronę hasłem usługi Azure AD dla systemu Windows Server Active Directory
 
@@ -43,7 +43,7 @@ Oprogramowanie agenta DC ochrony hasłem w usłudze Azure AD może weryfikować 
 
 Wiele organizacji chce przeprowadzić dokładne testowanie ochrony hasłem usługi Azure AD na podzestawie kontrolerów domeny przed wdrożeniem pełnego wdrożenia. Ochrona hasłem w usłudze Azure AD obsługuje wdrażanie częściowe, a program IE oprogramowanie agenta kontrolera domeny na danym kontrolerze domeny będzie aktywnie weryfikować hasła, nawet jeśli w przypadku innych kontrolerów domeny w domenie nie zainstalowano oprogramowania agenta kontrolera domeny. Częściowe wdrożenia tego typu nie są bezpieczne i nie są zalecane w celach testowych.
 
-## <a name="architectural-diagram"></a>Diagram architektoniczny
+## <a name="architectural-diagram"></a>Diagram architektury
 
 Ważne jest zrozumienie podstawowych pojęć związanych z projektem i funkcjami przed wdrożeniem ochrony hasłem usługi Azure AD w środowisku lokalnym Active Directory. Na poniższym diagramie przedstawiono, jak składniki ochrony hasłem współpracują ze sobą:
 
@@ -87,7 +87,7 @@ Wdrożenie ochrony hasłem usługi Azure AD w lesie Active Directory wymaga reje
 
 Las Active Directory i wszystkie wdrożone usługi proxy w lesie muszą być zarejestrowane w ramach tej samej dzierżawy. Nie jest obsługiwane posiadanie lasu Active Directory ani żadnych usług serwera proxy w tym lesie zarejestrowanych w różnych dzierżawach usługi Azure AD. Objawy takiego nieskonfigurowanego wdrożenia obejmują możliwość pobierania zasad haseł.
 
-## <a name="download"></a>Do pobrania
+## <a name="download"></a>Pobierz
 
 W [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=57071)są dostępne dwa wymagane Instalatory agentów ochrony za pomocą hasła usługi Azure AD.
 

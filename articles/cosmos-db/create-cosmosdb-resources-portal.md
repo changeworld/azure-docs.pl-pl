@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/01/2019
-ms.openlocfilehash: 0f7102081d5ccd29507917068893b484902a4fb3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 12/02/2019
+ms.openlocfilehash: 9b563f7546710b0cb07573d32b2f3939d8e64085
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708181"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872217"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Szybki Start: Tworzenie konta, bazy danych, kontenera i elementów usługi Azure Cosmos w Azure Portal
 
@@ -51,7 +51,7 @@ Możesz użyć Eksplorator danych w Azure Portal, aby utworzyć bazę danych i k
     
     Może być konieczne przewinięcie w prawo, aby wyświetlić okno **Dodawanie kontenera** .
     
-    ![Azure Portal Eksplorator danych, Dodaj okienko kontenera](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Eksplorator danych w witrynie Azure Portal, okienko Dodawanie kontenera](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
 1.  W okienku **Dodaj kontener** wprowadź ustawienia dla nowego kontenera.
     
@@ -59,7 +59,7 @@ Możesz użyć Eksplorator danych w Azure Portal, aby utworzyć bazę danych i k
     |---|---|---|
     |**Identyfikator bazy danych**|ToDoList|Wprowadź *todolist* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź opcję **zainicjuj przepływność bazy danych** , która umożliwia udostępnianie przepływności dla bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również w obniżyć kosztów. |
     |**Przepływność**|400|Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.| 
-    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. Identyfikatory kontenerów mają takie same wymagania dotyczące znaków jak nazwy baz danych.|
+    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. W przypadku identyfikatorów kontenerów obowiązują takie same wymagania dotyczące znaków jak dla nazw baz danych.|
     |**Klucz partycji**| /category| W przykładzie opisanym w tym artykule jest stosowany */Category* jako klucz partycji.|
 
     

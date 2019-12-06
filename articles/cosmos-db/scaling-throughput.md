@@ -1,24 +1,24 @@
 ---
 title: Skalowanie przepływności w Azure Cosmos DB
-description: W tym artykule opisano, jak Azure Cosmos DB skalować przepływność elastycznie
-author: dharmas-cosmos
+description: W tym artykule opisano, jak Azure Cosmos DB skaluje przepływność w różnych regionach, w których zainicjowano konto usługi Azure Cosmos.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 29a92f04a1d36004fa082bfafe2310f9e0e3e5c6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467599"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873509"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Globalne skalowanie aprowizowanej przepływności 
 
 W Azure Cosmos DB, obsługiwana przepływność jest reprezentowana jako jednostki żądań na sekundę (RU/s lub w formacie plural jednostek ru). Jednostek ru Zmierz koszt operacji odczytu i zapisu w kontenerze Cosmos, jak pokazano na poniższej ilustracji:
 
-![Jednostki żądań](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+![Jednostki żądania](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
 Można udostępnić jednostek RU w kontenerze Cosmos lub bazie danych Cosmos. Jednostek ru udostępniane w kontenerze są dostępne wyłącznie dla operacji wykonywanych w tym kontenerze. Jednostek ru udostępniane w bazie danych są współdzielone przez wszystkie kontenery w tej bazie danych (z wyjątkiem kontenerów z wyłącznie przypisanymi jednostek ru).
 
@@ -34,9 +34,9 @@ Przy założeniu, że kontener Cosmos jest skonfigurowany przy użyciu *elementu
 
 - Jeśli konto Cosmos jest skonfigurowane z wieloma regionami zapisu, łączna jednostek ru dostępna globalnie w kontenerze = *R* x (*N*+ 1). Dodatkowe jednostek ru *języka R* są automatycznie inicjowane w celu przetworzenia konfliktów aktualizacji i ruchu antyentropii w regionach.
 
-Wybór [modelu spójności](consistency-levels.md) wpływa również na przepływność. Możesz uzyskać około 2x przepływność odczytu dla bardziej swobodnych poziomów spójności (np. *sesji*, *spójnego prefiksu* i spójności *ostatecznej* ) w porównaniu z silniejszymi poziomami spójności (np. *z ograniczeniami nieodświeżonymi* lub  *silna* spójność).
+Wybór [modelu spójności](consistency-levels.md) wpływa również na przepływność. Możesz uzyskać około 2x przepływność odczytu dla bardziej swobodnych poziomów spójności (np. *sesji*, *spójnego prefiksu* i spójności *ostatecznej* ) w porównaniu z silniejszymi poziomami spójności (np. *z ograniczeniami nieodświeżonymi* lub *silną* spójnością).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następnie można dowiedzieć się, jak skonfigurować przepływność na kontenerze lub w bazie danych:
 

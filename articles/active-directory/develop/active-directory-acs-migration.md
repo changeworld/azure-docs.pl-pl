@@ -2,34 +2,30 @@
 title: Migrowanie z usługi Azure Access Control Service | Microsoft Docs
 description: Dowiedz się więcej na temat opcji przeniesienia aplikacji i usług z usługi Azure Access Control Service (ACS).
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835524"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845556"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control Service
 
 Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana w dniu 7 listopada 2018. Aplikacje i usługi, które obecnie używają Access Control muszą być w pełni migrowane do innego mechanizmu uwierzytelniania, przez program. W tym artykule opisano zalecenia dla bieżących klientów, ponieważ planowane jest wycofanie korzystania z Access Control. Jeśli obecnie nie używasz Access Control, nie musisz podejmować żadnych działań.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Access Control to usługa uwierzytelniania w chmurze, która umożliwia łatwe uwierzytelnianie i Autoryzowanie użytkowników w celu uzyskania dostępu do aplikacji i usług sieci Web. Umożliwia ona rozdanie kodu w wielu funkcjach uwierzytelniania i autoryzacji. Access Control jest używany głównie przez deweloperów i architektów Microsoft .NET klientów, ASP.NET aplikacji sieci Web i usług sieci Web Windows Communication Foundation (WCF).
 
@@ -58,7 +54,7 @@ Aby użyć tych składników, należy utworzyć co najmniej jeden Access Control
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Cała komunikacja z operacjami usługi STS i zarządzania odbywa się przy użyciu tego adresu URL. Różne ścieżki są używane do różnych celów. Aby określić, czy aplikacje lub usługi używają Access Control, Monitoruj dla każdego ruchu do https://&lt;przestrzeń&gt;nazw. AccessControl.Windows.NET. Każdy ruch do tego adresu URL jest obsługiwany przez Access Control i musi być wycofany. 
+Cała komunikacja z operacjami usługi STS i zarządzania odbywa się przy użyciu tego adresu URL. Różne ścieżki są używane do różnych celów. Aby określić, czy Twoje aplikacje lub usługi używają Access Control, monitoruj każdy ruch do https://&lt;przestrzeni nazw&gt;. accesscontrol.windows.net. Każdy ruch do tego adresu URL jest obsługiwany przez Access Control i musi być wycofany. 
 
 Wyjątkiem jest dowolny ruch do `https://accounts.accesscontrol.windows.net`. Ruch do tego adresu URL jest już obsługiwany przez inną usługę i **nie ma** wpływ na przestarzałą Access Control. 
 
@@ -89,22 +85,22 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby dowiedzieć się, które apli
      Get-Help [Command-Name] -Full
     ```
     
-    gdzie `[Command-Name]` to nazwa polecenia ACS.
+    gdzie `[Command-Name]` jest nazwą polecenia ACS.
 
 ### <a name="list-your-acs-namespaces"></a>Wyświetlanie listy przestrzeni nazw ACS
 
 1. Połącz się z usługą ACS przy użyciu polecenia cmdlet **Connect-AcsAccount** .
   
-    Może być konieczne uruchomienie `Set-ExecutionPolicy -ExecutionPolicy Bypass` programu przed wykonaniem poleceń i być administratorem tych subskrypcji, aby można było wykonać polecenia.
+    Może być konieczne uruchomienie `Set-ExecutionPolicy -ExecutionPolicy Bypass`, aby można było wykonywać polecenia i być administratorem tych subskrypcji w celu wykonywania poleceń.
 
 1. Wyświetl listę dostępnych subskrypcji platformy Azure za pomocą polecenia cmdlet **Get-AcsSubscription** .
 1. Utwórz listę przestrzeni nazw ACS przy użyciu polecenia cmdlet **Get-AcsNamespace** .
 
 ### <a name="check-which-applications-will-be-impacted"></a>Sprawdź, które aplikacje mają wpływ
 
-1. Użyj przestrzeni nazw z poprzedniego kroku i przejdź do`https://<namespace>.accesscontrol.windows.net`
+1. Użyj przestrzeni nazw z poprzedniego kroku i przejdź do `https://<namespace>.accesscontrol.windows.net`
 
-    Na przykład jeśli jedna z przestrzeni nazw jest contoso-test, przejdź do`https://contoso-test.accesscontrol.windows.net`
+    Na przykład jeśli jedna z przestrzeni nazw to contoso-test, przejdź do `https://contoso-test.accesscontrol.windows.net`
 
 1. W obszarze **relacje zaufania**wybierz pozycję **aplikacje jednostki uzależnionej** , aby wyświetlić listę aplikacji, na które WPŁYNIE wycofanie usługi ACS.
 1. Powtórz kroki 1-2 dla wszystkich innych przestrzeni nazw ACS, które posiadasz.
@@ -115,9 +111,9 @@ Od listopada 2017 wszystkie składniki Access Control są w pełni obsługiwane 
 
 Oto harmonogram dla przestarzałych składników Access Control:
 
-- **Listopad 2017**:  Środowisko administratora usługi Azure AD w klasycznym portalu Azure [zostało wycofane](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). W tym momencie Zarządzanie przestrzenią nazw dla Access Control jest dostępne pod nowym, dedykowanym adresem `https://manage.windowsazure.com?restoreClassic=true`URL:. Użyj tego adresu URl, aby wyświetlić istniejące przestrzenie nazw, włączyć i wyłączyć obszary nazw oraz usunąć przestrzenie nazw, jeśli wybierzesz opcję.
-- **2 kwietnia 2018**: Klasyczny portal Azure jest całkowicie wycofywany, co oznacza, że Access Control Zarządzanie przestrzenią nazw nie jest już dostępne za pośrednictwem żadnego adresu URL. W tym momencie nie można wyłączyć ani włączyć, usunąć ani wyliczyć przestrzeni nazw Access Control. Portal zarządzania Access Control będzie jednak w pełni funkcjonalny i znajdować się `https://\<namespace\>.accesscontrol.windows.net`w lokalizacji. Wszystkie inne składniki Access Control nadal działają normalnie.
-- **7 listopada 2018**: Wszystkie składniki Access Control są trwale wyłączone. Obejmuje to portal zarządzania Access Control, usługę zarządzania, STS i aparat reguły przekształcania tokenów. W tym momencie wszystkie żądania wysyłane do Access Control (znajdujące się \<w\>przestrzeni nazw. AccessControl.Windows.NET) kończą się niepowodzeniem. Wszystkie istniejące aplikacje i usługi powinny być migrowane do innych technologii przed tym terminem.
+- **Listopad 2017**: środowisko administratora usługi Azure AD w klasycznym portalu Azure [zostało wycofane](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). W tym momencie Zarządzanie przestrzenią nazw dla Access Control jest dostępne przy użyciu nowego, dedykowanego adresu URL: `https://manage.windowsazure.com?restoreClassic=true`. Użyj tego adresu URl, aby wyświetlić istniejące przestrzenie nazw, włączyć i wyłączyć obszary nazw oraz usunąć przestrzenie nazw, jeśli wybierzesz opcję.
+- **2 kwietnia 2018**: klasyczny portal Azure jest całkowicie wycofywany, co oznacza, że Access Control Zarządzanie przestrzenią nazw nie jest już dostępne za pośrednictwem żadnego adresu URL. W tym momencie nie można wyłączyć ani włączyć, usunąć ani wyliczyć przestrzeni nazw Access Control. Jednak Portal zarządzania Access Control będzie w pełni funkcjonalny i znajdował się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki Access Control nadal działają normalnie.
+- **7 listopada 2018**: wszystkie składniki Access Control są trwale zamknięte. Obejmuje to portal zarządzania Access Control, usługę zarządzania, STS i aparat reguły przekształcania tokenów. W tym momencie wszystkie żądania wysyłane do Access Control (znajdujące się w \<przestrzeni nazw\>. accesscontrol.windows.net) kończą się niepowodzeniem. Wszystkie istniejące aplikacje i usługi powinny być migrowane do innych technologii przed tym terminem.
 
 > [!NOTE]
 > Zasada wyłącza przestrzenie nazw, które nie zażądały tokenu przez pewien czas. Począwszy od początku września 2018, ten okres czasu wynosi obecnie 14 dni braku aktywności, ale zostanie on skrócony do 7 dni braku aktywności w najbliższych tygodniach. Jeśli istnieją Access Control obszary nazw, które są obecnie wyłączone, można [pobrać i zainstalować usługę ACS PowerShell](#download-and-install-acs-powershell) , aby ponownie włączyć przestrzenie nazw.
@@ -130,15 +126,15 @@ W poniższych sekcjach opisano zalecenia wysokiego poziomu dotyczące migrowania
 
 Każda usługa w chmurze firmy Microsoft, która akceptuje tokeny wystawiane przez Access Control obsługuje teraz co najmniej jedną alternatywną formę uwierzytelniania. Prawidłowy mechanizm uwierzytelniania zależy od poszczególnych usług. Zalecamy zapoznanie się z określoną dokumentacją dla każdej usługi w celu uzyskania oficjalnych wskazówek. Dla wygody każdego zestawu dokumentacji można znaleźć tutaj:
 
-| Usługa | Wskazówki |
+| Usługa | Wskazówka |
 | ------- | -------- |
-| Magistrala usług Azure | [Migrowanie do sygnatur dostępu współdzielonego](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
+| Azure Service Bus | [Migrowanie do sygnatur dostępu współdzielonego](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrowanie do sygnatur dostępu współdzielonego](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed Cache | [Migrowanie do usługi Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
 | Azure DataMarket | [Migrowanie do interfejsy API usług Cognitive Services](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk Services | [Migruj do Logic Apps funkcji Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Azure Media Services | [Migrowanie do uwierzytelniania usługi Azure AD](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure Backup | [Uaktualnij agenta Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Usługa Azure Backup | [Uaktualnij agenta Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -151,7 +147,7 @@ Każda usługa w chmurze firmy Microsoft, która akceptuje tokeny wystawiane prz
 
 Klienci programu SharePoint 2013, 2016 i SharePoint Online mogą korzystać z usługi ACS na potrzeby uwierzytelniania w środowiskach lokalnych i hybrydowych. W przypadku niektórych funkcji i zastosowań programu SharePoint wpłynie to na wycofanie usług ACS, a inne nie. Poniższa tabela zawiera podsumowanie wskazówek dotyczących migracji dla niektórych najpopularniejszych funkcji programu SharePoint, które wykorzystują usługę ACS:
 
-| Cecha | Wskazówki |
+| Funkcja | Wskazówka |
 | ------- | -------- |
 | Uwierzytelnianie użytkowników z usługi Azure AD | Wcześniej usługa Azure AD nie obsługiwała tokenów SAML 1,1 wymaganych przez program SharePoint na potrzeby uwierzytelniania, a składnik ACS został użyty jako pośrednik, który udostępnił program SharePoint w formatach tokenów usługi Azure AD. Teraz możesz [połączyć program SharePoint bezpośrednio z usługą Azure AD za pomocą galerii aplikacja usługi Azure AD SharePoint w aplikacji lokalnej](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Uwierzytelnianie aplikacji & uwierzytelnianie między serwerami w programie SharePoint lokalnie](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Nie ma to wpływ na wycofanie usługi ACS; nie trzeba zmieniać żadnych zmian. | 
@@ -164,8 +160,8 @@ W przypadku aplikacji sieci Web, które używają Access Control do uwierzytelni
 
 - Ścisła integracja z programem Windows Identity Foundation (WIF).
 - Federacyjny z kontami Google, Facebook, Yahoo, Azure Active Directory i AD FS i kontami Microsoft.
-- Obsługa następujących protokołów uwierzytelniania: Uwierzytelnianie OAuth 2,0 w wersji 13, WS-Trust i federacyjnych usług sieci Web (WS-Federation).
-- Obsługa następujących formatów tokenów: Token sieci Web JSON (JWT), SAML 1,1, SAML 2,0 i Simple Web token (SWT).
+- Obsługa następujących protokołów uwierzytelniania: uwierzytelnianie OAuth 2,0 w wersji 13, WS-Trust i federacyjnych usług sieci Web (WS-Federation).
+- Obsługa następujących formatów tokenu: token sieci Web JSON (JWT), SAML 1,1, SAML 2,0 i Simple Web token (SWT).
 - Środowisko odnajdowania obszaru macierzystego, zintegrowane z WIF, które umożliwia użytkownikom wybranie typu konta używanego do logowania. To środowisko jest hostowane przez aplikację sieci Web i jest w pełni dostosowywalne.
 - Przekształcanie tokenów umożliwiające zaawansowane dostosowywanie oświadczeń odbieranych przez aplikację sieci Web z Access Control, w tym:
     - Przekazuj oświadczenia od dostawców tożsamości.
@@ -201,15 +197,15 @@ Na wysokim poziomie *Azure Active Directory jest prawdopodobnie najlepszym wybor
 | **Protokoły i zgodność z zestawem SDK** | | |
 | WIF | Obsługiwane | Obsługiwane, ale są dostępne ograniczone instrukcje |
 | WS-Federation | Obsługiwane | Obsługiwane |
-| OAuth 2.0 | Obsługa wersji 3 | Obsługa specyfikacji RFC 6749, najbardziej nowoczesnej specyfikacji |
-| Usługa WS-Trust | Obsługiwane | Nieobsługiwane |
+| Uwierzytelnianie OAuth 2.0 | Obsługa wersji 3 | Obsługa specyfikacji RFC 6749, najbardziej nowoczesnej specyfikacji |
+| Usługa WS-Trust | Obsługiwane | Brak obsługi |
 | **Formaty tokenów** | | |
 | JWT | Obsługiwane w wersji beta | Obsługiwane |
 | SAML 1.1 | Obsługiwane | Wersja zapoznawcza |
 | SAML 2.0 | Obsługiwane | Obsługiwane |
-| SWT | Obsługiwane | Nieobsługiwane |
-| **Zmiany** | | |
-| Dostosowywalny interfejs użytkownika odnajdywania/wybierania obszaru głównego | Kod do pobrania, który można włączyć do aplikacji | Nieobsługiwane |
+| SWT | Obsługiwane | Brak obsługi |
+| **Dostosowania** | | |
+| Dostosowywalny interfejs użytkownika odnajdywania/wybierania obszaru głównego | Kod do pobrania, który można włączyć do aplikacji | Brak obsługi |
 | Przekazywanie niestandardowych certyfikatów podpisywania tokenu | Obsługiwane | Obsługiwane |
 | Dostosuj oświadczenia w tokenach |-Przekazuj oświadczenia wejściowe od dostawców tożsamości<br />— Uzyskiwanie tokenu dostępu od dostawcy tożsamości jako żądania<br />-Wygeneruj oświadczenia wyjściowe na podstawie wartości oświadczeń wejściowych<br />-Wygeneruj oświadczenia wyjściowe z wartościami stałymi |— Nie można przekazać oświadczeń od dostawców tożsamości federacyjnych<br />-Nie można uzyskać tokenu dostępu od dostawcy tożsamości jako żądania<br />-Nie można wydać oświadczeń wyjściowych na podstawie wartości oświadczeń wejściowych<br />-Może wydawać oświadczenia wyjściowe z wartościami stałymi<br />— Może wydawać oświadczenia wyjściowe na podstawie właściwości użytkowników zsynchronizowanych z usługą Azure AD |
 | **Automatyzacja** | | |
@@ -227,9 +223,9 @@ Aby skorzystać z usługi WS-Federation lub WIF do integracji z usługą Azure A
 
 Alternatywnym podejściem jest wykonanie [tego przykładu kodu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), który zapewnia nieco różne instrukcje dotyczące konfigurowania usługi WS-Federation. Ten przykład kodu nie używa WIF, ale raczej oprogramowania pośredniczącego ASP.NET 4,5 OWIN. Jednak instrukcje dotyczące rejestracji aplikacji są prawidłowe dla aplikacji korzystających z usługi WIF i nie wymagają licencji Azure AD — wersja Premium. 
 
-W przypadku wybrania tej metody należy zrozumieć Przerzucanie [klucza podpisywania w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). To podejście używa globalnego klucza podpisywania usługi Azure AD do wystawiania tokenów. Domyślnie program WIF nie odświeża automatycznie kluczy podpisywania. Gdy usługa Azure AD obraca swoje globalne klucze podpisywania, wdrożenie WIF musi zostać przygotowane w celu zaakceptowania zmian. Aby uzyskać więcej informacji, zobacz [Ważne informacje dotyczące przerzucania klucza podpisywania w usłudze Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx).
+W przypadku wybrania tej metody należy zrozumieć [Przerzucanie klucza podpisywania w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). To podejście używa globalnego klucza podpisywania usługi Azure AD do wystawiania tokenów. Domyślnie program WIF nie odświeża automatycznie kluczy podpisywania. Gdy usługa Azure AD obraca swoje globalne klucze podpisywania, wdrożenie WIF musi zostać przygotowane w celu zaakceptowania zmian. Aby uzyskać więcej informacji, zobacz [Ważne informacje dotyczące przerzucania klucza podpisywania w usłudze Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx).
 
-Jeśli można przeprowadzić integrację z usługą Azure AD za pomocą protokołów OpenID Connect Connect lub OAuth, zalecamy wykonanie tej czynności. Mamy obszerną dokumentację i wskazówki dotyczące sposobu integrowania usługi Azure AD z aplikacją sieci Web dostępną w przewodniku dewelopera usługi [Azure AD](https://aka.ms/aaddev).
+Jeśli można przeprowadzić integrację z usługą Azure AD za pomocą protokołów OpenID Connect Connect lub OAuth, zalecamy wykonanie tej czynności. Mamy obszerną dokumentację i wskazówki dotyczące sposobu integrowania usługi Azure AD z aplikacją sieci Web dostępną w [przewodniku dewelopera usługi Azure AD](https://aka.ms/aaddev).
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migruj do Azure Active Directory B2C
 
@@ -250,16 +246,16 @@ Poniższa tabela zawiera porównanie funkcji Access Control, które są istotne 
 | Konta Microsoft do użytku osobistego | Obsługiwane | Obsługiwane | 
 | Konta w serwisie Facebook, Google, Yahoo | Obsługiwane | Serwis Facebook i Google obsługują natywnie usługi Yahoo obsługiwane za pośrednictwem Federacji OpenID Connect Connect przy użyciu zasad niestandardowych |
 | **Protokoły i zgodność z zestawem SDK** | | |
-| Windows Identity Foundation (WIF) | Obsługiwane | Nieobsługiwane |
-| WS-Federation | Obsługiwane | Nieobsługiwane |
-| OAuth 2.0 | Obsługa wersji 3 | Obsługa specyfikacji RFC 6749, najbardziej nowoczesnej specyfikacji |
-| Usługa WS-Trust | Obsługiwane | Nieobsługiwane |
+| Windows Identity Foundation (WIF) | Obsługiwane | Brak obsługi |
+| WS-Federation | Obsługiwane | Brak obsługi |
+| Uwierzytelnianie OAuth 2.0 | Obsługa wersji 3 | Obsługa specyfikacji RFC 6749, najbardziej nowoczesnej specyfikacji |
+| Usługa WS-Trust | Obsługiwane | Brak obsługi |
 | **Formaty tokenów** | | |
 | JWT | Obsługiwane w wersji beta | Obsługiwane |
-| SAML 1.1 | Obsługiwane | Nieobsługiwane |
-| SAML 2.0 | Obsługiwane | Nieobsługiwane |
-| SWT | Obsługiwane | Nieobsługiwane |
-| **Zmiany** | | |
+| SAML 1.1 | Obsługiwane | Brak obsługi |
+| SAML 2.0 | Obsługiwane | Brak obsługi |
+| SWT | Obsługiwane | Brak obsługi |
+| **Dostosowania** | | |
 | Dostosowywalny interfejs użytkownika odnajdywania/wybierania obszaru głównego | Kod do pobrania, który można włączyć do aplikacji | W pełni dostosowywalny interfejs użytkownika za pośrednictwem niestandardowego arkusza CSS |
 | Przekazywanie niestandardowych certyfikatów podpisywania tokenu | Obsługiwane | Niestandardowe klucze podpisywania, nie certyfikaty, obsługiwane za pośrednictwem zasad niestandardowych |
 | Dostosuj oświadczenia w tokenach |-Przekazuj oświadczenia wejściowe od dostawców tożsamości<br />— Uzyskiwanie tokenu dostępu od dostawcy tożsamości jako żądania<br />-Wygeneruj oświadczenia wyjściowe na podstawie wartości oświadczeń wejściowych<br />-Wygeneruj oświadczenia wyjściowe z wartościami stałymi |-Może przechodzić przez oświadczenia od dostawców tożsamości; zasady niestandardowe wymagane dla niektórych oświadczeń<br />-Nie można uzyskać tokenu dostępu od dostawcy tożsamości jako żądania<br />-Może wydawać oświadczenia wyjściowe na podstawie wartości oświadczeń wejściowych za pośrednictwem zasad niestandardowych<br />-Może wydawać oświadczenia wyjściowe z wartościami stałymi za pośrednictwem zasad niestandardowych |
@@ -325,14 +321,14 @@ Możesz również użyć usługi Azure AD do uwierzytelniania serwer-serwer przy
 | Jak zarejestrować usługę sieci Web | Tworzenie jednostki uzależnionej w portalu zarządzania Access Control | Tworzenie aplikacji sieci Web usługi Azure AD w Azure Portal |
 | Jak zarejestrować klienta | Tworzenie tożsamości usługi w portalu zarządzania Access Control | Utwórz kolejną aplikację sieci Web usługi Azure AD w Azure Portal |
 | Używany protokół |-Protokół ZAWIJAnia OAuth<br />-OAuth 2,0, wersja 13. przyznanie poświadczeń klienta | Przyznawanie poświadczeń klienta OAuth 2.0 |
-| Metody uwierzytelniania klienta |-Proste hasło<br />-Podpisane SWT<br />-Token SAML od dostawcy tożsamości federacyjnych |-Proste hasło<br />-Z podpisem JWT |
+| Metody uwierzytelniania klientów |-Proste hasło<br />-Podpisane SWT<br />-Token SAML od dostawcy tożsamości federacyjnych |-Proste hasło<br />-Z podpisem JWT |
 | Formaty tokenów |- JWT<br />- SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | Tylko JWT |
 | Przekształcenie tokenu |-Dodawanie oświadczeń niestandardowych<br />-Prosta logika wystawiania | Dodawanie oświadczeń niestandardowych | 
 | Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management | Obsługiwane przez Microsoft Graph i usługę Azure AD interfejs API programu Graph |
 
 Wskazówki dotyczące implementowania scenariuszy serwer-serwer można znaleźć w następujących zasobach:
 
-- Sekcja Service to Service przewodnika dewelopera usługi [Azure AD](https://aka.ms/aaddev)
+- Sekcja Service to Service [przewodnika dewelopera usługi Azure AD](https://aka.ms/aaddev)
 - [Przykład kodu demona przy użyciu prostych poświadczeń klienta hasła](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [Przykład kodu demona przy użyciu poświadczeń klienta certyfikatu](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

@@ -9,19 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 12726a1ad9b04bdfe2cd279d36a696bb011e4122
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803517"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845352"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowanych w tokenach dla określonej aplikacji w dzierżawie (wersja zapoznawcza)
 
@@ -62,21 +60,21 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | access_token |
 | account_type |
 | acr |
-| Zewnętrzny |
+| actor |
 | actortoken |
-| AIO |
+| aio |
 | altsecid |
-| AMR |
+| amr |
 | app_chain |
 | app_displayname |
 | app_res |
 | appctx |
 | appctxsender |
-| AppID |
+| appid |
 | appidacr |
-| twierdz |
+| assertion |
 | at_hash |
-| AUD |
+| aud |
 | auth_data |
 | auth_time |
 | authorization_code |
@@ -84,18 +82,18 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | azpacr |
 | c_hash |
 | ca_enf |
-| CC |
+| cc |
 | cert_token_use |
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
-| CNF |
-| Kodu |
+| cnf |
+| kod |
 | funkcje sterowania |
 | credential_keys |
-| przedstawiciel |
+| csr |
 | csr_type |
-| Identyfikator |
+| deviceid |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -103,10 +101,10 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | e-mail |
 | endpoint |
 | enfpolids |
-| EXP |
+| exp |
 | expires_on |
 | grant_type |
-| ziół |
+| graph |
 | group_sids |
 | grupy |
 | hasgroups |
@@ -119,15 +117,15 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| IAT |
-| IdentityProvider |
-| dostawcy tożsamości |
+| iat |
+| identityprovider |
+| idp |
 | in_corp |
-| np |
+| instance |
 | ipaddr |
 | isbrowserhostedapp |
 | ISS |
-| JWK |
+| jwk |
 | key_id |
 | key_type |
 | mam_compliance_url |
@@ -136,11 +134,11 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | mdm_compliance_url |
 | mdm_enrollment_url |
 | mdm_terms_of_use_url |
-| NameID |
-| NBF |
+| nameid |
+| nbf |
 | netbios_name |
-| jednorazow |
-| OID |
+| nonce |
+| oid |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
@@ -152,36 +150,36 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| Identyfikator |
+| puid |
 | pwd_exp |
 | pwd_url |
-| parametr |
+| redirect_uri |
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| Zasoby |
+| resource |
 | role (rola) |
 | role |
 | scope |
-| punkcie |
-| SID |
-| podpisane |
+| scp |
+| sid |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
-| Sub |
+| sub |
 | tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| TID |
+| tid |
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
 | głównej |
 | user_setting_sync_url |
 | nazwa użytkownika |
-| Identyfikator UTI |
+| uti |
 | ver |
 | verified_primary_email |
 | verified_secondary_email |
@@ -292,16 +290,16 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 | Użytkownik | surname | Nazwa rodziny |
 | Użytkownik | givenname | Imię |
 | Użytkownik | displayname | Nazwa wyświetlana |
-| Użytkownik | obiektu | Obiektu |
+| Użytkownik | obiektu | ObjectID |
 | Użytkownik | mail (poczta) | Adres e-mail |
-| Użytkownik | userPrincipalName | Nazwa główna użytkownika |
+| Użytkownik | userprincipalname | Nazwa główna użytkownika |
 | Użytkownik | department|Dział|
-| Użytkownik | nazwy pospolitej onpremisessamaccountname | Nazwa lokalnego konta SAM |
+| Użytkownik | onpremisessamaccountname | Nazwa lokalnego konta SAM |
 | Użytkownik | NetBiosName| Nazwa NetBios |
-| Użytkownik | NazwaDomenyDNS | Nazwa domeny DNS |
+| Użytkownik | dnsdomainname | DNS Domain Name |
 | Użytkownik | onpremisesecurityidentifier | Lokalny identyfikator zabezpieczeń |
-| Użytkownik | CompanyName| Nazwa organizacji |
-| Użytkownik | streetaddress | Ulica |
+| Użytkownik | companyname| Nazwa organizacji |
+| Użytkownik | streetaddress | Ulica i numer |
 | Użytkownik | pocztowy | Kod pocztowy |
 | Użytkownik | preferredlanguange | Preferowany język |
 | Użytkownik | onpremisesuserprincipalname | Lokalna nazwa UPN |
@@ -321,15 +319,15 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 | Użytkownik | extensionattribute13 | Atrybut rozszerzenia 13 |
 | Użytkownik | extensionattribute14 | Atrybut rozszerzenia 14 |
 | Użytkownik | extensionattribute15 | Atrybut rozszerzenia 15 |
-| Użytkownik | Othermail | Inna poczta |
-| Użytkownik | Trzeciego | Kraj |
+| Użytkownik | othermail | Inna poczta |
+| Użytkownik | kraj | Kraj |
 | Użytkownik | city | Miasto |
 | Użytkownik | state | Stan |
 | Użytkownik | stanowiska | Stanowisko |
-| Użytkownik | employeeid | IDENTYFIKATOR pracownika |
+| Użytkownik | employeeid | Identyfikator pracownika |
 | Użytkownik | facsimiletelephonenumber | Numer telefonu faksu |
 | aplikacja, zasób, odbiorcy | displayname | Nazwa wyświetlana |
-| aplikacja, zasób, odbiorcy | Obiekt | Obiektu |
+| aplikacja, zasób, odbiorcy | Obiekt | ObjectID |
 | aplikacja, zasób, odbiorcy | tags | Główny tag usługi |
 | Firma | tenantcountry | Kraj dzierżawy |
 
@@ -390,9 +388,9 @@ W oparciu o wybraną metodę jest oczekiwany zestaw danych wejściowych i wyjśc
 |Źródło|ID|Opis|
 |-----|-----|-----|
 | Użytkownik | mail (poczta)|Adres e-mail|
-| Użytkownik | userPrincipalName|Nazwa główna użytkownika|
-| Użytkownik | nazwy pospolitej onpremisessamaccountname|Nazwa lokalnego konta sam|
-| Użytkownik | employeeid|IDENTYFIKATOR pracownika|
+| Użytkownik | userprincipalname|Nazwa główna użytkownika|
+| Użytkownik | onpremisessamaccountname|Nazwa lokalnego konta sam|
+| Użytkownik | employeeid|Identyfikator pracownika|
 | Użytkownik | extensionattribute1 | Atrybut rozszerzenia 1 |
 | Użytkownik | extensionattribute2 | Atrybut rozszerzenia 2 |
 | Użytkownik | extensionattribute3 | Atrybut rozszerzenia 3 |

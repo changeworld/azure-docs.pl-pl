@@ -2,18 +2,18 @@
 title: Rozwiązywanie problemów z Update Management
 description: Dowiedz się, jak rozwiązywać problemy z Update Management.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786061"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849245"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -21,7 +21,7 @@ W tym artykule omówiono rozwiązania problemów, które mogą wystąpić podcza
 
 Istnieje narzędzie do rozwiązywania problemów z agentem dla agenta hybrydowego procesu roboczego w celu ustalenia podstawowego problemu. Aby dowiedzieć się więcej na temat narzędzia do rozwiązywania problemów, zobacz [Rozwiązywanie problemów z aktualizowaniem agentów](update-agent-issues.md). W przypadku wszystkich innych problemów należy skorzystać z poniższych wskazówek dotyczących rozwiązywania problemów.
 
-Jeśli wystąpią problemy podczas próby dołączenia rozwiązania na maszynie wirtualnej (VM), sprawdź dziennik **Operations Manager** w obszarze **Dzienniki aplikacji i usług** na komputerze lokalnym, aby poznać zdarzenia o identyfikatorze 4502 i szczegółowe informacje o zdarzeniach, które zawierają **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
+Jeśli wystąpią problemy podczas próby dołączenia rozwiązania na maszynie wirtualnej, sprawdź dziennik **Operations Manager** w obszarze **Dzienniki aplikacji i usług** na komputerze lokalnym, aby poznać zdarzenia o identyfikatorze 4502 i szczegóły zdarzenia, które zawierają element **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
 
 W poniższej sekcji przedstawiono określone komunikaty o błędach i możliwe rozwiązania dla każdej z nich. Inne problemy z dołączaniem można znaleźć w temacie [Rozwiązywanie problemów z](onboarding.md)dołączaniem rozwiązania.
 
@@ -68,7 +68,7 @@ Być może zdefiniowano limit przydziału w obszarze roboczym, który został os
   | where OperationCategory == 'Data Collection Status'
   | sort by TimeGenerated desc
   ```
-  Jeśli uzyskasz `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota`, osiągnięto limit przydziału zdefiniowany w Twoim obszarze roboczym i że zarejestrowano dane. W obszarze roboczym przejdź do pozycji **użycie i szacowane koszty**  > **Zarządzanie ilością danych** i sprawdź swój limit przydziału lub usuń go.
+  Jeśli uzyskasz `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota`, osiągnięto limit przydziału zdefiniowany w Twoim obszarze roboczym i że zarejestrowano dane. W obszarze roboczym przejdź do pozycji **użycie i szacowane koszty** > **Zarządzanie ilością danych** i sprawdź swój limit przydziału lub usuń go.
 
 * Jeśli te kroki nie rozwiążą problemu, wykonaj kroki opisane w sekcji [wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows](../automation-windows-hrw-install.md) w celu ponownego zainstalowania hybrydowego procesu roboczego dla systemu Windows. Lub w przypadku systemu Linux [Wdróż hybrydowy proces roboczy elementu Runbook systemu Linux](../automation-linux-hrw-install.md).
 
@@ -187,7 +187,7 @@ Ten błąd może mieć jedną z następujących przyczyn:
 
 ### <a name="resolution"></a>Rozdzielczość
 
-W razie potrzeby użyj [grup dynamicznych](../automation-update-management-groups.md) do wdrożeń aktualizacji. Ponadto
+W razie potrzeby użyj [grup dynamicznych](../automation-update-management-groups.md) do wdrożeń aktualizacji. Ponadto:
 
 * Sprawdź, czy maszyna nadal istnieje i jest osiągalna. Jeśli nie istnieje, Edytuj wdrożenie i Usuń maszynę.
 * Zapoznaj się z sekcją [Planowanie sieci](../automation-update-management.md#ports) , aby uzyskać listę portów i adresów wymaganych do Update Management, a następnie sprawdź, czy maszyna spełnia te wymagania.
@@ -220,7 +220,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie aktualizacji automatyczn
 
 ### <a name="issue"></a>Problem
 
-Zostanie wyświetlony następujący komunikat o błędzie:
+Zostanie zgłoszony następujący komunikat o błędzie:
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514617"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841578"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurowanie hybrydowych klastrów Kubernetes za pomocą Azure Monitor dla kontenerów
 
@@ -20,7 +20,7 @@ Azure Monitor dla kontenerów zapewnia rozbudowane środowisko monitorowania dla
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że masz następujące elementy:
+Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 
 * Obszar roboczy usługi Log Analytics.
 
@@ -72,20 +72,20 @@ Włączenie Azure Monitor kontenerów dla klastra hybrydowego Kubernetes składa
 
 Rozwiązanie można wdrożyć za pomocą podanego szablonu Azure Resource Manager za pomocą polecenia cmdlet Azure PowerShell `New-AzResourceGroupDeployment` lub z interfejsem wiersza polecenia platformy Azure.
 
-Jeśli nie znasz koncepcji wdrażania zasobów przy użyciu szablonu, zobacz:
+Jeśli znasz koncepcji wdrażanie zasobów za pomocą szablonu, zobacz:
 
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/resource-group-template-deploy.md)
 
-* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Jeśli zdecydujesz się na korzystanie z interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-Ta metoda obejmuje dwa szablony JSON. Jeden szablon określa konfigurację umożliwiającą monitorowanie, a druga zawiera wartości parametrów, które można skonfigurować, aby określić następujące elementy:
+Ta metoda obejmuje dwa szablony JSON. Jeden szablon Określa konfigurację, aby włączyć monitorowanie, a drugi zawiera wartości parametrów, które można skonfigurować w celu określ następujące ustawienia:
 
 - **workspaceResourceId** — pełny identyfikator zasobu obszaru roboczego log Analytics.
 - **workspaceRegion** — region, w którym jest tworzony obszar roboczy, który jest również określany jako **Lokalizacja** we właściwościach obszaru roboczego podczas wyświetlania z Azure Portal.
 
-Aby najpierw zidentyfikować pełny identyfikator zasobu Log Analytics obszaru roboczego, który jest wymagany dla wartości parametru `workspaceResourceId` w pliku **containerSolutionParams. JSON** , wykonaj następujące kroki, a następnie uruchom polecenie cmdlet programu PowerShell lub interfejs wiersza polecenia platformy Azure, aby dodać Narzędzie.
+Aby najpierw zidentyfikować pełny identyfikator zasobu Log Analytics obszaru roboczego, który jest wymagany dla wartości parametru `workspaceResourceId` w pliku **containerSolutionParams. JSON** , wykonaj następujące kroki, a następnie uruchom polecenie cmdlet programu PowerShell lub interfejs wiersza polecenia platformy Azure, aby dodać rozwiązanie.
 
 1. Wyświetl listę wszystkich subskrypcji, do których masz dostęp, za pomocą następującego polecenia:
 
@@ -93,7 +93,7 @@ Aby najpierw zidentyfikować pełny identyfikator zasobu Log Analytics obszaru r
     az account list --all -o table
     ```
 
-    Dane wyjściowe będą wyglądać następująco:
+    Dane wyjściowe będą wyglądać w następujący sposób:
 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
@@ -218,7 +218,7 @@ Aby najpierw zidentyfikować pełny identyfikator zasobu Log Analytics obszaru r
        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <resource group of log analytics workspace> -TemplateFile .\containerSolution.json -TemplateParameterFile .\containerSolutionParams.json
        ```
        
-       Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+       Zmiana konfiguracji może potrwać kilka minut. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
        ```powershell
        provisioningState       : Succeeded
@@ -235,13 +235,13 @@ Aby najpierw zidentyfikować pełny identyfikator zasobu Log Analytics obszaru r
        az group deployment create --resource-group <resource group of log analytics workspace> --template-file ./containerSolution.json --parameters @./containerSolutionParams.json
        ```
 
-       Zmiana konfiguracji może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik:
+       Zmiana konfiguracji może potrwać kilka minut. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
        ```azurecli
        provisioningState       : Succeeded
        ```
      
-       Po włączeniu monitorowania może upłynąć około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
+       Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
 
 ## <a name="install-the-chart"></a>Instalowanie wykresu
 
@@ -282,6 +282,25 @@ Po pomyślnym wdrożeniu wykresu można przejrzeć dane dla hybrydowego klastra 
 
 >[!NOTE]
 >Opóźnienie pozyskiwania trwa od pięciu do dziesięciu minut od agenta do zatwierdzenia w obszarze roboczym usługi Azure Log Analytics. Stan klastra pokazuje wartość **Brak danych lub nie** jest **znana** do momentu udostępnienia wszystkich wymaganych danych monitorowania w Azure monitor. 
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Jeśli wystąpi błąd podczas próby włączenia monitorowania dla hybrydowego klastra Kubernetes, skopiuj skrypt programu PowerShell [TroubleshootError_nonAzureK8s. ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) i Zapisz go w folderze na komputerze. Ten skrypt zapewnia pomoc w wykrywaniu i usuwaniu napotkanych problemów. Te problemy zaprojektowano w celu wykrycia i wykonania korekty są następujące:
+
+* Określony obszar roboczy Log Analytics jest prawidłowy 
+* W obszarze roboczym Log Analytics jest konfigurowany Azure Monitor rozwiązanie kontenerów. W przeciwnym razie Skonfiguruj obszar roboczy.
+* OmsAgent REPLICASET pod kontrolą
+* OmsAgent elementu daemonset pod kontrolą
+* Usługa OmsAgent Health jest uruchomiona 
+* Identyfikator i klucz obszaru roboczego Log Analytics skonfigurowany na kontenerze kontenera jest zgodny z obszarem roboczym, w którym skonfigurowano szczegółowe informacje.
+* Sprawdź, czy wszystkie węzły procesów roboczych systemu Linux mają etykietę `kubernetes.io/role=agent`, aby zaplanować RS. Jeśli nie istnieje, Dodaj ją.
+* Sprawdź, czy `cAdvisor port: 10255` jest otwarty na wszystkich węzłach w klastrze.
+
+Aby wykonać z Azure PowerShell, użyj następujących poleceń w folderze, który zawiera skrypt:
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

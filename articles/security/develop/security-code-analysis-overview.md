@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695427"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851472"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informacje o analizie kodu zabezpieczeń firmy Microsoft
 
@@ -45,7 +45,7 @@ Po rozwiązaniu problemów początkowych raportowanych przez narzędzia można s
 
 Domyślnie zadania i narzędzia kompilacji są aktualne. Jeśli istnieje zaktualizowana wersja narzędzia, nie musisz go pobrać i zainstalować. Rozszerzenie zajmuje się aktualizacją.
 
-### <a name="under-the-hood"></a>Pod okapem
+### <a name="under-the-hood"></a>Kulisy
 
 Zadania kompilacji rozszerzenia ukrywają złożoność:
   - Uruchamianie narzędzi do statycznej analizy zabezpieczeń.
@@ -112,6 +112,6 @@ Można skonfigurować to zadanie, aby przerwać kompilację pod kątem problemó
 
 Aby uzyskać instrukcje na temat sposobu dołączania i instalowania analizy kodu zabezpieczeń firmy Microsoft, zapoznaj się z naszym przewodnikiem dotyczącym dołączania [i instalacji](security-code-analysis-onboard.md).
 
-Aby uzyskać więcej informacji na temat konfigurowania zadań kompilacji, zobacz nasze [Przewodnik po konfiguracji](security-code-analysis-customize.md).
+Aby uzyskać więcej informacji na temat konfigurowania zadań kompilacji, zobacz nasze [Przewodnik po konfiguracji](security-code-analysis-customize.md) lub [Przewodnik po konfiguracji YAML](yaml-configuration.md).
 
 Jeśli masz więcej pytań na temat rozszerzenia i oferowanych narzędzi, zapoznaj się z naszą [stroną często zadawanych pytań](security-code-analysis-faq.md).

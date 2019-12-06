@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404688"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848378"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA przy użyciu rozszerzenia serwera zasad sieciowych dla platformy Azure
 
@@ -98,7 +98,7 @@ Informacje o instalowaniu usługi roli usługi zasad sieciowych i dostępu sieci
 
 ### <a name="azure-mfa-license"></a>Azure MFA License
 
-Licencja jest wymagana w przypadku usługi Azure Multi-Factor Authentication i jest dostępna za pomocą Azure AD — wersja Premium, Enterprise Mobility + Security lub Multi-Factor Authentication autonomicznej licencji. Licencje na korzystanie z usługi Azure MFA, takie jak na użytkownika lub licencje uwierzytelniania, są niezgodne z rozszerzeniem serwera NPS. Aby uzyskać więcej informacji, zobacz [jak uzyskać Multi-Factor Authentication platformy Azure](concept-mfa-licensing.md). Do celów testowych można użyć subskrypcji wersji próbnej.
+Licencja jest wymagana w przypadku usługi Azure Multi-Factor Authentication i jest dostępna za pomocą Azure AD — wersja Premium, Enterprise Mobility + Security lub Multi-Factor Authentication autonomicznej licencji. Licencje na korzystanie z usługi Azure MFA, takie jak na użytkownika lub licencje uwierzytelniania, są niezgodne z rozszerzeniem serwera NPS. Aby uzyskać więcej informacji, zobacz [sposobu uzyskania usługi Azure Multi-Factor Authentication](concept-mfa-licensing.md). Do celów testowych można użyć subskrypcji wersji próbnej.
 
 ### <a name="windows-server-software"></a>Oprogramowanie systemu Windows Server
 
@@ -137,7 +137,7 @@ W tej sekcji założono, że zainstalowano rolę usług zasad sieciowych i dost�
 
 Aby zapewnić prawidłowe działanie w tym scenariuszu, serwer NPS musi być zarejestrowany w Active Directory.
 
-1. Otwórz Menedżer serwera.
+1. Otwórz Menedżera serwera.
 
 2. W Menedżer serwera wybierz pozycję **Narzędzia**, a następnie wybierz pozycję **serwer zasad sieciowych**.
 
@@ -244,7 +244,7 @@ W tej sekcji skonfigurujesz serwer sieci VPN do korzystania z uwierzytelniania u
 
     b. W polu wspólny **klucz tajny**wybierz pozycję **Zmień**, a następnie wprowadź wcześniej utworzone i zarejestrowane hasło wspólnego klucza tajnego.
 
-    c. W polu **limit czasu (w sekundach)** wprowadź wartość **30**.  
+    d. W polu **limit czasu (w sekundach)** wprowadź wartość **30**.  
     Wartość limitu czasu jest wymagana, aby zapewnić wystarczającą ilość czasu na wykonanie drugiego czynnika uwierzytelniania.
 
     ![Dodawanie okna serwera RADIUS Konfigurowanie limitu czasu](./media/howto-mfa-nps-extension-vpn/image16.png)
@@ -263,7 +263,7 @@ W tej sekcji należy potwierdzić, że klient VPN jest uwierzytelniany i autoryz
 
 2. W oknie **Ustawienia systemu Windows** wybierz pozycję **Sieć & Internet**.
 
-3. wybierz pozycję **VPN**.
+3. Wybierz pozycję **Sieć VPN**.
 
 4. Wybierz pozycję **Dodaj połączenie sieci VPN**.
 
@@ -324,7 +324,7 @@ Jeśli wartość jest równa *true* lub jest pusta, wszystkie żądania uwierzyt
 
 W ramach konfiguracji rozszerzenia serwera NPS należy podać poświadczenia administratora i identyfikator dzierżawy usługi Azure AD. Uzyskaj identyfikator, wykonując następujące czynności:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny dzierżawy platformy Azure.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny dzierżawy platformy Azure.
 
 2. W lewym okienku wybierz przycisk **Azure Active Directory** .
 
@@ -424,9 +424,9 @@ Na serwerze, na którym zainstalowano rozszerzenie serwera NPS dla usługi Azure
 
 ![Przykładowe Podgląd zdarzeń okienko rejestrowania autoryzacji](./media/howto-mfa-nps-extension-vpn/image46.png)
 
-## <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
+## <a name="troubleshooting-guide"></a>Podręcznik rozwiązywania problemów
 
-Jeśli konfiguracja nie działa zgodnie z oczekiwaniami, Rozpocznij Rozwiązywanie problemów, sprawdzając, czy użytkownik jest skonfigurowany do korzystania z usługi MFA. Użytkownik nawiązuje połączenie z [Azure Portal](https://portal.azure.com). Jeśli użytkownik zostanie poproszony o uwierzytelnienie pomocnicze i może się uwierzytelnić, można wyeliminować niepoprawną konfigurację usługi MFA jako problem.
+Jeśli konfiguracja nie działa zgodnie z oczekiwaniami, Rozpocznij Rozwiązywanie problemów, sprawdzając, czy użytkownik jest skonfigurowany do korzystania z usługi MFA. Użytkownik powinien połączyć się z [witryny Azure portal](https://portal.azure.com). Jeśli użytkownik zostanie poproszony o uwierzytelnienie pomocnicze i może się uwierzytelnić, można wyeliminować niepoprawną konfigurację usługi MFA jako problem.
 
 Jeśli uwierzytelnianie wieloskładnikowe działa dla użytkownika, zapoznaj się z odpowiednimi dziennikami Podgląd zdarzeń. Dzienniki obejmują zdarzenia zabezpieczeń, operacyjne bramy i dzienniki usługi Azure Multi-Factor Authentication omówione w poprzedniej sekcji.
 

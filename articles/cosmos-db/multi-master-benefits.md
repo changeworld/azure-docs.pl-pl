@@ -1,31 +1,31 @@
 ---
-title: Korzyści z platformy Azure Cosmos DB wielu wzorców
-description: Poznaj zalety Multi-Master w usłudze Azure Cosmos DB.
+title: Azure Cosmos DB korzyści z wielu wzorców
+description: Poznaj zalety korzystania z wielu wzorców w Azure Cosmos DB, porównując wymagania dotyczące opóźnień i umów SLA w jedną i wiele lokalizacji zapisu.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c78e5e4f8d396d777738bddfd6baf086c0b2ecf4
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: b21b6ba82ba1ada0103501b8beeca270df86abd9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789295"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872013"
 ---
-# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Zrozumienie wielu wzorców korzyści w usłudze Azure Cosmos DB
+# <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Poznaj zalety wielu wzorców w Azure Cosmos DB
 
-Operatorzy kont usługi cosmos DB, należy wybrać konfigurację odpowiednią dystrybucji globalnej, aby upewnić się, opóźnienia, dostępności i wymaganiami cel czasu odzyskiwania dla poszczególnych aplikacji. Konta usługi Cosmos Azure skonfigurowano wiele lokalizacji zapisu oferują znaczące korzyści związane za pośrednictwem konta z tym lokalizacji zapisu jednego, 99,999% zapisu umowa SLA dotycząca dostępności < 10 ms opóźnienie zapisu umowy SLA w 99. percentylu i cel czasu odzyskiwania = 0 w przypadku regionalnej awarii.
+Operatory konta Cosmos DB powinny wybrać odpowiednią globalną konfigurację dystrybucji w celu zapewnienia opóźnienia, dostępności i RTO wymagań dla swoich aplikacji. Konta usługi Azure Cosmos skonfigurowane z wieloma lokalizacjami zapisu oferują znaczne korzyści w stosunku do kont z jedną lokalizacją zapisu, w tym < umowy SLA dotyczącej dostępności zapisu w systemie 99,999
 
 ## <a name="comparison-of-features"></a>Porównanie funkcji
 
-|Wymagania aplikacji|Wiele lokalizacji zapisu|Lokalizacja zapisu jednego|Uwaga|
+|Wymaganie aplikacji|Wiele lokalizacji zapisu|Pojedyncza lokalizacja zapisu|Uwaga|
 |---|---|---|---|
-|Umowy SLA opóźnienie zapisu < 10 ms na poziomie P99|**Tak**|Nie|Konta z jednej lokalizacji zapisu pociągnąć za sobą dodatkowe opóźnienie między regionami przy każdym zapisie.|
-|Umowy SLA opóźnienie odczytu < 10 ms na poziomie P99|**Tak**|Tak| |
-|Umowa SLA na poziomie 99,999% zapisu|**Tak**|Nie|Konta z jednej lokalizacji zapisu gwarantuje umowę SLA na poziomie 99,99%|
-|CEL CZASU ODZYSKIWANIA = 0|**Tak**|Nie|Zero, przerw do zapisu w przypadku regionalnej awarii. Konta z lokalizacją zapisu pojedynczej mają RTO 15 minut.|
+|Umowa SLA dotycząca opóźnień zapisu < 10 ms w poziomie P99|**Tak**|Nie|Konta z jedną lokalizacją zapisu wiążą się z dodatkowymi opóźnieniami sieci między regionami dla każdego zapisu.|
+|Zapoznaj się z umową SLA opóźnienia < 10 ms w poziomie P99|**Tak**|Tak| |
+|Zastąp zapis SLA 99,999%|**Tak**|Nie|Konta z jedną lokalizacją zapisu gwarantują umowę SLA na 99,99%|
+|RTO = 0|**Tak**|Nie|Zero w dół w przypadku operacji zapisu w przypadku regionalnych awarii. Konta z jedną lokalizacją zapisu mają RTO 15 minut.|
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli nadal chcesz wyłączyć EnableMultipleWriteLocations na Twoim koncie usługi Azure Cosmos, [Otwórz bilet pomocy technicznej](https://azure.microsoft.com/support/create-ticket/).
+Jeśli nadal chcesz wyłączyć EnableMultipleWriteLocations na koncie usługi Azure Cosmos, [Otwórz bilet pomocy technicznej](https://azure.microsoft.com/support/create-ticket/).

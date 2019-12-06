@@ -1,18 +1,18 @@
 ---
 title: Dystrybucja globalna z Azure Cosmos DBą pod okapem
 description: Ten artykuł zawiera szczegółowe informacje techniczne dotyczące dystrybucji globalnej usługi Azure Cosmos DB
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615350"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872132"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globalna dystrybucja danych z Azure Cosmos DBą pod okapem
 
@@ -32,7 +32,7 @@ Jak pokazano na poniższej ilustracji, dane w kontenerze są dystrybuowane w dw�
 
 ![Partycje fizyczne](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
 
-Partycja fizyczna jest implementowana przez grupę replik nazywaną zestawem *replik*. Każdy komputer obsługuje setki replik odpowiadających różnym partycjom fizycznym w ramach ustalonego zestawu procesów, jak pokazano na powyższym obrazie. Repliki, odpowiadające na partycje fizyczne dynamicznie są umieszczane i zrównoważonym między komputerami w ramach klastrów i centrów danych w obrębie regionu.  
+Partycja fizyczna jest implementowana przez grupę replik nazywaną *zestawem replik*. Każdy komputer obsługuje setki replik odpowiadających różnym partycjom fizycznym w ramach ustalonego zestawu procesów, jak pokazano na powyższym obrazie. Repliki, odpowiadające na partycje fizyczne dynamicznie są umieszczane i zrównoważonym między komputerami w ramach klastrów i centrów danych w obrębie regionu.  
 
 Replikę należy jednoznacznie do dzierżawy usługi Azure Cosmos DB. Każda replika znajduje się wystąpienie usługi Cosmos DB [aparatu bazy danych](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), która zarządza zasobami, a także indeksy. Aparat bazy danych Cosmos działa w systemie typów opartych na protokole Atom-Record-Sequence (ARS). Aparat jest niezależny od do koncepcji schematu, przez odmycie granicy między strukturą i wartościami wystąpień rekordów. Usługa cosmos DB realizuje agnosticism pełnego schematu przez automatyczne indeksowanie wszystkich elementów, od pozyskiwania w sposób efektywny, które umożliwia użytkownikom do wykonywania zapytań ich danych rozproszonych globalnie, bez konieczności zarządzania schematami lub indeksami.
 
@@ -46,15 +46,15 @@ Partycja fizyczna jest przeznaczona do użycia przez samodzielną i dynamiczną 
 
 - Po pierwsze koszt przetwarzania żądań zapisu na liderze jest wyższy niż koszt zastosowania aktualizacji na stronie nadzorującej. Odpowiednio lidera jest w budżecie więcej zasobów systemowych niż obserwatorów. 
 
-- Po drugie w miarę możliwości odczytu kworum dla poziomu spójności danego składa się wyłącznie z replikami poniżej. Unikaj firma Microsoft, kontaktując się z liderem do obsługi operacji odczytu, chyba że wymagane. Firma Microsoft stosuje kilka pomysłów z badań wykonywanych w związku z obciążeniem [i pojemnością](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) w systemach opartych na kworum dla [pięciu modeli spójności](consistency-levels.md) obsługiwanych przez Cosmos DB.  
+- Po drugie w miarę możliwości odczytu kworum dla poziomu spójności danego składa się wyłącznie z replikami poniżej. Unikaj firma Microsoft, kontaktując się z liderem do obsługi operacji odczytu, chyba że wymagane. Firma Microsoft stosuje kilka pomysłów z badań wykonywanych w związku z [obciążeniem i pojemnością](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) w systemach opartych na kworum dla [pięciu modeli spójności](consistency-levels.md) obsługiwanych przez Cosmos DB.  
 
 ## <a name="partition-sets"></a>Zestawy partycji
 
-Grupa partycji fizycznych, jedna ze wszystkich skonfigurowanych za pomocą regionów bazy danych Cosmos, składa się z tego samego zestawu kluczy replikowanych we wszystkich skonfigurowanych regionach. Ta wyższa wartość pierwotna koordynacji jest nazywana rozłożoną w sposób dynamiczny rozłożeniem partycji fizycznych, która zarządza danym zestawem kluczy. Chociaż dana partycja fizyczna (zestaw replik) jest objęta zakresem klastra, zestaw partycji może obejmować klastry, centra danych i regiony geograficzne, jak pokazano na poniższej ilustracji:  
+Grupa partycji fizycznych, jedna ze wszystkich skonfigurowanych za pomocą regionów bazy danych Cosmos, składa się z tego samego zestawu kluczy replikowanych we wszystkich skonfigurowanych regionach. Ta wyższa wartość pierwotna koordynacji jest nazywana rozłożoną w sposób dynamiczny rozłożeniem *partycji fizycznych* , która zarządza danym zestawem kluczy. Chociaż dana partycja fizyczna (zestaw replik) jest objęta zakresem klastra, zestaw partycji może obejmować klastry, centra danych i regiony geograficzne, jak pokazano na poniższej ilustracji:  
 
 ![Zestawy partycji](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
-Zestaw partycji można traktować jako geograficznie "super repliki zestaw", który składa się z wielu zestawów replik będącej właścicielem tego samego zestawu kluczy. Podobnie jak w przypadku zestawu replik, członkostwo w zestawie partycji jest również dynamiczne — zmienia się w zależności od niejawnych operacji zarządzania partycjami fizycznymi w celu dodania/usunięcia nowych partycji do/z danego zestawu partycji (na przykład w przypadku skalowania przepływności na zewnątrz kontener, Dodaj/Usuń region do bazy danych Cosmos lub w przypadku wystąpienia błędów). Ze względu na to, że każda partycja (zestawu partycji) zarządza członkostwem w zestawie partycji w ramach własnego zestawu replik, członkostwo jest w pełni zdecentralizowane i wysoce dostępne. Podczas ponownej konfiguracji zestawu partycji również zostanie nawiązane topologii nakładki między partycje fizyczne. Topologia jest dynamicznie wybierana na podstawie poziomu spójności, odległości geograficznej i dostępnej przepustowości sieci między źródłową i docelową partycją fizyczną.  
+Zestaw partycji można traktować jako geograficznie "super repliki zestaw", który składa się z wielu zestawów replik będącej właścicielem tego samego zestawu kluczy. Podobnie jak w przypadku zestawu replik, członkostwo w zestawie partycji jest również dynamiczne — zmienia się w zależności od niejawnych operacji zarządzania partycjami fizycznymi w celu dodania/usunięcia nowych partycji do/z danego zestawu partycji (na przykład w przypadku skalowania przepływności w kontenerze, dodania/usunięcia regionu do bazy danych Cosmos lub w przypadku wystąpienia błędów). Ze względu na to, że każda partycja (zestawu partycji) zarządza członkostwem w zestawie partycji w ramach własnego zestawu replik, członkostwo jest w pełni zdecentralizowane i wysoce dostępne. Podczas ponownej konfiguracji zestawu partycji również zostanie nawiązane topologii nakładki między partycje fizyczne. Topologia jest dynamicznie wybierana na podstawie poziomu spójności, odległości geograficznej i dostępnej przepustowości sieci między źródłową i docelową partycją fizyczną.  
 
 Usługa pozwala na skonfigurowanie baz danych Cosmos z regionu zapisu w jednym lub wielu regionach zapisu, a w zależności od wyboru, zestawach partycji są skonfigurowane do akceptowania zapisów w dokładnie jednego lub wszystkich regionach. System korzysta z dwupoziomowego, zagnieżdżonego protokołu consensusu — jeden poziom działa w ramach replik zestawu replik partycji fizycznej akceptujących zapisy, a drugi działa na poziomie zestawu partycji, aby zapewnić kompletne gwarancje porządkowania dla wszystkich zatwierdzone zapisy w zestawie partycji. Ten consensus wielowarstwowych, zagnieżdżone jest krytyczne dla realizacji umowy SLA rygorystyczne w celu zapewnienia wysokiej dostępności, a także wdrożenia modeli spójności, które Cosmos DB oferuje klientom.  
 
@@ -69,7 +69,7 @@ Stosujemy zegary zakodowany wektora (zawierający identyfikator regionu i zegary
 W przypadku baz danych Cosmos skonfigurowany z wieloma regionami zapisu systemu udostępnia szereg elastyczny automatycznych konflikt zasad rozpoznawania dla deweloperów do wyboru, w tym: 
 
 - **Ostatni zapis-WINS (LWW)** , który domyślnie używa zdefiniowanej przez system właściwości sygnatury czasowej (która jest oparta na protokole zegara czasu synchronizacji). Usługa cosmos DB umożliwia również określenie innych niestandardowych właściwości wartości liczbowych służący do rozwiązywania konfliktów.  
-- **Zasady rozwiązywania konfliktów zdefiniowane przez aplikację (niestandardowe)** (wyrażone za pośrednictwem procedur scalania), który jest przeznaczony do uzgadniania przez aplikacje semantyki konfliktów. Te procedury Pobierz wywoływane po wykryciu konflikty zapisów pod nadzorem transakcji bazy danych po stronie serwera. System zapewnia dokładnie gwarancję wykonania procedury scalania w ramach protokołu zobowiązania. Istnieje [kilka przykładów rozwiązywania konfliktów](how-to-manage-conflicts.md) , które mogą być odtwarzane za pomocą programu.  
+- **Zdefiniowane przez aplikację zasady rozwiązywania konfliktów** (wyrażone za pośrednictwem procedur scalania), które są przeznaczone do uzgadniania przez aplikacje semantyki konfliktów. Te procedury Pobierz wywoływane po wykryciu konflikty zapisów pod nadzorem transakcji bazy danych po stronie serwera. System zapewnia dokładnie gwarancję wykonania procedury scalania w ramach protokołu zobowiązania. Istnieje [kilka przykładów rozwiązywania konfliktów](how-to-manage-conflicts.md) , które mogą być odtwarzane za pomocą programu.  
 
 ## <a name="consistency-models"></a>Modeli spójności
 
@@ -77,7 +77,7 @@ Niezależnie od tego, czy baza danych Cosmos jest konfigurowana z jednym czy wie
 
 Ograniczona nieaktualność gwarantuje, że wszystkie operacje odczytu będą znajdować się w obrębie prefiksów *K* lub *T* sekund od ostatniego zapisu w dowolnym regionie. Ponadto należy zapewnić monotoniczny i z zachowaniem spójnych prefiksów. Protokół zapobieganie entropii działa w sposób ograniczony szybkość i gwarantuje, że prefiksy nie są gromadzone i wsteczne zapisu nie ma zastosowanie. Zapewnianie spójności sesji gwarantuje monotoniczny odczyt, monotoniczny zapis, odczytanie własnych zapisów, zapis następujący: Odczyt i spójne gwarancje dotyczące prefiksów, na całym świecie. W przypadku baz danych skonfigurowanych pod kątem silnej spójności korzyści wynikające z replikacji synchronicznej w różnych regionach nie mają zastosowania do małych i dużych ilości zapisów w wielu regionach zapisu.
 
-Semantyka pięciu modeli spójności w Cosmos DB jest opisana [tutaj](consistency-levels.md)i matematycznie opisana przy użyciu wysokiego poziomu tla i specyfikacji. [](https://github.com/Azure/azure-cosmos-tla)
+Semantyka pięciu modeli spójności w Cosmos DB jest opisana [tutaj](consistency-levels.md)i matematycznie opisana przy użyciu wysokiego poziomu tla [i specyfikacji.](https://github.com/Azure/azure-cosmos-tla)
 
 ## <a name="next-steps"></a>Następne kroki
 

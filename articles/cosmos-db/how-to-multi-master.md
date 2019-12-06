@@ -1,17 +1,17 @@
 ---
 title: Jak skonfigurować wielowzorcowość w usłudze Azure Cosmos DB
-description: Dowiedz się, jak skonfigurować wiele wzorców w aplikacjach w Azure Cosmos DB.
+description: Dowiedz się, jak skonfigurować wiele wzorców dla aplikacji przy użyciu różnych zestawów SDK w Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: e86cacbd76a70c8b114d65a77ff013d32327a2d0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093099"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873645"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurowanie wielu wzorców w aplikacjach korzystających z Azure Cosmos DB
 
@@ -20,9 +20,9 @@ Po utworzeniu konta z włączoną obsługą wielu regionów zapisu należy wprow
 > [!Note]
 > Konta Cosmos początkowo skonfigurowane z pojedynczym regionem zapisu można skonfigurować dla wielu regionów zapisu (tj. wielu wzorców) z zerem o wartości zero. Aby dowiedzieć się więcej, zobacz [Konfigurowanie regionów wielokrotnego zapisu](how-to-manage-database-account.md#configure-multiple-write-regions)
 
-## <a id="netv2"></a>Zestaw .NET SDK w wersji 2
+## <a id="netv2">Zestaw .NET SDK w wersji 2</a>
 
-Aby włączyć wiele wzorców w aplikacji, ustaw wartość `UseMultipleWriteLocations`. `true` Ponadto ustaw `SetCurrentLocation` do regionu, w którym aplikacja jest wdrażana i gdzie Azure Cosmos DB jest replikowana:
+Aby włączyć wiele wzorców w aplikacji, ustaw `UseMultipleWriteLocations` na `true`. Ponadto należy ustawić `SetCurrentLocation` do regionu, w którym aplikacja jest wdrażana i gdzie Azure Cosmos DB jest replikowana:
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -36,7 +36,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a id="netv3"></a>Zestaw .NET SDK v3
 
-Aby włączyć wiele wzorców w aplikacji, ustaw `ApplicationRegion` dla regionu, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana:
+Aby włączyć obsługę wielu wzorców w aplikacji, ustaw `ApplicationRegion` na region, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana:
 
 ```csharp
 CosmosClient cosmosClient = new CosmosClient(
@@ -47,7 +47,7 @@ CosmosClient cosmosClient = new CosmosClient(
     });
 ```
 
-Opcjonalnie możesz użyć `CosmosClientBuilder` i `WithApplicationRegion` , aby osiągnąć ten sam wynik:
+Opcjonalnie można użyć `CosmosClientBuilder` i `WithApplicationRegion`, aby osiągnąć ten sam wynik:
 
 ```csharp
 CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
@@ -57,7 +57,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 ## <a id="java"></a>Java Async SDK
 
-Aby włączyć wiele wzorców w aplikacji, ustaw `policy.setUsingMultipleWriteLocations(true)` i ustaw `policy.setPreferredLocations` region, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana:
+Aby włączyć wiele wzorców w aplikacji, ustaw `policy.setUsingMultipleWriteLocations(true)` i ustaw `policy.setPreferredLocations` do regionu, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -74,7 +74,7 @@ AsyncDocumentClient client =
 
 ## <a id="javascript"></a>Node. js, JavaScript i zestawy SDK TypeScript
 
-Aby włączyć wiele wzorców w aplikacji, ustaw wartość `connectionPolicy.UseMultipleWriteLocations`. `true` Ponadto ustaw `connectionPolicy.PreferredLocations` do regionu, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana:
+Aby włączyć wiele wzorców w aplikacji, ustaw `connectionPolicy.UseMultipleWriteLocations` na `true`. Ponadto należy ustawić `connectionPolicy.PreferredLocations` do regionu, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana:
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -91,7 +91,7 @@ const client = new CosmosClient({
 
 ## <a id="python"></a>Python SDK
 
-Aby włączyć wiele wzorców w aplikacji, ustaw wartość `connection_policy.UseMultipleWriteLocations`. `true` Ponadto ustaw `connection_policy.PreferredLocations` na region, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana.
+Aby włączyć wiele wzorców w aplikacji, ustaw `connection_policy.UseMultipleWriteLocations` na `true`. Ponadto należy ustawić `connection_policy.PreferredLocations` do regionu, w którym aplikacja jest wdrażana i gdzie Cosmos DB jest replikowana.
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -114,4 +114,4 @@ Przeczytaj następujące artykuły:
 * [Kompromisy w zakresie spójności, dostępności i wydajności w usłudze Azure Cosmos DB](consistency-levels-tradeoffs.md)
 * [Dostępność i wydajność kompromisy dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
 * [Globalnie skalowanie przepływności aprowizacji](scaling-throughput.md)
-* [Dystrybucja globalna: Under the hood (Za kulisami usługi Azure RMS — działanie)](global-dist-under-the-hood.md)
+* [Dystrybucja globalna: pod okapem](global-dist-under-the-hood.md)

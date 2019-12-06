@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7176101a1e6c1da54ddd8b5f22b61b91fbc5115a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267939"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869317"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodawanie Azure Active Directory użytkowników współpracy B2B w Azure Portal
 
@@ -36,11 +36,11 @@ Upewnij się, że ustawienia współpracy zewnętrznej Twojej organizacji zosta�
 Aby dodać użytkowników współpracy B2B do katalogu, wykonaj następujące kroki:
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako użytkownik, który ma przypisaną rolę katalogu z ograniczoną administratorem lub rolę zapraszania gościa.
-2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+2. Wyszukaj i wybierz **Azure Active Directory** z dowolnej strony.
 3. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 4. Wybierz pozycję **Nowy użytkownik-gość**.
 
-   ![Pokazuje, gdzie nowy użytkownik-Gość znajduje się w interfejsie użytkownika](./media/add-users-administrator/NewGuestUser-Directory.png) 
+   ![Pokazuje, gdzie nowy użytkownik-Gość znajduje się w interfejsie użytkownika](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
    > [!NOTE]
    > Opcja **nowy użytkownik-Gość** jest również dostępna na stronie **relacje organizacyjne** . W **Azure Active Directory**w obszarze **Zarządzaj**wybierz pozycję **relacje organizacyjne**.
@@ -63,11 +63,11 @@ Po wysłaniu zaproszenia konto użytkownika zostanie automatycznie dodane do kat
 
 ![Pokazuje użytkownika B2B z typem użytkownika-gościa](./media/add-users-administrator/GuestUserType.png)  
 
-## <a name="add-guest-users-to-a-group"></a>Dodawanie użytkowników-Gości do grupy
+## <a name="add-guest-users-to-a-group"></a>Dodawanie użytkowników-gości do grupy
 Jeśli musisz ręcznie dodać użytkowników współpracy B2B do grupy, wykonaj następujące kroki:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
-2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+2. Wyszukaj i wybierz **Azure Active Directory** z dowolnej strony.
 3. W obszarze **Zarządzaj**wybierz pozycję **grupy**.
 4. Wybierz grupę (lub kliknij pozycję **Nowa grupa** , aby utworzyć nową). Dobrym pomysłem jest uwzględnienie w opisie grupy, że grupa zawiera użytkowników typu gość B2B.
 5. Wybierz **członków**. 
@@ -79,12 +79,12 @@ Jeśli musisz ręcznie dodać użytkowników współpracy B2B do grupy, wykonaj 
    
 Możesz również użyć grup dynamicznych z funkcją współpracy B2B usługi Azure AD. Aby uzyskać więcej informacji, zobacz [grupy dynamiczne i Azure Active Directory współpracy B2B](use-dynamic-groups.md).
 
-## <a name="add-guest-users-to-an-application"></a>Dodawanie użytkowników-Gości do aplikacji
+## <a name="add-guest-users-to-an-application"></a>Dodawanie użytkowników-gości do aplikacji
 
 Aby dodać użytkowników współpracy B2B do aplikacji, wykonaj następujące kroki:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
-2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+2. Wyszukaj i wybierz **Azure Active Directory** z dowolnej strony.
 3. W obszarze **Zarządzaj**wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 4. Wybierz aplikację, do której chcesz dodać użytkowników-Gości.
 5. Na pulpicie nawigacyjnym aplikacji wybierz pozycję **łączna liczba użytkowników** , aby otworzyć okienko **Użytkownicy i grupy** .
@@ -107,18 +107,18 @@ Aby dodać użytkowników współpracy B2B do aplikacji, wykonaj następujące k
    - Kliknij pozycję **Wybierz**.
    - Kliknij przycisk **Przypisz**.
  
-## <a name="resend-invitations-to-guest-users"></a>Wyślij ponownie zaproszenia do użytkowników-Gości
+## <a name="resend-invitations-to-guest-users"></a>Ponowne wysyłanie zaproszeń do użytkowników-gości
 
 Jeśli użytkownik-Gość nie zakończył jeszcze zaproszenia, możesz ponownie wysłać wiadomość e-mail z zaproszeniem.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator usługi Azure AD.
-2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
+2. Wyszukaj i wybierz **Azure Active Directory** z dowolnej strony.
 3. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 5. Wybierz konto użytkownika.
 6. W obszarze **Zarządzaj**wybierz pozycję **profil**.
 7. Jeśli użytkownik jeszcze nie zaakceptował zaproszenia, dostępna jest opcja **Wyślij ponownie zaproszenie** . Wybierz ten przycisk, aby ponownie wysłać.
 
-   ![Wyślij ponownie opcję zaproszenia w profilu użytkownika](./media/add-users-administrator/Resend-Invitation.png)
+   ![Wyślij ponownie opcję zaproszenia w profilu użytkownika](./media/add-users-administrator/b2b-user-resend-invitation.png)
 
 > [!NOTE]
 > W przypadku ponownego wysłania zaproszenia, które pierwotnie kierowało użytkownika do konkretnej aplikacji, należy zrozumieć, że link w nowym zaproszeniu przejmuje użytkownika do panelu dostępu najwyższego poziomu.

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c0d49c3ce06f6fa72daf7aff466ef65e09ced09a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241810"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851540"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurowanie i dostosowywanie zadań kompilacji
 
@@ -40,12 +40,14 @@ Usługa Windows Defender pobiera i instaluje podpisy przy użyciu klienta Window
 
 Aby uzyskać więcej informacji na temat Windows Update błędów i ich środków zaradczych, zobacz [Windows Update kodów błędów według składnika](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) i artykułu TechNet [Windows Update kod błędu agenta](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
 
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zapoznaj się z naszymi [opcjami YAMLymi chroniącymi przed złośliwym oprogramowaniem](yaml-configuration.md#anti-malware-scanner-task)
+
 ## <a name="binskim-task"></a>BinSkim, zadanie
 
 > [!NOTE]
 > Aby można było uruchomić zadanie BinSkim, kompilacja musi spełniać jeden z następujących warunków:
->    - Kompilacja tworzy artefakty binarne z kodu zarządzanego.
->    - Masz zadeklarowane artefakty binarne, które chcesz analizować przy użyciu BinSkim.
+>  - Kompilacja tworzy artefakty binarne z kodu zarządzanego.
+>  - Masz zadeklarowane artefakty binarne, które chcesz analizować przy użyciu BinSkim.
 
 Szczegóły konfiguracji zadania są pokazane na poniższym zrzucie ekranu i na liście.
 
@@ -58,7 +60,7 @@ Szczegóły konfiguracji zadania są pokazane na poniższym zrzucie ekranu i na 
 - W obszarze **docelowy**wprowadź jeden lub więcej specyfikatorów dla pliku, katalogu lub wzorca filtru. Te specyfikatory są rozpoznawane jako co najmniej jeden plik binarny do przeanalizowania:
     - Wiele określonych elementów docelowych musi być rozdzielonych średnikami (;).
     - Specyfikator może być pojedynczym plikiem lub zawierać symbole wieloznaczne.
-    - Specyfikacje katalogów muszą zawsze kończyć się \\znakiem *.
+    - Specyfikacje katalogów muszą zawsze kończyć się na \\*.
     - Przykłady:
 
            *.dll;*.exe
@@ -79,6 +81,8 @@ Szczegóły konfiguracji zadania są pokazane na poniższym zrzucie ekranu i na 
 
 Aby uzyskać więcej informacji na temat argumentów wiersza polecenia BinSkim, reguł według identyfikatora lub kodów zakończenia, zobacz [Podręcznik użytkownika BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zobacz nasze [BINSKIM YAML Options](yaml-configuration.md#binskim-task)
+
 ## <a name="credential-scanner-task"></a>Zadanie skanera poświadczeń
 
 Szczegóły konfiguracji zadania są pokazane na poniższym zrzucie ekranu i na liście.
@@ -87,51 +91,56 @@ Szczegóły konfiguracji zadania są pokazane na poniższym zrzucie ekranu i na 
 
 Dostępne opcje to:
 
-  - **Format danych wyjściowych**: Dostępne wartości to **TSV**, **CSV**, **SARIF**i **PREfast**.
-  - **Wersja narzędzia**: Zalecamy wybranie opcji **najnowsze**.
-  - **Folder skanowania**: Folder repozytorium do przeskanowania.
-  - **Typ pliku wyszukiwania**: Opcje lokalizowania pliku wyszukiwania, który jest używany do skanowania.
-  - **Plik**pominięć: Plik [JSON](https://json.org/) może pominąć problemy w dzienniku danych wyjściowych. Aby uzyskać więcej informacji o scenariuszach pomijania, zobacz sekcję często zadawanych pytań w tym artykule.
-  - **Pełne dane wyjściowe**: Nie wymaga wyjaśnień.
-  - **Rozmiar wsadu**: Liczba współbieżnych wątków używanych do uruchamiania skanera poświadczeń. Wartość domyślna to 20. Możliwe wartości mieszczą się w zakresie od 1 do 2 147 483 647.
-  - **Limit czasu dopasowania**: Czas (w sekundach) poświęcany na próbę dopasowania wyszukiwania przed opuszczeniem kontroli.
-  - **Rozmiar buforu odczytu skanowania plików**: Rozmiar w bajtach buforu używany podczas odczytywania zawartości. Wartość domyślna to 524 288.  
-  - **Maksymalna liczba bajtów odczytu z skanowania plików**: Maksymalna liczba bajtów odczytywanych z pliku podczas analizy zawartości. Wartość domyślna to 104 857 600.
-  - **Opcje kontrolki** **Uruchom to zadanie:**  >  Określa, kiedy zadanie zostanie uruchomione. Wybierz opcję **warunki niestandardowe** , aby określić bardziej złożone warunki.
-  - **Wersja**: Wersja zadania kompilacji w ramach usługi Azure DevOps. Ta opcja nie jest często używana.
+  - **Format danych wyjściowych**: dostępne wartości to **TSV**, **CSV**, **SARIF**i **PREfast**.
+  - **Wersja narzędzia**: zalecamy wybranie opcji **najnowsze**.
+  - **Folder skanowania**: folder repozytorium do przeskanowania.
+  - **Typ pliku wyszukiwania**: opcje lokalizowania pliku wyszukiwania, który jest używany do skanowania.
+  - **Plik**pominięć: plik [JSON](https://json.org/) może pominąć problemy w dzienniku danych wyjściowych. Aby uzyskać więcej informacji o scenariuszach pomijania, zobacz sekcję często zadawanych pytań w tym artykule.
+  - **Pełne dane wyjściowe**: z oczywistym objaśnieniem.
+  - **Rozmiar wsadu**: liczba współbieżnych wątków używanych do uruchamiania skanera poświadczeń. Wartość domyślna to 20. Możliwe wartości mieszczą się w zakresie od 1 do 2 147 483 647.
+  - **Limit czasu dopasowania**: czas (w sekundach) poświęcany na próbę dopasowania elementu Search przed opuszczeniem kontroli.
+  - **Rozmiar buforu odczytu plików**: rozmiar w bajtach buforu używany podczas odczytywania zawartości. Wartość domyślna to 524 288.  
+  - **Maksymalna liczba bajtów odczytu plików**, które można odczytać z pliku podczas analizy zawartości. Wartość domyślna to 104 857 600.
+  - **Opcje kontrolki** > **uruchomienie tego zadania**: określa, kiedy zadanie zostanie uruchomione. Wybierz opcję **warunki niestandardowe** , aby określić bardziej złożone warunki.
+  - **Wersja**: wersja zadania kompilacji w ramach usługi Azure DevOps. Ta opcja nie jest często używana.
+
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zapoznaj się z naszymi [opcjami YAML skanera](yaml-configuration.md#credential-scanner-task) .
 
 ## <a name="microsoft-security-risk-detection-task"></a>Zadanie wykrywania zagrożeń zabezpieczeń firmy Microsoft
 
 > [!NOTE]
 > Przed rozpoczęciem korzystania z zadania MSRD należy utworzyć i skonfigurować konto z usługą wykrywania zagrożeń zabezpieczeń firmy Microsoft (MSRD). Ta usługa wymaga oddzielnego procesu dołączania. W przeciwieństwie do większości innych zadań w tym rozszerzeniu, to zadanie wymaga oddzielnej subskrypcji z MSRD.
 >
-> Zapoznaj się z artykułem [wykrywanie zagrożeń zabezpieczeń firmy Microsoft](https://aka.ms/msrddocs) i [wykrywanie zagrożeń zabezpieczeń firmy Microsoft: ](https://docs.microsoft.com/security-risk-detection/how-to/) Instrukcje.
+> Zapoznaj się z artykułem [wykrywanie zagrożeń zabezpieczeń firmy Microsoft](https://aka.ms/msrddocs) i [wykrywanie zagrożeń zabezpieczeń firmy Microsoft:](https://docs.microsoft.com/security-risk-detection/how-to/) instrukcje.
 
 Szczegóły dotyczące konfigurowania tego zadania przedstawiono na poniższej liście. Dla każdego elementu interfejsu użytkownika można umieścić kursor nad tym elementem, aby uzyskać pomoc.
 
-   - **Nazwa punktu końcowego usługi Azure DevOps dla MSRD**: Ogólny typ punktu końcowego usługi Azure DevOps przechowuje adres URL wystąpienia MSRD i token dostępu interfejsu API REST. Jeśli utworzono taki punkt końcowy, możesz go określić w tym miejscu. W przeciwnym razie wybierz link **Zarządzaj** , aby utworzyć i skonfigurować nowy punkt końcowy usługi dla tego zadania MSRD.
-   - **Identyfikator konta**: Identyfikator GUID, który można pobrać z adresu URL konta MSRD.
-   - **Adresy URL dla plików binarnych**: Rozdzielana średnikami lista publicznie dostępnych adresów URL. Komputer rozmyty używa tych adresów URL do pobierania plików binarnych.
-   - **Adresy URL plików inicjatora**: Rozdzielana średnikami lista publicznie dostępnych adresów URL. Komputer rozmyty używa tych adresów URL do pobierania nasion. Określenie tej wartości jest opcjonalne, jeśli pliki inicjatora są pobierane razem z danymi binarnymi.
-   - **Typ platformy systemu operacyjnego**: Platforma systemu operacyjnego (OS) maszyn, na których działa zadanie rozmyte. Dostępne wartości to **Windows** i **Linux**.
-   - **Wersja systemu Windows/Linux**: Wersja systemu operacyjnego maszyn, na których działa zadanie rozmyte. Wartość domyślną można zastąpić, jeśli na maszynach jest zainstalowana inna wersja systemu operacyjnego.
-   - **Skrypt instalacji pakietu**: Skrypt do uruchomienia na maszynie testowej. Ten skrypt instaluje program docelowy test i jego zależności przed przesłaniem zadania rozmytego.
+   - **Nazwa punktu końcowego usługi Azure DevOps dla MSRD**: ogólny typ punktu końcowego usługi Azure DevOps przechowuje adres URL przykładowego wystąpienia MSRD i token dostępu interfejsu API REST. Jeśli utworzono taki punkt końcowy, możesz go określić w tym miejscu. W przeciwnym razie wybierz link **Zarządzaj** , aby utworzyć i skonfigurować nowy punkt końcowy usługi dla tego zadania MSRD.
+   - **Identyfikator konta**: identyfikator GUID, który można pobrać z adresu URL konta MSRD.
+   - **Adresy URL dla plików binarnych**: rozdzielana średnikami lista publicznie dostępnych adresów URL. Komputer rozmyty używa tych adresów URL do pobierania plików binarnych.
+   - **Adresy URL plików inicjatora**: rozdzielana średnikami lista publicznie dostępnych adresów URL. Komputer rozmyty używa tych adresów URL do pobierania nasion. Określenie tej wartości jest opcjonalne, jeśli pliki inicjatora są pobierane razem z danymi binarnymi.
+   - **Typ platformy systemu operacyjnego**: platforma systemu operacyjnego (OS) maszyn, na których działa zadanie rozmyte. Dostępne wartości to **Windows** i **Linux**.
+   - Wersja **systemu Windows/Linux**: wersja systemu operacyjnego maszyn, na których działa zadanie rozmyte. Wartość domyślną można zastąpić, jeśli na maszynach jest zainstalowana inna wersja systemu operacyjnego.
+   - **Skrypt instalacji pakietu**: skrypt do uruchomienia na maszynie testowej. Ten skrypt instaluje program docelowy test i jego zależności przed przesłaniem zadania rozmytego.
    - **Parametry przesłania zadania**:
-       - **Katalog inicjatora**: Ścieżka do katalogu na maszynie rozmytej, która zawiera nasiona.
-       - **Rozszerzenie inicjatora**: Rozszerzenie nazwy pliku nasion.
-       - **Plik wykonywalny sterownika testowego**: Ścieżka do docelowego pliku wykonywalnego na maszynie rozmytej.
-       - **Architektura wykonywalna sterownika testowego**: Docelowa architektura pliku wykonywalnego. Dostępne wartości to **x86** i **amd64**.
-       - **Argumenty sterownika testu**: Argumenty wiersza polecenia przekazane do pliku wykonywalnego testu. Argument "% TestFile%", w tym cudzysłowy, jest automatycznie zastępowany pełną ścieżką do pliku docelowego. Ten plik jest analizowany przez sterownik testowy i jest wymagany.
-       - **Proces sterownika testowego kończy się po zakończeniu testu**: Zaznacz to pole wyboru, jeśli sterownik testowy ma zostać zakończony po zakończeniu. Wyczyść to pole wyboru, jeśli sterownik testowy należy wymusić zamknięcie.
-       - **Maksymalny czas trwania (w sekundach)** : Oszacowanie najdłuższego oczekiwanego czasu oczekiwania przez program docelowy na przeanalizowanie pliku wejściowego. Im dokładniejsze oszacowanie, tym wydajniejsze są uruchomienia aplikacji.
-       - **Sterownik testowy może być uruchamiany wielokrotnie**: Zaznacz to pole wyboru, jeśli sterownik testowy może być uruchamiany wielokrotnie bez w zależności od trwałego lub udostępnionego stanu globalnego.
-       - **Można zmienić nazwę sterownika testowego**: Zaznacz to pole wyboru, jeśli można zmienić nazwę pliku wykonywalnego sterownika testowego i nadal działać poprawnie.
-       - **Aplikacja rozmytego uruchamiania działa jako pojedynczy proces systemu operacyjnego**: Zaznacz to pole wyboru, jeśli sterownik testowy działa w ramach jednego procesu systemu operacyjnego. Wyczyść to pole wyboru, jeśli sterownik testowy duplikuje dodatkowe procesy.
+       - **Katalog inicjatora**: ścieżka do katalogu na maszynie rozmytej, która zawiera nasiona.
+       - **Rozszerzenie inicjatora**: rozszerzenie nazwy pliku dla nasion.
+       - **Plik wykonywalny sterownika testowego**: ścieżka do docelowego pliku wykonywalnego na maszynie rozmytej.
+       - **Architektura wykonywalna sterownika testowego**: docelowa architektura pliku wykonywalnego. Dostępne wartości to **x86** i **amd64**.
+       - **Argumenty sterownika testu**: argumenty wiersza polecenia przekazane do pliku wykonywalnego testu. Argument "% TestFile%", w tym cudzysłowy, jest automatycznie zastępowany pełną ścieżką do pliku docelowego. Ten plik jest analizowany przez sterownik testowy i jest wymagany.
+       - **Proces sterownika testowego kończy się po zakończeniu testu**: zaznacz to pole wyboru, jeśli sterownik testowy ma zostać zakończony po zakończeniu. Wyczyść to pole wyboru, jeśli sterownik testowy należy wymusić zamknięcie.
+       - **Maksymalny czas trwania (w sekundach)** : oszacowanie najdłuższego oczekiwanego czasu oczekiwania przez program docelowy na przeanalizowanie pliku wejściowego. Im dokładniejsze oszacowanie, tym wydajniejsze są uruchomienia aplikacji.
+       - **Sterownik testowy może być uruchamiany wielokrotnie**: zaznacz to pole wyboru, jeśli sterownik testowy może być uruchamiany wielokrotnie bez w zależności od trwałego lub udostępnionego stanu globalnego.
+       - **Można zmienić nazwę sterownika testowego**: zaznacz to pole wyboru, jeśli można zmienić nazwę pliku wykonywalnego sterownika testowego i nadal działać poprawnie.
+       - **Aplikacja rozmytego uruchamiania działa jako pojedynczy proces systemu operacyjnego**: zaznacz to pole wyboru, jeśli sterownik testowy działa w ramach jednego procesu systemu operacyjnego. Wyczyść to pole wyboru, jeśli sterownik testowy duplikuje dodatkowe procesy.
+
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zapoznaj się z tematem [YAML opcje wykrywania zagrożeń zabezpieczeń firmy Microsoft](yaml-configuration.md#microsoft-security-risk-detection-task)
 
 ## <a name="roslyn-analyzers-task"></a>Zadanie analizatorów Roslyn
 
 > [!NOTE]
 > Aby można było uruchomić zadanie analizatorów Roslyn, kompilacja musi spełniać następujące warunki:
+>
 > - Definicja kompilacji zawiera wbudowane zadanie kompilacji MSBuild lub VSBuild do kompilowania C# kodu lub Visual Basic. Zadanie analizatory jest zależne od danych wejściowych i wyjściowych wbudowanego zadania do uruchamiania kompilacji MSBuild z włączonymi analizatorami Roslyn.
 > - Agent kompilacji, na którym uruchomiono to zadanie kompilacji, ma zainstalowany program Visual Studio 2017 w wersji 15,5 lub nowszej, tak aby używał kompilatora w wersji 2,6 lub nowszej.
 
@@ -139,12 +148,13 @@ Szczegóły konfiguracji zadania przedstawiono na poniższej liście.
 
 Dostępne opcje to:
 
-- **Zestaw reguł**: Wymagane wartości to **SDL**, **zalecane przez SDL**lub własny niestandardowy zestaw reguł.
-- **Wersja analizatorów**: Zalecamy wybranie opcji **najnowsze**.
-- **Plik pominięć ostrzeżeń kompilatora**: Plik tekstowy z listą identyfikatorów ostrzeżeń, które są pomijane.
-- **Opcje kontrolki** **Uruchom to zadanie:**  >  Określa, kiedy zadanie zostanie uruchomione. Wybierz opcję **warunki niestandardowe** , aby określić bardziej złożone warunki.
+- **Zestaw reguł**: wymagane wartości to **SDL**, **zalecane przez SDL**lub własny niestandardowy zestaw reguł.
+- **Wersja analizatorów**: zalecamy wybranie opcji **najnowsze**.
+- **Plik pominięć ostrzeżeń kompilatora**: plik tekstowy z listą identyfikatorów ostrzeżeń, które są pomijane.
+- **Opcje kontrolki** > **uruchomienie tego zadania**: określa, kiedy zadanie zostanie uruchomione. Wybierz opcję **warunki niestandardowe** , aby określić bardziej złożone warunki.
 
 > [!NOTE]
+>
 > - Analizatory Roslyn są zintegrowane z kompilatorem i mogą być uruchamiane tylko w ramach kompilacji CSC. exe. W związku z tym to zadanie wymaga, aby polecenie kompilatora uruchomione wcześniej w kompilacji zostało powtórzone lub ponownie uruchomione. To odtwarzanie lub uruchamianie jest wykonywane przez przeszukiwanie Visual Studio Team Services (VSTS) dla dzienników zadań kompilacji programu MSBuild.
 >
 >   Nie istnieje żaden inny sposób, aby zadanie niezawodnie pobrać wiersz polecenia kompilacji MSBuild z definicji kompilacji. Rozważamy Dodawanie dowolnego pola tekstowego, aby umożliwić użytkownikom wprowadzanie ich linii poleceń. Jednak będzie trudno zachować aktualność tych wierszy poleceń i synchronizować ją z główną kompilacją.
@@ -161,6 +171,8 @@ Aby uzyskać dodatkowe zasoby dla Roslyn analizatorów, zapoznaj [się z analiza
 
 Pakiet analizatora zainstalowany i używany przez to zadanie kompilacji można znaleźć na stronie narzędzia NuGet [Microsoft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, sprawdź [Opcje YAML analizatorów Roslyn](yaml-configuration.md#roslyn-analyzers-task)
+
 ## <a name="tslint-task"></a>TSLint, zadanie
 
 Aby uzyskać więcej informacji na temat TSLint, przejdź do [repozytorium GitHub TSLint](https://github.com/palantir/tslint).
@@ -168,15 +180,19 @@ Aby uzyskać więcej informacji na temat TSLint, przejdź do [repozytorium GitHu
 >[!NOTE] 
 >Ponieważ użytkownik może mieć świadomość, Strona główna [repozytorium usługi GitHub TSLint](https://github.com/palantir/tslint) informuje, że TSLint będzie przestarzałe w 2019. Firma Microsoft bada [ESLint](https://github.com/eslint/eslint) jako alternatywne zadanie.
 
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zobacz nasze [TSLINT YAML Options](yaml-configuration.md#tslint-task)
+
 ## <a name="publish-security-analysis-logs-task"></a>Zadanie publikowania dzienników analizy zabezpieczeń
 
 Szczegóły konfiguracji zadania są pokazane na poniższym zrzucie ekranu i na liście.
 
 ![Konfigurowanie zadania kompilacji dzienników analizy zabezpieczeń](./media/security-tools/9-publish-security-analsis-logs600.png)  
 
-- **Nazwa artefaktu**: Dowolny identyfikator ciągu.
-- **Typ artefaktu**: W zależności od dokonanego wyboru można opublikować dzienniki na serwerze usługi Azure DevOps lub w udostępnionym pliku, który jest dostępny dla agenta kompilacji.
-- **Narzędzia**: Można wybrać opcję zachowywania dzienników dla określonych narzędzi lub wybrać **wszystkie narzędzia** , aby zachować wszystkie dzienniki.
+- **Nazwa artefaktu**: dowolny identyfikator ciągu.
+- **Typ artefaktu**: w zależności od dokonanego wyboru można publikować dzienniki w Azure DevOps Server lub do udostępnionego pliku, który jest dostępny dla agenta kompilacji.
+- **Narzędzia**: możesz wybrać opcję zachowywania dzienników dla określonych narzędzi lub wybrać **wszystkie narzędzia** , aby zachować wszystkie dzienniki.
+
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zapoznaj się z naszymi [opcjami publikowania dzienników zabezpieczeń YAML](yaml-configuration.md#publish-security-analysis-logs-task)
 
 ## <a name="security-report-task"></a>Zadanie raportu zabezpieczeń
 
@@ -184,10 +200,12 @@ Szczegóły konfiguracji raportów zabezpieczeń przedstawiono na poniższym zrz
 
 ![Konfigurowanie zadania kompilacji raportu zabezpieczeń](./media/security-tools/4-createsecurityanalysisreport600.png)
 
-- **Raporty**: Wybierz dowolną z następujących formatów **konsoli potoku**, **plików TSV**i **plików HTML** . Dla każdego wybranego formatu jest tworzony jeden plik raportu.
-- **Narzędzia**: Wybierz Narzędzia w definicji kompilacji, dla których chcesz uzyskać podsumowanie wykrytych problemów. Dla każdego wybranego narzędzia może być dostępna opcja wyboru, czy są widoczne tylko błędy, czy też w raporcie podsumowującym znajdują się błędy i ostrzeżenia.
+- **Raporty**: Wybierz **dowolną z opcji**: **plik TSV**i format **pliku HTML** . Dla każdego wybranego formatu jest tworzony jeden plik raportu.
+- **Narzędzia**: wybierz narzędzia w definicji kompilacji, dla którego chcesz uzyskać podsumowanie wykrytych problemów. Dla każdego wybranego narzędzia może być dostępna opcja wyboru, czy są widoczne tylko błędy, czy też w raporcie podsumowującym znajdują się błędy i ostrzeżenia.
 - **Opcje zaawansowane**: Jeśli nie ma żadnych dzienników dla jednego z wybranych narzędzi, możesz wybrać opcję rejestrowania ostrzeżenia lub błędu. Jeśli rejestrujesz błąd, zadanie zakończy się niepowodzeniem.
-- **Folder dzienników bazowych**: Można dostosować podstawowy folder dzienników, w którym mają zostać znalezione dzienniki. Jednak ta opcja nie jest zazwyczaj używana.
+- **Folder dzienników bazowych**: można dostosować podstawowy folder dzienników, w którym mają zostać znalezione dzienniki. Jednak ta opcja nie jest zazwyczaj używana.
+
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zapoznaj się z naszymi [raportami zabezpieczeń YAML opcje](yaml-configuration.md#security-report-task)
 
 ## <a name="post-analysis-task"></a>Zadanie po analizie
 
@@ -195,10 +213,14 @@ Szczegóły konfiguracji zadania są pokazane na poniższym zrzucie ekranu i na 
 
 ![Konfigurowanie zadania kompilacji po analizie](./media/security-tools/a-post-analysis600.png)
 
-- **Narzędzia**: Wybierz Narzędzia w definicji kompilacji, dla których chcesz warunkowo wstrzyknąć przerwę kompilacji. Dla każdego wybranego narzędzia może być dostępna opcja wyboru, czy ma zostać przerwana tylko w przypadku błędów, czy tylko w przypadku błędów i ostrzeżeń.
-- **Raport**: Opcjonalnie można napisać wyniki, które powodują przerwanie kompilacji. Wyniki są zapisywane w oknie i pliku dziennika konsoli usługi Azure DevOps.
+- **Narzędzia**: wybierz narzędzia w definicji kompilacji, dla którego chcesz warunkowo wstrzyknąć przerwę kompilacji. Dla każdego wybranego narzędzia może być dostępna opcja wyboru, czy ma zostać przerwana tylko w przypadku błędów, czy tylko w przypadku błędów i ostrzeżeń.
+- **Raport**: można opcjonalnie napisać wyniki, które powodują przerwanie kompilacji. Wyniki są zapisywane w oknie i pliku dziennika konsoli usługi Azure DevOps.
 - **Opcje zaawansowane**: Jeśli nie ma żadnych dzienników dla jednego z wybranych narzędzi, możesz wybrać opcję rejestrowania ostrzeżenia lub błędu. Jeśli rejestrujesz błąd, zadanie zakończy się niepowodzeniem.
 
+Aby uzyskać informacje na temat konfiguracji YAML dla tego zadania, zapoznaj się z naszymi [opcjami YAML po analizie](yaml-configuration.md#post-analysis-task)
+
 ## <a name="next-steps"></a>Następne kroki
+
+Aby uzyskać informacje na temat konfiguracji opartej na YAML, zapoznaj się z naszym [przewodnikiem konfiguracyjnym YAML](yaml-configuration.md).
 
 Jeśli masz więcej pytań dotyczących rozszerzenia analizy kodu zabezpieczeń i oferowanych narzędzi, zapoznaj się z [naszą stroną często zadawanych pytań](security-code-analysis-faq.md).

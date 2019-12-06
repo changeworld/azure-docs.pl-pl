@@ -1,79 +1,79 @@
 ---
-title: Wyświetl zmiany zawartości plików za pomocą usługi Azure Automation
-description: Aby wyświetlić zawartość pliku, które uległy zmianie, należy użyć funkcji zmiana zawartości pliku śledzenia zmian.
+title: Wyświetl zmiany zawartości plików przy użyciu Azure Automation
+description: Użyj funkcji Zmień zawartość pliku śledzenia zmian, aby wyświetlić zawartość pliku, który został zmieniony.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6aef9a24e3337d1f5a5a6c9ac6b510cc7f9a66a5
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4ab88aa2dc604172f00d875353dabba61fd101af
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478644"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850588"
 ---
-# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Wyświetl zawartość pliku, który jest śledzone za pomocą śledzenia zmian
+# <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Wyświetl zawartość pliku, który jest śledzony za pomocą Change Tracking
 
-Śledzenie zawartości pliku umożliwia wyświetlenie zawartości pliku, przed i po zmianie, która jest śledzona z śledzenie zmian. Aby to zrobić, zapisuje zawartość pliku na koncie magazynu po każdej zmianie.
+Śledzenie zawartości plików umożliwia wyświetlenie zawartości pliku przed zmianą, która jest śledzona przy użyciu Change Tracking. W tym celu zapisuje zawartość pliku na koncie magazynu po każdej zmianie.
 
 ## <a name="requirements"></a>Wymagania
 
-* Standardowe konto magazynu przy użyciu modelu wdrażania usługi Resource Manager jest wymagany do przechowywania zawartości pliku. Premium i kont magazynu w modelu wdrożenia klasycznego nie powinny być używane. Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz [kontach magazynu Azure — informacje](../storage/common/storage-create-storage-account.md)
+* Konto magazynu w warstwie Standardowa przy użyciu modelu wdrażania Menedżer zasobów jest wymagane do przechowywania zawartości pliku. Kont magazynu modelu wdrażania w warstwie Premium i klasycznym nie należy używać. Aby uzyskać więcej informacji na temat kont magazynu, zobacz [Informacje o kontach usługi Azure Storage](../storage/common/storage-create-storage-account.md)
 
-* Konto magazynu używane na może mieć tylko 1 konta usługi Automation połączone.
+* Używane konto magazynu może mieć tylko jedno połączenie z kontem usługi Automation.
 
-* [Śledzenie zmian](automation-change-tracking.md) jest włączona na koncie usługi Automation.
+* [Change Tracking](automation-change-tracking.md) jest włączona na Twoim koncie usługi Automation.
 
-## <a name="enable-file-content-tracking"></a>Włącz śledzenie zawartości pliku
+## <a name="enable-file-content-tracking"></a>Włącz śledzenie zawartości plików
 
-1. W witrynie Azure portal Otwórz konto usługi Automation, a następnie wybierz **śledzenie zmian**.
-2. W górnym menu wybierz **edytowanie ustawień**.
-3. Wybierz **zawartość pliku** i kliknij przycisk **łącze**. Spowoduje to otwarcie **Dodaj lokalizację zawartości na potrzeby śledzenia zmian** okienka.
+1. W Azure Portal Otwórz konto usługi Automation, a następnie wybierz pozycję **śledzenie zmian**.
+2. W górnym menu wybierz pozycję **Edytuj ustawienia**.
+3. Wybierz pozycję **zawartość pliku** , a następnie kliknij pozycję **Połącz**. Spowoduje to otwarcie okienka **Dodawanie lokalizacji zawartości dla Change Tracking** .
 
    ![Włącz](./media/change-tracking-file-contents/enable.png)
 
-4. Wybierz subskrypcję i konto magazynu służące do przechowywania zawartości pliku do. Jeśli chcesz włączyć śledzenie zawartości pliku dla wszystkich istniejących plików śledzone, wybierz **na** dla **przekazywać zawartość pliku dla wszystkich ustawień**. Możesz zmienić to dla każdej ścieżki pliku później.
+4. Wybierz subskrypcję i konto magazynu, w którym ma być przechowywana zawartość pliku. Jeśli chcesz włączyć śledzenie zawartości plików dla wszystkich istniejących śledzonych plików, wybierz pozycję **włączone** , aby **przekazać zawartość pliku dla wszystkich ustawień**. Można zmienić tę funkcję dla każdej ścieżki pliku później.
 
-   ![Ustaw konto magazynu](./media/change-tracking-file-contents/storage-account.png)
+   ![Ustawianie konta magazynu](./media/change-tracking-file-contents/storage-account.png)
 
-5. Po włączeniu na koncie magazynu i identyfikatorów URI sygnatury dostępu Współdzielonego są wyświetlane. Identyfikatory URI sygnatury dostępu Współdzielonego wygasają po upływie 365 dni i może być odtworzona, klikając **ponownie wygenerować** przycisku.
+5. Po włączeniu konta magazynu i identyfikatory URI sygnatury dostępu współdzielonego są wyświetlane. Identyfikatory URI sygnatury dostępu współdzielonego wygasną po 365 dniach i można je odtworzyć, klikając przycisk **Regenerate** .
 
    ![Wyświetl listę kluczy konta](./media/change-tracking-file-contents/account-keys.png)
 
-## <a name="add-a-file"></a>Dodaj plik
+## <a name="add-a-file"></a>Dodawanie pliku
 
-W poniższych krokach objaśniono poprzez włączenie śledzenia zmian dla pliku:
+Poniższe kroki przeprowadzą Cię przez włączenie śledzenia zmian dla pliku:
 
-1. Na **edytowanie ustawień** strony **Change Tracking**, wybierz opcję **pliki Windows** lub **pliki systemu Linux** kartę, a następnie kliknij przycisk  **Dodaj**
+1. Na stronie **Edytuj ustawienia** w obszarze **Change Tracking**wybierz kartę **pliki systemu Windows** lub **Linux** , a następnie kliknij przycisk **Dodaj** .
 
-1. Wypełnij informacje dla ścieżki pliku, a następnie wybierz **True** w obszarze **przekazywać zawartość pliku dla wszystkich ustawień**. To ustawienie włącza zawartość pliku śledzenia dla tej ścieżki pliku.
+1. Wprowadź informacje dotyczące ścieżki pliku i wybierz **wartość true** w obszarze **Przekaż zawartość pliku dla wszystkich ustawień**. To ustawienie umożliwia śledzenie zawartości plików tylko dla tej ścieżki pliku.
 
-   ![Dodawanie pliku systemu linux](./media/change-tracking-file-contents/add-linux-file.png)
+   ![Dodawanie pliku systemu Linux](./media/change-tracking-file-contents/add-linux-file.png)
 
-## <a name="viewing-the-contents-of-a-tracked-file"></a>Wyświetlanie zawartości pliku śledzonych
+## <a name="viewing-the-contents-of-a-tracked-file"></a>Wyświetlanie zawartości śledzonego pliku
 
-1. Gdy wykryto zmiany dla pliku lub pliku w ścieżce pokazuje w portalu. Wybierz zmianę pliku z listy zmian. **Zmiany szczegółów** zostanie wyświetlone okienko.
+1. Po wykryciu zmiany pliku lub pliku w ścieżce jest on wyświetlany w portalu. Wybierz zmianę pliku z listy zmian. Zostanie wyświetlone okienko **szczegóły zmiany** .
 
-   ![Lista zmian](./media/change-tracking-file-contents/change-list.png)
+   ![zmiany listy](./media/change-tracking-file-contents/change-list.png)
 
-1. Na **zmiany szczegółów** stronie zostanie wyświetlony standardowy przed i po nim plików informacji, w lewym górnym rogu, kliknij **Wyświetl zmiany zawartości plików** Aby wyświetlić zawartość pliku.
+1. Na stronie **Zmień szczegóły** zobaczysz Standard przed i po informacjach o pliku w lewym górnym rogu, a następnie kliknij pozycję **Wyświetl zawartość pliku zmiany** , aby zobaczyć zawartość pliku.
 
    ![Szczegóły zmiany](./media/change-tracking-file-contents/change-details.png)
 
-1. Nowa strona zawiera zawartość pliku, w widoku side-by-side. Możesz również wybrać **wbudowane** Aby wyświetlić widok wbudowane zmian.
+1. Na nowej stronie zostanie wyświetlona zawartość pliku w widoku obok siebie. Możesz również wybrać opcję **wbudowane** , aby wyświetlić widok w tekście zmian.
 
-   ![Przeglądanie zmian w plikach](./media/change-tracking-file-contents/view-file-changes.png)
+   ![Wyświetl zmiany plików](./media/change-tracking-file-contents/view-file-changes.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Odwiedź samouczka na śledzenie zmian, aby dowiedzieć się więcej o korzystaniu z rozwiązania:
+Zapoznaj się z samouczkiem dotyczącym Change Tracking, aby dowiedzieć się więcej o korzystaniu z rozwiązania:
 
 > [!div class="nextstepaction"]
-> [Rozwiązywanie problemów dotyczących zmian w Twoim środowisku](automation-tutorial-troubleshoot-changes.md)
+> [Rozwiązywanie problemów ze zmianami w środowisku](automation-tutorial-troubleshoot-changes.md)
 
-* Użyj [przeszukiwania dzienników w dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-searches.md) Aby wyświetlić szczegółowe dane rozwiązania change tracking.
+* Użyj [wyszukiwania w dzienniku Azure monitor](../log-analytics/log-analytics-log-searches.md) , aby wyświetlić szczegółowe dane śledzenia zmian.
 

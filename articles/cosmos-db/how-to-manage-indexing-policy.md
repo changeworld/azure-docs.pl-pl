@@ -1,17 +1,17 @@
 ---
 title: Zarządzanie zasadami indeksowania w Azure Cosmos DB
-description: Dowiedz się, jak zarządzać zasadami indeksowania w Azure Cosmos DB
+description: Dowiedz się, jak zarządzać zasadami indeksowania, dołączać lub wykluczać właściwość z indeksowania, jak definiować indeksowanie za pomocą różnych zestawów SDK Azure Cosmos DB
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 46d0124eb701b0c2d779a96c8efd50ba43e8fc07
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034454"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872064"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami indeksowania w Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Poniżej przedstawiono kilka przykładów zasad indeksowania pokazywanych w ich 
     }
 ```
 
-Te zasady indeksowania są równoważne z tymi, które ręcznie ustawiają ```kind```, ```dataType``` i ```precision``` do ich wartości domyślnych. Te właściwości nie są już wymagane do jawnego ustawiania i można je pominąć z poziomu zasad indeksowania w całości (jak pokazano w powyższym przykładzie).
+Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartości domyślne ```kind```, ```dataType```i ```precision```. Te właściwości nie są już wymagane do jawnego ustawiania i można je pominąć z poziomu zasad indeksowania w całości (jak pokazano w powyższym przykładzie).
 
 ```json
     {
@@ -96,7 +96,7 @@ Te zasady indeksowania są równoważne z tymi, które ręcznie ustawiają ```ki
     }
 ```
 
-Te zasady indeksowania są równoważne z tymi, które ręcznie ustawiają ```kind```, ```dataType``` i ```precision``` do ich wartości domyślnych. Te właściwości nie są już wymagane do jawnego ustawiania i można je pominąć z poziomu zasad indeksowania w całości (jak pokazano w powyższym przykładzie).
+Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartości domyślne ```kind```, ```dataType```i ```precision```. Te właściwości nie są już wymagane do jawnego ustawiania i można je pominąć z poziomu zasad indeksowania w całości (jak pokazano w powyższym przykładzie).
 
 ```json
     {
@@ -332,7 +332,7 @@ Te zasady spowodują wyłączenie indeksowania. Jeśli `indexingMode` jest ustaw
 
 W Azure Cosmos DB zasady indeksowania można aktualizować przy użyciu dowolnej z poniższych metod:
 
-- z Azure Portal
+- Z Azure Portal
 - Korzystanie z interfejsu wiersza polecenia platformy Azure
 - przy użyciu programu PowerShell
 - Korzystanie z jednego z zestawów SDK
@@ -356,7 +356,7 @@ Kontenery usługi Azure Cosmos przechowują swoje zasady indeksowania jako dokum
 
 1. Modyfikowanie dokumentu JSON zasad indeksowania (Zobacz przykłady [poniżej](#indexing-policy-examples))
 
-1. Po zakończeniu kliknij przycisk **Zapisz** .
+1. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
 
 ![Zarządzanie indeksowaniem przy użyciu witryny Azure Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -424,7 +424,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-Aby śledzić postęp transformacji indeksu, przekaż obiekt `RequestOptions`, który ustawia właściwość `PopulateQuotaInfo` na `true`, a następnie Pobierz wartość z nagłówka odpowiedzi `x-ms-documentdb-collection-index-transformation-progress`.
+Aby śledzić postęp transformacji indeksu, należy przekazać obiekt `RequestOptions`, który ustawia właściwość `PopulateQuotaInfo` na `true`, a następnie pobrać wartość z nagłówka odpowiedzi `x-ms-documentdb-collection-index-transformation-progress`.
 
 ```csharp
 // retrieve the container's details
@@ -457,7 +457,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>Korzystanie z zestawu SDK języka Java
 
-Obiekt `DocumentCollection` z [zestawu Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (zobacz [ten przewodnik Szybki Start](create-sql-api-java.md) dotyczący użycia) udostępnia metody `getIndexingPolicy()` i `setIndexingPolicy()`. Obiekt `IndexingPolicy` manipulowanie umożliwia zmianę trybu indeksowania i Dodawanie lub usuwanie dołączonych i wykluczonych ścieżek.
+Obiekt `DocumentCollection` z [zestawu Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (zobacz [ten przewodnik Szybki Start](create-sql-api-java.md) dotyczący użycia) uwidacznia metody `getIndexingPolicy()` i `setIndexingPolicy()`. Obiekt `IndexingPolicy`, do którego manipuluje, umożliwia zmianę trybu indeksowania i dodanie lub usunięcie ścieżek dołączony i wykluczony.
 
 ```java
 // Retrieve the container's details

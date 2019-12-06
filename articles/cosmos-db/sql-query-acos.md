@@ -1,18 +1,18 @@
 ---
 title: ACOS w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji ACOS systemu SQL w Azure Cosmos DB.
+description: Dowiedz się, jak Funkcja systemowa SQL ACOS (arccosice) w Azure Cosmos DB zwraca kąt w radianach, którego cosinus jest określonym wyrażeniem liczbowym
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2c9d29fba6b5dc55a98bf90cfafe0940d7bf9674
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: fd5baa3ffefb7039c40706253e633661a51150f2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348731"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873526"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACOS (Azure Cosmos DB)
  Zwraca kąt w radianach, którego cosinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus cosinus.  
@@ -34,7 +34,7 @@ ACOS(<numeric_expr>)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład zwraca `ACOS` z-1.  
+  Poniższy przykład zwraca `ACOS`-1.  
   
 ```sql
 SELECT ACOS(-1) AS acos 

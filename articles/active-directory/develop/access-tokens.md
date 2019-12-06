@@ -2,26 +2,23 @@
 title: Informacje o tokenach dostępu do platformy tożsamości firmy Microsoft | Azure
 description: Dowiedz się więcej o tokenach dostępu emitowanych przez punkty końcowe usługi Azure AD v 1.0 i Microsoft Identity platform (v 2.0).
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34548b623317eff17bcbf5a7749cd411a44bd722
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 61bcdac38b9b8765c7c3d575bb632c9291e46b90
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73935858"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845862"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny dostępu platformy tożsamości firmy Microsoft
 
@@ -106,7 +103,7 @@ Oświadczenia są obecne tylko wtedy, gdy istnieje wartość do wypełnienia. W 
 | `wids` | Tablica identyfikatorów GUID [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) | Wskazuje role w całej dzierżawie przypisane do tego użytkownika, w sekcji ról znajdującej się na [stronie role administratora](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids).  To zgłoszenie jest konfigurowane dla poszczególnych aplikacji, za pomocą właściwości `groupMembershipClaims` [manifestu aplikacji](reference-app-manifest.md).  Ustawienie go na "All" lub "DirectoryRole" jest wymagane.  Może nie być obecny w tokenach uzyskanych za pomocą niejawnego przepływu ze względu na długość tokenu. |
 | `groups` | Tablica JSON identyfikatorów GUID | Dostarcza identyfikatory obiektów, które reprezentują członkostwo w grupach podmiotu. Te wartości są unikatowe (zobacz identyfikator obiektu) i mogą być bezpiecznie używane do zarządzania dostępem, takie jak wymuszanie autoryzacji dostępu do zasobu. Grupy zawarte w ramach roszczeń grup są konfigurowane dla poszczególnych aplikacji, za pomocą właściwości `groupMembershipClaims` [manifestu aplikacji](reference-app-manifest.md). Wartość null spowoduje wykluczenie wszystkich grup, a wartość "Security Group" będzie zawierać tylko Active Directory członkostwa w grupie zabezpieczeń, a wartość "All" będzie obejmować zarówno grupy zabezpieczeń, jak i listy dystrybucyjne pakietu Office 365. <br><br>Aby uzyskać szczegółowe informacje na temat użycia zgłoszenia `groups` z niejawnym udzieleniem, zobacz poniższe `hasgroups`. <br>W przypadku innych przepływów, jeśli liczba grup, do których należy użytkownik, przekracza limit (150 dla protokołu SAML, 200 dla tokenu JWT), do źródeł roszczeń zostanie dodana wartość nadwyżkowa, która wskazuje punkt końcowy grafu usługi AAD zawierający listę grup dla użytkownika. |
 | `hasgroups` | Wartość logiczna | Jeśli jest obecny, zawsze `true`, co oznacza, że użytkownik należy do co najmniej jednej grupy. Używane zamiast żądania `groups` JWTs w przepływie niejawnego, jeśli w ramach żądania Full Groups zostanie rozbudowany fragment identyfikatora URI poza limitami długości adresów URL (obecnie 6 lub więcej grup). Wskazuje, że klient powinien użyć grafu do określenia grup użytkownika (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
-| `groups:src1` | Obiekt JSON | W przypadku żądań tokenów, które nie mają ograniczonej długości (zobacz `hasgroups` powyżej), ale nadal są za duże dla tokenu, zostanie uwzględniony link do listy pełnych grup dla użytkownika. W przypadku JWTs jako roszczeń rozproszonych, w przypadku protokołu SAML jako nowego odszkodowania zamiast zgłoszenia `groups`. <br><br>**Przykładowa wartość JWT**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
+| `groups:src1` | JSON — Obiekt | W przypadku żądań tokenów, które nie mają ograniczonej długości (zobacz `hasgroups` powyżej), ale nadal są za duże dla tokenu, zostanie uwzględniony link do listy pełnych grup dla użytkownika. W przypadku JWTs jako roszczeń rozproszonych, w przypadku protokołu SAML jako nowego odszkodowania zamiast zgłoszenia `groups`. <br><br>**Przykładowa wartość JWT**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `sub` | Ciąg, identyfikator GUID | Podmiot zabezpieczeń, dla którego token potwierdza informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienna i nie można jej ponownie przypisać ani ponownie użyć. Może służyć do bezpiecznego sprawdzania autoryzacji, na przykład gdy token jest używany w celu uzyskania dostępu do zasobu i może być używany jako klucz w tabelach bazy danych. Ponieważ podmiot jest zawsze obecny w tokenach, które są problemy z usługą Azure AD, zalecamy użycie tej wartości w systemie autoryzacji ogólnego przeznaczenia. Podmiot jest jednak identyfikatorem parowania — jest unikatowy dla określonego identyfikatora aplikacji. W związku z tym, jeśli pojedynczy użytkownik zaloguje się do dwóch różnych aplikacji przy użyciu dwóch różnych identyfikatorów klienta, te aplikacje otrzymają dwie różne wartości dla zgłoszenia podmiotu. Może to być niepotrzebne, w zależności od wymagań dotyczących architektury i ochrony prywatności. Zobacz również `oid`, które pozostają takie same dla aplikacji w ramach dzierżawy. |
 | `oid` | Ciąg, identyfikator GUID | Niezmienny identyfikator dla obiektu na platformie tożsamości firmy Microsoft, w tym przypadku, konto użytkownika. Może również służyć do bezpiecznego sprawdzania autoryzacji i jako klucz w tabelach bazy danych. Ten identyfikator jednoznacznie identyfikuje użytkownika w różnych aplikacjach — dwie różne aplikacje, które logują się w tym samym użytkowniku, otrzymają taką samą wartość w ramach `oid`go żądania. W związku z tym `oid` mogą być używane podczas wykonywania zapytań do programu Microsoft Usługi online, takich jak Microsoft Graph. Microsoft Graph zwróci ten identyfikator jako właściwość `id` dla danego [konta użytkownika](/graph/api/resources/user). Ponieważ `oid` umożliwia wielu aplikacjom skorelowanie użytkowników, zakres `profile` jest wymagany w celu otrzymania tego żądania. Należy pamiętać, że jeśli pojedynczy użytkownik istnieje w wielu dzierżawach, użytkownik będzie zawierać inny identyfikator obiektu w każdej dzierżawie — jest uznawany za różne konta, nawet jeśli użytkownik loguje się do każdego konta z tymi samymi poświadczeniami. |
 | `tid` | Ciąg, identyfikator GUID | Reprezentuje dzierżawę usługi Azure AD, z której korzysta użytkownik. W przypadku kont służbowych identyfikator GUID jest niezmiennym IDENTYFIKATORem dzierżawy organizacji, do której należy użytkownik. W przypadku kont osobistych wartość jest `9188040d-6c67-4c5b-b112-36a304b66dad`. Zakres `profile` jest wymagany w celu otrzymania tego żądania. |
@@ -164,7 +161,7 @@ Tożsamości firmy Microsoft mogą być uwierzytelniane na różne sposoby, któ
 | `rsa` | Uwierzytelnianie było oparte na weryfikacji klucza RSA, na przykład z [aplikacją Microsoft Authenticator](https://aka.ms/AA2kvvu). Obejmuje to, czy uwierzytelnianie zostało wykonane przy użyciu certyfikatu JWT z podpisem własnym z certyfikatem x509 usługi. |
 | `otp` | Jednorazowy kod dostępu przy użyciu wiadomości e-mail lub wiadomości tekstowej. |
 | `fed` | Zostało użyte potwierdzenie uwierzytelniania federacyjnego (takie jak JWT lub SAML). |
-| `wia` | Zintegrowane uwierzytelnianie systemu Windows |
+| `wia` | Uwierzytelnianie zintegrowane systemu Windows |
 | `mfa` | Użyto uwierzytelniania wieloskładnikowego. Gdy jest obecny, zostaną uwzględnione również inne metody uwierzytelniania. |
 | `ngcmfa` | Równoważne `mfa`używany do aprowizacji niektórych zaawansowanych typów poświadczeń. |
 | `wiaormfa`| Użytkownik użył systemu Windows lub poświadczenia usługi MFA do uwierzytelnienia. |
@@ -256,12 +253,12 @@ Tokeny odświeżania można unieważniać lub odwołać w dowolnym momencie, z r
 |   | Plik cookie oparty na hasłach | Token oparty na hasłach | Plik cookie bez hasła | Token nieoparty na haśle | Poufny token klienta |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Hasło wygasa | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna |
-| Hasło zostało zmienione przez użytkownika | Odwołany | Odwołany | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna |
-| Użytkownik wykonuje SSPR | Odwołany | Odwołany | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna |
-| Administrator resetuje hasło | Odwołany | Odwołany | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna |
-| Użytkownik odwołuje tokeny odświeżania [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odwołany | Odwołany | Odwołany | Odwołany | Odwołany |
-| Administrator odwołuje wszystkie tokeny odświeżania dla dzierżawy [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odwołany | Odwołany |Odwołany | Odwołany | Odwołany |
-| [Logowanie](v1-protocols-openid-connect-code.md#single-sign-out) jednokrotne w sieci Web | Odwołany | Pozostaje aktywna | Odwołany | Pozostaje aktywna | Pozostaje aktywna |
+| Hasło zostało zmienione przez użytkownika | Revoked | Revoked | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna |
+| Użytkownik wykonuje SSPR | Revoked | Revoked | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna |
+| Administrator resetuje hasło | Revoked | Revoked | Pozostaje aktywna | Pozostaje aktywna | Pozostaje aktywna |
+| Użytkownik odwołuje tokeny odświeżania [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Revoked | Revoked | Revoked | Revoked | Revoked |
+| Administrator odwołuje wszystkie tokeny odświeżania dla dzierżawy [za pośrednictwem programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Revoked | Revoked |Revoked | Revoked | Revoked |
+| [Logowanie](v1-protocols-openid-connect-code.md#single-sign-out) jednokrotne w sieci Web | Revoked | Pozostaje aktywna | Revoked | Pozostaje aktywna | Pozostaje aktywna |
 
 > [!NOTE]
 > Nazwa logowania oparta na hasłach jest taka, w której użytkownik nie pobrał hasła, aby je pobrać. Na przykład przy użyciu funkcji Windows Hello, klucza FIDO2 lub numeru PIN.

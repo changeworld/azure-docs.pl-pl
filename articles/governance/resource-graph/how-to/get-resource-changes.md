@@ -2,13 +2,13 @@
 title: Uzyskiwanie zmian zasobów
 description: Dowiedz się, jak znaleźć, kiedy zasób został zmieniony, uzyskać listę właściwości, które uległy zmianie, i Oceń różnice.
 ms.date: 10/09/2019
-ms.topic: conceptual
-ms.openlocfilehash: 2ed2c0ef8638744aeaa9f31eded14d1716d891ae
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.topic: how-to
+ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74303985"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873033"
 ---
 # <a name="get-resource-changes"></a>Uzyskiwanie zmian zasobów
 

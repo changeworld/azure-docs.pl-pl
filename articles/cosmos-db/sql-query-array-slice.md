@@ -1,18 +1,18 @@
 ---
 title: ARRAY_SLICE w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji ARRAY_SLICE systemu SQL w Azure Cosmos DB.
+description: Dowiedz się, w jaki sposób Funkcja systemowa SQL wycinka tablicy w Azure Cosmos DB zwraca część wyrażenia tablicy
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1df4177bb8b56bc98977af0f5180e8df5affb257
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3c65886eabfa87f729e18fb854aca6662d1d6fac
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348552"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871792"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
  Zwraca część wyrażenia tablicy.

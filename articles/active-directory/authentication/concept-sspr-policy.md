@@ -6,19 +6,19 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af0c2ecde539c9737249e4251f7eab276affb9c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381914"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848548"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady i ograniczenia haseł w Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady i ograniczenia haseł w usłudze Azure Active Directory
 
 W tym artykule opisano zasady haseł i wymagania dotyczące złożoności skojarzone z kontami użytkowników w dzierżawie usługi Azure Active Directory (Azure AD).
 
@@ -49,7 +49,7 @@ Zasady dwóch bram wymagają dwóch danych uwierzytelniania, takich jak **adres 
   * Administrator usługi Intune
   * Administrator usługi serwera proxy aplikacji
   * Administrator systemu Dynamics 365
-  * usługa Power BI administrator
+  * Administrator usługi Power BI
   * Administrator uwierzytelniania
   * Administrator uprzywilejowanego uwierzytelniania
 
@@ -71,7 +71,7 @@ Każde konto użytkownika, które musi zalogować się do usługi Azure AD, musi
 
 | Właściwość | Wymagania UserPrincipalName |
 | --- | --- |
-| Dozwolone znaki |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_! \# ^ \~</li></ul> |
+| Dozwolone znaki |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | Znaki nie są dozwolone |<ul> <li>"\@\" znak, który nie oddziela nazwy użytkownika z domeny.</li> <li>Nie może zawierać znaku kropki "." bezpośrednio przed symbolem "\@\"</li></ul> |
 | Ograniczenia długości |<ul> <li>Łączna długość nie może przekraczać 113 znaków</li><li>Przed symbolem "\@\"" może znajdować się maksymalnie 64 znaków</li><li>Po znaku "\@\"" może znajdować się maksymalnie 48 znaków</li></ul> |
 

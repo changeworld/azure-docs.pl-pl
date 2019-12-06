@@ -1,69 +1,69 @@
 ---
-title: Automatyzowanie wdrażania maszyny Wirtualnej na platformie usług Amazon Web Services
-description: W tym artykule pokazano, jak zautomatyzować tworzenie maszyny Wirtualnej usługi Amazon Web przy użyciu usługi Azure Automation
+title: Automatyzowanie wdrożenia maszyny wirtualnej w Amazon Web Services
+description: W tym artykule pokazano, jak za pomocą Azure Automation zautomatyzować tworzenie maszyny wirtualnej usługi Amazon Web Service
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 31eda5a293f7154d32c508b7b9c1bf0f9f604f2e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d2a58d3e79301f277143d8c4b6e810a377a211b9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476914"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849636"
 ---
-# <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scenariusz automatyzacji platformy Azure — aprowizowanie maszyny wirtualnej usług AWS
-W tym artykule dowiesz się, jak dzięki usłudze Azure Automation do aprowizowania maszyny wirtualnej w ramach subskrypcji usługi Amazon Web Service (AWS) i nadaj tej maszyny Wirtualnej określonej nazwie — który AWS odnosi się do jako "" tagowania maszyny Wirtualnej.
+# <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scenariusz Azure Automation — Inicjowanie obsługi administracyjnej maszyny wirtualnej AWS
+W tym artykule dowiesz się, jak skorzystać z Azure Automation, aby zainicjować obsługę administracyjną maszyny wirtualnej w ramach subskrypcji usługi Amazon Web Service (AWS) i nadać maszynie wirtualnej konkretną nazwę, która AWS odnosi się do "tagowania".
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Na potrzeby tego artykułu musisz mieć konto usługi Azure Automation i subskrypcja usługi AWS. Aby uzyskać więcej informacji na temat konfigurowania konta usługi Azure Automation i konfigurując go przy użyciu poświadczeń usługi AWS subskrypcji, przejrzyj [Konfigurowanie uwierzytelniania za pomocą usług Amazon Web Services](automation-config-aws-account.md). Tego konta należy utworzone lub zaktualizowane przy użyciu swoich poświadczeń usługi AWS subskrypcji, zanim przejdziesz dalej, jako odwołania do tego konta w poniższych krokach.
+Na potrzeby tego artykułu musisz mieć konto Azure Automation i subskrypcję usługi AWS. Aby uzyskać więcej informacji na temat konfigurowania konta Azure Automation i konfigurowania go przy użyciu poświadczeń subskrypcji usługi AWS, przejrzyj temat [Konfigurowanie uwierzytelniania przy użyciu Amazon Web Services](automation-config-aws-account.md). To konto należy utworzyć lub zaktualizować przy użyciu poświadczeń subskrypcji usługi AWS przed kontynuowaniem, ponieważ należy odwołać się do tego konta w poniższych krokach.
 
-## <a name="deploy-amazon-web-services-powershell-module"></a>Wdrażanie modułu programu PowerShell usługi sieci Web Amazon
-Inicjowanie obsługi administracyjnej runbook maszyny Wirtualnej korzysta z modułu programu PowerShell usługi AWS, aby wykonać swoją pracę. Wykonaj poniższe kroki, aby dodać moduł do konta usługi Automation, który jest skonfigurowany przy użyciu poświadczeń usługi AWS subskrypcji.  
+## <a name="deploy-amazon-web-services-powershell-module"></a>Wdróż moduł Amazon Web Services PowerShell
+Element Runbook aprowizacji maszyn wirtualnych korzysta z modułu AWS PowerShell w celu wykonania jego pracy. Wykonaj następujące kroki, aby dodać moduł do konta usługi Automation, które skonfigurowano przy użyciu poświadczeń subskrypcji usługi AWS.  
 
-1. Otwórz przeglądarkę internetową i przejdź do [galerii programu PowerShell](https://www.powershellgallery.com/packages/AWSPowerShell/) i kliknij pozycję **wdrażanie do usługi Azure Automation przycisku**.<br><br> ![Importowanie modułów PS usług AWS](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
-2. Nastąpi przekierowanie do strony logowania do platformy Azure i po uwierzytelnieniu, będziesz kierowane do witryny Azure portal i wyświetlona następująca strona:<br><br> ![Importowanie modułu strony](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
-3. Wybierz konto usługi Automation, a następnie kliknij przycisk **OK** rozpocząć wdrażanie.
+1. Otwórz przeglądarkę internetową i przejdź do [Galeria programu PowerShell](https://www.powershellgallery.com/packages/AWSPowerShell/) i kliknij **przycisk Wdróż do Azure Automation**.<br><br> ![](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png) importowania modułu AWS PS
+2. Nastąpi przekierowanie do strony logowania platformy Azure, a po uwierzytelnieniu zostanie nakierowany do Azure Portal i przedstawiony na następującej stronie:<br><br> ![Strona importowania modułu](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
+3. Wybierz konto usługi Automation, którego chcesz użyć, a następnie kliknij przycisk **OK** , aby rozpocząć wdrażanie.
 
    > [!NOTE]
-   > Podczas importowania modułu programu PowerShell do usługi Azure Automation, jego również wyodrębnia poleceń cmdlet, a działania te nie są wyświetlane do momentu moduł całkowitego zakończenia importowania i wyodrębniania poleceń cmdlet programu. Ten proces może potrwać kilka minut.  
+   > Podczas importowania modułu programu PowerShell do Azure Automation są one również wyodrębniane z poleceń cmdlet, a te działania nie są wyświetlane, dopóki moduł nie zakończył procesu importowania i wyodrębniania poleceń cmdlet. Ten proces może potrwać kilka minut.  
    > <br>
 
-1. W witrynie Azure portal Otwórz konto usługi Automation, do którego odwołuje się krok 3.
-2. Kliknij **zasoby** Kafelek i **zasoby** okienku wybierz **modułów** kafelka.
-3. Na **modułów** stronie zostanie wyświetlony **AWSPowerShell** modułu na liście.
+1. W Azure Portal Otwórz konto usługi Automation, do którego istnieje odwołanie w kroku 3.
+2. Kliknij kafelek **zasoby** i w okienku **zasoby** wybierz kafelek **moduły** .
+3. Na stronie **moduły** na liście zostanie wyświetlony moduł **AWSPowerShell** .
 
-## <a name="create-aws-deploy-vm-runbook"></a>Tworzenie usługi AWS wdrożenia maszyny Wirtualnej elementu runbook
-Po wdrożeniu modułu programu PowerShell usługi AWS można teraz tworzyć elementu runbook, aby zautomatyzować aprowizację maszyny wirtualnej na platformie AWS, za pomocą skryptu programu PowerShell. Poniższe kroki pokazują, jak korzystać z natywnych skryptów programu PowerShell w usłudze Azure Automation.  
+## <a name="create-aws-deploy-vm-runbook"></a>Utwórz element Runbook AWS wdrożenia maszyny wirtualnej
+Po wdrożeniu modułu AWS PowerShell możesz teraz utworzyć element Runbook, aby zautomatyzować Inicjowanie obsługi maszyny wirtualnej w programie AWS przy użyciu skryptu programu PowerShell. W poniższych krokach pokazano, jak korzystać z macierzystego skryptu programu PowerShell w Azure Automation.  
 
 > [!NOTE]
-> Aby uzyskać dalsze opcje i informacje dotyczące tego skryptu, odwiedź [galerii programu PowerShell](https://www.powershellgallery.com/packages/New-AwsVM/).
+> Aby uzyskać więcej opcji i informacji dotyczących tego skryptu, odwiedź [Galeria programu PowerShell](https://www.powershellgallery.com/packages/New-AwsVM/).
 > 
 
-1. Pobierz skrypt programu PowerShell, New-AwsVM z galerii programu PowerShell, otwierając sesję programu PowerShell i wpisując następujące czynności:<br>
+1. Pobierz skrypt programu PowerShell New-AwsVM z Galeria programu PowerShell, otwierając sesję programu PowerShell i wpisując następujące polecenie:<br>
    ```powershell
    Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
-2. W witrynie Azure Portal otwórz konto usługi Automation, a następnie wybierz pozycję **elementów Runbook** sekcji **automatyzacji procesów** po lewej stronie.  
-3. Z **elementów Runbook** wybierz opcję **Dodaj element runbook**.
-4. Na **Dodaj element runbook** okienku wybierz **szybkie tworzenie** (Utwórz nowy element runbook).
-5. Na **Runbook** w okienku właściwości, wpisz nazwę w polu Nazwa elementu runbook i z **typ elementu Runbook** listy rozwijanej wybierz **PowerShell**, a następnie kliknij przycisk **Tworzenie**.<br><br> ![Utwórz okienka elementu runbook](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
-6. Gdy pojawi się Strona Edytuj element Runbook programu PowerShell, skopiuj i wklej skrypt programu PowerShell do tworzenia obszaru roboczego elementu runbook.<br><br> ![Skrypt programu PowerShell w elemencie Runbook](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
+2. W Azure Portal Otwórz konto usługi Automation i wybierz pozycję **elementy Runbook** w sekcji **Automatyzacja procesu** po lewej stronie.  
+3. Na stronie **elementy Runbook** wybierz pozycję **Dodaj element Runbook**.
+4. W okienku **Dodawanie elementu Runbook** wybierz pozycję **szybkie tworzenie** (Utwórz nowy element Runbook).
+5. W okienku właściwości **elementu Runbook** wpisz nazwę w polu Nazwa dla elementu Runbook, a następnie z listy rozwijanej **Typ elementu Runbook** wybierz pozycję **PowerShell**, a następnie kliknij pozycję **Utwórz**.<br><br> ](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png) ![tworzenia okienka elementu Runbook
+6. Gdy zostanie wyświetlona strona Edytowanie elementu Runbook programu PowerShell, skopiuj i wklej skrypt programu PowerShell do kanwy tworzenia elementów Runbook.<br><br> ![Skrypt programu PowerShell dla elementu Runbook](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
    
     > [!NOTE]
-    > Należy pamiętać, że podczas pracy z przykładowy skrypt programu PowerShell:
+    > Podczas pracy z przykładowym skryptem programu PowerShell należy pamiętać o następujących kwestiach:
     > 
-    > * Element runbook zawiera szereg domyślnych wartości parametrów. Oceń wszystkie wartości domyślne i aktualizacji, gdy jest to konieczne.
-    > * Jeśli są przechowywane poświadczenia usługi AWS, jako zasób poświadczeń o nazwie inaczej niż **AWScred**, musisz zaktualizować ten skrypt w wierszu 57, aby dopasować odpowiednio.  
-    > * Podczas pracy z usługą AWS poleceń interfejsu wiersza polecenia w programie PowerShell, szczególnie w przypadku tego przykładowego elementu runbook, należy określić region platformy AWS. W przeciwnym razie niepowodzenie polecenia cmdlet. Wyświetl AWS tematu [Określ Region platformy AWS](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) w narzędziach usługi AWS dla dokumentu programu PowerShell, aby uzyskać więcej informacji.  
+    > * Element Runbook zawiera szereg domyślnych wartości parametrów. Oceń wszystkie wartości domyślne i zaktualizuj je w razie potrzeby.
+    > * Jeśli poświadczenia AWS są przechowywane jako zasób poświadczeń o nazwie inaczej niż **AWScred**, należy zaktualizować skrypt w wierszu 57 w celu dopasowania odpowiednio.  
+    > * W przypadku korzystania z poleceń interfejsu wiersza polecenia AWS w programie PowerShell, szczególnie w przypadku tego przykładowego elementu Runbook, należy określić region AWS. W przeciwnym razie polecenia cmdlet zakończą się niepowodzeniem. Aby uzyskać więcej informacji, zobacz temat AWS w temacie [Określanie regionu AWS](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) w dokumencie narzędzia AWS Tools for PowerShell.  
     >
 
-7. Pobieranie listy nazw obrazów z subskrypcji usługi AWS, uruchom program PowerShell ISE, a następnie zaimportuj moduł programu PowerShell usługi AWS. Uwierzytelnianie względem usługi AWS, zastępując **Get-AutomationPSCredential** w środowisku platformy ISE przy użyciu **AWScred = Get-Credential**. To wyświetli monit o podanie poświadczeń i można podać swoje **identyfikator klucza dostępu** nazwy użytkownika i **tajny klucz dostępu** hasła. Zapoznaj się z poniższym przykładem:  
+7. Aby pobrać listę nazw obrazów z subskrypcji programu AWS, uruchom program PowerShell ISE i zaimportuj moduł AWS PowerShell. Uwierzytelnianie względem AWS przez zastępowanie **Get-AutomationPSCredential** w środowisku ISE za pomocą **AWScred = Get-Credential**. Zostanie wyświetlony komunikat z prośbą o podanie poświadczeń i podanie **identyfikatora klucza dostępu** dla nazwy użytkownika i **klucza dostępu tajnego** dla hasła. Zapoznaj się z poniższym przykładem:  
 
         ```powershell
         #Sample to get the AWS VM available images
@@ -81,26 +81,26 @@ Po wdrożeniu modułu programu PowerShell usługi AWS można teraz tworzyć elem
         Get-EC2ImageByName -ProfileName AWSProfile
         ```
         
-    Następujące dane wyjściowe zostaną zwrócone:<br><br>
-   ![Pobieranie obrazów usług AWS](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
-8. Skopiuj i Wklej jeden z nazwy obrazów w zmiennej automatyzacji zgodnie z odwołaniem w elemencie runbook jako **$InstanceType**. Ponieważ w tym przykładzie są przy użyciu bezpłatnej usługi AWS warstwowego subskrypcji, możesz użyć **t2.micro** dla przykładu elementu runbook.  
-9. Zapisz element runbook, a następnie kliknij przycisk **Publikuj** opublikować elementu runbook i następnie **tak** po wyświetleniu monitu.
+    Zwracane są następujące dane wyjściowe:<br><br>
+   ![Pobierz obrazy AWS](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
+8. Skopiuj i wklej jedną z nazw obrazów w zmiennej automatyzacji, która jest przywoływana w elemencie Runbook jako **$instanceType**. Ponieważ w tym przykładzie korzystasz z bezpłatnej subskrypcji AWS z warstwą, użyj **T2. Micro** dla przykładu elementu Runbook.  
+9. Zapisz element Runbook, a następnie kliknij pozycję **Opublikuj** , aby opublikować element Runbook, a następnie przycisk **tak** po wyświetleniu monitu.
 
-### <a name="testing-the-aws-vm-runbook"></a>Testowanie elementu runbook maszyny Wirtualnej usług AWS
-Przed przystąpieniem do testowania elementu runbook, należy sprawdzić kilka rzeczy. W szczególności:  
+### <a name="testing-the-aws-vm-runbook"></a>Testowanie elementu Runbook maszyny wirtualnej AWS
+Przed przejściem do testowania elementu Runbook należy sprawdzić kilka rzeczy. W szczególności:  
 
-* Zasób do uwierzytelniania w odniesieniu do usług AWS została utworzona o nazwie **AWScred** lub skrypt został zaktualizowany, aby odwoływać się do nazwy zasobu swoje poświadczenia.    
-* Moduł programu PowerShell usługi AWS został zaimportowany w usłudze Azure Automation  
-* Utworzono nowy element runbook oraz wartości parametrów, została zweryfikowana i zaktualizowana, gdy jest to konieczne  
-* **Rejestrowania rekordów pełnych** i opcjonalnie **rejestrowania rekordów postępu** w obszarze Ustawienia elementu runbook **rejestrowanie i śledzenie** zostały ustawione na **na**.<br><br> ![Element Runbook, rejestrowanie i śledzenie](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)  
+* Utworzono zasób do uwierzytelniania w usłudze AWS o nazwie **AWScred** lub skrypt został zaktualizowany w celu odwoływania się do nazwy zasobu poświadczeń.    
+* Moduł AWS PowerShell został zaimportowany w Azure Automation  
+* Utworzono nowy element Runbook, a wartości parametrów zostały zweryfikowane i zaktualizowane, gdy jest to konieczne.  
+* **Rejestruj pełne rekordy** i opcjonalnie **Rejestruj rekordy postępu** w ustawieniach elementu Runbook **Rejestrowanie i śledzenie** zostały ustawione na wartość **włączone**.<br><br> ![rejestrowanie i śledzenie elementów Runbook](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)  
 
-1. Aby uruchomić element runbook, więc klikamy **Start** a następnie kliknij przycisk **OK** po otwarciu okienka uruchamianie elementu Runbook.
-2. W okienku uruchamianie elementu Runbook, podać **VMname**. Zaakceptuj wartości domyślne dla parametrów, wstępnie w skrypcie wcześniej. Kliknij przycisk **OK** można uruchomić zadania elementu runbook.<br><br> ![Uruchamianie elementu runbook New AwsVM](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
-3. Zostanie otwarte okienko zadania zadanie elementu runbook, który został utworzony. Zamknąć to okienko.
-4. Możesz przeglądać postęp danych wyjściowych zadań i widoku **strumieni** , wybierając **wszystkie dzienniki** kafelka na stronie zadania elementu runbook.<br><br> ![Dane wyjściowe Stream](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
-5. Aby upewnić się, że maszyna wirtualna jest aprowizowana, zaloguj się do konsoli zarządzania usług AWS, jeśli użytkownik nie jest aktualnie zalogowany.<br><br> ![Konsoli usług AWS wdrożonych maszyn wirtualnych](./media/automation-scenario-aws-deployment/aws-instances-status.png)
+1. Chcesz uruchomić element Runbook, a następnie kliknij przycisk **Start** , a następnie kliknij przycisk **OK** po otwarciu okienka uruchamiania elementu Runbook.
+2. W okienku Uruchamianie elementu Runbook Podaj **VMName**. Zaakceptuj wartości domyślne dla innych parametrów wstępnie skonfigurowanych we wcześniejszym skrypcie. Kliknij przycisk **OK** , aby uruchomić zadanie elementu Runbook.<br><br> ![Uruchom nowy element Runbook AwsVM](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
+3. Zostanie otwarte okienko zadań dla utworzonego zadania elementu Runbook. Zamknij to okienko.
+4. Możesz wyświetlić postęp zadania i wyświetlić **strumienie** wyjściowe, wybierając kafelek **wszystkie dzienniki** na stronie zadania elementu Runbook.<br><br> ](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png) danych wyjściowych strumienia ![
+5. Aby upewnić się, że maszyna wirtualna jest obsługiwana, zaloguj się do konsoli zarządzania AWS, jeśli obecnie nie jesteś zalogowany.<br><br> ![Wdrożona maszyna wirtualna w konsoli AWS](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby rozpocząć pracę z graficznymi elementami Runbook, zobacz artykuł [My first graphical runbook](automation-first-runbook-graphical.md) (Mój pierwszy graficzny element Runbook).
 * Aby rozpocząć pracę z elementami Runbook przepływu pracy programu PowerShell, zobacz artykuł [My first PowerShell workflow runbook](automation-first-runbook-textual.md) (Mój pierwszy element Runbook przepływu pracy programu PowerShell).
 * Aby dowiedzieć się więcej na temat typów elementów Runbook, ich zalet i ograniczeń, zobacz [Azure Automation runbook types](automation-runbook-types.md) (Typy elementów Runbook usługi Azure Automation).

@@ -1,18 +1,18 @@
 ---
 title: ATN2 w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji ATN2 systemu SQL w Azure Cosmos DB.
+description: Dowiedz się, w jaki sposób Funkcja systemowa SQL ATN2 w Azure Cosmos DB zwraca wartość główną tangensa łuku dla y/x, wyrażoną w radianach
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 43bf2f6e27d093b72560b87349150268e0f58a60
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 11321ef9d7b81af279b04e0e435b19c645cf3bcf
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350195"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871656"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
  Zwraca wartość główną wartości arcus tangens y / x, wyrażony w radianach.  

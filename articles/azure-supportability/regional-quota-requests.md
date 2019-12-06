@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 6c2d7dc64bca00ce664dc470e7c4405d69b49779
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531520"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850010"
 ---
 # <a name="standard-quota-regional-vcpu-limit-increase"></a>Przydział standardowy: Zwiększ limit vCPU regionalny 
 
-Menedżer zasobów obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych. **Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym** użyciem i **zarezerwowane wystąpienia maszyn wirtualnych** używają standardowego limitu przydziału. **Maszyny wirtualne o niskim priorytecie** używają przydziału o niskim priorytecie. 
+Menedżer zasobów obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych. **Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym** użyciem i **zarezerwowane wystąpienia maszyn wirtualnych** używają standardowego limitu przydziału. **Miejsca na maszynach wirtualnych** używają limitu przydziału miejsca. 
 
 Standardowy przydział vCPU dla wystąpień z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych są wymuszane w dwóch warstwach dla każdej subskrypcji w każdym regionie.
  
@@ -26,7 +26,7 @@ Po utworzeniu nowej subskrypcji domyślna łączna liczba procesorów wirtualnyc
 
 Dowiedz się więcej o standardowych przydziałach vCPU na [stronie limit przydziału vCPU maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) oraz na stronie [limity subskrypcji i usług platformy Azure](https://aka.ms/quotalimits) .
 
-Dowiedz się więcej na temat **wzrostu limitów vCPU maszyn wirtualnych o niskim priorytecie** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+Dowiedz się więcej na temat **zwiększania liczby dodatkowych limitów vCPU maszyn wirtualnych** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
 
 Możesz poprosić o zwiększenie **standardowego limitu regionalnej maszyny wirtualnej w vCPU** , za pośrednictwem bloku **Pomoc i obsługa techniczna** oraz bloku **użycie i przydział** w portalu.
 

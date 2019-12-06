@@ -1,32 +1,27 @@
 ---
 title: Uwierzytelnianie obsługiwane przez brokera w systemie Android | Azure
+titlesuffix: Microsoft identity platform
 description: Omówienie uwierzytelniania obsługiwanego przez brokera & autoryzacji dla systemu Android na platformie tożsamości firmy Microsoft
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175655"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843720"
 ---
-# <a name="brokered-auth-in-android"></a>Uwierzytelnianie obsługiwane przez brokera w systemie Android
-
-## <a name="introduction"></a>Wprowadzenie
+# <a name="brokered-authentication-in-android"></a>Uwierzytelnianie obsługiwane przez brokera w systemie Android
 
 Musisz użyć jednego z brokerów uwierzytelniania firmy Microsoft, aby wziąć udział w rejestracji jednokrotnej na całym urządzeniu (SSO) i spełnić zasady dostępu warunkowego do organizacji. Integracja z brokerem zapewnia następujące korzyści:
 
@@ -52,9 +47,9 @@ Na poniższym diagramie przedstawiono relację między aplikacją, biblioteką u
 
 Aplikacje hostingowe brokera mogą być instalowane przez właściciela urządzenia ze sklepu z aplikacjami (zwykle Sklep Google Play) w dowolnym momencie. Niektóre interfejsy API (zasoby) są jednak chronione przez zasady dostępu warunkowego, które wymagają urządzeń:
 
-- zarejestrowane (dołączono do miejsca pracy) i/lub
-- zarejestrowano w zarządzaniu urządzeniami lub
-- zarejestrowane w Intune App Protection
+- Zarejestrowane (dołączono do miejsca pracy) i/lub
+- Zarejestrowano w zarządzaniu urządzeniami lub
+- Zarejestrowane w Intune App Protection
 
 Jeśli na urządzeniu nie ma jeszcze zainstalowanej aplikacji brokera, MSAL nakazuje użytkownikowi zainstalowanie go zaraz po próbie uzyskania tokenu interaktywnie. Następnie aplikacja będzie musiała prowadzić użytkownika przez kroki, aby zapewnić zgodność urządzenia z wymaganymi zasadami.
 

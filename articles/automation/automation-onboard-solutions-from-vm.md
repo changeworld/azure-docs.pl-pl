@@ -2,19 +2,19 @@
 title: Dołączanie rozwiązań Update Management, Change Tracking i spisu z maszyny wirtualnej platformy Azure
 description: Dowiedz się, jak dołączać maszynę wirtualną platformy Azure z rozwiązaniami Update Management, Change Tracking i spisu, które są częścią Azure Automation.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0069d2e8ccd3b4f65ced8b6e18ce568689f81e14
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374420"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849687"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączanie rozwiązań Update Management, Change Tracking i spisu z maszyny wirtualnej platformy Azure
 
@@ -45,9 +45,9 @@ Każde rozwiązanie korzysta z konfiguracji zakresu w obszarze roboczym, aby kie
 
 Jeśli wybrany obszar roboczy nie ma już rozwiązań Update Management lub Change Tracking, zostaną utworzone następujące konfiguracje zakresów:
 
-* **MicrosoftDefaultScopeConfig — śledzenia zmian**
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
 
-* **MicrosoftDefaultScopeConfig — aktualizacje**
+* **MicrosoftDefaultScopeConfig-Updates**
 
 Jeśli wybrany obszar roboczy ma już rozwiązanie, rozwiązanie nie zostanie ponownie wdrożone i nie zostanie dodana konfiguracja zakresu.
 
@@ -97,7 +97,7 @@ Jeśli użyto rozwiązania Update Management, opcjonalnie możesz chcieć usuną
 
 * Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji)
 
-* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie podobna do maszyna1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie podobna do maszyna1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Jeśli użyto rozwiązania Start/Stop VMs during off-hours, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
@@ -111,7 +111,7 @@ Możesz również odłączyć obszar roboczy od konta usługi Automation z pozio
 
 Aby usunąć maszynę wirtualną z Update Management:
 
-* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania w obszarze Konfiguracja zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
+* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania `MicrosoftDefaultScopeConfig-Updates`konfiguracji zakresu. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
 * Usuń [program Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Następne kroki

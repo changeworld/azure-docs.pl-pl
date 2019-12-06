@@ -2,28 +2,24 @@
 title: Metadane federacji usługi Azure AD | Microsoft Docs
 description: W tym artykule opisano dokument metadanych Federacji, który Azure Active Directory publikuje dla usług akceptujących tokeny Azure Active Directory.
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ryanwi
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fefaf618ff29cc2186dc555eb6f452223f4cd097
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b0da348d87d1dedbdc1f97d3a4d0a1a001871a1d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835130"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843788"
 ---
 # <a name="federation-metadata"></a>Metadane federacji
 Azure Active Directory (Azure AD) publikuje dokument metadanych Federacji dla usług skonfigurowanych do akceptowania tokenów zabezpieczających, które są problemy z usługą Azure AD. Format dokumentu metadanych Federacji został opisany w programie [Web Services Federation Language (WS-Federation) w wersji 1,2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), który rozszerza [metadane dla języka OASIS SAML (SAML) v 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
@@ -36,24 +32,24 @@ Punkty końcowe specyficzne dla dzierżawy są przeznaczone dla określonej dzie
 Punkty końcowe niezależne od dzierżawców dostarczają informacji wspólnych dla wszystkich dzierżawców usługi Azure AD. Te informacje dotyczą dzierżawców hostowanych w usłudze *login.microsoftonline.com* i są współdzielone przez dzierżawców. Punkty końcowe niezależne od dzierżawców są zalecane w przypadku aplikacji wielodostępnych, ponieważ nie są one skojarzone z żadną określoną dzierżawą.
 
 ## <a name="federation-metadata-endpoints"></a>Punkty końcowe metadanych Federacji
-Usługa Azure AD publikuje metadane federacji `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`pod adresem.
+Usługa Azure AD publikuje metadane federacji w `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.
 
-Dla **punktów końcowych specyficznych**dla `TenantDomainName` dzierżawy może to być jeden z następujących typów:
+Dla **punktów końcowych specyficznych dla dzierżawy**`TenantDomainName` może być jednym z następujących typów:
 
-* Zarejestrowana nazwa domeny dzierżawy usługi Azure AD, np.: `contoso.onmicrosoft.com`.
-* Niezmienny identyfikator dzierżawy domeny, `72f988bf-86f1-41af-91ab-2d7cd011db45`na przykład.
+* Zarejestrowana nazwa domeny dzierżawy usługi Azure AD, na przykład: `contoso.onmicrosoft.com`.
+* Niezmienny identyfikator dzierżawy domeny, taki jak `72f988bf-86f1-41af-91ab-2d7cd011db45`.
 
-W przypadku `TenantDomainName` punktów końcowych niezależnych `common` **od dzierżawców**jest to. Ten dokument zawiera listę tylko elementów metadanych Federacji, które są wspólne dla wszystkich dzierżawców usługi Azure AD hostowanych w witrynie login.microsoftonline.com.
+W przypadku **punktów końcowych niezależnych od dzierżawców**`TenantDomainName` jest `common`. Ten dokument zawiera listę tylko elementów metadanych Federacji, które są wspólne dla wszystkich dzierżawców usługi Azure AD hostowanych w witrynie login.microsoftonline.com.
 
-Na przykład punkt końcowy specyficzny dla dzierżawy może `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`być. Punkt końcowy niezależny od [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)dzierżawy to. Możesz wyświetlić dokument metadanych Federacji, wpisując ten adres URL w przeglądarce.
+Na przykład punkt końcowy specyficzny dla dzierżawy może być `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Punkt końcowy niezależny od dzierżawy jest [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Możesz wyświetlić dokument metadanych Federacji, wpisując ten adres URL w przeglądarce.
 
 ## <a name="contents-of-federation-metadata"></a>Zawartość metadanych Federacji
 W poniższej sekcji znajdują się informacje dotyczące usług korzystających z tokenów wystawionych przez usługę Azure AD.
 
 ### <a name="entity-id"></a>Identyfikator jednostki
-`EntityDescriptor` Element`EntityID` zawiera atrybut. Wartość `EntityID` atrybutu reprezentuje wystawcę, czyli usługę tokenu zabezpieczającego (STS), która wystawiła token. Ważne jest, aby sprawdzić poprawność wystawcy w przypadku otrzymania tokenu.
+Element `EntityDescriptor` zawiera atrybut `EntityID`. Wartość atrybutu `EntityID` reprezentuje wystawcy, czyli usługę tokenu zabezpieczającego (STS), która wystawiła token. Ważne jest, aby sprawdzić poprawność wystawcy w przypadku otrzymania tokenu.
 
-Poniższe metadane przedstawiają przykładowy element specyficzny `EntityDescriptor` `EntityID` dla dzierżawy z elementem.
+Poniższe metadane przedstawiają przykładowy element `EntityDescriptor` specyficzny dla dzierżawy z elementem `EntityID`.
 
 ```
 <EntityDescriptor
@@ -61,9 +57,9 @@ xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
 ID="_b827a749-cfcb-46b3-ab8b-9f6d14a1294b"
 entityID="https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db45/">
 ```
-Identyfikator dzierżawy można zastąpić w punkcie końcowym niezależnym od dzierżawcy identyfikatorem dzierżawy, aby utworzyć `EntityID` wartość specyficzną dla dzierżawy. Wartość wyników będzie taka sama jak Wystawca tokenu. Strategia umożliwia aplikacji wielodostępnej Weryfikowanie wystawcy dla danej dzierżawy.
+Identyfikator dzierżawy można zastąpić w punkcie końcowym niezależnym od dzierżawcy IDENTYFIKATORem dzierżawy, aby utworzyć wartość `EntityID` specyficzną dla dzierżawy. Wartość wyników będzie taka sama jak Wystawca tokenu. Strategia umożliwia aplikacji wielodostępnej Weryfikowanie wystawcy dla danej dzierżawy.
 
-Poniższe metadane przedstawiają przykładowy element niezależny `EntityID` od dzierżawy. Pamiętaj, że `{tenant}` jest to literał, a nie symbol zastępczy.
+Poniższe metadane przedstawiają przykładowy element `EntityID` niezależnej od dzierżawcy. Należy pamiętać, że `{tenant}` jest literałem, a nie symbolem zastępczym.
 
 ```
 <EntityDescriptor
@@ -73,11 +69,11 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Certyfikaty podpisywania tokenu
-Gdy usługa otrzymuje token wystawiony przez dzierżawę usługi Azure AD, podpis tokenu musi być zweryfikowany za pomocą klucza podpisywania, który jest publikowany w dokumencie metadanych Federacji. Metadane federacji obejmują publiczną część certyfikatów, które są używane przez dzierżawców do podpisywania tokenu. Bajty RAW certyfikatu pojawiają się `KeyDescriptor` w elemencie. Certyfikat podpisywania tokenu jest ważny do podpisywania tylko wtedy, gdy wartość `use` atrybutu to. `signing`
+Gdy usługa otrzymuje token wystawiony przez dzierżawę usługi Azure AD, podpis tokenu musi być zweryfikowany za pomocą klucza podpisywania, który jest publikowany w dokumencie metadanych Federacji. Metadane federacji obejmują publiczną część certyfikatów, które są używane przez dzierżawców do podpisywania tokenu. Bajty pierwotne certyfikatu pojawiają się w `KeyDescriptor` elemencie. Certyfikat podpisywania tokenu jest ważny do podpisywania tylko wtedy, gdy wartość atrybutu `use` jest `signing`.
 
 Dokument metadanych Federacji Opublikowany przez usługę Azure AD może mieć wiele kluczy podpisywania, na przykład gdy usługa Azure AD jest przygotowana do aktualizacji certyfikatu podpisywania. Gdy dokument metadanych Federacji zawiera więcej niż jeden certyfikat, usługa, która sprawdza tokeny, powinna obsługiwać wszystkie certyfikaty w dokumencie.
 
-Poniższe metadane przedstawiają przykładowy `KeyDescriptor` element z kluczem podpisywania.
+Poniższe metadane przedstawiają przykładowy element `KeyDescriptor` z kluczem podpisywania.
 
 ```
 <KeyDescriptor use="signing">
@@ -91,19 +87,19 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 </KeyDescriptor>
   ```
 
-`KeyDescriptor` Element pojawia się w dwóch miejscach w dokumencie metadanych Federacji, w sekcji dotyczącej protokołu WS-Federation i w sekcji dotyczącej języka SAML. Certyfikaty publikowane w obu sekcjach będą takie same.
+Element `KeyDescriptor` pojawia się w dwóch miejscach w dokumencie metadanych Federacji; w sekcji dotyczącej protokołu WS-Federation i sekcji dotyczącej języka SAML. Certyfikaty publikowane w obu sekcjach będą takie same.
 
-W sekcji dotyczącej protokołu WS-Federation czytnik metadanych usługi WS-Federation odczytuje certyfikaty z `RoleDescriptor` elementu `SecurityTokenServiceType` z typem.
+W sekcji dotyczącej protokołu WS-Federation czytnik metadanych usługi WS-Federation odczytuje certyfikaty z elementu `RoleDescriptor` z typem `SecurityTokenServiceType`.
 
-Poniższe metadane przedstawiają przykładowy `RoleDescriptor` element.
+Poniższe metadane przedstawiają przykładowy element `RoleDescriptor`.
 
 ```
 <RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-W sekcji dotyczącej języka SAML czytnik metadanych usługi WS-Federation odczytuje certyfikaty z `IDPSSODescriptor` elementu.
+W sekcji dotyczącej języka SAML czytnik metadanych usługi WS-Federation odczytuje certyfikaty z elementu `IDPSSODescriptor`.
 
-Poniższe metadane przedstawiają przykładowy `IDPSSODescriptor` element.
+Poniższe metadane przedstawiają przykładowy element `IDPSSODescriptor`.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -111,9 +107,9 @@ Poniższe metadane przedstawiają przykładowy `IDPSSODescriptor` element.
 Nie ma żadnych różnic w formacie certyfikatów specyficznych dla dzierżawy i niezależnych od dzierżawców.
 
 ### <a name="ws-federation-endpoint-url"></a>Adres URL punktu końcowego usługi WS-Federation
-Metadane federacji obejmują adres URL, który jest wykorzystywany przez usługę Azure AD do logowania jednokrotnego i logowania jednokrotnego w protokole WS-Federation. Ten punkt końcowy jest wyświetlany `PassiveRequestorEndpoint` w elemencie.
+Metadane federacji obejmują adres URL, który jest wykorzystywany przez usługę Azure AD do logowania jednokrotnego i logowania jednokrotnego w protokole WS-Federation. Ten punkt końcowy jest wyświetlany w `PassiveRequestorEndpoint` elementu.
 
-Poniższe metadane przedstawiają przykładowy `PassiveRequestorEndpoint` element dla punktu końcowego określonego dla dzierżawy.
+Poniższe metadane przedstawiają przykładowy element `PassiveRequestorEndpoint` dla punktu końcowego określonego dla dzierżawy.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -137,11 +133,11 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>Adres URL punktu końcowego protokołu SAML
-Metadane federacji obejmują adres URL, którego usługa Azure AD używa do logowania jednokrotnego i logowania jednokrotnego w protokole SAML 2,0. Te punkty końcowe są wyświetlane `IDPSSODescriptor` w elemencie.
+Metadane federacji obejmują adres URL, którego usługa Azure AD używa do logowania jednokrotnego i logowania jednokrotnego w protokole SAML 2,0. Te punkty końcowe są wyświetlane w `IDPSSODescriptor` elemencie.
 
-Adresy URL logowania i wylogowywania są wyświetlane w `SingleSignOnService` elementach i. `SingleLogoutService`
+Adresy URL logowania i wylogowywania są wyświetlane w elementach `SingleSignOnService` i `SingleLogoutService`.
 
-Poniższe metadane przedstawiają przykład `PassiveResistorEndpoint` dla punktu końcowego określonego dla dzierżawy.
+Poniższe metadane przedstawiają przykładowe `PassiveResistorEndpoint` dla punktu końcowego określonego dla dzierżawy.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

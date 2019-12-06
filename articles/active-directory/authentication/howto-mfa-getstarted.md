@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558550"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848395"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze
 
@@ -102,7 +102,7 @@ Zalecamy, aby organizacje używały dostępu warunkowego do definiowania sieci p
 
 Administratorzy mogą wybrać [metody uwierzytelniania](../authentication/concept-authentication-methods.md) , które mają być dostępne dla użytkowników. Ważne jest, aby zezwalać na więcej niż jedną metodę uwierzytelniania, dzięki czemu użytkownicy mają dostępną metodę tworzenia kopii zapasowych w przypadku, gdy ich podstawowa metoda jest niedostępna. Następujące metody są dostępne dla administratorów do włączenia:
 
-### <a name="notification-through-mobile-app"></a>Powiadomienie za poorednictwem aplikacji mobilnej
+### <a name="notification-through-mobile-app"></a>Powiadomienie przez aplikację mobilną
 
 Powiadomienie wypychane jest wysyłane do aplikacji Microsoft Authenticator na urządzeniu przenośnym. Użytkownik wyświetli powiadomienie i wybierze opcję **Zatwierdź** , aby ukończyć weryfikację. Powiadomienia wypychane za pomocą aplikacji mobilnej zapewniają najmniej niepożądane opcje dla użytkowników. Są one również najbardziej niezawodną i bezpieczną opcją, ponieważ korzystają z połączenia danych, a nie z telefonem.
 
@@ -113,7 +113,7 @@ Powiadomienie wypychane jest wysyłane do aplikacji Microsoft Authenticator na u
 
 Aplikacja mobilna, taka jak aplikacja Microsoft Authenticator, generuje nowy kod weryfikacyjny OATH co 30 sekund. Użytkownik wprowadza kod weryfikacyjny do interfejsu logowania. Opcja aplikacji mobilnej może być używana bez względu na to, czy telefon ma sygnał danych lub sieć komórkową.
 
-### <a name="call-to-phone"></a>Wywołanie telefonu
+### <a name="call-to-phone"></a>Połączenie z telefonem
 
 Automatyczne połączenie głosowe jest umieszczane dla użytkownika. Użytkownik odbierze połączenie i naciśnie przycisk **#** na klawiaturze telefonu, aby zatwierdzić uwierzytelnianie. Wywołanie do telefonu to świetna metoda tworzenia kopii zapasowej dotycząca powiadomień lub kodu weryfikacyjnego z aplikacji mobilnej.
 
@@ -283,16 +283,16 @@ Wybierz, co się stanie, gdy użytkownicy, którzy nie są zarejestrowani przy u
 
 Celem tego ustawienia jest określenie, co należy zrobić, gdy użytkownik nie jest zarejestrowany na potrzeby usługi MFA. Efekty zmiany tego ustawienia są wymienione w poniższej tabeli.
 
-| Ustawienia | Stan usługi MFA użytkownika | Wpływu |
+| Ustawienia | Stan usługi MFA użytkownika | Efekty |
 | --- | --- | --- |
 | Klucz nie istnieje | Nie zarejestrowano | Żądanie MFA nie powiodło się |
 | Wartość ustawiona na true/nie ustawiona | Nie zarejestrowano | Żądanie MFA nie powiodło się |
 | Klucz ustawiony na wartość false | Nie zarejestrowano | Uwierzytelnianie bez usługi MFA |
-| Klucz ma wartość false lub prawda | Zarejestrowane | Uwierzytelnianie za pomocą usługi MFA |
+| Klucz ma wartość false lub prawda | Zarejestrowano | Uwierzytelnianie za pomocą usługi MFA |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>Integracja z usługą Active Directory Federation Services
 
-Jeśli Twoja organizacja jest federacyjnym z usługą Azure AD, możesz użyć [usługi azure Multi-Factor Authentication, aby zabezpieczyć zasoby AD FS](multi-factor-authentication-get-started-adfs.md)zarówno lokalnie, jak i w chmurze. Usługa Azure MFA pozwala skrócić hasła i zapewnić bezpieczniejszy sposób uwierzytelniania. Począwszy od systemu Windows Server 2016, można teraz skonfigurować usługę Azure MFA na potrzeby uwierzytelniania podstawowego.
+Jeśli Twoja organizacja jest federacyjnym z usługą Azure AD, możesz użyć [usługi azure Multi-Factor Authentication, aby zabezpieczyć zasoby AD FS](multi-factor-authentication-get-started-adfs.md)zarówno lokalnie, jak i w chmurze. Usługa Azure MFA pozwala skrócić hasła i zapewnić bezpieczniejszy sposób uwierzytelniania. Począwszy od systemu Windows Server 2016, można teraz skonfigurować uwierzytelnianie Wieloskładnikowe Azure dla uwierzytelniania podstawowego.
 
 W przeciwieństwie do AD FS w systemie Windows Server 2012 R2, karta usługi Azure MFA AD FS 2016 integruje się bezpośrednio z usługą Azure AD i nie wymaga lokalnego serwera usługi Azure MFA. Karta Azure MFA jest wbudowana w system Windows Server 2016 i nie ma potrzeby dodatkowej instalacji.
 

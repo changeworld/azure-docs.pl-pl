@@ -4,17 +4,17 @@ description: Zasoby połączeń w Azure Automation zawierają informacje wymagan
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90b2234607ad120c43e241fe4ae5222fe285803e
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001650"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850435"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Zasoby połączenia w Azure Automation
 
@@ -39,18 +39,18 @@ W większości przypadków nie trzeba tworzyć zasobu połączenia, ponieważ je
 
 Polecenia cmdlet w poniższej tabeli służą do tworzenia połączeń automatyzacji i zarządzania nimi za pomocą programu Windows PowerShell. Są one dostarczane jako część [modułu Azure PowerShell](/powershell/azure/overview) , który jest dostępny do użycia w elementach Runbook usługi Automation i konfiguracjach DSC.
 
-|Parametr|Opis|
+|Polecenie cmdlet|Opis|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|Pobiera połączenie. Zawiera tabelę skrótów z wartościami pól połączenia.|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|Tworzy nowe połączenie.|
 |[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|Usuń istniejące połączenie.|
 |[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|Ustawia wartość określonego pola dla istniejącego połączenia.|
 
-## <a name="activities"></a>Kategoria Activities
+## <a name="activities"></a>Działania
 
 Działania w poniższej tabeli służą do uzyskiwania dostępu do połączeń w elemencie Runbook lub konfiguracji DSC.
 
-|Kategoria Activities|Opis|
+|Działania|Opis|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Pobiera połączenie do użycia. Zwraca tablicę skrótów z właściwościami połączenia.|
 
@@ -63,7 +63,7 @@ Funkcja w poniższej tabeli służy do uzyskiwania dostępu do połączeń w ele
 
 | Funkcja | Opis |
 |:---|:---|
-| automationassets. Get _automation_connection | Pobiera połączenie. Zwraca słownik z właściwościami połączenia. |
+| automationassets.get_automation_connection | Pobiera połączenie. Zwraca słownik z właściwościami połączenia. |
 
 > [!NOTE]
 > Aby uzyskać dostęp do funkcji zasobów, należy zaimportować moduł "automationassets" w górnej części elementu Runbook języka Python.
@@ -78,11 +78,11 @@ Funkcja w poniższej tabeli służy do uzyskiwania dostępu do połączeń w ele
 4. Z listy rozwijanej **Typ** wybierz typ połączenia, które chcesz utworzyć. Formularz będzie widział właściwości tego określonego typu.
 5. Wypełnij formularz i kliknij przycisk **Utwórz** , aby zapisać nowe połączenie.
 
-### <a name="to-create-a-new-connection-with-windows-powershell"></a>Aby utworzyć nowe połączenie za pomocą programu Windows PowerShell
+### <a name="to-create-a-new-connection-with-windows-powershell"></a>Aby utworzyć nowe połączenie przy użyciu programu Windows PowerShell
 
 Utwórz nowe połączenie za pomocą programu Windows PowerShell za pomocą polecenia cmdlet [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) . To polecenie cmdlet ma parametr o nazwie **ConnectionFieldValues** , który oczekuje [tabeli skrótów](https://technet.microsoft.com/library/hh847780.aspx) definiującej wartości dla każdej właściwości zdefiniowanej przez typ połączenia.
 
-Jeśli znasz [konto Uruchom jako](automation-sec-configure-azure-runas-account.md) usługi Automation do uwierzytelniania elementów Runbook przy użyciu nazwy głównej usługi, skrypt programu PowerShell, dostarczony jako alternatywę do tworzenia konta Uruchom jako w portalu, utworzy nowy zasób połączenia przy użyciu następujące przykładowe polecenia.
+Jeśli znasz [konto Uruchom jako](automation-sec-configure-azure-runas-account.md) usługi Automation, aby uwierzytelniać elementy Runbook przy użyciu nazwy głównej usługi, skrypt programu PowerShell, dostarczony jako alternatywę do tworzenia konta Uruchom jako w portalu, utworzy nowy zasób połączenia przy użyciu następujących przykładowych poleceń.
 
 ```powershell
 $ConnectionAssetName = "AzureRunAsConnection"
@@ -90,7 +90,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-Możesz użyć skryptu, aby utworzyć zasób połączenia, ponieważ podczas tworzenia konta usługi Automation automatycznie zawiera domyślnie kilka modułów globalnych wraz z typem połączenia **AzureServicePrincipal** do utworzeniaZasób połączenia AzureRunAsConnection.  Jest to ważne, ponieważ w przypadku próby utworzenia nowego zasobu połączenia w celu nawiązania połączenia z usługą lub aplikacją z inną metodą uwierzytelniania nie powiedzie się, ponieważ typ połączenia nie jest już zdefiniowany na koncie usługi Automation.  Aby uzyskać więcej informacji na temat tworzenia własnego typu połączenia dla niestandardowego lub modułu z [Galeria programu PowerShell](https://www.powershellgallery.com), zobacz [moduły integracji](automation-integration-modules.md)
+Możesz użyć skryptu, aby utworzyć zasób połączenia, ponieważ podczas tworzenia konta usługi Automation automatycznie domyślnie uwzględniamy kilka modułów globalnych wraz z typem połączenia **AzureServicePrincipal** , aby utworzyć zasób połączenia **AzureRunAsConnection** .  Jest to ważne, ponieważ w przypadku próby utworzenia nowego zasobu połączenia w celu nawiązania połączenia z usługą lub aplikacją z inną metodą uwierzytelniania nie powiedzie się, ponieważ typ połączenia nie jest już zdefiniowany na koncie usługi Automation.  Aby uzyskać więcej informacji na temat tworzenia własnego typu połączenia dla niestandardowego lub modułu z [Galeria programu PowerShell](https://www.powershellgallery.com), zobacz [moduły integracji](automation-integration-modules.md)
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Korzystanie z połączenia w elemencie Runbook lub konfiguracji DSC
 

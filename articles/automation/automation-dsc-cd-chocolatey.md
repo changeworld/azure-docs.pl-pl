@@ -4,17 +4,17 @@ description: DevOps ciągłe wdrażanie przy użyciu konfiguracji stanu Azure Au
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4512b79873d7f770b32a452a02c53bc5575bdac
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243599"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850367"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: ciągłe wdrażanie do Virtual Machines przy użyciu konfiguracji stanu automatyzacji i czekolady
 
@@ -109,7 +109,7 @@ W zamieszczonym przykładzie wykonywane są następujące kroki dla cChoco i xNe
 
 Nie ma żadnych specjalnych informacji o tym, jak po raz pierwszy zaimportować konfigurację do serwera ściągania i skompilować. Wszystkie kolejne Importy/kompilacje tej samej konfiguracji wyglądają dokładnie tak samo. Za każdym razem, gdy aktualizujesz pakiet i konieczne jest wypchnięcie go do środowiska produkcyjnego, wykonaj ten krok po upewnieniu się, że plik konfiguracji jest prawidłowy — w tym nowej wersji pakietu. Oto plik konfiguracji i program PowerShell:
 
-ISVBoxConfig. ps1:
+ISVBoxConfig.ps1:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -154,7 +154,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-New-ConfigurationScript. ps1:
+New-ConfigurationScript.ps1:
 
 ```powershell
 Import-AzureRmAutomationDscConfiguration `

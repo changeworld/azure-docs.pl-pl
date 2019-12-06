@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420767"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848752"
 ---
 # <a name="what-are-authentication-methods"></a>Co to są metody uwierzytelniania?
 
@@ -26,11 +26,11 @@ Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są
 
 Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybrać więcej niż minimalną wymaganą liczbę metod uwierzytelniania na wypadek, gdyby nie mieli dostępu do jednego.
 
-|Metoda uwierzytelniania|Sposób użycia|
+|Metoda uwierzytelniania|Użycie|
 | --- | --- |
 | Hasło | Uwierzytelnianie MFA i SSPR |
 | Pytania zabezpieczające | Tylko SSPR |
-| Adres e-mail | Tylko SSPR |
+| Email address (Adres e-mail) | Tylko SSPR |
 | Aplikacja Microsoft Authenticator | Uwierzytelnianie MFA i SSPR |
 | Token sprzętowy OATH | Publiczna wersja zapoznawcza usługi MFA i SSPR |
 | SMS | Uwierzytelnianie MFA i SSPR |
@@ -113,7 +113,7 @@ Maksymalna długość niestandardowego pytania zabezpieczającego to 200 znaków
 * Dowolny zestaw znaków może służyć do definiowania pytań i odpowiedzi, w tym znaków Unicode.
 * Liczba zdefiniowanych pytań musi być większa lub równa liczbie pytań, które były wymagane do zarejestrowania.
 
-## <a name="email-address"></a>Adres e-mail
+## <a name="email-address"></a>Email address (Adres e-mail)
 
 Adres e-mail jest dostępny **tylko w funkcji samoobsługowego resetowania hasła usługi Azure AD**.
 
@@ -129,7 +129,7 @@ Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https:/
 > Użytkownicy nie będą mogli zarejestrować swojej aplikacji mobilnej podczas rejestrowania się w celu samoobsługowego resetowania hasła. Zamiast tego użytkownicy mogą rejestrować swoją aplikację mobilną w [https://aka.ms/mfasetup](https://aka.ms/mfasetup) lub w wersji zapoznawczej rejestracji informacji o zabezpieczeniach w [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
 >
 
-### <a name="notification-through-mobile-app"></a>Powiadomienie za poorednictwem aplikacji mobilnej
+### <a name="notification-through-mobile-app"></a>Powiadomienie przez aplikację mobilną
 
 Aplikacja Microsoft Authenticator może pomóc zapobiec nieautoryzowanemu dostępowi do kont i zatrzymywać fałszywe transakcje przez wypychanie powiadomienia do telefonu lub tabletu. Użytkownicy wyświetlają powiadomienie i jeśli są wiarygodne, wybierz pozycję Weryfikuj. W przeciwnym razie można wybrać opcję Odmów.
 
@@ -146,7 +146,7 @@ Jeśli włączysz powiadomienia za pośrednictwem aplikacji mobilnej i kodu wery
 
 ### <a name="verification-code-from-mobile-app"></a>Kod weryfikacyjny z aplikacji mobilnej
 
-Aplikacja Microsoft Authenticator lub inne aplikacje innych firm mogą służyć jako token oprogramowania do generowania kodu weryfikacyjnego OATH. Po wprowadzeniu nazwy użytkownika i hasła wprowadzasz kod dostarczony przez aplikację na ekranie logowania. Kod weryfikacyjny zapewnia drugą formę uwierzytelniania.
+Aplikacja Microsoft Authenticator lub inne aplikacje innych firm mogą służyć jako token oprogramowania do generowania kodu weryfikacyjnego OATH. Po wprowadzeniu nazwy użytkownika i hasła wprowadzasz kod dostarczony przez aplikację na ekranie logowania. Kod weryfikacyjny stanowi drugą formę uwierzytelniania.
 
 > [!WARNING]
 > Do samoobsługowego resetowania hasła, gdy tylko jedna metoda jest wymagana do resetowania kodu weryfikacyjnego jest jedyną opcją dostępną dla użytkowników **w celu zapewnienia najwyższego poziomu zabezpieczeń**.

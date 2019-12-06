@@ -1,18 +1,18 @@
 ---
 title: CONCAT w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej o funkcji CONCAT systemu SQL w Azure Cosmos DB.
+description: Dowiedz się, w jaki sposób funkcja CONCAT systemu SQL w Azure Cosmos DB zwraca ciąg, który jest wynikiem łączenia dwóch lub więcej wartości ciągu
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1e61d61a3d64ca7d7808619159e4dfc8e8b33d68
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: adb8564d4addaaa3f4a383b32941549aed3d53bd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351263"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871554"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT (Azure Cosmos DB)
  Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu.  

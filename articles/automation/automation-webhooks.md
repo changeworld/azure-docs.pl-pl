@@ -4,24 +4,24 @@ description: Element webhook, który umożliwia klientowi uruchomienie elementu 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 153e910ea85ae843c6d4db51e709b58e441f6761
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: bc03425a64486e449b4df93ea187435a1e893dda
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061436"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849602"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie Azure Automation elementu Runbook za pomocą elementu webhook
 
 Element *webhook* umożliwia uruchomienie określonego elementu runbook w Azure Automation za pośrednictwem pojedynczego żądania HTTP. Umożliwia to usługom zewnętrznym, takim jak Azure DevOps Services, GitHub, dzienniki Azure Monitor lub aplikacje niestandardowe do uruchamiania elementów Runbook bez implementowania pełnego rozwiązania przy użyciu interfejsu API Azure Automation.
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
-Elementy webhook można porównać z innymi metodami uruchamiania elementu Runbook w rozpoczęciu wykonywania [elementu Runbook w Azure Automation](automation-starting-a-runbook.md)
+Elementy webhook można porównać z innymi metodami uruchamiania elementu Runbook w [rozpoczęciu wykonywania elementu Runbook w Azure Automation](automation-starting-a-runbook.md)
 
 > [!NOTE]
 > Korzystanie z elementu webhook do uruchamiania elementów Runbook języka Python nie jest obsługiwane.
@@ -30,12 +30,12 @@ Elementy webhook można porównać z innymi metodami uruchamiania elementu Runbo
 
 W poniższej tabeli opisano właściwości, które należy skonfigurować dla elementu webhook.
 
-| Właściwość | Description |
+| Właściwość | Opis |
 |:--- |:--- |
-| Name |Możesz podać dowolną nazwę dla elementu webhook, ponieważ nie jest on narażony na klienta. Jest on używany tylko do identyfikowania elementu Runbook w Azure Automation. <br> Najlepszym rozwiązaniem jest nadanie elementu webhook nazwy powiązanej z klientem, który go używa. |
-| URL |Adres URL elementu webhook jest unikatowym adresem, który klient wywołuje przy użyciu wpisu HTTP w celu uruchomienia elementu Runbook połączonego z elementem webhook. Jest on generowany automatycznie podczas tworzenia elementu webhook. Nie można określić niestandardowego adresu URL. <br> <br> Adres URL zawiera token zabezpieczający, który umożliwia wywoływanie elementu Runbook przez system innej firmy bez żadnego dodatkowego uwierzytelniania. Z tego powodu powinna być traktowana jak hasło. Ze względów bezpieczeństwa można tylko wyświetlić adres URL w Azure Portal w momencie utworzenia elementu webhook. Zanotuj adres URL w bezpiecznej lokalizacji do użytku w przyszłości. |
-| Data ważności |Podobnie jak w przypadku certyfikatu, każdy element webhook ma datę wygaśnięcia, w której nie można już jej używać. Tę datę wygaśnięcia można zmodyfikować po utworzeniu elementu webhook, o ile element webhook nie wygasł. |
-| Włączono |Element webhook jest domyślnie włączony podczas jego tworzenia. Jeśli ustawisz ją jako wyłączoną, nie będzie można jej używać. Właściwość **Enabled** można ustawić podczas tworzenia elementu webhook lub w dowolnym momencie po jego utworzeniu. |
+| Nazwa |Możesz podać dowolną nazwę dla elementu webhook, ponieważ nie jest on narażony na klienta. Jest on używany tylko do identyfikowania elementu Runbook w Azure Automation. <br> Najlepszym rozwiązaniem jest nadanie elementu webhook nazwy powiązanej z klientem, który go używa. |
+| Adres URL |Adres URL elementu webhook jest unikatowym adresem, który klient wywołuje przy użyciu wpisu HTTP w celu uruchomienia elementu Runbook połączonego z elementem webhook. Jest on generowany automatycznie podczas tworzenia elementu webhook. Nie można określić niestandardowego adresu URL. <br> <br> Adres URL zawiera token zabezpieczający, który umożliwia wywoływanie elementu Runbook przez system innej firmy bez żadnego dodatkowego uwierzytelniania. Z tego powodu powinna być traktowana jak hasło. Ze względów bezpieczeństwa można tylko wyświetlić adres URL w Azure Portal w momencie utworzenia elementu webhook. Zanotuj adres URL w bezpiecznej lokalizacji do użytku w przyszłości. |
+| Data wygaśnięcia |Podobnie jak w przypadku certyfikatu, każdy element webhook ma datę wygaśnięcia, w której nie można już jej używać. Tę datę wygaśnięcia można zmodyfikować po utworzeniu elementu webhook, o ile element webhook nie wygasł. |
+| Enabled (Włączony) |Element webhook jest domyślnie włączony podczas jego tworzenia. Jeśli ustawisz ją jako wyłączoną, nie będzie można jej używać. Właściwość **Enabled** można ustawić podczas tworzenia elementu webhook lub w dowolnym momencie po jego utworzeniu. |
 
 ### <a name="parameters"></a>Parametry
 
@@ -66,7 +66,7 @@ Na przykład, jeśli uruchamiasz następujący element Runbook z Azure Portal i 
 
 W przypadku następującego elementu Runbook, jeśli masz następujące właściwości dla parametru WebhookData:
 
-* WebhookName *MyWebhook*
+* Element webhookname: *MyWebhook*
 * Elemencie requestbody: *[{"resourceName": "Moja resourceName", "name": "vm01"}, {"resourceName": "Moja resourceName", "name": "vm02"}]*
 
 Następnie można przekazać następującą wartość JSON w interfejsie użytkownika dla parametru WebhookData. Poniższy przykład z znakami powrotu karetki i znaków nowego wiersza pasuje do formatu, który jest przesyłany z elementu webhook.
@@ -80,11 +80,11 @@ Następnie można przekazać następującą wartość JSON w interfejsie użytko
 > [!NOTE]
 > Wartości wszystkich parametrów wejściowych są rejestrowane przy użyciu zadania elementu Runbook. Oznacza to, że wszelkie dane wejściowe dostarczone przez klienta w żądaniu elementu webhook będą rejestrowane i dostępne dla wszystkich użytkowników mających dostęp do zadania automatyzacji.  Z tego powodu należy zachować ostrożność wraz z uwzględnieniem poufnych informacji w wywołaniach elementu webhook.
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 Bezpieczeństwo elementu webhook polega na poufności jego adresu URL, który zawiera token zabezpieczający, który umożliwia wywoływanie. Azure Automation nie wykonuje żadnych uwierzytelnień w żądaniu, o ile zostanie wprowadzony prawidłowy adres URL. Z tego powodu elementy webhook nie powinny być używane dla elementów Runbook, które wykonują wysoce poufne funkcje bez użycia alternatywnego sposobu weryfikacji żądania.
 
-Można uwzględnić logikę w elemencie Runbook, aby określić, że została wywołana przez element webhook, sprawdzając Właściwość webhookname parametru $WebhookData. Element Runbook może przeprowadzić dalsze sprawdzanie poprawności, szukając określonych informacji we właściwościach **RequestHeader** lub **elemencie requestbody** .
+Można uwzględnić logikę w elemencie Runbook, aby określić, że została wywołana przez element webhook, sprawdzając Właściwość **webhookname** parametru $WebhookData. Element Runbook może przeprowadzić dalsze sprawdzanie poprawności, szukając określonych informacji we właściwościach **RequestHeader** lub **elemencie requestbody** .
 
 Inna strategia polega na tym, że element Runbook wykonuje weryfikację zewnętrznego stanu po odebraniu żądania elementu webhook. Rozważmy na przykład element Runbook, który jest wywoływany przez witrynę GitHub, gdy istnieje nowe zatwierdzenie do repozytorium GitHub. Element Runbook może nawiązać połączenie z usługą GitHub, aby zweryfikować, że nastąpiło nowe zatwierdzenie przed kontynuowaniem.
 
@@ -100,8 +100,8 @@ Poniższa procedura umożliwia utworzenie nowego elementu webhook połączonego 
 
    ![Adres URL elementu webhook](media/automation-webhooks/copy-webhook-url.png)
 
-1. Kliknij pozycję **Parametry** , aby podać wartości parametrów elementu Runbook. Jeśli element Runbook ma obowiązkowe parametry, nie można utworzyć elementu webhook, chyba że zostaną podane wartości.
-1. Kliknij przycisk **Utwórz** , aby utworzyć element webhook.
+1. Kliknij pozycję **Parametry** , aby podać wartości parametrów elementu Runbook. Jeśli element runbook ma parametry obowiązkowe, nie można utworzyć elementu webhook, chyba że zostaną podane wartości.
+1. Kliknij pozycję **Utwórz**, aby utworzyć element webhook.
 
 ## <a name="using-a-webhook"></a>Używanie elementu webhook
 
@@ -113,9 +113,9 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient otrzymuje jeden z następujących kodów powrotnych z żądania POST.
 
-| Kod | Text | Opis |
+| Kod | Tekst | Opis |
 |:--- |:--- |:--- |
-| 202 |Zaakceptowany |Żądanie zostało zaakceptowane, a element Runbook został pomyślnie umieszczony w kolejce. |
+| 202 |Zaakceptowano |Żądanie zostało zaakceptowane, a element Runbook został pomyślnie umieszczony w kolejce. |
 | 400 |Nieprawidłowe żądanie |Żądanie nie zostało zaakceptowane z jednego z następujących powodów: <ul> <li>Element webhook wygasł.</li> <li>Element webhook jest wyłączony.</li> <li>Token w adresie URL jest nieprawidłowy.</li>  </ul> |
 | 404 |Nie znaleziono |Żądanie nie zostało zaakceptowane z jednego z następujących powodów: <ul> <li>Nie znaleziono elementu webhook.</li> <li>Nie znaleziono elementu Runbook.</li> <li>Nie znaleziono konta.</li>  </ul> |
 | 500 |Wewnętrzny błąd serwera |Adres URL był prawidłowy, ale wystąpił błąd. Prześlij ponownie żądanie. |
@@ -132,7 +132,7 @@ Klient nie może określić momentu zakończenia zadania elementu Runbook lub je
 
 Po utworzeniu elementu webhook obowiązuje okres ważności wynoszący jeden rok. Po upływie tego czasu element webhook automatycznie wygaśnie. Po wygaśnięciu elementu webhook nie można go ponownie uaktywnić, musi zostać usunięty i utworzony ponownie. Jeśli element webhook nie osiągnął czasu wygaśnięcia, można go rozszerzyć.
 
-Aby rozwinąć element webhook, przejdź do elementu Runbook, który zawiera element webhook. Wybierz pozycję elementy webhook w obszarze **zasoby**. Kliknij element webhook, który chcesz zwiększyć, ta akcja spowoduje otwarcie strony **elementu webhook** .  Wybierz nową datę i godzinę wygaśnięcia, a następnie kliknij przycisk **Zapisz**.
+Aby rozwinąć element webhook, przejdź do elementu Runbook, który zawiera element webhook. Wybierz pozycję elementy **webhook** w obszarze **zasoby**. Kliknij element webhook, który chcesz zwiększyć, ta akcja spowoduje otwarcie strony **elementu webhook** .  Wybierz nową datę i godzinę wygaśnięcia, a następnie kliknij przycisk **Zapisz**.
 
 ## <a name="sample-runbook"></a>Przykładowy element Runbook
 

@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8ba3cc27777d13448b0e1114413128b550b0b2f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273986"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842292"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurowanie sposobu, w jaki użytkownicy końcowi wyrażają zgodę na aplikację w Azure Active Directory
 Dowiedz się, jak skonfigurować sposób, w jaki użytkownicy wyrażają zgodę na uprawnienia aplikacji. Możesz uprościć środowisko użytkownika, udzielając zgody administratora. W tym artykule przedstawiono różne sposoby konfigurowania wyrażania zgody użytkownika. Metody dotyczą wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD). 
@@ -27,6 +27,8 @@ Aby uzyskać więcej informacji na temat wyrażania zgody na aplikacje, zobacz [
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przyznanie zgody administratora wymaga zalogowania się jako Administrator globalny, administrator aplikacji lub administrator aplikacji w chmurze.
+
+Aby przyznać administratorowi zgodę na uprawnienia dotyczące Microsoft Graph i grafu usługi Azure AD, musisz mieć uprawnienia administratora globalnego. 
 
 Aby ograniczyć dostęp do aplikacji, należy wymagać przypisania użytkownika, a następnie przypisania użytkowników lub grup do aplikacji.  Aby uzyskać więcej informacji, zobacz [metody przypisywania użytkowników i grup](methods-for-assigning-users-and-groups.md).
 
@@ -55,7 +57,7 @@ Aby udzielić zgody administratora podczas rejestrowania aplikacji:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com) jako administrator globalny.
 2. Przejdź do bloku **rejestracje aplikacji** .
 3. Wybierz aplikację, aby wyrazić zgodę.
-4. Wybierz pozycję **uprawnienia interfejsu API**.
+4. Wybierz **uprawnienia do interfejsu API**.
 5. Kliknij pozycję **Udziel zgody administratora**.
 
 

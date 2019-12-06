@@ -1,18 +1,18 @@
 ---
 title: PUŁAP w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej na temat limitu funkcji systemu SQL w Azure Cosmos DB.
+description: Dowiedz się, w jaki sposób Funkcja systemowa SQL sufit w Azure Cosmos DB zwraca wartość główną styczną ARC dla osi y/x, wyrażoną w radianach
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7056cfd1773e0d98fa134c9fdec3ad6a43af1bcf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18462b152b698e7c6bc4c6c1e59511b4bacaa611
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351112"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873441"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>GÓRNy limit (Azure Cosmos DB)
  Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą.  

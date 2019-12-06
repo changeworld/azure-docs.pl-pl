@@ -4,17 +4,17 @@ description: W tym artykule opisano, jak kompilować konfiguracje konfiguracji �
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d3cca9d8954d9ac158d88b393c46672da3faa19
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdea8ed9a9e59a169a6ffb525ed286eb7d1ada53
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231716"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850911"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC w konfiguracji stanu Azure Automation
 
@@ -41,7 +41,7 @@ Konfiguracje konfiguracji żądanego stanu (DSC) można kompilować na dwa sposo
 1. Jeśli konfiguracja nie ma żadnych parametrów, zostanie wyświetlony monit o potwierdzenie, czy chcesz go skompilować. Jeśli konfiguracja zawiera parametry, zostanie otwarty blok **kompilowania konfiguracji** , w którym można podać wartości parametrów. Więcej informacji o parametrach można znaleźć w sekcji [**podstawowe parametry**](#basic-parameters) .
 1. Zostanie otwarta strona **zadanie kompilacji** , dzięki czemu można śledzić stan zadania kompilacji, a także konfiguracje węzłów (dokumenty konfiguracji MOF), które zostały wykonane na serwerze ściągania konfiguracji stanu Azure Automation.
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Możesz użyć [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) , aby rozpocząć Kompilowanie za pomocą programu Windows PowerShell. Następujący przykładowy kod uruchamia kompilację konfiguracji DSC o nazwie **SampleConfig**.
 
@@ -107,7 +107,7 @@ W portalu możesz wprowadzić wartości parametrów po kliknięciu przycisku **K
 
 ![Parametry kompilacji konfiguracji](./media/automation-dsc-compile/DSC_compiling_1.png)
 
-#### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Program PowerShell wymaga parametrów w elemencie [Hashtable](/powershell/module/microsoft.powershell.core/about/about_hash_tables) , gdzie klucz jest zgodny z nazwą parametru, a wartość jest równa wartości parametru.
 
@@ -189,7 +189,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ### <a name="working-with-assets-in-azure-automation-during-compilation"></a>Praca z zasobami w Azure Automation podczas kompilacji
 
-Odwołania do elementów zawartości są takie same w konfiguracji stanu Azure Automation i elementów Runbook. Aby uzyskać więcej informacji, zobacz następujące tematy:
+Odwołania do elementów zawartości są takie same w konfiguracji stanu Azure Automation i elementów Runbook. Więcej informacji zawierają następujące sekcje:
 
 - [Certyfikaty](automation-certificates.md)
 - [Połączenia](automation-connections.md)

@@ -1,20 +1,20 @@
 ---
-title: Azure Automation hybrydowy proces roboczy elementu Runbook
+title: Azure Automation — hybrydowy proces roboczy elementu Runbook
 description: Ten artykuł zawiera informacje na temat instalowania i używania hybrydowego procesu roboczego elementu Runbook, który jest funkcją Azure Automation, której można użyć do uruchamiania elementów Runbook na maszynach w lokalnym dostawcy centrum danych lub w chmurze.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743801"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850265"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzowanie zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego elementu Runbook
 
@@ -34,9 +34,9 @@ Proces instalacji hybrydowego procesu roboczego elementu Runbook zależy od syst
 
 Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook systemu Windows, można użyć dwóch metod. Zalecaną metodą jest użycie elementu Runbook usługi Automation w celu całkowitego zautomatyzowania procesu konfigurowania komputera z systemem Windows. Druga metoda to procedura krok po kroku, aby ręcznie zainstalować i skonfigurować rolę. W przypadku maszyn z systemem Linux należy uruchomić skrypt języka Python w celu zainstalowania agenta na komputerze.
 
-|OS  |Typy wdrożeń  |
+|System operacyjny  |Typy wdrożeń  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ręcznie](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [Program PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ręczne](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Otwórz sesję programu PowerShell w trybie administratora i uruchom następują
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
-Aby usunąć przestarzałe maszyny z grupy hybrydowych procesów roboczych, użyj `machineName` opcjonalnego parametru.
+Aby usunąć przestarzałe maszyny z grupy hybrydowych procesów roboczych, użyj opcjonalnego parametru `machineName`.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
@@ -71,7 +71,7 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 
 ### <a name="linux"></a>Linux
 
-Aby uzyskać identyfikator obszaru roboczego, można `ls /var/opt/microsoft/omsagent` użyć polecenia w hybrydowym procesie roboczym elementu Runbook. Istnieje folder w katalogu, w którym nazwa folderu jest identyfikatorem obszaru roboczego.
+Aby uzyskać identyfikator obszaru roboczego, można użyć polecenia `ls /var/opt/microsoft/omsagent` w hybrydowym procesie roboczym elementu Runbook. Istnieje folder w katalogu, w którym nazwa folderu jest identyfikatorem obszaru roboczego.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -107,10 +107,10 @@ Jeśli serwer proxy jest używany do komunikacji między agentem a usługą Azur
 
 Następujący port i adresy URL są wymagane dla roli hybrydowego procesu roboczego elementu Runbook do komunikowania się z automatyzacją:
 
-* Port: Do wychodzącego dostępu do Internetu jest wymagany tylko protokół TCP 443.
+* Port: dla wychodzącego dostępu do Internetu wymagany jest tylko protokół TCP 443.
 * Globalny adres URL: *. azure-automation.net
 * Globalny adres URL US Gov Wirginia: *. azure-automation.us
-* Usługa agenta: https://\<identyfikator obszaru roboczego\>. agentsvc.Azure-Automation.NET
+* Usługa agenta: https://\<identyfikator obszaru roboczego\>. agentsvc.azure-automation.net
 
 Zaleca się użycie adresów wymienionych podczas definiowania wyjątków. Dla adresów IP można pobrać zakresy adresów [IP centrum danych Microsoft Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ten plik jest aktualizowany co tydzień i ma aktualnie wdrożone zakresy oraz wszystkie nadchodzące zmiany w zakresach adresów IP.
 
@@ -118,20 +118,20 @@ Jeśli masz konto usługi Automation zdefiniowane dla określonego regionu, moż
 
 | **Region** | **Rekord DNS** |
 | --- | --- |
-| Środkowo-zachodnie stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Środkowo-południowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Zachodnio-środkowe stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Południowo-środkowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Wschodnie stany USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Zachodnie stany USA 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
 | Kanada Środkowa |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Europa Zachodnia |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Europa Północna |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Azja Południowo-Wschodnia |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
+| Azja Południowo-wschodnia |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Indie Środkowe |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonia Wschodnia |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australia Wschodnia |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | Australia Południowo-Wschodnia |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| Administracja USA — Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| US Gov Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Aby uzyskać listę adresów IP regionów zamiast nazw regionów, Pobierz plik XML [adresu IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) z centrum pobierania Microsoft.
 
@@ -146,7 +146,7 @@ Aby uzyskać listę adresów IP regionów zamiast nazw regionów, Pobierz plik X
 
 Na podstawie standardowych adresów i portów wymaganych przez hybrydowy proces roboczy elementu Runbook wymagane są następujące adresy przeznaczone dla Update Management. Komunikacja z tymi adresami odbywa się za pośrednictwem portu 443.
 
-|Azure Public  |Azure Government  |
+|Azure Public  |Platforma Azure dla instytucji rządowych  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |

@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798130"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851455"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generuj mapę cieplną wilgoci
 
 Wilgotność gleby jest wodą, która znajduje się w odstępach między cząstkami glebowymi. Wilgotność gleby mapę cieplną pomaga zrozumieć dane wilgoci na dowolnej głębokości i w dużej rozdzielczości w farmach. Aby wygenerować dokładną i przydatną wilgotność gleby mapę cieplną, wymagana jest jednolite wdrożenie czujników z tego samego dostawcy. Różni dostawcy będą mieć różnice w sposobie mierzenia wilgoci w glebie wraz z różnicami w kalibracji. Mapę cieplną jest generowany z określoną głębokością przy użyciu czujników wdrożonych na tej głębokości.
 
-W tym artykule opisano proces generowania mapę cieplną wilgoci w farmie przy użyciu akceleratora usługi Azure FarmBeats. W tym artykule dowiesz się, jak:
+W tym artykule opisano proces generowania mapę cieplną wilgoci w farmie przy użyciu akceleratora usługi Azure FarmBeats. W tym artykule dowiesz się jak:
 
 - [Tworzenie Farm](#create-a-farm)
 - [Przypisywanie czujników do Farm](#get-soil-moisture-sensor-data-from-partner)
@@ -24,7 +24,7 @@ W tym artykule opisano proces generowania mapę cieplną wilgoci w farmie przy u
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Upewnij się, że:  
+Uwaga:  
 
 - Subskrypcja platformy Azure.
 - Uruchomione wystąpienie usługi Azure FarmBeats.
@@ -93,4 +93,4 @@ Wykonaj następujące czynności:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, po pomyślnym wygenerowaniu wilgoci glebowej mapę cieplną, Dowiedz się, jak [wygenerować umieszczanie czujnika](generate-maps.md#sensor-placement-maps) i uzyskać [historyczne dane telemetryczne](ingest-historical-telemetry-data.md). 
+Teraz, po pomyślnym wygenerowaniu wilgoci glebowej mapę cieplną, Dowiedz się, jak [wygenerować umieszczanie czujnika](generate-maps.md#sensor-placement-map) i uzyskać [historyczne dane telemetryczne](ingest-historical-telemetry-data.md). 

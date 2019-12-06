@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: ccd0c88c95ae9a752ef8ea2387bbde4f8559bc68
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 280561126186e4c70399b3a1ddd177ff4eb54400
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531678"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850044"
 ---
 # <a name="standard-quota-per-vm-series-vcpu-limit-increase"></a>Przydział standardowy: vCPU limit limitu przydziału serii maszyny wirtualnej
 
-Menedżer zasobów obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych. **Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych** używają standardowego limitu przydziału. **Maszyny wirtualne o niskim priorytecie** używają przydziału o niskim priorytecie. Standardowy przydział vCPU dla wystąpień z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych są wymuszane w dwóch warstwach dla każdej subskrypcji w każdym regionie
+Menedżer zasobów obsługuje dwa typy przydziałów vCPU dla maszyn wirtualnych. **Maszyny wirtualne z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych** używają standardowego limitu przydziału. **Miejsca na maszynach wirtualnych** używają limitu przydziału miejsca. Standardowy przydział vCPU dla wystąpień z opcją płatność zgodnie z rzeczywistym użyciem i zarezerwowane wystąpienia maszyn wirtualnych są wymuszane w dwóch warstwach dla każdej subskrypcji w każdym regionie
 
 Pierwsza warstwa to **całkowity limit procesorów wirtualnych vCPU** (dla wszystkich serii maszyn wirtualnych), a druga warstwa to **Limit procesorów wirtualnych vCPU serii maszyny wirtualnej** (na przykład procesorów wirtualnych vCPU serii Dv3). Gdy zostanie wdrożona nowa maszyna wirtualna, suma nowych i istniejących procesorów wirtualnych vCPU użycie dla tej serii maszyn wirtualnych nie może przekraczać limitu przydziału vCPU zatwierdzonego dla danej serii maszyn wirtualnych. Dodatkowo całkowita i istniejąca liczba vCPU wdrożona na wszystkich seriach maszyn wirtualnych nie powinna przekraczać całkowitego przydziału regionalnego procesorów wirtualnych vCPU zatwierdzonego dla subskrypcji. Jeśli jeden z tych przydziałów zostanie przekroczony, wdrożenie maszyny wirtualnej nie będzie dozwolone.
 Można zażądać zwiększenia limitu przydziału procesorów wirtualnych vCPU dla serii maszyn wirtualnych z Azure Portal. Zwiększenie limitu przydziału serii maszyn wirtualnych powoduje automatyczne zwiększenie łącznej granicy procesorów wirtualnych vCPU w regionie o tej samej wartości. 
@@ -25,7 +25,7 @@ Dowiedz się więcej o standardowych przydziałach vCPU na [stronie limit przydz
 
 Dowiedz się więcej o tym, jak w [tym miejscu](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)zwiększyć limit przydziału dla ustawień regionalnych w warstwie Standardowa. 
 
-Dowiedz się więcej na temat **wzrostu limitów vCPU maszyn wirtualnych o niskim priorytecie** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
+Dowiedz się więcej na temat **zwiększania liczby dodatkowych limitów vCPU maszyn wirtualnych** [.](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)
 
 Możesz zażądać zwiększenia **limitów przydziału standardowych vCPU na serię maszyn wirtualnych** za pośrednictwem bloku **Pomoc i obsługa techniczna** oraz bloku **użycie i przydział** w portalu.
 
@@ -63,7 +63,7 @@ Możesz także zażądać przydziału dla wielu regionów za pomocą jednego prz
 
    ![Szczegóły przydziału DM](./media/resource-manager-core-quotas-request/1-7.png)
 
-8. Dla wybranej lokalizacji wybierz wartość **typu** **"Standardowa"** . Można zażądać zarówno typów limitu przydziału standardowego, jak i o niskim priorytecie z jednego przypadku pomocy technicznej w ramach obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej o **zwiększaniu limitów przydziału o niskim priorytecie** na **stronie > <** .
+8. Dla wybranej lokalizacji wybierz wartość **typu** **"Standardowa"** . Możesz zażądać zarówno typów limitu przydziału standardowego, jak i punktowego z pojedynczego przypadku pomocy technicznej za pomocą obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej na temat **zwiększania limitów przydziału miejsca** na tej [stronie](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)
 
    ![Rodzina SKU](./media/resource-manager-core-quotas-request/1-8.png)
 
@@ -111,7 +111,7 @@ Możesz także **zażądać przydziału dla wielu regionów** za pomocą jednego
 
    ![Blok problemu z limitem przydziału](./media/resource-manager-core-quotas-request/1-1-6.png)
 
-7. Dla wybranej lokalizacji wybierz wartość **typu** **"Standardowa"** . Można zażądać zarówno typów limitu przydziału standardowego, jak i o niskim priorytecie z jednego przypadku pomocy technicznej w ramach obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej o **zwiększaniu limitów procesorów wirtualnych vCPU o niskim priorytecie** na tej [stronie](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+7. Dla wybranej lokalizacji wybierz wartość **typu** **"Standardowa"** . Można zażądać zarówno typów limitu przydziału standardowego, jak i o niskim priorytecie z jednego przypadku pomocy technicznej w ramach obsługi wieloselekcji w polu **Typ** . Dowiedz się więcej o **zwiększaniu limitów procesorów wirtualnych vCPU** na tej [stronie](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
 
    ![Wybrana seria SKU](./media/resource-manager-core-quotas-request/1-1-7.png)
    

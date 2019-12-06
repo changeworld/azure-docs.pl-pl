@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09aa95e55b3d253ef41724298247694b9883e31f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381761"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848293"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbieranie danych użytkownika Multi-Factor Authentication platformy Azure
 
@@ -57,7 +57,7 @@ Próby uwierzytelniania (używane na potrzeby raportowania i rozwiązywania prob
 - Całkowita uwierzytelnienie
 - Wynik ogólny
 - Wyniki
-- Uwierzytelnia
+- Uwierzytelnione
 - Wynik
 - Inicjowanie adresu IP
 - Urządzenia
@@ -86,30 +86,30 @@ Bloki (używane do określania stanu zablokowanego i raportowania):
 - Sygnatura czasowa bloku
 - Blokuj według nazwy użytkownika
 - Nazwa użytkownika
-- Numer kierunkowy kraju
+- Kod kraju
 - Numer telefonu
 - Format numeru telefonu
-- Wewnętrzny
+- Rozszerzenie
 - Wyczyść rozszerzenie
-- Blokada
+- Zablokowane
 - Przyczyna blokady
 - Sygnatura czasowa zakończenia
 - Przyczyna zakończenia
 - Blokada konta
-- Alert o oszustwie
+- Alarm oszustwa
 - Alert oszustwa nie jest zablokowany
 - Język
 
 Pomijanie (używane na potrzeby raportowania):
 
 - Pomiń sygnaturę czasową
-- Obejście w sekundach
+- Czas trwania obejścia w sekundach
 - Obejście według nazwy użytkownika
 - Nazwa użytkownika
-- Numer kierunkowy kraju
+- Kod kraju
 - Numer telefonu
 - Format numeru telefonu
-- Wewnętrzny
+- Rozszerzenie
 - Wyczyść rozszerzenie
 - Przyczyna obejścia
 - Sygnatura czasowa zakończenia
@@ -126,8 +126,8 @@ Zmiany (używane do synchronizowania zmian użytkowników z serwerem MFA lub us�
 - Nowy kod kraju kopii zapasowej
 - Nowy numer telefonu kopii zapasowej
 - Nowe rozszerzenie kopii zapasowej
-- Nowy numer PIN
-- Wymagana zmiana numeru PIN
+- Nowy kod PIN
+- Wymagana zmiana kodu PIN
 - Stary token urządzenia
 - Nowy token urządzenia
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88669b5453069d9f6bb64e803adc65baf8afc6b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420690"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848582"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Samoobsługowe resetowanie haseł w usłudze Azure AD
 
@@ -58,7 +58,7 @@ Jeśli SSPR jest włączona, należy wybrać co najmniej jedną z następującyc
 
 * Powiadomienie aplikacji mobilnej
 * Kod aplikacji mobilnej
-* Poczta e-mail
+* Adres e-mail
 * Telefon komórkowy
 * Telefon biurowy
 * Pytania zabezpieczające
@@ -88,7 +88,7 @@ W przypadku korzystania z aplikacji mobilnej, takiej jak aplikacja Microsoft Aut
 * Gdy administratorzy wymagają użycia jednej metody do resetowania hasła, kod weryfikacyjny jest jedyną dostępną opcją.
 * Gdy administratorzy wymagają dwóch metod do zresetowania hasła, użytkownicy będą mogli korzystać **z dowolnego z** innych włączonych metod przy użyciu powiadomienia **lub** kodu weryfikacyjnego.
 
-| Liczba metod wymaganych do zresetowania | Je | Dwa |
+| Liczba metod wymaganych do zresetowania | Jeden | Dwa |
 | :---: | :---: | :---: |
 | Dostępne funkcje aplikacji mobilnej | Kod | Kod lub powiadomienie |
 

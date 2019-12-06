@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786727"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847222"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania dotyczące zarządzania hasłami w usłudze Azure AD
 
@@ -81,7 +81,7 @@ Następujące typy działań są wyświetlane w kategorii zdarzenia inspekcji **
 * [Resetowanie hasła (przez administratora)](#activity-type-reset-password-by-admin): wskazuje, że administrator przeprowadził Resetowanie hasła w imieniu użytkownika z Azure Portal.
 * [Resetowanie hasła (samoobsługa)](#activity-type-reset-password-self-service): wskazuje, że użytkownik pomyślnie zresetował swoje hasło z [portalu resetowania hasła usługi Azure AD](https://passwordreset.microsoftonline.com).
 * [Postęp działania przepływu samoobsługowego resetowania hasła](#activity-type-self-serve-password-reset-flow-activity-progress): wskazuje każdy określony krok, przez który użytkownik przechodzi przez użytkownika, na przykład przekazanie konkretnej bramy uwierzytelniania resetowania hasła w ramach procesu resetowania hasła.
-* [Odblokuj konto użytkownika (samoobsługa)](#activity-type-unlock-a-user-account-self-service)): wskazuje, że użytkownik pomyślnie odblokował konto Active Directory bez resetowania hasła w [portalu resetowania haseł usługi Azure AD](https://passwordreset.microsoftonline.com) przy użyciu funkcji Active Directory odblokowywania konta bez resetowania.
+* [Odblokuj konto użytkownika (samoobsługa)](#activity-type-unlock-a-user-account-self-service)): wskazuje, że użytkownik pomyślnie odblokował konto Active Directory bez resetowania hasła w [portalu resetowania haseł usługi Azure AD](https://passwordreset.microsoftonline.com) przy użyciu funkcji Active Directory odblokowywania konta bez zresetowania.
 * [Użytkownik zarejestrowany do samoobsługowego resetowania hasła](#activity-type-user-registered-for-self-service-password-reset): wskazuje, że użytkownik zarejestrował wszystkie wymagane informacje, aby móc zresetować swoje hasło zgodnie z aktualnie określonymi zasadami resetowania hasła dzierżawy.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Typ działania: zablokowany do samoobsługowego resetowania hasła

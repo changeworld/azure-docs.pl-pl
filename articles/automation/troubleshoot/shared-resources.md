@@ -2,18 +2,18 @@
 title: Rozwiązywanie problemów z Azure Automation udostępnionymi zasobami
 description: Dowiedz się, jak rozwiązywać problemy z zasobami udostępnionymi Azure Automation
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231531"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849296"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Rozwiązywanie problemów z zasobami udostępnionymi
 
@@ -31,7 +31,7 @@ Podczas importowania lub aktualizowania modułów w usłudze Azure Automation mo
 
 Importowanie modułów programu PowerShell to złożony proces obejmujący wiele kroków. W tym procesie wprowadzono możliwość nieprawidłowego zaimportowania modułu. Jeśli wystąpi ten problem, importowany moduł może być zablokowany w stanie przejściowym. Aby dowiedzieć się więcej o tym procesie, zobacz [Importowanie modułu programu PowerShell](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Aby rozwiązać ten problem, należy usunąć moduł, który jest zablokowany w stanie **importowania** , za pomocą polecenia cmdlet [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) . Następnie można ponowić próbę importowania modułu.
 
@@ -53,7 +53,7 @@ Azure modules are being updated
 
 Istnieje znany problem z aktualizacją modułów AzureRM na koncie usługi Automation, które znajduje się w grupie zasobów o nazwie liczbowej rozpoczynającej się od 0.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musi ono należeć do grupy zasobów o nazwie alfanumerycznej. Grupy zasobów o nazwach liczbowych zaczynających się od 0 nie mogą teraz zaktualizować modułów AzureRM.
 
@@ -72,7 +72,7 @@ Niektóre typowe przyczyny, że moduł nie został pomyślnie zaimportowany do A
 * W module brakuje jego zależności w folderze.
 * `New-AzureRmAutomationModule` polecenie cmdlet jest używane do przekazywania modułu i nie podano pełnej ścieżki magazynu lub nie załadowano modułu przy użyciu publicznie dostępnego adresu URL.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Niektóre z poniższych rozwiązań rozwiązują ten problem:
 
@@ -90,7 +90,7 @@ W przypadku aktualizowania modułów platformy Azure przy użyciu elementu Runbo
 
 Ustawienie domyślne określające, ile modułów można aktualizować jednocześnie, jest 10 przy użyciu skryptu `Update-AzureModule.ps1`. Proces aktualizacji jest podatny na błędy w przypadku jednoczesnego aktualizowania zbyt wielu modułów.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Nie jest powszechne, że wszystkie moduły AzureRM są wymagane na tym samym koncie usługi Automation. Zaleca się Importowanie tylko wymaganych modułów AzureRM.
 
@@ -132,7 +132,7 @@ You do not have permissions to create…
 
 Nie masz uprawnień wymaganych do utworzenia lub zaktualizowania konta Uruchom jako lub zasób jest zablokowany na poziomie grupy zasobów.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Aby utworzyć lub zaktualizować konto Uruchom jako, musisz mieć odpowiednie uprawnienia do różnych zasobów używanych przez konto Uruchom jako. Aby dowiedzieć się więcej o uprawnieniach wymaganych do utworzenia lub zaktualizowania konta Uruchom jako, zobacz [uprawnienia konta Uruchom jako](../manage-runas-account.md#permissions).
 
@@ -152,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 Ten błąd jest najprawdopodobniej spowodowany niepoprawnie skonfigurowanym [kontem Uruchom jako](../manage-runas-account.md).
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Upewnij się [, że konto Uruchom jako](../manage-runas-account.md) jest prawidłowo skonfigurowane. Po poprawnym skonfigurowaniu upewnij się, że masz odpowiedni kod w elemencie Runbook do uwierzytelniania na platformie Azure. Poniższy przykład przedstawia fragment kodu do uwierzytelniania na platformie Azure w elemencie Runbook przy użyciu konta Uruchom jako.
 

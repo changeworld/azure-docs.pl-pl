@@ -1,24 +1,24 @@
 ---
 title: Funkcje tablicowe w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej o funkcjach systemowych języka SQL w Azure Cosmos DB.
+description: Dowiedz się, jak funkcje tablicy umożliwiają wykonywanie operacji na tablicach w Azure Cosmos DB
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f970ed03ef5a9ccbfb9664a6c2d9db424ee96ed1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348693"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871809"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>Funkcje tablicy (Azure Cosmos DB)
 
 Funkcje Array umożliwiają wykonywanie operacji na tablicach w Azure Cosmos DB.
 
-## <a name="functions"></a>Funkcje
+## <a name="functions"></a>Functions
 
 Następujące funkcje skalarne wykonują operacje na wartości wejściowej tablicy i zwracają wartości liczbowe, logiczne lub tablicowe:
   
@@ -33,4 +33,4 @@ Następujące funkcje skalarne wykonują operacje na wartości wejściowej tabli
 - [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
 - [Wprowadzenie do Azure Cosmos DB](introduction.md)
 - [Funkcje zdefiniowane przez użytkownika](sql-query-udfs.md)
-- [Agreguje](sql-query-aggregates.md)
+- [Agregacje](sql-query-aggregates.md)

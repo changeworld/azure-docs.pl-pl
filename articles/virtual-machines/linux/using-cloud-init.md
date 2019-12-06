@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034248"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873951"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Obsługa usługi Cloud-init dla maszyn wirtualnych w systemie Azure
 W tym artykule opisano obsługę funkcji [Cloud-init](https://cloudinit.readthedocs.io) w celu skonfigurowania maszyny wirtualnej lub zestawów skalowania maszyn wirtualnych w czasie aprowizacji na platformie Azure. Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure.  
@@ -32,13 +32,14 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 
 Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy spowodują, że wdrożenia i konfiguracje usługi Cloud-init pracują bezproblemowo z maszynami wirtualnymi i zestawami skalowania maszyn wirtualnych. W poniższej tabeli przedstawiono bieżącej dostępności obrazów pakietu cloud-init, włączone na platformie Azure:
 
-| Wydawca | Oferta | SKU | Wersja | gotowe pakietu cloud-init |
+| Publisher | Oferta | JSZ | Wersja | gotowe pakietu cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |16.04-LTS |najnowsza |tak | 
 |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |tak |
 |CoreOS |CoreOS |Stable |najnowsza |tak |
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |wersja zapoznawcza |
+|Oracle 7,7 |Oracle-Linux |77-Ci |7.7.01|wersja zapoznawcza |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |tak |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |wersja zapoznawcza |
     
@@ -47,6 +48,7 @@ Obecnie Azure Stack nie obsługuje aprowizacji RHEL 7. x i CentOS 7. x przy uży
 * Dla RHEL 7,6, pakiet Cloud-init, obsługiwany pakiet to: *18.2-1. el7_6.2* 
 * W przypadku RHEL 7,7 (wersja zapoznawcza) pakiet Cloud-init jest pakietem w wersji zapoznawczej: *18.5 -3. el7*
 * W przypadku CentOS 7,7 (wersja zapoznawcza) pakiet Cloud-init jest pakietem w wersji zapoznawczej: *18.5 -3. el7. CentOS*
+* W przypadku oprogramowania Oracle 7,7 (wersja zapoznawcza) pakiet Cloud-init jest pakietem w wersji zapoznawczej: *18.5-3.0.1. el7*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Czym różni się usługa Cloud-init i Agent systemu Linux (WALA)?
 WALA to Agent specyficzny dla platformy Azure służący do aprowizacji i konfigurowania maszyn wirtualnych oraz obsługi rozszerzeń platformy Azure. Ulepszamy zadanie konfigurowania maszyn wirtualnych do korzystania z usługi Cloud-init zamiast agenta systemu Linux, aby umożliwić istniejącym klientom korzystającym z usługi Cloud-init korzystanie z bieżących skryptów w chmurze.  Jeśli masz istniejące inwestycje w Skrypty inicjalizacji w chmurze do konfigurowania systemów z systemem Linux, **nie są wymagane żadne dodatkowe ustawienia** , aby je włączyć. 

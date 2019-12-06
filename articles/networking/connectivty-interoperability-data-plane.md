@@ -1,6 +1,6 @@
 ---
-title: 'Współdziałanie w funkcjach łączność z zaplecza platformy Azure: Analiza na płaszczyźnie danych | Dokumentacja firmy Microsoft'
-description: Ten artykuł zawiera analizy płaszczyzny danych konfiguracji testu, które służy do analizowania współdziałanie usługi ExpressRoute, sieci VPN typu lokacja lokacja i wirtualnych sieci równorzędnych na platformie Azure.
+title: 'Współdziałanie z funkcjami łączności zaplecza platformy Azure: Analiza płaszczyzny danych | Microsoft Docs'
+description: Ten artykuł zawiera analizę płaszczyzny danych Instalatora testów, którego można użyć do analizowania współdziałania między ExpressRoute, sieci VPN typu lokacja-lokacja i komunikacji równorzędnej sieci wirtualnych na platformie Azure.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11c964bedce7a8b979434b888d756c2121d06a60
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60425540"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873832"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Współdziałanie w funkcjach łączność z zaplecza platformy Azure: Analiza płaszczyzny danych
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Współdziałanie z funkcjami łączności zaplecza platformy Azure: Analiza płaszczyzny danych
 
-W tym artykule opisano analizę płaszczyzny danych [Testuj ustawienia][Setup]. Możesz również przejrzeć [w konfiguracji testu] [ Configuration] i [analizy płaszczyznę sterowania] [ Control-Analysis] ustawień testu.
+W tym artykule opisano analizę płaszczyzny danych [konfiguracji testu][Setup]. Można także sprawdzić konfigurację konfiguracji [testu][Configuration] i [analizę płaszczyzny kontroli][Control-Analysis] dla konfiguracji testu.
 
-Analiza płaszczyzny danych sprawdza, czy ścieżka pakietów przechodzących z jednej sieci lokalnej (LAN lub sieć wirtualna) do innego w ramach topologii. Ścieżka danych między dwiema sieciami lokalnego nie jest koniecznie symetryczne. W związku z tym w tym artykule analizowane ścieżki przekazywania z sieci lokalnej z inną siecią, który jest oddzielony od Odwróć ścieżkę.
+Analiza płaszczyzny danych bada ścieżki podejmowane przez pakiety, które przechodzą z jednej sieci lokalnej (LAN lub sieci wirtualnej) na inną w ramach topologii. Ścieżka danych między dwiema sieciami lokalnymi nie musi być symetryczna. Dlatego w tym artykule analizujemy ścieżkę przekazywania z sieci lokalnej do innej sieci, która jest oddzielona od ścieżki odwrotnej.
 
-## <a name="data-path-from-the-hub-vnet"></a>Ścieżka danych z sieci wirtualnej serwera centralnego
+## <a name="data-path-from-the-hub-vnet"></a>Ścieżka danych z sieci wirtualnej centrum
 
-### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieć wirtualną będącą szprychą.
+### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieci wirtualnej szprychy
 
-Komunikacja równorzędna sieci wirtualnych (VNet) emuluje funkcjonalności mostek sieci między dwiema sieciami wirtualnymi, równorzędne. Polecenie traceroute dane wyjściowe z sieci wirtualnej serwera centralnego z maszyną wirtualną w szprysze, których sieci wirtualnej jest następująca:
+Komunikacja równorzędna sieci wirtualnych (VNet) emuluje funkcjonalność mostka sieciowego między dwoma sieci wirtualnych, które są połączone za pomocą komunikacji równorzędnej. Traceroute dane wyjściowe z piasty do maszyny wirtualnej w sieci wirtualnej szprychy są pokazane tutaj:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,14 +37,14 @@ Komunikacja równorzędna sieci wirtualnych (VNet) emuluje funkcjonalności most
 
     Trace complete.
 
-Poniższa ilustracja przedstawia widok graficzny połączenia sieci wirtualnej serwera centralnego i sieć wirtualną będącą szprychą pod względem usługi Azure Network Watcher:
+Na poniższej ilustracji przedstawiono graficzny widok połączenia sieci wirtualnej Hub i sieci wirtualnej szprychy z perspektywy Network Watcher platformy Azure:
 
 
-[![1]][1]
+![1][1]
 
-### <a name="path-to-the-branch-vnet"></a>Ścieżka do gałęzi sieci wirtualnej
+### <a name="path-to-the-branch-vnet"></a>Ścieżka do sieci wirtualnej gałęzi
 
-Polecenie traceroute dane wyjściowe z sieci wirtualnej serwera centralnego z maszyną wirtualną w gałęzi, którą sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z koncentratora do maszyny wirtualnej w sieci wirtualnej gałęzi jest pokazane tutaj:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -56,19 +56,19 @@ Polecenie traceroute dane wyjściowe z sieci wirtualnej serwera centralnego z ma
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest bramy sieci VPN w usłudze Azure VPN Gateway z sieci wirtualnej serwera centralnego. Drugim przeskokiem jest usługa VPN gateway gałęzi sieci wirtualnej. Adres IP bramy sieci VPN gałęzi sieci wirtualnej nie są anonsowane w sieci wirtualnej serwera centralnego. Trzeci przeskoku jest maszyną Wirtualną, w gałęzi sieci wirtualnej.
+W tym traceroute pierwszy przeskok to Brama sieci VPN w usłudze Azure VPN Gateway Sieć wirtualna centrum. Drugim przeskokiem jest Brama sieci VPN w oddziale firmy. Adres IP bramy sieci VPN gałęzi nie jest anonsowany przez sieć wirtualną centrali. Trzeci przeskok to maszyna wirtualna w sieci wirtualnej gałęzi.
 
-Poniższa ilustracja przedstawia widok graficzny połączenia sieci wirtualnej serwera centralnego i gałęzi sieci wirtualnej z perspektywy obserwatora sieciowego:
+Na poniższej ilustracji przedstawiono graficzny widok połączenia sieci wirtualnej centrum i sieci wirtualnej gałęzi z perspektywy Network Watcher:
 
-[![2]][2]
+![2][2]
 
-Dla tego samego połączenia na poniższej ilustracji przedstawiono widoku siatki w usługi Network Watcher:
+Dla tego samego połączenia na poniższej ilustracji przedstawiono widok siatki w Network Watcher:
 
-[![3]][3]
+![3][3]
 
 ### <a name="path-to-on-premises-location-1"></a>Ścieżka do lokalizacji lokalnej 1
 
-Dane wyjściowe polecenie traceroute z piastą do maszyny Wirtualnej w lokalnej lokalizacji 1 jest następujący:
+Traceroute dane wyjściowe z Centrum sieci wirtualnej do maszyny wirtualnej w lokalizacji lokalnej 1 są wyświetlane tutaj:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -81,12 +81,12 @@ Dane wyjściowe polecenie traceroute z piastą do maszyny Wirtualnej w lokalnej 
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest punktem końcowym tunelu bramy usługi Azure ExpressRoute do firmy Microsoft Enterprise krawędzi routera (MSEE). Przeskoków druga i trzecia to router brzegowy (CE) klienta i adresów IP sieci LAN lokalnej lokalizacji 1. Te adresy IP nie są anonsowane w sieci wirtualnej serwera centralnego. Czwarty przeskokiem jest maszynę Wirtualną w lokalizacji 1 w środowisku lokalnym.
+W tym traceroute pierwszy przeskok jest punktem końcowym tunelu bramy usługi Azure ExpressRoute do routera brzegowego firmy Microsoft (MSEE). Drugi i trzeci przeskoki są routerem brzegowym klienta (CE) i lokalizacją lokalną sieci LAN 1. Te adresy IP nie są anonsowane w sieci wirtualnej centrum. Czwarty przeskok to maszyna wirtualna w lokalizacji lokalnej 1.
 
 
 ### <a name="path-to-on-premises-location-2"></a>Ścieżka do lokalizacji lokalnej 2
 
-Dane wyjściowe polecenie traceroute z piastą do maszyny Wirtualnej w lokalnej lokalizacji 2 jest następujący:
+Traceroute dane wyjściowe z Centrum sieci wirtualnej do maszyny wirtualnej w lokalizacji lokalnej 2 przedstawiono tutaj:
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -99,11 +99,11 @@ Dane wyjściowe polecenie traceroute z piastą do maszyny Wirtualnej w lokalnej 
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest punkt końcowy tunelu bramy usługi ExpressRoute do rozwiązania MSEE. Przeskoków druga i trzecia to CE router i adresów IP sieci LAN lokalnej lokalizacji 2. Te adresy IP nie są anonsowane w sieci wirtualnej serwera centralnego. Czwarty przeskoku jest maszyną Wirtualną w lokalizacji 2 w środowisku lokalnym.
+W tym traceroute pierwszy przeskok jest punktem końcowym tunelu bramy ExpressRoute do MSEE. Drugi i trzeci przeskoki to router CE i lokalne adresy IP w lokalizacji lokalnej 2. Te adresy IP nie są anonsowane w sieci wirtualnej centrum. Czwarty przeskok to maszyna wirtualna w lokalizacji lokalnej 2.
 
-### <a name="path-to-the-remote-vnet"></a>Ścieżka zdalna sieć wirtualna
+### <a name="path-to-the-remote-vnet"></a>Ścieżka do zdalnej sieci wirtualnej
 
-Dane wyjściowe polecenie traceroute z piastą do maszyny Wirtualnej na platformie zdalna sieć wirtualna jest następujący:
+Traceroute dane wyjściowe z koncentratora do maszyny wirtualnej w zdalnej sieci wirtualnej są wyświetlane tutaj:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -115,15 +115,15 @@ Dane wyjściowe polecenie traceroute z piastą do maszyny Wirtualnej na platform
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest punkt końcowy tunelu bramy usługi ExpressRoute do rozwiązania MSEE. Drugim przeskokiem jest zdalna sieć wirtualna IP bramy. Drugi przeskok zakres adresów IP nie są anonsowane w sieci wirtualnej serwera centralnego. Trzeci przeskokiem jest maszyna wirtualna na zdalna sieć wirtualna.
+W tym traceroute pierwszy przeskok jest punktem końcowym tunelu bramy ExpressRoute do MSEE. Drugi przeskok to adres IP bramy zdalnej sieci wirtualnej. Zakres adresów IP drugiego przeskoku nie jest anonsowany w sieci wirtualnej centrum. Trzeci przeskok to maszyna wirtualna w zdalnej sieci wirtualnej.
 
-## <a name="data-path-from-the-spoke-vnet"></a>Ścieżka danych z sieć wirtualną będącą szprychą.
+## <a name="data-path-from-the-spoke-vnet"></a>Ścieżka danych z sieci wirtualnej szprychy
 
-Sieć wirtualną będącą szprychą udostępnia widok sieci w sieci wirtualnej serwera centralnego. Za pomocą komunikacji równorzędnej sieci wirtualnej, sieć wirtualną będącą szprychą używa łączności bramy zdalnej sieci wirtualnej serwera centralnego tak, jakby jest bezpośrednio połączona sieć wirtualną będącą szprychą.
+Sieć wirtualna szprychy udostępnia widok sieci wirtualnej centrum. Za pośrednictwem komunikacji równorzędnej sieci wirtualnej, Sieć wirtualna szprych korzysta z łączności z bramą zdalną piasty z siecią wirtualną, tak jakby była bezpośrednio podłączona do sieci wirtualnej szprych.
 
-### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej serwera centralnego
+### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej piasty
 
-Polecenie traceroute dane wyjściowe z sieć wirtualną będącą szprychą do maszyny Wirtualnej w piaście, których sieci wirtualnej jest następująca:
+Dane wyjściowe traceroute z sieci wirtualnej szprychy do maszyny wirtualnej w sieci wirtualnej centrum są wyświetlane tutaj:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -133,9 +133,9 @@ Polecenie traceroute dane wyjściowe z sieć wirtualną będącą szprychą do m
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet"></a>Ścieżka do gałęzi sieci wirtualnej
+### <a name="path-to-the-branch-vnet"></a>Ścieżka do sieci wirtualnej gałęzi
 
-Polecenie traceroute dane wyjściowe z sieć wirtualną będącą szprychą do maszyny Wirtualnej w gałęzi, którą sieci wirtualnej jest następująca:
+Dane wyjściowe traceroute z sieci wirtualnej szprychy do maszyny wirtualnej w sieci wirtualnej gałęzi są pokazane tutaj:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -147,11 +147,11 @@ Polecenie traceroute dane wyjściowe z sieć wirtualną będącą szprychą do m
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest brama sieci VPN sieci wirtualnej serwera centralnego. Drugim przeskokiem jest usługa VPN gateway gałęzi sieci wirtualnej. Adres IP bramy sieci VPN gałęzi sieci wirtualnej nie są anonsowane w ramach Centrum/sieć wirtualną będącą szprychą. Trzeci przeskoku jest maszyną Wirtualną, w gałęzi sieci wirtualnej.
+W tym traceroute pierwszy przeskok jest bramą sieci VPN koncentratora. Drugim przeskokiem jest Brama sieci VPN w oddziale firmy. Adres IP bramy sieci VPN gałęzi nie jest anonsowany w sieci wirtualnej Hub/szprychy. Trzeci przeskok to maszyna wirtualna w sieci wirtualnej gałęzi.
 
 ### <a name="path-to-on-premises-location-1"></a>Ścieżka do lokalizacji lokalnej 1
 
-Polecenie traceroute dane wyjściowe sieć wirtualną będącą szprychą do maszyny Wirtualnej w lokalnej lokalizacji 1 jest następujący:
+Dane wyjściowe traceroute z sieci wirtualnej szprychy do maszyny wirtualnej w lokalizacji lokalnej 1 są przedstawione tutaj:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -164,11 +164,11 @@ Polecenie traceroute dane wyjściowe sieć wirtualną będącą szprychą do mas
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest punkt końcowy tunelu bramy usługi ExpressRoute sieci wirtualnej koncentratora do rozwiązania MSEE. Przeskoków druga i trzecia to CE router i adresów IP sieci LAN lokalnej lokalizacji 1. Te adresy IP nie są anonsowane w Centrum/sieć wirtualną będącą szprychą. Czwarty przeskokiem jest maszynę Wirtualną w lokalizacji 1 w środowisku lokalnym.
+W tym traceroute pierwszy przeskok jest punktem końcowym tunelu bramy ExpressRoute Gateway sieci wirtualnej do MSEE. Drugi i trzeci przeskoki są routerem CE i lokalnymi adresami IP sieci LAN. Te adresy IP nie są anonsowane w sieci wirtualnej Hub/szprychy. Czwarty przeskok to maszyna wirtualna w lokalizacji lokalnej 1.
 
 ### <a name="path-to-on-premises-location-2"></a>Ścieżka do lokalizacji lokalnej 2
 
-Dane wyjściowe polecenie traceroute z sieć wirtualną będącą szprychą do maszyny Wirtualnej w lokalnej lokalizacji 2 jest następujący:
+Traceroute dane wyjściowe z sieci wirtualnej szprychy do maszyny wirtualnej w lokalizacji lokalnej 2 przedstawiono tutaj:
 
 
     C:\Users\rb>tracert 10.2.30.10
@@ -182,11 +182,11 @@ Dane wyjściowe polecenie traceroute z sieć wirtualną będącą szprychą do m
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest punkt końcowy tunelu bramy usługi ExpressRoute sieci wirtualnej koncentratora do rozwiązania MSEE. Przeskoków druga i trzecia to CE router i adresów IP sieci LAN lokalnej lokalizacji 2. Te adresy IP nie są anonsowane w Centrum/sieci wirtualne będące szprychami. Czwarty przeskokiem jest maszynę Wirtualną w lokalizacji 2 w środowisku lokalnym.
+W tym traceroute pierwszy przeskok jest punktem końcowym tunelu bramy ExpressRoute Gateway sieci wirtualnej do MSEE. Drugi i trzeci przeskoki to router CE i lokalne adresy IP w lokalizacji lokalnej 2. Te adresy IP nie są anonsowane w sieci wirtualnych Hub/szprychy. Czwarty przeskok to maszyna wirtualna w lokalizacji lokalnej 2.
 
-### <a name="path-to-the-remote-vnet"></a>Ścieżka zdalna sieć wirtualna
+### <a name="path-to-the-remote-vnet"></a>Ścieżka do zdalnej sieci wirtualnej
 
-Dane wyjściowe polecenie traceroute z sieć wirtualną będącą szprychą do maszyny Wirtualnej na platformie zdalna sieć wirtualna jest następujący:
+Dane wyjściowe traceroute z sieci wirtualnej szprychy do maszyny wirtualnej w zdalnej sieci wirtualnej są pokazane tutaj:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -198,13 +198,13 @@ Dane wyjściowe polecenie traceroute z sieć wirtualną będącą szprychą do m
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest punkt końcowy tunelu bramy usługi ExpressRoute sieci wirtualnej koncentratora do rozwiązania MSEE. Drugim przeskokiem jest zdalna sieć wirtualna IP bramy. Drugiego przeskoku zakresu adresów IP nie są anonsowane w Centrum/sieć wirtualną będącą szprychą. Trzeci przeskokiem jest maszyna wirtualna na zdalna sieć wirtualna.
+W tym traceroute pierwszy przeskok jest punktem końcowym tunelu bramy ExpressRoute Gateway sieci wirtualnej do MSEE. Drugi przeskok to adres IP bramy zdalnej sieci wirtualnej. Zakres adresów IP drugiego przeskoku nie jest anonsowany w sieci wirtualnej Hub/szprychy. Trzeci przeskok to maszyna wirtualna w zdalnej sieci wirtualnej.
 
-## <a name="data-path-from-the-branch-vnet"></a>Ścieżka danych z gałęzi sieci wirtualnej
+## <a name="data-path-from-the-branch-vnet"></a>Ścieżka danych z sieci wirtualnej gałęzi
 
-### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej serwera centralnego
+### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej piasty
 
-Polecenie traceroute dane wyjściowe z gałęzi sieci wirtualnej do maszyny Wirtualnej w piaście, których sieci wirtualnej jest następująca:
+Dane wyjściowe traceroute z sieci wirtualnej gałęzi do maszyny wirtualnej w sieci wirtualnej centrum są pokazane tutaj:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -216,11 +216,11 @@ Polecenie traceroute dane wyjściowe z gałęzi sieci wirtualnej do maszyny Wirt
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest usługa VPN gateway gałęzi sieci wirtualnej. Drugim przeskokiem jest brama sieci VPN sieci wirtualnej serwera centralnego. Adres IP bramy sieci VPN sieci wirtualnej serwera centralnego nie są anonsowane w zdalnej sieci wirtualnej. Trzeci przeskokiem jest maszyna wirtualna w sieci wirtualnej serwera centralnego.
+W tym traceroute pierwszy przeskok to Brama sieci VPN gałęzi. Drugi przeskok to Brama sieci VPN koncentratora. Adres IP bramy sieci VPN koncentratora nie jest anonsowany w zdalnej sieci wirtualnej. Trzeci przeskok to maszyna wirtualna w sieci wirtualnej centrum.
 
-### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieć wirtualną będącą szprychą.
+### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieci wirtualnej szprychy
 
-Polecenie traceroute dane wyjściowe z gałęzi sieci wirtualnej do maszyny Wirtualnej w szprysze, których sieci wirtualnej jest następująca:
+Traceroute wyjście z sieci wirtualnej gałęzi do maszyny wirtualnej w sieci wirtualnej szprychy jest pokazane tutaj:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -232,11 +232,11 @@ Polecenie traceroute dane wyjściowe z gałęzi sieci wirtualnej do maszyny Wirt
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest usługa VPN gateway gałęzi sieci wirtualnej. Drugim przeskokiem jest brama sieci VPN sieci wirtualnej serwera centralnego. Adres IP bramy sieci VPN sieci wirtualnej serwera centralnego nie są anonsowane w zdalnej sieci wirtualnej. Trzeci przeskokiem jest maszyna wirtualna na sieć wirtualną będącą szprychą.
+W tym traceroute pierwszy przeskok to Brama sieci VPN gałęzi. Drugi przeskok to Brama sieci VPN koncentratora. Adres IP bramy sieci VPN koncentratora nie jest anonsowany w zdalnej sieci wirtualnej. Trzeci przeskok to maszyna wirtualna w sieci wirtualnej szprych.
 
 ### <a name="path-to-on-premises-location-1"></a>Ścieżka do lokalizacji lokalnej 1
 
-Dane wyjściowe polecenie traceroute z gałęzi sieci wirtualnej do maszyny Wirtualnej w lokalnej lokalizacji 1 jest następujący:
+Dane wyjściowe traceroute z sieci wirtualnej gałęzi do maszyny wirtualnej w lokalizacji lokalnej 1 są przedstawione tutaj:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -250,11 +250,11 @@ Dane wyjściowe polecenie traceroute z gałęzi sieci wirtualnej do maszyny Wirt
 
     Trace complete.
 
-W tym traceroute pierwszym przeskokiem jest usługa VPN gateway gałęzi sieci wirtualnej. Drugim przeskokiem jest brama sieci VPN sieci wirtualnej serwera centralnego. Adres IP bramy sieci VPN sieci wirtualnej serwera centralnego nie są anonsowane w zdalnej sieci wirtualnej. Trzeci przeskokiem jest punkt zakończenia tunelu sieci VPN na routerze CE podstawowego. Czwarty przeskokiem jest wewnętrzny adres IP 1 lokalizacji lokalnej. Ten adres IP sieci LAN nie są anonsowane za routerem CE. Piąty przeskoku jest lokalizacją docelową maszynę Wirtualną w lokalizacji 1 w środowisku lokalnym.
+W tym traceroute pierwszy przeskok to Brama sieci VPN gałęzi. Drugi przeskok to Brama sieci VPN koncentratora. Adres IP bramy sieci VPN koncentratora nie jest anonsowany w zdalnej sieci wirtualnej. Trzeci przeskok to punkt końcowy tunelu sieci VPN na podstawowym routerze CE. Czwarty przeskok to wewnętrzny adres IP lokalizacji lokalnej 1. Ten adres IP sieci LAN nie jest anonsowany poza routerem CE. Piąty przeskok to docelowa maszyna wirtualna w lokalizacji lokalnej 1.
 
-### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Ścieżka do lokalnej lokalizacji 2 i zdalna sieć wirtualna
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Ścieżka do lokalizacji lokalnej 2 i zdalnej sieci wirtualnej
 
-Tak jak Omówiliśmy to w analizie płaszczyzna kontroli, gałąź sieć wirtualna ma nie widoczność 2 lokalizacji lokalnej lub zdalnej sieci wirtualnej dla konfiguracji sieci. Upewnij się, z następującymi wynikami ping: 
+Jak opisano w analizie płaszczyzny kontroli, Sieć wirtualna gałęzi nie ma wglądu w lokalizację lokalną 2 lub do zdalnej sieci wirtualnej na konfigurację sieci. Następujące wyniki polecenia ping potwierdzają: 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -278,11 +278,11 @@ Tak jak Omówiliśmy to w analizie płaszczyzna kontroli, gałąź sieć wirtual
     Ping statistics for 10.17.30.4:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-## <a name="data-path-from-on-premises-location-1"></a>Ścieżka danych z zakresu od 1 do lokalizacji lokalnej
+## <a name="data-path-from-on-premises-location-1"></a>Ścieżka danych z lokalizacji lokalnej 1
 
-### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej serwera centralnego
+### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej piasty
 
-Polecenie traceroute dane wyjściowe z zakresu od 1 do lokalizacji lokalnej do maszyny Wirtualnej w piaście, których sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z lokalizacji lokalnej 1 do maszyny wirtualnej w sieci wirtualnej centrum są wyświetlane tutaj:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -296,15 +296,15 @@ Polecenie traceroute dane wyjściowe z zakresu od 1 do lokalizacji lokalnej do m
 
     Trace complete.
 
-W tym traceroute przeskoków pierwsze dwa są częścią sieci lokalnej. Trzeci przeskokiem jest podstawowy interfejs MSEE skierowana routera CE. Czwarty przeskokiem jest brama usługi ExpressRoute z sieci wirtualnej serwera centralnego. Zakres adresów IP bramy usługi ExpressRoute z sieci wirtualnej serwera centralnego nie są anonsowane do sieci lokalnej. Piąty przeskokiem jest docelowej maszyny Wirtualnej.
+W tym traceroute pierwsze dwa przeskoki są częścią sieci lokalnej. Trzeci przeskok to podstawowy interfejs MSEE, który jest przeznaczony dla routera CE. Czwarty przeskok to brama ExpressRoute sieci wirtualnej centrum. Zakres adresów IP bramy ExpressRoute sieci wirtualnej koncentratora nie jest anonsowany w przypadku lokalnej pamięci. Piąty przeskok to docelowa maszyna wirtualna.
 
-Usługa Network Watcher zawiera tylko widokowi skoncentrowanemu na platformie Azure. Perspektywy w środowisku lokalnym używamy usługi Azure Network Performance Monitor. Rozwiązanie Network Performance Monitor zawiera agentów, które można zainstalować na serwerach w sieci poza systemem Azure dla analizy ścieżki danych.
+Network Watcher zapewnia tylko widok skoncentrowany na platformie Azure. W przypadku perspektyw lokalnych korzystamy z platformy Azure Network Performance Monitor. Network Performance Monitor udostępnia agentów, którzy można instalować na serwerach w sieci poza platformą Azure na potrzeby analizy ścieżki danych.
 
-Na poniższej ilustracji przedstawiono widok topologii połączeń maszyny Wirtualnej 1 lokalizacji lokalnych z maszyną wirtualną na piastą za pośrednictwem usługi ExpressRoute:
+Na poniższej ilustracji przedstawiono widok topologii łączności maszyny wirtualnej w lokalizacji lokalnej 1 z maszyną wirtualną w sieci wirtualnej koncentratora za pośrednictwem ExpressRoute:
 
-[![4]][4]
+![4][4]
 
-Zgodnie z wcześniejszym opisem konfiguracji testu używa sieci VPN lokacja lokacja jako połączenia kopii zapasowych dla usługi ExpressRoute między 1 lokalizacji lokalnej do sieci wirtualnej serwera centralnego. Aby przetestować ścieżki kopii zapasowej danych, możemy wywołać wystąpił błąd linku ExpressRoute między router lokalny 1 lokalizacji głównej CE i odpowiedniego rozwiązania MSEE. Do wywołania błąd linku ExpressRoute, należy zamknąć interfejs CE, który twarzy MSEE:
+Jak wspomniano wcześniej, Konfiguracja testu używa sieci VPN typu lokacja-lokacja jako łączności kopii zapasowej dla ExpressRoute między lokalizacją lokalną 1 i siecią wirtualną piasty. Aby przetestować ścieżkę danych kopii zapasowej, przyciągnąćmy błąd łącza ExpressRoute między lokalnym routerem CE i odpowiednim MSEE. Aby wywołać błąd łącza ExpressRoute, Zamknij interfejs CE, który nawiąże MSEE:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -316,15 +316,15 @@ Zgodnie z wcześniejszym opisem konfiguracji testu używa sieci VPN lokacja loka
 
     Trace complete.
 
-Na poniższej ilustracji przedstawiono widok topologii połączeń maszyny Wirtualnej 1 lokalizacji lokalnych z maszyną wirtualną w sieci wirtualnej serwera centralnego za pośrednictwem połączenia sieci VPN lokacja lokacja, gdy połączenia usługi ExpressRoute nie działa:
+Na poniższej ilustracji przedstawiono widok topologii łączności maszyny wirtualnej w lokalizacji lokalnej 1 z maszyną wirtualną w sieci wirtualnej koncentratora za pośrednictwem połączenia VPN między lokacjami, gdy ExpressRoute łączność nie działa:
 
-[![5]][5]
+![5][5]
 
-### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieć wirtualną będącą szprychą.
+### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieci wirtualnej szprychy
 
-Polecenie traceroute dane wyjściowe z zakresu od 1 do lokalizacji lokalnej do maszyny Wirtualnej w szprysze, których sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z lokalizacji lokalnej 1 do maszyny wirtualnej w sieci wirtualnej szprychy są wyświetlane tutaj:
 
-Teraz przywrócić połączenia podstawowej usługi ExpressRoute w celu analizy danych ścieżki w kierunku sieć wirtualną będącą szprychą:
+Wróćmy do ExpressRoute podstawowej łączności, aby przeprowadzić analizę ścieżki danych w kierunku sieci wirtualnej szprychy:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -338,11 +338,11 @@ Teraz przywrócić połączenia podstawowej usługi ExpressRoute w celu analizy 
 
     Trace complete.
 
-Wyświetlenie podstawowej łączności 1 usługi ExpressRoute w pozostałej części analizy ścieżki danych.
+Wywołaj podstawową łączność ExpressRoute 1 dla pozostałej części analizy ścieżki danych.
 
-### <a name="path-to-the-branch-vnet"></a>Ścieżka do gałęzi sieci wirtualnej
+### <a name="path-to-the-branch-vnet"></a>Ścieżka do sieci wirtualnej gałęzi
 
-Polecenie traceroute dane wyjściowe z zakresu od 1 do lokalizacji lokalnych z maszyną wirtualną w gałęzi, którą sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z lokalizacji lokalnej 1 do maszyny wirtualnej w sieci wirtualnej gałęzi jest pokazane tutaj:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -356,7 +356,7 @@ Polecenie traceroute dane wyjściowe z zakresu od 1 do lokalizacji lokalnych z m
 
 ### <a name="path-to-on-premises-location-2"></a>Ścieżka do lokalizacji lokalnej 2
 
-Omawiamy w [analizy płaszczyznę sterowania][Control-Analysis], 1 lokalizacji lokalnej mają wgląd w nie 2 lokalizacji w środowisku lokalnym na konfigurację sieci. Upewnij się, z następującymi wynikami ping: 
+Podczas omawiania [analizy płaszczyzny kontroli][Control-Analysis], lokalizacja lokalna 1 nie ma wglądu w lokalizację lokalną 2 dla konfiguracji sieci. Następujące wyniki polecenia ping potwierdzają: 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -369,9 +369,9 @@ Omawiamy w [analizy płaszczyznę sterowania][Control-Analysis], 1 lokalizacji l
     Ping statistics for 10.1.31.10:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-### <a name="path-to-the-remote-vnet"></a>Ścieżka zdalna sieć wirtualna
+### <a name="path-to-the-remote-vnet"></a>Ścieżka do zdalnej sieci wirtualnej
 
-Dane wyjściowe polecenie traceroute z zakresu od 1 do lokalizacji lokalnej maszyny Wirtualnej na platformie zdalna sieć wirtualna jest następujący:
+Traceroute dane wyjściowe z lokalizacji lokalnej 1 do maszyny wirtualnej w zdalnej sieci wirtualnej są wyświetlane tutaj:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -385,11 +385,11 @@ Dane wyjściowe polecenie traceroute z zakresu od 1 do lokalizacji lokalnej masz
 
     Trace complete.
 
-## <a name="data-path-from-on-premises-location-2"></a>Ścieżka danych z lokalnej lokalizacji 2
+## <a name="data-path-from-on-premises-location-2"></a>Ścieżka danych z lokalizacji lokalnej 2
 
-### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej serwera centralnego
+### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej piasty
 
-Polecenie traceroute dane wyjściowe z lokalnej lokalizacji 2 do maszyny Wirtualnej w piaście, których sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z lokalizacji lokalnej 2 do maszyny wirtualnej w sieci wirtualnej centrum są wyświetlane tutaj:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -403,9 +403,9 @@ Polecenie traceroute dane wyjściowe z lokalnej lokalizacji 2 do maszyny Wirtual
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieć wirtualną będącą szprychą.
+### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieci wirtualnej szprychy
 
-Polecenie traceroute dane wyjściowe z 2 lokalizacji lokalnych z maszyną wirtualną w szprysze, których sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z lokalizacji lokalnej 2 do maszyny wirtualnej w sieci wirtualnej szprychy są pokazane tutaj:
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -418,15 +418,15 @@ Polecenie traceroute dane wyjściowe z 2 lokalizacji lokalnych z maszyną wirtua
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Ścieżka do gałęzi sieci wirtualnej, w środowisku lokalnym 1 lokalizacji i zdalna sieć wirtualna
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Ścieżka do sieci wirtualnej gałęzi, lokalizacji lokalnej 1 i zdalnej sieci wirtualnej
 
-Omawiamy w [analizy płaszczyznę sterowania][Control-Analysis], 1 lokalizacji lokalnych ma nie widoczność gałęzi sieci wirtualnej, 1 lokalizacji lokalnej lub zdalna sieć wirtualna dla konfiguracji sieci. 
+W miarę dyskusji w [analizie płaszczyzny kontroli][Control-Analysis], lokalizacja lokalna 1 nie ma wglądu w sieć wirtualną gałęzi, do lokalizacji lokalnej 1 lub do zdalnej sieci wirtualnej zgodnie z konfiguracją sieci. 
 
-## <a name="data-path-from-the-remote-vnet"></a>Ścieżka danych z zdalna sieć wirtualna
+## <a name="data-path-from-the-remote-vnet"></a>Ścieżka danych ze zdalnej sieci wirtualnej
 
-### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej serwera centralnego
+### <a name="path-to-the-hub-vnet"></a>Ścieżka do sieci wirtualnej piasty
 
-Polecenie traceroute dane wyjściowe z zdalna sieć wirtualna do maszyny Wirtualnej w piaście, których sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z zdalnej sieci wirtualnej do maszyny wirtualnej w sieci wirtualnej centrum są wyświetlane tutaj:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -438,9 +438,9 @@ Polecenie traceroute dane wyjściowe z zdalna sieć wirtualna do maszyny Wirtual
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieć wirtualną będącą szprychą.
+### <a name="path-to-the-spoke-vnet"></a>Ścieżka do sieci wirtualnej szprychy
 
-Polecenie traceroute dane wyjściowe z zdalna sieć wirtualna do maszyny Wirtualnej w szprysze, których sieci wirtualnej jest następująca:
+Traceroute dane wyjściowe z zdalnej sieci wirtualnej do maszyny wirtualnej w sieci wirtualnej szprychy są pokazane tutaj:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -452,13 +452,13 @@ Polecenie traceroute dane wyjściowe z zdalna sieć wirtualna do maszyny Wirtual
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Ścieżka do gałęzi sieci wirtualnej i lokalnej lokalizacji 2
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Ścieżka do sieci wirtualnej gałęzi i lokalizacji lokalnej 2
 
-Omawiamy w [analizy płaszczyznę sterowania][Control-Analysis], zdalna sieć wirtualna ma nie wgląd, gałęzi sieci wirtualnej lub 2 lokalizacji w środowisku lokalnym na konfigurację sieci. 
+Podczas omawiania [analizy płaszczyzny kontroli][Control-Analysis]zdalna Sieć wirtualna nie ma wglądu w sieć wirtualną gałęzi ani do lokalizacji lokalnej 2 zgodnie z konfiguracją sieci. 
 
 ### <a name="path-to-on-premises-location-1"></a>Ścieżka do lokalizacji lokalnej 1
 
-Polecenie traceroute dane wyjściowe z zdalna sieć wirtualna, do maszyny Wirtualnej w lokalnej lokalizacji 1 jest następujący:
+Dane wyjściowe traceroute z zdalnej sieci wirtualnej do maszyny wirtualnej w lokalizacji lokalnej 1 są przedstawione tutaj:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -472,49 +472,49 @@ Polecenie traceroute dane wyjściowe z zdalna sieć wirtualna, do maszyny Wirtua
     Trace complete.
 
 
-## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Usługi ExpressRoute i lokacja lokacja połączenia sieci VPN w tandem
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute i połączenie sieci VPN typu lokacja-lokacja wspólnie
 
-###  <a name="site-to-site-vpn-over-expressroute"></a>Site-to-site VPN za pośrednictwem usługi ExpressRoute
+###  <a name="site-to-site-vpn-over-expressroute"></a>Sieć VPN typu lokacja-lokacja za pośrednictwem ExpressRoute
 
-Sieć VPN lokacja lokacja można skonfigurować przy użyciu usługi ExpressRoute komunikacji równorzędnej firmy Microsoft do prywatnie wymiany danych między siecią lokalną i sieciami wirtualnymi platformy Azure. W przypadku tej konfiguracji można wymiany danych z poufność, autentyczności i integralności. Wymiana danych jest także powtarzaniu. Aby uzyskać więcej informacji na temat konfigurowania sieci VPN lokacja lokacja protokołu IPsec w trybie tunelowania za pomocą komunikacji równorzędnej firmy Microsoft usługi ExpressRoute, zobacz [Site-to-site VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute][S2S-Over-ExR]. 
+Sieć VPN typu lokacja-lokacja można skonfigurować za pomocą komunikacji równorzędnej firmy Microsoft, aby prywatnie wymieniać dane między siecią lokalną i usługą Azure sieci wirtualnych. Za pomocą tej konfiguracji można wymieniać dane z poufnością, autentycznością i integralnością. Wymiana danych to również ochrona przed odtwarzaniem. Aby uzyskać więcej informacji o sposobie konfigurowania sieci VPN typu lokacja-lokacja w trybie tunelowania przy użyciu ExpressRoute komunikacji równorzędnej firmy Microsoft, zobacz [sieci VPN typu lokacja-lokacja za pośrednictwem usługi ExpressRoute Microsoft peering][S2S-Over-ExR]. 
 
-Głównym ograniczeniem konfigurowania sieci VPN lokacja lokacja, który korzysta z komunikacji równorzędnej firmy Microsoft jest przepływność. Przepływność za pośrednictwem tunelu IPsec jest ograniczona przez pojemność bramy sieci VPN. Przepływność bramy sieci VPN jest mniejszy niż przepływności usługi ExpressRoute. W tym scenariuszu przy użyciu tunelu IPsec, wysoce bezpieczna ruchu i za pomocą prywatnej komunikacji równorzędnej dla innego ruchu pomaga zoptymalizować wykorzystanie przepustowości usługi ExpressRoute.
+Podstawowe ograniczenie konfiguracji sieci VPN typu lokacja-lokacja, która używa komunikacji równorzędnej firmy Microsoft, to przepływność. Przepływność przez tunel IPsec jest ograniczona przez pojemność bramy sieci VPN. Przepływność bramy sieci VPN jest mniejsza niż ExpressRoute przepływność. W tym scenariuszu użycie tunelu IPsec w przypadku wysoce bezpiecznego ruchu i użycie prywatnej komunikacji równorzędnej dla całego ruchu pomaga zoptymalizować wykorzystanie przepustowości ExpressRoute.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Site-to-site VPN jako bezpieczna ścieżka trybu failover dla usługi ExpressRoute
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Sieć VPN typu lokacja-lokacja jako bezpieczna ścieżka trybu failover dla usługi ExpressRoute
 
-Usługa ExpressRoute służy jako parę nadmiarowych obwodu, aby zapewnić wysoką dostępność. Magazynu geograficznie nadmiarowego połączenia usługi ExpressRoute można skonfigurować w różnych regionach platformy Azure. Również jak pokazano w naszej konfiguracji testu, w obrębie regionu Azure, można użyć sieci VPN lokacja lokacja można utworzyć ścieżki pracy awaryjnej dla usługi połączenia usługi ExpressRoute. Gdy te same prefiksy są anonsowane za pośrednictwem usługi ExpressRoute oraz sieci VPN lokacja lokacja, Azure priorytetem usługi ExpressRoute. Aby uniknąć asymetryczne routingu usługi ExpressRoute i sieci VPN typu lokacja lokacja, lokalne konfiguracji sieci, należy również gospodarzami przy użyciu połączenia usługi ExpressRoute używa połączenie sieci VPN typu lokacja lokacja.
+ExpressRoute służy jako para nadmiarowego obwodu w celu zapewnienia wysokiej dostępności. W różnych regionach świadczenia usługi Azure można skonfigurować ExpressRoute Geograficznie nadmiarowy. Ponadto, jak pokazano w naszej konfiguracji testowej w regionie świadczenia usługi Azure, można użyć sieci VPN typu lokacja-lokacja, aby utworzyć ścieżkę trybu failover dla łączności ExpressRoute. Gdy te same prefiksy są anonsowane zarówno w ExpressRoute, jak i w sieci VPN typu lokacja-lokacja, platforma Azure ma priorytet ExpressRoute. Aby uniknąć asymetrycznego routingu między ExpressRoute i siecią VPN typu lokacja-lokacja, konfiguracja sieci lokalnej powinna również natłokować przy użyciu połączenia ExpressRoute przed użyciem połączenia sieci VPN typu lokacja-lokacja.
 
-Aby uzyskać więcej informacji o sposobie konfigurowania współistniejących połączeń usługi ExpressRoute i sieci VPN lokacja lokacja, zobacz [usługi ExpressRoute i współistnienia lokacja lokacja][ExR-S2S-CoEx].
+Aby uzyskać więcej informacji o konfigurowaniu współistniejących połączeń dla ExpressRoute i sieci VPN typu lokacja-lokacja, zobacz [współistnienie ExpressRoute i lokacja-][ExR-S2S-CoEx]lokacja.
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Rozszerzanie zaplecza łączność sieci wirtualne będące szprychami i biur
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Zwiększanie łączności zaplecza z sieci wirtualnych i lokalizacjami gałęzi
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Typu gwiazda połączenie między sieciami przy użyciu komunikacji równorzędnej sieci wirtualnych
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Łączność z siecią wirtualną przy użyciu komunikacji równorzędnej sieci wirtualnej
 
-Gwiazda architektury sieci wirtualnej jest powszechnie używana. Piasta to sieć wirtualną na platformie Azure, która działa jako centralny punkt łączności między Twoje sieci wirtualne będące szprychami i siecią lokalną. Szprychy są sieciami wirtualnymi równorzędnymi z piastą, oraz tych, które można użyć do izolowania obciążeń. Ruch przepływa między lokalnym centrum danych a piastą za pośrednictwem połączenia usługi ExpressRoute lub sieci VPN. Aby uzyskać więcej informacji na temat architektury, zobacz [zaimplementować topologii sieci piasty i szprych na platformie Azure][Hub-n-Spoke].
+Architektura sieci wirtualnej typu Hub i szprych jest szeroko używana. Centrum to sieć wirtualna na platformie Azure, która działa jako centralny punkt łączności między satelitami sieci wirtualnych i sieci lokalnej. Szprychy są sieci wirtualnych tego elementu równorzędnego z koncentratorem i którego można użyć do izolowania obciążeń. Przepływy ruchu między lokalnym centrum danych a centrum za pośrednictwem połączenia ExpressRoute lub sieci VPN. Aby uzyskać więcej informacji o architekturze, zobacz [implementowanie topologii sieci Hub i gwiazdy na platformie Azure][Hub-n-Spoke].
 
-W sieci wirtualnej komunikacji równorzędnej w regionie sieci wirtualne będące szprychami można użyć bramy sieci wirtualnej koncentratora (bramy sieci VPN i ExpressRoute) do komunikowania się z sieciami zdalnymi.
+W przypadku komunikacji równorzędnej sieci wirtualnych w obrębie regionu szprycha sieci wirtualnych może używać bram sieci wirtualnej Hub (zarówno bramy VPN, jak i ExpressRoute) do komunikowania się z sieciami zdalnymi.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Połączenie między sieciami gałęzi przy użyciu sieci VPN typu lokacja lokacja
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Łączność między sieciami wirtualnymi przy użyciu połączenia VPN typu lokacja-lokacja
 
-Możesz chcieć gałęzi sieci wirtualne, które znajdują się w różnych regionach i sieciami lokalnymi do komunikowania się ze sobą za pośrednictwem sieci wirtualnej serwera centralnego. Natywne rozwiązanie platformy Azure dla tej konfiguracji jest połączenie sieci VPN typu lokacja lokacja przy użyciu sieci VPN. Alternatywą jest na potrzeby routingu w piaście wirtualnego urządzenia sieciowego (WUS).
+Możesz potrzebować oddziału sieci wirtualnych, które znajdują się w różnych regionach, i sieci lokalnych, aby komunikować się ze sobą za pośrednictwem sieci wirtualnej centrum. Natywne rozwiązanie platformy Azure dla tej konfiguracji to połączenie sieci VPN typu lokacja-lokacja przy użyciu sieci VPN. Alternatywą jest użycie wirtualnego urządzenia sieciowego (urządzenie WUS) do routingu w centrum.
 
-Aby uzyskać więcej informacji, zobacz [co to jest usługa VPN Gateway?] [ VPN] i [wdrożenia o wysokiej dostępności urządzeń WUS][Deploy-NVA].
+Aby uzyskać więcej informacji, zobacz [co to jest VPN Gateway?][VPN] i [Wdróż urządzenie WUS o wysokiej][Deploy-NVA]dostępności.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [ExpressRoute — często zadawane pytania] [ ExR-FAQ] do:
--   Dowiedz się, jak wiele obwodów usługi ExpressRoute, możesz nawiązać połączenie bramy usługi ExpressRoute.
--   Dowiedz się, ile bram usługi ExpressRoute, można połączyć z obwodem usługi ExpressRoute.
--   Poznaj inne limity skalowania usługi expressroute.
+Zobacz [często zadawane pytania dotyczące ExpressRoute][ExR-FAQ] :
+-   Dowiedz się, ile obwodów usługi ExpressRoute można połączyć z bramą ExpressRoute.
+-   Dowiedz się, ile bram ExpressRoute można połączyć z obwodem ExpressRoute.
+-   Dowiedz się więcej na temat innych limitów skalowania ExpressRoute.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "widok łączności z piastą sieć wirtualną będącą szprychą usługi network Watcher"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "widok połączeń sieci wirtualnej serwera centralnego z gałęzi sieci wirtualnej usługi network Watcher"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "widoku siatki łączności z piastą do gałęzi sieci wirtualnej usługi network Watcher"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "widok rozwiązania network Performance Monitor połączeń maszyny Wirtualnej 1 lokalizacji z piastą za pośrednictwem usługi ExpressRoute 1"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "widok rozwiązania network Performance Monitor połączeń maszyny Wirtualnej 1 lokalizacji z piastą za pośrednictwem sieci VPN lokacja lokacja"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "Network Watcher widoku łączności z sieci wirtualnej z koncentratorem do sieci wirtualnej szprychy"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "Network Watcher widoku łączności z sieci wirtualnej z koncentratorem do sieci wirtualnej gałęzi"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "Network Watcher widok siatki łączności z sieci wirtualnej koncentratora do sieci wirtualnej gałęzi"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "Network Performance Monitor widoku łączności z maszyny wirtualnej lokalizacji 1 do sieci wirtualnej koncentratora za pośrednictwem ExpressRoute 1"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "Network Performance Monitor widoku łączności z maszyny wirtualnej lokalizacji 1 do sieci wirtualnej koncentratora za pośrednictwem połączenia VPN typu lokacja-lokacja"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

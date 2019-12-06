@@ -2,28 +2,24 @@
 title: Jak przeprowadzić integrację z usługą Azure Active Directory | Microsoft Docs
 description: Poznaj zalety integracji aplikacji z usługą Azure Active Directory i uzyskaj zasoby dla funkcji, takich jak uproszczone logowanie, zarządzanie tożsamościami, uwierzytelnianie wieloskładnikowe i kontrola dostępu.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/08/2019
 ms.author: ryanwi
-ms.reviewer: bryanla
+ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2815fbebd54a1e373aa8b3058f85d092c0bb098f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374049"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844893"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 
@@ -31,7 +27,7 @@ ms.locfileid: "72374049"
 
 Ten artykuł zawiera informacje na temat korzyści z integracji aplikacji z usługą Azure Active Directory (Azure AD) i uzyskiwaniem zasobów do integracji. Usługa Azure AD udostępnia organizacjom klasy korporacyjnej Zarządzanie tożsamościami dla aplikacji w chmurze. Integracja z usługą Azure AD zapewnia użytkownikom usprawnione środowisko logowania i pomaga aplikacji z zasadami IT.
 
-## <a name="how-to-integrate"></a>Jak zintegrować
+## <a name="how-to-integrate"></a>Sposób przeprowadzania integracji
 
 Istnieje kilka sposobów integracji aplikacji z usługą Azure AD. Korzystaj z kilku z tych scenariuszy, które są odpowiednie dla Twojej aplikacji.
 

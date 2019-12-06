@@ -1,22 +1,22 @@
 ---
-title: Portal użytkowników serwera usługi Azure MFA — usługi Azure Active Directory
+title: Portal użytkowników dla serwera usługi Azure MFA — Azure Active Directory
 description: Wprowadzenie do usługi Azure MFA i portalu użytkowników.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6feceff234bed51bcf6adf34f51313fa348d77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 886e6a33428d672a40eae821e035d0b5b7f25578
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056054"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848174"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Portal użytkowników serwera usługi Azure Multi-Factor Authentication
 
@@ -29,9 +29,9 @@ Można skonfigurować administratorów portalu użytkowników oraz przyznać im 
 W zależności od środowiska można wdrożyć portal użytkowników na tym samym serwerze co serwer usługi Azure Multi-Factor Authentication lub na innym serwerze internetowym.
 
 > [!IMPORTANT]
-> Począwszy od 1 lipca 2019 firma Microsoft będzie oferować już serwer MFA w przypadku nowych wdrożeń. Nowi klienci, którzy chcesz wymagać uwierzytelniania wieloskładnikowego od użytkowników należy używać oparte na chmurze usługi Azure Multi-Factor Authentication. Istniejący klienci, którzy aktywowali usługę MFA Server przed 1 lipca będzie można pobrać najnowszą wersję, a przyszłe aktualizacje i Generuj poświadczenia aktywacji w zwykły sposób.
+> Od 1 lipca 2019 firma Microsoft nie będzie już oferować serwera MFA dla nowych wdrożeń. Nowi klienci, którzy chcą wymagać uwierzytelniania wieloskładnikowego od użytkowników, powinni korzystać z usługi Azure Multi-Factor Authentication opartej na chmurze. Istniejący klienci, którzy aktywowali serwer usługi MFA przed 1 lipca, będą mogli pobrać najnowszą wersję, przyszłe aktualizacje i generować poświadczenia aktywacji w zwykły sposób.
 
-![Strony logowania portalu użytkowników serwera usługi MFA](./media/howto-mfaserver-deploy-userportal/portal.png)
+![Strona logowania portalu użytkowników serwera usługi MFA](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > Portal użytkowników jest dostępny tylko na serwerze usługi Azure Multi-Factor Authentication. Jeśli korzystasz z usługi Multi-Factor Authentication w chmurze, przekieruj użytkowników do artykułu [Konfigurowanie konta na potrzeby weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-first-time.md) lub [Zarządzanie ustawieniami weryfikacji dwuetapowej](../user-help/multi-factor-authentication-end-user-manage-settings.md).
@@ -92,7 +92,7 @@ Jeśli organizacja używa aplikacji Microsoft Authenticator jako jednej z metod 
 
 Zainstalowanie portalu użytkowników na serwerze innym niż serwer usługi Azure Multi-Factor Authentication wymaga wykonania następujących kroków:
 
-1. **Na serwerze usługi MFA**, przejdź do ścieżki instalacji (przykład: C:\Program Files\Multi-Factor Authentication Server), a następnie skopiuj plik **MultiFactorAuthenticationUserPortalSetup64** do lokalizacji dostępnej dla serwera dostępnego z Internetu, gdy zostanie ona zainstalowana.
+1. **Na serwerze usługi MFA** przejdź do ścieżki instalacji (przykład: C:\Program Files\Multi-Factor Authentication Server), a następnie skopiuj plik **MultiFactorAuthenticationUserPortalSetup64** do lokalizacji dostępnej dla serwera z dostępem do Internetu, na którym zostanie on zainstalowany.
 2. **Na internetowym serwerze dostępnym z Internetu** uruchom plik instalacji MultiFactorAuthenticationUserPortalSetup64 jako administrator, w miarę potrzeb zmieniając miejsce instalacji, a następnie, jeśli chcesz, zmień nazwę katalogu wirtualnego na krótką.
 3. Powiąż certyfikat SSL z witryną w usługach IIS.
 
@@ -118,7 +118,7 @@ Po zainstalowaniu portalu użytkowników należy skonfigurować serwer usługi A
 
 1. W konsoli serwera usługi Azure Multi-Factor Authentication kliknij ikonę **Portal użytkowników**. Na karcie Ustawienia wprowadź adres URL portalu użytkowników w polu tekstowym **Adres URL portalu użytkowników**. Jeśli włączono funkcję e-mail, podany adres URL zostanie uwzględniony w wiadomości e-mail wysyłanej do użytkowników po ich zaimportowaniu na serwer usługi Azure Multi-Factor Authentication.
 2. Wybierz ustawienia, których chcesz użyć w portalu użytkowników. Jeśli na przykład użytkownicy mogą wybierać swoje metody uwierzytelniania, upewnij się, że jest zaznaczona opcja **Zezwalaj użytkownikom na wybór metody** oraz poszczególne metody uwierzytelniania, spośród których mogą wybierać użytkownicy.
-3. Zdefiniuj, którzy użytkownicy powinni być administratorami, na karcie **Administratorzy**. Możesz utworzyć szczegółowe uprawnienia administracyjne, korzystając z pól wyboru i list rozwijanych w polach Dodaj/Edytuj.
+3. Zdefiniuj użytkowników, którzy powinni być administratorami na karcie **administratorzy** . Można utworzyć szczegółowe uprawnienia administracyjne przy użyciu pól wyboru i list rozwijanych w polach Dodaj/Edytuj.
 
 Konfiguracja opcjonalna:
 
@@ -143,18 +143,18 @@ Serwer usługi Azure Multi-Factor Authentication zapewnia kilka opcji związanyc
 | Użyj pytań zabezpieczających w przypadku uwierzytelniania rezerwowego | Umożliwia udzielenie odpowiedzi na pytania zabezpieczające w przypadku niepowodzenia weryfikacji dwuetapowej. Można określić liczbę pytań zabezpieczających, na które należy udzielić poprawnej odpowiedzi. |
 | Zezwalaj użytkownikom na skojarzenie tokenu OATH innej firmy | Pozwala użytkownikom na określenie tokenu OATH innej firmy. |
 | Użyj tokenu OATH w przypadku uwierzytelniania rezerwowego | Umożliwia korzystanie z tokenów OATH w przypadku niepowodzenia weryfikacji dwuetapowej. Można również określić limit czasu sesji w minutach. |
-| Włącz rejestrowanie | Włącza funkcję rejestrowania w portalu użytkowników. Pliki dziennika znajdują się w lokalizacji: C:\Program Files\Multi-Factor Authentication Server\Logs. |
+| Włącz rejestrowanie | Włącza funkcję rejestrowania w portalu użytkowników. Pliki dziennika znajdują się w folderze: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
 > [!IMPORTANT]
-> Począwszy od marca 2019 opcji połączenia telefonicznego nie będą dostępne dla użytkowników serwera usługi MFA w dzierżawach bezpłatnej/wersji próbnej usługi Azure AD. Ta zmiana nie wpływa na wiadomości SMS. Połączenie telefoniczne będą nadal dostępne dla użytkowników w płatną dzierżaw usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżaw bezpłatnej/wersji próbnej usługi Azure AD.
+> Począwszy od marca 2019 opcje połączenia telefonicznego nie będą dostępne dla użytkowników serwera usługi MFA w bezpłatnych/bezpłatnych dzierżawach Azure AD. Ta zmiana nie ma wpływu na wiadomości SMS. Połączenie telefoniczne będzie nadal dostępne dla użytkowników w płatnych dzierżawach usługi Azure AD. Ta zmiana ma wpływ tylko na dzierżawy usługi Azure AD bezpłatne/próbne.
 
 Te ustawienia stają się widoczne dla użytkownika w portalu po ich włączeniu oraz po zalogowaniu się do tego portalu.
 
-![Zarządzanie kontem serwera usługi MFA za pomocą portalu użytkownika](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![Zarządzanie kontem serwera usługi MFA przy użyciu portalu użytkowników](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Samodzielna rejestracja użytkownika
 
-Jeśli chcesz, aby użytkownicy mogli się logować i rejestrować, musisz wybrać opcje **Zezwalaj użytkownikom na logowanie** i **Zezwalaj na rejestrację użytkownika** w obszarze karty Ustawienia. Pamiętaj, że wybrane ustawienia wpływają na środowisko logowania użytkowników.
+Jeśli chcesz, aby użytkownicy mogli się logować i rejestrować, musisz wybrać opcje **Zezwalaj użytkownikom na logowanie** i **Zezwalaj na rejestrację użytkowników** na karcie Ustawienia. Pamiętaj, że wybrane ustawienia wpływają na środowisko logowania użytkownika.
 
 Na przykład użytkownik logujący się do portalu po raz pierwszy zostanie przeniesiony na stronę konfiguracji użytkownika usługi Azure Multi-Factor Authentication. W zależności od konfiguracji usługi Azure Multi-Factor Authentication użytkownik może być w stanie wybrać metodę uwierzytelniania.
 
@@ -166,7 +166,7 @@ Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika nu
 
 Jeśli użytkownik wybierze metodę weryfikacji Wiadomość SMS lub jeśli wstępna konfiguracja zakłada użycie tej metody, na stronie jest wyświetlany monit o wprowadzenie numeru telefonu komórkowego. Jeśli podczas uwierzytelniania wymagane jest wprowadzenie przez użytkownika numeru PIN, na stronie wyświetla się także monit o wprowadzenie numeru PIN.  Po wprowadzeniu numeru telefonu i numeru PIN (jeśli dotyczy) użytkownik klika przycisk **Wyślij teraz do mnie wiadomość SMS w celu uwierzytelnienia**. Usługa Azure Multi-Factor Authentication przeprowadza weryfikację SMS z użyciem telefonu komórkowego użytkownika. Użytkownik otrzymuje wiadomość SMS z jednorazowym kodem dostępu, a następnie w odpowiedzi na wiadomość podaje ten kod oraz numer PIN (jeśli dotyczy).
 
-![Weryfikacja portalu użytkownika, za pomocą wiadomości SMS](./media/howto-mfaserver-deploy-userportal/text.png)
+![Weryfikacja portalu użytkowników przy użyciu programu SMS](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Jeśli użytkownik wybierze metodę weryfikacji z użyciem aplikacji mobilnej, na stronie jest wyświetlany monit o zainstalowanie aplikacji Microsoft Authenticator na urządzeniu i wygenerowanie kodu aktywacji. Po zainstalowaniu aplikacji użytkownik klika przycisk Generuj kod aktywacji.
 
@@ -183,6 +183,6 @@ Jeśli administrator skonfigurował serwer usługi Azure Multi-Factor Authentica
 
 Proces samodzielnej rejestracji użytkownika zostaje zakończony, a użytkownik zostaje zalogowany do portalu użytkowników. Jeśli administratorzy zapewnią możliwość zmiany wybranej metody, użytkownicy mogą w dowolnym momencie ponownie zalogować się do portalu użytkowników, aby zmienić numery telefonów, numer PIN, metody uwierzytelniania oraz pytania zabezpieczające.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Wdrażanie usługi internetowej aplikacji mobilnej serwera Azure Multi-Factor Authentication](howto-mfaserver-deploy-mobileapp.md)

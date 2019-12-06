@@ -4,18 +4,18 @@ description: Change Tracking rozwiązanie pomaga identyfikować zmiany oprogramo
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886807"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850554"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -28,15 +28,15 @@ Zmiany w zainstalowanym oprogramowaniu, usługach systemu Windows, rejestrze sys
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 
-Następujące wersje systemu operacyjnego Windows są oficjalnie obsługiwane dla agenta systemu Windows:
+Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
 
-* System Windows Server 2008 R2 lub nowszy
+* Windows Server 2008 R2 lub nowszy
 
 ## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
 
 Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agent systemu Linux może być również uruchamiany na innych dystrybucjach, których nie ma na liście. O ile nie zaznaczono inaczej, wszystkie wersje pomocnicze są obsługiwane dla każdej wymienionej wersji głównej.
 
-### <a name="64-bit"></a>64 — bit
+### <a name="64-bit"></a>64-bitowa
 
 * CentOS 6 i 7
 * Amazon Linux 2017,09
@@ -46,7 +46,7 @@ Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agen
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 — bit
+### <a name="32-bit"></a>32-bitowa
 
 * CentOS 6
 * Oracle Linux 6
@@ -245,11 +245,11 @@ Celem monitorowania zmian w kluczach rejestru jest wskazanie punktów rozszerzal
 
 Poniższe adresy są wymagane dla Change Tracking. Komunikacja z tymi adresami odbywa się za pośrednictwem portu 443.
 
-|Usługa Azure Public  |Azure Government  |
+|Azure Public  |Platforma Azure dla instytucji rządowych  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Użyj Change Tracking

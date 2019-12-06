@@ -4,17 +4,17 @@ description: W tym artykule opisano sposób konfigurowania i zarządzania skrypt
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 860eaf5d37b3d3064e3b10bd1dab02c04b95ab5b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755508"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850248"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Zarządzanie skryptami wstępnymi i po nim
 
@@ -74,15 +74,15 @@ W poniższej tabeli przedstawiono właściwości, które są podane w zmiennej.
 
 |Właściwość  |Opis  |
 |---------|---------|
-|. Softwareupdateconfigurationname     | Nazwa konfiguracji aktualizacji oprogramowania.        |
-|. Softwareupdateconfigurationrunid     | Unikatowy identyfikator dla przebiegu.        |
+|SoftwareUpdateConfigurationName     | Nazwa konfiguracji aktualizacji oprogramowania.        |
+|SoftwareUpdateConfigurationRunId     | Unikatowy identyfikator dla przebiegu.        |
 |SoftwareUpdateConfigurationSettings     | Kolekcja właściwości związanych z konfiguracją aktualizacji oprogramowania.         |
-|SoftwareUpdateConfigurationSettings. operatingSystem     | Systemy operacyjne przeznaczone do wdrożenia aktualizacji.         |
-|SoftwareUpdateConfigurationSettings. Duration     | Maksymalny czas trwania wdrożenia aktualizacji jest uruchamiany `PT[n]H[n]M[n]S` jak na ISO8601; nazywana również *oknem obsługi*.          |
-|SoftwareUpdateConfigurationSettings. Windows     | Kolekcja właściwości związanych z komputerami z systemem Windows.         |
-|SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | Lista artykułów bazy wiedzy, które są wykluczone ze wdrożenia aktualizacji.        |
-|SoftwareUpdateConfigurationSettings. Windows. includedUpdateClassifications     | Klasyfikacje aktualizacji wybrane dla wdrożenia aktualizacji.        |
-|SoftwareUpdateConfigurationSettings. Windows. rebootSetting     | Ustawienia ponownego uruchamiania wdrożenia aktualizacji.        |
+|SoftwareUpdateConfigurationSettings.operatingSystem     | Systemy operacyjne przeznaczone do wdrożenia aktualizacji.         |
+|SoftwareUpdateConfigurationSettings.duration     | Maksymalny czas trwania wdrożenia aktualizacji jest uruchamiany `PT[n]H[n]M[n]S` jak na ISO8601; nazywana również *oknem obsługi*.          |
+|SoftwareUpdateConfigurationSettings.Windows     | Kolekcja właściwości związanych z komputerami z systemem Windows.         |
+|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | Lista artykułów bazy wiedzy, które są wykluczone ze wdrożenia aktualizacji.        |
+|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | Klasyfikacje aktualizacji wybrane dla wdrożenia aktualizacji.        |
+|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | Ustawienia ponownego uruchamiania wdrożenia aktualizacji.        |
 |azureVirtualMachines     | Lista elementów resourceId dla maszyn wirtualnych platformy Azure we wdrożeniu aktualizacji.        |
 |nonAzureComputerNames|Lista nazw FQDN komputerów nienależących do platformy Azure we wdrożeniu aktualizacji.|
 

@@ -4,23 +4,23 @@ description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemó
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 482b263b7c8427276d4fdb8681372c2be1ae69ee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564862"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849398"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Rozwiązywanie problemów z rozwiązaniami Change Tracking i Inventory
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Scenariusz Rekordy Change Tracking nie są wyświetlane dla maszyn z systemem Windows
+### <a name="records-not-showing-windows"></a>Scenariusz: rekordy Change Tracking nie są wyświetlane dla maszyn z systemem Windows
 
 #### <a name="issue"></a>Problem
 
@@ -35,10 +35,10 @@ Przyczyną tego błędu mogą być następujące przyczyny:
 3. Nie pobrano pakietów administracyjnych dla Change Tracking.
 4. Dołączana maszyna wirtualna może pochodzić ze sklonowanego komputera, który nie został Sysprep z zainstalowanym Microsoft Monitoring Agent.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 1. Sprawdź, czy na komputerze jest uruchomiony **Microsoft Monitoring Agent** (HealthService. exe).
-1. Sprawdź **Podgląd zdarzeń** na maszynie i Wyszukaj wszystkie zdarzenia, które mają w nich słowo `changetracking` .
+1. Sprawdź **Podgląd zdarzeń** na maszynie i Wyszukaj wszystkie zdarzenia, które mają słowo `changetracking`.
 1. Odwiedź stronę [Planowanie sieci](../automation-hybrid-runbook-worker.md#network-planning) , aby dowiedzieć się, które adresy i porty muszą być dozwolone, aby Change Tracking działały.
 1. Sprawdź, czy następujące Change Tracking i pakiety administracyjne spisu istnieją lokalnie:
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
@@ -58,7 +58,7 @@ net start healthservice
 ```
 
 > [!NOTE]
-> Domyślnie śledzenie błędów jest włączone, jeśli chcesz włączyć pełne komunikaty o błędach podobne do powyższego przykładu, `VER` Użyj parametru. Aby uzyskać informacje na temat `INF` śladów, `StartTracing.cmd`Użyj podczas wywoływania.
+> Domyślnie śledzenie błędów jest włączone, jeśli chcesz włączyć pełne komunikaty o błędach podobne do powyższego przykładu, użyj `VER` parametru. Aby uzyskać informacje na temat śladów informacji, użyj `INF` podczas wywoływania `StartTracing.cmd`.
 
 ## <a name="next-steps"></a>Następne kroki
 

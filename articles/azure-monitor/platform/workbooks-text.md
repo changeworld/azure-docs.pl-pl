@@ -1,5 +1,5 @@
 ---
-title: Tworzenie interaktywnych raportów przy użyciu skoroszytów Azure Monitor i parametrów tekstowych | Dokumentacja firmy Microsoft
+title: Azure Monitor parametry tekstu skoroszytu
 description: Uprość złożone raportowanie za pomocą wstępnie skompilowanych i niestandardowych skoroszytów z parametrami. Dowiedz się więcej na temat parametrów tekstu skoroszytu.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: ee3e24444b87c461841b591176774d4e945e4fcc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3b7affb9c7d7be790d4279c1db8174a5dd3b2c2a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165162"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872778"
 ---
 # <a name="workbook-text-parameters"></a>Parametry tekstu skoroszytu
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278167"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849154"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie zapasu czasu dla automatycznej aprowizacji użytkowników
 
@@ -66,19 +66,19 @@ Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API inicj
 
 4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-   ![Inicjowanie obsługi zapasowej](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Inicjowanie obsługi zapasowej](./media/slack-provisioning-tutorial/slack1.png)
 
 5. W sekcji **poświadczenia administratora** kliknij przycisk **Autoryzuj**. Spowoduje to otwarcie okna dialogowego autoryzacji zapasowych w nowym oknie przeglądarki.
 
 6. W nowym oknie, zaloguj się do zapasu czasu przy użyciu konta administratora Twojego zespołu. w oknie dialogowym uzyskana autoryzacja wybierz zespół zapasowy, dla którego chcesz włączyć obsługę administracyjną, a następnie wybierz pozycję **Autoryzuj**. Po zakończeniu Wróć do Azure Portal, aby zakończyć konfigurację aprowizacji.
 
-    ![Okno dialogowe autoryzacji](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![Okno dialogowe autoryzacji](./media/slack-provisioning-tutorial/slackauthorize.png)
 
 7. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z aplikacją czasu zapasu. Jeśli połączenie nie powiedzie się, upewnij się, że konto zapasowe ma uprawnienia administratora zespołu, a następnie spróbuj ponownie wykonać krok "Autoryzuj".
 
 8. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , a następnie zaznacz pole wyboru poniżej.
 
-9. Kliknij pozycję **Zapisz**.
+9. Kliknij przycisk **Save** (Zapisz).
 
 10. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkownicy do zapasu czasu**.
 
@@ -86,7 +86,7 @@ Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API inicj
 
 12. Aby włączyć usługę Azure AD Provisioning dla zapasu czasu, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-13. Kliknij pozycję **Zapisz**.
+13. Kliknij przycisk **Save** (Zapisz).
 
 Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do zapasu czasu w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa zajmie więcej czasu niż kolejne synchronizacje, co wystąpi około 10 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do raportów dotyczących działań związanych z obsługą administracyjną, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji zapasowej.
 
@@ -102,11 +102,11 @@ Opcjonalnie można włączyć obsługę administracyjną obiektów grup z usług
 
 3. W sekcji **mapowania atrybutów** Przejrzyj atrybuty grupy, które będą synchronizowane z usługi Azure AD do zapasu czasu. Należy zauważyć, że atrybuty wybrane jako **pasujące** właściwości będą używane do dopasowania do grup w zapasach czasu dla operacji aktualizacji. 
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij przycisk **Save** (Zapisz).
 
 Spowoduje to, że wszystkie obiekty grupy przypisane do zapasu czasu w sekcji **Użytkownicy i grupy** są w pełni synchronizowane z usługą Azure AD do zapasu czasu. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji zapasowej.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
@@ -124,7 +124,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowi
 
 * Zapasy czasu umożliwiają dopasowanie z użyciem atrybutów **username** i **email**.  
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

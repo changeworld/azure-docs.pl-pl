@@ -1,17 +1,17 @@
 ---
 title: Praca z tablicami i obiektami w Azure Cosmos DB
-description: Informacje na temat składni SQL tworzenia obiektów i tablic dla Azure Cosmos DB.
+description: Poznaj składnię SQL, aby utworzyć tablice i obiekty w Azure Cosmos DB. W tym artykule przedstawiono również przykłady wykonywania operacji na obiektach Array
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003936"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870925"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Praca z tablicami i obiektami w Azure Cosmos DB
 
@@ -90,7 +90,7 @@ Wyniki są następujące:
     ]
 ```
 
-Następne zapytanie wykonuje iterację `children` `Families` w kontenerze. Tablica wyjściowa różni się od powyższego zapytania. Ten przykład dzieli `children`i spłaszcza wyniki do pojedynczej tablicy:  
+Następne zapytanie wykonuje iterację przez `children` w kontenerze `Families`. Tablica wyjściowa różni się od powyższego zapytania. Ten przykład dzieli `children`i spłaszcza wyniki do pojedynczej tablicy:  
 
 ```sql
     SELECT *

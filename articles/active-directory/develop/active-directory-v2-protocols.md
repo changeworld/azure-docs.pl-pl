@@ -2,28 +2,24 @@
 title: Dowiedz się więcej na temat protokołów autoryzacji obsługiwanych przez platformę tożsamości firmy Microsoft | Azure
 description: Przewodnik dotyczący protokołów uwierzytelniania OAuth 2,0 i OpenID Connect, które są obsługiwane przez punkt końcowy platformy tożsamości firmy Microsoft.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 446d7178973c1d43d55ff89c429b05c2a10118ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 50f2b4d5da2cdda35de0adc5dc646065f2b64a41
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835279"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844706"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoły Microsoft Identity platform
 
@@ -62,9 +58,9 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-`{tenant}` Gdzie może przyjmować jedną z czterech różnych wartości:
+Gdzie `{tenant}` może przyjmować jedną z czterech różnych wartości:
 
-| Value | Opis |
+| Wartość | Opis |
 | --- | --- |
 | `common` | Zezwala użytkownikom na logowanie się do aplikacji zarówno dla osobistych kont Microsoft, jak i kont służbowych z usługi Azure AD. |
 | `organizations` | Umożliwia logowanie się do aplikacji wyłącznie użytkownikom z kontami służbowymi z usługi Azure AD. |

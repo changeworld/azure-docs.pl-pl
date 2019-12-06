@@ -4,17 +4,17 @@ description: W tym artykule opisano sposób przenoszenia konta usługi Automatio
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8187e4c6f2c7dc721c178bad50b6c3ada2a65367
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717240"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849585"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Przenoszenie konta Azure Automation do innej subskrypcji
 
@@ -55,7 +55,7 @@ Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' 
 
 W przypadku rozwiązania do **uruchamiania/zatrzymywania maszyn wirtualnych** należy również usunąć reguły alertów utworzone przez rozwiązanie.
 
-W Azure Portal przejdź do grupy zasobów, a następnie wybierz pozycję **monitorowanie** > **alertów** > **Zarządzaj regułami alertów**.
+W Azure Portal przejdź do grupy zasobów i wybierz pozycję **monitorowanie** > **alerty** > **Zarządzanie regułami alertów**.
 
 ![Strona alertów przedstawiająca wybór opcji Zarządzaj regułami alertów](../media/move-account/alert-rules.png)
 
@@ -74,7 +74,7 @@ Wybierz te trzy reguły alertów, a następnie wybierz pozycję **Usuń**. Ta ak
 
 Po usunięciu reguł alertów Usuń grupę akcji utworzoną dla powiadomień o rozwiązaniu **uruchamiania/zatrzymywania maszyn wirtualnych** .
 
-W Azure Portal wybierz kolejno pozycje **Monitoruj** > **alerty** > **Zarządzaj grupami akcji**.
+W Azure Portal wybierz kolejno pozycje **monitorowanie** > **alerty** > **Zarządzanie grupami akcji**.
 
 Z listy wybierz pozycję **StartStop_VM_Notification** . Na stronie Grupa akcji wybierz pozycję **Usuń**.
 
@@ -88,13 +88,13 @@ Remove-AzureRmActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_V
 
 ## <a name="unlink-your-workspace"></a>Odłącz obszar roboczy
 
-W Azure Portal wybierz opcję**połączony obszar roboczy** > **zasoby powiązane z** >  **kontem usługi Automation**. Wybierz opcję **Odłącz obszar roboczy** , aby odłączyć obszar roboczy od konta usługi Automation.
+W Azure Portal wybierz pozycję **konto usługi Automation** > **powiązane zasoby** > **połączony obszar roboczy**. Wybierz opcję **Odłącz obszar roboczy** , aby odłączyć obszar roboczy od konta usługi Automation.
 
 ![Odłączanie obszaru roboczego od konta usługi Automation](../media/move-account/unlink-workspace.png)
 
 ## <a name="move-your-automation-account"></a>Przenoszenie konta usługi Automation
 
-Po usunięciu poprzednich elementów możesz kontynuować usuwanie konta usługi Automation i jego elementów Runbook. W Azure Portal przejdź do grupy zasobów konta usługi Automation. Wybierz pozycję **Przenieś** > **Przenieś do innej subskrypcji**.
+Po usunięciu poprzednich elementów możesz kontynuować usuwanie konta usługi Automation i jego elementów Runbook. W Azure Portal przejdź do grupy zasobów konta usługi Automation. Wybierz pozycję **przenieś** > **Przenieś do innej subskrypcji**.
 
 ![Strona grupy zasobów, Przenieś do innej subskrypcji](../media/move-account/move-resources.png)
 
@@ -113,7 +113,7 @@ Przejdź do konta usługi Automation w nowej subskrypcji i wybierz pozycję **ko
 Wybierz każde konto Uruchom jako. Na stronie **Właściwości** wybierz pozycję **Usuń** , aby usunąć konto Uruchom jako.
 
 > [!NOTE]
-> Jeśli nie masz uprawnień do tworzenia lub wyświetlania kont Uruchom jako, zobaczysz następujący komunikat: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.`Aby dowiedzieć się więcej o uprawnieniach wymaganych do skonfigurowania konta Uruchom jako, zobacz [uprawnienia wymagane do skonfigurowania kont Uruchom jako](../manage-runas-account.md#permissions).
+> Jeśli nie masz uprawnień do tworzenia lub wyświetlania kont Uruchom jako, zobaczysz następujący komunikat: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` aby dowiedzieć się więcej o uprawnieniach wymaganych do skonfigurowania konta Uruchom jako, zobacz [uprawnienia wymagane do skonfigurowania kont Uruchom jako](../manage-runas-account.md#permissions).
 
 Po usunięciu kont Uruchom jako wybierz pozycję **Utwórz** w obszarze **konto Uruchom jako platformy Azure**. Na stronie **Dodawanie konta Uruchom jako platformy Azure** wybierz pozycję **Utwórz** , aby utworzyć konto Uruchom jako i nazwę główną usługi. Powtórz powyższe kroki przy użyciu **klasycznego konta Uruchom jako platformy Azure**.
 
@@ -125,13 +125,13 @@ Po ponownym utworzeniu konta Uruchom jako należy ponownie włączyć rozwiązan
 
 Maszyny, które są dołączone do Twoich rozwiązań, będą widoczne po połączeniu istniejącego obszaru roboczego Log Analytics.
 
-Aby włączyć **Uruchamianie/zatrzymywanie maszyn wirtualnych** w ramach rozwiązania off-godzinnego, należy ponownie wdrożyć rozwiązanie. W obszarze **pokrewne zasoby**wybierz kolejno pozycje **Start/zatrzymywanie maszyn wirtualnych** > Dowiedz**się więcej na temat i Włącz** > **Tworzenie** rozwiązania, aby rozpocząć wdrażanie.
+Aby włączyć **Uruchamianie/zatrzymywanie maszyn wirtualnych** w ramach rozwiązania off-godzinnego, należy ponownie wdrożyć rozwiązanie. W obszarze **powiązane zasoby**wybierz pozycję **Start/zatrzymaj maszyny wirtualne** > **Dowiedz się więcej o tym, jak włączyć rozwiązanie** > **Utwórz** , aby rozpocząć wdrażanie.
 
 Na stronie **Dodawanie rozwiązania** wybierz obszar roboczy log Analytics i konto usługi Automation.
 
 ![Menu Dodaj rozwiązanie](../media/move-account/add-solution-vm.png)
 
-Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania rozwiązania, zobacz [Uruchamianie/zatrzymywanie maszyn wirtualnych w rozwiązaniu off-godzinnym w Azure Automation](../automation-solution-vm-management.md).
+Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania rozwiązania, zobacz [Start/Stop VMS during off-hours rozwiązanie w Azure Automation](../automation-solution-vm-management.md).
 
 ## <a name="post-move-verification"></a>Weryfikacja po przeniesieniu
 
@@ -143,8 +143,8 @@ Po zakończeniu przenoszenia Sprawdź poniższą listę zadań, które powinny z
 |Kontrola źródła|Możesz uruchomić ręczną synchronizację w repozytorium kontroli źródła.|[Integracja kontroli źródła](../source-control-integration.md)|
 |Śledzenie zmian i spis|Sprawdź, czy na maszynach są widoczne bieżące dane spisu.|[Rozwiązywanie problemów ze śledzeniem zmian](../troubleshoot/change-tracking.md)|
 |Zarządzanie aktualizacjami|Sprawdź, czy Twoje maszyny są widoczne i są w dobrej kondycji.</br>Uruchom testowe wdrożenie aktualizacji oprogramowania.|[Rozwiązywanie problemów z zarządzaniem aktualizacjami](../troubleshoot/update-management.md)|
-|Udostępnione zasoby|Sprawdź, czy są widoczne wszystkie zasoby udostępnione, takie jak [poświadczenia](../shared-resources/credentials.md), [zmienne](../shared-resources/variables.md)itp.|
+|Współdzielone zasoby|Sprawdź, czy są widoczne wszystkie zasoby udostępnione, takie jak [poświadczenia](../shared-resources/credentials.md), [zmienne](../shared-resources/variables.md)itp.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat przenoszenia zasobów na platformie Azure, zobacz [przenoszenie zasobów na platformie Azure](../../azure-resource-manager/move-support-resources.md).

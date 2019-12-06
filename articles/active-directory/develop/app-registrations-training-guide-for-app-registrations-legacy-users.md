@@ -2,29 +2,25 @@
 title: Przewodnik szkoleniowy dotyczący przejścia z Rejestracje aplikacji (starsza wersja) do nowego Rejestracje aplikacji środowiska w Azure Portal
 description: Wprowadzenie do nowego środowiska rejestracji aplikacji w Azure Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01d543262a9eb358643c0860b24ac4306d2c5edf
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2f49cac5c8c49fb5c53d3320cb0ab52e0f61acda
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927093"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844264"
 ---
-# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Przejście z Rejestracje aplikacji (starsza wersja) do nowego Rejestracje aplikacji środowiska w Azure Portal
+# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Przejście z rejestracji aplikacji (starszej wersji) do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
 
 Wiele ulepszeń można znaleźć w [Rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) Azure Portal. Jeśli znasz już środowisko Rejestracje aplikacji (starsze) w Azure Portal, Skorzystaj z tego przewodnika szkoleniowego, aby rozpocząć korzystanie z nowego środowiska.
 
@@ -47,7 +43,7 @@ Nowa lista aplikacji zawiera aplikacje, które zostały zarejestrowane za pomoc�
 
 Nowa lista aplikacji nie ma kolumny **typu aplikacji** , ponieważ rejestracja pojedynczej aplikacji może być kilku typów. Lista zawiera dwie dodatkowe kolumny: **utworzone** i **Certyfikaty & wpisy tajne**. **Certyfikaty & wpisy tajne** pokazują stan poświadczeń, które zostały zarejestrowane w aplikacji. Stany obejmują **bieżące**, **wygasają wkrótce**i **utraciły ważność**.
 
-## <a name="new-app-registration"></a>Rejestracja nowej aplikacji
+## <a name="new-app-registration"></a>Rejestrowanie nowej aplikacji
 
 W starszej wersji, aby zarejestrować aplikację, należy podać: **nazwę**, **Typ aplikacji**i **adres URL logowania/identyfikator URI przekierowania**. Utworzone aplikacje dotyczyły tylko aplikacji z jedną dzierżawą. Są one obsługiwane tylko przez konta organizacji z katalogu, w którym zarejestrowano aplikację.
 

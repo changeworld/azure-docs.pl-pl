@@ -2,13 +2,13 @@
 title: Pobierz dane zgodności zasad
 description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, jak uzyskać szczegóły zgodności zasobów platformy Azure.
 ms.date: 02/01/2019
-ms.topic: conceptual
-ms.openlocfilehash: 8cb95f0a9479da27ea6b9ef8ec6836f915aa4030
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: how-to
+ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132800"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873152"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Pobieranie danych zgodności zasobów platformy Azure
 
@@ -87,9 +87,9 @@ W poniższej tabeli przedstawiono, jak inne zasady, efekty pracy z oceny warunku
 | Stan zasobu | Efekt | Ocena zasad | Stan zgodności |
 | --- | --- | --- | --- |
 | Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Prawda | Niezgodne |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Zgodne |
-| Nowa | Audit, AuditIfNotExist\* | Prawda | Niezgodne |
-| Nowa | Audit, AuditIfNotExist\* | False | Zgodne |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Fałsz | Zgodność |
+| Nowość | Audit, AuditIfNotExist\* | Prawda | Niezgodne |
+| Nowość | Audit, AuditIfNotExist\* | Fałsz | Zgodność |
 
 \* Efekty Append, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF z wartością TRUE.
 Ponadto efekty wymagają, aby warunek istnienia miał wartość FALSE, aby być niezgodnymi. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
@@ -244,7 +244,7 @@ Przykładową odpowiedź poniżej została wycofana na jednym niezgodnym zasobem
 }
 ```
 
-### <a name="view-events"></a>Wyświetlanie zdarzeń
+### <a name="view-events"></a>Wyświetl wydarzenia
 
 Wynik oceny zasad jest generowany, gdy zasób jest tworzony lub aktualizowany. Wyniki są nazywane _zdarzenia dotyczące zasad_. Użyj następujący identyfikator Uri, aby wyświetlić ostatnie zdarzenia zasady skojarzone z tą subskrypcją.
 
@@ -268,7 +268,7 @@ Wyniki powinny wyglądać podobnie do następujących:
 
 Aby uzyskać więcej informacji na temat wykonywania zapytań dotyczących zdarzeń zasad, zobacz artykuł dotyczący [zdarzeń Azure Policy](/rest/api/policy-insights/policyevents) .
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Moduł Azure PowerShell dla Azure Policy jest dostępny w Galeria programu PowerShell jako [AZ. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
 Korzystanie z modułu PowerShellGet, można zainstalować przy użyciu modułu `Install-Module -Name Az.PolicyInsights` (Upewnij się, że zainstalowano najnowszy [programu Azure PowerShell](/powershell/azure/install-az-ps) zainstalowane):

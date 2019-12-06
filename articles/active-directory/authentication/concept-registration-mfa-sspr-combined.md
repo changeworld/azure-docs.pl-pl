@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3221e6424b449066510667f8067e3bc6d8aec12a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381961"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848633"
 ---
 # <a name="combined-security-information-registration-preview"></a>Rejestracja połączonych informacji o zabezpieczeniach (wersja zapoznawcza)
 
@@ -47,17 +47,17 @@ Moje strony profilów są zlokalizowane na podstawie ustawień języka komputera
 
 Rejestracja łączona obsługuje następujące metody uwierzytelniania i akcje:
 
-|   | Zarejestruj subskrypcję | Change | Usuwanie |
+|   | Zarejestruj | Change | Usuń |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Tak (maksymalnie 5) | Nie | Yes |
-| Inna aplikacja uwierzytelniania | Tak (maksymalnie 5) | Nie | Yes |
-| Token sprzętu | Nie | Nie | Yes |
-| Phone | Yes | Yes | Yes |
-| Alternatywny numer telefonu | Yes | Yes | Yes |
+| Microsoft Authenticator | Tak (maksymalnie 5) | Nie | Tak |
+| Inna aplikacja uwierzytelniania | Tak (maksymalnie 5) | Nie | Tak |
+| Token sprzętu | Nie | Nie | Tak |
+| Numer telefonu | Tak | Tak | Tak |
+| Alternatywny numer telefonu | Tak | Tak | Tak |
 | Telefon biurowy | Nie | Nie | Nie |
-| Email | Yes | Yes | Yes |
-| Pytania zabezpieczające | Yes | Nie | Yes |
-| Hasła aplikacji | Yes | Nie | Yes |
+| Adres e-mail | Tak | Tak | Tak |
+| Pytania zabezpieczające | Tak | Nie | Tak |
+| Hasła aplikacji | Tak | Nie | Tak |
 
 > [!NOTE]
 > Hasła aplikacji są dostępne tylko dla użytkowników, którzy zostali wyegzekwowani dla Multi-Factor Authentication. Hasła aplikacji nie są dostępne dla użytkowników, którzy są włączeni do Multi-Factor Authentication za pomocą zasad dostępu warunkowego.
@@ -67,7 +67,7 @@ Użytkownicy mogą ustawić jedną z następujących opcji jako domyślną metod
 - Microsoft Authenticator — powiadomienie.
 - Aplikacja lub token sprzętowy uwierzytelniania — kod.
 - Połączenie telefoniczne.
-- Wiadomość tekstowa.
+- Wiadomość SMS.
 
 W miarę jak będziemy nadal dodawać kolejne metody uwierzytelniania do usługi Azure AD, te metody będą dostępne w ramach rejestracji złożonej.
 

@@ -1,18 +1,18 @@
 ---
 title: Funkcje matematyczne w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej na temat matematycznych funkcji systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej o funkcjach matematycznych w Azure Cosmos DB, aby wykonać obliczenia na podstawie wartości wejściowych, które są podane jako argumenty, i zwrócić wartość liczbową.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fe4a84db3f2cbcfc2d9841caf520404afec2a297
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349671"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873271"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Funkcje matematyczne (Azure Cosmos DB)  
 
@@ -30,7 +30,7 @@ Wynik:
     [4]
 ```
 
-## <a name="functions"></a>Funkcje
+## <a name="functions"></a>Functions
 
 Następujące obsługiwane wbudowane funkcje matematyczne wykonują obliczenia, zazwyczaj na podstawie argumentów wejściowych i zwracają wyrażenie liczbowe.
   
@@ -52,4 +52,4 @@ Wszystkie funkcje matematyczne, z wyjątkiem RAND, to funkcje deterministyczne. 
 - [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
 - [Wprowadzenie do Azure Cosmos DB](introduction.md)
 - [Funkcje zdefiniowane przez użytkownika](sql-query-udfs.md)
-- [Agreguje](sql-query-aggregates.md)
+- [Agregacje](sql-query-aggregates.md)

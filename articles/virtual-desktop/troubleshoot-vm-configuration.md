@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791143"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869531"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
@@ -81,10 +81,10 @@ Zalecanym sposobem aprowizacji maszyn wirtualnych jest użycie szablonu **puli h
 Postępuj zgodnie z tymi instrukcjami, aby upewnić się, że składniki są zainstalowane i sprawdź komunikaty o błędach.
 
 1. Upewnij się, że dwa składniki są zainstalowane, zaznaczając w **Panelu sterowania** > **programy** > **programy i funkcje**. Jeśli program **Windows Virtual Desktop Agent** i **moduł ładujący rozruchu agenta wirtualnego systemu Windows** nie są widoczne, nie są one zainstalowane na maszynie wirtualnej.
-2. Otwórz **Eksploratora plików** i przejdź do **C:\Windows\Temp\scriptlogs.log**. Jeśli brakuje pliku, oznacza to, że nie można uruchomić programu PowerShell DSC, który zainstalował dwa składniki, w podanym kontekście zabezpieczeń.
-3. Jeśli plik **C:\Windows\Temp\scriptlogs.log** jest obecny, otwórz go i sprawdź komunikaty o błędach.
+2. Otwórz **Eksploratora plików** i przejdź do **C:\Windows\Temp\ScriptLog.log**. Jeśli brakuje pliku, oznacza to, że nie można uruchomić programu PowerShell DSC, który zainstalował dwa składniki, w podanym kontekście zabezpieczeń.
+3. Jeśli plik **C:\Windows\Temp\ScriptLog.log** jest obecny, otwórz go i sprawdź komunikaty o błędach.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Błąd: brakuje agenta usług pulpitu wirtualnego systemu Windows i modułu ładującego rozruchu agenta pulpitu wirtualnego systemu Windows. Brak C:\Windows\Temp\scriptlogs.log również
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Błąd: brakuje agenta usług pulpitu wirtualnego systemu Windows i modułu ładującego rozruchu agenta pulpitu wirtualnego systemu Windows. Brak C:\Windows\Temp\ScriptLog.log również
 
 **Przyczyna 1:** Poświadczenia podane podczas wprowadzania dla szablonu Azure Resource Manager były nieprawidłowe lub niewystarczające uprawnienia.
 
@@ -98,7 +98,7 @@ Postępuj zgodnie z tymi instrukcjami, aby upewnić się, że składniki są zai
 - Upewnij się, że nazwa dzierżawy jest dokładna, a dzierżawca istnieje na pulpicie wirtualnym systemu Windows.
 - Upewnij się, że konto ma co najmniej uprawnienia współautora pulpitu zdalnego.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Błąd: uwierzytelnianie nie powiodło się, błąd w C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Błąd: uwierzytelnianie nie powiodło się, błąd w C:\Windows\Temp\ScriptLog.log
 
 **Przyczyna:** Program PowerShell DSC był w stanie wykonać, ale nie mógł nawiązać połączenia z pulpitem wirtualnym systemu Windows.
 

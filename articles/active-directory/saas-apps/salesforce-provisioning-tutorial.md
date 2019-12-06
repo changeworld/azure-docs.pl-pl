@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120538"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849177"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Salesforce do automatycznego aprowizacji użytkowników
 
@@ -129,9 +129,10 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 * **SalesforceDuplicateUserName:** Nie można zainicjować obsługi administracyjnej użytkownika, ponieważ ma on Salesforce.com "username", który jest zduplikowany w innej dzierżawie Salesforce.com.  W Salesforce.com wartości atrybutu "username" muszą być unikatowe we wszystkich dzierżawach Salesforce.com.  Domyślnie element userPrincipalName użytkownika w Azure Active Directory ma postać "username" w Salesforce.com.   Dostępne są dwie opcje.  Jedną z opcji jest znalezienie i zmiana nazwy użytkownika ze zduplikowaną nazwą "username" w innej dzierżawie Salesforce.com, Jeśli administrujesz tą inną dzierżawcą.  Druga opcja polega na usunięciu dostępu Azure Active Directory użytkownika do dzierżawy Salesforce.com, z którą katalog jest zintegrowany. Ponowimy próbę wykonania tej operacji podczas następnej próby synchronizacji. 
 * **SalesforceRequiredFieldMissing:** W przypadku pomyślnego utworzenia lub zaktualizowania użytkownika usługi Salesforce muszą mieć pewne atrybuty. Ten użytkownik nie ma jednego z wymaganych atrybutów. Upewnij się, że atrybuty, takie jak poczta e-mail i alias, są wypełniane wszystkim użytkownikom, którzy mają być obsługiwani w usłudze Salesforce. Można zasięgać użytkowników, którzy nie mają tych atrybutów, przy użyciu [filtrów określania zakresu atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 * Domyślne mapowanie atrybutów dla aprowizacji do usługi Salesforce obejmuje wyrażenie SingleAppRoleAssignments służące do mapowania appRoleAssignments w usłudze Azure AD na ProfileName w usłudze Salesforce. Upewnij się, że użytkownicy nie mają wielu przypisań ról aplikacji w usłudze Azure AD, ponieważ mapowanie atrybutu obsługuje tylko jedną rolę. 
+* Przed zmianą usługi Salesforce wymagane jest ręczne zatwierdzenie aktualizacji poczty e-mail. W związku z tym w dziennikach aprowizacji może zostać wyświetlona wiele wpisów w celu zaktualizowania wiadomości e-mail użytkownika (do momentu zatwierdzenia zmiany wiadomości e-mail).
 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

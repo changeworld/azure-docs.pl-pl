@@ -4,17 +4,17 @@ description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemó
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231556"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849364"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu (DSC)
 
@@ -59,7 +59,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 Ten błąd jest tymczasowym problemem, który został zaplanowany do rozwiązania.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 * Aby usunąć konfigurację, użyj polecenia AZ cmdlet "Remove-AzAutomationDscConfiguration".
 * Dokumentacja tego polecenia cmdlet nie została jeszcze zaktualizowana.  Do tego momentu zapoznaj się z dokumentacją modułu AzureRM.
@@ -86,7 +86,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 Ten błąd jest zwykle spowodowany przez zaporę, komputer za serwerem proxy lub inne błędy sieciowe.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Sprawdź, czy maszyna ma dostęp do odpowiednich punktów końcowych Azure Automation DSC i spróbuj ponownie. Aby uzyskać listę wymaganych portów i adresów, zobacz [Planowanie sieci](../automation-dsc-overview.md#network-planning)
 
@@ -94,7 +94,7 @@ Sprawdź, czy maszyna ma dostęp do odpowiednich punktów końcowych Azure Autom
 
 #### <a name="issue"></a>Problem
 
-Węzeł zawiera raport ze stanem **Niepowodzenie** i zawierający błąd:
+Węzeł ma raport o stanu, zawiera kod **błędu**:
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -104,7 +104,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 Ten błąd występuje zazwyczaj, gdy węzeł jest przypisany do nazwy konfiguracji (na przykład ABC) zamiast nazwy konfiguracji węzła (na przykład ABC. Serwer WebServer).
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 * Upewnij się, że przypiszesz węzeł "nazwa konfiguracji węzła", a nie "nazwa konfiguracji".
 * Konfigurację węzła można przypisać do węzła przy użyciu Azure Portal lub za pomocą polecenia cmdlet programu PowerShell.
@@ -126,7 +126,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 Gdy wyrażenie zgodne z słowem kluczowym **Node** w konfiguracji DSC zostanie oszacowane jako `$null`, nie są generowane konfiguracje węzłów.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Niektóre z poniższych rozwiązań rozwiązują ten problem:
 
@@ -147,7 +147,7 @@ No instance found with given property values
 
 Uaktualniono wersję WMF i usunięto uszkodzoną usługę WMI.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Aby rozwiązać ten problem, postępuj zgodnie z instrukcjami podanymi w artykule [znane problemy i ograniczenia DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
 
@@ -165,7 +165,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 Użyto poświadczenia w konfiguracji, ale nie podano odpowiednich **ConfigurationData** , aby ustawić **PSDscAllowPlainTextPassword** na true dla każdej konfiguracji węzła.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 * Upewnij się, że w odpowiedniej **ConfigurationData** określono wartość true dla każdej konfiguracji węzła, która **została określona w** konfiguracji. Aby uzyskać więcej informacji, zobacz [zasoby w Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
@@ -183,7 +183,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 Ten błąd występuje zazwyczaj, gdy do węzła jest przypisana nazwa konfiguracji węzła, która nie istnieje w usłudze.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 * Upewnij się, że przypiszesz węzeł z nazwą konfiguracji węzła, która dokładnie pasuje do nazwy w usłudze.
 * Można zrezygnować z uwzględnienia nazwy konfiguracji węzła, która spowoduje dołączenie węzła, ale nie przypisanie konfiguracji węzła
@@ -202,7 +202,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 Klienci zidentyfikowali, że jeśli `/tmp` lokalizacji jest ustawiona na `noexec`, bieżąca wersja DSC nie będzie stosowała konfiguracji.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 * Usuń opcję `noexec` z lokalizacji `/tmp`.
 
@@ -218,7 +218,7 @@ Przykładowo, jeśli jeden skrypt konfiguracji jest używany do generowania konf
 
 Znany problem dotyczący usługi kompilacji.
 
-#### <a name="resolution"></a>Rozwiązanie
+#### <a name="resolution"></a>Rozdzielczość
 
 Najlepszym rozwiązaniem jest skompilowanie lokalnie lub w potoku ciągłej integracji/ciągłego dostarczania i przekazanie plików MOF bezpośrednio do usługi.  Jeśli kompilacja w usłudze jest wymagana, następnym najlepszym rozwiązaniem jest podzielenie zadań kompilacji, aby nie nakładały się nazw.
 

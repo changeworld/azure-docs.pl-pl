@@ -12,20 +12,20 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.date: 09/24/2019
+ms.date: 12/04/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 4b3b36f69387a6ae10a2b76154056f322fd4a41a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 25e5cda3b91dd4b14d0a3d82963404dde7a80aa4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170933"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851404"
 ---
 # <a name="visual-studio-images-on-azure"></a>Obrazy programu Visual Studio na platformie Azure
 Przy użyciu programu Visual Studio w wstępnie skonfigurowanych maszyn wirtualnych (VM) to szybki i łatwy sposób skalują się od pozycji środowisko projektowe w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
 
-Dopiero zaczynasz korzystać z platformy Azure? [Tworzenie bezpłatnego konta platformy Azure](https://azure.microsoft.com/free).
+Używasz systemu Azure po raz pierwszy? [Tworzenie bezpłatnego konta platformy Azure](https://azure.microsoft.com/free).
 
 > [!NOTE]
 > Nie wszystkie subskrypcje mogą wdrażać obrazy systemu Windows 10. Aby uzyskać więcej informacji, zobacz [Korzystanie z klienta systemu Windows na platformie Azure na potrzeby scenariuszy tworzenia i testowania](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
@@ -33,9 +33,9 @@ Dopiero zaczynasz korzystać z platformy Azure? [Tworzenie bezpłatnego konta pl
 ## <a name="what-configurations-and-versions-are-available"></a>Jakie konfiguracje i wersje są dostępne?
 Obrazy dla najnowszych wersji głównych, Visual Studio 2019, Visual Studio 2017 i Visual Studio 2015 można znaleźć w witrynie Azure Marketplace.  Dla każdej wydanej wersji głównej zostanie wyświetlona oryginalna wersja "wydana do sieci Web" (RTW) i najnowsze zaktualizowane wersje.  Każda z tych wersji oferuje wersje programu Visual Studio Community i program Visual Studio Enterprise.  Te obrazy są aktualizowane co miesiąc, obejmujący najnowsze aktualizacje programu Visual Studio i Windows.  Gdy nazwy obrazów pozostają takie same, każdy obraz w opisie wersję zainstalowanego produktu i "dzień" obraz.
 
-| Wersja                                                                                                                                                | Wersje              | Wersja produktu   |
+| Wersja                                                                                                                                                | Edycje              | Wersja produktu   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Najnowsze (wersja 16,3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | 16.3.9 wersja    |
+| [Visual Studio 2019: Najnowsze (wersja 16,4)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | 16.4.0 wersja    |
 | [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise, Community | 16.0.9 wersja    |
 | [Visual Studio 2017: Najnowsze (wersja 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise, Community | 15.9.17 wersja   |
 | [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise, Community | 15.0.27 wersja  |
@@ -75,9 +75,9 @@ Jeśli obrazy nie obejmują funkcji programu Visual Studio, która jest wymagana
 Platforma Azure oferuje szeroką gamę rozmiarów maszyn wirtualnych. Ponieważ program Visual Studio jest zaawansowanym wielowątkowa aplikacja, ma rozmiar maszyny Wirtualnej, która zawiera co najmniej dwóch procesorów i 7 GB pamięci. Firma Microsoft zaleca następujących rozmiarów maszyn wirtualnych dla obrazów programu Visual Studio:
 
    * Standardowa_D2_v3
-   * Standard_D2s_v3
+   * Standardowa_D2s_v3
    * Standardowa_D4_v3
-   * Standard_D4s_v3
+   * Standardowa_D4s_v3
    * Standardowa_D2_v2
    * Standard_D2S_v2
    * Standardowa_D3_v2

@@ -1,5 +1,5 @@
 ---
-title: Śledzenie operacji niestandardowych przy użyciu zestawu Azure Application Insights .NET SDK | Microsoft Docs
+title: Śledzenie operacji niestandardowych przy użyciu zestawu Azure Application Insights .NET SDK
 description: Śledzenie operacji niestandardowych przy użyciu zestawu Azure Application Insights .NET SDK
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: dabdfa43a87aadadbd6c22b886b8bfe08aa69f02
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554918"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872659"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych przy użyciu zestawu SDK platformy Application Insights .NET
 
@@ -343,9 +343,9 @@ W przypadku usuwania komunikatów z Instrumentacji upewnij się, że ustawisz id
 
 - Utwórz nowy `Activity` po uzyskaniu elementu z kolejki.
 - Użyj `Activity.SetParentId(message.ParentId)` do skorelowania dzienników odbiorców i producentów.
-- Uruchom `Activity`.
+- Uruchom konsolę `Activity`.
 - Śledź operacje usunięcia z kolejki, procesu i usuwania za pomocą pomocników `Start/StopOperation`. Zrób to w tym samym przepływie kontroli asynchronicznej (kontekst wykonywania). W ten sposób są one skorelowane prawidłowo.
-- Zatrzymaj `Activity`.
+- Zatrzymaj program `Activity`.
 - Użyj `Start/StopOperation`lub wywołaj `Track` dane telemetryczne ręcznie.
 
 ### <a name="dependency-types"></a>Typy zależności

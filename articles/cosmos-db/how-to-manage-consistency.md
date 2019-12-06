@@ -1,17 +1,17 @@
 ---
 title: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
-description: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
+description: Informacje o konfigurowaniu poziomów spójności i zarządzaniu nimi w Azure Cosmos DB przy użyciu Azure Portal, zestawu .NET SDK, zestawu Java SDK i różnych zestawów SDK
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: bc5554e2d56987e969894ba57052d548e1499938
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093301"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872081"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
@@ -23,7 +23,7 @@ W tym artykule wyjaśniono, jak zarządzać poziomami spójności w usłudze Azu
 
 [Domyślny poziom spójności](consistency-levels.md) jest poziomem spójności używanym domyślnie przez klientów. Klienci zawsze mogą ją przesłonić.
 
-### <a name="cli"></a>Interfejs wiersza polecenia
+### <a name="cli"></a>Interfejs CLI
 
 ```bash
 # create with a default consistency
@@ -231,7 +231,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorowanie metryki PBS (Probabilistically Bounded Staleness)
 
-Jak ostateczna jest spójność ostateczna? W przypadku średniego przypadku można zaoferować nieaktualność w odniesieniu do historii wersji i czasu. Metryka [**probabilistically ograniczona (PBS)** ](https://pbs.cs.berkeley.edu/) próbuje określić prawdopodobieństwo nieodświeżoności i pokazuje ją jako metrykę. Aby wyświetlić metrykę usługi PBS, przejdź do swojego konta usługi Azure Cosmos w Azure Portal. Otwórz okienko **Metryki** i wybierz kartę **Spójność**. Spójrz na wykres o nazwie **Probability of strongly consistent reads based on your workload (see PBS)** (Prawdopodobieństwo silnie spójnych odczytów na podstawie obciążenia (zobacz PBS)).
+Jak ostateczna jest spójność ostateczna? W przypadku średniego przypadku można zaoferować nieaktualność w odniesieniu do historii wersji i czasu. Metryka [**probabilistically ograniczona (PBS)** ](https://pbs.cs.berkeley.edu/) próbuje określić prawdopodobieństwo nieodświeżoności i pokazuje ją jako metrykę. Aby wyświetlić metrykę usługi PBS, przejdź do swojego konta usługi Azure Cosmos w Azure Portal. Otwórz okienko **metryki** i wybierz kartę **spójność** . Spójrz na wykres o nazwie **prawdopodobieństwo silnie spójnych odczytów w oparciu o obciążenie (zobacz PBS)** .
 
 ![Wykres PBS w witrynie Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 

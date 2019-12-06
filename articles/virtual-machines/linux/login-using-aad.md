@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035926"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873016"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Wersja zapoznawcza: Logowanie do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania Azure Active Directory
 
@@ -68,7 +68,20 @@ Poniższe regiony platformy Azure są obecnie obsługiwane w ramach wersji zapoz
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
+## <a name="network-requirements"></a>Wymagania dotyczące sieci
+
+Aby włączyć uwierzytelnianie usługi Azure AD dla maszyn wirtualnych z systemem Linux na platformie Azure, musisz upewnić się, że konfiguracja sieci maszyn wirtualnych zezwala na dostęp wychodzący do następujących punktów końcowych przez port TCP 443:
+
+* https://login.microsoftonline.com
+* https://device.login.microsoftonline.com
+* https://pas.windows.net
+* https://management.azure.com
+* https://packages.microsoft.com
+
+> [!NOTE]
+> Obecnie nie można skonfigurować grup zabezpieczeń sieci platformy Azure dla maszyn wirtualnych z włączoną funkcją uwierzytelniania usługi Azure AD.
+
+## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
 
 Utwórz grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group#az-group-create), a następnie utwórz maszynę wirtualną z funkcją [AZ VM Create](/cli/azure/vm#az-vm-create) przy użyciu obsługiwanego dystrybucji i w obsługiwanym regionie. W poniższym przykładzie wdrożono maszynę wirtualną o nazwie *myVM* , która używa *Ubuntu 16,04 LTS* do grupy zasobów o nazwie Moja *resourceName* w regionie *southcentralus* . W poniższych przykładach można podać własną grupę zasobów i nazwy maszyn wirtualnych zgodnie z potrzebami.
 

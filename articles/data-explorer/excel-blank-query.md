@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 55198e0c38c2922d69b68d9ce62e16ea25e9cc44
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 4999000e2084922b43b8085034f545d4b5c644a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173731"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849092"
 ---
 # <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>Wizualizuj dane przy użyciu zapytania Kusto usługi Azure Eksplorator danych zaimportowanego do programu Microsoft Excel
 
@@ -68,3 +68,7 @@ Usługa Azure Eksplorator danych oferuje dwie opcje łączenia się z danymi w p
 1. Teraz Twoje dane są w programie Excel. Wybierz przycisk **Odśwież** , aby odświeżyć zapytanie.
 
     ![Wyświetlanie danych w programie Excel](media/excel-blank-query/data-in-excel.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+[Wizualizowanie danych przy użyciu łącznika usługi Azure Eksplorator danych dla programu Excel](excel-connector.md)

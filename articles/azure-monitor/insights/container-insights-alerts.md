@@ -1,20 +1,21 @@
 ---
-title: Tworzenie alertów wydajności przy użyciu Azure Monitor dla kontenerów | Microsoft Docs
-description: W tym artykule opisano, jak za pomocą Azure Monitor dla kontenerów utworzyć niestandardowe alerty na podstawie zapytań dzienników dotyczących wykorzystania pamięci i procesora CPU.
+title: Tworzenie alertów wydajności dla Azure Monitor kontenerów | Microsoft Docs
+description: W tym artykule opisano sposób tworzenia niestandardowych alertów opartych na kwerendach dzienników dotyczących wykorzystania pamięci i procesora CPU z Azure Monitor dla kontenerów.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195014"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841629"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak skonfigurować alerty dotyczące problemów z wydajnością w Azure Monitor dla kontenerów
+
 Azure Monitor dla kontenerów monitoruje wydajność obciążeń kontenera wdrożonych w celu Azure Container Instances lub do zarządzanych klastrów Kubernetes hostowanych w usłudze Azure Kubernetes Service (AKS).
 
 W tym artykule opisano sposób włączania alertów w następujących sytuacjach:
@@ -30,6 +31,7 @@ Aby otrzymywać alerty dotyczące wysokiego użycia procesora CPU lub pamięci l
 Jeśli nie masz doświadczenia w Azure Monitor alertów, zobacz [Omówienie alertów w usłudze Microsoft Azure](../platform/alerts-overview.md) przed rozpoczęciem. Aby dowiedzieć się więcej o alertach korzystających z zapytań dzienników, zobacz [alerty dzienników w Azure monitor](../platform/alerts-unified-log.md). Aby uzyskać więcej informacji na temat alertów metryk, zobacz [alerty metryk w Azure monitor](../platform/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Zapytania wyszukiwania dzienników wykorzystania zasobów
+
 Zapytania w tej sekcji obsługują każdy scenariusz związany z alertami. Są one używane w kroku 7 sekcji [Tworzenie alertu](#create-an-alert-rule) w tym artykule.
 
 Następujące zapytanie oblicza średnie użycie procesora jako średnie użycie procesora CPU przez węzły Członkowskie co minutę.  
@@ -278,13 +280,14 @@ InsightsMetrics
 ```
 
 ## <a name="create-an-alert-rule"></a>Tworzenie reguły alertu
-Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy użyciu jednej z reguł przeszukiwania dzienników, które zostały podane wcześniej.  
+
+Wykonaj następujące kroki, aby utworzyć alert dziennika w Azure Monitor przy użyciu jednej z reguł przeszukiwania dzienników, które zostały podane wcześniej. Aby utworzyć szablon przy użyciu szablonu ARM, zobacz [Przykładowy dziennik tworzenia alertu przy użyciu szablonu zasobów platformy Azure](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
 
 >[!NOTE]
 >Poniższa procedura umożliwia utworzenie reguły alertu dotyczącego użycia zasobów kontenera. w tym celu należy przełączyć się do nowego interfejsu API alertów dziennika, zgodnie z opisem w [preferencjach przełącznika interfejsu API dla alertów dzienników](../platform/alerts-log-api-switch.md).
 >
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Wybierz pozycję **monitor** z okienka po lewej stronie. W obszarze **szczegółowe**dane wybierz pozycję **kontenery**.
 3. Na karcie **monitorowane klastry** wybierz klaster z listy.
 4. W okienku po lewej stronie w obszarze **monitorowanie**wybierz pozycję **dzienniki** , aby otworzyć stronę Dzienniki Azure monitor. Ta strona służy do pisania i wykonywania zapytań Log Analytics platformy Azure.
