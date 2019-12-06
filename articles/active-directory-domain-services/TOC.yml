@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: Konfigurowanie zasad blokowania kont i haseł
           href: password-policy.md
-        - name: Włączanie zdarzeń inspekcji zabezpieczeń (wersja zapoznawcza)
+        - name: Włączanie zdarzeń inspekcji zabezpieczeń
           href: security-audit-events.md
     - name: Dołączanie maszyn wirtualnych do domeny
       items:

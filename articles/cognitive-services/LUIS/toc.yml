@@ -48,13 +48,13 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. Uzyskiwanie tonacji z wypowiedzi użytkowników
           href: tutorial-publish-settings.md
-    - name: Kompilowanie aplikacji
+    - name: Tworzenie i używanie jednostek
       items:
-        - name: Uzyskiwanie dobrze sformatowanych danych za pomocą wyrażeń regularnych
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Uzyskiwanie dokładnych dopasowań tekstu za pomocą list
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Pobieranie powiązanych danych za pomocą ról jednostek
+        - name: Jednostki wyrażenia regularnego
+          href: tutorial-regex-entity.md
+        - name: Lista jednostek
+          href: tutorial-list-entity.md
+        - name: Role jednostki
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: Grupowanie i wyodrębnianie powiązanych danych za pomocą jednostek złożonych

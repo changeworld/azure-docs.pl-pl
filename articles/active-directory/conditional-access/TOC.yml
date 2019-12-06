@@ -12,10 +12,6 @@
       href: require-tou.md
     - name: Blokowanie dostępu po wykryciu ryzykownej sesji
       href: app-sign-in-risk.md
-- name: Samouczki
-  items:
-    - name: Migrowanie klasycznych zasad MFA
-      href: policy-migration-mfa.md
 - name: Pojęcia
   expanded: false
   items:
@@ -37,6 +33,8 @@
       href: service-dependencies.md
     - name: Narzędzie analizy warunkowej
       href: what-if-tool.md
+    - name: Migrowanie zasad klasycznych
+      href: policy-migration.md
     - name: Zasady ochrony punktu odniesienia
       href: concept-baseline-protection.md
 - name: Przewodniki z instrukcjami
@@ -83,7 +81,7 @@
     - name: Kontrolki częstotliwości logowania i trwałości przeglądarki
       href: howto-conditional-access-session-lifetime.md
     - name: Migrowanie zasad klasycznych
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: Wdrażanie dostępu warunkowego
       href: howto-conditional-access-adoption-kit.md
     - name: Rozwiązywanie problemów

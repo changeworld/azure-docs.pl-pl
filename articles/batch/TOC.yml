@@ -113,6 +113,8 @@
           href: batch-user-accounts.md
         - name: Przesyłanie dużej liczby zadań
           href: large-number-tasks.md
+        - name: Sprawdzanie pod kątem błędów w zadaniach i zadaniach podrzędnych
+          href: batch-job-task-error-checking.md
     - name: Tworzenie plików zasobów
       href: resource-files.md
     - name: Utrwalanie danych wyjściowych zadań i zadań podrzędnych

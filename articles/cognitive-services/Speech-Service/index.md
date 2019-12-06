@@ -1,19 +1,19 @@
 ---
 layout: HubPage
-ms.date: 10-19-2019
+ms.date: 11-21-2019
 ms.topic: hub-page
-title: Dokumentacja usługi rozpoznawania mowy
-description: Wprowadzenie do usługi Mowa.
-ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+title: Dokumentacja usługi Mowa
+description: Wprowadzenie do usługi Mowa. Rozpoznawaj mowę, syntetyzuj mowę, uzyskuj tłumaczenia w czasie rzeczywistym, transkrybuj konwersacje lub integruj mowę ze środowiskami botów.
+ms.openlocfilehash: 2ec258501b89d9ff801974b38f6717bf7af2eafc
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406186"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840803"
 ---
-<div id="main" class="v2">    
+<div id="main" class="v2">
     <div class="container">
-        <h1>Dokumentacja usługi rozpoznawania mowy</h1>
+        <h1>Dokumentacja usługi Mowa</h1>
         <ul class="pivots">
             <li>
                 <a href="#start">Wprowadzenie</a>
@@ -58,7 +58,7 @@ ms.locfileid: "74406186"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                          
+                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/sr-blob">
                                     <div class="cardSize">
@@ -127,8 +127,8 @@ ms.locfileid: "74406186"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Dokumentacja</h3>
-                                                    <p>Dowiedz się więcej na temat usługi Mowa i sposobu jej używania w aplikacjach, narzędziach i produktach.</p>
+                                                    <h3>Przeczytaj dokumentację</h3>
+                                                    <p>Dowiedz się, jak dodać rozpoznawanie mowy do aplikacji, narzędzi i produktów. Zawiera pojęcia, samouczki, dokumentację interfejsów API oraz informacje o wersji.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -215,7 +215,7 @@ ms.locfileid: "74406186"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                                                
+                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/tts-pricing">
                                     <div class="cardSize">
@@ -246,14 +246,14 @@ ms.locfileid: "74406186"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Dokumentacja</h3>
-                                                    <p>Dowiedz się więcej na temat usługi Mowa i sposobu jej używania w aplikacjach, narzędziach i produktach.</p>
+                                                    <h3>Przeczytaj dokumentację</h3>
+                                                    <p>Dowiedz się, jak dodać syntetyzowanie mowy do aplikacji, narzędzi i produktów. Zawiera pojęcia, samouczki, dokumentację interfejsów API oraz informacje o wersji.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                               
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -315,7 +315,7 @@ ms.locfileid: "74406186"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -427,14 +427,14 @@ ms.locfileid: "74406186"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Dokumentacja</h3>
-                                                    <p>Dowiedz się więcej na temat usługi Mowa i sposobu jej używania w aplikacjach, narzędziach i produktach.</p>
+                                                    <h3>Przeczytaj dokumentację</h3>
+                                                    <p>Dowiedz się, jak dodać tłumaczenie mowy do aplikacji, narzędzi i produktów. Zawiera pojęcia, samouczki, dokumentację interfejsów API oraz informacje o wersji.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>              
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -534,7 +534,7 @@ ms.locfileid: "74406186"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -597,6 +597,68 @@ ms.locfileid: "74406186"
                                     </div>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#support">Pomoc techniczna</a>
+                        <ul id="support" class="cardsC">
+                            <li>
+                                <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="https://docs.microsoft.com/media/logos/logo_octokitty.svg" style="width:140px" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Problemy w witrynie GitHub</h3>
+                                                    <p>Przeglądaj otwarte problemy i/lub twórz nowe problemy dotyczące zestawu SDK usługi Mowa w witrynie GitHub.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stackoverflow.com/questions/tagged/microsoft-cognitive">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="https://docs.microsoft.com/media/logos/logo_stackoverflow.svg" style="width:140px" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Stack Overflow</h3>
+                                                    <p>Zadawaj pytania i uzyskuj pomoc od społeczności usługi Mowa w witrynie Stack Overflow.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://cognitive.uservoice.com/forums/912208-speech-service">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="https://docs.microsoft.com/media/logos/logo-uservoice.svg" style="width:140px" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Forum UserVoice</h3>
+                                                    <p>Dziel się swoimi pomysłami, sugeruj ulepszenia lub proś o nowe funkcje usługi Mowa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                                                    
                         </ul>
                     </li>
                 </ul>
@@ -663,7 +725,7 @@ ms.locfileid: "74406186"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/custom-sr-languages">
                                     <div class="cardSize">
@@ -702,7 +764,7 @@ ms.locfileid: "74406186"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -805,9 +867,100 @@ ms.locfileid: "74406186"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                                         
+                            </li>
                         </ul>
                     </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#scenarios">Scenariusze</a>
+                <ul id="scenarios">
+                    <li>
+                        <a href="#use-cases">Przypadki użycia</a>
+                        <ul id="use-cases" class="cardsC">
+                            <li>
+                                <a href="call-center-transcription.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech_recognition_from_blob.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Przekształcanie nagrań w centrach telefonicznej obsługi klienta</h3>
+                                                    <p>Typowym scenariuszem dla funkcji zamiany mowy na tekst jest transkrypcja dużych ilości danych rozmów telefonicznych, które mogą pochodzić z takich źródeł, jak system interaktywnych odpowiedzi głosowych (IVR, Interactive Voice Response). </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="scenario-availability.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Dostępność scenariuszy i funkcji</h3>
+                                                    <p>Poznaj dostępność scenariuszy i funkcji według platformy i języka programowania.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#deploy-architecture">Wdrażanie</a>
+                        <ul id="deploy-architecture" class="cardsC">
+                            <li>
+                                <a href="speech-container-howto.md?tabs=stt">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="https://docs.microsoft.com/media/illustrations/virtualization-containers-about.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Wdrażanie usługi Mowa w kontenerach</h3>
+                                                    <p>Wdróż usługę Mowa w wystąpieniu kontenera za pomocą platformy Docker.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regions.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Obsługiwane regiony</h3>
+                                                    <p>Dowiedz się, gdzie jest obsługiwana usługa Mowa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                                    
+                        </ul>
+                    </li>                    
                 </ul>
             </li>
         </ul>
