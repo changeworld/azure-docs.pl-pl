@@ -1,6 +1,6 @@
 ---
-title: Umożliwia wykrywanie możliwej zawartości dla dorosłych usługi Azure Media Content Moderator | Dokumentacja firmy Microsoft
-description: Moderowanie filmów wideo ułatwia wykrywanie potencjalnych dorosłych i zawartości erotycznej w klipach wideo.
+title: Korzystanie z usługi Azure Media Content Moderator do wykrywania możliwej zawartości dla osób dorosłych i erotycznej | Microsoft Docs
+description: Usługa Azure Media Content Moderator Media procesor pozwala wykryć potencjalną zawartość dla dorosłych i erotycznej w filmach wideo.
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -14,72 +14,72 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465681"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896002"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Użyj usługi Azure Media Content Moderator, aby wykrywanie możliwej zawartości dla dorosłych 
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Korzystanie z usługi Azure Media Content Moderator do wykrywania możliwej zawartości dla osób dorosłych i erotycznej 
 
-## <a name="overview"></a>Omówienie
-**Pakietu Content Moderator multimediów Azure** procesor multimediów (MP) pozwala na użytek wspomagane maszynowo Moderowanie filmów wideo. Na przykład chcesz wykrywać potencjalną zawartość dla dorosłych i nieodpowiednią w filmach wideo oraz przesyłać zawartość oznaczoną flagą do przejrzenia przez zespoły ds. moderowania obsługiwanego przez ludzi.
+## <a name="overview"></a>Przegląd
+**Usługa Azure media Content moderator** Media procesor (MP) umożliwia korzystanie z moderowania dla filmów wideo przy użyciu wspomaganego maszynowo. Na przykład chcesz wykrywać potencjalną zawartość dla dorosłych i nieodpowiednią w filmach wideo oraz przesyłać zawartość oznaczoną flagą do przejrzenia przez zespoły ds. moderowania obsługiwanego przez ludzi.
 
-**Pakietu Content Moderator multimediów Azure** pakiet administracyjny jest obecnie w wersji zapoznawczej.
+Pakiet MP **usługi Azure Media Content moderator** jest obecnie w wersji zapoznawczej.
 
-Ten artykuł zawiera szczegółowe informacje o **pakietu Content Moderator multimediów Azure** i pokazuje, jak z niej korzystać z zestawu SDK usługi Media Services dla platformy .NET.
+W tym artykule przedstawiono szczegółowe informacje o **usłudze Azure Media Content moderator** i pokazano, jak używać jej z zestawem SDK Media Services dla platformy .NET.
 
-## <a name="content-moderator-input-files"></a>Content Moderator plików wejściowych
+## <a name="content-moderator-input-files"></a>Pliki wejściowe Content Moderator
 Pliki wideo. Obecnie obsługiwane są następujące formaty: MP4, MOV i WMV.
 
-## <a name="content-moderator-output-files"></a>Zawartość plików wyjściowych moderatora
-Moderowane danych wyjściowych w formacie JSON zawiera zrzuty automatycznie wykryte i klatki kluczowe. Klatki kluczowe są zwracane z pewnością wyniki dla możliwej zawartości dla dorosłych lub erotycznej. Te aktualizacje obejmują również flagę logiczną wskazującą, czy przeglądu jest zalecane. Flaga zalecenie przeglądu przypisano wartości w oparciu o progi wewnętrzne wyników dla dorosłych.
+## <a name="content-moderator-output-files"></a>Pliki wyjściowe Content Moderator
+Moderowane dane wyjściowe w formacie JSON obejmują wykryte przez autozrzuty i ramki kluczowe. Ramki kluczowe są zwracane z wynikami nieufności dla możliwej zawartości dla dorosłych lub erotycznej. Zawierają także flagę logiczną wskazującą, czy jest zalecana Recenzja. Flaga rekomendacja przeglądu ma przypisane wartości na podstawie wewnętrznych progów dla dorosłych i erotycznej ocen.
 
-## <a name="elements-of-the-output-json-file"></a>Elementy danych wyjściowych pliku JSON
+## <a name="elements-of-the-output-json-file"></a>Elementy wyjściowego pliku JSON
 
-Zadanie tworzy plik danych wyjściowych JSON, który zawiera metadane dotyczące wykrytych zrzuty i klatki kluczowe oraz tego, czy zawierają one zawartości dla dorosłych lub erotycznej.
+Zadanie tworzy plik wyjściowy JSON zawierający metadane dotyczące wykrytych zrzutów i klatek kluczowych oraz określa, czy zawierają one zawartość dla dorosłych lub erotycznej.
 
-Dane wyjściowe JSON zawiera następujące elementy:
+Wyjściowy kod JSON zawiera następujące elementy:
 
-### <a name="root-json-elements"></a>Elementy katalogu głównego JSON
+### <a name="root-json-elements"></a>Główne elementy JSON
 
 | Element | Opis |
 | --- | --- |
-| version |Wersja pakietu Content Moderator. |
-| Skala czasu |"Impulsów" na sekundę filmu wideo. |
-| offset |Przesunięcie czasu dla sygnatur czasowych. W wersji 1.0 interfejsów API Video ta wartość będzie zawsze równa 0. Ta wartość może zmienić w przyszłości. |
-| szybkość klatek |Liczba klatek na sekundę w wideo. |
-| Szerokość |Szerokość danych wyjściowych klatki wideo, w pikselach.|
-| Wysokość |Wysokość dane wyjściowe klatki wideo, w pikselach.|
-| TotalDuration |Czas trwania wideo w "taktów." danych wejściowych |
-| [fragments](#fragments-json-elements) |Metadane jest podzielony się w różnych segmentach fragmentów. Każdy fragment jest automatycznie wykryte zrzut rozpoczęcia, czas trwania, liczba interwałów i zdarzenia. |
+| version |Wersja Content Moderator. |
+| timescale |"Ticks" na sekundę filmu wideo. |
+| offset |Przesunięcie czasu dla sygnatur czasowych. W wersji 1,0 interfejsów API wideo ta wartość będzie zawsze równa 0. Ta wartość może ulec zmianie w przyszłości. |
+| szybkości |Liczba klatek na sekundę w wideo. |
+| szerokość |Szerokość wyjściowej ramki wideo (w pikselach).|
+| wysokość |Wysokość wyjściowej ramki wideo (w pikselach).|
+| TotalDuration |Czas trwania wejściowego filmu wideo w "taktach". |
+| [elementy](#fragments-json-elements) |Metadane są podzielone na różne segmenty o nazwie fragmenty. Każdy fragment jest wykrytym wstępnie zrzutem z początkiem, czasem trwania, numerem interwału i zdarzeniami. |
 
-### <a name="fragments-json-elements"></a>Elementy JSON fragmentów
-
-|Element|Opis|
-|---|---|
-| start |Czas rozpoczęcia pierwsze zdarzenie "taktów." |
-| Czas trwania |Długość fragmentu, w "taktów." |
-| interval |Interwał każdego wpisu zdarzenia w obrębie fragmentu, w "taktów." |
-| [Zdarzenia](#events-json-elements) |Każde zdarzenie reprezentuje klipu i każdy plik zawiera klatki kluczowe wykryte i śledzenia w tym czas trwania. Istnieje szereg zdarzeń. Zewnętrzna tablica reprezentuje jeden interwał czasu. Wewnętrzna tablica składa się z 0 lub większej liczby zdarzeń, które wystąpiły w danym momencie.|
-
-### <a name="events-json-elements"></a>Elementy JSON zdarzenia
+### <a name="fragments-json-elements"></a>Fragmenty elementów JSON
 
 |Element|Opis|
 |---|---|
-| reviewRecommended | `true` lub `false` zależności od tego, czy **adultScore** lub **racyScore** przekroczy progi wewnętrznego. |
-| adultScore | Współczynnik ufności dla możliwe zawartości dla dorosłych w skali od 0,00 0,99. |
-| racyScore | Współczynnik ufności możliwe zawartości erotycznej, na skalę 0,00 do 0,99. |
-| index | Indeks ramki w skali od pierwszej ramki do ostatniego indeks indeksu ramki. |
-| timestamp | Lokalizacja ramki "taktów." |
-| shotIndex | Zrzut indeks elementu nadrzędnego. |
+| rozpoczynanie |Godzina rozpoczęcia pierwszego zdarzenia w "Takty". |
+| duration |Długość fragmentu w "Takty". |
+| interval |Interwał każdego wpisu zdarzenia w obrębie fragmentu w "Takty". |
+| [wydarzeniach](#events-json-elements) |Każde zdarzenie reprezentuje klip, a każdy klip zawiera ramki kluczowe wykryte i śledzone w tym czasie. Jest to tablica zdarzeń. Zewnętrzna tablica reprezentuje jeden interwał czasu. Wewnętrzna tablica składa się z 0 lub większej liczby zdarzeń, które wystąpiły w danym momencie.|
+
+### <a name="events-json-elements"></a>Events — elementy JSON
+
+|Element|Opis|
+|---|---|
+| reviewRecommended | `true` lub `false` w zależności od tego, czy **adultScore** lub **racyScore** przekraczają wewnętrzne progi. |
+| adultScore | Wynik pewności dotyczącej możliwej zawartości dla dorosłych w skali od 0,00 do 0,99. |
+| racyScore | Wynik zaufania dla możliwej zawartości erotycznej w skali od 0,00 do 0,99. |
+| index | indeks ramki w skali od pierwszego indeksu ramki do ostatniego indeksu ramki. |
+| sygnatura czasowa | Lokalizacja ramki w "Takty". |
+| shotIndex | Indeks zrzutu nadrzędnego. |
 
 
-## <a name="content-moderation-quickstart-and-sample-output"></a>Zawartość Moderowanie przewodnika Szybki Start i przykładowe dane wyjściowe
+## <a name="content-moderation-quickstart-and-sample-output"></a>Przewodnik Szybki Start dotyczący moderowania zawartości i próbkowanie danych wyjściowych
 
 ### <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
-Podczas tworzenia zadania za pomocą **pakietu Content Moderator multimediów Azure**, należy określić ustawienie wstępne konfiguracji. Następujące ustawienie konfiguracji jest tylko do moderacji zawartości.
+Podczas tworzenia zadania za pomocą **usługi Azure Media Content moderator**należy określić ustawienie wstępne konfiguracji. Poniższe ustawienia wstępne konfiguracji dotyczą moderowania zawartości.
 
     {
       "version":"2.0"
@@ -87,8 +87,8 @@ Podczas tworzenia zadania za pomocą **pakietu Content Moderator multimediów Az
 
 ### <a name="net-code-sample"></a>Przykładowy kod platformy .NET
 
-Poniższy przykładowy kod .NET używa zestawu SDK .NET usługi Media Services do uruchomienia zadania pakietu Content Moderator. Pobiera nośników usług zasobów jako danych wejściowych, które zawiera film wideo, aby się łagodzenie.
-Zobacz [wideo Szybki Start pakietu Content Moderator](../../cognitive-services/Content-Moderator/video-moderation-api.md) pełny kod źródłowy i projekt programu Visual Studio.
+Poniższy przykład kodu platformy .NET używa zestawu SDK Media Services .NET do uruchomienia zadania Content Moderator. Pobiera zasób usługi Media Services jako dane wejściowe, które zawierają wideo do moderowania.
+Zapoznaj się z [Content moderator wideo szybkiego startu](../../cognitive-services/Content-Moderator/video-moderation-api.md) dla kodu źródłowego i projektu programu Visual Studio.
 
 
 ```csharp
@@ -220,20 +220,20 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki
-[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
+[Omówienie Azure Media Services Analytics](media-services-analytics-overview.md)
 
-[Pokazy usługi Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Demonstracje Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat pakietu Content Moderator [rozwiązania do obsługi wideo Moderowanie i przejrzyj](../../cognitive-services/Content-Moderator/video-moderation-human-review.md).
+Dowiedz się więcej o [moderowaniu wideo Content moderator i rozwiązaniu problemu](../../cognitive-services/Content-Moderator/video-moderation-human-review.md).
 
-Uzyskaj pełny kod źródłowy i projekt programu Visual Studio z [Moderowanie filmów wideo przewodnika Szybki Start](../../cognitive-services/Content-Moderator/video-moderation-api.md). 
+Pobierz pełny kod źródłowy i projekt programu Visual Studio z [przewodnika Szybki Start dotyczącego moderowania wideo](../../cognitive-services/Content-Moderator/video-moderation-api.md). 
 
-Dowiedz się, jak wygenerować [przeglądy wideo](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) z moderowanych dane wyjściowe, i [średni zapisy](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) na platformie .NET.
+Dowiedz się, jak generować [Recenzje wideo](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) z moderowanych danych wyjściowych i [umiarkowane transkrypcje](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) w programie .NET.
 
-Zapoznaj się z szczegółowe .NET [Samouczek wideo Moderowanie i przejrzyj](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md). 
+Zapoznaj się z szczegółowym [samouczkiem dotyczącym moderowania wideo .NET i przeglądu](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md). 

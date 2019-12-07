@@ -1,28 +1,22 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — obliczanie rozmiaru kontenera obiektów blob | Microsoft Docs
+title: Obliczanie rozmiaru kontenera obiektów BLOB za pomocą programu PowerShell
+titleSuffix: Azure Storage
 description: Obliczanie rozmiaru kontenera w usłudze Azure Blob Storage przez zsumowanie rozmiaru wszystkich zawartych w nim obiektów blob.
 services: storage
-documentationcenter: na
 author: tamram
-manager: jeconnoc
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d8baec875c25556f1080cdd105c7fa466ffce74e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 890da96ac1d97a2eb84f5296c74a02824d657273
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61230883"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895054"
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>Obliczanie rozmiaru kontenera w usłudze Blob Storage
+# <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>Obliczanie rozmiaru kontenera obiektów BLOB za pomocą programu PowerShell
 
 Ten skrypt oblicza rozmiar kontenera w usłudze Azure Blob Storage przez zsumowanie rozmiaru obiektów blob w tym kontenerze.
 
@@ -54,7 +48,7 @@ Ten skrypt zawiera następujące polecenia, służące do obliczenia rozmiaru ko
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Pobiera określone konto usługi Storage lub wszystkie konta usługi Storage w grupie zasobów lub subskrypcji. |
 | [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Zwraca listę obiektów blob w kontenerze. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli potrzebujesz skryptu obliczającego rozmiar kontenera na potrzeby rozliczeń, zobacz [Obliczanie rozmiaru kontenera obiektów blob na potrzeby rozliczeń](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
 

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275737"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900405"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Sprawdź stan aprowizacji użytkowników
 
@@ -101,6 +101,8 @@ Podsumowanie czynników wpływających na czas trwania **cyklu początkowego**:
 - Limity szybkości żądań i ograniczanie wydajności zaimplementowane przez system docelowy. Niektóre systemy docelowe implementują limity szybkości żądań i ograniczania przepustowości, co może mieć wpływ na wydajność podczas dużych operacji synchronizacji. W tych warunkach aplikacja, która otrzymuje zbyt wiele żądań zbyt szybko, może spowalniać swoją szybkość reakcji lub zamknąć połączenie. Aby zwiększyć wydajność, łącznik musi zostać dostosowany przez niewysyłanie żądań aplikacji szybciej niż aplikacja może je przetworzyć. Dla łączników aprowizacji utworzonych przez firmę Microsoft należy wprowadzić tę korektę. 
 
 - Liczba i rozmiary przypisanych grup. Synchronizowanie przypisanych grup trwa dłużej niż synchronizowanie użytkowników. Zarówno liczba, jak i rozmiary przypisanych grup wpływają na wydajność. Jeśli aplikacja ma [mapowania włączone dla synchronizacji obiektów grup](customize-application-attributes.md#editing-group-attribute-mappings), w dodatku do użytkowników są synchronizowane właściwości grupy, takie jak nazwy grup i członkostwa. Te dodatkowe synchronizacje będą trwać dłużej niż tylko synchronizowanie obiektów użytkownika.
+
+- Jeśli wydajność jest problemem i podjęto próbę aprowizacji większości użytkowników i grup w dzierżawie, użyj filtrów zakresu. Filtry zakresu umożliwiają precyzyjne dostosowywanie danych, które usługa aprowizacji wyodrębnia z usługi Azure AD przez filtrowanie użytkowników na podstawie określonych wartości atrybutów. Aby uzyskać więcej informacji na temat określania zakresu filtrów, zobacz Tworzenie [aplikacji opartych na atrybutach przy użyciu filtrów zakresu](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 
 ## <a name="next-steps"></a>Następne kroki
 [Automatyzacja aprowizacji i anulowania aprowizacji użytkowników w aplikacjach SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

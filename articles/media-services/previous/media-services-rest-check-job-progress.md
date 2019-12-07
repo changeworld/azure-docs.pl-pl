@@ -1,6 +1,6 @@
 ---
-title: Jak sprawdzić postęp zadania przy użyciu interfejsu API REST | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak śledzić postęp zadania.
+title: Jak sprawdzić postęp zadania przy użyciu interfejsu API REST | Microsoft Docs
+description: W tym artykule pokazano, jak sprawdzić postęp zadania przy użyciu interfejsu API REST Azure Media Services V2.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec72b7e7bf4c2b859e8ceecf617c90a4853cb517
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869504"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901496"
 ---
-# <a name="how-to-check-job-progress"></a>Porady: sprawdzanie postępu zadania
+# <a name="how-to-check-job-progress"></a>Instrukcje: sprawdzanie postępu zadania
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
-Po uruchomieniu zadania, często wymagają sposób śledzenia postępu zadań. Można sprawdzić stan zadania przy użyciu właściwości stanu zadania. Aby uzyskać więcej informacji na temat właściwości stanu, zobacz [właściwości jednostki zadania](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+Podczas uruchamiania zadań często potrzebny jest sposób śledzenia postępów zadań. Stan zadania można sprawdzić za pomocą właściwości stan zadania. Aby uzyskać więcej informacji na temat właściwości State, zobacz [właściwości jednostki zadania](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 
-Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Aby uzyskać informacje na temat nawiązywania połączenia z interfejsem API usługi AMS, zobacz [dostęp do interfejsu api Azure Media Services przy użyciu uwierzytelniania w usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="check-job-progress"></a>Sprawdzanie postępu zadania
 
@@ -65,9 +65,9 @@ Odpowiedź:
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz także
 
-[Omówienie interfejsu API REST usługi Media Services operacji](media-services-rest-how-to-use.md)
+[Omówienie interfejsu API REST usługi Media Services Operations](media-services-rest-how-to-use.md)

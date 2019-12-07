@@ -1,6 +1,6 @@
 ---
 title: Jak przyciąć wideo przy użyciu Media Encoder Standard — Azure | Microsoft Docs
-description: W tym artykule przedstawiono sposób przycinania wideo przy użyciu Media Encoder Standard.
+description: Przycinanie jest procesem wyboru prostokątnego okna wewnątrz ramki wideo i kodowania tylko pikseli w tym oknie. W tym artykule przedstawiono sposób przycinania wideo przy użyciu Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016624"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887768"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Przycinanie wideo za pomocą usługi Media Encoder Standard  
 
@@ -29,7 +29,7 @@ Za pomocą Media Encoder Standard (MES) można przyciąć dane wejściowe wideo.
 
 Załóżmy, że masz jako dane wejściowe wideo, które ma rozdzielczość 1920 x 1080 pikseli (współczynnik proporcji 16:9), ale ma czarne słupki (pola filaru) po lewej i prawej stronie, tak aby tylko okno 4:3 lub piksele 1440x1080 zawierały aktywne wideo. Za pomocą MES można przyciąć lub edytować czarne paski oraz zakodować region 1440x1080.
 
-Przycinanie w MES jest etapem przetwarzania wstępnego, dlatego parametry przycinania w ustawieniach wstępnych kodowania mają zastosowanie do oryginalnego wejściowego wideo. Kodowanie jest kolejnym etapem, a ustawienia szerokość/wysokość mają zastosowanie do *wstępnie* przetworzonego wideo, a nie do oryginalnego wideo. Podczas projektowania ustawień wstępnych należy wykonać następujące czynności: (a) wybrać parametry przycinania na podstawie oryginalnego wejściowego wideo i (b) wybrać ustawienia kodowania na podstawie przyciętego wideo. Jeśli ustawienia kodowania nie są zgodne z przyciętym wideo, dane wyjściowe nie będą oczekiwane.
+Przycinanie w MES jest etapem przetwarzania wstępnego, dlatego parametry przycinania w ustawieniach wstępnych kodowania mają zastosowanie do oryginalnego wejściowego wideo. Kodowanie jest kolejnym etapem, a ustawienia szerokość/wysokość mają zastosowanie do *wstępnie przetworzonego* wideo, a nie do oryginalnego wideo. Podczas projektowania ustawień wstępnych należy wykonać następujące czynności: (a) wybrać parametry przycinania na podstawie oryginalnego wejściowego wideo i (b) wybrać ustawienia kodowania na podstawie przyciętego wideo. Jeśli ustawienia kodowania nie są zgodne z przyciętym wideo, dane wyjściowe nie będą oczekiwane.
 
 W [poniższym](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) temacie pokazano, jak utworzyć zadanie kodowania przy użyciu MES i jak określić niestandardowe ustawienia wstępne dla zadania kodowania. 
 
@@ -137,7 +137,7 @@ Poniższe ograniczenia dotyczą funkcji przycinania. Jeśli nie są spełnione, 
 3. Przycinanie dotyczy wideo przechwytywane w trybie poziomym (tj. nie dotyczy filmów wideo zarejestrowanych przy użyciu telefonu smartphone w trybie pionowym lub w pionie).
 4. Najlepiej sprawdza się w przypadku progresywnego wideo przechwytywanego przy użyciu pikseli kwadratowych
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Następny krok

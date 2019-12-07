@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d2b92759384a9a0b63d784a8cb1afb3d18d55aeb
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219316"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894407"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Kontrolki zabezpieczeń dla Azure Service Bus Messaging
 
@@ -41,15 +41,15 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w Azure Servi
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi| Dokumentacja |
 |---|---|--|--|
-| Authentication| Tak | Zarządzane za [Azure Active Directory tożsamość usługi zarządzanej](service-bus-managed-service-identity.md).| [Service Bus uwierzytelniania i autoryzacji](service-bus-authentication-and-authorization.md). |
-| Authorization| Tak | Obsługuje autoryzację za pośrednictwem tokenu [RBAC](authenticate-application.md) i SAS. | [Service Bus uwierzytelniania i autoryzacji](service-bus-authentication-and-authorization.md). |
+| Uwierzytelnianie| Tak | Zarządzane za [Azure Active Directory tożsamość usługi zarządzanej](service-bus-managed-service-identity.md).| [Service Bus uwierzytelniania i autoryzacji](service-bus-authentication-and-authorization.md). |
+| Autoryzacja| Tak | Obsługuje autoryzację za pośrednictwem tokenu [RBAC](authenticate-application.md) i SAS. | [Service Bus uwierzytelniania i autoryzacji](service-bus-authentication-and-authorization.md). |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi | Dokumentacja |
 |---|---|--|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft |  Tak w przypadku szyfrowania po stronie serwera domyślnie. | Klucze zarządzane przez klienta i BYOK nie są jeszcze obsługiwane. Szyfrowanie po stronie klienta jest odpowiedzialnością klienta |
-| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie |   |   |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft |  Tak w przypadku szyfrowania po stronie serwera domyślnie. |  |  |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Tak. Obecnie w wersji zapoznawczej | Klucz zarządzany przez klienta w usłudze Azure Key Recovery może służyć do szyfrowania danych w przestrzeni nazw Service Bus w stanie spoczynku. | [Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania Azure Service Bus danych przechowywanych przy użyciu Azure Portal (wersja zapoznawcza)](configure-customer-managed-key.md)  |
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |   |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Obsługuje standardowy mechanizm HTTPS/TLS. |   |
 | Wywołania interfejsu API są szyfrowane| Tak | Wywołania interfejsu API są nawiązywane za pośrednictwem [Azure Resource Manager](../azure-resource-manager/index.yml) i https. |   |

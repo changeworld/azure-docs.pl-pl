@@ -1,22 +1,21 @@
 ---
-title: 'Skrypt programu PowerShell: kopiowanie danych ze środowiska lokalnego na platformę Azure przy użyciu Data Factory '
+title: Kopiowanie danych ze środowiska lokalnego na platformę Azure przy użyciu programu PowerShell
 description: Ten skrypt programu PowerShell kopiuje dane z lokalnej bazy danych SQL Server do innego Blob Storage platformy Azure.
 services: data-factory
-author: linda33wj
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: d7f8d67291c0b6b2a384331c014fdd5cd247ceae
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: shwang
+ms.date: 10/31/2017
+ms.openlocfilehash: f75c4316383120e198ab57501e31c0c42a8917f2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684348"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890848"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Korzystanie z programu PowerShell do tworzenia potoku usługi Data Factory w celu kopiowania danych ze środowiska lokalnego na platformę Azure
 

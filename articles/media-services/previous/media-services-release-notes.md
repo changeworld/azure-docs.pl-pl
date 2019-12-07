@@ -1,6 +1,6 @@
 ---
-title: Informacje o wersji Media Services | Microsoft Docs
-description: Informacje o wersji Media Services
+title: Informacje o wersji Azure Media Services | Microsoft Docs
+description: W tym artykule omówiono informacje o wersji Microsoft Azure Media Services V2.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7c6cac925ad53e08ecc10c828765153c905f1c1d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f798a1eff8d9c90a58856a12b84061ece7e3720d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423891"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885675"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
@@ -88,7 +88,7 @@ Najnowsza wersja usługi zawiera niewielkie zmiany formatowania komunikatów o b
 
 Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyskiwania strumienia transportowego RTP/MPEG-2. Przeprowadź migrację z protokołów RTP/MPEG-2 do protokołu RTMP lub pofragmentowanych plików MP4 (Smooth Streaming).
 
-## <a name="october-2017-release"></a>Wydanie z października 2017
+## <a name="october-2017-release"></a>Wersja z października 2017 r.
 > [!IMPORTANT] 
 > Media Services jest przestarzałą obsługą kluczy uwierzytelniania usługi Azure Access Control Service. 22 czerwca 2018 nie można już uwierzytelniać się za pomocą Media Services zaplecza za pośrednictwem kodu przy użyciu kluczy Access Control Service. Musisz zaktualizować swój kod, aby używać Azure Active Directory (Azure AD) na potrzeby [uwierzytelniania opartego na usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md). Obejrzyj informacje o ostrzeżeniach dotyczących tej zmiany w Azure Portal.
 
@@ -110,7 +110,7 @@ Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyski
     * Koder standardowy obsługuje metadane wejściowe i Generowanie miniatur w bardzo krótkim wideo.
     * Ulepszenia dekodera H. 264 używane w standardowym Koderie eliminują niektóre rzadkie artefakty. 
 
-#### <a name="media-analytics"></a>Media Analytics
+#### <a name="media-analytics"></a>Analiza multimediów
 Ogólna dostępność Azure Media Redactor: ten procesor multimedialny wykonuje zachowywanie anonimowości przez rozmycie twarzy wybranych osób i jest idealnym rozwiązaniem do użycia w scenariuszach bezpieczeństwa publicznego i multimediów. 
 
 Aby zapoznać się z omówieniem tego nowego procesora, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/azure-media-redactor/). Aby uzyskać informacje na temat dokumentacji i ustawień, zobacz [redagowanie twarzy przy użyciu Azure Media Analytics](media-services-face-redaction.md).
@@ -176,7 +176,7 @@ Aby uzyskać więcej informacji, zobacz [ten blog](https://blogs.msdn.microsoft.
 Niektórzy klienci mogą przechodzić przez problem z tagiem REPEAT w manifeście Smooth Streaming. Aby uzyskać więcej informacji, zobacz [tę sekcję](media-services-deliver-content-overview.md#known-issues).
 
 ## <a id="apr_changes16"></a>Wydanie z kwietnia 2016
-### <a name="media-analytics"></a>Media Analytics
+### <a name="media-analytics"></a>Analiza multimediów
  Media Services wprowadzono Media Analytics do zaawansowanej analizy filmów wideo. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Media Services Analytics](media-services-analytics-overview.md).
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (wersja zapoznawcza)
@@ -371,7 +371,7 @@ Zestaw Media Services SDK dla platformy .NET jest teraz w wersji 3.0.0.7
   
     Aby użyć niestandardowej nazwy domeny jako nazwy punktu końcowego Media Services streaming, Dodaj niestandardowe nazwy hostów do punktu końcowego przesyłania strumieniowego. Użyj Media Services interfejsów API REST lub zestawu .NET SDK, aby dodać niestandardowe nazwy hostów.
   
-    Stosuje się następujące zagadnienia:
+    Obowiązują następujące zastrzeżenia:
   
   * Musisz mieć własność niestandardowej nazwy domeny.
   * Własność nazwy domeny musi być zweryfikowana przez Media Services. Aby sprawdzić poprawność domeny, Utwórz rekord CName, który mapuje domenę nadrzędną MediaServicesAccountId na zweryfikowanie strefy DNS MediaServices-DNS.
@@ -555,7 +555,7 @@ W wersji z listopada zestawu SDK wprowadzono następujące funkcje:
   
     * Obsługa asynchroniczna została dodana do wszystkich metod.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

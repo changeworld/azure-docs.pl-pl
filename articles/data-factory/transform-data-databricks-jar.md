@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą usługi datakosteks jar — Azure
+title: Przekształcanie danych z użyciem jar
 description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając plik JAR.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4a01a21259c4957b6f497bf213a3ef53f940bab7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683960"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893964"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Przekształcanie danych przez uruchomienie działania jar w Azure Databricks
 
@@ -64,10 +64,10 @@ W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 |linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie jar. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz artykuł informacje o [obliczeniu usługi połączonej](compute-linked-services.md) .|Tak|
 |mainClassName|Pełna nazwa klasy zawierającej metodę Main, która ma zostać wykonana. Ta klasa musi być zawarta w formacie JAR udostępnionym jako biblioteka.|Tak|
 |parameters|Parametry, które zostaną przesłane do metody Main.  To jest tablica ciągów.|Nie|
-|bibliotece|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Tak (co najmniej jeden zawierający metodę mainClassName)|
+|biblioteki|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Tak (co najmniej jeden zawierający metodę mainClassName)|
 
 > [!NOTE]
-> **Znany problem** — w przypadku używania tego samego [interaktywnego klastra](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) do uruchamiania współbieżnych elementów danych jar (bez ponownego uruchomienia klastra) występuje znany problem w kostkach danych, gdzie w parametrach pierwszego działania będą używane następujące działania również. Z tego powodu nieprawidłowe parametry są przesyłane do kolejnych zadań. Aby uniknąć tego problemu, użyj [klastra zadań](compute-linked-services.md#example---using-new-job-cluster-in-databricks) . 
+> **Znany problem** — w przypadku używania tego samego [interaktywnego klastra](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) do uruchamiania współbieżnych elementów danych jar (bez ponownego uruchomienia klastra) występuje znany problem w kostkach danych, gdzie w parametrach pierwszego działania będą używane również następujące działania. Z tego powodu nieprawidłowe parametry są przesyłane do kolejnych zadań. Aby uniknąć tego problemu, użyj [klastra zadań](compute-linked-services.md#example---using-new-job-cluster-in-databricks) . 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
 

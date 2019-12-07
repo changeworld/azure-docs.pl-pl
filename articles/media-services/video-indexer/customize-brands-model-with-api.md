@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 804cc7b2b0b51312ed756723fff5150b02f324cc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838336"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892808"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Dostosowywanie modelu marek przy użyciu interfejsu API Video Indexer
 
@@ -41,9 +41,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
-|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
-|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|location|string|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
+|accessToken|string|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -103,10 +103,10 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
-|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
+|location|string|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
 |id|liczba całkowita|Tak|Identyfikator marki (wygenerowany po utworzeniu marki)|
-|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|accessToken|string|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -132,10 +132,10 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
-|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
+|location|string|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
 |id|liczba całkowita|Tak|Identyfikator marki (wygenerowany po utworzeniu marki)|
-|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|accessToken|string|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -182,10 +182,10 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
-|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
+|location|string|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
 |id|liczba całkowita|Tak|Identyfikator marki (wygenerowany po utworzeniu marki)|
-|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|accessToken|string|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -245,9 +245,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
-|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
-|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|location|string|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
+|accessToken|string|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -305,9 +305,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
-|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
-|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|location|string|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
+|accessToken|string|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 
@@ -342,9 +342,9 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
-|location|ciąg|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
-|accountId|ciąg|Tak|Unikatowy identyfikator globalny dla konta|
-|accessToken|ciąg|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
+|location|string|Tak|Region świadczenia usługi Azure, do którego ma zostać rozesłane wywołanie. Aby uzyskać więcej informacji, zobacz [regiony i video Indexer platformy Azure](regions.md).|
+|accountId|string|Tak|Unikatowy identyfikator globalny dla konta|
+|accessToken|string|Tak|Token dostępu (musi być [tokenem dostępu konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)zakresu) do uwierzytelniania w wywołaniu. Tokeny dostępu wygasną w ciągu 1 godziny.|
 
 ### <a name="request-body"></a>Treść żądania
 

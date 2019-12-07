@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075411"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74903096"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Czy niestandardowe zasady protokołu IPsec/IKE są obsługiwane na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
 Niestandardowe zasady protokołu IPsec/IKE są obsługiwane we wszystkich jednostkach SKU platformy Azure z wyjątkiem podstawowej jednostki SKU.
@@ -110,7 +110,7 @@ Połączenia protokołu IKEv1 można tworzyć dla wszystkich jednostek SKU typu 
 Tak. Przesyłanie między połączeniami IKEv1 i IKEv2 jest obsługiwane.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Czy można korzystać z połączeń typu lokacja-lokacja protokołu IKEv1 dla podstawowych jednostek SKU z RouteBased sieci VPN?
-Nie. Wszystkie jednostki SKU sieci VPN RouteBased z wyjątkiem podstawowych jednostek SKU typu sieci VPN opartego na trasach obsługują połączenia protokołu IKEv1 dla lokacji między lokacjami.
+Nie. Podstawowa jednostka SKU nie obsługuje tej funkcji.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Czy mogę zmienić typ protokołu połączenia po utworzeniu połączenia (IKEv1 do IKEv2 i odwrotnie)?
 Nie. Po utworzeniu połączenia nie można zmienić protokołów IKEv1/IKEv2. Należy usunąć i utworzyć ponownie nowe połączenie z żądanym typem protokołu.

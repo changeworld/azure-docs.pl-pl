@@ -1,6 +1,6 @@
 ---
-title: Porównanie Video Indexer i usługi Azure Media Services v3 ustawień wstępnych | Dokumentacja firmy Microsoft
-description: W tym temacie porównano Video Indexer i usługa Azure Media Services v3 wstępne.
+title: Porównanie ustawień wstępnych Video Indexer i Azure Media Services v3 | Microsoft Docs
+description: W tym artykule porównano możliwości Video Indexer i Azure Media Services ustawień wstępnych v3.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 275178998948e357a6a72fbe5d0b3c9c01485a3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 055e210efbb01268654e7823a0fc1320e9c27646
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800173"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892825"
 ---
-# <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porównanie usług Azure Media Services v3 wstępne i Video Indexer 
+# <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porównanie ustawień wstępnych Azure Media Services v3 i Video Indexer 
 
-W tym artykule porównano możliwości **interfejsów API indeksatora wideo** i **usługi Media Services v3 API**. 
+W tym artykule porównano możliwości **interfejsów api Video Indexer** i **interfejsów API Media Services v3**. 
 
-Obecnie nakładają się na funkcji oferowanych przez [interfejsów API indeksatora wideo](https://api-portal.videoindexer.ai/) i [usługi Media Services v3 API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). Poniższa tabela zawiera bieżące wytyczne dla zrozumienia różnice i podobieństwa. 
+Obecnie istnieje nakładanie się między funkcjami oferowanymi przez [interfejsy api Video Indexer](https://api-portal.videoindexer.ai/) i [interfejsy API Media Services v3](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json). W poniższej tabeli przedstawiono bieżące wytyczne dotyczące interpretacji różnic i podobieństw. 
 
-## <a name="compare"></a>Porównanie
+## <a name="compare"></a>Porównaj
 
-|Cecha|Interfejsy API indeksatora wideo |Analizator wideo i Audio analizatora wstępne<br/>w interfejsy API usług Media Services v3|
+|Funkcja|Interfejsy API Video Indexer |Analizator wideo i ustawienia wstępne analizatora dźwięku<br/>w interfejsach API Media Services v3|
 |---|---|---|
-|Media Insights|[Rozszerzone](video-indexer-output-json-v2.md) |[Podstawy](../latest/intelligence-concept.md)|
-|Środowiska|Zobacz pełną listę obsługiwanych funkcji: <br/> [Omówienie](video-indexer-overview.md)|Zwraca tylko informacjom o filmie wideo|
-|Rozliczenia|[Cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Cennika usługi Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Zgodność|[ISO 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018), [SOC 1,2,3](https://www.microsoft.com/TrustCenter/Compliance/SOC), [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa), [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp), [PCI](https://www.microsoft.com/trustcenter/compliance/pci)i [ HITRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust) certyfikat. Aby uzyskać najnowsze aktualizacje, odwiedź stronę [bieżący stan certyfikaty usługi Video Indexer](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).|Usługa Media Services jest zgodna z wielu certyfikatów. Zapoznaj się z [Offerings.pdf zgodności platformy Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) i poszukaj pozycji "Media Services" zobaczyć, jeśli jest on zgodny z certyfikatem zainteresowania.|
+|Szczegółowe informacje o multimediach|[Usprawnion](video-indexer-output-json-v2.md) |[Podstawowe założenia](../latest/intelligence-concept.md)|
+|Możliwości|Zapoznaj się z pełną listą obsługiwanych funkcji: <br/> [Omówienie](video-indexer-overview.md)|Zwraca tylko wgląd w dane wideo|
+|Rozliczenia|[Cennik Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Cennik Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
+|Zgodność|[Iso 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018), [SOC 1, 2, 3](https://www.microsoft.com/TrustCenter/Compliance/SOC), [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa), [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp), [PCI](https://www.microsoft.com/trustcenter/compliance/pci)i [HiTRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust) certyfikowane. Najnowsze aktualizacje można znaleźć w temacie [bieżący stan certyfikatów Video Indexer](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).|Media Services jest zgodny z wieloma certyfikatami. Zapoznaj się z [ofertami zgodności platformy Azure. PDF](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) i wyszukaj ciąg "Media Services", aby sprawdzić, czy jest on zgodny z certyfikatem zainteresowań.|
 |Bezpłatna wersja próbna|Wschodnie stany USA|Niedostępne|
-|Dostępność w danym regionie|Wschodnie stany USA 2, południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Azja Wschodnia i Australia Wschodnia.  Aby uzyskać najnowsze aktualizacje, odwiedź stronę [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) strony.|Zobacz [stanu platformy Azure](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
+|Dostępność w poszczególnych regionach|Wschodnie stany USA 2, Południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia, Azja Południowo-Wschodnia, Azja Wschodnia i Australia Wschodnia.  Aby uzyskać najnowsze aktualizacje, odwiedź stronę [produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) .|Zobacz temat [Stan platformy Azure](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Omówienie usługi Video Indexer](video-indexer-overview.md)
 
-[Przegląd usługi Media Services v3](../latest/media-services-overview.md)
+[Media Services wersja 3 — Omówienie](../latest/media-services-overview.md)

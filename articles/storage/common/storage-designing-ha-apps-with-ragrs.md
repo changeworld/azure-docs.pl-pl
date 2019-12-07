@@ -1,20 +1,21 @@
 ---
-title: Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GZRS lub RA-GRS) | Microsoft Docs
-description: Jak korzystać z magazynu usługi Azure RA-GZRS lub RA-GRS w celu przetworzenia bardziej elastycznej aplikacji o wysokiej dostępności, aby obsłużyć awarię.
+title: Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego
+titleSuffix: Azure Storage
+description: Dowiedz się, jak korzystać z magazynu geograficznie nadmiarowego do odczytu w celu tworzenia aplikacji o wysokiej dostępności, która jest wystarczająco elastyczna, aby obsłużyć awarię.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673110"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895335"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego do odczytu
 
@@ -204,7 +205,7 @@ W poniższej tabeli przedstawiono przykład takiej sytuacji, w której mogą wys
 | T0       | Transakcja A: <br> Wstaw pracownika <br> jednostka w podstawowym |                                   |                    | Transakcja wstawiona do elementu podstawowego,<br> jeszcze nie zreplikowane. |
 | T1       |                                                            | Transakcja A <br> zreplikowane do<br> dodatkowych | T1 | Transakcja jest replikowana do pomocniczej. <br>Czas ostatniej synchronizacji został zaktualizowany.    |
 | T2       | Transakcja B:<br>Aktualizacja<br> Jednostka Employee<br> w podstawowym  |                                | T1                 | Transakcja B zapisywana w podstawowym,<br> jeszcze nie zreplikowane.  |
-| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>głównym |                    | T1                 | Transakcja C została zapisywana na podstawową,<br> jeszcze nie zreplikowane.  |
+| T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowy |                    | T1                 | Transakcja C została zapisywana na podstawową,<br> jeszcze nie zreplikowane.  |
 | *T4*     |                                                       | Transakcja C <br>zreplikowane do<br> dodatkowych | T1         | Transakcja C została zreplikowana do pomocniczej.<br>LastSyncTime nie został zaktualizowany, ponieważ <br>transakcja B nie została jeszcze zreplikowana.|
 | *T5*     | Odczytaj jednostki <br>z pomocniczego                           |                                  | T1                 | Otrzymujesz nieodświeżoną wartość dla pracownika <br> jednostka, ponieważ transakcja B nie została <br> zreplikowane jeszcze. Otrzymujesz nową wartość dla<br> Jednostka roli administratora, ponieważ C ma<br> powtórzon. Czas ostatniej synchronizacji nadal nie<br> Zaktualizowano, ponieważ transakcja B<br> nie zreplikowane. Możesz powiedzieć<br>Jednostka roli administratora jest niespójna <br>ponieważ data/godzina jednostki przypada po <br>Czas ostatniej synchronizacji. |
 | *T6*     |                                                      | Transakcja B<br> zreplikowane do<br> dodatkowych | T6                 | *T6* — wszystkie transakcje za poorednictwem języka C <br>zreplikowane, czas ostatniej synchronizacji<br> został zaktualizowany. |

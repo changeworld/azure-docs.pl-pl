@@ -1,6 +1,6 @@
 ---
 title: Przesyłanie strumieniowe na żywo przy użyciu Azure Media Services do tworzenia strumieni o wysokiej szybkości transmisji bitów | Microsoft Docs
-description: 'W tym temacie opisano sposób konfigurowania kanału, który odbiera strumień na żywo o pojedynczej szybkości transmisji bitów z kodera lokalnego, a następnie wykonuje kodowanie na żywo w strumieniu adaptacyjnej szybkości transmisji bitów przy użyciu Media Services. Strumień można następnie dostarczyć do aplikacji do odtwarzania klienta za pośrednictwem jednego lub większej liczby punktów końcowych przesyłania strumieniowego przy użyciu jednego z następujących protokołów adaptacyjnego przesyłania strumieniowego: HLS, gładki strumień, KRESKa MPEG.'
+description: W tym temacie opisano sposób konfigurowania kanału, który odbiera strumień na żywo o pojedynczej szybkości transmisji bitów z kodera lokalnego, a następnie wykonuje kodowanie na żywo w strumieniu adaptacyjnej szybkości transmisji bitów przy użyciu Media Services.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598316"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895910"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -71,7 +71,7 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 | Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Czy jest to rozliczenia? |
 | --- | --- | --- |
 | Uruchamianie |Uruchamianie |Nie (stan przejściowy) |
-| Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |OPCJĘ |
+| Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |TAK |
 | Zatrzymywanie |Zatrzymywanie |Nie (stan przejściowy) |
 | Zatrzymane |Zatrzymane |Nie |
 
@@ -170,7 +170,7 @@ Po utworzeniu kanału możesz uzyskać adresy URL pozyskiwania. Aby uzyskać te 
 Istnieje możliwość pozyskiwania pofragmentowanego strumienia MP4 (Smooth Streaming) na żywo za pośrednictwem połączenia SSL. Aby pozyskać za pośrednictwem protokołu SSL, należy zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie AMS nie obsługuje protokołu SSL z domenami niestandardowymi.  
 
 ### <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
-Można zdefiniować adresy IP, które mogą publikować wideo w tym kanale. Dozwolone adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci dziesiętnej (na przykład , "10.0.0.1 (255.255.252.0)").
+Można zdefiniować adresy IP, które mogą publikować wideo w tym kanale. Dozwolone adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci dziesiętnej (na przykład "10.0.0.1 (255.255.252.0)").
 
 Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.
 
@@ -188,7 +188,7 @@ Gdy kanał zacznie pozyskiwanie danych, możesz wyświetlić podgląd strumienia
 > 
 
 ### <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
-Można zdefiniować adresy IP, które mogą łączyć się z punktem końcowym wersji zapoznawczej. Jeśli adresy IP nie zostaną określone, dozwolony jest dowolny adres IP. Dozwolone adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci dziesiętnej (na przykład , "10.0.0.1 (255.255.252.0)").
+Można zdefiniować adresy IP, które mogą łączyć się z punktem końcowym wersji zapoznawczej. Jeśli adresy IP nie zostaną określone, dozwolony jest dowolny adres IP. Dozwolone adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci dziesiętnej (na przykład "10.0.0.1 (255.255.252.0)").
 
 ## <a name="live-encoding-settings"></a>Ustawienia kodowania na żywo
 W tej sekcji opisano, jak można dopasować ustawienia dla kodera na żywo w kanale, gdy **typ kodowania** kanału jest ustawiony na wartość **standardowa**.
@@ -217,7 +217,7 @@ Określa ustawienie wstępne, które ma być używane przez koder na żywo w ram
 
 #### <a name="output-video-stream"></a>Wyjściowy strumień wideo
 
-| Multimedia | Szerokość | Proporcj | MaxFPS | Profil | Nazwa strumienia wyjściowego |
+| Multimedia | Szerokość | Wysokość | MaxFPS | Profil | Nazwa strumienia wyjściowego |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Wysoka |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Wysoka |Video_960x540_2200kbps |

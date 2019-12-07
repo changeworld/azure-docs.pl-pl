@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: d196cf4024513d891182f3b916bd8412a2f81d14
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305481"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893607"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schemat zdarzeń dziennika aktywności platformy Azure
-**Dziennik aktywności platformy Azure** to dziennik zawierający szczegółowe informacje o wszystkich zdarzeniach na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzenia dla kategorii danych. Schemat danych różni się w zależności od tego, czy odczytujesz dane z portalu, programu PowerShell, interfejsu wiersza polecenia lub bezpośrednio za pośrednictwem interfejsu API REST, a następnie [Przesyłaj strumieniowo dane do magazynu lub Event Hubs przy użyciu profilu dziennika](activity-log-export.md). W poniższych przykładach pokazano schemat, który został udostępniony za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i API REST. Mapowanie tych właściwości na [schemat dzienników diagnostycznych platformy Azure](diagnostic-logs-schema.md) znajduje się na końcu artykułu.
+**Dziennik aktywności platformy Azure** to dziennik zawierający szczegółowe informacje o wszystkich zdarzeniach na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzenia dla kategorii danych. Schemat danych różni się w zależności od tego, czy odczytujesz dane z portalu, programu PowerShell, interfejsu wiersza polecenia lub bezpośrednio za pośrednictwem interfejsu API REST, a następnie [Przesyłaj strumieniowo dane do magazynu lub Event Hubs przy użyciu profilu dziennika](activity-log-export.md). W poniższych przykładach pokazano schemat, który został udostępniony za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i API REST. Mapowanie tych właściwości na [schemat dzienników platformy Azure](diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
 
 ## <a name="administrative"></a>Administracyjne
 Ta kategoria zawiera rekord wszystkich operacji tworzenia, aktualizowania, usuwania i akcji wykonywanych za pomocą Menedżer zasobów. Przykłady typów zdarzeń widocznych w tej kategorii obejmują "Tworzenie maszyny wirtualnej" i "Usuwanie sieciowej grupy zabezpieczeń" Każda Akcja podejmowana przez użytkownika lub aplikację przy użyciu Menedżer zasobów jest modelowana jako operacja dla określonego typu zasobu. Jeśli typem operacji jest zapis, usuwanie lub Akcja, rekordy zarówno rozpoczęcia, jak i sukcesu lub niepowodzenia tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna zawiera również wszelkie zmiany w ramach kontroli dostępu opartej na rolach w ramach subskrypcji.
@@ -196,7 +196,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z kondycją usług, 
 ```
 Zapoznaj się z artykułem dotyczącym [powiadomień o kondycji usługi](./../../azure-monitor/platform/service-notifications.md) , aby uzyskać informacje na temat wartości we właściwościach.
 
-## <a name="resource-health"></a>Kondycja zasobów
+## <a name="resource-health"></a>Resource Health
 Ta kategoria zawiera rekord wszystkich zdarzeń związanych z kondycją zasobów, które wystąpiły w Twoich zasobach platformy Azure. Przykładem typu zdarzenia, które zobaczysz w tej kategorii jest "stan kondycji maszyny wirtualnej zmienił się na niedostępny". Zdarzenia dotyczące kondycji zasobów mogą reprezentować jeden z czterech stanów kondycji: dostępne, niedostępne, obniżone i nieznane. Ponadto zdarzenia kondycji zasobów można klasyfikować jako zainicjowane przez platformę lub zainicjowane przez użytkownika.
 
 ### <a name="sample-event"></a>Zdarzenie próbkowania
@@ -285,7 +285,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z kondycją zasobów
 | Properties. nmożliwa Przyczyna | Opis przyczyny zdarzenia dotyczącego kondycji zasobu. "UserInitiated" i "PlatformInitiated". |
 
 
-## <a name="alert"></a>Alerty
+## <a name="alert"></a>Alert
 Ta kategoria zawiera rekord wszystkich aktywacji alertów platformy Azure. Przykładem typu zdarzenia, które zobaczysz w tej kategorii jest "procesor CPU% na myVM został przekroczony 80 dla ostatnich 5 minut". Różne systemy platformy Azure mają koncepcję alertów — można zdefiniować regułę określonego sortowania i otrzymywać powiadomienie, gdy warunki są zgodne z tą regułą. Za każdym razem, gdy obsługiwany typ alertu platformy Azure "aktywuje" lub warunki są spełnione, aby wygenerować powiadomienie, rekord aktywacji jest również wypychany do tej kategorii dziennika aktywności.
 
 ### <a name="sample-event"></a>Zdarzenie próbkowania
@@ -486,7 +486,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z działaniem aparat
 | submissionTimestamp |Sygnatura czasowa, gdy zdarzenie stało się dostępne na potrzeby wykonywania zapytań. |
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 Ta kategoria zawiera rekordy wszystkich alertów wygenerowanych przez Azure Security Center. Przykładem typu zdarzenia, które zobaczysz w tej kategorii jest "podejrzany plik rozszerzenia o podwójnym rozszerzeniu".
 
 ### <a name="sample-event"></a>Zdarzenie próbkowania
@@ -771,11 +771,11 @@ Ta kategoria zawiera rekordy wszystkich operacji działania akcji wykonywanych p
 | Właściwości. zasady | Zawiera szczegółowe informacje na temat definicji zasad, przypisania, efektu i parametrów, których wynikiem jest ocena zasad. |
 | relatedEvents | To pole jest puste dla zdarzeń zasad. |
 
-## <a name="mapping-to-diagnostic-logs-schema"></a>Mapowanie na schemat dzienników diagnostycznych
+## <a name="mapping-to-resource-logs-schema"></a>Mapowanie na schemat dzienników zasobów
 
-Podczas przesyłania strumieniowego dziennika aktywności platformy Azure do konta magazynu lub Event Hubs przestrzeni nazw dane są zgodne ze [schematem dzienników diagnostycznych platformy Azure](./diagnostic-logs-schema.md). Poniżej znajduje się mapowanie właściwości z schematu powyżej do schematu dzienników diagnostycznych:
+W przypadku przesyłania strumieniowego dziennika aktywności platformy Azure do konta magazynu lub Event Hubs przestrzeni nazw dane są następujące po [schemacie dzienników zasobów platformy Azure](./diagnostic-logs-schema.md). Poniżej znajduje się mapowanie właściwości z schematu powyżej do schematu dzienników zasobów:
 
-| Właściwości schematu dzienników diagnostycznych | Właściwość schematu interfejsu API REST dziennika aktywności | Uwagi |
+| Właściwości schematu dzienników zasobów | Właściwość schematu interfejsu API REST dziennika aktywności | Uwagi |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | wszystkie identyfikatory subskrypcji, ResourceType, resourceGroupName są wywnioskowane z identyfikatora zasobu. |
@@ -784,12 +784,12 @@ Podczas przesyłania strumieniowego dziennika aktywności platformy Azure do kon
 | resultType | status. Value | |
 | resultSignature | Substatus. wartość | |
 | resultDescription | description |  |
-| durationMs | Nie dotyczy | Zawsze 0 |
+| durationMs | ND | Zawsze 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
-| identity | Właściwości oświadczeń i autoryzacji |  |
+| tożsamość | Właściwości oświadczeń i autoryzacji |  |
 | Poziom | Poziom |  |
-| location | Nie dotyczy | Lokalizacja, w której zdarzenie zostało przetworzone. *Nie jest to lokalizacja zasobu, ale zamiast tego, gdzie zdarzenie zostało przetworzone. Ta właściwość zostanie usunięta w przyszłej aktualizacji.* |
+| location | ND | Lokalizacja, w której zdarzenie zostało przetworzone. *Nie jest to lokalizacja zasobu, ale zamiast tego, gdzie zdarzenie zostało przetworzone. Ta właściwość zostanie usunięta w przyszłej aktualizacji.* |
 | Właściwości | Właściwości. eventProperties |  |
 | Właściwości. eventCategory | category | Jeśli właściwość. eventCategory nie istnieje, kategoria ma wartość "Administrative" |
 | properties.eventName | eventName |  |

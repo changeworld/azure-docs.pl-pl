@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887531"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889179"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Rozwiązywanie problemów z brakiem danych — Application Insights dla platformy .NET/.NET Core
+
 ## <a name="some-of-my-telemetry-is-missing"></a>Brakuje niektórych danych telemetrycznych
 *W Application Insights widoczny jest tylko ułamek zdarzeń generowanych przez moją aplikację.*
 
@@ -58,7 +59,7 @@ Prawdopodobna przyczyna:
 * Wystąpił problem z kontem platformy Azure;
 * Masz dostęp tylko [do odczytu do subskrypcji lub grupy, w której podjęto próbę utworzenia nowego zasobu](../../azure-monitor/app/resources-roles-access-control.md).
 
-Wiązane
+Poprawka:
 
 * Sprawdź, czy podane poświadczenia logowania są odpowiednie dla odpowiedniego konta platformy Azure.
 * Sprawdź, czy masz dostęp do [Azure Portal](https://portal.azure.com)w przeglądarce. Otwórz ustawienia i sprawdź, czy istnieją jakieś ograniczenia.
@@ -83,7 +84,7 @@ Prawdopodobna przyczyna:
 * Narzędzia deweloperskie Analytics są wyłączone w programie Visual Studio.
 * Program Visual Studio jest starszy niż 2013 Update 3.
 
-Wiązane
+Poprawka:
 
 * Upewnij się, że wersja programu Visual Studio to 2013 Update 3 lub nowszego.
 * Wybierz pozycję **Narzędzia**, **rozszerzenia i aktualizacje** , a następnie sprawdź, czy **Narzędzia Developer Analytics** są zainstalowane i włączone. Jeśli tak, kliknij pozycję **aktualizacje** , aby sprawdzić, czy jest dostępna aktualizacja.
@@ -111,7 +112,7 @@ Prawdopodobna przyczyna:
 
 Klucz Instrumentacji w ApplicationInsights. config kontroluje, gdzie jest wysyłana Telemetria. Wiersz w pliku projektu określa, który zasób jest otwierany podczas korzystania z polecenia w programie Visual Studio.
 
-Wiązane
+Poprawka:
 
 * W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję Application Insights, skonfiguruj Application Insights. W oknie dialogowym możesz wybrać wysyłanie danych telemetrycznych do istniejącego zasobu lub utworzyć nowe. Oraz
 * Otwórz zasób bezpośrednio. Zaloguj się do [Azure Portal](https://portal.azure.com), kliknij przycisk Application Insights na lewym pasku nawigacyjnym, a następnie wybierz aplikację.
@@ -212,7 +213,7 @@ Postępuj zgodnie z tymi instrukcjami, aby przechwytywać dzienniki rozwiązywan
 
 1. Zainstaluj pakiet [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z narzędzia NuGet. Instalowana wersja musi być zgodna z aktualnie zainstalowaną wersją `Microsoft.ApplicationInsights`
 
-Najnowsza wersja Microsoft. ApplicationInsights. AspNetCore to 2.7.1 i odnosi się do Microsoft. ApplicationInsights w wersji 2,10. W związku z tym wersja programu Microsoft. AspNet. ApplicationInsights. HostingStartup, która ma zostać zainstalowana, powinna być 2.10.0
+Najnowsza wersja Microsoft. ApplicationInsights. AspNetCore to 2.8.2 i odnosi się do Microsoft. ApplicationInsights wersja 2.11.2. W związku z tym wersja programu Microsoft. AspNet. ApplicationInsights. HostingStartup, która ma zostać zainstalowana, powinna być 2.11.2
 
 2. Zmodyfikuj metodę `ConfigureServices` w klasie `Startup.cs`.:
 

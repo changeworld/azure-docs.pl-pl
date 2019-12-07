@@ -1,7 +1,7 @@
 ---
 title: Często zadawane pytania dotyczące Video Indexer — Azure
 titleSuffix: Azure Media Services
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące Video Indexer.
+description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące Video Indexer Azure Media Services.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 95f2af1b192564290551f9ed31f0fe158b4536f6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fc5457fd44bd27731cad6269ee95aed838a3d755
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838232"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892791"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 

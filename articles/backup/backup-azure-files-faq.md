@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej plików w usłudze Azure Files — często zada
 description: W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące ochrony udziałów plików platformy Azure za pomocą usługi Azure Backup.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf04458d859601de7ca0e9d07f6a3dbf506a51e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173110"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892576"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 
@@ -70,6 +70,18 @@ Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w we
 - US Gov Arizona (UGA)
 - US Gov Teksas (UGT)
 - US Gov Wirginia (UGV)
+- Australia Środkowa (ACL)
+- Indie Zachodnie (INW)
+- Północna Republika Południowej Afryki (SAN)
+- Północne Zjednoczone Emiraty Arabskie (UAN)
+- Francja Środkowa (FRC)
+- Niemcy Północne (GN)                       
+- Niemcy Środkowo-Zachodnie (GWC)
+- Zachodnia Republika Południowej Afryki (piły)
+- Europa Środkowa (UAC)
+- NWE (Norwegia Wschodnia)     
+- NWW (Norwegia Zachodnia)
+- SZN (Szwajcaria Północna)
 
 Napisz na adres [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), jeśli chcesz używać tej usługi w określonym obszarze geograficznym, którego nie ma na powyższej liście.
 

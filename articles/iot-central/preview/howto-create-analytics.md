@@ -3,17 +3,17 @@ title: Analizowanie danych urządzenia w aplikacji IoT Central platformy Azure |
 description: Analizowanie danych urządzenia w aplikacji IoT Central platformy Azure.
 author: ankitgup
 ms.author: ankitgup
-ms.date: 10/17/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ee15d581cfc17af01ae0fa53139edc331a4fea
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4cf4469833e28a594996b981a47a964131026a7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896010"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895709"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Jak używać analiz do analizowania danych urządzenia
 
@@ -61,11 +61,11 @@ Po wykonaniu zapytania o dane możesz rozpocząć wizualizację na wykresie lini
    
     - **Kontrolka suwaka zewnętrznego zakresu dat**: Użyj kontrolek punktu końcowego, aby wybrać zewnętrzny zakres dat, który będzie dostępny dla wewnętrznej kontroli zakresu dat.
 
-    - **Przyciski zwiększania i zmniejszania zakresu dat**: Zwiększ lub Zmniejsz zakres czasu, wybierając jeden z przycisków dla interwału, który chcesz.
+    - **Zwiększać i zmniejszać przycisków zakresu dat**: zwiększyć lub zmniejszyć czas span, wybierając przycisk albo interwał ma.
 
-    - **Suwak rozmiaru interwału**: Użyj go, aby powiększyć i wykroczyć interwały w tym samym przedziale czasu. Ta akcja zapewnia dokładniejszą kontrolę nad przenoszeniem między dużymi wycinkami czasu. Można jej używać do wyświetlania szczegółowych widoków o wysokiej rozdzielczości, nawet do milisekund. Domyślny punkt początkowy suwaka jest ustawiany jako najbardziej optymalny widok danych z zaznaczenia, który równoważy rozdzielczość, szybkość zapytania i stopień szczegółowości.
+    - **Suwak rozmiaru interwału**: Użyj go, aby powiększyć i wykroczyć interwały w tym samym przedziale czasu. Ta akcja zapewnia dokładniejszą kontrolę ruchu między wycinkami dużych czasu. Można jej używać do wyświetlania szczegółowych widoków o wysokiej rozdzielczości, nawet do milisekund. Domyślny punkt początkowy suwaka jest ustawiany jako najbardziej optymalny widok danych z zaznaczenia, który równoważy rozdzielczość, szybkość zapytania i stopień szczegółowości.
     
-    - **Selektor zakresu dat**: za pomocą tego formantu sieci Web można łatwo wybrać odpowiednie zakresy dat i godzin. Można również użyć kontrolki, aby przełączać się między różnymi strefami czasowymi. Po wprowadzeniu zmian do zastosowania w bieżącym obszarze roboczym wybierz pozycję Zapisz.
+    - **Selektor zakresu dat**: za pomocą tego formantu sieci Web można łatwo wybrać odpowiednie zakresy dat i godzin. Kontrolka umożliwia również przełączać się między różnych strefach czasowych. Po wprowadzeniu zmian do zastosowania w bieżącym obszarze roboczym wybierz pozycję Zapisz.
 
     > [!TIP]
     > Rozmiar interwału jest określany dynamicznie na podstawie wybranego przedziału czasu. Mniejsze przedziały czasu umożliwią agregowanie danych do bardzo szczegółowych interwałów wynoszących maksymalnie kilka sekund.

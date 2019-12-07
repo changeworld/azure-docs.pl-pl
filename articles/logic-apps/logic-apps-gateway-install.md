@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 9f933a9ad63af11bcfee7c90f17318f5a237b962
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792100"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893693"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
@@ -49,7 +49,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
   **Minimalne wymagania**
 
   * .NET Framework 4.7.2
-  * 64 — bitowa wersja systemu Windows 7 lub Windows Server 2008 R2 (lub nowszego)
+  * 64-bitowa wersja systemu Windows 7 lub Windows Server 2008 R2 (lub nowszego)
 
   **Zalecane wymagania**
 
@@ -86,14 +86,6 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
 1. [Pobierz i uruchom Instalatora bramy na komputerze lokalnym](https://aka.ms/on-premises-data-gateway-installer).
 
-1. Po otwarciu Instalatora wybierz pozycję **dalej**.
-
-   ![Ekran Wprowadzenie dla Instalatora bramy](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. Wybierz pozycję **lokalna Brama danych (zalecane)** , która jest trybem standardowym, a następnie wybierz przycisk **dalej**.
-
-   ![Wybierz tryb uruchamiania dla bramy danych](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
-
 1. Zapoznaj się z minimalnymi wymaganiami, Zachowaj domyślną ścieżkę instalacji, zaakceptuj warunki użytkowania, a następnie wybierz pozycję **Zainstaluj**.
 
    ![Przejrzyj wymagania i zaakceptuj warunki użytkowania](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
@@ -104,7 +96,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
    Instalacja bramy może być połączona tylko z jednym kontem platformy Azure.
 
-1. Wybierz pozycję **zarejestruj nową bramę na tym komputerze** , > **dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
+1. Wybierz pozycję **Zarejestruj nową bramę na tym komputerze** > **Dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
 
    ![Zarejestruj bramę na komputerze lokalnym](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -147,7 +139,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
 ## <a name="check-or-adjust-communication-settings"></a>Sprawdzanie lub Dostosowywanie ustawień komunikacji
 
-Lokalna Brama danych zależy od [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) łączności z chmurą i ustanawiania odpowiednich połączeń wychodzących do skojarzonego z nią regionu platformy Azure. Jeśli środowisko pracy wymaga, aby ruch przechodzi przez serwer proxy lub zaporę w celu uzyskania dostępu do Internetu, to ograniczenie może uniemożliwić lokalnej bramie danych nawiązanie połączenia z usługą bramy w chmurze i Azure Service Bus. Brama ma kilka ustawień komunikacji, które można dostosować. Aby uzyskać więcej informacji, zobacz następujące tematy:
+Lokalna Brama danych zależy od [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) łączności z chmurą i ustanawiania odpowiednich połączeń wychodzących do skojarzonego z nią regionu platformy Azure. Jeśli środowisko pracy wymaga, aby ruch przechodzi przez serwer proxy lub zaporę w celu uzyskania dostępu do Internetu, to ograniczenie może uniemożliwić lokalnej bramie danych nawiązanie połączenia z usługą bramy w chmurze i Azure Service Bus. Brama ma kilka ustawień komunikacji, które można dostosować. Aby uzyskać więcej informacji zobacz następujące tematy:
 
 * [Dostosuj ustawienia komunikacji dla lokalnej bramy danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
 * [Konfigurowanie ustawień serwera proxy dla lokalnej bramy danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
@@ -196,7 +188,7 @@ Aby uzyskać wgląd we wszystkie lokalne bramy danych w dzierżawie usługi Azur
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Uruchom ponownie bramę
+## <a name="restart-gateway"></a>Ponowne uruchamianie bramy
 
 Domyślnie instalacja bramy na komputerze lokalnym działa jako konto usługi systemu Windows o nazwie "lokalna Brama danych". Jednak instalacja bramy używa nazwy `NT SERVICE\PBIEgwService` na potrzeby poświadczeń konta "Zaloguj się jako" i ma uprawnienia "Logowanie w trybie usługi".
 
@@ -207,7 +199,7 @@ Podobnie jak w przypadku każdej innej usługi systemu Windows, można uruchomi�
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>Jak działa Brama
+## <a name="how-the-gateway-works"></a>Jak działa brama
 
 Użytkownicy w organizacji mogą uzyskiwać dostęp do danych lokalnych, do których mają już dostęp autoryzowany. Jednak zanim użytkownicy będą mogli połączyć się z lokalnym źródłem danych, należy zainstalować i skonfigurować lokalną bramę danych. Zazwyczaj administrator jest osobą, która instaluje i konfiguruje bramę. Te akcje mogą wymagać uprawnień administratora serwera lub specjalnej wiedzy o serwerach lokalnych.
 
@@ -234,7 +226,7 @@ W tych krokach opisano, co się dzieje w przypadku korzystania z elementu połą
 
 1. Wyniki są wysyłane ze źródła danych z powrotem do bramy, a następnie do usługi bramy w chmurze. Następnie Usługa bramy w chmurze używa wyników.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Uwierzytelnianie do lokalnych źródeł danych
+### <a name="authentication-to-on-premises-data-sources"></a>Uwierzytelnianie w lokalnych źródłach danych
 
 Przechowywane poświadczenia są używane do nawiązywania połączenia z bramą z lokalnymi źródłami danych. Niezależnie od użytkownika, brama używa przechowywanych poświadczeń do nawiązania połączenia. Mogą wystąpić wyjątki uwierzytelniania dla określonych usług, takich jak zapytania bezpośrednie i LiveConnect Analysis Services w Power BI.
 
@@ -246,7 +238,7 @@ Usługi w chmurze firmy Microsoft używają usługi [Azure AD](../active-directo
 
 Jeśli nie jesteś administratorem domeny, być może nie znasz nazwy UPN. Aby znaleźć nazwę UPN dla Twojego konta, uruchom polecenie `whoami /upn` na stacji roboczej. Mimo że wynik wygląda podobnie do adresu e-mail, wynik jest nazwą UPN dla lokalnego konta domeny.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronizowanie Active Directory lokalnego z usługą Azure AD
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronizowanie lokalnej usługi Active Directory z usługą Azure AD
 
 Nazwa UPN lokalnych kont Active Directory i kont usługi Azure AD musi być taka sama. Upewnij się, że każde konto Active Directory lokalnego jest zgodne z kontem usługi Azure AD. Usługi w chmurze wiedzą tylko o kontach w usłudze Azure AD. W związku z tym nie musisz dodawać konta do Active Directory lokalnego. Jeśli konto nie istnieje w usłudze Azure AD, nie można użyć tego konta.
 
@@ -267,7 +259,7 @@ Poniżej przedstawiono sposoby dopasowywania lokalnych kont Active Directory za 
 
 ## <a name="faq-and-troubleshooting"></a>Często zadawane pytania i rozwiązywanie problemów
 
-Aby uzyskać więcej informacji, zobacz następujące tematy:
+Aby uzyskać więcej informacji zobacz następujące tematy:
 
 * [Lokalna brama danych — często zadawane pytania](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
 * [Rozwiązywanie problemów z lokalną bramą danych](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)

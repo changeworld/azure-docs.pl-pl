@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 09/20/2019
-ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932353"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894219"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Projektowanie wdrożenia dzienników Azure Monitor
 
@@ -63,7 +63,7 @@ Za pomocą kontroli dostępu opartej na rolach (RBAC) można przyznać użytkown
 
 Dane, do których użytkownik ma dostęp, są określane przez kombinację czynników, które są wymienione w poniższej tabeli. Każdy z nich został opisany w poniższych sekcjach.
 
-| 1U | Opis |
+| współczynnik | Opis |
 |:---|:---|
 | [Tryb dostępu](#access-mode) | Metoda wykorzystywana przez użytkownika w celu uzyskania dostępu do obszaru roboczego.  Definiuje zakres dostępnych danych i tryb kontroli dostępu, który został zastosowany. |
 | [Tryb kontroli dostępu](#access-control-mode) | Ustawienie w obszarze roboczym, które określa, czy uprawnienia są stosowane na poziomie obszaru roboczego czy zasobu. |
@@ -80,7 +80,7 @@ Użytkownicy mają dwie opcje uzyskiwania dostępu do danych:
 
     ![Log Analytics kontekstu z obszaru roboczego](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Kontekst zasobu**: w przypadku uzyskiwania dostępu do obszaru roboczego dla określonego zasobu, grupy zasobów lub subskrypcji, na przykład po wybraniu opcji **dzienniki** z menu zasobów w Azure Portal, można wyświetlić dzienniki tylko dla zasobów we wszystkich tabelach, które posiadasz dostęp do programu. Zapytania w tym trybie są ograniczone do danych skojarzonych z tym zasobem. Ten tryb umożliwia również szczegółową kontrolę RBAC.
+* **Kontekst zasobu**: podczas uzyskiwania dostępu do obszaru roboczego dla określonego zasobu, grupy zasobów lub subskrypcji, na przykład po wybraniu opcji **dzienniki** z menu zasobów w Azure Portal, można wyświetlić dzienniki tylko dla zasobów we wszystkich tabelach, do których masz dostęp. Zapytania w tym trybie są ograniczone do danych skojarzonych z tym zasobem. Ten tryb umożliwia również szczegółową kontrolę RBAC.
 
     ![Log Analytics kontekstu z zasobu](./media/design-logs-deployment/query-from-resource.png)
 
@@ -90,7 +90,7 @@ Użytkownicy mają dwie opcje uzyskiwania dostępu do danych:
     > - Sieć szkieletowa usługi
     > - Application Insights
     >
-    > Możesz sprawdzić, czy dzienniki są prawidłowo skojarzone ze swoimi zasobami, uruchamiając zapytanie i sprawdzając odpowiednie rekordy. Jeśli prawidłowy identyfikator zasobu znajduje się we właściwości [_ResourceId](log-standard-properties.md#_resourceid) , dane są dostępne dla zapytań skoncentrowanych na zasobach.
+    > Możesz sprawdzić, czy dzienniki są prawidłowo skojarzone ze swoimi zasobami, uruchamiając zapytanie i sprawdzając odpowiednie rekordy. Jeśli w [_ResourceId](log-standard-properties.md#_resourceid) właściwość jest prawidłowy identyfikator zasobu, dane są dostępne dla zapytań skoncentrowanych na zasobach.
 
 Azure Monitor automatycznie określa tryb prawy w zależności od kontekstu, w którym jest wykonywane przeszukiwanie dzienników. Zakres jest zawsze wyświetlany w lewej górnej części Log Analytics.
 
@@ -102,7 +102,7 @@ Poniższa tabela zawiera podsumowanie trybów dostępu:
 |:---|:---|:---|
 | Dla kogo jest przeznaczony każdy model? | Administracja centralna. Administratorzy, którzy muszą skonfigurować zbieranie danych i użytkowników, którzy potrzebują dostępu do szerokiej gamy zasobów. Są one również wymagane dla użytkowników, którzy muszą uzyskać dostęp do dzienników dla zasobów poza platformą Azure. | Zespoły aplikacji. Administratorzy monitorowanych zasobów platformy Azure. |
 | Co jest wymagane przez użytkownika do wyświetlania dzienników? | Uprawnienia do obszaru roboczego. Zobacz **uprawnienia obszaru roboczego** w obszarze [Zarządzanie dostępem przy użyciu uprawnień obszaru roboczego](manage-access.md#manage-access-using-workspace-permissions). | Dostęp do odczytu do zasobu. Zobacz **uprawnienia zasobów** w obszarze [Zarządzanie dostępem przy użyciu uprawnień platformy Azure](manage-access.md#manage-access-using-azure-permissions). Uprawnienia mogą być dziedziczone (takie jak z grupy zasobów zawierających) lub bezpośrednio przypisane do zasobu. Uprawnienie do dzienników dla zasobu zostanie automatycznie przypisane. |
-| Jaki jest zakres uprawnień? | Obszary. Użytkownicy z dostępem do obszaru roboczego mogą wykonywać zapytania dotyczące wszystkich dzienników w obszarze roboczym z tabel, do których mają uprawnienia. Zobacz [tabelę kontroli dostępu](manage-access.md#table-level-rbac) | Zasób platformy Azure. Użytkownik może wysyłać zapytania do dzienników dla określonych zasobów, grup zasobów lub subskrypcji, do których mają dostęp z dowolnego obszaru roboczego, ale nie może wysyłać zapytań do dzienników innych zasobów. |
+| Jaki jest zakres uprawnień? | obszary. Użytkownicy z dostępem do obszaru roboczego mogą wykonywać zapytania dotyczące wszystkich dzienników w obszarze roboczym z tabel, do których mają uprawnienia. Zobacz [tabelę kontroli dostępu](manage-access.md#table-level-rbac) | Zasób platformy Azure. Użytkownik może wysyłać zapytania do dzienników dla określonych zasobów, grup zasobów lub subskrypcji, do których mają dostęp z dowolnego obszaru roboczego, ale nie może wysyłać zapytań do dzienników innych zasobów. |
 | Jak użytkownicy mogą uzyskiwać dostęp do dzienników? | <ul><li>Uruchom **dzienniki** z menu **Azure monitor** .</li></ul> <ul><li>Uruchom **dzienniki** z **log Analytics obszarów roboczych**.</li></ul> <ul><li>Ze [skoroszytów](../visualizations.md#workbooks)Azure monitor.</li></ul> | <ul><li>Uruchom **dzienniki** z menu dla zasobu platformy Azure</li></ul> <ul><li>Uruchom **dzienniki** z menu **Azure monitor** .</li></ul> <ul><li>Uruchom **dzienniki** z **log Analytics obszarów roboczych**.</li></ul> <ul><li>Ze [skoroszytów](../visualizations.md#workbooks)Azure monitor.</li></ul> |
 
 ## <a name="access-control-mode"></a>Tryb kontroli dostępu
@@ -115,7 +115,7 @@ Poniższa tabela zawiera podsumowanie trybów dostępu:
 
     Jest to ustawienie domyślne dla wszystkich obszarów roboczych utworzonych przed marcem 2019.
 
-* **Użyj uprawnień zasobu lub obszaru roboczego**: ten tryb kontroli zezwala na szczegółową kontrolę RBAC. Użytkownikom można udzielić dostępu tylko do danych skojarzonych z zasobami, które mogą wyświetlać, przypisując uprawnienie Azure `read`. 
+* **Użyj uprawnień zasobu lub obszaru roboczego**: ten tryb kontroli zezwala na szczegółową kontrolę RBAC. Użytkownikom można udzielić dostępu tylko do danych skojarzonych z zasobami, które mogą przeglądać, przypisując uprawnienia `read` platformy Azure. 
 
     Gdy użytkownik uzyskuje dostęp do obszaru roboczego w trybie kontekstu obszaru roboczego, mają zastosowanie uprawnienia obszaru roboczego. Gdy użytkownik uzyskuje dostęp do obszaru roboczego w trybie kontekstu zasobów, sprawdzane są tylko uprawnienia do zasobów, a uprawnienia obszaru roboczego są ignorowane. Włącz funkcję RBAC dla użytkownika, usuwając je z uprawnień obszaru roboczego i zezwalając na ich rozpoznanie.
 
@@ -147,7 +147,7 @@ W tym scenariuszu zawarto projekt jednego obszaru roboczego w ramach subskrypcji
 
 Wszystkie zasoby, rozwiązania monitorowania i szczegółowe informacje, takie jak Application Insights i Azure Monitor dla maszyn wirtualnych, obsługujące infrastrukturę i aplikacje obsługiwane przez różne zespoły są skonfigurowane do przekazywania zebranych danych dzienników do organizacji IT scentralizowany udostępniony obszar roboczy. Użytkownicy poszczególnych zespołów otrzymują dostęp do dzienników dla zasobów, do których miał dostęp.
 
-Po wdrożeniu architektury obszaru roboczego można wymusić to na zasobach platformy Azure przy użyciu [Azure Policy](../../governance/policy/overview.md). Zapewnia ona sposób definiowania zasad i zapewnienia zgodności z zasobami platformy Azure, dzięki czemu wysyła wszystkie dzienniki diagnostyczne do określonego obszaru roboczego. Na przykład w przypadku maszyn wirtualnych platformy Azure lub zestawów skalowania maszyn wirtualnych można używać istniejących zasad, które obliczają zgodność obszaru roboczego i raportów, lub dostosowuje się do korygowania w przypadku braku zgodności.  
+Po wdrożeniu architektury obszaru roboczego można wymusić to na zasobach platformy Azure przy użyciu [Azure Policy](../../governance/policy/overview.md). Zapewnia ona sposób definiowania zasad i zapewnienia zgodności z zasobami platformy Azure, dzięki czemu wysyła wszystkie dzienniki zasobów do określonego obszaru roboczego. Na przykład w przypadku maszyn wirtualnych platformy Azure lub zestawów skalowania maszyn wirtualnych można używać istniejących zasad, które obliczają zgodność obszaru roboczego i raportów, lub dostosowuje się do korygowania w przypadku braku zgodności.  
 
 ## <a name="workspace-consolidation-migration-strategy"></a>Strategia migracji obszaru roboczego do konsolidacji
 
@@ -160,7 +160,7 @@ Podczas planowania migracji do tego modelu należy wziąć pod uwagę następuj�
 * Zidentyfikuj dostęp przyznany do zasobów dla zespołów aplikacji i przetestuj go w środowisku programistycznym przed wdrożeniem w produkcji.
 * Skonfiguruj obszar roboczy, aby włączyć opcję **Użyj uprawnień zasobu lub obszaru roboczego**.
 * Usuń zespoły aplikacji uprawnienia do odczytu i wysyłania zapytań do obszaru roboczego.
-* Włącz i skonfiguruj dowolne rozwiązania monitorujące, szczegółowe informacje, takie jak Azure Monitor kontenerów i/lub Azure Monitor dla maszyn wirtualnych, Twoje konta usługi Automation i rozwiązania do zarządzania, takie jak Update Management, uruchamianie/zatrzymywanie maszyn wirtualnych itp., które zostały wdrożone w oryginalnym obszary.
+* Włącz i skonfiguruj dowolne rozwiązania monitorujące, szczegółowe informacje, takie jak Azure Monitor kontenerów i/lub Azure Monitor dla maszyn wirtualnych, Twoje konta usługi Automation i rozwiązania do zarządzania, takie jak Update Management, uruchamianie/zatrzymywanie maszyn wirtualnych itp., które zostały wdrożone w oryginalnym obszarze roboczym.
 
 ## <a name="next-steps"></a>Następne kroki
 

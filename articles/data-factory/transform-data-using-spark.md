@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych przy użyciu działania Spark w Azure Data Factory
+title: Przekształcanie danych przy użyciu działania Spark
 description: Dowiedz się, jak przekształcać dane, uruchamiając programy Spark z potoku usługi Azure Data Factory przy użyciu działania platformy Spark.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5f3bb88d3a2e43abe1776a4b46e4ab35490db8ec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 27dea39a1ebd2be56c86e4327218c62c5378002d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683751"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893760"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania Spark w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -58,27 +58,27 @@ Oto przykładowa definicja JSON działania platformy Spark:
 
 W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
-| Właściwość              | Opis                              | Wymagany |
+| Właściwość              | Opis                              | Wymagane |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | Nazwa działania w potoku.    | Tak      |
 | description           | Tekst opisujący działanie działania.  | Nie       |
 | type                  | Dla działania platformy Spark typem działania jest HDInsightSpark. | Tak      |
 | linkedServiceName     | Nazwa połączonej usługi HDInsight Spark, na której jest uruchamiany program Spark. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) . | Tak      |
-| sparkJobLinkedService | Połączona usługa Azure Storage, która przechowuje plik zadania platformy Spark, zależności i dzienniki.  Jeśli nie określisz wartości tej właściwości, zostanie użyty magazyn skojarzony z klastrem usługi HDInsight. Wartością tej właściwości może być tylko połączona usługa Azure Storage. | Nie       |
-| Właściwość RootPath              | Kontener i folder obiektów blob platformy Azure, który zawiera plik Spark. W nazwie pliku rozróżniana jest wielkość liter. Szczegółowe informacje na temat struktury tego folderu można znaleźć w sekcji struktury folderów (w następnej sekcji). | Tak      |
+| SparkJobLinkedService | Połączona usługa Azure Storage, która przechowuje plik zadania platformy Spark, zależności i dzienniki.  Jeśli nie określisz wartości tej właściwości, zostanie użyty magazyn skojarzony z klastrem usługi HDInsight. Wartością tej właściwości może być tylko połączona usługa Azure Storage. | Nie       |
+| rootPath              | Kontener i folder obiektów blob platformy Azure, który zawiera plik Spark. W nazwie pliku rozróżniana jest wielkość liter. Szczegółowe informacje na temat struktury tego folderu można znaleźć w sekcji struktury folderów (w następnej sekcji). | Tak      |
 | entryFilePath         | Ścieżka względna do folderu głównego kodu/pakietu platformy Spark. Plik wejściowy musi być plikiem w języku Python lub plikiem jar. | Tak      |
-| Nazwą             | Główna Klasa środowiska Java/Spark aplikacji      | Nie       |
-| Argumentu             | Lista argumentów wiersza polecenia do programu Spark. | Nie       |
+| className             | Główna Klasa środowiska Java/Spark aplikacji      | Nie       |
+| arguments             | Lista argumentów wiersza polecenia do programu Spark. | Nie       |
 | proxyUser             | Konto użytkownika służące do personifikacji w celu wykonania programu Spark | Nie       |
 | sparkConfig           | Określ wartości właściwości konfiguracji platformy Spark wymienione w temacie: [Konfiguracja platformy Spark — właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie       |
-| GetDebugInfo —          | Określa, kiedy pliki dziennika platformy Spark są kopiowane do magazynu platformy Azure używanego przez klaster usługi HDInsight (lub) określonego przez sparkJobLinkedService. Dozwolone wartości: brak, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
+| getDebugInfo          | Określa, kiedy pliki dziennika platformy Spark są kopiowane do magazynu platformy Azure używanego przez klaster usługi HDInsight (lub) określonego przez sparkJobLinkedService. Dozwolone wartości: brak, zawsze lub niepowodzenie. Wartość domyślna: None. | Nie       |
 
 ## <a name="folder-structure"></a>Struktura folderów
 Zadania platformy Spark są bardziej rozszerzalne niż zadania dla trzody chlewnej/Hive. W przypadku zadań platformy Spark można podać wiele zależności, takich jak pakiety jar (umieszczone w ścieżce klas Java), pliki Python (umieszczone na PYTHONPATH) i inne pliki.
 
 Utwórz następującą strukturę folderów w magazynie obiektów blob platformy Azure, do której odwołuje się połączona Usługa HDInsight. Następnie Przekaż pliki zależne do odpowiednich podfolderów w folderze głównym reprezentowane przez **entryFilePath**. Na przykład przekazanie plików Python do podfolderu pyFiles i plików jar do podfolderu Jars folderu głównego. W czasie wykonywania Usługa Data Factory oczekuje następującej struktury folderów w usłudze Azure Blob Storage:     
 
-| Ścieżka                  | Opis                              | Wymagany | Typ   |
+| Ścieżka                  | Opis                              | Wymagane | Typ   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (główny)            | Ścieżka katalogu głównego zadania platformy Spark w połączonej usłudze Storage | Tak      | Folder |
 | &lt;zdefiniowane przez użytkownika &gt; | Ścieżka wskazująca plik wpisu zadania Spark | Tak      | Plik   |

@@ -3,12 +3,12 @@ title: Rozwiązywanie problemów z kopiami zapasowymi baz danych SAP HANA
 description: Opisuje sposób rozwiązywania typowych błędów, które mogą wystąpić podczas tworzenia kopii zapasowej SAP HANA baz danych przy użyciu Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665342"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892604"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
@@ -102,17 +102,19 @@ W przypadku wielu baz danych kontenerów dla platformy HANA Standardowa konfigur
 Jeśli chronisz bazy danych SAP HANA 1,0 i chcesz uaktualnić do wersji 2,0, wykonaj czynności opisane poniżej:
 
 - [Zatrzymaj ochronę](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z zachowaniem zachowania danych dla starej bazy danych SDC.
+- Wykonaj uaktualnienie. Po zakończeniu program HANA jest teraz MDC z systemową bazą danych i bazami danych dzierżaw
 - Uruchom ponownie [skrypt poprzedzający rejestrację](https://aka.ms/scriptforpermsonhana) z prawidłowymi szczegółami (SID i MDC).
-- Ponownie zarejestruj rozszerzenie (szczegóły widoku > kopii zapasowej — > wybierz odpowiednią pozycję Azure VM-> reregister).
+- Zarejestruj ponownie rozszerzenie dla tego samego komputera w witrynie Azure Portal (szczegóły widoku kopii zapasowej > — > wybierz odpowiednią pozycję Azure VM-> reregister).
 - Kliknij przycisk ponownie odkryj baz danych dla tej samej maszyny wirtualnej. Ta akcja powinna spowodować wyświetlenie nowego baz danych w kroku 2 z prawidłowymi szczegółami (SYSTEMDB i dzierżawcą bazy danych, a nie SDC).
-- Chroń te nowe bazy danych.
+- Skonfiguruj kopię zapasową tych nowych baz danych.
 
 ## <a name="upgrading-without-an-sid-change"></a>Uaktualnianie bez zmiany identyfikatora SID
 
 Uaktualnienia do systemu operacyjnego lub SAP HANA, które nie powodują zmiany identyfikatora SID, można obsłużyć, jak opisano poniżej:
 
 - [Zatrzymaj ochronę](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) z zachowaniem zachowania danych dla bazy danych
-- Uruchom ponownie [skrypt przed rejestracją](https://aka.ms/scriptforpermsonhana)
+- Wykonaj uaktualnienie.
+- Uruchom ponownie [skrypt przed rejestracją](https://aka.ms/scriptforpermsonhana). Zwykle został obserwowany proces uaktualniania usuwa niezbędne role. Uruchomienie skryptu przed rejestracją pomoże sprawdzić wszystkie wymagane role.
 - Ponownie [Wznów ochronę](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) bazy danych
 
 ## <a name="next-steps"></a>Następne kroki

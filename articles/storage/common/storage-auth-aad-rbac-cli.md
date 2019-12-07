@@ -1,22 +1,23 @@
 ---
-title: Korzystanie z interfejsu wiersza polecenia platformy Azure do zarządzania prawami dostępu usługi Azure AD do danych obiektów blob i kolejek z użyciem usługi RBAC
-description: Użyj interfejsu wiersza polecenia platformy Azure, aby przypisać dostęp do kontenerów i kolejek z kontrolą dostępu opartą na rolach (RBAC). Usługa Azure Storage obsługuje wbudowane i niestandardowe role RBAC do uwierzytelniania za pośrednictwem usługi Azure AD.
+title: Używanie interfejsu wiersza polecenia platformy Azure do przypisywania roli RBAC na potrzeby dostępu do danych
+titleSuffix: Azure Storage
+description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure przypisać uprawnienia do Azure Active Directory podmiotu zabezpieczeń z kontrolą dostępu opartą na rolach (RBAC). Usługa Azure Storage obsługuje wbudowane i niestandardowe role RBAC do uwierzytelniania za pośrednictwem usługi Azure AD.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 606dd88fbad8cbd5c7e24d47dcf71199a25b49a2
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: abe35f3193e2d7ff9a949ca7cd330cb58da2b78c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673204"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891972"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Używanie interfejsu wiersza polecenia platformy Azure do przypisywania roli RBAC na potrzeby dostępu do danych obiektów blob i kolejek
 
 Azure Active Directory (Azure AD) autoryzuje prawa dostępu do zabezpieczonych zasobów za pośrednictwem [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md). Usługa Azure Storage definiuje zestaw wbudowanych ról RBAC, które obejmują typowe zestawy uprawnień używane do uzyskiwania dostępu do danych obiektu BLOB lub kolejki.
 
@@ -28,7 +29,7 @@ W tym artykule opisano, jak za pomocą interfejsu wiersza polecenia platformy Az
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Określ zakres zasobów 
+## <a name="determine-resource-scope"></a>Określ zakres zasobów
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 

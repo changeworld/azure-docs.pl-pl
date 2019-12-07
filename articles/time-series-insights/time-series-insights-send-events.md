@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: cdcd64b5281ce16002720072db3b5f29f1978cac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1dfd9a8d2723136ef68d983eb99bf2391fb87879
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014831"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894869"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Wysyłanie zdarzeń do środowiska usługi Time Series Insights za pomocą Centrum zdarzeń
 
@@ -29,14 +29,14 @@ W tym artykule opisano sposób tworzenia i konfigurowania centrum zdarzeń w us�
 1. Wybierz Centrum zdarzeń.
 1. Podczas tworzenia centrum zdarzeń tworzona jest przestrzeń nazw centrum zdarzeń. Jeśli nie utworzono jeszcze centrum zdarzeń w przestrzeni nazw, w menu w obszarze **jednostki**Utwórz centrum zdarzeń.  
 
-    [![listę centrów zdarzeń](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
+    [![listę centrów zdarzeń](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
 1. Po utworzeniu Centrum zdarzeń, wybierz go na liście usługi event hubs.
 1. W menu w obszarze **jednostki**wybierz pozycję **Event Hubs**.
 1. Wybierz nazwę Centrum zdarzeń, aby go skonfigurować.
 1. W obszarze **Przegląd**wybierz pozycję **grupy użytkowników**, a następnie wybierz pozycję **Grupa odbiorców**.
 
-    [![utworzyć grupę odbiorców](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
+    [![utworzyć grupę odbiorców](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
 1. Upewnij się, że utworzono grupę odbiorców, która jest używana wyłącznie przez źródło zdarzeń Time Series Insights.
 
@@ -45,17 +45,17 @@ W tym artykule opisano sposób tworzenia i konfigurowania centrum zdarzeń w us�
 
 1. W menu w obszarze **Ustawienia**wybierz pozycję **zasady dostępu współdzielonego**, a następnie wybierz pozycję **Dodaj**.
 
-    [![wybierz pozycję Zasady dostępu współdzielonego, a następnie wybierz przycisk Dodaj.](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
+    [![wybierz pozycję Zasady dostępu współdzielonego, a następnie wybierz przycisk Dodaj.](media/send-events/add-shared-access-policy.png)](media/send-events/add-shared-access-policy.png#lightbox)
 
 1. W **Dodaj nowe zasady dostępu współdzielonego** okienku tworzenie dostępu współdzielonego, o nazwie **Moje_zasady_wysyłania**. Te zasady dostępu współdzielonego służą do wysyłania zdarzeń C# w przykładach w dalszej części tego artykułu.
 
-    [![w polu Nazwa zasad wpisz MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
+    [![w polu Nazwa zasad wpisz MySendPolicy](media/send-events/configure-shared-access-policy-confirm.png)](media/send-events/configure-shared-access-policy-confirm.png#lightbox)
 
 1. W **obszarze**Zażądaj zaznacz pole wyboru **Wyślij** .
 
 ## <a name="add-a-time-series-insights-instance"></a>Dodaj wystąpienie usługi Time Series Insights
 
-Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontekstowego dane do przychodzących danych telemetrycznych. Dane sprzężony w czasie wykonywania zapytań przy użyciu **identyfikator serii czasu**. **Identyfikator szeregów czasowych** dla projektu przykładowej Windmills, który jest używany w dalszej części tego artykułu, jest `id`. Aby dowiedzieć się więcej o usłudze Time Series Insights instances i **identyfikator serii czasu**, zobacz [modeli szeregów czasowych](./time-series-insights-update-tsm.md).
+Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontekstowego dane do przychodzących danych telemetrycznych. Dane sprzężony w czasie wykonywania zapytań przy użyciu **identyfikator serii czasu**. **Identyfikator szeregów czasowych** dla projektu przykładowej Windmills, który jest używany w dalszej części tego artykułu, jest `id`. Aby dowiedzieć się więcej o wystąpieniach usługi Time Series Insights i **identyfikatorze szeregów czasowych**, zobacz [modele szeregów czasowych](./time-series-insights-update-tsm.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Tworzenie źródła zdarzeń usługi Time Series Insights
 
@@ -71,18 +71,18 @@ Aktualizacja usługi Time Series Insights używa wystąpienia, aby dodać kontek
 
 1. Przejdź do **zasad dostępu Współdzielonego** > **MySendPolicy**. Skopiuj wartość **parametrów połączenia — klucz podstawowy**.
 
-    [![skopiować wartości parametrów połączenia klucza podstawowego](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
+    [![skopiować wartości parametrów połączenia klucza podstawowego](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
 1. Przejdź do pozycji https://tsiclientsample.azurewebsites.net/windFarmGen.html (Plik > Nowy > Inny). Adres URL jest uruchamiany Wiatrak symulowanych urządzeń.
 1. W polu **Parametry połączenia centrum zdarzeń** na stronie sieci Web wklej parametry połączenia, które zostały skopiowane do [pola wejściowego Windmill](#push-events-to-windmills-sample).
   
-    [![wkleić parametry połączenia klucza podstawowego w polu parametrów połączenia centrum zdarzeń](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
+    [![wkleić parametry połączenia klucza podstawowego w polu parametrów połączenia centrum zdarzeń](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. Wybierz **kliknij, aby rozpocząć**. Symulator generuje wystąpienia JSON, który może bezpośrednio korzystać.
 
 1. Wróć do Centrum zdarzeń w witrynie Azure portal. Na stronie **Przegląd** zostaną wyświetlone nowe zdarzenia, które są odbierane przez centrum zdarzeń.
 
-    [![stronie Przegląd centrum zdarzeń, która zawiera metryki centrum zdarzeń](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
+    [![stronie Przegląd centrum zdarzeń, która zawiera metryki centrum zdarzeń](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 
 ## <a name="supported-json-shapes"></a>Obsługiwane kształty JSON
 

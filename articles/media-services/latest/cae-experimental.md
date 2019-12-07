@@ -1,6 +1,6 @@
 ---
-title: Eksperymentalne ustawienie wstępne kodowania zawartości — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono kodowanie zawartości w usłudze Azure Media Services
+title: Eksperymentalne ustawienie wstępne dla kodowania z obsługą zawartości — Azure | Microsoft Docs
+description: W tym artykule omówiono kodowanie oparte na zawartości w Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,46 +12,46 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151019"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896137"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Eksperymentalne ustawienie wstępne kodowania zawartości
+# <a name="experimental-preset-for-content-aware-encoding"></a>Eksperymentalne ustawienie wstępne dla kodowania obsługującego zawartość
 
-Aby przygotować zawartość do przekazania przez [streaming z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), wideo, musi być zakodowany na wielu — szybkości transmisji bitów (wysoka, niski). Aby zapewnić bezpieczne pogorszenia się jakości, ponieważ szybkość transmisji bitów jest obniżony więc rozdzielczości wideo. Skutkuje to tak zwane drabiny kodowania — spis rozdzielczości i szybkości transmisji; Zapoznaj się z usługami Media [wbudowane ustawienia wstępne kodowania](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+Aby przygotować zawartość do dostarczenia przez [szybkość przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), należy zakodować wideo przy użyciu wielu szybkości transmisji bitów (wysokiej lub niskiej). W celu zapewnienia płynnej obniżenia jakości szybkość transmisji bitów jest niższa, ponieważ jest to rozdzielczość wideo. W wyniku tego jest to nazywane drabinem kodowania — tabelę rozdzielczości i szybkości transmisji bitów; Zobacz [wbudowane ustawienia wstępne kodowania](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)Media Services.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Zwiększyć zainteresowanie więcej niż podejście jeden — ustawienie wstępne — uniwersalna, odpowiednia wszelkie-filmów wideo, po opublikowaniu Netflix ich [blogu](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) w grudniu 2015. Od tamtej pory wiele rozwiązań do kodowania zawartości opublikowane w portalu marketplace; zobacz [w tym artykule](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) omówienie. Chodzi o to pod uwagę zawartości — Aby dostosować lub dostosowywanie kodowania drabiny do złożoności poszczególnych wideo. W każdej rozdzielczości Brak transmisji bitów, po przekroczeniu których wzrost jakości nie jest perceptive — koder operuje na tę wartość optymalne szybkości transmisji bitów. Następny poziom optymalizacji jest wybranie rozwiązania na podstawie zawartości — na przykład wideo z prezentacją programu PowerPoint nie korzysta z przejściem poniżej 720p. Idąc dalej, kodera można nadzorowania zoptymalizować ustawienia dla każdego zrzut w wideo. Netflix opisem [takie podejście](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) w 2018 roku.
+Zainteresowanie przenoszonym poza wstępnie ustawionym podejściem do wszystkich filmów wideo wzrosło po Netflix opublikowaniu [blogu](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) w grudniu 2015. Od tego momentu w portalu Marketplace wydano wiele rozwiązań dla kodowania obsługującego zawartość. Zobacz [ten artykuł](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) , aby zapoznać się z omówieniem. Pomysłem jest uwzględnienie zawartości — Aby dostosować lub dopasować drabinkę kodowania do złożoności poszczególnych filmów wideo. W każdej rozdzielczości istnieje szybkość transmisji bitów, która nie jest Perceptive — koder działa z optymalną szybkością transmisji bitów. Następnym poziomem optymalizacji jest wybranie rozwiązań opartych na zawartości — na przykład wideo prezentacji programu PowerPoint nie jest korzystne w przypadku przechodzenia poniżej 720. Następnie można wykonać zadanie kodera w celu zoptymalizowania ustawień dla każdego zrzutu w filmie wideo. Netflix to [podejście](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) w 2018.
 
-Na początku 2017 roku, firma Microsoft opublikowała program [adaptacyjnego przesyłania strumieniowego](autogen-bitrate-ladder.md) wstępnie zdefiniowanych, aby rozwiązać problem zmienności jakości i rozdzielczości źródłowe pliki wideo. Naszych klientów było różnych kombinacji zawartości, niektóre 1080 p, inne osoby w 720p i kilka w jakości SD i stosowania niższych rozdzielczości. Ponadto nie wszystkie zawartość źródłowa była mezzanines wysokiej jakości z filmów lub telewizji studios. Adaptacyjna, przesyłanie strumieniowe wstępnie zdefiniowane adresy te problemy, zapewniając, że drabiny szybkości transmisji bitów nigdy nie przekracza rozwiązania lub Średnia szybkość transmisji bitów z plik wejściowy.
+Na początku 2017 firma Microsoft udostępniła [adaptacyjne ustawienie wstępne przesyłania strumieniowego](autogen-bitrate-ladder.md) w celu rozwiązania problemu zmienności jakości i rozdzielczości źródłowych filmów wideo. Nasi klienci mają zróżnicowaną zawartość, kilka o godzinie 1080p, inne w firmie 720, a kilka w SD i niższych rozdzielczościach. Ponadto nie cała zawartość źródłowa była wysoka jakość Mezzanine z filmu lub Studios TV. Adaptacyjne ustawienie wstępne przesyłania strumieniowego eliminuje te problemy, upewniając się, że Drabinka szybkości transmisji nigdy nie przekracza rozdzielczości ani średniej szybkości transmisji bitów danych wejściowych Mezzanine.
 
-Eksperymentalne ustawienie wstępne kodowania zawartości rozszerza ten mechanizm, zawierających logikę niestandardową, która umożliwia kodera wyszukiwanie wartość optymalne szybkości transmisji bitów dla danego rozwiązania, ale bez konieczności rozbudowaną analizę obliczeniową. Wynikiem jest, że to nowe ustawienie wstępne generuje danych wyjściowych, który ma niższe szybkości transmisji bitów niż ustawienie wstępne adaptacyjnego przesyłania strumieniowego, ale wyższej jakości. Następujące przykładowe wykresy, przedstawiających porównanie przy użyciu metryk jakości, takie jak [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) i [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Źródła został utworzony przez złączenie krótkich klipów zrzuty wysokiego stopnia złożoności z filmów i programów telewizyjnych, przeznaczony podkreślanie kodera. Zgodnie z definicją, wyniki tego generuje wstępnie zdefiniowanych, które różnią się od zawartości do zawartości — oznacza to również, że niektóre zawartości może nie istnieć znaczące zmniejszenie szybkości transmisji bitów lub poprawę jakości.
+Eksperymentalne ustawienia wstępne kodowania obsługujące zawartość rozszerzają ten mechanizm przez włączenie logiki niestandardowej, która umożliwia koderowi wyszukiwanie optymalnej szybkości transmisji bitów dla danego rozwiązania, ale bez konieczności przeprowadzania obszernej analizy obliczeniowej. Wynikiem tego jest to, że nowe ustawienie wstępne generuje dane wyjściowe, które mają mniejszą szybkość transmisji bitów niż adaptacyjne ustawienie wstępne przesyłania strumieniowego, ale przy wyższej jakości. Zapoznaj się z poniższymi przykładowymi wykresami pokazującymi porównanie przy użyciu metryk jakości, takich jak [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) i [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Źródło zostało utworzone przez połączenie krótkich klipów o wysokiej złożoności z filmów i programów telewizyjnych, które są przeznaczone do podkreślania kodera. Zgodnie z definicją, to ustawienie wstępne daje wyniki, które różnią się w zależności od zawartości — oznacza to również, że w przypadku niektórych zawartości może nie być znacząca Redukcja szybkości transmisji bitów lub poprawy jakości.
 
-![Krzywa współczynnik jego zniekształcenia (RD) przy użyciu PSNR](media/cae-experimental/msrv1.png)
+![Krzywa stopnia zniekształcenia (RD) przy użyciu PSNR](media/cae-experimental/msrv1.png)
 
-**Rysunek 1: Krzywa współczynnik jego zniekształcenia (usług pulpitu zdalnego) za pomocą metryk PSNR wysokiego stopnia złożoności źródła**
+**Rysunek 1: Krzywa stopnia zniekształcenia (RD) używająca metryki PSNR dla źródła o dużej złożoności**
 
-![Krzywa współczynnik jego zniekształcenia (RD) przy użyciu VMAF](media/cae-experimental/msrv2.png)
+![Krzywa stopnia zniekształcenia (RD) przy użyciu VMAF](media/cae-experimental/msrv2.png)
 
-**Rysunek 2: Krzywa współczynnik jego zniekształcenia (usług pulpitu zdalnego) za pomocą metryk VMAF wysokiego stopnia złożoności źródła**
+**Rysunek 2: Krzywa stopnia zniekształcenia (RD) używająca metryki VMAF dla źródła o dużej złożoności**
 
-Ustawienie wstępne obecnie jest ona dostrojona dla wysokiego stopnia złożoności, wysokiej jakości źródłowe pliki wideo (filmy, programy telewizyjne). Praca jest w toku, aby dostosować je do zawartości, zmniejszenie złożoności (na przykład prezentacji programu PowerPoint), a także mniejszą jakości materiały wideo. To ustawienie wstępne również używa tego samego zestawu rozwiązania adaptacyjnego przesyłania strumieniowego ustawienia wstępnego. Firma Microsoft pracuje dla metod, aby wybrać minimalny zestaw rozwiązania na podstawie zawartości. W następujący sposób wyniki są na inną kategorię źródła zawartości, gdzie kodera był w stanie określić, że wprowadzono złej jakości (wiele kompresji artefaktów z powodu małej szybkości transmisji bitów). Pamiętaj, że o eksperymentalnym ustawienie wstępne, kodera zdecydowała się utworzyć tylko jedną warstwę danych wyjściowych — na tyle niskie, szybkości transmisji bitów, aby większość klientów można odtworzyć strumień bez wstrzymujących działanie.
+Ustawienie wstępne jest obecnie dostrojone w celu uzyskania wysokiej złożoności wideo ze źródła wysokiej jakości (filmy, programy telewizyjne). Pracuj w toku, aby dostosowywać do zawartości o niskiej złożoności (na przykład prezentacji programu PowerPoint), a także słabych filmów wideo. To ustawienie wstępne używa tego samego zestawu rozwiązań co ustawienia wstępnego przesyłania strumieniowego. Firma Microsoft pracuje nad metodami, aby wybrać minimalny zestaw rozwiązań opartych na zawartości. Poniżej przedstawiono wyniki dla innej kategorii zawartości źródłowej, w której koder był w stanie stwierdzić, że dane wejściowe były niskiej jakości (wiele artefaktów kompresji z powodu niskiej szybkości transmisji bitów). Należy zauważyć, że w przypadku eksperymentalnego ustawienia wstępnego koder zdecydował się utworzyć tylko jedną warstwę wyjściową — z niską szybkością transmisji bitów, dzięki czemu większość klientów będzie mogła odtworzyć strumień bez parkingów.
 
 ![Krzywa usług pulpitu zdalnego przy użyciu PSNR](media/cae-experimental/msrv3.png)
 
-**Rysunek 3: Krzywa usług pulpitu zdalnego przy użyciu PSNR wprowadzania niskiej jakości (na 1080p)**
+**Rysunek 3: Krzywa usług pulpitu zdalnego wykorzystująca PSNR dla danych wejściowych o niskiej jakości (o godzinie 1080p)**
 
 ![Krzywa usług pulpitu zdalnego przy użyciu VMAF](media/cae-experimental/msrv4.png)
 
-**Rysunek 4: Krzywa usług pulpitu zdalnego przy użyciu VMAF wprowadzania niskiej jakości (na 1080p)**
+**Rysunek 4: Krzywa usług pulpitu zdalnego wykorzystująca VMAF dla danych wejściowych o niskiej jakości (o godzinie 1080p)**
 
-## <a name="use-the-experimental-preset"></a>Użycia ustawienia wstępnego eksperymentalne
+## <a name="use-the-experimental-preset"></a>Użyj eksperymentalnego ustawienia wstępnego
 
-Można utworzyć przekształceń, korzystających z tego ustawienia wstępnego w następujący sposób. W przypadku korzystania z samouczka [takich](stream-files-tutorial-with-api.md), należy zaktualizować kod w następujący sposób:
+Można tworzyć przekształcenia, które używają tego ustawienia wstępnego w następujący sposób. W przypadku korzystania z [tego](stream-files-tutorial-with-api.md)samouczka można zaktualizować kod w następujący sposób:
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -70,8 +70,8 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> Prefiks "eksperymentalne" jest używany w tym miejscu celu sygnalizowania, że nadal opracowujemy bazowego algorytmów. Można zostanie ona zmiany w czasie, przez logikę używaną do generowania drabiny szybkości transmisji bitów, z celem zbieżności na algorytm, który jest niezawodny i dostosowuje się do szerokiej gamy wejściowych warunkami. Kodowanie zadań przy użyciu spowoduje wstępnie nadal być minut rozliczane na podstawie danych wyjściowych i elementu zawartości wyjściowej mogą być dostarczane z naszych punktów końcowych przesyłania strumieniowego w protokołów, takich jak KRESKI i HLS.
+> Prefiks "eksperymentalny" jest używany w tym miejscu do sygnalizowania, że nadal trwa rozwój podstawowych algorytmów. W miarę upływu czasu do logiki używanej do generowania drabin szybkości transmisji bitów można wprowadzać zmiany, a celem jest zbieżność algorytmu, który jest niezawodny i który dostosowuje się do szerokiej gamy warunków wprowadzania. Zadania kodowania korzystające z tego ustawienia wstępnego będą nadal rozliczane na podstawie minut danych wyjściowych, a element zawartości wyjściowej można dostarczyć z naszych punktów końcowych przesyłania strumieniowego w protokołach, takich jak ŁĄCZNIKi i HLS.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skoro wiesz już o tej nowej opcji optymalizacji filmów wideo, zachęcamy do wypróbować jej możliwości. Prześlij nam swoją opinię, korzystając z linków na końcu tego artykułu lub skontaktuj się z bardziej bezpośrednio do nas <amsved@microsoft.com>.
+Po poznaniu tej nowej opcji optymalizacji filmów wideo Zapraszamy Cię do wypróbowania. Możesz wysłać nam swoją opinię przy użyciu linków na końcu tego artykułu lub zaangażować nas bezpośrednio w <amsved@microsoft.com>.

@@ -1,28 +1,22 @@
 ---
-title: Przykładowy skrypt programu Azure PowerShell — rotowanie kluczy dostępu do konta magazynu | Microsoft Docs
+title: Obracanie kluczy dostępu do konta magazynu za pomocą programu PowerShell
+titleSuffix: Azure Storage
 description: Tworzenie konta usługi Azure Storage oraz pobieranie i rotowanie jednego z kluczy dostępu do konta.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: sample
-ms.date: 06/13/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 0aae733f94ab4a217ca41ca3de6df2e5da47df50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54a7a6cb89c88726853a39ab5b2a61e1f0cde0b5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196276"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894927"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Tworzenie konta magazynu i rotowanie kluczy dostępu do konta
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Obracanie kluczy dostępu do konta magazynu za pomocą programu PowerShell
 
 Ten skrypt tworzy konto usługi Azure Storage, wyświetla podstawowy klucz dostępu do nowego konta magazynu, a następnie odnawia (rotuje) ten klucz.
 
@@ -34,7 +28,7 @@ Ten skrypt tworzy konto usługi Azure Storage, wyświetla podstawowy klucz dost�
 
 [!code-powershell[main](../../../powershell_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.ps1 "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia 
+## <a name="clean-up-deployment"></a>Czyszczenie wdrożenia
 
 Uruchom następujące polecenie, aby usunąć grupę zasobów, konto magazynu oraz wszystkie powiązane zasoby.
 
@@ -54,7 +48,7 @@ Ten skrypt zawiera następujące polecenia, służące do utworzenia konta magaz
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Pobiera klucze dostępu dla konta usługi Azure Storage. |
 | [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Ponownie generuje klucz dostępu do konta usługi Azure Storage. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

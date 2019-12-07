@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b00e699eb49d88e41dff18d6c86024c9b0537e50
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e8a3397cd8229a84103fdcbb116bf61648a6ba22
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872319"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895562"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów Azure Resource Manager
 
@@ -5534,14 +5534,14 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Wyświetl etykiety czułości danej bazy danych |
 > | Działanie | Microsoft. SQL/managedInstances/Databases/recommendedSensitivityLabels/Write | Etykiety czułości zalecanych aktualizacji wsadowych |
 > | Działanie | Microsoft. SQL/managedInstances/Databases/restoreDetails/Read | Zwraca szczegóły przywracania zarządzanej bazy danych, gdy przywracanie jest w toku. |
-> | Działanie | Microsoft.Sql/managedInstances/databases/schemas/read | Pobierz schemat zarządzanej bazy danych. |
-> | Działanie | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Pobieranie kolumny zarządzanej bazy danych |
+> | Działanie | Microsoft.Sql/managedInstances/databases/schemas/read | Pobierz schemat zarządzanej bazy danych. (tylko schemat) |
+> | Działanie | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | Pobierz kolumnę zarządzanej bazy danych (tylko schemat) |
 > | Działanie | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Usuń etykietę czułości danej kolumny |
 > | Działanie | Microsoft. SQL/managedInstances/bazy danych/schematy/tabele/kolumny/sensitivityLabels/Disable/Action | Wyłącz zalecenia dotyczące czułości w danej kolumnie |
 > | Działanie | Microsoft. SQL/managedInstances/bazy danych/schematy/tabele/kolumny/sensitivityLabels/Włącz/akcja | Włącz zalecenia dotyczące czułości w danej kolumnie |
 > | Działanie | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | Pobierz etykietę czułości danej kolumny |
 > | Działanie | Microsoft. SQL/managedInstances/bazy danych/schematy/tabele/kolumny/sensitivityLabels/zapis | Utwórz lub zaktualizuj etykietę czułości danej kolumny |
-> | Działanie | Microsoft.Sql/managedInstances/databases/schemas/tables/read | Pobieranie tabeli zarządzanej bazy danych |
+> | Działanie | Microsoft.Sql/managedInstances/databases/schemas/tables/read | Pobierz tabelę zarządzanej bazy danych (tylko schemat) |
 > | Działanie | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Pobieranie listy zasad wykrywania zagrożeń zarządzanych baz danych skonfigurowanych dla danego serwera |
 > | Działanie | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/write | Zmień zasady wykrywania zagrożeń bazy danych dla danej zarządzanej bazy danych |
 > | Działanie | Microsoft.Sql/managedInstances/databases/securityEvents/read | Pobiera zdarzenia zabezpieczeń zarządzanej bazy danych |
@@ -5680,14 +5680,14 @@ Operacje dostawcy zasobów są zawsze rozwijane. Aby uzyskać najnowsze operacje
 > | Działanie | Microsoft.Sql/servers/databases/restorePoints/delete | Usuwa punkt przywracania bazy danych. |
 > | Działanie | Microsoft.Sql/servers/databases/restorePoints/read | Zwraca punkty przywracania bazy danych. |
 > | Działanie | Microsoft.Sql/servers/databases/resume/action | Wznów bazę danych usługi Azure SQL DataWarehouse |
-> | Działanie | Microsoft.Sql/servers/databases/schemas/read | Pobierz schemat bazy danych. |
-> | Działanie | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Pobierz kolumnę bazy danych. |
+> | Działanie | Microsoft.Sql/servers/databases/schemas/read | Pobierz schemat bazy danych (tylko schemat). |
+> | Działanie | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Pobierz kolumnę bazy danych (tylko schemat). |
 > | Działanie | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Usuń etykietę czułości danej kolumny |
 > | Działanie | Microsoft. SQL/serwery/bazy danych/schematy/tabele/kolumny/sensitivityLabels/Disable/Action | Wyłącz zalecenia dotyczące czułości w danej kolumnie |
 > | Działanie | Microsoft. SQL/serwery/bazy danych/schematy/tabele/kolumny/sensitivityLabels/Włącz/akcja | Włącz zalecenia dotyczące czułości w danej kolumnie |
 > | Działanie | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | Pobierz etykietę czułości danej kolumny |
 > | Działanie | Microsoft. SQL/serwery/bazy danych/schematy/tabele/kolumny/sensitivityLabels/Write | Utwórz lub zaktualizuj etykietę czułości danej kolumny |
-> | Działanie | Microsoft.Sql/servers/databases/schemas/tables/read | Pobierz tabelę bazy danych. |
+> | Działanie | Microsoft.Sql/servers/databases/schemas/tables/read | Pobierz tabelę bazy danych (tylko schemat). |
 > | Działanie | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/read | Pobierz listę zaleceń dotyczących indeksów w bazie danych |
 > | Działanie | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/write | Zastosuj zalecenie dotyczące indeksu |
 > | Działanie | Microsoft.Sql/servers/databases/securityAlertPolicies/read | Pobieranie listy zasad wykrywania zagrożeń bazy danych skonfigurowanych dla danego serwera |

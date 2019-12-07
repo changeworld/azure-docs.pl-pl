@@ -4,15 +4,15 @@ description: Monitorowanie aplikacji platformy .NET Core/. NET Framework bez pro
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/15/2019
-ms.openlocfilehash: 5f812d5fe1b25358a0bf09ebf879569ae29b33f3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 386c171e4785fac2c7fa6da39f249e211f4c660c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131886"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893302"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights aplikacji usługi Worker (aplikacje inne niż HTTP)
 
@@ -35,7 +35,7 @@ Prawidłowy klucz Instrumentacji Application Insights. Ten klucz jest wymagany d
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.2" />
     </ItemGroup>
 ```
 
@@ -136,6 +136,7 @@ Zwykle `APPINSIGHTS_INSTRUMENTATIONKEY` określa klucz Instrumentacji dla aplika
 > Klucz Instrumentacji określony w kodzie usługi WINS przez zmienną środowiskową `APPINSIGHTS_INSTRUMENTATIONKEY`, w którym usługa WINS jest połączona z innymi opcjami.
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>ASP.NET Core zadań w tle za pomocą usług hostowanych
+
 W [tym](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) dokumencie opisano sposób tworzenia zadań tła w aplikacji ASP.NET Core 2.1/2.2.
 
 Pełny przykład jest udostępniany [tutaj](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)

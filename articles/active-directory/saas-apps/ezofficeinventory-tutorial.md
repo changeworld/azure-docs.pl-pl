@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376448"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893505"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą EZOfficeInventory
 
@@ -90,11 +90,11 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.ezofficeinventory.com/users/sign_in`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość przy użyciu rzeczywistego adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta EZOfficeInventory](mailto:support@ezofficeinventory.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem obsługi klienta EZOfficeInventory](mailto:support@ezofficeinventory.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Aplikacja EZOfficeInventory oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. Oprócz powyższych, aplikacja EZOfficeInventory oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami.
 
@@ -106,7 +106,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
 1. W sekcji **Konfigurowanie EZOfficeInventory** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
@@ -117,12 +117,12 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -132,7 +132,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Na liście Aplikacje wybierz pozycję **EZOfficeInventory**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -144,13 +144,21 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-ezofficeinventory-sso"></a>Konfigurowanie logowania jednokrotnego EZOfficeInventory
 
-1. Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej witryny EZOfficeInventory jako administrator.
+1. Aby zautomatyzować konfigurację w programie EZOfficeInventory, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-2. W prawym górnym rogu strony kliknij pozycję **profil** a następnie przejdź do obszaru **Ustawienia** > **Dodatki**.
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+1. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję **Skonfiguruj** , aby przekierować użytkownika do aplikacji EZOfficeInventory. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do usługi EZOfficeInventory. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-5.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+1. Jeśli chcesz ręcznie skonfigurować EZOfficeInventory, Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy EZOfficeInventory jako administrator i wykonaj następujące czynności:
+
+1. W prawym górnym rogu strony kliknij pozycję **profil** , a następnie przejdź do obszaru **Ustawienia** > **dodawania**.
 
     ![Konfiguracja EZOfficeInventory](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. Przewiń w dół do sekcji **integracja SAML** , wykonaj następujące czynności:
+1. Przewiń w dół do sekcji **integracja SAML** , wykonaj następujące czynności:
 
     ![Konfiguracja EZOfficeInventory](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -170,19 +178,19 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     h. Wybierz rolę zgodnie z wymaganiami z **roli EZOfficeInventory przez opcję domyślną** .
 
-    i. Kliknij przycisk **Aktualizuj**.
+    i. Kliknij przycisk **Update** (Aktualizuj).
 
 ### <a name="create-ezofficeinventory-test-user"></a>Utwórz użytkownika testowego EZOfficeInventory
 
 W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w EZOfficeInventory. EZOfficeInventory obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze EZOfficeInventory, zostanie utworzony nowy po uwierzytelnieniu.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka EZOfficeInventory w panelu dostępu należy automatycznie zalogować się do EZOfficeInventory, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -191,4 +199,3 @@ Po kliknięciu kafelka EZOfficeInventory w panelu dostępu należy automatycznie
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj EZOfficeInventory z usługą Azure AD](https://aad.portal.azure.com/)
-

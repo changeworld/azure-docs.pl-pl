@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899209"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889111"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Rozwiązanie Azure Key Vault Analytics w Azure Monitor
 
@@ -29,7 +29,7 @@ Aby użyć rozwiązania, należy włączyć rejestrowanie diagnostyki Azure Key 
 >
 >
 
-## <a name="install-and-configure-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
+## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Aby zainstalować i skonfigurować rozwiązanie Azure Key Vault, należy wykonać następujące instrukcje:
 
 1. Aby dodać rozwiązanie Azure Key Vault do obszaru roboczego Log Analytics, Użyj procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md) .
@@ -51,7 +51,7 @@ Aby zainstalować i skonfigurować rozwiązanie Azure Key Vault, należy wykona�
 8. Kliknij przycisk *Zapisz* , aby włączyć rejestrowanie diagnostyki w log Analytics obszarze roboczym.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Włączanie diagnostyki Key Vault przy użyciu programu PowerShell
-Poniższy skrypt programu PowerShell zawiera przykład użycia `Set-AzDiagnosticSetting`, aby włączyć rejestrowanie diagnostyczne dla Key Vault:
+Poniższy skrypt programu PowerShell zawiera przykład użycia `Set-AzDiagnosticSetting`, aby włączyć rejestrowanie zasobów dla Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -114,8 +114,8 @@ Azure Key Vault rozwiązanie analizuje rekordy, które mają typy **magazynów**
 | `Resource` |Nazwa magazynu kluczy |
 | `ResourceGroup` |Grupa zasobów magazynu kluczy |
 | `ResourceId` |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników Key Vault jest to Key Vault identyfikator zasobu. |
-| `ResourceProvider` |*Programu. KEYVAULT* |
-| `ResourceType` | *MAGAZYNÓW* |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *VAULTS* |
 | `ResultSignature` |Stan HTTP (na przykład *OK*) |
 | `ResultType` |Wynik żądania interfejsu API REST (na przykład *sukcesu*) |
 | `SubscriptionId` |Identyfikator subskrypcji platformy Azure dla subskrypcji zawierającej Key Vault |

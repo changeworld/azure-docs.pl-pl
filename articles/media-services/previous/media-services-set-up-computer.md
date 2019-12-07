@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie środowiska deweloperskiego usługi Azure Media Services | Microsoft Docs
-description: Konfigurowanie środowiska do programowania z użyciem usługi Azure Media Services.
+description: W tym artykule opisano sposób konfigurowania środowiska do programowania przy użyciu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 546e8e50bc34307c46d33e217d5bc0887b548774
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410029"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895801"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Konfigurowanie środowiska deweloperskiego usługi Media Services  
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 W poniższych krokach opisano wymagania wstępne dotyczące programowania z użyciem usługi Azure Media Services.
 
@@ -45,12 +45,12 @@ Aby skonfigurować środowisko deweloperskie REST, zobacz [ten](media-services-r
 
 Aby nawiązać połączenie z interfejsem API usługi Azure Media Services, zobacz temat [Dostępu do interfejsu API usługi Azure Media Services przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md).  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wiele przykładów kodu możesz znaleźć w galerii **Przykłady kodu platformy Azure**: [Przykłady kodu usługi Azure Media Services](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555145"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901324"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co nowego w usłudze Azure Wyszukiwanie poznawcze
 
@@ -29,7 +29,11 @@ Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie s�
 
 ## <a name="feature-announcements"></a>Anonse funkcji
 
-4 listopada 2019 — Konferencja zapłonowa
+### <a name="december-2019"></a>Grudzień 2019
+
++ [Tworzenie aplikacji (wersja zapoznawcza)](search-create-app-portal.md) to nowy Kreator w portalu, który GENERUJE plik HTML do pobrania. Plik zawiera osadzony skrypt, który renderuje operacyjną aplikację sieci Web w stylu "localhost", powiązaną z indeksem w usłudze wyszukiwania. Strony można konfigurować w Kreatorze i zawierać pasek wyszukiwania, obszar wyników, nawigację paska bocznego i obsługę zapytań typeahead. Możesz zmodyfikować kod HTML w trybie offline, aby zwiększyć lub dostosować przepływ pracy lub wygląd.
+
+### <a name="november-2019---ignite-conference"></a>Listopad 2019 — Konferencja zapłonowa
 
 + [Indeksowanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md) pozwala na wybór i wybór kroków, które mają zostać przetworzone podczas wprowadzania modyfikacji do potoku wzbogacania. Indeksowanie przyrostowe jest przydatne, jeśli masz zawartość obrazu, która została wcześniej przeanalizowana. Dane wyjściowe analizy kosztów są przechowywane, a następnie używane jako podstawa do dodatkowego indeksowania lub wzbogacania.
 
@@ -44,7 +48,7 @@ Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie s�
 
 + W indeksatorach są teraz obsługiwane [Azure Data Lake Storage Gen2 (wersja zapoznawcza)](search-howto-index-azure-data-lake-storage.md) [Cosmos DB, interfejs API Gremlin (wersja](search-howto-index-cosmosdb.md)zapoznawcza) i [Cosmos DB interfejs API Cassandra (wersja zapoznawcza)](search-howto-index-cosmosdb.md) . Możesz zarejestrować się, korzystając z [tego formularza](https://aka.ms/azure-cognitive-search/indexer-preview). Po zaakceptowaniu w programie w wersji zapoznawczej otrzymasz wiadomość e-mail z potwierdzeniem.
 
-Lipiec 24 2019
+### <a name="july-2019"></a>Lipiec 2019 r.
 
 + Ogólnie dostępna w [chmurze Azure Government](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search).
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851166"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899802"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Połącz się prywatnie z kontem magazynu przy użyciu prywatnego punktu końcowego platformy Azure
 Prywatny punkt końcowy platformy Azure to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych.
@@ -132,7 +132,7 @@ W tej sekcji utworzysz prywatne konto magazynu przy użyciu prywatnego punktu ko
     | Podsieć | Wybierz pozycję Moja *podsieć*. |
     | **PRYWATNA INTEGRACJA Z USŁUGĄ DNS**|  |
     | Integracja z prywatną strefą DNS  | Pozostaw wartość domyślną **tak**. |
-    | Prywatna strefa DNS  | Pozostaw wartość domyślną * * (New) privatelink.blob.core.windows.net * *. |
+    | Prywatna strefa DNS  | Pozostaw wartość domyślną **(New) privatelink.blob.Core.Windows.NET**. |
     |||
 7. Kliknij przycisk **OK**. 
 8. Wybierz pozycję **Przegląd + utwórz**. Nastąpi przejście do strony **Recenzja i tworzenie** , w której platforma Azure weryfikuje konfigurację. 
@@ -151,7 +151,7 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 
 1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
 
-1. Otwórz pobrany plik RDP *.
+1. Otwórz *pobrany plik RDP* .
 
     1. Po wyświetleniu monitu wybierz pozycję **Połącz**.
 

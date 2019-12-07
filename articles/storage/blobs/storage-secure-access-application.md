@@ -1,22 +1,23 @@
 ---
-title: Zabezpieczanie dostępu do danych aplikacji w chmurze za pomocą usługi Azure Storage | Microsoft Docs
+title: Bezpieczny dostęp do danych aplikacji
+titleSuffix: Azure Storage
 description: Używanie tokenów SAS, szyfrowania i protokołu HTTPS w celu zabezpieczenia danych aplikacji w chmurze.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/30/2018
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1075c03820efba44ceb8dea28aff6302d2667cf2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986698"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892434"
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Zabezpieczanie dostępu do danych aplikacji w chmurze
+# <a name="secure-access-to-application-data"></a>Bezpieczny dostęp do danych aplikacji
 
 Ten samouczek jest trzecią częścią serii. Zawiera informacje o sposobach zabezpieczania dostępu do konta magazynu. 
 
@@ -31,7 +32,7 @@ Usługa [Azure Blob Storage](../common/storage-introduction.md#blob-storage) to 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Automatyzuj zmianę rozmiarów załadowanych obrazów przy użyciu Event Grid][previous-tutorial]. 
+Aby ukończyć ten samouczek, musisz ukończyć poprzedni samouczek magazynu: [Automatyzuj zmianę rozmiarów załadowanych obrazów przy użyciu Event Grid][previous-tutorial].
 
 ## <a name="set-container-public-access"></a>Włączanie dostępu publicznego do kontenera
 

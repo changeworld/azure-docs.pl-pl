@@ -1,20 +1,21 @@
 ---
-title: Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza) — Azure Storage
-description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego użytkownika przy użyciu poświadczeń Azure Active Directory w usłudze Azure Storage przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Używanie interfejsu wiersza polecenia platformy Azure do tworzenia sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB
+titleSuffix: Azure Storage
+description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego (wersja zapoznawcza Azure Active Directory) delegowania użytkownika przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673321"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892553"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 

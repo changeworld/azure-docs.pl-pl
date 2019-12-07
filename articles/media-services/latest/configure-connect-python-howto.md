@@ -1,6 +1,6 @@
 ---
 title: Nawiązywanie połączenia z interfejsem API programu Azure Media Services v3 — Python
-description: Dowiedz się, jak nawiązać połączenie z interfejsem API Media Services v3 przy użyciu języka Python.
+description: W tym artykule pokazano, jak nawiązać połączenie z interfejsem API programu Media Services v3 przy użyciu języka Python.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 2ceebd88f4988f23bf9cd32bd827aaca67d70461
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307872"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888465"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Nawiązywanie połączenia z interfejsem API programu Media Services v3 — Python
 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób nawiązywania połączenia z zestawem SDK języka
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Pobierz Język Python z [Python.org](https://www.python.org/downloads/)
-- Upewnij się, `PATH` że ustawienie zmienna środowiskowa
+- Upewnij się, że wartość `PATH` zmienna środowiskowa
 - [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Pamiętaj, aby zapamiętać nazwę grupy zasobów i nazwę konta Media Services.
 - Wykonaj kroki opisane w temacie [interfejsy API dostępu](access-api-cli-how-to.md) . Zapisz identyfikator subskrypcji, identyfikator aplikacji (identyfikator klienta), klucz uwierzytelniania (klucz tajny) i identyfikator dzierżawy, które są potrzebne w późniejszym kroku.
 
@@ -38,8 +38,8 @@ W tym artykule opisano sposób nawiązywania połączenia z zestawem SDK języka
 
 Aby można było korzystać z Azure Media Services przy użyciu języka Python, należy zainstalować te moduły.
 
-* `azure-mgmt-resource` Moduł, który obejmuje moduły platformy Azure dla Active Directory.
-* `azure-mgmt-media` Moduł, który obejmuje jednostki Media Services.
+* Moduł `azure-mgmt-resource`, który obejmuje moduły platformy Azure dla Active Directory.
+* Moduł `azure-mgmt-media`, który obejmuje jednostki Media Services.
 
 Otwórz narzędzie wiersza polecenia i użyj następujących poleceń, aby zainstalować moduły.
 
@@ -50,7 +50,7 @@ pip3 install azure-mgmt-media==1.1.1
 
 ## <a name="connect-to-the-python-client"></a>Nawiązywanie połączenia z klientem języka Python
 
-1. Utwórz plik z `.py` rozszerzeniem
+1. Utwórz plik z rozszerzeniem `.py`
 1. Otwórz plik w ulubionym edytorze
 1. Dodaj kod, który następuje po pliku. Kod importuje wymagane moduły i tworzy obiekt Active Directory poświadczeń, który należy połączyć z Media Services.
 

@@ -1,24 +1,25 @@
 ---
-title: Używanie Azure Portal do zarządzania prawami dostępu usługi Azure AD do danych obiektów blob i kolejek z użyciem kontroli RBAC — Azure Storage | Microsoft Docs
-description: Użyj kontroli dostępu opartej na rolach (RBAC) z Azure Portal, aby przypisać dostęp do kontenerów i kolejek do podmiotów zabezpieczeń. Usługa Azure Storage obsługuje wbudowane i niestandardowe role RBAC do uwierzytelniania za pośrednictwem usługi Azure AD.
+title: Używanie Azure Portal do przypisywania roli RBAC na potrzeby dostępu do danych
+titleSuffix: Azure Storage
+description: Dowiedz się, w jaki sposób używać Azure Portal do przypisywania uprawnień do Azure Active Directory podmiotu zabezpieczeń z kontrolą dostępu opartą na rolach (RBAC). Usługa Azure Storage obsługuje wbudowane i niestandardowe role RBAC do uwierzytelniania za pośrednictwem usługi Azure AD.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b11b2c42087b8724c7d90b87bc33965eb7270dc6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1544303ee7b792a00f7afb57fe62b7b86a300f8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421997"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891956"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Udzielanie dostępu do obiektów blob platformy Azure i danych z kolejki RBAC w Azure Portal
+# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Użyj Azure Portal, aby przypisać rolę RBAC na potrzeby dostępu do danych obiektów blob i kolejek
 
-Azure Active Directory (Azure AD) autoryzuje prawa dostępu do zabezpieczonych zasobów za pośrednictwem [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md). Usługa Azure Storage definiuje zestaw wbudowanych ról RBAC, które obejmują typowe zestawy uprawnień używane do uzyskiwania dostępu do danych obiektu BLOB lub kolejki. 
+Azure Active Directory (Azure AD) autoryzuje prawa dostępu do zabezpieczonych zasobów za pośrednictwem [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md). Usługa Azure Storage definiuje zestaw wbudowanych ról RBAC, które obejmują typowe zestawy uprawnień używane do uzyskiwania dostępu do danych obiektu BLOB lub kolejki.
 
 Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platforma Azure przyznaje dostęp do tych zasobów dla tego podmiotu zabezpieczeń. Dostęp można ograniczyć do poziomu subskrypcji, grupy zasobów, konta magazynu lub pojedynczego kontenera lub kolejki. Podmiot zabezpieczeń usługi Azure AD może być użytkownikiem, grupą, główną usługą aplikacji lub [zarządzaną tożsamością dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -65,7 +66,7 @@ Pokazana tutaj procedura przypisuje rolę w zakresie kontenera, ale można wykon
 
     ![Zrzut ekranu przedstawiający sposób przypisywania roli RBAC](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. Kliknij pozycję **Zapisz**. Tożsamość, do której przypisano rolę, jest wyświetlana na liście w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że dodany użytkownik ma teraz uprawnienia do odczytu danych w kontenerze o nazwie *Sample-Container*.
+1. Kliknij przycisk **Save** (Zapisz). Tożsamość, do której przypisano rolę, jest wyświetlana na liście w ramach tej roli. Na przykład na poniższej ilustracji przedstawiono, że dodany użytkownik ma teraz uprawnienia do odczytu danych w kontenerze o nazwie *Sample-Container*.
 
     ![Zrzut ekranu przedstawiający listę użytkowników przypisanych do roli](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
@@ -83,7 +84,7 @@ Jeśli użytkownicy muszą mieć dostęp do obiektów BLOB w Azure Portal, przyp
 
 Wykonaj następujące kroki, aby przypisać rolę **czytelnika** , aby użytkownik mógł uzyskać dostęp do obiektów blob z Azure Portal. W tym przykładzie przypisanie jest ograniczone do konta magazynu:
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do konta magazynu.
+1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do swojego konta magazynu.
 1. Wybierz pozycję **Kontrola dostępu (IAM)** , aby wyświetlić ustawienia kontroli dostępu dla konta magazynu. Wybierz kartę **przypisania ról** , aby wyświetlić listę przypisań ról.
 1. W oknie **Dodawanie przypisania roli** wybierz rolę **czytelnik** . 
 1. W polu **Przypisz dostęp do** wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**.

@@ -1,22 +1,23 @@
 ---
-title: Autoryzuj dostęp do obiektów blob i kolejek platformy Azure przy użyciu Azure Active Directory | Microsoft Docs
+title: Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Active Directory
+titleSuffix: Azure Storage
 description: Autoryzuj dostęp do obiektów blob i kolejek platformy Azure przy użyciu Azure Active Directory.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598110"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891817"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Autoryzuj dostęp do obiektów blob i kolejek platformy Azure przy użyciu Azure Active Directory
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Azure Active Directory
 
 Usługa Azure Storage obsługuje używanie Azure Active Directory (AD) do autoryzacji żądań do magazynu obiektów blob i kolejek. Za pomocą usługi Azure AD można używać kontroli dostępu opartej na rolach (RBAC) do udzielania uprawnień podmiotowi zabezpieczeń, który może być użytkownikiem, grupą lub jednostką usługi aplikacji. Podmiot zabezpieczeń jest uwierzytelniany przez usługę Azure AD w celu zwrócenia tokenu OAuth 2,0. Token może służyć do autoryzowania żądania dostępu do zasobu w magazynie obiektów blob lub Queue.
 

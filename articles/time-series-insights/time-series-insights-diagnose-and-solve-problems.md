@@ -9,20 +9,20 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007063"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900251"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w środowisku Time Series Insights
 
 W tym artykule opisano niektóre problemy, które mogą wystąpić w środowisku Azure Time Series Insights. Artykuł zawiera potencjalne przyczyny i rozwiązania do rozwiązania.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Dowiedz się więcej na temat typowych wyzwań i rozwiązań związanych z Time Series Insights klientami.</br>
 
@@ -38,7 +38,7 @@ Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady k
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Przyczyna B: klucz źródła zdarzenia nie ma wymaganego uprawnienia
 
-* W przypadku usługi IoT Hub w usłudze Azure IoT Hub należy podać klucz z uprawnieniami do **łączenia usług** . **Iothubowner** lub zasady **usługi** będą działały, ponieważ oba mają uprawnienia do **łączenia usług** .
+* W przypadku usługi IoT Hub w usłudze Azure IoT Hub należy podać klucz z uprawnieniami do **łączenia usług** . Wybierz **iothubowner** lub zasady **usługi** , ponieważ oba mają uprawnienia do **łączenia usług** .
 
    [uprawnienia ![IoT Hub usługi Connect](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -50,13 +50,17 @@ Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przykłady k
 
 Po zarejestrowaniu Centrum IoT Hub lub centrum zdarzeń należy ustawić grupę odbiorców, która ma być używana do odczytywania danych. *Nie można udostępnić*tej grupy odbiorców. Jeśli grupa konsumentów jest udostępniona, podstawowe Centrum IoT lub centrum zdarzeń automatycznie i losowo rozłącza jednego z nich. Podaj unikatową grupę odbiorców, w której ma zostać odczytana Time Series Insights.
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Przyczyna D: środowisko zostało właśnie zainicjowane
+
+Dane zostaną wyświetlone w Eksploratorze Time Series Insights w ciągu kilku minut od momentu utworzenia środowiska i jego danych.
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Problem: wyświetlane są pewne dane, ale brakuje danych
 
 Gdy dane pojawiają się tylko częściowo i pojawiają się, że dane są opóźnione, należy rozważyć kilka możliwości.
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>Przyczyna: środowisko jest ograniczane
 
-Ograniczanie jest typowym problemem, gdy środowiska są inicjowane po utworzeniu źródła zdarzeń zawierającego dane. Usługa Azure IoT Hub i usługi Azure Events Hub przechowują dane przez maksymalnie siedem dni. Time Series Insights zawsze rozpoczynać się od najstarszego zdarzenia w źródle zdarzeń (pierwszy na początku, w pierwszej kolejności lub *FIFO*).
+[Ograniczanie](time-series-insights-environment-mitigate-latency.md) jest typowym problemem, gdy środowiska są inicjowane po utworzeniu źródła zdarzeń zawierającego dane. Usługa Azure IoT Hub i usługi Azure Events Hub przechowują dane przez maksymalnie siedem dni. Time Series Insights zawsze rozpoczynać się od najstarszego zdarzenia w źródle zdarzeń (pierwszy na początku, w pierwszej kolejności lub *FIFO*).
 
 Jeśli na przykład w źródle zdarzeń znajdują się zdarzenia 5 000 000 w przypadku łączenia się ze środowiskiem S1 (Single-Unit Time Series Insights), Time Series Insights odczytuje około 1 000 000 zdarzeń dziennie. Może wyglądać tak, jak Time Series Insights występuje pięć dni opóźnienia. Jednak dzieje się tak, że środowisko jest ograniczane.
 

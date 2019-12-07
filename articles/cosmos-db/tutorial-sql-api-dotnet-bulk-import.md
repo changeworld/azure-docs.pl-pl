@@ -1,20 +1,20 @@
 ---
-title: Optymalizowanie przepływności podczas zbiorczego importowania danych do konta usługi SQL API Azure Cosmos DB
-description: Dowiedz się, jak utworzyć aplikację konsolową .NET, która optymalizuje przepływność (RU/s) wymaganą do zaimportowania danych do Azure Cosmos DB.
+title: Zbiorcze importowanie danych do Azure Cosmos DB konta interfejsu API SQL przy użyciu zestawu .NET SDK
+description: Dowiedz się, jak importować lub pozyskiwanie danych do Azure Cosmos DB przez utworzenie aplikacji konsolowej .NET, która optymalizuje przepływność (RU/s) wymaganą do importowania danych
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606217"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896275"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>Optymalizowanie przepływności podczas zbiorczego importowania danych do konta usługi SQL API Azure Cosmos DB
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Zbiorcze importowanie danych do Azure Cosmos DB konta interfejsu API SQL przy użyciu zestawu .NET SDK
 
 W tym samouczku przedstawiono sposób tworzenia aplikacji konsolowej .NET, która optymalizuje przepływność (RU/s) wymaganą do zaimportowania danych do Azure Cosmos DB. Ten artykuł zawiera informacje dotyczące odczytywania danych z przykładowego źródła danych i importowania ich do kontenera usługi Azure Cosmos.
 W tym samouczku jest używana [wersja 3.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) programu Azure Cosmos DB .NET SDK, która może być przeznaczona dla .NET Framework lub .NET Core.
@@ -81,7 +81,7 @@ Nadal w katalogu aplikacji Zainstaluj Azure Cosmos DBą bibliotekę kliencką dl
 
 Przykładowa aplikacja wymaga uwierzytelnienia na koncie usługi Azure Cosmos. Aby przeprowadzić uwierzytelnianie, należy przekazać poświadczenia konta usługi Azure Cosmos do aplikacji. Uzyskaj poświadczenia konta usługi Azure Cosmos, wykonując następujące czynności:
 
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1.  Zaloguj się do [portalu Azure](https://portal.azure.com/).
 1.  Przejdź do swojego konta usługi Azure Cosmos.
 1.  Otwórz okienko **klucze** i skopiuj **Identyfikator URI** i **klucz podstawowy** konta.
 

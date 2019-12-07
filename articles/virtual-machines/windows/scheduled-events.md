@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f6e3e370201b49da149c09d87ed7cec63fef8ebf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e6aa53ab5e71cbcc830e31ee1f3650feca7db63b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792248"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885521"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events maszyn wirtualnych z systemem Windows
 
@@ -63,9 +63,9 @@ Jeśli maszyna wirtualna nie zostanie utworzona w ramach Virtual Network, domyś
 ### <a name="version-and-region-availability"></a>Dostępność wersji i regionu
 Usługa Scheduled Events jest w wersji. Wersje są obowiązkowe, a bieżąca wersja jest `2017-11-01`.
 
-| Wersja | Typ wydania | Regiony | Informacje o wersji | 
+| Wersja | Typ zlecenia | Regiony | Informacje o wersji | 
 | - | - | - | - |
-| 2017-11-01 | Ogólna dostępność | Wszystko | <li> Dodano obsługę elementu EventType wykluczania maszyny wirtualnej o niskim priorytecie<br> | 
+| 2017-11-01 | Ogólna dostępność | Wszystko | <li> Dodano obsługę elementu EventType punktu wykluczania maszyny wirtualnej<br> | 
 | 2017-08-01 | Ogólna dostępność | Wszystko | <li> Usunięto poprzedzony znak podkreślenia z nazw zasobów dla maszyn wirtualnych IaaS<br><li>Wymagania nagłówka metadanych wymuszone dla wszystkich żądań | 
 | 2017-03-01 | Wersja zapoznawcza | Wszystko |<li>Wersja początkowa
 
@@ -117,17 +117,17 @@ DocumentIncarnation jest elementem ETag i zapewnia łatwy sposób sprawdzenia, c
 ### <a name="event-properties"></a>Właściwości zdarzenia
 |Właściwość  |  Opis |
 | - | - |
-| EventId | Unikatowy identyfikator globalny dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Klasę | Ma to wpływ na przyczyny tego zdarzenia. <br><br> Wartości: <br><ul><li> `Freeze`: zaplanowano wstrzymanie maszyny wirtualnej przez kilka sekund. Połączenie procesora i sieci może być zawieszone, ale nie ma wpływu na pamięć lub otwieranie plików. <li>`Reboot`: zaplanowano ponowne uruchomienie maszyny wirtualnej (pamięć nietrwała zostanie utracona). <li>`Redeploy`: zaplanowano przeniesienie maszyny wirtualnej do innego węzła (dyski tymczasowe są tracone). <li>`Preempt`: trwa usuwanie maszyny wirtualnej o niskim priorytecie (dyski tymczasowe są tracone).|
+| Identyfikator zdarzenia | Unikatowy identyfikator globalny dla tego zdarzenia. <br><br> Przykład: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
+| Typ zdarzenia | Ma to wpływ na przyczyny tego zdarzenia. <br><br> Wartości: <br><ul><li> `Freeze`: zaplanowano wstrzymanie maszyny wirtualnej przez kilka sekund. Połączenie procesora i sieci może być zawieszone, ale nie ma wpływu na pamięć lub otwieranie plików. <li>`Reboot`: zaplanowano ponowne uruchomienie maszyny wirtualnej (pamięć nietrwała zostanie utracona). <li>`Redeploy`: zaplanowano przeniesienie maszyny wirtualnej do innego węzła (dyski tymczasowe są tracone). <li>`Preempt`: trwa usuwanie miejsca na maszynie wirtualnej (dyski tymczasowe są tracone).|
 | ResourceType | Typ zasobu, którego dotyczy to zdarzenie. <br><br> Wartości: <ul><li>`VirtualMachine`|
 | Zasoby| Lista zasobów, na które ma wpływ zdarzenie. Ma to na celu zapewnienie maszyn z co najwyżej jednej [domeny aktualizacji](manage-availability.md), ale może nie zawierać wszystkich maszyn w ud. <br><br> Przykład: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Stan zdarzenia | Stan tego zdarzenia. <br><br> Wartości: <ul><li>`Scheduled`: to zdarzenie jest zaplanowane do uruchomienia po upływie czasu określonego we właściwości `NotBefore`.<li>`Started`: to zdarzenie zostało uruchomione.</ul> Nie dostarczono żadnego `Completed` ani podobnego stanu; zdarzenie nie będzie już zwracane po zakończeniu zdarzenia.
-| NotBefore| Czas, po którym to zdarzenie może się zacząć. <br><br> Przykład: <br><ul><li> PN, 19 wrz 2016 18:29:47 GMT  |
+| Nie wcześniej niż| Czas, po którym to zdarzenie może się zacząć. <br><br> Przykład: <br><ul><li> PN, 19 wrz 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Planowanie zdarzeń
 Każde zdarzenie ma zaplanowaną minimalną ilość czasu w przyszłości w oparciu o typ zdarzenia. Ten czas jest uwzględniany we właściwości `NotBefore` zdarzenia. 
 
-|Klasę  | Minimalny komunikat |
+|Typ zdarzenia  | Minimalny komunikat |
 | - | - |
 | Funkcja| 15 minut |
 | Ponowne uruchamianie | 15 minut |

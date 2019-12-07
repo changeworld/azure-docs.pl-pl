@@ -1,24 +1,24 @@
 ---
-title: 'Samouczek: Szyfrowanie i odszyfrowywanie obiektów BLOB w usłudze Azure Storage przy użyciu Azure Key Vault | Microsoft Docs'
-description: Jak szyfrować i odszyfrowywać obiekt BLOB przy użyciu szyfrowania po stronie klienta dla Microsoft Azure Storage z Azure Key Vault.
+title: Samouczek — szyfrowanie i odszyfrowywanie obiektów BLOB za pomocą Azure Key Vault
+titleSuffix: Azure Storage
+description: Dowiedz się, jak szyfrować i odszyfrowywać obiekt BLOB przy użyciu szyfrowania po stronie klienta za pomocą Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003431"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892893"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Samouczek: Szyfrowanie i odszyfrowywanie obiektów BLOB w Microsoft Azure Storage przy użyciu Azure Key Vault
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Samouczek — szyfrowanie i odszyfrowywanie obiektów BLOB za pomocą Azure Key Vault
 
-## <a name="introduction"></a>Wprowadzenie
 W tym samouczku opisano sposób korzystania z szyfrowania magazynu po stronie klienta z Azure Key Vault. Przeprowadzi Cię przez proces szyfrowania i odszyfrowywania obiektu BLOB w aplikacji konsolowej przy użyciu tych technologii.
 
 **Szacowany czas trwania:** 20 minut
@@ -33,7 +33,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Konto usługi Azure Storage
 * Visual Studio 2013 lub nowszy
-* Azure PowerShell
+* Program Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>Omówienie szyfrowania po stronie klienta
 
@@ -48,7 +48,7 @@ Poniżej znajduje się krótki opis sposobu działania szyfrowania po stronie kl
 
 ## <a name="set-up-your-azure-key-vault"></a>Skonfiguruj Azure Key Vault
 
-Aby móc kontynuować pracę z tym samouczkiem, należy wykonać następujące kroki, które opisano w samouczku [szybki start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji](../../key-vault/quick-create-net.md)sieci Web platformy .NET:
+Aby kontynuować pracę z tym samouczkiem, należy wykonać następujące kroki opisane w samouczku [Szybki Start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji sieci Web platformy .NET](../../key-vault/quick-create-net.md):
 
 * Tworzenie magazynu kluczy.
 * Dodawanie klucza lub wpisu tajnego do magazynu kluczy.
@@ -87,7 +87,7 @@ Dodaj AppSettings do pliku App. config.
 </appSettings>
 ```
 
-Dodaj następujące `using` dyrektywy i pamiętaj, aby dodać odwołanie do elementu System. Configuration do projektu.
+Dodaj następujące dyrektywy `using` i pamiętaj, aby dodać odwołanie do elementu System. Configuration do projektu.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -121,7 +121,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>Dostęp do magazynu i Key Vault w programie
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Dostęp do usługi Azure Storage i Key Vault w programie
 
 W metodzie Main () Dodaj następujący kod.
 
@@ -229,7 +229,8 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-Gotowe. Owocnej pracy.
+
+To już wszystko. Owocnej pracy.
 
 ## <a name="next-steps"></a>Następne kroki
 

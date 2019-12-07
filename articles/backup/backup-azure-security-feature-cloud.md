@@ -3,12 +3,12 @@ title: Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze
 description: Dowiedz się, jak używać funkcji zabezpieczeń w programie Azure Backup, aby tworzyć kopie zapasowe bardziej bezpieczne.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278226"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894032"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
@@ -24,7 +24,7 @@ Obawy dotyczące problemów z zabezpieczeniami takich jak złośliwe oprogramowa
 
 Usuwanie nietrwałe jest obecnie obsługiwane w regionie zachodnie stany USA, Azja Wschodnia, Kanada środkowa, Kanada Wschodnia, Francja środkowa, Francja Południowa, Korea środkowa, Korea Południowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Australia Wschodnia, Australia Południowo-Wschodnia, Ameryka Północna, zachodnie stany USA, zachodnie stany USA, Południowo-środkowe, Południowe Azja Wschodnia, Północno-środkowe stany USA, Południowo-środkowe stany USA, Japonia Wschodnia, Japonia Zachodnia, Indie Południowe, Indie Środkowe, Indie Zachodnie, Wschodnie stany USA 2, Szwajcaria Północna, Szwajcaria Zachodnia i wszystkie regiony narodowe.
 
-### <a name="soft-delete-for-vms"></a>Usuwanie nietrwałe dla maszyn wirtualnych
+### <a name="soft-delete-for-vms-using-azure-portal"></a>Usuwanie nietrwałe dla maszyn wirtualnych przy użyciu Azure Portal
 
 1. Aby można było usunąć dane kopii zapasowej maszyny wirtualnej, należy zatrzymać wykonywanie kopii zapasowej. W Azure Portal przejdź do magazynu usługi Recovery Services, kliknij prawym przyciskiem myszy element kopii zapasowej, a następnie wybierz polecenie **Zatrzymaj tworzenie kopii zapasowej**.
 
@@ -66,9 +66,59 @@ Ten wykres przepływu przedstawia różne kroki i Stany elementu kopii zapasowej
 
 Aby uzyskać więcej informacji, zobacz sekcję [często zadawane pytania](backup-azure-security-feature-cloud.md#frequently-asked-questions) poniżej.
 
+### <a name="soft-delete-for-vms-using-azure-powershell"></a>Usuwanie nietrwałe dla maszyn wirtualnych przy użyciu programu Azure PowerShell
+
+> [!IMPORTANT]
+> Wersja AZ. RecoveryServices wymagana do użycia nietrwałego usuwania przy użyciu narzędzia Azure PS to minimalna 2.2.0. Użyj ```Install-Module -Name Az.RecoveryServices -Force```, aby uzyskać najnowszą wersję.
+
+Jak opisano powyżej dla Azure Portal, sekwencja kroków jest taka sama w przypadku korzystania z programu Azure PowerShell.
+
+#### <a name="delete-the-backup-item-using-azure-powershell"></a>Usuwanie elementu kopii zapasowej przy użyciu programu Azure PowerShell
+
+Usuń element kopii zapasowej za pomocą polecenia cmdlet [disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
+
+"DeleteState" elementu kopii zapasowej zmieni się z "NotDeleted" na "ToBeDeleted". Dane kopii zapasowej będą przechowywane przez 14 dni. Jeśli chcesz przywrócić operację usuwania, należy wykonać Cofnięcie usunięcia.
+
+#### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Cofanie operacji usuwania przy użyciu programu Azure PowerShell
+
+Najpierw Pobierz odpowiedni element kopii zapasowej, który jest w stanie usuwania nietrwałego, tj., który ma zostać usunięty
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Następnie wykonaj operację cofania usuwania przy użyciu polecenia cmdlet [Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS.
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+"DeleteState" elementu kopii zapasowej zostanie przywrócony do "NotDeleted". Jednak ochrona jest nadal zatrzymana. Należy [wznowić wykonywanie kopii zapasowej,](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) aby ponownie włączyć ochronę.
+
 ## <a name="disabling-soft-delete"></a>Wyłączanie usuwania nietrwałego
 
 Usuwanie nietrwałe jest domyślnie włączone dla nowo utworzonych magazynów w celu ochrony danych kopii zapasowej przed przypadkowym lub złośliwym usunięciem.  Wyłączenie tej funkcji nie jest zalecane. Jedyną okolicznością, w której należy rozważyć wyłączenie usuwania nietrwałego, jest to, że planujesz przeniesienie chronionych elementów do nowego magazynu i nie będzie można odczekać 14 dni przed usunięciem i ponownym włączeniem ochrony (na przykład w środowisku testowym). Tę funkcję można wyłączyć tylko przez administratora kopii zapasowej. Jeśli wyłączysz tę funkcję, wszystkie usunięcia chronionych elementów spowodują natychmiastowe usunięcie, bez możliwości przywrócenia. Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej funkcji pozostaną w stanie nietrwałego usunięcia. Jeśli chcesz trwale usunąć te elementy natychmiast, musisz cofnąć ich usunięcie i usunąć je ponownie, aby trwale usunąć.
+
+### <a name="disabling-soft-delete-using-azure-portal"></a>Wyłączanie usuwania nietrwałego przy użyciu Azure Portal
 
 Aby wyłączyć usuwanie nietrwałe, wykonaj następujące kroki:
 
@@ -76,17 +126,36 @@ Aby wyłączyć usuwanie nietrwałe, wykonaj następujące kroki:
 2. W okienku właściwości wybierz pozycję **Ustawienia zabezpieczeń** -> **Aktualizacja**.  
 3. W okienku ustawienia zabezpieczeń w obszarze **usuwanie nietrwałe**wybierz pozycję **Wyłącz**.
 
-
 ![Wyłącz usuwanie nietrwałe](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+### <a name="disabling-soft-delete-using-azure-powershell"></a>Wyłączanie usuwania nietrwałego przy użyciu programu Azure PowerShell
+
+> [!IMPORTANT]
+> Wersja AZ. RecoveryServices wymagana do użycia nietrwałego usuwania przy użyciu narzędzia Azure PS to minimalna 2.2.0. Użyj ```Install-Module -Name Az.RecoveryServices -Force```, aby uzyskać najnowszą wersję.
+
+Aby wyłączyć, użyj polecenia cmdlet [Set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS.
+
+```powershell
+Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
+
+
+StorageModelType       :
+StorageType            :
+StorageTypeState       :
+EnhancedSecurityState  : Enabled
+SoftDeleteFeatureState : Disabled
+```
 
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Trwałe usuwanie nietrwałych usuniętych elementów kopii zapasowej
 
-Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej funkcji pozostaną w stanie nietrwałego usunięcia. Jeśli chcesz trwale usunąć te elementy natychmiast, usuń je i Usuń ponownie, aby uzyskać trwałe usunięcie. 
+Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej funkcji pozostaną w stanie nietrwałego usunięcia. Jeśli chcesz trwale usunąć te elementy natychmiast, usuń je i Usuń ponownie, aby uzyskać trwałe usunięcie.
+
+### <a name="using-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 Wykonaj następujące kroki:
 
 1. Postępuj zgodnie z instrukcjami, aby [wyłączyć usuwanie nietrwałe](#disabling-soft-delete). 
-2. W Azure Portal przejdź do swojego magazynu, przejdź do **pozycji elementy kopii zapasowej** i wybierz nietrwałe usunięte maszyny wirtualne 
+2. W Azure Portal przejdź do swojego magazynu, przejdź do **pozycji elementy kopii zapasowej** i wybierz nietrwałe usunięte maszyny wirtualne
 
 ![Wybierz nietrwałe usunięte maszyny wirtualne](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -109,6 +178,42 @@ Wykonaj następujące kroki:
 
 7. Aby usunąć dane kopii zapasowej dla elementu, wybierz pozycję **Usuń**. Komunikat z powiadomieniem informuje o tym, że dane kopii zapasowej zostały usunięte.
 
+### <a name="using-azure-powershell"></a>Korzystanie z programu Azure PowerShell
+
+Jeśli elementy zostały usunięte przed wyłączeniem usuwania nietrwałego, zostaną one w stanie nieusuniętym. Aby natychmiast je usunąć, operacja usuwania musi zostać cofnięta, a następnie wykonana ponownie.
+
+Zidentyfikuj elementy, które są w stanie nieusuniętym.
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+Następnie należy wycofać operację usuwania wykonywaną po włączeniu usuwania nietrwałego.
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+Ponieważ usuwanie nietrwałe jest teraz wyłączone, operacja usuwania spowoduje natychmiastowe usunięcie danych kopii zapasowej.
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
 
 ## <a name="other-security-features"></a>Inne funkcje zabezpieczeń
 
@@ -168,7 +273,7 @@ Nie. Nie można wymusić usunięcia nieusuniętych elementów, zostaną one auto
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Czy można wykonywać operacje usuwania nietrwałego w programie PowerShell lub interfejsie wiersza polecenia?
 
-Nie, obsługa programu PowerShell lub interfejsu wiersza polecenia nie jest obecnie dostępna.
+Operacje usuwania nietrwałego można wykonać przy użyciu [programu PowerShell](#soft-delete-for-vms-using-azure-powershell). Obecnie interfejs wiersza polecenia nie jest obsługiwany.
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>Czy usuwanie nietrwałe jest obsługiwane dla innych obciążeń w chmurze, takich jak SQL Server na maszynach wirtualnych platformy Azure i SAP HANA na maszynach wirtualnych platformy Azure?
 

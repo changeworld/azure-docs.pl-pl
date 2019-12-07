@@ -1,20 +1,21 @@
 ---
-title: Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki | Microsoft Docs
+title: Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki
+titleSuffix: Azure Storage
 description: Interfejs wiersza polecenia platformy Azure i program PowerShell obsługują Logowanie przy użyciu poświadczeń usługi Azure AD w celu uruchamiania poleceń w usłudze Azure Storage BLOB i kolejkach danych. Token dostępu jest dostarczany dla sesji i używany do autoryzacji operacji wywoływania. Uprawnienia są zależne od roli RBAC przypisanej do podmiotu zabezpieczeń usługi Azure AD.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 07abb9d604c14a5c78a088cb07f57088b84552a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671098"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891868"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Uruchamianie interfejsu wiersza polecenia platformy Azure lub poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki
 
@@ -30,14 +31,14 @@ Aby uzyskać szczegółowe informacje o uprawnieniach wymaganych dla każdej ope
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>Wywoływanie poleceń interfejsu wiersza polecenia przy użyciu poświadczeń usługi Azure AD
 
-Interfejs wiersza polecenia platformy `--auth-mode` Azure obsługuje parametr operacji na danych obiektów blob i kolejek:
+Interfejs wiersza polecenia platformy Azure obsługuje parametr `--auth-mode` dla operacji na danych obiektów blob i kolejek:
 
-- `--auth-mode` Ustaw`login` parametr na, aby zalogować się przy użyciu podmiotu zabezpieczeń usługi Azure AD.
-- Ustaw parametr na starszą `key` wartość, aby podjąć próbę zbadania klucza konta, jeśli nie podano parametrów uwierzytelniania dla konta. `--auth-mode` 
+- Ustaw parametr `--auth-mode` na `login`, aby zalogować się przy użyciu podmiotu zabezpieczeń usługi Azure AD.
+- Ustaw parametr `--auth-mode` na starszą wartość `key`, aby podjąć próbę zbadania klucza konta, jeśli nie podano parametrów uwierzytelniania dla konta. 
 
 Poniższy przykład pokazuje, jak utworzyć kontener na nowym koncie magazynu z poziomu interfejsu wiersza polecenia platformy Azure przy użyciu poświadczeń usługi Azure AD. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych własnymi wartościami: 
 
-1. Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom `az --version` , aby sprawdzić zainstalowaną wersję.
+1. Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom `az --version`, aby sprawdzić zainstalowaną wersję.
 
 1. Uruchom `az login` i Uwierzytelnij w oknie przeglądarki: 
 
@@ -67,7 +68,7 @@ Poniższy przykład pokazuje, jak utworzyć kontener na nowym koncie magazynu z 
     > [!IMPORTANT]
     > Propagowanie przypisań ról RBAC może potrwać kilka minut.
 
-1. Wywołaj polecenie [AZ Storage Container Create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) z `--auth-mode` parametrem ustawionym `login` na, aby utworzyć kontener przy użyciu poświadczeń usługi Azure AD:
+1. Wywołaj polecenie [AZ Storage Container Create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) z parametrem `--auth-mode` ustawionym na `login`, aby utworzyć kontener przy użyciu poświadczeń usługi Azure AD:
 
     ```azurecli
     az storage container create \ 
@@ -76,7 +77,7 @@ Poniższy przykład pokazuje, jak utworzyć kontener na nowym koncie magazynu z 
         --auth-mode login
     ```
 
-Zmienna środowiskowa skojarzona z `--auth-mode` parametrem `AZURE_STORAGE_AUTH_MODE`to. Możesz określić odpowiednią wartość w zmiennej środowiskowej, aby uniknąć uwzględniania jej przy każdym wywołaniu operacji na danych usługi Azure Storage.
+Zmienna środowiskowa skojarzona z parametrem `--auth-mode` jest `AZURE_STORAGE_AUTH_MODE`. Możesz określić odpowiednią wartość w zmiennej środowiskowej, aby uniknąć uwzględniania jej przy każdym wywołaniu operacji na danych usługi Azure Storage.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Wywoływanie poleceń programu PowerShell przy użyciu poświadczeń usługi Azure AD
 
@@ -111,7 +112,7 @@ Poniższy przykład pokazuje, jak utworzyć kontener na nowym koncie magazynu z 
       -Location $location `
     ```
 
-1. Pobierz kontekst konta magazynu, który określa nowe konto magazynu, wywołując metodę [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext). Gdy działa na koncie magazynu, można odwołać się do kontekstu, zamiast wielokrotnie przekazywać poświadczenia. `-UseConnectedAccount` Dołącz parametr do wywołania wszelkich kolejnych operacji na danych przy użyciu poświadczeń usługi Azure AD:
+1. Pobierz kontekst konta magazynu, który określa nowe konto magazynu, wywołując metodę [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext). Gdy działa na koncie magazynu, można odwołać się do kontekstu, zamiast wielokrotnie przekazywać poświadczenia. Dołącz parametr `-UseConnectedAccount`, aby wywołać wszystkie kolejne operacje na danych przy użyciu poświadczeń usługi Azure AD:
 
     ```powershell
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount

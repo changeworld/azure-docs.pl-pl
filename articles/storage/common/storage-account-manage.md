@@ -1,18 +1,19 @@
 ---
-title: Zarządzanie ustawieniami konta magazynu w usłudze Azure Portal — Azure Storage | Microsoft Docs
+title: Zarządzanie ustawieniami konta magazynu w Azure Portal
+titleSuffix: Azure Storage
 description: Informacje na temat zarządzania ustawieniami konta magazynu w Azure Portal, w tym konfigurowania ustawień kontroli dostępu, ponownego generowania kluczy dostępu do konta, zmieniania warstwy dostępu lub modyfikowania typu replikacji używanego przez konto. Dowiedz się również, jak usunąć konto magazynu w portalu.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748986"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892383"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Zarządzanie ustawieniami konta magazynu w Azure Portal
 
@@ -49,7 +50,7 @@ Podczas tworzenia konta magazynu platforma Azure generuje 2 512-bitowe klucze do
 Firma Microsoft zaleca, aby okresowo generować klucze dostępu w celu zapewnienia bezpieczeństwa konta magazynu. Przypisane są dwa klucze dostępu, dzięki czemu można obrócić klucze. Podczas obracania kluczy upewnij się, że aplikacja utrzymuje dostęp do usługi Azure Storage w trakcie całego procesu. 
 
 > [!WARNING]
-> Ponowne generowanie kluczy dostępu może mieć wpływ na wszystkie aplikacje lub usługi platformy Azure, które są zależne od klucza konta magazynu. Wszyscy klienci korzystający z klucza konta do uzyskiwania dostępu do konta magazynu muszą zostać zaktualizowani, aby używać nowego klucza, w tym usług Media Services, chmury, pulpitu i aplikacji mobilnych, oraz graficznych aplikacji interfejsu użytkownika dla usługi Azure Storage, takich jak [Eksplorator usługi Azure Storage ](https://azure.microsoft.com/features/storage-explorer/).
+> Ponowne generowanie kluczy dostępu może mieć wpływ na wszystkie aplikacje lub usługi platformy Azure, które są zależne od klucza konta magazynu. Wszyscy klienci korzystający z klucza konta do uzyskiwania dostępu do konta magazynu muszą zostać zaktualizowani, aby używać nowego klucza, w tym usług Media Services, chmury, pulpitu i aplikacji mobilnych, oraz graficznych aplikacji interfejsu użytkownika dla usługi Azure Storage, takich jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 
 Wykonaj ten proces, aby obrócić klucze konta magazynu:
 

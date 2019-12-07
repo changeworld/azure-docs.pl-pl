@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027883"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900911"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Wyświetlanie i przypisywanie ról administratorów w Azure Active Directory
 
@@ -26,11 +26,11 @@ Teraz można wyświetlać wszystkich członków ról administratorów w portalu 
 
 ## <a name="view-all-roles"></a>Wyświetl wszystkie role
 
-W Azure Active Directory wybierz **role i Administratorzy** , aby wyświetlić listę wszystkich dostępnych ról. 
+Wyszukaj i wybierz **Azure Active Directory**. Wybierz **role i Administratorzy** , aby wyświetlić listę wszystkich dostępnych ról.
 
 Kliknij przycisk wielokropka po prawej stronie każdego wiersza, aby otworzyć szczegółowy opis roli.
 
-![lista ról w portalu usługi Azure AD](./media/directory-manage-roles-portal/role-list.png)
+![lista ról w portalu usługi Azure AD](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>Wyświetl moje role
 

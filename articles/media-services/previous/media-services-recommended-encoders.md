@@ -1,6 +1,6 @@
 ---
 title: Informacje o koderach zalecanych przez Azure Media Services | Microsoft Docs
-description: Informacje o koderach zalecanych przez usługę Media Services
+description: Ten artykuł zawiera listę koderów lokalnych zalecanych przez Azure Media Services.
 services: media-services
 keywords: encoding;encoders;media
 author: dbgeorge
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: fc481129e652c6dacd15a5a6d039a9118393e8f1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854241"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74886575"
 ---
 # <a name="recommended-on-premises-encoders"></a>Zalecane kodery lokalne
 W przypadku przesyłania strumieniowego na żywo z Azure Media Services można określić, w jaki sposób kanał ma odbierać strumień wejściowy. Jeśli zdecydujesz się użyć kodera lokalnego z kanałem kodowania na żywo, koder powinien wypchnąć strumień o pojedynczej szybkości transmisji bitów o wysokiej jakości jako dane wyjściowe. Jeśli zdecydujesz się użyć kodera lokalnego z przekazaniem kanału, koder powinien wypchnąć strumień o różnej szybkości transmisji bitów jako dane wyjściowe ze wszystkimi żądanymi jakością wyjściową. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe na żywo z użyciem koderów lokalnych](media-services-live-streaming-with-onprem-encoders.md).
@@ -54,7 +54,7 @@ Weryfikacja kanału przekazującego
 4. Tworzenie opublikowanego zdarzenia na żywo
 5. Uruchamianie kodera na żywo przez około 10 minut
 6. Zatrzymaj wydarzenie na żywo
-7. Utwórz, uruchom punkt końcowy przesyłania strumieniowego, użyj odtwarzacza, takiego jak [Azure Media Player](https://aka.ms/azuremediaplayer) , aby obejrzeć zarchiwizowany element zawartości, aby upewnić się, że odtwarzanie nie ma widocznych błędów dla wszystkich poziomów jakości (lub alternatywnie Obejrzyj i sprawdź poprawność przez adres URL wersji zapoznawczej w trakcie sesji na żywo) przed krok 6)
+7. Utwórz, uruchom punkt końcowy przesyłania strumieniowego, użyj odtwarzacza, takiego jak [Azure Media Player](https://aka.ms/azuremediaplayer) , aby obejrzeć zarchiwizowany element zawartości, aby upewnić się, że odtwarzanie nie ma widocznych błędów dla wszystkich poziomów jakości (lub alternatywnie Obejrzyj i sprawdź poprawność przez adres URL wersji zapoznawczej przed krokiem 6)
 8. Rejestrowanie identyfikatora zasobu, opublikowanego adresu URL przesyłania strumieniowego dla archiwum na żywo oraz ustawień i wersji używanych z kodera na żywo
 9. Zresetuj stan kanału po utworzeniu każdego przykładu
 10. Powtórz kroki od 3 do 9 dla wszystkich konfiguracji obsługiwanych przez koder (z niemniemi/napisami/podpisami lub innymi szybkościami kodowania)
@@ -66,7 +66,7 @@ Weryfikacja kanału kodowania na żywo
 4. Tworzenie opublikowanego zdarzenia na żywo
 5. Uruchamianie kodera na żywo przez około 10 minut
 6. Zatrzymaj wydarzenie na żywo
-7. Utwórz, uruchom punkt końcowy przesyłania strumieniowego, użyj odtwarzacza, takiego jak [Azure Media Player](https://aka.ms/azuremediaplayer) , aby obejrzeć zarchiwizowany element zawartości, aby upewnić się, że odtwarzanie nie ma widocznych błędów dla wszystkich poziomów jakości (lub alternatywnie Obejrzyj i sprawdź poprawność przez adres URL wersji zapoznawczej w trakcie sesji na żywo) przed krok 6)
+7. Utwórz, uruchom punkt końcowy przesyłania strumieniowego, użyj odtwarzacza, takiego jak [Azure Media Player](https://aka.ms/azuremediaplayer) , aby obejrzeć zarchiwizowany element zawartości, aby upewnić się, że odtwarzanie nie ma widocznych błędów dla wszystkich poziomów jakości (lub alternatywnie Obejrzyj i sprawdź poprawność przez adres URL wersji zapoznawczej przed krokiem 6)
 8. Rejestrowanie identyfikatora zasobu, opublikowanego adresu URL przesyłania strumieniowego dla archiwum na żywo oraz ustawień i wersji używanych z kodera na żywo
 9. Zresetuj stan kanału po utworzeniu każdego przykładu
 10. Powtórz kroki od 3 do 9 w przypadku wszystkich konfiguracji obsługiwanych przez koder (z i bez sygnałów/napisów/podpisów AD/różnych szybkości kodowania)

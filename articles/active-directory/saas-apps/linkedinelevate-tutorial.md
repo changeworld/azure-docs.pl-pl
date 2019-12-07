@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację z usługą LinkedIn podniesienia uprawnień | Microsoft Docs'
+title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu podniesienia uprawnień w serwisie LinkedIn | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i podniesienia uprawnień do serwisu LinkedIn.
 services: active-directory
 documentationCenter: na
@@ -13,102 +13,79 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b7cb8d6ab34a632e36ea2fd1c87005a038bc523
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 03efae5f9dec904f141a6776766850aa1f328892
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823718"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892128"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Samouczek: Azure Active Directory integrację z usługą LinkedIn
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu podniesienia uprawnień serwisu LinkedIn
 
-W tym samouczku dowiesz się, jak zintegrować usługę LinkedIn z usługą Azure Active Directory (Azure AD).
-Integracja serwisu LinkedIn z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę LinkedIn z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi LinkedIn w usłudze Azure AD możesz:
 
-* Możesz kontrolować usługę Azure AD, która ma dostęp do podniesienia uprawnień do serwisu LinkedIn.
-* Możesz umożliwić użytkownikom automatyczne logowanie do usługi LinkedIn podwyższanie poziomu (Logowanie jednokrotne) przy użyciu swoich kont w usłudze Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do podniesienia uprawnień do serwisu LinkedIn.
+* Umożliwienie użytkownikom automatycznego logowania się do usługi LinkedIn podnoszenie uprawnień przy użyciu kont w usłudze Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację z usługą Azure AD przy użyciu podniesienia uprawnień serwisu LinkedIn, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Podnieś poziom subskrypcji włączone Logowanie jednokrotne w serwisie LinkedIn
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Obsługa usługi logowania jednokrotnego (SSO) w serwisie LinkedIn.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+
+
 
 * Podniesienie poziomu serwisu LinkedIn obsługuje usługę **SP i dostawcy tożsamości** zainicjowane przez usługę SSO
-
 * Podnoszenie uprawnień serwisu LinkedIn obsługuje funkcję aprowizacji użytkowników **just in Time**
-
 * Podnoszenie uprawnień serwisu LinkedIn obsługuje [ **Automatyczne** Inicjowanie obsługi użytkowników](linkedinelevate-provisioning-tutorial.md)
 
 ## <a name="adding-linkedin-elevate-from-the-gallery"></a>Dodawanie podniesienia uprawnień do serwisu LinkedIn z galerii
 
 Aby skonfigurować integrację serwisu LinkedIn z usługą Azure AD, należy dodać podnoszenie uprawnień serwisu LinkedIn z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać podnoszenie uprawnień do serwisu LinkedIn z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz polecenie **LinkedIn Podnieś poziom** w polu wyszukiwania.
+1. Wybierz opcję **Podnieś poziom uprawnień** w panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-elevate"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD na potrzeby podniesienia uprawnień do serwisu LinkedIn
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą funkcji podniesienia uprawnień za pomocą użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD a pokrewnym użytkownikiem w serwisie LinkedIn Podnieś poziom.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą podniesienia uprawnień serwisu LinkedIn, wykonaj następujące bloki konstrukcyjne:
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj serwis LinkedIn Podnieś poziom logowania jednokrotnego](#configure-linkedin-elevate-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    1. **[Tworzenie podniesienia uprawnień użytkownika testowego w serwisie LinkedIn](#create-linkedin-elevate-test-user)** , aby dysponować odpowiednikiem B. Simon w serwisie LinkedIn Podnieś poziom, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-4. W polu wyszukiwania wpisz podnoszenie **uprawnień serwisu LinkedIn**, wybierz pozycję **LinkedIn Podnieś poziom** z panelu wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-    ![Podnoszenie uprawnień do serwisu LinkedIn na liście wyników](common/search-new-app.png)
+1. W [Azure Portal](https://portal.azure.com/)na stronie **serwis LinkedIn podnoszenie poziomu** integracji aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-W tej sekcji skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD za pomocą podniesienia uprawnień w serwisie LinkedIn na podstawie użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD a pokrewnym użytkownikiem w serwisie LinkedIn.
-
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą podniesienia uprawnień serwisu LinkedIn, należy wykonać następujące bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie](#configure-linkedin-elevate-single-sign-on)** ustawienia Logowanie jednokrotne w serwisie LinkedIn — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie podniesienia uprawnień użytkownika testowego w serwisie LinkedIn](#create-linkedin-elevate-test-user)** , aby uzyskać odpowiednik usługi Britta Simon w usłudze LinkedIn, która jest powiązana z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować funkcję rejestracji jednokrotnej usługi Azure AD przy użyciu podniesienia uprawnień serwisu LinkedIn, wykonaj następujące czynności:
-
-1. W [Azure Portal](https://portal.azure.com/)na stronie **serwis LinkedIn podnoszenie poziomu** integracji aplikacji wybierz pozycję **Logowanie**jednokrotne.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
-
-    ![Serwis LinkedIn Podnieś poziom rejestracji jednokrotnej domeny i adresów URL](common/idp-intiated.png)
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
     a. W polu tekstowym **Identyfikator** wprowadź wartość **identyfikatora jednostki** . wartość identyfikatora jednostki zostanie skopiowana z portalu LinkedIn w dalszej części tego samouczka.
 
@@ -116,57 +93,61 @@ Aby skonfigurować funkcję rejestracji jednokrotnej usługi Azure AD przy użyc
 
 5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Serwis LinkedIn Podnieś poziom rejestracji jednokrotnej domeny i adresów URL](common/metadata-upload-additional-signon.png)
-
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>`
 
-6. Podnoszenie poziomu aplikacji w serwisie LinkedIn oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. Podnoszenie poziomu aplikacji na serwis LinkedIn oczekuje na zamapowanie NameIdentifier z **użytkownikiem. mail**, dlatego należy edytować Mapowanie atrybutów, klikając ikonę Edytuj i zmieniając mapowanie atrybutu.
+1. Podnoszenie poziomu aplikacji w serwisie LinkedIn oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. Podnoszenie poziomu aplikacji na serwis LinkedIn oczekuje na zamapowanie NameIdentifier z **użytkownikiem. mail**, dlatego należy edytować Mapowanie atrybutów, klikając ikonę Edytuj i zmieniając mapowanie atrybutu.
 
     ![image](common/edit-attribute.png)
 
-7. Oprócz powyższych, usługa LinkedIn Podnieś poziom aplikacji oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. W sekcji oświadczenia użytkownika w oknie dialogowym **atrybuty użytkownika** wykonaj następujące kroki, aby dodać ATRYBUT tokenu SAML, jak pokazano w poniższej tabeli:
+1. Oprócz powyższych, usługa LinkedIn Podnieś poziom aplikacji oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami.
 
-    | Name (Nazwa) | Atrybut źródłowy|
+    | Nazwa | Atrybut źródłowy|
     | -------| -------------|
-    | Dział | user.department |
+    | department | user.department |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![image](common/new-save-attribute.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
-
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
-
-    d. Pozostaw pole **Przestrzeń nazw** puste.
-
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
-
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
-
-    f. Kliknij przycisk **OK**.
-
-    g. Kliknij polecenie **Zapisz**.
-
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
-
-    ![Link pobierania certyfikatu](common/metadataxml.png)
-
-9. W sekcji **Konfigurowanie podniesienia uprawnień serwisu LinkedIn** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie podniesienia uprawnień serwisu LinkedIn** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. Identyfikator usługi Azure AD
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    c. Adres URL wylogowywania
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-### <a name="configure-linkedin-elevate-single-sign-on"></a>Konfiguruj logowanie jednokrotne w serwisie LinkedIn
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając dostęp do podniesienia uprawnień do serwisu LinkedIn.
+
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **Podnieś poziom serwisu LinkedIn**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
+
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+## <a name="configure-linkedin-elevate-sso"></a>Konfigurowanie podniesienia poziomu logowania za pomocą serwisu LinkedIn
 
 1. W innym oknie przeglądarki sieci Web logowanie do konta w serwisie LinkedIn Podnieś poziom dzierżawy jako administrator.
 
-1. W **Centrum kont** kliknij przycisk **Ustawienia globalne** w obszarze **Ustawienia**. Ponadto wybierz z listy rozwijanej pozycję Podnieś poziom na podniesienie poziomu usługi **AAD** .
+1. W **Centrum kont** kliknij przycisk **Ustawienia globalne** w obszarze **Ustawienia**. Ponadto wybierz z listy rozwijanej pozycję **Podnieś poziom na podniesienie** poziomu usługi AAD.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
@@ -182,59 +163,9 @@ Aby skonfigurować funkcję rejestracji jednokrotnej usługi Azure AD przy użyc
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
-1. Kliknij przycisk **On** (Włącz), aby włączyć funkcję logowania jednokrotnego. Stan rejestracji jednokrotnej zmieni się z niepołączone na **połączone**
+1. Kliknij przycisk **On** (Włącz), aby włączyć funkcję logowania jednokrotnego. Stan rejestracji jednokrotnej zmieni się z **niepołączone** na **połączone**
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
-
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
-
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W polu **Nazwa użytkownika** wpisz `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure, przyznając dostęp do podniesienia uprawnień do serwisu LinkedIn.
-
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję Podnieś poziom do **serwisu LinkedIn**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-2. Na liście Aplikacje wybierz pozycję **Podnieś poziom serwisu LinkedIn**.
-
-    ![Link podniesienia uprawnień do serwisu LinkedIn na liście aplikacji](common/all-applications.png)
-
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
 ### <a name="create-linkedin-elevate-test-user"></a>Utwórz użytkownika testowego podniesienia uprawnień w serwisie LinkedIn
 
@@ -242,16 +173,19 @@ Podwyższanie poziomu aplikacji przez serwis LinkedIn obsługuje funkcję aprowi
 
    ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinelevate-tutorial/LinkedinUserprovswitch.png)
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka podnoszenie uprawnień w serwisie LinkedIn w panelu dostępu należy automatycznie zalogować się do usługi LinkedIn, dla której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj podniesienie poziomu usługi LinkedIn w usłudze Azure AD](https://aad.portal.azure.com/)
+

@@ -7,20 +7,20 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007000"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894910"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Shape JSON w celu zmaksymalizowania wydajności zapytań 
 
 Ten artykuł zawiera wskazówki dotyczące sposobu tworzenia kształtu JSON w celu zmaksymalizowania wydajności zapytań Azure Time Series Insights.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 ### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Zapoznaj się z najlepszymi rozwiązaniami dotyczącymi kształtowania JSON w celu spełnienia wymagań dotyczących magazynu.</br>
 

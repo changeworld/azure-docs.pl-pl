@@ -1,6 +1,6 @@
 ---
 title: Wstawianie reklam po stronie klienta | Microsoft Docs
-description: W tym temacie pokazano, jak wstawiać reklamy po stronie klienta.
+description: W tym artykule pokazano, jak wstawiać reklamy do multimediów po stronie klienta.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162690"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895965"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Wstawianie reklam po stronie klienta
 Ten artykuł zawiera informacje na temat wstawiania różnych typów reklam po stronie klienta.
@@ -96,7 +96,7 @@ OLBRZYMI plik określa, jakie usługi AD lub reklamy mają być wyświetlane. Po
 
 Liniowy AD jest opisywany przez <**liniowy**> elementu. Określa czas trwania usługi AD, śledzenie zdarzeń, klikanie przez, śledzenie i liczbę elementów **MediaFile** . Zdarzenia śledzenia są określone w elemencie <**TrackingEvents**> i umożliwiają serwerowi AD śledzenie różnych zdarzeń, które wystąpiły podczas wyświetlania usługi AD. W takim przypadku śledzone są zdarzenia uruchamiania, punktu środkowego, ukończenia i rozwinięcia. Zdarzenie uruchamiania występuje, gdy zostanie wyświetlona wartość AD. Zdarzenie punktu środkowego występuje, gdy została wyświetlona co najmniej 50% czasu. Pełne zdarzenie występuje po uruchomieniu usługi AD na końcu. Zdarzenie expando występuje, gdy użytkownik poszerzy odtwarzacz wideo na pełny ekran. Przeglądy są określane przy**użyciu <ego**>ego elementu**w < elementu**> i określa identyfikator URI dla zasobu, który będzie wyświetlany po kliknięciu przez użytkownika usługi AD. ClickTracking jest określony w elemencie <**ClickTracking**>, również w elemencie <**VideoClicks**> i określa zasób śledzenia dla odtwarzacza, gdy użytkownik kliknie w usłudze AD. Elementy <**MediaFile**> określają informacje o konkretnym kodowaniu usługi AD. Jeśli istnieje więcej niż jeden <**MediaFile**>, odtwarzacz wideo może wybrać najlepsze kodowanie dla danej platformy.
 
-Oferty liniowe mogą być wyświetlane w określonej kolejności. Aby to zrobić, Dodaj kolejne `<Ad>` elementy do OGROMNEgo pliku i określ kolejność przy użyciu atrybutu Sequence. Poniższy przykład ilustruje:
+Oferty liniowe mogą być wyświetlane w określonej kolejności. Aby to zrobić, Dodaj kolejne `<Ad>` elementy do OGROMNEgo pliku i określ kolejność przy użyciu atrybutu Sequence. Zostało to przedstawione w poniższym przykładzie:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">

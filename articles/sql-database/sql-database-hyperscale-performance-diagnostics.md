@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811147"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901245"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostyka rozwiązywania problemów z wydajnością w ramach skalowania SQL
 
@@ -44,13 +44,14 @@ Repliki obliczeń nie buforują pełnej kopii bazy danych lokalnie. Dane lokalne
  
 Jeśli odczyt jest wystawiony w replice obliczeniowej, jeśli dane nie istnieją w puli buforów lub lokalnej pamięci podręcznej RBPEX, zostanie wygenerowane wywołanie funkcji GetPage (pageId, LSN), a strona jest pobierana z odpowiedniego serwera stronicowania. Odczyty z serwerów stronicowania to odczyty zdalne i są w tym samym wolniejsze niż odczyt z RBPEX lokalnego. W przypadku rozwiązywania problemów z wydajnością w ramach operacji we/wy musimy mieć możliwość poinformowania o liczbie systemu IOs wykonywanych przez stosunkowo wolniejsze odczyty zdalnego serwera stron.
 
-Kilka zdarzeń widoków DMV i rozszerzonych zawiera kolumny i pola, które określają liczbę odczytów zdalnych z serwera stronicowego, które można porównać z łączną liczbą operacji odczytu. 
+Kilka zdarzeń widoków DMV i rozszerzonych zawiera kolumny i pola, które określają liczbę odczytów zdalnych z serwera stronicowego, które można porównać z łączną liczbą operacji odczytu. Magazyn zapytań przechwytuje również odczyty zdalne w ramach statystyk czasu wykonywania zapytania.
 
-- Kolumny do operacji odczytywania serwera stron raportów są dostępne w widoków DMV wykonywania, takich jak:
-    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+- Kolumny do operacji odczytywania serwera stron raportów są dostępne w widoków DMV wykonywania i w widokach wykazu, takich jak:
+    - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Operacje odczytu serwera stronicowania są dodawane do następujących zdarzeń rozszerzonych:
     - sql_statement_completed
     - sp_statement_completed
@@ -100,7 +101,7 @@ Stosunek liczby odczytów wykonanych na RBPEX do zagregowanych odczytów wykonan
 - W podstawowym obliczeniu zapis w dzienniku jest uwzględniany w file_id 2 programu sys. dm_io_virtual_file_stats. Zapis w dzienniku w podstawowym obliczeniu jest zapisem w strefie wyładunkowej dziennika.
 - Rekordy dziennika nie są zaostrzone w replice pomocniczej przy zatwierdzeniu. W ramach skalowania usługa xlog jest stosowana w dzienniku w odniesieniu do zdalnych replik. Ponieważ zapisy dziennika nie są faktycznie wykonywane w replikach pomocniczych, wszystkie operacje we/wy dziennika w replikach pomocniczych są tylko do celów śledzenia.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - W przypadku limitów zasobów rdzeń wirtualny dla pojedynczej bazy danych na potrzeby skalowania w poziomie można zobaczyć [limity rdzeń wirtualny warstwy usługi](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) .
 - Aby uzyskać Azure SQL Database dostrajania wydajności, zobacz [wydajność zapytań w Azure SQL Database](sql-database-performance-guidance.md)

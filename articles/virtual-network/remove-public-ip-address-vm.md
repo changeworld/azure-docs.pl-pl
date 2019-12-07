@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: kumud
-ms.openlocfilehash: beb2655b0796adbe289b0af104dead2d15e584db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1c27af30f97ea967d170b2cccaefb2e95f8fedaf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852161"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900738"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Usuń skojarzenie publicznego adresu IP z maszyny wirtualnej platformy Azure 
 
@@ -51,7 +51,7 @@ Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azur
     --name ipconfigmyVM \
     --resource-group myResourceGroup \
     --nic-name myVMVMNic \
-    --remove PublicIpAdress
+    --remove PublicIpAddress
    ```
 
    Jeśli nie znasz nazwy interfejsu sieciowego dołączonego do maszyny wirtualnej, użyj polecenia [AZ VM nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) , aby je wyświetlić. Na przykład następujące polecenie wyświetla listę nazw interfejsów sieciowych dołączonych do maszyny wirtualnej o nazwie *myVM* w grupie zasobów o nazwie Moja *zasobów*:
@@ -68,11 +68,18 @@ Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azur
 
      W poprzednim przykładzie *myVMVMNic* jest nazwą interfejsu sieciowego.
 
-   - Jeśli nie znasz nazwy konfiguracji protokołu IP dla interfejsu sieciowego, użyj polecenia [AZ Network nic IP-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) , aby je pobrać. Na przykład następujące polecenie wyświetla listę nazw konfiguracji protokołu IP dla interfejsu sieciowego o nazwie *myVMVMNic* w grupie zasobów o nazwie Moja *zasobów*:
+   - Jeśli nie znasz nazwy konfiguracji protokołu IP dla interfejsu sieciowego, użyj polecenia [AZ Network nic IP-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) , aby je pobrać. Na przykład następujące polecenie wyświetla listę nazw publicznych adresów IP dla interfejsu sieciowego o nazwie *myVMVMNic* w grupie zasobów o nazwie Moje *zasoby*:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
+
+   - Jeśli nie znasz nazwy publicznej konfiguracji adresu IP dla interfejsu sieciowego, użyj polecenia [AZ Network nic IP-config show](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-show) , aby je pobrać. Na przykład następujące polecenie wyświetla listę nazw publicznych adresów IP dla interfejsu sieciowego o nazwie *myVMVMNic* w grupie zasobów o nazwie Moje *zasoby*:
+
+     ```azurecli-interactive
+     az network nic ip-config show --name ipconfigmyVM --nic-name myVMVMNic --resource-group myResourceGroup --query publicIPAddress.id
+     ```
+
 
 ## <a name="powershell"></a>PowerShell
 
@@ -106,13 +113,13 @@ Zainstaluj program [PowerShell](/powershell/azure/install-az-ps)lub użyj Azure 
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
-     $nic.IPConfigurations
+     $nic.IPConfigurations.id
      ```
 
      Dane wyjściowe obejmują co najmniej jeden wiersz, który jest podobny do poniższego przykładu. W przykładowym wyjściu *ipconfigmyVM* jest nazwą konfiguracji adresu IP.
   
      ```
-     Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
+     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM"
      ```
 
 ## <a name="next-steps"></a>Następne kroki

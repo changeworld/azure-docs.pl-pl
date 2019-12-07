@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych przy użyciu działania w ramach programu Hadoop w Azure Data Factory
+title: Przekształcanie danych za pomocą działania usługi Hadoop
 description: Dowiedz się, jak za pomocą działania świni w usłudze Azure Data Factory uruchamiać skrypty wieprzowe na żądanie/własny klaster usługi HDInsight.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 85478c128e2a61ed6a3f4da5cacdcb425038c639
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3ee9da39745458fc24190e72bda15acfc23503dc
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683841"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893862"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania w ramach programu Hadoop w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -56,17 +56,17 @@ Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do
 ```
 ## <a name="syntax-details"></a>Szczegóły składni
 
-| Właściwość            | Opis                              | Wymagany |
+| Właściwość            | Opis                              | Wymagane |
 | ------------------- | ---------------------------------------- | -------- |
 | name                | Nazwa działania                     | Tak      |
 | description         | Tekst opisujący działanie używanego działania | Nie       |
 | type                | W przypadku działania programu Hive typem działania jest HDinsightPig | Tak      |
 | linkedServiceName   | Odwołanie do klastra usługi HDInsight zarejestrowanego jako połączona usługa w Data Factory. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) . | Tak      |
-| Elementu scriptlinkedservice | Odwołanie do połączonej usługi Azure Storage użytej do przechowania skryptu wieprzowego do wykonania. Jeśli nie określisz tej połączonej usługi, zostanie użyta połączona usługa Azure Storage zdefiniowana w połączonej usłudze HDInsight. | Nie       |
+| scriptLinkedService | Odwołanie do połączonej usługi Azure Storage użytej do przechowania skryptu wieprzowego do wykonania. Jeśli nie określisz tej połączonej usługi, zostanie użyta połączona usługa Azure Storage zdefiniowana w połączonej usłudze HDInsight. | Nie       |
 | scriptPath          | Podaj ścieżkę do pliku skryptu przechowywanego w usłudze Azure Storage, która jest określona przez elementu scriptlinkedservice. W nazwie pliku rozróżniana jest wielkość liter. | Nie       |
-| GetDebugInfo —        | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używanej przez klaster HDInsight (lub) określonej przez elementu scriptlinkedservice. Dozwolone wartości: brak, zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
-| Argumentu           | Określa tablicę argumentów zadania usługi Hadoop. Argumenty są przesyłane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
-| definiuje             | Określ parametry jako pary klucz/wartość do odwołania w skrypcie trzody chlewnej. | Nie       |
+| getDebugInfo        | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używanej przez klaster HDInsight (lub) określonej przez elementu scriptlinkedservice. Dozwolone wartości: brak, zawsze lub niepowodzenie. Wartość domyślna: None. | Nie       |
+| arguments           | Określa tablicę argumentów zadania usługi Hadoop. Argumenty są przesyłane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
+| defines             | Określ parametry jako pary klucz/wartość do odwołania w skrypcie trzody chlewnej. | Nie       |
 
 ## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z następującymi artykułami, które wyjaśniają sposób przekształcania danych w inny sposób: 

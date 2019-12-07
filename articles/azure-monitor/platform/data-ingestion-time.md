@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932579"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894151"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Czas pozyskiwania danych dziennika w Azure Monitor
 Azure Monitor to usługa danych o dużej skali, która umożliwia tysiącom klientów wysyłanie terabajtów danych co miesiąc w coraz większej tempie. Często zadawane pytania dotyczące czasu potrzebnego do uzyskania danych dziennika stają się dostępne po ich zebraniu. W tym artykule wyjaśniono różne czynniki wpływające na to opóźnienie.
@@ -40,10 +40,10 @@ Agenci i rozwiązania do zarządzania wykorzystują różne strategie do zbieran
 ### <a name="agent-upload-frequency"></a>Częstotliwość przekazywania agentów
 Aby zapewnić, że Agent Log Analytics jest lekki, Agent buforuje dzienniki i okresowo przekazuje je do Azure Monitor. Częstotliwość przekazywania różni się od 30 sekund do 2 minut w zależności od typu danych. Większość danych jest przekazywanych w ciągu 1 minuty. Warunki dotyczące sieci mogą mieć negatywny wpływ na opóźnienie tych danych w celu osiągnięcia Azure Monitor punktu pozyskiwania.
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Dzienniki aktywności platformy Azure, dzienniki diagnostyczne i metryki
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Dzienniki aktywności platformy Azure, dzienniki zasobów i metryki
 Dane platformy Azure są dodawane do Log Analytics punktu pozyskiwania na potrzeby przetwarzania:
 
-- Dane z dzienników diagnostycznych pobierają 2-15 minut, w zależności od usługi platformy Azure. Zobacz [poniższe zapytanie](#checking-ingestion-time) , aby sprawdzić to opóźnienie w danym środowisku
+- Dane z dzienników zasobów trwają 2-15 minut, w zależności od usługi platformy Azure. Zobacz [poniższe zapytanie](#checking-ingestion-time) , aby sprawdzić to opóźnienie w danym środowisku
 - Metryki platformy Azure mogą być wysyłane do punktu pozyskiwania Log Analytics w ciągu 3 minut.
 - Dane dziennika aktywności będą wysyłane o około 10-15 minut do punktu pozyskiwania Log Analytics.
 
@@ -80,7 +80,7 @@ Czas pozyskiwania może różnić się w zależności od różnych zasobów w r�
 |:---|:---|:---|
 | Rekord utworzony w źródle danych | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Jeśli źródło danych nie ustawi tej wartości, zostanie ona ustawiona na ten sam czas co _TimeReceived. |
 | Rekord otrzymany przez Azure Monitor punkt końcowy pozyskiwania | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| Rekord przechowywany w obszarze roboczym i dostępny dla zapytań | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Rekord przechowywany w obszarze roboczym i dostępny dla zapytań | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Opóźnienia w czasie przyjmowania
 Można mierzyć opóźnienie określonego rekordu, porównując wynik funkcji [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) z właściwością _TimeGenerated_ . Te dane mogą być używane z różnymi agregacjami, aby dowiedzieć się, jak działa opóźnienie pozyskiwania. Zapoznaj się z informacjami o percentylu czasu pozyskiwania, aby uzyskać szczegółowe informacje dotyczące dużej ilości danych. 

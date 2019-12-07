@@ -1,6 +1,6 @@
 ---
 title: Używanie castLabs do dostarczania licencji Widevine do Azure Media Services | Microsoft Docs
-description: W tym artykule opisano, jak można użyć Azure Media Services (AMS) do dostarczania strumienia, który jest dynamicznie szyfrowany za pomocą usługi PlayReady i Widevine protokołów DRM. Licencja PlayReady pochodzi z Media Services serwera licencji PlayReady i licencji Widevine jest dostarczana przez serwer licencji castLabs.
+description: W tym artykule opisano, jak można użyć Azure Media Services (AMS) do dostarczania strumienia, który jest dynamicznie szyfrowany za pomocą usługi PlayReady i Widevine protokołów DRM.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
-ms.openlocfilehash: 9c61fad333037074f392b019ae61c161673e4008
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c038480c9a49c96aaba7c7ff7299c8ebea31b81f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016694"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887785"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z castLabs w celu dostarczania licencji Widevine do usługi Azure Media Services 
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Aby odtworzyć zawartość strumieniową chronioną przez CENC (PlayReady i/lub 
 
 Na poniższym diagramie przedstawiono architekturę integracji na poziomie Azure Media Services i castLabs.
 
-![Integration](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![integracja](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Typowa konfiguracja systemu
 
@@ -60,7 +60,7 @@ W poniższej tabeli opisano token JWT w AMS.
 | --- | --- |
 | Odbiorcy |Ciąg odbiorców z użycia usługi STS |
 | Oświadczenia |Zestaw oświadczeń |
-| NotBefore |Rozpocznij ważność tokenu |
+| Nie wcześniej niż |Rozpocznij ważność tokenu |
 | Wygasa |Koniec ważności tokenu |
 | SigningCredentials |Klucz, który jest współużytkowany przez serwer licencji PlayReady, castLabs serwera licencji i usługi STS, może być kluczem symetrycznym lub asymetrycznym. |
 
@@ -68,7 +68,7 @@ W poniższej tabeli opisano token JWT w AMS.
 
 W poniższej tabeli opisano token JWT w castLabs. 
 
-| Name (Nazwa) | Opis |
+| Nazwa | Opis |
 | --- | --- |
 | optData |Ciąg JSON zawierający informacje o użytkowniku. |
 | CRT |Ciąg JSON zawierający informacje o elemencie zawartości, jego informacji o licencji i prawach odtwarzania. |
@@ -88,7 +88,7 @@ Aby użyć aplikacji konsolowej:
 2. Przekaż element zawartości do AMS.
 3. Pobierz identyfikator UUID z przekazanego elementu zawartości i Zmień wiersz 32 w pliku Program.cs:
    
-      var objIAsset = _CONTEXT. Assets. WHERE (x = > x.Id = = "NB: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
+      var objIAsset = _context. Assets. WHERE (x = > x.Id = = "NB: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
 4. Użyj AssetId do nazewnictwa elementów zawartości w systemie castLabs (wiersz 44 w pliku Program.cs).
    
    Należy ustawić AssetId dla **castLabs**; musi być unikatowym ciągiem alfanumerycznym.
@@ -118,6 +118,6 @@ Aby odtworzyć wideo szyfrowane za pomocą typowego szyfrowania (PlayReady i/lub
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

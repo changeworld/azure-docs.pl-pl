@@ -1,5 +1,5 @@
 ---
-title: Przenoszenie plików między magazynem opartym na plikach za pomocą Azure Data Factory
+title: Przenoszenie plików między magazynem opartym na plikach
 description: Informacje o sposobie przenoszenia plików między magazynem opartym na plikach przy użyciu szablonu rozwiązania Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e0f9179918016b9eaec04b0d559e25ed7973f18a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684076"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896199"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Przenoszenie plików z Azure Data Factory
 
@@ -43,7 +43,7 @@ Szablon definiuje dwa parametry:
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 
-1. Przejdź do szablonu **przenoszenie plików** . Wybierz istniejące połączenie lub Utwórz **nowe** połączenie ze źródłowym magazynem plików, z którego chcesz przenieść pliki. Należy pamiętać, że **DataSource_Folder** i **DataSource_File** są odwołują się do tego samego połączenia z źródłowym magazynem plików.
+1. Przejdź do szablonu **przenoszenie plików** . Wybierz istniejące połączenie lub Utwórz **nowe** połączenie ze źródłowym magazynem plików, z którego chcesz przenieść pliki. Należy pamiętać, że **DataSource_Folder** i **DataSource_File** odnoszą się do tego samego połączenia ze źródłowym magazynem plików.
 
     ![Utwórz nowe połączenie ze źródłem](media/solution-template-move-files/move-files1.png)
 
@@ -51,7 +51,7 @@ Szablon definiuje dwa parametry:
 
     ![Utwórz nowe połączenie z miejscem docelowym](media/solution-template-move-files/move-files2.png)
 
-3. Wybierz pozycję **Użyj tego szablonu**.
+3. Wybierz przycisk **Użyj tego szablonu**.
 
     ![Użyj tego szablonu](media/solution-template-move-files/move-files3.png)
     

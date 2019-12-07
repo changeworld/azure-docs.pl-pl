@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555592"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893539"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Przykłady szybkiego startu interfejsu wiersza polecenia Azure Monitor
 W tym artykule przedstawiono przykładowe polecenia interfejsu wiersza polecenia (CLI) ułatwiające dostęp do funkcji Azure Monitor. Azure Monitor pozwala na automatyczne skalowanie Cloud Services, Virtual Machines i Web Apps oraz wysyłanie powiadomień o alertach lub wywoływanie adresów URL sieci Web na podstawie wartości skonfigurowanych danych telemetrycznych.
@@ -83,7 +83,7 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="work-with-alerts"></a>Pracuj z alertami 
+## <a name="work-with-alerts"></a>Praca z alertami 
 > [!NOTE]
 > W tym momencie w interfejsie wiersza polecenia są obsługiwane tylko alerty (klasyczne). 
 
@@ -160,7 +160,7 @@ Skorzystaj z informacji w tej sekcji, aby korzystać z ustawień diagnostycznych
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-log-setting"></a>Tworzenie ustawienia dziennika diagnostycznego 
+### <a name="create-a-diagnostic-setting"></a>Utwórz ustawienie diagnostyczne 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

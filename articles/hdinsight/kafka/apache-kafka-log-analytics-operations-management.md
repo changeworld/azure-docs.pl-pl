@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122596"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894274"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla Apache Kafka w usłudze HDInsight
 
@@ -56,7 +56,7 @@ Kroki umożliwiające włączenie dzienników Azure Monitor dla usługi HDInsigh
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Komunikaty przychodzące na sekundę:
+* Komunikaty przychodzące na sekundę: (Zastąp `your_kafka_cluster_name` nazwą klastra).
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +64,7 @@ Kroki umożliwiające włączenie dzienników Azure Monitor dla usługi HDInsigh
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Przychodzące bajty na sekundę:
+* Przychodzące bajty na sekundę: (Zastąp `wn0-kafka` nazwą hosta węzła procesu roboczego).
 
     ```kusto
     metrics_kafka_CL 
@@ -72,7 +72,7 @@ Kroki umożliwiające włączenie dzienników Azure Monitor dla usługi HDInsigh
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Wychodzące bajty na sekundę:
+* Wychodzące bajty na sekundę: (Zastąp `your_kafka_cluster_name` nazwą klastra).
 
     ```kusto
     metrics_kafka_CL 
@@ -80,16 +80,13 @@ Kroki umożliwiające włączenie dzienników Azure Monitor dla usługi HDInsigh
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-    > [!IMPORTANT]  
-    > Zamień wartości zapytania na informacje specyficzne dla klastra. Na przykład `ClusterName_s` musi być ustawiony na nazwę klastra. `HostName_s`musi być ustawiona na nazwę domeny węzła procesu roboczego w klastrze.
-
-    Możesz również wprowadzić `*` , aby przeszukać wszystkie typy zarejestrowane. Obecnie następujące dzienniki są dostępne dla zapytań:
+    Możesz również wprowadzić `*`, aby przeszukać wszystkie typy zarejestrowane. Obecnie następujące dzienniki są dostępne dla zapytań:
 
     | Typ dziennika | Opis |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka brokera serwera. log |
-    | Dziennik\_kafkacontroller\_CL | Kafka brokera. log |
-    | \_metryki\_Kafka CL | Metryki Kafka JMX |
+    | Rejestruj\_kafkacontroller\_CL | Kafka brokera. log |
+    | metryki\_Kafka\_CL | Metryki Kafka JMX |
 
     ![Użycie procesora CPU analizy dzienników Apache Kafka](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
@@ -100,6 +97,6 @@ Aby uzyskać więcej informacji na temat Azure Monitor, zobacz [omówienie Azure
 Aby uzyskać więcej informacji na temat pracy z Apache Kafka, zobacz następujące dokumenty:
 
 * [Apache Kafka dublowania między klastrami usługi HDInsight](apache-kafka-mirroring.md)
-* [Zwiększenie skalowalności Apache Kafka w usłudze HDInsight](apache-kafka-scalability.md)
+* [Zwiększ skalę Apache Kafka w usłudze HDInsight](apache-kafka-scalability.md)
 * [Użyj Apache Spark streaming (DStreams) z Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 * [Używanie Apache Spark strukturalnych przesyłania strumieniowego z Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

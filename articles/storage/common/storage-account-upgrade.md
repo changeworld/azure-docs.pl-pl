@@ -1,18 +1,19 @@
 ---
-title: Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2 — Azure Storage | Microsoft Docs
+title: Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2
+titleSuffix: Azure Storage
 description: Uaktualnij do kont magazynu ogólnego przeznaczenia w wersji 2.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 03/26/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806987"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892230"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnianie do konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -84,7 +85,7 @@ Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob o
 
 * **Koszty transferu danych replikacji geograficznej**: ta opłata dotyczy tylko kont ze skonfigurowaną replikacją geograficzną, w tym GRS i RA-GRS. Transfer danych w ramach replikacji geograficznej powoduje naliczanie opłaty za każdy gigabajt.
 
-* **Koszty transferu danych wychodzących**: wychodzące transfery danych (dane przesyłane z regionu platformy Azure) są rozliczane za użycie przepustowości dla każdego gigabajta, spójne z kontami magazynu ogólnego przeznaczenia.
+* **Koszty transferu danych wychodzących**: transfery danych wychodzących (dane przesyłane poza region platformy Azure) powodują naliczanie opłat za zużycie przepustowości za każdy gigabajt, co jest spójne z kontami magazynu ogólnego przeznaczenia.
 
 * **Zmiana warstwy dostępu do magazynu**: zmiana warstwy dostępu do magazynu konta z chłodna na gorąca spowoduje naliczenie opłaty równej odczytaniu wszystkich danych istniejących na koncie magazynu. Jednak zmiana warstwy dostępu do konta z gorąca na chłodna spowoduje naliczenie opłaty równej zapisywaniu wszystkich danych w warstwie chłodna (tylko konta GPv2).
 
@@ -96,11 +97,12 @@ Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob o
 Aby oszacować koszt przechowywania i uzyskiwania dostępu do danych obiektów BLOB w ramach konta magazynu ogólnego przeznaczenia w wersji 2 w określonej warstwie, Oceń istniejący wzorzec użycia lub przybliżony oczekiwany wzorzec użycia. Ogólnie potrzebne są odpowiedzi na następujące pytania:
 
 * Użycie magazynu obiektów BLOB w gigabajtach, w tym:
-    - Ile danych jest przechowywanych na koncie magazynu?
-    - Jak zmienia się ilość danych w miesiącu? Czy nowe dane nieustannie zastępują stare dane?
+  * Ile danych jest przechowywanych na koncie magazynu?
+  * Jak zmienia się ilość danych w miesiącu? Czy nowe dane nieustannie zastępują stare dane?
+
 * Podstawowy wzorzec dostępu do danych usługi BLOB Storage, w tym:
-    - Jak dużo danych jest odczytywanych i zapisywanych na koncie magazynu?
-    - Ile operacji odczytu i operacji zapisu odbywa się na danych na koncie magazynu?
+  * Jak dużo danych jest odczytywanych i zapisywanych na koncie magazynu?
+  * Ile operacji odczytu i operacji zapisu odbywa się na danych na koncie magazynu?
 
 Aby podjąć decyzję dotyczącą najlepszej warstwy dostępu do Twoich potrzeb, można ułatwić ustalenie pojemności danych obiektów blob oraz sposobu używania tych danych. Można to zrobić najlepiej, przeglądając metryki monitorowania dla Twojego konta.
 
@@ -119,7 +121,7 @@ Dzięki włączeniu tej opcji dane pojemności są rejestrowane codziennie dla k
 Aby monitorować wzorce dostępu do danych dla usługi Blob Storage, należy włączyć godzinowe metryki transakcji z poziomu interfejsu API. Dzięki włączeniu godzinowych metryk transakcji transakcje interfejsu API są agregowane co godzinę i rejestrowane jako wpis tabeli, który jest zapisywany w tabeli *$MetricsHourPrimaryTransactionsBlob* w obrębie tego samego konta magazynu. W przypadku używania kont magazynu RA-GRS tabela *$MetricsHourSecondaryTransactionsBlob* rejestruje transakcje kierowane do pomocniczego punktu końcowego.
 
 > [!NOTE]
-> Jeśli masz konto magazynu ogólnego przeznaczenia, w którym są przechowywane stronicowe obiekty blob i dyski maszyny wirtualnej albo kolejki, pliki lub tabele, obok blokowych danych obiektów blob i dołączania, ten proces szacowania nie ma zastosowania. Dane pojemności nie obejmują rozróżnienia blokowych obiektów blob od innych typów ani danych pojemności dla innych typów danych. Jeśli używasz tych typów, alternatywną metodologią będzie zapoznanie się z ilościami na najnowszym rachunku.
+> Jeśli masz konto magazynu ogólnego przeznaczenia, w którym są przechowywane stronicowe obiekty blob i dyski maszyny wirtualnej albo kolejki, pliki lub tabele (obok danych blokowych obiektów blob i uzupełnialnych obiektów blob), ten proces szacowania nie ma zastosowania. Dane pojemności nie obejmują rozróżnienia blokowych obiektów blob od innych typów ani danych pojemności dla innych typów danych. Jeśli używasz tych typów, alternatywną metodologią będzie zapoznanie się z ilościami na najnowszym rachunku.
 
 Aby uzyskać najbardziej zbliżone do prawdziwych informacje o użyciu danych i wzorcu dostępu, zalecamy wybranie takiego okresu przechowywania dla metryk, który odzwierciedla normalne użycie, i ekstrapolację. Jedną z opcji jest przechowywanie danych metryk przez siedem dni i zbieranie danych co tydzień, aby przeprowadzić analizę pod koniec miesiąca. Innym rozwiązaniem jest przechowywanie danych metryk z ostatnich 30 dni i zbieranie oraz analizowanie danych z końcem 30-dniowego okresu.
 
@@ -165,5 +167,5 @@ Koszt transferu danych replikacji geograficznej dla kont usługi Blob Storage mo
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Tworzenie konta magazynu](storage-quickstart-create-account.md)
-- [Zarządzanie kontami usługi Azure Storage](storage-account-manage.md)
+* [Tworzenie konta magazynu](storage-quickstart-create-account.md)
+* [Zarządzanie kontami usługi Azure Storage](storage-account-manage.md)

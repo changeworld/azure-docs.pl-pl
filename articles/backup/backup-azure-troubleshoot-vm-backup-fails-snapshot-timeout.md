@@ -4,12 +4,12 @@ description: Objawy, przyczyny i rozwiązania błędów Azure Backup związanych
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c4ee8cbeeec21c4af0cc3a7fd83844bc8c676add
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172602"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894015"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: problemy z agentem lub rozszerzeniem
 
@@ -22,10 +22,12 @@ W tym artykule opisano kroki rozwiązywania problemów, które mogą pomóc w ro
 **Kod błędu**: UserErrorGuestAgentStatusUnavailable <br>
 **Komunikat o błędzie**: Agent maszyny wirtualnej nie może komunikować się z Azure Backup<br>
 
-Agent maszyny wirtualnej platformy Azure może zostać zatrzymany, nieaktualny, w stanie niespójnym lub nie został zainstalowany i uniemożliwiał Azure Backup usługę do wyzwalania migawek.  
+Agent maszyny wirtualnej platformy Azure może zostać zatrzymany, nieaktualny, w stanie niespójnym lub nie został zainstalowany i uniemożliwiał Azure Backup usługę do wyzwalania migawek.
 
-- Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w stanie niespójnym, **Uruchom go ponownie** , a następnie spróbuj ponownie wykonać operację tworzenia kopii zapasowej (spróbuj utworzyć kopię zapasową na żądanie). Aby uzyskać instrukcje dotyczące ponownego uruchamiania agenta, zobacz [maszyny wirtualne z systemem Windows](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) lub [maszyny wirtualne z systemem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
-- Jeśli Agent maszyny wirtualnej nie został zainstalowany lub jest przestarzały, zainstaluj/zaktualizuj agenta maszyny wirtualnej i spróbuj ponownie wykonać operację tworzenia kopii zapasowej. Aby uzyskać instrukcje dotyczące instalowania/aktualizowania agenta, zobacz maszyny [wirtualne z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux.  
+- **Otwórz blok właściwości > > > maszyny wirtualnej w witrynie Azure Portal** > Upewnij się, że **stan** maszyny wirtualnej jest **uruchomiony** , a **stan agenta** to **gotowe**. Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w niespójnym stanie, należy ponownie uruchomić agenta.<br>
+  - W przypadku maszyn wirtualnych z systemem Windows wykonaj następujące [kroki](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) , aby ponownie uruchomić agenta gościa.<br>
+  - W przypadku maszyn wirtualnych z systemem Linux wykonaj następujące [kroki](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) , aby ponownie uruchomić agenta gościa.
+
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError — nie można skomunikować się z agentem maszyny wirtualnej w celu uzyskania stanu migawki
 
@@ -41,6 +43,16 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup ba
 **Przyczyna 3: [nie można pobrać stanu migawki lub nie można wykonać migawki](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **Przyczyna 4: [Aktualizacja lub załadowanie rozszerzenia kopii zapasowej nie powiodło](#the-backup-extension-fails-to-update-or-load) się**
+
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed — stan aprowizacji maszyny wirtualnej to niepowodzenie
+
+**Kod błędu**: UserErrorVmProvisioningStateFailed<br>
+**Komunikat o błędzie**: stan aprowizacji maszyny wirtualnej to niepowodzenie<br>
+
+Ten błąd występuje, gdy jeden z błędów rozszerzenia przełączy maszynę wirtualną w stan niepowodzenia aprowizacji.<br>**Otwórz Portal Azure > ustawienia > maszyn wirtualnych > rozszerzenia >** rozszerzenia, a następnie sprawdź, czy wszystkie rozszerzenia mają stan **Pomyślne inicjowanie obsługi** .
+
+- Jeśli rozszerzenie VMSnapshot jest w stanie niepowodzenia, kliknij prawym przyciskiem myszy nieudane rozszerzenie i usuń je. Wyzwól tworzenie kopii zapasowej ad hoc, spowoduje to ponowne zainstalowanie rozszerzeń i uruchomienie zadania tworzenia kopii zapasowej.  <br>
+- Jeśli dowolne inne rozszerzenie jest w stanie niepowodzenia, może zakłócać tworzenie kopii zapasowej. Upewnij się, że problemy z rozszerzeniem zostały rozwiązane, i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached — Osiągnięto maksymalny limit kolekcji punktów przywracania
 
@@ -219,7 +231,7 @@ Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas kole
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Usuń blokadę z grupy zasobów punktu odzyskiwania
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Przejdź do **opcji wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_`<Geo>`_`<number>`.
 3. W sekcji **Ustawienia** wybierz pozycję **blokady** , aby wyświetlić blokady.
 4. Aby usunąć blokadę, wybierz wielokropek, a następnie kliknij przycisk **Usuń**.
@@ -248,7 +260,7 @@ Po usunięciu blokady wykonaj kopię zapasową na żądanie. Dzięki temu punkty
 
 Aby ręcznie wyczyścić kolekcję punktów przywracania, która nie została wyczyszczona ze względu na blokadę grupy zasobów, spróbuj wykonać następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. W menu **centrum** kliknij pozycję **wszystkie zasoby**, wybierz grupę zasobów o następującym formacie AzureBackupRG_`<Geo>`_`<number>` lokalizację maszyny wirtualnej.
 
     ![Usuń blokadę](./media/backup-azure-arm-vms-prepare/resource-group.png)

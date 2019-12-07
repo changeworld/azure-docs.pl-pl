@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027240"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900932"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utwórz grupę dynamiczną i sprawdź stan
 
@@ -47,10 +47,10 @@ Przykłady składni, obsługiwane właściwości, operatory i wartości dla regu
 ## <a name="to-create-a-group-membership-rule"></a>Aby utworzyć regułę członkostwa w grupie
 
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta należącego do roli Administrator globalny, administrator usługi Intune lub administrator użytkowników w dzierżawie.
-1. Wybierz pozycję **grupy**.
+1. Wyszukaj i wybierz **grupy**.
 1. Wybierz pozycję **wszystkie grupy**, a następnie wybierz pozycję **Nowa grupa**.
 
-   ![Wybierz polecenie, aby dodać nową grupę](./media/groups-create-rule/new-group-creation.png)
+   ![Wybierz polecenie, aby dodać nową grupę](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
 1. Na stronie **Grupa** wprowadź nazwę i opis dla nowej grupy. Wybierz **Typ członkostwa** dla użytkowników lub urządzeń, a następnie wybierz pozycję **Dodaj zapytanie dynamiczne**. Konstruktor reguł obsługuje maksymalnie pięć wyrażeń. Aby dodać więcej niż pięć wyrażeń, należy użyć pola tekstowego.
 
@@ -88,7 +88,7 @@ W przypadku **ostatniej zaktualizowanego stanu członkostwa** można wyświetli�
 - **W toku**: aktualizacje są obecnie w toku.
 - **Nieznane**: nie można pobrać czasu ostatniego aktualizowania. Grupa może być nowa.
 
-Jeśli wystąpi błąd podczas przetwarzania reguły członkostwa dla określonej grupy, w górnej części **strony Przegląd** dla grupy zostanie wyświetlony alert. Jeśli nie można przetworzyć oczekujących aktualizacji dynamicznego członkostwa dla wszystkich grup w ramach dzierżawy przez więcej niż 24 godziny, zostanie wyświetlony alert w górnej części **wszystkich grup**.
+Jeśli wystąpi błąd podczas przetwarzania reguły członkostwa dla określonej grupy, w górnej części **strony Przegląd** dla grupy zostanie wyświetlony alert. Jeśli nie można przetworzyć oczekujących aktualizacji dynamicznego członkostwa dla wszystkich grup w dzierżawie przez ponad 24 godziny, w górnej części **wszystkich grup**zostanie wyświetlony alert.
 
 ![przetwarzanie alertów komunikatów o błędach](./media/groups-create-rule/processing-error.png)
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 12/06/2019
 ms.locfileid: "73177828"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Samouczek: tworzenie infrastruktury usług AWS do obsługi klastra usługi Service Fabric
@@ -82,7 +82,7 @@ Usługa Service Fabric wymaga otwarcia niektórych portów między hostami w kla
 
 Aby uniknąć otwierania tych portów dla wszystkich użytkowników na świecie, należy otworzyć je tylko dla hostów z tej samej grupy zabezpieczeń. Zanotuj identyfikator grupy zabezpieczeń, w tym przykładzie jest to **sg-c4fb1eba**.  Wybierz pozycję **Edytuj**.
 
-Następnie dodaj cztery reguły do grupy zabezpieczeń pod kątem zależności usług i jeszcze trzy dla samej usługi Service Fabric. Pierwsza reguła zezwala na ruch ICMP, aby można było przeprowadzić podstawowe monitorowanie połączeń. Inne reguły otwierają wymagane porty, aby umożliwić Rejestr zdalny.
+Następnie dodaj cztery reguły do grupy zabezpieczeń pod kątem zależności usług i jeszcze trzy dla samej usługi Service Fabric. Pierwsza reguła zezwala na ruch ICMP, aby można było przeprowadzić podstawowe monitorowanie połączeń. Pozostałe reguły otwierają porty wymagane do włączenia protokołu SMB i rejestru zdalnego.
 
 W przypadku pierwszej reguły wybierz przycisk **Dodaj regułę**, a następnie z listy rozwijanej wybierz pozycję **Wszystkie ICMP — IPv4**. Wybierz pole wprowadzania obok wartości Niestandardowe i wprowadź zanotowany wcześniej identyfikator grupy zabezpieczeń.
 
@@ -118,18 +118,30 @@ Aby sprawdzić, czy podstawowe połączenie działa, użyj polecenia ping.
 ping 172.31.20.163
 ```
 
-Jeśli w Twoich danych wyjściowych cztery razy pojawia się komunikat podobny do tego: `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, oznacza to, że połączenie między wystąpieniami działa.  
+Jeśli w Twoich danych wyjściowych cztery razy pojawia się komunikat podobny do tego: `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, oznacza to, że połączenie między wystąpieniami działa.  Teraz użyj następującego polecenia, aby zweryfikować, że udostępnianie za pomocą protokołu SMB działa:
+
+```
+net use * \\172.31.20.163\c$
+```
+
+Powinien zostać wyświetlony komunikat podobny do następującego: `Drive Z: is now connected to \\172.31.20.163\c$.`.
 
 ## <a name="prep-instances-for-service-fabric"></a>Przygotowywanie wystąpień na potrzeby usługi Service Fabric
 
-Jeśli wszystkie opisywane czynności były tworzone od podstaw, należało wykonać jeszcze kilka dodatkowych kroków.  W tym celu należy sprawdzić, czy Rejestr zdalny był uruchomiony i otworzyć wymagane porty.
+Jeśli wszystkie opisywane czynności były tworzone od podstaw, należało wykonać jeszcze kilka dodatkowych kroków.  Należało sprawdzić, czy rejestr zdalny jest uruchomiony, włączyć protokół SMB i otworzyć porty wymagane dla protokołu SMB oraz rejestru zdalnego.
 
 Aby sobie ułatwić pracę, wszystkie te czynności zostały wykonane podczas inicjowania wystąpień za pomocą skryptu danych użytkownika.
+
+W celu włączenia protokołu SMB użyto tego polecenia programu PowerShell:
+
+```powershell
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+```
 
 W celu otwarcia portów w zaporze użyto tego polecenia programu PowerShell:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
 ## <a name="next-steps"></a>Następne kroki

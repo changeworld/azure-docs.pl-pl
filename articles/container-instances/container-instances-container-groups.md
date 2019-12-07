@@ -4,12 +4,12 @@ description: Więcej informacji na temat grup kontenerów w Azure Container Inst
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706327"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896582"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
@@ -68,7 +68,9 @@ Aby uzyskać więcej informacji, zobacz Właściwość [ResourceRequirements][re
 
 ## <a name="networking"></a>Networking
 
-Grupy kontenerów udostępniają adresy IP i przestrzeń nazw portów na tym adresie IP. Aby umożliwić klientom zewnętrznym dotarcie do kontenera w grupie, należy uwidocznić port w adresie IP i z kontenera. Ponieważ kontenery w grupie współużytkują przestrzeń nazw portu, mapowanie portów nie jest obsługiwane. Kontenery w obrębie grupy mogą się łączyć ze sobą za pomocą hosta lokalnego na portach, które zostały uwidocznione, nawet jeśli te porty nie są udostępniane zewnętrznie na adresie IP grupy.
+Grupy kontenerów mogą udostępniać zewnętrzny adres IP i przestrzeń nazw portu na tym adresie IP. Aby umożliwić klientom zewnętrznym dotarcie do kontenera w grupie, należy uwidocznić port w adresie IP i z kontenera. Ponieważ kontenery w grupie współużytkują przestrzeń nazw portu, mapowanie portów nie jest obsługiwane. 
+
+W obrębie grupy kontenerów wystąpienia kontenerów mogą się łączyć ze sobą za pomocą hosta lokalnego na dowolnym porcie, nawet jeśli te porty nie są ujawniane zewnętrznie na adres IP grupy lub z kontenera.
 
 Opcjonalnie można wdrożyć grupy kontenerów w usłudze [Azure Virtual Network][virtual-network] (wersja zapoznawcza), aby umożliwić kontenerom bezpieczne komunikowanie się z innymi zasobami w sieci wirtualnej.
 

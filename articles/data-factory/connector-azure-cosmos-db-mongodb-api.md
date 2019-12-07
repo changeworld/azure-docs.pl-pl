@@ -1,42 +1,41 @@
 ---
-title: Kopiowanie danych do interfejsu API Azure Cosmos DB lub z usługi MongoDB przy użyciu Data Factory
+title: Kopiuj dane z interfejsu API Azure Cosmos DB dla MongoDB
 description: Informacje o kopiowaniu danych z obsługiwanych magazynów danych źródłowych do programu lub z interfejsu API Azure Cosmos DB dla usługi MongoDB do obsługiwanych magazynów ujścia przy użyciu Data Factory.
 services: data-factory, cosmosdb
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.author: jingwang
-ms.openlocfilehash: 0da3452964a7c4bb7d2a22ce4cd5164ad8c1e3fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc69864cd1db62ba685201416965e64430c2d027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280706"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891086"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopiowanie danych do interfejsu API Azure Cosmos DB lub z usługi MongoDB przy użyciu Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w programie Azure Data Factory do kopiowania danych z i do interfejsu API Azure Cosmos DB dla MongoDB. Artykuł jest oparty na [działaniu kopiowania w Azure Data Factory](copy-activity-overview.md), co przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w programie Azure Data Factory do kopiowania danych z i do interfejsu API Azure Cosmos DB dla MongoDB. Artykuł opiera się na [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md), który ma ogólne omówienie działania kopiowania.
 
 >[!NOTE]
 >Ten łącznik obsługuje tylko kopiowanie danych do/z interfejsu API Azure Cosmos DB dla usługi MongoDB. Aby uzyskać informacje dotyczące interfejsu API SQL, zobacz [Łącznik usługi SQL api Cosmos DB](connector-azure-cosmos-db.md). Inne typy interfejsów API nie są obecnie obsługiwane.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z interfejsu API Azure Cosmos DB MongoDB do dowolnego obsługiwanego magazynu danych ujścia lub skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do interfejsu API Azure Cosmos DB dla MongoDB. Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia, zobacz [obsługiwane magazyny i formaty danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Możesz skopiować dane z interfejsu API Azure Cosmos DB MongoDB do dowolnego obsługiwanego magazynu danych ujścia lub skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do interfejsu API Azure Cosmos DB dla MongoDB. Aby uzyskać listę danych przechowywane na tym, że działanie kopiowania obsługuje jako źródła i ujścia, zobacz [obsługiwane magazyny danych i formatów](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Możesz użyć interfejsu API Azure Cosmos DB dla łącznika MongoDB, aby:
 
 - Skopiuj dane z i do [interfejsu API Azure Cosmos DB dla MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
-- Zapisz do Azure Cosmos DB jako **INSERT** lub **upsert**.
+- Zapis do usługi Azure Cosmos DB jako **Wstaw** lub **upsert**.
 - Importowanie i eksportowanie dokumentów JSON jako — jest lub kopiowania danych z lub do tabelarycznego zestawu danych. Przykłady obejmują bazy danych SQL i w pliku CSV. Aby skopiować dokumenty jako-is do lub z plików JSON lub z innej kolekcji Azure Cosmos DB, zobacz Importowanie lub eksportowanie dokumentów JSON.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -46,12 +45,12 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, który
 
 Następujące właściwości są obsługiwane dla interfejsu API Azure Cosmos DB dla połączonej usługi MongoDB:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** musi być ustawiona na wartość **CosmosDbMongoDbApi**. | Yes |
-| connectionString |Określ parametry połączenia dla interfejsu API Azure Cosmos DB dla MongoDB. Można go znaleźć w Azure Portal-> Cosmos DB w bloku > podstawowego lub pomocniczego, z wzorcem `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Oznacz to pole jako typ **SecureString** , aby bezpiecznie przechowywać go w Data Factory. Możesz również [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| database | Nazwa bazy danych, do której chcesz uzyskać dostęp. | Yes |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
+| type | Właściwość **Type** musi być ustawiona na wartość **CosmosDbMongoDbApi**. | Tak |
+| connectionString |Określ parametry połączenia dla interfejsu API Azure Cosmos DB dla MongoDB. Można go znaleźć w Azure Portal-> Cosmos DB w bloku > podstawowego lub pomocniczego, z wzorcem `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| baza danych | Nazwa bazy danych, do której chcesz uzyskać dostęp. | Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 **Przykład**
 
@@ -77,12 +76,12 @@ Następujące właściwości są obsługiwane dla interfejsu API Azure Cosmos DB
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). Następujące właściwości są obsługiwane przez interfejs API Azure Cosmos DB dla zestawu danych MongoDB:
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). Następujące właściwości są obsługiwane przez interfejs API Azure Cosmos DB dla zestawu danych MongoDB:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **CosmosDbMongoDbApiCollection**. |Yes |
-| collectionName |Nazwa kolekcji Azure Cosmos DB. |Yes |
+| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **CosmosDbMongoDbApiCollection**. |Tak |
+| collectionName |Nazwa kolekcji Azure Cosmos DB. |Tak |
 
 **Przykład**
 
@@ -107,15 +106,15 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 Ta sekcja zawiera listę właściwości, które są obsługiwane przez interfejs API Azure Cosmos DB na potrzeby obsługi źródła i ujścia MongoDB.
 
-Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md).
+Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md).
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Interfejs API Azure Cosmos DB dla MongoDB jako źródło
 
-W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **CosmosDbMongoDbApiSource**. |Yes |
+| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **CosmosDbMongoDbApiSource**. |Tak |
 | filter | Określa filtr wyboru przy użyciu operatorów zapytań. Aby zwrócić wszystkie dokumenty w kolekcji, Pomiń ten parametr lub Przekaż pusty dokument ({}). | Nie |
 | cursorMethods. Project | Określa pola do zwrócenia w dokumentach dla projekcji. Aby zwrócić wszystkie pola w pasujących dokumentach, Pomiń ten parametr. | Nie |
 | cursorMethods. Sort | Określa kolejność, w której zapytanie zwraca pasujące dokumenty. Zapoznaj się z [kursorem. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nie |
@@ -166,12 +165,12 @@ W sekcji **Źródło** działania kopiowania są obsługiwane następujące wła
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb-as-sink"></a>Interfejs API Azure Cosmos DB dla MongoDB jako ujścia
 
-W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **CosmosDbMongoDbApiSink**. |Yes |
-| writeBehavior |Opisuje sposób zapisywania danych do usługi Azure Cosmos DB. Dozwolone wartości: **INSERT** i **upsert**.<br/><br/>Zachowanie **upsert** polega na zastępowaniu dokumentu, jeśli dokument o tym samym `_id` już istnieje; w przeciwnym razie Wstaw dokument.<br /><br />**Uwaga**: Jeśli nie określono `_id` w oryginalnym dokumencie lub mapowaniu kolumn, Data Factory automatycznie generuje `_id` dla dokumentu. Oznacza to, że aby program **upsert** działał zgodnie z oczekiwaniami, dokument ma identyfikator. |Nie<br />(wartość domyślna to **INSERT**) |
+| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **CosmosDbMongoDbApiSink**. |Tak |
+| writeBehavior |Opisuje sposób zapisywania danych do usługi Azure Cosmos DB. Dozwolone wartości: **Wstaw** i **upsert**.<br/><br/>Zachowanie **upsert** polega na zastępowaniu dokumentu, jeśli dokument o tym samym `_id` już istnieje; w przeciwnym razie Wstaw dokument.<br /><br />**Uwaga**: Jeśli nie określono `_id` w oryginalnym dokumencie lub mapowaniu kolumn, Data Factory automatycznie generuje `_id` dla dokumentu. Oznacza to, że użytkownik musi zapewnić, że dla **upsert** działała zgodnie z oczekiwaniami, dokument ma identyfikator. |Nie<br />(wartość domyślna to **Wstaw**) |
 | writeBatchSize | Właściwość **writeBatchSize** określa rozmiar dokumentów do zapisu w każdej partii. Możesz spróbować zwiększyć wartość **writeBatchSize** , aby zwiększyć wydajność i zmniejszyć wartość w przypadku dużego rozmiaru dokumentu. |Nie<br />(wartość domyślna to **10 000**) |
 | writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania wsadowego przed przekroczeniem limitu czasu. Dozwolona wartość to TimeSpan. | Nie<br/>(wartość domyślna to **00:30:00** – 30 minut) |
 
@@ -220,11 +219,11 @@ Można użyć tego łącznika usługi Azure Cosmos DB, aby łatwo:
 
 Aby uzyskać taką kopię schematu niezależny od, Pomiń sekcję "struktura" (nazywaną również *schematem*) w temacie zestaw danych i schemat w działaniu kopiowania.
 
-## <a name="schema-mapping"></a>mapowanie schematu
+## <a name="schema-mapping"></a>Mapowanie schematu
 
 Aby skopiować dane z interfejsu API Azure Cosmos DB MongoDB do tabelarycznego ujścia lub odwrotnie, zapoznaj się z [mapowaniem schematu](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
-W odniesieniu do zapisu w Cosmos DB, aby upewnić się, że Cosmos DB z prawidłowym IDENTYFIKATORem obiektu z danych źródłowych, na przykład w tabeli usługi SQL Database istnieje kolumna "ID" i chcesz użyć jej jako identyfikatora dokumentu w MongoDB na potrzeby wstawiania/upsert należy ustawić odpowiednie mapowanie schematu zgodnie z definicją trybu MongoDB Strict (`_id.$oid`) w następujący sposób:
+W odniesieniu do zapisu w Cosmos DB, aby upewnić się, że Cosmos DB z prawidłowym IDENTYFIKATORem obiektu z danych źródłowych, na przykład, masz kolumnę "ID" w tabeli usługi SQL Database i chcesz użyć jej jako identyfikatora dokumentu w MongoDB dla Insert/Upsert, należy ustawić odpowiednie mapowanie schematu zgodnie z definicją w trybie Strict MongoDB (`_id.$oid`) w następujący sposób:
 
 ![Identyfikator mapy w MongoDB ujścia](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
 
@@ -238,4 +237,4 @@ Po wykonaniu działania kopiowania poniżej BSON ObjectId jest generowany w ujś
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia w Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych, które działania kopiowania obsługuje jako źródła i sink w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

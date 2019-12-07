@@ -4,15 +4,15 @@ description: Monitoruj system i niestandardową platformę .NET/.NET Core EventC
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cithomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72677166"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889128"
 ---
 # <a name="eventcounters-introduction"></a>Wprowadzenie do EventCounters
 
@@ -28,7 +28,7 @@ Application Insights obsługuje zbieranie `EventCounters` z `EventCounterCollect
 
 W przypadku aplikacji uruchamianych na platformie .NET Core 3,0 następujące liczniki są zbierane automatycznie przez zestaw SDK. Nazwa liczników będzie mieć postać "Kategoria | Licznik ".
 
-|Kategoria | Przeciw|
+|Kategoria | Licznik|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |
@@ -98,7 +98,7 @@ Poniższy przykład pokazuje, jak dodać lub usunąć liczniki. To dostosowanie 
 Aby wyświetlić metryki EventCounter w [Eksploratorze metryk](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), wybierz pozycję Application Insights Resource i wybrane metryki oparte na dzienniku jako przestrzeń nazw metryki. Następnie metryki EventCounter są wyświetlane w kategorii PerformanceCounter.
 
 > [!div class="mx-imgBorder"]
-> Liczniki ![Event raportowane w Application Insights ](./media/event-counters/metrics-explorer-counter-list.png)
+> Liczniki zdarzeń ![raportowane w Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Liczniki zdarzeń w analizie
 
@@ -111,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> Liczniki ![Event raportowane w Application Insights ](./media/event-counters/analytics-event-counters.png)
+> Liczniki zdarzeń ![raportowane w Application Insights](./media/event-counters/analytics-event-counters.png)
 
 Aby uzyskać wykres określonego licznika (na przykład: `ThreadPool Completed Work Item Count`) w ciągu ostatniego okresu, uruchom następujące zapytanie.
 
@@ -123,7 +123,7 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> ![Chat jednego licznika w Application Insights ](./media/event-counters/analytics-completeditems-counters.png)
+> ![rozmowy o pojedynczym liczniku w Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
 Podobnie jak w przypadku innych telemetrii, **liczniki wydajności** ma również kolumnę `cloud_RoleInstance`, która wskazuje tożsamość wystąpienia serwera hosta, na którym działa aplikacja. Powyższe zapytanie pokazuje wartość licznika na wystąpienie i może służyć do porównywania wydajności różnych wystąpień serwera.
 

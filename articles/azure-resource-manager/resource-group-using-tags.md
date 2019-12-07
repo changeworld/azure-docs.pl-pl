@@ -2,13 +2,13 @@
 title: Tagi zasobów dla organizacji logicznej
 description: Pokazuje, jak zastosować Tagi do organizowania zasobów platformy Azure na potrzeby rozliczeń i zarządzania nimi.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: c0a34204b5eb7080c6444e69def9d82d0193783b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/05/2019
+ms.openlocfilehash: a0ba5ba89b966de4aa1d1394f7d90c99f8352115
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850605"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893029"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
@@ -62,34 +62,34 @@ Dept                           IT
 Environment                    Test
 ```
 
-Aby wyświetlić istniejące tagi dla *zasobu o określonym identyfikatorze zasobu*, użyj:
-
-```azurepowershell-interactive
-(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
-```
-
-Aby wyświetlić istniejące tagi dla *zasobu o określonej nazwie i grupie zasobów*, użyj:
+Aby wyświetlić istniejące Tagi dla zasobu, *który ma określoną nazwę i grupę zasobów*, użyj:
 
 ```azurepowershell-interactive
 (Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
-Aby uzyskać *grupy zasobów, które mają konkretny tag*, użyj:
+Lub, jeśli masz identyfikator zasobu dla zasobu, możesz przekazać ten identyfikator zasobu, aby uzyskać Tagi.
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
+(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
-Aby uzyskać *zasoby, które mają konkretny tag*, użyj:
+Aby uzyskać *grupy zasobów z określoną nazwą i wartością tagu*, użyj:
 
 ```azurepowershell-interactive
-(Get-AzResource -Tag @{ Dept="Finance"}).Name
+(Get-AzResourceGroup -Tag @{ "Dept"="Finance" }).ResourceGroupName
+```
+
+Aby uzyskać *zasoby z określoną nazwą i wartością tagu*, użyj:
+
+```azurepowershell-interactive
+(Get-AzResource -Tag @{ "Dept"="Finance"}).Name
 ```
 
 Aby uzyskać *zasoby z określoną nazwą tagu*, użyj:
 
 ```azurepowershell-interactive
-(Get-AzResource -TagName Dept).Name
+(Get-AzResource -TagName "Dept").Name
 ```
 
 Za każdym razem, gdy stosujesz tagi do zasobu lub grupy zasobów, istniejące tagi tego zasobu lub tej grupy zasobów są zastępowane. Dlatego konieczne jest różne podejście w zależności od tego, czy dany zasób lub dana grupa zasobów ma istniejące tagi.
@@ -97,7 +97,7 @@ Za każdym razem, gdy stosujesz tagi do zasobu lub grupy zasobów, istniejące t
 Aby dodać tagi do *grupy zasobów bez istniejących tagów*, użyj:
 
 ```azurepowershell-interactive
-Set-AzResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
+Set-AzResourceGroup -Name examplegroup -Tag @{ "Dept"="IT"; "Environment"="Test" }
 ```
 
 Aby dodać tagi do *grupy zasobów z istniejącymi tagami*, pobierz istniejące tagi, dodaj nowy tag i ponownie zastosuj tagi:
@@ -111,32 +111,36 @@ Set-AzResourceGroup -Tag $tags -Name examplegroup
 Aby dodać tagi do *zasobu bez istniejących tagów*, użyj:
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-Set-AzResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $resource.ResourceId -Force
+```
+
+Może istnieć więcej niż jeden zasób o tej samej nazwie w grupie zasobów. W takim przypadku można ustawić każdy zasób przy użyciu następujących poleceń:
+
+```azurepowershell-interactive
+$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
+$resource | ForEach-Object { Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Force }
 ```
 
 Aby dodać tagi do *zasobu z istniejącymi tagami*, użyj:
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$r.Tags.Add("Status", "Approved")
-Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+$resource.Tags.Add("Status", "Approved")
+Set-AzResource -Tag $resource.Tags -ResourceId $resource.ResourceId -Force
 ```
 
 Aby zastosować wszystkie Tagi z grupy zasobów do jej zasobów i *nie utrzymywać istniejących tagów w zasobach*, użyj następującego skryptu:
 
 ```azurepowershell-interactive
-$groups = Get-AzResourceGroup
-foreach ($g in $groups)
-{
-    Get-AzResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
-}
+$group = Get-AzResourceGroup -Name examplegroup
+Get-AzResource -ResourceGroupName $group.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $group.Tags -Force }
 ```
 
 Aby zastosować wszystkie Tagi z grupy zasobów do jej zasobów i *zachować istniejące Tagi dla zasobów, które nie są duplikatami*, użyj następującego skryptu:
 
 ```azurepowershell-interactive
-$group = Get-AzResourceGroup "examplegroup"
+$group = Get-AzResourceGroup -Name examplegroup
 if ($null -ne $group.Tags) {
     $resources = Get-AzResource -ResourceGroupName $group.ResourceGroupName
     foreach ($r in $resources)

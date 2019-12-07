@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186466"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901171"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pule elastyczne ułatwiają zarządzanie wieloma bazami danych Azure SQL i skalowanie ich
 
-Pule elastyczne usługi SQL Database to proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania dotyczące użycia. Bazy danych w puli elastycznej znajdują się na jednym serwerze Azure SQL Database i udostępniają określoną liczbę zasobów z ustawioną ceną. Pule elastyczne pule w usłudze Azure SQL Database umożliwiają deweloperom SaaS optymalizację stosunku ceny do wydajności dla grupy baz danych w ramach określonego budżetu, zapewniając jednocześnie elastyczność wydajności dla każdej bazy danych.
+Pule elastyczne usługi SQL Database to proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania dotyczące użycia. Bazy danych w elastycznej puli znajdują się na jednym serwerze usługi Azure SQL Database i współdzielą określoną liczbę zasobów za ustaloną cenę. Pule elastyczne pule w usłudze Azure SQL Database umożliwiają deweloperom SaaS optymalizację stosunku ceny do wydajności dla grupy baz danych w ramach określonego budżetu, zapewniając jednocześnie elastyczność wydajności dla każdej bazy danych.
 
 ## <a name="what-are-sql-elastic-pools"></a>Co to są pule elastyczne SQL
 
-Deweloperzy SaaS tworzą aplikacje w oparciu o warstwy danych w dużej skali składające się z wielu baz danych. Typowym wzorcem aplikacji jest udostępnianie jednej bazy danych dla każdego klienta. Jednak różni klienci często mają różne i nieprzewidywalne wzorce użycia i trudno przewidzieć wymagania dotyczące zasobów dla każdego indywidualnego użytkownika bazy danych. Tradycyjnie masz dwie opcje:
+Deweloperzy SaaS tworzą aplikacje w oparciu o warstwy danych w dużej skali składające się z wielu baz danych. Typowym wzorcem aplikacji jest udostępnianie jednej bazy danych dla każdego klienta. Jednak różni klienci często mają różne i nieprzewidywalne wzorce użycia i trudno jest przewidzieć wymagania dotyczące zasobów poszczególnych użytkowników poszczególnych baz danych. Tradycyjnie masz dwie opcje:
 
 - Zasoby nadmiernej aprowizacji w oparciu o szczytowe użycie i za pośrednictwem płacenia
 - W ramach zastrzegania kosztów, kosztem wydajności i zadowoleniem klientów podczas szczytu.
@@ -48,7 +48,7 @@ Poszczególne bazy danych w ramach puli mają możliwość elastycznego skalowan
 
 Pule są odpowiednie dla wielu baz danych o określonych wzorcach użycia. Dla danej bazy danych ten wzorzec charakteryzuje się niskim średnim wykorzystaniem oraz stosunkowo rzadkimi okresami zwiększonego użycia.
 
-Im więcej baz danych możesz dodać do puli, tym większe uzyskujesz oszczędności. W zależności od wzorca użycia aplikacji możliwe jest uzyskanie oszczędności nawet już przy dwóch bazach danych S3.
+Im więcej baz danych możesz dodać do puli, tym większe uzyskujesz oszczędności. W zależności od wzorca wykorzystania aplikacji możliwe jest wyświetlanie oszczędności z użyciem co najmniej dwóch baz danych S3.
 
 Poniższe sekcje ułatwiają zrozumienie, jak ocenić, czy dodanie konkretnej kolekcji baz danych do puli może być korzystne. W przykładach użyto pul warstwy Standardowa, ale te same zasady mają zastosowanie także do pul w warstwach Podstawowa i Premium.
 
@@ -95,7 +95,7 @@ Udostępniając zasoby, nie wszystkie bazy danych w puli mogą jednocześnie uż
 
 Aby zmniejszyć koszty dla trzech baz danych S3 w puli 200 eDTU, co najwyżej dwie z tych baz danych mogą jednocześnie osiągać szczytowe użycie. W przeciwnym razie, jeśli więcej niż dwie z tych czterech baz danych S3 jednocześnie osiągają szczytowe użycie, rozmiar puli musiałby zostać zwiększony do ponad 200 eDTU. Jeśli rozmiar puli zostanie zmieniony na ponad 200 jednostek eDTU, do puli należy dodać więcej baz danych S3, aby zachować koszty mniejsze niż rozmiary obliczeniowe dla pojedynczych baz danych.
 
-Należy zauważyć, że w tym przykładzie nie jest rozważane użycie innych baz danych w puli. Jeśli wszystkie bazy danych mają jakiś poziom użycia w dowolnym danym momencie czasu, wówczas mniej niż 2/3 (lub 67%) baz danych może jednocześnie osiągać szczytowe użycie.
+Należy zauważyć, że w tym przykładzie nie jest brane pod uwagę użycie innych baz danych w puli. Jeśli wszystkie bazy danych mają jakiś poziom użycia w dowolnym danym momencie czasu, wówczas mniej niż 2/3 (lub 67%) baz danych może jednocześnie osiągać szczytowe użycie.
 
 ### <a name="resource-utilization-per-database"></a>Wykorzystanie zasobów na bazę danych
 
@@ -155,7 +155,7 @@ Bazy danych w puli obsługują te same [funkcje ciągłości działalności bizn
 
 Istnieją dwa sposoby tworzenia elastycznej puli w Azure Portal.
 
-1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma usługi Azure SQL, wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby utworzyć pulę elastyczną. Wyszukaj i wybierz pozycję **Azure SQL**.
 2. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Dodatkowe informacje na temat pul elastycznych można wyświetlić, wybierając pozycję **Pokaż szczegóły** na kafelku **bazy danych** .
 3. Na kafelku **bazy danych** wybierz pozycję **Pula elastyczna** na liście rozwijanej **Typ zasobu** , a następnie wybierz pozycję **Utwórz**:
 

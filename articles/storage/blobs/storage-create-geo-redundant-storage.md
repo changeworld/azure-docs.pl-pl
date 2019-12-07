@@ -1,21 +1,22 @@
 ---
-title: 'Samouczek: Tworzenie aplikacji o wysokiej dostępności za pomocą usługi BLOB Storage — Azure Storage'
-description: Używanie magazynu geograficznie nadmiarowego do odczytu w celu uzyskania wysokiej dostępności danych aplikacji
+title: Samouczek — Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu obiektów BLOB
+titleSuffix: Azure Storage
+description: Używanie magazynu geograficznie nadmiarowego do odczytu w celu uzyskania wysokiej dostępności danych aplikacji.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838568"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892910"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Samouczek: Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu obiektów BLOB
 
@@ -40,8 +41,7 @@ W celu ukończenia tego samouczka:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
-  - **Tworzenie aplikacji na platformie Azure**
+* Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) przy użyciu obciążeń **programistycznych platformy Azure** .
 
   ![Tworzenie aplikacji na platformie Azure (w Internecie i w chmurze)](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -52,13 +52,13 @@ W celu ukończenia tego samouczka:
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-* Zainstaluj program [Node. js](https://nodejs.org).
+* Zainstalowanie środowiska [Node.js](https://nodejs.org).
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -76,7 +76,7 @@ Wykonaj następujące kroki, aby utworzyć konto magazynu geograficznie nadmiaro
    | **Nazwa** | mystorageaccount | Unikatowa wartość konta magazynu |
    | **Model wdrażania** | Resource Manager  | Usługa Resource Manager oferuje najnowsze funkcje.|
    | **Rodzaj konta** | StorageV2 | Aby uzyskać więcej informacji na temat typów kont, zobacz [Typy kont magazynu](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **Wydajność** | Standardowa | Warstwa Standardowa jest wystarczająca na potrzeby przykładowego scenariusza. |
+   | **Wydajność** | Standardowa (Standard) | Warstwa Standardowa jest wystarczająca na potrzeby przykładowego scenariusza. |
    | **Replikacja**| Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS) | Jest to niezbędne do działania przykładu. |
    |**Subskrypcja** | Twoja subskrypcja |Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
@@ -191,7 +191,6 @@ Funkcja ponawiania obiektu usługi Storage została ustawiona na zasady ponawian
 
 Przed pobraniem zostanie zdefiniowany obiekt usługi [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) i funkcja [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) . Te funkcje definiują procedury obsługi zdarzeń wyzwalane po pomyślnym zakończeniu pobierania lub po niepowodzeniu pobierania i podjęciu jego kolejnej próby.
 
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Aby uruchomić przykład, Otwórz wiersz polecenia, przejdź do folderu przykład, a następnie wprowadź `node index.js`.
@@ -223,7 +222,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>Procedura obsługi zdarzeń ponawiania
 
@@ -274,7 +273,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Procedura obsługi zdarzeń ponawiania
 
@@ -317,7 +316,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+### <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 W przypadku zestawu SDK środowiska Node. js v10 wymagane są programy obsługi wywołań zwrotnych. Zamiast tego, przykład tworzy potok skonfigurowany przy użyciu opcji ponowień i pomocniczego punktu końcowego. Dzięki temu aplikacja może automatycznie przełączać się na potok pomocniczy, jeśli nie dotrze do danych za pomocą potoku podstawowego.
 
@@ -349,4 +348,4 @@ W pierwszej części serii omówiono czynności dotyczące uzyskiwania wysokiej 
 Przejdź do drugiej części serii, aby dowiedzieć się, jak symulować błąd i wymuszać użycie pomocniczego punktu końcowego RA-GRS w aplikacji.
 
 > [!div class="nextstepaction"]
-> [Symulowanie błędu w połączeniu z podstawowym punktem końcowym magazynu](storage-simulate-failure-ragrs-account-app.md)
+> [Symulowanie błędu podczas odczytywania z regionu podstawowego](storage-simulate-failure-ragrs-account-app.md)

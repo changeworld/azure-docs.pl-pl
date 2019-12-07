@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie i Przekształcanie danych w Azure SQL Database przy użyciu Data Factory
+title: Kopiowanie i Przekształcanie danych w Azure SQL Database
 description: Dowiedz się, jak kopiować dane do i z Azure SQL Database oraz przekształcać dane w Azure SQL Database przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b899d9884a80a882ca03d3d970421227a48a3803
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8b09bb50df18660ae6fb21febc121d17058be23b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075592"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891052"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopiowanie i Przekształcanie danych w Azure SQL Database przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -48,7 +48,7 @@ W przypadku działania kopiowania ten łącznik Azure SQL Database obsługuje na
 > W przypadku kopiowania danych przy użyciu środowiska Azure Data Factory Integration Runtime Skonfiguruj [zaporę SQL Server platformy Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) , aby umożliwić usługom platformy Azure dostęp do serwera.
 > Jeśli skopiujesz dane przy użyciu własnego środowiska Integration Runtime, skonfiguruj zaporę usługi Azure SQL Server tak, aby zezwalała na odpowiedni zakres adresów IP. Ten zakres obejmuje adres IP maszyny, który jest używany do nawiązywania połączenia z Azure SQL Database.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,8 +60,8 @@ Te właściwości są obsługiwane dla Azure SQL Database połączonej usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** musi być ustawiona na wartość **AzureSqlDatabase**. | Yes |
-| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości **ConnectionString** . <br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Możesz również umieścić hasło lub klucz jednostki usługi w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| type | Właściwość **Type** musi być ustawiona na wartość **AzureSqlDatabase**. | Tak |
+| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości **ConnectionString** . <br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Możesz również umieścić hasło lub klucz jednostki usługi w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Azure Data Factory lub [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | tenant | Określ informacje o dzierżawie, takie jak nazwa domeny lub identyfikator dzierżawy, w której znajduje się aplikacja. Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
@@ -233,7 +233,7 @@ Następujące właściwości są obsługiwane dla Azure SQL Database zestawu dan
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **wartość azuresqltable**. | Yes |
+| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **wartość azuresqltable**. | Tak |
 | schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
 | table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
@@ -269,7 +269,7 @@ Aby skopiować dane z Azure SQL Database, w sekcji **Źródło** działania kopi
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **AzureSqlSource**. Typ "sqlsource" jest nadal obsługiwany w celu zapewnienia zgodności z poprzednimi wersjami. | Yes |
+| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **AzureSqlSource**. Typ "sqlsource" jest nadal obsługiwany w celu zapewnienia zgodności z poprzednimi wersjami. | Tak |
 | sqlReaderQuery | Ta właściwość używa niestandardowego zapytania SQL do odczytywania danych. Może to być na przykład `select * from MyTable`. | Nie |
 | sqlReaderStoredProcedureName | Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. | Nie |
 | storedProcedureParameters | Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. | Nie |
@@ -375,7 +375,7 @@ Aby skopiować dane do Azure SQL Database, w sekcji **ujścia** działania kopio
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **AzureSqlSink**. Typ "sqlsink" jest nadal obsługiwany w celu zapewnienia zgodności z poprzednimi wersjami. | Yes |
+| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **AzureSqlSink**. Typ "sqlsink" jest nadal obsługiwany w celu zapewnienia zgodności z poprzednimi wersjami. | Tak |
 | writeBatchSize | Liczba wierszy do wstawienia do tabeli SQL *na partię*.<br/> Dozwolone wartości to **całkowitą** (liczba wierszy). Domyślnie Azure Data Factory dynamicznie określa odpowiedni rozmiar wsadu na podstawie rozmiaru wiersza. | Nie |
 | writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania wsadowego przed przekroczeniem limitu czasu.<br/> Dozwolone wartości to **timespan**. Przykładem jest "00:30:00" (30 minut). | Nie |
 | preCopyScript | Określ zapytanie SQL dla działania kopiowania, które ma zostać uruchomione przed zapisaniem danych w Azure SQL Database. Jest on wywoływany tylko raz dla każdego przebiegu kopiowania. Ta właściwość służy do oczyszczania załadowanych danych. | Nie |
@@ -585,25 +585,25 @@ Gdy dane są kopiowane z lub do Azure SQL Database, następujące mapowania są 
 | binary |Byte[] |
 | bit |Wartość logiczna |
 | char |String, Char[] |
-| date |DateTime |
-| Data i godzina |DateTime |
-| datetime2 |DateTime |
+| date |Data i godzina |
+| Datetime |Data i godzina |
+| datetime2 |Data i godzina |
 | Datetimeoffset |DateTimeOffset |
-| Dziesiętna |Dziesiętna |
+| Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Podwójne |
+| float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |Dziesiętna |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Dziesiętna |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Pojedyncze |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Data i godzina |
 | smallint |Int16 |
-| smallmoney |Dziesiętna |
+| smallmoney |Decimal |
 | sql_variant |Obiekt |
 | tekst |String, Char[] |
 | time |TimeSpan |

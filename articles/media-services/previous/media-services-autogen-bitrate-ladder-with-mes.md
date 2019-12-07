@@ -1,6 +1,6 @@
 ---
 title: Automatyczne generowanie drabiny szybkości transmisji bitów na platformie Azure za pomocą Media Encoder Standard Microsoft Docs
-description: W tym temacie pokazano, jak za pomocą Media Encoder Standard (MES) automatycznie generować drabinę szybkości transmisji bitów na podstawie rozdzielczości wejścia i szybkości transmisji bitów. Rozdzielczość wejścia i szybkość transmisji bitów nigdy nie zostaną przekroczone. Na przykład, jeśli dane wejściowe mają wartość 720 w 3Mbps, dane wyjściowe pozostaną w najlepszy sposób i rozpoczną się od stawek mniejszych niż 3Mbps.
+description: W tym temacie pokazano, jak za pomocą Media Encoder Standard (MES) automatycznie generować drabinę szybkości transmisji bitów na podstawie rozdzielczości wejścia i szybkości transmisji bitów.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543537"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896014"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Użyj Media Encoder Standard, aby automatycznie wygenerować drabinę szybkości transmisji bitów  
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym artykule pokazano, jak za pomocą Media Encoder Standard (MES) automatycznie generować drabinę szybkości transmisji bitów (pary rozdzielczości) na podstawie rozdzielczości wejścia i szybkości transmisji bitów. Automatycznie generowane ustawienie wstępne nigdy nie będzie przekroczyć rozdzielczości wejścia i szybkości transmisji bitów. Na przykład jeśli dane wejściowe są 720p 3 MB/s, dane wyjściowe w najlepszym pozostaje 720p i rozpocznie się stawek niższy niż 3 MB/s.
 
@@ -32,7 +32,7 @@ Jeśli zamierzasz zakodować źródłowy film wideo tylko do przesyłania strumi
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>Kodowanie na potrzeby przesyłania strumieniowego i pobierania progresywnego
 
-Jeśli zamierzasz zakodować źródłowy plik wideo do przesyłania strumieniowego, a także tworzyć pliki MP4 do pobrania progresywnego, należy użyć ustawienia wstępnego "zawartość z wieloma szybkościami transmisji bitów" podczas tworzenia zadania kodowania. W przypadku korzystania z zawartości z możliwością adaptacyjną z **wieloma szybkościami transmisji bitów** , koder MES stosuje tę samą logikę kodowania jak powyżej, ale teraz zasób wyjściowy będzie zawierać pliki MP4, w przypadku których audio i wideo są przeplatane. Można użyć jednego z tych plików MP4 (na przykład o najwyższej szybkości transmisji bitów) jako pliku pobierania progresywnego.
+Jeśli zamierzasz zakodować źródłowy plik wideo do przesyłania strumieniowego, a także tworzyć pliki MP4 do pobrania progresywnego, należy użyć ustawienia wstępnego "zawartość z wieloma szybkościami transmisji bitów" podczas tworzenia zadania kodowania. W przypadku korzystania z zawartości z możliwością **adaptacyjną z wieloma szybkościami transmisji bitów** , koder MES stosuje tę samą logikę kodowania jak powyżej, ale teraz zasób wyjściowy będzie zawierać pliki MP4, w przypadku których audio i wideo są przeplatane. Można użyć jednego z tych plików MP4 (na przykład o najwyższej szybkości transmisji bitów) jako pliku pobierania progresywnego.
 
 ## <a id="encoding_with_dotnet"></a>Kodowanie przy użyciu zestawu SDK programu Media Services .NET
 
@@ -169,7 +169,7 @@ namespace AdaptiveStreamingMESPresest
 
 ## <a id="output"></a>Rozdzielczości
 
-W tej sekcji przedstawiono trzy przykłady warstw wyjściowych produkowanych przez MES w wyniku kodowania przy użyciu adaptacyjnego ustawienia wstępnego **przesyłania strumieniowego** . 
+W tej sekcji przedstawiono trzy przykłady warstw wyjściowych produkowanych przez MES w wyniku kodowania przy użyciu **adaptacyjnego ustawienia wstępnego przesyłania strumieniowego** . 
 
 ### <a name="example-1"></a>Przykład 1
 Źródło o wysokości "1080" i "29.970" szybkość klatek generuje 6 warstwy wideo:
@@ -205,7 +205,7 @@ W tej sekcji przedstawiono trzy przykłady warstw wyjściowych produkowanych prz
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też

@@ -9,31 +9,31 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488733"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894606"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: Wyodrębnij powiązane z kontekstem dane z wypowiedź
 
-W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład lokalizację początkową i docelową dla przeniesienia z jednego miasta do innego. Potrzebne mogą być oba elementy danych. Są one powiązane ze sobą.  
+W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład lokalizację początkową i docelową dla przeniesienia z jednego miasta do innego. Potrzebne mogą być oba elementy danych. Są one powiązane ze sobą.
 
-Roli można używać z dowolnym prekompilowanym lub niestandardowym typem jednostki i używanym w obu przykładach wyrażenia długości i wzorców. 
+Roli można używać z dowolnym prekompilowanym lub niestandardowym typem jednostki i używanym w obu przykładach wyrażenia długości i wzorców.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
 > * Tworzenie nowej aplikacji
-> * Dodawanie intencji 
+> * Dodawanie intencji
 > * Pobieranie informacji o źródle i miejscu docelowym przy użyciu ról
-> * Szkolenie
-> * Publikowanie
+> * Uczenie
+> * Publikuj
 > * Pobierz intencje i role jednostek z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
@@ -57,9 +57,9 @@ Rola powinna być używana, gdy dane jednostkowe mają zostać wyodrębnione:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Wybierz pozycję**Create new intent** (Utwórz nową intencję). 
+1. Wybierz pozycję **Create new intent** (Utwórz nową intencję).
 
-1. Wprowadź ciąg `MoveEmployeeToCity` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe). 
+1. Wprowadź ciąg `MoveEmployeeToCity` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe).
 
     ![Zrzut ekranu z wyskakującym oknem dialogowym Create new intent (Tworzenie nowej intencji)](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 
 1. Wybierz **jednostki** z nawigacji po lewej stronie.
 
-1. Wybierz pozycję **Dodaj prekompilowaną jednostkę**, a następnie wybierz pozycję `geo` na pasku wyszukiwania, aby przefiltrować wstępnie skompilowane jednostki. 
+1. Wybierz pozycję **Dodaj prekompilowaną jednostkę**, a następnie wybierz pozycję `geo` na pasku wyszukiwania, aby przefiltrować wstępnie skompilowane jednostki.
 
     ![Dodaj wstępnie utworzoną jednostkę geographyV2 do aplikacji](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Zaznacz pole wyboru i wybierz pozycję **gotowe**.
-1. Na liście **jednostki** wybierz **geographyV2** , aby otworzyć nową jednostkę. 
-1. Dodaj dwie role, `Origin`i `Destination`. 
+1. Na liście **jednostki** wybierz **geographyV2** , aby otworzyć nową jednostkę.
+1. Dodaj dwie role, `Origin`i `Destination`.
 
     ![Dodaj role do wstępnie skompilowanej jednostki](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Wybierz pozycję **intencje** z nawigacji po lewej stronie, a następnie wybierz opcję **MoveEmployeeToCity** . Zwróć uwagę na to, że nazwy miast są oznaczone wstępnie utworzoną jednostką **geographyV2**.
 1. W pierwszej wypowiedź listy wybierz lokalizację pochodzenia. Zostanie wyświetlone menu rozwijane. Na liście wybierz pozycję **geographyV2** , a następnie postępuj zgodnie z menu, aby wybrać **Źródło**.
-1. Użyj metody z poprzedniego kroku, aby oznaczyć wszystkie role lokalizacji we wszystkich wyrażenia długości. 
+1. Użyj metody z poprzedniego kroku, aby oznaczyć wszystkie role lokalizacji we wszystkich wyrażenia długości.
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None 
+## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +152,9 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
       ]
     }
     ```
-    
+
     Przewidywalna jest poprawna wartość, a tablica jednostek ma zarówno rolę źródłową, jak i docelową we właściwości odpowiednich **jednostek** .
-    
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -173,5 +173,5 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 
 W tym samouczku utworzono nową intencję i dodano przykładowe wypowiedzi dla uczonych kontekstowo danych dotyczących lokalizacji początkowej i docelowej. Gdy aplikacja zostanie wyszkolona i opublikowana, aplikacja kliencka będzie mogła używać tych informacji do tworzenia biletu przeniesienia z odpowiednimi informacjami.
 
-> [!div class="nextstepaction"] 
-> [Dowiedz się, jak dodać jednostkę złożoną](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [Dowiedz się, jak dodać jednostkę złożoną](luis-tutorial-composite-entity.md)

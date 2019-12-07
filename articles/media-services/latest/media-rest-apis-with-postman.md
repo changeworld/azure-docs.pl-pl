@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie programu Poster do Azure Media Services wywołań interfejsu API REST
-description: Dowiedz się, jak skonfigurować Ogłoś dla Media Services wywołań interfejsu API REST.
+description: W tym artykule opisano sposób konfigurowania programu Poster, aby można było go użyć do wywołania interfejsów API REST Azure Media Services (AMS).
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2019
+ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839596"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888108"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurowanie programu Poster do Media Services wywołań interfejsu API REST
 
@@ -28,7 +28,7 @@ Przed rozpoczęciem opracowywania programu zapoznaj [się z tematem Programowani
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Pamiętaj, aby zapamiętać nazwę grupy zasobów i nazwę konta Media Services. 
+- [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Upewnij się, że do zapamiętania nazwę grupy zasobów i nazwę konta usługi Media Services. 
 - Uzyskaj informacje konieczne do [uzyskania dostępu do interfejsów API](access-api-cli-how-to.md)
 - Zainstaluj klienta REST programu [Postman](https://www.getpostman.com/), aby uruchomić interfejsy API REST przedstawione w niektórych samouczkach dotyczących AMS REST. 
 
@@ -97,7 +97,7 @@ Przed rozpoczęciem manipulowania zasobami usługi AMS v3 musisz uzyskać i usta
 * Jeśli aplikacja nie powiedzie się z "HTTP 504: limit czasu bramy", upewnij się, że zmienna lokalizacji nie została jawnie ustawiona na wartość inną niż oczekiwana Lokalizacja konta Media Services. 
 * Jeśli zostanie wyświetlony komunikat o błędzie "nie znaleziono konta", upewnij się również, że właściwość Location w treści pliku JSON jest ustawiona na lokalizację, w której znajduje się konto Media Services. 
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Przekazywanie plików na konto usługi Media Services — REST](upload-files-rest-how-to.md)
 - [Tworzenie filtrów za pomocą usługi Media Services — REST](filters-dynamic-manifest-rest-howto.md)

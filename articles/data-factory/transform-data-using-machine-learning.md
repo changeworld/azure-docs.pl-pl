@@ -1,5 +1,5 @@
 ---
-title: Tworzenie predykcyjnych potoków danych przy użyciu Azure Data Factory
+title: Tworzenie predykcyjnych potoków danych
 description: Dowiedz się, jak utworzyć potok predykcyjny za pomocą działania wykonywania Azure Machine Learning-Batch w programie Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dc2104495f231a316a1354100ecc105e8fda5bb4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683765"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893845"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnych przy użyciu Azure Machine Learning i Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -124,7 +124,7 @@ Poniższy fragment kodu JSON definiuje działanie wykonywania wsadowego Azure Ma
 }
 ```
 
-| Właściwość          | Opis                              | Wymagany |
+| Właściwość          | Opis                              | Wymagane |
 | :---------------- | :--------------------------------------- | :------- |
 | name              | Nazwa działania w potoku     | Tak      |
 | description       | Tekst opisujący działanie działania.  | Nie       |

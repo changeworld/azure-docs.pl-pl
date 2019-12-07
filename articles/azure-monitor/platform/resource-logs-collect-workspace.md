@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200506"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894530"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie dzienników zasobów platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 [Dzienniki zasobów](resource-logs-overview.md) na platformie Azure zapewniają rozbudowane, częste dane dotyczące wewnętrznej operacji zasobu platformy Azure. W tym artykule opisano zbieranie dzienników zasobów w Log Analytics obszarze roboczym, które umożliwiają analizowanie go przy użyciu innych danych monitorowania zebranych w dziennikach Azure Monitor przy użyciu zaawansowanych zapytań dzienników, a także do korzystania z innych funkcji Azure Monitor, takich jak alerty i wizualizacje. 
@@ -51,13 +51,13 @@ Rozważmy następujący przykład, w którym ustawienia diagnostyczne są zbiera
 
 Tabela AzureDiagnostics będzie wyglądać następująco:  
 
-| ResourceProvider    | Kategoria     | A  | B  | C  | D  | Adres  | F  | G  | H  | I  |
+| ResourceProvider    | Kategoria     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. Service1 | AuditLogs    | x1 | Y1 | z1 |    |    |    |    |    |    |
-| Microsoft. Service1 | ErrorLogs    |    |    |    | pierwszym | W1 | E1 |    |    |    |
-| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | J1 | K1 | L1 |
-| Microsoft. Service1 | ErrorLogs    |    |    |    | Q2 | W2 | punktu |    |    |    |
-| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | Scale |
+| Microsoft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Microsoft. Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
+| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Microsoft. Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
+| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
 | Microsoft. Service1 | AuditLogs    | x5 | Y5 | z5 |    |    |    |    |    |    |
 | Przyciski ... |
 
@@ -70,24 +70,24 @@ W powyższym przykładzie powstaje trzy tabele:
 
     | Dostawca zasobów | Kategoria | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | x1 | Y1 | z1 |
+    | Service1 | AuditLogs | x1 | y1 | z1 |
     | Service1 | AuditLogs | x5 | Y5 | z5 |
     | Przyciski ... |
 
 - *Service1ErrorLogs* tabeli w następujący sposób:  
 
-    | Dostawca zasobów | Kategoria | D | Adres | F |
+    | Dostawca zasobów | Kategoria | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | ErrorLogs |  pierwszym | W1 | E1 |
-    | Service1 | ErrorLogs |  Q2 | W2 | punktu |
+    | Service1 | ErrorLogs |  q1 | w1 | e1 |
+    | Service1 | ErrorLogs |  q2 | w2 | e2 |
     | Przyciski ... |
 
 - *Service2AuditLogs* tabeli w następujący sposób:  
 
     | Dostawca zasobów | Kategoria | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Językowej2 | AuditLogs | J1 | K1 | L1|
-    | Językowej2 | AuditLogs | j3 | k3 | Scale|
+    | Językowej2 | AuditLogs | j1 | k1 | l1|
+    | Językowej2 | AuditLogs | j3 | k3 | l3|
     | Przyciski ... |
 
 
@@ -110,7 +110,7 @@ Przejdź do blogu [aktualizacji platformy Azure](https://azure.microsoft.com/upd
 ### <a name="column-limit-in-azurediagnostics"></a>Limit kolumn w AzureDiagnostics
 Dla każdej tabeli w dziennikach Azure Monitor istnieje limit właściwości 500. Po osiągnięciu tego limitu wszystkie wiersze zawierające dane z właściwości spoza pierwszej 500 zostaną porzucone w czasie pozyskiwania. Tabela *AzureDiagnostics* jest szczególnie podatna na ten limit, ponieważ obejmuje ona właściwości wszystkich usług platformy Azure, które są w niej zapisywane.
 
-W przypadku zbierania dzienników diagnostycznych z wielu usług _AzureDiagnostics_ może przekroczyć ten limit, a dane zostaną pominięte. Dopóki wszystkie usługi platformy Azure nie obsługują trybu określonego zasobów, należy skonfigurować zasoby do zapisu w wielu obszarach roboczych, aby zmniejszyć prawdopodobieństwo osiągnięcia limitu liczby kolumn 500.
+W przypadku zbierania dzienników zasobów z wielu usług _AzureDiagnostics_ może przekroczyć ten limit, a dane zostaną pominięte. Dopóki wszystkie usługi platformy Azure nie obsługują trybu określonego zasobów, należy skonfigurować zasoby do zapisu w wielu obszarach roboczych, aby zmniejszyć prawdopodobieństwo osiągnięcia limitu liczby kolumn 500.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory ze względu na bardzo szczegółowy zestaw dzienników to usługa, która jest znana, aby napisać dużą liczbę kolumn i potencjalnie spowodować przekroczenie limitu przez _AzureDiagnostics_ . W przypadku wszystkich ustawień diagnostycznych skonfigurowanych przed włączeniem trybu określonego zasobu zostanie utworzona nowa kolumna dla każdego unikatowego parametru użytkownika dla każdego działania. Zostanie utworzona więcej kolumn z powodu pełnego charakteru danych wejściowych i wyjściowych działań.

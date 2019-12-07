@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305169"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894537"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, uprawnienia i zabezpieczenia w Azure Monitor
 
@@ -116,7 +116,7 @@ New-AzRoleDefinition -Role $role
 Monitorowanie danych — w szczególności plików dziennika — może zawierać informacje poufne, takie jak adresy IP lub nazwy użytkowników. Dane monitorowania z platformy Azure są dostępne w trzech podstawowych formach:
 
 1. Dziennik aktywności, który opisuje wszystkie działania płaszczyzny kontroli w ramach subskrypcji platformy Azure.
-2. Dzienniki diagnostyczne, które są dziennikami emitowanymi przez zasób.
+2. Dzienniki zasobów, które są emitowane przez zasób.
 3. Metryki, które są emitowane przez zasoby.
 
 Wszystkie trzy z tych typów danych mogą być przechowywane na koncie magazynu lub przesyłane strumieniowo do centrum zdarzeń, które są zasobami platformy Azure ogólnego przeznaczenia. Ponieważ są to zasoby ogólnego przeznaczenia, tworzenie, usuwanie i uzyskiwanie do nich dostępu, są uprzywilejowaną operacją zarezerwowaną dla administratora. Zalecamy stosowanie następujących rozwiązań do monitorowania zasobów związanych z monitorowaniem w celu zapobiegania nadużyciom:
@@ -182,7 +182,7 @@ Azure Monitor potrzebuje dostępu do zasobów platformy Azure w celu zapewnienia
 ### <a name="secured-storage-accounts"></a>Zabezpieczone konta magazynu 
 
 Dane monitorowania są często zapisywane na koncie magazynu. Można upewnić się, że dane skopiowane na konto magazynu nie są dostępne dla nieautoryzowanych użytkowników. Aby uzyskać dodatkowe zabezpieczenia, można zablokować dostęp do sieci, aby zezwolić na dostęp do konta magazynu tylko autoryzowanym zasobom i zaufanym usługom firmy Microsoft, ograniczając konto magazynu do używania "wybranych sieci".
-![okno dialogowe ustawień usługi Azure Storage](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor jest uznawana za jeden z następujących "zaufanych usług firmy Microsoft", Jeśli zezwolisz zaufanym usługom firmy Microsoft na dostęp do bezpiecznego magazynu, usługa Azure monitor będzie mieć dostęp do bezpiecznego konta magazynu; włączenie zapisywania Azure Monitor dzienników diagnostycznych, dziennika aktywności i metryk na koncie magazynu w ramach tych chronionych warunków. Spowoduje to również umożliwienie Log Analytics odczytywania dzienników z bezpiecznego magazynu.   
+![okno dialogowe ustawień usługi Azure Storage](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor jest uznawana za jeden z następujących "zaufanych usług firmy Microsoft", Jeśli zezwolisz zaufanym usługom firmy Microsoft na dostęp do bezpiecznego magazynu, usługa Azure monitor będzie mieć dostęp do bezpiecznego konta magazynu; włączenie zapisywania Azure Monitor dzienników zasobów, dziennika aktywności i metryk na koncie magazynu w ramach tych chronionych warunków. Spowoduje to również umożliwienie Log Analytics odczytywania dzienników z bezpiecznego magazynu.   
 
 
 Aby uzyskać więcej informacji, zobacz [zabezpieczenia sieci i usługa Azure Storage](../../storage/common/storage-network-security.md)

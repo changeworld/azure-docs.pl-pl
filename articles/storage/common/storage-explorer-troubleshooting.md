@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e3a9b733b055469e22d3b107c0f9f49b768756c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775837"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895259"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Eksplorator usługi Azure Storage
 
@@ -98,7 +98,7 @@ Puste okna dialogowe logowania najczęściej występują, gdy Active Directory F
 1. Na pasku narzędzi po lewej stronie, Otwórz pozycję **Ustawienia**. W panelu Ustawienia przejdź do pozycji **aplikacja** > **Zaloguj się**. Włącz **Logowanie za pomocą przepływu kodu urządzenia**.
 2. Otwórz okno dialogowe **łączenie** (za pomocą ikony wtyczki na pasku pionowym po lewej stronie lub wybierając pozycję **Dodaj konto** w panelu konta).
 3. Wybierz środowisko, do którego chcesz się zalogować.
-4. Wybierz pozycję **Zaloguj**.
+4. Wybierz polecenie **Zaloguj się**.
 5. Postępuj zgodnie z instrukcjami wyświetlanymi na następnym panelu.
 
 Jeśli nie możesz zalogować się do konta, którego chcesz użyć, ponieważ domyślna przeglądarka została już zarejestrowana na innym koncie, wykonaj jedną z następujących czynności:
@@ -301,7 +301,7 @@ Możesz również pobrać aplikację jako plik tar. gz, ale musisz ręcznie zain
 
 Te pakiety stanowią najczęstsze wymagania dotyczące Eksplorator usługi Storage w systemie Linux:
 
-* [Środowisko uruchomieniowe programu .NET Core 2,0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [Środowisko uruchomieniowe programu .NET Core 2,2](https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
 * `libgconf-2-4`
 * `libgnome-keyring0` lub `libgnome-keyring-dev`
 * `libgnome-keyring-common`
@@ -364,7 +364,7 @@ Jeśli przycisk **Otwórz w Eksploratorze** na Azure Portal nie działa, upewnij
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
-* Program Microsoft Internet Explorer
+* Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>Następne kroki
 

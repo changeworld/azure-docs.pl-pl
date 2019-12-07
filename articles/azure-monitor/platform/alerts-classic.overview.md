@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555686"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893590"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co to są klasyczne alerty w Microsoft Azure?
 
 > [!NOTE]
-> W tym artykule opisano sposób tworzenia starszych klasycznych alertów dotyczących metryk. Azure Monitor teraz obsługuje [nowsze alerty metryk niemal w czasie rzeczywistym i nowe środowisko alertów](../../azure-monitor/platform/alerts-overview.md). Alerty klasyczne są [zaplanowane do wycofania](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> W tym artykule opisano sposób tworzenia starszych klasycznych alertów dotyczących metryk. Azure Monitor teraz obsługuje [nowsze alerty metryk niemal w czasie rzeczywistym i nowe środowisko alertów](../../azure-monitor/platform/alerts-overview.md). Alerty klasyczne są [wycofywane](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement), mimo że nadal są ograniczone dla zasobów, które jeszcze nie obsługują nowych alertów. 
 >
 
 Alerty umożliwiają konfigurowanie warunków dla danych i otrzymywanie powiadomień, gdy warunki są zgodne z najnowszymi danymi monitorowania.
@@ -54,7 +54,7 @@ Dostępne są dwa typy alertów klasycznych — alerty metryk i alerty dziennik�
 
 * **Alerty dziennika aktywności klasycznej** — alert dziennika przesyłania strumieniowego, który jest wyzwalany dla wpisu zdarzenia dziennika aktywności, który odpowiada kryteriom filtrowania. Te alerty mają tylko jeden stan "aktywowany". Aparat alertów po prostu stosuje kryteria filtrowania do każdego nowego zdarzenia. Nie wyszukuje starszych wpisów. Te alerty mogą powiadamiać użytkownika o wystąpieniu nowego zdarzenia Service Health lub gdy użytkownik lub aplikacja wykonuje operację w ramach subskrypcji, na przykład "Usuń maszynę wirtualną".
 
-W przypadku danych dzienników diagnostycznych dostępnych za pomocą Azure Monitor należy skierować dane do Log Analytics (dawniej OMS) i użyć Log Analytics alertu zapytania. Log Analytics teraz używa [nowej metody alertów](../../azure-monitor/platform/alerts-overview.md) 
+W przypadku danych dzienników zasobów dostępnych za pomocą Azure Monitor należy skierować dane do Log Analytics i użyć alertu zapytania dziennika. Log Analytics teraz używa [nowej metody alertów](../../azure-monitor/platform/alerts-overview.md) 
 
 Poniższy diagram podsumowuje źródła danych w Azure Monitor i pojęciowo, w jaki sposób można ostrzec o tych danych.
 

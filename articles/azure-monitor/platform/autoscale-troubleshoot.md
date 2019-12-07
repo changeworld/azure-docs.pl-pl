@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 14e2f79383aa45125ce6955f3611a75ece1df10d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152946"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893573"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Rozwiązywanie problemów z funkcją automatycznego skalowania platformy Azure
  
@@ -115,7 +115,7 @@ Podobnie jak w przypadku dowolnej Azure Monitor obsługiwanej usługi, można u�
 
 ![Ustawienia diagnostyki automatycznego skalowania](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-Na poprzedniej ilustracji przedstawiono ustawienia diagnostyki automatycznego skalowania Azure Portal. Można wybrać kartę dzienniki diagnostyczne i włączyć zbieranie dzienników i Routing. Tę samą akcję można także wykonać przy użyciu interfejsów API REST, interfejsu wiersza polecenia, programu PowerShell, Menedżer zasobów szablonów dla ustawień diagnostycznych, wybierając typ zasobu jako *Microsoft. Insights/AutoscaleSettings*. 
+Na poprzedniej ilustracji przedstawiono ustawienia diagnostyki automatycznego skalowania Azure Portal. Istnieje możliwość wybrania karty Diagnostyka/dzienniki zasobów i włączenia zbierania dzienników i routingu. Tę samą akcję można także wykonać przy użyciu interfejsów API REST, interfejsu wiersza polecenia, programu PowerShell, Menedżer zasobów szablonów dla ustawień diagnostycznych, wybierając typ zasobu jako *Microsoft. Insights/AutoscaleSettings*. 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>Rozwiązywanie problemów przy użyciu dzienników automatycznego skalowania 
 

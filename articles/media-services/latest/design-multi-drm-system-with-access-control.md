@@ -1,6 +1,6 @@
 ---
 title: Projektowanie systemu ochrony zawartości z obsługą technologii DRM przy użyciu funkcji kontroli dostępu — Azure Media Services | Microsoft Docs
-description: Więcej informacji na temat licencjonowania programu Microsoft Smooth Streaming klienta przenoszenie SDK.
+description: W tym artykule przedstawiono szczegółowy opis sposobu projektowania systemu ochrony zawartości z obsługą technologii DRM przy użyciu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310323"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896169"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu 
 
@@ -27,7 +27,7 @@ Projektowanie i tworzenie podsystem Digital Rights Management (DRM), dla Ott (OT
 
 Docelowe czytelnicy dla tego dokumentu są inżynierów, którzy pracują w podsystemu DRM OTT lub online rozwiązania przesyłania strumieniowego / (wiele ekranów) lub czytelników, którzy są zainteresowani podsystemu DRM. Zakłada się, czy czytelnicy są zapoznać się z co najmniej jedną z technologii DRM na rynku, takich jak PlayReady, Widevine, FairPlay lub Adobe Access.
 
-W tej dyskusji przez wieloskładnikową technologię DRM dołączymy 3 protokołów DRM obsługiwane przez Azure Media Services: Common Encryption (CENC) dla oprogramowania PlayReady i Widevine, FairPlay, a także szyfrowania klucza AES-128. Główne trend w przemyśle OTT i przesyłania strumieniowego online jest korzystać z natywnych protokołów DRM na różnych platformach klienckich. Tego trendu jest przesunięcia od poprzedniego używany pojedynczy DRM i jego zestawu SDK klienta dla różnych platform klienta. Gdy używasz CENC przy użyciu wielu natywnych DRM PlayReady i Widevine są szyfrowane na [szyfrowania Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specyfikacji.
+W tej dyskusji, multi-DRM dołączamy 3 protokołów DRM, obsługiwane przez usługę Azure Media Services: typowe szyfrowanie (CENC) dla technologii PlayReady i Widevine, FairPlay, a także AES-128 szyfrowania otwartym kluczem. Główne trend w przemyśle OTT i przesyłania strumieniowego online jest korzystać z natywnych protokołów DRM na różnych platformach klienckich. Tego trendu jest przesunięcia od poprzedniego używany pojedynczy DRM i jego zestawu SDK klienta dla różnych platform klienta. Gdy używasz CENC przy użyciu wielu natywnych DRM PlayReady i Widevine są szyfrowane na [szyfrowania Common Encryption (CENC 23001-7 ISO/IEC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specyfikacji.
 
 Zalety stosowania macierzystych multi-DRM content Protection to że:
 
@@ -116,11 +116,11 @@ Te zagadnienia są ważne
 
 Jeśli używasz chmury publicznej do dostarczania licencji, licencje trwałe i nietrwałe mają bezpośredni wpływ na koszt dostarczania licencji. Następujące dwa przypadki różnorodności służą do zilustrowania:
 
-* Subskrypcja miesięczna: Użyj trwałej licencji i mapowania klucza zawartości typu 1-do-wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
+* Subskrypcja miesięczna: trwałego licencji i mapowanie klucz do zasobu z zawartości 1-do wielu. Na przykład dla wszystkich dzieci filmy, używamy jednego klucza zawartości do szyfrowania. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = 1
 
-* Subskrypcja miesięczna: Użyj nietrwałej licencji i mapowania 1-do-jednego między kluczem zawartości i zasobem. W takim przypadku:
+* Subskrypcja miesięczna: nonpersistent licencji i mapowania 1-do-1 między klucz zawartości i zasobów. W takim przypadku:
 
     Całkowita liczba licencji wymagane dla wszystkich dzieci filmy/urządzenie = [liczba filmów, którzy oglądali transmisje stacji] x [liczba sesji]
 
@@ -286,15 +286,15 @@ Możesz skontaktować się ze wszystkich autorów konta utworzone lub dodawane.
 
 Poniższych zrzutach ekranu przedstawiono różne stron logowania w usługach używany przez inną domenę konta:
 
-**Niestandardowe konto domeny dzierżawy usługi Azure AD**: Dostosowana Strona logowania do niestandardowej domeny dzierżawy usługi Azure AD.
+**Niestandardowy usługi Azure AD dzierżawy konta domeny**: dostosowanego strony logowania w niestandardowych usługi Azure AD dzierżawy domeny.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD, jeden](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Konto domeny Microsoft z kartą inteligentną**: Strona logowania dostosowana przez firmę Microsoft w firmie przy użyciu uwierzytelniania dwuskładnikowego.
+**Konto domeny firmy Microsoft przy użyciu karty inteligentnej**: strona logowania dostosowywane przez firmy Microsoft IT za pomocą uwierzytelniania dwuskładnikowego.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD dwóch](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Konto Microsoft**: Strona logowania konto Microsoft dla użytkowników.
+**Konto Microsoft**: strony logowania konta Microsoft dla konsumentów.
 
 ![Konto domeny dzierżawy niestandardowy usługi Azure AD trzy](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 

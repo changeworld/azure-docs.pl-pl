@@ -1,6 +1,6 @@
 ---
-title: Przygotuj do zmiany formatu Azure Monitor dzienników diagnostycznych
-description: Dzienniki diagnostyczne platformy Azure zostaną przeniesione do użycia Dołącz obiekty blob 1 listopada 2018.
+title: Przygotuj do zmiany formatu Azure Monitor dzienników zasobów
+description: Dzienniki zasobów platformy Azure przeniesione do użycia Dołącz obiekty blob 1 listopada 2018.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,36 +8,35 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: c6f21ffdcf94f23d089073710f2e6c18fd20558d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 09a5d95ead9f294d54a7491734b11c7247353444
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262429"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894499"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Przygotuj się do zmiany formatu Azure Monitor dzienników platformy zarchiwizowanych na koncie magazynu
 
 > [!WARNING]
-> W przypadku wysyłania [dzienników zasobów platformy Azure lub metryk do konta magazynu przy użyciu ustawień diagnostycznych](resource-logs-collect-storage.md) lub [dzienników aktywności do konta magazynu przy użyciu profilów dzienników](activity-log-export.md), format danych w ramach konta magazynu zmieni się na wiersz JSON na lis. 1, 2018. Poniższe instrukcje opisują wpływ i sposobu aktualizowania narzędzi do obsługi nowego formatu. 
+> W przypadku wysyłania [dzienników zasobów platformy Azure lub metryk do konta magazynu przy użyciu ustawień diagnostycznych](resource-logs-collect-storage.md) lub [dzienników aktywności do konta magazynu przy użyciu profilów dzienników](activity-log-export.md), format danych w ramach konta magazynu zmieni się na wiersz JSON na lis. 1, 2018. Poniższe instrukcje opisują wpływ i sposobu aktualizowania narzędzi do obsługi nowego formatu.
 >
-> 
 
-## <a name="what-is-changing"></a>Co się zmienia
+## <a name="what-changed"></a>Co zostało zmienione
 
-Azure Monitor oferuje możliwość wysyłania dzienników zasobów i dzienników aktywności do konta usługi Azure Storage, Event Hubs przestrzeni nazw lub obszaru roboczego Log Analytics w Azure Monitor. Aby rozwiązać problem z wydajnością systemu, **1 listopada 2018 o godzinie 12:00 północy** , format przesyłania danych dziennika do magazynu obiektów BLOB zostanie zmieniony. Jeśli masz narzędzia odczytujące dane z magazynu obiektów blob, musisz zaktualizować swoje narzędzia, aby zrozumieć nowy format danych.
+Azure Monitor oferuje możliwość wysyłania dzienników zasobów i dzienników aktywności do konta usługi Azure Storage, Event Hubs przestrzeni nazw lub obszaru roboczego Log Analytics w Azure Monitor. Aby rozwiązać problem z wydajnością systemu, **1 listopada 2018 o godzinie 12:00 północy** , format przesyłania danych dziennika do magazynu obiektów BLOB został zmieniony. Jeśli masz narzędzia odczytujące dane z magazynu obiektów blob, musisz zaktualizować swoje narzędzia, aby zrozumieć nowy format danych.
 
 * W czwartek, 1 listopada 2018 o 12:00 północy czasu UTC, format obiektu BLOB został zmieniony na [linie JSON](http://jsonlines.org/). Oznacza to, że każdy rekord zostanie rozdzielony znakiem nowego wiersza, bez tablicy rekordów zewnętrznych i bez przecinków między rekordami JSON.
 * Format obiektu BLOB został zmieniony dla wszystkich ustawień diagnostycznych we wszystkich subskrypcjach jednocześnie. Pierwszy plik PT1H. JSON emitowany przez 1 listopada był używany w tym nowym formacie. Nazwy obiektów blob i kontenerów pozostają takie same.
 * Ustawienie ustawienia diagnostycznego między wcześniejszą i 1 listopada, które będzie w dalszym ciągu emitować dane w bieżącym formacie do 1 listopada.
 * Ta zmiana nastąpiła jednocześnie we wszystkich regionach chmury publicznej. Ta zmiana nie będzie jeszcze wykonywana w Microsoft Azure obsługiwane przez firmę 21Vianet, platformę Azure (Niemcy) ani chmurę Azure Government.
 * Ta zmiana ma wpływ na następujące typy danych:
-  * [Dzienniki zasobów platformy Azure](archive-diagnostic-logs.md) ([Zobacz tutaj listę zasobów](diagnostic-logs-schema.md))
+  * [Dzienniki zasobów platformy Azure](archive-diagnostic-logs.md) ([zobacz Lista zasobów tutaj](diagnostic-logs-schema.md))
   * [Metryki zasobów platformy Azure eksportowane przez ustawienia diagnostyczne](diagnostic-settings.md)
   * [Dane dziennika aktywności platformy Azure eksportowane przez profile dziennika](activity-log-collect.md)
 * Ta zmiana nie ma wpływu na:
   * Dzienniki przepływu sieci
-  * Dzienniki usługi platformy Azure nie zostały jeszcze udostępnione za pomocą Azure Monitor (na przykład Azure App Service dzienników diagnostycznych, dzienników analizy magazynu)
-  * Routing dzienników diagnostycznych platformy Azure i dzienników aktywności do innych miejsc docelowych (Event Hubs, Log Analytics)
+  * Dzienniki usługi platformy Azure nie zostały jeszcze udostępnione za pomocą Azure Monitor (na przykład dzienniki zasobów Azure App Service, dzienniki analizy magazynu)
+  * Routing dzienników zasobów platformy Azure i dzienników aktywności do innych miejsc docelowych (Event Hubs, Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Jak sprawdzić, czy ma to wpływ
 
@@ -45,7 +44,7 @@ Ta zmiana ma wpływ tylko na to, że:
 1. Wysyła dane dziennika do konta usługi Azure Storage przy użyciu ustawień diagnostycznych i
 2. Narzędzia, które są zależne od struktury JSON tych dzienników w magazynie.
  
-Aby określić, czy masz ustawienia diagnostyczne, które wysyłają dane do konta usługi Azure Storage, możesz przejść do sekcji **monitorowanie** w portalu, kliknąć pozycję **Ustawienia diagnostyczne**i zidentyfikować wszystkie zasoby, które mają **stan diagnostyki** . Ustaw na **włączone**:
+Aby określić, czy masz ustawienia diagnostyczne, które wysyłają dane do konta usługi Azure Storage, możesz przejść do sekcji **monitorowanie** portalu, kliknąć pozycję **Ustawienia diagnostyczne**i zidentyfikować wszystkie zasoby, które mają **stan** " **włączone**":
 
 ![Blok ustawień diagnostycznych Azure Monitor](media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
@@ -135,6 +134,6 @@ Narzędzia niestandardowe należy zaktualizować w taki sposób, aby obsługiwa�
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Informacje o [archiwizowaniu dzienników diagnostycznych zasobów na koncie magazynu](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* Informacje o [archiwizowaniu dzienników zasobów zasobów na koncie magazynu](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * Informacje [na temat archiwizowania danych dziennika aktywności na koncie magazynu](./../../azure-monitor/platform/archive-activity-log.md)
 

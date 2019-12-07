@@ -1,6 +1,6 @@
 ---
 title: Poprawka protokołu Azure Media Services-Smooth Streaming (MS-SSTR) dla HEVC | Microsoft Docs
-description: Ta specyfikacja zawiera opis protokołu i formatu pofragmentowanych transmisji strumieniowych na żywo opartych na formacie MP4 z HEVC w Azure Media Services. Jest to poprawka do dokumentacji protokołu Smooth Streaming (MS-SSTR) w celu włączenia obsługi pozyskiwania HEVC i przesyłania strumieniowego. Tylko zmiany wymagane do dostarczenia HEVC są określone w tym artykule, z wyjątkiem "(bez zmian)" oznacza, że tekst jest kopiowany tylko w celu wyjaśnienia.
+description: Ta specyfikacja zawiera opis protokołu i formatu pofragmentowanych transmisji strumieniowych na żywo opartych na formacie MP4 z HEVC w Azure Media Services. Tylko zmiany wymagane do dostarczenia HEVC są określone w tym artykule, z wyjątkiem "(bez zmian)" oznacza, że tekst jest kopiowany tylko w celu wyjaśnienia.
 services: media-services
 documentationcenter: ''
 author: johndeu
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6dd7e0dc7e58f33f952aa5531773a84ebd31a163
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624819"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887870"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Poprawka protokołu Smooth Streaming Protocol (MS-SSTR) dla HEVC 
 
@@ -42,21 +42,21 @@ Następujące terminy są specyficzne dla tego dokumentu:
 
 >  **czas kompozycji:** Czas, w którym jest wyświetlany przykład na kliencie, zgodnie z definicją w [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695).
 > 
->   **CENC**: Common Encryption, zgodnie z definicją w [ISO/IEC 23001-7] Second Edition.
+>   **Cenc**: Common Encryption, zgodnie z definicją w [ISO/IEC 23001-7] Second Edition.
 > 
->   **Czas dekodowania:** Czas wymagany do zdekodowania przykładu na kliencie, zgodnie z definicją w [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
+>   **czas dekodowania:** Czas wymagany do zdekodowania przykładu na kliencie, zgodnie z definicją w [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695).
 
-**trwania** Niezależnie do pobrania jednostka **nośnika** , która składa się z jednego lub większej liczby **przykładów**.
+**fragment:** Niezależnie do pobrania jednostka **nośnika** , która składa się z jednego lub większej liczby **przykładów**.
 
 >   **HEVC:** Kodowanie wideo o wysokiej wydajności, zgodnie z definicją w [ISO/IEC 23008-2]
 > 
->   **manifestu** Metadane dotyczące **prezentacji** , która umożliwia klientowi wykonywanie żądań dotyczących **nośnika**. **multimedialny** Skompresowane dane audio, wideo i tekstowe używane przez klienta do odtwarzania **prezentacji**. **format nośnika:** Dobrze zdefiniowany format służący do reprezentowania dźwięku lub wideo w postaci skompresowanej **próbki**.
+>   **manifest:** Metadane dotyczące **prezentacji** , która umożliwia klientowi wykonywanie żądań dotyczących **nośnika**. **nośnik:** Skompresowane dane audio, wideo i tekstowe używane przez klienta do odtwarzania **prezentacji**. **format nośnika:** Dobrze zdefiniowany format służący do reprezentowania dźwięku lub wideo w postaci skompresowanej **próbki**.
 > 
->   **Prezentacj** Zestaw wszystkich **strumieni** i powiązanych metadanych wymaganych do odtworzenia pojedynczego filmu. **żądając** Komunikat HTTP wysłany z klienta do serwera, zgodnie z definicją w odpowiedzi [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **:** Wiadomość HTTP wysłana z serwera do klienta, zgodnie z definicją w [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
+>   **Prezentacja:** Zestaw wszystkich **strumieni** i powiązanych metadanych wymaganych do odtworzenia pojedynczego filmu. **żądanie:** Komunikat HTTP wysłany z klienta do serwera, zgodnie z definicją w odpowiedzi [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **:** komunikat http wysłany z serwera do klienta, zgodnie z definicją w [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)
 > 
->   **Northwind** Najmniejsza jednostka podstawowa (na przykład ramka), w której **multimedia** są przechowywane i przetwarzane.
+>   **przykład:** Najmniejsza jednostka podstawowa (na przykład ramka), w której **multimedia** są przechowywane i przetwarzane.
 > 
->   **MOŻE BYĆ, MUSI, NIE MOŻE BYĆ:** Te warunki (we wszystkich wersalikach) są używane zgodnie z opisem w [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) . wszystkie instrukcje dotyczące użycia funkcji OPCJONALNEj mogą być, powinny lub nie powinny być.
+>   **może być** , musi, nie może być: Te warunki (we wszystkich wersalikach) są używane zgodnie z opisem w [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) . wszystkie instrukcje dotyczące użycia funkcji OPCJONALNEj mogą być, powinny lub nie powinny być.
 
 ## <a name="12-references"></a>1,2 odwołań
 
@@ -64,31 +64,31 @@ Następujące terminy są specyficzne dla tego dokumentu:
 
 ### <a name="121-normative-references"></a>1.2.1 odwołania do normatywnych 
 
->  [MS-SSTR] *V20140502* protokołu Smooth Streaming[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR] *V20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx) protokołów Smooth Streaming
 > 
->   [ISO/IEC 14496-12] Międzynarodowa Organizacja Normalizacyjna "technologia informacyjna — kodowanie obiektów dźwięk-Visual — część 12: Format podstawowego pliku multimedialnego ISO ", ISO/IEC 14496-12:2014, wydanie 4 i sprostowanie 1, zmiany 1 & 2.
+>   [ISO/IEC 14496-12] Międzynarodowa Organizacja Normalizacyjna "technologia informacyjna — kodowanie obiektów dźwięk-Visual — część 12: Format pliku multimediów ISO Base", ISO/IEC 14496-12:2014, wydanie 4 i sprostowanie 1, zmiany 1 & 2.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 > 
->   [ISO/IEC 14496-15] Międzynarodowa Organizacja Normalizacyjna "technologia informacyjna — kodowanie obiektów dźwięk-Visual — część 15: Przewóz wideo z strukturalną jednostką NAL w formacie podstawowego pliku multimediów ISO ", ISO 14496-15:2015, wydanie 3.
+>   [ISO/IEC 14496-15] Międzynarodowa Organizacja Normalizacyjna, "technologia informacyjna — kodowanie obiektów dźwięk-wizualizacji — część 15: przewóz wideo z strukturalną jednostką NAL w formacie pliku nośnika podstawowego ISO", ISO 14496-15:2015, wydanie 3.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
->   [ISO/IEC 23008-2] Technologia informacyjna — wysoka wydajność kodowania i dostarczania multimediów w środowiskach heterogenicznych — część 2: Kodowanie wideo o wysokiej wydajności: 2013 lub Najnowsza wersja<https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
+>   [ISO/IEC 23008-2] Technologia informacyjna — wysoka wydajność kodowania i dostarczania multimediów w środowiskach heterogenicznych — część 2: kodowanie wideo o wysokiej wydajności: 2013 lub Najnowsza wersja <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
 > 
->   [ISO/IEC 23001-7] Technologia informacyjna — technologie systemu MPEG — część 7: Typowe szyfrowanie w plikach ISO Base File Format Files, CENC Edition 2:2015<https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
+>   [ISO/IEC 23001-7] Technologia informacyjna — technologie systemu MPEG — część 7: typowe szyfrowanie w plikach ISO Base File Format Files, CENC Edition 2:2015 <https://www.iso.org/iso/catalogue_detail.htm?csnumber=65271>
 > 
 >   [RFC-6381] IETF RFC-6381 "" kodery-dekoder "i" Profile "dla typów nośników" datazasobnik "<https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] Urząd rejestrowania MP4, "MP4REG",[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] Urząd rejestrowania MP4, "MP4REG", [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S., "kluczowe słowa do użycia w specyfikacjach RFC do wskazania poziomów wymagań", BCP 14, RFC 2119, marzec 1997,[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "kluczowe słowa do użycia w specyfikacjach RFC do wskazania poziomów wymagań", BCP 14, RFC 2119, marzec 1997, [https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 informacje informacyjne 
 
 >   [MS-GLOS] Microsoft Corporation, "*Protokoły systemu Windows — Słownik główny*".
 > 
->   [RFC3548] Josefsson, S., Ed., "kodowania danych Base16, Base32 i base64", RFC 3548, 2003 lipca,[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed., "kodowania danych Base16, Base32 i base64", RFC 3548, Lipiec 2003, [https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed., i Overell, P., "rozszerzone BNF dla specyfikacji składni: ABNF ", STD 68, RFC 5234, styczeń 2008,[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed., i Overell, P., "rozszerzone BNF dla specyfikacji składni: ABNF", STD 68, RFC 5234, styczeń 2008, [https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1,3 — Omówienie 
@@ -147,9 +147,9 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 
 >   **FourCC (zmienna):** Kod składający się z czterech znaków, który identyfikuje format nośnika używany dla każdego przykładu. Następujący zakres wartości jest zarezerwowany dla następujących średnich semantyki:
 > 
-> * "hev1": Przykłady wideo dla tej ścieżki używają wideo HEVC przy użyciu formatu opisu przykładowego "hev1" określonego w [ISO/IEC-14496-15].
+> * "hev1": przykłady wideo dla tej ścieżki używają wideo HEVC przy użyciu formatu opisu przykładowego "hev1" określonego w [ISO/IEC-14496-15].
 >
-> * "hvc1": Przykłady wideo dla tej ścieżki używają wideo HEVC przy użyciu formatu opisu przykładowego "hvc1" określonego w [ISO/IEC-14496-15].
+> * "hvc1": przykłady wideo dla tej ścieżki używają wideo HEVC przy użyciu formatu opisu przykładowego "hvc1" określonego w [ISO/IEC-14496-15].
 > 
 >   **CodecPrivateData (zmienna):** Dane, które określają parametry specyficzne dla formatu multimediów i wspólne dla wszystkich próbek w ścieżce, reprezentowane jako ciąg bajtów kodowanych szesnastkowie. Format i semantyka znaczenia sekwencji bajtów różni się od wartości pola **FourCC** w następujący sposób:
 > 
@@ -163,7 +163,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 > 
 >   * PPSField zawiera zestaw parametrów wycinka (PPS).
 > 
->   Uwaga: Zestaw parametrów wideo (VPS) nie jest zawarty w CodecPrivateData, ale powinien być zawarty w nagłówku pliku przechowywanych plików w polu "hvcC". Systemy używające protokołu Smooth Streaming muszą sygnalizować dodatkowe parametry dekodowania (na przykład warstwa HEVC) przy użyciu atrybutu niestandardowego "Codecs".
+>   Uwaga: zestaw parametrów wideo (VPS) nie znajduje się w CodecPrivateData, ale powinien być zawarty w nagłówku pliku przechowywanych plików w polu "hvcC". Systemy używające protokołu Smooth Streaming muszą sygnalizować dodatkowe parametry dekodowania (na przykład warstwa HEVC) przy użyciu atrybutu niestandardowego "Codecs".
 
 ##### <a name="22251-customattributeselement"></a>2.2.2.5.1 CustomAttributesElement 
 
@@ -175,7 +175,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 
 ### <a name="223-fragment-request"></a>Żądanie fragmentacji 
 
->   **Uwaga**: Domyślny format nośnika żądany dla **MinorVersion** 2 i "hev1" lub "hvc1" jest formatem "Iso8" nośnika podstawowego (ISO/IEC 14496-12] ISO Base File Format) w czwartej wersji i [ISO/IEC 23001-7] Common Encryption Second Edition.
+>   **Uwaga**: domyślny format nośnika żądany dla **MinorVersion** 2 i "hev1" lub "hvc1" jest formatem "ISO8" nośnika podstawowego (ISO/IEC 14496-12] ISO Base File Format) w czwartej wersji i [ISO/IEC 23001-7] Common Encryption Second Edition.
 
 ### <a name="224-fragment-response"></a>2.2.4 — odpowiedź fragmentu 
 
@@ -191,7 +191,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 > 
 >   **Uwaga**: Klient może obliczyć czas trwania fragmentu, sumując przykładowe czasy trwania wymienione w polu przebieg śledzenia ("Trun") lub mnożąc liczbę próbek pomnożonych przez domyślny czas trwania próbki. BaseMediaDecodeTime w "tfdt" i czas trwania fragmentu są równe parametrowi czasu URL dla następnego fragmentu.
 > 
->   Pole czas referencyjny producenta ("prft") powinno zostać wstawione przed polem fragmentu filmu ("moof"), aby wskazać czas UTC odpowiadający czasowi dekodowania fragmentu pierwszej próbki, do którego odwołuje się pole fragmentu filmu, jak określono w [ISO/IEC 14496 -12] sekcja 8.16.5.
+>   Pole czas referencyjny producenta ("prft") powinno zostać wstawione przed polem fragmentu filmu ("moof"), aby wskazać czas UTC odpowiadający czasowi dekodowania fragmentu pierwszej próbki, do którego odwołuje się pole fragmentu filmu, jak określono w sekcji [ISO/IEC 14496-12] 8.16.5.
 
 #### <a name="2245-tfrfbox"></a>2.2.4.5 TfrfBox 
 
@@ -203,7 +203,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 
 >   **TfhdBox** i powiązane pola hermetyzują wartości domyślne dla każdej próbki metadanych w fragmencie. Składnia pola **TfhdBox** jest ścisłym podzbiorem składni pola nagłówka fragmentu śledzenia zdefiniowanego w sekcji [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 8.8.7.
 > 
->   **BaseDataOffset (8 bytes):** Przesunięcie, w bajtach, od początku pola **MdatBox** do przykładowego pola w polu **MdatBox** . Aby było możliwe sygnalizowanie tego ograniczenia, należy ustawić flagę default-Base-is-moof (0x020000).
+>   **BaseDataOffset (8 bajtów):** Przesunięcie, w bajtach, od początku pola **MdatBox** do przykładowego pola w polu **MdatBox** . Aby było możliwe sygnalizowanie tego ograniczenia, należy ustawić flagę default-Base-is-moof (0x020000).
 
 #### <a name="2247-trunbox"></a>2.2.4.7 TrunBox 
 
@@ -213,7 +213,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 > 
 >   zgodnie z definicją w [[ISO/IEC-14496-12].](https://go.microsoft.com/fwlink/?LinkId=183695)
 > 
->   Uwaga: Pozwala to uniknąć błędów synchronizacji wideo spowodowanych przez wideo opóźnione audio równą największym opóźnieniem usuwania buforu obrazu i utrzymuje chronometraż prezentacji między alternatywnymi fragmentami, które mogą mieć różne opóźnienia usuwania.
+>   Uwaga: pozwala to uniknąć błędu synchronizacji wideo spowodowany przez wideo opóźnione audio równe największym opóźnionemu wykorzystaniu buforu obrazu, a zachowanie chronometrażu prezentacji między alternatywnymi fragmentami, które mogą mieć różne opóźnienia usuwania.
 > 
 >   Składnia pól zdefiniowanych w tej sekcji określona w ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) pozostaje taka sama, z wyjątkiem następujących:
 > 
@@ -247,7 +247,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
     MinorVersion = STRING_UINT32
     CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
-**Uwaga**: Znaki zgodności "ccff" i "ISO8" wskazują, że fragmenty są zgodne z "typowym formatem pliku kontenera" i Common Encryption [ISO/IEC 23001-7] i ISO Base File Format Edition 4 [ISO/IEC 14496-12].
+**Uwaga**: znaki zgodności "ccff" i "ISO8" wskazują, że fragmenty są zgodne z "typowym formatem pliku kontenera" i Common Encryption [ISO/IEC 23001-7] i ISO Base File Format Edition 4 [ISO/IEC 14496-12].
 
 #### <a name="2272-streammanifestbox"></a>2.2.7.2 StreamManifestBox 
 
@@ -276,7 +276,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 
 >   Element danych opis prezentacji hermetyzuje wszystkie metadane prezentacji.
 > 
->   Metadane prezentacji: Zestaw metadanych, który jest wspólny dla wszystkich strumieni w prezentacji. Metadane prezentacji obejmują następujące pola, określone w sekcji *2.2.2.1*:
+>   Metadane prezentacji: zestaw metadanych, który jest wspólny dla wszystkich strumieni w prezentacji. Metadane prezentacji obejmują następujące pola, określone w sekcji *2.2.2.1*:
 > 
 > * **MajorVersion**
 > * **MinorVersion**
@@ -291,13 +291,13 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (Uwaga: Pola przestarzałe)
+>   LookaheadCount = 0 (Uwaga: pola przestarzałe)
 > 
 >   Prezentacje należy również ustawić:
 
     TimeScale = 90000
 
->   Zbieranie strumieni: Kolekcja elementów danych opisu strumienia, jak określono w sekcji *3.1.1.1.2*.
+>   Kolekcja strumieni: Kolekcja elementów danych opisu strumienia, jak określono w sekcji *3.1.1.1.2*.
 > 
 >   Opis ochrony: Kolekcja elementów danych opisu metadanych systemu ochrony, jak określono w sekcji *3.1.1.1.1*.
 
@@ -305,7 +305,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 
 >   Element danych opisu metadanych systemu ochrony hermetyzuje metadane specyficzne dla pojedynczego systemu Content Protection. (Bez zmian)
 > 
->   Opis nagłówka ochrony: Metadane ochrony zawartości odnoszące się do pojedynczego systemu Content Protection. Opis nagłówka ochrony składa się z następujących pól, określonych w sekcji *2.2.2.2*:
+>   Opis nagłówka ochrony: metadane ochrony zawartości odnoszące się do pojedynczego systemu Content Protection. Opis nagłówka ochrony składa się z następujących pól, określonych w sekcji *2.2.2.2*:
 > 
 >   * **SystemID**
 >   * **ProtectionHeaderContent**
@@ -354,7 +354,7 @@ Aby można było zastosować Common Encryption (CENC) do strumieni wideo lub aud
 
 >   Jeśli zawartość transportowana przy użyciu tego protokołu ma wysoką wartość komercyjną, należy użyć systemu Content Protection, aby uniemożliwić nieautoryzowane użycie zawartości. Obiekt **protectionelement** może służyć do przesyłania metadanych związanych z użyciem systemu Content Protection. Chroniona zawartość audio i wideo jest szyfrowana zgodnie z opisem w formacie MPEG Common Encryption Second Edition: 2015 [ISO/IEC 23001-7].
 > 
->   **Uwaga**: W przypadku wideo HEVC tylko dane wycinków w VCL NALs są szyfrowane. Nagłówki wycinków i inne NALs są dostępne dla aplikacji prezentacji przed odszyfrowaniem. w bezpiecznej ścieżce wideo zaszyfrowane informacje nie są dostępne dla aplikacji prezentacji.
+>   **Uwaga**: w przypadku wideo HEVC tylko dane wycinków w VCL NALs są szyfrowane. Nagłówki wycinków i inne NALs są dostępne dla aplikacji prezentacji przed odszyfrowaniem. w bezpiecznej ścieżce wideo zaszyfrowane informacje nie są dostępne dla aplikacji prezentacji.
 
 ## <a name="52-index-of-security-parameters"></a>5,2 indeks parametrów zabezpieczeń 
 
@@ -385,7 +385,7 @@ Następujące pola mogą być obecne w odpowiedziach na fragmenty, gdy Common En
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png

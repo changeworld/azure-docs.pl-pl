@@ -1,22 +1,23 @@
 ---
-title: Konfigurowanie kluczy zarządzanych przez klienta za pomocą Azure Key Vault przy użyciu usługi Azure Portal Azure Storage
+title: Użyj Azure Portal, aby skonfigurować klucze zarządzane przez klienta
+titleSuffix: Azure Storage
 description: Dowiedz się, jak za pomocą Azure Portal skonfigurować klucze zarządzane przez klienta za pomocą Azure Key Vault na potrzeby szyfrowania usługi Azure Storage. Klucze zarządzane przez klienta umożliwiają tworzenie, obracanie, wyłączanie i odwoływanie kontroli dostępu.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/20/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b72f30a636d0177edb8b3254d14be941b2d4e6bc
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: b1006fead92763c5c2e670527b5e232618b633e5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665915"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895304"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-by-using-the-azure-portal"></a>Konfigurowanie kluczy zarządzanych przez klienta usługi Azure Storage przy użyciu Azure Portal
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta za pomocą Azure Key Vault przy użyciu Azure Portal
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 

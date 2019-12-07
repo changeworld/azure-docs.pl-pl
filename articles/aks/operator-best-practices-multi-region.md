@@ -7,12 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
-ms.openlocfilehash: 5a0a7e59e71e51a109af0f89cbb7ba580b2b97e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 21c1380862638ef671b31f0fdec42009d217aca7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967183"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893216"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania związane z ciągłością biznesową i odzyskiwaniem po awarii w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,12 +30,12 @@ Ten artykuł koncentruje się na tym, jak planować ciągłość działania i od
 
 ## <a name="plan-for-multiregion-deployment"></a>Planowanie wdrożenia wieloregionowego
 
-**Najlepsze rozwiązanie**: W przypadku wdrażania wielu klastrów AKS wybierz regiony, w których AKS jest dostępny i użyj sparowanych regionów.
+**Najlepsze rozwiązanie**: podczas wdrażania wielu klastrów AKS wybierz regiony, w których AKS jest dostępny, i użyj sparowanych regionów.
 
 Klaster AKS jest wdrażany w jednym regionie. Aby chronić system przed awarią regionu, wdróż aplikację w wielu klastrach AKS w różnych regionach. Planując miejsce wdrożenia klastra AKS, Rozważ następujące kwestie:
 
 * [**Dostępność regionu AKS**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability): Wybierz regiony blisko Twoich użytkowników. AKS ciągle rozszerza się w nowe regiony.
-* [**Sparowane regiony platformy Azure**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): W obszarze geograficznym wybierz dwa regiony, które są sparowane ze sobą. Sparowane regiony koordynują aktualizacje platformy i ustalają priorytety działań związanych z odzyskiwaniem w razie konieczności.
+* [**Sparowane regiony platformy Azure**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): dla obszaru geograficznego wybierz dwa regiony, które są sparowane ze sobą. Sparowane regiony koordynują aktualizacje platformy i ustalają priorytety działań związanych z odzyskiwaniem w razie konieczności.
 * **Dostępność usługi**: Zdecyduj, czy sparowane regiony powinny mieć gorącą/gorącą, gorącą/ciepłą lub gorącą/zimną. Czy chcesz uruchomić oba regiony w tym samym czasie, z jednym regionem *gotowym* do uruchomienia ruchu? Lub czy chcesz, aby jeden region miał czas gotowy do obsługi ruchu?
 
 AKS region dostępności i sparowane regiony są wspólne. Wdróż klastry AKS w połączonych regionach, które są przeznaczone do zarządzania odzyskiwaniem po awarii regionu. Na przykład AKS jest dostępna w regionach Wschodnie stany USA i zachodnie stany USA. Te regiony są sparowane. Wybierz te dwa regiony podczas tworzenia strategii AKS BC/DR.
@@ -43,7 +44,7 @@ Podczas wdrażania aplikacji należy dodać kolejny krok do potoku ciągłej int
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>Kierowanie ruchu przy użyciu usługi Azure Traffic Manager
 
-**Najlepsze rozwiązanie**: Usługa Azure Traffic Manager może kierować klientów do najbliższego klastra AKS i wystąpienia aplikacji. Aby uzyskać najlepszą wydajność i nadmiarowość, należy skierować cały ruch aplikacji przez Traffic Manager przed przejściem do klastra AKS.
+**Najlepsze rozwiązanie**: usługa Azure Traffic Manager może kierować klientów do najbliższego klastra AKS i wystąpienia aplikacji. Aby uzyskać najlepszą wydajność i nadmiarowość, należy skierować cały ruch aplikacji przez Traffic Manager przed przejściem do klastra AKS.
 
 Jeśli masz wiele klastrów AKS w różnych regionach, użyj Traffic Manager, aby kontrolować sposób przepływu ruchu do aplikacji uruchamianych w każdym klastrze. [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) to oparty na systemie DNS moduł równoważenia obciążenia, który może dystrybuować ruch sieciowy między regionami. Użyj Traffic Manager, aby kierować użytkowników na podstawie czasu odpowiedzi klastra lub na podstawie lokalizacji geograficznej.
 
@@ -61,6 +62,12 @@ Aby uzyskać informacje na temat konfigurowania punktów końcowych i routingu, 
 
 Traffic Manager używa systemu DNS (warstwa 3) do kształtowania ruchu. [Usługa frontonu platformy Azure](https://docs.microsoft.com/azure/frontdoor/front-door-overview) udostępnia opcję routingu http/https (warstwa 7). Dodatkowe funkcje usługi Azure Front drzwiczk obejmują zakończenie protokołu SSL, domenę niestandardową, zaporę aplikacji sieci Web, ponowne zapisywanie adresów URL i koligację sesji. Przejrzyj potrzeby ruchu aplikacji, aby zrozumieć, które rozwiązanie jest najbardziej odpowiednie.
 
+### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Regiony programu InterConnect z globalną siecią wirtualną sieci wirtualnej
+
+Jeśli klastry muszą komunikować się ze sobą, połączenie między sieciami wirtualnymi można osiągnąć za pomocą [komunikacji równorzędnej sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Ta technologia umożliwia połączenie między sieciami wirtualnymi, zapewniając wysoką przepustowość w sieci szkieletowej firmy Microsoft, nawet w różnych regionach geograficznych.
+
+Warunkiem wstępnym komunikacji równorzędnej sieci wirtualnych, w których są uruchomione klastry AKS, jest użycie standardowego Load Balancer w klastrze AKS, dzięki czemu usługi Kubernetes Services są dostępne dla komunikacji równorzędnej sieci wirtualnej.
+
 ## <a name="enable-geo-replication-for-container-images"></a>Włącz replikację geograficzną dla obrazów kontenerów
 
 **Najlepsze rozwiązanie**: Przechowuj obrazy kontenerów w Azure Container Registry i geograficznie Replikuj rejestr do każdego regionu AKS.
@@ -73,15 +80,15 @@ Aby zwiększyć wydajność i dostępność, użyj Container Registry replikacji
 
 W przypadku używania Container Registry replikacji geograficznej do ściągania obrazów z tego samego regionu wyniki są następujące:
 
-* **Szybsze**: Obrazy są ściągane z połączeń sieciowych o dużej szybkości i małych opóźnieniach w tym samym regionie świadczenia usługi Azure.
-* **Bardziej niezawodne**: Jeśli region jest niedostępny, klaster AKS pobiera obrazy z dostępnego rejestru kontenerów.
-* **Tańsze**: Nie ma opłat za wyjście z sieci między centrami danych.
+* **Szybsze**: ściąganie obrazów z połączeń sieciowych o dużej szybkości i małych opóźnieniach w tym samym regionie świadczenia usługi Azure.
+* **Bardziej niezawodne**: jeśli region jest niedostępny, klaster AKS pobiera obrazy z dostępnego rejestru kontenerów.
+* **Tańsze**: nie ma opłat za wyjście z sieci między centrami danych.
 
-Replikacja geograficzna to funkcja rejestrów kontenerów jednostki SKU w *warstwie Premium* . Aby uzyskać informacje na temat konfigurowania replikacji geograficznej, zobacz [Container Registry replikacji](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)geograficznej.
+Replikacja geograficzna to funkcja rejestrów kontenerów jednostki SKU w *warstwie Premium* . Aby uzyskać informacje na temat konfigurowania replikacji geograficznej, zobacz [Container Registry replikacji geograficznej](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication).
 
 ## <a name="remove-service-state-from-inside-containers"></a>Usuwanie stanu usługi z wewnątrz kontenerów
 
-**Najlepsze rozwiązanie**: Jeśli to możliwe, nie należy przechowywać stanu usługi wewnątrz kontenera. Zamiast tego należy użyć platformy Azure jako usługi (PaaS), która obsługuje replikację w wielu regionach.
+**Najlepsze rozwiązanie**: Jeśli to możliwe, nie przechowuj stanu usługi wewnątrz kontenera. Zamiast tego należy użyć platformy Azure jako usługi (PaaS), która obsługuje replikację w wielu regionach.
 
 *Stan usługi* odnosi się do danych znajdujących się w pamięci lub na dysku, których usługa wymaga do działania. Stan obejmuje struktury danych i zmienne składowe, które Usługa odczytuje i zapisuje. W zależności od sposobu, w jaki usługa jest poddana architektom, stan może również zawierać pliki lub inne zasoby, które są przechowywane na dysku. Na przykład stan może obejmować pliki, których baza danych używa do przechowywania danych i dzienników transakcji.
 
@@ -96,7 +103,7 @@ Aby skompilować aplikacje przenośne, zapoznaj się z następującymi wskazówk
 
 ## <a name="create-a-storage-migration-plan"></a>Utwórz plan migracji magazynu
 
-**Najlepsze rozwiązanie**: Jeśli używasz usługi Azure Storage, przygotuj i przetestuj sposób migrowania magazynu z regionu podstawowego do regionu kopii zapasowej.
+**Najlepsze rozwiązanie**: Jeśli korzystasz z usługi Azure Storage, przygotuj i przetestuj sposób migrowania magazynu z regionu podstawowego do regionu kopii zapasowej.
 
 Aplikacje mogą używać usługi Azure Storage do przechowywania swoich danych. Ponieważ aplikacje są rozłożone na wiele klastrów AKS w różnych regionach, należy zachować synchronizację magazynu. Poniżej przedstawiono dwa typowe sposoby replikowania magazynu:
 

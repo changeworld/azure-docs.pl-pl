@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c88ef8c3996b1e7d998d3eff12c15077ec2482ff
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169318"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900736"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Programy obsługi zdarzeń w Azure Event Grid
 
@@ -42,7 +42,7 @@ W przypadku używania usługi Azure Functions jako procedury obsługi należy ko
 | [Samouczek: przesyłanie strumieniowe danych Big Data do magazynu danych](event-grid-event-hubs-integration.md) | Gdy Event Hubs tworzy plik przechwytywania, Event Grid wysyła zdarzenie do aplikacji funkcji. Aplikacja pobiera plik przechwytywania i migruje dane do magazynu danych. |
 | [Samouczek: przykłady dotyczące Azure Event Grid integracji Azure Service Bus](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid wysyła wiadomości z tematu Service Bus do aplikacji funkcji i aplikacji logiki. |
 
-## <a name="event-hubs"></a>Event Hubs
+## <a name="event-hubs"></a>Centra zdarzeń
 
 Użyj Event Hubs, gdy rozwiązanie pobiera zdarzenia szybciej niż może przetworzyć zdarzenia. Aplikacja przetwarza zdarzenia z Event Hubs zgodnie z harmonogramem. Przetwarzanie zdarzenia można skalować w celu obsługi zdarzeń przychodzących.
 
@@ -55,7 +55,7 @@ Event Hubs może działać jako źródło zdarzenia lub procedura obsługi zdarz
 
 Przykłady Event Hubs jako źródła można znaleźć w temacie [Event Hubs Source](event-sources.md#event-hubs).
 
-## <a name="hybrid-connections"></a>Połączenia hybrydowe
+## <a name="hybrid-connections"></a>Hybrydowe
 
 Użyj Połączenia hybrydowe Azure Relay, aby wysyłać zdarzenia do aplikacji znajdujących się w sieci przedsiębiorstwa i nie mają publicznie dostępnego punktu końcowego.
 
@@ -63,7 +63,7 @@ Użyj Połączenia hybrydowe Azure Relay, aby wysyłać zdarzenia do aplikacji z
 |---------|---------|
 | [Samouczek: wysyłanie zdarzeń do połączenia hybrydowego](custom-event-to-hybrid-connection.md) | Wysyła niestandardowe zdarzenie do istniejącego połączenia hybrydowego w celu przetworzenia przez aplikację odbiornika. |
 
-## <a name="logic-apps"></a>Logic Apps
+## <a name="logic-apps"></a>Aplikacje logiki
 
 Użyj Logic Apps, aby zautomatyzować procesy biznesowe w celu reagowania na zdarzenia.
 
@@ -79,7 +79,7 @@ Użyj Logic Apps, aby zautomatyzować procesy biznesowe w celu reagowania na zda
 
 Można kierować zdarzenia w Event Grid bezpośrednio do kolejek Service Bus do użycia w scenariuszach buforowania lub & poleceń w aplikacjach dla przedsiębiorstw.
 
-W Azure Portal podczas tworzenia subskrypcji zdarzeń wybierz pozycję "Service Bus kolejki" jako typ punktu końcowego, a następnie kliknij pozycję "Wybierz i punkt końcowy", aby wybrać kolejkę Service Bus.
+W Azure Portal podczas tworzenia subskrypcji zdarzeń wybierz pozycję "Service Bus kolejki" jako typ punktu końcowego, a następnie kliknij pozycję "Wybierz punkt końcowy", aby wybrać kolejkę Service Bus.
 
 #### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Używanie interfejsu wiersza polecenia do dodawania procedury obsługi kolejki Service Bus
 

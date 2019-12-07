@@ -3,31 +3,31 @@ title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiania Konwencji dla zasobów platformy Azure w organizacji.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 93b03622f03c095a61291f4a6d25284e5052c35a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555176"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894302"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
-Definicje zasad zasobów są używane przez Azure Policy do ustanawiania konwencji dotyczących zasobów. Każda definicja zawiera opis zgodności zasobów i działania, które należy wykonać, gdy zasób nie jest zgodny.
-Dzięki zdefiniowaniu Konwencji można kontrolować koszty i łatwiej zarządzać zasobami. Można na przykład określić, że dozwolone są tylko niektóre typy maszyn wirtualnych. Lub można wymagać, aby wszystkie zasoby miały określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Jeśli zasady są stosowane do grupy zasobów, mają zastosowanie do wszystkich zasobów w tej grupie zasobów.
+Definicje zasad zasobów są używane przez usługę Azure Policy można ustanowić konwencje dla zasobów. Każda definicja opisano zgodność zasobów i jakie efektu do podjęcia, gdy zasób jest niezgodna.
+Definiowanie Konwencji, pozwalają na nadzorowanie kosztów i zarządzania zasobami. Na przykład można określić, że dozwolone są tylko niektóre typy maszyn wirtualnych. Alternatywnie można wymagać, że wszystkie zasoby mają określony tag. Zasady są dziedziczone przez wszystkie zasoby podrzędne. Jeśli zasady są stosowane do grupy zasobów, ma zastosowanie do wszystkich zasobów w tej grupie zasobów.
 
 Schemat definicji zasad znajduje się tutaj: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
 
-Aby utworzyć definicję zasad, należy użyć formatu JSON. Definicja zasad zawiera elementy dla:
+Użyjesz JSON do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
 
-- wyst
+- mode
 - parameters
 - Nazwa wyświetlana
 - description
 - Reguła zasad
-  - Ocena logiczna
-  - skuteczność
+  - Ocena logiczne
+  - Efekt
 
-Na przykład poniższy kod JSON przedstawia zasady, które ograniczają miejsce wdrożenia zasobów:
+Na przykład następujący kod JSON przedstawiono zasady, które ogranicza, gdzie są wdrożone zasoby:
 
 ```json
 {
@@ -69,14 +69,14 @@ Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../
 
 ### <a name="resource-manager-modes"></a>Tryby Menedżer zasobów
 
-**Tryb** określa, które typy zasobów będą oceniane dla zasad. Obsługiwane są następujące tryby:
+**Tryb** określa typów zasobów, które zostanie obliczone dla zasad. Obsługiwane metody to:
 
-- `all`: Oceń grupy zasobów i wszystkie typy zasobów
-- `indexed`: Oceń tylko typy zasobów obsługujące Tagi i lokalizację
+- `all`: oceny grupy zasobów i wszystkie typy zasobów
+- `indexed`: tylko ocenić typy zasobów, które obsługuje tagi i lokalizacji
 
-Zalecamy skonfigurowanie **trybu** do `all` w większości przypadków. Wszystkie definicje zasad utworzone za pomocą portalu używają trybu `all`. Jeśli używasz programu PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz określić parametr **mode** ręcznie. Jeśli definicja zasad nie zawiera wartości **trybu** , domyślnie `all` w Azure PowerShell i `null` w interfejsie wiersza polecenia platformy Azure. Tryb `null` jest taki sam jak w przypadku używania `indexed` w celu zapewnienia zgodności z poprzednimi wersjami.
+Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasad, została utworzona za pośrednictwem portalu użycia `all` trybu. Jeśli używasz programu PowerShell lub wiersza polecenia platformy Azure, możesz określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartości, jego wartość domyślna to `all` w programie Azure PowerShell i do `null` w interfejsie wiersza polecenia platformy Azure. A `null` tryb jest taki sam, jak przy użyciu `indexed` do zapewnienia obsługi zgodności.
 
-`indexed` należy używać podczas tworzenia zasad, które wymuszają Tagi lub lokalizacje. Chociaż nie jest to wymagane, uniemożliwiają one nie obsługujące tagów i lokalizacji, ponieważ nie są one zgodne z wynikami sprawdzania zgodności. Wyjątkiem są **grupy zasobów**. Zasady, które wymuszają lokalizację lub Tagi w grupie zasobów, powinny ustawiać **tryb** , aby `all`, a w odniesieniu do typu `Microsoft.Resources/subscriptions/resourceGroups`. Aby zapoznać się z przykładem, zobacz [Wymuszaj Tagi grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują Tagi, zobacz [obsługa tagów dla zasobów platformy Azure](../../../azure-resource-manager/tag-support.md).
+`indexed` należy używać podczas tworzenia zasad, które wymuszają tagów lub lokalizacji. Chociaż nie jest to wymagane, uniemożliwiają one nie obsługujące tagów i lokalizacji, ponieważ nie są one zgodne z wynikami sprawdzania zgodności. Wyjątek stanowi **grup zasobów**. Należy ustawić zasady, które wymuszają lokalizacji lub tagów w grupie zasobów **tryb** do `all` i docelowy specjalnie `Microsoft.Resources/subscriptions/resourceGroups` typu. Aby uzyskać przykład, zobacz [wymusić tagi z grupy zasobów](../samples/enforce-tag-rg.md). Aby uzyskać listę zasobów, które obsługują Tagi, zobacz [obsługa tagów dla zasobów platformy Azure](../../../azure-resource-manager/tag-support.md).
 
 ### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a>tryby dostawcy zasobów <a name="resource-provider-modes" />(wersja zapoznawcza)
 
@@ -92,11 +92,11 @@ Następujące tryby dostawcy zasobów są obecnie obsługiwane w wersji zapoznaw
 
 ## <a name="parameters"></a>Parametry
 
-Parametry pomagają uprościć zarządzanie zasadami przez zmniejszenie liczby definicji zasad. Należy traktować parametry, takie jak pola w formularzu — `name`, `address`, `city``state`. Te parametry zawsze pozostają takie same, ale ich wartości zmieniają się w zależności od poszczególnych wypełniania formularza.
-Parametry działają w ten sam sposób podczas kompilowania zasad. Dzięki dołączeniu parametrów w definicji zasad można ponownie użyć tych zasad dla różnych scenariuszy przy użyciu różnych wartości.
+Parametry ułatwiają zarządzanie zasadami dzięki zmniejszeniu liczby definicji zasad. Reakcji parametrów, takich jak pola w formularzu — `name`, `address`, `city`, `state`. Te parametry pozostają niezmienione, jednak ich wartości zmieniają poszczególnych wypełniania formularza.
+Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz parametrów w definicji zasad, można ponownie użyć tej zasady dla różnych scenariuszy przy użyciu innej wartości.
 
 > [!NOTE]
-> Parametry można dodawać do istniejącej i przypisanej definicji. Nowy parametr musi zawierać właściwość **DefaultValue** . Zapobiega to poprawnej nieprawidłowemu przypisywaniu zasad lub inicjatywy.
+> Parametry można dodawać do istniejącej i przypisanej definicji. Nowy parametr musi zawierać właściwość **DefaultValue** . Zapobiega to pośrednio odbywa się nieprawidłowe istniejące przypisania zasad lub inicjatywy.
 
 ### <a name="parameter-properties"></a>Właściwości parametru
 
@@ -149,7 +149,7 @@ Ten przykład odwołuje się do parametru **allowedLocations** , który został 
 
 ### <a name="strongtype"></a>strongtype
 
-We właściwości `metadata` można użyć **silnego** elementu, aby udostępnić listę opcji dostępnych w ramach Azure Portal. Dozwolone wartości dla **silnego elementu strongtype** są obecnie:
+We właściwości `metadata` można użyć **silnego** elementu, aby udostępnić listę opcji dostępnych w ramach Azure Portal. Dozwolone wartości **strongType** obejmują:
 
 - `location`
 - `resourceTypes`
@@ -165,22 +165,22 @@ We właściwości `metadata` można użyć **silnego** elementu, aby udostępni�
 
 ## <a name="definition-location"></a>Lokalizacja definicji
 
-Podczas tworzenia inicjatywy lub zasad należy określić lokalizację definicji. Lokalizacja definicji musi być grupą zarządzania lub subskrypcją. Ta lokalizacja określa zakres, do którego można przypisać inicjatywę lub zasady. Zasoby muszą być bezpośrednimi elementami członkowskimi lub elementami podrzędnymi w hierarchii lokalizacji definicji do przypisywania.
+Podczas tworzenia inicjatywy lub zasad, należy określić lokalizację definicji. Lokalizacja definicji musi być grupą zarządzania lub subskrypcji. Ta lokalizacja określa zakres, do której można przypisać inicjatywy lub zasad. Zasoby muszą być bezpośredni członkowie lub elementy podrzędne w hierarchii Lokalizacja definicji docelową przypisania.
 
-Jeśli lokalizacja definicji jest:
+Jeśli lokalizacja definicji to:
 
-- Tylko zasoby z **subskrypcją** w ramach tej subskrypcji mogą być przypisane do zasad.
-- Zasady mogą być przypisywane tylko zasobom należącym do **grupy** zarządzania w ramach podrzędnych grup administracyjnych i subskrypcji podrzędnych. Jeśli planujesz zastosowanie definicji zasad do kilku subskrypcji, lokalizacja musi być grupą zarządzania, która zawiera te subskrypcje.
+- **Subskrypcja** — tylko do zasobów w ramach tej subskrypcji można przypisać zasady.
+- **Grupa zarządzania** — tylko do zasobów w ramach subskrypcji podrzędnych i podrzędne grupy zarządzania można przypisać zasady. Jeśli planowane jest zastosowanie definicję zasad do wielu subskrypcji, lokalizacji musi być grupą zarządzania, który zawiera te subskrypcje.
 
-## <a name="display-name-and-description"></a>Nazwa wyświetlana i opis
+## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
 
-Użyj **DisplayName** i **Description** , aby zidentyfikować definicję zasad i podać kontekst, który ma być używany. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
+Możesz użyć **displayName** i **opis** do identyfikowania definicji zasad i dostarczanie kontekstu, gdy jest używany. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
 
 ## <a name="policy-rule"></a>Reguła zasad
 
-Reguła zasad składa się z elementów **if** i **then** . W bloku **if** definiuje się jeden lub więcej warunków, które określają, kiedy zasady są wymuszane. Operatory logiczne można stosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
+Reguła zasad składa się z **Jeśli** i **następnie** bloków. W **Jeśli** bloku, należy zdefiniować co najmniej jeden warunek, które określają, kiedy zasady są wymuszane. Operatory logiczne można zastosować do tych warunków, aby precyzyjnie zdefiniować scenariusz dla zasad.
 
-W bloku **then** definiujesz efekt, **który ma miejsce, gdy warunki są** spełnione.
+W **następnie** bloku, należy zdefiniować wpływ, jaki się stanie, gdy **Jeśli** warunki są spełnione.
 
 ```json
 {
@@ -201,9 +201,9 @@ Obsługiwane operatory logiczne to:
 - `"allOf": [{condition or operator},{condition or operator}]`
 - `"anyOf": [{condition or operator},{condition or operator}]`
 
-**Nie** składnia odwraca wynik warunku. Składnia **allOf** (podobna do operacji logicznej **and** ) wymaga, aby wszystkie warunki były prawdziwe. Składnia **anyOf** (podobna do operacji logicznej **or** ) wymaga co najmniej jednego warunku.
+**Nie** składni odwraca wynik warunku. **Nieobsługiwanymi** składni (podobne do logicznego **i** operacji) wymaga wszystkie warunki muszą być spełnione. **AnyOf** składni (podobne do logicznego **lub** operacji) wymaga co najmniej jeden warunek to true.
 
-Operatory logiczne można zagnieżdżać. W poniższym przykładzie przedstawiono operację **not** , która jest zagnieżdżona w ramach operacji **allOf** .
+Można zagnieżdżać operatorów logicznych. W poniższym przykładzie przedstawiono **nie** operacji, która jest zagnieżdżony w **nieobsługiwanymi** operacji.
 
 ```json
 "if": {
@@ -223,7 +223,7 @@ Operatory logiczne można zagnieżdżać. W poniższym przykładzie przedstawion
 
 ### <a name="conditions"></a>Warunki
 
-Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają określone kryteria. Obsługiwane są następujące warunki:
+Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają określone kryteria. Obsługiwane warunki to:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -245,21 +245,21 @@ Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają o
 - `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
-W przypadku używania warunków **like** i **notLike** , w wartości należy podać symbol wieloznaczny `*`.
-Wartość nie może mieć więcej niż jednego `*`symbolu wieloznacznego.
+Korzystając z **takich jak** i **notLike** warunki, należy podać symbol wieloznaczny `*` wartości.
+Wartość nie powinna zawierać więcej niż jeden symbol wieloznaczny `*`.
 
 W przypadku używania warunków **Match** i **notMatch** Podaj `#` w celu dopasowania do cyfry, `?` dla litery, `.` aby dopasować dowolny znak i dowolny inny znak, aby dopasować go do rzeczywistego znaku.
-**dopasowanie** i **notMatch** uwzględnia wielkość liter. Alternatywy bez uwzględniania wielkości liter są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby zapoznać się z przykładami, zobacz [Zezwalanie na kilka wzorców nazw](../samples/allow-multiple-name-patterns.md).
+**dopasowanie** i **notMatch** uwzględnia wielkość liter. Alternatywy bez uwzględniania wielkości liter są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby uzyskać przykłady, zobacz [Zezwalaj na kilka wzorców nazwy](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola
 
-Warunki są tworzone za pomocą pól. Pole jest zgodne z właściwościami w ładunku żądania zasobu i opisuje stan zasobu.
+Warunki są tworzone przy użyciu pól. Pole jest zgodna właściwości w ładunku żądania zasobów i opisuje stan zasobu.
 
 Obsługiwane są następujące pola:
 
 - `name`
 - `fullName`
-  - Zwraca pełną nazwę zasobu. Pełna nazwa zasobu to nazwa zasobu poprzedzona przez wszystkie nadrzędne nazwy zasobów (na przykład "nie dotyczy".
+  - Zwraca pełną nazwę zasobu. Pełna nazwa zasobu jest nazwa zasobu, dołączony przez wszystkie nazwy zasobu nadrzędnego (na przykład "myServer/Moja_baza_danych").
 - `kind`
 - `type`
 - `location`
@@ -269,7 +269,7 @@ Obsługiwane są następujące pola:
 - `tags`
 - `tags['<tagName>']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które mają znaki interpunkcyjne, takie jak łącznik, kropka lub spacja.
-  - Gdzie **\<tagName\>** jest nazwą tagu, aby zweryfikować warunek.
+  - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.
   - Przykłady: `tags['Acct.CostCenter']`, gdzie **ACCT. CostCenter** jest nazwą tagu.
 - `tags['''<tagName>''']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które zawierają apostrofy przez ucieczki z podwójnym apostrofem.
@@ -538,12 +538,12 @@ Przykład 7: Sprawdź, czy co najmniej jeden element członkowski tablicy jest z
 
 Azure Policy obsługuje następujące typy efektów:
 
-- **Append**: Dodaje zdefiniowany zestaw pól do żądania
-- **Inspekcja**: generuje zdarzenie ostrzegawcze w dzienniku aktywności, ale nie kończy się niepowodzeniem żądania
+- **Dołącz**: dodaje zestaw zdefiniowanych pól do żądania
+- **Inspekcja**: generuje to zdarzenie ostrzegawcze w dzienniku aktywności, ale nie zakończy się niepowodzeniem żądania
 - **AuditIfNotExists**: generuje zdarzenie ostrzegawcze w dzienniku aktywności, jeśli powiązany zasób nie istnieje
 - **Odmów**: generuje zdarzenie w dzienniku aktywności i kończy się niepowodzeniem żądania
 - **DeployIfNotExists**: wdraża powiązane zasoby, jeśli jeszcze nie istnieją
-- **Wyłączone**: nie oblicza zasobów pod kątem zgodności z regułą zasad
+- **Wyłączone**: nie szacuje zasoby pod kątem zgodności z regułą zasad
 - **EnforceOPAConstraint** (wersja zapoznawcza): konfiguruje kontroler "Open Policy Agent Admission Control" z strażnikiem v3 dla samozarządzanej klastrów Kubernetes na platformie Azure (wersja zapoznawcza)
 - **EnforceRegoPolicy** (wersja zapoznawcza): konfiguruje kontroler "Open Policy Agent Admission Control" z strażnikiem v2 w usłudze Azure Kubernetes Service
 - **Modyfikowanie**: dodaje, aktualizuje lub usuwa zdefiniowane znaczniki z zasobu
@@ -561,7 +561,7 @@ Wszystkie [funkcje szablonu Menedżer zasobów](../../../azure-resource-manager/
 - pickZones()
 - dostawcy ()
 - Reference ()
-- resourceId ()
+- resourceId()
 - zmienne ()
 
 Następujące funkcje są dostępne do użycia w regule zasad, ale różnią się od użycia w szablonie Azure Resource Manager:
@@ -572,11 +572,11 @@ Następujące funkcje są dostępne do użycia w regule zasad, ale różnią si�
 - utcNow () — w przeciwieństwie do szablonu Menedżer zasobów, można go użyć poza elementem DefaultValue.
   - Zwraca ciąg, który jest ustawiony na bieżącą datę i godzinę w formacie uniwersalnego ISO 8601 DateTime-MM-DDTgg: mm: SS. fffffffZ
 
-Ponadto funkcja `field` jest dostępna dla reguł zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pól referencyjnych na analizowanym zasobie. Przykład tego zastosowania można zobaczyć w [przykładzie DeployIfNotExists](effects.md#deployifnotexists-example).
+Ponadto `field` funkcja jest dostępna z regułami zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pola odniesienia dla zasobu, które są oceniane. Przykładem użycia tego można zobaczyć w [przykład DeployIfNotExists](effects.md#deployifnotexists-example).
 
 #### <a name="policy-function-example"></a>Przykład funkcji zasad
 
-Ten przykład reguły używa funkcji zasobów `resourceGroup` w celu uzyskania właściwości **name** połączonej z `concat` tablicą i funkcją obiektu w celu skompilowania `like` warunku, który wymusza nazwę zasobu, aby rozpoczynać się od nazwy grupy zasobów.
+Używa w tym przykładzie reguły zasad `resourceGroup` funkcję zasobów w celu uzyskania **nazwa** właściwość w połączeniu z `concat` tablicy i obiektu funkcji do tworzenia `like` warunek, który wymusza Nazwa zasobu, aby rozpocząć nazwą grupy zasobów.
 
 ```json
 {
@@ -594,9 +594,34 @@ Ten przykład reguły używa funkcji zasobów `resourceGroup` w celu uzyskania w
 
 ## <a name="aliases"></a>Aliasy
 
-Aliasy właściwości są używane do uzyskiwania dostępu do określonych właściwości dla typu zasobu. Aliasy umożliwiają ograniczenie wartości lub warunków dozwolonych dla właściwości zasobu. Każdy alias mapuje do ścieżek w różnych wersjach interfejsu API dla danego typu zasobu. Podczas obliczania zasad aparat zasad Pobiera ścieżkę właściwości dla tej wersji interfejsu API.
+Aliasy właściwości umożliwia dostęp do właściwości specyficzne dla typu zasobu. Aliasy pozwalają ograniczyć, jakie wartości lub warunków, które są dozwolone dla właściwości zasobu. Każdy alias mapuje do ścieżki w różnych wersjach interfejsu API dla danego typu zasobu. Podczas oceny zasad aparatu zasad pobiera ścieżkę właściwości dla danej wersji interfejsu API.
 
-Lista aliasów zawsze rośnie. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez Azure Policy, należy użyć jednej z następujących metod:
+Zawsze rośnie listę aliasów. Aby dowiedzieć się, jakie aliasy są obecnie obsługiwane przez usługę Azure Policy, użyj jednej z następujących metod:
+
+- Rozszerzenie Azure Policy dla Visual Studio Code (zalecane)
+
+  Użyj [rozszerzenia Azure Policy](../how-to/extension-for-vscode.md) , aby Visual Studio Code do wyświetlania i odnajdywania aliasów dla właściwości zasobów.
+
+  ![Azure Policy rozszerzenie dla Visual Studio Code](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+
+- Graf zasobów platformy Azure
+
+  Użyj operatora `project`, aby wyświetlić **alias** zasobu.
+
+  ```kusto
+  Resources
+  | where type=~'microsoft.storage/storageaccounts'
+  | limit 1
+  | project aliases
+  ```
+  
+  ```azurecli-interactive
+  az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
+  
+  ```azurepowershell-interactive
+  Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
 
 - Program Azure PowerShell
 
@@ -622,13 +647,13 @@ Lista aliasów zawsze rośnie. Aby dowiedzieć się, jakie aliasy są obecnie ob
   az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
   ```
 
-- Interfejs API REST/ARMClient
+- Interfejs API REST / ARMClient
 
   ```http
   GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
   ```
 
-### <a name="understanding-the--alias"></a>Informacje o aliasie [*]
+### <a name="understanding-the--alias"></a>Opis alias [*]
 
 Kilka dostępnych aliasów ma wersję, która jest wyświetlana jako nazwa "normal" i inną, która ma **\[\*\]** do niej dołączony. Na przykład:
 
@@ -666,9 +691,9 @@ Aby uzyskać więcej informacji, zobacz [ocenianie aliasu [\*]](../how-to/author
 
 ## <a name="initiatives"></a>Inicjatyw
 
-Inicjatywy umożliwiają grupowanie kilku powiązanych definicji zasad w celu uproszczenia przypisań i zarządzania, ponieważ pracujesz z grupą jako pojedynczy element. Na przykład można pogrupować powiązane definicje zasad oznakowania do jednej inicjatywy. Zamiast przypisywać poszczególne zasady indywidualnie, należy zastosować inicjatywę.
+Inicjatywy pozwalają grupować kilka definicji zasad powiązane w celu uproszczenia przypisań i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować powiązane definicje zasad tagowania w jednym inicjatywy. Zamiast przypisywać każdej z zasad indywidualnie, mają zastosowanie tej inicjatywy.
 
-Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwóch tagów: `costCenter` i `productName`. Używa dwóch wbudowanych zasad, aby zastosować domyślną wartość tagu.
+Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwa tagi: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
 
 ```json
 {

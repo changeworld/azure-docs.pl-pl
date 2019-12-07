@@ -1,5 +1,5 @@
 ---
-title: Co to jest geograficzna sztuczna inteligencja
+title: Co to jest geograficzna sztuczna inteligencja DSVM
 titleSuffix: Azure Data Science Virtual Machine
 description: Geograficznie sztuczna inteligencja Data Science Virtual Machine zapewnia ArcGIS Pro do pracy z danymi geograficznymi, a także narzędzi Python, R i Data Science do pracy z ML i AI.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899918"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co to jest geograficzna sztuczna inteligencja Data Science Virtual Machine?
 

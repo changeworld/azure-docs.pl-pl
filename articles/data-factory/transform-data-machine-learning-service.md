@@ -1,5 +1,5 @@
 ---
-title: Wykonywanie potoków Azure Machine Learning w potokach Azure Data Factory
+title: Wykonaj potoki Azure Machine Learning
 description: Dowiedz się, jak uruchamiać potoki Azure Machine Learning w potokach Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -7,15 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/10/2019
-author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: a257c7d3f288f9a2e1998bf0679b7146b089cb50
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: djpmsft
+manager: anandsub
+ms.date: 10/10/2019
+ms.openlocfilehash: b9b7ce4b215e3182279b7ffe16124c466ac0dd25
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683893"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893913"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Wykonaj potoki Azure Machine Learning w Azure Data Factory
 
@@ -44,13 +45,13 @@ Uruchom potoki Azure Machine Learning jako krok w potokach Azure Data Factory. D
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania w potoku | Ciąg | Tak
 type | Typ działania to "AzureMLExecutePipeline" | Ciąg | Tak
 linkedServiceName | Połączona usługa do Azure Machine Learning | Odwołanie do połączonej usługi | Tak
 mlPipelineId | Identyfikator opublikowanego potoku Azure Machine Learning | Ciąg (lub wyrażenie z typem ResultType ciągu) | Tak
-eksperymentname | Nazwa eksperymentu uruchomienia dla Machine Learning uruchomienia potoku | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie
+Eksperymentname | Nazwa eksperymentu uruchomienia dla Machine Learning uruchomienia potoku | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie
 mlPipelineParameters | Klucz, pary wartości do przesłania do opublikowanego punktu końcowego potoku Azure Machine Learning. Klucze muszą być zgodne z nazwami parametrów potoku zdefiniowanych w opublikowanym potoku Machine Learning | Obiekt z parami wartości klucza (lub wyrażeniem z obiektem ResultType) | Nie
 mlParentRunId | Identyfikator uruchomienia potoku Azure Machine Learning nadrzędnego | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie
 continueOnStepFailure | Czy kontynuować wykonywanie innych kroków w potoku Machine Learning uruchomienie w przypadku niepowodzenia kroku | wartość logiczna | Nie

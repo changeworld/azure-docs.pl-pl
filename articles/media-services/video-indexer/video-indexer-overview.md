@@ -1,7 +1,7 @@
 ---
 title: Co to jest Video Indexer?
 titleSuffix: Azure Media Services
-description: Omówienie usługi Azure Media Services Video Indexer.
+description: Ten artykuł zawiera omówienie usługi Video Indexer Azure Media Services.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 9f6a5fa96034e0bf43ddd573a425de8d114d47ce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575113"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892706"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -33,7 +33,7 @@ Szczegółowe informacje o Video Indexerach można zastosować do wielu scenariu
 
 * *Głębokie wyszukiwanie*: Korzystaj z szczegółowych informacji uzyskanych z filmu wideo, aby ulepszyć środowisko wyszukiwania w bibliotece wideo. Na przykład indeksowanie słów i twarzy może umożliwić wyszukiwanie w miejscu wideo, w którym osoba połączyła się z pewnymi słowami lub kiedy dwie osoby były widoczne wspólnie. Wyszukiwanie w oparciu o te szczegółowe informacje z filmów wideo dotyczy agencji Aktualności, instytutów edukacyjnych, nadawców, właścicieli zawartości rozrywkowej, aplikacji biznesowych przedsiębiorstwa, a także ogólnie dla każdej branży, która ma bibliotekę wideo, której użytkownicy muszą wyszukiwać.
 * *Tworzenie zawartości*: Tworzenie przyczep, wyróżnianie elementów, zawartości mediów społecznościowych lub klipów informacyjnych na podstawie wyciągów Video Indexer szczegółowych informacji z zawartości. Klatki kluczowe, znaczniki scen i sygnatury czasowe dla osób i etykiet mogą sprawiać, że proces tworzenia jest znacznie bardziej gładszy i łatwiejszy w obsłużyć do części wideo, które są potrzebne do tworzenia zawartości.
-* *Ułatwienia dostępu*: Czy chcesz udostępnić zawartość osobom niepełnosprawnym lub jeśli chcesz, aby zawartość była dystrybuowana do różnych regionów przy użyciu różnych języków, możesz użyć transkrypcji i tłumaczenia dostarczonego przez wideo. Indeksator w wielu językach.
+* *Ułatwienia dostępu*: Czy chcesz udostępnić zawartość osobom niepełnosprawnym lub jeśli chcesz, aby zawartość była dystrybuowana do różnych regionów przy użyciu różnych języków, możesz użyć transkrypcji i tłumaczenia udostępnianego przez indeksator wideo w wielu językach.
 * *Zysków*: Video Indexer może pomóc zwiększyć wartość wideo. Na przykład branże korzystające z przychodów usługi AD (Media News, Media społecznościowe itp.) mogą dostarczać odpowiednie reklamy przy użyciu wyodrębnionych informacji jako dodatkowych sygnałów do serwera usługi AD.
 * *Moderowanie zawartości*: Użyj modeli moderowania treści tekstowych i wizualnych, aby zapewnić użytkownikom bezpieczeństwo przed niestosowną zawartością i sprawdzać, czy zawartość publikowana odpowiada wartościom organizacji. Możesz automatycznie blokować niektóre wideo lub otrzymywać alerty dla użytkowników o zawartości.
 * *Zalecenia*: szczegółowe informacje można wykorzystać w celu usprawnienia zaangażowania użytkowników, wyróżnianie odpowiednich filmów wideo użytkownikom. Oznaczając każdy klip wideo z dodatkowymi metadanymi, możesz zalecić użytkownikom najbardziej odpowiednie wideo i wyróżnić części filmu wideo, które będą zgodne z ich potrzebami.

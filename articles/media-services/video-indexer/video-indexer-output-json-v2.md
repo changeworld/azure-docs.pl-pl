@@ -1,7 +1,7 @@
 ---
 title: Badanie Azure Media Services Video Indexer danych wyjściowych generowanych przez interfejs API v2
 titleSuffix: Azure Media Services
-description: Ten temat bada Video Indexer dane wyjściowe utworzone przez interfejs API v2.
+description: W tym temacie przedstawiono Azure Media Services Video Indexer dane wyjściowe generowane przez interfejs API v2.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 0a42c2dce3976a1bf83c85644f56f4c1d8abc9c8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bf4acf70b2937b3cb6b2552bf2d2ef9c2422743a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839532"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892723"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Sprawdzanie Video Indexer danych wyjściowych generowanych przez interfejs API
 
@@ -23,7 +23,7 @@ Gdy wywołasz interfejs API **pobierania indeksu wideo** , a stan odpowiedzi to 
 
 Możesz również wizualnie zapoznać się ze szczegółowymi informacjami na temat wideo, naciskając przycisk **odtwarzania** na filmie wideo w witrynie [Video Indexer](https://www.videoindexer.ai/) . Aby uzyskać więcej informacji, zobacz [Wyświetlanie i edytowanie wglądu w dane wideo](video-indexer-view-edit.md).
 
-![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Szczegółowe informacje](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Ten artykuł bada zawartość JSON zwróconą przez interfejs API **pobierania indeksu wideo** . 
 
@@ -39,13 +39,13 @@ Ten artykuł bada zawartość JSON zwróconą przez interfejs API **pobierania i
 |id|Identyfikator listy odtwarzania.|
 |name|Nazwa listy odtwarzania.|
 |description|Opis listy odtwarzania.|
-|Uż|Nazwa użytkownika, który utworzył listę odtwarzania.|
+|userName|Nazwa użytkownika, który utworzył listę odtwarzania.|
 |utworzony|Godzina utworzenia listy odtwarzania.|
 |Ustawienia prywatności|Tryb prywatności listy odtwarzania (prywatny/publiczny).|
 |state|Lista odtwarzania (przekazana, przetwarzanie, przetwarzanie, Niepowodzenie, poddane kwarantannie).|
 |Jestem właścicielem|Wskazuje, czy lista odtwarzania została utworzona przez bieżącego użytkownika.|
 |isedytowalne|Wskazuje, czy bieżący użytkownik ma uprawnienia do edytowania listy odtwarzania.|
-|IsBase|Wskazuje, czy lista odtwarzania jest podstawową listą odtwarzania (wideo) czy listą odtwarzania z innych filmów wideo (pochodnych).|
+|isBase|Wskazuje, czy lista odtwarzania jest podstawową listą odtwarzania (wideo) czy listą odtwarzania z innych filmów wideo (pochodnych).|
 |durationInSeconds|Łączny czas trwania listy odtwarzania.|
 |summarizedInsights|Zawiera jeden [summarizedInsights](#summarizedinsights).
 |wideo|Lista [filmów wideo](#videos) tworzących listę odtwarzania.<br/>Jeśli ta lista odtwarzania skonstruowanych zakresów czasu innych filmów wideo (pochodnych), wideo na tej liście będzie zawierać tylko dane z dołączonych zakresów czasu.|
@@ -78,18 +78,18 @@ W tej sekcji przedstawiono podsumowanie szczegółowych informacji.
 |name|Nazwa filmu wideo. Na przykład Azure Monitor.|
 |id|Identyfikator filmu wideo. Na przykład 63c6d532ff.|
 |Ustawienia prywatności|Podział może mieć jeden z następujących trybów: **prywatny**, **publiczny**. **Public** — wideo jest widoczne dla wszystkich użytkowników na Twoim koncie i dla wszystkich użytkowników, którzy mają link do filmu wideo. **Prywatny** — wideo jest widoczne dla wszystkich użytkowników Twojego konta.|
-|trwania|Zawiera jeden okres czasu, który opisuje czas wystąpienia szczegółowych informacji. Czas trwania jest w sekundach.|
+|duration|Zawiera jeden okres czasu, który opisuje czas wystąpienia szczegółowych informacji. Czas trwania jest w sekundach.|
 |thumbnailVideoId|Identyfikator filmu wideo, z którego zrobiono miniaturę.
 |thumbnailId|Identyfikator miniatury wideo. Aby uzyskać rzeczywistą miniaturę, wywołaj polecenie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) i przekaż je ThumbnailVideoId i thumbnailId.|
 |ściank|Może zawierać zero lub więcej twarzy. Aby uzyskać szczegółowe informacje, zobacz [twarze](#faces).|
-|służąc|Może zawierać zero lub więcej słów kluczowych. Aby uzyskać szczegółowe informacje, zobacz [słowa kluczowe](#keywords).|
+|słowa kluczowe|Może zawierać zero lub więcej słów kluczowych. Aby uzyskać szczegółowe informacje, zobacz [słowa kluczowe](#keywords).|
 |mową|Może zawierać zero lub więcej mową. Aby uzyskać szczegółowe informacje, zobacz [mową](#sentiments).|
 |audioEffects| Może zawierać zero lub więcej audioEffects. Aby uzyskać szczegółowe informacje, zobacz [audioEffects](#audioEffects).|
-|Etykieta| Może zawierać zero lub więcej etykiet. Aby uzyskać szczegółowe informacje, zobacz [etykiety](#labels).|
+|etykiety| Może zawierać zero lub więcej etykiet. Aby uzyskać szczegółowe informacje, zobacz [etykiety](#labels).|
 |Marek| Może zawierać zero lub więcej marek. Aby uzyskać szczegółowe informacje, zobacz [marki](#brands).|
-|Statystyki | Aby uzyskać szczegółowe informacje, zobacz [Statystyka](#statistics).|
+|statystyki | Aby uzyskać szczegółowe informacje, zobacz [Statystyka](#statistics).|
 |emocji| Może zawierać zero lub więcej emocji. Aby uzyskać szczegółowe informacje, zobacz [emocji](#emotions).|
-|opisano|Może zawierać zero lub więcej tematów. Wymiar [Tematy](#topics) .|
+|— tematy|Może zawierać zero lub więcej tematów. Wymiar [Tematy](#topics) .|
 
 ## <a name="videos"></a>wideo
 
@@ -116,7 +116,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych informacji.
 |indexingPreset|Ustawienie wstępne używane do indeksowania wideo.|
 |streamingPreset|Ustawienie wstępne używane do publikowania filmu wideo.|
 |linguisticModelId|Model CRI używany do transkrypcja wideo.|
-|Statystyki | Aby uzyskać więcej informacji, zobacz [Statystyka](#statistics).|
+|statystyki | Aby uzyskać więcej informacji, zobacz [Statystyka](#statistics).|
 
 ```json
 {
@@ -155,10 +155,10 @@ Obiekt może mieć identyfikator, nazwę, miniaturę, inne metadane i listę wys
 |language|Język informacji szczegółowych (przetłumaczony od języka źródłowego). W postaci ciągu [BCP-47](https://tools.ietf.org/html/bcp47) .|
 |zapisy|Wymiar [transkrypcji](#transcript) .|
 |aparat|Wymiar [OCR](#ocr) .|
-|służąc|Wymiar [słów kluczowych](#keywords) .|
-|propagowan|Może zawierać co najmniej jeden [blok](#blocks)|
+|słowa kluczowe|Wymiar [słów kluczowych](#keywords) .|
+|bloki|Może zawierać co najmniej jeden [blok](#blocks)|
 |ściank|Wymiar [twarzy](#faces) .|
-|Etykieta|Wymiar [etykiet](#labels) .|
+|etykiety|Wymiar [etykiet](#labels) .|
 |zrzutów|Wymiar [zrzutów](#shots) .|
 |Marek|Wymiar [marki](#brands) .|
 |audioEffects|Wymiar [audioEffects](#audioEffects) .|
@@ -166,7 +166,7 @@ Obiekt może mieć identyfikator, nazwę, miniaturę, inne metadane i listę wys
 |visualContentModeration|Wymiar [visualContentModeration](#visualcontentmoderation) .|
 |textualContentModeration|Wymiar [textualContentModeration](#textualcontentmoderation) .|
 |emocji| Wymiar [emocji](#emotions) .|
-|opisano|Wymiar [Tematy](#topics) .|
+|— tematy|Wymiar [Tematy](#topics) .|
 
 Przykład:
 
@@ -189,7 +189,7 @@ Przykład:
 }
 ```
 
-#### <a name="blocks"></a>propagowan
+#### <a name="blocks"></a>bloki
 
 Atrybut | Opis
 ---|---
@@ -240,13 +240,13 @@ Przykład:
 |---|---|
 |id|Identyfikator wiersza OCR.|
 |tekst|Tekst OCR.|
-|zachowanie|Wiarygodność rozpoznawania.|
+|ufność|Wiarygodność rozpoznawania.|
 |language|Język OCR.|
 |wystąpienia|Lista przedziałów czasu, w których wystąpiło to OCR (ten sam OCR może występować wiele razy).|
-|proporcj|Wysokość prostokąta OCR.|
-|Do góry|Górna lokalizacja w px|
-|lewym| Lewa lokalizacja w px|
-|Szerokość|Szerokość prostokąta OCR.|
+|wysokość|Wysokość prostokąta OCR.|
+|top|Górna lokalizacja w px|
+|left| Lewa lokalizacja w px|
+|szerokość|Szerokość prostokąta OCR.|
 
 ```json
 "ocr": [
@@ -269,13 +269,13 @@ Przykład:
   ],
 ```
 
-#### <a name="keywords"></a>służąc
+#### <a name="keywords"></a>słowa kluczowe
 
 |Nazwa|Opis|
 |---|---|
 |id|Identyfikator słowa kluczowego.|
 |tekst|Tekst słowa kluczowego.|
-|zachowanie|Wiarygodność rozpoznawania słowa kluczowego.|
+|ufność|Wiarygodność rozpoznawania słowa kluczowego.|
 |language|Język słowa kluczowego (w przypadku tłumaczenia).|
 |wystąpienia|Lista przedziałów czasu, w których pojawiło się to słowo kluczowe (słowo kluczowe może występować wiele razy).|
 
@@ -306,12 +306,12 @@ Przykład:
 |---|---|
 |id|Identyfikator kroju.|
 |name|Nazwa kroju. Może to być "nieznany #0, zidentyfikowanej osobistości lub osoby przeszkolonej przez klienta.|
-|zachowanie|Niepewność identyfikacji kroju.|
+|ufność|Niepewność identyfikacji kroju.|
 |description|Opis osobistości. |
 |thumbnailId|Identyfikator miniatury tej czołowej.|
 |knownPersonId|Jeśli jest to znana osoba, jej identyfikator wewnętrzny.|
 |referenceId|Jeśli jest to osobistości Bing, jego identyfikator Bing.|
-|ReferenceType|Obecnie tylko Bing.|
+|referenceType|Obecnie tylko Bing.|
 |title|Jeśli jest to osobistości, jego tytuł (na przykład "dyrektor naczelny firmy Microsoft").|
 |imageUrl|Jeśli jest to osobistości, jego adres URL obrazu.|
 |wystąpienia|Są to wystąpienia, w których pojawiły się powierzchnie w danym przedziale czasu. Każde wystąpienie ma również thumbnailsId. |
@@ -345,7 +345,7 @@ Przykład:
 }]
 ```
 
-#### <a name="labels"></a>Etykieta
+#### <a name="labels"></a>etykiety
 
 |Nazwa|Opis|
 |---|---|
@@ -404,7 +404,7 @@ Przykład:
   ] 
 ```
 
-#### <a name="scenes"></a>ze
+#### <a name="scenes"></a>sceny
 
 |Nazwa|Opis|
 |---|---|
@@ -496,8 +496,8 @@ Nazwy firmowe i towarowe wykryte w zamiany mowy na tekst transkrypcji i/lub OCR 
 |referenceId | Sufiks adresu URL witryny Wikipedia. Na przykład "Target_Corporation" jest sufiksem [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Adres URL witryny Wikipedia marki, jeśli istnieje. Na przykład [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Opis marek.|
-|tagów|Lista wstępnie zdefiniowanych tagów, które zostały skojarzone z tą marką.|
-|zachowanie|Wartość ufności detektora Video Indexer marką (0-1).|
+|tags|Lista wstępnie zdefiniowanych tagów, które zostały skojarzone z tą marką.|
+|ufność|Wartość ufności detektora Video Indexer marką (0-1).|
 |wystąpienia|Lista zakresów czasu tej marki. Każde wystąpienie ma element marktype, który wskazuje, czy ta marka pojawiła się w transkrypcji, czy w OCR.|
 
 ```json
@@ -546,7 +546,7 @@ Nazwy firmowe i towarowe wykryte w zamiany mowy na tekst transkrypcji i/lub OCR 
 ]
 ```
 
-#### <a name="statistics"></a>Statystyki
+#### <a name="statistics"></a>statystyki
 
 |Nazwa|Opis|
 |---|---|
@@ -758,7 +758,7 @@ Video Indexer identyfikuje emocji na podstawie podpowiedzi i sygnałów dźwięk
 ],
 ```
 
-#### <a name="topics"></a>opisano
+#### <a name="topics"></a>— tematy
 
 Video Indexer wykonuje wnioskowanie głównych tematów z transkrypcji. Gdy jest to możliwe, dołączana jest Taksonomia [IPTC](https://iptc.org/standards/media-topics/) dla drugiego poziomu. 
 
@@ -767,7 +767,7 @@ Video Indexer wykonuje wnioskowanie głównych tematów z transkrypcji. Gdy jest
 |id|Identyfikator tematu.|
 |name|Nazwa tematu, na przykład: "środki farmaceutyczne".|
 |referenceId|Struktura nawigacyjna odzwierciedla hierarchię tematów. Na przykład: "kondycja i samopoczucie/medycyna, opieka medyczna/środki farmaceutyczne".|
-|zachowanie|Wynik pewności z zakresu [0, 1]. Wyższy poziom.|
+|ufność|Wynik pewności z zakresu [0, 1]. Wyższy poziom.|
 |language|Język używany w temacie.|
 |iptcname|Nazwa kodu nośnika IPTC, jeśli wykryto.|
 |wystąpienia |Obecnie Video Indexer nie indeksuje tematu w przedziałach czasowych, dlatego cały klip wideo jest używany jako interwał.|

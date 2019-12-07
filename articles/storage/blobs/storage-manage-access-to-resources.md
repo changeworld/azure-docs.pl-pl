@@ -1,29 +1,30 @@
 ---
-title: Włączanie publicznego dostępu do odczytu dla kontenerów i obiektów BLOB w usłudze Azure Blob Storage | Microsoft Docs
+title: Zarządzanie publicznym dostępem do odczytu dla kontenerów i obiektów BLOB
+titleSuffix: Azure Storage
 description: Dowiedz się, jak udostępniać kontenery i obiekty blob dostępowi Anonimowemu oraz jak korzystać z nich programistycznie.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 09/19/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: d0e3121fe773a9725eb7cfd9e8b14d0ed86f3fbb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673296"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892486"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob
 
-Można włączyć anonimowy, publiczny dostęp do odczytu do kontenera i jego obiektów BLOB w usłudze Azure Blob Storage. Dzięki temu można przyznać dostęp tylko do odczytu do tych zasobów bez udostępniania klucza konta, a nie wymagając sygnatury dostępu współdzielonego (SAS).
+Możesz włączyć anonimowy, publiczny dostęp do odczytu do kontenera i jego obiektów blob w usłudze Azure Blob Storage. W ten sposób możesz przyznać dostęp tylko do odczytu do tych zasobów bez udostępniania klucza konta i konieczności wymagania sygnatury dostępu współdzielonego.
 
 Publiczny dostęp do odczytu jest najlepszy dla scenariuszy, w których niektóre obiekty blob mają zawsze być dostępne do anonimowego dostępu do odczytu. Aby uzyskać bardziej szczegółowy formant, możesz utworzyć sygnaturę dostępu współdzielonego. Sygnatury dostępu współdzielonego umożliwiają zapewnienie ograniczonego dostępu przy użyciu różnych uprawnień w określonym przedziale czasu. Aby uzyskać więcej informacji na temat tworzenia sygnatur dostępu współdzielonego, zobacz [Używanie sygnatur dostępu współdzielonego (SAS) w usłudze Azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Przyznaj anonimowym użytkownikom uprawnienia do kontenerów i obiektów BLOB
 
-Domyślnie kontener i wszystkie obiekty blob w ramach niego mogą być dostępne tylko dla użytkownika, który ma odpowiednie uprawnienia. Aby udzielić anonimowym użytkownikom dostępu do odczytu do kontenera i jego obiektów blob, można ustawić poziom dostępu publicznego kontenera. Po udzieleniu publicznego dostępu do kontenera Użytkownicy anonimowi mogą odczytywać obiekty blob w ramach dostępnego publicznie kontenera bez autoryzowania żądania.
+Domyślnie kontener i wszystkie jego obiekty blob mogą być dostępne tylko dla użytkownika, który otrzymał odpowiednie uprawnienia. Aby przyznać anonimowym użytkownikom prawa dostępu do odczytu do kontenera i jego obiektów blob, można ustawić poziom dostępu publicznego do kontenera. Po udzieleniu publicznego dostępu do kontenera Użytkownicy anonimowi mogą odczytywać obiekty blob w ramach dostępnego publicznie kontenera bez autoryzowania żądania.
 
 Można skonfigurować kontener z następującymi uprawnieniami:
 
@@ -138,4 +139,4 @@ public static void DownloadBlobAnonymously()
 
 - [Autoryzowanie dostępu do usługi Azure Storage](../common/storage-auth.md)
 - [Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)](../common/storage-sas-overview.md)
-- [Interfejs API REST usługi BLOB Service](/rest/api/storageservices/blob-service-rest-api)
+- [Interfejs API REST usługi Blob Service](/rest/api/storageservices/blob-service-rest-api)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 14fc91feb16fb45eee1fe2e757a717e04ef07f99
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580762"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894718"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co to jest obszar roboczy Azure Machine Learning?
 
@@ -24,11 +24,11 @@ Gdy masz model, możesz zarejestrować go w obszarze roboczym. Następnie można
 
 Dostępne ceny i funkcje zależą od tego, czy jest wybrana [wersja podstawowa, czy Enterprise](overview-what-is-azure-ml.md#sku) dla obszaru roboczego. Podczas [tworzenia obszaru roboczego](#create-workspace)wybierana jest wersja.  Możesz również [uaktualnić](#upgrade) wersję Basic do Enterprise Edition.
 
-## <a name="taxonomy"></a>Taksonomii 
+## <a name="taxonomy"></a>Taksonomia 
 
 Taksonomia obszaru roboczego przedstawiono na poniższym diagramie:
 
-[![taksonomii obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Taksonomia obszaru roboczego](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 Na diagramie przedstawiono następujące składniki obszaru roboczego:
 
@@ -69,12 +69,12 @@ Zadania uczenia maszynowego odczytują i/lub zapisują artefakty w obszarze robo
 
 Można również wykonać następujące zadania zarządzania obszarem roboczym:
 
-| Zadanie zarządzania obszarem roboczym   | Portal              | Studio | Zestaw SDK języka Python/SDK       | Interfejs wiersza polecenia        |
+| Zadanie zarządzania obszarem roboczym   | Portal              | Studio | Zestaw SDK języka Python/SDK       | Interfejs CLI        |
 |---------------------------|---------|---------|------------|------------|
 | Tworzenie obszaru roboczego        | **&check;**     | | **&check;** | **&check;** |
 | Zarządzanie dostępem do obszaru roboczego    | **&check;**   || |  **&check;**    |
-| Uaktualnianie do wersji Enterprise    | **&check;** |  | |     |
-| Tworzenie zasobów obliczeniowych i zarządzanie nimi    |   | **&check;** | **&check;** |  **&check;**   |
+| Uaktualnianie do wersji Enterprise    | **&check;** | **&check;**  | |     |
+| Tworzenie zasobów obliczeniowych i zarządzanie nimi    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Tworzenie maszyny wirtualnej notesu |   | **&check;** | |     |
 
 
@@ -95,7 +95,7 @@ Możesz [uaktualnić obszar roboczy z wersji Basic do Enterprise Edition](how-to
 
 ## <a name="resources"></a>Skojarzone zasoby
 
-Podczas tworzenia nowego obszaru roboczego program automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
+Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): rejestruje kontenery platformy Docker, które są używane podczas uczenia i wdrażania modelu. Aby zminimalizować koszty, ACR jest **załadowane z opóźnieniem** do momentu utworzenia obrazów wdrożenia.
 + [Konto usługi Azure Storage](https://azure.microsoft.com/services/storage/): służy jako domyślny magazyn danych dla obszaru roboczego.  Tutaj są przechowywane notesy Jupyter, które są używane z maszyną wirtualną Azure Machine Learning notesu.

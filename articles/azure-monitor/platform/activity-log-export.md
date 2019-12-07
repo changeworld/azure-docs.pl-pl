@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f2366d60868dd1db52fd8bfc2149756ed4b1b0d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048252"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893624"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 
@@ -33,13 +33,13 @@ Archiwizowanie dziennika aktywności na koncie magazynu jest przydatne, jeśli c
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="storage-account"></a>Konto magazynu
-W przypadku archiwizowania dziennika aktywności należy [utworzyć konto magazynu](../../storage/common/storage-quickstart-create-account.md) , jeśli jeszcze go nie masz. Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jeśli archiwizowanie dzienników diagnostycznych i metryk na koncie magazynu jest również możliwe, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
+W przypadku archiwizowania dziennika aktywności należy [utworzyć konto magazynu](../../storage/common/storage-quickstart-create-account.md) , jeśli jeszcze go nie masz. Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jeśli dzienniki i metryki są również archiwizowane na koncie magazynu, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
 
 Konto magazynu nie musi znajdować się w tej samej subskrypcji co subskrypcja emitująca dzienniki, dopóki użytkownik, który konfiguruje ustawienie, ma dostęp do obu subskrypcji.
 > [!NOTE]
 >  Obecnie nie można archiwizować danych na koncie magazynu, które znajduje się za bezpieczną siecią wirtualną.
 
-### <a name="event-hubs"></a>Event Hubs
+### <a name="event-hubs"></a>Centra zdarzeń
 Jeśli wysyłasz dziennik aktywności do centrum zdarzeń, musisz [utworzyć centrum zdarzeń](../../event-hubs/event-hubs-create.md) , jeśli jeszcze go nie masz. Jeśli wcześniej przesyłane strumieniowo zdarzenia dziennika aktywności do tej przestrzeni nazw Event Hubs, centrum zdarzeń zostanie ponownie użyte.
 
 Zasady dostępu współdzielonego definiują uprawnienia, które ma mechanizm przesyłania strumieniowego. Przesyłanie strumieniowe do Event Hubs wymaga uprawnień do zarządzania, wysyłania i nasłuchiwania. Można utworzyć lub zmodyfikować zasady dostępu współdzielonego dla przestrzeni nazw Event Hubs w Azure Portal na karcie Konfiguracja dla przestrzeni nazw Event Hubs.
@@ -111,13 +111,13 @@ Jeśli profil dziennika już istnieje, najpierw musisz usunąć istniejący prof
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Właściwość | Wymagany | Opis |
+    | Właściwość | Wymagane | Opis |
     | --- | --- | --- |
-    | Nazwa |Yes |Nazwa profilu dziennika. |
+    | Nazwa |Tak |Nazwa profilu dziennika. |
     | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, w którym ma zostać zapisany dziennik aktywności. |
     | serviceBusRuleId |Nie |Service Bus Identyfikator reguły dla przestrzeni nazw Service Bus, w której chcesz utworzyć Centra zdarzeń. Jest to ciąg o formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Lokalizacja |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
-    | RetentionInDays |Yes |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 365. Wartość zero przechowuje dzienniki w nieskończoność. |
+    | Lokalizacja |Tak |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
+    | RetentionInDays |Tak |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 365. Wartość zero przechowuje dzienniki w nieskończoność. |
     | Kategoria |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które mają być zbierane. Możliwe wartości to _Write_, _delete_i _Action_. |
 
 ### <a name="example-script"></a>Przykładowy skrypt
@@ -154,14 +154,14 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Właściwość | Wymagany | Opis |
+    | Właściwość | Wymagane | Opis |
     | --- | --- | --- |
-    | name |Yes |Nazwa profilu dziennika. |
-    | storage-account-id |Yes |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
-    | locations |Yes |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Listę wszystkich regionów dla subskrypcji można wyświetlić przy użyciu `az account list-locations --query [].name`. |
-    | days |Yes |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  Jeśli wartość jest równa zero, wartość parametru enabled powinna być równa false. |
-    |dostępny | Yes |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
-    | categories |Yes |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
+    | name |Tak |Nazwa profilu dziennika. |
+    | storage-account-id |Tak |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
+    | locations |Tak |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Listę wszystkich regionów dla subskrypcji można wyświetlić przy użyciu `az account list-locations --query [].name`. |
+    | days |Tak |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  Jeśli wartość jest równa zero, wartość parametru enabled powinna być równa false. |
+    |enabled | Tak |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
+    | categories |Tak |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
 
 
 
@@ -169,7 +169,7 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
 Niezależnie od tego, czy jest wysyłany do usługi Azure Storage, czy centrum zdarzeń, dane dziennika aktywności będą zapisywane w formacie JSON przy użyciu następującego formatu.
 
 
-> Format danych dziennika aktywności zapisany na koncie magazynu został zmieniony na wiersze JSON na lis. 1, 2018. Aby uzyskać szczegółowe informacje na temat tego formatu, zobacz [Przygotowywanie do zmiany formatu do Azure monitor dzienników diagnostycznych archiwizowanych na koncie magazynu](diagnostic-logs-append-blobs.md) .
+> Format danych dziennika aktywności zapisany na koncie magazynu został zmieniony na wiersze JSON na lis. 1, 2018. Aby uzyskać szczegółowe informacje na temat tego formatu [, zobacz Przygotowywanie do zmiany formatu do Azure monitor dzienników zasobów zarchiwizowanych na koncie magazynu](diagnostic-logs-append-blobs.md) .
 
 ``` JSON
 {
@@ -239,9 +239,9 @@ Elementy w tym formacie JSON są opisane w poniższej tabeli.
 | durationMs |Czas trwania działania (w milisekundach) |
 | callerIpAddress |Adres IP użytkownika, który wykonał operację, oświadczenie nazwy UPN lub oświadczenie SPN na podstawie dostępności. |
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które współużytkują identyfikator korelacji, należy do tej samej akcji Uber. |
-| identity |Obiekt BLOB JSON opisujący autoryzację i oświadczenia. |
+| tożsamość |Obiekt BLOB JSON opisujący autoryzację i oświadczenia. |
 | authorization |Obiekt BLOB właściwości RBAC zdarzenia. Zazwyczaj obejmuje właściwości "Action", "role" i "Scope". |
-| poziom |Poziom zdarzenia. Jedna z następujących wartości: _krytyczny_, _błąd_, _Ostrzeżenie_, _informacyjny_i _pełny_ |
+| level |Poziom zdarzenia. Jedna z następujących wartości: _krytyczny_, _błąd_, _Ostrzeżenie_, _informacyjny_i _pełny_ |
 | location |Region, w którym wystąpiła lokalizacja (lub globalna). |
 | properties |Zestaw par `<Key, Value>` (tj. Dictionary) opisujących szczegóły zdarzenia. |
 

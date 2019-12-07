@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 43405bd3e97dbee325f0a5ed82c5848880775eee
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: f08cd731e40b204d042e5df418b03626b9082c3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240819"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894656"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Łączenie danych z Azure Active Directory
 

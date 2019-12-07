@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5324c17cdf2593d8e1022e6ddbf52b4e24ee64e8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597823"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894349"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor nazewnictwo i terminologia
 Wprowadzono znaczące zmiany Azure Monitor ostatnio z różnymi usługami, które są konsolidowane w celu uproszczenia monitorowania dla klientów platformy Azure. W tym artykule opisano ostatnie zmiany nazwy i terminologii w dokumentacji Azure Monitor.
 
 ## <a name="october-2019---diagnostic-log-to-resource-log"></a>Październik 2019 — dziennik diagnostyczny do dziennika zasobów
-Dzienniki diagnostyczne zostały zmienione na "dzienniki zasobów", aby lepiej odpowiadały to, co jest w rzeczywistości zbierane. Termin "Ustawienia diagnostyczne" pozostaje taki sam.  
+"Dzienniki diagnostyczne" zostały zmienione na "dzienniki zasobów", aby lepiej odpowiadały to, co jest w rzeczywistości zbierane. Termin "Ustawienia diagnostyczne" pozostaje taki sam.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Luty 2019 — terminologia Log Analytics
 Po konsolidacji różnych usług w ramach Azure Monitor wykonujemy następny krok, modyfikując terminologię w naszej dokumentacji, aby lepiej opisać usługę Azure Monitor i jej różne składniki. 

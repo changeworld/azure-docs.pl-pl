@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 8a8a2f32de905ab7c12f4886d889b2a6fc20c449
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899152"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893318"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Rozwiązania do monitorowania sieci platformy Azure w Azure Monitor
 
@@ -45,7 +45,7 @@ Aby korzystać z rozwiązań:
 
 Można włączyć diagnostykę i odpowiednie rozwiązanie dla jednej lub obu Application Gateway i sieciowych grup zabezpieczeń.
 
-Jeśli nie włączysz rejestrowania diagnostycznego dla określonego typu zasobu, ale zainstalujesz rozwiązanie, bloki pulpitu nawigacyjnego dla tego zasobu są puste i wyświetlają komunikat o błędzie.
+Jeśli nie włączysz rejestrowania zasobów diagnostycznych dla określonego typu zasobu, ale zainstalujesz rozwiązanie, bloki pulpitu nawigacyjnego dla tego zasobu są puste i wyświetlają komunikat o błędzie.
 
 > [!NOTE]
 > W styczniu 2017 obsługiwane sposoby wysyłania dzienników z bram aplikacji i sieciowych grup zabezpieczeń do obszaru roboczego Log Analytics zmienione. Jeśli widzisz rozwiązanie **Azure Networking Analytics (przestarzałe)** , zapoznaj się z tematem [Migrowanie ze starego rozwiązania do analizy sieci](#migrating-from-the-old-networking-analytics-solution) , aby poznać kroki, które należy wykonać.
@@ -77,7 +77,7 @@ Następujące metryki są obsługiwane przez bramy aplikacji: ponownie
 
 * przepustowość 5 minut
 
-### <a name="install-and-configure-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
+### <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych instrukcji, aby zainstalować i skonfigurować rozwiązanie Azure Application Gateway Analytics:
 
 1. Włącz rozwiązanie Azure Application Gateway Analytics z [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) lub przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md).
@@ -100,7 +100,7 @@ Skorzystaj z poniższych instrukcji, aby zainstalować i skonfigurować rozwiąz
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Włączanie diagnostyki sieci platformy Azure przy użyciu programu PowerShell
 
-Poniższy skrypt programu PowerShell zawiera przykład sposobu włączania rejestrowania diagnostycznego dla bram aplikacji.
+Poniższy skrypt programu PowerShell zawiera przykład sposobu włączania rejestrowania zasobów dla bram aplikacji.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -141,14 +141,14 @@ Na dowolnej stronie przeszukiwania dzienników można wyświetlać wyniki wedłu
 > Rozwiązanie Network Security Group Analytics jest przenoszone do pomocy technicznej społeczności, ponieważ jej funkcjonalność została zastąpiona przez [Analiza ruchu](../../network-watcher/traffic-analytics.md).
 > - Rozwiązanie jest teraz dostępne w [szablonach szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) i wkrótce nie będzie już dostępne w witrynie Azure Marketplace.
 > - W przypadku istniejących klientów, którzy już dodaliśmy rozwiązanie do swojego obszaru roboczego, będzie ona nadal działać bez zmian.
-> - Firma Microsoft będzie nadal obsługiwać wysyłanie dzienników diagnostycznych sieciowej grupy zabezpieczeń do obszaru roboczego przy użyciu ustawień diagnostycznych.
+> - Firma Microsoft będzie nadal obsługiwać wysyłanie dzienników zasobów sieciowej grupy zabezpieczeń do obszaru roboczego przy użyciu ustawień diagnostycznych.
 
 Następujące dzienniki są obsługiwane dla sieciowych grup zabezpieczeń:
 
 * NetworkSecurityGroupEvent
 * NetworkSecurityGroupRuleCounter
 
-### <a name="install-and-configure-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
+### <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych instrukcji, aby zainstalować i skonfigurować rozwiązanie do analizy sieci Azure:
 
 1. Włącz rozwiązanie do analizy grup zabezpieczeń sieci Azure z [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) lub przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md).
@@ -171,7 +171,7 @@ Skorzystaj z poniższych instrukcji, aby zainstalować i skonfigurować rozwiąz
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Włączanie diagnostyki sieci platformy Azure przy użyciu programu PowerShell
 
-Poniższy skrypt programu PowerShell zawiera przykład sposobu włączania rejestrowania diagnostycznego dla sieciowych grup zabezpieczeń
+Poniższy skrypt programu PowerShell zawiera przykład sposobu włączania rejestrowania zasobów dla sieciowych grup zabezpieczeń
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

@@ -1,22 +1,23 @@
 ---
-title: Odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza) — Azure Storage
+title: Tryb failover odzyskiwania po awarii i konta magazynu (wersja zapoznawcza)
+titleSuffix: Azure Storage
 description: Usługa Azure Storage obsługuje tryb failover (wersja zapoznawcza) konta magazynu geograficznie nadmiarowego. Korzystając z trybu failover konta, można zainicjować proces trybu failover dla konta magazynu, jeśli podstawowy punkt końcowy stanie się niedostępny.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775932"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895347"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza) w usłudze Azure Storage
+# <a name="disaster-recovery-and-account-failover-preview"></a>Odzyskiwanie po awarii i tryb failover konta (wersja zapoznawcza)
 
 Firma Microsoft dąży do zapewnienia, że usługi platformy Azure są zawsze dostępne. Może jednak wystąpić nieplanowana awaria usługi. Jeśli aplikacja wymaga odporności, firma Microsoft zaleca korzystanie z magazynu geograficznie nadmiarowego, dzięki czemu dane są replikowane w drugim regionie. Ponadto klienci powinni mieć plan odzyskiwania po awarii na potrzeby obsługi regionalnej awarii usługi. Ważna część planu odzyskiwania po awarii jest przygotowywana do przełączenia w tryb failover do pomocniczego punktu końcowego w przypadku, gdy podstawowy punkt końcowy stał się niedostępny. 
 
@@ -69,7 +70,7 @@ Firma Microsoft zaleca również zaprojektowanie aplikacji w celu przygotowania 
 
 Tryb failover konta zarządzanego przez klienta (wersja zapoznawcza) umożliwia niepowodzenie całego konta magazynu w odniesieniu do regionu pomocniczego, jeśli podstawowy serwer stał się niedostępny z jakiegokolwiek powodu. Po wymuszeniu przejścia w tryb failover do regionu pomocniczego klienci mogą rozpocząć zapisywanie danych do pomocniczego punktu końcowego po zakończeniu pracy w trybie failover. Przełączenie w tryb failover trwa zwykle o godzinę.
 
-### <a name="how-an-account-failover-works"></a>Jak działa tryb failover konta
+### <a name="how-an-account-failover-works"></a>Na czym polega przełączanie konta w tryb failover
 
 W normalnych warunkach klient zapisuje dane na koncie usługi Azure Storage w regionie podstawowym, a dane są replikowane asynchronicznie do regionu pomocniczego. Na poniższej ilustracji przedstawiono scenariusz, w którym jest dostępny region podstawowy:
 

@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z szyfrowania dynamicznego AES-128 i usługi dostarczania kluczy | Microsoft Docs
-description: Dostarcz zawartość zaszyfrowaną przy użyciu kluczy szyfrowania AES 128-bitowego za pomocą Microsoft Azure Media Services. Media Services zapewnia również usługę dostarczania kluczy, która dostarcza klucze szyfrowania do autoryzowanych użytkowników. W tym temacie przedstawiono sposób dynamicznego szyfrowania przy użyciu algorytmu AES-128 i używania usługi Key Delivery.
+description: W tym temacie przedstawiono sposób dynamicznego szyfrowania przy użyciu algorytmu AES-128 i używania usługi Key Delivery.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014970"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895833"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Korzystanie z szyfrowania dynamicznego AES-128 i usługi dostarczania kluczy
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Podczas szyfrowania zasobów za pomocą algorytmu AES należy wykonać następuj
 
 1. [Utwórz element zawartości i przekaż pliki do elementu zawartości](media-services-protect-with-aes128.md#create_asset).
 
-2. Zakoduj element [zawartości zawierający plik na zestaw plików MP4 z adaptacyjną szybkością transmisji bitów](media-services-protect-with-aes128.md#encode_asset).
+2. [Zakoduj element zawartości zawierający plik na zestaw plików MP4 z adaptacyjną szybkością transmisji bitów](media-services-protect-with-aes128.md#encode_asset).
 
 3. [Utwórz klucz zawartości i skojarz go z zakodowanym elementem](media-services-protect-with-aes128.md#create_contentkey)zawartości. W usłudze Media Services klucz zawartości zawiera klucz szyfrowania elementu zawartości.
 
@@ -57,7 +57,7 @@ Podczas szyfrowania zasobów za pomocą algorytmu AES należy wykonać następuj
 
 5. [Skonfiguruj zasady dostarczania dla elementu zawartości](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Konfiguracja zasad dostarczania obejmuje adres URL pozyskiwania klucza i wektor inicjujący (IV). (Algorytm AES-128 wymaga tego samego elementu IV do szyfrowania i odszyfrowywania). Konfiguracja obejmuje również protokół dostarczania (na przykład MPEG-KRESKa, HLS, Smooth Streaming lub wszystkie) oraz typ szyfrowania dynamicznego (na przykład koperta lub bez szyfrowania dynamicznego).
 
-    Dla każdego protokołu dotyczącego danego elementu zawartości można stosować inne zasady. Na przykład dla protokołu Smooth/DASH można zastosować szyfrowanie PlayReady, zaś dla protokołu HLS — szyfrowanie AES Envelope. Wszystkie protokoły, które nie są zdefiniowane w zasadach dostarczania, są blokowane przed przesyłaniem strumieniowym. (Przykładem jest dodanie jednej zasady, która określa tylko HLS jako protokół). Wyjątkiem jest przypadek, w którym nie zdefiniowano żadnych zasad dostarczania elementów zawartości. Wówczas są dozwolone wszystkie protokoły.
+    Dla każdego protokołu dotyczącego danego elementu zawartości można stosować inne zasady. Na przykład dla protokołu Smooth/DASH można zastosować szyfrowanie PlayReady, zaś dla protokołu HLS — szyfrowanie AES Envelope. Wszystkie protokoły, które nie są zdefiniowane w zasadach dostarczania, są blokowane przed przesyłaniem strumieniowym. (Przykładem jest dodanie jednej zasady, która określa tylko HLS jako protokół). Wyjątek polega na tym, że w ogóle nie zdefiniowano żadnych zasad dostarczania elementów zawartości. Wówczas są dozwolone wszystkie protokoły.
 
 6. [Utwórz lokalizator OnDemand](media-services-protect-with-aes128.md#create_locator) w celu pobrania adresu URL przesyłania strumieniowego.
 
@@ -141,7 +141,7 @@ Możesz przetestować strumień za pomocą usługi [Azure Media Services Player]
 W poprzednim kroku został skonstruowany adres URL wskazujący na plik manifestu. Klient musi wyodrębnić niezbędne informacje z plików manifestu przesyłania strumieniowego, aby wysłać żądanie do usługi dostarczania kluczy.
 
 ### <a name="manifest-files"></a>Pliki manifestu
-Klient musi wyodrębnić adres URL (zawierający także wartość identyfikatora klucza zawartości [dzieciak]) z pliku manifestu. Klient próbuje pobrać klucz szyfrowania z usługi dostarczania kluczy. Klient musi również wyodrębnić wartość IV i użyć jej do odszyfrowania strumienia. Poniższy fragment kodu przedstawia `<Protection>` element manifestu Smooth Streaming:
+Klient musi wyodrębnić adres URL (zawierający także wartość identyfikatora klucza zawartości [dzieciak]) z pliku manifestu. Klient próbuje pobrać klucz szyfrowania z usługi dostarczania kluczy. Klient musi również wyodrębnić wartość IV i użyć jej do odszyfrowania strumienia. Poniższy fragment kodu przedstawia `<Protection>` elementu manifestu Smooth Streaming:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ Klient musi wyodrębnić adres URL (zawierający także wartość identyfikatora
 
 W przypadku HLS Manifest główny jest podzielony na pliki segmentów. 
 
-Na przykład, głównym manifestem jest: http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-B289-3e48a8762490/BigBuckBunny.ISM/manifest (format = M3U8-AAPL). Zawiera listę nazw plików segmentów.
+Na przykład, głównym manifestem jest: http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest (format = M3U8-AAPL). Zawiera listę nazw plików segmentów.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ Na przykład, głównym manifestem jest: http:\//test001.Origin.MediaServices.Wi
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-W przypadku otwarcia jednego z plików segmentu w edytorze tekstów (na przykład http:\//test001.Origin.MediaServices.Windows.NET/8bfe7d6f-34e3-4d1a-B289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (wideo, format = M3U8-AAPL), zawiera #EXT-X-KEY, co oznacza, że plik jest szyfrowany.
+Jeśli otworzysz jeden z plików segmentu w edytorze tekstu (na przykład http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/manifest (wideo, format = M3U8-AAPL), zawiera on #EXT-X-KEY, co oznacza, że plik jest szyfrowany.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -260,5 +260,5 @@ Upewnij się, że zaktualizowano zmienne, tak aby wskazywały foldery, w któryc
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

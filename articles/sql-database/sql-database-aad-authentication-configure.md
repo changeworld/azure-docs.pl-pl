@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: 5830e0b7ee49a7d954dbdb3f897ee7ac5901c6a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421765"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901360"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -138,7 +138,7 @@ Wystąpienie zarządzane musi mieć uprawnienia do odczytu usługi Azure AD, aby
 
    Na stronie Administrator Active Directory są wyświetlane wszystkie elementy członkowskie i grupy Active Directory. Nie można wybrać użytkowników lub grup, które są wyszarzone, ponieważ nie są one obsługiwane jako Administratorzy usługi Azure AD. Zapoznaj się z listą obsługiwanych administratorów w [funkcjach i ograniczeniach usługi Azure AD](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Kontrola dostępu oparta na rolach (RBAC) ma zastosowanie tylko do Azure Portal i nie jest propagowana do SQL Server.
 
-    ![add-admin](./media/sql-database-aad-authentication/add-admin.png)
+    ![Dodaj administratora Azure Active Directory](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
 
 8. W górnej części strony Administrator Active Directory wybierz pozycję **Zapisz**.
 
@@ -178,7 +178,7 @@ Jako najlepsze rozwiązanie dla istniejących administratorów usługi Azure AD 
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz temat [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell).
 
 > [!IMPORTANT]
 > Moduł programu PowerShell Azure Resource Manager (RM) jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. Moduł AzureRM będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020.  Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne. Aby uzyskać więcej informacji o zgodności, zobacz [wprowadzenie do nowego Azure PowerShell AZ module](/powershell/azure/new-azureps-module-az).
@@ -238,11 +238,13 @@ W poniższych dwóch procedurach pokazano, jak zainicjować obsługę administra
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer SQL platformy Azure może obsługiwać Azure SQL Database lub Azure SQL Data Warehouse.) ![wybór usługi AD][8]
+1. W witrynie [Azure Portal](https://portal.azure.com/) w prawym górnym rogu wybierz swoje połączenia, aby wyświetlić listę rozwijaną możliwych usług Active Directory. Wybierz odpowiednią usługę Active Directory jako domyślną usługę Azure AD. W tym kroku powiązana z subskrypcją usługa Active Directory zostaje połączona z serwerem Azure SQL. Dzięki temu mamy pewność, że ta sama subskrypcja jest używana zarówno przez usługę Azure AD, jak i SQL Server. (Serwer Azure SQL może hostować usługę Azure SQL Database lub Azure SQL Data Warehouse).
 
-2. Na lewym transparencie wybierz pozycję **wszystkie usługi**, a następnie w polu Typ filtru w programie **SQL Server**. Wybierz pozycję **serwery SQL**.
+    ![Wybór usługi AD][8]
 
-    ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
+2. Wyszukaj i wybierz pozycję **SQL Server**.
+
+    ![Wyszukaj i wybierz pozycję Serwery SQL](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
     > Na tej stronie przed wybraniem opcji **serwery SQL**możesz wybrać **gwiazdkę** obok nazwy, aby dodać do *ulubionych* kategorię, i Dodaj **serwery SQL** na lewym pasku nawigacyjnym.
@@ -251,11 +253,11 @@ W poniższych dwóch procedurach pokazano, jak zainicjować obsługę administra
 
 4. Na stronie **administrator Active Directory** wybierz pozycję **Ustaw administratora**.
 
-    ![wybierz usługę active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+    ![Serwery SQL ustawione jako administrator Active Directory](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
 5. Na stronie **Dodawanie administratora** wyszukaj użytkownika, wybierz użytkownika lub grupę do pełnienia funkcji administratora, a następnie kliknij opcję **Wybierz**. (Na stronie administratora usługi Active Directory wyświetlono wszystkich członków i grupy danej usługi Active Directory). Nie można wybrać wyszarzonych użytkowników lub grup, ponieważ nie są oni obsługiwani jako administratorzy usługi Azure AD. (Zobacz listę obsługiwanych administratorów w sekcji **funkcje usługi Azure AD i ograniczenia** dotyczące [uwierzytelniania przy użyciu Azure Active Directory uwierzytelniania SQL Database lub SQL Data Warehouse](sql-database-aad-authentication.md)). Kontrola dostępu oparta na rolach (RBAC) dotyczy tylko portalu i nie jest propagowana do SQL Server.
 
-    ![Wybór administratora](./media/sql-database-aad-authentication/select-admin.png)  
+    ![Wybierz administratora Azure Active Directory](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
 6. W górnej części strony **Administrator usługi Active Directory** wybierz opcję **ZAPISZ**.
 
@@ -272,7 +274,7 @@ Aby później usunąć administratora, w górnej części strony **administrator
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz temat [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). Aby zainicjować obsługę administracyjną administratora usługi Azure AD, wykonaj następujące polecenia Azure PowerShell:
+Aby uruchomić polecenia cmdlet programu PowerShell, należy zainstalować i uruchomić Azure PowerShell. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Aby zainicjować obsługę administracyjną administratora usługi Azure AD, wykonaj następujące polecenia Azure PowerShell:
 
 - Connect-AzAccount
 - SELECT-AzSubscription
@@ -436,7 +438,7 @@ Użyj tej metody, jeśli logujesz się do systemu Windows przy użyciu poświadc
 
     ![Wybierz nazwę bazy danych][13]
 
-## <a name="active-directory-password-authentication"></a>Active Directory uwierzytelnianie hasła
+## <a name="active-directory-password-authentication"></a>Uwierzytelnianie za pomocą hasła usługi Azure Active Directory
 
 Użyj tej metody podczas nawiązywania połączenia z nazwą główną usługi Azure AD przy użyciu domeny zarządzanej usługi Azure AD. Można go również użyć dla kont federacyjnych bez dostępu do domeny, na przykład podczas pracy zdalnej.
 
@@ -470,7 +472,7 @@ conn.Open();
 
 Nie można nawiązać połączenia z Azure SQL Database za pomocą słowa kluczowego parametrów połączenia `Integrated Security=True`. Podczas tworzenia połączenia ODBC należy usunąć spacje i ustawić uwierzytelnianie na "ActiveDirectoryIntegrated".
 
-### <a name="active-directory-password-authentication"></a>Active Directory uwierzytelnianie hasła
+### <a name="active-directory-password-authentication"></a>Uwierzytelnianie za pomocą hasła usługi Azure Active Directory
 
 Aby nawiązać połączenie z bazą danych przy użyciu uwierzytelniania zintegrowanego i tożsamości usługi Azure AD, dla słowa kluczowego uwierzytelniania należy ustawić wartość Active Directory hasło. Parametry połączenia muszą zawierać słowa kluczowe ID/UID i Password/PWD oraz wartości. Poniższy C# przykład kodu używa ADO .NET.
 

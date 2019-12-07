@@ -1,20 +1,21 @@
 ---
-title: Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)
+title: Udzielanie ograniczonego dostępu do danych za pomocą sygnatur dostępu współdzielonego (SAS)
+titleSuffix: Azure Storage
 description: Informacje o używaniu sygnatur dostępu współdzielonego (SAS) do delegowania dostępu do zasobów usługi Azure Storage, w tym obiektów blob, kolejek, tabel i plików.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382014"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895152"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)
 
@@ -75,13 +76,13 @@ Oto przykład identyfikatora URI sygnatury dostępu współdzielonego usługi, p
 
 Użyj sygnatury dostępu współdzielonego, jeśli chcesz zapewnić bezpieczny dostęp do zasobów na koncie magazynu do dowolnego klienta, który nie ma w inny sposób uprawnień do tych zasobów.
 
-Typowym scenariuszem, w którym jest przydatny sygnatura dostępu współdzielonego, jest usługa, w której użytkownicy odczytują i zapisują własne dane na koncie magazynu. W scenariuszu, w którym konto magazynu przechowuje dane użytkowników, istnieją dwa typowe wzorce projektowe:
+Typowym scenariuszem, w którym jest przydatny sygnatura dostępu współdzielonego, jest usługa, w której użytkownicy odczytują i zapisują własne dane na koncie magazynu. W scenariuszu, w którym dane użytkowników są przechowywane na koncie magazynu, zwykle występują dwa wzorce projektowe:
 
-1. Klienci przesyłają i pobierają dane za pośrednictwem usługi frontonu proxy, która wykonuje uwierzytelnianie. Ta usługa frontonu serwera proxy umożliwia sprawdzenie poprawności reguł firmy, ale w przypadku dużych ilości danych lub transakcji dużych ilości, tworzenie usługi, która może być skalowana w celu dopasowania do popytu, może być kosztowne lub trudne.
+1. Klienci przekazują i pobierają dane za pośrednictwem usługi serwera proxy frontonu, która przeprowadza uwierzytelnianie. Ta usługa frontonu serwera proxy umożliwia sprawdzenie poprawności reguł firmy, ale w przypadku dużych ilości danych lub transakcji dużych ilości, tworzenie usługi, która może być skalowana w celu dopasowania do popytu, może być kosztowne lub trudne.
 
    ![Diagram scenariusza: usługa frontonu serwera proxy](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Uproszczona usługa uwierzytelnia klienta zgodnie z potrzebami, a następnie generuje sygnaturę dostępu współdzielonego. Gdy aplikacja kliencka uzyska sygnaturę dostępu współdzielonego, może uzyskać dostęp do zasobów konta magazynu bezpośrednio z uprawnieniami zdefiniowanymi przez SYGNATURę dostępu współdzielonego oraz interwałem dozwolonym przez skojarzenie SAS. Sygnatura dostępu współdzielonego ogranicza potrzebę routingu wszystkich danych za pomocą usługi frontonu serwera proxy.
+1. Uproszczona usługa uwierzytelnia klienta zgodnie z potrzebami, a następnie generuje sygnaturę dostępu współdzielonego. Gdy aplikacja kliencka uzyska sygnaturę dostępu współdzielonego, może uzyskać dostęp do zasobów konta magazynu bezpośrednio z uprawnieniami zdefiniowanymi przez SYGNATURę dostępu współdzielonego oraz interwałem dozwolonym przez skojarzenie SAS. Sygnatura dostępu współdzielonego zmniejsza konieczność kierowania wszystkich danych przez usługę serwera proxy frontonu.
 
    ![Diagram scenariusza: usługa dostawcy SAS](./media/storage-sas-overview/sas-storage-provider-service.png)
 

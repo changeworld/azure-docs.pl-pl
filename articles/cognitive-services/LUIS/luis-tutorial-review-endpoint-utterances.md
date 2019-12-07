@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 04f30818e3c871d74d94bfd92bd3f73e4e6637a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0a4d2a3345ce4f69d4492d1a782b778b1ee3bf4c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499410"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895673"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Samouczek: usuwanie prognoz przez przeglądanie punktu końcowego wyrażenia długości
-W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki. Należy regularnie przeglądać wypowiedzi punktu końcowego w ramach zaplanowanej konserwacji usługi LUIS. 
+W tym samouczku poprawisz przewidywania aplikacji przez sprawdzenie lub poprawienie wyrażenia długości, odebranych za pośrednictwem punktu końcowego HTTPS LUIS, który LUIS nie ma pewności. Należy zapoznać się z punktem końcowym wyrażenia długości jako regularną częścią konserwacji zaplanowanej LUIS.
 
-Ten proces przeglądu to kolejny sposób, w który usługa LUIS może nauczyć się domeny aplikacji. Usługa LUIS wybrała wypowiedzi występujące na liście do przeglądu. Ta lista ma następujące cechy:
+Ten proces przeglądu pozwala LUIS na naznanie Twojej domeny aplikacji. LUIS wybiera wyrażenia długości, które pojawiają się na liście przegląd. Ta lista ma następujące cechy:
 
 * Jest specyficzna dla aplikacji.
-* Ma za zadanie zwiększyć dokładność przewidywania aplikacji. 
-* Powinna być regularnie przeglądana. 
+* Ma za zadanie zwiększyć dokładność przewidywania aplikacji.
+* Powinna być regularnie przeglądana.
 
-Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewidzianą intencję wypowiedzi. Możesz też oznaczać etykietami jednostki niestandardowe, które nie zostały przewidziane lub zostały przewidziane niepoprawnie. 
+Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewidzianą intencję wypowiedzi.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -37,202 +37,195 @@ Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewid
 > [!div class="checklist"]
 > * Importowanie aplikacji przykładowej
 > * Przeglądanie wypowiedzi punktu końcowego
-> * Aktualizowanie listy fraz
-> * Szkolenie aplikacji
-> * Publikowanie aplikacji
+> * Uczenie i publikowanie aplikacji
 > * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 
-Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
-
-Wykonaj następujące czynności:
+Aby zaimportować aplikację, wykonaj następujące czynności.
 
 1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json).
 
-1. Zaimportuj plik JSON do nowej aplikacji.
+1. W [portalu Luis w wersji zapoznawczej](https://preview.luis-ai)Zaimportuj plik JSON do nowej aplikacji.
 
-1. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `review`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
+1. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `review`.
 
-1. Wytrenuj i opublikuj nową aplikację.
+    > [!TIP]
+    > Klonowanie do nowej wersji jest najlepszym rozwiązaniem Przed zmodyfikowaniem aplikacji. Po zakończeniu wersji wyeksportuj wersję (plik JSON lub Lu) i sprawdź plik w systemie kontroli źródła.
 
-1. Użyj punktu końcowego, aby dodać następujące wypowiedzi. Możesz to zrobić za pomocą [skryptu](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) lub z punktu końcowego w przeglądarce. Należy dodać następujące wypowiedzi:
 
-   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
+1. Aby nauczyć aplikację, wybierz pozycję **pouczenie**.
 
-    Jeśli masz wszystkie wersje aplikacji z całej serii samouczków, może Cię zaskoczyć to, że lista **Review endpoint utterances** (Przeglądanie wypowiedzi punktu końcowego) nie ulega zmianie w zależności od wersji. Jest tylko jedna pula wypowiedzi do przejrzenia, niezależnie od aktywnie edytowanej wersji i od wersji aplikacji opublikowanej w punkcie końcowym. 
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Opublikuj aplikację, aby uzyskać do niej dostęp z punktu końcowego HTTP
+
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
+## <a name="add-utterances-at-the-endpoint"></a>Dodawanie wyrażenia długości w punkcie końcowym
+
+W tej aplikacji masz intencje i jednostki, ale nie masz żadnego użycia punktów końcowych. To użycie punktu końcowego jest wymagane w celu usprawnienia aplikacji za pomocą przeglądu wypowiedź punktu końcowego.
+
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
+
+1. Użyj punktu końcowego, aby dodać następujące wypowiedzi.
+
+    |Wypowiedź punktu końcowego|Wyrównany cel|
+    |--|--|
+    |`I'm looking for a job with Natural Language Processing`|`GetJobInformation`|
+    |`I want to cancel on March 3`|`Utilities.Cancel`|
+    |`When were HRF-123456 and hrf-234567 published in the last year?`|`FindForm`|
+    |`shift 123-45-6789 from Z-1242 to T-54672`|`MoveEmployee`|
+    |`Please relocation jill-jones@mycompany.com from x-2345 to g-23456`|`MoveEmployee`|
+    |`Here is my c.v. for the programmer job`|`ApplyForJob`|
+    |`This is the lead welder paperwork.`|`ApplyForJob`|
+    |`does form hrf-123456 cover the new dental benefits and medical plan`|`FindForm`|
+    |`Jill Jones work with the media team on the public portal was amazing`|`EmployeeFeedback`|
+
+    Jest tylko jedna pula wypowiedzi do przejrzenia, niezależnie od aktywnie edytowanej wersji i od wersji aplikacji opublikowanej w punkcie końcowym.
 
 ## <a name="review-endpoint-utterances"></a>Przeglądanie wypowiedzi punktu końcowego
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+Przejrzyj wyrażenia długości punktu końcowego pod kątem prawidłowo dopasowanego zamiaru. Chociaż istnieje jedna pula wyrażenia długości do przejrzenia we wszystkich wersjach, proces prawidłowo wyrównany do zamiaru dodaje przykład wypowiedź do bieżącego _aktywnego modelu_ .
 
-1. Wybierz pozycję **Review endpoint utterances** (Przejrzyj wypowiedzi punktu końcowego) w lewym obszarze nawigacji. Lista jest przefiltrowana pod kątem intencji **ApplyForJob**. 
+1. W sekcji **kompilacja** portalu wybierz pozycję **Przegląd punktu końcowego wyrażenia długości** w lewym okienku nawigacji. Lista jest przefiltrowana pod kątem intencji **ApplyForJob**.
 
-    [![Zrzut ekranu przycisku Review endpoint utterances (Przejrzyj wypowiedzi punktu końcowego) w lewym obszarze nawigacji](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający przycisk wyrażenia długości punktu końcowego recenzji w lewym okienku nawigacyjnym](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-1. Przełącz pozycję **Entities view** (Widok jednostek), aby wyświetlić jednostki oznaczone etykietami. 
-    
-    [![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) z wyróżnionym przełącznikiem Entities view (Widok jednostek)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    Ta wypowiedź `I'm looking for a job with Natural Language Processing`nie jest w poprawnym zamiarem.
 
+1.  Aby wyrównać ten wypowiedź, w wierszu wypowiedź Wybierz poprawną **przeznaczenie** `GetJobInformation`. Dodaj zmieniony wypowiedź do aplikacji, zaznaczając znacznik wyboru.
 
-    Ta wypowiedź `I'm looking for a job with Natural Language Processing`nie jest w poprawnym zamiarem. 
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający przycisk wyrażenia długości punktu końcowego recenzji w lewym okienku nawigacyjnym](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
 
-    Przyczyną nieoczekiwanej przewidywania wypowiedź jest to, że intencja **ApplyForJob** ma 21 wyrażenia długości w porównaniu do 7 wyrażenia długości w **GetJobInformation**. Cel o większej wyrażenia długości będzie miał wyższą prognozę. Należy pamiętać, że ilość i jakość wyrażenia długości w ramach intencji są zrównoważone.
+    Zapoznaj się z pozostałymi wyrażenia długości w tym zamiarze, poprawiając odpowiednio wyrównany cel. Użyj początkowej tabeli wypowiedź w tym samouczku, aby wyświetlić wyrównany cel.
 
-1.  Aby wyrównać tę wypowiedź, wybierz odpowiednie przeznaczenie i Oznacz w niej jednostkę zadania. Dodaj zmienione wypowiedź do aplikacji, zaznaczając zieloną wartość pola wyboru. 
+    Lista **wyrażenia długości punktów końcowych recenzji** nie powinna już być poprawioną wyrażenia długości. Jeśli pojawią się więcej wyrażenia długości, Kontynuuj pracę z listą, poprawiając odpowiednie zamiary do momentu, gdy lista jest pusta.
 
-    |Wypowiedź|Poprawna intencja|Brakujące jednostki|
-    |:--|:--|:--|
-    |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Zadania — "Języka naturalnego procesu"|
+    Dowolna korekta jednostek jest wykonywana po wyrównaniu zamiaru na stronie Szczegóły intencji.
 
-    Aby zmienić `natural language processing` z jednostki keyPhrase na jednostkę zadania, wybierz frazę, a następnie wybierz z listy pozycję **zadanie** . Jeśli chcesz wybrać tylko część tekstu keyPhrase dla innej jednostki, musisz usunąć keyPhrase jako jednostkę, etykietę z inną jednostką, a następnie ponownie zastosować jednostkę keyPhrase do aplikacji. 
+1. Przeszkol i ponownie opublikuj aplikację.
 
-    Dodanie wypowiedź przenosi wypowiedź z **punktu końcowego przeglądu wyrażenia długości** do zamiaru **GetJobInformation** . Wypowiedź punktu końcowego jest teraz przykładową wypowiedzią dla tej intencji. 
+## <a name="get-intent-prediction-from-endpoint"></a>Pobierz prognozowanie intencji z punktu końcowego
 
-    Wraz z prawidłowym dostosowaniem tego wypowiedź do zamiaru **GetJobInformation** należy dodać więcej wyrażenia długości. Ta czynność zostanie zostawiona jako ćwiczenie do samodzielnego wykonania. Wszystkie intencje z wyjątkiem intencji **None** powinny mieć mniej więcej taką samą liczbę przykładowych wypowiedzi. Intencja **None** powinna mieć 10% wszystkich wypowiedzi w aplikacji. 
-
-    Przejrzyj pozostałe wypowiedzi w tej intencji, oznaczając je etykietami i poprawiając intencję **Aligned intent** (Dopasowana intencja), jeśli jest ona nieprawidłowa.
-
-    Lista **wyrażenia długości punktów końcowych recenzji** nie powinna już mieć tych wyrażenia długości. Jeśli zostaną wyświetlone kolejne wypowiedzi, kontynuuj pracę z listą, poprawiając intencje i oznaczając etykietami wszelkie brakujące jednostki, dopóki lista nie będzie pusta. 
-
-    Wybierz kolejną intencję z listy Filter (Filtr) i kontynuuj poprawianie wypowiedzi oraz oznaczanie jednostek etykietami. Pamiętaj, że ostatnim krokiem dla każdej intencji jest wybranie opcji **Add to aligned intent** (Dodaj do dopasowanej intencji) w wierszu wypowiedzi lub zaznaczenie pola wyboru obok każdej intencji i wybranie przycisku **Add selected** (Dodaj wybrane) nad tabelą.
-
-    Kontynuuj, aż wszystkie intencje i jednostki na liście filtru będą miały pustą listę. Ta aplikacja jest bardzo mała. Proces przeglądu zajmuje tylko kilka minut. 
-
-## <a name="update-phrase-list"></a>Aktualizowanie listy fraz
-Na bieżąco aktualizuj listę fraz, dodając do niej wszelkie nowo odnalezione nazwy stanowisk. 
-
-1. Wybierz pozycję **Phrase lists** (Listy fraz) w lewym obszarze nawigacji.
-
-2. Wybierz listę fraz **Jobs** (Stanowiska).
-
-3. Dodaj wartość `Natural Language Processing`, a następnie wybierz pozycję **Save** (Zapisz). 
-
-## <a name="train"></a>Szkolenie
-
-Usługa LUIS nie wie o zmianach, dopóki nie zostanie nauczona. 
-
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
-
-## <a name="publish"></a>Publikowanie
-
-Jeśli zaimportowano tę aplikację, musisz wybrać pozycję **Sentiment analysis** (Analiza tonacji).
-
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
-
-## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego
-
-Spróbuj użyć wypowiedzi podobnej do poprawionej wypowiedzi. 
+Aby sprawdzić poprawność wyrównanego przykładu wyrażenia długości do prognozowania aplikacji, wypróbuj wypowiedź blisko poprawionej wypowiedź.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Are there any natural language processing jobs in my department right now?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
+1. Przejdź na koniec tego adresu URL i wprowadź ciąg `Are there any natural language processing jobs in my department right now?`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi.
 
    ```json
-   {
-    "query": "are there any natural language processing jobs in my department right now?",
-    "topScoringIntent": {
-      "intent": "GetJobInformation",
-      "score": 0.9247605
-    },
-    "intents": [
-      {
-        "intent": "GetJobInformation",
-        "score": 0.9247605
-      },
-      {
-        "intent": "ApplyForJob",
-        "score": 0.129989788
-      },
-      {
-        "intent": "FindForm",
-        "score": 0.006438211
-      },
-      {
-        "intent": "EmployeeFeedback",
-        "score": 0.00408575451
-      },
-      {
-        "intent": "Utilities.StartOver",
-        "score": 0.00194211153
-      },
-      {
-        "intent": "None",
-        "score": 0.00166400627
-      },
-      {
-        "intent": "Utilities.Help",
-        "score": 0.00118593348
-      },
-      {
-        "intent": "MoveEmployee",
-        "score": 0.0007885918
-      },
-      {
-        "intent": "Utilities.Cancel",
-        "score": 0.0006373631
-      },
-      {
-        "intent": "Utilities.Stop",
-        "score": 0.0005980781
-      },
-      {
-        "intent": "Utilities.Confirm",
-        "score": 3.719905E-05
-      }
-    ],
-    "entities": [
-      {
-        "entity": "right now",
-        "type": "builtin.datetimeV2.datetime",
-        "startIndex": 64,
-        "endIndex": 72,
-        "resolution": {
-          "values": [
-            {
-              "timex": "PRESENT_REF",
-              "type": "datetime",
-              "value": "2018-07-05 15:23:18"
+    {
+        "query": "Are there any natural language processing jobs in my department right now?",
+        "prediction": {
+            "topIntent": "GetJobInformation",
+            "intents": {
+                "GetJobInformation": {
+                    "score": 0.903607249
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0312187821
+                },
+                "ApplyForJob": {
+                    "score": 0.0230276529
+                },
+                "MoveEmployee": {
+                    "score": 0.008322801
+                },
+                "Utilities.Stop": {
+                    "score": 0.004480808
+                },
+                "FindForm": {
+                    "score": 0.00425248267
+                },
+                "Utilities.StartOver": {
+                    "score": 0.004224336
+                },
+                "Utilities.Help": {
+                    "score": 0.00373591436
+                },
+                "None": {
+                    "score": 0.0034621188
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00230977475
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00112078607
+                }
+            },
+            "entities": {
+                "keyPhrase": [
+                    "natural language processing jobs",
+                    "department"
+                ],
+                "datetimeV2": [
+                    {
+                        "type": "datetime",
+                        "values": [
+                            {
+                                "timex": "PRESENT_REF",
+                                "resolution": [
+                                    {
+                                        "value": "2019-12-05 23:23:53"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "$instance": {
+                    "keyPhrase": [
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "natural language processing jobs",
+                            "startIndex": 14,
+                            "length": 32,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        },
+                        {
+                            "type": "builtin.keyPhrase",
+                            "text": "department",
+                            "startIndex": 53,
+                            "length": 10,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "datetimeV2": [
+                        {
+                            "type": "builtin.datetimeV2.datetime",
+                            "text": "right now",
+                            "startIndex": 64,
+                            "length": 9,
+                            "modelTypeId": 2,
+                            "modelType": "Prebuilt Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-          ]
         }
-      },
-      {
-        "entity": "natural language processing",
-        "type": "Job",
-        "startIndex": 14,
-        "endIndex": 40,
-        "score": 0.9869922
-      },
-      {
-        "entity": "natural language processing jobs",
-        "type": "builtin.keyPhrase",
-        "startIndex": 14,
-        "endIndex": 45
-      },
-      {
-        "entity": "department",
-        "type": "builtin.keyPhrase",
-        "startIndex": 53,
-        "endIndex": 62
-      }
-    ],
-    "sentimentAnalysis": {
-      "label": "positive",
-      "score": 0.8251864
     }
-   }
-   }
    ```
 
-   Prawidłowa intencja została przewidziana i uzyskała wysoką ocenę oraz wykryto jednostkę typu **Job** `natural language processing`. 
+   Teraz, gdy nie ma pewności, że wyrażenia długości są prawidłowo wyrównane, poprawna Metoda została przewidywalna o **wysokiej**wartości.
 
-## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Czy zamiast przeglądania można dodać więcej wypowiedzi? 
-Możesz się zastanawiać, dlaczego nie dodać więcej przykładowych wypowiedzi. Jaki jest cel przeglądania wypowiedzi punktu końcowego? W rzeczywistej aplikacji usługi LUIS wypowiedzi punktu końcowego pochodzą od użytkowników, a ich dobór i kolejność słów różnią się od użytych. Gdyby użyto tych samych słów w tej samej kolejności, pierwotne przewidywanie miałoby wyższą wartość procentową. 
+## <a name="can-reviewing-be-replaced-by-adding-more-utterances"></a>Czy zamiast przeglądania można dodać więcej wypowiedzi?
+Możesz się zastanawiać, dlaczego nie dodać więcej przykładowych wypowiedzi. Jaki jest cel przeglądania wypowiedzi punktu końcowego? W rzeczywistej aplikacji usługi LUIS wypowiedzi punktu końcowego pochodzą od użytkowników, a ich dobór i kolejność słów różnią się od użytych. Gdyby użyto tych samych słów w tej samej kolejności, pierwotne przewidywanie miałoby wyższą wartość procentową.
 
-## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Dlaczego intencja o najwyższej ocenie znajduje się na liście wypowiedzi? 
+## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Dlaczego intencja o najwyższej ocenie znajduje się na liście wypowiedzi?
 Niektóre wypowiedzi punktu końcowego będą miały wysoki współczynnik przewidywania na liście do przeglądu. Mimo to należy przejrzeć i zweryfikować te wypowiedzi. Znajdują się one na liście, ponieważ różnica między intencją o najwyższej ocenie i intencją drugą w kolejności jest zbyt mała. Różnica między dwiema najważniejszymi intencjami powinna wynosić około 15%.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -240,6 +233,7 @@ Niektóre wypowiedzi punktu końcowego będą miały wysoki współczynnik przew
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
+
 W tym samouczku przejrzano wypowiedzi przesłane w punkcie końcowym, które usługa LUIS uznała za niepewne. Zweryfikowanie i przeniesienie tych wypowiedzi do poprawnych intencji jako przykładowych wypowiedzi spowoduje, że dokładność przewidywania usługi LUIS zwiększy się.
 
 > [!div class="nextstepaction"]

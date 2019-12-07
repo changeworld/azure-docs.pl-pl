@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 806460e5e4336624c6b0ead59dd5632e730c69e5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 20c1f1f9a8b0b0ef105893e44c9daaeae68604db
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014734"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889757"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Wykonywanie zapytań dotyczących danych ze środowiska Azure Time Series Insights w wersji zapoznawczej przy użyciuC#
 
@@ -27,10 +27,10 @@ Przykładowy kod zawiera kilka podstawowych przykładów użycia interfejsu API 
 1. Jako krok przygotowania Uzyskaj token dostępu za pomocą interfejsu API Azure Active Directory. Przekaż ten token w nagłówku `Authorization` każdego żądania interfejsu API zapytań. Aby skonfigurować aplikacje nieinteraktywne, zobacz [uwierzytelnianie i autoryzacja](time-series-insights-authentication-and-authorization.md). Upewnij się również, że wszystkie stałe zdefiniowane na początku próbki są prawidłowo ustawione.
 1. Zostanie uzyskana lista środowisk, do których użytkownik ma dostęp. Jedno z tych środowisk jest wybierane jako interesujące środowisko i dla tego środowiska są badane dalsze dane.
 1. Przykładem żądania HTTPS może być żądanie danych dostępności dla odpowiedniego środowiska.
-1. Przykładem żądania gniazda sieci Web może być żądanie danych agregowania zdarzeń dla odpowiedniego środowiska. Żądanie danych obejmuje cały zakres czasu dostępności.
+1. Zawiera przykład obsługi autogeneracji zestawu SDK z [usługi Azure AutoRest](https://github.com/Azure/AutoRest).
 
 > [!NOTE]
-> Ten przykładowy kod jest również dostępny w [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
+> Przykładowy kod oraz czynności do skompilowania i uruchomienia są dostępne w [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
 
 ## <a name="c-example"></a>C#przyklad
 

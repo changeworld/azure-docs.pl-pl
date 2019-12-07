@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 5f138314fd536d0264f8d40e1ac78da954c19e74
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030696"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893386"
 ---
-# <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API dla niestandardowych zdarzeń i metryk
+# <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
 Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, co użytkownicy robią z nim lub aby pomóc zdiagnozować problemy. Możesz wysyłać dane telemetryczne z aplikacji urządzenia i pulpitu, klientów sieci Web i serwerów sieci Web. Za pomocą interfejsu API telemetrii [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core można wysyłać niestandardowe zdarzenia i metryki oraz własne wersje telemetrii standardowej. Ten interfejs API jest tym samym interfejsem API, który jest używany przez moduły zbierające dane standardowe Application Insights.
 
@@ -30,7 +30,7 @@ Podstawowy interfejs API jest jednolity na wszystkich platformach, z wyjątkiem 
 | [`TrackMetric`](#trackmetric) |Pomiary wydajności, takie jak długość kolejki, nie są związane z określonymi zdarzeniami. |
 | [`TrackException`](#trackexception) |Wyjątki rejestrowania dla diagnostyki. Śledzenie tam, gdzie występują w odniesieniu do innych zdarzeń i sprawdzanie śladów stosu. |
 | [`TrackRequest`](#trackrequest) |Rejestrowanie częstotliwości i czasu trwania żądań serwera na potrzeby analizy wydajności. |
-| [`TrackTrace`](#tracktrace) |Komunikaty dzienników diagnostycznych. Możesz również przechwytywać dzienniki innych firm. |
+| [`TrackTrace`](#tracktrace) |Komunikaty dziennika diagnostyki zasobów. Możesz również przechwytywać dzienniki innych firm. |
 | [`TrackDependency`](#trackdependency) |Rejestrowanie czasu trwania i częstotliwości wywołań dla składników zewnętrznych, od których zależy aplikacja. |
 
 Można [dołączać właściwości i metryki](#properties) do większości tych wywołań telemetrii.
@@ -733,7 +733,7 @@ Funkcja jest asynchroniczna dla [kanału telemetrii serwera](https://www.nuget.o
 
 Najlepiej używać metody Flush () w działaniu zamykania aplikacji.
 
-## <a name="authenticated-users"></a>Uwierzytelnieni użytkownicy
+## <a name="authenticated-users"></a>Uwierzytelnionych użytkowników
 
 W aplikacji sieci Web użytkownicy są (domyślnie) identyfikowane przez pliki cookie. Użytkownik może być liczony więcej niż raz, jeśli uzyskuje dostęp do aplikacji z innej maszyny lub przeglądarki lub usunie pliki cookie.
 
@@ -868,7 +868,7 @@ telemetry.trackEvent("WinGame", properties, metrics);
 ```
 
 > [!NOTE]
-> Zadbaj o to, aby rejestrować dane osobowe we właściwościach.
+> Należy zadbać o to, aby nie rejestrować we właściwościach danych osobowych użytkowników.
 >
 >
 

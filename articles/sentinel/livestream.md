@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/06/2019
 ms.author: cabailey
-ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546862"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900456"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Wykrywanie zagrożeń przy użyciu transmisję strumieniową łowiectwa w wskaźniku platformy Azure
 
@@ -70,7 +70,7 @@ Sesję transmisję strumieniową można utworzyć na podstawie istniejącego zap
 
 5. Wybierz opcję **Odtwórz** na pasku poleceń.
     
-    Pasek stanu na pasku poleceń wskazuje, czy transmisję strumieniową jest uruchomiona, czy wstrzymana. W poniższym przykładzie jest uruchomiona sesja:
+    Pasek stanu na pasku poleceń wskazuje, czy sesja transmisję strumieniową jest uruchomiona, czy wstrzymana. W poniższym przykładzie jest uruchomiona sesja:
     
     > [!div class="mx-imgBorder"]
     > ![utworzyć sesji transmisję strumieniową na podstawie łowiectwa wskaźnikowego platformy Azure](./media/livestream/livestream-session.png)
@@ -110,7 +110,6 @@ Ta akcja powoduje otwarcie Kreatora tworzenia reguły, który jest wstępnie wyp
 ## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób korzystania z łowiectwa transmisję strumieniową na platformie Azure. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
-
 
 - [Proaktywne wyszukiwanie zagrożeń](hunting.md)
 - [Korzystanie z notesów do uruchamiania zautomatyzowanych kampanii łowieckich](notebooks.md)

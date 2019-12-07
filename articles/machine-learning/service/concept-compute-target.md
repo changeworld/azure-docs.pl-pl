@@ -1,5 +1,5 @@
 ---
-title: 'Cele obliczeniowe: gdzie można wyszkolić i wdrożyć modele'
+title: Co to są cele obliczeniowe
 titleSuffix: Azure Machine Learning
 description: Zdefiniuj, gdzie chcesz nauczyć lub wdrożyć model przy użyciu Azure Machine Learning.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd4ac07ddf94bd7fc12a2673ce76fb0b9f4d2ccb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580583"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901425"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co to są cele obliczeniowe w Azure Machine Learning? 
 
@@ -67,6 +67,6 @@ Niezarządzany cel obliczeń *nie* jest zarządzany przez Azure Machine Learning
 
 ## <a name="next-steps"></a>Następne kroki
 
-Instrukcje:
+Omawiane kwestie:
 * [Skonfiguruj cel obliczeń do uczenia modelu](how-to-set-up-training-targets.md)
 * [Wdrażanie modelu w obiekcie docelowym obliczeń](how-to-deploy-and-where.md)

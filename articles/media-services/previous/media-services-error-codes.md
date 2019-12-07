@@ -1,6 +1,6 @@
 ---
-title: Kody błędów usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Temat zawiera omówienie kody błędów usługi Azure Media Services.
+title: Kody błędów Azure Media Services | Microsoft Docs
+description: W zależności od problemów, takich jak tokeny uwierzytelniania, które nie są obsługiwane w programie Media Services, mogą zostać wyświetlone kody błędów HTTP z usługi. Ten artykuł zawiera omówienie kodów błędów interfejsu API Azure Media Services V2.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217237"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887072"
 ---
-# <a name="azure-media-services-error-codes"></a>Kody błędów usługi Azure Media Services
-Korzystając z usługi Microsoft Azure Media Services, usługi, w zależności od problemów, takich jak tokeny uwierzytelniania wygasa do akcji, które nie są obsługiwane w usłudze Media Services może zostać wyświetlony kody błędów HTTP. Poniżej przedstawiono listę **kody błędów HTTP** , mogą być zwrócone przez usługi Media Services i możliwych przyczyn ich.  
+# <a name="azure-media-services-error-codes"></a>Azure Media Services kody błędów
+W przypadku korzystania z Microsoft Azure Media Services można odbierać kody błędów HTTP z usługi w zależności od problemów, takich jak tokeny uwierzytelniania wygasające w przypadku akcji, które nie są obsługiwane w programie Media Services. Poniżej znajduje się lista **kodów błędów HTTP** , które mogą zostać zwrócone przez Media Services i możliwych dla nich przyczyn.  
 
-## <a name="400-bad-request"></a>400 Niewłaściwe żądanie
-Żądanie zawiera nieprawidłowe informacje i zostanie odrzucony, ze względu na jedną z następujących powodów:
+## <a name="400-bad-request"></a>400 Nieprawidłowe żądanie
+Żądanie zawiera nieprawidłowe informacje i zostało odrzucone z jednego z następujących powodów:
 
-* Określono nieobsługiwaną wersję interfejsu API. Aby uzyskać najbardziej aktualną wersję, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
-* Nie określono wersji interfejsu API usługi Media Services. Aby uzyskać informacje na temat sposobu określenia wersji interfejsu API, zobacz [dokumentacja interfejsu API REST operacje usług Media](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* Określono nieobsługiwaną wersję interfejsu API. Aby uzyskać najbardziej aktualną wersję, zobacz [Setup for Media Services API REST Development](media-services-rest-how-to-use.md).
+* Nie określono wersji interfejsu API Media Services. Aby uzyskać informacje na temat sposobu określania wersji interfejsu API, zobacz temat [Informacje o interfejsie API REST Media Services Operations](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
-  > Jeśli używasz platformy .NET lub Java SDK do łączenia z usługą Media Services, wersja interfejsu API jest określona dla możesz zawsze wtedy, gdy spróbujesz teraz wykonanie akcji względem usługi Media Services.
+  > Jeśli używasz zestawów SDK .NET lub Java do nawiązywania połączenia z Media Services, wersja interfejsu API jest określana dla Ciebie za każdym razem, gdy spróbujesz wykonać kilka czynności w odniesieniu do Media Services.
   > 
   > 
-* Podano niezdefiniowane właściwości. Nazwa właściwości jest komunikat o błędzie. Można określić tylko te właściwości, które są członkami danej jednostki. Zobacz [dokumentacja interfejsu API REST usługi multimediów Azure](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) listę jednostek i ich właściwości.
-* Określono nieprawidłową wartość właściwości. Nazwa właściwości jest komunikat o błędzie. Zobacz poprzedni link dla typów prawidłowej właściwości i ich wartości.
-* Wartość właściwości nie istnieje i jest wymagany.
-* Część określony adres URL zawiera nieprawidłowe wartości.
-* Nastąpiła próba można zaktualizować właściwości WriteOnce.
-* Próbowano utworzyć zadanie, które ma danych wejściowych zasobu ze wszystkimi AssetFile podstawowego, który nie został określony lub nie można określić.
-* Nastąpiła próba aktualizacji lokalizatora sygnatury dostępu Współdzielonego. Lokalizatory sygnatury dostępu Współdzielonego tylko można utworzyć ani usunąć. Lokalizatory przesyłania strumieniowego może zostać zaktualizowana. Aby uzyskać więcej informacji, zobacz [Lokalizatory](https://docs.microsoft.com/rest/api/media/operations/locator).
-* Nieobsługiwana operacja lub zapytanie zostało przesłane.
+* Określono niezdefiniowaną właściwość. Nazwa właściwości znajduje się w komunikacie o błędzie. Można określić tylko te właściwości, które są elementami członkowskimi danej jednostki. Zobacz [Azure Media Services Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) , aby uzyskać listę jednostek i ich właściwości.
+* Określono nieprawidłową wartość właściwości. Nazwa właściwości znajduje się w komunikacie o błędzie. Zobacz poprzedni link, aby uzyskać prawidłowe typy właściwości i ich wartości.
+* Brak wartości właściwości i jest ona wymagana.
+* Część podanego adresu URL zawiera nieprawidłową wartość.
+* Podjęto próbę zaktualizowania właściwości flagą writeonce.
+* Podjęto próbę utworzenia zadania, które ma wejściowy element zawartości z AssetFileem głównym, który nie został określony lub nie można go określić.
+* Podjęto próbę zaktualizowania lokalizatora SAS. Lokalizatory SAS można tworzyć i usuwać tylko. Można aktualizować lokalizatory przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [lokalizatory](https://docs.microsoft.com/rest/api/media/operations/locator).
+* Przesłano nieobsługiwaną operację lub zapytanie.
 
-## <a name="401-unauthorized"></a>401 Brak autoryzacji
-Nie można uwierzytelnić żądania, (zanim może być autoryzowane) z jednego z następujących powodów:
+## <a name="401-unauthorized"></a>401 — nieautoryzowane
+Nie można uwierzytelnić żądania (przed jego autoryzacją) z jednego z następujących powodów:
 
 * Brak nagłówka uwierzytelniania.
-* Wartość nagłówka nieprawidłowe uwierzytelnianie.
+* Zła wartość nagłówka uwierzytelniania.
   * Token wygasł. 
-  * Token ma nieprawidłowy podpis.
+  * Token zawiera nieprawidłową sygnaturę.
 
-## <a name="403-forbidden"></a>403 Zabroniony
-Żądanie jest niedozwolona z powodu jednej z następujących powodów:
+## <a name="403-forbidden"></a>403 Zabronione
+Żądanie jest niedozwolone z jednego z następujących powodów:
 
-* Konto usługi Media Services nie można odnaleźć lub została usunięta.
-* Konto usługi Media Services jest wyłączona, a żądania nie jest to typ HTTP GET. Operacje usługi zwróci odpowiedź 403 także.
-* Token uwierzytelniania nie zawiera informacji o poświadczeniach użytkownika: Nazwa konta i/lub identyfikator subskrypcji. Te informacje można znaleźć w rozszerzeniu usługi Media Services w interfejsie użytkownika dla konta usługi Media Services w portalu zarządzania Azure.
+* Nie można odnaleźć konta Media Services lub zostało ono usunięte.
+* Konto Media Services jest wyłączone, a typ żądania to nie HTTP GET. Operacje usługi zwróci także odpowiedź 403.
+* Token uwierzytelniania nie zawiera informacji o poświadczeniach użytkownika: AccountName i/lub Identyfikator subskrypcji. Te informacje można znaleźć w Media Services rozszerzeniu interfejsu użytkownika dla konta Media Services w portal zarządzania platformy Azure.
 * Nie można uzyskać dostępu do zasobu.
   
-  * Próbowano użyć MediaProcessor, który nie jest dostępny dla Twojego konta usługi Media Services.
-  * Aby zaktualizować obiekt JobTemplate zdefiniowane przez usługę Media Services została podjęta próba.
-  * Próbowano zastąpić niektóre inne konto usługi Media Services firmy lokalizatora.
-  * Nastąpiła próba zastąpienia ContentKey niektóre inne konto usługi Media Services firmy.
-* Nie można utworzyć zasobu z powodu przydział usługi, który został osiągnięty dla konta usługi Media Services. Aby uzyskać więcej informacji na temat przydziałów usługi, zobacz [przydziały i ograniczenia](media-services-quotas-and-limitations.md).
+  * Podjęto próbę użycia MediaProcessor, która nie jest dostępna dla Twojego konta Media Services.
+  * Podjęto próbę zaktualizowania JobTemplate zdefiniowanego przez Media Services.
+  * Podjęto próbę zastąpienia innego lokalizatora konta Media Services.
+  * Podjęto próbę zastąpienia innego ContentKey konta Media Services.
+* Nie można utworzyć zasobu z powodu limitu przydziału usługi, który został osiągnięty dla konta Media Services. Aby uzyskać więcej informacji na temat przydziałów usługi, zobacz [przydziały i ograniczenia](media-services-quotas-and-limitations.md).
 
 ## <a name="404-not-found"></a>404 — Nie odnaleziono
-Żądanie nie jest dozwolona w zasobie z jednego z następujących powodów:
+Żądanie jest niedozwolone w przypadku zasobu z jednego z następujących powodów:
 
-* Nastąpiła próba do zaktualizowania jednostki, która nie istnieje.
-* Próbowano usunąć jednostki, która nie istnieje.
-* Próbowano utworzyć obiekt, który stanowi łącze do jednostki, która nie istnieje.
-* Nastąpiła próba pobrania jednostki, który nie istnieje.
-* Nastąpiła próba, aby określić konto magazynu, który nie jest skojarzony z kontem usługi Media Services.  
+* Podjęto próbę zaktualizowania jednostki, która nie istnieje.
+* Podjęto próbę usunięcia jednostki, która nie istnieje.
+* Podjęto próbę utworzenia jednostki, która łączy się z nieistniejącą jednostką.
+* Podjęto próbę pobrania jednostki, która nie istnieje.
+* Podjęto próbę określenia konta magazynu, które nie jest skojarzone z kontem Media Services.  
 
-## <a name="409-conflict"></a>409 Konflikt
-Żądanie jest niedozwolona z powodu jednej z następujących powodów:
+## <a name="409-conflict"></a>409 konflikt
+Żądanie jest niedozwolone z jednego z następujących powodów:
 
-* Więcej niż jeden AssetFile o określonej nazwie w elemencie zawartości.
-* Próbowano utworzyć drugi AssetFile podstawowy, w ramach zasobu.
-* Próbowano utworzyć ContentKey o określonym identyfikatorze już używana.
-* Próbowano utworzyć Lokalizator o określonym identyfikatorze już używana.
-* Więcej niż jeden IngestManifestFile o określonej nazwie w ramach IngestManifest.
-* Nastąpiła próba połączyć drugiego szyfrowania magazynu ContentKey szyfrowane magazynu trwałego.
-* Nastąpiła próba połączyć ContentKey tego samego zasobu.
-* Próbowano utworzyć lokalizatora do elementu zawartości kontenera magazynu, których brakuje lub nie jest już skojarzony z elementem zawartości.
-* Próbowano utworzenie lokalizatora do elementu zawartości, która ma już lokalizatorów 5 w użyciu. (Usługa azure Storage wymusza limit pięciu zasady dostępu współdzielonego na jeden kontener magazynu).
-* Łączenie konta magazynu trwałego IngestManifestAsset nie jest taka sama jak konto magazynu używane przez nadrzędne IngestManifest.  
+* Więcej niż jeden AssetFile ma określoną nazwę w obrębie elementu zawartości.
+* Podjęto próbę utworzenia drugiego podstawowego AssetFile w elemencie zawartości.
+* Podjęto próbę utworzenia ContentKey o określonym identyfikatorze.
+* Podjęto próbę utworzenia lokalizatora o określonym identyfikatorze.
+* Więcej niż jeden IngestManifestFile ma określoną nazwę w IngestManifest.
+* Podjęto próbę połączenia drugiego ContentKey szyfrowania magazynu z zasobem zaszyfrowanym przez magazyn.
+* Podjęto próbę połączenia tego samego ContentKey z zasobem.
+* Podjęto próbę utworzenia lokalizatora do elementu zawartości, którego kontener magazynu brakuje lub nie jest już skojarzony z elementem zawartości.
+* Podjęto próbę utworzenia lokalizatora dla elementu zawartości, który ma już 5 lokalizatorów w użyciu. (Usługa Azure Storage wymusza limit pięciu zasad dostępu współdzielonego w jednym kontenerze magazynu).
+* Łączenie konta magazynu zasobu z IngestManifestAsset nie jest takie samo, jak konto magazynu używane przez nadrzędną IngestManifest.  
 
-## <a name="500-internal-server-error"></a>500 Wewnętrzny błąd serwera
-Podczas przetwarzania żądania usługi Media Services napotka błąd uniemożliwiający przetwarzania za kontynuację. Może to być spowodowane jedną z następujących przyczyn:
+## <a name="500-internal-server-error"></a>500 — wewnętrzny błąd serwera
+Podczas przetwarzania żądania Media Services napotka jakiś błąd, który uniemożliwia kontynuowanie przetwarzania. Może to być spowodowane jedną z następujących przyczyn:
 
-* Tworzenie zasobu lub zadanie nie powiedzie się, ponieważ informacje o limitach przydziału usługi konta usługi Media Services jest tymczasowo niedostępna.
-* Tworzenie zasobu lub IngestManifest kontenera magazynu obiektów blob nie powiedzie się, ponieważ informacje o koncie magazynu dla konta jest tymczasowo niedostępna.
-* Inne wystąpił nieoczekiwany błąd.
+* Tworzenie zasobu lub zadania nie powiodło się, ponieważ informacje o limicie przydziału usługi konta Media Services są tymczasowo niedostępne.
+* Tworzenie kontenera magazynu obiektów blob lub IngestManifest nie powiedzie się, ponieważ informacje o koncie magazynu konta są tymczasowo niedostępne.
+* Inny nieoczekiwany błąd.
 
 ## <a name="503-service-unavailable"></a>503 — usługa niedostępna
-Serwer nie może obecnie odbierać żądań. Ten błąd może być spowodowane zbyt żądania do usługi. Usługa Media Services, mechanizm ograniczania ogranicza użycie zasobów dla aplikacji, które wysyłać nadmierne żądania do usługi.
+Serwer nie może obecnie odbierać żądań. Ten błąd może być spowodowany przez nadmierne żądania do usługi. Mechanizm ograniczania Media Services ogranicza użycie zasobów dla aplikacji, które zgłaszają nadmierne żądania do usługi.
 
 > [!NOTE]
-> Sprawdź komunikat o błędzie i ciągu kodu błędu, aby uzyskać bardziej szczegółowe informacje dotyczące przyczyny, że stało się błąd 503. Ten błąd nie zawsze oznacza ograniczania przepustowości.
+> Sprawdź komunikat o błędzie i ciąg kodu błędu, aby uzyskać bardziej szczegółowe informacje na temat przyczyny błędu 503. Ten błąd nie zawsze oznacza ograniczenie przepustowości.
 > 
 > 
 
-Opisy możliwych stanów są:
+Możliwe opisy stanu są następujące:
 
-* "Serwer jest zajęty. Poprzednie uruchomienia tego typu żądania zajęło więcej niż {0} sekund. "
-* "Serwer jest zajęty. Więcej niż {0} żądań na sekundę mogą być ograniczone. "
-* "Serwer jest zajęty. Więcej niż {0} żądań w ciągu {1} sekund, które mogą być ograniczone. "
+* "Serwer jest zajęty. Poprzednie uruchomienia tego typu żądania miały więcej niż {0} sekund ".
+* "Serwer jest zajęty. Maksymalna liczba żądań, które można ograniczyć do {0} na sekundę ".
+* "Serwer jest zajęty. Można ograniczyć więcej niż {0} żądań w ciągu {1} sekund. "
 
-Aby obsłużyć tego błędu, zaleca się przy użyciu logiki ponawiania wykładniczego wycofywania. Oznacza to, za pomocą stopniowo dłużej oczekiwania między ponownymi próbami dla kolejnych odpowiedzi na błędy.  Aby uzyskać więcej informacji, zobacz [blok aplikacji obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680905.aspx).
+Aby obsłużyć ten błąd, zalecamy korzystanie z logiki ponawiania prób z powrotem. Oznacza to, że użycie stopniowo dłużej czeka między ponownymi próbami kolejnych odpowiedzi na błędy.  Aby uzyskać więcej informacji, zobacz [blok aplikacji obsługa błędów przejściowych](https://msdn.microsoft.com/library/hh680905.aspx).
 
 > [!NOTE]
-> Jeśli używasz [Azure Media Services SDK dla platformy .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), Logika ponawiania dla błąd 503 została zaimplementowana przez zestaw SDK.  
+> Jeśli używasz [zestawu Azure Media Services SDK dla platformy .NET](https://github.com/Azure/azure-sdk-for-media-services/tree/master), logika ponowień dla błędu 503 została zaimplementowana przez zestaw SDK.  
 > 
 > 
 
 ## <a name="see-also"></a>Zobacz też
-[Kody błędów zarządzania usługi Media Services](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Kody błędów zarządzania Media Services](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

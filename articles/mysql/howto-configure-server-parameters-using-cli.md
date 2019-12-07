@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 2a53debb72cfd5da73c2bceb7993288eb828237a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 0250810d25b0abb5bf675d8c91f3c0678d895c37
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770530"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893165"
 ---
 # <a name="customize-server-parameters-by-using-azure-cli"></a>Dostosowywanie parametrów serwera za pomocą interfejsu wiersza polecenia platformy Azure
 Można wyświetlić, wyświetlić i zaktualizować parametry konfiguracji dla serwera Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure, narzędzia wiersza poleceń platformy Azure. Podzestaw konfiguracji aparatu jest uwidoczniony na poziomie serwera i można go modyfikować. 
@@ -51,26 +51,29 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```
 Ten kod resetuje **powolne\_kwerendy\_konfiguracji dziennika** do wartości **domyślnej.** 
 
-## <a name="working-with-the-time-zone-parameter"></a>Praca z parametrem strefy czasowej
+## <a name="working-with-the-time-zone-parameter"></a>Praca z parametr strefy czasowej
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel strefy czasowej
 
-Tabele strefy czasowej na serwerze można wypełnić przez wywołanie procedury składowanej `az_load_timezone` z narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
+Tabele strefę czasową na serwerze można wypełnić przez wywołanie metody `az_load_timezone` przechowywane procedury przy użyciu narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench.
 
 > [!NOTE]
-> Jeśli uruchamiasz polecenie `az_load_timezone` z Workbench MySQL, może być konieczne wyłączenie bezpiecznego trybu aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
+> Jeśli używasz `az_load_timezone` polecenia za pomocą aplikacji MySQL Workbench, konieczne może być pierwszym Wyłącz tryb awaryjny aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
-Aby wyświetlić dostępne wartości strefy czasowej, uruchom następujące polecenie:
+> [!IMPORTANT]
+> Należy ponownie uruchomić serwer, aby upewnić się, że tabele strefy czasowej są prawidłowo wypełnione. Aby ponownie uruchomić serwer, użyj [Azure Portal](howto-restart-server-portal.md) lub [interfejsu wiersza polecenia](howto-restart-server-cli.md).
+
+Aby wyświetlić wartości dostępne strefy czasowej, uruchom następujące polecenie:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Ustawianie strefy czasowej na poziomie globalnym
+### <a name="setting-the-global-level-time-zone"></a>Ustawienia globalne poziomu strefy czasowej
 
 Strefę czasową na poziomie globalnym można ustawić za pomocą polecenia [AZ MySQL Server Configuration Set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) .
 
@@ -80,15 +83,15 @@ Następujące polecenie aktualizuje **czas\_** parametr **konfiguracji serwera s
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
 ```
 
-### <a name="setting-the-session-level-time-zone"></a>Ustawianie strefy czasowej na poziomie sesji
+### <a name="setting-the-session-level-time-zone"></a>Ustawienie strefy czasowej z poziomu sesji
 
-Strefę czasową na poziomie sesji można ustawić, uruchamiając polecenie `SET time_zone` za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench. W poniższym przykładzie ustawiono strefę czasową dla strefy czasowej **USA/Pacyfiku** .  
+Sesji można ustawić poziomu strefy czasowej, uruchamiając `SET time_zone` polecenia za pomocą narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench. Poniższy przykład ustawia strefę czasową **USA / Pacyfik** strefy czasowej.  
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-Zapoznaj się z dokumentacją programu MySQL dla [funkcji daty i godziny](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+Zapoznaj się z dokumentacją MySQL dla [funkcji daty i godziny](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 
 ## <a name="next-steps"></a>Następne kroki

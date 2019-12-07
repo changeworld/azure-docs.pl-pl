@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services typy LiveEvent | Microsoft Docs
-description: W tym artykule przedstawiono szczegółową tabelę, która porównuje typy LiveEvent.
+description: W Azure Media Services wydarzenie na żywo może być jednym z dwóch typów, kodowaniem na żywo i przekazywaniem. W tym artykule przedstawiono szczegółową tabelę, która porównuje typy zdarzeń na żywo.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802252"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888397"
 ---
 # <a name="live-event-types-comparison"></a>Porównanie typów zdarzeń na żywo
 
@@ -32,7 +32,7 @@ Poniższa tabela zawiera porównanie funkcji typów zdarzeń na żywo. Typy są 
 * **LiveEventEncodingType. Standard** — lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Jeśli kanał informacyjny udziału ma rozdzielczość 720 lub wyższą, ustawienia wstępne **Default720p** zakodują zestaw par rozdzielczości i szybkości transmisji bitów (szczegóły znajdują się w dalszej części artykułu).
 * **LiveEventEncodingType. Premium1080p** — lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Ustawienie wstępne Default1080p określa zestaw danych wyjściowych par rozdzielczości/szybkości transmisji bitów (szczegóły znajdują się w dalszej części artykułu). 
 
-| Cecha | Zdarzenie przekazywania na żywo | Standardowe lub Premium1080p zdarzenie na żywo |
+| Funkcja | Zdarzenie przekazywania na żywo | Standardowe lub Premium1080p zdarzenie na żywo |
 | --- | --- | --- |
 | Dane wejściowe o pojedynczej szybkości transmisji bitów są zakodowane w wielu szybkościach transmisji bitów w chmurze |Nie |Tak |
 | Maksymalna rozdzielczość wideo dla kanału informacyjnego udziału |4K (4096x2160 o 60 klatek/s) |1080p (1920x1088 o 30 klatkach/s)|
@@ -55,7 +55,7 @@ Poniższa tabela zawiera porównanie funkcji typów zdarzeń na żywo. Typy są 
 | Obsługa wstawiania przednich|Nie|Nie|
 | Obsługa sygnałów usługi AD za pośrednictwem interfejsu API| Nie|Nie|
 | Obsługa sygnałów usługi AD przy użyciu komunikatów SCTE-35 w paśmie|Tak|Tak|
-| Możliwość odzyskania od krótkich miejsc w źródle wkładu|Tak|Częściowe|
+| Możliwość odzyskania od krótkich miejsc w źródle wkładu|Tak|Częściowo|
 | Obsługa niejednorodnych danych wejściowych GOPs|Tak|Nie — dane wejściowe muszą mieć stały czas trwania grupę GOP|
 | Obsługa danych wejściowych stawki ramki zmiennej|Tak|Nie — dane wejściowe muszą być stałym wskaźnikiem ramki. Niewielkie wahania są tolerowane, na przykład podczas wysokiego poziomu ruchów. Ale kanał informacyjny udziału nie może porzucić szybkości klatek (na przykład do 15 klatek na sekundę).|
 | Automatyczny ShutOff zdarzenia na żywo, gdy źródło danych wejściowych zostanie utracone|Nie|Po upływie 12 godzin, jeśli nie ma LiveOutput uruchomionego|

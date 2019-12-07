@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171604"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900191"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Dopasuj warunki w aparacie reguł standardowych dla Azure CDN
 
@@ -60,9 +60,9 @@ Nazwa pliku cookie | Operator | Wartość cookie | Przekształcanie wielkości l
 ------------|----------|--------------|---------------
 Ciąg | [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-#### <a name="key-information"></a>Informacje o kluczu
+#### <a name="key-information"></a>Kluczowe informacje
 
-- Nie można używać symboli wieloznacznych (w tym gwiazdek (\*)) podczas określania nazwy pliku cookie; Muse użyć dokładnej nazwy pliku cookie.
+- Nie można używać symboli wieloznacznych (w tym gwiazdek (\*)) podczas określania nazwy pliku cookie; musisz użyć dokładnej nazwy pliku cookie.
 - Dla każdego wystąpienia tego warunku dopasowywania można określić tylko jedną nazwę pliku cookie.
 - Porównania nazw plików cookie nie uwzględniają wielkości liter.
 - Aby określić wiele wartości plików cookie, należy użyć pojedynczej spacji między wartościami plików cookie. 
@@ -97,19 +97,19 @@ Identyfikuje żądania na podstawie lokalizacji lub adresu IP osoby żądającej
 
 Operator | Obsługiwane wartości
 ---------|-----------------
-Dowolne | Nie dotyczy
+Dowolne | ND
 Dopasowanie geograficzne | Kod kraju
 Dopasowanie adresu IP | Adres IP (rozdzielone spacjami)
-Nie wszystkie | Nie dotyczy
+Nie wszystkie | ND
 Brak dopasowania geograficznego | Kod kraju
 Niezgodność adresów IP | Adres IP (rozdzielone spacjami)
 
-#### <a name="key-information"></a>Informacje o kluczu
+#### <a name="key-information"></a>Kluczowe informacje
 
 - Użyj notacji CIDR.
 - Aby określić wiele adresów IP i bloków adresów IP, należy użyć pojedynczej spacji między wartościami:
   - **Przykład IPv4**: *1.2.3.4 10.20.30.40* dopasowuje wszystkie żądania, które dotarły do adresu 1.2.3.4 lub 10.20.30.40.
-  - **Przykład IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 dopasowuje wszystkie żądania, które nadeszły z adresu 1:2:3:4:5:6:7:8 lub 10:20:30:40:50:60:70:80.
+  - **Przykład IPv6**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* dopasowuje wszystkie żądania, które nadeszły z adresu 1:2:3:4:5:6:7:8 lub 10:20:30:40:50:60:70:80.
 - Składnia bloku adresów IP to podstawowy adres IP, po którym następuje ukośnik i rozmiar prefiksu. Na przykład:
   - **Przykład IPv4**: *5.5.5.64/26* dopasowuje wszystkie żądania odbierane z adresów 5.5.5.64 przez 5.5.5.127.
   - **Przykład IPv6**: *1:2:3:/48* dopasowuje wszystkie żądania odbierane z adresów 1:2:3:0:0:0:0:0 do 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF.
@@ -144,7 +144,7 @@ Operator | Obsługiwane wartości
 ---------|----------------
 Równa się, nie równa się | GET, POST, PUT, DELETE, GŁOWY, OPTIONS, TRACE
 
-#### <a name="key-information"></a>Informacje o kluczu
+#### <a name="key-information"></a>Kluczowe informacje
 
 - Tylko Metoda GET Request może generować zawartość buforowaną w Azure CDN. Wszystkie pozostałe metody żądań są przekazywane za pomocą sieci. 
 
@@ -168,7 +168,7 @@ Operator | Adres URL żądania | Przekształcanie wielkości liter
 ---------|-------------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-#### <a name="key-information"></a>Informacje o kluczu
+#### <a name="key-information"></a>Kluczowe informacje
 
 - Jeśli używasz tego warunku reguły, pamiętaj o uwzględnieniu informacji o protokole. Na przykład: *https://www.\<yourdomain\>.com* .
 
@@ -178,11 +178,11 @@ Identyfikuje żądania, które zawierają określone rozszerzenie pliku w nazwie
 
 #### <a name="required-fields"></a>Pola wymagane
 
-Operator | Wewnętrzny | Przekształcanie wielkości liter
+Operator | Rozszerzenie | Przekształcanie wielkości liter
 ---------|-----------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-#### <a name="key-information"></a>Informacje o kluczu
+#### <a name="key-information"></a>Kluczowe informacje
 
 - W przypadku rozszerzenia nie należy umieszczać wiodących kropek; na przykład użyj *HTML* zamiast *. html*.
 
@@ -196,7 +196,7 @@ Operator | Nazwa pliku | Przekształcanie wielkości liter
 ---------|-----------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-#### <a name="key-information"></a>Informacje o kluczu
+#### <a name="key-information"></a>Kluczowe informacje
 
 - Aby określić wiele nazw plików, oddziel poszczególne nazwy plików pojedynczą spacją. 
 
@@ -210,7 +210,7 @@ Operator | Wartość | Przekształcanie wielkości liter
 ---------|-------|---------------
 [Standardowa lista operatorów](#standard-operator-list) | String, int | Nie Przekształć, na wielkie, małe litery
 
-#### <a name="key-information"></a>Informacje o kluczu
+#### <a name="key-information"></a>Kluczowe informacje
 
 - Wartość nazwy pliku może korzystać z symboli wieloznacznych. Na przykład każdy wzorzec nazwy pliku może składać się z co najmniej jednej gwiazdki (*), gdzie każda Gwiazdka dopasowuje sekwencję składającą się z co najmniej jednego znaku.
 
@@ -225,9 +225,9 @@ Dla reguł, które akceptują wartości z standardowej listy operatorów, są pr
 - Contains 
 - Zaczyna się od 
 - kończy się ciągiem 
-- Mniejsze niż
+- Mniej niż
 - Mniejsze niż lub równe
-- Większe niż
+- Więcej niż
 - Większe niż lub równe
 - Nie wszystkie
 - Nie zawiera

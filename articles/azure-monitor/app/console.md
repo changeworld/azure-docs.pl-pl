@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: 9e198d3ea24383a532c5fbc3bfdcb1d1d7e49a92
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689040"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889145"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights aplikacji konsolowych .NET
 
@@ -27,7 +27,7 @@ Potrzebna jest subskrypcja z [Microsoft Azure](https://azure.com). Zaloguj się 
 ## <a name="getting-started"></a>Wprowadzenie
 
 * W witrynie [Azure Portal](https://portal.azure.com) [utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md). W obszarze Typ aplikacji wybierz pozycję **Ogólne**.
-* Wykonaj kopię klucza instrumentacji. Znajdź klucz na liście rozwijanej **podstawowe** informacje o utworzonym nowym zasobie. 
+* Wykonaj kopię klucza instrumentacji. Znajdź klucz na liście rozwijanej **podstawowe** informacje o utworzonym nowym zasobie.
 * Zainstaluj najnowszy pakiet [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
 * Ustaw klucz Instrumentacji w kodzie przed śledzeniem danych telemetrycznych (lub Ustaw zmienną środowiskową APPINSIGHTS_INSTRUMENTATIONKEY). Następnie powinno być możliwe ręczne śledzenie danych telemetrycznych i wyświetlanie ich w Azure Portal
 
@@ -39,6 +39,10 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
+> [!NOTE]
+> Dane telemetryczne nie są wysyłane natychmiast. Elementy telemetrii są wsadowe i wysyłane przez zestaw ApplicationInsights SDK. W aplikacjach konsolowych, które opuszczają bezpośrednio po wywołaniu metod `Track()`, dane telemetryczne mogą nie być wysyłane, chyba że `Flush()` i `Sleep` wykonywane przed zakończeniem działania aplikacji, jak pokazano w [pełnym przykładzie](#full-example) w dalszej części tego artykułu.
+
+
 * Zainstaluj najnowszą wersję pakietu [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) — automatycznie śledzi protokół http, SQL lub inne zewnętrzne wywołania zależności.
 
 Możesz inicjować i konfigurować Application Insights z kodu lub przy użyciu pliku `ApplicationInsights.config`. Upewnij się, że inicjalizacja odbywa się tak wcześnie, jak to możliwe. 
@@ -47,6 +51,7 @@ Możesz inicjować i konfigurować Application Insights z kodu lub przy użyciu 
 > Instrukcje odwołujące się do **ApplicationInsights. config** mają zastosowanie tylko do aplikacji, które są przeznaczone dla .NET Framework i nie mają zastosowania do aplikacji .NET Core.
 
 ### <a name="using-config-file"></a>Korzystanie z pliku konfiguracji
+
 Domyślnie Application Insights SDK szuka pliku `ApplicationInsights.config` w katalogu roboczym podczas tworzenia `TelemetryConfiguration`
 
 ```csharp

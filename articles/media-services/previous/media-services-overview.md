@@ -1,6 +1,6 @@
 ---
 title: Omówienie usługi Azure Media Services | Microsoft Docs
-description: Ten temat zawiera omówienie usługi Azure Media Services
+description: Usługa Microsoft Azure Media Services to rozszerzalna platforma oparta na chmurze, która umożliwia deweloperom tworzenie skalowalnych aplikacji do zarządzania multimediami i dostarczania ich. Ten artykuł zawiera omówienie Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d339fd16b1eef8df367bdcb375a1cb3dc71ddde2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937251"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895875"
 ---
 # <a name="azure-media-services-overview"></a>Omówienie usługi Azure Media Services 
 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Media Services, którego używasz:"]
+> [!div class="op_single_selector" title1="Wybierz używaną wersję Media Services:"]
 > * [Wersja 3](../latest/media-services-overview.md)
 > * [Wersja 2](media-services-overview.md)
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) to oparta na chmurze rozszerzalna platforma, która umożliwia deweloperom tworzenie skalowalnych aplikacji do dostarczania multimediów i zarządzania nimi. Usługi Media Services są oparte na interfejsach API REST, które umożliwiają bezpieczne przekazywanie, przechowywanie, kodowanie i tworzenie pakietów zawartości wideo lub audio na potrzeby transmisji strumieniowej na żądanie i na żywo do różnych klientów (np. odbiorników TV, komputerów i urządzeń przenośnych).
 
@@ -50,10 +50,10 @@ W celu tworzenia rozwiązań Media Services można użyć następujących elemen
 
 * [Interfejs API REST usługi Media Services](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Jeden z dostępnych zestawów SDK klienta:
-    * Usługi Azure Media Services SDK dla platformy .NET
+    * Zestaw Azure Media Services SDK dla platformy .NET
     
         * [Pakiet NuGet](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [Kod źródłowy w serwisie Github](https://github.com/Azure/azure-sdk-for-media-services)
+        * [Kod źródłowy usługi GitHub](https://github.com/Azure/azure-sdk-for-media-services)
     * [Zestaw Azure SDK dla języka Java](https://github.com/Azure/azure-sdk-for-java)
     * [Zestaw Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
     * [Azure Media Services dla środowiska Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Jest to wersja zestawu Node.js SDK firmy innej niż Microsoft. Jest ona opracowywana przez społeczność i aktualnie nie obsługuje 100% interfejsów API usług AMS.)
@@ -87,6 +87,6 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
 
 [Pomoc techniczna platformy Azure](https://azure.microsoft.com/support/options/) zapewnia opcje wsparcia technicznego dla platformy Azure, w tym dla usługi Media Services.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -1,6 +1,6 @@
 ---
 title: Omówienie koderów multimedialnych na żądanie na platformie Azure | Microsoft Docs
-description: Ten temat zawiera omówienie koderów multimediów na żądanie na platformie Azure.
+description: Azure Media Services udostępnia wiele opcji kodowania multimediów w chmurze. Ten artykuł zawiera omówienie koderów multimediów na żądanie na platformie Azure.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019030"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901515"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Omówienie koderów multimediów na żądanie na platformie Azure 
 
@@ -48,7 +48,7 @@ Domyślnie każde konto Media Services może mieć jedno aktywne zadanie kodowan
 ### <a name="how-to-use"></a>Jak stosować
 [Jak kodować przy użyciu Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-### <a name="formats"></a>Formatów
+### <a name="formats"></a>Formaty
 [Formaty i kodeki](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Ustawienia wstępne
@@ -72,7 +72,7 @@ Aby uzyskać więcej informacji, zobacz [jak utworzyć nakładki przy użyciu Me
 [Blog Media Services](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>Przepływ pracy usługi Media Encoder w warstwie Premium
-### <a name="overview"></a>Omówienie
+### <a name="overview"></a>Przegląd
 [Wprowadzenie kodowania Premium w Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
 ### <a name="how-to-use"></a>Jak stosować
@@ -86,7 +86,7 @@ Jeśli wejściowy film wideo nie zawiera napisów kodowanych, element zawartośc
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Pokrewne artykuły:

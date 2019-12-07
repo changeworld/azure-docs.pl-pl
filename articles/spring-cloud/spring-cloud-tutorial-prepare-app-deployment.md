@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e112fdc9e6f518e2ea3c72161e8978118cf19335
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708729"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890318"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Samouczek: przygotowanie aplikacji ze sprężyną Java do wdrożenia w chmurze Azure wiosennej
 
@@ -176,3 +176,5 @@ W tym samouczku przedstawiono sposób konfigurowania aplikacji ze sprężyną Ja
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak skonfigurować serwer konfiguracji](spring-cloud-tutorial-config-server.md).
+
+Więcej przykładów można znaleźć w witrynie GitHub: [przykłady chmur usługi Azure wiosennej](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

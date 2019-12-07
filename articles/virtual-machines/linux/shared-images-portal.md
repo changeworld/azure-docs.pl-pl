@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -14,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 89c98379a8e79d1b00db47021ae737ae471f79b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9dff10848c42fd730f0bc77fd325f00cec554c9d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035011"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892876"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Tworzenie udostępnionej galerii obrazów przy użyciu Azure Portal
 
@@ -34,7 +33,7 @@ Funkcja galerii obrazów udostępnionych ma wiele typów zasobów. Firma Microso
 | Zasób | Opis|
 |----------|------------|
 | **Obraz zarządzany** | Podstawowy obraz, który może być używany samodzielnie lub do tworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie [uogólnionych](shared-image-galleries.md#generalized-and-specialized-images) maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
-| **Zdjęcie** | Kopia dysku VHD, której można użyć do udostępnienia **wersji obrazu**. Migawki mogą być pobierane z [wyspecjalizowanej](shared-image-galleries.md#generalized-and-specialized-images) maszyny wirtualnej (która nie została uogólniona), a następnie używana samodzielnie lub z migawkami dysków danych, aby utworzyć wyspecjalizowaną wersję obrazu.
+| **Migawka** | Kopia dysku VHD, której można użyć do udostępnienia **wersji obrazu**. Migawki mogą być pobierane z [wyspecjalizowanej](shared-image-galleries.md#generalized-and-specialized-images) maszyny wirtualnej (która nie została uogólniona), a następnie używana samodzielnie lub z migawkami dysków danych, aby utworzyć wyspecjalizowaną wersję obrazu.
 | **Galeria obrazów** | Podobnie jak w przypadku portalu Azure Marketplace, **Galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale ty kontrolujesz, kto ma dostęp. |
 | **Definicja obrazu** | Obrazy są zdefiniowane w galerii i zawierają informacje o obrazie i wymaganiach dotyczących używania go w organizacji. Można dołączyć informacje takie jak uogólnione lub wyspecjalizowane obrazy, system operacyjny, minimalne i maksymalne wymagania dotyczące pamięci oraz informacje o wersji. Jest to definicja typu obrazu. |
 | **Wersja obrazu** | **Wersja obrazu** jest używana do tworzenia maszyny wirtualnej w przypadku korzystania z galerii. Dla danego środowiska można mieć wiele wersji obrazu. Podobnie jak w przypadku obrazu zarządzanego, w przypadku tworzenia maszyny wirtualnej przy użyciu **wersji obrazu** wersja obrazu jest używana do tworzenia nowych dysków dla maszyny wirtualnej. Wersje obrazów można wielokrotnie używać. |

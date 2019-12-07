@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą działania procedury składowanej w Azure Data Factory
+title: Przekształcanie danych za pomocą działania procedury składowanej
 description: Wyjaśnia, jak za pomocą działania procedury składowanej SQL Server wywołać procedurę składowaną w magazynie Azure SQL Database/danych z potoku Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5ebb2b9cdcbef59e07476dbebd289bb4402ca5fa
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 59bfdc5d2d57b2c05a2c7676d83d8771142ca285
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683726"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893777"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania procedury składowanej SQL Server w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -36,7 +36,7 @@ Możesz użyć działania procedury składowanej, aby wywołać procedurę skła
 > [!IMPORTANT]
 > Podczas kopiowania danych do Azure SQL Database lub SQL Server, można skonfigurować działanie **sqlsink** w działaniu Copy, aby wywołać procedurę składowaną za pomocą właściwości **sqlWriterStoredProcedureName** . Aby uzyskać szczegółowe informacje na temat właściwości, zobacz następujące artykuły dotyczące łącznika: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Wywoływanie procedury składowanej podczas kopiowania danych do Azure SQL Data Warehouse za pomocą działania kopiowania nie jest obsługiwane. Można jednak użyć działania procedury składowanej do wywołania procedury składowanej w SQL Data Warehouse. 
 >
-> Podczas kopiowania danych z Azure SQL Database lub SQL Server lub Azure SQL Data Warehouse można skonfigurować element **sqlsource** w działaniu Copy, aby wywołać procedurę składowaną w celu odczytania danych ze źródłowej bazy danych przy użyciu **sqlReaderStoredProcedureName** wartość. Aby uzyskać więcej informacji, zobacz następujące artykuły dotyczące łącznika: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
+> Podczas kopiowania danych z Azure SQL Database lub SQL Server lub Azure SQL Data Warehouse można skonfigurować element **sqlsource** w działaniu Copy, aby wywołać procedurę składowaną w celu odczytania danych ze źródłowej bazy danych przy użyciu właściwości **sqlReaderStoredProcedureName** . Aby uzyskać więcej informacji, zobacz następujące artykuły dotyczące łącznika: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
 
  
 
@@ -65,7 +65,7 @@ Oto format JSON służący do definiowania działania procedury składowanej:
 
 W poniższej tabeli opisano te właściwości JSON:
 
-| Właściwość                  | Opis                              | Wymagany |
+| Właściwość                  | Opis                              | Wymagane |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Nazwa działania                     | Tak      |
 | description               | Tekst opisujący działanie używanego działania | Nie       |
@@ -82,7 +82,7 @@ Typ danych określony dla parametru to typ Azure Data Factory, który jest mapow
 | Azure SQL Data Warehouse | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
 | Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
-| SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
+| Oprogramowanie SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
 ## <a name="error-info"></a>Informacje o błędzie

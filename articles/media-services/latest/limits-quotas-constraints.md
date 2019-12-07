@@ -1,6 +1,6 @@
 ---
 title: Limity przydziału i ograniczenia w Azure Media Services v3 | Microsoft Docs
-description: W tym temacie opisano limity przydziału i ograniczenia w programie Azure Media Services v3
+description: W tym temacie opisano limity przydziału i ograniczenia w programie Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2a530d6a1a447ccde448259623da6faeaa6a4d72
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598359"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888431"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia w Azure Media Services v3
 
@@ -30,7 +30,7 @@ W tym artykule opisano limity przydziału i ograniczenia w programie Azure Media
 | JobOutputs na zadanie | 20 (stałe) |
 | TransformOutputs w transformacji | 20 (stałe) |
 | Pliki na JobInput|10 (stałe)|
-| Rozmiar pliku| W niektórych scenariuszach obowiązuje limit maksymalnego rozmiaru pliku, który jest obsługiwany przez przetwarzanie w Media Services. <sup>jedno</sup> |
+| Rozmiar pliku| W niektórych scenariuszach obowiązuje limit maksymalnego rozmiaru pliku, który jest obsługiwany przez przetwarzanie w Media Services. <sup>(1)</sup> |
 | Zadania na konto Media Services | 500 000 <sup>(2)</sup> (stałe)|
 | Wydarzenia na żywo na konto usługi Media Services |5|
 | Media Services kont w ramach jednej subskrypcji | 25 (stały) |

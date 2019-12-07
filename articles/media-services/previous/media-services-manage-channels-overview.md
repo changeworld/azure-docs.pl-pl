@@ -1,6 +1,6 @@
 ---
 title: Omówienie przesyłania strumieniowego na żywo przy użyciu Azure Media Services | Microsoft Docs
-description: Ten temat zawiera omówienie przesyłania strumieniowego na żywo przy użyciu Azure Media Services.
+description: Ten artykuł zawiera omówienie przesyłania strumieniowego na żywo przy użyciu Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,19 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5ab4a6b96df964497e20b2b93c59febb0e24393c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8b58e9d2eae1fbe5b0f4086f772bea3bf46399c3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035897"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895957"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Omówienie przesyłania strumieniowego na żywo przy użyciu Media Services
 
 > [!NOTE]
 > Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W przypadku dostarczania zdarzeń przesyłania strumieniowego na żywo za pomocą Azure Media Services często są wykorzystywane następujące składniki:
 
@@ -55,7 +55,7 @@ W usłudze Azure Media Services **kanały**, **programy**, i **punkty końcowe p
 
 **Kanał** reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Kanał może odbierać przychodzące strumienie na żywo w następujący sposób:
 
-* Lokalny koder na żywo wysyła plik **RTMP** o różnych szybkościach transmisji bitów lub plik **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który jest skonfigurowany do obsługi dostarczania zawartości w formie **przekazywania**. Dostarczanie w formie **przekazywania** występuje wtedy, gdy pozyskiwane strumienie są przekazywane przez **kanał** bez dalszego przetwarzania. Można użyć następujących koderów na żywo, które wychodzące Smooth Streaming o kilku szybkościach transmisji bitów: MediaExcel, ATEME, Wyobraź sobie, Envivio, Cisco i elementy. Następujące kodery na żywo wyprowadzają RTMP: Program Adobe Flash Media Live Encoder (KODER FMLE), Telestream Wirecast, Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła plik **RTMP** o różnych szybkościach transmisji bitów lub plik **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który jest skonfigurowany do obsługi dostarczania zawartości w formie **przekazywania**. Dostarczanie w formie **przekazywania** występuje wtedy, gdy pozyskiwane strumienie są przekazywane przez **kanał** bez dalszego przetwarzania. Można użyć następujących koderów na żywo, które wychodzące z wieloszybkościowej transmisji bitów Smooth Streaming: MediaExcel, ATEME, Wyobraź Communications, Envivio, Cisco i element. Następujące kodery na żywo wyjściowe RTMP: Adobe Flash Media Live Encoder (KODER FMLE), Telestream Wirecast, Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
   > [!NOTE]
   > Metoda przekazywania to najbardziej ekonomiczne rozwiązanie transmisji strumieniowej na żywo w przypadku organizowania wielu wydarzeń w długim okresie oraz poczynionych inwestycji w kodery lokalne. Zobacz szczegółowe informacje o [cenach](https://azure.microsoft.com/pricing/details/media-services/).
@@ -65,20 +65,20 @@ W usłudze Azure Media Services **kanały**, **programy**, i **punkty końcowe p
 
 Począwszy od wersji 2,10 Media Services, podczas tworzenia kanału można określić, w jaki sposób chcesz, aby kanał odbierał strumień wejściowy i czy chcesz, aby kanał wykonywał kodowanie na żywo strumienia. Dostępne są dwie opcje:
 
-* **Brak** (przekazywane) — Określ tę wartość, jeśli planujesz używać lokalnego kodera na żywo, który będzie wyprowadzać strumień o szybkości transmisji bitów (strumień Pass-through). W tym przypadku strumień przychodzący przeszedł do danych wyjściowych bez kodowania. Jest to zachowanie kanału przed wydaniem 2,10.  
+* **Brak** (przekazanie) — Określ tę wartość, jeśli planujesz używać lokalnego kodera na żywo, który będzie wyprowadzać strumień o szybkości transmisji bitów (strumień Pass-through). W tym przypadku strumień przychodzący przeszedł do danych wyjściowych bez kodowania. Jest to zachowanie kanału przed wydaniem 2,10.  
 * **Standardowa** — wybierz tę wartość, jeśli planujesz używać Media Services do kodowania strumienia na żywo o pojedynczej szybkości transmisji bitów do strumienia o większej szybkości transmisji bitów. Ta metoda jest bardziej ekonomiczna w przypadku szybkiego skalowania w górę w przypadku rzadko występujących zdarzeń. Należy pamiętać, że istnieje wpływ rozliczania na kodowanie na żywo i należy pamiętać, że pozostawienie kanału kodowania na żywo w stanie "uruchomiona" spowoduje naliczenie opłat naliczanych.  Zaleca się natychmiastowe zatrzymanie uruchomionych kanałów po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych opłat godzinowych.
 
 ## <a name="comparison-of-channel-types"></a>Porównanie typów kanałów
 
 Poniższa tabela zawiera Przewodnik porównujący dwa typy kanałów obsługiwane w Media Services
 
-| Cecha | Kanał Pass-through | Kanał standardowy |
+| Funkcja | Kanał Pass-through | Kanał standardowy |
 | --- | --- | --- |
 | Dane wejściowe o pojedynczej szybkości transmisji bitów są zakodowane w wielu szybkościach transmisji bitów w chmurze |Nie |Tak |
 | Rozdzielczość maksymalna, liczba warstw |1080p, 8 warstw, 60 klatek na sekundę |720, 6 warstw, 30 fps |
 | Protokoły wejściowe |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
-| Cena |Zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "wideo na żywo" |Zobacz [stronę](https://azure.microsoft.com/pricing/details/media-services/) z cennikiem |
-| Maksymalny czas działania |Całodobowa |8 godzin |
+| Cena |Zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "wideo na żywo" |Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) |
+| Maksymalny czas działania |Całodobowo |8 godzin |
 | Obsługa wstawiania przednich |Nie |Tak |
 | Obsługa sygnalizowania AD |Nie |Tak |
 | Podpisy CEA 608/708 |Tak |Tak |
@@ -112,7 +112,7 @@ Podczas tworzenia kanału można uzyskać adres URL pozyskiwania i adres URL wer
 
 Każde konto Media Services może zawierać wiele kanałów, wiele programów i wiele StreamingEndpoints. W zależności od potrzeb dotyczących przepustowości i zabezpieczeń usługi StreamingEndpoint Services mogą być dedykowane dla jednego lub kilku kanałów. Każdy StreamingEndpoint może pobierać z dowolnego kanału.
 
-Podczas tworzenia kanału można określić dozwolone adresy IP w jednym z następujących formatów: adres IPv4 z 4 cyframi, zakres adresów CIDR.
+Podczas tworzenia kanału można określić dozwolone adresy IP w jednym z następujących formatów: adres IpV4 z 4 numerami, zakres adresów CIDR.
 
 ### <a name="program"></a>Program
 [Program](https://docs.microsoft.com/rest/api/media/operations/program) umożliwia kontrolowanie publikowania i przechowywania segmentów w strumieniu na żywo. Kanały zarządzają programami. Relacja kanału i programu jest bardzo podobna do relacji w tradycyjnych multimediach, gdzie kanał ma stały strumień zawartości, a program obejmuje niektóre zdarzenia czasowe na tym kanale.
@@ -150,18 +150,18 @@ W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie o
 
 | Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Czy jest to rozliczenia? |
 | --- | --- | --- |
-| Rozpoczęcie |Rozpoczęcie |Nie (stan przejściowy) |
+| Uruchamianie |Uruchamianie |Nie (stan przejściowy) |
 | Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |TAK |
 | Zatrzymywanie |Zatrzymywanie |Nie (stan przejściowy) |
-| Zatrzymano |Zatrzymano |Nie |
+| Zatrzymane |Zatrzymane |Nie |
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="related-topics"></a>Powiązane tematy
 [Azure Media Services pofragmentowana Specyfikacja pozyskiwania na żywo w formacie MP4](../media-services-fmp4-live-ingest-overview.md)
 
 [Praca z kanałami obsługującymi Live Encoding z Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)

@@ -1,6 +1,6 @@
 ---
 title: Przesyłanie strumieniowe na żywo za pomocą koderów lokalnych, które tworzą strumienie o wysokiej szybkości transmisji bitów — platforma Azure | Microsoft Docs
-description: 'W tym temacie opisano sposób konfigurowania kanału, który odbiera strumień na żywo o wysokiej szybkości transmisji bitów z kodera lokalnego. Strumień można następnie dostarczyć do aplikacji do odtwarzania klienta za pośrednictwem co najmniej jednego punktu końcowego przesyłania strumieniowego przy użyciu jednego z następujących protokołów adaptacyjnego przesyłania strumieniowego: HLS, Smooth Streaming, KRESKa.'
+description: W tym temacie opisano sposób konfigurowania kanału, który odbiera strumień na żywo o wysokiej szybkości transmisji bitów z kodera lokalnego.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,19 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69015483"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887105"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Praca z kanałami odbierającymi strumień na żywo o wysokiej szybkości transmisji bitów z koderów lokalnych
 
 > [!NOTE]
 > Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyskiwania strumienia transportowego RTP/MPEG-2. Przeprowadź migrację z protokołów RTP/MPEG-2 do protokołu RTMP lub pofragmentowanych plików MP4 (Smooth Streaming).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W Azure Media Services *kanał* reprezentuje potok do przetwarzania zawartości przesyłania strumieniowego na żywo. Kanał odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów:
 
 * Lokalny koder na żywo wysyła strumień RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4) do kanału, w którym nie włączono kodowania na żywo z Media Services. Pozyskiwane strumienie są przekazywane przez kanały bez dalszych procesów. Ta metoda jest nazywana *przekazywaniem*. Koder na żywo może również wysyłać strumień o pojedynczej szybkości transmisji bitów do kanału, w którym nie włączono obsługi kodowania na żywo, ale nie zalecamy tego. Media Services dostarcza strumieniu do klientów, którzy go żądają.
@@ -39,8 +39,8 @@ W Azure Media Services *kanał* reprezentuje potok do przetwarzania zawartości 
 
 Począwszy od wersji 2,10 Media Services, podczas tworzenia kanału można określić, w jaki sposób kanał ma otrzymać strumień wejściowy. Możesz również określić, czy kanał ma wykonywać kodowanie na żywo strumienia. Dostępne są dwie opcje:
 
-* **Przekazuj**: Określ tę wartość, jeśli planujesz używać lokalnego kodera na żywo, który ma strumień o wysokiej szybkości transmisji bitów (strumień Pass-through) jako dane wyjściowe. W tym przypadku strumień przychodzący przechodzi do danych wyjściowych bez kodowania. Jest to zachowanie kanału przed wydaniem 2,10. Ten artykuł zawiera szczegółowe informacje o pracy z kanałami tego typu.
-* **Live Encoding**: Wybierz tę wartość, jeśli planujesz używać Media Services do kodowania strumienia na żywo o pojedynczej szybkości transmisji bitów do strumienia o większej szybkości transmisji bitów. Pozostawienie kanału kodowania na żywo w stanie uruchomionym wiąże się z naliczeniem opłat. Zalecamy natychmiastowe zatrzymanie uruchomionych kanałów po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych opłat godzinowych. Media Services dostarcza strumieniu do klientów, którzy go żądają.
+* **Przekazuj**: należy określić tę wartość, jeśli planujesz używać lokalnego kodera na żywo, który ma strumień o wysokiej szybkości transmisji bitów (strumień Pass-through) jako dane wyjściowe. W tym przypadku strumień przychodzący przechodzi do danych wyjściowych bez kodowania. Jest to zachowanie kanału przed wydaniem 2,10. Ten artykuł zawiera szczegółowe informacje o pracy z kanałami tego typu.
+* **Live Encoding**: Wybierz tę wartość, jeśli planujesz używać Media Services do kodowania strumienia na żywo o pojedynczej szybkości transmisji bitów do strumienia o większej szybkości transmisji bitów. Pozostawienie kanału kodowania na żywo w stanie **uruchomionym** wiąże się z naliczeniem opłat. Zalecamy natychmiastowe zatrzymanie uruchomionych kanałów po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych opłat godzinowych. Media Services dostarcza strumieniu do klientów, którzy go żądają.
 
 > [!NOTE]
 > W tym artykule omówiono atrybuty kanałów, które nie obsługują wykonywania kodowania na żywo. Aby uzyskać informacje na temat pracy z kanałami obsługującymi kodowanie na żywo, zobacz [przesyłanie strumieniowe na żywo przy użyciu Azure Media Services do tworzenia strumieni o wysokiej szybkości transmisji bitów](media-services-manage-live-encoder-enabled-channels.md).
@@ -73,7 +73,7 @@ W poniższych krokach opisano zadania związane z tworzeniem typowych aplikacji 
 6. Opublikuj element zawartości skojarzony z programem.   
 
     >[!NOTE]
-    >Po utworzeniu konta Azure Media Services zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego w stanie zatrzymanym . Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
+    >Po utworzeniu konta Azure Media Services zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego w stanie **zatrzymanym** . Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
 7. Uruchom program, gdy wszystko będzie gotowe do rozpoczęcia przesyłania strumieniowego i archiwizowania.
 
@@ -88,8 +88,8 @@ W poniższych krokach opisano zadania związane z tworzeniem typowych aplikacji 
 #### <a id="ingest_protocols"></a>Pozyskiwanie protokołu przesyłania strumieniowego
 Media Services obsługuje pozyskiwanie dynamicznych kanałów informacyjnych przy użyciu dużej szybkości transmisji bitów w postaci plików MP4 i wieloszybkościowej transmisji bitów jako protokołów przesyłania strumieniowego. Po wybraniu protokołu przesyłania strumieniowego RTMP dla kanału zostanie utworzonych dwa punkty końcowe (wejściowe):
 
-* **Podstawowy adres URL**: Określa w pełni kwalifikowany adres URL podstawowego punktu końcowego pozyskiwania w kanale RTMP.
-* **Pomocniczy adres URL** (opcjonalnie): Określa w pełni kwalifikowany adres URL pomocniczego punktu końcowego pozyskiwania w kanale.
+* **Podstawowy adres URL**: określa w pełni kwalifikowany adres URL podstawowego punktu końcowego protokołu RTMP w kanale.
+* **Pomocniczy adres URL** (opcjonalnie): określa w pełni kwalifikowany adres URL pomocniczego punktu końcowego protokołu RTMP dla kanału.
 
 Użyj pomocniczego adresu URL, jeśli chcesz poprawić trwałość i odporność na uszkodzenia strumienia pozyskiwania (a także tryb failover kodera i odporność na uszkodzenia), szczególnie w przypadku następujących scenariuszy:
 
@@ -110,7 +110,7 @@ Aby uzyskać informacje na temat koderów na żywo RTMP, zobacz [Azure Media Ser
 #### <a name="ingest-urls-endpoints"></a>Adresy URL pozyskiwania (punkty końcowe)
 Kanał udostępnia wejściowy punkt końcowy (adres URL pozyskiwania) określony w koderze dynamicznym, dzięki czemu koder może wypchnąć strumienie do kanałów.   
 
-Podczas tworzenia kanału można uzyskać adresy URL pozyskiwania. Aby uzyskać te adresy URL, kanał nie musi znajdować się w stanie **uruchomienia** . Gdy wszystko będzie gotowe do rozpoczęcia wypychania danych do kanału, kanał musi być w stanie uruchomionym . Po rozpoczęciu pobierania danych przez kanał można wyświetlić podgląd strumienia za pośrednictwem adresu URL w wersji zapoznawczej.
+Podczas tworzenia kanału można uzyskać adresy URL pozyskiwania. Aby uzyskać te adresy URL, kanał nie musi znajdować się w stanie **uruchomienia** . Gdy wszystko będzie gotowe do rozpoczęcia wypychania danych do kanału, kanał musi być w stanie **uruchomionym** . Po rozpoczęciu pobierania danych przez kanał można wyświetlić podgląd strumienia za pośrednictwem adresu URL w wersji zapoznawczej.
 
 Istnieje możliwość pozyskiwania pofragmentowanego strumienia danych MP4 (Smooth Streaming) na żywo za pośrednictwem połączenia SSL. Aby pozyskać za pośrednictwem protokołu SSL, należy zaktualizować adres URL pozyskiwania do protokołu HTTPS. Obecnie nie można pozyskiwać protokołu RTMP przez SSL.
 
@@ -144,7 +144,7 @@ Jeśli nie określono adresów IP i nie ma definicji reguły, adres IP nie jest 
 #### <a name="preview-urls"></a>Podgląd adresów URL
 Kanały zapewniają punkt końcowy (wersja zapoznawcza), który służy do wyświetlania podglądu i weryfikowania strumienia przed dalszem przetwarzaniem i dostarczaniem.
 
-Możesz uzyskać adres URL wersji zapoznawczej podczas tworzenia kanału. Aby uzyskać adres URL, kanał nie musi znajdować się w stanie uruchomionym. Po rozpoczęciu pobierania danych przez kanał można wyświetlić podgląd strumienia.
+Możesz uzyskać adres URL wersji zapoznawczej podczas tworzenia kanału. Aby uzyskać adres URL, kanał nie musi znajdować się w stanie **uruchomionym** . Po rozpoczęciu pobierania danych przez kanał można wyświetlić podgląd strumienia.
 
 Obecnie strumień w wersji zapoznawczej można dostarczyć tylko w pofragmentowanym formacie MP4 (Smooth Streaming), niezależnie od określonego typu danych wejściowych. Aby przetestować płynny strumień, można użyć odtwarzacza [monitora kondycji Smooth Streaming](https://playready.directtaps.net/smoothstreaming/) . Do wyświetlania strumienia można także użyć odtwarzacza hostowanego w Azure Portal.
 
@@ -176,11 +176,11 @@ Nawet po zatrzymaniu i usunięciu programu użytkownicy będą mogli przesyłać
 ## <a id="states"></a>Stany kanału i rozliczenia
 Możliwe wartości bieżącego stanu kanału to:
 
-* **Zatrzymano**: To jest wstępny stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Rozpoczęcie**: Kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał powróci do stanu **zatrzymany** .
-* **Uruchamianie**: Kanał może przetwarzać strumienie na żywo.
-* **Zatrzymywanie**: Kanał jest zatrzymywany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
-* **Usuwanie**: Kanał jest usuwany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Zatrzymano**: jest to początkowy stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
+* **Uruchamianie**: kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał powróci do stanu **zatrzymany** .
+* **Uruchomiono**: kanał może przetwarzać strumienie na żywo.
+* **Zatrzymywanie**: kanał jest zatrzymywany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Usuwanie**: kanał jest usuwany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
 
 W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat.
 
@@ -197,7 +197,7 @@ W poniższej tabeli przedstawiono obsługiwane standardy dla podpisów kodowanyc
 | Standardowa (Standard) | Uwagi |
 | --- | --- |
 | CEA-708 i EIA-608 (708/608) |CEA-708 i EIA-608 to standardy zamykania podpisów dla Stany Zjednoczone i Kanady.<p><p>Obecnie podpisy są obsługiwane tylko wtedy, gdy są wykonywane w zakodowanym strumieniu wejściowym. Musisz użyć kodera multimediów na żywo, który może wstawić 608 lub 708 podpisy w zakodowanym strumieniu, który jest wysyłany do Media Services. Media Services dostarcza zawartość z wstawionymi napisami do Twoich przeglądających. |
-| TTML wewnątrz. ISMT (Smooth Streaming ścieżek tekstowych) |Media Services dynamiczne pakowanie umożliwia klientom przesyłanie strumieniowe zawartości w jednym z następujących formatów: ŁĄCZNIK, HLS lub Smooth Streaming. Jeśli jednak pozyskasz pofragmentowany plik MP4 (Smooth Streaming) z napisami wewnątrz. ISMT (Smooth Streaming ścieżki tekstowe), możesz dostarczyć strumień tylko do Smooth Streaming klientów. |
+| TTML wewnątrz. ISMT (Smooth Streaming ścieżek tekstowych) |Media Services dynamiczne pakowanie umożliwia klientom przesyłanie strumieniowe zawartości w jednym z następujących formatów: PAUZy, HLS lub Smooth Streaming. Jeśli jednak pozyskasz pofragmentowany plik MP4 (Smooth Streaming) z napisami wewnątrz. ISMT (Smooth Streaming ścieżki tekstowe), możesz dostarczyć strumień tylko do Smooth Streaming klientów. |
 | SCTE-35 |SCTE-35 to system sygnałów cyfrowych, który służy do sygnalizowania wstawiania reklamowego. Odbiorniki podrzędne używają sygnału do łączenia reklamy ze strumieniem przez przydzielony czas. SCTE-35 musi być wysłany jako ścieżka rozrzedzona w strumieniu wejściowym.<p><p>Obecnie jedynym obsługiwanym formatem strumienia wejściowego, który ma sygnały usługi AD, jest fragmentacja MP4 (Smooth Streaming). Jedynym obsługiwanym formatem danych wyjściowych jest również Smooth Streaming. |
 
 ## <a id="considerations"></a>Zagadnienia dotyczące
@@ -213,13 +213,13 @@ Jeśli używasz lokalnego kodera na żywo do wysyłania strumienia o większej s
 
 Poniżej przedstawiono inne zagadnienia związane z pracą z kanałami i powiązanymi składnikami:
 
-* Za każdym razem, gdy ponownie konfigurujesz koder na żywo , wywołaj metodę resetowania kanału. Przed zresetowaniem kanału należy zatrzymać program. Po zresetowaniu kanału należy ponownie uruchomić program.
+* Za każdym razem, gdy ponownie konfigurujesz koder na żywo, wywołaj metodę **resetowania** kanału. Przed zresetowaniem kanału należy zatrzymać program. Po zresetowaniu kanału należy ponownie uruchomić program.
 
   > [!NOTE]
   > Po ponownym uruchomieniu programu należy skojarzyć go z nowym zasobem i utworzyć nowy lokalizator. 
   
 * Kanał można zatrzymać tylko wtedy, gdy jest w stanie **uruchomienia** , a wszystkie programy w kanale zostały zatrzymane.
-* Domyślnie do konta Media Services można dodać tylko pięć kanałów. Aby uzyskać więcej informacji, zobacz Przydziały [i ograniczenia](media-services-quotas-and-limitations.md).
+* Domyślnie do konta Media Services można dodać tylko pięć kanałów. Aby uzyskać więcej informacji, zobacz [przydziały i ograniczenia](media-services-quotas-and-limitations.md).
 * Opłaty są naliczane tylko wtedy, gdy kanał jest w stanie **uruchomienia** . Aby uzyskać więcej informacji, zobacz sekcję [Stany kanału i rozliczenia](media-services-live-streaming-with-onprem-encoders.md#states) .
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
@@ -228,7 +228,7 @@ Poniżej przedstawiono inne zagadnienia związane z pracą z kanałami i powiąz
 ## <a name="feedback"></a>Opinia
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-topics"></a>Tematy pokrewne
+## <a name="related-topics"></a>Powiązane tematy
 [Zalecane w przypadku koderów lokalnych](media-services-recommended-encoders.md)
 
 [Azure Media Services fragmentacja — Specyfikacja pozyskiwania danych MP4](../media-services-fmp4-live-ingest-overview.md)

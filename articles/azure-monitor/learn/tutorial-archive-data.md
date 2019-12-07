@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304713"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893352"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -70,7 +70,7 @@ Dane monitorowania z subskrypcji będą teraz przepływać do konta magazynu.
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Przekierowywanie danych zasobów do konta magazynu
 
-Teraz ustawimy przekierowanie danych poziomu zasobów (metryk zasobów i dzienników diagnostycznych) do konta magazynu, konfigurując **ustawienia diagnostyczne zasobów**.
+Teraz skonfigurujemy dane na poziomie zasobów (metryki zasobów i dzienniki zasobów), które mają być kierowane do konta magazynu przez skonfigurowanie **ustawień diagnostycznych zasobów**.
 
 1. Kliknij przycisk **Monitoruj** na liście w okienku nawigacji po lewej stronie, a następnie wybierz pozycję **Ustawienia diagnostyczne**. Zostanie wyświetlona lista wszystkich zasobów w subskrypcji, które generują dane monitorowania za pośrednictwem usługi Azure Monitor. Jeśli nie widzisz żadnych zasobów na tej liście, możesz najpierw [utworzyć aplikację logiki](../../logic-apps/quickstart-create-first-logic-app-workflow.md). Dzięki temu uzyskasz zasób, dla którego możesz skonfigurować ustawienie diagnostyczne.
 
@@ -96,7 +96,7 @@ Teraz ustawimy przekierowanie danych poziomu zasobów (metryk zasobów i dzienni
 
 6. Ustaw suwak **Okres przechowywania (w dniach)** na wartość 30. Suwak umożliwia ustawienie liczby dni przechowywania danych monitorowania na koncie magazynu. Starsze dane są automatycznie usuwane przez usługę Azure Monitor. Wpisanie wartości zero powoduje, że dane są przechowywane przez nieograniczony czas.
 
-7. Kliknij pozycję **Zapisz**.
+7. Kliknij przycisk **Save** (Zapisz).
 
 Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
@@ -137,7 +137,7 @@ Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
 9. W wyświetlonej sekcji wybierz konto magazynu utworzone w kroku **Tworzenie konta magazynu**.
 
-10. Kliknij pozycję **Zapisz**.
+10. Kliknij przycisk **Save** (Zapisz).
 
 Dane monitorowania z maszyn wirtualnych będą teraz przepływać do konta magazynu.
 
@@ -162,7 +162,7 @@ Jeśli wykonano powyższe kroki, dane zaczęły już przepływać do konta magaz
 
 5. Przejdź do pliku PT1H.json, klikając identyfikator zasobu, datę i godzinę w obrębie kontenerów. Kliknij plik PT1H.json, a następnie kliknij przycisk **Pobierz**. Każdy obiekt blob PT1H.json zawiera obiekt blob JSON ze zdarzeniami, które wystąpiły w ciągu godziny określonej w adresie URL obiektu blob (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartość odpowiadająca minutom(m = 00) zawsze wynosi 00, ponieważ zdarzenia dziennika są dzielone na poszczególne obiekty blob w odstępach jednogodzinnych.
 
-   Możesz teraz wyświetlić zdarzenie JSON przechowywane na koncie magazynu. W przypadku dzienników diagnostycznych zasobów format obiektów blob jest następujący:
+   Możesz teraz wyświetlić zdarzenie JSON przechowywane na koncie magazynu. W przypadku dzienników zasobów zasobów format obiektów BLOB jest:
 
    insights-logs-{nazwa kategorii dziennika}/id_zasobu=/{identyfikator zasobu}/y={czterocyfrowy rok}/m={dwucyfrowy miesiąc}/d={dwucyfrowy dzień}/h={dwucyfrowa pełna godzina w formacie 24-godzinnym}/m=00/PT1H.json
 

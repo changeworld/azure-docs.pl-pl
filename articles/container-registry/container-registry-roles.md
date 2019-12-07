@@ -2,17 +2,17 @@
 title: Role i uprawnienia RBAC
 description: Użyj kontroli dostępu opartej na rolach (RBAC) na platformie Azure, a w celu zapewnienia szczegółowych uprawnień do zasobów w usłudze Azure Container Registry.
 ms.topic: article
-ms.date: 03/20/2019
-ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 12/02/2019
+ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456241"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893488"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry ról i uprawnień
 
-Usługa Azure Container Registry obsługuje zestaw ról platformy Azure, które zapewniają różne poziomy uprawnień do usługi Azure Container Registry. Za pomocą [kontroli dostępu opartej na rolach](../role-based-access-control/index.yml) (RBAC) na platformie Azure można przypisywać określone uprawnienia użytkownikom lub podmiotom usługi, które muszą korzystać z rejestru.
+Usługa Azure Container Registry obsługuje zestaw [wbudowanych ról platformy Azure](../role-based-access-control/built-in-roles.md) , które zapewniają różne poziomy uprawnień do usługi Azure Container Registry. Za pomocą [kontroli dostępu opartej na rolach](../role-based-access-control/index.yml) (RBAC) na platformie Azure można przypisywać określone uprawnienia użytkownikom, podmiotom usług lub innym tożsamościom, które muszą korzystać z rejestru. 
 
 | Rola/uprawnienie       | [Menedżer zasobów dostępu](#access-resource-manager) | [Utwórz/usuń rejestr](#create-and-delete-registry) | [Obraz wypychany](#push-image) | [Obraz ściągania](#pull-image) | [Usuń dane obrazu](#delete-image-data) | [Zmień zasady](#change-policies) |   [Podpisz obrazy](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -68,8 +68,25 @@ Możliwość konfigurowania zasad w rejestrze. Zasady obejmują przeczyszczanie 
 
 Możliwość podpisywania obrazów, zwykle przypisywanych do zautomatyzowanego procesu, który mógłby korzystać z nazwy głównej usługi. To uprawnienie jest zwykle połączone z [obrazem push](#push-image) , aby umożliwić wypychanie zaufanego obrazu do rejestru. Aby uzyskać szczegółowe informacje, zobacz [zaufanie zawartości w Azure Container Registry](container-registry-content-trust.md).
 
+## <a name="custom-roles"></a>Role niestandardowe
+
+Podobnie jak w przypadku innych zasobów platformy Azure, możesz utworzyć własne [role niestandardowe](../role-based-access-control/custom-roles.md) z uprawnieniami szczegółowymi do Azure Container Registry. Następnie przypisz niestandardowe role do użytkowników, podmiotów usługi lub innych tożsamości, które muszą korzystać z rejestru. 
+
+Aby określić, które uprawnienia mają być stosowane do roli niestandardowej, zobacz listę [akcji](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)Microsoft. ContainerRegistry, przejrzyj dozwolone akcje [wbudowanych ról ACR](../role-based-access-control/built-in-roles.md)lub uruchom następujące polecenie:
+
+```azurecli
+az provider operation show --namespace Microsoft.ContainerRegistry
+```
+
+Aby zdefiniować rolę niestandardową, zapoznaj [się z instrukcjami tworzenia roli niestandardowej](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role).
+
+> [!IMPORTANT]
+> W roli niestandardowej Azure Container Registry nie obsługuje obecnie symboli wieloznacznych, takich jak `Microsoft.ContainerRegistry/*` lub `Microsoft.ContainerRegistry/registries/*`, które przyznają dostęp do wszystkich akcji dopasowywania. Określ dowolną akcję wymaganą pojedynczo w roli.
+
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej na temat przypisywania ról RBAC do tożsamości platformy Azure przy użyciu [Azure Portal](../role-based-access-control/role-assignments-portal.md), [interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)lub innych narzędzi platformy Azure.
 
 * Dowiedz się więcej na temat [opcji uwierzytelniania](container-registry-authentication.md) dla Azure Container Registry.
+
+* Dowiedz się więcej na temat włączania [uprawnień do zakresu repozytorium](container-registry-repository-scoped-permissions.md) (wersja zapoznawcza) w rejestrze kontenerów.

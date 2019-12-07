@@ -1,5 +1,5 @@
 ---
-title: Skopiuj dane z i do chmury usługi Salesforce przy użyciu Azure Data Factory
+title: Kopiuj dane z usługi Salesforce do chmury
 description: Informacje o kopiowaniu danych z chmury usługi Salesforce do obsługiwanych magazynów danych ujścia lub z obsługiwanych magazynów danych źródłowych do chmury usług Salesforce za pomocą działania kopiowania w potoku usługi Fabryka danych.
 services: data-factory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 5b98e11d4b8d820c87dfb6ffc5e98b46f2095ace
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3d49ec7260017421a60268e159c8152359455871
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680350"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895631"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Skopiuj dane z i do chmury usługi Salesforce przy użyciu Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z i do chmury usługi Salesforce. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z i do chmury usługi Salesforce. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Ten łącznik chmury usługi Salesforce jest obsługiwany dla następujących działań:
 
@@ -52,24 +52,24 @@ Usługi Salesforce mają limity dla obu żądań interfejsu API i współbieżny
 
 W obu scenariuszach może być również wyświetlany komunikat o błędzie "REQUEST_LIMIT_EXCEEDED". Aby uzyskać więcej informacji, zobacz sekcję "limity żądań interfejsu API" w obszarze [limity deweloperów usługi Salesforce](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf).
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika usługi Salesforce w chmurze.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Dla połączonej usługi Salesforce są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type |Właściwość Type musi być ustawiona na wartość **SalesforceServiceCloud**. |Tak |
 | environmentUrl | Określ adres URL wystąpienia chmury usługi Salesforce. <br> -Wartość domyślna to `"https://login.salesforce.com"`. <br> -Aby skopiować dane z piaskownicy, określ `"https://test.salesforce.com"`. <br> -Aby skopiować dane z domeny niestandardowej, określ, na przykład, `"https://[domain].my.salesforce.com"`. |Nie |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak |
-| hasło |Określ hasło dla konta użytkownika.<br/><br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| Obiektu |Określ token zabezpieczający dla konta użytkownika. Instrukcje dotyczące resetowania i uzyskiwania tokenu zabezpieczającego znajdują się w temacie [Get a Security Token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Aby uzyskać ogólne informacje na temat tokenów zabezpieczających, zobacz [zabezpieczenia i interfejs API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
-| Właściwością connectvia | [Środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie dla źródła, tak dla ujścia, jeśli źródłowa usługa nie ma środowiska Integration Runtime |
+| hasło |Określ hasło dla konta użytkownika.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| securityToken |Określ token zabezpieczający dla konta użytkownika. Instrukcje dotyczące resetowania i uzyskiwania tokenu zabezpieczającego znajdują się w temacie [Get a Security Token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Aby uzyskać ogólne informacje na temat tokenów zabezpieczających, zobacz [zabezpieczenia i interfejs API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie dla źródła, tak dla ujścia, jeśli źródłowa usługa nie ma środowiska Integration Runtime |
 
 >[!IMPORTANT]
 >Podczas kopiowania danych do chmury usługi Salesforce nie można użyć domyślnego Azure Integration Runtime do wykonania kopiowania. Innymi słowy, jeśli źródłowa usługa połączona nie ma określonego środowiska Integration Runtime, jawnie [utwórz Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) przy użyciu lokalizacji zbliżonej do wystąpienia chmury usługi Salesforce. Skojarz połączoną usługę w chmurze usługi Salesforce, jak w poniższym przykładzie.
@@ -136,14 +136,14 @@ Dla połączonej usługi Salesforce są obsługiwane następujące właściwośc
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych w chmurze usługi Salesforce.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych w chmurze usługi Salesforce.
 
 Aby skopiować dane z i do chmury usługi Salesforce, obsługiwane są następujące właściwości.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość **SalesforceServiceCloudObject**.  | Tak |
-| objectApiName | Nazwa obiektu usług Salesforce, z którego mają zostać pobrane dane. | Nie dla źródła, tak dla ujścia |
+| objectApiName | Nazwa obiektu usług Salesforce, z którego mają zostać pobrane dane. | Brak źródła tak dla ujścia |
 
 > [!IMPORTANT]
 > Część "__c" **nazwy interfejsu API** jest wymagana dla dowolnego obiektu niestandardowego.
@@ -169,20 +169,20 @@ Aby skopiować dane z i do chmury usługi Salesforce, obsługiwane są następuj
 }
 ```
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość **relacyjną**. | Tak |
 | tableName | Nazwa tabeli w chmurze usługi Salesforce. | Nie (Jeśli określono "zapytanie" w źródle aktywności) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia w chmurze usługi Salesforce.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia w chmurze usługi Salesforce.
 
 ### <a name="salesforce-service-cloud-as-a-source-type"></a>Chmura usługi Salesforce jako typ źródła
 
 Aby skopiować dane z chmury usługi Salesforce, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość **SalesforceServiceCloudSource**. | Tak |
 | query |Użyj zapytania niestandardowego do odczytywania danych. Można użyć zapytania [SOQL (Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lub zapytania SQL-92. Zobacz więcej porad w sekcji [porady dotyczące zapytań](#query-tips) . Jeśli nie określono zapytania, zostaną pobrane wszystkie dane obiektu chmury usługi Salesforce określonego w "objectApiName" w zestawie danych. | Nie (Jeśli określono wartość "objectApiName" w zestawie danych) |
@@ -229,10 +229,10 @@ Aby skopiować dane z chmury usługi Salesforce, w sekcji **Źródło** działan
 
 Aby skopiować dane do chmury usługi Salesforce, w sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość **SalesforceServiceCloudSink**. | Tak |
-| WriteBehavior | Zachowanie zapisu dla operacji.<br/>Dozwolone wartości to **INSERT** i **upsert**. | Nie (wartość domyślna to Insert) |
+| writeBehavior | Zachowanie zapisu dla operacji.<br/>Dozwolone wartości to **INSERT** i **upsert**. | Nie (wartość domyślna to Insert) |
 | externalIdFieldName | Nazwa pola identyfikatora zewnętrznego dla operacji upsert. Określone pole musi być zdefiniowane jako "pole identyfikatora zewnętrznego" w obiekcie chmury usługi Salesforce. Nie może mieć wartości NULL w odpowiednich danych wejściowych. | Tak dla "upsert" |
 | writeBatchSize | Liczba wierszy danych zapisywana w chmurze usługi Salesforce w każdej partii. | Nie (domyślnie 5 000) |
 | ignoreNullValues | Wskazuje, czy ignorować wartości NULL z danych wejściowych podczas operacji zapisu.<br/>Dozwolone wartości to **true** i **false**.<br>- **true**: pozostaw dane w obiekcie docelowym bez zmian po wykonaniu operacji upsert lub Update. Wstaw zdefiniowaną wartość domyślną podczas wykonywania operacji wstawiania.<br/>- **false**: zaktualizuj dane w obiekcie docelowym do wartości null po wykonaniu operacji upsert lub Update. Wstaw wartość NULL po wykonaniu operacji wstawiania. | Nie (wartość domyślna to false) |
@@ -291,9 +291,9 @@ Podczas kopiowania danych z chmury usługi Salesforce można użyć zapytania SO
 | Wybór kolumny | Należy wyliczyć pola, które mają być skopiowane do zapytania, np. `SELECT field1, filed2 FROM objectname` | Oprócz wyboru kolumny jest obsługiwane `SELECT *`. |
 | Cudzysłowy | Nazwy zgłoszonych/obiektów nie mogą być ujęte w cudzysłów. | Nazwy pól/obiektów mogą być ujęte w cudzysłów, np. `SELECT "id" FROM "Account"` |
 | Format daty i godziny |  Zapoznaj się z informacjami [tutaj](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) i przykładami w następnej sekcji. | Zapoznaj się z informacjami [tutaj](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) i przykładami w następnej sekcji. |
-| Wartości logiczne | Reprezentowane jako `False` i `True`, np. `SELECT … WHERE IsDeleted=True`. | Reprezentowane jako 0 lub 1, np. `SELECT … WHERE IsDeleted=1`. |
+| Wartości logiczna | Reprezentowane jako `False` i `True`, np. `SELECT … WHERE IsDeleted=True`. | Reprezentowane jako 0 lub 1, np. `SELECT … WHERE IsDeleted=1`. |
 | Zmiana nazwy kolumny | Nieobsługiwane. | Obsługiwane, np.: `SELECT a AS b FROM …`. |
-| Relacje | Obsługiwane, np. `Account_vod__r.nvs_Country__c`. | Nieobsługiwane. |
+| Relacja | Obsługiwane, np. `Account_vod__r.nvs_Country__c`. | Nieobsługiwane. |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Pobieranie danych przy użyciu klauzuli WHERE w kolumnie DateTime
 
@@ -304,32 +304,32 @@ Po określeniu zapytania SOQL lub SQL należy zwrócić uwagę na różnice w fo
 
 ### <a name="error-of-malformed_querytruncated"></a>Błąd MALFORMED_QUERY: obcięty
 
-Jeśli wystąpi błąd "MALFORMED_QUERY: obcięto", zazwyczaj jest to spowodowane tym, że masz kolumnę typu JunctionIdList w danych, a Salesforce ma ograniczenia dotyczące obsługi takich danych o dużej liczbie wierszy. Aby wyeliminować problem, spróbuj wykluczyć kolumnę JunctionIdList lub ograniczyć liczbę wierszy do skopiowania (można podzielić na wiele uruchomień działania kopiowania).
+Jeśli wystąpi błąd "MALFORMED_QUERY: obcięty", zazwyczaj jest to spowodowane tym, że masz kolumnę typu JunctionIdList w danych, a Salesforce ma ograniczenia dotyczące obsługi takich danych o dużej liczbie wierszy. Aby wyeliminować problem, spróbuj wykluczyć kolumnę JunctionIdList lub ograniczyć liczbę wierszy do skopiowania (można podzielić na wiele uruchomień działania kopiowania).
 
 ## <a name="data-type-mapping-for-salesforce-service-cloud"></a>Mapowanie typu danych dla chmury usługi Salesforce
 
 Podczas kopiowania danych z chmury usługi Salesforce następujące mapowania są używane w ramach typów danych w chmurze usługi Salesforce do Data Factory danych pośrednich. Aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych na ujścia, zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md).
 
-| Typ danych w chmurze usługi Salesforce | Data Factory typ danych pośrednich |
+| Typ danych w chmurze usługi Salesforce | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
-| Numer Autokorekty |Ciąg |
-| pole wyboru |Wartość logiczna |
-| Waluta |Dokładności |
-| Date |DateTime |
-| Data/godzina |DateTime |
-| Email |Ciąg |
+| Auto Number |Ciąg |
+| Checkbox |Wartość logiczna |
+| Waluta |Decimal |
+| Data |Data i godzina |
+| Data/Godzina |Data i godzina |
+| Adres e-mail |Ciąg |
 | Identyfikator |Ciąg |
-| Relacja odnośnika |Ciąg |
-| Lista wyboru z wybórem |Ciąg |
-| Liczba |Dokładności |
-| Procent |Dokładności |
+| Lookup Relationship |Ciąg |
+| Multi-Select Picklist |Ciąg |
+| Liczba |Decimal |
+| Procent |Decimal |
 | Numer telefonu |Ciąg |
-| Listy wyboru |Ciąg |
+| Picklist |Ciąg |
 | Tekst |Ciąg |
-| Obszar tekstu |Ciąg |
-| Obszar tekstowy (Long) |Ciąg |
-| Obszar tekstowy (rozbudowany) |Ciąg |
-| Tekst (zaszyfrowany) |Ciąg |
+| Text Area |Ciąg |
+| Text Area (Long) |Ciąg |
+| Text Area (Rich) |Ciąg |
+| Text (Encrypted) |Ciąg |
 | Adres URL |Ciąg |
 
 ## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
@@ -338,4 +338,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -3,18 +3,18 @@ title: Zwiększanie IoT Central platformy Azure przy użyciu reguł niestandardo
 description: Jako deweloper rozwiązań Skonfiguruj aplikację IoT Central do wysyłania powiadomień e-mail, gdy urządzenie przestanie wysyłać dane telemetryczne. To rozwiązanie używa Azure Stream Analytics, Azure Functions i SendGrid.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 56ff01af6466e90ff4b69cd37c1638265c59b873
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bdaa08e8c3b104c7269c1fb4169779d98b4e0880
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895867"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895729"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid-preview-features"></a>Poszerzanie IoT Central platformy Azure za pomocą reguł niestandardowych przy użyciu Stream Analytics, Azure Functions i SendGrid (funkcje w wersji zapoznawczej)
 
@@ -65,13 +65,13 @@ Użyj [Azure Portal, aby utworzyć przestrzeń nazw Event Hubs](https://portal.a
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Nazwa    | Wybierz nazwę przestrzeni nazw |
-| Warstwa cenowa | Podstawowa |
+| Warstwa cenowa | Basic |
 | Subskrypcja | Twoja subskrypcja |
 | Grupa zasobów | DetectStoppedDevices |
 | Lokalizacja | Wschodnie stany USA |
 | Jednostki przepływności | 1 |
 
-### <a name="stream-analytics-job"></a>Zadanie Stream Analytics
+### <a name="stream-analytics-job"></a>Zadanie usługi Stream Analytics
 
 Użyj [Azure Portal, aby utworzyć zadanie Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) z następującymi ustawieniami:
 
@@ -97,7 +97,7 @@ Użyj [Azure Portal, aby utworzyć aplikację funkcji](https://portal.azure.com/
 | Plan hostingu | Plan zużycia |
 | Lokalizacja | Wschodnie stany USA |
 | Stos środowiska uruchomieniowego | .NET |
-| Magazyn | Tworzenie nowego elementu |
+| Usługa Storage | Tworzenie nowego elementu |
 
 ### <a name="sendgrid-account"></a>Konto SendGrid
 
@@ -259,7 +259,7 @@ To rozwiązanie używa zapytania Stream Analytics w celu wykrycia, kiedy urządz
     | Alias danych wyjściowych | emailnotification |
     | Subskrypcja | Twoja subskrypcja |
     | Aplikacja funkcji | Aplikacja funkcji |
-    | Funkcja  | HttpTrigger1 |
+    | Funkcja  | Wyzwalacz_Http1 |
 
 1. W obszarze **topologia zadania**wybierz pozycję **zapytanie** i Zastąp istniejące zapytanie następującym SQL:
 
@@ -305,7 +305,7 @@ To rozwiązanie używa zapytania Stream Analytics w celu wykrycia, kiedy urządz
 1. Wybierz pozycję **Zapisz**.
 1. Aby uruchomić zadanie Stream Analytics, wybierz pozycję **Przegląd**, anastępnie pozycję Rozpocznij **, a następnie**pozycję **Rozpocznij**:
 
-    ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
+    ![Analiza strumienia](media/howto-create-custom-rules/stream-analytics.png)
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurowanie eksportu w IoT Central
 

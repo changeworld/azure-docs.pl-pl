@@ -1,18 +1,19 @@
 ---
-title: Zarządzanie właściwościami i metadanymi kontenera obiektów BLOB przy użyciu platformy .NET w usłudze Azure Storage
+title: Korzystanie z platformy .NET do zarządzania właściwościami i metadanymi kontenera obiektów BLOB
+titleSuffix: Azure Storage
 description: Informacje dotyczące ustawiania i pobierania właściwości systemu oraz przechowywania niestandardowych metadanych w kontenerach obiektów BLOB na koncie usługi Azure Storage za pomocą biblioteki klienckiej platformy .NET.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/10/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: d63c78fedb8dbd48655d36fecc3544fd512072e3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 17ed10d424d606091bd2b7d6f3e325955c48a5a2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673376"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894202"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Zarządzanie właściwościami kontenera i metadanymi przy użyciu platformy .NET
 
@@ -20,9 +21,9 @@ Kontenery obiektów BLOB obsługują właściwości systemu i metadane zdefiniow
 
 ## <a name="about-properties-and-metadata"></a>Informacje o właściwościach i metadanych
 
-- **Właściwości systemu**: We wszystkich zasobach magazynu obiektów BLOB istnieją właściwości systemu. Niektóre z nich mogą być odczytywane lub ustawiane, a inne są tylko do odczytu. W obszarze okładek niektóre właściwości systemu odpowiadają określonym standardowym nagłówkom HTTP. Biblioteka klienta usługi Azure Storage dla platformy .NET zachowuje te właściwości.
+- **Właściwości systemu**: właściwości systemu istnieją w każdym zasobie magazynu obiektów BLOB. Niektóre z nich mogą być odczytywane lub ustawiane, a inne są tylko do odczytu. W obszarze okładek niektóre właściwości systemu odpowiadają określonym standardowym nagłówkom HTTP. Biblioteka klienta usługi Azure Storage dla platformy .NET zachowuje te właściwości.
 
-- **Metadane zdefiniowane przez użytkownika**: Metadane zdefiniowane przez użytkownika składają się z jednej lub kilku par nazwa-wartość określonych dla zasobu usługi BLOB Storage. Możesz użyć metadanych do przechowywania dodatkowych wartości z zasobem. Wartości metadanych są tylko do celów własnych i nie mają wpływu na sposób zachowania zasobu.
+- **Metadane zdefiniowane przez użytkownika**: metadane zdefiniowane przez użytkownika składają się z co najmniej jednej pary nazwa-wartość określonej dla zasobu usługi BLOB Storage. Możesz użyć metadanych do przechowywania dodatkowych wartości z zasobem. Wartości metadanych są tylko do celów własnych i nie mają wpływu na sposób zachowania zasobu.
 
 Pobieranie wartości właściwości i metadanych dla zasobu usługi BLOB Storage jest procesem dwuetapowym. Aby można było odczytać te wartości, należy je jawnie pobrać, wywołując metodę **FetchAttributes** lub **FetchAttributesAsync** . Wyjątkiem od tej reguły jest to, że metody **EXISTS** i **ExistsAsync** wywołują odpowiednią metodę **FetchAttributes** w ramach okładek. Po wywołaniu jednej z tych metod nie trzeba również wywoływać **FetchAttributes**.
 

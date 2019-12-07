@@ -4,17 +4,17 @@ description: Usługa Azure Storage chroni dane, automatycznie szyfrując je prze
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 11/26/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 63fa30b4cf4c5887e8fb44b357eb22e55fe230e7
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666141"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895128"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Szyfrowanie usługi Azure Storage dla danych magazynowanych
 
@@ -38,7 +38,7 @@ Aby uzyskać więcej informacji na temat modułów kryptograficznych związanych
 
 Możesz polegać na kluczach zarządzanych przez firmę Microsoft na potrzeby szyfrowania konta magazynu lub można zarządzać szyfrowaniem przy użyciu własnych kluczy. W przypadku wybrania opcji zarządzania szyfrowaniem przy użyciu własnych kluczy dostępne są dwie opcje:
 
-- *Klucz zarządzany przez klienta* można określić za pomocą Azure Key Vault do szyfrowania i odszyfrowywania wszystkich danych na koncie magazynu. Klucz zarządzany przez klienta służy do szyfrowania wszystkich danych we wszystkich usługach na koncie magazynu.
+- *Klucz zarządzany przez klienta* można określić przy użyciu Azure Key Vault do szyfrowania i odszyfrowywania danych w usłudze BLOB Storage i w Azure Files.
 - *Klucz dostarczony przez klienta* można określić w operacjach magazynu obiektów BLOB. Klient wykonujący żądanie odczytu lub zapisu w usłudze BLOB Storage może dołączyć klucz szyfrowania żądania, aby uzyskać szczegółową kontrolę nad sposobem szyfrowania i odszyfrowywania danych obiektów BLOB.
 
 Poniższa tabela zawiera porównanie opcji zarządzania kluczami dla szyfrowania usługi Azure Storage.
@@ -62,7 +62,7 @@ Domyślnie konto magazynu używa zarządzanych przez firmę Microsoft kluczy szy
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Klucze zarządzane przez klienta z Azure Key Vault
 
-Możesz zarządzać szyfrowaniem usługi Azure Storage na poziomie konta magazynu przy użyciu własnych kluczy. W przypadku określenia klucza zarządzanego przez klienta na poziomie konta magazynu ten klucz jest używany do szyfrowania i odszyfrowywania wszystkich danych na koncie magazynu, w tym obiektów blob, kolejek, plików i danych tabeli. Klucze zarządzane przez klienta zapewniają większą elastyczność tworzenia, obracania, wyłączania i odwoływania kontroli dostępu. Możesz również przeprowadzać inspekcję kluczy szyfrowania używanych do ochrony danych.
+Możesz zarządzać szyfrowaniem usługi Azure Storage na poziomie konta magazynu przy użyciu własnych kluczy. W przypadku określenia klucza zarządzanego przez klienta na poziomie konta magazynu ten klucz jest używany do szyfrowania i odszyfrowywania wszystkich danych obiektów blob i plików na koncie magazynu. Klucze zarządzane przez klienta zapewniają większą elastyczność tworzenia, obracania, wyłączania i odwoływania kontroli dostępu. Możesz również przeprowadzać inspekcję kluczy szyfrowania używanych do ochrony danych.
 
 Aby przechowywać klucze zarządzane przez klienta, należy użyć Azure Key Vault. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy. Konto magazynu i Magazyn kluczy muszą znajdować się w tym samym regionie, ale mogą znajdować się w różnych subskrypcjach. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../../key-vault/key-vault-overview.md).
 
@@ -149,7 +149,7 @@ Określanie kluczy szyfrowania w żądaniu jest opcjonalne. Jednak w przypadku o
 
 Następujące operacje magazynu obiektów BLOB obsługują wysyłanie kluczy szyfrowania dostarczonych przez klienta na żądanie:
 
-- [Umieść obiekt BLOB](/rest/api/storageservices/put-blob)
+- [Put Blob](/rest/api/storageservices/put-blob)
 - [Umieść listę zablokowanych](/rest/api/storageservices/put-block-list)
 - [Umieść blok](/rest/api/storageservices/put-block)
 - [Umieść blok z adresu URL](/rest/api/storageservices/put-block-from-url)
@@ -159,9 +159,9 @@ Następujące operacje magazynu obiektów BLOB obsługują wysyłanie kluczy szy
 - [Ustawianie właściwości obiektu BLOB](/rest/api/storageservices/set-blob-properties)
 - [Ustawianie metadanych obiektu BLOB](/rest/api/storageservices/set-blob-metadata)
 - [Pobierz obiekt BLOB](/rest/api/storageservices/get-blob)
-- [Pobierz właściwości obiektu BLOB](/rest/api/storageservices/get-blob-properties)
+- [Pobieranie właściwości obiektu blob](/rest/api/storageservices/get-blob-properties)
 - [Pobierz metadane obiektu BLOB](/rest/api/storageservices/get-blob-metadata)
-- [Obiekt BLOB migawek](/rest/api/storageservices/snapshot-blob)
+- [Wykonywanie migawki obiektu blob](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>Obróć klucze dostarczone przez klienta
 
@@ -178,7 +178,7 @@ Szyfrowanie usługi Azure Storage szyfruje stronicowe obiekty blob, które wykon
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Co to jest Azure Key Vault?](../../key-vault/key-vault-overview.md)
+- [Co to jest usługa Azure Key Vault?](../../key-vault/key-vault-overview.md)
 - [Configure customer-managed keys for Azure Storage encryption from the Azure portal (Konfigurowanie kluczy zarządzanych przez klienta w celu szyfrowania usługi Azure Storage w witrynie Azure Portal)](storage-encryption-keys-portal.md)
 - [Configure customer-managed keys for Azure Storage encryption from PowerShell (Konfigurowanie kluczy zarządzanych przez klienta w celu szyfrowania usługi Azure Storage za pomocą programu PowerShell)](storage-encryption-keys-powershell.md)
 - [Configure customer-managed keys for Azure Storage encryption from Azure CLI (Konfigurowanie kluczy zarządzanych przez klienta w celu szyfrowania usługi Azure Storage za pomocą interfejsu wiersza polecenia platformy Azure)](storage-encryption-keys-cli.md)

@@ -3,12 +3,12 @@ title: Macierz obsługi dla agenta MARS
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74194999"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893981"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -45,7 +45,7 @@ W celu utworzenia kopii zapasowej danych przy użyciu agenta MARS Agent tworzy m
 --- | ---
 Rozmiar |  Ilość wolnego miejsca w folderze pamięci podręcznej powinna wynosić co najmniej 5 do 10 procent całkowitego rozmiaru danych kopii zapasowej.
 Lokalizacja | Folder pamięci podręcznej musi być przechowywany lokalnie na komputerze, na którym jest wykonywana kopia zapasowa, i musi być w trybie online. Folder pamięci podręcznej nie powinien znajdować się w udziale sieciowym na nośniku wymiennym ani w woluminie w trybie offline.
-Folder | Folder pamięci podręcznej powinien być zaszyfrowany na deduplikowanym woluminie lub w folderze skompresowanym, który jest rozrzedzony, lub ma punkt ponownej analizy.
+Folder | Folder pamięci podręcznej nie powinien być szyfrowany na deduplikowanym woluminie lub w folderze skompresowanym, który jest rozrzedzony, lub ma punkt ponownej analizy.
 Zmiany lokalizacji | Można zmienić lokalizację pamięci podręcznej przez zatrzymanie aparatu kopii zapasowej (`net stop bengine`) i skopiowanie folderu pamięci podręcznej na nowy dysk. (Upewnij się, że nowy dysk ma wystarczającą ilość miejsca). Następnie zaktualizuj dwa wpisy rejestru w obszarze **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** i **config/CloudBackupProvider/ScratchLocation**) do nowej lokalizacji i ponownie uruchom aparat.
 
 ## <a name="networking-and-access-support"></a>Obsługa sieci i dostępu
@@ -72,7 +72,7 @@ Dostęp do wszystkich adresów URL i adresów IP wymienionych powyżej używa pr
 **Funkcja** | **Szczegóły**
 --- | ---
 Kontrola przepustowości | Obsługiwane. W agencie MARS Użyj **właściwości Zmień** , aby dostosować przepustowość.
-Ograniczanie sieci | Niedostępne dla maszyn z kopią zapasową z systemem Windows Server 2008 R2, Windows Server 2008 z dodatkiem SP2 lub Windows 7.
+Ograniczanie przepustowości sieci | Niedostępne dla maszyn z kopią zapasową z systemem Windows Server 2008 R2, Windows Server 2008 z dodatkiem SP2 lub Windows 7.
 
 ## <a name="support-for-direct-backups"></a>Obsługa bezpośrednich kopii zapasowych
 
@@ -88,17 +88,17 @@ Systemy operacyjne muszą być 64 bitowe i powinny mieć zainstalowane najnowsze
 
 **System operacyjny** | **Pliki/foldery** | **Stan systemu** | **Wymagania dotyczące oprogramowania/modułu**
 --- | --- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Yes | Nie |  Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows 8.1 (Enterprise, Pro)| Yes |Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows 8 (Enterprise, Pro) | Yes | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Yes | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
-Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
-Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
-Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Yes | Yes |— .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
-Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Yes | Yes | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
-Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Yes | Nie | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe) <br> -Virtual Server 2005 Base + KB KB948515
-Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Yes | Nie | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
-Windows Server 2019 (wersje Standard, Datacenter, Essentials) | Yes | Yes | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows 10 (Enterprise, Pro, Home) | Tak | Nie |  Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 8.1 (Enterprise, Pro)| Tak |Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 8 (Enterprise, Pro) | Tak | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Tak | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Tak | Tak |— .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
+Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Tak | Tak | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
+Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Tak | Nie | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe) <br> -Virtual Server 2005 Base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Tak | Nie | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2019 (wersje Standard, Datacenter, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
 
 Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne serwera usługi MAB i DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
@@ -112,33 +112,33 @@ Windows Server 2012 lub nowszy |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 lub nowszy| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7| 1 700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Obsługiwane typy plików dla kopii zapasowej
 
 **Typ** | **Pomoc techniczna**
 --- | ---
-Zaszyfrowane| Obsługiwane.
+Szyfrowane| Obsługiwane.
 Skompresowane | Obsługiwane.
 Rozrzedzone | Obsługiwane.
 Skompresowane i rozrzedzone |Obsługiwane.
 Twarde linki| Nieobsługiwane. Pominięto.
 Punkt ponownej analizy| Nieobsługiwane. Pominięto.
 Zaszyfrowane i rozrzedzone |Nieobsługiwane. Pominięto.
-Strumień skompresowany| Nieobsługiwane. Pominięto.
-Strumień rozrzedzony| Nieobsługiwane. Pominięto.
+Skompresowany strumień| Nieobsługiwane. Pominięto.
+Rozrzedzony strumień| Nieobsługiwane. Pominięto.
 OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Nieobsługiwane.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Obsługiwane dyski lub woluminy na potrzeby tworzenia kopii zapasowych
 
 **Dysk/wolumin** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
-Woluminy tylko do odczytu| Nieobsługiwane | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
-Woluminy offline| Nieobsługiwane |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
-Udział sieciowy| Nieobsługiwane |Wolumin musi być lokalny na serwerze.
-Woluminy zablokowane przez funkcję BitLocker| Nieobsługiwane |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
-Identyfikacja systemu plików| Nieobsługiwane |Obsługiwany jest tylko system plików NTFS.
-Nośnik wymienny| Nieobsługiwane |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
+Woluminy tylko do odczytu| Brak obsługi | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
+Woluminy offline| Brak obsługi |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
+Udział sieciowy| Brak obsługi |Wolumin musi być lokalny na serwerze.
+Woluminy zablokowane przez funkcję BitLocker| Brak obsługi |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
+Identyfikacja systemu plików| Brak obsługi |Obsługiwany jest tylko system plików NTFS.
+Nośnik wymienny| Brak obsługi |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
 Deduplikowane dyski | Obsługiwane | Azure Backup konwertuje deduplikowane dane na normalne dane. Optymalizuje, szyfruje, przechowuje i wysyła dane do magazynu.
 
 ## <a name="support-for-initial-offline-backup"></a>Obsługa początkowej kopii zapasowej offline

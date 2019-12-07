@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c8337d18b5c6b484e45e6cefaec98e2684155a02
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641502"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900419"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie mapowania atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory
 
@@ -78,12 +78,12 @@ Wraz z tą właściwością mapowania atrybutów obsługują również następuj
   - **Tylko podczas tworzenia** — Zastosuj to mapowanie tylko w przypadku akcji tworzenia użytkownika.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Dopasowanie użytkowników w systemach źródłowych i docelowych
-Usługę Azure AD Provisioning można wdrożyć w obu Greenfield (użytkownicy nie opuszczają się w systemie docelowym) i brownfield (użytkownicy już istnieją w systemie docelowym). Aby zapewnić obsługę obu scenariuszy, usługa aprowizacji używa koncepcji pasujących atrybutów. Zgodne atrybuty umożliwiają określenie sposobu unikatowego identyfikowania użytkownika w źródle i dopasowania go do użytkownika w miejscu docelowym. W ramach planowania wdrożenia Zidentyfikuj atrybut, którego można użyć do unikatowego identyfikowania użytkownika w systemie źródłowym i docelowym. Kwestie do uwagi:
+Usługę Azure AD Provisioning można wdrożyć w obu scenariuszach "greenfield" (w przypadku których użytkownicy nie opuszczają w systemie docelowym) i scenariuszy "brownfield" (w których użytkownicy już istnieją w systemie docelowym). Aby zapewnić obsługę obu scenariuszy, usługa aprowizacji używa koncepcji pasujących atrybutów. Zgodne atrybuty umożliwiają określenie sposobu unikatowego identyfikowania użytkownika w źródle i dopasowania go do użytkownika w miejscu docelowym. W ramach planowania wdrożenia Zidentyfikuj atrybut, którego można użyć do unikatowego identyfikowania użytkownika w systemie źródłowym i docelowym. Kwestie do uwagi:
 
 - **Zgodne atrybuty powinny być unikatowe:** Klienci często używają atrybutów, takich jak userPrincipalName, mail lub ID obiektu, jako pasującego atrybutu.
-- **Można użyć wielu atrybutów jako pasujących atrybutów:** Można zdefiniować wiele atrybutów do oceny w przypadku dopasowywania użytkowników i kolejności, w której są oceniane (zdefiniowane jako pierwszeństwo w interfejsie użytkownika). Jeśli na przykład zdefiniujesz trzy atrybuty jako pasujące atrybuty, a użytkownik zostanie jednoznacznie dopasowany po przeprowadzeniu oceny pierwszych dwóch atrybutów, usługa nie będzie oceniać trzeciego atrybutu. Usługa oceni pasujące atrybuty w podanej kolejności i Zatrzymaj ocenę, gdy zostanie znalezione dopasowanie.  
+- **Można użyć wielu atrybutów jako pasujących atrybutów:** Można zdefiniować wiele atrybutów do oceny w przypadku dopasowywania użytkowników i kolejności, w której są oceniane (zdefiniowane jako pierwszeństwo w interfejsie użytkownika). Jeśli na przykład zdefiniujesz trzy atrybuty jako pasujące atrybuty, a użytkownik zostanie jednoznacznie dopasowany po przeprowadzeniu oceny pierwszych dwóch atrybutów, usługa nie będzie szacować trzeciego atrybutu. Usługa oceni pasujące atrybuty w podanej kolejności i Zatrzymaj ocenę, gdy zostanie znalezione dopasowanie.  
 - **Wartość w źródle i miejscu docelowym nie musi dokładnie pasować:** Wartość w elemencie docelowym może być prostą funkcją wartości w źródle. Tak więc jeden może mieć atrybut emailAddress w źródle i userPrincipalName w elemencie docelowym i pasować przez funkcję atrybutu emailAddress, który zastępuje niektóre znaki niepewną wartością stałą.  
-- **Dopasowanie na podstawie kombinacji atrybutów nie jest obsługiwane:** Większość aplikacji nie obsługuje wykonywania zapytań w oparciu o dwie właściwości i Therfore nie jest możliwe dopasowanie w oparciu o kombinację atrybutów. Istnieje możliwość oszacowania jednego z pojedynczych właściwości.
+- **Dopasowanie na podstawie kombinacji atrybutów nie jest obsługiwane:** Większość aplikacji nie obsługuje wykonywania zapytań na podstawie dwóch właściwości. W związku z tym nie jest możliwe dopasowanie w oparciu o kombinację atrybutów. Istnieje możliwość oszacowania jednego z pojedynczych właściwości.
 - **Wszyscy użytkownicy muszą mieć wartość dla co najmniej jednego zgodnego atrybutu:** Jeśli zdefiniujesz jeden pasujący atrybut, wszyscy użytkownicy muszą mieć wartość dla tego atrybutu w systemie źródłowym. Jeśli na przykład definiujesz wartość userPrincipalName jako pasujący atrybut, wszyscy użytkownicy muszą mieć element userPrincipalName. Jeśli zdefiniujesz wiele pasujących atrybutów (np. extensionAttribute1 i mail), nie wszyscy użytkownicy muszą mieć ten sam pasujący atrybut. Jeden użytkownik może mieć extensionAttribute1, ale nie pocztą e-mail, ale inny użytkownik może korzystać z poczty e-mail, ale nie extensionAttribute1. 
 - **Aplikacja docelowa musi obsługiwać filtrowanie na zgodnym atrybucie:** Deweloperzy aplikacji umożliwiają filtrowanie podzestawu atrybutów w INTERFEJSie użytkownika lub grupy użytkowników. W przypadku aplikacji w galerii upewnij się, że domyślne mapowanie atrybutów dotyczy atrybutu, który interfejs API aplikacji docelowej obsługuje filtrowanie. Podczas zmiany domyślnego atrybutu dopasowywania dla aplikacji docelowej Sprawdź dokumentację interfejsu API innej firmy, aby upewnić się, że atrybut może być filtrowany.  
 
@@ -108,7 +108,7 @@ Niektóre aplikacje obsługują jednak atrybuty niestandardowe, a usługa Azure 
 
 Aplikacje i systemy obsługujące Dostosowywanie listy atrybutów obejmują:
 
-- SalesForce
+- Salesforce
 - ServiceNow
 - Workday
 - Azure Active Directory (obsługiwane są[domyślne atrybuty usługi Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) i niestandardowe rozszerzenia katalogu)
@@ -129,12 +129,66 @@ Podczas edytowania listy obsługiwanych atrybutów są dostępne następujące w
   - Atrybut *String* zawiera ciąg tekstowy.
 - **Klucz podstawowy?** -Czy atrybut jest zdefiniowany jako pole klucza podstawowego w schemacie obiektu docelowego.
 - **Wymagane?** -Czy atrybut jest wymagany do wypełnienia w aplikacji lub systemie docelowym.
-- **Wiele wartości?** -Czy atrybut obsługuje wiele wartości.
+- **Multi-value?** -Czy atrybut obsługuje wiele wartości.
 - **Dokładnie przypadek?** -Czy wartości atrybutów są oceniane w sposób uwzględniający wielkość liter.
 - **Wyrażenie interfejsu API** — nie używaj, o ile nie zostanie to zrobione przez dokumentację określonego łącznika aprowizacji (na przykład Workday).
 - **Atrybut obiektu przywoływany** — jeśli jest to atrybut typu referencyjnego, to menu umożliwia wybranie tabeli i atrybutu w aplikacji docelowej zawierającej wartość skojarzoną z atrybutem. Na przykład jeśli masz atrybut o nazwie "Department", którego przechowywana wartość odwołuje się do obiektu w oddzielnej tabeli "działS", wybierz pozycję "Departments.Name". Tabele odwołań i pola identyfikatora podstawowego obsługiwane przez daną aplikację są wstępnie skonfigurowane i obecnie nie można ich edytować za pomocą Azure Portal, ale można je edytować przy użyciu [interfejs API programu Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
-Aby dodać nowy atrybut, przewiń do końca listy obsługiwanych atrybutów, wypełnij pola powyżej przy użyciu dostarczonych danych wejściowych, a następnie wybierz pozycję **Dodaj atrybut**. Wybierz pozycję **Zapisz** po zakończeniu dodawania atrybutów. Następnie należy ponownie załadować kartę **aprowizacji** , aby nowe atrybuty były dostępne w edytorze mapowania atrybutów.
+#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Inicjowanie obsługi niestandardowego atrybutu rozszerzenia w aplikacji zgodnej z standard scim
+Standard scim RFC definiuje podstawowy schemat użytkownika i grupy, a także umożliwia obsługę rozszerzeń schematu w celu spełnienia wymagań aplikacji. Aby dodać atrybut niestandardowy do aplikacji Standard scim:
+   1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com), wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz aplikację, a następnie wybierz pozycję **Inicjowanie obsługi**.
+   2. W obszarze **mapowania**wybierz obiekt (użytkownika lub grupę), dla którego chcesz dodać atrybut niestandardowy.
+   3. W dolnej części strony wybierz pozycję **Pokaż opcje zaawansowane**.
+   4. Wybierz pozycję * * Edytuj listę atrybutów dla *aplikacji*.
+   5. W dolnej części listy atrybutów wprowadź informacje o atrybucie niestandardowym w udostępnionych polach. Następnie wybierz pozycję **Dodaj atrybut**.
+
+W przypadku aplikacji Standard scim nazwa atrybutu musi być zgodna ze wzorcem przedstawionym w poniższym przykładzie. Parametry "CustomExtensionName" i "CustomAttribute" można dostosować zgodnie z wymaganiami aplikacji, na przykład: urn: IETF: params: Standard scim: schematy: rozszerzenie: 2.0: CustomExtensionName: CustomAttribute
+
+Te instrukcje dotyczą tylko aplikacji z obsługą Standard scim. Aplikacje, takie jak usługi ServiceNow i Salesforce, nie są zintegrowane z usługą Azure AD przy użyciu Standard scim i dlatego nie wymagają tej konkretnej przestrzeni nazw podczas dodawania atrybutu niestandardowego.
+
+Atrybuty niestandardowe nie mogą być atrybutami referencyjnymi ani atrybutami wielowartościowymi. Niestandardowe atrybuty rozszerzenia wielowartościowego są obecnie obsługiwane tylko w przypadku aplikacji w galerii.  
+ 
+**Przykładowa reprezentacja użytkownika z atrybutem rozszerzenia:**
+
+```json
+   {
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "formatted":"Ms. Barbara J Jensen III",
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "employeeNumber": "701984",
+     "costCenter": "4130",
+     "organization": "Universal Studios",
+     "division": "Theme Park",
+     "department": "Tour Operations",
+     "manager": {
+       "value": "26118915-6090-4610-87e4-49d8ca9f808d",
+       "$ref": "../Users/26118915-6090-4610-87e4-49d8ca9f808d",
+       "displayName": "John Smith"
+     }
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "CustomAttribute": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ }
+```
+
+
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Inicjowanie obsługi administracyjnej roli w aplikacji Standard scim
 Wykonaj poniższe kroki, aby zainicjować obsługę ról dla użytkownika w aplikacji. Należy zauważyć, że opis poniżej dotyczy niestandardowych aplikacji Standard scim. W przypadku aplikacji galerii, takich jak Salesforce i usługi ServiceNow, należy użyć wstępnie zdefiniowanych mapowań ról. Punktory poniżej opisują sposób przekształcania atrybutu AppRoleAssignments w format oczekiwany przez aplikację.
 
@@ -222,9 +276,9 @@ Wykonaj poniższe kroki, aby zainicjować obsługę ról dla użytkownika w apli
 ## <a name="provisioning-a-multi-value-attribute"></a>Inicjowanie obsługi atrybutu wielowartościowego
 Niektóre atrybuty, takie jak numery telefonu i wiadomości e-mail, są atrybutami wielowartościowymi, w których może być konieczne określenie różnych typów numerów telefonów lub wiadomości e-mail. Użyj poniższego wyrażenia dla atrybutów wielowartościowych. Umożliwia określenie typu atrybutu i mapy do odpowiedniego atrybutu użytkownika usługi Azure AD dla tej wartości. 
 
-* numer telefonu [typ EQ "Work"]. wartość
-* numer telefonu [typ EQ "Mobile"]. Value
-* numer telefonu [typ EQ "Fax"]. wartość
+* wartość phoneNumbers [typ eq "Praca"]
+* wartość phoneNumbers [eq wpisz "wyraz mobile"]
+* wartość phoneNumbers [typ eq "faksu"]
 
    ```json
    "phoneNumbers": [
@@ -263,8 +317,8 @@ Wybranie tej opcji spowoduje skuteczną ponowną synchronizację wszystkich uży
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Automatyzacja aprowizacji użytkowników/anulowania obsługi administracyjnej w aplikacjach SaaS](user-provisioning.md)
+- [Automatyzowanie użytkownika aprowizacji/Deprovisioning do aplikacji SaaS](user-provisioning.md)
 - [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
-- [Filtry zakresu dla aprowizacji użytkowników](define-conditional-rules-for-provisioning-user-accounts.md)
+- [Filtrów określania zakresu na potrzeby aprowizacji użytkownika](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](use-scim-to-provision-users-and-groups.md)
 - [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)

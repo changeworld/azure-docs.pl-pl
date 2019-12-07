@@ -1,20 +1,21 @@
 ---
-title: Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell (wersja zapoznawcza) — Azure Storage
-description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego (SAS) przy użyciu poświadczeń Azure Active Directory w usłudze Azure Storage przy użyciu programu PowerShell.
+title: Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell
+titleSuffix: Azure Storage
+description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego (wersja zapoznawcza) delegowania użytkowników z poświadczeniami Azure Active Directory przy użyciu programu
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673340"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892519"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell (wersja zapoznawcza)
 
@@ -31,7 +32,7 @@ Aby użyć programu PowerShell do utworzenia sygnatury dostępu współdzieloneg
 1. Odinstaluj wszystkie poprzednie instalacje Azure PowerShell:
 
     - Usuń wszystkie poprzednie instalacje Azure PowerShell z systemu Windows za pomocą ustawienia **aplikacje & funkcje** w obszarze **Ustawienia**.
-    - Usuń wszystkie moduły **platformy Azure** z programu `%Program Files%\WindowsPowerShell\Modules`.
+    - Usuń wszystkie moduły **platformy Azure** z `%Program Files%\WindowsPowerShell\Modules`.
 
 1. Upewnij się, że masz zainstalowaną najnowszą wersję programu PowerShellGet. Otwórz okno programu Windows PowerShell i uruchom następujące polecenie, aby zainstalować najnowszą wersję:
 
@@ -102,7 +103,7 @@ Podczas tworzenia sygnatury dostępu współdzielonego użytkownika z Azure Powe
 
 Ze względu na to, że maksymalny interwał ważności klucza delegowania użytkownika wynosi 7 dni od daty rozpoczęcia, należy określić czas wygaśnięcia dla sygnatury dostępu współdzielonego w ciągu 7 dni od czasu rozpoczęcia. Sygnatura dostępu współdzielonego jest nieprawidłowa po wygaśnięciu klucza delegowania użytkownika, więc sygnatura dostępu współdzielonego o godzinie przekraczającej 7 dni będzie nadal ważna tylko przez 7 dni.
 
-Aby utworzyć sygnaturę dostępu współdzielonego dla kontenera lub obiektu BLOB z Azure PowerShell, należy najpierw utworzyć nowy obiekt kontekstu usługi Azure Storage, określając parametr `-UseConnectedAccount`. Parametr `-UseConnectedAccount` Określa, że polecenie tworzy obiekt kontekstu w ramach konta usługi Azure AD, za pomocą którego zalogowano się.
+Aby utworzyć sygnaturę dostępu współdzielonego dla kontenera lub obiektu BLOB z Azure PowerShell, należy najpierw utworzyć nowy obiekt kontekstu usługi Azure Storage, określając parametr `-UseConnectedAccount`. `-UseConnectedAccount` parametr określa, że polecenie tworzy obiekt kontekstu w ramach konta usługi Azure AD, za pomocą którego zalogowano się.
 
 Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych własnymi wartościami:
 

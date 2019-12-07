@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie i Przekształcanie danych w Azure SQL Data Warehouse przy użyciu Azure Data Factory
+title: Kopiowanie i Przekształcanie danych w Azure SQL Data Warehouse
 description: Dowiedz się, jak kopiować dane do i z Azure SQL Data Warehouse oraz przekształcać dane w Azure SQL Data Warehouse przy użyciu Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4d08a388e98283ff7bf05e938d7b8c48b7065074
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1bd6d4d594bc7988d2dceaae533202f2a41379f1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076766"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891042"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiowanie i Przekształcanie danych w Azure SQL Data Warehouse przy użyciu Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -45,7 +45,7 @@ W przypadku działania kopiowania ten łącznik Azure SQL Data Warehouse obsług
 > W przypadku kopiowania danych za pomocą usługi Azure Data Factory Integration Runtime, skonfiguruj [zapory serwera Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby usług platformy Azure mają dostęp do serwera.
 > W przypadku kopiowania danych przy użyciu własnego środowiska integration runtime, należy skonfigurować zaporę serwera Azure SQL, aby umożliwić odpowiedni zakres adresów IP. Ten zakres obejmuje adres IP komputera, który jest używany do łączenia z usługą Azure SQL Database.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 > [!TIP]
 > Aby uzyskać najlepszą wydajność, ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. [Przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcja zawiera szczegółowe informacje. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](load-azure-sql-data-warehouse.md).
@@ -60,8 +60,8 @@ Następujące właściwości są obsługiwane dla usługi Azure SQL Data Warehou
 
 | Właściwość            | Opis                                                  | Wymagane                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| type                | Właściwość type musi być równa **AzureSqlDW**.             | Yes                                                          |
-| connectionString    | Podaj informacje wymagane do nawiązania wystąpienia usługi Azure SQL Data Warehouse dla **connectionString** właściwości. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Klucz nazwy głównej usługi można również umieścić w Azure Key Vault i jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Zobacz przykład JSON poniżej tabeli i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Yes                                                          |
+| type                | Właściwość type musi być równa **AzureSqlDW**.             | Tak                                                          |
+| connectionString    | Podaj informacje wymagane do nawiązania wystąpienia usługi Azure SQL Data Warehouse dla **connectionString** właściwości. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Klucz nazwy głównej usługi można również umieścić w Azure Key Vault i jeśli jest to uwierzytelnianie SQL, należy ściągnąć konfigurację `password` z parametrów połączenia. Zobacz przykład JSON poniżej tabeli i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak                                                          |
 | servicePrincipalId  | Określ identyfikator klienta aplikacji.                         | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
 | tenant              | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure Portal. | Tak, gdy używasz uwierzytelniania usługi Azure AD przy użyciu jednostki usługi. |
@@ -233,7 +233,7 @@ Następujące właściwości są obsługiwane dla Azure SQL Data Warehouse zesta
 
 | Właściwość  | Opis                                                  | Wymagane                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | **Typu** właściwości zestawu danych musi być równa **AzureSqlDWTable**. | Yes                         |
+| type      | **Typu** właściwości zestawu danych musi być równa **AzureSqlDWTable**. | Tak                         |
 | schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
 | table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
 | tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
@@ -269,7 +269,7 @@ Aby skopiować dane z usługi Azure SQL Data Warehouse, należy ustawić **typu*
 
 | Właściwość                     | Opis                                                  | Wymagane |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | **Typu** właściwość źródła działania kopiowania musi być równa **SqlDWSource**. | Yes      |
+| type                         | **Typu** właściwość źródła działania kopiowania musi być równa **SqlDWSource**. | Tak      |
 | sqlReaderQuery               | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Przykład: `select * from MyTable`. | Nie       |
 | sqlReaderStoredProcedureName | Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. | Nie       |
 | storedProcedureParameters    | Parametry procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. | Nie       |
@@ -372,7 +372,7 @@ Aby skopiować dane do usługi Azure SQL Data Warehouse, należy ustawić typ uj
 
 | Właściwość          | Opis                                                  | Wymagane                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| type              | **Typu** właściwość ujścia działania kopiowania musi być równa **SqlDWSink**. | Yes                                           |
+| type              | **Typu** właściwość ujścia działania kopiowania musi być równa **SqlDWSink**. | Tak                                           |
 | allowPolyBase     | Wskazuje, czy przy użyciu technologii PolyBase, jeśli ma to zastosowanie, zamiast mechanizmu BULKINSERT. <br/><br/> Firma Microsoft zaleca, ładowanie danych do usługi SQL Data Warehouse przy użyciu programu PolyBase. Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcji ograniczeń i szczegółów.<br/><br/>Dozwolone wartości to **True** i **False** (ustawienie domyślne). | Nie                                            |
 | polyBaseSettings  | Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. | Nie                                            |
 | rejectValue       | Określa liczbę lub wartość procentowa wierszy, które można odrzucić przed zapytanie nie powiedzie się.<br/><br/>Dowiedz się więcej na temat opcji odrzucania w technologii PolyBase w sekcji argumenty [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx). <br/><br/>Dozwolone wartości to 0 (domyślnie), 1, 2, itp. | Nie                                            |
@@ -570,7 +570,7 @@ W poniższej tabeli przedstawiono przykłady sposobu określania **tableName** w
 | dbo       | MyTable    | MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
 | dbo1      | MyTable    | dbo1. MyTable lub [dbo1]. [MyTable]          |
 | dbo       | My.Table   | [My.Table] lub [dbo].[My.Table]            |
-| dbo1      | My.Table   | [dbo1]. [My.Table]                         |
+| dbo1      | My.Table   | [dbo1].[My.Table]                         |
 
 Jeśli zostanie wyświetlony następujący błąd, problem może polegać na wartość określona dla **tableName** właściwości. Można znaleźć w poprzedniej tabeli prawidłowym sposobem, aby określić wartości dla **tableName** właściwość JSON.
 
@@ -605,24 +605,24 @@ Podczas kopiowania danych z lub do usługi Azure SQL Data Warehouse, następują
 | binary                                | Byte[]                         |
 | bit                                   | Wartość logiczna                        |
 | char                                  | String, Char[]                 |
-| date                                  | DateTime                       |
-| Data i godzina                              | DateTime                       |
-| datetime2                             | DateTime                       |
+| date                                  | Data i godzina                       |
+| Datetime                              | Data i godzina                       |
+| datetime2                             | Data i godzina                       |
 | Datetimeoffset                        | DateTimeOffset                 |
-| Dziesiętna                               | Dziesiętna                        |
+| Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
-| Float                                 | Podwójne                         |
+| float                                 | Double                         |
 | image                                 | Byte[]                         |
 | int                                   | Int32                          |
-| money                                 | Dziesiętna                        |
+| money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | Dziesiętna                        |
+| numeric                               | Decimal                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Pojedyncze                         |
 | rowversion                            | Byte[]                         |
-| smalldatetime                         | DateTime                       |
+| smalldatetime                         | Data i godzina                       |
 | smallint                              | Int16                          |
-| smallmoney                            | Dziesiętna                        |
+| smallmoney                            | Decimal                        |
 | time                                  | TimeSpan                       |
 | tinyint                               | Bajtów                           |
 | uniqueidentifier                      | Identyfikator GUID                           |

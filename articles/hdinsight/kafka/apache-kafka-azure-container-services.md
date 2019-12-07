@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: e035c1ff4c8e16fbf40883b54e3153eab9729040
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122644"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894276"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Korzystanie z usługi Azure Kubernetes Service z usługą Apache Kafka w usłudze HDInsight
 
@@ -35,7 +35,7 @@ W tym dokumencie przyjęto założenie, że wiesz już, jak tworzyć i korzysta�
 * Azure Kubernetes Service
 * Sieci wirtualne platformy Azure
 
-W tym dokumencie założono również, że zawarto Przewodnik po [samouczku dotyczącym usługi Azure Kubernetes](../../aks/tutorial-kubernetes-prepare-app.md). W tym artykule opisano tworzenie usługi kontenera, tworzenie klastra Kubernetes, rejestru kontenerów i Konfigurowanie `kubectl` narzędzia.
+W tym dokumencie założono również, że zawarto Przewodnik po [samouczku dotyczącym usługi Azure Kubernetes](../../aks/tutorial-kubernetes-prepare-app.md). W tym artykule opisano tworzenie usługi kontenera, tworzenie klastra Kubernetes, rejestru kontenerów i Konfigurowanie narzędzia `kubectl`.
 
 ## <a name="architecture"></a>Architektura
 
@@ -57,52 +57,56 @@ Jeśli nie masz jeszcze klastra AKS, użyj jednego z następujących dokumentów
 * [Wdrażanie klastra usługi Azure Kubernetes Service (AKS) — Portal](../../aks/kubernetes-walkthrough-portal.md)
 * [Wdrażanie klastra usługi Azure Kubernetes Service (AKS) — interfejs wiersza polecenia](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]  
-> AKS tworzy sieć wirtualną podczas instalacji. Ta sieć jest połączona z siecią utworzoną dla usługi HDInsight w następnej sekcji.
+> [!IMPORTANT]  
+> AKS tworzy sieć wirtualną podczas instalacji w **dodatkowej** grupie zasobów. Dodatkowa grupa zasobów jest zgodna z konwencją nazewnictwa **MC_resourceGroup_AKSclusterName_location**.  
+> Ta sieć jest połączona z siecią utworzoną dla usługi HDInsight w następnej sekcji.
 
 ## <a name="configure-virtual-network-peering"></a>Konfigurowanie komunikacji równorzędnej sieci wirtualnej
 
-1. W [Azure Portal](https://portal.azure.com)wybierz pozycję __grupy zasobów__, a następnie Znajdź grupę zasobów zawierającą sieć wirtualną dla klastra AKS. Nazwa grupy zasobów to `MC_<resourcegroup>_<akscluster>_<location>`. Wpisy `resourcegroup` i`akscluster` to nazwa grupy zasobów, w której został utworzony klaster, oraz nazwa klastra. `location` Jest to lokalizacja, w której został utworzony klaster.
+### <a name="identify-preliminary-information"></a>Zidentyfikuj informacje wstępne
 
-2. W grupie zasobów wybierz zasób __sieci wirtualnej__ .
+1. Na [Azure Portal](https://portal.azure.com)odszukaj dodatkową **grupę zasobów** zawierającą sieć wirtualną dla klastra AKS.
 
-3. Wybierz pozycję __przestrzeń adresowa__. Zanotuj podaną przestrzeń adresową.
+2. Z grupy zasobów wybierz zasób __sieci wirtualnej__ . Zapisz tę nazwę do późniejszego użycia.
 
-4. Aby utworzyć sieć wirtualną dla usługi HDInsight, wybierz pozycję __+ Utwórz zasób__, __Sieć__, a następnie kliknij pozycję __Sieć wirtualna__.
+3. W obszarze **Ustawienia**wybierz pozycję __przestrzeń adresowa__. Zanotuj podaną przestrzeń adresową.
 
-    > [!IMPORTANT]  
-    > Wprowadzając wartości dla nowej sieci wirtualnej, należy użyć przestrzeni adresowej, która nie nakłada się na sieć klastrów AKS.
+### <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
 
-    Użyj tej samej __lokalizacji__ dla sieci wirtualnej, która została użyta dla klastra AKS.
+1. Aby utworzyć sieć wirtualną dla usługi HDInsight, przejdź do __+ Utwórz zasób__ __ > sieci__ > __sieci wirtualnej__.
 
-    Przed przejściem do następnego kroku poczekaj na utworzenie sieci wirtualnej.
+1. Utwórz sieć, korzystając z następujących wskazówek dotyczących niektórych właściwości:
 
-5. Aby skonfigurować komunikację równorzędną między siecią usługi HDInsight a siecią klastra AKS, wybierz sieć wirtualną, a następnie wybierz pozycję __Komunikacja równorzędna__. Wybierz pozycję __+ Dodaj__ i użyj następujących wartości, aby wypełnić formularz:
+    |Właściwość | Wartość |
+    |---|---|
+    |Przestrzeń adresowa|Należy użyć przestrzeni adresowej, która nie nakłada się na sieć klastrów AKS.|
+    |Lokalizacja|Użyj tej samej __lokalizacji__ dla sieci wirtualnej, która została użyta dla klastra AKS.|
 
-   * __Nazwa__: Wprowadź unikatową nazwę tej konfiguracji komunikacji równorzędnej.
-   * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla **klastra AKS**.
+1. Przed przejściem do następnego kroku poczekaj na utworzenie sieci wirtualnej.
 
-     Pozostaw wszystkie inne pola w wartości domyślnej, a następnie wybierz przycisk __OK__ , aby skonfigurować komunikację równorzędną.
+### <a name="configure-peering"></a>Konfigurowanie komunikacji równorzędnej
 
-6. Aby skonfigurować komunikację równorzędną między siecią klastra AKS i siecią usługi HDInsight, wybierz __sieć wirtualną klastra AKS__, a następnie wybierz pozycję __Komunikacja równorzędna__. Wybierz pozycję __+ Dodaj__ i użyj następujących wartości, aby wypełnić formularz:
+1. Aby skonfigurować komunikację równorzędną między siecią usługi HDInsight a siecią klastra AKS, wybierz sieć wirtualną, a następnie wybierz pozycję __Komunikacja równorzędna__.
 
-   * __Nazwa__: Wprowadź unikatową nazwę tej konfiguracji komunikacji równorzędnej.
-   * __Sieć wirtualna__: Użyj tego pola, aby wybrać sieć wirtualną dla __klastra usługi HDInsight__.
+1. Wybierz pozycję __+ Dodaj__ i użyj następujących wartości, aby wypełnić formularz:
 
-     Pozostaw wszystkie inne pola w wartości domyślnej, a następnie wybierz przycisk __OK__ , aby skonfigurować komunikację równorzędną.
+    |Właściwość |Wartość |
+    |---|---|
+    |Nazwa komunikacji równorzędnej z \<ten VN > do zdalnej sieci wirtualnej|Wprowadź unikatową nazwę tej konfiguracji komunikacji równorzędnej.|
+    |Sieć wirtualna|Wybierz sieć wirtualną dla **klastra AKS**.|
+    |Nazwa komunikacji równorzędnej z \<AKS VN > do \<tego VN >|Wprowadź unikatową nazwę.|
 
-## <a name="install-apache-kafka-on-hdinsight"></a>Instalowanie Apache Kafka w usłudze HDInsight
+    Pozostaw wszystkie inne pola w wartości domyślnej, a następnie wybierz przycisk __OK__ , aby skonfigurować komunikację równorzędną.
+
+## <a name="create-apache-kafka-cluster-on-hdinsight"></a>Tworzenie klastra Apache Kafka w usłudze HDInsight
 
 Podczas tworzenia Kafka w klastrze usługi HDInsight należy dołączyć do sieci wirtualnej utworzonej wcześniej dla usługi HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra Kafka, zapoznaj się z dokumentem [Tworzenie klastra Apache Kafka](apache-kafka-get-started.md) .
-
-> [!IMPORTANT]  
-> Podczas tworzenia klastra należy użyć __ustawień zaawansowanych__ , aby dołączyć do sieci wirtualnej utworzonej w usłudze HDInsight.
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>Konfigurowanie reklamy Apache Kafka IP
 
 Wykonaj następujące kroki, aby skonfigurować Kafka do anonsowania adresów IP zamiast nazw domen:
 
-1. Korzystając z przeglądarki sieci Web, przejdź https://CLUSTERNAME.azurehdinsight.net do. Zastąp wartość __ClusterName__ nazwą Kafka w klastrze usługi HDInsight.
+1. Korzystając z przeglądarki internetowej, przejdź do adresu `https://CLUSTERNAME.azurehdinsight.net`. Zastąp wartość CLUSTERname nazwą Kafka w klastrze usługi HDInsight.
 
     Po wyświetleniu monitu użyj nazwy użytkownika i hasła protokołu HTTPS dla klastra. Zostanie wyświetlony interfejs użytkownika sieci Web Ambari dla klastra.
 
@@ -130,7 +134,7 @@ Wykonaj następujące kroki, aby skonfigurować Kafka do anonsowania adresów IP
 
 6. Aby skonfigurować interfejs, który Kafka nasłuchuje, wprowadź `listeners` w polu __filtru__ w prawym górnym rogu.
 
-7. Aby skonfigurować Kafka do nasłuchiwania na wszystkich interfejsach sieciowych, Zmień wartość w polu `PLAINTEXT://0.0.0.0:9092` __detektory__ na.
+7. Aby skonfigurować Kafka do nasłuchiwania na wszystkich interfejsach sieciowych, Zmień wartość w polu __odbiorniki__ na `PLAINTEXT://0.0.0.0:9092`.
 
 8. Aby zapisać zmiany konfiguracji, użyj przycisku __Zapisz__ . Wprowadź wiadomość tekstową opisującą zmiany. Po zapisaniu zmian wybierz __przycisk OK__ .
 
@@ -154,21 +158,21 @@ W tym momencie Kafka i usługa Azure Kubernetes są w trakcie komunikacji za pom
 
 2. Pobierz przykładową aplikację z [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test).
 
-3. `index.js` Edytuj plik i Zmień następujące wiersze:
+3. Edytuj plik `index.js` i Zmień następujące wiersze:
 
-    * `var topic = 'mytopic'`: Zamień `mytopic` na nazwę tematu Kafka używanego przez tę aplikację.
-    * `var brokerHost = '176.16.0.13:9092`: Zastąp `176.16.0.13` wartość wewnętrznym adresem IP jednego z hostów brokera klastra.
+    * `var topic = 'mytopic'`: Zastąp `mytopic` nazwą tematu Kafka używanego przez tę aplikację.
+    * `var brokerHost = '176.16.0.13:9092`: Zastąp `176.16.0.13` wewnętrznym adresem IP jednego z hostów brokera klastra.
 
-        Aby znaleźć wewnętrzny adres IP hostów brokera (workernodes) w klastrze, zobacz dokument [interfejsu API REST usługi Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) . Wybierz adres IP jednego z wpisów, w `wn`którym rozpoczyna się nazwa domeny.
+        Aby znaleźć wewnętrzny adres IP hostów brokera (workernodes) w klastrze, zobacz dokument [interfejsu API REST usługi Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) . Wybierz adres IP jednego z wpisów, w którym rozpoczyna się nazwa domeny z `wn`.
 
-4. W wierszu polecenia w `src` katalogu Zainstaluj zależności i użyj platformy Docker, aby skompilować obraz do wdrożenia:
+4. W wierszu polecenia w katalogu `src` Zainstaluj zależności i użyj platformy Docker, aby skompilować obraz do wdrożenia:
 
     ```bash
     docker build -t kafka-aks-test .
     ```
 
     > [!NOTE]  
-    > Pakiety wymagane przez tę aplikację są sprawdzane w repozytorium, więc nie trzeba używać `npm` narzędzia do ich instalowania.
+    > Pakiety wymagane przez tę aplikację są sprawdzane w repozytorium, więc nie trzeba używać narzędzia `npm`, aby je zainstalować.
 
 5. Zaloguj się do Azure Container Registry (ACR) i Znajdź nazwę loginServer:
 
@@ -180,7 +184,7 @@ W tym momencie Kafka i usługa Azure Kubernetes są w trakcie komunikacji za pom
     > [!NOTE]  
     > Jeśli nie znasz nazwy Azure Container Registry lub nie znasz interfejsu wiersza polecenia platformy Azure do pracy z usługą Azure Kubernetes, zobacz [samouczki AKS](../../aks/tutorial-kubernetes-prepare-app.md).
 
-6. Oznacz obraz lokalny `kafka-aks-test` przy użyciu loginServer ACR. Dodaj `:v1` również do końca, aby wskazać wersję obrazu:
+6. Oznacz obraz `kafka-aks-test` lokalnego przy użyciu loginServer ACR. Dodaj również `:v1` do końca, aby wskazać wersję obrazu:
 
     ```bash
     docker tag kafka-aks-test <acrLoginServer>/kafka-aks-test:v1
@@ -194,7 +198,7 @@ W tym momencie Kafka i usługa Azure Kubernetes są w trakcie komunikacji za pom
 
     Wykonanie tej operacji może potrwać kilka minut.
 
-8. Edytuj plik manifestu Kubernetes (`kafka-aks-test.yaml`) i Zastąp `microsoft` ciąg ACR loginServer, który został pobrany w kroku 4.
+8. Edytuj plik manifestu Kubernetes (`kafka-aks-test.yaml`) i Zastąp `microsoft` nazwą loginServer ACR pobraną w kroku 4.
 
 9. Użyj następującego polecenia, aby wdrożyć ustawienia aplikacji z manifestu:
 
@@ -202,7 +206,7 @@ W tym momencie Kafka i usługa Azure Kubernetes są w trakcie komunikacji za pom
     kubectl create -f kafka-aks-test.yaml
     ```
 
-10. Użyj następującego polecenia, aby obejrzeć `EXTERNAL-IP` aplikację:
+10. Użyj następującego polecenia, aby obejrzeć `EXTERNAL-IP` aplikacji:
 
     ```bash
     kubectl get service kafka-aks-test --watch

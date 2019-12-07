@@ -1,5 +1,5 @@
 ---
-title: Włącz Azure Active Directory dla Azure-SSIS Integration Runtime
+title: Włącz usługi AAD dla Azure-SSIS Integration Runtime
 description: W tym artykule opisano sposób włączania uwierzytelniania Azure Active Directory przy użyciu tożsamości zarządzanej Azure Data Factory do tworzenia Azure-SSIS Integration Runtime.
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.date: 5/14/2019
-ms.openlocfilehash: 6973e72b06d51241e883038936270fd0931365d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9d03d0668b8519ae811b5d275e61b370ceb30e78
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217711"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896191"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz Azure Active Directory uwierzytelnianie dla Azure-SSIS Integration Runtime
 
@@ -42,7 +42,7 @@ Serwer Azure SQL Database obsługuje tworzenie bazy danych za pomocą użytkowni
 
 Możesz użyć istniejącej grupy usługi Azure AD lub utworzyć nową grupę przy użyciu programu Azure AD PowerShell.
 
-1.  Zainstaluj moduł [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) .
+1.  Zainstaluj [usługi Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modułu.
 
 2.  Zaloguj się przy użyciu `Connect-AzureAD`, uruchom następujące polecenie cmdlet, aby utworzyć grupę, i Zapisz ją w zmiennej:
 

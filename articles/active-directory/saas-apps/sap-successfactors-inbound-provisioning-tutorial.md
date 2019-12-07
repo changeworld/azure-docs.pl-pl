@@ -1,0 +1,366 @@
+---
+title: 'Samouczek: Konfigurowanie inicjowania obsługi przychodzącej SuccessFactors w Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Inicjowanie obsługi ruchu przychodzącego z SuccessFactors
+services: active-directory
+author: cmmdesai
+documentationcenter: na
+manager: jodadzie
+ms.assetid: 1ff90231-1312-463e-8949-7d976e433fc3
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 12/05/2019
+ms.author: chmutali
+ms.openlocfilehash: 85f3c8b9bc4167350b8a56f118128b89df142611
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896924"
+---
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Samouczek: Konfigurowanie oprogramowania SAP SuccessFactors do Active Directory aprowizacji użytkowników (wersja zapoznawcza)
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu zaimportowania danych procesu roboczego z SuccessFactors Employee Central do obu Active Directory i Azure Active Directory, z opcjonalnym zwrotem adresu e-mail na SuccessFactors.
+
+## <a name="overview"></a>Przegląd
+
+[Usługa aprowizacji użytkowników Azure Active Directory](../manage-apps/user-provisioning.md) integruje się z [centralnym pracownikiem SuccessFactors](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) w celu zarządzania cyklem życia tożsamości użytkowników. 
+
+Przepływy pracy aprowizacji użytkowników SuccessFactors obsługiwane przez usługę aprowizacji użytkowników w usłudze Azure AD umożliwiają automatyzację następujących scenariuszy dotyczących zasobów ludzkich i zarządzania cyklem życia tożsamości:
+
+* **Zatrudnianie nowych pracowników** — po dodaniu nowego pracownika do usługi SuccessFactors konto użytkownika jest tworzone automatycznie w Active Directory, Azure Active Directory i opcjonalnie z pakietem Office 365 i [innymi aplikacjami SaaS obsługiwanymi przez usługę Azure AD](../manage-apps/user-provisioning.md)z opcją zapisu zwrotnego adresu e-mail na SuccessFactors.
+
+* **Aktualizacje atrybutu pracownika i profilu** — gdy rekord pracownika zostanie zaktualizowany w SuccessFactors (takie jak nazwa, tytuł lub Menedżer), jego konto użytkownika zostanie automatycznie zaktualizowane w Active Directory, Azure Active Directory i opcjonalnie pakiet Office 365 oraz [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md).
+
+* **Zakończenie zatrudnienia pracownika** — gdy pracownik zostanie zakończony w SuccessFactors, jego konto użytkownika jest automatycznie wyłączone w Active Directory, Azure Active Directory i opcjonalnie pakiet Office 365 oraz [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md).
+
+* **Pracownicy** przeniesieni przez pracowników — gdy pracownik jest ponownie zatrudniany w usłudze SuccessFactors, jego stare konto może zostać automatycznie ponownie aktywowane lub zainicjowane (zależnie od preferencji) do Active Directory, Azure Active Directory i opcjonalnie pakietu Office 365 i [innych aplikacji SaaS obsługiwanych przez usługę Azure AD](../manage-apps/user-provisioning.md).
+
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Dla kogo to rozwiązanie do aprowizacji użytkowników jest najlepiej dopasowane?
+
+Ta SuccessFactors do Active Directory rozwiązanie do aprowizacji użytkowników jest idealnym rozwiązaniem dla:
+
+* Organizacje, które chcą uzyskać wbudowane, oparte na chmurze rozwiązanie do aprowizacji użytkowników SuccessFactors
+
+* Organizacje, które wymagają bezpośredniej aprowizacji użytkowników z SuccessFactors do Active Directory
+
+* Organizacje, które wymagają, aby użytkownicy korzystali z danych uzyskanych od [SuccessFactors Employee Central (WE)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
+
+* Organizacje, które wymagają przyłączenia, przeniesienia i opuszczenia użytkowników do co najmniej jednego Active Directory lasów, domen i jednostek organizacyjnych na podstawie informacji o zmianach wykrytych w [SuccessFactors Employee Central (WE)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)
+
+* Organizacje korzystające z pakietu Office 365 do obsługi poczty e-mail
+
+## <a name="solution-architecture"></a>Architektura rozwiązania
+
+W tej sekcji opisano kompleksową architekturę rozwiązania obsługi użytkowników dla typowych środowisk hybrydowych. Istnieją dwa powiązane przepływy:
+
+* **Autorytatywny przepływ danych HR — od SuccessFactors do lokalnego Active Directory:** W tym przepływie zdarzenia procesu roboczego (takie jak nowe zatrudnienie, transfery, zakończenia) są najpierw wykonywane w chmurze SuccessFactors Employee Central, a następnie dane zdarzenia są przenoszone do Active Directory lokalnych za pośrednictwem usługi Azure AD i agenta aprowizacji. W zależności od zdarzenia może to prowadzić do tworzenia/aktualizowania/włączania/wyłączania operacji w usłudze AD.
+* **Przepływ zapisywania zwrotnego wiadomości e-mail — od lokalnego Active Directory do SuccessFactors:** Po zakończeniu tworzenia konta w Active Directory jest on synchronizowany z usługą Azure AD za pośrednictwem Azure AD Connect synchronizacji i atrybutu poczty e-mail może zostać zapisany z powrotem do SuccessFactors.
+
+  ![Przegląd](./media/sap-successfactors-inbound-provisioning/sf2ad-overview.png)
+
+### <a name="end-to-end-user-data-flow"></a>Przepływ danych kompleksowego użytkownika
+
+1. Zespół kadr wykonuje transakcje procesu roboczego (przydziały/Firmy przeprowadzkowe lub nowe zatrudnienie/zwolnienia/zakończenia) w witrynie SuccessFactors Employee Central
+2. Usługa Azure AD Provisioning uruchamia zaplanowane synchronizacje tożsamości z SuccessFactors EC i identyfikuje zmiany, które muszą zostać przetworzone w celu synchronizacji z lokalnym Active Directory.
+3. Usługa Azure AD Provisioning wywołuje lokalnego agenta inicjowania obsługi administracyjnej Azure AD Connect z ładunkiem żądania zawierającym operacje tworzenia/aktualizowania/włączania/wyłączania konta usługi AD.
+4. Azure AD Connect Agent aprowizacji używa konta usługi do dodawania/aktualizowania danych konta usług AD.
+5. Aparat synchronizacji Azure AD Connect uruchamia synchronizację Delta w celu ściągnięcia aktualizacji w usłudze AD.
+6. Aktualizacje Active Directory są synchronizowane z Azure Active Directory.
+7. W przypadku skonfigurowania łącznika zapisywania zwrotnego SuccessFactors jest on używany do zapisywania z powrotem atrybutu poczty e-mail i nazwy użytkownika SuccessFactors na podstawie używanego atrybutu.
+
+## <a name="planning-your-deployment"></a>Planowanie wdrożenia
+
+Konfigurowanie obsługi administracyjnej użytkowników w chmurze opartej na usłudze SuccessFactors do usługi AD wymaga znaczącego planowania obejmującego różne aspekty, takie jak:
+* Konfiguracja agenta aprowizacji Azure AD Connect 
+* Liczba SuccessFactors do wdrożenia aplikacji do aprowizacji użytkowników usługi AD
+* Dopasowywanie identyfikatora, Mapowanie atrybutów, przekształcenie i określanie zakresu filtrów
+
+Zapoznaj się z [planem wdrożenia usługi Cloud HR](../manage-apps/plan-cloud-hr-provision.md) , aby uzyskać wyczerpujące wytyczne dotyczące tych tematów. 
+
+## <a name="configuring-successfactors-for-the-integration"></a>Konfigurowanie SuccessFactors na potrzeby integracji
+
+Typowym wymaganiem wszystkich łączników aprowizacji SuccessFactors jest to, że wymagają poświadczeń konta SuccessFactors z uprawnieniami do wywoływania interfejsów API usługi SuccessFactors OData. W tej sekcji opisano kroki tworzenia konta usługi w programie SuccessFactors i udzielania odpowiednich uprawnień. 
+
+* [Utwórz/Zidentyfikuj konto użytkownika interfejsu API w SuccessFactors](#createidentify-api-user-account-in-successfactors)
+* [Utwórz rolę uprawnień interfejsu API](#create-an-api-permissions-role)
+* [Tworzenie grupy uprawnień dla użytkownika interfejsu API](#create-a-permission-group-for-the-api-user)
+* [Udziel uprawnienia roli do grupy uprawnień](#grant-permission-role-to-the-permission-group)
+
+### <a name="createidentify-api-user-account-in-successfactors"></a>Utwórz/Zidentyfikuj konto użytkownika interfejsu API w SuccessFactors
+Skontaktuj się z zespołem administracyjnym SuccessFactors lub partnerem implementacji, aby utworzyć lub zidentyfikować konto użytkownika w usłudze SuccessFactors, które będzie używane do wywoływania interfejsów API usługi OData. Poświadczenia nazwy użytkownika i hasła tego konta będą wymagane podczas konfigurowania aplikacji aprowizacji w usłudze Azure AD. 
+
+### <a name="create-an-api-permissions-role"></a>Utwórz rolę uprawnień interfejsu API
+
+* Zaloguj się do platformy SAP SuccessFactors przy użyciu konta użytkownika, które ma dostęp do centrum administracyjnego.
+* Wyszukaj pozycje *Zarządzaj rolami uprawnień*, a następnie wybierz pozycję **Zarządzaj rolami uprawnień** z wyników wyszukiwania.
+  ![zarządzać rolami uprawnień](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
+* Na liście rola uprawnień kliknij pozycję **Utwórz nową**.
+  > [!div class="mx-imgBorder"]
+  > ![utworzyć nową rolę uprawnienia](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+* Dodaj nazwę i **Opis** **roli** dla nowej roli uprawnienia. Nazwa i opis powinny wskazywać, że rola ma uprawnienia do użycia interfejsu API.
+  > [!div class="mx-imgBorder"]
+  > Szczegóły ![roli uprawnień](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+* W obszarze Ustawienia uprawnień kliknij pozycję **uprawnienie...** , a następnie przewiń w dół listę uprawnień i kliknij pozycję **Zarządzaj narzędzia integracji**. Zaznacz pole wyboru **Zezwalaj administratorowi na dostęp do interfejsu API OData za pomocą uwierzytelniania podstawowego**.
+  > [!div class="mx-imgBorder"]
+  > ![zarządzać narzędziami integracji](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+* Przewiń w dół do tego samego pola i wybierz pozycję **Employee Central API**. Dodaj uprawnienia, jak pokazano poniżej, aby czytać przy użyciu interfejsu API ODATA i edytować za pomocą interfejsu API ODATA. Wybierz opcję Edytuj, jeśli planujesz używać tego samego konta do scenariusza zapisywania zwrotnego SuccessFactors. 
+  > [!div class="mx-imgBorder"]
+  > ![Odczyt uprawnień zapisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+* Kliknij przycisk **gotowe**. Kliknij przycisk **Save Changes** (Zapisz zmiany).
+
+### <a name="create-a-permission-group-for-the-api-user"></a>Tworzenie grupy uprawnień dla użytkownika interfejsu API
+
+* W centrum administracyjnym SuccessFactors Wyszukaj pozycję *Zarządzaj grupami uprawnień*, a następnie wybierz pozycję **Zarządzaj grupami uprawnień** z wyników wyszukiwania.
+  > [!div class="mx-imgBorder"]
+  > ![zarządzać grupami uprawnień](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+* W oknie Zarządzanie grupami uprawnień kliknij pozycję **Utwórz nowe**.
+  > [!div class="mx-imgBorder"]
+  > ![Dodaj nową grupę](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+* Dodaj nazwę grupy dla nowej grupy. Nazwa grupy powinna wskazywać, że grupa jest przeznaczony dla użytkowników interfejsu API.
+  > [!div class="mx-imgBorder"]
+  > Nazwa grupy uprawnień ![](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+* Dodaj członków do grupy. Można na przykład wybrać pozycję **Nazwa użytkownika** z menu rozwijanego Pula osób, a następnie wprowadzić nazwę użytkownika konta interfejsu API, która będzie używana do integracji. 
+  > [!div class="mx-imgBorder"]
+  > ![Dodawanie członków grupy](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
+* Kliknij pozycję **gotowe** , aby zakończyć tworzenie grupy uprawnień.
+
+### <a name="grant-permission-role-to-the-permission-group"></a>Udziel uprawnienia roli do grupy uprawnień
+
+* W centrum administracyjnym SuccessFactors Wyszukaj pozycję *Zarządzaj rolami uprawnień*, a następnie wybierz pozycję **Zarządzaj rolami uprawnień** z wyników wyszukiwania.
+* Z **listy rola uprawnień**wybierz rolę utworzoną na potrzeby uprawnień użycia interfejsu API.
+* W obszarze **Przypisz tę rolę do...** kliknij przycisk **Dodaj.** ...
+* Z menu rozwijanego wybierz pozycję **Grupa uprawnień** , a następnie kliknij pozycję **Wybierz...** , aby otworzyć okno grupy, aby wyszukać i wybrać utworzoną powyżej grupę. 
+  > [!div class="mx-imgBorder"]
+  > ![Dodaj grupę uprawnień](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+* Przejrzyj uprawnienia przyznane grupie uprawnień. 
+  > [!div class="mx-imgBorder"]
+  > ![szczegóły roli i grupy uprawnień](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+* Kliknij przycisk **Save Changes** (Zapisz zmiany).
+
+## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>Konfigurowanie aprowizacji użytkowników z SuccessFactors do Active Directory
+
+Ta sekcja zawiera kroki związane z inicjowaniem obsługi kont użytkowników z SuccessFactors do każdej domeny Active Directory w ramach zakresu integracji.
+
+* [Dodawanie aplikacji łącznika aprowizacji i pobieranie agenta aprowizacji](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+* [Instalowanie i konfigurowanie lokalnych agentów aprowizacji](#part-2-install-and-configure-on-premises-provisioning-agents)
+* [Konfigurowanie łączności z SuccessFactors i Active Directory](#part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory)
+* [Konfigurowanie mapowań atrybutów](#part-4-configure-attribute-mappings)
+* [Włączanie i uruchamianie aprowizacji użytkowników](#enable-and-launch-user-provisioning)
+
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>Część 1. Dodawanie aplikacji łącznika aprowizacji i pobieranie agenta aprowizacji
+
+**Aby skonfigurować SuccessFactors do inicjowania obsługi administracyjnej Active Directory:**
+
+1. Przejdź do usługi <https://portal.azure.com>
+
+2. Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**
+
+3. Wybierz **aplikacje przedsiębiorstwa**, a następnie **wszystkie aplikacje**.
+
+4. Wybierz pozycję **Dodaj aplikację**, a następnie wybierz kategorię **wszystkie** .
+
+5. Wyszukaj **SuccessFactors, aby Active Directory aprowizacji użytkowników**i dodać tę aplikację z galerii.
+
+6. Po dodaniu aplikacji i wyświetleniu ekranu Szczegóły aplikacji wybierz opcję **aprowizacji**
+
+7. Zmień tryb **aprowizacji** na **automatyczny**
+
+8. Kliknij transparent informacji wyświetlany, aby pobrać agenta aprowizacji. 
+   > [!div class="mx-imgBorder"]
+   > ![Pobierz agenta](./media/sap-successfactors-inbound-provisioning/download-pa-agent.png "Pobierz ekran agenta")
+
+
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Część 2. Instalowanie i konfigurowanie lokalnych agentów aprowizacji
+
+Aby zapewnić Active Directory lokalnego, Agent aprowizacji musi być zainstalowany na serwerze, który ma .NET 4.7.1 + Framework i dostęp sieciowy do żądanych Active Directory domen.
+
+> [!TIP]
+> Możesz sprawdzić wersję programu .NET Framework na serwerze, korzystając z instrukcji przedstawionych [tutaj](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed).
+> Jeśli na serwerze nie jest zainstalowany program .NET 4.7.1 lub nowszy, możesz go pobrać z tego [miejsca](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows).  
+
+Przenieś pobrany Instalator agenta na hosta serwera i wykonaj kroki podane poniżej, aby ukończyć konfigurację agenta.
+
+1. Zaloguj się do systemu Windows Server, na którym chcesz zainstalować nowego agenta.
+
+1. Uruchom Instalatora agenta aprowizacji, zaakceptuj warunki i kliknij przycisk **Instaluj** .
+
+   ![Ekran instalacji](./media/workday-inbound-tutorial/pa_install_screen_1.png "Ekran instalacji")
+   
+1. Po zakończeniu instalacji Kreator zostanie uruchomiony i zostanie wyświetlony ekran **łączenie z usługą Azure AD** . Kliknij przycisk **Uwierzytelnij** , aby nawiązać połączenie z wystąpieniem usługi Azure AD.
+
+   ![Łączenie z usługą Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Łączenie z usługą Azure AD")
+   
+1. Uwierzytelnij się w wystąpieniu usługi Azure AD przy użyciu poświadczeń administratora globalnego.
+
+   ![Uwierzytelnianie administratora](./media/workday-inbound-tutorial/pa_install_screen_3.png "Uwierzytelnianie administratora")
+
+   > [!NOTE]
+   > Poświadczenia administratora usługi Azure AD są używane tylko w celu nawiązania połączenia z dzierżawą usługi Azure AD. Agent nie przechowuje poświadczeń lokalnie na serwerze.
+
+1. Po pomyślnym uwierzytelnieniu w usłudze Azure AD zostanie wyświetlony ekran **Connect Active Directory** . W tym kroku wprowadź nazwę domeny usługi AD i kliknij przycisk **Dodaj katalog** .
+
+   ![Dodaj katalog](./media/workday-inbound-tutorial/pa_install_screen_4.png "Dodaj katalog")
+  
+1. Teraz zostanie wyświetlony monit o wprowadzenie poświadczeń wymaganych do nawiązania połączenia z domeną usługi AD. Na tym samym ekranie można użyć **priorytetu wybierz kontroler domeny** , aby określić kontrolery domeny, które mają być używane przez agenta do wysyłania żądań aprowizacji.
+
+   ![Poświadczenia domeny](./media/workday-inbound-tutorial/pa_install_screen_5.png)
+   
+1. Po skonfigurowaniu domeny w instalatorze zostanie wyświetlona lista skonfigurowanych domen. Na tym ekranie można powtórzyć krok #5 i #6, aby dodać więcej domen lub kliknąć przycisk **dalej** , aby przejść do rejestracji agenta.
+
+   ![Skonfigurowane domeny](./media/workday-inbound-tutorial/pa_install_screen_6.png "Skonfigurowane domeny")
+
+   > [!NOTE]
+   > Jeśli masz wiele domen usługi AD (np. na.contoso.com, emea.contoso.com), Dodaj każdą domenę osobno do listy.
+   > Dodawanie domeny nadrzędnej (np. contoso.com) nie jest wystarczające. Należy zarejestrować każdą domenę podrzędną w agencie.
+   
+1. Przejrzyj szczegóły konfiguracji i kliknij przycisk **Potwierdź** , aby zarejestrować agenta.
+  
+   ![Potwierdź ekran](./media/workday-inbound-tutorial/pa_install_screen_7.png "Potwierdź ekran")
+   
+1. Kreator konfiguracji wyświetla postęp rejestracji agenta.
+  
+   ![Rejestracja agenta](./media/workday-inbound-tutorial/pa_install_screen_8.png "Rejestracja agenta")
+   
+1. Po pomyślnym zarejestrowaniu agenta możesz kliknąć przycisk **Zakończ** , aby zamknąć kreatora.
+  
+   ![Ekran zakończenia](./media/workday-inbound-tutorial/pa_install_screen_9.png "Ekran zakończenia")
+   
+1. Sprawdź instalację agenta i upewnij się, że jest uruchomiona, otwierając przystawkę "usługi" i Wyszukaj usługę o nazwie "Microsoft Azure AD Połącz agenta aprowizacji"
+  
+   ![Usługi](./media/workday-inbound-tutorial/services.png)
+
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>Część 3: w aplikacji aprowizacji Skonfiguruj łączność z SuccessFactors i Active Directory
+W tym kroku ustanawiamy łączność z usługą SuccessFactors i Active Directory w Azure Portal. 
+
+1. W Azure Portal Wróć do SuccessFactors, aby Active Directory aplikację aprowizacji użytkowników utworzoną w [części 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+
+1. Wypełnij sekcję **poświadczenia administratora** w następujący sposób:
+
+   * **Nazwa użytkownika administratora** — wprowadź nazwę użytkownika konta użytkownika interfejsu API SuccessFactors z DOŁĄCZONYm identyfikatorem firmy. Ma format: **username\@companyID**
+
+   * **Hasło administratora —** Wprowadź hasło dla konta użytkownika interfejsu API SuccessFactors. 
+
+   * **Adres URL dzierżawy —** Wprowadź nazwę punktu końcowego usług interfejsu API OData SuccessFactors. Wprowadź tylko nazwę hosta serwera bez protokołu HTTP lub https. Ta wartość powinna wyglądać następująco: **< API-Server-name >. SuccessFactors. com**.
+
+   * **Active Directory Las** "Nazwa" domeny Active Directory, zarejestrowana w agencie. Użyj listy rozwijanej, aby wybrać domenę docelową do aprowizacji. Ta wartość jest zazwyczaj ciągiem: *contoso.com*
+
+   * **Kontener Active Directory —** Wprowadź nazwę wyróżniającą kontenera, w której Agent powinien domyślnie utworzyć konta użytkowników.
+        Przykład: *OU = users, DC = contoso, DC = com*
+        > [!NOTE]
+        > To ustawienie jest dostępne tylko w przypadku tworzenia kont użytkowników, jeśli atrybut *parentDistinguishedName* nie jest skonfigurowany w mapowaniu atrybutów. To ustawienie nie jest używane na potrzeby operacji wyszukiwania ani aktualizowania użytkownika. Całe poddrzewo domeny znajduje się w zakresie operacji wyszukiwania.
+
+   * **Wiadomość e-mail z powiadomieniem —** Wprowadź adres e-mail, a następnie zaznacz pole wyboru "Wyślij wiadomość e-mail, jeśli wystąpi błąd".
+         > [!NOTE]
+         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+
+   * Kliknij przycisk **Testuj połączenie** . Jeśli test połączenia zakończy się pomyślnie, kliknij przycisk **Zapisz** u góry. Jeśli to się nie powiedzie, sprawdź, czy poświadczenia SuccessFactors i poświadczenia usługi AD skonfigurowane w instalatorze agenta są prawidłowe.
+    >[!div class="mx-imgBorder"]
+    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+
+   * Po pomyślnym zapisaniu poświadczeń w sekcji **mapowania** zostanie wyświetlone mapowanie domyślne **Synchronizacja SuccessFactors użytkowników do lokalnego Active Directory**
+
+### <a name="part-4-configure-attribute-mappings"></a>Część 4: Konfigurowanie mapowań atrybutów
+
+W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z SuccessFactors do Active Directory.
+
+1. Na karcie Inicjowanie obsługi w obszarze **mapowania**kliknij pozycję **Synchronizuj SuccessFactors użytkowników do lokalnego Active Directory**.
+
+1. W polu **Zakres obiektu źródłowego** możesz wybrać, które zestawy użytkowników w SuccessFactors powinny znajdować się w zakresie dla aprowizacji do usługi AD przez zdefiniowanie zestawu filtrów opartych na atrybutach. Zakresem domyślnym jest "Wszyscy użytkownicy w SuccessFactors". Przykładowe filtry:
+
+   * Przykład: zakres dla użytkowników z personIdExternalem między 1000000 i 2000000 (z wyłączeniem 2000000)
+
+      * Atrybut: personIdExternal
+
+      * Operator: dopasowanie wyrażenia regularnego
+
+      * Wartość: (1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])
+
+   * Przykład: tylko pracownicy i niezależni pracownicy
+
+      * Atrybut: IDPracownika
+
+      * Operator: nie ma wartości NULL
+
+   > [!TIP]
+   > Podczas konfigurowania aplikacji do aprowizacji po raz pierwszy należy przetestować i zweryfikować mapowania atrybutów oraz wyrażenia, aby upewnić się, że daje żądany wynik. Firma Microsoft zaleca używanie filtrów określania zakresu w obszarze **zakres obiektów źródłowych** do testowania mapowań za pomocą kilku użytkowników testowych z SuccessFactors. Po sprawdzeniu, czy mapowania działają, można usunąć filtr lub stopniowo rozwijać go, aby uwzględnić więcej użytkowników.
+
+   > [!CAUTION] 
+   > Domyślne zachowanie aparatu aprowizacji polega na wyłączeniu/usunięciu użytkowników, którzy wykraczają poza zakres. Może to nie być pożądane w ramach integracji usługi AD z usługą SuccessFactors. Aby zastąpić to zachowanie domyślne, odnoszące się do artykułu [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](../manage-apps/skip-out-of-scope-deletions.md)
+  
+1. W polu **Akcje obiektu docelowego** można globalnie filtrować akcje wykonywane na Active Directory. **Tworzenie** i **Aktualizowanie** są najczęściej używane.
+
+1. W sekcji **mapowania atrybutów** można zdefiniować, w jaki sposób poszczególne atrybuty SuccessFactors są mapowane na atrybuty Active Directory.
+
+1. Kliknij istniejące mapowanie atrybutów, aby je zaktualizować, lub kliknij pozycję **Dodaj nowe mapowanie** u dołu ekranu, aby dodać nowe mapowania. Mapowanie poszczególnych atrybutów obsługuje te właściwości:
+
+      * **Typ mapowania**
+
+         * **Direct** — zapisuje wartość atrybutu SuccessFactors w atrybucie usługi AD bez zmian
+
+         * **Stała** — Zapisz statyczną, stałą wartość ciągu w atrybucie usługi AD.
+
+         * **Expression** — umożliwia zapisanie niestandardowej wartości atrybutu AD na podstawie jednego lub większej liczby atrybutów SuccessFactors. [Aby uzyskać więcej informacji, zobacz ten artykuł w wyrażeniach](../manage-apps/functions-for-customizing-application-data.md).
+
+      * **Atrybut źródłowy** — atrybut użytkownika z SuccessFactors
+
+      * **Wartość domyślna** — opcjonalne. Jeśli atrybut źródłowy ma pustą wartość, mapowanie spowoduje zapisanie tej wartości.
+            Najbardziej typową konfiguracją jest pozostawienie tej pustej.
+
+      * **Atrybut target** — atrybut user w Active Directory.
+
+      * **Dopasowywanie obiektów przy użyciu tego atrybutu** — niezależnie od tego, czy mapowanie ma być używane do unikatowego identyfikowania użytkowników między SuccessFactors i Active Directory. Ta wartość jest zazwyczaj ustawiana w polu Identyfikator procesu roboczego dla SuccessFactors, który jest zwykle mapowany na jeden z atrybutów identyfikatora pracownika w Active Directory.
+
+      * **Priorytet dopasowania** — można ustawić wiele pasujących atrybutów. Jeśli istnieje wiele, są one oceniane w kolejności zdefiniowanej przez to pole. Po znalezieniu dopasowania nie są oceniane żadne dalsze pasujące atrybuty.
+
+      * **Zastosuj to mapowanie**
+
+         * **Zawsze** — Zastosuj to mapowanie zarówno dla akcji tworzenia i aktualizowania użytkownika
+
+         * **Tylko podczas tworzenia** — Zastosuj to mapowanie tylko dla akcji tworzenia użytkownika
+
+1. Aby zapisać mapowania, kliknij pozycję **Zapisz** w górnej części sekcji Mapowanie atrybutów.
+
+Po zakończeniu konfiguracji mapowania atrybutów możesz teraz [włączyć i uruchomić usługę aprowizacji użytkowników](#enable-and-launch-user-provisioning).
+
+## <a name="enable-and-launch-user-provisioning"></a>Włączanie i uruchamianie aprowizacji użytkowników
+
+Po zakończeniu konfiguracji aplikacji SuccessFactorsing (Inicjowanie obsługi administracyjnej) można włączyć usługę aprowizacji w Azure Portal.
+
+> [!TIP]
+> Domyślnie po włączeniu usługi aprowizacji zostaną zainicjowane operacje aprowizacji dla wszystkich użytkowników w zakresie. Jeśli występują błędy w mapowaniu lub problemach z danymi w dniach roboczych, zadanie aprowizacji może się nie powieść i przejść do stanu kwarantanny. Aby tego uniknąć, najlepszym rozwiązaniem jest zalecamy skonfigurowanie filtru **zakresu obiektów źródłowych** i przetestowanie mapowań atrybutów z kilkoma użytkownikami testowymi przed uruchomieniem pełnej synchronizacji dla wszystkich użytkowników. Po sprawdzeniu, czy mapowania działają i dają odpowiednie wyniki, można usunąć filtr lub stopniowo rozwijać go, aby uwzględnić więcej użytkowników.
+
+1. Na karcie **aprowizacji** Ustaw **stan aprowizacji** na **włączone**.
+
+2. Kliknij przycisk **Save** (Zapisz).
+
+3. Ta operacja rozpocznie synchronizację początkową, która może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w dzierżawie SuccessFactors. Możesz sprawdzić, czy pasek postępu śledzi postęp cyklu synchronizacji. 
+
+4. W dowolnym momencie sprawdź kartę **dzienniki inspekcji** w Azure Portal, aby zobaczyć, jakie akcje zostały wykonane przez usługę aprowizacji. W dziennikach inspekcji są wyświetlane wszystkie zdarzenia synchronizacji wykonywane przez usługę aprowizacji, takie jak informacje o użytkownikach, które są odczytywane z dnia roboczego, a następnie dodane lub zaktualizowane do Active Directory. 
+
+5. Po zakończeniu synchronizacji początkowej zostanie zapisany raport z podsumowaniem inspekcji na karcie **aprowizacji** , jak pokazano poniżej.
+
+   > [!div class="mx-imgBorder"]
+   > ![pasek postępu aprowizacji](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak skonfigurować Logowanie jednokrotne między SuccessFactors i Azure Active Directory](successfactors-tutorial.md)
+* [Dowiedz się, jak zintegrować inne aplikacje SaaS z Azure Active Directory](tutorial-list.md)
+* [Dowiedz się, jak eksportować i importować konfiguracje aprowizacji](../manage-apps/export-import-provisioning-configuration.md)
+
+
+
+
+
+
+
+
+
+
+
+
+

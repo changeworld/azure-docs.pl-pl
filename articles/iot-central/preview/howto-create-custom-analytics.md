@@ -3,18 +3,18 @@ title: Zwiększanie IoT Central platformy Azure przy użyciu analizy niestandard
 description: Jako deweloper rozwiązań Skonfiguruj aplikację IoT Central, aby wykonywać niestandardowe analizy i wizualizacje. To rozwiązanie używa Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a29cae2fabe1542a7498bca19dc0a6e147d1d024
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 59fb0dfbc44746853f25437e8e13a1cbc317e151
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895152"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895540"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks-preview-features"></a>Rozszerzona IoT Central platformy Azure za pomocą analizy niestandardowej przy użyciu Azure Databricks (funkcje w wersji zapoznawczej)
 
@@ -64,7 +64,7 @@ Użyj [Azure Portal, aby utworzyć przestrzeń nazw Event Hubs](https://portal.a
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Nazwa    | Wybierz nazwę przestrzeni nazw |
-| Warstwa cenowa | Podstawowa |
+| Warstwa cenowa | Basic |
 | Subskrypcja | Twoja subskrypcja |
 | Grupa zasobów | IoTCentralAnalysis |
 | Lokalizacja | Wschodnie stany USA |
@@ -80,7 +80,7 @@ Użyj [Azure Portal, aby utworzyć usługę Azure Databricks](https://portal.azu
 | Subskrypcja | Twoja subskrypcja |
 | Grupa zasobów | IoTCentralAnalysis |
 | Lokalizacja | Wschodnie stany USA |
-| Warstwa cenowa | Standardowa |
+| Warstwa cenowa | Standardowa (Standard) |
 
 Po utworzeniu wymaganych zasobów Grupa zasobów **IoTCentralAnalysis** wygląda podobnie do poniższego zrzutu ekranu:
 
@@ -135,8 +135,8 @@ Skorzystaj z informacji w poniższej tabeli, aby utworzyć klaster:
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Nazwa klastra | centralanalysis |
-| Tryb klastra | Standardowa |
-| Wersja Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
+| Tryb klastra | Standardowa (Standard) |
+| Wersja usługi Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Wersja języka Python | 3 |
 | Włączanie skalowania automatycznego | Nie |
 | Przerwij po minutach braku aktywności | 30 |

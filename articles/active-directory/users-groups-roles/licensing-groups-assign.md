@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 497efda857dcd7de3079d702be00a094d221b779
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034819"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900834"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji użytkownikom według członkostwa w grupie w Azure Active Directory
 
@@ -41,7 +41,7 @@ W tym przykładzie dzierżawca zawiera grupę zabezpieczeń o nazwie **Dział ka
 
 1. W obszarze **wszystkie produkty**wybierz pozycję Office 365 Enterprise E5 i Enterprise Mobility + Security E3, wybierając pozycję nazwy produktów. Aby rozpocząć przypisanie, wybierz pozycję **Przypisz** w górnej części strony.
 
-   ![Wybierz produkty, aby przypisać licencje](./media/licensing-groups-assign/all-products-assign.png)
+   ![Wybierz produkty, aby przypisać licencje](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
 1. Na stronie **Przypisywanie licencji** wybierz pozycję **Użytkownicy i grupy** , aby otworzyć listę użytkowników i grup.
 
@@ -59,7 +59,7 @@ W przypadku przypisywania licencji do grupy usługa Azure AD przetwarza wszystki
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Krok 2. sprawdzenie, czy początkowe przypisanie zostało zakończone
 
-1. Przejdź do **Azure Active Directory** **grup** > . Wybierz grupę, do której przypisano licencje.
+1. Przejdź do **grup** > **Azure Active Directory** . Wybierz grupę, do której przypisano licencje.
 
 1. Na stronie Grupa wybierz pozycję **licencje**. Dzięki temu można szybko potwierdzić, czy licencje zostały w pełni przypisane do użytkowników i czy występują błędy, które należy wziąć pod uwagę. Dostępne są następujące informacje:
 
@@ -71,7 +71,7 @@ W przypadku przypisywania licencji do grupy usługa Azure AD przetwarza wszystki
 
    ![Błędy licencjonowania i stan licencji](./media/licensing-groups-assign/assignment-errors.png)
 
-1. Zobacz więcej szczegółowych informacji na temat przetwarzania licencji w **Azure Active Directory** > **użytkowników i grup** > *Nazwa grupy* > **dzienników inspekcji**. Sprawdź następujące działania:
+1. Zobacz więcej szczegółowych informacji o przetwarzaniu licencji w obszarze **Azure Active Directory** > **użytkowników i grup** > *nazw grup* > **dzienników inspekcji**. Sprawdź następujące działania:
 
    - Działanie: `Start applying group based license to users`. Jest to rejestrowane, gdy system pobiera zmiany przypisania licencji do grupy i zaczyna stosować ją do wszystkich członków użytkowników. Zawiera informacje o wprowadzonej zmianie.
 
@@ -81,7 +81,7 @@ W przypadku przypisywania licencji do grupy usługa Azure AD przetwarza wszystki
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3. sprawdzenie, czy występują problemy z licencją i rozwiązywanie problemów
 
-1. Przejdź do**grup** **Azure Active Directory** >  i Znajdź grupę, do której zostały przypisane licencje.
+1. Przejdź do **grup** > **Azure Active Directory** i Znajdź grupę, do której zostały przypisane licencje.
 1. Na stronie Grupa wybierz pozycję **licencje**. Powiadomienie na stronie zawiera 10 użytkowników, do których nie można przypisać licencji. Otwórz go, aby wyświetlić listę wszystkich użytkowników w stanie błąd licencjonowania dla tej grupy.
 1. Kolumna **przydziałów zakończonych niepowodzeniem** informuje nas, że nie można przypisać do użytkowników obu licencji na produkt. **Górna przyczyna kolumny niepowodzenie** zawiera przyczynę niepowodzenia. W tym przypadku jest to **sprzeczne plany usługi**.
 
@@ -89,7 +89,7 @@ W przypadku przypisywania licencji do grupy usługa Azure AD przetwarza wszystki
 
 1. Wybierz użytkownika, aby otworzyć stronę **licencje** użytkownika. Ta strona zawiera wszystkie licencje, które są aktualnie przypisane do użytkownika. W tym przykładzie użytkownik ma licencję pakietu Office 365 Enterprise E1, która była dziedziczona z grupy **Użytkownicy kiosku** . Powoduje to konflikt z licencją E3, którą system próbował zastosować z grupy **działu kadr** . W efekcie żadna z licencji z tej grupy nie została przypisana do użytkownika.
 
-   ![Wyświetl wszystkie konflikty licencji dla użytkownika](./media/licensing-groups-assign/user-license-view.png)
+   ![Wyświetl wszystkie konflikty licencji dla użytkownika](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
 1. Aby rozwiązać ten konflikt, Usuń użytkownika z grupy **Użytkownicy Kiosk** . Gdy usługa Azure AD przetwarza zmiany, licencje **działu kadr** są poprawnie przypisane.
 
@@ -100,6 +100,6 @@ Aby dowiedzieć się więcej na temat zestawu funkcji dla przypisania licencji p
 - [Co to jest Licencjonowanie oparte na grupach w Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
 - [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
 - [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
-- [Jak migrować użytkowników między licencjami produktu przy użyciu licencjonowania opartego na grupach w programie Azure Active Directory](licensing-groups-change-licenses.md)
+- [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
 - [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](../active-directory-licensing-group-advanced.md)
-- [Przykłady programu PowerShell dla licencjonowania opartego na grupach w Azure Active Directory](licensing-ps-examples.md)
+- [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-ps-examples.md)

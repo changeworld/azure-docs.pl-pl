@@ -6,18 +6,18 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c13e7b507291d7671ac861fc7a8683c87be947a1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725597"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896648"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informacje o strefach nadmiarowych bram sieci wirtualnych w Strefy dostępności platformy Azure
 
-Bramy sieci VPN i ExpressRoute można wdrożyć w [strefy dostępności platformy Azure](../availability-zones/az-overview.md). Zapewnia to elastyczność, skalowalność i wyższą dostępność dla bram sieci wirtualnej. Wdrażanie bram w Strefy dostępności platformy Azure fizycznie i logicznie oddziela bramy w danym regionie, chroniąc połączenie sieci lokalnej na platformie Azure przed awariami na poziomie strefy.
+Bramy sieci VPN i ExpressRoute można wdrożyć w [strefy dostępności platformy Azure](../availability-zones/az-overview.md). Zapewni to elastyczność, skalowalność i większą dostępność bram sieci wirtualnej. Wdrażanie bram w strefach dostępności platformy Azure fizycznie i logicznie dzieli bramy w danym regionie, chroniąc jednocześnie lokalną łączność sieci z platformą Azure przed błędami na poziomie strefy.
 
 ### <a name="zrgw"></a>Bramy strefowo nadmiarowe
 
@@ -39,21 +39,9 @@ Aby wdrożyć bramy w określonej strefie, można użyć bram strefowych. Podcza
 
 ## <a name="gwskus"></a>Jednostki SKU bramy
 
-Bramy strefowo nadmiarowe i wielostrefowe są dostępne jako nowe jednostki SKU bramy. Dodaliśmy nowe jednostki SKU bramy sieci wirtualnej w usłudze Azure AZ Regions. Te jednostki SKU są podobne do odpowiednich istniejących jednostek SKU dla ExpressRoute i VPN Gateway, z tą różnicą, że są one specyficzne dla bram strefowo nadmiarowych i strefowych.
+Bramy strefowo nadmiarowe i wielostrefowe są dostępne jako nowe jednostki SKU bramy. Dodaliśmy nowe jednostki SKU bramy sieci wirtualnej w usłudze Azure AZ Regions. Te jednostki SKU są podobne do odpowiednich istniejących jednostek SKU dla ExpressRoute i VPN Gateway, z tą różnicą, że są one specyficzne dla bram strefowo nadmiarowych i strefowych. Można zidentyfikować te jednostki SKU przy użyciu "AZ" w nazwie jednostki SKU.
 
-Nowe jednostki SKU bramy są następujące:
-
-### <a name="vpn-gateway"></a>VPN Gateway
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
+Aby uzyskać informacje o jednostkach SKU bramy, zobacz jednostki [SKU bramy sieci VPN](vpn-gateway-about-vpngateways.md#gwsku) i [jednostki SKU bramy ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku).
 
 ## <a name="pipskus"></a>Jednostki SKU publicznego adresu IP
 

@@ -1,5 +1,5 @@
 ---
-title: Przekształcanie danych za pomocą języka Python — platforma Azure
+title: Przekształcanie danych za pomocą języka Python
 description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając w języku Python.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1acc484b8843fc1fe1acae5759a24f923396e003
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683936"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893947"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Przekształcanie danych przez uruchomienie działania języka Python w Azure Databricks
 
@@ -70,7 +70,7 @@ W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 |linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie języka Python. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz artykuł informacje o [obliczeniu usługi połączonej](compute-linked-services.md) .|Tak|
 |pythonFile|Identyfikator URI pliku języka Python, który ma zostać wykonany. Obsługiwane są tylko ścieżki DBFS.|Tak|
 |parameters|Parametry wiersza polecenia, które zostaną przesłane do pliku języka Python. To jest tablica ciągów.|Nie|
-|bibliotece|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Nie|
+|biblioteki|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Nie|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
 

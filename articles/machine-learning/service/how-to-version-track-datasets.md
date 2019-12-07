@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d22bfb0743bc18102e665a63f7e36ed75dd39cab
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716093"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900312"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Wersje i śledzenie zestawów danych w eksperymentach
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,7 +146,24 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Śledzenie zestawów danych w eksperymentach
 
-Dla każdego Machine Learning eksperymentu można łatwo śledzić zestawy danych używane jako dane wejściowe za pomocą obiektu `Run` zarejestrowanego modelu.
+Dla każdego Machine Learning eksperymentu można łatwo śledzić zestawy danych używane jako dane wejściowe za pomocą obiektu eksperyment `Run`.
+
+Poniższy kod używa metody [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) do śledzenia, które wejściowe zestawy danych były używane z przebiegiem eksperymentu:
+
+```Python
+# get input datasets
+inputs = run.get_details()['inputDatasets']
+input_dataset = inputs[0]['dataset']
+
+# list the files referenced by input_dataset
+input_dataset.to_path()
+```
+
+`input_datasets` z eksperymentów można również znaleźć przy użyciu [Azure Machine Learning Studio](https://ml.azure.com/). 
+
+Na poniższej ilustracji przedstawiono, gdzie znaleźć zestaw danych wejściowych eksperymentu na Azure Machine Learning Studio. Na potrzeby tego przykładu przejdź do okienka **eksperymenty** i Otwórz kartę **Właściwości** dla określonego uruchomienia eksperymentu, `keras-mnist`.
+
+![Wejściowe zestawy danych](media/how-to-version-datasets/input-datasets.png)
 
 Użyj następującego kodu, aby zarejestrować modele z zestawami danych:
 
@@ -156,26 +173,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po zarejestrowaniu można zobaczyć listę modeli zarejestrowanych w zestawie danych przy użyciu języka Python lub [Azure Machine Learning Studio](https://ml.azure.com/).
-
-Poniższy kod używa metody [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) do śledzenia, które wejściowe zestawy danych były używane z przebiegiem eksperymentu:
-
-```Python
-# get input datasets
-inputs = run.get_details()['inputDatasets']
-train_dataset = inputs[0]['dataset']
-
-# list the files referenced by train_dataset
-train_dataset.to_path()
-```
-
-`input_datasets` z eksperymentów można również znaleźć przy użyciu [Azure Machine Learning Studio](https://ml.azure.com/). 
-
-Na poniższej ilustracji przedstawiono, gdzie znaleźć zestaw danych wejściowych eksperymentu na Azure Machine Learning Studio. Na potrzeby tego przykładu przejdź do okienka **eksperymenty** i Otwórz kartę **Właściwości** dla określonego uruchomienia eksperymentu, `keras-mnist`.
-
-![Wejściowe zestawy danych](media/how-to-version-datasets/input-datasets.png)
-
-Możesz również znaleźć modele, które używały zestawu danych. Poniższy widok pochodzi z okienka **zestawy danych** w obszarze **zasoby**. Wybierz zestaw danych, a następnie wybierz kartę **modele** , aby wyświetlić listę modeli, które korzystają z tego zestawu danych. 
+Po zarejestrowaniu można zobaczyć listę modeli zarejestrowanych w zestawie danych przy użyciu języka Python lub [Azure Machine Learning Studio](https://ml.azure.com/). Poniższy widok pochodzi z okienka **zestawy danych** w obszarze **zasoby**. Wybierz zestaw danych, a następnie wybierz kartę **modele** , aby wyświetlić listę modeli zarejestrowanych z zestawem danych. 
 
 ![Modele wejściowych zestawów danych](media/how-to-version-datasets/dataset-models.png)
 

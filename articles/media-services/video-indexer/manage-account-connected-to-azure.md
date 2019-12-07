@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838984"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892774"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Zarządzanie kontem Video Indexer połączonym z platformą Azure
 
@@ -56,7 +56,7 @@ Strona **Ustawienia** umożliwia ustawienie automatycznego skalowania jednostek 
 
 Skalowanie automatyczne nie jest skalowane poniżej 1 RU ani powyżej domyślnego limitu konta Media Services. Aby zwiększyć limit, należy utworzyć żądanie obsługi. Aby uzyskać informacje na temat przydziałów i ograniczeń oraz sposobu otwierania biletu pomocy technicznej, zobacz [limity przydziału i ograniczenia](../../media-services/previous/media-services-quotas-and-limitations.md).
 
-![Rejestrowanie](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
+![Zarejestruj się](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
 

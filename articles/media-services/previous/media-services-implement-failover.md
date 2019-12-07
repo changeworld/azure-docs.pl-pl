@@ -1,6 +1,6 @@
 ---
-title: Implementowanie trybu failover, przesyłanie strumieniowe przy użyciu usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak zaimplementować przesyłania strumieniowego scenariusza trybu failover.
+title: Implementowanie przesyłania strumieniowego trybu failover za pomocą Azure Media Services | Microsoft Docs
+description: W tym artykule pokazano, jak zaimplementować scenariusz przesyłania strumieniowego trybu failover za pomocą Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,57 +13,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ea5238df50ff050140453ce655ea041669f6080c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 195f7f089b84e1665f4dd078a7da141d531c2185
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051653"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887185"
 ---
-# <a name="implement-failover-streaming-with-media-services"></a>Implementowanie trybu failover przesyłania strumieniowego za pomocą usługi Media Services 
+# <a name="implement-failover-streaming-with-media-services"></a>Implementowanie przesyłania strumieniowego trybu failover za pomocą Media Services 
 
-W tym instruktażu pokazano, jak kopiowanie zawartości (obiektów BLOB) z jednego zasobu do innego w celu obsługi nadmiarowości przesyłania strumieniowego na żądanie. Ten scenariusz jest przydatne, jeśli chcesz skonfigurować usługi Azure Content Delivery Network do trybu failover między dwoma centrami danych, na wypadek awarii w jednym centrum danych. Ten przewodnik korzysta z zestawu SDK usługi Azure Media Services, interfejsu API REST usługi Azure Media Services i zestawu SDK usługi Azure Storage, następujące zadania:
+W tym instruktażu przedstawiono sposób kopiowania zawartości (obiektów BLOB) z jednego zasobu do drugiego w celu obsługi nadmiarowości na potrzeby przesyłania strumieniowego na żądanie. Ten scenariusz jest przydatny, jeśli chcesz skonfigurować usługę Azure Content Delivery Network w celu przełączenia w tryb failover między dwoma centrami danych, w przypadku awarii w jednym centrum danych. W tym instruktażu jest używany zestaw SDK Azure Media Services, interfejs API REST Azure Media Services i zestaw SDK usługi Azure Storage w celu przedstawienia następujących zadań:
 
-1. Skonfiguruj konto usługi Media Services w "A." centrum danych"
-2. Przekaż plik mezzanine do zawartości źródłowej.
-3. Przekoduj element zawartości do wielu bitów szybkość MP4 pliki. 
-4. Tworzenie lokalizatora sygnatury dostępu współdzielonego tylko do odczytu. Jest to zasób źródła, aby mieć dostęp do odczytu do kontenera na koncie magazynu, który jest skojarzony z elementem źródła zawartości.
-5. Pobierz nazwę kontenera trwałego źródła z lokalizatora sygnatury dostępu współdzielonego tylko do odczytu utworzony w poprzednim kroku. Jest to konieczne do kopiowania obiektów blob między kontami magazynu (wyjaśnione w dalszej części tematu).
-6. Utwórz Lokalizator punkt początkowy dla zasobu, który został utworzony przez zadania kodowania. 
+1. Skonfiguruj konto Media Services w "centrum danych A".
+2. Przekaż plik Mezzanine do źródłowego zasobu.
+3. Zakoduj element zawartości w plikach MP4 z szybkością wiele bitów. 
+4. Utwórz lokalizator sygnatury dostępu współdzielonego tylko do odczytu. Jest to dla zasobu źródłowego, aby miał dostęp do odczytu do kontenera na koncie magazynu skojarzonym z zasobem źródłowym.
+5. Pobierz nazwę kontenera zasobu źródłowego z lokalizatora sygnatury dostępu współdzielonego, który został utworzony w poprzednim kroku. Jest to niezbędne do kopiowania obiektów BLOB między kontami magazynu (wyjaśniono w dalszej części tematu).
+6. Utwórz lokalizator pochodzenia dla elementu zawartości, który został utworzony przez zadanie kodowania. 
 
-Następnie, aby obsługiwać tryb failover:
+Następnie, aby obsłużyć tryb failover:
 
-1. Skonfiguruj konto usługi Media Services w "B. centrum danych"
-2. W docelowym kontem usługi Media Services, należy utworzyć pusty zasób docelowy.
-3. Tworzenie lokalizatora sygnatury dostępu do zapisu udostępnione. Jest to pusta zasobu docelowego ma dostęp do zapisu do kontenera na koncie magazynu docelowy, który jest skojarzony z zasobem docelowym.
-4. Użyj zestawu SDK usługi Azure Storage, aby kopiować obiekty BLOB (pliki zasobów) między źródłowego konta magazynu "Centrum danych a" i docelowe konto magazynu w "B. centrum danych" Te konta magazynu są skojarzone z zasobami zainteresowania.
-5. Kojarzenie obiektów blob (pliki zasobów), które zostały skopiowane do docelowym kontenerem obiektów blob z zasobem docelowym. 
-6. Utworzenie lokalizatora punkt początkowy dla zasobu w "B centrum danych" i podaj identyfikator lokalizatora, który został wygenerowany dla zasobu w "A." centrum danych"
+1. Skonfiguruj konto Media Services w "centrum danych B".
+2. Utwórz docelowy pusty element zawartości na docelowym koncie Media Services.
+3. Utwórz lokalizator sygnatury dostępu współdzielonego. Jest to miejsce docelowe pustego elementu zawartości, aby miało dostęp do zapisu w kontenerze na docelowym koncie magazynu skojarzonym z zasobem docelowym.
+4. Użyj zestawu SDK usługi Azure Storage, aby skopiować obiekty blob (pliki zasobów) między źródłowym kontem magazynu w pozycji "centrum danych A" i docelowe konto magazynu w "centrum danych B". Te konta magazynu są skojarzone z interesującymi zasobami.
+5. Skojarz obiekty blob (pliki zasobów), które zostały skopiowane do docelowego kontenera obiektów blob z elementem zawartości docelowej. 
+6. Utwórz lokalizator pochodzenia dla zasobu w "centrum danych B" i określ identyfikator lokalizatora, który został wygenerowany dla zasobu w "centrum danych A".
 
-Dzięki temu adresy URL przesyłania strumieniowego gdzie ścieżek względnych adresów URL są takie same (tylko podstawowy adresy URL różnią się). 
+Zapewnia to adresy URL przesyłania strumieniowego, w przypadku których ścieżki względne adresów URL są takie same (tylko podstawowe adresy URL różnią się). 
 
-Następnie aby obsłużyć jakieś awarie, można utworzyć sieci dostarczania zawartości na podstawie tych lokalizatorów pochodzenia. 
+Następnie, aby obsłużyć wszelkie przerwy, można utworzyć Content Delivery Network na początku tych lokalizatorów. 
 
-Mają zastosowanie następujące kwestie:
+Obowiązują następujące zastrzeżenia:
 
-* Bieżąca wersja zestawu SDK usługi Media Services nie obsługuje programowe generowanie informacji IAssetFile skojarzyć element zawartości z plikami zasobów. Zamiast tego należy użyć interfejsu API REST CreateFileInfos Media Services, aby to zrobić. 
-* Zasoby szyfrowany w magazynie (AssetCreationOptions.StorageEncrypted) są nieobsługiwane dla replikacji (ponieważ klucz szyfrowania jest inny w obu kont usługi Media Services). 
-* Jeśli chcesz móc korzystać z dynamicznego tworzenia pakietów, upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość trwa **systemem** stanu.
+* Bieżąca wersja zestawu SDK Media Services nie obsługuje programistycznego generowania informacji IAssetFile, które spowodują skojarzenie elementu zawartości z plikami zasobów. Zamiast tego należy użyć interfejsu API REST CreateFileInfos Media Services. 
+* Zasoby zaszyfrowane magazynu (AssetCreationOptions. StorageEncrypted) nie są obsługiwane w przypadku replikacji (ponieważ klucz szyfrowania jest inny w przypadku kont Media Services). 
+* Jeśli chcesz korzystać z funkcji dynamicznego tworzenia pakietów, upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz przesyłać strumieniowo zawartość, jest w stanie **uruchomienia** .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Dwa konta usługi Media Services w nowej lub istniejącej subskrypcji platformy Azure. Zobacz [konto usług sposobu tworzenia nośnika](media-services-portal-create-account.md).
+* Dwa konta Media Services w nowej lub istniejącej subskrypcji platformy Azure. Zobacz, [jak utworzyć konto Media Services](media-services-portal-create-account.md).
 * System operacyjny: Windows 7, Windows 2008 R2 lub Windows 8.
-* .NET framework 4.5 lub .NET Framework 4.
-* Visual Studio 2010 z dodatkiem SP1 lub nowszej wersji (Professional, Premium, Ultimate lub Express).
+* .NET Framework 4,5 lub .NET Framework 4.
+* Visual Studio 2010 z dodatkiem SP1 lub nowszą wersją (Professional, Premium, Ultimate lub Express).
 
 ## <a name="set-up-your-project"></a>konfigurowanie projektu
-W tej sekcji utworzysz i skonfigurowanie projektu aplikacji Konsolowej C#.
+W tej sekcji utworzysz i skonfigurujesz projekt aplikacji C# konsolowej.
 
-1. Tworzenie nowego rozwiązania zawierającego projekt aplikacji Konsolowej C# przy użyciu programu Visual Studio. Wprowadź **HandleRedundancyForOnDemandStreaming** nazwę, a następnie kliknij przycisk **OK**.
-2. Tworzenie **SupportFiles** folderu na tym samym poziomie co **HandleRedundancyForOnDemandStreaming.csproj** pliku projektu. W obszarze **SupportFiles** folderze utwórz **OutputFiles** i **MP4Files** folderów. Skopiuj plik MP4 do **MP4Files** folderu. (W tym przykładzie **BigBuckBunny.mp4** plik jest używany.) 
-3. Użyj **Nuget** można dodać odwołania do bibliotek DLL związane z usługą Media Services. W **Menu głównego w usłudze Visual Studio**, wybierz opcję **narzędzia** > **Menedżer pakietów biblioteki** > **Konsola Menedżera pakietów**. W oknie konsoli wpisz **windowsazure.mediaservices Install-Package**, i naciśnij klawisz Enter.
-4. Dodaj inne odwołania, które są wymagane dla tego projektu: System.Configuration System.Runtime.Serialization i System.Web.
-5. Zastąp **przy użyciu** instrukcji, które zostały dodane do **Programs.cs** pliku domyślnie z poniższych:
+1. Użyj programu Visual Studio, aby utworzyć nowe rozwiązanie, które C# zawiera projekt aplikacji konsolowej. Wprowadź **HandleRedundancyForOnDemandStreaming** jako nazwę, a następnie kliknij przycisk **OK**.
+2. Utwórz folder **SupportFiles** na tym samym poziomie co plik projektu **HandleRedundancyForOnDemandStreaming. csproj** . W folderze **SupportFiles** Utwórz foldery **OutputFiles** i **MP4Files** . Skopiuj plik MP4 do folderu **MP4Files** . (W tym przykładzie używany jest plik **BigBuckBunny. mp4** ). 
+3. Użyj narzędzia **NuGet** , aby dodać odwołania do bibliotek DLL związanych z Media Services. W **menu głównym programu Visual Studio**wybierz kolejno pozycje **Narzędzia** > **Biblioteka pakiet biblioteki** > **konsola Menedżera pakietów**. W oknie konsoli wpisz **install-package windowsazure. MediaServices**, a następnie naciśnij klawisz ENTER.
+4. Dodaj inne odwołania, które są wymagane dla tego projektu: System. Configuration, system. Runtime. Serialization i system. Web.
+5. Zastąp instrukcje **using** , które zostały dodane do pliku **Programs.cs** domyślnie przy użyciu następujących elementów:
    
         using System;
         using System.Configuration;
@@ -82,7 +82,7 @@ W tej sekcji utworzysz i skonfigurowanie projektu aplikacji Konsolowej C#.
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. Dodaj **appSettings** sekcji **.config** plików i aktualizacji wartości na podstawie usługi Media Services i magazynu kluczy i nadaj nazwę wartości. 
+6. Dodaj sekcję **AppSettings** do pliku **config** i zaktualizuj wartości na podstawie Media Services i klucza magazynu oraz wartości nazw. 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -95,10 +95,10 @@ W tej sekcji utworzysz i skonfigurowanie projektu aplikacji Konsolowej C#.
           <add key="MediaServicesStorageAccountKeyTarget" value=" Media-Services-Storage-Account-Key-Target" />
         </appSettings>
 
-## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Dodaj kod, który obsługuje nadmiarowość przesyłania strumieniowego na żądanie
-W tej sekcji utworzysz zdolność do obsługi nadmiarowości.
+## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Dodaj kod, który obsługuje nadmiarowość na potrzeby przesyłania strumieniowego na żądanie
+W tej sekcji utworzysz możliwość obsługi nadmiarowości.
 
-1. Dodaj następujące pola poziomie klasy do klasy Program.
+1. Dodaj następujące pola poziomu klasy do klasy program.
        
         // Read values from the App.config file.
         private static readonly string MediaServicesAccountNameSource = ConfigurationManager.AppSettings["MediaServicesAccountNameSource"];
@@ -125,7 +125,7 @@ W tej sekcji utworzysz zdolność do obsługi nadmiarowości.
         static private MediaServicesCredentials _cachedCredentialsSource = null;
         static private MediaServicesCredentials _cachedCredentialsTarget = null;
 
-2. Zastąp definicję metody Main domyślne poniższego. Definicje metod, które są wywoływane z głównym są zdefiniowane poniżej.
+2. Zastąp domyślną definicję metody głównej następującym. Definicje metod, które są wywoływane z poziomu głównego, są zdefiniowane poniżej.
         
         static void Main(string[] args)
         {
@@ -203,10 +203,10 @@ W tej sekcji utworzysz zdolność do obsługi nadmiarowości.
                 writeSasLocator.Delete();
         }
 
-3. Następujące definicje metody są wywoływane z Main.
+3. Następujące definicje metod są wywoływane z metody Main.
 
     >[!NOTE]
-    >Obowiązuje limit 1 000 000 zasad dla różnych zasad usługi Media Services (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego Identyfikatora zasad, jeśli zawsze używasz tych samych dni i uprawnień dostępu. Na przykład użyć tego samego Identyfikatora zasady dla lokalizatorów, które powinny pozostać w miejscu przez długi czas (nieprzekazywane zasady). Aby uzyskać więcej informacji, zobacz [w tym temacie](media-services-dotnet-manage-entities.md#limit-access-policies).
+    >Istnieje limit 1 000 000 zasad dla różnych zasad Media Services (na przykład w przypadku zasad lokalizatora lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze używasz tych samych dni i uprawnień dostępu. Na przykład użyj tego samego identyfikatora dla zasad dla lokalizatorów, które mają być nadal wykonywane przez długi czas (zasady bez przekazywania). Aby uzyskać więcej informacji, zobacz [ten temat](media-services-dotnet-manage-entities.md#limit-access-policies).
 
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
@@ -930,12 +930,12 @@ W tej sekcji utworzysz zdolność do obsługi nadmiarowości.
             return request;
         }
 
-## <a name="next-steps"></a>Kolejne kroki
-Usługi traffic manager umożliwia teraz kierować żądania między dwoma centrami danych, a zatem w trybie Failover w przypadku jakieś awarie.
+## <a name="next-steps"></a>Następne kroki
+Za pomocą Menedżera ruchu można teraz kierować żądania między dwoma centrami danych, a tym samym przechodzić w tryb failover w przypadku awarii.
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

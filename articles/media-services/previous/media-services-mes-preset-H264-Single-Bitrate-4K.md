@@ -1,6 +1,6 @@
 ---
-title: Usługi Media Encoder Standard ustawienie wstępne pojedynczego szybkość transmisji bitów H264 4K — Azure | Dokumentacja firmy Microsoft
-description: Temat zawiera omówienie **pojedynczego szybkość transmisji bitów H264 4K** ustawienie wstępne zadania.
+title: Wielokrotna H264 pojedynczej szybkości transmisji bitów 4K Media Encoder Standard wstępnej platformy Azure | Microsoft Docs
+description: Ten artykuł zawiera Media Encoder Standard Omówienie wstępnie zdefiniowanego zadania "wielokrotna H264 pojedynczej szybkości transmisji bitów 4".
 author: Juliako
 manager: femila
 editor: ''
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: f2a7bcfe39f3896c63993e0ad93309dcc510153e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1ba173f97353a5ffdd4a9b58f99f6f817f963ff
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129503"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895892"
 ---
 # <a name="h264-single-bitrate-4k"></a>Pojedyncza szybkość transmisji bitów H264 4K
-`Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` definiuje zestaw ustawień predefiniowanych kodowania, których można użyć podczas tworzenia zadań kodowania. Możesz użyć `preset name`, aby określić format, w którym chcesz kodować plik multimedialny. Można też tworzyć własne ustawienia predefiniowane JSON lub XML (przy użyciu kodowania UTF-8 lub UTF-16. Następnie można przekazać niestandardowe ustawienie wstępne do kodera. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez ten koder `Media Encoder Standard`, zobacz [Ustawienia wstępne zadań dla Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- W tym temacie przedstawiono `H264 Single Bitrate 4K` wstępnie ustawione w formacie XML i JSON.  
+ W tym temacie przedstawiono `H264 Single Bitrate 4K` ustawienia wstępne w formacie XML i JSON.  
   
- Ten plik wstępnie tworzy pojedynczy MP4 z 18000 KB/s i stereo AAC audio szybkość transmisji bitów. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów, próbkowanie wskaźnik, itp., to ustawień, sprawdź zdefiniowane poniżej w formacie JSON lub XML. Objaśnienia każdego elementu w tych oznacza, że ustawienia i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md) tematu.  
+ To ustawienie wstępne tworzy pojedynczy plik MP4 z szybkością transmisji bitów 18000 KB/s oraz stereo AAC audio. Aby uzyskać szczegółowe informacje na temat profilu, szybkości transmisji bitów, częstotliwości próbkowania itp., zapoznaj się z kodem XML lub JSON zdefiniowanym poniżej. Aby dowiedzieć się, co oznacza każdy element w tych ustawieniach wstępnych, i prawidłowe wartości dla każdego elementu, zobacz temat [schemat Media Encoder Standard](media-services-mes-schema.md) .  
   
 > [!NOTE]
->  Należy pobrać jednostki zarezerwowanej Premium koduje typu z 4K. Aby uzyskać więcej informacji, zobacz [jak kodowanie skalowania](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+>  Należy uzyskać typ jednostki zarezerwowanej Premium z kodowaniem 4K. Aby uzyskać więcej informacji, zobacz [Jak skalować kodowanie](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
   
  XML  
   

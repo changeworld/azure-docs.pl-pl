@@ -1,5 +1,5 @@
 ---
-title: Testowanie opóźnień sieci Virtual Machines platformy Azure w usłudze Azure Virtual Network | Microsoft Docs
+title: Testowanie opóźnienia sieci maszyn wirtualnych platformy Azure w sieci wirtualnej platformy Azure | Microsoft Docs
 description: Dowiedz się, jak testować opóźnienie sieci między maszynami wirtualnymi platformy Azure w sieci wirtualnej
 services: virtual-network
 documentationcenter: na
@@ -14,118 +14,123 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 760a181b4459db28d3a6eee5022cc0f984c4bee0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588280"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896357"
 ---
-# <a name="testing-network-latency"></a>Testowanie opóźnienia sieci
+# <a name="test-vm-network-latency"></a>Testowanie opóźnienia sieci maszyn wirtualnych
 
-Mierzenie opóźnień sieci za pomocą narzędzia, które jest przeznaczone do zadania, zapewni najdokładniejsze wyniki. Dostępne publicznie narzędzia, takie jak SockPerf (for Linux) i latte (dla systemu Windows), to przykłady narzędzi, które mogą odizolować i zmierzyć opóźnienia sieci przy jednoczesnym wykorzystaniu innych typów opóźnień, takich jak opóźnienie aplikacji. Te narzędzia koncentrują się na rodzaju ruchu sieciowego, który ma wpływ na wydajność aplikacji, czyli protokoły TCP i UDP. Inne popularne narzędzia do łączności, takie jak polecenie ping, mogą czasami służyć do mierzenia opóźnień, ale te wyniki mogą nie być reprezentatywne dla ruchu sieciowego używanego w rzeczywistych obciążeniach. Wynika to z tego, że większość z tych narzędzi korzysta z protokołu ICMP, który może być traktowany inaczej niż ruch aplikacji, a wyniki mogą nie być stosowane do obciążeń, które korzystają z protokołów TCP i UDP. Aby uzyskać dokładne testy opóźnienia sieci w protokołach używanych przez większość aplikacji, SockPerf (dla systemów Linux) i latte (dla systemu Windows) generują najbardziej odpowiednie wyniki. Ten dokument obejmuje oba te narzędzia.
+Aby uzyskać najbardziej dokładne wyniki, Zmierz opóźnienie sieci maszyn wirtualnych platformy Azure za pomocą narzędzia zaprojektowanego dla tego zadania. Publicznie dostępne narzędzia, takie jak SockPerf (for Linux) i latte. exe (dla systemu Windows) mogą izolować i mierzyć opóźnienia sieci przy jednoczesnym wykluczaniu innych typów opóźnienia, takich jak opóźnienie aplikacji. Te narzędzia koncentrują się na rodzaju ruchu sieciowego, który ma wpływ na wydajność aplikacji (czyli Transmission Control Protocol [TCP] i ruch protokołu UDP]). 
 
-## <a name="overview"></a>Omówienie
+Inne popularne narzędzia do łączności, takie jak polecenie ping, mogą mierzyć opóźnienia, ale ich wyniki mogą nie reprezentować ruchu sieciowego używanego w rzeczywistych obciążeniach. Wynika to z tego, że większość z tych narzędzi korzysta z protokołu ICMP (Internet Control Message Protocol), który może być traktowany inaczej niż ruch aplikacji i którego wyniki mogą nie dotyczyć obciążeń, które korzystają z protokołów TCP i UDP. 
 
-Korzystając z dwóch maszyn wirtualnych, jednego jako nadawcy i jednego jako odbiorcy, tworzony jest dwukierunkowy kanał komunikacyjny służący do wysyłania i odbierania pakietów w obu kierunkach, aby mierzyć czas błądzenia (RTT).
+Aby uzyskać dokładne testy opóźnienia w sieci protokołów używanych przez większość aplikacji, SockPerf (dla systemu Linux) i latte. exe (w systemie Windows) generują najbardziej odpowiednie wyniki. W tym artykule omówiono oba te narzędzia.
 
-Te kroki mogą służyć do mierzenia opóźnień sieci między dwoma Virtual Machines (maszynami wirtualnymi) lub nawet między dwoma komputerami fizycznymi. Pomiary opóźnień mogą być przydatne w następujących scenariuszach:
+## <a name="overview"></a>Przegląd
 
-- Ustanów wzorzec dla opóźnień sieci między wdrożonymi maszynami wirtualnymi
+Korzystając z dwóch maszyn wirtualnych, jednego jako nadawcy i jednego jako odbiorcy, utworzysz kanał komunikacji dwukierunkowej. Korzystając z tej metody, można wysyłać i odbierać pakiety w obu kierunkach i mierzyć czas błądzenia (RTT).
+
+Takie podejście służy do mierzenia opóźnień sieci między dwiema maszynami wirtualnymi lub nawet między dwoma komputerami fizycznymi. Pomiary opóźnień mogą być przydatne w następujących scenariuszach:
+
+- Ustanów wzorzec dla opóźnień sieci między wdrożonymi maszynami wirtualnymi.
 - Porównaj skutki zmian opóźnienia sieci po wprowadzeniu związanych z nimi zmian:
-  - Oprogramowanie systemu operacyjnego lub stosu sieciowego, w tym zmiany konfiguracji
-  - Metoda wdrożenia maszyny wirtualnej, na przykład wdrożenie do strefy lub PPG
-  - Właściwości maszyny wirtualnej, takie jak przyspieszona zmiana sieci lub rozmiar
-  - Sieć wirtualna, taka jak Routing lub zmiany filtrowania
+  - System operacyjny (OS) lub oprogramowanie stosu sieciowego, w tym zmiany konfiguracji.
+  - Metoda wdrożenia maszyny wirtualnej, na przykład wdrożenie do strefy dostępności lub grupy położenia zbliżeniowe (PPG).
+  - Właściwości maszyny wirtualnej, takie jak przyspieszona zmiana sieci lub rozmiar.
+  - Sieć wirtualna, taka jak Routing lub zmiany filtrowania.
 
 ### <a name="tools-for-testing"></a>Narzędzia do testowania
-Aby mierzyć opóźnienia, mamy dwie różne opcje, jeden dla systemów z systemem Windows i jeden dla systemów z systemem Linux
+Aby mierzyć opóźnienia, dostępne są dwa różne opcje narzędzi:
 
-Dla systemu Windows: latte. exe (Windows) [https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* W przypadku systemów z systemem Windows: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* W przypadku systemów z systemem Linux: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
-Dla systemu Linux: SockPerf (Linux) [https://github.com/mellanox/sockperf](https://github.com/mellanox/sockperf)
+Za pomocą tych narzędzi można zagwarantować, że tylko czasy dostarczania protokołu TCP lub UDP są mierzone, a nie protokołu ICMP (ping) lub innych typów pakietów, które nie są używane przez aplikacje, i nie wpływają na ich wydajność.
 
-Korzystanie z tych narzędzi gwarantuje, że tylko czasy dostarczania protokołu TCP lub UDP są mierzone, a nie protokołu ICMP (ping) lub innych typów pakietów, które nie są używane przez aplikacje i nie wpływają na ich wydajność.
+### <a name="tips-for-creating-an-optimal-vm-configuration"></a>Porady dotyczące tworzenia optymalnej konfiguracji maszyny wirtualnej
 
-### <a name="tips-for-an-optimal-vm-configuration"></a>Wskazówki dotyczące optymalnej konfiguracji maszyny wirtualnej:
-
-- Korzystanie z najnowszej wersji systemu Windows lub Linux
-- Włączanie przyspieszonej sieci pod kątem najlepszych wyników
-- Wdrażanie maszyn wirtualnych przy użyciu [grupy umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)
-- Większe maszyny wirtualne zwykle działają lepiej niż w przypadku mniejszych maszyn wirtualnych
+Podczas tworzenia konfiguracji maszyny wirtualnej należy wziąć pod uwagę następujące zalecenia:
+- Użyj najnowszej wersji systemu Windows lub Linux.
+- Włącz przyspieszoną sieć w celu uzyskania najlepszych wyników.
+- Wdróż maszyny wirtualne przy użyciu [grupy umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+- Większe maszyny wirtualne zwykle działają lepiej niż w przypadku mniejszych maszyn wirtualnych.
 
 ### <a name="tips-for-analysis"></a>Wskazówki dotyczące analizy
 
-- Wczesne ustanawianie planu bazowego, gdy tylko wdrożenie, konfiguracja i optymalizacje zostaną zakończone
-- Zawsze porównuj nowe wyniki do linii bazowej lub w inny sposób z jednego testu do innego ze zmianami kontrolowanymi
-- Powtarzaj testy po każdym zaobserwowaniu lub zaplanowaniu zmian
+Analizując wyniki testów, należy wziąć pod uwagę następujące zalecenia:
+
+- Wczesne ustanawianie planu bazowego, gdy tylko wdrożenie, konfiguracja i optymalizacje zostaną ukończone.
+- Zawsze porównuj nowe wyniki do linii bazowej lub, w przeciwnym razie, z jednego testu do innego ze kontrolowanymi zmianami.
+- Powtarzaj testy po każdym zaobserwowaniu lub zaplanowaniu zmian.
 
 
-## <a name="testing-vms-running-windows"></a>Testowanie maszyn wirtualnych z systemem Windows
+## <a name="test-vms-that-are-running-windows"></a>Testowanie maszyn wirtualnych z systemem Windows
 
-## <a name="get-latteexe-onto-the-vms"></a>Pobierz latte. exe na maszynach wirtualnych
+### <a name="get-latteexe-onto-the-vms"></a>Pobierz latte. exe na maszynach wirtualnych
 
-Pobierz najnowszą wersję: [https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+Pobierz [najnowszą wersję programu latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
 
-Rozważ umieszczenie pliku latte. exe w osobnym folderze, na przykład c:\Tools
+Rozważ umieszczenie pliku latte. exe w osobnym folderze, takim jak *c:\Tools*.
 
-## <a name="allow-latteexe-through-the-windows-firewall"></a>Zezwalaj programowi latte. exe za pomocą zapory systemu Windows
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>Zezwalaj programowi latte. exe za poorednictwem zapory Windows Defender
 
-Na ODBIORNIKu Utwórz regułę zezwalania w zaporze systemu Windows, aby zezwolić na odbieranie ruchu latte. exe. Najłatwiej zezwolić na cały program latte. exe, zamiast zezwalać na ruch przychodzący określonych portów TCP.
+Na *odbiorniku*Utwórz regułę zezwalania w zaporze Windows Defender, aby zezwolić na odbieranie ruchu latte. exe. Najłatwiej zezwolić na cały program latte. exe, zamiast zezwalać na ruch przychodzący określonych portów TCP.
 
-Zezwalaj na latte. exe za pomocą zapory systemu Windows w następujący sposób:
-
-netsh advfirewall firewall add Rule program =\<PATH\>\\latte. exe Name =&quot;latte&quot; Protocol = any dir = in Action = Allow Enable = Yes profil = ANY
-
-
-Jeśli na przykład skopiowano plik latte. exe do folderu &quot;c:\\Tools&quot;, będzie to polecenie:
+Zezwól programowi latte. exe za pomocą zapory Windows Defender, uruchamiając następujące polecenie:
 
 ```cmd
-netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-## <a name="running-latency-tests"></a>Uruchamianie testów opóźnienia
+Jeśli na przykład skopiowano plik latte. exe do folderu *c:\Tools* , będzie to polecenie:
 
-Uruchom program latte. exe w ODBIORNIKu (Uruchom z polecenia CMD, a nie z programu PowerShell):
+`netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-latte —&gt;adres IP odbiornika &lt;:&lt;&gt; &lt;&gt;
+### <a name="run-latency-tests"></a>Testy opóźnienia uruchamiania
 
-Wszystkie iteracje 65 000 dla są wystarczająco długie, aby zwracały reprezentatywne wyniki.
+* Na *odbiorniku*Uruchom program latte. exe (Uruchom go z okna cmd, a nie z programu PowerShell):
 
-Wszystkie dostępne numery portów są dokładne.
+    ```cmd
+    latte -a <Receiver IP address>:<port> -i <iterations>
+    ```
 
-Jeśli maszyna wirtualna ma adres IP 10.0.0.4, będzie wyglądać następująco:
+    Około 65 000 iteracji jest wystarczająco dużo, aby zwracały reprezentatywne wyniki.
 
-```cmd
-latte -a 10.0.0.4:5005 -i 65100
-```
+    Wszystkie dostępne numery portów są dokładne.
 
-Uruchom program latte. exe na NADAWCy (Uruchom polecenie z polecenia CMD, a nie z programu PowerShell):
+    Jeśli maszyna wirtualna ma adres IP 10.0.0.4, polecenie będzie wyglądać następująco:
 
-latte-c \<-\>adres IP odbiornika:\<\> \<\>
+    `latte -a 10.0.0.4:5005 -i 65100`
 
+* Na stronie *nadawcy*Uruchom program latte. exe (Uruchom go z okna cmd, a nie z programu PowerShell):
 
-Wyniki polecenia są takie same jak w odniesieniu do odbiornika, z wyjątkiem dodania &quot;-c&quot;, aby wskazać, że jest to &quot;&quot; klienta lub nadawcy:
+    ```cmd
+    latte -c -a <Receiver IP address>:<port> -i <iterations>
+    ```
 
-```cmd
-latte -c -a 10.0.0.4:5005 -i 65100
-```
+    Wyniki polecenia są takie same jak w odbiorniku, z tą różnicą, że dodanie&nbsp; *-c* wskazuje, że jest to *Klient*, lub *nadawca*:
 
-Poczekaj na wyniki. W zależności od tego, jak daleko są maszyny wirtualne, może to potrwać kilka minut. Rozważ rozpoczęcie od mniejszej liczby iteracji do przetestowania pod kątem sukcesu przed uruchomieniem dłuższych testów.
+    `latte -c -a 10.0.0.4:5005 -i 65100`
 
+Poczekaj na wyniki. W zależności od tego, jak daleko są maszyny wirtualne, test może potrwać kilka minut. Rozważ rozpoczęcie od mniejszej liczby iteracji do przetestowania pod kątem sukcesu przed uruchomieniem dłuższych testów.
 
+## <a name="test-vms-that-are-running-linux"></a>Testowanie maszyn wirtualnych z systemem Linux
 
-## <a name="testing-vms-running-linux"></a>Testowanie maszyn wirtualnych z systemem Linux
-
-Użyj SockPerf. Jest ona dostępna z [https://github.com/mellanox/sockperf](https://github.com/mellanox/sockperf)
+Aby przetestować maszyny wirtualne z systemem Linux, użyj [SockPerf](https://github.com/mellanox/sockperf).
 
 ### <a name="install-sockperf-on-the-vms"></a>Instalowanie SockPerf na maszynach wirtualnych
 
-Na maszynach wirtualnych z systemem Linux (NADAWCy i odbiornik) Uruchom następujące polecenia, aby przygotować SockPerf na maszynach wirtualnych. Polecenia są dostępne dla głównych dystrybucje.
+Na maszynach wirtualnych systemu Linux, *nadawcy* i *odbiorniku*Uruchom następujące polecenia, aby przygotować SockPerf na maszynach wirtualnych. Polecenia są dostępne dla głównych dystrybucje.
 
-#### <a name="for-rhel--centos-follow-these-steps"></a>W przypadku RHEL/CentOS wykonaj następujące kroki:
+#### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Dla Red Hat Enterprise Linux (RHEL)/CentOS
+
+Uruchom następujące polecenia:
+
 ```bash
-#CentOS / RHEL - Install GIT and other helpful tools
+#RHEL/CentOS - Install Git and other helpful tools
     sudo yum install gcc -y -q
     sudo yum install git -y -q
     sudo yum install gcc-c++ -y
@@ -134,9 +139,12 @@ Na maszynach wirtualnych z systemem Linux (NADAWCy i odbiornik) Uruchom następu
     sudo yum install -y autoconf
 ```
 
-#### <a name="for-ubuntu-follow-these-steps"></a>W przypadku Ubuntu wykonaj następujące kroki:
+#### <a name="for-ubuntu"></a>Dla Ubuntu
+
+Uruchom następujące polecenia:
+
 ```bash
-#Ubuntu - Install GIT and other helpful tools
+#Ubuntu - Install Git and other helpful tools
     sudo apt-get install build-essential -y
     sudo apt-get install git -y -q
     sudo apt-get install -y autotools-dev
@@ -144,11 +152,14 @@ Na maszynach wirtualnych z systemem Linux (NADAWCy i odbiornik) Uruchom następu
     sudo apt-get install -y autoconf
 ```
 
-#### <a name="for-all-distros-copy-compile-and-install-sockperf-according-to-the-following-steps"></a>Dla wszystkich dystrybucje, skopiuj, Kompiluj i zainstaluj SockPerf, zgodnie z poniższymi krokami:
+#### <a name="for-all-distros"></a>Dla wszystkich dystrybucje
+
+Skopiuj, Kompiluj i zainstaluj SockPerf zgodnie z poniższymi krokami:
+
 ```bash
 #Bash - all distros
 
-#From bash command line (assumes git is installed)
+#From bash command line (assumes Git is installed)
 git clone https://github.com/mellanox/sockperf
 cd sockperf/
 ./autogen.sh
@@ -165,28 +176,31 @@ sudo make install
 
 Po zakończeniu instalacji SockPerf maszyny wirtualne są gotowe do uruchomienia testów opóźnienia. 
 
-Najpierw Zacznij SockPerf na ODBIORNIKu.
+Najpierw Zacznij SockPerf na *odbiorniku*.
 
 Wszystkie dostępne numery portów są dokładne. W tym przykładzie używamy portu 12345:
+
 ```bash
 #Server/Receiver - assumes server's IP is 10.0.0.4:
 sudo sockperf sr --tcp -i 10.0.0.4 -p 12345
 ```
-Teraz, gdy serwer nasłuchuje, klient może rozpocząć wysyłanie pakietów do serwera na porcie, na którym nasłuchuje, 12345 w tym przypadku.
 
-Około 100 sekund jest wystarczająco długi, aby zwracał reprezentatywne wyniki, jak pokazano w następującym przykładzie:
+Teraz, gdy serwer nasłuchuje, klient może rozpocząć wysyłanie pakietów do serwera na porcie, na którym nasłuchuje (w tym przypadku 12345).
+
+Około 100 sekund jest wystarczająca do zwrócenia reprezentatywnych wyników, jak pokazano w następującym przykładzie:
+
 ```bash
 #Client/Sender - assumes server's IP is 10.0.0.4:
 sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 ```
 
-Poczekaj na wyniki. W zależności od tego, jak daleko są maszyny wirtualne, liczba iteracji będzie się różnić. Rozważ rozpoczęcie krótszych testów wynoszących około 5 sekund, aby przeprowadzić testy pod kątem sukcesu przed uruchomieniem dłuższych testów.
+Poczekaj na wyniki. W zależności od tego, jak daleko są maszyny wirtualne, liczba iteracji będzie się różnić. Aby przetestować się pod kątem sukcesu przed uruchomieniem dłuższych testów, należy rozważyć rozpoczęcie krótszych testów wynoszących około 5 sekund.
 
-Ten SockPerf przykład używa rozmiaru komunikatu 350 bajtowego, ponieważ jest to typowy pakiet o średnim rozmiarze. Rozmiar komunikatu można zwiększyć lub zmniejszyć, aby osiągnąć wyniki, które bardziej precyzyjnie reprezentują obciążenie, które będzie działać na maszynach wirtualnych.
+Ten SockPerf przykład używa rozmiaru komunikatu 350-bajtowego, który jest typowy dla średniego pakietu. Można dostosować rozmiar większy lub niższy, aby osiągnąć wyniki, które bardziej precyzyjnie reprezentują obciążenie uruchomione na maszynach wirtualnych.
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Poprawianie opóźnień przy użyciu [grupy rozmieszczenia usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)
-* Dowiedz się więcej na temat [optymalizowania sieci maszyn wirtualnych](../virtual-network/virtual-network-optimize-network-bandwidth.md) w danym scenariuszu.
-* Przeczytaj o sposobie [przydzielenia przepustowości do maszyn wirtualnych](../virtual-network/virtual-machine-network-throughput.md)
-* Dowiedz się więcej na temat [usługi Azure Virtual Network często zadawanych pytań](../virtual-network/virtual-networks-faq.md)
+* Zwiększ opóźnienie przy użyciu [grupy rozmieszczenia usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+* Dowiedz się, jak [zoptymalizować sieci dla maszyn wirtualnych](../virtual-network/virtual-network-optimize-network-bandwidth.md) w danym scenariuszu.
+* Przeczytaj o tym [, jak przepustowość jest przypisana do maszyn wirtualnych](../virtual-network/virtual-machine-network-throughput.md).
+* Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące usługi Azure Virtual Network](../virtual-network/virtual-networks-faq.md).

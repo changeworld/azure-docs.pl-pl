@@ -1,6 +1,6 @@
 ---
 title: Omówienie interfejsu API REST Media Services operacji | Microsoft Docs
-description: Omówienie interfejsu API REST Media Services
+description: Interfejs API "Media Services Operations REST" służy do tworzenia zadań, zasobów, kanałów na żywo i innych zasobów na koncie Media Services. Ten artykuł zawiera omówienie interfejsu API REST Azure Media Services V2.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014843"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895810"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services Operations 
 
 > [!NOTE]
 > Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
-Interfejs API **REST usługi Media Services Operations** jest używany do tworzenia zadań, zasobów, kanałów na żywo i innych zasobów na koncie Media Services. Aby uzyskać więcej informacji, zobacz [Media Services Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)usługi Operations.
+Interfejs API **REST usługi Media Services Operations** jest używany do tworzenia zadań, zasobów, kanałów na żywo i innych zasobów na koncie Media Services. Aby uzyskać więcej informacji, zobacz [Media Services Dokumentacja interfejsu API REST usługi Operations](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
 
 Media Services udostępnia interfejs API REST, który akceptuje zarówno format XML JSON, jak i Atom + pub. Interfejs API REST Media Services wymaga określonych nagłówków HTTP, które każdy klient musi wysłać podczas nawiązywania połączenia z Media Services, jak również zestawu opcjonalnych nagłówków. W poniższych sekcjach opisano nagłówki i zlecenia HTTP, których można użyć podczas tworzenia żądań i odbierania odpowiedzi z Media Services.
 
@@ -37,8 +37,8 @@ Uwierzytelnianie w interfejsie API REST Media Services odbywa się przy użyciu 
 
 W przypadku korzystania z usługi REST obowiązują następujące zagadnienia.
 
-* Podczas wykonywania zapytania o jednostki istnieje limit 1000 jednostek, które są zwracane w tym samym czasie, ponieważ Public REST v2 ogranicza wyniki zapytania do 1000 wyników. Należy użyć funkcji **Skip** i **Take** (.NET)/ **Top** (REST) zgodnie z opisem w [tym przykładzie platformy .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) i przykładowym [interfejsem API REST](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
-* W przypadku używania kodu JSON i określania, aby użyć słowa kluczowego **__metadata** w żądaniu (na przykład w celu odwoływania się do obiektu połączonego), należy ustawić format **Zaakceptuj** nagłówek akceptowania [JSON](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (zobacz Poniższy przykład). Usługa OData nie rozpoznaje właściwości **__metadata** w żądaniu, chyba że ustawisz ją jako verbose.  
+* Podczas wykonywania zapytania o jednostki istnieje limit 1000 jednostek, które są zwracane w tym samym czasie, ponieważ Public REST v2 ogranicza wyniki zapytania do 1000 wyników. Należy użyć funkcji **Skip** i **Take** (.NET)/ **Top** (REST) zgodnie z opisem w [tym przykładzie platformy .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) i [przykładowym interfejsem API REST](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
+* W przypadku używania kodu JSON i określania, aby użyć słowa kluczowego **__metadata** w żądaniu (na przykład w celu odwoływania się do obiektu połączonego), należy ustawić format **Zaakceptuj nagłówek akceptowania** [JSON](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (zobacz Poniższy przykład). Usługa OData nie rozpoznaje właściwości **__metadata** w żądaniu, chyba że ustawisz ją jako pełne.  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose
@@ -58,9 +58,9 @@ W przypadku korzystania z usługi REST obowiązują następujące zagadnienia.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardowe nagłówki żądań HTTP obsługiwane przez Media Services
 Dla każdego wywołania, które wprowadzasz do Media Services, istnieje zestaw wymaganych nagłówków, które należy uwzględnić w żądaniu, a także zestaw opcjonalnych nagłówków, które warto uwzględnić. W poniższej tabeli wymieniono wymagane nagłówki:
 
-| nagłówek | Type | Value |
+| Nagłówek | Typ | Wartość |
 | --- | --- | --- |
-| Authorization |Elementu nośnego |Posiadacz jest jedynym zaakceptowanym mechanizmem autoryzacji. Wartość musi również zawierać token dostępu dostarczony przez Azure Active Directory. |
+| Autoryzacja |Bearer |Posiadacz jest jedynym zaakceptowanym mechanizmem autoryzacji. Wartość musi również zawierać token dostępu dostarczony przez Azure Active Directory. |
 | x-MS-Version |Decimal |2,17 (lub Najnowsza wersja)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -72,25 +72,25 @@ Dla każdego wywołania, które wprowadzasz do Media Services, istnieje zestaw w
 
 Poniżej znajduje się zestaw opcjonalnych nagłówków:
 
-| nagłówek | Type | Value |
+| Nagłówek | Typ | Wartość |
 | --- | --- | --- |
-| Date |Data 1123 |Sygnatura czasowa żądania |
+| Data |Data 1123 |Sygnatura czasowa żądania |
 | Zaakceptuj |Typ zawartości |Żądany typ zawartości dla odpowiedzi, na przykład następujące:<p> -application/json;odata=verbose<p> -Application/Atom + XML<p> Odpowiedzi mogą mieć inny typ zawartości, taki jak pobieranie obiektów blob, gdzie pomyślnie odpowiedź zawiera strumień obiektów BLOB jako ładunek. |
-| Akceptuj — kodowanie |Gzip, Wklęśnięcie |Kodowanie GZIP i WKLĘŚNIĘCIE, jeśli ma zastosowanie. Uwaga: W przypadku dużych zasobów Media Services może zignorować ten nagłówek i zwrócić nieskompresowane dane. |
+| Accept-Encoding |Gzip, Wklęśnięcie |Kodowanie GZIP i WKLĘŚNIĘCIE, jeśli ma zastosowanie. Uwaga: w przypadku dużych zasobów Media Services może zignorować ten nagłówek i zwrócić nieskompresowane dane. |
 | Zaakceptuj — język |"pl", "es" i tak dalej. |Określa preferowany język odpowiedzi. |
 | Accept-Charset |Typ charset, taki jak "UTF-8" |Wartość domyślna to UTF-8. |
 | X-HTTP-Metoda |Metoda HTTP |Zezwala klientom lub zaporom, które nie obsługują metod HTTP, takich jak PUT lub DELETE, do korzystania z tych metod, tunelowanie za pośrednictwem wywołania GET. |
 | Content-Type |Typ zawartości |Typ zawartości treści żądania w żądaniu PUT lub POST. |
-| Identyfikator żądania klienta |String |Wartość zdefiniowana przez obiekt wywołujący, która identyfikuje określone żądanie. Jeśli jest określony, ta wartość zostanie uwzględniona w komunikacie odpowiedzi jako sposób mapowania żądania. <p><p>**Ważne**<p>Wartości powinny być ograniczone w 2096b (2K). |
+| Identyfikator żądania klienta |Ciąg |Wartość zdefiniowana przez obiekt wywołujący, która identyfikuje określone żądanie. Jeśli jest określony, ta wartość zostanie uwzględniona w komunikacie odpowiedzi jako sposób mapowania żądania. <p><p>**Ważne**<p>Wartości powinny być ograniczone w 2096b (2K). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardowe nagłówki odpowiedzi HTTP obsługiwane przez Media Services
 Poniżej znajduje się zestaw nagłówków, które mogą zostać zwrócone do użytkownika w zależności od zasobu, którego dotyczy żądanie, oraz akcji, która ma zostać wykonana.
 
-| nagłówek | Type | Value |
+| Nagłówek | Typ | Wartość |
 | --- | --- | --- |
-| Identyfikator żądania |String |Unikatowy identyfikator bieżącej operacji i wygenerowanej usługi. |
-| Identyfikator żądania klienta |String |Identyfikator określony przez obiekt wywołujący w oryginalnym żądaniu, jeśli jest obecny. |
-| Date |Data 1123 |Data/godzina przetworzenia żądania. |
+| Identyfikator żądania |Ciąg |Unikatowy identyfikator bieżącej operacji i wygenerowanej usługi. |
+| Identyfikator żądania klienta |Ciąg |Identyfikator określony przez obiekt wywołujący w oryginalnym żądaniu, jeśli jest obecny. |
+| Data |Data 1123 |Data/godzina przetworzenia żądania. |
 | Content-Type |Różna |Typ zawartości treści odpowiedzi. |
 | Content-Encoding |Różna |Odpowiednio, gzip lub Wklęśnięcie. |
 
@@ -126,6 +126,6 @@ Aby dowiedzieć się, jak używać uwierzytelniania usługi Azure AD za pomocą 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

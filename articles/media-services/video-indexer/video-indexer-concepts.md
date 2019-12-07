@@ -1,7 +1,7 @@
 ---
 title: Koncepcje Video Indexer
 titleSuffix: Azure Media Services
-description: W tym temacie opisano niektóre koncepcje usługi Video Indexer.
+description: W tym artykule opisano niektóre koncepcje Azure Media Services usługi Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 73dad1db4f44134f871c9f3d6e7edcdd3bd1e2ea
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839582"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900673"
 ---
 # <a name="video-indexer-concepts"></a>Koncepcje Video Indexer
  
@@ -29,7 +29,7 @@ Podsumowanie szczegółowych informacji zawiera Zagregowany widok danych: twarze
 
 TimeRange to zakres czasu w oryginalnym wideo. AdjustedTimeRange jest zakresem czasu odnoszącym się do bieżącej listy odtwarzania. Ze względu na to, że możesz utworzyć listę odtwarzania z różnych wierszy z różnych filmów wideo, możesz użyć 1-godzinnego wideo i z niego korzystać tylko 1 wiersz, na przykład 10:00-10:15. W takim przypadku będziesz mieć listę odtwarzania z 1 wierszem, gdzie zakres czasu to 10:00-10:15, ale adjustedTimeRange to 00:00-00:15.
  
-## <a name="blocks"></a>propagowan
+## <a name="blocks"></a>Bloki
 
 Bloki mają ułatwić przechodzenie przez dane. Blok może zostać wyodrębniony na przykład na podstawie zmiany osoby mówiącej lub wystąpienia długiej przerwy.
 
@@ -37,6 +37,6 @@ Bloki mają ułatwić przechodzenie przez dane. Blok może zostać wyodrębniony
 
 Aby uzyskać informacje na temat rozpoczynania pracy, zobacz [jak utworzyć konto i przekazać swoje pierwsze wideo](video-indexer-get-started.md).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 [Omówienie usługi Video Indexer](video-indexer-overview.md)

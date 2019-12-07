@@ -1,5 +1,5 @@
 ---
-title: Tworzenie obszaru roboczego Azure Databricks w Virtual Network
+title: Utwórz obszar roboczy Azure Databricks we własnym Virtual Network Szybki Start
 description: W tym artykule opisano sposób wdrażania Azure Databricks w sieci wirtualnej.
 services: azure-databricks
 author: mamccrea
@@ -7,19 +7,21 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 69afe2aab3c10707f7160d727b970ad73d59a952
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/04/2019
+ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791558"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893447"
 ---
-# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Szybki Start: Tworzenie obszaru roboczego Azure Databricks w Virtual Network
+# <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Szybki Start: Tworzenie obszaru roboczego Azure Databricks we własnym Virtual Network
 
-Ten przewodnik Szybki Start przedstawia sposób tworzenia obszaru roboczego Azure Databricks w sieci wirtualnej. Utworzysz również Klaster Apache Spark w tym obszarze roboczym.
+Domyślne wdrożenie Azure Databricks tworzy nową sieć wirtualną zarządzaną przez datakostki. Ten przewodnik Szybki Start przedstawia sposób tworzenia obszaru roboczego Azure Databricks w ramach własnej sieci wirtualnej. Utworzysz również Klaster Apache Spark w tym obszarze roboczym. 
 
-Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Aby uzyskać więcej informacji o tym, dlaczego można utworzyć obszar roboczy Azure Databricks w sieci wirtualnej, zobacz [wdrażanie Azure Databricks w Virtual Network platformy Azure (iniekcja sieci wirtualnej)] (/databricks/Administration-Guide/Cloud-Configurations/Azure/VNET-Inject).
+
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/databricks/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -31,14 +33,16 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-1. W Azure Portal wybierz pozycję **Utwórz zasób** > **Networking** > **sieci wirtualnej**.
+1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **sieć > Sieć wirtualna**.
+
+    ![Tworzenie sieci wirtualnej w Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
 2. W obszarze **Utwórz sieć wirtualną**Zastosuj następujące ustawienia: 
 
     |Ustawienie|Sugerowana wartość|Opis|
     |-------|---------------|-----------|
     |Nazwa|datakostki — Szybki Start|Wybierz nazwę sieci wirtualnej.|
-    |Przestrzeń adresowa|10.1.0.0/16|Zakres adresów sieci wirtualnej w notacji CIDR.|
+    |Przestrzeń adresowa|10.1.0.0/16|Zakres adresów sieci wirtualnej w notacji CIDR. Zakres CIDR musi należeć do zakresu od/16 do/24|
     |Subskrypcja|\<Twoja subskrypcja\>|Wybierz subskrypcję platformy Azure, której chcesz użyć.|
     |Grupa zasobów|datakostki — Szybki Start|Wybierz pozycję **Utwórz nową** , a następnie wprowadź nową nazwę grupy zasobów dla swojego konta.|
     |Lokalizacja|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz lokalizację geograficzną, w której będzie można hostować sieć wirtualną. Użyj lokalizacji znajdującej się najbliżej użytkowników.|
@@ -53,7 +57,9 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
-1. W Azure Portal wybierz pozycję **Utwórz zasób** > **analizie** > **datakostki**.
+1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **analiza > datakostki**.
+
+    ![Utwórz obszar roboczy Azure Databricks na Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
 2. W obszarze **Azure Databricks Service**Zastosuj następujące ustawienia:
 
@@ -64,12 +70,12 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
     |Grupa zasobów|datakostki — Szybki Start|Wybierz tę samą grupę zasobów, która została użyta dla sieci wirtualnej.|
     |Lokalizacja|\<Wybierz region, który jest najbliżej Twoich użytkowników\>|Wybierz tę samą lokalizację, w której znajduje się Twoja sieć wirtualna.|
     |Warstwa cenowa|Wybierz warstwę Standardowa lub Premium.|Więcej informacji o warstwach cenowych znajduje się na [stronie cennika usługi datacegłs](https://azure.microsoft.com/pricing/details/databricks/).|
-    |Wdróż Azure Databricks obszar roboczy w Virtual Network|Tak|To ustawienie umożliwia wdrożenie obszaru roboczego Azure Databricks w sieci wirtualnej.|
+    |Wdróż Azure Databricks obszar roboczy w Virtual Network (VNet)|Tak|To ustawienie umożliwia wdrożenie obszaru roboczego Azure Databricks w sieci wirtualnej.|
     |Sieć wirtualna|datakostki — Szybki Start|Wybierz sieć wirtualną utworzoną w poprzedniej sekcji.|
-    |Nazwa podsieci publicznej|podsieć publiczna|Użyj domyślnej nazwy podsieci publicznej.|
-    |Zakres CIDR podsieci publicznej|10.179.64.0/18|Zakres CIDR dla tej podsieci powinien mieścić się w przedziale od/18 do/26.|
-    |Nazwa podsieci prywatnej|podsieć prywatna|Użyj domyślnej nazwy podsieci prywatnej.|
-    |Zakres CIDR podsieci prywatnej|10.179.0.0/18|Zakres CIDR dla tej podsieci powinien mieścić się w przedziale od/18 do/26.|
+    |Nazwa podsieci publicznej|public-subnet|Użyj domyślnej nazwy podsieci publicznej.|
+    |Zakres CIDR podsieci publicznej|10.179.64.0/18|Użyj zakresu CIDR do, włącznie z/26.|
+    |Nazwa podsieci prywatnej|private-subnet|Użyj domyślnej nazwy podsieci prywatnej.|
+    |Zakres CIDR podsieci prywatnej|10.179.0.0/18|Użyj zakresu CIDR do, włącznie z/26.|
 
     ![Utwórz obszar roboczy Azure Databricks na Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
@@ -77,7 +83,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
     ![Omówienie Azure Databricks w Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/databricks-overview-portal.png)
 
-    Zarządzana Grupa zasobów zawiera fizyczną lokalizację konta magazynu (DBFS), Worker-SG (Network Security Group), Works-VNET (Sieć wirtualna). Jest również lokalizacją, w której zostaną utworzone maszyny wirtualne, dyski, adresy IP i interfejsy sieciowe. Ta grupa zasobów jest domyślnie zablokowana; gdy klaster jest uruchamiany w sieci wirtualnej, interfejs sieciowy jest tworzony między procesami roboczymi i sieciami wirtualnymi w zarządzanej grupie zasobów i "centrum".
+    Nie można modyfikować zarządzanej grupy zasobów i nie jest ona używana do tworzenia maszyn wirtualnych. Można tworzyć tylko maszyny wirtualne w zarządzanej grupie zasobów.
 
     ![Azure Databricks zarządzaną grupę zasobów](./media/quickstart-create-databricks-workspace-vnet-injection/managed-resource-group.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Nawiązywanie połączenia z interfejsem API programu Azure Media Services v3 — Node. js
-description: Dowiedz się, jak nawiązać połączenie z interfejsem API programu Media Services v3 przy użyciu środowiska Node. js.
+description: W tym artykule pokazano, jak nawiązać połączenie z interfejsem API programu Media Services v3 przy użyciu środowiska Node. js.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5361a820da0caa336ccc95ae657407889443268c
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048431"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896097"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Nawiązywanie połączenia z interfejsem API programu Media Services v3 — Node. js
 
@@ -26,7 +26,7 @@ W tym artykule opisano sposób nawiązywania połączenia z zestawem SDK środow
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zainstaluj program [Node. js](https://nodejs.org/en/download/).
+- Zainstalowanie środowiska [Node.js](https://nodejs.org/en/download/).
 - [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Pamiętaj, aby zapamiętać nazwę grupy zasobów i nazwę konta Media Services.
 
 > [!IMPORTANT]
@@ -54,7 +54,7 @@ W tym artykule opisano sposób nawiązywania połączenia z zestawem SDK środow
 
 Należy określić następujące pakiety:
 
-|Package|Opis|
+|Pakiet|Opis|
 |---|---|
 |`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Aby upewnić się, że używasz najnowszego pakietu Azure Media Services, zaznacz pozycję [npm Install Azure-ARM-MediaServices](https://www.npmjs.com/package/azure-arm-mediaservices/).|
 |`azure-storage`|Zestaw SDK magazynu. Używane podczas przekazywania plików do zasobów.|
@@ -123,7 +123,7 @@ npm install
 node index.js
 ```
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [Koncepcje Media Services](concepts-overview.md)
 - [Instalacja menedżera NPM — azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)

@@ -1,6 +1,6 @@
 ---
 title: Odtwarzanie przy użyciu Azure Media Player na platformie Azure | Microsoft Docs
-description: Ten temat zawiera omówienie Azure Media Player.
+description: Azure Media Player to odtwarzacz wideo w sieci Web zbudowany w celu odtwarzania zawartości multimedialnej z Microsoft Azure Media Services w wielu różnych przeglądarkach i urządzeniach.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 6157f59d96770298d947a1cf6ca28aa343e1a0d4
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 8f1639a21e3783f587904c2a8085fd2f555ff5b8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311820"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900355"
 ---
 # <a name="azure-media-player-overview"></a>Przegląd Azure Media Player
 

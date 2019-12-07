@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 36035d844237115361ccb3c1e1bc0dcb91250881
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423872"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894427"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure usługa Load Balancer w warstwie Standardowa
 
@@ -38,11 +38,6 @@ Funkcje zasobu Load Balancer są zawsze wyrażone jako fronton, reguła, sonda k
 Jednym z kluczowych aspektów jest zakres sieci wirtualnej dla zasobu.  Chociaż podstawowa Load Balancer istnieje w zakresie zestawu dostępności, usługa Load Balancer w warstwie Standardowa jest w pełni zintegrowana z zakresem sieci wirtualnej i ma zastosowanie wszystkie pojęcia dotyczące sieci wirtualnej.
 
 Zasoby Load Balancer są obiektami, w których można wypróbować, w jaki sposób platforma Azure powinna programować infrastrukturę z wieloma dzierżawcami, aby osiągnąć scenariusz, który ma zostać utworzony.  Nie ma bezpośredniej relacji między zasobami Load Balancer i rzeczywistą infrastrukturą; utworzenie Load Balancer nie powoduje utworzenia wystąpienia, pojemność jest zawsze dostępna i nie ma opóźnień uruchamiania ani skalowania do uwzględnienia. 
-
->[!NOTE]
-> Platforma Azure udostępnia zestaw w pełni zarządzanych rozwiązań do równoważenia obciążenia dla Twoich scenariuszy. Jeśli szukasz zakończenia protokołu Transport Layer Security (TLS) ("odciążanie protokołu SSL") lub żądania dla protokołu HTTP/HTTPS, przetwarzanie warstwy aplikacji, zobacz [co to jest usługa Azure Application Gateway?](../application-gateway/overview.md) Jeśli szukasz globalnego równoważenia obciążenia DNS, zobacz [co to jest Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Kompleksowe scenariusze mogą przynieść korzyści wynikające z łączenia tych rozwiązań.
->
-> Aby zapoznać się z porównaniem opcji równoważenia obciążenia platformy Azure, zobacz [Omówienie opcji równoważenia obciążenia na platformie Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-standard-load-balancer"></a>Dlaczego warto używać usługa Load Balancer w warstwie Standardowa?
 
@@ -206,7 +201,7 @@ Jednostki SKU nie są modyfikowalne. Postępuj zgodnie z instrukcjami w tej sekc
 >
 >Do Load Balancer i publicznych zasobów IP muszą być używane zgodne jednostki SKU. Nie można korzystać z kombinacji podstawowych zasobów jednostki SKU i standardowych zasobów jednostki SKU. Nie można dołączyć autonomicznych maszyn wirtualnych, maszyn wirtualnych w zasobie zestawu dostępności lub zasobów zestawu skalowania maszyn wirtualnych jednocześnie do obu jednostek SKU.
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność w poszczególnych regionach
 
 Usługa Load Balancer w warstwie Standardowa jest obecnie dostępna we wszystkich regionach chmury publicznej.
 
@@ -240,7 +235,7 @@ Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warst
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md).
 - Dowiedz się więcej na temat [diagnostyki usługa Load Balancer w warstwie Standardowa](load-balancer-standard-diagnostics.md).
 - Dowiedz się więcej na temat [obsługiwanych metryk wielowymiarowych](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) dla diagnostyki w [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- Dowiedz się więcej na temat korzystania z [Load Balancer dla połączeń wychodzących](load-balancer-outbound-connections.md).
+- Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
 - Poznaj [reguły ruchu wychodzącego](load-balancer-outbound-rules-overview.md).
 - Więcej informacji [na temat resetowania protokołu TCP w trybie bezczynności](load-balancer-tcp-reset.md).
 - Dowiedz się więcej o [Usługa Load Balancer w warstwie Standardowa z regułami równoważenia obciążenia dla portów ha](load-balancer-ha-ports-overview.md).

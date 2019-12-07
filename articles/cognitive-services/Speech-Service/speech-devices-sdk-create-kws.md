@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815296"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896402"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Tworzenie niestandardowego słowa kluczowego przy użyciu usługi mowy
 
@@ -50,17 +50,29 @@ Aby można było użyć niestandardowego słowa kluczowego, należy utworzyć s�
 
 1. Przejdź do programu [Speech Studio](https://aka.ms/sdsdk-speechportal) i **Zaloguj się** lub, jeśli nie masz jeszcze subskrypcji mowy, wybierz pozycję [**Utwórz subskrypcję**](https://go.microsoft.com/fwlink/?linkid=2086754).
 
-1. Na stronie [niestandardowe słowo kluczowe](https://aka.ms/sdsdk-wakewordportal) wpisz słowo kluczowe, a następnie kliknij przycisk **Dodaj słowo kluczowe**. Mamy pewne [wskazówki](#choose-an-effective-keyword) ułatwiające wybór efektywnego słowa kluczowego. Pomoc techniczna jest obecnie ograniczona do języka en-US.
+1. Na stronie [niestandardowe słowo kluczowe](https://aka.ms/sdsdk-wakewordportal) Utwórz **Nowy projekt**. 
 
-    ![Wprowadź słowo kluczowe](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
+1. Wprowadź **nazwę**i opcjonalny **Opis**, a następnie wybierz język. Potrzebny będzie jeden projekt dla każdego języka i pomoc techniczna jest obecnie ograniczona do języka en-US.
 
-1. Portal utworzy teraz wymowy kandydatów dla słowa kluczowego. Nasłuchiwanie poszczególnych kandydatów przez kliknięcie przycisku Odtwórz i usunięcie kontroli obok wszelkich wymowy, które są nieprawidłowe. Gdy zaznaczone są tylko dobre wymowy, wybierz pozycję **Prześlij** , aby rozpocząć generowanie słowa kluczowego. Jeśli chcesz zmienić słowo kluczowe, najpierw usuń istniejące, klikając przycisk Usuń, który pojawia się po prawej stronie wiersza, gdy przesuwa się nad nim.
+    ![Opisz swój projekt słowa kluczowego](media/custom-keyword/custom-kws-portal-new-project.png)
 
-    ![Przejrzyj słowo kluczowe](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
+1. Wybierz swój projekt z listy. 
 
-1. Generowanie modelu może potrwać do jednej minuty. Następnie zostanie wyświetlony monit o pobranie pliku.
+    ![Wybierz projekt słowa kluczowego](media/custom-keyword/custom-kws-portal-project-list.png)
 
-    ![Pobierz słowo kluczowe](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
+1. Aby rozpocząć nowy model słów kluczowych, kliknij pozycję **Testuj model**.
+
+1. Wprowadź **nazwę** modelu słowa kluczowego i opcjonalny **Opis** , a następnie wpisz **słowo kluczowe** , a następnie kliknij przycisk **dalej**. Mamy pewne [wskazówki](#choose-an-effective-keyword) ułatwiające wybór efektywnego słowa kluczowego.
+
+    ![Wprowadź słowo kluczowe](media/custom-keyword/custom-kws-portal-new-model.png) 
+
+1. Portal utworzy teraz wymowy kandydatów dla słowa kluczowego. Nasłuchiwanie poszczególnych kandydatów przez kliknięcie przycisku Odtwórz i usunięcie kontroli obok wszelkich wymowy, które są nieprawidłowe. Gdy sprawdzane są tylko dobre wymowy, kliknij pozycję **uczenie** , aby rozpocząć generowanie słowa kluczowego. 
+
+    ![Przejrzyj słowo kluczowe](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+
+1. Wygenerowanie modelu może potrwać do 10 minut. Lista słów kluczowych zmieni się z **przetwarzania** na **powodzenie** , gdy model zostanie ukończony. Następnie można pobrać plik.
+
+    ![Przejrzyj słowo kluczowe](media/custom-keyword/custom-kws-portal-download-model.png) 
 
 1. Zapisz plik zip na komputer. Ten plik będzie potrzebny do wdrożenia niestandardowego słowa kluczowego na urządzeniu.
 

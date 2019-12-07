@@ -1,6 +1,6 @@
 ---
 title: Redagowanie twarzy przy użyciu Azure Media Analytics | Microsoft Docs
-description: W tym temacie przedstawiono sposób redagowania twarzy przy użyciu usługi Azure Media Analytics.
+description: Azure Media Redactor to Azure Media Analyticsy procesor multimediów, który oferuje skalowalne możliwości redakcyjne w chmurze. W tym artykule przedstawiono sposób redagowania twarzy przy użyciu usługi Azure Media Analytics.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,15 +13,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016028"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900300"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redagowanie twarzy przy użyciu Azure Media Analytics 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 **Azure Media redactor** to procesor Media [Azure Media Analytics](media-services-analytics-overview.md) (MP), który oferuje skalowalne możliwości redakcyjne w chmurze. Redakcja twarzy umożliwia modyfikowanie wideo w celu rozmycia powierzchni wybranych osób. Możesz chcieć użyć usługi redakcyjnej ze stroną w scenariuszach bezpieczeństwa publicznego i mediów informacyjnych. Kilka minut filmu, które zawiera wiele twarzy, może zająć więcej czasu, ale w przypadku tej usługi proces redakcyjny twarzy będzie wymagał zaledwie kilku prostych kroków. Aby uzyskać więcej informacji, zobacz [ten](https://azure.microsoft.com/blog/azure-media-redactor/) blog.
 
 Ten artykuł zawiera szczegółowe informacje dotyczące **Azure Media redactor** i pokazuje, jak używać go z zestawem SDK Media Services dla platformy .NET.
@@ -34,7 +34,7 @@ Oprócz pełnego trybu automatycznego istnieje dwuprzebiegowy przepływ pracy, k
 ### <a name="combined-mode"></a>Tryb połączony
 Spowoduje to wygenerowanie redagowane MP4 automatycznie bez żadnych ręcznych danych wejściowych.
 
-| Etap | Nazwa pliku | Uwagi |
+| Stage | Nazwa pliku | Uwagi |
 | --- | --- | --- |
 | Zasób wejściowy |foo. bar |Wideo w formacie WMV, MOV lub MP4 |
 | Konfiguracja wejściowa |Ustawienie wstępne konfiguracji zadania |{"Version": "1.0", "Options": {"Mode": "połączony"}} |
@@ -49,7 +49,7 @@ Spowoduje to wygenerowanie redagowane MP4 automatycznie bez żadnych ręcznych d
 ### <a name="analyze-mode"></a>Tryb analizy
 **Przeanalizuj** przebieg przepływu pracy dwuprzebiegowej pobiera wideo i tworzy plik JSON lokalizacji, a obrazy jpg każdej wykrytej klasy.
 
-| Etap | Nazwa pliku | Uwagi |
+| Stage | Nazwa pliku | Uwagi |
 | --- | --- | --- |
 | Zasób wejściowy |foo. bar |Wideo w formacie WMV, MPV lub MP4 |
 | Konfiguracja wejściowa |Ustawienie wstępne konfiguracji zadania |{"Version": "1.0", "Options": {"Mode": "Analizuj"}} |
@@ -114,7 +114,7 @@ Obejmuje to listę identyfikatorów rozmycia, oryginalnego wideo oraz JSON adnot
 
 Dane wyjściowe z przebiegu analizy nie obejmują oryginalnego wideo. Film wideo musi zostać przekazany do wejściowego zasobu dla zadania tryb Zredaguj i wybrany jako plik podstawowy.
 
-| Etap | Nazwa pliku | Uwagi |
+| Stage | Nazwa pliku | Uwagi |
 | --- | --- | --- |
 | Zasób wejściowy |foo. bar |Wideo w formacie WMV, MPV lub MP4. To samo wideo jak w kroku 1. |
 | Zasób wejściowy |foo_annotations.json |plik metadanych adnotacji z fazy pierwszej, z opcjonalnymi modyfikacjami. |
@@ -135,7 +135,7 @@ Przykład foo_IDList. txt
 
 ## <a name="blur-types"></a>Typy rozmycia
 
-W trybie **połączonym** lub **Zredaguj** istnieją 5 różnych trybów rozmycia, z których można skorzystać za pośrednictwem konfiguracji danych wejściowych JSON: **Niska**, **Med**, **High**, **Box**i **Black**. Domyślnie jest używana wartość **Med** .
+W trybie **połączonym** lub **Zredaguj** istnieją 5 różnych trybów rozmycia, z których można skorzystać za pośrednictwem konfiguracji danych wejściowych JSON: **Low**, **Med**, **High**, **Box**i **Black**. Domyślnie jest używana wartość **Med** .
 
 Przykłady typów rozmycia można znaleźć poniżej.
 
@@ -145,9 +145,9 @@ Przykłady typów rozmycia można znaleźć poniżej.
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
 ```
 
-#### <a name="low"></a>Małe
+#### <a name="low"></a>Niska
 
-![Małe](./media/media-services-face-redaction/blur1.png)
+![Niska](./media/media-services-face-redaction/blur1.png)
  
 #### <a name="med"></a>Komitetem
 
@@ -367,10 +367,10 @@ namespace FaceRedaction
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-links"></a>Linki pokrewne
+## <a name="related-links"></a>Powiązane linki
 [Omówienie Azure Media Services Analytics](media-services-analytics-overview.md)
 
 [Demonstracje Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)

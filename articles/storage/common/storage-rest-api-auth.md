@@ -1,5 +1,6 @@
 ---
-title: Wywoływanie operacji interfejsu API REST usługi Azure Storage przy użyciu autoryzacji klucza współużytkowanego | Microsoft Docs
+title: Wywoływanie operacji interfejsu API REST przy użyciu autoryzacji klucza wspólnego
+titleSuffix: Azure Storage
 description: Użyj interfejsu API REST usługi Azure Storage, aby utworzyć żądanie do usługi BLOB Storage przy użyciu autoryzacji klucza współużytkowanego.
 services: storage
 author: tamram
@@ -9,14 +10,14 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 05f71d4952d5f500a93adbb740739a46e9036ac1
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803071"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895175"
 ---
-# <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
+# <a name="call-rest-api-operations-with-shared-key-authorization"></a>Wywoływanie operacji interfejsu API REST przy użyciu autoryzacji klucza wspólnego
 
 W tym artykule opisano sposób wywoływania interfejsów API REST usługi Azure Storage, w tym sposobu tworzenia nagłówka autoryzacji. Jest ona zapisywana z punktu widzenia dewelopera, który wie, że niczego nie dotyczy, i nie ma pomysłu, jak wykonać wywołanie REST. Po dojściu do metody wywoływania operacji REST możesz skorzystać z tej wiedzy, aby użyć innych operacji REST usługi Azure Storage.
 
@@ -58,13 +59,13 @@ Przykładowa aplikacja zawiera listę kontenerów na koncie magazynu. Po zrozumi
 
 Jeśli szukasz [interfejsu API REST usługi BLOB Service](/rest/api/storageservices/Blob-Service-REST-API), zobaczysz wszystkie operacje, które można wykonać w usłudze BLOB Storage. Biblioteki klienta usługi Storage są otokami otaczającymi interfejsy API REST — ułatwiają dostęp do magazynu bez bezpośredniego używania interfejsów API REST. Jednak jak wspomniano powyżej, Czasami chcesz użyć interfejsu API REST zamiast biblioteki klienta usługi Storage.
 
-## <a name="rest-api-reference-list-containers-api"></a>Dokumentacja interfejsu API REST: interfejs API listy kontenerów
+## <a name="list-containers-operation"></a>Operacja listy kontenerów
 
-Zapoznaj się z informacjami na stronie w dokumentacji interfejsu API REST dla operacji [ListContainers](/rest/api/storageservices/List-Containers2) . Te informacje ułatwią zrozumienie, w jaki sposób niektóre pola pochodzą z żądania i odpowiedzi.
+Przejrzyj odwołanie do operacji [ListContainers](/rest/api/storageservices/List-Containers2) . Te informacje ułatwią zrozumienie, w jaki sposób niektóre pola pochodzą z żądania i odpowiedzi.
 
 **Metoda żądania**: get. To zlecenie jest metodą HTTP określoną jako właściwość obiektu żądania. Inne wartości tego zlecenia obejmują nagłówek, PUT i DELETE, w zależności od wywoływanego interfejsu API.
 
-**Identyfikator URI żądania**: `https://myaccount.blob.core.windows.net/?comp=list`.  Identyfikator URI żądania jest tworzony na podstawie punktu końcowego konta magazynu obiektów BLOB `http://myaccount.blob.core.windows.net` i ciągu zasobu `/?comp=list`.
+**Identyfikator URI żądania**: `https://myaccount.blob.core.windows.net/?comp=list`.  Identyfikator URI żądania jest tworzony na podstawie `http://myaccount.blob.core.windows.net` punktu końcowego konta usługi BLOB Storage i `/?comp=list`ciągu zasobu.
 
 [Parametry identyfikatora URI](/rest/api/storageservices/List-Containers2#uri-parameters): Istnieją dodatkowe parametry zapytania, których można użyć podczas wywoływania ListContainers. Kilka z tych parametrów jest *limitem czasu* dla wywołania (w sekundach) i *prefiksu*, który jest używany do filtrowania.
 
@@ -120,7 +121,7 @@ String uri = string.Format("http://{0}.blob.core.windows.net?comp=list", storage
 Byte[] requestPayload = null;
 ```
 
-Następnie Utwórz wystąpienie żądania, ustawiając metodę na `GET` i podając identyfikator URI.
+Następnie Utwórz wystąpienie żądania, ustawiając metodę w celu `GET` i podania identyfikatora URI.
 
 ```csharp
 // Instantiate the request message with a null payload.
@@ -132,29 +133,29 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 Dodaj nagłówki żądania dla `x-ms-date` i `x-ms-version`. W tym miejscu w kodzie jest również dodawane dodatkowe nagłówki żądania wymagane dla wywołania. W tym przykładzie nie ma dodatkowych nagłówków. Przykładem interfejsu API, który przekazuje w dodatkowych nagłówkach, jest operacja ustawiania listy ACL kontenera. To wywołanie interfejsu API dodaje nagłówek o nazwie "x-MS-BLOB-Public-Access" i wartość dla poziomu dostępu.
 
 ```csharp
-    // Add the request headers for x-ms-date and x-ms-version.
-    DateTime now = DateTime.UtcNow;
-    httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
-    // If you need any additional headers, add them here before creating
-    //   the authorization header.
+// Add the request headers for x-ms-date and x-ms-version.
+DateTime now = DateTime.UtcNow;
+httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
+httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
+// If you need any additional headers, add them here before creating
+//   the authorization header.
 ```
 
 Wywołaj metodę, która tworzy nagłówek autoryzacji, i Dodaj ją do nagłówków żądania. Zobaczysz, jak utworzyć nagłówek autoryzacji w dalszej części artykułu. Nazwa metody to GetAuthorizationHeader, którą można zobaczyć w tym fragmencie kodu:
 
 ```csharp
-    // Get the authorization header and add it.
-    httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
-        storageAccountName, storageAccountKey, now, httpRequestMessage);
+// Get the authorization header and add it.
+httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
+    storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
-W tym momencie `httpRequestMessage` zawiera żądanie REST zakończone z nagłówkami autoryzacji.
+W tym momencie `httpRequestMessage` zawiera wszystkie żądania REST z nagłówkami autoryzacji.
 
-## <a name="call-the-rest-api-with-the-request"></a>Wywoływanie interfejsu API REST przy użyciu żądania
+## <a name="send-the-request"></a>Wysyłanie żądania
 
-Teraz, gdy masz żądanie, możesz wywołać SendAsync w celu wysłania żądania REST. SendAsync wywołuje interfejs API i pobiera odpowiedź z powrotem. Zapoznaj się z odpowiedzią StatusCode (200 OK), a następnie Przeanalizuj odpowiedź. W tym przypadku otrzymujesz listę XML kontenerów. Przyjrzyjmy się kodowi do wywoływania metody GetRESTRequest w celu utworzenia żądania, wykonania żądania, a następnie sprawdzenia odpowiedzi na listę kontenerów.
+Teraz, gdy tworzysz żądanie, możesz wywołać metodę SendAsync, aby wysłać ją do usługi Azure Storage. Sprawdź, czy wartość kodu stanu odpowiedzi to 200, co oznacza, że operacja zakończyła się pomyślnie. Następnie Przeanalizuj odpowiedź. W tym przypadku otrzymujesz listę XML kontenerów. Przyjrzyjmy się kodowi do wywoływania metody GetRESTRequest w celu utworzenia żądania, wykonania żądania, a następnie sprawdzenia odpowiedzi na listę kontenerów.
 
-```csharp 
+```csharp
     // Send the request.
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
@@ -174,7 +175,7 @@ Teraz, gdy masz żądanie, możesz wywołać SendAsync w celu wysłania żądani
 }
 ```
 
-Jeśli uruchamiasz szperacz sieciowy, taki jak [programu Fiddler](https://www.telerik.com/fiddler) podczas wywołania SendAsync, zobaczysz informacje dotyczące żądania i odpowiedzi. Przyjrzyjmy się. Nazwa konta magazynu to *contosorest*.
+Jeśli uruchamiasz szperacz sieciowy, taki jak [programu Fiddler](https://www.telerik.com/fiddler) podczas wywołania SendAsync, zobaczysz informacje dotyczące żądania i odpowiedzi. Zobaczmy. Nazwa konta magazynu to *contosorest*.
 
 **Żądając**
 
@@ -299,15 +300,15 @@ StringToSign = VERB + "\n" +
                CanonicalizedResource;  
 ```
 
-Większość z tych pól jest rzadko używana. W przypadku usługi BLOB Storage należy określić CZASOWNIK, MD5, długość zawartości, nagłówki kanoniczne i zasób kanoniczny. Pozostałe wartości można pozostawić puste (ale umieścić je w `\n`, aby wie, że są puste).
+Większość z tych pól jest rzadko używana. W przypadku usługi BLOB Storage należy określić CZASOWNIK, MD5, długość zawartości, nagłówki kanoniczne i zasób kanoniczny. Pozostałe wartości można pozostawić puste (ale umieścić je w `\n`, tak że są puste).
 
-Co to są CanonicalizedHeaders i CanonicalizedResource? Dobre pytanie. Co oznacza znaczenie w postaci kanonicznej? Program Microsoft Word nie rozpoznaje go nawet jako wyrazu. Poniżej przedstawiono [Informacje o kanonizacji](https://en.wikipedia.org/wiki/Canonicalization): *w nauce komputerowej, kanonizacji (czasami normalizacji lub normalizacji) to proces konwersji danych, które mają więcej niż jedną możliwą reprezentację do "standardowego", "normalnego", lub forma kanoniczna.* W normalnych przypadkach oznacza to, że należy zastosować listę elementów (takich jak nagłówki w przypadku nagłówków kanonicznych) i przeprowadzić ich standaryzację w wymaganym formacie. Zasadniczo firma Microsoft zdecydowała się na format i należy je dopasować.
+Co to są CanonicalizedHeaders i CanonicalizedResource? Dobre pytanie. Co oznacza znaczenie w postaci kanonicznej? Program Microsoft Word nie rozpoznaje go nawet jako wyrazu. Poniżej przedstawiono [Informacje o formacie kanonizacji](https://en.wikipedia.org/wiki/Canonicalization): *w nauce komputerowej, kanonizacji (czasami normalizacji lub normalizacji) to proces konwersji danych, które mają więcej niż jedną możliwą reprezentację w postaci "standardowy", "normalny" lub "kanoniczny".* W normalnych przypadkach oznacza to, że należy zastosować listę elementów (takich jak nagłówki w przypadku nagłówków kanonicznych) i przeprowadzić ich standaryzację w wymaganym formacie. Zasadniczo firma Microsoft zdecydowała się na format i należy je dopasować.
 
 Zacznijmy od tych dwóch pól kanonicznych, ponieważ są one wymagane do utworzenia nagłówka autoryzacji.
 
 ### <a name="canonicalized-headers"></a>Nagłówki kanoniczne
 
-Aby utworzyć tę wartość, Pobierz nagłówki, które zaczynają się od ciągu "x-ms-" i posortuj je, a następnie sformatuj je do ciągu z wystąpieniami `[key:value\n]`, połączone w jeden ciąg. Na potrzeby tego przykładu kanoniczne nagłówki wyglądają następująco: 
+Aby utworzyć tę wartość, Pobierz nagłówki, które zaczynają się od "x-ms-" i posortuj je, a następnie sformatuj je do ciągu wystąpień `[key:value\n]`, połączone w jeden ciąg. Na potrzeby tego przykładu kanoniczne nagłówki wyglądają następująco: 
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -352,7 +353,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 
 ### <a name="canonicalized-resource"></a>Zasób kanoniczny
 
-Ta część ciągu podpisu reprezentuje konto magazynu wskazywane przez żądanie. Należy pamiętać, że identyfikator URI żądania jest `<http://contosorest.blob.core.windows.net/?comp=list>` z rzeczywistą nazwą konta (w tym przypadku `contosorest`). W tym przykładzie jest zwracany:
+Ta część ciągu podpisu reprezentuje konto magazynu wskazywane przez żądanie. Należy pamiętać, że identyfikator URI żądania jest `<http://contosorest.blob.core.windows.net/?comp=list>`z rzeczywistą nazwą konta (`contosorest` w tym przypadku). W tym przykładzie jest zwracany:
 
 ```
 /contosorest/\ncomp:list
@@ -568,7 +569,7 @@ W tym artykule przedstawiono sposób tworzenia żądania do interfejsu API REST 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Interfejs API REST usługi BLOB Service](/rest/api/storageservices/blob-service-rest-api)
-- [Interfejs API REST usługi plików](/rest/api/storageservices/file-service-rest-api)
-- [Interfejs API REST usługi kolejkowania](/rest/api/storageservices/queue-service-rest-api)
-- [Interfejs API REST usługi Table Service](/rest/api/storageservices/table-service-rest-api)
+- [Interfejs API REST usługi Blob Service](/rest/api/storageservices/blob-service-rest-api)
+- [Interfejs API REST usługi File (Plik)](/rest/api/storageservices/file-service-rest-api)
+- [Interfejs API REST usługi Queue (Kolejka)](/rest/api/storageservices/queue-service-rest-api)
+- [Interfejs API REST usługi Table (Tabela)](/rest/api/storageservices/table-service-rest-api)

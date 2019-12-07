@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158948"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892638"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Używanie programu PowerShell do uruchamiania narzędzia Diagnostyka Azure na maszynie wirtualnej systemu Windows
 
@@ -40,7 +40,7 @@ Aby włączyć rozszerzenie diagnostyki na istniejącej maszynie wirtualnej, kt�
 
 *$diagnosticsconfig _path* jest ścieżką do pliku, który zawiera konfigurację diagnostyki w formacie XML, zgodnie z opisem w poniższym [przykładzie](#sample-diagnostics-configuration) .  
 
-Jeśli plik konfiguracji diagnostyki określa element **StorageAccount** z nazwą konta magazynu, skrypt *Set-AzVMDiagnosticsExtension* automatycznie ustawi rozszerzenie diagnostyki do wysyłania danych diagnostycznych do tego magazynu. koncie. Aby to działało, konto magazynu musi znajdować się w tej samej subskrypcji co maszyna wirtualna.
+Jeśli plik konfiguracji diagnostyki określa element **StorageAccount** z nazwą konta magazynu, skrypt *Set-AzVMDiagnosticsExtension* automatycznie ustawi rozszerzenie diagnostyki do wysyłania danych diagnostycznych do tego konta magazynu. Aby to działało, konto magazynu musi znajdować się w tej samej subskrypcji co maszyna wirtualna.
 
 Jeśli w konfiguracji diagnostyki nie określono żadnych **StorageAccount** , należy przekazać parametr *StorageAccountName* do polecenia cmdlet. Jeśli parametr *StorageAccountName* jest określony, polecenie cmdlet zawsze będzie używać konta magazynu, które jest określone w parametrze, a nie tego, który jest określony w pliku konfiguracji diagnostyki.
 
@@ -64,9 +64,9 @@ Polecenie cmdlet [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/po
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Włącz rozszerzenie diagnostyki, jeśli korzystasz z klasycznego modelu wdrażania
 Można użyć polecenia cmdlet [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) , aby włączyć rozszerzenie diagnostyki na maszynie wirtualnej utworzonej za pomocą klasycznego modelu wdrażania. Poniższy przykład pokazuje, jak utworzyć nową maszynę wirtualną za pomocą klasycznego modelu wdrażania z włączonym rozszerzeniem diagnostyki.
 
-    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Aby włączyć rozszerzenie diagnostyki dla istniejącej maszyny wirtualnej, która została utworzona za pomocą klasycznego modelu wdrażania, należy najpierw użyć polecenia cmdlet [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) , aby pobrać konfigurację maszyny wirtualnej. Następnie zaktualizuj konfigurację maszyny wirtualnej, aby uwzględnić rozszerzenie diagnostyki za pomocą polecenia cmdlet [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) . Na koniec zastosuj zaktualizowaną konfigurację do maszyny wirtualnej za pomocą polecenia [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
@@ -82,8 +82,8 @@ Należy zaktualizować konfigurację, aby uwzględnić następujące elementy:
 
 * Atrybut *ResourceID* elementu **Metrics** należy zaktualizować przy użyciu identyfikatora zasobu maszyny wirtualnej.
   
-  * Identyfikator zasobu można utworzyć przy użyciu następującego wzorca: "*Identyfikator subskrypcji/subscriptions/{dla subskrypcji z maszyną wirtualną*}/ResourceGroups/{*nazwę tej usługi dla maszyny wirtualnej*}/Providers/Microsoft.COMPUTE/virtualMachines/{ *Nazwa maszyny wirtualnej*} ".
-  * Na przykład jeśli Identyfikator subskrypcji dla subskrypcji, w której uruchomiono maszynę **wirtualną, to** **11111111-1111-1111-1111-111111111111**, nazwa grupy zasobów dla grupy zasobów jest grupą zasobów, a nazwa maszyny wirtualnej to **MyWindowsVM**, a następnie wartość parametru *ResourceID* to:
+  * Identyfikator zasobu można utworzyć przy użyciu następującego wzorca: "*Identyfikator subskrypcji/subscriptions/{dla subskrypcji z maszyną wirtualną*}/resourceGroups/{*nazwę elementu zasobów dla maszyny wirtualnej*}/Providers/Microsoft.COMPUTE/virtualMachines/{*nazwę maszyny wirtualnej*}".
+  * Na przykład jeśli Identyfikator subskrypcji dla subskrypcji, w której uruchomiono maszynę wirtualną, **to 11111111-1111-1111-1111-111111111111**, nazwa grupy zasobów dla grupy zasobów jest grupą **zasobów, a**Nazwa maszyny wirtualnej to **MyWindowsVM**, a następnie wartość identyfikatora *ResourceID* :
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >

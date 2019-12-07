@@ -1,7 +1,7 @@
 ---
 title: Kodowanie wideo i audio przy użyciu Media Services
 titleSuffix: Azure Media Services
-description: Dowiedz się więcej na temat kodowania wideo i audio przy użyciu Azure Media Services.
+description: W tym artykule wyjaśniono, jak zakodować wideo i dźwięk przy użyciu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d3de307b1dadf302004fa9fd02c8cf23e36b3046
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9a0a8c8709e41bb7778878f76024263cdc32481
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574278"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896085"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Kodowanie wideo i audio przy użyciu Media Services
 
@@ -26,22 +26,22 @@ Termin kodowanie w Media Services ma zastosowanie do procesu konwertowania plik�
 
 Wideo są zwykle dostarczane do urządzeń i aplikacji przez [pobieranie progresywne](https://en.wikipedia.org/wiki/Progressive_download) lub [przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
 
-* Aby zapewnić pobieranie progresywne, można użyć Azure Media Services do przekonwertowania pliku multimediów cyfrowych (Mezzanine) na plik [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) , który zawiera wideo zakodowane przy użyciu kodera-dekoder [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) i dźwięk, który został zakodowany przy użyciu [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) wymaga. Ten plik MP4 jest zapisywana w elemencie zawartości na koncie magazynu. Aby pobrać plik bezpośrednio, można użyć interfejsów API lub zestawów SDK usługi Azure Storage (na przykład [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md) lub [zestawu SDK platformy .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). Jeśli w magazynie został utworzony zasób wyjściowy z określoną nazwą kontenera, Użyj tej lokalizacji. W przeciwnym razie możesz użyć Media Services, aby [wyświetlić listę adresów URL kontenerów zasobów](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Aby zapewnić pobieranie progresywne, można użyć Azure Media Services do przekonwertowania pliku multimediów cyfrowych (Mezzanine) do pliku [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) , który zawiera wideo zakodowane za pomocą kodera-dekoder [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) , i dźwięk, który został zakodowany za pomocą kodera-dekoder [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) . Ten plik MP4 jest zapisywana w elemencie zawartości na koncie magazynu. Aby pobrać plik bezpośrednio, można użyć interfejsów API lub zestawów SDK usługi Azure Storage (na przykład [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md) lub [zestawu SDK platformy .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). Jeśli w magazynie został utworzony zasób wyjściowy z określoną nazwą kontenera, Użyj tej lokalizacji. W przeciwnym razie możesz użyć Media Services, aby [wyświetlić listę adresów URL kontenerów zasobów](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Aby przygotować zawartość do dostarczenia przez przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów, plik Mezzanine musi być zakodowany na wielu szybkościach transmisji bitów (wysoka do niskich). Aby zapewnić płynne przejście do jakości, rozdzielczość wideo jest obniżana, ponieważ zmniejsza się szybkość transmisji bitów. Powoduje to, że jest to nazywane drabinem kodowania — tabelą rozdzielczości i szybkości transmisji bitów (zobacz [automatycznie wygenerowana drabina szybkość transmisji bitów](autogen-bitrate-ladder.md)). Media Services do kodowania plików mezzanine przy użyciu wielu szybkości transmisji bitów. W tym celu uzyskasz zestaw plików MP4 i skojarzonych z nimi plików konfiguracji przesyłania strumieniowego, które są zapisywane do zasobu na koncie magazynu. Można następnie użyć funkcji tworzenia [pakietów dynamicznych](dynamic-packaging-overview.md) w Media Services, aby dostarczyć wideo za pośrednictwem protokołów przesyłania strumieniowego, takich jak [MPEG-kreska](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) i [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). Wymaga to utworzenia [lokalizatora przesyłania strumieniowego](streaming-locators-concept.md) i adresów URL przesyłania strumieniowego, które są zgodne z obsługiwanymi protokołami, które można następnie przełączać do urządzeń/aplikacji na podstawie ich możliwości.
 
 Na poniższym diagramie przedstawiono przepływ pracy dla kodowania na żądanie z pakietem dynamicznym.
 
 ![Przepływ pracy dla kodowania na żądanie z pakietem dynamicznym](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Ten temat zawiera wskazówki dotyczące sposobu kodowania zawartości przy użyciu Media Services v3.
+Ten temat zawiera wskazówki na temat kodowania zawartości za pomocą usługi Media Services v3.
 
 ## <a name="transforms-and-jobs"></a>Transformacje i zadania
 
 Aby kodować z Media Services v3, należy utworzyć [transformację](https://docs.microsoft.com/rest/api/media/transforms) i [zadanie](https://docs.microsoft.com/rest/api/media/jobs). Transformacja definiuje przepis dla ustawień kodowania i danych wyjściowych. to zadanie jest wystąpieniem przepisu. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transforms-jobs-concept.md).
 
-Przy kodowaniu przy użyciu Media Services należy użyć ustawień wstępnych, aby poinformować koder o sposobie przetwarzania plików multimedialnych. Na przykład można określić rozdzielczość wideo i/lub liczbę kanałów audio, które mają być w zakodowanej zawartości.
+Podczas kodowania za pomocą usługi Media Services, umożliwia wstępne Poinformuj kodera w przetwarzaniu multimedialnych plików wejściowych. Na przykład można określić rozdzielczość wideo i/lub liczbę kanałów audio, który ma w zakodowanej zawartości.
 
-Możesz szybko rozpocząć pracę z jednym z zalecanych wbudowanych ustawień domyślnych opartych na najlepszych rozwiązaniach branżowych lub wybrać opcję utworzenia niestandardowego ustawienia wstępnego, które będzie ukierunkowane na konkretne wymagania dotyczące scenariusza lub urządzenia. Aby uzyskać więcej informacji, zobacz [kodowanie przy użyciu transformacji niestandardowej](customize-encoder-presets-how-to.md).
+Użytkownik może szybko rozpocząć pracę z jedną z zalecanych wbudowane ustawienia wstępne, oparte na najlepszych branżowych rozwiązań lub można utworzyć niestandardowe ustawienie wstępne pod kątem określonych wymagań scenariusza lub urządzenia. Aby uzyskać więcej informacji, zobacz [kodowanie przy użyciu niestandardowej transformacji](customize-encoder-presets-how-to.md).
 
 Począwszy od stycznia 2019, gdy kodowanie przy użyciu Media Encoder Standard do tworzenia plików MP4, nowy plik MPI jest generowany i dodawany do wyjściowego elementu zawartości. Ten plik MPI jest przeznaczony do poprawiania wydajności dla scenariuszy [dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) i przesyłania strumieniowego.
 
@@ -91,14 +91,14 @@ Media Services obsługuje następujące wbudowane ustawienia wstępne kodowania:
 
 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) służy do ustawienia wbudowanego ustawienia wstępnego kodowania wejściowego filmu wideo przy użyciu kodera standardowego.
 
-Obecnie obsługiwane są następujące ustawienia wstępne:
+Obecnie obsługiwane są następujące ustawienia:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: tworzy pojedynczy plik MP4 zawierający tylko dźwięk stereo zakodowany przy 192 kb/s.
 - **EncoderNamedPreset. AdaptiveStreaming** (zalecane): Aby uzyskać więcej informacji, zobacz [Autogenerowanie drabiny szybkości transmisji bitów](autogen-bitrate-ladder.md).
 - **EncoderNamedPreset. ContentAwareEncodingExperimental**: uwidacznia eksperymentalne ustawienie wstępne dla kodowania obsługującego zawartość. Mając daną zawartość wejściową, usługa próbuje automatycznie określić optymalną liczbę warstw oraz odpowiednie ustawienia szybkości transmisji bitów i rozdzielczości do dostarczenia przez adaptacyjne przesyłanie strumieniowe. Algorytmy bazowe będą nadal rozwijane z upływem czasu. Dane wyjściowe będą zawierać pliki MP4 z przeplotem wideo i audio. Aby uzyskać więcej informacji, zobacz [eksperymentalne ustawienie wstępne dla kodowania z obsługą zawartości](cae-experimental.md).
-- **EncoderNamedPreset. H264MultipleBitrate1080p**: tworzy zestaw OŚMIU plików MP4 wyrównanych do grupę GOP, od 6000 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość rozpocznie się o 1080p i przejdzie w dół do 360p.
-- **EncoderNamedPreset. H264MultipleBitrate720p**: tworzy zestaw sześciu grupę GOP wyrównanych plików MP4, od 3400 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość zaczyna się od 720 i przejdzie w dół do 360p.
-- **EncoderNamedPreset. H264MultipleBitrateSD**: tworzy zestaw pięciu plików MP4 wyrównanych do grupę GOP, od 1600 KB/s do 400 KB/s oraz stereo AAC audio. Rozwiązanie rozpocznie się o 480p i przejdzie w dół do 360p.
+- **EncoderNamedPreset. H264MultipleBitrate1080p**: tworzy zestaw OŚMIU plików MP4 wyrównanych do grupę GOP, od 6000 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość rozpoczyna się od 1080p i prowadzi w dół do 360 p.
+- **EncoderNamedPreset. H264MultipleBitrate720p**: tworzy zestaw sześciu grupę GOP wyrównanych plików MP4, od 3400 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość rozpoczyna się od 720p i prowadzi w dół do 360 p.
+- **EncoderNamedPreset. H264MultipleBitrateSD**: tworzy zestaw pięciu plików MP4 wyrównanych do grupę GOP, od 1600 KB/s do 400 KB/s oraz stereo AAC audio. Rozdzielczość rozpoczyna się od 480p i prowadzi w dół do 360 p.
 - **EncoderNamedPreset. H264SingleBitrate1080p**: tworzy plik MP4, gdzie wideo jest kodowane przy użyciu kodera-dekoder H. 264 o godzinie 6750 KB/s i wysokości obrazu 1080 pikseli, a dźwięk stereo jest zakodowany przy użyciu AAC-LC codec przy 64 KB/s.
 - **EncoderNamedPreset. H264SingleBitrate720p**: tworzy plik MP4, gdzie wideo jest kodowane przy użyciu kodera-dekoder H. 264 o godzinie 4500 KB/s i wysokości obrazu 720 pikseli, a dźwięk stereo jest zakodowany przy użyciu AAC-LC codec przy 64 KB/s.
 - **EncoderNamedPreset. H264SingleBitrateSD**: tworzy plik MP4, gdzie wideo jest kodowane przy użyciu kodera-dekoder H. 264 o godzinie 2200 KB/s i wysokości obrazu 480 pikseli, a dźwięk stereo jest zakodowany przy użyciu AAC-LC codec przy 64 KB/s.
@@ -109,7 +109,7 @@ Aby zobaczyć, jak są używane ustawienia wstępne, zobacz [przekazywanie, kodo
 
 ### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
-[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) opisuje ustawienia, które mają być używane podczas kodowania wejściowego wideo za pomocą kodera standardowego. Użyj tego ustawienia wstępnego podczas dostosowywania ustawień predefiniowanych transformacji.
+[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) opisuje ustawienia, które mają być używane podczas kodowania wejściowego wideo za pomocą kodera standardowego. Użyj tego ustawienia wstępnego podczas dostosowywania ustawień wstępnych transformacji.
 
 #### <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -120,7 +120,7 @@ Podczas tworzenia niestandardowych ustawień wstępnych są stosowane następuj�
 
 ### <a name="customizing-presets"></a>Dostosowywanie ustawień wstępnych
 
-Media Services w pełni obsługuje Dostosowywanie wszystkich wartości w ustawieniach wstępnych w celu spełnienia określonych wymagań w zakresie kodowania. Przykłady pokazujące sposób dostosowywania ustawień wstępnych kodera znajdują się na poniższej liście:
+Usługa Media Services w pełni obsługuje dostosowywania wszystkie wartości w ustawieniach wstępnych w celu spełnienia specyficznych potrzeb kodowania i wymagań dotyczących usługi. Przykłady pokazujące sposób dostosowywania ustawień wstępnych kodera znajdują się na poniższej liście:
 
 #### <a name="examples"></a>Przykłady
 

@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie przyrostowe z bazy danych przy użyciu tabeli formantów z Azure Data Factory
+title: Kopiowanie przyrostowe z bazy danych przy użyciu tabeli formantów
 description: Dowiedz się, jak używać szablonu rozwiązania do przyrostowego kopiowania nowych lub zaktualizowanych wierszy tylko z bazy danych z Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.openlocfilehash: c9ab1d005cf71dbe03546ce5b6014f616a872f8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 22723033b59fafc0b9dfd1ae4fc08e5f6e9145ed
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684207"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896214"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Kopiowanie przyrostowe z bazy danych z tabelą formantów
 
@@ -36,7 +36,7 @@ Ten szablon najpierw pobiera starą wartość limitu i porównuje ją z bieżąc
 Szablon zawiera cztery działania:
 - Funkcja **Lookup** pobiera starą wartość górnego limitu, która jest przechowywana w zewnętrznej tabeli formantów.
 - Inne działanie **Lookup** pobiera bieżącą wartość górnego limitu ze źródłowej bazy danych.
-- **Kopiuj** kopiuje tylko zmiany ze źródłowej bazy danych do magazynu docelowego. Zapytanie identyfikujące zmiany w źródłowej bazie danych jest podobne do "SELECT * FROM Data_Source_Table, gdzie TIMESTAMP_Column >" Last High-wodnego "i TIMESTAMP_Column < =" Current High-wodnego "".
+- **Kopiuj** kopiuje tylko zmiany ze źródłowej bazy danych do magazynu docelowego. Zapytanie, które identyfikuje zmiany w źródłowej bazie danych, jest podobne do "SELECT * FROM Data_Source_Table, gdzie TIMESTAMP_Column >" ostatni górny znak wodny "i TIMESTAMP_Column < =" bieżący górny limit "".
 - **SqlServerStoredProcedure** zapisuje bieżącą wartość górnego limitu do zewnętrznej tabeli formantów dla kopiowania przyrostowego.
 
 Szablon definiuje pięć parametrów:
@@ -44,11 +44,11 @@ Szablon definiuje pięć parametrów:
 - *Data_Source_WaterMarkColumn* to nazwa kolumny w tabeli źródłowej, która jest używana do identyfikowania nowych lub zaktualizowanych wierszy. Typem tej kolumny jest zwykle *DateTime*, *int*lub podobny.
 - *Data_Destination_Folder_Path* lub *Data_Destination_Table_Name* to miejsce, w którym dane są kopiowane do magazynu docelowego.
 - *Control_Table_Table_Name* jest tabelą formantów zewnętrznych, która przechowuje wartość górnego limitu.
-- *Control_Table_Column_Name* to kolumna w tabeli formantów zewnętrznych, która przechowuje wartość górnego limitu.
+- *Control_Table_Column_Name* jest kolumną w tabeli formantów zewnętrznych, która przechowuje wartość górnego limitu.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 
-1. Zapoznaj się z tabelą źródłową, którą chcesz załadować, i zdefiniuj kolumnę High-limit, która może służyć do identyfikowania nowych lub zaktualizowanych wierszy. Typem tej kolumny może być *DateTime*, *int*lub podobny. Wartość tej kolumny zwiększa się w miarę dodawania nowych wierszy. Z następującej przykładowej tabeli źródłowej (data_source_table) można użyć kolumny *LastModifytime* jako kolumny górnego limitu.
+1. Zapoznaj się z tabelą źródłową, którą chcesz załadować, i zdefiniuj kolumnę High-limit, która może służyć do identyfikowania nowych lub zaktualizowanych wierszy. Typem tej kolumny może być *DateTime*, *int*lub podobny. Wartość tej kolumny zwiększa się w miarę dodawania nowych wierszy. Z poniższej przykładowej tabeli źródłowej (data_source_table) można użyć kolumny *LastModifytime* jako kolumny górnego limitu.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -100,7 +100,7 @@ Szablon definiuje pięć parametrów:
 
     ![Utwórz nowe połączenie z magazynem danych tabeli formantów](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. Wybierz pozycję **Użyj tego szablonu**.
+7. Wybierz przycisk **Użyj tego szablonu**.
 
      ![Użyj tego szablonu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     

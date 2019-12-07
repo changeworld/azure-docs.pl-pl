@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 6616bd8172e9bc049a6e0e2c687390197de2f391
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767317"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888516"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera za pomocą interfejsu wiersza polecenia platformy Azure
 Można wyświetlić, wyświetlić i zaktualizować parametry konfiguracji dla serwera Azure Database for MariaDB przy użyciu interfejsu wiersza polecenia platformy Azure, narzędzia wiersza poleceń platformy Azure. Podzestaw konfiguracji aparatu jest uwidoczniony na poziomie serwera i można go modyfikować.
@@ -55,7 +55,7 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 Ten kod resetuje **powolne\_kwerendy\_konfiguracji dziennika** do wartości **domyślnej.** 
 
-## <a name="working-with-the-time-zone-parameter"></a>Praca z parametrem strefy czasowej
+## <a name="working-with-the-time-zone-parameter"></a>Praca z parametr strefy czasowej
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel strefy czasowej
 
@@ -68,13 +68,16 @@ Tabele strefy czasowej na serwerze można wypełnić przez wywołanie procedury 
 CALL mysql.az_load_timezone();
 ```
 
-Aby wyświetlić dostępne wartości strefy czasowej, uruchom następujące polecenie:
+> [!IMPORTANT]
+> Należy ponownie uruchomić serwer, aby upewnić się, że tabele strefy czasowej są prawidłowo wypełnione. Aby ponownie uruchomić serwer, użyj [Azure Portal](howto-restart-server-portal.md) lub [interfejsu wiersza polecenia](howto-restart-server-cli.md).
+
+Aby wyświetlić wartości dostępne strefy czasowej, uruchom następujące polecenie:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Ustawianie strefy czasowej na poziomie globalnym
+### <a name="setting-the-global-level-time-zone"></a>Ustawienia globalne poziomu strefy czasowej
 
 Strefę czasową na poziomie globalnym można ustawić za pomocą polecenia [AZ MariaDB Server Configuration Set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) .
 
@@ -84,9 +87,9 @@ Następujące polecenie aktualizuje **czas\_** parametr **konfiguracji serwera s
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"
 ```
 
-### <a name="setting-the-session-level-time-zone"></a>Ustawianie strefy czasowej na poziomie sesji
+### <a name="setting-the-session-level-time-zone"></a>Ustawienie strefy czasowej z poziomu sesji
 
-Strefę czasową na poziomie sesji można ustawić, uruchamiając polecenie `SET time_zone` za pomocą narzędzia, takiego jak MariaDB Command line lub MariaDB Workbench. W poniższym przykładzie ustawiono strefę czasową dla strefy czasowej **USA/Pacyfiku** .  
+Strefę czasową na poziomie sesji można ustawić, uruchamiając polecenie `SET time_zone` za pomocą narzędzia, takiego jak MariaDB Command line lub MariaDB Workbench. Poniższy przykład ustawia strefę czasową **USA / Pacyfik** strefy czasowej.  
 
 ```sql
 SET time_zone = 'US/Pacific';

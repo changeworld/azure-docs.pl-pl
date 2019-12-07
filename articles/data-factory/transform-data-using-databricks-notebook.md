@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie notesu datacegły za pomocą działania notesu datacegły
+title: Uruchamianie notesu datakostks z działaniem
 description: Dowiedz się, jak można użyć działania notesu usługi Databricks w usłudze Azure Data Factory w celu uruchomienia notesu usługi Databricks w klastrze zadań usługi Databricks.
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: 7ad7c8e70d8669612baf00f19d3695dc7fab07f5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6cd80492c6901cc80c2e3f3c22536580c471ea37
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217877"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893930"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Uruchamianie notesu usługi Databricks za pomocą działania notesu usługi Databricks w usłudze Azure Data Factory
 
@@ -140,9 +140,9 @@ W tej sekcji utworzysz połączoną usługę Databricks. Ta połączona usługa 
 
     b. Wybierz usługę **AzureDatabricks\_LinkedService** (utworzoną w ramach poprzedniej procedury).
 
-    c. Przejdź do karty **Ustawienia**.
+    d. Przejdź do karty **Ustawienia**.
 
-    c. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
+    d. Użyj polecenia Przeglądaj, aby wybrać wartość dla pozycji **Ścieżka notesu** usługi Databricks. W tym miejscu utworzymy notes i określimy ścieżkę. Ścieżkę notesu można uzyskać, wykonując kilka następnych kroków.
 
        1. Uruchom obszar roboczy usługi Azure Databricks.
 

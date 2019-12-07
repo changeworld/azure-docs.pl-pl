@@ -1,43 +1,43 @@
 ---
 title: Konfigurowanie parametrów serwera-Azure Portal-Azure Database for MySQL
-description: W tym artykule opisano sposób konfigurowania parametrów serwera MySQL w Azure Database for MySQL przy użyciu Azure Portal.
+description: W tym artykule opisano sposób konfigurowania parametrów serwera MySQL w usłudze Azure Database for MySQL za pomocą witryny Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f803b7cccf3520c309e6b33d99b5565cfc4fdd01
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764920"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893148"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Jak skonfigurować parametry serwera w Azure Database for MySQL przy użyciu Azure Portal
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Jak konfigurować parametry serwera w usłudze Azure Database for MySQL za pomocą witryny Azure portal
 
-Azure Database for MySQL obsługuje konfigurację niektórych parametrów serwera. W tym artykule opisano sposób konfigurowania tych parametrów przy użyciu Azure Portal. Nie wszystkie parametry serwera można dostosować.
+Usługa Azure Database for MySQL obsługuje konfigurację niektórych parametrów serwera. W tym artykule opisano sposób konfigurowania tych parametrów przy użyciu witryny Azure portal. Nie wszystkie parametry serwera można dostosować.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Przejdź do parametrów serwera na Azure Portal
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Przejdź do parametrów serwera w witrynie Azure portal
 
-1. Zaloguj się do Azure Portal, a następnie zlokalizuj serwer Azure Database for MySQL.
-2. W sekcji **Ustawienia** kliknij pozycję **parametry serwera** , aby otworzyć stronę parametry serwera dla serwera Azure Database for MySQL.
-![strony parametrów serwera Azure Portal](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Znajdź wszystkie ustawienia, które należy dostosować. Przejrzyj kolumnę **Description** , aby zrozumieć przeznaczenie i dozwolone wartości.
-Lista rozwijana ![wyliczania](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Kliknij przycisk **Zapisz** , aby zapisać zmiany.
+1. Zaloguj się do witryny Azure portal, a następnie zlokalizuj usługi Azure Database for MySQL server.
+2. W obszarze **ustawienia** kliknij **parametrów serwera** aby otworzyć stronę parametrów serwera usługi Azure Database dla serwera MySQL.
+![Strona parametrów serwera portalu Azure](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Znajdź wszystkie ustawienia, które należy dopasować. Przegląd **opis** kolumny zrozumienie przeznaczenia i dozwolonych wartości.
+![Wyliczanie listy w dół](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Kliknij przycisk **Zapisz** Aby zapisać zmiany.
 ![Zapisz lub Odrzuć zmiany](./media/howto-server-parameters/4-save_parameters.png)
-5. Jeśli Zapisano nowe wartości parametrów, zawsze możesz przywrócić wszystkie elementy z powrotem do wartości domyślnych, wybierając pozycję **Zresetuj wszystkie do domyślnych**.
-![Resetuj wszystkie do domyślnych](./media/howto-server-parameters/5-reset_parameters.png)
+5. Jeśli masz zapisane nowe wartości dla parametrów, zawsze możesz przywrócić wszystko, co do wartości domyślnych, wybierając **Zresetuj wszystkie do domyślnych**.
+![Zresetuj wszystkie do domyślnych](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Lista konfigurowalnych parametrów serwera
+## <a name="list-of-configurable-server-parameters"></a>Lista parametrów można skonfigurować serwera
 
-Lista obsługiwanych parametrów serwera stale rośnie. Karta parametry serwera w Azure Portal służy do uzyskiwania definicji i konfigurowania parametrów serwera na podstawie wymagań aplikacji.
+Obsługiwany serwer z parametrów stale rośnie. Umożliwia karta parametry serwera w witrynie Azure portal Pobierz definicję i konfigurowanie parametrów serwera, w zależności od wymagań aplikacji.
 
-## <a name="non-configurable-server-parameters"></a>Parametry serwera, które nie zostały konfigurowalne
+## <a name="non-configurable-server-parameters"></a>Parametry można skonfigurować bez serwera
 
 Nie można skonfigurować rozmiaru puli buforów InnoDB i powiązana z Twoją [warstwą cenową](concepts-service-tiers.md).
 
-|**Warstwa cenowa**|**Rdzeń wirtualny**|**Rozmiar puli buforów InnoDB w MB <br>(serwery obsługujące do 4 TB magazynu)**| **Rozmiar puli buforów InnoDB w MB <br>(serwery obsługujące do 16 TB magazynu)**|
+|**Warstwa cenowa**|**rdzenie wirtualne:**|**Rozmiar puli buforów InnoDB w MB <br>(serwery obsługujące do 4 TB magazynu)**| **Rozmiar puli buforów InnoDB w MB <br>(serwery obsługujące do 16 TB magazynu)**|
 |:---|---:|---:|---:|
 |Basic| 1| 832| |
 |Basic| 2| 2560| |
@@ -53,52 +53,55 @@ Nie można skonfigurować rozmiaru puli buforów InnoDB i powiązana z Twoją [w
 |Zoptymalizowane pod kątem pamięci| 16| 62464| 124928|
 |Zoptymalizowane pod kątem pamięci| 32| 125952| 251904|
 
-Te dodatkowe parametry serwera nie są konfigurowane w systemie:
+Te parametry dodatkowy serwer nie są konfigurowane w systemie:
 
-|**Konstruktora**|**Stała wartość**|
+|**Parametr**|**Stała wartość**|
 | :------------------------ | :-------- |
-|innodb_file_per_table w warstwie Podstawowa|Logowanie|
+|innodb_file_per_table w warstwie podstawowa|WYŁĄCZONE|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
 
-Inne parametry serwera, które nie są wymienione w tym miejscu, są ustawione na wartości domyślne dla programu MySQL w wersjach [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) i [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
+Inne parametry serwera, które nie są wymienione w tym miejscu są ustawione na wartości domyślne out-of-box MySQL w wersji [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) i [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
 
-## <a name="working-with-the-time-zone-parameter"></a>Praca z parametrem strefy czasowej
+## <a name="working-with-the-time-zone-parameter"></a>Praca z parametr strefy czasowej
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel strefy czasowej
 
-Tabele strefy czasowej na serwerze można wypełnić przez wywołanie procedury składowanej `az_load_timezone` z narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
+Tabele strefę czasową na serwerze można wypełnić przez wywołanie metody `az_load_timezone` przechowywane procedury przy użyciu narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench.
 
 > [!NOTE]
-> Jeśli uruchamiasz polecenie `az_load_timezone` z Workbench MySQL, może być konieczne wyłączenie bezpiecznego trybu aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
+> Jeśli używasz `az_load_timezone` polecenia za pomocą aplikacji MySQL Workbench, konieczne może być pierwszym Wyłącz tryb awaryjny aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
-Aby wyświetlić dostępne wartości strefy czasowej, uruchom następujące polecenie:
+> [!IMPORTANT]
+> Należy ponownie uruchomić serwer, aby upewnić się, że tabele strefy czasowej są prawidłowo wypełnione. Aby ponownie uruchomić serwer, użyj [Azure Portal](howto-restart-server-portal.md) lub [interfejsu wiersza polecenia](howto-restart-server-cli.md).
+
+Aby wyświetlić wartości dostępne strefy czasowej, uruchom następujące polecenie:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>Ustawianie strefy czasowej na poziomie globalnym
+### <a name="setting-the-global-level-time-zone"></a>Ustawienia globalne poziomu strefy czasowej
 
-Strefę czasową na poziomie globalnym można ustawić na stronie **parametrów serwera** w Azure Portal. Poniżej ustawia globalną strefę czasową na wartość "US/Pacyfik".
+To ustawienie globalne poziomu strefy czasowej **parametrów serwera** strony w witrynie Azure portal. Poniżej ustawia globalne strefy czasowej na wartość "US / Pacyfik".
 
 ![Ustaw parametr strefy czasowej](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>Ustawianie strefy czasowej na poziomie sesji
+### <a name="setting-the-session-level-time-zone"></a>Ustawienie strefy czasowej z poziomu sesji
 
-Strefę czasową na poziomie sesji można ustawić, uruchamiając polecenie `SET time_zone` za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench. W poniższym przykładzie ustawiono strefę czasową dla strefy czasowej **USA/Pacyfiku** .
+Sesji można ustawić poziomu strefy czasowej, uruchamiając `SET time_zone` polecenia za pomocą narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench. Poniższy przykład ustawia strefę czasową **USA / Pacyfik** strefy czasowej.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-Zapoznaj się z dokumentacją programu MySQL dla [funkcji daty i godziny](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+Zapoznaj się z dokumentacją MySQL dla [funkcji daty i godziny](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Biblioteki połączeń dla Azure Database for MySQL](concepts-connection-libraries.md).
+- [Biblioteki połączeń dla usługi Azure Database for MySQL](concepts-connection-libraries.md).
