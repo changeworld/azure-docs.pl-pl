@@ -1,20 +1,19 @@
 ---
 title: 'Szybki Start: Apache Hive w usłudze Azure HDInsight z usługą Apache Zeppelin'
 description: W tym przewodniku szybki start dowiesz się, jak uruchamiać Apache Hive zapytania przy użyciu oprogramowania Apache Zeppelin.
-keywords: HDInsight, Hadoop, Hive, zapytanie interaktywne, LLAP
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 36d9e9b34deb4bc6cd5f599cfe2d09a12f680730
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/03/2019
+ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494286"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890403"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Szybki Start: wykonywanie zapytań Apache Hive w usłudze Azure HDInsight przy użyciu platformy Apache Zeppelin
 
@@ -71,9 +70,47 @@ HDInsight An interaktywny klaster zapytań. Zobacz [Tworzenie klastra](../hadoop
 
     Wyniki zapytania są porównywane z tradycyjną gałęzią.
 
+### <a name="additional-examples"></a>Więcej przykładów
+
+1. Utwórz tabelę. Wykonaj Poniższy kod w notesie Zeppelin:
+
+    ```hql
+    %jdbc(hive)
+    CREATE EXTERNAL TABLE log4jLogs (
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE;
+    ```
+
+1. Załaduj dane do nowej tabeli. Wykonaj Poniższy kod w notesie Zeppelin:
+
+    ```hql
+    %jdbc(hive)
+    LOAD DATA
+    INPATH 'wasbs:///example/data/sample.log'
+    INTO TABLE log4jLogs;
+    ```
+
+1. Wstaw pojedynczy rekord. Wykonaj Poniższy kod w notesie Zeppelin:
+
+    ```hql
+    %jdbc(hive)
+    INSERT INTO TABLE log4jLogs2
+    VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
+    ```
+
+Zapoznaj się z [podręcznikiem języka Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) w celu uzyskania dodatkowej składni.
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu przewodnika Szybki Start możesz chcieć usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
+Po zakończeniu przewodnika Szybki Start możesz chcieć usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, dzięki czemu można bezpiecznie usunąć klaster, gdy nie jest używany. Opłata jest naliczana również za klaster usługi HDInsight, nawet wtedy, gdy nie jest używana. Ze względu na to, że opłaty za klaster są dużo razy większe niż opłaty za magazyn, sprawia to, że należy usunąć klastry, gdy nie są używane.
 
 Aby usunąć klaster, zobacz [usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure](../hdinsight-delete-cluster.md).
 

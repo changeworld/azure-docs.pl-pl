@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028450"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900799"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 W przypadku większości organizacji zabezpieczenia zasobów firmy są zależne od integralności kont uprzywilejowanych, które administrują systemami IT i zarządzają nimi. Cybernetycznymi — atakujący koncentrują się na uprzywilejowanym dostępie do systemów infrastruktury (takich jak Active Directory i Azure Active Directory), aby uzyskać dostęp do poufnych danych organizacji. 
 
-Tradycyjne podejścia, które koncentrują się na zabezpieczaniu punktów wejścia i wyjścia sieci jako podstawowy obwód zabezpieczeń, są mniej efektywne ze względu na wzrost użycia aplikacji SaaS i urządzeń osobistych w Internecie. Naturalną wymianą dla obwodu zabezpieczeń sieci w złożonej nowoczesnej firmie jest kontrola uwierzytelniania i autoryzacji w warstwie tożsamości organizacji.
+Tradycyjne podejścia, które koncentrują się na zabezpieczaniu punktów wejścia i wyjścia sieci jako podstawowy obwód zabezpieczeń, są mniej efektywne ze względu na wzrost użycia aplikacji SaaS i urządzeń osobistych w Internecie. Naturalnym sposobem zastąpienia obwodowych zabezpieczeń sieci w złożonych nowoczesnych przedsiębiorstwach jest uwierzytelnianie i kontrola autoryzacji w warstwie tożsamości organizacji.
 
 Uprzywilejowane konta administracyjne są skutecznie kontrolujące ten nowy "obwód zabezpieczeń". Ochrona dostępu uprzywilejowanego jest niezwykle ważna niezależnie od tego, czy środowisko działa lokalnie, w chmurze, czy w ramach usług hostowanych w chmurze. Ochrona dostępu administracyjnego do określonych źródłami ataków wymaga wykonania kompletnego i przydatnegoego podejścia do izolowania systemów organizacji przed zagrożeniami. 
 
@@ -94,7 +94,7 @@ Po włączeniu Azure AD Privileged Identity Management:
 
 2. Aby wybrać dzierżawcę, który ma być używany Privileged Identity Management, wybierz swoją nazwę użytkownika w prawym górnym rogu Azure Portal.
 
-3. Wybierz pozycję **wszystkie usługi** i przefiltruj listę **Azure AD Privileged Identity Management**.
+3. W menu Azure Portal wybierz pozycję **wszystkie usługi** i przefiltruj listę dla **Azure AD Privileged Identity Management**.
 
 4. Otwórz Privileged Identity Management z listy **wszystkie usługi** i przypnij ją do pulpitu nawigacyjnego.
 
@@ -241,7 +241,7 @@ Wymaganie kierownictwa w języku C, menedżerów wysokiego poziomu, kluczowych p
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Używanie dedykowanych stacji roboczych do administrowania usługą Azure AD
 
-Osoby atakujące mogą próbować uzyskać dostęp do kont uprzywilejowanych w celu uzyskania dostępu do danych i systemów organizacji, dzięki czemu mogą one zakłócać integralność i autentyczność danych za pośrednictwem złośliwego kodu, który zmienia logikę programu lub przeprowadza inspekcję podczas wprowadzania poświadczeń przez administratora. Stacje robocze dostępu uprzywilejowanego (dostępem uprzywilejowanym) zapewniają dedykowany system operacyjny dla poufnych zadań, które są chronione przed atakami internetowymi i nosicielami zagrożeń. Oddzielenie tych wrażliwych zadań i kont od codziennych stacji roboczych i urządzeń zapewnia bardzo silną ochronę przed atakami polegającymi na wyłudzaniu informacji, lukami w zabezpieczeniach aplikacji i systemu operacyjnego, różne ataki personifikacji i ataki kradzieży poświadczeń, takie jak naciśnięcie klawisza Rejestrowanie, przekazywanie-mieszanie i przekazywanie biletów. Wdrażając uprzywilejowane stacje robocze dostępu, można zmniejszyć ryzyko wprowadzenia poświadczeń administratora przez administratorów z wyjątkiem środowiska pulpitu, które zostało zaostrzone. Aby uzyskać więcej informacji, zobacz [stacje robocze dostępu uprzywilejowanego](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Osoby atakujące mogą próbować uzyskać dostęp do kont uprzywilejowanych w celu uzyskania dostępu do danych i systemów organizacji, dzięki czemu mogą one zakłócać integralność i autentyczność danych za pośrednictwem złośliwego kodu, który zmienia logikę programu lub przeprowadza inspekcję podczas wprowadzania poświadczeń przez administratora. Stacje robocze z dostępem uprzywilejowanym (PAW, Privileged Access Workstation) zapewniają dedykowany system operacyjny do realizacji zadań poufnych, który jest zabezpieczony przed atakami internetowymi i wektorami zagrożenia. Oddzielenie tych wrażliwych zadań i kont od codziennych stacji roboczych i urządzeń zapewnia bardzo silną ochronę przed atakami polegającymi na wyłudzaniu informacji, lukami w zabezpieczeniach aplikacji i systemu operacyjnego, różne ataki personifikacji i ataki kradzieży poświadczeń, takie jak naciśnięcie klawisza Rejestrowanie, przekazywanie-mieszanie i przekazywanie biletów. Wdrażając uprzywilejowane stacje robocze dostępu, można zmniejszyć ryzyko wprowadzenia poświadczeń administratora przez administratorów z wyjątkiem środowiska pulpitu, które zostało zaostrzone. Aby uzyskać więcej informacji, zobacz [stacje robocze dostępu uprzywilejowanego](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Przejrzyj Narodowy Instytut standardów i zaleceń dotyczących technologii związanych z obsługą zdarzeń 
 
@@ -261,7 +261,7 @@ Jeśli korzystasz już z Azure AD Privileged Identity Management, Dostosuj przed
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Określanie zagrożeń dla protokołów logowania opartych na hasłach (w przypadku korzystania z usługi Exchange Online)
 
-W przeszłości przyjęto, że kombinacje nazwy użytkownika/hasła zostały osadzone w obszarze urządzenia, konta e-mail, telefony itd. Jednak teraz z ryzykiem dla ataków cybernetycznymi w chmurze zalecamy zidentyfikowanie każdego potencjalnego użytkownika, który w przypadku naruszenia bezpieczeństwa poświadczeń może być spowodowany tym, że nie można zalogować się do swojej poczty e-mail za pomocą nazwy użytkownika/hasła, implementując wymagania dotyczące silnego uwierzytelniania i dostępu warunkowego. Można zablokować [starsze uwierzytelnianie przy użyciu dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Zapoznaj się ze szczegółami dotyczącymi [sposobu blokowania uwierzytelniania podstawowego](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) za pomocą usługi exchnage online. 
+W przeszłości przyjęto, że kombinacje nazwy użytkownika/hasła zostały osadzone w obszarze urządzenia, konta e-mail, telefony itd. Jednak teraz z ryzykiem dla ataków cybernetycznymi w chmurze zalecamy zidentyfikowanie każdego potencjalnego użytkownika, który w przypadku naruszenia bezpieczeństwa poświadczeń może być spowodowany tym, że nie można zalogować się do swojej poczty e-mail za pomocą nazwy użytkownika/hasła, implementując wymagania dotyczące silnego uwierzytelniania i dostępu warunkowego. Można zablokować [starsze uwierzytelnianie przy użyciu dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Zapoznaj się ze szczegółami dotyczącymi [sposobu blokowania uwierzytelniania podstawowego](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) za pomocą usługi Exchange Online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Ukończ ocenę dla ról pakietu Office 365 (Jeśli korzystasz z pakietu Office 365)
 

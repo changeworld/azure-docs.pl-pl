@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/17/2019
-ms.openlocfilehash: a5ccf2d45d2c699f1f2261884f09f8cefe92b615
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: af8fa0fc231e6e10d02019d93456293fcf3e3da4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598184"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892621"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Szybki Start: wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub i odczytywanie ich z użyciem aplikacji zaplecza (Python)
 
@@ -37,7 +37,7 @@ az extension add --name azure-cli-iot-ext
 
 Pobierz przykładowy projekt Python z https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip i wyodrębnij archiwum ZIP.
 
-Program Python w wersji 3.5.3 + zainstalowany na komputerze deweloperskim. 
+Na komputerze deweloperskim jest zainstalowany język [Python w wersji 3,7 lub nowszej](https://www.python.org/downloads/) . W przypadku innych obsługiwanych wersji języka Python zapoznaj się z tematem [Azure IoT Device Features](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features) w dokumentacji zestawu SDK.
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 

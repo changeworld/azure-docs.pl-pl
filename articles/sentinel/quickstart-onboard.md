@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 09/23/2019
-ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/05/2019
+ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133100"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900434"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Szybki Start: tablica wskaźnikowa platformy Azure
 
@@ -24,18 +24,8 @@ Aby przenieść wskaźnik na platformę Azure, musisz najpierw włączyć wskaź
 
 Po nawiązaniu połączenia ze źródłami danych wybierz jedną z galerii ze szczegółowymi skoroszytami utworzonymi na podstawie danych. Te skoroszyty mogą być łatwo dostosowane do Twoich potrzeb.
 
->[!NOTE] 
-> [Cennik usługi Azure wskaźnikowej](https://azure.microsoft.com/pricing/details/azure-sentinel/) zależy od ilości danych pozyskanych w skojarzonym obszarze roboczym Azure Monitor Log Analytics. Niektóre z następujących łączników danych nie są obciążane opłatami za pozyskiwanie, jednak po wygenerowaniu dowolnego rodzaju alertów za pomocą pozyskanych danych przechowywanych w obszarze roboczym Log Analytics będą naliczane opłaty za [Azure monitor cennika usługi log Analytics](https://azure.microsoft.com/pricing/details/monitor/). 
-  > - Aktywność platformy Azure (dzienniki aktywności dla operacji platformy Azure)
-  > - Azure Active Directory Identity Protection (dla dzierżawców z licencjami usługi AAD P2)
-  > - Azure Information Protection
-  > - Zaawansowana ochrona przed zagrożeniami na platformie Azure (alerty)
-  > - Azure Security Center (alerty)
-  > - Microsoft Cloud App Security (tylko alerty)
-  > - Microsoft Defender Advanced Threat Protection (monitorowanie alertów agentów)
-  > - Office 365 (dzienniki programu Exchange i programu SharePoint)
->
-> Dzienniki inspekcji usługi Azure AD/Office 365 nie są bezpłatne i oferowane jako warstwa Premium, dlatego w przypadku pozyskiwania tych danych jest naliczana opłata za GB. 
+>[!IMPORTANT] 
+> Aby uzyskać informacje o opłatach naliczanych podczas korzystania z platformy Azure, zobacz [Cennik usługi Azure — wskaźnik](https://azure.microsoft.com/pricing/details/azure-sentinel/).
   
 
 ## <a name="global-prerequisites"></a>Ogólne wymagania wstępne
@@ -44,7 +34,7 @@ Po nawiązaniu połączenia ze źródłami danych wybierz jedną z galerii ze sz
 
 - Log Analytics obszar roboczy. Dowiedz się [, jak utworzyć obszar roboczy log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). Aby uzyskać więcej informacji na temat Log Analytics obszarów roboczych, zobacz [projektowanie Azure monitor dzienników wdrożenia](../azure-monitor/platform/design-logs-deployment.md).
 
--  Aby włączyć wskaźnik na platformie Azure, musisz mieć uprawnienia współautora do subskrypcji, w której znajduje się obszar roboczy wskaźnik platformy Azure. 
+- Aby włączyć wskaźnik na platformie Azure, musisz mieć uprawnienia współautora do subskrypcji, w której znajduje się obszar roboczy wskaźnik platformy Azure. 
 - Aby korzystać z platformy Azure, musisz mieć uprawnienia współautora lub czytelnika w grupie zasobów, do której należy obszar roboczy.
 - Do nawiązania połączenia z określonymi źródłami danych mogą być konieczne dodatkowe uprawnienia.
 - Azure — Wskaźnikowanie jest płatną usługą. Aby uzyskać informacje o cenach, zobacz [Informacje o wskaźniku platformy Azure](https://go.microsoft.com/fwlink/?linkid=2104058).

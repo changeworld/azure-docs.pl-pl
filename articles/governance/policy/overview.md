@@ -3,12 +3,12 @@ title: Omówienie zasad platformy Azure
 description: Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie definicji zasad oraz zarządzanie nimi w środowisku platformy Azure.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: db6a7c592213b0ef8a17466300c37c859e96476b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484023"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885470"
 ---
 # <a name="what-is-azure-policy"></a>Co to jest Azure Policy?
 
@@ -16,7 +16,9 @@ Administrator sprawdza, czy organizacja może osiągnąć swoje cele dzięki sku
 
 Czy w firmie występuje znacząca liczba problemów związanych z IT, które wydają się nie do rozwiązania? Dobre zarządzanie IT obejmuje planowanie inicjatyw i określanie priorytetów na poziomie strategicznym w celu ułatwienia zarządzania i rozwiązywania problemów. Ta strategiczna potrzeba jest realizowana przy użyciu usługi Azure Policy.
 
-Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie zasad oraz zarządzanie nimi. Te zasady wymuszają różne reguły i efekty dotyczące zasobów, dzięki czemu zasoby te pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Usługa Azure Policy spełnia to wymaganie, oceniając zasoby pod kątem niezgodności z przypisanymi zasadami. Może na przykład występować zasada dopuszczająca tylko określony rozmiar jednostki SKU maszyn wirtualnych w środowisku. Po wdrożeniu tej zasady nowe i istniejące zasoby są oceniane pod kątem zgodności. Użycie odpowiedniego typu zasad umożliwia zapewnienie zgodności istniejących zasobów. W dalszej części tej dokumentacji bardziej szczegółowo omówiono tworzenie i implementowanie zasad za pomocą usługi Azure Policy.
+Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisywanie zasad oraz zarządzanie nimi. Te zasady wymuszają różne reguły i efekty dotyczące zasobów, dzięki czemu zasoby te pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Usługa Azure Policy spełnia to wymaganie, oceniając zasoby pod kątem niezgodności z przypisanymi zasadami. Wszystkie dane przechowywane przez Azure Policy są szyfrowane w stanie spoczynku.
+
+Może na przykład występować zasada dopuszczająca tylko określony rozmiar jednostki SKU maszyn wirtualnych w środowisku. Po wdrożeniu tej zasady nowe i istniejące zasoby są oceniane pod kątem zgodności. Użycie odpowiedniego typu zasad umożliwia zapewnienie zgodności istniejących zasobów. W dalszej części tej dokumentacji bardziej szczegółowo omówiono tworzenie i implementowanie zasad za pomocą usługi Azure Policy.
 
 > [!IMPORTANT]
 > Ocena zgodności w usłudze Azure Policy jest teraz dostępna w przypadku wszystkich przypisań niezależnie od warstwy cenowej. Jeśli przydziały nie pokazują danych zgodności, upewnij się, że subskrypcja została zarejestrowana w obrębie dostawcy zasobów Microsoft.PolicyInsights.
@@ -25,7 +27,7 @@ Azure Policy to usługa platformy Azure, która umożliwia tworzenie i przypisyw
 
 ## <a name="how-is-it-different-from-rbac"></a>Czym się to różni od RBAC?
 
-Istnieje kilka najważniejszych różnic między Azure Policy i kontroli dostępu opartej na rolach (RBAC). RBAC koncentruje się na działaniach użytkownika w różnych zakresach. Użytkownik może zostać dodany do roli współautora dla grupy zasobów, aby mógł wprowadzać zmiany w tej grupie zasobów. Azure Policy koncentruje się na właściwościach zasobów podczas wdrażania i dla już istniejących zasobów. Azure Policy kontrolki właściwości, takie jak typy lub lokalizacje zasobów. W przeciwieństwie do RBAC, Azure Policy jest domyślnym dozwolonym i jawnym systemem Odmów.
+Istnieje kilka najważniejszych różnic między Azure Policy i kontroli dostępu opartej na rolach (RBAC). RBAC koncentruje się na działaniach użytkownika w różnych zakresach. Użytkownik może zostać dodany do roli współautora dla grupy zasobów, aby mógł wprowadzać zmiany w tej grupie zasobów. Azure Policy koncentruje się na właściwościach zasobów podczas wdrażania i dla już istniejących zasobów. Usługa Azure Policy służy do kontrolowania właściwości, takich jak typy lub lokalizacje zasobów. W przeciwieństwie do RBAC, Azure Policy jest domyślnym dozwolonym i jawnym systemem Odmów.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Uprawnienia RBAC w usłudze Azure Policy
 
@@ -104,7 +106,7 @@ Na przykład masz definicję inicjatywy **initiativeC** oraz definicje zasad **p
 | Zasady | Nazwa parametru |Typ parametru  |Uwaga |
 |---|---|---|---|
 | policyA | allowedLocations | tablica  |Ten parametr oczekuje listy ciągów dla wartości, ponieważ typ parametru został zdefiniowany jako tablica |
-| policyB | allowedSingleLocation |ciąg |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
+| policyB | allowedSingleLocation |string |Ten parametr oczekuje jednego słowa dla wartości, ponieważ typ parametru został zdefiniowany jako ciąg |
 
 W tym scenariuszu podczas definiowania parametrów inicjatywy **initiativeC** dostępne są trzy opcje:
 

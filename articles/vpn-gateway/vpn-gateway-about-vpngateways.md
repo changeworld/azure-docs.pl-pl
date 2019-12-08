@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 11187b403b9bc23a0aa20eb5ee7a5e4923bb7276
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075435"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896663"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -25,7 +25,7 @@ Brama sieci wirtualnej składa się z co najmniej dwóch maszyn wirtualnych wdro
 
 Jednym z ustawień skonfigurowanych dla bramy sieci wirtualnej jest typ bramy. Typ bramy określa sposób użycia bramy sieci wirtualnej oraz akcje podejmowane przez bramę. Typ bramy "VPN" określa, że typ tworzonej bramy sieci wirtualnej to "Brama sieci VPN", a nie Brama ExpressRoute. Sieć wirtualna może mieć dwie bramy sieci wirtualnej; jedna Brama sieci VPN i jedna brama ExpressRoute — podobnie jak w przypadku [współistniejących](#coexisting) konfiguracji połączeń. Aby uzyskać więcej informacji, zobacz [Gateway types](vpn-gateway-about-vpn-gateway-settings.md#gwtype) (Typy bram).
 
-Bramy sieci VPN można wdrożyć w Strefy dostępności platformy Azure. Zapewnia to elastyczność, skalowalność i wyższą dostępność dla bram sieci wirtualnej. Wdrażanie bram w Strefy dostępności platformy Azure fizycznie i logicznie oddziela bramy w danym regionie, chroniąc połączenie sieci lokalnej na platformie Azure przed awariami na poziomie strefy. Zobacz [temat strefy — nadmiarowe bramy sieci wirtualnej w strefy dostępności platformy Azure](about-zone-redundant-vnet-gateways.md)
+Bramy sieci VPN można wdrożyć w Strefy dostępności platformy Azure. Zapewni to elastyczność, skalowalność i większą dostępność bram sieci wirtualnej. Wdrażanie bram w strefach dostępności platformy Azure fizycznie i logicznie dzieli bramy w danym regionie, chroniąc jednocześnie lokalną łączność sieci z platformą Azure przed błędami na poziomie strefy. Zobacz [temat strefy — nadmiarowe bramy sieci wirtualnej w strefy dostępności platformy Azure](about-zone-redundant-vnet-gateways.md)
 
 Tworzenie bramy sieci wirtualnej może potrwać do 45 minut. Podczas tworzenia bramy sieci wirtualnej maszyny wirtualne bramy są wdrażane w podsieci bramy i konfigurowane przy użyciu określonych przez Ciebie ustawień. Po utworzeniu bramy sieci VPN możesz utworzyć połączenie tunelu VPN IPsec/IKE między bramą sieci VPN a inną bramą sieci VPN (sieć wirtualna-sieć wirtualna) lub utworzyć połączenie tunelu VPN IPsec/IKE obejmujące wiele lokalizacji między bramą sieci VPN a lokalnym urządzeniem sieci VPN (lokacja-lokacja). Możesz również utworzyć połączenie sieci VPN typu punkt-lokacja (VPN over OpenVPN, IKEv2 lub SSTP), które umożliwia łączenie się z siecią wirtualną z lokalizacji zdalnej, np. z konferencji lub z domu.
 
@@ -76,7 +76,7 @@ Przedstawione diagramy i opisy mogą ułatwić wybór topologii połączenia dos
 
 ### <a name="S2S"></a>Lokacja-lokacja
 
-Połączenie bramy sieci VPN typu lokacja-lokacja to połączenie nawiązywane za pośrednictwem tunelu sieci VPN wykorzystującego protokół IPsec/IKE (IKEv1 lub IKEv2). Z połączeń typu lokacja-lokacja (S2S) można korzystać w ramach konfiguracji hybrydowych i obejmujących wiele lokalizacji. Połączenie typu lokacja-lokacja wymaga, aby urządzenie sieci VPN znajdowało się w środowisku lokalnym, miało przypisany publiczny adres IP i nie znajdowało się za translatorem adresów sieciowych. Aby uzyskać informacje o wybieraniu urządzenia VPN, zobacz [Brama VPN Gateway — często zadawane pytania dotyczące urządzeń VPN](vpn-gateway-vpn-faq.md#s2s).
+Połączenie bramy sieci VPN typu lokacja-lokacja to połączenie nawiązywane za pośrednictwem tunelu sieci VPN wykorzystującego protokół IPsec/IKE (IKEv1 lub IKEv2). Z połączeń typu lokacja-lokacja (S2S) można korzystać w ramach konfiguracji hybrydowych i obejmujących wiele lokalizacji. Połączenie S2S wymaga, aby urządzenie sieci VPN znajdowało się w środowisku lokalnym, które ma przypisany publiczny adres IP. Aby uzyskać informacje o wybieraniu urządzenia VPN, zobacz [Brama VPN Gateway — często zadawane pytania dotyczące urządzeń VPN](vpn-gateway-vpn-faq.md#s2s).
 
 ![Przykład połączenia typu lokacja-lokacja w usłudze Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 
@@ -118,7 +118,7 @@ Sieci wirtualne, między którymi tworzone jest połączenie, mogą:
 
 Platforma Azure ma obecnie dwa modele wdrażania: klasyczny model wdrażania oraz model wdrażania przy użyciu usługi Resource Manager. Jeśli korzystasz z platformy Azure od pewnego czasu, prawdopodobnie masz maszyny wirtualne i wystąpienia roli platformy Azure działające w klasycznej sieci wirtualnej. Nowsze maszyny wirtualne i wystąpienia roli mogą działać w sieci wirtualnej utworzonej w usłudze Resource Manager. Możesz utworzyć połączenie między tymi sieciami wirtualnymi, aby umożliwić zasobom w jednej sieci wirtualnej bezpośrednie komunikowanie się z zasobami w innej sieci.
 
-### <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
+### <a name="vnet-peering"></a>Wirtualne sieci równorzędne
 
 Można utworzyć połączenie przy użyciu komunikacji równorzędnej sieci wirtualnych pod warunkiem, że sieć wirtualna spełnia określone wymagania. W przypadku komunikacji równorzędnej sieci wirtualnych nie jest używana brama sieci wirtualnej. Aby uzyskać więcej informacji, zobacz temat [Komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md).
 

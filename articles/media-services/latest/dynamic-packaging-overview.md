@@ -1,7 +1,7 @@
 ---
 title: Dynamiczne pakowanie w Media Services
 titleSuffix: Azure Media Services
-description: Omówienie tworzenia pakietów dynamicznych w Azure Media Services.
+description: Ten artykuł zawiera omówienie tworzenia pakietów dynamicznych w programie Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dbce24ced0ed057eac829d5c4b7223a10fa96b3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574891"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888482"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Dynamiczne pakowanie w Media Services
 
@@ -31,13 +31,13 @@ W Media Services [punkt końcowy przesyłania strumieniowego](streaming-endpoint
 
 Aby skorzystać z funkcji dynamicznego tworzenia pakietów, musisz [zakodować](encoding-concept.md) plik Mezzanine (Source) do zestawu wielu plików MP4 (ISO Base Media 14496-12). Musisz mieć [zasób](assets-concept.md) z zakodowanymi plikami konfiguracyjnymi MP4 i przesyłania strumieniowego, które są potrzebne do Media Services dynamicznego tworzenia pakietów. Z tego zestawu plików MP4 można użyć pakowania dynamicznego do dostarczania wideo za pośrednictwem następujących protokołów multimediów strumieniowych:
 
-|Protokół|Przykład|
+|Protocol (Protokół)|Przykład|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-KRESKA CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|CMAF MPEG-KRESKA|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
 Jeśli planujesz ochronę zawartości przy użyciu Media Services szyfrowania dynamicznego, zobacz [protokoły przesyłania strumieniowego i typy szyfrowania](content-protection-overview.md#streaming-protocols-and-encryption-types).
@@ -110,7 +110,7 @@ Pakowanie dynamiczne obsługuje dźwięk kodowany przy użyciu następujących p
 * Dolby Atmos<br />
    Przesyłanie strumieniowe zawartości Dolby Atmos jest obsługiwane w przypadku standardów, takich jak protokół MPEG-KRESKa, przy użyciu wspólnego formatu przesyłania strumieniowego (CSF) lub Common Media Application Format (CMAF) i za pośrednictwem HTTP Live Streaming (HLS) z CMAF.
 
-* [Pakiet](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
+* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
    Kodery-dekoder usług DTS obsługiwane przez ŁĄCZNIKi — CMAF, HLS-M2TS i HLS-CMAF są następujące:  
 
     * Cyfrowa przestrzenny usług DTS (dtsc)
@@ -162,7 +162,7 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-#### <a name="mpeg-dash"></a>MPEG-KRESKA
+#### <a name="mpeg-dash"></a>MPEG-DASH
 
 Oto przykład pliku manifestu MPEG-KRESKOWANY, nazywanego również opisem prezentacji multimediów MPEG-KRESKOWANY (MPD):
 

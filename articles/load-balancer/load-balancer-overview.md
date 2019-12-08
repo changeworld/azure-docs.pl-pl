@@ -12,44 +12,26 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c95744e58ce08943765755145645ed45a2ccdb1f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423909"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894459"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
-Za pomocą usługi Azure Load Balancer możesz skalować aplikacje i zapewniać wysoką dostępność swoich usług. Moduł równoważenia obciążenia obsługuje scenariusze ruchu przychodzącego i wychodzącego, udostępnia małe opóźnienia i wysoką przepływność oraz skaluje nawet miliony przepływów dla wszystkich aplikacji protokołu TCP i UDP.
+*Równoważenie obciążenia* odnosi się do wydajnej dystrybucji obciążenia lub przychodzącego ruchu sieciowego między grupami zasobów lub serwerów zaplecza. Platforma Azure oferuje [różne opcje równoważenia obciążenia](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) , które można wybrać w zależności od potrzeb. Ten dokument zawiera Azure Load Balancer.
 
-Load Balancer dystrybuuje Nowe przepływy przychodzące, które docierają do wystąpień puli zaplecza Load Balancer, zgodnie z określonymi regułami i sondami kondycji.
+Azure Load Balancer działa w warstwie cztery z modelem połączenia typu Open Systems (OSI). Jest to pojedynczy punkt kontaktu dla klientów. Load Balancer dystrybuuje Nowe przepływy przychodzące, które docierają do wystąpień puli zaplecza Load Balancer, zgodnie z określonymi regułami równoważenia obciążenia i sondami kondycji. Wystąpienia puli zaplecza mogą być Virtual Machinesami platformy Azure lub wystąpieniami w zestawie skalowania maszyn wirtualnych (VMSS). 
 
-Publiczna Load Balancer może zapewnić połączenia wychodzące maszyn wirtualnych w sieci wirtualnej przez przetłumaczenie ich prywatnych adresów IP na publiczne adresy IP.
+Za pomocą Azure Load Balancer można skalować aplikacje i tworzyć duże usługi availabile. Load Balancer obsługuje zarówno scenariusze przychodzące, jak i wychodzące, zapewnia małe opóźnienia i wysoką przepływność oraz skaluje się do milionów przepływów dla wszystkich aplikacji TCP i UDP.
 
-Azure Load Balancer jest dostępna w dwóch warstwach cenowych lub jednostkach *SKU*: podstawowa i standardowa. Istnieją różnice w ich skalowalności, funkcjach i cenach. Dowolny scenariusz, który jest możliwy w przypadku podstawowego Load Balancer można również utworzyć za pomocą usługa Load Balancer w warstwie Standardowa, chociaż podejścia różnią się nieznacznie. Korzystając z informacji o Load Balancer, zapoznaj się z podstawą i różnicami specyficznymi dla jednostki SKU.
+**[Publiczna Load Balancer](#publicloadbalancer)** może zapewnić połączenia wychodzące maszyn wirtualnych w sieci wirtualnej przez przetłumaczenie ich prywatnych adresów IP na publiczne adresy IP. Publiczne usługi równoważenia obciążenia są używane do równoważenia obciążenia ruchu internetowego modułu równoważek do maszyn wirtualnych.
 
-## <a name="why-use-load-balancer"></a>Dlaczego warto używać modułu równoważenia obciążenia?
-
-Usługa Azure Load Balancer umożliwia:
-
-* Równoważenie obciążenia przychodzącego ruchu internetowego do maszyn wirtualnych. Ta konfiguracja jest znana jako [publiczna Load Balancer](#publicloadbalancer).
-* Równoważenie obciążenia ruchu między maszynami wirtualnymi w sieci wirtualnej. Możesz również uzyskać dostęp do frontonu modułu równoważenia obciążenia z sieci lokalnej w scenariuszu hybrydowym. Oba te scenariusze używają konfiguracji, która jest znana jako [wewnętrzna Load Balancer](#internalloadbalancer).
-* Przekazywanie ruchu do określonego portu w ramach określonych maszyn wirtualnych za pomocą reguł translatora adresów sieciowych.
-* Zapewnianie [łączności wychodzącej](load-balancer-outbound-connections.md) dla maszyn wirtualnych w ramach Twojej sieci wirtualnej przy użyciu publicznego modułu równoważenia obciążenia.
-
->[!NOTE]
-> Platforma Azure udostępnia zestaw w pełni zarządzanych rozwiązań do równoważenia obciążenia dla Twoich scenariuszy. Jeśli szukasz zakończenia protokołu Transport Layer Security (TLS) ("odciążanie protokołu SSL") lub żądania dla protokołu HTTP/HTTPS, przetwarzanie warstwy aplikacji, zobacz [co to jest usługa Azure Application Gateway?](../application-gateway/overview.md) Jeśli szukasz globalnego równoważenia obciążenia DNS, zobacz [co to jest Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Kompleksowe scenariusze mogą przynieść korzyści wynikające z łączenia tych rozwiązań.
->
-> Aby zapoznać się z porównaniem opcji równoważenia obciążenia platformy Azure, zobacz [Omówienie opcji równoważenia obciążenia na platformie Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
-
-## <a name="what-are-load-balancer-resources"></a>Czym są zasoby modułu równoważenia obciążenia?
-
-Zasoby Load Balancer to obiekty określające, w jaki sposób platforma Azure powinna programować infrastrukturę z wieloma dzierżawcami w celu osiągnięcia scenariusza, który ma zostać utworzony. Nie istnieje bezpośredni związek między zasobami Load Balancer i rzeczywistą infrastrukturą. Tworzenie modułu równoważenia obciążenia nie powoduje utworzenia wystąpienia, a pojemność jest zawsze dostępna.
-
-Zasób Load Balancer może być Load Balancerem publicznym lub Load Balancer wewnętrznym. Funkcje zasobu Load Balancer są definiowane za pomocą frontonu, reguły, sondy kondycji i definicji puli zaplecza. Maszyny wirtualne są umieszczane w puli zaplecza przez określenie puli zaplecza z maszyny wirtualnej.
+**[Wewnętrznych (lub prywatnych) Load Balancer](#internalloadbalancer)** można używać w scenariuszach, w których na frontonie są używane tylko prywatne adresy IP. Wewnętrzne moduły równoważenia obciążenia są używane do równoważenia obciążenia ruchu w sieci wirtualnej. Możesz również uzyskać dostęp do frontonu modułu równoważenia obciążenia z sieci lokalnej w scenariuszu hybrydowym.
 
 ## <a name="fundamental-load-balancer-features"></a>Podstawowe funkcje modułu równoważenia obciążenia
 
@@ -195,4 +177,4 @@ Aby uzyskać informacje na temat umowy SLA usługa Load Balancer w warstwie Stan
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Tworzenie podstawowego Load Balancer](quickstart-create-basic-load-balancer-portal.md) , aby rozpocząć korzystanie z Load Balancer: Utwórz jedną, twórz maszyny wirtualne z zainstalowanym niestandardowym rozszerzeniem usług IIS i Zrównoważ obciążenie aplikacji sieci Web między maszynami wirtualnymi.
+Zobacz [tworzenie usługa Load Balancer w warstwie Standardowa publicznej](quickstart-load-balancer-standard-public-portal.md) , aby rozpocząć korzystanie z usługi Load Balancer: Utwórz jedną, twórz maszyny wirtualne z zainstalowanym niestandardowym rozszerzeniem usług IIS i Zrównoważ obciążenie aplikacji sieci Web między maszynami wirtualnymi.
