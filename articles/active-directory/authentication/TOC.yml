@@ -43,8 +43,6 @@
       items:
         - name: Jak działa uwierzytelnianie wieloskładnikowe
           href: concept-mfa-howitworks.md
-        - name: Włączanie usługi MFA
-          href: concept-mfa-get-started.md
         - name: Licencjonowanie użytkowników
           href: concept-mfa-licensing.md
         - name: Zarządzanie dostawcą uwierzytelniania

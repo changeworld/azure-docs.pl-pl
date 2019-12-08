@@ -17,6 +17,14 @@
   items:
     - name: Wskaźnik bezpieczeństwa tożsamości
       href: identity-secure-score.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Włączanie usługi MFA
+          href: concept-fundamentals-mfa-get-started.md
+        - name: Domyślne ustawienia zabezpieczeń
+          href: concept-fundamentals-security-defaults.md
+        - name: Blokowanie starszego uwierzytelniania
+          href: concept-fundamentals-block-legacy-authentication.md
     - name: Zarządzanie grupami i dostępem
       href: active-directory-manage-groups.md
     - name: Licencjonowanie oparte na grupach

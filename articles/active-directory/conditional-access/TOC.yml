@@ -17,8 +17,6 @@
   items:
     - name: Typowe zasady dostępu warunkowego
       href: concept-conditional-access-policy-common.md
-    - name: Domyślne ustawienia zabezpieczeń
-      href: concept-conditional-access-security-defaults.md
     - name: Składniki zasad dostępu warunkowego
       href: concept-conditional-access-policies.md
     - name: Warunki
