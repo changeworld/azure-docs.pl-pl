@@ -4,19 +4,19 @@ description: Użyj Azure Data Factory, aby skopiować dane z pakietu Office 365
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672624"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931434"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Ładowanie danych z pakietu Office 365 przy użyciu Azure Data Factory
 
@@ -43,7 +43,7 @@ W tym artykule przedstawiono sposób użycia Data Factory _ładowania danych z p
    
    ![Strona główna fabryki danych](./media/load-office-365-data/data-factory-home-page.png)
 
-5. Wybierz kafelek **tworzenie & monitor** , aby uruchomić aplikację integracji danych w osobnej karcie.
+5. Wybierz kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić aplikację Integracja danych.
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
@@ -112,7 +112,7 @@ Możesz również wyświetlić kod JSON skojarzony z potoku, klikając pozycję 
 
 Na górnym pasku narzędzi wybierz pozycję **Opublikuj wszystko**. Ta akcja powoduje opublikowanie utworzonych jednostek (zestawy danych i potok) w usłudze Data Factory.
 
-![Publikuj zmiany](./media/load-office-365-data/publish-changes.png) 
+![Publikowanie zmian](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>Ręczne wyzwalanie potoku
 
@@ -128,7 +128,7 @@ Aby wyświetlić uruchomienia działań skojarzone z uruchomieniem potoku, wybie
 
 ![Monitorowanie aktywności](./media/load-office-365-data/activity-status.png) 
 
-Jeśli żądasz danych dla tego kontekstu po raz pierwszy (kombinacji, do której tabeli danych uzyskuje się dostęp, którego z kontem docelowym są dane, które są ładowane, a tożsamość użytkownika, który ma być żądaniem dostępu do danych), zobaczysz działanie kopiowania. stan jako **w toku**i tylko po kliknięciu linku "Szczegóły" w obszarze Akcje zobaczysz stan jako **RequesetingConsent**.  Członek grupy osoby zatwierdzającej dostęp do danych musi zatwierdzić żądanie w Privileged Access Management zanim będzie możliwe kontynuowanie wyodrębniania danych.
+Jeśli żądanie danych dla tego kontekstu jest wykonywane po raz pierwszy (połączenie z tabelą danych jest dostępne, do której należy dane konto docelowe, i które tożsamość użytkownika tworzy żądanie dostępu do danych), zobaczysz stan działania kopiowania jako **w toku**i tylko po kliknięciu linku "Szczegóły" w obszarze Akcje zobaczysz stan jako **RequesetingConsent**.  Członek grupy osoby zatwierdzającej dostęp do danych musi zatwierdzić żądanie w Privileged Access Management zanim będzie możliwe kontynuowanie wyodrębniania danych.
 
 _Stan jako żądanie zgody:_ 
 ![szczegóły wykonania działania — żądanie zgody](./media/load-office-365-data/activity-details-request-consent.png) 

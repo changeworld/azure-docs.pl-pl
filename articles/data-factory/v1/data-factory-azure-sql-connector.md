@@ -4,21 +4,20 @@ description: Informacje o kopiowaniu danych do/z Azure SQL Database przy użyciu
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 484f735b-8464-40ba-a9fc-820e6553159e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8d53d61991f191d2cd0636dba918e9499c4f5d2b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7fc0b2822195d952c2a4f9c02bf3758c0e2b809a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683091"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928087"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych do i z Azure SQL Database przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -47,7 +46,7 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane do/z Azure
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -60,13 +59,13 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania Data Factory jednostek specyficznych dla Azure SQL Database:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Połączona usługa Azure SQL łączy bazę danych SQL Azure z fabryką danych. Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi Azure SQL.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość Type musi mieć wartość: **AzureSqlDatabase** |Tak |
-| Przekształcon |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Tak |
+| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Tak |
 
 > [!IMPORTANT]
 > Skonfiguruj [Azure SQL Database zaporą](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) serwera bazy danych, aby [umożliwić usługom platformy Azure dostęp do serwera](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Ponadto, jeśli kopiujesz dane do Azure SQL Database spoza platformy Azure, w tym z lokalnych źródeł danych za pomocą bramy usługi Data Factory, skonfiguruj odpowiedni zakres adresów IP dla maszyny wysyłającej dane do Azure SQL Database.
@@ -78,7 +77,7 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja typeProperties jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** zestawu danych typu **wartość azuresqltable** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | tableName |Nazwa tabeli lub widoku w wystąpieniu Azure SQL Database, do którego odwołuje się połączona usługa. |Tak |
 
@@ -92,14 +91,14 @@ Natomiast właściwości dostępne w sekcji **typeProperties** działania różn
 
 Jeśli przenosisz dane z bazy danych Azure SQL, ustaw typ źródła w działaniu Kopiuj na **sqlsource**. Podobnie, Jeśli przenosisz dane do bazy danych Azure SQL, należy ustawić typ ujścia w działaniu Copy na **sqlsink**. Ta sekcja zawiera listę właściwości obsługiwanych przez element sqlsource i sqlsink.
 
-### <a name="sqlsource"></a>Wartość sqlsource
+### <a name="sqlsource"></a>SqlSource
 W działaniu kopiowania, gdy źródłem jest typ **sqlsource**, w sekcji **typeProperties** są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Przykład: `select * from MyTable`. |Nie |
-| sqlReaderStoredProcedureName |Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. |Nazwa procedury składowanej. Ostatnia instrukcja SQL musi być instrukcją SELECT w procedurze składowanej. |Nie |
-| storedProcedureParameters |Parametry procedury składowanej. |Pary nazwa/wartość. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
+| sqlReaderStoredProcedureName |Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. |Nazwa procedury składowanej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
+| storedProcedureParameters |Parametry procedury składowanej. |Pary nazwa/wartość. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie |
 
 Jeśli **sqlReaderQuery** jest określony dla elementu sqlsource, działanie Copy uruchamia to zapytanie względem źródła Azure SQL Database, aby uzyskać dane. Alternatywnie można określić procedurę składowaną, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** (Jeśli procedura składowana pobiera parametry).
 
@@ -142,17 +141,17 @@ END
 GO
 ```
 
-### <a name="sqlsink"></a>Ujściem element sqlsink
+### <a name="sqlsink"></a>SqlSink
 **Obiekt sqlsink** obsługuje następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu. |czasu<br/><br/> Przykład: "00:30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu. |TimeSpan<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie writeBatchSize. |Liczba całkowita (liczba wierszy) |Nie (domyślnie: 10000) |
 | sqlWriterCleanupScript |Określ zapytanie dla działania kopiowania, które ma zostać wykonane, aby dane określonego wycinka zostały oczyszczone. Aby uzyskać więcej informacji, zobacz [powtórzona kopia](#repeatable-copy). |Instrukcja zapytania. |Nie |
 | sliceIdentifierColumnName |Określ nazwę kolumny dla działania kopiowania, która ma zostać wypełniona automatycznie wygenerowaną identyfikatorem wycinka, która jest używana do czyszczenia danych określonego wycinka po ponownym uruchomieniu. Aby uzyskać więcej informacji, zobacz [powtórzona kopia](#repeatable-copy). |Nazwa kolumny kolumny zawierającej dane typu binary (32). |Nie |
 | sqlWriterStoredProcedureName |Nazwa procedury składowanej, która definiuje sposób zastosowania danych źródłowych do tabeli docelowej, np. w celu przeprowadzenia upserts lub przekształcenia przy użyciu własnej logiki biznesowej. <br/><br/>Należy zauważyć, że ta procedura składowana zostanie **wywołana na partię**. Jeśli chcesz wykonać operację, która jest uruchamiana tylko raz i nie ma nic do zrobienia z danymi źródłowymi, np. Delete/Truncate, użyj właściwości `sqlWriterCleanupScript`. |Nazwa procedury składowanej. |Nie |
-| storedProcedureParameters |Parametry procedury składowanej. |Pary nazwa/wartość. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
+| storedProcedureParameters |Parametry procedury składowanej. |Pary nazwa/wartość. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie |
 | sqlWriterTableType |Określ nazwę typu tabeli, która ma zostać użyta w procedurze składowanej. Działanie kopiowania sprawia, że dane są dostępne w tabeli tymczasowej z tym typem tabeli. Kod procedury składowanej może następnie scalić dane kopiowane z istniejącymi danymi. |Nazwa typu tabeli. |Nie |
 
 #### <a name="sqlsink-example"></a>Przykład obiektu sqlsink
@@ -635,40 +634,40 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przemieszczania danych do i z Azure SQL Database następujące mapowania są używane z typu SQL do typu .NET i na odwrót. Mapowanie jest takie samo jak mapowanie typu danych SQL Server ADO.NET.
 
-| Typ aparatu bazy danych SQL Server | Typ .NET Framework |
+| Typ aparatu bazy danych SQL Server | Typ programu .NET Framework |
 | --- | --- |
 | bigint |Int64 |
-| Binarny |Byte [] |
+| binary |Byte[] |
 | bit |Wartość logiczna |
-| delikatn |String, Char [] |
-| date |DateTime |
-| Datę |DateTime |
-| datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
-| Dokładności |Dokładności |
-| FILESTREAM — atrybut (varbinary (max)) |Byte [] |
-| Float |Double |
-| image |Byte [] |
-| int |Elementem |
-| finansowego |Dokładności |
-| nchar |String, Char [] |
-| ntext |String, Char [] |
-| przypada |Dokładności |
-| nvarchar |String, Char [] |
-| czasie rzeczywistym |Pojedyncze |
-| rowversion |Byte [] |
-| smalldatetime |DateTime |
+| char |String, Char[] |
+| date |Data i godzina |
+| Datetime |Data i godzina |
+| datetime2 |Data i godzina |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| float |Double |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Pojedyncze |
+| rowversion |Byte[] |
+| smalldatetime |Data i godzina |
 | smallint |Int16 |
-| smallmoney |Dokładności |
-| sql_variant |Stream |
-| tekst |String, Char [] |
-| time |Czasu |
-| sygnatura czasowa |Byte [] |
-| tinyint |Bajc |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| tekst |String, Char[] |
+| time |TimeSpan |
+| sygnatura czasowa |Byte[] |
+| tinyint |Bajtów |
 | uniqueidentifier |Identyfikator GUID |
-| liczby |Byte [] |
-| varchar |String, Char [] |
-| xml |dokument |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 ## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
 Aby dowiedzieć się więcej na temat mapowania kolumn w źródłowym zestawie danych na kolumny w datadataset, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).
