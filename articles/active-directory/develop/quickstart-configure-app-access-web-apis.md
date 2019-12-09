@@ -2,26 +2,23 @@
 title: Konfigurowanie aplikacji w celu uzyskiwania dostępu do interfejsów API sieci Web — platforma tożsamości firmy Microsoft
 description: Dowiedz się, jak skonfigurować aplikację zarejestrowaną za pomocą platformy tożsamości firmy Microsoft tak, aby uwzględnić identyfikatory URI przekierowania, poświadczenia lub uprawnienia na potrzeby dostępu do internetowych interfejsów API.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0fd9374c0f507dfc075719ef61f71457317dedba
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106608"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915164"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Szybki Start: Konfigurowanie aplikacji klienckiej w celu uzyskiwania dostępu do interfejsów API sieci Web
 
@@ -128,7 +125,7 @@ Aby skonfigurować ustawienia aplikacji zależnie od platformy lub urządzenia, 
 
 1. Wprowadź informacje o ustawieniach w oparciu o wybraną platformę.
 
-   | Platforma                | Decyzji              | Ustawienia konfiguracji            |
+   | Platforma                | Choices              | Ustawienia konfiguracji            |
    |-------------------------|----------------------|-----------------------------------|
    | **Aplikacje internetowe**    | **Sieć Web**              | Wprowadź **Identyfikator URI przekierowania** dla aplikacji. |
    | **Aplikacje mobilne** | **iOS**              | Wprowadź **Identyfikator pakietu**aplikacji, który można znaleźć w Xcode w oknie info. plist lub ustawienia kompilacji. Dodanie identyfikatora pakietu powoduje automatyczne utworzenie identyfikatora URI przekierowania dla aplikacji. |

@@ -1,28 +1,24 @@
 ---
-title: Logowanie użytkowników i uzyskiwanie tokenu dostępu w usłudze JavaScript SPA | Azure
+title: Logowanie użytkowników w JavaScript aplikacje jednostronicowe | Azure
 titleSuffix: Microsoft identity platform
-description: Dowiedz się, w jaki sposób aplikacje JavaScript mogą wywołać interfejs API, który wymaga tokenów dostępu przy użyciu platformy tożsamości firmy Microsoft.
+description: Dowiedz się, w jaki sposób aplikacja JavaScript może korzystać z interfejsu API, który wymaga tokenów dostępu przy użyciu platformy tożsamości firmy Microsoft.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 77763ac30b4ba98e4849a25690302469843b4d06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795611"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920637"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Szybki Start: Logowanie użytkowników i uzyskiwanie tokenu dostępu w usłudze JavaScript SPA
 
@@ -80,11 +76,12 @@ Wybierz opcję odpowiednią dla Twojego środowiska programistycznego:
 
 * Obowiązkowe Aby uruchomić projekt z serwerem IIS, [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Wyodrębnij plik zip do folderu lokalnego (na przykład *C:\Azure-Samples*).
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-your-javascript-app"></a>Krok 3. Konfigurowanie aplikacji JavaScript
-> W folderze *JavaScriptSPA* Edytuj *plik index. html*i ustaw wartości `clientID` i `authority` w obszarze `msalConfig`.
+#### <a name="step-3-configure-your-javascript-app"></a>Krok 3. Konfigurowanie aplikacji JavaScript
 
 > [!div renderon="docs"]
+> W folderze *JavaScriptSPA* Edytuj *plik index. html*i ustaw wartości `clientID` i `authority` w obszarze `msalConfig`.
+
+> [!div class="sxs-lookup" renderon="portal"]
 > W folderze *JavaScriptSPA* Edytuj *plik index. html*i Zastąp `msalConfig` następującym kodem:
 
 ```javascript
@@ -101,10 +98,14 @@ var msalConfig = {
 };
 
 ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Ten przewodnik Szybki Start obsługuje Enter_the_Supported_Account_Info_Here.
+
 
 > [!div renderon="docs"]
 >
-> Gdzie:
+> Miejsce:
 > - *\<Enter_the_Application_Id_here >* to **Identyfikator aplikacji (klienta)** dla zarejestrowanej aplikacji.
 > - *\<Enter_the_Tenant_info_here >* jest ustawiona na jedną z następujących opcji:
 >    - Jeśli aplikacja obsługuje *konta w tym katalogu organizacyjnym*, Zastąp tę wartość **identyfikatorem dzierżawy** lub **nazwą dzierżawy** (na przykład *contoso.Microsoft.com*).
@@ -115,12 +116,7 @@ var msalConfig = {
 > > Aby znaleźć wartości **Identyfikator aplikacji (klienta)** , **Identyfikator katalogu (dzierżawy)** i **Obsługiwane typy kont**, przejdź do strony **Przegląd** w witrynie Azure Portal.
 >
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3. Twoja aplikacja jest skonfigurowana i gotowa do uruchomienia
-> Twój projekt został skonfigurowany z wartościami właściwości aplikacji. 
-
-> [!div renderon="docs"]
-> #### <a name="step-4-run-the-project"></a>Krok 4. uruchamianie projektu
+#### <a name="step-4-run-the-project"></a>Krok 4. uruchamianie projektu
 
 * Jeśli używasz środowiska [Node. js](https://nodejs.org/en/download/):
 
@@ -145,7 +141,7 @@ Po załadowaniu przez przeglądarkę aplikacji wybierz pozycję **Zaloguj**. Gdy
 
 ![Jak działa Przykładowa aplikacja w tym przewodniku Szybki Start](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
-### <a name="msaljs"></a>msal. js
+### <a name="msaljs"></a>msal.js
 
 Biblioteka MSAL rejestruje użytkowników i żąda tokenów, które są używane w celu uzyskania dostępu do interfejsu API chronionego przez platformę tożsamości firmy Microsoft. Plik *index. html* szybkiego startu zawiera odwołanie do biblioteki:
 

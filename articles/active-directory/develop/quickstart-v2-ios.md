@@ -2,27 +2,23 @@
 title: Microsoft Identity platform iOS i macOS — Szybki Start | Azure
 description: Dowiedz się, jak logować użytkowników i Microsoft Graph zapytań w aplikacji dla systemu iOS lub macOS.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b515a7954d82cdd377cec72fa8525fbd9691351d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 10225efb1dcd870f5922a6521b0bd6ec44965152
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149498"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920688"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji dla systemu iOS lub macOS
 
@@ -35,8 +31,8 @@ Ten przewodnik Szybki Start dotyczy zarówno aplikacji iOS, jak i macOS. Niektó
 > [!NOTE]
 > **Wymagania wstępne**
 > * XCode 10 +
-> * System iOS 10 + 
-> * macOS 10.12 +
+> * iOS 10+ 
+> * macOS 10.12+
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
@@ -118,7 +114,7 @@ W oknie terminalu przejdź do folderu z pobranym przykładem kodu i uruchom `pod
 > [!div renderon="docs"]
 >
 > 1. Wyodrębnij plik zip i otwórz projekt w programie XCode.
-> 1. Edytuj **plik viewcontroller. Swift** i Zastąp wiersz zaczynający się od "Let kClientID" następującym fragmentem kodu. Pamiętaj, aby zaktualizować wartość `kClientID` z clientID zapisanym podczas rejestrowania aplikacji w portalu wcześniej w tym przewodniku szybki start:
+> 1. Edytuj **plik viewcontroller. Swift** i Zastąp wiersz zaczynający się od "Let kClientID" następującym fragmentem kodu. Pamiętaj, aby zaktualizować wartość `kClientID` przy użyciu clientID zapisanego podczas rejestrowania aplikacji w portalu wcześniej w tym przewodniku szybki start:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -203,7 +199,7 @@ Twoja aplikacja musi mieć również następujące elementy w `AppDelegate`. Dzi
  ```
 
 > [!NOTE]
-> W systemie iOS 13 +, jeśli przyjmujesz `UISceneDelegate` zamiast `UIApplicationDelegate`, Umieść ten kod w wywołaniu zwrotnym `scene:openURLContexts:` (zobacz [dokumentację firmy Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
+> W systemie iOS 13 +, jeśli przyjmie `UISceneDelegate` zamiast `UIApplicationDelegate`, zamiast tego należy umieścić ten kod w `scene:openURLContexts:` wywołaniu zwrotnym (zobacz [dokumentację firmy Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
 > W przypadku zapewnienia zgodności zarówno UISceneDelegate, jak i UIApplicationDelegate ze starszymi wersjami systemu iOS, wywołanie zwrotne MSAL musi zostać umieszczone w obu miejscach.
 
  ```swift
@@ -220,7 +216,7 @@ Twoja aplikacja musi mieć również następujące elementy w `AppDelegate`. Dzi
     }
  ```
 
-Na koniec aplikacja musi mieć wpis `LSApplicationQueriesSchemes` w ***informacji. plist*** obok `CFBundleURLTypes`. Przykład zawiera. 
+Na koniec aplikacja musi mieć wpis `LSApplicationQueriesSchemes` w ***info. plist*** obok `CFBundleURLTypes`. Przykład zawiera. 
 
    ```xml 
    <key>LSApplicationQueriesSchemes</key>
@@ -266,7 +262,7 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 > |Miejsce: ||
 > |---------|---------|
 > | `scopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla Microsoft Graph lub `[ "<Application ID URL>/scope" ]` niestandardowych interfejsów API sieci Web (`api://<Application ID>/access_as_user`) |
-> | `account` | Konto, dla którego jest żądany token. Ten przewodnik Szybki Start dotyczy aplikacji o pojedynczym koncie. Jeśli chcesz utworzyć aplikację obejmującą wiele kont, musisz zdefiniować logikę, aby określić konto, które ma być używane dla żądań tokenów przy użyciu `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
+> | `account` | Konto, dla którego jest żądany token. Ten przewodnik Szybki Start dotyczy aplikacji o pojedynczym koncie. Jeśli chcesz utworzyć aplikację obejmującą wiele kont, musisz zdefiniować logikę, aby zidentyfikować konto, które będzie używane dla żądań tokenów przy użyciu `applicationContext.account(forHomeAccountId: self.homeAccountId)` |
 
 ## <a name="next-steps"></a>Następne kroki
 

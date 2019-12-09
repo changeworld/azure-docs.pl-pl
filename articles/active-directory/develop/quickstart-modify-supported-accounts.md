@@ -2,29 +2,25 @@
 title: Modyfikowanie firmy Microsoft identyfikacja kont aplikacji platformy | Azure
 description: Konfigurowanie aplikacji zarejestrowanej za pomocą platformy tożsamości firmy Microsoft pod kątem zmiany zbioru osób (kont) z dostępem do aplikacji.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 439d2c06f05aa8824afa4a4aec3990ecba1aa8da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380783"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921348"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Szybki start: Modyfikowanie kont obsługiwanych przez aplikację
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Szybki Start: modyfikowanie kont obsługiwanych przez aplikację
 
 Podczas rejestrowania aplikacji na platformie tożsamości firmy Microsoft możesz zdecydować, że aplikacja powinna być dostępna tylko dla użytkowników w Twojej organizacji. Możesz także planować udostępnienie aplikacji użytkownikom w organizacjach zewnętrznych lub użytkownikom w organizacjach zewnętrznych i użytkownikom nienależącym do organizacji (kontom osobistym).
 
@@ -79,7 +75,7 @@ Domyślnie niejawne udzielenie protokołu OAuth 2.0 jest wyłączone dla aplikac
 1. Wybierz pozycję **Tokeny identyfikatora**, **Tokeny dostępu** lub je obie.
 1. Wybierz pozycję **Zapisz**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat innych powiązanych przewodników Szybki start dotyczących zarządzania aplikacjami:
 
