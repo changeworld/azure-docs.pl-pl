@@ -3,12 +3,12 @@ title: Łączenie funkcji języka Java z usługą Azure Storage
 description: Dowiedz się, jak połączyć funkcję Java wyzwalaną przez protokół HTTP z usługą Azure Storage przy użyciu powiązania wyjściowego magazynu kolejki.
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: f9c3445efbe14c27cad9de62f5b46f50965e3145
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231206"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926894"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Łączenie funkcji języka Java z usługą Azure Storage
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> Ponieważ włączono pakiety rozszerzeń w pliku host. JSON, [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x) zostało pobrane i zainstalowane dla Ciebie podczas uruchamiania, wraz z innymi rozszerzeniami powiązań firmy Microsoft.
+> Ponieważ włączono pakiety rozszerzeń w pliku host. JSON, [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) zostało pobrane i zainstalowane dla Ciebie podczas uruchamiania, wraz z innymi rozszerzeniami powiązań firmy Microsoft.
 
 Jak wcześniej, wyzwól funkcję z wiersza polecenia przy użyciu Zwinięciea w nowym oknie terminalu:
 

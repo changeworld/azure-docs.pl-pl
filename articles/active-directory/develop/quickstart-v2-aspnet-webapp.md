@@ -2,27 +2,23 @@
 title: Microsoft Identity platform ASP.NET Web Server — Szybki Start | Azure
 description: Dowiedz się, jak zaimplementować logowanie firmy Microsoft w aplikacji internetowej ASP.NET za pomocą protokołu OpenID Connect.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03bb9ede4bbbfdc1c902fec755425a433fea07a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 46902d72c888713be62524ed4b609e2299a85c2b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149474"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920722"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Szybki Start: Dodawanie logowania do platformy tożsamości firmy Microsoft do aplikacji sieci Web ASP.NET
 
@@ -99,7 +95,7 @@ W tym przewodniku szybki start włączysz aplikację sieci Web ASP.NET do logowa
 >
 > > [!TIP]
 > > - Aby znaleźć wartości *Identyfikator aplikacji*, *Identyfikator katalogu (dzierżawy)* i *Obsługiwane typy kont*, przejdź do strony **Przegląd**
-> > - Upewnij się, że wartość `redirectUri` w **pliku Web. config** odpowiada **identyfikatorowi URI przekierowania** zdefiniowanego dla rejestracji aplikacji w usłudze Azure AD (jeśli nie, przejdź do menu **uwierzytelniania** dla rejestracji aplikacji i zaktualizuj **Identyfikator URI przekierowania** ). do dopasowania)
+> > - Upewnij się, że wartość `redirectUri` w **pliku Web. config** odpowiada **identyfikatorowi URI przekierowania** zdefiniowanego dla rejestracji aplikacji w usłudze Azure AD (jeśli nie, przejdź do menu **uwierzytelniania** dla rejestracji aplikacji i zaktualizuj **Identyfikator URI przekierowania** , aby dopasować)
 
 ## <a name="more-information"></a>Więcej informacji
 

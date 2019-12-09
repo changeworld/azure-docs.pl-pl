@@ -4,19 +4,18 @@ description: Ten artykuł zawiera porównanie bieżącej wersji usługi Azure Da
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e0c92fbd06bec00f09c66c322ba2520bacb7bffb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267789"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924807"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porównanie bieżącej wersji usługi Azure Data Factory z wersją 1 usługi Data Factory
 Ten artykuł zawiera porównanie bieżącej wersji usługi Data Factory z wersją 1 usługi Data Factory. Aby zapoznać się z wprowadzeniem do bieżącej wersji usługi Data Factory, zobacz [Wprowadzenie do usługi Data Factory](introduction.md). Aby zapoznać się z wprowadzeniem do wersji 1 usługi Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](v1/data-factory-introduction.md). 
@@ -131,8 +130,8 @@ Zestawy SDK, które zostały zaktualizowane w bieżącej wersji, nie są zgodne 
 | &nbsp; | Wersja 2 | Wersja 1 |
 | ------ | -- | -- | 
 | Azure Portal | [Tak](quickstart-create-data-factory-portal.md) | Nie |
-| Azure PowerShell | [Tak](quickstart-create-data-factory-powershell.md) | [Tak](data-factory-build-your-first-pipeline-using-powershell.md) |
-| Zestaw SDK .NET | [Tak](quickstart-create-data-factory-dot-net.md) | [Tak](data-factory-build-your-first-pipeline-using-vs.md) |
+| Program Azure PowerShell | [Tak](quickstart-create-data-factory-powershell.md) | [Tak](data-factory-build-your-first-pipeline-using-powershell.md) |
+| Zestaw SDK dla platformy .NET | [Tak](quickstart-create-data-factory-dot-net.md) | [Tak](data-factory-build-your-first-pipeline-using-vs.md) |
 | Interfejs API REST | [Tak](quickstart-create-data-factory-rest-api.md) | [Tak](data-factory-build-your-first-pipeline-using-rest-api.md) |
 | Zestaw SDK dla języka Python | [Tak](quickstart-create-data-factory-python.md) | Nie |
 | Szablon usługi Resource Manager | [Tak](quickstart-create-data-factory-resource-manager-template.md) | [Tak](data-factory-build-your-first-pipeline-using-arm.md) | 

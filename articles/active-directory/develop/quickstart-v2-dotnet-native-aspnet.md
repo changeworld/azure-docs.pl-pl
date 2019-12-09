@@ -2,27 +2,22 @@
 title: Wywoływanie ASP.NET internetowego interfejsu API chronionego przez usługę Azure AD — tożsamość firmy Microsoft
 description: W tym przewodniku szybki start dowiesz się, jak wywołać interfejs API sieci Web ASP.NET chroniony przez Azure Active Directory z aplikacji klasycznej systemu Windows (WPF). Klient WPF uwierzytelnia użytkownika, żąda tokenu dostępu i wywołuje internetowy interfejs API.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e0fdeb2c1955eab18b440c3ef3bcac725ad92b6
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6f1d9e402bff9d333957d51982dd917822d2c24d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200256"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920654"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Szybki Start: wywoływanie ASP.NET internetowego interfejsu API chronionego przez usługę Azure AD
 
@@ -128,11 +123,11 @@ W tym kroku skonfigurujesz projekt *TodoListClient* , rejestrując nową aplikac
 1. Naciśnij `<F5>`, aby uruchomić projekt. Należy otworzyć *TodoListClient* .
 1. Wybierz pozycję **Zaloguj się** w prawym górnym rogu i zaloguj się przy użyciu tego samego użytkownika, który został użyty do zarejestrowania aplikacji lub użytkownika w tym samym katalogu.
 1. W tym momencie, jeśli logujesz się po raz pierwszy, może zostać wyświetlony monit o zgodę na *TodoListService* internetowego interfejsu API.
-1. Logowanie żąda również tokenu dostępu do zakresu *access_as_user* w celu uzyskania dostępu do *TodoListService* internetowego interfejsu API i manipulowania listą *czynności do wykonania* .
+1. Logowanie żąda również tokenu dostępu do zakresu *access_as_user* , aby uzyskać dostęp do *TodoListService* internetowego interfejsu API i manipulowania listą *czynności do wykonania* .
 
 ## <a name="pre-authorize-your-client-application"></a>Wstępna Autoryzacja aplikacji klienckiej
 
-Jednym ze sposobów zezwalania użytkownikom z innych katalogów na dostęp do internetowego interfejsu API jest *wstępne autoryzowanie* aplikacji klienckich w celu uzyskania dostępu do internetowego interfejsu API przez dodanie identyfikatorów aplikacji z aplikacji klienckich na liście *wstępnie autoryzowanych* aplikacji dla Internetowy interfejs API. Przez dodanie wstępnie autoryzowanego klienta nie jest wymagane, aby użytkownik wyraził zgodę na korzystanie z internetowego interfejsu API. Wykonaj poniższe kroki, aby wstępnie autoryzować aplikację sieci Web::
+Jednym ze sposobów zezwalania użytkownikom z innych katalogów na dostęp do internetowego interfejsu API jest *wstępne autoryzowanie* aplikacji klienckich w celu uzyskania dostępu do internetowego interfejsu API przez dodanie identyfikatorów aplikacji z aplikacji klienckich na liście *wstępnie autoryzowanych* aplikacji dla internetowego interfejsu API. Przez dodanie wstępnie autoryzowanego klienta nie jest wymagane, aby użytkownik wyraził zgodę na korzystanie z internetowego interfejsu API. Wykonaj poniższe kroki, aby wstępnie autoryzować aplikację sieci Web::
 
 1. Wróć do *portalu rejestracji aplikacji* i Otwórz właściwości **TodoListService**.
 1. W sekcji **Uwidacznianie interfejsu API** kliknij pozycję **Dodaj aplikację kliencką** w sekcji *autoryzowane aplikacje klienckie* .
@@ -155,7 +150,7 @@ Aby ograniczyć liczbę użytkowników, którzy mogą zalogować się do aplikac
 
 Dostęp do logowania do aplikacji można ograniczyć tylko do kont użytkowników należących do pojedynczej dzierżawy usługi Azure AD — w tym *kont Gości* tej dzierżawy. Ten scenariusz jest typowy dla *aplikacji biznesowych*:
 
-1. Otwórz plik **App_Start\Startup.auth** i zmień wartość punktu końcowego metadanych, który jest przesyłany do `OpenIdConnectSecurityTokenProvider` do `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (można również użyć nazwy dzierżawy, takiej jak `contoso.onmicrosoft.com`).
+1. Otwórz plik **App_Start \Startup.auth** i zmień wartość punktu końcowego metadanych, który jest przesyłany do `OpenIdConnectSecurityTokenProvider` do `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (można również użyć nazwy dzierżawy, takiej jak `contoso.onmicrosoft.com`).
 2. W tym samym pliku ustaw właściwość `ValidIssuer` na `TokenValidationParameters` na `"https://sts.windows.net/{Tenant ID}/"` i `ValidateIssuer` argument `true`.
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Opcja 2: Użyj niestandardowej metody do walidacji wystawców

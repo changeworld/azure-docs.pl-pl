@@ -2,29 +2,26 @@
 title: Tworzenie dzierżawy usługi Azure Active Directory | Microsoft Docs
 description: Dowiedz się, jak utworzyć dzierżawę usługi Azure AD na potrzeby rejestrowania i tworzenia aplikacji.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c29195e5e597583a5c16c7f1d9494d655f2b317
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b9d4e51e6242da90a1e7044e0c3a182ea59ad187
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268612"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915103"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Szybki start: Konfigurowanie dzierżawy
+# <a name="quickstart-set-up-a-tenant"></a>Szybki Start: Konfigurowanie dzierżawy
 
 Platforma tożsamości firmy Microsoft umożliwia deweloperom tworzenie aplikacji przeznaczonych dla wielu różnych niestandardowych środowisk oraz tożsamości usługi Microsoft 365. Aby rozpocząć korzystanie z platformy tożsamości firmy Microsoft, należy uzyskać dostęp do środowiska, nazywanego również dzierżawą usługi Azure AD, które umożliwia rejestrowania aplikacji i zarządzanie nimi, uzyskać dostęp do danych platformy Microsoft 365 i wdrożyć niestandardowe ograniczenia dostępu warunkowego i dzierżawy.
 
