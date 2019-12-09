@@ -385,6 +385,10 @@
           href: functions-for-customizing-application-data.md
         - name: Wybór metody aprowizacji
           href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: Aprowizacja w usłudze Cloud HR
+      items:
+        - name: Dokumentacja atrybutów rozwiązania SuccessFactors
+          href: sap-successfactors-attribute-reference.md
     - name: Agent aprowizacji programu Azure AD Connect
       items:
         - name: Historia wersji agenta aprowizacji

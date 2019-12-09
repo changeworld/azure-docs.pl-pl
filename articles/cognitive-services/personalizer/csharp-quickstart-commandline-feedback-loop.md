@@ -26,7 +26,7 @@ Wprowadzenie do biblioteki klienta programu Personalizacja dla platformy .NET. W
  * Ustalanie rangi listy akcji do personalizacji.
  * Ocenę nagrody raportu wskazującej na powodzenie najwyższej funkcjonalnej akcji.
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) [ | ](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [pakietu (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [próbka](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

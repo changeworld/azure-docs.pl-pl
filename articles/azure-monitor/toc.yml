@@ -563,7 +563,7 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Usługa w chmurze
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Format dzienników diagnostycznych JSON Lines
+                    - name: Format dzienników zasobów JSON Lines
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Rozwiązywanie problemów
                       href: platform/diagnostics-extension-troubleshooting.md
@@ -1163,7 +1163,7 @@
           href: platform/metrics-supported.md
         - name: Obsługiwane metryki dla nowszych alertów
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Usługi, kategorie i schematy dziennika zasobów'
+    - name: 'Usługi, kategorie i schematy dziennika platformy'
       href: platform/diagnostic-logs-schema.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/monitor?view=azure-cli-latest

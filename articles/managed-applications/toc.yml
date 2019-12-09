@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: Dołączanie zasobów
       href: concepts-custom-providers-resourceonboarding.md
+    - name: Usługa Azure Policy dla skojarzeń dostawcy niestandardowego
+      href: concepts-custom-providers-built-in-policy.md
+    - name: Usługa Azure Policy dla skojarzeń aplikacji zarządzanych
+      href: concepts-managed-applications-built-in-policy.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Dostawcy niestandardowi

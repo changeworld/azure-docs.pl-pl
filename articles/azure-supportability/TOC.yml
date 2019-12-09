@@ -14,7 +14,7 @@
               href: per-vm-quota-requests.md
             - name: Zwiększenie limitu całkowitej liczby regionalnych procesorów wirtualnych
               href: regional-quota-requests.md
-            - name: Zwiększenie limitu przydziału o niskim priorytecie
+            - name: Zwiększenie limitu przydziału typu spot
               href: low-priority-quota.md
         - name: Klasyczny model wdrażania
           href: classic-deployment-model-quota-increase-requests.md

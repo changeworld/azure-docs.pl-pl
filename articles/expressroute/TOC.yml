@@ -26,7 +26,7 @@
           href: expressroute-locations-providers.md
         - name: Lokalizacje według dostawcy
           href: expressroute-locations.md
-    - name: Brama sieci wirtualnej i rozwiązanie FastPath
+    - name: Informacje o bramach sieci wirtualnej
       href: expressroute-about-virtual-network-gateways.md
     - name: Wymagania wstępne
       href: expressroute-prerequisites.md
@@ -40,6 +40,8 @@
       href: expressroute-qos.md
     - name: Informacje o przenoszeniu obwodów z wersji klasycznej do usługi Resource Manager
       href: expressroute-move.md
+    - name: Informacje o usłudze ExpressRoute FastPath
+      href: about-fastpath.md
     - name: Informacje o usłudze ExpressRoute Direct
       href: expressroute-erdirect-about.md
     - name: Informacje o usłudze ExpressRoute Global Reach

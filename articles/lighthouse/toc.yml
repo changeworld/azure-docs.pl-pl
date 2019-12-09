@@ -44,9 +44,6 @@
     - name: Wyświetlanie klientów i zarządzanie nimi
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Wyświetlanie dostawców usług i zarządzanie nimi
-      displayName: 'customer, update'
-      href: ./how-to/view-manage-service-providers.md
     - name: Integracja z usługą Azure Policy
       items:
         - name: Wdrażanie zasad w dużej skali
@@ -55,6 +52,14 @@
         - name: 'Wdrażanie zasad, które można skorygować'
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Akcje klienta
+      items:
+        - name: Wyświetlanie dostawców usług i zarządzanie nimi
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Wyświetlanie działań dostawcy usług
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
