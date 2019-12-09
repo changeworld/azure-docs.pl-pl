@@ -4,20 +4,19 @@ description: Łącznik programu Teradata usługi Data Factory umożliwia kopiowa
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 4074c50aa17bf804696060134e37055a18bd0137
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680103"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930914"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -27,14 +26,14 @@ ms.locfileid: "73680103"
 
 W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z programu Teradata Vantage. Kompilacja jest oparta na [przeglądzie działania kopiowania](copy-activity-overview.md).
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Ten łącznik programu Teradata jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Dane z programu Teradata Vantage można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Dane z programu Teradata Vantage można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W każdym przypadku ten łącznik programu Teradata obsługuje:
 
@@ -60,23 +59,23 @@ W przypadku dowolnego środowiska Integration Runtime w wersji starszej niż 3,1
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika programu Teradata.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Połączona usługa programu Teradata obsługuje następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość **Teradata**. | Tak |
-| Przekształcon | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
+| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
 | nazwa użytkownika | Określ nazwę użytkownika, aby połączyć się z programem Teradata. Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows. | Nie |
 | hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Możesz również wybrać odwołanie do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). <br>Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows lub odwoływania się do hasła w Key Vault na potrzeby uwierzytelniania podstawowego. | Nie |
-| Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. |Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Tak |
 
 Więcej właściwości połączenia, które można ustawić w parametrach połączenia dla danego przypadku:
 
 | Właściwość | Opis | Wartość domyślna |
 |:--- |:--- |:--- |
-| CharacterSet | Zestaw znaków, który ma być używany przez sesję. Np. `CharacterSet=UTF16`.<br><br/>Ta wartość może być zestawem znaków zdefiniowanym przez użytkownika lub jednym z następujących wstępnie zdefiniowanych zestawów znaków: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>-Shift-JIS (Windows, zgodne z systemem DOS, KANJISJIS_0S)<br/>-EUC (zgodne z systemem UNIX, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | Wartość domyślna to `ASCII`. |
+| CharacterSet | Zestaw znaków, który ma być używany przez sesję. Np. `CharacterSet=UTF16`.<br><br/>Ta wartość może być zestawem znaków zdefiniowanym przez użytkownika lub jednym z następujących wstępnie zdefiniowanych zestawów znaków: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, zgodne z systemem DOS, KANJISJIS_0S)<br/>-EUC (zgodne z systemem UNIX, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | Wartość domyślna to `ASCII`. |
 | MaxRespSize |Maksymalny rozmiar buforu odpowiedzi dla żądań SQL w kilobajtach (artykułów bazy wiedzy). Np. `MaxRespSize=‭10485760‬`.<br/><br/>W przypadku bazy danych programu Teradata w wersji 16,00 lub nowszej wartość maksymalna to 7361536. Dla połączeń korzystających ze starszych wersji wartość maksymalna to 1048576. | Wartość domyślna to `65536`. |
 
 **Przykład użycia uwierzytelniania podstawowego**
@@ -151,11 +150,11 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych progr
 
 Aby skopiować dane z programu Teradata, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`. | Tak |
 | baza danych | Nazwa wystąpienia programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
-| tabele | Nazwa tabeli w wystąpieniu programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| table | Nazwa tabeli w wystąpieniu programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład:**
 
@@ -205,10 +204,10 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu 
 
 Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi mieć wartość `TeradataSource`. | Tak |
-| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono table w zestawie danych) |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono table w zestawie danych) |
 | partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Teradata. <br>Zezwalaj na wartości: **none** (wartość domyślna), **hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`), stopień równoległości do współbieżnego ładowania danych z programu Teradata jest kontrolowany przez ustawienie [`parallelCopies`](copy-activity-performance.md#parallel-copy) dla działania kopiowania. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji nie jest `None`. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję zakresu lub partycję skrótu dla kopii równoległej. Jeśli nie zostanie określony, podstawowy indeks tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji jest `Hash` lub `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfHashPartitionCondition` lub `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
@@ -299,32 +298,32 @@ Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania
 
 Podczas kopiowania danych z programu Teradata są stosowane następujące mapowania. Aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych na ujścia, zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md).
 
-| Typ danych programu Teradata | Data Factory typ danych pośrednich |
+| Typ danych programu Teradata | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BigInt |Int64 |
-| Obiekt blob |Byte [] |
-| Bajc |Byte [] |
+| Obiekt blob |Byte[] |
+| Bajtów |Byte[] |
 | ByteInt |Int16 |
-| delikatn |Ciąg |
-| Obiektów CLOB |Ciąg |
-| Date |DateTime |
-| Dokładności |Dokładności |
+| char |Ciąg |
+| Clob |Ciąg |
+| Data |Data i godzina |
+| Decimal |Decimal |
 | Double |Double |
-| Zdjęć |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Liczba całkowita |Elementem |
-| Dzień interwału |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał od dnia do godziny |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał od dnia do minuty |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał od dnia do sekundy |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał czasu |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał od godziny do minuty |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał od godziny do sekundy |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał minut |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał od minuty do sekundy |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Miesiąc interwału |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał drugi |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Rok interwału |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interwał od roku do miesiąca |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Graphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Liczba całkowita |Int32 |
+| Interval Day |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Day To Hour |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Day To Minute |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Day To Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Hour |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Hour To Minute |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Hour To Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Minute |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Minute To Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Month |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Year |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Interval Year To Month |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | Liczba |Double |
 | Okres (Data) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | Czas (Time) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
@@ -332,14 +331,14 @@ Podczas kopiowania danych z programu Teradata są stosowane następujące mapowa
 | Kropka (Sygnatura czasowa) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | Okres (Sygnatura czasowa ze strefą czasową) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 | SmallInt |Int16 |
-| Time |Czasu |
-| Czas ze strefą czasową |Czasu |
-| Znacznik czasu |DateTime |
-| Sygnatura czasowa ze strefą czasową |DateTime |
-| VarByte |Byte [] |
+| Czas |TimeSpan |
+| Time With Time Zone |TimeSpan |
+| Znacznik czasu |Data i godzina |
+| Timestamp With Time Zone |Data i godzina |
+| VarByte |Byte[] |
 | VarChar |Ciąg |
 | VarGraphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| dokument |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Xml |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
 
 
 ## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
@@ -348,4 +347,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

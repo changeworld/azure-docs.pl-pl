@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 903551bfcaae3ffa7ccee72b1a5d781413864b32
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 333a3b93d872c1a99d1ec18d4941adc8986d4a03
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868460"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914569"
 ---
-# <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co to jest Azure AD Connect aprowizacji w chmurze?
+# <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co to jest aprowizacja w chmurze programu Azure AD Connect?
 Azure AD Connect aprowizacji w chmurze to nowy Agent firmy Microsoft, który zaprojektowano w celu spełnienia celów tożsamości hybrydowej dla synchronizacji użytkowników, grup i kontaktów z usługą Azure AD.  Można go używać razem z Azure AD Connect synchronizacją i zapewnia następujące korzyści:
     
 - Obsługa synchronizowania z dzierżawą usługi Azure AD z wielu lasów odłączonych Active Directory środowiska lasu: typowe scenariusze obejmują proces scalania & pozyskiwania, gdzie lasy usługi AD nabyte w firmie są odizolowane od usługi AD od firmy Microsoft lasy i firmy, w których historycznie istniały wiele lasów usługi AD.
@@ -33,7 +33,7 @@ Dzięki Azure AD Connect aprowizacji w chmurze Inicjowanie obsługi administracy
 
 Poniższa tabela zawiera porównanie między Azure AD Connect i Azure AD Connect aprowizacji w chmurze:
 
-| Funkcja | Azure Active Directory Connect synchronizacji| Azure Active Directory Connect aprowizacji w chmurze |
+| Funkcja | Synchronizacja Azure Active Directory Connect| Azure Active Directory Connect aprowizacji w chmurze |
 |:--- |:---:|:---:|
 |Połączenie z pojedynczym lokalnym lasem usługi AD|● |● |
 | Połączenie z wieloma lokalnymi lasami usługi AD |● |● |

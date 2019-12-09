@@ -2,34 +2,34 @@
 title: Zarządzanie zasobem obliczeniowym
 description: Dowiedz się więcej o możliwościach skalowania wydajności w Azure SQL Data Warehouse. Skalowanie w poziomie przez dostosowanie jednostek dwu lub niższych kosztów przez wstrzymanie magazynu danych.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 11/12/2019
-ms.author: kevin
+ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039099"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923597"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Zarządzanie obliczeniami w Azure SQL Data Warehouse
 Dowiedz się więcej na temat zarządzania zasobami obliczeniowymi w Azure SQL Data Warehouse. Niższe koszty przez wstrzymanie magazynu danych lub skalowanie magazynu danych w celu spełnienia wymagań dotyczących wydajności. 
 
 ## <a name="what-is-compute-management"></a>Co to jest zarządzanie obliczeniami?
-Architektura SQL Data Warehouse oddziela magazyn i obliczeniowe, umożliwiając każdemu skalowanie niezależnie. W związku z tym można skalować obliczenia w celu spełnienia wymagań dotyczących wydajności niezależnie od magazynu danych. Możesz również wstrzymywać i wznawiać zasoby obliczeniowe. Naturalna konsekwencja tej architektury polega na tym, że [rozliczenia](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) na potrzeby obliczeniowe i magazyny są oddzielone. Jeśli nie musisz używać hurtowni danych przez pewien czas, możesz zaoszczędzić koszty obliczeń, zatrzymując obliczenia. 
+Architektura usługi SQL Data Warehouse obejmuje oddzielenie magazynu i zasobów obliczeniowych, umożliwiając niezależne skalowanie obu elementów. W rezultacie można skalować zasoby obliczeniowe w celu spełnienia wymagań związanych z wydajnością niezależnie od magazynu danych. Można również wstrzymywać i wznawiać działanie zasobów obliczeniowych. Naturalna konsekwencja tej architektury polega na tym, że [rozliczenia](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) na potrzeby obliczeniowe i magazyny są oddzielone. Jeśli przez pewien czas nie musisz używać magazynu, możesz zaoszczędzić na kosztach zasobów obliczeniowych, wstrzymując obliczenia. 
 
 ## <a name="scaling-compute"></a>Skalowanie obliczeniowe
-Obliczenia można skalować w poziomie lub skali z powrotem przez dostosowanie ustawienia [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) dla magazynu danych. Ładowanie i wydajność zapytań można zwiększyć liniowo w miarę dodawania większej liczby jednostek magazynu danych. 
+Obliczenia można skalować w poziomie lub skali z powrotem przez dostosowanie ustawienia [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) dla magazynu danych. Wydajność ładowania i zapytań można zwiększać liniowo w miarę dodawania większej liczby jednostek magazynu danych. 
 
 Aby zapoznać się z krokami skalowania, zobacz Przewodniki Szybki Start dotyczące [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md)lub [T-SQL](quickstart-scale-compute-tsql.md) . Można również wykonywać operacje skalowania w poziomie za pomocą [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Aby wykonać operację skalowania, SQL Data Warehouse najpierw Kasuj wszystkie zapytania przychodzące, a następnie wycofywanie transakcji w celu zapewnienia spójnego stanu. Skalowanie odbywa się tylko po zakończeniu wycofywania transakcji. W przypadku operacji skalowania system odłącza warstwę magazynu od węzłów obliczeniowych, dodaje węzły obliczeniowe, a następnie ponownie dołącza warstwę magazynu do warstwy obliczeniowej. Każdy magazyn danych jest przechowywany jako dystrybucje 60, które są równomiernie dystrybuowane do węzłów obliczeniowych. Dodanie większej liczby węzłów obliczeniowych zwiększa moc obliczeniową. Wraz ze wzrostem liczby węzłów obliczeniowych liczba rozkładów na węzeł obliczeniowy zmniejsza się, co zapewnia większą moc obliczeniową dla zapytań. Podobnie, zmniejszenie jednostek magazynu danych zmniejsza liczbę węzłów obliczeniowych, co zmniejsza zasoby obliczeniowe dla zapytań.
+W celu wykonania operacji skalowania usługa SQL Data Warehouse najpierw zabija wszystkie przychodzące zapytania, a następnie wycofuje transakcje w celu zapewnienia spójnego stanu. Skalowanie jest realizowane dopiero po ukończeniu wycofywania transakcji. Na potrzeby operacji skalowania system odłącza warstwy magazynu od węzłów obliczeniowych, dodaje węzły obliczeniowe, a następnie ponownie dołącza warstwę magazynu do warstwy obliczeń. Każdy magazyn danych jest przechowywany jako 60 dystrybucji, które są równomiernie rozproszone między węzły obliczeniowe. Dodanie kolejnych węzłów obliczeniowych powoduje dodanie dalszej mocy obliczeniowej. W miarę zwiększania się liczby węzłów obliczeniowych zmniejsza się liczba dystrybucji na węzeł obliczeniowy, co zapewnia więcej mocy obliczeniowej dla zapytań. Podobnie, zmniejszenie jednostek magazynu danych zmniejsza liczbę węzłów obliczeniowych, co zmniejsza zasoby obliczeniowe dla zapytań.
 
 W poniższej tabeli przedstawiono, w jaki sposób liczba dystrybucji na węzeł obliczeniowy zmienia się w miarę zmiany jednostek magazynu danych.  DWU6000 udostępnia 60 węzłów obliczeniowych i osiąga znacznie wyższą wydajność zapytań niż DWU100. 
 
@@ -59,7 +59,7 @@ Aby zobaczyć korzyści wynikające z wydajności skalowania w poziomie, szczeg�
 
 Zalecenia dotyczące wyszukiwania najlepszej liczby jednostek magazynu danych:
 
-- W przypadku magazynu danych w trakcie tworzenia Zacznij od wybrania mniejszej liczby jednostek magazynu danych.  Dobrym punktem początkowym jest DW400 lub wartości DW200.
+- W przypadku magazynu danych w trakcie tworzenia Zacznij od wybrania mniejszej liczby jednostek magazynu danych.  Dobrym punktem początkowym jest DW400c lub DW200c.
 - Monitoruj wydajność aplikacji, obserwując liczbę wybranych jednostek magazynu danych w porównaniu do podanej wydajności.
 - Założono skalę liniową i określić, ile potrzeba do zwiększenia lub zmniejszenia jednostek magazynu danych. 
 - Kontynuuj wprowadzanie zmian, dopóki nie osiągniesz optymalnego poziomu wydajności dla wymagań firmy.

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185600"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926420"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -51,7 +51,7 @@ Obsługa automatycznego skalowania dla obciążeń HBase i LLAP jest również p
 
 ### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Szybsze zapisy usługi HDInsight dla platformy Apache HBase 
 
-Funkcja przyspieszonych zapisów korzysta z dysków zarządzanych SSD w warstwie Azure Premium w celu zwiększenia wydajności usługi Apache HBase Write Ahead Log (WAL). Aby uzyskać więcej informacji, zobacz [przyspieszone zapisy usługi Azure HDInsight dla oprogramowania Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
+Funkcja przyspieszonych zapisów korzysta z dysków zarządzanych SSD w warstwie Azure Premium w celu zwiększenia wydajności usługi Apache HBase Write Ahead Log (WAL). Aby uzyskać więcej informacji, zobacz [Usługa Azure HDInsight — przyspieszone zapisy dla oprogramowania Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
 
 ### <a name="custom-ambari-db"></a>Niestandardowa baza danych Ambari
 
@@ -90,4 +90,4 @@ Maszyny wirtualne z serii A mogą powodować problemy z klastrem ESP z powodu st
 Usługa HDInsight kontynuuje zwiększanie niezawodności i wydajności klastrów. 
 
 ## <a name="component-version-change"></a>Zmiana wersji składnika
-Nie ma żadnej zmiany wersji składnika dla tej wersji. Bieżące wersje składników usługi HDInsight 4,0 AD HDInsight 3,6 można znaleźć [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Nie ma żadnej zmiany wersji składnika dla tej wersji. Bieżące wersje składników usługi HDInsight 4,0 i HDInsight 3,6 można znaleźć [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).

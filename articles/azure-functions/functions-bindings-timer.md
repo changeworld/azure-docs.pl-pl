@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545728"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928376"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla Azure Functions 
 
@@ -20,13 +20,13 @@ W tym artykule opisano sposób pracy z wyzwalaczami czasomierza w Azure Function
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Pakiety — funkcje 1. x
+## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
 Wyzwalacz czasomierza jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2. x
+## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
 
 Wyzwalacz czasomierza jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub.
 
@@ -54,7 +54,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 Poniższy przykład przedstawia powiązanie wyzwalacza czasomierza w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy to wywołanie funkcji jest spowodowane pominiętym wystąpieniem harmonogramu. Obiekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) jest przekazaniem do funkcji.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -65,7 +65,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-Oto kod C# skryptu:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -82,7 +82,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza czasomierza w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy to wywołanie funkcji jest spowodowane pominiętym wystąpieniem harmonogramu. [Obiekt Timer](#usage) jest przenoszona do funkcji.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -93,7 +93,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -113,7 +113,7 @@ module.exports = function (context, myTimer) {
 
 Poniższy przykład używa powiązania wyzwalacza czasomierza, którego konfiguracja została opisana w pliku *Function. JSON* . Rzeczywista [funkcja języka Python](functions-reference-python.md) , która używa powiązania, jest opisana w pliku  *__init__. PR* . Obiekt przesłany do funkcji jest [obiektem typu Azure. Functions. TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logika funkcji zapisuje w dziennikach wskazujący, czy bieżące wywołanie jest spowodowane pominiętym wystąpieniem harmonogramu. 
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -211,13 +211,13 @@ public void keepAlive(
 
 ## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `TimerTrigger` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `TimerTrigger` atrybutu.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | nd. | Musi być ustawiona na wartość "timerTrigger". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal.|
-|**direction** | nd. | Musi być ustawiona na wartość "in". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal. |
-|**Nazwij** | nd. | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
+|**type** | nd. | Musi być ustawiona na wartość "timerTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | nd. | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
 |**schedule**|**ScheduleExpression**|[Wyrażenie CRONUS](#ncrontab-expressions) lub wartość [TimeSpan](#timespan) . `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service. Możesz umieścić wyrażenie harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na nazwę ustawienia aplikacji zawiniętej w **%** znaki, jak w tym przykładzie: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowisko uruchomieniowe jest uruchamiane, gdy aplikacja funkcji zostanie wznowiona po przejściu w stan bezczynności z powodu braku aktywności. gdy aplikacja funkcji zostanie ponownie uruchomiona z powodu zmiany funkcji i gdy aplikacja funkcji jest skalowana w dół. Tak więc **runOnStartup** powinna być rzadko ustawiona na `true`, szczególnie w środowisku produkcyjnym. |
 |**useMonitor**|**UseMonitor**|Ustaw wartość `true` lub `false`, aby wskazać, czy harmonogram ma być monitorowany. Harmonogram monitorowania utrzymuje harmonogramy, aby pomóc w zapewnieniu, że harmonogram jest prawidłowo obsługiwany nawet po ponownym uruchomieniu wystąpień aplikacji funkcji. Jeśli nie ustawiono jawnie, wartość domyślna to `true` dla harmonogramów z interwałem cyklu większym lub równym 1 minucie. W przypadku harmonogramów, które wyzwalają więcej niż raz na minutę, wartość domyślna to `false`.
@@ -302,7 +302,7 @@ Lub Utwórz ustawienia aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZO
 
 W przypadku korzystania z `WEBSITE_TIME_ZONE`czas jest dostosowywany do zmian czasu w określonej strefie czasowej, na przykład czasu letniego. 
 
-## <a name="timespan"></a>Czasu
+## <a name="timespan"></a>TimeSpan
 
  `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service.
 
@@ -327,7 +327,7 @@ W przypadku udostępniania kont magazynu w aplikacjach funkcji, które nie są w
 
 | Wersja funkcji | Ustawienie                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2.x               | Zmienna środowiskowa `AzureFunctionsWebHost__hostid` |
+| 2. x (i nowsze)  | Zmienna środowiskowa `AzureFunctionsWebHost__hostid` |
 | 1.x               | `id` w pliku *host. JSON*                                  |
 
 Możesz pominąć wartość identyfikującą lub ręcznie ustawić konfigurację identyfikującą każdą aplikację funkcji na inną wartość.
@@ -348,4 +348,4 @@ Aby uzyskać informacje o tym, co zrobić, gdy wyzwalacz czasomierza nie działa
 > [Przejdź do przewodnika Szybki Start korzystającego z wyzwalacza czasomierza](functions-create-scheduled-function.md)
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546346"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927863"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -122,7 +122,7 @@ Aby wyświetlić wyniki w formacie CSV:
 
 ### <a name="file-system-features"></a>Funkcje systemu plików
 
-| Funkcja | Stan pomocy technicznej | Uwagi |
+| Funkcja | Stan obsługi | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy ACL systemu Windows są zachowywane przez Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Listy ACL systemu Windows nie są jeszcze obsługiwane przez Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
 | Twarde linki | Pominięto | |
@@ -141,11 +141,11 @@ Aby wyświetlić wyniki w formacie CSV:
 
 | Plik/folder | Uwaga |
 |-|-|
-| Plik Desktop. ini | Plik specyficzny dla systemu |
-| ethumbs. DB $ | Plik tymczasowy dla miniatur |
-| \*~$.\* | Plik tymczasowy pakietu Office |
-| \*. tmp | Plik tymczasowy |
-| \*. LACCDB | Plik blokowania dostępu do bazy danych|
+| Desktop.ini | Plik specyficzny dla systemu |
+| ethumbs.db$ | Plik tymczasowy dla miniatur |
+| ~$\*.\* | Plik tymczasowy pakietu Office |
+| \*.tmp | Plik tymczasowy |
+| \*.laccdb | Plik blokowania dostępu do bazy danych|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Plik synchronizacji wewnętrznej|
 | Informacje o woluminie systemowym \\ | Folder określony dla woluminu |
 | $RECYCLE. OKREŚLONEJ| Folder |
@@ -159,16 +159,16 @@ Usługa Windows Server Failover Clustering jest obsługiwana przez Azure File Sy
 
 ### <a name="data-deduplication"></a>Deduplikacja danych
 **Windows server 2016 i Windows server 2019**   
-Funkcja deduplikacji danych jest obsługiwana na woluminach z włączoną obsługą warstw w chmurze w systemie Windows Server 2016. Włączenie deduplikacji danych na woluminie z włączonym obsługą usług Cloud Storage umożliwia przechowywanie w pamięci podręcznej większej liczby plików bez udostępniania większej ilości miejsca w magazynie. 
+Funkcja deduplikacji danych jest obsługiwana na woluminach z włączoną obsługą warstw w chmurze w systemach Windows Server 2016 i Windows Server 2019. Włączenie deduplikacji danych na woluminie z włączonym obsługą usług Cloud Storage umożliwia przechowywanie w pamięci podręcznej większej liczby plików bez udostępniania większej ilości miejsca w magazynie. 
 
 Po włączeniu deduplikacji danych na woluminie z włączonym obsługą obsługi warstw w chmurze pliki zoptymalizowane pod kątem deduplikacji w lokalizacji punktu końcowego serwera będą warstwowo podobne do normalnego pliku na podstawie ustawień zasad dotyczących warstw chmurowych. Po przeprowadzeniu warstwowych plików zoptymalizowanych pod kątem deduplikacji zadanie odzyskiwania pamięci deduplikacji danych zostanie automatycznie uruchomione w celu odtworzenia miejsca na dysku przez usunięcie niepotrzebnych fragmentów, do których nie odwołują się już inne pliki w woluminie.
 
 Zwróć uwagę, że oszczędności woluminu dotyczą tylko serwera programu; Twoje dane w udziale plików platformy Azure nie zostaną deduplikowane.
 
 > [!Note]  
-> Deduplikacja danych i Obsługa warstw w chmurze nie są obecnie obsługiwane na tym samym woluminie na serwerze 2019 z powodu błędu, który zostanie rozwiązany w przyszłej aktualizacji.
+> Aby zapewnić obsługę deduplikacji danych na woluminach z włączoną obsługą warstw w chmurze w systemie Windows Server 2019, należy zainstalować usługę Windows Update [KB4520062](https://support.microsoft.com/help/4520062) , a wymagany jest Agent Azure File Sync w wersji 9.0.0.0 lub nowszej.
 
-**System Windows Server 2012 R2**  
+**Windows Server 2012 R2**  
 Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym samym woluminie w systemie Windows Server 2012 R2. Jeśli Deduplikacja danych jest włączona w woluminie, Obsługa warstw w chmurze musi być wyłączona. 
 
 **Uwagi**
@@ -204,10 +204,10 @@ Aby Azure File Sync i DFS-R działały obok siebie:
 
 Aby uzyskać więcej informacji, zobacz [Replikacja systemu plików DFS przegląd](https://technet.microsoft.com/library/jj127250).
 
-### <a name="sysprep"></a>Dzia
+### <a name="sysprep"></a>Narzędzie Sysprep
 Korzystanie z programu Sysprep na serwerze, na którym zainstalowano agenta Azure File Sync, nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy przeprowadzić instalację agenta i rejestrację serwera.
 
-### <a name="windows-search"></a>Wyszukiwanie w systemie Windows
+### <a name="windows-search"></a>Windows Search
 Jeśli Obsługa warstw w chmurze jest włączona w punkcie końcowym serwera, pliki, które są warstwami, są pomijane i nie są indeksowane przez funkcję wyszukiwania systemu Windows. Pliki niewarstwowe są indeksowane prawidłowo.
 
 ### <a name="antivirus-solutions"></a>Rozwiązania antywirusowe
@@ -256,7 +256,7 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | Kanada Wschodnia | Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
-| Azja Wschodnia | Hongkong SAR |
+| Azja Wschodnia | SRA Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Francja Środkowa | Paryż |

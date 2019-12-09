@@ -4,21 +4,20 @@ description: Informacje na temat łącznika programu Teradata dla usługi Data F
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 645dcde949c8f5a6b48a5c02892d4cb2c6c5be0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666091"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929047"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenie danych z programu Teradata przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -47,7 +46,7 @@ Aby można było nawiązać połączenie z bazą danych programu Teradata przy u
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -59,10 +58,10 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla magazynu danych programu Teradata:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi programu Teradata.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość Type musi mieć wartość: **OnPremisesTeradata** |Tak |
 | serwer |Nazwa serwera programu Teradata. |Tak |
@@ -83,7 +82,7 @@ Natomiast właściwości dostępne w sekcji typeProperties działania różnią 
 
 Gdy źródłem jest typ **RelationalSource** (w tym program Teradata), w sekcji **typeProperties** dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Tak |
 
@@ -283,47 +282,47 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przesuwania danych do programu Teradata następujące mapowania są używane z typu Teradata do typu .NET.
 
-| Typ bazy danych programu Teradata | Typ .NET Framework |
+| Typ bazy danych programu Teradata | Typ programu .NET Framework |
 | --- | --- |
-| delikatn |Ciąg |
-| Obiektów CLOB |Ciąg |
-| Zdjęć |Ciąg |
+| char |Ciąg |
+| Clob |Ciąg |
+| Graphic |Ciąg |
 | VarChar |Ciąg |
 | VarGraphic |Ciąg |
-| Obiekt blob |Byte [] |
-| Bajc |Byte [] |
-| VarByte |Byte [] |
+| Obiekt blob |Byte[] |
+| Bajtów |Byte[] |
+| VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Dokładności |Dokładności |
+| Decimal |Decimal |
 | Double |Double |
-| Liczba całkowita |Elementem |
+| Liczba całkowita |Int32 |
 | Liczba |Double |
 | SmallInt |Int16 |
-| Date |DateTime |
-| Time |Czasu |
-| Czas ze strefą czasową |Ciąg |
-| Znacznik czasu |DateTime |
-| Sygnatura czasowa ze strefą czasową |DateTimeOffset |
-| Dzień interwału |Czasu |
-| Interwał od dnia do godziny |Czasu |
-| Interwał od dnia do minuty |Czasu |
-| Interwał od dnia do sekundy |Czasu |
-| Interwał czasu |Czasu |
-| Interwał od godziny do minuty |Czasu |
-| Interwał od godziny do sekundy |Czasu |
-| Interwał minut |Czasu |
-| Interwał od minuty do sekundy |Czasu |
-| Interwał drugi |Czasu |
-| Rok interwału |Ciąg |
-| Interwał od roku do miesiąca |Ciąg |
-| Miesiąc interwału |Ciąg |
+| Data |Data i godzina |
+| Czas |TimeSpan |
+| Time With Time Zone |Ciąg |
+| Znacznik czasu |Data i godzina |
+| Timestamp With Time Zone |DateTimeOffset |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |Ciąg |
+| Interval Year To Month |Ciąg |
+| Interval Month |Ciąg |
 | Okres (Data) |Ciąg |
 | Czas (Time) |Ciąg |
-| Okres (czas ze strefą czasową) |Ciąg |
-| Kropka (Sygnatura czasowa) |Ciąg |
-| Okres (Sygnatura czasowa ze strefą czasową) |Ciąg |
-| dokument |Ciąg |
+| Period(Time With Time Zone) |Ciąg |
+| Period(Timestamp) |Ciąg |
+| Period(Timestamp With Time Zone) |Ciąg |
+| Xml |Ciąg |
 
 ## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
 Aby dowiedzieć się więcej na temat mapowania kolumn w źródłowym zestawie danych na kolumny w datadataset, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).

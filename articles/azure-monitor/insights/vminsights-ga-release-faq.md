@@ -6,61 +6,61 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/07/2019
-ms.openlocfilehash: 88634777897341f4bd4d8c12b5f9d3b6d9982758
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.date: 12/05/2019
+ms.openlocfilehash: ec0580d3360a56fc6b779b8c0a69eb2a09b007db
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671531"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928928"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor dla maszyn wirtualnych ogólnie dostępna (GA) często zadawanych pytań
 
-Ostatnio ogłoszono w blogu dotyczącym [usługi Azure Update](https://azure.microsoft.com/blog/) niektórych planowanych zmian, które będą miały miejsce w październiku i listopadzie 2019. Więcej informacji o tych zmianach znajduje się w tej ogólnej dostępności — często zadawane pytania.
+Ta ogólna dostępność często zadawanych pytań dotyczy zmian, które są wykonywane w Azure Monitor dla maszyn wirtualnych przygotowywaniu do naszej wersji. 
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Aktualizacje dla Azure Monitor dla maszyn wirtualnych
 
-Firma Microsoft publikuje nową wersję Azure Monitor dla maszyn wirtualnych w listopadzie. Klienci, którzy włączają monitory platformy Azure dla maszyn wirtualnych, gdy ta wersja automatycznie otrzymuje nową wersję, ale istniejący klienci korzystający już z Azure Monitor dla maszyn wirtualnych są monitowani o uaktualnienie.  Te często zadawane pytania i nasze dokumenty oferują wskazówki dotyczące przeprowadzania uaktualnienia zbiorczego, jeśli masz duże wdrożenia w wielu obszarach roboczych.
+Firma Microsoft planuje wydanie nowej wersji Azure Monitor dla maszyn wirtualnych w styczniu 2020. Klienci, którzy włączają monitory platformy Azure dla maszyn wirtualnych, gdy ta wersja automatycznie otrzymuje nową wersję, ale istniejący klienci korzystający już z Azure Monitor dla maszyn wirtualnych będą monitowani o uaktualnienie. Te często zadawane pytania i dokumentacja oferują wskazówki dotyczące przeprowadzania uaktualnienia w odpowiedniej skali, jeśli masz duże wdrożenia w wielu obszarach roboczych.
 
-W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych zestawy danych wydajności są teraz przechowywane w tej samej tabeli `InsightsMetrics` jako [Azure monitor dla kontenerów](container-insights-overview.md)i ułatwiają wykonywanie zapytań do dwóch zestawów. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w wcześniej używanej tabeli.  Nasze widoki danych zostaną zaktualizowane, aby korzystały z tej nowej tabeli.
+W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych dane wydajności są przechowywane w tej samej tabeli `InsightsMetrics` jako [Azure monitor dla kontenerów](container-insights-overview.md)i ułatwiają wykonywanie zapytań do dwóch zestawów danych. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w tabeli, która została wcześniej użyta. Nasze widoki danych zostaną zaktualizowane, aby korzystały z tej nowej tabeli.
 
-Przenosimy do nowych typów danych dla naszych zestawów danych połączenia. Dane przechowywane w `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, które używają niestandardowych tabel dzienników, przechodzą do typów danych dedykowanych o nazwie `VMComputer` i `VMProcess`.  Przenosząc do typów danych dedykowanych, możemy zapewnić im priorytet pozyskiwania danych, a schemat tabeli zostanie znormalizowany dla wszystkich klientów.
+Przenosimy do nowych typów danych dla naszych zestawów danych połączenia. Ta zmiana będzie występować w grudniu 2019 i zostanie ogłoszona w blogu usługi Azure Update. Dane przechowywane w `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, które są tabelami niestandardowymi dzienników, przechodzą do typów danych dedykowanych o nazwie `VMComputer` i `VMProcess`. Przenosząc do typów danych dedykowanych, otrzymują priorytet pozyskiwania danych, a schemat tabeli zostanie znormalizowany dla wszystkich klientów.
 
-Zdajemy sobie sprawę, że konieczność przeprowadzenia uaktualnienia przez istniejących klientów spowoduje zakłócenia ich przepływu pracy, dlatego zdecydowaliśmy się zrobić to teraz, w trakcie publicznej wersji zapoznawczej, a nie później, po ogólnym udostępnieniu.
+Zdajemy sobie sprawę, że zaproszenie istniejących klientów o uaktualnienie powoduje zakłócenia w przepływie pracy, co oznacza, że wybrano tę czynność teraz w publicznej wersji zapoznawczej, a nie później.
 
-## <a name="what-will-change"></a>Co się zmieni?
+## <a name="what-is-changing"></a>Co ulega zmianie?
 
-Obecnie po zakończeniu procesu dołączania do Azure Monitor dla maszyn wirtualnych należy włączyć rozwiązanie Service Map w obszarze roboczym wybranym do przechowywania danych monitorowania, a następnie skonfigurować liczniki wydajności dla zbieranych danych z maszyn wirtualnych. W nadchodzących tygodniach zostanie wydane nowe rozwiązanie o nazwie **VMInsights**, które będzie zawierać dodatkowe możliwości zbierania danych oraz nową lokalizację do przechowywania tych danych w log Analytics.
+Obecnie po zakończeniu procesu dołączania do Azure Monitor dla maszyn wirtualnych należy włączyć rozwiązanie Service Map w obszarze roboczym wybranym do przechowywania danych monitorowania, a następnie skonfigurować liczniki wydajności dla zbieranych danych z maszyn wirtualnych. Zostanie wydane nowe rozwiązanie o nazwie **VMInsights**, które zawiera dodatkowe możliwości zbierania danych oraz nową lokalizację do przechowywania tych danych w obszarze roboczym log Analytics.
 
-Nasz bieżący proces używania liczników wydajności w obszarze roboczym wysyła dane do tabeli wydajności w Log Analytics.  To nowe rozwiązanie wyśle dane do tabeli o nazwie `InsightsMetrics`, która jest również używana przez Azure Monitor dla kontenerów. Ten schemat tabeli umożliwia przechowywanie dodatkowych metryk i zestawów danych usług, które nie są zgodne z formatem tabeli wydajności.
+Nasz bieżący proces używania liczników wydajności w obszarze roboczym Log Analytics wysyła dane do tabeli `Perf`. To nowe rozwiązanie wysyła dane do tabeli o nazwie `InsightsMetrics`, która jest również używana przez Azure Monitor dla kontenerów. Ten schemat tabeli umożliwia przechowywanie dodatkowych metryk i zestawów danych usług, które nie są zgodne z formatem tabeli wydajności.
 
-## <a name="what-should-i-do-about-the-performance-counters-on-my-workspace-if-i-install-the-vminsights-solution"></a>Co należy zrobić o licznikach wydajności w obszarze mój obszar roboczy, jeśli zainstaluję rozwiązanie VMInsights?
+## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Co należy zrobić o licznikach wydajności w obszarze mój obszar roboczy, jeśli zainstaluję rozwiązanie VMInsights?
 
 Bieżąca metoda włączania Azure Monitor dla maszyn wirtualnych używa liczników wydajności w obszarze roboczym. Nowa metoda zapisuje te dane w nowej tabeli o nazwie `InsightsMetrics`.
 
-Po zaktualizowaniu naszego interfejsu użytkownika w celu korzystania z danych w programie InsightsMetrics będziemy aktualizować naszą dokumentację i komunikować się z tym ogłoszeniem za pośrednictwem wielu kanałów, w tym do wyświetlania transparentu w Azure Portal. W tym momencie można wyłączyć te [liczniki wydajności](vminsights-enable-overview.md#performance-counters-enabled) w obszarze roboczym, jeśli ich nie chcesz już używać. 
+Po zaktualizowaniu naszego interfejsu użytkownika w celu używania danych z tabeli `InsightsMetrics` firma Microsoft zaktualizuje naszą dokumentację i przekaże ten anons za pośrednictwem wielu kanałów, w tym wyświetlanie transparentu w Azure Portal. W tym momencie można wyłączyć te [liczniki wydajności](vminsights-enable-overview.md#performance-counters-enabled) w obszarze roboczym, jeśli ich nie trzeba już używać. 
 
 >[!NOTE]
->Jeśli istnieją reguły alertów odwołujące się do tych liczników w tabeli wydajności, należy je zaktualizować w celu odwoływania się do nowych danych w tabeli `InsightsMetrics`.  Zapoznaj się z naszą dokumentacją dotyczącą przykładowych zapytań dzienników, których można użyć w odniesieniu do tej tabeli.
+>Jeśli masz reguły alertów odwołujące się do tych liczników w tabeli `Perf`, musisz je zaktualizować w celu odwoływania się do nowych danych przechowywanych w tabeli `InsightsMetrics`. Zapoznaj się z naszą dokumentacją dotyczącą przykładowych zapytań dzienników, których można użyć w odniesieniu do tej tabeli.
 >
 
-W przypadku podjęcia decyzji o włączeniu włączonych liczników wydajności opłaty zostaną naliczone za dane pozyskane i zachowane w tabeli wydajności w oparciu o [Log Analytics ceny [(https://azure.microsoft.com/pricing/details/monitor/).
+Jeśli zdecydujesz się na włączenie włączonych liczników wydajności, naliczanie opłat za dane pozyskane i przechowywane w tabeli `Perf` w oparciu o [Log Analytics cenach [(https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Jak ta zmiana wpłynie na moje reguły alertów?
 
-W przypadku utworzenia [alertów dziennika](../platform/alerts-unified-log.md) , które wysyłają zapytania do tabeli `Perf`, dla liczników wydajności, które zostały włączone w obszarze roboczym, należy zaktualizować te reguły, aby odwoływać się do tabeli `InsightsMetrics`. Te wskazówki dotyczą również wszelkich reguł przeszukiwania dzienników przy użyciu `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, ponieważ te zestawy danych są przenoszone do tabel `VMComputer` i `VMProcess`.
+W przypadku utworzenia [alertów dziennika](../platform/alerts-unified-log.md) , które wysyłają zapytania do tabeli `Perf`, w której znajdują się liczniki wydajności, które zostały włączone w obszarze roboczym, należy zaktualizować te reguły, aby odwoływać się do tabeli `InsightsMetrics`. Te wskazówki dotyczą również wszelkich reguł przeszukiwania dzienników przy użyciu `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, ponieważ te zestawy danych są przenoszone do tabel `VMComputer` i `VMProcess`.
 
 Będziemy aktualizować te często zadawane pytania i naszą dokumentację, aby uwzględnić przykładowe reguły alertów wyszukiwania w dzienniku dla zbieranych danych.
 
-## <a name="will-there-be-any-changes-to-billing"></a>Czy istnieją zmiany dotyczące rozliczeń?
+## <a name="how-will-this-affect-my-bill"></a>Jak wpłynie to na mój rachunek?
 
 Opłaty są naliczane w oparciu o dane pozyskane i zachowane w obszarze roboczym Log Analytics.
 
-Gromadzone dane wydajności na poziomie komputera są takie same, jak podobne wielkości do danych przechowywanych w tabeli wydajności, a koszt będzie kosztował mniej więcej.
+Gromadzone dane wydajności na poziomie komputera są takie same, jak w przypadku danych przechowywanych w tabeli `Perf` i będą kosztowały się w przybliżeniu z tą samą ilością.
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>Co zrobić, jeśli chcę używać tylko Service Map?
 
-Jest to dokładne.  Podczas przeglądania Azure Monitor dla maszyn wirtualnych dotyczącej nadchodzącej aktualizacji zobaczysz w Azure Portal wyświetlane są komunikaty. Po wydaniu zostanie wyświetlony monit z prośbą o aktualizację do nowej wersji. Jeśli wolisz korzystać tylko z funkcji [Maps](vminsights-maps.md) , możesz zrezygnować z uaktualnienia i nadal korzystać z funkcji Maps Azure monitor dla maszyn wirtualnych i rozwiązania Service map dostępnego w obszarze roboczym lub kafelku pulpitu nawigacyjnego.
+Jest to dokładne. Podczas przeglądania Azure Monitor dla maszyn wirtualnych dotyczącej nadchodzącej aktualizacji zobaczysz w Azure Portal wyświetlane są komunikaty. Po wydaniu zostanie wyświetlony monit z prośbą o aktualizację do nowej wersji. Jeśli wolisz korzystać tylko z funkcji [Maps](vminsights-maps.md) , możesz zrezygnować z uaktualnienia i nadal korzystać z funkcji maps w Azure monitor dla maszyn wirtualnych oraz do rozwiązania Service map dostępnego na kafelku obszaru roboczego lub pulpitu nawigacyjnego.
 
 Jeśli wybrano opcję ręcznego włączania liczników wydajności w obszarze roboczym, można zobaczyć dane na niektórych z naszych wykresów wydajności wyświetlanych w Azure Monitor. Po wydaniu nowego rozwiązania będziemy aktualizować nasze wykresy wydajności, aby wykonywać zapytania dotyczące danych przechowywanych w tabeli `InsightsMetrics`. Jeśli chcesz zobaczyć dane z tej tabeli na tych wykresach, musisz przeprowadzić uaktualnienie do nowej wersji Azure Monitor dla maszyn wirtualnych.
 
@@ -72,48 +72,42 @@ W przypadku wybrania opcji Nie uaktualniaj do rozwiązania **VMInsights** będzi
 
 Zestawy danych nie będą duplikowane, jeśli używasz obu rozwiązań. Obie oferty współdzielą zestawy danych, które będą przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort` tabele do przechowywania zbieranych przez nas zestawów danych mapy.  
 
-Tabela `InsightsMetrics` zostanie użyta do przechowywania zestawów danych maszyn wirtualnych, procesów i usług zbieranych i zostanie wypełniona tylko w przypadku korzystania z Azure Monitor dla maszyn wirtualnych.
+W tabeli `InsightsMetrics` będą przechowywane zestawy danych maszyn wirtualnych, procesów i usług, które są zbierane i będą wypełniane tylko w przypadku korzystania z usługi Azure Monitor dla maszyn wirtualnych i rozwiązania VM Insights. Rozwiązanie Service Map nie będzie zbierać ani przechowywać danych w `InsightsMetrics` tabeli.
 
-## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-on-my-workspace"></a>Czy przy użyciu rozwiązań Service Map i VMInsights w obszarze mój obszar roboczy zostanie podwojona opłata?
+## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Czy przy użyciu rozwiązań Service Map i VMInsights w obszarze mój obszar roboczy zostaną naliczone podwójne opłaty?
 
-Nie, dwa rozwiązania korzystają z zestawów danych mapy, które są przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort`.  Jeśli w obszarze roboczym znajdują się oba rozwiązania, nie będziesz mieć podwójnej opłaty za te dane.
+Nie, dwa rozwiązania korzystają z zestawów danych mapy, które są przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort`. Jeśli w obszarze roboczym znajdują się oba rozwiązania, nie będziesz mieć podwójnej opłaty za te dane.
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data-in-log-analytics"></a>Jeśli usunę rozwiązanie Service Map lub VMInsights, usuniemy moje dane w Log Analytics?
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Jeśli usunę rozwiązanie Service Map lub VMInsights, usuniemy moje dane?
 
-Nie, dwa rozwiązania korzystają z zestawów danych mapy, które są przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort`.  W przypadku usunięcia jednego z tych rozwiązań te zestawy danych będą inejść, że nadal istnieje rozwiązanie, które korzysta z danych i pozostanie w Log Analytics.  Musisz usunąć oba rozwiązania z obszaru roboczego, aby dane zostały usunięte z obszaru roboczego Log Analytics.
+Nie, dwa rozwiązania korzystają z zestawów danych mapy, które są przechowywane w `VMComputer` (dawniej ServiceMapComputer_CL), `VMProcess` (dawniej ServiceMapProcess_CL), `VMConnection`i `VMBoundPort`. W przypadku usunięcia jednego z tych rozwiązań te zestawy danych będą inejść, że nadal istnieje rozwiązanie, które korzysta z danych i pozostaje w obszarze roboczym Log Analytics. Musisz usunąć oba rozwiązania z obszaru roboczego, aby można było usunąć z niego dane.
 
 ## <a name="when-will-this-update-be-released"></a>Kiedy ta aktualizacja zostanie wydana?
 
-Oczekujemy opublikowania aktualizacji Azure Monitor dla maszyn wirtualnych w połowie listopada. Ponieważ zbliżamy się do daty wydania, opublikujemy tutaj aktualizacje i zaprezentuje powiadomienia w Azure Portal po przejściu do Azure Monitor.
+Oczekujemy, że aktualizacja Azure Monitor dla maszyn wirtualnych na początku stycznia 2020. Gdy zaczniemy od daty wydania w styczniu, opublikujemy aktualizacje tutaj i zaprezentuje powiadomienia w Azure Portal po otwarciu Azure Monitor.
 
-## <a name="health-feature-to-enter-limited-public-preview"></a>Funkcja kondycji do wprowadzania ograniczonej publicznej wersji zapoznawczej
+## <a name="health-feature-is-in-limited-public-preview"></a>Funkcja kondycji jest w ograniczonej publicznej wersji zapoznawczej
 
-Otrzymamy wiele doskonałych opinii od klientów dotyczących zestawu funkcji kondycji maszyn wirtualnych.  Ta funkcja wzbudza duże zainteresowanie, a jej możliwości obsługi monitorowania przepływów pracy są bardzo pożądane. Planujemy wprowadzić serię zmian, aby dodać funkcje i odpowiedzieć na otrzymane opinie. Aby zminimalizować wpływ tych zmian na nowych klientów, przenosimy tę funkcję do ograniczonej publicznej wersji zapoznawczej.
+Otrzymamy wiele doskonałych opinii od klientów dotyczących zestawu funkcji kondycji maszyn wirtualnych. Ta funkcja wzbudza duże zainteresowanie, a jej możliwości obsługi monitorowania przepływów pracy są bardzo pożądane. Planujemy wprowadzić serię zmian, aby dodać funkcje i odpowiedzieć na otrzymane opinie. 
 
-To przejście rozpocznie się na początku października i powinno zostać ukończone do końca miesiąca.
+Aby zminimalizować wpływ tych zmian na nowych klientów, przeniesionomy tę funkcję do **ograniczonej publicznej wersji zapoznawczej**. Ta aktualizacja miała miejsce w październiku 2019.
 
-Niektóre z obszarów, na których będzie się koncentrować:
-
-- Większa kontrola nad modelem kondycji i jego progami
-- Tworzenie przy użyciu modeli kondycji skalowania, które mają zastosowanie do zakresu maszyn wirtualnych
-- Natywne użycie platformy alertów do zarządzania regułami alertów opartych na kondycji
-- Możliwość wyświetlania informacji o kondycji w szerszym zakresie, takich jak co najmniej jedna subskrypcja
-- Skrócenie opóźnienia w przejściach kondycji i powiadomieniach o alertach
+Planuje ponowną uruchomienie tej funkcji kondycji w 2020, po rozpoczęciu Azure monitor dla maszyn wirtualnych.
 
 ## <a name="how-do-existing-customers-access-the-health-feature"></a>Jak istniejący klienci uzyskują dostęp do funkcji kondycji?
 
 Istniejący klienci korzystający z funkcji kondycji nadal będą mieć do niej dostęp, ale nie będzie oferowany nowym klientom.  
 
-Aby uzyskać dostęp do tej funkcji, można dodać następującą flagę funkcji `feature.vmhealth=true` do adresu URL portalu [https://portal.azure.com](https://portal.azure.com). Przykład `https://portal.azure.com/?feature.vmhealth=true`.
+Aby uzyskać dostęp do tej funkcji, można dodać następującą flagę funkcji `feature.vmhealth=true` do adresu URL Azure Portal [https://portal.azure.com](https://portal.azure.com). Przykład `https://portal.azure.com/?feature.vmhealth=true`.
 
 Możesz również użyć tego krótkiego adresu URL, który ustawia flagę funkcji automatycznie: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview).
 
 Jako istniejący klient można nadal korzystać z funkcji kondycji na maszynach wirtualnych, które są podłączone do istniejącej konfiguracji obszaru roboczego z funkcjonalnością kondycji.  
 
-## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-for-a-new-environment"></a>Teraz korzystam z kondycji maszyny wirtualnej z jednym środowiskiem i chcę ją wdrożyć dla nowego środowiska
+## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>Teraz korzystam z kondycji maszyny wirtualnej z jednym środowiskiem i chcę wdrożyć je w nowym
 
 Jeśli jesteś istniejącym klientem korzystającym z funkcji kondycji i chcesz go użyć do nowego wdrożenia, skontaktuj się z nami w vminsights@microsoft.com, aby zażądać instrukcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby poznać wymagania i metody, które ułatwiają monitorowanie maszyn wirtualnych, zobacz [wdrażanie Azure monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
+Aby poznać wymagania i metod, które pomagają monitorować maszyny wirtualne, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).

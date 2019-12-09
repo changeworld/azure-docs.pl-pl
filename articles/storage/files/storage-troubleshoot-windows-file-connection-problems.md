@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560128"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927851"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z Azure Files w systemie Windows
 
@@ -97,8 +97,7 @@ Jeśli połączenie zostało pomyślnie nawiązane, powinny pojawić się nastę
 Azure File Sync można przekształcić lokalny serwer systemu Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Azure File Sync działa przez port 443 i może służyć jako obejście w celu uzyskania dostępu Azure Files z klientów, którzy mają zablokowany port 445. [Dowiedz się, jak skonfigurować Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>Rozwiązanie 2 — Korzystanie z sieci VPN
-Skonfigurowanie sieci VPN do określonego konta magazynu spowoduje, że ruch przejdzie przez bezpieczny tunel, a nie przez Internet. Postępuj zgodnie z [instrukcjami, aby skonfigurować sieć VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) , aby uzyskać dostęp do Azure Files z systemu Windows.
+Skonfigurowanie sieci VPN do określonego konta magazynu spowoduje, że ruch przejdzie przez bezpieczny tunel, a nie przez Internet. Postępuj zgodnie z [instrukcjami, aby skonfigurować sieć VPN](storage-files-configure-p2s-vpn-windows.md) , aby uzyskać dostęp do Azure Files z systemu Windows.
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Rozwiązanie 3 — odblokowywanie portu 445 przy pomocy usługodawcy internetowego/administratora IT
 Skontaktuj się z działem IT lub usługodawcą internetowym, aby otworzyć port 445 wychodzące do [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
@@ -267,13 +266,13 @@ Gdy plik jest kopiowany za pośrednictwem sieci, plik jest odszyfrowywany na kom
 Ten problem może wystąpić, jeśli używasz system szyfrowania plików (EFS). Pliki szyfrowane przez funkcję BitLocker można kopiować do Azure Files. Jednak Azure Files nie obsługuje systemu plików NTFS.
 
 ### <a name="workaround"></a>Obejście
-Aby skopiować plik za pośrednictwem sieci, należy go najpierw odszyfrować. Użyj jednej z następujących metod:
+Aby skopiować plik za pośrednictwem sieci, należy go najpierw odszyfrować. Użyj jednej z poniższych metod:
 
 - Użyj polecenia **copy/d** . Umożliwia zapisywanie zaszyfrowanych plików jako odszyfrowanych plików w miejscu docelowym.
 - Ustaw następujący klucz rejestru:
-  - Ścieżka = HKLM\Software\Policies\Microsoft\Windows\System
+  - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Typ wartości = DWORD
-  - Nazwa = CopyFileAllowDecryptedRemoteDestination
+  - Name = CopyFileAllowDecryptedRemoteDestination
   - Wartość = 1
 
 Należy pamiętać, że ustawienie klucza rejestru ma wpływ na wszystkie operacje kopiowania wprowadzone do udziałów sieciowych.

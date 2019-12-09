@@ -1,22 +1,22 @@
 ---
-title: Ładowanie danych do Azure SQL Data Warehouse przy użyciu Azure Data Factory
+title: Ładowanie danych do usługi Azure SQL Data Warehouse
 description: Używanie Azure Data Factory do kopiowania danych do Azure SQL Data Warehouse
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.author: jingwang
-ms.openlocfilehash: 538751b1e93dfec66c35ea3768bde603c198df32
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 732d5d170ee647dc0dfdbf4d09a12617c8c9bcce
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672760"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931506"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Ładowanie danych do Azure SQL Data Warehouse przy użyciu Azure Data Factory
 
@@ -64,7 +64,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopiowanie danych Data Factor
    
    ![Strona główna fabryki danych](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
-   Wybierz kafelek **tworzenie & monitor** , aby uruchomić aplikację integracji danych w osobnej karcie.
+   Wybierz kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić aplikację Integracja danych.
 
 ## <a name="load-data-into-azure-sql-data-warehouse"></a>Ładowanie danych do usługi Azure SQL Data Warehouse
 
@@ -85,7 +85,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopiowanie danych Data Factor
 
     ![Wybieranie bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    d. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, a następnie określ nazwę użytkownika i hasło. Kliknij przycisk **Test connection** , aby sprawdzić poprawność ustawień, a następnie wybierz pozycję **Zakończ**.
+    d. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, a następnie określ nazwę użytkownika i hasło. Kliknij przycisk **Testuj połączenie**, aby zweryfikować ustawienia, a następnie wybierz pozycję **Zakończ**.
    
     ![Konfigurowanie bazy danych Azure SQL](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
@@ -107,7 +107,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopiowanie danych Data Factor
 
     ![Wybieranie usługi Azure SQL DW](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    d. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, a następnie określ nazwę użytkownika i hasło. Kliknij przycisk **Test connection** , aby sprawdzić poprawność ustawień, a następnie wybierz pozycję **Zakończ**.
+    d. Na stronie **Nowa połączona usługa** wybierz nazwę serwera i nazwę bazy danych z listy rozwijanej, a następnie określ nazwę użytkownika i hasło. Kliknij przycisk **Testuj połączenie**, aby zweryfikować ustawienia, a następnie wybierz pozycję **Zakończ**.
    
     ![Konfigurowanie usługi Azure SQL DW](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 

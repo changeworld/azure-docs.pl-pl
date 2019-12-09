@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a1d3de1b3eb5aebd89e6601f95c449851d4a1a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889593"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918971"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect Sync: Konfigurowanie preferowanej lokalizacji danych dla zasobów pakietu Office 365
 W tym temacie opisano sposób konfigurowania atrybutu dla preferowanej lokalizacji danych w programie Azure Active Directory (Azure AD) Connect Sync. Gdy ktoś korzysta z funkcji wieloznacznych w pakiecie Office 365, ten atrybut służy do określania lokalizacji geograficznej danych pakietu Office 365 użytkownika. ( *Region* terminów i *geograficznie* są używane zamiennie).
@@ -251,7 +251,7 @@ Włącz ponownie wbudowany harmonogram synchronizacji:
 1. Rozpocznij sesję programu PowerShell.
 2. Ponownie włącz zaplanowaną synchronizację, uruchamiając to polecenie cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-8-verify-the-result"></a>Krok 8. Sprawdzenie wyniku
+## <a name="step-9-verify-the-result"></a>Krok 9. Sprawdzenie wyniku
 Teraz można sprawdzić konfigurację i włączyć ją dla użytkowników.
 
 1. Dodaj lokalizację geograficzną do wybranego atrybutu na użytkowniku. Listę dostępnych Georegiony można znaleźć w tej tabeli.  

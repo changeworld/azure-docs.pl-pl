@@ -7,21 +7,25 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 12/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685697"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923637"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Załaduj dane z Azure Data Lake Storage do SQL Data Warehouse
-Użyj wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage do Azure SQL Data Warehouse. Mimo że można uruchamiać zapytania ad hoc dotyczące danych przechowywanych w Data Lake Storage, zalecamy zaimportowanie danych do SQL Data Warehouse w celu uzyskania najlepszej wydajności.
+W tym przewodniku opisano, jak używać wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage do Azure SQL Data Warehouse. Mimo że można uruchamiać zapytania ad hoc dotyczące danych przechowywanych w Data Lake Storage, zalecamy zaimportowanie danych do SQL Data Warehouse w celu uzyskania najlepszej wydajności. 
 
+> [!NOTE]  
+> Alternatywą do załadowania jest [instrukcja Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) w publicznej wersji zapoznawczej. Aby przesłać opinię na temat instrukcji COPY, Wyślij wiadomość e-mail na następującą listę dystrybucyjną: sqldwcopypreview@service.microsoft.com.
+>
 > [!div class="checklist"]
+
 > * Utwórz obiekty bazy danych wymagane do załadowania z Data Lake Storage.
 > * Nawiązywanie połączenia z katalogiem Data Lake Storage.
 > * Ładowanie danych do usługi Azure SQL Data Warehouse.
@@ -33,14 +37,13 @@ Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję progra
 
 Aby uruchomić ten samouczek, potrzebne są:
 
-* Azure Active Directory aplikacji do użycia na potrzeby uwierzytelniania między usługami. Aby utworzyć, postępuj zgodnie z [uwierzytelnianiem usługi Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
-
 * Azure SQL Data Warehouse. Zobacz [Tworzenie i wykonywanie zapytań oraz Azure SQL Data Warehouse](create-data-warehouse-portal.md).
-
-* Konto Data Lake Storage. Zobacz [wprowadzenie do Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Konto Data Lake Storage. Zobacz [wprowadzenie do Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). W przypadku tego konta magazynu musisz skonfigurować lub określić jedno z następujących poświadczeń do załadowania: klucz konta magazynu, użytkownik aplikacji usługi Azure Directory lub użytkownik AAD, który ma odpowiednią rolę RBAC dla konta magazynu. 
 
 ##  <a name="create-a-credential"></a>Utwórz poświadczenie
-Aby uzyskać dostęp do konta Data Lake Storage, musisz utworzyć klucz główny bazy danych w celu zaszyfrowania klucza tajnego poświadczeń, który został użyty w następnym kroku. Następnie utworzysz poświadczenia w zakresie bazy danych. Podczas uwierzytelniania za pomocą nazw głównych usługi poświadczenia bazy danych przechowują poświadczenia jednostki usługi skonfigurowane w usłudze AAD. Możesz również użyć klucza konta magazynu w poświadczeniu o zakresie bazy danych dla Gen2. 
+Możesz pominąć tę sekcję i przejść do "Tworzenie zewnętrznego źródła danych" podczas uwierzytelniania za pomocą usługi AAD. Nie trzeba tworzyć ani określać poświadczeń z zakresem bazy danych w przypadku korzystania z usługi AAD Pass-through, ale upewnij się, że użytkownik usługi AAD ma odpowiednią rolę RBAC (czytnik danych obiektów blob magazynu, współautor lub rolę właściciela) na koncie magazynu. Więcej szczegółów znajduje się [tutaj](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260). 
+
+Aby uzyskać dostęp do konta Data Lake Storage, musisz utworzyć klucz główny bazy danych, aby zaszyfrować klucz tajny poświadczeń. Następnie należy utworzyć poświadczenia z zakresem bazy danych w celu przechowywania klucza tajnego. Podczas uwierzytelniania za pomocą nazw głównych usługi (użytkownik aplikacji katalogu platformy Azure) poświadczenia w zakresie bazy danych przechowują poświadczenia jednostki usługi skonfigurowane w usłudze AAD. Można również użyć poświadczenia w zakresie bazy danych do przechowywania klucza konta magazynu dla Gen2.
 
 Aby połączyć się z Data Lake Storage przy użyciu jednostek usługi, należy **najpierw** utworzyć aplikację Azure Active Directory, utworzyć klucz dostępu i udzielić aplikacji dostępu do konta Data Lake Storage. Aby uzyskać instrukcje, zobacz [uwierzytelnianie w Azure Data Lake Storage przy użyciu Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
@@ -75,7 +78,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this when authenticating using service principals:
+-- It should look something like this when authenticating using service principal:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -84,7 +87,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>Tworzenie zewnętrznego źródła danych
-To polecenie [Utwórz zewnętrzne źródło danych](/sql/t-sql/statements/create-external-data-source-transact-sql) służy do przechowywania lokalizacji danych. 
+To polecenie [Utwórz zewnętrzne źródło danych](/sql/t-sql/statements/create-external-data-source-transact-sql) służy do przechowywania lokalizacji danych. W przypadku uwierzytelniania za pomocą przekazywania usługi AAD parametr CREDENTIAL nie jest wymagany. 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -178,7 +181,7 @@ Aby załadować dane z Data Lake Storage Użyj instrukcji [CREATE TABLE as Selec
 
 CTAS tworzy nową tabelę i wypełnia ją wynikami instrukcji SELECT. CTAS definiuje nową tabelę w taki sposób, aby zawierała te same kolumny i typy danych co wyniki instrukcji SELECT. W przypadku wybrania wszystkich kolumn z tabeli zewnętrznej Nowa tabela jest repliką kolumn i typów danych w tabeli zewnętrznej.
 
-W tym przykładzie tworzymy tabelę rozproszoną z mieszaniem o nazwie DimProduct z naszej zewnętrznej tabeli DimProduct_external.
+W tym przykładzie tworzymy tabelę rozproszoną z mieszaniem o nazwie DimProduct z naszej tabeli zewnętrznej DimProduct_external.
 
 ```sql
 
@@ -216,8 +219,8 @@ W tym samouczku utworzono tabele zewnętrzne w celu zdefiniowania struktury dany
 
 Zostały wykonane następujące zadania:
 > [!div class="checklist"]
-> * Utworzono obiekty bazy danych wymagane do załadowania z Data Lake Storage Gen1.
-> * Połączono z katalogiem Data Lake Storage Gen1.
+> * Utworzono obiekty bazy danych wymagane do załadowania z Data Lake Storage.
+> * Połączono z katalogiem Data Lake Storage.
 > * Załadowano dane do Azure SQL Data Warehouse.
 >
 

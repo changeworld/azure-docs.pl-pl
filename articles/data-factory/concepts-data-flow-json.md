@@ -1,18 +1,19 @@
 ---
-title: Używanie kodu JSON w mapowaniu przepływu danych w Azure Data Factory
+title: KOD JSON w mapowaniu przepływu danych
 description: Azure Data Factory mapowanie przepływu danych ma wbudowane funkcje obsługi dokumentów JSON z hierarchiami
 author: kromerm
 ms.author: makromer
 ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/30/2019
-ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 153c7a1003c68526c960644bebcc4800e92edc3c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387361"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928326"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapowanie obsługi JSON przepływu danych
 
@@ -161,7 +162,7 @@ Wybierz opcję **pojedyncze cudzysłowy** , jeśli ukośniki odwrotne są używa
 
 Funkcja wyższej kolejności to funkcja, która przyjmuje w jednej lub kilku funkcjach jako argument. Poniżej znajduje się lista funkcji wyższego rzędu obsługiwanych w mapowaniu przepływów danych, które umożliwiają wykonywanie operacji na tablicach.
 
-### <a name="filter"></a>filtru
+### <a name="filter"></a>filter
 Filtruje elementy z tablicy, które nie spełniają podanego predykatu. Filtr oczekuje odwołania do jednego elementu w funkcji predykatu jako #item.
 
 #### <a name="examples"></a>Przykłady
@@ -189,7 +190,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-### <a name="sort"></a>Porządku
+### <a name="sort"></a>sortowanie
 Sortuje tablicę przy użyciu podanej funkcji predykatu. Funkcja Sort oczekuje odwołania do dwóch kolejnych elementów w funkcji Expression jako #item1 i #item2.
 
 #### <a name="examples"></a>Przykłady
@@ -201,7 +202,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-### <a name="contains"></a>wyświetlana
+### <a name="contains"></a>zawiera
 Zwraca wartość true, jeśli dowolny element w podanej tablicy ma wartość true w podanym predykacie. Zawiera oczekiwane odwołanie do jednego elementu w funkcji predykatu jako #item.
 
 #### <a name="examples"></a>Przykłady

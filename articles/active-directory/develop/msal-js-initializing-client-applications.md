@@ -1,29 +1,25 @@
 ---
-title: Inicjuj aplikacje klienckie (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript)
+title: Zainicjuj aplikacje klienckie MSAL. js | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje na temat inicjowania aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25f2776b9b5683a345c55af4bc0020fef8109edd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150664"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916506"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicjuj aplikacje klienckie przy użyciu MSAL. js
 W tym artykule opisano inicjowanie biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) przy użyciu wystąpienia aplikacji agent użytkownika. Aplikacja agent użytkownika jest formą publicznej aplikacji klienckiej, w której kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka sieci Web. Ci klienci nie przechowują wpisów tajnych, ponieważ kontekst przeglądarki jest otwarty. Aby dowiedzieć się więcej na temat typów aplikacji klienta i opcji konfiguracji aplikacji, zapoznaj się z [omówieniem](msal-client-applications.md).
@@ -115,7 +111,7 @@ Poniżej znajduje się całkowity zbiór konfigurowalnych opcji, które są obec
 - **clientID**: wymagane. ClientID aplikacji należy uzyskać z portalu rejestracji aplikacji.
 
 - **Urząd**: opcjonalny. Adres URL wskazujący katalog, z którego MSAL może żądać tokenów. Wartość domyślna to: `https://login.microsoftonline.com/common`.
-    * W usłudze Azure AD ma postać https://&lt;wystąpienia&gt;/&lt;odbiorców&gt;, gdzie &lt;wystąpienie&gt; to domena dostawcy tożsamości (na przykład `https://login.microsoftonline.com`), a &lt;&gt; odbiorców to identyfikator reprezentowania odbiorców logowania. Mogą to być następujące wartości:
+    * W usłudze Azure AD ma postać https://&lt;wystąpienia&gt;/&lt;odbiorców&gt;, gdzie &lt;wystąpienie&gt; jest domeną dostawcy tożsamości (na przykład `https://login.microsoftonline.com`), a &lt;odbiorców&gt; to identyfikator reprezentujący odbiorców logowania. Mogą to być następujące wartości:
         * `https://login.microsoftonline.com/<tenant>`-dzierżawca to domena skojarzona z dzierżawcą, na przykład contoso.onmicrosoft.com lub identyfikator GUID reprezentujący `TenantID` właściwości katalogu używanego tylko do logowania użytkowników określonej organizacji.
         * `https://login.microsoftonline.com/common`— służy do logowania użytkowników przy użyciu kont służbowych lub konta osobistego firmy Microsoft.
         * `https://login.microsoftonline.com/organizations/`— służy do logowania użytkowników przy użyciu kont służbowych.
@@ -129,7 +125,7 @@ Poniżej znajduje się całkowity zbiór konfigurowalnych opcji, które są obec
 
 - **postLogoutRedirectUri**: opcjonalne.  Przekierowuje użytkownika do `postLogoutRedirectUri` po wylogowaniu. Wartość domyślna to `redirectUri`.
 
-- **navigateToLoginRequestUrl**: opcjonalne. Możliwość wyłączenia domyślnej nawigacji na stronie początkowej po zalogowaniu się. Wartość domyślna to true. Jest on używany tylko w przypadku przepływów przekierowywania.
+- **navigateToLoginRequestUrl**: opcjonalne. Możliwość wyłączenia domyślnej nawigacji na stronie początkowej po zalogowaniu się. Wartość domyślna to „true”. Jest on używany tylko w przypadku przepływów przekierowywania.
 
 - **cacheLocation**: opcjonalne.  Ustawia magazyn przeglądarki na `localStorage` lub `sessionStorage`. Wartość domyślna to `sessionStorage`.
 

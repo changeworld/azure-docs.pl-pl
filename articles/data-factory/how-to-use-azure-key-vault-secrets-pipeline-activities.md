@@ -1,24 +1,23 @@
 ---
-title: Użyj Azure Key Vault wpisów tajnych w działaniach potoku
+title: Używanie wpisów tajnych usługi Azure Key Vault w działaniach potoku
 description: Dowiedz się, jak pobrać przechowywane poświadczenia z magazynu kluczy Azure i korzystać z nich podczas uruchamiania potoków usługi Data Factory.
 services: data-factory
 author: ChrisLound
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 83d0981a0d277eab1aae8654343ab34661b3e88b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672894"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926757"
 ---
-# <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Użyj Azure Key Vault wpisów tajnych w działaniach potoku
+# <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Używanie wpisów tajnych usługi Azure Key Vault w działaniach potoku
 
 Poświadczenia lub wartości tajne można przechowywać w Azure Key Vault i używać ich podczas wykonywania potoku w celu przekazania do działań.
 
@@ -50,10 +49,10 @@ Ta funkcja opiera się na tożsamości zarządzanej przez fabrykę danych.  Dowi
 
     |Właściwość  |Wartość  |
     |---------|---------|
-    |Bezpieczne wyjście     |True         |
+    |Bezpieczne wyjście     |Prawda         |
     |Adres URL     |[Tajna wartość identyfikatora URI]? API-version = 7.0         |
     |Metoda     |GET         |
-    |Authentication     |Tożsamość usługi zarządzanej         |
+    |Uwierzytelnianie     |Tożsamość usługi zarządzanej         |
     |Zasób        |https://vault.azure.net       |
 
     ![Aktywność sieci Web](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)

@@ -5,7 +5,6 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
@@ -13,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/12/2019
-ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa0f61ed0e280f11e693596f80e79f2e2c110678
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217642"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932043"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Skonfiguruj własne środowisko IR jako serwer proxy dla Azure-SSIS IR w usłudze ADF
 
@@ -54,14 +53,14 @@ Na stronie **Ustawienia zaawansowane** Sprawdź, jak skonfigurować samodzielny 
 ![Konfigurowanie Azure-SSIS IR przy użyciu samodzielnego środowiska IR jako serwera proxy](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>Zezwól na łączenie pakietów SSIS z serwerem proxy
-Korzystając z najnowszej SSDT z rozszerzeniem projektów SSIS dla programu Visual Studio, które można pobrać z tego [miejsca](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) lub jako autonomicznego Instalatora, który można pobrać z tego [miejsca](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer), można znaleźć nową właściwość **ConnectByProxy** , która została dodana w OLEDB/ Menedżerów prostego połączenia plików.  
+Korzystając z najnowszych SSDT z rozszerzeniem projektów SSIS dla programu Visual Studio, które można pobrać z tego [miejsca](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) lub jako autonomicznego Instalatora, który można pobrać z tego [miejsca](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer), można znaleźć nową właściwość **ConnectByProxy** , która została dodana w menedżerach połączeń plików OLEDB/Flat.  
 
 Podczas projektowania nowych pakietów zawierających zadania przepływu danych ze źródłami plików OLEDB/Flat do uzyskiwania dostępu do baz danych i plików lokalnie można włączyć tę właściwość, ustawiając dla niej **wartość true** w panelu Właściwości odpowiednich menedżerów połączeń.
 
 ![Włącz Właściwość ConnectByProxy](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Możesz również włączyć tę właściwość podczas uruchamiania istniejących pakietów bez konieczności ręcznej zmiany ich po jednym.  Dostępne są dwie opcje:
-- Otwieranie, ponowna kompilacja i ponowne wdrażanie projektu zawierającego te pakiety przy użyciu najnowszych SSDT do uruchomienia na Azure-SSIS IR: Właściwość można następnie włączyć, **ustawiając dla odpowiednich** menedżerów połączeń, które są wyświetlane w ramach **połączenia Karta kierownicy** okna podręcznego wykonywania pakietu podczas uruchamiania pakietów z programu SSMS.
+- Otwieranie, ponowna kompilacja i ponowne wdrażanie projektu zawierającego te pakiety przy użyciu najnowszych SSDT do uruchomienia na Azure-SSIS IR: Właściwość można następnie włączyć, **ustawiając dla odpowiednich** menedżerów połączeń, które są wyświetlane na karcie **Menedżer połączeń** w oknie podręcznym wykonaj pakiet, podczas uruchamiania pakietów z programu SSMS.
 
   ![Włącz ConnectByProxy Property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -69,7 +68,7 @@ Możesz również włączyć tę właściwość podczas uruchamiania istniejący
   
   ![Włącz ConnectByProxy Property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- Ponowne wdrażanie projektu zawierającego te pakiety do uruchomienia na urządzeniu IR programu SSIS: Właściwość można następnie włączyć, podając jej ścieżkę właściwości, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`i ustawiając **wartość na true** jako przesłonięcie właściwości na karcie **Zaawansowane** w oknie podręcznym wykonaj pakiet. podczas uruchamiania pakietów z programu SSMS.
+- Ponowne wdrażanie projektu zawierającego te pakiety do uruchomienia na urządzeniu IR usługi SSIS: Właściwość można następnie włączyć, podając jej ścieżkę właściwości, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`i ustawiając ją na **wartość true** jako przesłonięcie właściwości na karcie **Zaawansowane** w oknie podręcznym wykonywania pakietu w przypadku uruchamiania pakietów z programu SSMS.
 
   ![Włącz ConnectByProxy Property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
@@ -95,4 +94,4 @@ Pozostałe zadania przemieszczania uruchomione w Azure-SSIS IR nie będą rozlic
 - Używanie parametrów/zmiennych SSIS w ramach właściwości ODBC/OLEDB/prostych źródeł plików i menedżerów połączeń nie jest obecnie obsługiwane.
 
 ## <a name="next-steps"></a>Następne kroki
-Po skonfigurowaniu własnego środowiska IR jako serwera proxy dla Azure-SSIS IR można wdrażać i uruchamiać pakiety, aby uzyskiwać dostęp do danych lokalnych jako działania wykonywania pakietów SSIS w potokach ADF, zobacz [uruchamianie pakietów SSIS jako działania pakietu SSIS w potokach ADF ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Po skonfigurowaniu własnego środowiska IR jako serwera proxy dla Azure-SSIS IR można wdrażać i uruchamiać pakiety, aby uzyskiwać dostęp do danych lokalnych jako działania pakietu SSIS w potokach ADF, zobacz [uruchamianie pakietów SSIS jako działania pakietu SSIS w potokach ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

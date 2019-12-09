@@ -1,23 +1,23 @@
 ---
-title: Wykonaj pakiety SSIS w Azure Data Factory z SSDT
+title: Wykonaj pakiety SSIS z SSDT
 description: Dowiedz się, jak uruchamiać pakiety usług SSIS na platformie Azure z SSDT.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/31/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 4c89bdddce7b7318e184994ddf627d853e29fd7e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/31/2019
+ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673601"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927721"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Wykonywanie pakietów SSIS na platformie Azure z SSDT
 W tym artykule opisano funkcję projektów SQL Server Integration Services (SSIS) z włączoną obsługą platformy Azure w programie SQL Server Data Tools (SSDT), która umożliwia uruchamianie pakietów na Azure-SSIS Integration Runtime (IR) w Azure Data Factory (ADF).  Ta funkcja umożliwia testowanie istniejących pakietów usług SSIS przed podjęciem & Shift/migrowanie ich na platformę Azure lub opracowywanie nowych pakietów usług SSIS do uruchamiania na platformie Azure.
@@ -52,13 +52,13 @@ Platforma Azure — włączenie istniejących projektów usług SSIS wymaga usta
 3. Na stronie **Wybierz środowisko IR usług SSIS w podajniku APD** wybierz istniejący zestaw danych i Azure-SSIS IR, aby uruchomić pakiety, lub Utwórz nowe, jeśli nie masz żadnego z nich.
    - Aby wybrać istniejący Azure-SSIS IR, najpierw wybierz odpowiednią subskrypcję platformy Azure i ADF.
    - W przypadku wybrania istniejącego podajnika APD, który nie ma żadnych Azure-SSIS IR, kliknij przycisk **Utwórz środowisko IR** , aby utworzyć nowy w portalu i aplikacji ADF.
-   - Jeśli wybierzesz istniejącą subskrypcję platformy Azure, która nie ma żadnego podajnika APD, kliknij przycisk **Utwórz usługę SSIS IR** , aby uruchomić **Kreatora tworzenia Integration Runtime**, w którym możesz wprowadzić lokalizację i prefiks, aby automatycznie utworzyć nową platformę Azure Grupa zasobów, Data Factory i SSIS IR w Twoim imieniu, nazwana w następującym wzorcu: **YourPrefix-RG/DF/IR-YourCreationTime**.
+   - Jeśli wybierzesz istniejącą subskrypcję platformy Azure, która nie ma żadnego podajnika APD, kliknij przycisk **Utwórz usługę SSIS IR** , aby uruchomić **Kreatora tworzenia Integration Runtime**, w którym możesz wprowadzić lokalizację i prefiks, aby automatycznie utworzyć nową grupę zasobów platformy Azure, Data Factory i SSIS IR w Twoim imieniu, o nazwie w następującym wzorcu: **YourPrefix-RG/DF/IR-YourCreationTime**.
    
    ![Wybierz środowisko IR usług SSIS w usłudze ADF](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
 4. Na stronie **Wybieranie usługi Azure Storage** Wybierz istniejące konto usługi Azure Storage, aby przekazać pakiety do Azure Files, lub Utwórz nowe, jeśli nie masz żadnego z nich.
    - Aby wybrać istniejące konto usługi Azure Storage, najpierw wybierz odpowiednią subskrypcję platformy Azure.
-   - Jeśli wybierzesz tę samą Azure-SSIS IR subskrypcję platformy Azure, która nie ma konta usługi Azure Storage, kliknij przycisk **Utwórz usługę Azure Storage** , aby móc automatycznie utworzyć nową nazwę w Twoim imieniu w tej samej lokalizacji co Azure-SSIS IR, nazwana przez Łączenie prefiksu nazwy Azure-SSIS IR i daty jego utworzenia.
+   - W przypadku wybrania tej samej subskrypcji platformy Azure jako Azure-SSIS IR, która nie ma żadnego konta usługi Azure Storage, kliknij przycisk **Utwórz usługę Azure Storage** , aby móc automatycznie utworzyć nową nazwę w Twoim imieniu w tej samej lokalizacji co Azure-SSIS IR o nazwie przez połączenie prefiksu nazwy Azure-SSIS IR i jego daty utworzenia.
    - Jeśli wybierzesz inną subskrypcję platformy Azure, która nie ma konta usługi Azure Storage, kliknij przycisk **Utwórz usługę Azure Storage** , aby utworzyć nowy element na Azure Portal.
    
    ![Wybieranie pozycji Azure Storage](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
@@ -77,16 +77,16 @@ Po nawiązaniu połączenia między projektami a programem SSIS w ramach podajni
    ![Wykonaj pakiet na platformie Azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
 
 > [!NOTE]
-> Wykonywanie pakietów na platformie Azure wymaga uruchomionego Azure-SSIS IR, więc jeśli Azure-SSIS IR zostanie zatrzymana, okno dialogowe zostanie wyświetlona, aby je uruchomić.  Bez czasu instalacji niestandardowej ten proces powinien zostać zakończony w ciągu 5 minut, ale może potrwać około 20-30 minut w przypadku Azure-SSIS IR dołączenia do sieci wirtualnej.  Po wykonaniu pakietów na platformie Azure Możesz zatrzymać Azure-SSIS IR, aby zarządzać jego uruchomionym kosztem, klikając prawym przyciskiem myszy węzeł w Eksplorator rozwiązań panelu SSDT, aby wyskakujące menu, a następnie wybierając element menu **Start\Stop\Manage** , który przeprowadzi Cię do portalu ADF/ aplikacja, aby to zrobić.
+> Wykonywanie pakietów na platformie Azure wymaga uruchomionego Azure-SSIS IR, więc jeśli Azure-SSIS IR zostanie zatrzymana, okno dialogowe zostanie wyświetlona, aby je uruchomić.  Bez czasu instalacji niestandardowej ten proces powinien zostać zakończony w ciągu 5 minut, ale może potrwać około 20-30 minut w przypadku Azure-SSIS IR dołączenia do sieci wirtualnej.  Po wykonaniu pakietów na platformie Azure Możesz zatrzymać Azure-SSIS IR, aby zarządzać jego uruchomionym kosztem, klikając prawym przyciskiem myszy węzeł w Eksplorator rozwiązań panelu SSDT, aby wypróbować menu, a następnie wybierając element menu **Start\Stop\Manage** , który przeprowadzi Cię do portalu/aplikacji usługi ADF.
 
 ### <a name="checking-package-execution-logs"></a>Sprawdzanie dzienników wykonywania pakietów
 Po rozpoczęciu wykonywania pakietu będziemy formatować i wyświetlać dziennik w oknie postępu SSDT.  W przypadku długiego uruchomionego pakietu będziemy okresowo aktualizować dziennik przez minuty.  Aby zatrzymać wykonywanie pakietu, kliknij przycisk **Zatrzymaj** na pasku narzędzi SSDT, który natychmiast go anuluje.  Możesz również tymczasowo znaleźć dane pierwotne dziennika w ścieżce Universal Naming Convention (UNC): `\\<YourConnectedAzureStorage>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs`, ale zostanie ona oczyszczona po upływie jednego dnia.
 
 ### <a name="switching-package-protection-level"></a>Przełączanie poziomu ochrony pakietu
-Wykonywanie pakietów SSIS na platformie Azure nie obsługuje poziomów ochrony **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** .  W związku z tym, jeśli Twoje pakiety są skonfigurowane z tymi, tymczasowo przełączymy je odpowiednio do **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**, przy użyciu losowo generowanych haseł podczas przekazywania pakiety do Azure Files do wykonania na Azure-SSIS IR.
+Wykonywanie pakietów SSIS na platformie Azure nie obsługuje poziomów ochrony **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** .  W związku z tym, jeśli pakiety są skonfigurowane za pomocą tych, tymczasowo przełączymy je odpowiednio do **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**, z losowo generowanymi hasłami podczas przekazywania pakietów do Azure Files do wykonania na Azure-SSIS IR.
 
 > [!NOTE]
-> Jeśli pakiety zawierają zadania wykonywania pakietów, które odwołują się do innych pakietów skonfigurowanych przy użyciu **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** poziomu ochrony, należy ręcznie skonfigurować te inne pakiety do użycia  **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**odpowiednio przed wykonaniem pakietów.
+> Jeśli pakiety zawierają zadania wykonywania pakietów, które odwołują się do innych pakietów skonfigurowanych z poziomu **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** Protection, przed wykonaniem pakietów trzeba ręcznie skonfigurować ponownie te pakiety, aby korzystały z **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**.
 
 Jeśli Twoje pakiety zostały już skonfigurowane z **EncryptSensitiveWithPassword**/**EncryptAllWithPasswordymi** poziomami ochrony, firma Microsoft nie zmieni ich, ale nadal będzie używać losowo generowanych haseł podczas przekazywania pakietów do Azure Files do wykonania na Azure-SSIS IR.
 

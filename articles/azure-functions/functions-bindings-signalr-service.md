@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 208b5462efeb579e30550824bd7ba931db1825b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786337"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925642"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
@@ -18,7 +18,7 @@ W tym artykule wyjaśniono, jak uwierzytelniać i wysyłać komunikaty w czasie 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2. x
+## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
 
 Powiązania usługi sygnalizującego są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) w wersji 1. *. Kod źródłowy pakietu znajduje się w repozytorium [Azure-Functions-signalrservice-Extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub.
 
@@ -106,7 +106,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -236,7 +236,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -377,7 +377,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -507,7 +507,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -642,7 +642,7 @@ Przykład Function. JSON:
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -1007,26 +1007,26 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `SignalRConnectionInfo` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `SignalRConnectionInfo` atrybutu.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type**|| Musi być ustawiony na `signalRConnectionInfo`.|
-|**direction**|| Musi być ustawiony na `in`.|
-|**Nazwij**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
+|**type**|| Musi być równa `signalRConnectionInfo`.|
+|**direction**|| Musi być równa `in`.|
+|**Nazwa**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
 |**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
-|**Nazwa**|**Nazwa**| Opcjonalnie: wartość żądania identyfikatora użytkownika do ustawienia w tokenie klucza dostępu. |
+|**userId**|**UserId**| Opcjonalnie: wartość żądania identyfikatora użytkownika do ustawienia w tokenie klucza dostępu. |
 |**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
 
 ### <a name="signalr"></a>SignalR
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `SignalR` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `SignalR` atrybutu.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type**|| Musi być ustawiony na `signalR`.|
-|**direction**|| Musi być ustawiony na `out`.|
-|**Nazwij**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
+|**type**|| Musi być równa `signalR`.|
+|**direction**|| Musi być równa `out`.|
+|**Nazwa**|| Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
 |**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
 |**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
 
@@ -1035,7 +1035,7 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Programowanie i konfigurowanie w usłudze Azure Functions za pomocą usługi Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)

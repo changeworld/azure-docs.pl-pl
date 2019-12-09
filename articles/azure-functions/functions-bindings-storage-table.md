@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 77f95cf02b5216f1946283143b828f915b351abc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1308463694754231aa6d770bf716fd3def219981
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230990"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925321"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania usługi Azure Table Storage dla Azure Functions
 
@@ -20,15 +20,15 @@ W tym artykule opisano sposób pracy z powiązaniami w usłudze Azure Table Stor
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania magazynu tabel są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub.
+Powiązania magazynu tabel są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) w wersji 2. x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
 
-Powiązania magazynu tabel są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub.
+Powiązania magazynu tabel są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) w wersji 3. x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) repozytorium GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -105,7 +105,7 @@ public class TableStorage
 
 ### <a name="input---c-example---cloudtable"></a>Dane wejściowe C# — przykład — chmura
 
-`IQueryable` nie jest obsługiwana w [środowisku uruchomieniowym funkcji v2](functions-versions.md). Alternatywą jest użycie `CloudTable` parametru metody w celu odczytania tabeli przy użyciu zestawu SDK usługi Azure Storage. Oto przykład funkcji 2. x, która bada Azure Functions tabeli dziennika:
+`IQueryable` nie jest obsługiwana w [środowisku uruchomieniowym funkcji v2](functions-versions.md). Alternatywą jest użycie `CloudTable` parametru metody w celu odczytania tabeli przy użyciu zestawu SDK usługi Azure Storage. Oto przykład funkcji, która bada Azure Functions tabeli dziennika:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -185,7 +185,7 @@ Plik *Function. JSON* określa `partitionKey` i `rowKey`. Wartość `rowKey` "{q
 }
 ```
 
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -208,7 +208,7 @@ public class Person
 
 Poniższy przykład przedstawia powiązanie danych wejściowych tabeli w pliku *Function. JSON* i [ C# kodzie skryptu](functions-reference-csharp.md) , który używa powiązania. Funkcja odczytuje jednostki dla klucza partycji, który jest określony w komunikacie kolejki.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -232,7 +232,7 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Kod C# skryptu dodaje odwołanie do zestawu SDK usługi Azure Storage, dzięki czemu typ jednostki może pochodzić od `TableEntity`:
 
@@ -258,7 +258,7 @@ public class Person : TableEntity
 
 ### <a name="input---c-script-example---cloudtable"></a>Dane wejściowe C# — przykład skryptu — chmura
 
-`IQueryable` nie jest obsługiwana w [środowisku uruchomieniowym funkcji v2](functions-versions.md). Alternatywą jest użycie `CloudTable` parametru metody w celu odczytania tabeli przy użyciu zestawu SDK usługi Azure Storage. Oto przykład funkcji 2. x, która bada Azure Functions tabeli dziennika:
+`IQueryable` nie jest obsługiwana w środowisku uruchomieniowym funkcji dla [wersji 2. x i nowszych)](functions-versions.md). Alternatywą jest użycie `CloudTable` parametru metody w celu odczytania tabeli przy użyciu zestawu SDK usługi Azure Storage. Oto przykład funkcji, która bada Azure Functions tabeli dziennika:
 
 ```json
 {
@@ -349,7 +349,7 @@ Plik *Function. JSON* określa `partitionKey` i `rowKey`. Wartość `rowKey` "{q
 }
 ```
 
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Oto F# kodu:
 
@@ -396,7 +396,7 @@ Plik *Function. JSON* określa `partitionKey` i `rowKey`. Wartość `rowKey` "{q
 }
 ```
 
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -431,7 +431,7 @@ public int run(
  
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następujących atrybutów, aby skonfigurować powiązanie danych wejściowych tabeli:
 
-* [Tabelaattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
   Konstruktor atrybutu przyjmuje nazwę tabeli, klucz partycji i klucz wiersza. Może być używana dla parametru out lub zwracanej wartości funkcji, jak pokazano w następującym przykładzie:
 
@@ -479,10 +479,10 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następującyc
 
 Konto magazynu do użycia jest określane w następującej kolejności:
 
-* Właściwość `Connection` atrybutu `Table`.
-* Atrybut `StorageAccount` stosowany do tego samego parametru, który jest atrybutem `Table`.
-* Atrybut `StorageAccount` stosowany do funkcji.
-* Atrybut `StorageAccount` stosowany do klasy.
+* `Table` Atrybutu `Connection` właściwości.
+* `StorageAccount` Zastosowany do tego samego parametru jako `Table` atrybutu.
+* `StorageAccount` Zastosowany do funkcji.
+* `StorageAccount` Zastosowany do klasy.
 * Domyślne konto magazynu dla aplikacji funkcji (ustawienie aplikacji "AzureWebJobsStorage").
 
 ## <a name="input---java-annotations"></a>Input — adnotacje języka Java
@@ -491,18 +491,18 @@ W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azur
 
 ## <a name="input---configuration"></a>Dane wejściowe — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Table` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Table` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiony na `table`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal.|
-|**direction** | Nie dotyczy | Musi być ustawiony na `in`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje tabelę lub jednostkę w kodzie funkcji. | 
+|**type** | nd. | Musi być równa `table`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal.|
+|**direction** | nd. | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal. |
+|**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje tabelę lub jednostkę w kodzie funkcji. | 
 |**tableName** | **TableName** | Nazwa tabeli.| 
 |**partitionKey** | **PartitionKey** |Opcjonalny. Klucz partycji jednostki tabeli do odczytania. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**rowKey** |**RowKey** | Opcjonalny. Klucz wiersza jednostki tabeli, który ma zostać odczytany. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
-|**czasochłonn** |**Czasochłonn** | Opcjonalny. Maksymalna liczba jednostek do odczytania w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
-|**filtru** |**Filtru** | Opcjonalny. Wyrażenie filtru OData dla danych wejściowych tabeli w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
+|**take** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytania w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
+|**filter (filtrowanie)** |**Filtr** | Opcjonalny. Wyrażenie filtru OData dla danych wejściowych tabeli w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -538,7 +538,7 @@ Za pomocą powiązania danych wyjściowych usługi Azure Table Storage można pi
 Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
-* [C#skrypt (. CSX)](#output---c-script-example)
+* [Skryptu C# (csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
@@ -570,7 +570,7 @@ public class TableStorage
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych tabeli w pliku *Function. JSON* i [ C# kodzie skryptu](functions-reference-csharp.md) , który używa powiązania. Funkcja zapisuje wiele jednostek tabeli.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -592,7 +592,7 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -625,7 +625,7 @@ public class Person
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych tabeli w pliku *Function. JSON* i [ F# kodzie skryptu](functions-reference-fsharp.md) , który używa powiązania. Funkcja zapisuje wiele jednostek tabeli.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -647,7 +647,7 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Oto F# kodu:
 
@@ -672,7 +672,7 @@ let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych tabeli w pliku *Function. JSON* i [funkcji języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja zapisuje wiele jednostek tabeli.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -694,7 +694,7 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -745,19 +745,19 @@ public static MyPoco TableOutput(
 }
 ```
 
-Aby uzyskać pełny przykład, zobacz [Output- C# example](#output---c-example).
+Aby uzyskać kompletny przykład, zobacz [dane wyjściowe — przykład w języku C#](#output---c-example).
 
 Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz [atrybuty danych wejściowych](#input---attributes).
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Table` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Table` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiony na `table`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal.|
-|**direction** | Nie dotyczy | Musi być ustawiony na `out`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej używana w kodzie funkcji, która reprezentuje tabelę lub jednostkę. Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.| 
+|**type** | nd. | Musi być równa `table`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal.|
+|**direction** | nd. | Musi być równa `out`. Ta właściwość jest ustawiana automatycznie podczas tworzenia powiązania w Azure Portal. |
+|**Nazwa** | nd. | Nazwa zmiennej używana w kodzie funkcji, która reprezentuje tabelę lub jednostkę. Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.| 
 |**tableName** |**TableName** | Nazwa tabeli.| 
 |**partitionKey** |**PartitionKey** | Klucz partycji jednostki tabeli do zapisania. Zapoznaj się z [sekcją użycie](#output---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**rowKey** |**RowKey** | Klucz wiersza jednostki tabeli do zapisania. Zapoznaj się z [sekcją użycie](#output---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
@@ -785,7 +785,7 @@ Powiązanie danych wyjściowych magazynu tabel obsługuje następujące scenariu
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Powiązanie | Dokumentacja |
+| Powiązanie | Informacje ogólne |
 |---|---|
 | Tabela | [Kody błędów tabeli](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Obiekt BLOB, tabela, kolejka | [Kody błędów magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -794,4 +794,4 @@ Powiązanie danych wyjściowych magazynu tabel obsługuje następujące scenariu
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

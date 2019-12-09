@@ -1,6 +1,6 @@
 ---
-title: Aplikacja klasyczna, która wywołuje interfejsy API sieci Web (Przenieś do środowiska produkcyjnego) — Microsoft Identity platform
-description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (Przenieś do środowiska produkcyjnego)
+title: Przenoszenie aplikacji klasycznych interfejsy API sieci Web do produkcji — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak przenieść aplikację klasyczną, która wywołuje interfejsy API sieci Web w środowisku produkcyjnym
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,16 +17,16 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175555"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919987"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
 
-Ten artykuł zawiera szczegółowe informacje ułatwiające dalsze ulepszanie aplikacji i przenoszenie jej do środowiska produkcyjnego.
+Ten artykuł zawiera szczegółowe informacje dotyczące przenoszenia aplikacji klasycznej, która wywołuje interfejsy API sieci Web w środowisku produkcyjnym.
 
 ## <a name="handling-errors-in-desktop-applications"></a>Obsługa błędów w aplikacjach klasycznych
 

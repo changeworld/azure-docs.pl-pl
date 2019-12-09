@@ -1,5 +1,6 @@
 ---
-title: Korzystanie z platformy tożsamości firmy Microsoft do logowania użytkowników na urządzeniach bez przeglądarki | Azure
+title: Logowanie użytkowników bez przeglądarki | Azure
+titleSuffix: Microsoft identity platform
 description: Tworzenie wbudowanych i niezwiązanych z przeglądarką przepływów uwierzytelniania przy użyciu uprawnień do autoryzacji urządzeń.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c948c59a90e0db17b4704188221cfc3c3d82310
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207600"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919243"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platform i autoryzacja autoryzacji urządzeń z uwierzytelnianiem OAuth 2,0
 
@@ -62,8 +63,8 @@ scope=user.read%20openid%20profile
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagany | Może być/typowe,/consumers lub/Organizations.  Może to być również dzierżawca katalogu, do którego chcesz zażądać uprawnień w formacie GUID lub przyjaznych nazw.  |
-| `client_id` | Wymagany | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
+| `tenant` | Wymagane | Może być/typowe,/consumers lub/Organizations.  Może to być również dzierżawca katalogu, do którego chcesz zażądać uprawnień w formacie GUID lub przyjaznych nazw.  |
+| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
 | `scope` | Zalecane | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md) , do których użytkownik ma wyrazić zgodę.  |
 
 ### <a name="device-authorization-response"></a>Odpowiedź na autoryzację urządzenia
@@ -99,12 +100,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parametr | Wymagany | Opis|
+| Parametr | Wymagane | Opis|
 | -------- | -------- | ---------- |
-| `tenant`  | Wymagany | Ten sam alias dzierżawcy lub dzierżawy używany w żądaniu początkowym. | 
-| `grant_type` | Wymagany | Musi być `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Wymagany | Musi pasować do `client_id` użytego w żądaniu początkowym. |
-| `device_code`| Wymagany | `device_code` zwrócona w żądaniu autoryzacji urządzenia.  |
+| `tenant`  | Wymagane | Ten sam alias dzierżawcy lub dzierżawy używany w żądaniu początkowym. | 
+| `grant_type` | Wymagane | Musi być `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Wymagane | Musi pasować do `client_id` użytego w żądaniu początkowym. |
+| `device_code`| Wymagane | `device_code` zwrócona w żądaniu autoryzacji urządzenia.  |
 
 ### <a name="expected-errors"></a>Oczekiwane błędy
 

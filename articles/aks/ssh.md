@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089542"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926369"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Łączenie się z węzłami klastra SSH z usługą Azure Kubernetes Service (AKS) w celu przeprowadzenia konserwacji lub rozwiązywania problemów
 
@@ -41,7 +41,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* w elemencie *webresourceing* do *CLUSTER_RESOURCE_GROUP*. Przykład używa *CLUSTER_RESOURCE_GROUP* , aby wyświetlić listę Nazwa zestawu skalowania i przypisać ją do *SCALE_SET_NAME*.  
+Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* w elemencie *webresourceing* do *CLUSTER_RESOURCE_GROUP*. Przykład używa *CLUSTER_RESOURCE_GROUP* , aby wyświetlić listę Nazwa zestawu skalowania i przypisać ją do *SCALE_SET_NAME*.
 
 > [!IMPORTANT]
 > W tej chwili należy zaktualizować klucze SSH dla klastrów AKS opartych na zestawie skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure.
@@ -100,7 +100,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* w elemencie *webresourceing* do *CLUSTER_RESOURCE_GROUP*. W przykładzie zostanie użyta *CLUSTER_RESOURCE_GROUP* do wyświetlenia nazwy maszyny wirtualnej. Przykładowe dane wyjściowe przedstawiają nazwę maszyny wirtualnej: 
+Powyższy przykład przypisuje nazwę grupy zasobów klastra dla *myAKSCluster* w elemencie *webresourceing* do *CLUSTER_RESOURCE_GROUP*. W przykładzie zostanie użyta *CLUSTER_RESOURCE_GROUP* do wyświetlenia nazwy maszyny wirtualnej. Przykładowe dane wyjściowe przedstawiają nazwę maszyny wirtualnej:
 
 ```
 Name                      ResourceGroup                                  Location
@@ -144,7 +144,7 @@ Aby utworzyć połączenie SSH z węzłem AKS, należy uruchomić pomocnika w kl
 1. Uruchom obraz kontenera `debian` i Dołącz do niego sesję terminalu. Tego kontenera można użyć do utworzenia sesji SSH z dowolnym węzłem w klastrze AKS:
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
@@ -158,21 +158,12 @@ Aby utworzyć połączenie SSH z węzłem AKS, należy uruchomić pomocnika w kl
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. Otwórz nowe okno terminalu, które nie jest połączone z kontenerem, Utwórz listę zasobników w klastrze AKS za pomocą polecenia [polecenia kubectl Get][kubectl-get] . Utworzony w poprzednim kroku rozpoczyna się od nazwy *AKS-SSH*, jak pokazano w następującym przykładzie:
+1. Otwórz nowe okno terminalu, które nie jest połączone z kontenerem, skopiuj prywatny klucz SSH do pomocnika. Ten klucz prywatny służy do tworzenia protokołu SSH w węźle AKS. 
 
-    ```
-    $ kubectl get pods
-    
-    NAME                       READY     STATUS    RESTARTS   AGE
-    aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
-    ```
-
-1. W poprzednim kroku dodano publiczny klucz SSH do węzła AKS, którego chcesz rozwiązać problem. Teraz Skopiuj prywatny klucz SSH do pomocnika. Ten klucz prywatny służy do tworzenia protokołu SSH w węźle AKS.
-
-    Podaj własną nazwę *AKS-SSH* pod uzyskaną w poprzednim kroku. W razie potrzeby zmień *~/.ssh/id_rsa* na lokalizację prywatnego klucza SSH:
+   W razie potrzeby zmień *~/.ssh/id_rsa* na lokalizację prywatnego klucza SSH:
 
     ```console
-    kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+    kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
 1. Wróć do sesji terminala do kontenera, zaktualizuj uprawnienia do skopiowanego `id_rsa` prywatnego klucza SSH, aby był on tylko do odczytu:
@@ -185,22 +176,22 @@ Aby utworzyć połączenie SSH z węzłem AKS, należy uruchomić pomocnika w kl
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
-    
+
     ECDSA key fingerprint is SHA256:A6rnRkfpG21TaZ8XmQCCgdi9G/MYIMc+gFAuY9RUY70.
     Are you sure you want to continue connecting (yes/no)? yes
     Warning: Permanently added '10.240.0.4' (ECDSA) to the list of known hosts.
-    
+
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-1018-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     [...]
-    
+
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 

@@ -1,23 +1,22 @@
 ---
-title: Używanie Azure Data Factory do migrowania danych z lokalnego klastra Hadoop do usługi Azure Storage
+title: Migrowanie danych z lokalnego klastra Hadoop do usługi Azure Storage
 description: Dowiedz się, jak używać Azure Data Factory do migrowania danych z lokalnego klastra Hadoop do usługi Azure Storage.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675812"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931447"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Używanie Azure Data Factory do migrowania danych z lokalnego klastra Hadoop do usługi Azure Storage 
 
@@ -82,7 +81,7 @@ Ten obraz przedstawia Migrowanie danych za pośrednictwem prywatnego linku:
 - W tej architekturze dane są migrowane za pośrednictwem prywatnego linku komunikacji równorzędnej za pośrednictwem usługi Azure ExpressRoute. Dane nigdy nie przechodzą przez publiczny Internet.
 - Narzędzie pomocą distcp nie obsługuje prywatnej komunikacji równorzędnej ExpressRoute z punktem końcowym sieci wirtualnej usługi Azure Storage. Zalecamy używanie natywnej możliwości Data Factory za pośrednictwem środowiska Integration Runtime do migrowania danych.
 - W przypadku tej architektury należy zainstalować Data Factory własne środowisko Integration Runtime na maszynie wirtualnej z systemem Windows w sieci wirtualnej platformy Azure. Możesz ręcznie skalować maszynę wirtualną lub skalować ją do wielu maszyn wirtualnych, aby w pełni wykorzystać liczbę operacji we/wy sieci i magazynu.
-- Zalecana konfiguracja do uruchomienia dla każdej maszyny wirtualnej platformy Azure (z zainstalowanym własnym Data Factorym środowisko Integration Runtime) to Standard_D32s_v3 z 32 vCPU i 128 GB pamięci. Możesz monitorować użycie procesora i pamięci maszyny wirtualnej podczas migracji danych, aby zobaczyć, czy konieczne jest skalowanie maszyny wirtualnej w celu uzyskania lepszej wydajności lub skalowanie maszyny wirtualnej w dół w celu obniżenia kosztów.
+- Zalecana konfiguracja do uruchomienia dla każdej maszyny wirtualnej platformy Azure (z zainstalowaną Data Factorym własnym środowisku Integration Runtime) jest Standard_D32s_v3 z 32 vCPU i 128 GB pamięci. Możesz monitorować użycie procesora i pamięci maszyny wirtualnej podczas migracji danych, aby zobaczyć, czy konieczne jest skalowanie maszyny wirtualnej w celu uzyskania lepszej wydajności lub skalowanie maszyny wirtualnej w dół w celu obniżenia kosztów.
 - Można także skalować w poziomie, kojarząc do czterech węzłów maszyn wirtualnych przy użyciu pojedynczego środowiska Integration Runtime. Pojedyncze zadanie kopiowania uruchomione dla samodzielnego środowiska Integration Runtime automatycznie tworzy partycje zestawu plików i używa wszystkich węzłów maszyny wirtualnej do kopiowania plików równolegle. Aby zapewnić wysoką dostępność, zalecamy rozpoczęcie od dwóch węzłów maszyn wirtualnych, aby uniknąć scenariusza pojedynczego punktu awarii podczas migracji danych.
 - W przypadku korzystania z tej architektury, migracja danych początkowej migawki i migracja danych różnicowych są dostępne dla użytkownika.
 
@@ -140,7 +139,7 @@ Oto Szacowana cena oparta na naszych założeń:
 
 ### <a name="additional-references"></a>Dodatkowa dokumentacja
 
-- [Łącznik HDFS](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
+- [Łącznik systemu plików HDFS](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
 - [Łącznik usługi Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Łącznik Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Przewodnik dostrajania wydajności działania kopiowania](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)

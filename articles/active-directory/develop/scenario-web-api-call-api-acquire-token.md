@@ -1,6 +1,7 @@
 ---
-title: Internetowy interfejs API, wywołuje inne interfejsy API sieci web (Uzyskiwanie tokenu dla aplikacji) — Platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć internetowy interfejs API, że wywołania innych internetowych interfejsów API (pobierania tokenu dla aplikacji).
+title: Uzyskaj token dla internetowego interfejsu API, który wywołuje interfejsy API sieci Web | Azure
+titleSuffix: Microsoft identity platform
+description: Dowiedz się, jak utworzyć interfejs API sieci Web, który wywołuje interfejsy API sieci Web, które wymagają uzyskiwania tokenu dla aplikacji.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276ff1e5e9f709aa5b38d1efa4055dfe3baf3cc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231097"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919787"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Internetowy interfejs API, która wywołuje interfejsy API — w sieci web uzyskać token dla aplikacji
+# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Internetowy interfejs API wywołujący interfejsy API sieci Web — uzyskiwanie tokenu dla aplikacji
 
-Po dołączeniu aplikacji klienckiej obiektu, można uzyskać tokenu, który służy do wywoływania interfejsu API sieci web.
+Po skompilowaniu obiektu aplikacji klienckiej Użyj go, aby uzyskać token, którego można użyć do wywołania interfejsu API sieci Web.
 
-## <a name="code-in-the-controller"></a>Możesz pisać kod w kontrolerze
+## <a name="code-in-the-controller"></a>Kod w kontrolerze
 
-Poniżej przedstawiono przykładowy kod, który zostanie wywołany w akcjach kontrolerów interfejsów API, wywoływanie podrzędnego interfejsu API (o nazwie todolist).
+Oto przykład kodu, który zostanie wywołany w akcjach kontrolerów interfejsu API, wywołujący podrzędny interfejs API (o nazwie todolist).
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -49,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` jest podobny do opisane w artykule [interfejsu API sieci Web, która wywołuje interfejsy API — Konfiguracja aplikacji w sieci web](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` tworzy wystąpienie `IConfidentialClientApplication` z pamięcią podręczną, która zawiera tylko informacje dotyczące jednego konta. Konto jest udostępniane przez `GetAccountIdentifier` metody.
+`BuildConfidentialClient()` jest podobny do przedstawionego w artykule [internetowy interfejs API, który wywołuje interfejsy API sieci Web — konfiguracja aplikacji](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` tworzy wystąpienia `IConfidentialClientApplication` z pamięcią podręczną, która zawiera tylko informacje dla jednego konta. Konto jest dostarczane przez metodę `GetAccountIdentifier`.
 
-`GetAccountIdentifier` Metoda używa oświadczenia skojarzone z tożsamością użytkownika, dla którego internetowy interfejs API Odebrano tokenu JWT:
+Metoda `GetAccountIdentifier` używa oświadczeń skojarzonych z tożsamością użytkownika, dla którego internetowy interfejs API odebrał token JWT:
 
 ```CSharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -69,7 +70,7 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wywoływanie interfejsu web API](scenario-web-api-call-api-call-api.md)
+> [Wywoływanie interfejsu API sieci Web](scenario-web-api-call-api-call-api.md)

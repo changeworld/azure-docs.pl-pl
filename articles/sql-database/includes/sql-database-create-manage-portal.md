@@ -5,29 +5,29 @@ ms.subservice: operations
 ms.topic: include
 ms.date: 08/23/2019
 ms.author: sstein
-ms.openlocfilehash: 9e189d0582d2e81193c892cb349b475ed0d68df8
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2a8b9322f7c03d76cd8a31c832c343cde9e2e355
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014799"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935821"
 ---
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Tworzenie zasobów usługi Azure SQL i zarządzanie nimi za pomocą Azure Portal
 
 Azure Portal zawiera jedną stronę, na której można zarządzać [wszystkimi zasobami usługi Azure SQL, w](https://go.microsoft.com/fwlink/?linkid=2100641) tym maszynami wirtualnymi SQL.
 
-Aby uzyskać dostęp do strony **zasobów SQL platformy Azure** , wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+Aby uzyskać dostęp do strony **zasobów SQL platformy Azure** , w menu Azure Portal wybierz pozycję **Azure SQL** lub Wyszukaj, a następnie wybierz pozycję **Azure SQL** na dowolnej stronie.
 
 > [!NOTE]
 > **Usługa Azure SQL** zapewnia szybki i łatwy sposób dostępu do wszystkich baz danych SQL, pul elastycznych, serwerów baz danych, wystąpień zarządzanych SQL i maszyn wirtualnych SQL. Usługa Azure SQL nie jest usługą ani zasobem. 
 
 Aby zarządzać istniejącymi zasobami, wybierz żądany element z listy. Aby utworzyć nowe zasoby Azure SQL, wybierz pozycję **+ Dodaj**. 
 
-![Strona portalu Azure SQL](../media/sql-database-technical-overview/azure-sql.png)
+![Strona portalu Azure SQL](../media/sql-database-technical-overview/add-azure-sql-resources.png)
 
 Po wybraniu **+ Dodaj**Wyświetl dodatkowe informacje o różnych opcjach, wybierając pozycję **Pokaż szczegóły** na dowolnym kafelku.
 
-![Szczegóły kafelka bazy danych](../media/sql-database-technical-overview/create-single-database.png)
+![Szczegóły kafelka bazy danych](../media/sql-database-technical-overview/single-sql-database-deployment-options.png)
 
 Aby uzyskać szczegółowe informacje, zobacz:
 

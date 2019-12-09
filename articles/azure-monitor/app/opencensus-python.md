@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849789"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928999"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 
@@ -61,7 +61,16 @@ Aby uzyskać pełną listę pakietów i integracji, zobacz [OpenCensus Packages]
 
 Zestaw SDK używa trzech Azure Monitor eksportujących do wysyłania różnych typów danych telemetrycznych do Azure Monitor: śledzenia, metryk i dzienników. Aby uzyskać więcej informacji na temat tych typów telemetrii, zobacz [Omówienie platformy danych](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Aby wysłać te typy telemetrii za pośrednictwem trzech eksporterów, należy wykonać poniższe instrukcje.
 
+## <a name="telemetry-type-mappings"></a>Mapowania typów telemetrii
+
+Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy danych telemetrycznych, które będą widoczne w Azure Monitor.
+
+![Zrzut ekranu przedstawiający Mapowanie typów telemetrii z OpenCensus do Azure Monitor](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>Ślad
+
+> [!NOTE]
+> `Trace` w OpenCensus odnosi się do [śledzenia rozproszonego](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). `AzureExporter` wysyła dane telemetryczne `requests` i `dependency` do Azure Monitor.
 
 1. Najpierw wygenerujmy dane śledzenia lokalnie. W bezczynnym języku Python lub wybranym przez Ciebie edytorze wpisz poniższy kod.
 
@@ -293,7 +302,10 @@ Zestaw SDK używa trzech Azure Monitor eksportujących do wysyłania różnych t
         main()
     ```
 
-4. Eksporter wyśle dane dziennika do Azure Monitor. Dane można znaleźć w obszarze `traces`.
+4. Eksporter wyśle dane dziennika do Azure Monitor. Dane można znaleźć w obszarze `traces`. 
+
+> [!NOTE]
+> `traces` w tym kontekście nie jest taka sama jak `Tracing`. `traces` odnosi się do typu danych telemetrycznych, które będą widoczne w Azure Monitor podczas używania `AzureLogHandler`. `Tracing` odnosi się do koncepcji w OpenCensus i odnosi się do [śledzenia rozproszonego](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
 5. Aby sformatować komunikaty dziennika, można użyć `formatters` w wbudowanym [interfejsie API rejestrowania](https://docs.python.org/3/library/logging.html#formatter-objects)języka Python.
 

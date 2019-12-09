@@ -4,21 +4,20 @@ description: Dowiedz się więcej na temat przenoszenia danych z usługi Salesfo
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 71201efeb56ffda2dfbf82ca19b3bacb773c7c3d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666164"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929268"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Przenoszenie danych z usługi Salesforce przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -52,7 +51,7 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane z usługi 
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -64,23 +63,23 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla usługi Salesforce:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi Salesforce.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość Type musi być ustawiona na wartość: **Salesforce**. |Tak |
 | environmentUrl | Określ adres URL wystąpienia usługi Salesforce. <br><br> -Wartość domyślna to "https:\//login.salesforce.com". <br> -Aby skopiować dane z piaskownicy, określ "https://test.salesforce.com". <br> -Aby skopiować dane z domeny niestandardowej, określ, na przykład "https://[domena]. my. Salesforce. com". |Nie |
 | nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak |
 | hasło |Określ hasło dla konta użytkownika. |Tak |
-| Obiektu |Określ token zabezpieczający dla konta użytkownika. Zobacz [pobieranie tokenu zabezpieczającego](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) , aby uzyskać instrukcje dotyczące resetowania/pobierania tokenu zabezpieczającego. Aby uzyskać ogólne informacje na temat tokenów zabezpieczających, zobacz [zabezpieczenia i interfejs API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Tak |
+| securityToken |Określ token zabezpieczający dla konta użytkownika. Zobacz [pobieranie tokenu zabezpieczającego](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) , aby uzyskać instrukcje dotyczące resetowania/pobierania tokenu zabezpieczającego. Aby uzyskać ogólne informacje na temat tokenów zabezpieczających, zobacz [zabezpieczenia i interfejs API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych, są podobne do wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itd.).
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **relacyjnego** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w usłudze Salesforce. |Nie (Jeśli określono **zapytanie** o **RelationalSource** ) |
 
@@ -96,7 +95,7 @@ Właściwości, które są dostępne w sekcji typeProperties działania, z drugi
 
 W działaniu kopiowania, gdy źródłem jest typ **RelationalSource** (w tym Salesforce), w sekcji typeProperties dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | query |Użyj zapytania niestandardowego do odczytywania danych. |Zapytanie dotyczące języka SQL-92 lub zapytania o [obiekt SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Na przykład: `select * from MyTable__c`. |Nie (Jeśli określono wartość **TableName** **zestawu danych** ) |
 
@@ -121,7 +120,7 @@ Dane można pobrać z raportów usługi Salesforce przez określenie zapytania j
 Aby wykonać zapytanie dotyczące usuniętych nietrwałych rekordów z Kosza usługi Salesforce, można określić w zapytaniu **wartość "IsDeleted = 1"** . Na przykład:
 
 * Aby wykonać zapytanie dotyczące tylko usuniętych rekordów, określ wartość "select * from MyTable__c, **gdzie IsDeleted = 1**"
-* Aby zbadać wszystkie rekordy, w tym istniejące i usunięte, określ wartość "select * from MyTable__c, w **której IsDeleted = 0 lub IsDeleted = 1**".
+* Aby zbadać wszystkie rekordy, w tym istniejące i usunięte, określ wartość "select * from MyTable__c, w **której IsDeleted = 0 lub IsDeleted = 1**"
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>Przykład JSON: kopiowanie danych z usług Salesforce do obiektu blob platformy Azure
 W poniższym przykładzie przedstawiono przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu programu [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują one sposób kopiowania danych z usług Salesforce do usługi Azure Blob Storage. Dane można jednak kopiować do dowolnego ujścia w [tym miejscu](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w Azure Data Factory.
@@ -286,24 +285,24 @@ Zobacz [właściwości typu RelationalSource](#copy-activity-properties) , aby u
 
 | Typ usługi Salesforce | . Typ oparty na sieci |
 | --- | --- |
-| Numer Autokorekty |Ciąg |
-| pole wyboru |Wartość logiczna |
-| Waluta |Dokładności |
-| Date |DateTime |
-| Data/godzina |DateTime |
-| Email |Ciąg |
+| Auto Number |Ciąg |
+| Checkbox |Wartość logiczna |
+| Waluta |Decimal |
+| Data |Data i godzina |
+| Data/Godzina |Data i godzina |
+| Adres e-mail |Ciąg |
 | Identyfikator |Ciąg |
-| Relacja odnośnika |Ciąg |
-| Lista wyboru z wybórem |Ciąg |
-| Liczba |Dokładności |
-| Procent |Dokładności |
+| Lookup Relationship |Ciąg |
+| Multi-Select Picklist |Ciąg |
+| Liczba |Decimal |
+| Procent |Decimal |
 | Numer telefonu |Ciąg |
-| Listy wyboru |Ciąg |
+| Picklist |Ciąg |
 | Tekst |Ciąg |
-| Obszar tekstu |Ciąg |
-| Obszar tekstowy (Long) |Ciąg |
-| Obszar tekstowy (rozbudowany) |Ciąg |
-| Tekst (zaszyfrowany) |Ciąg |
+| Text Area |Ciąg |
+| Text Area (Long) |Ciąg |
+| Text Area (Rich) |Ciąg |
+| Text (Encrypted) |Ciąg |
 | Adres URL |Ciąg |
 
 > [!NOTE]

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083438"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931372"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Tworzenie i modyfikowanie komunikacji równorzędnej dla obwodu usługi ExpressRoute (klasyczny)
 > [!div class="op_single_selector"]
@@ -42,40 +42,7 @@ Te instrukcje dotyczą tylko obwodów utworzonych przy użyciu dostawców usług
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Pobierz najnowsze polecenia cmdlet programu PowerShell
 
-Zainstaluj najnowsze wersje modułu usługi ExpressRoute i modułów programu PowerShell usługi Azure Service Management (SM). Podczas korzystając z następującego przykładu, należy pamiętać, że numer wersji (w tym przykładzie 5.1.1) zmieni się nowsze wersje poleceń cmdlet zostaną zwolnione.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Aby uzyskać więcej informacji, zobacz [wprowadzenie do Azure PowerShell poleceń cmdlet](/powershell/azure/overview) , aby uzyskać szczegółowe instrukcje dotyczące konfigurowania komputera do korzystania z modułów Azure PowerShell.
-
-### <a name="sign-in"></a>Logowanie
-
-Aby zalogować się do konta platformy Azure, użyj następujących przykładów:
-
-1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Sprawdź subskrypcje dostępne na koncie.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, której chcesz użyć.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="azure-private-peering"></a>Prywatna komunikacja równorzędna Azure
 
@@ -94,7 +61,7 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Przesłać
+   Zwracają:
 
    ```powershell
    Bandwidth                        : 200
@@ -147,7 +114,7 @@ Szczegóły konfiguracji można wyświetlić za pomocą następującego poleceni
 Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
 ```
 
-Przesłać
+Zwracają:
 
 ```
 AdvertisedPublicPrefixes       : 
@@ -201,7 +168,7 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Przesłać
+   Zwracają:
 
    ```powershell
    Bandwidth                        : 200
@@ -254,7 +221,7 @@ Aby wyświetlić szczegóły konfiguracji, użyj następującego polecenia cmdle
 Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 ```
 
-Przesłać
+Zwracają:
 
 ```powershell
 AdvertisedPublicPrefixes       : 
@@ -305,7 +272,7 @@ Ta sekcja zawiera instrukcje dotyczące tworzenia, pobierania, aktualizowania i 
    Get-AzureDedicatedCircuit -ServiceKey "*********************************"
    ```
 
-   Przesłać
+   Zwracają:
    
    ```powershell
    Bandwidth                        : 200
@@ -350,7 +317,7 @@ Szczegóły konfiguracji można wyświetlić za pomocą następującego poleceni
 ```powershell
 Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
-Przesłać
+Zwracają:
 
 ```powershell
 AdvertisedPublicPrefixes       : 123.0.0.0/30

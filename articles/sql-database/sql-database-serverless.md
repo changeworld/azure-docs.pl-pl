@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807021"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931952"
 ---
 # <a name="azure-sql-database-serverless"></a>Bezserwerowa usługa Azure SQL Database
 
@@ -185,18 +185,22 @@ Zobacz [Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database prz
 
 Poniższy przykład tworzy nową bazę danych w warstwie obliczeniowej bezserwerowej.  W tym przykładzie jawnie określono opóźnienie rdzeni wirtualnych, maks rdzeni wirtualnych i AutoPause.
 
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
 ```powershell
-New-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -ComputeModel Serverless `
-  -Edition GeneralPurpose `
-  -ComputeGeneration Gen5 `
-  -MinVcore 0.5 `
-  -MaxVcore 2 `
-  -AutoPauseDelayInMinutes 720
+New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
+  -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+```powershell
+az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
+  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Korzystanie z języka Transact-SQL (T-SQL)
 
@@ -215,22 +219,26 @@ Aby uzyskać szczegółowe informacje, zobacz [CREATE DATABASE](/sql/t-sql/state
 
 Poniższy przykład przenosi bazę danych z zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych. W tym przykładzie jawnie określono opóźnienie rdzeni wirtualnych, maks rdzeni wirtualnych i AutoPause.
 
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
 ```powershell
-Set-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -Edition GeneralPurpose `
-  -ComputeModel Serverless `
-  -ComputeGeneration Gen5 `
-  -MinVcore 1 `
-  -MaxVcore 4 `
-  -AutoPauseDelayInMinutes 1440
+Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
+  -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+```powershell
+az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
+  --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Korzystanie z języka Transact-SQL (T-SQL)
 
-Poniższy przykład przenosi bazę danych z zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych. 
+Poniższy przykład przenosi bazę danych z zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych.
 
 ```sql
 ALTER DATABASE testdb 
@@ -245,23 +253,15 @@ Bezserwerowa baza danych może zostać przeniesiona do warstwy obliczeń aprowiz
 
 ## <a name="modifying-serverless-configuration"></a>Modyfikowanie konfiguracji bezserwerowej
 
-### <a name="maximum-vcores"></a>Maksymalna liczba rdzeni wirtualnych
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-#### <a name="use-powershell"></a>Używanie programu PowerShell
+Modyfikacja wartości maksymalnej lub minimalnej rdzeni wirtualnych oraz opóźnienia AutoPause odbywa się przy użyciu polecenia [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentów `MaxVcore`, `MinVcore`i `AutoPauseDelayInMinutes`.
 
-Modyfikowanie maksymalnej rdzeni wirtualnych jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `MaxVcore`.
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-### <a name="minimum-vcores"></a>Minimalna liczba rdzeni wirtualnych
+Modyfikacja maksymalnego lub minimalnego rdzeni wirtualnych oraz opóźnienia AutoPause odbywa się przy użyciu polecenia [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) w interfejsie CLI platformy Azure przy użyciu argumentów `capacity`, `min-capacity`i `auto-pause-delay`.
 
-#### <a name="use-powershell"></a>Używanie programu PowerShell
-
-Modyfikacja minimalnej rdzeni wirtualnych jest wykonywana za pomocą polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `MinVcore`.
-
-### <a name="autopause-delay"></a>Opóźnienie AutoPause
-
-#### <a name="use-powershell"></a>Używanie programu PowerShell
-
-Modyfikowanie opóźnienia AutoPause jest wykonywane przy użyciu polecenia [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentu `AutoPauseDelayInMinutes`.
+* * *
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -298,13 +298,20 @@ W Azure Portal stan bazy danych jest wyświetlany w okienku Przegląd serwera za
 
 Aby wykonać zapytanie o stan wstrzymania i wznowienia bazy danych za pomocą następującego polecenia programu PowerShell:
 
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
 ```powershell
-Get-AzSqlDatabase `
-  -ResourceGroupName $resourcegroupname `
-  -ServerName $servername `
-  -DatabaseName $databasename `
+Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+```powershell
+az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
+```
+
+* * *
 
 ## <a name="resource-limits"></a>Limity zasobów
 

@@ -4,21 +4,20 @@ description: Skonfiguruj bramę danych do przenoszenia danych między środowisk
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682710"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931999"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -38,7 +37,7 @@ Bramę zarządzania danymi można skalować w poziomie, kojarząc wiele maszyn l
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 ### <a name="capabilities-of-data-management-gateway"></a>Możliwości bramy zarządzania danymi
 Brama zarządzania danymi zapewnia następujące możliwości:
 
@@ -130,7 +129,7 @@ Aby utworzyć bramę w portalu i pobrać klucz ze strony **konfiguracji** , wyko
 ### <a name="system-tray-icons-notifications"></a>Ikony/powiadomienia zasobnika systemowego
 Na poniższej ilustracji przedstawiono niektóre z ikon zasobników, które są widoczne.
 
-![ikony paska zadań](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
+![ikony systemowe na pasku zadań](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
 
 Po przeniesieniu kursora nad ikoną zasobnika systemowego/komunikat powiadomienia zobaczysz szczegóły dotyczące stanu operacji Brama/aktualizacja w oknie podręcznym.
 
@@ -383,9 +382,9 @@ Stan  | Komentarze/scenariusze
 :------- | :------------------
 Online | Węzeł połączony z usługą Data Factory.
 W trybie offline | Węzeł jest w trybie offline.
-Unowocześnieni | Węzeł jest aktualizowany w sposób autouzupełniania.
+Uaktualnianie | Węzeł jest aktualizowany w sposób autouzupełniania.
 Ograniczone | Z powodu problemu z łącznością. Może to być spowodowane problemem z portem HTTP 8050, problemem z łącznością usługi Service Bus lub problemem z synchronizacją poświadczeń.
-Nieaktywne | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości.<br/><br/> Węzeł może być nieaktywny, jeśli nie może połączyć się z innymi węzłami.
+Nieaktywna | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości.<br/><br/> Węzeł może być nieaktywny, jeśli nie może połączyć się z innymi węzłami.
 
 W poniższej tabeli przedstawiono możliwe stany **bramy logicznej**. Stan bramy zależy od stanu węzłów bramy.
 

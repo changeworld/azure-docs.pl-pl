@@ -1,26 +1,23 @@
 ---
-title: Przenoszenie danych z MongoDB za pomocą Data Factory
+title: Przenoszenie danych z MongoDB
 description: Dowiedz się więcej na temat przenoszenia danych z bazy danych MongoDB przy użyciu Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
-ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
+ms.author: jingwang
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.author: jingwang
-robots: noindex
-ms.openlocfilehash: 6f982928e706b442229cc249c17c3f7aabe1f60a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666652"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928131"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Przenoszenie danych z MongoDB za pomocą Azure Data Factory
+
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](data-factory-on-premises-mongodb-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-mongodb.md)
@@ -49,7 +46,7 @@ Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z 
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -61,10 +58,10 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla źródła MongoDB:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla **OnPremisesMongoDB** połączonej usługi.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość Type musi mieć wartość: **OnPremisesMongoDb** |Tak |
 | serwer |Adres IP lub nazwa hosta serwera MongoDB. |Tak |
@@ -73,18 +70,18 @@ Poniższa tabela zawiera opis elementów JSON specyficznych dla **OnPremisesMong
 | nazwa użytkownika |Konto użytkownika do uzyskiwania dostępu do MongoDB. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | hasło |Hasło użytkownika. |Tak (jeśli jest używane uwierzytelnianie podstawowe). |
 | authSource |Nazwa bazy danych MongoDB, która ma zostać użyta do sprawdzenia poświadczeń w celu uwierzytelnienia. |Opcjonalne (jeśli jest używane uwierzytelnianie podstawowe). Domyślnie: używa konta administratora i bazy danych określonej przy użyciu właściwości databaseName. |
-| Bazy |Nazwa bazy danych MongoDB, do której chcesz uzyskać dostęp. |Tak |
+| databaseName |Nazwa bazy danych MongoDB, do której chcesz uzyskać dostęp. |Tak |
 | gatewayName |Nazwa bramy, która uzyskuje dostęp do magazynu danych. |Tak |
-| encryptedCredential |Poświadczenie zaszyfrowane przez bramę. |Optional (Opcjonalność) |
+| encryptedCredential |Poświadczenie zaszyfrowane przez bramę. |Opcjonalne |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **MongoDbCollection** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| CollectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
+| collectionName |Nazwa kolekcji w bazie danych MongoDB. |Tak |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, oraz zasady są dostępne dla wszystkich typów działań.
@@ -93,7 +90,7 @@ Właściwości dostępne w sekcji **typeProperties** działania z drugiej strony
 
 Gdy źródło jest typu **MongoDbSource** , w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL-92. Na przykład: select * from MyTable. |Nie (Jeśli określono **CollectionName** **zestawu danych** ) |
 
@@ -282,7 +279,7 @@ Potok zawiera działanie kopiowania, które jest skonfigurowane do używania pow
 ```
 
 
-## <a name="schema-by-data-factory"></a>Schemat według Data Factory
+## <a name="schema-by-data-factory"></a>Schemat przez usługę Data Factory
 Azure Data Factory schemat wniosku o usługę z kolekcji MongoDB przy użyciu najnowszych dokumentów 100 w kolekcji. Jeśli następujące dokumenty 100 nie zawierają pełnego schematu, niektóre kolumny mogą zostać zignorowane podczas operacji kopiowania.
 
 ## <a name="type-mapping-for-mongodb"></a>Mapowanie typu dla MongoDB
@@ -293,17 +290,17 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przesuwania danych do MongoDB następujące mapowania są używane z typów MongoDB do typów .NET.
 
-| Typ MongoDB | Typ .NET Framework |
+| Typ MongoDB | Typ programu .NET Framework |
 | --- | --- |
-| Binarny |Byte [] |
+| Binary |Byte[] |
 | Wartość logiczna |Wartość logiczna |
-| Date |DateTime |
+| Data |Data i godzina |
 | NumberDouble |Double |
-| NumberInt |Elementem |
+| NumberInt |Int32 |
 | NumberLong |Int64 |
-| Obiektu |Ciąg |
+| ObjectID |Ciąg |
 | Ciąg |Ciąg |
-| INTERFEJSU |Identyfikator GUID |
+| UUID |Identyfikator GUID |
 | Obiekt |Reznormalizowany do spłaszczonych kolumn z "_" jako separatorem zagnieżdżonym |
 
 > [!NOTE]
@@ -324,10 +321,10 @@ Tabele wirtualne odwołują się do danych w rzeczywistej tabeli, umożliwiając
 ### <a name="example"></a>Przykład
 Na przykład "przykład" poniżej jest tabelą MongoDB, która zawiera jedną kolumnę z tablicą obiektów w każdej komórce — faktury i jedną kolumnę z tablicą typów skalarnych — klasyfikacje.
 
-| _id | Nazwa klienta | Faktury | Poziom usług | Klasyfikowani |
+| _id | Nazwa klienta | Faktury | Poziom usług | Klasyfikacje |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", Item: "wyskakujące", Price: "456", Rabat: "0,2"}, {invoice_id: "124", Item: "piekarnik", Cena: "1235", Rabat: "0,2"}] |Srebrny |[5, 6] |
-| 2222 |XYZ |[{invoice_id: "135", element: "lodówki", Cena: "12543", Rabat: "0,0"}] |Złoty |[1, 2] |
+| 1111 |ABC |[{invoice_id: "123", Item: "wyskakujący", Cena: "456", Rabat: "0,2"}, {invoice_id: "124", Item: "piekarnik", Cena: "1235", Rabat: "0,2"}] |Srebrny |[5,6] |
+| 2222 |XYZ |[{invoice_id: "135", element: "lodówki", Cena: "12543", Rabat: "0,0"}] |Złoty |[1,2] |
 
 Sterownik generuje wiele tabel wirtualnych do reprezentowania tej pojedynczej tabeli. Pierwsza tabela wirtualna jest tabelą podstawową o nazwie "Przykładowe", pokazana poniżej. Tabela podstawowa zawiera wszystkie dane oryginalnej tabeli, ale dane z tablic zostały pominięte i rozwinięte w tabelach wirtualnych.
 
@@ -344,10 +341,10 @@ W poniższych tabelach przedstawiono tabele wirtualne, które reprezentują oryg
 
 Tabela "ExampleTable_Invoices":
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Elementów | price | Rabat |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | element | price | Rabat |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |wyskakujący |456 |0,2 |
-| 1111 |1 |124 |laboratoryjn |1235 |0,2 |
+| 1111 |0 |123 |wyskakujący |456 |0.2 |
+| 1111 |1 |124 |laboratoryjn |1235 |0.2 |
 | 2222 |0 |135 |lodówki |12543 |0.0 |
 
 Tabela "ExampleTable_Ratings":

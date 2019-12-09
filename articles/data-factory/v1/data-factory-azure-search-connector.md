@@ -4,21 +4,20 @@ description: Dowiedz się więcej o sposobie wypychania danych do indeksu usług
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: da867ae62ce4480c5d5854ae3f28ad258421905d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809169"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929978"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Wypychanie danych do indeksu Wyszukiwanie poznawcze platformy Azure przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -40,7 +39,7 @@ Można utworzyć potok za pomocą działania kopiowania, które wypycha dane ze 
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -52,11 +51,11 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla indeksu wyszukiwania:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi Wyszukiwanie poznawcze platformy Azure.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
 | type | Właściwość Type musi mieć wartość: **AzureSearch**. | Tak |
 | url | Adres URL usługi wyszukiwania. | Tak |
@@ -66,7 +65,7 @@ Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla poł�
 
 Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych, są podobne dla wszystkich typów zestawów danych. Sekcja **typeProperties** jest inna dla każdego typu zestawu danych. Sekcja typeProperties zestawu danych typu **AzureSearchIndex** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
 | type | Właściwość Type musi być ustawiona na wartość **AzureSearchIndex**.| Tak |
 | indexName | Nazwa indeksu wyszukiwania. Data Factory nie tworzy indeksu. Indeks musi istnieć na platformie Azure Wyszukiwanie poznawcze. | Tak |
@@ -77,10 +76,10 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 W przypadku działania kopiowania, gdy ujścia ma typ **AzureSearchIndexSink**, w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | -------- | ----------- | -------------- | -------- |
-| writeBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).| Scal (domyślnie)<br/>Upload| Nie |
-| writeBatchSize | Przekazuje dane do indeksu wyszukiwania, gdy rozmiar buforu osiągnie writeBatchSize. Aby uzyskać szczegółowe informacje, zobacz [Właściwość WriteBatchSize](#writebatchsize-property) . | od 1 do 1 000. Wartość domyślna to 1000. | Nie |
+| WriteBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).| Scal (domyślnie)<br/>Przekazywanie| Nie |
+| WriteBatchSize | Przekazuje dane do indeksu wyszukiwania, gdy rozmiar buforu osiągnie writeBatchSize. Aby uzyskać szczegółowe informacje, zobacz [Właściwość WriteBatchSize](#writebatchsize-property) . | od 1 do 1 000. Wartość domyślna to 1000. | Nie |
 
 ### <a name="writebehavior-property"></a>Właściwość WriteBehavior
 AzureSearchSink upserts podczas zapisywania danych. Innymi słowy podczas pisania dokumentu, jeśli klucz dokumentu istnieje już w indeksie wyszukiwania, usługa Azure Wyszukiwanie poznawcze aktualizuje istniejący dokument zamiast zgłaszania wyjątku konfliktu.
@@ -101,12 +100,12 @@ W poniższej tabeli określono, czy typ danych Wyszukiwanie poznawcze platformy 
 | Typ danych Wyszukiwanie poznawcze platformy Azure | Obsługiwane w usłudze Azure Wyszukiwanie poznawcze sink |
 | ---------------------- | ------------------------------ |
 | Ciąg | Tak |
-| Elementem | Tak |
+| Int32 | Tak |
 | Int64 | Tak |
 | Double | Tak |
 | Wartość logiczna | Tak |
 | DataTimeOffset | Tak |
-| Tablica ciągów | N |
+| String Array | N |
 | GeographyPoint względem | N |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>Przykład JSON: kopiowanie danych z SQL Server lokalnych do usługi Azure Wyszukiwanie poznawcze index

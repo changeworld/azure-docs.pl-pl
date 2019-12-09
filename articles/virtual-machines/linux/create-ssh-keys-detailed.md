@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 61f24776bb9ec9443df421dcbcf35dcc83ec2bc9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036504"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929712"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Szczegółowe kroki: tworzenie kluczy SSH i zarządzanie nimi na potrzeby uwierzytelniania na maszynie wirtualnej z systemem Linux na platformie Azure 
 Za pomocą pary kluczy Secure Shell (SSH) można utworzyć maszynę wirtualną z systemem Linux na platformie Azure, która domyślnie używa kluczy SSH do uwierzytelniania, eliminując konieczność logowania przy użyciu haseł. Maszyny wirtualne utworzone przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure, szablonów Menedżer zasobów lub innych narzędzi mogą zawierać klucz publiczny SSH w ramach wdrożenia, które konfiguruje uwierzytelnianie klucza SSH dla połączeń SSH. 
@@ -31,7 +31,7 @@ Aby uzyskać dodatkowe sposoby generowania i używania kluczy SSH na komputerze 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>Hasło klucza prywatnego
-Klucz prywatny SSH powinien mieć bardzo bezpieczne hasło do zabezpieczenia. To hasło służy wyłącznie do uzyskiwania dostępu do prywatnego pliku klucza SSH i *nie jest* hasłem do konta użytkownika. Po dodaniu hasła do klucza SSH szyfruje on klucz prywatny przy użyciu 128-bitowego algorytmu AES, dzięki czemu klucz prywatny będzie bezużyteczny bez hasła do odszyfrowania. Jeśli osoba atakująca stole klucz prywatny i klucz nie miał hasła, może użyć tego klucza prywatnego do zalogowania się do wszystkich serwerów, które mają odpowiadający mu klucz publiczny. Jeśli klucz prywatny jest chroniony hasłem, nie może być używany przez osobę atakującą, zapewniając dodatkową warstwę zabezpieczeń dla infrastruktury na platformie Azure.
+Klucz prywatny SSH powinien mieć bardzo bezpieczne hasło do zabezpieczenia. To hasło służy wyłącznie do uzyskiwania dostępu do prywatnego pliku klucza SSH i *nie jest* hasłem do konta użytkownika. Dodanie hasła do klucza SSH spowoduje zaszyfrowanie klucza prywatnego przy użyciu 128-bitowego standardu AES, co oznacza, że klucz prywatny jest bezużyteczny bez hasła do jego odszyfrowania. Jeśli osoba atakująca stole klucz prywatny i klucz nie miał hasła, może użyć tego klucza prywatnego do zalogowania się do wszystkich serwerów, które mają odpowiadający mu klucz publiczny. Jeśli klucz prywatny jest chroniony hasłem, nie może być używany przez osobę atakującą, zapewniając dodatkową warstwę zabezpieczeń dla infrastruktury na platformie Azure.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -52,7 +52,7 @@ Klucze SSH są domyślnie przechowywane w katalogu `~/.ssh`.  Jeśli nie masz ka
 Następujące polecenie `ssh-keygen` powoduje, że w katalogu `~/.ssh` domyślnie generowane są 2048-bitowe pliki publicznego i prywatnego klucza RSA. Jeśli para kluczy SSH istnieje w bieżącej lokalizacji, te pliki są zastępowane.
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 ### <a name="detailed-example"></a>Szczegółowy przykład
@@ -60,6 +60,7 @@ Poniższy przykład przedstawia dodatkowe opcje polecenia, aby utworzyć parę k
 
 ```bash
 ssh-keygen \
+    -m PEM \
     -t rsa \
     -b 4096 \
     -C "azureuser@myserver" \
@@ -71,20 +72,22 @@ ssh-keygen \
 
 `ssh-keygen` — program używany do tworzenia kluczy
 
+`-m PEM` = sformatuj klucz jako PEM
+
 `-t rsa` = typ klucza do utworzenia, w tym przypadku w formacie RSA
 
 `-b 4096` = liczba bitów w kluczu, w tym przypadku 4096
 
 `-C "azureuser@myserver"` — komentarz dodany na końcu pliku klucza publicznego, aby umożliwić jego łatwą identyfikację. Zwykle jako komentarz używany jest adres e-mail, ale użycie dowolnego z nich najlepiej sprawdza się w przypadku Twojej infrastruktury.
 
-`-f ~/.ssh/mykeys/myprivatekey` = nazwa pliku klucza prywatnego, jeśli nie zostanie użyta nazwa domyślna. Odpowiedni plik klucza publicznego dołączony do `.pub` jest generowany w tym samym katalogu. Katalog musi istnieć.
+`-f ~/.ssh/mykeys/myprivatekey` = nazwa pliku klucza prywatnego, jeśli nie zostanie użyta nazwa domyślna. Odpowiedni plik klucza publicznego dołączony do `.pub` jest generowany w tym samym katalogu. Ten katalog musi istnieć.
 
 `-N mypassphrase` = dodatkowe hasło używane do uzyskiwania dostępu do pliku klucza prywatnego. 
 
 ### <a name="example-of-ssh-keygen"></a>Przykład polecenia ssh-keygen
 
 ```bash
-ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
+ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -92,19 +95,19 @@ Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.
 Your public key has been saved in /home/azureuser/.ssh/id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 azureuser@myserver
-The keys randomart image is:
-+--[ RSA 2048]----+
-|        o o. .   |
-|      E. = .o    |
-|      ..o...     |
-|     . o....     |
-|      o S =      |
-|     . + O       |
-|      + = =      |
-|       o +       |
-|        .        |
-+-----------------+
+SHA256:vFfHHrpSGQBd/oNdvNiX0sG9Vh+wROlZBktNZw9AUjA azureuser@myserver
+The key's randomart image is:
++---[RSA 4096]----+
+|        .oE=*B*+ |
+|          o+o.*++|
+|           .oo++*|
+|       .    .B+.O|
+|        S   o=BO.|
+|         . .o++o |
+|        . ... .  |
+|         ..  .   |
+|           ..    |
++----[SHA256]-----+
 ```
 
 #### <a name="saved-key-files"></a>Zapisane pliki kluczy

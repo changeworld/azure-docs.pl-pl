@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/06/2019
+ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468409"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931491"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klastra Apache HBase w usłudze Azure Virtual Networks
 
@@ -78,7 +78,7 @@ Niektóre z zakodowanych wartości w szablonie:
 | Nazwa bramy | vnet1gw |
 | Typ bramy | Vpn |
 | Typ sieci VPN bramy | RouteBased |
-| Jednostka SKU bramy | Podstawowa |
+| Jednostka SKU bramy | Basic |
 | Adres IP bramy | vnet1gwip |
 
 **Sieć wirtualna 2**
@@ -95,7 +95,7 @@ Niektóre z zakodowanych wartości w szablonie:
 | Nazwa bramy | vnet2gw |
 | Typ bramy | Vpn |
 | Typ sieci VPN bramy | RouteBased |
-| Jednostka SKU bramy | Podstawowa |
+| Jednostka SKU bramy | Basic |
 | Adres IP bramy | vnet1gwip |
 
 ## <a name="setup-dns"></a>Konfigurowanie systemu DNS
@@ -281,7 +281,7 @@ Poniższe kroki opisują sposób wywoływania skryptu akcji skryptu z Azure Port
 
 **Aby włączyć replikację HBase z poziomu Azure Portal**
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Otwórz źródłowy klaster HBase.
 3. W menu klaster wybierz pozycję **Akcje skryptu**.
 4. W górnej części strony wybierz pozycję **Prześlij nowy**.
@@ -296,6 +296,8 @@ Poniższe kroki opisują sposób wywoływania skryptu akcji skryptu z Azure Port
     
       > [!NOTE]
       > Użyj nazwy hosta zamiast nazwy FQDN zarówno dla źródłowej, jak i docelowej.
+      >
+      > W tym instruktażu przyjęto założenie hn1 jako aktywnego węzła głównego. Sprawdź, czy klaster ma identyfikować aktywny węzeł główny.
 
 6. Wybierz pozycję **Utwórz**. Wykonanie skryptu może zająć trochę czasu, szczególnie w przypadku użycia argumentu **-CopyData** .
 
@@ -315,7 +317,7 @@ Argumenty opcjonalne:
 |-Su,--SRC-Ambari-User | Określa nazwę użytkownika administratora dla Ambari w źródłowym klastrze HBase. Wartość domyślna to **admin**. |
 |-du,--DST-Ambari-User | Określa nazwę użytkownika administratora dla Ambari w docelowym klastrze HBase. Wartość domyślna to **admin**. |
 |-t,--lista tabel | Określa tabele, które mają być replikowane. Na przykład:--Table-list = "Tabela1; tabela2; TABLE3". Jeśli nie określisz tabel, wszystkie istniejące tabele HBase są replikowane.|
-|-m,--Machine | Określa węzeł główny, w którym jest uruchamiana akcja skryptu. Wartość jest równa **hn0** lub **hn1** i powinna być wybierana na podstawie tego, który jest aktywnym węzłem głównym. Użyj tej opcji, gdy skrypt $0 jest uruchamiany jako akcja skryptu z poziomu portalu usługi HDInsight lub Azure PowerShell.|
+|-m,--Machine | Określa węzeł główny, w którym jest uruchamiana akcja skryptu. Wartość powinna być wybierana na podstawie tego, który jest aktywnym węzłem głównym. Użyj tej opcji, gdy skrypt $0 jest uruchamiany jako akcja skryptu z poziomu portalu usługi HDInsight lub Azure PowerShell.|
 |-CP,-CopyData | Włącza migrację istniejących danych w tabelach, w których włączono replikację. |
 |-rpm,-replikacja-Phoenix-meta | Włącza replikację w tabelach systemu Phoenix. <br><br>*Tej opcji należy używać ostrożnie.* Zalecamy ponowne utworzenie tabel Phoenix w klastrach replik przed użyciem tego skryptu. |
 |-h,--pomoc | Wyświetla informacje o użyciu. |
@@ -363,7 +365,7 @@ Sekcja `print_usage()` [skryptu](https://github.com/Azure/hbase-utils/blob/maste
 - **Kopiuj określone tabele (TEST1, TEST2 i test3) dla wszystkich wierszy, które są edytowane do dzisiaj (bieżąca sygnatura czasowa)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  oraz
+  Oraz
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 

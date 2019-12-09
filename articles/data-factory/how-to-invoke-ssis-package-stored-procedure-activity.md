@@ -4,7 +4,7 @@ description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Inte
 services: data-factory
 documentationcenter: ''
 author: swinarko
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 3bfef0d787d8289055ab80e2ac30408dd7a13fb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f45c317e64f63fe6192f4e32507876841f4322de
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673761"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932117"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Uruchom pakiet usług SSIS za pomocą działania procedury składowanej w Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu usług SSIS w potoku Azure Data Factory przy użyciu działania procedury składowanej. 
@@ -41,7 +41,7 @@ Pierwszym krokiem jest utworzenie fabryki danych przy użyciu Azure Portal.
 2. Przejdź do witryny [Azure Portal](https://portal.azure.com). 
 3. Kliknij przycisk **Nowy** w lewym menu, kliknij pozycję **Dane + analiza**, a następnie kliknij pozycję **Data Factory**. 
    
-   ![Nowy->Fabryka danych](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
+   ![Nowy-> Fabryka danych](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
 2. Na stronie **Nowa fabryka danych** wprowadź wartość **ADFTutorialDataFactory** w polu **Nazwa**. 
       
      ![Strona Nowa fabryka danych](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
@@ -59,7 +59,7 @@ Pierwszym krokiem jest utworzenie fabryki danych przy użyciu Azure Portal.
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko lokalizacje obsługiwane przez usługę Data Factory. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych lokalizacjach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
      ![kafelek Wdrażanie fabryki danych](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -69,7 +69,7 @@ Pierwszym krokiem jest utworzenie fabryki danych przy użyciu Azure Portal.
 10. Kliknij kafelek **Tworzenie i monitorowanie**, aby w osobnej karcie uruchomić interfejs użytkownika usługi Azure Data Factory. 
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tworzenie potoku za pomocą działania procedury składowanej
-W tym kroku użyjesz interfejsu użytkownika Data Factory do utworzenia potoku. Należy dodać działanie procedury składowanej do potoku i skonfigurować go tak, aby uruchamiał pakiet usług SSIS za pomocą procedury składowanej sp_executesql. 
+W tym kroku użyjesz interfejsu użytkownika Data Factory do utworzenia potoku. Należy dodać działanie procedury składowanej do potoku i skonfigurować go tak, aby uruchamiał pakiet usług SSIS przy użyciu sp_executesql procedury składowanej. 
 
 1. Na stronie Wprowadzenie kliknij pozycję **Utwórz potok**: 
 
@@ -101,7 +101,7 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory do utworzenia potoku. 
     5. Dla **typu** parametru wprowadź **ciąg**. 
     6. W polu **wartość** parametru wprowadź następujące zapytanie SQL:
 
-        W zapytaniu SQL określ odpowiednie wartości parametrów **Nazwa_folderu**, **Project_Name**i **package_name** . 
+        W zapytaniu SQL określ odpowiednie wartości parametrów **folder_name**, **Project_Name**i **package_name** . 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
@@ -113,7 +113,7 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory do utworzenia potoku. 
     ![Weryfikowanie potoku](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Opublikuj potok w Data Factory, klikając przycisk **Opublikuj wszystko** . 
 
-    ![Publikowanie](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![Publikuj](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>Uruchamianie i monitorowanie potoku
 W tej sekcji zostanie wyzwolone uruchomienie potoku, a następnie jego monitorowanie. 
@@ -224,7 +224,7 @@ Utwórz połączoną usługę w celu połączenia bazy danych Azure SQL Database
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tworzenie potoku za pomocą działania procedury składowanej 
-W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wywołuje procedurę składowaną sp_executesql w celu uruchomienia pakietu usług SSIS. 
+W tym kroku utworzysz potok z działaniem procedury składowanej. Działanie wywołuje sp_executesql procedury składowanej w celu uruchomienia pakietu usług SSIS. 
 
 1. Utwórz plik JSON o nazwie **RunSSISPackagePipeline. JSON** w folderze **C:\ADF\RunSSISPackage** o następującej zawartości:
 

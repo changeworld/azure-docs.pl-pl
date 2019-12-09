@@ -1,32 +1,28 @@
 ---
-title: Unikaj ponownego ładowania stron (Biblioteka uwierzytelniania firmy Microsoft dla języka JavaScript)
+title: Unikaj ponownego ładowania stron (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak uniknąć ponownego ładowania strony podczas uzyskiwania i odnawiania tokenów w trybie dyskretnym przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 04d1ef1f76b1b1a807f48f7c79e41ada68b561fc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803108"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916439"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Unikaj ponownego ładowania stron podczas uzyskiwania i odnawiania tokenów dyskretnie przy użyciu MSAL. js
-Biblioteka Microsoft Authentication Library for JavaScript (MSAL. js) używa ukrytych elementów `iframe` do uzyskiwania i odnawiania tokenów w trybie dyskretnym w tle. Usługa Azure AD zwraca token z zarejestrowanego elementu redirect_uri określonego w żądaniu tokenu (domyślnie jest to Strona główna aplikacji). Ponieważ odpowiedzią jest 302, wynikiem jest kod HTML odpowiadający `redirect_uri` wczytywanie w `iframe`. Zwykle `redirect_uri` aplikacji jest stroną główną i spowoduje to ponowne załadowanie.
+Biblioteka Microsoft Authentication Library for JavaScript (MSAL. js) używa ukrytych elementów `iframe` do uzyskiwania i odnawiania tokenów w trybie dyskretnym w tle. Usługa Azure AD zwraca token z powrotem do zarejestrowanego redirect_uri określonego w żądaniu tokenu (domyślnie jest to Strona główna aplikacji). Ponieważ odpowiedzią jest 302, wynikiem jest kod HTML odpowiadający `redirect_uri` wczytywanie w `iframe`. Zwykle `redirect_uri` aplikacji jest stroną główną i spowoduje to ponowne załadowanie.
 
 W innych przypadkach, jeśli przechodzenie do strony głównej aplikacji wymaga uwierzytelnienia, może to prowadzić do zagnieżdżenia `iframe` elementów lub `X-Frame-Options: deny` błędu.
 
@@ -42,7 +38,7 @@ Ustaw właściwość `redirect_uri` w pliku config na prostą stronę, która ni
 
 Jeśli aplikacja jest strukturalna w taki sposób, że istnieje jeden centralny plik języka JavaScript, który definiuje inicjalizację, Routing i inne elementy aplikacji, można warunkowo załadować moduły aplikacji w zależności od tego, czy aplikacja jest ładowana w `iframe`, czy nie. Na przykład:
 
-W AngularJS: App. js
+In AngularJS: app.js
 
 ```javascript
 // Check that the window is an iframe and not popup

@@ -1,22 +1,21 @@
 ---
-title: 'Skrypt programu PowerShell: Przyrostowe ładowanie danych przy użyciu Azure Data Factory '
+title: Przyrostowe ładowanie danych przy użyciu programu PowerShell
 description: Ten skrypt programu PowerShell pokazuje, jak za pomocą programu Azure Data Factory kopiować dane przyrostowo z Azure SQL Database do Blob Storage platformy Azure.
 services: data-factory
+ms.author: jingwang
 author: linda33wj
-manager: craigg
-editor: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
+ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.author: jingwang
-ms.openlocfilehash: ef7b00172f0371e09d6462ed357744166b5fb08a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9f1a18155a0be4bc19e723ca04cf6770166a25af
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684331"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913373"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>Skrypt programu PowerShell — przyrostowe ładowanie danych przy użyciu Azure Data Factory
 Ten przykładowy skrypt programu PowerShell ładuje tylko nowe lub zaktualizowane rekordy z magazynu danych źródłowych do magazynu danych ujścia po początkowej pełnej kopii danych ze źródła do ujścia.  

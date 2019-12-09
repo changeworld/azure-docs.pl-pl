@@ -3,27 +3,23 @@ title: Konfigurowanie pęku kluczy
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak skonfigurować pęku kluczy, aby aplikacja mogła buforować tokeny w pęku kluczy.
 services: active-directory
-documentationcenter: ''
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803808"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917509"
 ---
 # <a name="configure-keychain"></a>Konfigurowanie pęku kluczy
 
@@ -37,21 +33,21 @@ W tym artykule opisano sposób konfigurowania uprawnień aplikacji, dzięki czem
 
 MSAL w systemie iOS domyślnie używa grupy dostępu `com.microsoft.adalcache`. Jest to grupa dostępu współdzielonego używana przez zestawy SDK MSAL i Azure AD Authentication Library (ADAL) i zapewnia najlepszą obsługę logowania jednokrotnego między wieloma aplikacjami z tego samego wydawcy.
 
-W systemie iOS Dodaj grupę pęku kluczy `com.microsoft.adalcache` do uprawnienia aplikacji w XCode w obszarze **Ustawienia projektu** > **możliwości** >  funkcja**udostępniania łańcucha kluczy**
+W systemie iOS Dodaj grupę `com.microsoft.adalcache` pęku kluczy do uprawnienia aplikacji w XCode w obszarze **Ustawienia projektu** > **możliwości** > funkcja **udostępniania łańcucha kluczy**
 
 ### <a name="macos"></a>macOS
 
 MSAL on macOS domyślnie używa grupy dostępu `com.microsoft.identity.universalstorage`.
 
-Ze względu na ograniczenia macOS pęku kluczy, MSAL `access group` nie są bezpośrednio tłumaczone na atrybut grupy dostępu pęku kluczy (zobacz [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) na macOS 10,14 i wcześniejszych. Jednak zachowuje się podobnie z perspektywy rejestracji jednokrotnej, zapewniając, że wiele aplikacji dystrybuowanych przez tego samego deweloperów firmy Apple może mieć dyskretne Logowanie jednokrotne.
+Ze względu na ograniczenia macOS pęku kluczy, `access group` MSAL nie zostanie bezpośrednio przetłumaczyć na atrybut grupy dostępu pęku kluczy (zobacz [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) na macOS 10,14 i wcześniejszych. Jednak zachowuje się podobnie z perspektywy rejestracji jednokrotnej, zapewniając, że wiele aplikacji dystrybuowanych przez tego samego deweloperów firmy Apple może mieć dyskretne Logowanie jednokrotne.
 
 Na macOS 10,15 (macOS Catalina), MSAL używa atrybutu grupy dostępu pęku kluczy, aby uzyskać dyskretne Logowanie jednokrotne, podobnie jak w przypadku systemu iOS.
 
 ## <a name="custom-keychain-access-group"></a>Niestandardowa Grupa dostępu pęku kluczy
 
-Jeśli chcesz użyć innej grupy dostępu łańcucha kluczy, możesz przekazać grupę niestandardową podczas tworzenia `MSALPublicClientApplicationConfig` przed utworzeniem `MSALPublicClientApplication` w następujący sposób:
+Jeśli chcesz użyć innej grupy dostępu łańcucha kluczy, możesz przekazać grupę niestandardową podczas tworzenia `MSALPublicClientApplicationConfig` przed utworzeniem `MSALPublicClientApplication`, w następujący sposób:
 
-Cel-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -67,9 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-
-
-Adres
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,25 +79,27 @@ do {
 }       
 ```
 
-
+---
 
 ## <a name="disable-keychain-sharing"></a>Wyłącz udostępnianie łańcucha kluczy
 
 Jeśli nie chcesz udostępniać stanu logowania jednokrotnego między wieloma aplikacjami lub korzystać z dowolnej grupy dostępu łańcucha kluczy, Wyłącz udostępnianie łańcucha kluczy, przekazując identyfikator pakietu aplikacji jako grupę łańcuchową:
 
-Cel-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-Adres
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
     config.cacheConfig.keychainSharingGroup = bundleIdentifier
 }
 ```
+
+---
 
 ## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Dojście — błąd 34018 (nie można ustawić elementu na pęku kluczy)
 

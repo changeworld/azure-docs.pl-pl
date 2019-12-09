@@ -4,20 +4,19 @@ description: Informacje na temat zabezpieczania przenoszenia danych w Azure Data
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 467ba9f36dbcd44c5b8d87ee2f20d178d62d9732
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682639"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930811"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory — zagadnienia dotyczące zabezpieczeń związane z przenoszeniem danych
 
@@ -37,7 +36,7 @@ Przenoszenie danych przy użyciu Azure Data Factory jest **certyfikowane** dla:
 -   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
 -   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [GWIAZDA](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Jeśli interesuje Cię zgodność z platformą Azure i sposób, w jaki platforma Azure zabezpiecza własną infrastrukturę, odwiedź [Centrum zaufania firmy Microsoft](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
@@ -79,7 +78,7 @@ Firma Amazon S3 obsługuje szyfrowanie danych między klientem i serwerem. Aby u
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Amazon RedShift obsługuje szyfrowanie klastra dla danych przechowywanych w spoczynku. Aby uzyskać więcej informacji, zobacz temat [szyfrowanie bazy danych Amazon RedShift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). Obecnie Data Factory nie obsługuje usługi Amazon RedShift wewnątrz VPC. 
 
-#### <a name="salesforce"></a>SalesForce
+#### <a name="salesforce"></a>Salesforce
 Usługi Salesforce obsługują szyfrowanie platformy osłony, które umożliwiają szyfrowanie wszystkich plików, załączników, pól niestandardowych. Aby uzyskać więcej informacji, zobacz [Omówienie przepływu uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios-using-data-management-gateway"></a>Scenariusze hybrydowe (przy użyciu bramy Zarządzanie danymi)
@@ -95,7 +94,7 @@ Poświadczenia lokalnych magazynów danych są przechowywane lokalnie (nie w chm
 - Używanie **zwykłego tekstu** (mniej bezpieczne) za pośrednictwem protokołu HTTPS w witrynie Azure Portal/Kreator kopiowania. Poświadczenia są przesyłane w postaci zwykłego tekstu do bramy lokalnej.
 - Używanie **biblioteki kryptograficznej JavaScript w Kreatorze kopiowania**.
 - Za pomocą **aplikacji Menedżer poświadczeń opartych na kliknięciach**. Aplikacja dwukrotnego kliknięcia jest uruchamiana na maszynie lokalnej, która ma dostęp do bramy i ustawia poświadczenia dla magazynu danych. Ta opcja i następny z nich są najbardziej bezpiecznymi opcjami. Aplikacja Menedżer poświadczeń domyślnie używa portu 8050 na komputerze z bramą do bezpiecznej komunikacji.  
-- Użyj polecenia cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) programu PowerShell, aby zaszyfrować poświadczenia. Polecenie cmdlet używa certyfikatu, który jest skonfigurowany do szyfrowania poświadczeń przez bramę. Możesz użyć zaszyfrowanych poświadczeń zwracanych przez to polecenie cmdlet i dodać je do elementu **EncryptedCredential** obiektu **CONNECTIONSTRING** w pliku JSON, który jest używany z poleceniem cmdlet [New-AZDATAFACTORYLINKEDSERVICE](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) lub w fragmencie kodu JSON w Edytor Data Factory w portalu. Ta opcja i aplikacja dwukrotnego kliknięcia są najbardziej bezpiecznymi opcjami. 
+- Użyj polecenia cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) programu PowerShell, aby zaszyfrować poświadczenia. Polecenie cmdlet używa certyfikatu, który jest skonfigurowany do szyfrowania poświadczeń przez bramę. Można użyć zaszyfrowanych poświadczeń zwracanych przez to polecenie cmdlet i dodać je do elementu **EncryptedCredential** obiektu **CONNECTIONSTRING** w pliku JSON, który jest używany z poleceniem cmdlet [New-AZDATAFACTORYLINKEDSERVICE](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) lub w fragmencie kodu JSON w edytorze Data Factory w portalu. Ta opcja i aplikacja dwukrotnego kliknięcia są najbardziej bezpiecznymi opcjami. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>Szyfrowanie oparte na bibliotece Java kryptografii
 Poświadczenia magazynu danych można szyfrować przy użyciu [biblioteki kryptografii JavaScript](https://www.microsoft.com/download/details.aspx?id=52439) z [Kreatora kopiowania](data-factory-copy-wizard.md). Po wybraniu tej opcji Kreator kopiowania Pobiera klucz publiczny bramy i używa go do szyfrowania poświadczeń magazynu danych. Poświadczenia są odszyfrowywane przez maszynę bramy i chronione przez [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx)systemu Windows.
@@ -114,11 +113,11 @@ Obecnie Brama Zarządzanie danymi używa jednego **certyfikatu**. Ten certyfikat
   
 | Wersja bramy (podczas tworzenia) | Przechowywane poświadczenia | Szyfrowanie/zabezpieczenia poświadczeń | 
 | --------------------------------- | ------------------ | --------- |  
-| < = 2.3. xxxx. x | W chmurze | Zaszyfrowane przy użyciu certyfikatu (innego niż używany przez aplikację Menedżer poświadczeń) | 
-| > = 2.4. xxxx. x | Lokalnie | Zabezpieczone za pomocą funkcji DPAPI | 
+| < = 2.3.xxxx.x | W chmurze | Zaszyfrowane przy użyciu certyfikatu (innego niż używany przez aplikację Menedżer poświadczeń) | 
+| > = 2.4.xxxx.x | Lokalnie | Zabezpieczone za pomocą funkcji DPAPI | 
   
 
-### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
+### <a name="encryption-in-transit"></a>Szyfrowanie danych przesyłanych
 Wszystkie transfery danych są nawiązywane za pośrednictwem protokołu **https** Secure Channel i **TLS over TCP** , aby zapobiec atakom typu man-in-the-Middle podczas komunikacji z usługami platformy Azure.
  
 Aby dodatkowo zabezpieczyć kanał komunikacyjny między siecią lokalną i platformą Azure, można także użyć [protokołu IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) lub [Express Route](../../expressroute/expressroute-introduction.md) .
@@ -127,11 +126,11 @@ Usługa Virtual Network to logiczna reprezentacja sieci w chmurze. Możesz poł�
 
 Poniższa tabela zawiera podsumowanie zaleceń dotyczących konfiguracji sieci i bramy na podstawie różnych kombinacji lokalizacji źródłowej i docelowej do przenoszenia danych hybrydowych.
 
-| Element źródłowy | Element docelowy | Konfiguracja sieci | Konfiguracja bramy |
+| Źródło | Cel | Konfiguracja sieci | Konfiguracja bramy |
 | ------ | ----------- | --------------------- | ------------- | 
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
-| Lokalnie | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (publiczna Komunikacja równorzędna) | Brama musi być zainstalowana lokalnie | 
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna) | Bramę można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure w sieci wirtualnej | 
+| Lokalne | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (publiczna Komunikacja równorzędna) | Brama musi być zainstalowana lokalnie | 
 
 Na poniższych ilustracjach przedstawiono użycie bramy Zarządzanie danymi do przeniesienia danych między lokalną bazą danych i usługami platformy Azure przy użyciu usługi Express Route i sieci VPN IPSec (z Virtual Network):
 
@@ -139,7 +138,7 @@ Na poniższych ilustracjach przedstawiono użycie bramy Zarządzanie danymi do p
  
 ![Korzystanie z bramy Express Route z bramą](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
 
-**IPSec sieci VPN:**
+**IPSec VPN:**
 
 ![IPSec VPN z bramą](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
@@ -150,7 +149,7 @@ W przedsiębiorstwie **firmowa Zapora** jest uruchamiana na centralnym routerze 
 
 W poniższej tabeli przedstawiono wymagania dotyczące **portów wychodzących** i domen dla **zapory firmowej**.
 
-| Nazwy domen | Porty wychodzące | Opis |
+| Nazwy domen | Porty wyjściowe | Opis |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Wymagane przez bramę do nawiązywania połączenia z usługami przenoszenia danych w Data Factory |
 | `*.core.windows.net` | 443 | Używane przez bramę do nawiązywania połączenia z kontem usługi Azure Storage w przypadku korzystania z funkcji [kopiowania etapowego](data-factory-copy-activity-performance.md#staged-copy) . | 

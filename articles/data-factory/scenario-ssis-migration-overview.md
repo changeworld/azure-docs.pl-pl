@@ -9,19 +9,18 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 99b7de8c0e24fdbd12742b26394e61c956638525
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 52629b8e2e190cc041116e6f65488480712baf01
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038272"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929805"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrowanie lokalnych obciążeń usług SSIS do usług SSIS w podajniku APD
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W przypadku migrowania obciążeń bazy danych z SQL Server lokalnych do usług Azure Database Services, mianowicie Azure SQL Database lub Azure SQL Database wystąpienia zarządzanego, obciążenia ETL na SQL Server Integration Services (SSIS) jako jedną z wartości podstawowych — dodano należy także przeprowadzić migrację usług.
 
@@ -77,7 +76,7 @@ W zależności od [typów magazynu](#four-storage-types-for-ssis-packages) źró
 |SQL Server (MSDB)|Wyeksportuj je do systemów plików/udziałów plików/Azure Files za pośrednictwem programu SSMS/dtutil. Aby uzyskać więcej informacji, zobacz [Eksportowanie pakietów SSIS](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Przekonwertuj je na potoki ADF/działania/wyzwalacze za pośrednictwem skryptów/narzędzia SSMS/ADF Portal. Aby uzyskać więcej informacji, zobacz [Funkcja planowania programu SSMS](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Magazyn pakietów|Wyeksportuj je do systemów plików/udziałów plików/Azure Files za pomocą narzędzia SSMS/dtutil lub wdróż je ponownie w udziałach plików/Azure Files za pośrednictwem dtinstall/dtutil/ręcznie Skopiuj lub Zachowaj dostęp do systemów plików za pośrednictwem sieci wirtualnej/samoobsługowego środowiska IR. Aby uzyskać więcej informacji, zobacz Narzędzie dtutil. Aby uzyskać więcej informacji, zobacz [Narzędzie dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Przekonwertuj je na potoki ADF/działania/wyzwalacze za pośrednictwem skryptów/narzędzia SSMS/ADF Portal. Aby uzyskać więcej informacji, zobacz [Funkcja planowania programu SSMS](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Asystent migracji bazy danych](https://docs.microsoft.com/sql/dma/dma-overview)

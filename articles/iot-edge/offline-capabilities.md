@@ -3,23 +3,22 @@ title: Obsługuj urządzenia w trybie offline — usługi Azure IoT Edge | Dokum
 description: Dowiedz się, jak urządzenia usługi IoT Edge i moduły mogą działać bez połączenia internetowego przez dłuższy czas i jak włączyć regularne urządzeniach IoT, aby działać w trybie offline za usługi IoT Edge.
 author: kgremban
 ms.author: kgremban
-ms.date: 08/04/2019
+ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b16a8d8ddd4ac23a59db8e7fed48f1c39752d130
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ba64dcdadc5fa670c4502a7d8d92cb35e3b0cacd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456889"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924866"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Informacje o rozszerzonych możliwościach trybu offline dla urządzeń IoT Edge, modułów i urządzeń podrzędnych
 
-Azure IoT Edge obsługuje rozszerzone operacje offline na urządzeniach IoT Edge, a także włącza operacje w trybie offline na nieIoT Edgeych urządzeniach podrzędnych. Tak długo, jak urządzenia usługi IoT Edge miał jedną szansę nawiązać połączenie z Centrum IoT Hub, go i wszystkie podrzędne urządzenia można nadal funkcji z tymczasowymi lub brak połączenia internetowego. 
+Azure IoT Edge obsługuje rozszerzone operacje offline na urządzeniach IoT Edge, a także włącza operacje w trybie offline na nieIoT Edgeych urządzeniach podrzędnych. Tak długo, jak urządzenie IoT Edge miało jedną okazję do nawiązania połączenia z IoT Hub, to urządzenie i wszystkie urządzenia podrzędne mogą nadal działać z nieprzerwanym lub bez połączenia internetowego.
 
-
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Gdy urządzenie IoT Edge przejdzie w tryb offline, centrum IoT Edge przyjmuje trzy role. Po pierwsze są przechowywane komunikaty, które przejdzie nadrzędnego, a następnie zapisuje te elementy, aż urządzenie połączy się ponownie. Po drugie działa w imieniu usługi IoT Hub do uwierzytelniania modułów i podrzędny urządzeń, dzięki czemu będą one działać. Po trzecie umożliwia komunikację między urządzeniami podrzędne, które normalnie musieli przejść za pomocą usługi IoT Hub. 
 
@@ -39,13 +38,15 @@ Poniższy przykład pokazuje, jak scenariusza użycia usługi IoT Edge działa w
 
 4. **Ponowne łączenie i ponowne synchronizowanie za pomocą IoT Hub**
 
-   Po przywróceniu połączenia z usługą IoT Hub ponownej synchronizacji urządzenia usługi IoT Edge. Lokalnie przechowywane komunikaty były dostarczane w tej samej kolejności, w którym zostały zapisane. Wszelkie różnice między żądaną i zgłaszanych właściwości modułów i urządzenia są uzgodnione. Urządzenia usługi IoT Edge aktualizuje wszystkie zmiany do jego zestawu urządzeń IoT przypisane podrzędnych.
+   Po przywróceniu połączenia z usługą IoT Hub ponownej synchronizacji urządzenia usługi IoT Edge. Lokalnie przechowywane komunikaty są dostarczane do IoT Hub od razu, ale są zależne od szybkości połączenia, opóźnień IoT Hub i powiązanych czynników. Są one dostarczane w takiej samej kolejności, w jakiej były przechowywane.
+
+   Wszelkie różnice między żądaną i zgłaszanych właściwości modułów i urządzenia są uzgodnione. Urządzenia usługi IoT Edge aktualizuje wszystkie zmiany do jego zestawu urządzeń IoT przypisane podrzędnych.
 
 ## <a name="restrictions-and-limits"></a>Limity i ograniczenia
 
 Rozszerzone możliwości trybu offline opisane w tym artykule są dostępne w [IoT Edge w wersji 1.0.7 lub nowszej](https://github.com/Azure/azure-iotedge/releases). Wcześniejszych wersjach mają jakiś podzestaw funkcji w trybie offline. Istniejące usługi IoT Edge urządzenia, które nie mają rozszerzone możliwości w trybie offline nie może zostać uaktualniona, zmieniając wersję środowiska uruchomieniowego, ale musi zostać ponownie skonfigurowany z nową tożsamość urządzenia usługi IoT Edge w celu uzyskania tych funkcji. 
 
-Rozszerzona pomoc techniczna w trybie offline jest dostępna we wszystkich regionach, w których jest dostępna IoT Hub, **z wyjątkiem** Wschodnie stany USA.
+Rozszerzona pomoc techniczna w trybie offline jest dostępna we wszystkich regionach, w których usługi IoT Hub jest dostępna, **z wyjątkiem** wschodnie stany USA.
 
 Tylko urządzenia inne niż IoT Edge mogą być dodawane jako urządzenia podrzędne. 
 

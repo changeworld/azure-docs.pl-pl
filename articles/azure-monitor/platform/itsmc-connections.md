@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: bd9f659589b222350fe688ee4da876801a65226a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d800f20826723d3a626d9a0f5f83664927c1185c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769969"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927594"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Połącz narzędzia ITSM produkty/usługi z łącznik zarządzania usługami IT
 Ten artykuł zawiera informacje dotyczące sposobu konfigurowania połączenia między produktem narzędzia ITSM/usługą a łącznik zarządzania usługami IT (ITSMC) w Log Analytics, aby centralnie zarządzać elementami roboczymi. Aby uzyskać więcej informacji na temat ITSMC, zobacz [Omówienie](../../azure-monitor/platform/itsmc-overview.md).
@@ -185,6 +185,7 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
 **Administratorzy usługi ServiceNow muszą wykonać następujące czynności w ich wystąpieniu usługi ServiceNow**:
 - Generuj identyfikator klienta i klucz tajny klienta dla produktu usługi ServiceNow. Aby uzyskać informacje na temat sposobu generowania identyfikatora klienta i wpisu tajnego, zobacz następujące informacje zgodnie z wymaganiami:
 
+    - [Konfigurowanie protokołu OAuth dla Nowego Jorku](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie protokołu OAuth dla usługi Madryt](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie protokołu OAuth dla Londyn](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie protokołu OAuth dla Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -192,7 +193,7 @@ Upewnij się, że zostały spełnione następujące wymagania wstępne:
     - [Konfigurowanie uwierzytelniania OAuth dla programu Stambuł](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie protokołu OAuth dla usługi Helsinki](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Konfigurowanie protokołu OAuth dla usługi Genewa](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-    - [Konfigurowanie protokołu OAuth dla Nowego Jorku](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+
 
 - Zainstaluj aplikację użytkownika dla integracji z programem Microsoft Log Analytics (aplikacja usługi ServiceNow). [Dowiedz się więcej](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Utwórz rolę użytkownika integracji dla zainstalowanej aplikacji użytkownika. Informacje o sposobie tworzenia roli użytkownika integracji są [tutaj](#create-integration-user-role-in-servicenow-app).
@@ -262,7 +263,7 @@ Nowo utworzony użytkownik zostanie wyświetlony z przypisanymi domyślnymi rola
 **Role domyślne**:
 - personalize_choices
 - import_transformer
--   x_mioms_microsoft. User
+-   x_mioms_microsoft.user
 -   ITIL
 -   template_editor
 -   view_changer

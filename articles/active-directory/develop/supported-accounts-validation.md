@@ -1,5 +1,5 @@
 ---
-title: Różnice dotyczące walidacji według obsługiwanych typów kont (SignInAudience) — Microsoft Identity platform/Azure Active Directory
+title: Różnice dotyczące walidacji według typu konta — Microsoft Identity platform | Azure
 description: Zapoznaj się z różnicami w walidacji różnych właściwości dla różnych obsługiwanych typów kont podczas rejestrowania aplikacji za pomocą platformy tożsamości firmy Microsoft.
 author: SureshJa
 ms.author: sureshja
@@ -11,16 +11,16 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bea6e3ea93e8b630970a8d86fc246eddaf3f56c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 576adc99ef7d794f50efeb61375f3e59f8815033
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392607"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919362"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Różnice dotyczące walidacji według obsługiwanych typów kont (signInAudience)
 
-Podczas rejestrowania aplikacji za pomocą platformy tożsamości firmy Microsoft dla deweloperów zostanie wyświetlony monit o wybranie typów kont obsługiwanych przez aplikację. W obiekcie aplikacji i manifeście ta właściwość ma `signInAudience`.
+Podczas rejestrowania aplikacji za pomocą platformy tożsamości firmy Microsoft dla deweloperów zostanie wyświetlony monit o wybranie typów kont obsługiwanych przez aplikację. W obiekcie aplikacji i manifeście ta właściwość jest `signInAudience`.
 
 Dostępne są następujące opcje:
 
@@ -44,7 +44,7 @@ Zapoznaj się z poniższą tabelą, aby poznać różnice między walidacją ró
 | Zakresy zdefiniowane przez ten interfejs API (`oauth2Permissions`) | Maksymalna długość nazwy zakresu wynosząca 120 znaków <br><br> Brak limitu * na określonej liczbie zakresów | Maksymalna długość nazwy zakresu wynosząca 120 znaków <br><br> Brak limitu * na określonej liczbie zakresów |  Maksymalna długość nazwy zakresu wynosząca 40 znaków <br><br> Zdefiniowano maksymalnie 100 zakresów | 
 | Autoryzowane aplikacje klienckie (`preautorizedApplications`) | Bez limitu * | Bez limitu * | Suma maksymalnie 500 <br><br> Zdefiniowano maksymalnie 100 aplikacji klienckich <br><br> Zdefiniowano maksymalnie 30 zakresów na klienta | 
 | appRoles | Obsługiwane <br> Bez limitu * | Obsługiwane <br> Bez limitu * | Brak obsługi | 
-| Adres URL wylogowywania | http://localhost jest dozwolony <br><br> Maksymalna długość 255 znaków | http://localhost jest dozwolony <br><br> Maksymalna długość 255 znaków | <br><br> https://localhost jest dozwolony, http://localhost kończy się niepowodzeniem dla MSA <br><br> Maksymalna długość 255 znaków <br><br> Schemat HTTP jest niedozwolony <br><br> Symbole wieloznaczne nie są obsługiwane | 
+| Adres URL wylogowywania | http://localhost jest dozwolony <br><br> Maksymalna długość 255 znaków | http://localhost jest dozwolony <br><br> Maksymalna długość 255 znaków | <br><br> https://localhost jest dozwolony, http://localhost niepowodzenie dla elementu MSA <br><br> Maksymalna długość 255 znaków <br><br> Schemat HTTP jest niedozwolony <br><br> Symbole wieloznaczne nie są obsługiwane | 
 
 \* Istnieje globalny limit dotyczący około 1000 elementów we wszystkich właściwościach kolekcji w obiekcie App
 

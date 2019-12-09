@@ -1,23 +1,22 @@
 ---
-title: Zagadnienia dotyczące zabezpieczeń w Azure Data Factory
+title: Zagadnienia związane z zabezpieczeniami
 description: Opisuje podstawową infrastrukturę zabezpieczeń, za pomocą której usługi przenoszenia danych w Azure Data Factory używać w celu zabezpieczania danych.
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 06/15/2018
-ms.author: abnarain
-ms.openlocfilehash: 15178fd0b5253b34f21030665a5835646c13b75d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e809c88d8a0a0efeb12e9f2a472a497349fdfa1b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675846"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927515"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Zagadnienia dotyczące zabezpieczeń dotyczące przenoszenia danych w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -97,7 +96,7 @@ Firma Amazon S3 obsługuje szyfrowanie danych między klientem i serwerem. Aby u
 #### <a name="amazon-redshift"></a>Amazon Redshift
 Amazon RedShift obsługuje szyfrowanie klastra dla danych przechowywanych w spoczynku. Aby uzyskać więcej informacji, zobacz temat [szyfrowanie bazy danych Amazon RedShift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
-#### <a name="salesforce"></a>SalesForce
+#### <a name="salesforce"></a>Salesforce
 Usługi Salesforce obsługują szyfrowanie platformy osłony, które umożliwiają szyfrowanie wszystkich plików, załączników i pól niestandardowych. Aby uzyskać więcej informacji, zobacz [Omówienie przepływu uwierzytelniania OAuth serwera sieci Web](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Scenariusze hybrydowe
@@ -127,7 +126,7 @@ Domyślnie program PowerShell używa portu 8060 na komputerze przy użyciu włas
  
 
 
-### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
+### <a name="encryption-in-transit"></a>Szyfrowanie danych przesyłanych
 Wszystkie transfery danych są nawiązywane za pośrednictwem protokołu HTTPS Secure Channel i TLS over TCP, aby zapobiec atakom typu man-in-the-Middle podczas komunikacji z usługami platformy Azure.
 
 W celu dodatkowego zabezpieczenia kanału komunikacyjnego między siecią lokalną i platformą Azure można również użyć [protokołu IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) lub [Azure ExpressRoute](../expressroute/expressroute-introduction.md) .
@@ -136,11 +135,11 @@ Usługa Azure Virtual Network to logiczna reprezentacja sieci w chmurze. Sieć l
 
 Poniższa tabela zawiera podsumowanie zaleceń dotyczących sieci i samodzielnego środowiska Integration Runtime na podstawie różnych kombinacji lokalizacji źródłowej i docelowej na potrzeby przenoszenia danych hybrydowych.
 
-| Element źródłowy      | Element docelowy                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
+| Źródło      | Cel                              | Konfiguracja sieci                    | Instalacja środowiska Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalnie | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna)           | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
-| Lokalnie | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (Komunikacja równorzędna firmy Microsoft)            | Własne środowisko Integration runtime można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure. |
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | IPSec sieci VPN (punkt-lokacja lub lokacja-lokacja) | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalne | Maszyny wirtualne i usługi w chmurze wdrożone w sieciach wirtualnych | ExpressRoute (prywatna Komunikacja równorzędna)           | Własne środowisko Integration Runtime należy zainstalować na maszynie wirtualnej platformy Azure w sieci wirtualnej.  |
+| Lokalne | Usługi oparte na platformie Azure, które mają publiczny punkt końcowy | ExpressRoute (Komunikacja równorzędna firmy Microsoft)            | Własne środowisko Integration runtime można zainstalować lokalnie lub na maszynie wirtualnej platformy Azure. |
 
 Na poniższych ilustracjach przedstawiono użycie własnego środowiska Integration Runtime do przeniesienia danych między lokalną bazą danych i usługami platformy Azure przy użyciu ExpressRoute i sieci VPN IPSec (z usługą Azure Virtual Network):
 
@@ -148,7 +147,7 @@ Na poniższych ilustracjach przedstawiono użycie własnego środowiska Integrat
 
 ![Korzystanie z ExpressRoute z bramą](media/data-movement-security-considerations/express-route-for-gateway.png) 
 
-**IPSec sieci VPN**
+**IPSec VPN**
 
 ![IPSec VPN z bramą](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
@@ -168,7 +167,7 @@ W poniższej tabeli przedstawiono wymagania dotyczące portów ruchu przychodzą
 
 | Porty wejściowe | Opis                              |
 | ------------- | ---------------------------------------- |
-| 8060 (TCP)    | Wymagane przez polecenie cmdlet szyfrowania programu PowerShell, zgodnie z opisem w artykule [szyfrowanie poświadczeń dla lokalnych magazynów danych w Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)oraz przez aplikację Menedżer poświadczeń w celu bezpiecznego ustawiania poświadczeń dla lokalnych magazynów danych na własnym serwerze hostowanym przez siebie środowisko Integration Runtime. |
+| 8060 (TCP)    | Wymagane przez polecenie cmdlet szyfrowania programu PowerShell, zgodnie z opisem w artykule [szyfrowanie poświadczeń dla lokalnych magazynów danych w Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)oraz przez aplikację Menedżer poświadczeń w celu bezpiecznego ustawiania poświadczeń dla lokalnych magazynów danych w ramach własnego środowiska Integration Runtime. |
 
 ![Wymagania dotyczące portów bramy](media/data-movement-security-considerations/gateway-port-requirements.png) 
 

@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 46ea65c09ec9567bb03a524470a3550c9cdfd00e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 0d8418d846d26d4104718df6d0fc66d264ef4a54
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684561"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918835"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Sparametryzuj połączone usługi w Azure Data Factory
 
@@ -36,7 +35,7 @@ Aby zapoznać się z wprowadzeniem do siedmiu minut i demonstracją tej funkcji,
 W tej chwili parametryzacja połączonej usługi jest obsługiwany przez interfejs użytkownika Data Factory w Azure Portal dla następujących magazynów danych. W przypadku wszystkich innych magazynów danych można Sparametryzuj połączoną usługę, wybierając ikonę **kodu** na karcie **połączenia** i używając edytora JSON.
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- SQL Server
+- Oprogramowanie SQL Server
 - Oracle
 - Cosmos DB
 - Amazon Redshift

@@ -1,5 +1,5 @@
 ---
-title: Debugowanie aplikacji za pomocą usługi Azure Application Insights w programie Visual Studio | Microsoft Docs
+title: Debugowanie w programie Visual Studio przy użyciu usługi Azure Application Insights
 description: Analiza wydajności i diagnostyka aplikacji internetowej podczas debugowania oraz w środowisku produkcyjnym.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,12 +9,12 @@ ms.author: daviste
 ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 32596b058918d3a8859dc356f8f0b1223b7f755a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4b32d775f64d3adba4ca07fa5154e395717d599
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899273"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930662"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Debuguj aplikacje za pomocą usługi Azure Application Insights w programie Visual Studio
 W programie Visual Studio (w wersji 2015 i nowszych) można analizować wydajność i diagnozować problemy w aplikacji internetowej platformy ASP.NET zarówno podczas debugowania, jak i w środowisku produkcyjnym, przy użyciu telemetrii z usługi [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).

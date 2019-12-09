@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803737"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919345"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Przewodnik dotyczący operacji zarządzania uwierzytelnianiem Azure Active Directory
 
@@ -292,16 +292,16 @@ Jeśli starsze uwierzytelnianie jest powszechnie używane w danym środowisku, n
 
 ### <a name="consent-grants"></a>Udzielanie zgody
 
-W przypadku ataku z nielegalną zgodą osoba atakująca tworzy aplikację zarejestrowaną w usłudze Azure AD, która żąda dostępu do danych, takich jak informacje kontaktowe, poczta e-mail lub dokumenty. Użytkownicy mogą udzielać zgody na złośliwe aplikacje za pośrednictwem ataków wyłudzania lub pośrednio, ale nie są ostrożne podczas wyładowywania w złośliwych witrynach sieci Web.
+W przypadku ataku z nielegalną zgodą osoba atakująca tworzy aplikację zarejestrowaną w usłudze Azure AD, która żąda dostępu do danych, takich jak informacje kontaktowe, poczta e-mail lub dokumenty. Użytkownicy mogą udzielać zgody na złośliwe aplikacje za pośrednictwem ataków wyłudzaniających podczas wydawania złośliwych witryn sieci Web.
 
-Poniżej znajdują się uprawnienia, które mogą chcieć Scrutinize dla usług w chmurze firmy Microsoft:
+Poniżej znajduje się lista aplikacji z uprawnieniami, które mogą być Scrutinize dla usług w chmurze firmy Microsoft:
 
 - Aplikacje z aplikacją lub \*delegowane. Uprawnienia ReadWrite
 - Aplikacje z delegowanymi uprawnieniami mogą odczytywać, wysyłać i zarządzać pocztą e-mail w imieniu użytkownika
 - Aplikacje, którym przyznano następujące uprawnienia:
 
 | Zasób | Uprawnienie |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Office 365 Exchange Online | Posiada. AccessAsUser. All |
 | | Interfejs. AccessAsUser. All |
 | | Poczta. Przeczytaj |
@@ -309,11 +309,19 @@ Poniżej znajdują się uprawnienia, które mogą chcieć Scrutinize dla usług 
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-Aby uniknąć tego scenariusza, należy odnieść się do [wykrywania i korygowania nielegalnych dotacji do zgody w pakiecie Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) w celu identyfikowania i rozwiązywania wszelkich aplikacji z nielegalnymi dotacjami lub aplikacjami, które mają więcej dotacji niż jest to konieczne. Zaplanuj regularne przeglądy uprawnień aplikacji i usuń je, gdy nie jest to potrzebne; lub Usuń samoobsługowe i ustal procedury ładu.
+- Aplikacje otrzymują pełną personifikację użytkownika zalogowanego użytkownika. Na przykład:
+
+|Zasób | Uprawnienie |
+| :- | :- |
+| Wykres usługi Azure AD | Katalog. AccessAsUser. All |
+| Microsoft Graph | Katalog. AccessAsUser. All |
+| Interfejs API REST platformy Azure | user_impersonation |
+
+Aby uniknąć tego scenariusza, należy odnieść się do [wykrywania i korygowania nielegalnych dotacji do zgody w pakiecie Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) w celu identyfikowania i rozwiązywania wszelkich aplikacji z nielegalnymi dotacjami lub aplikacjami, które mają więcej dotacji niż jest to konieczne. Następnie [Usuń](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) samoobsługowe i [Ustal procedury ładu](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Na koniec Zaplanuj regularne przeglądy uprawnień aplikacji i usuń je, gdy nie są potrzebne.
 
 #### <a name="consent-grants-recommended-reading"></a>Zgoda udziela zalecanego odczytu
 
-- [Zakresy uprawnień interfejs API programu Graph Azure Active Directory (AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Microsoft Graph permissions (Uprawnienia w programie Microsoft Graph)](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Ustawienia użytkownika i grupy
 

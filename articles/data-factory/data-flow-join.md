@@ -1,18 +1,19 @@
 ---
-title: Transformacja sprzężenia w przepływie danych mapowania Azure Data Factory
+title: Przekształcenie łączenia w przepływie danych mapowania
 description: Łączenie danych z dwóch źródeł danych przy użyciu transformacji sprzężenia w przepływie danych mapowania Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/17/2019
-ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122924"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930340"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Przekształcenie łączenia w przepływie danych mapowania
 
@@ -42,7 +43,7 @@ Pełne sprzężenie zewnętrzne wyprowadza wszystkie kolumny i wiersze z obu str
 
 Sprzężenie krzyżowe wyprowadza iloczyn między dwoma strumieniami w oparciu o warunek. Jeśli używasz warunku, który nie jest równy, Określ wyrażenie niestandardowe jako warunek sprzężenia krzyżowego. Strumień wyjściowy będzie zawierać wszystkie wiersze, które spełniają warunek sprzężenia. Aby utworzyć produkt kartezjańskiego, który wyprowadza każdą kombinację wierszy, określ `true()` jako warunek sprzężenia.
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
 1. Wybierz strumień danych, z którym chcesz się połączyć, na liście rozwijanej **odpowiedniego strumienia** .
 1. Wybierz **Typ sprzężenia**

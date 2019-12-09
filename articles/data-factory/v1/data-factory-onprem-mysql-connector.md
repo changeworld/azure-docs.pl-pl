@@ -4,21 +4,20 @@ description: Dowiedz się więcej na temat przenoszenia danych z bazy danych MyS
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666115"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928105"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Przenoszenie danych z programu MySQL przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -51,7 +50,7 @@ Aby można było nawiązać połączenie z bazą danych MySQL przy użyciu bramy
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych. 
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -63,17 +62,17 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla magazynu danych MySQL:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi MySQL.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość Type musi mieć wartość: **OnPremisesMySql** |Tak |
 | serwer |Nazwa serwera MySQL. |Tak |
 | baza danych |Nazwa bazy danych MySQL. |Tak |
-| schematy |Nazwa schematu w bazie danych programu. |Nie |
+| schema |Nazwa schematu w bazie danych programu. |Nie |
 | authenticationType |Typ uwierzytelniania używany do łączenia się z bazą danych MySQL. Możliwe wartości to: `Basic`. |Tak |
-| Uż |Określ nazwę użytkownika w celu nawiązania połączenia z bazą danych MySQL. |Tak |
+| userName |Określ nazwę użytkownika w celu nawiązania połączenia z bazą danych MySQL. |Tak |
 | hasło |Określ hasło dla podanego konta użytkownika. |Tak |
 | gatewayName |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych MySQL. |Tak |
 
@@ -82,7 +81,7 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties dla zestawu danych typu **relacyjnego** (który zawiera zestaw danych MySQL) ma następujące właściwości
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w wystąpieniu bazy danych MySQL, do której odwołuje się połączona usługa. |Nie (Jeśli **kwerenda** **RelationalSource** jest określona) |
 
@@ -93,7 +92,7 @@ Natomiast właściwości dostępne w sekcji **typeProperties** działania różn
 
 Gdy źródło w działaniu kopiowania jest typu **RelationalSource** (co obejmuje MySQL), w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
@@ -299,47 +298,47 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przeniesienia danych do programu MySQL następujące mapowania są używane z typów MySQL do typów .NET.
 
-| Typ bazy danych MySQL | Typ .NET Framework |
+| Typ bazy danych MySQL | Typ programu .NET Framework |
 | --- | --- |
-| bigint bez znaku |Dokładności |
+| bigint bez znaku |Decimal |
 | bigint |Int64 |
-| bit |Dokładności |
-| blob |Byte [] |
+| bit |Decimal |
+| blob |Byte[] |
 | bool |Wartość logiczna |
-| delikatn |Ciąg |
-| date |Datę |
-| datetime |Datę |
-| decimal |Dokładności |
+| char |Ciąg |
+| date |Datetime |
+| datetime |Datetime |
+| decimal |Decimal |
 | Podwójna precyzja |Double |
 | double |Double |
-| podstawowe |Ciąg |
+| Wyliczenia |Ciąg |
 | float |Pojedyncze |
 | int bez znaku |Int64 |
-| int |Elementem |
+| int |Int32 |
 | Liczba całkowita bez znaku |Int64 |
-| liczba całkowita |Elementem |
-| Long varbinary |Byte [] |
+| liczba całkowita |Int32 |
+| Long varbinary |Byte[] |
 | Long varchar |Ciąg |
-| longblob |Byte [] |
+| longblob |Byte[] |
 | longtext |Ciąg |
-| mediumblob |Byte [] |
+| mediumblob |Byte[] |
 | MEDIUMINT bez znaku |Int64 |
-| mediumint |Elementem |
+| mediumint |Int32 |
 | mediumtext |Ciąg |
-| przypada |Dokładności |
-| czasie rzeczywistym |Double |
+| numeric |Decimal |
+| real |Double |
 | set |Ciąg |
-| smallint bez znaku |Elementem |
+| smallint bez znaku |Int32 |
 | smallint |Int16 |
 | tekst |Ciąg |
-| time |Czasu |
-| sygnatura czasowa |Datę |
-| tinyblob |Byte [] |
+| time |TimeSpan |
+| sygnatura czasowa |Datetime |
+| tinyblob |Byte[] |
 | tinyint unsigned |Int16 |
 | tinyint |Int16 |
 | tinytext |Ciąg |
 | varchar |Ciąg |
-| rocznie |ZAOKR |
+| rocznie |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
 Aby dowiedzieć się więcej na temat mapowania kolumn w źródłowym zestawie danych na kolumny w datadataset, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).

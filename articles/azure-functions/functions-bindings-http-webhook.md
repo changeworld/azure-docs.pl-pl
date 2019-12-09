@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 598074a6d5093c4febd4d62266a1c852200e3f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 481e2ab63263f77b513e6443479827cc9e168bbb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231170"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926356"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions wyzwalacze i powiązania HTTP
 
@@ -22,7 +22,7 @@ Wyzwalacz HTTP można dostosować w taki sposób, aby odpowiadał na elementy [w
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-Kod w tym artykule domyślnie przyjmuje składnię Functions 2. x, która używa platformy .NET Core. Informacje na temat składni 1. x można znaleźć w [szablonach funkcji 1. x](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
+Kod w tym artykule jest domyślnie używany do składni, która używa platformy .NET Core używanej w funkcjach w wersji 2. x i nowszych. Informacje na temat składni 1. x można znaleźć w [szablonach funkcji 1. x](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
@@ -30,7 +30,7 @@ Powiązania HTTP są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Exte
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
 
 Powiązania HTTP są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub.
 
@@ -40,7 +40,7 @@ Powiązania HTTP są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Exte
 
 Wyzwalacz HTTP umożliwia wywoływanie funkcji za pomocą żądania HTTP. Można użyć wyzwalacza HTTP do kompilowania bezserwerowych interfejsów API i reagowania na elementy webhook.
 
-Domyślnie wyzwalacz HTTP zwraca wartość HTTP 200 OK z pustą treścią w funkcjach 1. x lub HTTP 204 Brak zawartości z pustą treścią w funkcjach 2. x. Aby zmodyfikować odpowiedź, skonfiguruj [powiązanie danych wyjściowych http](#output).
+Domyślnie wyzwalacz HTTP zwraca wartość HTTP 200 OK z pustą treścią w funkcjach 1. x lub HTTP 204 bez zawartości z pustą treścią w funkcjach 2. x i wyższych. Aby zmodyfikować odpowiedź, skonfiguruj [powiązanie danych wyjściowych http](#output).
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 
@@ -72,7 +72,7 @@ public static async Task<IActionResult> Run(
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -97,7 +97,7 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
+[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
 Kod C# skryptu, który wiąże się z `HttpRequest`:
 
@@ -148,7 +148,7 @@ public class Person {
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -169,7 +169,7 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
+[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -197,7 +197,7 @@ module.exports = function(context, req) {
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [funkcji języka Python](functions-reference-python.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -219,7 +219,7 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
+[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
 Oto kod języka Python:
 
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 W poniższych przykładach pokazano powiązanie wyzwalacza HTTP w pliku *Function. JSON* oraz odpowiednie [funkcje języka Java](functions-reference-java.md) , które używają tego powiązania. 
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -356,7 +356,7 @@ Ten przykład odczytuje treść żądania POST jako ```String```i używa go do s
 
 #### <a name="read-parameter-from-a-route"></a>Odczyt parametru z trasy
 
-Ten przykład odczytuje obowiązkowy parametr o nazwie ```id```i opcjonalny parametr ```name``` ze ścieżki trasy, a następnie używa ich do kompilowania dokumentu JSON zwróconego do klienta z typem zawartości ```application/json```. T
+Ten przykład odczytuje obowiązkowy parametr o nazwie ```id```i opcjonalny parametr ```name``` ze ścieżki trasy, a następnie używa ich do kompilowania dokumentu JSON zwróconego do klienta z typem zawartości ```application/json```. trylionów
 
 ```java
 @FunctionName("TriggerStringRoute")
@@ -513,17 +513,17 @@ Aby uzyskać pełny przykład, zobacz [przykład wyzwalacza](#trigger---example)
 
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `HttpTrigger` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `HttpTrigger` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **type** | Nie dotyczy| Wymagane — musi być ustawiony na `httpTrigger`. |
-| **direction** | Nie dotyczy| Wymagane — musi być ustawiony na `in`. |
-| **Nazwij** | Nie dotyczy| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. |
+| **type** | nd.| Wymagane — musi być ustawiony na `httpTrigger`. |
+| **direction** | nd.| Wymagane — musi być ustawiony na `in`. |
+| **Nazwa** | nd.| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Określa, jakie klucze (jeśli istnieją) muszą być obecne w żądaniu w celu wywołania funkcji. Poziom autoryzacji może być jedną z następujących wartości: <ul><li><code>anonymous</code>&mdash;nie jest wymagany żaden klucz interfejsu API.</li><li><code>function</code>&mdash;klucz interfejsu API specyficzny dla funkcji jest wymagany. Jest to wartość domyślna, jeśli nie podano żadnej z nich.</li><li><code>admin</code>&mdash;klucz główny jest wymagany.</li></ul> Aby uzyskać więcej informacji, zapoznaj się z sekcją dotyczącej [kluczy autoryzacji](#authorization-keys). |
-| **form** |**Form** | Tablica metod HTTP, do których funkcja reaguje. Jeśli nie zostanie określony, funkcja reaguje na wszystkie metody HTTP. Zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
-| **Szlak** | **Szlak** | Definiuje szablon trasy, który kontroluje adresy URL żądań, które odpowiada funkcja. Wartość domyślna, jeśli nie jest określona, jest `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
-| **Element webhooktype** | **Element webhooktype** | _Obsługiwane tylko dla środowiska uruchomieniowego w wersji 1. x._<br/><br/>Konfiguruje wyzwalacz HTTP do działania jako odbiornik [elementu webhook](https://en.wikipedia.org/wiki/Webhook) dla określonego dostawcy. Nie ustawiaj właściwości `methods`, jeśli ustawisz tę właściwość. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;punktu końcowego elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych, które używają protokołu HTTP POST i z typem zawartości `application/json`.</li><li><code>github</code>&mdash;funkcja reaguje na elementy [webhook usługi GitHub](https://developer.github.com/webhooks/). Nie należy używać właściwości _authLevel_ z elementami webhook usługi GitHub. Aby uzyskać więcej informacji, zobacz sekcję elementy webhook w usłudze GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;funkcja reaguje na elementy [webhook zapasowych](https://api.slack.com/outgoing-webhooks). Nie należy używać właściwości _authLevel_ z elementami webhook zapasowych. Aby uzyskać więcej informacji, zobacz sekcję elementy webhooks w dalszej części tego artykułu.</li></ul>|
+| **methods** |**Methods** | Tablica metod HTTP, do których funkcja reaguje. Jeśli nie zostanie określony, funkcja reaguje na wszystkie metody HTTP. Zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
+| **route** | **Route** | Definiuje szablon trasy, który kontroluje adresy URL żądań, które odpowiada funkcja. Wartość domyślna, jeśli nie jest określona, jest `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
+| **webHookType** | **WebHookType** | _Obsługiwane tylko dla środowiska uruchomieniowego w wersji 1. x._<br/><br/>Konfiguruje wyzwalacz HTTP do działania jako odbiornik [elementu webhook](https://en.wikipedia.org/wiki/Webhook) dla określonego dostawcy. Nie ustawiaj właściwości `methods`, jeśli ustawisz tę właściwość. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;punktu końcowego elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych, które używają protokołu HTTP POST i z typem zawartości `application/json`.</li><li><code>github</code>&mdash;funkcja reaguje na elementy [webhook usługi GitHub](https://developer.github.com/webhooks/). Nie należy używać właściwości _authLevel_ z elementami webhook usługi GitHub. Aby uzyskać więcej informacji, zobacz sekcję elementy webhook w usłudze GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;funkcja reaguje na elementy [webhook zapasowych](https://api.slack.com/outgoing-webhooks). Nie należy używać właściwości _authLevel_ z elementami webhook zapasowych. Aby uzyskać więcej informacji, zobacz sekcję elementy webhooks w dalszej części tego artykułu.</li></ul>|
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
@@ -684,7 +684,7 @@ Domyślnie wszystkie trasy funkcji są poprzedzone *interfejsem API*. Można ró
 
 Jeśli aplikacja funkcji używa [App Service uwierzytelniania/autoryzacji](../app-service/overview-authentication-authorization.md), można wyświetlić informacje o uwierzytelnionych klientach w kodzie. Te informacje są dostępne jako [nagłówki żądań wstrzykiwane przez platformę](../app-service/app-service-authentication-how-to.md#access-user-claims). 
 
-Te informacje można również odczytać z poziomu powiązań danych. Ta funkcja jest dostępna tylko dla środowiska uruchomieniowego Functions 2. x. Jest on również obecnie dostępny tylko dla języków .NET.
+Te informacje można również odczytać z poziomu powiązań danych. Ta funkcja jest dostępna tylko dla środowiska uruchomieniowego Functions w wersji 2. x lub nowszej. Jest on również obecnie dostępny tylko dla języków .NET.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -774,7 +774,7 @@ Funkcje umożliwiają korzystanie z kluczy, aby utrudnić dostęp do punktów ko
 > Chociaż klucze mogą pomóc w zablokowaniu punktów końcowych HTTP podczas opracowywania, nie są one przeznaczone do zabezpieczania wyzwalacza HTTP w środowisku produkcyjnym. Aby dowiedzieć się więcej, zobacz temat [Zabezpieczanie punktu końcowego HTTP w środowisku produkcyjnym](#secure-an-http-endpoint-in-production).
 
 > [!NOTE]
-> W środowisku uruchomieniowym Functions 1. x dostawcy elementów webhook mogą używać kluczy do autoryzowania żądań na różne sposoby, w zależności od tego, co obsługuje dostawca. Dotyczy to elementów [webhook i kluczy](#webhooks-and-keys). Środowisko uruchomieniowe w wersji 2. x nie obejmuje wbudowanej obsługi dostawców elementu webhook.
+> W środowisku uruchomieniowym Functions 1. x dostawcy elementów webhook mogą używać kluczy do autoryzowania żądań na różne sposoby, w zależności od tego, co obsługuje dostawca. Dotyczy to elementów [webhook i kluczy](#webhooks-and-keys). Środowisko uruchomieniowe funkcji w wersji 2. x i nowszych nie obejmuje wbudowanej obsługi dostawców elementu webhook.
 
 Istnieją dwa typy kluczy:
 
@@ -825,9 +825,9 @@ Korzystając z jednej z tych metod zabezpieczeń na poziomie aplikacji, należy 
 ### <a name="webhooks"></a>Elementy webhook
 
 > [!NOTE]
-> Tryb elementu webhook jest dostępny tylko dla wersji 1. x środowiska uruchomieniowego funkcji. Ta zmiana została wprowadzona w celu zwiększenia wydajności wyzwalaczy HTTP w wersji 2. x.
+> Tryb elementu webhook jest dostępny tylko dla wersji 1. x środowiska uruchomieniowego funkcji. Ta zmiana została wprowadzona w celu zwiększenia wydajności wyzwalaczy HTTP w wersji 2. x lub nowszej.
 
-W wersji 1. x szablony elementów webhook zapewniają dodatkową weryfikację ładunków elementu webhook. W wersji 2. x podstawowy wyzwalacz HTTP nadal działa i jest zalecanym rozwiązaniem dla elementów webhook. 
+W wersji 1. x szablony elementów webhook zapewniają dodatkową weryfikację ładunków elementu webhook. W wersji 2. x i wyższych, podstawowy wyzwalacz HTTP nadal działa i jest zalecanym rozwiązaniem dla elementów webhook. 
 
 #### <a name="github-webhooks"></a>Elementy webhook usługi GitHub
 
@@ -854,7 +854,7 @@ Jeśli funkcja, która używa wyzwalacza HTTP, nie kończy się w ciągu około 
 
 ## <a name="output"></a>Dane wyjściowe
 
-Użyj powiązania wyjściowego HTTP, aby odpowiedzieć na nadawcę żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i umożliwia dostosowanie odpowiedzi skojarzonej z żądaniem wyzwalacza. Jeśli nie podano powiązania danych wyjściowych HTTP, wyzwalacz HTTP zwróci wartość HTTP 200 OK z pustą treścią w funkcjach 1. x lub HTTP 204 Brak zawartości z pustą treścią w funkcjach 2. x.
+Użyj powiązania wyjściowego HTTP, aby odpowiedzieć na nadawcę żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i pozwala na dostosowanie odpowiedzi skojarzonej z żądaniem wyzwalacza. Jeśli nie podano powiązania danych wyjściowych HTTP, wyzwalacz HTTP zwróci wartość HTTP 200 OK z pustą treścią w funkcjach 1. x lub HTTP 204 Brak zawartości z pustą treścią w funkcjach 2. x i wyższych.
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
@@ -862,9 +862,9 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 |Właściwość  |Opis  |
 |---------|---------|
-| **type** |Musi być ustawiony na `http`. |
-| **direction** | Musi być ustawiony na `out`. |
-| **Nazwij** | Nazwa zmiennej używana w kodzie funkcji dla odpowiedzi lub `$return` do używania wartości zwracanej. |
+| **type** |Musi być równa `http`. |
+| **direction** | Musi być równa `out`. |
+| **Nazwa** | Nazwa zmiennej używana w kodzie funkcji dla odpowiedzi lub `$return` do używania wartości zwracanej. |
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
 
@@ -874,10 +874,10 @@ Na przykład odpowiedzi, zobacz [przykład wyzwalacza](#trigger---example).
 
 ## <a name="hostjson-settings"></a>Ustawienia host.JSON
 
-W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2.x. Przykład pliku host.json poniżej zawiera tylko ustawienia 2.x wersji dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersji 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions wersji 2. x](functions-host-json.md).
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2. x i nowszych. Poniższy przykładowy plik host. JSON zawiera tylko ustawienia wersji 2. x dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersjach 2. x i więcej, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md#http).
+> Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md#http).
 
 ```json
 {
@@ -903,7 +903,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 |---------|---------|---------| 
 | customHeaders|brak|Umożliwia ustawienie niestandardowych nagłówków w odpowiedzi HTTP. Poprzedni przykład dodaje nagłówek `X-Content-Type-Options` do odpowiedzi, aby uniknąć wykrywania typu zawartości. |
 |dynamicThrottlesEnabled|wartość true<sup>\*</sup>|Włączenie tego ustawienia powoduje, że potok przetwarzania żądań okresowo sprawdza liczniki wydajności systemu, takie jak połączenia/wątki/procesy/pamięć/procesor CPU/itp. Jeśli którykolwiek z tych liczników korzysta ze standardowego progu (80%), żądania zostaną odrzucone 429 z odpowiedzią "zbyt zajęte", dopóki licznik nie zwróci normalnych poziomów.<br/><sup>\*</sup> Wartość domyślna w planie zużycia jest `true`. Wartość domyślna w ramach dedykowanego planu to `false`.|
-|HSTS|Niewłączony|Gdy `isEnabled` jest ustawiony na `true`, wymuszane jest [zachowanie zabezpieczeń HTTP Strict Transport (HSTS) dla platformy .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) , zgodnie z definicją w [klasie`HstsOptions`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). Powyższy przykład ustawia również właściwość [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) na 10 dni. Obsługiwane właściwości `hsts` są następujące: <table><tr><th>Właściwość</th><th>Opis</th></tr><tr><td>excludedHosts</td><td>Tablica ciągów nazw hostów, dla których nie został dodany nagłówek HSTS.</td></tr><tr><td>includeSubDomains</td><td>Wartość logiczna wskazująca, czy jest włączony parametr includeSubDomain nagłówka Strict-Transport-Security.</td></tr><tr><td>Parametru</td><td>Ciąg definiujący maksymalny parametr wieku w nagłówku Strict-Transport-Security.</td></tr><tr><td>Ładuj</td><td>Wartość logiczna wskazująca, czy jest włączony parametr wstępnego ładowania nagłówka zabezpieczeń Strict-Transport-Security.</td></tr></table>|
+|HSTS|Niewłączony|Gdy `isEnabled` jest ustawiony na `true`, wymuszane jest [zachowanie zabezpieczeń HTTP Strict Transport (HSTS) dla platformy .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) , zgodnie z definicją w [klasie`HstsOptions`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). Powyższy przykład ustawia również właściwość [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) na 10 dni. Obsługiwane właściwości `hsts` są następujące: <table><tr><th>Właściwość</th><th>Opis</th></tr><tr><td>excludedHosts</td><td>Tablica ciągów nazw hostów, dla których nie został dodany nagłówek HSTS.</td></tr><tr><td>includeSubDomains</td><td>Wartość logiczna wskazująca, czy jest włączony parametr includeSubDomain nagłówka Strict-Transport-Security.</td></tr><tr><td>Parametru</td><td>Ciąg definiujący maksymalny parametr wieku w nagłówku Strict-Transport-Security.</td></tr><tr><td>preload</td><td>Wartość logiczna wskazująca, czy jest włączony parametr wstępnego ładowania nagłówka zabezpieczeń Strict-Transport-Security.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Maksymalna liczba funkcji http, które są wykonywane równolegle. Pozwala to na kontrolowanie współbieżności, co może ułatwić zarządzanie użyciem zasobów. Na przykład może istnieć funkcja http, która korzysta z dużej ilości zasobów systemowych (pamięć/procesor CPU/gniazda), co powoduje problemy, gdy współbieżność jest zbyt wysoka. Może też istnieć funkcja, która wysyła żądania wychodzące do usługi innej firmy, a te wywołania muszą mieć ograniczoną szybkość. W takich przypadkach można w tym celu zastosować ograniczenie przepustowości. <br/><sup>*</sup> Wartością domyślną planu zużycia jest 100. Wartość domyślna dla dedykowanego planu jest nieograniczona (`-1`).|
 |maxOutstandingRequests|200<sup>\*</sup>|Maksymalna liczba oczekujących żądań, które są przechowywane w danym momencie. Ten limit obejmuje żądania, które są umieszczane w kolejce, ale nie rozpoczęto wykonywania, a także w trakcie wykonywania. Wszystkie żądania przychodzące przez ten limit są odrzucane przez odpowiedź 429 "zbyt zajęta". Dzięki temu obiekty wywołujące mogą korzystać z strategii ponawiania prób, a także kontrolować maksymalne opóźnienia żądania. Tylko kontroluje kolejkowanie, które występuje w ścieżce wykonywania hosta skryptu. Inne kolejki, takie jak Kolejka żądań ASP.NET, nadal będą obowiązywać i nie mają wpływu na to ustawienie. <br/><sup>\*</sup>\The domyślny dla planu zużycia to 200. Wartość domyślna dla dedykowanego planu jest nieograniczona (`-1`).|
 |routePrefix|api|Prefiks trasy dotyczący wszystkich tras. Użyj pustego ciągu, aby usunąć domyślny prefiks. |
@@ -911,4 +911,4 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+[Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

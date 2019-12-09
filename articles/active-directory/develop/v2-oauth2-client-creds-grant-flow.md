@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z platformy tożsamości firmy Microsoft w celu uzyskania dostępu do bezpiecznych zasobów bez interakcji z użytkownikiem | Azure
+title: Przepływ poświadczeń klienta OAuth 2,0 na platformie tożsamości firmy Microsoft | Azure
 description: Twórz aplikacje sieci Web przy użyciu implementacji platformy tożsamości firmy Microsoft w ramach protokołu uwierzytelniania OAuth 2,0.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1499e931a81e31494d7ff442c8295ba03f1cf33
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207646"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919294"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform i przepływ poświadczeń klienta OAuth 2,0
 
@@ -31,7 +31,7 @@ ms.locfileid: "74207646"
 
 W celu uzyskania dostępu do zasobów hostowanych przez sieć Web przy użyciu tożsamości aplikacji można użyć przyznanych [poświadczeń klienta oauth 2,0](https://tools.ietf.org/html/rfc6749#section-4.4) *, które*określono w dokumencie RFC 6749. Ten typ dotacji jest często używany w przypadku interakcji między serwerami, które muszą działać w tle bez natychmiastowej interakcji z użytkownikiem. Te typy aplikacji są często określane jako *demony* lub *konta usług*.
 
-W tym artykule opisano, jak programować bezpośrednio w odniesieniu do protokołu w aplikacji.  Jeśli to możliwe, zalecamy korzystanie z obsługiwanych bibliotek uwierzytelniania firmy Microsoft (MSAL) zamiast [uzyskiwać tokeny i wywoływać zabezpieczone interfejsy API sieci Web](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Zapoznaj się również z [przykładowymi aplikacjami korzystającymi z MSAL](sample-v2-code.md).
+W tym artykule opisano, jak programować bezpośrednio w odniesieniu do protokołu w aplikacji. Jeśli to możliwe, zalecamy korzystanie z obsługiwanych bibliotek uwierzytelniania firmy Microsoft (MSAL) zamiast [uzyskiwać tokeny i wywoływać zabezpieczone interfejsy API sieci Web](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Zapoznaj się również z [przykładowymi aplikacjami korzystającymi z MSAL](sample-v2-code.md).
 
 Przepływ uprawnień uwierzytelniania OAuth 2,0 zezwala usłudze sieci Web (poufnego klienta) na używanie własnych poświadczeń, a nie personifikowanie użytkownika w celu uwierzytelniania podczas wywoływania innej usługi sieci Web. W tym scenariuszu klient jest zwykle usługą sieci Web warstwy środkowej, usługą demona lub witryną sieci Web. W przypadku wyższego poziomu gwarancji platforma tożsamości firmy Microsoft umożliwia usłudze wywołującej używanie certyfikatu (zamiast wspólnego klucza tajnego) jako poświadczenia.
 
@@ -70,7 +70,7 @@ Zamiast używać list ACL, można użyć interfejsów API, aby uwidocznić zesta
 * Odczytaj pocztę we wszystkich skrzynkach pocztowych
 * Odczytuj i zapisuj wiadomości e-mail we wszystkich skrzynkach pocztowych
 * Wyślij wiadomość e-mail jako dowolny użytkownik
-* Odczytaj dane katalogu
+* Odczyt danych katalogu
 
 Aby uzyskać więcej informacji o uprawnieniach aplikacji, przejdź do [Microsoft Graph](https://developer.microsoft.com/graph).
 
@@ -182,7 +182,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `client_id` | Wymagane | Identyfikator aplikacji przypisany do aplikacji. Te informacje można znaleźć w portalu, w którym zarejestrowano aplikację. |
 | `scope` | Wymagane | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, dlatego punkt końcowy powinien wydać token skojarzony z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
 | `client_secret` | Wymagane | Wpis tajny klienta wygenerowany dla aplikacji w portalu rejestracji aplikacji. Wpis tajny klienta musi być zakodowany przy użyciu adresu URL przed wysłaniem. |
-| `grant_type` | Wymagane | Musi być ustawiony na `client_credentials`. |
+| `grant_type` | Wymagane | Musi być równa `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: żądanie tokenu dostępu z certyfikatem
 
@@ -205,7 +205,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `scope` | Wymagane | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, co powinno wydać token dla skojarzonych z zasobem, który ma być używany. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
 | `client_assertion_type` | Wymagane | Wartość musi być ustawiona na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Wymagane | Potwierdzenie (token sieci Web JSON), które należy utworzyć i podpisać przy użyciu certyfikatu zarejestrowanego jako poświadczenia dla aplikacji. Przeczytaj informacje o [poświadczeniach certyfikatów](active-directory-certificate-credentials.md) , aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenia.|
-| `grant_type` | Wymagane | Musi być ustawiony na `client_credentials`. |
+| `grant_type` | Wymagane | Musi być równa `client_credentials`. |
 
 Zwróć uwagę, że parametry są prawie takie same, jak w przypadku żądania przez wspólny klucz tajny, z tą różnicą, że parametr client_secret jest zastępowany przez dwa parametry: client_assertion_type i client_assertion.
 
@@ -278,4 +278,4 @@ Przeczytaj [dokumentację dotyczącą przeglądu poświadczeń klienta](https://
 | Przykład | Platforma |Opis |
 |--------|----------|------------|
 |[Active-Directory-dotnetcore-demon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | Konsola programu .NET Core 2,1 | Prosta aplikacja platformy .NET Core, która wyświetla użytkowników dzierżawcy wykonujących zapytania dotyczące Microsoft Graph przy użyciu tożsamości aplikacji, a nie w imieniu użytkownika. Przykład ilustruje również zmiany przy użyciu certyfikatów do uwierzytelniania. |
-|[Active-Directory-dotnet-demon — wersja 2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Aplikacja sieci Web, która synchronizuje dane z Microsoft Graph przy użyciu tożsamości aplikacji, a nie w imieniu użytkownika. |
+|[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Aplikacja sieci Web, która synchronizuje dane z Microsoft Graph przy użyciu tożsamości aplikacji, a nie w imieniu użytkownika. |

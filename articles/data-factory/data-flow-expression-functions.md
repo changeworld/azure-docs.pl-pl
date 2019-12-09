@@ -1,24 +1,24 @@
 ---
-title: Funkcje wyrażeń w funkcji przepływu danych mapowania Azure Data Factory
+title: Funkcje wyrażeń w przepływie danych mapowania
 description: Dowiedz się więcej o funkcjach wyrażeń w mapowaniu przepływu danych.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 230305b66ec093043e4c2dca9515da4ce0793712
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596960"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930376"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Wyrażenia transformacji danych w mapowaniu przepływu danych 
 
-
-
-## <a name="expression-functions"></a>Funkcje wyrażeń
+## <a name="expression-functions"></a>Funkcje wyrażenia
 
 W Data Factory Użyj języka wyrażeń funkcji mapowanie przepływu danych, aby skonfigurować przekształcenia danych.
 
@@ -956,7 +956,7 @@ Mnoży parę liczb. Analogicznie jak operator *
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-Funkcja NTile dzieli wiersze dla każdej partycji okna na przedziały `n` z zakresu od 1 do maksymalnie `n`. Wartości zasobnika różnią się o co najwyżej 1. Jeśli liczba wierszy w partycji nie jest równo podzielona na liczbę przedziałów, pozostałe wartości są dystrybuowane jeden na przedział, rozpoczynając od pierwszego przedziału. Funkcja NTile jest przydatna do obliczania wartości tertiles, kwartyls, deciles i innych typowych statystyk podsumowujących. Funkcja oblicza dwie zmienne podczas inicjalizacji: rozmiar regularnego zasobnika będzie mieć jeden dodatkowy wiersz. Obie zmienne są zależne od rozmiaru bieżącej partycji. Podczas obliczeń funkcja śledzi bieżący numer wiersza, bieżący zasobnik i numer wiersza, w którym zostanie zmieniony zasobnik (bucketThreshold). Gdy bieżąca liczba wierszy osiągnie próg zasobnika, wartość przedziału jest zwiększana o jeden, a próg jest zwiększany o rozmiar zasobnika (plus jeden dodatkowy, jeśli bieżący zasobnik jest uzupełniony).
+Funkcja NTile dzieli wiersze dla każdej partycji okna na `n` zasobników od 1 do najwyżej `n`. Wartości zasobnika różnią się o co najwyżej 1. Jeśli liczba wierszy w partycji nie jest równo podzielona na liczbę przedziałów, pozostałe wartości są dystrybuowane jeden na przedział, rozpoczynając od pierwszego przedziału. Funkcja NTile jest przydatna do obliczania wartości tertiles, kwartyls, deciles i innych typowych statystyk podsumowujących. Funkcja oblicza dwie zmienne podczas inicjalizacji: rozmiar regularnego zasobnika będzie mieć jeden dodatkowy wiersz. Obie zmienne są zależne od rozmiaru bieżącej partycji. Podczas obliczeń funkcja śledzi bieżący numer wiersza, bieżący zasobnik i numer wiersza, w którym zostanie zmieniony zasobnik (bucketThreshold). Gdy bieżąca liczba wierszy osiągnie próg zasobnika, wartość przedziału jest zwiększana o jeden, a próg jest zwiększany o rozmiar zasobnika (plus jeden dodatkowy, jeśli bieżący zasobnik jest uzupełniony).
 
 * ``nTile()``
 
@@ -1019,7 +1019,7 @@ Zwraca wartość NULL. Użyj składni funkcji (null ()), jeśli istnieje kolumna
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Operator logiczny OR. Analogicznie jak | |
+Logiczny operator LUB. Analogicznie jak | |
 
 * ``or(true, false) -> true``
 

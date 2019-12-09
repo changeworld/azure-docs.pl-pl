@@ -1,5 +1,6 @@
 ---
-title: Aplikacja klasyczna, która wywołuje interfejsy API sieci Web (Uzyskiwanie tokenu dla aplikacji) — Microsoft Identity platform
+title: Uzyskaj token dla aplikacji klasycznych, które wywołują interfejsy API sieci Web | Azure
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (Uzyskiwanie tokenu dla aplikacji |)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce79a2dcbb0d79d84019c350eb4693160c8f7d50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175469"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920230"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — pozyskiwanie tokenu
 
@@ -260,7 +261,7 @@ Hostem `end Url` zawsze jest `redirectUri`. Aby przechwycić `end Url` można:
 
 Aby móc używać `.WithCustomWebUI`, musisz:
 
-  1. Zaimplementuj interfejs `ICustomWebUi` (zobacz [tutaj](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Zasadniczo należy wdrożyć jedną metodę `AcquireAuthorizationCodeAsync` akceptujący adres URL kodu autoryzacji (obliczony przez MSAL.NET), umożliwiając użytkownikowi przechodzenie przez interakcję z dostawcą tożsamości, a następnie zwrócenie adresu URL, za pomocą którego dostawca tożsamości będzie miał Wywołano poprzednią implementację (w tym kod autoryzacji). Jeśli masz problemy, implementacja powinna zgłosić wyjątek `MsalExtensionException`, aby dobrze współpracę z MSAL.
+  1. Zaimplementuj interfejs `ICustomWebUi` (zobacz [tutaj](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Zasadniczo należy wdrożyć jedną metodę `AcquireAuthorizationCodeAsync` akceptujący adres URL kodu autoryzacji (obliczony przez MSAL.NET), umożliwiając użytkownikowi przechodzenie przez interakcję z dostawcą tożsamości, a następnie powrót do adresu URL, za pomocą którego dostawca tożsamości wywołał implementację z powrotem (w tym kod autoryzacji). Jeśli masz problemy, implementacja powinna zgłosić wyjątek `MsalExtensionException`, aby dobrze współpracę z MSAL.
   2. W wywołaniu `AcquireTokenInteractive` można użyć modyfikatora `.WithCustomUI()` przekazanie wystąpienia niestandardowego interfejsu użytkownika sieci Web
 
      ```CSharp
@@ -1108,7 +1109,7 @@ Klasy i interfejsy wykorzystywane w serializacji pamięci podręcznej tokenu są
 
 Strategie różnią się w zależności od tego, czy piszesz serializacji pamięci podręcznej tokenów dla publicznej aplikacji klienckiej (Desktop), czy poufnej aplikacji klienckiej (aplikacja sieci Web/internetowy interfejs API, aplikacja demona).
 
-Ponieważ MSAL v2. x istnieje kilka opcji, w zależności od tego, czy chcesz serializować pamięć podręczną tylko do formatu MSAL.NET (ujednolicona pamięć podręczna formatu, która jest wspólna dla MSAL, ale również na platformach) czy też chcesz obsługiwać [starszą](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) pamięć podręczną tokenów Serializacja biblioteki ADAL v3.
+Ponieważ MSAL v2. x masz kilka opcji, w zależności od tego, czy chcesz serializować pamięć podręczną tylko do formatu MSAL.NET (ujednolicona pamięć podręczna formatu, która jest wspólna dla MSAL, ale również na platformach) czy też chcesz obsługiwać [starszą](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) serializację pamięci podręcznej tokenów biblioteki ADAL v3.
 
 Dostosowanie serializacji pamięci podręcznej tokenów w celu udostępnienia stanu logowania jednokrotnego między ADAL.NET 3. x, ADAL.NET 5. x i MSAL.NET zostało wyjaśnione w części poniższego przykładu: [Active-Directory-dotnet-V1-do-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
 

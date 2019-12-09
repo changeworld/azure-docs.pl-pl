@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: b2782ce39bbc2ca86c63b178535fc6b67b9dadfe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 65775a9c7a6d66a088eccdfdb22ce7d6b01829d2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231040"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925402"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Powiązania magazynu obiektów blob platformy Azure dla Azure Functions
 
@@ -27,15 +27,15 @@ W tym artykule opisano sposób pracy z powiązaniami usługi Azure Blob Storage 
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 
-Powiązania magazynu obiektów BLOB są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub.
+Powiązania magazynu obiektów BLOB są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) w wersji 2. x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) repozytorium GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
 
-Powiązania magazynu obiektów BLOB są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) GitHub.
+Powiązania magazynu obiektów BLOB są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) w wersji 3. x. Kod źródłowy dla pakietu znajduje się w [zestaw sdk zadań webjob azure](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs) repozytorium GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -89,7 +89,7 @@ Aby uzyskać więcej informacji o atrybucie `BlobTrigger`, zobacz [Trigger-Attri
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza obiektu BLOB w pliku *Function. JSON* i kodzie, który używa tego powiązania. Funkcja zapisuje dziennik w przypadku dodania lub zaktualizowania obiektu BLOB w [kontenerze](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)`samples-workitems`.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -136,7 +136,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 Poniższy przykład przedstawia powiązanie wyzwalacza obiektów BLOB w pliku *Function. JSON* i [kodu JavaScript](functions-reference-node.md) , który używa powiązania. Funkcja zapisuje dziennik w przypadku dodania lub zaktualizowania obiektu BLOB w kontenerze `samples-workitems`.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -170,7 +170,7 @@ module.exports = function(context) {
 
 Poniższy przykład przedstawia powiązanie wyzwalacza obiektów BLOB w pliku *Function. JSON* i [kodu Python](functions-reference-python.md) , który używa powiązania. Funkcja zapisuje dziennik w przypadku dodania lub zaktualizowania obiektu BLOB w [kontenerze](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)`samples-workitems`.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -207,7 +207,7 @@ def main(myblob: func.InputStream):
 
 Poniższy przykład przedstawia powiązanie wyzwalacza obiektu BLOB w pliku *Function. JSON* i [kodzie Java](functions-reference-java.md) , który używa powiązania. Funkcja zapisuje dziennik w przypadku dodania lub zaktualizowania obiektu BLOB w kontenerze `myblob`.
 
-Oto plik *Function. JSON* :
+Oto *function.json* pliku:
 
 ```json
 {
@@ -294,10 +294,10 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następującyc
 
 Konto magazynu do użycia jest określane w następującej kolejności:
 
-* Właściwość `Connection` atrybutu `BlobTrigger`.
-* Atrybut `StorageAccount` stosowany do tego samego parametru, który jest atrybutem `BlobTrigger`.
-* Atrybut `StorageAccount` stosowany do funkcji.
-* Atrybut `StorageAccount` stosowany do klasy.
+* `BlobTrigger` Atrybutu `Connection` właściwości.
+* `StorageAccount` Zastosowany do tego samego parametru jako `BlobTrigger` atrybutu.
+* `StorageAccount` Zastosowany do funkcji.
+* `StorageAccount` Zastosowany do klasy.
 * Domyślne konto magazynu dla aplikacji funkcji (ustawienie aplikacji "AzureWebJobsStorage").
 
 # <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
@@ -320,14 +320,14 @@ Atrybut `@BlobTrigger` służy do zapewniania dostępu do obiektu BLOB, który w
 
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `BlobTrigger` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `BlobTrigger` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiony na `blobTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
-|**direction** | Nie dotyczy | Musi być ustawiony na `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. Wyjątki są zanotowane w sekcji [użycie](#trigger---usage) . |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji. |
-|**path** | **Blobpath ścieżką** |[Kontener](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) do monitorowania.  Może być [wzorcem nazw obiektów BLOB](#trigger---blob-name-patterns). |
+|**type** | nd. | Musi być równa `blobTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | nd. | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. Wyjątki są zanotowane w sekcji [użycie](#trigger---usage) . |
+|**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji. |
+|**path** | **BlobPath** |[Kontener](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) do monitorowania.  Może być [wzorcem nazw obiektów BLOB](#trigger---blob-name-patterns). |
 |**połączenia** | **Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem usługi BLOB Storage](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -433,7 +433,7 @@ Metadane nie są dostępne w języku Java.
 
 Azure Functions przechowuje potwierdzenia obiektów BLOB w kontenerze o nazwie *Azure-WebJobs-hosty* na koncie usługi Azure Storage dla aplikacji funkcji (zdefiniowanej przez ustawienie aplikacji `AzureWebJobsStorage`). Potwierdzenie obiektu BLOB zawiera następujące informacje:
 
-* Funkcja wyzwalana (" *&lt;> nazwy aplikacji funkcji*. Obowiązki. *nazwa funkcji&lt;>* ", na przykład:" MyFunctionApp. Functions. CopyBlob ")
+* Funkcja wyzwalana (" *&lt;> nazwy aplikacji funkcji*. Obowiązki. *nazwa funkcji&lt;* ", na przykład:" MyFunctionApp. Functions. CopyBlob ")
 * Nazwa kontenera
 * Typ obiektu BLOB ("BlockBlob" lub "PageBlob")
 * Nazwa obiektu BLOB
@@ -447,7 +447,7 @@ Gdy funkcja wyzwalacza obiektu BLOB kończy się niepowodzeniem dla danego obiek
 
 W przypadku niepowodzenia wszystkich 5 prób Azure Functions dodaje komunikat do kolejki magazynu o nazwie *WebJobs-blobtrigger-trujące*. Komunikat w kolejce dla trujących obiektów BLOB jest obiektem JSON, który zawiera następujące właściwości:
 
-* FunctionId (w formacie *&lt;> Nazwa aplikacji funkcji*. Obowiązki. *nazwa funkcji&lt;>* )
+* FunctionId (w formacie *&lt;> Nazwa aplikacji funkcji*. Obowiązki. *nazwa funkcji&lt;* )
 * Blobtype ("BlockBlob" lub "PageBlob")
 * NazwaKontenera
 * BlobName
@@ -529,7 +529,7 @@ W pliku *Function. JSON* Właściwość `queueTrigger` Metadata służy do okre�
 }
 ```
 
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -578,7 +578,7 @@ W pliku *Function. JSON* Właściwość `queueTrigger` Metadata służy do okre�
 }
 ```
 
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -628,7 +628,7 @@ W pliku *Function. JSON* Właściwość `queueTrigger` Metadata służy do okre�
 }
 ```
 
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Oto kod języka Python:
 
@@ -733,7 +733,7 @@ public static void Run(
 }
 ```
 
-Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz [wyzwalacz-atrybuty](#trigger---attributes).
+Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz [wyzwalacza — atrybuty](#trigger---attributes).
 
 # <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
@@ -755,16 +755,16 @@ Atrybut `@BlobInput` umożliwia dostęp do obiektu BLOB, który wyzwolił funkcj
 
 ## <a name="input---configuration"></a>Dane wejściowe — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Blob` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Blob` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiony na `blob`. |
-|**direction** | Nie dotyczy | Musi być ustawiony na `in`. Wyjątki są zanotowane w sekcji [użycie](#input---usage) . |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji.|
-|**path** |**Blobpath ścieżką** | Ścieżka do obiektu BLOB. |
+|**type** | nd. | Musi być równa `blob`. |
+|**direction** | nd. | Musi być równa `in`. Wyjątki są zanotowane w sekcji [użycie](#input---usage) . |
+|**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji.|
+|**path** |**BlobPath** | Ścieżka do obiektu BLOB. |
 |**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, które zawiera [Parametry połączenia magazynu](../storage/common/storage-configure-connection-string.md) , które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem magazynu obsługującym tylko obiekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|Nie dotyczy | **Dostęp** | Wskazuje, czy będą odczytywane i zapisywane. |
+|nd. | **Dostęp** | Wskazuje, czy będą odczytywane i zapisywane. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -885,7 +885,7 @@ W pliku *Function. JSON* Właściwość `queueTrigger` Metadata służy do okre�
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -934,7 +934,7 @@ W pliku *Function. JSON* Właściwość `queueTrigger` Metadata służy do okre�
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -984,7 +984,7 @@ W pliku *Function. JSON* Właściwość `queueTrigger` Metadata służy do okre�
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Oto kod języka Python:
 
@@ -1118,20 +1118,20 @@ Atrybut `@BlobOutput` umożliwia dostęp do obiektu BLOB, który wyzwolił funkc
 
 Aby uzyskać pełny przykład, zobacz [przykład danych wyjściowych](#output---example).
 
-Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz [wyzwalacz-atrybuty](#trigger---attributes).
+Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz [wyzwalacza — atrybuty](#trigger---attributes).
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Blob` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Blob` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiony na `blob`. |
-|**direction** | Nie dotyczy | Musi być ustawiony na `out` dla powiązania danych wyjściowych. Wyjątki są zanotowane w sekcji [użycie](#output---usage) . |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji.  Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.|
-|**path** |**Blobpath ścieżką** | Ścieżka do kontenera obiektów BLOB. |
+|**type** | nd. | Musi być równa `blob`. |
+|**direction** | nd. | Musi być ustawiony na `out` dla powiązania danych wyjściowych. Wyjątki są zanotowane w sekcji [użycie](#output---usage) . |
+|**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje obiekt BLOB w kodzie funkcji.  Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.|
+|**path** |**BlobPath** | Ścieżka do kontenera obiektów BLOB. |
 |**połączenia** |**Połączenie**| Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe funkcji szuka ustawienia aplikacji o nazwie "AzureWebJobsMyStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.<br><br>Parametry połączenia muszą być kontem magazynu ogólnego przeznaczenia, a nie [kontem magazynu obsługującym tylko obiekty blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|Nie dotyczy | **Dostęp** | Wskazuje, czy będą odczytywane i zapisywane. |
+|nd. | **Dostęp** | Wskazuje, czy będą odczytywane i zapisywane. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1166,7 +1166,7 @@ Atrybut `@BlobOutput` umożliwia dostęp do obiektu BLOB, który wyzwolił funkc
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Powiązanie |  Dokumentacja |
+| Powiązanie |  Informacje ogólne |
 |---|---|
 | Obiekt blob | [Kody błędów obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Obiekt BLOB, tabela, kolejka |  [Kody błędów magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -1174,7 +1174,7 @@ Atrybut `@BlobOutput` umożliwia dostęp do obiektu BLOB, który wyzwolił funkc
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+* [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
 
 <!---
 > [!div class="nextstepaction"]

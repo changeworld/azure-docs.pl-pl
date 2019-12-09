@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: df488c2a3033015175943f7d092beaaa41e34046
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260826"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935891"
 ---
 Na razie Ultra dyski mają dodatkowe ograniczenia, są następujące:
 
@@ -32,8 +32,8 @@ Na razie Ultra dyski mają dodatkowe ograniczenia, są następujące:
     - FSv2
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- Nie każdy rozmiar maszyny wirtualnej jest dostępny w każdym obsługiwanym regionie przy użyciu Ultra Disks.
-- Są dostępne tylko jako dyski danych i obsługują tylko rozmiar sektora fizycznego 4 KB  
+- Nie każdy rozmiar maszyny wirtualnej jest dostępny w każdym obsługiwanym regionie za pomocą Ultra disks
+- Są dostępne tylko jako dyski danych i obsługują tylko rozmiar sektora fizycznego 4 KB. Ze względu na rozmiar sektora macierzystego 4K dla Ultra dysku istnieją aplikacje, które nie będą zgodne z Ultra Disks. Przykładem może być Oracle Database, który wymaga wersji 12,2 lub nowszej, aby można było obsługiwać Ultra Disks.  
 - Można utworzyć tylko jako puste dyski  
 - Nie obsługują jeszcze migawek dysków, obrazów maszyn wirtualnych, zestawów dostępności i usługi Azure Disk Encryption
 - Nie należy jeszcze obsługiwać integracji z programem Azure Backup lub Azure Site Recovery

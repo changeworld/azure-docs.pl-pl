@@ -2,24 +2,24 @@
 title: Kopiuj dane z i do usługi Salesforce
 description: Dowiedz się, jak skopiować dane z usługi Salesforce do obsługiwanych magazynów danych ujścia lub z obsługiwanych magazynów danych źródłowych do usługi Salesforce za pomocą działania kopiowania w potoku usługi Fabryka danych.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: de14d62f0356a8edf37f23fc85fb974dbca4e9a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89ce253806b4a39b393c74ea96ddc2523d338d84
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895588"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926251"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Skopiuj dane z i do usługi Salesforce przy użyciu Azure Data Factory
+
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-salesforce-connector.md)
 > * [Bieżąca wersja](connector-salesforce.md)

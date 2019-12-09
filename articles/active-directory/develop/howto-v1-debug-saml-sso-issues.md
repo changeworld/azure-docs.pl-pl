@@ -1,108 +1,105 @@
 ---
-title: Debugowanie opartej na SAML logowania jednokrotnego — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory.
+title: Debugowanie logowania jednokrotnego opartego na protokole SAML Azure Active Directory | Microsoft Docs
+description: Debuguj Logowanie jednokrotne oparte na protokole SAML do aplikacji w Azure Active Directory.
 services: active-directory
 author: rwike77
-documentationcenter: na
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: luleon, hirsin, smalser
+ms.reviewer: luleon, hirsin, paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4331acf639af90448b5508e3487f4979e9b82c45
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 26c3502567df7776e106ae9301aa7ba315cc12cc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482726"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917611"
 ---
-# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debugowanie opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure Active Directory
+# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuguj Logowanie jednokrotne oparte na protokole SAML do aplikacji w Azure Active Directory
 
-Dowiedz się, jak Znajdowanie i eliminowanie [logowanie jednokrotne](../manage-apps/what-is-single-sign-on.md) problemów dotyczących aplikacji w usłudze Azure Active Directory (Azure AD), które obsługują [Assertion Markup języka SAML (Security) w wersji 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
+Dowiedz się, jak znaleźć i naprawić problemy związane z [logowaniem](../manage-apps/what-is-single-sign-on.md) jednokrotnym dla aplikacji w usłudze Azure Active Directory (Azure AD) obsługującej [SAML (SAML) 2,0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Zaleca się zainstalowanie [Moje zabezpieczenia aplikacji logowania rozszerzenia](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). To rozszerzenie przeglądarki ułatwia zbieranie żądanie języka SAML i SAML odpowiedzi informacje potrzebne do rozwiązywania problemów związanych z logowania jednokrotnego. W przypadku, gdy nie można zainstalować rozszerzenia, w tym artykule pokazano, jak rozwiązać problemy z usługą i bez zainstalowane rozszerzenie.
+Zalecamy zainstalowanie [rozszerzenia moje aplikacje bezpieczne logowanie](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). To rozszerzenie przeglądarki ułatwia zbieranie informacji o żądaniach SAML i odpowiedzi SAML, które są potrzebne do rozwiązywania problemów z logowaniem jednokrotnym. Jeśli nie można zainstalować rozszerzenia, w tym artykule opisano sposób rozwiązywania problemów z zainstalowanym rozszerzeniem i bez niego.
 
-Aby pobrać i zainstalować Moje zabezpieczenia aplikacji logowania rozszerzenia, użyj jednej z poniższych linków.
+Aby pobrać i zainstalować rozszerzenie moje aplikacje bezpieczne logowanie, użyj jednego z poniższych linków.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
-## <a name="test-saml-based-single-sign-on"></a>Testowanie opartej na SAML logowania jednokrotnego
+## <a name="test-saml-based-single-sign-on"></a>Testowanie logowania jednokrotnego opartego na protokole SAML
 
-Aby przetestować opartej na SAML logowania jednokrotnego między usługą Azure AD i aplikacja docelowa:
+Aby przetestować Logowanie jednokrotne oparte na języku SAML między usługą Azure AD i aplikacją docelową:
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny lub innych administratorów, która dysponuje autoryzacją do zarządzania aplikacjami.
-1. W bloku po lewej stronie wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **aplikacje dla przedsiębiorstw**. 
-1. Z listy aplikacji dla przedsiębiorstw, wybierz aplikację, dla której chcesz przetestować logowanie jednokrotne, a następnie z listy opcji po lewej stronie wybierz **logowanie jednokrotne**.
-1. Aby otworzyć opartej na SAML logowania testowania jednokrotne, przejdź do **Test rejestracji jednokrotnej** (krok 5). Jeśli **testu** przycisk jest nieaktywna, musisz wypełnić i Zapisz wymaganych atrybutów najpierw **podstawową konfigurację protokołu SAML** sekcji.
-1. W **Test rejestracji jednokrotnej** bloku, użyj firmowych poświadczeń do logowania do aplikacji docelowej. Można zalogować się jako bieżący użytkownik lub innego użytkownika. Jeśli logujesz się jako inny użytkownik monit wyświetli monit do uwierzytelnienia.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny lub inny administrator, który ma uprawnienia do zarządzania aplikacjami.
+1. W bloku po lewej stronie wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **aplikacje dla przedsiębiorstw**. 
+1. Z listy aplikacji dla przedsiębiorstw wybierz aplikację, dla której chcesz przetestować Logowanie jednokrotne, a następnie z opcji po lewej stronie wybierz opcję **Logowanie jednokrotne**.
+1. Aby otworzyć środowisko testowania logowania jednokrotnego opartego na protokole SAML, przejdź do pozycji **Testuj Logowanie jednokrotne** (krok 5). Jeśli przycisk **test** jest wyszarzony, należy wypełnić i zapisać wymagane atrybuty najpierw w sekcji **Podstawowa konfiguracja SAML** .
+1. W bloku **Testuj logowanie** jednokrotne Użyj poświadczeń firmowych, aby zalogować się do aplikacji docelowej. Możesz zalogować się jako bieżący użytkownik lub inny użytkownik. Jeśli zalogujesz się jako inny użytkownik, zostanie wyświetlony monit z prośbą o uwierzytelnienie.
 
-    ![Zrzut ekranu przedstawiający test strony logowania jednokrotnego SAML](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
+    ![Zrzut ekranu przedstawiający stronę testowego logowania jednokrotnego SAML](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
 
-Jeśli pomyślnie zalogowano w test został przekazany. W tym przypadku usługi Azure AD wystawiony token odpowiedzi SAML do aplikacji. Aplikacja używa tokenu SAML pomyślnie zalogować się.
+Po pomyślnym zalogowaniu test zakończył się powodzeniem. W takim przypadku usługa Azure AD wystawiła token odpowiedzi SAML do aplikacji. Aplikacja użyła tokenu SAML w celu pomyślnego zalogowania się.
 
-Jeśli błąd na stronie rejestracji w firmie lub strony aplikacji, użyj jednej z następnych sekcjach, aby naprawić błąd.
+Jeśli wystąpi błąd na stronie logowania firmy lub stronie aplikacji, użyj jednej z następnych sekcji, aby rozwiązać ten problem.
 
-## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Napraw błąd logowania na stronie logowania firmy
+## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Usuń błąd logowania na stronie logowania w firmie
 
-Podczas próby Zaloguj się na Twojej firmy strony logowania podobną do poniższego przykładu mogą pojawiać się błąd.
+Podczas próby zalogowania się na stronie logowania do firmy może zostać wyświetlony komunikat o błędzie podobny do poniższego.
 
-![Przykład: Wystąpił błąd na stronie logowania firmy](./media/howto-v1-debug-saml-sso-issues/error.png)
+![Przykład pokazujący błąd na stronie logowania w firmie](./media/howto-v1-debug-saml-sso-issues/error.png)
 
-Aby debugować ten błąd, konieczne jest komunikat o błędzie i żądanie języka SAML. Zabezpieczanie aplikacji My logowania rozszerzenie automatycznie zbiera te informacje i zawiera wskazówki dotyczące rozwiązania w usłudze Azure AD.
+Aby debugować ten błąd, potrzebny jest komunikat o błędzie i żądanie SAML. Rozszerzenie moje aplikacje bezpieczne logowanie automatycznie zbiera te informacje i wyświetla wskazówki dotyczące rozwiązywania problemów w usłudze Azure AD.
 
-### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Aby rozwiązać błąd logowania za pomocą Secure Moje aplikacje logowania rozszerzenia zainstalowane
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Aby rozwiązać błąd logowania z zainstalowanym rozszerzeniem moje aplikacje bezpieczne logowanie
 
-1. Gdy wystąpi błąd, rozszerzenie przekieruje Cię do usługi Azure AD **Test rejestracji jednokrotnej** bloku.
-1. Na **Test rejestracji jednokrotnej** bloku wybierz **pobrać żądanie języka SAML**.
-1. Powinien zostać wyświetlony określonym rozwiązania wskazówki opierają się na błąd i wartościami w żądaniu języka SAML.
-1. Zostanie wyświetlony **go naprawić** przycisku do automatycznego aktualizowania konfiguracji w usłudze Azure AD, aby rozwiązać ten problem. Jeśli nie widzisz tego przycisku, następnie problem logowania nie jest z powodu błędnej konfiguracji w usłudze Azure AD.
+1. Gdy wystąpi błąd, rozszerzenie przekierowuje z powrotem do bloku **rejestracji** jednokrotnej usługi Azure AD.
+1. W bloku **Testuj logowanie** jednokrotne wybierz pozycję **Pobierz żądanie SAML**.
+1. W zależności od błędu i wartości w żądaniu SAML powinny zostać wyświetlone wskazówki dotyczące rozwiązywania.
+1. Zobaczysz przycisk **napraw** , aby automatycznie zaktualizować konfigurację w usłudze Azure AD w celu rozwiązania problemu. Jeśli ten przycisk nie jest wyświetlany, oznacza to, że problem z logowaniem nie jest spowodowany nieprawidłową konfiguracją w usłudze Azure AD.
 
-Jeśli rozwiązanie jest dostępne w błędu logowania, zaleca się, użyj pola tekstowego opinii na firmę Microsoft.
+Jeśli nie podano rozwiązania dla błędu logowania, sugerujemy użycie pola tekstowego opinii do poinformowania nas.
 
-### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Aby rozwiązać problem bez konieczności instalowania Moje zabezpieczenia aplikacji logowania rozszerzenia
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Aby rozwiązać ten problem bez instalowania rozszerzenia moje aplikacje bezpieczne logowanie
 
-1. Kopiuj komunikat o błędzie w prawym dolnym rogu strony. Zawiera komunikat o błędzie:
-    - Identyfikator korelacji i sygnaturę czasową. Te wartości są ważne podczas tworzenia zgłoszenia do pomocy technicznej firmy Microsoft, ponieważ one pomóc inżynierom, aby zidentyfikować problem i uzyskać dokładne rozwiązania problemu.
-    - Oświadczenie identyfikuje główną przyczynę problemu.
-1. Wróć do usługi Azure AD i Znajdź **Test rejestracji jednokrotnej** bloku.
-1. W polu tekstowym powyżej **Uzyskaj wskazówki dotyczące rozwiązywania**, Wklej komunikat o błędzie.
-1. Kliknij przycisk **zapoznaj się ze wskazówkami rozpoznawania** do wyświetlenia kroki dotyczące rozwiązania tego problemu. Wytyczne mogą wymagać informacji z żądania SAML lub odpowiedzi SAML. Jeśli nie używasz Moje zabezpieczenia aplikacji logowania rozszerzenia, to narzędzie może być konieczne takich jak [Fiddler](https://www.telerik.com/fiddler) można pobrać żądanie języka SAML i odpowiedzi.
-1. Sprawdź, czy miejsce docelowe w żądaniu języka SAML odpowiada SAML pojedynczego logowania jednokrotnego adresu URL usługi uzyskany z usługi Azure AD.
-1. Sprawdź, czy wystawcy żądania języka SAML jest taki sam identyfikator, które zostały skonfigurowane dla aplikacji w usłudze Azure AD. Usługa Azure AD używa wystawca do znajdowania aplikacji w Twoim katalogu.
-1. Sprawdź, czy AssertionConsumerServiceURL jest, gdy aplikacja oczekuje otrzymać SAML token z usługi Azure AD. Wartość tę można skonfigurować w usłudze Azure AD, ale nie jest to konieczne, jeśli jest on częścią żądania języka SAML.
+1. Skopiuj komunikat o błędzie w prawym dolnym rogu strony. Komunikat o błędzie zawiera:
+    - Identyfikator korelacji i sygnatura czasowa. Te wartości są ważne podczas tworzenia przypadku pomocy technicznej w firmie Microsoft, ponieważ pomagają inżynierom identyfikować Twój problem i zapewnić dokładne rozwiązanie problemu.
+    - Instrukcja identyfikująca główną przyczynę problemu.
+1. Wróć do usługi Azure AD i Znajdź blok **Testuj logowanie** jednokrotne.
+1. W polu tekstowym powyżej **Uzyskaj wskazówki dotyczące rozwiązywania problemów**wklej komunikat o błędzie.
+1. Kliknij przycisk **Uzyskaj wskazówki dotyczące rozwiązywania** , aby wyświetlić kroki rozwiązywania problemu. Wskazówki mogą wymagać informacji z żądania SAML lub odpowiedzi SAML. Jeśli nie używasz rozszerzenia moje aplikacje bezpieczne logowanie, może być potrzebne narzędzie, takie jak [programu Fiddler](https://www.telerik.com/fiddler) , aby pobrać żądanie i odpowiedź SAML.
+1. Upewnij się, że miejsce docelowe w żądaniu SAML odpowiada adresowi URL usługi logowania jednokrotnego protokołu SAML uzyskanej z usługi Azure AD.
+1. Sprawdź, czy wystawca w żądaniu SAML ma ten sam identyfikator, który został skonfigurowany dla aplikacji w usłudze Azure AD. Usługa Azure AD używa wystawcy, aby znaleźć aplikację w katalogu.
+1. Sprawdź, czy AssertionConsumerServiceURL jest miejscem, w którym aplikacja oczekuje na otrzymanie tokenu SAML z usługi Azure AD. Tę wartość można skonfigurować w usłudze Azure AD, ale nie jest to wymagane, jeśli jest ona częścią żądania języka SAML.
 
 
-## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Napraw błąd logowania na stronie aplikacji
+## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Usuń błąd logowania na stronie aplikacji
 
-Może zalogować się pomyślnie, a następnie zobacz błąd, na stronie aplikacji. Dzieje się tak, gdy usługi Azure AD wystawiony token do aplikacji, ale aplikacja nie akceptuje odpowiedzi.
+Możesz zalogować się pomyślnie, a następnie na stronie aplikacji zostanie wyświetlony komunikat o błędzie. Dzieje się tak, gdy usługa Azure AD wystawił token do aplikacji, ale aplikacja nie akceptuje odpowiedzi.
 
 Aby naprawić błąd, wykonaj następujące kroki:
 
-1. Jeśli aplikacja znajduje się w galerii usługi Azure AD, sprawdź, czy wykonano wszystkie kroki integracji aplikacji z usługą Azure AD. Aby uzyskać instrukcje dotyczące integracji aplikacji, zobacz [listę samouczki integracji aplikacji SaaS](../saas-apps/tutorial-list.md).
-1. Pobrać odpowiedzi SAML.
-    - Jeśli zainstalowano rozszerzenie Secure Moje aplikacje logowania, z **Test rejestracji jednokrotnej** bloku kliknij **pobrać odpowiedzi SAML**.
-    - Jeśli rozszerzenie nie jest zainstalowany, użyj narzędzia takiego jak [Fiddler](https://www.telerik.com/fiddler) można pobrać odpowiedzi SAML.
-1. Zwróć uwagę, te elementy w tokenie języka SAML odpowiedzi:
-   - Unikatowy identyfikator użytkownika, wartość NameID i format
-   - Oświadczeń wystawionych w tokenie
+1. Jeśli aplikacja znajduje się w galerii usługi Azure AD, sprawdź, czy zostały wykonane wszystkie czynności związane z integracją aplikacji z usługą Azure AD. Aby znaleźć instrukcje dotyczące integracji dla aplikacji, zobacz [listę samouczków integracji aplikacji SaaS](../saas-apps/tutorial-list.md).
+1. Pobieranie odpowiedzi SAML.
+    - Jeśli zainstalowano rozszerzenie moje aplikacje bezpieczne logowanie w bloku **Testuj logowanie** jednokrotne, kliknij pozycję **Pobierz odpowiedź SAML**.
+    - Jeśli rozszerzenie nie jest zainstalowane, użyj narzędzia, takiego jak [programu Fiddler](https://www.telerik.com/fiddler) , aby pobrać odpowiedź SAML.
+1. Zwróć uwagę na te elementy w tokenie odpowiedzi SAML:
+   - Unikatowy identyfikator użytkownika NameID wartość i format
+   - Oświadczenia wystawione w tokenie
    - Certyfikat używany do podpisywania tokenu.
 
-     Aby uzyskać więcej informacji na temat odpowiedzi SAML, zobacz [protokołu SAML rejestracji jednokrotnej](single-sign-on-saml-protocol.md).
+     Aby uzyskać więcej informacji na temat odpowiedzi SAML, zobacz Logowanie jednokrotne [protokołu SAML](single-sign-on-saml-protocol.md).
 
-1. Po przejrzeniu odpowiedzi SAML, zapoznaj się [błąd na stronie aplikacji po zalogowaniu się](../manage-apps/application-sign-in-problem-application-error.md) wskazówki na temat sposobu rozwiązania problemu. 
-1. Jeśli nadal nie możesz zalogować się pomyślnie, możesz poprosić z dostawcą aplikacji co to jest brak odpowiedzi SAML.
+1. Po przejrzeniu odpowiedzi SAML należy zapoznać się z tematem [błąd na stronie aplikacji po zalogowaniu się w](../manage-apps/application-sign-in-problem-application-error.md) celu uzyskania wskazówek dotyczących sposobu rozwiązania problemu. 
+1. Jeśli nadal nie możesz zalogować się pomyślnie, możesz polecić dostawcę aplikacji, czego brakuje w odpowiedzi SAML.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, logowania jednokrotnego działa do aplikacji, można wykonać następujące akcje [zautomatyzować użytkownika aprowizację i anulowanie obsługi do aplikacji SaaS](../manage-apps/user-provisioning.md) lub [Rozpoczynanie pracy przy użyciu dostępu warunkowego](../conditional-access/app-based-conditional-access.md).
+Teraz, gdy Logowanie jednokrotne działa w aplikacji, można [zautomatyzować Inicjowanie obsługi użytkowników i anulowanie aprowizacji do aplikacji SaaS](../manage-apps/user-provisioning.md) lub rozpocząć [pracę z dostępem warunkowym](../conditional-access/app-based-conditional-access.md).

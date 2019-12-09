@@ -1,23 +1,23 @@
 ---
-title: Infrastruktura Integration Runtime w usłudze Azure Data Factory
+title: Integration Runtime
 description: Więcej informacji na temat infrastruktury Integration Runtime w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/31/2019
-ms.author: abnarain
-ms.openlocfilehash: 0b137edbfb5ca439d4ba15614225ec0973511763
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218808"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927151"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
@@ -48,12 +48,12 @@ Na poniższym diagramie przedstawiono, jak różnych infrastruktur Integration R
 
 ![Różne typy infrastruktur Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Azure Integration Runtime
+## <a name="azure-integration-runtime"></a>Środowisko uruchomieniowe integracji Azure
 Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
 - Uruchamianie przepływów danych na platformie Azure 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze
-- Wysyłanie następujących działań przekształcania w sieci publicznej: działania notesu/jar/Python, działania Hive usługi HDInsight, działania w usłudze HDInsight, działanie usługi HDInsight MapReduce, działanie usługi HDInsight Spark, działanie usługi HDInsight streaming, maszyna Uczenie działania wykonywania wsadowego, Machine Learning aktualizowania działań związanych z zasobami, działania procedury składowanej, Data Lake Analytics działania U-SQL, działania niestandardowego platformy .NET, działania sieci Web, działania wyszukiwania oraz działania pobierania metadanych.
+- Wysyłanie następujących działań przekształcania w sieci publicznej: działania notesu/jar/Python, działania Hive usługi HDInsight, działania dotyczącego usługi HDInsight, działania dotyczące usługi HDInsight, działania usługi HDInsight Spark, działania usługi HDInsight Streaming Machine Learning, działania związanego z Data Lake Analytics Machine Learning wykonywaniem wsadowym programu .NET, działania w sieci Web, działania wyszukiwania i działania pobierania metadanych.
 
 ### <a name="azure-ir-network-environment"></a>Środowisko sieciowe IR Azure
 Azure Integration Runtime obsługuje łączenie z magazynami danych i usługami obliczeniowymi za pomocą dostępnych publicznie punktów końcowych. Zastosowanie infrastruktury Integration Runtime (Self-hosted) w środowisku sieci wirtualnej Azure.
@@ -70,7 +70,7 @@ Informacje na temat tworzenia i konfigurowania infrastruktury Azure IR można zn
 > [!NOTE] 
 > Środowisko Azure Integration Runtime ma właściwości dotyczące środowiska uruchomieniowego przepływu danych, które definiuje podstawową infrastrukturę obliczeniową, która będzie używana do uruchamiania przepływów danych. 
 
-## <a name="self-hosted-integration-runtime"></a>Infrastruktura Integration Runtime (Self-hosted)
+## <a name="self-hosted-integration-runtime"></a>Własne środowisko Integration Runtime
 Infrastruktura IR (Self-hosted) oferuje następujące możliwości:
 
 - Uruchamianie działania kopiowania między magazynami danych w chmurze i magazynem danych w sieci prywatnej.
@@ -121,7 +121,7 @@ Jeśli zdecydujesz się użyć **automatycznie rozwiązywania Azure IR** , któr
 
 - W przypadku działania kopiowania usługa ADF automatycznie spróbuje jak najlepiej wykryć magazyn danych ujścia i źródła w celu wybrania najlepszej lokalizacji w tym samym regionie (jeśli jest dostępna) lub w najbliższym regionie w obrębie tego samego obszaru geograficznego. Jeśli tych obiektów nie da się wykryć, zostanie użyty region fabryki danych.
 
-- W przypadku wyszukiwania/GetMetadata/usuwania działania (znanego również jako działania potokowe), wysyłania działań transformacji (nazywanych również działaniami zewnętrznymi) oraz operacji tworzenia (połączenie testowe, lista folderów przeglądania i lista tabel, Podgląd danych), ADF program użyje środowiska IR w regionie fabryki danych.
+- W przypadku wyszukiwania/GetMetadata/usuwania działania (znanych także jako działania potoku), wysyłania działań transformacji (znanych także jako działania zewnętrzne) i operacji tworzenia (połączenie testowe, lista folderów przeglądania i lista tabel, Podgląd danych) funkcja ADF użyje środowiska IR w regionie usługi Data Factory.
 
 - W przypadku przepływu danych funkcja ADF będzie używać środowiska IR w regionie usługi Data Factory. 
 
@@ -142,8 +142,8 @@ W przypadku zastosowania do wykonania przenoszenia danych, środowisko IR (Self-
 Wybór odpowiedniej lokalizacji dla środowiska IR Azure-SSIS jest kluczowy dla osiągnięcia wysokiej wydajności obciążeń wyodrębnianie-przekształcanie-ładowanie (ETL).
 
 - Lokalizacja Azure-SSIS IR nie musi być taka sama jak lokalizacja fabryki danych, ale powinna być taka sama jak lokalizacja własnego serwera Azure SQL Database/Managed instance, gdzie SSISDB ma być hostowana. Dzięki temu środowisko IR Azure-SSIS może z łatwością uzyskać dostęp do bazy SSISDB bez wytwarzania dużego ruchu między różnymi lokalizacjami.
-- Jeśli nie masz istniejącego serwera wystąpienia Azure SQL Database/zarządzanego do hostowania SSISDB, ale masz lokalne źródła danych/miejsca docelowe, należy utworzyć nowy serwer wystąpienia Azure SQL Database/zarządzanego w tej samej lokalizacji sieci wirtualnej połączonej z usługą Sieć lokalna.  W ten sposób można utworzyć Azure-SSIS IR przy użyciu nowego serwera wystąpienia Azure SQL Database/zarządzanego i dołączenia do tej sieci wirtualnej, a wszystko to w tej samej lokalizacji, co skutecznie minimalizuje ruchy danych w różnych lokalizacjach.
-- Jeśli lokalizacja istniejącego serwera Azure SQL Database/zarządzanego wystąpienia, gdzie SSISDB jest hostowana, nie jest taka sama jak lokalizacja sieci wirtualnej podłączonej do sieci lokalnej, najpierw utwórz Azure-SSIS IR przy użyciu istniejącej Azure SQL Database/ Serwer wystąpienia zarządzanego i przyłączanie innej sieci wirtualnej w tej samej lokalizacji, a następnie Konfigurowanie sieci wirtualnej do połączenia sieci wirtualnej między różnymi lokalizacjami.
+- Jeśli nie masz istniejącego serwera wystąpienia Azure SQL Database/zarządzanego do hostowania SSISDB, ale masz lokalne źródła danych/miejsca docelowe, należy utworzyć nowy serwer wystąpienia Azure SQL Database/zarządzanego w tej samej lokalizacji sieci wirtualnej podłączonej do sieci lokalnej.  W ten sposób można utworzyć Azure-SSIS IR przy użyciu nowego serwera wystąpienia Azure SQL Database/zarządzanego i dołączenia do tej sieci wirtualnej, a wszystko to w tej samej lokalizacji, co skutecznie minimalizuje ruchy danych w różnych lokalizacjach.
+- Jeśli lokalizacja istniejącego serwera Azure SQL Database/zarządzanego wystąpienia, gdzie SSISDB jest hostowana, nie jest taka sama jak lokalizacja sieci wirtualnej podłączonej do sieci lokalnej, najpierw utwórz Azure-SSIS IR przy użyciu istniejącego serwera wystąpienia Azure SQL Database/zarządzanego i przyłączania do innej sieci wirtualnej w tej samej lokalizacji, a następnie skonfiguruj sieć wirtualną do połączenia sieci wirtualnej między różnymi lokalizacjami.
 
 Na poniższym diagramie przedstawiono ustawienia lokalizacji usługi Data Factory i jej czasy uruchomienia integracji:
 

@@ -1,28 +1,25 @@
 ---
-title: Korzystanie z biblioteki Microsoft Authentication Library (MSAL) w chmurach narodowych — platforma tożsamości firmy Microsoft
+title: Korzystanie z MSAL w aplikacji w chmurze krajowej | Azure
+titleSuffix: Microsoft identity platform
 description: Biblioteka Microsoft Authentication Library (MSAL) umożliwia deweloperom aplikacji uzyskanie tokenów w celu wywołania zabezpieczonych interfejsów API sieci Web. Te interfejsy API sieci Web mogą być Microsoft Graph, inne interfejsy API firmy Microsoft, interfejsy API sieci Web partnera lub własny internetowy interfejs API. MSAL obsługuje wiele architektur aplikacji i platform.
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f1c73d89b0efc17e8f8836d080595927d500ad6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: f1d0d4511b95d56ae41bf9fbb1118318d8374bde
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481874"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916047"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Korzystanie z MSAL w środowisku chmury krajowej
 
@@ -32,7 +29,7 @@ Oprócz chmury Microsoft Worldwide Library, biblioteka uwierzytelniania firmy Mi
 
 W tym chmurę globalną usługa Azure Active Directory (Azure AD) jest wdrażana w następujących chmurach narodowych:  
 
-- Azure Government
+- Platforma Azure dla instytucji rządowych
 - Azure w Chinach — 21Vianet
 - Azure (Niemcy)
 
@@ -74,7 +71,7 @@ Aby włączyć aplikację MSAL. js dla chmur suwerennych:
 
 ### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.us/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.us/).
     
    Aby znaleźć Azure Portal punkty końcowe dla innych chmur narodowych, zobacz [punkty końcowe rejestracji aplikacji](authentication-national-cloud.md#app-registration-endpoints).
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120491"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913720"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje magazynu dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -60,8 +60,8 @@ Aby zdefiniować różne warstwy magazynu, takie jak Premium i Standard, można 
 
 W programie AKS są tworzone dwa początkowe StorageClasses:
 
-- *default* — używa usługi Azure Standard Storage do utworzenia dysku zarządzanego. Zasady odzyskiwania wskazują, że podstawowy dysk platformy Azure jest usuwany, gdy zostanie on usunięty.
-- *Managed-Premium* — używa usługi Azure Premium Storage do tworzenia dysku zarządzanego. Zasady odzyskiwania ponownie wskazują, że podstawowy dysk platformy Azure jest usuwany, gdy zostanie on usunięty.
+- *default* — używa usługi Azure Standard Storage do utworzenia dysku zarządzanego. Zasady odzyskiwania wskazują, że podstawowy dysk platformy Azure jest usuwany, gdy wolumin trwały, który go używał, został usunięty.
+- *Managed-Premium* — używa usługi Azure Premium Storage do tworzenia dysku zarządzanego. Zasady odzyskiwania ponownie wskazują, że podstawowy dysk platformy Azure jest usuwany, gdy wolumin trwały, który go używał, zostanie usunięty.
 
 Jeśli dla trwałego woluminu nie określono StorageClass, zostanie użyta wartość domyślna StorageClass. Należy zachować ostrożność podczas żądania woluminów trwałych, aby korzystały z odpowiedniego magazynu, którego potrzebujesz. Można utworzyć StorageClass do dodatkowych potrzeb przy użyciu `kubectl`. Poniższy przykład używa Managed Disks Premium i określa, że podstawowy dysk platformy Azure powinien zostać *zachowany* po usunięciu:
 

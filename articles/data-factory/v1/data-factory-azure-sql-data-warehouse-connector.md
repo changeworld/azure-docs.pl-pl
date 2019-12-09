@@ -4,21 +4,20 @@ description: Informacje o kopiowaniu danych do/z Azure SQL Data Warehouse przy u
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0306d891b327422383120ef322ece407829f7ed
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 18f30af4595a7679d5c3ef56763e992d54fae536
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683054"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928070"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopiowanie danych do i z Azure SQL Data Warehouse przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -31,7 +30,7 @@ ms.locfileid: "73683054"
 W tym artykule wyjaśniono, jak za pomocą działania kopiowania w Azure Data Factory przenieść dane do/z Azure SQL Data Warehouse. Jest on używany w artykule dotyczącym [przenoszenia danych](data-factory-data-movement-activities.md) , który przedstawia ogólne omówienie przenoszenia danych za pomocą działania kopiowania.
 
 > [!TIP]
-> Aby uzyskać najlepszą wydajność, należy użyć bazy danych na potrzeby ładowania do Azure SQL Data Warehouse. Szczegółowe informacje znajdują się w sekcji [use Base, aby załadować dane do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Aby zapoznać się z przewodnikiem dotyczącym przypadku użycia, zobacz [ładowanie 1 TB do Azure SQL Data Warehouse na 15 minut z Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+> Aby uzyskać najlepszą wydajność, ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase. [Przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) sekcja zawiera szczegółowe informacje. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 Dane **z Azure SQL Data Warehouse** można kopiować do następujących magazynów danych:
@@ -53,7 +52,7 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane do/z Azure
 
 Najprostszym sposobem utworzenia potoku, który kopiuje dane do/z Azure SQL Data Warehouse, jest użycie Kreatora kopiowania danych. Zapoznaj [się z samouczkiem: Załaduj dane do SQL Data Warehouse z Data Factory](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) , aby uzyskać szybki Przewodnik tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -66,13 +65,13 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania Data Factory jednostek specyficznych dla Azure SQL Data Warehouse:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla Azure SQL Data Warehouse połączonej usługi.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość Type musi mieć wartość: **AzureSqlDW** |Tak |
-| Przekształcon |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Data Warehouse dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Tak |
+| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Data Warehouse dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Tak |
 
 > [!IMPORTANT]
 > Skonfiguruj [zaporę Azure SQL Database](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) i serwer baz danych, aby [umożliwić usługom platformy Azure dostęp do serwera](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Ponadto, jeśli kopiujesz dane do Azure SQL Data Warehouse spoza platformy Azure, w tym z lokalnych źródeł danych za pomocą bramy usługi Data Factory, skonfiguruj odpowiedni zakres adresów IP dla maszyny wysyłającej dane do Azure SQL Data Warehouse.
@@ -82,7 +81,7 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja typeProperties jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** zestawu danych typu **AzureSqlDWTable** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | tableName |Nazwa tabeli lub widoku w bazie danych Azure SQL Data Warehouse, do której odwołuje się połączona usługa. |Tak |
 
@@ -97,11 +96,11 @@ Natomiast właściwości dostępne w sekcji typeProperties działania różnią 
 ### <a name="sqldwsource"></a>SqlDWSource
 Jeśli źródło jest typu **SqlDWSource**, w sekcji **typeProperties** są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: select * from MyTable. |Nie |
-| sqlReaderStoredProcedureName |Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. |Nazwa procedury składowanej. Ostatnia instrukcja SQL musi być instrukcją SELECT w procedurze składowanej. |Nie |
-| storedProcedureParameters |Parametry procedury składowanej. |Pary nazwa/wartość. Nazwy i wielkość liter parametrów muszą być zgodne z nazwami i wielkością liter parametrów procedury składowanej. |Nie |
+| sqlReaderStoredProcedureName |Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. |Nazwa procedury składowanej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
+| storedProcedureParameters |Parametry procedury składowanej. |Pary nazwa/wartość. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie |
 
 Jeśli **sqlReaderQuery** jest określony dla SqlDWSource, działanie Copy uruchamia to zapytanie względem źródła Azure SQL Data Warehouse, aby uzyskać dane.
 
@@ -143,17 +142,17 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** obsługuje następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Określ zapytanie dla działania kopiowania, które ma zostać wykonane, aby dane określonego wycinka zostały oczyszczone. Aby uzyskać szczegółowe informacje, zobacz [sekcję powtarzalność](#repeatability-during-copy). |Instrukcja zapytania. |Nie |
-| allowPolyBase |Wskazuje, czy należy używać elementu Base (jeśli ma zastosowanie) zamiast mechanizmu BULKINSERT. <br/><br/> **Użycie metody bazowej jest zalecanym sposobem ładowania danych do SQL Data Warehouse.** Aby uzyskać informacje o ograniczeniach i szczegółach, zobacz temat [Korzystanie z bazy Azure SQL Data Warehouse danych](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |True <br/>False (domyślnie) |Nie |
-| polyBaseSettings |Grupa właściwości, które można określić, gdy właściwość **allowPolybase** ma **wartość true**. |&nbsp; |Nie |
-| rejectValue |Określa liczbę lub procent wierszy, które można odrzucić przed zakończeniem wykonywania zapytania. <br/><br/>Dowiedz się więcej o opcjach odrzucenia bazy danych w sekcji **argumenty** w temacie [Create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (wartość domyślna), 1, 2,... |Nie |
+| allowPolyBase |Wskazuje, czy należy używać elementu Base (jeśli ma zastosowanie) zamiast mechanizmu BULKINSERT. <br/><br/> **Użycie metody bazowej jest zalecanym sposobem ładowania danych do SQL Data Warehouse.** Aby uzyskać informacje o ograniczeniach i szczegółach, zobacz temat [Korzystanie z bazy Azure SQL Data Warehouse danych](#use-polybase-to-load-data-into-azure-sql-data-warehouse) . |Prawda <br/>False (domyślnie) |Nie |
+| polyBaseSettings |Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. |&nbsp; |Nie |
+| rejectValue |Określa liczbę lub wartość procentowa wierszy, które można odrzucić przed zapytanie nie powiedzie się. <br/><br/>Dowiedz się więcej o opcjach odrzucenia bazy danych w sekcji **argumenty** w temacie [Create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (wartość domyślna), 1, 2,... |Nie |
 | rejectType |Określa, czy opcja rejectValue jest określona jako wartość literału, czy wartość procentowa. |Wartość (domyślnie), wartość procentowa |Nie |
-| rejectSampleValue |Określa liczbę wierszy do pobrania przed ponownym obliczeniem procentu odrzuconych wierszy. |1, 2,... |Tak, w przypadku **odrzucenia** **wartości procentowej** |
-| useTypeDefault |Określa, jak obsługiwać brakujące wartości w rozdzielanych plikach tekstowych, gdy baza danych pobiera dane z pliku tekstowego.<br/><br/>Więcej informacji na temat tej właściwości znajduje się w sekcji argumentów w temacie [Create External File Format (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Prawda, FAŁSZ (wartość domyślna) |Nie |
+| rejectSampleValue |Określa liczbę wierszy do pobrania przed ponownym obliczeniem procentu odrzuconych wierszy. |1, 2, … |Tak, w przypadku **odrzucenia** **wartości procentowej** |
+| useTypeDefault |Określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej na temat tej właściwości z sekcji argumentów w [tworzenie EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Prawda, FAŁSZ (wartość domyślna) |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie writeBatchSize |Liczba całkowita (liczba wierszy) |Nie (domyślnie: 10000) |
-| writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu. |czasu<br/><br/> Przykład: "00:30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu. |TimeSpan<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 #### <a name="sqldwsink-example"></a>Przykład SqlDWSink
 
@@ -164,8 +163,8 @@ GO
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Użyj wielobase, aby załadować dane do Azure SQL Data Warehouse
-Korzystanie z **[bazy danych Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** jest efektywnym sposobem ładowania dużych ilości dane do Azure SQL Data Warehouse z wysoką przepływność. Duży wzrost przepływności można zobaczyć przy użyciu bazy zamiast domyślnego mechanizmu BULKINSERT. Zobacz [Kopiuj numer referencyjny wydajności](data-factory-copy-activity-performance.md#performance-reference) ze szczegółowym porównaniem. Aby zapoznać się z przewodnikiem dotyczącym przypadku użycia, zobacz [ładowanie 1 TB do Azure SQL Data Warehouse na 15 minut z Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Ładowanie danych do usługi Azure SQL Data Warehouse przy użyciu technologii PolyBase
+Korzystanie z **[bazy danych Base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** jest efektywnym sposobem ładowania dużych ilości dane do Azure SQL Data Warehouse z wysoką przepływność. Duży wzrost przepływności można zobaczyć przy użyciu bazy zamiast domyślnego mechanizmu BULKINSERT. Zobacz [Kopiuj numer referencyjny wydajności](data-factory-copy-activity-performance.md#performance-reference) ze szczegółowym porównaniem. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 * Jeśli dane źródłowe są w **obiekcie blob platformy Azure lub Azure Data Lake Store**, a format jest zgodny z bazą danych, można bezpośrednio skopiować do Azure SQL Data Warehouse przy użyciu bazy danych Base. Aby uzyskać szczegółowe informacje, zobacz **[bezpośrednia kopia przy użyciu bazy Base](#direct-copy-using-polybase)** .
 * Jeśli źródłowy magazyn danych i format nie są pierwotnie obsługiwane przez bazę kodu, można użyć zamiast tego funkcji **[kopiowania etapowego](#staged-copy-using-polybase)** . Zapewnia również lepszą przepływność przez automatyczne Konwertowanie danych do formatu zgodnego z podstawą i przechowywanie danych w usłudze Azure Blob Storage. Następnie ładuje dane do SQL Data Warehouse.
@@ -201,7 +200,7 @@ Jeśli wymagania nie są spełnione, Azure Data Factory sprawdza ustawienia i au
    2. `nullValue` jest ustawiony na **pusty ciąg** ("") lub `treatEmptyAsNull` jest ustawiona na **wartość true**.
    3. `encodingName` jest ustawiona na **UTF-8**, która jest wartością **domyślną** .
    4. nie określono `escapeChar`, `quoteChar`, `firstRowAsHeader`i `skipLineCount`.
-   5. `compression` nie może być **kompresja**, **gzip**ani **Wklęśnięcie**.
+   5. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.
 
       ```JSON
       "typeProperties": {
@@ -260,7 +259,7 @@ Aby użyć tej funkcji, Utwórz [połączoną usługę Azure Storage](data-facto
 ## <a name="best-practices-when-using-polybase"></a>Najlepsze rozwiązania w przypadku korzystania z bazy
 Poniższe sekcje zawierają dodatkowe najlepsze rozwiązania dotyczące tych, które zostały wymienione w [najlepszych rozwiązaniach dotyczących Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-best-practices.md).
 
-### <a name="required-database-permission"></a>Wymagane uprawnienie do bazy danych
+### <a name="required-database-permission"></a>Uprawnienia wymagane bazy danych
 Aby można było użyć bazy danych Base, wymaga to, aby użytkownik użył do załadowania danych do SQL Data Warehouse ma [uprawnienie "kontrolka"](https://msdn.microsoft.com/library/ms191291.aspx) w docelowej lokalizacji. Jednym ze sposobów osiągnięcia tego celu jest dodanie tego użytkownika jako członka roli "db_owner". Dowiedz się, jak to zrobić, wykonując czynności opisane w [tej sekcji](../../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization).
 
 ### <a name="row-size-and-data-type-limitation"></a>Ograniczenie rozmiaru wiersza i typu danych
@@ -276,10 +275,10 @@ W poniższej tabeli przedstawiono przykłady, jak określić właściwość **Ta
 
 | Schemat bazy danych | Nazwa tabeli | TableName JSON — Właściwość |
 | --- | --- | --- |
-| dbo |MyTable |MyTable lub dbo. MyTable lub [dbo]. MyTable |
-| dbo1 |MyTable |dbo1. MyTable lub [dbo1]. MyTable |
-| dbo |My. Table |[My. Table] lub [dbo]. [My. Table] |
-| dbo1 |My. Table |[dbo1]. [My. Table] |
+| dbo |MyTable |MyTable lub dbo. MyTable lub [dbo]. [MyTable] |
+| dbo1 |MyTable |dbo1. MyTable lub [dbo1]. [MyTable] |
+| dbo |My.Table |[My.Table] lub [dbo].[My.Table] |
+| dbo1 |My.Table |[dbo1].[My.Table] |
 
 Jeśli zostanie wyświetlony następujący błąd, może to być problem z wartością określoną dla właściwości TableName. W tabeli podano prawidłowy sposób określania wartości właściwości TableName JSON.
 
@@ -302,34 +301,34 @@ Data Factory tworzy tabelę w magazynie docelowym z tą samą nazwą tabeli w ź
 
 | Typ kolumny SQL Database źródłowej | Docelowy typ kolumny programu SQL DW (ograniczenie rozmiaru) |
 | --- | --- |
-| ZAOKR | ZAOKR |
+| Int | Int |
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
 | bit | bit |
-| Dokładności | Dokładności |
-| przypada | Dokładności |
-| Float | Float |
-| finansowego | finansowego |
+| Decimal | Decimal |
+| Numeryczne | Decimal |
+| float | float |
+| money | money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Binarny | Binarny |
-| liczby | Varbinary (do 8000) |
-| Date | Date |
-| DateTime | DateTime |
+| Binary | Binary |
+| Varbinary | Varbinary (do 8000) |
+| Data | Data |
+| Data i godzina | Data i godzina |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| Czas | Czas |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Tekst | Varchar (do 8000) |
 | NText | NVarChar (do 4000) |
-| Image (Obraz) | VarBinary (do 8000) |
+| Obraz | VarBinary (do 8000) |
 | UniqueIdentifier | UniqueIdentifier |
-| delikatn | delikatn |
+| char | char |
 | NChar | NChar |
 | VarChar | VarChar (do 8000) |
 | NVarChar | NVarChar (do 4000) |
-| dokument | Varchar (do 8000) |
+| Xml | Varchar (do 8000) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -343,40 +342,40 @@ W przypadku przeniesienia danych do & z Azure SQL Data Warehouse są używane na
 
 Mapowanie jest takie samo jak [Mapowanie typu danych SQL Server ADO.NET](https://msdn.microsoft.com/library/cc716729.aspx).
 
-| Typ aparatu bazy danych SQL Server | Typ .NET Framework |
+| Typ aparatu bazy danych SQL Server | Typ programu .NET Framework |
 | --- | --- |
 | bigint |Int64 |
-| Binarny |Byte [] |
+| binary |Byte[] |
 | bit |Wartość logiczna |
-| delikatn |String, Char [] |
-| date |DateTime |
-| Datę |DateTime |
-| datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
-| Dokładności |Dokładności |
-| FILESTREAM — atrybut (varbinary (max)) |Byte [] |
-| Float |Double |
-| image |Byte [] |
-| int |Elementem |
-| finansowego |Dokładności |
-| nchar |String, Char [] |
-| ntext |String, Char [] |
-| przypada |Dokładności |
-| nvarchar |String, Char [] |
-| czasie rzeczywistym |Pojedyncze |
-| rowversion |Byte [] |
-| smalldatetime |DateTime |
+| char |String, Char[] |
+| date |Data i godzina |
+| Datetime |Data i godzina |
+| datetime2 |Data i godzina |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| float |Double |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Pojedyncze |
+| rowversion |Byte[] |
+| smalldatetime |Data i godzina |
 | smallint |Int16 |
-| smallmoney |Dokładności |
-| sql_variant |Stream |
-| tekst |String, Char [] |
-| time |Czasu |
-| sygnatura czasowa |Byte [] |
-| tinyint |Bajc |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| tekst |String, Char[] |
+| time |TimeSpan |
+| sygnatura czasowa |Byte[] |
+| tinyint |Bajtów |
 | uniqueidentifier |Identyfikator GUID |
-| liczby |Byte [] |
-| varchar |String, Char [] |
-| xml |dokument |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 Można również mapować kolumny ze źródłowego zestawu danych do kolumn z zestawu danych ujścia w definicji działania kopiowania. Aby uzyskać szczegółowe informacje, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).
 

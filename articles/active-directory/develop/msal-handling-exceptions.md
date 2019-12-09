@@ -3,10 +3,8 @@ title: Błędy i wyjątki (MSAL)
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak obsługiwać błędy i wyjątki, dostęp warunkowy i wyzwania dotyczące oświadczeń w aplikacjach MSAL.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
@@ -15,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: twhitney
-ms.reviewer: saeeda
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 753296596982279a14ff2775b0e129048dbe8369
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7f903ca541582dfa0f3980bb65a3fef3c4b774a7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482069"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916778"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Obsługa wyjątków i błędów MSAL
 
@@ -144,7 +142,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 MSAL. js udostępnia obiekty błędów, które są abstrakcyjne i klasyfikuje różne typy typowych błędów. Zapewnia także interfejs umożliwiający dostęp do szczegółowych informacji o błędach, takich jak komunikaty o błędach, aby odpowiednio je obsługiwać.
 
-### <a name="error-object"></a>Obiekt Error
+### <a name="error-object"></a>Error — Obiekt
 
 ```javascript
 export class AuthError extends Error {

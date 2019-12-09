@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4cd5fc50c35f4c4adb63c9d91af05dcf8b2dda40
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618575"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924637"
 ---
 # <a name="duplicate-detection"></a>Wykrywanie duplikatów
 
@@ -32,7 +32,7 @@ Włączenie wykrywania duplikatów pomaga śledzić kontrolowane przez aplikacj�
 
 Kontrola aplikacji w identyfikatorze jest istotna, ponieważ tylko umożliwia aplikacji powiązanie wartości *MessageID* z kontekstem procesu biznesowego, z którego może być przewidywane odbudowanie w przypadku wystąpienia błędu.
 
-W przypadku procesu biznesowego, w którym wiele komunikatów jest wysyłanych w trakcie obsługi pewnego kontekstu aplikacji, wartość *MessageID* może być złożonym z identyfikatora kontekstu na poziomie aplikacji, takiego jak numer zamówienia zakupu, a temat wiadomości, dla przykład **12345.2017/płatność**.
+W przypadku procesu biznesowego, w którym wiele komunikatów jest wysyłanych w trakcie obsługi pewnego kontekstu aplikacji, identyfikator *MessageID* może być złożonym z identyfikatora kontekstu na poziomie aplikacji, takiego jak numer zamówienia zakupu, a temat wiadomości, na przykład **12345.2017/płatność**.
 
 Wartość *MessageID* może zawsze być identyfikatorem GUID, ale zakotwiczenie identyfikatora do procesu biznesowego daje przewidywalne powtarzalność, która jest odpowiednia do efektywnego wykorzystania funkcji wykrywania duplikatów.
 
@@ -67,6 +67,8 @@ Aby dowiedzieć się więcej na temat Service Bus Messaging, zobacz następując
 * [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
 * [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+W scenariuszach, w których kod klienta nie może ponownie przesłać komunikatu o tym samym *atrybucie MessageID* co poprzednio, ważne jest, aby zaprojektować komunikaty, które można bezpiecznie ponownie przetworzyć. Ten [wpis w blogu dotyczący usługi idempotentność](https://particular.net/blog/what-does-idempotent-mean) opisuje różne techniki, w których należy to zrobić.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

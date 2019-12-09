@@ -1,5 +1,5 @@
 ---
-title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web (Konfiguracja kodu) — Microsoft Identity platform | Azure
+title: Konfigurowanie aplikacji mobilnych, które wywołują interfejsy API sieci Web — Microsoft Identity platform | Azure
 description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (konfigurację kodu aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d0550dd92b786ec540bae6ae6da7322d4fb629
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175484"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919957"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 

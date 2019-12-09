@@ -4,21 +4,20 @@ description: Dowiedz się, jak przenieść dane z lokalnej bazy danych DB2 przy 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666602"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931784"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenoszenie danych z programu DB2 przy użyciu działania kopiowania Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -79,15 +78,15 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, k
 ## <a name="db2-linked-service-properties"></a>Właściwości połączonej usługi DB2
 W poniższej tabeli wymieniono właściwości JSON, które są specyficzne dla połączonej usługi bazy danych DB2.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | **type** |Ta właściwość musi być ustawiona na **OnPremisesDb2**. |Tak |
-| **Server** |Nazwa serwera bazy danych DB2. |Tak |
+| **server** |Nazwa serwera bazy danych DB2. |Tak |
 | **database** |Nazwa bazy danych DB2. |Tak |
-| **schematy** |Nazwa schematu w bazie danych programu DB2. Ta właściwość jest uwzględniana wielkość liter. |Nie |
+| **schema** |Nazwa schematu w bazie danych programu DB2. Ta właściwość jest uwzględniana wielkość liter. |Nie |
 | **authenticationType** |Typ uwierzytelniania używany do łączenia się z bazą danych programu DB2. Możliwe wartości to: Anonymous, Basic i Windows. |Tak |
-| **uż** |Nazwa konta użytkownika w przypadku korzystania z uwierzytelniania podstawowego lub systemu Windows. |Nie |
-| **hasło** |Hasło konta użytkownika. |Nie |
+| **Nazwa użytkownika** |Nazwa konta użytkownika w przypadku korzystania z uwierzytelniania podstawowego lub systemu Windows. |Nie |
+| **Hasło** |Hasło konta użytkownika. |Nie |
 | **gatewayName** |Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalną bazą danych DB2. |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
@@ -95,7 +94,7 @@ Aby zapoznać się z listą sekcji i właściwości, które są dostępne do def
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** dla zestawu danych typu **relacyjnego**, który zawiera zestaw danych DB2, ma następującą właściwość:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | **tableName** |Nazwa tabeli w wystąpieniu bazy danych DB2, do której odwołuje się połączona usługa. Ta właściwość jest uwzględniana wielkość liter. |Nie (Jeśli określono Właściwość **zapytania** działania Copy typu **RelationalSource** ) |
 
@@ -104,9 +103,9 @@ Aby zapoznać się z listą sekcji i właściwości, które są dostępne do def
 
 W przypadku działania kopiowania, gdy źródłem jest typ **RelationalSource** (w tym DB2), w sekcji **typeProperties** dostępne są następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| **dotyczących** |Użyj zapytania niestandardowego, aby odczytać dane. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""` |Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
+| **query** |Użyj zapytania niestandardowego, aby odczytać dane. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""` |Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
 
 > [!NOTE]
 > W nazwach schematu i tabeli jest rozróżniana wielkość liter. W instrukcji kwerendy należy ująć nazwy właściwości przy użyciu "" (podwójne cudzysłowy).
@@ -306,48 +305,48 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane z typu DB2 na typ .NET:
 
-| Typ bazy danych DB2 | Typ .NET Framework |
+| Typ bazy danych DB2 | Typ programu .NET Framework |
 | --- | --- |
 | SmallInt |Int16 |
-| Liczba całkowita |Elementem |
+| Liczba całkowita |Int32 |
 | BigInt |Int64 |
 | Real |Pojedyncze |
 | Double |Double |
-| Float |Double |
-| Dokładności |Dokładności |
-| DecimalFloat |Dokładności |
-| przypada |Dokładności |
-| Date |DateTime |
-| Time |Czasu |
-| Znacznik czasu |DateTime |
-| dokument |Byte [] |
-| delikatn |Ciąg |
+| float |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeryczne |Decimal |
+| Data |Data i godzina |
+| Czas |TimeSpan |
+| Znacznik czasu |Data i godzina |
+| Xml |Byte[] |
+| char |Ciąg |
 | VarChar |Ciąg |
 | LongVarChar |Ciąg |
 | DB2DynArray |Ciąg |
-| Binarny |Byte [] |
-| Liczby |Byte [] |
-| LongVarBinary |Byte [] |
-| Zdjęć |Ciąg |
+| Binary |Byte[] |
+| Liczby |Byte[] |
+| LongVarBinary |Byte[] |
+| Graphic |Ciąg |
 | VarGraphic |Ciąg |
 | LongVarGraphic |Ciąg |
-| Obiektów CLOB |Ciąg |
-| Obiekt blob |Byte [] |
+| Clob |Ciąg |
+| Obiekt blob |Byte[] |
 | DbClob |Ciąg |
 | SmallInt |Int16 |
-| Liczba całkowita |Elementem |
+| Liczba całkowita |Int32 |
 | BigInt |Int64 |
 | Real |Pojedyncze |
 | Double |Double |
-| Float |Double |
-| Dokładności |Dokładności |
-| DecimalFloat |Dokładności |
-| przypada |Dokładności |
-| Date |DateTime |
-| Time |Czasu |
-| Znacznik czasu |DateTime |
-| dokument |Byte [] |
-| delikatn |Ciąg |
+| float |Double |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeryczne |Decimal |
+| Data |Data i godzina |
+| Czas |TimeSpan |
+| Znacznik czasu |Data i godzina |
+| Xml |Byte[] |
+| char |Ciąg |
 
 ## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
 Aby dowiedzieć się, jak mapować kolumny w źródłowym zestawie danych na kolumny w zestawie danych ujścia, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).

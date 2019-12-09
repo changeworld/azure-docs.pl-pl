@@ -1,5 +1,5 @@
 ---
-title: Monitoruj aplikację sieci Web za pomocą wieloetapowych testów sieci Web i platformy Azure Application Insights | Microsoft Docs
+title: Monitorowanie za pomocą wieloetapowych testów sieci Web — Application Insights platformy Azure
 description: Konfigurowanie wieloetapowych testów sieci Web w celu monitorowania aplikacji sieci Web przy użyciu usługi Azure Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817393"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928971"
 ---
 # <a name="multi-step-web-tests"></a>Wieloetapowy test witryny
 
@@ -27,7 +27,7 @@ Można monitorować zarejestrowane sekwencje adresów URL i interakcji z witryn�
 * Program Visual Studio 2017 Enterprise lub nowszy.
 * Narzędzia do testowania wydajności i obciążenia sieci Web w programie Visual Studio.
 
-Aby zlokalizować wymagania wstępne narzędzi do testowania. Uruchom **Instalator programu Visual Studio**  > **poszczególnych składników**  > **debugowanie i testowanie**  > **Narzędzia do testowania wydajności sieci Web i testów obciążenia**.
+Aby zlokalizować wymagania wstępne narzędzi do testowania. Uruchom **Instalator programu Visual Studio** > **poszczególnych składników** > **debugowanie i testowanie** > **Narzędzia do testowania wydajności sieci Web i testów obciążenia**.
 
 ![Zrzut ekranu przedstawiający interfejs użytkownika Instalatora programu Visual Studio z pojedynczymi składnikami, które są zaznaczone z CheckBox obok elementu narzędzi do testowania wydajności sieci Web i obciążenia](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -43,7 +43,7 @@ Aby uzyskać wskazówki dotyczące tworzenia testów sieci Web programu Visual S
 
 ## <a name="upload-the-web-test"></a>Przekaż test sieci Web
 
-1. W portalu Application Insights w okienku dostępność wybierz pozycję **Utwórz test**  > **typ testowy**  > **wieloetapowy test sieci Web**.
+1. W portalu Application Insights w okienku dostępność wybierz pozycję **Utwórz test** > **typ testowy** > **wieloetapowy test sieci Web**.
 
 2. Ustaw lokalizacje testu, częstotliwość i parametry alertu.
 
@@ -68,7 +68,7 @@ Aby uzyskać wskazówki dotyczące tworzenia testów sieci Web programu Visual S
 |----|----|----|
 |**Niemal w czasie rzeczywistym (wersja zapoznawcza)** | Zalecamy korzystanie z alertów niemal w czasie rzeczywistym. Konfigurowanie tego typu alertu odbywa się po utworzeniu testu dostępności.  |
 |**Wdrożenie klasyczne** | Nie zalecamy już używania klasycznych alertów dla nowych testów dostępności.|
-|**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalną relację między progiem lokalizacji alertów a liczbą lokalizacji testowych jest **próg lokalizacji alertu**  = **liczbę lokalizacji testu-2 z co najmniej pięcioma lokalizacjami testów.**|
+|**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalną relację między progiem lokalizacji alertów a liczbą lokalizacji testowych jest **próg lokalizacji alertu** = **liczbę lokalizacji testu-2 z co najmniej pięcioma lokalizacjami testów.**|
 
 ## <a name="configuration"></a>Konfigurowanie
 
@@ -114,8 +114,8 @@ We wszystkich przypadkach należy utworzyć konto w ramach aplikacji tylko na po
 | Hasło certyfikatu | Hasło certyfikatu klienta, które przyznaje dostęp do osadzonego klucza prywatnego. |
 | Certyfikat klienta  | Wartość certyfikatu klienta z kluczem prywatnym w formacie kodowanym algorytmem Base64. |
 | Identyfikator nazwy | Identyfikator nazwy dla tokenu |
-| Nie później niż | Przedział czasu, dla którego token będzie prawidłowy.  Wartość domyślna to 5 minut. |
-| Nie przed | Obiekt TimeSpan, dla którego token utworzony w przeszłości będzie prawidłowy (do rozróżniania czasu).  Wartość domyślna to (wartość ujemna) 5 minut. |
+| Nie po | Przedział czasu, dla którego token będzie prawidłowy.  Wartość domyślna to 5 minut. |
+| Nie wcześniej niż | Obiekt TimeSpan, dla którego token utworzony w przeszłości będzie prawidłowy (do rozróżniania czasu).  Wartość domyślna to (wartość ujemna) 5 minut. |
 | Nazwa parametru kontekstowego elementu docelowego | Parametr kontekstowy, który będzie otrzymywał wygenerowane potwierdzenie. |
 
 

@@ -4,19 +4,17 @@ description: Zapoznaj się ze strukturą dzienników inspekcji SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873764"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928633"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database format dziennika inspekcji
 
@@ -32,16 +30,16 @@ Na przykład dla `Database1` bazy danych na `Server1` poniżej jest możliwe pra
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Repliki tylko do odczytu](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out) Dzienniki inspekcji są przechowywane w tym samym kontenerze. Hierarchia katalogów w kontenerze ma postać `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`. Nazwa pliku obiektu BLOB ma ten sam format. Dzienniki inspekcji replik tylko do odczytu są przechowywane w tym samym kontenerze.
+[Repliki tylko do odczytu](sql-database-read-scale-out.md) Dzienniki inspekcji są przechowywane w tym samym kontenerze. Hierarchia katalogów w kontenerze ma postać `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`. Nazwa pliku obiektu BLOB ma ten sam format. Dzienniki inspekcji replik tylko do odczytu są przechowywane w tym samym kontenerze.
 
 
 ### <a name="event-hub"></a>Centrum zdarzeń
 
-Zdarzenia inspekcji są zapisywane w przestrzeni nazw i centrum zdarzeń, które zostało zdefiniowane podczas konfiguracji inspekcji i są przechwytywane w treści Avro zdarzeń platformy [Apache](https://avro.apache.org/) i przechowywane przy użyciu formatowania JSON przy użyciu kodowania UTF-8. Aby odczytać dzienniki inspekcji, można użyć [narzędzi Avro](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) lub podobnych narzędzi, które przetwarzają ten format.
+Zdarzenia inspekcji są zapisywane w przestrzeni nazw i centrum zdarzeń, które zostało zdefiniowane podczas konfiguracji inspekcji i są przechwytywane w treści Avro zdarzeń platformy [Apache](https://avro.apache.org/) i przechowywane przy użyciu formatowania JSON przy użyciu kodowania UTF-8. Aby odczytać dzienniki inspekcji, można użyć [narzędzi Avro](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) lub podobnych narzędzi, które przetwarzają ten format.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Zdarzenia inspekcji są zapisywane w obszarze roboczym Log Analytics zdefiniowanym podczas konfigurowania inspekcji do tabeli `AzureDiagnostics` z kategorią `SQLSecurityAuditEvents`. Aby uzyskać dodatkowe przydatne informacje na temat języka i poleceń wyszukiwania Log Analytics, zobacz [log Analytics informacje o wyszukiwaniu](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search).
+Zdarzenia inspekcji są zapisywane w obszarze roboczym Log Analytics zdefiniowanym podczas konfigurowania inspekcji do tabeli `AzureDiagnostics` z kategorią `SQLSecurityAuditEvents`. Aby uzyskać dodatkowe przydatne informacje na temat języka i poleceń wyszukiwania Log Analytics, zobacz [log Analytics informacje o wyszukiwaniu](../log-analytics/log-analytics-log-search.md).
 
 ## <a id="subheading-1"></a>Pola dziennika inspekcji
 

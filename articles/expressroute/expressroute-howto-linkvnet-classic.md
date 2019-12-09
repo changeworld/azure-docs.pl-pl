@@ -1,19 +1,18 @@
 ---
-title: 'ExpressRoute: Połącz sieć wirtualną z obwodem: klasyczny'
+title: 'Azure ExpressRoute: łączenie sieci wirtualnej z obwodem: klasyczny'
 description: Ten dokument zawiera omówienie sposobu łączenia sieci wirtualnych (sieci wirtualnych) z obwodami usługi ExpressRoute przy użyciu klasycznego modelu wdrażania i programu PowerShell.
 services: expressroute
-documentationcenter: na
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: e02073e777c62be00b5c25c2242294e54795a0d4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031612"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930030"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute przy użyciu programu PowerShell (wersja klasyczna)
 > [!div class="op_single_selector"]
@@ -46,40 +45,7 @@ Do obwodu ExpressRoute można połączyć maksymalnie 10 sieci wirtualnych. Wszy
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Pobierz najnowsze polecenia cmdlet programu PowerShell
 
-Zainstaluj najnowsze wersje modułu usługi ExpressRoute i modułów programu PowerShell usługi Azure Service Management (SM). Podczas korzystając z następującego przykładu, należy pamiętać, że numer wersji (w tym przykładzie 5.1.1) zmieni się nowsze wersje poleceń cmdlet zostaną zwolnione.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [wprowadzenie do poleceń cmdlet programu Azure PowerShell](/powershell/azure/overview) wskazówki krok po kroku dotyczące sposobu konfigurowania komputera do modułów programu Azure PowerShell.
-
-### <a name="sign-in"></a>Logowanie
-
-Aby zalogować się do konta platformy Azure, użyj następujących przykładów:
-
-1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem.
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. Sprawdź subskrypcje dostępne na koncie.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, której chcesz użyć.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Łączenie sieci wirtualnej w tej samej subskrypcji z obwodem
 Można połączyć sieć wirtualną z obwodem usługi ExpressRoute za pomocą następującego polecenia cmdlet. Upewnij się, że Brama sieci wirtualnej została utworzona i jest gotowa do łączenia przed uruchomieniem polecenia cmdlet.
@@ -124,7 +90,7 @@ Właściciel obwodu autoryzuje administratorów innych subskrypcji do używania 
 New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
 ```
 
-  Przesłać
+  Zwracają:
 
   ```powershell
   Description         : Dev-Test Links
@@ -141,7 +107,7 @@ Właściciela obwodu, można przejrzeć wszystkie autoryzacje są wydawane w ram
 ```powershell
 Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
 ```
-  Przesłać
+  Zwracają:
 
   ```powershell
   Description         : EngineeringTeam
@@ -171,7 +137,7 @@ Właściciel obwodu może modyfikować autoryzacje przy użyciu następującego 
 Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
 ```
 
-  Przesłać
+  Zwracają:
 
   ```powershell
   Description         : Dev-Test Links
@@ -199,7 +165,7 @@ Użytkownik obwodu może przeglądać autoryzacje przy użyciu następującego p
 Get-AzureAuthorizedDedicatedCircuit
 ```
 
-  Przesłać
+  Zwracają:
 
   ```powershell
   Bandwidth                        : 200
@@ -221,7 +187,7 @@ Użytkowników obwodu, można uruchomić następujące polecenie cmdlet, aby Zre
 New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
 ```
 
-  Przesłać
+  Zwracają:
 
   ```powershell
   State VnetName

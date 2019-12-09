@@ -1,24 +1,25 @@
 ---
-title: 'Przyrostowe kopiowanie wielu tabel przy użyciu Azure Data Factory '
+title: Przyrostowe kopiowanie wielu tabel przy użyciu Azure Portal
 description: W tym samouczku utworzysz potok usługi Azure Data Factory służący do przyrostowego kopiowania danych różnicowych z wielu tabel w lokalnej bazie danych SQL Server do bazy danych Azure SQL Database.
 services: data-factory
-documentationcenter: ''
+ms.author: yexu
 author: dearandyxu
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.author: yexu
-ms.openlocfilehash: 3129a0629c4de69e6e3d65f2f74da97e8d39a467
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e3ccc5a48251af181983624f0c8d0eed68c241da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683419"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926542"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
+
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
 
 Ten samouczek obejmuje następujące procedury:
@@ -36,7 +37,7 @@ Ten samouczek obejmuje następujące procedury:
 > * Ponowne uruchamianie i monitorowanie potoku.
 > * Przegląd wyników końcowych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Poniżej przedstawiono ważne czynności związane z tworzeniem tego rozwiązania: 
 
 1. **Wybierz kolumnę limitu**.
@@ -248,7 +249,7 @@ END
     Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 6. Wybierz opcję **V2** w obszarze **Wersja**.
 7. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
-8. Kliknij pozycję **Utwórz**.      
+8. Kliknij przycisk **Utwórz**.      
 9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji.
    
    ![Strona główna fabryki danych](./media/doc-common-process/data-factory-home-page.png)
@@ -468,7 +469,7 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
 
         | Nazwa | Typ | Wartość | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | Data i godzina | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Ciąg | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Działanie procedury składowanej — ustawienia procedury składowanej](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950362"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913880"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -92,7 +92,7 @@ Zarówno korzystającą wtyczki kubenet, jak i Azure CNI zapewniają łącznoś�
     * Należy ręcznie zarządzać i obsługiwać trasy zdefiniowane przez użytkownika (UDR).
     * Maksymalnie 400 węzłów na klaster.
 * **Azure CNI**
-    * W celu uzyskania pełnej łączności z siecią wirtualną i można ją uzyskać bezpośrednio z zewnątrz klastra.
+    * W celu uzyskania pełnej łączności między sieciami wirtualnymi i można je uzyskać bezpośrednio z połączonych sieci.
     * Wymaga więcej przestrzeni adresów IP.
 
 Między korzystającą wtyczki kubenet i Azure CNI istnieją następujące różnice dotyczące zachowań:

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 4/10/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e28104e1c795e093fda6457d9f86265312f540be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 19503fd0e469258bb8305f151cc53b9ec3136558
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183794"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935871"
 ---
 > [!IMPORTANT]
-> Środowisko uruchomieniowe usługi Azure Functions korzystania z wersji zapoznawczej 2 obsługuje tylko w wersji 1.x środowiska uruchomieniowego usługi Azure Functions. Tę funkcję wersji zapoznawczej nie został zaktualizowany do obsługi wersji 2.x środowiska uruchomieniowego i nie przyszłe aktualizacje są planowane. Jeśli potrzebujesz do obsługi środowiska uruchomieniowego usługi Azure Functions spoza platformy Azure, należy wziąć pod uwagę [rozwiązaniem kubernetes za pomocą KEDA przy użyciu usługi Azure Functions](../articles/azure-functions/functions-kubernetes-keda.md)
+> Wersja zapoznawcza środowisko uruchomieniowe usługi Azure Functions 2 obsługuje tylko wersję 1. x środowiska uruchomieniowego Azure Functions. Ta funkcja w wersji zapoznawczej nie jest aktualizowana, aby obsługiwała wersję 2. x i nowsze środowisko uruchomieniowe i nie zaplanowano żadnych przyszłych aktualizacji. Jeśli musisz hostować środowisko uruchomieniowe Azure Functions poza platformą Azure, rozważ [użycie Azure Functions w Kubernetes z KEDA](../articles/azure-functions/functions-kubernetes-keda.md)

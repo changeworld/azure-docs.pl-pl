@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 009da6c16d446f2b0d4d3f402c1c1ec63dde34d8
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 7b5f7c25cd1627475d8e37a539956f01ae6151ab
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018730"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914024"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręczne tworzenie i używanie woluminu z udziałem Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -44,7 +44,7 @@ az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
 
 # Export the connection string as an environment variable, this is used when creating the Azure file share
-export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
+export AZURE_STORAGE_CONNECTION_STRING=$(az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv)
 
 # Create the file share
 az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
@@ -63,7 +63,7 @@ Zanotuj nazwę konta magazynu i klucz pokazywany na końcu danych wyjściowych s
 
 Kubernetes wymaga poświadczeń w celu uzyskania dostępu do udziału plików utworzonego w poprzednim kroku. Te poświadczenia są przechowywane w [Kubernetes wpis tajny][kubernetes-secret], który jest przywoływany podczas tworzenia Kubernetes pod.
 
-`kubectl create secret` Użyj polecenia, aby utworzyć wpis tajny. Poniższy przykład tworzy współużytkowany o nazwie *Azure-Secret* i wypełnia *azurestorageaccountname* i *azurestorageaccountkey* w poprzednim kroku. Aby użyć istniejącego konta usługi Azure Storage, podaj nazwę i klucz konta.
+Użyj `kubectl create secret` polecenie, aby utworzyć wpis tajny. Poniższy przykład tworzy współużytkowany o nazwie *Azure-Secret* i wypełnia *azurestorageaccountname* i *azurestorageaccountkey* w poprzednim kroku. Aby użyć istniejącego konta usługi Azure Storage, podaj nazwę i klucz konta.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
@@ -71,7 +71,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Instalowanie udziału plików jako woluminu
 
-Aby zainstalować udział Azure Files w obszarze, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmieniono nazwę udziału plików lub nazwy wpisu tajnego, zaktualizuj wartości ShareName i secretname. W razie potrzeby zaktualizuj `mountPath`ścieżkę, która jest ścieżką, w której udział plików jest instalowany w obszarze. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
+Aby zainstalować udział Azure Files w obszarze, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmieniono nazwę udziału plików lub nazwy wpisu tajnego, zaktualizuj wartości *ShareName* i *secretname*. W razie potrzeby zaktualizuj `mountPath`, czyli ścieżkę, w której udział plików jest instalowany w obszarze. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
 
 ```yaml
 apiVersion: v1
@@ -100,13 +100,13 @@ spec:
       readOnly: false
 ```
 
-`kubectl` Użyj polecenia, aby utworzyć pod.
+Użyj `kubectl` polecenie, aby utworzyć pod.
 
 ```console
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Masz teraz działającą aplikację pod kątem udziału Azure Files zainstalowanego w */mnt/Azure*. Można użyć `kubectl describe pod mypod` , aby sprawdzić, czy udział jest prawidłowo zainstalowany. Następujące wąskie przykładowe dane wyjściowe pokazują wolumin zainstalowany w kontenerze:
+Masz teraz działającą aplikację pod kątem udziału Azure Files zainstalowanego w */mnt/Azure*. Za pomocą `kubectl describe pod mypod` można sprawdzić, czy udział został zainstalowany pomyślnie. Następujące wąskie przykładowe dane wyjściowe pokazują wolumin zainstalowany w kontenerze:
 
 ```
 Containers:
@@ -189,7 +189,7 @@ spec:
   - nobrl
 ```
 
-Utwórz plik *azurefile-Mount-Options-PVC. YAML* z *PersistentVolumeClaim* , który używa *PersistentVolume*. Przykład:
+Utwórz plik *azurefile-Mount-Options-PVC. YAML* z *PersistentVolumeClaim* , który używa *PersistentVolume*. Na przykład:
 
 ```yaml
 apiVersion: v1
@@ -205,7 +205,7 @@ spec:
       storage: 5Gi
 ```
 
-Użyj poleceń, aby utworzyć *PersistentVolume* i *PersistentVolumeClaim.* `kubectl`
+Użyj poleceń `kubectl`, aby utworzyć *PersistentVolume* i *PersistentVolumeClaim*.
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
@@ -221,7 +221,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Zaktualizuj specyfikację kontenera, aby odwoływała się do *PersistentVolumeClaim* i zaktualizować pod. Przykład:
+Zaktualizuj specyfikację kontenera, aby odwoływała się do *PersistentVolumeClaim* i zaktualizować pod. Na przykład:
 
 ```yaml
 ...

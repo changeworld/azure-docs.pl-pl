@@ -9,19 +9,18 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 6ea9134085812b99d59ad64aa2c9ec1b2ff827d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684397"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929779"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>Migracja usług SSIS za pomocą Azure SQL Database wystąpienia zarządzanego jako miejsca docelowego obciążenia bazy danych
 
-Podczas migrowania obciążeń bazy danych z SQL Server lokalnie do Azure SQL Database wystąpienia zarządzanego, należy zapoznać się z [usługą Azure Data Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) i [topologiami sieci dla Azure SQL Database migracji wystąpień zarządzanych Korzystanie z usługi DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies).
+Podczas migrowania obciążeń bazy danych z SQL Server lokalnie do Azure SQL Database wystąpienia zarządzanego, należy zapoznać się z [usługą Azure Data Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) i [topologiami sieci dla Azure SQL Database migracji wystąpień zarządzanych przy użyciu usługi DMS](https://docs.microsoft.com/azure/dms/resource-network-topologies).
 
 Ten artykuł koncentruje się na migracji pakietów SQL Server Integration Service (SSIS) przechowywanych w katalogu SSIS (SSISDB) i zadaniach agenta SQL Server, które zaplanują wykonywanie pakietów SSIS.
 
@@ -33,7 +32,7 @@ Migrację SSISDB można wykonać za pomocą usługi DMS, zgodnie z opisem w arty
 
 Azure SQL Database wystąpienie zarządzane ma natywny, pierwszy-klasowy harmonogram, podobnie jak Agent SQL Server lokalnie.  Ponieważ narzędzie migracji dla zadań SSIS nie jest jeszcze dostępne, muszą zostać zmigrowane z SQL Server agenta lokalnie do Azure SQL Database agenta wystąpienia zarządzanego za pośrednictwem skryptów/kopii ręcznej.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)

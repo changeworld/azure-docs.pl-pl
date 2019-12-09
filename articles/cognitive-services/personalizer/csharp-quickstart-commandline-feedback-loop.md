@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: b86a8df86b7f9b8a5936752a5f0413aa863ae85f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 411bd82ade2ca7b904b36a3a4408c1a00852fc2c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490798"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927838"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta personalizacji dla platformy .NET
 
@@ -96,7 +96,7 @@ Build succeeded.
 W katalogu aplikacji zainstaluj bibliotekę klienta programu Personalizacja dla platformy .NET przy użyciu następującego polecenia:
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.0
+dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.0-preview
 ```
 
 Jeśli używasz środowiska IDE programu Visual Studio, Biblioteka kliencka jest dostępna jako pakiet NuGet do pobrania.
@@ -137,9 +137,15 @@ Następnie Utwórz metodę zwracającą klienta programu Personalizacja. Paramet
 
 [!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
 
-## <a name="get-content-choices-represented-as-actions"></a>Pobierz opcje zawartości reprezentowane jako akcje
+## <a name="get-food-items-as-rankable-actions"></a>Pobierz elementy żywnościowe jako akcje do rangi
 
-Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj następujące metody do klasy program, aby uzyskać dane wejściowe użytkownika z wiersza polecenia dla pory dnia i bieżącego preferencji żywności.
+Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj następujące metody do klasy program, aby reprezentować zestaw akcji do rangi.
+
+[!code-csharp[Food items as actions](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createAction)]
+
+## <a name="get-user-preferences-for-context"></a>Pobierz preferencje użytkownika dla kontekstu
+
+Dodaj następujące metody do klasy program, aby uzyskać dane wejściowe użytkownika z wiersza polecenia dla pory dnia i bieżącego preferencji żywności. Będą one stosowane jako kontekst podczas klasyfikowania akcji.
 
 [!code-csharp[Present time out day preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTimeOfDay)]
 
@@ -153,91 +159,16 @@ Obie metody wykorzystują metodę `GetKey`, aby odczytać wybór użytkownika z 
 
 Pętla szkoleniowa personalizacji jest cyklem wywołań rangi i nagrody. W tym przewodniku szybki start każdy wywołania rangi, aby spersonalizować zawartość, nastąpi wywołanie zarobkowe, aby poinformować program Personalizuj, jak dobrze zaklasyfikował zawartość usługi. 
 
-Poniższy kod w metodzie `main` programu pętle przez cykl monitowania użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia Personalizacja, aby określić rangę i przedstawiony wybór do klienta w celu wybrania spośród listy , a następnie wysyłając do personalizacji wynagrodzenie sygnalizujące, jak dobrze ta usługa przeszedł w wyborze.
+Poniższy kod w metodzie `main` programu przeprowadzi pętlę przez cykl monitowania użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia Personalizacja do rangi, przedstawiając wybór rangi do klienta, aby wybrać z listy, a następnie wysłać premię do narzędzia personalizacji sygnalizującego, jak dobrze w przypadku usługi w klasyfikacji wyboru.
 
-```csharp
-static void Main(string[] args)
-{
-    int iteration = 1;
-    bool runLoop = true;
+[!code-csharp[Learning loop](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=mainLoop)]
 
-    // Get the actions list to choose from personalizer with their features.
-    IList<RankableAction> actions = GetActions();
+Dodaj następujące metody, które [pobierają Opcje zawartości](#get-food-items-as-rankable-actions), przed uruchomieniem pliku kodu:
 
-    // Initialize Personalizer client.
-    PersonalizerClient client = InitializePersonalizerClient(ServiceEndpoint);
-
-    do
-    {
-        Console.WriteLine("\nIteration: " + iteration++);
-
-        // <rank>
-        // Get context information from the user.
-        string timeOfDayFeature = GetUsersTimeOfDay();
-        string tasteFeature = GetUsersTastePreference();
-
-        // Create current context from user specified data.
-        IList<object> currentContext = new List<object>() {
-            new { time = timeOfDayFeature },
-            new { taste = tasteFeature }
-        };
-
-        // Exclude an action for personalizer ranking. This action will be held at its current position.
-        // This simulates a business rule to force the action "juice" to be ignored in the ranking.
-        // As juice is excluded, the return of the API will always be with a probability of 0.
-        IList<string> excludeActions = new List<string> { "juice" };
-
-        // Generate an ID to associate with the request.
-        string eventId = Guid.NewGuid().ToString();
-
-        // Rank the actions
-        var request = new RankRequest(actions, currentContext, excludeActions, eventId);
-        RankResponse response = client.Rank(request);
-        // </rank>
-
-        Console.WriteLine("\nPersonalizer service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
-
-        // <reward>
-        float reward = 0.0f;
-        string answer = GetKey();
-
-        if (answer == "Y")
-        {
-            reward = 1;
-            Console.WriteLine("\nGreat! Enjoy your food.");
-        }
-        else if (answer == "N")
-        {
-            reward = 0;
-            Console.WriteLine("\nYou didn't like the recommended food choice.");
-        }
-        else
-        {
-            Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
-        }
-
-        Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
-        foreach (var rankedResponse in response.Ranking)
-        {
-            Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
-        }
-
-        // Send the reward for the action based on user response.
-        client.Reward(response.EventId, new RewardRequest(reward));
-        // </reward>
-
-        Console.WriteLine("\nPress q to break, any other key to continue:");
-        runLoop = !(GetKey() == "Q");
-
-    } while (runLoop);
-}
-```
-
-Dodaj następujące metody, które [pobierają Opcje zawartości](#get-content-choices-represented-as-actions), przed uruchomieniem pliku kodu:
-
-* GetUsersTimeOfDay
-* GetUsersTastePreference
-* GetKey
+* `GetActions`
+* `GetUsersTimeOfDay`
+* `GetUsersTastePreference`
+* `GetKey`
 
 ## <a name="request-a-rank"></a>Żądaj rangi
 

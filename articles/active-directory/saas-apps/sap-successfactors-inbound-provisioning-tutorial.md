@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: 85f3c8b9bc4167350b8a56f118128b89df142611
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896924"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914763"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Samouczek: Konfigurowanie oprogramowania SAP SuccessFactors do Active Directory aprowizacji użytkowników (wersja zapoznawcza)
-Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu zaimportowania danych procesu roboczego z SuccessFactors Employee Central do obu Active Directory i Azure Active Directory, z opcjonalnym zwrotem adresu e-mail na SuccessFactors.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu udostępnienia użytkownikom SuccessFactorsego Active Directory w centrum danych (AD) i usługi Azure AD z opcjonalnym zwrotem adresu e-mail na SuccessFactors. Ta integracja jest dostępna w publicznej wersji zapoznawczej i obsługuje pobieranie ponad [70 atrybutów użytkownika](../manage-apps/sap-successfactors-attribute-reference.md) z SuccessFactors Employee Central.
+
+>[!NOTE]
+>Skorzystaj z tego samouczka, jeśli użytkownicy, którym chcesz zainicjować obsługę administracyjną SuccessFactors, potrzebują lokalnego konta usługi AD i opcjonalnie konta usługi Azure AD. Jeśli użytkownicy z SuccessFactors potrzebują tylko konta usługi Azure AD (tylko użytkownicy w chmurze), zapoznaj się z samouczkiem dotyczącym [konfigurowania usługi SAP SuccessFactors w usłudze Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) . 
+
 
 ## <a name="overview"></a>Przegląd
 
@@ -69,7 +73,7 @@ W tej sekcji opisano kompleksową architekturę rozwiązania obsługi użytkowni
 4. Azure AD Connect Agent aprowizacji używa konta usługi do dodawania/aktualizowania danych konta usług AD.
 5. Aparat synchronizacji Azure AD Connect uruchamia synchronizację Delta w celu ściągnięcia aktualizacji w usłudze AD.
 6. Aktualizacje Active Directory są synchronizowane z Azure Active Directory.
-7. W przypadku skonfigurowania łącznika zapisywania zwrotnego SuccessFactors jest on używany do zapisywania z powrotem atrybutu poczty e-mail i nazwy użytkownika SuccessFactors na podstawie używanego atrybutu.
+7. Jeśli [aplikacja zapisywania zwrotnego SuccessFactors](sap-successfactors-writeback-tutorial.md) jest skonfigurowana, zapisuje z powrotem atrybut poczty E-mail w SuccessFactors na podstawie użytego atrybutu.
 
 ## <a name="planning-your-deployment"></a>Planowanie wdrożenia
 
@@ -109,6 +113,10 @@ Skontaktuj się z zespołem administracyjnym SuccessFactors lub partnerem implem
 * Przewiń w dół do tego samego pola i wybierz pozycję **Employee Central API**. Dodaj uprawnienia, jak pokazano poniżej, aby czytać przy użyciu interfejsu API ODATA i edytować za pomocą interfejsu API ODATA. Wybierz opcję Edytuj, jeśli planujesz używać tego samego konta do scenariusza zapisywania zwrotnego SuccessFactors. 
   > [!div class="mx-imgBorder"]
   > ![Odczyt uprawnień zapisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+  >[!NOTE]
+  >Aby uzyskać pełną listę atrybutów pobranych przez tę aplikację aprowizacji, zapoznaj się z [odwołaniem do atrybutu SuccessFactors](../manage-apps/sap-successfactors-attribute-reference.md)
+
 * Kliknij przycisk **gotowe**. Kliknij przycisk **Save Changes** (Zapisz zmiany).
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Tworzenie grupy uprawnień dla użytkownika interfejsu API
@@ -294,6 +302,10 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z Succe
 
 1. W sekcji **mapowania atrybutów** można zdefiniować, w jaki sposób poszczególne atrybuty SuccessFactors są mapowane na atrybuty Active Directory.
 
+  >[!NOTE]
+  >Aby uzyskać pełną listę atrybutów SuccessFactors obsługiwanych przez aplikację, zapoznaj się z [odwołaniem do atrybutu SuccessFactors](../manage-apps/sap-successfactors-attribute-reference.md)
+
+
 1. Kliknij istniejące mapowanie atrybutów, aby je zaktualizować, lub kliknij pozycję **Dodaj nowe mapowanie** u dołu ekranu, aby dodać nowe mapowania. Mapowanie poszczególnych atrybutów obsługuje te właściwości:
 
       * **Typ mapowania**
@@ -347,20 +359,9 @@ Po zakończeniu konfiguracji aplikacji SuccessFactorsing (Inicjowanie obsługi a
 
 ## <a name="next-steps"></a>Następne kroki
 
+* [Dowiedz się więcej o obsługiwanych atrybutach SuccessFactors na potrzeby inicjowania obsługi przychodzącej](../manage-apps/sap-successfactors-attribute-reference.md)
+* [Dowiedz się, jak skonfigurować funkcję zapisywania zwrotnego wiadomości e-mail w usłudze SuccessFactors](sap-successfactors-writeback-tutorial.md)
 * [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
 * [Dowiedz się, jak skonfigurować Logowanie jednokrotne między SuccessFactors i Azure Active Directory](successfactors-tutorial.md)
 * [Dowiedz się, jak zintegrować inne aplikacje SaaS z Azure Active Directory](tutorial-list.md)
 * [Dowiedz się, jak eksportować i importować konfiguracje aprowizacji](../manage-apps/export-import-provisioning-configuration.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,17 +5,17 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 474cdc52d34d3f5e00dee69b7cc9861042cbcc04
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231128"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928591"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps powiązania Azure Functions 
 
 > [!NOTE]
-> Powiązania Mobile Apps platformy Azure są dostępne tylko dla Azure Functions 1. x. Nie są one obsługiwane w Azure Functions 2. x.
+> Powiązania Mobile Apps platformy Azure są dostępne tylko dla Azure Functions 1. x. Nie są one obsługiwane w Azure Functions 2. x i wyższych.
 
 W tym artykule opisano sposób pracy z powiązaniami [Mobile Apps platformy Azure](../app-service-mobile/app-service-mobile-value-prop.md) w programie Azure Functions. Azure Functions obsługuje powiązania wejściowe i wyjściowe dla Mobile Apps.
 
@@ -37,14 +37,14 @@ Powiązanie danych wejściowych Mobile Apps ładuje rekord z punktu końcowego t
 
 Zobacz przykład specyficzny dla języka:
 
-* [C#skrypt (. CSX)](#input---c-script-example)
+* [Skryptu C# (csx)](#input---c-script-example)
 * JavaScript
 
 ### <a name="input---c-script-example"></a>Przykładowy C# skrypt wejściowy
 
 Poniższy przykład przedstawia Mobile Apps dane wejściowe w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja jest wyzwalana przez komunikat kolejki, który ma identyfikator rekordu. Funkcja odczytuje określony rekord i modyfikuje jego właściwość `Text`.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -68,7 +68,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 ]
 }
 ```
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -89,7 +89,7 @@ public static void Run(string myQueueItem, JObject record)
 
 Poniższy przykład przedstawia Mobile Apps dane wejściowe w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja jest wyzwalana przez komunikat kolejki, który ma identyfikator rekordu. Funkcja odczytuje określony rekord i modyfikuje jego właściwość `Text`.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -113,7 +113,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 ]
 }
 ```
-W sekcji [Konfiguracja](#input---configuration) objaśniono te właściwości.
+[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -132,15 +132,15 @@ Aby uzyskać informacje na temat właściwości atrybutów, które można skonfi
 
 ## <a name="input---configuration"></a>Dane wejściowe — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `MobileTable` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `MobileTable` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
 | **type**|| Musi być ustawiony na "mobilny"|
 | **direction**||Musi być ustawiona na wartość "in"|
-| **Nazwij**|| Nazwa parametru wejściowego w sygnaturze funkcji.|
+| **Nazwa**|| Nazwa parametru wejściowego w sygnaturze funkcji.|
 |**tableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
-| **#**| **Identyfikator** | Identyfikator rekordu do pobrania. Może być statyczny lub oparty na wyzwalaczu, który wywołuje funkcję. Na przykład jeśli używasz wyzwalacza kolejki dla funkcji, `"id": "{queueTrigger}"` używa wartości ciągu komunikatu w kolejce jako identyfikatora rekordu do pobrania.|
+| **id**| **Identyfikator** | Identyfikator rekordu do pobrania. Może być statyczny lub oparty na wyzwalaczu, który wywołuje funkcję. Na przykład jeśli używasz wyzwalacza kolejki dla funkcji, `"id": "{queueTrigger}"` używa wartości ciągu komunikatu w kolejce jako identyfikatora rekordu do pobrania.|
 |**połączenia**|**Połączenie**|Nazwa ustawienia aplikacji z adresem URL aplikacji mobilnej. Funkcja używa tego adresu URL do konstruowania wymaganych operacji REST dla aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera adres URL aplikacji mobilnej, a następnie określ nazwę ustawienia aplikacji we właściwości `connection` w powiązaniu wejściowym. Adres URL wygląda jak `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|Nazwa ustawienia aplikacji z kluczem interfejsu API aplikacji mobilnej. Podaj klucz interfejsu API w przypadku [zaimplementowania klucza interfejsu API w aplikacji mobilnej Node. js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)lub [ZAIMPLEMENTUJ klucz interfejsu API w aplikacji mobilnej platformy .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera klucz interfejsu API, a następnie Dodaj właściwość `apiKey` w powiązaniu wejściowym przy użyciu nazwy ustawienia aplikacji. |
 
@@ -166,7 +166,7 @@ Użyj powiązania danych wyjściowych Mobile Apps, aby zapisać nowy rekord w ta
 Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
-* [C#skrypt (. CSX)](#output---c-script-example)
+* [Skryptu C# (csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
@@ -188,7 +188,7 @@ public static object Run(
 
 Poniższy przykład przedstawia Mobile Apps powiązanie danych wyjściowych w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja jest wyzwalana przez komunikat w kolejce i tworzy nowy rekord z ustaloną wartością właściwości `Text`.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -212,7 +212,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -229,7 +229,7 @@ public static void Run(string myQueueItem, out object record)
 
 Poniższy przykład przedstawia Mobile Apps powiązanie danych wyjściowych w pliku *Function. JSON* i [funkcję języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja jest wyzwalana przez komunikat w kolejce i tworzy nowy rekord z ustaloną wartością właściwości `Text`.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json
 {
@@ -254,7 +254,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#output---configuration) objaśniono te właściwości.
+[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -273,7 +273,7 @@ module.exports = function (context, myQueueItem) {
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [Mobile](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) .
 
-Aby uzyskać informacje na temat właściwości atrybutów, które można skonfigurować, zobacz [wyjście-konfiguracja](#output---configuration). Oto przykład atrybutu `MobileTable` w sygnaturze metody:
+Aby uzyskać informacje na temat właściwości atrybutów, które można skonfigurować, zobacz [wyjście-konfiguracja](#output---configuration). Oto `MobileTable` przykład atrybutu w podpisie metody:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -286,17 +286,17 @@ public static object Run(
 }
 ```
 
-Aby uzyskać pełny przykład, zobacz [Output- C# example](#output---c-example).
+Aby uzyskać kompletny przykład, zobacz [dane wyjściowe — przykład w języku C#](#output---c-example).
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `MobileTable` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `MobileTable` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
 | **type**|| Musi być ustawiony na "mobilny"|
 | **direction**||Musi być ustawiona na wartość "out"|
-| **Nazwij**|| Nazwa parametru wyjściowego w sygnaturze funkcji.|
+| **Nazwa**|| Nazwa parametru wyjściowego w sygnaturze funkcji.|
 |**tableName** |**TableName**|Nazwa tabeli danych aplikacji mobilnej|
 |**połączenia**|**MobileAppUriSetting**|Nazwa ustawienia aplikacji z adresem URL aplikacji mobilnej. Funkcja używa tego adresu URL do konstruowania wymaganych operacji REST dla aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera adres URL aplikacji mobilnej, a następnie określ nazwę ustawienia aplikacji we właściwości `connection` w powiązaniu wejściowym. Adres URL wygląda jak `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Nazwa ustawienia aplikacji z kluczem interfejsu API aplikacji mobilnej. Podaj klucz interfejsu API w przypadku [zaimplementowania klucza interfejsu API w zapleczu aplikacji mobilnej Node. js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)lub [ZAIMPLEMENTUJ klucz interfejsu API w zapleczu aplikacji mobilnej platformy .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera klucz interfejsu API, a następnie Dodaj właściwość `apiKey` w powiązaniu wejściowym przy użyciu nazwy ustawienia aplikacji. |
@@ -319,4 +319,4 @@ W funkcjach Node. js Użyj `context.bindings.<name>`, aby uzyskać dostęp do re
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

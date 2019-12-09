@@ -3,27 +3,23 @@ title: Różnice między MSAL. js i ADAL. js
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o różnicach między biblioteką uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) i biblioteki uwierzytelniania usługi Azure AD dla języka JavaScript (ADAL. js) i sposobu wybierania, który ma być używany.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e3696eb90abbb35f4d989649b4a1198aec69b9a5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803173"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916914"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Różnice między MSAL JS i ADAL JS
 
@@ -43,17 +39,17 @@ Jednak nadal musisz użyć biblioteki ADAL. js, jeśli aplikacja musi zalogować
 
 ### <a name="core-api"></a>Podstawowy interfejs API
 
-* Biblioteka ADAL. js używa [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) jako reprezentacji wystąpienia połączenia aplikacji z serwerem autoryzacji lub dostawcą tożsamości za pośrednictwem adresu URL urzędu certyfikacji. W przeciwieństwie do interfejsu API MSAL. js jest przeznaczony dla aplikacji klienckiej agenta użytkownika (forma publicznej aplikacji klienckiej, w której kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka sieci Web). Udostępnia klasę `UserAgentApplication` do reprezentowania wystąpienia kontekstu uwierzytelniania aplikacji z serwerem autoryzacji. Aby uzyskać więcej informacji, zobacz [Inicjowanie przy użyciu MSAL. js](msal-js-initializing-client-applications.md).
+* Biblioteka ADAL. js używa [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) jako reprezentacji wystąpienia połączenia aplikacji z serwerem autoryzacji lub dostawcą tożsamości za pośrednictwem adresu URL urzędu certyfikacji. W przeciwieństwie do interfejsu API MSAL. js jest przeznaczony dla aplikacji klienckiej agenta użytkownika (forma publicznej aplikacji klienckiej, w której kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka sieci Web). Udostępnia klasę `UserAgentApplication`, która reprezentuje wystąpienie kontekstu uwierzytelniania aplikacji z serwerem autoryzacji. Aby uzyskać więcej informacji, zobacz [Inicjowanie przy użyciu MSAL. js](msal-js-initializing-client-applications.md).
 
 * W bibliotece ADAL. js metody uzyskiwania tokenów są skojarzone z pojedynczym zestawem uprawnień w `AuthenticationContext`. W MSAL. js żądania tokenu pozyskiwania mogą przyjmować różne wartości urzędu niż wartość ustawiona w `UserAgentApplication`. Dzięki temu MSAL. js może pobierać i buforować tokeny oddzielnie dla wielu dzierżawców i kont użytkowników w tej samej aplikacji.
 
-* Metoda uzyskiwania i odnawiania tokenów dyskretnie bez monitowania użytkowników o nazwie `acquireToken` w bibliotece ADAL. js. W MSAL. js ta metoda ma nazwę `acquireTokenSilent`, aby mieć więcej opisów tej funkcji.
+* Metoda uzyskiwania i odnawiania tokenów dyskretnie bez monitowania użytkowników o nazwę `acquireToken` w bibliotece ADAL. js. W MSAL. js ta metoda ma nazwę `acquireTokenSilent`, aby mieć więcej opisów tej funkcji.
 
-### <a name="authority-value-common"></a>Wartość urzędu `common`
+### <a name="authority-value-common"></a>`common` wartość urzędu
 
-W wersji 1.0 użycie urzędu `https://login.microsoftonline.com/common` umożliwi użytkownikom logowanie się przy użyciu dowolnego konta usługi Azure AD (dla dowolnej organizacji).
+W wersji 1.0 przy użyciu `https://login.microsoftonline.com/common` urząd umożliwi użytkownikom logowanie się przy użyciu dowolnego konta usługi Azure AD (dla dowolnej organizacji).
 
-W wersji 2.0 przy użyciu urzędu `https://login.microsoftonline.com/common` użytkownicy będą mogli zalogować się przy użyciu dowolnego konta organizacji usługi Azure AD lub konta osobistego firmy Microsoft (MSA). Aby ograniczyć logowanie tylko do kont usługi Azure AD (takie samo zachowanie jak w przypadku biblioteki ADAL. js), należy użyć `https://login.microsoftonline.com/organizations`. Aby uzyskać szczegółowe informacje, zobacz opcję konfiguracji `authority` w artykule [Inicjowanie przy użyciu MSAL. js](msal-js-initializing-client-applications.md).
+W wersji 2.0, przy użyciu urzędu `https://login.microsoftonline.com/common`, użytkownicy będą mogli zalogować się przy użyciu dowolnego konta organizacji usługi Azure AD lub konta osobistego firmy Microsoft (MSA). Aby ograniczyć logowanie tylko do kont usługi Azure AD (takie samo zachowanie jak w przypadku biblioteki ADAL. js), należy użyć `https://login.microsoftonline.com/organizations`. Aby uzyskać szczegółowe informacje, zobacz opcja `authority` config w temacie [Initialize using MSAL. js](msal-js-initializing-client-applications.md).
 
 ### <a name="scopes-for-acquiring-tokens"></a>Zakresy do pozyskiwania tokenów
 * Zakres zamiast parametru zasobu w żądaniach uwierzytelnienia w celu uzyskania tokenów
@@ -64,9 +60,9 @@ W wersji 2.0 przy użyciu urzędu `https://login.microsoftonline.com/common` uż
 
     v 2.0: Scope = https\://graph.microsoft.com/User.Read
 
-    Możesz zażądać zakresów dla dowolnego interfejsu API zasobów przy użyciu identyfikatora URI interfejsu API w tym formacie: appidURI/Scope na przykład: https: \//moja dzierżawca. onmicrosoft. com/myapi/API. Read
+    Możesz zażądać zakresów dla dowolnego interfejsu API zasobów przy użyciu identyfikatora URI interfejsu API w tym formacie: appidURI/Scope na przykład: https:\//mytenant.onmicrosoft.com/myapi/api.read
 
-    W przypadku usługi MS interfejs API programu Graph wartość zakresu `user.read` mapuje do protokołu https: \//Graph. Microsoft. com/user. Read i może być używana zamiennie.
+    Tylko w przypadku programu MS interfejs API programu Graph wartość zakresu `user.read` Maps do protokołu https:\//graph.microsoft.com/User.Read i może być używana zamiennie.
 
     ```javascript
     var request = {

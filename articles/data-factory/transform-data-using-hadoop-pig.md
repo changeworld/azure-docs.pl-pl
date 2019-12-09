@@ -5,20 +5,21 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 3ee9da39745458fc24190e72bda15acfc23503dc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 01/16/2018
+ms.openlocfilehash: 4064d62a6dc826b23ff1f51e9f61e48d362ae695
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893862"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912936"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania w ramach programu Hadoop w Azure Data Factory
+
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-pig-activity.md)
 > * [Bieżąca wersja](transform-data-using-hadoop-pig.md)

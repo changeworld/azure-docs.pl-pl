@@ -4,21 +4,20 @@ description: Dowiedz się więcej na temat przenoszenia danych z usługi Amazon 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 636d3179-eba8-4841-bcb4-3563f6822a26
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 970e8d2b960c3a4be1c5208d7fa3a21bc05d9e9a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683215"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924838"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon Simple Storage Service przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -33,12 +32,12 @@ W tym artykule wyjaśniono, jak za pomocą działania kopiowania w Azure Data Fa
 Dane z usługi Amazon S3 można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory obecnie obsługuje tylko przeniesienie danych z usługi Amazon S3 do innych magazynów danych, ale nie przenosi danych z innych magazynów danych do usługi Amazon S3.
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
-Aby skopiować dane z usługi Amazon S3, upewnij się, że masz przyznane następujące uprawnienia:
+Aby skopiować dane z usługi Amazon S3, upewnij się, że przyznano następujące uprawnienia:
 
 * `s3:GetObject` i `s3:GetObjectVersion` dla operacji obiektów Amazon S3.
 * `s3:ListBucket` dla operacji zasobnika usługi Amazon S3. Jeśli używasz Kreatora kopiowania Data Factory, `s3:ListAllMyBuckets` jest również wymagany.
 
-Aby uzyskać szczegółowe informacje na temat pełnej listy uprawnień usługi Amazon S3, zobacz [Określanie uprawnień w zasadach](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Aby uzyskać szczegółowe informacje o pełną listę uprawnień Amazon S3, zobacz [określanie uprawnień w zasadach](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
 ## <a name="getting-started"></a>Wprowadzenie
 Można utworzyć potok z działaniem kopiowania, które przenosi dane ze źródła Amazon S3 przy użyciu różnych narzędzi lub interfejsów API.
@@ -60,16 +59,16 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla usługi Amazon S3.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Połączona usługa łączy magazyn danych z fabryką danych. Utworzysz połączoną usługę typu **typu awsaccesskey** , aby połączyć magazyn danych Amazon S3 z fabryką danych. Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi Amazon S3 (typu awsaccesskey).
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| accessKeyID |Identyfikator klucza dostępu tajnego. |ciąg |Tak |
-| secretAccessKey |Sam klucz dostępu tajnego. |Zaszyfrowany ciąg tajny |Tak |
+| accessKeyID |Identyfikator klucza dostępu do kluczy tajnych. |string |Tak |
+| secretAccessKey |Sam klucz dostępu do kluczy tajnych. |Zaszyfrowany ciąg tajny |Tak |
 
 >[!NOTE]
->Ten łącznik wymaga kluczy dostępu dla konta usługi IAM do kopiowania danych z usługi Amazon S3. [Tymczasowe poświadczenia zabezpieczeń](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nie są obsługiwane.
+>Ten łącznik wymaga klucze dostępu dla konta zarządzania tożsamościami i Dostępem w celu skopiowania danych z usługi Amazon S3. [Tymczasowe poświadczeń zabezpieczeń](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nie jest obsługiwane.
 >
 
 Oto przykład:
@@ -92,14 +91,14 @@ Aby określić zestaw danych do reprezentowania danych wejściowych w usłudze A
 
 Sekcje takie jak struktura, dostępność i zasady są podobne do wszystkich typów zestawów danych (takich jak SQL Database, Azure BLOB i Azure Table). Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** zestawu danych typu **AmazonS3** (który zawiera zestaw danych Amazon S3) ma następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| zasobnikname |Nazwa zasobnika S3. |Ciąg |Tak |
+| bucketName |Nazwa zasobnika S3. |Ciąg |Tak |
 | key |Klucz obiektu S3. |Ciąg |Nie |
-| prefiks |Prefiks klucza obiektu S3. Zaznaczone obiekty, których klucze zaczynają się od tego prefiksu. Stosuje się tylko wtedy, gdy klucz jest pusty. |Ciąg |Nie |
-| version |Wersja obiektu S3, jeśli włączono obsługę wersji S3. |Ciąg |Nie |
-| Formatowanie | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz sekcję [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Jeśli chcesz skopiować pliki między magazynami opartymi na plikach (kopia binarna), Pomiń sekcję format w definicjach zestawu danych wejściowych i wyjściowych. | |Nie |
-| skompresowane | Określ typ i poziom kompresji danych. Obsługiwane typy to: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy to: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). | |Nie |
+| prefix |Prefiks klucza obiektu S3. Zostaną zaznaczone obiekty, których klucze rozpoczynały od tego prefiksu. Stosuje się tylko wtedy, gdy klucz jest pusty. |Ciąg |Nie |
+| version |Wersja obiektu S3, jeśli jest włączone w wersji S3. |Ciąg |Nie |
+| format | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz skopiować pliki między magazynami opartymi na plikach (kopia binarna), Pomiń sekcję format w definicjach zestawu danych wejściowych i wyjściowych. | |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy to: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). | |Nie |
 
 
 > [!NOTE]
@@ -173,9 +172,9 @@ Można to zrobić w przypadku właściwości **prefix** zestawu danych Amazon S3
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Tworzenie potoków](data-factory-create-pipelines.md). Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, oraz zasady są dostępne dla wszystkich typów działań. Właściwości dostępne w sekcji **typeProperties** działania różnią się w zależności od typu działania. W przypadku działania kopiowania właściwości różnią się w zależności od typów źródeł i ujścia. Gdy źródło w działaniu kopiowania jest typu **FileSystemSource** (w tym Amazon S3), w sekcji **typeProperties** jest dostępna następująca Właściwość:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| rozpoznawania |Określa, czy w katalogu mają być cykliczne listy obiektów S3. |PRAWDA/FAŁSZ |Nie |
+| recursive |Określa, czy w katalogu mają być cykliczne listy obiektów S3. |PRAWDA/FAŁSZ |Nie |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>Przykład JSON: kopiowanie danych z usługi Amazon S3 do magazynu Azure Blob Storage
 Ten przykład pokazuje, jak skopiować dane z usługi Amazon S3 do magazynu obiektów blob platformy Azure. Dane można jednak skopiować bezpośrednio do [dowolnego ujścia, które są obsługiwane](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w Data Factory.

@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 5d2608d1c374fadac18cebc093ce50ef93f9656a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ac6b86b4ad8830bd08c9db28ac0027a5f048c3dd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597384"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935759"
 ---
-W tej tabeli przedstawiono powiązania, które są obsługiwane w dwóch głównych wersjach środowiska uruchomieniowego Azure Functions:
+W tej tabeli przedstawiono powiązania, które są obsługiwane w głównych wersjach środowiska uruchomieniowego Azure Functions:
 
-| Typ | 1.x | 2. x<sup>1</sup> | Wyzwalacz | Dane wejściowe | Dane wyjściowe |
+| Typ | 1.x | 2. x i więcej<sup>1</sup> | Wyzwalacz | Dane wejściowe | Dane wyjściowe |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
@@ -21,11 +21,11 @@ W tej tabeli przedstawiono powiązania, które są obsługiwane w dwóch główn
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
 | [Elementy webhook & HTTP](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
 | [IoT Hub](../articles/azure-functions/functions-bindings-event-iot.md)             |✔|✔|✔| |✔|
-| [Microsoft Graph tabele <br/>Excel](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
-| [Pliki <br/>OneDrive Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
-| [Microsoft Graph <br/>Outlook e-mail](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
-| [Microsoft Graph <br/>events](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
-| [Tokeny <br/>Auth Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
+| [Microsoft Graph<br/>tabeli programu Excel](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
+| [Microsoft Graph<br/>plików usługi OneDrive](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
+| [Microsoft Graph<br/>e-mail programu Outlook](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
+| [Zdarzenia<br/>Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
+| [Tokeny uwierzytelniania<br/>Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
 | [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
 | [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|
@@ -36,4 +36,4 @@ W tej tabeli przedstawiono powiązania, które są obsługiwane w dwóch główn
 | [Czasomierz](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup> w środowisku uruchomieniowym w wersji 2. x wszystkie powiązania z wyjątkiem http i Timer muszą być zarejestrowane. Zobacz [Rejestrowanie rozszerzeń powiązań](../articles/azure-functions/functions-bindings-register.md). Wszystkie obsługiwane powiązania 2. x są również obsługiwane w wersji 3. x, chyba że wskazano inaczej.   
+<sup>1</sup> począwszy od wersji 2. x środowiska uruchomieniowego, wszystkie powiązania z wyjątkiem http i Timer muszą być zarejestrowane. Zobacz [Rejestrowanie rozszerzeń powiązań](../articles/azure-functions/functions-bindings-register.md).

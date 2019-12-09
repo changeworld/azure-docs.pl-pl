@@ -4,21 +4,20 @@ description: Dowiedz się, jak przenieść dane z usługi Amazon RedShift za pom
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 707061f523e5e991c851abfe7960a9aa66fb2066
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683254"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924883"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon RedShift przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -56,18 +55,18 @@ W przypadku używania Kreatora kopiowania definicje JSON dla tych Data Factory j
 
 W poniższych sekcjach opisano właściwości JSON, które są używane do definiowania jednostek Data Factory dla usługi Amazon RedShift.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi Amazon RedShift.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | **type** |Ta właściwość musi być ustawiona na **AmazonRedshift**. |Tak |
-| **Server** |Adres IP lub nazwa hosta serwera Amazon RedShift. |Tak |
+| **server** |Adres IP lub nazwa hosta serwera Amazon RedShift. |Tak |
 | **przewożąc** |Numer portu TCP używanego przez serwer Amazon RedShift do nasłuchiwania połączeń klientów. |Nie (domyślnie 5439) |
 | **database** |Nazwa bazy danych Amazon RedShift. |Tak |
-| **uż** |Nazwa użytkownika, który ma dostęp do bazy danych. |Tak |
-| **hasło** |Hasło konta użytkownika. |Tak |
+| **Nazwa użytkownika** |Nazwa użytkownika, który ma dostęp do bazy danych. |Tak |
+| **Hasło** |Hasło konta użytkownika. |Tak |
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
@@ -75,7 +74,7 @@ Aby zapoznać się z listą sekcji i właściwości, które są dostępne do def
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w sklepie. Sekcja **typeProperties** dla zestawu danych typu **relacyjnego**, który zawiera zestaw danych Amazon RedShift, ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | **tableName** |Nazwa tabeli w bazie danych Amazon RedShift, do której odwołuje się połączona usługa. |Nie (Jeśli określono Właściwość **zapytania** działania Copy typu **RelationalSource** ) |
 
@@ -85,18 +84,18 @@ Aby zapoznać się z listą sekcji i właściwości, które są dostępne do def
 
 W przypadku działania kopiowania, gdy źródło jest typu **AmazonRedshiftSource**, w sekcji **typeProperties** są dostępne następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **dotyczących** | Użyj zapytania niestandardowego, aby odczytać dane. |Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
+| **query** | Użyj zapytania niestandardowego, aby odczytać dane. |Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
 | **redshiftUnloadSettings** | Zawiera grupę właściwości przy użyciu polecenia RedShift **Unload** . | Nie |
 | **s3LinkedServiceName** | Firma Amazon S3, która będzie używana jako magazyn tymczasowy. Połączona usługa jest określona przy użyciu nazwy Azure Data Factory typu **typu awsaccesskey**. | Wymagane w przypadku użycia właściwości **redshiftUnloadSettings** |
-| **zasobnikname** | Wskazuje zasobnik usługi Amazon S3, który ma być używany do przechowywania danych tymczasowych. Jeśli ta właściwość nie jest określona, działanie Copy automatycznie generuje zasobnik. | Wymagane w przypadku użycia właściwości **redshiftUnloadSettings** |
+| **bucketName** | Wskazuje zasobnik usługi Amazon S3, który ma być używany do przechowywania danych tymczasowych. Jeśli ta właściwość nie jest określona, działanie Copy automatycznie generuje zasobnik. | Wymagane w przypadku użycia właściwości **redshiftUnloadSettings** |
 
 Alternatywnie można użyć typu **RelationalSource** , który obejmuje Amazon RedShift, z następującą właściwością w sekcji **typeProperties** . Uwaga Ten typ źródła nie obsługuje polecenia RedShift **Unload** .
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **dotyczących** |Użyj zapytania niestandardowego, aby odczytać dane. | Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
+| **query** |Użyj zapytania niestandardowego, aby odczytać dane. | Nie (Jeśli określono Właściwość **TableName** zestawu danych) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Korzystanie z usługi UNLOAD do kopiowania danych z usługi Amazon RedShift
 
@@ -331,17 +330,17 @@ Następujące mapowania są używane, gdy działanie kopiowania konwertuje dane 
 | Typ RedShift Amazon | Typ .NET |
 | --- | --- |
 | SMALLINT |Int16 |
-| INTEGER |Elementem |
+| INTEGER |Int32 |
 | BIGINT |Int64 |
-| DOKŁADNOŚCI |Dokładności |
-| CZASIE rzeczywistym |Pojedyncze |
-| PODWÓJNA PRECYZJA |Double |
-| TYPU |Ciąg |
-| DELIKATN |Ciąg |
+| DECIMAL |Decimal |
+| REAL |Pojedyncze |
+| DOUBLE PRECISION |Double |
+| BOOLEAN |Ciąg |
+| CHAR |Ciąg |
 | VARCHAR |Ciąg |
-| DATE |DateTime |
-| ZNACZNIK czasu |DateTime |
-| Opis |Ciąg |
+| DATE |Data i godzina |
+| TIMESTAMP |Data i godzina |
+| TEXT |Ciąg |
 
 ## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
 Aby dowiedzieć się, jak mapować kolumny w źródłowym zestawie danych na kolumny w zestawie danych ujścia, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).

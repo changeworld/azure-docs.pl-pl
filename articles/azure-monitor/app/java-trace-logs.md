@@ -1,5 +1,5 @@
 ---
-title: Eksplorowanie dzienników śledzenia Java na platformie Azure Application Insights | Microsoft Docs
+title: Eksplorowanie dzienników śledzenia Java na platformie Azure Application Insights
 description: Wyszukaj ślady Log4J lub Logback w Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784599"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927245"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Eksplorowanie dzienników śledzenia Java w Application Insights
 Jeśli używasz programu Logback lub Log4J (w wersji 1.2 lub 2.0) do śledzenia, dzienniki śledzenia mogą być automatycznie wysyłane do Application Insights, w którym można eksplorować i wyszukiwać.
@@ -77,7 +77,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
     </dependencies>
 ```
 
-*Log4J v 2.0*
+*Log4J v2.0*
 
 ```XML
 
@@ -115,7 +115,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v 2.0**
+**Log4J v2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
@@ -130,11 +130,11 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
 #### <a name="otherwise-"></a>W innym przypadku...
 Postępuj zgodnie z instrukcjami, aby ręcznie zainstalować Application Insights Java SDK, Pobierz plik JAR (po nadejściu na stronie Maven Central kliknij link "Jar" w sekcji pobierania) dla odpowiedniego dołączania i Dodaj pobrany plik JAR dołączonego do projektu.
 
-| Rejestratora | Pobierz | Biblioteka |
+| Logger | Pobierz | Biblioteka |
 | --- | --- | --- |
-| Logback |[Logback Dołącz do jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |ApplicationInsights-Logging-logback |
-| Log4J v 2.0 |[Log4J v2 — plik JAR](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |ApplicationInsights-Logging-log4j2 |
-| Log4J v 1.2 |[Log4J v 1.2 dołączanie jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |ApplicationInsights — rejestrowanie log4j1_2 |
+| Logback |[Logback Dołącz do jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v2.0 |[Log4J v2 — plik JAR](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4j v1.2 |[Log4J v 1.2 dołączanie jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
 ### <a name="add-the-appender-to-your-logging-framework"></a>Dodawanie dołączania do struktury rejestrowania
@@ -153,7 +153,7 @@ Aby rozpocząć pobieranie śladów, Scal odpowiedni fragment kodu z plikiem kon
     </root>
 ```
 
-*Log4J v 2.0*
+*Log4J v2.0*
 
 ```XML
 

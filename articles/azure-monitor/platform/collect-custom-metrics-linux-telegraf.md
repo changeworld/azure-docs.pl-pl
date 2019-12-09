@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e8783d500ed7dd6e8e5d518d2a4fbe5e5e1e276
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305281"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926744"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Zbieranie niestandardowych metryk dla maszyny wirtualnej z systemem Linux za pomocą agenta InfluxData telegraf
 
@@ -29,7 +29,7 @@ Korzystając z Azure Monitor, można zbierać niestandardowe metryki za pośredn
 
 W tym samouczku wdrażamy maszynę wirtualną z systemem Linux z systemem operacyjnym Ubuntu 16,04 LTS. Agent telegraf jest obsługiwany w przypadku większości systemów operacyjnych Linux. Pakiety Debian i RPM są dostępne wraz z nieopakowanymi plikami binarnymi systemu Linux w [portalu pobierania InfluxData](https://portal.influxdata.com/downloads). Więcej instrukcji i opcji instalacji można znaleźć w tym [przewodniku instalacji telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 Utwórz nową maszynę wirtualną z systemem Linux: 
 

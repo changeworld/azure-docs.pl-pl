@@ -1,5 +1,5 @@
 ---
-title: Live Metrics Stream z niestandardowymi metrykami i diagnostyką na platformie Azure Application Insights | Microsoft Docs
+title: Diagnozowanie za pomocą Live Metrics Stream platformy Azure Application Insights
 description: Monitoruj swoją aplikację sieci Web w czasie rzeczywistym za pomocą metryk niestandardowych i Diagnozuj problemy z dynamicznym źródłem błędów, śladów i zdarzeń.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 69aaa61bb0be9a5f07de85ff4ef81b28a86aefaa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575610"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927223"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorowanie & diagnozowanie przy użyciu 1-sekundowego opóźnienia
 
@@ -22,7 +22,7 @@ Przesondowanie pulsu aktywnej, działającej aplikacji sieci Web przy użyciu Li
 Za pomocą Live Metrics Stream można:
 
 * Sprawdź poprawność poprawki, gdy zostanie ona wydana, obserwując liczniki wydajności i niepowodzeń.
-* Obserwuj efekt ładowania testów i Diagnozuj problemy na żywo. 
+* Obserwuj efekt ładowania testów i Diagnozuj problemy na żywo.
 * Skup się na konkretnych sesjach testowych lub odfiltruj znane problemy, wybierając i filtrując metryki, które mają być obserwowane.
 * Pobierz ślady wyjątków w miarę ich występowania.
 * Eksperymentuj z filtrami, aby znaleźć najbardziej odpowiednie wskaźniki KPI.
@@ -33,7 +33,7 @@ Za pomocą Live Metrics Stream można:
 
 Metryki na żywo są obecnie obsługiwane w przypadku aplikacji ASP.NET, ASP.NET Core, Azure Functions, Java i Node. js.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 1. Jeśli jeszcze nie [zainstalowano Application Insights](../../azure-monitor/azure-monitor-app-hub.md) w aplikacji sieci Web, zrób to teraz.
 2. Oprócz standardowych pakietów Application Insights [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) jest wymagany do włączenia strumienia metryk na żywo.
@@ -45,7 +45,7 @@ Metryki na żywo są obecnie obsługiwane w przypadku aplikacji ASP.NET, ASP.NET
 
 4. [Zabezpiecz kanał kontroli,](#secure-the-control-channel) Jeśli możesz użyć poufnych danych, takich jak nazwy klientów w filtrach.
 
-### <a name="no-data-check-your-server-firewall"></a>Brak danych? Sprawdź zaporę serwera
+### <a name="no-data-check-your-server-firewall"></a>Nie masz danych? Sprawdź zaporę serwera
 
 Sprawdź, czy [porty wychodzące Live Metrics Stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) są otwarte w zaporze serwerów.
 
@@ -56,7 +56,7 @@ Sprawdź, czy [porty wychodzące Live Metrics Stream](../../azure-monitor/app/ip
 |Opóźnienie|Dane wyświetlane w jednej sekundzie|Zagregowane w ciągu minut|
 |Brak przechowywania|Dane są przechowywane na wykresie, a następnie są odrzucane|[Dane przechowywane przez 90 dni](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Na żądanie|Dane są przesyłane strumieniowo podczas otwierania metryk na żywo|Dane są wysyłane za każdym razem, gdy zestaw SDK jest zainstalowany i włączony|
-|Bezpłatna|Za dane Live Stream nie są naliczane opłaty|Podlega [cennikowi](../../azure-monitor/app/pricing.md)
+|Bezpłatnie|Za dane Live Stream nie są naliczane opłaty|Podlega [cennikowi](../../azure-monitor/app/pricing.md)
 |Próbkowanie|Wszystkie wybrane metryki i liczniki są przesyłane. Błędy i ślady stosu są próbkowane. TelemetryProcessors nie są stosowane.|Zdarzenia mogą być [próbkowane](../../azure-monitor/app/api-filtering-sampling.md)|
 |Kanał kontrolny|Sygnały kontroli filtru są wysyłane do zestawu SDK. Zalecamy zabezpieczenie tego kanału.|Komunikacja jest jednym ze sposobów, w portalu|
 
@@ -188,7 +188,7 @@ Jeśli jednak rozpoznasz i ufasz wszystkim połączonym serwerom, możesz wypró
 | .NET                             | Obsługiwane (V 2.7.2 +) | Obsługiwane (V 2.7.2 +) | Obsługiwane (V 2.7.2 +) | Obsługiwane (V 2.7.2 +) | Obsługiwane (V 2.7.2 +)  |
 | .NET Core (target =. NET Framework)| Obsługiwane (V 2.4.1 +) | Obsługiwane (V 2.4.1 +) | Obsługiwane (V 2.4.1 +) | Obsługiwane (V 2.4.1 +) | Obsługiwane (V 2.4.1 +)  |
 | .NET Core (target =. NET Core)     | Obsługiwane (V 2.4.1 +) | Obsługiwane*          | Obsługiwane (V 2.4.1 +) | Obsługiwane (V 2.4.1 +) | **Nieobsługiwane**    |
-| Azure Functions v2               | Obsługiwane           | Obsługiwane           | Obsługiwane           | Obsługiwane           | **Nieobsługiwane**    |
+| Azure Functions w wersji 2               | Obsługiwane           | Obsługiwane           | Obsługiwane           | Obsługiwane           | **Nieobsługiwane**    |
 | Java                             | Obsługiwane (V 2.0.0 +) | Obsługiwane (V 2.0.0 +) | **Nieobsługiwane**   | **Nieobsługiwane**   | **Nieobsługiwane**    |
 | Node.js                          | Obsługiwane (V 1.3.0 +) | Obsługiwane (V 1.3.0 +) | **Nieobsługiwane**   | Obsługiwane (V 1.3.0 +) | **Nieobsługiwane**    |
 
@@ -204,7 +204,7 @@ Domyślnie metryki na żywo są wyłączone w zestawie SDK środowiska Node. js.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Brak danych? Jeśli aplikacja znajduje się w sieci chronionej: Live Metrics Stream używa różnych adresów IP niż inne Application Insights telemetrii. Upewnij się, że [te adresy IP](../../azure-monitor/app/ip-addresses.md) są otwarte w zaporze.
+Nie masz danych? Jeśli aplikacja znajduje się w sieci chronionej: Live Metrics Stream używa różnych adresów IP niż inne Application Insights telemetrii. Upewnij się, że [te adresy IP](../../azure-monitor/app/ip-addresses.md) są otwarte w zaporze.
 
 ## <a name="next-steps"></a>Następne kroki
 * [Monitorowanie użycia za pomocą Application Insights](../../azure-monitor/app/usage-overview.md)

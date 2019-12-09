@@ -1,24 +1,25 @@
 ---
-title: 'Przyrostowe kopiowanie wielu tabel przy użyciu Azure Data Factory '
+title: Przyrostowe kopiowanie wielu tabel przy użyciu programu PowerShell
 description: W tym samouczku utworzysz potok usługi Azure Data Factory służący do przyrostowego kopiowania danych różnicowych z wielu tabel w lokalnej bazie danych SQL Server do bazy danych Azure SQL Database.
 services: data-factory
-documentationcenter: ''
+ms.author: yexu
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: b841acf45c20320fada895f20dfc4065837d5add
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 46e0815ea341b732e20ebe7ffa9af355e1f35e87
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683390"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926469"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
+
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
 
 Ten samouczek obejmuje następujące procedury:
@@ -36,7 +37,7 @@ Ten samouczek obejmuje następujące procedury:
 > * Ponowne uruchamianie i monitorowanie potoku.
 > * Przegląd wyników końcowych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Poniżej przedstawiono ważne czynności związane z tworzeniem tego rozwiązania: 
 
 1. **Wybierz kolumnę limitu**.
@@ -360,7 +361,7 @@ W tym kroku połączysz lokalną bazę danych programu SQL Server z fabryką dan
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>Tworzenie połączonej usługi bazy danych SQL
-1. Utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService. JSON** w folderze C:\ADFTutorials\IncCopyMultiTableTutorial o następującej zawartości. (Utwórz folder ADF, jeśli jeszcze nie istnieje). Zastąp &lt;ServerName&gt;, &lt;nazwę bazy danych&gt;, &lt;nazwę użytkownika&gt;i &lt;hasło&gt; nazwą bazy danych SQL Server, nazwą bazy danych, nazwą użytkownika i hasło przed zapisaniem pliku. 
+1. Utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService. JSON** w folderze C:\ADFTutorials\IncCopyMultiTableTutorial o następującej zawartości. (Utwórz folder ADF, jeśli jeszcze nie istnieje). Przed zapisaniem pliku Zastąp ciąg &lt;ServerName&gt;, &lt;nazwę bazy danych&gt;, &lt;nazwę użytkownika&gt;i &lt;hasło&gt; z nazwą bazy danych SQL Server, nazwą bazy danych, nazwą użytkownika i hasłem. 
 
     ```json
     {  
@@ -794,7 +795,7 @@ Potok przyjmuje listę nazw tabel jako parametr. **Działanie foreach** iteruje 
 
 ## <a name="monitor-the-pipeline"></a>Monitorowanie potoku
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 1. Wybierz pozycję **Wszystkie usługi**, przeprowadź wyszukiwanie za pomocą słowa kluczowego *Fabryki danych*, a następnie wybierz pozycję **Fabryki danych**. 
 

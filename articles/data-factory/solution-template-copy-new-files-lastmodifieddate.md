@@ -1,24 +1,22 @@
 ---
-title: Kopiuj nowe i zmienione pliki przez LastModifiedDate z Azure Data Factory
+title: Kopiuj nowe i zmienione pliki według LastModifiedDate
 description: Dowiedz się, jak używać szablonu rozwiązania do kopiowania nowych i zmienionych plików przez LastModifiedDate przy użyciu Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bf095fbdab0e7368149eac560d3bdb20134e3e3e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684237"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927777"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopiuj nowe i zmienione pliki przez LastModifiedDate z Azure Data Factory
 
@@ -34,8 +32,8 @@ Szablon zawiera jedno działanie:
 Szablon definiuje cztery parametry:
 -  *FolderPath_Source* to ścieżka folderu, w której można odczytać pliki z magazynu źródłowego. Należy zastąpić wartość domyślną własną ścieżką folderu.
 -  *FolderPath_Destination* to ścieżka folderu, w której chcesz skopiować pliki do magazynu docelowego. Należy zastąpić wartość domyślną własną ścieżką folderu.
--  *LastModified_From* jest używany do wybierania plików, których atrybut LastModifiedDate jest po lub równy tej wartości daty/godziny.  W celu wybrania tylko nowych plików, które nie zostały ostatnio skopiowane, ta wartość daty i godziny może być czasem, w którym potok został wyzwolony jako ostatni. Wartość domyślną "2019-02-01T00:00:00Z" można zastąpić oczekiwaną LastModifiedDate w strefie czasowej UTC. 
--  *LastModified_To* jest używany do wybierania plików, których atrybut LastModifiedDate jest wcześniejszy niż ta wartość daty i godziny. W celu wybrania tylko nowych plików, które nie zostały ostatnio skopiowane, ta wartość daty i godziny może być obecna.  Wartość domyślną "2019-02-01T00:00:00Z" można zastąpić oczekiwaną LastModifiedDate w strefie czasowej UTC. 
+-  *LastModified_From* jest używany do wybierania plików, których atrybut LastModifiedDate ma wartość lub równą tej wartości daty/godziny.  W celu wybrania tylko nowych plików, które nie zostały ostatnio skopiowane, ta wartość daty i godziny może być czasem, w którym potok został wyzwolony jako ostatni. Wartość domyślną "2019-02-01T00:00:00Z" można zastąpić oczekiwaną LastModifiedDate w strefie czasowej UTC. 
+-  *LastModified_To* służy do wybierania plików, których atrybut LastModifiedDate jest wcześniejszy niż ta wartość daty i godziny. W celu wybrania tylko nowych plików, które nie zostały ostatnio skopiowane, ta wartość daty i godziny może być obecna.  Wartość domyślną "2019-02-01T00:00:00Z" można zastąpić oczekiwaną LastModifiedDate w strefie czasowej UTC. 
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 
@@ -51,7 +49,7 @@ Szablon definiuje cztery parametry:
 
     ![Utwórz nowe połączenie z miejscem docelowym](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-4. Wybierz pozycję **Użyj tego szablonu**.
+4. Wybierz przycisk **Użyj tego szablonu**.
 
     ![Użyj tego szablonu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
@@ -60,7 +58,7 @@ Szablon definiuje cztery parametry:
     ![Pokaż potok](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
 6. Wybierz pozycję **Debuguj**, Zapisz wartość **parametrów** i wybierz pozycję **Zakończ**.  Na poniższej ilustracji ustawimy parametry w następujący sposób.
-   - **FolderPath_Source** =  **/Source/**
+   - **FolderPath_Source** =  **/source/**
    - **FolderPath_Destination** =  **/Destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
@@ -83,7 +81,7 @@ Szablon definiuje cztery parametry:
 
 10. Wybierz **okno wirowania** dla typu wyzwalacza, ustaw **co 15 minut** jako cykl (możesz zmienić na dowolny czas), a następnie wybierz przycisk **dalej**.
 
-    ![Utwórz wyzwalacz](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
+    ![Tworzenie wyzwalacza](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Zapisz wartość **parametrów uruchamiania wyzwalacza** w następujący sposób, a następnie wybierz pozycję **Zakończ**.
     - **FolderPath_Source** =  **/Source/** .  Możesz zastąpić folder w źródłowym magazynie danych.

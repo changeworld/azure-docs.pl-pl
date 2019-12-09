@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bb86d551d83668a3558cf63827a64a481cf87e02
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276789"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926937"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -194,7 +194,7 @@ Skrypt zawiera dwie funkcje, które ładują i uruchamiają model:
 
 * `init()`: Zazwyczaj ta funkcja ładuje model do obiektu globalnego. Ta funkcja jest uruchamiana tylko raz, gdy zostanie uruchomiony kontener platformy Docker dla usługi sieci Web.
 
-* `run(input_data)`: Ta funkcja używa modelu do przewidywania wartości na podstawie danych wejściowych. Dane wejściowe i wyjściowe przebiegu zazwyczaj używają formatu JSON do serializacji i deserializacji. Możesz również korzystać z nieprzetworzonych danych binarnych. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem ich do klienta.
+* `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe przebiegu zazwyczaj używają formatu JSON do serializacji i deserializacji. Możesz również korzystać z nieprzetworzonych danych binarnych. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem ich do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Lokalizowanie plików modelu w skrypcie wprowadzania
 
@@ -208,7 +208,7 @@ AZUREML_MODEL_DIR jest zmienną środowiskową utworzoną podczas wdrażania us�
 
 W poniższej tabeli opisano wartość AZUREML_MODEL_DIR w zależności od liczby wdrożonych modeli:
 
-| Wdrożenie | Wartość zmiennej środowiskowej |
+| Wdrażanie | Wartość zmiennej środowiskowej |
 | ----- | ----- |
 | Jeden model | Ścieżka do folderu zawierającego model. |
 | Wiele modeli | Ścieżka do folderu zawierającego wszystkie modele. Modele są zlokalizowane według nazwy i wersji w tym folderze (`$MODEL_NAME/$VERSION`) |
@@ -530,7 +530,7 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrożenia dla każdeg
 
 | Docelowy zasób obliczeniowy | Przykład konfiguracji wdrożenia |
 | ----- | ----- |
-| Lokalny | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Lokalna | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -867,6 +867,9 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 Wdrożenie modelu bez kodu jest obecnie dostępne w wersji zapoznawczej i obsługuje następujące platformy uczenia maszynowego:
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel
+Modele Tensorflow muszą być zarejestrowane w **formacie SavedModel** do pracy z wdrożeniem modelu bez kodu.
+
+Zobacz [ten link](https://www.tensorflow.org/guide/saved_model) , aby uzyskać informacje na temat tworzenia SavedModel.
 
 ```python
 from azureml.core import Model
@@ -1069,8 +1072,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć wdrożoną usługę sieci Web, użyj `service.delete()`.
-Aby usunąć zarejestrowany model, użyj `model.delete()`.
+Aby usunąć wdrożonej usługi sieci web, użyj `service.delete()`.
+Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
 
 Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) i [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1078,7 +1081,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebSe
 
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Zabezpieczanie Azure Machine Learning usług sieci Web przy użyciu protokołu SSL](how-to-secure-web-service.md)
+* [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu Azure Machine Learning wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)

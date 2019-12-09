@@ -1,32 +1,32 @@
 ---
-title: Kopiowanie danych z kwadratu przy użyciu Azure Data Factory (wersja zapoznawcza)
-description: Informacje o kopiowaniu danych z kwadratu do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+title: Kopiuj dane z kwadratu (wersja zapoznawcza)
+description: Dowiedz się, jak skopiować dane z kwadrat do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: b7f83e8e7690180dbed04572f2e2699f02d5fed7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de795d082069ff5ad895c48b7a507512449d0208
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680131"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931004"
 ---
-# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopiowanie danych z kwadratu przy użyciu Azure Data Factory (wersja zapoznawcza)
+# <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopiowanie danych z kwadrat przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z kwadratu. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze kwadrat. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 > [!IMPORTANT]
-> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz ją wypróbować i przekazać nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
+> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Ten łącznik kwadratowy jest obsługiwany dla następujących działań:
 
@@ -34,30 +34,30 @@ Ten łącznik kwadratowy jest obsługiwany dla następujących działań:
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
 
-Dane można kopiować z kwadratu do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Możesz skopiować dane z kwadratowe, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
+Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika kwadratowego.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Następujące właściwości są obsługiwane dla połączonej usługi kwadratowej:
+Następujące właściwości są obsługiwane w przypadku kwadratowy połączonej usługi:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **Square** | Tak |
-| Host | Adres URL wystąpienia kwadratowego. (tj. mystore.mysquare.com)  | Tak |
-| clientId | Identyfikator klienta skojarzony z aplikacją kwadratową.  | Tak |
-| clientSecret | Wpis tajny klienta skojarzony z aplikacją kwadratową. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
-| RedirectUri | Adres URL przekierowania przypisany do kwadratowego pulpitu nawigacyjnego aplikacji. (np. http:\//localhost: 2500)  | Tak |
+| type | Właściwość type musi być równa: **kwadrat** | Tak |
+| host | Adres URL wystąpienia kwadrat. (i.e. mystore.mysquare.com)  | Tak |
+| clientId | Identyfikator klienta skojarzony z aplikacją w kształcie kwadratu.  | Tak |
+| clientSecret | Klucz tajny klienta skojarzonego z aplikacją w kształcie kwadratu. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| redirectUri | Adres URL przekierowania przypisane na pulpicie nawigacyjnym aplikacji w kształcie kwadratu. (np. http:\//localhost: 2500)  | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy nazwa hosta ma być wymagana w certyfikacie serwera, aby odpowiadała nazwie hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy należy zweryfikować tożsamość serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
 
@@ -81,13 +81,13 @@ Następujące właściwości są obsługiwane dla połączonej usługi kwadratow
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez kwadratowy zestaw danych.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych w kształcie kwadratu.
 
-Aby skopiować dane z kwadratu, ustaw właściwość Type zestawu danych na **kwadratobject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z kwadratowych, należy ustawić właściwość typu zestawu danych na **SquareObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na: **squareobject** | Tak |
+| type | Właściwość typu elementu dataset musi być równa: **SquareObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -109,16 +109,16 @@ Aby skopiować dane z kwadratu, ustaw właściwość Type zestawu danych na **kw
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło kwadratowe.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło w kształcie kwadratu.
 
-### <a name="square-as-source"></a>Kwadrat jako źródło
+### <a name="square-as-source"></a>Kwadratowe jako źródło
 
-Aby skopiować dane z kwadratu, ustaw typ źródła w działaniu Copy na **SquareSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z kwadratowych, należy ustawić typ źródła w działaniu kopiowania, aby **SquareSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **SquareSource** | Tak |
-| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM Business"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **SquareSource** | Tak |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Business"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -157,4 +157,4 @@ Aby skopiować dane z kwadratu, ustaw typ źródła w działaniu Copy na **Squar
 Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

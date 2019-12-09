@@ -1,29 +1,25 @@
 ---
-title: Inicjuj aplikacje klienckie (Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET)
+title: Inicjowanie aplikacji klienckich MSAL.NET | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje na temat inicjowania publicznego klienta i poufnych aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8cf7b7004097ef5a4d915d8fdff60cc9606c5be
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 15c0db66fd357ba150af1901a6b50a645fd1ca88
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927077"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915861"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicjuj aplikacje klienckie przy użyciu MSAL.NET
 W tym artykule opisano sposób inicjowania publicznego klienta i poufnych aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).  Aby dowiedzieć się więcej na temat typów aplikacji klienta i opcji konfiguracji aplikacji, zapoznaj się z [omówieniem](msal-client-applications.md).

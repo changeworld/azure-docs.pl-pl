@@ -9,22 +9,21 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9421a4bbc5f05e8473d25aa63f31e9a8e23e3c98
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b4b13f8b21cfdedde93145a8e437bc2301bee460
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555197"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927101"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Oficjalne dokumenty Azure Data Factory 
 
 Oficjalne dokumenty umożliwiają Eksplorowanie Azure Data Factory na bardziej szczegółowym poziomie. Ten artykuł zawiera listę dostępnych oficjalnych dokumentów dla Azure Data Factory.
 
-| **Dokumentacji** | **Opis** |
+| **Oficjalny dokument** | **Opis** |
 | --- | --- |
 |[Azure Data Factory — integracja danych w chmurze](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-data-integration-in-the-cloud/Azure_Data_Factory_Data_Integration_in_the_Cloud.pdf) | W tym dokumencie opisano sposób, w jaki Azure Data Factory może umożliwić Kompilowanie nowoczesnego magazynu danych, umożliwienie zaawansowanej analizy w celu kierowania inteligentnych aplikacji SaaS i podnoszenia pakietów usług integracji SQL Server na platformę Azure.|
 |[Migracja danych z lokalnego magazynu danych relacyjnych na platformę Azure przy użyciu Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/) | Ten dokument zawiera złożoność migrowania dziesiątek danych z istniejącego magazynu danych relacyjnych (na przykład Netezza, Oracle, Teradata, SQL Server) na platformę Azure (na przykład Blob Storage lub Azure Data Lake Storage) przy użyciu Azure Data Factory. Problemy i najlepsze rozwiązania przedstawiono w odniesieniu do odporności, wydajności, skalowalności, zarządzania i zabezpieczeń w przypadku podróży pozyskiwania danych Big Data na platformie Azure przez Azure Data Factory. |

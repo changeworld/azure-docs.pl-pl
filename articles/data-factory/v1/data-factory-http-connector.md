@@ -4,20 +4,19 @@ description: Dowiedz się, jak przenieść dane z lokalnego lub w chmurze źród
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4133393b7b21394ea397598a5e1651ee370f92f0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682510"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924182"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Przenoszenie danych ze źródła HTTP przy użyciu Azure Data Factory
 
@@ -39,7 +38,7 @@ Za pomocą tego łącznika protokołu HTTP można pobrać dane z *chmury i lokal
 
 Podczas kopiowania danych z lokalnego punktu końcowego HTTP należy zainstalować bramę Zarządzanie danymi w środowisku lokalnym lub na maszynie wirtualnej platformy Azure. Aby dowiedzieć się więcej na temat bramy Zarządzanie danymi i uzyskać instrukcje krok po kroku dotyczące konfigurowania bramy, zobacz temat [przeniesienie danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 
 Można utworzyć potok z działaniem kopiowania, aby przenieść dane ze źródła HTTP przy użyciu różnych narzędzi lub interfejsów API:
 
@@ -47,11 +46,11 @@ Można utworzyć potok z działaniem kopiowania, aby przenieść dane ze źród�
 
 - Możesz również użyć następujących narzędzi do tworzenia potoku: programu **Visual Studio**, **Azure PowerShell**, **szablonu Azure Resource Manager**, **interfejsu API platformy .NET**lub **interfejsu API REST**. Instrukcje krok po kroku dotyczące tworzenia potoku z działaniem kopiowania można znaleźć w [samouczku działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Przykłady JSON kopiujące dane ze źródła HTTP do magazynu obiektów blob platformy Azure można znaleźć w [przykładach JSON](#json-examples).
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 W poniższej tabeli opisano elementy JSON, które są specyficzne dla połączonej usługi HTTP:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type | Właściwość **Type** musi być ustawiona na wartość **http**. | Tak |
 | url | Podstawowy adres URL serwera sieci Web. | Tak |
@@ -66,9 +65,9 @@ Aby uzyskać szczegółowe informacje na temat ustawiania poświadczeń dla loka
 
 Ustaw wartość **AuthenticationType** na **Basic**, **Digest**lub **Windows**. Poza ogólnymi właściwościami łącznika HTTP opisanymi w poprzednich sekcjach ustaw następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| Uż | Nazwa użytkownika, która ma być używana do uzyskiwania dostępu do punktu końcowego HTTP. | Tak |
+| userName | Nazwa użytkownika, która ma być używana do uzyskiwania dostępu do punktu końcowego HTTP. | Tak |
 | hasło | Hasło użytkownika (**username**). | Tak |
 
 **Przykład: używanie uwierzytelniania podstawowego, szyfrowanego lub systemu Windows**
@@ -94,7 +93,7 @@ Ustaw wartość **AuthenticationType** na **Basic**, **Digest**lub **Windows**. 
 
 Aby użyć uwierzytelniania podstawowego, ustaw wartość **AuthenticationType** na **ClientCertificate**. Poza ogólnymi właściwościami łącznika HTTP opisanymi w poprzednich sekcjach ustaw następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | embeddedCertData | Zakodowana w formacie base64 zawartość danych binarnych pliku PFX. | Określ wartość **embeddedCertData** lub **certThumbprint** |
 | certThumbprint | Odcisk palca certyfikatu, który został zainstalowany w magazynie certyfikatów maszyny bramy. Stosuje się tylko w przypadku kopiowania danych z lokalnego źródła HTTP. | Określ wartość **embeddedCertData** lub **certThumbprint** |
@@ -158,15 +157,15 @@ Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępn
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych. Sekcja **typeProperties** zawiera informacje o lokalizacji danych w magazynie danych. Sekcja **typeProperties** zestawu danych typu **http** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typ** zestawu danych musi być ustawiony na wartość **http**. | Tak |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ścieżka nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. <br><br> Aby utworzyć dynamiczny adres URL, można użyć [funkcji Data Factory i zmiennych systemowych](data-factory-functions-variables.md). Przykład: **relativeUrl**: **$ $Text. Format ("/My/Report? miesiąc = {0: rrrr}-{0: mm} & FMT = CSV", parametru slicestart)** . | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **Get** i **post**. | Nie <br />(wartość domyślna to **Get**) |
 | additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
 | Elemencie requestbody | Treść żądania HTTP. | Nie |
-| Formatowanie | Jeśli chcesz *pobrać dane z punktu końcowego http, tak jakby się* nie przeanalizować, Pomiń ustawienie **formatu** . <br><br> Jeśli chcesz przeanalizować zawartość odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**i **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [format tekstowy](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i [Format Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nie |
-| skompresowane | Określ typ i poziom kompresji danych. Obsługiwane typy: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| format | Jeśli chcesz *pobrać dane z punktu końcowego http, tak jakby się* nie przeanalizować, Pomiń ustawienie **formatu** . <br><br> Jeśli chcesz przeanalizować zawartość odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**i **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [format tekstowy](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i [Format Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 **Przykład: użycie metody GET (default)**
 
@@ -221,7 +220,7 @@ Właściwości, które są dostępne w sekcji **typeProperties** działania, ró
 
 Obecnie, gdy źródło w działaniu kopiowania ma typ **HttpSource** , obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | Limit czasu (wartość **TimeSpan** ) żądania HTTP w celu uzyskania odpowiedzi. Jest to limit czasu, aby uzyskać odpowiedź, a nie limit czasu odczytu danych odpowiedzi. | Nie<br />(wartość domyślna: **00:01:40**) |
 

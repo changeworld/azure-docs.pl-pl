@@ -1,24 +1,25 @@
 ---
-title: Istnieje transformacja w przepływie danych mapowania Azure Data Factory
+title: Istnieje transformacja przepływu danych mapowania
 description: Sprawdzanie istniejących wierszy przy użyciu transformacji EXISTS w Azure Data Factory mapowaniu przepływu danych
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676729"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930406"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Istnieje transformacja przepływu danych mapowania
 
 Transformacja EXISTS to transformacja filtrowania wierszy, która sprawdza, czy dane istnieją w innym źródle lub strumieniu. Strumień wyjściowy zawiera wszystkie wiersze w lewym strumieniu, który istnieje lub nie istnieje w odpowiednim strumieniu. Transformacja istnieje podobna do ```SQL WHERE EXISTS``` i ```SQL WHERE NOT EXISTS```.
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
 1. Wybierz, który strumień danych ma być używany na liście rozwijanej **odpowiedniego strumienia** .
 1. Określ, czy chcesz, aby dane były już istniejące, czy nie istnieją w ustawieniu **typu istnieją** .

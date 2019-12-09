@@ -1,17 +1,18 @@
 ---
-title: Skrypt przepływu danych mapowania Azure Data Factory
+title: Mapowanie skryptu przepływu danych
 description: Przegląd kodu skryptu przepływu danych Data Factory w języku związanym z kodem
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/10/2019
-ms.openlocfilehash: 4ff5a05fd40ef086c1f2332443ca03d5e872e9a8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d861a4355158dfe18ac3aa40a7f98dc11ebda90b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010159"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930256"
 ---
 # <a name="data-flow-script-dfs"></a>Skrypt przepływu danych (DFS)
 

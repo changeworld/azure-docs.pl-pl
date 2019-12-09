@@ -1,23 +1,22 @@
 ---
-title: 'Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime '
+title: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime
 description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z wykonaniem pakietu SSIS w środowisku SSIS Integration Runtime
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/15/2019
-author: wenjiefu
 ms.author: wenjiefu
+author: wenjiefu
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 9692c754e59eba02d3d483d44430150107d703a4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 04/15/2019
+ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217538"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928730"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime
 
@@ -156,7 +155,7 @@ Jedną z potencjalnych przyczyn jest to, że własne środowisko Integration Run
   * Dziennik wykonywania można znaleźć w [raportach programu SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) lub w folderze dziennika określonym w działaniu pakietu usług SSIS.
   * Sieć wirtualna może być również używana do uzyskiwania dostępu do danych lokalnych jako alternatywy. Więcej szczegółów można znaleźć w witrynie [Azure-SSIS Integration Runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md)
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Komunikat o błędzie: "stan zadania przemieszczania: niepowodzenie. Błąd zadania przemieszczania: kod błędu: 2906, ErrorMessage: wykonywanie pakietu nie powiodło się. wynik: {"OperationErrorMessages": "kod zakończenia modułu SSIS:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", " effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Komunikat o błędzie: "stan zadania przemieszczania: niepowodzenie. Błąd zadania przemieszczania: kod błędu: 2906, ErrorMessage: wykonanie pakietu nie powiodło się. wynik: {"OperationErrorMessages": "kod zakończenia modułu SSIS:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration":..., "durationInQueue": {"integrationRuntimeQueue":...}} "
 
 Upewnij się, C++ że środowisko uruchomieniowe języka Visual jest zainstalowane na własnym komputerze Integration Runtime. Więcej szczegółów można znaleźć w temacie [Konfigurowanie samodzielnego środowiska IR jako serwera proxy dla Azure-SSIS IR w usłudze ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 

@@ -2,29 +2,25 @@
 title: Natywne aplikacje w Azure Active Directory
 description: Opisuje aplikacje natywne i podstawowe informacje dotyczące przepływu protokołu, rejestracji i wygaśnięcia tokenu dla tego typu aplikacji.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0034668231d97e64602bdbdd0836bded97bb733d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e7313acd26874f29a587d1c854a5286ed06d3cad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373868"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915124"
 ---
-# <a name="native-apps"></a>Natywne aplikacje
+# <a name="native-apps"></a>Aplikacje natywne
 
 Natywne aplikacje to aplikacje, które wywołują internetowy interfejs API w imieniu użytkownika. Ten scenariusz jest oparty na typie autoryzacji uwierzytelniania OAuth 2,0 z klientem publicznym, zgodnie z opisem w sekcji 4,1 [specyfikacji OAuth 2,0](https://tools.ietf.org/html/rfc6749). Aplikacja natywna uzyskuje token dostępu dla użytkownika przy użyciu protokołu OAuth 2,0. Ten token dostępu jest następnie wysyłany w żądaniu do internetowego interfejsu API, który autoryzuje użytkownika i zwraca żądany zasób.
 

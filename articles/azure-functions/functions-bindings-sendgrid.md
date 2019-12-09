@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 997c9427883e2a099c2c185b618701fb85cb96a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a96cd537328a1a9edeeb03f81350ed5393806765
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231086"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927574"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions powiązania SendGrid
 
@@ -24,12 +24,12 @@ Powiązania SendGrid są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
 
 Powiązania SendGrid są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub.
 
 > [!NOTE]
-> Wersja 2. x nie tworzy tematu ani subskrypcji skonfigurowanej w wystąpieniu `ServiceBusTrigger`. Wersja 2. x jest oparta na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) i nie obsługuje zarządzania kolejki.
+> W wersji 2. x i nowszych nie należy tworzyć tematu ani subskrypcji skonfigurowanej w wystąpieniu `ServiceBusTrigger`. Wersje te są oparte na [programie Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) , który nie obsługuje zarządzania kolejką.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -38,7 +38,7 @@ Powiązania SendGrid są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. 
 Zobacz przykład specyficzny dla języka:
 
 * [C#](#c-example)
-* [C#skrypt (. CSX)](#c-script-example)
+* [Skryptu C# (csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 * [Java](#java-example)
 
@@ -105,7 +105,7 @@ Możesz pominąć ustawienie właściwości `ApiKey` atrybutu, jeśli masz klucz
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych SendGrid w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json 
 {
@@ -129,7 +129,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#configuration) objaśniono te właściwości.
+[Konfiguracji](#configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -191,7 +191,7 @@ W poniższym przykładzie użyto adnotacji `@SendGridOutput` z [biblioteki środ
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych SendGrid w pliku *Function. JSON* i [funkcję języka JavaScript](functions-reference-node.md) , która używa powiązania.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto powiązanie danych w *function.json* pliku:
 
 ```json 
 {
@@ -209,7 +209,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#configuration) objaśniono te właściwości.
+[Konfiguracji](#configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -233,7 +233,7 @@ module.exports = function (context, input) {
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-Aby uzyskać informacje na temat właściwości atrybutów, które można skonfigurować, zobacz [Konfiguracja](#configuration). Oto przykład atrybutu `SendGrid` w sygnaturze metody:
+Aby uzyskać informacje na temat właściwości atrybutów, które można skonfigurować, zobacz [Konfiguracja](#configuration). Oto `SendGrid` przykład atrybutu w podpisie metody:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -249,18 +249,18 @@ Aby zapoznać się z pełnym przykładem, zobacz [ C# przykład](#c-example).
 
 ## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `SendGrid` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `SendGrid` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
 |**type**|| Wymagane — musi być ustawiony na `sendGrid`.|
 |**direction**|| Wymagane — musi być ustawiony na `out`.|
-|**Nazwij**|| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. Ta wartość jest ```$return```, gdy istnieje tylko jedna wartość zwracana. |
+|**Nazwa**|| Wymagane — nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. Ta wartość jest ```$return```, gdy istnieje tylko jedna wartość zwracana. |
 |**apiKey**|**ApiKey**| Nazwa ustawienia aplikacji, która zawiera klucz interfejsu API. Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to "AzureWebJobsSendGridApiKey".|
-|**do**|**Do**| adres e-mail adresata. |
-|**wniosek**|**Wniosek**| Adres e-mail nadawcy. |
-|**Temat**|**Temat**| temat wiadomości e-mail. |
-|**Opis**|**Tekst**| zawartość wiadomości e-mail. |
+|**to**|**Do**| adres e-mail adresata. |
+|**from**|**From**| adres e-mail nadawcy. |
+|**subject**|**Temat**| temat wiadomości e-mail. |
+|**text**|**Tekst**| zawartość wiadomości e-mail. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -268,10 +268,10 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 ## <a name="hostjson-settings"></a>Ustawienia host.JSON
 
-W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2.x. Przykład pliku host.json poniżej zawiera tylko ustawienia 2.x wersji dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersji 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions wersji 2. x](functions-host-json.md).
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2. x i nowszych. Poniższy przykładowy plik host. JSON zawiera tylko ustawienia wersji 2. x dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersjach 2. x i więcej, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
+> Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
 
 ```json
 {
@@ -286,10 +286,10 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|from|Nie dotyczy|Adres e-mail nadawcy we wszystkich funkcjach.| 
+|z|nd.|Adres e-mail nadawcy we wszystkich funkcjach.| 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

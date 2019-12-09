@@ -1,23 +1,21 @@
 ---
-title: 'Czyszczenie dzienników SSISDB za pomocą zadań Elastic Database platformy Azure '
+title: Czyszczenie dzienników SSISDB za pomocą zadań Elastic Database platformy Azure
 description: W tym artykule opisano sposób oczyszczania dzienników SSISDB przy użyciu usługi Azure zadania Elastic Database do wyzwolenia procedury składowanej, która istnieje w tym celu
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 331a2317f11fbb6f0dd1437a0b41f7ad110a63c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674736"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928029"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Czyszczenie dzienników SSISDB za pomocą zadań Elastic Database platformy Azure
 
@@ -35,7 +33,7 @@ W poniższych sekcjach opisano sposób wyzwalania `[internal].[cleanup_server_re
 
 Następujące przykładowe skrypty programu PowerShell tworzą nowe zadanie elastyczne, aby wyzwolić procedurę składowaną dla czyszczenia dziennika SSISDB. Aby uzyskać więcej informacji, zobacz [Tworzenie elastycznego agenta zadań przy użyciu programu PowerShell](../sql-database/elastic-jobs-powershell.md).
 
-### <a name="create-parameters"></a>Utwórz parametry
+### <a name="create-parameters"></a>Tworzenie parametrów
 
 ``` powershell
 # Parameters needed to create the Job Database

@@ -4,21 +4,20 @@ description: Dowiedz się więcej na temat przenoszenia danych z SAP HANA przy u
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ebd1cf22bffc6a136845672cedcefa7936eeece5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682353"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928257"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Przenoszenie danych z SAP HANA przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -37,13 +36,13 @@ Ten łącznik obsługuje dowolną wersję bazy danych SAP HANA. Obsługuje kopio
 
 Aby włączyć łączność z wystąpieniem SAP HANA, Zainstaluj następujące składniki:
 - **Zarządzanie danymi Gateway**: Usługa Data Factory obsługuje łączenie się z lokalnymi magazynami danych (w tym SAP HANA) przy użyciu składnika o nazwie Brama zarządzanie danymi. Aby dowiedzieć się więcej na temat bramy Zarządzanie danymi i instrukcje krok po kroku dotyczące konfigurowania bramy, zobacz temat [przeniesienie danych między lokalnym magazynem danych do magazynu danych w chmurze](data-factory-move-data-between-onprem-and-cloud.md) . Brama jest wymagana, nawet jeśli SAP HANA jest hostowana na maszynie wirtualnej Azure IaaS (VM). Możesz zainstalować bramę na tej samej maszynie wirtualnej, w której znajduje się magazyn danych lub na innej maszynie wirtualnej, o ile Brama może połączyć się z bazą danych.
-- **SAP HANA sterownika ODBC** na maszynie bramy. Sterownik SAP HANA ODBC można pobrać z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj za pomocą słowa kluczowego **SAP HANA Client dla systemu Windows**. 
+- **SAP HANA sterownika ODBC** na maszynie bramy. Sterownik ODBC platformy SAP HANA możesz pobrać z witryny [SAP Software Download Center (Centrum pobierania oprogramowania SAP)](https://support.sap.com/swdc). Wyszukaj za pomocą słowa kluczowego **SAP HANA Client dla systemu Windows**. 
 
 ## <a name="getting-started"></a>Wprowadzenie
 Można utworzyć potok za pomocą działania kopiowania, które przenosi dane z lokalnego magazynu danych SAP HANA przy użyciu różnych narzędzi/interfejsów API. 
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych. 
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -55,17 +54,17 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania Data Factory jednostek specyficznych dla SAP HANA magazynu danych:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla SAP HANA połączonej usługi.
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli na serwerze jest używany port dostosowany, określ `server:port`. | ciąg | Tak
+serwer | Nazwa serwera, na którym znajduje się wystąpienie SAP HANA. Jeśli na serwerze jest używany port dostosowany, określ `server:port`. | string | Tak
 authenticationType | Typ uwierzytelniania. | parametry. "Podstawowa" lub "Windows" | Tak 
-nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | ciąg | Tak
-hasło | Hasło użytkownika. | ciąg | Tak
-gatewayName | Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalnym wystąpieniem SAP HANA. | ciąg | Tak
-encryptedCredential | Zaszyfrowany ciąg poświadczeń. | ciąg | Nie
+nazwa użytkownika | Nazwa użytkownika, który ma dostęp do serwera SAP | string | Tak
+hasło | Hasło użytkownika. | string | Tak
+gatewayName | Nazwa bramy, która ma być używana przez usługę Data Factory do łączenia się z lokalnym wystąpieniem SAP HANA. | string | Tak
+encryptedCredential | Zaszyfrowany ciąg poświadczeń. | string | Nie
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania zestawów danych, zobacz artykuł [Tworzenie zestawów danych](data-factory-create-datasets.md) . Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych są podobne dla wszystkich typów zestawu danych (Azure SQL, Azure Blob, Azure Table itp.).
@@ -80,7 +79,7 @@ Natomiast właściwości dostępne w sekcji **typeProperties** działania różn
 
 Gdy źródło w działaniu kopiowania jest typu **RelationalSource** (w tym SAP HANA), w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
 | query | Określa zapytanie SQL do odczytu danych z wystąpienia SAP HANA. | Zapytanie SQL. | Tak |
 
@@ -284,31 +283,31 @@ Podczas przemieszczania danych z SAP HANA następujące mapowania są używane z
 
 Typ SAP HANA | Typ oparty na platformie .NET
 ------------- | ---------------
-TINYINT | Bajc
+TINYINT | Bajtów
 SMALLINT | Int16
-INT | Elementem
+INT | Int32
 BIGINT | Int64
-CZASIE rzeczywistym | Pojedyncze
-DOUBLE | Pojedyncze
-DOKŁADNOŚCI | Dokładności
-TYPU | Bajc
+REAL | Pojedyncze
+WARTOŚĆ DWUBAJTOWA | Pojedyncze
+DECIMAL | Decimal
+BOOLEAN | Bajtów
 VARCHAR | Ciąg
 NVARCHAR | Ciąg
-CLOB | Byte []
+CLOB | Byte[]
 ALPHANUM | Ciąg
-BLOB | Byte []
-DATE | DateTime
-CZAS | Czasu
-ZNACZNIK czasu | DateTime
-SECONDDATE | DateTime
+BLOB | Byte[]
+DATE | Data i godzina
+CZAS | TimeSpan
+TIMESTAMP | Data i godzina
+SECONDDATE | Data i godzina
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 Podczas kopiowania danych z SAP HANA istnieje kilka znanych ograniczeń:
 
-- Ciągi NVARCHAR są obcinane do maksymalnej długości 4000 znaków Unicode
-- SMALLDECIMAL nie jest obsługiwana
-- VARBINARY nie jest obsługiwana
-- Prawidłowe daty należą do zakresu od 1899/12/30 do 9999/12/31
+- Ciągi NVARCHAR są obcinane do maksymalnej długości wynoszącej 4000 znaków Unicode
+- Typ danych SMALLDECIMAL nie jest obsługiwany
+- Typ danych VARBINARY nie jest obsługiwany
+- Prawidłowe daty są z zakresu od 1899-12-30 do 9999-12-31
 
 ## <a name="map-source-to-sink-columns"></a>Mapowanie źródła do kolumn ujścia
 Aby dowiedzieć się więcej na temat mapowania kolumn w źródłowym zestawie danych na kolumny w datadataset, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).

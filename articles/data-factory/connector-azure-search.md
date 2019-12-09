@@ -1,23 +1,22 @@
 ---
-title: Kopiowanie danych do indeksu wyszukiwania przy użyciu Azure Data Factory
+title: Kopiuj dane do indeksu wyszukiwania
 description: Informacje o sposobie wypychania lub kopiowania danych do indeksu usługi Azure Search przy użyciu działania kopiowania w potoku Azure Data Factory.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.author: jingwang
-ms.openlocfilehash: ffdde571bbd2ae967003c520b09349ea9dcff414
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8a5b7bd366c504f0f5f4652728bf265289fb92e8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806086"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929670"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu Wyszukiwanie poznawcze platformy Azure przy użyciu Azure Data Factory
 
@@ -25,11 +24,11 @@ ms.locfileid: "73806086"
 > * [Wersja 1](v1/data-factory-azure-search-connector.md)
 > * [Bieżąca wersja](connector-azure-search.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych do usługi Azure Wyszukiwanie poznawcze index. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych do usługi Azure Wyszukiwanie poznawcze index. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Dane można kopiować z dowolnego obsługiwanego źródłowego magazynu danych do indeksu wyszukiwania. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Dane można kopiować z dowolnego obsługiwanego źródłowego magazynu danych do indeksu wyszukiwania. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -37,16 +36,16 @@ Dane można kopiować z dowolnego obsługiwanego źródłowego magazynu danych d
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania Data Factory jednostek specyficznych dla łącznika usługi Azure Wyszukiwanie poznawcze.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Dla połączonej usługi Azure Wyszukiwanie poznawcze są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **AzureSearch** | Tak |
 | url | Adres URL usługi wyszukiwania. | Tak |
-| key | Klucz administratora dla usługi wyszukiwania. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
-| Właściwością connectvia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. |Nie |
+| key | Klucz administratora dla usługi wyszukiwania. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 > [!IMPORTANT]
 > Podczas kopiowania danych z magazynu danych w chmurze do indeksu wyszukiwania w usłudze Azure Wyszukiwanie poznawcze połączonej usłudze należy odwołać się do Azure Integration Runtime z jawnym regionem w connactVia. Ustaw region jako lokalizację, w której znajduje się Twoja usługa wyszukiwania. Dowiedz się więcej z [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
@@ -75,11 +74,11 @@ Dla połączonej usługi Azure Wyszukiwanie poznawcze są obsługiwane następuj
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Wyszukiwanie poznawcze platformy Azure.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Wyszukiwanie poznawcze platformy Azure.
 
 Aby skopiować dane do usługi Azure Wyszukiwanie poznawcze, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **AzureSearchIndex** | Tak |
 | indexName | Nazwa indeksu wyszukiwania. Data Factory nie tworzy indeksu. Indeks musi istnieć na platformie Azure Wyszukiwanie poznawcze. | Tak |
@@ -105,13 +104,13 @@ Aby skopiować dane do usługi Azure Wyszukiwanie poznawcze, obsługiwane są na
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Wyszukiwanie poznawcze platformy Azure.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Wyszukiwanie poznawcze platformy Azure.
 
 ### <a name="azure-cognitive-search-as-sink"></a>Wyszukiwanie poznawcze platformy Azure jako ujścia
 
-Aby skopiować dane do usługi Azure Wyszukiwanie poznawcze, ustaw typ źródła w działaniu Copy na **AzureSearchIndexSink**. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane do usługi Azure Wyszukiwanie poznawcze, ustaw typ źródła w działaniu Copy na **AzureSearchIndexSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **AzureSearchIndexSink** | Tak |
 | writeBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).<br/><br/>Dozwolone wartości to: **Scal** (wartość domyślna) i **Przekaż**. | Nie |
@@ -171,15 +170,15 @@ W poniższej tabeli określono, czy typ danych Wyszukiwanie poznawcze platformy 
 | Typ danych Wyszukiwanie poznawcze platformy Azure | Obsługiwane w usłudze Azure Wyszukiwanie poznawcze sink |
 | ---------------------- | ------------------------------ |
 | Ciąg | Tak |
-| Elementem | Tak |
+| Int32 | Tak |
 | Int64 | Tak |
 | Double | Tak |
 | Wartość logiczna | Tak |
 | DataTimeOffset | Tak |
-| Tablica ciągów | N |
+| String Array | N |
 | GeographyPoint względem | N |
 
 Obecnie inne typy danych (np. ComplexType) nie są obsługiwane. Aby uzyskać pełną listę obsługiwanych typów danych Wyszukiwanie poznawcze platformy Azure, zobacz [obsługiwane typy danych (Azure wyszukiwanie poznawcze)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -1,17 +1,18 @@
 ---
-title: Mapowanie Azure Data Factory Wybieranie przepływu danych
+title: Mapowanie wybierania przepływu danych
 description: Mapowanie Azure Data Factory Wybieranie przepływu danych
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387202"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930243"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapowanie wybierania przepływu danych
 
@@ -41,7 +42,7 @@ Opcji wybierz można także użyć jako sposobu usuwania kolumn z przepływu dan
 > [!NOTE]
 > Aby wyczyścić reguły mapowania, naciśnij przycisk **Resetuj** .
 
-## <a name="mapping"></a>Zmianę
+## <a name="mapping"></a>Mapowanie
 Domyślnie wybranie przekształcenia spowoduje automatyczne zamapowanie wszystkich kolumn, które przechodzą przez wszystkie kolumny przychodzące do tej samej nazwy w danych wyjściowych. Nazwa strumienia wyjściowego ustawiona w obszarze Wybierz ustawienia spowoduje zdefiniowanie nowej nazwy aliasu dla strumienia. Jeśli zachowasz pozycję Wybierz dla opcji Automap, możesz odaliasować cały strumień ze wszystkimi kolumnami w ten sam sposób.
 
 ![Wybieranie reguł przekształcania](media/data-flow/rule2.png "Mapowanie oparte na regułach")

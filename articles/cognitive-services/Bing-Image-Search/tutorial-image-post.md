@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: e9ba5925ce562e53dbc415d66bbb529c32a725a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327006"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930685"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Samouczek: wyodrębnianie szczegółów obrazu przy użyciu interfejs API wyszukiwania obrazów Bing i języka C#
 
@@ -42,7 +42,7 @@ Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://githu
 
 ## <a name="construct-an-image-details-search-request"></a>Konstruowanie żądania wyszukiwania szczegółów obrazu
 
-Poniżej przedstawiono punkt końcowy `/details`, który akceptuje żądania POST z danymi obrazu w treści żądania.
+Poniżej przedstawiono punkt końcowy `/details`, który akceptuje żądania POST z danymi obrazu w treści żądania. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -77,7 +77,7 @@ client.Headers["ContentType"] = "multipart/form-data";
 
 ## <a name="upload-the-image-and-display-the-results"></a>Przekazywanie obrazu i wyświetlanie wyników
 
-Metoda `WebClient` klasy `UpLoadFile()` formatuje dane dla żądania `POST` z uwzględnieniem formatowania `RequestStream` i wywoływania `HttpWebRequest`.
+Metoda `UpLoadFile()` klasy `WebClient` formatuje dane dla żądania `POST` z uwzględnieniem formatowania `RequestStream` i wywoływania `HttpWebRequest`.
 
 Wywołaj funkcję `WebClient.UpLoadFile()` z punktem końcowym `/details` i plikiem obrazu do przekazania. Użyj odpowiedzi w formacie JSON, aby zainicjować wystąpienie struktury `SearchResult` i zachować odpowiedź.
 
@@ -111,6 +111,6 @@ Jeśli na obrazie znajdują się osoby lub miejsca, które można zidentyfikowa�
 > [!div class="nextstepaction"]
 > [Wyświetlanie obrazów i opcji wyszukiwania w jednostronicowej aplikacji internetowej](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

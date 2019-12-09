@@ -3,26 +3,22 @@ title: Tworzenie tożsamości dla aplikacji platformy Azure w portalu
 titleSuffix: Microsoft identity platform
 description: Zawiera opis sposobu tworzenia nowej aplikacji Azure Active Directory i nazwy głównej usługi, która może być używana z kontrolą dostępu opartą na rolach w usłudze Azure Resource Manager do zarządzania dostępem do zasobów.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c883dc1f9743e4318db5fe21b0e52ea92d60dc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473861"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917866"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 
@@ -47,9 +43,9 @@ Utworzono aplikację usługi Azure AD i nazwę główną usługi.
 
 ## <a name="assign-the-application-to-a-role"></a>Przypisywanie aplikacji do roli
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](../../role-based-access-control/built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Built in Roles](../../role-based-access-control/built-in-roles.md).
 
-Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone do niższych poziomów zakresu. Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby.
+Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby.
 
 1. W Azure Portal wybierz poziom zakresu, do którego chcesz przypisać aplikację. Aby na przykład przypisać rolę w zakresie subskrypcji, Wyszukaj i wybierz pozycję **subskrypcje**lub wybierz pozycję **subskrypcje** na stronie **głównej** .
 
@@ -62,12 +58,12 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
    Jeśli nie widzisz subskrypcji, której szukasz, wybierz pozycję **Filtr subskrypcje globalne**. Upewnij się, że wybrano subskrypcję dla portalu.
 
 1. Wybierz pozycję **Kontrola dostępu (IAM)** .
-1. Wybierz pozycję **Dodaj przypisanie roli**.
+1. Wybierz **Dodaj przypisanie roli**.
 1. Wybierz rolę, którą chcesz przypisać do aplikacji. Na przykład, aby zezwolić aplikacji na wykonywanie akcji takich jak **ponowny rozruch**, **Uruchamianie** i **Zatrzymywanie** wystąpień, wybierz rolę **współautor** .  Przeczytaj więcej na temat [dostępnych ról](../../role-based-access-control/built-in-roles.md) domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj ją i wybierz ją.
 
    ![Wybierz rolę, która ma zostać przypisana do aplikacji](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Wybierz pozycję **Zapisz** , aby zakończyć Przypisywanie roli. Aplikacja zostanie wyświetlona na liście użytkowników przypisanych do roli dla tego zakresu.
+1. Wybierz **Zapisz** zakończenie przypisanie roli. Aplikacja zostanie wyświetlona na liście użytkowników przypisanych do roli dla tego zakresu.
 
 Nazwa główna usługi została skonfigurowana. Możesz rozpocząć korzystanie z niego do uruchamiania skryptów lub aplikacji. W następnej sekcji pokazano, jak uzyskać wartości, które są konieczne podczas logowania programowo.
 

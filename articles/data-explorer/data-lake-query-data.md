@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1299ca9192481c1cc914732d47823c1d8cbd0fae
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849075"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922152"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
 
@@ -244,7 +244,7 @@ Upewnienie się, że dane zewnętrzne znajdują się w tym samym regionie świad
  
 ### <a name="file-size"></a>Rozmiar pliku
  
-Optymalny rozmiar pliku to setki MB (do 1 GB) dla każdego pliku. Unikaj wielu małych plików, które wymagają niepotrzebnych obciążeń, takich jak wolniejszy proces wyliczania plików i ograniczone użycie formatu kolumn. Należy pamiętać, że liczba plików musi być większa niż liczba rdzeni procesora CPU w klastrze usługi Azure Eksplorator danych. 
+Optymalny rozmiar pliku to setki MB (do 1 GB) dla każdego pliku. Unikaj wielu małych plików, które wymagają niepotrzebnych obciążeń, takich jak wolniejszy proces wyliczania plików i ograniczone użycie formatu kolumn. Należy pamiętać, że liczba plików powinna być większa niż liczba rdzeni procesora CPU w klastrze usługi Azure Eksplorator danych. 
  
 ### <a name="compression"></a>Kompresja
  

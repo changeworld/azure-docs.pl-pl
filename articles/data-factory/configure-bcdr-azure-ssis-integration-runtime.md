@@ -2,23 +2,22 @@
 title: Konfigurowanie Azure-SSIS Integration Runtime dla SQL Database trybu failover
 description: W tym artykule opisano sposób konfigurowania Azure-SSIS Integration Runtime z Azure SQL Database replikacją geograficzną i trybem failover dla bazy danych SSISDB
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 08/14/2018
+ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681390"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928497"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurowanie Azure-SSIS Integration Runtime z Azure SQL Database replikacją geograficzną i trybem failover
 
@@ -115,7 +114,7 @@ Gdy w bieżącym regionie wystąpi awaria ADF lub Azure-SSIS IR, można sprawić
 
 Wykonaj następujące kroki, aby zatrzymać Azure-SSIS IR, przełącz środowisko IR do nowego regionu i uruchom go ponownie.
 
-1. Wykonaj procedurę składowaną, aby SSISDB dołączone do **\<new_data_factory_name\>** lub **\<\>new_integration_runtime_name** .
+1. Wykonaj procedurę składowaną, aby SSISDB dołączone do **\<new_data_factory_name\>** lub **\<new_integration_runtime_name\>** .
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'

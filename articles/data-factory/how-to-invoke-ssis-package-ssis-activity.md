@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie pakietu usług SSIS za pomocą działania wykonywania pakietu SSIS — Azure
+title: Uruchamianie pakietu usług SSIS za pomocą działania wykonywania pakietu SSIS
 description: W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) w potoku Azure Data Factory przy użyciu działania wykonaj pakiet SSIS.
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/14/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/14/2019
+ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122961"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926494"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchom pakiet usług SSIS za pomocą działania wykonaj pakiet SSIS w Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SQL Server Integration Services (SSIS) w potoku Azure Data Factory przy użyciu działania wykonaj pakiet SSIS. 
@@ -57,7 +58,7 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory lub aplikacji w celu u
 
     Podczas tworzenia lub edytowania połączonej usługi magazynu kluczy możesz wybrać lub edytować istniejący magazyn kluczy lub utworzyć nowy. Upewnij się, że Data Factory zarządzana tożsamość do magazynu kluczy, jeśli jeszcze tego nie zrobiono. Możesz również wprowadzić wpisy tajne bezpośrednio w następującym formacie: `<Key vault linked service name>/<secret name>/<secret version>`. Jeśli pakiet wymaga 32-bitowego środowiska uruchomieniowego do uruchomienia, zaznacz pole wyboru **32-bitowe środowisko uruchomieniowe** .
 
-   W **obszarze Lokalizacja pakietu**wybierz pozycję **SSISDB**, **system plików (pakiet)** , **system plików (projekt)** lub **pakiet osadzony**. W przypadku wybrania opcji **SSISDB** jako lokalizacji pakietu, która jest automatycznie wybierana, jeśli Azure-SSIS IR została zainicjowana przy użyciu wykazu usług SSIS (SSISDB) hostowanego przez serwer Azure SQL Database lub wystąpienie zarządzane, określ pakiet do uruchomienia, który został wdrożony do SSISDB. 
+   W **obszarze Lokalizacja pakietu**wybierz pozycję **SSISDB**, **system plików (pakiet)** , **system plików (projekt)** lub **pakiet osadzony**. W przypadku wybrania opcji **SSISDB** jako lokalizacji pakietu, która jest automatycznie wybierana, jeśli Azure-SSIS IR została zainicjowana przy użyciu wykazu usług SSIS (SSISDB) hostowanego przez serwer Azure SQL Database lub wystąpienie zarządzane, określ pakiet do uruchomienia, który został wdrożony w SSISDB. 
 
     Jeśli Azure-SSIS IR jest uruchomiona, a pole wyboru **wpisy ręczne** jest wyczyszczone, Przeglądaj i wybierz istniejące foldery, projekty, pakiety lub środowiska z SSISDB. Wybierz pozycję **Odśwież** , aby pobrać nowo dodane foldery, projekty, pakiety lub środowiska z SSISDB, aby były dostępne do przeglądania i wyboru. Aby przeglądać lub wybierać środowiska na potrzeby wykonywania pakietów, musisz wcześniej skonfigurować projekty, aby dodać te środowiska jako odwołania z tych samych folderów w obszarze SSISDB. Aby uzyskać więcej informacji, zobacz [Tworzenie i mapowanie środowisk SSIS](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -69,13 +70,13 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory lub aplikacji w celu u
 
    ![Ustawianie właściwości na karcie Ustawienia — ręczne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Jeśli wybierzesz opcję **system plików (pakiet)** jako lokalizację pakietu, która jest automatycznie wybierana, jeśli Azure-SSIS IR została zainicjowana bez SSISDB, określ pakiet do uruchomienia, podając ścieżkę Universal NAMING Convention (UNC) do pliku pakietu (@no __t_1_) w polu **ścieżka pakietu** .`.dtsx` Jeśli na przykład przechowujesz swój pakiet w Azure Files, jego ścieżka pakietu jest `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
+   Jeśli wybierzesz opcję **system plików (pakiet)** jako lokalizację pakietu, która jest automatycznie wybierana, jeśli Azure-SSIS IR została zainicjowana bez SSISDB, określ pakiet do uruchomienia, podając ścieżkę Universal NAMING Convention (UNC) do pliku pakietu (`.dtsx`) w polu **ścieżka pakietu** . Jeśli na przykład przechowujesz swój pakiet w Azure Files, jego ścieżka pakietu jest `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
    
    W przypadku skonfigurowania pakietu w osobnym pliku należy również podać ścieżkę UNC do pliku konfiguracji (`.dtsConfig`) w polu **ścieżka konfiguracji** . Jeśli na przykład przechowujesz konfigurację w Azure Files, jej Ścieżka konfiguracyjna jest `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
 
    ![Ustawianie właściwości na karcie Ustawienia — ręczne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   W przypadku wybrania opcji **system plików (projekt)** jako lokalizacji pakietu Określ pakiet do uruchomienia, podając ścieżkę UNC do pliku projektu (`.ispac`) w polu **ścieżka projektu** i plik pakietu (`.dtsx`) z projektu w **nazwie pakietu** dialogowym. Na przykład jeśli projekt jest przechowywany w Azure Files, jego ścieżka projektu jest `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
+   W przypadku wybrania opcji **system plików (projekt)** jako lokalizacji pakietu Określ pakiet do uruchomienia, podając ścieżkę UNC do pliku projektu (`.ispac`) w polu **ścieżka projektu** i plik pakietu (`.dtsx`) z projektu w polu **Nazwa pakietu** . Na przykład jeśli projekt jest przechowywany w Azure Files, jego ścieżka projektu jest `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
 
    ![Ustawianie właściwości na karcie Ustawienia — ręczne](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
@@ -99,17 +100,17 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory lub aplikacji w celu u
    
    We wszystkich wyżej wymienionych ścieżkach UNC w pełni kwalifikowana nazwa pliku musi być krótsza niż 260 znaków. Nazwa katalogu musi być krótsza niż 248 znaków.
 
-1. Na karcie **parametry programu SSIS** dla działania wykonywania pakietu SSIS, jeśli Azure-SSIS IR jest uruchomiona, **SSISDB** jest wybrane jako lokalizacja pakietu, a pole wyboru **wpisy ręczne** na karcie **Ustawienia** jest wyczyszczone, istniejące SSIS parametry w wybranym projekcie lub pakiecie z SSISDB są wyświetlane, aby przypisać do nich wartości. W przeciwnym razie możesz wprowadzić je pojedynczo, aby przypisać do nich wartości ręcznie. Upewnij się, że istnieją i zostały poprawnie wprowadzone w celu pomyślnego wykonania pakietu. 
+1. Na karcie **parametry programu SSIS** dla działania wykonywania pakietu SSIS, jeśli Azure-SSIS IR jest uruchomiona, **SSISDB** jest wybrane jako lokalizacja pakietu, a pole wyboru **wpisy ręczne** na karcie **Ustawienia** jest wyczyszczone, istniejące parametry usług SSIS w wybranym projekcie lub pakiecie z SSISDB są wyświetlane, aby przypisać do nich wartości. W przeciwnym razie możesz wprowadzić je pojedynczo, aby przypisać do nich wartości ręcznie. Upewnij się, że istnieją i zostały poprawnie wprowadzone w celu pomyślnego wykonania pakietu. 
    
-   Jeśli podczas tworzenia pakietu użyto poziomu ochrony **EncryptSensitiveWithUserKey** za pomocą narzędzi SQL Server Data Tools i **system plików (pakiet)** lub **system plików (projekt)** jest wybrany jako lokalizacja pakietu, należy również ponownie wprowadzić poufne parametry do przypisywania wartości do nich w plikach konfiguracyjnych lub na tej karcie. 
+   Jeśli podczas tworzenia pakietu użyto poziomu ochrony **EncryptSensitiveWithUserKey** za pomocą narzędzi SQL Server Data Tools i **system plików (pakiet)** lub **system plików (projekt)** jest wybrany jako lokalizacja pakietu, należy również ponownie wprowadzić poufne parametry, aby przypisać do nich wartości w plikach konfiguracyjnych lub na tej karcie. 
    
    W przypadku przypisywania wartości do parametrów można dodać zawartość dynamiczną przy użyciu wyrażeń, funkcji, Data Factory zmiennych systemowych Data Factory i parametrów potoku lub zmiennych. Alternatywnie możesz użyć wpisów tajnych przechowywanych w magazynie kluczy jako ich wartości (zobacz poprzedni).
 
    ![Ustawianie właściwości na karcie Parametry SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. Na karcie **menedżerowie połączeń** dla działania wykonaj pakiet SSIS, jeśli Azure-SSIS IR jest uruchomiona, **SSISDB** jest wybrane jako lokalizacja pakietu, a pole wyboru **wpisy ręczne** na karcie **Ustawienia** jest wyczyszczone, istniejące Menedżerowie połączeń w wybranym projekcie lub pakiecie z SSISDB są wyświetlani do przypisywania wartości do ich właściwości. W przeciwnym razie możesz wprowadzić je pojedynczo, aby przypisać wartości do swoich właściwości ręcznie. Upewnij się, że istnieją i zostały poprawnie wprowadzone w celu pomyślnego wykonania pakietu. 
+1. Na karcie **menedżerowie połączeń** dla działania wykonaj pakiet SSIS, jeśli Azure-SSIS IR jest uruchomiona, **SSISDB** jest wybrane jako lokalizacja pakietu, a pole wyboru **wpisy ręczne** na karcie **Ustawienia** zostanie wyczyszczone, istniejące Menedżery połączeń w wybranym projekcie lub pakiecie z SSISDB są wyświetlane, aby przypisać wartości do ich właściwości. W przeciwnym razie możesz wprowadzić je pojedynczo, aby przypisać wartości do swoich właściwości ręcznie. Upewnij się, że istnieją i zostały poprawnie wprowadzone w celu pomyślnego wykonania pakietu. 
    
-   Jeśli podczas tworzenia pakietu użyto poziomu ochrony **EncryptSensitiveWithUserKey** za pomocą narzędzi SQL Server Data Tools i **system plików (pakiet)** lub **system plików (projekt)** jest wybrany jako lokalizacja pakietu, należy również ponownie wprowadzić poufne właściwości Menedżera połączeń do przypisywania wartości do nich w plikach konfiguracyjnych lub na tej karcie. 
+   Jeśli podczas tworzenia pakietu użyto poziomu ochrony **EncryptSensitiveWithUserKey** za pomocą narzędzi SQL Server Data Tools i **system plików (pakiet)** lub **system plików (projekt)** jest wybrany jako lokalizacja pakietu, należy również ponownie wprowadzić poufne właściwości Menedżera połączeń, aby przypisać do nich wartości w plikach konfiguracyjnych lub na tej karcie. 
    
    W przypadku przypisywania wartości do właściwości Menedżera połączeń można dodać zawartość dynamiczną przy użyciu wyrażeń, funkcji, Data Factory zmiennych systemowych Data Factory i parametrów potoku lub zmiennych. Alternatywnie możesz użyć wpisów tajnych przechowywanych w magazynie kluczy jako ich wartości (zobacz poprzedni).
 
@@ -117,7 +118,7 @@ W tym kroku użyjesz interfejsu użytkownika Data Factory lub aplikacji w celu u
 
 1. Na karcie **Zastępowanie właściwości** dla działania wykonaj pakiet SSIS wprowadź ścieżki istniejących właściwości w wybranym pakiecie po jednym, aby przypisać do nich wartości ręcznie. Upewnij się, że istnieją i zostały poprawnie wprowadzone w celu pomyślnego wykonania pakietu. Na przykład aby zastąpić wartość zmiennej użytkownika, wprowadź jej ścieżkę w następującym formacie: `\Package.Variables[User::<variable name>].Value`. 
    
-   Jeśli podczas tworzenia pakietu użyto poziomu ochrony **EncryptSensitiveWithUserKey** za pomocą narzędzi SQL Server Data Tools i **system plików (pakiet)** lub **system plików (projekt)** jest wybrany jako lokalizacja pakietu, należy również ponownie wprowadzić poufne właściwości do przypisywania wartości do nich w plikach konfiguracyjnych lub na tej karcie. 
+   Jeśli podczas tworzenia pakietu użyto poziomu ochrony **EncryptSensitiveWithUserKey** za pomocą narzędzi SQL Server Data Tools i **system plików (pakiet)** lub **system plików (projekt)** jest wybrany jako lokalizacja pakietu, należy również ponownie wprowadzić poufne właściwości, aby przypisać do nich wartości w plikach konfiguracyjnych lub na tej karcie. 
    
    W przypadku przypisywania wartości do właściwości można dodać zawartość dynamiczną przy użyciu wyrażeń, funkcji, Data Factory zmiennych systemowych Data Factory i parametrów potoku lub zmiennych.
 

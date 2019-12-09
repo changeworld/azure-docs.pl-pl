@@ -4,21 +4,20 @@ description: Dowiedz się, jak używać działania Get Metadata w potoku Data Fa
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: c62a7de1f16a3d7d286f48500117c256804c0f24
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9985997ff4bef727676232705297379ccfc179c5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546928"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928562"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Działanie pobierania metadanych w Azure Data Factory
 
@@ -41,12 +40,12 @@ Działanie Get Metadata Pobiera zestaw danych jako dane wejściowe i zwraca info
 
 ### <a name="supported-connectors"></a>Obsługiwane łączniki
 
-**Magazyn plików**
+**File Storage**
 
-| Łącznik/metadane | ItemName<br>(plik/folder) | itemType<br>(plik/folder) | zmienia<br>rozszerzeniem | utworzony<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | XML<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | istniejący<br>(plik/folder) |
+| Łącznik/metadane | itemName<br>(plik/folder) | {1&gt;itemType&lt;1}<br>(plik/folder) | size<br>rozszerzeniem | utworzony<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>system32\drivers\etc |contentMD5<br>rozszerzeniem | structure<br/>rozszerzeniem | Kolumn<br>rozszerzeniem | istniejący<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Magazyn w chmurze Google](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
 | [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
 | [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
@@ -62,7 +61,7 @@ Działanie Get Metadata Pobiera zestaw danych jako dane wejściowe i zwraca info
 
 **Relacyjna baza danych**
 
-| Łącznik/metadane | XML | Kolumn | istniejący |
+| Łącznik/metadane | structure | Kolumn | istniejący |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Wystąpienie zarządzane usługi Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -75,14 +74,14 @@ Aby pobrać odpowiednie informacje, możesz określić następujące typy metada
 
 | Typ metadanych | Opis |
 |:--- |:--- |
-| ItemName | Nazwa pliku lub folderu. |
-| itemType | Typ pliku lub folderu. Zwrócona wartość to `File` lub `Folder`. |
-| zmienia | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
+| itemName | Nazwa pliku lub folderu. |
+| {1&gt;itemType&lt;1} | Typ pliku lub folderu. Zwrócona wartość to `File` lub `Folder`. |
+| size | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
 | utworzony | Utworzono datę i godzinę dla pliku lub folderu. |
 | lastModified | Data i godzina ostatniej modyfikacji pliku lub folderu. |
 | childItems | Lista podfolderów i plików w danym folderze. Dotyczy tylko folderów. Zwracana wartość to lista nazw i typów każdego elementu podrzędnego. |
 | contentMD5 | MD5 pliku. Dotyczy tylko plików. |
-| XML | Struktura danych w tabeli pliku lub relacyjnej bazy danych. Zwracana wartość to lista nazw kolumn i typów kolumn. |
+| structure | Struktura danych w tabeli pliku lub relacyjnej bazy danych. Zwracana wartość to lista nazw kolumn i typów kolumn. |
 | Kolumn | Liczba kolumn w pliku lub tabeli relacyjnej. |
 | istniejący| Czy istnieje plik, folder lub tabela. Należy pamiętać, że jeśli `exists` określono na liście pól Pobierz metadane, działanie nie powiedzie się, nawet jeśli plik, folder lub tabela nie istnieją. Zamiast tego `exists: false` jest zwracany w danych wyjściowych. |
 
@@ -139,7 +138,7 @@ Obecnie działanie Get Metadata może zwracać następujące typy informacji o m
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
 fieldList | Typy wymaganych informacji metadanych. Aby uzyskać szczegółowe informacje na temat obsługiwanych metadanych, zobacz sekcję [Opcje metadanych](#metadata-options) w tym artykule. | Tak 
-zestawu | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Tak
+zestaw danych | Zestaw danych referencyjnych, którego metadane mają być pobierane przez działanie pobierania metadanych. Zapoznaj się z sekcją [możliwości](#capabilities) , aby uzyskać informacje na temat obsługiwanych łączników. Zapoznaj się z tematami dotyczącymi szczegółowych informacji o składni zestawu danych. | Tak
 formatSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 storeSettings | Zastosuj przy użyciu zestawu danych typu format. | Nie
 

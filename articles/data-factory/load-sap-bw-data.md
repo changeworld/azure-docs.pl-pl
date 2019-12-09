@@ -1,22 +1,22 @@
 ---
-title: Ładowanie danych z programu SAP Business Warehouse przy użyciu Azure Data Factory
+title: Ładowanie danych z programu SAP Business Warehouse
 description: Używanie Azure Data Factory do kopiowania danych z programu SAP Business Warehouse (BW)
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672645"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931465"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse przy użyciu Azure Data Factory
 
@@ -46,7 +46,7 @@ W tym artykule pokazano, jak za pomocą programu Azure Data Factory skopiować d
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Wykonaj pełną kopię z SAP BW otwartym centrum
 
-W Azure Portal przejdź do fabryki danych. Wybierz pozycję **utwórz & monitor** , aby otworzyć interfejs użytkownika Data Factory na oddzielnej karcie.
+W witrynie Azure Portal przejdź do swojej fabryki danych. Wybierz pozycję **utwórz & monitor** , aby otworzyć interfejs użytkownika Data Factory na oddzielnej karcie.
 
 1. **Na stronie Wprowadzenie** wybierz pozycję **Kopiowanie danych** , aby otworzyć narzędzie kopiowanie danych.
 
@@ -87,7 +87,7 @@ W Azure Portal przejdź do fabryki danych. Wybierz pozycję **utwórz & monitor*
    ![Tworzenie strony połączonej usługi ADLS Gen2](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Wybierz konto z możliwością Data Lake Storage Gen2 z listy rozwijanej **Nazwa** .
-   2. Wybierz pozycję **Zakończ** , aby utworzyć połączenie. Następnie wybierz przycisk **Dalej**.
+   2. Wybierz pozycję **Zakończ**, aby utworzyć połączenie. Następnie wybierz przycisk **Dalej**.
 
 9. Na stronie **Wybieranie pliku lub folderu wyjściowego** wprowadź **copyfromopenhub** jako nazwę folderu wyjściowego. Następnie wybierz przycisk **Dalej**.
 
@@ -101,7 +101,7 @@ W Azure Portal przejdź do fabryki danych. Wybierz pozycję **utwórz & monitor*
 
     ![Konfiguruj ustawienia kopiowania](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Na stronie **Podsumowanie** przejrzyj ustawienia. Następnie wybierz przycisk **Dalej**.
+12. Na stronie **Podsumowanie** przejrzyj wybrane ustawienia. Następnie wybierz przycisk **Dalej**.
 
 13. Na stronie **wdrażanie** wybierz pozycję **Monitoruj** , aby monitorować potok.
 

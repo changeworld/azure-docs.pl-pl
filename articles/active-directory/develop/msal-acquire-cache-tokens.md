@@ -3,27 +3,23 @@ title: Pozyskiwanie i buforowanie tokenów przy użyciu MSAL
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o uzyskiwaniu i buforowaniu tokenów przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df30156cde0244209f5f07c2627887252642525
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: e1cb16b5635afcfac51063ec569ca74a0ecd3b6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903019"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917169"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Uzyskiwanie i buforowanie tokenów przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL)
 

@@ -1,29 +1,25 @@
 ---
-title: Zagadnienia dotyczące przeglądarki systemu Android system dla platformy Xamarin (Microsoft Authentication Library for .NET)
+title: Zagadnienia dotyczące przeglądarki systemu Android w programie (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Dowiedz się więcej o określonych kwestiach dotyczących używania przeglądarek systemu w programie Xamarin Android podczas korzystania z biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
+description: Informacje o określonych kwestiach dotyczących używania przeglądarek systemu w programie Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d3ea2554fac8654b052e3e38633af23e7c778b3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150363"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915464"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Zagadnienia dotyczące przeglądarki systemu Android system z MSAL.NET
 
@@ -35,10 +31,10 @@ Zalecamy korzystanie z przeglądarek, które obsługują niestandardowe karty, t
 
 | Obsługa przeglądarek z kartami niestandardowymi | Nazwa pakietu |
 |------| ------- |
-|Chrome | com. Android. Chrome|
+|Chrome | com.android.chrome|
 |Microsoft Edge | com. Microsoft. emmx|
 |Firefox | org. mozilla. Firefox|
-|Ecosia | com. ecosia. Android|
+|Ecosia | com.ecosia.android|
 |Kiwi | com. kiwibrowser. Browser|
 |Brave | com. Brave. Browser|
 
@@ -58,16 +54,16 @@ W poniższej tabeli wymieniono urządzenia i przeglądarki, które zostały prze
 
 | | &ast; przeglądarki     |  Wynik  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/jeden + | &ast; Chrome | Chodzenia|
-| Huawei/jeden + | &ast; brzegowe | Chodzenia|
-| Huawei/jeden + | &ast; Firefox | Chodzenia|
-| Huawei/jeden + | Brave&ast; | Chodzenia|
-| Jeden + | Ecosia&ast; | Chodzenia|
-| Jeden + | Kiwi&ast; | Chodzenia|
-| Huawei/jeden + | Opera | Chodzenia|
-| Huawei | OperaMini | Chodzenia|
-| Huawei/jeden + | Brak przeglądarki | Chodzenia|
-| Jeden + | Maxthon | Chodzenia|
+| Huawei/jeden + | &ast; Chrome | Zakończony powodzeniem|
+| Huawei/jeden + | Edge&ast; | Zakończony powodzeniem|
+| Huawei/jeden + | Firefox&ast; | Zakończony powodzeniem|
+| Huawei/jeden + | Brave&ast; | Zakończony powodzeniem|
+| Jeden + | Ecosia&ast; | Zakończony powodzeniem|
+| Jeden + | Kiwi&ast; | Zakończony powodzeniem|
+| Huawei/jeden + | Opera | Zakończony powodzeniem|
+| Huawei | OperaMini | Zakończony powodzeniem|
+| Huawei/jeden + | Brak przeglądarki | Zakończony powodzeniem|
+| Jeden + | Maxthon | Zakończony powodzeniem|
 | Huawei/jeden + | DuckDuckGo | Użytkownik anulował uwierzytelnianie|
 | Huawei/jeden + | Przeglądarka UC | Użytkownik anulował uwierzytelnianie|
 | Jeden + | Tuńczyk | Użytkownik anulował uwierzytelnianie|

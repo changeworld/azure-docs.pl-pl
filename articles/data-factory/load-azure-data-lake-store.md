@@ -2,21 +2,21 @@
 title: Ładowanie danych do Azure Data Lake Storage Gen1
 description: Używanie Azure Data Factory do kopiowania danych do Azure Data Lake Storage Gen1
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.author: jingwang
-ms.openlocfilehash: adad770926b23e0529d5a6e08605a338d958ae09
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ca3c72ec35d8cf16671eb84cbee83dbfe1aa966f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892961"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926806"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Ładowanie danych do Azure Data Lake Storage Gen1 przy użyciu Azure Data Factory
 

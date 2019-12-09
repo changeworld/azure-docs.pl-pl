@@ -1,18 +1,19 @@
 ---
-title: Mapowanie przepływów danych w Azure Data Factory
+title: Przepływy danych mapowania
 description: Omówienie mapowania przepływów danych w Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/7/2019
-ms.openlocfilehash: ed2502ffebbacf5e66e3e4738e2e88ce7fb8a562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681561"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928291"
 ---
 # <a name="what-are-mapping-data-flows"></a>Czym są przepływy danych mapowania?
 
@@ -32,13 +33,13 @@ Spowoduje to przejście do kanwy przepływu danych, w której można utworzyć l
 
 Kanwa przepływu danych jest podzielony na trzy części: górny pasek, wykres i panel konfiguracja. 
 
-![Przestrzeń](media/data-flow/canvas1.png "Przestrzeń")
+![Kanwa](media/data-flow/canvas1.png "Kanwa")
 
 ### <a name="graph"></a>Graf
 
 Wykres przedstawia strumień transformacji. Pokazuje on dane źródłowe w miarę ich przepływu w jednym lub większej liczbie zlewów. Aby dodać nowe źródło, wybierz pozycję **Dodaj źródło**. Aby dodać nową transformację, wybierz znak plus w prawym dolnym rogu istniejącej transformacji.
 
-![Przestrzeń](media/data-flow/canvas2.png "Przestrzeń")
+![Kanwa](media/data-flow/canvas2.png "Kanwa")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Właściwości przepływu danych środowiska Azure Integration Runtime
 
@@ -84,11 +85,11 @@ Pierwsza karta w okienku Konfiguracja każdej transformacji zawiera ustawienia s
 
 ![Karta Ustawienia źródła](media/data-flow/source1.png "Karta Ustawienia źródła")
 
-#### <a name="optimize"></a>Optymalizacja
+#### <a name="optimize"></a>Optymalizowanie
 
 Karta **Optymalizacja** zawiera ustawienia umożliwiające skonfigurowanie schematów partycjonowania.
 
-![Optymalizacja](media/data-flow/optimize1.png "Optymalizacja")
+![Optymalizacja](media/data-flow/optimize1.png "Optymalizowanie")
 
 Ustawieniem domyślnym jest **użycie bieżącego partycjonowania**, które instruuje Azure Data Factory, aby używać schematu partycjonowania natywnego dla przepływów danych uruchomionych w systemie Spark. W większości scenariuszy zalecamy to ustawienie.
 
@@ -122,11 +123,11 @@ Utwórz wyrażenie, które udostępnia stały zakres dla wartości w kolumnach d
 
 Jeśli masz dobrą wiedzę o kardynalności danych, partycjonowanie kluczy może być dobrą strategią. Partycjonowanie kluczy spowoduje utworzenie partycji dla każdej unikatowej wartości w kolumnie. Nie można ustawić liczby partycji, ponieważ liczba będzie oparta na unikatowych wartościach danych.
 
-#### <a name="inspect"></a>Skontrol
+#### <a name="inspect"></a>Sprawdź
 
 Karta **Inspekcja** umożliwia wyświetlenie metadanych strumienia danych, który jest przekształcany. Widoczne są liczby kolumn, zmienione kolumny, kolumny dodane, typy danych, porządkowanie kolumn i odwołania do kolumn. **Inspekcja** to widok metadanych w trybie tylko do odczytu. Nie musisz mieć włączonego trybu debugowania, aby wyświetlić metadane w okienku **Inspekcja** .
 
-![Skontrol](media/data-flow/inspect1.png "Skontrol")
+![Skontrol](media/data-flow/inspect1.png "Sprawdź")
 
 Gdy zmienisz kształt danych za pomocą transformacji, przepływ zmian metadanych zostanie wyświetlony w okienku **Inspekcja** . Jeśli w transformacji źródłowej nie ma zdefiniowanego schematu, metadane nie będą widoczne w okienku **Inspekcja** . Brak metadanych jest powszechny w scenariuszach dryfowania schematu.
 

@@ -1,29 +1,25 @@
 ---
-title: Przeglądarki sieci Web w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET
+title: Korzystanie z przeglądarek internetowych z MSAL.NET | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802675"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921607"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Korzystanie z przeglądarek sieci Web w MSAL.NET
 Do uwierzytelniania interakcyjnego są wymagane przeglądarki sieci Web. Domyślnie MSAL.NET obsługuje [systemową przeglądarkę sieci Web](#system-web-browser-on-xamarinios-xamarinandroid) w oprogramowaniu Xamarin. iOS i Xamarin. Android. [Możesz również włączyć osadzoną przeglądarkę internetową](#enable-embedded-webviews-on-ios-and-android) w zależności od wymagań (UX, co jest potrzebne do logowania jednokrotnego (SSO), zabezpieczeń) w aplikacjach [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) i [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) . Możesz nawet [dynamicznie wybrać](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) , która przeglądarka sieci Web ma być używana w oparciu o obecność przeglądarki Chrome lub w przeglądarce obsługującej niestandardowe karty programu Chrome w systemie Android. MSAL.NET obsługuje tylko przeglądarkę systemową w aplikacjach klasycznych platformy .NET Core.
@@ -49,15 +45,15 @@ Ogólnie rzecz biorąc, zaleca się korzystanie z ustawień domyślnych platform
 
 ### <a name="at-a-glance"></a>W skrócie
 
-| Architektura        | Osadzić | System | Domyślne |
+| Struktura        | Osadzić | System | Domyślne |
 | ------------- |-------------| -----| ----- |
 | Klasyczny .NET     | Tak | Tak ^ | Osadzić |
 | .NET Core     | Nie | Tak ^ | System |
 | .NET Standard | Nie | Tak ^ | System |
-| PLATFORMY UWP | Tak | Nie | Osadzić |
+| Platforma UWP | Tak | Nie | Osadzić |
 | Xamarin.Android | Tak | Tak  | System |
 | Xamarin.iOS | Tak | Tak  | System |
-| Platforma Xamarin. Mac| Tak | Nie | Osadzić |
+| Xamarin.Mac| Tak | Nie | Osadzić |
 
 ^ Wymaga "http://localhost" identyfikator URI przekierowania
 
@@ -153,7 +149,7 @@ Istnieją pewne różnice wizualne między osadzonym widokiem WebView a przeglą
 
 **Logowanie interakcyjne przy użyciu usługi MSAL.NET z osadzonym widokiem WebView:**
 
-![Osadzić](media/msal-net-web-browsers/embedded-webview.png)
+![osadzonej](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interakcyjne logowanie za pomocą usługi MSAL.NET przy użyciu przeglądarki systemowej:**
 
@@ -175,7 +171,7 @@ Jako deweloper korzystający z usługi MSAL.NET masz kilka opcji wyświetlania i
                     .ExecuteAsync();
     ```
 
-    Systemów
+    Android:
 
     ```csharp
     authResult = app.AcquireTokenInteractively(scopes)

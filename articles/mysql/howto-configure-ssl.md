@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 590e2e7e735af55f8c7ad96f87f947115f8783fc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 3a1c7f6542ebdf1617982fbb50a239b66a6675ba
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770564"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926715"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Skonfiguruj połączenie SSL w aplikacji, aby bezpiecznie połączyć się z Azure Database for MySQL
 Azure Database for MySQL obsługuje łączenie serwera Azure Database for MySQL z aplikacjami klienckimi przy użyciu SSL (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
@@ -50,7 +50,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Krok 3: wymuszanie połączeń SSL na platformie Azure 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 Korzystając z Azure Portal, odwiedź Azure Database for MySQL serwer, a następnie kliknij pozycję **zabezpieczenia połączeń**. Użyj przycisku przełącznika, aby włączyć lub wyłączyć ustawienie **Wymuszaj połączenie SSL** , a następnie kliknij przycisk **Zapisz**. Firma Microsoft zaleca, aby zawsze włączyć ustawienie **Wymuszaj połączenie SSL** w celu zwiększenia bezpieczeństwa.
-![Włącz](./media/howto-configure-ssl/enable-ssl.png) protokołu SSL
+![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 Parametr **wymuszania SSL** można włączyć lub wyłączyć, używając wartości włączone lub wyłączone odpowiednio w interfejsie wiersza polecenia platformy Azure.
@@ -67,6 +67,8 @@ Upewnij się, że połączenie jest zaszyfrowane, przeglądając dane wyjściowe
 
 ## <a name="sample-code"></a>Przykładowy kod
 Aby nawiązać bezpieczne połączenie z Azure Database for MySQL za pośrednictwem protokołu SSL z aplikacji, zapoznaj się z poniższymi przykładami kodu:
+
+Zapoznaj się z listą [zgodnych sterowników](concepts-compatibility.md) obsługiwanych przez usługę Azure Database for MySQL.
 
 ### <a name="php"></a>PHP
 ```php

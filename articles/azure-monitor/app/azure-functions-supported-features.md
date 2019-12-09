@@ -1,5 +1,5 @@
 ---
-title: Obsługiwane funkcje platformy Azure Azure Functions Application Insights | Microsoft Docs
+title: Obsługiwane funkcje platformy Azure Application Insights Azure Functions
 description: Application Insights obsługiwane funkcje Azure Functions
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677552"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928419"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights Azure Functions obsługiwanych funkcji
 
@@ -28,25 +28,25 @@ Azure Functions oferuje [wbudowaną integrację](../../azure-functions/functions
 | **Automatyczne zbieranie**        |                 |                   |               
 | Żądania &bull;                     | Tak             | Tak               | 
 | Wyjątki &bull;                   | Tak             | Tak               | 
-| Liczniki wydajności &bull;         | Tak             | Tak               |
-| Zależności &bull;                   |                   |                   |               
-| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Tak               | 
-| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Tak               | 
-| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Tak               | 
-| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Tak               | 
+| &bull; liczniki wydajności         | Tak             | Tak               |
+| &bull; zależności                   |                   |                   |               
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Tak               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Tak               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Tak               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Tak               | 
 | | | | 
 | **Obsługiwane funkcje**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Tak             | Tak               | 
-| &nbsp; &nbsp; &nbsp; &mdash; kanał Secure Control|                 | Tak               | 
+| &nbsp;&nbsp;&nbsp;&mdash; kanał Secure Control|                 | Tak               | 
 | Próbkowanie &bull;                     | Tak             | Tak               | 
-| pulsy &bull;                   |                 | Tak               | 
+| &bull; pulsy                   |                 | Tak               | 
 | | | | 
-| **Korelacj**                       |                   |                   |               
+| **Korelacja**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | Tak               | 
-| &bull; EventHub                       |                   | Tak               | 
+| &bull; centrum zdarzeń                       |                   | Tak               | 
 | | | | 
 | **Skonfigurować**                      |                   |                   |           
-| &bull;Fully — konfigurowalne.<br/>Aby uzyskać instrukcje, zobacz [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Zobacz [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) , aby poznać wszystkie opcje.               |                   | Tak                   | 
+| &bull;w pełni konfigurowalne.<br/>Aby uzyskać instrukcje, zobacz [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Zobacz [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) , aby poznać wszystkie opcje.               |                   | Tak                   | 
 
 
 ## <a name="performance-counters"></a>Liczniki wydajności

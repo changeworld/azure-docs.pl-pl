@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: cb3bb6a91c25298535cfba1107b85f200031a7d6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cf636e7d7ee35680c1da872b186748c333a81dc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035913"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930004"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Szybkie kroki: Tworzenie pary kluczy publiczny-prywatny SSH dla maszyn wirtualnych z systemem Linux na platformie Azure
 
@@ -38,10 +38,10 @@ Aby uzyskać dodatkowe sposoby generowania i używania kluczy SSH na komputerze 
 
 Użyj `ssh-keygen` polecenie, aby wygenerować pliki publicznego i prywatnego klucza SSH. Domyślnie te pliki są tworzone w katalogu ~/.SSH. Aby uzyskać dostęp do pliku klucza prywatnego, można określić inną lokalizację i opcjonalne hasło (*hasło*). Jeśli para kluczy SSH o tej samej nazwie istnieje w danej lokalizacji, te pliki są zastępowane.
 
-Następujące polecenie tworzy parę kluczy SSH przy użyciu szyfrowania RSA i długość bitową 2048:
+Następujące polecenie tworzy parę kluczy SSH przy użyciu szyfrowania RSA i długość bitową 4096:
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 Jeśli używasz [interfejsu wiersza polecenia platformy Azure](/cli/azure) , aby utworzyć maszynę wirtualną z poleceniem [AZ VM Create](/cli/azure/vm#az-vm-create) , możesz opcjonalnie wygenerować pliki publicznego i prywatnego klucza SSH przy użyciu opcji `--generate-ssh-keys`. Pliki kluczy są przechowywane w katalogu ~/.SSH, chyba że określono inaczej z opcją `--ssh-dest-key-path`. Opcja `--generate-ssh-keys` nie spowoduje zastąpienia istniejących plików kluczy, zamiast zwraca błąd. W poniższym poleceniu Zastąp wartości *VMName* i *RGname* własnymi wartościami:

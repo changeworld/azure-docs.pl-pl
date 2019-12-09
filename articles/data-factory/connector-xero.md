@@ -1,63 +1,62 @@
 ---
 title: Kopiowanie danych z Xero za pomocą Azure Data Factory
-description: Informacje o kopiowaniu danych z programu Xero do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+description: Dowiedz się, jak skopiować dane z usługi Xero do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d52e536170c649cbc84b6c6dce92afb76ffe3125
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1f6404da163e075b63a99a1d8474cdba4e064b06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680010"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930879"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopiowanie danych z Xero za pomocą Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z Xero. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób użycia działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z usługi Xero. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Ten łącznik Xero jest obsługiwany dla następujących działań:
 
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Dane z Xero można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Możesz skopiować dane z usługi Xero, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Ten łącznik Xero obsługuje:
+W szczególności ten łącznik usługi Xero obsługuje:
 
-- Xero [aplikację prywatną](https://developer.xero.com/documentation/getting-started/api-application-types) , ale nie aplikację publiczną.
-- Wszystkie tabele Xero (punkty końcowe interfejsu API) z wyjątkiem "Reports". 
+- Xero [prywatnego aplikacji](https://developer.xero.com/documentation/getting-started/api-application-types) , ale aplikacja nie jest publiczny.
+- Wszystkie usługi Xero tabele (punkty końcowe interfejsu API) z wyjątkiem "Raporty". 
 
-Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
+Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika Xero.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi Xero.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Dla połączonej usługi Xero są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane w przypadku usługi Xero połączone:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **Xero** | Tak |
-| Host | Punkt końcowy serwera Xero (`api.xero.com`).  | Tak |
-| consumerKey | Klucz klienta skojarzony z aplikacją Xero. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
-| privateKey | Klucz prywatny z pliku PEM, który został wygenerowany dla aplikacji prywatnej Xero, zobacz [Tworzenie pary kluczy publicznych/prywatnych](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Zwróć uwagę **, aby wygenerować PrivateKey. pem z numbitsem 512** przy użyciu `openssl genrsa -out privatekey.pem 512`; 1024 nie jest obsługiwana. Dołącz cały tekst z pliku PEM włącznie z zakończeniami wierszy systemu UNIX (\n), zobacz przykład poniżej.<br/><br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| type | Właściwość type musi być równa: **Xero** | Tak |
+| host | Punkt końcowy serwera usługi Xero (`api.xero.com`).  | Tak |
+| consumerKey | Klucz klienta skojarzonego z aplikacją usługi Xero. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| privateKey | Klucz prywatny z pliku PEM został wygenerowany dla aplikacji prywatnych Xero, zobacz [tworzenia pary kluczy publiczny/prywatny](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Należy pamiętać, aby **Generowanie privatekey.pem z numbits 512** przy użyciu `openssl genrsa -out privatekey.pem 512`; 1024 nie jest obsługiwane. Obejmować cały tekst z pliku PEM, w tym endings(\n) wiersza systemu Unix, zobacz poniższy przykład.<br/><br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy nazwa hosta jest wymagana w certyfikacie serwera, aby odpowiadała nazwie hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy należy zweryfikować tożsamość serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useHostVerification | Określa, czy nazwa hosta jest wymagany w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
 
@@ -81,9 +80,9 @@ Dla połączonej usługi Xero są obsługiwane następujące właściwości:
 }
 ```
 
-**Wartość przykładowego klucza prywatnego:**
+**Wartość klucza prywatnego próbek:**
 
-Dołącz cały tekst z pliku PEM włącznie z zakończeniami wierszy systemu UNIX (\n).
+Obejmować cały tekst z pliku PEM, w tym endings(\n) wiersza systemu Unix.
 
 ```
 "-----BEGIN RSA PRIVATE KEY-----\nMII***************************************************P\nbu****************************************************s\nU/****************************************************B\nA*****************************************************W\njH****************************************************e\nsx*****************************************************l\nq******************************************************X\nh*****************************************************i\nd*****************************************************s\nA*****************************************************dsfb\nN*****************************************************M\np*****************************************************Ly\nK*****************************************************Y=\n-----END RSA PRIVATE KEY-----"
@@ -91,13 +90,13 @@ Dołącz cały tekst z pliku PEM włącznie z zakończeniami wierszy systemu UNI
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Xero.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestawu danych Xero.
 
-Aby skopiować dane z Xero, ustaw właściwość Type zestawu danych na **XeroObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z usługi Xero, należy ustawić właściwość typu zestawu danych na **XeroObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **XeroObject** | Tak |
+| type | Właściwość typu elementu dataset musi być równa: **XeroObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -119,16 +118,16 @@ Aby skopiować dane z Xero, ustaw właściwość Type zestawu danych na **XeroOb
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Xero.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Xero.
 
 ### <a name="xero-as-source"></a>Xero jako źródło
 
-Aby skopiować dane z Xero, ustaw typ źródła w działaniu Copy na **XeroSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z usługi Xero, należy ustawić typ źródła w działaniu kopiowania, aby **XeroSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **XeroSource** | Tak |
-| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM Contacts"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **XeroSource** | Tak |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM Contacts"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -162,13 +161,13 @@ Aby skopiować dane z Xero, ustaw typ źródła w działaniu Copy na **XeroSourc
 ]
 ```
 
-Podczas określania zapytania Xero należy zwrócić uwagę na następujące kwestie:
+Podczas określania zapytania Xero, należy pamiętać o następujących:
 
-- Tabele ze złożonymi elementami zostaną podzielone na wiele tabel. Na przykład transakcje bankowe mają złożoną strukturę danych "LineItems", więc dane transakcji bankowej są mapowane na `Bank_Transaction` tabeli i `Bank_Transaction_Line_Items`, z `Bank_Transaction_ID` jako klucz obcy, aby połączyć je ze sobą.
+- Tabele z złożonych elementów zostanie ona podzielona na wiele tabel. Na przykład transakcji bankowych ma strukturę złożoną danych "LineItems", dlatego dane transakcji bankowych jest mapowany do tabeli `Bank_Transaction` i `Bank_Transaction_Line_Items`, za pomocą `Bank_Transaction_ID` jako klucz obcy, aby połączyć je ze sobą.
 
-- Dane Xero są dostępne w dwóch schematach: `Minimal` (domyślne) i `Complete`. Kompletny schemat zawiera tabele wywołań wymaganych wstępnie, które wymagają dodatkowych danych (np. kolumny identyfikatora) przed wykonaniem żądanego zapytania.
+- Xero dane są dostępne za pośrednictwem dwóch schematów: `Minimal` (ustawienie domyślne) i `Complete`. Pełne schemat zawiera tabele wywołanie wymagań wstępnych, które wymagają dodatkowych danych (np. kolumna ID) przed wprowadzeniem żądanego zapytania.
 
-Poniższe tabele zawierają te same informacje w schemacie minimalnej i kompletnej. Aby zmniejszyć liczbę wywołań interfejsu API, użyj minimalnego schematu (domyślnie).
+Poniższe tabele mają te same informacje w schemacie minimalnym i kompletne. Aby zmniejszyć liczbę wywołań interfejsu API, Użyj schematu minimalny (ustawienie domyślne).
 
 - Bank_Transactions
 - Contact_Groups 
@@ -183,38 +182,38 @@ Poniższe tabele zawierają te same informacje w schemacie minimalnej i kompletn
 - Expense_Claim_Validation_Errors
 - Faktury 
 - Invoices_Credit_Notes
-- Invoices_ przedpłaty 
+- Przedpłaty Invoices_ 
 - Invoices_Overpayments 
 - Manual_Journals 
-- Nadpłaty 
+- Nadpłat 
 - Overpayments_Allocations 
-- Opłat 
+- Przedpłaty 
 - Prepayments_Allocations 
 - Potwierdzenia 
 - Receipt_Validation_Errors 
 - Tracking_Categories
 
-Tylko następujące tabele mogą być zapytania z kompletnym schematem:
+Poniższe tabele może być odpytywany tylko ze schematem ukończone:
 
-- Ukończono. Bank_Transaction_Line_Items 
-- Ukończono. Bank_Transaction_Line_Item_Tracking 
-- Ukończono. Contact_Group_Contacts 
-- Ukończ. Contacts_Contact_ 
-- Ukończono. Credit_Note_Line_Items 
-- Ukończono. Credit_Notes_Line_Items_Tracking 
-- Ukończono. Expense_Claim_ płatności 
-- Ukończono. Expense_Claim_Receipts 
-- Ukończono. Invoice_Line_Items 
-- Ukończono. Invoices_Line_Items_Tracking
-- Ukończono. Manual_Journal_Lines 
-- Ukończono. Manual_Journal_Line_Tracking 
-- Ukończono. Overpayment_Line_Items 
-- Ukończono. Overpayment_Line_Items_Tracking 
-- Ukończono. Prepayment_Line_Items 
-- Ukończono. Prepayment_Line_Item_Tracking 
-- Ukończono. Receipt_Line_Items 
-- Ukończono. Receipt_Line_Item_Tracking 
-- Ukończono. Tracking_Category_Options
+- Complete.Bank_Transaction_Line_Items 
+- Complete.Bank_Transaction_Line_Item_Tracking 
+- Complete.Contact_Group_Contacts 
+- Osoby Complete.Contacts_Contact_ 
+- Complete.Credit_Note_Line_Items 
+- Complete.Credit_Notes_Line_Items_Tracking 
+- Complete.Expense_Claim_ płatności 
+- Complete.Expense_Claim_Receipts 
+- Complete.Invoice_Line_Items 
+- Complete.Invoices_Line_Items_Tracking
+- Complete.Manual_Journal_Lines 
+- Complete.Manual_Journal_Line_Tracking 
+- Complete.Overpayment_Line_Items 
+- Complete.Overpayment_Line_Items_Tracking 
+- Complete.Prepayment_Line_Items 
+- Complete.Prepayment_Line_Item_Tracking 
+- Complete.Receipt_Line_Items 
+- Complete.Receipt_Line_Item_Tracking 
+- Complete.Tracking_Category_Options
 
 ## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
 
@@ -222,4 +221,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Listę obsługiwanych magazynów danych przez działanie kopiowania można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę obsługiwanych magazynów danych przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

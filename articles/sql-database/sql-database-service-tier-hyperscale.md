@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805760"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927660"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
@@ -196,25 +196,25 @@ Jeśli chcesz utworzyć bazę danych w formie wieloskali w regionie, który nie 
 
 Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma na liście:
 
-1. Przejdź do [bloku pomoc i obsługa techniczna platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+1. Z menu Azure Portal wybierz pozycję **Pomoc i obsługa techniczna**lub Wyszukaj i wybierz pozycję **Pomoc i obsługa techniczna** z dowolnej strony.
 
-2. Kliknij [ **nowe żądanie obsługi**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+2. W [oknie Pomoc i obsługa techniczna platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)wybierz pozycję [**nowe żądanie obsługi**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-    ![Blok pomocy i obsługi technicznej platformy Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+3. W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
 
-3. W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)**
+4. Wybierz subskrypcję, której chcesz użyć do utworzenia baz danych.
 
-4. Wybierz subskrypcję, której chcesz użyć do utworzenia baz danych
+5. W obszarze **Typ limitu przydziału**wybierz pozycję **baza danych SQL**.
 
-5. W obszarze **Typ limitu przydziału**wybierz pozycję **baza danych SQL**
+    ![Blok pomocy i obsługi technicznej platformy Azure](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
 
-6. Kliknij przycisk **Dalej: rozwiązania**
+6. Kliknij przycisk **Dalej: rozwiązania**.
 
-1. Kliknij pozycję **Podaj szczegóły**
+7. Kliknij pozycję **Podaj szczegóły**.
 
     ![Szczegóły problemu](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Wybierz **SQL Database typ przydziału**: **inne żądanie limitu przydziału**
+8. Wybierz **SQL Database typ przydziału**: **inne żądanie limitu przydziału**.
 
 9. Wypełnij następujący szablon:
 
@@ -231,7 +231,7 @@ Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma n
 
 11. Wybierz odpowiednią metodę kontaktu i wypełnij szczegóły.
 
-12. Kliknij przycisk **Zapisz** i **Kontynuuj** .
+12. Kliknij przycisk **Zapisz** i **Kontynuuj**.
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na poziomie.  Aktywnie pracujemy nad usunięciem możliwie największej liczby ograniczeń.
@@ -240,7 +240,7 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | :---- | :--------- |
 | Okienko zarządzanie kopiami zapasowymi dla serwera logicznego nie pokazuje przefiltrowanych baz danych z programu SQL Server  | Funkcja Moja Skala ma oddzielną metodę zarządzania kopiami zapasowymi, a w związku z tym ustawienia przechowywania kopii zapasowych długoterminowego przechowywania i punktu w czasie nie mają zastosowania/są unieważnione. W związku z tym bazy danych nie są wyświetlane w okienku zarządzanie kopią zapasową. |
 | Przywracanie do określonego momentu | Po przeprowadzeniu migracji bazy danych do warstwy usługi w warstwie skalowania Przywróć do punktu w czasie przed migracją nie jest obsługiwane.|
-| Przywracanie bazy danych bez skalowania do Hypserscale i na odwrót | Nie można przywrócić bazy danych w ramach skalowania do bazy danych bez skalowania ani przywracania bazy danych bez skalowania do bazy danych w skali.|
+| Przywracanie bazy danych bez skalowania na potrzeby skalowania i na odwrót | Nie można przywrócić bazy danych w ramach skalowania do bazy danych bez skalowania ani przywracania bazy danych bez skalowania do bazy danych w skali.|
 | Jeśli baza danych ma co najmniej jeden plik danych o rozmiarze większym niż 1 TB, migracja nie powiedzie się | W niektórych przypadkach może być możliwe obejście tego problemu, zmniejszając duże ilości plików poniżej 1 TB. W przypadku migrowania bazy danych używanej podczas procesu migracji upewnij się, że żaden plik nie będzie większy niż 1 TB. Użyj następującego zapytania, aby określić rozmiar plików bazy danych. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Wystąpienie zarządzane | Azure SQL Database wystąpienie zarządzane nie jest obecnie obsługiwane w bazach danych. |
 | Pule elastyczne |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
@@ -251,7 +251,8 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Kopia bazy danych | Nie można jeszcze użyć kopii bazy danych w celu utworzenia nowej bazy danych w funkcji wieloskalowania SQL platformy Azure. |
 | Integracja TDE/AKV | Szyfrowanie przezroczystej bazy danych przy użyciu Azure Key Vault (nazywanego też kluczem "Przenieś jako własne-Key" lub BYOK) nie jest jeszcze obsługiwane dla Azure SQL Database funkcji TDE, ale z kluczami zarządzanymi przez usługę jest w pełni obsługiwane. |
 |Funkcje inteligentnej bazy danych | Z wyjątkiem opcji "Wymuś plan" wszystkie inne opcje dostrajania automatycznego nie są jeszcze obsługiwane w obszarze skalowanie: opcje mogą być dostępne, ale nie zostaną wykonane żadne zalecenia ani działania. |
-| Zmniejsz bazę danych | Polecenia DBCC SHRINKDATABASE lub DBCC SHRINKFILE nie są obecnie obsługiwane w bazach danych Azure SQL Database. |
+| Zmniejsz bazę danych | Polecenia DBCC SHRINKDATABASE lub DBCC SHRINKFILE nie są obecnie obsługiwane w przypadku baz danych w ramach skalowania. |
+| Sprawdzanie integralności bazy danych | Polecenie DBCC CHECKDB nie jest obecnie obsługiwane w przypadku baz danych w skali. Aby uzyskać szczegółowe informacje na temat zarządzania integralnością danych w programie Azure SQL Database, zobacz temat [integralność danych w Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) . |
 
 ## <a name="next-steps"></a>Następne kroki
 

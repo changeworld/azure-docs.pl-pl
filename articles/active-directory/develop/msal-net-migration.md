@@ -3,27 +3,23 @@ title: Migrowanie do MSAL.NET
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o różnicach między biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET) i biblioteką uwierzytelniania usługi Azure AD dla platformy .NET (ADAL.NET) oraz jak przeprowadzić migrację do usługi MSAL.NET.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5059acea753b4b8b7db80bfc79b4bb9718e0484e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175561"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915674"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrowanie aplikacji do MSAL.NET
 
@@ -123,7 +119,7 @@ Nie wszystkie dotacje są jeszcze obsługiwane w MSAL.NET i punkcie końcowym v 
 
 Poniżej przedstawiono dotacje obsługiwane w ADAL.NET i MSAL.NET dla aplikacji klasycznych i mobilnych
 
-Dawać | ADAL.NET | MSAL.NET
+Udziel | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interaktywne | [Uwierzytelnianie interakcyjne](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [Interaktywny pozyskiwanie tokenów w usłudze MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Zintegrowane uwierzytelnianie systemu Windows | [Uwierzytelnianie zintegrowane w systemie Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Zintegrowane uwierzytelnianie systemu Windows](msal-authentication-flows.md#integrated-windows-authentication)
@@ -134,7 +130,7 @@ Przepływ kodu urządzenia | [Profil urządzenia dla urządzeń bez przeglądare
 
 Poniżej przedstawiono dotacje obsługiwane w ADAL.NET i MSAL.NET dla aplikacji sieci Web, interfejsów API sieci Web i aplikacji demonów:
 
-Typ aplikacji | Dawać | ADAL.NET | MSAL.NET
+Typ aplikacji | Udziel | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Aplikacja internetowa, internetowy interfejs API, Demon | Poświadczenia klienta | [Przepływy poświadczeń klienta w ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Przepływy poświadczeń klienta w MSAL.NET](msal-authentication-flows.md#client-credentials))
 Internetowy interfejs API | W imieniu | [Wywołania usługi do obsługi w imieniu użytkownika z ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [W imieniu programu MSAL.NET](msal-authentication-flows.md#on-behalf-of)

@@ -1,24 +1,24 @@
 ---
-title: 'Przekształcanie danych przy użyciu programu Hive na platformie Azure Virtual Network '
+title: Przekształcanie danych przy użyciu programu Hive na platformie Azure Virtual Network
 description: Ten samouczek zawiera instrukcje krok po kroku przekształcania danych przy użyciu działania programu Hive w usłudze Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 263eb243ea45963757c50aa031cc17e318d70d98
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/22/2018
+ms.openlocfilehash: f90933dea5421d68116d29df6b9429d298bb0d88
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683312"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925084"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
+
 W tym samouczku program Azure PowerShell umożliwia tworzenie potoku fabryki danych, który przekształca dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
 
 > [!div class="checklist"]
@@ -26,7 +26,7 @@ W tym samouczku program Azure PowerShell umożliwia tworzenie potoku fabryki dan
 > * Redagowanie i konfigurowanie własnego środowiska Integration Runtime
 > * Tworzenie i wdrażanie połączonych usług
 > * Redagowanie i wdrażanie potoku zawierającego działanie programu Hive
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych 
 
@@ -292,7 +292,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
 
 ## <a name="start-the-pipeline"></a>Uruchamianie potoku 
 
-1. Uruchamianie przebiegu potoku. Umożliwia to również przechwycenie identyfikatora uruchomienia potoku w celu monitorowania w przyszłości.
+1. Uruchom potok. Umożliwia to również przechwycenie identyfikatora uruchomienia potoku w celu monitorowania w przyszłości.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
@@ -401,7 +401,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Redagowanie i konfigurowanie własnego środowiska Integration Runtime
 > * Tworzenie i wdrażanie połączonych usług
 > * Redagowanie i wdrażanie potoku zawierającego działanie programu Hive
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych 
 

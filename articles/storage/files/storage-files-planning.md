@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227862"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931105"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
-[Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
+[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
 
 ## <a name="management-concepts"></a>Pojęcia związane z zarządzaniem
 
@@ -47,7 +47,7 @@ Azure Files oferuje dwie wbudowane, wygodne metody dostępu do danych, których 
 
 W poniższej tabeli przedstawiono sposób, w jaki użytkownicy i aplikacje mogą uzyskiwać dostęp do udziału plików platformy Azure:
 
-| | Bezpośredni dostęp do chmury | Azure File Sync |
+| | Bezpośredni dostęp do chmury | Usługa Azure File Sync |
 |------------------------|------------|-----------------|
 | Jakich protokołów należy używać? | Azure Files obsługuje protokół SMB 2,1, protokół SMB 3,0 i interfejs API REST plików. | Uzyskaj dostęp do udziału plików platformy Azure za pomocą dowolnego obsługiwanego protokołu w systemie Windows Server (SMB, NFS, FTPS itp.) |  
 | Gdzie działa Twoje obciążenie? | **Na platformie Azure**: Azure Files oferuje bezpośredni dostęp do danych. | **W środowisku lokalnym z powolnej sieci**: klienci z systemami Windows, Linux i macOS mogą instalować lokalny udział plików systemu Windows jako szybką pamięć podręczną udziału plików platformy Azure. |
@@ -216,10 +216,11 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Wschodnie stany USA 2 *      |LRS     |
 |Francja Środkowa |LRS, ZRS|
 |Francja Południowa   |LRS     |
+|Północno-środkowe stany USA |LRS     |
 |Europa Północna   |LRS     |
 |Indie Południowe    |LRS     |
 |Azja Południowo-Wschodnia |LRS, ZRS|
-|Środkowo-zachodnie stany USA|LRS     |
+|Zachodnio-środkowe stany USA|LRS     |
 |Europa Zachodnia *    |LRS, ZRS|
 |Zachodnie stany USA *        |LRS     |
 |Zachodnie stany USA 2      |LRS, ZRS|

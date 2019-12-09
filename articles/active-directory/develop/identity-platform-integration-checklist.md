@@ -2,26 +2,22 @@
 title: Najlepsze rozwiązania dotyczące platformy tożsamości firmy Microsoft | Azure
 description: Zapoznaj się z najlepszymi rozwiązaniami, zaleceniami i typowymi informacjami dotyczącymi integracji z platformą tożsamości firmy Microsoft.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1ce33e90cab1c5172cbf14470f24345d0446b0de
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e3ec9a96c15cb1f337a3c750b41b22c3b7a13d20
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200283"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917458"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Najlepsze rozwiązania i zalecenia dotyczące platformy tożsamości firmy Microsoft
 
@@ -37,13 +33,13 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 |---|---|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Przeczytaj i zapoznaj się z [zasadami platformy firmy Microsoft](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Upewnij się, że aplikacja jest zgodna z warunkami, które zostały zaprojektowane w celu ochrony użytkowników i platformy. |
 
-## <a name="ownership"></a>Wyniku
+## <a name="ownership"></a>Własność
 
 |   |   |
 |---|---|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Upewnij się, że informacje skojarzone z kontem używanym do rejestrowania aplikacji i zarządzania nimi są aktualne. |
 
-## <a name="branding"></a>Znakowania
+## <a name="branding"></a>Znakowanie
 
 |   |   |
 |---|---|
@@ -78,7 +74,7 @@ Użyj poniższej listy kontrolnej, aby upewnić się, że aplikacja jest efektyw
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) |  W przypadku aplikacji mobilnych skonfiguruj każdą platformę przy użyciu środowiska rejestracji aplikacji. Aby aplikacja mogła korzystać z Microsoft Authenticator lub Microsoft Portal firmy do logowania jednokrotnego, aplikacja wymaga skonfigurowanego "identyfikatora URI przekierowania brokera". Dzięki temu firma Microsoft może zwrócić kontrolę do aplikacji po uwierzytelnieniu. Podczas konfigurowania każdej platformy środowisko rejestracji aplikacji przeprowadzi Cię przez proces. Aby pobrać przykład pracy, Skorzystaj z przewodnika Szybki Start. W systemie iOS należy używać brokerów i systemu WebView, gdy jest to możliwe.|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) |  W obszarze aplikacje sieci Web lub interfejsy API sieci Web Zachowaj jedną pamięć podręczną tokenów dla każdego konta.  W przypadku usługi Web Apps bufor tokenów powinien być poprzedzony IDENTYFIKATORem konta.  W przypadku interfejsów API sieci Web konto powinno być poprzedzone przez skrót tokenu używanego do wywoływania interfejsu API. MSAL.NET udostępnia niestandardową serializację pamięci podręcznej tokeny w podplatformach .NET Framework i .NET Core. Ze względu na bezpieczeństwo i wydajność nasze zalecenia polegają na serializacji jednej pamięci podręcznej na użytkownika. Aby uzyskać więcej informacji, Przeczytaj o [serializacji pamięci podręcznej tokenu](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application).|
 | ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) | Jeśli dane wymagane przez aplikację są dostępne za pośrednictwem [Microsoft Graph](https://developer.microsoft.com/graph), zażądaj uprawnień dla tych danych przy użyciu punktu końcowego Microsoft Graph, a nie do poszczególnych interfejsów API. |
-| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) |Nie sprawdzaj wartości tokenu dostępu lub spróbuj przeanalizować ją jako klienta.  Mogą zmieniać wartości, formaty lub nawet być szyfrowane bez ostrzeżenia — zawsze używaj id_token, jeśli klient musi poznać coś o użytkowniku lub wywoływać Microsoft Graph.  Tylko interfejsy API sieci Web powinny analizować tokeny dostępu (ponieważ są one definiowane przy użyciu formatowania i ustawiania kluczy szyfrowania). |
+| ![pole wyboru](./media/active-directory-integration-checklist/checkbox-two.svg) |Nie sprawdzaj wartości tokenu dostępu lub spróbuj przeanalizować ją jako klienta.  Mogą zmieniać wartości, formaty lub nawet być szyfrowane bez ostrzeżenia — zawsze używaj id_token, jeśli klient musi poznać coś dotyczące użytkownika lub wywołać Microsoft Graph.  Tylko interfejsy API sieci Web powinny analizować tokeny dostępu (ponieważ są one definiowane przy użyciu formatowania i ustawiania kluczy szyfrowania). |
 
 ## <a name="end-user-experience"></a>Środowisko użytkownika końcowego
 

@@ -1,18 +1,19 @@
 ---
-title: Przekształcenie okna przepływu danych mapowania Azure Data Factory
+title: Mapowanie przekształcenia okna przepływu danych
 description: Przekształcenie okna przepływu danych mapowania Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 222f97afd4346b9e4980e41303aeb683f431cd68
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fa34def67d91332a00bf0ee92b365957a47f9616
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387077"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931478"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Przekształcenie okna Azure Data Factory
 
@@ -22,7 +23,7 @@ Przekształcenie okna polega na określeniu agregacji kolumn w strumieniach dany
 
 ![Opcje okna](media/data-flow/windows1.png "System Windows 1")
 
-## <a name="over"></a>Potok
+## <a name="over"></a>Ponad
 Ustaw Partycjonowanie danych kolumn dla transformacji okna. Odpowiednikiem SQL jest ```Partition By``` w klauzuli over w SQL. Jeśli chcesz utworzyć obliczenia lub utworzyć wyrażenie, które ma być używane na potrzeby partycjonowania, możesz to zrobić, umieszczając kursor na nazwie kolumny i wybierając pozycję "kolumna obliczana".
 
 ![Opcje okna](media/data-flow/windows4.png "System Windows 4")

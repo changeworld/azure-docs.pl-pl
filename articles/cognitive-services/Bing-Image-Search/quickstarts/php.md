@@ -9,19 +9,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ef38013d2c5d7f41db0eaf8d6e444471387d7ff6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327060"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930747"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Szybki Start: Wyszukiwanie obrazów przy użyciu interfejsu API REST wyszukiwanie obrazów Bing i języka PHP
 
-Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. W tym artykule prosta aplikacja wysyła zapytanie wyszukiwania i wyświetla nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia tworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. W tym artykule prosta aplikacja wysyła zapytanie wyszukiwania i wyświetla nieprzetworzone wyniki.
 
 Chociaż ta aplikacja została napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i każdym językiem programowania, który może wysyłać żądania HTTP i analizować dane JSON.
 
@@ -37,11 +37,11 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
 
 ## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
-Aby uruchomić tę aplikację, wykonaj następujące czynności.
+Aby uruchomić tę aplikację, wykonaj następujące kroki.
 
 1. Upewnij się, że w pliku `php.ini` włączono obsługę bezpiecznego protokołu HTTP. W systemie Windows ten plik znajduje się w folderze `C:\windows`.
 2. Utwórz nowy projekt PHP w ulubionym środowisku IDE lub edytorze.
-3. Zdefiniuj punkt końcowy interfejsu API, klucz subskrypcji i wyszukiwany termin.
+3. Zdefiniuj punkt końcowy interfejsu API, klucz subskrypcji i termin wyszukiwania. punkt końcowy może być poniżej globalnego punktu końcowego lub niestandardowy punkt końcowy [domeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) podrzędnej wyświetlany w Azure Portal dla zasobu.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -49,7 +49,8 @@ Aby uruchomić tę aplikację, wykonaj następujące czynności.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-   ## <a name="construct-and-perform-an-http-request"></a>Konstruowanie i wykonywanie żądania HTTP
+
+## <a name="construct-and-perform-an-http-request"></a>Konstruowanie i wykonywanie żądania HTTP
 
 1. Użyj zmiennych z ostatniego kroku do przygotowania żądania HTTP do interfejsu API wyszukiwania obrazów.
 
@@ -59,6 +60,7 @@ Aby uruchomić tę aplikację, wykonaj następujące czynności.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
+
 2. Wyślij żądanie internetowe i pobierz odpowiedź JSON.
 
     ```php
@@ -70,16 +72,16 @@ Aby uruchomić tę aplikację, wykonaj następujące czynności.
 
 Przetwórz i wyświetl zwróconą odpowiedź w formacie JSON.
 
-    ```php
-    $headers = array();
-        foreach ($http_response_header as $k => $v) {
-            $h = explode(":", $v, 2);
-            if (isset($h[1]))
-                if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
-                    $headers[trim($h[0])] = trim($h[1]);
-        }
-        return array($headers, $result);
-    ```
+```php
+$headers = array();
+    foreach ($http_response_header as $k => $v) {
+        $h = explode(":", $v, 2);
+        if (isset($h[1]))
+            if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
+                $headers[trim($h[0])] = trim($h[1]);
+    }
+    return array($headers, $result);
+```
 
 ## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
@@ -134,7 +136,7 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 

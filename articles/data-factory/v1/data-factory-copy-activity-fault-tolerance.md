@@ -4,20 +4,19 @@ description: Dowiedz się, jak dodać odporność na uszkodzenia w Azure Data Fa
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 84f5cdff72abe210ac1e39234b455e506d52ba5e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682952"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926149"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Dodaj odporność na uszkodzenia w działaniu kopiowania, pomijając niezgodne wiersze
 
@@ -51,7 +50,7 @@ Działanie Copy obsługuje trzy scenariusze wykrywania, pomijania i rejestrowani
 >[!NOTE]
 >Ta funkcja nie ma zastosowania, gdy działanie kopiowania jest skonfigurowane do wywoływania zewnętrznego mechanizmu ładowania danych, w tym [Azure SQL Data Warehouse Base](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) lub [Amazon RedShift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift). Aby załadować dane do SQL Data Warehouse przy użyciu bazy danych Base, należy użyć natywnej obsługi odporności na uszkodzenia podstawowej, określając wartość "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" w działaniu kopiowania.
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 Poniższy przykład zawiera definicję JSON, aby skonfigurować pomijanie niezgodnych wierszy w działaniu kopiowania:
 
 ```json
@@ -70,9 +69,9 @@ Poniższy przykład zawiera definicję JSON, aby skonfigurować pomijanie niezgo
 }
 ```
 
-| Właściwość | Opis | Dozwolone wartości | Wymagany |
+| Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Włącz pomijanie niezgodnych wierszy podczas kopiowania lub nie. | True<br/>False (domyślnie) | Nie |
+| **enableSkipIncompatibleRow** | Włącz pomijanie niezgodnych wierszy podczas kopiowania lub nie. | Prawda<br/>False (domyślnie) | Nie |
 | **redirectIncompatibleRowSettings** | Grupa właściwości, które można określić, gdy chcesz rejestrować niezgodne wiersze. | &nbsp; | Nie |
 | **linkedServiceName** | Połączona usługa usługi Azure Storage do przechowywania dziennika zawierającego pominięte wiersze. | Nazwa połączonej usługi [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) lub [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , która odwołuje się do wystąpienia magazynu, które ma być używane do przechowywania pliku dziennika. | Nie |
 | **path** | Ścieżka pliku dziennika zawierającego pominięte wiersze. | Określ ścieżkę magazynu obiektów blob, która ma być używana do rejestrowania niezgodnych danych. Jeśli nie podasz ścieżki, usługa utworzy dla Ciebie kontener. | Nie |

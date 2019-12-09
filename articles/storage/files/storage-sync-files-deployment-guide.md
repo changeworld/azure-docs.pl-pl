@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546364"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927892"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -57,7 +57,7 @@ Dla każdego serwera, który ma być używany z Azure File Sync, włącznie z ka
 > [!Note]  
 > Ten krok można pominąć, Jeśli wdrażasz Azure File Sync w systemie Windows Server Core.
 
-1. Otwórz Menedżer serwera.
+1. Otwórz Menedżera serwera.
 2. Kliknij pozycję **serwer lokalny**:  
     !["serwer lokalny" po lewej stronie interfejsu użytkownika Menedżer serwera](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. W okienku podrzędnym **Właściwości** wybierz link do funkcji **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer**.  
@@ -400,6 +400,10 @@ Obecnie podejście poprzedzające Określanie wartości zawiera kilka ogranicze�
 - Po utworzeniu punktu końcowego w chmurze Program Azure File Sync uruchamia proces wykrywania plików w chmurze przed rozpoczęciem synchronizacji początkowej. Czas potrzebny do ukończenia tego procesu zależy od różnych czynników, takich jak szybkość sieci, dostępna przepustowość i liczba plików i folderów. W przypadku przybliżonej oceny w wersji zapoznawczej proces wykrywania jest uruchamiany około 10 plików na sekundę.  W związku z tym nawet jeśli wstępne umieszczanie jest uruchamiane szybko, całkowity czas, w którym w pełni uruchomiony system, może być znacznie dłuższy, gdy dane są wstępnie umieszczane w chmurze.
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Samoobsługowe Przywracanie za poorednictwem poprzednich wersji i usługi VSS (Usługa kopiowania woluminów w tle)
+
+> [!IMPORTANT]
+> Poniższe informacje mogą być używane tylko w programie w wersji 9 (lub nowszej) agenta synchronizacji magazynu. Wersje starsze niż 9 nie będą miały poleceń cmdlet StorageSyncSelfService.
+
 Poprzednie wersje to funkcja systemu Windows, która umożliwia korzystanie z migawek VSS po stronie serwera, aby przedstawić dostępnych wersje pliku na kliencie SMB.
 Zapewnia to zaawansowany scenariusz, często nazywany samoobsługowym przywracaniem, bezpośrednio dla pracowników przetwarzających informacje, a nie w zależności od przywracania od administratora IT.
 

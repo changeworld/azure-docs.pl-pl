@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: a2a3bdeb0ee454185c92c6e49a17bda7e4e5d5f0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083581"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931974"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Modyfikowanie obwodu ExpressRoute za pomocą programu PowerShell (wersja klasyczna)
 
@@ -35,20 +35,7 @@ W tym artykule przedstawiono kroki, aby sprawdzić stan, update lub delete i anu
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Zainstaluj najnowsze wersje modułu usługi ExpressRoute i modułów programu PowerShell usługi Azure Service Management (SM). Do uruchamiania modułów SM nie można używać środowiska CloudShell platformy Azure.
-
-1. Aby zainstalować moduł zarządzania usługami platformy Azure, wykonaj instrukcje opisane w artykule [Instalowanie modułu zarządzania usługami](/powershell/azure/servicemanagement/install-azure-ps) . Jeśli masz już zainstalowany moduł AZ lub RM, upewnij się, że używasz elementu "-AllowClobber".
-2. Zaimportuj zainstalowane moduły. W poniższym przykładzie Dostosuj ścieżkę, aby odzwierciedlić lokalizację zainstalowanych modułów programu PowerShell.
-
-   ```powershell
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
-   ```
-3. Aby zalogować się do konta platformy Azure, Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i Połącz się ze swoim kontem. Skorzystaj z następującego przykładu, aby nawiązać połączenie przy użyciu modułu zarządzania usługami:
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="get-the-status-of-a-circuit"></a>Pobierz stan obwodu
 

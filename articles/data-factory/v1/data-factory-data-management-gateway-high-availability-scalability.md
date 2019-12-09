@@ -4,21 +4,20 @@ description: W tym artykule wyjaśniono, jak można skalować bramę zarządzani
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c3428019fe23e3f206e763249a18e7774bab149b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 25dbb01a4b018a51390be664472aceadea0a9524
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682696"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932029"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Zarządzanie danymi Gateway — wysoka dostępność i skalowalność (wersja zapoznawcza)
 > [!NOTE]
@@ -32,7 +31,7 @@ Ten artykuł ułatwia skonfigurowanie rozwiązania wysokiej dostępności i skal
 > 
 > **Ta funkcja w wersji zapoznawczej jest oficjalnie obsługiwana w usłudze Zarządzanie danymi Gateway 2.12. xxxx. x lub nowszej**. Upewnij się, że używasz wersji 2.12. xxxx. x lub nowszej. Pobierz najnowszą wersję Zarządzanie danymi Gateway [tutaj](https://www.microsoft.com/download/details.aspx?id=39717).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Bramy zarządzania danymi, które są zainstalowane na wielu maszynach lokalnych z jedną bramą logiczną, można kojarzyć z portalem. Te komputery są nazywane **węzłami**. Do bramy logicznej można skojarzyć maksymalnie **cztery węzły** . Zalety posiadania wielu węzłów (maszyn lokalnych z zainstalowaną bramą) dla bramy logicznej są następujące:  
 
 - Poprawa wydajności przenoszenia danych między lokalnymi i magazynami danych w chmurze.  
@@ -134,7 +133,7 @@ W tej sekcji założono, że przeniesiono następujące dwa artykuły lub zapozn
 Możesz uaktualnić istniejącą bramę, aby korzystać z funkcji wysokiej dostępności i skalowalności. Ta funkcja działa tylko z węzłami z bramą zarządzania danymi w wersji > = 2.12. xxxx. Wersja bramy zarządzania danymi zainstalowaną na komputerze można sprawdzić na karcie **Pomoc** w Configuration Manager zarządzanie danymi bramy. 
 
 1. Zaktualizuj bramę na maszynie lokalnej do najnowszej wersji, wykonując następujące czynności, pobierając i uruchamiając pakiet instalacyjny MSI z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=39717). Aby uzyskać szczegółowe informacje, zobacz sekcję dotyczącą [instalacji](data-factory-data-management-gateway.md#installation) .  
-2. Przejdź do Azure Portal. Uruchom **stronę Data Factory** dla fabryki danych. Kliknij kafelek połączone usługi, aby uruchomić **stronę połączone usługi**. Wybierz bramę, aby uruchomić **stronę bramy**. Kliknij i Włącz **funkcję Podgląd** , jak pokazano na poniższej ilustracji: 
+2. Przejdź do witryny Azure Portal. Uruchom **stronę Data Factory** dla fabryki danych. Kliknij kafelek połączone usługi, aby uruchomić **stronę połączone usługi**. Wybierz bramę, aby uruchomić **stronę bramy**. Kliknij i Włącz **funkcję Podgląd** , jak pokazano na poniższej ilustracji: 
 
     ![Zarządzanie danymi Gateway — Włącz funkcję wersji zapoznawczej](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-existing-gateway-enable-high-availability.png)   
 2. Po włączeniu funkcji wersji zapoznawczej w portalu Zamknij wszystkie strony. Ponownie Otwórz **stronę bramy** , aby wyświetlić nowy interfejs użytkownika w wersji zapoznawczej.
@@ -166,7 +165,7 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, który jest uż
   > [!NOTE]
   > Aplikacja Menedżera poświadczeń jest używana podczas bezpiecznego ustawiania poświadczeń z Kreatora kopiowania lub witryny Azure Portal. Może to być wywoływane z dowolnego komputera w tej samej sieci, w którym znajduje się magazyn danych lokalnych/prywatnych.
 - Obsługiwane są certyfikaty z użyciem symboli wieloznacznych. Jeśli nazwa FQDN to **Node1.domain.contoso.com**, można użyć * **. domain.contoso.com** jako nazwę podmiotu certyfikatu.
-- Certyfikaty sieci SAN nie są zalecane, ponieważ zostanie użyty tylko ostatni element alternatywnych nazw podmiotu, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenie. Na przykład masz certyfikat sieci SAN, którego SAN to **Node1.domain.contoso.com** i **Node2.domain.contoso.com**, możesz użyć tego certyfikatu tylko na komputerze, którego nazwa FQDN to **Node2.domain.contoso.com**.
+- Certyfikaty sieci SAN nie są zalecane, ponieważ zostanie użyty tylko ostatni element alternatywnych nazw podmiotu, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenie. Przykład: masz certyfikat sieci SAN, którego SAN to **Node1.domain.contoso.com** i **Node2.domain.contoso.com**, możesz użyć tego certyfikatu tylko na komputerze, którego nazwa FQDN to **Node2.domain.contoso.com**.
 - Program obsługuje wszystkie rozmiary kluczy obsługiwane przez system Windows Server 2012 R2 dla certyfikatów SSL.
 - Certyfikat używający kluczy CNG nie jest obsługiwany.
 
@@ -182,7 +181,7 @@ W Azure Portal można wyświetlić migawkę wykorzystania zasobów (procesor CPU
 
 ![Zarządzanie danymi Gateway — monitorowanie wielu węzłów](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-Możesz włączyć **Ustawienia zaawansowane** na stronie **brama** , aby zobaczyć Zaawansowane metryki, takie jak **Sieć**(WE/out), **& roli stan poświadczeń**, co jest przydatne w przypadku debugowania problemów z bramą i **współbieżnych zadań** (uruchomionych/limitów ), które można odpowiednio modyfikować i zmieniać podczas dostrajania wydajności. Poniższa tabela zawiera opisy kolumn na liście **węzły bramy** :  
+Na stronie **brama** można włączyć **Ustawienia zaawansowane** , aby wyświetlić metryki zaawansowane, takie jak **Sieć**(WE/out), **& stanu poświadczeń**, co jest przydatne w debugowaniu problemów z bramą i **współbieżnych zadań** (uruchomionych/ograniczających), które można odpowiednio modyfikować i zmieniać podczas dostrajania wydajności. Poniższa tabela zawiera opisy kolumn na liście **węzły bramy** :  
 
 Właściwość monitorowania | Opis
 :------------------ | :---------- 
@@ -204,10 +203,10 @@ W poniższej tabeli przedstawiono możliwe stany **węzła bramy**:
 Stan  | Komentarze/scenariusze
 :------- | :------------------
 Online | Węzeł połączony z usługą Data Factory.
-Stanie | Węzeł jest w trybie offline.
-Unowocześnieni | Węzeł jest aktualizowany w sposób autouzupełniania.
+W trybie offline | Węzeł jest w trybie offline.
+Uaktualnianie | Węzeł jest aktualizowany w sposób autouzupełniania.
 Ograniczone | Z powodu problemu z łącznością. Może to być spowodowane problemem z portem HTTP 8050, problemem z łącznością usługi Service Bus lub problemem z synchronizacją poświadczeń. 
-Nieaktywne | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości.<br/><br/> Węzeł może być nieaktywny, jeśli nie może połączyć się z innymi węzłami. 
+Nieaktywna | Węzeł jest w konfiguracji innej niż Konfiguracja innych węzłów większości.<br/><br/> Węzeł może być nieaktywny, jeśli nie może połączyć się z innymi węzłami. 
 
 
 W poniższej tabeli przedstawiono możliwe stany **bramy logicznej**. Stan bramy zależy od stanu węzłów bramy. 
@@ -216,7 +215,7 @@ Stan | Komentarze
 :----- | :-------
 Wymaga rejestracji | Żaden węzeł nie jest jeszcze zarejestrowany w tej bramie logicznej
 Online | Węzły bramy są w trybie online
-Stanie | Brak węzła w stanie online.
+W trybie offline | Brak węzła w stanie online.
 Ograniczone | Nie wszystkie węzły w tej bramie są w dobrej kondycji. Ten stan jest ostrzeżeniem, że niektóre węzły mogą być wyłączone. <br/><br/>Może to być spowodowane problemem z synchronizacją poświadczeń w węźle dyspozytora/proces roboczy. 
 
 ### <a name="pipeline-activities-monitoring"></a>Monitorowanie potoku/działań

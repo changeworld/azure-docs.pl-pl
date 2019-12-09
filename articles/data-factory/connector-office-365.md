@@ -4,31 +4,30 @@ description: Informacje o kopiowaniu danych z pakietu Office 365 do obsługiwany
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 9bd059d42686a37701af0d42f54335b83c06b752
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680568"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912409"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Skopiuj dane z pakietu Office 365 do platformy Azure przy użyciu Azure Data Factory
 
-Azure Data Factory integruje się z usługą [Microsoft Graph Data Connect](https://docs.microsoft.com/graph/data-connect-concept-overview), umożliwiając Ci wprowadzanie rozbudowanych danych organizacyjnych w dzierżawie pakietu Office 365 do platformy Azure w sposób skalowalny i kompilowanie aplikacji analitycznych oraz wyodrębnianie szczegółowych informacji na podstawie tych cennych danych stanu. Integracja z usługą Privileged Access Management zapewnia bezpieczną kontrolę dostępu dla cennych danych w pakiecie Office 365.  Skorzystaj z [tego linku](https://docs.microsoft.com/graph/data-connect-concept-overview) , aby zapoznać się z omówieniem Microsoft Graph Data Connect i zapoznaj się z [tym linkiem](https://docs.microsoft.com/graph/data-connect-policies#licensing) w celu uzyskania informacji dotyczących licencjonowania.
+Azure Data Factory integruje się z usługą [Microsoft Graph Data Connect](https://docs.microsoft.com/graph/data-connect-concept-overview), umożliwiając Ci wprowadzanie rozbudowanych danych organizacji w dzierżawie pakietu Office 365 do platformy Azure w sposób skalowalny i kompilowanie aplikacji analitycznych oraz wyodrębnianie szczegółowych informacji na podstawie tych cennych zasobów danych. Integracja z usługą Privileged Access Management zapewnia bezpieczną kontrolę dostępu dla cennych danych w pakiecie Office 365.  Skorzystaj z [tego linku](https://docs.microsoft.com/graph/data-connect-concept-overview) , aby zapoznać się z omówieniem Microsoft Graph Data Connect i zapoznaj się z [tym linkiem](https://docs.microsoft.com/graph/data-connect-policies#licensing) w celu uzyskania informacji dotyczących licencjonowania.
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z pakietu Office 365. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z pakietu Office 365. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 Funkcja połączenia ADF z pakietem Office 365 łącznika i Microsoft Graph danych umożliwiają rozzyskanie różnych typów zestawów danych z skrzynek pocztowych z obsługą poczty E-mail programu Exchange, w tym kontaktów książki adresowej, zdarzeń kalendarza, wiadomości e-mail, informacji o użytkowniku, ustawień skrzynek pocztowych i tak dalej.  Zapoznaj się [tutaj](https://docs.microsoft.com/graph/data-connect-datasets) , aby wyświetlić pełną listę dostępnych zestawów danych.
 
-Na razie w ramach jednego działania kopiowania można **kopiować dane z pakietu Office 365 do [platformy Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)i [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) w formacie JSON** (typ setOfObjects). Jeśli chcesz załadować pakiet Office 365 do innych typów magazynów danych lub w innych formatach, można utworzyć łańcuch pierwszego działania kopiowania z kolejnym działaniem kopiowania, aby dodatkowo załadować dane do dowolnego z [obsługiwanych magazynów docelowych ADF](copy-activity-overview.md#supported-data-stores-and-formats) (patrz "obsługiwana jako ujścia"). w tabeli "obsługiwane magazyny danych i formaty").
+Na razie w ramach jednego działania kopiowania można **kopiować dane z pakietu Office 365 do [platformy Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)i [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) w formacie JSON** (typ setOfObjects). Jeśli chcesz załadować pakiet Office 365 do innych typów magazynów danych lub w innych formatach, można utworzyć łańcuch pierwszego działania kopiowania z kolejnym działaniem kopiowania, aby dodatkowo załadować dane do dowolnego z [obsługiwanych magazynów docelowych ADF](copy-activity-overview.md#supported-data-stores-and-formats) (w tabeli "obsługiwane magazyny danych i formaty").
 
 >[!IMPORTANT]
 >- Subskrypcja platformy Azure zawierająca fabrykę danych i magazyn danych ujścia musi znajdować się w tej samej dzierżawie usługi Azure Active Directory (Azure AD) jako dzierżawy pakietu Office 365.
@@ -49,7 +48,7 @@ Aby skopiować dane z pakietu Office 365 do platformy Azure, należy wykonać na
 
 ## <a name="approving-new-data-access-requests"></a>Zatwierdzanie nowych żądań dostępu do danych
 
-Jeśli żądasz danych dla tego kontekstu po raz pierwszy (kombinacji, do której tabeli danych uzyskuje się dostęp, którego z kontem docelowym są dane, które są ładowane, a tożsamość użytkownika, który ma być żądaniem dostępu do danych), zobaczysz działanie kopiowania. stan jako "w toku" i tylko po kliknięciu [linku "Szczegóły" w obszarze Akcje](copy-activity-overview.md#monitoring) zobaczysz stan jako "RequestingConsent".  Członek grupy osoby zatwierdzającej dostęp do danych musi zatwierdzić żądanie w Privileged Access Management zanim będzie możliwe kontynuowanie wyodrębniania danych.
+Jeśli żądasz danych dla tego kontekstu po raz pierwszy (połączenie z tabelą danych uzyskuje dostęp, na którym koncie docelowym są ładowane dane, a tożsamość użytkownika, która wprowadza żądanie dostępu do danych, zobaczysz stan działania kopiowania jako "w toku" i tylko po kliknięciu [linku "Szczegóły" w obszarze Akcje](copy-activity-overview.md#monitoring) zobaczysz stan jako "RequestingConsent".  Członek grupy osoby zatwierdzającej dostęp do danych musi zatwierdzić żądanie w Privileged Access Management zanim będzie możliwe kontynuowanie wyodrębniania danych.
 
 Zapoznaj się z [tym tutaj](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) , jak osoba zatwierdzająca może zatwierdzić żądanie dostępu do danych, i zapoznaj się z [tym](https://docs.microsoft.com/graph/data-connect-pam) opisem, aby uzyskać wyjaśnienie ogólnej integracji z Privileged Access Management, w tym informacje dotyczące konfigurowania grupy osób zatwierdzających dostęp do danych.
 
@@ -73,18 +72,18 @@ Można utworzyć potok z działaniem kopiowania przy użyciu jednego z następuj
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika pakietu Office 365.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
 Dla połączonej usługi Office 365 są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość: **Office 365** | Tak |
 | office365TenantId | Identyfikator dzierżawy platformy Azure, do której należy konto usługi Office 365. | Tak |
 | servicePrincipalTenantId | Określ informacje o dzierżawie, w których znajduje się aplikacja sieci Web usługi Azure AD. | Tak |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak |
 | servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. | Tak |
-| Właściwością connectvia | Integration Runtime używany do nawiązywania połączenia z magazynem danych.  Jeśli nie zostanie określony, zostanie użyta domyślna Azure Integration Runtime. | Nie |
+| connectVia | Integration Runtime używany do nawiązywania połączenia z magazynem danych.  Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie |
 
 >[!NOTE]
 > Różnica między **office365TenantId** i **servicePrincipalTenantId** i odpowiadającą jej wartością, która zapewnia:
@@ -113,11 +112,11 @@ Dla połączonej usługi Office 365 są obsługiwane następujące właściwośc
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych pakietu Office 365.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych pakietu Office 365.
 
 Aby skopiować dane z pakietu Office 365, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Office365Table** | Tak |
 | tableName | Nazwa zestawu danych do wyodrębnienia z pakietu Office 365. Zapoznaj [się](https://docs.microsoft.com/graph/data-connect-datasets#datasets) z listą zestawów danych pakietu Office 365 dostępnych do wyodrębnienia. | Tak |
@@ -145,13 +144,13 @@ Jeśli ustawienia `dateFilterColumn`, `startTime`, `endTime`i `userScopeFilterUr
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło pakietu Office 365.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło pakietu Office 365.
 
 ### <a name="office-365-as-source"></a>Pakiet Office 365 jako źródło
 
 Aby skopiować dane z pakietu Office 365, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **Office365Source** | Tak |
 | allowedGroups | Predykat wyboru grupy.  Ta właściwość umożliwia wybranie do 10 grup użytkowników, dla których zostaną pobrane dane.  Jeśli nie określono żadnych grup, dane będą zwracane dla całej organizacji. | Nie |
@@ -304,4 +303,4 @@ Aby skopiować dane z pakietu Office 365, w sekcji **Źródło** działania kopi
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

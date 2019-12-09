@@ -9,21 +9,20 @@ manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: cabeb6314c16aa5bc37f1139954f8829a37af5bb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682762"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931329"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Tworzenie i monitorowanie fabryk danych platformy Azure oraz zarządzanie nimi przy użyciu zestawu Azure Data Factory .NET SDK
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Fabryki danych platformy Azure można tworzyć, monitorować programowo i zarządzać nimi za pomocą Data Factory .NET SDK. Ten artykuł zawiera przewodnik, który można wykonać w celu utworzenia przykładowej aplikacji konsolowej .NET, która tworzy i monitoruje fabrykę danych. 
 
 > [!NOTE]
@@ -34,7 +33,7 @@ Fabryki danych platformy Azure można tworzyć, monitorować programowo i zarzą
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Program Visual Studio w wersji 2012, 2013 lub 2015.
-* Pobierz i zainstaluj [zestaw Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* Pobierz i zainstaluj [Azure .NET SDK](https://azure.microsoft.com/downloads/).
 * Azure PowerShell. Postępuj zgodnie z instrukcjami w artykule [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell), aby zainstalować program Azure PowerShell na komputerze. Program Azure PowerShell służy do tworzenia aplikacji Azure Active Directory.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Tworzenie aplikacji w usłudze Azure Active Directory

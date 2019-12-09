@@ -1,6 +1,5 @@
 ---
-title: Konfiguracja przewodnika po aplikacji jednostronicowej (SPA) usługi Azure AD v 2.0
-titleSuffix: Microsoft identity platform
+title: Microsoft Identity platform JavaScript — Przewodnik po jednostronicowej aplikacji | Azure
 description: Jak aplikacje SPA w języku JavaScript mogą wywołać interfejs API, który wymaga tokenów dostępu przez punkt końcowy Azure Active Directory v 2.0
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc03e6f1610fe6cef9ce72c981f6f800da8a9951
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802533"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919396"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji JavaScript jednostronicowej (SPA)
 
@@ -353,7 +352,7 @@ Dodaj następujący kod do pliku `index.html` w tagach `<script></script>`:
 >
 > #### <a name="set-a-redirect-url-for-visual-studio"></a>Ustawianie adresu URL przekierowania dla programu Visual Studio
 > Aby uzyskać adres URL przekierowania dla programu Visual Studio, wykonaj następujące kroki:
-> 1. W Eksplorator rozwiązań wybierz projekt.
+> 1. W Eksploratorze rozwiązań wybierz projekt.
 >
 >    Zostanie otwarte okno **Właściwości** . Jeśli nie, naciśnij klawisz F4.
 >

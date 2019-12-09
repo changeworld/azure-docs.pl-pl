@@ -1,5 +1,5 @@
 ---
-title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — uzyskiwanie tokenu dla aplikacji
+title: Uzyskaj token do wywoływania interfejsów API sieci Web w aplikacjach mobilnych | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje interfejsy API sieci Web (Uzyskiwanie tokenu dla aplikacji)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803767"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919923"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — uzyskiwanie tokenu
 
@@ -259,7 +259,7 @@ Nie zalecamy użycia protokołu bezpośrednio. Jeśli to zrobisz, aplikacja nie 
 
 W przypadku korzystania z protokołu do uzyskiwania tokenów dla aplikacji mobilnych należy wykonać dwa żądania: uzyskaj kod autoryzacji i wymieniaj go z tokenem.
 
-#### <a name="get-authorization-code"></a>Pobierz kod autoryzacji
+#### <a name="get-authorization-code"></a>Uzyskiwanie kodu autoryzacji
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

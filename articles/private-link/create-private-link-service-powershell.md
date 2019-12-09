@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c5910649127c4b2e78cfc12065a8f12a41f7309a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 932de70b634a7bbdb77e5dc1552ae53828a7269e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229389"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913102"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Tworzenie usługi linku prywatnego przy użyciu Azure PowerShell
 W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie Azure przy użyciu Azure PowerShell.
@@ -21,7 +21,7 @@ W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie 
 
 Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ten artykuł będzie wymagał najnowszej wersji modułu Azure PowerShell. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Aby można było utworzyć link prywatny, należy utworzyć grupę zasobów z poleceniem [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *WestCentralUS* :
 
@@ -103,7 +103,7 @@ $privateLinkService = New-AzPrivateLinkService `
 ```
 
 ### <a name="get-private-link-service"></a>Pobierz usługę linku prywatnego
-Uzyskaj szczegółowe informacje o swojej usłudze linku prywatnego przy użyciu usługi [New-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) w następujący sposób:
+Uzyskaj szczegółowe informacje o usłudze linku prywatnego za pomocą [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) w następujący sposób:
 
 ```azurepowershell
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 

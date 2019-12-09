@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f6fd2a01cdb325d543bc624d0c13bce1d84a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 55bba2ff51460a10feabd881458b8d4a15cde924
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848242"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914625"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -52,7 +52,10 @@ Konta użytkowników na platformie Azure Multi-Factor Authentication mają trzy 
 
 Stan użytkownika wskazuje, czy administrator zarejestrował je w usłudze Azure MFA, oraz czy ukończył proces rejestracji.
 
-Wszyscy użytkownicy zaczynają *wyłączać*. Po zarejestrowaniu użytkowników w usłudze Azure MFA ich stan zmieni się na *włączone*. Gdy użytkownicy będą mogli się zalogować i zakończyć proces rejestracji, ich stan zmieni się na *wymuszone*.  
+Wszyscy użytkownicy zaczynają *wyłączać*. Po zarejestrowaniu użytkowników w usłudze Azure MFA ich stan zmieni się na *włączone*. Gdy użytkownicy będą mogli się zalogować i zakończyć proces rejestracji, ich stan zmieni się na *wymuszone*.
+
+> [!NOTE]
+> Jeśli usługa MFA jest ponownie włączona w obiekcie użytkownika, który ma już szczegóły rejestracji, na przykład telefon lub poczta e-mail, Administratorzy muszą ponownie zarejestrować usługę MFA za pośrednictwem Azure Portal lub PowerShell. Jeśli użytkownik nie zostanie ponownie zarejestrowany, jego stan MFA nie przechodzi z *włączonego* do *wymuszanego* w interfejsie użytkownika zarządzania uwierzytelnianiem usługi MFA.
 
 ### <a name="view-the-status-for-a-user"></a>Wyświetlanie stanu użytkownika
 
@@ -179,6 +182,8 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 > [!NOTE]
 > Ostatnio zmieniono zachowanie i skrypt programu PowerShell powyżej. Wcześniej skrypt zapisany z metod MFA, wyłączył uwierzytelnianie MFA i przywrócił metody. Nie jest to już konieczne, ponieważ domyślne zachowanie funkcji Disable nie czyści metod.
+>
+> Jeśli usługa MFA jest ponownie włączona w obiekcie użytkownika, który ma już szczegóły rejestracji, na przykład telefon lub poczta e-mail, Administratorzy muszą ponownie zarejestrować usługę MFA za pośrednictwem Azure Portal lub PowerShell. Jeśli użytkownik nie zostanie ponownie zarejestrowany, jego stan MFA nie przechodzi z *włączonego* do *wymuszanego* w interfejsie użytkownika zarządzania uwierzytelnianiem usługi MFA.
 
 ## <a name="next-steps"></a>Następne kroki
 

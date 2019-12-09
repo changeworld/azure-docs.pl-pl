@@ -1,29 +1,25 @@
 ---
-title: Logowanie jednokrotne (Microsoft Authentication Library for JavaScript)
+title: Logowanie jednokrotne (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej na temat tworzenia środowiska logowania jednokrotnego przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da39b8435acdd11108a945c6bac5147dc8b6ad50
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150581"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916268"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Logowanie jednokrotne za pomocą biblioteki MSAL.js
 
@@ -92,7 +88,7 @@ Kroki konfigurowania opcjonalnych oświadczeń w manifeście aplikacji można zn
 
 **Korzystanie z wskazówki logowania**
 
-Jeśli nie masz skonfigurowanego lub nie chcesz ominąć monitu wyboru konta w ramach wywołań uwierzytelniania interakcyjnego, możesz to zrobić, podając `login_hint` w parametrach żądania i opcjonalnie `domain_hint` jako `extraQueryParameters` w metodach interaktywnych MSAL. js (@no __t_3_, `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Na przykład:
+Jeśli nie masz skonfigurowanego lub nie chcesz pominąć monitu wyboru konta w ramach wywołań uwierzytelniania interakcyjnego, możesz to zrobić, podając `login_hint` w parametrach żądania i opcjonalnie `domain_hint` jako `extraQueryParameters` w metodach interaktywnych MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Na przykład:
 
 ```javascript
 var request = {
@@ -104,11 +100,11 @@ var request = {
 userAgentApplication.loginRedirect(request);
 ```
 
-Wartości parametrów login_hint i domain_hint można uzyskać, odczytując oświadczenia zwrócone w tokenie identyfikatora użytkownika.
+Możesz uzyskać wartości dla login_hint i domain_hint, odczytując oświadczenia zwrócone w tokenie identyfikatora dla użytkownika.
 
 * **loginHint** należy ustawić na wartość `preferred_username` w tokenie identyfikatora.
 
-* **domain_hint** jest wymagany tylko wtedy, gdy jest używany urząd/typowe. Warunek domeny jest określany na podstawie identyfikatora dzierżawy (TID).  Jeśli `tid` w tokenie identyfikatora jest `9188040d-6c67-4c5b-b112-36a304b66dad`, to konsumenci. W przeciwnym razie jest to organizacja.
+* **domain_hint** jest wymagana tylko w przypadku korzystania z urzędu/typowe. Warunek domeny jest określany na podstawie identyfikatora dzierżawy (TID).  Jeśli `tid` w tokenie identyfikatora jest `9188040d-6c67-4c5b-b112-36a304b66dad`, to konsumenci. W przeciwnym razie jest to organizacja.
 
 Przeczytaj [tutaj](v2-oauth2-implicit-grant-flow.md) , aby uzyskać więcej informacji na temat wartości wskazówki logowania i wskazówki dotyczącej domeny.
 

@@ -1,15 +1,15 @@
 ---
-author: larryfr
+author: Blackmist
 ms.service: machine-learning
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: 0463dbd67f27f6664ab246ad56af9c6fb95c52ee
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2124b5241015ca74ff6507767396b1a27bd1191d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682094"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935870"
 ---
 Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON a parametrami metody:
 
@@ -37,7 +37,7 @@ Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [AksWebserv
 | `keys` | Nie dotyczy | Zawiera elementy konfiguracji dla kluczy. |
 | &emsp;&emsp;`primaryKey` | `primary_key` | Podstawowy klucz uwierzytelniania, który ma być używany dla tej usługi sieci Web |
 | &emsp;&emsp;`secondaryKey` | `secondary_key` | Pomocniczy klucz uwierzytelniania, który będzie używany przez tę usługę sieci Web |
-| `gpuCores` | `gpu_cores` | Liczba rdzeni procesora GPU do przydzielenia dla tej usługi sieci Web. Wartość domyślna to 1. Obsługuje tylko wartości całkowite. |
+| `gpuCores` | `gpu_cores` | Liczba rdzeni procesora GPU do przydzielenia dla tej usługi sieci Web. Domyślna wartość wynosi 1. Obsługuje tylko wartości całkowite. |
 | `livenessProbeRequirements` | Nie dotyczy | Zawiera elementy konfiguracji dla wymagań sondowania na żywo. |
 | &emsp;&emsp;`periodSeconds` | `period_seconds` | Jak często (w sekundach) przeprowadzenia sondy na żywo. Wartość domyślna to 10 sekund. Wartość minimalna to 1. |
 | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Liczba sekund od momentu rozpoczęcia sondowania na żywo przez kontener. Wartość domyślna to 310 |

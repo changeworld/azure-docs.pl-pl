@@ -2,23 +2,23 @@
 title: Obsługiwane formaty plików w Azure Data Factory
 description: W tym temacie opisano formaty plików i kody kompresji, które są obsługiwane przez łączników opartych na plikach w usłudze Azure Data Factory.
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4a81cc9887610036007b92e43b8bd44f0a8b7740
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 48121dabfa4fc56e2f797f715cb3fce3e3be9578
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075547"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928688"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
-*Ten artykuł ma zastosowanie do następujących łączników: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).*
+*Ten artykuł ma zastosowanie do następujących łączników [: Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [system plików](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)i [SFTP](connector-sftp.md).*
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
@@ -42,7 +42,7 @@ Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ust
 | encodingName |Określa nazwę kodowania. |Prawidłowa nazwa kodowania. Zobacz [właściwość Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Przykład: windows-1250 lub shift_jis. Wartość **domyślna** to **UTF-8**. |Nie |
 | firstRowAsHeader |Określa, czy pierwszy wiersz ma być traktowany jako nagłówek. W przypadku zestawu danych wejściowych usługa Data Factory odczytuje pierwszy wiersz jako nagłówek. W przypadku zestawu danych wyjściowych usługa Data Factory zapisuje pierwszy wiersz jako nagłówek. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Prawda<br/><b>False (domyślnie)</b> |Nie |
 | skipLineCount |Wskazuje liczbę **niepuste** wierszy do pominięcia podczas odczytywania danych z plików wejściowych. Jeśli określono zarówno właściwość skipLineCount, jak i firstRowAsHeader, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego. <br/><br/>Aby uzyskać przykładowe scenariusze, zobacz sekcję [Scenariusze użycia właściwości `firstRowAsHeader` oraz `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Liczba całkowita |Nie |
-| treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>False |Nie |
+| treatEmptyAsNull |Określa, czy ciąg pusty lub o wartości null ma być traktowany jako wartość null podczas odczytu danych z pliku wejściowego. |**True (domyślnie)**<br/>Fałsz |Nie |
 
 ### <a name="textformat-example"></a>Przykład formatu TextFormat
 
@@ -435,7 +435,7 @@ W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy uży
 - **Aby użyć OpenJDK**: jest obsługiwana od czasu IR w wersji 3,13. Spakuj plik JVM. dll ze wszystkimi innymi wymaganymi zestawami OpenJDK do samodzielnej maszyny IR, a następnie ustaw dla zmiennej środowiskowej systemowe JAVA_HOME odpowiednio.
 
 >[!TIP]
->Jeśli skopiujesz dane do/z formatu Parquet przy użyciu samodzielnego Integration Runtime i błędu trafień mówiąc "Wystąpił błąd podczas wywoływania języka Java, komunikat: **Java. lang. OutOfMemoryError: przestrzeń sterty Java**", można dodać zmienną środowiskową `_JAVA_OPTIONS` w Maszyna, która hostuje własne środowisko IR, aby dostosować minimalny/maksymalny rozmiar sterty dla JVM, aby umożliwić taką kopię, a następnie ponownie uruchomić potok.
+>Jeśli skopiujesz dane do/z formatu Parquet przy użyciu samodzielnego Integration Runtime i błędu trafień mówiąc "Wystąpił błąd podczas wywoływania języka Java, komunikat: **Java. lang. OutOfMemoryError: przestrzeń sterty Java**", można dodać zmienną środowiskową `_JAVA_OPTIONS` na maszynie, która hostuje własne środowisko IR, aby dostosować rozmiar sterty minimalny/maksymalny dla JVM, a następnie ponownie uruchomić potok.
 
 ![Ustawianie rozmiaru sterty JVM na samoobsługowym środowisku IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -445,7 +445,7 @@ Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartoś
 
 | Typ danych tymczasowych fabryki danych | Typ pierwotny parquet | Parquet oryginalny typ (deserializacji) | Parquet oryginalny typ (serializować) |
 |:--- |:--- |:--- |:--- |
-| Wartość logiczna | Wartość logiczna | Nie dotyczy | Nie dotyczy |
+| Wartość logiczna | Wartość logiczna | ND | ND |
 | Sbyte — | Int32 | Int8 | Int8 |
 | Bajtów | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -453,18 +453,18 @@ Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartoś
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/dane binarne | UInt64 | Dziesiętna |
-| Pojedyncze | Float | Nie dotyczy | Nie dotyczy |
-| Podwójne | Podwójne | Nie dotyczy | Nie dotyczy |
-| Dziesiętna | Binary | Dziesiętna | Dziesiętna |
+| UInt64 | Int64/dane binarne | UInt64 | Decimal |
+| Pojedyncze | float | ND | ND |
+| Double | Double | ND | ND |
+| Decimal | Binary | Decimal | Decimal |
 | Ciąg | Binary | Utf8 | Utf8 |
-| DateTime | Int96 | Nie dotyczy | Nie dotyczy |
-| TimeSpan | Int96 | Nie dotyczy | Nie dotyczy |
-| DateTimeOffset | Int96 | Nie dotyczy | Nie dotyczy |
-| ByteArray | Binary | Nie dotyczy | Nie dotyczy |
+| Data i godzina | Int96 | ND | ND |
+| TimeSpan | Int96 | ND | ND |
+| DateTimeOffset | Int96 | ND | ND |
+| ByteArray | Binary | ND | ND |
 | Identyfikator GUID | Binary | Utf8 | Utf8 |
-| Char | Binary | Utf8 | Utf8 |
-| CharArray | Nieobsługiwane | Nie dotyczy | Nie dotyczy |
+| char | Binary | Utf8 | Utf8 |
+| CharArray | Brak obsługi | ND | ND |
 
 ## <a name="orc-format"></a>Format ORC
 
@@ -507,16 +507,16 @@ W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy uży
 | UInt32 | Długie |
 | Int64 | Długie |
 | UInt64 | Ciąg |
-| Pojedyncze | Float |
-| Podwójne | Podwójne |
-| Dziesiętna | Dziesiętna |
+| Pojedyncze | float |
+| Double | Double |
+| Decimal | Decimal |
 | Ciąg | Ciąg |
-| DateTime | Znacznik czasu |
+| Data i godzina | Znacznik czasu |
 | DateTimeOffset | Znacznik czasu |
 | TimeSpan | Znacznik czasu |
 | ByteArray | Binary |
 | Identyfikator GUID | Ciąg |
-| Char | Char(1) |
+| char | Char(1) |
 
 ## <a name="avro-format"></a>AVRO format
 

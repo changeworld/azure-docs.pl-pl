@@ -1,24 +1,24 @@
 ---
-title: 'Przekształcanie danych przy użyciu programu Hive na platformie Azure Virtual Network '
+title: Przekształcanie danych przy użyciu programu Hive na platformie Azure Virtual Network przy użyciu Azure Portal
 description: Ten samouczek zawiera instrukcje krok po kroku przekształcania danych przy użyciu działania programu Hive w usłudze Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 73a43bdb859d39bd0cb8e3d4a3ed3f114fb2c156
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/04/2018
+ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683432"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925556"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
+
 W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Factory przekształcającego dane przy użyciu działania programu Hive w klastrze usługi HDInsight, który znajduje się w usłudze Azure Virtual Network (VNet). Ten samouczek obejmuje następujące procedury:
 
 > [!div class="checklist"]
@@ -26,7 +26,7 @@ W tym samouczku witryna Azure Portal umożliwia tworzenie potoku usługi Data Fa
 > * Tworzenie własnego środowiska Integration Runtime
 > * Tworzenie połączonych usług Azure Storage i Azure HDInsight
 > * Tworzenie potoku przy użycia działania Hive
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych
 
@@ -74,7 +74,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).    
 2. Kliknij przycisk **Nowy** w lewym menu, kliknij pozycję **Dane + analiza**, a następnie kliknij pozycję **Data Factory**. 
    
-   ![Nowy->Fabryka danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
+   ![Nowy-> Fabryka danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
 3. Na stronie **Nowa fabryka danych** wprowadź jako **nazwę** wartość **ADFTutorialHiveFactory**. 
       
      ![Strona Nowa fabryka danych](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
@@ -92,7 +92,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście są wyświetlane tylko lokalizacje obsługiwane na potrzeby tworzenia fabryk danych.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij pozycję **Utwórz**.
+7. Kliknij przycisk **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
      ![kafelek Wdrażanie fabryki danych](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -166,7 +166,7 @@ W tej sekcji zredagujesz i wdrożysz dwie połączone usługi:
     2. Wybierz pozycję **MySelfHostedIR** w polu **Połącz za pośrednictwem środowiska Integration Runtime**.
     3. W polu **Nazwa konta magazynu** wybierz konto usługi Azure Storage. 
     4. Aby przetestować połączenie z kontem magazynu, kliknij pozycję **Testuj połączenie**.
-    5. Kliknij pozycję **Zapisz**.
+    5. Kliknij przycisk **Save** (Zapisz).
    
         ![Określanie konta usługi Azure Blob Storage](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -231,7 +231,7 @@ Pamiętaj o następujących kwestiach:
         ![Argumenty skryptu](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Aby opublikować artefakty do usługi Data Factory, kliknij pozycję **Opublikuj**.
 
-    ![Publikowanie](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![Publikuj](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Wyzwalanie uruchomienia potoku
 
@@ -266,7 +266,7 @@ W ramach tego samouczka wykonano następujące procedury:
 > * Tworzenie własnego środowiska Integration Runtime
 > * Tworzenie połączonych usług Azure Storage i Azure HDInsight
 > * Tworzenie potoku przy użycia działania Hive
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie działania potoku 
 > * Sprawdzanie danych wyjściowych
 

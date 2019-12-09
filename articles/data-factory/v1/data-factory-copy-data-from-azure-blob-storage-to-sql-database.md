@@ -9,27 +9,26 @@ editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682793"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929749"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Samouczek: kopiowanie danych z Blob Storage do SQL Database przy użyciu Data Factory
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-> * [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+> * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
-> * [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+> * [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
@@ -116,11 +115,11 @@ Teraz możesz przygotować usługę Azure Blob Storage i bazę danych SQL Azure 
 Wymagania wstępne zostały spełnione. Fabrykę danych można utworzyć, korzystając z jednego z następujących sposobów. Kliknij jedną z opcji na liście rozwijanej u góry lub poniższe linki, aby wykonać samouczek.     
 
 * [Kreator kopiowania](data-factory-copy-data-wizard-tutorial.md)
-* [Program Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+* [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [Program PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Szablon usługi Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [Interfejs API REST](data-factory-copy-activity-tutorial-using-rest-api.md)
-* [Interfejs API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+* [Interfejs API programu .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
 > Potok danych przedstawiony w tym samouczku kopiuje dane ze źródłowego do docelowego magazynu danych. Nie przekształca on danych wejściowych w celu wygenerowania danych wyjściowych. Aby zapoznać się z samouczkiem dotyczącym przekształcania danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Samouczek: Tworzenie pierwszego potoku przekształcającego dane przy użyciu klastra Hadoop).

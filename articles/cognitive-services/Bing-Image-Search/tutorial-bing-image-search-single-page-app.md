@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868256"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930698"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania obrazów Bing
 
@@ -40,7 +40,7 @@ Pełny kod źródłowy dla tego samouczka jest dostępny w serwisie [GitHub](htt
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Przechowywanie kluczy subskrypcji użytkownika i zarządzanie nimi
 
-W tej aplikacji do przechowywania kluczy subskrypcji interfejsu API jest używany magazyn trwały przeglądarki internetowej. Jeśli żaden klucz nie jest przechowywany, strona internetowa wyświetli monit o podanie klucza użytkownika i zachowa go do późniejszego użytku. Jeśli klucz zostanie później odrzucony przez interfejs API, aplikacja usunie go z magazynu.
+W tej aplikacji do przechowywania kluczy subskrypcji interfejsu API jest używany magazyn trwały przeglądarki internetowej. Jeśli żaden klucz nie jest przechowywany, strona internetowa wyświetli monit o podanie klucza użytkownika i zachowa go do późniejszego użytku. Jeśli klucz zostanie później odrzucony przez interfejs API, aplikacja usunie go z magazynu. Ten przykład używa globalnego punktu końcowego. Możesz również użyć niestandardowego punktu końcowego [domeny](../../cognitive-services/cognitive-services-custom-subdomains.md) podrzędnej wyświetlanego w Azure Portal dla zasobu.
 
 
 Zdefiniuj funkcje `storeValue` i `retrieveValue` tak, aby używały obiektu `localStorage` (jeśli przeglądarka go obsługuje) lub pliku cookie.
@@ -318,7 +318,7 @@ Interfejs API wyszukiwania obrazów Bing może zwrócić cztery rodzaje sugestii
 
 | Sugestia         | Opis                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pivotSuggestions` | Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwaniu na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”. |
+| `pivotSuggestions` | Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwania na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”. |
 | `queryExpansions`  | Zapytania, które zawężają oryginalne wyszukiwanie, dodając więcej terminów. Jeśli na przykład wyszukujesz frazę „Microsoft Surface”, rozszerzeniem zapytania może być fraza „Microsoft Surface Pro”.                                   |
 | `relatedSearches`  | Zapytania, które również zostały wprowadzone przez innych użytkowników, którzy wprowadzili oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz frazę „Mount Rainier”, powiązanym wyszukiwaniem może być fraza „Mt. Saint Helens”.                       |
 | `similarTerms`     | Zapytania, które mają podobne znaczenie, co oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz wyraz „kotki”, podobnym terminem może być „milusie”.                                                                   |
@@ -384,9 +384,9 @@ Po drugie usługa Bing może losowo wybierać użytkowników, którzy będą kor
 Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MSEdge-ClientID` będzie niedostępny dla kodu JavaScript. To ograniczenie występuje, gdy odpowiedź wyszukiwania ma inne źródło niż strona, z której pochodzi żądanie. W środowisku produkcyjnym, aby rozwiązać ten problem, należy udostępnić skrypt po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie, co strona internetowa. Ponieważ skrypt ma to samo źródło co strona internetowa, nagłówek `X-MSEdge-ClientID` jest dostępny dla kodu JavaScript.
 
 > [!NOTE]
-> W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
+> W aplikacji internetowej w środowisku produkcyjnym należy mimo to wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
-W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` nagłówek, który umożliwia nagłówki odpowiedzi i udostępnienie ich dla języka JavaScript.
+W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z takiego serwera proxy ma `Access-Control-Expose-Headers` nagłówek, który umożliwia nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 
 Zainstalowanie serwera proxy CORS w celu zezwolenia naszej aplikacji samouczka na dostęp do nagłówka identyfikatora klienta jest łatwe. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wykonaj następujące polecenie w oknie polecenia:
 

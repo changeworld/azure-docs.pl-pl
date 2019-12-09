@@ -1,5 +1,6 @@
 ---
-title: Interfejs API sieci Web, który wywołuje podrzędne interfejsy API sieci Web (Konfiguracja kodu aplikacji) — Microsoft Identity platform
+title: Konfigurowanie interfejsu API sieci Web, który wywołuje interfejsy API sieci Web | Azure
+titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje interfejsy API sieci Web (Konfiguracja kodu aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bae9f565dd37fbd3bcae38833662e13e0b7ac6d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 219724186e3fa69fec35e89435af495b662c871d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960646"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919753"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Interfejs API sieci Web, który wywołuje interfejsy API sieci Web — konfiguracja kodu
 
@@ -143,7 +144,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 
 Możesz również zapoznać się z przykładem dotyczącym implementacji przepływu w [NodeJS i Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol (Protokół)
 
 Aby uzyskać więcej informacji o protokole w imieniu, zobacz [Microsoft Identity platform i OAuth 2,0 w imieniu usługi Flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 

@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: b0df6264eb38cbbacd5f624b634eea5f742adbc7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683323"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925096"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku utworzysz potok usługi Azure Data Factory za pomocą witryny Azure Portal. Ten potok przekształca dane przy użyciu działania Spark i połączonej usługi Azure HDInsight dostępnej na żądanie. 
@@ -26,7 +25,7 @@ Ten samouczek obejmuje następujące procedury:
 > [!div class="checklist"]
 > * Tworzenie fabryki danych. 
 > * Tworzenie potoku używającego działania platformy Spark.
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie uruchomienia potoku.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
@@ -247,7 +246,7 @@ Potok w tym przykładzie przekształca dane przy użyciu działania Spark i poł
 > [!div class="checklist"]
 > * Tworzenie fabryki danych. 
 > * Tworzenie potoku używającego działania platformy Spark.
-> * Wyzwalanie uruchomienia potoku
+> * Wyzwalanie uruchomienia potoku.
 > * Monitorowanie uruchomienia potoku.
 
 Aby dowiedzieć się, jak przekształcać dane, uruchamiając skrypt programu Hive w klastrze usługi Azure HDInsight, który znajduje się w sieci wirtualnej, przejdź do następnego samouczka: 

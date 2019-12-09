@@ -11,27 +11,27 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2e86c06cca26da2776459f3c20bf921a02ed89b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ee6ab1ada540f4f664e6782a1fffc63cc7df95e4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894708"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928584"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule dowiesz się, jak łatwo uzyskać dostęp do danych w usługach Azure Storage za pośrednictwem Azure Machine Learning magazynów zasobów. Magazyny danych służą do przechowywania informacji o połączeniu, takich jak identyfikator subskrypcji i autoryzacja tokenu. Użycie magazynów danych umożliwia dostęp do magazynu bez konieczności używania w skryptach informacji o połączeniu z kodem. Magazyny danych można tworzyć na podstawie tych [rozwiązań usługi Azure Storage](#matrix). W przypadku nieobsługiwanych rozwiązań magazynu, aby zaoszczędzić koszt ruchu wychodzącego w trakcie eksperymentów z uczeniem maszynowym, zalecamy przeniesienie danych do naszych obsługiwanych rozwiązań usługi Azure Storage. [Dowiedz się, jak przenieść dane](#move). 
+W tym artykule dowiesz się, jak łatwo uzyskać dostęp do danych w usługach Azure Storage za pośrednictwem Azure Machine Learning magazynów zasobów. Magazyny danych służą do przechowywania informacji o połączeniu, takich jak identyfikator subskrypcji i autoryzacja tokenu. Użycie magazynów danych umożliwia dostęp do magazynu bez konieczności używania w skryptach informacji o połączeniu z kodem. Magazyny danych można tworzyć na podstawie tych [rozwiązań usługi Azure Storage](#matrix). W przypadku nieobsługiwanych rozwiązań magazynu i zapisania kosztów ruchu wychodzącego w trakcie eksperymentów z uczeniem maszynowym zalecamy przeniesienie danych do naszych obsługiwanych rozwiązań usługi Azure Storage. [Dowiedz się, jak przenieść dane](#move). 
 
 W tym przykładzie przedstawiono przykłady następujących zadań:
-* [Rejestrowanie magazynów danych](#access)
-* [Pobierz magazyny danych z obszaru roboczego](#get)
-* [Przekazuj i pobieraj dane przy użyciu magazynów danych](#up-and-down)
-* [Uzyskiwanie dostępu do danych podczas szkoleń](#train)
-* [Przenoszenie danych na platformę Azure](#move)
+* Rejestrowanie magazynów danych
+* Pobierz magazyny danych z obszaru roboczego
+* Przekazuj i pobieraj dane przy użyciu magazynów danych
+* Uzyskiwanie dostępu do danych podczas szkoleń
+* Przenoszenie danych do usługi Azure Storage
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
+Będziesz potrzebować
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 - Konto usługi Azure Storage z [kontenerem obiektów blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) lub [udziałem plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
@@ -58,7 +58,13 @@ Po zarejestrowaniu rozwiązania usługi Azure Storage jako magazynu danych autom
 
 Wszystkie metody Register znajdują się na klasie [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) i mają postać register_azure_ *.
 
-Informacje potrzebne do wypełniania metody Register () można znaleźć za pośrednictwem [Azure Portal](https://portal.azure.com). W lewym okienku wybierz pozycję **konta magazynu** , a następnie wybierz konto magazynu, które chcesz zarejestrować. Na stronie **Przegląd** znajdują się takie informacje, jak nazwa konta i kontener lub nazwa udziału plików. Aby uzyskać informacje o uwierzytelnianiu, takie jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do pozycji **klucze konta** w okienku **Ustawienia** po lewej stronie. 
+Informacje potrzebne do wypełniania metody Register () można znaleźć za pośrednictwem [Azure Machine Learning Studio](https://ml.azure.com) i tych kroków
+
+1. W lewym okienku wybierz pozycję **konta magazynu** , a następnie wybierz konto magazynu, które chcesz zarejestrować. 
+2. Na stronie **Przegląd** znajdują się takie informacje, jak nazwa konta i kontener lub nazwa udziału plików. 
+3. Aby uzyskać informacje o uwierzytelnianiu, takie jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do pozycji **klucze konta** w okienku **Ustawienia** po lewej stronie. 
+
+>WAŻNE Jeśli Twoje konto magazynu znajduje się w sieci wirtualnej, obsługiwane jest tylko tworzenie magazynu danych obiektów blob platformy Azure. Ustaw parametr `grant_workspace_access` na `True`, aby udzielić obszaru roboczego dostępu do konta magazynu.
 
 W poniższych przykładach pokazano, jak zarejestrować kontener obiektów blob platformy Azure lub udział plików platformy Azure jako magazyn danych.
 
@@ -74,7 +80,6 @@ W poniższych przykładach pokazano, jak zarejestrować kontener obiektów blob 
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
-    Jeśli Twoje konto magazynu znajduje się w sieci wirtualnej, obsługiwane jest tylko tworzenie magazynu danych obiektów blob platformy Azure. Ustaw parametr `grant_workspace_access` na `True`, aby udzielić obszaru roboczego dostępu do konta magazynu.
 
 + W przypadku **magazynu danych udziału plików platformy Azure**Użyj [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). 
 
@@ -104,7 +109,7 @@ Utwórz nowy magazyn danych w kilku krokach w programie Azure Machine Learning S
   
 Informacje potrzebne do wypełnienia formularza można znaleźć za pośrednictwem [Azure Portal](https://portal.azure.com). W lewym okienku wybierz pozycję **konta magazynu** , a następnie wybierz konto magazynu, które chcesz zarejestrować. Na stronie **Przegląd** znajdują się takie informacje, jak nazwa konta i kontener lub nazwa udziału plików. W przypadku elementów uwierzytelniania, takich jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do pozycji **klucze konta** w okienku **Ustawienia** po lewej stronie.
 
-W poniższym przykładzie pokazano, jak będzie wyglądać formularz do tworzenia magazynu danych obiektów blob platformy Azure. 
+W poniższym przykładzie pokazano, jak wygląda formularz dla tworzenia magazynu danych obiektów blob platformy Azure. 
     
  ![Nowy magazyn danych](media/how-to-access-data/new-datastore-form.png)
 
@@ -128,7 +133,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Podczas tworzenia obszaru roboczego kontener obiektów blob platformy Azure i udział plików platformy Azure są rejestrowane w obszarze roboczym o nazwie `workspaceblobstore` i `workspacefilestore` odpowiednio. Przechowują informacje o połączeniu kontenera obiektów blob oraz udział plików, który jest zainicjowany na koncie magazynu dołączonym do obszaru roboczego. `workspaceblobstore` jest ustawiony jako domyślny magazyn danych.
+Podczas tworzenia obszaru roboczego kontener obiektów blob platformy Azure i udział plików platformy Azure są automatycznie rejestrowane w obszarze roboczym o nazwie `workspaceblobstore` i `workspacefilestore`. Są one przechowywane informacje o połączeniu kontenera obiektów blob oraz udział plików, który jest inicjowany na koncie magazynu dołączonym do obszaru roboczego. `workspaceblobstore` jest ustawiony jako domyślny magazyn danych.
 
 Aby uzyskać magazyn danych z domyślnego obszaru roboczego:
 
@@ -189,7 +194,7 @@ W poniższej tabeli wymieniono metody, które poinformują element docelowy obli
 
 Możliwości|Metoda|Opis|
 ----|-----|--------
-Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Służy do instalowania magazynu danych w elemencie docelowym obliczeń.
+Instalacja| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Służy do instalowania magazynu danych w elemencie docelowym obliczeń. Po zainstalowaniu wszystkie pliki magazynu danych są dostępne dla obiektu docelowego obliczeń.
 Pobierz|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Użyj, aby pobrać zawartość magazynu danych do lokalizacji określonej przez `path_on_compute`. <br><br> To pobieranie jest wykonywane przed uruchomieniem.
 Przekazywanie|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Służy do przekazywania pliku z lokalizacji określonej przez `path_on_compute` do magazynu danych. <br><br> To przekazywanie jest wykonywane po uruchomieniu.
 
@@ -207,13 +212,14 @@ datastore.path('./bar').as_download()
 
 ### <a name="examples"></a>Przykłady 
 
-Poniższe przykłady kodu są specyficzne dla klasy [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , aby uzyskać dostęp do danych podczas szkolenia. 
+Poniższe przykłady kodu są specyficzne dla klasy [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , aby uzyskać dostęp do danych podczas szkolenia.
 
 `script_params` jest słownikiem zawierającym parametry do entry_script. Użyj go, aby przekazać magazyn danych i opisać, w jaki sposób dane są dostępne w obiekcie docelowym obliczeń. Dowiedz się więcej z naszego kompleksowego [samouczka](tutorial-train-models-with-aml.md).
 
 ```Python
 from azureml.train.estimator import Estimator
 
+# notice '/' is in front, this indicates the absolute path
 script_params = {
     '--data_dir': datastore.path('/bar').as_mount()
 }

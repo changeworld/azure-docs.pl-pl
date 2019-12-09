@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie żądania roli dla aplikacji dla przedsiębiorstw w usłudze Azure AD
+title: Konfigurowanie żądania roli dla aplikacji usługi Azure AD w przedsiębiorstwie | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak skonfigurować rolę w tokenie SAML dla aplikacji dla przedsiębiorstw w Azure Active Directory
 services: active-directory
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4657a69347eb2294877e6bd2d7de8e41c0c2ef26
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 702c64fbc4eda2af7132a2117c1b09ca0bf41cff
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845301"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918597"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Konfigurowanie roszczeń ról wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 

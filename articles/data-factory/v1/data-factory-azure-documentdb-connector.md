@@ -4,21 +4,20 @@ description: Dowiedz się, jak przenosić dane do/z kolekcji Azure Cosmos DB prz
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c0ff1b9164f0e631bf148af88bd9efaaaa61f431
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683150"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930084"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Przenoszenie danych do i z Azure Cosmos DB przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -42,7 +41,7 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane do/z Azure
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -54,13 +53,13 @@ Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączo
 
 Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania Data Factory jednostek specyficznych dla Cosmos DB:
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla Azure Cosmos DB połączonej usługi.
 
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
 | type |Właściwość Type musi mieć wartość: **DocumentDb** |Tak |
-| Przekształcon |Określ informacje, które są konieczne do nawiązania połączenia z bazą danych Azure Cosmos DB. |Tak |
+| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z bazą danych Azure Cosmos DB. |Tak |
 
 Przykład:
 
@@ -83,7 +82,7 @@ Sekcja typeProperties jest inna dla każdego typu zestawu danych i zawiera infor
 
 | **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| CollectionName |Nazwa kolekcji dokumentów Cosmos DB. |Tak |
+| collectionName |Nazwa kolekcji dokumentów Cosmos DB. |Tak |
 
 Przykład:
 
@@ -104,7 +103,7 @@ Przykład:
   }
 }
 ```
-### <a name="schema-by-data-factory"></a>Schemat według Data Factory
+### <a name="schema-by-data-factory"></a>Schemat przez usługę Data Factory
 W przypadku magazynów danych bez schematu, takich jak Azure Cosmos DB, Usługa Data Factorya wnioskuje schemat w jeden z następujących sposobów:
 
 1. Jeśli określisz strukturę danych przy użyciu właściwości **Structure** w definicji zestawu danych, Usługa Data Factory uznaje tę strukturę za schemat. W takim przypadku, jeśli wiersz nie zawiera wartości dla kolumny, zostanie dla niego podana wartość null.
@@ -131,9 +130,9 @@ W przypadku działania kopiowania, gdy źródło jest typu **DocumentDbCollectio
 
 | **Właściwość** | **Opis** | **Dozwolone wartości** | **Wymagane** |
 | --- | --- | --- | --- |
-| nestingSeparator |Znak specjalny w nazwie kolumny źródłowej, aby wskazać, że jest wymagany dokument zagnieżdżony. <br/><br/>Na przykład powyżej: `Name.First` w tabeli wyjściowej generuje następującą strukturę JSON w dokumencie Cosmos DB:<br/><br/>"Name": {<br/>    "First": "Jan"<br/>}, |Znak używany do rozdzielania poziomów zagnieżdżenia.<br/><br/>Wartość domyślna to `.` (kropka). |Znak używany do rozdzielania poziomów zagnieżdżenia. <br/><br/>Wartość domyślna to `.` (kropka). |
+| nestingSeparator |Znak specjalny w nazwie kolumny źródłowej, aby wskazać, że jest wymagany dokument zagnieżdżony. <br/><br/>Na przykład powyżej: `Name.First` w tabeli danych wyjściowych generuje następującą strukturę JSON w dokumencie Cosmos DB:<br/><br/>"Name": {<br/>    "First": "Jan"<br/>}, |Znak używany do rozdzielania poziomów zagnieżdżenia.<br/><br/>Wartość domyślna to `.` (kropka). |Znak używany do rozdzielania poziomów zagnieżdżenia. <br/><br/>Wartość domyślna to `.` (kropka). |
 | writeBatchSize |Liczba równoległych żądań do Azure Cosmos DB usługi do tworzenia dokumentów.<br/><br/>Można dostosować wydajność podczas kopiowania danych do/z Cosmos DB za pomocą tej właściwości. Po zwiększeniu writeBatchSize można oczekiwać większej wydajności, ponieważ wysyłane są bardziej równoległe żądania do Cosmos DB. Należy jednak unikać ograniczania, które może zgłosić komunikat o błędzie: "częstotliwość żądań jest duża".<br/><br/>Ograniczanie przepustowości zależy od wielu czynników, w tym rozmiaru dokumentów, liczby warunków w dokumentach, zasad indeksowania kolekcji docelowej itd. W przypadku operacji kopiowania można użyć lepszej kolekcji (np. S3), aby uzyskać dostęp do najbardziej dostępnej przepływności (2 500 jednostek żądań/sekundę). |Liczba całkowita |Nie (domyślnie: 5) |
-| writeBatchTimeout |Czas oczekiwania na zakończenie operacji przed upływem limitu czasu. |czasu<br/><br/> Przykład: "00:30:00" (30 minut). |Nie |
+| writeBatchTimeout |Czas oczekiwania na zakończenie operacji przed upływem limitu czasu. |TimeSpan<br/><br/> Przykład: "00: 30:00" (30 minut). |Nie |
 
 ## <a name="importexport-json-documents"></a>Importuj/Eksportuj dokumenty JSON
 Za pomocą tego łącznika Cosmos DB można łatwo
@@ -484,16 +483,16 @@ Azure Cosmos DB to Magazyn NoSQL dla dokumentów JSON, w którym zagnieżdżone 
 ## <a name="appendix"></a>Dodatek
 1. **Pytanie:** Czy działanie kopiowania obsługuje aktualizację istniejących rekordów?
 
-    **Odpowiedź:** Znaleziono.
+    **Odpowiedź:** Nie.
 2. **Pytanie:** Jak ponowienie kopii w celu Azure Cosmos DB transakcji z już skopiowanymi rekordami?
 
     **Odpowiedź:** Jeśli rekordy mają pole "ID", a operacja kopiowania próbuje wstawić rekord o takim samym IDENTYFIKATORze, operacja kopiowania zgłosi błąd.
 3. **Pytanie:** Czy Data Factory obsługiwać [zakres lub partycjonowanie danych oparte na skrótach](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Odpowiedź:** Znaleziono.
+    **Odpowiedź:** Nie.
 4. **Pytanie:** Czy można określić więcej niż jedną kolekcję Azure Cosmos DB dla tabeli?
 
-    **Odpowiedź:** Znaleziono. W tej chwili można określić tylko jedną kolekcję.
+    **Odpowiedź:** Nie. W tej chwili można określić tylko jedną kolekcję.
 
 ## <a name="performance-and-tuning"></a>Wydajność i dostrajanie
 Zobacz [Przewodnik dostrajania wydajności & działania kopiowania](data-factory-copy-activity-performance.md) , aby poznać kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory i różne sposoby jego optymalizacji.

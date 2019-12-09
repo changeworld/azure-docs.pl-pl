@@ -3,19 +3,19 @@ title: Środowiska zarządzania wieloma dzierżawami
 description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwia korzystanie z funkcji zarządzania między dzierżawcami.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2db1cfd7cc8145ff3020bf232021b4f1a63b2ddd
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464031"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928002"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
 Jako dostawca usług możesz użyć [delegowanego zarządzania zasobami platformy Azure](../concepts/azure-delegated-resource-management.md) do zarządzania zasobami platformy Azure dla wielu klientów z poziomu dzierżawy w [Azure Portal](https://portal.azure.com). Większość zadań i usług można wykonywać na delegowanych zasobach platformy Azure między zarządzanymi dzierżawcami. W tym artykule opisano niektóre z ulepszonych scenariuszy, w których zarządzanie zasobami delegowanymi przez platformę Azure może być skuteczne.
 
 > [!NOTE]
-> Zarządzanie zasobami delegowanymi przez platformę Azure może być również używane w przedsiębiorstwie, które ma wiele dzierżawców, aby uprościć administrację między dzierżawcami.
+> Zarządzanie zasobami delegowanymi przez platformę Azure może być również używane [w przedsiębiorstwie, które ma wiele dzierżawców usługi Azure AD](enterprise.md) , aby uprościć administrację między dzierżawcami.
 
 ## <a name="understanding-customer-tenants"></a>Zrozumienie dzierżawców klientów
 
@@ -56,7 +56,7 @@ Większość zadań i usług można wykonać w odniesieniu do zasobów delegowan
 
 - Tworzenie kopii zapasowych i przywracanie danych klienta w dzierżawach klientów
 
-[Usługa Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
 
 - Zarządzanie hostowanymi środowiskami Kubernetes oraz wdrażanie aplikacji kontenerowych i zarządzanie nimi w ramach dzierżawców klientów
 
@@ -116,7 +116,7 @@ Większość zadań i usług można wykonać w odniesieniu do zasobów delegowan
 - Dostęp do maszyn wirtualnych za pomocą konsoli szeregowej w dzierżawach klientów
 - Należy pamiętać, że nie można użyć Azure Active Directory do zdalnego logowania do maszyny wirtualnej i nie można zintegrować maszyny wirtualnej z Key Vault hasła, wpisów tajnych lub kluczy kryptograficznych na potrzeby szyfrowania dysków
 
-[Virtual Network platformy Azure](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
 
 - Wdrażaj sieci wirtualne i karty interfejsu sieci wirtualnej (vNICs) w ramach dzierżawców klientów i zarządzaj nimi
 

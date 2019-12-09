@@ -1,5 +1,5 @@
 ---
-title: Aplikacja sieci Web, która wywołuje interfejsy API sieci Web (Uzyskiwanie tokenu dla aplikacji) — Microsoft Identity platform
+title: Uzyskaj token w aplikacjach sieci Web, które wywołują interfejsy API sieci Web — Microsoft Identity platform | Azure
 description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (Uzyskiwanie tokenu dla aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175329"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919467"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — uzyskuje token dla aplikacji
 
@@ -49,7 +49,7 @@ public class HomeController : Controller
 }
 ```
 
-Usługa `ITokenAcquisition` jest wstrzykiwana przez ASP.NET przez wstrzyknięcie zależności.
+Usługa `ITokenAcquisition` jest wstrzykiwana przez ASP.NET za pomocą iniekcji zależności.
 
 
 Poniżej przedstawiono uproszczony kod akcji HomeController, który pobiera token wywołujący Microsoft Graph.
@@ -81,8 +81,8 @@ Te zaawansowane kroki są przetwarzane w rozdziale 3 samouczka [3-webapp-wiele i
 
 Elementy są podobne do ASP.NET:
 
-- Akcja kontrolera chroniona przez atrybut [autoryzuje] wyodrębnia identyfikator dzierżawy i identyfikator użytkownika `ClaimsPrincipal` elementu członkowskiego kontrolera. (ASP.NET używa `HttpContext.User`).
-- Z tego miejsca tworzy MSAL.NET `IConfidentialClientApplication`.
+- Akcja kontrolera chroniona przez atrybut [autoryzuje] wyodrębnia identyfikator dzierżawy i identyfikator użytkownika `ClaimsPrincipal` elementu członkowskiego kontrolera. (ASP.NET używa `HttpContext.User`.)
+- Z tego miejsca kompiluje `IConfidentialClientApplication`MSAL.NET.
 - Na koniec wywołuje metodę `AcquireTokenSilent` poufnej aplikacji klienckiej.
 
 Kod jest podobny do kodu pokazanego dla ASP.NET Core.

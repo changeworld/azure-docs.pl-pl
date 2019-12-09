@@ -1,23 +1,23 @@
 ---
-title: 'Dostosowywanie Instalatora dla środowiska Azure-SSIS Integration Runtime '
+title: Dostosowywanie Instalatora dla środowiska Azure-SSIS Integration Runtime
 description: W tym artykule opisano sposób używania niestandardowego interfejsu Instalatora dla środowiska Azure-SSIS Integration Runtime w celu zainstalowania dodatkowych składników lub zmiany ustawień
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 1/25/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 222672a93ccde7464ec1f37212f18996033a1460
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019
+ms.date: 1/25/2019
+ms.openlocfilehash: d80ff102648deebf63cc0752b2980274cb90aeb9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674859"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922881"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Dostosowywanie Instalatora dla środowiska Azure-SSIS Integration Runtime
 
@@ -152,11 +152,11 @@ Aby dostosować Azure-SSIS IR, potrzebne są następujące elementy:
 
       1. Folder `EXCEL` zawierający niestandardową konfigurację służącą do instalowania zestawów typu Open Source (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`i `ExcelDataReader.dll`) w każdym węźle Azure-SSIS IR.
 
-      1. Folder `ORACLE ENTERPRISE`, który zawiera niestandardowy skrypt instalacyjny (`main.cmd`) i cichy plik konfiguracyjny instalacji (`client.rsp`) do zainstalowania łączników Oracle i sterownika OCI w każdym węźle Azure-SSIS IR Enterprise Edition. Ta konfiguracja pozwala korzystać z Menedżera połączeń Oracle, źródła i miejsca docelowego. Najpierw pobierz łączniki Microsoft Konektors v 5.0 for Oracle (`AttunitySSISOraAdaptersSetup.msi` i `AttunitySSISOraAdaptersSetup64.msi`) z [Centrum pobierania Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=55179) i najnowszego klienta Oracle — na przykład `winx64_12102_client.zip`-from [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), a następnie przekazać je wszystkie razem z `main.cmd` i `client.rsp` kontener. Jeśli używasz TNS do łączenia się z bazą danych Oracle, musisz również pobrać `tnsnames.ora`, edytować go i przekazać do kontenera, aby można go było skopiować do folderu instalacyjnego programu Oracle podczas instalacji.
+      1. Folder `ORACLE ENTERPRISE`, który zawiera niestandardowy skrypt instalacyjny (`main.cmd`) i cichy plik konfiguracyjny instalacji (`client.rsp`) do zainstalowania łączników Oracle i sterownika OCI w każdym węźle Azure-SSIS IR Enterprise Edition. Ta konfiguracja pozwala korzystać z Menedżera połączeń Oracle, źródła i miejsca docelowego. Najpierw pobierz łączniki Microsoft Connector 5.0 for Oracle (`AttunitySSISOraAdaptersSetup.msi` i `AttunitySSISOraAdaptersSetup64.msi`) z [Centrum pobierania Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=55179) i najnowszego klienta Oracle — na przykład `winx64_12102_client.zip`-from [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), a następnie Przekaż je wszystkie wraz z `main.cmd` i `client.rsp` do kontenera. Jeśli używasz TNS do łączenia się z bazą danych Oracle, musisz również pobrać `tnsnames.ora`, edytować go i przekazać do kontenera, aby można go było skopiować do folderu instalacyjnego programu Oracle podczas instalacji.
 
       1. Folder `ORACLE STANDARD ADO.NET`, który zawiera niestandardowy skrypt instalacyjny (`main.cmd`), aby zainstalować sterownik Oracle ODP.NET na każdym węźle Azure-SSIS IR. Ta konfiguracja pozwala korzystać z Menedżera połączeń ADO.NET, źródła i miejsca docelowego. Najpierw Pobierz najnowszy sterownik Oracle ODP.NET — na przykład `ODP.NET_Managed_ODAC122cR1.zip`-from [Oracle](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), a następnie Przekaż go wraz z `main.cmd` do kontenera.
        
-      1. Folder `ORACLE STANDARD ODBC`, który zawiera niestandardowy skrypt instalacyjny (`main.cmd`), aby zainstalować sterownik Oracle ODBC i skonfigurować nazwę DSN w każdym węźle Azure-SSIS IR. Ta konfiguracja pozwala na łączenie się z serwerem Oracle przy użyciu Menedżera połączeń ODBC/źródła/lokalizacji docelowej lub Power Query Connection Manager/Source ze źródłem danych ODBC. Najpierw pobierz najnowszą wersję programu Oracle Instant Client (pakiet podstawowy lub podstawowy pakiet uproszczony) oraz pakiet ODBC — na przykład pakiety 64-bitowe z tego [miejsca](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (pakiet podstawowy: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, podstawowy pakiet w wersji lite: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, pakiet ODBC: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) lub 32-bitowy pakiety z tego [miejsca](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (pakiet podstawowy: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, podstawowy pakiet w języku Lite: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, pakiet ODBC: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`), a następnie Przekaż je razem z `main.cmd` do kontenera.
+      1. Folder `ORACLE STANDARD ODBC`, który zawiera niestandardowy skrypt instalacyjny (`main.cmd`), aby zainstalować sterownik Oracle ODBC i skonfigurować nazwę DSN w każdym węźle Azure-SSIS IR. Ta konfiguracja pozwala na łączenie się z serwerem Oracle przy użyciu Menedżera połączeń ODBC/źródła/lokalizacji docelowej lub Power Query Connection Manager/Source ze źródłem danych ODBC. Najpierw pobierz najnowszą wersję programu Oracle Instant Client (pakiet podstawowy lub podstawowy pakiet w wersji uproszczonej) oraz pakiet ODBC — na przykład pakiety 64-bitowe z tego [miejsca](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (pakiet podstawowy: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, podstawowy pakiet w języku Lite: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, pakiet ODBC: `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) lub pakiety 32-bitowe z tego [miejsca](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (pakiet podstawowy: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, podstawowy pakiet w języku Lite: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, pakiet ODBC: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`), a następnie przekaż je razem z `main.cmd` do kontenera.
 
       1. Folder `SAP BW`, który zawiera niestandardowy skrypt instalacyjny (`main.cmd`), aby zainstalować zestaw SAP .NET Connector (`librfc32.dll`) w każdym węźle Azure-SSIS IR Enterprise Edition. Ta konfiguracja umożliwia korzystanie z Menedżera połączeń SAP BW, źródła i miejsca docelowego. Najpierw przekaż 64-bitową lub 32-bitową wersję `librfc32.dll` z folderu instalacji SAP do kontenera wraz z `main.cmd`. Skrypt kopiuje zestaw SAP do folderu `%windir%\SysWow64` lub `%windir%\System32` podczas instalacji.
 

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ebb2fcf0f626a82bcb5e6439183ba98c39c58588
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322886"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929732"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -37,16 +37,16 @@ Obsługa funkcji znajduje się w następujących dwóch kategoriach:
 
 Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostingu w przypadku uruchamiania w systemie Windows lub Linux:
 
-| | Plan Zużycie | Plan Premium | Plan dedykowany |
+| | Plan Zużycie | Plan w warstwie Premium | Plan dedykowany |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 | Linux | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 
 ## <a name="consumption-plan"></a>Plan Zużycie
 
-Gdy używasz planu zużycia, wystąpienia hosta Azure Functions są dynamicznie dodawane i usuwane na podstawie liczby zdarzeń przychodzących. Ten plan bezserwerowy jest skalowany automatycznie i naliczana jest opłata za zasoby obliczeniowe tylko wtedy, gdy funkcje są uruchomione. W planie zużycia czas wykonywania funkcji jest przekroczenia przez konfigurowalny okres.
+Gdy używasz planu zużycia, wystąpienia hosta Azure Functions są dynamicznie dodawane i usuwane na podstawie liczby zdarzeń przychodzących. Ten plan bezserwerowy wykorzystuje automatyczne skalowanie, a opłaty są naliczane za zasoby obliczeniowe tylko wtedy, gdy funkcje są uruchamiane. W ramach Planu użycia limit czasu wykonywania funkcji zostaje przekroczony po konfigurowalnym okresie czasu.
 
-Opłaty są naliczane na podstawie liczby wykonań, czasu wykonania i używanej pamięci. Rozliczanie jest agregowane we wszystkich funkcjach w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Rozliczenia zależą od liczby wykonań, czasu wykonania oraz użytej pamięci. Rozliczenia są agregowane ze wszystkich funkcji w aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
 Plan zużycia jest domyślnym planem hostingu i oferuje następujące korzyści:
 
@@ -124,7 +124,7 @@ Gdy dane wyjściowe tego polecenia są `dynamic`, aplikacja funkcji jest w plani
 
 ## <a name="storage-account-requirements"></a>Wymagania konta magazynu
 
-W każdym planie aplikacja funkcji wymaga konta usługi Azure Storage, które obsługuje obiekty blob, kolejki, pliki i tabele usługi Azure Storage. Wynika to z faktu, że funkcje programu korzystają z usługi Azure Storage w przypadku operacji takich jak zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują konta magazynu tylko dla obiektów BLOB (w tym magazyn Premium Storage) i konta magazynu ogólnego przeznaczenia z replikacją magazynową strefowo nadmiarową, są odfiltrowane z istniejących ustawień **konta magazynu** podczas tworzenia Aplikacja funkcji.
+W każdym planie aplikacja funkcji wymaga konta usługi Azure Storage, które obsługuje obiekty blob, kolejki, pliki i tabele usługi Azure Storage. Wynika to z faktu, że funkcje programu korzystają z usługi Azure Storage w przypadku operacji takich jak zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji, ale niektóre konta magazynu nie obsługują kolejek i tabel. Te konta, które obejmują konta magazynu tylko obiektów BLOB (w tym magazyn Premium Storage) i konta magazynu ogólnego przeznaczenia z replikacją magazynu w strefie nadmiarowej, są odfiltrowane z istniejących ustawień **konta magazynu** podczas tworzenia aplikacji funkcji.
 
 To samo konto magazynu używane przez aplikację funkcji może być również używane przez wyzwalacze i powiązania do przechowywania danych aplikacji. Jednak w przypadku operacji intensywnie korzystających z magazynu należy użyć oddzielnego konta magazynu.   
 
@@ -142,7 +142,7 @@ Pliki kodu funkcji są przechowywane w udziałach Azure Files na głównym konci
 
 Azure Functions używa składnika zwanego *kontrolerem skalowania* , aby monitorować częstotliwość zdarzeń i określać, czy skalować w poziomie, czy skalować w poziomie. Kontroler skalowania używa algorytmów heurystycznych dla każdego typu wyzwalacza. Na przykład podczas korzystania z wyzwalacza usługi Azure queue storage skaluje się w zależności od długości kolejki i wieku najstarszej wiadomości w kolejce.
 
-Jednostką skalowania Azure Functions jest aplikacja funkcji. Gdy aplikacja funkcji jest skalowana w poziomie, dodatkowe zasoby są przydzieleni do uruchamiania wielu wystąpień hosta Azure Functions. Z drugiej strony, ponieważ zapotrzebowanie obliczeniowe jest ograniczone, kontroler skalowania usuwa wystąpienia hosta funkcji. Liczba wystąpień jest ostatecznie skalowana w dół do zera, gdy żadne funkcje nie działają w ramach aplikacji funkcji.
+Jednostką skalowania Azure Functions jest aplikacja funkcji. Gdy aplikacja funkcji jest skalowana w poziomie, dodatkowe zasoby są przydzieleni do uruchamiania wielu wystąpień hosta Azure Functions. Z drugiej strony, ponieważ zapotrzebowanie obliczeniowe jest ograniczone, kontroler skalowania usuwa wystąpienia hosta funkcji. Liczba wystąpień jest ostatecznie *skalowana* do zera, gdy żadne funkcje nie działają w ramach aplikacji funkcji.
 
 ![Skalowanie zdarzeń monitorowania kontrolera i Tworzenie wystąpień](./media/functions-scale/central-listener.png)
 

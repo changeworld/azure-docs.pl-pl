@@ -1,24 +1,25 @@
 ---
-title: 'Przyrostowe Kopiowanie tabeli przy użyciu Azure Data Factory '
+title: Przyrostowe Kopiowanie tabeli przy użyciu Azure Portal
 description: W tym samouczku utworzysz potok usługi Azure Data Factory, który przyrostowo kopiuje dane z bazy danych Azure SQL Database do magazynu Azure Blob Storage.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.author: yexu
-ms.openlocfilehash: a446574f0a6b2b18959f1a3c3e9a02a0a97e9f6b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5d82971cbd7781a298f3f3aeeba47e4be471e248
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683378"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927994"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do usługi Azure Blob Storage za pomocą Azure Portal
+
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 
 
 Ten samouczek obejmuje następujące procedury:
@@ -38,7 +39,7 @@ Ten samouczek obejmuje następujące procedury:
 > * Przegląd wyników drugiego uruchomienia
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Diagram ogólny rozwiązania wygląda następująco: 
 
 ![Przyrostowe ładowanie danych](media/tutorial-Incremental-copy-portal/incrementally-load.png)
@@ -167,7 +168,7 @@ END
         Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 6. Wybierz opcję **V2** w obszarze **Wersja**.
 7. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
-8. Kliknij pozycję **Utwórz**.      
+8. Kliknij przycisk **Utwórz**.      
 9. Po zakończeniu tworzenia zostanie wyświetlona strona **Fabryka danych**, jak pokazano na poniższej ilustracji.
    
    ![Strona główna fabryki danych](./media/doc-common-process/data-factory-home-page.png)
@@ -197,7 +198,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
     3. Wybierz **nazwę bazy danych** z listy rozwijanej. 
     4. Wprowadź **nazwę użytkownika** & **hasło**. 
     5. Aby przetestować połączenie z bazą danych Azure SQL Database, kliknij przycisk **Testuj połączenie**.
-    6. Kliknij przycisk **Zakończ**.
+    6. Kliknij przycisk **Finish** (Zakończ).
     7. Upewnij się, że wybrano **AzureSqlDatabaseLinkedService** dla **połączonej usługi**.
        
         ![Okno Nowa połączona usługa](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
@@ -271,7 +272,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
 
         | Nazwa | Typ | Wartość | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | Data i godzina | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Ciąg | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Działanie procedury składowanej — ustawienia procedury składowanej](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)

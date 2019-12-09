@@ -1,8 +1,7 @@
 ---
-title: Sposób włączenia logowania jednokrotnego dla wielu aplikacji w systemie Android za pomocą biblioteki ADAL | Dokumentacja firmy Microsoft
-description: Jak korzystać z funkcji zestawu SDK biblioteki ADAL w celu umożliwienia logowania jednokrotnego dla aplikacji.
+title: Jak włączyć logowanie jednokrotne dla wielu aplikacji w systemie Android przy użyciu biblioteki ADAL | Microsoft Docs
+description: Jak korzystać z funkcji zestawu ADAL SDK, aby umożliwić Logowanie jednokrotne w aplikacjach.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
@@ -17,61 +16,61 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb11a4a926c676d37a0bf6be456e3b831a5d8357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4d247c569cdc0beff499cee191b95711a603e42
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962640"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917560"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie Android za pomocą biblioteki ADAL
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla aplikacji w systemie Android przy użyciu biblioteki ADAL
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Logowanie jednokrotne (SSO) umożliwia użytkownikom tylko raz wprowadzić swoje poświadczenia i ma działać automatycznie w aplikacjach i platformach, które mogą korzystać z innych aplikacji (na przykład Accounts firmy Microsoft lub konta służbowego z usługi Microsoft 365) poświadczenia nie niezależnie od tego wydawcy.
+Logowanie jednokrotne (SSO) umożliwia użytkownikom wprowadzanie poświadczeń tylko raz i ich automatyczne działanie w aplikacjach i na różnych platformach, które mogą być używane przez inne aplikacje (na przykład konta Microsoft lub konta służbowego z Microsoft 365) nie wyznaczenie wydawcy.
 
-Platforma tożsamości firmy Microsoft, wraz z zestawów SDK, można łatwo włączyć logowanie Jednokrotne w ramach własnego pakietu aplikacji lub z możliwości broker i aplikacji wystawcy uwierzytelnienia dla całego urządzenia.
+Platforma tożsamości firmy Microsoft wraz z zestawami SDK ułatwia włączenie logowania jednokrotnego w ramach własnego pakietu aplikacji lub z możliwościami brokera i aplikacjami uwierzytelniania na całym urządzeniu.
 
-W tym instruktażu dowiesz się, jak skonfigurować zestaw SDK w swojej aplikacji w celu zapewnienia logowania jednokrotnego dla klientów.
+W tym instruktażu dowiesz się, jak skonfigurować zestaw SDK w aplikacji w celu zapewnienia logowania jednokrotnego dla klientów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Niniejszy instruktaż przyjęto założenie, że wiesz, jak:
+Ta procedura polega na założeniu, że wiesz, jak:
 
-- Aprowizacja aplikacji przy użyciu starszej wersji portalu usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji, zobacz [rejestrowanie aplikacji](quickstart-register-app.md)
-- Integrowanie aplikacji za pomocą [usługi Azure AD dla systemu Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
+- Inicjowanie obsługi administracyjnej aplikacji przy użyciu starszej wersji portalu dla Azure Active Directory (Azure AD). Aby uzyskać więcej informacji, zobacz [Rejestrowanie aplikacji](quickstart-register-app.md)
+- Zintegruj swoją aplikację z usługą [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
-## <a name="single-sign-on-concepts"></a>Pojęcia rejestracji jednokrotnej
+## <a name="single-sign-on-concepts"></a>Pojęcia dotyczące logowania jednokrotnego
 
 ### <a name="identity-brokers"></a>Brokerzy tożsamości
 
-Firma Microsoft udostępnia aplikacje dla każdej platformy urządzeń przenośnych, które umożliwiają łączenie poświadczeń między aplikacjami pochodzącymi od różnych dostawców oraz rozszerzone funkcje, które wymagają pojedynczego bezpiecznego miejsca w celu weryfikowania poświadczeń. Są to tak zwane **brokerów**.
+Firma Microsoft udostępnia aplikacje dla każdej platformy mobilnej, która umożliwia mostkowanie poświadczeń między aplikacjami od różnych dostawców i ulepszonych funkcji, które wymagają jednego bezpiecznego miejsca, z którego można weryfikować poświadczenia. Są one nazywane **brokerami**.
 
-W systemach iOS i Android brokerów są realizowane za pośrednictwem aplikacji do pobrania, że klienci zainstalować niezależnie lub wypychania do urządzenia przez firmę, który zarządza niektóre lub wszystkie z urządzenia dla swoich pracowników. Brokerzy obsługę zarządzania zabezpieczeniami tylko niektóre aplikacje lub całego urządzenia na podstawie konfiguracji administratora IT. W Windows ta funkcjonalność jest dostarczana przez selektora konta wbudowanej w system operacyjny, znanego pod względem technicznym jako Broker uwierzytelniania w sieci Web.
+W systemach iOS i Android brokerzy są dostarczani za pomocą aplikacji do pobrania, które klienci instalują niezależnie lub wypychani do urządzenia przez firmę, która zarządza niektórymi lub wszystkimi urządzeniami dla swoich pracowników. Brokerzy obsługują zarządzanie zabezpieczeniami tylko dla niektórych aplikacji lub całego urządzenia w oparciu o konfigurację administratora IT. W systemie Windows ta funkcja jest zapewniana przez selektor konta wbudowany w system operacyjny, który jest dobrze znany jako Broker uwierzytelniania w sieci Web.
 
-#### <a name="broker-assisted-login"></a>Asystowana danych logowania brokera
+#### <a name="broker-assisted-login"></a>Logowanie z pomocą brokera
 
-Logowania wspierana przez brokera są procesy logowania, które występują w ramach aplikacji brokera i korzystanie z magazynu i zabezpieczeń brokera udostępnianie poświadczeń we wszystkich aplikacjach na urządzeniu, które mają zastosowanie platformy tożsamości. Domniemanie trwa aplikacji będzie zależny od broker do logowania użytkowników. W systemach iOS i Android brokerzy są realizowane za pośrednictwem aplikacji do pobrania, że klienci zainstalować niezależnie lub wypychania do urządzenia przez firmę, użytkowników, którzy zarządzają urządzenia dla swoich użytkowników. Przykładem tego typu aplikacji jest aplikacja Microsoft Authenticator w systemie iOS. W Windows ta funkcjonalność jest dostarczana przez selektora konta wbudowanej w system operacyjny, znanego pod względem technicznym jako Broker uwierzytelniania w sieci Web.
-Środowisko jest zależna od platformy i czasami może być szkodliwe dla użytkowników, jeśli nie poprawnie zarządzane. Znasz prawdopodobnie najbardziej tego wzorca Jeśli masz zainstalowaną aplikacją usługi Facebook i za pomocą usługi Facebook Connect z innej aplikacji. Platforma tożsamości używa tego samego wzorca.
+Obsługiwane przez brokera identyfikatory logowania to środowiska logowania, które występują w aplikacji brokera i używają magazynu i zabezpieczeń brokera do udostępniania poświadczeń dla wszystkich aplikacji na urządzeniu, które stosują platformę tożsamości. Domniemanie, że aplikacje będą polegać na brokerze w celu zalogowania użytkowników. W systemach iOS i Android te brokery są udostępniane za pomocą aplikacji do pobrania, które klienci instalują niezależnie lub mogą być wypychane do urządzenia przez firmę zarządzającą urządzeniem dla użytkownika. Przykładem tego typu aplikacji jest aplikacja Microsoft Authenticator w systemie iOS. W systemie Windows ta funkcja jest zapewniana przez selektor konta wbudowany w system operacyjny, który jest dobrze znany jako Broker uwierzytelniania w sieci Web.
+Środowisko to zależy od platformy i czasami może być zakłócone użytkownikom, jeśli nie są prawidłowo zarządzane. Najprawdopodobniej znasz ten wzorzec, jeśli masz zainstalowaną aplikację Facebook i używasz połączenia Facebook z innej aplikacji. Platforma tożsamości używa tego samego wzorca.
 
-W systemie Android selektora konta jest wyświetlany u góry Twojej aplikacji, które są mniej uciążliwe dla użytkownika.
+W systemie Android wybór konta jest wyświetlany na górze aplikacji, co jest mniej uciążliwe dla użytkownika.
 
-#### <a name="how-the-broker-gets-invoked"></a>Sposób wywoływania pobiera brokera
+#### <a name="how-the-broker-gets-invoked"></a>Jak zostanie wywołana Broker
 
-Jeśli zgodne broker jest zainstalowana na urządzeniu, takie jak aplikacja Microsoft Authenticator tożsamości zestawów SDK zostanie automatycznie wykonują pracę wywoływania broker dla Ciebie, gdy użytkownik wskazuje, że chcesz zalogować się przy użyciu dowolnego konta z platformą tożsamości.
+Jeśli na urządzeniu jest zainstalowany zgodny Broker, taki jak aplikacja Microsoft Authenticator, zestawy SDK tożsamości automatycznie wykonują zadania wywołania brokera, gdy użytkownik wskaże zalogowanie się przy użyciu dowolnego konta z platformy tożsamości.
 
-#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Jak firma Microsoft zapewnia aplikacji jest prawidłowy
+#### <a name="how-microsoft-ensures-the-application-is-valid"></a>Jak firma Microsoft gwarantuje, że aplikacja jest ważna
 
-Konieczność zapewnienia tożsamości wywołanie aplikacji brokera ma podstawowe znaczenie dla zabezpieczeń udostępnianych w polu nazw logowania brokera wspierana. iOS i Android nie wymusza unikatowe identyfikatory, które są prawidłowe tylko dla danej aplikacji, więc złośliwych aplikacji może być "podszywały się pod" identyfikator autoryzowanych aplikacji i odbierać tokeny przeznaczone dla autoryzowanych aplikacji. Aby upewnić się, że Microsoft zawsze komunikuje się z prawej aplikacji w czasie wykonywania, deweloper jest podanie niestandardowego elementu redirectURI podczas rejestrowania aplikacji z firmą Microsoft. **Jak deweloperów powinien tworzyć identyfikator URI przekierowania jest szczegółowo poniżej.** Ten niestandardowy element redirectURI zawiera odcisk palca certyfikatu, aplikacji i zapewniony przez Google Play Store być unikatowa w aplikacji. Gdy aplikacja wywołuje brokera, broker pyta, czy systemu operacyjnego Android będzie podawać go za pomocą odcisku palca certyfikatu, który wywołuje brokera. Broker to odcisk palca certyfikatu do firmy Microsoft w wywołaniu systemu tożsamości. Jeśli odcisk palca certyfikatu aplikacji nie odpowiada odcisk palca certyfikatu, dostarczone przez dewelopera podczas rejestracji, odmowa dostępu do tokenów dla zasobów, których żąda aplikacja. To sprawdzenie gwarantuje, że tylko aplikacji, które zostały zarejestrowane przez dewelopera otrzyma tokenów.
+Konieczność zapewnienia tożsamości wywołania aplikacji Broker jest kluczowy dla zabezpieczeń podanych w przypadku logowania przy użyciu pomocy brokera. Systemy iOS i Android nie wymuszają unikatowych identyfikatorów, które są prawidłowe tylko dla danej aplikacji, więc złośliwe aplikacje mogą "fałszować" Identyfikator legalnej aplikacji i otrzymać tokeny przeznaczone dla legalnej aplikacji. Aby zapewnić, że firma Microsoft zawsze komunikuje się z właściwą aplikacją w czasie wykonywania, deweloper jest proszony o dostarczenie niestandardowego redirectURI podczas rejestrowania aplikacji w firmie Microsoft. **Jak deweloperzy powinni skierować ten identyfikator URI przekierowania jest szczegółowo opisany poniżej.** Ten niestandardowy redirectURI zawiera odcisk palca certyfikatu aplikacji i jest niepowtarzalny dla aplikacji przez Sklep Google Play. Gdy aplikacja wywołuje brokera, Broker prosi system operacyjny Android o podanie odcisku palca certyfikatu, który wywołał brokera. Broker udostępnia odcisk palca tego certyfikatu firmie Microsoft w wywołaniu systemu tożsamości. Jeśli odcisk palca certyfikatu aplikacji nie jest zgodny z odciskiem palca certyfikatu przekazanego do nas przez dewelopera podczas rejestracji, dostęp zostaje odrzucony do tokenów dla zasobu, którego żąda aplikacja. Ta kontrola zapewnia, że tylko aplikacja zarejestrowana przez dewelopera otrzymuje tokeny.
 
-Nazwy logowania SSO obsługiwanych przez brokera mają następujące korzyści:
+Obsługiwane przez brokera Logowanie jednokrotne ma następujące zalety:
 
-* Usługa rejestracji Jednokrotnej podejrzewać wszystkich swoich aplikacji, niezależnie od tego dostawcy.
-* Aplikację za pomocą bardziej zaawansowanych funkcji biznesowych, takich jak dostęp warunkowy i obsługi scenariuszy usługi Intune.
-* Aplikacja może obsługiwać uwierzytelnianie oparte na certyfikatach dla użytkowników biznesowych.
-* Bardziej bezpieczne logowania jako tożsamość aplikacji i użytkownika są weryfikowane przez aplikację brokera przy użyciu algorytmów zabezpieczeń i szyfrowania.
+* Środowisko logowania jednokrotnego dla wszystkich swoich aplikacji niezależnie od dostawcy.
+* Aplikacja może korzystać z bardziej zaawansowanych funkcji firmy, takich jak dostęp warunkowy i obsługa scenariuszy usługi Intune.
+* Aplikacja może obsługiwać uwierzytelnianie oparte na certyfikatach dla użytkowników firmowych.
+* Bezpieczniejsze środowisko logowania jako tożsamość aplikacji i użytkownik jest weryfikowany przez aplikację brokera z dodatkowymi algorytmami i szyfrowaniem zabezpieczeń.
 
-Poniżej przedstawiono reprezentację jak działają te zestawy SDK za pomocą aplikacji brokera, aby włączyć logowanie Jednokrotne:
+Poniżej przedstawiono reprezentację sposobu, w jaki zestawy SDK współpracują z aplikacjami brokera, aby włączyć logowanie jednokrotne:
 
 ```
 +------------+ +------------+   +-------------+
@@ -98,41 +97,41 @@ Poniżej przedstawiono reprezentację jak działają te zestawy SDK za pomocą a
 
 ```
 
-### <a name="turning-on-sso-for-broker-assisted-sso"></a>Włączanie logowania jednokrotnego dla brokera korzystającej z logowania jednokrotnego
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>Włączanie logowania jednokrotnego dla brokera z pomocą usługi logowania jednokrotnego
 
-Możliwość wykonywania aplikacja może używać każdego brokera, która jest zainstalowana na urządzeniu jest domyślnie wyłączona. Aby można było używać aplikacji przy użyciu brokera, należy wykonać dodatkową konfigurację i dodać kod do aplikacji.
+Możliwość używania dowolnego brokera zainstalowanego na urządzeniu przez aplikację jest domyślnie wyłączona. Aby można było używać aplikacji z brokerem, należy wykonać dodatkową konfigurację i dodać do aplikacji kod.
 
-Dostępne są następujące czynności:
+Poniżej przedstawiono kroki, które należy wykonać:
 
-1. Włącz tryb brokera w kodzie aplikacji telefonicznej do zestawu SDK MS
-2. Ustanawia nowy identyfikator URI przekierowania i przewidzieć, że do Twojej rejestracji aplikacji i aplikacji
+1. Włącz tryb brokera w wywołaniu kodu zestawu MS SDK w kodzie aplikacji
+2. Ustanów nowy identyfikator URI przekierowania i określ, czy zarówno aplikacja, jak i Rejestracja aplikacji
 3. Konfigurowanie odpowiednich uprawnień w manifeście systemu Android
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Włącz tryb brokera w aplikacji
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1. Włączanie trybu brokera w aplikacji
 
-Możliwości aplikacji pod kątem wykorzystania brokera jest włączona, podczas tworzenia "ustawienia" lub początkowej konfiguracji wystąpienia usługi uwierzytelniania. Aby to zrobić w aplikacji:
+Możliwość korzystania z brokera przez aplikację jest włączana podczas tworzenia "ustawień" lub początkowej konfiguracji wystąpienia uwierzytelniania. Aby to zrobić w aplikacji:
 
 ```
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 2: Ustanowienie nowych przekierowania URI ze schematem Twojego adresu URL
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 2. nawiązanie nowego identyfikatora URI przekierowania ze schematem adresu URL
 
-W celu zapewnienia, że odpowiednie aplikacja otrzymuje zwracanego poświadczenie tokenów jest wymagane, aby upewnić się, wywołania zwrotnego aplikacji w taki sposób, aby sprawdzić, systemu operacyjnego Android. Systemu operacyjnego Android używa skrót certyfikatu w sklepie Google Play. Ten skrót certyfikatu nie sfałszowane przez aplikację nieautoryzowanych. Wraz z identyfikatora URI aplikacji brokera firma Microsoft zapewnia, że tokeny są zwracane do właściwej aplikacji. Przekierowanie Unikatowy identyfikator URI jest wymagany do zarejestrowania się w aplikacji.
+Aby upewnić się, że odpowiednia aplikacja otrzymuje zwrócone tokeny poświadczeń, należy się upewnić, że wywołanie z powrotem do aplikacji jest możliwe w taki sposób, aby można było zweryfikować system operacyjny Android. System operacyjny Android używa skrótu certyfikatu w magazynie Google Play. Ten skrót certyfikatu nie może być sfałszowany przez nieautoryzowaną aplikację. Wraz z identyfikatorem URI aplikacji brokera firma Microsoft gwarantuje, że tokeny są zwracane do odpowiedniej aplikacji. W aplikacji musi być zarejestrowany unikatowy identyfikator URI przekierowania.
 
-Identyfikator URI przekierowania musi być w postaci prawidłowego:
+Identyfikator URI przekierowania musi mieć poprawną formę:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
 ex: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-Ten identyfikator URI przekierowania możesz zarejestrować w rejestracji aplikacji przy użyciu [witryny Azure portal](https://portal.azure.com/). Aby uzyskać więcej informacji na temat rejestracji aplikacji w usłudze Azure AD, zobacz [integracji z usługą Azure Active Directory](active-directory-how-to-integrate.md).
+Ten identyfikator URI przekierowania można zarejestrować w rejestracji aplikacji przy użyciu [Azure Portal](https://portal.azure.com/). Aby uzyskać więcej informacji na temat rejestracji aplikacji w usłudze Azure AD, zobacz [Integrowanie z Azure Active Directory](active-directory-how-to-integrate.md).
 
-#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Krok 3: Konfigurowanie odpowiednich uprawnień w aplikacji
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Krok 3. Konfigurowanie odpowiednich uprawnień w aplikacji
 
-Aplikacja brokera w systemie Android używa funkcji Menedżera kont systemu operacyjnego Android do zarządzania poświadczeniami w aplikacjach. Aby można było używać brokera w systemie Android manifest aplikacji musi mieć uprawnienia do korzystania z kont elementu AccountManager. Te uprawnienia są szczegółowo omówione w [Google dokumentację dla Menedżera konta](https://developer.android.com/reference/android/accounts/AccountManager.html)
+Aplikacja brokera w systemie Android używa funkcji Menedżera kont systemu operacyjnego Android do zarządzania poświadczeniami w aplikacjach. Aby można było korzystać z brokera w systemie Android, manifest aplikacji musi mieć uprawnienia do używania kont konta. Te uprawnienia zostały szczegółowo omówione w [dokumentacji Google dla programu Account Manager](https://developer.android.com/reference/android/accounts/AccountManager.html)
 
-W szczególności te uprawnienia są:
+W szczególności te uprawnienia są następujące:
 
 ```
 GET_ACCOUNTS
@@ -140,10 +139,10 @@ USE_CREDENTIALS
 MANAGE_ACCOUNTS
 ```
 
-### <a name="youve-configured-sso"></a>Skonfigurowano logowania jednokrotnego!
+### <a name="youve-configured-sso"></a>Skonfigurowano Logowanie jednokrotne.
 
-Teraz tożsamości zestawu SDK zostanie automatycznie udostępniać poświadczenia w aplikacjach i wywołania brokera, jeśli jest obecny na urządzeniu.
+Teraz zestaw SDK tożsamości automatycznie będzie udostępniać poświadczenia w aplikacjach i wywoływać brokera, jeśli jest obecny na urządzeniu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [pojedynczego logowania jednokrotnego protokołu SAML](single-sign-on-saml-protocol.md)
+* Informacje o [protokole SAML logowania](single-sign-on-saml-protocol.md) jednokrotnego

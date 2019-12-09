@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0659e57f5a5b223c199becf492b27c7a70cbdc63
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4532f31eb4a5ed7f2f0ad76f01fdc082421c0c2d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612131"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935762"
 ---
 Usługa Azure Managed disks automatycznie szyfruje dane domyślnie, gdy są utrwalane w chmurze. Szyfrowanie po stronie serwera chroni dane i pomaga sprostać zobowiązaniom dotyczącym bezpieczeństwa i zgodności w organizacji. Dane w usłudze Azure Managed disks są szyfrowane w sposób niewidoczny dla użytkownika przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednego z najsilniejszych szyfrów blokowych i jest zgodny ze standardem FIPS 140-2.   
 
@@ -73,33 +73,31 @@ Wersja zapoznawcza ma również następujące ograniczenia:
 - Key Vault musi znajdować się w tej samej subskrypcji i regionie co klucze zarządzane przez klienta.
 - Dyski, migawki i obrazy zaszyfrowane przy użyciu kluczy zarządzanych przez klienta nie mogą zostać przeniesione do innej subskrypcji.
 
-### <a name="setting-up-your-azure-key-vault"></a>Konfigurowanie Azure Key Vault
+### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Konfigurowanie Azure Key Vault i DiskEncryptionSet
 
 1.  Utwórz wystąpienie Azure Key Vault i klucza szyfrowania.
 
     Podczas tworzenia wystąpienia Key Vault należy włączyć opcję trwałe usuwanie i przeczyszczanie ochrony. Usuwanie nietrwałe gwarantuje, że Key Vault przechowuje usunięty klucz dla danego okresu przechowywania (wartość domyślna 90). Ochrona przed przeczyszczeniem gwarantuje, że usunięty klucz nie może zostać trwale usunięty, dopóki nie upłynie okres przechowywania. Te ustawienia chronią przed utratą danych z powodu przypadkowego usunięcia. Te ustawienia są obowiązkowe w przypadku używania Key Vault do szyfrowania dysków zarządzanych.
 
     ```powershell
-    $keyVault = New-AzKeyVault -Name myKeyVaultName ` 
-    -ResourceGroupName myRGName ` 
-    -Location westcentralus ` 
-    -EnableSoftDelete ` 
-    -EnablePurgeProtection 
-     
-    $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName ` 
-    -Name myKeyName ` 
-    -Destination Software `  
+    $ResourceGroupName="yourResourceGroupName"
+    $LocationName="westcentralus"
+    $keyVaultName="yourKeyVaultName"
+    $keyName="yourKeyName"
+    $keyDestination="Software"
+    $diskEncryptionSetName="yourDiskEncryptionSetName"
+
+    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnableSoftDelete -EnablePurgeProtection
+
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
     ```
 
 1.  Utwórz wystąpienie elementu DiskEncryptionSet. 
     
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName myRGName ` 
-      -TemplateUri "https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateDiskEncryptionSet.json" ` 
-      -diskEncryptionSetName "myDiskEncryptionSet1" ` 
-      -keyVaultId "/subscriptions/mySubscriptionId/resourceGroups/myRGName/providers/Microsoft.KeyVault/vaults/myKeyVaultName" ` 
-      -keyVaultKeyUrl "https://myKeyVaultName.vault.azure.net/keys/myKeyName/403445136dee4a57af7068cab08f7d42" ` 
-      -region "WestCentralUS"
+    $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName -SourceVaultId $keyVault.ResourceId -KeyUrl $key.Key.Kid -IdentityType SystemAssigned
+
+    $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
     ```
 
 1.  Przyznaj zasobowi DiskEncryptionSet dostęp do magazynu kluczy.
@@ -107,57 +105,70 @@ Wersja zapoznawcza ma również następujące ograniczenia:
     ```powershell
     $identity = Get-AzADServicePrincipal -DisplayName myDiskEncryptionSet1  
      
-    Set-AzKeyVaultAccessPolicy ` 
-        -VaultName $keyVault.VaultName ` 
-        -ObjectId $identity.Id ` 
-        -PermissionsToKeys wrapkey,unwrapkey,get 
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
      
-    New-AzRoleAssignment ` 
-        -ObjectId $identity.Id ` 
-        -RoleDefinitionName "Reader" ` 
-        -ResourceName $keyVault.VaultName ` 
-        -ResourceType "Microsoft.KeyVault/vaults" ` 
-        -ResourceGroupName myRGName `  
+    New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -  ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
     ```
 
-### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys-via-a-resource-manager-template"></a>Tworzenie maszyny wirtualnej przy użyciu obrazu z portalu Marketplace szyfrowanie dysków systemu operacyjnego i danych z kluczami zarządzanymi przez klienta za pomocą szablonu Menedżer zasobów
+### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Tworzenie maszyny wirtualnej przy użyciu obrazu z portalu Marketplace, szyfrowanie dysków systemu operacyjnego i danych za pomocą kluczy zarządzanych przez klienta
 
-```
-$password=ConvertTo-SecureString -String "myVMPassword" `
-  -AsPlainText -Force
-New-AzResourceGroupDeployment -ResourceGroupName CMKTesting `
-  -TemplateUri "https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateVMWithDisksEncryptedWithCMK.json" `
-  -virtualMachineName "myVMName" `
-  -adminPassword $password `
-  -vmSize "Standard_DS3_V2" `
-  -diskEncryptionSetId "/subscriptions/mySubscriptionId/resourceGroups/myRGName/providers/Microsoft.Compute/diskEncryptionSets/myDiskEncryptionSet1" `
-  -region "westcentralus" 
+```powershell
+$VMLocalAdminUser = "yourVMLocalAdminUserName"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerName = "yourComputerName"
+$VMName = "yourVMName"
+$VMSize = "Standard_DS3_v2"
+$diskEncryptionSetName="yourdiskEncryptionSetName"
+    
+$NetworkName = "yourNetworkName"
+$NICName = "yourNICName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+$NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id
+    
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+    
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $($VMName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage
+
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDisk1") -DiskSizeInGB 128 -StorageAccountType Premium_LRS -CreateOption Empty -Lun 0 -DiskEncryptionSetId $diskEncryptionSet.Id 
+    
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
 ### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>Utwórz pusty dysk zaszyfrowany przy użyciu szyfrowania po stronie serwera z kluczami zarządzanymi przez klienta i dołącz go do maszyny wirtualnej
 
 ```PowerShell
-$vmName = "yourVMName"
-$rgName = "yourRGName"
+$vmName = "yourDiskName"
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
 $diskName = "yourDiskName"
 $diskSKU = "Premium_LRS"
-$diskSizeinGiB = "30"
-$diskEncryptionSetId = "/subscriptions/<subscriptionID>/resourceGroups/yourRGName/providers/Microsoft.Compute/diskEncryptionSets/<yourDiskEncryptionSetName>"
-$region = "westcentralus"
+$diskSizeinGiB = 30
 $diskLUN = 1
+$diskEncryptionSetName="yourDiskEncryptionSetName"
 
-New-AzResourceGroupDeployment -ResourceGroupName $rgName `
-  -TemplateUri "https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateEmptyDataDiskEncryptedWithSSECMK.json" `
-  -diskName $diskName `
-  -diskSkuName $diskSKU `
-  -dataDiskSizeInGb $diskSizeinGiB `
-  -diskEncryptionSetId $diskEncryptionSetId `
-  -region $region 
 
-$vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
-$disk = Get-AzDisk -DiskName $diskName -ResourceGroupName $rgName
-$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun 1
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $ResourceGroupName 
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -DiskSizeInGB $diskSizeinGiB -StorageAccountType $diskSKU -Lun $diskLUN -DiskEncryptionSetId $diskEncryptionSet.Id 
+
 Update-AzVM -ResourceGroupName $rgName -VM $vm
+
 ```
 
 
@@ -170,4 +181,5 @@ Update-AzVM -ResourceGroupName $rgName -VM $vm
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Co to jest Azure Key Vault?](../articles/key-vault/key-vault-overview.md)
+- [Poznaj szablony Azure Resource Manager tworzenia szyfrowanych dysków przy użyciu kluczy zarządzanych przez klienta](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [Co to jest usługa Azure Key Vault?](../articles/key-vault/key-vault-overview.md)

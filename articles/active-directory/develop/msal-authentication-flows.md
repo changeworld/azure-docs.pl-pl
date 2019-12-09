@@ -1,35 +1,31 @@
 ---
-title: Przepływy uwierzytelniania (Biblioteka uwierzytelniania firmy Microsoft)
+title: Przepływy uwierzytelniania MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej na temat przepływów uwierzytelniania i uprawnień używanych przez bibliotekę uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473811"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917203"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
 W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez bibliotekę uwierzytelniania firmy Microsoft (MSAL).  Te przepływy mogą być używane w różnych scenariuszach aplikacji.
 
-| Ruch | Opis | Używany w|  
+| Przepływ | Opis | Używany w|  
 | ---- | ----------- | ------- | 
 | [Interaktywne](#interactive) | Pobiera token przez proces interaktywny, który wyświetla użytkownikowi komunikat o poświadczeniach za pomocą przeglądarki lub okna podręcznego. | [Aplikacje klasyczne](scenario-desktop-overview.md), [aplikacje mobilne](scenario-mobile-overview.md) |
 | [Niejawne przyznanie](#implicit-grant) | Zezwala aplikacji na pobieranie tokenów bez przeprowadzania wymiany poświadczeń serwera zaplecza. Dzięki temu aplikacja może logować się do użytkownika, obsługiwać sesję i uzyskiwać tokeny do innych interfejsów API sieci Web, a wszystko to w kodzie JavaScript klienta.| [Aplikacje jednostronicowe (SPA)](scenario-spa-overview.md) |
@@ -42,15 +38,15 @@ W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez b
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Jak każdy przepływ emituje tokeny i kody
  
-W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać różnych tokenów, aby umożliwić ich działanie. Ten wykres proides przegląd:
+W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać innych tokenów, aby działały. Ten wykres zawiera przegląd:
  
-|Ruch | KONIECZN | id_token | token dostępu | Odśwież token | kod autoryzacji | 
+|Przepływ | Wymaga | id_token | Token dostępu | Odśwież token | kod autoryzacji | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Przepływ kodu autoryzacji](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Niejawny przepływ](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybrydowy przepływ OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Odświeżanie umorzenia tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | Odśwież token | x | x | x| |
-|[Przepływ „w imieniu”](v2-oauth2-on-behalf-of-flow.md) | token dostępu| x| x| x| |
+|[Przepływ „w imieniu”](v2-oauth2-on-behalf-of-flow.md) | Token dostępu| x| x| x| |
 |[Przepływ kodu urządzenia](v2-oauth2-device-code.md) | | x| x| x| |
 |[Poświadczenia klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (tylko aplikacja)| | |
  
@@ -69,7 +65,7 @@ Aby uzyskać więcej informacji na temat korzystania z usługi MSAL.NET do inter
 
 Aby uzyskać więcej informacji na temat interakcyjnych wywołań w MSAL. js, zobacz temat [zachowanie monitu w programie MSAL. js Interactive Requests](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Niejawne przyznanie
+## <a name="implicit-grant"></a>Niejawne udzielenie
 
 Usługa MSAL obsługuje [niejawny przepływ uwierzytelniania OAuth 2](v2-oauth2-implicit-grant-flow.md), który umożliwia aplikacji pobieranie tokenów z platformy tożsamości firmy Microsoft bez konieczności wymiany poświadczeń serwera zaplecza. Dzięki temu aplikacja może logować się do użytkownika, obsługiwać sesję i uzyskiwać tokeny do innych interfejsów API sieci Web, a wszystko to w kodzie JavaScript klienta.
 
@@ -79,7 +75,7 @@ Wiele nowoczesnych aplikacji sieci Web jest zbudowanych jako aplikacje jednostro
 
 Ten przepływ uwierzytelniania nie obejmuje scenariuszy aplikacji, które wykorzystują Międzyplatformowe platformy JavaScript, takie jak elektron i reagowanie na aplikacje natywne, ponieważ wymagają one dalszych możliwości interakcji z platformami macierzystymi.
 
-## <a name="authorization-code"></a>kod autoryzacji
+## <a name="authorization-code"></a>Kod autoryzacji
 
 MSAL obsługuje [przyznawanie kodu autoryzacji OAuth 2](v2-oauth2-auth-code-flow.md). Tego uprawnienia można używać w aplikacjach zainstalowanych na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci Web. Pozwala to na dodawanie funkcji logowania i dostępu do interfejsu API do aplikacji mobilnych i klasycznych. 
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024781"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914071"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania dla grup pakietu Office 365
 
@@ -62,7 +62,7 @@ Poniżej znajdują się role, które umożliwiają konfigurowanie i używanie wy
 
 Rola | Uprawnienia
 -------- | --------
-Administrator globalny lub administrator użytkowników | Może tworzyć, odczytywać, aktualizować i usuwać ustawienia zasad wygasania grup pakietu Office 365<br>Może odnowić dowolną grupę pakietu Office 365
+Administrator globalny, administrator grupy lub administrator użytkownika | Może tworzyć, odczytywać, aktualizować i usuwać ustawienia zasad wygasania grup pakietu Office 365<br>Może odnowić dowolną grupę pakietu Office 365
 Użytkownik | Może odnowić grupę pakietu Office 365<br>Może przywrócić grupę pakietu Office 365<br>Może odczytać ustawienia zasad wygasania
 
 Aby uzyskać więcej informacji na temat uprawnień do przywracania usuniętej grupy, zobacz [przywracanie usuniętej grupy programu Office 365 w Azure Active Directory](groups-restore-deleted.md).

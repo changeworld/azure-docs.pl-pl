@@ -1,29 +1,25 @@
 ---
-title: Rejestrowanie w aplikacjach Microsoft Authentication Library (MSAL)
+title: Logowanie w aplikacjach MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o rejestrowaniu w aplikacjach Microsoft Authentication Library (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5960389389e4b75794a7334c0bff12ce3ac0f170
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452462"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916149"
 ---
 # <a name="logging-in-msal-applications"></a>Logowanie w aplikacjach MSAL
 
@@ -219,7 +215,7 @@ Aby ustawić poziom rejestrowania podczas rejestrowania przy użyciu MSAL dla sy
 |---------|---------|
 | `MSALLogLevelNothing`| Wyłącz wszystkie rejestrowanie |
 | `MSALLogLevelError` | Poziom domyślny, drukuje informacje tylko w przypadku wystąpienia błędów |
-| `MSALLogLevelWarning` | Ostrzeżeni |
+| `MSALLogLevelWarning` | Ostrzeżenia |
 | `MSALLogLevelInfo` |  Punkty wejścia biblioteki, z parametrami i różnymi operacjami łańcucha kluczy |
 |`MSALLogLevelVerbose`     |  Śledzenie interfejsu API |
 
@@ -296,7 +292,7 @@ Aby ustawić poziom rejestrowania podczas rejestrowania przy użyciu MSAL dla sy
 |---------|---------|
 | `MSALLogLevelNothing`| Wyłącz wszystkie rejestrowanie |
 | `MSALLogLevelError` | Poziom domyślny, drukuje informacje tylko w przypadku wystąpienia błędów |
-| `MSALLogLevelWarning` | Ostrzeżeni |
+| `MSALLogLevelWarning` | Ostrzeżenia |
 | `MSALLogLevelInfo` |  Punkty wejścia biblioteki, z parametrami i różnymi operacjami łańcucha kluczy |
 |`MSALLogLevelVerbose`     |  Śledzenie interfejsu API |
 

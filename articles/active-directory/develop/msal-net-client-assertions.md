@@ -1,29 +1,25 @@
 ---
-title: Potwierdzenia klientów w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET
+title: Potwierdzenia klienta (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o obsłudze potwierdzeń klientów podpisanych dla poufnych aplikacji klienckich w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/18/2019
 ms.author: jmprieur
-ms.reviewer: ''
+ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ff02e4c95594f0155ab31e3c99a0eb269626d9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168131"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921901"
 ---
 # <a name="confidential-client-assertions"></a>Poufne potwierdzenia klienta
 
@@ -55,7 +51,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Oświadczenia oczekiwane przez usługę Azure AD to:
 
-Typ zgłoszenia | Wartość | Opis
+Typ oświadczenia | Wartość | Opis
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Deklaracja "AUD" (odbiorcy) identyfikuje odbiorców, dla których jest przeznaczony token JWT (w tym przypadku usługa Azure AD), zobacz [RFC 7519, sekcja 4.1.3]
 exp | Czwartek Jun 27 2019 15:04:17 GMT + 0200 (czas letni) | Wartość "EXP" (czas wygaśnięcia) określa czas wygaśnięcia w dniu lub, po którym nie można zaakceptować tokenu JWT do przetworzenia. Patrz [RFC 7519, sekcja 4.1.4]

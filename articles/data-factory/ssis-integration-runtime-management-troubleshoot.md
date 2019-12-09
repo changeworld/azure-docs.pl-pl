@@ -1,29 +1,28 @@
 ---
-title: 'Rozwiązywanie problemów z usługą SSIS Integration Runtime Management w programie Azure Data Factory '
+title: Rozwiązywanie problemów z usługą SSIS Integration Runtime Management
 description: Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z zarządzaniem Integration Runtime SSIS (SSIS IR)
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/08/2019
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/08/2019
+ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684026"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931937"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Rozwiązywanie problemów z usługą SSIS Integration Runtime Management w programie Azure Data Factory
 
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z zarządzaniem w systemie Azure — SQL Server Integration Services (SSIS) Integration Runtime (IR), znane także jako SSIS IR.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W przypadku napotkania dowolnego problemu podczas aprowizacji lub anulowania obsługi usługi SSIS IR zostanie wyświetlony komunikat o błędzie w portalu Microsoft Azure Data Factory lub zwrócony błąd z polecenia cmdlet programu PowerShell. Błąd jest zawsze wyświetlany w formacie kodu błędu z szczegółowym komunikatem o błędzie.
 
@@ -77,7 +76,7 @@ W przypadku innych problemów sprawdź komunikat o wyjątku SQL i rozwiąż prob
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Ten rodzaj komunikatu o błędzie wygląda następująco: "Nieprawidłowa nazwa obiektu katalogu. catalog_properties". " W takiej sytuacji masz już bazę danych o nazwie SSISDB, ale nie została ona utworzona przez program SSIS IR lub baza danych znajduje się w nieprawidłowym stanie spowodowanym błędami w ostatniej aprowizacji programu SSIS IR. Możesz usunąć istniejącą bazę danych o nazwie SSISDB albo skonfigurować nowy serwer usługi Azure SQL Database lub nowe wystąpienie zarządzane na potrzeby środowiska IR.
+Ten rodzaj komunikatu o błędzie wygląda następująco: "Nieprawidłowa nazwa obiektu wykazu. catalog_properties". " W takiej sytuacji masz już bazę danych o nazwie SSISDB, ale nie została ona utworzona przez program SSIS IR lub baza danych znajduje się w nieprawidłowym stanie spowodowanym błędami w ostatniej aprowizacji programu SSIS IR. Możesz usunąć istniejącą bazę danych o nazwie SSISDB albo skonfigurować nowy serwer usługi Azure SQL Database lub nowe wystąpienie zarządzane na potrzeby środowiska IR.
 
 ## <a name="custom-setup-issues"></a>Problemy z instalacją niestandardową
 

@@ -1,24 +1,25 @@
 ---
-title: 'Przyrostowe Kopiowanie tabeli przy użyciu Azure Data Factory '
+title: Przyrostowe Kopiowanie tabeli przy użyciu programu PowerShell
 description: W tym samouczku utworzysz potok usługi Azure Data Factory, który przyrostowo kopiuje dane z bazy danych Azure SQL Database do magazynu Azure Blob Storage.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.author: yexu
-ms.openlocfilehash: bb1ddbddfb2e06f394ac2f57b10e18893879b51b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d6b41f06f9e5d64532b5684e6bc40d017a8c4434
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683351"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925220"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do usługi Azure Blob Storage przy użyciu programu PowerShell
+
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 
 
 Ten samouczek obejmuje następujące procedury:
@@ -32,7 +33,7 @@ Ten samouczek obejmuje następujące procedury:
 > * Uruchamianie potoku.
 > * Monitorowanie uruchomienia potoku. 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Diagram ogólny rozwiązania wygląda następująco: 
 
 ![Przyrostowe ładowanie danych](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)

@@ -1,56 +1,53 @@
 ---
-title: Jak ponownie uaktywnić wyłączonych obszarów nazw usługi Azure Access Control Service (ACS)
-description: Dowiedz się, jak znaleźć i Włącz przestrzeniami nazw usługi Azure Access Control Service (ACS) oraz wnioskiem o przedłużenie, aby były włączone do 4 lutego 2019 r.
+title: Jak ponownie uaktywnić wyłączone przestrzenie nazw usługi Azure Access Control Service (ACS)
+description: Dowiedz się, jak znaleźć i włączyć przestrzenie nazw platformy Azure Access Control Service (ACS), a następnie poprosić o rozszerzenie, aby je włączyć do 4 lutego 2019.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482708"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917713"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Instrukcje: Ponowne uaktywnianie wyłączonych przestrzeni nazw usługi Access Control Service
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Jak ponownie uaktywnić wyłączone Access Control Service przestrzenie nazw
 
-Listopada 2017 r. ogłosiliśmy, że Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana 7 listopada 2018 r.
+W listopadzie 2017 ogłoszono, że Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana w dniu 7 listopada 2018.
 
-Ponieważ następnie wysłaliśmy wiadomości e-mail na adres e-mail administratora do subskrypcji usługi ACS o wycofaniu usługi ACS 12 miesięcy, 9 miesięcy, 6 miesięcy, 3 miesiące, 1 miesiąc, 2 tygodnie, 1, i 1 dzień tygodnia przed dniem wycofania 7 listopada 2018 r.
+Od tego momentu wysłaliśmy wiadomości e-mail do administratora usługi ACS w celu uzyskania informacji o wycofaniu usług ACS przez 12 miesięcy, 9 miesięcy, 6 miesięcy, 3 miesiące, 1 miesiąc, 2 tygodnie, 1 tydzień i 1 dzień przed datą wycofania 7 listopada 2018.
 
-3 października 2018 r. ogłosiliśmy (za pośrednictwem poczty e-mail i [wpis w blogu](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) ofertę rozszerzenia, aby klienci, którzy nie może zakończyć ich migracji, zanim 7 listopada 2018 r. Ogłoszenie ma również instrukcje dotyczące o rozszerzenie.
+3 października 2018 ogłoszone (za pośrednictwem poczty e-mail i [wpisu w blogu](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) oferty rozszerzenia dla klientów, którzy nie mogą zakończyć migracji przed 7 listopada 2018. Anons zawiera również instrukcje dotyczące żądania rozszerzenia.
 
-## <a name="why-your-namespace-is-disabled"></a>Dlaczego przestrzeni nazw jest wyłączona
+## <a name="why-your-namespace-is-disabled"></a>Dlaczego przestrzeń nazw jest wyłączona
 
-Jeśli jeszcze nie została wybrana w przypadku rozszerzenia, Rozpoczniemy Wyłącz przestrzeni nazw usługi ACS, począwszy od 7 listopada 2018 r. Należy żądanej rozszerzenie 4 lutego 2019 już; w przeciwnym razie nie można włączyć przestrzeni nazw za pomocą programu PowerShell.
+Jeśli nie wybrano rozszerzenia, zaczniemy wyłączyć przestrzenie nazw ACS od 7 listopada 2018. Użytkownik musi mieć zażądane rozszerzenie 4 lutego 2019; w przeciwnym razie nie będzie można włączyć przestrzeni nazw za pomocą programu PowerShell.
 
 > [!NOTE]
-> Musi być administratorów usługi lub współadministratorem subskrypcji, aby uruchamiać polecenia programu PowerShell i wnioskiem o przedłużenie.
+> Musisz być administratorem usługi lub współadministratorem subskrypcji, aby uruchomić polecenia programu PowerShell i zażądać rozszerzenia.
 
-## <a name="find-and-enable-your-acs-namespaces"></a>Znajdowanie i włączyć przestrzeniami nazw usługi ACS
+## <a name="find-and-enable-your-acs-namespaces"></a>Znajdowanie i włączanie przestrzeni nazw ACS
 
-Za pomocą programu PowerShell usługi ACS do listy wszystkich przestrzeni nazw usługi ACS, a następnie ponownie aktywować te, które zostały wyłączone.
+Za pomocą programu ACS PowerShell można wyświetlić listę wszystkich przestrzeni nazw usługi ACS i ponownie uaktywnić te, które zostały wyłączone.
 
-1. Pobierz i zainstaluj usługi ACS programu PowerShell:
-    1. Przejdź do galerii programu PowerShell i Pobierz [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
+1. Pobierz i zainstaluj program PowerShell ACS:
+    1. Przejdź do Galeria programu PowerShell i Pobierz [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
     1. Zainstaluj moduł:
 
         ```powershell
         Install-Module -Name Acs.Namespaces
         ```
 
-    1. Pobierz listę wszystkie możliwe polecenia:
+    1. Pobierz listę wszystkich możliwych poleceń:
 
         ```powershell
         Get-Command -Module Acs.Namespaces
@@ -62,47 +59,47 @@ Za pomocą programu PowerShell usługi ACS do listy wszystkich przestrzeni nazw 
         Get-Help [Command-Name] -Full
         ```
     
-        gdzie `[Command-Name]` to nazwa polecenia ACS.
-1. Nawiązywanie połączenia przy użyciu usługi ACS **Connect AcsAccount** polecenia cmdlet. 
+        gdzie `[Command-Name]` jest nazwą polecenia ACS.
+1. Połącz się z usługą ACS przy użyciu polecenia cmdlet **Connect-AcsAccount** . 
 
-    Może być konieczne zmiany zasad wykonywania, uruchamiając **Set-ExecutionPolicy** przed uruchomieniem polecenia.
-1. Lista dostępnych subskrypcji platformy Azure przy użyciu **Get AcsSubscription** polecenia cmdlet.
-1. Listy, używając przestrzeni nazw usługi ACS **Get AcsNamespace** polecenia cmdlet.
-1. Upewnij się, że przestrzenie nazw są wyłączone, sprawdzając, czy `State` jest `Disabled`.
+    Aby można było uruchomić polecenie, może być konieczna zmiana zasad wykonywania przez uruchomienie polecenia **Set-executionpolicy** .
+1. Wyświetl listę dostępnych subskrypcji platformy Azure za pomocą polecenia cmdlet **Get-AcsSubscription** .
+1. Utwórz listę przestrzeni nazw ACS przy użyciu polecenia cmdlet **Get-AcsNamespace** .
+1. Upewnij się, że przestrzenie nazw zostały wyłączone przez potwierdzenie, że `State` jest `Disabled`.
 
-    [![Upewnij się, że przestrzenie nazw są wyłączone](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
+    [![upewnij się, że przestrzenie nazw są wyłączone](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
-    Można również użyć `nslookup {your-namespace}.accesscontrol.windows.net` aby upewnić się, jeśli domena jest nadal aktywne.
+    Możesz również użyć `nslookup {your-namespace}.accesscontrol.windows.net`, aby potwierdzić, czy domena jest nadal aktywna.
 
-1. Włącz usługi ACS namespace (s) przy użyciu **AcsNamespace Włącz** polecenia cmdlet.
+1. Włącz przestrzenie nazw ACS przy użyciu polecenia cmdlet **enable-AcsNamespace** .
 
-    Po aktywowaniu usługi namespace (s), możesz poprosić rozszerzenie tak, aby namespace (s) nie będzie można wyłączyć ponownie przed 4 lutego 2019 r. Po tej dacie wszystkie żądania do usługi ACS zakończy się niepowodzeniem.
+    Po włączeniu przestrzeni nazw możesz zażądać rozszerzenia, aby przestrzenie nazw nie były ponownie wyłączone przed 4 lutego 2019. Po tej dacie wszystkie żądania do usługi ACS zakończą się niepowodzeniem.
 
-## <a name="request-an-extension"></a>Żądanie rozszerzenia
+## <a name="request-an-extension"></a>Żądaj rozszerzenia
 
-Podejmujemy nowe żądania dotyczące rozszerzeń od 21 stycznia 2019 r.
+Pobieramy nowe żądania rozszerzenia od 21 stycznia 2019.
 
-Firma Microsoft rozpocznie się wyłączenie przestrzeni nazw dla klientów, którzy poprosili rozszerzenia do 4 lutego 2019 r. Nadal można ponownie włączyć przestrzeni nazw za pomocą programu PowerShell, ale zostanie wyłączona przestrzenie nazw ponownie po upływie 48 godzin.
+Firma Microsoft zacznie wyłączać obszary nazw dla klientów, którzy zażądali rozszerzeń 4 lutego 2019. Nadal można ponownie włączyć przestrzenie nazw za pomocą programu PowerShell, ale przestrzenie nazw zostaną wyłączone ponownie po 48 godzinach.
 
-Po 4 marca 2019 r klienci będą mogli ponownie włączyć wszystkie przestrzenie nazw za pomocą programu PowerShell.
+Po 4 marca 2019 klienci nie będą już mogli ponownie włączać żadnych przestrzeni nazw przy użyciu programu PowerShell.
 
-Dodatkowe rozszerzenia nie jest już będą zatwierdzane automatycznie. Jeśli potrzebujesz dodatkowego czasu na migrację, skontaktuj się z pomocą [pomocy technicznej platformy Azure](https://portal.azure.com/#create/Microsoft.Support) zapewnienie na osi czasu migracji szczegółowe.
+Dalsze rozszerzenia nie będą już automatycznie zatwierdzane. Jeśli potrzebujesz dodatkowego czasu na przeprowadzenie migracji, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#create/Microsoft.Support) , aby zapewnić szczegółową oś czasu migracji.
 
-### <a name="to-request-an-extension"></a>Żądanie rozszerzenia
+### <a name="to-request-an-extension"></a>Aby zażądać rozszerzenia
 
-1. Zaloguj się do witryny Azure portal i Utwórz [nowe żądanie pomocy technicznej](https://portal.azure.com/#create/Microsoft.Support).
-1. Wypełnij formularz nowego żądania pomocy technicznej, jak pokazano w poniższym przykładzie.
+1. Zaloguj się do Azure Portal i Utwórz [nowe żądanie obsługi](https://portal.azure.com/#create/Microsoft.Support).
+1. Wypełnij formularz nowe żądanie obsługi, jak pokazano w poniższym przykładzie.
 
-    | Pole żądania pomocy technicznej | Wartość |
+    | Pole Support request | Wartość |
     |-----------------------|--------------------|
     | **Typ problemu** | `Technical` |
-    | **Subskrypcja** | Ustaw subskrypcję |
+    | **Subskrypcja** | Ustaw na subskrypcję |
     | **Usługa** | `All services` |
     | **Zasób** | `General question/Resource not available` |
     | **Typ problemu** | `ACS to SAS Migration` |
     | **Temat** | Opisz problem |
 
-   ![Pokazuje nowe żądanie pomocy technicznej](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Pokazuje przykład nowego żądania pomocy technicznej](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 
@@ -122,9 +119,9 @@ Dodatkowe rozszerzenia nie jest już będą zatwierdzane automatycznie. Jeśli p
 
 ## <a name="help-and-support"></a>Pomoc i obsługa techniczna
 
-- Jeśli napotkasz problemy po wykonaniu tych instrukcjach, skontaktuj się z [pomocy technicznej platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Jeśli masz pytania lub opinie na temat wycofania usługi ACS, skontaktuj się z nami pod adresem acsfeedback@microsoft.com.
+- Jeśli po wykonaniu tych czynności wystąpią problemy, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+- Jeśli masz pytania lub opinie na temat emerytury usługi ACS, skontaktuj się z nami na acsfeedback@microsoft.com.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj informacje na temat wycofania usługi ACS w [jak: Migrowanie z usługi Azure Access Control Service](active-directory-acs-migration.md).
+- Zapoznaj się z informacjami na temat wycofania usługi ACS w temacie [How to: Migracja z Access Control Service platformy Azure](active-directory-acs-migration.md).

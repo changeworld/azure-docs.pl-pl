@@ -1,22 +1,22 @@
 ---
-title: Tworzenie własnego środowiska Integration Runtime w Azure Data Factory
+title: Tworzenie własnego środowiska Integration Runtime
 description: Dowiedz się, jak utworzyć własne środowisko Integration Runtime w Azure Data Factory, co umożliwia fabrykom danych dostęp do magazynów danych w sieci prywatnej.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 06/18/2019
+ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672293"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928511"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i Konfigurowanie własnego środowiska Integration Runtime
 
@@ -112,9 +112,9 @@ Poniżej znajdują się szczegółowe informacje o parametrach i właściwościa
 | **Klucz** "`<AuthenticationKey>`"                                 | Zastąp lub zaktualizuj poprzedni klucz uwierzytelniania. Należy zachować ostrożność w przypadku tej akcji. Poprzedni udostępniony przez siebie węzeł IR może przejść do trybu offline, jeśli klucz jest nowym środowiskiem Integration Runtime. | Nie       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Generuj plik kopii zapasowej dla bieżącego węzła. Plik kopii zapasowej zawiera klucze węzła i poświadczenia magazynu danych. | Nie       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | Przywróć węzeł z pliku kopii zapasowej.                          | Nie       |
-| **Uruchomieniu**                                                     | Uruchom ponownie funkcję samodzielnego hosta Integration Runtime.   | Nie       |
+| **Uruchom ponownie**                                                     | Uruchom ponownie funkcję samodzielnego hosta Integration Runtime.   | Nie       |
 | **Rozpocznij**                                                       | Uruchom samohostowaną usługę hosta Integration Runtime.     | Nie       |
-| **Komunikat**                                                        | Zatrzymaj samohostowaną usługę hosta Integration Runtime.        | Nie       |
+| **Stop**                                                        | Zatrzymaj samohostowaną usługę hosta Integration Runtime.        | Nie       |
 | **StartUpgradeService**                                         | Uruchom samohostowaną usługę uaktualniania środowiska Integration Runtime.       | Nie       |
 | **StopUpgradeService**                                          | Zatrzymaj usługę uaktualniania środowiska Integration Runtime (Auto-Hosted).        | Nie       |
 | **TurnOnAutoUpdate**                                            | Włącz samoobsługową automatyczną aktualizację środowiska Integration Runtime.        | Nie       |
@@ -355,7 +355,7 @@ Usługa hosta Integration Runtime jest uruchamiana automatycznie po zapisaniu za
 Po zarejestrowaniu własnego środowiska Integration Runtime, jeśli chcesz wyświetlić lub zaktualizować ustawienia serwera proxy, użyj Microsoft Integration Runtime Configuration Manager.
 
 1. Otwórz **Configuration Manager Microsoft Integration Runtime**.
-1. Wybierz kartę **Ustawienia** .
+1. Wybierz **ustawienia** kartę.
 1. W obszarze **serwer proxy HTTP**wybierz łącze **Zmień** , aby otworzyć okno dialogowe **Ustawianie serwera proxy HTTP** .
 1. Wybierz opcję **Dalej**. Następnie zostanie wyświetlone ostrzeżenie z prośbą o zgodę na zapisanie ustawienia serwera proxy i ponowne uruchomienie usługi hosta Integration Runtime.
 

@@ -1,6 +1,7 @@
 ---
-title: Korzystanie z platformy tożsamości firmy Microsoft do logowania użytkowników przy użyciu poświadczeń hasła właściciela zasobu (ROPC) | Azure
-description: Obsługa przepływów uwierzytelniania bez przeglądarki przy użyciu hasła właściciela zasobu.
+title: Zaloguj się przy użyciu hasła właściciela zasobu Przyznaj | Azure
+titleSuffix: Microsoft identity platform
+description: Obsługa przepływów uwierzytelniania bez przeglądarki przy użyciu uprawnień hasła właściciela zasobu (ROPC).
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4504a1ae60aaac790ca15c120433159c2ff78fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207782"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919328"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform oraz poświadczenia hasła właściciela zasobu OAuth 2,0
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Poświadczenia hasła właściciela zasobu Microsoft Identity platform i OAuth 2,0
 
 Platforma tożsamości firmy Microsoft obsługuje [przyznanie poświadczeń hasła właściciela zasobu OAuth 2,0 (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), które umożliwia aplikacji Logowanie użytkownika przez bezpośrednią obsługę hasła.  W tym artykule opisano, jak programować bezpośrednio w odniesieniu do protokołu w aplikacji.  Jeśli to możliwe, zalecamy korzystanie z obsługiwanych bibliotek uwierzytelniania firmy Microsoft (MSAL) zamiast [uzyskiwać tokeny i wywoływać zabezpieczone interfejsy API sieci Web](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Zapoznaj się również z [przykładowymi aplikacjami korzystającymi z MSAL](sample-v2-code.md).
 
@@ -70,11 +71,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagany | Dzierżawa katalogu, w której ma być zalogowany użytkownik. Może to być w formacie identyfikatora GUID lub przyjaznej nazwy. Ten parametr nie może być ustawiony na `common` lub `consumers`, ale może być ustawiony na `organizations`. |
-| `client_id` | Wymagany | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. | 
-| `grant_type` | Wymagany | Musi być ustawiony na `password`. |
-| `username` | Wymagany | Adres e-mail użytkownika. |
-| `password` | Wymagany | Hasło użytkownika. |
+| `tenant` | Wymagane | Dzierżawa katalogu, w której ma być zalogowany użytkownik. Może to być w formacie identyfikatora GUID lub przyjaznej nazwy. Ten parametr nie może być ustawiony na `common` lub `consumers`, ale może być ustawiony na `organizations`. |
+| `client_id` | Wymagane | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. | 
+| `grant_type` | Wymagane | Musi być równa `password`. |
+| `username` | Wymagane | Adres e-mail użytkownika. |
+| `password` | Wymagane | Hasło użytkownika. |
 | `scope` | Zalecane | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md)lub uprawnień wymaganych przez aplikację. W przepływie interaktywnym administrator lub użytkownik musi wyrazić zgodę na te zakresy przed czasem. |
 | `client_secret`| Czasami wymagane | Jeśli aplikacja jest klientem publicznym, nie można uwzględnić `client_secret` lub `client_assertion`.  Jeśli aplikacja jest klientem poufnym, należy ją uwzględnić. | 
 | `client_assertion` | Czasami wymagane | Inna forma `client_secret`wygenerowana przy użyciu certyfikatu.  Aby uzyskać więcej informacji, zobacz [poświadczenia certyfikatu](active-directory-certificate-credentials.md) . | 

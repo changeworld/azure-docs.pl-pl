@@ -1,29 +1,28 @@
 ---
-title: Skopiuj dane z usługi Google AdWords przy użyciu Azure Data Factory
-description: Dowiedz się, jak skopiować dane z usługi Google AdWords do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+title: Kopiuj dane z usługi Google AdWords
+description: Dowiedz się, jak skopiować dane z Google AdWords do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.author: jingwang
-ms.openlocfilehash: cc620e4dd7a84a85fb8d7bc8466a7a3fd116416e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b01dcad71747da6b7aa770e3993cb82892ae55fe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680941"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929434"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Skopiuj dane z usługi Google AdWords przy użyciu Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z usługi Google AdWords. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze Google AdWords. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Ten łącznik usługi Google AdWords jest obsługiwany dla następujących działań:
 
@@ -31,33 +30,33 @@ Ten łącznik usługi Google AdWords jest obsługiwany dla następujących dzia�
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
 
-Dane z usługi Google AdWords można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Możesz skopiować dane z Google AdWords, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Azure Data Factory udostępnia wbudowany sterownik umożliwiający połączenie, dlatego nie trzeba ręcznie instalować żadnego sterownika przy użyciu tego łącznika.
+Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika usługi Google AdWords.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika Google AdWords.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Dla połączonej usługi Google AdWords są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane dla Google AdWords połączoną usługę:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **GoogleAdWords** | Tak |
-| clientCustomerID | Identyfikator klienta klienta konta AdWords, dla którego mają zostać pobrane dane raportu.  | Tak |
-| developerToken | Token dewelopera skojarzony z kontem menedżera, którego używasz do udzielania dostępu do interfejsu API AdWords.  Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Tak |
-| authenticationType | Mechanizm uwierzytelniania OAuth 2,0 używany do uwierzytelniania. Funkcji serviceauthentication można używać tylko w przypadku samodzielnego środowiska IR. <br/>Dozwolone wartości to: **serviceauthentication**, **UserAuthentication** | Tak |
-| refreshToken | Token odświeżania uzyskany od firmy Google do autoryzowania dostępu do usługi AdWords dla UserAuthentication. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
+| type | Właściwość type musi być równa: **GoogleAdWords** | Tak |
+| clientCustomerID | Identyfikator klienta klienta konta AdWords, który chcesz pobrać raportować dane.  | Tak |
+| developerToken | Skojarzone z kontem menedżera, których używasz do udzielania dostępu do interfejsu API AdWords token dla deweloperów.  Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Tak |
+| authenticationType | Mechanizm uwierzytelniania OAuth 2.0 używany do uwierzytelniania. ServiceAuthentication można używać tylko na Self-Hosted IR <br/>Dozwolone wartości to: **ServiceAuthentication**, **UserAuthentication** | Tak |
+| refreshToken | Token odświeżania, uzyskany od firmy Google do autoryzowania dostępu do AdWords dla UserAuthentication. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
 | clientId | Identyfikator klienta aplikacji Google używany do uzyskiwania tokenu odświeżania. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
-| clientSecret | Wpis tajny klienta aplikacji Google używany do uzyskiwania tokenu odświeżania. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
-| email | Identyfikator poczty e-mail konta usługi używany na potrzeby usługi serviceauthentication i może być używany tylko w przypadku samodzielnego środowiska IR.  | Nie |
-| Atrybut keyfilepath | Pełna ścieżka do pliku klucza. P12, który jest używany do uwierzytelniania adresu e-mail konta usługi i może być używana tylko w przypadku samodzielnego środowiska IR.  | Nie |
-| trustedCertPath | Pełna ścieżka pliku PEM zawierającego certyfikaty zaufanych urzędów certyfikacji w celu zweryfikowania serwera podczas łączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na samoobsługowym środowisku IR. Wartość domyślna to plik cacerts. pem instalowany z programem IR.  | Nie |
-| useSystemTrustStore | Określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu czy z określonego pliku PEM. Wartość domyślna to false.  | Nie |
+| clientSecret | Klucz tajny klienta aplikacji google używane w celu uzyskania tokenu odświeżania. Możesz oznaczyć to pole jako element SecureString, aby bezpiecznie przechowywać go w podajniku APD, lub przechowywać hasło w Azure Key Vault i wypróbować działanie Copy APD z tego miejsca podczas kopiowania danych — Dowiedz się więcej z [poświadczeń sklepu w Key Vault](store-credentials-in-key-vault.md). | Nie |
+| e-mail | Identyfikator wiadomości e-mail konta usługi, który służy do ServiceAuthentication i można używać tylko na Self-Hosted IR  | Nie |
+| keyFilePath | Pełna ścieżka do pliku klucza p12, który jest używany do uwierzytelniania adres e-mail konta usługi i można używać tylko na Self-Hosted IR  | Nie |
+| trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
+| useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Wartość domyślna to false.  | Nie |
 
 **Przykład:**
 
@@ -97,13 +96,13 @@ Dla połączonej usługi Google AdWords są obsługiwane następujące właściw
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych usługi Google AdWords.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Google AdWords.
 
-Aby skopiować dane z usługi Google AdWords, ustaw właściwość Type zestawu danych na **GoogleAdWordsObject**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z Google AdWords, należy ustawić właściwość typu zestawu danych na **GoogleAdWordsObject**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **GoogleAdWordsObject** | Tak |
+| type | Właściwość typu elementu dataset musi być równa: **GoogleAdWordsObject** | Tak |
 | tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -126,16 +125,16 @@ Aby skopiować dane z usługi Google AdWords, ustaw właściwość Type zestawu 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Google AdWords.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Google AdWords.
 
 ### <a name="google-adwords-as-source"></a>Google AdWords jako źródło
 
-Aby skopiować dane z usługi Google AdWords, ustaw typ źródła w działaniu Copy na **GoogleAdWordsSource**. W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z Google AdWords, należy ustawić typ źródła w działaniu kopiowania, aby **GoogleAdWordsSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **GoogleAdWordsSource** | Tak |
-| query | Użyj niestandardowego zapytania SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono "TableName" w zestawie danych) |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **GoogleAdWordsSource** | Tak |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
 
@@ -175,4 +174,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

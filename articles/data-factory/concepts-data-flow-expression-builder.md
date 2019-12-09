@@ -1,17 +1,18 @@
 ---
-title: Konstruktor wyrażeń przepływu danych mapowania Azure Data Factory
+title: Konstruktor wyrażeń przepływu danych mapowania
 description: Konstruktor wyrażeń dla Azure Data Factory mapowania przepływów danych
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672264"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928338"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Konstruktor wyrażeń przepływu danych mapowania
 
@@ -27,7 +28,7 @@ Narzędzie Expression Builder domyślnie ustawia opcję Edytor tekstu. Funkcja a
 
 ## <a name="build-schemas-in-output-schema-pane"></a>Kompiluj schematy w okienku schematu danych wyjściowych
 
-![Dodawanie złożonej kolumny](media/data-flow/complexcolumn.png "Dodaj kolumny")
+![Dodawanie złożonej kolumny](media/data-flow/complexcolumn.png "Dodawanie kolumn")
 
 W okienku schematu danych wyjściowych po lewej stronie zostaną wyświetlone kolumny, które są modyfikowane i dodawane do schematu. W tym miejscu możesz interaktywnie kompilować proste i złożone struktury danych. Dodaj dodatkowe pola przy użyciu opcji "Dodaj kolumnę" i Utwórz hierarchie przy użyciu polecenia "Dodaj podkolumnę".
 
@@ -50,6 +51,16 @@ Kliknij przycisk Odśwież, aby zaktualizować wyniki wyrażenia na żywo próbk
 Dodaj komentarze do wyrażeń przy użyciu jednowierszowej i wielowierszowej składni komentarza:
 
 ![Komentarze](media/data-flow/comments.png "Komentarze")
+
+## <a name="string-interpolation"></a>Interpolacja ciągów
+
+Używaj cudzysłowów podwójnych, aby ująć tekst ciągu literału razem z wyrażeniami. Można uwzględnić funkcje wyrażenia, kolumny i parametry. Jest to bardzo przydatne, aby uniknąć rozległego użycia łączenia ciągów podczas dołączania parametrów w ciągach zapytań.
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 ## <a name="regular-expressions"></a>Wyrażenia regularne
 

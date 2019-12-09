@@ -3,27 +3,24 @@ title: Tworzenie tożsamości dla aplikacji platformy Azure przy użyciu program
 titleSuffix: Microsoft identity platform
 description: Opis tworzenia aplikacji i jednostki usługi Azure Active Directory oraz przyznawania jej dostępu do zasobów za pośrednictwem kontroli dostępu opartej na rolach przy użyciu programu Azure PowerShell. Ten temat zawiera również informacje na temat uwierzytelniania aplikacji przy użyciu certyfikatu.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf52bc5a6d177c18d9ebb792d1a147d09746afd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2456d52a3863b362943547d8a0c0e478dbc572cf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803820"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917900"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: używanie Azure PowerShell do tworzenia jednostki usługi przy użyciu certyfikatu
 
@@ -48,9 +45,9 @@ Aby ukończyć ten artykuł, musisz mieć wystarczające uprawnienia zarówno w 
 Najłatwiejszym sposobem sprawdzenia, czy Twoje konto ma odpowiednie uprawnienia, jest skorzystanie z portalu. Zobacz [Sprawdzanie wymaganego uprawnienia](howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="assign-the-application-to-a-role"></a>Przypisywanie aplikacji do roli
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](/azure/role-based-access-control/built-in-roles).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
 
-Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone do niższych poziomów zakresu. Na przykład dodanie aplikacji do roli *czytelnik* dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby. Aby umożliwić aplikacji wykonywanie akcji takich jak ponowny rozruch, uruchamianie i zatrzymywanie wystąpień, wybierz rolę *współautor* .
+Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli *czytelnik* dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby. Aby umożliwić aplikacji wykonywanie akcji takich jak ponowny rozruch, uruchamianie i zatrzymywanie wystąpień, wybierz rolę *współautor* .
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Tworzenie jednostki usługi z certyfikatem z podpisem własnym
 
@@ -223,7 +220,7 @@ Podczas tworzenia jednostki usługi mogą wystąpić następujące błędy:
 
 * **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”** . — Ten błąd jest wyświetlany, gdy konto nie ma [wymaganych uprawnień](#required-permissions) do zarejestrowania aplikacji w usłudze Azure AD. Zazwyczaj ten błąd jest wyświetlany, gdy tylko użytkownicy administracyjni w Azure Active Directory mogą rejestrować aplikacje, a Twoje konto nie jest kontem administratora. Poproszenie administratora o przypisanie do roli administratora lub umożliwienie użytkownikom rejestrowania aplikacji.
 
-* Twoje konto **"nie ma autoryzacji do wykonania akcji" Microsoft. Authorization/roleAssignments/Write "w zakresie"/subscriptions/{GUID} "."** — ten błąd jest wyświetlany, gdy konto nie ma wystarczających uprawnień do przypisania roli do Identity. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
+* Twoje konto **"nie ma autoryzacji do wykonania akcji" Microsoft. Authorization/roleAssignments/Write "w zakresie"/subscriptions/{GUID} "."** — ten błąd jest wyświetlany, gdy konto nie ma wystarczających uprawnień do przypisania roli do tożsamości. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
 
 ## <a name="next-steps"></a>Następne kroki
 

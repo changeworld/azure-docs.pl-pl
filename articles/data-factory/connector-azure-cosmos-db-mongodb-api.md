@@ -2,7 +2,6 @@
 title: Kopiuj dane z interfejsu API Azure Cosmos DB dla MongoDB
 description: Informacje o kopiowaniu danych z obsługiwanych magazynów danych źródłowych do programu lub z interfejsu API Azure Cosmos DB dla usługi MongoDB do obsługiwanych magazynów ujścia przy użyciu Data Factory.
 services: data-factory, cosmosdb
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
 manager: shwang
@@ -10,13 +9,14 @@ ms.reviewer: douglasl
 ms.service: multiple
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: bc69864cd1db62ba685201416965e64430c2d027
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0b38bc3309d8cf265a554a10e36311f53e6fe8a9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891086"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929917"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopiowanie danych do interfejsu API Azure Cosmos DB lub z usługi MongoDB przy użyciu Azure Data Factory
 

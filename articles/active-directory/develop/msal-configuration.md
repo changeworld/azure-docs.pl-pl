@@ -1,33 +1,29 @@
 ---
-title: Informacje o pliku konfiguracyjnym biblioteki uwierzytelniania firmy Microsoft dla systemu Android (MSAL)
+title: Plik konfiguracji biblioteki uwierzytelniania firmy Microsoft dla systemu Android | Azure
 titleSuffix: Microsoft identity platform
 description: Omówienie pliku konfiguracji biblioteki uwierzytelniania firmy Microsoft (MSAL) systemu Android, który reprezentuje konfigurację aplikacji w Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803157"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916830"
 ---
-# <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Plik konfiguracji biblioteki uwierzytelniania firmy Microsoft (MSAL) systemu Android
+# <a name="android-microsoft-authentication-library-configuration-file"></a>Plik konfiguracji biblioteki uwierzytelniania firmy Microsoft dla systemu Android
 
-MSAL jest dostarczany z [domyślnym plikiem JSON konfiguracji](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) , który można dostosować w celu zdefiniowania zachowania publicznej aplikacji klienckiej dla takich elementów jak urząd domyślny, które urzędy będą używane i tak dalej.
+Biblioteka Microsoft Authentication Library (MSAL) jest dostarczana z [domyślnym plikiem JSON konfiguracji](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) , który można dostosować w celu zdefiniowania zachowania publicznej aplikacji klienckiej dla takich elementów jak urząd domyślny, które urzędy będą używane i tak dalej.
 
 Ten artykuł pomoże zrozumieć różne ustawienia w pliku konfiguracji oraz sposób określania pliku konfiguracji, który ma być używany w aplikacji opartej na MSAL.
 
@@ -48,7 +44,7 @@ Ten artykuł pomoże zrozumieć różne ustawienia w pliku konfiguracji oraz spo
 
 Identyfikator klienta lub identyfikator aplikacji, który został utworzony podczas rejestrowania aplikacji.
 
-### <a name="redirect_uri"></a>parametr
+### <a name="redirect_uri"></a>redirect_uri
 
 Identyfikator URI przekierowania zarejestrowany podczas rejestrowania aplikacji. Jeśli identyfikator URI przekierowania dotyczy aplikacji brokera, zapoznaj się z tematem [Identyfikator URI przekierowania dla publicznych aplikacji klienckich](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) , aby upewnić się, że używasz poprawnego formatu identyfikatora URI przekierowania dla aplikacji brokera.
 
@@ -124,7 +120,7 @@ Lista znanych i zaufanych urzędów. Oprócz urzędów wymienionych w tym miejsc
 
 Wskazuje, czy podczas podpisywania konta lub autoryzowania dostępu do zasobu ma być używany osadzony widok WebView, czy domyślna przeglądarka na urządzeniu.
 
-Możliwe wartości:
+Dopuszczalne wartości:
 - `DEFAULT`: preferuje przeglądarkę systemową. Program używa osadzonego widoku sieci Web, jeśli przeglądarka nie jest dostępna na urządzeniu.
 - `WEBVIEW`: Użyj osadzonego widoku sieci Web.
 - `BROWSER`: używa domyślnej przeglądarki na urządzeniu.
@@ -148,7 +144,7 @@ Skonfiguruj ustawienia globalne limitów czasu HTTP, takie jak:
 | `connect_timeout` | int | Nie | Czas w milisekundach |
 | `read_timeout` | int | Nie | Czas w milisekundach |
 
-### <a name="logging"></a>Rejestrować
+### <a name="logging"></a>rejestrowanie
 
 Następujące ustawienia globalne dotyczą rejestrowania:
 

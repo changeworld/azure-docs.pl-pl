@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/8/2019
+ms.date: 12/6/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771040"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931078"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji dla agenta Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -23,10 +23,10 @@ W tym artykule udostępniono informacje o obsługiwanych wersjach agenta usługi
 ## <a name="supported-versions"></a>Obsługiwane wersje
 Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
-| Rozwoju | Numer wersji agenta | Data wydania | Stan |
+| Kamień milowy | Numer wersji agenta | Data wydania | Stan |
 |----|----------------------|--------------|------------------|
 | V9 wydanie — [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 grudnia 2019 | Obsługiwane — obsługa lotu |
-| V8 wydanie — [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 października 2019 | Obsługiwane |
+| V8 wydanie — [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 października 2019 r. | Obsługiwane |
 | 2019 lipca zbiorczych aktualizacji — [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 r. | Obsługiwane |
 | 2019 lipca zbiorczych aktualizacji — [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 lipca 2019 | Obsługiwane |
 | Wersji 7 wydanie — [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19 czerwca 2019 | Obsługiwane |
@@ -36,7 +36,7 @@ Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 | Wydanie V6 — [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 kwietnia 2019 | Obsługiwane |
 | Kwiecień 2019 — pakiet zbiorczy aktualizacji — [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 kwietnia 2019 | Obsługiwane |
 | Marzec 2019 — pakiet zbiorczy aktualizacji — [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 marca 2019 | Obsługiwane |
-| Wydanie V5 — [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 lutego 2019 | Obsługiwane |
+| Wydanie V5 — [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 lutego 2019 r. | Obsługiwane |
 | Wersja v4 | 4.0.1.0 - 4.3.0.0 | ND | Nieobsługiwane — wersje agenta wygasły 6 listopada, 2019 |
 | Wersja V3 | 3.1.0.0 - 3.4.0.0 | ND | Nieobsługiwane — wersje agenta wygasły 19 sierpnia 2019 |
 | Agenci wstępnie GA | 1.1.0.0 — 3.0.13.0 | ND | Nieobsługiwane — wersje agenta wygasły 1 października 2018 |
@@ -50,7 +50,7 @@ Poniższe informacje o wersji dotyczą wersji 9.0.0.0 agenta Azure File Sync (wy
 ### <a name="improvements-and-issues-that-are-fixed"></a>Ulepszenia i problemy, które zostały naprawione
 
 - Obsługa przywracania samoobsługowego
-    - Użytkownicy mogą teraz przywracać pliki przy użyciu poprzedniej wersji funkcji. Przed wydaniem V9 funkcja poprzedniej wersji nie była obsługiwana na woluminach, na których włączono obsługę warstw w chmurze. Ta funkcja musi być włączona osobno dla każdego woluminu, na którym istnieje punkt końcowy z włączoną obsługą warstw w chmurze. Aby dowiedzieć się więcej, zobacz  
+    - Użytkownicy mogą teraz przywracać pliki przy użyciu poprzedniej wersji funkcji. Przed wydaniem V9 funkcja poprzedniej wersji nie była obsługiwana na woluminach, na których włączono obsługę warstw w chmurze. Ta funkcja musi być włączona osobno dla każdego woluminu, na którym istnieje punkt końcowy z włączoną obsługą warstw w chmurze. Aby dowiedzieć się więcej, zobacz .  
 [Samoobsługowe Przywracanie za poorednictwem wcześniejszych wersji i usługi VSS (usługa kopiowania woluminów w tle)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Obsługa większych rozmiarów udziałów plików 
@@ -77,7 +77,8 @@ Poniższe informacje o wersji dotyczą wersji 9.0.0.0 agenta Azure File Sync (wy
     - Zmniejszono błędy odwoływania. Rozmiar przywoływany jest teraz automatycznie dostosowywany na podstawie przepustowości sieci. 
     - Ulepszona wydajność pobierania podczas dodawania nowego serwera do grupy synchronizacji. 
     - Nie można zsynchronizować zredukowanych plików z powodu konfliktów ograniczeń. 
-
+    - W niektórych scenariuszach pliki nie są w warstwie lub są nieoczekiwanie wywoływane, jeśli ścieżka punktu końcowego serwera jest punktem instalacji woluminu.
+    
 ### <a name="evaluation-tool"></a>Narzędzie do oceny
 Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu narzędzia do oceny Azure File Sync. To narzędzie jest Azure PowerShell poleceniem cmdlet, które sprawdza potencjalne problemy związane z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Instrukcje dotyczące instalacji i użycia znajdują się w sekcji [Narzędzie do oceny](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) w przewodniku planowania. 
 

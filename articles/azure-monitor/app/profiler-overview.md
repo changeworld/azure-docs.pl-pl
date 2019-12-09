@@ -1,5 +1,5 @@
 ---
-title: Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights Profiler | Microsoft Docs
+title: Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights Profiler
 description: Zidentyfikuj gorącą ścieżkę w kodzie serwera sieci Web za pomocą profilera niskiego poziomu.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 64e7cc0afa4051836d38c885dff0bc0a0e0b08c6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820521"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922096"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Włączanie Application Insights Profiler dla aplikacji
@@ -109,7 +109,7 @@ Aplikacja wykonuje operacje sieciowe.
 
 ### <a id="when"></a>Kolumna, gdy
 
-Kolumna **when** to Wizualizacja, w jaki sposób zbierane próbki pobierane dla węzła różnią się w zależności od czasu. Łączny zakres żądania jest podzielony na 32 przedziałów czasu. Próbki włączne dla tego węzła są gromadzone w tych zasobnikach 32. Każdy zasobnik jest reprezentowany jako pasek. Wysokość paska reprezentuje przeskalowana wartość. Dla węzłów, które są oznaczone jako **CPU_TIME** lub **BLOCKED_TIME**, lub gdy istnieje oczywista relacja do zużywania zasobów (na przykład procesora CPU, dysku lub wątku), pasek reprezentuje użycie jednego z zasobów w zasobniku. W przypadku tych metryk możliwe jest uzyskanie wartości większej niż 100 procent przez zużywanie wielu zasobów. Na przykład w przypadku korzystania z średnio dwóch procesorów CPU w interwale występuje 200 procent.
+Kolumna **when** to Wizualizacja, w jaki sposób zbierane próbki pobierane dla węzła różnią się w zależności od czasu. Łączny zakres żądania jest podzielony na 32 przedziałów czasu. Próbki włączne dla tego węzła są gromadzone w tych zasobnikach 32. Każdy zasobnik jest reprezentowany jako pasek. Wysokość paska reprezentuje przeskalowana wartość. W przypadku węzłów, które są oznaczone **CPU_TIME** lub **BLOCKED_TIME**lub jeśli istnieje oczywista relacja do zużywania zasobów (na przykład procesora, dysku lub wątku), pasek reprezentuje użycie jednego z zasobów w zasobniku. W przypadku tych metryk możliwe jest uzyskanie wartości większej niż 100 procent przez zużywanie wielu zasobów. Na przykład w przypadku korzystania z średnio dwóch procesorów CPU w interwale występuje 200 procent.
 
 ## <a name="limitations"></a>Ograniczenia
 

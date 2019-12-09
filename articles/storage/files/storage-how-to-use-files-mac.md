@@ -1,18 +1,18 @@
 ---
 title: Instalowanie udziału plików platformy Azure za pomocą protokołu SMB w systemie macOS | Microsoft Docs
 description: Dowiedz się, jak zainstalować udział plików platformy Azure za pomocą protokołu SMB w systemie macOS.
-author: roygara
+author: RenaShahMSFT
 ms.service: storage
 ms.topic: conceptual
 ms.date: 09/19/2017
-ms.author: rogarana
+ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 6bd696ce5a314b0c849256311d0629b917036ea2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0e3420e469b117d90efb2949dab828021bfedcb6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699550"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924708"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Instalowanie udziału plików platformy Azure za pomocą protokołu SMB w systemie macOS
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować przy użyciu standardowego w branży protokołu SMB 3 w systemie macOS El Capitan w wersji 10.11 lub nowszej. W tym artykule przedstawiono dwa różne sposoby instalowania udziału plików platformy Azure w systemie macOS: za pomocą interfejsu użytkownika programu Finder i Terminalu.
@@ -27,9 +27,9 @@ ms.locfileid: "68699550"
 >    ```
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>Wymagania wstępne dotyczące instalowania udziału plików platformy Azure w systemie macOS
-* **Nazwa konta magazynu**: aby zainstalować udział plików platformy Azure, konieczne będzie podanie nazwy konta magazynu.
+* **Nazwa konta magazynu**: Aby zainstalować udział plików platformy Azure, konieczne będzie podanie nazwy konta magazynu.
 
-* **Klucz konta magazynu**: aby zainstalować udział plików platformy Azure, konieczne będzie posiadanie podstawowego (lub dodatkowego) klucza magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
+* **Klucz konta magazynu**: Aby zainstalować udział plików platformy Azure, konieczne będzie posiadanie podstawowego (lub dodatkowego) klucza magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
 
 * **Otwarty port 445**: Protokół SMB komunikuje się za pośrednictwem portu TCP 445. Na komputerze klienckim (komputerze Mac) upewnij się, że zapora nie blokuje portu TCP 445.
 
@@ -37,9 +37,9 @@ ms.locfileid: "68699550"
 1. **Otwórz program Finder**: Program Finder jest domyślnie otwarty w systemie macOS, ale możesz się upewnić, że jest on aktualnie wybraną aplikacją, klikając „ikonę twarzy systemu macOS” w Docku:  
     ![Ikona twarzy systemu macOS](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **W menu „Idź” wybierz pozycję „Połącz z serwerem”** : W ścieżce UNC z wymagań wstępnych przekształć początkowy podwójny ukośnik odwrotny (`\\`) w ciąg `smb://`, a wszystkie pozostałe ukośniki odwrotne (`\`) w ukośniki (`/`). Link powinien wyglądać następująco: ![Okno dialogowe „Łączenie z serwerem”](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **Wybierz pozycję "Połącz z serwerem" z menu "Przejdź"** : Używanie ścieżki UNC z wymagań wstępnych, Konwertuj początkowy podwójny ukośnik odwrotny (`\\`) na `smb://` i wszystkie pozostałe ukośniki odwrotne (`\`), aby przekazywać ukośniki (`/`). Twój link powinien wyglądać podobnie do następującego: ![Okno dialogowe „Łączenie z serwerem”](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
-3. **Podaj nazwę konta magazynu i klucza konta magazynu w wyświetlonym monicie o podanie nazwy użytkownika i hasła**: Po kliknięciu przycisku „Połącz” w oknie dialogowym „Łączenie z serwerem” zostanie wyświetlony monit o podanie nazwy użytkownika i hasła (pole zostanie automatycznie wypełnione przy użyciu Twojej nazwy użytkownika systemu macOS). Istnieje możliwość umieszczenia nazwy konta magazynu / klucza konta magazynu w pęku kluczy systemu macOS.
+3. **Użyj nazwy konta magazynu i klucza konta magazynu w wyświetlonym monicie o podanie nazwy użytkownika i hasła**: Po kliknięciu przycisku „Połącz” w oknie dialogowym „Łączenie z serwerem” zostanie wyświetlony monit o podanie nazwy użytkownika i hasła (pole zostanie automatycznie wypełnione nazwą użytkownika systemu macOS). Istnieje możliwość umieszczenia nazwy konta magazynu / klucza konta magazynu w pęku kluczy systemu macOS.
 
 4. **Użyj udziału plików platformy Azure zgodnie z potrzebami**: Udział zostanie zainstalowany po podstawieniu nazwy udziału oraz klucza konta magazynu w polach nazwy użytkownika i hasła. Udziału można używać tak samo jak lokalnego folderu / udziału plików. Obsługiwane jest też przeciąganie i upuszczanie plików do udziału plików:
 
@@ -56,7 +56,7 @@ ms.locfileid: "68699550"
 
     ![Migawka przedstawiająca zainstalowany udział plików platformy Azure](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files.
 
 * [Artykuł pomocy technicznej firmy Apple — Łączenie z funkcją Udostępnianie plików na komputerze Mac](https://support.apple.com/HT204445)

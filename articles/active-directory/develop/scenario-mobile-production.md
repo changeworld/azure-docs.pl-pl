@@ -1,5 +1,5 @@
 ---
-title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web (Przenieś do środowiska produkcyjnego) — Microsoft Identity platform
+title: Przenoszenie aplikacji mobilnych wywoływanie interfejsów API sieci Web do produkcji — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (Przenieś do środowiska produkcyjnego)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67788dd9257a0a4685313dce44c6a3dfb5e514df
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 3e267b2f398480da6949a4c85133342aad5c2ba7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413604"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919906"
 ---
 # <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
 
@@ -44,7 +44,7 @@ Aby zdiagnozować problemy w aplikacji, można zbierać dane. Aby uzyskać infor
 - Użytkownicy mogą poproszeni o pomoc w przypadku wystąpienia problemów. Najlepszym rozwiązaniem jest przechwycenie i tymczasowe przechowywanie dzienników oraz zapewnienie lokalizacji, w której użytkownicy mogą je przekazywać. MSAL udostępnia rozszerzenia rejestrowania do przechwytywania szczegółowych informacji o uwierzytelnianiu.
 - Jeśli jest dostępna, Włącz telemetrię za poorednictwem MSAL, aby zebrać dane dotyczące sposobu logowania użytkowników do aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 

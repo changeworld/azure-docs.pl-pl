@@ -1,5 +1,5 @@
 ---
-title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — konfiguracja kodu aplikacji
+title: Konfigurowanie aplikacji mobilnych, które wywołują interfejsy API sieci Web | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (konfigurację kodu aplikacji)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c5160d88e390f9bfe905dfee0684983a7a49365
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803741"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919889"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 
@@ -78,7 +78,7 @@ Jeśli wolisz ręcznie skonfigurować identyfikator URI przekierowania, możesz 
 
 Jeśli aplikacja używa tylko nazwy użytkownika/hasła, nie trzeba rejestrować identyfikatora URI przekierowania dla aplikacji. W rzeczywistości ten przepływ wykonuje rundy w punkcie końcowym Microsoft Identity platform v 2.0, a aplikacja nie zostanie wywołana ponownie na żadnym konkretnym identyfikatorze URI. Należy jednak pamiętać, że aplikacja jest publiczną aplikacją kliencką. Tę konfigurację można uzyskać, przechodząc do sekcji **uwierzytelnianie** dla aplikacji, a następnie w podsekcji **Ustawienia zaawansowane** wybierz pozycję **tak**, na pytanie **Traktuj aplikację jako klienta publicznego** (w **domyślnym obszarze typu klienta** ).
 
-## <a name="api-permissions"></a>Uprawnienia interfejsu API
+## <a name="api-permissions"></a>Uprawnienia do interfejsu API
 
 Interfejsy API wywołania aplikacji mobilnych w imieniu zalogowanego użytkownika. Aplikacja musi zażądać delegowania uprawnień, nazywanych również zakresami. W zależności od wymaganego środowiska można to zrobić statycznie przez Azure Portal lub dynamicznie w czasie wykonywania. Statyczne rejestrowanie uprawnień pozwala administratorom łatwo zatwierdzać aplikację i jest zalecane.
 

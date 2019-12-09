@@ -1,29 +1,25 @@
 ---
-title: Uwagi dotyczące platformy Xamarin iOS (Microsoft Authentication Library for .NET)
+title: Uwagi dotyczące platformy Xamarin iOS (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin iOS z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc4eb0084e0606251d3fbd80d08723701c6a260
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175621"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921470"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Uwagi dotyczące platformy Xamarin dla systemu iOS z usługą MSAL.NET
 W oprogramowaniu Xamarin iOS istnieje kilka kwestii, które należy wziąć pod uwagę podczas korzystania z usługi MSAL.NET
@@ -97,7 +93,7 @@ Gdy korzystasz z interfejsu API `WithIosKeychainSecurityGroup()`, MSAL automatyc
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Włączanie udostępniania pamięci podręcznej tokenów w aplikacjach dla systemu iOS
 
-Z MSAL 2. x można określić grupę dostępu łańcucha kluczy, która ma być używana do utrwalania pamięci podręcznej tokenów w wielu aplikacjach. To ustawienie umożliwia udostępnienie pamięci podręcznej tokenom między kilkoma aplikacjami mającymi tę samą grupę dostępu pęku kluczy, łącznie z tymi, które opracowano za pomocą aplikacji [ADAL.NET](https://aka.ms/adal-net), MSAL.NET Xamarin. iOS oraz natywnych aplikacji systemu iOS utworzonych przy użyciu [ ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) lub [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
+Z MSAL 2. x można określić grupę dostępu łańcucha kluczy, która ma być używana do utrwalania pamięci podręcznej tokenów w wielu aplikacjach. To ustawienie umożliwia współużytkowanie pamięci podręcznej tokenów między kilkoma aplikacjami mającymi tę samą grupę dostępu pęku kluczy, łącznie z tymi, które opracowano za pomocą aplikacji [ADAL.NET](https://aka.ms/adal-net), MSAL.NET Xamarin. iOS i natywnych aplikacji systemu iOS opracowanych przy użyciu [biblioteki ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) lub [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)).
 
 Udostępnianie pamięci podręcznej tokenów umożliwia logowanie jednokrotne między wszystkimi aplikacjami, które korzystają z tej samej grupy dostępu pęku kluczy.
 

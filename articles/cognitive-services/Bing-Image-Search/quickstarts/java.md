@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Używanie języka Java do wywoływania interfejsu API REST wyszukiwanie obrazów Bing'
+title: 'Szybki Start: używanie języka Java do wywoływania interfejsu API REST wyszukiwanie obrazów Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing przy użyciu języka Java i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -9,25 +9,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 07/22/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 415613d99b3a7b9f3845a458886e93e5655842c8
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c1e339643613db188819e7eb8853cad8a48ea47f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899710"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928137"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Szybki start: Wyszukaj obrazy z interfejs API wyszukiwania obrazów Bingą, usługą poznawczej platformy Azure 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Szybki Start: Wyszukiwanie obrazów przy użyciu interfejs API wyszukiwania obrazów Bing, usługi poznawczej platformy Azure 
 
 Ten przewodnik Szybki Start umożliwia wysyłanie żądań wyszukiwania do interfejs API wyszukiwania obrazów Bing na platformie Azure Cognitive Services. Ta aplikacja języka Java wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) wraz z dodatkową obsługą błędów i adnotacjami.
+Kod źródłowy dla tego przykładu jest dostępny [w usłudze GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) wraz z dodatkową obsługą błędów i adnotacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zestaw Java Development Kit (JDK)](https://aka.ms/azure-jdks)
+* Zestaw [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
 
 * [Biblioteka Gson](https://github.com/google/gson)
 
@@ -48,7 +48,7 @@ Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://g
     import com.google.gson.JsonParser;
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i wyszukiwanego terminu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i wyszukiwanego terminu. `host` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
 
     ```java
     static String subscriptionKey = "enter key here";

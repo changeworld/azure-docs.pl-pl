@@ -4,21 +4,20 @@ description: Dowiedz się więcej na temat przenoszenia danych ze źródeł ODat
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ea751a18f8a5e5423b3199919ccf440c41595091
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666666"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931866"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Przenoszenie danych ze źródła strumieniowego OData przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -46,7 +45,7 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane ze źród�
 
 Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -61,7 +60,7 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 ## <a name="linked-service-properties"></a>Właściwości połączonej usługi
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi OData.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type |Właściwość Type musi być ustawiona na wartość: **OData** |Tak |
 | url |Adres URL usługi OData. |Tak |
@@ -146,9 +145,9 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja typeProperties zestawu danych typu **ODataResource** (który zawiera zestaw danych OData) ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| ścieżka |Ścieżka do zasobu OData |Nie |
+| Ścieżka |Ścieżka do zasobu OData |Nie |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, tabele wejściowe i wyjściowe, oraz zasady są dostępne dla wszystkich typów działań.
@@ -157,9 +156,9 @@ Właściwości dostępne w sekcji typeProperties działania z drugiej strony ró
 
 Jeśli źródło jest typu **RelationalSource** (w tym OData), w sekcji typeProperties są dostępne następujące właściwości:
 
-| Właściwość | Opis | Przykład | Wymagany |
+| Właściwość | Opis | Przykład | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |"? $select = nazwa, opis & $top = 5" |Nie |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |"?$select=Name, Description&$top=5" |Nie |
 
 ## <a name="type-mapping-for-odata"></a>Mapowanie typu dla usługi OData
 Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-factory-data-movement-activities.md) , działanie kopiowania wykonuje konwersje typów automatycznych z typów źródłowych na typy obiektów ujścia z poniższym podejściem dwuetapowym.
@@ -169,22 +168,22 @@ Jak wspomniano w artykule [działania związane z przenoszeniem danych](data-fac
 
 Podczas przemieszczania danych z usługi OData następujące mapowania są używane z typów OData do typu .NET.
 
-| Typ danych OData | Typ .NET |
+| Typ danych protokołu OData | Typ .NET |
 | --- | --- |
-| EDM. Binary |Byte [] |
-| Edm.Boolean |Logiczna |
-| EDM. Byte |Byte [] |
-| EDM. DateTime |DateTime |
-| EDM. Decimal |Dokładności |
+| Edm.Binary |Byte[] |
+| Edm.Boolean |Bool |
+| Edm.Byte |Byte[] |
+| Edm.DateTime |Data i godzina |
+| Edm.Decimal |Decimal |
 | Edm.Double |Double |
-| EDM. Single |Pojedyncze |
-| EDM. GUID |Identyfikator GUID |
-| EDM. Int16 |Int16 |
-| Edm.Int32 |Elementem |
+| Edm.Single |Pojedyncze |
+| Edm.Guid |Identyfikator GUID |
+| Edm.Int16 |Int16 |
+| Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
-| EDM. |Int16 |
+| Edm.SByte |Int16 |
 | Edm.String |Ciąg |
-| EDM. Time |Czasu |
+| Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]

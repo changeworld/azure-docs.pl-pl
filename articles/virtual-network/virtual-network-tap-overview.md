@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177421"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931339"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
@@ -52,7 +52,7 @@ Usługa Azure Virtual Network TAP (punkt dostępu terminalu) umożliwia ciągł�
 - [® Platformę monitora RSA](https://www.rsa.com/azure)
 - [Vectra usługi cognito](https://vectra.ai/microsoftazure)
 
-Na poniższej ilustracji przedstawiono sposób działania narzędzia Virtual Network TAP. Możesz dodać konfigurację TAP w [interfejsie sieciowym](virtual-network-network-interface.md) , który jest dołączony do maszyny wirtualnej wdrożonej w sieci wirtualnej. Lokalizacją docelową jest adres IP sieci wirtualnej w tej samej sieci wirtualnej co monitorowany interfejs sieciowy lub [równorzędna Sieć wirtualna](virtual-network-peering-overview.md) . Rozwiązanie modułu zbierającego dla programu Virtual Network TAP można wdrożyć za pomocą [wewnętrznego modułu równoważenia obciążenia platformy Azure](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) w celu zapewnienia wysokiej dostępności. Aby oszacować opcje wdrażania dla poszczególnych rozwiązań, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
+Na poniższej ilustracji przedstawiono sposób działania narzędzia Virtual Network TAP. Możesz dodać konfigurację TAP w [interfejsie sieciowym](virtual-network-network-interface.md) , który jest dołączony do maszyny wirtualnej wdrożonej w sieci wirtualnej. Lokalizacją docelową jest adres IP sieci wirtualnej w tej samej sieci wirtualnej co monitorowany interfejs sieciowy lub [równorzędna Sieć wirtualna](virtual-network-peering-overview.md) . Rozwiązanie modułu zbierającego dla programu Virtual Network TAP można wdrożyć za pomocą wewnętrznego modułu równoważenia obciążenia platformy Azure w celu zapewnienia wysokiej dostępności. Aby oszacować opcje wdrażania dla poszczególnych rozwiązań, zobacz [rozwiązania partnerskie](#virtual-network-tap-partner-solutions).
 
 ![Jak działa NACIŚNIĘCIe sieci wirtualnej](./media/virtual-network-tap/architecture.png)
 
@@ -64,7 +64,7 @@ Przed utworzeniem sieci wirtualnej należy otrzymać wiadomość potwierdzając�
 
 Konta używane do zastosowania konfiguracji TAP w interfejsach sieciowych muszą być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano wymagane akcje z poniższej tabeli:
 
-| Akcja | Nazwa |
+| Działanie | Nazwa |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | Wymagane do utworzenia, zaktualizowania, odczytania i usunięcia sieci wirtualnej naciśnij zasób |
 | Microsoft.Network/networkInterfaces/read | Wymagane do odczytania zasobu interfejsu sieciowego, na którym zostanie skonfigurowany wybór |

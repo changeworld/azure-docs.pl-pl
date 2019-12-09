@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534254"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930785"
 ---
 # <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Używanie języka Java dla plików & list ACL w Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -32,17 +32,9 @@ W tym artykule pokazano, jak używać języka Java do tworzenia katalogów, plik
 
 ## <a name="set-up-your-project"></a>konfigurowanie projektu
 
-Aby rozpocząć, Otwórz plik *pliku pom. XML* w edytorze tekstów. Dodaj następujący element zależności do grupy zależności.
+Aby rozpocząć, Otwórz [Tę stronę](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) i Znajdź najnowszą wersję biblioteki języka Java. Następnie otwórz plik *pliku pom. XML* w edytorze tekstów. Dodaj element zależności, który odwołuje się do tej wersji.
 
-```xml
-<dependency>
-  <groupId>com.azure</groupId>
-  <artifactId>azure-storage-file-datalake</artifactId>
-  <version>12.0.0-preview.6</version>
-</dependency>
-```
-
-Następnie Dodaj te instrukcje Importy do pliku kodu.
+Następnie Dodaj te instrukcje Imports do pliku kodu.
 
 ```java
 import com.azure.storage.common.StorageSharedKeyCredential;
@@ -116,7 +108,7 @@ static public DataLakeDirectoryClient CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Zmiana nazwy lub przeniesienie katalogu
+## <a name="rename-or-move-a-directory"></a>Zmienianie nazwy lub przenoszenie katalogu
 
 Zmień nazwę lub Przenieś katalog, wywołując metodę **DataLakeDirectoryClient. Rename** . Przekaż ścieżkę do żądanego katalogu jako parametr. 
 

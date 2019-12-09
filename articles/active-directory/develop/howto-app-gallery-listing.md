@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 54c51a10f950fb5381ab29968a866772dcaec78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842782"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918013"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -42,6 +42,10 @@ W tym artykule pokazano, jak wyświetlić listę aplikacji w galerii aplikacji A
 - W przypadku logowania jednokrotnego za pomocą hasła upewnij się, że aplikacja obsługuje uwierzytelnianie formularzy, tak aby można było uruchomić Logowanie jednokrotne w oczekiwany sposób.
 - Potrzebujesz stałego konta do testowania z co najmniej dwoma zarejestrowanymi użytkownikami.
 
+**Jak uzyskać dostęp do usługi Azure AD dla deweloperów?**
+
+Możesz skorzystać z bezpłatnego konta testowego ze wszystkimi funkcjami usługi Azure AD w wersji Premium — 90 dni https://docs.microsoft.com/office/developer-program/office-365-developer-program wolnych
+
 ## <a name="submit-the-request-in-the-portal"></a>Prześlij żądanie w portalu
 
 Po przetestowaniu, że integracja aplikacji współpracuje z usługą Azure AD, Prześlij żądanie dostępu w [portalu sieci aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Jeśli masz konto Office 365, użyj go do zalogowania się do tego portalu. Jeśli tak nie jest, użyj konto Microsoft, takich jak Outlook lub Hotmail, aby się zalogować.
@@ -59,6 +63,26 @@ Jeśli po zalogowaniu zostanie wyświetlona następująca strona, podaj uzasadni
 Nasz zespół przegląda szczegóły i zapewnia odpowiednie uzyskanie dostępu. Po zatwierdzeniu żądania możesz zalogować się do portalu i przesłać żądanie, wybierając kafelek **Prześlij żądanie (ISV)** na stronie głównej.
 
 ![Kafelek przesyłania żądania (ISV) na stronie głównej](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>Problemy z logowaniem do portalu
+
+Jeśli ten błąd występuje podczas logowania, poniżej przedstawiono szczegółowe informacje o tym problemie, co pozwala na jego rozwiązanie.
+
+* Jeśli logowanie zostało zablokowane, jak pokazano poniżej:
+
+  ![Rozwiązywanie problemów z aplikacją w galerii](./media/howto-app-gallery-listing/blocked.png)
+
+**Co się dzieje:**
+
+Użytkownik-Gość jest federacyjny dla dzierżawy głównej, która jest również usługą Azure AD. Użytkownik-Gość jest w wysokim ryzyku. Firma Microsoft nie zezwala użytkownikom wysokiego ryzyka na dostęp do zasobów. Wszyscy użytkownicy o wysokim ryzyku (pracownicy lub Goście/dostawcy) muszą skorygować/zamknąć ryzyko uzyskania dostępu do zasobów firmy Microsoft. Dla użytkowników-Gości ten czynnik ryzyka pochodzi z dzierżawy głównej, a zasady pochodzą z dzierżawy zasobów (w tym przypadku firmy Microsoft).
+ 
+**Bezpieczne rozwiązania:**
+
+* Zarejestrowani użytkownicy-Goście zarejestrowany przez usługę MFA korygują własne ryzyko użytkownika. Może to zostać zrobione przez użytkownika-gościa wykonującego bezpieczną zmianę lub zresetowanie hasła (https://aka.ms/sspr) w swojej dzierżawie domowej (wymaga to usługi MFA i SSPR w dzierżawie głównej). Bezpieczne Zmienianie lub Resetowanie hasła musi być inicjowane w usłudze Azure AD, a nie w Premium.
+
+* Użytkownicy-Goście mają swoje administratorów korygują ryzyko. W takim przypadku administrator wykona Resetowanie hasła (tymczasowe generowanie hasła). Nie wymaga to ochrony tożsamości. Administrator użytkownika-gościa może przejść do https://aka.ms/RiskyUsers i kliknąć pozycję "Resetuj hasło".
+
+* Użytkownicy-Goście mają swoich administratorów blisko lub odrzucają ryzyko. Nie wymaga to ochrony tożsamości. Administrator może przejść do https://aka.ms/RiskyUsers i kliknąć pozycję "Odrzuć ryzyko użytkownika". Jednak administrator musi wykonać należytą staranność, aby upewnić się, że było to fałszywe pozytywne oceny ryzyka przed zamknięciem ryzyka użytkownika. W przeciwnym razie, narażamy zasoby firmy Microsoft na ryzyko, pomijając ocenę ryzyka bez badania.
 
 > [!NOTE]
 > Jeśli masz problemy z dostępem, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
@@ -79,6 +103,7 @@ Aby wyświetlić listę aplikacji w galerii aplikacji usługi Azure AD, należy 
   ![Wyświetlanie listy aplikacji SAML 2,0 lub WS-karmione w galerii](./media/howto-app-gallery-listing/saml.png)
 
   * Jeśli chcesz dodać aplikację do listy w galerii za pomocą **saml 2,0** lub **WS-karmione**, wybierz pozycję **SAML 2.0/WS-karmione** , jak pokazano.
+
   * Jeśli masz problemy z dostępem, skontaktuj się z [zespołem ds. integracji rejestracji jednokrotnej usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>Zaimplementuj Logowanie jednokrotne przy użyciu hasła logowania jednokrotnego

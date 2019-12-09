@@ -4,20 +4,19 @@ description: Dowiedz się więcej na temat przenoszenia danych z serwera lokalne
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1a75b3af46d79cc7a028fa5d36ef1653b1619e8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682341"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928189"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Przenoszenie danych z serwera SFTP przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -44,15 +43,15 @@ Można utworzyć potok z działaniem kopiowania, które przenosi dane ze źród�
 
 - Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku za pomocą działania kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . Aby uzyskać przykłady JSON kopiowania danych z serwera SFTP do usługi Azure Blob Storage, zobacz [przykład JSON: kopiowanie danych z serwera SFTP do usługi Azure Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) w tym artykule.
+- Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, interfejs API **platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. Aby uzyskać przykłady JSON kopiowania danych z serwera SFTP do usługi Azure Blob Storage, zobacz [przykład JSON: kopiowanie danych z serwera SFTP do usługi Azure Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) w tym artykule.
 
-## <a name="linked-service-properties"></a>Właściwości połączonej usługi
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej usługi FTP.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | type | Właściwość Type musi mieć wartość `Sftp`. |Tak |
-| Host | Nazwa lub adres IP serwera SFTP. |Tak |
+| host | Nazwa lub adres IP serwera SFTP. |Tak |
 | port |Port, na którym nasłuchuje serwer SFTP. Wartość domyślna to: 21 |Nie |
 | authenticationType |Określ typ uwierzytelniania. Dozwolone wartości: **Basic**, **SshPublicKey**. <br><br> Zapoznaj się z sekcją [uwierzytelnianie podstawowe](#using-basic-authentication) i [przy użyciu opcji uwierzytelniania klucza publicznego SSH](#using-ssh-public-key-authentication) , aby uzyskać więcej właściwości i próbek JSON. |Tak |
 | skipHostKeyValidation | Określ, czy pominąć sprawdzanie poprawności klucza hosta. | Nie. Wartość domyślna: false |
@@ -62,9 +61,9 @@ Poniższa tabela zawiera opis elementów JSON specyficznych dla połączonej us�
 
 ### <a name="using-basic-authentication"></a>Korzystanie z uwierzytelniania podstawowego
 
-Aby użyć uwierzytelniania podstawowego, ustaw wartość `authenticationType` jako `Basic` i określ następujące właściwości poza ogólnymi łącznikami SFTP, które zostały wprowadzone w ostatniej sekcji:
+Aby użyć uwierzytelniania podstawowego, należy ustawić `authenticationType` jako `Basic`i określić następujące właściwości oprócz ogólnych łącznika SFTP, które zostały wprowadzone w ostatniej sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | nazwa użytkownika | Użytkownik, który ma dostęp do serwera SFTP. |Tak |
 | hasło | Hasło użytkownika (username). | Tak |
@@ -114,11 +113,11 @@ Aby użyć uwierzytelniania podstawowego, ustaw wartość `authenticationType` j
 
 Aby skorzystać z uwierzytelniania za pomocą klucza publicznego SSH, ustaw `authenticationType` jako `SshPublicKey`i określ następujące właściwości oprócz ogólnych łącznika SFTP, które zostały wprowadzone w ostatniej sekcji:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | nazwa użytkownika |Użytkownik, który ma dostęp do serwera SFTP |Tak |
-| privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego, do którego Brama może uzyskać dostęp. | Określ wartość `privateKeyPath` lub `privateKeyContent`. <br><br> Stosuje się tylko w przypadku kopiowania danych z lokalnego serwera SFTP. |
-| privateKeyContent | Serializowany ciąg zawartości klucza prywatnego. Kreator kopiowania może odczytać plik klucza prywatnego i automatycznie wyodrębnić zawartość klucza prywatnego. Jeśli używasz innego narzędzia/zestawu SDK, zamiast tego użyj właściwości privateKeyPath. | Określ wartość `privateKeyPath` lub `privateKeyContent`. |
+| privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego, do którego Brama może uzyskać dostęp. | Określ `privateKeyPath` lub `privateKeyContent`. <br><br> Stosuje się tylko w przypadku kopiowania danych z lokalnego serwera SFTP. |
+| privateKeyContent | Serializowany ciąg zawartości klucza prywatnego. Kreator kopiowania może odczytać plik klucza prywatnego i automatycznie wyodrębnić zawartość klucza prywatnego. Jeśli używasz innego narzędzia/zestawu SDK, zamiast tego użyj właściwości privateKeyPath. | Określ `privateKeyPath` lub `privateKeyContent`. |
 | passPhrase | Określ wartość Przekaż frazę/hasło w celu odszyfrowania klucza prywatnego, jeśli plik klucza jest chroniony za pomocą frazy Pass. | Tak, jeśli plik klucza prywatnego jest chroniony przez frazę Pass. |
 
 > [!NOTE]
@@ -170,14 +169,14 @@ Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania ze
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych. Zawiera informacje, które są specyficzne dla typu zestawu danych. Sekcja typeProperties **dla zestawu danych typu DataSet** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | folderPath |Ścieżka podrzędna do folderu. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Przykłady można znaleźć w temacie przykładowe połączone usługi i zestawy danych.<br/><br/>Możesz połączyć tę właściwość z **partitionBy** , aby mieć ścieżki folderu na podstawie daty rozpoczęcia/zakończenia wycinka. |Tak |
 | fileName |Określ nazwę pliku w **folderPath** , jeśli chcesz, aby tabela odnosiła się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku wyjściowego zestawu danych, nazwa wygenerowanego pliku będzie w następującym formacie: <br/><br/>`Data.<Guid>.txt` (przykład: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Nie |
 | fileFilter |Określ filtr, który ma być używany do wybierania podzbioru plików w folderPath, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wiele znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter ma zastosowanie do wejściowego zestawu danych. Ta właściwość nie jest obsługiwana w systemie plików HDFS. |Nie |
 | partitionedBy |partitionedBy można użyć, aby określić dynamiczny folderPath, filename dla danych szeregów czasowych. Na przykład folderPath sparametryzowane dla każdej godziny danych. |Nie |
-| Formatowanie | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [format tekstowy](data-factory-supported-file-and-compression-formats.md#text-format), [Format JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Format Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Format Orc](data-factory-supported-file-and-compression-formats.md#orc-format)i sekcje [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Jeśli chcesz **skopiować pliki** między magazynami opartymi na plikach (kopia binarna), Pomiń sekcję format w definicjach zestawu danych wejściowych i wyjściowych. |Nie |
-| skompresowane | Określ typ i poziom kompresji danych. Obsługiwane typy to: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane poziomy to: **optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| format | Obsługiwane są następujące typy formatów: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ, czy ma być używany tryb transferu danych binarnych. Wartość true dla trybu binarnego i false ASCII. Wartość domyślna: true. Tej właściwości można użyć tylko wtedy, gdy skojarzony typ połączonej usługi jest typu: FtpServer. |Nie |
 
 > [!NOTE]

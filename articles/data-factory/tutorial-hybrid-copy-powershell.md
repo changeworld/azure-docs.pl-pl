@@ -1,24 +1,25 @@
 ---
-title: Kopiowanie danych z SQL Server do usługi BLOB Storage przy użyciu Azure Data Factory
+title: Kopiowanie danych z SQL Server do magazynu obiektów BLOB przy użyciu programu PowerShell
 description: Dowiedz się, jak skopiować dane z lokalnego magazynu danych do chmury platformy Azure przy użyciu własnego środowiska Integration Runtime w usłudze Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: craigg
+ms.author: abnarain
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.author: abnarain
-ms.openlocfilehash: d2f59e7e8e86100a2a667634c0e99e6c1d5976da
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b0e4fcf771f2441d9e1061ee57e83e26b6b1a241
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683491"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922952"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Samouczek: kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage
+
 W tym samouczku użyjesz programu Azure PowerShell, aby utworzyć potok usługi Data Factory, który kopiuje dane z lokalnej bazy danych programu SQL Server do usługi Azure Blob Storage. Utworzysz własne środowisko Integration Runtime (Self-hosted), służące do przenoszenia danych między lokalnym magazynem danych i magazynem danych w chmurze. 
 
 > [!NOTE]
@@ -32,7 +33,7 @@ Ten samouczek obejmuje wykonanie następujących kroków:
 > * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage. 
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie uruchomienia potoku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -708,7 +709,7 @@ Potok automatycznie tworzy folder wyjściowy o nazwie *fromonprem* w kontenerze 
 
 1. W witrynie Azure Portal w oknie kontenera **adftutorial** kliknij przycisk **Odśwież**, aby wyświetlić folder wyjściowy.
 1. Wybierz pozycję `fromonprem` na liście folderów. 
-1. Upewnij się jest wyświetlany plik o nazwie `dbo.emp.txt`.
+1. Upewnij się, że jest wyświetlany plik o nazwie `dbo.emp.txt`.
 
     ![Plik wyjściowy](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
@@ -722,7 +723,7 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Tworzenie połączonych zestawów programu SQL Server i usługi Azure Storage. 
 > * Tworzenie zestawów danych programu SQL Server i usługi Azure Blob.
 > * Tworzenie potoku z działaniem kopiowania do przenoszenia danych.
-> * Uruchamianie przebiegu potoku.
+> * Uruchom potok.
 > * Monitorowanie uruchomienia potoku.
 
 Lista magazynów danych obsługiwanych przez usługę Data Factory znajduje się w artykule dotyczącym [obsługiwanych magazynów danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,29 +1,25 @@
 ---
-title: Konfiguracja aplikacji klienckiej (Biblioteka uwierzytelniania firmy Microsoft)
+title: Konfiguracja aplikacji klienta (MSAL) | Azure
 titleSuffix: Microsoft identity platform
-description: Dowiedz się więcej o opcjach konfiguracji dla klienta publicznego i poufnych aplikacji klienckich w bibliotece uwierzytelniania firmy Microsoft (MSAL).
+description: Informacje o opcjach konfiguracji dla klienta publicznego i poufnych aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9a18f1ab5b86cbdb74a61a9520e89ecf920478
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f3fd70757fe5ce8761fd3444f3f0dd31e2bfcc3b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803188"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917067"
 ---
 # <a name="application-configuration-options"></a>Opcje konfiguracji aplikacji
 
@@ -116,7 +112,7 @@ Jeśli jesteś publicznym deweloperem aplikacji klienta korzystającym z usługi
   Platforma  | Identyfikator URI przekierowania  
   ---------  | --------------
   Aplikacja klasyczna (.NET PD) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
-  PLATFORMY UWP | wartość `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. Umożliwia to Logowanie jednokrotne w przeglądarce przez ustawienie wartości na wynik WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), który należy zarejestrować.
+  Platforma UWP | wartość `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. Umożliwia to Logowanie jednokrotne w przeglądarce przez ustawienie wartości na wynik WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), który należy zarejestrować.
   .NET Core | `https://localhost`. Umożliwia to użytkownikowi korzystanie z przeglądarki systemu na potrzeby uwierzytelniania interaktywnego, ponieważ program .NET Core nie ma obecnie interfejsu użytkownika dla osadzonego widoku sieci Web.
 
 - Nie musisz dodawać identyfikatora URI przekierowania, jeśli tworzysz aplikację platformy Xamarin dla systemu Android i iOS, która nie obsługuje brokera (identyfikator URI przekierowania jest automatycznie ustawiany na `msal{ClientId}://auth` dla platformy Xamarin Android i iOS

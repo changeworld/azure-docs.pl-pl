@@ -4,21 +4,20 @@ description: Skonfiguruj bramę danych do przenoszenia danych między środowisk
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 52bce71abd6ecf30b5a3661c2e6033537357db3a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682471"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931904"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy Zarządzanie danymi
 > [!NOTE]
@@ -56,7 +55,7 @@ W tym kroku użyjesz Azure Portal, aby utworzyć wystąpienie Azure Data Factory
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Kliknij pozycję **Utwórz zasób**, kliknij pozycję **Analiza i analiza**, a następnie kliknij pozycję **Data Factory**.
 
-   ![Nowy->Fabryka danych](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
+   ![Nowy-> Fabryka danych](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. Na stronie **Nowa fabryka danych** wprowadź **ADFTutorialOnPremDF** w polu Nazwa.
 
     ![Dodaj do tablicy startowej](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
@@ -148,7 +147,7 @@ W tym kroku użyjesz Azure Portal, aby utworzyć wystąpienie Azure Data Factory
    * Użyj sekcji **Testuj połączenie** do lokalnego źródła danych przy użyciu bramy.
    * Kliknij przycisk **Wyświetl dzienniki** , aby wyświetlić dziennik zarządzanie danymi bramy w oknie Podgląd zdarzeń.
    * Kliknij pozycję **Wyślij dzienniki** , aby przesłać plik zip z dziennikami z ostatnich siedmiu dni do firmy Microsoft w celu ułatwienia rozwiązywania problemów.
-10. Na karcie **Diagnostyka** w sekcji **Testuj połączenie** wybierz pozycję **SqlServer** dla typu magazynu danych, wprowadź nazwę serwera bazy danych, nazwę bazy danych, określ typ uwierzytelniania, wprowadź nazwę użytkownika i hasło, a następnie kliknij przycisk **Przetestuj** , aby sprawdzić, czy brama może nawiązać połączenie z bazą danych.
+10. Na karcie **Diagnostyka** w sekcji **Testuj połączenie** wybierz pozycję **SqlServer** dla typu magazynu danych, wprowadź nazwę serwera bazy danych, nazwę bazy danych, określ typ uwierzytelniania, wprowadź nazwę użytkownika i hasło, a następnie kliknij przycisk **Testuj** , aby sprawdzić, czy brama może nawiązać połączenie z bazą danych.
 11. Przejdź do przeglądarki sieci Web, a w **Azure Portal**kliknij przycisk **OK** na stronie **Konfigurowanie** , a następnie na stronie **Nowa brama danych** .
 12. W widoku drzewa po lewej stronie powinien być widoczny **adftutorialgateway** w obszarze **bramy danych** .  Jeśli klikniesz ją, zobaczysz skojarzony kod JSON.
 
@@ -351,7 +350,7 @@ W tym kroku utworzysz **potok** z jednym **działaniem kopiowania** , który uż
      }
     ```   
    > [!IMPORTANT]
-   > Zastąp wartość właściwości **start** datą bieżącą, a wartość **end** datą jutrzejszą.
+   > Zastąp wartość właściwości **start** bieżącym dniem, a wartość właściwości **end** następnym dniem.
    >
    >
 
@@ -377,7 +376,7 @@ W tym kroku utworzysz **potok** z jednym **działaniem kopiowania** , który uż
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>Wyświetlanie fabryki danych w widoku diagramu
 1. W **Azure Portal**kliknij kafelek **Diagram** na stronie głównej fabryki danych **ADFTutorialOnPremDF** . :
 
-    ![Link diagramu](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
+    ![Diagram Link](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 2. Powinien zostać wyświetlony diagram podobny do tego na poniższej ilustracji:
 
     ![Widok diagramu](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png)
@@ -409,7 +408,7 @@ W tym kroku opisano użycie witryny Azure Portal do monitorowania tego, co dziej
 8. obowiązkowe Kliknij pozycję **potoki**, kliknij pozycję **ADFTutorialOnPremDF**, a następnie przejdź do szczegółów w tabeli wejściowej (**zużyty**) lub wyjściowe zestawy danych (**utworzone**).
 9. Użyj narzędzi, takich jak [Microsoft Eksplorator usługi Storage](https://storageexplorer.com/) , aby sprawdzić, czy obiekt BLOB/plik jest tworzony przez każdą godzinę.
 
-   ![Eksplorator usługi Azure Storage](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Eksplorator magazynu Azure](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać szczegółowe informacje o bramie Zarządzanie danymi, zobacz artykuł dotyczący [bramy usługi Zarządzanie danymi](data-factory-data-management-gateway.md) .

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786847"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926452"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -21,7 +21,7 @@ AzCopy to narzędzie wiersza polecenia, które służy do kopiowania obiektów b
 
 > [!NOTE]
 > Jeśli szukasz zawartości ułatwiającej rozpoczęcie pracy z usługą AzCopy, zobacz dowolny z następujących artykułów:
-> - [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
+> - [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
 > - [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
 > - [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
 > - [Transferowanie danych za pomocą zasobników AzCopy i Amazon S3](storage-use-azcopy-s3.md)
@@ -53,7 +53,7 @@ Użyj poniższego polecenia, aby uruchomić test porównawczy wydajności.
 
 |    |     |
 |--------|-----------|
-| **Obowiązuje** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Składnia** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Przykład** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 To polecenie uruchamia wzorzec wydajności przez przekazywanie danych testowych do określonego miejsca docelowego. Dane testowe są generowane w pamięci, przekazane do miejsca docelowego, a następnie usuwane z lokalizacji docelowej po zakończeniu testu. Można określić, ile plików ma być generowanych i jakie rozmiary mają być używane przez opcjonalne parametry polecenia.
@@ -99,7 +99,7 @@ AzCopy tworzy dziennik i planowanie plików dla każdego zadania. Możesz użyć
 
 Dzienniki będą zawierać stan niepowodzeń (`UPLOADFAILED`, `COPYFAILED`i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
 
-Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE$\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i Linux, ale można je zmienić w razie potrzeby.
+Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE%\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i Linux, ale można je zmienić w razie potrzeby.
 
 > [!IMPORTANT]
 > Podczas przesyłania żądania do pomoc techniczna firmy Microsoft (lub rozwiązywania problemu związanego z jakąkolwiek osobą trzecią) należy udostępnić redagowane wersję polecenia, które chcesz wykonać. Gwarantuje to, że SYGNATURa dostępu współdzielonego nie zostanie przypadkowo udostępniona z każdy. Wersję redagowane można znaleźć na początku pliku dziennika.
@@ -151,7 +151,7 @@ Po wznowieniu zadania AzCopy przegląda plik planu zadań. Plik planu zawiera li
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Zmień lokalizację planu i plików dziennika
 
-Domyślnie pliki planu i dziennika znajdują się w katalogu `%USERPROFILE$\.azcopy` w systemie Windows lub w katalogu `$HOME$\.azcopy` na komputerach Mac i Linux. Można zmienić tę lokalizację.
+Domyślnie pliki planu i dziennika znajdują się w katalogu `%USERPROFILE%\.azcopy` w systemie Windows lub w katalogu `$HOME$\.azcopy` na komputerach Mac i Linux. Można zmienić tę lokalizację.
 
 ### <a name="change-the-location-of-plan-files"></a>Zmień lokalizację plików planu
 

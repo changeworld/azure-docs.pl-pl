@@ -1,22 +1,22 @@
 ---
-title: 'Rozgałęzianie w potoku Azure Data Factory '
+title: Rozgałęzianie w potoku Azure Data Factory
 description: W tym artykule przedstawiono sposób sterowania przepływem danych w usłudze Azure Data Factory przez rozgałęzianie działań i tworzenie łańcuchów działań.
 services: data-factory
-documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683661"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926618"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 
@@ -24,7 +24,7 @@ W tym samouczku utworzysz potok Data Factory, który zawiera niektóre funkcje p
 
 Ta ilustracja zawiera przegląd scenariusza:
 
-![Omówienie](media/tutorial-control-flow/overview.png)
+![Przegląd](media/tutorial-control-flow/overview.png)
 
 W tym samouczku przedstawiono sposób wykonywania następujących zadań:
 
@@ -46,7 +46,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * Konto usługi Azure Storage. Magazyn obiektów BLOB jest używany jako magazyn danych źródłowych. Jeśli nie masz konta usługi Azure Storage, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 * Eksplorator usługi Azure Storage. Aby zainstalować to narzędzie, zobacz [Eksplorator usługi Azure Storage](https://storageexplorer.com/).
-* Azure SQL Database. Baza danych jest używana jako magazyn danych ujścia. Jeśli nie masz Azure SQL Database, zobacz [Tworzenie bazy danych Azure SQL Database](../sql-database/sql-database-get-started-portal.md).
+* usługą Azure SQL Database. Baza danych jest używana jako magazyn danych ujścia. Jeśli nie masz Azure SQL Database, zobacz [Tworzenie bazy danych Azure SQL Database](../sql-database/sql-database-get-started-portal.md).
 * Program Visual Studio. W tym artykule jest wykorzystywany program Visual Studio 2019.
 * Zestaw Azure .NET SDK. Pobierz i zainstaluj [zestaw Azure .NET SDK](https://azure.microsoft.com/downloads/).
 
@@ -63,7 +63,7 @@ Utwórz aplikację zgodnie z opisem w temacie [Tworzenie aplikacji Azure Active 
    Tamika|Walsh
    ```
 
-1. Otwórz Eksplorator usługi Azure Storage. Rozwiń konto magazynu. Kliknij prawym przyciskiem myszy **kontenery obiektów BLOB** i wybierz pozycję **Utwórz kontener obiektów BLOB**.
+1. Otwórz Eksplorator usługi Azure Storage. Rozwiń konto magazynu. Kliknij prawym przyciskiem myszy pozycję **Blob Containers** (Kontenery obiektów blob) i wybierz polecenie **Create Blob Container** (Utwórz kontener obiektów blob).
 1. Nazwij nowy kontener *adfv2branch* i wybierz pozycję **Przekaż** , aby dodać plik *Input. txt* do kontenera.
 
 ## Utwórz projekt programu Visual Studio<a name="create-visual-studio-project"></a>
@@ -77,7 +77,7 @@ Tworzenie aplikacji C# konsolowej .NET:
 
 ### <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
-1. Wybierz kolejno pozycje **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów**.
+1. Wybierz pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
 1. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety. Aby uzyskać szczegółowe informacje, zapoznaj się z [pakietem NuGet Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell

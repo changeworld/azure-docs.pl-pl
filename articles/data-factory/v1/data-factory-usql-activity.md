@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 7608719c4e0c2b9e23f1982efda9789d25f50224
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665961"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927900"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL na Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -46,7 +45,7 @@ Tworzysz **Azure Data Lake Analytics** połączonej usługi, aby połączyć us�
 
 Poniższa tabela zawiera opis właściwości ogólnych używanych w definicji JSON. Możesz wybrać między jednostką usługi a uwierzytelnianiem poświadczeń użytkownika.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | **type** |Właściwość Type powinna mieć wartość: **AzureDataLakeAnalytics**. |Tak |
 | **accountName** |Nazwa konta Azure Data Lake Analytics. |Tak |
@@ -55,18 +54,18 @@ Poniższa tabela zawiera opis właściwości ogólnych używanych w definicji JS
 | **resourceGroupName** |Nazwa grupy zasobów platformy Azure |Nie (jeśli nie zostanie określony, zostanie użyta Grupa zasobów fabryki danych). |
 
 ### <a name="service-principal-authentication-recommended"></a>Uwierzytelnianie jednostki usługi (zalecane)
-Aby użyć uwierzytelniania nazwy głównej usługi, zarejestruj jednostkę aplikacji w Azure Active Directory (Azure AD) i Udziel jej dostępu do Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [uwierzytelnianie między usługami](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Należy zwrócić uwagę na następujące wartości, których można użyć do zdefiniowania połączonej usługi:
+Aby użyć uwierzytelniania nazwy głównej usługi, zarejestruj jednostkę aplikacji w Azure Active Directory (Azure AD) i Udziel jej dostępu do Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [Service-to-service authentication](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
 * Identyfikator aplikacji
 * Klucz aplikacji 
 * Identyfikator dzierżawy
 
 Użyj uwierzytelniania nazwy głównej usługi, określając następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Określ identyfikator klienta aplikacji. | Tak |
 | **servicePrincipalKey** | Określ klucz aplikacji. | Tak |
-| **dzierżaw** | Określ informacje o dzierżawie (nazwę domeny lub identyfikator dzierżawy), w których znajduje się Twoja aplikacja. Możesz ją pobrać, aktywując wskaźnik myszy w prawym górnym rogu Azure Portal. | Tak |
+| **tenant** | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Tak |
 
 **Przykład: Uwierzytelnianie jednostki usługi**
 ```json
@@ -90,7 +89,7 @@ Użyj uwierzytelniania nazwy głównej usługi, określając następujące wła�
 ### <a name="user-credential-authentication"></a>Uwierzytelnianie poświadczeń użytkownika
 Alternatywnie można użyć uwierzytelniania poświadczeń użytkownika dla Data Lake Analytics, określając następujące właściwości:
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | **zgody** | Kliknij przycisk **Autoryzuj** w edytorze Data Factory i wprowadź poświadczenia, które przypisuje automatycznie wygenerowany adres URL autoryzacji do tej właściwości. | Tak |
 | **sessionId** | Identyfikator sesji OAuth z sesji autoryzacji OAuth. Każdy identyfikator sesji jest unikatowy i może być używany tylko raz. To ustawienie jest generowane automatycznie, gdy jest używany Edytor Data Factory. | Tak |
@@ -114,7 +113,7 @@ Alternatywnie można użyć uwierzytelniania poświadczeń użytkownika dla Data
 ```
 
 #### <a name="token-expiration"></a>Wygaśnięcie tokenu
-Kod autoryzacji wygenerowany przy użyciu przycisku **Autoryzuj** wygaśnie po pewnym czasie. Zapoznaj się z poniższą tabelą czasów wygaśnięcia dla różnych typów kont użytkowników. Po **wygaśnięciu tokenu**uwierzytelniania może zostać wyświetlony następujący komunikat o błędzie: błąd operacji poświadczeń: INVALID_GRANT-AADSTS70002: Wystąpił błąd podczas walidacji poświadczeń. AADSTS70008: podany przydział dostępu wygasł lub został odwołany. Identyfikator śledzenia: identyfikator korelacji d18629e8-af88-43c5-88e3-d8419eb1fca1: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 sygnatura czasowa: 2015-12-15 21:09:31Z
+Kod autoryzacji wygenerowany przy użyciu przycisku **Autoryzuj** wygaśnie po pewnym czasie. Zapoznaj się z poniższą tabelą czasów wygaśnięcia dla różnych typów kont użytkowników. Po **wygaśnięciu tokenu**uwierzytelniania może zostać wyświetlony następujący komunikat o błędzie: błąd operacji poświadczeń: INVALID_GRANT-AADSTS70002: błąd podczas walidacji poświadczeń. AADSTS70008: podany przydział dostępu wygasł lub został odwołany. Identyfikator śledzenia: identyfikator korelacji d18629e8-af88-43c5-88e3-d8419eb1fca1: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 sygnatura czasowa: 2015-12-15 21:09:31Z
 
 | Typ użytkownika | Wygasa po |
 |:--- |:--- |
@@ -206,13 +205,13 @@ Poniższy fragment kodu JSON definiuje potok z działaniem Data Lake Analytics U
 
 W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne dla tego działania. 
 
-| Właściwość            | Opis                              | Wymagany                                 |
+| Właściwość            | Opis                              | Wymagane                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | Właściwość Type musi być ustawiona na wartość **DataLakeAnalyticsU-SQL**. | Tak                                      |
 | linkedServiceName   | Odwołanie do Azure Data Lake Analytics zarejestrowanego jako połączona usługa w Data Factory | Tak                                      |
 | scriptPath          | Ścieżka do folderu, który zawiera skrypt U-SQL. Nazwa pliku jest rozróżniana wielkość liter. | Nie (Jeśli używasz skryptu)                   |
-| Elementu scriptlinkedservice | Połączona usługa, która łączy magazyn zawierający skrypt z fabryką danych | Nie (Jeśli używasz skryptu)                   |
-| napisy              | Określ skrypt wbudowany zamiast określania scriptPath i elementu scriptlinkedservice. Na przykład: `"script": "CREATE DATABASE test"`. | Nie (Jeśli używasz scriptPath i elementu scriptlinkedservice) |
+| scriptLinkedService | Połączona usługa, która łączy magazyn zawierający skrypt z fabryką danych | Nie (Jeśli używasz skryptu)                   |
+| script              | Określ skrypt wbudowany zamiast określania scriptPath i elementu scriptlinkedservice. Na przykład: `"script": "CREATE DATABASE test"`. | Nie (Jeśli używasz scriptPath i elementu scriptlinkedservice) |
 | degreeOfParallelism | Maksymalna liczba węzłów jednocześnie używanych do uruchomienia zadania. | Nie                                       |
 | priority            | Określa, które zadania z wszystkich znajdujących się w kolejce powinny zostać wybrane do uruchomienia jako pierwsze. Im niższa wartość, tym wyższy priorytet. | Nie                                       |
 | parameters          | Parametry skryptu U-SQL          | Nie                                       |

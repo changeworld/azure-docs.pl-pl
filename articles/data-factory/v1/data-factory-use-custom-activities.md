@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703323"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927952"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -44,7 +43,7 @@ Poniższy przewodnik zawiera instrukcje krok po kroku dotyczące tworzenia niest
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Przewodnik: tworzenie działania niestandardowego
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Program Visual Studio 2012/2013/2015/2017
+* Visual Studio 2012/2013/2015/2017
 * Pobierz i zainstaluj zestaw [SDK .NET Azure](https://azure.microsoft.com/downloads/).
 
 ### <a name="azure-batch-prerequisites"></a>Wymagania wstępne Azure Batch
@@ -71,7 +70,7 @@ Aby zapoznać się z samouczkiem, Utwórz konto Azure Batch z pulą maszyn wirtu
    5. Kliknij przycisk **OK**, aby utworzyć pulę.
    6. Zanotuj **Identyfikator** puli.
 
-### <a name="high-level-steps"></a>Ogólne kroki
+### <a name="high-level-steps"></a>Kroki ogólne
 Poniżej przedstawiono dwa kroki wysokiego poziomu, które należy wykonać w ramach tego przewodnika:
 
 1. Utwórz niestandardowe działanie, które zawiera prostą logikę przetwarzania i przekształcania danych.
@@ -378,7 +377,7 @@ Metoda zwraca słownik, który może służyć do łańcucha działań niestanda
     > [!IMPORTANT]
     > Wszystkie pliki w archiwum ZIP działania niestandardowego muszą znajdować się na **najwyższym poziomie**, bez podfolderów.
 
-    ![Binarne pliki wyjściowe](./media/data-factory-use-custom-activities/Binaries.png)
+    ![Wyjściowe pliki binarne](./media/data-factory-use-custom-activities/Binaries.png)
 14. Utwórz kontener obiektów BLOB o nazwie **customactivitycontainer** , jeśli jeszcze nie istnieje.
 15. Przekaż plik. zip jako obiekt BLOB do customactivitycontainer w **ogólnym** magazynie obiektów blob platformy Azure (nie gorącą/chłodny magazyn obiektów BLOB), który jest określany przez AzureStorageLinkedService.
 
@@ -551,10 +550,10 @@ W tym kroku utworzysz zestawy danych reprezentujące dane wejściowe i wyjściow
    | Cinek | Godzina rozpoczęcia | Plik wyjściowy |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016 – 11-16 -00. txt |
-   | 2 |2016-11-16T01:00:00 |2016 – 11-16 -01. txt |
-   | 3 |2016-11-16T02:00:00 |2016 – 11-16 -02. txt |
+   | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
+   | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016 – 11-16 -03. txt |
-   | 5 |2016-11-16T04:00:00 |2016 – 11-16 -04. txt |
+   | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
     Należy pamiętać, że wszystkie pliki w folderze wejściowym są częścią wycinka o powyższym czasie początkowym. Po przetworzeniu tego wycinka działanie niestandardowe skanuje każdy plik i tworzy wiersz w pliku wyjściowym z liczbą wystąpień wyszukiwanego terminu ("Microsoft"). Jeśli w folderze wejściowym znajdują się trzy pliki, w pliku wyjściowym znajdują się trzy wiersze: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt itd.
 3. Aby wdrożyć **OutputDataset**, kliknij przycisk **Wdróż** na pasku poleceń.

@@ -1,23 +1,22 @@
 ---
-title: Używanie Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure
+title: Migrowanie danych z usługi Amazon S3 do usługi Azure Storage
 description: Użyj Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure.
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 4d4e0453105dacfbf35624a2a9acb9d5994f4dea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675739"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927478"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Używanie Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure 
 
@@ -93,7 +92,7 @@ Jeśli którekolwiek z zadań kopiowania zakończy się niepowodzeniem z powodu 
 
 ### <a name="delta-data-migration"></a>Migracja danych różnicowych 
 
-Najbardziej wydajnym sposobem identyfikowania nowych lub zmienionych plików z AWS S3 jest użycie konwencji nazewnictwa z podziałem czasu, gdy dane w AWS S3 zostały podzielone na partycje czasowo z informacjami o wycinku czasu w nazwie pliku lub folderu (na przykład/yyyy/mm/dd/File.csv), a następnie Potok może łatwo identyfikować, które pliki/foldery mają być kopiowane przyrostowo. 
+Najbardziej wydajnym sposobem identyfikowania nowych lub zmienionych plików z AWS S3 jest użycie konwencji nazewnictwa z podziałem czasowym — Jeśli dane w AWS S3 zostały podzielone na partycje czasowo w nazwie pliku lub folderu (na przykład/yyyy/mm/dd/File.csv), potok może łatwo identyfikować, które pliki/foldery mają być kopiowane przyrostowo. 
 
 Alternatywnie, jeśli dane w AWS S3 nie są podzielone na partycje, ADF może identyfikować nowe lub zmienione pliki przez ich LastModifiedDate.   W ten sposób jest to, że zestaw ADF przeskanuje wszystkie pliki z AWS S3 i skopiuje nowy i zaktualizowany plik, którego Ostatnia modyfikowana sygnatura czasowa jest większa niż określona wartość.  Należy pamiętać, że jeśli w usłudze S3 istnieje duża liczba plików, początkowe skanowanie plików może zająć dużo czasu, niezależnie od liczby plików pasujących do warunku filtru.  W takim przypadku sugerowane jest Partycjonowanie danych przy użyciu tego samego ustawienia "prefix" dla początkowej migracji migawek, dzięki czemu skanowanie plików może być wykonywane równolegle.  
 

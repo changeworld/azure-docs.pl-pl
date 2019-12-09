@@ -1,29 +1,25 @@
 ---
-title: Azure AD B2C (Biblioteka uwierzytelniania firmy Microsoft dla systemu Android)
+title: Azure AD B2C (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących używania Azure AD B2C z biblioteką uwierzytelniania firmy Microsoft dla systemu Android (MSAL. Systemów
 services: active-directory
-documentationcenter: dev-center-name
 author: brianmel
-manager: omkrishn
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5061f1ab341e5872dfa82c9f5c5b133ae40bdf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 98a31ea2daffba19242e73362af5a44e3a392342
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803243"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917118"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Korzystanie z MSAL dla systemu Android z B2C
 
@@ -158,7 +154,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>Obsługa zasad zmiany hasła
 
-Przepływ użytkownika rejestracji lub logowania na koncie lokalnym pokazuje "**zapomniane hasło"?** powiązań. Kliknięcie tego linku nie powoduje automatycznego wyzwolenia przepływu użytkownika resetowania hasła.
+Przepływ użytkownika rejestracji lub logowania na koncie lokalnym pokazuje "**zapomniane hasło"?** link. Kliknięcie tego linku nie powoduje automatycznego wyzwolenia przepływu użytkownika resetowania hasła.
 
 Zamiast tego kod błędu `AADB2C90118` jest zwracany do aplikacji. Aplikacja powinna obsłużyć ten kod błędu przez uruchomienie określonego przepływu użytkownika, który resetuje hasło.
 

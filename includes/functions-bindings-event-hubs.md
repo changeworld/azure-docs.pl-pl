@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0f94c89a52de138b261796cbef25c0acb57622c4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 27333f272ca5000fd3b09b305712875c065f6bc7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73800012"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924435"
 ---
 ## <a name="trigger"></a>Wyzwalacz
 
@@ -41,13 +41,13 @@ Po zakończeniu wykonywania wszystkich funkcji (z błędami lub bez nich) punkty
 Zobacz przykład specyficzny dla języka:
 
 * [C#](#trigger---c-example)
-* [C#skrypt (. CSX)](#trigger---c-script-example)
+* [Skryptu C# (csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Wyzwalacz — C# przykład
+### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
 
 Poniższy przykład pokazuje [ C# funkcję](../articles/azure-functions/functions-dotnet-class-library.md) , która rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
 
@@ -99,13 +99,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Wyzwalacz — C# przykład skryptu
+### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
 
 Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [ C# funkcji skryptu](../articles/azure-functions/functions-reference-csharp.md) , która używa powiązania. Funkcja rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
 
 W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* .
 
-#### <a name="version-2x"></a>Wersja 2. x
+#### <a name="version-2x-and-higher"></a>Wersja 2. x lub nowsza
 
 ```json
 {
@@ -129,7 +129,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-Oto kod C# skryptu:
+Poniżej przedstawiono kod skryptu języka C#:
 
 ```cs
 using System;
@@ -180,13 +180,13 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-### <a name="trigger---f-example"></a>Wyzwalacz — F# przykład
+### <a name="trigger---f-example"></a>Wyzwalacz - F# przykład
 
 Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [ F# funkcję](../articles/azure-functions/functions-reference-fsharp.md) , która używa powiązania. Funkcja rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
 
 W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* . 
 
-#### <a name="version-2x"></a>Wersja 2. x
+#### <a name="version-2x-and-higher"></a>Wersja 2. x lub nowsza
 
 ```json
 {
@@ -210,20 +210,20 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-Oto F# kod:
+Oto F# kodu:
 
 ```fsharp
 let Run(myEventHubMessage: string, log: TraceWriter) =
     log.Log(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
 ```
 
-### <a name="trigger---javascript-example"></a>Przykład wyzwalacza JavaScript
+### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* oraz [funkcja języka JavaScript](../articles/azure-functions/functions-reference-node.md) , która używa powiązania. Funkcja odczytuje [metadane zdarzeń](#trigger---event-metadata) i rejestruje komunikat.
 
 W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* .
 
-#### <a name="version-2x"></a>Wersja 2. x
+#### <a name="version-2x-and-higher"></a>Wersja 2. x lub nowsza
 
 ```json
 {
@@ -247,7 +247,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -262,7 +262,7 @@ module.exports = function (context, myEventHubMessage) {
 
 Aby odbierać zdarzenia w partii, należy ustawić `cardinality` na `many` w pliku *Function. JSON* , jak pokazano w poniższych przykładach.
 
-#### <a name="version-2x"></a>Wersja 2. x
+#### <a name="version-2x-and-higher"></a>Wersja 2. x lub nowsza
 
 ```json
 {
@@ -288,7 +288,7 @@ Aby odbierać zdarzenia w partii, należy ustawić `cardinality` na `many` w pli
 }
 ```
 
-Oto kod JavaScript:
+Poniżej przedstawiono kod JavaScript:
 
 ```javascript
 module.exports = function (context, eventHubMessages) {
@@ -335,7 +335,7 @@ def main(event: func.EventHubEvent):
     logging.info('  Offset =', event.offset)
 ```
 
-### <a name="trigger---java-example"></a>Wyzwalacz — przykład Java
+### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
 Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [funkcję języka Java](../articles/azure-functions/functions-reference-java.md) , która używa powiązania. Funkcja rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
 
@@ -377,21 +377,21 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Aby zapoznać się z kompletnym przykładem, zobacz [wyzwalacz- C# example](#trigger---c-example).
+Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger---c-example).
 
-## <a name="trigger---configuration"></a>Wyzwalacz — konfiguracja
+## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `EventHubTrigger` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `EventHubTrigger` atrybutu.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiony na `eventHubTrigger`. Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal.|
-|**direction** | Nie dotyczy | Musi być ustawiony na `in`. Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w Azure Portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. |
+|**type** | nd. | Musi być równa `eventHubTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
+|**direction** | nd. | Musi być równa `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | nd. | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. |
 |**path** |**EventHubName** | Tylko funkcje 1. x. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
-|**eventHubName** |**EventHubName** | Tylko funkcje 2. x. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
+|**eventHubName** |**EventHubName** | Funkcje 2. x i nowsze. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**odbiorca** |**Odbiorca** | Opcjonalna właściwość, która ustawia [grupę odbiorców](../articles/event-hubs/event-hubs-features.md#event-consumers) służącą do subskrybowania zdarzeń w centrum. W przypadku pominięcia zostanie użyta Grupa konsumentów `$Default`. |
-|**kardynalności** | Nie dotyczy | Dla języka JavaScript. Ustaw wartość `many`, aby umożliwić przetwarzanie wsadowe.  W przypadku pominięcia lub ustawienia wartości `one`pojedynczy komunikat przeszedł do funkcji. |
+|**kardynalności** | nd. | Dla języka JavaScript. Ustaw wartość `many`, aby umożliwić przetwarzanie wsadowe.  W przypadku pominięcia lub ustawienia wartości `one`pojedynczy komunikat przeszedł do funkcji. |
 |**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia z przestrzenią nazw centrum zdarzeń. Skopiuj te parametry połączenia, klikając przycisk **Informacje o połączeniu** dla [obszaru nazw](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), a nie samego centrum zdarzeń. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu w celu aktywowania wyzwalacza.|
 |**path**|**EventHubName**|Nazwa centrum zdarzeń. Można odwoływać się za pomocą ustawień aplikacji `%eventHubName%`|
 
@@ -399,21 +399,21 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 
 ## <a name="trigger---event-metadata"></a>Wyzwalacz — metadane zdarzenia
 
-Wyzwalacz Event Hubs zawiera kilka [właściwości metadanych](../articles/azure-functions/./functions-bindings-expressions-patterns.md). Te właściwości mogą służyć jako część wyrażeń powiązań w innych powiązaniach lub jako parametry w kodzie. Są to właściwości klasy [EVENTDATA](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) .
+Wyzwalacz Event Hubs zawiera kilka [właściwości metadanych](../articles/azure-functions/./functions-bindings-expressions-patterns.md). Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Są to właściwości klasy [EVENTDATA](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) .
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
-|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|Wystąpienie `PartitionContext`.|
-|`EnqueuedTimeUtc`|`DateTime`|Czas w kolejce w formacie UTC.|
+|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|Wystąpienie elementu `PartitionContext`.|
+|`EnqueuedTimeUtc`|`DateTime`|Godzina umieszczonych w kolejce w formacie UTC.|
 |`Offset`|`string`|Przesunięcie danych względem strumienia partycji centrum zdarzeń. Przesunięcie jest znacznikiem lub identyfikatorem zdarzenia w strumieniu Event Hubs. Identyfikator jest unikatowy w obrębie partycji Event Hubs strumienia.|
 |`PartitionKey`|`string`|Partycja, do której mają być wysyłane dane zdarzeń.|
 |`Properties`|`IDictionary<String,Object>`|Właściwości użytkownika danych zdarzenia.|
 |`SequenceNumber`|`Int64`|Numer sekwencji logicznej zdarzenia.|
 |`SystemProperties`|`IDictionary<String,Object>`|Właściwości systemu, w tym dane zdarzenia.|
 
-Zobacz [przykłady kodu](#trigger---example) , które używają tych właściwości wcześniej w tym artykule.
+Zobacz [przykłady kodu](#trigger---example) używające tych właściwości we wcześniejszej części tego artykułu.
 
-## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości pliku host. JSON
+## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości host.json
 
 Plik [host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) zawiera ustawienia sterujące zachowaniem wyzwalacza Event Hubs.
 
@@ -421,22 +421,22 @@ Plik [host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) z
 
 ## <a name="output"></a>Dane wyjściowe
 
-Użyj powiązania danych wyjściowych Event Hubs do zapisywania zdarzeń w strumieniu zdarzeń. Użytkownik musi mieć uprawnienia do wysyłania do centrum zdarzeń w celu zapisywania do niego zdarzeń.
+Użyj powiązania danych wyjściowych Event Hubs do zapisywania zdarzeń w strumieniu zdarzeń. Musisz mieć uprawnienie do wysłania do centrum zdarzeń, aby zapisywać w nim zdarzenia.
 
-Upewnij się, że istnieją wymagane odwołania do pakietów: Functions 1. x lub Functions 2. x
+Przed podjęciem próby wdrożenia powiązania dane wyjściowe upewnij się, że istnieją wymagane odwołania do pakietów.
 
 ## <a name="output---example"></a>Dane wyjściowe — przykład
 
 Zobacz przykład specyficzny dla języka:
 
 * [C#](#output---c-example)
-* [C#skrypt (. CSX)](#output---c-script-example)
+* [Skryptu C# (csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Dane wyjściowe C# — przykład
+### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
 
 W poniższym przykładzie pokazano [ C# funkcję](../articles/azure-functions/functions-dotnet-class-library.md) , która zapisuje komunikat w centrum zdarzeń przy użyciu wartości zwracanej przez metodę jako dane wyjściowe:
 
@@ -470,11 +470,11 @@ public static async Task Run(
 }
 ```
 
-### <a name="output---c-script-example"></a>Wyjście — C# przykład skryptu
+### <a name="output---c-script-example"></a>Dane wyjściowe — przykładowy skrypt w języku C#
 
 Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [ C# funkcji skryptu](../articles/azure-functions/functions-reference-csharp.md) , która używa powiązania. Funkcja zapisuje komunikat w centrum zdarzeń.
 
-W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* . Pierwszy przykład dotyczy funkcji 2. x, a drugi jest dla funkcji 1. x. 
+W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* . Pierwszy przykład dotyczy funkcji 2. x i wyższych, a drugi jest dla funkcji 1. x. 
 
 ```json
 {
@@ -510,7 +510,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, ILog
 }
 ```
 
-Kod C# skryptu, który tworzy wiele komunikatów:
+W tym C# script kod, który tworzy wiele wiadomości:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, ILogger log)
@@ -522,11 +522,11 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-### <a name="output---f-example"></a>Dane wyjściowe F# — przykład
+### <a name="output---f-example"></a>Dane wyjściowe — F# przykład
 
 Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [ F# funkcję](../articles/azure-functions/functions-reference-fsharp.md) , która używa powiązania. Funkcja zapisuje komunikat w centrum zdarzeń.
 
-W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* . Pierwszy przykład dotyczy funkcji 2. x, a drugi jest dla funkcji 1. x. 
+W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* . Pierwszy przykład dotyczy funkcji 2. x i wyższych, a drugi jest dla funkcji 1. x. 
 
 ```json
 {
@@ -547,7 +547,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-Oto F# kod:
+Oto F# kodu:
 
 ```fsharp
 let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) =
@@ -560,7 +560,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) 
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* oraz [funkcja języka JavaScript](../articles/azure-functions/functions-reference-node.md) , która używa powiązania. Funkcja zapisuje komunikat w centrum zdarzeń.
 
-W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* . Pierwszy przykład dotyczy funkcji 2. x, a drugi jest dla funkcji 1. x. 
+W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* . Pierwszy przykład dotyczy funkcji 2. x i wyższych, a drugi jest dla funkcji 1. x. 
 
 ```json
 {
@@ -638,7 +638,7 @@ def main(timer: func.TimerRequest) -> str:
     return 'Message created at: {}'.format(timestamp)
 ```
 
-### <a name="output---java-example"></a>Dane wyjściowe — przykład Java
+### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
 
 Poniższy przykład pokazuje funkcję języka Java, która zapisuje komunikat contianing bieżący czas do centrum zdarzeń.
 
@@ -668,19 +668,19 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Aby uzyskać pełny przykład, zobacz [Output- C# example](#output---c-example).
+Aby uzyskać kompletny przykład, zobacz [dane wyjściowe — przykład w języku C#](#output---c-example).
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `EventHub` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `EventHub` atrybutu.
 
-|Function. JSON — Właściwość | Właściwość atrybutu |Opis|
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Wartość musi być równa "eventHub". |
-|**direction** | Nie dotyczy | Musi być ustawiona na wartość "out". Ten parametr jest ustawiany automatycznie podczas tworzenia powiązania w Azure Portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej używana w kodzie funkcji, która reprezentuje zdarzenie. |
+|**type** | nd. | Wartość musi być równa "eventHub". |
+|**direction** | nd. | Musi być równa "out". Ten parametr jest ustawiany automatycznie podczas tworzenia powiązania w Azure Portal. |
+|**Nazwa** | nd. | Nazwa zmiennej używana w kodzie funkcji, która reprezentuje zdarzenie. |
 |**path** |**EventHubName** | Tylko funkcje 1. x. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
-|**eventHubName** |**EventHubName** | Tylko funkcje 2. x. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
+|**eventHubName** |**EventHubName** | Funkcje 2. x i nowsze. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
 |**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia z przestrzenią nazw centrum zdarzeń. Skopiuj te parametry połączenia, klikając przycisk **Informacje o połączeniu** dla *obszaru nazw*, a nie samego centrum zdarzeń. Te parametry połączenia muszą mieć uprawnienia do wysyłania, aby wysłać wiadomość do strumienia zdarzeń.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -691,20 +691,20 @@ W C# skryptach i C# Wysyłaj komunikaty przy użyciu parametru metody, takiego j
 
 W języku JavaScript uzyskaj dostęp do zdarzenia wyjściowego przy użyciu `context.bindings.<name>`. `<name>` jest wartością określoną we właściwości `name` *funkcji Function. JSON*.
 
-## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotu
+## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
-| Łączenie | Dokumentacja |
+| Powiązanie | Informacje ogólne |
 |---|---|
 | Centrum zdarzeń | [Przewodnik obsługi](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>Ustawienia pliku host. JSON
+## <a name="hostjson-settings"></a>Ustawienia host.JSON
 
-W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2. x. Poniższy przykładowy plik host. JSON zawiera tylko ustawienia wersji 2. x dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersji 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions wersji 2. x](../articles/azure-functions/functions-host-json.md).
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2. x i nowszych. Poniższy przykładowy plik host. JSON zawiera tylko ustawienia wersji 2. x dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersjach 2. x i więcej, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions](../articles/azure-functions/functions-host-json.md).
 
 > [!NOTE]
-> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](../articles/azure-functions/functions-host-json-v1.md).
+> Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](../articles/azure-functions/functions-host-json-v1.md).
 
 ```json
 {
@@ -724,5 +724,5 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
 |maxBatchSize|64|Maksymalna liczba zdarzeń odebranych na pętlę odbierania.|
-|prefetchCount|Nie dotyczy|Domyślny PrefetchCount, który będzie używany przez bazowe klasy eventprocessorhost.|
+|prefetchCount|nd.|Domyślny PrefetchCount, który będzie używany przez bazowe klasy eventprocessorhost.|
 |batchCheckpointFrequency|1|Liczba partii zdarzeń do przetworzenia przed utworzeniem punktu kontrolnego kursora centrum EventHub.|
