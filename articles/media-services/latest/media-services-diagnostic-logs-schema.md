@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2f5fcf4d9106bf37bcc81388e48afe689f4ef4d6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261095"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896056"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schematy dzienników diagnostycznych
 
@@ -34,14 +34,14 @@ Aby uzyskać szczegółowy opis schematu dzienników diagnostycznych najwyższeg
 
 ## <a name="key-delivery-log-schema"></a>Schemat dziennika dostarczania kluczy
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Właściwości
 
 Te właściwości są specyficzne dla schematu dziennika dostarczania kluczy.
 
-|Name|Opis|
+|Nazwa|Opis|
 |---|---|
 |keyId|Identyfikator żądanego klucza.|
-|keyType|Może być jedną z następujących wartości: "Clear" (bez szyfrowania), "FairPlay", "PlayReady" lub "Widevine".|
+|KeyType|Może to być jedna z następujących wartości: "Clear" (bez szyfrowania), "FairPlay", "PlayReady" lub "Widevine".|
 |policyName|Nazwa Azure Resource Manager zasad.|
 |Obiektu TokenType|Typ tokenu.|
 |statusMessage|Komunikat o stanie.|

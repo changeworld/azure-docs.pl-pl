@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: b91e235824085977f1570e664b43d028a905407b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0023710ff3cfe180b628d1da14b8a3ea9c136026
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869803"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896234"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Dostęp do Azure Cosmos DB z sieci wirtualnych (VNet)
 
@@ -42,9 +42,9 @@ Po włączeniu punktu końcowego usługi dla Azure Cosmos DB w podsieci źródł
 
 ### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Czy istnieją dodatkowe uprawnienia RBAC dla kont usługi Azure Cosmos z punktami końcowymi usługi sieci wirtualnej?
 
-Po dodaniu punktów końcowych usługi sieci wirtualnej do konta usługi Azure Cosmos, aby wprowadzić zmiany w ustawieniach konta, musisz mieć dostęp do `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` akcji dla wszystkich sieci wirtualnych skonfigurowanych na koncie Azure Cosmos. Ta akcja jest wymagana, ponieważ proces autoryzacji sprawdza poprawność akcji odpowiadających zasobom bazy danych i sieci wirtualnej przed przeprowadzeniem oceny wszelkich właściwości.
+Po dodaniu punktów końcowych usługi sieci wirtualnej do konta usługi Azure Cosmos, aby wprowadzić zmiany w ustawieniach konta, musisz mieć dostęp do `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` akcji dla wszystkich sieci wirtualnych skonfigurowanych na koncie Azure Cosmos. To uprawnienie jest wymagane, ponieważ proces autoryzacji sprawdza dostęp do zasobów (takich jak zasoby bazy danych i sieci wirtualnej) przed ocenami wszystkich właściwości.
  
-Autoryzacja sprawdza poprawność działania, nawet jeśli użytkownik nie określi list ACL sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure. Obecnie płaszczyzna kontroli konta usługi Azure Cosmos obsługuje ustawienie pełnego stanu konta usługi Azure Cosmos. Jeden z parametrów dla wywołań płaszczyzny kontroli jest `virtualNetworkRules`. Jeśli ten parametr nie jest określony, interfejs wiersza polecenia platformy Azure wykonuje wywołanie Get bazy danych w celu pobrania `virtualNetworkRules` i używa tej wartości w wywołaniu aktualizacji.
+Autoryzacja sprawdza poprawność uprawnienia do akcji zasobu sieci wirtualnej, nawet jeśli użytkownik nie określi list ACL sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure. Obecnie płaszczyzna kontroli konta usługi Azure Cosmos obsługuje ustawienie pełnego stanu konta usługi Azure Cosmos. Jeden z parametrów dla wywołań płaszczyzny kontroli jest `virtualNetworkRules`. Jeśli ten parametr nie jest określony, w interfejsie wiersza polecenia platformy Azure zostanie wywołane wywołanie Get Database w celu pobrania `virtualNetworkRules` i użycia tej wartości w wywołaniu aktualizacji.
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Czy równorzędne sieci wirtualne mają również dostęp do konta usługi Azure Cosmos? 
 Tylko sieć wirtualna i ich podsieci dodane do konta usługi Azure Cosmos mają dostęp. Ich Komunikacja równorzędna sieci wirtualnych nie może uzyskać dostępu do konta do momentu dodania do konta podsieci w ramach równorzędnych sieci wirtualnych.

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services pofragmentowana Specyfikacja pozyskiwania na żywo w formacie MP4 | Microsoft Docs
-description: Ta specyfikacja zawiera opis protokołu i formatu dla fragmentacji pozyskiwania strumieniowego na żywo opartego na formacie MP4 dla Azure Media Services. Za pomocą usługi Azure Media Services można przesyłać strumieniowo wydarzenia na żywo i emitować zawartość w czasie rzeczywistym przy użyciu platformy Azure jako platformy w chmurze. W tym dokumencie omówiono także najlepsze rozwiązania związane z tworzeniem wysoce nadmiarowych i niezawodnych mechanizmów pozyskiwania na żywo.
+description: Ta specyfikacja zawiera opis protokołu i formatu dla fragmentacji pozyskiwania strumieniowego na żywo opartego na formacie MP4 dla Azure Media Services. W tym dokumencie omówiono także najlepsze rozwiązania związane z tworzeniem wysoce nadmiarowych i niezawodnych mechanizmów pozyskiwania na żywo.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 4e1d41216f99a86a1b04ada882dcae0ff34b823b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69014776"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888057"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services pofragmentowana Specyfikacja pozyskiwania na żywo w formacie MP4 
 
 Ta specyfikacja zawiera opis protokołu i formatu dla fragmentacji pozyskiwania strumieniowego na żywo opartego na formacie MP4 dla Azure Media Services. Media Services udostępnia usługę przesyłania strumieniowego na żywo, której klienci mogą używać do przesyłania strumieniowego wydarzeń na żywo i emisji w czasie rzeczywistym przy użyciu platformy Azure jako platformy w chmurze. W tym dokumencie omówiono także najlepsze rozwiązania związane z tworzeniem wysoce nadmiarowych i niezawodnych mechanizmów pozyskiwania na żywo.
 
-## <a name="1-conformance-notation"></a>1. Notacja zgodności
+## <a name="1-conformance-notation"></a>1. notacja zgodności
 Kluczowe słowa "musi," "nie może być," "wymagane," "," "nie mogą," "," "," "nie powinno być," "zalecane," "," i "opcjonalne" w tym dokumencie są interpretowane jako opisane w dokumencie RFC 2119.
 
-## <a name="2-service-diagram"></a>2. Diagram usług
+## <a name="2-service-diagram"></a>2. diagram usług
 Na poniższym diagramie przedstawiono architekturę wysokiego poziomu usługi przesyłania strumieniowego na żywo w Media Services:
 
 1. Koder na żywo wypychanie kanałów informacyjnych na żywo do kanałów, które są tworzone i obsługiwane za pośrednictwem zestawu SDK Azure Media Services.
@@ -38,7 +38,7 @@ Na poniższym diagramie przedstawiono architekturę wysokiego poziomu usługi pr
 
 ![przepływ pozyskiwania][image1]
 
-## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Format Bitstream — obraz ISO 14496-12 pofragmentowany
+## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. format Bitstream — obraz ISO 14496-12 pofragmentowany
 Format sieci na potrzeby pozyskiwania strumieniowego na żywo omówiony w niniejszym dokumencie jest oparty na [ISO-14496-12]. Aby uzyskać szczegółowy opis pofragmentowanego formatu MP4 i rozszerzeń dla plików wideo na żądanie i pozyskiwania strumieniowego na żywo, zobacz [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
 
 ### <a name="live-ingest-format-definitions"></a>Definicje formatu pozyskiwania na żywo
@@ -51,10 +51,10 @@ Na poniższej liście opisano specjalne definicje formatu, które mają zastosow
 1. Sekcja 3.3.6 w [1] definiuje pole o nazwie **MovieFragmentRandomAccessBox** (**mfra**), które może zostać wysłane na końcu pozyskiwania na żywo w celu wskazania końca strumienia (EOS) do kanału. Ze względu na logikę pozyskiwania Media Services, użycie EOS jest przestarzałe i nie należy wysyłać pola **mfra** na potrzeby pozyskiwania na żywo. W przypadku wysłania Media Services dyskretnie zignoruje ją. Aby zresetować stan punktu pozyskiwania, zalecamy użycie [resetowania kanału](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels). Zalecane jest również, aby zakończyć prezentację i strumień przy użyciu [Zatrzymaj program](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) .
 1. Czas trwania fragmentu MP4 powinien być stały, aby zmniejszyć rozmiar manifestów klientów. Stały czas trwania fragmentu MP4 poprawia również algorytmy pobierania heurystycznych przez użycie tagów powtarzających. Czas trwania może ulec wahaniu w celu zrekompensowania stawek za ramki niebędące liczbami całkowitymi.
 1. Czas trwania fragmentu MP4 powinien wynosić od około 2 do 6 sekund.
-1. Sygnatury czasowe fragmentarycznego fragmentu i `fragment_index`indeksy (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` i) powinny dotrzeć do rosnącej kolejności. Chociaż Media Services jest odporny na zduplikowane fragmenty, ma ograniczoną możliwość zmiany kolejności fragmentów w zależności od osi czasu nośnika.
+1. Sygnatury czasowe i indeksy fragmentaryczne fragmentu MP4 (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` i `fragment_index`) powinny dotrzeć do rosnącej kolejności. Chociaż Media Services jest odporny na zduplikowane fragmenty, ma ograniczoną możliwość zmiany kolejności fragmentów w zależności od osi czasu nośnika.
 
-## <a name="4-protocol-format--http"></a>4. Format protokołu — HTTP
-Pakiet ISO pozyskiwania na żywo pozyskiwania na podstawie plików MP4 dla Media Services używa standardowego długotrwałego żądania HTTP POST do przesyłania danych zakodowanych w postaci pofragmentowanej do usługi. Każde polecenie HTTP POST wysyła kompletny pofragmentowany plik MP4 Bitstream ("Stream"), zaczynając od początku z polami nagłówka (**ftyp**, **Live Server manifest**i **Moov** Box) i kontynuując sekwencję fragmentów (**moof** i  **pola MDAT** ). Aby poznać składnię adresu URL żądania HTTP POST, zobacz sekcję 9,2 w [1]. Przykładem adresu URL wpisu jest: 
+## <a name="4-protocol-format--http"></a>4. format protokołu — HTTP
+Pakiet ISO pozyskiwania na żywo pozyskiwania na podstawie plików MP4 dla Media Services używa standardowego długotrwałego żądania HTTP POST do przesyłania danych zakodowanych w postaci pofragmentowanej do usługi. Każde polecenie HTTP POST wysyła kompletny pofragmentowany plik MP4 Bitstream ("Stream"), zaczynając od początku z polami nagłówka (**ftyp**, **Live Server manifest**i **Moov** Box) i kontynuując sekwencję fragmentów (pola**moof** i **MDAT** ). Aby poznać składnię adresu URL żądania HTTP POST, zobacz sekcję 9,2 w [1]. Przykładem adresu URL wpisu jest: 
 
     http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
 
@@ -66,10 +66,10 @@ Poniżej przedstawiono szczegółowe wymagania:
 1. Koder musi rozpocząć nowe żądanie HTTP POST ze pofragmentowanym strumieniem MP4. Ładunek musi rozpoczynać się od pól nagłówka, a następnie fragmentów. Należy pamiętać, że pola **ftyp**, " **manifestu serwera Live**" i **Moov** (w tej kolejności) muszą być wysyłane przy użyciu każdego żądania, nawet jeśli koder musi ponownie nawiązać połączenie, ponieważ poprzednie żądanie zostało przerwane przed końcem strumienia. 
 1. Koder musi używać kodowania transferu fragmentarycznego na potrzeby przekazywania, ponieważ nie jest możliwe przewidywalność całej długości zawartości zdarzenia na żywo.
 1. Gdy zdarzenie jest przekroczenia, po wysłaniu ostatniego fragmentu koder musi bezpiecznie zakończyć sekwencję komunikatów kodowania transferu fragmentarycznego (większość stosów klienta HTTP obsługuje ją automatycznie). Koder musi poczekać, aż usługa zwróci końcowy kod odpowiedzi, a następnie zakończy połączenie. 
-1. Koder nie może używać `Events()` rzeczownika zgodnie z opisem w artykule 9,2 w [1] na potrzeby pozyskiwania na żywo w Media Services.
+1. Koder nie może używać `Events()` rzeczownik zgodnie z opisem w artykule 9,2 w [1] na potrzeby pozyskiwania na żywo w Media Services.
 1. Jeśli żądanie POST protokołu HTTP kończy się lub zostanie przerwane z powodu błędu TCP przed końcem strumienia, koder musi wydać nowe żądanie POST przy użyciu nowego połączenia i postępować zgodnie z wcześniejszymi wymaganiami. Ponadto koder musi ponownie wysłać poprzednie dwa fragmenty MP4 dla każdej ścieżki w strumieniu i wznowić bez przedstawiania ciągłości na osi czasu multimediów. Ponowne wysłanie ostatnich dwóch fragmentów plików MP4 dla każdej ścieżki gwarantuje, że nie utracisz danych. Innymi słowy, jeśli strumień zawiera dźwięk i ścieżkę wideo, a bieżące żądanie POST nie powiedzie się, koder musi ponownie nawiązać połączenie i ponownie wysłać ostatnie dwa fragmenty dla ścieżki audio, które zostały wcześniej pomyślnie wysłane, oraz ostatnie dwa fragmenty filmu wideo Śledź, które zostały wcześniej pomyślnie wysłane, aby upewnić się, że nie ma utraty danych. Koder musi obsługiwać bufor "do przodu" fragmentów nośnika, który jest wysyłany ponownie po ponownym nawiązaniu połączenia.
 
-## <a name="5-timescale"></a>5. Timescale
+## <a name="5-timescale"></a>5. Skala czasu
 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) opisuje użycie skali czasu dla **SmoothStreamingMedia** (sekcja 2.2.2.1), **strumieńelement** (sekcja 2.2.2.3), **StreamFragmentElement** (sekcja 2.2.2.6) i **LiveSMIL** (sekcja 2.2.7.3.1). Jeśli wartość skali czasu nie jest obecna, użyta wartość domyślna to 10 000 000 (10 MHz). Chociaż specyfikacja formatu Smooth Streaming nie blokuje użycia innych wartości skali czasu, Większość implementacji koderów używa tej wartości domyślnej (10 MHz) do generowania Smooth Streaming danych pozyskiwania. Ze względu na funkcję [dynamicznego tworzenia pakietów usługi Azure Media](media-services-dynamic-packaging-overview.md) zalecamy użycie skali czasu 90-kHz dla strumieni wideo i 44,1 khz lub 48,1 kHz dla strumieni audio. Jeśli różne wartości skali czasu są używane dla różnych strumieni, należy wysłać skalę czasu na poziomie strumienia. Aby uzyskać więcej informacji, zobacz [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
 ## <a name="6-definition-of-stream"></a>6. Definicja "Stream"
@@ -83,17 +83,17 @@ Wideo – 3000 KB/s, 1500 KB/s, 750 KB/s
 
 Audio – 128 kb/s
 
-### <a name="option-1-all-tracks-in-one-stream"></a>Option 1: Wszystkie ścieżki w jednym strumieniu
+### <a name="option-1-all-tracks-in-one-stream"></a>Opcja 1: wszystkie ścieżki w jednym strumieniu
 W przypadku tej opcji pojedynczy koder generuje wszystkie ścieżki audio/wideo, a następnie umieszcza je w jednym pofragmentowanym Bitstream MP4. Pofragmentowany plik MP4 Bitstream jest następnie wysyłany za pośrednictwem jednego połączenia HTTP POST. W tym przykładzie istnieje tylko jeden strumień dla tej prezentacji na żywo.
 
 ![Strumienie — jedna ścieżka][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>Opcja 2: Każda ścieżka w osobnym strumieniu
+### <a name="option-2-each-track-in-a-separate-stream"></a>Opcja 2: każda ścieżka w osobnym strumieniu
 W przypadku tej opcji koder umieszcza jedną ścieżkę do każdego fragmentu MP4 Bitstream, a następnie zapisuje wszystkie strumienie za pośrednictwem oddzielnych połączeń HTTP. Można to zrobić za pomocą jednego kodera lub z wieloma koderami. Pozyskiwanie na żywo widzi tę prezentację na żywo, która składa się z czterech strumieni.
 
 ![Strumienie — oddzielne ścieżki][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>Opcja 3: Łączenie ścieżek audio z najniższą szybkością transmisji bitów wideo w jednym strumieniu
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>Opcja 3: łączenie ścieżki audio z najniższą szybkością transmisji bitów wideo w jednym strumieniu
 W przypadku tej opcji klient zdecyduje się na podzielenie ścieżki audio o najniższej szybkości transmisji bitów w jednym fragmencie plików MP4 Bitstream i pozostawienie pozostałych dwóch ścieżek wideo jako oddzielnych strumieni. 
 
 ![Strumienie — ścieżki audio i wideo][image4]
@@ -101,7 +101,7 @@ W przypadku tej opcji klient zdecyduje się na podzielenie ścieżki audio o naj
 ### <a name="summary"></a>Podsumowanie
 Nie jest to pełna lista wszystkich możliwych opcji pozyskiwania w tym przykładzie. W rzeczywistości każde grupowanie ścieżek do strumieni jest obsługiwane przez pozyskiwanie na żywo. Klienci i dostawcy koderów mogą wybierać własne implementacje w oparciu o złożoność inżynierów, pojemność kodera oraz zagadnienia związane z nadmiarowością i pracą w trybie failover. Jednak w większości przypadków istnieje tylko jedna ścieżka audio dla całej prezentacji na żywo. Dlatego ważne jest, aby zapewnić healthiness strumienia pozyskiwania, który zawiera ścieżkę audio. Takie zagadnienie często polega na umieszczeniu ścieżki audio we własnym strumieniu (jak w opcji 2) lub umieszczeniu jej w ścieżce wideo o najniższej szybkości transmisji bitów (jak w przypadku opcji 3). Ponadto w celu zapewnienia lepszej nadmiarowości i odporności na uszkodzenia, wysłanie tej samej ścieżki audio w dwóch różnych strumieniach (opcja 2 z nadmiarowymi ścieżkami audio) lub zgrupowanie ścieżki audio z co najmniej dwoma ścieżkami wideo o najmniejszej szybkości transmisji bitów (opcja 3 z dźwiękiem w co najmniej dwóch strumienie wideo) są zdecydowanie zalecane do pozyskiwania na żywo w Media Services.
 
-## <a name="7-service-failover"></a>7. Tryb failover usługi
+## <a name="7-service-failover"></a>7. Usługa przełączania do trybu failover
 Ze względu na charakter przesyłania strumieniowego na żywo dobre wsparcie w trybie failover ma kluczowe znaczenie dla zapewnienia dostępności usługi. Media Services jest zaprojektowana do obsługi różnych typów błędów, w tym błędów sieci, błędów serwera i problemów z magazynem. W połączeniu z właściwą logiką trybu failover na stronie kodera na żywo klienci mogą uzyskać wysoce niezawodną usługę przesyłania strumieniowego na żywo z chmury.
 
 W tej sekcji omówiono scenariusze pracy awaryjnej usługi. W takim przypadku awaria występuje w obrębie usługi i jest w niej manifestuje się jako błąd sieciowy. Poniżej przedstawiono kilka zaleceń dotyczących implementacji kodera w celu obsługi trybu failover usługi:
@@ -116,12 +116,12 @@ W tej sekcji omówiono scenariusze pracy awaryjnej usługi. W takim przypadku aw
 
     b. Nowy adres URL POST protokołu HTTP musi być taki sam jak początkowy adres URL.
   
-    c. Nowy wpis HTTP musi zawierać nagłówki strumienia (**ftyp**, **pole manifestu serwera Live**i **Moov** ), które są identyczne z NAGŁÓWKAmi strumienia w początkowym wpisie.
+    d. Nowy wpis HTTP musi zawierać nagłówki strumienia (**ftyp**, **pole manifestu serwera Live**i **Moov** ), które są identyczne z NAGŁÓWKAmi strumienia w początkowym wpisie.
   
     d. Ostatnie dwa fragmenty wysyłane dla każdej ścieżki muszą zostać wysłane ponownie, a przesyłanie strumieniowe musi zostać wznowione bez przedstawiania ciągłości na osi czasu multimediów. Sygnatury czasowe fragmentów MP4 muszą stale wzrastać, nawet w przypadku żądań POST protokołu HTTP.
 1. Koder powinien kończyć żądanie HTTP POST, jeśli dane nie są wysyłane z szybkością proporcjonalną do czasu trwania fragmentu MP4.  Żądanie HTTP POST, które nie wysyła danych, może uniemożliwić Media Services szybkie odłączenie od kodera w przypadku aktualizacji usługi. Z tego powodu ścieżki HTTP POST for rozrzedzone (AD Signal) powinny być krótkie, kończące się zaraz po wysłaniu fragmentu rozrzedzenia.
 
-## <a name="8-encoder-failover"></a>8. Tryb failover kodera
+## <a name="8-encoder-failover"></a>8. koder trybu failover
 Tryb failover kodera to drugi typ scenariusza trybu failover, który musi zostać rozkierowany do kompleksowego dostarczania strumieniowego na żywo. W tym scenariuszu warunek błędu występuje po stronie kodera. 
 
 ![Tryb failover kodera][image5]
@@ -133,9 +133,9 @@ Poniższe oczekiwania dotyczą punktu końcowego pozyskiwania na żywo, gdy wyst
 1. Żądanie POST nowego kodera musi zawierać te same pofragmentowane pola nagłówka MP4 jako wystąpienie zakończone niepowodzeniem.
 1. Nowy koder musi być poprawnie zsynchronizowany ze wszystkimi innymi uruchomionymi koderami dla tej samej prezentacji na żywo w celu generowania zsynchronizowanych próbek audio/wideo z wyrównanymi granicami fragmentu.
 1. Nowy strumień musi być semantycznie odpowiednikiem poprzedniego strumienia i można go zamiennie zmieniać na poziomach nagłówka i fragmentu.
-1. Nowy koder powinien próbować zminimalizować utratę danych. Fragmenty nośników `fragment_index` i powinny wzrosnąć od punktu, w którym koder został ostatnio zatrzymany. `fragment_absolute_time` `fragment_absolute_time` I`fragment_index` powinno zwiększyć się w sposób ciągły, ale w razie potrzeby można wprowadzić nieprzerwanie. Media Services ignoruje fragmenty, które zostały już odebrane i przetworzone, więc lepszym rozwiązaniem jest błąd po stronie ponownego wysyłania fragmentów niż w celu wprowadzenia zaniechania na osi czasu multimediów. 
+1. Nowy koder powinien próbować zminimalizować utratę danych. `fragment_absolute_time` i `fragment_index` fragmenty nośników powinny wzrosnąć od punktu, w którym koder został ostatnio zatrzymany. `fragment_absolute_time` i `fragment_index` powinny wzrosnąć w sposób ciągły, ale w razie potrzeby można wprowadzić nieprzerwanie. Media Services ignoruje fragmenty, które zostały już odebrane i przetworzone, więc lepszym rozwiązaniem jest błąd po stronie ponownego wysyłania fragmentów niż w celu wprowadzenia zaniechania na osi czasu multimediów. 
 
-## <a name="9-encoder-redundancy"></a>9. Nadmiarowość kodera
+## <a name="9-encoder-redundancy"></a>9. nadmiarowość kodera
 W przypadku niektórych krytycznych wydarzeń na żywo, które wymagają jeszcze wyższej dostępności i jakości obsługi, zalecamy użycie funkcji aktywne-aktywne nadmiarowe kodery w celu zapewnienia bezproblemowej pracy w trybie failover bez utraty danych.
 
 ![nadmiarowość kodera][image6]
@@ -144,12 +144,12 @@ Jak pokazano na tym diagramie, dwie grupy koderów wypychane są dwie kopie każ
 
 Wymagania dotyczące tego scenariusza są prawie takie same jak wymagania w przypadku "przełączania do trybu failover dla kodera", z wyjątkiem tego, że drugi zestaw koderów jest uruchomiony w tym samym czasie co koder podstawowy.
 
-## <a name="10-service-redundancy"></a>10. Nadmiarowość usługi
+## <a name="10-service-redundancy"></a>10. nadmiarowość usługi
 W przypadku wysoce nadmiarowej dystrybucji globalnej czasami trzeba mieć kopię zapasową między regionami, aby obsługiwać regionalne awarie. Powiększanie w topologii "nadmiarowość kodera" pozwala klientom wybrać nadmiarowe wdrożenie usługi w innym regionie, który jest połączony z drugim zestawem koderów. Klienci mogą również współdziałać z dostawcą Content Delivery Network, aby wdrożyć globalne Traffic Manager przed dwoma wdrożeniami usług, aby bezproblemowo kierować ruch klientów. Wymagania dotyczące koderów są takie same jak w przypadku "nadmiarowości kodera". Jedyny wyjątek polega na tym, że drugi zestaw koderów musi być wskazany w innym punkcie końcowym pozyskiwania na żywo. Na poniższym diagramie przedstawiono tę konfigurację:
 
 ![nadmiarowość usługi][image7]
 
-## <a name="11-special-types-of-ingestion-formats"></a>11. Specjalne typy formatów pozyskiwania
+## <a name="11-special-types-of-ingestion-formats"></a>11. specjalne typy formatów pozyskiwania
 W tej sekcji omówiono specjalne typy formatów pozyskiwania na żywo, które są przeznaczone do obsługi określonych scenariuszy.
 
 ### <a name="sparse-track"></a>Ścieżka rozrzedzona
@@ -166,7 +166,7 @@ Następujące kroki są zalecaną implementacją do pozyskiwania ścieżki rozrz
    
     b. Koder powinien kończyć żądanie HTTP POST, gdy dane nie są wysyłane. Długotrwały wpis HTTP, który nie wysyła danych, może uniemożliwić Media Services szybkie odłączenie od kodera w przypadku aktualizacji usługi lub ponownego uruchomienia serwera. W takich przypadkach serwer multimediów jest tymczasowo blokowany w operacji odbierania w gnieździe.
    
-    c. W czasie, gdy dane sygnalizujące nie są dostępne, koder powinien zamknąć żądanie HTTP POST. Gdy żądanie POST jest aktywne, koder powinien wysyłać dane.
+    d. W czasie, gdy dane sygnalizujące nie są dostępne, koder powinien zamknąć żądanie HTTP POST. Gdy żądanie POST jest aktywne, koder powinien wysyłać dane.
 
     d. W przypadku wysyłania fragmentów rozrzedzonych koder może ustawić jawny nagłówek Content-Length, jeśli jest dostępny.
 
@@ -193,7 +193,7 @@ W przypadku nadmiarowych ścieżek audio zalecana jest następująca implementac
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png
