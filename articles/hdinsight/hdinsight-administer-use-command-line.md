@@ -1,37 +1,37 @@
 ---
-title: Zarządzanie klastrami usługi Azure HDInsight przy użyciu wiersza polecenia platformy Azure
-description: Dowiedz się, jak zarządzać klastrami usługi Azure HDInsight przy użyciu wiersza polecenia platformy Azure. Typy klastrów obejmują Apache Hadoop, Spark, HBase, Storm, Kafka, Interactive Query i usługi ML.
+title: Zarządzanie klastrami usługi Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
+description: Dowiedz się, jak zarządzać klastrami usługi Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure. Typy klastrów obejmują Apache Hadoop, Spark, HBase, burzy, Kafka, interaktywne zapytania i usługi ML.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.author: tyfox
-ms.openlocfilehash: 5ae97b17d06fa0a9934a58ac662ef12116cce4f6
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/06/2019
+ms.openlocfilehash: 81bc632f1061f0ee73d2295cafa5f7a8472d20ee
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137398"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951806"
 ---
-# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Zarządzanie klastrami usługi Azure HDInsight przy użyciu wiersza polecenia platformy Azure
+# <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Zarządzanie klastrami usługi Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Dowiedz się, jak używać [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) zarządzać klastrami usługi Azure HDInsight. Interfejs wiersza polecenia platformy Azure to wieloplatformowe środowisko wiersza polecenia do zarządzania zasobami platformy Azure.
+Dowiedz się, jak zarządzać klastrami usługi Azure HDInsight przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) . Interfejs wiersza polecenia platformy Azure to wieloplatformowe środowisko wiersza polecenia do zarządzania zasobami platformy Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) kroków.
+* Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w celu wykonania kroków.
 
-* Klaster platformy Apache Hadoop w HDInsight. Zobacz [Rozpoczynanie pracy z usługą HDInsight w systemie Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Klaster Apache Hadoop w usłudze HDInsight. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="connect-to-azure"></a>Nawiązywanie połączenia z usługą Azure
 
-Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać usługi Azure Cloud Shell, a następnie po prostu wybierz **wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym wypadku wprowadź poniższe polecenie:
+Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać Azure Cloud Shell, wybierz opcję **Wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym razie wprowadź poniższe polecenie:
 
 ```azurecli-interactive
 az login
@@ -40,9 +40,9 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="list-clusters"></a>Wyświetlanie listy klastrów
+## <a name="list-clusters"></a>Wyświetl listę klastrów
 
-Użyj [lista hdinsight az](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) na wyświetlanie listy klastrów. Edytuj poniższe polecenia, zastępując `RESOURCE_GROUP_NAME` z nazwą grupy zasobów, a następnie wprowadź polecenia:
+Użyj [AZ HDInsight list](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) , aby wyświetlić listę klastrów. Edytuj poniższe polecenia, zastępując `RESOURCE_GROUP_NAME` nazwą grupy zasobów, a następnie wprowadź następujące polecenia:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -58,9 +58,9 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME
 az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:name}" --output table
 ```
 
-## <a name="show-cluster"></a>Pokaż klastra
+## <a name="show-cluster"></a>Pokaż klaster
 
-Użyj [az hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) Aby wyświetlić informacje dotyczące określonego klastra. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`, i `CLUSTER_NAME` z istotnymi informacjami, a następnie wprowadź polecenie:
+Użyj [AZ HDInsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) , aby wyświetlić informacje dla określonego klastra. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`i `CLUSTER_NAME` z odpowiednimi informacjami, a następnie wprowadź polecenie:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,13 +68,13 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Usuwanie klastrów
 
-Użyj [usługa hdinsight az usunięcia](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) można usunąć określonego klastra. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`, i `CLUSTER_NAME` z istotnymi informacjami, a następnie wprowadź polecenie:
+Użyj [AZ HDInsight Delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) , aby usunąć określony klaster. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`i `CLUSTER_NAME` z odpowiednimi informacjami, a następnie wprowadź polecenie:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 ```
 
-Możesz także usunąć klaster, usuwając grupę zasobów zawierającą klaster. Należy zauważyć, że spowoduje to usunięcie wszystkich zasobów w grupie, w tym domyślne konto magazynu.
+Możesz również usunąć klaster, usuwając grupę zasobów zawierającą klaster. Pamiętaj, że spowoduje to usunięcie wszystkich zasobów w grupie, w tym domyślnego konta magazynu.
 
 ```azurecli-interactive
 az group delete --name RESOURCE_GROUP_NAME
@@ -82,17 +82,17 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Skalowanie klastrów
 
-Użyj [rozmiar az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) zmiany rozmiaru określonego klastra HDInsight z określonym rozmiarem. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`, i `CLUSTER_NAME` istotne informacje. Zastąp `TARGET_INSTANCE_COUNT` z żądaną liczbę węzłów procesu roboczego dla klastra. Aby uzyskać więcej informacji na temat skalowania klastrów, zobacz [klastrów HDInsight skalowania](./hdinsight-scaling-best-practices.md). Wpisz polecenie:
+Użyj [AZ HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) size, aby zmienić rozmiar określonego klastra usługi HDInsight na określony rozmiar. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`i `CLUSTER_NAME` z odpowiednimi informacjami. Zastąp `TARGET_INSTANCE_COUNT` wymaganą liczbą węzłów procesu roboczego dla klastra. Aby uzyskać więcej informacji na temat skalowania klastrów, zobacz [skalowanie klastrów usługi HDInsight](./hdinsight-scaling-best-practices.md). Wprowadź polecenie:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule mają przedstawiono sposób wykonywania różnych zadań administracyjnych klastra HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób wykonywania różnych zadań administracyjnych klastra usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Zarządzanie klastrami Apache Hadoop w HDInsight przy użyciu witryny Azure portal](hdinsight-administer-use-portal-linux.md)
-* [Administrowanie HDInsight za pomocą programu Azure PowerShell](hdinsight-administer-use-powershell.md)
+* [Zarządzanie klastrami Apache Hadoop w usłudze HDInsight przy użyciu Azure Portal](hdinsight-administer-use-portal-linux.md)
+* [Administrowanie usługą HDInsight przy użyciu Azure PowerShell](hdinsight-administer-use-powershell.md)
 * [Rozpoczynanie pracy z usługą Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)

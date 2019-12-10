@@ -1,6 +1,7 @@
 ---
-title: Dostępność regionu & dane miejsca do zamieszkania w Azure Active Directory B2C
-description: Temat dotyczący typów dzierżawców Azure Active Directory B2C.
+title: Dostępność regionu i dane w miejscu zamieszkania
+titleSuffix: Azure AD B2C
+description: Dostępność regionów, zamieszkania danych i informacje o Azure Active Directory B2Cych w wersji zapoznawczej.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bb7a7ef2aabd7f93531d9afa662d7e582e05550
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 1b09eb85df6748fed042731ac90ebbf20c65b702
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273577"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950514"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Dostępność w poszczególnych regionach i rezydencja danych
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: dostępność regionu & dane miejsca do zamieszkania
 
 Dostępność regionów i miejsca do magazynowania danych to dwie bardzo różne koncepcje, które różnią się w zależności od pozostałej części platformy Azure Azure AD B2C. W tym artykule wyjaśniono różnice między tymi dwoma pojęciami i porównano sposób ich stosowania z platformą Azure a Azure AD B2C.
 
@@ -25,9 +26,9 @@ Azure AD B2C jest **ogólnie dostępna na całym świecie** z opcją **zamieszka
 
 [Dostępność regionu](#region-availability) dotyczy miejsca, w którym usługa jest dostępna do użycia.
 
-[](#data-residency) Miejsce zamieszkania polega na tym, gdzie są przechowywane dane użytkownika.
+Miejsce [zamieszkania](#data-residency) polega na tym, gdzie są przechowywane dane użytkownika.
 
-## <a name="region-availability"></a>Dostępność w danym regionie
+## <a name="region-availability"></a>Dostępność w poszczególnych regionach
 
 Azure AD B2C jest dostępna na całym świecie za pośrednictwem chmury publicznej platformy Azure.
 
@@ -57,7 +58,7 @@ Następujące kraje/regiony są w trakcie dodawania do listy. Na razie można na
 
 > Argentyna, Australia, Brazylia, Chile, Kolumbia, Ekwador, Irak, Nowa Zelandia, Paragwaj, Peru, Urugwaj i Wenezuela.
 
-## <a name="preview-tenant"></a>Podgląd dzierżawy
+## <a name="preview-tenant"></a>Zapoznawcza dzierżawy
 
 Jeśli dzierżawa B2C została utworzona w okresie zapoznawczym usługi Azure AD B2C's, prawdopodobnie **Typ dzierżawy** ma wartość **wersja zapoznawcza**.
 

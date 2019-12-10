@@ -4,14 +4,15 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: ac6b86b4ad8830bd08c9db28ac0027a5f048c3dd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 193968b5acf8288cb3f602c90374535fc2046b01
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935759"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941728"
 ---
 W tej tabeli przedstawiono powiązania, które są obsługiwane w głównych wersjach środowiska uruchomieniowego Azure Functions:
+
 
 | Typ | 1.x | 2. x i więcej<sup>1</sup> | Wyzwalacz | Dane wejściowe | Dane wyjściowe |
 | ---- | :-: | :-: | :------: | :---: | :----: |

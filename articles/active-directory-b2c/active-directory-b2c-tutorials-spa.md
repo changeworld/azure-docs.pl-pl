@@ -1,6 +1,7 @@
 ---
-title: Samouczek — Włączanie uwierzytelniania w aplikacji jednostronicowej — Azure Active Directory B2C
-description: W tym samouczku dowiesz się, jak za pomocą Azure Active Directory B2C zapewnić Logowanie użytkownika dla aplikacji jednostronicowej (JavaScript).
+title: 'Samouczek: Włączanie uwierzytelniania w aplikacji jednostronicowej'
+titleSuffix: Azure AD B2C
+description: W tym samouczku dowiesz się, jak za pomocą usługi Azure Active Directory B2C zapewnić Logowanie użytkownika dla aplikacji jednostronicowej opartej na języku JavaScript.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ece6401484d8f32483d4673384fcce6d7afac4a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f18a7ddeb5256c660c6458fc8d2d29f83e04429
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420340"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950170"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Samouczek: Włączanie uwierzytelniania w aplikacji jednostronicowej przy użyciu Azure Active Directory B2C (Azure AD B2C)
 
@@ -52,7 +53,7 @@ Aby zaktualizować aplikację, możesz użyć środowiska bieżące **aplikacje*
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 1. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz aplikację *webapp1*.
@@ -62,7 +63,7 @@ Aby zaktualizować aplikację, możesz użyć środowiska bieżące **aplikacje*
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , wybierz kartę **posiadane aplikacje** , a następnie wybierz aplikację *webapp1* .

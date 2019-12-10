@@ -2,18 +2,18 @@
 title: C#, Apache Hive & Apache chlewnej w Apache Hadoop — Azure HDInsight
 description: Dowiedz się, C# jak używać funkcji zdefiniowanych przez użytkownika (UDF) z Apache Hive i Apache chlewnej streaming w usłudze Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: b8baf8ee11d34756e55f3a78fd5916e042785587
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9ef9eada9b9aec50642a8bf357edab0677868817
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821636"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949393"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Korzystanie C# z funkcji zdefiniowanych przez użytkownika z usługami Apache Hive i Apache chlewnej na Apache Hadoop w usłudze HDInsight
 
@@ -52,11 +52,11 @@ W poniższych sekcjach opisano sposób tworzenia C# projektu w programie Visual 
 
 Aby utworzyć C# projekt dla Apache Hive UDF:
 
-1. Otwórz program Visual Studio.
+1. Uruchom program Visual Studio.
 
-2. W oknie **uruchamiania** wybierz pozycję **Utwórz nowy projekt**.
+2. Wybierz pozycję **Utwórz nowy projekt**.
 
-3. W oknie **Tworzenie nowego projektu** przewiń do i wybierz szablon **aplikacja konsoli (.NET Framework)** ( C# wersja). Następnie wybierz przycisk **Dalej**.
+3. W oknie **Tworzenie nowego projektu** wybierz szablon **aplikacja konsoli (.NET Framework)** ( C# wersja). Następnie wybierz przycisk **Dalej**.
 
 4. W oknie **Konfigurowanie nowego projektu** wprowadź **nazwę projektu** *HiveCSharp*, a następnie przejdź do lokalizacji lub Utwórz **lokalizację** , w której ma zostać zapisany nowy projekt. Następnie wybierz przycisk **Utwórz**.
 
@@ -113,6 +113,8 @@ Aby utworzyć C# projekt dla Apache Hive UDF:
 
 6. Na pasku menu wybierz kolejno opcje **kompiluj** > **Kompiluj rozwiązanie** , aby skompilować projekt.
 
+7. Zamknij rozwiązanie.
+
 ### <a name="apache-pig-udf"></a>UDF świni Apache
 
 Aby utworzyć C# projekt dla Apache Hive UDF:
@@ -121,7 +123,7 @@ Aby utworzyć C# projekt dla Apache Hive UDF:
 
 2. W oknie **uruchamiania** wybierz pozycję **Utwórz nowy projekt**.
 
-3. W oknie **Tworzenie nowego projektu** przewiń do i wybierz szablon **aplikacja konsoli (.NET Framework)** ( C# wersja). Następnie wybierz przycisk **Dalej**.
+3. W oknie **Tworzenie nowego projektu** wybierz szablon **aplikacja konsoli (.NET Framework)** ( C# wersja). Następnie wybierz przycisk **Dalej**.
 
 4. W oknie **Konfigurowanie nowego projektu** wprowadź **nazwę projektu** *PigUDF*, a następnie przejdź do lub Utwórz **lokalizację** , w której ma zostać zapisany nowy projekt. Następnie wybierz przycisk **Utwórz**.
 
@@ -160,17 +162,17 @@ Aby utworzyć C# projekt dla Apache Hive UDF:
 
 6. Na pasku menu wybierz kolejno opcje **kompiluj** > **Kompiluj rozwiązanie** , aby skompilować projekt.
 
+7. Pozostaw otwarte rozwiązanie.
+
 ## <a name="upload-to-storage"></a>Przekazywanie do magazynu
 
 Następnie należy przekazać aplikacje Hive i UDF do magazynu w klastrze usługi HDInsight.
 
-1. W programie Visual Studio wybierz pozycję **wyświetl** > **Eksplorator serwera**.
+1. W programie Visual Studio przejdź do **widoku** > **Eksplorator serwera**.
 
-2. Rozwiń węzeł **Azure**, a następnie rozwiń węzeł **HDInsight**.
+1. W **Eksplorator serwera**kliknij prawym przyciskiem myszy pozycję **Azure**, wybierz pozycję **Połącz z subskrypcją Microsoft Azure**i Ukończ proces logowania.
 
-3. Jeśli zostanie wyświetlony monit, wprowadź swoje poświadczenia subskrypcji platformy Azure, a następnie wybierz pozycję **Zaloguj się**.
-
-4. Rozwiń klaster usługi HDInsight, do którego chcesz wdrożyć tę aplikację. Zostanie wyświetlona pozycja z tekstem **(domyślne konto magazynu)** .
+1. Rozwiń klaster usługi HDInsight, do którego chcesz wdrożyć tę aplikację. Zostanie wyświetlona pozycja z tekstem **(domyślne konto magazynu)** .
 
     ![Domyślne konto magazynu, klaster usługi HDInsight, Eksplorator serwera](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
@@ -178,14 +180,14 @@ Następnie należy przekazać aplikacje Hive i UDF do magazynu w klastrze usług
 
     * Jeśli tego wpisu nie można rozszerzyć, używany jest **Azure Data Lake Storage** jako magazyn domyślny dla klastra. Aby wyświetlić pliki w domyślnym magazynie klastra, kliknij dwukrotnie wpis **(domyślne konto magazynu)** .
 
-5. Aby przekazać pliki. exe, należy użyć jednej z następujących metod:
+1. Aby przekazać pliki. exe, należy użyć jednej z następujących metod:
 
     * Jeśli używasz **konta usługi Azure Storage**, wybierz ikonę **Przekaż obiekt BLOB** .
 
         ![Ikona przekazywania do usługi HDInsight dla nowego projektu](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 
         W oknie dialogowym **Przekaż nowy plik** w obszarze **Nazwa pliku**wybierz pozycję **Przeglądaj**. W oknie dialogowym **przekazywanie obiektu BLOB** przejdź do folderu *bin\Debug* projektu *HiveCSharp* , a następnie wybierz plik *HiveCSharp. exe* . Na koniec wybierz pozycję **Otwórz** , a następnie kliknij **przycisk OK** , aby ukończyć przekazywanie.
-    
+
     * Jeśli używasz **Azure Data Lake Storage**, kliknij prawym przyciskiem myszy pusty obszar na liście plików, a następnie wybierz polecenie **Przekaż**. Na koniec wybierz plik *HiveCSharp. exe* i wybierz pozycję **Otwórz**.
 
     Po zakończeniu przekazywania programu *HiveCSharp. exe* Powtórz proces przekazywania dla pliku *PigUDF. exe* .
@@ -194,7 +196,7 @@ Następnie należy przekazać aplikacje Hive i UDF do magazynu w klastrze usług
 
 Teraz można uruchomić zapytanie programu Hive korzystające z aplikacji w formacie UDF.
 
-1. W programie Visual Studio wybierz pozycję **wyświetl** > **Eksplorator serwera**.
+1. W programie Visual Studio przejdź do **widoku** > **Eksplorator serwera**.
 
 2. Rozwiń węzeł **Azure**, a następnie rozwiń węzeł **HDInsight**.
 
@@ -204,7 +206,7 @@ Teraz można uruchomić zapytanie programu Hive korzystające z aplikacji w form
 
     ```hiveql
     -- Uncomment the following if you are using Azure Storage
-    -- add file wasb:///HiveCSharp.exe;
+    -- add file wasbs:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Storage Gen1
     -- add file adl:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Storage Gen2
@@ -222,7 +224,7 @@ Teraz można uruchomić zapytanie programu Hive korzystające z aplikacji w form
 
     To zapytanie wybiera pola `clientid`, `devicemake`i `devicemodel` z `hivesampletable`, a następnie przekazuje pola do aplikacji *HiveCSharp. exe* . Zapytanie oczekuje, że aplikacja zwróci trzy pola, które są przechowywane jako `clientid`, `phoneLabel`i `phoneHash`. Zapytanie oczekuje również znalezienia *HiveCSharp. exe* w katalogu głównym domyślnego kontenera magazynu.
 
-5. Wybierz pozycję **Prześlij** , aby przesłać zadanie do klastra usługi HDInsight. Zostanie otwarte okno **podsumowania zadania Hive** .
+5. Zmień wartość domyślną **interaktywny** na **Batch**, a następnie wybierz pozycję **Prześlij** , aby przesłać zadanie do klastra usługi HDInsight. Zostanie otwarte okno **podsumowania zadania Hive** .
 
 6. Wybierz pozycję **Odśwież** , aby odświeżyć podsumowanie do czasu **zakończenia**zmiany **stanu zadania** . Aby wyświetlić dane wyjściowe zadania, wybierz pozycję **dane wyjściowe zadania**.
 
@@ -265,6 +267,8 @@ Możesz również uruchomić zadanie Świniowe korzystające z aplikacji do UDF.
     (2019-07-15 16:43:25 SampleClass7 [DEBUG] detail for id 1475865947)
     ```
 
+5. Użyj `exit`, aby zamknąć świnię.
+
 ## <a name="next-steps"></a>Następne kroki
 
 W tym dokumencie przedstawiono sposób korzystania z aplikacji .NET Framework z usługi Hive i trzody chlewnej w usłudze HDInsight. Jeśli chcesz dowiedzieć się, jak używać języka Python z usługą Hive i świnią, zobacz [Używanie języka Python z usługami Apache Hive i Apache chlewnej w usłudze HDInsight](python-udf-hdinsight.md).
@@ -273,3 +277,4 @@ Aby poznać inne sposoby korzystania z usługi Hive i uzyskać informacje o uży
 
 * [Korzystanie z Apache Hive z usługą HDInsight](hdinsight-use-hive.md)
 * [Korzystanie z MapReduce z usługą HDInsight](hdinsight-use-mapreduce.md)
+* [Podstawy dla trzody chlewnej](https://pig.apache.org/docs/latest/basic.html)

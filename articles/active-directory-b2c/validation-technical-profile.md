@@ -1,6 +1,7 @@
 ---
-title: Zdefiniuj profil techniczny weryfikacji w zasadach niestandardowych w Azure Active Directory B2C | Microsoft Docs
-description: Zdefiniuj profil techniczny Azure Active Directory w zasadach niestandardowych w programie Azure Active Directory B2C.
+title: Zdefiniuj profil techniczny weryfikacji w zasadach niestandardowych
+titleSuffix: Azure AD B2C
+description: Sprawdź poprawność oświadczeń w ramach zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167561"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950803"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny weryfikacji w zasadach niestandardowych Azure Active Directory B2C
 
@@ -40,7 +41,7 @@ Profil techniczny weryfikacji można wykonać warunkowo na podstawie warunków w
 Profil techniczny z własnym potwierdzeniem może definiować profil techniczny weryfikacji, który będzie używany do sprawdzania poprawności niektórych lub wszystkich oświadczeń wyjściowych. Wszystkie oświadczenia wejściowe profilu technicznego, do którego istnieje odwołanie, muszą pojawić się w oświadczeniach wyjściowych profilu technicznego weryfikacji odwołania.
 
 > [!NOTE]
-> Tylko własne profile techniczne mogą korzystać z weryfikacji profilów technicznych. Aby sprawdzić poprawność danych wyjściowych z niepotwierdzonych profilów technicznych, należy rozważyć użycie dodatkowego kroku aranżacji w podróży użytkownika w celu uwzględnienia profilu technicznego odpowiedzialnego za weryfikację.    
+> Tylko własne profile techniczne mogą korzystać z weryfikacji profilów technicznych. Aby sprawdzić poprawność danych wyjściowych z niepotwierdzonych profilów technicznych, należy rozważyć użycie dodatkowego kroku aranżacji w podróży użytkownika w celu uwzględnienia profilu technicznego odpowiedzialnego za weryfikację.
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -54,7 +55,7 @@ Element **ValidationTechnicalProfile** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ReferenceId | Tak | Identyfikator profilu technicznego jest już zdefiniowany w zasadach lub zasadach nadrzędnych. |
+| Identyfikator odwołania | Tak | Identyfikator profilu technicznego jest już zdefiniowany w zasadach lub zasadach nadrzędnych. |
 |ContinueOnError|Nie| Wskazuje, czy sprawdzanie poprawności wszelkich kolejnych weryfikacji profilów technicznych powinno być kontynuowane, jeśli ten profil techniczny tego sprawdzania poprawności zgłosi błąd. Możliwe wartości: `true` lub `false` (domyślnie przetwarzanie dalszych profilów weryfikacji zostanie zatrzymane i zostanie zwrócony błąd). |
 |ContinueOnSuccess | Nie | Wskazuje, czy sprawdzanie poprawności wszelkich kolejnych profilów weryfikacji powinno być kontynuowane, jeśli ten profil techniczny zostanie pomyślnie zakończony. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`, co oznacza, że przetwarzanie dalszych profilów weryfikacji będzie kontynuowane. |
 
@@ -76,7 +77,7 @@ Element **Conditional** zawiera następujące elementy:
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | Wartość | 1: n | Dane, które są używane przez sprawdzanie. Jeśli typ tego sprawdzenia to `ClaimsExist`, to pole określa ClaimTypeReferenceId do zapytania. Jeśli typ sprawdzenia to `ClaimEquals`, to pole określa ClaimTypeReferenceId do zapytania. Gdy inny element wartości zawiera wartość, która ma zostać sprawdzona.|
-| Akcja | 1:1 | Akcja, która powinna zostać podjęta, jeśli sprawdzanie warunków wstępnych w ramach kroku aranżacji ma wartość true. Wartość **akcji** jest ustawiona na `SkipThisValidationTechnicalProfile`. Określa, że skojarzony profil techniczny weryfikacji nie powinien być wykonywany. |
+| Działanie | 1:1 | Akcja, która powinna zostać podjęta, jeśli sprawdzanie warunków wstępnych w ramach kroku aranżacji ma wartość true. Wartość **akcji** jest ustawiona na `SkipThisValidationTechnicalProfile`. Określa, że skojarzony profil techniczny weryfikacji nie powinien być wykonywany. |
 
 ### <a name="example"></a>Przykład
 

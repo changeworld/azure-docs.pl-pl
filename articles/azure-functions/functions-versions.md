@@ -2,13 +2,13 @@
 title: Przegląd wersji środowiska uruchomieniowego Azure Functions
 description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Poznaj różnice między nimi i wybierz odpowiedni dla siebie.
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.openlocfilehash: 53da5869b4768c95fd225fb15db60f4301e537d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/09/2019
+ms.openlocfilehash: 874d2e657c2c9d7cba7874ff9815c61f9bbe8ef7
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226550"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941730"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
@@ -16,16 +16,13 @@ Główne wersje środowiska uruchomieniowego Azure Functions są powiązane z we
 
 | Wersja środowiska uruchomieniowego | Poziom wydania<sup>1</sup> | Wersja platformy .NET | 
 | --------------- | ------------- | ------------ |
-| wersji  | wersja zapoznawcza | .NET Core 3. x | 
+| wersji | Ogólna dostępność | .NET Core 3,1 | 
 | 2.x | Ogólna dostępność | .NET Core 2.2 |
 | 1.x | GA<sup>2</sup> | .NET Framework 4,6<sup>3</sup> |
 
-<sup>1</sup> Wersje GA są obsługiwane w scenariuszach produkcyjnych.   
-<sup>2</sup> Wersja 1. x jest w trybie konserwacji. Ulepszenia są dostępne tylko w nowszych wersjach.   
-<sup>3</sup> Program obsługuje tylko programowanie w Azure Portal lub lokalnie na komputerach z systemem Windows.
-
->[!NOTE]  
-> Wersja 3. x środowiska uruchomieniowego usługi Functions jest w wersji zapoznawczej i nie jest obsługiwana w środowiskach produkcyjnych. Aby uzyskać więcej informacji na temat wypróbowania wersji 3. x, zobacz [ten anons](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm).
+<sup>1</sup> wersje ga są obsługiwane w scenariuszach produkcyjnych.   
+<sup>2</sup> wersja 1. x jest w trybie konserwacji. Ulepszenia są dostępne tylko w nowszych wersjach.   
+<sup>3</sup> obsługuje tylko programowanie w Azure Portal lub lokalnie na komputerach z systemem Windows.
 
 W tym artykule opisano niektóre różnice między różnymi wersjami, sposoby tworzenia poszczególnych wersji oraz zmiany wersji.
 
@@ -41,23 +38,23 @@ Więcej informacji, zobacz [Obsługiwane języki](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Uruchom w określonej wersji
 
-Domyślnie aplikacje funkcji utworzone w Azure Portal i przez interfejs wiersza polecenia platformy Azure są ustawione na wersję 2. x. Jeśli to możliwe, należy użyć tej wersji środowiska uruchomieniowego. Jeśli zachodzi taka potrzeba, można nadal uruchamiać aplikację funkcji w środowisku uruchomieniowym w wersji 1. x. Wersję środowiska uruchomieniowego można zmienić tylko po utworzeniu aplikacji funkcji, ale przed dodaniem jakichkolwiek funkcji. Aby dowiedzieć się, jak przypiąć wersję środowiska uruchomieniowego do wersji 1. x, zobacz [Wyświetlanie i aktualizowanie bieżącej wersji środowiska uruchomieniowego](set-runtime-version.md#view-and-update-the-current-runtime-version).
-
-Możesz również uaktualnić program do wersji 3. x środowiska uruchomieniowego, które jest z niego w wersji zapoznawczej. Zrób tak, jeśli musisz mieć możliwość uruchamiania funkcji w programie .NET Core 3. x. Aby dowiedzieć się, jak przeprowadzić uaktualnienie do wersji 3. x, zobacz [Wyświetlanie i aktualizowanie bieżącego środowiska uruchomieniowego](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Domyślnie aplikacje funkcji utworzone w Azure Portal i przez interfejs wiersza polecenia platformy Azure są ustawione na wersję 2. x. Tę wersję można zmienić w razie konieczności. Można zmienić wersję środowiska uruchomieniowego na 1. x po utworzeniu aplikacji funkcji, ale przed dodaniem jakichkolwiek funkcji.  Przechodzenie między 2. x i 3. x jest dozwolone nawet w przypadku aplikacji, które mają funkcje, ale nadal zalecamy najpierw przetestować w nowej aplikacji.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrowanie z 1. x do nowszych wersji
 
-Możesz zdecydować się na migrację istniejącej aplikacji w celu użycia wersji 1. x środowiska uruchomieniowego, aby zamiast tego użyć wersji 2. x. Większość zmian, które należy wprowadzić, dotyczy zmian w środowisku uruchomieniowym języka, takich jak C# zmiany interfejsu API między .NET Framework 4,7 i .NET Core 2. Należy również upewnić się, że kod i biblioteki są zgodne z wybranym środowiskiem uruchomieniowym języka. Na koniec pamiętaj o uwzględnieniu wszelkich zmian w wyzwalaczu, powiązaniach i funkcjach wyróżnionych poniżej. Aby uzyskać najlepsze wyniki migracji, należy utworzyć nową aplikację funkcji dla wersji 2. x i przenieść istniejący kod funkcji w wersji 1. x do nowej aplikacji.  
+Możesz zdecydować się na migrację istniejącej aplikacji tak, aby korzystała z wersji 1. x środowiska uruchomieniowego w celu użycia nowszej wersji. Większość zmian, które należy wprowadzić, dotyczy zmian w środowisku uruchomieniowym języka, takich jak C# zmiany interfejsu API między .NET Framework 4,7 i .NET Core. Należy również upewnić się, że kod i biblioteki są zgodne z wybranym środowiskiem uruchomieniowym języka. Na koniec pamiętaj o uwzględnieniu wszelkich zmian w wyzwalaczu, powiązaniach i funkcjach wyróżnionych poniżej. W celu uzyskania najlepszych wyników migracji należy utworzyć nową aplikację funkcji w nowej wersji i przenieść istniejący kod funkcji w wersji 1. x do nowej aplikacji.  
 
-### <a name="changes-in-triggers-and-bindings"></a>Zmiany w wyzwalaczach i powiązaniach
+Chociaż można przeprowadzić uaktualnienie "w miejscu", ręcznie aktualizując konfigurację aplikacji, przechodząc od 1. x do nowszej wersji, zawiera pewne istotne zmiany. Na przykład w programie C#obiekt debugowania został zmieniony z `TraceWriter` na `ILogger`. Tworząc nowy projekt w wersji 3. x, rozpoczynasz pracę od zaktualizowanych funkcji w oparciu o najnowsze szablony w wersji 3. x.
 
-Wersja 2. x wymaga zainstalowania rozszerzeń dla określonych wyzwalaczy i powiązań używanych przez funkcje w aplikacji. Jedyny wyjątek dla tych wyzwalaczy HTTP i Timer, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [Rejestrowanie i instalowanie rozszerzeń powiązań](./functions-bindings-register.md).
+### <a name="changes-in-triggers-and-bindings-after-version-1x"></a>Zmiany w wyzwalaczach i powiązaniach po wersji 1. x
 
-Wprowadzono również pewne zmiany w `function.json` lub atrybuty funkcji między wersjami. Na przykład właściwość `path` centrum zdarzeń jest teraz `eventHubName`. W [istniejącej tabeli powiązań](#bindings) znajdziesz linki do dokumentacji dla każdego powiązania.
+Począwszy od wersji 2. x, należy zainstalować rozszerzenia dla określonych wyzwalaczy i powiązań używanych przez funkcje w aplikacji. Jedyny wyjątek dla tych wyzwalaczy HTTP i Timer, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [Rejestrowanie i instalowanie rozszerzeń powiązań](./functions-bindings-register.md).
 
-### <a name="changes-in-features-and-functionality"></a>Zmiany w funkcjach i funkcjach
+Istnieją także pewne zmiany w *funkcji Function. JSON* lub atrybuty funkcji między wersjami. Na przykład właściwość `path` centrum zdarzeń jest teraz `eventHubName`. W [istniejącej tabeli powiązań](#bindings) znajdziesz linki do dokumentacji dla każdego powiązania.
 
-Kilka funkcji, które zostały również usunięte, zaktualizowane lub zastąpione w nowej wersji. Ta sekcja zawiera szczegółowe informacje o zmianach, które są widoczne w wersji 2. x po użyciu wersji 1. x.
+### <a name="changes-in-features-and-functionality-after-version-1x"></a>Zmiany w funkcjach i funkcjach po wersji 1. x
+
+Kilka funkcji zostało usuniętych, zaktualizowanych lub zastąpionych po wersji 1. x. Ta sekcja zawiera szczegółowe informacje o zmianach, które są widoczne w nowszych wersjach po użyciu wersji 1. x.
 
 W wersji 2. x wprowadzono następujące zmiany:
 
@@ -79,9 +76,46 @@ W wersji 2. x wprowadzono następujące zmiany:
 
 * Format adresu URL elementu webhook wyzwalacza Event Grid został zmieniony na `https://{app}/runtime/webhooks/{triggerName}`.
 
-### <a name="migrating-a-locally-developed-application"></a>Migrowanie aplikacji opracowanej lokalnie
+## <a name="migrating-from-2x-to-3x"></a>Migrowanie z 2. x do 3. x
 
-Istnieje możliwość, że istniejące projekty aplikacji funkcji są opracowywane lokalnie przy użyciu wersji 1. x środowiska uruchomieniowego. Aby uaktualnić do wersji 2. x, należy utworzyć projekt aplikacji funkcji lokalnych dla wersji 2. x i przenieść istniejący kod do nowej aplikacji. Możesz ręcznie zaktualizować istniejący projekt i kod, sortując uaktualnienie "w miejscu". Istnieje jednak wiele innych ulepszeń między wersjami 1. x i 2. x, które nadal mogą być potrzebne. Na przykład, w C# obiekcie debugowania został zmieniony z `TraceWriter` na `ILogger`. Utworzenie nowego projektu w wersji 2. x, rozpoczyna się od zaktualizowania funkcji na podstawie najnowszych szablonów w wersji 2. x.
+Azure Functions wersja 3. x jest wysoce wstecznie zgodna z wersją 2. x.  Wiele aplikacji powinno być w stanie bezpiecznie uaktualnić do 3. x bez wprowadzania żadnych zmian w kodzie.  Podczas przejścia do 3. x zaleca się uruchomienie obszernych testów przed zmianą wersji głównej w aplikacjach produkcyjnych.
+
+### <a name="breaking-changes-between-2x-and-3x"></a>Istotne zmiany z przedziału od 2. x do 3. x
+
+Poniżej znajdują się informacje o zmianach, które należy znać przed uaktualnieniem aplikacji 2. x do wersji 3. x.
+
+#### <a name="javascript"></a>JavaScript
+
+* Powiązania wyjściowe przypisane przez `context.done` lub wartości zwracane teraz zachowują się tak samo jak ustawienie w `context.bindings`.
+
+* Obiekt wyzwalacza czasomierza jest camelCase zamiast PascalCase
+
+* Funkcja wyzwalana przez centrum zdarzeń z `dataType` plikiem binarnym będzie otrzymywać tablicę `binary` zamiast `string`.
+
+* Nie można już uzyskać dostępu do ładunku żądania HTTP za pośrednictwem `context.bindingData.req`.  Nadal można uzyskać do niego dostęp jako parametr wejściowy, `context.req`i `context.bindings`.
+
+* Program Node. js 8 nie jest już obsługiwany i nie zostanie uruchomiony w funkcjach 3. x.
+
+#### <a name="net"></a>.NET
+
+* [Operacje serwera synchronicznego są domyślnie wyłączone](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
+
+### <a name="changing-version-of-apps-in-azure"></a>Zmiana wersji aplikacji na platformie Azure
+
+Wersja środowiska uruchomieniowego funkcji używanych przez opublikowane aplikacje na platformie Azure jest określana przez ustawienie aplikacji [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) . Obsługiwane są następujące główne wartości wersji środowiska uruchomieniowego:
+
+| Wartość | Cel środowiska uruchomieniowego |
+| ------ | -------- |
+| `~3` | wersji |
+| `~2` | 2.x |
+| `~1` | 1.x |
+
+>[!IMPORTANT]
+> Nie zmieniaj arbitralnie tego ustawienia, ponieważ mogą być wymagane inne zmiany ustawień aplikacji i zmiany w kodzie funkcji.
+
+### <a name="locally-developed-application-versions"></a>Wersje aplikacji opracowane lokalnie
+
+Następujące aktualizacje funkcji można wprowadzać lokalnie zmiany wersji aplikacji.
 
 #### <a name="visual-studio-runtime-versions"></a>Wersje środowiska uruchomieniowego programu Visual Studio
 
@@ -97,21 +131,56 @@ W programie Visual Studio podczas tworzenia projektu wybierana jest wersja środ
 ##### <a name="version-2x"></a>Wersja 2. x
 
 ```xml
-<TargetFramework>netcoreapp2.2</TargetFramework>
+<TargetFramework>netcoreapp2.1</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-Podczas debugowania lub publikowania projektu jest używana poprawna wersja środowiska uruchomieniowego.
+##### <a name="version-3x"></a>Wersja 3. x
+
+```xml
+<TargetFramework>netcoreapp3.1</TargetFramework>
+<AzureFunctionsVersion>v3</AzureFunctionsVersion>
+```
+
+> [!NOTE]
+> Azure Functions 3. x i .NET wymaga, aby rozszerzenie `Microsoft.Sdk.NET.Functions` było przynajmniej `3.0.0`.
+
+###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Aktualizowanie aplikacji 2. x na 3. x w programie Visual Studio
+
+Istnieje możliwość otwarcia istniejącej funkcji docelowej 2. x i przejścia do 3. x poprzez edycję pliku `.csproj` i zaktualizowanie powyższych wartości.  Program Visual Studio automatycznie zarządza wersjami środowiska uruchomieniowego na podstawie metadanych projektu.  Jednak jest możliwe, jeśli nigdy nie utworzono aplikacji 3. x, a program Visual Studio nie ma jeszcze szablonów i środowiska uruchomieniowego dla 3. x na komputerze.  Może się to stać z błędem, takim jak "Brak dostępnego środowiska uruchomieniowego funkcji pasującego do wersji określonej w projekcie".  Aby pobrać najnowsze szablony i środowisko uruchomieniowe, przejdź przez środowisko, aby utworzyć nowy projekt funkcji.  Po wyświetleniu okna Wybieranie wersji i szablonu Zaczekaj, aż program Visual Studio zakończy pobieranie najnowszych szablonów.  Po udostępnieniu i wyświetleniu najnowszych szablonów programu .NET Core 3 należy mieć możliwość uruchamiania i debugowania dowolnego projektu skonfigurowanego dla wersji 3. x.
+
+> [!IMPORTANT]
+> Funkcje w wersji 3. x można opracowywać tylko w programie Visual Studio, jeśli jest używany program w wersji 16,4 lub nowszej.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code i Azure Functions Core Tools
 
-[Azure Functions Core Tools](functions-run-local.md) jest używany do tworzenia wierszy poleceń, a także przez [rozszerzenie Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) do Visual Studio Code. Aby opracowywać wersję 2. x, Zainstaluj wersję 2. x podstawowych narzędzi. Programowanie w wersji 1. x wymaga wersji 1. x podstawowych narzędzi. Aby uzyskać więcej informacji, zobacz [instalowanie Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
+[Azure Functions Core Tools](functions-run-local.md) jest używany do tworzenia wierszy poleceń, a także przez [rozszerzenie Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) do Visual Studio Code. Aby opracowywać wersję 3. x, Zainstaluj wersję 3. x podstawowych narzędzi. Wersja 2. x programowanie wymaga wersji 2. x podstawowych narzędzi i tak dalej. Aby uzyskać więcej informacji, zobacz [instalowanie Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
 
-Na potrzeby tworzenia Visual Studio Code może być również konieczne zaktualizowanie ustawień użytkownika dla `azureFunctions.projectRuntime`, aby odpowiadały zainstalowanej wersji narzędzi.  To ustawienie powoduje także aktualizację szablonów i języków używanych podczas tworzenia aplikacji funkcji.
+Na potrzeby tworzenia Visual Studio Code może być również konieczne zaktualizowanie ustawień użytkownika dla `azureFunctions.projectRuntime`, aby odpowiadały zainstalowanej wersji narzędzi.  To ustawienie powoduje także aktualizację szablonów i języków używanych podczas tworzenia aplikacji funkcji.  Aby utworzyć aplikacje w `~3` należy zaktualizować ustawienia użytkownika `azureFunctions.projectRuntime` do `~3`.
 
-### <a name="changing-version-of-apps-in-azure"></a>Zmiana wersji aplikacji na platformie Azure
+![Ustawienie Azure Functions środowiska uruchomieniowego rozszerzenia](./media/functions-versions/vs-code-version-runtime.png)
 
-Wersja środowiska uruchomieniowego funkcji używanych przez opublikowane aplikacje na platformie Azure jest określana przez ustawienie aplikacji [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) . Wartość `~2` jest przeznaczona dla środowiska uruchomieniowego w wersji 2. x i `~1` jako wersja 1. x środowiska uruchomieniowego. Nie zmieniaj arbitralnie tego ustawienia, ponieważ prawdopodobnie wymagane są inne zmiany ustawień aplikacji i zmiany kodu w Twoich funkcjach. Aby dowiedzieć się więcej o zalecanym sposobie migrowania aplikacji funkcji do innej wersji środowiska uruchomieniowego, zobacz [jak kierować Azure Functions wersjami środowiska uruchomieniowego](set-runtime-version.md).
+#### <a name="maven-and-java-apps"></a>Aplikacje Maven i Java
+
+Aplikacje Java można migrować z wersji 2. x do 3. x przez [zainstalowanie wersji 3. x podstawowych narzędzi](functions-run-local.md#install-the-azure-functions-core-tools) wymaganych do lokalnego uruchamiania programu.  Po sprawdzeniu, czy aplikacja działa prawidłowo uruchomiona lokalnie w wersji 3. x, zaktualizuj plik `POM.xml` aplikacji, aby zmodyfikować ustawienie `FUNCTIONS_EXTENSION_VERSION` na `~3`, jak w poniższym przykładzie:
+
+```xml
+<configuration>
+    <resourceGroup>${functionResourceGroup}</resourceGroup>
+    <appName>${functionAppName}</appName>
+    <region>${functionAppRegion}</region>
+    <appSettings>
+        <property>
+            <name>WEBSITE_RUN_FROM_PACKAGE</name>
+            <value>1</value>
+        </property>
+        <property>
+            <name>FUNCTIONS_EXTENSION_VERSION</name>
+            <value>~3</value>
+        </property>
+    </appSettings>
+</configuration>
+```
 
 ## <a name="bindings"></a>Powiązania
 

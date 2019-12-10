@@ -1,5 +1,6 @@
 ---
-title: Dynamicznie dostosowuj interfejs użytkownika Azure Active Directory B2C przy użyciu zasad niestandardowych | Microsoft Docs
+title: Dynamiczne dostosowywanie interfejsu użytkownika przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Obsługa wielu oznaczeń znakowania przy użyciu zawartości HTML5/CSS, która zmienia się dynamicznie w czasie wykonywania.
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 43c0da3ca8fa4b2f74d48b0e202cc56bc8b9406c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227217"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950242"
 ---
-# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurowanie interfejsu użytkownika z zawartością dynamiczną przy użyciu zasad niestandardowych
+# <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Skonfiguruj interfejs użytkownika z zawartością dynamiczną przy użyciu zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -37,7 +38,7 @@ W tym artykule omówiono sposób dostosowywania interfejsu użytkownika Azure AD
 
 W przypadku zasad niestandardowych definicja zawartości definiuje identyfikator URI strony HTML5, który jest używany do określonego kroku interfejsu użytkownika (na przykład strony logowania lub rejestracji). Zasady podstawowe definiują domyślny wygląd i działanie, wskazując identyfikator URI plików HTML5 (w CSS). W zasadach rozszerzenia można zmodyfikować wygląd i działanie, zastępując LoadUri pliku HTML5. Definicje zawartości zawierają adresy URL do zawartości zewnętrznej zdefiniowanej przy użyciu plików HTML5/CSS, zgodnie z potrzebami.
 
-Sekcja zawiera serię elementów XML `ContentDefinition` `ContentDefinitions` . Atrybut `ContentDefinition` ID elementu określa typ strony, która odnosi się do definicji zawartości. Oznacza to, że element definiuje kontekst, który ma zostać zastosowany niestandardowy szablon HTML5/CSS. W poniższej tabeli opisano zestaw identyfikatorów definicji zawartości rozpoznawanych przez aparat IEF oraz typy stron, które odnoszą się do nich.
+Sekcja `ContentDefinitions` zawiera serię `ContentDefinition` elementów XML. Atrybut ID elementu `ContentDefinition` określa typ strony, która odnosi się do definicji zawartości. Oznacza to, że element definiuje kontekst, który ma zostać zastosowany niestandardowy szablon HTML5/CSS. W poniższej tabeli opisano zestaw identyfikatorów definicji zawartości rozpoznawanych przez aparat IEF oraz typy stron, które odnoszą się do nich.
 
 | Identyfikator definicji zawartości | Domyślny szablon HTML5| Opis |
 |-----------------------|--------|-------------|
@@ -47,7 +48,7 @@ Sekcja zawiera serię elementów XML `ContentDefinition` `ContentDefinitions` . 
 | *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Zapomniane hasło strony**. Ta strona zawiera formularz, który użytkownicy muszą wykonać w celu zainicjowania resetowania hasła.  |
 | *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona logowania do konta lokalnego**. Ta strona zawiera formularz służący do logowania się przy użyciu konta lokalnego na podstawie adresu e-mail lub nazwy użytkownika. Formularz może zawierać pole wprowadzania tekstu i pole wprowadzania hasła. |
 | *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona rejestracji konta lokalnego**. Ta strona zawiera formularz służący do tworzenia konta lokalnego na podstawie adresu e-mail lub nazwy użytkownika. Formularz może zawierać różne kontrolki danych wejściowych, na przykład: pole wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, pola rozwijane z pojedynczym wybieraniem i pola wyboru z wieloma zaznaczeniami. |
-| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Strona uwierzytelniania**wieloskładnikowego. Na tej stronie użytkownicy mogą weryfikować numery telefonów (za pomocą tekstu lub głosu) podczas rejestracji lub logowania. |
+| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie użytkownicy mogą weryfikować numery telefonów (za pomocą tekstu lub głosu) podczas rejestracji lub logowania. |
 | *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona rejestracji konta społecznościowego**. Ta strona zawiera formularz, który użytkownicy muszą zakończyć podczas rejestrowania się przy użyciu istniejącego konta od dostawcy tożsamości społecznościowej. Ta strona jest podobna do poprzedniej strony rejestracji konta społecznościowego, z wyjątkiem pól wprowadzania hasła. |
 | *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Strona aktualizacji profilu**. Ta strona zawiera formularz, do którego użytkownicy mogą uzyskać dostęp w celu zaktualizowania swojego profilu. Ta strona jest podobna do strony rejestracji konta społecznościowego, z wyjątkiem pól wprowadzania hasła. |
 | *api.signuporsignin* | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Ujednolicona Strona rejestracji lub logowania**. Ta strona obsługuje proces tworzenia konta i logowania użytkownika. Użytkownicy mogą korzystać z dostawców tożsamości przedsiębiorstwa, dostawców tożsamości społecznościowych, takich jak Facebook, Google + lub konta lokalnego.  |
@@ -62,13 +63,13 @@ W tym instruktażu zawarto następujące instrukcje:
 * Dodaj niestandardowy szablon HTML5, _Unified. cshtml_.
 * Opublikuj swoją aplikację sieci Web, aby Azure App Service.
 * Ustaw współużytkowanie zasobów między źródłami (CORS) dla aplikacji sieci Web.
-* Zastąp `LoadUri` elementy, aby wskazywały na plik HTML5.
+* Zastąp elementy `LoadUri`, aby wskazywały na plik HTML5.
 
-## <a name="step-1-create-an-aspnet-web-app"></a>Krok 1: Tworzenie aplikacji internetowej platformy ASP.NET
+## <a name="step-1-create-an-aspnet-web-app"></a>Krok 1. Tworzenie aplikacji sieci Web ASP.NET
 
-1. W programie Visual Studio Utwórz projekt, wybierając pozycję **plik** > **Nowy** > **projekt**.
+1. W programie Visual Studio Utwórz projekt, wybierając kolejno pozycje **plik** > **Nowy** > **projekt**.
 
-2. W oknie **Nowy projekt**  > wybierz pozycję **Visual C#**  **Web** > **ASP.NET Core Web Application (.NET Core)** .
+2. W oknie **Nowy projekt** wybierz pozycję **Visual C#**  > **Web** > **ASP.NET Core aplikacji sieci Web (.NET Core)** .
 
 3. Nadaj nazwę aplikacji (na przykład *contoso. AADB2C. UI*), a następnie wybierz **przycisk OK**.
 
@@ -80,14 +81,14 @@ W tym instruktażu zawarto następujące instrukcje:
 
     ![Wybieranie szablonu aplikacji sieci Web](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. Wybierz **OK** do tworzenia projektu.
+6. Wybierz przycisk **OK**, aby utworzyć projekt.
 
-## <a name="step-2-create-mvc-view"></a>Krok 2: Utwórz widok MVC
-### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1. Pobierz wbudowany szablon HTML5 B2C
-Niestandardowy szablon HTML5 jest oparty na Azure AD B2C wbudowanym szablonie HTML5. Możesz pobrać ujednolicony [plik HTML](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) lub pobrać szablon z [pakietu Starter Pack](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Ten plik HTML5 służy do tworzenia ujednoliconej strony rejestracji lub logowania.
+## <a name="step-2-create-mvc-view"></a>Krok 2. Tworzenie widoku MVC
+### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2,1: pobieranie wbudowanego szablonu HTML5 B2C
+Niestandardowy szablon HTML5 jest oparty na Azure AD B2C wbudowanym szablonie HTML5. Możesz pobrać [ujednolicony plik HTML](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) lub pobrać szablon z [pakietu Starter Pack](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Ten plik HTML5 służy do tworzenia ujednoliconej strony rejestracji lub logowania.
 
-### <a name="step-22-add-the-mvc-view"></a>Krok 2.2. Dodawanie widoku MVC
-1. Kliknij prawym przyciskiem myszy widok/folder macierzysty, a następnie **Dodaj** > **nowy element**.
+### <a name="step-22-add-the-mvc-view"></a>Krok 2,2: Dodawanie widoku MVC
+1. Kliknij prawym przyciskiem myszy widok/folder macierzysty, a następnie **dodaj** > **nowy element**.
 
     ![Element menu Dodaj nowy element w programie Visual Studio](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
 
@@ -119,11 +120,11 @@ Niestandardowy szablon HTML5 jest oparty na Azure AD B2C wbudowanym szablonie HT
 
     ![ujednolicony plik. cshtml po dodaniu HTML5](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
 
-### <a name="step-23-change-the-background-image"></a>Krok 2,3: Zmień obraz tła
+### <a name="step-23-change-the-background-image"></a>Krok 2,3: zmiana obrazu tła
 
-`ID` `src` Znajdź element, który zawiera wartość *background_background_image* **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** , a następnie Zastąp wartość lub innym obrazem tła, który ma być używany. `<img>`
+Znajdź `<img>` element, który zawiera `ID` wartość *background_background_image*, a następnie Zastąp wartość `src` wartością **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** lub dowolnym innym obrazem tła, który ma być używany.
 
-![img, element z niestandardową wartością src background_background_image](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
+![img, element z niestandardową background_background_image wartość src](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
 ### <a name="step-24-add-your-view-to-the-mvc-controller"></a>Krok 2,4: Dodawanie widoku do kontrolera MVC
 
@@ -141,12 +142,12 @@ Niestandardowy szablon HTML5 jest oparty na Azure AD B2C wbudowanym szablonie HT
 
     ![Zmień kontroler, aby renderować widok](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-controller-view.png)
 
-2. Debuguj aplikację sieci Web i upewnij się, że jest  dostępna jednolita strona (na przykład `http://localhost:<Port number>/Home/unified`).
+2. Debuguj aplikację sieci Web i upewnij się, że jest dostępna _jednolita_ strona (na przykład `http://localhost:<Port number>/Home/unified`).
 
-### <a name="step-25-publish-to-azure"></a>Krok 2,5: Publikowanie na platformie Azure
+### <a name="step-25-publish-to-azure"></a>Krok 2,5: publikowanie na platformie Azure
 1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt **contoso. AADB2C. UI** , a następnie wybierz pozycję **Publikuj**.
 
-    ![Publikuj w Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
+    ![Publikowanie w usłudze Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
 
 2. Wybierz kafelek **App Service Microsoft Azure** , a następnie wybierz pozycję **Publikuj**.
 
@@ -165,9 +166,9 @@ Niestandardowy szablon HTML5 jest oparty na Azure AD B2C wbudowanym szablonie HT
 
     Po zakończeniu procesu tworzenia Kreator opublikuje aplikację sieci Web ASP.NET na platformie Azure, a następnie uruchomi aplikację w domyślnej przeglądarce.
 
-5. Skopiuj adres URL ujednoliconej  strony (na przykład _https://< APP_NAME >. azurewebsites. net/Home/Unified_).
+5. Skopiuj adres URL _ujednoliconej_ strony (na przykład _https://< APP_NAME >. azurewebsites. net/Home/Unified_).
 
-## <a name="step-3-configure-cors-in-azure-app-service"></a>Krok 3: Konfigurowanie mechanizmu CORS w Azure App Service
+## <a name="step-3-configure-cors-in-azure-app-service"></a>Krok 3. Konfigurowanie mechanizmu CORS w Azure App Service
 1. W [Azure Portal](https://portal.azure.com/)wybierz pozycję **App Services**, a następnie wybierz nazwę aplikacji interfejsu API.
 
     ![Wybierz aplikację interfejsu API w Azure Portal](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS1.png)
@@ -187,8 +188,8 @@ Niestandardowy szablon HTML5 jest oparty na Azure AD B2C wbudowanym szablonie HT
 
     Po wybraniu opcji **Zapisz**aplikacja interfejsu API akceptuje wywołania języka JavaScript z określonych adresów URL.
 
-## <a name="step-4-html5-template-validation"></a>Krok 4: Walidacja szablonu HTML5
-Twój szablon HTML5 jest gotowy do użycia. Nie jest jednak dostępna w `ContentDefinition` kodzie. Przed dodaniem `ContentDefinition` do zasad niestandardowych upewnij się, że:
+## <a name="step-4-html5-template-validation"></a>Krok 4. Sprawdzanie poprawności szablonu HTML5
+Twój szablon HTML5 jest gotowy do użycia. Nie jest to jednak dostępne w kodzie `ContentDefinition`. Przed dodaniem `ContentDefinition` do zasad niestandardowych upewnij się, że:
 * Zawartość jest zgodna z językiem HTML5 i jest dostępna.
 * Na serwerze zawartości włączono funkcję CORS.
 
@@ -196,26 +197,26 @@ Twój szablon HTML5 jest gotowy do użycia. Nie jest jednak dostępna w `Content
     >Aby sprawdzić, czy witryna, w której jest obsługiwana zawartość, włączyła funkcję CORS i może testować żądania CORS, przejdź do witryny sieci Web [test-CORS.org](https://test-cors.org/) .
 
 * Obsługiwana zawartość jest zabezpieczona za pośrednictwem **protokołu HTTPS**.
-* Używasz bezwzględnych *adresów URL*, takich `https://yourdomain/content`jak, dla wszystkich linków, zawartości CSS i obrazów.
+* Używasz *bezwzględnych adresów URL*, takich jak `https://yourdomain/content`, dla wszystkich linków, zawartości CSS i obrazów.
 
 ## <a name="step-5-configure-your-content-definition"></a>Krok 5. Konfigurowanie definicji zawartości
-Aby skonfigurować `ContentDefinition`program, wykonaj następujące czynności:
+Aby skonfigurować `ContentDefinition`, wykonaj następujące czynności:
 1. Otwórz podstawowy plik zasad (na przykład *TrustFrameworkBase. XML*).
 
-2. Wyszukaj element, a następnie skopiuj całą zawartość `<ContentDefinitions>` węzła. `<ContentDefinitions>`
+2. Wyszukaj element `<ContentDefinitions>`, a następnie skopiuj całą zawartość węzła `<ContentDefinitions>`.
 
-3. Otwórz plik rozszerzenia (na przykład *TrustFrameworkExtensions. XML*), a następnie wyszukaj `<BuildingBlocks>` element. Jeśli element nie istnieje, Dodaj go.
+3. Otwórz plik rozszerzenia (na przykład *TrustFrameworkExtensions. XML*), a następnie wyszukaj element `<BuildingBlocks>`. Jeśli element nie istnieje, Dodaj go.
 
-4. Wklej całą zawartość `<ContentDefinitions>` węzła skopiowaną jako element podrzędny `<BuildingBlocks>` elementu.
+4. Wklej całą zawartość węzła `<ContentDefinitions>` skopiowaną jako element podrzędny elementu `<BuildingBlocks>`.
 
-5. `<ContentDefinition>` Wyszukaj węzeł `Id="api.signuporsignin"` zawierający kod XML, który został skopiowany.
+5. Wyszukaj węzeł `<ContentDefinition>`, który zawiera `Id="api.signuporsignin"` w skopiowanym formacie XML.
 
-6. Zmień wartość `LoadUri` z z _~/tenant/default/Unified_ na _https://< APP_NAME >. azurewebsites. net/Home/Unified_.
+6. Zmień wartość `LoadUri` z _~/tenant/default/Unified_ na _https://< APP_NAME >. azurewebsites. net/Home/Unified_.
     Zasady niestandardowe powinny wyglądać następująco:
 
     ![Przykład fragmentu kodu XML z wyróżnionym elementem LoadUri](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6: Przekazywanie zasad do dzierżawy
+## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6. przekazywanie zasad do dzierżawy
 1. W [Azure Portal](https://portal.azure.com)przejdź do [kontekstu Azure AD B2C dzierżawy](active-directory-b2c-navigate-to-b2c-context.md), a następnie wybierz pozycję **Azure AD B2C**.
 
 2. Wybierz pozycję **platforma obsługi tożsamości**.
@@ -228,7 +229,7 @@ Aby skonfigurować `ContentDefinition`program, wykonaj następujące czynności:
 
 6. Przekaż plik *TrustFrameworkExtensions. XML* i upewnij się, że przeszedł sprawdzanie poprawności.
 
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7: Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
+## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7. Testowanie zasad niestandardowych za pomocą polecenia Uruchom teraz
 1. Wybierz pozycję **Azure AD B2C ustawienia**, a następnie wybierz pozycję **platforma obsługi tożsamości**.
 
     >[!NOTE]
@@ -239,15 +240,15 @@ Aby skonfigurować `ContentDefinition`program, wykonaj następujące czynności:
 
     ![Zasady rejestracji lub logowania](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
 
-## <a name="step-8-add-dynamic-content"></a>Krok 8: Dodaj zawartość dynamiczną
+## <a name="step-8-add-dynamic-content"></a>Krok 8. Dodawanie zawartości dynamicznej
 Zmień tło na podstawie parametru ciągu zapytania o nazwie _campaignId_. Aplikacja RP (aplikacje internetowe i mobilne) wysyła parametr do Azure AD B2C. Zasady odczytuje parametr i wysyła jego wartość do szablonu HTML5.
 
-### <a name="step-81-add-a-content-definition-parameter"></a>Krok 8,1: Dodaj parametr definicji zawartości
+### <a name="step-81-add-a-content-definition-parameter"></a>Krok 8,1: Dodawanie parametru definicji zawartości
 
-`ContentDefinitionParameters` Dodaj element, wykonując następujące czynności:
+Dodaj element `ContentDefinitionParameters`, wykonując następujące czynności:
 1. Otwórz plik *SignUpOrSignin* zasad (na przykład *SignUpOrSignin. XML*).
 
-2. `<DefaultUserJourney>` W węźle`UserJourneyBehaviors` Dodaj węzeł:
+2. W węźle `<DefaultUserJourney>` Dodaj węzeł `UserJourneyBehaviors`:
 
     ```XML
     <RelyingParty>
@@ -261,10 +262,10 @@ Zmień tło na podstawie parametru ciągu zapytania o nazwie _campaignId_. Aplik
     </RelyingParty>
     ```
 
-### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>Krok 8,2: Zmień kod, aby akceptować parametr ciągu zapytania i zastąpić obraz tła
-Zmodyfikuj metodę HomeController `unified` , aby akceptowała parametr campaignId. Metoda sprawdza wartość parametru i odpowiednio ustawia `ViewData["background"]` zmienną.
+### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>Krok 8,2: zmiana kodu w celu zaakceptowania parametru ciągu zapytania i zamienienia obrazu tła
+Zmodyfikuj metodę `unified` HomeController, aby akceptowała parametr campaignId. Następnie metoda sprawdza wartość parametru i ustawia odpowiednio zmienną `ViewData["background"]`.
 
-1. Otwórz plik *Controllers\HomeController.cs* , a następnie zmień `unified` metodę, dodając następujący fragment kodu:
+1. Otwórz plik *Controllers\HomeController.cs* , a następnie zmień metodę `unified`, dodając następujący fragment kodu:
 
     ```csharp
     public IActionResult unified(string campaignId)
@@ -290,11 +291,11 @@ Zmodyfikuj metodę HomeController `unified` , aby akceptowała parametr campaign
 
     ```
 
-2. Znajdź element z identyfikatorem `background_background_image` iZastąp`src` wartość wartością. `@ViewData["background"]` `<img>`
+2. Znajdź `<img>` element z IDENTYFIKATORem `background_background_image`i Zastąp wartość `src` `@ViewData["background"]`.
 
     ![element img z wyróżnioną wartością src ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
-### <a name="83-upload-the-changes-and-publish-your-policy"></a>8,3: Przekazywanie zmian i publikowanie zasad
+### <a name="83-upload-the-changes-and-publish-your-policy"></a>8,3: przekazywanie zmian i publikowanie zasad
 1. Opublikuj projekt programu Visual Studio w celu Azure App Service.
 
 2. Przekaż zasady *SignUpOrSignin. XML* do Azure AD B2C.
@@ -317,7 +318,7 @@ Zmodyfikuj metodę HomeController `unified` , aby akceptowała parametr campaign
 
     ![Strona logowania do rejestracji z niestandardowym tłem obrazu w postaci Tokio](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
-## <a name="step-9-change-the-rest-of-the-user-journey"></a>Krok 9: Zmiana reszty podróży użytkownika
+## <a name="step-9-change-the-rest-of-the-user-journey"></a>Krok 9. zmiana reszty podróży użytkownika
 W przypadku wybrania linku **Utwórz konto teraz** na stronie logowania w przeglądarce zostanie wyświetlony domyślny obraz tła, a nie zdefiniowany obraz. Takie zachowanie występuje, ponieważ zmieniono tylko stronę rejestracji lub logowania. Aby zmienić resztę definicji zawartości z dowolnego potwierdzenia:
 1. Wróć do "krok 2" i wykonaj następujące czynności:
 
@@ -325,15 +326,15 @@ W przypadku wybrania linku **Utwórz konto teraz** na stronie logowania w przegl
 
     b. Skopiuj zawartość pliku.
 
-    c. Utwórz nowy widok, *selfasserted*.
+    d. Utwórz nowy widok, *selfasserted*.
 
     d. Dodaj *selfasserted* do kontrolera **macierzystego** .
 
 2. Wróć do "krok 4" i wykonaj następujące czynności:
 
-    a. W `<ContentDefinition>` zasadach rozszerzenia Znajdź węzeł zawierający `Id="api.selfasserted"`, `Id="api.localaccountsignup"`, i `Id="api.localaccountpasswordreset"`.
+    a. W zasadach rozszerzenia Znajdź węzeł `<ContentDefinition>`, który zawiera `Id="api.selfasserted"`, `Id="api.localaccountsignup"`i `Id="api.localaccountpasswordreset"`.
 
-    b. Ustaw atrybut na identyfikator URI *selfasserted.* `LoadUri`
+    b. Ustaw atrybut `LoadUri` na identyfikator URI *selfasserted* .
 
 3. Wróć do "krok 8,2," i Zmień kod, aby akceptował parametry ciągu zapytania, ale tym razem z funkcją *selfasserted* .
 
@@ -343,7 +344,7 @@ W przypadku wybrania linku **Utwórz konto teraz** na stronie logowania w przegl
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>Obowiązkowe Pobieranie kompletnych plików zasad i kodu
 * Po ukończeniu przewodnika [wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md) zalecamy utworzenie scenariusza przy użyciu własnych niestandardowych plików zasad. W odniesieniu do Twojej dokumentacji udostępniono [przykładowe pliki zasad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
-* Możesz pobrać kompletny kod z przykładowego [rozwiązania programu Visual Studio, aby uzyskać odwołanie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
+* Możesz pobrać kompletny kod z [przykładowego rozwiązania programu Visual Studio, aby uzyskać odwołanie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
 
 
 

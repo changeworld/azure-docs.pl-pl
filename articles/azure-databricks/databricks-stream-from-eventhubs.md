@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/23/2019
+ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121276"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951551"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Samouczek: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
 
@@ -56,7 +56,7 @@ Aby spełnić te wymagania, wystarczy wykonać kroki opisane w artykule [Create 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -101,7 +101,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
     Zaakceptuj pozostałe wartości domyślne poza następującymi:
 
    * Wprowadź nazwę klastra.
-   * W tym artykule Utwórz klaster z programem **6,0* Runtime.
+   * W tym artykule należy utworzyć klaster ze środowiskiem uruchomieniowym **6,0** .
    * Upewnij się, że jest zaznaczone pole wyboru **Zakończ po \_\_ min nieaktywności**. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
 
    Wybierz pozycję proces roboczy klastra i rozmiar węzła sterownika odpowiednie dla kryteriów technicznych i [budżetu](https://azure.microsoft.com/pricing/details/databricks/).
@@ -138,14 +138,10 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
 
    ![Okno dialogowe Dodawanie biblioteki](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Dodaj nową bibliotekę Zainstaluj nowe")
 
-2. Na stronie Nowa biblioteka dla opcji **Source** SELECT **Maven**. W polu **koordynuj**kliknij pozycję **pakiety wyszukiwania** dla pakietu, który chcesz dodać. Oto współrzędne Maven bibliotek używanych w tym samouczku:
+2. Na stronie Nowa biblioteka dla opcji **Source** SELECT **Maven**. Należy indywidualnie wprowadzić następujące współrzędne dla łącznika usługi Spark Event Hubs i interfejsu API usługi Twitter do **współrzędnych**.
 
-   * Łącznik Event Hubs platformy Spark — `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Łącznik Event Hubs platformy Spark — `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Interfejs API usługi Twitter — `org.twitter4j:twitter4j-core:4.0.7`
-
-     ![Podaj współrzędne Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Podaj współrzędne Maven")
-
-     ![Podaj współrzędne Maven](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Przeszukaj współrzędne Maven")
 
 3. Wybierz pozycję **Zainstaluj**.
 

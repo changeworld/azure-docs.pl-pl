@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie zmiany hasła przy użyciu zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+title: Konfigurowanie zmiany hasła przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Dowiedz się, jak umożliwić użytkownikom zmianę hasła przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fd1f623eecdd855dbfb8e27795f813db4d099f53
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065529"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950582"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie zmiany hasła przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -120,9 +121,9 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Active
     </ClaimsProviders>
     ```
 
-    Zamień `IdentityExperienceFrameworkAppId` na identyfikator aplikacji aplikacji IdentityExperienceFramework utworzonej w samouczku dotyczącym wymagań wstępnych. Zamień `ProxyIdentityExperienceFrameworkAppId` na identyfikator aplikacji aplikacji ProxyIdentityExperienceFramework, która została również utworzona wcześniej.
+    Zastąp `IdentityExperienceFrameworkAppId` IDENTYFIKATORem aplikacji aplikacji IdentityExperienceFramework utworzonej w samouczku dotyczącym wymagań wstępnych. Zastąp `ProxyIdentityExperienceFrameworkAppId` IDENTYFIKATORem aplikacji utworzonej wcześniej w aplikacji ProxyIdentityExperienceFramework.
 
-3. Element [UserJourney](userjourneys.md) definiuje ścieżkę, którą użytkownik podejmuje podczas korzystania z aplikacji. Dodaj element **UserJourneys** , jeśli nie istnieje z **UserJourney** identyfikowanego jako `PasswordChange`:
+3. Element [UserJourney](userjourneys.md) definiuje ścieżkę, którą użytkownik podejmuje podczas korzystania z aplikacji. Dodaj element **UserJourneys** , jeśli nie istnieje, przy użyciu **UserJourney** identyfikowanego jako `PasswordChange`:
 
     ```XML
     <UserJourneys>
@@ -153,18 +154,18 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Active
 4. Zapisz plik zasad *TrustFrameworkExtensions. XML* .
 5. Skopiuj pobrany plik *ProfileEdit. XML* z pakietem Starter i nadaj mu nazwę *ProfileEditPasswordChange. XML*.
 6. Otwórz nowy plik i zaktualizuj atrybut **PolicyId** z unikatową wartością. Ta wartość jest nazwą zasad. Na przykład *B2C_1A_profile_edit_password_change*.
-7. Zmodyfikuj atrybut **ReferenceId** w programie `<DefaultUserJourney>` , aby odpowiadał identyfikatorowi utworzonej przez Ciebie podróży użytkownika. Na przykład *PasswordChange*.
+7. Zmodyfikuj atrybut **ReferenceId** w `<DefaultUserJourney>`, aby był zgodny z identyfikatorem utworzonej przez siebie podróży użytkownika. Na przykład *PasswordChange*.
 8. Zapisz zmiany.
 
 Przykładowe zasady można znaleźć [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
 
 ## <a name="test-your-policy"></a>Testowanie zasad
 
-Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `https://jwt.ms` Azure AD B2C był w stanie przejrzeć oświadczenia w nim.
+Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token Azure AD B2C został zwrócony do `https://jwt.ms`, aby można było przejrzeć oświadczenia w nim.
 
-### <a name="upload-the-files"></a>Przekaż pliki
+### <a name="upload-the-files"></a>Przekazywanie plików
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **platforma obsługi tożsamości**.
@@ -173,10 +174,10 @@ Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `htt
 7. Kliknij pozycję **Przekaż**.
 8. Powtórz kroki od 5 do 7 dla pliku jednostki uzależnionej, np. *ProfileEditPasswordChange. XML*.
 
-### <a name="run-the-policy"></a>Uruchom zasady
+### <a name="run-the-policy"></a>Uruchamianie zasad
 
 1. Otwórz zasady, które zostały zmienione. Na przykład *B2C_1A_profile_edit_password_change*.
-2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token, należy `https://jwt.ms`wyświetlić **adres URL odpowiedzi** .
+2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token, **adres URL odpowiedzi** powinien zawierać `https://jwt.ms`.
 3. Kliknij pozycję **Uruchom teraz**. Zaloguj się przy użyciu acouunt, który został wcześniej utworzony. Teraz należy mieć możliwość zmiany hasła.
 
 ## <a name="next-steps"></a>Następne kroki

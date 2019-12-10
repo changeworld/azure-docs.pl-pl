@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: deab16f3b80ada12a7167e90922dc38f3012be91
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478687"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951585"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurowanie zbierania danych agenta dla Azure Monitor kontenerów
 
@@ -33,13 +33,13 @@ Poniżej przedstawiono ustawienia, które można skonfigurować w celu kontrolow
 
 |Klucz |Typ danych |Wartość |Opis |
 |----|----------|------|------------|
-|`schema-version` |Ciąg (z uwzględnieniem wielkości liter) |wersjach |Jest to wersja schematu używana przez agenta podczas analizowania tego ConfigMap. Obecnie obsługiwana wersja schematu to v1. Modyfikowanie tej wartości nie jest obsługiwane i zostanie odrzucone po obliczeniu ConfigMap.|
+|`schema-version` |Ciąg (z uwzględnieniem wielkości liter) |v1 |Jest to wersja schematu używana przez agenta podczas analizowania tego ConfigMap. Obecnie obsługiwana wersja schematu to v1. Modyfikowanie tej wartości nie jest obsługiwane i zostanie odrzucone po obliczeniu ConfigMap.|
 |`config-version` |Ciąg | | Program obsługuje możliwość śledzenia wersji tego pliku konfiguracji w systemie/repozytorium kontroli źródła. Maksymalna dozwolona liczba znaków wynosi 10, a wszystkie inne znaki są obcinane. |
-|`[log_collection_settings.stdout] enabled =` |Wartość logiczna | prawda lub FAŁSZ | Ta funkcja kontroluje, czy jest włączone zbieranie dzienników strumienia stdout. Gdy jest ustawiona na `true` i żadne obszary nazw nie są wykluczone dla zbierania dzienników stdout (ustawienie`log_collection_settings.stdout.exclude_namespaces` poniżej), dzienniki strumienia strumieniowego będą zbierane ze wszystkich kontenerów we wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
+|`[log_collection_settings.stdout] enabled =` |Wartość logiczna | true lub false | Ta funkcja kontroluje, czy jest włączone zbieranie dzienników strumienia stdout. Gdy jest ustawiona na `true` i żadne obszary nazw nie są wykluczone dla zbierania dzienników stdout (ustawienie`log_collection_settings.stdout.exclude_namespaces` poniżej), dzienniki strumienia strumieniowego będą zbierane ze wszystkich kontenerów we wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
 |`[log_collection_settings.stdout] exclude_namespaces =`|Ciąg | Tablica rozdzielona przecinkami |Tablica przestrzeni nazw Kubernetes, dla których dzienniki stdout nie będą zbierane. To ustawienie obowiązuje tylko wtedy, gdy `log_collection_settings.stdout.enabled` jest ustawiona na `true`. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Wartość logiczna | prawda lub FAŁSZ |Ta funkcja kontroluje, czy jest włączona kolekcja dzienników kontenera stderr. Gdy jest ustawiona na `true` i żadne obszary nazw nie są wykluczone na potrzeby zbierania dzienników stdout (ustawienie`log_collection_settings.stderr.exclude_namespaces`), dzienniki stderr będą zbierane ze wszystkich kontenerów we wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
+|`[log_collection_settings.stderr] enabled =` |Wartość logiczna | true lub false |Ta funkcja kontroluje, czy jest włączona kolekcja dzienników kontenera stderr. Gdy jest ustawiona na `true` i żadne obszary nazw nie są wykluczone na potrzeby zbierania dzienników stdout (ustawienie`log_collection_settings.stderr.exclude_namespaces`), dzienniki stderr będą zbierane ze wszystkich kontenerów we wszystkich węzłach w klastrze. Jeśli nie zostanie określony w ConfigMaps, wartość domyślna to `enabled = true`. |
 |`[log_collection_settings.stderr] exclude_namespaces =` |Ciąg |Tablica rozdzielona przecinkami |Tablica przestrzeni nazw Kubernetes, dla których dzienniki stderr nie będą zbierane. To ustawienie obowiązuje tylko wtedy, gdy `log_collection_settings.stdout.enabled` jest ustawiona na `true`. Jeśli nie zostanie określony w ConfigMap, wartość domyślna to `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Wartość logiczna | prawda lub FAŁSZ | To ustawienie steruje kolekcją zmiennych środowiskowych w każdym zasobniku/węzłach w klastrze i domyślnie `enabled = true`, gdy nie zostanie określony w ConfigMaps. Jeśli kolekcja zmiennych środowiskowych jest włączona globalnie, można ją wyłączyć dla określonego kontenera przez ustawienie zmiennej środowiskowej `AZMON_COLLECT_ENV` na **false** przy użyciu ustawienia pliku dockerfile lub w [pliku konfiguracyjnym](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) pod **env:** sekcja. Jeśli zbieranie zmiennych środowiskowych jest wyłączone globalnie, nie można włączyć kolekcji dla określonego kontenera (oznacza to, że jedynym przesłonięciem, który można zastosować na poziomie kontenera, jest wyłączenie kolekcji, gdy jest ona już włączona globalnie). |
+| `[log_collection_settings.env_var] enabled =` |Wartość logiczna | true lub false | To ustawienie steruje kolekcją zmiennych środowiskowych w każdym zasobniku/węzłach w klastrze i domyślnie `enabled = true`, gdy nie zostanie określony w ConfigMaps. Jeśli kolekcja zmiennych środowiskowych jest włączona globalnie, można ją wyłączyć dla określonego kontenera przez ustawienie zmiennej środowiskowej `AZMON_COLLECT_ENV` na **false** przy użyciu ustawienia pliku dockerfile lub w [pliku konfiguracji dla elementu pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) w sekcji **env:** . Jeśli zbieranie zmiennych środowiskowych jest wyłączone globalnie, nie można włączyć kolekcji dla określonego kontenera (oznacza to, że jedynym przesłonięciem, który można zastosować na poziomie kontenera, jest wyłączenie kolekcji, gdy jest ona już włączona globalnie). |
 
 ConfigMaps jest globalną listą, a do agenta może być zastosowany tylko jeden ConfigMap. Nie można ConfigMaps kolekcji.
 
@@ -63,13 +63,7 @@ Wykonaj następujące kroki, aby skonfigurować i wdrożyć plik konfiguracyjny 
     
     Zmiana konfiguracji może potrwać kilka minut, zanim zostanie ona uwzględniona, a wszystkie omsagent zostaną uruchomione ponownie. Ponowne uruchomienie jest ponownym uruchomieniem dla wszystkich omsagentch, a nie wszystkich ponownych uruchomień w tym samym czasie. Po zakończeniu ponownych uruchomień zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik: `configmap "container-azm-ms-agentconfig" created`.
 
-4. Utwórz ConfigMap, uruchamiając następujące polecenie polecenia kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
-    
-    Przykład: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    Zmiana konfiguracji może potrwać kilka minut, zanim zostanie ona uwzględniona, a wszystkie omsagent zostaną uruchomione ponownie. Ponowne uruchomienie jest ponownym uruchomieniem dla wszystkich omsagentch, a nie wszystkich ponownych uruchomień w tym samym czasie. Po zakończeniu ponownych uruchomień zostanie wyświetlony komunikat podobny do poniższego i zawiera wynik: `configmap "container-azm-ms-agentconfig" created`.
-
-## <a name="verify-configuration"></a>Weryfikuj konfigurację 
+## <a name="verify-configuration"></a>Zweryfikuj konfigurację 
 
 Aby sprawdzić, czy konfiguracja została pomyślnie zastosowana, użyj następującego polecenia, aby przejrzeć dzienniki z agenta pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Jeśli wystąpiły błędy konfiguracji z omsagentch, w danych wyjściowych zostaną wyświetlone błędy podobne do następujących:
 

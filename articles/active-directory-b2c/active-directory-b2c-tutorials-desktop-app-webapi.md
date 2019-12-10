@@ -1,6 +1,6 @@
 ---
-title: Samouczek — udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej — Azure Active Directory B2C | Microsoft Docs
-description: Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy Node.js i wywoływania go z aplikacji klasycznej platformy .NET.
+title: 'Samouczek: udzielanie dostępu do internetowego interfejsu API platformy Node. js z aplikacji klasycznej'
+description: Samouczek dotyczący sposobu używania Active Directory B2C do ochrony interfejsu API sieci Web Node. js i wywoływania go z aplikacji klasycznej platformy .NET.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 0cf9a0a13a1c16f5be6d82528849e6e2cc3d466d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f271dd23501aa0514faff29f638f695c80c844f2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641849"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949776"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Samouczek — udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 

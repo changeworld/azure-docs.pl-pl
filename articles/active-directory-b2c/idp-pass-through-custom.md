@@ -1,6 +1,7 @@
 ---
-title: Przekaż token dostępu za pomocą zasad niestandardowych do aplikacji w Azure Active Directory B2C
-description: Dowiedz się, jak przekazać token dostępu dla dostawców tożsamości OAuth 2.0 jako rolę w ramach zasad niestandardowych do aplikacji w Azure Active Directory B2C.
+title: Przekazywanie tokenu dostępu za pomocą zasad niestandardowych do aplikacji
+titleSuffix: Azure AD B2C
+description: Dowiedz się, jak przekazać token dostępu dla dostawców tożsamości OAuth 2,0 jako rolę w ramach niestandardowych zasad do aplikacji w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6795af0829a288c36cad5b848fed50a99dc1bfc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510129"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949844"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych do aplikacji w Azure Active Directory B2C
 
@@ -79,11 +80,11 @@ Azure AD B2C obsługuje przekazywanie tokenu dostępu dla dostawców tożsamośc
 
 ## <a name="test-your-policy"></a>Testowanie zasad
 
-Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `https://jwt.ms` Azure AD B2C był w stanie przejrzeć oświadczenia w nim.
+Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token Azure AD B2C został zwrócony do `https://jwt.ms`, aby można było przejrzeć oświadczenia w nim.
 
-### <a name="upload-the-files"></a>Przekaż pliki
+### <a name="upload-the-files"></a>Przekazywanie plików
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, klikając filtr **Directory + Subscription** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **platforma obsługi tożsamości**.
@@ -92,10 +93,10 @@ Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `htt
 7. Wybierz pozycję **Przekaż**.
 8. Powtórz kroki od 5 do 7 dla pliku jednostki uzależnionej, np. *SignUpOrSignIn. XML*.
 
-### <a name="run-the-policy"></a>Uruchom zasady
+### <a name="run-the-policy"></a>Uruchamianie zasad
 
 1. Otwórz zasady, które zostały zmienione. Na przykład *B2C_1A_signup_signin*.
-2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token w poniższym przykładzie, **adres URL odpowiedzi** powinien być widoczny `https://jwt.ms`.
+2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token w poniższym przykładzie, **adres URL odpowiedzi** powinien zawierać `https://jwt.ms`.
 3. Wybierz pozycję **Uruchom teraz**.
 
     Powinieneś zobaczyć coś podobnego do poniższego przykładu:
@@ -104,4 +105,4 @@ Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `htt
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tokenach w odniesieniu do [tokenów Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+Dowiedz się więcej o tokenach w [odniesieniu do tokenów Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).

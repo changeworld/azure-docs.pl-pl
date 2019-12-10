@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0479eba13fd747ea1bcab2672fce1df2156802e8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762706"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947590"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Uprawnienia na platformie Azure — wskaźnik
 
@@ -70,7 +70,7 @@ W poniższej tabeli przedstawiono role i dozwolone akcje na platformie Azure —
 >
 ## <a name="building-custom-rbac-roles"></a>Tworzenie niestandardowych ról RBAC
 
-Oprócz lub zamiast, przy użyciu wbudowanych ról RBAC, można utworzyć niestandardowe role RBAC dla platformy Azure. Niestandardowe role RBAC dla usługi Azure wskaźnikowej są tworzone w taki sam sposób, jak w przypadku tworzenia innych [niestandardowych ról RBAC platformy Azure](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) , na podstawie określonych uprawnień do zasobów usługi Azure wskaźnikowych.
+Oprócz lub zamiast, przy użyciu wbudowanych ról RBAC, można utworzyć niestandardowe role RBAC dla platformy Azure. Niestandardowe role kontroli dostępu do usługi Azure wskaźnikowego są tworzone w taki sam sposób, jak w przypadku tworzenia innych [niestandardowych ról RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) platformy Azure, na podstawie [określonych uprawnień do usługi Azure wskaźnikowego](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) i do [zasobów log Analytics platformy Azure](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
 ## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Zaawansowana kontrola RBAC danych przechowywanych na platformie Azure — wskaźnik
   

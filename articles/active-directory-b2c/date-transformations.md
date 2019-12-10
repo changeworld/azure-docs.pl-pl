@@ -1,6 +1,6 @@
 ---
-title: Przykładowe przekształcenie oświadczeń dla schematu struktury obsługi tożsamości Azure Active Directory B2C | Microsoft Docs
-description: Date przykłady transformacji oświadczeń dla schematu struktury obsługi tożsamości Azure Active Directory B2C.
+title: Data — przykłady transformacji oświadczeń dla zasad niestandardowych
+description: Date przykłady transformacji oświadczeń dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 13c3f3aaf54bc3fb8ef656b5c1ce227fa70cee0b
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936790"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949120"
 ---
 # <a name="date-claims-transformations"></a>Przekształceń oświadczeń dat
 
@@ -39,7 +39,7 @@ Przekształcenie oświadczeń **AssertDateTimeIsGreaterThan** jest zawsze wykony
 
 ![AssertStringClaimsAreEqual wykonywanie](./media/date-transformations/assert-execution.png)
 
-Poniższy przykład porównuje `currentDateTime` z wnioskiem o `approvedDateTime`. Błąd jest zgłaszany, jeśli `currentDateTime` jest późniejsza niż `approvedDateTime`. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (30000 milisekund).
+Poniższy przykład porównuje `currentDateTime` z roszczeń `approvedDateTime`. Błąd jest zgłaszany, jeśli `currentDateTime` jest późniejsza niż `approvedDateTime`. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (30000 milisekund).
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -92,9 +92,9 @@ Konwertuje **datę oświadczenia daty** na element ClaimType **DateTime** . Tran
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | Oświadczenie inputclaim | date | Wartość oświadczenia do przekonwertowania. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | Datę | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | Data i godzina | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
-Poniższy przykład ilustruje konwersję `dateOfBirth` (Data typ danych) do innego żądania `dateOfBirthWithTime` (typ danych dateTime).
+W poniższym przykładzie zademonstrowano konwersję `dateOfBirth` (Data typ danych) do innego `dateOfBirthWithTime` żądania (typ danych dateTime).
 
 ```XML
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
@@ -120,7 +120,7 @@ Pobierz bieżącą datę i godzinę UTC i Dodaj wartość do elementu ClaimType.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie outputclaim | currentDateTime | Datę | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | currentDateTime | Data i godzina | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
 ```XML
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
@@ -137,15 +137,15 @@ Pobierz bieżącą datę i godzinę UTC i Dodaj wartość do elementu ClaimType.
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Ustal, czy jedna wartość daty i godziny jest późniejsza, wcześniejsza lub równa innej. Wynikiem jest nowa wartość logiczna typu Boolean, z wartością `true` lub `false`.
+Ustal, czy jedna wartość daty i godziny jest późniejsza, wcześniejsza lub równa innej. Wynik jest nową wartością logiczną typu Boolean, z wartością `true` lub `false`.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | firstDateTime | Datę | Pierwszy element dateTime, aby porównać, czy jest on wcześniejszy, czy późniejszy niż drugi dateTime. Wartość null zgłasza wyjątek. |
-| Oświadczenie inputclaim | secondDateTime | Datę | Druga data/godzina do porównania, czy jest wcześniejsza lub późniejsza niż pierwsza wartość daty i godziny. Wartość zerowa jest traktowana jako bieżąca datetTime. |
-| InputParameter | Zakład | string | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
+| Oświadczenie inputclaim | firstDateTime | Data i godzina | Pierwszy element dateTime, aby porównać, czy jest on wcześniejszy, czy późniejszy niż drugi dateTime. Wartość null zgłasza wyjątek. |
+| Oświadczenie inputclaim | secondDateTime | Data i godzina | Druga data/godzina do porównania, czy jest wcześniejsza lub późniejsza niż pierwsza wartość daty i godziny. Wartość zerowa jest traktowana jako bieżąca datetTime. |
+| InputParameter | operator | string | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
 | InputParameter | timeSpanInSeconds | int | Dodaj przedział czasu do pierwszej wartości daty i godziny. |
-| Oświadczenie outputclaim | Wynika | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | wynik | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
 Użyj tej transformacji oświadczeń, aby określić, czy dwa oświadczenia są równe, nowsze czy starsze. Na przykład użytkownik może przechowywać ostatnio zaakceptowane warunki użytkowania usług (TOS) przez użytkownika. Po 3 miesiącach możesz polecić użytkownikowi ponowne uzyskanie dostępu do tych organizacji.
 Aby uruchomić transformację roszczeń, najpierw musisz uzyskać bieżącą wartość dateTime, a także godzinę, w której użytkownik ostatnio akceptuje te organizacje.

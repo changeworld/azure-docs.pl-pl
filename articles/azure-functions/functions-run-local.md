@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784718"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941835"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -29,37 +29,47 @@ Tworzenie funkcji na komputerze lokalnym i publikowanie ich na platformie Azure 
 > * [Uruchom funkcję lokalnie](#start)
 > * [Publikowanie projektu na platformie Azure](#publish)
 
-## <a name="core-tools-versions"></a>Wersje podstawowych narzędzi
+## <a name="core-tools-versions"></a>Wersje narzędzi Core Tools
 
-Istnieją dwie wersje Azure Functions Core Tools. Używana wersja zależy od lokalnego środowiska programistycznego, [wyboru języka](supported-languages.md)i wymaganego poziomu pomocy technicznej:
+Istnieją trzy wersje Azure Functions Core Tools. Używana wersja zależy od lokalnego środowiska programistycznego, [wyboru języka](supported-languages.md)i wymaganego poziomu pomocy technicznej:
 
-+ Wersja 1. x: obsługuje wersję 1. x środowiska uruchomieniowego. Ta wersja narzędzi jest obsługiwana tylko na komputerach z systemem Windows i jest instalowana z [pakietu npm](https://docs.npmjs.com/getting-started/what-is-npm). W tej wersji można tworzyć funkcje w językach eksperymentalnych, które nie są oficjalnie obsługiwane. Aby uzyskać więcej informacji, zobacz [obsługiwane języki w Azure Functions](supported-languages.md)
++ **Wersja 1. x**: obsługuje wersję 1. x środowiska uruchomieniowego Azure Functions. Ta wersja narzędzi jest obsługiwana tylko na komputerach z systemem Windows i jest instalowana z [pakietu npm](https://www.npmjs.com/package/azure-functions-core-tools).
 
-+ [Wersja 2. x](#v2): obsługuje [wersję 2. x środowiska uruchomieniowego](functions-versions.md). Ta wersja obsługuje [systemy Windows](#windows-npm), [macOS](#brew)i [Linux](#linux). Używa menedżerów pakietów specyficznych dla platformy lub npm do instalacji.
++ [**Wersja 2. x/3. x**](#v2): obsługuje [wersję 2. x lub 3. x środowiska uruchomieniowego Azure Functions](functions-versions.md). Te wersje obsługują [systemy Windows](#windows-npm), [macOS](#brew)i [Linux](#linux) oraz korzystają z menedżerów pakietów lub npm do instalacji.
 
-Jeśli nie określono inaczej, przykłady w tym artykule dotyczą wersji 2. x.
+Jeśli nie określono inaczej, przykłady w tym artykule dotyczą wersji 3. x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalowanie podstawowych narzędzi usługi Azure Functions
 
 [Azure Functions Core Tools] obejmuje wersję tego samego środowiska uruchomieniowego, która umożliwia Azure Functions środowisko uruchomieniowe, które można uruchomić na lokalnym komputerze deweloperskim. Udostępnia również polecenia służące do tworzenia funkcji, łączenia się z platformą Azure i wdrażania projektów funkcji.
 
-### <a name="v2"></a>Wersja 2. x
+### <a name="v2"></a>Wersja 2. x i 3. x
 
-W wersji 2. x narzędzi jest używane środowisko uruchomieniowe Azure Functions 2. x, które jest oparte na platformie .NET Core. Ta wersja jest obsługiwana na wszystkich platformach .NET Core 2. x obsługuje, w tym [Windows](#windows-npm), [macOS](#brew)i [Linux](#linux). 
+W wersji 2. x/3. x narzędzi jest używane środowisko uruchomieniowe Azure Functions, które jest oparte na platformie .NET Core. Ta wersja jest obsługiwana na wszystkich platformach .NET Core obsługuje, w tym [Windows](#windows-npm), [macOS](#brew)i [Linux](#linux). 
 
 > [!IMPORTANT]
-> Istnieje możliwość obejścia wymagania dotyczącego instalowania zestawu SDK platformy .NET Core 2. x przy użyciu [Pakiety rozszerzeń].
+> Możesz pominąć wymóg instalacji zestaw .NET Core SDK przy użyciu [Pakiety rozszerzeń].
 
-#### <a name="windows-npm"></a>Systemy
+#### <a name="windows-npm"></a>Windows
 
 Poniższe kroki służą do instalowania podstawowych narzędzi w systemie Windows przy użyciu programu npm. Możesz również użyć [czekolady](https://chocolatey.org/). Aby uzyskać więcej informacji, zobacz [plik Readme podstawowych narzędzi](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Zainstaluj program [Node.js], który obejmuje npm. W przypadku wersji 2. x narzędzi obsługiwane są tylko wersje Node. js 8,5 i nowsze.
+1. Zainstaluj program [Node.js], który obejmuje npm.
+    - W przypadku wersji 2. x narzędzi obsługiwane są tylko wersje Node. js 8,5 i nowsze.
+    - W przypadku wersji 3. x narzędzi obsługiwane są tylko wersje Node 10 i nowsze.
 
 1. Zainstaluj pakiet podstawowych narzędzi:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     npm install -g azure-functions-core-tools
+    ```
+
+    ##### <a name="v3x"></a>v3. x
+
+    ```bash
+    npm install -g azure-functions-core-tools@3
     ```
 
    Pobranie i zainstalowanie pakietu podstawowych narzędzi może potrwać kilka minut.
@@ -74,13 +84,21 @@ Poniższe kroki używają oprogramowania homebrew, aby zainstalować podstawowe 
 
 1. Zainstaluj pakiet podstawowych narzędzi:
 
+    ##### <a name="v2x"></a>v2. x
+
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. Jeśli nie planujesz używania [Pakiety rozszerzeń], zainstaluj [zestaw .NET Core 2. x SDK dla macOS](https://www.microsoft.com/net/download/macos).
+    ##### <a name="v3x"></a>v3. x
 
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@3
+    # if upgrading on a machine that has 2.x installed
+    brew link --overwrite azure-functions-core-tools@3
+    ```
 
 #### <a name="linux"></a>Linux (Ubuntu/Debian) z APT
 
@@ -116,7 +134,7 @@ Poniższe kroki używają [apt](https://wiki.debian.org/Apt) do instalowania pod
     | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17,04    | `zesty`     |
+    | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux mennic 18    | `xenial`  |
 
 1. Uruchom aktualizację źródła APT:
@@ -199,7 +217,7 @@ Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt jest publi
 Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz sekcję zmienne środowiskowe w następujących tematach referencyjnych dotyczących języka:
 
 * [C#prekompilowanego](functions-dotnet-class-library.md#environment-variables)
-* [C#skrypt (. CSX)](functions-reference-csharp.md#environment-variables)
+* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -212,7 +230,7 @@ Gdy nie ustawiono prawidłowych parametrów połączenia magazynu dla [`AzureWeb
 Nawet w przypadku korzystania z emulatora magazynu na potrzeby programowania można testować przy użyciu rzeczywistego połączenia magazynu. Przy założeniu, że [konto magazynu](../storage/common/storage-create-storage-account.md)zostało już utworzone, można uzyskać prawidłowe parametry połączenia magazynu w jeden z następujących sposobów:
 
 - W [Azure Portal]Wyszukaj i wybierz pozycję **konta magazynu**. 
-  ![Wybieranie kont magazynu z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+  ![wybrać konta magazynu z Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Wybierz konto magazynu, wybierz pozycję **klucze dostępu** w obszarze **Ustawienia**, a następnie skopiuj jedną z wartości **parametrów połączenia** .
   ![skopiować parametrów połączenia z Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
@@ -526,5 +544,5 @@ Aby zgłosić błąd lub żądanie funkcji, [Otwórz problem z usługą GitHub](
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [Pakiety rozszerzeń]: functions-bindings-register.md#extension-bundles

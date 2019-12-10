@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: dc842ba0e7ca0f34b7dacb98322c4dc0cd056483
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931984"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941942"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Przenoszenie plików z Azure Data Factory
 
@@ -36,9 +36,11 @@ Szablon zawiera pięć działań:
 - **Kopiuj** kopiuje jeden plik ze źródła do magazynu docelowego.
 - **Delete** usuwa ten sam plik z magazynu źródłowego.
 
-Szablon definiuje dwa parametry:
-- *FolderPath_SourceStore* to ścieżka folderu magazynu źródłowego, z której chcesz przenieść pliki. 
-- *FolderPath_DestinationStore* to ścieżka folderu magazynu docelowego, do której chcesz przenieść pliki. 
+Szablon definiuje cztery parametry:
+- *SourceStore_Location* to ścieżka folderu magazynu źródłowego, z której chcesz przenieść pliki. 
+- *SourceStore_Directory* to ścieżka podfolderu magazynu źródłowego, z którego chcesz przenieść pliki.
+- *DestinationStore_Location* to ścieżka folderu magazynu docelowego, do której chcesz przenieść pliki. 
+- *DestinationStore_Directory* to ścieżka podfolderu magazynu docelowego, do którego chcesz przenieść pliki.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 
@@ -50,9 +52,7 @@ Szablon definiuje dwa parametry:
 
     ![Utwórz nowe połączenie z miejscem docelowym](media/solution-template-move-files/move-files2.png)
 
-3. Wybierz przycisk **Użyj tego szablonu**.
-
-    ![Użyj tego szablonu](media/solution-template-move-files/move-files3.png)
+3. Wybierz pozycję **Użyj tego szablonu** karty.
     
 4. Zostanie wyświetlony potok, jak w poniższym przykładzie:
 

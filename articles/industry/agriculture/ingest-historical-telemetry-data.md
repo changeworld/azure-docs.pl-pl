@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d2ac3b0f531b6384643d91fac1cf50a0ea719969
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a3e4f543be2f01e0c649d5f9bcc9287dedc275f1
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900335"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941648"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -39,7 +39,7 @@ Wykonaj następujące kroki.
 > Musisz być administratorem, aby wykonać następujące czynności.
 
 1. Pobierz ten [skrypt](https://aka.ms/farmbeatspartnerscript)i wyodrębnij go na dysku lokalnym. Dwa pliki znajdują się w pliku zip.
-2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) i otwórz usługę Azure Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu portalu. 
+2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) i otwórz usługę Azure Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu portalu.
 
     ![Azure Portal pasek narzędzi](./media/for-tutorials/navigation-bar-1.png)
 
@@ -47,7 +47,7 @@ Wykonaj następujące kroki.
 
     ![Ustawienie programu PowerShell](./media/for-tutorials/power-shell-new-1.png)
 
-4. Przekaż dwa pliki pobrane z kroku 1 w wystąpieniu Cloud Shell. 
+4. Przekaż dwa pliki pobrane z kroku 1 w wystąpieniu Cloud Shell.
 
     ![Przycisk Przekaż na pasku narzędzi](./media/for-tutorials/power-shell-two-1.png)
 
@@ -55,7 +55,7 @@ Wykonaj następujące kroki.
 
    >[!NOTE]
    > Domyślnie pliki są przekazywane do katalogu macierzystego/home/username.
-6. Uruchom skrypt za pomocą tego polecenia: 
+6. Uruchom skrypt za pomocą tego polecenia:
 
     ```azurepowershell-interactive
     ./generateCredentials.ps1
@@ -67,10 +67,10 @@ Wykonaj następujące kroki.
 
  Teraz, gdy masz wymagane poświadczenia, możesz zdefiniować urządzenie i czujniki. W tym celu Utwórz metadane przy użyciu interfejsów API FarmBeats.
 
- FarmBeats Datahub zawiera następujące interfejsy API, które umożliwiają tworzenie metadanych urządzenia lub czujnika i zarządzanie nimi. 
+ FarmBeats Datahub zawiera następujące interfejsy API, które umożliwiają tworzenie metadanych urządzenia lub czujnika i zarządzanie nimi.
 
-- /**DeviceModel**: DeviceModel odpowiada metadanych urządzenia, takich jak producent i typ urządzenia, który jest bramą lub węzłem. 
-- **urządzenie**/: urządzenie odpowiada urządzeniu fizycznemu znajdującemu się w farmie. 
+- /**DeviceModel**: DeviceModel odpowiada metadanych urządzenia, takich jak producent i typ urządzenia, który jest bramą lub węzłem.
+- **urządzenie**/: urządzenie odpowiada urządzeniu fizycznemu znajdującemu się w farmie.
 - /**SensorModel**: SensorModel odpowiada metadanych czujnika, takich jak producent, typ czujnika, który jest analogowy lub cyfrowy i pomiar czujnika, taki jak temperatura otoczenia i ciśnienie.
 - **czujnik**/: czujnik odnosi się do czujnika fizycznego, który rejestruje wartości. Czujnik jest zwykle podłączony do urządzenia z IDENTYFIKATORem urządzenia.  
 
@@ -269,7 +269,7 @@ Czujnik
   }
 }
 ```
-Poniższe przykładowe żądanie tworzy urządzenie. To żądanie ma wejściowy kod JSON jako ładunek z treścią żądania. 
+Poniższe przykładowe żądanie tworzy urządzenie. To żądanie ma wejściowy kod JSON jako ładunek z treścią żądania.
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -292,7 +292,7 @@ Musisz wysłać dane telemetryczne do usługi Azure Event Hubs w celu przetworze
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>Wyślij komunikat telemetrii jako klienta
 
-Po ustanowieniu połączenia jako klienta Event Hubs można wysyłać komunikaty do centrum zdarzeń jako plik JSON. 
+Po ustanowieniu połączenia jako klienta Event Hubs można wysyłać komunikaty do centrum zdarzeń jako plik JSON.
 
 Oto przykładowy kod w języku Python, który wysyła dane telemetryczne jako klienta do określonego centrum zdarzeń:
 
@@ -313,7 +313,7 @@ write_client.stop()
 
 ```
 
-Przekonwertuj historyczny format danych z czujnika na format kanoniczny, który jest rozpoznawany przez platformę Azure FarmBeats. Format komunikatu kanonicznego jest następujący: 
+Przekonwertuj historyczny format danych z czujnika na format kanoniczny, który jest rozpoznawany przez platformę Azure FarmBeats. Format komunikatu kanonicznego jest następujący:
 
 ```json
 {

@@ -1,6 +1,7 @@
 ---
-title: Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure Active Directory B2C | Microsoft Docs
-description: Dowiedz się, jak skonfigurować przepływ poświadczeń hasła właściciela zasobu w Azure Active Directory B2C.
+title: Konfigurowanie przepływu poświadczeń hasła właściciela zasobu przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
+description: Informacje o konfigurowaniu przepływu poświadczeń hasła właściciela zasobu (ROPC) przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678145"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951068"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure Active Directory B2C przy użyciu zasad niestandardowych
 
@@ -95,7 +96,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure 
     </ClaimsTransformations>
     ```
 
-4. Znajdź element **ClaimsProvider** , który ma wartość **DisplayName** `Local Account SignIn` i Dodaj następujący profil techniczny:
+4. Znajdź element **ClaimsProvider** , który ma **Właściwość DisplayName** `Local Account SignIn` i Dodaj następujący profil techniczny:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -133,7 +134,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure 
     </TechnicalProfile>
     ```
 
-    Zastąp wartość **DefaultValue** elementu **Client_id** identyfikatorem aplikacji aplikacji ProxyIdentityExperienceFramework utworzonej w samouczku dotyczącym wymagań wstępnych. Następnie Zastąp wartość **DefaultValue** elementu **Resource_id** identyfikatorem aplikacji aplikacji IdentityExperienceFramework, która została również utworzona w samouczku wymagań wstępnych.
+    Zastąp wartość **DefaultValue** dla **Client_id** identyfikatorem aplikacji aplikacji ProxyIdentityExperienceFramework utworzonej w samouczku dotyczącym wymagań wstępnych. Następnie Zastąp wartość **DefaultValue** dla **Resource_id** identyfikatorem aplikacji aplikacji IdentityExperienceFramework, która została również utworzona w samouczku wymagań wstępnych.
 
 5. Dodaj następujące elementy **ClaimsProvider** z ich profilami technicznymi do elementu **ClaimsProviders** :
 
@@ -257,7 +258,7 @@ Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wyw
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C.
+- Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasad poświadczeń hasła właściciela zasobu.
 
 | Klucz | Wartość |
@@ -302,7 +303,7 @@ Utwórz wywołanie POST podobne do pokazanego tutaj. Użyj informacji w poniższ
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C.
+- Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasad poświadczeń hasła właściciela zasobu.
 
 | Klucz | Wartość |
@@ -310,11 +311,11 @@ Utwórz wywołanie POST podobne do pokazanego tutaj. Użyj informacji w poniższ
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| Zasoby | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Zastąp `application-id` IDENTYFIKATORem aplikacji z rejestracji *ROPC_Auth_app* .
-- Zastąp `refresh-token` elementem **refresh_token** , który został wysłany z powrotem w poprzedniej odpowiedzi.
+- Zastąp `refresh-token` identyfikatorem **refresh_token** , który został wysłany z powrotem w poprzedniej odpowiedzi.
 
 Pomyślna odpowiedź wygląda podobnie do poniższego przykładu:
 

@@ -1,5 +1,6 @@
 ---
-title: Uwagi dla deweloperów dotyczące zasad niestandardowych — Azure Active Directory B2C | Microsoft Docs
+title: Uwagi dla deweloperów dotyczące zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Uwagi dla deweloperów dotyczące konfigurowania i konserwowania Azure AD B2C przy użyciu zasad niestandardowych.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f8d1ac217647ee292338da875671ef8bd3f79db
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: edbd31434715c380badf15118b0779885aed700f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227195"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949759"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Uwagi dla deweloperów dotyczące zasad niestandardowych w Azure Active Directory B2C
 
@@ -44,7 +45,7 @@ Deweloperzy korzystający z zestawu funkcji zasad niestandardowych powinni przes
 - Wykonaj testy scenariusza metodyczne.
 - Postępuj zgodnie z najważniejszymi rozwiązaniami dotyczącymi tworzenia oprogramowania i przemieszczania, które są co najmniej jedno środowisko deweloperskie i testowe oraz jedno środowisko produkcyjne.
 - Bądź na bieżąco z informacjami dotyczącymi nowych osiągnięć od dostawców tożsamości i usług, z którymi integrujesz się. Na przykład Śledź zmiany w kluczach tajnych i zaplanowanych i nieplanowanych zmianach w usłudze.
-- Skonfiguruj aktywne monitorowanie i monitoruj czas odpowiedzi w środowiskach produkcyjnych. Aby uzyskać więcej informacji na temat integrowania z [Application Insights, zobacz Azure Active Directory B2C: Zbieranie dzienników](active-directory-b2c-custom-guide-eventlogger-appins.md).
+- Skonfiguruj aktywne monitorowanie i monitoruj czas odpowiedzi w środowiskach produkcyjnych. Aby uzyskać więcej informacji na temat integrowania z Application Insights, zobacz [Azure Active Directory B2C: zbieranie dzienników](active-directory-b2c-custom-guide-eventlogger-appins.md).
 - Kontynuuj kontaktowe adresy e-mail z bieżącą subskrypcją platformy Azure i Kontynuuj pracę z wiadomościami e-mail zespołu w witrynie Microsoft Live.
 - Wykonaj działania w odpowiednim czasie, gdy jest to zalecane przez zespół Microsoft Live site.
 
@@ -60,12 +61,12 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="identity-providers-tokens-protocols"></a>Dostawcy tożsamości, tokeny, protokoły
 
-| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-OpenIDConnect |  |  | X | Na przykład Google +.  |
 | IDP-OAUTH2 |  |  | X | Na przykład w serwisie Facebook.  |
 | DOSTAWCY tożsamości — OAUTH1 (Twitter) |  | X |  | Na przykład serwis Twitter. |
-| DOSTAWCY tożsamości-OAUTH1 (np. do usługi Twitter) |  |  |  | Nieobsługiwane |
+| DOSTAWCY tożsamości-OAUTH1 (np. do usługi Twitter) |  |  |  | Brak obsługi |
 | IDP-SAML |  |   | X | Na przykład usługi Salesforce, ADFS. |
 | IDP-WSFED | X |  |  |  |
 | OAUTH1 jednostki uzależnionej |  |  |  | Nieobsługiwane. |
@@ -77,7 +78,7 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="component-support"></a>Obsługa składników
 
-| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Usługa Azure Multi-Factor Authentication |  |  | X |  |
 | Azure Active Directory jako katalog lokalny |  |  | X |  |
@@ -88,7 +89,7 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="content-definition"></a>Definicja zawartości
 
-| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Strona błędu, interfejs API. błąd |  |  | X |  |
 | Strona wyboru dostawcy tożsamości, interfejs API. idpselections |  |  | X |  |
@@ -104,26 +105,26 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="app-ief-integration"></a>Integracja App-IEF
 
-| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Parametr ciągu zapytania domain_hint |  |  | X | Dostępne jako roszczeń mogą być przesyłane do dostawcy tożsamości. |
-| Parametr ciągu zapytania login_hint |  |  | X | Dostępne jako roszczeń mogą być przesyłane do dostawcy tożsamości. |
-| Wstaw kod JSON do UserJourney za pośrednictwem client_assertion | X |  |  | Będzie przestarzałe. |
+| Domain_hint parametru ciągu zapytania |  |  | X | Dostępne jako roszczeń mogą być przesyłane do dostawcy tożsamości. |
+| Login_hint parametru ciągu zapytania |  |  | X | Dostępne jako roszczeń mogą być przesyłane do dostawcy tożsamości. |
+| Wstaw kod JSON do UserJourney przez client_assertion | X |  |  | Będzie przestarzałe. |
 | Wstaw kod JSON do UserJourney jako id_token_hint |  | X |  | Podejście do przodu do przekazywania kodu JSON. |
 | Przekaż TOKEN dostawcy tożsamości do aplikacji |  | X |  | Na przykład z usługi Facebook do aplikacji. |
 
 ### <a name="session-management"></a>Zarządzanie sesjami
 
-| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Dostawca sesji logowania jednokrotnego |  |  | X |  |
 | Dostawca sesji logowania zewnętrznego |  |  | X |  |
 | Dostawca sesji SSO protokołu SAML |  |  | X |  |
 | Domyślny dostawca sesji SSO |  |  | X |  |
 
-### <a name="security"></a>Bezpieczeństwo
+### <a name="security"></a>Zabezpieczenia
 
-| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Klucze zasad — generowanie, ręczne, przekazywanie |  |  | X |  |
 | Klucze zasad — RSA/certyfikat, wpisy tajne |  |  | X |  |
@@ -131,7 +132,7 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="developer-interface"></a>Interfejs dewelopera
 
-| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Witryna Azure Portal — środowisko IEF |  |  | X |  |
 | Application Insights dzienników UserJourney |  | X |  | Używane do rozwiązywania problemów podczas opracowywania.  |

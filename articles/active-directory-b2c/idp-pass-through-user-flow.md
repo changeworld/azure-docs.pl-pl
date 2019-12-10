@@ -1,5 +1,6 @@
 ---
-title: Przekazywanie tokenu dostępu za pomocą przepływu użytkownika do aplikacji — Azure Active Directory B2C
+title: Przekazywanie tokenu dostępu za pomocą przepływu użytkownika do aplikacji
+titleSuffix: Azure AD B2C
 description: Dowiedz się, jak przekazać token dostępu dla dostawców tożsamości OAuth 2,0 jako rolę w przepływie użytkownika w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064296"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948815"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą przepływu użytkownika do aplikacji w Azure Active Directory B2C
 
@@ -43,11 +44,11 @@ Azure AD B2C obecnie obsługuje tylko przekazywanie tokenu dostępu dla dostawc�
 
 ## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
-W przypadku testowania aplikacji w Azure AD B2C może być przydatne, aby token `https://jwt.ms` Azure AD B2C mógł sprawdzić w nim oświadczenia.
+Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token Azure AD B2C został zwrócony do `https://jwt.ms` w celu przejrzenia oświadczeń w nim.
 
 1. Na stronie Przegląd przepływu użytkownika wybierz pozycję **Uruchom przepływ użytkownika**.
-2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token w poniższym przykładzie, **adres URL odpowiedzi** powinien być widoczny `https://jwt.ms`.
-3. Kliknij pozycję **Uruchom przepływ użytkownika**, a następnie zaloguj się przy użyciu poświadczeń konta. W ramach żądania **idp_access_token** powinien zostać wyświetlony token dostępu dostawcy tożsamości.
+2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token w poniższym przykładzie, **adres URL odpowiedzi** powinien zawierać `https://jwt.ms`.
+3. Kliknij pozycję **Uruchom przepływ użytkownika**, a następnie zaloguj się przy użyciu poświadczeń konta. Powinien zostać wyświetlony token dostępu dostawcy tożsamości w **idp_access_tokenm** .
 
     Powinieneś zobaczyć coś podobnego do poniższego przykładu:
 

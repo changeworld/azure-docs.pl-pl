@@ -1,5 +1,6 @@
 ---
-title: Zdefiniuj profil techniczny SAML w zasadach niestandardowych w Azure Active Directory B2C
+title: Definiowanie profilu technicznego SAML w zasadach niestandardowych
+titleSuffix: Azure AD B2C
 description: Zdefiniuj profil techniczny SAML w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b75367a90ce557f055ff4a9b1ff85f5b1f8f9637
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 74666b1dc2ba4fac25aff0a56a52d048d746d465
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603061"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950939"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny SAML w zasadach niestandardowych Azure Active Directory B2C
 
@@ -81,7 +82,7 @@ W poniższym przykładzie przedstawiono sekcję Azure AD B2C szyfrowania profilu
 </KeyDescriptor>
 ```
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol (Protokół)
 
 Atrybut **name** elementu Protocol musi mieć wartość `SAML2`.
 
@@ -96,7 +97,7 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 W poniższym przykładzie przedstawiono oświadczenia zwrócone przez dostawcę tożsamości w usłudze Facebook:
 
 - **IssuerUserId** jest mapowany na zastrzeżenie **assertionSubjectName** .
-- **First_name** jest mapowany do **danego** wystąpienianame.
+- **First_name** jest mapowany na **daną** wartość.
 - **Last_name** jest mapowany do żądania **nazwisko** .
 - Nazwa **wyświetlana** bez mapowania nazwy.
 - Bez mapowania nazwy.
@@ -120,7 +121,7 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 
 ## <a name="metadata"></a>Metadane
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | PartnerEntity | Tak | Adres URL metadanych dostawcy tożsamości SAML. Skopiuj metadane dostawcy tożsamości i Dodaj je wewnątrz elementu CDATA `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | Nie | Wskazuje, czy profil techniczny wymaga podpisania wszystkich wychodzących żądań uwierzytelniania. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`. Gdy wartość jest ustawiona na `true`, należy określić klucz kryptograficzny **SamlMessageSigning** i wszystkie żądania uwierzytelniania wychodzącego są podpisane. Jeśli wartość jest ustawiona na `false`, parametry **SigAlg** i **Signature** (ciąg zapytania lub parametr post) są pomijane w żądaniu. Te metadane również kontrolują atrybut **AuthnRequestsSigned** metadanych, który jest wyprowadzany w metadanych profilu technicznego Azure AD B2C, który jest udostępniony dostawcy tożsamości. Azure AD B2C nie podpisać żądania, jeśli wartość **WantsSignedRequests** w metadanych profilu technicznego jest ustawiona na `false`, a **WantAuthnRequestsSigned** metadanych dostawcy tożsamości jest ustawiona na `false` lub nie określono. |
@@ -139,7 +140,7 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 
 Element **CryptographicKeys** zawiera następujące atrybuty:
 
-| Atrybut |Wymagany | Opis |
+| Atrybut |Wymagane | Opis |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Tak | Certyfikat x509 (zestaw kluczy RSA) służący do podpisywania komunikatów SAML. Azure AD B2C używa tego klucza do podpisywania żądań i wysyłania ich do dostawcy tożsamości. |
 | SamlAssertionDecryption |Tak | Certyfikat x509 (zestaw kluczy RSA) używany do odszyfrowywania komunikatów SAML. Ten certyfikat powinien być dostarczany przez dostawcę tożsamości. Azure AD B2C używa tego certyfikatu do odszyfrowania danych wysyłanych przez dostawcę tożsamości. |

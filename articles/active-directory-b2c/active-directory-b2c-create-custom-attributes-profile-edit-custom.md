@@ -1,5 +1,6 @@
 ---
-title: Dodawanie własnych atrybutów do zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+title: Dodawanie własnych atrybutów do zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Przewodnik dotyczący używania właściwości rozszerzenia i atrybutów niestandardowych i dołączania ich do interfejsu użytkownika.
 services: active-directory-b2c
 author: mmacy
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 82a796a3252a4de6eacabcad45c61c864e963fe0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 92050261777482bae8055f697ef50c2295675c5b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066172"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948781"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Używanie atrybutów niestandardowych w niestandardowych zasadach edytowania profilu
+# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Użyj atrybutów niestandardowych w niestandardowych zasadach edytowania profilu
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +26,7 @@ W tym artykule opisano tworzenie niestandardowego atrybutu w katalogu Azure Acti
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki opisane w artykule [Azure Active Directory B2C: Wprowadzenie do zasad](active-directory-b2c-get-started-custom.md)niestandardowych.
+Wykonaj kroki opisane w artykule [Azure Active Directory B2C: wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md).
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-ad-b2c-by-using-custom-policies"></a>Używanie atrybutów niestandardowych do zbierania informacji o klientach w Azure AD B2C przy użyciu zasad niestandardowych
 Katalog Azure AD B2C zawiera wbudowany zestaw atrybutów. Przykłady to **imię**i nazwisko, **imię**, **miasto**, **Kod pocztowy**i **userPrincipalName**. Często trzeba utworzyć własne atrybuty, takie jak następujące przykłady:
@@ -35,7 +36,7 @@ Katalog Azure AD B2C zawiera wbudowany zestaw atrybutów. Przykłady to **imię*
 
 Azure AD B2C rozszerza zestaw atrybutów przechowywanych na poszczególnych kontach użytkowników. Można również odczytywać i zapisywać te atrybuty przy użyciu [interfejs API programu Graph usługi Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md).
 
-Właściwości rozszerzenia rozszerzają schemat obiektów użytkownika w katalogu. *Właściwość rozszerzenia*terminów, *atrybut niestandardowy*i niestandardowa, odwołują się do tego samego elementu w kontekście tego artykułu. Nazwa różni się w zależności od kontekstu, takiego jak aplikacja, obiekt lub zasady.
+Właściwości rozszerzenia rozszerzają schemat obiektów użytkownika w katalogu. *Właściwość rozszerzenia*terminów, *atrybut niestandardowy*i *niestandardowa* , odwołują się do tego samego elementu w kontekście tego artykułu. Nazwa różni się w zależności od kontekstu, takiego jak aplikacja, obiekt lub zasady.
 
 Właściwości rozszerzenia można zarejestrować tylko w obiekcie aplikacji, chociaż mogą zawierać dane dla użytkownika. Właściwość jest dołączona do aplikacji. Obiekt aplikacji musi mieć dostęp do zapisu w celu zarejestrowania właściwości rozszerzenia. Setki właściwości rozszerzenia, między wszystkimi typami i wszystkimi aplikacjami, można zapisywać do dowolnego pojedynczego obiektu. Właściwości rozszerzenia są dodawane do typu katalogu docelowego i stają się natychmiast dostępne w dzierżawie usługi Azure AD B2C Directory.
 Jeśli aplikacja zostanie usunięta, te właściwości rozszerzenia wraz z wszelkimi zawartymi w nich danymi dla wszystkich użytkowników również zostaną usunięte. Jeśli właściwość rozszerzenia zostanie usunięta przez aplikację, zostanie usunięta z obiektów katalogu docelowego i wartości są usuwane.
@@ -52,12 +53,12 @@ Instrukcje znajdują się w sekcji **następne kroki** w tym artykule.
 2. Wybierz pozycję **Azure Active Directory** w menu nawigacji po lewej stronie. Może być konieczne jego znalezienie, wybierając pozycję **więcej usług**.
 3. Wybierz pozycję **Rejestracje aplikacji**. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 4. Podaj następujące wpisy:
-    * Nazwa aplikacji sieci Web: **WebApp-GraphAPI-DirectoryExtensions**.
-    * Typ aplikacji: **Aplikacja sieci Web/interfejs API**.
+    * Nazwa aplikacji sieci Web: **webapp-GraphAPI-DirectoryExtensions**.
+    * Typ aplikacji: **aplikacja sieci Web/interfejs API**.
     * Adres URL logowania: **https://{Dzierżawca}. onmicrosoft. com/webapp-GraphAPI-DirectoryExtensions**.
 5. Wybierz pozycję **Utwórz**.
 6. Wybierz nowo utworzoną aplikację sieci Web.
-7. Wybierz pozycję **Ustawienia** > **wymagane uprawnienia**.
+7. Wybierz pozycję **Ustawienia** , > **wymagane uprawnienia**.
 8. Wybierz Azure Active Directory interfejsu API **systemu Windows**.
 9. Wprowadź znacznik wyboru w obszarze uprawnienia aplikacji: **Odczytuj i zapisuj dane katalogu**. Następnie wybierz pozycję **Zapisz**.
 10. Wybierz pozycję **Udziel uprawnień** i Potwierdź opcję **tak**.
@@ -67,9 +68,9 @@ Instrukcje znajdują się w sekcji **następne kroki** w tym artykule.
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Modyfikowanie zasad niestandardowych w celu dodania **ApplicationObjectId**
 
-Po wykonaniu kroków opisanych w [Azure Active Directory B2C: Wprowadzenie do](active-directory-b2c-get-started-custom.md)zasad niestandardowych, pobrane i zmodyfikowane [przykładowe pliki](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) o nazwie **TrustFrameworkBase. XML**, **TrustFrameworkExtensions. XML**, **SignUpOrSignin. XML**, **ProfileEdit. XML**i  **PasswordReset. XML**. W tym kroku wprowadzisz dalsze modyfikacje tych plików.
+Po wykonaniu czynności opisanych w [Azure Active Directory B2C: wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md), pobrane i zmodyfikowane [przykładowe pliki](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) o nazwie **TrustFrameworkBase. XML**, **TrustFrameworkExtensions. XML**, **SignUpOrSignin. XML**, **ProfileEdit. XML**i **PasswordReset. XML**. W tym kroku wprowadzisz dalsze modyfikacje tych plików.
 
-* Otwórz plik **TrustFrameworkBase. XML** i Dodaj `Metadata` sekcję, jak pokazano w poniższym przykładzie. Wstaw identyfikator obiektu, który został wcześniej zarejestrowany dla `ApplicationObjectId` wartości i identyfikator aplikacji, która została zarejestrowana `ClientId` dla wartości:
+* Otwórz plik **TrustFrameworkBase. XML** i dodaj sekcję `Metadata`, jak pokazano w poniższym przykładzie. Wstaw identyfikator obiektu, który został wcześniej zarejestrowany dla wartości `ApplicationObjectId` i identyfikator aplikacji zarejestrowanej dla wartości `ClientId`:
 
     ```xml
     <ClaimsProviders>
@@ -102,7 +103,7 @@ Po wykonaniu kroków opisanych w [Azure Active Directory B2C: Wprowadzenie do](a
 ## <a name="use-the-new-extension-property-or-custom-attribute-in-a-user-journey"></a>Korzystanie z nowej właściwości rozszerzenia lub atrybutu niestandardowego w podróży użytkownika
 
 1. Otwórz plik **ProfileEdit. XML** .
-2. Dodaj niestandardową `loyaltyId`wartość. Poprzez dołączenie niestandardowego żądania `<RelyingParty>` do elementu, jest on zawarty w tokenie dla aplikacji.
+2. Dodaj `loyaltyId`niestandardowego żądania. Poprzez dołączenie niestandardowego żądania do elementu `<RelyingParty>`, zostanie on uwzględniony w tokenie dla aplikacji.
 
     ```xml
     <RelyingParty>
@@ -123,7 +124,7 @@ Po wykonaniu kroków opisanych w [Azure Active Directory B2C: Wprowadzenie do](a
     </RelyingParty>
     ```
 
-3. Otwórz plik **TrustFrameworkExtensions. XML** i Dodaj`<ClaimsSchema>` element i jego elementy `BuildingBlocks` podrzędne do elementu:
+3. Otwórz plik **TrustFrameworkExtensions. XML** i dodaj element`<ClaimsSchema>` i jego elementy podrzędne do elementu `BuildingBlocks`:
 
     ```xml
     <BuildingBlocks>
@@ -138,7 +139,7 @@ Po wykonaniu kroków opisanych w [Azure Active Directory B2C: Wprowadzenie do](a
     </BuildingBlocks>
     ```
 
-4. Dodaj tę samą `ClaimType` definicję do **TrustFrameworkBase. XML**. Nie trzeba dodawać `ClaimType` definicji zarówno do plików podstawowych, jak i rozszerzeń. Jednak następne kroki Dodaj `extension_loyaltyId` do **TechnicalProfiles** w pliku podstawowym. Dlatego moduł walidacji zasad odrzuca przekazywanie pliku podstawowego bez niego. Przydatne może być śledzenie wykonywania podróży użytkownika o nazwie **ProfileEdit** w pliku **TrustFrameworkBase. XML** . Wyszukaj podróż użytkownika o tej samej nazwie w edytorze. Należy zauważyć, że aranżacja krok 5 wywołuje **TechnicalProfileReferenceID = "SelfAsserted-ProfileUpdate**. Wyszukaj i zbadaj ten **profilu technicznym** , aby zapoznać się z przepływem.
+4. Dodaj tę samą definicję `ClaimType` do **TrustFrameworkBase. XML**. Nie trzeba dodawać definicji `ClaimType` zarówno w pliku podstawowym, jak i w plikach rozszerzeń. Jednak następne kroki umożliwiają dodanie `extension_loyaltyId` do **TechnicalProfiles** w pliku podstawowym. Dlatego moduł walidacji zasad odrzuca przekazywanie pliku podstawowego bez niego. Przydatne może być śledzenie wykonywania podróży użytkownika o nazwie **ProfileEdit** w pliku **TrustFrameworkBase. XML** . Wyszukaj podróż użytkownika o tej samej nazwie w edytorze. Należy zauważyć, że aranżacja krok 5 wywołuje **TechnicalProfileReferenceID = "SelfAsserted-ProfileUpdate**. Wyszukaj i zbadaj ten **profilu technicznym** , aby zapoznać się z przepływem.
 
 5. Otwórz plik **TrustFrameworkBase. XML** i Dodaj `loyaltyId` jako wystąpienie danych wejściowych i wyjściowych w **profilu technicznym SelfAsserted-ProfileUpdate**:
 
@@ -176,7 +177,7 @@ Po wykonaniu kroków opisanych w [Azure Active Directory B2C: Wprowadzenie do](a
     </TechnicalProfile>
     ```
 
-6. W pliku **TrustFrameworkBase. XML** Dodaj to `loyaltyId` zastrzeżenie do **profilu technicznym AAD-UserWriteProfileUsingObjectId**. To dodanie spowoduje zachowanie wartości w polu właściwości rozszerzenia dla bieżącego użytkownika w katalogu:
+6. W pliku **TrustFrameworkBase. XML** dodaj zastrzeżenie `loyaltyId` do **profilu technicznym AAD-UserWriteProfileUsingObjectId**. To dodanie spowoduje zachowanie wartości w polu właściwości rozszerzenia dla bieżącego użytkownika w katalogu:
 
     ```xml
     <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
@@ -203,7 +204,7 @@ Po wykonaniu kroków opisanych w [Azure Active Directory B2C: Wprowadzenie do](a
     </TechnicalProfile>
     ```
 
-7. W pliku **TrustFrameworkBase. XML** Dodaj je `loyaltyId` do **profilu technicznym AAD-UserReadUsingObjectId** , aby odczytać wartość atrybutu rozszerzenia za każdym razem, gdy użytkownik loguje się. Do tej pory **TechnicalProfiles** został zmieniony tylko w przepływie kont lokalnych. Jeśli chcesz utworzyć nowy atrybut w przepływie konta społecznościowego lub federacyjnego, należy zmienić inny zestaw **TechnicalProfiles** . Zobacz sekcję **następne kroki** .
+7. W pliku **TrustFrameworkBase. XML** dodaj zgłoszenie `loyaltyId` do **profilu technicznym AAD-UserReadUsingObjectId** , aby odczytać wartość atrybutu rozszerzenia za każdym razem, gdy użytkownik zaloguje się. Do tej pory **TechnicalProfiles** został zmieniony tylko w przepływie kont lokalnych. Jeśli chcesz utworzyć nowy atrybut w przepływie konta społecznościowego lub federacyjnego, należy zmienić inny zestaw **TechnicalProfiles** . Zobacz sekcję **następne kroki** .
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -233,7 +234,7 @@ Po wykonaniu kroków opisanych w [Azure Active Directory B2C: Wprowadzenie do](a
 
 ## <a name="test-the-custom-policy"></a>Testowanie zasad niestandardowych
 
-1. Otwórz blok Azure AD B2C i przejdź do**zasad niestandardowych** **platformy Identity Experience Framework** > .
+1. Otwórz blok Azure AD B2C i przejdź do **struktury programu Identity Experience** > **zasad niestandardowych**.
 1. Wybierz przekazane zasady niestandardowe. Wybierz pozycję **Uruchom teraz**.
 1. Utwórz konto przy użyciu adresu e-mail.
 
@@ -270,7 +271,7 @@ Token identyfikatora wysłany z powrotem do aplikacji zawiera nową właściwoś
 
    a. W dzierżawie B2C w portal.azure.com przejdź do **Azure Active Directory** i wybierz pozycję **rejestracje aplikacji**.
    b. Znajdź **aplikację B2C-Extensions-App** i wybierz ją.
-   c. W obszarze **Essentials**wprowadź **Identyfikator aplikacji** i **Identyfikator obiektu**.
+   d. W obszarze **Essentials**wprowadź **Identyfikator aplikacji** i **Identyfikator obiektu**.
    d. Uwzględnij je w metadanych usługi **AAD-Common** profilu technicznym:
 
    ```xml
@@ -294,7 +295,7 @@ Token identyfikatora wysłany z powrotem do aplikacji zawiera nową właściwoś
    extension_<app-guid>_ActivationStatus via Graph API.
    ```
 
-## <a name="reference"></a>Tematy pomocy
+## <a name="reference"></a>Informacje ogólne
 
 Aby uzyskać więcej informacji na temat właściwości rozszerzenia, zobacz artykuł [rozszerzenia schematu katalogu | Pojęcia interfejs API programu Graph](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 
@@ -302,3 +303,4 @@ Aby uzyskać więcej informacji na temat właściwości rozszerzenia, zobacz art
 > * **Profilu technicznym** to typ elementu lub funkcja, która definiuje nazwę, metadane i protokół punktu końcowego. **Profilu technicznym** szczegóły wymiany oświadczeń wykonywanych przez strukturę środowiska tożsamości. Gdy ta funkcja jest wywoływana w kroku aranżacji lub z innego **profilu technicznym**, **InputClaims** i **OutputClaims** są udostępniane jako parametry przez obiekt wywołujący.
 > * Atrybuty rozszerzenia w interfejs API programu Graph są nazwane przy użyciu konwencji `extension_ApplicationObjectID_attributename`.
 > * Zasady niestandardowe odwołują się do atrybutów rozszerzenia jako **extension_attributename**. To odwołanie pomija **ApplicationObjectId** w XML.
+> * Musisz określić identyfikator atrybutu w następującym formacie, **extension_attributename** wszędzie tam, gdzie jest przywoływany.

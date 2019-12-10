@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie logowania za pomocą konta usługi Twitter przy użyciu zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+title: Konfigurowanie logowania za pomocą konta usługi Twitter przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Skonfiguruj logowanie za pomocą konta usługi Twitter przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ad6ac4c30572f1b475cba2f699f5842ae3c7528
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 460f16775bf8b02bbb345b609e1419311f81bd22
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826995"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948423"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta usługi Twitter przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -36,7 +37,7 @@ Aby używać usługi Twitter jako dostawcy tożsamości w Azure AD B2C, musisz u
 2. Wybierz pozycję **Utwórz aplikację**.
 3. Wprowadź **nazwę aplikacji** i **Opis aplikacji**.
 4. W polu **adres URL witryny sieci Web**wprowadź `https://your-tenant.b2clogin.com`. Zastąp `your-tenant` nazwą dzierżawy. Na przykład https://contosob2c.b2clogin.com.
-5. W polu **adres URL wywołania zwrotnego**wprowadź `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`. Zastąp wartość `your-tenant` nazwą swojej dzierżawy i `your-policy-Id` identyfikatorem zasad. Na przykład `b2c_1A_signup_signin_twitter`. Musisz użyć wszystkich małych liter, wprowadzając nazwę dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z dużymi literami w Azure AD B2C.
+5. W polu **adres URL wywołania zwrotnego**wprowadź `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`. Zastąp `your-tenant` nazwą swojej dzierżawy i `your-policy-Id` identyfikatorem zasad. Na przykład `b2c_1A_signup_signin_twitter`. Musisz użyć wszystkich małych liter, wprowadzając nazwę dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z dużymi literami w Azure AD B2C.
 6. W dolnej części strony Przeczytaj i zaakceptuj warunki, a następnie wybierz pozycję **Utwórz**.
 7. Na stronie **Szczegóły aplikacji** wybierz opcję **Edytuj > Edytuj szczegóły**, zaznacz pole wyboru **Włącz logowanie przy użyciu usługi Twitter**, a następnie wybierz pozycję **Zapisz**.
 8. Wybierz **klucze i tokeny** , a następnie Zapisz **klucz interfejsu API konsumenta** oraz wartości **klucza tajnego interfejsu API konsumenta** , aby użyć ich później.
@@ -45,13 +46,13 @@ Aby używać usługi Twitter jako dostawcy tożsamości w Azure AD B2C, musisz u
 
 Należy przechowywać klucz tajny, który został wcześniej zarejestrowany w dzierżawie Azure AD B2C.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
-3. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **Azure AD B2C**.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
 5. Wybierz pozycję **klucze zasad** , a następnie wybierz pozycję **Dodaj**.
 6. W obszarze **Opcje**wybierz pozycję `Manual`.
-7. Wprowadź **nazwę** klucza zasad. Na przykład `TwitterSecret`. Prefiks `B2C_1A_` zostanie automatycznie dodany do nazwy klucza.
+7. Wprowadź **nazwę** klucza zasad. Na przykład `TwitterSecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 8. W **kluczu tajnym**wprowadź wcześniej zarejestrowany klucz tajny klienta.
 9. W obszarze **użycie klucza**wybierz pozycję `Encryption`.
 10. Kliknij przycisk **Utwórz**.
@@ -114,14 +115,14 @@ Teraz zasady zostały skonfigurowane tak, aby Azure AD B2C wie, jak komunikować
 
 1. Na stronie **zasady niestandardowe** w dzierżawie Azure AD B2C wybierz pozycję **Przekaż zasady**.
 2. Włącz **Zastępowanie zasad, jeśli istnieje**, a następnie wyszukaj i wybierz plik *TrustFrameworkExtensions. XML* .
-3. Kliknij przycisk **Przekaż**.
+3. Kliknij pozycję **Przekaż**.
 
 ## <a name="register-the-claims-provider"></a>Rejestrowanie dostawcy oświadczeń
 
 W tym momencie dostawca tożsamości został skonfigurowany, ale nie jest dostępny na żadnym z ekranów rejestracji lub logowania. Aby można było go udostępnić, należy utworzyć duplikat istniejącej przejazdu użytkownika szablonu, a następnie zmodyfikować go tak, aby miał także dostawcę tożsamości w usłudze Twitter.
 
 1. Otwórz plik *TrustFrameworkBase. XML* z pakietu początkowego.
-2. Znajdź i Skopiuj całą zawartość elementu **UserJourney** , która zawiera `Id="SignUpOrSignIn"`.
+2. Znajdź i Skopiuj całą zawartość elementu **UserJourney** , który zawiera `Id="SignUpOrSignIn"`.
 3. Otwórz *plik TrustFrameworkExtensions. XML* i Znajdź element **UserJourneys** . Jeśli element nie istnieje, Dodaj go.
 4. Wklej całą zawartość elementu **UserJourney** , który został skopiowany jako element podrzędny elementu **UserJourneys** .
 5. Zmień nazwę identyfikatora podróży użytkownika. Na przykład `SignUpSignInTwitter`.
@@ -141,7 +142,7 @@ Element **ClaimsProviderSelection** jest analogiczny do przycisku dostawcy tożs
 
 Teraz, gdy masz już przycisk, musisz połączyć go z akcją. W tym przypadku akcja w tym przypadku Azure AD B2C do komunikowania się z kontem usługi Twitter w celu uzyskania tokenu.
 
-1. Znajdź **OrchestrationStep** , który obejmuje `Order="2"` w podróży użytkownika.
+1. Znajdź **OrchestrationStep** , który zawiera `Order="2"` w podróży użytkownika.
 2. Dodaj następujący element **ClaimsExchange** , aby upewnić się, że używasz tej samej wartości dla identyfikatora, który został użyty dla **TargetClaimsExchangeId**:
 
     ```XML
@@ -164,7 +165,7 @@ Zaktualizuj plik jednostki uzależnionej (RP), który inicjuje utworzoną przez 
 
 1. Utwórz kopię *pliku SignUpOrSignIn. XML* w katalogu roboczym i zmień jego nazwę. Na przykład zmień nazwę na *SignUpSignInTwitter. XML*.
 2. Otwórz nowy plik i zaktualizuj wartość atrybutu **PolicyId** dla **TrustFrameworkPolicy** przy użyciu unikatowej wartości. Na przykład `SignUpSignInTwitter`.
-3. Zaktualizuj wartość **PublicPolicyUri** za pomocą identyfikatora URI dla zasad. Na przykład `http://contoso.com/B2C_1A_signup_signin_twitter`
+3. Zaktualizuj wartość **PublicPolicyUri** za pomocą identyfikatora URI dla zasad. Na przykład`http://contoso.com/B2C_1A_signup_signin_twitter`
 4. Zaktualizuj wartość atrybutu **ReferenceId** w **DefaultUserJourney** w taki sposób, aby odpowiadała identyfikatorowi nowej podróży użytkownika, która została utworzona (SignUpSignTwitter).
 5. Zapisz zmiany, Przekaż plik, a następnie wybierz nowe zasady z listy.
 6. Upewnij się, że utworzona aplikacja Azure AD B2C została wybrana w polu **Wybierz aplikację** , a następnie przetestuj ją, klikając polecenie **Uruchom teraz**.

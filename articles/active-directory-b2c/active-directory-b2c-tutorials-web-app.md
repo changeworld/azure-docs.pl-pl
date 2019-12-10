@@ -1,5 +1,6 @@
 ---
-title: Samouczek — Włączanie uwierzytelniania w aplikacji sieci Web — Azure Active Directory B2C
+title: 'Samouczek: Włączanie uwierzytelniania w aplikacji sieci Web'
+titleSuffix: Azure AD B2C
 description: Samouczek dotyczący sposobu użycia usługi Azure Active Directory B2C w celu określenia nazwy logowania użytkownika na potrzeby aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d88ad13c1326ce62b73dbffa0c79904c6f81e6f4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641805"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950208"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Samouczek: Włączanie uwierzytelniania w aplikacji sieci Web przy użyciu Azure Active Directory B2C
 
@@ -45,7 +46,7 @@ Aby zaktualizować aplikację, możesz użyć środowiska bieżące **aplikacje*
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz aplikację *webapp1*.
@@ -55,7 +56,7 @@ Aby zaktualizować aplikację, możesz użyć środowiska bieżące **aplikacje*
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , wybierz kartę **posiadane aplikacje** , a następnie wybierz aplikację *webapp1* .
@@ -91,7 +92,7 @@ Zaktualizuj ustawienia w pliku Web. config, aby współdziałać z przepływem u
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 1. W projekcie **TaskWebApp** otwórz plik **Web.config**.
-    1. Zaktualizuj wartość `ida:Tenant` i `ida:AadInstance` nazwą utworzonego Azure AD B2C dzierżawy. Na przykład Zastąp `fabrikamb2c` z `contoso`.
+    1. Zaktualizuj wartość `ida:Tenant` i `ida:AadInstance` nazwą utworzonego Azure AD B2C dzierżawy. Na przykład zastąp ciąg `fabrikamb2c` ciągiem `contoso`.
     1. Zastąp wartość `ida:ClientId` IDENTYFIKATORem aplikacji, która została zarejestrowana.
     1. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem. Przed dodaniem do pliku Web. config należy kodować kod tajny klienta.
     1. Zastąp wartość `ida:SignUpSignInPolicyId` wartością `b2c_1_signupsignin1`.

@@ -1,6 +1,7 @@
 ---
-title: Sesja i jednej konfiguracji logowania jednokrotnego — Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Sesja i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C.
+title: Konfiguracja sesji i logowania jednokrotnego
+titleSuffix: Azure AD B2C
+description: Konfiguracja sesji i logowania jednokrotnego (SSO) w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,45 +11,45 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 472e494d445ae4a22c988076994649543ec1f7f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736dd1f0490c2c9c7c4f526df96dd5ace6a1f819
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508118"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950072"
 ---
-# <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Sesja i konfiguracji pojedynczego logowania jednokrotnego w usłudze Azure Active Directory B2C
+# <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Konfiguracja sesji i logowania jednokrotnego w Azure Active Directory B2C
 
-Ta funkcja umożliwia szczegółową kontrolę na [konkretnych użytkowników, przepływ](active-directory-b2c-reference-policies.md), programu:
+Ta funkcja zapewnia precyzyjną kontrolę na [podstawie przepływu poszczególnych użytkowników](active-directory-b2c-reference-policies.md):
 
-- Okres istnienia sesji aplikacji sieci web zarządzanych przez usługę Azure AD B2C.
-- Pojedynczy zachowanie logowania jednokrotnego (SSO) między wieloma aplikacje i przepływy użytkownika w dzierżawie usługi Azure AD B2C.
+- Okresy istnienia sesji aplikacji sieci Web zarządzanych przez Azure AD B2C.
+- Zachowanie logowania jednokrotnego w wielu aplikacjach i przepływach użytkowników w dzierżawie Azure AD B2C.
 
 ## <a name="session-behavior"></a>Zachowanie sesji
 
-Usługa Azure AD B2C obsługuje [protokołu uwierzytelniania OpenID Connect](active-directory-b2c-reference-oidc.md) włączania bezpiecznego logowania do aplikacji sieci web. Do zarządzania sesjami aplikacji sieci web, można użyć następujących właściwości:
+Azure AD B2C obsługuje [protokół uwierzytelniania OpenID Connect Connect](active-directory-b2c-reference-oidc.md) do włączania bezpiecznego logowania do aplikacji sieci Web. Aby zarządzać sesjami aplikacji sieci Web, można użyć następujących właściwości:
 
-- **Aplikacja sieci Web okres istnienia sesji (w minutach)** — okres istnienia przechowywanych w przeglądarce użytkownika po pomyślnym uwierzytelnieniu pliku cookie sesji usługi Azure AD B2C.
-    - Domyślne = 1440 minut.
+- **Okres istnienia sesji aplikacji sieci Web (w minutach)** — okres istnienia pliku cookie sesji usługi Azure AD B2C's w przeglądarce użytkownika po pomyślnym uwierzytelnieniu.
+    - Wartość domyślna = 1440 min.
     - Minimum (włącznie) = 15 minut.
-    - Maksymalna (włącznie) = 1440 minut.
-- **Limit czasu sesji aplikacji sieci Web** — w przypadku wybrania tej opcji **bezwzględne**, użytkownik jest zmuszony do uwierzytelniania ponownie po czasie określonym przez **aplikacji sieci Web okres istnienia sesji (w minutach)** upływa. Jeśli ten przełącznik jest równa **stopniowe** (ustawienie domyślne), użytkownik pozostaje zalogowany, tak długo, jak użytkownik jest stale aktywny w aplikacji sieci web.
+    - Maksimum (włącznie) = 1440 min.
+- **Limit czasu sesji aplikacji sieci Web** — Jeśli ten przełącznik jest ustawiony na wartość **bezwzględną**, użytkownik jest zmuszony do uwierzytelnienia ponownie po upływie czasu określonego przez okres **istnienia sesji aplikacji sieci Web (w minutach)** . Jeśli ten przełącznik jest ustawiony na wartość **roll** (ustawienie domyślne), użytkownik pozostanie zalogowany, o ile użytkownik będzie stale aktywny w aplikacji sieci Web.
 
-Następujące przypadki użycia są włączone, przy użyciu tych właściwości:
+Następujące przypadki użycia są włączone przy użyciu tych właściwości:
 
-- Spełnia wymagania dotyczące zabezpieczeń i zgodności w branży, ustawiając sesji aplikacji sieci web odpowiednią okresy istnienia.
-- Wymuszanie uwierzytelniania ustalonym okresem podczas interakcji z części o wysokim poziomie zabezpieczeń aplikacji sieci web. 
+- Zapoznaj się z wymaganiami dotyczącymi zabezpieczeń i zgodności w branży, ustawiając odpowiednie okresy istnienia sesji aplikacji sieci Web.
+- Wymuś uwierzytelnianie po upływie określonego czasu podczas interakcji użytkownika z częścią aplikacji sieci Web o wysokim poziomie zabezpieczeń.
 
-Te ustawienia nie są dostępne w przypadku resetowania haseł przepływy użytkownika.
+Te ustawienia nie są dostępne na potrzeby przepływów użytkownika resetowania hasła.
 
 ## <a name="single-sign-on-sso-configuration"></a>Konfiguracja logowania jednokrotnego (SSO)
 
-Jeśli masz wiele aplikacji i przepływów użytkownika w dzierżawie B2C, możesz zarządzać interakcje użytkownika między nimi przy użyciu **konfiguracji rejestracji jednokrotnej** właściwości. Właściwość można ustawić na jeden z następujących ustawień:
+Jeśli masz wiele aplikacji i przepływów użytkowników w dzierżawie usługi B2C, możesz zarządzać interakcjami użytkowników w nich przy użyciu właściwości **Konfiguracja logowania** jednokrotnego. Właściwość można ustawić na jedno z następujących ustawień:
 
-- **Dzierżawy** — to ustawienie jest ustawieniem domyślnym. Przy użyciu tego ustawienia umożliwia wielu aplikacji i użytkownika przepływy w swojej dzierżawy usługi B2C do udostępniania tej samej sesji użytkownika. Na przykład po użytkownik zaloguje się do aplikacji, użytkownik może również bezproblemowo zalogować się do innego jeden, farmacji firmy Contoso, podczas uzyskiwania dostępu do jej.
-- **Aplikacja** — to ustawienie pozwala zachować sesję użytkownika wyłącznie dla aplikacji, niezależnie od innych aplikacji. Na przykład jeśli chcesz to użytkownikowi logowanie się farmacji Contoso (przy użyciu tych samych poświadczeń), nawet wtedy, gdy użytkownik jest zalogowany w Contoso zakupów, inną aplikację na tym samym B2C dzierżawy. 
-- **Zasady** — to ustawienie pozwala zachować sesję użytkownika wyłącznie na przepływ użytkownika, niezależnie od aplikacji korzystania z niego. Na przykład jeśli użytkownik ma już zalogowany i ukończyć krok multi factor authentication (MFA), użytkownik może mieć dostęp do lepsze zabezpieczenia części wielu aplikacji tak długo, jak sesji powiązane z przepływem użytkownika nie wygasa.
-- **Wyłączone** — to ustawienie wymusza na użytkowniku, do uruchamiania za pośrednictwem przepływu całego użytkownika przy każdym wykonaniu zasad.
+- **Dzierżawca** — to ustawienie jest domyślne. Użycie tego ustawienia umożliwia wielu aplikacjom i przepływom użytkowników w dzierżawie B2C współużytkowanie tej samej sesji użytkownika. Na przykład, gdy użytkownik loguje się do aplikacji, użytkownik może również bezproblemowo zalogować się do innego, farmaceuty firmy Contoso, po uzyskaniu do niego dostępu.
+- **Aplikacja** — to ustawienie umożliwia obsługę sesji użytkownika wyłącznie dla aplikacji, niezależnie od innych aplikacji. Na przykład jeśli chcesz, aby użytkownik logował się do usługi contoso apteki (z tymi samymi poświadczeniami), nawet jeśli użytkownik jest już zalogowany do kupowania w firmie Contoso, inna aplikacja w tej samej dzierżawie B2C.
+- **Zasady** — to ustawienie umożliwia obsługę sesji użytkownika wyłącznie dla przepływu użytkownika niezależnie od aplikacji, z których korzysta. Na przykład jeśli użytkownik jest już zalogowany i ukończył krok uwierzytelniania wieloskładnikowego (MFA), użytkownik może uzyskać dostęp do części o wyższym poziomie zabezpieczeń wielu aplikacji, o ile sesja związana z przepływem użytkownika nie wygasa.
+- **Wyłączone** — to ustawienie wymusza uruchomienie użytkownika przez cały przepływ użytkownika przy każdym wykonaniu zasad.
 
-Te ustawienia nie są dostępne w przypadku resetowania haseł przepływy użytkownika. 
+Te ustawienia nie są dostępne na potrzeby przepływów użytkownika resetowania hasła.
 

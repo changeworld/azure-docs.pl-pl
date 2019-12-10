@@ -1,5 +1,6 @@
 ---
-title: Migrowanie interfejsów API sieci Web opartych na OWIN do b2clogin.com-Azure Active Directory B2C
+title: Migrowanie interfejsów API sieci Web opartych na OWIN do b2clogin.com
+titleSuffix: Azure AD B2C
 description: Dowiedz się, jak włączyć interfejs API sieci Web platformy .NET, aby obsługiwał tokeny wystawione przez wielu wystawców tokenów podczas migrowania aplikacji do usługi b2clogin.com.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533765"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950990"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrowanie internetowego interfejsu API opartego na OWIN do usługi b2clogin.com
 
@@ -26,7 +27,7 @@ Dzięki dodaniu obsługi w interfejsie API do akceptowania tokenów wystawionych
 Poniższe sekcje przedstawiają przykład sposobu włączania wielu wystawców w interfejsie API sieci Web, który używa składników oprogramowania pośredniczącego [Microsoft Owin][katana] (Katana). Chociaż przykłady kodu są specyficzne dla oprogramowania pośredniczącego Microsoft OWIN, ogólna technika powinna być stosowana do innych bibliotek OWIN.
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla klientów Azure AD B2C z aktualnie wdrożonymi interfejsami API i `login.microsoftonline.com` aplikacjami, które odwołują się do programu `b2clogin.com` i które chcą migrować do zalecanego punktu końcowego. Jeśli konfigurujesz nową aplikację, użyj [b2clogin.com](b2clogin.md) jako kierowany.
+> Ten artykuł jest przeznaczony dla Azure AD B2C klientów z aktualnie wdrożonymi interfejsami API i aplikacjami odwołującymi się do `login.microsoftonline.com` i którzy chcą migrować do zalecanego `b2clogin.com`ego punktu końcowego. Jeśli konfigurujesz nową aplikację, użyj [b2clogin.com](b2clogin.md) jako kierowany.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -47,11 +48,11 @@ Zacznij od wybrania jednego z istniejących przepływów użytkownika:
 
     ![Dobrze znane hiperłącze URI na stronie uruchamiania teraz Azure Portal](media/multi-token-endpoints/portal-01-policy-link.png)
 
-1. Na stronie, która zostanie otwarta w przeglądarce, Zapisz `issuer` wartość, na przykład:
+1. Na stronie, która zostanie otwarta w przeglądarce, Zapisz wartość `issuer`, na przykład:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-1. Użyj listy rozwijanej **Wybierz domenę** , aby wybrać drugą domenę, następnie ponownie wykonaj dwa poprzednie kroki i Zapisz jej `issuer` wartość.
+1. Użyj listy rozwijanej **Wybierz domenę** , aby wybrać drugą domenę, następnie ponownie wykonaj dwa poprzednie kroki i Zapisz jej wartość `issuer`.
 
 Teraz powinny być zarejestrowane dwa identyfikatory URI, które są podobne do następujących:
 
@@ -69,7 +70,7 @@ Jeśli masz zasady niestandardowe zamiast przepływów użytkownika, możesz uż
 1. Wybierz jedną z zasad jednostki uzależnionej, na przykład *B2C_1A_signup_signin*
 1. Użyj listy rozwijanej **Wybierz domenę** , aby wybrać domenę, na przykład *yourtenant.b2clogin.com*
 1. Wybierz hiperlink wyświetlany w obszarze **punkt końcowy odnajdywania programu OpenID Connect Connect**
-1. `issuer` Zapisz wartość
+1. Rejestruj wartość `issuer`
 1. Wykonaj kroki 4-6 dla innej domeny, na przykład *login.microsoftonline.com*
 
 ## <a name="get-the-sample-code"></a>Pobieranie przykładowego kodu
@@ -91,7 +92,7 @@ W tej sekcji należy zaktualizować kod, aby określić, że oba punkty końcowe
 1. Dodaj następującą `using` dyrektywę na początku pliku:
 
     `using System.Collections.Generic;`
-1. [`ValidIssuers`][validissuers] Dodaj [Właściwość`TokenValidationParameters`][tokenvalidationparameters] do definicji i określ oba identyfikatory URI zarejestrowane w poprzedniej sekcji:
+1. Dodaj właściwość [`ValidIssuers`][validissuers] do definicji [`TokenValidationParameters`][tokenvalidationparameters] i określ oba identyfikatory URI zarejestrowane w poprzedniej sekcji:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters
@@ -106,7 +107,7 @@ W tej sekcji należy zaktualizować kod, aby określić, że oba punkty końcowe
     };
     ```
 
-`TokenValidationParameters`jest dostarczany przez MSAL.NET i jest zużywany przez oprogramowanie pośredniczące OWIN w następnej sekcji kodu w *Startup.auth.cs*. W przypadku wybrania wielu prawidłowych wystawców potok aplikacji OWIN ma świadomość, że oba punkty końcowe tokenu są prawidłowymi wystawcami.
+`TokenValidationParameters` jest udostępniana przez MSAL.NET i jest używana przez oprogramowanie pośredniczące OWIN w następnej sekcji kodu w *Startup.auth.cs*. W przypadku wybrania wielu prawidłowych wystawców potok aplikacji OWIN ma świadomość, że oba punkty końcowe tokenu są prawidłowymi wystawcami.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -124,7 +125,7 @@ Przy użyciu obu identyfikatorów URI teraz obsługiwanych przez internetowy int
 
 Przykładowo można skonfigurować przykładową aplikację sieci Web, aby korzystała z nowego punktu końcowego, `ida:AadInstance` modyfikując wartość w *pliku\\TaskWebApp **Web. config** projektu* **TaskWebApp** .
 
-Zmień wartość w *pliku Web. config* elementu TaskWebApp tak, aby odwoływał `{your-b2c-tenant-name}.b2clogin.com` `login.microsoftonline.com`się do niego zamiast. `ida:AadInstance`
+Zmień wartość `ida:AadInstance` w *pliku Web. config* TaskWebApp, tak aby odwoływał się do `{your-b2c-tenant-name}.b2clogin.com` zamiast `login.microsoftonline.com`.
 
 Przed:
 
@@ -133,7 +134,7 @@ Przed:
 <add key="ida:AadInstance" value="https://login.microsoftonline.com/tfp/{0}/{1}" />
 ```
 
-Po (Zamień `{your-b2c-tenant}` na nazwę dzierżawy B2C):
+Po (Zastąp `{your-b2c-tenant}` nazwą dzierżawy B2C):
 
 ```xml
 <!-- New value -->

@@ -1,6 +1,7 @@
 ---
-title: Przykłady transformacji oświadczeń konta społecznościowego dla schematu struktury środowiska tożsamości Azure Active Directory B2C | Microsoft Docs
-description: Przykłady transformacji oświadczeń konta społecznościowego dla schematu struktury środowiska tożsamości Azure Active Directory B2C.
+title: Przykłady transformacji oświadczeń kont społecznościowych dla zasad niestandardowych
+titleSuffix: Azure AD B2C
+description: Przykłady transformacji oświadczeń konta społecznościowego dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cd4839e2c8ad6605a29f3c8b824375185384f78c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9df00eea79b5dedc3211de02b17fe8f396d7b8a5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258148"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951075"
 ---
 # <a name="social-accounts-claims-transformations"></a>Przekształceń oświadczeń dotyczących kont społecznościowych
 
@@ -42,11 +43,11 @@ Tworzy reprezentację JSON właściwości alternativeSecurityId użytkownika, kt
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | key | ciąg | Wartość oświadczenia, która określa unikatowy identyfikator użytkownika używany przez dostawcę tożsamości społecznościowej. |
-| Oświadczenie inputclaim | identityProvider | ciąg | Wartość oświadczenia, która określa nazwę dostawcy tożsamości konta społecznościowego, na przykład facebook.com. |
-| Oświadczenie outputclaim | alternativeSecurityId | ciąg | Wartość oświadczenia jest generowana po wywołaniu ClaimsTransformation. Zawiera informacje o tożsamości użytkownika konta społecznościowego. Wystawcy jest wartością `identityProvider` żądania. **IssuerUserId** jest wartością `key` żądania w formacie base64. |
+| Oświadczenie inputclaim | key | string | Wartość oświadczenia, która określa unikatowy identyfikator użytkownika używany przez dostawcę tożsamości społecznościowej. |
+| Oświadczenie inputclaim | identityProvider | string | Wartość oświadczenia, która określa nazwę dostawcy tożsamości konta społecznościowego, na przykład facebook.com. |
+| Oświadczenie outputclaim | alternativeSecurityId | string | Wartość oświadczenia jest generowana po wywołaniu ClaimsTransformation. Zawiera informacje o tożsamości użytkownika konta społecznościowego. **Wystawcy** jest wartością `identityProvider`go żądania. **IssuerUserId** jest wartością żądania `key` w formacie base64. |
 
-Użyj tej transformacji oświadczeń do wygenerowania `alternativeSecurityId` elementu ClaimType. Jest on używany przez wszystkie profile techniczne dostawcy tożsamości społecznościowej, `Facebook-OAUTH`na przykład. Następująca transformacja oświadczeń odbiera identyfikator konta społecznościowego użytkownika i nazwę dostawcy tożsamości. Dane wyjściowe tego profilu technicznego to format ciągu JSON, który może być używany w usługach katalogowych Azure AD.
+Użyj tej transformacji oświadczeń do wygenerowania elementu ClaimType `alternativeSecurityId`. Jest on używany przez wszystkie profile techniczne dostawcy tożsamości społecznościowej, takie jak `Facebook-OAUTH`. Następująca transformacja oświadczeń odbiera identyfikator konta społecznościowego użytkownika i nazwę dostawcy tożsamości. Dane wyjściowe tego profilu technicznego to format ciągu JSON, który może być używany w usługach katalogowych Azure AD.
 
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
@@ -70,18 +71,18 @@ Użyj tej transformacji oświadczeń do wygenerowania `alternativeSecurityId` el
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
-`AlternativeSecurityId` Dodaje`alternativeSecurityIdCollection` do żądania.
+Dodaje `AlternativeSecurityId` do żądania `alternativeSecurityIdCollection`.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | element | ciąg | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
-| Oświadczenie inputclaim | kolekcja | alternativeSecurityIdCollection | Oświadczenia, które są używane przez transformację oświadczeń, jeśli są dostępne w zasadach. Jeśli ta wartość jest określona, transformacja oświadczeń `item` dodaje na końcu kolekcji. |
-| Oświadczenie outputclaim | kolekcja | alternativeSecurityIdCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Nowa kolekcja zawierająca elementy z danych wejściowych `collection` i. `item` |
+| Oświadczenie inputclaim | element | string | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
+| Oświadczenie inputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia, które są używane przez transformację oświadczeń, jeśli są dostępne w zasadach. Jeśli ta wartość jest określona, transformacja oświadczeń dodaje `item` na końcu kolekcji. |
+| Oświadczenie outputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Nowa kolekcja zawierająca elementy `collection` danych wejściowych i `item`. |
 
 Poniższy przykład łączy nową tożsamość społecznościową z istniejącym kontem. Aby połączyć nową tożsamość społecznościową:
 1. W profilach technicznych usługi **AAD-UserReadUsingAlternativeSecurityId** i **AAD-UserReadUsingObjectId** dane wyjściowe żądania **alternativeSecurityIds** użytkownika.
 1. Poproszenie użytkownika o zalogowanie się za pomocą jednego z dostawców tożsamości, które nie są skojarzone z tym użytkownikiem.
-1. Przy użyciu transformacji oświadczeń **CreateAlternativeSecurityId** Utwórz nowy typ oświadczenia **alternativeSecurityId** o nazwie`AlternativeSecurityId2`
+1. Przy użyciu transformacji oświadczeń **CreateAlternativeSecurityId** Utwórz nowy typ oświadczenia **alternativeSecurityId** o nazwie `AlternativeSecurityId2`
 1. Wywołaj transformację oświadczeń **AddItemToAlternativeSecurityIdCollection** , aby dodać oświadczenie **AlternativeSecurityId2** do istniejącego oświadczenia **AlternativeSecurityIds** .
 1. Utrwalanie żądania **alternativeSecurityIds** na koncie użytkownika
 
@@ -101,13 +102,13 @@ Poniższy przykład łączy nową tożsamość społecznościową z istniejącym
 
 - Oświadczenia wejściowe:
     - **element**: {"wystawca": "Facebook.com", "issuerUserId": "MTIzNDU ="}
-    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
 - Oświadczenia wyjściowe:
-    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"wystawca": "facebook.com", "issuerUserId": "MTIzNDU ="}]
+    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"wystawca": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
-Zwraca listę wystawców z AlternativeSecurityIdCollectionego żądania do nowego żądania **ciągu** .
+Zwraca listę wystawców z **alternativeSecurityIdCollectionego** żądania do nowego żądania **ciągu** .
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
@@ -128,7 +129,7 @@ Następująca transformacja oświadczeń odczytuje oświadczenia **alternativeSe
 ```
 
 - Oświadczenia wejściowe:
-    - **alternativeSecurityIdCollection**: [{"wystawca": "Google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"wystawca": "facebook.com", "issuerUserId": "MTIzNDU ="}]
+    - **alternativeSecurityIdCollection**: [{"wystawca": "Google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"wystawca": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
 - Oświadczenia wyjściowe:
     - **identityProvidersCollection**: ["Facebook.com", "Google.com"]
 
@@ -138,9 +139,9 @@ Usuwa element **AlternativeSecurityId** z **alternativeSecurityIdCollectionego**
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | identityProvider | ciąg | Wartość oświadczenia, która zawiera nazwę dostawcy tożsamości, który ma zostać usunięty z kolekcji. |
-| Oświadczenie inputclaim | kolekcja | alternativeSecurityIdCollection | Oświadczenia, które są używane przez transformację oświadczeń. Transformacja oświadczeń usuwa identityProvider z kolekcji. |
-| Oświadczenie outputclaim | kolekcja | alternativeSecurityIdCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Nowa kolekcja po usunięciu identityProvider z kolekcji. |
+| Oświadczenie inputclaim | identityProvider | string | Wartość oświadczenia, która zawiera nazwę dostawcy tożsamości, który ma zostać usunięty z kolekcji. |
+| Oświadczenie inputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia, które są używane przez transformację oświadczeń. Transformacja oświadczeń usuwa identityProvider z kolekcji. |
+| Oświadczenie outputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Nowa kolekcja po usunięciu identityProvider z kolekcji. |
 
 Poniższy przykład odłącza jedną tożsamość społecznościową z istniejącym kontem. Aby odłączyć tożsamość społecznościową:
 1. W profilach technicznych usługi **AAD-UserReadUsingAlternativeSecurityId** i **AAD-UserReadUsingObjectId** dane wyjściowe żądania **alternativeSecurityIds** użytkownika.
@@ -165,6 +166,6 @@ Poniższy przykład odłącza jedną tożsamość społecznościową z istnieją
 
 - Oświadczenia wejściowe:
     - **identityProvider**: Facebook.com
-    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"wystawca": "facebook.com", "issuerUserId": "MTIzNDU ="}]
+    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"wystawca": "Facebook.com", "issuerUserId": "MTIzNDU ="}]
 - Oświadczenia wyjściowe:
-    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **Kolekcja**: [{"wystawca": "Live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]

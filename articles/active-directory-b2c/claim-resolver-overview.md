@@ -1,6 +1,7 @@
 ---
-title: Informacje o resolverach roszczeń w Azure Active Directory B2C zasadach niestandardowych | Microsoft Docs
-description: Dowiedz się więcej na temat sposobu używania metod rozpoznawania oświadczeń w zasadach niestandardowych w Azure Active Directory B2C.
+title: Rozwiązywanie problemów w zasadach niestandardowych
+titleSuffix: Azure AD B2C
+description: Dowiedz się, jak używać resolverów oświadczeń w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,20 +11,20 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064393"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949878"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informacje o rozpoznawaniu roszczeń w Azure Active Directory B2C zasadach niestandardowych
 
 Mechanizmy rozpoznawania nazw w Azure Active Directory B2C (Azure AD B2C) [zasady niestandardowe](active-directory-b2c-overview-custom.md) zawierają informacje kontekstu dotyczące żądania autoryzacji, takie jak nazwa zasad, identyfikator korelacji żądania, język interfejsu użytkownika i inne.
 
-Aby użyć mechanizmu rozwiązywania konfliktów w ramach oświadczenia wejściowego lub wychodzącego,należy zdefiniować element ClaimType typu String w elemencie [ClaimsSchema](claimsschema.md) , a następnie ustawić wartość **DefaultValue** na resolver oświadczenia w elemencie oświadczenia wejściowego lub wychodzącego. Azure AD B2C odczytuje wartość mechanizmu rozwiązywania konfliktów i używa wartości w profilu technicznym.
+Aby użyć mechanizmu rozwiązywania konfliktów w ramach oświadczenia wejściowego lub wychodzącego, należy zdefiniować element **ClaimType**typu String w elemencie [ClaimsSchema](claimsschema.md) , a następnie ustawić wartość **DefaultValue** na resolver oświadczenia w elemencie oświadczenia wejściowego lub wychodzącego. Azure AD B2C odczytuje wartość mechanizmu rozwiązywania konfliktów i używa wartości w profilu technicznym.
 
-W poniższym przykładzie typ wystąpienia `correlationId` `string`o nazwie jest zdefiniowany za pomocą typu **danych** .
+W poniższym przykładzie typ zgłoszenia o nazwie `correlationId` jest zdefiniowany za pomocą **typu danych** `string`.
 
 ```XML
 <ClaimType Id="correlationId">
@@ -33,7 +34,7 @@ W poniższym przykładzie typ wystąpienia `correlationId` `string`o nazwie jest
 </ClaimType>
 ```
 
-W profilu technicznym zamapuj mechanizm rozwiązywania konfliktów na typ zgłoszenia. Azure AD B2C wypełnia wartość programu rozpoznawania `{Context:CorrelationId}` roszczeń do roszczeń `correlationId` i wysyła je do profilu technicznego.
+W profilu technicznym zamapuj mechanizm rozwiązywania konfliktów na typ zgłoszenia. Azure AD B2C wypełnia wartość `{Context:CorrelationId}` mechanizmu rozwiązywania konfliktów w `correlationId` roszczeń i wysyła je do profilu technicznego.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
@@ -45,16 +46,16 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 ### <a name="culture"></a>Kultura
 
-| Oświadczenie | Opis | Przykład |
+| Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | pl-PL |
+| {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | en |
 | {Culture: LCID}   | Identyfikator LCID kodu języka. | 1033 |
-| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | USA |
+| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | Stany Zjednoczone |
 | {Culture: RFC5646} | Kod języka RFC5646. | en-US |
 
 ### <a name="policy"></a>Zasady
 
-| Oświadczenie | Opis | Przykład |
+| Claim | Opis | Przykład |
 | ----- | ----------- | --------|
 | {Policy: PolicyId} | Nazwa zasad jednostki uzależnionej. | B2C_1A_signup_signin |
 | {Policy: RelyingPartyTenantId} | Identyfikator dzierżawy zasad jednostki uzależnionej. | your-tenant.onmicrosoft.com |
@@ -63,21 +64,21 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Oświadczenie | Opis | Przykład |
+| Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |Parametr `acr_values` ciągu zapytania. | ND |
-| {OIDC:ClientId} |Parametr `client_id` ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC: DomainHint} |Parametr `domain_hint` ciągu zapytania. | facebook.com |
-| {OIDC: LoginHint} |  Parametr `login_hint` ciągu zapytania. | someone@contoso.com |
-| {OIDC:MaxAge} | `max_age`. | ND |
-| {OIDC: nonce} |Parametr `Nonce` ciągu zapytania. | defaultNonce |
-| {OIDC: Prompt} | Parametr `prompt` ciągu zapytania. | logowanie |
-| {OIDC: Resource} |Parametr `resource` ciągu zapytania. | ND |
-| {OIDC: Scope} |Parametr `scope` ciągu zapytania. | OpenID Connect |
+| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | ND |
+| {OIDC:ClientId} |`client_id` parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC: DomainHint} |`domain_hint` parametr ciągu zapytania. | facebook.com |
+| {OIDC: LoginHint} |  `login_hint` parametr ciągu zapytania. | someone@contoso.com |
+| {OIDC:MaxAge} | Element `max_age`. | ND |
+| {OIDC: nonce} |`Nonce` parametr ciągu zapytania. | defaultNonce |
+| {OIDC: Prompt} | `prompt` parametr ciągu zapytania. | logowanie |
+| {OIDC: Resource} |`resource` parametr ciągu zapytania. | ND |
+| {OIDC: Scope} |`scope` parametr ciągu zapytania. | OpenID Connect |
 
 ### <a name="context"></a>Kontekst
 
-| Oświadczenie | Opis | Przykład |
+| Claim | Opis | Przykład |
 | ----- | ----------- | --------|
 | {Context: BuildNumber} | Wersja struktury obsługi tożsamości (numer kompilacji).  | 1.0.507.0 |
 | {Context: identyfikator korelacji} | Identyfikator korelacji.  | 00000000-0000-0000-0000-000000000000 |
@@ -88,9 +89,9 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 ### <a name="non-protocol-parameters"></a>Parametry niebędące protokołem
 
-Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 mogą być mapowane do roszczeń w podróży użytkownika. Na przykład żądanie z aplikacji może zawierać parametr ciągu zapytania z nazwą `app_session`, `loyalty_number`lub dowolnym niestandardowym ciągiem zapytania.
+Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 mogą być mapowane do roszczeń w podróży użytkownika. Na przykład żądanie z aplikacji może zawierać parametr ciągu zapytania o nazwie `app_session`, `loyalty_number`lub dowolnego niestandardowego ciągu zapytania.
 
-| Oświadczenie | Opis | Przykład |
+| Claim | Opis | Przykład |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV: campaignId} | Parametr ciągu zapytania. | Hawaje |
 | {OAUTH-KV: app_session} | Parametr ciągu zapytania. | A3C5R |
@@ -99,7 +100,7 @@ Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 m
 
 ### <a name="oauth2"></a>OAuth2
 
-| Oświadczenie | Opis | Przykład |
+| Claim | Opis | Przykład |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | Token dostępu. | ND |
 
@@ -138,7 +139,7 @@ Korzystając z resolverów roszczeń, można wstępnie wypełnić nazwę logowan
 
 Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, dzięki czemu można dynamicznie renderować zawartość strony. Na przykład można zmienić obraz tła na stronie rejestracji lub logowania Azure AD B2C na podstawie parametru niestandardowego, który jest przekazywany z aplikacji sieci Web lub mobilnej. Aby uzyskać więcej informacji, zobacz [dynamiczne Konfigurowanie interfejsu użytkownika przy użyciu zasad niestandardowych w programie Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Możesz również lokalizować stronę HTML na podstawie parametru języka lub można zmienić zawartość na podstawie identyfikatora klienta.
 
-Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId** z `hawaii`wartością, kod `en-US`języka i **aplikację** reprezentującą identyfikator klienta:
+Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId** z wartością `hawaii`, kod **języka** `en-US`i **aplikację** reprezentującą identyfikator klienta:
 
 ```XML
 <UserJourneyBehaviors>

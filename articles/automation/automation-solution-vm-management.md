@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 54f0584eae948d6e577b0439a5a0d976ff61d4b1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850656"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951500"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Start/Stop VMs during off-hours rozwiązanie w Azure Automation
 
@@ -428,7 +428,7 @@ Aby usunąć rozwiązanie, wykonaj następujące czynności:
 
 Konto usługi Automation i obszar roboczy Log Analytics nie są usuwane w ramach tego procesu. Jeśli nie chcesz zachować obszaru roboczego Log Analytics, musisz go ręcznie usunąć. Można to zrobić z poziomu Azure Portal:
 
-1. Na ekranie głównym Azure Portal wybierz pozycję **log Analytics obszary robocze**.
+1. W Azure Portal, Wyszukaj i wybierz **log Analytics obszary robocze**.
 1. Na stronie **obszary robocze log Analytics** wybierz obszar roboczy.
 1. Na stronie Ustawienia obszaru roboczego wybierz pozycję **Usuń** z menu.
 

@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie złożoności haseł przy użyciu zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+title: Konfigurowanie złożoności haseł przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Jak skonfigurować wymagania dotyczące złożoności hasła przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e8718a04f9d63897b2d2472dd0cdffb196c41435
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065533"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949794"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie złożoności haseł przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W Azure Active Directory B2C (Azure AD B2C) można skonfigurować wymagania dotyczące złożoności haseł dostarczonych przez użytkownika podczas tworzenia konta. Domyślnie Azure AD B2C używa silnych haseł. W tym artykule opisano sposób konfigurowania złożoności haseł w [zasadach niestandardowych](active-directory-b2c-overview-custom.md). Istnieje również możliwość skonfigurowania złożoności haseł w [przepływach użytkowników](active-directory-b2c-reference-password-complexity.md).
+W Azure Active Directory B2C (Azure AD B2C) można skonfigurować wymagania dotyczące złożoności haseł dostarczonych przez użytkownika podczas tworzenia konta. Domyślnie Azure AD B2C używa **silnych** haseł. W tym artykule opisano sposób konfigurowania złożoności haseł w [zasadach niestandardowych](active-directory-b2c-overview-custom.md). Istnieje również możliwość skonfigurowania złożoności haseł w [przepływach użytkowników](active-directory-b2c-reference-password-complexity.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +45,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Active
     </ClaimsSchema>
     ```
 
-4. [Predykaty](predicates.md) mają typy `IsLengthRange` metod lub `MatchesRegex`. `MatchesRegex` Typ jest używany do dopasowania wyrażenia regularnego. `IsLengthRange` Typ przyjmuje minimalną i maksymalną długość ciągu. Dodaj element **predykats** do elementu **BuildingBlocks** , jeśli nie istnieje z następującymi elementami predykatu :
+4. [Predykaty](predicates.md) mają typy metod `IsLengthRange` lub `MatchesRegex`. Typ `MatchesRegex` jest używany do dopasowania wyrażenia regularnego. Typ `IsLengthRange` przyjmuje minimalną i maksymalną długość ciągu. Dodaj element **predykats** do elementu **BuildingBlocks** , jeśli nie istnieje z następującymi elementami **predykatu** :
 
     ```XML
     <Predicates>
@@ -62,7 +63,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Active
     </Predicates>
     ```
 
-5. Każdy element **InputValidation** jest konstruowany przy użyciu zdefiniowanych elementów **predykatu** . Ten element umożliwia wykonywanie agregacji logicznych, które są podobne do `and` i. `or` Dodaj element **InputValidations** do elementu **BuildingBlocks** , jeśli nie istnieje z następującym elementem **InputValidation** :
+5. Każdy element **InputValidation** jest konstruowany przy użyciu zdefiniowanych elementów **predykatu** . Ten element umożliwia wykonywanie agregacji logicznych, które są podobne do `and` i `or`. Dodaj element **InputValidations** do elementu **BuildingBlocks** , jeśli nie istnieje z następującym elementem **InputValidation** :
 
     ```XML
     <InputValidations>
@@ -107,11 +108,11 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Active
 
 ## <a name="test-your-policy"></a>Testowanie zasad
 
-Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `https://jwt.ms` Azure AD B2C był w stanie przejrzeć oświadczenia w nim.
+Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token Azure AD B2C został zwrócony do `https://jwt.ms`, aby można było przejrzeć oświadczenia w nim.
 
-### <a name="upload-the-files"></a>Przekaż pliki
+### <a name="upload-the-files"></a>Przekazywanie plików
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **platforma obsługi tożsamości**.
@@ -119,10 +120,10 @@ Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token `htt
 6. Wybierz opcję **Zastąp zasady, jeśli istnieje**, a następnie wyszukaj i wybierz plik *SingUpOrSignInPasswordComplexity. XML* .
 7. Kliknij pozycję **Przekaż**.
 
-### <a name="run-the-policy"></a>Uruchom zasady
+### <a name="run-the-policy"></a>Uruchamianie zasad
 
 1. Otwórz zasady, które zostały zmienione. Na przykład *B2C_1A_signup_signin_password_complexity*.
-2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token, należy `https://jwt.ms`wyświetlić **adres URL odpowiedzi** .
+2. W przypadku **aplikacji**wybierz wcześniej zarejestrowaną aplikację. Aby wyświetlić token, **adres URL odpowiedzi** powinien zawierać `https://jwt.ms`.
 3. Kliknij pozycję **Uruchom teraz**.
 4. Wybierz pozycję **zarejestruj się teraz**, wprowadź adres e-mail i wprowadź nowe hasło. Wskazówki przedstawiono w temacie ograniczenia dotyczące haseł. Zakończ wprowadzanie informacji o użytkowniku, a następnie kliknij przycisk **Utwórz**. Powinna zostać wyświetlona zawartość zwróconego tokenu.
 

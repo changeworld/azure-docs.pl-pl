@@ -3,12 +3,12 @@ title: Jak docelowa Azure Functions wersje środowiska uruchomieniowego
 description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Dowiedz się, jak określić wersję środowiska uruchomieniowego aplikacji funkcji hostowanej na platformie Azure.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 6f93ac7bcbd25c1b120cfeecae9dd4353524855f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230319"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942277"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak docelowa Azure Functions wersje środowiska uruchomieniowego
 
@@ -29,9 +29,9 @@ W poniższej tabeli przedstawiono wartości `FUNCTIONS_EXTENSION_VERSION` dla ka
 
 | Wersja główna | wartość `FUNCTIONS_EXTENSION_VERSION` |
 | ------------- | ----------------------------------- |
-| 3. x (wersja zapoznawcza) | `~3` |
+| wersji  | `~3` |
 | 2.x  | `~2` |
-| 1.x | `~1` |
+| 1.x  | `~1` |
 
 Zmiana wersji środowiska uruchomieniowego powoduje ponowne uruchomienie aplikacji funkcji.
 
@@ -42,7 +42,7 @@ Możesz zmienić wersję środowiska uruchomieniowego używaną przez aplikację
 > [!IMPORTANT]
 > Mimo że wersja środowiska uruchomieniowego jest określana na podstawie ustawienia `FUNCTIONS_EXTENSION_VERSION`, należy wprowadzić tę zmianę w Azure Portal, a nie przez zmianę ustawienia bezpośrednio. Dzieje się tak, ponieważ Portal sprawdza poprawność zmian i wprowadza inne powiązane zmiany stosownie do potrzeb.
 
-### <a name="from-the-azure-portal"></a>Z Azure Portal
+### <a name="from-the-azure-portal"></a>Z witryny Azure Portal
 
 [!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 

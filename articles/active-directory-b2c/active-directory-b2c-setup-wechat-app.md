@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie rejestracji i logowania przy użyciu konta usługi WeChat za pomocą Azure Active Directory B2C
+title: Skonfiguruj konto i zaloguj się przy użyciu konta WeChat
+titleSuffix: Azure AD B2C
 description: Podaj konto i zaloguj się do klientów za pomocą kont usługi WeChat w swoich aplikacjach przy użyciu Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad5e5b766c38b2ce3c48c22e62dd1fd2b9a79853
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7cbc41247d7b99eb63730ae4326808e64c663e8f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064963"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950531"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania przy użyciu konta usługi WeChat za pomocą Azure Active Directory B2C
 
@@ -23,11 +24,11 @@ ms.locfileid: "71064963"
 
 ## <a name="create-a-wechat-application"></a>Tworzenie aplikacji WeChat
 
-Aby użyć konta WeChat jako dostawcy tożsamości w Azure Active Directory B2C (Azure AD B2C), musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta WeChat, możesz uzyskać informacje o [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
+Aby użyć konta WeChat jako dostawcy tożsamości w Azure Active Directory B2C (Azure AD B2C), musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta WeChat, możesz uzyskać informacje w [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
 
 ### <a name="register-a-wechat-application"></a>Rejestrowanie aplikacji WeChat
 
-1. Zaloguj się przy użyciu swoich poświadczeń WeChat. [https://open.weixin.qq.com/](https://open.weixin.qq.com/)
+1. Zaloguj się, aby [https://open.weixin.qq.com/](https://open.weixin.qq.com/) przy użyciu poświadczeń WeChat.
 1. Wybierz pozycję**管理中心**(centrum zarządzania).
 1. Postępuj zgodnie z instrukcjami, aby zarejestrować nową aplikację.
 1. Wprowadź `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w**授权回调域**(adres URL wywołania zwrotnego). Na przykład jeśli nazwa dzierżawy to contoso, ustaw adres URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.

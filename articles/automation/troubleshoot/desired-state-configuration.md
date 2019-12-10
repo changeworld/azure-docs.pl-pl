@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849364"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951466"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z konfiguracją żądanego stanu (DSC)
 
@@ -89,6 +89,68 @@ Ten błąd jest zwykle spowodowany przez zaporę, komputer za serwerem proxy lub
 #### <a name="resolution"></a>Rozdzielczość
 
 Sprawdź, czy maszyna ma dostęp do odpowiednich punktów końcowych Azure Automation DSC i spróbuj ponownie. Aby uzyskać listę wymaganych portów i adresów, zobacz [Planowanie sieci](../automation-dsc-overview.md#network-planning)
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a>Scenariusz <a/><a name="unauthorized">: raporty o stanie zwracają kod odpowiedzi "nieautoryzowane"
+
+#### <a name="issue"></a>Problem
+
+Podczas rejestrowania węzła z konfiguracją stanu (DSC) pojawia się jeden z następujących komunikatów o błędach:
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>Przyczyna
+
+Ten problem jest spowodowany przez zły lub wygasły certyfikat.  Aby uzyskać więcej informacji, zobacz [wygaśnięcie i rejestrację certyfikatu](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration).
+
+### <a name="resolution"></a>Rozdzielczość
+
+Wykonaj kroki opisane poniżej, aby ponownie zarejestrować węzeł DSC zakończony niepowodzeniem.
+
+Najpierw Wyrejestruj węzeł, wykonując poniższe kroki.
+
+1. Z poziomu Azure Portal w obszarze **główne** -> **konta usługi Automation**> {Twoje konto usługi Automation} — > **State Configuration (DSC)**
+2. Kliknij pozycję "węzły" i kliknij węzeł z problemami.
+3. Kliknij pozycję "Wyrejestruj", aby wyrejestrować węzeł.
+
+Następnie Odinstaluj rozszerzenie DSC z węzła.
+
+1. Z poziomu Azure Portal w obszarze **Narzędzia główne** -> **maszyna wirtualna** -> {niepowodzenie węzła} — **rozszerzenia** >
+2. Kliknij pozycję "Microsoft. PowerShell. DSC".
+3. Kliknij przycisk "Odinstaluj", aby odinstalować rozszerzenie DSC programu PowerShell.
+
+Po trzecie Usuń wszystkie złe lub wygasłe certyfikaty z węzła.
+
+W przypadku niepowodzenia węzła w wierszu polecenia programu PowerShell z podwyższonym poziomem uprawnień uruchom następujące polecenie:
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+Na koniec Zarejestruj ponownie węzeł zakończony niepowodzeniem, wykonując poniższe kroki.
+
+1. Z poziomu Azure Portal w obszarze **główne** -> **konta usługi Automation** > {Twoje konto usługi Automation} — > **State Configuration (DSC)**
+2. Kliknij pozycję "węzły".
+3. Kliknij przycisk "Dodaj".
+4. Wybierz węzeł z niepowodzeniem.
+5. Kliknij pozycję "Połącz" i wybierz odpowiednie opcje.
 
 ### <a name="failed-not-found"></a>Scenariusz: węzeł jest w stanie niepowodzenia z powodu błędu "nie znaleziono"
 
@@ -187,6 +249,49 @@ Ten błąd występuje zazwyczaj, gdy do węzła jest przypisana nazwa konfigurac
 
 * Upewnij się, że przypiszesz węzeł z nazwą konfiguracji węzła, która dokładnie pasuje do nazwy w usłudze.
 * Można zrezygnować z uwzględnienia nazwy konfiguracji węzła, która spowoduje dołączenie węzła, ale nie przypisanie konfiguracji węzła
+
+### <a name="cross-subscription"></a>Scenariusz: rejestrowanie węzła przy użyciu programu PowerShell zwraca błąd "wystąpił co najmniej jeden błąd"
+
+#### <a name="issue"></a>Problem
+
+Podczas rejestrowania węzła przy użyciu `Register-AzAutomationDSCNode` lub `Register-AzureRMAutomationDSCNode`pojawia się następujący błąd.
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd występuje podczas próby zarejestrowania węzła, który znajduje się w oddzielnej subskrypcji niż konto usługi Automation.
+
+#### <a name="resolution"></a>Rozdzielczość
+
+Traktuj węzeł między subskrypcjami, tak jakby był on w osobnej chmurze lub lokalnie.
+
+Wykonaj poniższe kroki, aby zarejestrować węzeł.
+
+* Windows — [fizyczne/wirtualne maszyny z systemem Windows lokalnie lub w chmurze innej niż Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws).
+* Linux — [fizyczne/wirtualne maszyny z systemem Linux w środowisku lokalnym lub w chmurze innej niż Azure](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure).
+
+### <a name="agent-has-a-problem"></a>Scenariusz: komunikat o błędzie — "Inicjowanie obsługi nie powiodło się"
+
+#### <a name="issue"></a>Problem
+
+Podczas rejestrowania węzła zostanie wyświetlony komunikat o błędzie:
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten komunikat występuje, gdy występuje problem z łącznością między węzłem i platformą Azure.
+
+#### <a name="resolution"></a>Rozdzielczość
+
+Ustal, czy węzeł znajduje się w prywatnej sieci wirtualnej, czy też ma inne problemy z nawiązywaniem połączenia z platformą Azure.
+
+Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów podczas](onboarding.md)dołączania rozwiązań.
 
 ### <a name="failure-linux-temp-noexec"></a>Scenariusz: zastosowanie konfiguracji w systemie Linux powoduje wystąpienie błędu z ogólnym błędem
 

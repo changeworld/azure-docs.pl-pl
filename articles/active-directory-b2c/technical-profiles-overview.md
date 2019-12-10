@@ -1,6 +1,7 @@
 ---
-title: Informacje o profilach technicznych w Azure Active Directory B2C zasadach niestandardowych | Microsoft Docs
-description: Dowiedz się więcej o tym, jak profile techniczne są używane w zasadach niestandardowych w Azure Active Directory B2C.
+title: Omówienie profilów technicznych w zasadach niestandardowych
+titleSuffix: Azure AD B2C
+description: Dowiedz się, jak profile techniczne są używane w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063328"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951041"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach technicznych w Azure Active Directory B2C zasadach niestandardowych
 
@@ -55,8 +56,8 @@ Wszystkie typy profilów technicznych mają takie same koncepcje. Wysyłasz ośw
     - Wysyła i weryfikuje wiadomość tekstową usługi MFA.
 4. **ValidationTechnicalProfiles** — w przypadku [samodzielnego profilu technicznego](self-asserted-technical-profile.md)można wywołać [profil techniczny weryfikacji](validation-technical-profile.md)danych wejściowych. Profil techniczny weryfikacji weryfikuje dane profilowane przez użytkownika i zwraca komunikat o błędzie lub OK, z lub bez oświadczeń wyjściowych. Na przykład przed Azure AD B2C tworzenia nowego konta sprawdza, czy użytkownik już istnieje w usługach katalogowych. Aby dodać własną logikę biznesową, można wywołać profil techniczny interfejsu API REST.<p>Zakres oświadczeń wyjściowych dla profilu technicznego weryfikacji jest ograniczony do profilu technicznego, który wywołuje profil techniczny weryfikacji i inne profile techniczne weryfikacji w ramach tego samego profilu technicznego. Jeśli chcesz użyć oświadczeń wyjściowych w następnym kroku aranżacji, musisz dodać oświadczenia wyjściowe do profilu technicznego, który wywoła profil techniczny weryfikacji.
 5. **OutputClaims** — oświadczenia są zwracane z powrotem do zbioru oświadczeń. Możesz użyć tych oświadczeń w następnych krokach aranżacji lub przekształceń oświadczeń wyjściowych.
-6. **OutputClaimsTransformations** — oświadczenia wejściowe wszystkich przekształceń [oświadczeń](claimstransformations.md) wyjściowych są pobierane z zbioru oświadczeń. Oświadczenia wyjściowe profilu technicznego z poprzednich kroków mogą być oświadczeniami wejściowymi transformacji oświadczeń wyjściowych. Po wykonaniu oświadczenia wyjściowe są umieszczane w zbiorze oświadczeń. Oświadczenia wyjściowe transformacji oświadczeń wyjściowych mogą również być oświadczeniami wejściowymi dla kolejnej transformacji oświadczeń wyjściowych.
-7.  - Usługa rejestracji jednokrotnej (SSO) Zarządzanie sesją logowania jednokrotnego —[Kontrola interakcji](active-directory-b2c-reference-sso-custom.md) z użytkownikiem po uwierzytelnieniu użytkownika. Administrator może na przykład określić, czy jest wyświetlany wybór dostawców tożsamości, czy też należy wprowadzić ponownie szczegóły konta lokalnego.
+6. **OutputClaimsTransformations** — oświadczenia wejściowe wszystkich [przekształceń oświadczeń](claimstransformations.md) wyjściowych są pobierane z zbioru oświadczeń. Oświadczenia wyjściowe profilu technicznego z poprzednich kroków mogą być oświadczeniami wejściowymi transformacji oświadczeń wyjściowych. Po wykonaniu oświadczenia wyjściowe są umieszczane w zbiorze oświadczeń. Oświadczenia wyjściowe transformacji oświadczeń wyjściowych mogą również być oświadczeniami wejściowymi dla kolejnej transformacji oświadczeń wyjściowych.
+7. **Zarządzanie sesją logowania** jednokrotnego - kontrola [zarządzania sesją SSO](active-directory-b2c-reference-sso-custom.md) interakcja z użytkownikiem po uwierzytelnieniu użytkownika. Administrator może na przykład określić, czy jest wyświetlany wybór dostawców tożsamości, czy też należy wprowadzić ponownie szczegóły konta lokalnego.
 
 Profil techniczny może dziedziczyć z innego profilu technicznego, aby zmienić ustawienia lub dodać nową funkcję.  Element **IncludeTechnicalProfile** jest odwołaniem do podstawowego profilu technicznego, z którego pochodzi profil techniczny.
 
@@ -71,7 +72,7 @@ Na przykład profil techniczny **AAD-UserReadUsingAlternativeSecurityId-NOERROR*
 </TechnicalProfile>
 ```
 
-W przypadku `AAD-Common` usługi **AAD-UserReadUsingAlternativeSecurityId** uwzględniono profil techniczny.
+Usługi **AAD-UserReadUsingAlternativeSecurityId** zawierają profil techniczny `AAD-Common`.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
@@ -105,7 +106,7 @@ W przypadku usługi AAD **-UserReadUsingAlternativeSecurityId-NOERROR** i **AAD-
 </TechnicalProfile>
 ```
 
-Profil techniczny może obejmować lub dziedziczyć inny profil techniczny, który może zawierać kolejny z nich. Nie ma żadnego limitu liczby poziomów. W zależności od wymagań firmy, podróż użytkownika może wywołać **AAD-UserReadUsingAlternativeSecurityId** , który zgłasza błąd, jeśli konto społecznościowe użytkownika nie istnieje lub **AAD-UserReadUsingAlternativeSecurityId-NOERROR** , które nie Zgłoś błąd.
+Profil techniczny może obejmować lub dziedziczyć inny profil techniczny, który może zawierać kolejny z nich. Nie ma żadnego limitu liczby poziomów. W zależności od wymagań firmy podróż użytkownika może wywołać metodę **AAD-UserReadUsingAlternativeSecurityId** , która zgłasza błąd, jeśli konto społecznościowe użytkownika nie istnieje lub **AAD-UserReadUsingAlternativeSecurityId-NOERROR** , które nie zgłasza błędu.
 
 
 

@@ -1,6 +1,7 @@
 ---
-title: Ogólne przykłady transformacji oświadczeń dla schematu struktury obsługi tożsamości Azure Active Directory B2C
-description: Ogólne przykłady transformacji oświadczeń dla schematu programu Identity Experience Framework Azure Active Directory B2C.
+title: Ogólne przykłady transformacji oświadczeń dla zasad niestandardowych
+titleSuffix: Azure AD B2C
+description: Ogólne przykłady transformacji oświadczeń dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7cea33cb61f8f8d0fe305a757f11c80bc5da24ca
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 639277177bf63e659e5b0ea804eca5e20f956831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032895"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948894"
 ---
 # <a name="general-claims-transformations"></a>Ogólne przekształcenia oświadczeń
 
@@ -29,8 +30,8 @@ Sprawdza, czy **oświadczenie inputclaim** istnieje, czy nie, i odpowiednio usta
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | Oświadczenie inputclaim |Any | Dane wejściowe, których istnienie musi być zweryfikowane. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | boolean | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim |Dowolne | Dane wejściowe, których istnienie musi być zweryfikowane. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
 Ta transformacja oświadczeń służy do sprawdzania, czy oświadczenie istnieje lub zawiera dowolną wartość. Wartość zwracana jest wartością logiczną, która wskazuje, czy istnieje. Poniższy przykład sprawdza, czy adres e-mail istnieje.
 
@@ -48,7 +49,7 @@ Ta transformacja oświadczeń służy do sprawdzania, czy oświadczenie istnieje
 ### <a name="example"></a>Przykład
 
 - Oświadczenia wejściowe:
-  - **oświadczenie inputclaim**:someone@contoso.com
+  - **oświadczenie inputclaim**: someone@contoso.com
 - Oświadczenia wyjściowe:
   - **oświadczenie outputclaim**: true
 
@@ -58,10 +59,10 @@ Mieszaj podany zwykły tekst przy użyciu soli i wpisu tajnego. Algorytmem wyzna
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | formacie | ciąg | Dane wejściowe do zaszyfrowania |
-| Oświadczenie inputclaim | Solo | ciąg | Parametr soli. Można utworzyć wartość losową przy użyciu `CreateRandomString` transformacji oświadczeń. |
-| InputParameter | randomizerSecret | ciąg | Wskazuje istniejący **klucz zasad**Azure AD B2C. Aby utworzyć nowy klucz zasad: W dzierżawie Azure AD B2C w obszarze **Zarządzaj**wybierz pozycję **platforma obsługi tożsamości**. Wybierz pozycję **klucze zasad** , aby wyświetlić klucze, które są dostępne w dzierżawie. Wybierz pozycję **Dodaj**. W obszarze **Opcje**wybierz pozycję **Ręczne**. Podaj nazwę (prefiks *B2C_1A_* może zostać dodany automatycznie). W polu tekstowym **wpis tajny** wprowadź dowolne tajne, na przykład 1234567890. W obszarze **użycie klucza**wybierz pozycję **podpis**. Wybierz pozycję **Utwórz**. |
-| Oświadczenie outputclaim | skrótu | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. Zostało skonfigurowane w `plaintext` oświadczenie inputclaim. |
+| Oświadczenie inputclaim | formacie | string | Dane wejściowe do zaszyfrowania |
+| Oświadczenie inputclaim | Solo | string | Parametr soli. Można utworzyć wartość losową przy użyciu transformacji oświadczeń `CreateRandomString`. |
+| InputParameter | randomizerSecret | string | Wskazuje istniejący **klucz zasad**Azure AD B2C. Aby utworzyć nowy klucz zasad: w dzierżawie Azure AD B2C w obszarze **Zarządzaj**wybierz pozycję **platforma obsługi tożsamości**. Wybierz pozycję **klucze zasad** , aby wyświetlić klucze, które są dostępne w dzierżawie. Wybierz pozycję **Dodaj**. W obszarze **Opcje**wybierz pozycję **Ręczne**. Podaj nazwę (prefiks *B2C_1A_* może zostać dodany automatycznie). W polu tekstowym **wpis tajny** wprowadź dowolne tajne, na przykład 1234567890. W obszarze **użycie klucza**wybierz pozycję **podpis**. Wybierz pozycję **Utwórz**. |
+| Oświadczenie outputclaim | hash | string | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. W `plaintext` oświadczenie inputclaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -81,8 +82,8 @@ Mieszaj podany zwykły tekst przy użyciu soli i wpisu tajnego. Algorytmem wyzna
 ### <a name="example"></a>Przykład
 
 - Oświadczenia wejściowe:
-  - **zwykły tekst**:MyPass@word1
+  - **zwykły tekst**: MyPass@word1
   - **sól**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - Oświadczenia wyjściowe:
-  - **oświadczenie outputclaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
+  - **oświadczenie outputclaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U =

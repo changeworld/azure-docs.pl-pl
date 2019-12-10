@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802308"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951143"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
@@ -60,12 +60,12 @@ Poniżej przedstawiono kluczowe atrybuty reguły alertu:
 
 ## <a name="what-you-can-alert-on"></a>Co można ostrzec
 
-Można generować alerty dotyczące metryk i dzienników, zgodnie z opisem w temacie [monitorowanie źródeł danych](../../azure-monitor/platform/data-sources-reference.md). Należą do nich, ale nie są ograniczone do:
+Można generować alerty dotyczące metryk i dzienników, zgodnie z opisem w temacie [monitorowanie źródeł danych](../../azure-monitor/platform/data-sources-reference.md). Są to między innymi następujące kwestie:
 - Wartości metryk
-- Zapytania wyszukiwania w dzienniku
-- Zdarzenia dziennika aktywności
-- Kondycja podstawowej platformy platformy Azure
-- Testy dostępności witryny sieci Web
+- Zapytania przeszukiwania dzienników
+- Zdarzenia dzienników aktywności
+- Kondycja podstawowej platformy Azure
+- Testy dostępności witryny internetowej
 
 Wcześniej Azure Monitor metryki, Application Insights, Log Analytics i Service Health miały oddzielne funkcje alertów. W miarę upływu czasu platforma Azure poprawiła i połączona zarówno z interfejsem użytkownika, jak i różnymi metodami alertów. Ta Konsolidacja jest nadal w toku. W związku z tym nadal istnieją pewne funkcje alertów, które nie są jeszcze dostępne w nowym systemie alertów.  
 
@@ -83,7 +83,7 @@ Obsługiwane są następujące stany alertów.
 |:---|:---|
 | Nowość | Problem został właśnie wykryty i nie został jeszcze zweryfikowany. |
 | Potwierdzone | Administrator sprawdził alert i rozpoczął jego pracę. |
-| napis | Problem został rozwiązany. Po zamknięciu alertu można go otworzyć ponownie, zmieniając go na inny stan. |
+| Zamknięty | Problem został rozwiązany. Po zamknięciu alertu można go otworzyć ponownie, zmieniając go na inny stan. |
 
 *Stan alertu* jest różny i niezależny od *warunku monitora*. Stan alertu jest ustawiany przez użytkownika. Warunek monitora jest ustawiany przez system. Po uruchomieniu alertu warunek monitora alertu jest ustawiany na wartość *wyzwolone*. Gdy podstawowy warunek, który spowodował wyczyszczenie alertu, zostanie ustawiony jako *rozwiązany*. Stan alertu nie jest zmieniany, dopóki użytkownik nie zmieni go. Dowiedz się [, jak zmienić stan alertów i grup inteligentnych](https://aka.ms/managing-alert-smart-group-states).
 
@@ -156,7 +156,7 @@ Widok można filtrować, wybierając następujące wartości z menu rozwijanego 
 | Typ zasobu | Wybierz co najmniej jeden typ zasobu. W widoku są uwzględniane tylko alerty z obiektami docelowymi wybranego typu. Ta kolumna jest dostępna tylko po określeniu grupy zasobów. |
 | Zasób | Wybierz zasób. W widoku są uwzględniane tylko alerty z tym zasobem. Ta kolumna jest dostępna tylko po określeniu typu zasobu. |
 | Ważność | Wybierz ważność alertu lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich serwerów. |
-| Warunek monitorowania | Wybierz warunek monitorowania lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich warunków. |
+| Stan monitora | Wybierz warunek monitorowania lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich warunków. |
 | Stan alertu | Wybierz stan alertu lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich stanów. |
 | Monitorowanie usługi | Wybierz usługę lub wybierz pozycję **wszystkie** , aby uwzględnić wszystkie usługi. Uwzględniane są tylko alerty utworzone przez reguły korzystające z usługi jako celu. |
 | Przedział czasu | W widoku są uwzględniane tylko alerty wywoływane w wybranym zakresie czasu. Obsługiwane wartości to Ostatnia godzina, ostatnie 24 godziny, ostatnie 7 dni i ostatnie 30 dni. |
@@ -178,7 +178,7 @@ Strona szczegóły alertu zawiera następujące sekcje:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Kontrola dostępu oparta na rolach (RBAC) dla wystąpień alertów
 
-Użycie i Zarządzanie wystąpieniami alertów wymaga, aby użytkownik miał wbudowane role RBAC lub [czytelnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) [monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) . Role te są obsługiwane w dowolnym zakresie Azure Resource Manager od poziomu subskrypcji do szczegółowych przypisań na poziomie zasobów. Na przykład, jeśli użytkownik ma tylko dostęp współautora do `ContosoVM1` maszyny wirtualnej, może używać tylko alertów wygenerowanych na `ContosoVM1` i zarządzać nimi.
+Użycie i Zarządzanie wystąpieniami alertów wymaga, aby użytkownik miał wbudowane role RBAC lub [czytelnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) [monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) . Role te są obsługiwane w dowolnym zakresie Azure Resource Manager od poziomu subskrypcji do szczegółowych przypisań na poziomie zasobów. Na przykład, jeśli użytkownik ma tylko dostęp współautora do `ContosoVM1`maszyny wirtualnej, może używać tylko alertów wygenerowanych na `ContosoVM1`i zarządzać nimi.
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Programowe Zarządzanie wystąpieniami alertów
 
@@ -211,6 +211,7 @@ Użyj [interfejsu API REST alert Management](https://aka.ms/alert-management-api
 - [Więcej informacji na temat grup akcji](../../azure-monitor/platform/action-groups.md)
 - [Zarządzanie wystąpieniami alertów na platformie Azure](https://aka.ms/managing-alert-instances)
 - [Zarządzanie grupami inteligentnymi](https://aka.ms/managing-smart-groups)
+- [Dowiedz się więcej o cenniku usługi Azure Alerts](https://azure.microsoft.com/pricing/details/monitor/)
 
 
 

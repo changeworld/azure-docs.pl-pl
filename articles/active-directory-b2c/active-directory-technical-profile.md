@@ -1,5 +1,6 @@
 ---
-title: Zdefiniuj profil techniczny Azure Active Directory w zasadach niestandardowych w Azure Active Directory B2C | Microsoft Docs
+title: Definiowanie profilu technicznego usługi Azure AD w ramach zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Zdefiniuj profil techniczny Azure Active Directory w zasadach niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064618"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949562"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny Azure Active Directory w Azure Active Directory B2C zasadach niestandardowych
 
@@ -23,9 +24,9 @@ ms.locfileid: "71064618"
 
 Azure Active Directory B2C (Azure AD B2C) zapewnia obsługę Azure Active Directory zarządzania użytkownikami. W tym artykule opisano szczegóły dotyczące profilu technicznego dotyczącego współpracy z dostawcą oświadczeń obsługującym ten standardowy protokół.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol (Protokół)
 
-Atrybut **name** elementu **Protocol** musi być ustawiony na `Proprietary`. Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`programu obsługi protokołu.
+Atrybut **name** elementu **Protocol** musi mieć wartość `Proprietary`. Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu programu obsługi protokołu `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
 Wszystkie profile techniczne usługi Azure AD obejmują wspólny profil techniczny w **usłudze AAD** . Następujące profile techniczne nie określają protokołu, ponieważ protokół jest skonfigurowany w profilu technicznym usługi **AAD — typowy** :
 
@@ -60,14 +61,14 @@ W poniższym przykładzie przedstawiono profil techniczny usługi **AAD-Common**
 Następujące profile techniczne obejmują **InputClaims** kont społecznościowych i lokalnych:
 
 - Profile techniczne konta społeczności **AAD-UserReadUsingAlternativeSecurityId** i **AAD-UserWriteUsingAlternativeSecurityId** zawierają zgłoszenie **AlternativeSecurityId** . To zgłoszenie zawiera identyfikator użytkownika konta społecznościowego.
-- Profile techniczne dla konta lokalnego **AAD-UserReadUsingEmailAddress** i **AAD-UserWriteUsingLogonEmail** zawierają takie wnioski. To zgłoszenie zawiera nazwę logowania konta lokalnego.
-- Ujednolicone (lokalne i społecznościowe) profile techniczne **AAD-UserReadUsingObjectId**, **AAD-UserWritePasswordUsingObjectId**, **AAD-UserWriteProfileUsingObjectId**i **AAD-UserWritePhoneNumberUsingObjectId** obejmują identyfikator obiektu. Unikatowy identyfikator konta.
+- Profile techniczne dla konta lokalnego **AAD-UserReadUsingEmailAddress** i **AAD-UserWriteUsingLogonEmail** zawierają takie **wnioski.** To zgłoszenie zawiera nazwę logowania konta lokalnego.
+- Ujednolicone profile techniczne (lokalne i społecznościowe) **AAD-UserReadUsingObjectId**, **AAD-UserWritePasswordUsingObjectId**, **AAD-UserWriteProfileUsingObjectId**i **AAD-UserWritePhoneNumberUsingObjectId** zawierają takie **żądania.** Unikatowy identyfikator konta.
 
 Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generowania nowych.
 
 ## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-Element **OutputClaims** zawiera listę oświadczeń zwracanych przez profil techniczny usługi Azure AD. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w Azure Active Directory. Można również uwzględnić oświadczenia, które nie są zwracane przez Azure Active Directory, o ile atrybut ten `DefaultValue` jest ustawiony.
+Element **OutputClaims** zawiera listę oświadczeń zwracanych przez profil techniczny usługi Azure AD. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w Azure Active Directory. Można również uwzględnić oświadczenia, które nie są zwracane przez Azure Active Directory, o ile atrybut `DefaultValue` jest ustawiony.
 
 Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
@@ -75,7 +76,7 @@ Na przykład profil techniczny usługi **AAD-UserWriteUsingLogonEmail** tworzy k
 
 - **objectid**, który jest identyfikatorem nowego konta
 - **newUser**, który wskazuje, czy użytkownik jest nowy
-- **authenticationSource**, w którym są ustawiane uwierzytelnianie`localAccountAuthentication`
+- **authenticationSource**, w którym są ustawiane uwierzytelnianie `localAccountAuthentication`
 - **userPrincipalName**, czyli główna nazwa użytkownika nowego konta
 - **signInNames. EmailAddress**, czyli nazwa logowania do konta, podobna do dodanego **adresu e-mail**
 
@@ -254,12 +255,12 @@ Poniższy profil techniczny usuwa konto użytkownika społecznościowego przy u�
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Operacja | Tak | Operacja do wykonania. Możliwe wartości: `Read`, `Write`, `DeleteClaims`lub. `DeleteClaimsPrincipal` |
+| Operacja | Tak | Operacja do wykonania. Możliwe wartości: `Read`, `Write`, `DeleteClaims`lub `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nie | Zgłoś błąd, jeśli obiekt użytkownika nie istnieje w katalogu. Możliwe wartości: `true` lub `false`. |
 | UserMessageIfClaimsPrincipalDoesNotExist | Nie | Jeśli błąd ma zostać podniesiony (zobacz Opis atrybutu RaiseErrorIfClaimsPrincipalDoesNotExist), określ komunikat, który ma być wyświetlany użytkownikowi, jeśli obiekt użytkownika nie istnieje. Wartość może być [zlokalizowana](localization.md).|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nie | Zgłoś błąd, jeśli obiekt użytkownika już istnieje. Możliwe wartości: `true` lub `false`.|
 | UserMessageIfClaimsPrincipalAlreadyExists | Nie | Jeśli błąd ma zostać podniesiony (zobacz Opis atrybutu RaiseErrorIfClaimsPrincipalAlreadyExists), określ komunikat, który ma być wyświetlany użytkownikowi, jeśli obiekt użytkownika już istnieje. Wartość może być [zlokalizowana](localization.md).|
-| ApplicationObjectId | Nie | Identyfikator obiektu aplikacji dla atrybutów rozszerzenia. Wartość: Identyfikator obiektu aplikacji. Aby uzyskać więcej informacji, zobacz [Używanie atrybutów niestandardowych w niestandardowych zasadach edytowania profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
+| ApplicationObjectId | Nie | Identyfikator obiektu aplikacji dla atrybutów rozszerzenia. Value: ObjectId aplikacji. Aby uzyskać więcej informacji, zobacz [Używanie atrybutów niestandardowych w niestandardowych zasadach edytowania profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
 | ClientId | Nie | Identyfikator klienta służący do uzyskiwania dostępu do dzierżawy jako osoba trzecia. Aby uzyskać więcej informacji, zobacz [Używanie atrybutów niestandardowych w niestandardowych zasadach edytowania profilu](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
 
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076210"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951857"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Korzystanie z platformy Apache Sqoop z usługą Hadoop w usłudze HDInsight
 
@@ -33,7 +33,7 @@ Aby poznać wersje Sqoop, które są obsługiwane w klastrach usługi HDInsight,
 
 Klaster usługi HDInsight zawiera kilka przykładowych danych. Używasz dwóch następujących próbek:
 
-* Plik dziennika Apache Log4J, który znajduje się w lokalizacji `/example/data/sample.log`. Następujące dzienniki są wyodrębniane z pliku:
+* Plik dziennika Apache Log4J, który znajduje się w `/example/data/sample.log`. Następujące dzienniki są wyodrębniane z pliku:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,18 +42,18 @@ Klaster usługi HDInsight zawiera kilka przykładowych danych. Używasz dwóch n
 ...
 ```
 
-* Tabela programu Hive o `hivesampletable`nazwie, która odwołuje się do pliku `/hive/warehouse/hivesampletable`danych znajdującego się w. Tabela zawiera niektóre dane urządzeń przenośnych.
+* Tabela programu Hive o nazwie `hivesampletable`, która odwołuje się do pliku danych znajdującego się w `/hive/warehouse/hivesampletable`. Tabela zawiera niektóre dane urządzeń przenośnych.
   
   | Pole | Typ danych |
   | --- | --- |
-  | clientid |ciąg |
-  | querytime |ciąg |
-  | Do |ciąg |
-  | deviceplatform |ciąg |
-  | devicemake |ciąg |
-  | devicemodel |ciąg |
-  | state |ciąg |
-  | trzeciego |ciąg |
+  | clientid |string |
+  | querytime |string |
+  | rynek |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | kraj |string |
   | querydwelltime |double |
   | SessionID |bigint |
   | sessionpagevieworder |bigint |
@@ -61,6 +61,7 @@ Klaster usługi HDInsight zawiera kilka przykładowych danych. Używasz dwóch n
 W tym artykule opisano te dwa zestawy danych do testowania Sqoop import i Export.
 
 ## <a name="create-cluster-and-sql-database"></a>Konfigurowanie środowiska testowego
+
 Klaster, baza danych SQL i inne obiekty są tworzone za pośrednictwem Azure Portal przy użyciu szablonu Azure Resource Manager. Szablon można znaleźć w [szablonach szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Szablon Menedżer zasobów wywołuje pakiet BACPAC, aby wdrożyć schematy tabeli w bazie danych SQL.  Pakiet BACPAC znajduje się w publicznym kontenerze obiektów blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Jeśli chcesz użyć prywatnego kontenera dla plików BACPAC, użyj następujących wartości w szablonie:
 
 ```json
@@ -77,11 +78,11 @@ Klaster, baza danych SQL i inne obiekty są tworzone za pośrednictwem Azure Por
 
 2. Wprowadź następujące właściwości:
 
-    |Pole |Value |
+    |Pole |Wartość |
     |---|---|
-    |Subscription |Wybierz swoją subskrypcję platformy Azure z listy rozwijanej.|
-    |Resource group |Wybierz grupę zasobów z listy rozwijanej lub Utwórz nową|
-    |Location |Wybierz region z listy rozwijanej.|
+    |Subskrypcja |Wybierz swoją subskrypcję platformy Azure z listy rozwijanej.|
+    |Grupa zasobów |Wybierz grupę zasobów z listy rozwijanej lub Utwórz nową|
+    |Lokalizacja |Wybierz region z listy rozwijanej.|
     |Nazwa klastra |Wprowadź nazwę klastra usługi Hadoop. Używaj tylko małych liter.|
     |Nazwa użytkownika logowania klastra |Zachowaj wstępnie wypełnioną wartość `admin`.|
     |Hasło logowania klastra |Wprowadź hasło.|
@@ -92,9 +93,9 @@ Klaster, baza danych SQL i inne obiekty są tworzone za pośrednictwem Azure Por
     |Lokalizacja _artifacts | Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku BACPAC w innej lokalizacji.|
     |Token SAS lokalizacji _artifacts |Pozostaw to pole puste.|
     |Nazwa pliku BACPAC |Użyj wartości domyślnej, chyba że chcesz użyć własnego pliku BACPAC.|
-    |Location |Użyj wartości domyślnej.|
+    |Lokalizacja |Użyj wartości domyślnej.|
 
-    Nazwa usługi Azure SQL Server będzie `<ClusterName>dbserver`. Nazwa bazy danych `<ClusterName>db`. Domyślną nazwą konta magazynu będzie `e6qhezrh2pdqu`.
+    Zostanie `<ClusterName>dbserver`nazwa SQL Server platformy Azure. Nazwa bazy danych zostanie `<ClusterName>db`. Domyślna nazwa konta magazynu zostanie `e6qhezrh2pdqu`.
 
 3. Wybierz opcję **Akceptuję warunki i postanowienia podane powyżej**.
 
@@ -113,11 +114,12 @@ Usługa HDInsight może uruchamiać zadania Sqoop przy użyciu różnych metod. 
 ## <a name="limitations"></a>Ograniczenia
 
 * Eksport zbiorczy — za pomocą usługi HDInsight opartej na systemie Linux łącznik Sqoop używany do eksportowania danych do Microsoft SQL Server lub Azure SQL Database nie obsługuje obecnie operacji wstawiania zbiorczego.
-* Przetwarzanie wsadowe — za pomocą usługi HDInsight opartej na systemie `-batch` Linux, gdy podczas wykonywania operacji wstawiania jest używany przełącznik, Sqoop wykonuje wielokrotne wstawienia zamiast wsadowe operacje wstawiania.
+* Przetwarzanie wsadowe — za pomocą usługi HDInsight opartej na systemie Linux, gdy jest używany przełącznik `-batch` podczas wykonywania operacji INSERT, Sqoop wykonuje wiele wstawek zamiast wsadowo operacje wstawiania.
 
 ## <a name="next-steps"></a>Następne kroki
+
 Teraz wiesz już, jak używać programu Sqoop. Aby dowiedzieć się więcej, zobacz:
 
 * [Korzystanie z Apache Hive z usługą HDInsight](../hdinsight-use-hive.md)
-* [Korzystanie z Apache świni z usługą HDInsight](../hdinsight-use-pig.md)
-* [Przekazywanie danych do usługi HDInsight](../hdinsight-upload-data.md): Znajdź inne metody przekazywania danych do usługi HDInsight/Azure Blob Storage.
+* [Przekazywanie danych do usługi HDInsight](../hdinsight-upload-data.md): Znajdź inne metody przekazywania danych do magazynu HDInsight/Azure Blob Storage.
+* [Importowanie i eksportowanie danych między narzędziem Apache Hadoop w usłudze HDInsight i usługą SQL Database przy użyciu narzędzia Apache Sqoop](./apache-hadoop-use-sqoop-mac-linux.md)

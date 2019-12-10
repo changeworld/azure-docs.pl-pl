@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 74de621f88d9af65f8894319729f902bf11e57ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873016"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951313"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Wersja zapoznawcza: Logowanie do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania Azure Active Directory
 
@@ -206,6 +206,10 @@ Jeśli krok uwierzytelniania został pomyślnie ukończony w przeglądarce sieci
 - Sprawdź, czy nazwa logowania określona w monicie SSH jest poprawna. Literówka w nazwie logowania może spowodować niezgodność między nazwą logowania określoną w monicie SSH i kontem, które zostało zalogowane do usługi Azure AD. Na przykład wpisano *azuresuer\@contoso.onmicrosoft.com* , a nie *azureuser\@contoso.onmicrosoft.com*.
 - Jeśli masz wiele kont użytkowników, upewnij się, że w oknie przeglądarki nie jest dostępne inne konto użytkownika podczas logowania się do usługi Azure AD.
 - Linux to system operacyjny z uwzględnieniem wielkości liter. Istnieje różnica między elementami "Azureuser@contoso.onmicrosoft.com" i "azureuser@contoso.onmicrosoft.com", co może spowodować niezgodność. Upewnij się, że nazwa UPN ma poprawną wielkość liter w wierszu polecenia SSH.
+
+### <a name="other-limitations"></a>Inne ograniczenia
+
+Użytkownicy, którzy dziedziczą prawa dostępu za poorednictwem zagnieżdżonych grup lub przypisań ról nie są obecnie obsługiwani. Użytkownik lub grupa musi mieć bezpośrednio przypisane [wymagane przypisania ról](#configure-role-assignments-for-the-vm). Na przykład użycie grup zarządzania lub przypisań ról grup zagnieżdżonych nie przyznaje odpowiednich uprawnień, aby umożliwić użytkownikowi logowanie się.
 
 ## <a name="preview-feedback"></a>Podgląd opinii
 

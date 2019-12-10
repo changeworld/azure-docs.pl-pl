@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie logowania za pomocą konta Azure Active Directory w Azure Active Directory B2C przy użyciu zasad niestandardowych
+title: Konfigurowanie logowania za pomocą konta usługi Azure AD przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Skonfiguruj logowanie za pomocą konta Azure Active Directory w Azure Active Directory B2C przy użyciu zasad niestandardowych.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a221d55d942e6140c12f2ebfb64428b8ec7be74b
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2babd21ab477fae8c0d139932e08b8d99b9170ae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643571"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947787"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta Azure Active Directory przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -31,7 +32,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure 
 
 Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure AD, musisz zarejestrować aplikację w ramach organizacji dzierżawy usługi Azure AD.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu zawierającego swoją organizacyjną dzierżawę usługi Azure AD (na przykład contoso.com). Wybierz **Filtr katalog + subskrypcja** w górnym menu, a następnie wybierz katalog zawierający dzierżawę usługi Azure AD.
 1. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 1. Wybierz pozycję **Nowa rejestracja**.

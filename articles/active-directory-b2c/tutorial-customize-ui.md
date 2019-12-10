@@ -1,5 +1,6 @@
 ---
-title: Samouczek — Dostosowywanie interfejsu środowiska użytkownika — Azure Active Directory B2C | Microsoft Docs
+title: 'Samouczek: Dostosowywanie interfejsu użytkownika'
+titleSuffix: Azure AD B2C
 description: Dowiedz się, jak dostosować interfejs użytkownika aplikacji w Azure Active Directory B2C przy użyciu Azure Portal.
 services: B2C
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291104"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950871"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu środowiska użytkownika w Azure Active Directory B2C
 
@@ -42,7 +43,7 @@ Tworzysz konto usługi Azure Storage i kontener, a następnie umieścisz podstaw
 
 Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można je przechowywać w [usłudze Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md).
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, który zawiera twoją subskrypcję. Ten katalog jest inny niż ten, który zawiera dzierżawę usługi Azure B2C.
 3. Wybierz pozycję Wszystkie usługi w lewym górnym rogu Azure Portal, Wyszukaj i wybierz pozycję **konta magazynu**.
 4. Wybierz pozycję **Dodaj**.
@@ -62,21 +63,21 @@ Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można j
  Azure AD B2C kod w przeglądarce korzysta z nowoczesnego i standardowego podejścia do załadowania niestandardowej zawartości z adresu URL określonego w przepływie użytkownika. Współużytkowanie zasobów między źródłami (CORS) umożliwia zażądanie zasobów na stronie sieci Web z innych domen.
 
 1. Z menu wybierz pozycję **CORS**.
-2. Dla **dozwolonych źródeł**wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Podczas wprowadzania nazwy dzierżawy należy używać wszystkich małych liter.
-3. Dla **dozwolonych metod**, `GET`wybierz`PUT`,, `OPTIONS`i.
+2. W przypadku **dozwolonych źródeł**wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Podczas wprowadzania nazwy dzierżawy należy używać wszystkich małych liter.
+3. Dla **dozwolonych metod**wybierz `GET`,`PUT`i `OPTIONS`.
 4. Dla **dozwolonych nagłówków**Wprowadź gwiazdkę (*).
 5. W przypadku **widocznych nagłówków**Wprowadź gwiazdkę (*).
 6. W obszarze **Maksymalny wiek**wprowadź 200.
 
     ![Strona konfiguracji funkcji CORS w usłudze Azure Blob Storage w Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-the-customization-files"></a>Tworzenie plików dostosowania
 
-Aby dostosować interfejs użytkownika środowiska rejestracji, Zacznij od utworzenia prostego pliku HTML i CSS. Możesz skonfigurować kod HTML w dowolny sposób, ale musi on mieć element **DIV** o identyfikatorze `api`. Na przykład `<div id="api"></div>`. Azure AD B2C wprowadza elementy do `api` kontenera, gdy zostanie wyświetlona strona.
+Aby dostosować interfejs użytkownika środowiska rejestracji, Zacznij od utworzenia prostego pliku HTML i CSS. Możesz skonfigurować kod HTML w dowolny sposób, ale musi on mieć element **DIV** z identyfikatorem `api`. Na przykład `<div id="api"></div>`. Azure AD B2C wprowadza elementy do kontenera `api`, gdy zostanie wyświetlona strona.
 
-1. W folderze lokalnym Utwórz następujący plik i upewnij się, że zmienisz `your-storage-account` nazwę konta magazynu i `your-container` nazwę utworzonego kontenera. Na przykład `https://store1.blob.core.windows.net/b2c/style.css`.
+1. W folderze lokalnym Utwórz następujący plik i upewnij się, że zmieniono `your-storage-account` na nazwę konta magazynu i `your-container` na nazwę utworzonego kontenera. Na przykład `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -138,14 +139,14 @@ W tym samouczku zostaną zapisane pliki utworzone na koncie magazynu, dzięki cz
 ## <a name="update-the-user-flow"></a>Aktualizowanie przepływu użytkownika
 
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-2. Wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję przepływ użytkownika *B2C_1_signupsignin1* .
+2. Wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję *B2C_1_signupsignin1* przepływ użytkownika.
 3. Wybierz pozycję **układy stron**, a następnie w obszarze **ujednolicone rejestrowanie lub logowanie**kliknij pozycję **tak** , aby **użyć niestandardowej zawartości strony**.
 4. W polu **Identyfikator URI strony niestandardowej**wprowadź identyfikator URI pliku *Custom-UI. html* , który został zarejestrowany wcześniej.
 5. W górnej części strony wybierz pozycję **Zapisz**.
 
 ## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
-1. W dzierżawie Azure AD B2C wybierz pozycję **przepływy użytkownika** i wybierz przepływ użytkownika *B2C_1_signupsignin1* .
+1. W dzierżawie Azure AD B2C wybierz pozycję **przepływy użytkownika** i wybierz *B2C_1_signupsignin1* przepływ użytkownika.
 2. W górnej części strony kliknij pozycję **Uruchom przepływ użytkownika**.
 3. Kliknij przycisk **Uruchom przepływ użytkownika** .
 

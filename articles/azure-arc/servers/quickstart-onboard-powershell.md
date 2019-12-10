@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b5299f49663fbf2e828f76d9c240a86fdccb2ff2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872693"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951449"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Szybki Start: łączenie maszyn z platformą Azure przy użyciu usługi Azure ARC dla serwerów — PowerShell
 
@@ -72,8 +72,11 @@ Na podstawie danych wyjściowych Skopiuj **hasło** i identyfikator **aplikacji*
 
 W skrypcie instalacji dołączania agenta:
 
-* Właściwość Identyfikator **aplikacji** jest używana dla parametru `--service-principal-id` używanego w agencie instalacji
-* Właściwość **Password** jest używana dla parametru `--service-principal-secret` w agencie instalacji.
+* Właściwość Identyfikator **aplikacji** jest używana dla parametru `--service-principal-id` używanego do łączenia agenta
+* Właściwość **Password** jest używana dla parametru `--service-principal-secret` używanego do łączenia agenta.
+
+> [!NOTE]
+> Upewnij się, że używasz **Właściwości głównej nazwy** usługi, a nie właściwości **ID** . **Identyfikator** nie będzie działał.
 
 ## <a name="manually-install-the-agent-and-connect-to-azure"></a>Ręczne instalowanie agenta i nawiązywanie połączenia z platformą Azure
 
@@ -90,7 +93,6 @@ W przypadku serwerów z **systemem Linux** Agent jest dystrybuowany za pośredni
 > [!NOTE]
 > W publicznej wersji zapoznawczej wydano tylko jeden pakiet, który jest odpowiedni dla Ubuntu 16,04 lub 18,04.
 
-<!-- What about this aks? -->
 Najprostszą opcją jest zarejestrowanie repozytorium pakietów, a następnie zainstalowanie pakietu przy użyciu Menedżera pakietów dystrybucji.
 Skrypt bash znajdujący się w [https://aka.ms/azcmagent](https://aka.ms/azcmagent) wykonuje następujące czynności:
 

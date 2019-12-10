@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: bf095fbdab0e7368149eac560d3bdb20134e3e3e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 971d311dfb54d417a8f66f504d01f08f8bcfc48b
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927777"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942095"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopiuj nowe i zmienione pliki przez LastModifiedDate z Azure Data Factory
 
@@ -29,9 +29,11 @@ Ten szablon najpierw wybiera nowe i zmienione pliki tylko według ich atrybutów
 Szablon zawiera jedno działanie:
 - **Kopiuj** , aby skopiować nowe i zmienione pliki tylko przez LastModifiedDate z magazynu plików do magazynu docelowego.
 
-Szablon definiuje cztery parametry:
+Szablon definiuje sześć parametrów:
 -  *FolderPath_Source* to ścieżka folderu, w której można odczytać pliki z magazynu źródłowego. Należy zastąpić wartość domyślną własną ścieżką folderu.
+-  *Directory_Source* to ścieżka podfolderu, w której można odczytać pliki z magazynu źródłowego. Należy zastąpić wartość domyślną własną ścieżką podfolderu.
 -  *FolderPath_Destination* to ścieżka folderu, w której chcesz skopiować pliki do magazynu docelowego. Należy zastąpić wartość domyślną własną ścieżką folderu.
+-  *Directory_Destination* to ścieżka podfolderu, w którym chcesz skopiować pliki do magazynu docelowego. Należy zastąpić wartość domyślną własną ścieżką podfolderu.
 -  *LastModified_From* jest używany do wybierania plików, których atrybut LastModifiedDate ma wartość lub równą tej wartości daty/godziny.  W celu wybrania tylko nowych plików, które nie zostały ostatnio skopiowane, ta wartość daty i godziny może być czasem, w którym potok został wyzwolony jako ostatni. Wartość domyślną "2019-02-01T00:00:00Z" można zastąpić oczekiwaną LastModifiedDate w strefie czasowej UTC. 
 -  *LastModified_To* służy do wybierania plików, których atrybut LastModifiedDate jest wcześniejszy niż ta wartość daty i godziny. W celu wybrania tylko nowych plików, które nie zostały ostatnio skopiowane, ta wartość daty i godziny może być obecna.  Wartość domyślną "2019-02-01T00:00:00Z" można zastąpić oczekiwaną LastModifiedDate w strefie czasowej UTC. 
 
@@ -41,67 +43,63 @@ Szablon definiuje cztery parametry:
 
     ![Utwórz nowe połączenie ze źródłem](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
     
-2. Najpierw wybierz **Typ**magazynu. Po wprowadzeniu **nazwy konta** magazynu i **klucza konta**. Na koniec wybierz pozycję **Zakończ**.
-
-    ![Wprowadź parametry połączenia](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate2.png)
-    
-3. Utwórz **nowe** połączenie z magazynem docelowym. Magazyn docelowy to miejsce, do którego chcesz skopiować pliki. Potrzebne są również informacje o połączeniu z magazynem miejsc docelowych danych, podobnie jak w kroku 2.
+2. Utwórz **nowe** połączenie z magazynem docelowym. Magazyn docelowy to miejsce, do którego chcesz skopiować pliki. 
 
     ![Utwórz nowe połączenie z miejscem docelowym](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-4. Wybierz przycisk **Użyj tego szablonu**.
+3. Wybierz przycisk **Użyj tego szablonu**.
 
     ![Użyj tego szablonu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
-5. Na panelu zostanie wyświetlony potok, jak pokazano w następującym przykładzie:
+4. Na panelu zostanie wyświetlony potok, jak pokazano w następującym przykładzie:
 
     ![Pokaż potok](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
-6. Wybierz pozycję **Debuguj**, Zapisz wartość **parametrów** i wybierz pozycję **Zakończ**.  Na poniższej ilustracji ustawimy parametry w następujący sposób.
-   - **FolderPath_Source** =  **/source/**
-   - **FolderPath_Destination** =  **/Destination/**
-   - **LastModified_From** =  **2019-02-01T00:00:00Z**
-   - **LastModified_To** = **2019-03-01T00:00:00Z**
+5. Wybierz pozycję **Debuguj**, Zapisz wartość **parametrów** i wybierz pozycję **Zakończ**.  Na poniższej ilustracji ustawimy parametry w następujący sposób.
+   - **FolderPath_Source** = SourceFolder
+   - **Directory_Source** = podfolder
+   - **FolderPath_Destination** = destinationfolder
+   - **Directory_Destination** = podfolder
+   - **LastModified_From** = 2019-02-01T00:00:00Z
+   - **LastModified_To** = 2019-03-01T00:00:00Z
     
-     Przykład wskazuje, że pliki, które zostały ostatnio zmodyfikowane w przedziale od *2019-02-01T00:00:00Z* i *2019-03-01T00:00:00Z* zostanie skopiowane z folderu */Source/* do folderu */Destination/* .  Można je zastąpić własnymi parametrami.
-    
-     ![Uruchamianie potoku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
+    Przykład wskazuje, że pliki, które zostały ostatnio zmodyfikowane w przedziale czasu (**2019-02-01T00:00:00Z** do **2019-03-01T00:00:00Z**) zostaną skopiowane z ścieżki źródłowej **SourceFolder/** podfolderu do ścieżki docelowej **destinationfolder/podfolder**.  Można je zastąpić własnymi parametrami.
 
-7. Przejrzyj wynik. Zobaczysz tylko te pliki, które ostatnio zmodyfikowano w skonfigurowanym przedziale czasu, zostały skopiowane do magazynu docelowego.
+    ![Uruchamianie potoku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
+
+6. Przejrzyj wynik. Zobaczysz tylko te pliki, które ostatnio zmodyfikowano w skonfigurowanym przedziale czasu, zostały skopiowane do magazynu docelowego.
 
     ![Przejrzyj wynik](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-8. Teraz można dodać wyzwalacz wirowania systemu Windows w celu zautomatyzowania tego potoku, aby potok mógł zawsze kopiować nowe i zmienione pliki tylko przez LastModifiedDate okresowo.  Wybierz pozycję **Dodaj wyzwalacz**, a następnie wybierz pozycję **Nowy/Edytuj**.
+7. Teraz można dodać wyzwalacz wirowania systemu Windows w celu zautomatyzowania tego potoku, aby potok mógł zawsze kopiować nowe i zmienione pliki tylko przez LastModifiedDate okresowo.  Wybierz pozycję **Dodaj wyzwalacz**, a następnie wybierz pozycję **Nowy/Edytuj**.
 
     ![Przejrzyj wynik](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
-9. W oknie **Dodawanie wyzwalaczy** wybierz pozycję **+ Nowy**.
+8. W oknie **Dodawanie wyzwalaczy** wybierz pozycję **+ Nowy**.
 
-    ![Przejrzyj wynik](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate9.png)
-
-10. Wybierz **okno wirowania** dla typu wyzwalacza, ustaw **co 15 minut** jako cykl (możesz zmienić na dowolny czas), a następnie wybierz przycisk **dalej**.
+9. Wybierz **okno wirowania** dla typu wyzwalacza, ustaw **co 15 minut** jako cykl (można zmienić na dowolny czas interwału). Wybierz opcję **tak** dla aktywowanego pola, a następnie wybierz przycisk **OK**.
 
     ![Tworzenie wyzwalacza](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
-11. Zapisz wartość **parametrów uruchamiania wyzwalacza** w następujący sposób, a następnie wybierz pozycję **Zakończ**.
-    - **FolderPath_Source** =  **/Source/** .  Możesz zastąpić folder w źródłowym magazynie danych.
-    - **FolderPath_Destination** =  **/Destination/** .  Możesz zamienić folder na docelowy magazyn danych.
+10. Ustaw wartość **parametrów uruchamiania wyzwalacza** w następujący sposób, a następnie wybierz pozycję **Zakończ**.
+    - **FolderPath_Source** = **SourceFolder**.  Możesz zastąpić folder w źródłowym magazynie danych.
+    - **Directory_Source** = **podfolderu**.  Możesz zamienić na podfolder w źródłowym magazynie danych.
+    - **FolderPath_Destination** = **destinationfolder**.  Możesz zamienić folder na docelowy magazyn danych.
+    - **Directory_Destination** = **podfolderu**.  Możesz zamienić na podfolder w docelowym magazynie danych.
     - **LastModified_From** =   **\@wyzwalacza (). Output. windowStartTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas ostatniego uruchomienia potoku.
     - **LastModified_To** =  **\@wyzwalacza (). Output. windowEndTime**.  Jest to zmienna systemowa z wyzwalacza określająca czas, w którym potok jest wyzwalany w tym czasie.
     
     ![Parametry wejściowe](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
-12. Wybierz pozycję **Opublikuj wszystkie**.
+11. Wybierz pozycję **Opublikuj wszystkie**.
     
     ![Publikuj wszystko](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
 
-13. Utwórz nowe pliki w folderze źródłowym magazynu źródła danych.  Trwa oczekiwanie na automatyczne wyzwolenie potoku, a tylko nowe pliki zostaną skopiowane do magazynu docelowego.
+12. Utwórz nowe pliki w folderze źródłowym magazynu źródła danych.  Trwa oczekiwanie na automatyczne wyzwolenie potoku, a tylko nowe pliki zostaną skopiowane do magazynu docelowego.
 
-14. Wybierz kartę **monitorowanie** w lewym panelu nawigacyjnym i odczekaj około 15 minut, jeśli cykl wyzwalacza został ustawiony na co 15 minut. 
+13. Wybierz kartę **monitor** w lewym panelu nawigacyjnym i odczekaj około 15 minut, jeśli cykl wyzwalacza został ustawiony na co 15 minut. 
 
-    ![Wybierz monitorowanie](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate14.png)
-
-15. Przejrzyj wynik. Zobaczysz, że potok zostanie wyzwolony automatycznie co 15 minut, a tylko nowe lub zmienione pliki z magazynu źródłowego zostaną skopiowane do magazynu docelowego w każdym uruchomieniu potoku.
+14. Przejrzyj wynik. Zobaczysz, że potok zostanie wyzwolony automatycznie co 15 minut, a tylko nowe lub zmienione pliki z magazynu źródłowego zostaną skopiowane do magazynu docelowego w każdym uruchomieniu potoku.
 
     ![Przejrzyj wynik](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     

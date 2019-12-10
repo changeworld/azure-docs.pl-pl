@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931937"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941863"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Rozwiązywanie problemów z usługą SSIS Integration Runtime Management w programie Azure Data Factory
 
@@ -156,3 +156,38 @@ Po zatrzymaniu środowiska SSIS IR wszystkie zasoby związane z siecią wirtualn
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 Ten błąd występuje, gdy środowisko IR jest uruchomione, i oznacza, że kondycja środowiska IR pogorszyła się. Ten błąd jest zawsze spowodowany przez zmianę w konfiguracji serwera DNS lub sieciowej grupy zabezpieczeń, która uniemożliwia środowisku SSIS IR łączenie się z niezbędną usługą. Ponieważ konfiguracja serwera DNS i sieciowej grupy zabezpieczeń jest kontrolowana przez klienta, to klient musi rozwiązać problemy z blokowaniem. Aby uzyskać więcej informacji, zobacz sekcję [Konfiguracja sieci wirtualnej środowiska SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Jeśli nadal występują problemy, skontaktuj się z zespołem pomocy technicznej usługi Azure Data Factory.
+
+## <a name="static-public-ip-addresses-configuration"></a>Konfiguracja statycznych publicznych adresów IP
+
+Po dołączeniu Azure-SSIS IR do usługi Azure Virtual Network można również przenieść własne statyczne publiczne adresy IP do środowiska IR, aby umożliwić dostęp do źródeł danych, które ograniczają dostęp do określonych adresów IP. Aby uzyskać więcej informacji, zobacz [Dołączanie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+
+Poza powyższymi problemami z siecią wirtualną mogą również być zgodne ze statycznymi publicznymi adresami IP. Sprawdź następujące błędy, aby uzyskać pomoc.
+
+### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+
+Ten błąd może wystąpić z różnych powodów podczas uruchamiania Azure-SSIS IR:
+
+| Komunikat o błędzie | Rozwiązanie|
+|:--- |:--- |
+| Podany statyczny publiczny adres IP jest już używany. Podaj dwa nieużywane elementy do Azure-SSIS Integration Runtime. | Należy wybrać dwa nieużywane statyczne publiczne adresy IP lub usunąć bieżące odwołania do określonego publicznego adresu IP, a następnie ponownie uruchomić Azure-SSIS IR. |
+| Podany statyczny publiczny adres IP nie ma nazwy DNS, podaj dla Azure-SSIS Integration Runtime dwa z nich nazwę DNS. | Nazwę DNS publicznego adresu IP można skonfigurować w Azure Portal, jak pokazano na poniższym obrazie. Określone czynności są następujące: (1) Otwórz Azure Portal i przejdź do strony zasobów tego publicznego adresu IP; (2) wybierz sekcję **Konfiguracja** i skonfiguruj nazwę DNS, a następnie kliknij przycisk **Zapisz** . (3) Uruchom ponownie Azure-SSIS IR. |
+| Podane wirtualne i statyczne adresy IP dla Azure-SSIS Integration Runtime muszą znajdować się w tej samej lokalizacji. | Zgodnie z wymaganiami sieci platformy Azure statyczny publiczny adres IP i Sieć wirtualna powinny znajdować się w tej samej lokalizacji i subskrypcji. Podaj dwa prawidłowe statyczne publiczne adresy IP i ponownie uruchom Azure-SSIS IR. |
+| Podany statyczny publiczny adres IP jest podstawowym. Podaj dwa standardowe dla Azure-SSIS Integration Runtime. | Aby uzyskać pomoc, zobacz [jednostki SKU publicznego adresu IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) . |
+
+![Środowisko IR Azure-SSIS](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+
+W przypadku niepowodzenia aprowizacji Azure-SSIS IR wszystkie utworzone zasoby zostaną usunięte. Jeśli jednak istnieje blokada usuwania zasobu w ramach subskrypcji lub grupy zasobów (która zawiera statyczny publiczny adres IP), zasoby sieciowe nie zostaną usunięte zgodnie z oczekiwaniami. Aby naprawić ten błąd, Usuń blokadę usuwania i uruchom ponownie środowisko IR.
+
+### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+
+Po zatrzymaniu Azure-SSIS IR wszystkie zasoby sieciowe utworzone w grupie zasobów zawierającej publiczny adres IP zostaną usunięte. Jednak usunięcie może zakończyć się niepowodzeniem, jeśli istnieje blokada usuwania zasobu w subskrypcji lub grupie zasobów (która zawiera statyczny publiczny adres IP). Usuń blokadę usuwania i uruchom ponownie środowisko IR.
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
+
+Azure-SSIS IR jest regularnie aktualizowana automatycznie. Podczas uaktualniania tworzone są nowe węzły IR, a stare węzły zostaną usunięte. Ponadto zostaną usunięte utworzone zasoby sieciowe (np. moduł równoważenia obciążenia i sieciowa Grupa zabezpieczeń) dla starych węzłów, a nowe zasoby sieciowe zostaną utworzone w ramach subskrypcji. Ten błąd oznacza, że usunięcie zasobów sieciowych dla starych węzłów nie powiodło się z powodu blokady usuwania w ramach subskrypcji lub grupy zasobów (zawierającej poziom statycznego publicznego adresu IP). Usuń blokadę usuwania, aby można było oczyścić stare węzły i zwolnić statyczny publiczny adres IP dla starych węzłów. W przeciwnym razie nie można zwolnić statycznego publicznego adresu IP i nie będzie można jeszcze uaktualnić środowiska IR.
+
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+
+Jeśli chcesz wprowadzić własne statyczne publiczne adresy IP, należy podać dwa publiczne adresy IP. Jeden z nich zostanie użyty do natychmiastowego utworzenia węzłów podczerwieni, a drugi zostanie użyty podczas uaktualniania środowiska IR. Ten błąd może wystąpić, gdy inny publiczny adres IP nie nadaje się do użycia podczas uaktualniania. Zapoznaj się z [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) , aby uzyskać możliwe przyczyny.

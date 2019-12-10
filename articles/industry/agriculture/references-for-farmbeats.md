@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 501e5bc1b2de91e0dd74ae0f0d9163d74dcb06f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900392"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941563"
 ---
 # <a name="references"></a>Informacje
 
@@ -23,7 +23,7 @@ Interfejsy API usługi Azure FarmBeats zapewniają firmy rolnicze ze standardowy
 - Interfejsy API umożliwiające uzyskiwanie danych z czujnika, aparatu, drona, pogody, satelity i nadzoru z terenu.
 - Normalizacja i contextualization danych między typowymi dostawcami danych.
 - Schematized możliwości dostępu i zapytania dotyczące wszystkich pozyskanych danych.
-- Automatyczne generowanie metadanych, które mogą być badane w oparciu o funkcje agronomicznych. 
+- Automatyczne generowanie metadanych, które mogą być badane w oparciu o funkcje agronomicznych.
 - Automatycznie generowane zagregowane sekwencje czasu do szybkiego kompilowania modeli.
 - Zintegrowany aparat Azure Data Factory, aby łatwo tworzyć niestandardowe potoki przetwarzania danych.
 
@@ -102,7 +102,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 ### <a name="query-parameters"></a>Parametry zapytania
 
 W przypadku wywołań REST GET można filtrować, ograniczać rozmiar i sortować dane w odpowiedzi interfejsu API przez uwzględnienie co najmniej jednego parametru zapytania w identyfikatorze URI żądania. Aby poznać parametry zapytania, zobacz dokumentację interfejsu API i poszczególne wywołania GET.
-Na przykład podczas wysyłania zapytania do listy urządzeń (GET Call on/Device) można określić następujące parametry zapytania: 
+Na przykład podczas wysyłania zapytania do listy urządzeń (GET Call on/Device) można określić następujące parametry zapytania:
 
 ![Lista urządzeń](./media/for-references/query-parameters-device-1.png)
 
@@ -163,12 +163,12 @@ Dostęp do interfejsów API platformy Azure FarmBeats można uzyskać za pomocą
 
 4. Przejdź do [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) i wykonaj następujące czynności:
     - Przejdź do **interfejsu API RoleAssignment**.
-    - Wykonaj wpis, aby utworzyć obiekt **RoleAssignment** dla właśnie utworzonego **identyfikatora obiektu** . 
+    - Wykonaj wpis, aby utworzyć obiekt **RoleAssignment** dla właśnie utworzonego **identyfikatora obiektu** .
 
   > [!NOTE]
   > Aby uzyskać więcej informacji na temat dodawania użytkowników i rejestrowania Active Directory, zobacz [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-Po wykonaniu powyższych kroków Rejestracja aplikacji (klienta) może wywołać interfejsy API usługi Azure FarmBeats przy użyciu tokenu dostępu za pośrednictwem uwierzytelniania okaziciela. 
+Po wykonaniu powyższych kroków Rejestracja aplikacji (klienta) może wywołać interfejsy API usługi Azure FarmBeats przy użyciu tokenu dostępu za pośrednictwem uwierzytelniania okaziciela.
 
 Użyj tokenu dostępu, aby wysłać go w kolejnych żądaniach interfejsu API w sekcji nagłówka jako:
 

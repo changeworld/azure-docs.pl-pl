@@ -1,6 +1,7 @@
 ---
-title: Zdefiniuj profil techniczny OAuth1 w zasadach niestandardowych w Azure Active Directory B2C | Microsoft Docs
-description: Zdefiniuj profil techniczny OAuth1 w zasadach niestandardowych w Azure Active Directory B2C.
+title: Zdefiniuj profil techniczny OAuth1 w zasadach niestandardowych
+titleSuffix: Azure AD B2C
+description: Zdefiniuj profil techniczny OAuth 1,0 w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 97fa5757f8b77e29545f6d6f6b885334c7b526f1
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063989"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951109"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OAuth1 w zasadach niestandardowych Azure Active Directory B2C
 
@@ -23,9 +24,9 @@ ms.locfileid: "71063989"
 
 Azure Active Directory B2C (Azure AD B2C) zapewnia obsługę dostawcy tożsamości [protokołu OAuth 1,0](https://tools.ietf.org/html/rfc5849) . W tym artykule opisano szczegóły dotyczące profilu technicznego dotyczącego współpracy z dostawcą oświadczeń obsługującym ten standardowy protokół. Profil techniczny OAuth1 umożliwia sfederować z dostawcą tożsamości opartym na OAuth1, takim jak Twitter. Federowanie z dostawcą tożsamości umożliwia użytkownikom logowanie się przy użyciu istniejących tożsamości społecznościowych lub firmowych.
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>Protocol (Protokół)
 
-Atrybut **name** elementu **Protocol** musi być ustawiony na `OAuth1`. Na przykład protokół dla profilu technicznego **Twitter-OAUTH1** ma wartość `OAuth1`.
+Atrybut **name** elementu **Protocol** musi mieć wartość `OAuth1`. Na przykład protokół dla profilu technicznego **Twitter-OAUTH1** jest `OAuth1`.
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -40,20 +41,20 @@ Elementy **InputClaims** i **InputClaimsTransformations** są puste lub nie są 
 
 ## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-Element **OutputClaims** zawiera listę oświadczeń zwracanych przez dostawcę tożsamości OAuth1. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w dostawcy tożsamości. Można również uwzględnić oświadczenia, które nie są zwracane przez dostawcę tożsamości, dopóki atrybut DefaultValue jest ustawiony.
+Element **OutputClaims** zawiera listę oświadczeń zwracanych przez dostawcę tożsamości OAuth1. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w dostawcy tożsamości. Można również uwzględnić oświadczenia, które nie są zwracane przez dostawcę tożsamości, dopóki atrybut **DefaultValue** jest ustawiony.
 
 Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
 W poniższym przykładzie przedstawiono oświadczenia zwrócone przez dostawcę tożsamości usługi Twitter:
 
-- **USER_ID** , która jest mapowana na zastrzeżenie **issuerUserId** .
-- **Screen_name** , który jest mapowany do żądania **DisplayName** .
+- **USER_ID** , które jest mapowane na **issuerUserId** .
+- **Screen_name** , które jest mapowane na wartość **DisplayName** .
 - Bez mapowania nazwy.
 
 Profil techniczny zwraca również oświadczenia, które nie są zwracane przez dostawcę tożsamości:
 
 - **IdentityProvider** , który zawiera nazwę dostawcy tożsamości.
-- **AuthenticationSource** z wartością `socialIdpAuthentication`domyślną.
+- **AuthenticationSource** z wartością domyślną `socialIdpAuthentication`.
 
 ```xml
 <OutputClaims>
@@ -87,7 +88,7 @@ Element **CryptographicKeys** zawiera następujący atrybut:
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 
-Podczas konfigurowania adresu URL przekierowania dostawcy tożsamości wprowadź `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`wartość. Pamiętaj o zamianie **dzierżawy** na nazwę dzierżawy (na przykład contosob2c.onmicrosoft.com) i **policyId** z identyfikatorem zasad (na przykład b2c_1a_policy). Identyfikator URI przekierowania musi zawierać tylko małe litery. Dodaj adres URL przekierowania dla wszystkich zasad korzystających z logowania dostawcy tożsamości.
+Podczas konfigurowania adresu URL przekierowania dostawcy tożsamości wprowadź `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Pamiętaj o zamianie **dzierżawy** na nazwę dzierżawy (na przykład contosob2c.onmicrosoft.com) i **policyId** z identyfikatorem zasad (na przykład b2c_1a_policy). Identyfikator URI przekierowania musi zawierać tylko małe litery. Dodaj adres URL przekierowania dla wszystkich zasad korzystających z logowania dostawcy tożsamości.
 
 Jeśli używasz domeny **b2clogin.com** zamiast **login.microsoftonline.com** upewnij się, że używasz b2clogin.com zamiast login.microsoftonline.com.
 

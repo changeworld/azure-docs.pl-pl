@@ -1,20 +1,20 @@
 ---
 title: Zarządzanie użytkownikami
-description: Opisuje sposób zarządzania użytkownikami
+description: W tym artykule opisano sposób zarządzania użytkownikami.
 author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 37dacf0adfc9e3dcbab963cef50e2ee5209df314
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f58db00e598fd08972adb60cbd8aae0d3bf3391d
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852356"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942327"
 ---
 # <a name="manage-users"></a>Zarządzanie użytkownikami
 
-Usługa Azure FarmBeats obejmuje zarządzanie użytkownikami dla osób, które są częścią Azure Active Directory (Azure AD). Możesz dodać użytkowników do wystąpienia usługi Azure FarmBeats, aby uzyskać dostęp do interfejsów API, wyświetlić wygenerowane mapy i dane telemetryczne czujnika z farmy.
+Usługa Azure FarmBeats obejmuje zarządzanie użytkownikami dla osób, które są częścią Azure Active Directory (Azure AD). Możesz dodać użytkowników do wystąpienia usługi Azure FarmBeats, aby uzyskać dostęp do interfejsów API, wyświetlić wygenerowane mapy oraz dane telemetryczne czujnika z farmy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,40 +38,43 @@ Obecnie istnieją dwa rodzaje ról użytkowników, które są obsługiwane w us�
 
 ## <a name="add-user-to-azure-farmbeats"></a>Dodawanie użytkownika do usługi Azure FarmBeats
 
-Aby dodać użytkownika do usługi Azure FarmBeats, 
-1.  Zaloguj się do akceleratora i kliknij ikonę ustawień
-2.  Kliknij Access Control
+Postępuj zgodnie z instrukcjami, aby dodać użytkownika do usługi Azure FarmBeats:
+
+1.  Zaloguj się do akceleratora, a następnie wybierz ikonę **Ustawienia** .
+2.  Wybierz **Access Control**.
 
     ![Farmy projektów](./media/create-farms/settings-users-1.png)
 
-3.  Wprowadź identyfikator poczty e-mail użytkownika, do którego chcesz udzielić dostępu
-4.  Wybierz żądaną rolę — Administrator lub tylko do odczytu
-5.  Kliknij pozycję Dodaj rolę
+3.  Wprowadź identyfikator poczty e-mail użytkownika, do którego chcesz uzyskać dostęp.
+4.  Wybierz żądaną rolę — Administrator lub tylko do odczytu.
+5.  Wybierz pozycję **Dodaj rolę**.
 
 Dodani użytkownicy będą teraz mogli uzyskiwać dostęp do usługi Azure FarmBeats (zarówno centrum danych, jak i Akcelerator).
 
 ## <a name="delete-user-from-azure-farmbeats"></a>Usuwanie użytkownika z usługi Azure FarmBeats
 
-Aby usunąć użytkownika z systemu Azure FarmBeats, możesz
-1.  Zaloguj się do akceleratora i kliknij ikonę ustawień
-2.  Kliknij Access Control
-3.  Kliknij ikonę usuwania obok identyfikatora e-mail użytkownika, który chcesz usunąć.
+Postępuj zgodnie z instrukcjami, aby usunąć użytkownika z systemu Azure FarmBeats:
 
-Użytkownik zostanie usunięty z systemu. Zostanie wyświetlony następujący komunikat z potwierdzeniem pomyślnej operacji
+1.  Zaloguj się do akceleratora, a następnie wybierz ikonę **Ustawienia** .
+2.  Wybierz **Access Control**.
+3.  Wybierz pozycję **Usuń** , aby usunąć użytkownika.
 
+Użytkownik zostanie usunięty z systemu. Zostanie wyświetlony następujący komunikat z potwierdzeniem pomyślnej operacji.
 
 ![Farmy projektów](./media/create-farms/manage-users-2.png)
-
 
 ## <a name="add-azure-ad-users"></a>Dodawanie użytkowników usługi Azure AD
 
 > [!NOTE]
-> Wykonaj następujące kroki, tylko jeśli użytkownik próbujący uzyskać dostęp do usługi Azure FarmBeats nie znajduje się w dzierżawie usługi Azure AD. Jeśli użytkownik już istnieje, nie trzeba wykonywać poniższych kroków
+> Wykonaj poniższe kroki, aby zapewnić użytkownikowi dostęp do usługi Azure FarmBeats, jeśli użytkownik nie istnieje w dzierżawie usługi Azure AD. Jeśli użytkownik istnieje w dzierżawie usługi Azure AD, możesz pominąć poniższe czynności.
+>
 
 Aby można było przypisać je do aplikacji i ról, użytkownicy FarmBeats muszą istnieć w dzierżawie usługi Azure AD. Aby dodać użytkowników do usługi Azure AD, wykonaj następujące czynności:
+
 1.  Zaloguj się do [portalu Azure](https://portal.azure.com/).
-2.  Wybierz swoje konto w prawym górnym rogu i przejdź do dzierżawy usługi Azure AD skojarzonej z FarmBeats
-3.  Wybierz **Azure Active Directory > użytkowników**. Zostanie wyświetlona lista użytkowników w katalogu.
+2.  Wybierz swoje konto w prawym górnym rogu i przejdź do dzierżawy usługi Azure AD skojarzonej z FarmBeats.
+3.  Wybierz **Azure Active Directory > użytkowników**.
+    Zostanie wyświetlona lista użytkowników w katalogu.
 4.  Aby dodać użytkowników do katalogu, wybierz pozycję **nowy użytkownik**. W przypadku użytkowników zewnętrznych wybierz pozycję **nowy użytkownik-Gość**.
 
     ![Farmy projektów](./media/create-farms/manage-users-3.png)
@@ -82,5 +85,4 @@ Więcej informacji na temat zarządzania użytkownikami w usłudze Azure AD moż
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wdrożono usługę Azure FarmBeats. Teraz Dowiedz się, jak [tworzyć farmy](manage-farms.md#create-farms).
-
+Pomyślnie dodano użytkowników do wystąpienia usługi Azure FarmBeats. Teraz Dowiedz się, jak [tworzyć farmy](manage-farms.md#create-farms).

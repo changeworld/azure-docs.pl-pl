@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarz
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122839"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951432"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co to jest usługa Azure ARC dla serwerów
 
@@ -59,7 +59,7 @@ Te nazwy DNS są dostarczane oprócz informacji o zakresie adresów IP znacznika
 | Środowisko domeny | Wymagane punkty końcowe usług platformy Azure |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
-|login.windows.net|Usługa Azure Active Directory|
+|login.windows.net|Usługa Active Directory systemu Azure|
 |dc.services.visualstudio.com|Application Insights|
 |agentserviceapi.azure-automation.net|Konfiguracja gościa|
 |*-agentservice-prod-1.azure-automation.net|Konfiguracja gościa|
@@ -109,7 +109,41 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 Dostawców zasobów można rejestrować również przy użyciu portalu, wykonując czynności opisane w sekcji [Azure Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
-## <a name="supported-scenarios"></a>Obsługiwane scenariusze
+## <a name="machine-changes-after-installing-the-agent"></a>Zmiany maszyny po zainstalowaniu agenta
+
+Jeśli w Twoim środowisku wdrożono rozwiązanie do śledzenia zmian, możesz użyć poniższej listy, aby śledzić, identyfikować i zezwalać na zmiany wprowadzone przez pakiet instalacyjny **agenta połączonej maszyny (AzCMAgent) platformy Azure** .
+
+Po zainstalowaniu agenta zobaczysz następujące zmiany wprowadzone na serwerach.
+
+### <a name="windows"></a>Windows
+
+Zainstalowane usługi:
+
+* `Himds` — usługa **agenta połączonego z platformą Azure** .
+* `Dscservice` lub `gcd` — usługa **konfiguracji gościa** .
+
+Pliki dodane do serwera:
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` lokalizacji plików **agenta połączonego z platformą Azure** .
+* `%ProgramData%\GuestConfig\*.*` - dzienników **konfiguracji gościa** .
+
+Lokalizacje kluczy rejestru:
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent`-klucze rejestru dla **agenta połączonego z platformą Azure**.
+
+### <a name="linux"></a>Linux
+
+Zainstalowane usługi:
+
+* `Himdsd` — usługa **agenta połączonego z platformą Azure** .
+* `dscd` lub `gcd` — usługa **konfiguracji gościa** .
+
+Pliki dodane do serwera:
+
+* `/var/opt/azcmagent/**` lokalizacji plików **agenta połączonego z platformą Azure** .
+* `/var/lib/GuestConfig/**` - dzienników **konfiguracji gościa** .
+
+## <a name="supported-scenarios"></a>Scenariusze obsługiwane
 
 Po zarejestrowaniu węzła można rozpocząć zarządzanie węzłami przy użyciu innych usług platformy Azure.
 

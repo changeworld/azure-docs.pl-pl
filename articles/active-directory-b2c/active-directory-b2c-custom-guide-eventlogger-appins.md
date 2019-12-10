@@ -1,5 +1,6 @@
 ---
-title: Śledzenie zachowania użytkowników przy użyciu zdarzeń w Application Insights z Azure Active Directory B2C | Microsoft Docs
+title: Śledzenie zachowania użytkowników przy użyciu Application Insights
+titleSuffix: Azure AD B2C
 description: Dowiedz się, jak włączyć dzienniki zdarzeń w Application Insights z Azure AD B2C użytkowników przy użyciu zasad niestandardowych (wersja zapoznawcza).
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066185"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948950"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Śledzenie zachowania użytkowników w Azure Active Directory B2C przy użyciu Application Insights
 
@@ -28,11 +29,11 @@ W przypadku korzystania z Azure Active Directory B2C (Azure AD B2C) razem z usł
 * Mierzenie wydajności.
 * Utwórz powiadomienia z Application Insights.
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
-Platforma obsługi tożsamości w Azure AD B2C obejmuje dostawcę `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Dane zdarzenia są wysyłane bezpośrednio do Application Insights przy użyciu klucza Instrumentacji dostarczonego do Azure AD B2C.
+Platforma obsługi tożsamości w Azure AD B2C obejmuje `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`dostawcy. Dane zdarzenia są wysyłane bezpośrednio do Application Insights przy użyciu klucza Instrumentacji dostarczonego do Azure AD B2C.
 
-Profil techniczny używa tego dostawcy do definiowania zdarzenia z Azure AD B2C. Profil określa nazwę zdarzenia, rejestrowane oświadczenia oraz klucz Instrumentacji. W celu opublikowania zdarzenia profil techniczny zostanie następnie dodany jako `orchestration step`lub `validation technical profile` w trakcie niestandardowej podróży użytkownika.
+Profil techniczny używa tego dostawcy do definiowania zdarzenia z Azure AD B2C. Profil określa nazwę zdarzenia, rejestrowane oświadczenia oraz klucz Instrumentacji. W celu opublikowania zdarzenia profil techniczny zostanie następnie dodany jako `orchestration step`lub jako `validation technical profile` w przypadku niestandardowej podróży użytkownika.
 
 Application Insights może ujednolicić zdarzenia, używając identyfikatora korelacji do rejestrowania sesji użytkownika. Application Insights powoduje, że zdarzenie i sesja są dostępne w ciągu kilku sekund i prezentuje wiele narzędzi do wizualizacji, eksportowania i analitycznych.
 
@@ -44,7 +45,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](active-
 
 Jeśli używasz Application Insights z Azure AD B2C, wystarczy utworzyć zasób i uzyskać klucz Instrumentacji.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure, wybierając filtr **katalog + subskrypcja** w górnym menu i wybierając katalog zawierający twoją subskrypcję. Ta dzierżawa nie jest dzierżawą Azure AD B2C.
 3. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **Application Insights**.
 4. Kliknij przycisk **Utwórz**.
@@ -166,11 +167,11 @@ Dodaj profile do pliku *TrustFrameworkExtensions. XML* z pakietu początkowego. 
 ```
 
 > [!IMPORTANT]
-> Zmień klucz Instrumentacji w `AzureInsights-Common` profilu technicznym na identyfikator GUID, który zapewnia zasób Application Insights.
+> Zmień klucz Instrumentacji w profilu technicznym `AzureInsights-Common` na identyfikator GUID, który zapewnia Application Insights zasób.
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>Dodaj profile techniczne jako kroki aranżacji
 
-Wywołaj `Azure-Insights-SignInRequest` jako aranżację krok 2, aby śledzić, że Odebrano żądanie logowania/rejestracji:
+Wywołaj `Azure-Insights-SignInRequest` jako aranżacja krok 2, aby śledzić, że Odebrano żądanie logowania/rejestracji:
 
 ```xml
 <!-- Track that we have received a sign in request -->
@@ -181,7 +182,7 @@ Wywołaj `Azure-Insights-SignInRequest` jako aranżację krok 2, aby śledzić, 
 </OrchestrationStep>
 ```
 
-Bezpośrednio *przed* `SendClaims` krokiem aranżacji Dodaj nowy krok, który wywołuje `Azure-Insights-UserSignup`. Jest wyzwalane, gdy użytkownik wybierze przycisk rejestracji w podróży/logowaniu.
+Bezpośrednio *przed* krokiem `SendClaims` aranżacji Dodaj nowy krok, który wywoła `Azure-Insights-UserSignup`. Jest wyzwalane, gdy użytkownik wybierze przycisk rejestracji w podróży/logowaniu.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -203,7 +204,7 @@ Bezpośrednio *przed* `SendClaims` krokiem aranżacji Dodaj nowy krok, który wy
 </OrchestrationStep>
 ```
 
-Natychmiast po `SendClaims` kroku aranżacji Wywołaj `Azure-Insights-SignInComplete`polecenie. Ten krok przedstawia pomyślne zakończenie podróży.
+Natychmiast po kroku aranżacji `SendClaims` Wywołaj `Azure-Insights-SignInComplete`. Ten krok przedstawia pomyślne zakończenie podróży.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -223,7 +224,7 @@ Natychmiast po `SendClaims` kroku aranżacji Wywołaj `Azure-Insights-SignInComp
 Zapisz i Przekaż plik *TrustFrameworkExtensions. XML* . Następnie należy wywołać zasady jednostki uzależnionej z poziomu aplikacji lub użyć **Uruchom teraz** w Azure Portal. W ciągu kilku sekund Twoje zdarzenia są dostępne w Application Insights.
 
 1. Otwórz zasób **Application Insights** w dzierżawie Azure Active Directory.
-2. Wybierz pozycję**zdarzenia** **użycia** > .
+2. Wybierz pozycję **zdarzenia** > **użycia** .
 3. Ustawiaj w **ciągu** **ostatniej godziny** i **przez** maksymalnie **3 minuty**.  Może być konieczne wybranie opcji **Odśwież** , aby wyświetlić wyniki.
 
 ![Application Insights USAGE-Events Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)

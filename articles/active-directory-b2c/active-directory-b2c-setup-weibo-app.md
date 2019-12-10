@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie rejestracji i logowania przy użyciu konta usługi Weibo za pomocą Azure Active Directory B2C
+title: Skonfiguruj konto i zaloguj się przy użyciu konta Weibo
+titleSuffix: Azure AD B2C
 description: Podaj konto i zaloguj się do klientów za pomocą kont usługi Weibo w swoich aplikacjach przy użyciu Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4a019c3f197f123486dd28dc2bdb46e34f6cabc4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3f84d1d33874ac70a21c9d596c6fa5a9e608bb84
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064917"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950310"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania przy użyciu konta usługi Weibo za pomocą Azure Active Directory B2C
 
@@ -23,7 +24,7 @@ ms.locfileid: "71064917"
 
 ## <a name="create-a-weibo-application"></a>Tworzenie aplikacji Weibo
 
-Aby użyć konta Weibo jako dostawcy tożsamości w Azure Active Directory B2C (Azure AD B2C), musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta Weibo, możesz zarejestrować się w [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us)usłudze.
+Aby użyć konta Weibo jako dostawcy tożsamości w Azure Active Directory B2C (Azure AD B2C), musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta Weibo, możesz zarejestrować się w [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
 
 1. Zaloguj się do [portalu deweloperów Weibo](https://open.weibo.com/) przy użyciu poświadczeń konta Weibo.
 1. Po zalogowaniu wybierz swoją nazwę wyświetlaną w prawym górnym rogu.
@@ -43,7 +44,7 @@ Aby użyć konta Weibo jako dostawcy tożsamości w Azure Active Directory B2C (
 1. Wybierz pozycję**保存以上信息**(Zapisz).
 1. Wybierz pozycję**高级信息**(informacje zaawansowane).
 1. Wybierz pozycję**编辑**(Edytuj) obok pola dla protokołu OAuth 2.0**授权设置**(adres URL przekierowania).
-1. Wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w przypadku protokołu OAuth 2.0**授权设置**(adres URL przekierowania). Na przykład jeśli nazwa dzierżawy to contoso, ustaw adres URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` dla protokołu OAuth 2.0**授权设置**(adres URL przekierowania). Na przykład jeśli nazwa dzierżawy to contoso, ustaw adres URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 1. Wybierz pozycję**提交**(Prześlij).
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Konfigurowanie konta Weibo jako dostawcy tożsamości

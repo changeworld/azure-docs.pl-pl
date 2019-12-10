@@ -1,6 +1,7 @@
 ---
-title: Przykłady i definicje dzienników inspekcji w Azure Active Directory B2C
-description: Przewodnik i przykłady dotyczące uzyskiwania dostępu do dzienników inspekcji Azure AD B2C.
+title: Dostęp do dzienników inspekcji i ich przeglądanie
+titleSuffix: Azure AD B2C
+description: Jak uzyskać dostęp do dzienników inspekcji Azure AD B2C programowo i w Azure Portal.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643605"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948236"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji Azure AD B2C
 
@@ -38,7 +39,7 @@ Kategoria **B2C** w dziennikach inspekcji zawiera następujące typy działań:
 |Aplikacja | Tworzenie, odczytywanie, aktualizowanie i usuwanie (CRUD) operacji na aplikacjach B2C. |
 |Klucz |Operacje CRUD na kluczach przechowywanych w kontenerze kluczy B2C. |
 |Zasób |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
-|Authentication |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
+|Uwierzytelnianie |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
 
 W przypadku działań CRUD obiektów użytkownika zapoznaj się z kategorią **katalogu podstawowego** .
 
@@ -52,13 +53,13 @@ Panel szczegóły działania zawiera następujące informacje:
 
 |Sekcja|Pole|Opis|
 |-------|-----|-----------|
-| Działanie | Nazwa | Jakie działanie miało miejsce. Na przykład *wydaj id_token do aplikacji*, która zawiera rzeczywiste Logowanie użytkownika. |
-| Zainicjowane przez (aktor) | Obiektu | **Identyfikator obiektu** aplikacji B2C, w której loguje się użytkownik. Ten identyfikator nie jest widoczny w Azure Portal, ale jest dostępny za pośrednictwem interfejsu API Microsoft Graph. |
+| Działanie | Nazwa | Jakie działanie miało miejsce. Na przykład *Wystawić id_token aplikacji*, która zawiera rzeczywiste Logowanie użytkownika. |
+| Zainicjowane przez (aktor) | ObjectId | **Identyfikator obiektu** aplikacji B2C, w której loguje się użytkownik. Ten identyfikator nie jest widoczny w Azure Portal, ale jest dostępny za pośrednictwem interfejsu API Microsoft Graph. |
 | Zainicjowane przez (aktor) | SPN | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
-| Elementy docelowe | Obiektu | **Identyfikator obiektu** użytkownika, który loguje się. |
-| Dodatkowe szczegóły | tenantId | **Identyfikator dzierżawy** dzierżawy Azure AD B2C. |
-| Dodatkowe szczegóły | policyId | **Identyfikator zasad** przepływu użytkownika (zasady) używany do podpisywania użytkownika w programie. |
-| Dodatkowe szczegóły | Identyfikator | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
+| Elementy docelowe | ObjectId | **Identyfikator obiektu** użytkownika, który loguje się. |
+| Dodatkowe szczegóły | TenantId | **Identyfikator dzierżawy** dzierżawy Azure AD B2C. |
+| Dodatkowe szczegóły | `PolicyId` | **Identyfikator zasad** przepływu użytkownika (zasady) używany do podpisywania użytkownika w programie. |
+| Dodatkowe szczegóły | ApplicationId | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Wyświetlanie dzienników inspekcji w Azure Portal
 
@@ -109,7 +110,7 @@ Wykonaj następujące kroki, aby zarejestrować aplikację, udziel jej wymagane 
 1. Wybierz pozycję **Microsoft Graph**, a następnie **Wybierz pozycję**.
 1. W obszarze **uprawnienia aplikacji**wybierz opcję **Czytaj wszystkie dane dziennika inspekcji**.
 1. Wybierz przycisk **Wybierz** , a następnie wybierz pozycję **gotowe**.
-1. Wybierz pozycję **Udziel uprawnień**, a następnie wybierz pozycję **tak**.
+1. Wybierz **udzielić uprawnień**, a następnie wybierz pozycję **tak**.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 

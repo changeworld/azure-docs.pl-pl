@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 49f3759d7c5ba178cd0f1d0164a45c09df464571
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348948"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942226"
 ---
 # <a name="application-gateway-components"></a>Składniki bramy aplikacji
 
@@ -57,7 +57,7 @@ Application Gateway obsługuje cztery protokoły: HTTP, HTTPS, HTTP/2 i WebSocke
 
 Użyj odbiornika HTTPS do zakończenia protokołu SSL. Odbiornik HTTPS odciąża szyfrowanie i odszyfrowanie do bramy aplikacji, dzięki czemu serwery sieci Web nie obciążają obciążenia.
 
-### <a name="custom-error-pages"></a>Strony błędów niestandardowych
+### <a name="custom-error-pages"></a>Niestandardowe strony błędów
 
 Application Gateway umożliwia tworzenie niestandardowych stron błędów zamiast wyświetlania domyślnych stron błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu. Application Gateway wyświetla niestandardową stronę błędu, gdy żądanie nie może nawiązać połączenia z zapleczem.
 
@@ -67,7 +67,7 @@ Aby uzyskać więcej informacji, zobacz [niestandardowe strony błędów dla bra
 
 Istnieją dwa typy odbiorników:
 
-- **Podstawowa**. Ten typ odbiornika nasłuchuje w pojedynczej lokacji domeny, gdzie ma pojedyncze mapowanie DNS na adres IP bramy aplikacji. Ta konfiguracja odbiornika jest wymagana w przypadku hostowania pojedynczej lokacji za bramą aplikacji.
+- **Podstawowy**. Ten typ odbiornika nasłuchuje w pojedynczej lokacji domeny, gdzie ma pojedyncze mapowanie DNS na adres IP bramy aplikacji. Ta konfiguracja odbiornika jest wymagana w przypadku hostowania pojedynczej lokacji za bramą aplikacji.
 
 - **Wiele witryn**. Ta konfiguracja odbiornika jest wymagana podczas konfigurowania więcej niż jednej aplikacji sieci Web w tym samym wystąpieniu bramy aplikacji. Umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie do 100 witryn sieci Web do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. Na przykład trzy poddomeny, abc.contoso.com, xyz.contoso.com i pqr.contoso.com, wskazują adres IP bramy aplikacji. Utworzysz trzy odbiorniki z wieloma lokacjami i skonfigurujesz każdy odbiornik dla odpowiedniego ustawienia portu i protokołu.
 
@@ -75,7 +75,7 @@ Istnieją dwa typy odbiorników:
 
 Po utworzeniu odbiornika należy skojarzyć go z regułą routingu żądania. Ta reguła określa, w jaki sposób żądanie otrzymane na odbiorniku powinno być kierowane do zaplecza.
 
-Application Gateway przetwarza odbiorniki w pokazanej kolejności. Jeśli podstawowy odbiornik pasuje do przychodzącego żądania, zostanie on przetworzony jako pierwszy. Aby skierować ruch do prawidłowego zaplecza, należy skonfigurować odbiornik z obsługą wiele lokacji przed odbiornikiem podstawowym.
+Application Gateway przetwarza odbiorniki w [pokazanej kolejności](https://docs.microsoft.com/en-us/azure/application-gateway/configuration-overview#order-of-processing-listeners).
 
 ## <a name="request-routing-rules"></a>Reguły routingu żądań
 
@@ -85,7 +85,7 @@ Gdy odbiornik akceptuje żądanie, reguła routingu żądań przekazuje żądani
 
 Istnieją dwa typy reguł routingu żądań:
 
-- **Podstawowa**. Wszystkie żądania na skojarzonym odbiorniku (na przykład blog.contoso.com/*) są przekazywane do skojarzonej puli zaplecza przy użyciu skojarzonego ustawienia protokołu HTTP.
+- **Podstawowy**. Wszystkie żądania na skojarzonym odbiorniku (na przykład blog.contoso.com/*) są przekazywane do skojarzonej puli zaplecza przy użyciu skojarzonego ustawienia protokołu HTTP.
 
 - **Oparta na ścieżce**. Ta reguła routingu umożliwia kierowanie żądań na skojarzonym odbiorniku do określonej puli zaplecza na podstawie adresu URL w żądaniu. Jeśli ścieżka adresu URL w żądaniu pasuje do wzorca ścieżki w regule opartej na ścieżce, reguła kieruje to żądanie. Stosuje wzorzec ścieżki tylko do ścieżki URL, a nie do parametrów zapytania. Jeśli ścieżka URL w żądaniu odbiornika nie jest zgodna z żadną regułą opartą na ścieżce, kieruje żądanie do domyślnej puli zaplecza i ustawień protokołu HTTP.
 
@@ -152,6 +152,6 @@ Aby uzyskać więcej informacji, zobacz [monitorowanie kondycji bramy aplikacji]
 
 Tworzenie bramy aplikacji:
 
-* [W Azure Portal](quick-create-portal.md)
+* [W witrynie Azure Portal](quick-create-portal.md)
 * [Za pomocą Azure PowerShell](quick-create-powershell.md)
 * [Za pomocą interfejsu wiersza polecenia platformy Azure](quick-create-cli.md)

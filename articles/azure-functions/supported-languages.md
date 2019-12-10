@@ -2,13 +2,13 @@
 title: Obsługiwane języki w Azure Functions
 description: Dowiedz się, które języki są obsługiwane (GA) i które są eksperymentalne lub dostępne w wersji zapoznawczej.
 ms.topic: conceptual
-ms.date: 08/02/2018
-ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230284"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942260"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Obsługiwane języki w Azure Functions
 
@@ -24,7 +24,7 @@ Istnieją trzy poziomy pomocy technicznej:
 
 ## <a name="languages-by-runtime-version"></a>Języki według wersji środowiska uruchomieniowego 
 
-Dostępne są [dwie wersje środowiska uruchomieniowego Azure Functions](functions-versions.md) . W poniższej tabeli przedstawiono języki obsługiwane w poszczególnych wersjach środowiska uruchomieniowego.
+Dostępne są [trzy wersje środowiska uruchomieniowego Azure Functions](functions-versions.md) . W poniższej tabeli przedstawiono języki obsługiwane w poszczególnych wersjach środowiska uruchomieniowego.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -34,7 +34,7 @@ Języki eksperymentalne w wersji 1. x nie są dobrze skalowane i nie obsługują
 
 Nie używaj eksperymentalnych funkcji dla wszystkich elementów, na których polegasz, ponieważ nie ma oficjalnego wsparcia dla nich. Nie należy otwierać przypadków pomocy technicznej w przypadku problemów z językiem eksperymentalnym. 
 
-Środowisko uruchomieniowe w wersji 2. x nie obsługuje języków eksperymentalnych. Obsługa nowych języków jest dodawana tylko wtedy, gdy język może być obsługiwany w środowisku produkcyjnym. 
+Nowsze wersje środowiska uruchomieniowego nie obsługują języków eksperymentalnych. Obsługa nowych języków jest dodawana tylko wtedy, gdy język może być obsługiwany w środowisku produkcyjnym. 
 
 ### <a name="language-extensibility"></a>Rozszerzalność języka
 

@@ -1,5 +1,6 @@
 ---
-title: Dodawanie oświadczeń i dostosowywanie danych wejściowych użytkownika przy użyciu zasad niestandardowych-Azure Active Directory B2C | Microsoft Docs
+title: Dodawanie oświadczeń i dostosowywanie danych wejściowych użytkownika w zasadach niestandardowych
+titleSuffix: Azure AD B2C
 description: Dowiedz się, jak dostosować dane wejściowe użytkownika i dodać oświadczenia do kursu rejestracji lub logowania w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 452a7f61726c3039b2c2b37280d0153fbcbca5fb
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066223"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948904"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie oświadczeń i dostosowywanie danych wejściowych użytkownika przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -113,7 +114,7 @@ Następujące elementy są używane do definiowania roszczeń:
 
 ### <a name="add-the-claim-to-the-user-journey"></a>Dodawanie roszczeń do podróży użytkownika
 
-1. Dodaj rolę jako `<OutputClaim ClaimTypeReferenceId="city"/>` `LocalAccountSignUpWithLogonEmail` do profilu technicznego znajdującego się w pliku zasad TrustFrameworkBase. Ten profil techniczny używa SelfAssertedAttributeProvider.
+1. Dodaj rolę jako `<OutputClaim ClaimTypeReferenceId="city"/>` do `LocalAccountSignUpWithLogonEmail` profilu technicznego znalezionych w pliku zasad TrustFrameworkBase. Ten profil techniczny używa SelfAssertedAttributeProvider.
 
     ```xml
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -150,7 +151,7 @@ Następujące elementy są używane do definiowania roszczeń:
     </TechnicalProfile>
     ```
 
-2. Dodaj je do profilu technicznego AAD-UserWriteUsingLogonEmail jako a `<PersistedClaim ClaimTypeReferenceId="city" />` , aby zapisać je do katalogu usługi AAD po jego zebraniu od użytkownika. Możesz pominąć ten krok, jeśli wolisz, aby nie utrwalać tego żądania w katalogu do użytku w przyszłości.
+2. Dodaj to zgłoszenie do profilu technicznego AAD-UserWriteUsingLogonEmail jako `<PersistedClaim ClaimTypeReferenceId="city" />`, aby zapisać je do katalogu usługi AAD po jego zebraniu od użytkownika. Możesz pominąć ten krok, jeśli wolisz, aby nie utrwalać tego żądania w katalogu do użytku w przyszłości.
 
     ```xml
     <!-- Technical profiles for local accounts -->
@@ -186,7 +187,7 @@ Następujące elementy są używane do definiowania roszczeń:
     </TechnicalProfile>
     ```
 
-3. Dodaj je `<OutputClaim ClaimTypeReferenceId="city" />` do profilów technicznych odczytanych z katalogu po zalogowaniu się użytkownika.
+3. Dodaj `<OutputClaim ClaimTypeReferenceId="city" />` do profilów technicznych odczytanych z katalogu po zalogowaniu się użytkownika.
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -236,7 +237,7 @@ Następujące elementy są używane do definiowania roszczeń:
     </TechnicalProfile>
     ```
 
-4. `<OutputClaim ClaimTypeReferenceId="city" />` Dodaj to zastrzeżenie do pliku SignUporSignIn. XML, aby to zastrzeżenie zostało wysłane do aplikacji w tokenie po pomyślnym przejściu użytkownika.
+4. Dodaj `<OutputClaim ClaimTypeReferenceId="city" />` do pliku SignUporSignIn. XML, aby to zastrzeżenie zostało wysłane do aplikacji w tokenie po pomyślnym przejściu użytkownika.
 
     ```xml
     <RelyingParty>
@@ -260,7 +261,7 @@ Następujące elementy są używane do definiowania roszczeń:
 
 ## <a name="test-the-custom-policy"></a>Testowanie zasad niestandardowych
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD, wybierając filtr **katalog + subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawę usługi Azure AD.
 3. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 4. Wybierz pozycję **Identity Experience Framework (wersja zapoznawcza)** .
@@ -272,7 +273,7 @@ Ekran rejestracji powinien wyglądać podobnie do tego:
 
 ![Zrzut ekranu przedstawiający zmodyfikowaną opcję tworzenia konta](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-Token wysłany z powrotem do aplikacji zawiera `city` zastrzeżenie.
+Token wysłany z powrotem do aplikacji zawiera `city`ą.
 
 ```json
 {
@@ -294,11 +295,11 @@ Token wysłany z powrotem do aplikacji zawiera `city` zastrzeżenie.
 }
 ```
 
-## <a name="optional-remove-email-verification"></a>Opcjonalnie: Usuń weryfikację wiadomości e-mail
+## <a name="optional-remove-email-verification"></a>Opcjonalne: usuwanie weryfikacji wiadomości e-mail
 
-Aby pominąć weryfikację wiadomości e-mail, możesz wybrać opcję `PartnerClaimType="Verified.Email"`usunięcia. W takim przypadku adres e-mail jest wymagany, ale nie został zweryfikowany, chyba że jest to wymagane, jeśli wartość true jest usuwana.  Należy uważnie rozważyć, czy ta opcja jest odpowiednia dla przypadków użycia.
+Aby pominąć weryfikację wiadomości e-mail, możesz wybrać opcję usunięcia `PartnerClaimType="Verified.Email"`. W takim przypadku adres e-mail jest wymagany, ale nie został zweryfikowany, chyba że jest to wymagane, jeśli wartość true jest usuwana.  Należy uważnie rozważyć, czy ta opcja jest odpowiednia dla przypadków użycia.
 
-Zweryfikowana wiadomość e-mail jest domyślnie włączona w `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` pliku zasad TrustFrameworkBase:
+Zweryfikowana wiadomość e-mail jest domyślnie włączona w `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` w pliku zasad TrustFrameworkBase:
 
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />

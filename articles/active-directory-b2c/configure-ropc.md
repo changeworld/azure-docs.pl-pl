@@ -1,6 +1,7 @@
 ---
-title: Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure Active Directory B2C | Microsoft Docs
-description: Dowiedz się, jak skonfigurować przepływ poświadczeń hasła właściciela zasobu w Azure AD B2C.
+title: Konfigurowanie przepływu poświadczeń hasła właściciela zasobu
+titleSuffix: Azure AD B2C
+description: Dowiedz się, jak skonfigurować przepływ ROPC w Azure AD B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023739"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949188"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure AD B2C
 
@@ -67,8 +68,8 @@ Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wyw
 | Klucz | Wartość |
 | --- | ----- |
 | nazwa użytkownika | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
+| hasło | Passxword1 |
+| grant_type | hasło |
 | scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | id_token tokenu |

@@ -2,18 +2,18 @@
 title: 'Infrastruktura: Apache Hadoop lokalna do usługi Azure HDInsight'
 description: Poznaj najlepsze rozwiązania dotyczące infrastruktury dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499231"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951517"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące infrastruktury
 
@@ -23,10 +23,17 @@ W tym artykule przedstawiono zalecenia dotyczące zarządzania infrastrukturą k
 
 Kluczowe Opcje planowania pojemności klastra usługi HDInsight są następujące:
 
-- **Wybierz region** — region platformy Azure określa miejsce, w którym klaster jest fizycznie zainicjowany. Aby zminimalizować opóźnienie operacji odczytu i zapisu, klaster powinien znajdować się w tym samym regionie co dane.
-- **Wybierz lokalizację i rozmiar magazynu** — magazyn domyślny musi znajdować się w tym samym regionie co klaster. W przypadku klastra z 48 węzłami zaleca się używanie 4 do 8 kont magazynu. Mimo że może już być wystarczająca ilość miejsca w magazynie, każde konto magazynu oferuje dodatkową przepustowość sieci dla węzłów obliczeniowych. Jeśli istnieje wiele kont magazynu, użyj nazwy losowej dla każdego konta magazynu, bez prefiksu. Celem przypadkowego nazewnictwa jest zmniejszenie ryzyka związanego z wąskimi gardłami magazynowania (ograniczanie) lub awariami trybu wspólnego na wszystkich kontach. Aby uzyskać lepszą wydajność, należy użyć tylko jednego kontenera na konto magazynu.
-- **Wybierz rozmiar i typ maszyny wirtualnej (obsługuje teraz serię G)** — każdy typ klastra ma zestaw typów węzłów, a każdy typ węzła ma określone opcje rozmiaru i typu maszyny wirtualnej. Rozmiar i typ maszyny wirtualnej są określane przez procesor CPU, rozmiar pamięci RAM i opóźnienie sieci. Symulowane obciążenie może służyć do określenia optymalnego rozmiaru i typu maszyn wirtualnych dla każdego typu węzła.
-- **Wybierz liczbę węzłów procesu roboczego** — początkową liczbę węzłów procesu roboczego można określić przy użyciu symulowanych obciążeń. Klaster można skalować później, dodając więcej węzłów procesu roboczego, aby spełnić wymagania dotyczące obciążenia szczytowego. Klaster można później skalować do tyłu, gdy dodatkowe węzły procesu roboczego nie są wymagane.
+**Region**  
+Region platformy Azure określa, gdzie klaster jest fizycznie zainicjowany. Aby zminimalizować opóźnienie operacji odczytu i zapisu, klaster powinien znajdować się w tym samym regionie co dane.
+
+**Lokalizacja i rozmiar magazynu**  
+Domyślny magazyn musi znajdować się w tym samym regionie co klaster. W przypadku klastra z 48 węzłami zaleca się używanie 4 do 8 kont magazynu. Mimo że może już być wystarczająca ilość miejsca w magazynie, każde konto magazynu oferuje dodatkową przepustowość sieci dla węzłów obliczeniowych. Jeśli istnieje wiele kont magazynu, użyj nazwy losowej dla każdego konta magazynu, bez prefiksu. Celem przypadkowego nazewnictwa jest zmniejszenie ryzyka związanego z wąskimi gardłami magazynowania (ograniczanie) lub awariami trybu wspólnego na wszystkich kontach. Aby uzyskać lepszą wydajność, należy użyć tylko jednego kontenera na konto magazynu.
+
+**Rozmiar i typ maszyny wirtualnej (teraz obsługuje serię G)**  
+Każdy typ klastra ma zestaw typów węzłów, a każdy typ węzła ma konkretne opcje rozmiaru i typu maszyny wirtualnej. Rozmiar i typ maszyny wirtualnej są określane przez procesor CPU, rozmiar pamięci RAM i opóźnienie sieci. Symulowane obciążenie może służyć do określenia optymalnego rozmiaru i typu maszyn wirtualnych dla każdego typu węzła.
+
+**Liczba węzłów procesu roboczego**  
+Początkową liczbę węzłów procesu roboczego można określić przy użyciu symulowanych obciążeń. Klaster można skalować później, dodając więcej węzłów procesu roboczego, aby spełnić wymagania dotyczące obciążenia szczytowego. Klaster można później skalować do tyłu, gdy nie są wymagane dodatkowe węzły procesu roboczego.
 
 Aby uzyskać więcej informacji, zapoznaj się z artykułem [Planowanie pojemności dla klastrów usługi HDInsight](../hdinsight-capacity-planning.md).
 
@@ -42,7 +49,7 @@ Aby sprawdzić składniki i wersje usługi Hadoop w usłudze HDInsight, można t
 
 Aplikacje lub składniki, które były dostępne w klastrach lokalnych, ale nie są częścią klastrów usługi HDInsight, można dodawać w węźle brzegowym lub na maszynie wirtualnej w tej samej sieci wirtualnej co klaster usługi HDInsight. Aplikację Hadoop innej firmy, która nie jest dostępna w usłudze Azure HDInsight, można zainstalować przy użyciu opcji "aplikacje" w klastrze usługi HDInsight. Niestandardowe aplikacje usługi Hadoop można zainstalować w klastrze usługi HDInsight przy użyciu funkcji "akcje skryptu". W poniższej tabeli wymieniono niektóre typowe aplikacje i ich opcje integracji usługi HDInsight:
 
-|**Aplikacja**|**Integration**
+|**Aplikacja**|**Integracja**
 |---|---|
 |Przepływ powietrza|IaaS lub węzeł brzegowy usługi HDInsight
 |Alluxio|IaaS  
@@ -61,7 +68,7 @@ Aplikacje lub składniki, które były dostępne w klastrach lokalnych, ale nie 
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|SYGNATUR|IaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW alternatywę na platformie Azure)
 |Tableau|IaaS 
 |Wodną|Węzeł krawędzi usługi HDInsight
@@ -191,6 +198,4 @@ Aby uzyskać więcej informacji, zobacz artykuł [łączenie usługi HDInsight z
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj następny artykuł z tej serii:
-
-- [Najlepsze rozwiązania dotyczące magazynu dla migracji lokalnej na Azure HDInsight Hadoop migrację](apache-hadoop-on-premises-migration-best-practices-storage.md)
+Zapoznaj się z następnym artykułem z tej serii: [najlepsze rozwiązania dotyczące usługi Storage do migracji Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-storage.md).

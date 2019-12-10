@@ -1,6 +1,7 @@
 ---
-title: Przykłady logicznej transformacji oświadczeń dla schematu struktury środowiska tożsamości Azure Active Directory B2C | Microsoft Docs
-description: Przykłady logicznej transformacji oświadczeń dla schematu struktury środowiska tożsamości Azure Active Directory B2C.
+title: Przykłady logicznej transformacji oświadczeń dla zasad niestandardowych
+titleSuffix: Azure AD B2C
+description: Przykłady logicznej transformacji oświadczeń dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da4fc4704ee72210e180ef95fe6a821c8d116fa2
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: dcebcc3e2021938f3fd3bde236ef08e4f26b8a97
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064574"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949895"
 ---
 # <a name="boolean-claims-transformations"></a>Przekształcenia logiczne oświadczeń
 
@@ -29,11 +30,11 @@ Wykonuje operację i dwie inputClaims logiczne i ustawia oświadczenie outputcla
 
 | Element  | TransformationClaimType  | Typ danych  | Uwagi |
 |-------| ------------------------ | ---------- | ----- |
-| Oświadczenie inputclaim | inputClaim1 | boolean | Pierwszy ClaimType do obliczenia. |
-| Oświadczenie inputclaim | inputClaim2  | boolean | Drugie wyrażenie Claim, które ma zostać obliczone. |
-|Oświadczenie outputclaim | Oświadczenie outputclaim | boolean | Oświadczenia są tworzone po wywołaniu tej transformacji oświadczeń (true lub false). |
+| Oświadczenie inputclaim | inputClaim1 | wartość logiczna | Pierwszy ClaimType do obliczenia. |
+| Oświadczenie inputclaim | inputClaim2  | wartość logiczna | Drugie wyrażenie Claim, które ma zostać obliczone. |
+|Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Oświadczenia są tworzone po wywołaniu tej transformacji oświadczeń (true lub false). |
 
-Następująca transformacja oświadczeń pokazuje, jak i dwa elementy Claims Boolean: `isEmailNotExist`, i `isSocialAccount`. Oświadczenie `presentEmailSelfAsserted` wyjściowe ma `true` ustawioną wartość, jeśli wartością obu oświadczeń wejściowych są `true`. W kroku aranżacji możesz użyć warunku wstępnego, aby wstępnie zapewnieł stronę, tylko jeśli adres e-mail konta społecznościowego jest pusty.
+Następująca transformacja oświadczeń pokazuje, jak i dwa elementy Claims Boolean: `isEmailNotExist`i `isSocialAccount`. `presentEmailSelfAsserted` oświadczenia wyjściowego jest ustawiona na `true`, jeśli wartość obu oświadczeń wejściowych jest `true`. W kroku aranżacji możesz użyć warunku wstępnego, aby wstępnie zapewnieł stronę, tylko jeśli adres e-mail konta społecznościowego jest pusty.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -62,14 +63,14 @@ Sprawdza, czy wartości logiczne dwóch oświadczeń są równe, i zgłasza wyj�
 
 | Element | TransformationClaimType  | Typ danych  | Uwagi |
 | ---- | ------------------------ | ---------- | ----- |
-| Oświadczenie inputclaim | Oświadczenie inputclaim | boolean | Wartość oświadczenia, która ma zostać potwierdzona. |
-| InputParameter |valueToCompareTo | boolean | Wartość do porównania (true lub false). |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | wartość logiczna | Wartość oświadczenia, która ma zostać potwierdzona. |
+| InputParameter |valueToCompareTo | wartość logiczna | Wartość do porównania (true lub false). |
 
 Przekształcenie oświadczeń **AssertBooleanClaimIsEqualToValue** jest zawsze wykonywane z poziomu [weryfikacji profilu technicznego](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md). **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** z własnym profilem technicznym metadane są kontrolowane komunikat o błędzie, który zostanie wyświetlony przez profil techniczny.
 
 ![AssertStringClaimsAreEqual wykonywanie](./media/boolean-transformations/assert-execution.png)
 
-Następująca transformacja oświadczeń pokazuje, jak sprawdzić wartość logicznego elementu ClaimType z `true` wartością. Jeśli wartość `accountEnabled` oświadczenia jest równa false, zostanie zgłoszony komunikat o błędzie.
+Następująca transformacja oświadczeń pokazuje, jak sprawdzić wartość elementu ClaimType Boolean z wartością `true`. Jeśli wartość elementu `accountEnabled` ClaimType ma wartość false, zostanie zgłoszony komunikat o błędzie.
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
@@ -83,7 +84,7 @@ Następująca transformacja oświadczeń pokazuje, jak sprawdzić wartość logi
 ```
 
 
-`AssertAccountEnabledIsTrue` Profil techniczny `login-NonInteractive` weryfikacji wywołuje transformację oświadczeń.
+Profil techniczny weryfikacji `login-NonInteractive` wywołuje transformację `AssertAccountEnabledIsTrue` oświadczeń.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -111,7 +112,7 @@ Profil techniczny z własnym potwierdzeniem wywołuje profil techniczny **logowa
 - Oświadczenia wejściowe:
     - **oświadczenie inputclaim**: FAŁSZ
     - **valueToCompareTo**: true
-- Wynika Zgłoszono błąd
+- Wynik: zgłoszono błąd
 
 ## <a name="notclaims"></a>NotClaims
 
@@ -119,8 +120,8 @@ Wykonuje operację not dla oświadczenie inputclaim logicznego i ustawia oświad
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | Oświadczenie inputclaim | boolean | Zastrzeżenie, które ma być obsługiwane. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | boolean | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation (true lub false). |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | wartość logiczna | Zastrzeżenie, które ma być obsługiwane. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation (true lub false). |
 
 Ta transformacja jest używana do wykonywania logicznego negacji dla żądania.
 
@@ -147,11 +148,11 @@ Oblicza wartość lub z dwóch inputClaims logicznych i ustawia oświadczenie ou
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | inputClaim1 | boolean | Pierwszy ClaimType do obliczenia. |
-| Oświadczenie inputclaim | inputClaim2 | boolean | Drugie wyrażenie Claim, które ma zostać obliczone. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | boolean | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation (true lub false). |
+| Oświadczenie inputclaim | inputClaim1 | wartość logiczna | Pierwszy ClaimType do obliczenia. |
+| Oświadczenie inputclaim | inputClaim2 | wartość logiczna | Drugie wyrażenie Claim, które ma zostać obliczone. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation (true lub false). |
 
-Następująca transformacja oświadczeń pokazuje, `Or` jak dwa elementy Claims Boolean. W kroku aranżacji można użyć warunku wstępnego, aby wstępnie zatwierdzić stronę, jeśli wartość jednego z oświadczeń jest `true`równa.
+Następująca transformacja oświadczeń pokazuje, jak `Or` dwa elementy Claims Boolean. W kroku aranżacji można użyć warunku wstępnego, aby wstępnie zatwierdzić stronę, jeśli wartość jednego z oświadczeń jest `true`.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">

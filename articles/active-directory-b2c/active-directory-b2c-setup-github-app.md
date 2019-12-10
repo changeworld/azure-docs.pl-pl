@@ -1,5 +1,6 @@
 ---
-title: Skonfiguruj konto i zaloguj się przy użyciu konta usługi GitHub — Azure Active Directory B2C
+title: Skonfiguruj konto i zaloguj się przy użyciu konta usługi GitHub
+titleSuffix: Azure AD B2C
 description: Klientom rejestracji i logowania za pomocą kont usługi GitHub w aplikacjach przy użyciu usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74c663d8847c2829a5d9466f8e601dd44593a6f8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ae431ecd76f0ae5d51880832a5de415d3271ba54
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065199"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949359"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta usługi GitHub za pomocą usługi Azure Active Directory B2C
 
@@ -23,7 +24,7 @@ ms.locfileid: "71065199"
 
 ## <a name="create-a-github-oauth-application"></a>Tworzenie aplikacji OAuth usługi GitHub
 
-Aby użyć konta usługi GitHub jako [dostawcy tożsamości](active-directory-b2c-reference-oauth-code.md) w programie Azure Active Directory B2C (Azure AD B2C), musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta usługi GitHub, możesz zarejestrować się w [https://www.github.com/](https://www.github.com/)usłudze.
+Aby użyć konta usługi GitHub jako [dostawcy tożsamości](active-directory-b2c-reference-oauth-code.md) w programie Azure Active Directory B2C (Azure AD B2C), musisz utworzyć aplikację w swojej dzierżawie, która go reprezentuje. Jeśli nie masz jeszcze konta usługi GitHub, możesz zarejestrować się w [https://www.github.com/](https://www.github.com/).
 
 1. Zaloguj się do [GitHub dla deweloperów](https://github.com/settings/developers) witryny sieci Web przy użyciu swoich poświadczeń usługi GitHub.
 1. Wybierz **aplikacji OAuth** , a następnie wybierz **Nowa aplikacja OAuth**.

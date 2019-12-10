@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 081327e7c70128dad764d66942f1703a889f77fd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815820"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951260"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Szybki Start: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
 
@@ -28,16 +28,6 @@ Aplikacja rozpozna wypowiedź, na przykład "Włącz telewizor" i odpowie przy u
 
   > [!NOTE]
   > W trakcie okresu zapoznawczego dla kluczy subskrypcji jest obsługiwany tylko region westus2.
-
-- Klucz tworzenia [Language Understanding](https://www.luis.ai/home) (Luis):
-  1. Otwórz przeglądarkę internetową i przejdź do [Azure Portal](https://portal.azure.com)
-  1. Wybierz pozycję Utwórz zasób
-  1. Wyszukaj i wybierz [Language Understanding](https://aka.ms/sc-luis-all)
-  1. Wybieranie opcji tworzenia w opcjach tworzenia
-  1. Po wdrożeniu zasobu przejdź do zasobu i skopiuj klucz z sekcji szybki start lub klucze
-
-      > [!div class="mx-imgBorder"]
-      > ![utworzyć zasobu tworzenia](media/custom-speech-commands/resources-lu-authoring.png)
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Przejdź do programu Speech Studio dla poleceń niestandardowych
 
@@ -58,11 +48,21 @@ Widok domyślny to lista utworzonych przez siebie aplikacji poleceń niestandard
 1. Wybierz pozycję **Nowy projekt** , aby utworzyć nowy projekt
 
    > [!div class="mx-imgBorder"]
-   > ![utworzyć nowy projekt](media/custom-speech-commands/create-new-project.png)
+   > ![utworzyć projekt](media/custom-speech-commands/create-new-project.png)
 
-1. Wprowadź nazwę projektu i język, a następnie wybierz pozycję **dalej** , aby kontynuować.
-1. Wprowadź klucz autorstwa LUIS
-1. Po utworzeniu wybierz projekt
+1. Wprowadź nazwę projektu i język.
+1. Wybierz zasób tworzenia. Jeśli nie ma prawidłowych zasobów tworzenia, utwórz je, wybierając pozycję **Utwórz nowy zasób**.
+
+   > [!div class="mx-imgBorder"]
+   > ![Tworzenie zasobu](media/custom-speech-commands/create-new-resource.png)
+
+   1. Wprowadź nazwę zasobu, grupę, lokalizację i warstwę cenową.
+
+         > [!NOTE]
+         > Grupy zasobów można utworzyć, wprowadzając odpowiednią nazwę grupy zasobów w polu "Grupa zasobów". Grupa zasobów zostanie utworzona, gdy zostanie wybrana wartość **Utwórz** .
+
+1. Kliknij przycisk **Utwórz** , aby utworzyć projekt.
+1. Po utworzeniu wybierz projekt.
 
 Widok powinien teraz być przeglądem aplikacji poleceń niestandardowych.
 
@@ -99,25 +99,41 @@ Na razie nie mamy żadnych parametrów, aby umożliwić Przechodzenie do reguł 
 
 Teraz Dodaj regułę ukończenia, aby odpowiedzieć użytkownikowi, który wskazuje, że akcja jest wykonywana.
 
+1. Utwórz nową regułę uzupełniania, wybierając ikonę `+` obok reguły ukończenia
+1. Wprowadź nazwę reguły
+1. Dodawanie akcji
+   1. Utwórz nową akcję odpowiedzi na mowę, wybierając ikonę `+` obok pozycji akcje i wybierz pozycję `SpeechResponse`
+   1. Wprowadź odpowiedź
+
+   > [!NOTE]
+   > Zwykły tekst musi rozpoczynać się kreską. Aby uzyskać więcej informacji, przejdź [tutaj](https://aka.ms/sc-lg-format)
+
+   > [!div class="mx-imgBorder"]
+   > ![utworzyć](media/custom-speech-commands/create-speech-response-action.png) odpowiedzi na mowę
+
+1. Kliknij przycisk **Zapisz** , aby zapisać regułę
+
 > [!div class="mx-imgBorder"]
 > ![utworzyć reguły uzupełniania](media/custom-speech-commands/create-basic-completion-response-rule.png)
+
 
 | Ustawienie    | Sugerowana wartość                        | Opis                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Nazwa reguły  | "ConfirmationResponse"                 | Nazwa opisująca przeznaczenie reguły          |
 | Warunki | Brak                                   | Warunki określające, kiedy można uruchomić regułę    |
-| Akcje    | SpeechResponse "OK", włączając telewizor " | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
+| Akcje    | SpeechResponse "— OK, Włączanie TELEWIZORa" | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
 
 ## <a name="try-it-out"></a>Wypróbuj
 
 Przetestuj zachowanie przy użyciu panelu rozmowa testowa.
 
 > [!div class="mx-imgBorder"]
-> Test ![z usługą webchat](media/custom-speech-commands/create-basic-test-chat.png)
+> Testowanie ![przy użyciu funkcji rozmowy w sieci Web](media/custom-speech-commands/create-basic-test-chat.png)
 
 - Wpisz: "Włącz telewizor"
 - Oczekiwana odpowiedź: "OK, Włączanie telewizora"
 
 ## <a name="next-steps"></a>Następne kroki
+
 > [!div class="nextstepaction"]
 > [Szybki Start: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)](./quickstart-custom-speech-commands-create-parameters.md)

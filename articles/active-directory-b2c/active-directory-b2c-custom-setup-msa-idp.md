@@ -1,6 +1,7 @@
 ---
-title: Dodawanie konta Microsoft (MSA) jako dostawcy tożsamości przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
-description: Przykład użycia usługi Microsoft as Identity Provider przy użyciu protokołu OpenID Connect Connect (OIDC).
+title: Konfigurowanie logowania za pomocą konta Microsoft przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
+description: Jak używać zasad niestandardowych, aby włączyć konto Microsoft (MSA) jako dostawcę tożsamości przy użyciu protokołu OpenID Connect Connect (OIDC).
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f068b624b5a8f580f61e9eb2ed0d197f05aa1b0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 393e6f0b87cbd6a548825276da3f59863e2833eb
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643661"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948372"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konto Microsoft przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -32,7 +33,7 @@ W tym artykule opisano sposób włączania logowania dla użytkowników z konto 
 
 Aby włączyć logowanie dla użytkowników z konto Microsoft, musisz zarejestrować aplikację w dzierżawie usługi Azure AD. Dzierżawa usługi Azure AD nie jest taka sama jak dzierżawa Azure AD B2C.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD, wybierając filtr **katalog + subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawę usługi Azure AD.
 1. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 1. Wybierz pozycję **Nowa rejestracja**.
@@ -50,7 +51,7 @@ Aby włączyć logowanie dla użytkowników z konto Microsoft, musisz zarejestro
 
 Teraz, po utworzeniu aplikacji w dzierżawie usługi Azure AD, musisz przechowywać klucz tajny klienta tej aplikacji w dzierżawie Azure AD B2C.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 1. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
@@ -59,7 +60,7 @@ Teraz, po utworzeniu aplikacji w dzierżawie usługi Azure AD, musisz przechowyw
 1. Wprowadź **nazwę** klucza zasad. Na przykład `MSASecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 1. W **kluczu tajnym**wprowadź klucz tajny klienta zapisany w poprzedniej sekcji.
 1. W obszarze **użycie klucza**wybierz pozycję `Signature`.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
@@ -178,7 +179,7 @@ Zaktualizuj plik jednostki uzależnionej (RP), który inicjuje utworzoną przez 
 1. Zaktualizuj wartość **PublicPolicyUri** za pomocą identyfikatora URI dla zasad. Na przykład`http://contoso.com/B2C_1A_signup_signin_msa`
 1. Zaktualizuj wartość atrybutu **ReferenceId** w **DefaultUserJourney** w taki sposób, aby odpowiadała identyfikatorowi przejazdu użytkownika utworzonego wcześniej (SignUpSignInMSA).
 1. Zapisz zmiany, Przekaż plik, a następnie wybierz nowe zasady z listy.
-1. Upewnij się, że aplikacja Azure AD B2C utworzona w poprzedniej sekcji (lub przez zakończenie wymagań wstępnych, na przykład *webapp1* lub *testapp1*) została wybrana w polu **Wybierz aplikację** , a następnie przetestuj ją, klikając polecenie **Uruchom teraz.** .
+1. Upewnij się, że aplikacja Azure AD B2C utworzona w poprzedniej sekcji (lub przez zakończenie wymagań wstępnych, na przykład *webapp1* lub *testapp1*) została wybrana w polu **Wybierz aplikację** , a następnie przetestuj ją, klikając polecenie **Uruchom teraz**.
 1. Wybierz przycisk **konto Microsoft** i zaloguj się.
 
     Jeśli operacja logowania powiedzie się, nastąpi przekierowanie do `jwt.ms`, który wyświetla zdekodowany token, podobny do:

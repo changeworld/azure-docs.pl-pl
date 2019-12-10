@@ -1,5 +1,6 @@
 ---
-title: Samouczek — udzielanie dostępu do ASP.NET Core internetowego interfejsu API z poziomu aplikacji jednostronicowej — Azure Active Directory B2C
+title: 'Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu API z aplikacji jednostronicowej'
+titleSuffix: Azure AD B2C
 description: W tym samouczku dowiesz się, jak używać Active Directory B2C do ochrony interfejsu API sieci Web platformy .NET Core i wywoływać interfejs API z jednej strony aplikacji node. js.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7dae8bb552fe12d1cdf1f3d8a5fe124491933a87
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e5ced0c3e4ad05c33866548acb09189e03ed22f4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420329"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949708"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu API z aplikacji jednostronicowej przy użyciu Azure Active Directory B2C
 

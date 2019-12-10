@@ -1,5 +1,6 @@
 ---
-title: Wersje języka JavaScript i układu strony — Azure Active Directory B2C | Microsoft Docs
+title: Wersje języka JavaScript i układu strony
+titleSuffix: Azure AD B2C
 description: Informacje o sposobie włączania języka JavaScript i używania wersji układu strony w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0eb5c89387d8bdcf0e0b72c669c42f716ff5fbb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227101"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950837"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Wersje języka JavaScript i układu strony w Azure Active Directory B2C
 
@@ -27,7 +28,7 @@ Jeśli zamierzasz włączyć kod po stronie klienta [JavaScript](javascript-samp
 
 ## <a name="user-flows"></a>Przepływy użytkowników
 
-We właściwościach przepływu użytkownika można włączyć język JavaScript, który również wymusza użycie układu strony. Następnie można ustawić wersję układu strony dla przepływu użytkownika zgodnie z opisem w następnej sekcji.
+We **właściwościach**przepływu użytkownika można włączyć język JavaScript, który również wymusza użycie układu strony. Następnie można ustawić wersję układu strony dla przepływu użytkownika zgodnie z opisem w następnej sekcji.
 
 ![Strona właściwości przepływu użytkownika z wyróżnionym ustawieniem Włącz język JavaScript](media/user-flow-javascript-overview/javascript-settings.png)
 

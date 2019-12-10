@@ -1,5 +1,6 @@
 ---
-title: Zarządzanie użyciem rejestracji jednokrotnej i tokenu przy użyciu zasad niestandardowych w Azure Active Directory B2C | Microsoft Docs
+title: Zarządzanie użyciem rejestracji jednokrotnej i tokenu przy użyciu zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Więcej informacji na temat zarządzania logowaniem jednokrotnym i użyciem tokenu przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: de125bf61b5b0ff658f095077eab3ea20742368c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296398"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950617"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Zarządzanie użyciem rejestracji jednokrotnej i tokenu przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -51,12 +52,12 @@ Wewnątrz programu należy umieścić informacje, które mają wpływ na okresy 
 
 Poniższe wartości są ustawiane w poprzednim przykładzie:
 
-- **Okresy istnienia tokenu dostępu** — wartość okresu istnienia tokenu dostępu jest ustawiana za pomocą elementu metadanych **token_lifetime_secs** . Wartość domyślna to 3600 sekund (60 minut).
+- **Okresy istnienia tokenu dostępu** — wartość okresu istnienia tokenu dostępu jest ustawiana za pomocą **token_lifetime_secs** elementu metadanych. Wartość domyślna to 3600 sekund (60 minut).
 - **Okres istnienia tokenu identyfikatora** — wartość okresu istnienia tokenu identyfikatora jest ustawiana za pomocą elementu metadanych **id_token_lifetime_secs** . Wartość domyślna to 3600 sekund (60 minut).
 - **Okres istnienia tokenu odświeżania** — wartość okresu istnienia tokenu odświeżania jest ustawiana za pomocą elementu metadanych **refresh_token_lifetime_secs** . Wartość domyślna to 1209600 sekund (14 dni).
-- **Okres istnienia przesuwanego okna tokenu odświeżania** — Jeśli chcesz ustawić okres istnienia ruchomego okna do tokenu odświeżania, ustaw wartość elementu metadanych **rolling_refresh_token_lifetime_secs** . Wartość domyślna to 7776000 (90 dni). Jeśli nie chcesz wymusić okresu istnienia ruchomego okna, Zastąp element wartością `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
+- **Okres istnienia przesuwanego okna tokenu odświeżania** — Jeśli chcesz ustawić okres istnienia ruchomego okna do tokenu odświeżania, ustaw wartość **rolling_refresh_token_lifetime_secs** elementu metadanych. Wartość domyślna to 7776000 (90 dni). Jeśli nie chcesz wymusić okresu istnienia ruchomego okna, Zastąp element elementem `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
 - **Claimname (ISS)** — w ramach żądania wystawcy (ISS) jest ustawiany element metadanych **IssuanceClaimPattern** . Odpowiednie wartości to `AuthorityAndTenantGuid` i `AuthorityWithTfp`.
-- **Ustawianie zgłoszenia reprezentującego identyfikator zasad** — opcje ustawiania tej wartości są `TFP` (zasady struktury zaufania) i `ACR` (odwołanie kontekstu uwierzytelniania). wartość `TFP` jest zalecana. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`.
+- **Ustawianie zgłoszenia reprezentującego identyfikator zasad** — opcje ustawiania tej wartości są `TFP` (zasady struktury zaufania) i `ACR` (odwołanie kontekstu uwierzytelniania). Zalecana wartość `TFP`. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`.
 
     W elemencie **ClaimsSchema** Dodaj następujący element:
 
@@ -81,7 +82,7 @@ Poniższe wartości są ustawiane w poprzednim przykładzie:
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
     ```
 
-    z tym wierszem:
+    Z tym wierszem:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
@@ -101,6 +102,6 @@ Aby zmienić zachowanie sesji i konfiguracje rejestracji jednokrotnej, należy d
 
 Następujące wartości są konfigurowane w poprzednim przykładzie:
 
-- Logowanie jednokrotne **(SSO)** — Logowanie jednokrotne jest konfigurowane z **SingleSignon**. Odpowiednie wartości to `Tenant`, `Application`, `Policy` i `Suppressed`.
+- Logowanie jednokrotne **(SSO)** — Logowanie jednokrotne jest konfigurowane z **SingleSignon**. Odpowiednie wartości to `Tenant`, `Application`, `Policy`i `Suppressed`.
 - Limit **czasu sesji aplikacji sieci Web** — limit czasu sesji aplikacji sieci Web jest ustawiany z elementem **SessionExpiryType** . Odpowiednie wartości to `Absolute` i `Rolling`.
 - **Okres istnienia sesji aplikacji sieci Web** — okres istnienia sesji aplikacji sieci Web jest ustawiany przy użyciu elementu **SessionExpiryInSeconds** . Wartość domyślna to 86400 sekund (1440 minut).

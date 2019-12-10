@@ -1,5 +1,6 @@
 ---
-title: Szybki Start — Konfigurowanie logowania dla aplikacji klasycznej przy użyciu Azure Active Directory B2C
+title: 'Szybki Start: Konfigurowanie logowania dla aplikacji klasycznej'
+titleSuffix: Azure AD B2C
 description: W tym przewodniku Szybki Start Uruchom przykładową aplikację klasyczną WPF, która używa Azure Active Directory B2C, aby zapewnić logowanie do konta.
 services: active-directory-b2c
 author: mmacy
@@ -11,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed92605c7fb74186ddde6ff193a1365146494594
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8265bad5b756ee2ac23bc41c9c58452251ce0717
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420223"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950651"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 

@@ -1,5 +1,6 @@
 ---
-title: Samouczek — uwierzytelnianie użytkowników w natywnej aplikacji klienckiej — Azure Active Directory B2C
+title: 'Samouczek: uwierzytelnianie użytkowników w natywnej aplikacji klienckiej'
+titleSuffix: Azure AD B2C
 description: Samouczek dotyczący sposobu użycia usługi Azure Active Directory B2C w celu określenia nazwy logowania użytkownika na potrzeby aplikacji klasycznej platformy .NET.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6d1c2eff9bc9ffe8a0fb2166d39c16360c0a79cc
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 54a2fe4f0eee5c926878682ea1fccdfdd005e68b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538919"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950198"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Samouczek: uwierzytelnianie użytkowników w natywnym kliencie klasycznym przy użyciu Azure Active Directory B2C
 

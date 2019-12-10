@@ -1,6 +1,7 @@
 ---
-title: Omówienie zasad niestandardowych modułu uruchamiającego pakietu w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Temat w zasadach niestandardowych usługi Azure Active Directory B2C.
+title: Składniki początkowego pakietu zasad niestandardowych
+titleSuffix: Azure AD B2C
+description: Omówienie zasad w ramach pakietu Azure Active Directory B2C zasad niestandardowych.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,102 +11,102 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b52f1a4cb6837dd779dcf4edac140bb13e06eacb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d49bd9af80b1bb9bd86466269b14ba0a47181e0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509557"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948185"
 ---
-# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Omówienie zasad niestandardowych systemu pakiet startowy usługi Azure AD B2C niestandardowe zasady
+# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Informacje o zasadach niestandardowych Azure AD B2C
 
-Ta sekcja zawiera listę wszystkich elementów podstawowych zasad B2C_1A_base, który jest dostarczany z **pakiet startowy** i który jest używany na potrzeby tworzenia własnych zasad za pomocą dziedziczenia obiektu *B2C_1A_base_extensions zasad* .
+W tej sekcji wymieniono wszystkie podstawowe elementy zasad B2C_1A_base, które są dostarczane z **pakietem startowym** i które są wykorzystywane do tworzenia własnych zasad przez dziedziczenie zasad dotyczących *B2C_1A_base_extensions*.
 
-Jako takie w szczególności koncentruje się ona na typy oświadczeń już zdefiniowanych, przekształcenia oświadczeń, definicji zawartości, dostawców oświadczeń za pomocą ich profile techniczne i podstawowe podróży użytkownika.
+W związku z tym, bardziej szczegółowo koncentruje się na już zdefiniowanych typach oświadczeń, przekształceniach oświadczeń, definicjach zawartości, dostawcach oświadczeń wraz z profilami technicznymi oraz w podróży użytkowników podstawowych.
 
 > [!IMPORTANT]
-> Microsoft nie udziela żadnych gwarancji, jawnych ani dorozumianych, w związku z informacjami przedstawionymi poniżej. Zmiany mogą być wprowadzane w dowolnym momencie przed chwilą, w czasie GA lub po.
+> Firma Microsoft nie udziela żadnych gwarancji, wyraźnych ani dorozumianych, w odniesieniu do informacji, które znajdują się w dalszej części. Zmiany mogą być wprowadzane w dowolnym momencie, przed upływem czasu, w tym czasie lub później.
 
-Własne zasady i zasad B2C_1A_base_extensions można zastąpić te definicje i rozszerzać te zasady nadrzędne, podając te dodatkowe, zgodnie z potrzebami.
+Zarówno własne zasady, jak i zasady B2C_1A_base_extensions mogą przesłonić te definicje i rozłożyć te zasady nadrzędne, dostarczając dodatkowe dane w razie potrzeb.
 
-Elementy podstawowe *zasad B2C_1A_base* są typy oświadczeń, przekształcenia oświadczeń i definicji zawartości. Te elementy mogą się odwoływać się do własne zasady, a także jak w *zasad B2C_1A_base_extensions*.
+Podstawowe elementy *zasad B2C_1A_base* to typy oświadczeń, przekształcenia oświadczeń i definicje zawartości. Te elementy mogą być podatne na odwołania do własnych zasad, a także *zasad B2C_1A_base_extensions*.
 
 ## <a name="claims-schemas"></a>Schematy oświadczeń
 
-To oświadczeń schematów jest podzielony na trzy sekcje:
+Te schematy oświadczeń są podzielone na trzy sekcje:
 
-1.  Pierwsza sekcja wyświetla minimalne oświadczenia, które są wymagane dla podróży użytkownika zapewnić prawidłowe działanie.
-2.  Druga sekcja, która zawiera listę oświadczeń wymagane parametry ciągu zapytania i inne parametry specjalne do przekazania do innych dostawców oświadczeń, szczególnie login.microsoftonline.com na potrzeby uwierzytelniania. **Nie Modyfikuj tych oświadczeń**.
-3.  I po pewnym czasie trzecia sekcja, która wyświetla wszelkie dodatkowe, opcjonalne oświadczenia, które mogą być zbierane od użytkownika, przechowywane w katalogu i wysłane w tokenach podczas logowania. W tej sekcji można dodać nowy typ oświadczenia do zebranych od użytkownika i/lub wysyłane w tokenie.
+1.  Pierwsza sekcja, która zawiera listę minimalnych oświadczeń, które są wymagane do prawidłowego działania podróży użytkownika.
+2.  Druga sekcja zawierająca listę oświadczeń wymaganych dla parametrów ciągu zapytania i innych parametrów specjalnych, które mają być przekazywane do innych dostawców oświadczeń, szczególnie login.microsoftonline.com na potrzeby uwierzytelniania. **Nie należy modyfikować tych oświadczeń**.
+3.  I ostatecznie trzecią sekcję, która zawiera listę dodatkowych, opcjonalnych oświadczeń, które mogą być zbierane od użytkownika, przechowywane w katalogu i wysyłane w tokenach podczas logowania. Nowy typ oświadczeń do zebrania z użytkownika i/lub wysłanego w tokenie można dodać do tej sekcji.
 
 > [!IMPORTANT]
-> Schemat oświadczeń zawiera ograniczeń dotyczących określonych oświadczeń, takie jak hasła i nazwy użytkowników. Zasady zaufania Framework (TF) traktuje usługi Azure AD, jak inni dostawcy oświadczeń i wszystkie jej ograniczenia są sporządzony według wzoru w zasadach niestandardowych. Aby dodać więcej ograniczeń, lub użyj innego dostawcy oświadczeń dla magazynu poświadczeń, które będą miały własne ograniczenia, może zostać zmodyfikowany zasad.
+> Schemat oświadczeń zawiera ograniczenia dotyczące niektórych oświadczeń, takich jak hasła i nazwy użytkowników. Zasady zaufania struktury (TF) traktują usługę Azure AD jako jakikolwiek inny dostawca oświadczeń i wszystkie jej ograniczenia są modelowane w niestandardowych zasadach. Zasady mogą być modyfikowane w celu dodania większej liczby ograniczeń lub użycia innego dostawcy oświadczeń do przechowywania poświadczeń, które będą miały własne ograniczenia.
 
-Poniżej przedstawiono typy oświadczeń dostępne.
+Dostępne typy zgłoszeń są wymienione poniżej.
 
-### <a name="claims-that-are-required-for-the-user-journeys"></a>Oświadczenia, które są wymagane dla podróży użytkownika
+### <a name="claims-that-are-required-for-the-user-journeys"></a>Oświadczenia, które są wymagane do podróży użytkownika
 
-Poniższe oświadczenia są wymagane dla podróży użytkownika zapewnić prawidłowe działanie:
+Następujące oświadczenia są wymagane do poprawnego działania podróży użytkowników:
 
-| Typ oświadczenia | Opis |
+| Typ oświadczeń | Opis |
 |-------------|-------------|
 | *UserId* | Nazwa użytkownika |
-| *signInName* | Zaloguj się w nazwie |
-| *Identyfikator dzierżawy* | Identyfikator dzierżawy (identyfikator) obiektu użytkownika w usłudze Azure AD B2C |
-| *objectId* | Obiekt identyfikator obiektu użytkownika w usłudze Azure AD B2C |
+| *signInName* | Nazwa logowania |
+| *tenantId* | Identyfikator dzierżawy obiektu użytkownika w Azure AD B2C |
+| *objectId* | Identyfikator obiektu użytkownika w Azure AD B2C |
 | *Hasło* | Hasło |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Zasady haseł używana przez usługę Azure AD B2C do określenia siły hasła, wygaśnięcia itp. |
+| *passwordPolicies* | Zasady haseł używane przez Azure AD B2C do określania siły hasła, wygaśnięcia itp. |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
 | *displayName* | |
 | *strongAuthenticationPhoneNumber* | Numer telefonu użytkownika |
 | *Verified.strongAuthenticationPhoneNumber* | |
-| *Adres e-mail* | Adres e-mail, który może służyć do kontaktowania się z użytkownika |
-| *signInNamesInfo.emailAddress* | Adres e-mail, który użytkownik może użyć do logowania |
-| *otherMails* | Adresy e-mail, które mogą służyć do kontaktowania się z użytkownika |
-| *userPrincipalName* | Nazwa użytkownika, ponieważ przechowywane w usłudze Azure AD B2C |
+| *Adres e-mail* | Adres e-mail, za pomocą którego można skontaktować się z użytkownikiem |
+| *signInNamesInfo.emailAddress* | Adres e-mail, za pomocą którego użytkownik może się zalogować |
+| *otherMails* | Adresy e-mail, które mogą być używane do kontaktowania się z użytkownikiem |
+| *userPrincipalName* | Nazwa użytkownika jako przechowywana w Azure AD B2C |
 | *upnUserName* | Nazwa użytkownika do tworzenia głównej nazwy użytkownika |
-| *mailNickName* | Nazwa nick poczty użytkownika przechowywane w usłudze Azure AD B2C |
+| *mailNickName* | Nazwa nick poczty użytkownika w postaci zapisanej w Azure AD B2C |
 | *newUser* | |
-| *executed-SelfAsserted-Input* | Oświadczenia, który określa, czy atrybuty były zbierane od użytkownika |
-| *executed-PhoneFactor-Input* | Oświadczenia, który określa, czy nowy numer telefonu został zebrany od użytkownika |
-| *authenticationSource* | Określa, czy użytkownik został uwierzytelniony w dostawcy tożsamości społecznościowych, login.microsoftonline.com lub konto lokalne |
+| *executed-SelfAsserted-Input* | Wartość określająca, czy atrybuty zostały zebrane przez użytkownika |
+| *executed-PhoneFactor-Input* | Wniosek określający, czy nowy numer telefonu został zebrany od użytkownika |
+| *authenticationSource* | Określa, czy użytkownik został uwierzytelniony przy użyciu dostawcy tożsamości społecznościowej, login.microsoftonline.com czy konta lokalnego |
 
-### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Oświadczenia wymagane parametry ciągu zapytania i inne parametry specjalne
+### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Oświadczenia wymagane dla parametrów ciągu zapytania i innych parametrów specjalnych
 
-Poniższe oświadczenia są wymagane do przekazania w specjalne parametry (w tym niektóre parametry ciągu zapytania) w odniesieniu do innych dostawców oświadczeń:
+Następujące oświadczenia są wymagane do przekazywania specjalnych parametrów (w tym parametrów ciągu zapytania) do innych dostawców oświadczeń:
 
-| Typ oświadczenia | Opis |
+| Typ oświadczeń | Opis |
 |-------------|-------------|
-| *nux* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *Asystent NCA* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *wiersz* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *mkt* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *lc* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *grant_type* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *Zakres* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *client_id* | Specjalne parametr został przekazany do uwierzytelniania lokalnego konta do login.microsoftonline.com |
-| *objectIdFromSession* | Parametr domyślny dostawca zarządzania sesji do wskazania pobrania Identyfikatora obiektu w sesji logowania jednokrotnego |
-| *isActiveMFASession* | Parametr Zarządzanie sesjami MFA, aby wskazać, czy użytkownik ma aktywnej sesji usługi MFA |
+| *nux* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *Asystent* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *pytać* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *mkt* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *lc* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *grant_type* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *Scope* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *client_id* | Szczególny parametr przeszedł do uwierzytelniania konta lokalnego do login.microsoftonline.com |
+| *objectIdFromSession* | Parametr dostarczony przez domyślnego dostawcę zarządzania sesją w celu wskazania, że identyfikator obiektu został pobrany z sesji logowania jednokrotnego |
+| *isActiveMFASession* | Parametr udostępniany przez zarządzanie sesjami usługi MFA w celu wskazania, że użytkownik ma aktywną sesję usługi MFA |
 
-### <a name="additional-optional-claims-that-can-be-collected"></a>Dodatkowe oświadczenia (opcjonalnie), które mogą być zbierane
+### <a name="additional-optional-claims-that-can-be-collected"></a>Dodatkowe (opcjonalne) oświadczenia, które mogą być zbierane
 
-Poniższe oświadczenia są dodatkowe oświadczenia, które mogą być zbierane od użytkowników, przechowywane w katalogu i wysyłane w tokenie. Opisany przed dodatkowe oświadczenia można dodać do tej listy.
+Następujące oświadczenia są dodatkowymi oświadczeniami, które mogą być zbierane od użytkowników, przechowywane w katalogu i wysyłane w tokenie. Jak wskazano wcześniej, dodatkowe oświadczenia można dodać do tej listy.
 
-| Typ oświadczenia | Opis |
+| Typ oświadczeń | Opis |
 |-------------|-------------|
-| *givenName* | Imię użytkownika (nazywanego także imię) |
-| *surname* | Nazwisko użytkownika (znany także jako nazwa rodziny lub nazwisko) |
-| *Extension_picture* | Obraz użytkownika z ubezpieczenia |
+| *givenName* | Imię i nazwisko użytkownika (znane także jako imię) |
+| *surname* | Nazwisko użytkownika (znane także jako nazwa rodziny lub nazwisko) |
+| *Extension_picture* | Obraz użytkownika z społeczności społecznej |
 
-## <a name="claim-transformations"></a>Przekształcenia oświadczeń
+## <a name="claim-transformations"></a>Przekształcenia roszczeń
 
-Przekształcenia oświadczeń dostępne są wymienione poniżej.
+Poniżej wymieniono dostępne przekształcenia roszczeń.
 
-| Przekształcania oświadczeń | Opis |
+| Przekształcanie roszczeń | Opis |
 |----------------------|-------------|
 | *CreateOtherMailsFromEmail* | |
 | *CreateRandomUPNUserName* | |
@@ -114,17 +115,17 @@ Przekształcenia oświadczeń dostępne są wymienione poniżej.
 | *CreateSubjectClaimFromAlternativeSecurityId* | |
 | *CreateAlternativeSecurityId* | |
 
-## <a name="content-definitions"></a>Definicji zawartości
+## <a name="content-definitions"></a>Definicje zawartości
 
-W tej sekcji opisano definicji zawartości już zadeklarowana w *B2C_1A_base* zasad. Te definicje zawartości są podatne na odwołania, zastąpione lub rozszerzone zgodnie z potrzebami w własne zasady, a także jak w *B2C_1A_base_extensions* zasad.
+W tej sekcji opisano definicje zawartości zadeklarowane już w zasadach *B2C_1A_base* . Te definicje zawartości są podatne na odwołania, przesłonięte i/lub rozszerzone w zależności od potrzeb we własnych zasadach, a także zasady *B2C_1A_base_extensions* .
 
-| Dostawcy oświadczeń | Opis |
+| Dostawca oświadczeń | Opis |
 |-----------------|-------------|
 | *Facebook* | |
-| *Logowanie za pomocą konta lokalnego* | |
+| *Logowanie do konta lokalnego* | |
 | *PhoneFactor* | |
 | *Azure Active Directory* | |
-| *Samodzielna potwierdzony* | |
+| *Samodzielnie potwierdzone* | |
 | *Konto lokalne* | |
 | *Zarządzanie sesjami* | |
 | *Trustframework Policy Engine* | |
@@ -133,21 +134,21 @@ W tej sekcji opisano definicji zawartości już zadeklarowana w *B2C_1A_base* za
 
 ## <a name="technical-profiles"></a>Profile techniczne
 
-W tej sekcji przedstawiono profile techniczne już zadeklarowany na dostawcy oświadczeń w *B2C_1A_base* zasad. Te profile techniczne są podatne na można dodatkowo odwołania, zastąpione i/lub rozszerzone zgodnie z potrzebami w własne zasady, a także jak w *B2C_1A_base_extensions* zasad.
+Ta sekcja przedstawia profile techniczne już zadeklarowane dla każdego dostawcy oświadczenia w zasadach *B2C_1A_base* . Te profile techniczne są podatne na dalsze odwołania, przesłonięte i/lub rozszerzone w zależności od potrzeb we własnych zasadach, a także zasady *B2C_1A_base_extensions* .
 
-### <a name="technical-profiles-for-facebook"></a>Profile techniczne za pomocą konta Facebook
+### <a name="technical-profiles-for-facebook"></a>Profile techniczne usługi Facebook
 
 | Profil techniczny | Opis |
 |-------------------|-------------|
 | *Facebook-OAUTH* | |
 
-### <a name="technical-profiles-for-local-account-signin"></a>Profile techniczne dla logowanie za pomocą konta lokalnego
+### <a name="technical-profiles-for-local-account-signin"></a>Profile techniczne dla logowania do konta lokalnego
 
 | Profil techniczny | Opis |
 |-------------------|-------------|
 | *Login-NonInteractive* | |
 
-### <a name="technical-profiles-for-phone-factor"></a>Profile techniczne dla aplikacji Phone Factor
+### <a name="technical-profiles-for-phone-factor"></a>Profile techniczne dla współczynnika telefonu
 
 | Profil techniczny | Opis |
 |-------------------|-------------|
@@ -155,47 +156,47 @@ W tej sekcji przedstawiono profile techniczne już zadeklarowany na dostawcy oś
 | *PhoneFactor-InputOrVerify* | |
 | *PhoneFactor-Verify* | |
 
-### <a name="technical-profiles-for-azure-active-directory"></a>Profile techniczne usługi Azure Active Directory
+### <a name="technical-profiles-for-azure-active-directory"></a>Profile techniczne dla Azure Active Directory
 
 | Profil techniczny | Opis |
 |-------------------|-------------|
-| *AAD-Common* | Profil techniczny dołączane przez inne usługi AAD-xxx profile techniczne |
-| *AAD-UserWriteUsingAlternativeSecurityId* | Profil techniczny dla logowania społecznościowego |
-| *AAD-UserReadUsingAlternativeSecurityId* | Profil techniczny dla logowania społecznościowego |
-| *AAD-UserReadUsingAlternativeSecurityId-NoError* | Profil techniczny dla logowania społecznościowego |
+| *AAD-Common* | Profil techniczny obejmujący inne profile techniczne usługi AAD-XXX |
+| *AAD-UserWriteUsingAlternativeSecurityId* | Profil techniczny dla logowań społecznościowych |
+| *AAD-UserReadUsingAlternativeSecurityId* | Profil techniczny dla logowań społecznościowych |
+| *AAD-UserReadUsingAlternativeSecurityId-NoError* | Profil techniczny dla logowań społecznościowych |
 | *AAD-UserWritePasswordUsingLogonEmail* | Profil techniczny dla kont lokalnych |
 | *AAD-UserReadUsingEmailAddress* | Profil techniczny dla kont lokalnych |
-| *AAD-UserWriteProfileUsingObjectId* | Profil techniczny aktualizowania rekordu użytkownika przy użyciu obiektu |
-| *AAD-UserWritePhoneNumberUsingObjectId* | Profil techniczny aktualizowania rekordu użytkownika przy użyciu obiektu |
-| *AAD-UserWritePasswordUsingObjectId* | Profil techniczny aktualizowania rekordu użytkownika przy użyciu obiektu |
-| *AAD-UserReadUsingObjectId* | Profil techniczny służy do odczytywania danych po użytkownik jest uwierzytelniany |
+| *AAD-UserWriteProfileUsingObjectId* | Profil techniczny do aktualizowania rekordu użytkownika przy użyciu identyfikatora obiektu |
+| *AAD-UserWritePhoneNumberUsingObjectId* | Profil techniczny do aktualizowania rekordu użytkownika przy użyciu identyfikatora obiektu |
+| *AAD-UserWritePasswordUsingObjectId* | Profil techniczny do aktualizowania rekordu użytkownika przy użyciu identyfikatora obiektu |
+| *AAD-UserReadUsingObjectId* | Profil techniczny służy do odczytywania danych po uwierzytelnieniu użytkownika |
 
-### <a name="technical-profiles-for-self-asserted"></a>Profile techniczne dla potwierdzone samoobsługowego
+### <a name="technical-profiles-for-self-asserted"></a>Profile techniczne dla samodzielnie potwierdzonych
 
 | Profil techniczny | Opis |
 |-------------------|-------------|
 | *SelfAsserted-Social* | |
 | *SelfAsserted-ProfileUpdate* | |
 
-### <a name="technical-profiles-for-local-account"></a>Profile techniczne dla lokalnego konta
+### <a name="technical-profiles-for-local-account"></a>Profile techniczne dla konta lokalnego
 
 | Profil techniczny | Opis |
 |-------------------|-------------|
 | *LocalAccountSignUpWithLogonEmail* | |
 
-### <a name="technical-profiles-for-session-management"></a>Profile techniczne dla sesji zarządzania
+### <a name="technical-profiles-for-session-management"></a>Profile techniczne zarządzania sesją
 
 | Profil techniczny | Opis |
 |-------------------|-------------|
 | *SM-Noop* | |
 | *SM-AAD* | |
-| *SM-SocialSignup* | Nazwa profilu jest używana do odróżniania sesji usługi AAD między logowania się i zaloguj się |
+| *SM-SocialSignup* | Nazwa profilu jest używana w celu odróżnienia sesji usługi AAD między rejestracją i logowaniem |
 | *SM-SocialLogin* | |
 | *SM-MFA* | |
 
-### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Profile techniczne dla aparatu zasad framework zaufania
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Profile techniczne aparatu zasad struktury zaufania
 
-Obecnie nie profile techniczne są zdefiniowane dla **profili Technicalprofile aparatu zasad Trustframework** dostawcy oświadczeń.
+Obecnie nie są zdefiniowane profile techniczne dla dostawcy oświadczeń **TechnicalProfiles aparatu zasad Trustframework** .
 
 ### <a name="technical-profiles-for-token-issuer"></a>Profile techniczne dla wystawcy tokenów
 
@@ -205,11 +206,11 @@ Obecnie nie profile techniczne są zdefiniowane dla **profili Technicalprofile a
 
 ## <a name="user-journeys"></a>Podróże użytkownika
 
-W tej sekcji przedstawiono podróży użytkownika już zadeklarowana w *B2C_1A_base* zasad. Te podróży użytkownika są podatne na można dodatkowo odwołania, zastąpione i/lub rozszerzone zgodnie z potrzebami w własne zasady, a także jak w *B2C_1A_base_extensions* zasad.
+W tej sekcji przedstawiono przedziały użytkownika zadeklarowane już w zasadach *B2C_1A_base* . Te podróże użytkowników są podatne na dalsze odwołania, przesłonięte i/lub rozszerzone w zależności od potrzeb we własnych zasadach, a także zasady *B2C_1A_base_extensions* .
 
 | Podróż użytkownika | Opis |
 |--------------|-------------|
-| *Rejestracja* | |
+| *Zapisania* | |
 | *SignIn* | |
 | *SignUpOrSignIn* | |
 | *EditProfile* | |

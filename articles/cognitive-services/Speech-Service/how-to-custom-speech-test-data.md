@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816407"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951840"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotuj dane dla Custom Speech
 
@@ -62,6 +62,9 @@ Użyj tej tabeli, aby upewnić się, że pliki audio są poprawnie sformatowane 
 | Format archiwum | zip |
 | Maksymalny rozmiar archiwum | 2 GB |
 
+> [!TIP]
+> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Jeśli potrzebujesz więcej danych do szkolenia i testowania, Podziel je na kilka plików zip i przekaż je oddzielnie. Później możesz wybrać opcję uczenia i testowania z *wielu* zestawów danych.
+
 Jeśli dźwięk nie spełnia tych właściwości lub chcesz sprawdzić, czy jest to konieczne, zalecamy pobranie [SOX](http://sox.sourceforge.net) w celu sprawdzenia lub przekonwertowania dźwięku. Poniżej przedstawiono kilka przykładów działania poszczególnych działań za pomocą wiersza polecenia:
 
 | Działanie | Opis | SOX — polecenie |
@@ -71,7 +74,7 @@ Jeśli dźwięk nie spełnia tych właściwości lub chcesz sprawdzić, czy jest
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Audio + oznakowane przez człowieka dane zapisu do testowania/uczenia
 
-Aby zmierzyć dokładność dokładności zamiany mowy na tekst firmy Microsoft podczas przetwarzania plików audio, należy zapewnić, aby porównanie było oznaczone przez człowieka (słowo-by-Word). Chociaż transkrypcja przez człowieka jest często czasochłonna, konieczne jest oszacowanie dokładności i uczenie modelu dla przypadków użycia. Należy pamiętać, że ulepszenia w zakresie rozpoznawania będą tylko tak dobre jak dostarczone dane. Z tego powodu ważne jest, aby przekazywać tylko transkrypcje o wysokiej jakości.  
+Aby zmierzyć dokładność dokładności zamiany mowy na tekst firmy Microsoft podczas przetwarzania plików audio, należy zapewnić, aby porównanie było oznaczone przez człowieka (słowo-by-Word). Chociaż transkrypcja przez człowieka jest często czasochłonna, konieczne jest oszacowanie dokładności i uczenie modelu dla przypadków użycia. Należy pamiętać, że ulepszenia w zakresie rozpoznawania będą tylko tak dobre jak dostarczone dane. Z tego powodu ważne jest, aby przekazywać tylko transkrypcje o wysokiej jakości.
 
 | Właściwość | Wartość |
 |----------|-------|
@@ -82,6 +85,9 @@ Aby zmierzyć dokładność dokładności zamiany mowy na tekst firmy Microsoft 
 | Przykładowy format | PCM, 16-bitowe |
 | Format archiwum | zip |
 | Maksymalny rozmiar pliku zip | 2 GB |
+
+> [!TIP]
+> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Jeśli potrzebujesz więcej danych do szkolenia i testowania, Podziel je na kilka plików zip i przekaż je oddzielnie. Później możesz wybrać opcję uczenia i testowania z *wielu* zestawów danych.
 
 Aby rozwiązać problemy, takie jak usuwanie lub podstawianie wyrazów, wymagana jest znaczna ilość danych w celu usprawnienia rozpoznawania. Ogólnie rzecz biorąc, zaleca się dostarczenie transkrypcji słów-by-Word dla około 10 do 1 000 godzin. Transkrypcje dla wszystkich plików WAV powinny znajdować się w jednym pliku tekstowym (zwykły tekst). Każdy wiersz pliku z transkrypcją powinien zawierać nazwę jednego z plików dźwiękowych, a następnie odpowiednią transkrypcję. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t).
 

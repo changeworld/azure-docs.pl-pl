@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c29bba81132df15fcea9ff0df7be6a8cea94c9a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27bf62cb328273db1f7bdd44117853b00feca9ae
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851132"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941580"
 ---
 # <a name="deploy-azure-farmbeats"></a>Wdrażanie usługi Azure FarmBeats
 
@@ -33,7 +33,7 @@ Szybkie wdrożenie usługi Azure FarmBeats powinno trwać krócej niż godzinę.
 
 Wdrożenie usługi Azure FarmBeats tworzy następujące zasoby w ramach subskrypcji:
 
-| Mag. nr  | Nazwa zasobu  | Składnik FarmBeats  |
+| Kolejną. nr  | Nazwa zasobu  | Składnik FarmBeats  |
 |---------|---------|---------|
 |1  |       Azure Cosmos DB   |  Datahub       |
 |2  |    Application Insights      |     Datahub/akcelerator     |
@@ -49,7 +49,6 @@ Wdrożenie usługi Azure FarmBeats tworzy następujące zasoby w ramach subskryp
 |12|      Azure App Service      |  Datahub/akcelerator       |
 |13 |    Plan usługi App Service        |     Datahub/akcelerator      |
 |14 |Konto Azure Maps     |Skrót    |
-|15 |       Azure Time Series Insights      |  Datahub     |
 
 Usługa Azure FarmBeats jest dostępna do pobrania w witrynie Azure Marketplace, do której można uzyskać dostęp bezpośrednio z Azure Portal.  
 
@@ -83,7 +82,7 @@ Przed rozpoczęciem wdrażania należy się upewnić, że są spełnione następ
 
 Konto z wskaźnikiem kontrolnym pomaga w pobieraniu obrazów satelitarnych ze wskaźnikami z oficjalnej witryny sieci Web do urządzenia. Aby utworzyć bezpłatne konto, wykonaj następujące czynności:
 
-1. Przejdź do [strony rejestracji konta wskaźnikowego](https://scihub.copernicus.eu/dhus/#/self-registration). 
+1. Przejdź do [strony rejestracji konta wskaźnikowego](https://scihub.copernicus.eu/dhus/#/self-registration).
 1. W formularzu rejestracji podaj swoje imię i nazwisko, nazwisko, nazwę użytkownika, hasło i adres e-mail.
 
 Do potwierdzenia zostanie wysłana wiadomość e-mail z weryfikacją. Wybierz link, aby potwierdzić swój adres e-mail. Proces rejestracji został ukończony.
@@ -211,7 +210,7 @@ W tym scenariuszu, który został opisany wcześniej w artykule "opcja 1," spowo
     > Token wygasa po 60 minutach. Jeśli wygaśnie, możesz ponownie uruchomić program, wpisując polecenie Deployment.
 
 1. W wierszu polecenia wprowadź hasło do konta wskaźnikowego.
-   
+
    Instalator weryfikuje i uruchamia wdrożenie, co może potrwać około 20 minut.
 
    Po pomyślnym zakończeniu wdrożenia otrzymasz następujące linki wyjściowe:
@@ -282,12 +281,8 @@ Jeśli napotkasz jakiekolwiek problemy, przejrzyj [problemy](troubleshoot-projec
 Po zakończeniu instalacji Datahub otrzymasz adres URL, aby uzyskać dostęp do interfejsów API usługi Azure FarmBeats za pośrednictwem interfejsu Swagger w formacie https://\<yourdatahub-Website-Name >. azurewebsites. NET/Swagger.
 
 1. Aby zalogować się za pomocą struktury Swagger, skopiuj i wklej adres URL w przeglądarce.
-1. Zaloguj się przy użyciu poświadczeń Azure Portal.
-1. Obowiązkowe Wypróbuj ten test "Sanity": 
-
-     - Zaloguj się pomyślnie do portalu Swagger przy użyciu linku Datahub, który został odebrany jako dane wyjściowe do pomyślnego wdrożenia.
-     - Rozszerzone typy pobieranie interfejsu API — wybierz pozycję "Wypróbuj to/Execute"
-     - Powinien zostać wyświetlony kod odpowiedzi serwera 200, a nie wyjątek, taki jak "403 nieautoryzowany użytkownik".
+2. Zaloguj się przy użyciu poświadczeń Azure Portal.
+3. Można zobaczyć strukturę Swagger i wykonać wszystkie operacje REST w interfejsach API usługi Azure FarmBeats. Wskazuje to na pomyślne wdrożenie usługi Azure FarmBeats.
 
 ### <a name="accelerator"></a>Skrót
 

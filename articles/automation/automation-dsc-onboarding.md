@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850333"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951415"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Dołączanie maszyn w celu zarządzania przez Azure Automation konfigurację stanu
 
@@ -305,6 +305,15 @@ Informacje wymagane do protokołu rejestracji konfiguracji stanu można uzyskać
 
 Aby zwiększyć bezpieczeństwo, należy ponownie wygenerować podstawowe i pomocnicze klucze dostępu konta usługi Automation (na stronie **Zarządzanie kluczami** ), aby uniemożliwić rejestracje w przyszłości przy użyciu poprzednich kluczy.
 
+## <a name="certificate-expiration-and-re-registration"></a>Wygaśnięcie i ponowne rejestrowanie certyfikatu
+
+Po zarejestrowaniu maszyny jako węzła DSC w konfiguracji stanu Azure Automation istnieje kilka powodów, dla których może być konieczne ponowne zarejestrowanie tego węzła w przyszłości:
+
+- W przypadku wersji systemu Windows Server starszych niż Windows Server 2019 każdy węzeł automatycznie negocjuje unikatowy certyfikat na potrzeby uwierzytelniania, który wygaśnie po upływie jednego roku. Obecnie protokół rejestracji DSC programu PowerShell nie może automatycznie odnawiać certyfikatów, gdy zbliżają się do wygaśnięcia, więc należy ponownie zarejestrować węzły po upływie roku. Przed ponownym zarejestrowaniem upewnij się, że w każdym węźle jest uruchomiony system Windows Management Framework 5,0 RTM. Jeśli certyfikat uwierzytelniania węzła wygaśnie i węzeł nie zostanie ponownie zarejestrowany, węzeł nie będzie mógł komunikować się z Azure Automation i jest oznaczony jako "nie odpowiada". ponowne zarejestrowanie wykonane przez 90 dni lub mniej od czasu wygaśnięcia certyfikatu lub w dowolnym momencie po upływie czasu wygaśnięcia certyfikatu spowoduje wygenerowanie i użycie nowego certyfikatu.  Rozwiązanie tego problemu jest zawarte w systemie Windows Server 2019 lub nowszym.
+- Aby zmienić [wartości wszystkich lokalnych Configuration Manager środowiska PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig4) , które zostały ustawione podczas początkowej rejestracji węzła, na przykład ConfigurationMode. Obecnie te wartości agenta DSC można zmienić tylko przez ponowną rejestrację. Jedynym wyjątkiem jest konfiguracja węzła przypisana do węzła — można ją zmienić w Azure Automation DSC bezpośrednio.
+
+ponowna rejestracja może być wykonywana w taki sam sposób, jak początkowo zarejestrowano węzeł przy użyciu dowolnej metody dołączania opisanej w tym dokumencie. Nie musisz wyrejestrować węzła z konfiguracji stanu Azure Automation przed jego ponownym zarejestrowaniem.
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Rozwiązywanie problemów z dołączaniem do maszyny wirtualnej platformy Azure
 
 Azure Automation konfiguracja stanu umożliwia łatwe dołączanie maszyn wirtualnych z systemem Windows Azure na potrzeby zarządzania konfiguracją. Pod wyciągnięciem, rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure służy do rejestrowania maszyny wirtualnej z konfiguracją stanu Azure Automation. Ponieważ rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure jest uruchamiane asynchronicznie, śledzenie jego postępu i rozwiązywanie problemów może być ważne.
@@ -314,14 +323,7 @@ Azure Automation konfiguracja stanu umożliwia łatwe dołączanie maszyn wirtua
 
 Aby rozwiązać problem lub wyświetlić stan rozszerzenia konfiguracji żądanego stanu maszyny wirtualnej platformy Azure, w Azure Portal przejdź do dołączanej maszyny wirtualnej, a następnie kliknij pozycję **rozszerzenia** w obszarze **Ustawienia**. Następnie kliknij pozycję **DSC** lub **DSCForLinux** w zależności od używanego systemu operacyjnego. Aby uzyskać więcej informacji, kliknij pozycję **Wyświetl szczegółowy stan**.
 
-## <a name="certificate-expiration-and-reregistration"></a>Wygaśnięcie i rejestracja certyfikatu
-
-Po zarejestrowaniu komputera jako węzła DSC w konfiguracji stanu Azure Automation istnieje kilka powodów, dla których może być konieczne ponowne zarejestrowanie tego węzła w przyszłości:
-
-- W przypadku wersji systemu Windows Server starszych niż Windows Server 2019 każdy węzeł automatycznie negocjuje unikatowy certyfikat na potrzeby uwierzytelniania, który wygaśnie po upływie jednego roku. Obecnie protokół rejestracji DSC programu PowerShell nie może automatycznie odnawiać certyfikatów, gdy zbliżają się do wygaśnięcia, więc należy ponownie zarejestrować węzły po upływie roku. Przed ponownym zarejestrowaniem upewnij się, że w każdym węźle jest uruchomiony system Windows Management Framework 5,0 RTM. Jeśli certyfikat uwierzytelniania węzła wygaśnie i węzeł nie zostanie ponownie zarejestrowany, węzeł nie będzie mógł komunikować się z Azure Automation i jest oznaczony jako "nie odpowiada". Ponowne zarejestrowanie wykonane przez 90 dni lub mniej od czasu wygaśnięcia certyfikatu lub w dowolnym momencie po upływie czasu wygaśnięcia certyfikatu spowoduje wygenerowanie i użycie nowego certyfikatu.  Rozwiązanie tego problemu jest zawarte w systemie Windows Server 2019 lub nowszym.
-- Aby zmienić [wartości wszystkich lokalnych Configuration Manager środowiska PowerShell](/powershell/scripting/dsc/managing-nodes/metaConfig4) , które zostały ustawione podczas początkowej rejestracji węzła, na przykład ConfigurationMode. Obecnie te wartości agenta DSC można zmienić tylko poprzez rerejestrację. Jedynym wyjątkiem jest konfiguracja węzła przypisana do węzła — można ją zmienić w Azure Automation DSC bezpośrednio.
-
-Ponowna rejestracja może być wykonywana w taki sam sposób, jak początkowo zarejestrowano węzeł przy użyciu dowolnej metody dołączania opisanej w tym dokumencie. Nie musisz wyrejestrować węzła z konfiguracji stanu Azure Automation przed ponownym zarejestrowaniem.
+Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz [Rozwiązywanie problemów przy użyciu konfiguracji żądanego stanu Azure Automation (DSC)](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

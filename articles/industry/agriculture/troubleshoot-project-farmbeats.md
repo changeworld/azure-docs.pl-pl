@@ -5,26 +5,29 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0a4fb337adfb2f4e6b8edb86ac620103e929c3a8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89f364d9246db27276eee6d05e8130e87061feec
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842139"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941609"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Rozwiązywanie problemów z usługą Azure FarmBeats
 
 Ten artykuł zawiera rozwiązania typowych problemów z usługą Azure FarmBeats.
 
-Aby uzyskać dodatkową pomoc, skontaktuj się z nami na farmbeatssupport@microsoft.com. Pamiętaj o dołączeniu pliku *Deployer. log* do wiadomości e-mail.
+Aby uzyskać dodatkową pomoc, skontaktuj się z nami na farmbeatssupport@microsoft.com. Pamiętaj o dołączeniu pliku **Deployer. log** do wiadomości e-mail.
 
-Aby pobrać plik *Deployer. log* , wykonaj następujące czynności:
+Aby pobrać plik **Deployer. log** , wykonaj następujące czynności:
 
-1. Wybierz wyróżnioną ikonę, a następnie na liście rozwijanej wybierz pozycję **Pobierz**.
+1. Zaloguj się do **Azure Portal** i wybierz subskrypcję i dzierżawę usługi Azure AD.
+2. Uruchom usługę Cloud Shell z górnego obszaru nawigacyjnego witryny Azure Portal.
+3. Wybierz pozycję **bash** jako preferowane środowisko Cloud Shell.
+4. Wybierz wyróżnioną ikonę, a następnie na liście rozwijanej wybierz pozycję **Pobierz**.
 
     ![FarmBeats projektu](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
 
-1. W następnym okienku wprowadź ścieżkę do pliku *Deployer. log* . Na przykład wprowadź **farmbeats-Deployer. log**.
+5. W następnym okienku wprowadź ścieżkę do pliku **Deployer. log** . Na przykład wprowadź **farmbeats-Deployer. log**.
 
 ## <a name="sensor-telemetry"></a>Dane telemetryczne czujnika
 
@@ -32,7 +35,7 @@ Aby pobrać plik *Deployer. log* , wykonaj następujące czynności:
 
 **Objaw**: wdrożono urządzenia lub czujniki, a połączono FarmBeats z partnerem urządzenia, ale nie można uzyskać ani wyświetlić danych telemetrycznych w FarmBeats.
 
-**Działanie naprawcze**: 
+**Działanie naprawcze**:
 
 1. Przejdź do grupy zasobów FarmBeats Datahub.   
 1. Wybierz **centrum zdarzeń** (DatafeedEventHubNamespace), a następnie wyszukaj liczbę wiadomości przychodzących.
@@ -44,14 +47,14 @@ Aby zrozumieć sposób pobierania dzienników, przejdź do sekcji ["zbieranie dz
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nie masz parametrów połączenia usługi Azure Event Hubs
 
-**Działanie naprawcze**: 
+**Działanie naprawcze**:
 
 1. W programie Datahub Swagger przejdź do interfejsu API partnera.
 1. Wybierz pozycję **pobierz** > **Wypróbuj** > **Wykonaj**.
 1. Zanotuj identyfikator partnera, który Cię interesuje.
 1. Wróć do interfejsu API partnera i wybierz pozycję **Pobierz/\<identyfikator >** .
 1. Określ identyfikator partnera z kroku 3, a następnie wybierz pozycję **Wykonaj**.
-   
+
    Odpowiedź interfejsu API powinna mieć Event Hubs parametry połączenia.
 
 ### <a name="device-appears-offline"></a>Urządzenie jest w trybie offline
@@ -128,7 +131,7 @@ Jeśli błąd będzie się powtarzać, Dodaj komunikat o błędzie w ogłoszeniu
 **Problem**: akcelerator FarmBeats nie pokazuje najnowszej wersji, nawet po uaktualnieniu FarmBeatsDeployment.
 
 **Działanie naprawcze**: ten błąd występuje z powodu trwałości procesu roboczego usługi w przeglądarce. Wykonaj następujące czynności:
-1. Zamknij wszystkie karty przeglądarki z otwartym akceleratorem, a następnie zamknij okno przeglądarki. 
+1. Zamknij wszystkie karty przeglądarki z otwartym akceleratorem, a następnie zamknij okno przeglądarki.
 1. Uruchom nowe wystąpienie przeglądarki i ponownie załaduj akcelerator URI. Ta akcja spowoduje załadowanie nowej wersji akceleratora.
 
 ## <a name="sentinel-imagery-related-issues"></a>Wskaźnik: problemy związane z obrazami
@@ -137,7 +140,7 @@ Jeśli błąd będzie się powtarzać, Dodaj komunikat o błędzie w ogłoszeniu
 
 **Komunikat o niepowodzeniu zadania**: "pełne uwierzytelnianie jest wymagane w celu uzyskania dostępu do tego zasobu".
 
-**Działanie naprawcze**: 
+**Działanie naprawcze**:
 
 Wykonaj jedną z następujących czynności:
 * Uruchom ponownie Instalatora, aby uaktualnić Datahub przy użyciu prawidłowej nazwy użytkownika i hasła.
@@ -207,7 +210,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 
     ![FarmBeats projektu](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Zbieranie dzienników zadań Azure Data Factory w akceleratorze 
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Zbieranie dzienników zadań Azure Data Factory w akceleratorze
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. W polu **wyszukiwania** Wyszukaj grupę zasobów akceleratora FarmBeats.
