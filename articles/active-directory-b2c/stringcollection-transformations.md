@@ -1,6 +1,7 @@
 ---
-title: Przykłady transformacji oświadczeń w usłudze StringCollection dla schematu struktury obsługi tożsamości Azure Active Directory B2C | Microsoft Docs
-description: Przykłady transformacji oświadczeń w usłudze StringCollection dla schematu struktury obsługi tożsamości Azure Active Directory B2C.
+title: Przykłady transformacji oświadczeń w usłudze StringCollection dla zasad niestandardowych
+titleSuffix: Azure AD B2C
+description: Przykłady transformacji oświadczeń w usłudze StringCollection dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063308"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951007"
 ---
 # <a name="stringcollection-claims-transformations"></a>Przekształcenia oświadczeń w programie StringCollection
 
@@ -29,9 +30,9 @@ Dodaje do nowego żądania StringCollection wyrażenie.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | elementów | ciąg | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
-| Oświadczenie inputclaim | kolekcja | stringCollection | Obowiązkowe Jeśli ta wartość jest określona, transformacja oświadczeń Kopiuje elementy z tej kolekcji i dodaje element na końcu oświadczenia kolekcji wyjściowej. |
-| Oświadczenie outputclaim | kolekcja | stringCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie inputclaim | element | string | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
+| Oświadczenie inputclaim | Kolekcja | stringCollection | Obowiązkowe Jeśli ta wartość jest określona, transformacja oświadczeń Kopiuje elementy z tej kolekcji i dodaje element na końcu oświadczenia kolekcji wyjściowej. |
+| Oświadczenie outputclaim | Kolekcja | stringCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. |
 
 Ta transformacja oświadczeń służy do dodawania ciągu do nowego lub istniejącego ciągu. Jest on często używany w profilu technicznym usługi **AAD-UserWriteUsingAlternativeSecurityId** . Przed utworzeniem nowego konta społecznościowego transformacja oświadczeń **CreateOtherMailsFromEmail** odczytuje element ClaimType i dodaje wartość do **otherMails** ClaimType.
 
@@ -63,9 +64,9 @@ Dodaje parametr ciągu do nowego żądania ciągucollection.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | kolekcja | stringCollection | Obowiązkowe Jeśli ta wartość jest określona, transformacja oświadczeń Kopiuje elementy z tej kolekcji i dodaje element na końcu oświadczenia kolekcji wyjściowej. |
-| InputParameter | elementów | ciąg | Wartość, która ma zostać dodana do żądania danych wyjściowych. |
-| Oświadczenie outputclaim | kolekcja | stringCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie inputclaim | Kolekcja | stringCollection | Obowiązkowe Jeśli ta wartość jest określona, transformacja oświadczeń Kopiuje elementy z tej kolekcji i dodaje element na końcu oświadczenia kolekcji wyjściowej. |
+| InputParameter | element | string | Wartość, która ma zostać dodana do żądania danych wyjściowych. |
+| Oświadczenie outputclaim | Kolekcja | stringCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. |
 
 Użyj tej transformacji oświadczeń, aby dodać wartość ciągu do nowej lub istniejącej wartości StringCollection. Poniższy przykład dodaje stały adres e-mail (admin@contoso.com) do żądania **otherMails** .
 
@@ -98,8 +99,8 @@ Pobiera pierwszy element z dostarczonej kolekcji ciągów.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | kolekcja | stringCollection | Elementy Claims, które są używane przez transformację oświadczeń do pobrania elementu. |
-| Oświadczenie outputclaim | extractedItem | ciąg | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Pierwszy element w kolekcji. |
+| Oświadczenie inputclaim | Kolekcja | stringCollection | Elementy Claims, które są używane przez transformację oświadczeń do pobrania elementu. |
+| Oświadczenie outputclaim | extractedItem | string | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Pierwszy element w kolekcji. |
 
 Poniższy przykład odczytuje **otherMails** i zwraca pierwszy element do roszczeń **e-mail** .
 
