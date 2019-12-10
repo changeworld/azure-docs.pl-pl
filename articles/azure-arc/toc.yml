@@ -10,7 +10,7 @@
   items:
     - name: Łączenie komputerów z platformą Azure przy użyciu usługi Azure Arc dla serwerów — portal
       href: ./servers/quickstart-onboard-portal.md
-    - name: Łączenie komputerów z platformą Azure przy użyciu usługi Azure Arc dla serwerów — PowerShell
+    - name: Łączenie maszyn na dużą skalę przy użyciu usługi Azure Arc dla serwerów — PowerShell
       href: ./servers/quickstart-onboard-powershell.md
 - name: Dokumentacja
   items:
