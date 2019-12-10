@@ -24,7 +24,7 @@ Użyj biblioteki klienta wyszukiwanie niestandardowe Bing dla języka Java, aby:
 
 * Znajdź wyniki wyszukiwania w sieci Web w wystąpieniu wyszukiwanie niestandardowe Bing. 
 
-[](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [Przykłady](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) [kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)źródłowego( | [Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/)biblioteki dokumentacji referencyjnej | 
+[Dokumentacja referencyjna](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [przykłady](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -55,7 +55,7 @@ W oknie konsoli (na przykład cmd, PowerShell lub bash) Utwórz nowy katalog dla
 mkdir myapp && cd myapp
 ```
 
-`gradle init` Uruchom polecenie z katalogu roboczego. To polecenie tworzy podstawowe pliki kompilacji dla Gradle, w tym plik *Build. Gradle. KTS* , który jest używany w czasie wykonywania w celu skonfigurowania aplikacji.
+Uruchom `gradle init` polecenie w katalogu roboczym. To polecenie tworzy podstawowe pliki kompilacji dla Gradle, w tym plik *Build. Gradle. KTS* , który jest używany w czasie wykonywania w celu skonfigurowania aplikacji.
 
 ```console
 gradle init --type basic
@@ -65,7 +65,7 @@ Po wyświetleniu monitu wybierz pozycję **Język DSL**, a następnie **Kotlin**
 
 ## <a name="install-the-client-library"></a>Zainstaluj bibliotekę kliencką 
 
-Znajdź element *Build. Gradle. KTS* i otwórz go za pomocą PREFEROWANEGO środowiska IDE lub edytora tekstu. Następnie skopiuj w tej konfiguracji kompilacji. Pamiętaj, aby uwzględnić bibliotekę klienta w `dependencies`:
+Znajdź element *Build. Gradle. KTS* i otwórz go za pomocą PREFEROWANEGO środowiska IDE lub edytora tekstu. Następnie skopiuj w tej konfiguracji kompilacji. Upewnij się, że Biblioteka kliencka została uwzględniona w `dependencies`:
 
 ```kotlin
 plugins {
@@ -90,19 +90,19 @@ Utwórz folder dla przykładowej aplikacji. W katalogu roboczym Uruchom następu
 mkdir src/main/java
 ```
 
-Przejdź do nowego folderu i Utwórz plik o nazwie *BingCustomSearchSample. Java*. Otwórz go i Dodaj następujące `import` instrukcje:
+Przejdź do nowego folderu i Utwórz plik o nazwie *BingCustomSearchSample. Java*. Otwórz go i Dodaj następujące instrukcje `import`:
 
 
 [!code-java[import statements](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=imports)]
 
-Utwórz klasę o nazwie`BingCustomSearchSample`
+Utwórz klasę o nazwie `BingCustomSearchSample`
 
 ```java
 public class BingCustomSearchSample {
 }
 ```
 
-W klasie Utwórz `main` metodę i zmienne dla punktu końcowego i klucza usługi Azure Resource. Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, Zamknij i Otwórz ponownie edytor, środowisko IDE lub powłokę, na której jest uruchomiona, aby uzyskać dostęp do zmiennej. Metody zostaną zdefiniowane później.
+W klasie Utwórz metodę `main` i zmienne dla punktu końcowego i klucza usługi Azure Resource. Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, Zamknij i Otwórz ponownie edytor, środowisko IDE lub powłokę, na której jest uruchomiona, aby uzyskać dostęp do zmiennej. Metody zostaną zdefiniowane później.
 
 [!code-java[main method](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=main)]
 
@@ -129,7 +129,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>Pobierz wyniki wyszukiwania z niestandardowego wystąpienia wyszukiwania
 
-Użyj funkcji [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta, aby wysłać zapytanie wyszukiwania do wystąpienia niestandardowego. Ustaw wartość `1`na identyfikator konfiguracji niestandardowej lub wartość domyślną. `withCustomConfig` Po otrzymaniu odpowiedzi z interfejsu API Sprawdź, czy nie znaleziono żadnych wyników wyszukiwania. Jeśli tak, Pobierz pierwszy wynik wyszukiwania przez wywołanie `webPages().value().get()` funkcji odpowiedzi i wydrukowanie nazwy wyniku oraz adresu URL. 
+Użyj funkcji [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta, aby wysłać zapytanie wyszukiwania do wystąpienia niestandardowego. Ustaw `withCustomConfig` na identyfikator konfiguracji niestandardowej lub wartość domyślną, aby `1`. Po otrzymaniu odpowiedzi z interfejsu API Sprawdź, czy nie znaleziono żadnych wyników wyszukiwania. Jeśli tak, Pobierz pierwszy wynik wyszukiwania, wywołując funkcję `webPages().value().get()` odpowiedzi i wypisujemy nazwę wyniku oraz adres URL. 
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 
@@ -141,7 +141,7 @@ Utwórz aplikację za pomocą następującego polecenia w katalogu głównym pro
 gradle build
 ```
 
-Uruchom aplikację z `run` celem:
+Uruchom aplikację z celem `run`:
 
 ```console
 gradle run
@@ -154,7 +154,7 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 * [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Interfejs wiersza polecenia platformy Azure](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji internetowej z funkcją wyszukiwania niestandardowego](./tutorials/custom-search-web-page.md)
