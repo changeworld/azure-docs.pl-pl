@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 7baa3e2de00997496edb5b445f8426d899ac65a4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ed86a286051ba9240fe23951ef7cb72de1e96201
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383721"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74960574"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Szybki start: tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision SDK dla platformy .NET
 
-Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatwiej rozpocząć tworzenie modeli wykrywania obiektów za pomocą zestawu Custom Vision SDK i języka C#. Po jego utworzeniu możesz dodać oznaczone regiony, przesłać obrazy, wyszkoiić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania i użyć tego punktu końcowego do programowego przetestowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji platformy .NET. 
+W tym artykule pokazano, jak rozpocząć pracę z zestawem SDK Custom Vision C# w programie w celu utworzenia modelu wykrywania obiektów. Po jego utworzeniu możesz dodać oznaczone regiony, przesłać obrazy, wyszkolić projekt, uzyskać adres URL domyślnego punktu końcowego przewidywania i użyć tego punktu końcowego do programowego przetestowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji platformy .NET. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +33,7 @@ W celu napisania aplikacji .NET używającej usługi Custom Vision będą potrze
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-Sklonuj lub pobierz projekt [Cognitive Services .NET Samples](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples) (Przykłady dotyczące platformy .NET dla usług Cognitive Services). Przejdź do folderu **CustomVision/ObjectDetection** i otwórz plik _ObjectDetection.csproj_ w programie Visual Studio.
+Sklonuj lub pobierz projekt [Cognitive Services .NET Samples (Przykłady dotyczące platformy .NET dla usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples). Przejdź do folderu **CustomVision/ObjectDetection** i otwórz plik _ObjectDetection.csproj_ w programie Visual Studio.
 
 Ten projekt programu Visual Studio tworzy nowy projekt Custom Vision o nazwie __My New Project__, który będzie dostępny za pośrednictwem [witryny internetowej Custom Vision](https://customvision.ai/). Następnie przekazuje obrazy do szkolenia i testowania modelu wykrywania obiektów. W tym projekcie model jest szkolony do wykrywania widelców i nożyczek na obrazach.
 
@@ -41,7 +41,7 @@ Ten projekt programu Visual Studio tworzy nowy projekt Custom Vision o nazwie __
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Otwórz plik _Program.cs_ i przejrzyj kod. [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla kluczy szkoleń i prognoz o nazwach odpowiednio `CUSTOM_VISION_TRAINING_KEY` i `CUSTOM_VISION_PREDICTION_KEY`. Skrypt będzie wyglądał w ten sposób.
+Otwórz plik _Program.cs_ i przejrzyj kod. [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla kluczy szkoleń i prognoz o nazwach odpowiednio `CUSTOM_VISION_TRAINING_KEY` i `CUSTOM_VISION_PREDICTION_KEY`. Skrypt będzie wyglądał na te zmienne.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_keys)]
 
@@ -70,7 +70,7 @@ Następnie to mapowanie skojarzeń jest używane, aby przekazać każdy przykła
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_upload)]
 
-W tym momencie wszystkie przykładowe obrazy zostały przekazane, a każdy z nich ma tag (**widelec** lub **nożyczki**) i skojarzony prostokąt pikseli dla tego tagu.
+W tym momencie zostały przekazane wszystkie obrazy próbek i otagowane każde z nich (**rozwidlenie** lub **nożyczki**) za pomocą skojarzonego prostokąta pikseli.
 
 ### <a name="train-the-project"></a>Szkolenie projektu
 
@@ -114,7 +114,7 @@ Możesz następnie sprawdzić, czy obraz testowy (znajdujący się w folderze **
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz wiesz, jak można zrealizować w kodzie poszczególne kroki procesu wykrywania obiektów. W tym przykładzie jest wykonywana jedna iteracja szkolenia, ale często trzeba szkolić i testować model wiele razy, aby zwiększyć jego dokładność. Następny przewodnik dotyczy klasyfikacji obrazów. Jej zasady są podobne do wykrywania obiektów.
+Teraz wiesz, jak wykonać każdy krok procesu wykrywania obiektów w kodzie. Ten przykład wykonuje pojedynczą iterację szkoleniową, ale często należy przeprowadzić uczenie i testowanie modelu wiele razy, aby zwiększyć jego dokładność. Następny przewodnik dotyczy klasyfikacji obrazów. Jej zasady są podobne do wykrywania obiektów.
 
 > [!div class="nextstepaction"]
 > [Testowanie i ponowne szkolenie modelu](test-your-model.md)

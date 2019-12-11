@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 6d13ca5b3657f1deac9e6b4218decf8fe57eb1d9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a227c5d0edfb9b49e70452cfcfd08b29ba381857
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113743"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969110"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
@@ -26,7 +26,7 @@ Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publ
 
 Podczas tworzenia **lokalizatora przesyłania strumieniowego**należy określić nazwę **zasobu** i nazwę **zasad przesyłania strumieniowego** . Aby uzyskać więcej informacji, zobacz następujące tematy:
 
-* [Zasoby](assets-concept.md)
+* [Elementy zawartości](assets-concept.md)
 * [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
 * [Zasady kluczy zawartości](content-key-policy-concept.md)
 
@@ -56,7 +56,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-### <a name="encrypted"></a>Zaszyfrowane 
+### <a name="encrypted"></a>Szyfrowane 
 
 Jeśli zachodzi potrzeba zaszyfrowania zawartości przy użyciu szyfrowania CENC, ustaw zasady na "Predefined_MultiDrmCencStreaming". Szyfrowanie Widevine zostanie zastosowane do strumienia PAUZ i oprogramowania PlayReady do wygładzania. Klucz zostanie dostarczony do klienta odtwarzania na podstawie skonfigurowanych licencji DRM.
 
@@ -75,6 +75,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 Jeśli chcesz również zaszyfrować strumień HLS za pomocą CBCS (FairPlay), użyj "Predefined_MultiDrmStreaming".
 
+> [!NOTE]
+> Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+
 ## <a name="associate-filters-with-streaming-locators"></a>Skojarz filtry z lokalizatorami przesyłania strumieniowego
 
 Zobacz [filtry: Skojarz z lokalizatorami przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator).
@@ -87,17 +90,17 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Media Services](ent
 
 Aby uzyskać lokalizatory przesyłania strumieniowego na podstawie nazwy skojarzonego elementu zawartości, należy wykonać następujące operacje:
 
-|Język|Interfejs API|
+|Język|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|Interfejs wiersza polecenia|[AZ AMS Asset list-remisjeers-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|Interfejs CLI|[AZ AMS Asset list-remisjeers-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/java/api/com.microsoft.azure.management.mediaservices.v2018_07_01.assetstreaminglocator?view=azure-java-stable)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
 ## <a name="also-see"></a>Zobacz też
 
-* [Zasoby](assets-concept.md)
+* [Elementy zawartości](assets-concept.md)
 * [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
 * [Zasady kluczy zawartości](content-key-policy-concept.md)
 

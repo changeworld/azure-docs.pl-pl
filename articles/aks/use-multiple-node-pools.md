@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c48bcab0a3d009b186832a6b728597f03788a7cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382985"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996735"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarz�
 * Nie można dodać ani usunąć pul węzłów przy użyciu istniejącego szablonu Menedżer zasobów, tak jak w przypadku większości operacji. Zamiast tego należy [użyć oddzielnego szablonu Menedżer zasobów](#manage-node-pools-using-a-resource-manager-template) , aby wprowadzić zmiany pul węzłów w klastrze AKS.
 * Nazwa puli węzłów może zawierać tylko małe znaki alfanumeryczne i musi zaczynać się małą literą. W przypadku pul węzłów systemu Linux długość musi należeć do zakresu od 1 do 12 znaków, długość musi mieć od 1 do 6 znaków.
 * Klaster AKS może mieć maksymalnie osiem pul węzłów.
-* Klaster AKS może mieć maksymalnie 400 węzłów w ramach tych ośmiu pul węzłów.
+* Klaster AKS może mieć maksymalnie 800 węzłów w ramach tych ośmiu pul węzłów.
 * Wszystkie pule węzłów muszą znajdować się w tej samej podsieci.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS

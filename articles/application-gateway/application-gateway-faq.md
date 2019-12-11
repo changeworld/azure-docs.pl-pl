@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130584"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996667"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -22,7 +22,7 @@ Poniżej znajdują się często zadawane pytania dotyczące usługi Azure Applic
 
 ## <a name="general"></a>Ogólne
 
-### <a name="what-is-application-gateway"></a>Co to jest usługa Application Gateway?
+### <a name="what-is-application-gateway"></a>Co to jest Application Gateway
 
 Usługa Azure Application Gateway udostępnia kontroler dostarczania aplikacji (ADC) jako usługę. Oferuje różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Ta usługa jest wysoce dostępna, skalowalna i w pełni zarządzana przez platformę Azure.
 
@@ -128,13 +128,13 @@ Nie. Wystąpienia są dystrybuowane w domenach uaktualnień i domenach błędów
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Czy Application Gateway obsługuje opróżnianie połączenia?
 
-Tak. Można skonfigurować opróżnianie połączenia w celu zmiany elementów członkowskich w puli zaplecza bez zakłóceń. Ta konfiguracja umożliwia dalsze wysyłanie istniejących połączeń do ich poprzedniego miejsca docelowego do momentu zamknięcia tego połączenia lub upływu limitu czasu, który zostanie skonfigurowany. Opróżnianie połączenia czeka na zakończenie tylko bieżących połączeń w locie. Application Gateway nie ma informacji o stanie sesji aplikacji.
+Tak. Można skonfigurować opróżnianie połączenia w celu zmiany elementów członkowskich w puli zaplecza bez zakłóceń. Aby uzyskać więcej informacji, zobacz [sekcję opróżniania połączeń Application Gateway](overview.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Czy mogę zmienić rozmiar wystąpienia z średniego na duży bez zakłóceń?
 
 Tak. Platforma Azure dystrybuuje wystąpienia między domenami aktualizacji i błędów, aby upewnić się, że wystąpienia nie powiodą się w tym samym czasie. Application Gateway obsługuje skalowanie przez dodanie wielu wystąpień tej samej bramy w celu udostępnienia obciążenia.
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Czy Application Gateway jest zawsze wdrożona w sieci wirtualnej?
 

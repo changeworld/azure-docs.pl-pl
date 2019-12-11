@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: b318d4b5076ff24612d5b5ce0ba619f0b38ac280
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483846"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997330"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Przegląd możliwości zabezpieczeń Azure SQL Database
 
@@ -46,7 +46,7 @@ Reguły zapory adresów IP umożliwiają dostęp do baz danych na podstawie źr�
 > [!IMPORTANT]
 > Zarządzanie bazami danych i serwerami baz danych na platformie Azure jest kontrolowane przez przypisania roli konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [Kontrola dostępu oparta na rolach w Azure Portal](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 Uwierzytelnianie to proces potwierdzania tożsamości użytkownika. Azure SQL Database obsługuje dwa typy uwierzytelniania:
 
@@ -71,7 +71,7 @@ Autoryzacja odnosi się do uprawnień przypisanych do użytkownika w ramach Azur
 
 Najlepszym rozwiązaniem jest utworzenie ról niestandardowych w razie konieczności. Dodaj użytkowników do roli o najniższych uprawnieniach wymaganych do wykonania funkcji zadań. Nie należy przypisywać uprawnień bezpośrednio do użytkowników. Konto administratora serwera jest członkiem wbudowanej roli db_owner, która ma rozległe uprawnienia i powinno być udzielane tylko kilku użytkownikom z zadaniami administracyjnymi. W przypadku aplikacji Azure SQL Database Użyj funkcji [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) , aby określić kontekst wykonywania wywołanego modułu, lub Użyj [ról aplikacji](/sql/relational-databases/security/authentication-access/application-roles) z ograniczonymi uprawnieniami. Dzięki temu aplikacja, która łączy się z bazą danych, ma najniższe uprawnienia wymagane przez aplikację. Poniższe najlepsze rozwiązania wspierają także Rozdzielenie obowiązków.
 
-### <a name="row-level-security"></a>Zabezpieczenia na poziomie wiersza
+### <a name="row-level-security"></a>Zabezpieczenia na poziomie wierszy
 
 Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu do wierszy w tabeli bazy danych na podstawie właściwości użytkownika wykonującego zapytanie (na przykład przynależności do grupy lub kontekstu wykonania). Zabezpieczenia na poziomie wiersza mogą również służyć do implementowania niestandardowych koncepcji zabezpieczeń opartych na etykietach. Aby uzyskać więcej informacji, zobacz [Zabezpieczenia na poziomie wierszy](/sql/relational-databases/security/row-level-security).
 
@@ -138,11 +138,11 @@ SQL Database Dynamiczne maskowanie danych ogranicza narażenie na dane poufne pr
 
 ### <a name="data-discovery--classification"></a>Odnajdowanie i klasyfikacja danych
 
-Klasyfikacja & odnajdywania danych (obecnie w wersji zapoznawczej) oferuje zaawansowane funkcje wbudowane w Azure SQL Database do odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Odkrywanie i klasyfikowanie najbardziej poufnych danych (Biznes/Finanse, opieka, dane osobowe itp.) może odgrywać rolę przestawną w usłudze Information Protection schemacie. Może to być infrastruktura dla:
+Klasyfikacja & odnajdywania danych (obecnie w wersji zapoznawczej) oferuje zaawansowane funkcje wbudowane w Azure SQL Database do odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Odkrywanie i klasyfikowanie najbardziej poufnych danych (Biznes/Finanse, opieka, dane osobowe itp.) może odgrywać rolę przestawną w usłudze Information Protection schemacie. Może to stanowić infrastrukturę dla następujących działań:
 
 - Różne scenariusze zabezpieczeń, takie jak monitorowanie (inspekcja) i alerty dotyczące nietypowego dostępu do poufnych danych.
 - Kontrolowanie dostępu do i ograniczanie bezpieczeństwa baz danych zawierających wysoce poufne dane.
-- Pomóc spełnić standardy prywatności danych i wymagania dotyczące zgodności z przepisami.
+- Pomoc przy spełnianiu standardów dotyczących prywatności danych i wymagań dotyczących zgodności z przepisami.
 
 Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z odnajdywaniem danych & Klasyfikacja](sql-database-data-discovery-and-classification.md).
 

@@ -9,13 +9,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
-ms.openlocfilehash: d0734763ca1dd5ab3162ca00748361bee29cefc1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/05/2019
+ms.openlocfilehash: 986dbc48bae6cd133e74648ad6e900ba7e515f91
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378738"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970503"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Szybki Start: Tworzenie projektu wykrywania obiektów przy użyciu zestawu Custom Vision go SDK
 
@@ -111,7 +111,7 @@ scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of sciss
 
 Oznaczając tagami obrazy w projektach wykrywania obiektów, należy określić region każdego otagowanego obiektu za pomocą znormalizowanych współrzędnych.
 
-Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. Uwaga: w tym samouczku regiony są zapisane przy użyciu stałych w kodzie. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość.
+Aby dodać obrazy, tagi i regiony do projektu, wstaw następujący kod po utworzeniu tagów. Należy pamiętać, że w tym samouczku regiony są zakodowane wewnętrznie. Regiony określają pole ograniczenia w znormalizowanych współrzędnych, które podaje się w kolejności: lewa krawędź, górna krawędź, szerokość, wysokość.
 
 ```Go
 forkImageRegions := map[string][4]float64{
@@ -163,7 +163,7 @@ scissorsImageRegions := map[string][4]float64{
 Następnie użyj tej mapy skojarzeń, aby przekazać każdy przykładowy obraz ze współrzędnymi region (możesz przekazać do 64 obrazów w jednej partii). Dodaj następujący kod.
 
 > [!NOTE]
-> Należy zmienić ścieżkę do obrazów zależnie od tego, dokąd został wcześniej pobrany projekt z przykładami dotyczącymi zestawu SDK dla języka Go dla usług Cognitive Services.
+> Należy zmienić ścieżkę do obrazów, zależnie od tego, gdzie został wcześniej pobrany projekt z przykładami dotyczącymi zestawu SDK dla języka Go dla usług Cognitive Services.
 
 ```Go
 // Go through the data table above and create the images

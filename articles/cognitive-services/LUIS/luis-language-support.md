@@ -1,7 +1,7 @@
 ---
 title: Obsługa języków — LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS ma wiele funkcji w ramach usługi. Nie wszystkie funkcje mają taką samą parzystość języka. Upewnij się, że interesujące Cię funkcje są obsługiwane w kulturze języka, w której jesteś docelowym. Aplikacja LUIS jest specyficzna dla kultury i nie można jej zmienić po jej ustawieniu.
+description: Usługa LUIS ma wiele funkcji w ramach usługi. Nie wszystkie funkcje są w tej samej parzystości języka. Upewnij się, że funkcje, których jesteś zainteresowany są obsługiwane w kulturze języka, które są przeznaczone dla. Aplikacją usługi LUIS jest specyficzne dla kultury i nie można zmienić po jej ustawieniu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,81 +9,83 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 83fd06078500be7b5bd58e9ea92d957f9d77f892
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904220"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970546"
 ---
-# <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu w programie LUIS
+# <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
 
-LUIS ma wiele funkcji w ramach usługi. Nie wszystkie funkcje mają taką samą parzystość języka. Upewnij się, że interesujące Cię funkcje są obsługiwane w kulturze języka, w której jesteś docelowym. Aplikacja LUIS jest specyficzna dla kultury i nie można jej zmienić po jej ustawieniu.
+Usługa LUIS ma wiele funkcji w ramach usługi. Nie wszystkie funkcje są w tej samej parzystości języka. Upewnij się, że funkcje, których jesteś zainteresowany są obsługiwane w kulturze języka, które są przeznaczone dla. Aplikacją usługi LUIS jest specyficzne dla kultury i nie można zmienić po jej ustawieniu.
 
-## <a name="multi-language-luis-apps"></a>Aplikacje LUIS z obsługą wielu języków
+## <a name="multi-language-luis-apps"></a>Usługa LUIS wielojęzycznych aplikacji
 
-Jeśli potrzebujesz LUIS aplikacji klienckiej z obsługą wielu języków, takiej jak chatbot, masz kilka opcji. Jeśli LUIS obsługuje wszystkie języki, tworzysz aplikację LUIS dla każdego języka. Każda aplikacja LUIS ma unikatowy identyfikator aplikacji i dziennik punktów końcowych. Jeśli musisz zapewnić zrozumienie języka dla LUIS języka nie obsługuje, możesz użyć [interfejsu API usługi Microsoft Translator](../Translator/translator-info-overview.md) , aby przetłumaczyć wypowiedź w obsługiwany język, przesłać wypowiedź do punktu końcowego Luis i otrzymać wynikowe wyniki.
+Jeśli potrzebujesz aplikacji klienckiej usługi LUIS wielu języków, takich jak czatbota, masz kilka opcji. Jeśli usługa LUIS obsługuje wszystkie języki, możesz tworzyć aplikacją usługi LUIS dla każdego języka. Każda aplikacja usługi LUIS ma identyfikator unikatowy aplikacji i punkt końcowy dziennika. Jeśli konieczne jest zapewnienie zrozumienia dla języka nie obsługuje usługi LUIS, można użyć języka [interfejsu API usługi Microsoft Translator](../Translator/translator-info-overview.md) tłumaczenie wypowiedź w obsługiwanym języku, Prześlij wypowiedź do punktu końcowego usługi LUIS i odbierania Wynikowy wyniki.
 
 ## <a name="languages-supported"></a>Obsługiwane języki
 
-LUIS rozumie wyrażenia długości w następujących językach:
+Usługa LUIS rozumie wypowiedzi w następujących językach:
 
-| Język |Ustawienia regionalne  |  Preskompilowana domena | Wstępnie utworzona jednostka | Zalecenia dotyczące listy fraz | [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) **<br>(Tonacji i<br>Służąc|
+| Język |Ustawienia regionalne  |  Wstępnie utworzone domeny | Wstępnie utworzone jednostki | Zalecenia dotyczące listy fraz | **[Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Tonacji i<br>Słowa kluczowe)|
 |--|--|:--:|:--:|:--:|:--:|
-| Angielski (amerykański) |`en-US` | ✔ | ✔  |✔|✔|
-| *[chiński](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
+| Angielski |`en-US` | ✔ | ✔  |✔|✔|
+| Arabski (wersja zapoznawcza — nowoczesny Standard arabski) |`ar-AR`|-|-|-|-|
+| *[Chiński](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Holenderski |`nl-NL` |✔|  -   |-|✔|
 | Francuski (Francja) |`fr-FR` |✔| ✔ |✔ |✔|
 | Francuski (Kanada) |`fr-CA` |-|   -   |-|✔|
-| Niemiecki |`de-DE` |✔| ✔ |✔ |✔|
+| niemiecki |`de-DE` |✔| ✔ |✔ |✔|
 | Hindi | `hi-IN`|-|-|-|-|
 | Włoski |`it-IT` |✔| ✔ |✔|✔|
-| *[japoński](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Tylko fraza klucza|
-| Koreański |`ko-KR` |✔|   -   |-|Tylko fraza klucza|
-| Portugalski (Brazylia) |`pt-BR` |✔| ✔ |✔ |nie wszystkie hodowle podrzędne|
+| *[Japoński](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Tylko frazy kluczowe|
+| Koreański |`ko-KR` |✔|   -   |-|Tylko frazy kluczowe|
+| Portugalski (Brazylia) |`pt-BR` |✔| ✔ |✔ |nie wszystkie podrzędne kultur|
 | Hiszpański (Hiszpania) |`es-ES` |✔| ✔ |✔|✔|
 | Hiszpański (Meksyk)|`es-MX` |-|  -   |✔|✔|
 | Turecki | `tr-TR` |✔|-|-|Tylko tonacji|
 
-Obsługa języków jest różna w przypadku [wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md) i [prekompilowanych domen](luis-reference-prebuilt-domains.md).
+Obsługa języka jest różny dla [ze wstępnie utworzonych jednostek](luis-reference-prebuilt-entities.md) i [ze wstępnie utworzonych domen](luis-reference-prebuilt-domains.md).
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
-### <a name="japanese-support-notes"></a>\* Uwagi dotyczące pomocy technicznej dla języka japońskiego
+### <a name="japanese-support-notes"></a>\* Informacje o pomocy technicznej japoński
 
- - Ponieważ LUIS nie zapewnia analizy składni i nie będzie zrozumieć różnicy między Keigo i nieformalnym japońskim, należy dołączyć różne poziomy formalne, jak przykłady szkolenia dla aplikacji.
+ - LUIS nie zapewnia analizy składni i nie będzie zrozumieć różnicę między Keigo i japoński nieformalnej, dlatego należy zastosować różne poziomy formalności jako przykłady szkolenia dla aplikacji.
      - でございます nie jest taka sama jak です.
      - です nie jest taka sama jak だ.
 
 [!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
-### <a name="speech-api-supported-languages"></a>Obsługiwane języki Speech API
-Zobacz [języki obsługiwane](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) przez mowę dla języków trybu dyktowania mowy.
+### <a name="speech-api-supported-languages"></a>Języki obsługiwane interfejsu API mowy
+Zobacz mowy [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) dla języków tryb dyktowania mowy.
 
-### <a name="bing-spell-check-supported-languages"></a>Obsługiwane języki sprawdzanie pisowni Bing
-Zapoznaj się z listą obsługiwanych języków i Stanów w sprawdzanie pisowni Bing [obsługiwanych językach](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) .
+### <a name="bing-spell-check-supported-languages"></a>Sprawdzanie pisowni Bing obsługiwane języki
+Zobacz, sprawdzanie pisowni Bing [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) Aby uzyskać listę obsługiwanych języków i stan.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Rzadkie lub obce słowa w aplikacji
-W `en-us` kulturze LUIS uczy się, jak odróżnić większość wyrazów w języku angielskim, w tym żargonu. W `zh-cn` kulturze LUIS się, aby odróżnić znaki chińskie. Jeśli używasz rzadki wyrazu w `en-us` lub znaku w `zh-cn`i zobaczysz, że LUIS nie można odróżnić tego wyrazu lub znaku, możesz dodać ten wyraz lub znak do [funkcji listy fraz](luis-how-to-add-features.md). Na przykład słowa poza kulturą aplikacji — czyli słowa obce — należy dodać do funkcji listy fraz. 
+W `en-us` kultury, uzyskuje informacje o odróżnić najbardziej wyrazami, w tym żargonu usługi LUIS. W `zh-cn` kultury, uzyskuje informacje o odróżnić większości znaków chińskich usługi LUIS. Jeśli używasz rzadkich wyrazu w `en-us` lub znaków w pliku `zh-cn`, zobaczyć LUIS jest prawdopodobnie do odróżnienia tego wyrazu lub znaków, Dodaj ten wyraz lub znak do [funkcji listy fraz](luis-how-to-add-features.md). Na przykład słowa poza kulturę aplikacji — czyli obce słowa — należy dodać do funkcji listy fraz.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
 ### <a name="hybrid-languages"></a>Języki hybrydowe
-Języki hybrydowe łączą wyrazy z dwóch kultur, takich jak angielski i chiński. Te języki nie są obsługiwane w programie LUIS, ponieważ aplikacja jest oparta na pojedynczej kulturze.
+Języki hybrydowego łączyć wyrazów dwie kultury, takie jak angielski i chińskim. Te języki nie są obsługiwane usługi LUIS, ponieważ aplikacja jest oparta na jednej kulturze.
 
 ## <a name="tokenization"></a>Tokenizacji
-Aby wykonać Uczenie maszynowe, LUIS dzieli wypowiedź na [tokeny](luis-glossary.md#token) na podstawie kultury.
+Do przeprowadzenia uczenia maszynowego, usługa LUIS dzieli wypowiedź na [tokenów](luis-glossary.md#token) na podstawie kultury.
 
-|Język|  wszystkie spacje lub znaki specjalne | poziom znaku|wyrazy złożone|[zwrócono token jednostki](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Język|  Każdy spacji lub znaku specjalnego | poziom znaków|wyrazy złożone|[Jednostka tokenami zwracana](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
+|Arabski|||||
 |Chiński||✔||✔|
 |Holenderski|||✔|✔|
 |Angielski (en-us)|✔ ||||
 |Francuski (fr-FR)|✔||||
 |Francuski (fr-CA)|✔||||
-|Niemiecki|||✔|✔|
+|niemiecki|||✔|✔|
 | Hindi |✔|-|-|-|-|
 |Włoski|✔||||
 |Japoński||||✔|
@@ -98,14 +100,14 @@ Następujące kultury mają niestandardowe wersje tokenizatora:
 
 |Kultura|Wersja|Przeznaczenie|
 |--|--|--|
-|Niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je za pomocą tokenizatora opartych na uczeniu maszynowym, które próbują podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, zostanie `Ich fahre einen kranken wagen`. Zezwalanie na oznaczanie `kranken` i `wagen` niezależnie jako różne jednostki.|
-|Niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na spacje.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. W ten sposób `krankenwagen` jest oznaczona jako pojedyncza jednostka. |
+|niemiecki<br>`de-de`|1.0.0|Tokenizes wyrazy, dzieląc je za pomocą tokenizatora opartych na uczeniu maszynowym, które próbują podzielić wyrazy złożone na ich pojedyncze składniki.<br>Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, zostanie `Ich fahre einen kranken wagen`. Zezwalanie na oznaczanie `kranken` i `wagen` niezależnie jako różne jednostki.|
+|niemiecki<br>`de-de`|1.0.2|Tokenizes wyrazy, dzieląc je na spacje.<br> Jeśli użytkownik wprowadzi `Ich fahre einen krankenwagen` jako wypowiedź, pozostaje pojedynczym tokenem. W ten sposób `krankenwagen` jest oznaczona jako pojedyncza jednostka. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrowanie między wersjami tokenizatora
 <!--
-Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
-Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`.
 
 ```JSON
 {
@@ -154,7 +156,7 @@ Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`.
 }
 ```
 
-Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`.
 
 ```JSON
 {
@@ -204,6 +206,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-Tokenizacji odbywa się na poziomie aplikacji. Nie ma obsługi tokenizacji poziomu wersji. 
+Tokenizacji odbywa się na poziomie aplikacji. Nie ma obsługi tokenizacji poziomu wersji.
 
-[Zaimportuj plik jako nową aplikację](luis-how-to-start-new-app.md)zamiast wersji. Ta akcja oznacza, że nowa aplikacja ma inny identyfikator aplikacji, ale używa wersji tokenizatora określonej w pliku. 
+[Zaimportuj plik jako nową aplikację](luis-how-to-start-new-app.md)zamiast wersji. Ta akcja oznacza, że nowa aplikacja ma inny identyfikator aplikacji, ale używa wersji tokenizatora określonej w pliku.

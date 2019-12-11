@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 6a626c2e27bf26ed98dd3244c52671a4dfa4aa76
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2ea49eaf6fd48207996a92a997f15e5db3d3b199
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "73519377"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961084"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Szybki start: tworzenie projektu klasyfikacji obrazów przy użyciu zestawu Custom Vision SDK dla języka Python
 
-Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatwiej rozpocząć tworzenie modeli klasyfikacji obrazów za pomocą zestawu Custom Vision SDK i języka Python. Po jego utworzeniu można dodawać Tagi, przekazywać obrazy, uczenie projektu, uzyskać opublikowany adres punktu końcowego prognozowanego projektu i używać punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji języka Python. Jeśli chcesz przejść przez proces tworzenia i używania modelu klasyfikacji _bez_ kodu, zobacz zamiast tego [wskazówki dotyczące przeglądarki](getting-started-build-a-classifier.md).
+W tym artykule pokazano, jak rozpocząć pracę z zestawem SDK Custom Vision przy użyciu języka Python w celu utworzenia modelu klasyfikacji obrazów. Po jego utworzeniu można dodawać Tagi, przekazywać obrazy, uczenie projektu, uzyskać opublikowany adres punktu końcowego prognozowanego projektu i używać punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji języka Python. Jeśli chcesz przejść przez proces tworzenia i używania modelu klasyfikacji _bez_ kodu, zobacz zamiast tego [wskazówki dotyczące przeglądarki](getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
