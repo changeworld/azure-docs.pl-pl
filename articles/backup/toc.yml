@@ -56,6 +56,8 @@
           href: backup-support-matrix-mars-agent.md
         - name: Tabela obsługi kopii zapasowych platformy SAP HANA
           href: sap-hana-backup-support-matrix.md
+        - name: Obsługiwane jednostki SKU maszyny wirtualnej dla usługi Azure Policy
+          href: backup-azure-policy-supported-skus.md
     - name: Bezpieczeństwo
       items:
         - name: Kontrola dostępu oparta na rolach
@@ -174,6 +176,10 @@
               href: backup-azure-vms-encryption.md
             - name: Przywracanie kluczy i wpisów tajnych dla szyfrowanych maszyn wirtualnych
               href: backup-azure-restore-key-secret.md
+    - name: Wbudowana usługa Azure Policy dla usługi Azure Backup
+      items:
+        - name: Automatyczne włączanie kopii zapasowych podczas tworzenia maszyny wirtualnej za pomocą usługi Azure Policy
+          href: backup-azure-auto-enable-backup.md
     - name: Zdarzenia diagnostyki dla magazynów usługi Recovery Services
       items:
         - name: Używanie ustawień diagnostyki dla magazynów usługi Recovery Services
