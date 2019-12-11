@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075318"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966286"
 ---
 # <a name="what-is-conditional-access"></a>Co to jest dostęp warunkowy?
 
@@ -26,7 +26,7 @@ Dostęp warunkowy jest narzędziem używanym przez Azure Active Directory do prz
 
 ![Koncepcyjny sygnał warunkowy i decyzja o konieczności uzyskania wymuszania](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Zasady dostępu warunkowego są najprostszą instrukcją If, jeśli użytkownik chce uzyskać dostęp do zasobu, a następnie musi wykonać akcję. Przykład: Menedżer listy płac chce uzyskać dostęp do aplikacji do obsługi płac i jest wymagany do przeprowadzenia uwierzytelniania wieloskładnikowego w celu uzyskania do niego dostępu.
+Zasady dostępu warunkowego są najprostszą instrukcją If, jeśli użytkownik chce uzyskać dostęp do zasobu, a następnie musi wykonać akcję. Przykład: Menedżer płac chce uzyskać dostęp do aplikacji do obsługi płac i jest wymagany do przeprowadzenia uwierzytelniania wieloskładnikowego w celu uzyskania do niego dostępu.
 
 Administratorzy mają dwie cele podstawowe:
 
@@ -61,7 +61,7 @@ Typowe sygnały, które mogą być wykonywane przez dostęp warunkowy w przypadk
 
 - Blokuj dostęp
    - Najbardziej restrykcyjna decyzja
-- Przyznaj dostęp
+- Udzielanie dostępu
    - Najmniej restrykcyjna decyzja może nadal wymagać co najmniej jednej z następujących opcji:
       - Wymagaj uwierzytelniania wieloskładnikowego
       - Wymagaj, aby urządzenie było oznaczone jako zgodne
@@ -80,6 +80,13 @@ Wiele organizacji ma typowy dostęp do zasad dostępu warunkowego, takich jak:
 - Blokowanie lub udzielanie dostępu z określonych lokalizacji
 - Blokowanie ryzykownych zachowań logowania
 - Wymaganie urządzeń zarządzanych przez organizację dla określonych aplikacji
+
+## <a name="customer-case-studies"></a>Analizy przypadków klientów
+
+Dowiedz się, w jaki sposób inne organizacje używają dostępu warunkowego usługi Azure AD, aby definiować i implementować zautomatyzowane decyzje dotyczące kontroli dostępu. Poniższe proponowane historie pokazują, jak są spełnione te wymagania klientów.
+
+* [Wipro dyski przenośne z narzędziami zabezpieczeń w chmurze firmy Microsoft, aby usprawnić zaangażowanie klientów.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Zasady dostępu warunkowego w usłudze Azure AD umożliwiły firmie udostępnianie dokumentów, zasobów i aplikacji zaufanym podmiotom zewnętrznym---, którzy mogą korzystać z własnych poświadczeń---przy zachowaniu kontroli nad własnymi danymi firmowymi.
+* Usługa [Aramex Delivery Limited — globalna i transportowa firmy tworzy biuro połączone z chmurą z rozwiązaniem do zarządzania tożsamościami i dostępem](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Zapewnienie bezpiecznego dostępu było szczególnie trudne dzięki zdalnym pracownikom Aramex. Firma stosuje teraz dostęp warunkowy, aby umożliwić tym pracownikom zdalnym dostęp do swoich aplikacji SaaS spoza sieci. Reguła dostępu warunkowego decyduje, czy wymusić Multi-Factor Authentication, dając tylko właściwym osobom prawo dostępu.
 
 ## <a name="license-requirements"></a>Wymagania licencyjne
 

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie interfejsu API sieci Web platformy .NET z usługą Azure AD na potrzeby uwierzytelniania i autoryzacji | Microsoft Docs
+title: Tworzenie interfejsu API sieci Web platformy .NET usługi Azure AD na potrzeby uwierzytelniania & autoryzacji | Microsoft Docs
 description: Dowiedz się, jak utworzyć internetowy interfejs API MVC platformy .NET, który integruje się z usługą Azure AD w celu uwierzytelniania i autoryzacji.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27af5d6782b0fe45df1a82e320c593b9a0f332cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: abc4c05aab6efcfc55d5e4dc812ab41a3e3fc8aa
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921062"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963277"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Przewodnik Szybki start: Tworzenie internetowego interfejsu API platformy .NET, który integruje się z usługą Azure AD w celu uwierzytelniania i autoryzacji
 

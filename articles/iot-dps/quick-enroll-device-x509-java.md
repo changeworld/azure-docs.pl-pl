@@ -1,6 +1,6 @@
 ---
 title: Rejestrowanie urządzeń X. 509 w usłudze Azure Device Provisioning przy użyciu języka Java
-description: W tym przewodniku Szybki start używane są zarówno rejestracje grupowe, jak i indywidualne. W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning przy użyciu języka Java.
+description: W tym przewodniku Szybki start używane są zarówno rejestracje grupowe, jak i indywidualne. W tym przewodniku szybki start nastąpi zarejestrowanie urządzeń X. 509 w usłudze Azure IoT Hub Device Provisioning Service (DPS) przy użyciu języka Java.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 983e410c6f6298c6b251fdc2a4aff5c677d26906
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 4be7dc3e93b61f036a4167347a45725eff185f04
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423054"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969715"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning przy użyciu języka Java
 
@@ -37,7 +37,7 @@ Mimo że zestaw SDK usługi Java działa zarówno na komputerach z systemami Win
     mvn --version
     ```
 
-* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
+* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
 
 
 <a id="javasample"></a>

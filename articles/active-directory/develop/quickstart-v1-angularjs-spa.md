@@ -1,6 +1,6 @@
 ---
-title: Kompilowanie AngularJS aplikacji jednostronicowej w celu logowania się i wylogowywania za pomocą usługi Azure AD | Microsoft Docs
-description: Dowiedz się, jak utworzyć aplikację jednostronicową AngularJS, która integruje się z usługą Azure AD w celu logowania oraz wywołuje interfejsy API chronione przez usługę Azure AD przy użyciu protokołu OAuth.
+title: Tworzenie aplikacji jednostronicowej usługi Azure AD AngularJS na potrzeby logowania & Wyloguj | Microsoft Docs
+description: Dowiedz się, jak utworzyć AngularJS aplikację jednostronicową, która integruje usługę Azure AD w celu logowania & & wywołują chronione interfejsy API usługi Azure AD przy użyciu protokołu OAuth.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e97c985d0a19842e4a514705e3e34665eeb499
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6e66b51199d19ea6af2b88c48aa89a93c1ed731c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921251"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963532"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Szybki start: tworzenie aplikacji jednostronicowej AngularJS służącej do logowania w usłudze Azure Active Directory i wylogowywania się z niej
 

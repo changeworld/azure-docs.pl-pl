@@ -1,5 +1,5 @@
 ---
-title: Aplikacja internetowa platformy Microsoft Identity w języku Python — Szybki Start | Azure
+title: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web platformy Microsoft Identity platform Python | Azure
 description: Dowiedz się, jak zaimplementować logowanie firmy Microsoft w aplikacji sieci Web w języku Python za pomocą OAuth2
 services: active-directory
 author: abhidnya13
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 0d6b96683a04fa5d2814246b3c22aa52956a8bbb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8a6e8dad7549b3656d4387cfad1d0c3a44b13975
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920518"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965980"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki Start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python
 

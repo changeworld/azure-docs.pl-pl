@@ -1,6 +1,6 @@
 ---
 title: Rejestrowanie urządzeń X. 509 w usłudze Azure Device Provisioning przy użyciu środowiska Node. js
-description: W tym przewodniku Szybki start używane są rejestracje grupowe. W ramach tego przewodnika Szybki start zarejestrujesz urządzenia X.509 w usłudze Azure IoT Hub Device Provisioning Service przy użyciu zestawu SDK środowiska Node.js
+description: W tym przewodniku Szybki start używane są rejestracje grupowe. W tym przewodniku szybki start nastąpi zarejestrowanie urządzeń X. 509 w usłudze Azure IoT Hub Device Provisioning Service (DPS) przy użyciu zestawu SDK usługi Node. js
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6056859cf1742fc4bda6056ad7c1c78059a8407a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 68f274fb50b883c6f252a78f97f31e49e72b135c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423234"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974712"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning Service przy użyciu środowiska Node.js
 
@@ -32,7 +32,7 @@ Mimo że kroki opisane w tym artykule działają zarówno na maszynach z systeme
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Zainstaluj [środowisko Node.js w wersji 4.0 lub nowszej](https://nodejs.org).
-- Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
+- [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
 
 
 ## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych

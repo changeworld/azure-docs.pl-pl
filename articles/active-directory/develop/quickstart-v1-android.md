@@ -1,5 +1,5 @@
 ---
-title: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z poziomu aplikacji systemu Android (wersja 1.0) | Microsoft Docs
+title: Użytkownicy logowania & wywoływania interfejsu API Microsoft Graph w systemie Android (v 1.0) | Azure
 description: Dowiedz się, jak logować użytkowników i wywoływać interfejs API Microsoft Graph z poziomu aplikacji systemu Android.
 services: active-directory
 author: rwike77
@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c7e9daed6ad1aab8498eb134d9e841486910e08
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 87dd60f00278389c1fc03d6fd69652608ae0c998
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921230"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966065"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app-v10"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji systemu Android (v 1.0)
 

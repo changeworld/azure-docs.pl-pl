@@ -1,15 +1,15 @@
 ---
 title: Użyj Visual Studio Code, aby nawiązać połączenie z usługą Azure łańcucha bloków
 description: Połącz się z siecią konsorcjum usługi Azure łańcucha bloków, korzystając z rozszerzenia Azure łańcucha bloków Development Kit w Visual Studio Code
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455988"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977085"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Szybki Start: używanie Visual Studio Code do nawiązywania połączenia z siecią Azure łańcucha bloków Service Consortium
 
@@ -59,12 +59,12 @@ Można nawiązać połączenie z członkami konsorcjum przy użyciu rozszerzenia
 Jeśli nie masz dostępu do elementu członkowskiego konsorcjum usługi Azure łańcucha bloków, Ukończ wymagania wstępne [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków przy użyciu Azure Portal](create-member.md) lub [szybkiego startu: Tworzenie elementu członkowskiego łańcucha bloków usługi Azure łańcucha bloków za pomocą interfejsu wiersza polecenia platformy Azure](create-member-cli.md).
 
 1. W okienku Eksploratora VS Code rozwiń rozszerzenie **Azure łańcucha bloków** .
-1. Wybierz pozycję **Połącz z konsorcjum**.
+1. Wybierz pozycję **Połącz z siecią**.
 
-   ![Nawiązywanie połączenia z konsorcjum](./media/connect-vscode/connect-consortium.png)
+   ![Połącz z siecią](./media/connect-vscode/connect-consortium.png)
 
     Jeśli zostanie wyświetlony monit o uwierzytelnienie platformy Azure, postępuj zgodnie z monitami, aby przeprowadzić uwierzytelnianie przy użyciu przeglądarki.
-1. Wybierz pozycję **Połącz z usługą Azure łańcucha bloków Service Consortium** na liście rozwijanej paleta poleceń.
+1. Wybierz pozycję **usługa Azure łańcucha bloków** na liście rozwijanej paleta poleceń.
 1. Wybierz subskrypcję i grupę zasobów skojarzoną z elementem członkowskim konsorcjum usługi Azure łańcucha bloków.
 1. Wybierz z listy swoją konsorcjum.
 

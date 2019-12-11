@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73999290"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973422"
 ---
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Tworzenie Azure Database for PostgreSQL-ze skalowaniem (Citus)
 
@@ -46,7 +46,7 @@ Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for Pos
    ![dodano](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png) IP klienta
 
    > [!NOTE]
-   > Serwer Azure PostgreSQL komunikuje się przez port 5432. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 5432 może być zablokowany przez zaporę sieciową. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 5432.
+   > Serwer Azure PostgreSQL komunikuje się przez port 5432. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 5432 może być zablokowany przez zaporę sieciową. W takim przypadku nie można nawiązać połączenia z klastrem Citus, chyba że dział IT otworzy port 5432.
    >
 
 9. Kliknij przycisk **Przegląd + Utwórz** , a następnie **Utwórz** , aby udostępnić serwer. Aprowizacja zajmuje kilka minut.
@@ -57,10 +57,10 @@ Wykonaj następujące kroki, aby utworzyć serwer usługi Azure Database for Pos
 
 Podczas tworzenia serwera Azure Database for PostgreSQL zostanie utworzona domyślna baza danych o nazwie **Citus** . Aby nawiązać połączenie z serwerem bazy danych, potrzebne są parametry połączenia i hasło administratora.
 
-1. Uzyskaj parametry połączenia. Na stronie Grupa serwerów kliknij element menu **Parametry połączenia** . (W **ustawieniach**). Znajdź ciąg oznaczony  **C++ (libpq)** . Będzie mieć postać:
+1. Uzyskaj parametry połączenia. Na stronie Grupa serwerów kliknij element menu **Parametry połączenia** . (W **ustawieniach**). Znajdź ciąg oznaczony jako **PSQL**. Będzie mieć postać:
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    Skopiuj ciąg. Należy zastąpić "{Twoje hasło\_}" wybranym wcześniej hasłem administracyjnym. System nie przechowuje hasła w postaci zwykłego tekstu i dlatego nie może wyświetlić go w parametrach połączenia.
@@ -69,7 +69,7 @@ Podczas tworzenia serwera Azure Database for PostgreSQL zostanie utworzona domy�
 
 3. W wierszu polecenia Połącz się z serwerem Azure Database for PostgreSQL za pomocą narzędzia [PSQL](https://www.postgresql.org/docs/current/app-psql.html) . Przekaż parametry połączenia w cudzysłowie, aby upewnić się, że zawiera hasło:
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    Na przykład następujące polecenie nawiązuje połączenie z węzłem koordynatora grupy serwerów **mydemoserver**:

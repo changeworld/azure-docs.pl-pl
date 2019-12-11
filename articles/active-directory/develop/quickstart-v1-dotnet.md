@@ -1,5 +1,5 @@
 ---
-title: Logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji .NET Desktop (WPF) | Microsoft Docs
+title: Użytkownicy logowania & wywoływania interfejsów API Microsoft Graph z poziomu programu .NET Desktop (WPF) | Azure
 description: Dowiedz się, jak utworzyć aplikację .NET Desktop (WPF), która integruje się z usługą Azure AD w celu logowania oraz wywołuje interfejsy API chronione przez usługę Azure AD przy użyciu protokołu OAuth 2.0.
 services: active-directory
 author: rwike77
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1629cae69116f71428ccb150afda0ba668146631
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0f1aca48c547fc8c298128b35d9c571512fcbdf8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920961"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965946"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji klasycznej platformy .NET (WPF)
 

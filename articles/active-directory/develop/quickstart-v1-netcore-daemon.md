@@ -1,6 +1,6 @@
 ---
-title: Uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z tożsamością aplikacji konsolowej (v 1.0) | Microsoft Docs
-description: Dowiedz się, jak utworzyć aplikację demona platformy .NET, która integruje się z usługą Azure AD wywołaniami interfejsów API chronionych usługi Azure AD przy użyciu protokołu OAuth 2,0
+title: Pobieranie tokenów & wywoływanie Microsoft Graph interfejsów API z aplikacji konsolowych (v 1.0) | Azure
+description: Tworzenie aplikacji demona .NET, która integruje się z usługą Azure AD & wywołuje chronione interfejsy API usługi Azure AD przy użyciu protokołu OAuth 2,0
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 384aa90fd4edb8f52224bdf2885208fde5789398
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2858a0b14863195ee0f56c89fe2c55c9e63873de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920892"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965929"
 ---
 # <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>Szybki Start: uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z tożsamością aplikacji konsolowej (v 1.0) 
 

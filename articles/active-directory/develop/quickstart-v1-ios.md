@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji dla systemu iOS zintegrowanej z usługą Azure AD w celu logowania przy użyciu protokołu OAuth 2,0 | Microsoft Docs
+title: Logowanie i Microsoft Graph Wywołaj z systemu iOS | Azure
 description: Dowiedz się, jak logować użytkowników i wywołać interfejs API programu Microsoft Graph z aplikacji systemu iOS.
 services: active-directory
 author: rwike77
@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c7064cff695b3aad9be69a7acbc07eb186201c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 055e954251654633bc948a98e0d5e33c9c8e11cb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920944"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963498"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app-v10"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji dla systemu iOS (v 1.0)
 
