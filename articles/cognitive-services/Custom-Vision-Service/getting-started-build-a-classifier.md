@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "73519151"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978683"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Szybki Start: jak utworzyć klasyfikator przy użyciu Custom Vision
 
@@ -47,7 +47,7 @@ W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https:
    > [!NOTE]
    > Jeśli grupa zasobów nie jest dostępna, upewnij się, że zalogowano się do [customvision.AI](https://customvision.ai) przy użyciu tego samego konta, które zostało użyte do zalogowania się do [Azure Portal](https://portal.azure.com/). Upewnij się również, że wybrano taki sam katalog w portalu Custom Vision jak katalog w Azure Portal, w którym znajdują się zasoby Custom Vision. W obu lokacjach możesz wybrać katalog z menu rozwijanego konto w prawym górnym rogu ekranu. 
 
-1. Wybierz pozycję __Klasyfikacja__ w obszarze __typy projektów__. Następnie w obszarze __typy klasyfikacji__wybierz pozycję **wieloetykietowe** lub **wieloklasowe**, w zależności od przypadku użycia. Klasyfikacja wieloetykietowa stosuje dowolną liczbę tagów do obrazu (zero lub więcej), podczas gdy klasyfikacja wieloklasowa sortuje obrazy w pojedynczej kategorii (Każdy przesłany przez Ciebie obraz zostanie posortowany do najbardziej dopasowanego tagu). Jeśli chcesz, będziesz mieć możliwość późniejszego zmiany typu klasyfikacji.
+1. Wybierz pozycję __Klasyfikacja__ w obszarze __typy projektów__. Następnie w obszarze __typy klasyfikacji__wybierz pozycję **wieloetykietowe** lub **wieloklasowe**, w zależności od przypadku użycia. Klasyfikacja wieloetykietowa stosuje dowolną liczbę tagów do obrazu (zero lub więcej), podczas gdy klasyfikacja wieloklasowa sortuje obrazy w pojedynczej kategorii (Każdy przesłany przez Ciebie obraz zostanie posortowany do najbardziej dopasowanego tagu). Jeśli chcesz, możesz później zmienić typ klasyfikacji.
 
 1. Następnie wybierz jedną z dostępnych domen. Każda domena optymalizuje klasyfikatora dla określonych typów obrazów, zgodnie z opisem w poniższej tabeli. Jeśli chcesz, będziesz mieć możliwość późniejszej zmiany domeny.
 
@@ -56,7 +56,7 @@ W przeglądarce internetowej przejdź do [strony sieci web Custom Vision](https:
     |__Ogólnego__| Optymalizacja pod kątem szerokiego zakresu zadań klasyfikacji obrazów. Jeśli żadna z pozostałych domen nie jest odpowiednia lub nie masz pewności, którą domenę wybrać, wybierz domenę generyczną. |
     |__Żywności__|Optymalizacja pod kątem zdjęć naczyń w postaci widocznej w menu restauracji. Jeśli chcesz sklasyfikować fotografie poszczególnych owoców lub warzyw, użyj domeny żywności.|
     |__Charakterystycznych elementów krajobrazu__|Optymalizacja pod kątem rozpoznawalnych terenów, zarówno naturalnych, jak i sztucznej. Ta domena działa najlepiej, gdy punkt orientacyjny jest jasno widoczny na zdjęciu. Ta domena działa nawet wtedy, gdy punkt orientacyjny jest nieco przesunięty przez osoby przed nim.|
-    |__Stępują__|Optymalizacja pod kątem obrazów znajdujących się w katalogu zakupów lub witrynie internetowej do kupowania. Jeśli potrzebujesz wysokiej dokładności klasyfikowania między Dresses, Pants i koszulami, Użyj tej domeny.|
+    |__Sprzedaż detaliczna__|Optymalizacja pod kątem obrazów znajdujących się w katalogu zakupów lub witrynie internetowej do kupowania. Jeśli potrzebujesz wysokiej dokładności klasyfikowania między Dresses, Pants i koszulami, Użyj tej domeny.|
     |__Domeny kompaktowe__| Optymalizacja pod kątem ograniczeń klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Modele generowane przez domeny kompaktowe mogą być eksportowane do lokalnego uruchamiania.|
 
 1. Na koniec wybierz pozycję __Utwórz projekt__.
@@ -109,7 +109,7 @@ Po zakończeniu szkolenia jest szacowany i wyświetlany jego wydajność. W Cust
 
 ## <a name="manage-training-iterations"></a>Zarządzanie iteracjami szkoleń
 
-Za każdym razem, gdy nauczysz klasyfikator, tworzysz nową _iterację_ ze swoimi zaktualizowanymi metrykami wydajności. Wszystkie iteracje można wyświetlić w lewym okienku na karcie **wydajność** . W lewym okienku znajdziesz również przycisk **Usuń** , którego można użyć, aby usunąć iterację, jeśli jest ona przestarzała. Po usunięciu iteracji usuwane są wszystkie obrazy, które są w unikatowy sposób skojarzone.
+Za każdym razem, gdy nauczysz klasyfikator, tworzysz nową _iterację_ ze swoimi zaktualizowanymi metrykami wydajności. Wszystkie iteracje można wyświetlić w lewym okienku na karcie **wydajność** . Znajdziesz również przycisk **Usuń** , którego można użyć, aby usunąć iterację, jeśli jest ona przestarzała. Po usunięciu iteracji usuwane są wszystkie obrazy, które są w unikatowy sposób skojarzone.
 
 ## <a name="next-steps"></a>Następne kroki
 

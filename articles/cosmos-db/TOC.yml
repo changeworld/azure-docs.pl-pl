@@ -972,6 +972,8 @@
           href: access-secrets-from-keyvault.md
         - name: Uwierzytelnianie oparte na certyfikatach za pomocą usługi Azure AD
           href: certificate-based-authentication.md
+        - name: Ograniczanie dostępu użytkowników tylko do operacji na danych
+          href: how-to-restrict-user-data.md
     - name: Gotowość przedsiębiorstwa
       items:
         - name: Przywracanie danych z kopii zapasowej

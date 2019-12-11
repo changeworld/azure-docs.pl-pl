@@ -1,14 +1,14 @@
 ---
 title: Funkcje planów platformy Azure
 description: Zawiera opis funkcji dostępnych do użycia z artefaktami strategii w definicjach i przypisaniach platformy Azure.
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.topic: reference
-ms.openlocfilehash: 92539da02ddbe22f943454aff54dae4ccb5af3ce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128756"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970894"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkcje do użycia z planami platformy Azure
 
@@ -29,11 +29,14 @@ Obsługiwane są następujące funkcje:
 
 Zwraca obiekt właściwości wypełniony przez dane wyjściowe artefaktów planu.
 
+> [!NOTE]
+> Funkcja `artifacts()` nie może być używana z wnętrza szablonu Menedżer zasobów. Funkcja może być używana tylko w formacie JSON definicji strategii lub w pliku JSON artefaktu podczas zarządzania planem za pomocą Azure PowerShell lub interfejsu API REST jako części [planów jako kodu](https://github.com/Azure/azure-blueprints/blob/master/README.md).
+
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| artefaktname |Yes |ciąg |Nazwa artefaktu planu. |
+| artefaktname |Tak |string |Nazwa artefaktu planu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -112,7 +115,7 @@ Przykłady pobierania danych z przykładu _myTemplateArtifact_ są następujące
 |`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Ciąg | "Moja wartość" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | Prawda |
 
-## <a name="concat"></a>Concat
+## <a name="concat"></a>concat
 
 `concat(string1, string2, string3, ...)`
 
@@ -122,8 +125,8 @@ Przykłady pobierania danych z przykładu _myTemplateArtifact_ są następujące
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| string1 |Yes |ciąg |Pierwsza wartość dla łączenia. |
-| dodatkowe argumenty |Nie |ciąg |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
+| string1 |Tak |string |Pierwsza wartość dla łączenia. |
+| dodatkowe argumenty |Nie |string |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -147,7 +150,7 @@ Zwraca wartość parametru planu. Określona nazwa parametru musi być zdefiniow
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
+| parameterName |Tak |string |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -268,7 +271,7 @@ Zwraca obiekt, który reprezentuje określony artefakt grupy zasobów. W przeciw
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Symbol zastępczy |Yes |ciąg |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
+| Symbol zastępczy |Tak |string |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -320,7 +323,7 @@ Następnie użyj funkcji `resourceGroups()` z kontekstu dowolnego artefaktu stra
 }
 ```
 
-## <a name="subscription"></a>subskrypcję
+## <a name="subscription"></a>subskrypcja
 
 `subscription()`
 

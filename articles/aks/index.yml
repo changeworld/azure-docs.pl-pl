@@ -65,6 +65,7 @@ sections:
           - html: <a href="/azure/aks/tutorial-kubernetes-scale">Skalowanie aplikacji i infrastruktury rozwiązania Kubernetes</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Aktualizowanie aplikacji uruchomionej w rozwiązaniu Kubernetes</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Aktualizowanie klastra AKS</a>
+          - html: <a href="/azure/architecture/reference-architectures/microservices/aks">Poznawanie i implementowanie architektury referencyjnej mikrousług</a>
   - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     items:
       - type: list

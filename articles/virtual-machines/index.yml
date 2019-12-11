@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentacja usługi Virtual Machines
 metadata:
   document_id: na
-  title: Dokumentacja maszyny wirtualnej na platformie Azure — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  title: Dokumentacja maszyny wirtualnej na platformie Azure — samouczki i dokumentacja interfejsu API
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace
@@ -13,8 +13,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: gwallace
-abstract:
-  description: 'Dowiedz się, jak tworzyć maszyny wirtualne platformy Azure. W samouczkach, dokumentacji interfejsów API i innych dokumentach pokazano, jak tworzyć i wdrażać maszyny wirtualne z systemami Windows i Linux oraz szablony maszyn wirtualnych.'
+  description: 'Dowiedz się, jak tworzyć i wdrażać maszyny wirtualne z systemem Windows i Linux na platformie Azure.'
 sections:
   - title: null
     items:
