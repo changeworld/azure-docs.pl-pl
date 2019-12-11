@@ -1,6 +1,6 @@
 ---
 title: Pojęcia dotyczące usług w usłudze Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Zawiera opis pojęć dotyczących aprowizacji usług dotyczących urządzeń z usługą Device Provisioning i IoT Hub
+description: Zawiera opis pojęć dotyczących aprowizacji usług dotyczących urządzeń z usługą Device Provisioning (DPS) i IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104359"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975605"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Koncepcje IoT Hub Device Provisioning Service
 
 IoT Hub Device Provisioning Service to usługa pomocnika dla IoT Hub, która służy do konfigurowania aprowizacji urządzeń bez dotyku do określonego Centrum IoT Hub. Usługa Device Provisioning umożliwia [samoobsługowe inicjowanie](concepts-auto-provisioning.md) milionów urządzeń w bezpieczny i skalowalny sposób.
 
-Inicjowanie obsługi urządzeń jest procesem dwuczęściowym. Pierwsza część ustanawia początkowe połączenie między urządzeniem a rozwiązaniem IoT przez *zarejestrowanie* urządzenia. Druga część stosuje odpowiednią *konfigurację* do urządzenia na podstawie określonych wymagań rozwiązania. Po zakończeniu obu kroków urządzenie zostało w pełni zainicjowane. Usługa Device Provisioning automatyzuje oba kroki, aby zapewnić bezproblemowe środowisko aprowizowania dla urządzenia.
+Inicjowanie obsługi urządzeń jest procesem dwuczęściowym. Pierwsza część ustanawia początkowe połączenie między urządzeniem a rozwiązaniem IoT przez *zarejestrowanie* urządzenia. Druga część stosuje odpowiednią *konfigurację* do urządzenia na podstawie określonych wymagań rozwiązania. Po zakończeniu obu kroków urządzenie zostało w pełni *zainicjowane*. Usługa Device Provisioning automatyzuje oba kroki, aby zapewnić bezproblemowe środowisko aprowizowania dla urządzenia.
 
 Ten artykuł zawiera omówienie pojęć dotyczących aprowizacji, które są najbardziej odpowiednie do zarządzania *usługą*. Ten artykuł jest najbardziej przydatny dla osób związanych z [krokami konfiguracji chmury](about-iot-dps.md#cloud-setup-step) w celu przygotowania urządzenia do wdrożenia.
 
@@ -31,7 +31,7 @@ Punkt końcowy operacji usługi jest punktem końcowym do zarządzania ustawieni
 
 Punkt końcowy aprowizacji urządzeń jest pojedynczym punktem końcowym używanym przez funkcję autoaprowizacji. Ten adres URL jest taki sam dla wszystkich wystąpień usługi aprowizacji, aby wyeliminować konieczność ponownego wypróbowania urządzeń z nowymi informacjami o połączeniu w scenariuszach łańcucha dostaw. Zakres identyfikatorów zapewnia izolację dzierżawy.
 
-## <a name="linked-iot-hubs"></a>Połączone centra IoT Hub
+## <a name="linked-iot-hubs"></a>Połączone centra IoT
 
 Usługa Device Provisioning może udostępniać tylko urządzenia do centrów IoT, które zostały z nią połączone. Połączenie usługi IoT Hub z wystąpieniem usługi Device Provisioning zapewnia uprawnienia do odczytu/zapisu w rejestrze urządzenia Centrum IoT. za pomocą linku usługa Device Provisioning może zarejestrować identyfikator urządzenia i ustawić początkową konfigurację w ramach sznurka urządzenia. Połączone centra IoT mogą znajdować się w dowolnym regionie świadczenia usługi Azure. Możesz połączyć centra w innych subskrypcjach z usługą aprowizacji.
 
@@ -73,6 +73,6 @@ Rejestracja indywidualna to wpis dla jednego urządzenia, które może się zare
 
 Rejestracja polega na tym, że rejestr urządzenia pomyślnie zarejestrował się do IoT Hub za pośrednictwem usługi Device Provisioning. Rekordy rejestracji są tworzone automatycznie; można je usunąć, ale nie można ich zaktualizować.
 
-## <a name="operations"></a>Operacje
+## <a name="operations"></a>Operations
 
 Operacje są jednostką rozliczeniową usługi Device Provisioning. Jedną z operacji jest pomyślne zakończenie jednej instrukcji do usługi. Operacje obejmują rejestrowanie i ponowne rejestrowanie urządzeń, a także zmiany po stronie serwera, takie jak dodawanie i aktualizowanie wpisów na liście rejestracji.

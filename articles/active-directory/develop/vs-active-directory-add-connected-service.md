@@ -1,5 +1,5 @@
 ---
-title: Dodawanie Azure Active Directory przy użyciu usług połączonych | Azure
+title: Dodawanie usługi Azure AD przy użyciu usług połączonych
 description: Dodawanie Azure Active Directory przy użyciu okna dialogowego Dodawanie usług połączonych programu Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36827401060e330d57b6afac3db0abbde0c27dc2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 2bbbf002110d997d18c49fb03ad599342cdf618d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941942"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964203"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie Azure Active Directory przy użyciu usług połączonych w programie Visual Studio
 
-Korzystając z Azure Active Directory (Azure AD), można obsługiwać Logowanie jednokrotne (SSO) dla aplikacji sieci Web ASP.NET MVC lub Active Directory uwierzytelnianie w usługach interfejsu API sieci Web. Przy użyciu uwierzytelniania usługi Azure AD użytkownicy mogą łączyć się z aplikacjami sieci Web przy użyciu swoich kont z Azure Active Directory. Zalety uwierzytelniania usługi Azure AD za pomocą interfejsu API sieci Web obejmują ulepszone zabezpieczenia danych podczas ujawniania interfejsu API z aplikacji sieci Web. W usłudze Azure AD nie trzeba zarządzać osobnym systemem uwierzytelniania przy użyciu własnego konta i zarządzania użytkownikami.
+Korzystając z Azure Active Directory (Azure AD), można obsługiwać Logowanie jednokrotne (SSO) dla aplikacji sieci Web ASP.NET MVC lub Active Directory uwierzytelnianie w usługach interfejsu API sieci Web. Przy użyciu uwierzytelniania usługi Azure AD użytkownicy mogą łączyć się z aplikacjami sieci Web przy użyciu swoich kont z Azure Active Directory. Uwierzytelnianie Azure AD przy użyciu składnika Web API ma istotne zalety, takie jak wyższy poziom zabezpieczeń danych podczas udostępniania interfejsu API z poziomu aplikacji sieci Web. W usłudze Azure AD nie trzeba zarządzać osobnym systemem uwierzytelniania przy użyciu własnego konta i zarządzania użytkownikami.
 
 Ten artykuł i jego artykuły towarzyszące zawierają szczegółowe informacje dotyczące korzystania z funkcji usługi połączonej programu Visual Studio dla Active Directory. Ta funkcja jest dostępna w programie Visual Studio 2015 i nowszych.
 

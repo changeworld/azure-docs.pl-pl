@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 19dba88bf04ee84459ebd9ef0279f125724d7522
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: f4bb399e24b2c480023eba6bf5b71990f6d39c8c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406435"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978377"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorowanie i zbieranie danych z punktów końcowych usługi sieci Web ML
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ W tym artykule dowiesz się, jak zbierać dane i monitorować modele wdrożone w
 
 ## <a name="web-service-input-and-response-data"></a>Dane wejściowe i odpowiedzi usługi sieci Web
 
-Dane wejściowe i odpowiedzi dotyczące usługi — odpowiadające danym wejściowym modelu ML i jego prognozowanie — są rejestrowane w śladach usługi Azure Application Insights w obszarze `"model_data_collection"`komunikatów. Możesz wysyłać zapytania do usługi Azure Application Insights bezpośrednio, aby uzyskać dostęp do tych danych, lub skonfigurować [ciągły eksport](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do konta magazynu w celu dłuższego przechowywania lub dalszego przetwarzania. Dane modelu mogą być następnie używane w usłudze Azure ML w celu skonfigurowania etykietowania, przeszkolenia, wyjaśnienia, analizy danych lub innego użycia. 
+Dane wejściowe i odpowiedzi dotyczące usługi — odpowiadające danym wejściowym modelu ML i jego prognozowanie — są rejestrowane w śladach usługi Azure Application Insights w obszarze `"model_data_collection"`komunikatów. Możesz wysyłać zapytania do usługi Azure Application Insights bezpośrednio, aby uzyskać dostęp do tych danych, lub skonfigurować [ciągły eksport](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do konta magazynu w celu dłuższego przechowywania lub dalszego przetwarzania. Dane modelu można następnie użyć w Azure Machine Learning, aby skonfigurować etykietowanie, przeszkolenie, wyjaśnienie, analizę danych lub inne użycie. 
 
 ## <a name="use-the-azure-portal-to-configure"></a>Użyj Azure Portal, aby skonfigurować
 
@@ -49,28 +49,28 @@ Możesz włączyć i wyłączyć usługę Azure Application Insights w Azure Por
 
 1. Na karcie **wdrożenia** wybierz usługę, w której chcesz włączyć Application Insights platformy Azure
 
-   [![listę usług na karcie wdrożenia](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![Lista usług na karcie wdrożenia](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Wybierz pozycję **Edytuj**
 
-   [przycisk edycji ![](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Przycisk Edytuj](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. W obszarze **Ustawienia zaawansowane**zaznacz pole wyboru **Włącz diagnostykę AppInsights**
 
-   [![zaznaczone pole wyboru włączania diagnostyki](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![Zaznaczenie pola wyboru dotyczące włączania diagnostyki](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
 
-### <a name="disable"></a>Wyłączanie
+### <a name="disable"></a>Wyłączenie
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy
 1. Wybierz pozycję **wdrożenia**, wybierz pozycję Usługa, a następnie wybierz pozycję **Edytuj** .
 
-   [![użyć przycisku Edytuj](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Kliknij przycisk Edytuj](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. W obszarze **Ustawienia zaawansowane**wyczyść pole wyboru **Włącz diagnostykę AppInsights**
 
-   [pole wyboru ![wyczyszczone w celu włączenia diagnostyki](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![Wyczyszczone pole wyboru włączenia diagnostyki](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
  
@@ -92,7 +92,7 @@ Możesz włączyć i wyłączyć usługę Azure Application Insights w Azure Por
 
 ### <a name="log-custom-traces-in-your-service"></a>Ślady niestandardowych dzienników w usłudze
 
-Jeśli chcesz rejestrować niestandardowe ślady, postępuj zgodnie ze standardowym procesem wdrażania dla AKS lub ACI w temacie [jak wdrożyć i gdzie](how-to-deploy-and-where.md) dokument. Następnie wykonaj następujące czynności:
+Jeśli chcesz ślady niestandardowych dzienników, postępuj zgodnie z procesem standardowego wdrożenia dla usługi AKS lub ACI w [sposób wdrażania i gdzie](how-to-deploy-and-where.md) dokumentu. Następnie wykonaj następujące czynności:
 
 1. Aktualizowanie pliku oceniania przez dodanie instrukcji Print
     
@@ -121,13 +121,13 @@ Aby wyłączyć usługę Azure Application Insights, użyj następującego kodu:
 Dane usługi są przechowywane na koncie usługi Azure Application Insights w ramach tej samej grupy zasobów co Azure Machine Learning.
 Aby go wyświetlić:
 
-1. Przejdź do obszaru roboczego usługi Machine Learning w programie [Azure Machine Learning Studio](https://ml.azure.com) i kliknij link Application Insights
+1. Przejdź do obszaru roboczego Azure Machine Learning w programie [Azure Machine Learning Studio](https://ml.azure.com) i kliknij link Application Insights
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
 1. Wybierz kartę **Przegląd** , aby wyświetlić podstawowy zestaw metryk dla usługi
 
-   [Przegląd ![](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![Przegląd](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Aby przyjrzeć się do ładunków danych wejściowych i odpowiedzi usługi sieci Web, wybierz pozycję **Analiza**
 1. W sekcji schemat wybierz opcję **ślady** i odfiltruj ślady z komunikatem `"model_data_collection"`. W wymiarach niestandardowych można zobaczyć dane wejściowe, prognozy i inne istotne szczegóły.
@@ -136,9 +136,9 @@ Aby go wyświetlić:
 
 
 3. Aby zapoznać się ze śladami niestandardowymi, wybierz pozycję **Analiza**
-4. W sekcji schemat wybierz pozycję **ślady**. Następnie wybierz pozycję **Uruchom** , aby uruchomić zapytanie. Dane powinny być wyświetlane w formacie tabeli i powinny być mapowane na niestandardowe wywołania w pliku oceniania
+4. W sekcji schematu wybierz **ślady**. Następnie wybierz pozycję **Uruchom** kwerendy. Dane powinny być wyświetlane w formacie tabeli i powinny być mapowane na niestandardowe wywołania w pliku oceniania
 
-   [![niestandardowe ślady](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [![Niestandardowe śledzenie](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Aby dowiedzieć się więcej na temat korzystania z usługi Azure Application Insights, zobacz [co to jest Application Insights?](../../azure-monitor/app/app-insights-overview.md).
 

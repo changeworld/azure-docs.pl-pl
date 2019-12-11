@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 59d18ea11699ed77763c162e4930b159fcd19fe2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/9/2019
+ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888669"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976302"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Jak skonfigurować parametry serwera w Azure Database for MariaDB przy użyciu Azure Portal
 
@@ -37,21 +37,21 @@ Obsługiwany serwer z parametrów stale rośnie. Umożliwia karta parametry serw
 
 Pula buforów aparatu InnoDB i maksymalna liczba połączeń nie są konfigurowalne i związane z [warstwy cenowej](concepts-pricing-tiers.md).
 
-|**Warstwa cenowa**| **rdzenie wirtualne:**|**Pula buforów aparatu InnoDB (MB)**| **Maksymalna liczba połączeń**|
-|---|---|---|---|
-|Basic| 1| 1024| 50|
-|Basic| 2| 2560| 100|
-|Ogólne zastosowanie| 2| 3584| 300|
-|Ogólne zastosowanie| 4| 7680| 625|
-|Ogólne zastosowanie| 8| 15360| 1250|
-|Ogólne zastosowanie| 16| 31232| 2500|
-|Ogólne zastosowanie| 32| 62976| 5000|
-|Ogólne zastosowanie| 64| 125952| 10 000|
-|Zoptymalizowane pod kątem pamięci| 2| 7168| 600|
-|Zoptymalizowane pod kątem pamięci| 4| 15360| 1250|
-|Zoptymalizowane pod kątem pamięci| 8| 30720| 2500|
-|Zoptymalizowane pod kątem pamięci| 16| 62464| 5000|
-|Zoptymalizowane pod kątem pamięci| 32| 125952| 10 000|
+|**Warstwa cenowa**| **rdzenie wirtualne:**|**Pula buforów aparatu InnoDB (MB)**|
+|---|---|---|
+|Basic| 1| 1024|
+|Basic| 2| 2560|
+|Ogólne zastosowanie| 2| 3584|
+|Ogólne zastosowanie| 4| 7680|
+|Ogólne zastosowanie| 8| 15360|
+|Ogólne zastosowanie| 16| 31232|
+|Ogólne zastosowanie| 32| 62976|
+|Ogólne zastosowanie| 64| 125952|
+|Zoptymalizowane pod kątem pamięci| 2| 7168|
+|Zoptymalizowane pod kątem pamięci| 4| 15360|
+|Zoptymalizowane pod kątem pamięci| 8| 30720|
+|Zoptymalizowane pod kątem pamięci| 16| 62464|
+|Zoptymalizowane pod kątem pamięci| 32| 125952|
 
 Te parametry dodatkowy serwer nie są konfigurowane w systemie:
 

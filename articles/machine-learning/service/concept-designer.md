@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: efc9d7fb31dc9f63780c3f94238bbbfb17756089
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707726"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973632"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co to jest Azure Machine Learning Designer (wersja zapoznawcza)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -86,14 +86,14 @@ Aby uzyskać pomoc dotyczącą przechodzenia przez bibliotekę dostępnych algor
 
 ## <a name="compute"></a>Zasoby obliczeniowe
 
-Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić potok i hostować wdrożone modele jako punkty końcowe w czasie rzeczywistym lub punkty końcowe potoku (na potrzeby wnioskowania wsadowego). Obsługiwane elementy docelowe obliczeń są następujące:
+Użyj zasobów obliczeniowych z obszaru roboczego, aby uruchomić potok i hostować wdrożone modele jako punkty końcowe w czasie rzeczywistym lub punkty końcowe potoku (na potrzeby wnioskowania wsadowego). Są obsługiwane obliczeniowych elementów docelowych:
 
 | Docelowy zasób obliczeniowy | Szkolenie | Wdrażanie |
 | ---- |:----:|:----:|
-| Azure Machine Learning obliczeń | ✓ | |
+| Obliczeniowe platformy Azure Machine Learning | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Elementy docelowe obliczeń są dołączone do [obszaru roboczego](concept-workspace.md)Machine Learning. Obiektami docelowymi obliczeń można zarządzać w obszarze roboczym programu [Azure Machine Learning Studio](https://ml.azure.com).
+Elementy docelowe obliczeń są dołączone do [obszaru roboczego Azure Machine Learning](concept-workspace.md). Obiektami docelowymi obliczeń można zarządzać w obszarze roboczym w [Azure Machine Learning Studio (klasyczny)](https://ml.azure.com).
 
 ## <a name="deploy"></a>Implementacja
 
@@ -122,7 +122,7 @@ W wyniku tych aktualizacji niektóre koncepcje i terminy dla interfejsu wizualiz
 
 | Koncepcja projektanta | Wcześniej w interfejsie wizualizacji |
 | ---- |:----:|
-| Wersja robocza potoku | Doświadczenia |
+| Wersja robocza potoku | Eksperyment |
 | Punkt końcowy w czasie rzeczywistym | Usługa sieci Web |
 
 ### <a name="migrating-to-the-designer"></a>Migrowanie do projektanta

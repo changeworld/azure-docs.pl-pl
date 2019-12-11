@@ -7,22 +7,22 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/19/2019
-ms.openlocfilehash: 6676a6f7c694ffd4f2edf3f63a8181863df0016c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c8a1e2a19fa3c8691cdb381669dc3d4db189c42d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227973"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995851"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Usługa Azure SQL Transparent Data Encryption z kluczem zarządzanym przez klienta
 
 Usługa Azure SQL [transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) z kluczem zarządzanym przez klienta umożliwia Bring Your Own Key (BYOK) scenariusz ochrony danych w spoczynku i umożliwia organizacjom wdrażanie rozdzieleń obowiązków związanych z zarządzaniem kluczami i danymi. Dzięki funkcji transparent Data Encryption zarządzanej przez klienta klient jest odpowiedzialny za i w pełnej kontroli nad zarządzaniem cyklem życia kluczy (tworzenie kluczy, przekazywanie, obracanie, usuwanie), uprawnienia do użycia kluczy oraz Inspekcja operacji na kluczach.
 
-W tym scenariuszu klucz używany do szyfrowania klucza szyfrowania bazy danych (Managed Database Key) o nazwie TDE funkcja ochrony jest kluczem asymetrycznym zarządzanym przez klienta w ramach klienta i zarządzanego przez klienta [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), opartego na chmurze zewnętrznego zarządzania kluczami systemami. Key Vault jest wysoce dostępny i skalowalny bezpieczny magazyn dla kluczy kryptograficznych RSA, opcjonalnie obsługiwane w przypadku FIPS 140-2 poziom 2 sprawdzone sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). Nie zezwala na bezpośredni dostęp do przechowywanego klucza, ale udostępnia usługi szyfrowania/odszyfrowywania przy użyciu klucza do autoryzowanych jednostek. Klucz może być generowany przez Magazyn kluczy, importowany lub [transferowany do magazynu kluczy z urządzenia Premium HSM](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+W tym scenariuszu klucz używany do szyfrowania klucza szyfrowania bazy danych (w tym przypadku TDE) jest kluczem asymetrycznym zarządzanym przez klienta przechowywanym w ramach klienta i zarządzanego przez klienta [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), który jest oparty na chmurze w zewnętrznym systemie zarządzania kluczami. Key Vault jest wysoce dostępny i skalowalny bezpieczny magazyn dla kluczy kryptograficznych RSA, opcjonalnie obsługiwane w przypadku FIPS 140-2 poziom 2 sprawdzone sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). Nie zezwala na bezpośredni dostęp do przechowywanego klucza, ale udostępnia usługi szyfrowania/odszyfrowywania przy użyciu klucza do autoryzowanych jednostek. Klucz może być generowany przez Magazyn kluczy, importowany lub [transferowany do magazynu kluczy z urządzenia Premium HSM](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 W przypadku Azure SQL Database i Azure SQL Data Warehouse funkcja ochrony TDE jest ustawiana na poziomie serwera logicznego i jest dziedziczona przez wszystkie zaszyfrowane bazy danych skojarzone z tym serwerem. W przypadku wystąpienia zarządzanego usługi Azure SQL funkcja ochrony TDE jest ustawiana na poziomie wystąpienia i jest dziedziczona przez wszystkie zaszyfrowane bazy danych w tym wystąpieniu. Termin *serwer* odnosi się zarówno do SQL Database serwera logicznego, jak i wystąpienia zarządzanego w tym dokumencie, chyba że określono inaczej. 
 

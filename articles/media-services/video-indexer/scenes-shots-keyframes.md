@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806720"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976608"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sceny, ujęcia i klatki kluczowe
 
@@ -36,7 +36,7 @@ Video Indexer określa, kiedy zrzut zmienia się w filmie wideo na podstawie pod
 
 ## <a name="keyframe-detection"></a>Wykrywanie klatek kluczowych
 
-Wybiera ramki, które najlepiej reprezentują zrzut. Klatki kluczowe to reprezentatywne ramki wybrane z całego wideo w oparciu o właściwości estetyczne (na przykład kontrast i trwałość). Video Indexer pobiera listę identyfikatorów klatek kluczowych jako część metadanych zrzutu, na podstawie których klienci mogą wyodrębnić miniaturę klatki kluczowej. 
+Video Indexer wybiera ramki, które najlepiej reprezentują każdy zrzut. Klatki kluczowe to reprezentatywne ramki wybrane z całego wideo w oparciu o właściwości estetyczne (na przykład kontrast i trwałość). Video Indexer pobiera listę identyfikatorów klatek kluczowych jako część metadanych zrzutu, na podstawie których klienci mogą wyodrębnić klatkę kluczową jako obraz o wysokiej rozdzielczości.  
 
 ### <a name="extracting-keyframes"></a>Wyodrębnianie klatek kluczowych
 

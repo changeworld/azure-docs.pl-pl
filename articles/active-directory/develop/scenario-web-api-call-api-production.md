@@ -1,6 +1,6 @@
 ---
-title: Internetowy interfejs API, wywołuje interfejsy API sieci web (przenoszenie do środowiska produkcyjnego) — Platforma tożsamości usługi Microsoft
-description: Dowiedz się, jak utworzyć internetowy interfejs API podrzędne wywołuje interfejsy API (przenoszenie do środowiska produkcyjnego) sieci web.
+title: Przenoszenie internetowego interfejsu API wywoływanie interfejsów API sieci Web do środowiska produkcyjnego Microsoft Identity platform | Azure
+description: Dowiedz się, jak przenieść internetowy interfejs API, który wywołuje interfejsy API sieci Web w środowisku produkcyjnym.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7de892a0851e556c5046fe4b3691f39b42a9d237
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d59a5b2a74c10e36103713725113cbe8c9cc412
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074758"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965173"
 ---
-# <a name="web-api-that-calls-web-apis---move-to-production"></a>Internetowy interfejs API, która wywołuje interfejsy API — w sieci web, przejść do środowiska produkcyjnego
+# <a name="web-api-that-calls-web-apis---move-to-production"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
 
-Po nabyciu tokenu służącego do wywoływania interfejsów API sieci web, możesz przenieść aplikację do środowiska produkcyjnego.
+Po uzyskaniu tokenu do wywoływania interfejsów API sieci Web można przenieść aplikację do środowiska produkcyjnego.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-Teraz, kiedy znasz podstawy jak wywołać interfejsy API sieci web z własnego interfejsu API sieci web, być może zainteresuje tego samouczka opisano kod, który został użyty do tworzenia chroniony internetowy interfejs API wywołuje interfejsy API sieci web.
+Teraz, gdy znasz podstawowe informacje o sposobie wywoływania interfejsów API sieci Web z własnego internetowego interfejsu API, być może zainteresuje Cię ten samouczek, w którym opisano kod używany do tworzenia chronionego interfejsu API sieci Web wywołującego interfejsy API sieci Web.
 
-| Sample | Platforma | Opis |
+| Przykład | Platforma | Opis |
 |--------|----------|-------------|
-| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | Platforma ASP.NET Core 2.2 interfejsu API sieci Web, pulpitu (WPF) | Wywołanie programu Microsoft Graph API sieci Web platformy ASP.NET Core 2.2, sama wywołać z aplikacji WPF przy użyciu platformy tożsamości firmy Microsoft (w wersji 2.0) |
+| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | Interfejs API sieci Web ASP.NET Core 2,2, Desktop (WPF) | Interfejs API sieci Web ASP.NET Core 2,2 wywoływanie Microsoft Graph, który jest wywoływany z aplikacji WPF przy użyciu platformy tożsamości firmy Microsoft (v 2.0) |

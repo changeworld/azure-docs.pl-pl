@@ -4,12 +4,12 @@ description: Twórz Data Manager łańcucha bloków dla usługi Azure łańcucha
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
-ms.openlocfilehash: 9c682f449fbab823134d626870c7dcfe8a8f2847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455815"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977027"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurowanie menedżera danych łańcucha bloków przy użyciu witryny Azure Portal
 
@@ -32,7 +32,7 @@ Wystąpienie Data Manager łańcucha bloków nawiązuje połączenie i monitoruj
 
 Połączenie wychodzące wysyła dane łańcucha bloków do Azure Event Grid. Podczas tworzenia wystąpienia można skonfigurować pojedyncze połączenie wychodzące. Łańcucha bloków Data Manager obsługuje wiele połączeń wychodzących tematu Event Grid dla danego wystąpienia Data Manager łańcucha bloków. Dane łańcucha bloków można wysyłać do jednego miejsca docelowego lub wysyłać dane łańcucha bloków do wielu miejsc docelowych. Aby dodać kolejne miejsce docelowe, po prostu Dodaj dodatkowe połączenia wychodzące do wystąpienia.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Przejdź do elementu członkowskiego usługi Azure łańcucha bloków, który chcesz połączyć z łańcucha bloków Data Manager. Wybierz pozycję **łańcucha bloków Data Manager**.
 1. Wybierz pozycję **Dodaj**.
 
@@ -78,13 +78,15 @@ ABI kontraktu definiuje inteligentne interfejsy kontraktu. Opisuje sposób korzy
 
 1. Zapisz tablicę **ABI** jako plik JSON. Na przykład *ABI. JSON*. Ten plik jest używany w późniejszym kroku.
 
-Łańcucha bloków Data Manager wymaga wdrożonego kodu bajtowego dla kontraktu inteligentnego. Wdrożony kod bajtowy jest inny niż kod bajtowy kontraktu inteligentnego. Wdrożony kod bajtowy można uzyskać z skompilowanego pliku metadanych kontraktu.
+Łańcucha bloków Data Manager wymaga wdrożonego kodu bajtowego dla kontraktu inteligentnego. Wdrożony kod bajtowy jest inny niż kod bajtowy kontraktu inteligentnego. Użyj rozszerzenia Azure łańcucha bloków Development Kit, aby skopiować kod bajtowy do Schowka.
 
-1. Otwórz plik metadanych kontraktu znajdujący się w folderze **kompilacja/kontrakty** w projekcie o trwałym stanie. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
-1. Znajdź element **deployedBytecode** w pliku JSON.
-1. Skopiuj wartość szesnastkową bez cudzysłowów.
+1. W okienku Eksploratora Visual Studio Code rozwiń folder **kompilacja/kontrakty** w projekcie o trwałym stanie.
+1. Kliknij prawym przyciskiem myszy plik JSON metadanych kontraktu. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
+1. Wybierz pozycję **Kopiuj transakcję kod bajtowy**.
 
-    ![Visual Studio Code okienku z użyciem kodu bajtowego w metadanych](./media/data-manager-portal/bytecode-metadata.png)
+    ![Visual Studio Code okienku z opcją kopiowania kodu bajtowego transakcji](./media/data-manager-portal/bytecode-devkit.png)
+
+    Kod bajtowy jest kopiowany do Schowka.
 
 1. Zapisz wartość **kodu bajtowego** jako plik JSON. Na przykład, *kod bajtowy. JSON*. Ten plik jest używany w późniejszym kroku.
 
@@ -115,7 +117,7 @@ W poniższym przykładzie przedstawiono pliki *ABI. JSON* i *unformating. JSON* 
 1. Wybierz kontener, a następnie wybierz pozycję **Przekaż**.
 1. Wybierz pliki JSON, które zostały utworzone w sekcji [Pobierz kontrakt ABI i kod bajtowy](#get-contract-abi-and-bytecode) .
 
-    ![Przekaż obiekt BLOB](./media/data-manager-portal/upload-blobs.png)
+    ![Przekazywanie obiektu blob](./media/data-manager-portal/upload-blobs.png)
 
     Wybierz pozycję **Przekaż**.
 

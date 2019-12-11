@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/09/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1c00d0f4ba365442762df6e041f02ea0a39f099
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847307"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964036"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wdróż Resetowanie hasła bez konieczności rejestrowania użytkowników końcowych
 
-Aby wdrożyć Azure Active Directory (Azure AD) Samoobsługowe resetowanie hasła (SSPR), muszą być obecne dane uwierzytelniania. W niektórych organizacjach użytkownicy wprowadzają swoje dane uwierzytelniania. Ale wiele organizacji preferuje synchronizację z danymi, które już istnieją w Active Directory. Zsynchronizowane dane są udostępniane w usłudze Azure AD i SSPR bez konieczności interakcji z użytkownikiem, jeśli:
+Aby wdrożyć Azure Active Directory (Azure AD) Samoobsługowe resetowanie hasła (SSPR), muszą być obecne dane uwierzytelniania. W niektórych organizacjach użytkownicy wprowadzają swoje dane uwierzytelniania. Inne organizacje wolą synchronizować z danymi, które już istnieją w Active Directory. Te zsynchronizowane dane są udostępniane w usłudze Azure AD i SSPR bez konieczności interakcji z użytkownikiem, jeśli spełniasz następujące wymagania:
 
 * Prawidłowo sformatuj dane w katalogu lokalnym.
 * Skonfiguruj [Azure AD Connect przy użyciu ustawień ekspresowych](../hybrid/how-to-connect-install-express.md).
@@ -41,21 +41,18 @@ W przypadku używania ustawień domyślnych w Azure AD Connect są tworzone nast
 | telephoneNumber | Telefon biurowy |
 | Telefon komórkowy | Telefon komórkowy |
 
-Gdy użytkownik sprawdzi swój numer telefonu komórkowego, w polu telefon w obszarze informacje kontaktowe uwierzytelniania w usłudze Azure AD zostanie również wypełniony ten numer.
+Gdy użytkownik sprawdzi swój numer telefonu komórkowego, w polu *telefon* w obszarze **informacje kontaktowe uwierzytelniania** w usłudze Azure AD zostanie również wypełniony ten numer.
 
 ## <a name="authentication-contact-info"></a>Informacje kontaktowe uwierzytelniania
 
-Administrator globalny może ręcznie ustawić informacje kontaktowe uwierzytelniania dla użytkownika, jak pokazano na poniższym zrzucie ekranu.
+Na stronie **metody uwierzytelniania** dla użytkownika usługi Azure AD w Azure Portal Administrator globalny może ręcznie ustawić informacje kontaktowe uwierzytelniania, jak pokazano na poniższym przykładowym zrzucie ekranu:
 
 ![Informacje kontaktowe uwierzytelniania użytkownika w usłudze Azure AD][Contact]
 
-Jeśli pole telefon jest wypełnione i w zasadach SSPR jest włączona obsługa telefonu komórkowego, użytkownik zobaczy ten numer na stronie rejestracji resetowania hasła i w trakcie przepływu pracy resetowania hasła.
-
-Pole alternatywny numer telefonu nie jest używane do resetowania hasła.
-
-Jeśli pole adres E-mail zostanie wypełnione i w zasadach SSPR zostanie włączona poczta E-mail, użytkownik zobaczy tę wiadomość e-mail na stronie rejestracji resetowania hasła i podczas przepływu pracy resetowania hasła.
-
-Jeśli pole alternatywny adres e-mail zostanie wypełnione i w zasadach SSPR zostanie włączona poczta E-mail, użytkownik **nie** zobaczy tej wiadomości e-mail na stronie rejestracji resetowania hasła, ale zobaczy ją podczas przepływu pracy resetowania hasła.
+* Jeśli pole **telefon** jest wypełnione i w zasadach SSPR jest włączona obsługa **telefonu komórkowego** , użytkownik zobaczy ten numer na stronie rejestracji resetowania hasła i w trakcie przepływu pracy resetowania hasła.
+* Pole **alternatywny numer telefonu** nie jest używane do resetowania hasła.
+* Jeśli pole **adres e-mail** zostanie wypełnione i w zasadach SSPR zostanie włączona **poczta e-mail** , użytkownik zobaczy tę wiadomość e-mail na stronie rejestracji resetowania hasła i podczas przepływu pracy resetowania hasła.
+* Jeśli pole **alternatywny adres e-mail** zostanie wypełnione i w zasadach SSPR zostanie włączona **poczta e-mail** , użytkownik **nie** zobaczy tej wiadomości e-mail na stronie rejestracji resetowania hasła, ale zobaczy ją podczas przepływu pracy resetowania hasła.
 
 ## <a name="security-questions-and-answers"></a>Pytania zabezpieczające i odpowiedzi
 
@@ -69,7 +66,7 @@ Po zarejestrowaniu użytkownika Strona rejestracji ustawia następujące pola:
 * **Adres E-mail uwierzytelniania**
 * **Pytania zabezpieczające i odpowiedzi**
 
-Jeśli podano wartość dla **telefonu komórkowego** lub **alternatywnego adresu e-mail**, użytkownicy mogą natychmiast użyć tych wartości, aby zresetować swoje hasła, nawet jeśli nie zostały zarejestrowane dla usługi. Ponadto użytkownicy widzą te wartości przy pierwszym zarejestrowaniu i mogą je modyfikować, jeśli chcesz. Po pomyślnym zarejestrowaniu wartości te zostaną utrwalone odpowiednio w polach **numer telefonu uwierzytelniania** i **adres e-mail uwierzytelniania** .
+Jeśli podano wartość dla **telefonu komórkowego** lub **alternatywnego adresu e-mail**, użytkownicy mogą natychmiast użyć tych wartości, aby zresetować swoje hasła, nawet jeśli nie zostały zarejestrowane dla usługi. Ponadto użytkownicy widzą te wartości przy pierwszym zarejestrowaniu i mogą je modyfikować, jeśli chcesz. Po pomyślnym zarejestrowaniu wartości te są zachowywane odpowiednio w polach **numer telefonu uwierzytelniania** i **adres e-mail uwierzytelniania** .
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>Ustawianie i odczytywanie danych uwierzytelniania za pomocą programu PowerShell
 

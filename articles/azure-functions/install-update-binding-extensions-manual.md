@@ -3,16 +3,16 @@ title: Ręczne instalowanie lub aktualizowanie rozszerzeń powiązań Azure Func
 description: Dowiedz się, jak zainstalować lub zaktualizować rozszerzenia Azure Functions powiązań dla wdrożonych aplikacji funkcji.
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226504"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977492"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ręczne instalowanie lub aktualizowanie Azure Functions powiązań z poziomu portalu
 
-Środowisko uruchomieniowe Azure Functions w wersji 2. x używa rozszerzeń powiązań do implementowania kodu dla wyzwalaczy i powiązań. Rozszerzenia powiązań są udostępniane w pakietach NuGet. Aby zarejestrować rozszerzenie, należy zasadniczo zainstalować pakiet. Podczas opracowywania funkcji, sposób instalacji rozszerzeń powiązań zależy od środowiska programistycznego. Aby uzyskać więcej informacji, zobacz [Rejestrowanie rozszerzeń powiązań](./functions-bindings-register.md) w artykule wyzwalacze i powiązania.
+Począwszy od wersji 2. x, środowisko uruchomieniowe Azure Functions używa rozszerzeń powiązań do implementowania kodu dla wyzwalaczy i powiązań. Rozszerzenia powiązań są udostępniane w pakietach NuGet. Aby zarejestrować rozszerzenie, należy zasadniczo zainstalować pakiet. Podczas opracowywania funkcji, sposób instalacji rozszerzeń powiązań zależy od środowiska programistycznego. Aby uzyskać więcej informacji, zobacz [Rejestrowanie rozszerzeń powiązań](./functions-bindings-register.md) w artykule wyzwalacze i powiązania.
 
 Czasami trzeba ręcznie zainstalować lub zaktualizować rozszerzenia powiązań w Azure Portal. Na przykład może być konieczne zaktualizowanie zarejestrowanego powiązania do nowszej wersji. Może być również konieczne zarejestrowanie obsługiwanego powiązania, którego nie można zainstalować na karcie **integracja** w portalu.
 
@@ -43,4 +43,4 @@ Wykonaj następujące kroki, aby ręcznie zainstalować lub zaktualizować rozsz
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

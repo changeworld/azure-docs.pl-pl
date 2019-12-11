@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/25/2019
+ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ac1687d371630089436640af15cf46491a38ab51
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485499"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980954"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Limity sieci — Azure Resource Manager następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych za pomocą **Azure Resource Manager** na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -23,7 +23,7 @@ ms.locfileid: "74485499"
 | Zasób | Domyślny/maksymalny limit | 
 | --- | --- |
 | Sieci wirtualne |1000 |
-| Podsieci na sieć wirtualną |3000 |
+| Podsieci na sieć wirtualną |3,000 |
 | Wirtualne sieci równorzędne dla sieci wirtualnej |500 |
 | [Bramy sieci wirtualnej (bramy sieci VPN) na sieć wirtualną](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
 | Serwery DNS na sieć wirtualną |20 |
@@ -32,12 +32,12 @@ ms.locfileid: "74485499"
 | Prywatne adresy IP na maszynę wirtualną |256 |
 | Publiczne adresy IP na interfejs sieciowy |256 |
 | Publiczne adresy IP na maszynę wirtualną |256 |
-| Współbieżne przepływy TCP lub UDP na kartę sieciową maszyny wirtualnej lub wystąpienia roli |500,000 |
+| [Współbieżne przepływy TCP lub UDP na kartę sieciową maszyny wirtualnej lub wystąpienia roli](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
 | Karty interfejsu sieciowego |65 536 |
-| Grupy zabezpieczeń sieci |5000 |
+| Sieciowe grupy zabezpieczeń |5000 |
 | Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |1000 |
 | Adresy IP i zakresy określone dla źródła lub miejsca docelowego w grupie zabezpieczeń |4,000 |
-| Grupy zabezpieczeń aplikacji |3000 |
+| Grupy zabezpieczeń aplikacji |3,000 |
 | Grupy zabezpieczeń aplikacji na konfigurację IP, na kartę sieciową |20 |
 | Konfiguracje protokołu IP na grupę zabezpieczeń aplikacji |4,000 |
 | Grupy zabezpieczeń aplikacji, które można określić w ramach wszystkich reguł zabezpieczeń sieciowej grupy zabezpieczeń |100 |

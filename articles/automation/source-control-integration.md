@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/26/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850163"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996514"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
@@ -30,7 +30,7 @@ Azure Automation obsługuje trzy typy kontroli źródła:
 
 * Repozytorium kontroli źródła (GitHub lub Azure Repos)
 * [Konto Uruchom jako](manage-runas-account.md)
-* Upewnij się, że masz [Najnowsze moduły platformy Azure](automation-update-azure-modules.md) na Twoim koncie usługi Automation
+* Upewnij się, że masz [Najnowsze moduły platformy Azure](automation-update-azure-modules.md) na koncie usługi Automation, w tym moduł **AzureRM. profile** . 
 
 > [!NOTE]
 > Zadania synchronizacji kontroli źródła są uruchamiane na koncie usługi Automation użytkowników i są rozliczane według tej samej stawki co inne zadania automatyzacji.

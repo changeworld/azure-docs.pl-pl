@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: fcbf6878be53d7aa6bf9569da194b4e90f2b10db
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 42e883a7563072fca771482998bdcdbebec50ae9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827462"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975775"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Szybki Start: wyszukiwanie wyrazów przy użyciu słownika dwujęzycznego
 
 W tym przewodniku szybki start dowiesz się, jak uzyskać alternatywne tłumaczenia dla terminu, a także przykłady użycia tych alternatywnych tłumaczeń przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 
-Ten przewodnik Szybki Start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenie tekstu w usłudze translator. Jeśli nie masz konta, możesz skorzystać z [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/) , aby uzyskać klucz subskrypcji.
+Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -56,8 +56,8 @@ Ten przewodnik Szybki Start wymaga [konta usługi Azure Cognitive Services](http
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Przetłumacz tekst](quickstart-translate.md)
-* [Zatransliteracja tekstu](quickstart-transliterate.md)
-* [Zidentyfikuj język według danych wejściowych](quickstart-detect.md)
-* [Pobierz listę obsługiwanych języków](quickstart-languages.md)
-* [Określanie długości zdań z danych wejściowych](quickstart-sentences.md)
+* [Tłumaczenie tekstu](quickstart-translate.md)
+* [Transliteracja tekstu](quickstart-transliterate.md)
+* [Identyfikowanie język na podstawie danych wejściowych](quickstart-detect.md)
+* [Pobieranie listy obsługiwanych języków](quickstart-languages.md)
+* [Określanie długości zdań na podstawie danych wejściowych](quickstart-sentences.md)

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927660"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978632"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
@@ -245,7 +245,7 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Wystąpienie zarządzane | Azure SQL Database wystąpienie zarządzane nie jest obecnie obsługiwane w bazach danych. |
 | Pule elastyczne |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
 | Migracja do funkcji Moje skalowanie jest obecnie operacją jednokierunkową | Po przeprowadzeniu migracji bazy danych do warstwy usługi nie można migrować jej bezpośrednio na warstwę usług, która nie jest w skali. W obecnym czasie jedynym sposobem migrowania bazy danych z Azure Databricks Azure Data Factory funkcji ze skalowaniem do poziomu non-------------------------------------------|
-| Migracja baz danych z trwałymi obiektami w pamięci | Funkcja przeskalowania obsługuje tylko nietrwałe obiekty w pamięci (typy tabel, natywne SPs i funkcje).  Trwałe tabele w pamięci i inne obiekty muszą zostać porzucone i odtworzone jako obiekty nieznajdujące się w pamięci przed migracją bazy danych do warstwy usługi.|
+| Migracja baz danych z obiektami OLTP w pamięci | Funkcja preskalowanie obsługuje tylko podzestaw typów obiektów OLTP w pamięci, w tym typów tabel zoptymalizowanych pod kątem pamięci, procedur składowanych skompilowanych w sposób macierzysty i funkcji. Jeśli jednak w bazie danych znajdują się jakiekolwiek obiekty OLTP w pamięci, bezpośrednie Migrowanie z warstw usług premium i Krytyczne dla działania firmy nie jest obsługiwane. Migrowanie takiej bazy danych do skalowania wymaga wykonania trzech kroków: (1) upuść wszystkie obiekty OLTP w pamięci i ich zależności. Aby zachować dane w trwałych tabelach zoptymalizowanych pod kątem pamięci, przekonwertuj je na tabele dysków. (2) Zmień warstwę usługi bazy danych na skalowanie. (3) ponownie Twórz wcześniej opuszczone obiekty. Trwałe i nietrwałe tabele zoptymalizowane pod kątem pamięci nie są obecnie obsługiwane w ramach skalowania i muszą pozostać w tabelach dysków. Zmienne tabel zoptymalizowane pod kątem pamięci są obsługiwane. |
 | Śledzenie zmian | Change Tracking jest obecnie w publicznej wersji zapoznawczej i można ją włączyć w nowych lub istniejących bazach danych w skali. |
 | Replikacja geograficzna  | Nie można jeszcze skonfigurować replikacji geograficznej na potrzeby Azure SQL Database skalowania. |
 | Kopia bazy danych | Nie można jeszcze użyć kopii bazy danych w celu utworzenia nowej bazy danych w funkcji wieloskalowania SQL platformy Azure. |

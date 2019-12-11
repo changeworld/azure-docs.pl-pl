@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647703"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978530"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Samouczek: Tworzenie aplikacji do translacji przy użyciu WPF
 
@@ -39,9 +39,9 @@ Ta lista zawiera usługi Cognitive Services używane w tym samouczku. Użyj link
 
 | Usługa | Funkcja | Opis |
 |---------|---------|-------------|
-| Tekst usługi Translator | [Pobieranie języków](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Pobierz pełną listę obsługiwanych języków na potrzeby tłumaczenia tekstu. |
-| Tekst usługi Translator | [Tłumaczenie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Przetłumacz tekst na ponad 60 języków. |
-| Tekst usługi Translator | [Wykrywanie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Wykryj język tekstu wejściowego. Obejmuje współczynnik ufności dla wykrywania. |
+| Tłumaczenie tekstu w usłudze Translator | [Pobieranie języków](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Pobierz pełną listę obsługiwanych języków na potrzeby tłumaczenia tekstu. |
+| Tłumaczenie tekstu w usłudze Translator | [Tłumaczenie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Przetłumacz tekst na ponad 60 języków. |
+| Tłumaczenie tekstu w usłudze Translator | [Wykrywanie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Wykryj język tekstu wejściowego. Obejmuje współczynnik ufności dla wykrywania. |
 | Sprawdzanie pisowni Bing | [Sprawdzanie pisowni](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Popraw błędy pisowni w celu zwiększenia dokładności tłumaczenia. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -85,7 +85,7 @@ Dodajmy do naszego projektu zestawy na potrzeby serializacji i deserializacji ob
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System. Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 1. Po dodaniu tych odwołań do projektu możesz kliknąć przycisk **OK**, aby zamknąć **Menedżera odwołań**.
 
 > [!NOTE]
@@ -120,8 +120,8 @@ Interfejs użytkownika obejmuje następujące składniki:
 | `ToLanguageComboBox` | ComboBox | Wyświetla tę samą listę języków co kontrolka `FromComboBox`, ale służy do wybierania docelowego języka tłumaczenia. |
 | `TextToTranslate` | TextBox | Umożliwia użytkownikowi wprowadzanie tekstu do przetłumaczenia. |
 | `TranslateButton` | Button | Użyj tego przycisku, aby przetłumaczyć tekst. |
-| `TranslatedTextLabel` | Label | Wyświetla tłumaczenie. |
-| `DetectedLanguageLabel` | Label | Wyświetla wykryty język tekstu do przetłumaczenia (`TextToTranslate`). |
+| `TranslatedTextLabel` | Etykieta | Wyświetla tłumaczenie. |
+| `DetectedLanguageLabel` | Etykieta | Wyświetla wykryty język tekstu do przetłumaczenia (`TextToTranslate`). |
 
 > [!NOTE]
 > Tworzymy ten formularz za pomocą kodu źródłowego XAML, jednak formularz możesz także utworzyć przy użyciu edytora w programie Visual Studio.

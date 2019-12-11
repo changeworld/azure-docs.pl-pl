@@ -1,18 +1,18 @@
 ---
-title: Jak używać narzędzia do etykietowania danych Azure Machine Learning
+title: Obrazy tagów w projekcie etykietowania
 title.suffix: Azure Machine Learning
-description: W tym artykule przedstawiono sposób korzystania z narzędzi do tagowania danych w Azure Machine Learning projektu etykietowania.
+description: Dowiedz się, jak używać narzędzi do tagowania danych w Azure Machine Learningym projekcie etykietowania.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bc7eaeefcef042417b29eb7c887cc19acf8c5c02
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: b36eed1918be2c769bcf74c0d8dee09a5bd62756
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688232"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978138"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Obrazy tagów w projekcie etykietowania
 
@@ -106,9 +106,9 @@ Aby usunąć *wszystkie* pola ograniczające na bieżącym obrazie, wybierz narz
 
 Po utworzeniu pól ograniczenia dla obrazu wybierz pozycję **Prześlij** , aby zapisać swoją służbę lub nie będzie można zapisać pracy w toku.
 
-## <a name="finish-up"></a>Zakończ
+## <a name="finish-up"></a>Zakończenie
 
-Gdy przesyłasz stronę oznakowanych danych, platforma Azure nowe dane bez etykiet do użytkownika z kolejki służbowej. Jeśli nie ma więcej dostępnych danych bez etykiet, zostanie wyświetlony komunikat z linkiem do strony głównej portalu.
+Gdy przesyłasz stronę oznakowanych danych, platforma Azure przypisze Ci nowe dane bez etykiet do użytkownika z kolejki służbowej. Jeśli nie ma więcej dostępnych danych bez etykiet, zostanie wyświetlony komunikat z linkiem do strony głównej portalu.
 
 Gdy skończysz etykietowanie, wybierz swoją nazwę w prawym górnym rogu portalu etykietowania, a następnie wybierz pozycję **Wyloguj się**. Jeśli nie wylogujesz się, ostatecznie platforma Azure przekroczy czas, a następnie przypisze dane do innego Labeler.
 

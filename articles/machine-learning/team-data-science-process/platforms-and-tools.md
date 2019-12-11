@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626373"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978513"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
@@ -25,7 +25,7 @@ Usługi danych i analiz dostępnych dla zespołów do nauki o danych przy użyci
 
 - Maszyny wirtualne do nauki o danych (Windows i Linux CentOS)
 - Klastry HDInsight Spark
-- SQL Data Warehouse
+- Hurtownia danych SQL
 - Azure Data Lake
 - Klastry HDInsight Hive
 - Azure File Storage
@@ -44,7 +44,7 @@ Maszyna wirtualna do nauki o danych oferowana zarówno Windows, jak i Linux prze
 - Power BI desktop dla Windows
 - SQL Server 2016 Developer Edition w systemie Windows / Postgres w systemie Linux
 
-Obejmuje również **narzędzia do uczenia Maszynowego i sztucznej Inteligencji** , takich jak xgboost, mxnet i Vowpal Wabbit.
+Obejmuje to również **Narzędzia ml i AI** , takie jak xgboost, Mxnet i Vowpal Wabbit.
 
 Obecnie jest dostępna w DSVM **Windows** i **Linux CentOS** systemów operacyjnych. Wybierz rozmiar maszyny wirtualnej DSVM (liczba rdzeni procesora CPU) i ilość pamięci odpowiednio do potrzeb projektów do nauki o danych, które planujesz wykonać na nim. 
 
@@ -59,7 +59,7 @@ Apache Spark to równoległego typu open source platforma, która obsługuje prz
 
 Tworząc klaster Spark w usłudze HDInsight, tworzysz zasoby obliczeniowe systemu Azure z zainstalowaną i skonfigurowaną platformą Spark. Tworzenie klastra Spark w HDInsight trwa około 10 minut. Store dane, które mają być przetwarzane w usłudze Azure Blob storage. Aby uzyskać informacje na temat korzystania z usługi Azure Blob Storage z klastrem, zobacz [używanie zgodnego systemem plików HDFS usługi Azure Blob storage z usługą Hadoop w HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Przetwarzanie TDSP zespołu firmy Microsoft został opublikowany dwóch end-to-end — wskazówki dotyczące sposobu używania klastrów usługi Azure HDInsight Spark do tworzenia rozwiązań do nauki o danych, co przy użyciu języka Python i innych Scala. Aby uzyskać więcej informacji na temat usługi Azure HDInsight **klastry Spark**, zobacz [omówienie: Platforma Apache Spark w systemie HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Python** klastrze Azure HDInsight Spark, zobacz [Omówienie programu do nauki o danych przy użyciu platformy Spark w usłudze Azure HDInsight](spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Scala** klastrze Azure HDInsight Spark, zobacz [do nauki o danych przy użyciu języka Scala i aparatu Spark na platformie Azure](scala-walkthrough.md). 
+Przetwarzanie TDSP zespołu firmy Microsoft został opublikowany dwóch end-to-end — wskazówki dotyczące sposobu używania klastrów usługi Azure HDInsight Spark do tworzenia rozwiązań do nauki o danych, co przy użyciu języka Python i innych Scala. Aby uzyskać więcej informacji na temat usługi Azure HDInsight **klastry Spark**, zobacz [Przegląd: platforma Apache Spark w systemie HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Python** klastrze Azure HDInsight Spark, zobacz [Omówienie programu do nauki o danych przy użyciu platformy Spark w usłudze Azure HDInsight](spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Scala** klastrze Azure HDInsight Spark, zobacz [do nauki o danych przy użyciu języka Scala i aparatu Spark na platformie Azure](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
@@ -73,7 +73,7 @@ Aby uzyskać więcej informacji na temat usługi Azure SQL Data Warehouse, zobac
 
 Usługi Azure data lake jest jako repozytorium całego przedsiębiorstwa każdego typu danych zebranych w jednej lokalizacji, przed wszelkie wymagania formalne lub schematu, które są narzucone. Ta elastyczność umożliwia wszystkich typów danych, które mają być przechowywane w usłudze data lake, niezależnie od jego rozmiaru i struktury lub szybkość ich przetwarzania. Organizacje mogą następnie korzystanie z usługi Hadoop lub zaawansowanych analiz, aby znaleźć wzorce w tych danych, jeziora. Data Lake może również służyć jako repozytorium w celu przygotowania danych tańszych przed curating dane i przenosić je do magazynu danych.
 
-Aby uzyskać więcej informacji na temat usługi Azure Data Lake, zobacz [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Aby dowiedzieć się, jak tworzyć rozwiązania do analizy skalowalnych danych end-to-end z usługą Azure Data Lake, zobacz [skalowalna analiza danych w usłudze Azure Data Lake: Przewodnik end-to-end](data-lake-walkthrough.md)
+Aby uzyskać więcej informacji na temat usługi Azure Data Lake, zobacz [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Aby dowiedzieć się, jak tworzyć rozwiązania do analizy skalowalnych danych end-to-end z usługą Azure Data Lake, zobacz [skalowalna analiza danych w usłudze Azure Data Lake: Instruktaż end-to-end](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Klastry usługi Azure HDInsight Hive (Hadoop)
@@ -103,7 +103,7 @@ Usługi R Services (In-database) obsługuje języka R typu open source dzięki k
 Przetwarzanie TDSP zespół firmy Microsoft został opublikowany dwa przewodniki end-to-end, które pokazują, jak tworzyć rozwiązania do analizy danych w SQL Server 2016 R Services: jeden dla programistów języka R i jeden dla deweloperów programu SQL. Aby uzyskać **programistom języka R**, zobacz [wskazówki End-to-End do nauki o danych](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Aby uzyskać **deweloperów SQL**, zobacz [Advanced Analytics w bazie danych dla deweloperów programu SQL (samouczek)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix"></a>Dodatek: Narzędzia umożliwiające konfigurowanie projektów do nauki o danych
+## <a name="appendix"></a>Dodatek: Narzędzia do skonfigurowania projekty do nauki o danych
 
 ### <a name="install-git-credential-manager-on-windows"></a>Zainstaluj program Git Credential Manager na Windows
 
@@ -124,28 +124,30 @@ Uruchom poniższe polecenie powłoki bash, aby zainstalować program Git na masz
 
 Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usługi git, należy dodać publiczny klucz SSH maszyny do usługi Azure DevOps, aby ta maszyna jest rozpoznawany przez usługom DevOps platformy Azure. Po pierwsze należy wygenerować publiczny klucz SSH i Dodaj klucz do kluczy publicznych SSH na stronie Ustawienia zabezpieczeń usługom DevOps platformy Azure. 
 
-- Aby wygenerować klucz SSH, uruchom dwa poniższe polecenia: 
+1. Aby wygenerować klucz SSH, uruchom dwa poniższe polecenia: 
 
-        ssh-keygen
-        cat .ssh/id_rsa.pub
+   ```
+   ssh-keygen
+   cat .ssh/id_rsa.pub
+   ```
+   
+   ![Polecenia, aby wygenerować klucz SSH](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-![Polecenia, aby wygenerować klucz SSH](./media/platforms-and-tools/resources-1-generate_ssh.png)
-
-- Skopiuj cały ssh w tym klucza *ssh-rsa*. 
-- Zaloguj się do usługi Azure DevOps. 
-- Kliknij przycisk **< imię i nazwisko\>**  w prawym górnym rogu strony i kliknij przycisk **zabezpieczeń**. 
+1. Skopiuj cały ssh w tym klucza *ssh-rsa*. 
+1. Zaloguj się do usługi Azure DevOps. 
+1. Kliknij przycisk **< imię i nazwisko\>**  w prawym górnym rogu strony i kliknij przycisk **zabezpieczeń**. 
     
-    ![Kliknij swoją nazwę użytkownika, a następnie kliknij przycisk zabezpieczeń](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![Kliknij swoją nazwę użytkownika, a następnie kliknij przycisk zabezpieczeń](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- Kliknij przycisk **kluczy publicznych SSH**i kliknij przycisk **+ Dodaj**. 
+1. Kliknij przycisk **kluczy publicznych SSH**i kliknij przycisk **+ Dodaj**. 
 
-    ![Kliknij przycisk kluczy publicznych SSH, a następnie kliknij pozycję + Dodaj](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![Kliknij przycisk kluczy publicznych SSH, a następnie kliknij pozycję + Dodaj](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Wklej ssh key właśnie został skopiowany do pola tekstowego, a następnie zapisz.
+1. Wklej ssh key właśnie został skopiowany do pola tekstowego, a następnie zapisz.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Pełne przewodniki end-to-end, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy** znajdują się także. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) tematu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 
-Przykłady wykonywania czynności w procesie nauki o danych zespołu, korzystających z usługi Azure Machine Learning Studio, zobacz [za pomocą usługi Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) ścieżka szkoleniowa dla usługi.
+Aby zapoznać się z przykładami, które pokazują, jak wykonać kroki w procesie nauki danych zespołu przy użyciu Azure Machine Learning Studio (klasyczny), zobacz ścieżkę [usługi Azure ml](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) Learning.

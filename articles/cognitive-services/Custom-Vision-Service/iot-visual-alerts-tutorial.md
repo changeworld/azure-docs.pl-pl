@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: computer-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888274"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978036"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Samouczek: używanie Custom Vision z urządzeniem IoT do zgłaszania Stanów wizualnych
 
@@ -112,11 +112,11 @@ Aby powtórzyć ten proces z własnym scenariuszem:
 1. Po zakończeniu wybierz przycisk **szkolenie** .
 1. Po zakończeniu szkolenia aplikacja wykryje, że dostępna jest przeszkolony iteracja. Rozpocznie się proces eksportowania przeszkolonego modelu do ONNX i pobierania go na urządzenie.
 
-## <a name="use-the-trained-model"></a>Korzystanie z modelu przeszkolonego
+## <a name="use-the-trained-model"></a>Używanie wytrenowanego modelu
 
 Po pobraniu przez aplikację przeszkolonego modelu nastąpi przełączenie do stanu **oceniania** i rozpoczęcie oceniania obrazów z aparatu w pętli ciągłej.
 
-Dla każdego przechwytywanego obrazu aplikacja wyświetli na ekranie górny tag. Jeśli nie rozpoznaje stanu wizualnego, wyświetli **Brak dopasowań**. Aplikacja wysyła również te komunikaty do IoT Hub, a w przypadku wykrycia klasy, komunikat będzie zawierać etykietę, wynik pewności i właściwość o nazwie `detectedClassAlert`, która może być używana przez IoT Hub klientów zainteresowanych wykonywaniem szybkiego routingu komunikatów na podstawie propa rties.
+Dla każdego przechwytywanego obrazu aplikacja wyświetli na ekranie górny tag. Jeśli nie rozpoznaje stanu wizualnego, wyświetli **Brak dopasowań**. Aplikacja wysyła również te komunikaty do IoT Hub, a w przypadku wykrycia klasy, komunikat będzie zawierać etykietę, wynik pewności i właściwość o nazwie `detectedClassAlert`, która może być używana przez IoT Hub klientów zainteresowanych wykonywaniem szybkiego routingu komunikatów na podstawie właściwości.
 
 Ponadto przykład korzysta z [biblioteki rozpoznawania wykrywania](https://github.com/emmellsoft/RPi.SenseHat) , aby wykryć, kiedy jest uruchomiona w Raspberry Pi z jednostką Hat, tak aby można było go używać jako danych wyjściowych, ustawiając wszystkie sygnalizatory wyświetlania na czerwono, gdy wykryje klasę i puste, gdy nie wykryje niczego.
 

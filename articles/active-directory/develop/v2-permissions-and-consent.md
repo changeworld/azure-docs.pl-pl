@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ff874ee74864c84c976096ac5f7fa4b20cfab48
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271512"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997007"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgoda w punkcie końcowym platformy tożsamości firmy Microsoft
 
@@ -86,7 +86,7 @@ Implementacja platformy tożsamości firmy Microsoft w programie OpenID Connect 
 
 Jeśli aplikacja wykonuje Logowanie przy użyciu programu [OpenID Connect Connect](active-directory-v2-protocols.md), musi zażądać zakresu `openid`. Zakres `openid` jest wyświetlany na stronie wyrażanie zgody na konto służbowe jako uprawnienie "Logowanie do Ciebie" oraz na stronie zgody na konto Microsoft osobistą jako "Wyświetlanie profilu i łączenie się z aplikacjami i usługami przy użyciu konto Microsoft". Dzięki temu uprawnieniu aplikacja może otrzymać unikatowy identyfikator dla użytkownika w postaci `sub`go żądania. Zapewnia również dostęp aplikacji do punktu końcowego UserInfo. Zakresu `openid` można użyć w punkcie końcowym tokenów platformy tożsamości firmy Microsoft w celu uzyskania tokenów identyfikatorów, które mogą być używane przez aplikację do uwierzytelniania.
 
-### <a name="email"></a>email
+### <a name="email"></a>e-mail
 
 Zakres `email` może być używany z zakresem `openid` i innymi. Daje ona aplikacji dostęp do podstawowego adresu e-mail użytkownika w formie `email`go. `email` oświadczenia jest dołączany do tokenu tylko wtedy, gdy adres e-mail jest skojarzony z kontem użytkownika, które nie zawsze jest przypadkiem. Jeśli używa zakresu `email`, aplikacja powinna zostać przygotowana do obsługi przypadku, w którym `email` nie istnieje w tokenie.
 
@@ -98,7 +98,10 @@ Zakres `profile` może być używany z zakresem `openid` i innymi. Zapewnia ona 
 
 [Zakres`offline_access`](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) umożliwia aplikacji dostęp do zasobów w imieniu użytkownika przez dłuższy czas. Na stronie zgoda ten zakres jest wyświetlany jako uprawnienie "Obsługuj dostęp do danych, do których masz dostęp. Gdy użytkownik zatwierdza zakres `offline_access`, aplikacja może odbierać tokeny odświeżania z punktu końcowego tokenu Microsoft Identity platform. Tokeny odświeżania są długotrwałe. Twoja aplikacja może uzyskać nowe tokeny dostępu, ponieważ wygasły.
 
-Jeśli aplikacja nie zażąda jawnie zakresu `offline_access`, nie otrzyma tokenów odświeżania. Oznacza to, że po zrealizowaniu kodu autoryzacji w [przepływie kodu autoryzacji OAuth 2,0](active-directory-v2-protocols.md)otrzymasz tylko token dostępu z punktu końcowego `/token`. Token dostępu jest ważny przez krótki czas. Token dostępu zazwyczaj wygasa w ciągu godziny. W tym momencie aplikacja musi przekierować użytkownika z powrotem do punktu końcowego `/authorize`, aby uzyskać nowy kod autoryzacji. W trakcie tego przekierowania, w zależności od typu aplikacji, użytkownik może potrzebować ponownie wprowadzić swoje poświadczenia lub wyrazić zgodę ponownie na uprawnienia. Mimo że `offline_access` zakres jest automatycznie żądany przez serwer, klient nadal musi zażądać go w celu uzyskania tokenów odświeżania.
+> [!NOTE]
+> To uprawnienie pojawia się na wszystkich ekranach wyrażania zgody dzisiaj, nawet w przypadku przepływów, które nie zapewniają tokenu odświeżania ( [przepływ niejawny](v2-oauth2-implicit-grant-flow.md)).  Dotyczy to scenariuszy, w których klient może rozpocząć pracę w niejawnym przepływie, a następnie przechodzić do przepływu kodu, w którym oczekiwany jest token odświeżania.
+
+Na platformie tożsamości firmy Microsoft (żądania wysłane do punktu końcowego v 2.0) aplikacja musi jawnie zażądać zakresu `offline_access`, aby otrzymywać tokeny odświeżania. Oznacza to, że po zrealizowaniu kodu autoryzacji w [przepływie kodu autoryzacji OAuth 2,0](active-directory-v2-protocols.md)otrzymasz tylko token dostępu z punktu końcowego `/token`. Token dostępu jest ważny przez krótki czas. Token dostępu zazwyczaj wygasa w ciągu godziny. W tym momencie aplikacja musi przekierować użytkownika z powrotem do punktu końcowego `/authorize`, aby uzyskać nowy kod autoryzacji. W trakcie tego przekierowania, w zależności od typu aplikacji, użytkownik może potrzebować ponownie wprowadzić swoje poświadczenia lub wyrazić zgodę ponownie na uprawnienia. 
 
 Aby uzyskać więcej informacji na temat uzyskiwania i używania tokenów odświeżania, zobacz [informacje dotyczące protokołu Microsoft Identity platform](active-directory-v2-protocols.md).
 
@@ -123,7 +126,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 Po wprowadzeniu poświadczeń przez użytkownika punkt końcowy platformy tożsamości firmy Microsoft wyszukuje pasujący rekord *zgody użytkownika*. Jeśli użytkownik nie wyraził zgody na jakiekolwiek z żądanych uprawnień w przeszłości, ani nie ma dostępu administratora do tych uprawnień w imieniu całej organizacji, punkt końcowy platformy tożsamości firmy Microsoft prosi użytkownika o przyznanie żądanych uprawnień.
 
 > [!NOTE]
-> W tym momencie `offline_access` ("zapewnianie dostępu do danych, do których masz dostęp, do") i `user.read` ("Logowanie użytkownika i odczytanie Twojego profilu") są automatycznie dołączane do początkowej zgody na aplikację.  Te uprawnienia są zwykle wymagane w celu uzyskania odpowiedniej funkcjonalności aplikacji — `offline_access` zapewnia aplikacji dostęp do tokenów odświeżania, krytycznych dla aplikacji natywnych i sieci Web, podczas gdy `user.read` zapewnia dostęp do żądania `sub`, umożliwiając klientowi lub aplikacji prawidłowe zidentyfikowanie użytkownika w czasie i dostęp do informacji o użytkowniku podstawowe.  
+> W tym momencie `offline_access` ("zapewnianie dostępu do danych, do których masz dostęp, do") i `user.read` ("Logowanie użytkownika i odczytanie Twojego profilu") są automatycznie dołączane do początkowej zgody na aplikację.  Te uprawnienia są zwykle wymagane w celu uzyskania prawidłowej funkcjonalności aplikacji — `offline_access` umożliwia aplikacjom odświeżenie tokenów, krytycznych dla aplikacji natywnych i sieci Web, a jednocześnie `user.read` zapewnia dostęp do `sub`ego żądania, umożliwiając klientowi lub aplikacji prawidłowe zidentyfikowanie użytkownika w czasie i dostęp do informacji o użytkowniku podstawowe.  
 
 ![Przykładowy zrzut ekranu pokazujący zgodę na konto służbowe](./media/v2-permissions-and-consent/work_account_consent.png)
 

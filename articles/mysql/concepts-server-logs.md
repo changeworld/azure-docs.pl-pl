@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 6bd99a200a8f9e6be6d155a334b9b06ac05eacc3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770847"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972187"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Wolne dzienniki zapytań w Azure Database for MySQL
 W Azure Database for MySQL dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
@@ -21,9 +21,11 @@ Aby uzyskać więcej informacji na temat dziennika wolnych zapytań programu MyS
 ## <a name="access-slow-query-logs"></a>Dostęp do dzienników wolnych zapytań
 Można wyświetlać i pobierać Azure Database for MySQL wolnych dzienników zapytań przy użyciu Azure Portal i interfejsu wiersza polecenia platformy Azure.
 
-W Azure Portal wybierz serwer Azure Database for MySQL. W obszarze nagłówek **monitorowania** wybierz stronę **Dzienniki serwera** .
+W witrynie Azure portal wybierz usługi Azure Database for MySQL server. W obszarze nagłówek **monitorowania** wybierz stronę **Dzienniki serwera** .
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i dostęp do dzienników wolnych zapytań za pomocą interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-in-cli.md)
+
+Podobnie można potokować dzienniki, aby Azure Monitor przy użyciu dzienników diagnostycznych. Aby uzyskać więcej informacji, zobacz [poniżej](concepts-server-logs.md#diagnostic-logs) .
 
 ## <a name="log-retention"></a>Przechowywanie dziennika
 Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki zostaną usunięte do momentu udostępnienia miejsca. 
@@ -39,6 +41,7 @@ Inne parametry, które można dostosować, obejmują:
 - **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE w instrukcjach zapisanych do slow_query_log.
 - **log_queries_not_using_indexes**: określa, czy zapytania, które nie używają indeksów są rejestrowane w slow_query_log
 - **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań, które nie są indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr zacznie obowiązywać, gdy log_queries_not_using_indexes jest ustawiona na wartość włączone.
+- **log_output**: Jeśli "plik" umożliwia zapisanie dziennika wolnych zapytań do lokalnego magazynu serwera i Azure monitor dzienników diagnostycznych. Jeśli "Brak", dziennik wolnych zapytań zostanie zapisany tylko w magazynie serwera lokalnego. 
 
 > [!Note]
 > W przypadku `sql_text`Dziennik zostanie obcięty, jeśli przekracza 2048 znaków.
@@ -58,10 +61,10 @@ W poniższej tabeli opisano zawartość poszczególnych dzienników. W zależno�
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated` [UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
+| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |

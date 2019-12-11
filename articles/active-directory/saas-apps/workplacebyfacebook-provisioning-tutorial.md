@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574266"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996939"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie miejsca pracy przez serwis Facebook w celu automatycznego aprowizacji użytkowników
 
@@ -76,7 +76,7 @@ Usługa Azure AD obsługuje automatyczne synchronizowanie szczegółowych inform
 
 4. Ustaw **tryb aprowizacji** na **automatyczny**. 
 
-    ![Aprowizacji](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![aprowizacji](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
 5. W sekcji **poświadczenia administratora** wprowadź token dostępu z miejsca pracy przez administratora serwisu Facebook i ustaw wartość adresu URL dzierżawy na `https://www.facebook.com/scim/v1/`. Zobacz te [instrukcje](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) dotyczące tworzenia tokenu dostępu do miejsca pracy. 
 
@@ -99,9 +99,9 @@ Aby uzyskać więcej informacji na temat konfigurowania automatycznej aprowizacj
 Możesz teraz utworzyć konto testowe. Poczekaj aż do 20 minut, aby sprawdzić, czy konto zostało zsynchronizowane z miejscem pracy w serwisie Facebook.
 
 > [!NOTE]
-> Pracujemy ściśle z miejscem pracy przez zespół w serwisie Facebook, aby upewnić się, że aplikacja usługi Azure AD została zatwierdzona i spełnia nowe wytyczne. Termin "miejsce pracy w serwisie Facebook" jest 16 grudnia i oczekujemy, że zostanie on zrealizowany. W tym czasie nie jest oczekiwana żadna liczba klientów. 28-luty-2020 klienci będą musieli przejść do nowej integracji. Wyślemy tutaj ogłoszenie zaraz po udostępnieniu ścieżki migracji.    
+> Aplikacja usługi Azure AD innej firmy w miejscu pracy przez serwis Facebook została zatwierdzona. Klienci nie będą mieli przerw w świadczeniu usług w 16 grudnia. W obszarze roboczym przez konsolę administracyjną serwisu Facebook zostanie wyświetlona Uwaga wskazująca termin 28 lutego – 2020, gdy konieczne będzie przejście do nowej aplikacji. Pracujemy nad zachowaniem tego przejścia, jak to możliwe, i udostępnienia aktualizacji w tym miejscu na końcu miesiąca.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

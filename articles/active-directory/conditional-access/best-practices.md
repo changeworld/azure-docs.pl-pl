@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175768"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963940"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory
 
@@ -35,7 +35,7 @@ Podczas tworzenia nowych zasad nie wybrano żadnych użytkowników, grup, aplika
 
 Aby zasady działały, należy skonfigurować:
 
-| Elementy           | Jaka                                  | Zalet |
+| Elementy           | Jak                                  | Zalet |
 | :--            | :--                                  | :-- |
 | **Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwienie kontroli nad sposobem, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
 | **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która ma uprawnienia dostępu do wybranych aplikacji w chmurze. | Zasady dostępu warunkowego, które nie mają przypisanych użytkowników i grup, nigdy nie są wyzwalane. |
@@ -45,17 +45,18 @@ Aby zasady działały, należy skonfigurować:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Jak są stosowane zasady dostępu warunkowego?
 
-Podczas uzyskiwania dostępu do aplikacji w chmurze mogą być stosowane więcej niż jedna zasada dostępu warunkowego. W takim przypadku wszystkie zasady, które mają zastosowanie, muszą być spełnione. Jeśli na przykład jedna zasada wymaga usługi MFA, a druga wymaga zgodnego urządzenia, musisz przejść przez usługę MFA i użyć zgodnego urządzenia. 
+Podczas uzyskiwania dostępu do aplikacji w chmurze mogą być stosowane więcej niż jedna zasada dostępu warunkowego. W takim przypadku wszystkie zasady, które mają zastosowanie, muszą być spełnione. Na przykład jeśli jedna zasada wymaga uwierzytelniania wieloskładnikowego (MFA), a inna wymaga zgodnego urządzenia, należy przeprowadzić uwierzytelnianie wieloskładnikowe i korzystać z zgodnego urządzenia. 
 
 Wszystkie zasady są wymuszane w dwóch fazach:
 
-- W **pierwszej** fazie są oceniane wszystkie zasady i wszystkie kontrole dostępu, które nie zostały spełnione. 
-
-- W **drugiej** fazie zostanie wyświetlony monit o spełnienie wymagań, które nie zostały spełnione. Jeśli jedna z zasad blokuje dostęp, zostanie zablokowana i nie zostanie wyświetlony monit o spełnienie innych kontroli zasad. Jeśli żaden z tych zasad nie zostanie zablokowany, zostanie wyświetlony monit o spełnienie innych kontroli zasad w następującej kolejności:
-
-   ![Zamów](./media/best-practices/06.png)
-    
-   Dostawcy zewnętrznych usług MFA i warunki użytkowania są dalej.
+- Etap 1: 
+   - Kolekcja Szczegółowa: Zbierz szczegóły, aby zidentyfikować zasady, które zostały już spełnione.
+   - W tej fazie użytkownicy mogą wyświetlić monit o podanie certyfikatu, jeśli zgodność urządzenia jest częścią zasad dostępu warunkowego. Ten monit może wystąpić w przypadku aplikacji przeglądarki, gdy system operacyjny urządzenia nie jest systemem Windows 10.
+   - Faza 1 oceny zasad występuje dla wszystkich włączonych zasad i zasad w [trybie tylko do raportowania](concept-conditional-access-report-only.md).
+- Etap 2:
+   - Wymuszanie: biorąc pod uwagę Szczegóły zebrane w fazie 1, Zażądaj od użytkownika spełnienia wszelkich dodatkowych wymagań, które nie zostały spełnione.
+   - Zastosuj wyniki do sesji. 
+   - Faza 2 oceny zasad występuje dla wszystkich włączonych zasad.
 
 ### <a name="how-are-assignments-evaluated"></a>Jak są oceniane przypisania?
 
@@ -140,7 +141,7 @@ Rozważ Migrowanie zasad, które nie zostały utworzone w Azure Portal, poniewa�
 - Można zarządzać wszystkimi zasadami dostępu warunkowego w jednej centralnej lokalizacji.
 - Klasyczny portal Azure został wycofany.   
 
-Aby uzyskać więcej informacji, zobacz [Migrowanie zasad klasycznych w Azure Portal](policy-migration.md).
+Aby uzyskać więcej informacji, zobacz artykuł [Migrate classic policies in the Azure portal (Migrowanie zasad klasycznych w witrynie Azure Portal)](policy-migration.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

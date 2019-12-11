@@ -3,17 +3,17 @@ title: Konfigurowanie szablonu urządzenia w aplikacji IoT Central platformy Azu
 description: Dowiedz się, jak skonfigurować szablon urządzenia z pomiarami, ustawieniami, właściwościami, regułami i pulpitem nawigacyjnym.
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/23/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e3925f2d6c2a1034cc96475721de7936deeb4a9d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 648d93b996cf8d4ef6a8beb323bb1ebce9d4c9c0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895633"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974380"
 ---
 # <a name="set-up-and-manage-a-device-template-preview-features"></a>Konfigurowanie szablonu urządzenia i zarządzanie nim (funkcje w wersji zapoznawczej)
 
@@ -140,10 +140,10 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji właściwo
 | ----- | ----------- |
 | Nazwa wyświetlana | Nazwa wyświetlana wartości właściwości używanej na pulpitach nawigacyjnych i formularzach. |
 | Nazwa | Nazwa właściwości. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
-| Typ możliwości | wartość. |
+| Typ możliwości | Wartość. |
 | Typ semantyczny | Typ semantyczny właściwości, takiej jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
 | Schemat | Typ danych właściwości, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. Schemat nie jest dostępny dla typów semantyki zdarzenia i stanu. |
-| Zapisywalny | Jeśli właściwość nie jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central. Jeśli właściwość jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central i IoT Central może wysyłać do urządzenia aktualizacje właściwości.
+| Z możliwością zapisu | Jeśli właściwość nie jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central. Jeśli właściwość jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central i IoT Central może wysyłać do urządzenia aktualizacje właściwości.
 | Ważność | Dostępne tylko dla typu semantycznego zdarzenia. **Błąd**, **informacje**lub **Ostrzeżenie**. |
 | Wartości stanu | Dostępne tylko dla typu semantyki stanu. Zdefiniuj możliwe wartości stanu, z których każdy ma nazwę wyświetlaną, nazwę, typ wyliczenia i wartość. |
 | Jednostka | Jednostka dla wartości właściwości, takiej jak **mph**, **%** lub **&deg;C**. |
@@ -165,7 +165,7 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji polecenia:
 | Polecenie | SynchronousExecutionType. |
 | Komentarz | Wszelkie komentarze dotyczące funkcji polecenia. |
 | Opis | Opis możliwości polecenia. |
-| Żądanie | Jeśli ta funkcja jest włączona, definicja parametru żądania, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
+| Prośba | Jeśli ta funkcja jest włączona, definicja parametru żądania, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
 | Odpowiedź | Jeśli ta funkcja jest włączona, definicja odpowiedzi polecenia, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
 
 ## <a name="manage-an-interface"></a>Zarządzanie interfejsem
@@ -189,7 +189,7 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla właściwości chm
 
 ## <a name="add-customizations"></a>Dodawanie dostosowań
 
-Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Można na przykład:
+Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Możesz na przykład:
 
 - Dostosuj nazwę wyświetlaną i jednostki możliwości.
 - Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.

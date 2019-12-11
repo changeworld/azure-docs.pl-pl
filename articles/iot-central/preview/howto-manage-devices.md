@@ -3,17 +3,17 @@ title: Zarządzanie urządzeniami w aplikacji IoT Central platformy Azure | Micr
 description: Jako operator, Dowiedz się, jak zarządzać urządzeniami w aplikacji IoT Central platformy Azure.
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 07afe441b9463cace9076a07d89e762586730e1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bab5411b63cb71c47656696bd8049855ca797a57
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894775"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974108"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-preview-features"></a>Zarządzanie urządzeniami w aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -51,7 +51,7 @@ Aby dodać urządzenie do aplikacji usługi Azure IoT Central:
 
 1. Zmień przełącznik **symulowany** na **włączony** lub **wyłączony**. Rzeczywiste urządzenie dotyczy urządzenia fizycznego połączonego z aplikacją Azure IoT Central. Urządzenie symulowane ma przykładowe dane wygenerowane przez usługę Azure IoT Central.
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 1. To urządzenie jest teraz widoczne na liście urządzeń dla tego szablonu. Wybierz urządzenie, aby wyświetlić stronę szczegóły urządzenia, która zawiera wszystkie widoki dla urządzenia.
 
@@ -71,7 +71,7 @@ Aby przeprowadzić zbiorczą rejestrację urządzeń w aplikacji:
     > [!NOTE]
     > Jeśli nie masz jeszcze szablonu urządzenia, możesz zaimportować urządzenia ze **wszystkich urządzeń** i zarejestrować je bez szablonu. Po zaimportowaniu urządzeń można migrować je do szablonu.
 
-1. Wybierz pozycję **Importuj**.
+1. Wybierz pozycję **Import** (Importuj).
 
     ![Importuj akcję](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -124,7 +124,7 @@ Aby wyeksportować zbiorczo urządzenia z aplikacji:
 
 1. Wybierz urządzenia, które chcesz wyeksportować, a następnie wybierz akcję **Eksportuj** .
 
-    ![Eksportowanie](./media/howto-manage-devices/export1a.png)
+    ![Eksportuj](./media/howto-manage-devices/export1a.png)
 
 
 1. Rozpocznie się proces eksportowania. Stan można śledzić za pomocą panelu Operacje na urządzeniu.
@@ -157,7 +157,7 @@ Aby usunąć urządzenie prawdziwe lub symulowane z aplikacji IoT Central platfo
 
 1. Użyj narzędzi filtru do filtrowania i wyszukiwania urządzeń. Zaznacz pole wyboru obok pozycji urządzenia do usunięcia.
 
-1. Wybierz pozycję **Usuń**. Stan tego usunięcia można śledzić w panelu Operacje na urządzeniu.
+1. Wybierz przycisk **Usuń**. Stan tego usunięcia można śledzić w panelu Operacje na urządzeniu.
 
 ## <a name="change-a-property"></a>Zmiana właściwości
 

@@ -2,19 +2,19 @@
 title: Bezpieczne artefakty w szablonach
 description: Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager.
 author: mumian
-ms.date: 10/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1a9d209e843d8e9a1735a3c6907b00d85be6580b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326438"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971739"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Samouczek: bezpieczne artefakty we wdrożeniach szablonów Azure Resource Manager
 
-Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager za pomocą konta usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS). Artefakty wdrożenia to dowolne pliki oprócz pliku szablonu głównego, które są potrzebne do ukończenia wdrożenia. Na przykład w [samouczku: Importowanie plików SQL BACPAC za pomocą szablonów Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), główny szablon tworzy Azure SQL Database; wywołuje również plik BACPAC, aby tworzyć tabele i wstawiać dane. Artefaktem jest na przykład plik BACPAC. Artefakt jest przechowywany na koncie usługi Azure Storage z dostępem publicznym. W tym samouczku użyjesz sygnatury dostępu współdzielonego w celu przyznania ograniczonego dostępu do pliku BACPAC na swoim koncie usługi Azure Storage. Aby uzyskać więcej informacji o sygnaturze dostępu współdzielonego, zobacz [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Używanie sygnatur dostępu współdzielonego).
+Dowiedz się, jak zabezpieczać artefakty używane w szablonach usługi Azure Resource Manager za pomocą konta usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS). Artefakty wdrożenia to dowolne pliki oprócz pliku szablonu głównego, które są potrzebne do ukończenia wdrożenia. Na przykład w [samouczku: Importowanie plików SQL BACPAC za pomocą szablonów Azure Resource Manager](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), główny szablon tworzy Azure SQL Database; wywołuje również plik BACPAC, aby tworzyć tabele i wstawiać dane. Plik BACPAC to artefakt, który jest przechowywany na koncie usługi Azure Storage. Klucz konta magazynu został użyty w celu uzyskania dostępu do artefaktu. W tym samouczku użyjesz sygnatury dostępu współdzielonego w celu przyznania ograniczonego dostępu do pliku BACPAC na swoim koncie usługi Azure Storage. Aby uzyskać więcej informacji o sygnaturze dostępu współdzielonego, zobacz [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Używanie sygnatur dostępu współdzielonego).
 
 Aby dowiedzieć się, jak zabezpieczyć połączony szablon, zobacz [Samouczek: Tworzenie połączonych Azure Resource Manager szablonów](./resource-manager-tutorial-create-linked-templates.md).
 
@@ -40,6 +40,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
 
 ## <a name="prepare-a-bacpac-file"></a>Przygotowywanie pliku BACPAC
@@ -52,77 +53,63 @@ W tej sekcji przygotujesz plik BACPAC, aby można było bezpiecznie uzyskiwać d
 * Przekazywanie pliku BACPAC do kontenera.
 * Pobieranie tokenu SAS pliku BACPAC.
 
-Informacje umożliwiające zautomatyzowanie tych czynności przy użyciu skryptu programu PowerShell znajdują się w sekcji [Przekazywanie połączonego szablonu](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
+1. Wybierz pozycję **Wypróbuj** , aby otworzyć usługę Cloud Shell, a następnie wklej następujący skrypt programu PowerShell do okna powłoki.
 
-### <a name="download-the-bacpac-file"></a>Pobieranie pliku BACPAC
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name"   # This name is used to generate names for Azure resources, such as storage account name.
+    $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
 
-Pobierz [plik BACPAC](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) i zapisz go na lokalnym komputerze, pozostawiając nazwę **SQLDatabaseExtension.bacpac**.
+    $resourceGroupName = $projectName + "rg"
+    $storageAccountName = $projectName + "store"
+    $containerName = "bacpacfile" # The name of the Blob container to be created.
 
-### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
+    $bacpacURL = "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac"
+    $bacpacFileName = "SQLDatabaseExtension.bacpac" # A file name used for downloading and uploading the BACPAC file.
 
-1. Wybierz poniższy obraz, aby otworzyć szablon usługi Resource Manager w witrynie Azure Portal.
+    # Download the bacpac file
+    Invoke-WebRequest -Uri $bacpacURL -OutFile "$home/$bacpacFileName"
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json" target="_blank"><img src="./media/resource-manager-tutorial-secure-artifacts/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Wprowadź następujące właściwości:
+    # Create a resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-    * **Subskrypcja**: wybierz subskrypcję platformy Azure.
-    * **Grupa zasobów**: wybierz pozycję **Utwórz nową** i nadaj jej nazwę. Grupa zasobów jest kontenerem zasobów platformy Azure używanym na potrzeby zarządzania. W tym samouczku możesz użyć tej samej grupy zasobów dla konta magazynu i bazy danych Azure SQL Database. Zanotuj nazwę tej grupy zasobów, ponieważ będzie ona później potrzebna podczas tworzenia bazy danych Azure SQL Database w następnych samouczkach.
-    * **Lokalizacja**: Wybierz region. Na przykład **Środkowe stany USA**.
-    * **Typ konta magazynu**: użyj wartości domyślnej — **Standard_LRS**.
-    * **Lokalizacja**: Użyj wartości domyślnej, która jest **[resourceName (). Location]** . Oznacza to, że używasz lokalizacji grupy zasobów dla konta magazynu.
-    * **Wyrażam zgodę na powyższe warunki i postanowienia**: (zaznaczone)
-3. Wybierz pozycję **Kup**.
-4. Wybierz ikonę powiadomienia (ikonę dzwonka) w prawym górnym rogu portalu, aby wyświetlić stan wdrożenia.
+    # Create a storage account
+    $storageAccount = New-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName `
+        -Location $location `
+        -SkuName "Standard_LRS"
 
-    ![Okienko powiadomień portalu z samouczka dotyczącego usługi Resource Manager](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. Po pomyślnym wdrożeniu konta magazynu wybierz pozycję **Przejdź do grupy zasobów** w okienku powiadomienia, aby otworzyć grupę zasobów.
+    $context = $storageAccount.Context
 
-### <a name="create-a-blob-container"></a>Tworzenie kontenera obiektów blob
+    # Create a container
+    New-AzStorageContainer -Name $containerName -Context $context
 
-Kontener obiektów blob jest wymagany, aby można było przekazywać pliki.
+    # Upload the bacpac file
+    Set-AzStorageBlobContent `
+        -Container $containerName `
+        -File "$home/$bacpacFileName" `
+        -Blob $bacpacFileName `
+        -Context $context
 
-1. Wybierz konto magazynu, aby je otworzyć. W grupie zasobów zobaczysz tylko jedno konto magazynu. Nazwa Twojego konta magazynu będzie inna niż ta pokazana na poniższym zrzucie ekranu.
+    # Generate a SAS token
+    $bacpacURI = New-AzStorageBlobSASToken `
+        -Context $context `
+        -Container $containerName `
+        -Blob $bacpacFileName `
+        -Permission r `
+        -ExpiryTime (Get-Date).AddHours(8.0) `
+        -FullUri
 
-    ![Konto magazynu z samouczka dotyczącego usługi Resource Manager](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
+    $str = $bacpacURI.split("?")
 
-2. Wybierz kafelek **Obiekty blob**.
+    Write-Host "You need the blob url and the SAS token later in the tutorial:"
+    Write-Host $str[0]
+    Write-Host (-join ("?", $str[1]))
 
-    ![Kafelek Obiekty blob z samouczka dotyczącego usługi Resource Manager](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. Wybierz pozycję **+ Kontener** w górnej części ekranu, aby utworzyć nowy kontener.
-4. Wprowadź następujące wartości:
+    Write-Host "Press [ENTER] to continue ..."
+    ```
 
-    * **Nazwa**: wprowadź **sqlbacpac**.
-    * **Poziom dostępu publicznego**: użyj wartości domyślnej **Prywatny (bez dostępu anonimowego)** .
-5. Kliknij przycisk **OK**.
-6. Wybierz pozycję **sqlbacpac**, aby otworzyć nowo utworzony kontener.
-
-### <a name="upload-the-bacpac-file-to-the-container"></a>Przekazywanie pliku BACPAC do kontenera
-
-1. Wybierz pozycję **Przekaż**.
-2. Wprowadź następujące wartości:
-
-    * **Pliki**: postępując zgodnie z instrukcjami, aby wybrać pobrany wcześniej plik BACPAC. Jego nazwa domyślna to **SQLDatabaseExtension.bacpac**.
-    * **Typ uwierzytelniania**: wybierz pozycję **SAS**.  Wartość *SAS* jest wartością domyślną.
-3. Wybierz pozycję **Przekaż**.  Po pomyślnym przekazaniu pliku jego nazwa będzie widoczna w kontenerze.
-
-### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />Generowanie tokenu SAS
-
-1. Kliknij prawym przyciskiem myszy plik **SQLDatabaseExtension.bacpac** w kontenerze, a następnie wybierz polecenie **Generuj sygnaturę dostępu współdzielonego**.
-2. Wprowadź następujące wartości:
-
-    * **Uprawnienie**: Użyj ustawienia domyślnego, **Odczytaj**.
-    * **Data/godzina rozpoczęcia i wygaśnięcia**: wartość domyślna to osiem godzin do użycia z tokenem SAS. Jeśli potrzebujesz więcej czasu na ukończenie tego samouczka, zaktualizuj wartość **Data wygaśnięcia**.
-    * **Dozwolone adresy IP**: pozostaw to pole puste.
-    * **Dozwolone protokoły**: Użyj wartości domyślnej: **https**.
-    * **Klucz podpisywania**: Użyj wartości domyślnej: **klucz 1**.
-3. Wybierz pozycję **Generuj token i adres URL sygnatury dostępu współdzielonego obiektu blob**.
-4. Utwórz kopię **adresu URL sygnatury dostępu współdzielonego obiektu blob**. W środku adresu URL jest nazwa pliku **SQLDatabaseExtension.bacpac**.  Ta nazwa pliku dzieli adres URL na trzy części:
-
-   - **Lokalizacja artefaktu**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Upewnij się, że lokalizacja kończy się znakiem „/”.
-   - **Nazwa pliku BACPAC**: SQLDatabaseExtension. BACPAC.
-   - **Token sygnatury dostępu współdzielonego lokalizacji artefaktu**: Upewnij się, że token poprzedza znak "?".
-
-     Te trzy wartości będą Ci potrzebne w sekcji [Wdrażanie szablonu](#deploy-the-template).
+1. Zapisz adres URL pliku BACPAC i token sygnatury dostępu współdzielonego. Te wartości są wymagane podczas wdrażania szablonu.
 
 ## <a name="open-an-existing-template"></a>Otwieranie istniejącego szablonu
 
@@ -132,15 +119,15 @@ W tej sesji należy zmodyfikować szablon utworzony w [samouczku: Importowanie p
 2. W polu **File name (Nazwa pliku)** wklej następujący adres URL:
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy2.json
     ```
+
 3. Wybierz pozycję **Open (Otwórz)** , aby otworzyć plik.
 
-    W tym szablonie zdefiniowano pięć zasobów:
+    W szablonie są zdefiniowane cztery zasoby:
 
    * `Microsoft.Sql/servers`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-   * `Microsoft.SQL/servers/securityAlertPolicies`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
-   * `Microsoft.SQL/servers/filewallRules`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/firewallRules`. Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
    * `Microsoft.SQL/servers/databases`.  Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
    * `Microsoft.SQL/server/databases/extensions`.  Zobacz [dokumentację szablonu](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
@@ -149,39 +136,30 @@ W tej sesji należy zmodyfikować szablon utworzony w [samouczku: Importowanie p
 
 ## <a name="edit-the-template"></a>Edytowanie szablonu
 
-Dodaj następujące dodatkowe parametry:
+1. Zastąp definicję parametru storageAccountKey następującą definicją parametru:
 
-```json
-"_artifactsLocation": {
-    "type": "string",
-    "metadata": {
-        "description": "The base URI where artifacts required by this template are located."
-    }
-},
-"_artifactsLocationSasToken": {
-    "type": "securestring",
-    "metadata": {
-        "description": "The sasToken required to access _artifactsLocation."
+    ```json
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Specifies the SAS token required to access the artifact location."
+      }
     },
-    "defaultValue": ""
-},
-"bacpacFileName": {
-    "type": "string",
-    "defaultValue": "SQLDatabaseExtension.bacpac",
-    "metadata": {
-        "description": "The bacpac for configure the database and tables."
-    }
-}
-```
+    ```
 
-![Parametry artefaktów zabezpieczeń z samouczka dotyczącego usługi Resource Manager](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+    ![Parametry artefaktów zabezpieczeń z samouczka dotyczącego usługi Resource Manager](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-Zaktualizuj wartości następujących dwóch elementów:
+2. Zaktualizuj wartość następujących trzech elementów zasobu rozszerzenia SQL:
 
-```json
-"storageKey": "[parameters('_artifactsLocationSasToken')]",
-"storageUri": "[uri(parameters('_artifactsLocation'), parameters('bacpacFileName'))]",
-```
+    ```json
+    "storageKeyType": "SharedAccessKey",
+    "storageKey": "[parameters('_artifactsLocationSasToken')]",
+    "storageUri": "[parameters('bacpacUrl')]",
+    ```
+
+Ukończony szablon wygląda następująco:
+
+[!code-json[](~/resourcemanager-templates/tutorial-sql-extension/azuredeploy3.json?range=1-106&highlight=38-43,95-97)]
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
@@ -190,27 +168,29 @@ Zaktualizuj wartości następujących dwóch elementów:
 Zapoznaj się sekcją [Wdrażanie szablonu](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template), gdzie znajduje się procedura wdrażania. Alternatywnie możesz też użyć następującego skryptu wdrażania programu PowerShell:
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
+$projectName = Read-Host -Prompt "Enter the project name that is used earlier"   # This name is used to generate names for Azure resources, such as storage account name.
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+$adminUsername = Read-Host -Prompt "Enter the sql database admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
-$artifactsLocation = Read-Host -Prompt "Enter the artifacts location"
+$bacpacUrl = Read-Host -Prompt "Enter the BACPAC url"
 $artifactsLocationSasToken = Read-Host -Prompt "Enter the artifacts location SAS token" -AsSecureString
-$bacpacFileName = Read-Host -Prompt "Enter the BACPAC file name"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+$resourceGroupName = $projectName + "rg"
+
+#New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
-    -_artifactsLocation $artifactsLocation `
     -_artifactsLocationSasToken $artifactsLocationSasToken `
-    -bacpacFileName $bacpacFileName `
+    -bacpacUrl $bacpacUrl `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 Użyj wygenerowanego hasła. Zobacz [Wymagania wstępne](#prerequisites).
-Aby uzyskać wartości elementów _artifactsLocation, _artifactsLocationSasToken i bacpacFileName, zobacz [Generowanie tokenu SAS](#generate-a-sas-token).
+Aby uzyskać wartości _artifactsLocation, _artifactsLocationSasToken i bacpacFileName, zobacz [Przygotowywanie pliku BACPAC](#prepare-a-bacpac-file).
 
 ## <a name="verify-the-deployment"></a>Weryfikowanie wdrożenia
 

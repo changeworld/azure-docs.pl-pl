@@ -1,64 +1,64 @@
 ---
-title: Konfigurowanie usługi Azure Import/Export narzędzia v1 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować przygotowania dysku i naprawić narzędziem dla usługi Azure Import/Export. Dotyczy to v1 narzędzie importu/eksportu.
-author: muralikk
+title: Konfigurowanie narzędzia Azure Import/Export w wersji 1 | Microsoft Docs
+description: Dowiedz się, jak skonfigurować narzędzie do przygotowywania i naprawiania dysków dla usługi Azure Import/Export. Odnosi się to do wersji 1 narzędzia Import/Export.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477573"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978955"
 ---
-# <a name="setting-up-the-azure-importexport-tool"></a>Konfigurowanie narzędzia Import/Eksport Azure
-Narzędzie importu/eksportu platformy Microsoft Azure jest dysk przygotowania i napraw narzędzia które można użyć z usługą Microsoft Azure Import/Export. To narzędzie służy do następujących funkcji:  
+# <a name="setting-up-the-azure-importexport-tool"></a>Konfigurowanie narzędzia Azure Import/Export
+Narzędzie Microsoft Azure Import/Export to narzędzie do przygotowywania i naprawiania dysku, które może być używane z usługą Microsoft Azure Import/Export. Za pomocą tego narzędzia można korzystać z następujących funkcji:  
   
--   Przed utworzeniem zadania importu, to narzędzie służy do kopiowania danych do dysków twardych, które są przesyłane do wysłania do centrum danych platformy Windows Azure.  
+-   Przed utworzeniem zadania importowania można użyć tego narzędzia do skopiowania danych na dyski twarde, które mają być dostarczane do centrum danych systemu Windows Azure.  
   
--   Po zakończeniu zadania importu służy narzędzie to naprawić wszystkie obiekty BLOB, które zostały uszkodzone, brakuje lub konflikt z innymi obiektami blob.  
+-   Po zakończeniu zadania importowania można użyć tego narzędzia do naprawy wszelkich uszkodzonych obiektów blob, brakujących lub konfliktów z innymi obiektami BLOB.  
   
--   Po otrzymaniu dysków z zadania Zakończono eksport, umożliwia to narzędzie napraw wszystkie pliki, które zostały uszkodzone lub nie istnieją na dyskach.  
+-   Po otrzymaniu dysków z ukończonego zadania eksportu można użyć tego narzędzia, aby naprawić wszystkie pliki uszkodzone lub brakujące na dyskach.  
   
 ## <a name="prerequisites"></a>Wymagania wstępne  
-W przypadku przygotowywania dysków do zadania importu, należy spełnić następujące wymagania wstępne:  
+W przypadku przygotowywania dysków do zadania importowania należy spełnić następujące wymagania wstępne:  
   
--   Musi mieć aktywną subskrypcję platformy Azure.  
+-   Musisz mieć aktywną subskrypcję platformy Azure.  
   
--   Twoja subskrypcja musi obejmować konto magazynu o wystarczającej ilości dostępnego miejsca do przechowywania plików, którą chcesz zaimportować.  
+-   Twoja subskrypcja musi zawierać konto magazynu z wystarczającą ilością dostępnego miejsca do przechowywania plików, które mają zostać zaimportowane.  
   
--   Należy co najmniej jeden z kluczy konta dla konta magazynu.  
+-   Musisz mieć co najmniej jeden klucz konta dla konta magazynu.  
   
--   Wymagany jest komputer ("maszyny kopiowania") z Windows 7, Windows Server 2008 R2 lub nowszych systemach operacyjnych Windows zainstalowany.  
+-   Potrzebny jest komputer ("kopia komputera") z systemem Windows 7, Windows Server 2008 R2 lub nowszym zainstalowanym systemem operacyjnym Windows.  
   
--   .NET Framework 4, musi być zainstalowany na komputerze kopiowania.  
+-   Na maszynie kopiowania musi być zainstalowany .NET Framework 4.  
   
--   Funkcja BitLocker musi być włączona na komputerze kopiowania.  
+-   Funkcja BitLocker musi być włączona na maszynie kopiowania.  
   
--   Konieczne będzie jeden lub więcej dysków, które zawiera dane mają być zaimportowane lub jest pusty 3,5 cala dysków twardych SATA nawiązaniu połączenia z maszyną kopiowania.  
+-   Wymagany jest co najmniej jeden dysk zawierający dane przeznaczone do zaimportowania lub puste dyski twarde SATA 3,5 cala połączone z maszyną kopiowania.  
   
--   Musi być dostępne z tego komputera kopiowania plików, które chcesz zaimportować, czy znajdują się w udziale sieciowym lub na lokalnym dysku twardym. 
+-   Pliki, które planujesz zaimportować, muszą być dostępne z komputera kopii, niezależnie od tego, czy znajdują się w udziale sieciowym, czy na lokalnym dysku twardym. 
   
-Jeśli próbujesz naprawić importu, który częściowo zakończy się niepowodzeniem, należy:  
+Jeśli próbujesz naprawić import, który częściowo zakończył się niepowodzeniem, będziesz potrzebować:  
   
-- Plików dziennika kopiowania  
+- Pliki dziennika kopiowania  
   
 - Klucz konta magazynu  
   
-  Jeśli próbujesz naprawić eksportu, który częściowo zakończy się niepowodzeniem, należy:  
+  Jeśli próbujesz naprawić eksport, który częściowo zakończył się niepowodzeniem, będziesz potrzebować:  
   
-- Plików dziennika kopiowania  
+- Pliki dziennika kopiowania  
   
-- Pliki manifestu (opcjonalnie)  
+- Pliki MANIFESTU (opcjonalnie)  
   
 - Klucz konta magazynu  
   
 ## <a name="installing-the-azure-importexport-tool"></a>Instalowanie narzędzia Azure Import/Export  
- Narzędzie importu/eksportu platformy Azure zawiera następujące pliki:  
+ Narzędzie Import/Export platformy Azure składa się z następujących plików:  
   
 - WAImportExport.exe  
   
@@ -72,9 +72,9 @@ Jeśli próbujesz naprawić importu, który częściowo zakończy się niepowodz
   
 - Hddid.dll  
   
-  Na przykład skopiować te pliki do katalogu roboczego `c:\WAImportExport`. Następnie otwórz okno wiersza polecenia w trybie administratora i ustawić katalogu powyżej jako bieżący katalog.  
+  Skopiuj te pliki do katalogu roboczego, na przykład `c:\WAImportExport`. Następnie otwórz okno wiersza polecenia w trybie administratora i ustaw powyższy katalog jako bieżący katalog.  
   
-  Aby dane wyjściowe pomoc dotyczącą polecenia, należy uruchomić narzędzie bez parametrów:  
+  Aby uzyskać pomoc dotyczącą polecenia, uruchom narzędzie bez parametrów:  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
@@ -247,10 +247,10 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
   
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Przygotowywanie dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [Wyświetlanie podglądu użycia dysków przez zadanie eksportu](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
+* [Wyświetlanie podglądu użycia dysku dla zadania eksportu](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Sprawdzanie stanu zadania za pomocą plików dziennika kopiowania](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Naprawianie zadania importu](../storage-import-export-tool-repairing-an-import-job-v1.md)   
 * [Naprawianie zadania eksportu](../storage-import-export-tool-repairing-an-export-job-v1.md)   

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177786"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970231"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Samouczek: Rozpoznawanie logo usługi platformy Azure w obrazach aparatu fotograficznego
 
@@ -49,7 +49,7 @@ Zaloguj się do [witryny internetowej usługi Custom Vision](https://customvisio
 
 ## <a name="upload-and-tag-images"></a>Przekazywanie i tagowanie obrazów
 
-Następnie wytrenuj algorytm wykrywania logo, przekazując obrazy logo usług platformy Azure i tagując je ręcznie. Repozytorium AIVisualProvision zawiera zbiór obrazów do szkolenia, którego można użyć. W witrynie sieci Web wybierz przycisk **Dodaj obrazy** na karcie **obrazy szkoleniowe** . Następnie przejdź do folderu **Documents/images/Training_DataSet** w repozytorium. Konieczne będzie ręczne tagowanie logo na każdym obrazie, jeśli więc tylko testujesz ten projekt, możesz chcieć przekazać tylko podzbiór obrazów. Przekaż co najmniej 15 wystąpień każdego tagu, który ma być używany.
+Następnie wytrenuj algorytm wykrywania logo, przekazując obrazy logo usług platformy Azure i tagując je ręcznie. Repozytorium AIVisualProvision zawiera zbiór obrazów do szkolenia, którego można użyć. W witrynie sieci Web wybierz przycisk **Dodaj obrazy** na karcie **obrazy szkoleniowe** . Następnie przejdź do folderu **Documents/images/Training_DataSet** repozytorium. Konieczne będzie ręczne tagowanie logo na każdym obrazie, jeśli więc tylko testujesz ten projekt, możesz chcieć przekazać tylko podzbiór obrazów. Przekaż co najmniej 15 wystąpień każdego tagu, który ma być używany.
 
 Po przekazaniu obrazów treningowych wybierz pierwszy z nich na ekranie. Zostanie wyświetlone okno tagowania. Narysuj pola i przypisz tagi do każdego logo na każdym obrazie. 
 

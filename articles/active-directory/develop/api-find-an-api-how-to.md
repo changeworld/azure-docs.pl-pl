@@ -1,5 +1,5 @@
 ---
-title: Jak znaleźć konkretny interfejs API wymagany dla aplikacji nieprzygotowanej przez użytkownika | Microsoft Docs
+title: Znajdowanie interfejsu API dla aplikacji nieopracowanej przez użytkownika | Azure
 description: Jak skonfigurować uprawnienia potrzebne do uzyskiwania dostępu do określonego interfejsu API w niestandardowej aplikacji usługi Azure AD
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c223df28f8082125d48f1e3619088de5cf2687
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c2b88ef00a8a40134462fdc285f1e4c3f12a0b0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844604"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963906"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Jak znaleźć konkretny interfejs API wymagany dla aplikacji niestandardowej
 

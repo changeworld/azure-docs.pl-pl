@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 7b9f1cfeb6ebcbc693135d83ad167092e16f478d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647329"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978462"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Samouczek: Tworzenie aplikacji do kolby za pomocą usługi Azure Cognitive Services
 
@@ -59,7 +59,7 @@ Zapoznaj się z oprogramowaniem i kluczami subskrypcji, które będą potrzebne 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Tworzenie konta i subskrybowanie zasobów
 
 Jak wspomniano wcześniej, będziesz potrzebować trzech kluczy subskrypcji dla tego samouczka. Oznacza to, że musisz utworzyć zasób na koncie platformy Azure dla:
-* Tekst usługi Translator
+* Tłumaczenie tekstu w usłudze Translator
 * Analiza tekstu
 * Usługi mowy
 
@@ -182,7 +182,7 @@ Ten kod gwarantuje, że gdy użytkownik nawiguje do `http://your-web-app.com/abo
 
 Chociaż te przykłady ilustrują sposób renderowania stron HTML dla użytkownika, trasy mogą być również używane do wywoływania interfejsów API po naciśnięciu przycisku lub podjęcia dowolnej liczby akcji bez konieczności nawigowania po stronie głównej. Ta akcja zostanie wyświetlona podczas tworzenia tras do translacji, tonacji i syntezy mowy.
 
-### <a name="get-started"></a>Rozpoczęcie pracy
+### <a name="get-started"></a>Rozpocznij
 
 1. Otwórz projekt w środowisku IDE, a następnie utwórz plik o nazwie `app.py` w katalogu głównym katalogu roboczego. Następnie skopiuj ten kod do `app.py` i Zapisz:
 
@@ -319,7 +319,7 @@ W poniższych sekcjach należy powtórzyć ten proces podczas tworzenia tras dla
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>`index.html` aktualizacji
+### <a name="update-indexhtml"></a>Aktualizowanie pliku `index.html`
 
 Teraz, gdy masz funkcję tłumaczenia tekstu i trasy w aplikacji w kolbie do jej wywołania, następnym krokiem jest rozpoczęcie tworzenia kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka czynności:
 
@@ -556,7 +556,7 @@ Utwórzmy trasę w aplikacji kolby, która wywoła `sentiment.py`. Ta trasa będ
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>`index.html` aktualizacji
+### <a name="update-indexhtml"></a>Aktualizowanie pliku `index.html`
 
 Teraz, gdy masz funkcję do uruchamiania analizy tonacji i trasy w aplikacji do kolby do jej wywołania, następnym krokiem jest rozpoczęcie pisania kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka czynności:
 
@@ -581,7 +581,7 @@ Teraz, gdy masz funkcję do uruchamiania analizy tonacji i trasy w aplikacji do 
    </div>
    ```
 
-### <a name="update-mainjs"></a>`main.js` aktualizacji
+### <a name="update-mainjs"></a>Aktualizowanie pliku `main.js`
 
 W poniższym kodzie zawartość kodu HTML służy do konstruowania żądania do trasy w kolbie. W odróżnieniu od zawartości obszaru tekstowego i selektora języka są przypisywane zmienne, a następnie przekazane wraz z żądaniem do trasy `sentiment-analysis`.
 
@@ -751,7 +751,7 @@ Utwórzmy trasę w aplikacji kolby, która wywoła `synthesize.py`. Ta trasa bę
        return audio_response
    ```
 
-### <a name="update-indexhtml"></a>`index.html` aktualizacji
+### <a name="update-indexhtml"></a>Aktualizowanie pliku `index.html`
 
 Teraz, gdy masz funkcję konwersji zamiany tekstu na mowę i trasy w aplikacji w kolbie do jej wywołania, następnym krokiem jest rozpoczęcie pisania kodu HTML dla aplikacji. Poniższy kod HTML wykonuje kilka czynności:
 
@@ -834,7 +834,7 @@ Teraz, gdy masz funkcję konwersji zamiany tekstu na mowę i trasy w aplikacji w
 
 5. Upewnij się, że Zapisano swoją służbę.
 
-### <a name="update-mainjs"></a>`main.js` aktualizacji
+### <a name="update-mainjs"></a>Aktualizowanie pliku `main.js`
 
 W poniższym kodzie zawartość kodu HTML służy do konstruowania żądania do trasy w kolbie. W przypadku tłumaczenia i czcionki głosowej są przypisywane do zmiennych, a następnie przesyłane w żądaniu do trasy `text-to-speech`.
 

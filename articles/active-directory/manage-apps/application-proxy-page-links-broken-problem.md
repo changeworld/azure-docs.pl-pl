@@ -16,18 +16,18 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 570699fe83197a1b5442909d8b89e285a1dfa73b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 268775d125e783b0c640e565c5f63e416cb197fd
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275436"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996956"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Linki na stronie nie działają w przypadku aplikacji serwera proxy aplikacji
 
 Ten artykuł pomaga w rozwiązywaniu problemów z tym, dlaczego linki w aplikacji serwer proxy aplikacji usługi Azure Active Directory nie działają prawidłowo.
 
-## <a name="overview"></a>Omówienie 
+## <a name="overview"></a>Przegląd 
 Po opublikowaniu aplikacji serwera proxy aplikacji jedynymi łączami, które działają domyślnie w aplikacji, są linki do miejsc docelowych zawartych w opublikowanym głównym adresie URL. Linki w aplikacjach nie działają, wewnętrzny adres URL aplikacji prawdopodobnie nie obejmuje wszystkich miejsc docelowych linków w aplikacji.
 
 **Dlaczego tak się dzieje?** Po kliknięciu linku w aplikacji serwer proxy aplikacji próbuje rozpoznać adres URL jako wewnętrzny adres URL w tej samej aplikacji lub jako zewnętrzny dostęp do adresu URL. Jeśli link wskazuje na wewnętrzny adres URL, który nie znajduje się w tej samej aplikacji, nie należy do żadnego z tych zasobników i nie spowoduje błędu.
@@ -38,7 +38,11 @@ Istnieją trzy sposoby rozwiązania tego problemu. Poniższe opcje są wymienion
 
 1.  Upewnij się, że wewnętrzny adres URL jest katalogiem głównym zawierającym wszystkie odpowiednie linki dla aplikacji. Dzięki temu wszystkie linki mają być rozpoznawane jako zawartość opublikowana w ramach tej samej aplikacji.
 
-    Jeśli zmienisz wewnętrzny adres URL, ale nie chcesz zmienić strony docelowej dla użytkowników, Zmień adres URL strony głównej na wcześniej opublikowany wewnętrzny adres URL. Można to zrobić, przechodząc do "Azure Active Directory" —&gt; rejestracji aplikacji —&gt; wybrać właściwości&gt; aplikacji. Na karcie Właściwości zobaczysz pole "adres URL strony głównej", które można dostosować do żądanej strony docelowej.
+    Jeśli zmienisz wewnętrzny adres URL, ale nie chcesz zmienić strony docelowej dla użytkowników, Zmień adres URL strony głównej na wcześniej opublikowany wewnętrzny adres URL. Można to zrobić, przechodząc do "Azure Active Directory" —&gt; rejestracji aplikacji —&gt; wybrać markę&gt; aplikacji. W sekcji znakowania zobaczysz pole "adres URL strony głównej", które można dostosować do żądanej strony docelowej. Jeśli nadal korzystasz ze starszej wersji Rejestracje aplikacji, na karcie właściwości zostanie wyświetlony szczegółowy adres URL strony głównej. 
+    
+    > [!IMPORTANT]
+    > W celu wprowadzenia powyższych zmian wymagane są uprawnienia do modyfikowania obiektów aplikacji w usłudze Azure AD. Użytkownik musi mieć przypisaną rolę "[administrator aplikacji](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/roles-delegate-app-roles#assign-built-in-application-admin-roles)", która przyznaje użytkownikowi uprawnienia modificaion do aplikacji w usłudze Azure AD. 
+    >
 
 2.  Jeśli aplikacje używają w pełni kwalifikowanych nazw domen (FQDN), użyj [domen niestandardowych](application-proxy-configure-custom-domain.md) do publikowania aplikacji. Ta funkcja umożliwia użycie tego samego adresu URL zarówno wewnętrznie, jak i zewnętrznie.
 
@@ -47,5 +51,5 @@ Istnieją trzy sposoby rozwiązania tego problemu. Poniższe opcje są wymienion
 3.  Jeśli żadna z tych opcji nie jest osiągalna, istnieje wiele opcji włączania tłumaczenia linków wbudowanych. Te opcje obejmują korzystanie z rozszerzenia Intune Managed Browser, moje aplikacje lub z użyciem ustawienia tłumaczenia linku w aplikacji. Aby dowiedzieć się więcej o każdej z tych opcji i sposobach ich włączania, zobacz [redirect stałe links for Apps opublikowanych za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>Następne kroki
-[Współdziałanie z istniejącymi lokalnymi serwerami proxy](application-proxy-configure-connectors-with-proxy-servers.md)
+[Praca z istniejących serwerów proxy w środowisku lokalnym](application-proxy-configure-connectors-with-proxy-servers.md)
 

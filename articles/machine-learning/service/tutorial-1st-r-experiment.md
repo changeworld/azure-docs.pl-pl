@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 62c9ac0020db92c1540d0ecb4fa996d9b8405a58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307277"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974261"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Samouczek: uczenie i wdrażanie pierwszego modelu w języku R z Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 1. Postępuj zgodnie z [instrukcjami instalacji](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) , aby:
     + Zainstaluj Anaconda
-    + Zainstaluj `azuremlsdk`
+    + Instalowanie systemu `azuremlsdk`
     + Instalowanie zestawu SDK Azure Machine Learning dla języka Python
 
 1. Pobierz trzy pliki samouczków z usługi [GitHub](https://github.com/Azure/azureml-sdk-for-r/tree/master/vignettes/train-and-deploy-with-caret).  Zapisz je w katalogu **samouczków** .
@@ -70,7 +70,7 @@ Zalecamy używanie RStudio do uruchamiania tego samouczka. W RStudio wybierz poz
 > Jeśli masz doświadczenie z RMarkdown, możesz użyć kodu z tego pliku.  Można też skopiować/wkleić fragmenty kodu z tego miejsca lub z tego artykułu do skryptu języka R lub wiersza polecenia.
 
 
-## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
+## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska programistycznego
 Konfiguracja dla pracy programistycznej w tym samouczku obejmuje następujące działania:
 
 * Instalowanie wymaganych pakietów
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>Przekaż dane do magazynu danych
-Przekaż dane do chmury, aby uzyskać dostęp do zdalnego środowiska szkoleniowego. Każdy obszar roboczy usługi Azure ML jest dostarczany z domyślnym magazynem danych, który przechowuje informacje o połączeniu do kontenera obiektów blob platformy Azure, który jest inicjowany w ramach konta magazynu dołączonego do obszaru roboczego. Poniższy kod przekaże dane wypadki utworzone powyżej do tego magazynu danych.
+Przekaż dane do chmury, aby uzyskać dostęp do zdalnego środowiska szkoleniowego. Każdy obszar roboczy Azure Machine Learning jest dostarczany z domyślnym magazynem danych, który przechowuje informacje o połączeniu do kontenera obiektów blob platformy Azure, który jest inicjowany w ramach konta magazynu dołączonego do obszaru roboczego. Poniższy kod przekaże dane wypadki utworzone powyżej do tego magazynu danych.
 
 ```R
 ds <- get_default_datastore(ws)
@@ -155,7 +155,7 @@ upload_files_to_datastore(ds,
 ```
 
 
-## <a name="train-a-model"></a>Szkolenie modelu
+## <a name="train-a-model"></a>Trenowanie modelu
 
 Na potrzeby tego samouczka Dopasuj model regresji logistycznej do przekazanych danych przy użyciu zdalnego klastra obliczeniowego. Aby przesłać zadanie, musisz:
 
@@ -164,10 +164,10 @@ Na potrzeby tego samouczka Dopasuj model regresji logistycznej do przekazanych d
 * Przesyłanie zadania
 
 ### <a name="prepare-the-training-script"></a>Przygotuj skrypt szkoleniowy
-Skrypt szkoleniowy o nazwie `accidents.R` został udostępniony dla Ciebie w tym samym katalogu, w którym znajduje się ten samouczek. Zwróć uwagę na następujące szczegóły w **skrypcie szkoleniowym** , które zostały wykonane w celu wykorzystania usługi Azure ml do szkolenia:
+Skrypt szkoleniowy o nazwie `accidents.R` został udostępniony dla Ciebie w tym samym katalogu, w którym znajduje się ten samouczek. Zwróć uwagę na następujące szczegóły w **skrypcie szkoleniowym** , które zostały wykonane w celu wykorzystania Azure Machine Learning do szkolenia:
 
 * Skrypt szkoleniowy przyjmuje `-d` argumentu, aby znaleźć katalog zawierający dane szkoleniowe. Po zdefiniowaniu i przesłaniu zadania później należy wskazać magazyn danych dla tego argumentu. Platforma Azure ML zainstaluje folder magazynu w klastrze zdalnym dla zadania szkoleniowego.
-* Skrypt szkoleniowy rejestruje ostateczną dokładność jako metrykę do rekordu uruchomienia w usłudze Azure ML przy użyciu `log_metric_to_run()`. Zestaw SDK usługi Azure ML udostępnia zestaw interfejsów API rejestrowania do rejestrowania różnych metryk podczas przebiegów szkoleniowych. Te metryki są rejestrowane i utrwalane w rekordzie przebiegu eksperymentu. Dostęp do metryk można uzyskać w dowolnym momencie lub wyświetlić na stronie Szczegóły uruchamiania w programie [Azure Machine Learning Studio](https://ml.azure.com). Zobacz [informacje](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) dotyczące pełnego zestawu metod rejestrowania `log_*()`.
+* Skrypt szkoleniowy rejestruje ostateczną dokładność jako metrykę do rekordu uruchomienia w usłudze Azure ML przy użyciu `log_metric_to_run()`. Zestaw SDK usługi Azure ML udostępnia zestaw interfejsów API rejestrowania do rejestrowania różnych metryk podczas przebiegów szkoleniowych. Te metryki są rejestrowane i utrwalane w rekordzie przebiegu eksperymentu. Dostęp do metryk można uzyskać w dowolnym momencie lub wyświetlić na stronie Szczegóły uruchamiania w programie [Studio](https://ml.azure.com). Zobacz [informacje](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) dotyczące pełnego zestawu metod rejestrowania `log_*()`.
 * Skrypt szkoleniowy zapisuje model w katalogu **o nazwie**Outputs. Folder `./outputs` otrzymuje specjalne traktowanie w usłudze Azure ML. Podczas szkoleń pliki zapisywane do `./outputs` są automatycznie przekazywane do rekordu uruchomienia przez usługę Azure ML i utrwalane jako artefakty. Dzięki zapisaniu przeszkolonego modelu do `./outputs`będziesz mieć dostęp do pliku modelu nawet po jego zakończeniu i nie masz już dostępu do zdalnego środowiska szkoleniowego.
 
 ### <a name="create-an-estimator"></a>Tworzenie narzędzia do szacowania

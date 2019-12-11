@@ -6,19 +6,19 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226749"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975010"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Dokumentacja F# dla deweloperów Azure Functions
 
 F#w przypadku Azure Functions to rozwiązanie umożliwiające łatwe uruchamianie małych fragmentów kodu lub "Functions" w chmurze. Przepływy danych do F# funkcji za pośrednictwem argumentów funkcji. Nazwy argumentów są określone w `function.json`i istnieją wstępnie zdefiniowane nazwy do uzyskiwania dostępu do takich elementów jak Rejestrator funkcji i tokeny anulowania. 
 
 >[!IMPORTANT]
->F#skrypt (. FSX) jest obsługiwany tylko w [wersji 1. x](functions-versions.md#creating-1x-apps) środowiska uruchomieniowego Azure Functions. Jeśli chcesz użyć F# programu z wersją 2. x środowiska uruchomieniowego, musisz użyć prekompilowanego F# projektu biblioteki klas (. FS). Tworzysz, zarządzasz i publikujesz projekt F# biblioteki klas przy użyciu programu Visual Studio, jak w przypadku [ C# projektu biblioteki klas](functions-dotnet-class-library.md). Więcej informacji o wersjach funkcji znajduje się w temacie [Azure Functions wersje środowiska uruchomieniowego — Omówienie](functions-versions.md).
+>F#skrypt (. FSX) jest obsługiwany tylko w [wersji 1. x](functions-versions.md#creating-1x-apps) środowiska uruchomieniowego Azure Functions. Jeśli chcesz użyć F# programu z wersją 2. x i nowszymi wersjami środowiska uruchomieniowego, musisz użyć prekompilowanego F# projektu biblioteki klas (. FS). Tworzysz, zarządzasz i publikujesz projekt F# biblioteki klas przy użyciu programu Visual Studio, jak w przypadku [ C# projektu biblioteki klas](functions-dotnet-class-library.md). Więcej informacji o wersjach funkcji znajduje się w temacie [Azure Functions wersje środowiska uruchomieniowego — Omówienie](functions-versions.md).
 
 W tym artykule przyjęto założenie, że już odczytano [informacje dotyczące deweloperów Azure Functions](functions-reference.md).
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 Istnieje udostępniony plik [host. JSON](functions-host-json.md) , który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma własny plik kodu (. FSX) i plik konfiguracji powiązania (Function. JSON).
 
-Rozszerzenia powiązań wymagane w [wersji 2. x](functions-versions.md) środowiska uruchomieniowego funkcji są zdefiniowane w pliku `extensions.csproj`, z rzeczywistymi plikami biblioteki w folderze `bin`. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](./functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
+Rozszerzenia powiązań wymagane w [wersji 2. x i nowszych wersjach](functions-versions.md) środowiska uruchomieniowego Functions są zdefiniowane w pliku `extensions.csproj`, z rzeczywistymi plikami biblioteki w folderze `bin`. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](./functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
 
 ## <a name="binding-to-arguments"></a>Powiązanie z argumentami
 Każde powiązanie obsługuje jakiś zestaw argumentów, zgodnie z opisem w temacie [Azure Functions wyzwalacze i powiązania deweloperów](functions-triggers-bindings.md). Na przykład jeden z powiązań argumentów obsługiwanych przez wyzwalacz obiektu BLOB to POCO, który można wyrazić przy użyciu F# rekordu. Na przykład:
@@ -98,7 +98,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>Asynchroniczne
+## <a name="async"></a>Async
 Można użyć przepływu pracy `async`, ale wynik musi zwrócić `Task`. Można to zrobić za pomocą `Async.StartAsTask`, na przykład:
 
 ```fsharp
@@ -287,7 +287,7 @@ Dyrektywa `#load` działa tylko z plikami `.fsx` (F# skrypt), a nie z plikami `.
 ## <a name="next-steps"></a>Następne kroki
 Więcej informacji zawierają następujące zasoby:
 
-* [F#Prowadzą](/dotnet/articles/fsharp/index)
+* [Podręcznik języka F#](/dotnet/articles/fsharp/index)
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
 * [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md)

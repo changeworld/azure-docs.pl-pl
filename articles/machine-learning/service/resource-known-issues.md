@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bff3547456c03ae313e7465238872670965765f1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ed67981a79e2bc998d0f1f64858206243c0a7070
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927685"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997211"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
@@ -105,7 +105,7 @@ Jeśli nie dołączysz wiodącego ukośnika "/", musisz utworzyć prefiks katalo
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nie można odczytać pliku Parquet z HTTP lub ADLS Gen 2
 
-Wystąpił znany problem w usłudze Azure SDK w wersji 1.1.25, która powoduje awarię podczas tworzenia zestawu danych przez odczytywanie plików Parquet z http lub ADLS Gen 2. Zakończy się niepowodzeniem z `Cannot seek once reading started.`. Aby rozwiązać ten problem, Uaktualnij `azureml-dataprep` do wersji nowszej niż 1.1.26 lub zmień wersję na starszą niż 1.1.24.
+Istnieje znany problem w wersji zestawu SDK dataprzygotowania usługi Azure DATA1.1.25, która powoduje awarię podczas tworzenia zestawu danych przez odczytywanie plików Parquet z protokołu HTTP lub ADLS generacji 2. Zakończy się niepowodzeniem z `Cannot seek once reading started.`. Aby rozwiązać ten problem, Uaktualnij `azureml-dataprep` do wersji nowszej niż 1.1.26 lub zmień wersję na starszą niż 1.1.24.
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -141,7 +141,7 @@ W przypadku korzystania z funkcji automatycznego uczenia maszynowego na Azure Da
 
 W obszarze zautomatyzowane ustawienia uczenia maszynowego, jeśli masz więcej niż 10 iteracji, ustaw `show_output` na `False` podczas przesyłania przebiegu.
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Element widget dla Azure Machine Learning SDK/automatycznej uczenia maszynowego
+### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>Element widget dla zestawu SDK Azure Machine Learning i automatycznego uczenia maszynowego
 
 Element widget zestawu Azure Machine Learning SDK nie jest obsługiwany w notesie datacegły, ponieważ notesy nie mogą analizować widżetów HTML. Widżet można wyświetlić w portalu przy użyciu tego kodu w języku Python w komórce notesu Azure Databricks:
 
@@ -261,6 +261,16 @@ kubectl get secret/azuremlfessl -o yaml
 ## <a name="recommendations-for-error-fix"></a>Zalecenia dotyczące poprawki błędów
 W oparciu o ogólną obserwację poniżej przedstawiono zalecenia dotyczące platformy Azure ML do rozwiązywania niektórych typowych błędów w usłudze Azure ML.
 
+### <a name="metric-document-is-too-large"></a>Dokument metryki jest zbyt duży
+Usługa Azure Machine Learning ma wewnętrzne limity rozmiaru obiektów metryk, które mogą być rejestrowane jednocześnie z poziomu przebiegu szkoleniowego. Jeśli wystąpi błąd "dokument metryki jest zbyt duży" podczas rejestrowania metryki o wartościach listy, spróbuj podzielić listę na mniejsze fragmenty, na przykład:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+ Wewnętrznie usługa historia uruchamiania łączy bloki z tą samą nazwą metryki z nieciągłą listą.
+
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (Brak modułu o nazwie)
 Jeśli używasz programu ModuleErrors podczas przesyłania eksperymentów na platformie Azure ML, oznacza to, że skrypt szkoleniowy oczekuje na zainstalowanie pakietu, ale nie został dodany. Po podaniu nazwy pakietu platforma Azure ML zainstaluje pakiet w środowisku używanym do uczenia się. 
 
@@ -268,10 +278,11 @@ Jeśli używasz [szacowania](concept-azure-machine-learning-architecture.md#esti
 
 Platforma Azure ML udostępnia również specyficzne dla platformy szacowania dla Tensorflow, PyTorch, łańcucha i skryptu sklearn. Przy użyciu tych szacowania upewnij się, że zależności struktury są zainstalowane w Twoim imieniu w środowisku używanym do uczenia się. Istnieje możliwość określenia dodatkowych zależności, jak opisano powyżej. 
  
- Platforma Azure ML obsługuje obrazy platformy Docker i ich zawartość można zobaczyć w [kontenerach usługi Azure](https://github.com/Azure/AzureML-Containers).
+Platforma Azure ML obsługuje obrazy platformy Docker i ich zawartość można zobaczyć w [kontenerach usługi Azure](https://github.com/Azure/AzureML-Containers).
 Zależności specyficzne dla platformy są wymienione w odpowiedniej strukturze dokumentacji programu — [łańcucha](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [skryptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
 
->[Uwaga!] Jeśli uważasz, że określony pakiet jest wystarczająco powszechny do dodania do obrazów i środowisk konserwowanych platformy Azure, zgłoś problem w usłudze GitHub w [kontenerach usługi Azure](https://github.com/Azure/AzureML-Containers)ml. 
+> [!Note]
+> Jeśli uważasz, że określony pakiet jest wystarczająco powszechny do dodania do obrazów i środowisk konserwowanych platformy Azure, zgłoś problem w usłudze GitHub w [kontenerach usługi Azure](https://github.com/Azure/AzureML-Containers)ml. 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (nazwa niezdefiniowana), AttributeError (obiekt nie ma atrybutu)
 Ten wyjątek powinien pochodzić ze skryptów szkoleniowych. Można przyjrzeć się plikom dziennika z Azure Portal, aby uzyskać więcej informacji na temat konkretnej nazwy niezdefiniowanej lub błędu atrybutu. Z zestawu SDK można użyć `run.get_details()`, aby sprawdzić komunikat o błędzie. Spowoduje to wyświetlenie listy wszystkich plików dziennika wygenerowanych dla danego przebiegu. Upewnij się, że zapoznaj się z skryptem szkoleniowym, usuń błąd przed ponowną próbą. 

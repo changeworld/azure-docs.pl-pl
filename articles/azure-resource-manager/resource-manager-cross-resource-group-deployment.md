@@ -2,26 +2,24 @@
 title: Wdrażanie zasobów między subskrypcjami & grupy zasobów
 description: Pokazuje, w jaki sposób można określić więcej niż jedną subskrypcję platformy Azure i grupę zasobów podczas wdrażania.
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: 99c534e1c51dcdf32c2b3a3b779c01d71b8d0c24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/09/2019
+ms.openlocfilehash: 0754895215384f76b1cb44224f3ba06c80181827
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149556"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978768"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Zwykle wszystkie zasoby w szablonie są wdrażane w jednej [grupie zasobów](resource-group-overview.md). Istnieją jednak scenariusze, w których należy wspólnie wdrożyć zestaw zasobów, ale umieścić je w różnych grupach zasobów lub subskrypcjach. Na przykład możesz chcieć wdrożyć maszynę wirtualną kopii zapasowej dla Azure Site Recovery w oddzielnej grupie zasobów i lokalizacji. Menedżer zasobów umożliwia korzystanie z szablonów zagnieżdżonych jako docelowych dla różnych subskrypcji i grup zasobów niż subskrypcja i Grupa zasobów używana dla szablonu nadrzędnego.
+Zwykle wszystkie zasoby w szablonie są wdrażane w jednej [grupie zasobów](resource-group-overview.md). Istnieją jednak scenariusze, w których należy wspólnie wdrożyć zestaw zasobów, ale umieścić je w różnych grupach zasobów lub subskrypcjach. Na przykład możesz chcieć wdrożyć maszynę wirtualną kopii zapasowej dla Azure Site Recovery w oddzielnej grupie zasobów i lokalizacji. Menedżer zasobów umożliwia korzystanie z szablonów zagnieżdżonych w celu uwzględnienia więcej niż jednej subskrypcji i grupy zasobów.
 
 > [!NOTE]
 > W jednym wdrożeniu można wdrożyć tylko pięć grup zasobów. Zwykle to ograniczenie oznacza, że można wdrożyć do jednej grupy zasobów określonej dla szablonu nadrzędnego oraz do czterech grup zasobów w ramach wdrożeń zagnieżdżonych lub połączonych. Jeśli jednak szablon nadrzędny zawiera tylko szablony zagnieżdżone lub połączone i nie wdraża żadnego zasobu, można dołączyć do pięciu grup zasobów w ramach wdrożeń zagnieżdżonych lub połączonych.
 
-## <a name="specify-a-subscription-and-resource-group"></a>Określ subskrypcję i grupę zasobów
+## <a name="specify-subscription-and-resource-group"></a>Określ subskrypcję i grupę zasobów
 
-Aby określić obiekt docelowy innego zasobu, użyj szablonu zagnieżdżone lub połączone. Typ zasobu `Microsoft.Resources/deployments` zapewnia parametry dla `subscriptionId` i `resourceGroup`. Te właściwości pozwalają określić inną subskrypcję i grupę zasobów dla wdrożenia zagnieżdżonego. Przed uruchomieniem wdrożenia muszą istnieć wszystkie grupy zasobów. Jeśli nie określisz identyfikatora subskrypcji lub grupy zasobów, zostanie użyta subskrypcja i Grupa zasobów z szablonu nadrzędnego.
+Aby określić inną grupę zasobów lub subskrypcję, użyj [szablonu zagnieżdżone lub połączone](resource-group-linked-templates.md). Typ zasobu `Microsoft.Resources/deployments` zawiera parametry dla `subscriptionId` i `resourceGroup`, które umożliwiają określenie subskrypcji i grupy zasobów dla wdrożenia zagnieżdżonego. Jeśli nie określisz identyfikatora subskrypcji lub grupy zasobów, zostanie użyta subskrypcja i Grupa zasobów z szablonu nadrzędnego. Przed uruchomieniem wdrożenia muszą istnieć wszystkie grupy zasobów.
 
 Konto używane do wdrożenia szablonu musi mieć uprawnienia do wdrożenia określonego identyfikatora subskrypcji. Jeśli określona subskrypcja istnieje w innej dzierżawie Azure Active Directory, należy [dodać użytkowników-Gości z innego katalogu](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
@@ -42,7 +40,7 @@ Aby określić inną grupę zasobów i subskrypcję, użyj:
 
 Jeśli grupy zasobów znajdują się w tej samej subskrypcji, możesz usunąć wartość identyfikatora **subskrypcji** .
 
-W poniższym przykładzie zostały wdrożone dwa konta magazynu — jeden w grupie zasobów określonej podczas wdrażania i jeden w grupie zasobów określonej w `secondResourceGroup` parametr:
+Poniższy przykład służy do wdrażania dwóch kont magazynu. Pierwsze konto magazynu jest wdrażane w grupie zasobów określonej podczas wdrażania. Drugie konto magazynu jest wdrażane w grupie zasobów określonej w parametrach `secondResourceGroup` i `secondSubscriptionID`:
 
 ```json
 {
@@ -70,6 +68,18 @@ W poniższym przykładzie zostały wdrożone dwa konta magazynu — jeden w grup
         "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
     },
     "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('firstStorageName')]",
+            "apiVersion": "2017-06-01",
+            "location": "[resourceGroup().location]",
+            "sku":{
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {
+            }
+        },
         {
             "apiVersion": "2017-05-10",
             "name": "nestedTemplate",
@@ -100,18 +110,6 @@ W poniższym przykładzie zostały wdrożone dwa konta magazynu — jeden w grup
                 },
                 "parameters": {}
             }
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('firstStorageName')]",
-            "apiVersion": "2017-06-01",
-            "location": "[resourceGroup().location]",
-            "sku":{
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
         }
     ]
 }
@@ -119,54 +117,11 @@ W poniższym przykładzie zostały wdrożone dwa konta magazynu — jeden w grup
 
 Jeśli ustawisz `resourceGroup` na nazwę grupy zasobów, która nie istnieje, wdrożenie nie powiedzie się.
 
-## <a name="use-the-resourcegroup-and-subscription-functions"></a>Korzystanie z funkcji Resources () i subskrypcji ()
+Aby przetestować poprzedni szablon i zobaczyć wyniki, użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-W przypadku wdrożeń między grupami zasobów można rozróżnić usługi [()](resource-group-template-functions-resource.md#resourcegroup) i [subskrypcje ()](resource-group-template-functions-resource.md#subscription) w różny sposób w zależności od sposobu określania zagnieżdżonego szablonu. 
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Jeśli osadzisz jeden szablon w innym szablonie, funkcje w szablonie zagnieżdżonym rozpoznają się z nadrzędną grupą zasobów i subskrypcją. Szablon osadzony używa następującego formatu:
-
-```json
-"apiVersion": "2017-05-10",
-"name": "embeddedTemplate",
-"type": "Microsoft.Resources/deployments",
-"resourceGroup": "crossResourceGroupDeployment",
-"properties": {
-    "mode": "Incremental",
-    "template": {
-        ...
-        resourceGroup() and subscription() refer to parent resource group/subscription
-    }
-}
-```
-
-Jeśli połączysz się z osobnym szablonem, funkcje w połączonym szablonie rozpoznają się z zagnieżdżoną grupą zasobów i subskrypcją. Połączony szablon używa następującego formatu:
-
-```json
-"apiVersion": "2017-05-10",
-"name": "linkedTemplate",
-"type": "Microsoft.Resources/deployments",
-"resourceGroup": "crossResourceGroupDeployment",
-"properties": {
-    "mode": "Incremental",
-    "templateLink": {
-        ...
-        resourceGroup() and subscription() in linked template refer to linked resource group/subscription
-    }
-}
-```
-
-## <a name="example-templates"></a>Przykładowe szablony
-
-Poniższe szablony przedstawiają wiele wdrożeń grup zasobów. Skrypty do wdrożenia szablonów są wyświetlane po tabeli.
-
-|Szablon  |Opis  |
-|---------|---------|
-|[Szablon dla wielu subskrypcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Wdraża jedno konto magazynu w jednej grupie zasobów i jedno konto magazynu w drugiej grupie zasobów. Dołącz wartość identyfikatora subskrypcji, gdy druga grupa zasobów znajduje się w innej subskrypcji. |
-|[Szablon właściwości grupy zasobów krzyżowych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Demonstruje sposób rozwiązywania `resourceGroup()` funkcji. Nie wdraża żadnych zasobów. |
-
-### <a name="powershell"></a>PowerShell
-
-Aby wdrożyć dwa konta magazynu dla programu PowerShell w ramach **jednej subskrypcji**, należy użyć:
+Aby wdrożyć dwa konta magazynu w dwóch grupach zasobów w ramach **tej samej subskrypcji**, użyj:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -183,7 +138,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-W celu wdrożenia dwóch kont magazynu w programie PowerShell **należy użyć**następujących poleceń:
+Aby wdrożyć dwa konta magazynu w **dwóch subskrypcjach**, użyj:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -207,52 +162,9 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-W przypadku programu PowerShell, aby sprawdzić, jak **obiekt grupy zasobów** jest rozpoznawany dla szablonu nadrzędnego, szablonu wbudowanego i połączonego szablonu, użyj:
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
-```azurepowershell-interactive
-New-AzResourceGroup -Name parentGroup -Location southcentralus
-New-AzResourceGroup -Name inlineGroup -Location southcentralus
-New-AzResourceGroup -Name linkedGroup -Location southcentralus
-
-New-AzResourceGroupDeployment `
-  -ResourceGroupName parentGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
-```
-
-W poprzednim przykładzie zarówno **parentRG** , jak i **inlineRG** są rozpoznawane jako **nadrzędne**. **linkedRG** jest rozpoznawana jako **połączona**. Dane wyjściowe z poprzedniego przykładu to:
-
-```powershell
- Name             Type                       Value
- ===============  =========================  ==========
- parentRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-                                               "name": "parentGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
- inlineRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-                                               "name": "parentGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
- linkedRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
-                                               "name": "linkedGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
-```
-
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-W przypadku interfejsu wiersza polecenia platformy Azure w celu wdrożenia dwóch kont magazynu w dwóch grupach zasobów w ramach **tej samej subskrypcji**Użyj:
+Aby wdrożyć dwa konta magazynu w dwóch grupach zasobów w ramach **tej samej subskrypcji**, użyj:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -267,7 +179,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-Aby wdrożyć dwa konta magazynu w ramach interfejsu wiersza polecenia platformy **Azure, użyj**polecenia:
+Aby wdrożyć dwa konta magazynu w **dwóch subskrypcjach**, użyj:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -289,7 +201,146 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-W przypadku interfejsu wiersza polecenia platformy Azure w celu przetestowania sposobu, w jaki **obiekt grupy zasobów** jest rozpoznawany dla szablonu nadrzędnego, szablonu wbudowanego i połączonego szablonu, użyj:
+---
+
+## <a name="use-functions"></a>Korzystanie z funkcji
+
+Funkcje [resourceing ()](resource-group-template-functions-resource.md#resourcegroup) i [Subscription ()](resource-group-template-functions-resource.md#subscription) rozwiązują się inaczej w zależności od sposobu określania szablonu. Podczas łączenia z szablonem zewnętrznym funkcje zawsze rozwiązują zakres tego szablonu. Podczas zagnieżdżania szablonu w szablonie nadrzędnym Użyj właściwości `expressionEvaluationOptions`, aby określić, czy funkcje są rozpoznawane jako Grupa zasobów i subskrypcja dla szablonu nadrzędnego, czy dla szablonu zagnieżdżonego. Ustaw właściwość na `inner`, aby rozpoznać zakres dla szablonu zagnieżdżonego. Ustaw właściwość na `outer`, aby była rozwiązywana z zakresem szablonu nadrzędnego.
+
+W poniższej tabeli przedstawiono, czy funkcje są rozpoznawane jako nadrzędne, czy osadzone grupy zasobów i subskrypcje.
+
+| Typ szablonu | Zakres | Rozdzielczość |
+| ------------- | ----- | ---------- |
+| zagnieżdżone        | zewnętrzny (domyślnie) | Nadrzędna grupa zasobów |
+| zagnieżdżone        | wewnętrzne | Podgrupa zasobów |
+| połączone        | ND   | Podgrupa zasobów |
+
+Poniższy [przykładowy szablon]((https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)) pokazuje:
+
+* zagnieżdżony szablon z domyślnym zakresem (zewnętrznym)
+* zagnieżdżony szablon z zakresem wewnętrznym
+* połączony szablon
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "defaultScopeTemplate",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "inlineGroup",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                    ],
+                    "outputs": {
+                        "resourceGroupOutput": {
+                            "type": "string",
+                            "value": "[resourceGroup().name]"
+                        }
+                    }
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "innerScopeTemplate",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "inlineGroup",
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                    ],
+                    "outputs": {
+                        "resourceGroupOutput": {
+                            "type": "string",
+                            "value": "[resourceGroup().name]"
+                        }
+                    }
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "linkedGroup",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
+                },
+                "parameters": {}
+            }
+        }
+    ],
+    "outputs": {
+        "parentRG": {
+            "type": "string",
+            "value": "[concat('Parent resource group is ', resourceGroup().name)]"
+        },
+        "defaultScopeRG": {
+            "type": "string",
+            "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
+        },
+        "innerScopeRG": {
+            "type": "string",
+            "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
+        },
+        "linkedRG": {
+            "type": "string",
+            "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
+        }
+    }
+}
+```
+
+Aby przetestować poprzedni szablon i zobaczyć wyniki, użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+
+# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzResourceGroup -Name parentGroup -Location southcentralus
+New-AzResourceGroup -Name inlineGroup -Location southcentralus
+New-AzResourceGroup -Name linkedGroup -Location southcentralus
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName parentGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+Dane wyjściowe z poprzedniego przykładu to:
+
+```powershell
+ Name             Type                       Value
+ ===============  =========================  ==========
+ parentRG         String                     Parent resource group is parentGroup
+ defaultScopeRG   String                     Default scope resource group is parentGroup
+ innerScopeRG     String                     Inner scope resource group is inlineGroup
+ linkedRG         String                     Linked resource group is linkedgroup
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -302,47 +353,30 @@ az group deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
-W poprzednim przykładzie zarówno **parentRG** , jak i **inlineRG** są rozpoznawane jako **nadrzędne**. **linkedRG** jest rozpoznawana jako **połączona**. Dane wyjściowe z poprzedniego przykładu to:
+Dane wyjściowe z poprzedniego przykładu to:
 
 ```azurecli
-...
 "outputs": {
-  "inlineRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-      "location": "southcentralus",
-      "name": "parentGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+  "defaultScopeRG": {
+    "type": "String",
+    "value": "Default scope resource group is parentGroup"
+  },
+  "innerScopeRG": {
+    "type": "String",
+    "value": "Inner scope resource group is inlineGroup"
   },
   "linkedRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
-      "location": "southcentralus",
-      "name": "linkedGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+    "type": "String",
+    "value": "Linked resource group is linkedGroup"
   },
   "parentRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-      "location": "southcentralus",
-      "name": "parentGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+    "type": "String",
+    "value": "Parent resource group is parentGroup"
   }
 },
-...
 ```
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

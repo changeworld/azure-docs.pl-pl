@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b0d71a7b010e91776a28330cfc32278c7060aab6
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901254"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976285"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości 
 
@@ -87,6 +87,10 @@ Obowiązują następujące zastrzeżenia:
   * **Cenc**: w przypadku oprogramowania PlayReady lub Widevine (typowe szyfrowanie)
   * **cbcs-AAPL**: for FairPlay (szyfrowanie AES CBC)
   * **CBC**: na potrzeby szyfrowania kopert AES
+
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
 ## <a name="next-steps"></a>Następne kroki
 Poniższe artykuły zawierają opis następnych kroków, które ułatwią rozpoczęcie pracy z usługą Content Protection:

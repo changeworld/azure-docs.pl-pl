@@ -1,6 +1,6 @@
 ---
 title: Aktualizowanie modeli Machine Learning przy użyciu Azure Data Factory
-description: Zawiera opis sposobu tworzenia potoku predykcyjnego przy użyciu Azure Data Factory i Azure Machine Learning
+description: Opisuje sposób tworzenia potoków predykcyjnych przy użyciu Azure Data Factory i Azure Machine Learning
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683116"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978717"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizowanie modeli Azure Machine Learning przy użyciu działania Update Resource
 
@@ -38,11 +38,11 @@ ms.locfileid: "73683116"
 
 Ten artykuł stanowi uzupełnienie głównego artykułu z integracją Azure Data Factory Azure Machine Learning: [Tworzenie potoków predykcyjnych za pomocą Azure Machine Learning i Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Jeśli jeszcze tego nie zrobiono, zapoznaj się z głównym artykułem przed przeczytaniem tego artykułu. 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W miarę upływu czasu modele predykcyjne w eksperymentach oceniania w usłudze Azure ML muszą być ponownie przeszkoli przy użyciu nowych wejściowych zestawów danych. Po wykonaniu ponownych szkoleń, chcesz zaktualizować usługę oceniania w sieci Web przy użyciu ponownie przemieszczonego modelu ML. Typowe kroki umożliwiające przeszkolenie i zaktualizowanie modeli usługi Azure ML za pośrednictwem usług sieci Web:
 
-1. Utwórz eksperyment w [usłudze Azure ml Studio](https://studio.azureml.net).
-2. Jeśli korzystasz z modelu, Użyj usługi Azure ML Studio, aby opublikować usługi sieci Web zarówno dla **eksperymentu szkoleniowego** , jak i**eksperymentu predykcyjnego**.
+1. Utwórz eksperyment w [Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net).
+2. Gdy korzystasz z modelu, użyj Azure Machine Learning Studio (klasyczny), aby opublikować usługi sieci Web zarówno dla **eksperymentu szkoleniowego** , jak i dla**eksperymentu predykcyjnego**.
 
 W poniższej tabeli opisano usługi sieci Web używane w tym przykładzie.  Szczegółowe informacje można znaleźć w temacie ponowne [uczenie Machine Learning modeli](../../machine-learning/machine-learning-retrain-models-programmatically.md) .
 
@@ -88,7 +88,7 @@ Jeśli usługa sieci Web jest nowym typem usługi sieci Web, która uwidacznia p
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-W przypadku wysyłania zapytań do usługi sieci Web w [portalu usług sieci web Azure Machine Learning](https://services.azureml.net/)można uzyskać wartości dla posiadaczy umieszczania w adresie URL. Nowy typ punktu końcowego zasobu aktualizacji wymaga tokenu usługi AAD (Azure Active Directory). Określ **servicePrincipalId** i **servicePrincipalKey**w połączonej usłudze Azure. Zobacz [jak utworzyć nazwę główną usługi i przypisać uprawnienia do zarządzania zasobem platformy Azure](../../active-directory/develop/howto-create-service-principal-portal.md). Oto przykładowa Definicja usługi połączonej z usługą Azure: 
+W przypadku wysyłania zapytań do usługi sieci Web w [portalu usług sieci web Azure Machine Learning](https://services.azureml.net/)można uzyskać wartości dla posiadaczy umieszczania w adresie URL. Nowy typ punktu końcowego zasobu aktualizacji wymaga tokenu usługi AAD (Azure Active Directory). Określ **servicePrincipalId** i **servicePrincipalKey** w połączonej usłudze Azure Machine Learning. Zobacz [jak utworzyć nazwę główną usługi i przypisać uprawnienia do zarządzania zasobem platformy Azure](../../active-directory/develop/howto-create-service-principal-portal.md). Oto przykładowa Definicja usługi połączonej z usługą Azure: 
 
 ```json
 {
@@ -138,7 +138,7 @@ Oto przykładowa definicja JSON połączonej usługi:
 ```
 
 ### <a name="training-input-dataset"></a>Szkoleniowy zestaw danych wejściowych:
-Następujący zestaw danych przedstawia dane szkolenia danych wejściowych dla usługi sieci Web szkolenia Azure ML. Działanie wykonywania wsadowego usługi Azure ML pobiera ten zestaw danych jako dane wejściowe.
+Następujący zestaw danych przedstawia dane szkolenia danych wejściowych dla usługi sieci Web szkolenia Azure Machine Learning. Działanie wykonywania wsadowego Azure Machine Learning pobiera ten zestaw danych jako dane wejściowe.
 
 ```JSON
 {
@@ -192,7 +192,7 @@ Następujący zestaw danych reprezentuje wyjściowy plik iLearner z usługi siec
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Połączona usługa dla punktu końcowego szkolenia usługi Azure ML
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Połączona usługa dla punktu końcowego szkolenia Azure Machine Learning
 Poniższy fragment kodu JSON definiuje Azure Machine Learning połączoną usługę, która wskazuje domyślny punkt końcowy usługi sieci Web szkoleniowej.
 
 ```JSON
@@ -208,12 +208,12 @@ Poniższy fragment kodu JSON definiuje Azure Machine Learning połączoną usłu
 }
 ```
 
-W **usłudze Azure ml Studio**wykonaj następujące czynności, aby uzyskać wartości dla **mlEndpoint** i **apiKey**:
+W **Azure Machine Learning Studio (klasyczny)** wykonaj następujące czynności, aby uzyskać wartości dla **mlEndpoint** i **apiKey**:
 
 1. W menu po lewej stronie kliknij pozycję **usługi sieci Web** .
 2. Kliknij pozycję **szkoleniowa usługa sieci Web** na liście usług sieci Web.
 3. Kliknij przycisk Kopiuj obok pola tekstowego **klucz interfejsu API** . Wklej klucz w schowku do edytora Data Factory JSON.
-4. W **usłudze Azure ml Studio**kliknij link **wykonywania wsadowego** .
+4. W **Azure Machine Learning Studio (klasyczny)** kliknij link **wykonywania wsadowego** .
 5. Skopiuj **Identyfikator URI żądania** z sekcji **żądania** i wklej go do edytora Data Factory JSON.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Połączona usługa dla systemu Azure ML aktualizowalny punkt końcowy oceniania:

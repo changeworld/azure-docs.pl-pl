@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931491"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995919"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klastra Apache HBase w usłudze Azure Virtual Networks
 
@@ -275,6 +275,10 @@ Podczas replikowania klastra należy określić tabele, które mają być replik
 
 Aby utworzyć tabelę **kontaktów** i wstawić dane do tabeli, postępuj zgodnie z instrukcjami w [samouczku Apache HBase: wprowadzenie do korzystania z usługi Apache HBase w usłudze HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
+> [!NOTE]
+> Jeśli chcesz replikować tabele z niestandardowej przestrzeni nazw, musisz upewnić się, że odpowiednie niestandardowe przestrzenie nazw są również zdefiniowane w klastrze docelowym.
+>
+
 ## <a name="enable-replication"></a>Włączanie replikacji
 
 Poniższe kroki opisują sposób wywoływania skryptu akcji skryptu z Azure Portal. Aby uzyskać informacje o uruchamianiu akcji skryptu przy użyciu Azure PowerShell i klasycznego interfejsu wiersza polecenia platformy Azure, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
@@ -395,6 +399,10 @@ Sekcja `print_usage()` [skryptu](https://raw.githubusercontent.com/Azure/hbase-u
 - **Wyłącz replikację w określonych tabelach (Tabela1, tabela2 i TABLE3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> Jeśli zamierzasz usunąć klaster docelowy, upewnij się, że został on usunięty z listy elementów równorzędnych klastra źródłowego. Można to zrobić, uruchamiając polecenie remove_peer ' 1 ' w HBase Shell w klastrze źródłowym. Niepowodzenie tego klastra źródłowego może nie działać prawidłowo.
+>
 
 ## <a name="next-steps"></a>Następne kroki
 

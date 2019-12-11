@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048984"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977135"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -41,10 +41,10 @@ Zawartość BDM nie oczekuje czytnika mieć żadnej wiedzy do nauki o danych z p
 
 ## <a name="business-case-for-predictive-maintenance"></a>Przypadek biznesowy pod kątem konserwacji predykcyjnej
 
-Firmy wymagają krytycznych urządzeń, należy uruchomić na wydajność i użycie do zrealizowania ich zwrot z inwestycji kapitałowych. Te zasoby mogą należeć do zakresu od silników samolotów, turbiny, windy lub przemysłowych chłodniach — które koszt milionów — do codziennego urządzeń, takich jak kopiarkach, kawy lub Chłodnice wodne.
-- Domyślnie większość przedsiębiorstw polega na _naprawcze konserwacji_, której elementy są zastępowane co i kiedy mogą zakończyć się niepowodzeniem. Naprawcze konserwacji zapewnia części używane są całkowicie (w związku z tym nie marnowania składnika life), ale kosztuje firmy przestojów, pracy i wymagania niezaplanowaną konserwację (funkcja wyłączona godzin lub nie można użyć lokalizacji).
-- W następnej poziomu, rozwiązanie firmy _konserwacji prewencyjnej_, których określić przydatne informacje o czasie dla części i zachować lub zamień go przed awarii. Konserwacji prewencyjnej unika się niezaplanowane i poważnej awarii. Ale nadal niepełnego wykorzystania składnik przed jego pełna okres istnienia, użytkowania i pracy nadal wysokie koszty zaplanowane przerwy w działaniu.
-- Celem _konserwacji predykcyjnej_ ma na celu optymalizację równowagę między naprawcze i zapobiegawcze konserwacji, włączając _dokładnie na czas_ zastąpienie elementów. To podejście zastępuje tylko tych składników, znajdujących się blisko awarii. Dzięki wydłużeniu okresu eksploatacji składników (względem konserwacji prewencyjnej) i obniżeniu kosztów niezaplanowanej konserwacji i pracy (względem konserwacji naprawczej) firmy mogą oszczędzać pieniądze i zwiększyć swoją konkurencyjność.
+Firmy wymagają szczytowej wydajności i maksymalnego użycia od sprzętu o kluczowym znaczeniu, aby móc uzyskać zwrot z inwestycji kapitałowych. Do takich zasobów należą silniki lotnicze, turbiny, windy lub chłodziarki przemysłowe, które kosztują miliony złotych, a także urządzenia do codziennego użytku, takie jak kserokopiarki, ekspresy do kawy i chłodnice wody.
+- Domyślnie większość przedsiębiorstw polega na _naprawcze konserwacji_, której elementy są zastępowane co i kiedy mogą zakończyć się niepowodzeniem. Konserwacja naprawcza pozwala na pełne użycie części (okres używania składnika nie jest marnowany), ale jest kosztowne dla firmy w czasie przestoju, pracy i niezaplanowanej konserwacji (poza godzinami pracy lub w niedogodnych miejscach).
+- W następnej poziomu, rozwiązanie firmy _konserwacji prewencyjnej_, których określić przydatne informacje o czasie dla części i zachować lub zamień go przed awarii. Konserwacja prewencyjna pozwala zapobiec niezaplanowanym i krytycznym awariom. Ale nadal niepełnego wykorzystania składnik przed jego pełna okres istnienia, użytkowania i pracy nadal wysokie koszty zaplanowane przerwy w działaniu.
+- Celem _konserwacji predykcyjnej_ ma na celu optymalizację równowagę między naprawcze i zapobiegawcze konserwacji, włączając _dokładnie na czas_ zastąpienie elementów. Takie rozwiązanie pozwala wymieniać składniki tylko krótko przed awarią. Dzięki wydłużeniu okresu eksploatacji składników (względem konserwacji prewencyjnej) i obniżeniu kosztów niezaplanowanej konserwacji i pracy (względem konserwacji naprawczej) firmy mogą oszczędzać pieniądze i zwiększyć swoją konkurencyjność.
 
 ## <a name="business-problems-in-pdm"></a>Problemy biznesowe podczas menedżerów PdM
 Firmom twarzy wysokiego ryzyka operacyjnego z powodu nieoczekiwanych awarii i ma ograniczoną wgląd w głównej przyczyny problemów w złożonych systemów. Na kluczowe pytania biznesowe, należą:
@@ -203,7 +203,9 @@ Wymagania biznesowe definiują, jak daleko ma modelu do prognozowania w przyszł
 #### <a name="rolling-aggregates"></a>Stopniowe agregacji
 Dla każdego rekordu zasobu okno stopniowe rozmiaru "W" jest wybierany jako liczba jednostek czasu do obliczenia wartości zagregowanych. Opóźnienie funkcje są obliczane przy użyciu okresów W _przed datą_ tego rekordu. Na rysunku 1 niebieskie linie pokazują wartości z czujników zarejestrowanych dla zasobu dla każdej jednostki czasu. Średnia krocząca wartości funkcji one oznaczają przedziale rozmiar W = 3. Średnia krocząca jest obliczana przez wszystkie rekordy z sygnatury czasowe w zakresie t<sub>1</sub> (na pomarańczowo) do t<sub>2</sub> (w kolorze zielonym). Wartość dla parametru W jest zwykle w ciągu kilku minut lub godzin w zależności od charakteru danych. Ale w przypadku niektórych problemów i pobierania dużych W (np. 12 miesięcy) może zapewnić całej historii elementu zawartości, aż do rekordu.
 
-![Rysunek 1. Stopniowe funkcji agregującej](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) rysunek 1. Stopniowe funkcje agregujące
+![Rysunek 1. Stopniowe funkcje agregujące](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+
+Rysunek 1. Stopniowe funkcje agregujące
 
 Przykłady stopniowe agregacje w przedziale czasu to liczba, średnia, środki CUMESUM (suma zbiorczej), wartości minimalnej/maksymalnej. Ponadto odchylenie, odchylenie standardowe i liczba wartości odstających poza odchyleń standardowych N są często używane. Przykłady agregacji, które mogą być stosowane dla [przypadki użycia](#sample-pdm-use-cases) w tym przewodniku są wymienione poniżej. 
 - _We wdrożeniu pakietu testowego opóźnienie_: liczba kodów błędów przez ostatni dzień/tydzień.
@@ -217,7 +219,9 @@ Inną przydatną techniką w menedżerów PdM jest Przechwytywanie zmian trendó
 #### <a name="tumbling-aggregates"></a>Agregacje wirowania
 Dla każdego oznaczonego rekordem elementu zawartości jest zdefiniowane okno rozmiaru z _-<sub>k</sub>_  , gdzie _k_ jest liczbą okien rozmiaru _w_. Agregacje są następnie tworzone za _pomocą_ _wirowania systemu Windows_ _w-k, w-<sub>(k-1)</sub>,..., z-<sub>2</sub>, z-<sub>1</sub>_  dla okresów przed sygnaturą czasową rekordu. _k_ może być małą liczbą krótkoterminowej efektów przechwycić lub dużą liczbą do wykrywania długoterminowych wzorców spadek przechwytywania. (patrz rysunek 2).
 
-![Rysunek 2. Funkcje agregujące wirowania](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) na rysunku 2. Wirowania funkcje agregujące
+![Rysunek 2. Wirowania funkcje agregujące](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+
+Rysunek 2. Wirowania funkcje agregujące
 
 Na przykład funkcja lag funkcje dla przypadku użycia turbiny wiatru mogą zostać utworzone za pomocą W = 1 i k = 3. Oznaczają opóźnienia dla każdego z ostatnich trzech miesięcy, przy użyciu górnej i dolnej wartości odstających.
 
@@ -227,7 +231,7 @@ Przedstawiono dane techniczne urządzeń, takie jak data produkcji, numer modelu
 
 Wysiłek przygotowywania danych omówionych do tej pory powinny prowadzić do dane są organizowane, jak pokazano poniżej. Szkolenia, testowanie i Walidacja danych powinny mieć ten schemat logicznych (w tym przykładzie przedstawiono czas w jednostkach dni).
 
-| Identyfikator elementu zawartości | Time | \<kolumny funkcji > | Label |
+| Identyfikator elementu zawartości | Czas | \<kolumny funkcji > | Etykieta |
 | ---- | ---- | --- | --- |
 | A123 |1 dzień | . . . | . |
 | A123 |2 dni | . . . | . |
@@ -262,7 +266,9 @@ W tej metodzie są identyfikowane dwa typy przykładów szkoleniowych. Przykład
 #### <a name="label-construction-for-binary-classification"></a>Konstrukcja etykiety klasyfikacji binarne
 Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu?" Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "o do odrzucaj" (Etykieta = 1) i oznaczać wszystkie rekordy jako "normal" (Etykieta = 0). (patrz rysunek 3).
 
-![Rysunek 3. Etykietowania dla klasyfikacji binarnej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) rysunek 3. Klasyfikacja binarna etykietowania
+![Rysunek 3. Klasyfikacja binarna etykietowania](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+
+Rysunek 3. Klasyfikacja binarna etykietowania
 
 Poniżej przedstawiono przykłady etykietowania strategii dla niektórych przypadków użycia.
 - _We wdrożeniu pakietu testowego opóźnienia_: X może zostać wybrany jako 1 dzień do prognozowania opóźnień w ciągu 24 godzin. Następnie wszystkie loty znajdujących się w ciągu 24 godzin zanim błędy są oznaczone jako 1.
@@ -277,7 +283,9 @@ Modele regresji są używane do _obliczenia pozostałego okresu eksploatacji (RU
 #### <a name="label-construction-for-regression"></a>Konstrukcja etykiety dla regresji
 Pytanie, w tym miejscu jest: "Co to jest pozostałego okresu eksploatacji (RUL) urządzeń?" Dla każdego rekordu przed awarią obliczyć etykiety jako liczba jednostek czasu pozostały następny błąd. W przypadku tej metody etykiety są ciągłe zmiennych. (Zobacz rysunek 4)
 
-![Rysunek 4. Etykietowania regresji](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) rysunek 4. Etykietowania regresji
+![Rysunek 4. Etykietowania regresji](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+
+Rysunek 4. Etykietowania regresji
 
 Aby uzyskać regresji etykietowania odbywa się z odniesieniem do punktu awarii. Nie wiedząc o tym, jak długo element zawartości został przetrwały przed wystąpieniem awarii nie jest możliwe jego obliczeń. Dlatego w przeciwieństwie do klasyfikacji binarnej zasoby bez żadnych przeszkód w danych nie można używać do modelowania. Ten problem dotyczy najlepiej innej techniki statystyczne o nazwie [analiza przeżycia](https://en.wikipedia.org/wiki/Survival_analysis). Ale potencjalnych kompilacji mogą wystąpić w przypadku stosowania tej techniki do menedżerów PdM przypadki użycia obejmują danych w różnym czasie z częstotliwością. Aby uzyskać więcej informacji na temat analiza przeżycia, zobacz [tym jeden pagera](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf).
 
@@ -289,11 +297,15 @@ Technik klasyfikacji wieloklasowej może służyć w rozwiązaniach program PdM 
 #### <a name="label-construction-for-multi-class-classification"></a>Konstrukcja etykiety klasyfikacji wieloklasowej
 Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób usługi zakończy się niepowodzeniem w ciągu następnych _nZ_ jednostki czasu, gdy _n_ to liczba okresów?" Aby odpowiedzieć na to pytanie, etykiety rekordów nZ przed awarią zasobów przy użyciu przedziały czasu (3Z 2Z-Z). Wszystkie inne etykiety rejestruje "normal" (Etykieta = 0). W przypadku tej metody zawiera zmienną docelową _podzielonych na kategorie_ wartości. (Zobacz rysunek 5).
 
-![Rysunek 5. Błąd czasu prognoz etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) rysunek 5. Etykiety klasyfikacji wieloklasowej dla błędu czasu prognoz
+![Rysunek 5. Etykiety prognoz czasu niepowodzeń dla klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+
+Rysunek 5. Etykiety klasyfikacji wieloklasowej dla błędu czasu prognoz
 
 Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu z powodu problemu z/głównej przyczyny _P<sub>i</sub>_ ?" gdzie _i_ jest liczba możliwych przyczyn. Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "wkrótce się niepowodzeniem z powodu przyczyny _P<sub>i</sub>_ " (etykieta = _P<sub>i</sub>_ ). Etykieta wszystkie rekordy jako "normal" (Etykieta = 0). W przypadku tej metody etykiety są również podzielone na kategorie (zobacz rysunek 6).
 
-![Rysunek 6. Główna przyczyna prognozowania etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) rysunek 6. Etykiety klasyfikacji wieloklasowej dla głównej przyczyny prognoz
+![Rysunek 6. Główne przyczyny dla klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+
+Rysunek 6. Etykiety klasyfikacji wieloklasowej dla głównej przyczyny prognoz
 
 Model przypisuje prawdopodobieństwo awarii, ze względu na każdym _P<sub>i</sub>_  oraz prawdopodobieństwo bez błędów. Tych prawdopodobieństw może zostać określona przez wielkość umożliwia prognozowanie problemy, które z największym prawdopodobieństwem mogą wystąpić w przyszłości.
 
@@ -329,7 +341,9 @@ Przyjęto założenie, strumień oznaczony sygnaturą czasową zdarzenia, takie 
 
 Podział zależne od czasu, można wybrać _szkolenia odcięcia czasu T<sub>c</sub>_  jaką do nauczenia modelu, za pomocą hiperparametrów dopasowane, przy użyciu danych historycznych maksymalnie T<sub>c</sub>. Aby zapobiec wyciekom przyszłych etykiety, które wykraczają poza T<sub>c</sub> do danych szkoleniowych, wybierz ostatni czas przykłady szkolenia etykiety jako X jednostki przed T<sub>c</sub>. W tym przykładzie pokazano na rysunku 7 każdy kwadrat reprezentuje rekordu w zestawie danych, których funkcji i etykiety są obliczane zgodnie z powyższym opisem. Na ilustracji przedstawiono rekordy, które powinny przejść do szkolenia i testowania zestawów dla X = 2, a W = 3:
 
-![Rysunek 7. Zależne od czasu podział dla klasyfikacji binarnej](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) rysunek 7. Zależne od czasu podział dla klasyfikacji binarnej
+![Rysunek 7. Zależne od czasu podział dla klasyfikacji binarnej](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+
+Rysunek 7. Zależne od czasu podział dla klasyfikacji binarnej
 
 Zielony kwadratów reprezentują rekordy należące do jednostki czasu, których można użyć do trenowania. Każdy przykład szkolenia jest generowany, biorąc pod uwagę przeszłości trzy kropki na potrzeby generowania funkcji i dwa kolejne okresy etykietowania przed T<sub>c</sub>. Jeśli jakakolwiek część dwa kolejne okresy wykracza poza T<sub>c</sub>, wykluczyć tego przykładu z szkoleniowy zestaw danych, ponieważ nie widoczność zakłada, że poza T<sub>c</sub>.
 
@@ -411,11 +425,11 @@ Końcowej części tego przewodnika zawiera listę szablonów rozwiązań mened�
 
 | # | Tytuł | Opis |
 |--:|:------|-------------|
-| 2 | [Szablon rozwiązania konserwacji predykcyjnej platformy Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Szablon rozwiązania typu open source, który demonstruje całej infrastruktury platformy Azure, zdolność do obsługi scenariuszy konserwacji predykcyjnej w kontekście zdalnego monitorowania IoT i uczenia Maszynowego modelowania. |
+| 2 | [Szablon rozwiązania konserwacji predykcyjnej platformy Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Szablon rozwiązania typu "open source" demonstrujący modelowanie Azure ML i kompletną infrastrukturę platformy Azure, która umożliwia obsługę predykcyjnych scenariuszy konserwacji w kontekście monitorowania zdalnego IoT. |
 | 3 | [Uczenie głębokie dla konserwacji predykcyjnej](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Notesu platformy Azure za pomocą rozwiązania wersji demonstracyjnej, z użyciem sieci LSTM (Long krótkoterminowe pamięci) (klasa sieci neuronowych) pod kątem konserwacji predykcyjnej [wpis w blogu w tym przykładzie](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Podręcznik modelowania konserwacji predykcyjnej w języku R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Podręcznik modelowania menedżerów PdM za pomocą skryptów w języku R.|
 | 5 | [Usługa Azure Konserwacja zapobiegawcza na potrzeby lotnictwa i Kosmonautyki](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jedna z pierwszym szablony rozwiązań program PdM w oparciu o uczenie Maszynowe Azure w wersji 1.0 samolotu konserwacji. Ten przewodnik pochodziły z tego projektu. |
-| 6 | [Zestaw narzędzi sztucznej Inteligencji platformy Azure dla IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | SI w usługi IoT edge, przy użyciu TensorFlow; pakiety Toolkit głębokiego uczenia modeli w kontenerach platformy Docker zgodnych z programem Azure IoT Edge i udostępnianie tych modeli jako interfejsy API REST.
+| 6 | [Zestaw narzędzi sztucznej Inteligencji platformy Azure dla IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI w IoT Edge przy użyciu TensorFlow; Pakiet Toolkit udostępnia modele uczenia głębokiego w Azure IoT Edge zgodnych kontenerach platformy Docker i uwidacznia te modele jako interfejsy API REST.
 | 7 | [Usługa Azure IoT do konserwacji predykcyjnej](https://github.com/Azure/azure-iot-predictive-maintenance) | Pakiet Azure IoT Suite komputerów — wstępnie skonfigurowanego rozwiązania. Szablon menedżerów PdM konserwacji samolotu pakietu IoT. [Innym dokumencie](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) i [wskazówki](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) związane z tym samym projekcie. |
 | 8 | [Szablon konserwacji predykcyjnej przy użyciu usługi R Services programu SQL Server](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Pokaz scenariusza użytkowania pozostałe opartych na usługach R. |
 | 9 | [Podręcznik modelowania konserwacji predykcyjnej](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Funkcja zestawu danych konserwacji w zakresie samolotu zaprojektowany przy użyciu języka R z [eksperymentów](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) i [zestawów danych](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) i [notesu platformy Azure](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) i [eksperymentów](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)w wersji 1.0 usługi Azure ml|
@@ -426,14 +440,14 @@ Platforma Microsoft Azure oferuje ścieżki szkoleniowe dla podstawowe pojęcia 
 
 | Zasobów szkoleniowych  | Dostępność |
 |:-------------------|--------------|
-| [Ścieżka szkoleniowa dla menedżerów PdM przy użyciu drzewa i lasu Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Public | 
-| [Ścieżka szkoleniowa dla menedżerów PdM korzystające z uczenia głębokiego](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Public |
-| [Deweloper sztucznej Inteligencji na platformie Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
-| [Służbowe Microsoft AI](https://aischool.microsoft.com/learning-paths) | Public |
-| [Learning sztucznej Inteligencji platformy Azure z usługi GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
-| [LinkedIn Learning](https://www.linkedin.com/learning) | Public |
-| [Microsoft AI YouTube seminaria internetowe](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
-| [Pokaż sztucznej Inteligencji firmy Microsoft](https://channel9.msdn.com/Shows/AI-Show) | Public |
+| [Ścieżka szkoleniowa dla menedżerów PdM przy użyciu drzewa i lasu Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Publiczne | 
+| [Ścieżka szkoleniowa dla menedżerów PdM korzystające z uczenia głębokiego](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Publiczne |
+| [Deweloper sztucznej Inteligencji na platformie Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Publiczne |
+| [Służbowe Microsoft AI](https://aischool.microsoft.com/learning-paths) | Publiczne |
+| [Learning sztucznej Inteligencji platformy Azure z usługi GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Publiczne |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | Publiczne |
+| [Microsoft AI YouTube seminaria internetowe](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Publiczne |
+| [Pokaż sztucznej Inteligencji firmy Microsoft](https://channel9.msdn.com/Shows/AI-Show) | Publiczne |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partnerzy |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | Partnerzy |
 

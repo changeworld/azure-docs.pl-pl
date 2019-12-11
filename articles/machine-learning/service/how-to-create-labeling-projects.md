@@ -1,20 +1,20 @@
 ---
-title: Pobieranie etykiet dla danych
+title: Tworzenie projektu etykietowania danych
 titleSuffix: Azure Machine Learning
-description: W tym artykule pokazano, jak tworzyć i uruchamiać projekty etykietowania w celu tagowania danych na potrzeby uczenia maszynowego.
+description: Dowiedz się, jak tworzyć i uruchamiać projekty etykietowania, aby oznakować dane dotyczące uczenia maszynowego.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c171310fd1c9caf78288fa156b353ecdd517d602
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bdedc3ee0c76eafc4b4bc95116fb5be846f4bee5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894693"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978240"
 ---
-# <a name="get-labels-for-data"></a>Pobieranie etykiet dla danych
+# <a name="create-a-data-labeling-project-and-export-labels"></a>Utwórz projekt etykietowania danych i Eksportuj etykiety 
 
 Voluminous danych etykietowania w projektach uczenia maszynowego jest często kłopotliwej. Projekty, które mają składnik programu obsługi komputera, takie jak Klasyfikacja obrazu lub wykrywanie obiektów, zwykle wymagają etykiet dla tysięcy obrazów.
  

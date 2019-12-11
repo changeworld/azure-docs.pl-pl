@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zasad dostarczania elementów zawartości przy użyciu zestawu .NET SDK | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono konfigurowanie zasad dostarczania elementów zawartości innego przy użyciu usługi Azure Media Services .NET SDK.
+title: Konfigurowanie zasad dostarczania elementów zawartości przy użyciu zestawu .NET SDK | Microsoft Docs
+description: W tym temacie pokazano, jak skonfigurować różne zasady dostarczania zasobów przy użyciu zestawu SDK programu Azure Media Services .NET.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -14,57 +14,57 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b5e733c93fef8920c73c8cf460dac7a7051fddb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab3c40ee408498453bb137c63c440d980b0b7255
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465613"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974516"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurowanie zasad dostarczania elementów zawartości przy użyciu zestawu SDK platformy .NET
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
-## <a name="overview"></a>Omówienie
-Jeśli planujesz zasoby dostarczanie zaszyfrowanych jedną z czynności w przepływie pracy dostarczania zawartości usługi Media Services służy do konfigurowania zasad dostarczania zasobów. Zasady dostarczania elementu zawartości informuje Media Services, jak chcesz uzyskać element zawartości został dostarczony: do protokołu przesyłania strumieniowego powinny element zawartości można dynamicznie spakować (na przykład, między innymi MPEG DASH, HLS, Smooth Streaming lub wszystkie), czy chcesz szyfrować dynamicznie element zawartości i w jaki sposób (koperty lub szyfrowania common encryption).
+## <a name="overview"></a>Przegląd
+Jeśli planujesz dostarczanie zaszyfrowanych zasobów, jeden z kroków w przepływie pracy Media Services dostarczania zawartości konfiguruje zasady dostarczania dla zasobów. Zasady dostarczania elementów zawartości informują Media Services, jak chcesz, aby zasób został dostarczony: w jakim protokole przesyłania strumieniowego powinien być dynamicznie spakowany pakiet zawartości (na przykład MPEG PAUZy, HLS, Smooth Streaming lub wszystkie), niezależnie od tego, czy chcesz dynamicznie szyfrować element zawartości i sposób (koperta lub typowe szyfrowanie).
 
-W tym artykule omówiono, dlaczego i jak tworzenie i konfigurowanie zasad dostarczania elementów zawartości.
+W tym artykule omówiono przyczynę i sposób tworzenia i konfigurowania zasad dostarczania elementów zawartości.
 
 >[!NOTE]
 >Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**. 
 >
->Ponadto aby można było korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego element zawartości musi zawierać zestaw każdego pliku MP4 z adaptacyjną szybkością transmisji bitów lub pliki Smooth Streaming adaptacyjną szybkością transmisji bitów.
+>Ponadto, aby można było korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, element zawartości musi zawierać zestaw z adaptacyjną szybkością transmisji bitów pliki MP4 lub z adaptacyjną szybkością transmisji bitów Smooth Streaming.
 
-Różne zasady można zastosować do tego samego zasobu. Na przykład można zastosować szyfrowanie PlayReady Smooth Streaming i szyfrowanie AES Envelope szyfrowanie MPEG DASH i HLS. Protokoły, które nie są zdefiniowane w zasadzie dostarczania (można na przykład dodać jedną zasadę, która określa tylko protokół HLS), nie mogą korzystać z przesyłania strumieniowego. Wyjątkiem jest przypadek, w którym nie zdefiniowano żadnych zasad dostarczania elementów zawartości. Wówczas wszystkie protokoły mogą być przesyłane bez zabezpieczeń.
+Możesz zastosować różne zasady do tego samego elementu zawartości. Można na przykład zastosować szyfrowanie PlayReady do szyfrowania kopert Smooth Streaming i AES do HLS. Protokoły, które nie są zdefiniowane w zasadzie dostarczania (można na przykład dodać jedną zasadę, która określa tylko protokół HLS), nie mogą korzystać z przesyłania strumieniowego. Wyjątkiem jest przypadek, w którym nie zdefiniowano żadnych zasad dostarczania elementów zawartości. Wówczas wszystkie protokoły mogą być przesyłane bez zabezpieczeń.
 
-Jeśli użytkownik chce dostarczać zaszyfrowane trwałego magazynu, należy skonfigurować zasady dostarczania elementu zawartości. Zanim może być przesyłany strumieniowo element zawartości, serwer przesyłania strumieniowego usuwa szyfrowanie magazynu i przesyła strumieniowo zawartość przy użyciu zasad dostarczania określony. Na przykład do dostarczania elementów zawartości szyfrowane przy użyciu klucza szyfrowania koperty Advanced Encryption Standard (AES), Ustaw typ zasad na **DynamicEnvelopeEncryption**. Aby usunąć szyfrowania magazynu i przesyłanie strumieniowe zawartości niezaszyfrowane, Ustaw typ zasad **NoDynamicEncryption**. Postępuj zgodnie z przykładami pokazującymi sposób konfigurowania następujących typów zasad.
+Jeśli chcesz dostarczyć zasób zaszyfrowanego magazynu, musisz skonfigurować zasady dostarczania zasobów. Zanim będzie można przesłać strumieniowo zasób, serwer przesyłania strumieniowego usunie szyfrowanie magazynu i strumieniuje zawartość przy użyciu określonych zasad dostarczania. Na przykład, aby dostarczyć zasób szyfrowany przy użyciu klucza szyfrowania Advanced Encryption Standard (AES), ustaw typ zasad na **DynamicEnvelopeEncryption**. Aby usunąć szyfrowanie magazynu i przesłać strumieniowo element zawartości, ustaw dla opcji Typ zasad wartość **NoDynamicEncryption**. Przykłady pokazujące sposób konfigurowania tych typów zasad są następujące.
 
-W zależności od tego, jak można skonfigurować zasady dostarczania elementu zawartości można dynamicznie pakietu, szyfrowanie i przesyłanie strumieniowe następujących protokołów: Smooth Streaming, HLS i MPEG DASH.
+W zależności od sposobu skonfigurowania zasad dostarczania elementów zawartości można dynamicznie spakować, szyfrować i przesyłać strumieniowo następujące protokoły przesyłania strumieniowego: Smooth Streaming, HLS i PAUZa MPEG.
 
-Na poniższej liście przedstawiono formaty umożliwiają przesyłanie strumieniowe Smooth, HLS i KRESKI.
+Na poniższej liście przedstawiono formaty używane do przesyłania strumieniowego gładki, HLS i PAUZy.
 
-Zestaw Smooth Streaming:
+Smooth Streaming:
 
 {nazwa punktu końcowego przesyłania strumieniowego-nazwa konta usługi Media Services}.streaming.mediaservices.windows.net/{identyfikator lokalizatora}/{nazwa pliku}.ism/Manifest
 
 HLS:
 
-{przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = M3U8-AAPL)
 
 MPEG DASH
 
-{przesyłania strumieniowego punktu końcowego nazwie pobicia konta name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = MPD-Time-CSF)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
-* Przed usunięciem AssetDeliveryPolicy, należy usunąć wszystkie lokalizatory przesyłania strumieniowego, skojarzone z elementem zawartości. Później można utworzyć nowego lokalizatory przesyłania strumieniowego, w razie potrzeby, za pomocą nowego AssetDeliveryPolicy.
-* Nie można utworzyć Lokalizator przesyłania strumieniowego magazynu trwałego zaszyfrowane, jeśli skonfigurowano nie zasad dostarczania elementów zawartości.  Jeśli zasób nie jest szyfrowany w magazynie, system będzie można utworzyć i przesyłanie strumieniowe zasób w zabezpieczeniu bez zasad dostarczania elementu zawartości.
-* Może mieć wiele zasad dostarczania elementów zawartości skojarzone z pojedynczego zasobu, ale można określić tylko jeden sposób obsługi danego AssetDeliveryProtocol.  Co oznacza, Jeśli spróbujesz połączyć dwie zasady dostarczania, które określają protokół AssetDeliveryProtocol.SmoothStreaming, który spowoduje wystąpienie błędu, ponieważ system nie może określić, którego, w którym ma się są stosowane, gdy klient wysyła żądanie Smooth Streaming.
-* Jeśli masz element zawartości za pomocą Lokalizator przesyłania strumieniowego nie można połączyć nowych zasad do elementu zawartości (możesz odłączyć istniejące zasady z niego, lub zaktualizowania zasad dostarczania, skojarzony element zawartości).  Musisz najpierw usuń Lokalizator przesyłania strumieniowego, Dostosuj zasady, a następnie ponownie utwórz Lokalizator przesyłania strumieniowego.  Podczas ponownego tworzenia Lokalizator przesyłania strumieniowego, ale należy upewnić się, że, nie będzie powodować problemy dla klientów od zawartości mogą być buforowane przez źródło lub podrzędnego usługi CDN, możesz użyć tego samego locatorId.
+* Przed usunięciem AssetDeliveryPolicy należy usunąć wszystkie lokalizatory przesyłania strumieniowego skojarzone z elementem zawartości. W razie potrzeby możesz później utworzyć nowe lokalizatory przesyłania strumieniowego z nowym AssetDeliveryPolicy.
+* Nie można utworzyć lokalizatora przesyłania strumieniowego w zaszyfrowanym elemencie zawartości magazynu, jeśli nie ustawiono żadnych zasad dostarczania zasobów.  Jeśli element zawartości nie jest szyfrowany jako magazyn, system zezwoli na utworzenie lokalizatora i strumieniowe przekazanie elementu zawartości bez zasad dostarczania elementów zawartości.
+* Można mieć wiele zasad dostarczania zasobów skojarzonych z pojedynczym elementem zawartości, ale można określić tylko jeden sposób obsługi danego AssetDeliveryProtocol.  Znaczenie, jeśli próbujesz połączyć dwie zasady dostarczania, które określają protokół AssetDeliveryProtocol. SmoothStreaming, który spowoduje błąd, ponieważ system nie wie, który z nich ma być stosowany, gdy klient wysyła żądanie Smooth Streaming.
+* Jeśli masz zasób z istniejącym lokalizatorem przesyłania strumieniowego, nie możesz połączyć nowych zasad z elementem zawartości (można odłączyć istniejące zasady od elementu zawartości lub zaktualizować zasady dostarczania skojarzone z elementem zawartości).  Najpierw musisz usunąć lokalizator przesyłania strumieniowego, dostosować zasady, a następnie ponownie utworzyć lokalizator przesyłania strumieniowego.  Tego samego locatorId można użyć podczas ponownego tworzenia lokalizatora przesyłania strumieniowego, ale należy upewnić się, że nie spowoduje to problemów dla klientów, ponieważ zawartość może być buforowana przez źródło lub w podrzędnej sieci CDN.
 
-## <a name="clear-asset-delivery-policy"></a>Zasady dostarczania elementu zawartości wyczyść
+## <a name="clear-asset-delivery-policy"></a>Wyczyść zasady dostarczania zasobów
 
-Następujące **ConfigureClearAssetDeliveryPolicy** metody określa nie chcesz stosować szyfrowania dynamicznego i że dostarczymy strumienia w dowolnym z następujących protokołów:  Protokoły MPEG DASH, HLS i Smooth Streaming. Można zastosować tę zasadę do swoich zasobów szyfrowany w magazynie.
+Poniższa metoda **ConfigureClearAssetDeliveryPolicy** określa, że nie należy stosować szyfrowania dynamicznego i dostarczania strumienia przy użyciu jednego z następujących protokołów: kreska MPEG, HLS i protokoły Smooth Streaming. Możesz chcieć zastosować te zasady do zaszyfrowanych zasobów magazynu.
 
-Instrukcje dotyczące wartości, jakie można określić podczas tworzenia AssetDeliveryPolicy, zobacz [typy używane podczas definiowania AssetDeliveryPolicy](#types) sekcji.
+Aby uzyskać informacje na temat wartości, które można określić podczas tworzenia AssetDeliveryPolicy, zobacz sekcję [typy używane podczas definiowania AssetDeliveryPolicy](#types) .
 
 ```csharp
     static public void ConfigureClearAssetDeliveryPolicy(IAsset asset)
@@ -77,11 +77,11 @@ Instrukcje dotyczące wartości, jakie można określić podczas tworzenia Asset
         asset.DeliveryPolicies.Add(policy);
     }
 ```
-## <a name="dynamiccommonencryption-asset-delivery-policy"></a>Zasady dostarczania elementu zawartości DynamicCommonEncryption
+## <a name="dynamiccommonencryption-asset-delivery-policy"></a>Zasady dostarczania elementów zawartości DynamicCommonEncryption
 
-Następujące **CreateAssetDeliveryPolicy** metoda tworzy **AssetDeliveryPolicy** skonfigurowany do stosowania dynamicznego szyfrowania common encryption (**DynamicCommonEncryption**) do sprawnego protokołu przesyłania strumieniowego (inne protokoły zostanie zablokowany przesyłania strumieniowego). Ta metoda przyjmuje dwa parametry: **Zasób** (zasobów, do której chcesz zastosować zasady dostarczania) i **IContentKey** (klucz zawartości **CommonEncryption** typu, aby uzyskać więcej informacji, zobacz: [Tworzenie klucza zawartości](media-services-dotnet-create-contentkey.md#common_contentkey)).
+Poniższa metoda **CreateAssetDeliveryPolicy** tworzy **AssetDeliveryPolicy** , który jest skonfigurowany do stosowania dynamicznego uwierzytelniania wspólnego (**DynamicCommonEncryption**) do płynnego protokołu przesyłania strumieniowego (inne protokoły będą blokowane w przypadku przesyłania strumieniowego). Metoda przyjmuje dwa parametry: **zasób** (zasób, do którego chcesz zastosować zasady dostarczania) i **IContentKey** (klucz zawartości typu **CommonEncryption** , aby uzyskać więcej informacji, zobacz: [Tworzenie klucza zawartości](media-services-dotnet-create-contentkey.md#common_contentkey)).
 
-Instrukcje dotyczące wartości, jakie można określić podczas tworzenia AssetDeliveryPolicy, zobacz [typy używane podczas definiowania AssetDeliveryPolicy](#types) sekcji.
+Aby uzyskać informacje na temat wartości, które można określić podczas tworzenia AssetDeliveryPolicy, zobacz sekcję [typy używane podczas definiowania AssetDeliveryPolicy](#types) .
 
 ```csharp
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
@@ -109,7 +109,7 @@ Instrukcje dotyczące wartości, jakie można określić podczas tworzenia Asset
      }
 ```
 
-Usługa Azure Media Services umożliwia również dodanie Widevine szyfrowania. Poniższy przykład demonstruje, PlayReady i Widevine dodawany do zasad dostarczania elementów zawartości.
+Azure Media Services również umożliwia dodanie szyfrowania Widevine. W poniższym przykładzie pokazano, że do zasad dostarczania elementów zawartości jest dodawany zarówno PlayReady, jak i Widevine.
 
 ```csharp
     static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
@@ -151,14 +151,14 @@ Usługa Azure Media Services umożliwia również dodanie Widevine szyfrowania. 
     }
 ```
 > [!NOTE]
-> W przypadku szyfrowania przy użyciu metody Widevine, tylko będzie można dostarczać przy użyciu DASH. Upewnij się określić DASH w Protokół dostarczania elementów zawartości.
+> W przypadku szyfrowania za pomocą Widevine, można tylko dostarczyć przy użyciu ŁĄCZNIKa. Upewnij się, że w protokole dostarczania zasobów jest określona KRESKa.
 > 
 > 
 
-## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>Zasady dostarczania elementu zawartości DynamicEnvelopeEncryption
-Następujące **CreateAssetDeliveryPolicy** metoda tworzy **AssetDeliveryPolicy** skonfigurowanego Zastosuj szyfrowanie dynamiczne koperty (**DynamicEnvelopeEncryption**) na potrzeby protokołu Smooth Streaming, HLS i KRESKI (Jeśli zdecydujesz nie określać niektóre protokoły, będą blokowani z przesyłania strumieniowego). Ta metoda przyjmuje dwa parametry: **Zasób** (zasobów, do której chcesz zastosować zasady dostarczania) i **IContentKey** (klucz zawartości **EnvelopeEncryption** typu, aby uzyskać więcej informacji, zobacz: [Tworzenie klucza zawartości](media-services-dotnet-create-contentkey.md#envelope_contentkey)).
+## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>Zasady dostarczania elementów zawartości DynamicEnvelopeEncryption
+Poniższa metoda **CreateAssetDeliveryPolicy** tworzy **AssetDeliveryPolicy** , który jest skonfigurowany do stosowania dynamicznego szyfrowania kopert (**DynamicEnvelopeEncryption**) do protokołów Smooth Streaming, HLS i pauz (Jeśli zdecydujesz się nie określać niektórych protokołów, zostaną one zablokowane na potrzeby przesyłania strumieniowego). Metoda przyjmuje dwa parametry: **zasób** (zasób, do którego chcesz zastosować zasady dostarczania) i **IContentKey** (klucz zawartości typu **EnvelopeEncryption** , aby uzyskać więcej informacji, zobacz: [Tworzenie klucza zawartości](media-services-dotnet-create-contentkey.md#envelope_contentkey)).
 
-Instrukcje dotyczące wartości, jakie można określić podczas tworzenia AssetDeliveryPolicy, zobacz [typy używane podczas definiowania AssetDeliveryPolicy](#types) sekcji.   
+Aby uzyskać informacje na temat wartości, które można określić podczas tworzenia AssetDeliveryPolicy, zobacz sekcję [typy używane podczas definiowania AssetDeliveryPolicy](#types) .   
 
 ```csharp
     private static void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
@@ -203,7 +203,7 @@ Instrukcje dotyczące wartości, jakie można określić podczas tworzenia Asset
 
 ### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
-Następujące wyliczenia w tym artykule opisano wartości ustawione przez protokół dostarczania elementów zawartości.
+Poniższe Wyliczenie zawiera opis wartości, które można ustawić dla protokołu dostarczania zasobów.
 
 ```csharp
     [Flags]
@@ -239,7 +239,7 @@ Następujące wyliczenia w tym artykule opisano wartości ustawione przez protok
 ```
 ### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
 
-Następujące wyliczenia w tym artykule opisano wartości, które można ustawić dla tego typu zasad dostarczania elementu zawartości.  
+Poniższe Wyliczenie zawiera opis wartości, które można ustawić dla typu zasad dostarczania zasobów.  
 ```csharp
     public enum AssetDeliveryPolicyType
     {
@@ -272,7 +272,7 @@ Następujące wyliczenia w tym artykule opisano wartości, które można ustawi�
 ```
 ### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
-Następujące wyliczenia w tym artykule opisano wartości, których można użyć do konfigurowania metodę dostarczania zawartości klucza do klienta.
+Poniższe Wyliczenie zawiera opis wartości, których można użyć do skonfigurowania metody dostarczania klucza zawartości dla klienta.
   ```csharp  
     public enum ContentKeyDeliveryType
     {
@@ -304,7 +304,7 @@ Następujące wyliczenia w tym artykule opisano wartości, których można uży�
 ```
 ### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
 
-Następujące wyliczenia w tym artykule opisano wartości, które można ustawić, aby skonfigurować klucze używane do uzyskania konkretnej konfiguracji do zasad dostarczania elementu zawartości.
+Poniższe Wyliczenie zawiera opis wartości, które można skonfigurować w celu skonfigurowania kluczy używanych do uzyskania określonej konfiguracji dla zasad dostarczania elementów zawartości.
 ```csharp
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -349,9 +349,14 @@ Następujące wyliczenia w tym artykule opisano wartości, które można ustawi�
         WidevineLicenseAcquisitionUrl
     }
 ```
+
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

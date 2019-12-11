@@ -1,18 +1,18 @@
 ---
 title: Informacje o pomocy technicznej MQTT usługi Azure IoT Device Provisioning Service | Microsoft Docs
-description: Przewodnik dla deweloperów — obsługa urządzeń łączących się z punktem końcowym usługi Azure IoT Device Provisioning dla urządzeń przy użyciu protokołu MQTT.
+description: Przewodnik dla deweloperów — obsługa urządzeń łączących się z punktem końcowym usługi Azure IoT Device Provisioning (DPS) dostępnym na urządzeniu przy użyciu protokołu MQTT.
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
-ms.openlocfilehash: fb39979e321c4815aec74c801cd2d04e81b7e533
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093906"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973377"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikacja z usługą DPS przy użyciu protokołu MQTT
 

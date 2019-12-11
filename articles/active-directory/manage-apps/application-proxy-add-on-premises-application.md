@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420454"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970350"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Samouczek: Dodawanie aplikacji lokalnej dla dostępu zdalnego przy użyciu serwera proxy aplikacji w Azure Active Directory
 
@@ -217,8 +217,9 @@ Aby dodać użytkownika testowego:
 
 Aby przetestować logowanie do aplikacji:
 
-1. W przeglądarce otwórz zewnętrzny adres URL skonfigurowany w kroku publikowania. Powinien zostać wyświetlony ekran startowy.
-1. Zaloguj się jako użytkownik utworzony w poprzedniej sekcji.
+1. Z aplikacji, którą chcesz przetestować, wybierz pozycję **serwer proxy aplikacji**.
+2. W górnej części strony wybierz pozycję **Testuj aplikację** , aby uruchomić test w aplikacji, i sprawdź, czy występują problemy z konfiguracją.
+3. Upewnij się, że najpierw uruchom aplikację, aby przetestować logowanie do aplikacji, a następnie Pobierz raport diagnostyczny, aby zapoznać się ze wskazówkami dotyczącymi rozwiązywania problemów z wykrytymi problemami.
 
 Aby uzyskać informacje na temat rozwiązywania problemów, zobacz [Troubleshoot Application Proxy problems and error messages (Rozwiązywanie problemów z serwerem proxy aplikacji i problemów związanych z komunikatami o błędach)](application-proxy-troubleshoot.md).
 
@@ -237,4 +238,4 @@ Zostały wykonane następujące zadania:
 Możesz przystąpić do konfigurowania aplikacji pod kątem logowania jednokrotnego. Użyj poniższego linku, aby wybrać metodę logowania jednokrotnego i znaleźć samouczki logowania jednokrotnego.
 
 > [!div class="nextstepaction"]
-> [Skonfiguruj logowanie jednokrotne](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [Konfigurowanie logowania jednokrotnego](what-is-single-sign-on.md#choosing-a-single-sign-on-method)

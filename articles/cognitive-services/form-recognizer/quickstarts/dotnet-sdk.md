@@ -1,20 +1,20 @@
 ---
 title: 'Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET | Microsoft Docs'
-description: Wprowadzenie do biblioteki klienta aparatu rozpoznawania formularzy dla platformy .NET do uczenia, wyodrębnienia, analizy i pobrania danych wyjściowych z danymi strukturalnymi.
+description: Rozpocznij pracę z biblioteką klienta aparatu rozpoznawania w programie .NET do uczenia, wyodrębnienia, analizy i pobrania danych wyjściowych ze strukturą.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 018371f4c188d05d92a5fd3fd81511d941a359a6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904606"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978615"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET
 

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP'
+title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem PHP.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fb9539c8aa0477cbfbf11ce08635e4e9ccebb2ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859218"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977934"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP
 
 W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka PHP do wykrywania ludzkich twarzy na obrazie.
 
@@ -25,7 +25,7 @@ W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy
 
 - Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz.
 - Edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/download).
-- Pakiet [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) języka PHP.
+- Pakiet [HTTP_REQUEST2](https://pear.php.net/package/HTTP_Request2) php.
 - Przeglądarka sieci Web obsługująca język PHP. Jeśli nie zostało to jeszcze zrobione, możesz to zrobić przez zainstalowanie i skonfigurowanie [XAMPP](https://www.apachefriends.org/) na komputerze.
 
 ## <a name="initialize-the-html-file"></a>Inicjowanie pliku HTML
@@ -99,7 +99,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-Musisz zaktualizować `subscriptionKey` pole przy użyciu wartości klucza subskrypcji i należy `uriBase` zmienić ciąg tak, aby zawierał prawidłowy ciąg punktu końcowego. Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
+Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji i należy zmienić ciąg `uriBase` tak, aby zawierał prawidłowy ciąg punktu końcowego. Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka JavaScript'
+title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i środowiska JavaScript'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na podstawie obrazu przy użyciu interfejsu API rozpoznawania twarzy i języka JavaScript w usługach Cognitive Services.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: bc8d20abcc7bc66d319874978e134c5c86c86e1c
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3946f6d034baee528f9cd5abd6467b8c393e73de
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859045"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977985"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka JavaScript
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i środowiska JavaScript
 
 W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka JavaScript do wykrywania ludzkich twarzy na obrazie.
 
@@ -124,7 +124,7 @@ Dodaj następujący kod bezpośrednio nad elementem `h1` w dokumencie. Ten kod k
 </script>
 ```
 
-Musisz zaktualizować `subscriptionKey` pole przy użyciu wartości klucza subskrypcji i należy `uriBase` zmienić ciąg tak, aby zawierał prawidłowy ciąg punktu końcowego. Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
+Należy zaktualizować pole `subscriptionKey` wartością klucza subskrypcji i należy zmienić ciąg `uriBase` tak, aby zawierał prawidłowy ciąg punktu końcowego. Pole `returnFaceAttributes` określa atrybuty twarzy do pobrania; możesz zmienić ten ciąg w zależności od planowanego użycia.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

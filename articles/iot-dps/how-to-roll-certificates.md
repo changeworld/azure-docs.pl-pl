@@ -1,18 +1,18 @@
 ---
 title: Wycofaj certyfikaty X. 509 na platformie Azure IoT Hub Device Provisioning Service
-description: Jak wycofać certyfikaty X. 509 przy użyciu wystąpienia usługi Device Provisioning
+description: Jak wycofać certyfikaty X. 509 za pomocą wystąpienia usługi Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228751"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974891"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak wycofać certyfikaty urządzeń X. 509
 
@@ -94,7 +94,7 @@ Później, gdy certyfikat pomocniczy zbliża się również do wygaśnięcia i m
 
 1. Kliknij pozycję **rejestracje indywidualne**i kliknij wpis Identyfikator rejestracji na liście. 
 
-2. Kliknij pozycję **certyfikat pomocniczy** , a następnie kliknij ikonę folderu, aby wybrać nowy certyfikat do przekazania dla wpisu rejestracji. Kliknij pozycję **Zapisz**.
+2. Kliknij pozycję **certyfikat pomocniczy** , a następnie kliknij ikonę folderu, aby wybrać nowy certyfikat do przekazania dla wpisu rejestracji. Kliknij przycisk **Save** (Zapisz).
 
     ![Zarządzanie rejestracjami indywidualnymi przy użyciu certyfikatu pomocniczego](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -177,7 +177,7 @@ Później, gdy certyfikat pomocniczy zbliża się również do wygaśnięcia i m
 
 1. Kliknij pozycję **grupy rejestracji**, a następnie kliknij nazwę grupy na liście. 
 
-2. Kliknij pozycję **certyfikat pomocniczy** , a następnie kliknij ikonę folderu, aby wybrać nowy certyfikat do przekazania dla wpisu rejestracji. Kliknij pozycję **Zapisz**.
+2. Kliknij pozycję **certyfikat pomocniczy** , a następnie kliknij ikonę folderu, aby wybrać nowy certyfikat do przekazania dla wpisu rejestracji. Kliknij przycisk **Save** (Zapisz).
 
     Ten nowy certyfikat pośredni powinien być podpisany przez zweryfikowany certyfikat głównego urzędu certyfikacji, który został już dodany do usługi aprowizacji. Aby uzyskać więcej informacji, zobacz [certyfikaty X. 509](concepts-security.md#x509-certificates).
 

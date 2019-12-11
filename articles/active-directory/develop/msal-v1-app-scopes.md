@@ -1,5 +1,5 @@
 ---
-title: Zakresy dla aplikacji w wersji 1.0 (Biblioteka uwierzytelniania firmy Microsoft) | Azure
+title: MSAL zakresów dla aplikacji w wersji 1.0 | Azure
 description: Dowiedz się więcej o zakresach dla aplikacji w wersji 1.0 przy użyciu biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
 author: TylerMSFT
@@ -13,12 +13,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395b5105fdb067977f8414fe5675170032262fe0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921402"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963260"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Zakresy dla internetowego interfejsu API akceptujące tokeny v 1.0
 
@@ -26,7 +26,7 @@ Uprawnienia OAuth2 to zakresy uprawnień, Azure Active Directory które aplikacj
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Zakresy żądania dostępu do określonych uprawnień OAuth2 aplikacji v 1.0
 
-Aby uzyskać tokeny dla określonych zakresów aplikacji w wersji 1.0 (na przykład Graf usługi Azure AD, czyli https:\//graph.windows.net), należy utworzyć zakresy przez połączenie żądanego identyfikatora zasobu z żądanym uprawnieniem OAuth2 dla tego zasobu.
+Aby uzyskać tokeny dla określonych zakresów aplikacji w wersji 1.0 (na przykład Graf usługi Azure AD, który jest https://graph.windows.net), Utwórz zakresy przez połączenie żądanego identyfikatora zasobu z żądanym uprawnieniem OAuth2 dla tego zasobu.
 
 Na przykład w celu uzyskania dostępu w imieniu użytkownika do interfejsu API sieci Web w wersji 1.0, w którym jest `ResourceId`identyfikator URI aplikacji:
 

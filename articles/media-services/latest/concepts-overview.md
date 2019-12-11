@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910319"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970040"
 ---
 # <a name="media-services-concepts"></a>Koncepcje Media Services
 
@@ -51,20 +51,20 @@ Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłani
 - [Przekazywanie do chmury i magazynowanie w niej](storage-account-concept.md)
 - [Koncepcja zasobów](assets-concept.md)
 
-## <a name="encoding"></a>Kodowanie
+## <a name="encoding"></a>Encoding
 
 Po przekazaniu plików multimediów cyfrowych o wysokiej jakości do zasobów można je zakodować do formatów, które mogą być odtwarzane w różnych przeglądarkach i urządzeniach. 
 
-Aby kodować z Media Services v3, należy utworzyć transformacje i **zadania**.
+Aby kodować z Media Services v3, należy utworzyć **transformacje** i **zadania**.
 
 ![Przekształcenia](./media/encoding/transforms-jobs.png)
 
 - [Transformacje i zadania](transforms-jobs-concept.md)
 - [Kodowanie przy użyciu Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Media Analytics
+## <a name="media-analytics"></a>Analiza multimediów
 
-Aby analizować pliki wideo i audio, należy również utworzyć transformacje i **zadania**.
+Aby analizować pliki wideo i audio, należy również utworzyć **transformacje** i **zadania**.
 
 - [Analizowanie plików wideo i audio](analyzing-video-audio-files-concept.md)
 
@@ -88,11 +88,11 @@ Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochro
 
 &#42;szyfrowanie dynamiczne obsługuje algorytm AES-128 "Wyczyść klucz", CBCS i CENC. 
 
-Media Services **manifestów dynamicznych** można używać do przesyłania strumieniowego tylko określonych elementów lub podklipów wideo. W poniższym przykładzie koder został użyty do zakodowania zasobu Mezzanine do siedmiu plików ISO pliki MP4 (od 180p do 1080p). Zakodowany element zawartości może być dynamicznie spakowany w jednym z następujących protokołów przesyłania strumieniowego: HLS, PAUZa MPEG i gładki.  W górnej części diagramu zostanie wyświetlony manifest HLS dla elementu zawartości bez filtrów (zawiera on wszystkie siedem wersji).  W lewym dolnym rogu jest pokazywany manifest HLS, do którego zastosowano filtr o nazwie "OTT". Filtr "OTT" określa, aby usunąć wszystkie szybkości transmisji bitów poniżej 1 MB/s, co spowodowało odłączenie dwóch dolnych poziomów jakości w odpowiedzi. W prawym dolnym rogu jest pokazywany manifest HLS, do którego zastosowano filtr o nazwie "Mobile". Filtr "mobilny" określa, aby usunąć wersje, w których rozdzielczość jest większa niż 720, co spowodowało odłączenie dwóch oddzielonych wersji.
+Media Services **manifestów dynamicznych** można używać do przesyłania strumieniowego tylko określonych elementów lub podklipów wideo. W poniższym przykładzie koder został użyty do zakodowania zasobu Mezzanine do siedmiu plików ISO pliki MP4 (od 180p do 1080p). Zakodowany element zawartości może być dynamicznie spakowany w jednym z następujących protokołów przesyłania strumieniowego: HLS, PAUZy MPEG i gładki.  W górnej części diagramu zostanie wyświetlony manifest HLS dla elementu zawartości bez filtrów (zawiera on wszystkie siedem wersji).  W lewym dolnym rogu jest pokazywany manifest HLS, do którego zastosowano filtr o nazwie "OTT". Filtr "OTT" określa, aby usunąć wszystkie szybkości transmisji bitów poniżej 1 MB/s, co spowodowało odłączenie dwóch dolnych poziomów jakości w odpowiedzi. W prawym dolnym rogu jest pokazywany manifest HLS, do którego zastosowano filtr o nazwie "Mobile". Filtr "mobilny" określa, aby usunąć wersje, w których rozdzielczość jest większa niż 720, co spowodowało odłączenie dwóch oddzielonych wersji.
 
 ![Filtrowanie wersji](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
-- [dynamicznego tworzenia pakietów](dynamic-packaging-overview.md)
+- [Dynamiczne tworzenie pakietów](dynamic-packaging-overview.md)
 - [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)
 - [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)
 - [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
@@ -101,9 +101,12 @@ Media Services **manifestów dynamicznych** można używać do przesyłania stru
 - [Manifesty dynamiczne](filters-dynamic-manifest-overview.md)
 - [Filtry](filters-concept.md)
 
+> [!NOTE]
+> Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+
 ## <a name="live-streaming"></a>Transmisja strumieniowa na żywo
 
-Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmurze platformy Azure. **Wydarzenia na żywo** odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Podczas tworzenia zdarzenia na **żywo**jest tworzony wejściowy punkt końcowy, za pomocą którego można wysyłać sygnały na żywo ze zdalnego kodera. Gdy strumień przepływa do **zdarzenia na żywo**, możesz rozpocząć zdarzenie przesyłania strumieniowego, tworząc element **zawartości**, **dane wyjściowe**i **lokalizator przesyłania strumieniowego**. Na **żywo dane wyjściowe** będą archiwizowane w strumieniu i udostępniane użytkownikom za pomocą **punktu końcowego przesyłania strumieniowego**. **Wydarzenie na żywo** może być jednym z dwóch typów: **przekazywaniem** i **kodowaniem na żywo**.
+Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmurze platformy Azure. **Wydarzenia na żywo** odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Podczas tworzenia zdarzenia na **żywo**jest tworzony wejściowy punkt końcowy, za pomocą którego można wysyłać sygnały na żywo ze zdalnego kodera. Gdy strumień przepływa do **zdarzenia na żywo**, możesz rozpocząć zdarzenie przesyłania strumieniowego, tworząc element **zawartości**, **dane wyjściowe**i **lokalizator przesyłania strumieniowego**. Na **żywo dane wyjściowe** będą archiwizowane w **strumieniu i udostępniane** użytkownikom za pomocą **punktu końcowego przesyłania strumieniowego**. **Wydarzenie na żywo** może być jednym z dwóch typów: **przekazywaniem** i **kodowaniem na żywo**.
 
 Na poniższej ilustracji przedstawiono przepływ pracy typu pass-through:
 
@@ -116,7 +119,7 @@ Na poniższej ilustracji przedstawiono przepływ pracy typu pass-through:
 
 ### <a name="event-grid"></a>Event Grid
 
-Aby wyświetlić postęp zadania, należy użyć **Event Grid**. Media Services również emituje typy zdarzeń na żywo. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. 
+Aby wyświetlić postęp zadania, należy użyć **Event Grid**. Media Services również emituje typy zdarzeń na żywo. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń i reagować na zdarzenia w praktycznie wszystkich usługach platformy Azure, a także źródłach niestandardowych. 
 
 - [Obsługa zdarzeń Event Grid](reacting-to-media-services-events.md)
 - [Punktu](media-services-event-schemas.md)

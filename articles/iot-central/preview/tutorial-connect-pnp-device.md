@@ -3,17 +3,17 @@ title: Samouczek — łączenie urządzenia IoT Plug and Play w wersji zapoznawc
 description: W tym samouczku pokazano, jak używać modelu możliwości urządzenia do generowania kodu urządzenia. Następnie uruchom kod urządzenia, sprawdź, czy urządzenie nawiązuje połączenie z aplikacją IoT Central, i użyj wygenerowanych widoków.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2cb07a94b2ae85cc0755e1e7069a76e1ef2a5252
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702858"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977339"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Samouczek: Używanie modelu możliwości urządzenia do tworzenia urządzenia Plug and Play IoT i łączenia go z aplikacją IoT Central
 

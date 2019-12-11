@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 65775a9c7a6d66a088eccdfdb22ce7d6b01829d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d6a17322c360040b8fa77ac243a1b568f0d10c1f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925402"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996497"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Powiązania magazynu obiektów blob platformy Azure dla Azure Functions
 
@@ -463,7 +463,7 @@ Funkcje języka JavaScript i języka Java ładują cały obiekt BLOB do C# pami�
 
 ## <a name="trigger---polling"></a>Wyzwalanie sondowania
 
-Jeśli monitorowany kontener obiektów BLOB zawiera więcej niż 10 000 obiektów BLOB (między wszystkimi kontenerami), środowisko uruchomieniowe funkcji skanuje pliki dziennika, aby obejrzeć nowe lub zmienione obiekty blob. Ten proces może spowodować opóźnienia. Funkcja może nie zostać wyzwolona do kilku minut lub dłużej po utworzeniu obiektu BLOB.
+Sondowanie działa jako hybrydowe między inspekcjami dzienników i uruchamiania okresowych skanowania kontenerów. Obiekty blob są skanowane w grupach 10 000 na raz z tokenem kontynuacji używanym między interwałami.
 
 > [!WARNING]
 > Ponadto [dzienniki magazynu są tworzone na podstawie najlepszego nakładu pracy](/rest/api/storageservices/About-Storage-Analytics-Logging) . Nie ma gwarancji, że wszystkie zdarzenia są przechwytywane. W pewnych warunkach dzienniki mogą być pominięte.

@@ -1,18 +1,18 @@
 ---
 title: Jak udostępnić urządzenia dla wielodostępności na platformie Azure IoT Hub Device Provisioning Service
-description: Jak udostępnić urządzenia do wielodostępności przy użyciu wystąpienia usługi Device Provisioning
+description: Jak udostępnić urządzenia do wielodostępności przy użyciu wystąpienia usługi Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228792"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974976"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zapewnić obsługę wielodostępności 
 
@@ -146,7 +146,7 @@ Aby ułatwić czyszczenie, te maszyny wirtualne zostaną dodane do tej samej gru
     --authentication-type password
     ```
 
-    Wykonanie tego polecenia może potrwać kilka minut. Po zakończeniu działania polecenia Zanotuj wartość **publicIpAddress** dla maszyny wirtualnej regionu Wschodnie stany USA.
+    Wykonanie tego polecenia potrwa kilka minut. Po zakończeniu działania polecenia Zanotuj wartość **publicIpAddress** dla maszyny wirtualnej regionu Wschodnie stany USA.
 
 1. W Azure Cloud Shell wykonaj polecenie, aby utworzyć maszynę wirtualną regionu **zachodnie stany USA** po wprowadzeniu następujących zmian parametrów w poleceniu:
 
@@ -167,7 +167,7 @@ Aby ułatwić czyszczenie, te maszyny wirtualne zostaną dodane do tej samej gru
     --authentication-type password
     ```
 
-    Wykonanie tego polecenia może potrwać kilka minut. Po zakończeniu działania polecenia Zanotuj wartość **publicIpAddress** dla maszyny wirtualnej regionu zachodnie stany USA.
+    Wykonanie tego polecenia potrwa kilka minut. Po zakończeniu działania polecenia Zanotuj wartość **publicIpAddress** dla maszyny wirtualnej regionu zachodnie stany USA.
 
 1. Otwórz dwie powłoki wiersza polecenia. Połącz się z jedną z regionalnych maszyn wirtualnych w każdej powłoce przy użyciu protokołu SSH. 
 

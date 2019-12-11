@@ -1,6 +1,6 @@
 ---
-title: Zmiany wprowadzone w projekcie WebAPI podczas nawiązywania połączenia z usługą Azure AD
-description: Opisuje, co się dzieje z projektem WebAPI podczas nawiązywania połączenia z usługą Azure AD za pomocą programu Visual Studio
+title: Zmiany wprowadzone do projektów WebAPI podczas nawiązywania połączenia z usługą Azure AD
+description: Opisuje, co się dzieje z projektem WebAPI podczas nawiązywania połączenia z usługą Azure AD przy użyciu programu Visual Studio
 author: ghogen
 manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3a0cf375902281817ecc002f8fb76be32eed149d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851803"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966320"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem WebAPI (usługa połączona Azure Active Directory Visual Studio)
 
@@ -31,9 +31,9 @@ Aby uzyskać informacje na temat pracy z połączoną usługą, zobacz [wprowadz
 
 ## <a name="added-references"></a>Dodano odwołania
 
-Dotyczy pliku projektu *. NET References i `packages.config` (odwołania NuGet).
+Wpływa na plik projektu *. NET References) i `packages.config` (odwołania NuGet).
 
-| Type | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -46,7 +46,7 @@ Dotyczy pliku projektu *. NET References i `packages.config` (odwołania NuGet).
 
 Dodatkowe odwołania w przypadku wybrania opcji **Odczytaj dane katalogu** :
 
-| Type | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (tylko w programie Visual Studio 2015) |
@@ -60,7 +60,7 @@ Dodatkowe odwołania w przypadku wybrania opcji **Odczytaj dane katalogu** :
 
 Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie Visual Studio 2015):
 
-| Type | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -69,8 +69,8 @@ Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie 
 ## <a name="project-file-changes"></a>Zmiany w pliku projektu
 
 - Ustaw właściwość `IISExpressSSLPort` na wartość DISTINCT.
-- Ustaw właściwość `WebProject_DirectoryAccessLevelKey` na 0 lub 1, jeśli wybrano opcję Odczytaj **dane katalogu** .
-- Ustaw właściwość `IISUrl` na gdzie `https://localhost:<port>/` `<port>` pasuje dowartości.`IISExpressSSLPort`
+- Ustaw właściwość `WebProject_DirectoryAccessLevelKey` na 0 lub 1, jeśli wybrano opcję **Odczytaj dane katalogu** .
+- Ustaw właściwość `IISUrl` na `https://localhost:<port>/`, gdzie `<port>` pasuje do wartości `IISExpressSSLPort`.
 
 ## <a name="webconfig-or-appconfig-changes"></a>zmiany pliku Web. config lub App. config
 
@@ -84,15 +84,15 @@ Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie 
     </appSettings>
     ```
 
-- Tylko program Visual Studio 2017: Dodano także następujący wpis w pozycji `<appSettings>`"
+- Tylko program Visual Studio 2017: dodano również następujący wpis w `<appSettings>`"
 
     ```xml
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- Dodano `<dependentAssembly>` elementy `System.IdentityModel.Tokens.Jwt`w węźle dla. `<runtime><assemblyBinding>`
+- Dodano elementy `<dependentAssembly>` w węźle `<runtime><assemblyBinding>` do `System.IdentityModel.Tokens.Jwt`.
 
-- W przypadku wybrania opcji Odczytaj **dane katalogu** dodano następujący wpis konfiguracyjny poniżej `<appSettings>`:
+- W przypadku wybrania opcji **Odczytaj dane katalogu** dodano następujący wpis konfiguracji w obszarze `<appSettings>`:
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
@@ -100,17 +100,17 @@ Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie 
 
 ## <a name="code-changes-and-additions"></a>Zmiany i dodatki kodu
 
-- Dodano atrybut do `Controllers/ValueController.cs` i wszystkich innych istniejących kontrolerów. `[Authorize]`
+- Dodano atrybut `[Authorize]` do `Controllers/ValueController.cs` i innych istniejących kontrolerów.
 
-- Dodano klasę uruchamiania uwierzytelniania, `App_Start/Startup.Auth.cs`zawierającą logikę uruchamiania dla uwierzytelniania usługi Azure AD lub odpowiednio ją zmodyfikowano. W przypadku wybrania opcji **Czytaj dane katalogu** ten plik zawiera również kod umożliwiający otrzymanie kodu OAuth i wymienianie go z tokenem dostępu.
+- Dodano klasę uruchamiania uwierzytelniania, `App_Start/Startup.Auth.cs`, zawierającą logikę uruchamiania uwierzytelniania usługi Azure AD lub odpowiednio ją zmodyfikowano. W przypadku wybrania opcji **Czytaj dane katalogu** ten plik zawiera również kod umożliwiający otrzymanie kodu OAuth i wymienianie go z tokenem dostępu.
 
-- (Tylko program Visual Studio 2015 z aplikacją ASP.NET 4) Usunięty `App_Start/IdentityConfig.cs` i dodany `Controllers/AccountController.cs`, `Models/IdentityModel.cs`, i `Providers/ApplicationAuthProvider.cs`.
+- (Tylko program Visual Studio 2015 z aplikacją ASP.NET 4) Usunięto `App_Start/IdentityConfig.cs` i dodano `Controllers/AccountController.cs`, `Models/IdentityModel.cs`i `Providers/ApplicationAuthProvider.cs`.
 
-- Dodano `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) lub `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) zawierający informacje używane przez program Visual Studio do śledzenia dodawania połączonej usługi.
+- Dodano `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) lub `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) zawierające informacje używane przez program Visual Studio do śledzenia dodawania połączonej usługi.
 
 ### <a name="file-backup-visual-studio-2015"></a>Kopia zapasowa plików (Visual Studio 2015)
 
-Podczas dodawania połączonej usługi program Visual Studio 2015 tworzy kopie zapasowe zmienionych i usuniętych plików. Wszystkie odnośne pliki są zapisywane w folderze `Backup/AzureAD`. Program Visual Studio 2017 nie tworzy kopii zapasowych.
+Podczas dodawania połączonej usługi program Visual Studio 2015 tworzy kopie zapasowe zmienionych i usuniętych plików. Wszystkie pliki, których to dotyczy, są zapisywane w folderze `Backup/AzureAD`. Program Visual Studio 2017 nie tworzy kopii zapasowych.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z połączeniami w celu Azure Database for PostgreSQL-Citus
+title: Rozwiązywanie problemów z połączeniami — funkcja do skalowania (Citus) — Azure Database for PostgreSQL
 description: Dowiedz się, jak rozwiązywać problemy z połączeniem do Azure Database for PostgreSQL-Citus
 keywords: Połączenie PostgreSQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 author: jonels-msft
@@ -7,12 +7,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952149"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977509"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Rozwiązywanie problemów z połączeniami w celu Azure Database for PostgreSQL-Citus
 
@@ -50,7 +50,7 @@ Jeśli aplikacja trwale nie może nawiązać połączenia ze zbyt dużą skalą 
 
 * Konfiguracja zapory węzła koordynatora: Upewnij się, że Zapora serwera w ramach skalowania jest skonfigurowana tak, aby zezwalać na połączenia z klienta, w tym serwery proxy i bramy.
 * Konfiguracja zapory klienta: Zapora na kliencie musi zezwalać na połączenia z serwerem bazy danych. Niektóre zapory wymagają zezwolenia nie tylko na aplikacje według nazwy, ale dopuszczają adresy IP i porty serwera.
-* Błąd użytkownika: podwójne sprawdzenie parametrów połączenia. Mogą istnieć niewpisane parametry, takie jak nazwa serwera, lub niezapomniany sufiks *\@ServerName* w nazwie użytkownika.
+* Błąd użytkownika: podwójne sprawdzenie parametrów połączenia. Mogą istnieć niewpisane parametry, takie jak nazwa serwera. Parametry połączenia dla różnych platform języka i PSQL można znaleźć w Azure Portal. Przejdź do strony **Parametry połączenia** w grupie serwerów moja skala (Citus). Należy również pamiętać, że klastry ze skalowaniem (Citus) mają tylko jedną bazę danych i jej wstępnie zdefiniowaną nazwę to **Citus**.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroki rozwiązywania problemów z łącznością trwałą
 

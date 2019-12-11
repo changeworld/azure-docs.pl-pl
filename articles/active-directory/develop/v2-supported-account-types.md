@@ -1,5 +1,5 @@
 ---
-title: Obsługiwane konta w aplikacjach (odbiorcy) — platforma tożsamości firmy Microsoft
+title: Obsługiwane typy kont na platformie tożsamości firmy Microsoft | Azure
 description: Dokumentacja koncepcyjna dotycząca odbiorców i obsługiwane typy kont w aplikacjach
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 04aac02623fe4918db671e2385c181653bdc344a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73942169"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966558"
 ---
 # <a name="supported-account-types"></a>Obsługiwane typy konta
 

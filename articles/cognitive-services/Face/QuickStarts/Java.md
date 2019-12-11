@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 30e4852668fc12c38cd7d1794c461041acd654db
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7097f399b2bf5a3b0f9adb990fbd66785adc09aa
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859195"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978002"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Java
 
@@ -33,9 +33,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 1. Utwórz nową aplikację Java w wierszu polecenia w środowisku IDE i Dodaj klasę **główną** przy użyciu metody **Main** .
 1. Zaimportuj poniższe biblioteki do projektu języka Java. Jeśli używasz programu Maven, współrzędne programu Maven są udostępniane w każdej bibliotece.
    - [Klient Apache HTTP](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: HttpClient: 4.5.6)
-   - [Serwer Apache HTTP Core](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: httpcore: 4.4.10)
+   - [Apache HTTP Core](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: httpcore: 4.4.10)
    - [Biblioteka JSON](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-   - [Rejestrowanie oprogramowania Apache Commons Attribution](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons Attribution-logging: Commons Attribution-logging: 1.1.2)
+   - [Rejestrowanie Apache Commons Attribution](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (Commons Attribution-logging: Commons Attribution-logging: 1.1.2)
 
 ## <a name="add-face-detection-code"></a>Dodawanie kodu służącego do wykrywania twarzy
 
@@ -65,7 +65,7 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Dodawanie podstawowych pól
 
-Zastąp klasę **Main** poniższym kodem. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Musisz zaktualizować `subscriptionKey` pole przy użyciu wartości klucza subskrypcji i `uriBase` zmienić ciąg tak, aby zawierał prawidłowy ciąg punktu końcowego. Możesz również ustawić wartość `imageWithFaces` na ścieżkę, która wskazuje na inny plik obrazu.
+Zastąp klasę **Main** poniższym kodem. Te dane służą do określania sposobu nawiązywania połączenia z usługą rozpoznawania twarzy i lokalizacji, z której można pobrać dane wejściowe. Musisz zaktualizować pole `subscriptionKey` wartością klucza subskrypcji i zmienić ciąg `uriBase` tak, aby zawierał prawidłowy ciąg punktu końcowego. Możesz również ustawić wartość `imageWithFaces` na ścieżkę, która wskazuje na inny plik obrazu.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2019
+ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958628"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997075"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Pomiń usuwanie kont użytkowników, które wykraczają poza zakres
 
@@ -30,7 +30,7 @@ W tym przewodniku opisano, jak za pomocą interfejsu API Microsoft Graph i Ekspl
 * Jeśli wartość ***SkipOutOfScopeDeletions*** jest równa 0 (FAŁSZ), konta, które wykraczają poza zakres, zostaną wyłączone w miejscu docelowym
 * Jeśli wartość ***SkipOutOfScopeDeletions*** jest równa 1 (true), konta, które wykraczają poza zakres, nie będą wyłączone w celu wybrania tej flagi na poziomie *aplikacji aprowizacji* i można skonfigurować przy użyciu interfejs API programu Graph. 
 
-Ponieważ ta konfiguracja jest szeroko używana wraz z *produktem Workday do Active Directory aplikacji do aprowizacji użytkowników* , poniższe kroki obejmują zrzuty ekranu aplikacji Workday. Można go również używać z innymi aplikacjami aprowizacji.
+Ponieważ ta konfiguracja jest szeroko używana wraz z *produktem Workday do Active Directory aplikacji do aprowizacji użytkowników* , poniższe kroki obejmują zrzuty ekranu aplikacji Workday. Można go również używać ze **wszystkimi innymi aplikacjami** , takimi jak usługi (usługi ServiceNow, Salesforce, Dropbox itp.).
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1. Pobieranie inicjowania obsługi App Service Identyfikator podmiotu zabezpieczeń (identyfikator obiektu)
 

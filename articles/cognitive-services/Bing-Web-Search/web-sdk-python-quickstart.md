@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991617"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977220"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Python
 
@@ -23,16 +23,14 @@ Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w I
 
 Chcesz zobaczyć kod teraz? [Przykłady zastosowania zestawu SDK wyszukiwania w Internecie Bing dla języka Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) są dostępne w usłudze GitHub.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 Zestaw SDK wyszukiwania w Internecie Bing jest zgodny ze środowiskiem Python w wersjach 2.7, 3.3, 3.4, 3.5 i 3.6. Na potrzeby tego przewodnika Szybki start zalecamy używanie środowiska wirtualnego.
 
 * Środowisko Python w wersji 2.7, 3.3, 3.4, 3.5 lub 3.6
 * [Moduł virtualenv](https://docs.python.org/3/tutorial/venv.html) dla środowiska Python w wersji 2.7
 * [Moduł venv](https://pypi.python.org/pypi/virtualenv) dla środowiska Python w wersji 3.x
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>Tworzenie i konfigurowanie środowiska wirtualnego
 
@@ -82,7 +80,7 @@ Jeśli odpowiedź zawiera strony internetowe, obrazy, wiadomości lub wideo, zos
 
 1. Utwórz nowy projekt języka Python przy użyciu ulubionego środowiska IDE lub edytora.
 
-1. Skopiuj ten przykładowy kod do projektu:  
+1. Skopiuj ten przykładowy kod do projektu. `endpoint` może być globalnym punktem końcowym lub [niestandardowym](../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.:  
 
     ```python
     # Import required modules.
@@ -166,13 +164,13 @@ Jeśli odpowiedź zawiera strony internetowe, obrazy, wiadomości lub wideo, zos
 
 1. Zastąp parametr `SUBSCRIPTION_KEY` prawidłowym kluczem subskrypcji.
 
-1. Zastąp `YOUR_ENDPOINT` z adresem url punktu końcowego w portalu.
+1. Zastąp `YOUR_ENDPOINT` adresem URL punktu końcowego w portalu.
 
 1. Uruchom program. Na przykład: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Definiowanie funkcji i filtrowanie wyników
 
-Teraz, gdy użytkownik wprowadził swoje pierwsze wywołanie interfejsu API wyszukiwania w sieci Web Bing, Przyjrzyjmy się kilku funkcji. W poniższych sekcjach omówiono funkcje zestawu SDK do uściślenia zapytania i filtrowanie wyników. Każda funkcja można dodać do programu Python, który został utworzony w poprzedniej sekcji.
+Teraz, po wykonaniu pierwszego wywołania do interfejs API wyszukiwania w sieci Web Bing, przyjrzyjmy się kilku funkcjom. W poniższych sekcjach wyróżniono funkcje zestawu SDK na potrzeby rafinacji zapytań i filtrowania wyników. Każdą funkcję można dodać do programu w języku Python, który został utworzony w poprzedniej sekcji.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Ograniczanie liczby wyników zwracanych przez usługę Bing
 
@@ -312,7 +310,7 @@ W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`,
 
 Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji z kodu programu i zdezaktywować swoje środowisko wirtualne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przykłady dotyczące zestawu SDK dla języka Python dla usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)

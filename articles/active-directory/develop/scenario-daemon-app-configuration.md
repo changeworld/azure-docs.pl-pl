@@ -1,6 +1,6 @@
 ---
-title: Aplikacja demona wywołująca interfejsy API sieci Web (Konfiguracja aplikacji) — platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację demona, która wywołuje interfejsy API sieci Web (Konfiguracja aplikacji)
+title: Skonfiguruj aplikacje demona, które wywołują interfejsy API sieci Web — Microsoft Identity platform | Azure
+description: Dowiedz się, jak skonfigurować kod dla aplikacji demona, która wywołuje interfejsy API sieci Web (Konfiguracja aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fbd4af78e02dad2a8a74ee21f9cb8c6ef0a976
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175495"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962648"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
@@ -39,7 +39,7 @@ Biblioteki firmy Microsoft obsługujące aplikacje demona są następujące:
 
 ## <a name="configuration-of-the-authority"></a>Konfiguracja urzędu
 
-Mając na uwadze, że aplikacje demona nie korzystają z uprawnień delegowanych, ale uprawnienia aplikacji, ich *obsługiwany typ konta* nie może być *kontami w żadnym katalogu organizacyjnym i osobistymi kontami Microsoft (na przykład Skype, Xbox, Outlook.com)* . W rzeczywistości nie istnieje Administrator dzierżawy, który może udzielić zgody na aplikację demona dla kont osobistych firmy Microsoft. Musisz wybrać *konta w mojej organizacji* lub *kontach w dowolnej organizacji*.
+Ponieważ aplikacje demona nie korzystają z uprawnień delegowanych, ale uprawnienia aplikacji, ich *obsługiwany typ konta* nie mogą być *kontami w żadnym katalogu organizacyjnym i osobistymi kontami Microsoft (na przykład Skype, Xbox, Outlook.com)* . W rzeczywistości nie istnieje Administrator dzierżawy, który może udzielić zgody na aplikację demona dla kont osobistych firmy Microsoft. Musisz wybrać *konta w mojej organizacji* lub *kontach w dowolnej organizacji*.
 
 W związku z tym Urząd określony w konfiguracji aplikacji powinien mieć wartość dzierżawca (określając identyfikator dzierżawy lub nazwę domeny skojarzoną z Twoją organizacją).
 
@@ -269,7 +269,7 @@ MSAL.NET ma dwie metody, aby zapewnić podpisane potwierdzenia do poufnej aplika
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-W przypadku korzystania z `WithClientAssertion` należy zapewnić podpisany token JWT. Ten zaawansowany scenariusz jest szczegółowo opisany w [potwierdzeniach klienta](msal-net-client-assertions.md)
+W przypadku korzystania z `WithClientAssertion`należy zapewnić podpisany token JWT. Ten zaawansowany scenariusz jest szczegółowo opisany w [potwierdzeniach klienta](msal-net-client-assertions.md)
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();

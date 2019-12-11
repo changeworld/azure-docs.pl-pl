@@ -1,5 +1,5 @@
 ---
-title: Poświadczenia certyfikatu w usłudze Azure AD
+title: Poświadczenia certyfikatu usługi Azure AD
 titleSuffix: Microsoft identity platform
 description: W tym artykule omówiono rejestrację i użycie poświadczeń certyfikatu na potrzeby uwierzytelniania aplikacji
 services: active-directory
@@ -15,20 +15,21 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845369"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963872"
 ---
-# <a name="certificate-credentials-for-application-authentication"></a>Poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji
+# <a name="azure-ad-application-authentication-certificate-credentials"></a>Poświadczenia certyfikatu uwierzytelniania aplikacji usługi Azure AD
 
 Azure Active Directory (Azure AD) umożliwia aplikacji używanie własnych poświadczeń na potrzeby uwierzytelniania, na przykład w ramach przepływu przydzielenia poświadczeń klienta OAuth 2,0 ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) i przepływu w imieniu ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
 
 Jedną z poświadczeń, których może używać aplikacja do uwierzytelniania, jest potwierdzenie tokenu sieci Web JSON (JWT) podpisane przy użyciu certyfikatu, którego właścicielem jest aplikacja.
 
 ## <a name="assertion-format"></a>Format potwierdzenia
+
 Aby obliczyć potwierdzenie, można użyć jednej z wielu bibliotek [tokenów sieci Web JSON](https://jwt.ms/) w wybranym języku. Informacje przekazane przez token są następujące:
 
 ### <a name="header"></a>Nagłówek
@@ -50,7 +51,7 @@ Aby obliczyć potwierdzenie, można użyć jednej z wielu bibliotek [tokenów si
 | `nbf` | Nie przed: Data, przed upływem którego nie można użyć tokenu. Czas jest reprezentowany jako liczba sekund od 1 stycznia 1970 (1970-01-01T0:0: 0Z) UTC do momentu wystawienia tokenu. |
 | `sub` | Temat: zgodnie z `iss`należy client_id (Identyfikator aplikacji usługi klienta). |
 
-### <a name="signature"></a>Podpis
+### <a name="signature"></a>Sygnatura
 
 Sygnatura jest obliczana przy zastosowaniu certyfikatu zgodnie z opisem w [specyfikacji RFC7519 tokenu internetowego JSON](https://tools.ietf.org/html/rfc7519)
 

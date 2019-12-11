@@ -3,17 +3,17 @@ title: Zarządzanie użytkownikami i rolami w aplikacji IoT Central platformy Az
 description: Jako administrator, jak zarządzać użytkownikami i rolami w aplikacji IoT Central platformy Azure
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/22/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 603bc4ad39a472f2ebc786257bc7c625e3f6b9a4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9729a51c36a520a2c196fb83515c9fa616411cf3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895750"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974431"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>Zarządzanie użytkownikami i rolami w aplikacji IoT Central (funkcje w wersji zapoznawczej)
 
@@ -55,7 +55,7 @@ Ról nie można zmienić po ich przypisaniu. Aby zmienić rolę przypisaną do u
 
 Aby usunąć użytkowników, zaznacz jedno lub więcej pól wyboru na stronie **Użytkownicy** . Następnie wybierz pozycję **Usuń**.
 
-## <a name="manage-roles"></a>Zarządzanie rolami
+## <a name="manage-roles"></a>Zarządzaj rolami
 
 Role umożliwiają kontrolowanie, kto w organizacji może wykonywać różne zadania w IoT Central. Istnieją trzy wbudowane role, które można przypisać do użytkowników aplikacji. Możesz również [utworzyć role niestandardowe](#create-a-custom-role) , jeśli potrzebujesz precyzyjnej kontroli.
 
@@ -95,18 +95,18 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Zarządzaj | Widok <br/> Inne zależności: wyświetlanie wystąpień urządzeń  |
+| Wyświetl | Brak     |
+| Zarządzanie | Wyświetl <br/> Inne zależności: wyświetlanie wystąpień urządzeń  |
 | Pełna kontrola | Wyświetlanie, zarządzanie <br/> Inne zależności: wyświetlanie wystąpień urządzeń |
 
 **Uprawnienia wystąpienia urządzenia**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń |
-| Aktualizacja | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
-| Tworzenie | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
-| Usuwanie | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+| Create | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
 | Wykonaj polecenia | Aktualizuj, Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie, usuwanie, wykonywanie poleceń <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
 
@@ -114,10 +114,10 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń |
-| Aktualizacja | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
-| Tworzenie | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
-| Usuwanie | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
+| Create | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń |
 
 **Uprawnienia do zarządzania łącznością urządzeń**
@@ -134,21 +134,21 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
-| Aktualizacja | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
-| Tworzenie | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
-| Usuwanie | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
-| Realizacja | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń; Aktualizowanie wystąpień urządzenia; Wykonywanie poleceń w wystąpieniach urządzeń |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Create | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Realizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń; Aktualizowanie wystąpień urządzenia; Wykonywanie poleceń w wystąpieniach urządzeń |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie, usuwanie, wykonywanie <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń; Aktualizowanie wystąpień urządzenia; Wykonywanie poleceń w wystąpieniach urządzeń |
 
 **Uprawnienia reguł**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń |
-| Aktualizacja | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń |
-| Tworzenie | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń |
-| Usuwanie | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Create | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie <br/> Inne zależności: wyświetlanie szablonów urządzeń |
 
 #### <a name="managing-the-app"></a>Zarządzanie aplikacją
@@ -157,26 +157,26 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Aktualizacja | Widok   |
-| Copy | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń, grup urządzeń, pulpitów nawigacyjnych, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
-| Usuwanie | Widok   |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Kopiuj | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń, grup urządzeń, pulpitów nawigacyjnych, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
+| Usuń | Wyświetl   |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, kopiowanie, usuwanie <br/> Inne zależności: wyświetlanie szablonów urządzeń, grup urządzeń, pulpitów nawigacyjnych aplikacji, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
 
 **Uprawnienia eksportowania szablonu aplikacji**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Eksportowanie | Widok <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń, grup urządzeń, pulpitów nawigacyjnych, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
+| Wyświetl | Brak     |
+| Eksportuj | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń, grup urządzeń, pulpitów nawigacyjnych, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
 | Pełna kontrola | Wyświetl, Eksportuj <br/> Inne zależności: wyświetlanie szablonów urządzeń, grup urządzeń, pulpitów nawigacyjnych aplikacji, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
 
 **Uprawnienia do rozliczeń**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Zarządzaj | Brak     |
-| Pełna kontrola | Zarządzaj |
+| Zarządzanie | Brak     |
+| Pełna kontrola | Zarządzanie |
 
 #### <a name="managing-users-and-roles"></a>Zarządzanie użytkownikami i rolami
 
@@ -184,19 +184,19 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak |
-| Aktualizacja | Widok |
-| Tworzenie | Wyświetl, Aktualizuj |
-| Usuwanie | Widok |
+| Wyświetl | Brak |
+| Aktualizacja | Wyświetl |
+| Create | Wyświetl, Aktualizuj |
+| Usuń | Wyświetl |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
 
 **Uprawnienia do zarządzania użytkownikami**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak <br/> Inne zależności: Wyświetlanie ról niestandardowych |
-| Add | Widok <br/> Inne zależności: Wyświetlanie ról niestandardowych |
-| Usuwanie | Widok <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+| Wyświetl | Brak <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+| Dodawanie | Wyświetl <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+| Usuń | Wyświetl <br/> Inne zależności: Wyświetlanie ról niestandardowych |
 | Pełna kontrola | Wyświetlanie, Dodawanie, usuwanie <br/> Inne zależności: Wyświetlanie ról niestandardowych |
 
 > [!NOTE]
@@ -208,36 +208,36 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Aktualizacja | Widok   |
-| Tworzenie | Wyświetl, Aktualizuj |
-| Usuwanie | Widok   |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Create | Wyświetl, Aktualizuj |
+| Usuń | Wyświetl   |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
 
 **Osobiste uprawnienia pulpitów nawigacyjnych**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Aktualizacja | Widok   |
-| Tworzenie | Wyświetl, Aktualizuj   |
-| Usuwanie | Widok   |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Create | Wyświetl, Aktualizuj   |
+| Usuń | Wyświetl   |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
 
 **Uprawnienia do znakowania, favicon i kolorów**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Aktualizacja | Widok   |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
 | Pełna kontrola | Wyświetl, Aktualizuj |
 
 **Uprawnienia do linków**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Aktualizacja | Widok   |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
 | Pełna kontrola | Wyświetl, Aktualizuj |
 
 #### <a name="extending-the-app"></a>Rozszerzanie aplikacji
@@ -246,19 +246,19 @@ Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, kt�
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Aktualizacja | Widok   |
-| Tworzenie | Wyświetl, Aktualizuj  |
-| Usuwanie | Widok   |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Create | Wyświetl, Aktualizuj  |
+| Usuń | Wyświetl   |
 | Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
 
 **Uprawnienia tokenu interfejsu API**
 
 | Nazwa | Zależności |
 | ---- | -------- |
-| Widok | Brak     |
-| Tworzenie | Widok   |
-| Usuwanie | Widok   |
+| Wyświetl | Brak     |
+| Create | Wyświetl   |
+| Usuń | Wyświetl   |
 | Pełna kontrola | Wyświetlanie, tworzenie, usuwanie |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014675"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975197"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Konstrukcja hybrydowa podsystemów DRM 
 
 W tym temacie omówiono hybrydowe projektowanie podsystemów DRM przy użyciu Azure Media Services.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Azure Media Services zapewnia pomoc techniczną dla następujących trzech systemów DRM:
 
@@ -70,7 +70,7 @@ W ramach kompleksowej platformy wideo w chmurze, Azure Media Services DRM ma pro
 ### <a name="drm-license-delivery"></a>Dostarczanie licencji DRM
 
 * AMS: Licencja DRM jest dostarczana przez usługę dostarczania licencji usługi AMS.
-* Inna firma: Licencja DRM jest dostarczana przez serwer licencji DRM innej firmy poza usługą AMS.
+* Inna firma: Licencja DRM jest dostarczana przez serwer licencji DRM innej firmy poza AMS.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Skonfiguruj na podstawie scenariusza hybrydowego
 
@@ -89,11 +89,11 @@ Za pomocą konfiguracji zasad dostarczania elementów zawartości można kontrol
 
 * Protokół przesyłania strumieniowego i kombinacja szyfrowania DRM, takie jak KRESKa w obszarze CENC (PlayReady i Widevine), płynne przesyłanie strumieniowe w technologii PlayReady, HLS w obszarze Widevine lub PlayReady.
 * Domyślne/osadzone adresy URL dostarczania licencji dla każdego z protokołów DRM.
-* Określa, czy adresy URL pozyskiwania licencji (LA_URLs) znajdujące się w postaci KRESKi lub HLS listy odtwarzania zawierają odpowiednio ciąg zapytania o IDENTYFIKATORze klucza (dziecko) dla Widevine i FairPlay.
+* Określa, czy adresy URL pozyskiwania licencji (LA_URLs) na liście odtwarzania PAUZ lub HLS zawierają ciąg zapytania o IDENTYFIKATORze klucza (dziecko) dla Widevine i FairPlay.
 
 ## <a name="scenarios-and-samples"></a>Scenariusze i przykłady
 
-Na podstawie wyjaśnień w poprzedniej sekcji, następujące pięć scenariuszy hybrydowych używa odpowiednich kombinacji konfiguracji**zasad dostarczania zasobów** **klucza**-zawartości (przykłady wymienione w ostatniej kolumnie są zgodne z tabelą):
+Na podstawie wyjaśnień w poprzedniej sekcji, następujące pięć scenariuszy hybrydowych używa odpowiedniego **klucza zawartości**-kombinacji konfiguracji **zasad dostarczania zasobów** (przykłady wymienione w ostatniej kolumnie są zgodne z tabelą):
 
 |**Źródło & hostingu zawartości**|**Szyfrowanie DRM**|**Dostarczanie licencji DRM**|**Konfiguruj klucz zawartości**|**Konfigurowanie zasad dostarczania elementów zawartości**|**Przykład**|
 |---|---|---|---|---|---|
@@ -107,25 +107,29 @@ W tych przykładach ochrona PlayReady działa w przypadku obu KRESek i płynnego
 
 ### <a name="sample-1"></a>Przykład 1
 
-* Źródłowy adres URL (podstawowy): https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady LA_URL (KRESKOWANY & gładki): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine LA_URL (PAUZa): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
+* Adres URL źródła (podstawowego): https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
+* LA_URL PlayReady (gładki &): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* Widevine LA_URL (KRESKa): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
 * FairPlay LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
 
 ### <a name="sample-2"></a>Przykład 2
 
-* Źródłowy adres URL (podstawowy): https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady LA_URL (KRESKOWANY & gładki): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* Adres URL źródła (podstawowego): https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* LA_URL PlayReady (gładki &): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
 
 ### <a name="sample-3"></a>Przykład 3
 
 * Źródłowy adres URL: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (KRESKOWANY & gładki): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* LA_URL PlayReady (gładki &): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
 
 ### <a name="sample-4"></a>Przykład 4
 
 * Źródłowy adres URL: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (KRESKOWANY & gładki): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* LA_URL PlayReady (gładki &): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
 ## <a name="summary"></a>Podsumowanie
 
@@ -136,6 +140,6 @@ Wyświetl ścieżki uczenia Media Servicesowego.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

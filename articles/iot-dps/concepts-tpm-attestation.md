@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service — zaświadczenia modułu TPM
-description: Ten artykuł zawiera omówienie pojęć dotyczących przepływu zaświadczania TPM za pomocą usługi IoT Device Provisioning Service.
+title: Azure IoT Hub Device Provisioning Service — zaświadczanie modułu TPM
+description: Ten artykuł zawiera omówienie koncepcji przepływu zaświadczania modułu TPM przy użyciu usługi IoT Device Provisioning Service (DPS).
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 07c5dbce0b98d1c197164f4fc77682f78ede57f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746474"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975282"
 ---
 # <a name="tpm-attestation"></a>Poświadczanie za pomocą modułu TPM
 
-IoT Hub Device Provisioning Service to usługa pomocnika usługi IoT Hub, możesz użyć do skonfigurowania urządzenia i bezobsługowa aprowizacja w określonej usługi IoT hub. Przy użyciu usługi Device Provisioning można udostępnić z milionów urządzeń w bezpieczny sposób.
+IoT Hub Device Provisioning Service to usługa pomocnika dla IoT Hub, która służy do konfigurowania aprowizacji urządzeń bez dotyku do określonego Centrum IoT Hub. Za pomocą usługi Device Provisioning można w bezpieczny sposób udostępnić miliony urządzeń.
 
-W tym artykule opisano proces zaświadczania tożsamości, korzystając z [modułu TPM](./concepts-device.md). Moduł TPM to Trusted Platform Module i jest typem sprzętowego modułu zabezpieczeń (HSM). W tym artykule przyjęto założenie, korzystają z kolumną dyskretną, oprogramowania układowego lub zintegrowane modułu TPM. Oprogramowanie TPM emulowanych są odpowiednie dla tworzenia prototypów lub testowania, ale ich nie zapewnia ten sam poziom zabezpieczeń jak dyskretnych, oprogramowania układowego lub czy zintegrowane moduły TPM. Firma Microsoft nie zaleca się korzystanie z oprogramowania moduły TPM w środowisku produkcyjnym. Aby uzyskać więcej informacji na temat typów modułów TPM, zobacz [krótkie wprowadzenie do modułu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
+W tym artykule opisano proces zaświadczania tożsamości podczas korzystania z [modułu TPM](./concepts-device.md). Moduł TPM ma moduł TPM i jest typem sprzętowego modułu zabezpieczeń (HSM). W tym artykule przyjęto założenie, że używasz dyskretnego, oprogramowania układowego lub zintegrowanego modułu TPM. Emulowane moduły TPM oprogramowania są dobrze dopasowane do prototypowania lub testowania, ale nie zapewniają tego samego poziomu zabezpieczeń, takiego jak dyskretny, oprogramowanie układowe lub zintegrowane moduły TPM do. Nie zalecamy korzystania z moduły TPM oprogramowania w środowisku produkcyjnym. Aby uzyskać więcej informacji na temat typów moduły TPM, zobacz [krótkie wprowadzenie do modułu TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
-Ten artykuł ma zastosowanie tylko dla urządzeń z kluczem HMAC Obsługa kluczy i kluczy poręczenia przy użyciu modułu TPM w wersji 2.0. Nie jest w przypadku urządzeń za pomocą certyfikatów X.509 do uwierzytelniania. Moduł TPM jest całej branży, standard ISO z Trusted Computing Group i możesz dowiedzieć się więcej o modułu TPM na [pełną specyfikacji TPM 2.0](https://trustedcomputinggroup.org/tpm-library-specification/) lub [specyfikacji ISO/IEC 11889](https://www.iso.org/standard/66510.html). W tym artykule przyjęto założenie, że możesz zapoznać się z pary kluczy publicznych i prywatnych i jak są używane do szyfrowania.
+Ten artykuł dotyczy tylko urządzeń korzystających z modułu TPM 2,0 z obsługą klucza HMAC oraz ich kluczy poręczenia. Nie dotyczy to urządzeń korzystających z certyfikatów X. 509 na potrzeby uwierzytelniania. Moduł TPM jest standardem ISO opartym na całej branży, a na podstawie Trusted Computing Group można dowiedzieć się więcej na temat modułu TPM i uzyskać [pełną specyfikację modułu tpm 2,0](https://trustedcomputinggroup.org/tpm-library-specification/) lub [specyfikację ISO/IEC 11889](https://www.iso.org/standard/66510.html). W tym artykule założono również, że znasz pary kluczy publicznych i prywatnych oraz jak są one używane do szyfrowania.
 
-Urządzenia usługi Device Provisioning zestawy SDK obsługują wszystko, co jest opisane w tym artykule dla Ciebie. Nie ma potrzeby można zaimplementować nic więcej, korzystając z zestawów SDK na swoich urządzeniach. Ten artykuł pomaga zrozumieć pod względem koncepcyjnym, co się dzieje z modułem TPM zabezpieczeń podczas postanowienia swoje urządzenia i dlaczego jest to bezpieczny.
+Zestawy SDK urządzeń usługi Device Provisioning Service obsługują wszystkie elementy, które zostały opisane w tym artykule. Nie ma potrzeby implementowania żadnych dodatkowych informacji w przypadku używania zestawów SDK na urządzeniach. Ten artykuł pomaga zrozumieć koncepcje, co się dzieje z Twoim układem zabezpieczeń modułu TPM, gdy urządzenie jest używane i dlaczego jest bezpieczne.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Moduły TPM Użyj coś, co jest nazywane poręczenia klucza (EK) jako bezpieczne elementu głównego zaufania. Klucz poręczenia jest unikatowy dla modułu TPM, a następnie zmieniając go zasadniczo zmiany urządzenia do nowej.
+Moduły TPM używają elementu o nazwie Key poręczenia jako bezpiecznego certyfikatu głównego zaufania. Klucz PORĘCZenia jest unikatowy dla modułu TPM i zmiana go zasadniczo zmienia urządzenie w nowe.
 
-Istnieje inny typ klucza, że moduły TPM nazwę magazynu głównego klucza. SRK mogą być generowane przez właściciela modułu TPM, po przejmuje na własność modułu TPM. Przejmowanie na własność modułu TPM jest sposób specyficzny dla modułu TPM, z informacją o tym "osoba ustawia hasło w ramach sprzętowego modułu zabezpieczeń." Jeśli urządzenie TPM jest sprzedawany do nowego właściciela, nowego właściciela może przejąć na własność modułu TPM, aby wygenerować nowy SRK. Nowa generacja SRK gwarantuje, że poprzedni właściciel nie można użyć modułu TPM. Ponieważ SRK jest unikatowy dla właściciela modułu TPM, SRK może służyć do zapieczętowania danych do samego modułu TPM dla tego właściciela. SRK zapewnia piaskownicy dla właściciela do przechowywania swoich kluczy i zawiera revocability dostępu, jeśli urządzenie lub moduł TPM jest oferowana. Jest on podobny do przenoszenia do nowego DOM: przejmowanie na własność jest zmiana blokady drzwi i zniszczenie wszystkich meble pozostawiony przez poprzedniego właścicieli (SRK), ale nie można zmienić adres DOM (EK).
+Istnieje inny typ klucza, który moduły TPM, nazywany kluczem głównym magazynu (SRK). Klucz główny magazynowania może zostać wygenerowany przez właściciela modułu TPM po przeprowadzeniu własności modułu TPM. Przejęcie własności modułu TPM jest specyficznym dla modułu TPM sposobem wymawiania "ktoś ustawia hasło w module HSM". Jeśli urządzenie TPM zostanie sprzedane nowemu właścicielowi, nowy właściciel może przejąć do niego własność modułu TPM w celu wygenerowania nowego klucza magazynowania. Nowa generacja klucza magazynowania gwarantuje, że poprzedni właściciel nie może użyć modułu TPM. Ponieważ główny klucz magazynowania jest unikatowy dla właściciela modułu TPM, może służyć do pieczętowania danych w module TPM dla tego właściciela. Klucz główny magazynowania udostępnia piaskownicę do przechowywania swoich kluczy i zapewnia dostęp do revocability, jeśli jest sprzedawany urządzenie lub moduł TPM. Jest to podobne do nowego domu: przyjęcie własności powoduje zmianę blokad w drzwiach i zniszczenie wszystkich mebli pozostawionych przez poprzednich właścicieli (SRK), ale nie można zmienić adresu domu (EK).
 
-Gdy urządzenie zostało skonfigurowane i gotowe do użycia, będzie miał klucz poręczenia i SRK, które są dostępne do użycia.
+Gdy urządzenie zostanie skonfigurowane i będzie gotowe do użycia, będzie miało on dostęp do klucza poręczenia i magazynowania.
 
-![Przejmowanie na własność modułu TPM](./media/concepts-tpm-attestation/tpm-ownership.png)
+![Przejmowanie własności modułu TPM](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-OneNote na przejmowanie na własność modułu TPM: Przejmowanie na własność modułu TPM, zależy od wiele rzeczy, w tym producenta modułu TPM, zestaw funkcji wspomagających modułu TPM używane i systemu operacyjnego urządzenia. Postępuj zgodnie z instrukcjami odpowiednimi do systemu, przejęcie na własność.
+Jedna Uwaga dotycząca przejmowania własności modułu TPM: przejęcie własności modułu TPM zależy od wielu rzeczy, takich jak producent modułu TPM, zestaw używanych narzędzi TPM i system operacyjny urządzenia. Postępuj zgodnie z instrukcjami dotyczącymi systemu, aby przejąć własność.
 
-Usługi Device Provisioning Service używa publiczną część EK (EK_pub) do identyfikowania i rejestrowania urządzeń. Dostawca urządzenia może odczytywać EK_pub podczas produkcji lub finalnych testów i przesłanie EK_pub do usługi aprowizacji, które urządzenie zostanie rozpoznana podczas łączenia z aprowizacji. Usługi Device Provisioning Service nie sprawdza SRK ani właścicielem, dzięki czemu "wyczyszczenie" modułu TPM na partycje powoduje usunięcie danych klienta, ale klucz poręczenia (i inne dane dostawcy) są zachowywane i urządzenia nadal będzie zostanie rozpoznany przez usługę Device Provisioning, kiedy łączy do aprowizowania.
+Usługa Device Provisioning używa publicznej części PORĘCZenia (EK_pub) do identyfikowania i rejestrowania urządzeń. Dostawca urządzenia może odczytywać EK_pub podczas produkcji lub testowania końcowego i przekazywać EK_pub do usługi aprowizacji, aby urządzenie było rozpoznawane po nawiązaniu połączenia z usługą. Usługa Device Provisioning nie sprawdza dostawcy magazynowania (SRK) ani właściciela, więc "czyszczenie" modułu TPM powoduje wymazanie danych klienta, ale niezależność (i inne dane dostawcy) jest zachowywana, a urządzenie jest nadal rozpoznawane przez usługę Device Provisioning, gdy nawiąże połączenie z udostępnianiem.
 
-## <a name="detailed-attestation-process"></a>Proces zaświadczania szczegółowe
+## <a name="detailed-attestation-process"></a>Szczegółowy proces zaświadczania
 
-Przy pierwszym połączeniu urządzenia z modułem TPM w usłudze Device Provisioning, usługa najpierw sprawdza podana EK_pub względem EK_pub przechowywane na liście rejestracji. Jeśli EK_pubs nie są zgodne, urządzenie nie może aprowizować. Jeśli EK_pubs są zgodne, usługa następnie wymaga urządzenie, aby udowodnić własność prywatna część EK za pośrednictwem wezwanie jednorazowy jest bezpieczne wyzwaniem służy do potwierdzania tożsamości. Usługi Device Provisioning generuje identyfikatora jednorazowego i następnie szyfruje za pomocą SRK, a następnie EK_pub, które są dostarczane przez urządzenie podczas wywołania wstępnej rejestracji. Moduł TPM zawsze chroni część klucza prywatnego. To uniemożliwia fałszowanie i gwarantuje, że tokeny sygnatur dostępu Współdzielonego są bezpiecznie udostępnione do autoryzowanych urządzeń.
+Gdy urządzenie z modułem TPM po raz pierwszy łączy się z usługą Device Provisioning, usługa najpierw sprawdzi podane EK_pub względem EK_pub przechowywanego na liście rejestracji. Jeśli EK_pubs nie są zgodne, urządzenie nie może inicjować obsługi administracyjnej. Jeśli EK_pubs są zgodne, usługa wymaga, aby urządzenie pokazało własność prywatnej części PORĘCZenia za pośrednictwem żądania nonce, które jest bezpiecznym wyzwaniem do udowodnienia tożsamości. Usługa Device Provisioning generuje identyfikator jednorazowy, a następnie szyfruje go za pomocą klucza głównego magazynowania, a następnie EK_pub, z których oba są dostarczane przez urządzenie podczas początkowego wywołania rejestracji. Moduł TPM zawsze utrzymuje prywatną część klucza Secure. Zapobiega to fałszowaniu i gwarantuje, że tokeny sygnatury dostępu współdzielonego są bezpiecznie obsługiwane na autoryzowanych urządzeniach.
 
-Przejdźmy teraz przez proces zaświadczania, szczegółowo.
+Przechodźmy szczegółowo w procesie zaświadczania.
 
-### <a name="device-requests-an-iot-hub-assignment"></a>Urządzenie zażąda przypisania usługi IoT Hub
+### <a name="device-requests-an-iot-hub-assignment"></a>Urządzenie żąda przypisania IoT Hub
 
-Najpierw urządzenie łączy się z usługą Device Provisioning i żądania aprowizacji. W ten sposób, urządzenie udostępni usługi z jego identyfikator rejestracji, zakres identyfikatorów EK_pub i SRK_pub z modułu TPM. Usługa przekazuje zaszyfrowany identyfikator jednorazowy urządzenia i prosi urządzenia do odszyfrowania identyfikator jednorazowy i używać go do podpisywania tokenu sygnatury dostępu Współdzielonego, aby ponownie nawiąż połączenie i zakończyć aprowizację.
+Najpierw urządzenie nawiązuje połączenie z usługą Device Provisioning i żąda do aprowizacji. W takim przypadku urządzenie udostępnia usługę z IDENTYFIKATORem rejestracji, zakresem identyfikatorów oraz EK_pub i SRK_pub z modułu TPM. Usługa przekazuje zaszyfrowany identyfikator jednorazowy do urządzenia i prosi urządzenie o odszyfrowanie tego identyfikatora i użycie go do podpisania tokenu sygnatury dostępu współdzielonego w celu ponownego nawiązania połączenia i zakończenia aprowizacji.
 
-![Urządzenie żądania aprowizacji](./media/concepts-tpm-attestation/step-one-request-provisioning.png)
+![Inicjowanie obsługi żądań urządzeń](./media/concepts-tpm-attestation/step-one-request-provisioning.png)
 
-### <a name="nonce-challenge"></a>Jednorazowy challenge
+### <a name="nonce-challenge"></a>Żądanie nonce
 
-Urządzenie ma identyfikator jednorazowy i używa prywatnego części EK i SRK do odszyfrowania identyfikator jednorazowy do modułu TPM; kolejność zaufania delegatów nonce szyfrowania z klucz poręczenia, który jest niezmienny, SRK, które można zmienić, jeśli nowy właściciel przejmuje na własność modułu TPM.
+Urządzenie przyjmuje identyfikator jednorazowy i używa prywatnych części klucza poręczenia i klucza głównego, aby odszyfrować identyfikator jednorazowy do modułu TPM; kolejność szyfrowania nonce delegata zaufania od klucza poręczenia, który jest niezmienny, do klucza magazynowania, który można zmienić, jeśli nowy właściciel przejmuje własność modułu TPM.
 
-![Identyfikator jednorazowy odszyfrowywania](./media/concepts-tpm-attestation/step-two-nonce.png)
+![Odszyfrowywanie identyfikatora jednorazowego](./media/concepts-tpm-attestation/step-two-nonce.png)
 
-### <a name="validate-the-nonce-and-receive-credentials"></a>Weryfikowania identyfikatora jednorazowego i odbierania poświadczeń
+### <a name="validate-the-nonce-and-receive-credentials"></a>Weryfikowanie identyfikatora jednorazowego i odbieranie poświadczeń
 
-Urządzenie można utworzyć token sygnatury dostępu Współdzielonego, za pomocą jednorazowego odszyfrowane i ponownie ustanów połączenie z usługą Device Provisioning przy użyciu podpisany token sygnatury dostępu Współdzielonego. Z żądaniem jednorazowego ukończone umożliwia urządzenia na potrzeby aprowizacji.
+Urządzenie może następnie podpisać token sygnatury dostępu współdzielonego przy użyciu odszyfrowanego identyfikatora jednorazowego i ponownie nawiązać połączenie z usługą Device Provisioning przy użyciu sygnatury sygnatury dostępu współdzielonego. Po zakończeniu żądania nonce Usługa umożliwia obsługę administracyjną urządzenia.
 
-![Urządzenie ustanawia ponownie połączenie usługi Device Provisioning Service można zweryfikować własność EK](./media/concepts-tpm-attestation/step-three-validation.png)
+![Urządzenie ponownie nawiązuje połączenie z usługą Device Provisioning w celu potwierdzenia własności PORĘCZenia](./media/concepts-tpm-attestation/step-three-validation.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz łączenia urządzenia z usługi IoT Hub i przytrzymasz bezpieczne w bazie wiedzy, klucze Twoje urządzenia są bezpiecznie przechowywane. Teraz, gdy wiesz, jak usługi Device Provisioning Service bezpiecznie weryfikuje tożsamość urządzenia przy użyciu modułu TPM, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej:
+Teraz urządzenie nawiązuje połączenie z usługą IoT Hub i zatrzymasz bezpieczeństwo w wiedzy, że klucze urządzeń są bezpiecznie przechowywane. Teraz, gdy już wiesz, jak usługa Device Provisioning bezpiecznie weryfikuje tożsamość urządzenia przy użyciu modułu TPM, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej:
 
-* [Dowiedz się więcej o wszystkich koncepcje w automatycznej aprowizacji](./concepts-auto-provisioning.md)
-* [Rozpoczęcie korzystania z automatycznego aprowizowania](./quick-setup-auto-provision.md) za pomocą zestawów SDK, aby zadbać o przepływ.
+* [Dowiedz się więcej na temat wszystkich koncepcji związanych z obsługą administracyjną](./concepts-auto-provisioning.md)
+* Rozpocznij [pracę z obsługą automatyczne](./quick-setup-auto-provision.md) przy użyciu zestawów SDK, aby zachować ostrożność przepływu.

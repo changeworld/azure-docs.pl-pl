@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java'
+title: 'Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java'
 titleSuffix: Azure Cognitive Services
 description: Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją Java. Z tego przewodnika Szybki start dowiesz się, jak wysłać żądanie, odebrać odpowiedź JSON oraz filtrować i analizować wyniki.
 services: cognitive-services
@@ -8,24 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 07/25/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 64d1ce1aa6435d9d1716364cb16f8fee7ca09ebb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 97266269a5fbb66f9787cb4a8042f3b3dc13a5ec
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597809"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977237"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java
 
 Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją Java. Z tego przewodnika Szybki start dowiesz się, jak wysłać żądanie, odebrać odpowiedź JSON oraz filtrować i analizować wyniki.
 
 Chcesz zobaczyć kod teraz? [Przykłady zastosowania zestawu SDK wyszukiwania w Internecie Bing dla języka Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/) są dostępne w usłudze GitHub.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,6 +30,8 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 * [Zestaw JDK 7 lub 8](https://aka.ms/azure-jdks)
 * [Narzędzie Apache Maven](https://maven.apache.org/download.cgi) lub inne narzędzie do automatyzacji kompilacji
 * Klucz subskrypcji
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>Utwórz projekt i Skonfiguruj plik pliku pom
 

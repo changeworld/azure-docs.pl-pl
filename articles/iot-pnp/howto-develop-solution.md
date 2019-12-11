@@ -1,20 +1,20 @@
 ---
 title: Korzystanie z urządzenia usługi IoT Plug and Play w wersji zapoznawczej w ramach rozwiązania Azure IoT | Microsoft Docs
 description: Deweloperzy rozwiązań dowiesz się, jak używać zestawu SDK usługi do współpracy z urządzeniami Plug and Play IoT.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 07/24/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5abfe0300bd61f5ccfbfccedf16659f055eb8ad4
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 543f332087aef4147c9274ca980cb56543a68112
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877998"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977594"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Łączenie się z urządzeniem Plug and Play IoT w wersji zapoznawczej i korzystanie z niego
 
@@ -30,13 +30,13 @@ npm install
 
 ## <a name="run-the-service-samples"></a>Uruchamianie przykładów usługi
 
-Skorzystaj z poniższych przykładów, aby poznać możliwości zestawu SDK usługi Node. js. Upewnij się, że `IOTHUB_CONNECTION_STRING` zmienna środowiskowa jest ustawiona w używanej powłoce:
+Skorzystaj z poniższych przykładów, aby poznać możliwości zestawu SDK usługi Node. js. Upewnij się, że w używanej powłoce jest ustawiona zmienna środowiskowa `IOTHUB_CONNECTION_STRING`:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Pobierz dwuosiową cyfrę i Utwórz listę interfejsów
 
 **get_digital_twin. js** pobiera cyfrowe sznurki skojarzone z urządzeniem i drukuje jego składnik w wierszu polecenia. Nie wymaga to pomyślnego uruchomienia przykładowego urządzenia.
 
-**get_digital_twin_interface_instance. js** pobiera jedno wystąpienie interfejsu Digital bliźniaczy skojarzone z urządzeniem i drukuje je w wierszu polecenia. Nie wymaga to uruchomienia próbki urządzenia.
+**get_digital_twin_interface_instance. js** pobiera jedno wystąpienie interfejsu dwucyfrowego, skojarzonego z urządzeniem i drukuje w wierszu polecenia. Nie wymaga to uruchomienia próbki urządzenia.
 
 ### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Pobieranie i Ustawianie właściwości przy użyciu zestawu SDK usługi Node
 
@@ -90,7 +90,7 @@ Aby utworzyć trasę Digital bliźniaczy:
 1. Wybierz pozycję **Routing komunikatów**.
 1. Na karcie **trasy** wybierz pozycję **Dodaj**.
 1. Wprowadź wartość w polu **Nazwa** , a następnie wybierz **punkt końcowy**. Jeśli nie skonfigurowano punktu końcowego, wybierz pozycję **Dodaj punkt końcowy**.
-1. Z listy rozwijanej **Źródło danych** wybierz pozycję Wielocyfrowe **zdarzenia zmiany**.
+1. Z listy rozwijanej **Źródło danych** wybierz pozycję **wielocyfrowe zdarzenia zmiany**.
 1. Wybierz pozycję **Zapisz**.
 
 Poniższy kod JSON przedstawia przykład wielocyfrowego zdarzenia zmiany:

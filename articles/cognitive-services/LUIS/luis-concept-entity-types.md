@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422586"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976965"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Jednostki i ich cele w LUIS
 
@@ -75,7 +75,7 @@ Obiekty, które są [**poznanie maszyn**](tutorial-machine-learned-entity.md) , 
 
 Wyznaczone przez maszynę wyzwalacze jednostki na podstawie kontekstu uzyskanego w ramach szkolenia wyrażenia długości. **Ograniczenia** są opcjonalnymi regułami stosowanymi do jednostki, która jest stosowana przez maszynę, która jest w trakcie dalszych ograniczeń wyzwalanych na podstawie definicji dopasowania tekstu dokładnego, takiego jak [Lista](reference-entity-list.md) lub [wyrażenie regularne](reference-entity-regular-expression.md). Na przykład jednostka `size`na przez maszynę może mieć ograniczenie jednostki listy `sizeList`, która ogranicza jednostkę `size` do wyzwalania tylko wtedy, gdy napotkane są wartości zawarte w jednostce `sizeList`.
 
-[**Deskryptory**](luis-concept-feature.md) to funkcje stosowane w celu zwiększenia znaczenia wyrazów lub fraz dla przewidywania. Są one nazywane *deskryptorami* , ponieważ są używane do *opisywania* zamiaru lub jednostki. Deskryptory opisują cechy charakterystyczne lub atrybuty danych, takie jak ważne słowa lub frazy. Ten LUIS zaobserwuje i uczy się.
+[**Deskryptory**](luis-concept-feature.md) to funkcje stosowane w celu zwiększenia znaczenia wyrazów lub fraz dla przewidywania. Są one nazywane *deskryptorami* , ponieważ są używane do *opisywania* zamiaru lub jednostki. Deskryptory opisują cechy charakterystyczne lub atrybuty danych, takie jak ważne słowa lub frazy, które LUISją się i poznają.
 
 Gdy tworzysz funkcję listy fraz w aplikacji LUIS, jest ona domyślnie włączona i ma zastosowanie równomiernie we wszystkich intencjach i jednostkach. Jednakże w przypadku zastosowania listy fraz jako deskryptora (funkcji) jednostki (lub *modelu*), a następnie jej zakres ogranicza się do zastosowania tylko do tego modelu i nie jest już używany w przypadku wszystkich innych modeli. Użycie listy fraz jako deskryptora dla modelu ułatwia dekompozycję, pomagając z dokładnością dla modelu, do którego jest stosowana.
 
@@ -95,7 +95,7 @@ Wybierz jednostkę na podstawie sposobu wyodrębniania danych i sposobu ich repr
 |[**Komputer — informacje**](tutorial-machine-learned-entity.md)|Jednostki poznanie maszyn są zgodne z kontekstem w wypowiedź. Nadrzędne grupowanie jednostek, niezależnie od typu jednostki. Sprawia to, że zmiany położenia w przykładzie wyrażenia długości są istotne. |
 |[**Staw**](reference-entity-list.md)|Lista elementów i ich synonimy wyodrębnione z **dokładnym dopasowaniem do tekstu**.|
 |[**Wzorzec. any**](reference-entity-pattern-any.md)|Obiekt, na którym koniec jednostki jest trudny do określenia. |
-|[**Wstępnie utworzonych**](luis-reference-prebuilt-entities.md)|Jest już szkolony do wyodrębniania określonego rodzaju danych, takich jak adres URL lub wiadomość e-mail. Niektóre z tych wstępnie skompilowanych jednostek są zdefiniowane w projekcie typu "Open Source [" — tekst](https://github.com/Microsoft/Recognizers-Text) . Jeśli z określoną kulturę lub jednostki nie jest obecnie obsługiwane, przyczyniają się do projektu.|
+|[**Prebuilt**](luis-reference-prebuilt-entities.md)|Jest już szkolony do wyodrębniania określonego rodzaju danych, takich jak adres URL lub wiadomość e-mail. Niektóre z tych wstępnie skompilowanych jednostek są zdefiniowane w projekcie typu "Open Source [" — tekst](https://github.com/Microsoft/Recognizers-Text) . Jeśli z określoną kulturę lub jednostki nie jest obecnie obsługiwane, przyczyniają się do projektu.|
 |[**Wyrażenie regularne**](reference-entity-regular-expression.md)|Używa wyrażenia regularnego do **dokładnego dopasowania tekstu**.|
 
 ## <a name="extracting-contextually-related-data"></a>Wyodrębnianie danych związanych z kontekstem
@@ -128,7 +128,7 @@ Jeśli LUIS odnajdzie `location` ale nie może ustalić roli, jednostka lokaliza
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Jeśli potrzebujesz więcej niż maksymalna liczba jednostek
 
-Jeśli potrzebujesz więcej niż limit, skontaktuj się z pomocą techniczną. Aby to zrobić, Zbierz szczegółowe informacje o systemie, przejdź do witryny sieci Web [Luis](luis-reference-regions.md#luis-website) , a następnie wybierz pozycję **Pomoc techniczna**. Jeśli Twoja subskrypcja platformy Azure obejmuje usługi pomocy technicznej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/).
+Jeśli potrzebujesz więcej niż limit, skontaktuj się z pomocą techniczną. Aby to zrobić, należy zebrać szczegółowe informacje o systemie, przejdź do [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web, a następnie wybierz **pomocy technicznej**. Jeśli Twoja subskrypcja platformy Azure obejmują usługi pomocy technicznej, skontaktuj się z [technicznej platformy Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="entity-prediction-status"></a>Stan przewidywania jednostek
 
@@ -136,8 +136,9 @@ Portal LUIS pokazuje, kiedy jednostka, w przykładzie wypowiedź, ma inne przewi
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z pojęciami dotyczącymi dobrego [wyrażenia długości](luis-concept-utterance.md).
+Pojęcia dotyczące dobrze [wypowiedzi](luis-concept-utterance.md).
 
-Zobacz [Dodawanie jednostek](luis-how-to-add-entities.md) , aby dowiedzieć się więcej na temat dodawania jednostek do aplikacji Luis.
+Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.
 
 Zapoznaj się z [samouczkiem: Wyodrębnij dane strukturalne z wypowiedź użytkownika z jednostkami maszynowymi w Language Understanding (Luis)](tutorial-machine-learned-entity.md) , aby dowiedzieć się, jak wyodrębnić dane strukturalne z wypowiedź przy użyciu jednostki, która jest poznania maszyny.
+ 

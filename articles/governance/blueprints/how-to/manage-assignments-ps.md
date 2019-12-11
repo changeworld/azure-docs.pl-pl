@@ -3,12 +3,12 @@ title: Zarządzanie przypisaniami przy użyciu programu PowerShell
 description: Dowiedz się, jak zarządzać przypisaniami planów przy użyciu oficjalnego modułu programu PowerShell platformy Azure, AZ. plan.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 5e91197cac97475aa20df8fef8649d98d762d920
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873186"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973649"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Zarządzanie przypisaniami przy użyciu programu PowerShell
 
@@ -246,6 +246,8 @@ Zamiast przekazywania parametrów do polecenia cmdlet, w przykładzie pokazano u
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
     -AssignmentFile '.\assignment.json'
 ```
+
+Przykład pliku definicji przypisania JSON dla tożsamości zarządzanej przypisanej przez użytkownika znajduje się w treści żądania na [przykład: przypisanie z tożsamością zarządzaną przez użytkownika](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity) dla interfejsu API REST.
 
 ## <a name="update-blueprint-assignments"></a>Aktualizowanie przypisań planów
 

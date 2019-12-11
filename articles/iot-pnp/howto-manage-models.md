@@ -1,19 +1,19 @@
 ---
 title: Zarządzanie modelami IoT Plug and Play w wersji zapoznawczej w repozytorium | Microsoft Docs "
 description: Jak zarządzać modelami możliwości urządzeń w repozytorium za pomocą portalu Azure Certified for IoT, interfejsu wiersza polecenia platformy Azure i programu Visual Studio Code.
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.author: philmea
+ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932858"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979108"
 ---
 # <a name="manage-models-in-the-repository"></a>Zarządzanie modelami w repozytorium
 
@@ -47,7 +47,7 @@ Interfejs wiersza polecenia platformy Azure umożliwia zarządzanie modelami mo�
 
 Aby otworzyć widok **repozytorium modeli** w Visual Studio Code.
 
-1. Otwórz Visual Studio Code, użyj **kombinacji klawiszy Ctrl + Shift + P**, wpisz **i wybierz pozycję IoT Plug and Play: Otwórz repozytorium**modeli.
+1. Otwórz Visual Studio Code, użyj **kombinacji klawiszy Ctrl + Shift + P**, wpisz i wybierz pozycję **IoT Plug and Play: Otwórz repozytorium modeli**.
 
 1. Możesz **otworzyć repozytorium modelu publicznego** lub **otworzyć repozytorium modelu organizacyjnego**. W przypadku repozytorium modelu firmy należy wprowadzić parametry połączenia repozytorium modeli. Te parametry połączenia można znaleźć w [portalu Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com) na karcie **Parametry połączenia** dla **repozytorium firmy**.
 
@@ -55,7 +55,7 @@ Aby otworzyć widok **repozytorium modeli** w Visual Studio Code.
 
     Ten widok umożliwia dodawanie, pobieranie i usuwanie modeli i interfejsów możliwości urządzeń. Możesz użyć filtru, aby znaleźć określone elementy na liście.
 
-1. Aby przełączać się między repozytorium modelu firmy a publicznym repozytorium modeli, użyj **kombinacji klawiszy Ctrl + Shift + P**, **wpisz i wybierz pozycję IoT Plug and Play: Wyrejestruj repozytorium**modeli. Następnie użyj **Plug and Play IoT: Otwórz ponownie polecenie** repozytorium modeli.
+1. Aby przełączać się między repozytorium modelu firmy a publicznym repozytorium modeli, użyj **kombinacji klawiszy Ctrl + Shift + P**, wpisz i wybierz pozycję **IoT Plug and Play: Wyloguj repozytorium modeli**. Następnie użyj ponownie polecenia **Plug and Play IoT: Otwórz repozytorium modeli** .
 
 > [!NOTE]
 > W VS Code repozytorium modelu publicznego jest tylko do odczytu. Partnerzy firmy Microsoft mogą zaktualizować repozytorium publiczne w [portalu certyfikatu platformy Azure dla IoT](https://preview.catalog.azureiotsolutions.com).

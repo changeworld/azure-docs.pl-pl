@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30a3be1365f152a88713604570169091f09f0536
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851744"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975435"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w Azure SQL Data Warehouse
 
@@ -36,7 +36,7 @@ Istnieją dwa typy klas zasobów:
 
 Klasy zasobów używają miejsc współbieżności do mierzenia zużycia zasobów.  [Gniazda współbieżności](#concurrency-slots) są wyjaśnione w dalszej części tego artykułu.
 
-- Aby wyświetlić wykorzystanie zasobów dla klas zasobów, zobacz [limity pamięci i współbieżności] pamięć-współbieżność-limits.md).
+- Aby wyświetlić wykorzystanie zasobów dla klas zasobów, zobacz [limity pamięci i współbieżności](memory-concurrency-limits.md).
 - Aby dostosować klasę zasobów, można uruchomić zapytanie w ramach innego użytkownika lub [zmienić członkostwo klasy zasobów bieżącego użytkownika](#change-a-users-resource-class) .
 
 ### <a name="static-resource-classes"></a>Statyczne klasy zasobów

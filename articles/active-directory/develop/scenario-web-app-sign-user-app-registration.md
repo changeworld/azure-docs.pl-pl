@@ -1,6 +1,6 @@
 ---
-title: Aplikacja internetowa, która loguje użytkowników (Rejestracja aplikacji) — platforma tożsamości firmy Microsoft
-description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (Rejestracja aplikacji)
+title: Rejestrowanie aplikacji sieci Web, która loguje się do użytkowników — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak zarejestrować aplikację sieci Web, która loguje się do użytkowników
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766076"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964824"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Aplikacja sieci Web, która loguje się do użytkowników: Rejestracja aplikacji
 
@@ -54,11 +54,11 @@ Możesz użyć tych linków do uruchomienia uruchamiania aplikacji sieci Web:
 1. Po wyświetleniu strony **Rejestrowanie aplikacji** podaj informacje dotyczące rejestracji aplikacji:
    1. Wybierz obsługiwane typy kont dla swojej aplikacji. (Zobacz [obsługiwane typy kont](./v2-supported-account-types.md)).
    1. W sekcji **Nazwa** wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji. Na przykład wprowadź **AspNetCore-webapp**.
-   1. Dla **identyfikatora URI przekierowania**Dodaj typ aplikacji i miejsce docelowe identyfikatora URI, które będą akceptować zwrócone odpowiedzi na tokeny po pomyślnym uwierzytelnieniu. Na przykład wprowadź **https://localhost:44321** . Następnie wybierz pozycję **zarejestruj**.
+   1. Dla **identyfikatora URI przekierowania**Dodaj typ aplikacji i miejsce docelowe identyfikatora URI, które będą akceptować zwrócone odpowiedzi na tokeny po pomyślnym uwierzytelnieniu. Na przykład, wprowadź **https://localhost:44321** . Następnie wybierz pozycję **zarejestruj**.
 1. Wybierz menu **Uwierzytelnianie**, a następnie dodaj następujące informacje:
    1. Dla **adresu URL odpowiedzi**Dodaj **https://localhost:44321/signin-oidc** typu **sieci Web**.
    1. W sekcji **Ustawienia zaawansowane** Ustaw **adres URL wylogowania** na **https://localhost:44321/signout-oidc** .
-   1. W obszarze **niejawne przyznanie**wybierz pozycję **identyfikatory tokenów**.
+   1. W obszarze **Niejawne przyznanie** wybierz pozycję **Tokeny identyfikatorów**.
    1. Wybierz pozycję **Zapisz**.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)

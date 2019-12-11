@@ -11,25 +11,25 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19045b54b97fdb69f9fdab3d17066faa5dbcc435
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cba77b89ac9a9a93a2a3d889d4faca32708fd719
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580718"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997262"
 ---
-# <a name="configure-a-development-environment-for-azure-machine-learning"></a>Skonfiguruj środowisko programistyczne dla Azure Machine Learning
+# <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule dowiesz się, jak skonfigurować środowisko deweloperskie do pracy z Azure Machine Learning. Azure Machine Learning jest platformą niezależny od. Jedynym wymaganiem twardym dla środowiska programistycznego jest Python 3. Zalecane jest również środowisko izolowane, takie jak Anaconda lub virtualenv.
 
 W poniższej tabeli przedstawiono wszystkie środowiska deweloperskie omówione w tym artykule wraz z specjalistami i wadami.
 
-| Środowisko | Formaty | Wady |
+| Środowisko | Specjaliści | Wady |
 | --- | --- | --- |
-| [Oparta na chmurze maszyna wirtualna Azure Machine Learning notesu](#notebookvm) | Najprostszym sposobem na rozpoczęcie pracy. Cały zestaw SDK jest już zainstalowany na maszynie wirtualnej obszaru roboczego, a samouczki notesu są wstępnie sklonowane i gotowe do uruchomienia. | Brak kontroli nad środowiskiem deweloperskim i zależnościami. Dodatkowe koszty związane z maszyną wirtualną z systemem Linux (maszyna wirtualna może zostać zatrzymana, gdy nie jest używana, aby uniknąć opłat). Zobacz [szczegółowe informacje o cenach](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Oparta na chmurze maszyna wirtualna Azure Machine Learning notesu](#notebookvm) | Najprostszym sposobem na rozpoczęcie pracy. Cały zestaw SDK jest już zainstalowany na maszynie wirtualnej obszaru roboczego, a samouczki notesu są wstępnie sklonowane i gotowe do uruchomienia. | Brak kontroli nad środowiskiem deweloperskim i zależnościami. Dodatkowe koszty związane z maszyną wirtualną z systemem Linux (maszyna wirtualna może zostać zatrzymana, gdy nie jest używana, aby uniknąć opłat). Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Środowisko lokalne](#local) | Pełna kontrola nad środowiskiem deweloperskim i zależnościami. Uruchamiaj przy użyciu dowolnego narzędzia kompilacji, środowiska lub IDE. | Rozpoczęcie pracy trwa dłużej. Wymagane pakiety SDK muszą być zainstalowane, a także należy zainstalować środowisko, jeśli jeszcze go nie masz. |
-| [Azure Databricks](#aml-databricks) | Idealne rozwiązanie do uruchamiania przepływów pracy uczenia maszynowego dużej skali na skalowalnej platformie Apache Spark. | Zbyt obszerne eksperymentalne Uczenie maszynowe, a także na mniejsze eksperymenty i przepływy pracy. Dodatkowe koszty poniesione przez Azure Databricks. Zobacz [szczegółowe informacje o cenach](https://azure.microsoft.com/pricing/details/databricks/). |
+| [Azure Databricks](#aml-databricks) | Idealne rozwiązanie do uruchamiania przepływów pracy uczenia maszynowego dużej skali na skalowalnej platformie Apache Spark. | Zbyt obszerne eksperymentalne Uczenie maszynowe, a także na mniejsze eksperymenty i przepływy pracy. Dodatkowe koszty poniesione przez Azure Databricks. Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Podobnie jak w przypadku maszyn wirtualnych opartych na chmurze (Python i SDK są wstępnie zainstalowane), ale przy użyciu dodatkowych popularnych narzędzi do nauki o danych i uczenia maszynowego. Łatwe skalowanie i łączenie z innymi niestandardowymi narzędziami i przepływami pracy. | Wolniejsze środowisko uruchamiania w porównaniu z maszyną wirtualną w notesie opartym na chmurze. |
 
 
@@ -50,9 +50,9 @@ Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Ju
 - W systemie Linux lub macOS potrzebna jest powłoka bash.
 
     > [!TIP]
-    > Jeśli korzystasz z systemu Linux lub macOS i używasz powłoki innej niż bash (na przykład ZSH), podczas uruchamiania niektórych poleceń mogą pojawić się błędy. Aby obejść ten problem, użyj `bash` polecenia, aby uruchomić nową powłokę bash i uruchomić w niej polecenia.
+    > Jeśli korzystasz z systemu Linux lub macOS i używasz powłoki innej niż bash (na przykład ZSH), podczas uruchamiania niektórych poleceń mogą pojawić się błędy. Aby obejść ten problem, należy użyć `bash` polecenie, aby rozpocząć nową powłokę bash, a następnie uruchom polecenia istnieje.
 
-- W systemie Windows wymagany jest wiersz polecenia lub monit Anaconda (instalowany przez Anaconda i Miniconda).
+- W Windows należy wiersz polecenia lub wiersz Anaconda (zainstalowanych w ramach pakietu Anaconda i Miniconda).
 
 ## <a id="notebookvm"></a>Twoja maszyna wirtualna notesu w chmurze
 
@@ -65,7 +65,7 @@ Nie ma nic do zainstalowania lub skonfigurowania wystąpienia obliczeniowego.  U
 
 Aby zatrzymać naliczanie opłat za obliczenia, [Zatrzymaj maszynę wirtualną notesu](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
-## <a id="dsvm"></a>Data Science Virtual Machine
+## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
 DSVM to dostosowany obraz maszyny wirtualnej (VM). Została zaprojektowana do pracy z nauką o danych, która została wstępnie skonfigurowana za pomocą:
 
@@ -73,7 +73,7 @@ DSVM to dostosowany obraz maszyny wirtualnej (VM). Została zaprojektowana do pr
   - Popularne narzędzia do nauki o danych, takie jak platforma Spark autonomiczna i przechodzenie do szczegółów
   - Narzędzia platformy Azure, takie jak interfejs wiersza polecenia platformy Azure, AzCopy i Eksplorator usługi Storage
   - Zintegrowane środowiska deweloperskie (środowisk IDE), takie jak Visual Studio Code i platformy PyCharm itd
-  - Serwer Jupyter Notebook
+  - Serwer notesu programu Jupyter
 
 Zestaw Azure Machine Learning SDK działa na Ubuntu lub wersji systemu Windows DSVM. Jeśli jednak planujesz użycie DSVM jako elementu docelowego obliczeń, obsługiwane są tylko Ubuntu.
 
@@ -111,7 +111,7 @@ Aby użyć DSVM jako środowiska deweloperskiego:
             az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
             ```
 
-2. Zestaw Azure Machine Learning SDK jest już zainstalowany na DSVM. Aby użyć środowiska Conda zawierającego zestaw SDK, użyj jednego z następujących poleceń:
+2. Zestaw Azure Machine Learning SDK jest już zainstalowany na DSVM. Aby użyć środowiska Conda, który zawiera zestaw SDK, użyj jednej z następujących poleceń:
 
     * Dla Ubuntu DSVM:
 
@@ -125,7 +125,7 @@ Aby użyć DSVM jako środowiska deweloperskiego:
         conda activate AzureML
         ```
 
-1. Aby sprawdzić, czy możesz uzyskać dostęp do zestawu SDK i sprawdzić wersję, użyj następującego kodu w języku Python:
+1. Aby sprawdzić, czy można dostępu do zestawu SDK i sprawdź wersję, użyj następującego kodu języka Python:
 
     ```python
     import azureml.core
@@ -167,7 +167,7 @@ Jeśli używasz komputera lokalnego (co może być również zdalną maszyną wi
     Następnie uruchom następujące polecenie, aby utworzyć jądro:
 
     ```shell
-    ipython kernel install --user
+    ipython kernel install --user --name myenv --display-name "Python (myenv)"
     ```
 
 1. Użyj następujących poleceń, aby zainstalować pakiety:
@@ -204,9 +204,9 @@ Jeśli używasz komputera lokalnego (co może być również zdalną maszyną wi
     pip install <new package>
     ```
 
-### <a id="jupyter"></a>Notesy Jupyter
+### <a id="jupyter"></a>Program Jupyter Notebooks
 
-Notesy Jupyter są częścią [projektu Jupyter](https://jupyter.org/). Zapewniają interaktywne środowisko programistyczne, w którym tworzysz dokumenty, które mieszają kod na żywo za pomocą tekstu opisowego i grafiki. Notesy Jupyter są również doskonałym sposobem udostępniania wyników innym osobom, ponieważ można zapisać dane wyjściowe sekcji kodu w dokumencie. Notesy Jupyter można instalować na różnych platformach.
+Program Jupyter Notebooks są częścią [projektu Jupyter](https://jupyter.org/). Zapewniają one interaktywne środowisko kodowania, w której utworzono dokumenty, które mieszać kodu na żywo z tekstu opisowego i grafiki. Notesy Jupyter są również doskonałym sposobem udostępniania wyników innym osobom, ponieważ można zapisać dane wyjściowe sekcji kodu w dokumencie. Notesy Jupyter notebook można zainstalować na wielu różnych platformach.
 
 Procedura opisana w sekcji [komputer lokalny](#local) instaluje niezbędne składniki do uruchamiania notesów Jupyter w środowisku Anaconda.
 
@@ -247,7 +247,7 @@ Aby włączyć te składniki w środowisku Jupyter Notebook:
 1. Aby skonfigurować Jupyter Notebook do korzystania z obszaru roboczego Azure Machine Learning, przejdź do sekcji [Tworzenie pliku konfiguracji obszaru roboczego](#workspace) .
 
 
-### <a id="vscode"></a>Visual Studio Code
+### <a id="vscode"></a>Program Visual Studio Code
 
 Visual Studio Code to bardzo popularny edytor kodu dla wielu platform, który obsługuje obszerny zestaw języków programowania i narzędzi za pomocą rozszerzeń dostępnych w [witrynie Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). [Rozszerzenie Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) instaluje rozszerzenie języka [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) do kodowania we wszystkich typach środowisk Python (Virtual, Anaconda itp.). Ponadto oferuje wygodne funkcje do pracy z zasobami Azure Machine Learning i uruchamiania Azure Machine Learning eksperymentów bez opuszczania Visual Studio Code.
 
@@ -287,16 +287,16 @@ Jak Azure Databricks współpracuje z Azure Machine Learning:
 Utwórz [klaster datakostki](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Niektóre ustawienia są stosowane tylko w przypadku instalowania zestawu SDK w celu automatycznego uczenia maszynowego w kostkach.
 **Utworzenie klastra potrwa kilka minut.**
 
-Użyj tych ustawień:
+Użyj następujących ustawień:
 
-| Ustawienie |Dotyczy| Wartość |
+| Ustawienie |Informacje zawarte w tym artykule dotyczą| Wartość |
 |----|---|---|
-| Nazwa klastra |stałego| yourclustername |
-| Środowisko uruchomieniowe usługi Databricks |stałego|Środowisko uruchomieniowe inne niż ML 6,0 (Scala 2,11, Spark 2.4.3) |
-| Wersja języka Python |stałego| 3 |
-| Ochotnik |stałego| 2 lub nowszy |
+| Nazwa klastra |zawsze| yourclustername |
+| Środowisko uruchomieniowe usługi Databricks |zawsze|Środowisko uruchomieniowe inne niż ML 6,0 (Scala 2,11, Spark 2.4.3) |
+| Wersja języka Python |zawsze| 3 |
+| Ochotnik |zawsze| 2 lub nowszy |
 | Typy maszyn wirtualnych węzła procesu roboczego <br>(określa maksymalną liczbę współbieżnych iteracji) |Zautomatyzowane uczenie maszynowe<br>jedyn| Preferowana maszyna wirtualna zoptymalizowana pod kątem pamięci |
-| Włączanie skalowania automatycznego |Zautomatyzowane uczenie maszynowe<br>jedyn| Usuń zaznaczenie |
+| Włączanie skalowania automatycznego |Zautomatyzowane uczenie maszynowe<br>jedyn| Usuń zaznaczenie pola wyboru |
 
 Przed kontynuowaniem Zaczekaj, aż klaster zostanie uruchomiony.
 
@@ -307,9 +307,9 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
 
 1. Wybierz **tylko jedną** opcję (nie jest obsługiwana żadna inna instalacja zestawu SDK)
 
-   |Dodatki&nbsp;pakietu SDK&nbsp;|Element źródłowy|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |Dodatki&nbsp;pakietu SDK&nbsp;|Źródło|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
-   |Dla kostek datakostki| Przekaż Język Python lub PyPI | Azure-SDK [datakostki]|
+   |Dla kostek datakostki| Przekaż Język Python lub PyPI | azureml-sdk[databricks]|
    |Dla kostek datakostks — with-<br> możliwości zautomatyzowanej ML| Przekaż Język Python lub PyPI | Azure-SDK [automl]|
 
    > [!Warning]
@@ -337,9 +337,9 @@ Zestaw SDK dla datakostek **_bez_** ZAUTOMATYZOWANEGO zestawu SDK usługi machin
 
 Zestaw SDK dla datakostek **z** automatycznym zestawem machine Learning ![SDK z automatyczną nauką maszynową zainstalowaną w kostkach datakostek](./media/how-to-configure-environment/automlonadb.png)
 
-### <a name="start-exploring"></a>Zacznij Eksplorowanie
+### <a name="start-exploring"></a>Rozpocznij eksplorację
 
-Wypróbuj:
+Wypróbuj to:
 + Chociaż dostępnych jest wiele przykładowych notesów, **tylko [te przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) współpracują z Azure Databricks.**
 
 + Zaimportuj te próbki bezpośrednio z obszaru roboczego. Zobacz poniżej: ![wybierz pozycję Importuj](media/how-to-configure-environment/azure-db-screenshot.png)
@@ -361,11 +361,11 @@ Plik konfiguracji obszaru roboczego to plik JSON, który informuje zestaw SDK, j
 
 Ten plik JSON musi znajdować się w strukturze katalogów zawierającej skrypty języka Python lub notesy Jupyter. Może znajdować się w tym samym katalogu, podkatalogu o nazwie *. Azure*lub w katalogu nadrzędnym.
 
-Aby użyć tego pliku z kodu, użyj `ws=Workspace.from_config()`. Ten kod ładuje informacje z pliku i łączy się z obszarem roboczym.
+Aby użyć tego pliku w kodzie, należy użyć `ws=Workspace.from_config()`. Ten kod ładuje dane z pliku i nawiązuje połączenie z obszarem roboczym.
 
 Plik konfiguracji można utworzyć na trzy sposoby:
 
-* **Użyj [WS. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** :, aby napisać plik *config. JSON* . Plik zawiera informacje o konfiguracji dla obszaru roboczego. *Plik config. JSON* można pobrać lub skopiować do innych środowisk programistycznych.
+* **Użyj [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** :, aby napisać plik *config. JSON* . Plik zawiera informacje o konfiguracji dla obszaru roboczego. *Plik config. JSON* można pobrać lub skopiować do innych środowisk programistycznych.
 
 * **Pobierz plik**: w [Azure Portal](https://ms.portal.azure.com)wybierz opcję Pobierz plik **config. JSON** z sekcji **Przegląd** w obszarze roboczym.
 

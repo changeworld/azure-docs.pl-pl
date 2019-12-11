@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#'
+title: 'Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#'
 titleSuffix: Azure Cognitive Services
 description: Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją C#. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
 services: cognitive-services
@@ -8,22 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 2c55aaa0843574981a7643b11161700992ea0b09
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018228"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976455"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#
 
 Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją C#. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
@@ -31,8 +27,10 @@ Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szyb
 * [Program Visual Studio](https://visualstudio.microsoft.com/downloads/) lub
 * [Program Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [Rozszerzenie C# for Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
-  * [NuGet Package Manager](https://github.com/jmrog/vscode-nuget-package-manager)
+  * [Menedżer pakietów NuGet](https://github.com/jmrog/vscode-nuget-package-manager)
 * [Zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Tworzenie projektu i instalowanie zależności
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083206"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978172"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -37,7 +37,7 @@ W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żyw
 
 Do rozpoczęcia korzystania z usługi Azure Media Services potrzebne są:
 
-* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com).
+* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com).
 * Konto usługi Azure Media Services. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
@@ -79,7 +79,7 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
 2. Wykonaj kodowanie do zestawu plików MP4 o adaptacyjnej szybkości transmisji bitów. Zastosuj opcję szyfrowania magazynu w odniesieniu do elementu zawartości wyjściowej.
 3. Utwórz klucz szyfrowania zawartości dla elementu zawartości, który ma zostać dynamicznie zaszyfrowany podczas odtwarzania.
 4. Skonfiguruj zasady autoryzacji klucza zawartości.
-5. Skonfiguruj zasady dostarczania zasobu (stosowane podczas pakowania dynamicznego i szyfrowania dynamicznego).
+5. Skonfiguruj zasady dostarczania elementu zawartości (używane podczas dynamicznego tworzenia pakietów i dynamicznego szyfrowania).
 6. Opublikuj element zawartości, tworząc lokalizator OnDemand.
 7. Prześlij strumieniowo opublikowaną zawartość.
 
@@ -177,10 +177,10 @@ Klienci usługi Media Services mogą wybrać **Standardowy** punkt końcowy prze
 
 #### <a name="availability"></a>Dostępność
 
-|Name (Nazwa)|Stan|Centra danych
+|Nazwa|Stan|Centra danych
 |---|---|---|
-|Standardowa (Standard)|Ogólna dostępność|Wszystkie|
-|Premium|Ogólna dostępność|Wszystkie|
+|Standardowa (Standard)|Ogólna dostępność|Wszystko|
+|Premium|Ogólna dostępność|Wszystko|
 
 ### <a name="live-encoding"></a>Kodowanie na żywo
 
@@ -196,7 +196,7 @@ Usługa AMS oferuje dwa kodery na żądanie: **Media Encoder Standard** i **Medi
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Usługa Media Encoder Standard|Ogólna dostępność|Wszystkie|
+|Usługa Media Encoder Standard|Ogólna dostępność|Wszystko|
 |Przepływ pracy usługi Media Encoder w warstwie Premium|Ogólna dostępność|Wszystkie z wyjątkiem Chin|
 
 ### <a name="analytics-media-processors"></a>Procesory multimediów usługi analizy
@@ -207,12 +207,12 @@ Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają 
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Azure Media Face Detector|Wersja zapoznawcza|Wszystkie|
-|Azure Media Indexer|Ogólna dostępność|Wszystkie|
-|Azure Media Motion Detector|Wersja zapoznawcza|Wszystkie|
-|Azure Media OCR|Wersja zapoznawcza|Wszystkie|
-|Azure Media Redactor|Wersja zapoznawcza|Wszystkie|
-|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszystkie|
+|Azure Media Face Detector|Wersja zapoznawcza|Wszystko|
+|Azure Media Indexer|Ogólna dostępność|Wszystko|
+|Azure Media Motion Detector|Wersja zapoznawcza|Wszystko|
+|Azure Media OCR|Wersja zapoznawcza|Wszystko|
+|Azure Media Redactor|Wersja zapoznawcza|Wszystko|
+|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszystko|
 |Azure Media Indexer 2|Wersja zapoznawcza|Wszystkie z wyjątkiem Chin i obszaru administracji federalnej USA|
 
 ### <a name="protection"></a>Ochrona
@@ -223,10 +223,10 @@ Usługi Microsoft Azure Media Services umożliwiają zabezpieczenie multimediów
 
 |Szyfrowanie|Stan|Centra danych|
 |---|---|---| 
-|Magazyn|Ogólna dostępność|Wszystkie|
-|Klucze AES-128|Ogólna dostępność|Wszystkie|
-|FairPlay|Ogólna dostępność|Wszystkie|
-|PlayReady|Ogólna dostępność|Wszystkie|
+|Usługa Storage|Ogólna dostępność|Wszystko|
+|Klucze AES-128|Ogólna dostępność|Wszystko|
+|FairPlay|Ogólna dostępność|Wszystko|
+|PlayReady|Ogólna dostępność|Wszystko|
 |Widevine|Ogólna dostępność|Wszystkie regiony z wyjątkiem Niemiec, Rządu Federalnego i Chin.
 
 ### <a name="reserved-units-rus"></a>Jednostki zarezerwowane (RU)
@@ -249,9 +249,13 @@ Aby uzyskać więcej informacji, zobacz sekcję opisującą [skalowanie](#scalin
 
 |Nazwa typu jednostki zarezerwowanej|Stan|Centra danych
 |---|---|---|
-|S1|Ogólna dostępność|Wszystkie|
+|S1|Ogólna dostępność|Wszystko|
 |S2|Ogólna dostępność|Wszystkie regiony z wyjątkiem Brazylii Południowej i Indii Zachodnich|
 |S3|Ogólna dostępność|Wszystkie regiony z wyjątkiem Indii Zachodnich|
+
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -259,6 +263,6 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

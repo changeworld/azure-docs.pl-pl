@@ -8,26 +8,26 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 07fa43563ca9b6c9ae247df6eb28894331b004c1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621011"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976438"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na urządzeniach brzegowych IoT Edge
  
-Usługa Azure Stream Analytics (ASA) na usługi IoT Edge umożliwia deweloperom wdrażanie niemal w czasie rzeczywistym bliżej analitycznych analizy na urządzeniach IoT, dzięki czemu mogą odblokować pełną wartość danych generowanych przez urządzenie. Usługa Azure Stream Analytics jest przeznaczona dla małych opóźnień, odporności, efektywne wykorzystanie przepustowości i zgodności. Przedsiębiorstwom teraz wdrożyć logiki formantu blisko operacji przemysłowych i uzupełniają analizy danych Big Data w chmurze.  
+Usługa Azure Stream Analytics (ASA) w usłudze IoT Edge umożliwia deweloperom wdrażanie analizy w czasie niemal rzeczywistym bliżej urządzeń IoT, aby w pełni wykorzystać dane wygenerowane na urządzeniach. Usługę Azure Stream Analytics zaprojektowano pod kątem małych opóźnień, odporności, wydajnego wykorzystywania przepustowości i zgodności. Przedsiębiorstwa mogą teraz wdrażać logikę sterowania blisko operacji przemysłowych i uzupełniać analizę danych big data realizowaną w chmurze.  
 
 Azure Stream Analytics w usłudze IoT Edge jest uruchamiany w ramach [usługi Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) framework. Po utworzeniu zadania w ASA można wdrażać i zarządzać nią za pomocą usługi IoT Hub.
 
 ## <a name="scenarios"></a>Scenariusze
 ![Diagram wysokiego poziomu usługi IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Małe opóźnienia poleceń i kontroli**: Na przykład produkcyjny systemy bezpieczeństwa musi odpowiedzieć danych operacyjnych z bardzo niskimi opóźnieniami. Za pomocą ASA na urządzeniach brzegowych IoT można analizować czujnika danych w czasie zbliżonym do rzeczywistego i wydawać polecenia, gdy wykrywa anomalie, aby zatrzymać maszynę lub wyzwolenia alertów.
-*   **Ograniczone łączności z chmurą**: Misja krytycznych systemów, takich jak urządzenia zdalnego wyszukiwania, statków połączonych lub przechodzenie do platformy konieczne do analizowania i reagować na dane, nawet wtedy, gdy łączność z chmurą jest przerywana. Dzięki ASA logika przesyłania strumieniowego jest uruchamiana niezależnie od łączności sieciowej, i można wybrać, co możesz wysłać do chmury do dalszego przetwarzania lub magazynowania.
-* **Ograniczona przepustowość**: Ilości danych wytworzonych przez aparaty jet lub podłączone samochody może być tak duża, że dane muszą być filtrowana lub wstępnie przetworzone przed wysłaniem ich do chmury. Za pomocą ASA, możesz filtrować lub agregacji danych, który ma być wysyłane do chmury.
-* **Zgodność**: Zgodność z przepisami może wymagać niektóre dane lokalnie anonimowe lub agregowane przed wysłaniem do chmury.
+* **Małe opóźnienia poleceń i kontroli**: na przykład produkcyjny systemy bezpieczeństwa musi odpowiedzieć na dane operacyjne z bardzo niskimi opóźnieniami. Za pomocą ASA na urządzeniach brzegowych IoT można analizować czujnika danych w czasie zbliżonym do rzeczywistego i wydawać polecenia, gdy wykrywa anomalie, aby zatrzymać maszynę lub wyzwolenia alertów.
+*   **Ograniczone łączności z chmurą**: misji krytycznych systemów, takich jak urządzenia zdalnego wyszukiwania, statków połączonych lub platformy przechodzenia do szczegółów, potrzebne do analizowania i reagować na dane, nawet wtedy, gdy łączność z chmurą jest przerywana. Dzięki ASA logika przesyłania strumieniowego jest uruchamiana niezależnie od łączności sieciowej, i można wybrać, co możesz wysłać do chmury do dalszego przetwarzania lub magazynowania.
+* **Ograniczona przepustowość**: ilości danych wytworzonych przez aparaty jet lub podłączone samochody może być tak duża, że dane muszą być filtrowana lub wstępnie przetworzone przed wysłaniem ich do chmury. Za pomocą ASA, możesz filtrować lub agregacji danych, który ma być wysyłane do chmury.
+* **Zgodność**: zgodność z przepisami, mogą wymagać niektóre dane lokalnie anonimowe lub agregowane przed wysłaniem do chmury.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Zadania Edge w usłudze Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Co to jest zadanie usługi "brzegu"?
@@ -44,7 +44,7 @@ ASA używa usługi IoT Hub do wdrożenia zadań edge do urządzeń. Więcej info
 ### <a name="installation-instructions"></a>Instrukcje dotyczące instalacji
 Ogólne kroki są opisane w poniższej tabeli. W poniższych sekcjach podano więcej szczegółów.
 
-|      |Krok   | Uwagi   |
+|      |Czynność   | Uwagi   |
 | ---   | ---   |  ---      |
 | 1   | **Utwórz kontener magazynu**   | Kontenery magazynu są używane do Zapisz swoją definicję zadania, w których są one dostępne przez urządzenia IoT. <br>  Można ponownie użyć dowolnego istniejącego kontenera magazynu.     |
 | 2   | **Tworzenie zadania usługi ASA edge**   |  Utwórz nowe zadanie, wybierz opcję **krawędzi** jako **Środowisko hostingu**. <br> Te zadania są tworzone lub zarządzane w chmurze i uruchomić na urządzeniach usługi IoT Edge.     |
@@ -110,7 +110,7 @@ Te kroki opisano w dokumentacji usługi IoT Edge [Windows](https://docs.microsof
 
 > [!Note]
 > W tym kroku ASA tworzy folder o nazwie "EdgeJobs" w kontenerze magazynu (jeśli go jeszcze nie istnieje). Dla każdego wdrożenia nowego podfolderu jest tworzony w folderze "EdgeJobs".
-> Podczas wdrażania zadania na urządzeniach usługi IoT Edge, ASA tworzy sygnatury dostępu współdzielonego (SAS) dla pliku definicji zadania. Klucza sygnatury dostępu Współdzielonego jest bezpiecznie przesyłany do urządzenia usługi IoT Edge, za pomocą bliźniaczej reprezentacji urządzenia. Po upływie tego klucza jest trzech lat od dnia jego utworzenia. Po zaktualizowaniu zadania usługi IoT Edge sygnatury dostępu Współdzielonego ulegnie zmianie, ale nie zmieni się wersję obrazu. Po **aktualizacji**, postępuj zgodnie z przepływ pracy wdrażania i powiadomienie o aktualizacji jest rejestrowane na urządzeniu.
+> Po wdrożeniu zadania do IoT Edge urządzenia ASA tworzy sygnaturę dostępu współdzielonego (SAS) dla pliku definicji zadania. Klucza sygnatury dostępu Współdzielonego jest bezpiecznie przesyłany do urządzenia usługi IoT Edge, za pomocą bliźniaczej reprezentacji urządzenia. Po upływie tego klucza jest trzech lat od dnia jego utworzenia. Po zaktualizowaniu zadania IoT Edge, sygnatura dostępu współdzielonego ulegnie zmianie, ale wersja obrazu nie ulegnie zmianie. Po **zaktualizowaniu**programu postępuj zgodnie z przepływem pracy wdrożenia, a na urządzeniu zostanie zarejestrowane powiadomienie o aktualizacji.
 
 
 Aby uzyskać więcej informacji na temat wdrożenia usługi IoT Edge, zobacz do [tę stronę](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -143,11 +143,11 @@ W tym przykładzie definiuje następujące trasy:
 
 ## <a name="technical-information"></a>Informacje techniczne
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Bieżące ograniczenia dla zadań usługi IoT Edge w porównaniu do zadania w chmurze
-Celem jest zapewnienie równoważności między zadaniami usługi IoT Edge i zadania w chmurze. Większość funkcji języka zapytania SQL są obsługiwane, włączanie, aby uruchomić tę samą logikę, zarówno w chmurze, jak i usługi IoT Edge.
+Celem jest zapewnienie równoważności między zadaniami usługi IoT Edge i zadania w chmurze. Obsługiwane są większość funkcji języka zapytań SQL, co umożliwia uruchamianie tej samej logiki w chmurze i IoT Edge.
 Jednak następujące funkcje nie są jeszcze obsługiwane w przypadku zadań edge:
 * Funkcje zdefiniowane przez użytkownika (UDF) w języku JavaScript. Funkcji zdefiniowanej przez użytkownika są dostępne w [ C# dla zadań usługi IoT Edge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (wersja zapoznawcza).
 * Agregacje zdefiniowane przez użytkownika (UDA).
-* Funkcje usługi Azure ML
+* Funkcje usługi Azure ML.
 * Przy użyciu więcej niż 14 agregatów w jednym kroku.
 * Format AVRO dla wejścia/wyjścia. W tej chwili obsługiwane są tylko CSV i JSON.
 * Następujące operatory SQL:
@@ -160,7 +160,7 @@ Aby uruchomić ASA na urządzeniach brzegowych IoT, potrzebujesz urządzeń z sy
 
 ASA i używać usługi Azure IoT Edge **Docker** kontenerów, przenośne rozwiązanie, który jest uruchamiany w wielu systemach operacyjnych hosta (Windows, Linux).
 
-ASA na urządzeniach brzegowych IoT jest udostępniany jako obrazy Windows i Linux, systemem zarówno x86-64 lub architektur ARM (Advanced RISC maszyn). 
+ASA na IoT Edge są udostępniane jako obrazy systemu Windows i Linux, uruchomione na architekturze x86-64 lub ARM (Advanced RISC Machines). 
 
 
 ### <a name="input-and-output"></a>Dane wejściowe i wyjściowe
@@ -202,33 +202,33 @@ Istnieją dwa sposoby, aby zaktualizować dane referencyjne:
 * [Licencja Azure Stream Analytics w usłudze IoT Edge](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Uwagi dotyczące innych firm — dla usługi Azure Stream Analytics w usłudze IoT Edge](https://go.microsoft.com/fwlink/?linkid=862828).
 
-## <a name="azure-stream-analytics-module-image-information"></a>Azure Stream Analytics modułu obraz informacji 
+## <a name="azure-stream-analytics-module-image-information"></a>Informacje o obrazie modułu Azure Stream Analytics 
 
-Informacje o wersji Data ostatniej aktualizacji 2019-06-27:
+Informacje o tej wersji zostały ostatnio zaktualizowane w dniu 2019-06-27:
 
 - Obraz: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
-   - Obraz podstawowy: microsoft/dotnet:2.1.6-runtime-alpine3.7
-   - Platforma:
+   - obraz podstawowy: Microsoft/dotnet: 2.1.6-Runtime-Alpine 3.7
+   - platformach
       - Architektura: amd64
-      - system operacyjny: linux
+      - system operacyjny: Linux
   
 - Obraz: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
-   - Obraz podstawowy: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
-   - Platforma:
-      - Architektura: arm
-      - system operacyjny: linux
+   - obraz podstawowy: Microsoft/dotnet: 2.1.6-Runtime-Bionic-arm32v7
+   - platformach
+      - Architektura: ARM
+      - system operacyjny: Linux
   
 - Obraz: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
-   - Obraz podstawowy: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
-   - Platforma:
+   - obraz podstawowy: Microsoft/dotnet: 2.1.6-Runtime-nanoserver-1809
+   - platformach
       - Architektura: amd64
-      - system operacyjny: windows
+      - system operacyjny: Windows
       
       
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, spróbuj [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Więcej informacji na temat usługi Azure Iot Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Usługa ASA na samouczek dotyczący usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

@@ -1,34 +1,34 @@
 ---
-title: Sprawdzanie stanu zadania usługi Azure Import/Export - v1 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać pliki dziennika utworzone podczas uruchomienia zadania importu lub eksportu, aby wyświetlić stan zadania importu/eksportu.
-author: muralikk
+title: Przeglądanie stanu zadania importowania/eksportowania platformy Azure — Wersja 1 | Microsoft Docs
+description: Dowiedz się, jak używać plików dziennika utworzonych podczas wykonywania zadania importowania lub eksportowania, aby zobaczyć stan zadania importu/eksportu.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/26/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 306e3ccf19ba8db2de01e4b20a52707215a4a040
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 075af43796d3ca3dfef4b48f8f98f20903af3308
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320710"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978972"
 ---
-# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Sprawdzanie stanu zadania usługi Azure Import/Export, za pomocą plików dziennika kopiowania
-Kiedy usługa Microsoft Azure Import/Export przetwarza dyski skojarzone z zadaniem importowania lub eksportowania, zapisuje kopiowania plików dziennika do konta magazynu do lub z którego są importowanie lub eksportowanie obiektów blob. Plik dziennika zawiera szczegółowe informacje o każdym z plików, który został zaimportować lub wyeksportować. Kiedy wykonujesz zapytanie o stan ukończonego zadania; zwracany jest adres URL do każdego pliku dziennika kopiowania zobacz [pobrania zadania](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) Aby uzyskać więcej informacji.  
+# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Przeglądanie stanu zadania importowania/eksportowania platformy Azure przy użyciu plików dziennika kopiowania
+Gdy usługa Microsoft Azure Import/Export przetwarza dyski skojarzone z zadaniem importu lub eksportu, zapisuje pliki dziennika kopiowania na koncie magazynu lub z którego są importowane lub eksportowane obiekty blob. Plik dziennika zawiera szczegółowy stan każdego importowanego lub wyeksportowanego pliku. Adres URL każdego pliku dziennika kopiowania jest zwracany podczas wykonywania zapytania o stan ukończonego zadania; Zobacz [pobieranie zadania](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) , aby uzyskać więcej informacji.  
 
-## <a name="example-urls"></a>Adresy URL
+## <a name="example-urls"></a>Przykładowe adresy URL
 
-Adresy URL dla plików dziennika kopiowania do zadania importu za pomocą dwa dyski są następujące:  
+Poniżej przedstawiono przykładowe adresy URL dla plików dziennika kopiowania dla zadania importowania z dwoma dyskami:  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM35C2V_20130921-034307-902_error.xml`  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
   
- Zobacz [usługi Import/Export Format pliku dziennika](../storage-import-export-file-format-log.md) dla formatu Kopiuj dzienniki i pełną listę kodów stanu.  
+ Zobacz Format [pliku dziennika usługi Import/Export](../storage-import-export-file-format-log.md) , aby zapoznać się z formatem kopiowania dzienników i pełną listą kodów stanu.  
   
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
  * [Konfigurowanie narzędzia Azure Import/Export](storage-import-export-tool-setup-v1.md)   
  * [Przygotowywanie dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

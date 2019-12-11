@@ -3,18 +3,18 @@ title: Definiowanie nowego typu urządzenia IoT na platformie Azure IoT Central 
 description: W tym samouczku pokazano, jak utworzyć nowy szablon urządzenia usługi Azure IoT w aplikacji IoT Central platformy Azure. Zdefiniuj dane telemetryczne, stan, właściwości i polecenia dla danego typu.
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 177caaa5400c10ed8de80b04a3305dce7cae77d6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2127bec4d5fdf0d3bf76fb31c548eab98f910d42
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407024"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979023"
 ---
 # <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Definiowanie nowego typu urządzenia IoT w aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -148,7 +148,7 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji właściwo
 | Typ możliwości | Wartość. |
 | Typ semantyczny | Typ semantyczny właściwości, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
 | Schemat | Typ danych właściwości, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. Schemat nie jest dostępny dla typów semantyki zdarzenia i stanu. |
-| Zapisywalny | Jeśli właściwość nie jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central. Jeśli właściwość jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central i IoT Central może wysyłać do urządzenia aktualizacje właściwości.
+| Z możliwością zapisu | Jeśli właściwość nie jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central. Jeśli właściwość jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central i IoT Central może wysyłać do urządzenia aktualizacje właściwości.
 | Ważność | Dostępne tylko dla typu semantycznego zdarzenia. Te informacje dotyczą **błędu**, **informacji**lub **ostrzeżenia**. |
 | Wartości stanu | Dostępne tylko dla typu semantyki stanu. Zdefiniuj możliwe wartości stanu, z których każdy ma nazwę wyświetlaną, nazwę, typ wyliczenia i wartość. |
 | Jednostka | Jednostka wartości właściwości, takiej jak **mph**, **%** lub **&deg;C**. |
@@ -170,7 +170,7 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji polecenia:
 | Polecenie | `SynchronousExecutionType`. |
 | Komentarz | Wszelkie komentarze dotyczące funkcji polecenia. |
 | Opis | Opis możliwości polecenia. |
-| Żądanie | Jeśli ta funkcja jest włączona, definicja parametru żądania, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
+| Prośba | Jeśli ta funkcja jest włączona, definicja parametru żądania, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
 | Odpowiedź | Jeśli ta funkcja jest włączona, definicja odpowiedzi polecenia, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
 
 ## <a name="manage-an-interface"></a>Zarządzanie interfejsem
@@ -194,7 +194,7 @@ W poniższej tabeli przedstawiono ustawienia konfiguracji dla właściwości chm
 
 ## <a name="add-customizations"></a>Dodawanie dostosowań
 
-Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Można na przykład:
+Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Możesz na przykład:
 
 - Dostosuj nazwę wyświetlaną i jednostki możliwości.
 - Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.
@@ -229,7 +229,7 @@ Aby dodać pulpit nawigacyjny do szablonu urządzenia:
 
 ### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurowanie urządzenia w wersji zapoznawczej do wyświetlania pulpitu nawigacyjnego
 
-Aby wyświetlić i przetestować pulpit nawigacyjny, wybierz pozycję **Konfiguruj urządzenie w wersji zapoznawczej**. Dzięki temu pulpit nawigacyjny będzie widoczny po opublikowaniu. Użyj tej opcji, aby sprawdzić, czy w widokach są wyświetlane poprawne dane. Można wybrać jedną z następujących opcji:
+Aby wyświetlić i przetestować pulpit nawigacyjny, wybierz pozycję **Konfiguruj urządzenie w wersji zapoznawczej**. Dzięki temu pulpit nawigacyjny będzie widoczny po opublikowaniu. Użyj tej opcji, aby sprawdzić, czy w widokach są wyświetlane poprawne dane. Możesz wybrać następujące opcje:
 
 - Brak urządzenia w wersji zapoznawczej.
 - Rzeczywiste urządzenie testowe skonfigurowane dla szablonu urządzenia.
@@ -283,7 +283,7 @@ Poniżej przedstawiono sposób tworzenia szablonów urządzeń IoT:
 
 1. Na stronie **Przegląd** wybierz pozycję **Utwórz**. 
 
-   ![Zrzut ekranu przedstawiający stronę przegląd](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
+   ![Zrzut ekranu strony przeglądania](./media/tutorial-define-iot-device-type/gateway-downstream-review.png)
 
 1. Tworzony jest nowy szablon urządzenia. 
 
@@ -297,7 +297,7 @@ Poniżej przedstawiono sposób tworzenia szablonu urządzenia czujnika S1:
 
 1. Na stronie **Przegląd** wybierz pozycję **Utwórz**. 
 
-   ![Zrzut ekranu przedstawiający stronę przegląd](./media/tutorial-define-iot-device-type/s1-review.png)
+   ![Zrzut ekranu strony przeglądania](./media/tutorial-define-iot-device-type/s1-review.png)
 
 1. Tworzony jest nowy szablon urządzenia. 
 
@@ -359,14 +359,14 @@ Szablon urządzenia może zawierać właściwości chmury. Właściwości chmury
 
     | Nazwa wyświetlana      | Typ semantyczny | Schemat |
     | ----------------- | ------------- | ------ |
-    | Data ostatniego serwisowania | Brak          | Date   |
+    | Data ostatniego serwisowania | Brak          | Data   |
     | Nazwa klienta     | Brak          | Ciąg |
 
 2. Wybierz pozycję **Zapisz**.
 
 ### <a name="add-customizations"></a>Dodawanie dostosowań
 
-Użyj opcji dostosowania, aby zmodyfikować interfejs lub dodać funkcje specyficzne dla IoT Central do możliwości, która nie wymaga użycia modelu możliwości urządzenia. Można dostosować pola, gdy model możliwości jest w stanie roboczym lub opublikowanym. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Można na przykład:
+Użyj opcji dostosowania, aby zmodyfikować interfejs lub dodać funkcje specyficzne dla IoT Central do możliwości, która nie wymaga użycia modelu możliwości urządzenia. Można dostosować pola, gdy model możliwości jest w stanie roboczym lub opublikowanym. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Możesz na przykład:
 
 - Dostosuj nazwę wyświetlaną i jednostki możliwości.
 - Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.

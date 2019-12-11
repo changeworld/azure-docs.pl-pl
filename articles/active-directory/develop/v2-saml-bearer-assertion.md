@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform i przepływ potwierdzeń okaziciela języka SAML | Azure
+title: Microsoft Identity platform & przepływ potwierdzenia elementu "okaziciela" elementu SAML | Azure
 description: Dowiedz się, jak pobierać dane z Microsoft Graph bez monitowania użytkownika o poświadczenia przy użyciu przepływu potwierdzenia elementu "okaziciela".
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b316568ba555de764c1aaa4ddf0e72d25cf24f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f7f5b983a00dfc0af2e7a40571ce58fafca5914e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990951"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964625"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform i OAuth 2,0 SAML Flow Assertion
 Przepływ potwierdzenia elementu "OAuth 2,0 SAML" umożliwia żądanie tokenu dostępu OAuth przy użyciu potwierdzenia SAML, gdy klient musi używać istniejącej relacji zaufania. Sygnatura zastosowana do potwierdzenia SAML zapewnia uwierzytelnianie autoryzowanej aplikacji. Potwierdzenie SAML to token zabezpieczający XML wystawiony przez dostawcę tożsamości i używany przez dostawcę usług. Dostawca usług opiera się na swojej zawartości, aby zidentyfikować podmiot potwierdzenia dla celów związanych z zabezpieczeniami.
@@ -54,10 +54,10 @@ Zarejestruj aplikację w [portalu](https://ms.portal.azure.com/#blade/Microsoft_
     1. **Identyfikator URI przekierowania (opcjonalnie)** — wybierz typ aplikacji, którą tworzysz, sieci Web lub klienta publicznego (Mobile & Desktop), a następnie wprowadź identyfikator URI przekierowania (lub adres URL odpowiedzi) dla aplikacji.
     1. Po zakończeniu wybierz pozycję **Rejestruj**.
 1. Zanotuj identyfikator aplikacji (klienta).
-1. W lewym okienku wybierz pozycję **certyfikaty &** wpisy tajne. Kliknij pozycję **Nowy wpis tajny klienta** w sekcji wpisy **tajne klienta** . Skopiuj nowy wpis tajny klienta, nie będzie można go pobrać po opuszczeniu bloku.
+1. W lewym okienku wybierz pozycję **certyfikaty & wpisy tajne**. Kliknij pozycję **Nowy wpis tajny klienta** w sekcji wpisy **tajne klienta** . Skopiuj nowy wpis tajny klienta, nie będzie można go pobrać po opuszczeniu bloku.
 1. W lewym okienku wybierz pozycję **uprawnienia interfejsu API** , a następnie **Dodaj uprawnienie**. Wybierz **Microsoft Graph**, następnie **delegowane uprawnienia**, a następnie wybierz pozycję **zadania. Przeczytaj** , ponieważ zamierzamy użyć interfejs API programu Graph Outlook. 
 
-Zainstaluj [](https://www.getpostman.com/)program Poster, narzędzie wymagane do testowania przykładowych żądań.  Później można skonwertować żądania na kod.
+Zainstaluj program [Poster](https://www.getpostman.com/), narzędzie wymagane do testowania przykładowych żądań.  Później można skonwertować żądania na kod.
 
 ### <a name="get-the-saml-assertion-from-adfs"></a>Pobieranie potwierdzenia SAML z usług ADFS
 Utwórz żądanie POST w punkcie końcowym usług ADFS przy użyciu koperty protokołu SOAP, aby pobrać potwierdzenie SAML:
@@ -80,7 +80,7 @@ W tym kroku Pobierz token OAuth2 przy użyciu odpowiedzi potwierdzenia usług AD
 1. Utwórz żądanie POST, jak pokazano poniżej, korzystając z wartości nagłówka:
 
     ![Żądanie POST](./media/v2-saml-bearer-assertion/5.png)
-1. W treści żądania Zastąp wartości **client_id**, **client_secret**i **Assertion** (potwierdzenie protokołu SAML zakodowane algorytmem Base64 uzyskało poprzedni krok):
+1. W treści żądania Zastąp **client_id**, **client_secret**i **Assertion** (potwierdzenie protokołu SAML zakodowane algorytmem Base64 uzyskało poprzedni krok):
 
     ![Treść żądania](./media/v2-saml-bearer-assertion/6.png)
 1. Po pomyślnym żądaniu otrzymasz token dostępu z usługi Azure Active Directory.
@@ -97,4 +97,4 @@ Po odebraniu tokenu dostępu Wywołaj interfejsy API programu Graph (zadania w p
 
 ## <a name="next-steps"></a>Następne kroki
 
-Poznaj różne przepływy [uwierzytelniania i scenariusze aplikacji](authentication-flows-app-scenarios.md).
+Poznaj różne [przepływy uwierzytelniania i scenariusze aplikacji](authentication-flows-app-scenarios.md).

@@ -2,13 +2,13 @@
 title: Funkcje szablonu — zasoby
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
 ms.topic: conceptual
-ms.date: 10/26/2019
-ms.openlocfilehash: 6457bafeeb0b241171311dc3dcea30b7b6993791
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/09/2019
+ms.openlocfilehash: ee88e939030650111acafec6c3b9906507176f48
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150682"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978853"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -38,10 +38,10 @@ Zwraca identyfikator zasobu dla [zasobu rozszerzenia](extension-resource-types.m
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceId |Yes |ciąg |Identyfikator zasobu dla zasobu, do którego zastosowano zasób rozszerzenia. |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| resourceId |Tak |string |Identyfikator zasobu dla zasobu, do którego zastosowano zasób rozszerzenia. |
+| resourceType |Tak |string |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
+| resourceName1 |Tak |string |Nazwa zasobu. |
+| resourceName2 |Nie |string |Następny segment nazwy zasobu, w razie konieczności. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
@@ -118,8 +118,8 @@ Składnia tej funkcji różni się od nazwy operacji na liście. Każda implemen
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceName lub resourceIdentifier |Yes |ciąg |Unikatowy identyfikator dla zasobu. |
-| apiVersion |Yes |ciąg |Wersja interfejsu API stanu środowiska uruchomieniowego zasobu. Zazwyczaj w formacie **rrrr mm-dd**. |
+| resourceName lub resourceIdentifier |Tak |string |Unikatowy identyfikator dla zasobu. |
+| apiVersion |Tak |string |Wersja interfejsu API stanu środowiska uruchomieniowego zasobu. Zazwyczaj w formacie **rrrr mm-dd**. |
 | functionValues |Nie |obiekt | Obiekt, który zawiera wartości dla funkcji. Podaj tylko ten obiekt funkcji, które obsługują odbieranie obiekt o wartości parametrów, takich jak **listAccountSas** na koncie magazynu. Przykład przekazywania wartości funkcji przedstawiono w tym artykule. | 
 
 ### <a name="valid-uses"></a>Prawidłowe zastosowania
@@ -187,8 +187,8 @@ W poniższej tabeli przedstawiono możliwe zastosowania list *.
 | Microsoft. Logic/przepływy pracy/wersje/wyzwalacze | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
 | Microsoft. MachineLearning/WebServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
 | Microsoft. MachineLearning/obszary robocze | listworkspacekeys |
-| Microsoft. MachineLearningServices/obszary robocze/obliczenia | ListKeys |
-| Microsoft.MachineLearningServices/workspaces | ListKeys |
+| Microsoft. MachineLearningServices/obszary robocze/obliczenia | listKeys |
+| Microsoft.MachineLearningServices/workspaces | listKeys |
 | Microsoft. Maps/konta | [klucze list](/rest/api/maps-management/accounts/listkeys) |
 | Microsoft. Media/MediaServices/zasoby | [listContainerSas](/rest/api/media/assets/listcontainersas) |
 | Microsoft. Media/MediaServices/zasoby | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
@@ -351,8 +351,8 @@ Zwraca informacje o dostawcy zasobów i jego obsługiwane typy zasobów. Jeśli 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Yes |ciąg |Namespace dostawcy |
-| resourceType |Nie |ciąg |Typ zasobu w ramach określonego obszaru nazw. |
+| providerNamespace |Tak |string |Namespace dostawcy |
+| resourceType |Nie |string |Typ zasobu w ramach określonego obszaru nazw. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -428,9 +428,9 @@ Zwraca obiekt reprezentujący stan czasu wykonywania zasobu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceName lub resourceIdentifier |Yes |ciąg |Nazwa lub identyfikator zasobu. Podczas odwoływania się do zasobów w bieżącym szablonie, podaj nazwę zasobu jako parametr. W przypadku odwoływania się do wcześniej wdrożonego zasobu podaj identyfikator zasobu. |
-| apiVersion |Nie |ciąg |Wersja interfejsu API określonego zasobu. Ten parametr należy uwzględnić, jeśli zasób nie jest zainicjowana obsługa administracyjna w obrębie tego samego szablonu. Zazwyczaj w formacie **rrrr mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [Dokumentacja szablonu](/azure/templates/). |
-| "Full" |Nie |ciąg |Wartość określająca, czy należy zwrócić obiekt wszystkich zasobów. Jeśli nie określisz `'Full'`, zwracany jest tylko obiekt do właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacji. |
+| resourceName lub resourceIdentifier |Tak |string |Nazwa lub identyfikator zasobu. Podczas odwoływania się do zasobów w bieżącym szablonie, podaj nazwę zasobu jako parametr. W przypadku odwoływania się do wcześniej wdrożonego zasobu podaj identyfikator zasobu. |
+| apiVersion |Nie |string |Wersja interfejsu API określonego zasobu. Ten parametr należy uwzględnić, jeśli zasób nie jest zainicjowana obsługa administracyjna w obrębie tego samego szablonu. Zazwyczaj w formacie **rrrr mm-dd**. Aby uzyskać prawidłowe wersje interfejsu API dla zasobu, zobacz [Dokumentacja szablonu](/azure/templates/). |
+| "Full" |Nie |string |Wartość określająca, czy należy zwrócić obiekt wszystkich zasobów. Jeśli nie określisz `'Full'`, zwracany jest tylko obiekt do właściwości zasobu. Pełny obiekt zawiera wartości, takie jak identyfikator zasobu i lokalizacji. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -672,21 +672,20 @@ Właściwość **zarządzane** jest zwracana tylko dla grup zasobów zawierając
 
 Funkcji `resourceGroup()` nie można użyć w szablonie, który został [wdrożony na poziomie subskrypcji](deploy-to-subscription.md). Może być używany tylko w szablonach wdrożonych w grupie zasobów.
 
-Typowym zastosowaniem funkcji resourceGroup jest do tworzenia zasobów w tej samej lokalizacji co grupa zasobów. W poniższym przykładzie użyto lokalizacji grupy zasobów, aby przypisać lokalizacji dla witryny sieci web.
+Typowym zastosowaniem funkcji resourceGroup jest do tworzenia zasobów w tej samej lokalizacji co grupa zasobów. Poniższy przykład używa lokalizacji grupy zasobów dla domyślnej wartości parametru.
 
 ```json
-"resources": [
-   {
-      "apiVersion": "2016-08-01",
-      "type": "Microsoft.Web/sites",
-      "name": "[parameters('siteName')]",
-      "location": "[resourceGroup().location]",
-      ...
-   }
-]
+"parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+}
 ```
 
 Można również użyć funkcji grupy zasobów, aby zastosować do zasobu Tagi ze źródła danych. Aby uzyskać więcej informacji, zobacz [stosowanie tagów z grupy zasobów](resource-group-using-tags.md#apply-tags-from-resource-group).
+
+W przypadku użycia szablonów zagnieżdżonych do wdrożenia w wielu grupach zasobów można określić zakres oceniania funkcji ResourceManager. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](resource-manager-cross-resource-group-deployment.md).
 
 ### <a name="resource-group-example"></a>Przykład grupy zasobów
 
@@ -733,10 +732,10 @@ Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zaso
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nie |ciąg (format identyfikatora GUID w) |Wartością domyślną jest bieżąca subskrypcja. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej subskrypcji. |
-| resourceGroupName |Nie |ciąg |Wartość domyślna to bieżącej grupie zasobów. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej grupie zasobów. |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| resourceGroupName |Nie |string |Wartość domyślna to bieżącej grupie zasobów. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej grupie zasobów. |
+| resourceType |Tak |string |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
+| resourceName1 |Tak |string |Nazwa zasobu. |
+| resourceName2 |Nie |string |Następny segment nazwy zasobu, w razie konieczności. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
@@ -871,7 +870,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | differentSubOutput | Ciąg | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/Providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Ciąg | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-## <a name="subscription"></a>subskrypcję
+## <a name="subscription"></a>subskrypcja
 
 ```json
 subscription()
@@ -891,6 +890,10 @@ Funkcja zwraca następujący format:
     "displayName": "{name-of-subscription}"
 }
 ```
+
+### <a name="remarks"></a>Uwagi
+
+W przypadku używania szablonów zagnieżdżonych do wdrażania w wielu subskrypcjach można określić zakres oceniania funkcji subskrypcji. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów platformy Azure w więcej niż jednej subskrypcji lub grupie zasobów](resource-manager-cross-resource-group-deployment.md).
 
 ### <a name="subscription-example"></a>Przykład subskrypcji
 
@@ -923,9 +926,9 @@ Zwraca unikatowy identyfikator zasobu wdrożonego na poziomie subskrypcji.
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nie |ciąg (w formacie identyfikatora GUID) |Wartością domyślną jest bieżąca subskrypcja. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej subskrypcji. |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| resourceType |Tak |string |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
+| resourceName1 |Tak |string |Nazwa zasobu. |
+| resourceName2 |Nie |string |Następny segment nazwy zasobu, w razie konieczności. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 
@@ -1006,9 +1009,9 @@ Zwraca unikatowy identyfikator zasobu wdrożonego na poziomie dzierżawy.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
-| resourceName1 |Yes |ciąg |Nazwa zasobu. |
-| resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
+| resourceType |Tak |string |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
+| resourceName1 |Tak |string |Nazwa zasobu. |
+| resourceName2 |Nie |string |Następny segment nazwy zasobu, w razie konieczności. |
 
 Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więcej segmentów.
 

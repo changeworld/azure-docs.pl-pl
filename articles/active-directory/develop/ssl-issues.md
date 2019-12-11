@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z usługą MSAL w przypadku problemów z celem C
+title: Rozwiązywanie problemów z protokołem SSL (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, co zrobić, aby poznać różne problemy przy użyciu certyfikatów SSL z MSAL. Biblioteka zamierzania języka C.
 services: active-directory
@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4cfb530deab0cce12247c2ec87e3efb3ce61810b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803671"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964722"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Instrukcje: Rozwiązywanie problemów z usługą MSAL w przypadku problemów z protokołem SSL i macOS
 

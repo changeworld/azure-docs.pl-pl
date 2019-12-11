@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 10ab11669569b16293ccf9b8777190cf271e5795
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744318"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977186"
 ---
 # <a name="example-identify-faces-in-images"></a>Przykład: Zidentyfikuj twarze na obrazach
 
@@ -33,7 +33,7 @@ Aby przeprowadzić pokaz tego przykładu, Przygotuj:
 - Kilka zdjęć twarzy danej osoby. [Pobierz przykładowe zdjęcia](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) dla Anna, rachunku i Clare.
 - Seria zdjęć testowych. Zdjęcia mogą lub nie mogą zawierać twarzy Anna, Bill lub Clare. Są one używane do testowania identyfikacji. Wybierz także przykładowe obrazy z poprzedniego linku.
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autoryzowanie wywołania interfejsu API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1. Autoryzowanie wywołania interfejsu API
 
 Każde wywołanie do interfejsu API rozpoznawania twarzy wymaga klucza subskrypcji. Ten klucz może być przesłany przez parametr ciągu zapytania lub określony w nagłówku żądania. Aby przekazać klucz subskrypcji za pomocą ciągu zapytania, zapoznaj się z adresem URL żądania w celu [wykrycia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) wskaźnika na przykład:
 ```
@@ -143,7 +143,7 @@ string testImageFile = @"D:\Pictures\test_img1.jpg";
 using (Stream s = File.OpenRead(testImageFile))
 {
     var faces = await faceClient.Face.DetectWithStreamAsync(s);
-    var faceIds = faces.Select(face => face.FaceId).ToArray();
+    var faceIds = faces.Select(face => face.FaceId.Value).ToArray();
  
     var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);
     foreach (var identifyResult in results)

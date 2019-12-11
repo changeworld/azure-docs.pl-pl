@@ -4,12 +4,12 @@ description: Wysyłanie danych łańcucha bloków do Azure Cosmos DB za pomocą 
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 642e8b4d9d2492c0d7119f0a5469176765565159
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849977"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977402"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Samouczek: wysyłanie danych do Azure Cosmos DB za pomocą łańcucha bloków Data Manager
 
@@ -78,13 +78,15 @@ ABI kontraktu definiuje inteligentne interfejsy kontraktu. Opisuje sposób korzy
 
 1. Zapisz tablicę **ABI** jako plik JSON. Na przykład *ABI. JSON*. Ten plik jest używany w późniejszym kroku.
 
-Łańcucha bloków Data Manager wymaga wdrożonego kodu bajtowego dla kontraktu inteligentnego. Wdrożony kod bajtowy jest inny niż kod bajtowy kontraktu inteligentnego. Wdrożony kod bajtowy można uzyskać z skompilowanego pliku metadanych kontraktu.
+Łańcucha bloków Data Manager wymaga wdrożonego kodu bajtowego dla kontraktu inteligentnego. Wdrożony kod bajtowy jest inny niż kod bajtowy kontraktu inteligentnego. Użyj rozszerzenia Azure łańcucha bloków Development Kit, aby skopiować kod bajtowy do Schowka.
 
-1. Otwórz plik metadanych kontraktu znajdujący się w folderze **kompilacja/kontrakty** w projekcie o trwałym stanie. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
-1. Znajdź element **deployedBytecode** w pliku JSON.
-1. Skopiuj wartość szesnastkową bez cudzysłowów.
+1. W okienku Eksploratora Visual Studio Code rozwiń folder **kompilacja/kontrakty** w projekcie o trwałym stanie.
+1. Kliknij prawym przyciskiem myszy plik JSON metadanych kontraktu. Nazwa pliku jest nazwą kontraktu inteligentnego, po której następuje rozszerzenie **. JSON** .
+1. Wybierz pozycję **Kopiuj transakcję kod bajtowy**.
 
-    ![Visual Studio Code okienku z użyciem kodu bajtowego w metadanych](./media/data-manager-portal/bytecode-metadata.png)
+    ![Visual Studio Code okienku z opcją kopiowania kodu bajtowego transakcji](./media/data-manager-cosmosdb/bytecode-devkit.png)
+
+    Kod bajtowy jest kopiowany do Schowka.
 
 1. Zapisz wartość **kodu bajtowego** jako plik JSON. Na przykład, *kod bajtowy. JSON*. Ten plik jest używany w późniejszym kroku.
 

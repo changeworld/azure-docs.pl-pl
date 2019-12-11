@@ -1,6 +1,6 @@
 ---
 title: Udostępnianie starszych urządzeń przy użyciu kluczy symetrycznych — platforma Azure IoT Hub Device Provisioning Service
-description: Jak używać kluczy symetrycznych do udostępniania starszych urządzeń za pomocą wystąpienia usługi Device Provisioning
+description: Jak używać kluczy symetrycznych do udostępniania starszych urządzeń za pomocą wystąpienia usługi Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9beda9c271c755c9ea61498b24a9e40bde35a7e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209914"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975112"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak udostępnić starsze urządzenia przy użyciu kluczy symetrycznych
 
@@ -30,7 +30,7 @@ Ten artykuł został opracowany z myślą o stacjach roboczych z systemem Window
 > [!NOTE]
 > Przykład użyty w tym artykule został zapisany w C. Dostępna jest również [ C# przykład klucza symetrycznego](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) służącego do aprowizacji urządzeń. Aby użyć tego przykładu, Pobierz lub Sklonuj repozytorium [Azure-IoT-Samples-CSharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) i postępuj zgodnie z instrukcjami w wierszu w przykładowym kodzie. Korzystając z instrukcji przedstawionych w tym artykule, można utworzyć grupę rejestracji klucza symetrycznego przy użyciu portalu i znaleźć zakres identyfikatorów oraz klucze podstawowe i pomocnicze, które są potrzebne do uruchomienia przykładu. Możesz również utworzyć rejestracje indywidualne przy użyciu przykładu.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Unikatowy identyfikator rejestracji zostanie zdefiniowany dla każdego urządzenia na podstawie informacji identyfikujących to urządzenie. Na przykład adres MAC lub numer seryjny.
 

@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555402"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974652"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolacja grupy obciążeń SQL Data Warehouse (wersja zapoznawcza)
 
@@ -24,13 +24,13 @@ W tym artykule wyjaśniono, jak grupy obciążeń mogą służyć do konfigurowa
 
 ## <a name="workload-groups"></a>Grupy obciążeń
 
-Grupy obciążeń są kontenerami dla zestawu żądań i są podstawą sposobu zarządzania obciążeniami, w tym izolacji obciążeń, w systemie.  Grupy obciążeń są tworzone przy użyciu składni [tworzenia grupy obciążeń](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Prosta konfiguracja zarządzania obciążeniami umożliwia zarządzanie obciążeniami danych i zapytaniami użytkowników.  Na przykład grupa obciążeń o nazwie `wgDataLoads` będzie definiować aspekty obciążeń dla danych ładowanych do systemu. Ponadto Grupa obciążeń o nazwie `wgUserQueries` będzie definiować aspekty obciążeń dla użytkowników uruchamiających zapytania w celu odczytu danych z systemu.
+Grupy obciążeń są kontenerami dla zestawu żądań i są podstawą sposobu zarządzania obciążeniami, w tym izolacji obciążeń, w systemie.  Grupy obciążeń są tworzone przy użyciu składni [tworzenia grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Prosta konfiguracja zarządzania obciążeniami umożliwia zarządzanie obciążeniami danych i zapytaniami użytkowników.  Na przykład grupa obciążeń o nazwie `wgDataLoads` będzie definiować aspekty obciążeń dla danych ładowanych do systemu. Ponadto Grupa obciążeń o nazwie `wgUserQueries` będzie definiować aspekty obciążeń dla użytkowników uruchamiających zapytania w celu odczytu danych z systemu.
 
 W poniższych sekcjach opisano sposób, w jaki grupy obciążeń zapewniają możliwość definiowania izolacji, zawierania, definiowania zasobów żądań i przestrzegania reguł wykonywania.
 
 ## <a name="workload-isolation"></a>Izolacja obciążeń
 
-Izolacja obciążenia oznacza, że zasoby są zarezerwowane wyłącznie dla grupy obciążenia.  Izolacja obciążenia jest uzyskiwana przez skonfigurowanie parametru MIN_PERCENTAGE_RESOURCE do wartości większej niż zero w składni [tworzenia grupy obciążeń](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  W przypadku obciążeń ciągłego wykonywania, które muszą być zgodne z ścisłą umowy SLA, izolacja gwarantuje, że zasoby są zawsze dostępne dla grupy obciążenia. 
+Izolacja obciążenia oznacza, że zasoby są zarezerwowane wyłącznie dla grupy obciążenia.  Izolacja obciążenia jest uzyskiwana przez skonfigurowanie parametru MIN_PERCENTAGE_RESOURCE do wartości większej niż zero w składni [tworzenia grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  W przypadku obciążeń ciągłego wykonywania, które muszą być zgodne z ścisłą umowy SLA, izolacja gwarantuje, że zasoby są zawsze dostępne dla grupy obciążenia. 
 
 Konfigurowanie izolacji obciążeń niejawnie definiuje gwarantowany poziom współbieżności.  W przypadku MIN_PERCENTAGE_RESOURCE ustawionej na wartość 30% i REQUEST_MIN_RESOURCE_GRANT_PERCENT ustawionej na 2% poziom współbieżności jest gwarantowany dla grupy obciążenia.  Rozważmy poniższą metodę określania gwarantowanej współbieżności:
 
@@ -50,7 +50,7 @@ Użytkownicy powinni unikać rozwiązania do zarządzania obciążeniami, które
 
 ## <a name="workload-containment"></a>Zawieranie obciążeń
 
-Zawieranie obciążenia odnosi się do ograniczenia ilości zasobów, które może zużywać Grupa obciążeń.  Zawieranie obciążenia jest osiągane przez skonfigurowanie parametru CAP_PERCENTAGE_RESOURCE na wartość mniejszą niż 100 w składni [tworzenia grupy obciążeń](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Rozważmy scenariusz, w którym użytkownicy muszą mieć dostęp do odczytu do systemu, aby można było uruchomić analizę analizy warunkowej za pośrednictwem zapytań ad hoc.  Te typy żądań mogą mieć negatywny wpływ na inne obciążenia działające w systemie.  Skonfigurowanie zawierania gwarantuje, że ilość zasobów jest ograniczona.
+Zawieranie obciążenia odnosi się do ograniczenia ilości zasobów, które może zużywać Grupa obciążeń.  Zawieranie obciążenia jest osiągane przez skonfigurowanie parametru CAP_PERCENTAGE_RESOURCE na wartość mniejszą niż 100 w składni [tworzenia grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Rozważmy scenariusz, w którym użytkownicy muszą mieć dostęp do odczytu do systemu, aby można było uruchomić analizę analizy warunkowej za pośrednictwem zapytań ad hoc.  Te typy żądań mogą mieć negatywny wpływ na inne obciążenia działające w systemie.  Skonfigurowanie zawierania gwarantuje, że ilość zasobów jest ograniczona.
 
 Konfigurowanie zawiera niejawnie zdefiniowanie maksymalnego poziomu współbieżności.  Mając CAP_PERCENTAGE_RESOURCE ustawioną na 60% i REQUEST_MIN_RESOURCE_GRANT_PERCENT ustawioną na 1%, do grupy obciążeń jest dozwolony poziom współbieżności 60.  Rozważmy metodę uwzględnioną poniżej w celu określenia maksymalnej współbieżności:
 
@@ -61,7 +61,7 @@ Konfigurowanie zawiera niejawnie zdefiniowanie maksymalnego poziomu współbież
 
 ## <a name="resources-per-request-definition"></a>Zasoby na definicję żądania
 
-Grupy obciążeń zapewniają mechanizm definiowania minimalnej i maksymalnej ilości zasobów, które są przydzieloną na żądanie za pomocą parametrów REQUEST_MIN_RESOURCE_GRANT_PERCENT i REQUEST_MAX_RESOURCE_GRANT_PERCENT w składni [tworzenia grupy obciążeń](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Zasoby w tym przypadku to procesor CPU i pamięć.  Skonfigurowanie tych wartości wymusza, ile zasobów i jaki poziom współbieżności można osiągnąć w systemie.
+Grupy obciążeń zapewniają mechanizm definiowania minimalnej i maksymalnej ilości zasobów, które są przydzieloną na żądanie za pomocą parametrów REQUEST_MIN_RESOURCE_GRANT_PERCENT i REQUEST_MAX_RESOURCE_GRANT_PERCENT w składni [tworzenia grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Zasoby w tym przypadku to procesor CPU i pamięć.  Skonfigurowanie tych wartości wymusza, ile zasobów i jaki poziom współbieżności można osiągnąć w systemie.
 
 > [!NOTE] 
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT jest opcjonalnym parametrem, który domyślnie ma tę samą wartość, która jest określona dla REQUEST_MIN_RESOURCE_GRANT_PERCENT.
@@ -75,7 +75,7 @@ Skonfigurowanie REQUEST_MAX_RESOURCE_GRANT_PERCENT do wartości większej niż R
 
 ## <a name="execution-rules"></a>Reguły wykonywania
 
-W systemach raportowania ad hoc klienci mogą przypadkowo wykonywać zapytania dotyczące przemijających, które poważnie wpływają na produktywność innych.  Administratorzy systemu są zmuszeni do poświęcania czasu na zabijanie zapytań w celu zwolnienia zasobów systemowych.  Grupy obciążeń oferują możliwość skonfigurowania reguły limitu czasu wykonywania zapytania, aby anulować zapytania, które przekroczyły określoną wartość.  Reguła jest konfigurowana przez ustawienie parametru `QUERY_EXECUTION_TIMEOUT_SEC` w składni [tworzenia grupy obciążeń](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .
+W systemach raportowania ad hoc klienci mogą przypadkowo wykonywać zapytania dotyczące przemijających, które poważnie wpływają na produktywność innych.  Administratorzy systemu są zmuszeni do poświęcania czasu na zabijanie zapytań w celu zwolnienia zasobów systemowych.  Grupy obciążeń oferują możliwość skonfigurowania reguły limitu czasu wykonywania zapytania, aby anulować zapytania, które przekroczyły określoną wartość.  Reguła jest konfigurowana przez ustawienie parametru `QUERY_EXECUTION_TIMEOUT_SEC` w składni [tworzenia grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .
 
 ## <a name="shared-pool-resources"></a>Zasoby puli udostępnionej
 
@@ -88,5 +88,5 @@ Dostęp do zasobów w puli udostępnionej jest przypisywany na podstawie [ważno
 ## <a name="next-steps"></a>Następne kroki
 
 - [Szybki Start: Konfigurowanie izolacji obciążenia](quickstart-configure-workload-isolation-tsql.md)
-- [UTWÓRZ GRUPĘ OBCIĄŻEŃ](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [UTWÓRZ GRUPĘ OBCIĄŻEŃ](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Przekonwertuj klasy zasobów na grupy obciążeń](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).

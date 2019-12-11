@@ -1,5 +1,5 @@
 ---
-title: Uwierzytelnianie na platformie tożsamości firmy Microsoft (wersja 1.0) | Azure
+title: Uwierzytelnianie platformy tożsamości firmy Microsoft (wersja 1.0) | Azure
 description: Poznaj podstawowe informacje o uwierzytelnianiu na platformie tożsamości firmy Microsoft — modelu aplikacji, interfejsu API, aprowizacji i najczęściej spotykanych scenariuszach uwierzytelniania obsługiwanych przez platformę Microsoft Identity.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149180"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966779"
 ---
 # <a name="what-is-authentication"></a>Co to jest uwierzytelnianie?
 
@@ -62,18 +62,18 @@ W przykładowym scenariuszu powyżej aplikacje można sklasyfikować według tyc
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>Jak każdy przepływ emituje tokeny i kody
 
-W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać różnych tokenów, aby umożliwić ich działanie. Ten wykres zawiera przegląd:
+W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać innych tokenów, aby działały. Ten wykres zawiera przegląd:
 
-|Przepływ | KONIECZN | id_token | token dostępu | Odśwież token | kod autoryzacji | 
+|Przepływ | Wymaga | id_token | Token dostępu | Odśwież token | kod autoryzacji | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Przepływ kodu autoryzacji](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Niejawny przepływ](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybrydowy przepływ OIDC](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[Odświeżanie umorzenia tokenu](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | Odśwież token | x | x | x| |
-|[Przepływ „w imieniu”](v1-oauth2-on-behalf-of-flow.md) | token dostępu| x| x| x| |
+|[Przepływ „w imieniu”](v1-oauth2-on-behalf-of-flow.md) | Token dostępu| x| x| x| |
 |[Poświadczenia klienta](v1-oauth2-client-creds-grant-flow.md) | | | x (tylko aplikacja)| | |
 
-Tokeny wystawione za pośrednictwem trybu niejawnego mają ograniczenie długości z powodu przekazanie z powrotem do przeglądarki za pośrednictwem adresu URL (gdzie `response_mode` jest `query` lub `fragment`).  Niektóre przeglądarki mają limit rozmiaru adresu URL, który może być umieszczony na pasku przeglądarki i niepowodzenie, gdy jest zbyt długi.  W rezultacie te tokeny nie mają oświadczeń `groups` ani `wids`. 
+Tokeny wystawione za pośrednictwem trybu niejawnego mają ograniczenie długości z powodu przekazanie z powrotem do przeglądarki za pośrednictwem adresu URL (gdzie `response_mode` jest `query` lub `fragment`).  Niektóre przeglądarki mają limit rozmiaru adresu URL, który może być umieszczony na pasku przeglądarki i niepowodzenie, gdy jest zbyt długi.  W rezultacie te tokeny nie mają `groups` ani `wids` oświadczeń. 
 
 Teraz, gdy znasz już podstawowe informacje, Przeczytaj, jak poznać model i interfejs API aplikacji tożsamości, sposób działania aprowizacji na platformie tożsamości firmy Microsoft oraz linki do szczegółowych informacji o typowych scenariuszach obsługiwanych przez platformę tożsamości firmy Microsoft.
 

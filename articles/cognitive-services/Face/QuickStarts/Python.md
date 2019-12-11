@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST platformy Azure i języka Python'
+title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST platformy Azure i języka Python'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka Python do wykrywania twarzy na obrazie.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a00ec77148433d64f2980b1bb47d753d70a5ec20
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859022"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977917"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i języka Python
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST rozpoznawania twarzy i języka Python
 
 W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka Python do wykrywania twarzy na obrazie. Skrypt narysuje ramki wokół twarzy i nałoży informacje o płci i wieku na obraz.
 
@@ -43,7 +43,7 @@ Można też uruchomić ten przewodnik Szybki Start z poziomu wiersza polecenia, 
 1. Skopiuj następujący kod do edytora tekstów.
 1. W razie potrzeby wprowadź następujące zmiany w kodzie:
     1. Zastąp wartość `subscription_key` kluczem subskrypcji.
-    1. Edytuj wartość `face_api_url` , aby uwzględnić adres URL punktu końcowego dla zasobu interfejs API rozpoznawania twarzy.
+    1. Edytuj wartość `face_api_url`, aby uwzględnić adres URL punktu końcowego dla zasobu interfejs API rozpoznawania twarzy.
     1. Opcjonalnie zastąp wartość `image_url` adresem URL innego obrazu, który chcesz analizować.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `detect-face.py`.
 1. Otwórz okno wiersza polecenia.

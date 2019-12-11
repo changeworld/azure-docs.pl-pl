@@ -1,6 +1,6 @@
 ---
-title: Aplikacja sieci Web, która wywołuje interfejsy API sieci Web (Konfiguracja kodu) — Microsoft Identity platform
-description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (Konfiguracja kodu aplikacji)
+title: Konfigurowanie aplikacji sieci Web, która wywołuje interfejsy API sieci Web — Microsoft Identity platform | Azure
+description: Dowiedz się, jak skonfigurować kod aplikacji sieci Web, która wywołuje interfejsy API sieci Web
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175320"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964989"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
@@ -86,7 +86,7 @@ Przykład umożliwia obecnie MSAL. Język Python tworzy adres URL kodu autoryzac
 
 ### <a name="startupcs"></a>Startup.cs
 
-W ASP.NET Core zasada jest w pliku `Startup.cs`. Chcesz subskrybować zdarzenie `OnAuthorizationCodeReceived` Open ID Connect i z tego zdarzenia Wywołaj MSAL. Metoda sieci `AcquireTokenFromAuthorizationCode`, która ma wpływ na przechowywanie w pamięci podręcznej tokenów, token dostępu dla żądanych `scopes`i token odświeżania, który zostanie użyty do odświeżenia tokenu dostępu, gdy jest bliski wygaśnięcia lub aby uzyskać token w imieniu tego samego użytkownika , ale dla innego zasobu.
+W ASP.NET Core zasada jest w pliku `Startup.cs`. Chcesz subskrybować zdarzenie `OnAuthorizationCodeReceived` Open ID Connect i z tego zdarzenia Wywołaj MSAL. Metoda sieci `AcquireTokenFromAuthorizationCode`, która ma wpływ na przechowywanie w pamięci podręcznej tokenów, token dostępu dla żądanych `scopes`i token odświeżania, który zostanie użyty do odświeżenia tokenu dostępu, gdy jest bliski wygaśnięcia lub aby uzyskać token w imieniu tego samego użytkownika, ale dla innego zasobu.
 
 W ramach tego [samouczka ASP.NET Core aplikacji sieci Web](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) próbuje udostępnić Ci kod wielokrotnego użytku dla aplikacji sieci Web.
 
@@ -320,7 +320,7 @@ W celu podsumowania `AcquireTokenByAuthorizationCode` naprawdę realizuje kod au
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Sposób, w jaki ASP.NET obsługuje elementy, jest podobny do ASP.NET Core, z tą różnicą, że konfiguracja OpenIdConnect i subskrypcja zdarzenia `OnAuthorizationCodeReceived` odbywa się w pliku [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Podobne koncepcje znajdziesz w ASP.NET Core, z wyjątkiem tego, że w ASP.NET należy określić RedirectUri w [pliku Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ta konfiguracja jest nieco mniej niezawodna niż to, co jest wykonywane w ASP.NET Core, ponieważ należy ją zmienić podczas wdrażania aplikacji.
+Sposób, w jaki ASP.NET obsługuje elementy, jest podobny do ASP.NET Core, z tą różnicą, że konfiguracja OpenIdConnect i subskrypcja zdarzenia `OnAuthorizationCodeReceived` odbywa się w pliku [App_Start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Podobne koncepcje znajdziesz w ASP.NET Core, z wyjątkiem tego, że w ASP.NET należy określić RedirectUri w [pliku Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ta konfiguracja jest nieco mniej niezawodna niż to, co jest wykonywane w ASP.NET Core, ponieważ należy ją zmienić podczas wdrażania aplikacji.
 
 ```CSharp
 public partial class Startup

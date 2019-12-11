@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Media Services umożliwia dostarczanie licencji DRM lub kluczy AES | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak można użyć usługi Azure Media Services w celu dostarczania licencji PlayReady i Widevine i klucza AES, ale Zrób pozostałe (kodowanie, szyfrowanie i przesyłanie strumieniowe) przy użyciu usługi na serwerach lokalnych.
+title: Używanie Azure Media Services do dostarczania licencji DRM lub kluczy AES | Microsoft Docs
+description: W tym artykule opisano, jak za pomocą usługi Azure Media Services dostarczać licencje PlayReady i/lub Widevine oraz klucze AES, ale nie tylko (kodowania, szyfrowania i przesyłania strumieniowego) przy użyciu serwerów lokalnych.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 73a76162efaf7317c5e2f1668b76325da6f018ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61a5213ea1b801b3ceeb3d9a698a20d479509811
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868144"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974533"
 ---
-# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Usługa Media Services umożliwia dostarczanie licencji DRM lub kluczy AES 
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Używanie Media Services do dostarczania licencji DRM lub kluczy AES 
 
 > [!NOTE]
-> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadne nowe funkcje lub funkcje nie są dodawane do Media Services V2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 >
 
-Usługa Azure Media Services umożliwia pozyskiwania, kodowania, Dodaj ochronę zawartości i przesyłanie strumieniowe zawartości. Aby uzyskać więcej informacji, zobacz [Użyj PlayReady i Widevine dynamicznego szyfrowania common encryption](media-services-protect-with-playready-widevine.md). Niektórzy klienci mają być Media Services można używać tylko w celu dostarczania licencji i/lub kluczy i kodowania, szyfrowania i przesyłanie strumieniowe przy użyciu ich na serwerach lokalnych. W tym artykule opisano, jak można użyć usługi Media Services do dostarczania licencji PlayReady i Widevine, ale pozostałe to zrobić za pomocą usługi na serwerach lokalnych. 
+Azure Media Services umożliwia pozyskiwanie, kodowanie, Dodawanie ochrony zawartości i przesyłanie strumieniowe zawartości. Aby uzyskać więcej informacji, zobacz [Korzystanie z dynamicznego szyfrowania Common Encryption w programie PlayReady i/lub Widevine](media-services-protect-with-playready-widevine.md). Niektórzy klienci chcą używać Media Services tylko w celu dostarczania licencji i/lub kluczy oraz kodowania, szyfrowania i przesyłania strumieniowego przy użyciu serwerów lokalnych. W tym artykule opisano, jak można użyć Media Services w celu dostarczenia licencji PlayReady i/lub Widevine, ale pozostałej pracy z serwerami lokalnymi. 
 
-## <a name="overview"></a>Omówienie
-Media Services udostępnia usługę dostarczania PlayReady i Widevine prawami cyfrowymi licencje na zarządzanie (prawami cyfrowymi DRM) i kluczy szyfrowania AES-128. Media Services dostarcza również interfejsy API, które umożliwiają skonfigurowanie uprawnień i ograniczeń, które chcesz dla środowiska uruchomieniowego DRM wymusić, gdy użytkownik odtwarza zawartość chronioną DRM. Gdy użytkownik zażąda zawartości chronionej, aplikacja odtwarzacza zażąda licencji od usługi licencjonowania Media Services. Jeśli licencja jest autoryzowany, licencjonowania Media Services problemy z usługą licencję odtwarzaczowi. Licencja PlayReady i Widevine zawiera klucz odszyfrowujący, który może służyć przez odtwarzacz klienta do odszyfrowania i strumieniowego przesyłania zawartości.
+## <a name="overview"></a>Przegląd
+Media Services zapewnia usługę do dostarczania licencji Widevine i zarządzania prawami cyfrowymi (DRM) oraz kluczy AES-128. Media Services udostępnia również interfejsy API, które umożliwiają skonfigurowanie praw i ograniczeń, które mają zostać wymuszone dla środowiska uruchomieniowego DRM, gdy użytkownik odtwarza zawartość chronioną przez DRM. Gdy użytkownik zażąda zawartości chronionej, aplikacja odtwarzacza żąda licencji z usługi licencjonowania Media Services. Jeśli licencja jest autoryzowana, usługa licencjonowania Media Services wystawia licencję dla odtwarzacza. Licencje PlayReady i Widevine zawierają klucz odszyfrowujący, który może być używany przez odtwarzacz klienta w celu odszyfrowania i strumieniowego przesyłania zawartości.
 
-Usługa Media Services obsługuje wiele sposobów autoryzacji użytkowników, którzy tworzą żądania klucza lub licencji. Możesz skonfigurować zasady autoryzacji klucza zawartości. Zasady mogą mieć jeden lub więcej ograniczeń. Dostępne opcje to ograniczenie otwarte lub tokenu. Zasadom ograniczenia tokenu musi towarzyszyć token wystawiony przez usługę tokenu zabezpieczającego (STS). Usługa Media Services obsługuje tokeny format tokenu Web JSON (JWT) i simple web token format (SWT).
+Media Services obsługuje wiele sposobów autoryzowania użytkowników, którzy podejmują licencje lub kluczowe żądania. Należy skonfigurować zasady autoryzacji klucza zawartości. Zasady mogą mieć jedno lub więcej ograniczeń. Opcje są ograniczeniami Open lub tokenem. Zasadom ograniczenia tokenu musi towarzyszyć token wystawiony przez usługę tokenu zabezpieczającego (STS). Media Services obsługuje tokeny w formacie prostego tokenu sieci Web (SWT) i formacie tokenu sieci Web JSON (JWT).
 
-Na poniższym diagramie przedstawiono główne kroki, trzeba wykonać, aby użyć usługi Media Services do dostarczania licencji PlayReady i Widevine, ale czy rest z serwerami w środowisku lokalnym:
+Na poniższym diagramie przedstawiono główne kroki, które należy wykonać, aby korzystać z Media Services w celu dostarczenia licencji PlayReady i/lub Widevine, ale pozostały w przypadku serwerów lokalnych:
 
 ![Ochrona za pomocą PlayReady](./media/media-services-deliver-keys-and-licenses/media-services-diagram1.png)
 
 ## <a name="download-sample"></a>Pobieranie przykładu
-Aby pobrać próbkę opisanych w tym artykule, zobacz [użycia usługi Azure Media Services w celu dostarczania licencji PlayReady i Widevine przy użyciu platformy .NET](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses).
+Aby pobrać przykład opisany w tym artykule, zobacz [używanie Azure Media Services do dostarczania licencji PlayReady i/lub Widevine za pomocą platformy .NET](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses).
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -52,8 +52,8 @@ Aby pobrać próbkę opisanych w tym artykule, zobacz [użycia usługi Azure Med
     <add key="Audience" value="urn:test"/>
     ```
  
-## <a name="net-code-example"></a>Przykładowy kod platformy .NET
-Poniższy przykład kodu pokazuje sposób tworzenia wspólnego klucza zawartości i uzyskiwanie adresów URL pozyskiwania licencji PlayReady lub Widevine. Aby skonfigurować serwer w środowisku lokalnym, potrzebujesz klucza zawartości klucza identyfikator i adres URL pozyskiwania licencji. Po skonfigurowaniu serwera w środowisku lokalnym, można przesyłać strumieniowo z serwera przesyłania strumieniowego. Ponieważ punktów zaszyfrowanego strumienia usługi Media Services licencji serwera, odtwarzacza zażąda licencji od usługi Media Services. Jeśli wybierzesz uwierzytelnianie przy użyciu tokenów, serwer licencji usług Media Services sprawdza poprawność tokenu, wysłany za pośrednictwem protokołu HTTPS. Jeśli token jest prawidłowy, serwer licencji zapewnia licencji do odtwarzacza. Poniższy przykład kodu pokazuje tylko sposób tworzenia wspólnego klucza zawartości i uzyskiwanie adresów URL pozyskiwania licencji PlayReady lub Widevine. Do dostarczania kluczy AES-128, musisz utworzyć klucz koperty zawartości i pobrania adresu URL pozyskiwania kluczy. Aby uzyskać więcej informacji, zobacz [szyfrowania dynamicznego użycie algorytmu AES-128 i usługa dostarczania kluczy](media-services-protect-with-aes128.md).
+## <a name="net-code-example"></a>Przykład kodu platformy .NET
+Poniższy przykład kodu pokazuje, jak utworzyć wspólny klucz zawartości i uzyskać adresy URL pozyskiwania licencji PlayReady lub Widevine. Aby skonfigurować serwer lokalny, należy dysponować kluczem zawartości, IDENTYFIKATORem klucza i adresem URL pozyskiwania licencji. Po skonfigurowaniu serwera lokalnego można przesyłać strumieniowo z własnego serwera przesyłania strumieniowego. Ze względu na to, że zaszyfrowany strumień wskazuje na serwer licencji Media Services, odtwarzacz żąda licencji od Media Services. W przypadku wybrania opcji uwierzytelnianie tokenu serwer licencji Media Services sprawdza poprawność tokenu wysyłanego za pośrednictwem protokołu HTTPS. Jeśli token jest prawidłowy, serwer licencji dostarcza licencję z powrotem do odtwarzacza. Poniższy przykład kodu pokazuje, jak utworzyć wspólny klucz zawartości i uzyskać adresy URL pozyskiwania licencji PlayReady lub Widevine. Jeśli chcesz dostarczyć klucze AES-128, musisz utworzyć klucz zawartości koperty i uzyskać adres URL pozyskiwania klucza. Aby uzyskać więcej informacji, zobacz [Korzystanie z szyfrowania dynamicznego AES-128 i usługi dostarczania kluczy](media-services-protect-with-aes128.md).
 
 ```csharp
 using System;
@@ -344,12 +344,16 @@ namespace DeliverDRMLicenses
 }
 ```
 
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz także
 * [Używanie dynamicznego szyfrowania Common Encryption w usługach PlayReady i Widevine](media-services-protect-with-playready-widevine.md)
-* [Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy](media-services-protect-with-aes128.md)
+* [Używanie dynamicznego szyfrowania AES-128 i usługi dostarczania kluczy](media-services-protect-with-aes128.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: przeprowadzanie wyszukiwania w Internecie za pomocą języka C# — interfejs API REST wyszukiwania w sieci Web Bing'
+title: 'Szybki Start: Przeprowadź wyszukiwanie w C# sieci Web za pomocą interfejsu API REST-wyszukiwanie w sieci Web Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania do interfejsu API wyszukiwania w sieci Web Bing przy użyciu języka C# i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 20cb5f65ed33bc3e737bbba902ed2d891eaf83be
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 6c847af4f6938923abdfced4d5e8b842ae84eca6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823371"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978819"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Szybki start: Wyszukiwanie w Internecie za pomocą interfejsu API REST wyszukiwania w sieci Web Bing i języka C#
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Szybki Start: przeszukiwanie sieci Web przy użyciu interfejsu API REST wyszukiwanie w sieci Web Bing iC#
 
-Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. To C# aplikacja wysyła żądanie wyszukiwania do interfejsu API i pokazuje odpowiedzi. Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w Internecie Bing i odebranie odpowiedzi JSON. Ta C# aplikacja wysyła żądanie wyszukiwania do interfejsu API i wyświetla odpowiedź. Chociaż ta aplikacja jest napisana w języku C#, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
-* W systemie Windows: [Program Visual Studio 2017 lub nowszego](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](https://www.mono-project.com/)  
+* Windows: [program Visual Studio 2017 lub nowszy](https://www.visualstudio.com/downloads/)
+* W systemie Linux/macOS: program [Mono](https://www.mono-project.com/)  
 * Klucz subskrypcji
 
 W tym przykładowym programie używane są tylko klasy .NET Core.
@@ -62,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Definiowanie zmiennych
 
-Zanim będzie można kontynuować, należy ustawić kilka zmiennych. Upewnij się, że wartość `uriBase` jest prawidłowa, i zamień wartość `accessKey` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `searchTerm`. Pamiętaj, aby dodać ten kod w celu `Program` klasy, jak wspomniano powyżej.
+Zanim będzie można kontynuować, należy ustawić kilka zmiennych.  `uriBase` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu. Upewnij się, że wartość `uriBase` jest prawidłowa, i zamień wartość `accessKey` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `searchTerm`. Pamiętaj, aby dodać ten kod do klasy `Program`, jak wspomniano powyżej.
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Deklarowanie metody Main
 
-`Main()` Wymagana jest metoda i jest pierwsza metoda wywoływana, gdy program jest uruchomiony. W tej aplikacji metoda Main weryfikuje wartość `accessKey`, wysyła żądanie i wyświetla odpowiedź.
+Metoda `Main()` jest wymagana i jest to pierwsza metoda wywoływana, gdy program jest uruchomiony. W tej aplikacji metoda Main weryfikuje wartość `accessKey`, wysyła żądanie i wyświetla odpowiedź.
 
 Pamiętaj, że metoda `main()` jest zależna od metod, które zostaną utworzone w kilku następnych sekcjach.
 
@@ -109,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Tworzenie struktury dla wyników wyszukiwania
 
-Ta struktura zwraca wyniki wyszukiwania z odpowiednimi nagłówkami. Jest ona wywoływana, gdy kieruje żądanie do interfejsu API wyszukiwania w sieci Web Bing do tworzenia obiektu wyniku.
+Ta struktura zwraca wyniki wyszukiwania z odpowiednimi nagłówkami. Jest on wywoływany podczas wykonywania żądania do interfejs API wyszukiwania w sieci Web Bing, aby utworzyć obiekt wynik.
 
 ```csharp
 // Returns search results with headers.
@@ -363,7 +363,7 @@ Odpowiedzi z interfejsu API wyszukiwania w sieci Web Bing są zwracane w formaci
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania w sieci Web Bing](../tutorial-bing-web-search-single-page-app.md)

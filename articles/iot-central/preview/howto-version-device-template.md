@@ -3,17 +3,17 @@ title: Informacje o wersji szablonów urządzeń dla aplikacji IoT Central platf
 description: Wykonaj iterację szablonów urządzeń, tworząc nowe wersje i bez wpływu na urządzenia połączone na żywo
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 666c3030d91fba3c3bdfe23f808c4e830dff6ec1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1f2ecb37ebe156b1eb092bda95f296c39c9e2baf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895594"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974968"
 ---
 # <a name="create-a-new-device-template-version-preview-features"></a>Utwórz nową wersję szablonu urządzenia (funkcje wersji zapoznawczej)
 
@@ -32,7 +32,7 @@ Niektóre elementy możliwości urządzenia można edytować bez konieczności k
 1. Wybierz szablon urządzenia, który chcesz dostosować.
 1. Wybierz kartę **Dostosowywanie** .
 1. Wszystkie możliwości zdefiniowane w modelu możliwości urządzenia zostaną wyświetlone w tym miejscu. Wszystkie pola, które można edytować w tym miejscu, mogą być zapisywane i używane w całej aplikacji bez konieczności korzystania z wersji szablonu urządzenia. Jeśli istnieją pola, które chcesz edytować, są przeznaczone tylko do odczytu, aby je zmienić, musisz mieć wersję szablonu urządzenia. Wybierz pole, które chcesz edytować, a następnie wprowadź nowe wartości.
-1. Kliknij pozycję **Zapisz**. Teraz te wartości zastępują wszystkie elementy, które zostały początkowo zapisane w szablonie urządzenia i będą używane w całej aplikacji.
+1. Kliknij przycisk **Save** (Zapisz). Teraz te wartości zastępują wszystkie elementy, które zostały początkowo zapisane w szablonie urządzenia i będą używane w całej aplikacji.
 
 ## <a name="versioning-a-device-template"></a>Przechowywanie wersji szablonu urządzenia
 
@@ -45,7 +45,7 @@ Aby uzyskać wersję szablonu urządzenia:
 1. Przejdź do strony **Szablony urządzeń** .
 1. Wybierz szablon urządzenia, do którego próbujesz uzyskać wersję.
 1. Kliknij przycisk **wersji** w górnej części strony i nadaj szablonowi nową nazwę. Sugerowano nową nazwę, którą można edytować.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 1. Teraz Twój szablon urządzenia jest w trybie wersji roboczej. Twoje interfejsy są nadal zablokowane i muszą być edytowane osobno. 
 
 ### <a name="versioning-an-interface"></a>Przechowywanie wersji interfejsu
@@ -58,7 +58,7 @@ Aby uzyskać wersję interfejsu:
 1. Wybierz szablon urządzenia w trybie wersji roboczej.
 1. Wybierz interfejs, który znajduje się w trybie opublikowanym, który chcesz wersji i edytować.
 1. Kliknij przycisk **wersji** w górnej części strony interfejsu. 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 1. Interfejs jest teraz w trybie wersji roboczej. Będziesz mieć możliwość dodawania lub edytowania możliwości do interfejsu bez przerywania istniejących dostosowań i widoków. 
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do systemu Android — platforma tożsamości firmy Microsoft | Azure
-description: Jak aplikacja dla systemu Android może uzyskać token dostępu i wywoływać Microsoft Graph API lub interfejsy API, które wymagają tokenów dostępu z platformy tożsamości firmy Microsoft.
+title: Użytkownicy logowania & Microsoft Graph wywoływania (Android) — Microsoft Identity platform | Azure
+description: Uzyskiwanie tokenu dostępu i Microsoft Graph wywołań lub interfejsów API, które wymagają tokenów dostępu z platformy Microsoft Identity platform (Android)
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242203"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961561"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Samouczek: Logowanie użytkowników i wywoływanie Microsoft Graph z aplikacji systemu Android
 
@@ -543,7 +543,7 @@ Kompiluj i Wdróż aplikację na urządzeniu testowym lub w emulatorze. Powinno 
 
 Po zalogowaniu aplikacja będzie wyświetlać dane zwrócone z punktu końcowego Microsoft Graph `/me`.
 
-### <a name="consent"></a>Posiadacz
+### <a name="consent"></a>posiadacz
 
 Gdy użytkownik po raz pierwszy zaloguje się do aplikacji, otrzyma monit o tożsamość firmy Microsoft, aby wyrazić zgodę na wymagane uprawnienia.  Chociaż większość użytkowników może wyrażać zgodę, niektórzy dzierżawy usługi Azure AD mają wyłączoną opcję zgody użytkownika, która wymaga od administratorów zgody w imieniu wszystkich użytkowników. Aby obsłużyć ten scenariusz, należy zarejestrować zakresy aplikacji w Azure Portal.
 

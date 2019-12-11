@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: moderowanie wideo i transkrypcji na platformie .NET — Content Moderator'
+title: 'Samouczek: Moderowanie wideo i transkrypcji na platformie .NET — usługa Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku wyjaśniono, jak utworzyć pełne rozwiązanie z zakresu moderowania wideo i transkrypcji przez moderowanie wspomagane maszynowo oraz utworzenie przeglądu wymagającego udziału człowieka (human-in-the-loop).
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564276"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976982"
 ---
-# <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: moderowanie wideo i transkrypcji
+# <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: Moderowanie wideo i transkrypcji
 
-W tym samouczku dowiesz się, jak utworzyć kompletne rozwiązanie do moderowania filmów wideo i transkrypcji z moderowaniem z pomocąą maszynową oraz tworzeniem przeglądu w pętli.
+W ramach tego samouczka nauczysz się, jak utworzyć kompletne rozwiązanie do moderowania wideo i transkrypcji z integracją z pomocąą maszynową i analizą przez człowieka.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -42,7 +42,7 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 
 ## <a name="enter-credentials"></a>Wprowadź poświadczenia
 
-Edytuj plik i Dodaj Active Directory nazwę dzierżawy, punkty końcowe usługi i klucze subskrypcji wskazane przez `#####`. `App.config` Potrzebne są następujące informacje:
+Edytuj plik `App.config` i Dodaj nazwę dzierżawcy Active Directory, punkty końcowe usługi i klucze subskrypcji wskazane przez `#####`. Potrzebne są następujące informacje:
 
 |Klucz|Opis|
 |-|-|
@@ -82,7 +82,7 @@ Metoda `Main()` obsługuje następujące argumenty wiersza polecenia:
 Jeśli nie argumentów wiersza polecenia, metoda `Main()` wywołuje `GetUserInputs()`. Ta metoda prosi użytkownika o wprowadzenie ścieżki do pojedynczego pliku wideo oraz określenie, czy ma zostać wygenerowana transkrypcja tekstu.
 
 > [!NOTE]
-> Aplikacja konsolowa używa [interfejsu API usługi Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) do wygenerowania transkrypcji ze ścieżki audio przekazanego wideo. Wyniki są udostępniane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
+> Aplikacja konsolowa używa [interfejsu API Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) , aby generować transkrypcje z przesłanej ścieżki audio wideo. Wyniki są podane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
 
 ### <a name="initialize-and-processvideo-methods"></a>Inicjowanie metod ProcessVideo
 
@@ -223,7 +223,7 @@ Wynikiem zadania moderowania wideo (zobacz [przewodnik Szybki start dotyczący m
 Transkrypcja dźwięku z wideo jest generowana również wtedy, gdy została ustawiona flaga `GenerateVTT`.
 
 > [!NOTE]
-> Aplikacja konsolowa używa [interfejsu API usługi Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) do wygenerowania transkrypcji ze ścieżki audio przekazanego wideo. Wyniki są udostępniane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
+> Aplikacja konsolowa używa [interfejsu API Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) , aby generować transkrypcje z przesłanej ścieżki audio wideo. Wyniki są podane w formacie WebVTT. Aby uzyskać więcej informacji na temat tego formatu, zobacz temat [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Format ścieżek tekstowych wideo w sieci Web).
 
 ## <a name="create-a-human-review"></a>Tworzenie przeglądu przez ludzi
 
@@ -310,7 +310,7 @@ Następnie należy zeskanować przeanalizowane napisy tekstowe za pomocą teksto
 > [!NOTE]
 > Klucz usługi Content Moderator ma limit szybkości wyrażany w żądaniach na sekundę (RPS). Po przekroczeniu tego limitu zestaw SDK zgłasza wyjątek z kodem błędu 429.
 >
-> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
+> Limit klucza warstwy bezpłatnej wynosi 1 RPS.
 
 [!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
@@ -359,7 +359,7 @@ Total Elapsed Time: 00:05:56.8420355
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku opisano konfigurowanie aplikacji, która pozwala na umiarkowaną zawartość&mdash;wideo, w&mdash;tym transkrypcję zawartości i tworzenie przeglądów w narzędziu do przeglądu. Następnie Dowiedz się więcej na temat szczegółów moderowania wideo.
+W tym samouczku opisano konfigurowanie aplikacji, która pozwala na umiarkowane&mdash;zawartości wideo, w tym transkrypcję zawartości&mdash;i tworzenie przeglądów w narzędziu do przeglądu. Następnie Dowiedz się więcej na temat szczegółów moderowania wideo.
 
 > [!div class="nextstepaction"]
 > [Moderowanie filmów wideo](./video-moderation-human-review.md)

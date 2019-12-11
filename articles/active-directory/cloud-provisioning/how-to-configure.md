@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794304"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997126"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect nową konfigurację aprowizacji w chmurze
 
@@ -32,8 +32,7 @@ Aby skonfigurować Inicjowanie obsługi, wykonaj następujące czynności:
 
 4.  Kliknij pozycję **Nowa konfiguracja**.
 5.  Na ekranie Konfiguracja domena lokalna jest wstępnie wypełniona
-6. Wprowadź **wiadomość e-mail z powiadomieniem**. Ta wiadomość e-mail zostanie powiadomiona 
-7. gdy aprowizacji nie jest w dobrej kondycji.  
+6. Wprowadź **wiadomość e-mail z powiadomieniem**. Ta wiadomość e-mail zostanie powiadomiona, gdy obsługa administracyjna nie jest w dobrej kondycji.  
 8. Przenieś selektor, aby go **włączyć** , a następnie kliknij przycisk **Zapisz**.
 ![](media/tutorial-single-forest/configure2.png)
 

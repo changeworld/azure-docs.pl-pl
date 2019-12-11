@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning Service — zaświadczenie klucza symetrycznego
-description: Ten artykuł zawiera omówienie pojęć związanych z zaświadczeniem klucza symetrycznego przy użyciu usługi IoT Device Provisioning.
+description: Ten artykuł zawiera omówienie pojęć związanych z zaświadczeniem klucza symetrycznego przy użyciu usługi IoT Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348357"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975299"
 ---
 # <a name="symmetric-key-attestation"></a>Zaświadczanie klucza symetrycznego
 
@@ -36,7 +36,7 @@ Można również udostępnić klucze symetryczne do rejestracji, wyłączając t
 
 ## <a name="detailed-attestation-process"></a>Szczegółowy proces zaświadczania
 
-Zaświadczenie klucza symetrycznego za pomocą usługi Device Provisioning jest realizowane przy użyciu [](../iot-hub/iot-hub-devguide-security.md#security-token-structure) tych samych tokenów zabezpieczających, które są obsługiwane przez centra IoT do identyfikowania urządzeń. Te tokeny zabezpieczające są [tokenami sygnatury dostępu współdzielonego (SAS)](../service-bus-messaging/service-bus-sas.md). 
+Zaświadczenie klucza symetrycznego za pomocą usługi Device Provisioning jest realizowane przy użyciu tych samych [tokenów zabezpieczających](../iot-hub/iot-hub-devguide-security.md#security-token-structure) , które są obsługiwane przez centra IoT do identyfikowania urządzeń. Te tokeny zabezpieczające są [tokenami sygnatury dostępu współdzielonego (SAS)](../service-bus-messaging/service-bus-sas.md). 
 
 Tokeny sygnatury dostępu współdzielonego mają *sygnaturę* skrótu, która jest tworzona przy użyciu klucza symetrycznego. Sygnatura jest tworzona ponownie przez usługę Device Provisioning w celu sprawdzenia, czy token zabezpieczający przedstawiony podczas zaświadczania jest autentyczny.
 
@@ -46,9 +46,9 @@ Tokeny sygnatury dostępu współdzielonego mają następującą formę:
 
 Poniżej przedstawiono składniki każdego tokenu:
 
-| Value | Opis |
+| Wartość | Opis |
 | --- | --- |
-| podpisane |Ciąg sygnatury HMAC-SHA256. W przypadku indywidualnych rejestracji Ta sygnatura jest generowana przy użyciu klucza symetrycznego (podstawowego lub pomocniczego) do wykonania skrótu. W przypadku grup rejestracji do wykonania skrótu jest używany klucz pochodzący z klucza grupy rejestracji. Skrót jest wykonywany w postaci komunikatu: `URL-encoded-resourceURI + "\n" + expiry`. **Ważne**: Przed użyciem kodowania HMAC-SHA256 należy zdekodować klucz przy użyciu algorytmu Base64. Ponadto wynik podpisu musi być zakodowany w adresie URL. |
+| podpisane |Ciąg sygnatury HMAC-SHA256. W przypadku indywidualnych rejestracji Ta sygnatura jest generowana przy użyciu klucza symetrycznego (podstawowego lub pomocniczego) do wykonania skrótu. W przypadku grup rejestracji do wykonania skrótu jest używany klucz pochodzący z klucza grupy rejestracji. Skrót jest wykonywany w postaci komunikatu: `URL-encoded-resourceURI + "\n" + expiry`. **Ważne**: klucz należy zdekodować z formatu Base64 przed użyciem, aby wykonać obliczenia HMAC-SHA256. Ponadto wynik podpisu musi być zakodowany w adresie URL. |
 | ResourceURI |Identyfikator URI punktu końcowego rejestracji, do którego można uzyskać dostęp za pomocą tego tokenu, rozpoczynając od identyfikatora zakresu dla wystąpienia usługi Device Provisioning. Na przykład: `{Scope ID}/registrations/{Registration ID}` |
 | wygaśnięcia |Ciągi UTF8 przez liczbę sekund od czasu epoki 00:00:00 UTC 1 stycznia 1970. |
 | {URL-encoded-resourceURI} |Małe adresy URL — kodowanie identyfikatora URI zasobu niższej wielkości liter |
@@ -110,10 +110,10 @@ Tożsamość każdego urządzenia jest reprezentowana przez identyfikator rejest
 
 Jeśli klucze urządzeń nie są zainstalowane w fabryce, w celu bezpiecznego przechowywania tożsamości urządzenia należy używać [sprzętowego modułu HSM](concepts-security.md#hardware-security-module) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy znasz już zaświadczenie klucza symetrycznego, zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej:
 
-* [Szybki start: Udostępnianie symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
+* [Szybki Start: Inicjowanie obsługi symulowanego urządzenia przy użyciu kluczy symetrycznych](quick-create-simulated-device-symm-key.md)
 * [Informacje na temat pojęć związanych z obsługą administracyjną](./concepts-auto-provisioning.md)
 * [Wprowadzenie do korzystania z funkcji autoaprowizacji](./quick-setup-auto-provision.md) 

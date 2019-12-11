@@ -4,16 +4,16 @@ description: Uruchom wiele akcji z jednej reguły IoT Central i Utwórz grupy ak
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/21/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a93e96dd14411302bf5368b4825044e060b54a43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929898"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974363"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>Grupowanie wielu akcji do uruchomienia z jednej lub kilku reguł (funkcje w wersji zapoznawczej)
 
@@ -57,11 +57,11 @@ Wybierz pozycję **Zapisz**. Grupa akcji zostanie teraz wyświetlona na liście 
 
 Poniższa tabela zawiera podsumowanie informacji wysyłanych do obsługiwanych typów akcji:
 
-| Typ akcji | Format danych wyjściowych |
+| Typ akcji | Format wyjściowy |
 | ----------- | -------------- |
-| Email       | Szablon wiadomości e-mail w warstwie Standardowa IoT Central |
+| Adres e-mail       | Szablon wiadomości e-mail w warstwie Standardowa IoT Central |
 | SMS         | Alert IoT Central platformy Azure: $ {applicationName}-"$ {RuleName}" wyzwolony dla "$ {DeviceName}" w $ {triggerDate} $ {triggerTime} |
-| Połączenia głosowe       | Alert dotyczący platformy Azure I. O. T Central: reguła "$ {RuleName}" została wyzwolona na urządzeniu "$ {DeviceName}" pod adresem $ {triggerDate} $ {triggerTime} w aplikacji $ {applicationName} |
+| Głos       | Alert dotyczący platformy Azure I. O. T Central: reguła "$ {RuleName}" została wyzwolona na urządzeniu "$ {DeviceName}" pod adresem $ {triggerDate} $ {triggerTime} w aplikacji $ {applicationName} |
 | Webhook     | {"schemaId": "AzureIoTCentralRuleWebhook", "Data": {[regularny ładunek elementu webhook](howto-create-webhooks.md#payload)}} |
 
 Następujący tekst to przykładowy komunikat SMS z grupy akcji:

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie jednostronicowej aplikacji internetowej — interfejs API wyszukiwania w Internecie Bing'
+title: 'Samouczek: tworzenie jednostronicowej aplikacji internetowej — interfejs AP do wyszukiwania w sieci Web Bing'
 titleSuffix: Azure Cognitive Services
 description: Ta aplikacja jednostronicowa pokazuje, jak można używać interfejsu API wyszukiwania w sieci Web Bing do pobierania, analizowania i wyświetlania odpowiednich wyników w aplikacji jednostronicowej.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390049"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977254"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: Tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w Internecie Bing
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w sieci Web Bing
 
 Ta aplikacja jednostronicowa pokazuje, jak pobierać, analizować i wyświetlać wyniki wyszukiwania z interfejsu API wyszukiwania w sieci Web Bing. W samouczku użyto standardowego kodu HTML i CSS i skoncentrowano się na kodzie JavaScript. Pliki w formatach HTML, CSS i JS są dostępne w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) razem z instrukcjami przewodnika Szybki start.
 
@@ -287,7 +287,7 @@ function handleBingResponse() {
 
 Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
-| Etap | Potencjalne błędy | Obsługiwane przez |
+| Stage | Potencjalne błędy | Obsługiwane przez |
 |-------|--------------------|------------|
 | Tworzenie obiektu żądania | Nieprawidłowy adres URL | Blok `try` / `catch` |
 | Wykonywanie żądania | Błędy sieci, przerwane połączenia | Obsługa zdarzeń `error` i `abort` |
@@ -421,7 +421,7 @@ Program renderujący do obrazów:
 * oblicza rozmiar miniatury obrazu (szerokość jest zmienna, a wysokość stała i wynosi 60 pikseli);
 * wstawia kod HTML, który poprzedza wynik obrazów w zależności od kontekstu;
 * tworzy tag `<a>` kodu HTML prowadzący do strony, która zawiera obraz;
-* tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu.
+* tworzy tag `<img>` kodu HTML, aby wyświetlić miniaturę obrazu;
 
 Program renderujący do obrazów używa zmiennych `section` i `index` do wyświetlania wyników w różny sposób w zależności od tego, gdzie występują. Podział wiersza (tag `<br>`) jest wstawiany między wynikami obrazów na pasku bocznym, na którym zostaje wyświetlona kolumna obrazów. W pozostałych sekcjach pierwszy wynik obrazów `(index === 0)` jest poprzedzony tagiem `<p>`.
 
@@ -464,7 +464,7 @@ cors-proxy-server
 
 Podczas korzystania z przykładowej aplikacji pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W sekcji rozwijanej nagłówków HTTP poniżej wyników wyszukiwania powinien być widoczny nagłówek `X-MSEdge-ClientID`. Sprawdź, czy jest taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API wyszukiwania w sieci Web Bing w wersji 7](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

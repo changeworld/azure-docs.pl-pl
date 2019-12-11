@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: Interfejs API rozpoznawania twarzy, C#'
+title: 'Samouczek: interfejs API rozpoznawania twarzy, C#'
 titleSuffix: Azure Cognitive Services
-description: Tworzenie aplikacji Windows, która używa Cognitive Services Face API, aby wykryć funkcji twarzy na obrazie.
+description: Utwórz aplikację systemu Windows, która używa interfejs API rozpoznawania twarzy Cognitive Services do wykrywania funkcji twarzy w obrazie.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606817"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970299"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Łączenie z interfejsem API rozpoznawania twarzy usług Cognitive Services za pomocą usług połączonych w programie Visual Studio
 
@@ -26,7 +26,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli jej nie masz, możesz zarejestrować się w celu [utworzenia bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
-- Visual Studio 2017 w wersji 15.7 lub nowszej z **programowania dla sieci Web** zainstalowanym obciążeniem. [Pobierz go teraz](https://www.visualstudio.com/downloads/).
+- Program Visual Studio 2017 w wersji 15,7 lub nowszej z zainstalowanym obciążeniem **programowaniem w sieci Web** . [Pobierz go teraz](https://www.visualstudio.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -79,7 +79,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
       }
    ```
 
-1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API rozpoznawania twarzy](https://azure.microsoft.com/services/cognitive-services/face/). Kliknij prawym przyciskiem myszy na jeden z obrazów, Zapisz na lokalnym dysku twardym, a następnie w oknie Eksploratora rozwiązań, kliknij prawym przyciskiem myszy na folder Obrazy i wybierz **Dodaj** > **istniejący element** Aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego:
+1. W folderze wwwroot projektu dodaj folder images i dodaj plik obrazu do folderu wwwroot. Na potrzeby przykładu możesz użyć jednego z obrazów na tej [stronie interfejsu API rozpoznawania twarzy](https://azure.microsoft.com/services/cognitive-services/face/). Kliknij prawym przyciskiem myszy jeden z obrazów, Zapisz na lokalnym dysku twardym, a następnie w Eksplorator rozwiązań kliknij prawym przyciskiem myszy folder obrazy, a następnie wybierz polecenie **dodaj** > **istniejący element** , aby dodać go do projektu. Twój projekt w Eksploratorze rozwiązań powinien wyglądać podobnie do następującego:
  
    ![Folder images z plikiem obrazu](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -147,7 +147,7 @@ W tym artykule i artykułach towarzyszących podano szczegółowe informacje na 
             });
         }
    ```
-    Kod w tym kroku tworzy żądanie HTTP przy użyciu wywołania interfejsu API REST rozpoznawania twarzy, za pomocą klucza, którą dodałeś po dodaniu usługi połączonej.
+    Kod w tym kroku tworzy żądanie HTTP z wywołaniem interfejsu API REST platformy Front przy użyciu klucza dodanego podczas dodawania połączonej usługi.
 
 1. Dodaj funkcje pomocnicze GetImageAsByteArray i JsonPrettyPrint.
 
@@ -243,6 +243,6 @@ Gdy grupa zasobów nie jest już potrzebna, usuń ją. Spowoduje to usunięcie u
 1. Wybierz pozycję **Usuń grupę zasobów**.
 1. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wpisz nazwę grupy zasobów i wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat interfejsu API rozpoznawania twarzy, czytając [dokumentację interfejsu API rozpoznawania twarzy](Overview.md).

@@ -1,5 +1,5 @@
 ---
-title: Projektowanie pulpitu nawigacyjnego w czasie rzeczywistym przy użyciu samouczka Azure Database for PostgreSQL — Citus)
+title: 'Samouczek: projektowanie pulpitu nawigacyjnego w czasie rzeczywistym (Citus) — Azure Database for PostgreSQL'
 description: W tym samouczku przedstawiono sposób tworzenia, wypełniania i wykonywania zapytań dotyczących tabel rozproszonych w Azure Database for PostgreSQL funkcji Citus.
 author: jonels-msft
 ms.author: jonels
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482879"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978104"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Samouczek: projektowanie pulpitu nawigacyjnego analizy w czasie rzeczywistym za pomocą Azure Database for PostgreSQL — Citus
 
@@ -196,7 +196,7 @@ Korzystając z naszej funkcji, wykonaj ją w celu zestawienia danych:
 SELECT rollup_http_request();
 ```
 
-Wraz z naszymi danymi w formie wstępnie zagregowanej możemy zbadać tabelę zestawień, aby uzyskać ten sam raport zgodnie z wcześniejszym użyciem. Uruchom następujące zapytanie:
+Wraz z naszymi danymi w formie wstępnie zagregowanej możemy zbadać tabelę zestawień, aby uzyskać ten sam raport zgodnie z wcześniejszym użyciem. Uruchom zapytanie:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,

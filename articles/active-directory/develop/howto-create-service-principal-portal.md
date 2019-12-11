@@ -1,7 +1,7 @@
 ---
-title: Tworzenie tożsamości dla aplikacji platformy Azure w portalu
+title: Tworzenie aplikacji usługi Azure AD & jednostki usługi przy użyciu portalu
 titleSuffix: Microsoft identity platform
-description: Zawiera opis sposobu tworzenia nowej aplikacji Azure Active Directory i nazwy głównej usługi, która może być używana z kontrolą dostępu opartą na rolach w usłudze Azure Resource Manager do zarządzania dostępem do zasobów.
+description: Utwórz nową aplikację Azure Active Directory & jednostki usługi, aby zarządzać dostępem do zasobów za pomocą kontroli dostępu opartej na rolach w Azure Resource Manager.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c883dc1f9743e4318db5fe21b0e52ea92d60dc5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 249c313f8f6195371985f3dad2e707638e52d0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917866"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967120"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 

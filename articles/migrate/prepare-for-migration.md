@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196436"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974788"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Przygotowywanie maszyn lokalnych do migracji na platformę Azure
 
@@ -99,7 +99,7 @@ Na przykład jeśli instalacja lokalna używa dysku z danymi, który jest przypi
 1. Na maszynie lokalnej (nie na serwerze hosta) Otwórz wiersz polecenia z podwyższonym poziomem uprawnień.
 2. Wpisz polecenie **diskpart**.
 3. Typ **sieci San**. Jeśli litera dysku systemu operacyjnego gościa nie jest zachowywana, zwracany jest **tryb offline wszystkie** lub **offline udostępnione** .
-4. W wierszu polecenia **narzędzia DiskPart** wpisz **SANPOLICY = ONLINEALL**. To ustawienie zapewnia, że dyski są przełączane w tryb online i są możliwe do odczytu i do zapisu.
+4. W wierszu polecenia **diskpart** wpisz **zasady sieci San = OnlineAll**. To ustawienie zapewnia, że dyski są przełączane w tryb online i są możliwe do odczytu i do zapisu.
 5. Podczas migracji testów można sprawdzić, czy litery dysku są zachowywane.
 
 

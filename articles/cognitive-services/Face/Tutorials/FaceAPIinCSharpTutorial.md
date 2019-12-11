@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 93932fac9a5e5d4c21adc99bd31e9366a9709cc2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859117"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977968"
 ---
-# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Samouczek: tworzenie aplikacji WPF do wyświetlania danych twarzy na obrazie
+# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Samouczek: Tworzenie aplikacji platformy Windows Presentation Framework (WPF) w celu wyświetlania danych o kroju w obrazie
 
-W ramach tego samouczka nauczysz się używać interfejs API rozpoznawania twarzy platformy Azure za pomocą zestawu SDK klienta platformy .NET, aby wykrywać twarze w obrazie, a następnie przedstawić te dane w interfejsie użytkownika. Utworzysz aplikację Windows Presentation Framework (WPF), która wykrywa twarze, Rysuje ramkę dookoła każdej twarzy i wyświetla opis twarzy na pasku stanu. 
+W ramach tego samouczka nauczysz się używać interfejs API rozpoznawania twarzy platformy Azure za pomocą zestawu SDK klienta platformy .NET, aby wykrywać twarze w obrazie, a następnie przedstawić te dane w interfejsie użytkownika. Utworzysz aplikację WPF, która wykrywa twarze, Rysuje ramkę dookoła każdej twarzy i wyświetla opis twarzy na pasku stanu. 
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio `FACE_SUBSCRIPTION_KEY` nazwane `FACE_ENDPOINT`i.
+- Klucz subskrypcji interfejsu API rozpoznawania twarzy. Klucz subskrypcji bezpłatnej wersji próbnej możesz uzyskać na stronie [Wypróbuj usługi Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Możesz też wykonać instrukcje z tematu [Create a Cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Tworzenie konta usług Cognitive Services), aby subskrybować usługę interfejsu API rozpoznawania twarzy i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `FACE_SUBSCRIPTION_KEY` i `FACE_ENDPOINT`.
 - Dowolna wersja programu [Visual Studio 2015 lub 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
@@ -57,7 +57,7 @@ W tej sekcji dodasz podstawową strukturę aplikacji bez funkcji specyficznych d
 
 ### <a name="create-the-ui"></a>Tworzenie interfejsu użytkownika
 
-Otwórz *MainWindow. XAML* i Zastąp zawartość następującym kodem&mdash;ten kod tworzy okno interfejsu użytkownika. Metody `FacePhoto_MouseMove` i`BrowseButton_Click` są programami obsługi zdarzeń, które będą później definiowane.
+Otwórz *MainWindow. XAML* i Zastąp zawartość następującym kodem,&mdash;ten kod tworzy okno interfejsu użytkownika. Metody `FacePhoto_MouseMove` i `BrowseButton_Click` są programami obsługi zdarzeń, które zostaną później zdefiniowane.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 

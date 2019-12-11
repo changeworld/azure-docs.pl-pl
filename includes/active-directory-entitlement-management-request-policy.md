@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566327"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980522"
 ---
 ## <a name="for-users-in-your-directory"></a>Dla użytkowników w katalogu
 
@@ -66,6 +66,7 @@ Wykonaj następujące kroki, aby zezwolić użytkownikom, którzy nie należą d
     | --- | --- |
     | **Określone organizacje połączone** | Wybierz tę opcję, jeśli chcesz wybrać z listy organizacji, które wcześniej dodaliśmy do administratora. Wszyscy użytkownicy wybranych organizacji mogą zażądać tego pakietu dostępu. |
     | **Wszystkie połączone organizacje** | Wybierz tę opcję, jeśli wszyscy użytkownicy ze wszystkich połączonych organizacji mogą zażądać tego pakietu dostępu. |
+    | **Wszyscy użytkownicy (wszystkie połączone organizacje + Wszyscy nowi użytkownicy zewnętrzni)** | Wybierz tę opcję, jeśli wszyscy użytkownicy ze wszystkich połączonych organizacji mogą zażądać tego pakietu dostępu, a ustawienia listy dozwolonych lub zablokowanych B2B powinny mieć pierwszeństwo dla każdego nowego użytkownika zewnętrznego. |
 
     Połączona organizacja to zewnętrzny katalog usługi Azure AD lub domena, z którą istnieje relacja.
 
@@ -80,7 +81,7 @@ Wykonaj następujące kroki, aby zezwolić użytkownikom, którzy nie należą d
 1. Po wybraniu wszystkich połączonych organizacji kliknij pozycję **Wybierz**.
 
     > [!NOTE]
-    > Wszyscy użytkownicy z wybranych połączonych organizacji będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z organizacją, chyba że te domeny są blokowane przez listę dozwolonych lub zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [Zezwalanie lub blokowanie zaproszeń użytkownikom B2B z określonych organizacji](../articles/active-directory/b2b/allow-deny-list.md).
+    > Wszyscy użytkownicy z wybranych połączonych organizacji będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z organizacją, chyba że te domeny są blokowane przez listę dozwolonych lub zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. Przejdź do sekcji [zatwierdzenie](#approval) .
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca0f64fe67865e18c47009779cf8bd307a21c961
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581540"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978734"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Ukończ [Samouczek: wprowadzenie do tworzenia pierwszej z pierwszych prób](tutorial-1st-experiment-sdk-setup.md) w:
+* Ukończ [Samouczek: wprowadzenie do tworzenia pierwszego eksperymentu w usłudze Azure ml](tutorial-1st-experiment-sdk-setup.md) :
     * Tworzenie obszaru roboczego
     * Sklonuj Notes samouczków do folderu w obszarze roboczym.
     * Tworzenie maszyny wirtualnej z notesem w chmurze.
@@ -310,7 +310,7 @@ Obiekt [skryptu sklearn szacowania](https://docs.microsoft.com/python/api/azurem
 * Nazwa skryptu uczenia, **train.py**.
 * Wymagane parametry skryptu uczenia.
 
-W tym samouczku elementem docelowym jest usługa AmlCompute. Wszystkie pliki w folderze skryptów są przekazywane do węzłów klastra w celu uruchomienia. **Data_folder** jest ustawiony na używanie zestawu danych. Najpierw Utwórz obiekt środowiska, który określa zależności wymagane do szkolenia. 
+W tym samouczku elementem docelowym jest usługa AmlCompute. Wszystkie pliki w folderze skryptów są przekazywane do węzłów klastra w celu uruchomienia. **Data_folder** jest ustawiony do korzystania z zestawu danych. Najpierw Utwórz obiekt środowiska, który określa zależności wymagane do szkolenia. 
 
 ```python
 from azureml.core.environment import Environment
@@ -430,7 +430,7 @@ print(model.name, model.id, model.version, sep='\t')
 Usunąć możesz również sam klaster obliczeniowy usługi Azure Machine Learning. Jednak ponieważ włączona jest funkcja skalowania automatycznego i minimalna wielkość klastra jest równa zero, dla tego konkretnego zasobu nie będą naliczane dodatkowe opłaty za obliczenia, gdy nie jest on używany:
 
 ```python
-# optionally, delete the Azure Machine Learning Compute cluster
+# Optionally, delete the Azure Machine Learning Compute cluster
 compute_target.delete()
 ```
 

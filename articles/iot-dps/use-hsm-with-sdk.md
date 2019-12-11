@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta IoT Hub Device Provisioning Service platformy Azure
-description: Instrukcje platformy Azure — Jak korzystać z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service na platformie Azure
+description: Instrukcje dotyczące platformy Azure — jak korzystać z różnych mechanizmów zaświadczania z zestawem SDK klienta usługi Device Provisioning Service (DPS) na platformie Azure
 author: robinsh
 ms.author: robinsh
 ms.date: 03/30/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 0cde591d2ec8c6f2f51c83b3f263c188c8cf2605
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c85d958074ea5d41d32f71350164c3c983e372a2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228286"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976659"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Instrukcje dotyczące korzystania z różnych mechanizmów zaświadczania za pomocą zestawu SDK klienta usługi Device Provisioning Service dla języka C
 
