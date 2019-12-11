@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go'
+title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem Go.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0bcd94c62ec0fe5d9e9ffec18c982e7a102f0ffc
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ed5df90ba4e88e2b6bd20ce2e559c89a552bbe0a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858967"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977832"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Go
 
 W tym przewodniku Szybki start użyjesz interfejsu API REST rozpoznawania twarzy platformy Azure i języka Go do wykrywania ludzkich twarzy na obrazie.
 
@@ -108,11 +108,11 @@ func main() {
 }
 ```
 
-Musisz zaktualizować `subscriptionKey` wartość przy użyciu klucza subskrypcji i `uriBase` zmienić ciąg tak, aby zawierał poprawny ciąg punktu końcowego.
+Musisz zaktualizować wartość `subscriptionKey` przy użyciu klucza subskrypcji i zmienić ciąg `uriBase` tak, aby zawierał prawidłowy ciąg punktu końcowego.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Możesz również zmienić pole `imageUrl`, aby wskazywało na Twój obraz wejściowy. Możesz również zmienić `returnFaceAttributes` pole określające atrybuty kroju do pobrania.
+Możesz również zmienić pole `imageUrl`, aby wskazywało na Twój obraz wejściowy. Możesz również zmienić pole `returnFaceAttributes`, które określa atrybuty kroju do pobrania.
 
 ## <a name="run-the-script"></a>Uruchamianie skryptu
 

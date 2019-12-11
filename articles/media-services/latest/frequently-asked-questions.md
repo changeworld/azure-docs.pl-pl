@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338829"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977730"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 — często zadawane pytania
 
@@ -30,13 +30,13 @@ Zobacz [kontroli dostępu opartej na rolach (RBAC) dla kont Media Services](rbac
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>Jak mogę skonfigurować jednostki zarezerwowane multimediów?
 
-Analiza Audio i wideo zadania analizy, które są wyzwalane przez usługi Media Services v3 lub Video Indexer, aby uzyskać zaleca aprowizację swojego konta za pomocą 10 S3 lokalizacje MRU. Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
+Zdecydowanie zaleca się, aby w przypadku zadań analizy audio i analizy wideo, które są wyzwalane przez usługi Media Services wersji 3 lub Video Indexer, aby przeprowadzać aprowizację konta przy użyciu 10 jednostek MRU typu S3. Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
 
 Aby uzyskać szczegółowe informacje, zobacz [Skalowanie przetwarzania multimediów przy użyciu interfejsu wiersza polecenia](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Jaka jest zalecana metoda przetwarzania wideo?
 
-Za pomocą [transformacji](https://docs.microsoft.com/rest/api/media/transforms) można skonfigurować typowe zadania związane z kodowaniem lub analizowaniem filmów wideo. Każde **przekształcenie** opisuje przepis lub przepływ pracy zadań do przetwarzania plików wideo lub audio. [Zadanie](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie Media Services, aby zastosować transformację do danych wejściowych wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API Media Services lub dowolnego z opublikowanych zestawów SDK. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transforms-jobs-concept.md).
+Za pomocą [transformacji](https://docs.microsoft.com/rest/api/media/transforms) można skonfigurować typowe zadania związane z kodowaniem lub analizowaniem filmów wideo. Każde **przekształcenie** opisuje przepis lub przepływ pracy zadań do przetwarzania plików wideo lub audio. [Zadanie](https://docs.microsoft.com/rest/api/media/jobs) to rzeczywiste żądanie Media Services, aby zastosować **transformację** do danych wejściowych wideo lub audio. Po utworzeniu przekształcenia można przesłać zadania przy użyciu interfejsów API Media Services lub dowolnego z opublikowanych zestawów SDK. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transforms-jobs-concept.md).
 
 ### <a name="how-does-pagination-work"></a>Jak działa stronicowanie?
 
@@ -118,6 +118,9 @@ Często klienci inwestowanych w farmie serwerów licencji albo we własnych cent
 
 * Usługa STS musi wystawiać tokeny są akceptowane, które można sprawdzić w farmie serwerów licencji. Na przykład serwerów licencji Widevine, które są dostarczane przez Axinom wymagać określonych token JWT z komunikatem o uprawnienia. W związku z tym musisz mieć usługi STS do wystawiania tokenów JWT. 
 * Nie potrzebujesz już do konfigurowania usługi dostarczania licencji w usłudze Media Services. Należy podać adresy URL pozyskiwania licencji (w przypadku technologii PlayReady, Widevine i FairPlay) po skonfigurowaniu ContentKeyPolicies.
+
+> [!NOTE]
+> Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services V2 a v3 
 

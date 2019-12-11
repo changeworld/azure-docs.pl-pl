@@ -12,30 +12,27 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8809bf25c3bcfb26fb0ad251a2b09dfdca2a3e04
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679192"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969908"
 ---
 # <a name="content-key-policies"></a>Zasady kluczy zawartości
 
-Za pomocą Media Services można dostarczyć zawartość dynamiczną i na żądanie zaszyfrowaną dynamicznie z Advanced Encryption Standard (AES-128) lub z jednego z trzech głównych systemów zarządzania prawami cyfrowymi (DRM): Microsoft PlayReady, Google Widevine i Apple FairPlay. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów. 
+Usługa Media Services umożliwia dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub jeden z systemów zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów. 
 
-Aby określić opcje szyfrowania w strumieniu, należy utworzyć [zasady przesyłania strumieniowego](streaming-policy-concept.md) i skojarzyć je z lokalizatorem [przesyłania strumieniowego](streaming-locators-concept.md). Tworzenie [zasad klucza zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies) w celu skonfigurowania sposobu, w jaki klucz zawartości (zapewniający bezpieczny dostęp do [zasobów](assets-concept.md)) jest dostarczany do klientów końcowych. Należy ustawić wymagania (ograniczenia) dotyczące zasad kluczy zawartości, które muszą zostać spełnione, aby klucze z określoną konfiguracją były dostarczane do klientów. Zasady kluczy zawartości nie są wymagane do wyczyszczenia przesyłania strumieniowego ani pobierania. 
+Aby określić opcje szyfrowania w strumieniu, należy utworzyć [zasady przesyłania strumieniowego](streaming-policy-concept.md) i skojarzyć je z [lokalizatorem przesyłania strumieniowego](streaming-locators-concept.md). Tworzenie [zasad klucza zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies) w celu skonfigurowania sposobu, w jaki klucz zawartości (zapewniający bezpieczny dostęp do [zasobów](assets-concept.md)) jest dostarczany do klientów końcowych. Należy ustawić wymagania (ograniczenia) dotyczące zasad kluczy zawartości, które muszą zostać spełnione, aby klucze z określoną konfiguracją były dostarczane do klientów. Zasady kluczy zawartości nie są wymagane do wyczyszczenia przesyłania strumieniowego ani pobierania. 
 
 Zazwyczaj należy skojarzyć Zasady kluczy zawartości z [lokalizatorem przesyłania strumieniowego](streaming-locators-concept.md). Alternatywnie możesz określić zasady dotyczące klucza zawartości w ramach [zasad przesyłania strumieniowego](streaming-policy-concept.md) (podczas tworzenia niestandardowych zasad przesyłania strumieniowego dla scenariuszy zaawansowanych). 
-
-> [!NOTE]
-> Właściwości zasad `Datetime` kluczy zawartości typu są zawsze w formacie UTC.
 
 ## <a name="best-practices-and-considerations"></a>Najlepsze rozwiązania i zagadnienia
 
 > [!IMPORTANT]
 > Zapoznaj się z poniższymi zaleceniami.
 
-* Należy zapoznać się z ograniczonym zestawem zasad dla konta usługi multimediów i użyć ich ponownie dla lokalizatorów przesyłania strumieniowego, gdy są potrzebne te same opcje. Aby uzyskać więcej informacji, zobacz Przydziały [i ograniczenia](limits-quotas-constraints.md).
+* Należy zapoznać się z ograniczonym zestawem zasad dla konta usługi multimediów i użyć ich ponownie dla lokalizatorów przesyłania strumieniowego, gdy są potrzebne te same opcje. Aby uzyskać więcej informacji, zobacz [przydziały i ograniczenia](limits-quotas-constraints.md).
 * Zasady kluczy zawartości są aktualizowalne. W przypadku pamięci podręcznej dostarczania kluczy do aktualizacji i pobrania zaktualizowanych zasad może upłynąć do 15 minut. 
 
    Aktualizacja zasad powoduje zastąpienie istniejącej pamięci podręcznej usługi CDN, co może spowodować problemy z odtwarzaniem klientów korzystających z zawartości w pamięci podręcznej.  
@@ -50,14 +47,19 @@ Zazwyczaj należy skojarzyć Zasady kluczy zawartości z [lokalizatorem przesył
 
 ## <a name="example"></a>Przykład
 
-Aby przejść do klucza, użyj `GetPolicyPropertiesWithSecretsAsync`, jak pokazano w przykładzie [Pobieranie klucza podpisywania z istniejącego zasad](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
+Aby przejść do klucza, użyj `GetPolicyPropertiesWithSecretsAsync`, jak pokazano w przykładzie [Pobieranie klucza podpisywania z istniejących zasad](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
 
 ## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
 
 Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Media Services](entities-overview.md).
 
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Właściwości zasad kluczy zawartości typu `Datetime` są zawsze w formacie UTC.
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy](protect-with-aes128.md)
-* [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)
+* [Używanie dynamicznego szyfrowania AES-128 i usługi dostarczania kluczy](protect-with-aes128.md)
+* [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM](protect-with-drm.md)
 * [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

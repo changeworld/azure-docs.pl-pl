@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect — często zadawane pytania dotyczące aprowizacji w chmurze
+title: Często zadawane pytania dotyczące aprowizacji w chmurze programu Azure AD Connect
 description: Ten dokument zawiera opis często zadawanych pytań dotyczących aprowizacji w chmurze.
 services: active-directory
 author: billmath
@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93c88b167884c455ffb995f35356b121bce8a207
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793556"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997092"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -42,7 +42,7 @@ Tak. Inicjowanie obsługi administracyjnej w chmurze może służyć do synchron
 
 **P: jak jest aktualizowany Agent?**
 
-Agenci są autouaktualniani przez firmę Microsoft. Zmniejsza to obciążenie w celu przetestowania i zweryfikowania nowych wersji agenta. 
+Agenci są autouaktualniani przez firmę Microsoft. W przypadku zespołu IT zmniejsza to obciążenie związane z koniecznością testowania i weryfikowania nowych wersji agentów. 
 
 **P: Czy można wyłączyć Autouaktualnianie?**
 

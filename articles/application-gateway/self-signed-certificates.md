@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075085"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975061"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generowanie certyfikatu z podpisem własnym na platformie Azure Application Gateway przy użyciu niestandardowego głównego urzędu certyfikacji
 
@@ -106,7 +106,7 @@ CSR jest kluczem publicznym przyznanym do urzędu certyfikacji podczas żądania
 1. Użyj następującego polecenia, aby utworzyć certyfikat:
 
    ```
-   openssl x509 -req -in fabrikam.csr -CA public.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
+   openssl x509 -req -in fabrikam.csr -CA  contoso.crt -CAkey contoso.key -CAcreateserial -out fabrikam.crt -days 365 -sha256
    ```
 ### <a name="verify-the-newly-created-certificate"></a>Weryfikowanie nowo utworzonego certyfikatu
 
@@ -185,7 +185,7 @@ Aby przekazać zaufany certyfikat główny z portalu, wybierz **Ustawienia proto
 
 ![Dodawanie certyfikatu przy użyciu portalu](media/self-signed-certificates/portal-cert.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 Możesz też użyć interfejsu wiersza polecenia platformy Azure lub Azure PowerShell, aby przekazać certyfikat główny. Poniższy kod jest przykładem Azure PowerShell.
 

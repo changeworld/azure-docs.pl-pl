@@ -1,18 +1,18 @@
 ---
 title: Korzystanie z programu Azure Image Builder z galerią obrazów dla maszyn wirtualnych z systemem Windows (wersja zapoznawcza)
-description: Twórz obrazy systemu Windows za pomocą programu Azure Image Builder i udostępnionej galerii obrazów.
+description: Tworzenie obrazów maszyn wirtualnych z systemem Windows za pomocą programu Azure Image Builder i udostępnionej galerii obrazów.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698683"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976081"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Wersja zapoznawcza: Tworzenie obrazu systemu Windows i dystrybuowanie go do galerii obrazów udostępnionych 
 
@@ -20,7 +20,7 @@ W tym artykule przedstawiono sposób użycia programu Azure Image Builder do two
 
 Aby skonfigurować obraz, będziemy używać szablonu JSON. Używany plik JSON jest tutaj: [helloImageTemplateforWinSIG. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/helloImageTemplateforWinSIG.json). 
 
-W celu rozesłania obrazu do galerii obrazów udostępnionych szablon używa [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako wartości `distribute` sekcji szablonu.
+W celu rozesłania obrazu do galerii obrazów udostępnionych szablon używa [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) jako wartości sekcji `distribute` szablonu.
 
 > [!IMPORTANT]
 > Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Compute
 
 ## <a name="set-variables-and-permissions"></a>Ustawianie zmiennych i uprawnień 
 
-Będziemy wielokrotnie używać niektórych informacji, więc utworzymy pewne zmienne do przechowywania tych informacji. Zastąp wartości dla zmiennych, takich jak `username` i `vmpassword`, z własnymi informacjami.
+Będziemy wielokrotnie używać niektórych informacji, więc utworzymy pewne zmienne do przechowywania tych informacji. Zastąp wartości dla zmiennych, takich jak `username` i `vmpassword`, własnymi informacjami.
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -77,7 +77,7 @@ username="azureuser"
 vmpassword="passwordfortheVM"
 ```
 
-Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić za pomocą `az account show | grep id`polecenia.
+Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić przy użyciu `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID="Subscription ID"
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Przyznaj usłudze Azure Image Builder uprawnienia do tworzenia zasobów w tej grupie zasobów. `--assignee` Wartość to identyfikator rejestracji aplikacji dla usługi Image Builder. 
+Przyznaj usłudze Azure Image Builder uprawnienia do tworzenia zasobów w tej grupie zasobów. Wartość `--assignee` to identyfikator rejestracji aplikacji dla usługi Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -191,7 +191,7 @@ Utwórz połączenie Pulpit zdalny z maszyną wirtualną przy użyciu nazwy uży
 dir c:\
 ```
 
-Powinien zostać wyświetlony katalog o nazwie `buildActions` , który został utworzony podczas dostosowywania obrazu.
+Powinien zostać wyświetlony katalog o nazwie `buildActions`, który został utworzony podczas dostosowywania obrazu.
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -211,7 +211,7 @@ az resource delete \
     -n helloImageTemplateforWinSIG01
 ```
 
-Pobierz wersję obrazu utworzoną przez konstruktora obrazów, która zawsze zaczyna `0.`się od, a następnie Usuń wersję obrazu
+Pobierz wersję obrazu utworzoną przez konstruktora obrazu, która zawsze zaczyna się od `0.`, a następnie Usuń wersję obrazu
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

@@ -1,6 +1,6 @@
 ---
-title: Jak ponownie uaktywnić wyłączone przestrzenie nazw usługi Azure Access Control Service (ACS)
-description: Dowiedz się, jak znaleźć i włączyć przestrzenie nazw platformy Azure Access Control Service (ACS), a następnie poprosić o rozszerzenie, aby je włączyć do 4 lutego 2019.
+title: Aktywuj ponownie wyłączone przestrzenie nazw usługi Azure Access Control Service (ACS)
+description: Znajdź i Włącz przestrzenie nazw platformy Azure Access Control Service (ACS) i poproś o rozszerzenie, aby je włączyć do 4 lutego 2019.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917713"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966949"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Jak ponownie uaktywnić wyłączone Access Control Service przestrzenie nazw
 

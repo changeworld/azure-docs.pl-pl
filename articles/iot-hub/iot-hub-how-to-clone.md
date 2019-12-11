@@ -2,18 +2,17 @@
 title: Jak sklonować usługę Azure IoT Hub
 description: Jak sklonować usługę Azure IoT Hub
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083283"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976149"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak sklonować usługę Azure IoT Hub do innego regionu
 
@@ -73,9 +72,7 @@ Jest to ogólna Metoda, która zalecamy przeniesienie Centrum IoT z jednego regi
    1. Dodaj wszystkie elementy, które nie zostały wyeksportowane do szablonu. 
    
        Na przykład grupy konsumentów nie są eksportowane do szablonu. Musisz ręcznie dodać grupy konsumentów do szablonu lub użyć [Azure Portal](https://portal.azure.com) po utworzeniu centrum. Istnieje przykład dodawania jednej grupy odbiorców do szablonu w artykule [Użyj szablonu Azure Resource Manager, aby skonfigurować IoT Hub Routing komunikatów](tutorial-routing-config-message-routing-rm-template.md).
-
-       [Wzbogacanie komunikatów](iot-hub-message-enrichments-overview.md) nie są również eksportowane do szablonu. Są one używane w połączeniu z komunikatami routingu i będą musiały zostać zaktualizowane ręcznie w nowym centrum po zaktualizowaniu konfiguracji routingu komunikatów.
-
+       
    1. Skopiuj urządzenia z oryginalnego centrum do klonowania. Zostało to omówione w sekcji [Zarządzanie urządzeniami zarejestrowanymi w usłudze IoT Hub](#managing-the-devices-registered-to-the-iot-hub).
 
 ## <a name="how-to-handle-message-routing"></a>Jak obsługiwać routing wiadomości
@@ -104,16 +101,13 @@ Jeśli centrum używa routingu komunikatów, dostępne są dwie opcje.
 
    * Zostanie osiągnięta Mała wydajność, ponieważ zasoby centrum i routingu nie znajdują się w tej samej lokalizacji.
 
-> [!NOTE]
-> Jeśli centrum korzysta z [ulepszeń komunikatów](iot-hub-message-enrichments-overview.md), trzeba będzie je ręcznie skonfigurować w nowym centrum IoT Hub, ponieważ nie są eksportowane z szablonem Menedżer zasobów.
-
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Przygotowanie do migracji centrum do innego regionu
 
 Ta sekcja zawiera szczegółowe instrukcje dotyczące migracji centrum.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Znajdź oryginalny centrum i wyeksportuj go do szablonu zasobu.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [Azure Portal](https://portal.azure.com). 
 
 1. Przejdź do pozycji **grupy zasobów** i wybierz grupę zasobów zawierającą centrum, które chcesz przenieść. Możesz również przejść do **zasobów** i znaleźć centrum. Wybierz centrum.
 
@@ -353,13 +347,13 @@ Teraz masz szablon, który spowoduje utworzenie nowego centrum, które będzie w
 
 Utwórz nowe centrum w nowej lokalizacji przy użyciu szablonu. W przypadku zasobów routingu, które mają zostać przeniesione, zasoby powinny zostać skonfigurowane w nowej lokalizacji, a odwołania w szablonie zaktualizowane do dopasowania. Jeśli nie przenosisz zasobów routingu, powinny one znajdować się w szablonie z zaktualizowanymi kluczami.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com).
 
 1. Wybierz pozycję **Utwórz zasób**. 
 
 1. W polu wyszukiwania wprowadź ciąg "wdrożenie szablonu" i wybierz polecenie wprowadź.
 
-1. Wybierz pozycję **wdrożenie szablonu (Wdróż przy użyciu szablonów niestandardowych)** . Spowoduje to przejście do ekranu dla Template deployment. Wybierz pozycję **Utwórz**. Zobaczysz ten ekran:
+1. Wybierz pozycję **wdrożenie szablonu (Wdróż przy użyciu szablonów niestandardowych)** . Spowoduje to przejście do ekranu dla Template deployment. Wybierz pozycję **Utwórz**. Zostanie wyświetlony następujący ekran:
 
    ![Zrzut ekranu przedstawiający polecenie tworzenia własnego szablonu](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 

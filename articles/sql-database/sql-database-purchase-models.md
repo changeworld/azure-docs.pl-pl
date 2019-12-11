@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821260"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973530"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
@@ -55,7 +55,7 @@ Koszt magazynu kopii zapasowych jest taki sam dla warstwy usługi krytycznej dla
 
 Aby uzyskać opis sposobu definiowania pojemności obliczeniowej i obliczania kosztów dla warstwy obliczeń bezserwerowych, zobacz [SQL Database bezserwerowe](sql-database-serverless.md).
 
-## <a name="storage-costs"></a>Koszty magazynowania
+## <a name="storage-costs"></a>Koszty magazynu
 
 Różne typy magazynów są rozliczane inaczej. W przypadku magazynu danych jest naliczana opłata za magazyn z zainicjowaną obsługą opartą na wybranej maksymalnej wielkości bazy danych lub puli. Koszt nie zmienia się, o ile nie zostanie zredukowany ani zwiększony maksymalny limit. Magazyn kopii zapasowych jest skojarzony z automatycznymi kopiami zapasowymi wystąpienia i jest przydzielany dynamicznie. Zwiększenie okresu przechowywania kopii zapasowych zwiększa magazyn kopii zapasowych zużywany przez wystąpienie.
 
@@ -129,7 +129,7 @@ Jeśli chcesz przeprowadzić migrację istniejącego lokalnego lub SQL Server ob
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Obciążenia, które korzystają z elastycznej puli zasobów
 
-Pule są dostosowane do baz danych z niską ilością wykorzystania zasobów i stosunkowo nieczęstego wzrostu użycia. SQL Database automatycznie oblicza historyczne użycie zasobów baz danych na istniejącym serwerze SQL Database i zaleca konfigurację odpowiedniej puli w Azure Portal. Aby uzyskać więcej informacji, zobacz [kiedy należy wziąć pod uwagę SQL Database puli elastycznej?](sql-database-elastic-pool.md).
+Pule są dostosowane do baz danych z niską ilością wykorzystania zasobów i stosunkowo nieczęstego wzrostu użycia. Aby uzyskać więcej informacji, zobacz [kiedy należy wziąć pod uwagę SQL Database puli elastycznej?](sql-database-elastic-pool.md).
 
 ## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 

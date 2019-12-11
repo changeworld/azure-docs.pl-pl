@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4549ee0f50c06040b70307c96b5ca96cd4162214
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581230"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974301"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Łączenie się z maszynami wirtualnymi za pomocą przeglądarki 
 
@@ -26,10 +26,9 @@ DevTest Labs integrują się z [usługą Azure bastionu](https://docs.microsoft.
 
 Po włączeniu *połączenia przeglądarki* użytkownicy laboratorium mogą uzyskać dostęp do maszyn wirtualnych za pomocą przeglądarki.  
 
-
 ## <a name="create-a-lab-virtual-machine"></a>Tworzenie maszyny wirtualnej laboratorium
 
-Najpierw musisz utworzyć maszynę wirtualną laboratorium w sieci wirtualnej, dla której skonfigurowano bastionu. Możesz wybrać sieć wirtualną podczas tworzenia maszyny wirtualnej, przechodząc do karty **Ustawienia zaawansowane** .
+Najpierw musisz utworzyć maszynę wirtualną laboratorium w sieci wirtualnej, dla której skonfigurowano bastionu. Wybierz drugą **podsieć** , która została utworzona, a nie AzureBastionSubnet. Możesz wybrać sieć wirtualną podczas tworzenia maszyny wirtualnej, przechodząc do karty **Ustawienia zaawansowane** .
 
 ![Tworzenie maszyny wirtualnej](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
 

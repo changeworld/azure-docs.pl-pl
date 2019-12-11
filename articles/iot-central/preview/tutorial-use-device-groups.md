@@ -3,17 +3,17 @@ title: Używanie grup urządzeń w aplikacji IoT Central platformy Azure | Micro
 description: Dowiedz się, jak używać grup urządzeń do analizowania danych telemetrycznych z urządzeń w aplikacji IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/29/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 281806999b08c3babbb753459835850ad9d733eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 981046f9417876a68c215c6d01a63c7f0a634464
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895438"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976217"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry-preview-features"></a>Samouczek: używanie grup urządzeń do analizowania danych telemetrycznych urządzenia (funkcje w wersji zapoznawczej)
 
@@ -53,7 +53,7 @@ Aby utworzyć grupę urządzeń:
 
     ![Nowa grupa urządzeń](media/tutorial-use-device-groups/image1.png)
 
-1. Nadaj grupie urządzeń nazwę, taką jak **urządzenia contoso**. Możesz również dodać opis. Grupa urządzeń może zawierać tylko urządzenia z jednego szablonu urządzenia. Wybierz szablon urządzenia **czujnika środowiska** , który ma być używany dla tej grupy.
+1. Nadaj grupie urządzeń nazwę, taką jak **urządzenia contoso**. Można również dodać opis. Grupa urządzeń może zawierać tylko urządzenia z jednego szablonu urządzenia. Wybierz szablon urządzenia **czujnika środowiska** , który ma być używany dla tej grupy.
 
 1. Utwórz zapytanie, aby zidentyfikować urządzenia należące do firmy **contoso** dla grupy urządzeń, wybierając Właściwość **Nazwa klienta** , operator porównania **równa** się i **contoso** jako wartość. Można dodać wiele zapytań i urządzeń, które spełniają **wszystkie** kryteria, są umieszczane w grupie urządzeń. Utworzona grupa urządzeń jest dostępna dla każdego, kto ma dostęp do aplikacji, więc każda osoba może wyświetlać, modyfikować lub usuwać grupę urządzeń.
 

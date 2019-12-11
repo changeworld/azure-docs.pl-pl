@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6395d62947cda47c3779f15445db08b7515d055d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672328"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971761"
 ---
 # <a name="app-service-networking-features"></a>App Service funkcje sieciowe
 
@@ -38,15 +38,15 @@ W przypadku dowolnego danego przypadku użycia może istnieć kilka sposobów ro
  
 | Przychodzące przypadki użycia | Funkcja |
 |---------------------|-------------------|
-| Obsługa protokołu SSL opartego na protokole IP dla aplikacji | Adres przypisany do aplikacji |
-| Nieudostępniony, dedykowany adres przychodzący dla aplikacji | Adres przypisany do aplikacji |
+| Obsługa protokołu SSL opartego na protokole IP dla aplikacji | adres przypisany do aplikacji |
+| Nieudostępniony, dedykowany adres przychodzący dla aplikacji | adres przypisany do aplikacji |
 | Ograniczanie dostępu do aplikacji z zestawu dobrze zdefiniowanych adresów | Ograniczenia dostępu |
 | Uwidacznianie mojej aplikacji na prywatnych adresach IP w mojej sieci wirtualnej | ILB ASE </br> Application Gateway z punktami końcowymi usługi |
 | Ograniczanie dostępu do mojej aplikacji z zasobów w sieci wirtualnej | Punkty końcowe usługi </br> ILB ASE |
 | Uwidacznianie mojej aplikacji w prywatnym adresie IP w mojej sieci wirtualnej | ILB ASE </br> prywatny adres IP dla ruchu przychodzącego na Application Gateway z punktami końcowymi usługi |
 | Ochrona mojej aplikacji za pomocą WAF | Application Gateway i ILB ASE </br> Application Gateway z punktami końcowymi usługi </br> Moje drzwi platformy Azure z ograniczeniami dostępu |
 | Równoważenie obciążenia ruchu do moich aplikacji w różnych regionach | Moje drzwi platformy Azure z ograniczeniami dostępu | 
-| Równoważenie obciążenia ruchu w tym samym regionie | Application Gateway z punktami końcowymi usługi | 
+| Równoważenie obciążenia ruchu w tym samym regionie | [Application Gateway z punktami końcowymi usługi][appgwserviceendpoints] | 
 
 Następujące wychodzące przypadki użycia sugerują, jak używać funkcji sieciowych App Service do rozwiązywania potrzeby dostępu wychodzącego dla aplikacji. 
 
@@ -222,3 +222,4 @@ Wiele aplikacji frontonu może korzystać z tej samej aplikacji interfejsu API p
 [vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints

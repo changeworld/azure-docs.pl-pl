@@ -1,6 +1,6 @@
 ---
-title: Internetowy interfejs API, który wywołuje interfejsy API (wywołanie interfejsów API) — Platforma tożsamości usługi Microsoft w sieci web
-description: Dowiedz się, jak utworzyć internetowy interfejs API tego wywołania podrzędne interfejsów API sieci web (wywoływanie interfejsu web API).
+title: Interfejs API sieci Web, który wywołuje interfejsy API sieci Web — Microsoft Identity platform | Azure
+description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje interfejsy API sieci Web.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074728"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965215"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Internetowy interfejs API, który wywołuje internetowych interfejsów API — wywołania interfejsu API
+# <a name="web-api-that-calls-web-apis---call-an-api"></a>Internetowy interfejs API, który wywołuje interfejsy API sieci Web — wywołuje interfejs API
 
-Po utworzeniu tokenu, można wywoływać chroniony internetowy interfejs API. Można to zrobić w kontrolerze interfejsu API sieci Web ASP.NET/ASP.NET Core.
+Po uzyskaniu tokenu można wywołać chroniony internetowy interfejs API. Jest to realizowane z kontrolera interfejsu API sieci Web ASP.NET/ASP.NET Core.
 
 ## <a name="controller-code"></a>Kod kontrolera
 
-W tym miejscu jest kontynuacja kod przykładu przedstawiony w [wywołań interfejsu API sieci web chronionych internetowych interfejsów API — uzyskiwanie tokenu](scenario-web-api-call-api-acquire-token.md), co jest nazywane w akcjach kontrolerów interfejsów API, wywoływania podrzędnego interfejsu API, (o nazwie todolist).
+Oto kontynuacja przykładowego kodu podanego w obszarze [chronione interfejsy API sieci Web wywołania interfejsów API sieci Web — uzyskiwanie tokenu](scenario-web-api-call-api-acquire-token.md), który jest wywoływany w akcjach kontrolerów interfejsu użytkownika, wywoływanie podrzędnego interfejsu API (o nazwie todolist).
 
-Po nabył token służyć jako token elementu nośnego do wywołania interfejsu API niższego rzędu.
+Po uzyskaniu tokenu Użyj go jako tokenu okaziciela, aby wywołać podrzędny interfejs API.
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -58,7 +58,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przenoszenie do środowiska produkcyjnego](scenario-web-api-call-api-production.md)
+> [Przenieś do środowiska produkcyjnego](scenario-web-api-call-api-production.md)

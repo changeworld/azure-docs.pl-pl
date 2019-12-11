@@ -1,7 +1,7 @@
 ---
 title: Co to są potoki ML
 titleSuffix: Azure Machine Learning
-description: W tym artykule poznasz zalety potoków uczenia maszynowego, które można skompilować za pomocą zestawu SDK Azure Machine Learning dla języka Python. Machine learning (ML) potoki są używane przez analityków danych kompilacji, optymalizowanie i zarządzanie ich usługi machine learning przepływów pracy.
+description: W tym artykule poznasz zalety potoków uczenia maszynowego (ML), które można skompilować za pomocą zestawu Azure Machine Learning SDK dla języka Python. Potoki uczenia maszynowego są używane przez analityków danych do kompilowania i optymalizowania przepływów pracy uczenia maszynowego oraz zarządzania nimi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 84a01597570a488652e3db2345bdf68b52d4bf5b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112405"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973581"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co to są Azure Machine Learning potoki?
 
@@ -26,7 +26,7 @@ Potoki Azure Machine Learning umożliwiają tworzenie przepływów pracy w proje
 + Elastyczność
 + Przechowywanie wersji i śledzenie
 + Modułowość 
-+ Gwarancja jakości
++ Kontrola jakości
 + Kontrola kosztów
 
 Te korzyści stają się istotne, gdy tylko projekt uczenia maszynowego przejdzie poza czystą eksplorację i iterację. Nawet proste potoki jednoetapowe mogą być cenne. Projekty uczenia maszynowego często są złożone i mogą być niezbędne do precyzyjnego wykonania pojedynczego przepływu pracy.
@@ -185,7 +185,7 @@ Można łatwo stać r o ponowne używanie buforowanych wyników, szczegółową 
 
 * Duże sprzęganie między krokami potoku. Jeśli Refaktoryzacja krok zależny często wymaga modyfikacji danych wyjściowych poprzedniego kroku, istnieje duże ryzyko, że poszczególne kroki są obecnie bardziej kosztowne niż korzyść. Kolejną wskazówki, że kroki są zbyt powiązane z argumentami, które nie są danymi, ale flagi sterujące przetwarzaniem. 
 
-* Przedwcześnie Optymalizacja zasobów obliczeniowych. Na przykład istnieje często kilka etapów przygotowywania danych, a jedna z nich często widzi "Niestety, to miejsce, w którym można użyć `MpiStep` do programowania równoległego, ale jest to miejsce, w którym można użyć `PythonScriptStep` z mniej zaawansowanym celem obliczeń , "i tak dalej. I może w długim czasie tworzyć szczegółowe kroki, takie jak to, które mogą okazać się wartościowa, zwłaszcza jeśli istnieje możliwość użycia zbuforowanych wyników zamiast zawsze ponownego obliczania. Ale potoki nie są przeznaczone do podstawiania dla modułu `multiprocessing`. 
+* Przedwcześnie Optymalizacja zasobów obliczeniowych. Na przykład istnieje często kilka etapów przygotowywania danych, a jedna z nich często widzi "Niestety, to miejsce, w którym można użyć `MpiStep` do programowania równoległego, ale jest to miejsce, w którym można użyć `PythonScriptStep` z mniej zaawansowanym celem obliczeń" i tak dalej. I może w długim czasie tworzyć szczegółowe kroki, takie jak to, które mogą okazać się wartościowa, zwłaszcza jeśli istnieje możliwość użycia zbuforowanych wyników zamiast zawsze ponownego obliczania. Ale potoki nie są przeznaczone do podstawiania dla modułu `multiprocessing`. 
 
 Dopóki projekt nie osiągnie dużego lub niemal wdrożenia, potoki powinny być grubsze, a nie szczegółowe. Jeśli myślisz o projekcie ML jako obejmującej _etapy_ i potoku, co zapewnia kompletny przepływ pracy w celu przechodzenia przez określony etap, jesteś w odpowiedniej ścieżce. 
 
@@ -200,7 +200,7 @@ Najważniejsze zalety używania potoków dla przepływów pracy usługi Machine 
 |**Możliwość ponownego wykorzystania**|Tworzenie szablonów potoku dla konkretnych scenariuszy, takich jak ponowne szkolenie i ocenianie partii. Wyzwalaj opublikowane potoki z systemów zewnętrznych za pośrednictwem prostych wywołań REST.|
 |**Śledzenie i przechowywania wersji**|Zamiast ręcznego śledzenia danych i ścieżek wyników podczas iteracji Użyj zestawu SDK potoków, aby jawnie nazwać i w wersji źródła danych, dane wejściowe i wyjściowe. Możesz również zarządzać skryptami i danymi osobno w celu zwiększenia produktywności.|
 | **Modułowość** | Rozdzielenie obszarów problemów i izolacja zmian pozwala na szybsze rozwijanie się oprogramowania o wyższej jakości. | 
-|**Społeczności**|Potoki umożliwiają analitykom danych współpracę we wszystkich obszarach procesu projektowania uczenia maszynowego, jednocześnie umożliwiając jednocześnie pracę nad krokami potoku.|
+|**Współpraca**|Potoki umożliwiają analitykom danych współpracę we wszystkich obszarach procesu projektowania uczenia maszynowego, jednocześnie umożliwiając jednocześnie pracę nad krokami potoku.|
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743704"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961543"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
 
@@ -35,7 +35,7 @@ Aby uzyskać więcej informacji o wykrywaniu czołowym, zobacz artykuł dotyczą
 
 ## <a name="face-verification"></a>Weryfikacja twarzy
 
-Interfejs API weryfikacji wykonuje uwierzytelnianie względem dwóch wykrytych twarzy lub jednego obiektu osoby na podstawie jednej wykrytej twarzy. W praktyce ocenia on, czy dwie twarze należą do tej samej osoby. Ta funkcja jest potencjalnie przydatna w scenariuszach zabezpieczeń. Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący pojęć związanych z [rozpoznawaniem](concepts/face-recognition.md) i sprawdzanie dokumentacji dotyczącej [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
+Sprawdź, czy interfejs API wykonuje uwierzytelnianie w odniesieniu do dwóch wykrytych twarzy lub od jednej wykrytych funkcji do jednego obiektu osoby. W praktyce ocenia on, czy dwie twarze należą do tej samej osoby. Ta funkcja jest potencjalnie przydatna w scenariuszach zabezpieczeń. Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący pojęć związanych z [rozpoznawaniem](concepts/face-recognition.md) i sprawdzanie dokumentacji dotyczącej [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
 
 ## <a name="find-similar-faces"></a>Wyszukiwanie podobnych twarzy
 
@@ -45,11 +45,11 @@ W poniższym przykładzie pokazano tarczę docelową:
 
 ![Uśmiechnięta kobieta](./Images/FaceFindSimilar.QueryFace.jpg)
 
-A to są twarze do przeszukania:
+Obrazy te są następujące:
 
 ![Pięć obrazów uśmiechniętych osób. Obrazy a i b przedstawiają tę samą osobę.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Aby znaleźć cztery podobne twarze, tryb matchPerson zwraca a i b, które przedstawiają tę samą osobę co tarczę docelową. Tryb matchFace zwraca, b, c i d, dokładnie cztery kandydatów, nawet jeśli niektórzy nie są tej samej osoby, co obiekt docelowy lub mają niską podobieństwo. Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący pojęć dotyczących [rozpoznawania](concepts/face-recognition.md) i dokumentacji dotyczącej [ZNAJDOWANIA podobnych interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
+Aby znaleźć cztery podobne twarze, tryb matchPerson zwraca a i b, które przedstawiają tę samą osobę co tarczę docelową. Tryb matchFace zwraca wartości, b, c i d&mdash;dokładnie cztery kandydatów, nawet jeśli niektóre nie są takie same, jak w celu lub mają niską podobieństwo. Aby uzyskać więcej informacji, zobacz Przewodnik dotyczący pojęć dotyczących [rozpoznawania](concepts/face-recognition.md) i dokumentacji dotyczącej [ZNAJDOWANIA podobnych interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
 
 ## <a name="face-grouping"></a>Grupowanie twarzy
 
@@ -63,7 +63,7 @@ Na poniższej ilustracji przedstawiono przykład bazy danych o nazwie `"myfriend
 
 ![Siatka z trzema kolumnami dla różnych osób, z których każdy ma trzy wiersze obrazów](./Images/person.group.clare.jpg)
 
-Po utworzeniu i przejściu do bazy danych można przeprowadzić identyfikację grupy z nową wykrytą stroną. Jeśli twarz zostanie zidentyfikowana jako należąca do osoby w grupie, zostanie zwrócony obiekt osoby.
+Po utworzeniu i przeprowadzeniu uczenia bazy danych można przeprowadzić identyfikację grupy z nową wykrytą stroną. Jeśli twarz zostanie zidentyfikowana jako należąca do osoby w grupie, zostanie zwrócony obiekt osoby.
 
 Aby uzyskać więcej informacji na temat identyfikacji osób, zobacz Przewodnik dotyczący pojęć związanych z [rozpoznawaniem](concepts/face-recognition.md) i dokumentacja [interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) .
 

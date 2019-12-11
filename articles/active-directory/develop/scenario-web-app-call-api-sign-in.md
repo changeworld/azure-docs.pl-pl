@@ -1,6 +1,6 @@
 ---
-title: Aplikacja sieci Web, która wywołuje interfejsy API sieci Web (logowanie) — Microsoft Identity platform
-description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (logowanie)
+title: Usuwanie kont z pamięci podręcznej na wylogowanie — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak usunąć konto z pamięci podręcznej tokenu przy wylogowaniu
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596377"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961662"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — logowanie
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Usuwanie kont z pamięci podręcznej na globalne wylogowywanie
 
 Już wiesz, jak dodać logowanie do aplikacji sieci Web. Dowiesz się, że w [aplikacji internetowej, która loguje się do użytkowników, Dodaj logowanie](scenario-web-app-sign-user-sign-in.md).
 

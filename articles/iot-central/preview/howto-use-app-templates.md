@@ -3,17 +3,17 @@ title: Eksportowanie aplikacji IoT Central platformy Azure | Microsoft Docs
 description: Jako Menedżer rozwiązań Chcę wyeksportować szablon aplikacji, aby móc go użyć ponownie.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9870b18be9fb75e25941a7e1d05e4164239aacbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480359"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977526"
 ---
 # <a name="export-your-application-preview-features"></a>Eksportowanie aplikacji (funkcje w wersji zapoznawczej)
 
@@ -30,7 +30,7 @@ Dostępne są dwie opcje:
 
 Można utworzyć kopię dowolnej aplikacji, minus wszystkie wystąpienia urządzeń, historię danych urządzeń i dane użytkowników. Kopia jest aplikacją z płatność zgodnie z rzeczywistym użyciem, za którą zostanie naliczona opłata. Nie można utworzyć aplikacji próbnej przez skopiowanie aplikacji.
 
-Wybierz pozycję **Kopiuj**. W oknie dialogowym Wprowadź szczegóły nowej aplikacji z opcją płatność zgodnie z rzeczywistym użyciem. Następnie wybierz pozycję **Kopiuj** , aby potwierdzić, że chcesz kontynuować. Aby dowiedzieć się więcej na temat pól w formularzu, zobacz [Tworzenie aplikacji](quick-deploy-iot-central.md) — Szybki Start.
+Wybierz polecenie **Kopiuj**. W oknie dialogowym Wprowadź szczegóły nowej aplikacji z opcją płatność zgodnie z rzeczywistym użyciem. Następnie wybierz pozycję **Kopiuj** , aby potwierdzić, że chcesz kontynuować. Aby dowiedzieć się więcej na temat pól w formularzu, zobacz [Tworzenie aplikacji](quick-deploy-iot-central.md) — Szybki Start.
 
 > [!NOTE]
 > Możesz **skopiować swoją aplikację** do lokalizacji **Europa** i **stany USA** .

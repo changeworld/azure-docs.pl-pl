@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a61b1a44419ac35efa5888de2b5a6e4988dfb512
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 29962fa217c34088ed17fdea68c2c1189a3bfcd2
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422301"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996582"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -79,7 +79,7 @@ Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej witryny i
 
 Żądania dotyczące adresu `http://contoso.com` są kierowane do puli ContosoServerPool, a żądania dotyczące adresu `http://fabrikam.com` — do puli FabrikamServerPool.
 
-Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane w ramach tego samego wdrożenia usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny podrzędne `http://blog.contoso.com` i `http://app.contoso.com` hostowane w ramach jednego wdrożenia usługi Application Gateway.
+Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane w ramach tego samego wdrożenia usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny `http://blog.contoso.com` i `http://app.contoso.com` hostowane w jednym wdrożeniu bramy Application Gateway.
 
 Aby uzyskać więcej informacji, zobacz [hosting z wieloma lokacjami za pomocą Application Gateway](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
 
@@ -111,7 +111,7 @@ Aby uzyskać więcej informacji, zobacz [Obsługa protokołu WebSocket](https://
 
 ## <a name="connection-draining"></a>Opróżnianie połączeń
 
-Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli zaplecza podczas planowanych aktualizacji usługi. To ustawienie jest włączane za pośrednictwem ustawienia http zaplecza i można je zastosować do wszystkich członków puli zaplecza podczas tworzenia reguły. Po włączeniu Application Gateway zapewnia wszystkie żądania wyrejestrowania puli zaplecza nie otrzymają żadnego nowego żądania, zezwalając na ukończenie istniejących żądań w skonfigurowanym limicie czasu. Dotyczy to zarówno wystąpień zaplecza, które są jawnie usuwane z puli zaplecza przez wywołanie interfejsu API, jak i wystąpienia zaplecza, które są zgłaszane jako w złej kondycji określone przez sondy kondycji.
+Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli zaplecza podczas planowanych aktualizacji usługi. To ustawienie jest włączane za pośrednictwem ustawienia http zaplecza i można je zastosować do wszystkich członków puli zaplecza podczas tworzenia reguły. Po włączeniu Application Gateway gwarantuje, że wszystkie wystąpienia puli zaplecza nie otrzymają żadnego nowego żądania, jednocześnie zezwalając na ukończenie istniejących żądań w skonfigurowanym limicie czasu. Dotyczy to zarówno wystąpień zaplecza, które zostały jawnie usunięte z puli zaplecza przez zmianę konfiguracji użytkownika, jak i wystąpienia zaplecza, które są zgłaszane jako w złej kondycji określone przez sondy kondycji. Jedynym wyjątkiem są żądania związane z wyrejestrowywaniem wystąpień, które zostały wyrejestrowane jawnie, z powodu koligacji sesji zarządzanej przez bramę i nadal będą przekazywane do nich serwery proxy.
 
 Aby uzyskać więcej informacji, zobacz sekcję opróżnianie połączenia w temacie [Omówienie konfiguracji Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 
@@ -143,7 +143,7 @@ Pełna lista limitów usługi Application Gateway znajduje się na stronie [ogra
 
 W poniższej tabeli przedstawiono średnią przepływność wydajności dla każdego wystąpienia usługi Application Gateway V1 z włączonym odciążeniem SSL:
 
-| Średni rozmiar odpowiedzi strony zaplecza | Small | Medium | Duże |
+| Średni rozmiar odpowiedzi strony zaplecza | Małe | Średnie | Duże |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

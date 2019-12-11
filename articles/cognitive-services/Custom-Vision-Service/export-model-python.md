@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718425"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969843"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Samouczek: uruchamianie modelu TensorFlow w języku Python
 
@@ -26,10 +26,10 @@ W tym przewodniku Szybki start opisano, jak po [wyeksportowaniu modelu TensorFlo
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby korzystać z tego samouczka, należy wykonać następujące czynności:
+Aby korzystać z tego samouczka, wykonaj następujące czynności:
 
-- Zainstalować język Python 2.7+ lub Python 3.5+.
-- Zainstalować program pip.
+- Zainstaluj język Python 2.7+ lub Python 3.5+.
+- Zainstaluj program pip.
 
 Następnie należy zainstalować następujące pakiety:
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Przygotowanie obrazu do przewidywania
 
-Przygotowanie obrazu tak, aby miał odpowiedni kształt do przewidywania, wymaga wykonania kilku czynności. Te kroki są podobne do manipulacji obrazem podczas uczenia:
+Istnieje kilka kroków, które należy wykonać, aby przygotować obraz do przewidywania. Te kroki są podobne do manipulacji obrazem podczas uczenia:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Otwieranie pliku i tworzenie obrazu w przestrzeni kolorów BGR
 

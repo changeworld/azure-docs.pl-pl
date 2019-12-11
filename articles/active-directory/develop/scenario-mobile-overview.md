@@ -1,5 +1,5 @@
 ---
-title: Aplikacja mobilna, która wywołuje interfejsy API sieci Web — Omówienie
+title: Tworzenie aplikacji mobilnej, która wywołuje interfejsy API sieci Web | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (omówienie)
 services: active-directory
@@ -17,16 +17,16 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803743"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965470"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scenariusz: aplikacja mobilna, która wywołuje interfejsy API sieci Web
 
-Dowiedz się, co musisz wiedzieć, aby utworzyć aplikację mobilną, która wywołuje interfejsy API sieci Web.
+Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje interfejsy API sieci Web.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

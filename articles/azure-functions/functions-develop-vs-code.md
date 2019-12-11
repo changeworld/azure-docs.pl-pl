@@ -3,12 +3,12 @@ title: Opracowywanie Azure Functions przy użyciu Visual Studio Code
 description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu rozszerzenia Azure Functions dla Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f9ad40cd50863990b9af629c77321195dce5e97c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227056"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975588"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Opracowywanie Azure Functions przy użyciu Visual Studio Code
 
@@ -20,7 +20,7 @@ Rozszerzenie Azure Functions zapewnia następujące korzyści:
 * Opublikuj projekt Azure Functions bezpośrednio na platformie Azure.
 * Pisz swoje funkcje w różnych językach, wykorzystując zalety Visual Studio Code.
 
-Rozszerzenie może być używane z następującymi językami, które są obsługiwane przez Azure Functions w wersji 2. x środowiska uruchomieniowego:
+Rozszerzenia można używać w następujących językach, które są obsługiwane przez środowisko uruchomieniowe Azure Functions, począwszy od wersji 2. x:
 
 * [C#tworzone](functions-dotnet-class-library.md)
 * <sup>*skryptu</sup> [ C# ](functions-reference-csharp.md)
@@ -263,7 +263,7 @@ Rozszerzenie Azure Functions pozwala uruchamiać projekt Functions na lokalnym k
 
 Aby uruchomić projekt funkcji lokalnie, należy spełnić następujące wymagania dodatkowe:
 
-* Zainstaluj wersję 2. x [Azure Functions Core Tools](functions-run-local.md#v2). Pakiet podstawowych narzędzi jest pobierany i instalowany automatycznie podczas lokalnego uruchamiania projektu. Podstawowe narzędzia obejmują cały Azure Functions środowiska uruchomieniowego, więc pobieranie i instalacja może zająć trochę czasu.
+* Zainstaluj wersję 2. x lub nowszą [Azure Functions Core Tools](functions-run-local.md#v2). Pakiet podstawowych narzędzi jest pobierany i instalowany automatycznie podczas lokalnego uruchamiania projektu. Podstawowe narzędzia obejmują cały Azure Functions środowiska uruchomieniowego, więc pobieranie i instalacja może zająć trochę czasu.
 
 * Zainstaluj określone wymagania dla wybranego języka:
 
@@ -271,7 +271,7 @@ Aby uruchomić projekt funkcji lokalnie, należy spełnić następujące wymagan
     | -------- | --------- |
     | **C#** | [C#rozszerzenia](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Narzędzia interfejs wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Debuger dla rozszerzenia Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 lub nowszy](https://maven.apache.org/) |
-    | **JavaScript** | <sup>*</sup> [Node. js](https://nodejs.org/) |  
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Rozszerzenie języka Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>Zalecane środowisko [Python 3.6.8](https://www.python.org/downloads/)|
 
     <sup>*</sup> Aktywne wersje LTS LTS i Maintenance (zalecane 8.11.1 i 10.14.1).
@@ -311,7 +311,7 @@ Wartości w **connectionStrings** nigdy nie są publikowane.
 Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz sekcję zmienne środowiskowe w następujących artykułach referencyjnych dotyczących języka:
 
 * [C#prekompilowanego](functions-dotnet-class-library.md#environment-variables)
-* [C#skrypt (. CSX)](functions-reference-csharp.md#environment-variables)
+* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -404,11 +404,11 @@ Rozszerzenie Azure Functions zapewnia przydatny interfejs graficzny w obszarze d
 | **Instalowanie lub aktualizowanie Azure Functions Core Tools** | Instaluje lub aktualizuje [Azure Functions Core Tools], który jest używany do lokalnego uruchamiania funkcji. |
 | **Ponowne wdrażanie**  | Umożliwia ponowne wdrożenie plików projektu z połączonego repozytorium git do określonego wdrożenia na platformie Azure. Aby ponownie opublikować aktualizacje lokalne z Visual Studio Code, [Opublikuj ponownie projekt](#republish-project-files). |
 | **Zmień nazwę ustawień** | Zmienia nazwę klucza istniejącego ustawienia aplikacji funkcji na platformie Azure. To polecenie nie ma wpływu na ustawienia w pliku Local. Settings. JSON. Po zmianie nazwy ustawień na platformie Azure należy [pobrać te zmiany do projektu lokalnego](#download-settings-from-azure). |
-| **Uruchomieniu** | Uruchamia ponownie aplikację funkcji na platformie Azure. Wdrożenie aktualizacji powoduje również ponowne uruchomienie aplikacji funkcji. |
+| **Uruchom ponownie** | Uruchamia ponownie aplikację funkcji na platformie Azure. Wdrożenie aktualizacji powoduje również ponowne uruchomienie aplikacji funkcji. |
 | **Ustaw AzureWebJobsStorage**| Ustawia wartość ustawienia aplikacji `AzureWebJobsStorage`. To ustawienie jest wymagane przez Azure Functions. Jest on ustawiany podczas tworzenia aplikacji funkcji na platformie Azure. |
 | **Rozpocznij** | Uruchamia zatrzymaną aplikację funkcji na platformie Azure. |
 | **Uruchom dzienniki przesyłania strumieniowego** | Uruchamia dzienniki przesyłania strumieniowego dla aplikacji funkcji na platformie Azure. Użyj dzienników przesyłania strumieniowego podczas zdalnego rozwiązywania problemów na platformie Azure, jeśli chcesz zobaczyć informacje o rejestrowaniu w czasie niemal rzeczywistym. Aby dowiedzieć się więcej, zobacz [dzienniki przesyłania strumieniowego](#streaming-logs). |
-| **Komunikat** | Powoduje zatrzymanie aplikacji funkcji działającej na platformie Azure. |
+| **Stop** | Powoduje zatrzymanie aplikacji funkcji działającej na platformie Azure. |
 | **Zatrzymywanie dzienników przesyłania strumieniowego** | Powoduje zatrzymanie dzienników przesyłania strumieniowego dla aplikacji funkcji na platformie Azure. |
 | **Przełącz jako ustawienie miejsca** | Gdy ta opcja jest włączona, zapewnia, że ustawienie aplikacji będzie trwało dla danego miejsca wdrożenia. |
 | **Odinstaluj Azure Functions Core Tools** | Usuwa Azure Functions Core Tools, które są wymagane przez rozszerzenie. |

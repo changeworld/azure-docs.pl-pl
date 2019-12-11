@@ -1,7 +1,7 @@
 ---
 title: Uczenie scikit — uczenie modeli uczenia maszynowego
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak uruchamiać scikite skrypty szkoleniowe na skalę przedsiębiorstwa przy użyciu klasy skryptu sklearn szacowania firmy Azure Machine Learning. Przykładowe skrypty klasyfikują obrazy kwiatów z przesłoną w celu utworzenia modelu uczenia maszynowego na podstawie zestawu danych Iris scikit.
+description: Dowiedz się, jak uruchamiać skrypty szkoleniowe scikit w skali przedsiębiorstwa przy użyciu klasy Azure Machine Learning skryptu sklearn szacowania. Przykładowe skrypty klasyfikują obrazy kwiatów z przesłoną w celu utworzenia modelu uczenia maszynowego na podstawie zestawu danych Iris scikit.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a85d33a804c8aaf3081439806bf69dab5263dcf2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2b6cdf9350d95de901e8a0f1e875d90513b33f1a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224836"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976115"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Kompiluj scikit — Poznaj modele na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule dowiesz się, jak uruchamiać scikite skrypty szkoleniowe na skalę przedsiębiorstwa przy użyciu klasy [skryptu sklearn szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) firmy Azure Machine Learning. 
+W tym artykule dowiesz się, jak uruchamiać skrypty szkoleniowe scikit na poziomie przedsiębiorstwa przy użyciu klasy Azure Machine Learning [skryptu sklearn szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) . 
 
 Przykładowe skrypty w tym artykule służą do klasyfikowania obrazów kwiatów w formacie Iris w celu utworzenia modelu uczenia maszynowego na podstawie [zestawu danych Iris](https://archive.ics.uci.edu/ml/datasets/iris)scikit.
 
@@ -89,7 +89,7 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 W tym samouczku skrypt szkoleniowy **train_iris. PR** został już udostępniony. W tym celu należy mieć możliwość wykonania dowolnego niestandardowego skryptu szkoleniowego i uruchomienia go z platformą Azure ML bez konieczności modyfikowania kodu.
 
-Aby korzystać z funkcji śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w skrypcie szkoleniowym.  Skrypt szkoleniowy **train_iris. PR** pokazuje, w jaki sposób rejestrować niektóre metryki w ramach uruchomienia usługi Azure ml przy użyciu obiektu `Run` w skrypcie.
+Aby skorzystać z możliwości śledzenia i metryk platformy Azure ML, Dodaj niewielką ilość kodu platformy Azure ML w ramach skryptu szkoleniowego.  Skrypt szkoleniowy **train_iris. PR** pokazuje, w jaki sposób rejestrować niektóre metryki w ramach uruchomienia usługi Azure ml przy użyciu obiektu `Run` w skrypcie.
 
 Podany skrypt szkoleniowy używa przykładowych danych z funkcji `iris = datasets.load_iris()`.  W przypadku własnych danych może być konieczne wykonanie kroków takich jak [przekazywanie zestawu danych i skryptów](how-to-train-keras.md#data-upload) w celu udostępnienia danych podczas szkoleń.
 
@@ -190,7 +190,7 @@ model = run.register_model(model_name='sklearn-iris',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 Właśnie zarejestrowany model można wdrożyć w taki sam sposób jak każdy inny zarejestrowany model w Azure Machine Learning, niezależnie od tego, który szacowania używany do uczenia się. Wdrożenie How-to zawiera sekcję dotyczącą rejestrowania modeli, ale możesz przejść bezpośrednio do tworzenia celu [obliczeń](how-to-deploy-and-where.md#choose-a-compute-target) dla wdrożenia, ponieważ istnieje już zarejestrowany model.
 
@@ -218,6 +218,6 @@ Pełne [Omówienie](how-to-deploy-and-where.md) wdrażania w Azure Machine Learn
 
 W tym artykule przedstawiono przeszkolony i zarejestrowany model uczenia scikit oraz informacje o opcjach wdrażania. Zapoznaj się z innymi artykułami, aby dowiedzieć się więcej na temat Azure Machine Learning.
 
-* [Śledzenie metryk uruchamiania podczas szkolenia](how-to-track-experiments.md)
-* [Dostrajanie parametrów](how-to-tune-hyperparameters.md)
+* [Śledzenie metryk są uruchamiane podczas szkolenia](how-to-track-experiments.md)
+* [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
 * [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

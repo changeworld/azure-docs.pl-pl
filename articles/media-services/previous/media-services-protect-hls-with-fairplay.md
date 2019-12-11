@@ -1,6 +1,6 @@
 ---
-title: Ochrona HLS zawartości za pomocą PlayReady firmy Microsoft lub technologii FairPlay firmy Apple — Azure | Dokumentacja firmy Microsoft
-description: 'Ten temat zawiera omówienie i pokazuje, jak używać usługi Azure Media Services do dynamicznego szyfrowania zawartości z użyciem technologii FairPlay firmy Apple HTTP Live Streaming (HLS). Pokazano również, jak na potrzeby dostarczać licencje usługi fairplay: dla klientów usługi dostarczania licencji Media Services.'
+title: Ochrona zawartości HLS za pomocą oprogramowania Microsoft PlayReady lub Apple FairPlay-Azure | Microsoft Docs
+description: Ten temat zawiera omówienie i pokazuje, jak używać Azure Media Services do dynamicznego szyfrowania zawartości HTTP Live Streaming (HLS) za pomocą Apple FairPlay. Pokazano w nim także, jak używać usługi dostarczania licencji Media Services do dostarczania licencji FairPlay klientom.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8d5683cb060b63aebad7c68672c78f5b350a25d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073581"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968769"
 ---
-# <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Ochrona zawartości przy użyciu technologii FairPlay firmy Apple lub Microsoft PlayReady przez moduł HLS
+# <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Ochrona zawartości HLS za pomocą oprogramowania Apple FairPlay lub Microsoft PlayReady
 
 > [!NOTE]
-> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadnych nowych funkcji lub funkcje są dodawane do usługi Media Services v2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).   > Żadne nowe funkcje lub funkcje nie są dodawane do Media Services V2. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 >
 
-Usługa Azure Media Services umożliwia dynamiczne szyfrowanie zawartości HTTP Live Streaming (HLS), korzystając z następujących formatów:  
+Azure Media Services umożliwia dynamiczne szyfrowanie zawartości HTTP Live Streaming (HLS) przy użyciu następujących formatów:  
 
-* **Czysty klucz AES-128 obwiedni**
+* **Przezroczysty klucz koperty AES-128**
 
-    Całego fragmentu, są szyfrowane przy użyciu **CBC AES-128** trybu. Odszyfrowywanie strumień jest obsługiwany natywnie przez systemy iOS i OS X odtwarzacza. Aby uzyskać więcej informacji, zobacz [dynamicznego szyfrowania przy użyciu algorytmu AES-128 i usługa dostarczania kluczy](media-services-protect-with-aes128.md).
+    Cały fragment jest szyfrowany przy użyciu trybu **CBC AES-128** . Odszyfrowywanie strumienia jest obsługiwane przez program iOS i system OS X Player natywnie. Aby uzyskać więcej informacji, zobacz [Korzystanie z szyfrowania dynamicznego AES-128 i usługi dostarczania kluczy](media-services-protect-with-aes128.md).
 * **Apple FairPlay**
 
-    Poszczególne próbki audio i wideo są szyfrowane przy użyciu **CBC AES-128** trybu. **FairPlay Streaming** (kl. / s) jest zintegrowana z systemów operacyjnych urządzeń z natywną obsługą w systemach iOS i Apple TV. Safari w systemie OS X umożliwia kl. / s za pomocą obsługi interfejsu Encrypted Media Extensions (EME).
+    Poszczególne próbki wideo i audio są szyfrowane przy użyciu trybu **CBC AES-128** . **FairPlay Streaming** (kl. / s) jest zintegrowana z systemów operacyjnych urządzeń z natywną obsługą w systemach iOS i Apple TV. Safari w systemie OS X umożliwia kl. / s za pomocą obsługi interfejsu Encrypted Media Extensions (EME).
 * **Microsoft PlayReady**
 
-Na poniższej ilustracji przedstawiono **HLS + FairPlay lub technologii PlayReady szyfrowania dynamicznego** przepływu pracy.
+Na poniższej ilustracji przedstawiono przepływ pracy **szyfrowania dynamicznego HLS + FairPlay lub PlayReady** .
 
-![Diagram przepływu pracy szyfrowania dynamicznego](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
+![Diagram dynamicznego przepływu pracy szyfrowania](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
-W tym artykule pokazano, jak dynamiczne szyfrowanie zawartości HLS z użyciem technologii FairPlay firmy Apple za pomocą usługi Media Services. Pokazano również, jak na potrzeby dostarczać licencje usługi fairplay: dla klientów usługi dostarczania licencji Media Services.
+W tym artykule pokazano, jak za pomocą Media Services dynamicznie szyfrować zawartość HLS przy użyciu usługi Apple FairPlay. Pokazano w nim także, jak używać usługi dostarczania licencji Media Services do dostarczania licencji FairPlay klientom.
 
 > [!NOTE]
-> Chcesz także szyfrowanie zawartości przy użyciu technologii PlayReady HLS, musisz utworzyć wspólny klucz zawartości i skojarz go z Twojej zawartości. Należy również skonfigurować zasady autoryzacji klucza zawartości, zgodnie z opisem w [przy użyciu technologii PlayReady, dynamicznego szyfrowania common encryption](media-services-protect-with-playready-widevine.md).
+> Jeśli chcesz również zaszyfrować zawartość HLS za pomocą oprogramowania PlayReady, musisz utworzyć wspólny klucz zawartości i skojarzyć go z elementem zawartości. Należy również skonfigurować zasady autoryzacji klucza zawartości, zgodnie z opisem w temacie Korzystanie z [uwierzytelniania powszechnie używanego](media-services-protect-with-playready-widevine.md)w programie PlayReady.
 >
 >
 
 ## <a name="requirements-and-considerations"></a>Wymagania i uwagi
 
-Wymagane jest spełnienie następujących podczas korzystania z usługi Media Services, aby dostarczać HLS zaszyfrowanych z użyciem technologii FairPlay i dostarczać licencje usługi fairplay::
+W przypadku Media Services korzystania z usługi HLS zaszyfrowanej za pomocą FairPlay i dostarczania licencji FairPlay wymagane są następujące elementy:
 
   * Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
-  * Konto usługi Media Services. Aby go utworzyć, zobacz [Tworzenie konta usługi Azure Media Services przy użyciu witryny Azure portal](media-services-portal-create-account.md).
+  * Konto usługi Media Services. Aby go utworzyć, zobacz [Tworzenie konta Azure Media Services przy użyciu Azure Portal](media-services-portal-create-account.md).
   * Zarejestruj się przy użyciu [programem tworzącym Apple](https://developer.apple.com/).
   * Firma Apple wymaga właścicielem zawartości w celu uzyskania [pakietu wdrożeniowego](https://developer.apple.com/contact/fps/). Stan już zaimplementowany klucz zabezpieczeń modułu (KSM) za pomocą usługi Media Services i żądają pakiecie końcowym kl. / s. Istnieją instrukcje w pakiecie końcowym kl. / s, aby wygenerować certyfikacji i Uzyskaj klucz klucz tajny aplikacji (AKS). ZADAJ umożliwiają konfigurowanie technologii FairPlay.
-  * Wersja usługi Azure Media Services .NET SDK **3.6.0** lub nowszej.
+  * Azure Media Services .NET SDK w wersji **3.6.0** lub nowszej.
 
-Następujące elementy musi być ustawione na stronie usługi Media Services do dostarczania kluczy:
+Następujące elementy muszą zostać ustawione w Media Services stronie dostarczania klucza:
 
-  * **Certyfikat aplikacji (AC)** : Jest to plik PFX, który zawiera klucz prywatny. Utwórz ten plik i szyfrować je przy użyciu hasła.
+  * **Certyfikat aplikacji (AC)** : to jest plik PFX, który zawiera klucz prywatny. Utwórz ten plik i szyfrować je przy użyciu hasła.
 
-       Po skonfigurowaniu zasad dostarczania kluczy, należy podać to hasło, a plik pfx w formacie Base64.
+       Konfigurując zasady dostarczania kluczy, należy podać to hasło i plik PFX w formacie base64.
 
       W poniższych krokach opisano sposób generowania plik certyfikatu PFX dla technologii FairPlay:
 
@@ -74,15 +74,15 @@ Następujące elementy musi być ustawione na stronie usługi Media Services do 
     3. W wierszu polecenia uruchom następujące polecenie. Spowoduje to konwersję plik PEM do pliku .pfx, przy użyciu klucza prywatnego. Hasło dla pliku PFX jest następnie proszeni przez OpenSSL.
 
         Pkcs12 "C:\OpenSSL-Win32\bin\openssl.exe" — Eksportowanie — limit FairPlay out.pfx-inkey privatekey.pem — w file:privatekey-pem-pass.txt - passin out.pem technologii FairPlay
-  * **Hasło certyfikatu aplikacji**: Hasło do tworzenia pliku .pfx.
-  * **Hasło certyfikatu aplikacji**: Należy przekazać hasła, podobnie jak przekazują inne klucze usługi Media Services. Użyj **ContentKeyType.FairPlayPfxPassword** wartości wyliczenia można pobrać identyfikatora usługi multimediów. Jest to, czego potrzebują do użycia w opcji zasad dostarczania kluczy.
-  * **iv**: Jest to wartość losowe 16 bajtów. Musi on być zgodny iv w zasad dostarczania elementów zawartości. Generowanie iv i umieścić go w obu miejscach: zasady dostarczania elementu zawartości i opcji zasad dostarczania kluczy.
-  * **POPROŚ**: Ten klucz jest zgłaszany, jeśli Generowanie certyfikacji przy użyciu portalu dla deweloperów firmy Apple. Każdy zespół programistyczny otrzymuje unikatowy pytanie. Zapisz kopię ZADAJ i zapisz go w bezpiecznym miejscu. Należy skonfigurować poproś jako FairPlayAsk Media Services.
-  * **POPROŚ IDENTYFIKATOR**: Ten identyfikator jest uzyskać podczas przekazywania poproś do usługi Media Services. Należy przekazać pytanie za pomocą **ContentKeyType.FairPlayAsk** wartość wyliczenia. W rezultacie identyfikator usługi multimediów jest zwracane, a jest to, jakie powinny być używane, gdy ustawienie opcji zasad dostarczania kluczy.
+  * **Hasło certyfikatu aplikacji**: hasło do utworzenia pliku .pfx.
+  * **Identyfikator hasła certyfikatu aplikacji**: należy przekazać hasło, podobnie jak w przypadku przekazywania innych kluczy Media Services. Użyj wartości wyliczenia **ContentKeyType. FairPlayPfxPassword** , aby uzyskać identyfikator Media Services. Jest to potrzebne do użycia w opcji zasady dostarczania kluczy.
+  * **IV**: jest to wartość losowa o 16 bajtów. Musi być zgodna z IV w ramach zasad dostarczania elementów zawartości. Wygenerujesz IV i umieścisz ją w obydwu miejscach: zasady dostarczania zasobów i opcja zasady dostarczania kluczy.
+  * **Poproś**: ten klucz jest zgłaszany, jeśli Generowanie certyfikacji przy użyciu portalu dla deweloperów firmy Apple. Każdy zespół programistyczny otrzymuje unikatowy pytanie. Zapisz kopię ZADAJ i zapisz go w bezpiecznym miejscu. Aby Media Services później, należy skonfigurować zapytanie jako FairPlayAsk.
+  * **Identyfikator pytania**: ten identyfikator jest uzyskiwany podczas przekazywania do Media Services. Należy przekazać zapytanie przy użyciu wartości wyliczenia **ContentKeyType. FairPlayAsk** . W związku z tym zwracany jest identyfikator Media Services i jest to, co powinno być używane podczas ustawiania opcji zasady dostarczania kluczy.
 
 Po stronie klienta kl. / s, należy ustawić następujące elementy:
 
-  * **Certyfikat aplikacji (AC)** : Jest to plik.cer/.der, który zawiera klucz publiczny, który system operacyjny używa szyfrowania niektóre ładunku. Usługa Media Services musi znać na jego temat, ponieważ jest to wymagane przez gracza. Usługa dostarczania kluczy odszyfrowuje ją przy użyciu odpowiedniego klucza prywatnego.
+  * **Certyfikat aplikacji (AC)** : jest to plik.cer/.der, który zawiera klucz publiczny, który system operacyjny używa szyfrowania niektóre ładunku. Usługa Media Services musi znać na jego temat, ponieważ jest to wymagane przez gracza. Usługa dostarczania kluczy odszyfrowuje ją przy użyciu odpowiedniego klucza prywatnego.
 
 Aby odtworzyć strumień zaszyfrowanej technologia FairPlay, Pobierz rzeczywistych ZADAJĄ pierwszy, a następnie wygeneruj prawdziwym certyfikatem. Ten proces tworzy wszystkie trzy elementy:
 
@@ -90,10 +90,10 @@ Aby odtworzyć strumień zaszyfrowanej technologia FairPlay, Pobierz rzeczywisty
   * plik PFX
   * hasło PFX
 
-Następujący klienci obsługują HLS z **CBC AES-128** szyfrowania: Safari on OS X, Apple TV, iOS.
+Następujący klienci obsługują HLS z szyfrowaniem **AES-128 CBC** : Safari w systemie OS X, Apple TV i iOS.
 
-## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>Konfigurowanie technologii FairPlay dynamiczne szyfrowanie i licencji usług dostarczania
-Poniżej przedstawiono ogólne kroki chroni Twoje zasoby, z użyciem technologii FairPlay przy użyciu usługi dostarczania licencji Media Services, a także za pomocą szyfrowania dynamicznego.
+## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>Konfigurowanie szyfrowania dynamicznego FairPlay i usług dostarczania licencji
+Poniżej przedstawiono ogólne kroki ochrony zasobów w programie FairPlay przy użyciu usługi dostarczania licencji Media Services, a także przy użyciu szyfrowania dynamicznego.
 
 1. Utwórz element zawartości i przekaż do niego pliki.
 2. Przekoduj element zawartości zawierający plik na zestaw MP4 o adaptacyjnej szybkości bitowej.
@@ -101,51 +101,51 @@ Poniżej przedstawiono ogólne kroki chroni Twoje zasoby, z użyciem technologii
 4. Skonfiguruj zasady autoryzacji klucza zawartości. Określ następujące ustawienia:
 
    * Metoda dostarczania (w tym przypadku FairPlay).
-   * Technologia FairPlay konfiguracji opcje zasad. Aby uzyskać więcej informacji na temat konfigurowania technologii FairPlay, zobacz **ConfigureFairPlayPolicyOptions()** metody w poniższym przykładzie.
+   * Konfiguracja opcji zasad FairPlay. Aby uzyskać szczegółowe informacje na temat sposobu konfigurowania FairPlay, zobacz metodę **ConfigureFairPlayPolicyOptions ()** w poniższym przykładzie.
 
      > [!NOTE]
      > Zazwyczaj należy skonfigurować opcje zasad FairPlay tylko raz, ponieważ masz tylko jeden zestaw certyfikacji i poproś.
      >
      >
    * Ograniczenia (otwarte lub tokenu).
-   * Informacje specyficzne dla typu klucza dostarczania, który definiuje sposób dostarczania klucza do klienta.
-5. Konfigurowanie zasad dostarczania elementów zawartości. Konfiguracja zasad dostarczania obejmuje:
+   * Informacje specyficzne dla typu dostarczania klucza, które definiują sposób dostarczania klucza do klienta.
+5. Skonfiguruj zasady dostarczania elementów zawartości. Konfiguracja zasad dostarczania obejmuje:
 
    * Protokół dostarczania (HLS).
-   * Typ szyfrowania dynamicznego (common CBC encryption).
+   * Typ szyfrowania dynamicznego (typowe szyfrowanie CBC).
    * Adres URL pozyskiwania licencji.
 
      > [!NOTE]
-     > Jeśli użytkownik chce dostarczać strumień, który jest szyfrowana za pomocą technologii FairPlay i innym systemem Digital Rights Management (DRM), musisz skonfigurować zasady dostarczania oddzielne:
+     > Jeśli chcesz dostarczyć strumień zaszyfrowany za pomocą FairPlay i innego systemu Digital Rights Management (DRM), musisz skonfigurować oddzielne zasady dostarczania:
      >
-     > * Jeden IAssetDeliveryPolicy skonfigurować Dynamic Adaptive Streaming za pośrednictwem protokołu HTTP (DASH) za pomocą Common Encryption (CENC) (PlayReady i Widevine) i Smooth za pomocą usług PlayReady
-     > * Inny IAssetDeliveryPolicy konfigurowanie technologii FairPlay dla HLS
+     > * Jeden IAssetDeliveryPolicy do konfigurowania dynamicznego adaptacyjnego przesyłania strumieniowego za pośrednictwem protokołu HTTP (PAUZy) z Common Encryption (CENC) (PlayReady + Widevine) i bezproblemowe korzystanie z oprogramowania PlayReady
+     > * Inna IAssetDeliveryPolicy do skonfigurowania FairPlay dla HLS
      >
      >
 6. Utwórz lokalizator OnDemand w celu pobrania adresu URL przesyłania strumieniowego.
 
-## <a name="use-fairplay-key-delivery-by-player-apps"></a>Technologia FairPlay dostarczania kluczy za pomocą aplikacji odtwarzacza
-Możesz opracowywać aplikacje player przy użyciu zestawu SDK dla systemu iOS. Aby można było do odtwarzania zawartości z użyciem technologii FairPlay, musisz zaimplementować protokół wymiany licencji. Ten protokół nie jest określony przez firmę Apple. Jest każda aplikacja sposób wysyłania żądań dostarczania kluczy. Usługa dostarczania kluczy Media Services FairPlay oczekuje SPC na uszkodzonym www-form-url wpis zakodowany komunikat w następującej postaci:
+## <a name="use-fairplay-key-delivery-by-player-apps"></a>Używanie dostarczania kluczy FairPlay przez aplikacje odtwarzacza
+Aplikacje odtwarzacza można opracowywać przy użyciu zestawu iOS SDK. Aby można było do odtwarzania zawartości z użyciem technologii FairPlay, musisz zaimplementować protokół wymiany licencji. Ten protokół nie jest określony przez firmę Apple. Jest każda aplikacja sposób wysyłania żądań dostarczania kluczy. Usługa dostarczania kluczy Media Services FairPlay oczekuje SPC na uszkodzonym www-form-url wpis zakodowany komunikat w następującej postaci:
 
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Usługa Azure Media Player obsługuje FairPlay odtwarzania. Zobacz [dokumentacji usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) Aby uzyskać więcej informacji.
+> Azure Media Player obsługuje odtwarzanie FairPlay. Więcej informacji można znaleźć w [dokumentacji Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) .
 >
 >
 
 ## <a name="streaming-urls"></a>Adresy URL przesyłania strumieniowego
-Jeśli element zawartości został zaszyfrowany za pomocą więcej niż jeden DRM, należy używać szyfrowania tagu w adresu URL przesyłania strumieniowego: (format = "m3u8-aapl" szyfrowania = "xxx").
+Jeśli zasób został zaszyfrowany za pomocą więcej niż jednego obiektu DRM, należy użyć znacznika szyfrowania w adresie URL przesyłania strumieniowego: (format = 3u8-AAPL ', szyfrowanie = ' xxx ').
 
-Mają zastosowanie następujące kwestie:
+Obowiązują następujące zastrzeżenia:
 
 * Można określić tylko zero lub jeden typ szyfrowania.
-* Typ szyfrowania nie ma określonego w adresie URL, jeśli tylko jeden szyfrowania została zastosowana do zasobu.
-* Typ szyfrowania jest uwzględniana wielkość liter.
+* Nie trzeba określać typu szyfrowania w adresie URL, jeśli do zasobu zastosowano tylko jedno szyfrowanie.
+* W przypadku typu szyfrowania wielkość liter nie jest rozróżniana.
 * Można określić następujące typy szyfrowania:  
-  * **cenc**:  Stosowanie szyfrowania Common encryption (PlayReady lub Widevine)
-  * **cbcs-aapl**: FairPlay
-  * **cbc**: Szyfrowanie koperty AES
+  * **Cenc**: typowe szyfrowanie (PlayReady lub Widevine)
+  * **cbcs-AAPL**: FairPlay
+  * **CBC**: szyfrowanie na kopercie AES
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -159,7 +159,7 @@ Mają zastosowanie następujące kwestie:
 
 ## <a name="example"></a>Przykład
 
-W poniższym przykładzie pokazano możliwość korzystania z usługi Media Services do dostarczania zawartości zaszyfrowany z użyciem technologii FairPlay. Ta funkcja została wprowadzona w usłudze Azure Media Services SDK dla platformy .NET w wersji 3.6.0. 
+Poniższy przykład demonstruje możliwość używania Media Services do dostarczania zawartości zaszyfrowanej za pomocą FairPlay. Ta funkcja została wprowadzona w zestawie Azure Media Services SDK dla platformy .NET w wersji 3.6.0. 
 
 Zastąp kod w pliku Program.cs kodem przedstawionym w tej sekcji.
 
@@ -555,8 +555,12 @@ namespace DynamicEncryptionWithFairPlay
 }
 ```
 
-## <a name="next-steps-media-services-learning-paths"></a>Następne kroki: Ścieżki szkoleniowe dotyczące usługi Media Services
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+
+## <a name="next-steps-media-services-learning-paths"></a>Następne kroki: ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Java | Microsoft Docs'
+title: 'Szybki Start: wywoływanie punktu końcowego wyszukiwanie niestandardowe Bing przy użyciu języka Java | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing w języku Java.
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564678"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973513"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Szybki start: Wywoływanie punktu końcowego wyszukiwania niestandardowego Bing przy użyciu języka Java
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Szybki Start: wywoływanie punktu końcowego wyszukiwanie niestandardowe Bing przy użyciu języka Java
 
-Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystąpienia wyszukiwania niestandardowego Bing. Chociaż ta aplikacja jest napisana w języku Java, interfejs API wyszukiwania niestandardowego Bing jest usługą internetową RESTful zgodną z większością języków programowania. Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
+Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników wyszukiwania z wystąpienia wyszukiwania niestandardowego Bing. Chociaż ta aplikacja jest napisana w języku Java, interfejs API wyszukiwania niestandardowego Bing jest usługą internetową RESTful zgodną z większością języków programowania. Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Wystąpienie wyszukiwania niestandardowego Bing. Zobacz [Szybki start: tworzenie pierwszego wystąpienia usługi wyszukiwania niestandardowego Bing](quick-start.md), aby uzyskać więcej informacji.
+- Wystąpienie wyszukiwania niestandardowego Bing. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie pierwszego wystąpienia wyszukiwanie niestandardowe Bing](quick-start.md) .
 
 - Najnowszy zestaw [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
@@ -50,7 +50,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć żądanie wyników z wystą
     import com.google.gson.JsonParser;
     ```
 
-2. Utwórz klasę o nazwie `CustomSrchJava` i utwórz zmienne dla klucza subskrypcji, punktu końcowego wyszukiwania niestandardowego oraz identyfikatora konfiguracji niestandardowej wystąpienia. 
+2. Utwórz klasę o nazwie `CustomSrchJava`i Utwórz zmienne dla klucza subskrypcji, niestandardowego punktu końcowego wyszukiwania oraz niestandardowego identyfikatora konfiguracji wystąpienia wyszukiwania. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";

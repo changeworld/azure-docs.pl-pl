@@ -1,6 +1,6 @@
 ---
 title: Pojęcia dotyczące urządzeń w usłudze Azure Device Provisioning | Microsoft Docs
-description: Zawiera opis pojęć dotyczących aprowizacji urządzeń, które są specyficzne dla urządzeń z usługą Device Provisioning i IoT Hub
+description: Zawiera opis pojęć dotyczących aprowizacji urządzeń, które są specyficzne dla urządzeń z usługą Device Provisioning (DPS) i IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 11/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720533"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975316"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Device Provisioning Service pojęć dotyczących urządzeń
 

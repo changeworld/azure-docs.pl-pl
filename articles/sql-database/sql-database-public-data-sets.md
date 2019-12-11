@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821280"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973547"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i tworzenia prototypów
 
@@ -26,7 +26,7 @@ Przejrzyj listę publicznych zestawów danych dla danych, których można użyć
 
 | Źródło danych | Informacje o danych | Informacje o plikach |
 |---|---|---|
-| [Dane rządowe Stanów Zjednoczonych](https://www.census.gov/data.html) | Ponad 190 000 zbiorów danych obejmujących rolnictwo, klimatyczne, konsumenta, ekosystemy, edukację, energię, finanse, zdrowie, lokalne władze administracyjne, produkcję, morski, ocean, bezpieczeństwo publiczne i naukę oraz badania w Stanach Zjednoczonych | Pliki różnych rozmiarów w różnych formatach, w tym HTML, XML, CSV, JSON, Excel i wiele innych. Można filtrować dostępne zestawy danych według formatu pliku. |
+| [Dane rządowe Stanów Zjednoczonych](https://catalog.data.gov/dataset) | Ponad 250 000 zbiorów danych obejmujących rolnictwo, klimatyczne, konsumenta, ekosystemy, edukację, energię, finanse, zdrowie, lokalne władze administracyjne, produkcję, morski, ocean, bezpieczeństwo publiczne i naukę oraz badania w Stanach Zjednoczonych | Pliki różnych rozmiarów w różnych formatach, w tym HTML, XML, CSV, JSON, Excel i wiele innych. Można filtrować dostępne zestawy danych według formatu pliku. |
 | [Dane spisu USA](https://www.census.gov/data.html) | Dane statystyczne dotyczące populacji w Stanach Zjednoczonych | Zestawy danych są w różnych formatach. |
 | [Dane analizy naziemnej z NASA](https://earthdata.nasa.gov/) | Ponad 32 000 zbierania danych obejmujących rolnictwo, atmosfera, biosfery, klimatu, cryosphere, wymiary ludzkie, sfera, Powierzchnia gruntów, oceany, interakcje Sun i inne. | Zestawy danych są w różnych formatach. |
 | [Opóźnienia lotu i inne dane transportu](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Wydział statystyk transportu w Stanach Zjednoczonych (BTS) jest śledzenie wydajności lotów domowych prowadzonych przez dużych przewoźników lotniczych. Wyświetlane są podsumowanie informacji o liczbie przelotów, opóźnionych, anulowanych i przekierowane loty... w tabelach podsumowujących ogłoszonych w tej witrynie sieci Web ". | Pliki są w formacie CSV. |

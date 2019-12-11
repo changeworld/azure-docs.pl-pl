@@ -1,6 +1,6 @@
 ---
 title: Rejestrowanie urządzenia X. 509 w usłudze Azure Device Provisioning przy użyciuC#
-description: W tym przewodniku Szybki start używane są rejestracje grupowe. W tym przewodniku szybki start Zarejestruj urządzenia X. 509 na platformie Azure C#IoT Hub Device Provisioning Service przy użyciu programu.
+description: W tym przewodniku Szybki start używane są rejestracje grupowe. W tym przewodniku szybki start Zarejestruj urządzenia X. 509 w usłudze Azure IoT Hub Device Provisioning Service (DPS C#) przy użyciu programu.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423323"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974737"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning Service przy użyciu języka C#
 
@@ -30,9 +30,9 @@ Chociaż kroki opisane w tym artykule działają na komputerach z systemem Windo
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/vs/).
+* Zainstaluj program [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows).
-* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
+* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
 
 ## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych
 
@@ -119,7 +119,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
    > * Trwałe kodowanie parametrów połączenia administratora usługi aprowizacji jest niezgodne z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń. Zamiast tego parametry połączenia powinny być przechowywane w sposób bezpieczny, np. w zabezpieczonym pliku konfiguracji lub rejestrze.
    > * Pamiętaj, aby przekazać tylko publiczną część certyfikatu podpisywania. Nigdy nie przekazuj plików pfx (PKCS12) ani plików pem zawierających klucze prywatne do usługi aprowizacji.
 
-1. Dodaj następującą metodę do klasy `Program`. Ten kod tworzy wpis grupy rejestracji, a następnie wywołuje metodę `CreateOrUpdateEnrollmentGroupAsync` na `ProvisioningServiceClient` w celu dodania grupy rejestracji do usługi aprowizacji.
+1. Dodaj następującą metodę do `Program` klasy. Ten kod tworzy wpis grupy rejestracji, a następnie wywołuje metodę `CreateOrUpdateEnrollmentGroupAsync` na `ProvisioningServiceClient` w celu dodania grupy rejestracji do usługi aprowizacji.
 
    ```csharp
    public static async Task RunSample()

@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub Device Provisioning Service — pojęcia dotyczące zabezpieczeń
-description: Opisuje koncepcje dotyczące aprowizacji zabezpieczeń dotyczące urządzeń z usługą Device Provisioning i IoT Hub
+description: Zawiera opis pojęć dotyczących aprowizacji zabezpieczeń specyficznych dla urządzeń z usługą Device Provisioning (DPS) i IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228821"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973462"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service pojęcia dotyczące zabezpieczeń 
 
@@ -40,7 +40,7 @@ Sprzętowy moduł zabezpieczeń (HSM) służy do bezpiecznego, opartego na sprz�
 
 Wpisy tajne urządzenia mogą być również przechowywane w oprogramowaniu (pamięci), ale jest mniej bezpieczną postacią magazynu niż moduł HSM.
 
-## <a name="trusted-platform-module"></a>moduł TPM
+## <a name="trusted-platform-module"></a>Moduł TPM
 
 Moduł TPM może odwoływać się do standardu w celu bezpiecznego przechowywania kluczy używanych do uwierzytelniania platformy lub może odwoływać się do interfejsu we/wy używanego do współpracy z modułami implementującymi standard. Moduły TPM może istnieć jako sprzęt dyskretny, zintegrowany sprzęt, oprogramowanie układowe lub oprogramowanie. Dowiedz się więcej o [zaświadczeniu moduły TPM i modułu TPM](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Usługa Device Provisioning obsługuje tylko moduł TPM 2,0.
 
@@ -54,7 +54,7 @@ Klucz poręczenia jest kluczem asymetrycznym zawartym wewnątrz modułu TPM, kt�
 
 Klucz główny magazynu jest przechowywany w module TPM i służy do ochrony kluczy modułu TPM utworzonych przez aplikacje, dzięki czemu klucze te nie mogą być używane bez modułu TPM. Klucz główny magazynu jest generowany podczas przejmowania własności modułu TPM; Po wyczyszczeniu modułu TPM, aby nowy użytkownik mógł przejąć własność, generowany jest nowy klucz główny magazynu. Dowiedz się więcej o [kluczu głównym magazynu](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="x509-certificates"></a>Certyfikaty X. 509
+## <a name="x509-certificates"></a>certyfikaty X.509
 
 Używanie certyfikatów X. 509 jako mechanizmu zaświadczania jest doskonałym sposobem na skalowanie produkcji i uproszczenie aprowizacji urządzeń. Certyfikaty X. 509 są zwykle uporządkowane w łańcuchu certyfikatów zaufania, w którym każdy certyfikat w łańcuchu jest podpisany przez klucz prywatny następnego wyższego certyfikatu itd., kończy się w certyfikacie głównym z podpisem własnym. To rozmieszczenie nawiązuje delegowany łańcuch zaufania z certyfikatu głównego wygenerowanego przez zaufany główny urząd certyfikacji (CA) przez każdy pośredni urząd certyfikacji do certyfikatu typu "liść" jednostki końcowej zainstalowanego na urządzeniu. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie urządzeń za pomocą certyfikatów X. 509 urzędu certyfikacji](/azure/iot-hub/iot-hub-x509ca-overview). 
 

@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cbb6afb96ccea32aa78d1f587377e5d67e1a5b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381023"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964093"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Wymagaj zasad ochrony aplikacji dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego (wersja zapoznawcza)
 
-Pracownicy używają urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) możesz chronić dane firmowe, ograniczając dostęp do aplikacji w chmurze. Najpierw użyj aplikacji klienckich z zasadami ochrony aplikacji.
+Pracownicy używają urządzeń przenośnych zarówno do celów służbowych, jak i prywatnych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) możesz chronić dane firmowe, ograniczając dostęp do aplikacji w chmurze. Najpierw użyj aplikacji klienckich z zasadami ochrony aplikacji.
 
 W tym artykule wyjaśniono, jak skonfigurować zasady dostępu warunkowego, które mogą wymagać zasad ochrony aplikacji przed udzieleniem dostępu do danych.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Za pomocą [dostępu warunkowego usługi Azure AD](overview.md)możesz dostosować sposób, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do zasobów. Można na przykład ograniczyć dostęp do aplikacji w chmurze do zaufanych urządzeń.
 
@@ -330,7 +330,7 @@ Przed uzyskaniem dostępu do danych firmowych wymagane są wszystkie zasady ochr
 
 ### <a name="configuration"></a>Konfigurowanie
 
-**Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
+**Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
 
 W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące składniki:
 
@@ -338,7 +338,7 @@ W przypadku zasad dostępu warunkowego w tym kroku skonfiguruj następujące sk�
 
 1. Wprowadź nazwę zasad dostępu warunkowego.
 1. W obszarze **przypisania**, w obszarze **Użytkownicy i grupy**wybierz co najmniej jednego użytkownika lub grupę dla każdej zasady dostępu warunkowego.
-1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online**. 
+1. W obszarze **aplikacje w chmurze**wybierz pozycję **Office 365 Exchange Online** i **pakiet Office 365 SharePoint Online**. 
 
    ![Dostęp warunkowy](./media/app-protection-based-conditional-access/02.png)
 

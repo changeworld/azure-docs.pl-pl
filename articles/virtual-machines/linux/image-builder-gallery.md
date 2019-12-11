@@ -1,18 +1,18 @@
 ---
 title: Korzystanie z programu Azure Image Builder z galerią obrazów dla maszyn wirtualnych z systemem Linux (wersja zapoznawcza)
-description: Twórz obrazy systemu Linux za pomocą programu Azure Image Builder i udostępnionej galerii obrazów.
+description: Tworzenie obrazów maszyn wirtualnych z systemem Linux za pomocą programu Azure Image Builder i udostępnionej galerii obrazów.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695419"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976132"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Wersja zapoznawcza: Tworzenie obrazu systemu Linux i dystrybuowanie go do galerii obrazów udostępnionych 
 
@@ -21,7 +21,7 @@ W tym artykule pokazano, jak za pomocą programu Azure Image Builder utworzyć w
 
 Aby skonfigurować obraz, będziemy używać szablonu przykład. JSON. Używany plik JSON jest tutaj: [helloImageTemplateforSIG. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-W celu rozesłania obrazu do galerii obrazów udostępnionych szablon używa [sharedImage](image-builder-json.md#distribute-sharedimage) jako wartości `distribute` sekcji szablonu.
+W celu rozesłania obrazu do galerii obrazów udostępnionych szablon używa [sharedImage](image-builder-json.md#distribute-sharedimage) jako wartości sekcji `distribute` szablonu.
 
 > [!IMPORTANT]
 > Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
@@ -77,7 +77,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić za pomocą `az account show | grep id`polecenia.
+Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić przy użyciu `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Przyznaj usłudze Azure Image Builder uprawnienia do tworzenia zasobów w tej grupie zasobów. `--assignee` Wartość to identyfikator rejestracji aplikacji dla usługi Image Builder. 
+Przyznaj usłudze Azure Image Builder uprawnienia do tworzenia zasobów w tej grupie zasobów. Wartość `--assignee` to identyfikator rejestracji aplikacji dla usługi Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -186,7 +186,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Użyj protokołu SSH do maszyny wirtualnej.
+Nawiąż połączenie SSH z maszyną wirtualną.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
@@ -220,7 +220,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-Pobierz wersję obrazu utworzoną przez konstruktora obrazów, która zawsze zaczyna `0.`się od, a następnie Usuń wersję obrazu
+Pobierz wersję obrazu utworzoną przez konstruktora obrazu, która zawsze zaczyna się od `0.`, a następnie Usuń wersję obrazu
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

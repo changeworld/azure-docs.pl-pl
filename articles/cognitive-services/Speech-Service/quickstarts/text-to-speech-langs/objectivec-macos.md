@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: yulili
-ms.openlocfilehash: 5758361e1c4de6e824f0df33eacd940cad8eca70
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 37eed03ed839411f1acf5d963d4118a3c6d2c379
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817764"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975928"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Szybki Start: wykluczanie mowy w celu języka C w systemie macOS przy użyciu zestawu Speech SDK
 

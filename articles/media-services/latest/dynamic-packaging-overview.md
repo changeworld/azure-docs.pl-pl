@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: dbce24ced0ed057eac829d5c4b7223a10fa96b3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888482"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977764"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Dynamiczne pakowanie w Media Services
 
@@ -269,6 +269,9 @@ Aby kontrolować liczbę ścieżek, formatów, szybkości transmisji bitów i ok
 ## <a name="dynamic-encryption"></a>Szyfrowanie dynamiczne
 
 Przy użyciu *szyfrowania dynamicznego* można dynamicznie szyfrować zawartość na żywo lub na żądanie za pomocą algorytmu AES-128 lub z jednego z trzech głównych systemów zarządzania prawami cyfrowymi (DRM): Microsoft PlayReady, Google Widevine i Apple FairPlay. Media Services udostępnia również usługę do dostarczania kluczy AES i licencji DRM do autoryzowanych klientów. Aby uzyskać więcej informacji, zobacz [szyfrowanie dynamiczne](content-protection-overview.md).
+
+> [!NOTE]
+> Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
 ## <a name="more-information"></a>Więcej informacji
 

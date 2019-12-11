@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871637"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968702"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>FairPlay przesyłania strumieniowego w trybie offline dla systemu iOS 
 
@@ -114,7 +114,7 @@ Dodaj AssetDeliveryPolicyConfigurationKey, jak pokazano poniżej:
 
 Po wykonaniu tego kroku ciąg < Dictionary_AssetDeliveryPolicyConfigurationKey > w zasadach dostarczania zasobów FPS zawiera następujące trzy wpisy:
 
-* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl lub AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, w zależności od czynników, takich jak używany serwer/s (FPS) i czy wielokrotne użycie tego samego dostarczania zasobów zasady dla wielu zasobów
+* AssetDeliveryPolicyConfigurationKey. FairPlayBaseLicenseAcquisitionUrl lub AssetDeliveryPolicyConfigurationKey. FairPlayLicenseAcquisitionUrl, w zależności od czynników, takich jak/s/serwer kluczy, oraz tego, czy te same zasady dostarczania zasobów są używane w wielu zasobach
 * AssetDeliveryPolicyConfigurationKey.CommonEncryptionIVForCbcs
 * AssetDeliveryPolicyConfigurationKey.AllowPersistentLicense
 
@@ -123,10 +123,10 @@ Teraz Twoje konto Media Services jest skonfigurowane do dostarczania licencji Fa
 ## <a name="sample-ios-player"></a>Przykładowy odtwarzacz iOS
 Obsługa trybu offline FPS jest dostępna tylko w systemie iOS 10 i nowszych. Zestaw SDK serwera FPS (wersja 3,0 lub nowsza) zawiera dokument i przykład dla trybu offline w trybie online. Zestaw SDK serwera (w wersji 3,0 lub nowszej) zawiera następujące dwa elementy związane z trybem offline:
 
-* Dokumentu "Odtwarzanie w trybie offline przy użyciu FairPlay streaming i HTTP Live Streaming". Apple, 14 września 2016. W zestawie SDK serwera FPS w wersji 4,0 ten dokument jest scalany z głównym dokumentem FPS.
-* Przykładowy kod: Przykład HLSCatalog dla trybu offline w trybie online w zestawie SDK \FairPlay Streaming Server w wersji 3.1 \ Development\Client\HLSCatalog_With_FPS\HLSCatalog\. W aplikacji przykładowej HLSCatalog następujące pliki kodu są używane do implementowania funkcji trybu offline:
+* Dokument: "odtwarzanie w trybie offline za pomocą FairPlay streaming i HTTP Live Streaming". Apple, 14 września 2016. W zestawie SDK serwera FPS w wersji 4,0 ten dokument jest scalany z głównym dokumentem FPS.
+* Przykładowy kod: HLSCatalog przykład dla trybu offline w trybie online w zestawie SDK \FairPlay Streaming Server w wersji 3.1 \ Development\Client\ HLSCatalog_With_FPS \HLSCatalog\. W aplikacji przykładowej HLSCatalog następujące pliki kodu są używane do implementowania funkcji trybu offline:
 
-    - Plik kodu AssetPersistenceManager. SWIFT: AssetPersistenceManager to główna Klasa w tym przykładzie, która pokazuje, jak:
+    - Plik kodu AssetPersistenceManager. SWIFT: AssetPersistenceManager jest główną klasą w tym przykładzie, który ilustruje sposób:
 
         - Zarządzaj pobieranymi strumieniami HLS, takimi jak interfejsy API używane do uruchamiania i anulowania pobierania oraz usuwania istniejących zasobów poza urządzeniami.
         - Monitoruj postęp pobierania.
@@ -134,7 +134,7 @@ Obsługa trybu offline FPS jest dostępna tylko w systemie iOS 10 i nowszych. Ze
 
 W tych krokach pokazano, jak skonfigurować uruchomiony odtwarzacz systemu iOS. Przy założeniu, że zaczynasz od przykładu HLSCatalog w zestawie SDK serwera FPS w wersji 4.0.1, wprowadź następujące zmiany kodu:
 
-W HLSCatalog\Shared\Managers\ContentKeyDelegate.Swift Zaimplementuj metodę `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` przy użyciu następującego kodu. Niech "drmUr" będzie zmienną przypisaną do adresu URL HLS.
+W HLSCatalog\Shared\Managers\ContentKeyDelegate.swift Zaimplementuj metodę `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` przy użyciu następującego kodu. Niech "drmUr" będzie zmienną przypisaną do adresu URL HLS.
 
 ```swift
     var ckcData: Data? = nil
@@ -208,11 +208,11 @@ Poniższe często zadawane pytania zapewniają pomoc w rozwiązywaniu problemów
 - **Dlaczego nadal Odtwarzaj tylko dźwięk bez wideo w trybie offline po dodaniu tylko audio = FAŁSZ?** W zależności od projektu klucza pamięci podręcznej usługi Content Delivery Network (CDN) zawartość może być buforowana. Przeczyść pamięć podręczną.
 - **Czy tryb offline jest również obsługiwany w systemie iOS 11 oprócz systemu iOS 10?** Tak. Tryb offline FPS jest obsługiwany w systemach iOS 10 i iOS 11.
 - **Dlaczego nie mogę znaleźć dokumentu "odtwarzanie w trybie offline za pomocą FairPlay streaming i HTTP Live Streaming" w zestawie SDK serwera FPS?** Ponieważ zestaw FPS SDK serwera w wersji 4, ten dokument został scalony w przewodniku programowania strumieniowego FairPlay.
-- **Co oznacza ostatni parametr w następującym interfejsie API dla trybu online z FPS?** 
+- **Co oznacza ostatni parametr w następującym interfejsie API dla trybu online z fps?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Aby zapoznać się z dokumentacją dla tego interfejsu API, zobacz [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametr reprezentuje czas trwania dzierżawy w trybie offline przy użyciu godziny jako jednostki.
-- **Co to jest struktura plików pobierana/w trybie offline na urządzeniach z systemem iOS?** Pobrana struktura plików na urządzeniu z systemem iOS wygląda podobnie do poniższego zrzutu ekranu. `_keys` Folder przechowuje pobrane licencje FPS z jednym plikiem magazynu dla każdego hosta usługi licencjonowania. `.movpkg` Folder przechowuje zawartość audio i wideo. Pierwszy folder o nazwie kończącej się znakiem łącznika, po którym następuje wartość liczbowa, zawiera zawartość wideo. Wartość liczbowa jest PeakBandwidthą dla odwzorowań wideo. Drugi folder o nazwie kończącej się znakiem łącznika, po którym następuje 0, zawiera zawartość audio. Trzeci folder o nazwie "Data" zawiera główną listę odtwarzania zawartości FPS. Na koniec plik Boot. xml zawiera pełny opis `.movpkg` zawartości folderu. 
+- **Co to jest struktura plików pobierana/w trybie offline na urządzeniach z systemem iOS?** Pobrana struktura plików na urządzeniu z systemem iOS wygląda podobnie do poniższego zrzutu ekranu. W folderze `_keys` są przechowywane pobrane licencje FPS z jednym plikiem magazynu dla każdego hosta usługi licencjonowania. W folderze `.movpkg` są przechowywane zawartość audio i wideo. Pierwszy folder o nazwie kończącej się znakiem łącznika, po którym następuje wartość liczbowa, zawiera zawartość wideo. Wartość liczbowa jest PeakBandwidthą dla odwzorowań wideo. Drugi folder o nazwie kończącej się znakiem łącznika, po którym następuje 0, zawiera zawartość audio. Trzeci folder o nazwie "Data" zawiera główną listę odtwarzania zawartości FPS. Na koniec plik Boot. xml zawiera pełny opis zawartości folderu `.movpkg`. 
 
 ![Struktura pliku przykładowej aplikacji w trybie offline FairPlay iOS](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
@@ -245,6 +245,10 @@ Przykładowy plik Boot. XML:
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>Uwagi dodatkowe
+
+* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+
 ## <a name="summary"></a>Podsumowanie
 Ten dokument zawiera następujące kroki i informacje, których można użyć do zaimplementowania trybu offline FPS:
 
@@ -252,3 +256,7 @@ Ten dokument zawiera następujące kroki i informacje, których można użyć do
 * Odtwarzacz systemu iOS oparty na przykładzie z zestawu SDK serwera w warstwie FPS konfiguruje odtwarzacz systemu iOS, który może odtwarzać zawartość FPS w trybie przesyłania strumieniowego online lub w trybie offline.
 * Przykładowe wideo FPS służy do testowania trybu offline i przesyłania strumieniowego online.
 * Często zadawane pytania dotyczące trybu offline FPS.
+
+## <a name="next-steps"></a>Następne kroki
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: b-juche
-ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170024"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976251"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
@@ -29,9 +29,9 @@ Zrozumienie limitów zasobów Azure NetApp Files ułatwia zarządzanie woluminam
 
 W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 
-|  Resource  |  Domyślny limit  |  Regulowane przez żądanie pomocy technicznej  |
+|  Zasób  |  Limit domyślny  |  Regulowane przez żądanie pomocy technicznej  |
 |----------------|---------------------|--------------------------------------|
-|  Liczba kont NetApp na subskrypcję platformy Azure   |  10    |  Tak   |
+|  Liczba kont NetApp na region platformy Azure   |  10    |  Tak   |
 |  Liczba pul pojemności na konto NetApp   |    25     |   Tak   |
 |  Liczba woluminów na pulę pojemności     |    500   |    Tak     |
 |  Liczba migawek na wolumin       |    255     |    Nie        |
@@ -69,14 +69,14 @@ Ze płaszczyzny nawigacyjnej Azure Portal:
 1. Kliknij pozycję **Pomoc i obsługa techniczna**.
 2. Kliknij pozycję **+ nowe żądanie obsługi**.
 3. Na karcie podstawowe podaj następujące informacje: 
-    1. Typ problemu: Wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
-    2. Opłaty Wybierz subskrypcję zasobu, dla którego chcesz zwiększyć przydział.
-    3. Typ limitu przydziału: Wybierz **magazyn: Limity**Azure NetApp Files.
-    4. Kliknij pozycję **Next: Rozwiązania**.
+    1. Typ problemu: Wybierz **limity usługi i subskrypcji (przydziały)** .
+    2. Subskrypcje: wybierz subskrypcję zasobu, dla którego chcesz zwiększyć przydział.
+    3. Typ przydziału: wybierz pozycję **Magazyn: limity Azure NetApp Files**.
+    4. Kliknij przycisk **Dalej: rozwiązania**.
 4. Na karcie Szczegóły:
     1. W polu Opis podaj następujące informacje dotyczące odpowiedniego typu zasobu:
 
-        |  Resource  |    Zasoby nadrzędne      |    Żądane nowe limity     |    Przyczyna zwiększenia limitu przydziału       |
+        |  Zasób  |    Zasoby nadrzędne      |    Żądane nowe limity     |    Przyczyna zwiększenia limitu przydziału       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Konto |  *Subscription ID (Identyfikator subskrypcji)*   |  *Żądany nowy maksymalny numer **konta***    |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
         |  Pula    |  *Identyfikator subskrypcji, identyfikator URI konta*  |  *Żądany nowy numer **puli***   |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
@@ -85,7 +85,7 @@ Ze płaszczyzny nawigacyjnej Azure Portal:
 
     2. Określ odpowiednią metodę obsługi i podaj informacje o kontrakcie.
 
-    3. Kliknij pozycję **Next: Przejrzyj i Utwórz** , aby utworzyć żądanie. 
+    3. Kliknij przycisk **Dalej: przegląd + Utwórz** , aby utworzyć żądanie. 
 
 
 ## <a name="next-steps"></a>Następne kroki  

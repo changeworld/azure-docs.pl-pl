@@ -1,17 +1,17 @@
 ---
-title: Zarządzanie regułami zapory w Azure Database for PostgreSQL-Citus
+title: Zarządzanie regułami zapory — funkcja Citus) — Azure Database for PostgreSQL
 description: Tworzenie reguł zapory dla Azure Database for PostgreSQL-i zarządzanie nimi przy użyciu Azure Portal
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 1b132eb168f3d873c8150bc33b581aa0f0f8d124
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 660c395e6cff81b0abcac07e66385f80a538695f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273706"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977543"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Zarządzanie regułami zapory dla Azure Database for PostgreSQL-ze skalowaniem (Citus)
 Reguły zapory na poziomie serwera mogą służyć do zarządzania dostępem do węzła koordynatora ze skalowaniem (Citus) z określonego adresu IP lub zakresu adresów IP.
@@ -24,7 +24,7 @@ Aby krokowo poprowadzić ten przewodnik, musisz:
 
 > [!NOTE]
 > Te ustawienia są również dostępne podczas tworzenia grupy serwerów Azure Database for PostgreSQL-Citus. Na karcie **Sieć** kliknij pozycję **publiczny punkt końcowy**.
-> ![Azure Portal — karta sieciowa](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
+> ![Azure Portal — Karta Sieć](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. Na stronie Grupa serwerów PostgreSQL w obszarze nagłówek zabezpieczeń kliknij pozycję **Sieć** , aby otworzyć reguły zapory.
 

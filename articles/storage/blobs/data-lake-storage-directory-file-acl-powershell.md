@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 360845d75c27fab0151c3a64846ff788f9f56b95
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2a2eaa3224fff117a30dfb742b4f8a35196dba4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931241"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973904"
 ---
 # <a name="use-powershell-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Korzystanie z programu PowerShell dla plików & list ACL w Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -378,6 +378,7 @@ W poniższej tabeli przedstawiono sposób używania poleceń cmdlet do Data Lake
 |Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|Polecenie cmdlet Get-AzDataLakeGen2FileContent pobiera zawartość pliku do pliku lokalnego.|
 |Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
 |New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|To polecenie cmdlet przekazuje nową zawartość pliku z pliku lokalnego.|
+|Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item||
 |Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Polecenie cmdlet Update-AzDataLakeGen2Item aktualizuje tylko jeden element i nie rekursywnie. Jeśli chcesz zaktualizować cyklicznie, Wyświetl listę elementów za pomocą polecenia cmdlet Get-AzDataLakeStoreChildItem, a następnie potoku do polecenia cmdlet Update-AzDataLakeGen2Item.|
 |Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Polecenie cmdlet Get-AzDataLakeGen2Item zgłosi błąd, jeśli element nie istnieje.|
 

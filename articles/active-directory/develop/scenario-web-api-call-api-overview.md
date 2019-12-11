@@ -1,5 +1,5 @@
 ---
-title: Internetowy interfejs API, który wywołuje podrzędne interfejsy API sieci Web (omówienie) — Microsoft Identity platform
+title: Tworzenie interfejsu API sieci Web, który wywołuje interfejsy API sieci Web — Microsoft Identity platform | Azure
 description: Dowiedz się, jak utworzyć internetowy interfejs API, który wywołuje podrzędne interfejsy API sieci Web (omówienie).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,14 +15,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef9fc121b16d81eed932d1ab55ca38d2a2f1057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4b357def86b77d4bbb294e2253dacfbd129998ec
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852500"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965130"
 ---
-# <a name="scenario-web-api-that-calls-web-apis"></a>Scenariusz: Internetowy interfejs API wywołujący internetowe interfejsy API
+# <a name="scenario-web-api-that-calls-web-apis"></a>Scenariusz: internetowy interfejs API, który wywołuje interfejsy API sieci Web
 
 Dowiedz się, co należy zrobić, aby utworzyć interfejs API sieci Web, który wywołuje interfejsy API sieci Web.
 
@@ -33,8 +33,8 @@ Ten scenariusz, chroniony internetowy interfejs API, który wywołuje interfejsy
 ## <a name="overview"></a>Przegląd
 
 - Klient (aplikacja sieci Web, komputer stacjonarny, aplikacje mobilne lub jednostronicowe) — nie został przedstawiony na poniższym diagramie — wywołuje chroniony internetowy interfejs API i udostępnia token okaziciela JWT w nagłówku HTTP "Authorization".
-- Chroniony internetowy interfejs API sprawdza token i używa metody MSAL `AcquireTokenOnBehalfOf` , aby zażądać (z usługi Azure AD) innego tokenu, tak aby mógł sam, wywołać drugi internetowy interfejs API (o nazwie podrzędny interfejs API sieci Web) w imieniu użytkownika.
-- Chroniony internetowy interfejs API używa tego tokenu do wywoływania podrzędnego interfejsu API. Może również wywołać `AcquireTokenSilent`później, aby zażądać tokenów dla innych podrzędnych interfejsów API (ale nadal w imieniu tego samego użytkownika). `AcquireTokenSilent`Odświeża token w razie konieczności.
+- Chroniony internetowy interfejs API sprawdza token i używa metody MSAL `AcquireTokenOnBehalfOf`, aby zażądać (z usługi Azure AD) innego tokenu, tak aby mógł sam, wywołać drugi internetowy interfejs API (o nazwie podrzędny interfejs API sieci Web) w imieniu użytkownika.
+- Chroniony internetowy interfejs API używa tego tokenu do wywoływania podrzędnego interfejsu API. Może również wywołać `AcquireTokenSilent`później, aby zażądać tokenów innych podrzędnych interfejsów API (ale nadal w imieniu tego samego użytkownika). `AcquireTokenSilent` odświeża token w razie konieczności.
 
 ![Interfejs API sieci Web wywołujący interfejs API sieci Web](media/scenarios/web-api.svg)
 

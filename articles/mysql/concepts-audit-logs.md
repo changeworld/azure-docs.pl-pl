@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773572"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972357"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Inspekcja dzienników w Azure Database for MySQL
 
@@ -29,7 +29,7 @@ Inne parametry, które można dostosować, obejmują:
 - `audit_log_events`: kontroluje zdarzenia, które mają być rejestrowane. Szczegółowe zdarzenia inspekcji można znaleźć w poniższej tabeli.
 - `audit_log_include_users`: Użytkownicy programu MySQL mają być włączeni do rejestrowania. Wartość domyślna tego parametru jest pusta, co spowoduje uwzględnienie wszystkich użytkowników do rejestrowania. Ma wyższy priorytet niż `audit_log_exclude_users`. Maksymalna długość parametru to 512 znaków.
 > [!Note]
-> `audit_log_include_users` ma wyższy priorytet niż `audit_log_exclude_users` na przykład, jeśli audit_log_include_users = `demouser` i audit_log_exclude_users = `demouser`, będzie przeprowadzać inspekcję dzienników, ponieważ `audit_log_include_users` ma wyższy priorytet.
+> `audit_log_include_users` ma wyższy priorytet niż `audit_log_exclude_users`. Na przykład jeśli `audit_log_include_users` = `demouser` i `audit_log_exclude_users` = `demouser`, użytkownik zostanie uwzględniony w dziennikach inspekcji, ponieważ `audit_log_include_users` ma wyższy priorytet.
 - `audit_log_exclude_users`: Użytkownicy programu MySQL mają być wykluczeni z rejestrowania. Maksymalna długość parametru to 512 znaków.
 
 > [!Note]
@@ -62,10 +62,10 @@ W poniższych sekcjach opisano dane wyjściowe dzienników inspekcji MySQL na po
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
+| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
@@ -90,10 +90,10 @@ Poniższy schemat dotyczy typów zdarzeń GENERAL, DML_SELECT, DML_NONSELECT, DM
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
+| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
@@ -118,10 +118,10 @@ Poniższy schemat dotyczy typów zdarzeń GENERAL, DML_SELECT, DML_NONSELECT, DM
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| `Type` | Typ dziennika. Zawsze `AzureDiagnostics` |
+| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
 | `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
@@ -129,7 +129,7 @@ Poniższy schemat dotyczy typów zdarzeń GENERAL, DML_SELECT, DML_NONSELECT, DM
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Nazwa serwera |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`lub `DELETE` |
+| `event_subclass_s` | System `READ`, `INSERT`, `UPDATE` lub `DELETE` |
 | `connection_id_d` | Unikatowy identyfikator połączenia wygenerowany przez MySQL |
 | `db_s` | Nazwa bazy danych, do której uzyskano dostęp |
 | `table_s` | Nazwa tabeli, do której można uzyskać dostęp |

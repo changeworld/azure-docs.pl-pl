@@ -3,12 +3,12 @@ title: Dokumentacja pliku host. JSON dla Azure Functions 1. x
 description: Dokumentacja referencyjna dotycząca pliku host. JSON Azure Functions przy użyciu środowiska uruchomieniowego v1.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 99a571483086343d4e7d6188b2f401abc616c1bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 256cd47fa0f309bef46c7f72951810d5f76d0fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230587"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975469"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Dokumentacja pliku host. JSON dla Azure Functions 1. x
 
@@ -19,7 +19,7 @@ ms.locfileid: "74230587"
 Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono ustawienia dostępne dla środowiska uruchomieniowego v1. Schemat JSON jest w http://json.schemastore.org/host.
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla usługi Azure Functions 1.x.  Aby uzyskać odwołanie do pliku host. JSON w funkcjach 2. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 2. x](functions-host-json.md).
+> Ten artykuł jest przeznaczony dla usługi Azure Functions 1.x.  Odwołanie do pliku host. JSON w funkcjach 2. x i nowszych można znaleźć w [dokumentacji dotyczącej pliku host. JSON dla Azure Functions 2. x](functions-host-json.md).
 
 Inne opcje konfiguracji aplikacji funkcji są zarządzane w [ustawieniach aplikacji](functions-app-settings.md).
 
@@ -120,7 +120,7 @@ W poniższych sekcjach tego artykułu opisano każdą właściwość najwyższeg
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
-## <a name="documentdb"></a>DocumentDB
+## <a name="documentdb"></a>Baza danych DocumentDB
 
 Ustawienia konfiguracji dla [wyzwalacza Azure Cosmos DB i powiązań](functions-bindings-cosmosdb.md).
 
@@ -136,11 +136,11 @@ Ustawienia konfiguracji dla [wyzwalacza Azure Cosmos DB i powiązań](functions-
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
 |GatewayMode|Brama|Tryb połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB. Opcje są `Direct` i `Gateway`|
-|Protokół|Schemat|Protokół połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB.  Przeczytaj [tutaj, aby uzyskać wyjaśnienie obu trybów](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|Nie dotyczy|Prefiks dzierżawy do użycia we wszystkich funkcjach w aplikacji.|
+|Protocol (Protokół)|Schemat|Protokół połączenia używany przez funkcję podczas nawiązywania połączenia z usługą Azure Cosmos DB.  Przeczytaj [tutaj, aby uzyskać wyjaśnienie obu trybów](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|nd.|Prefiks dzierżawy do użycia we wszystkich funkcjach w aplikacji.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -152,7 +152,7 @@ Ustawienia konfiguracji dla [wyzwalaczy i powiązań centrum zdarzeń](functions
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>— funkcje
+## <a name="functions"></a>functions
 
 Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamianie wszystkich funkcji. Przeznaczone do użytku tylko w przypadku [uruchamiania lokalnego](functions-run-local.md). W aplikacjach funkcji na platformie Azure zamiast tego należy wykonać kroki opisane w temacie [Jak wyłączyć funkcje w Azure Functions](disable-function.md) , aby wyłączyć określone funkcje zamiast używać tego ustawienia.
 
@@ -188,9 +188,9 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|dostępny|true|Określa, czy funkcja jest włączona. | 
+|enabled|true|Określa, czy funkcja jest włączona. | 
 |healthCheckInterval|10 sekund|Przedział czasu między okresowymi kontrolami kondycji w tle. | 
 |healthCheckWindow|2 minuty|Przedział czasu, który jest używany w połączeniu z ustawieniem `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maksymalna liczba przypadków, w których Sprawdzenie kondycji może zakończyć się niepowodzeniem przed zainicjowaniem odtwarzania hosta.| 
@@ -211,7 +211,7 @@ Ustawienia konfiguracji dla [wyzwalaczy i powiązań http](functions-bindings-ht
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false|Włączenie tego ustawienia powoduje, że potok przetwarzania żądań okresowo sprawdza liczniki wydajności systemu, takie jak połączenia/wątki/procesy/pamięć/procesor CPU/itp. Jeśli którykolwiek z tych liczników korzysta ze standardowego progu (80%), żądania zostaną odrzucone 429 z odpowiedzią "zbyt zajęte", dopóki licznik nie zwróci normalnych poziomów.|
 |maxConcurrentRequests|nieograniczone (`-1`)|Maksymalna liczba funkcji http, które będą wykonywane równolegle. Pozwala to na kontrolowanie współbieżności, co może ułatwić zarządzanie użyciem zasobów. Na przykład może istnieć funkcja http, która korzysta z dużej ilości zasobów systemowych (pamięć/procesor CPU/gniazda), co powoduje problemy, gdy współbieżność jest zbyt wysoka. Może też istnieć funkcja, która wysyła żądania wychodzące do usługi innej firmy, a te wywołania muszą mieć ograniczoną szybkość. W takich przypadkach można w tym celu zastosować ograniczenie przepustowości.|
@@ -249,13 +249,13 @@ Kontroluje filtrowanie dla dzienników pisanych przez [obiekt ILogger](functions
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|categoryFilter|Nie dotyczy|Określa filtrowanie według kategorii| 
+|categoryFilter|nd.|Określa filtrowanie według kategorii| 
 |defaultLevel|Informacje|Dla wszystkich kategorii, które nie są określone w tablicy `categoryLevels`, Wyślij dzienniki na tym poziomie i powyżej, aby Application Insights.| 
-|categoryLevels|Nie dotyczy|Tablica kategorii, która określa minimalny poziom rejestrowania do wysłania do Application Insights dla każdej kategorii. Określona tutaj Kategoria kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości, a dłuższe wartości mają pierwszeństwo. W poprzednim przykładzie pliku *host. JSON* wszystkie kategorie zaczynające się od dziennika "host. agregator" na poziomie `Information`. Wszystkie inne kategorie zaczynające się od "host", takie jak "host. wykonawca", logują się na poziomie `Error`.| 
+|categoryLevels|nd.|Tablica kategorii, która określa minimalny poziom rejestrowania do wysłania do Application Insights dla każdej kategorii. Określona tutaj Kategoria kontroluje wszystkie kategorie, które zaczynają się od tej samej wartości, a dłuższe wartości mają pierwszeństwo. W poprzednim przykładzie pliku *host. JSON* wszystkie kategorie zaczynające się od dziennika "host. agregator" na poziomie `Information`. Wszystkie inne kategorie zaczynające się od "host", takie jak "host. wykonawca", logują się na poziomie `Error`.| 
 
-## <a name="queues"></a>tworzone
+## <a name="queues"></a>kolejki
 
 Ustawienia konfiguracji dla [wyzwalaczy i powiązań kolejki magazynu](functions-bindings-storage-queue.md).
 
@@ -271,7 +271,7 @@ Ustawienia konfiguracji dla [wyzwalaczy i powiązań kolejki magazynu](functions
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |maxPollingInterval|60000|Maksymalny interwał w milisekundach między sondowaniem kolejki.| 
 |visibilityTimeout|0|Przedział czasu między ponownymi próbami, gdy przetwarzanie komunikatu kończy się niepowodzeniem.| 
@@ -290,9 +290,9 @@ Ustawienie konfiguracji dla [powiązania danych wyjściowych SendGrind](function
     }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|from|Nie dotyczy|Adres e-mail nadawcy we wszystkich funkcjach.| 
+|z|nd.|Adres e-mail nadawcy we wszystkich funkcjach.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -308,10 +308,10 @@ Ustawienia konfiguracji dla [wyzwalaczy Service Bus i powiązań](functions-bind
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|Maksymalna liczba równoczesnych wywołań wywołanie zwrotne, które powinno zainicjować "pompy komunikatów". Domyślnie środowisko uruchomieniowe usługi Functions przetwarza wiele wiadomości jednocześnie. Aby skierować środowisko uruchomieniowe do przetwarzania tylko pojedynczej kolejki lub komunikatu tematu, ustaw `maxConcurrentCalls` na 1. | 
-|prefetchCount|Nie dotyczy|Domyślnie PrefetchCount używanej przez MessageReceiver bazowego.| 
+|maxConcurrentCalls|16|Maksymalna liczba równoczesnych wywołań wywołanie zwrotne, które powinno zainicjować "pompy komunikatów". Domyślnie środowisko uruchomieniowe usługi Functions przetwarza wiele wiadomości jednocześnie. Aby skierowania czasu przetwarzania tylko jednej kolejki lub tematu wiadomości w czasie, należy ustawić `maxConcurrentCalls` 1. | 
+|prefetchCount|nd.|Domyślnie PrefetchCount używanej przez MessageReceiver bazowego.| 
 |Właściwość autorenewtimeout|00:05:00|Maksymalny czas trwania, w którym blokadę komunikatu zostanie odnowiony automatycznie.| 
 
 ## <a name="singleton"></a>Pojedynczego
@@ -330,15 +330,15 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Okres, w którym są wykonywane blokady poziomu funkcji. Blokady autorenew.| 
 |listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu używany do odzyskiwania blokady odbiornika, jeśli nie można uzyskać blokady odbiornika podczas uruchamiania.| 
 |lockAcquisitionTimeout|00:01:00|Maksymalny czas, przez jaki środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
-|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między kolejnymi próbami przejęcia blokady.| 
+|lockAcquisitionPollingInterval|nd.|Interwał między kolejnymi próbami przejęcia blokady.| 
 
-## <a name="tracing"></a>pochodzenia
+## <a name="tracing"></a>śledzenie
 
 *Wersja 1. x*
 
@@ -353,7 +353,7 @@ Ustawienia konfiguracji dla dzienników tworzonych przy użyciu obiektu `TraceWr
 }
 ```
 
-|Właściwość  |Domyślny | Opis |
+|Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
 |consoleLevel|info|Poziom śledzenia dla rejestrowania konsoli. Dostępne są następujące opcje: `off`, `error`, `warning`, `info`i `verbose`.|
 |fileLoggingMode|debugOnly|Poziom śledzenia dla rejestrowania plików. Dostępne są `never`, `always`, `debugOnly`.| 

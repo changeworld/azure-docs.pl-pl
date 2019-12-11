@@ -6,12 +6,12 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: b86ea2367a17baa8c57b8d0c0331c0cd3cfbb481
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227098"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976880"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Tworzenie funkcji przy użyciu platformy Azure for Students Starter
 
@@ -27,7 +27,7 @@ Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym
 
 ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com> przy użyciu danych konta Azure.
 
@@ -48,7 +48,7 @@ Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funk
     | **Nazwa aplikacji** | Nazwa unikatowa w skali globalnej | Nazwa identyfikująca nową aplikację funkcji. Prawidłowe znaki to `a-z`, `0-9` i `-`.  | 
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której jest tworzona ta nowa aplikacja funkcji. | 
     | **[Grupa zasobów](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. |
-   | **[App Service plan/lokalizacja](./functions-scale.md)** | Nowa | Plan hostingu kontrolujący region, w którym wdrożono aplikację funkcji, oraz gęstość zasobów. Wiele aplikacji funkcji wdrożonych w ramach tego samego planu będzie korzystać z tego samego pojedynczego bezpłatnego wystąpienia. Jest to ograniczenie planu początkowego studenta. W [tym miejscu objaśniono](./functions-scale.md) pełne opcje hostingu.|
+   | **[App Service plan/lokalizacja](./functions-scale.md)** | Nowość | Plan hostingu kontrolujący region, w którym wdrożono aplikację funkcji, oraz gęstość zasobów. Wiele aplikacji funkcji wdrożonych w ramach tego samego planu będzie korzystać z tego samego pojedynczego bezpłatnego wystąpienia. Jest to ograniczenie planu początkowego studenta. W [tym miejscu objaśniono](./functions-scale.md) pełne opcje hostingu.|
     | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. |
     |**[Application Insights](./functions-monitoring.md)**| Enabled (Włączony) | Application Insights jest używany do przechowywania i analizowania dzienników aplikacji funkcji. Jest ona domyślnie włączona w przypadku wybrania lokalizacji, która obsługuje Application Insights. Application Insights można włączyć dla dowolnej funkcji, ręcznie wybierając w pobliżu region do wdrożenia Application Insights. Bez Application Insights będziesz mieć możliwość wyświetlania dzienników przesyłania strumieniowego na żywo.
 
@@ -121,7 +121,7 @@ Na platformie Azure dla uczniów masz dostęp do większości funkcji środowisk
     * [Zobacz języki obsługiwane w wyższych planach tutaj](supported-languages.md)
 * System Windows jest jedynym obsługiwanym systemem operacyjnym.
 * Skalowanie jest ograniczone do [jednego wystąpienia warstwy Bezpłatna](https://azure.microsoft.com/pricing/details/app-service/windows/) uruchomionego przez maksymalnie 60 minut każdego dnia. Serverlessly skalowanie od 0 do 1 wystąpienia jest automatycznie, ponieważ odbierany jest ruch HTTP, ale nie będzie więcej.
-* Obsługiwane jest tylko [środowisko uruchomieniowe 2. x](functions-versions.md) .
+* Obsługiwane są tylko [wersje 2. x i nowsze](functions-versions.md) środowiska uruchomieniowego Functions.
 * Wszystkie narzędzia deweloperskie są obsługiwane w przypadku funkcji edycji i publikowania. Obejmuje to VS Code, Visual Studio, interfejs wiersza polecenia platformy Azure i Azure Portal. Jeśli chcesz użyć innych elementów niż Portal, musisz najpierw utworzyć aplikację w portalu, a następnie wybrać tę aplikację jako cel wdrożenia w preferowanym narzędziu.
 
 ## <a name="next-steps"></a>Następne kroki

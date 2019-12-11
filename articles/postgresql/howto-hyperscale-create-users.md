@@ -1,17 +1,17 @@
 ---
-title: Tworzenie użytkowników w Azure Database for PostgreSQL-Citus
+title: Tworzenie użytkowników-skalowanie (Citus) — Azure Database for PostgreSQL
 description: W tym artykule opisano, jak można tworzyć nowe konta użytkowników w celu współdziałania z Azure Database for PostgreSQL-Citus.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7187135b29f0a9a790c032330c73bcb1ae27229b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d093d4c23fcc44e7e9f3461f875607926f4b612d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515943"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977577"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Tworzenie użytkowników w Azure Database for PostgreSQL-Citus
 
@@ -26,21 +26,19 @@ Nowo utworzona grupa serwerów ze skalą (Citus) zawiera kilka wstępnie zdefini
 * *postgres*
 * *citus*
 
-Administrator serwera *Citus*, jest członkiem roli *azure_pg_admin* .
-Nie jest to jednak częścią roli *Postgres* (Administrator).  Ze względu na to, że jest to zarządzana usługa PaaS, tylko firma Microsoft jest częścią roli administratora.
-
 Aparat PostgreSQL używa uprawnień do kontrolowania dostępu do obiektów bazy danych, jak to opisano w [dokumentacji produktu PostgreSQL](https://www.postgresql.org/docs/current/static/sql-createrole.html).
-W Azure Database for PostgreSQL administrator serwera otrzymuje następujące uprawnienia: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, DbRole, noreplication
+Administrator serwera *Citus*, jest członkiem roli *azure_pg_admin* .
+Nie jest to jednak częścią roli *Postgres* (Administrator).  Ze względu na to, że jest to zarządzana usługa PaaS, tylko firma Microsoft jest częścią roli administratora. Użytkownik *Citus* ma ograniczone uprawnienia i nie może tworzyć nowych baz danych.
 
 ## <a name="how-to-create-additional-users"></a>Jak utworzyć dodatkowych użytkowników
 
-Konto administratora *Citus* nie ma uprawnień do tworzenia dodatkowych użytkowników. Aby dodać użytkownika, Użyj zamiast niego Azure Portal.
+Konto administratora *Citus* nie ma uprawnień do tworzenia dodatkowych użytkowników. Aby dodać użytkownika, użyj interfejsu Azure Portal.
 
 1. Przejdź do strony **role** dla swojej grupy serwerów w ramach skalowania i kliknij pozycję **+ Dodaj**:
 
    ![Strona role](media/howto-hyperscale-create-users/1-role-page.png)
 
-2. Wprowadź nazwę i hasło roli. Kliknij pozycję **Zapisz**.
+2. Wprowadź nazwę i hasło roli. Kliknij przycisk **Save** (Zapisz).
 
    ![Dodaj rolę](media/howto-hyperscale-create-users/2-add-user-fields.png)
 

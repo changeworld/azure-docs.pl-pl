@@ -1,6 +1,6 @@
 ---
-title: Aplikacja internetowa wywołuje interfejsy API (omówienie) — Platforma tożsamości usługi Microsoft sieci web
-description: Dowiedz się, jak utworzyć aplikację sieci web wywołuje interfejsy API (omówienie) sieci web
+title: Tworzenie aplikacji sieci Web, która wywołuje interfejsy API sieci Web — Microsoft Identity platform | Azure
+description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (omówienie)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,50 +15,50 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3888c7f838d6009382f849bc7d3e34c49b3b70a4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65076303"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962138"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>Scenariusz: Aplikacja internetowa wywołująca internetowe interfejsy API
+# <a name="scenario-web-app-that-calls-web-apis"></a>Scenariusz: aplikacja sieci Web, która wywołuje interfejsy API sieci Web
 
-Dowiedz się, jak utworzyć aplikację sieci web użytkownikom logowanie się na platformie tożsamości firmy Microsoft i która wywołuje interfejsy API sieci web w imieniu zalogowanego użytkownika.
+Dowiedz się, jak utworzyć aplikację internetową, która loguje użytkowników na platformie tożsamości firmy Microsoft, a następnie wywołuje interfejsy API sieci Web w imieniu zalogowanego użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-W tym scenariuszu supposes już przeszli następujący scenariusz:
+W tym scenariuszu Przypuśćmy, że przeszedł następujący scenariusz:
 
 > [!div class="nextstepaction"]
-> [Aplikacja sieci Web przez użytkowników logowania](scenario-web-app-sign-user-overview.md)
+> [Aplikacja internetowa, która loguje użytkowników](scenario-web-app-sign-user-overview.md)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Możesz dodać uwierzytelnianie do aplikacji sieci Web, w związku z tym można logowania użytkowników, która wywołuje internetowy interfejs API w imieniu zalogowanego użytkownika.
+Należy dodać uwierzytelnianie do aplikacji sieci Web, co może spowodować zalogowanie użytkowników i wywołanie internetowego interfejsu API w imieniu zalogowanego użytkownika.
 
 ![Aplikacja internetowa wywołująca internetowe interfejsy API](./media/scenario-webapp/web-app.svg)
 
-Aplikacje sieci Web, która wywołuje interfejsy API sieci web:
+Web Apps, które wywołują interfejsy API sieci Web:
 
-- są poufne klienta aplikacji.
-- Dlatego zarejestrowanego wpis tajny (hasło aplikacji lub certyfikat) z usługą Azure AD. Ten klucz tajny jest przekazywany w podczas wywołania do usługi Azure AD w celu pobrania tokenu
+- Są poufnymi aplikacjami klienckimi.
+- Dlatego zarejestrowali wpis tajny (hasło aplikacji lub certyfikat) w usłudze Azure AD. Ten wpis tajny jest przesyłany w trakcie wywołania usługi Azure AD w celu uzyskania tokenu
 
-## <a name="specifics"></a>Szczegółowe informacje
+## <a name="specifics"></a>Szczegółowych informacji
 
 > [!NOTE]
-> Dodawanie logowania do aplikacji sieci Web nie używa biblioteki MSAL jest o ochronie aplikacji sieci Web. Ochrona biblioteki odbywa się przez biblioteki o nazwie oprogramowania pośredniczącego. Jest to obiekt w poprzednim scenariuszu [logowania użytkowników do aplikacji sieci Web](scenario-web-app-sign-user-overview.md)
+> Dodawanie logowania do aplikacji sieci Web nie korzysta z bibliotek MSAL w taki sposób, aby chronić aplikację sieci Web. Ochrona bibliotek jest realizowana przez biblioteki o nazwie oprogramowanie pośredniczące. Był to obiekt w poprzednim scenariuszu użytkowników logujących się [do aplikacji sieci Web](scenario-web-app-sign-user-overview.md)
 >
-> Podczas wywoływania interfejsów API sieci web z aplikacji sieci Web, konieczne będzie uzyskiwanie tokenów dostępu do tych interfejsów API sieci web. Za pomocą biblioteki MSAL do uzyskania tych tokenów.
+> Podczas wywoływania interfejsów API sieci Web z aplikacji sieci Web należy uzyskać tokeny dostępu dla tych interfejsów API sieci Web. Aby uzyskać te tokeny, można użyć bibliotek MSAL.
 
-W związku z tym, środowisko typu end to end deweloperów, w tym scenariuszu ma konkretnych aspektów jako:
+Kompleksowe środowisko deweloperów w tym scenariuszu ma następujące aspekty:
 
-- Podczas [Rejestracja aplikacji](scenario-web-app-call-api-app-registration.md), należy podać jedną, kilka (Jeśli aplikacja jest wdrażana na kilku lokalizacjach) Odpowiedz identyfikatory URI, wpisów tajnych oraz ich lub certyfikaty muszą być udostępniane w usłudze Azure AD.
-- [Konfiguracji aplikacji](scenario-web-app-call-api-app-configuration.md) wymaga podania poświadczeń klienta jako udostępniony z usługą Azure AD podczas rejestracji aplikacji
+- Podczas [rejestracji aplikacji](scenario-web-app-call-api-app-registration.md)należy podać jedną lub kilka (Jeśli aplikacja jest wdrażana w kilku lokalizacjach), identyfikatory URI odpowiedzi, wpisy tajne lub certyfikaty muszą być udostępniane w usłudze Azure AD.
+- [Konfiguracja aplikacji](scenario-web-app-call-api-app-configuration.md) wymaga podania poświadczeń klienta jako współużytkowanych z usługą Azure AD podczas rejestracji aplikacji
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Rejestrowanie aplikacji](scenario-web-app-call-api-app-registration.md)

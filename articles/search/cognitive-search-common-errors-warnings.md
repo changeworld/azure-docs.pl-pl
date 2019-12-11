@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555047"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973972"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -37,7 +37,7 @@ Począwszy od wersji interfejsu API `2019-05-06`, błędy indeksatora na poziomi
 | key | Identyfikator dokumentu dokumentu, którego dotyczy błąd lub ostrzeżenie. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Nazwa operacji opisująca miejsce wystąpienia błędu lub ostrzeżenia. Ta wartość jest generowana przez następującą strukturę: [Kategoria]. [Podkategoria]. [ResourceType]. Source | DocumentExtraction. azureblob. myBlobContainerName wzbogacanie. WebApiSkill. Moja umiejętność projekcji. SearchIndex. OutputFieldMapping. myOutputFieldName projekcji. SearchIndex. MergeOrUpload. Indeksname Projekcja. KnowledgeStore. Table. webtablename |
 | message | Ogólny opis błędu lub ostrzeżenia. | Nie można wykonać umiejętności, ponieważ żądanie interfejsu API sieci Web nie powiodło się. |
-| Uzyskać | Wszelkie dodatkowe szczegóły, które mogą być pomocne w diagnozowaniu problemu, takie jak odpowiedź WebApi w przypadku niepowodzenia wykonywania niestandardowej umiejętności. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 Źródło, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... Pozostałe ślady stosu... |
+| details informacje | Wszelkie dodatkowe szczegóły, które mogą być pomocne w diagnozowaniu problemu, takie jak odpowiedź WebApi w przypadku niepowodzenia wykonywania niestandardowej umiejętności. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 Źródło, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... Pozostałe ślady stosu... |
 | documentationLink | Link do odpowiedniej dokumentacji ze szczegółowymi informacjami na temat debugowania i rozwiązywania problemu. Ten link będzie często wskazywał jedną z poniższych sekcji na tej stronie. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -307,3 +307,9 @@ Mapowania pól wyjściowych, które odwołują się do nieistniejących/niepusty
 Jeśli nie ma znacznika kolejności bajtów, przyjmuje się, że tekst zostanie zakodowany jako UTF-8.
 
 Aby obejść to ostrzeżenie, należy określić, co ma być kodowanie tekstu dla tego obiektu BLOB, i dodać odpowiedni znacznik kolejności bajtów.
+
+<a name="cosmos-db-collection-has-a-lazy-indexing-policy"/>
+
+## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Ostrzeżenie: Kolekcja Cosmos DB "X" ma opóźnione zasady indeksowania. Niektóre dane mogą zostać utracone
+
+Kolekcje z [opóźnionymi](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) zasadami indeksowania nie mogą być wykonywane w sposób ciągły, co spowodowało brak danych indeksatora. Aby obejść to ostrzeżenie, Zmień zasady indeksowania tak, aby były spójne.

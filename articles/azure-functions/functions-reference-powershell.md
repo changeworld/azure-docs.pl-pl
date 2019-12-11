@@ -4,12 +4,12 @@ description: Dowiedz się, jak opracowywać funkcje przy użyciu programu PowerS
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226678"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974244"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera programu Azure Functions PowerShell
 
@@ -50,7 +50,7 @@ PSFunctionApp
 
 W katalogu głównym projektu istnieje udostępniony plik [`host.json`](functions-host-json.md) , którego można użyć do skonfigurowania aplikacji funkcji. Każda funkcja ma folder z własnym plikiem kodu (. ps1) i plikiem konfiguracji powiązania (`function.json`). Nazwa katalogu funkcji Function. JSON jest zawsze nazwą funkcji.
 
-Niektóre powiązania wymagają obecności pliku `extensions.csproj`. Rozszerzenia powiązań wymagane w [wersji 2. x](functions-versions.md) środowiska uruchomieniowego funkcji są zdefiniowane w pliku `extensions.csproj`, z rzeczywistymi plikami biblioteki w folderze `bin`. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
+Niektóre powiązania wymagają obecności pliku `extensions.csproj`. Rozszerzenia powiązań wymagane w [wersji 2. x i nowszych wersjach](functions-versions.md) środowiska uruchomieniowego funkcji są zdefiniowane w pliku `extensions.csproj`, z rzeczywistymi plikami biblioteki w folderze `bin`. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
 
 W aplikacjach funkcji programu PowerShell możesz opcjonalnie mieć `profile.ps1`, które są uruchamiane, gdy uruchamiana jest aplikacja funkcji (w przeciwnym razie jako *[zimny start](#cold-start)* ). Aby uzyskać więcej informacji, zobacz [profil programu PowerShell](#powershell-profile).
 
@@ -75,9 +75,9 @@ $TriggerMetadata.sys
 
 | Właściwość   | Opis                                     | Typ     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Kiedy, w UTC, funkcja została wyzwolona        | DateTime |
-| MethodName | Nazwa funkcji, która została wyzwolona     | ciąg   |
-| RandGuid   | unikatowy identyfikator GUID dla tego wykonania funkcji | ciąg   |
+| UtcNow     | Kiedy, w UTC, funkcja została wyzwolona        | Data i godzina |
+| MethodName | Nazwa funkcji, która została wyzwolona     | string   |
+| RandGuid   | unikatowy identyfikator GUID dla tego wykonania funkcji | string   |
 
 Każdy typ wyzwalacza ma inny zestaw metadanych. Na przykład `$TriggerMetadata` dla `QueueTrigger` zawiera `InsertionTime`, `Id`, `DequeueCount`, między innymi. Aby uzyskać więcej informacji na temat metadanych wyzwalacza kolejki, przejdź do [oficjalnej dokumentacji wyzwalaczy kolejek](functions-bindings-storage-queue.md#trigger---message-metadata). Zapoznaj się z dokumentacją dotyczącą [wyzwalaczy](functions-triggers-bindings.md) , z którymi pracujesz, aby zobaczyć, co znajduje się w metadanych wyzwalacza.
 
@@ -275,7 +275,7 @@ Istnieje wiele wyzwalaczy i powiązań dostępnych do użycia z aplikacją funkc
 Wszystkie wyzwalacze i powiązania są reprezentowane w kodzie jako kilka rzeczywistych typów danych:
 
 * Elemencie
-* ciąg
+* string
 * byte[]
 * int
 * double
@@ -298,10 +298,10 @@ Obiekt żądania, który jest przesyłany do skryptu, jest typu `HttpRequestCont
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany do najlepszego typu na podstawie danych. Na przykład, jeśli dane są w formacie JSON, są one przenoszone jako tablica skrótów. Jeśli dane są ciągami, są one przenoszone jako ciąg. | obiekt |
 | **`Headers`** | Słownik zawierający nagłówki żądania.                | < Słownika, ciąg ><sup>*</sup> |
-| **`Method`** | Metoda HTTP żądania.                                | ciąg                    |
+| **`Method`** | Metoda HTTP żądania.                                | string                    |
 | **`Params`**  | Obiekt, który zawiera parametry routingu żądania. | < Słownika, ciąg ><sup>*</sup> |
 | **`Query`** | Obiekt, który zawiera parametry zapytania.                  | < Słownika, ciąg ><sup>*</sup> |
-| **`Url`** | Adres URL żądania.                                        | ciąg                    |
+| **`Url`** | Adres URL żądania.                                        | string                    |
 
 <sup>*</sup> W przypadku wszystkich kluczy `Dictionary<string,string>` nie jest rozróżniana wielkość liter.
 
@@ -312,7 +312,7 @@ Obiekt odpowiedzi, który ma zostać wysłany z tyłu, ma typ `HttpResponseConte
 | Właściwość      | Opis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Obiekt, który zawiera treść odpowiedzi.           | obiekt                    |
-| **`ContentType`** | Krótkie ustawienie typu zawartości odpowiedzi. | ciąg                    |
+| **`ContentType`** | Krótkie ustawienie typu zawartości odpowiedzi. | string                    |
 | **`Headers`** | Obiekt, który zawiera nagłówki odpowiedzi.               | Słownik lub Hashtable   |
 | **`StatusCode`**  | Kod stanu HTTP odpowiedzi.                       | ciąg lub int             |
 

@@ -1,6 +1,6 @@
 ---
 title: Szybki Start — używanie klucza symetrycznego do aprowizacji symulowanego urządzenia na platformie Azure IoT Hub przy użyciu języka C
-description: W tym przewodniku Szybki start użyjesz zestawu SDK języka C urządzenia, aby utworzyć urządzenie symulowane, które używa klucza symetrycznego z usługą Azure IoT Hub Device Provisioning Service
+description: W tym przewodniku szybki start użyjesz zestawu SDK języka C, aby utworzyć symulowane urządzenie korzystające z klucza symetrycznego w usłudze Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4d1e1ff5312cfb5aa0b2e378a24d5e0db7fb3605
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 20416f83c31857417e01de31b787528e20775cdf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423556"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976677"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Szybki start: aprowizowanie urządzenia symulowanego przy użyciu kluczy symetrycznych
 
@@ -22,7 +22,7 @@ Z tego przewodnika Szybki start dowiesz się, jak utworzyć i uruchomić symulat
 
 Mimo że w tym artykule przedstawiono aprowizowanie za pomocą rejestracji indywidualnej, można użyć tych samych procedur dla grup rejestracji. Jedyna różnica polega na tym, że trzeba użyć pochodnego klucza urządzenia z unikatowym identyfikatorem rejestracji dla urządzenia. W przypadku grup rejestracji klucz symetryczny podczas rejestracji nie jest używany bezpośrednio. Mimo że grupy rejestracji klucza symetrycznego nie są ograniczone do starszych urządzeń, artykuł [Aprowizowanie starszych urządzeń za pomocą zaświadczenia klucza symetrycznego](how-to-legacy-device-symm-key.md) zawiera przykład grupy rejestracji. Aby uzyskać więcej informacji, zobacz [Rejestrowanie grupy dla zaświadczania klucza symetrycznego](concepts-symmetric-key-attestation.md#group-enrollments).
 
-Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się z tematem [Auto-provisioning concepts (Pojęcia związane z automatycznym aprowizowaniem)](concepts-auto-provisioning.md). 
+Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się z tematem [Auto-provisioning concepts](concepts-auto-provisioning.md) (Pojęcia związane z automatycznym aprowizowaniem). 
 
 Pamiętaj również, aby przed rozpoczęciem pracy z tym przewodnikiem Szybki start wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). Ten przewodnik Szybki start wymaga utworzonego już wystąpienia usługi Device Provisioning Service.
 

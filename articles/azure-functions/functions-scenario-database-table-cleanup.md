@@ -4,12 +4,12 @@ description: Użyj Azure Functions, aby zaplanować zadanie, które łączy się
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230383"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972238"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Użyj Azure Functions, aby nawiązać połączenie z Azure SQL Database
 
@@ -19,7 +19,7 @@ Jeśli jest to pierwsze środowisko pracy z C# funkcjami, należy przeczytać [i
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Wykonaj kroki opisane w artykule [Tworzenie pierwszej funkcji przy użyciu programu Visual Studio](functions-create-your-first-function-visual-studio.md) , aby utworzyć lokalną aplikację funkcji, która jest przeznaczona dla środowiska uruchomieniowego w wersji 2. x. Musisz również opublikować projekt w aplikacji funkcji na platformie Azure.
++ Wykonaj kroki opisane w artykule [Tworzenie pierwszej funkcji przy użyciu programu Visual Studio](functions-create-your-first-function-visual-studio.md) , aby utworzyć lokalną aplikację funkcji, która jest przeznaczona dla wersji 2. x lub nowszej wersji środowiska uruchomieniowego. Musisz również opublikować projekt w aplikacji funkcji na platformie Azure.
 
 + W tym artykule przedstawiono polecenie języka Transact-SQL, które wykonuje operację oczyszczania zbiorczego w tabeli **SalesOrderHeader** w przykładowej bazie danych AdventureWorksLT. Aby utworzyć przykładową bazę danych AdventureWorksLT, wykonaj kroki opisane w artykule [Tworzenie bazy danych Azure SQL Database w Azure Portal](../sql-database/sql-database-get-started-portal.md).
 
@@ -29,7 +29,7 @@ Jeśli jest to pierwsze środowisko pracy z C# funkcjami, należy przeczytać [i
 
 Należy uzyskać parametry połączenia dla bazy danych utworzonej po zakończeniu [tworzenia bazy danych Azure SQL Database w Azure Portal](../sql-database/sql-database-get-started-portal.md).
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. Wybierz pozycję **bazy danych SQL** w menu po lewej stronie, a następnie wybierz bazę danych ze strony bazy **danych SQL** .
 

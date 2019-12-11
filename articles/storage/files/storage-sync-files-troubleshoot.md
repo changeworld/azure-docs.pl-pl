@@ -4,15 +4,15 @@ description: Rozwiązywanie typowych problemów dotyczących Azure File Sync.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 31a9eda0e17083aac25be071c1d1a3ab84049e39
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: ee8d71cb913dd17bc72023326dbc2ce8a33a3776
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274880"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976234"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -21,7 +21,7 @@ Ten artykuł ma na celu pomoc w rozwiązywaniu problemów i rozwiązywaniu probl
 
 1. [Forum usługi Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
-3. Pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
+3. pomoc techniczna firmy Microsoft. Aby utworzyć nowe żądanie obsługi, w Azure Portal na karcie **Pomoc** wybierz przycisk **Pomoc i obsługa techniczna** , a następnie wybierz pozycję **nowe żądanie obsługi**.
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mam problem z Azure File Sync na serwerze (synchronizacja, Obsługa warstw w chmurze itp.). Czy należy usunąć i ponownie utworzyć mój punkt końcowy serwera?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -83,7 +83,7 @@ Jeśli serwer nie znajduje się na liście **zarejestrowanych serwerów** dla us
 
 ## <a name="sync-group-management"></a>Zarządzanie grupami synchronizacji
 <a id="cloud-endpoint-using-share"></a>**Tworzenie punktu końcowego w chmurze kończy się niepowodzeniem z powodu błędu: "określony udział plików platformy Azure jest już używany przez inny CloudEndpoint"**  
-Ten błąd występuje, gdy udział plików platformy Azure jest już używany przez inny punkt końcowy w chmurze. 
+Ten błąd występuje, jeśli udział plików platformy Azure jest już używany przez inny punkt końcowy w chmurze. 
 
 Jeśli zobaczysz ten komunikat i udział plików platformy Azure aktualnie nie jest używany przez punkt końcowy w chmurze, wykonaj następujące kroki, aby wyczyścić Azure File Sync metadane w udziale plików platformy Azure:
 
@@ -123,11 +123,11 @@ Ten błąd występuje, gdy ścieżka punktu końcowego serwera znajduje się na 
 Ten błąd występuje, jeśli określona ścieżka punktu końcowego serwera jest nieprawidłowa. Upewnij się, że określona ścieżka punktu końcowego serwera jest dołączonym lokalnie woluminem NTFS. Należy pamiętać, że Azure File Sync nie obsługuje zmapowanych dysków jako ścieżki punktu końcowego serwera.
 
 <a id="-2134347507"></a>**Tworzenie punktu końcowego serwera nie powiodło się; z powodu tego błędu: "MgmtServerJobFailed" (kod błędu:-2134347507 lub 0x80c8710d)**  
-Ten błąd występuje, ponieważ Azure File Sync nie obsługuje punktów końcowych serwera na woluminach, które mają skompresowany folder z informacjami o woluminie systemowym. Aby rozwiązać ten problem, zdekompresuj folder informacji o woluminie systemowym. Jeśli folder informacji o woluminie systemowym jest jedynym folderem skompresowanym na woluminie, wykonaj następujące czynności:
+Ten błąd występuje, ponieważ usługa Azure File Sync nie obsługuje punktów końcowych serwera na woluminach, które mają skompresowany katalog informacji o woluminie systemowym. Aby rozwiązać ten problem, zdekompresuj katalog informacji o woluminie systemowym. Jeśli katalog informacji o woluminie systemowym jest jedynym skompresowanym katalogiem na woluminie, wykonaj następujące czynności:
 
 1. Pobierz narzędzie [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) .
 2. Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień, aby uruchomić wiersz polecenia uruchomiony w ramach konta systemowego: **PsExec. exe-i-s-d cmd**
-3. W wierszu polecenia uruchomionym w ramach konta system wpisz następujące polecenia i naciśnij klawisz ENTER:   
+3. W wierszu polecenia uruchomionym w ramach konta systemowego wpisz następujące polecenia i naciśnij klawisz Enter:   
     **CD/d "litera dysku: \ informacje o woluminie systemowym"**  
     **Compact/u/s**
 
@@ -137,8 +137,11 @@ Ten błąd występuje, gdy zostanie osiągnięty limit liczby punktów końcowyc
 <a id="-2134376427"></a>**Tworzenie punktu końcowego serwera nie powiodło się; z powodu tego błędu: "MgmtServerJobFailed" (kod błędu:-2134376427 lub 0x80c80015)**  
 Ten błąd występuje, gdy inny punkt końcowy serwera synchronizuje określoną ścieżkę punktu końcowego serwera. Azure File Sync nie obsługuje wielu punktów końcowych serwera synchronizacji tego samego katalogu lub woluminu.
 
+<a id="-2160590967"></a>**Tworzenie punktu końcowego serwera nie powiodło się; z powodu tego błędu: "MgmtServerJobFailed" (kod błędu:-2160590967 lub 0x80c80077)**  
+Ten błąd występuje, gdy ścieżka punktu końcowego serwera zawiera oddzielone pliki warstwowe. Jeśli punkt końcowy serwera został niedawno usunięty, poczekaj na zakończenie czyszczenia oddzielonych plików warstwowych. Zdarzenie o IDENTYFIKATORze 6662 jest rejestrowane w dzienniku zdarzeń telemetrii po rozpoczęciu oczyszczania oddzielonych plików warstwowych. Zdarzenie o IDENTYFIKATORze 6661 jest rejestrowane po zakończeniu oczyszczania oddzielonych plików warstwowych, a punkt końcowy serwera można odtworzyć przy użyciu ścieżki. Jeśli utworzenie punktu końcowego serwera zakończy się niepowodzeniem po zarejestrowaniu zdarzenia o IDENTYFIKATORze 6661, Usuń oddzielone pliki warstwowe, wykonując kroki opisane w [plikach warstwowych nie są dostępne na serwerze po usunięciu sekcji punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) .
+
 <a id="-2134347757"></a>**Usuwanie punktu końcowego serwera nie powiodło się, z powodu tego błędu: "MgmtServerJobExpired" (kod błędu:-2134347757 lub 0x80c87013)**  
-Ten błąd występuje, gdy serwer jest w trybie offline lub nie ma łączności sieciowej. Jeśli serwer nie jest już dostępny, Wyrejestruj serwer w portalu, który spowoduje usunięcie punktów końcowych serwera. Aby usunąć punkty końcowe serwera, wykonaj kroki opisane w [Wyrejestruj serwer z Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
+Ten błąd występuje wtedy, gdy serwer jest w trybie offline lub nie ma łączności sieciowej. Jeśli serwer nie jest już dostępny, wyrejestruj serwer w portalu, co spowoduje usunięcie punktów końcowych serwera. Aby usunąć punkty końcowe serwera, wykonaj kroki opisane w [Wyrejestruj serwer z Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
 <a id="server-endpoint-provisioningfailed"></a>**Nie można otworzyć strony właściwości punktu końcowego serwera lub zaktualizować zasad obsługi warstw w chmurze**  
 Ten problem może wystąpić, jeśli operacja zarządzania w punkcie końcowym serwera nie powiodła się. Jeśli strona właściwości punktu końcowego serwera nie zostanie otwarta w Azure Portal, aktualizowanie punktu końcowego serwera za pomocą poleceń programu PowerShell z serwera może rozwiązać ten problem. 
@@ -159,28 +162,31 @@ Set-AzStorageSyncServerEndpoint `
 ```
 <a id="server-endpoint-noactivity"></a>**Punkt końcowy serwera ma stan kondycji "brak działania" lub "oczekiwanie", a stan serwera w bloku zarejestrowane serwery to "pojawia się w trybie offline"**  
 
-Ten problem może wystąpić, jeśli proces monitora synchronizacji magazynu nie jest uruchomiony lub serwer nie może nawiązać połączenia z usługą Azure File Sync ze względu na serwer proxy lub zaporę.
+Ten problem może wystąpić, jeśli proces monitora synchronizacji magazynu (AzureStorageSyncMonitor. exe) nie jest uruchomiony lub serwer nie może uzyskać dostępu do usługi Azure File Sync.
 
-Aby rozwiązać ten problem, wykonaj następujące kroki:
+Na serwerze, który jest wyświetlany jako "pojawia się w trybie offline" w portalu, poszukaj zdarzenia o IDENTYFIKATORze 9301 w dzienniku zdarzeń telemetrii (w obszarze aplikacje i Services\Microsoft\FileSync\Agent w Podgląd zdarzeń), aby określić, dlaczego serwer nie może uzyskać dostępu do Azure File Sync usługi. 
 
-1. Otwórz Menedżera zadań na serwerze i upewnij się, że proces programu Storage Sync Monitor (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli proces nie jest uruchomiony, najpierw spróbuj uruchomić ponownie serwer. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, uaktualnij agenta usługi Azure File Sync do najnowszej [wersji](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes).
-2. Sprawdź, czy ustawienia zapory i serwera proxy zostały prawidłowo skonfigurowane:
+- Jeśli **GetNextJob zakończył działanie: 0** jest rejestrowany, serwer może komunikować się z usługą Azure File Sync. 
+    - Otwórz Menedżera zadań na serwerze i upewnij się, że proces programu Storage Sync Monitor (AzureStorageSyncMonitor.exe) jest uruchomiony. Jeśli proces nie jest uruchomiony, najpierw spróbuj uruchomić ponownie serwer. Jeśli ponowne uruchomienie serwera nie rozwiąże problemu, uaktualnij agenta usługi Azure File Sync do najnowszej [wersji](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes). 
+
+- Jeśli **GetNextJob zostało zakończone ze stanem:-2134347756** jest rejestrowane, serwer nie może komunikować się z usługą Azure File Sync z powodu zapory lub serwera proxy. 
     - Jeśli serwer znajduje się za zaporą, sprawdź, czy ruch wychodzący na port 443 jest dozwolony. Jeśli Zapora ogranicza ruch do określonych domen, upewnij się, że domeny wymienione w [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) zapory są dostępne.
     - Jeśli serwer znajduje się za serwerem proxy, skonfiguruj ustawienia serwera proxy dotyczące całego komputera lub aplikacji, wykonując czynności opisane w [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)serwera proxy.
+
+- Jeśli **GetNextJob zakończyła się stanem:-2134347764** jest rejestrowane, serwer nie może komunikować się z usługą Azure File Sync ze względu na certyfikat wygasły lub usunięty.  
+    - Uruchom następujące polecenie programu PowerShell na serwerze, aby zresetować certyfikat używany do uwierzytelniania:
+    ```powershell
+    Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
+    ```
+
 
 <a id="endpoint-noactivity-sync"></a>**Punkt końcowy serwera ma stan kondycji "brak działania", a stan serwera w bloku zarejestrowane serwery to "online"**  
 
 Stan kondycji punktu końcowego serwera "brak działania" oznacza, że punkt końcowy serwera nie zarejestrował działania synchronizacji w ciągu ostatnich dwóch godzin.
 
-Punkt końcowy serwera może nie rejestrować aktywności synchronizacji z następujących powodów:
+Aby sprawdzić bieżącą aktywność synchronizacji na serwerze, zobacz [Jak mogę monitorować postęp bieżącej sesji synchronizacji?](#how-do-i-monitor-the-progress-of-a-current-sync-session)
 
-- Zainstalowano agenta w wersji 4.3.0.0 lub starszej, a serwer ma aktywną sesję synchronizacji VSS (SnapshotSync). Gdy sesja synchronizacji usługi VSS jest aktywna dla punktu końcowego serwera, inne punkty końcowe serwera na tym samym woluminie nie mogą rozpocząć sesji uruchamiania synchronizacji do momentu zakończenia sesji synchronizacji usługi VSS. Aby rozwiązać ten problem, Zainstaluj agenta w wersji 5.0.2.0 lub nowszej, który obsługuje synchronizację wielu punktów końcowych serwera na woluminie, gdy sesja synchronizacji usługi VSS jest aktywna.
-
-    Aby sprawdzić bieżącą aktywność synchronizacji na serwerze, zobacz [Jak mogę monitorować postęp bieżącej sesji synchronizacji?](#how-do-i-monitor-the-progress-of-a-current-sync-session)
-
-- Serwer osiągnął maksymalną liczbę równoczesnych sesji synchronizacji. 
-    - Agent w wersji 4. x i nowszej: limit różni się w zależności od dostępnych zasobów systemowych.
-    - Agent w wersji 3. x: 2 sesje synchronizacji aktywnej na procesor lub maksymalnie 8 aktywnych sesji synchronizacji na serwer.
+Punkt końcowy serwera może nie rejestrować aktywności synchronizacji przez kilka godzin z powodu błędu lub niewystarczających zasobów systemowych. Sprawdź, czy zainstalowano najnowszą [wersję agenta](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) Azure File Sync. Jeśli problem będzie się powtarzać, Otwórz żądanie obsługi.
 
 > [!Note]  
 > Jeśli stan serwera w bloku zarejestrowane serwery jest "pojawia się w trybie offline", wykonaj kroki opisane w [punkcie końcowym serwera ma stan kondycji "brak działania" lub "oczekiwanie", a stan serwera w bloku zarejestrowane serwery to "pojawia się w trybie offline"](#server-endpoint-noactivity) .
@@ -199,7 +205,7 @@ W ramach każdej grupy synchronizacji można przejść do szczegółów poszczeg
 ![Zrzut ekranu przedstawiający Azure Portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
 # <a name="servertabserver"></a>[Serwer](#tab/server)
-Przejdź do dzienników telemetrii serwera, które można znaleźć w Podgląd zdarzeń na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Zdarzenie 9102 odpowiada zakończonej sesji synchronizacji; Aby uzyskać najnowszy stan synchronizacji, poszukaj najnowszego zdarzenia o IDENTYFIKATORze 9102. SyncDirection informuje o tym, czy ta sesja była przekazaniem czy pobraniem. Jeśli HResult ma wartość 0, sesja synchronizacji zakończyła się pomyślnie. Wynik o wartości innej niż zero oznacza, że wystąpił błąd podczas synchronizacji; Lista typowych błędów znajduje się poniżej. Jeśli wartość PerItemErrorCount jest większa od 0, oznacza to, że niektóre pliki lub foldery nie zostały prawidłowo zsynchronizowane. Istnieje możliwość, że wynik HResult równy 0, ale PerItemErrorCount jest większy niż 0.
+Przejdź do dzienników telemetrii serwera, które znajdują się w Podgląd zdarzeń w `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Zdarzenie 9102 odpowiada zakończonej sesji synchronizacji; Aby uzyskać najnowszy stan synchronizacji, poszukaj najnowszego zdarzenia o IDENTYFIKATORze 9102. SyncDirection informuje o tym, czy ta sesja była przekazaniem czy pobraniem. Jeśli HResult ma wartość 0, sesja synchronizacji zakończyła się pomyślnie. Wynik o wartości innej niż zero oznacza, że wystąpił błąd podczas synchronizacji; Lista typowych błędów znajduje się poniżej. Jeśli wartość PerItemErrorCount jest większa od 0, oznacza to, że niektóre pliki lub foldery nie zostały prawidłowo zsynchronizowane. Istnieje możliwość, że wynik HResult równy 0, ale PerItemErrorCount jest większy niż 0.
 
 Poniżej znajduje się przykład pomyślnego przekazania. Ze względu na zwięzłości są wyświetlane tylko niektóre wartości zawarte w każdym zdarzeniu 9102. 
 
@@ -274,25 +280,28 @@ Aby wyświetlić te błędy, uruchom skrypt programu PowerShell **FileSyncErrors
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Rozwiązywanie problemów na błędy synchronizacji plików/katalogów
 **Błędy synchronizacji dla elementu dziennika ItemResults**  
 
-| WYNIK | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowania |
+| HRESULT | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Plik warstwowy na serwerze nie jest dostępny. Ten problem występuje, gdy plik warstwowy nie został odwywoływany przed usunięciem punktu końcowego serwera. | Aby rozwiązać ten problem, zobacz [pliki warstwowe nie są dostępne na serwerze po usunięciu punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Nie jest wymagana żadna akcja. |
+| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Plik warstwowy na serwerze nie jest dostępny. Ten problem występuje, gdy plik warstwowy nie został odwołany przed usunięciem punktu końcowego serwera. | Aby rozwiązać ten problem, zobacz [pliki warstwowe nie są dostępne na serwerze po usunięciu punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Nie ma potrzeby wykonywania żadnych czynności. |
+| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany i sesja synchronizacji nie powiodła się. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Nie ma potrzeby wykonywania żadnych czynności. Jeśli błąd będzie się powtarzać, zbadaj błąd sesji synchronizacji. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę podanego pliku lub katalogu. Aby uzyskać więcej informacji, zobacz [Obsługa nieobsługiwanych znaków](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę podanego pliku lub katalogu. Aby uzyskać więcej informacji, zobacz [Obsługa nieobsługiwanych znaków](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Nie jest wymagana żadna akcja. Azure File Sync tworzy tymczasową migawkę usługi VSS raz dziennie na serwerze w celu synchronizowania plików, które mają otwarte dojścia. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiana nie została jeszcze wykryta przez synchronizację. Po wykryciu tej zmiany synchronizacja zostanie odzyskana. | Nie jest wymagana żadna akcja. |
-| 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Plik został usunięty, a synchronizacja nie ma informacji o zmianie. | Nie jest wymagana żadna akcja. Synchronizacja spowoduje zatrzymywanie rejestrowania tego błędu, gdy wykrycie zmiany wykryje, że plik został usunięty. |
-| 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Pominięto plik, ale zostanie on zsynchronizowany podczas następnej sesji synchronizacji. | Nie jest wymagana żadna akcja. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Nie ma potrzeby wykonywania żadnych czynności. Azure File Sync tworzy tymczasową migawkę usługi VSS raz dziennie na serwerze w celu synchronizowania plików, które mają otwarte dojścia. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiana nie została jeszcze wykryta przez synchronizację. Po wykryciu tej zmiany synchronizacja zostanie odzyskana. | Nie ma potrzeby wykonywania żadnych czynności. |
+| 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Plik został usunięty, a synchronizacja nie ma informacji o zmianie. | Nie ma potrzeby wykonywania żadnych czynności. Synchronizacja spowoduje zatrzymywanie rejestrowania tego błędu, gdy wykrycie zmiany wykryje, że plik został usunięty. |
+| 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | Nie można zsynchronizować pliku lub katalogu, ponieważ element został już usunięty w miejscu docelowym, a synchronizacja nie ma informacji o zmianie. | Nie ma potrzeby wykonywania żadnych czynności. Synchronizacja spowoduje zatrzymywanie rejestrowania tego błędu, gdy wykrywanie zmian zostanie uruchomione w miejscu docelowym, a synchronizacja wykryje, że element został usunięty. |
+| 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Plik lub katalog został pominięty, ale zostanie zsynchronizowany podczas następnej sesji synchronizacji. Jeśli ten błąd jest raportowany podczas pobierania elementu, nazwa pliku lub katalogu jest większa niż prawdopodobnie nieprawidłowa. | Jeśli ten błąd jest raportowany podczas przekazywania pliku, nie jest wymagana żadna akcja. Jeśli błąd jest raportowany podczas pobierania pliku, należy zmienić nazwę danego pliku lub katalogu. Aby uzyskać więcej informacji, zobacz [Obsługa nieobsługiwanych znaków](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
+| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Nie można zsynchronizować pliku lub katalogu, ponieważ element już istnieje w miejscu docelowym, a synchronizacja nie ma informacji o zmianie. | Nie ma potrzeby wykonywania żadnych czynności. Synchronizacja spowoduje zatrzymywanie rejestrowania tego błędu, gdy wykrywanie zmian zostanie uruchomione w miejscu docelowym, a synchronizacja jest świadoma tego nowego elementu. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Nie można zsynchronizować pliku, ponieważ osiągnięto limit udziałów plików platformy Azure. | Aby rozwiązać ten problem, zobacz sekcję [Limit magazynu udziału plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) w przewodniku rozwiązywania problemów. |
 | 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Plik jest szyfrowany za pomocą nieobsługiwanego rozwiązania (na przykład NTFS EFS). | Odszyfruj plik i użyj obsługiwanego rozwiązania szyfrowania. Aby uzyskać listę rozwiązań pomocy technicznej, zobacz sekcję [rozwiązania szyfrowania](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) w podręczniku planowania. |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Plik znajduje się w folderze replikacji tylko do odczytu systemu plików DFS. | Plik znajduje się w folderze replikacji tylko do odczytu systemu plików DFS. Synchronizacja Azure Files nie obsługuje punktów końcowych serwera w folderach replikacji tylko do odczytu systemu plików DFS-R. Aby uzyskać więcej informacji, zobacz [Przewodnik planowania](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) . |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Plik ma stan oczekiwania na usunięcie. | Nie jest wymagana żadna akcja. Plik zostanie usunięty po zamknięciu wszystkich dojść do otwartego pliku. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Plik ma stan oczekiwania na usunięcie. | Nie ma potrzeby wykonywania żadnych czynności. Plik zostanie usunięty po zamknięciu wszystkich dojść do otwartego pliku. |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Nie można zsynchronizować pliku, ponieważ ustawienia zapory i sieci wirtualnej na koncie magazynu są włączone, a serwer nie ma dostępu do konta magazynu. | Dodaj adres IP lub sieć wirtualną serwera, wykonując czynności opisane w sekcji [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) w Podręczniku wdrażania. |
 | 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Nie można zsynchronizować pliku, ponieważ rozmiar deskryptora zabezpieczeń przekracza limit 64 KiB. | Aby rozwiązać ten problem, Usuń wpisy kontroli dostępu (ACE) w pliku, aby zmniejszyć rozmiar deskryptora zabezpieczeń. |
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Nie można zsynchronizować pliku z powodu nieoczekiwanego błędu. | Jeśli błąd będzie się powtarzać przez kilka dni, Otwórz przypadek pomocy technicznej. |
-| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Nie jest wymagana żadna akcja. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi zostać ponownie zsynchronizowany. | Nie jest wymagana żadna akcja. |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używany. | Nie ma potrzeby wykonywania żadnych czynności. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi zostać ponownie zsynchronizowany. | Nie ma potrzeby wykonywania żadnych czynności. |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Nie można zsynchronizować pliku, ponieważ osiągnięto maksymalną liczbę plików konfliktów. Azure File Sync obsługuje pliki konfliktów 100 na plik. Aby dowiedzieć się więcej na temat konfliktów plików, zobacz Azure File Sync [często zadawane pytania](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Aby rozwiązać ten problem, zmniejsz liczbę plików konfliktów. Plik zostanie zsynchronizowany, gdy liczba plików konfliktów jest mniejsza niż 100. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwanych znaków
@@ -313,7 +322,7 @@ Poniższa tabela zawiera wszystkie znaki Unicode, Azure File Sync nie są jeszcz
 
 | | |
 |-|-|
-| **WYNIK** | 0x800704c7 |
+| **HRESULT** | 0x800704c7 |
 | **HRESULT (dziesiętny)** | -2147023673 | 
 | **Ciąg błędu** | ERROR_CANCELLED |
 | **Wymagana korekta** | Nie |
@@ -324,7 +333,7 @@ Sesje synchronizacji mogą się nie powieść z różnych przyczyn, w tym serwer
 
 | | |
 |-|-|
-| **WYNIK** | 0x80072ee7 |
+| **HRESULT** | 0x80072ee7 |
 | **HRESULT (dziesiętny)** | -2147012889 | 
 | **Ciąg błędu** | WININET_E_NAME_NOT_RESOLVED |
 | **Wymagana korekta** | Tak |
@@ -335,7 +344,7 @@ Sesje synchronizacji mogą się nie powieść z różnych przyczyn, w tym serwer
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8004c |
+| **HRESULT** | 0x80c8004c |
 | **HRESULT (dziesiętny)** | -2134376372 |
 | **Ciąg błędu** | ECS_E_USER_REQUEST_THROTTLED |
 | **Wymagana korekta** | Nie |
@@ -346,7 +355,7 @@ Nie jest wymagana żadna akcja; serwer ponowi próbę. Jeśli ten błąd będzie
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c83075 |
+| **HRESULT** | 0x80c83075 |
 | **HRESULT (dziesiętny)** | -2134364043 |
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Wymagana korekta** | Nie |
@@ -357,7 +366,7 @@ Nie jest wymagana żadna akcja. Po przywróceniu pliku lub udziału plików (pun
 
 | | |
 |-|-|
-| **WYNIK** | 0x80041295 |
+| **HRESULT** | 0x80041295 |
 | **HRESULT (dziesiętny)** | -2147216747 |
 | **Ciąg błędu** | SYNC_E_METADATA_INVALID_OPERATION |
 | **Wymagana korekta** | Nie |
@@ -368,7 +377,7 @@ Ten błąd występuje zazwyczaj, gdy aplikacja kopii zapasowej tworzy migawkę u
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8305f |
+| **HRESULT** | 0x80c8305f |
 | **HRESULT (dziesiętny)** | -2134364065 |
 | **Ciąg błędu** | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED |
 | **Wymagana korekta** | Tak |
@@ -384,7 +393,7 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie może uzyskać dostę
 
 | | |
 |-|-|
-| **WYNIK** | 0x80C83060 |
+| **HRESULT** | 0x80C83060 |
 | **HRESULT (dziesiętny)** | -2134364064 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
 | **Wymagana korekta** | Tak |
@@ -401,7 +410,7 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie może uzyskać dostę
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8308a |
+| **HRESULT** | 0x80c8308a |
 | **HRESULT (dziesiętny)** | -2134364022 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
 | **Wymagana korekta** | Tak |
@@ -413,7 +422,7 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie może uzyskać dostę
 
 | | |
 |-|-|
-| **WYNIK** | 0x8e5e044e |
+| **HRESULT** | 0x8e5e044e |
 | **HRESULT (dziesiętny)** | -1906441138 |
 | **Ciąg błędu** | JET_errWriteConflict |
 | **Wymagana korekta** | Tak |
@@ -424,7 +433,7 @@ Ten błąd występuje, gdy występuje problem dotyczący wewnętrznej bazy danyc
 
 | | |
 |-|-|
-| **WYNIK** | 0x80C8306B |
+| **HRESULT** | 0x80C8306B |
 | **HRESULT (dziesiętny)** | -2134364053 |
 | **Ciąg błędu** | ECS_E_AGENT_VERSION_BLOCKED |
 | **Wymagana korekta** | Tak |
@@ -435,7 +444,7 @@ Ten błąd występuje, jeśli wersja agenta Azure File Sync zainstalowana na ser
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8603e |
+| **HRESULT** | 0x80c8603e |
 | **HRESULT (dziesiętny)** | -2134351810 |
 | **Ciąg błędu** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
 | **Wymagana korekta** | Tak |
@@ -461,7 +470,7 @@ Jeśli udział jest pełny, a limit przydziału nie jest ustawiony, jednym z mo�
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c86030 |
+| **HRESULT** | 0x80c86030 |
 | **HRESULT (dziesiętny)** | -2134351824 |
 | **Ciąg błędu** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
 | **Wymagana korekta** | Tak |
@@ -477,7 +486,7 @@ Jeśli udział plików platformy Azure został usunięty, należy utworzyć nowy
 
 | | |
 |-|-|
-| **WYNIK** | 0x80C83076 |
+| **HRESULT** | 0x80C83076 |
 | **HRESULT (dziesiętny)** | -2134364042 |
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Wymagana korekta** | Tak |
@@ -488,7 +497,7 @@ Ten błąd występuje, gdy subskrypcja platformy Azure jest zawieszona. Synchron
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8306c |
+| **HRESULT** | 0x80c8306c |
 | **HRESULT (dziesiętny)** | -2134364052 |
 | **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
 | **Wymagana korekta** | Tak |
@@ -499,7 +508,7 @@ Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny z p
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c80219 |
+| **HRESULT** | 0x80c80219 |
 | **HRESULT (dziesiętny)** | -2134375911 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
 | **Wymagana korekta** | Nie |
@@ -515,12 +524,12 @@ Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz ż
 
 | | |
 |-|-|
-| **WYNIK** | 0x800b0109 |
+| **HRESULT** | 0x800b0109 |
 | **HRESULT (dziesiętny)** | -2146762487 |
 | **Ciąg błędu** | CERT_E_UNTRUSTEDROOT |
 | **Wymagana korekta** | Tak |
 
-Ten błąd może wystąpić, jeśli organizacja korzysta z serwera proxy protokołu SSL kończącego się lub gdy złośliwa jednostka przechwytuje ruch między serwerem a usługą Azure File Sync. Jeśli masz pewność, że jest to oczekiwane (ponieważ organizacja korzysta z serwera proxy usługi SSL), Pomiń weryfikację certyfikatu z zastępowaniem rejestru.
+Ten błąd może wystąpić, jeśli Twoja organizacja korzysta z serwera proxy przerywania protokołu SSL lub jeśli złośliwy podmiot przechwytuje ruch między serwerem i usługą Azure File Sync. Jeśli masz pewność, że jest to oczekiwane zachowanie (ponieważ Twoja organizacja korzysta z serwera proxy przerywania protokołu SSL), możesz pominąć weryfikację certyfikatu, przesłaniając ustawienie za pomocą wartości rejestru.
 
 1. Utwórz wartość rejestru SkipVerifyingPinnedRootCertificate.
 
@@ -534,13 +543,13 @@ Ten błąd może wystąpić, jeśli organizacja korzysta z serwera proxy protoko
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ustawienie tej wartości rejestru powoduje, że Agent Azure File Sync akceptuje każdy Lokalny zaufany certyfikat SSL podczas transferu danych między serwerem a usługą w chmurze.
+Po ustawieniu tej wartości rejestru agent usługi Azure File Sync zaakceptuje każdy lokalnie zaufany certyfikat SSL podczas transferu danych między serwerem a usługą w chmurze.
 
 <a id="-2147012894"></a>**Nie można nawiązać połączenia z usługą.**  
 
 | | |
 |-|-|
-| **WYNIK** | 0x80072EE2 |
+| **HRESULT** | 0x80072EE2 |
 | **HRESULT (dziesiętny)** | -2147012894 |
 | **Ciąg błędu** | WININET_E_TIMEOUT |
 | **Wymagana korekta** | Tak |
@@ -551,7 +560,7 @@ Ustawienie tej wartości rejestru powoduje, że Agent Azure File Sync akceptuje 
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c80300 |
+| **HRESULT** | 0x80c80300 |
 | **HRESULT (dziesiętny)** | -2134375680 |
 | **Ciąg błędu** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Wymagana korekta** | Tak |
@@ -562,7 +571,7 @@ Ten błąd zazwyczaj występuje, ponieważ czas serwera jest niepoprawny. Jeśli
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c83078 |
+| **HRESULT** | 0x80c83078 |
 | **HRESULT (dziesiętny)** | -2134364040 |
 | **Ciąg błędu** | ECS_E_AUTH_SRV_CERT_EXPIRED |
 | **Wymagana korekta** | Tak |
@@ -586,7 +595,7 @@ Jeśli certyfikat uwierzytelniania klienta wygasł, wykonaj następujące kroki,
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c80228 |
+| **HRESULT** | 0x80c80228 |
 | **HRESULT (dziesiętny)** | -2134375896 |
 | **Ciąg błędu** | ECS_E_AUTH_SRV_CERT_NOT_FOUND |
 | **Wymagana korekta** | Tak |
@@ -606,7 +615,7 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c83079 |
+| **HRESULT** | 0x80c83079 |
 | **HRESULT (dziesiętny)** | -2134364039 |
 | **Ciąg błędu** | ECS_E_AUTH_IDENTITY_NOT_FOUND |
 | **Wymagana korekta** | Tak |
@@ -617,12 +626,12 @@ Ten błąd występuje, ponieważ usuwanie punktu końcowego serwera nie powiodł
 
 | | |
 |-|-|
-| **WYNIK** | 0x8e5e0211 |
+| **HRESULT** | 0x8e5e0211 |
 | **HRESULT (dziesiętny)** | -1906441711 |
 | **Ciąg błędu** | JET_errLogDiskFull |
 | **Wymagana korekta** | Tak |
 | | |
-| **WYNIK** | 0x80c8031a |
+| **HRESULT** | 0x80c8031a |
 | **HRESULT (dziesiętny)** | -2134375654 |
 | **Ciąg błędu** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
 | **Wymagana korekta** | Tak |
@@ -633,7 +642,7 @@ Ten błąd występuje, ponieważ wolumin został wypełniony. Ten błąd występ
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8300f |
+| **HRESULT** | 0x80c8300f |
 | **HRESULT (dziesiętny)** | -2134364145 |
 | **Ciąg błędu** | ECS_E_REPLICA_NOT_READY |
 | **Wymagana korekta** | Nie |
@@ -646,17 +655,17 @@ Ten błąd występuje, ponieważ zmiany udziału plików platformy Azure są wpr
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8023b |
+| **HRESULT** | 0x80c8023b |
 | **HRESULT (dziesiętny)** | -2134375877 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Wymagana korekta** | Tak |
 | | |
-| **WYNIK** | 0x80c8021c |
+| **HRESULT** | 0x80c8021c |
 | **HRESULT (dziesiętny)** | -2134375908 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Wymagana korekta** | Tak |
 | | |
-| **WYNIK** | 0x80c80253 |
+| **HRESULT** | 0x80c80253 |
 | **HRESULT (dziesiętny)** | -2134375853 |
 | **Ciąg błędu** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Wymagana korekta** | Tak |
@@ -670,7 +679,7 @@ W przypadkach, gdy występuje wiele na błędy synchronizacji plików, sesja syn
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c80019 |
+| **HRESULT** | 0x80c80019 |
 | **HRESULT (dziesiętny)** | -2134376423 |
 | **Ciąg błędu** | ECS_E_SYNC_INVALID_PATH |
 | **Wymagana korekta** | Tak |
@@ -681,7 +690,7 @@ Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i
 
 | | |
 |-|-|
-| **WYNIK** | 0x80C80277 |
+| **HRESULT** | 0x80C80277 |
 | **HRESULT (dziesiętny)** | -2134375817 |
 | **Ciąg błędu** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
 | **Wymagana korekta** | Tak |
@@ -692,7 +701,7 @@ Ten błąd występuje, ponieważ załadowana wersja sterownika filtru warstwy ch
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8004b |
+| **HRESULT** | 0x80c8004b |
 | **HRESULT (dziesiętny)** | -2134376373 |
 | **Ciąg błędu** | ECS_E_SERVICE_UNAVAILABLE |
 | **Wymagana korekta** | Nie |
@@ -703,7 +712,7 @@ Ten błąd występuje, ponieważ usługa Azure File Sync jest niedostępna. Ten 
 
 | | |
 |-|-|
-| **WYNIK** | 0x80131500 |
+| **HRESULT** | 0x80131500 |
 | **HRESULT (dziesiętny)** | -2146233088 |
 | **Ciąg błędu** | COR_E_EXCEPTION |
 | **Wymagana korekta** | Nie |
@@ -714,7 +723,7 @@ Ten błąd występuje, ponieważ synchronizacja nie powiodła się z powodu wyj�
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c83073 |
+| **HRESULT** | 0x80c83073 |
 | **HRESULT (dziesiętny)** | -2134364045 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_FAILED_OVER |
 | **Wymagana korekta** | Tak |
@@ -725,7 +734,7 @@ Ten błąd występuje, ponieważ konto magazynu zostało przełączone w tryb fa
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8020e |
+| **HRESULT** | 0x80c8020e |
 | **HRESULT (dziesiętny)** | -2134375922 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Wymagana korekta** | Nie |
@@ -736,7 +745,7 @@ Ten błąd występuje z powodu wewnętrznego problemu z bazą danych synchroniza
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c83088 |
+| **HRESULT** | 0x80c83088 |
 | **HRESULT (dziesiętny)** | -2134364024 | 
 | **Ciąg błędu** | ECS_E_INVALID_AAD_TENANT |
 | **Wymagana korekta** | Tak |
@@ -752,7 +761,7 @@ Aby rozwiązać ten problem, wykonaj jedną z następujących czynności:
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c83096 |
+| **HRESULT** | 0x80c83096 |
 | **HRESULT (dziesiętny)** | -2134364010 | 
 | **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
 | **Wymagana korekta** | Tak |
@@ -763,12 +772,12 @@ Ten błąd występuje, gdy ustawienia zapory i sieci wirtualnej są włączone n
 
 | | |
 |-|-|
-| **WYNIK** | 0x80070005 |
+| **HRESULT** | 0x80070005 |
 | **HRESULT (dziesiętny)** | -2147024891 |
 | **Ciąg błędu** | ERROR_ACCESS_DENIED |
 | **Wymagana korekta** | Tak |
 
-Ten błąd może wystąpić, jeśli konto NT NT\SYSTEM nie ma uprawnień do folderu informacji o woluminie systemowym w woluminie, na którym znajduje się punkt końcowy serwera. Uwaga Jeśli pojedyncze pliki nie są synchronizowane z usługą ERROR_ACCESS_DENIED, wykonaj kroki opisane w sekcji [Rozwiązywanie problemów według błędów synchronizacji plików/katalogów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors) .
+Ten błąd może wystąpić, jeśli konto NT NT\SYSTEM nie ma uprawnień do folderu informacji o woluminie systemowym w woluminie, na którym znajduje się punkt końcowy serwera. Uwaga Jeśli pojedyncze pliki nie są synchronizowane z ERROR_ACCESS_DENIED, wykonaj kroki opisane w sekcji [Rozwiązywanie problemów według błędów synchronizacji plików/katalogów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors) .
 
 Aby rozwiązać ten problem, wykonaj następujące kroki:
 
@@ -782,7 +791,7 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
 
 | | |
 |-|-|
-| **WYNIK** | 0x80c8027e |
+| **HRESULT** | 0x80c8027e |
 | **HRESULT (dziesiętny)** | -2134375810 |
 | **Ciąg błędu** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
 | **Wymagana korekta** | Tak |
@@ -801,12 +810,23 @@ Aby rozwiązać ten problem, Usuń i Utwórz ponownie grupę synchronizacji, wyk
 
 | | |
 |-|-|
-| **WYNIK** | 0x80190133 |
+| **HRESULT** | 0x80190133 |
 | **HRESULT (dziesiętny)** | -2145844941 |
 | **Ciąg błędu** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
 | **Wymagana korekta** | Tak |
 
 Ten błąd występuje, ponieważ Azure File Sync nie obsługuje przekierowania HTTP (kod stanu 3xx). Aby rozwiązać ten problem, należy wyłączyć Przekierowywanie HTTP na serwerze proxy lub urządzeniu sieciowym.
+
+<a id="-2134364027"></a>**Przekroczono limit czasu podczas transferu danych w trybie offline, ale nadal trwa.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83085 |
+| **HRESULT (dziesiętny)** | -2134364027 |
+| **Ciąg błędu** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
+| **Wymagana korekta** | Nie |
+
+Ten błąd występuje, gdy operacja pozyskiwania danych przekracza limit czasu. Ten błąd można zignorować, jeśli synchronizacja jest w toku (AppliedItemCount jest większa niż 0). Zobacz [Jak mogę Monitoruj postęp bieżącej sesji synchronizacji?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
 ### <a name="common-troubleshooting-steps"></a>Typowe kroki rozwiązywania problemów
 <a id="troubleshoot-storage-account"></a>**Sprawdź, czy konto magazynu istnieje.**  
@@ -815,7 +835,7 @@ Ten błąd występuje, ponieważ Azure File Sync nie obsługuje przekierowania H
 2. Wybierz punkt końcowy w chmurze w grupie synchronizacji.
 3. Zanotuj nazwę udziału plików platformy Azure w otwartym okienku.
 4. Wybierz połączone konto magazynu. Jeśli łącze nie powiedzie się, konto magazynu, do którego istnieje odwołanie, zostało usunięte.
-    zrzut ekranu ![A pokazujący okienko szczegółów punktu końcowego w chmurze z linkiem do konta magazynu. ](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
+    ![zrzut ekranu przedstawiający okienko szczegółów punktu końcowego w chmurze z linkiem do konta magazynu.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 ```powershell
@@ -1023,9 +1043,9 @@ Jeśli nie można odwołać plików:
 
 ### <a name="recall-errors-and-remediation"></a>Błędy i korygowanie odwołania
 
-| WYNIK | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowania |
+| HRESULT | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80070079 | -121 | ERROR_SEM_TIMEOUT | Odzyskanie pliku nie powiodło się z powodu przekroczenia limitu czasu operacji we/wy. Ten problem może wystąpić z kilku powodów: ograniczenia zasobów serwera, niska łączność sieciowa lub problem z usługą Azure Storage (na przykład ograniczenie przepustowości). | Nie jest wymagana żadna akcja. Jeśli błąd będzie się powtarzać przez kilka godzin, Otwórz przypadek pomocy technicznej. |
+| 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | Odzyskanie pliku nie powiodło się z powodu przekroczenia limitu czasu operacji we/wy. Ten problem może wystąpić z kilku powodów: ograniczenia zasobów serwera, niska łączność sieciowa lub problem z usługą Azure Storage (na przykład ograniczenie przepustowości). | Nie ma potrzeby wykonywania żadnych czynności. Jeśli błąd będzie się powtarzać przez kilka godzin, Otwórz przypadek pomocy technicznej. |
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Odzyskanie pliku nie powiodło się z powodu problemu z siecią.  | Jeśli błąd będzie się powtarzał, sprawdź łączność sieciową z udziałem plików platformy Azure. |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Odwoływanie pliku nie powiodło się, ponieważ punkt końcowy serwera został usunięty. | Aby rozwiązać ten problem, zobacz [pliki warstwowe nie są dostępne na serwerze po usunięciu punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Nie można odwołać pliku z powodu błędu odmowy dostępu. Ten problem może wystąpić, jeśli ustawienia zapory i sieci wirtualnej na koncie magazynu są włączone, a serwer nie ma dostępu do konta magazynu. | Aby rozwiązać ten problem, Dodaj adres IP lub sieć wirtualną serwera, wykonując czynności opisane w sekcji [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) w Podręczniku wdrażania. |

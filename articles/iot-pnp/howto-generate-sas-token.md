@@ -1,19 +1,19 @@
 ---
 title: Generuj token zabezpieczający, aby uzyskać dostęp do repozytorium IoT Plug and Play w wersji zapoznawczej | Microsoft Docs
 description: Generuj token sygnatury dostępu współdzielonego, który będzie używany podczas programistycznego uzyskiwania dostępu do repozytorium modeli Plug and Play IoT.
-author: YasinMSFT
-ms.author: yahajiza
+author: Philmea
+ms.author: philmea
 ms.date: 08/06/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e5d6e7087a7e3d5f4a001e16c5cfa19a6df6a68e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880542"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976030"
 ---
 # <a name="generate-sas-token"></a>Generuj token SAS
 
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-Poniższy fragment kodu przedstawia sposób generowania tokenu sygnatury dostępu współdzielonego\#przy użyciu języka C:
+Poniższy fragment kodu przedstawia sposób generowania tokenu sygnatury dostępu współdzielonego przy użyciu\#C:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -74,7 +74,7 @@ public static string generateSasToken(string hostName, string repoId, string key
 
 ## <a name="use-the-sas-token"></a>Używanie tokenu sygnatury dostępu współdzielonego
 
-Po wygenerowaniu tokenu sygnatury dostępu współdzielonego można użyć go do utworzenia żądania HTTP POST. Przykład:
+Po wygenerowaniu tokenu sygnatury dostępu współdzielonego można użyć go do utworzenia żądania HTTP POST. Na przykład:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
@@ -84,4 +84,4 @@ W przypadku przyznania Klientowi tokenu SAS klient nie ma klucza podstawowego za
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak generować tokeny zabezpieczające, które mają być używane w celu uzyskania dostępu do modelu repozytoria modeli IoT Plug and Play w wersji zapoznawczej, sugerowanym następnym krokiem jest zapoznawanie się z przewodnikiem dewelopera dotyczącym programu [iot Plug and Play Preview](concepts-developer-guide.md).
+Teraz, gdy wiesz już, jak generować tokeny zabezpieczające, które mają być używane w celu uzyskania dostępu do modelu repozytoria modeli IoT Plug and Play w wersji zapoznawczej, sugerowanym następnym krokiem jest zapoznawanie się z [przewodnikiem dewelopera dotyczącym programu iot Plug and Play Preview](concepts-developer-guide.md).

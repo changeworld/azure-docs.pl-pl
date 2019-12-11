@@ -1,6 +1,6 @@
 ---
-title: Usługa IoT Hub do aprowizacji urządzenia — automatycznej aprowizacji pojęcia
-description: Ten artykuł zawiera omówienie pojęć dotyczących fazy urządzenia automatycznej aprowizacji przy użyciu IoT Device Provisioning Service, usługi IoT Hub i zestawy SDK klientów.
+title: IoT Hub Device Provisioning Service — koncepcje dotyczące aprowizacji
+description: Ten artykuł zawiera omówienie pojęć dotyczących etapów samodzielnej aprowizacji urządzeń przy użyciu usługi IoT Device Provisioning Service (DPS), IoT Hub i zestawów SDK klienta.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,105 +8,105 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746011"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975333"
 ---
-# <a name="auto-provisioning-concepts"></a>Pojęcia automatycznej aprowizacji
+# <a name="auto-provisioning-concepts"></a>Koncepcje autoaprowizacji
 
-Zgodnie z opisem w [Przegląd](about-iot-dps.md), usługi Device Provisioning Service to usługa pomocnika, która umożliwia just-in-time Inicjowanie obsługi urządzeń do usługi IoT hub, nie wymagając interwencji człowieka. Po pomyślnej aprowizacji urządzenia łączą się bezpośrednio z ich wyznaczonego Centrum IoT Hub. Ten proces jest nazywany automatycznej aprowizacji i zapewnia out-of--box rejestracji i konfiguracji początkowej środowisko dla urządzeń.
+Zgodnie z opisem w temacie [Omówienie](about-iot-dps.md)usługa Device Provisioning to usługa pomocnika, która umożliwia wstępne Inicjowanie obsługi urządzeń w centrum IoT Hub, bez konieczności interwencji człowieka. Po pomyślnej aprowizacji urządzenia łączą się bezpośrednio z wydzielonymi IoT Hub. Ten proces jest określany mianem automatycznej obsługi administracyjnej i zapewnia wbudowaną obsługę rejestracji i początkowej konfiguracji dla urządzeń.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Usługa Azure IoT auto-provisioning może można podzielić na trzy etapy:
+Funkcję autoaprowizacji usługi Azure IoT można podzielić na trzy fazy:
 
-1. **Konfiguracja usługi** -jednorazowej konfiguracji wystąpienia usługi Azure IoT Hub i IoT Hub Device Provisioning Service ustanawiania je i tworzenie połączenia między nimi.
+1. **Konfiguracja usługi** — jednokrotna konfiguracja wystąpień IoT Hub i IoT Hub Device Provisioning Service platformy Azure, ustanawiająca je i tworzącą powiązania między nimi.
 
    > [!NOTE]
-   > Bez względu na rozmiar rozwiązania IoT, nawet jeśli planuje się obsługiwać miliony urządzeń to **jednorazowej konfiguracji**.
+   > Bez względu na rozmiar rozwiązania IoT, nawet jeśli planujesz obsługę milionów urządzeń, jest to **jednorazowa konfiguracja**.
 
-2. **Rejestrowanie urządzenia** — proces uświadamiania wystąpienie usługi Device Provisioning urządzeń, które będzie próbował zarejestrować się w przyszłości. [Rejestracja](concepts-service.md#enrollment) odbywa się przez skonfigurowanie informacji o tożsamości urządzenia w usłudze aprowizowania jako "rejestracji indywidualnej" na jednym urządzeniu lub "rejestrowanie grupy" dla wielu urządzeń. Tożsamość jest oparty na [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) urządzenia jest przeznaczony do stosowania, co umożliwia usługa aprowizowania recenzentom potwierdzenie, że autentyczności urządzeniem podczas rejestracji:
+2. **Rejestrowanie urządzeń** — proces udostępniania wystąpienia usługi Device Provisioning dla urządzeń, które będą próbować zarejestrować się w przyszłości. [Rejestracja](concepts-service.md#enrollment) jest realizowana przez skonfigurowanie informacji o tożsamości urządzenia w usłudze aprowizacji jako "indywidualnej rejestracji" dla jednego urządzenia lub "rejestracji grupowej" dla wielu urządzeń. Tożsamość jest oparta na [mechanizmie zaświadczania](concepts-security.md#attestation-mechanism) , który jest przeznaczony do użytku na urządzeniu, co umożliwia usłudze aprowizacji potwierdzenie autentyczności urządzenia podczas rejestracji:
 
-   - **Moduł TPM**: skonfigurowany jako "rejestracji indywidualnej", tożsamości urządzenia opiera się na identyfikator rejestracji modułu TPM i klucz publiczny adnotację. Biorąc pod uwagę, że moduł TPM jest [specyfikacji](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/), usługa tylko oczekuje, że poświadczenia na specyfikację, niezależnie od implementacji modułu TPM (sprzętowego lub programowego). Zobacz [Inicjowanie obsługi administracyjnej urządzeń: Poświadczania tożsamości z modułem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) szczegółowe informacje dotyczące zaświadczania opartych na modułach TPM. 
+   - **Moduł TPM**: skonfigurowany jako "indywidualna Rejestracja", tożsamość urządzenia zależy od identyfikatora rejestracji modułu TPM i publicznego klucza poręczenia. Mając na uwadze, że moduł TPM jest [specyfikacją](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/), usługa oczekuje na zaświadczanie zgodnie ze specyfikacją niezależnie od implementacji modułu TPM (sprzętu lub oprogramowania). Zobacz [Inicjowanie obsługi urządzeń: zaświadczanie tożsamości z modułem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) , aby uzyskać szczegółowe informacje na temat zaświadczania opartego na module TPM. 
 
-   - **X509**: skonfigurowany jako "rejestracji indywidualnej" lub "rejestrowanie grupy", urządzenia tożsamości opiera się na X.509 certyfikatu cyfrowego, który zostanie przekazany do rejestracji jako plik PEM lub cer.
+   - **X509**: skonfigurowany jako "indywidualna Rejestracja" lub "Rejestracja grupy", tożsamość urządzenia jest oparta na certyfikacie cyfrowym X. 509, który jest przekazywany do rejestracji jako plik PEM lub CER.
 
    > [!IMPORTANT]  
-   > Chociaż nie wymaganie wstępne przy użyciu usługi Device Provisioning, zdecydowanie zalecamy używania urządzenia sprzętowego modułu zabezpieczeń (HSM) do przechowywania informacji o tożsamości urządzenia poufne, takie jak klucze i certyfikaty X.509.
+   > Chociaż nie jest to wymaganie wstępne w przypadku korzystania z usług Device Provisioning, zdecydowanie zalecamy, aby urządzenie korzystało z sprzętowego modułu zabezpieczeń (HSM) do przechowywania informacji o tożsamości urządzenia poufnego, takich jak klucze i certyfikaty X. 509.
 
-3. **Rejestracja urządzenia i konfiguracji** — zainicjowane po rozruchu przez oprogramowanie do rejestracji, który został skompilowany przy użyciu klienta usługi Device Provisioning SDK odpowiednie dla urządzenia i mechanizmu zaświadczania. Oprogramowanie ustanawia połączenie do inicjowania obsługi usługi na potrzeby uwierzytelniania urządzenia i późniejszej rejestracji w usłudze IoT Hub. Po pomyślnej rejestracji urządzenie otrzymuje jego usługi IoT Hub urządzenia Unikatowy identyfikator oraz informacje o połączeniu, co pozwala na ściąganie pierwotną konfigurację i rozpocząć proces telemetrii. W środowiskach produkcyjnych tej fazy może wystąpić kilka tygodni lub miesięcy po poprzednich dwóch faz.
+3. **Rejestracja i konfiguracja urządzenia** — zainicjowano po rozpoczęciu przez oprogramowanie rejestracji, które jest tworzone przy użyciu zestawu SDK klienta usługi Device Provisioning odpowiedniego dla mechanizmu urządzenia i zaświadczania. Oprogramowanie nawiąże połączenie z usługą aprowizacji w celu uwierzytelnienia urządzenia i kolejnej rejestracji w IoT Hub. Po pomyślnej rejestracji urządzenie jest dostarczane z IoT Hub unikatowy identyfikator urządzenia i informacje o połączeniu, co pozwala na ściąganie konfiguracji początkowej i rozpoczęcie procesu telemetrii. W środowiskach produkcyjnych ta faza może wystąpić w tygodniach lub miesiącach od poprzednich dwóch faz.
 
 ## <a name="roles-and-operations"></a>Role i operacje
 
-Fazy opisanych w poprzedniej sekcji może obejmować tygodni lub miesięcy, z powodu rzeczywistości produkcji takie jak czas produkcji wysyłania procesu celnymi itp. Ponadto mogą obejmować działań między wiele ról, biorąc pod uwagę różne jednostki biorące udział. W tej sekcji przyjmuje lepiej poznać różnymi rolami i operacje związane z każdej fazy, a następnie przedstawiono przepływ na diagramie sekwencji. 
+Fazy omówione w poprzedniej sekcji mogą obejmować tygodnie lub miesiące, ze względu na rzeczywiste procesy produkcji, takie jak czas produkcji, wysyłka, proces celny itp. Ponadto mogą obejmować działania w wielu rolach, w których występują różne jednostki. W tej sekcji zawarto szczegółowe zapoznaj się z różnymi rolami i operacjami związanymi z każdą fazą, a następnie ilustruje przepływ w diagramie sekwencji. 
 
-Producent urządzenia określonego na włączenie mechanizmu zaświadczania również automatycznej aprowizacji powoduje wymagania. Czynności produkcyjnych może również wystąpić, niezależnie od chronometraż faz automatycznej aprowizacji, zwłaszcza w przypadkach, gdy nowych urządzeń są kupowane po automatycznej aprowizacji jest już ustanowione.
+Funkcja autoaprowizacji umieszcza także wymagania dotyczące producenta urządzenia, specyficzne dla włączenia mechanizmu zaświadczania. Operacje produkcyjne mogą również odbywać się niezależnie od chronometrażu etapów autouzupełniania, szczególnie w przypadku, gdy nowe urządzenia są nabywane po ustanowieniu autoaprowizacji.
 
-Seria przewodników Szybki Start znajdują się w spisie treści po lewej stronie, aby pomóc w wyjaśnieniu automatycznej aprowizacji za pośrednictwem praktyczne doświadczenie w pracy. W celu ułatwienia/uproszczenia procesu uczenia, oprogramowanie jest użyte do symulacji urządzenia fizycznego rejestracji i rejestracji. Niektóre przewodników Szybki Start wymaga wykonania operacji dla wielu ról, w tym operacje dla ról nie istnieje, ze względu na charakter symulowane Szybki Start.
+Seria przewodników Szybki Start znajduje się w spisie treści po lewej stronie, aby pomóc w wyjaśnieniu samoobsługowego udostępniania przy użyciu praktycznego środowiska. Aby ułatwić/uprościć proces uczenia, oprogramowanie jest używane do symulowania urządzenia fizycznego na potrzeby rejestracji i rejestracji. Niektóre Przewodniki Szybki Start wymagają wykonania operacji dla wielu ról, w tym operacji dla nieistniejących ról, ze względu na symulowany charakter przewodników Szybki Start.
 
 | Rola | Operacja | Opis |
 |------| --------- | ------------|
-| Producent | Kodowanie adresu URL tożsamości i rejestrację | Oparte na mechanizmu zaświadczania używanego, producent jest odpowiedzialny za kodowanie informacje o tożsamości urządzenia i adres URL rejestracji usługi Device Provisioning.<br><br>**Przewodniki Szybki Start**: ponieważ jest symulowane urządzenie, nie istnieje żadna rola producenta. Zobacz jak uzyskać te informacje, który jest używany podczas programowania aplikacji do rejestracji próbki roli dla deweloperów, aby uzyskać szczegółowe informacje. |
-| | Potwierdzenie tożsamości urządzenia | Twórcę informacje o tożsamości urządzenia producent jest odpowiedzialny za komunikację operatora (lub agenta wyznaczonego) lub bezpośredniego rejestrowania w usłudze Device Provisioning za pomocą interfejsów API.<br><br>**Przewodniki Szybki Start**: ponieważ jest symulowane urządzenie, nie istnieje żadna rola producenta. Zobacz jak się dostać tożsamości urządzenia, który służy do zarejestrować symulowane urządzenie w wystąpieniu usługi Device Provisioning Service roli operatora, aby uzyskać szczegółowe informacje. |
-| Operator | Konfigurowanie automatycznego aprowizowania | Ta operacja odpowiada pierwszej fazy automatycznego aprowizowania.<br><br>**Przewodniki Szybki Start**: Możesz wykonać roli operatora, skonfigurowanie wystąpienia usługi Device Provisioning i Centrum IoT w subskrypcji platformy Azure. |
-|  | Rejestrowanie tożsamości urządzenia | Ta operacja odpowiada drugiej fazy automatycznego aprowizowania.<br><br>**Przewodniki Szybki Start**: Wykonujesz roli operatora rejestrowania symulowanego urządzenia w wystąpieniu usługi Device Provisioning Service. Tożsamość urządzenia jest określana przez metodę zaświadczania jest symulowane w przewodniku Szybki Start (TPM lub X.509). Zobacz szczegóły zaświadczania rola dla deweloperów. |
-| Usługa Device Provisioning,<br>Usługa IoT Hub | \<wszystkie operacje\> | Dla obu implementacji produkcyjnej z urządzeniami fizycznymi i przewodników Szybki Start z symulowanych urządzeń te role są spełnione za pośrednictwem usługi IoT, które należy skonfigurować w ramach subskrypcji platformy Azure. Role/operations działać dokładnie tak samo, jak Obojętność do inicjowania obsługi administracyjnej fizycznych a symulowane urządzenia usługi IoT. |
-| Developer | Kompilacja/wdrażanie oprogramowania do rejestracji | Ta operacja odpowiada trzeci etap automatycznego aprowizowania. Deweloper jest odpowiedzialny za tworzenie i wdrażanie oprogramowania do rejestracji na urządzeniu przy użyciu odpowiedniego zestawu SDK.<br><br>**Przewodniki Szybki Start**: Przykładowa aplikacja rejestracji, które tworzysz symuluje rzeczywiste urządzenie, dla platform/wybranym języku, który jest uruchamiany na stacji roboczej (zamiast jej wdrożeniu na urządzeniu fizycznym). Aplikacji do rejestracji wykonuje te same operacje jako jeden wdrożony na urządzeniu fizycznym. Należy określić metodę zaświadczania (certyfikat modułu TPM lub X.509) oraz adres URL rejestracji i "Zakres identyfikatorów" wystąpienie usługi Device Provisioning Service. Tożsamość urządzenia jest określana przez logikę zaświadczania zestawu SDK w czasie wykonywania, na podstawie metody, które określisz: <ul><li>**Zaświadczenia modułu TPM** — uruchamia deweloperskiej stacji roboczej [aplikację symulatora modułu TPM](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator). Po uruchomieniu oddzielną aplikację jest używany do wyodrębnienia "Klucz poręczenia" i "Identyfikator rejestracji" do użycia modułu TPM w rejestrowania tożsamości urządzenia. Logika zaświadczania zestawu SDK używa także symulator podczas rejestracji, aby przedstawić podpisany token sygnatury dostępu Współdzielonego dla uwierzytelniania i weryfikacji rejestracji.</li><li>**X509 zaświadczania** — za pomocą narzędzia do [wygenerować certyfikat](how-to-use-sdk-tools.md#x509-certificate-generator). Wygenerowany należy utworzyć plik certyfikatu, wymagany do użycia w rejestracji. Logika zaświadczania zestawu SDK również używa certyfikatu podczas rejestracji, aby przedstawić do uwierzytelniania i weryfikacji rejestracji.</li></ul> |
-| Urządzenie | Rozruchu i rejestrowanie | Ta operacja odpowiada trzeci etap automatycznego aprowizowania spełnić utworzonych przez dewelopera oprogramowania do rejestracji urządzenia. Zobacz roli dla deweloperów, aby uzyskać szczegółowe informacje. Po pierwszym uruchomieniu: <ol><li>Aplikacja łączy się z wystąpieniem usługi Device Provisioning, globalnego adresu URL i usługi "Identyfikator zakresu" określone podczas tworzenia.</li><li>Po nawiązaniu połączenia, urządzenie jest uwierzytelniane względem metoda zaświadczania i tożsamość określona podczas rejestracji.</li><li>Po uwierzytelnieniu, urządzenie jest zarejestrowane w usłudze wystąpienie usługi IoT Hub, określony przez wystąpienie usługi aprowizacji.</li><li>Po pomyślnej rejestracji Unikatowy identyfikator i Centrum IoT Hub punkt końcowy urządzenia są zwracane do aplikacji rejestracji w celu komunikowania się z usługą IoT Hub.</li><li> W efekcie urządzenia można ściągnąć jego początkowego [bliźniaczej reprezentacji urządzenia](~/articles/iot-hub/iot-hub-devguide-device-twins.md) stan dla konfiguracji i rozpocząć proces raportowania danych telemetrycznych.</li></ol>**Przewodniki Szybki Start**: ponieważ jest symulowane urządzenie, oprogramowanie do rejestracji jest uruchamiany na deweloperskiej stacji roboczej.|
+| Producent | Koduj tożsamość i adres URL rejestracji | Na podstawie używanego mechanizmu zaświadczania producent jest odpowiedzialny za kodowanie informacji o tożsamości urządzenia i adres URL rejestracji usługi Device Provisioning.<br><br>**Przewodniki Szybki Start**: od momentu symulowania urządzenia nie ma roli producenta. Zapoznaj się z rolą dewelopera, aby uzyskać szczegółowe informacje na temat sposobu uzyskiwania tych informacji, które są używane do kodowania przykładowej aplikacji do rejestracji. |
+| | Podaj tożsamość urządzenia | Jako podmiot nadawczy informacji o tożsamości urządzenia producent jest odpowiedzialny za komunikowanie się z operatorem (lub wskazanym agentem) lub bezpośrednio z rejestracją w usłudze Device Provisioning za pośrednictwem interfejsów API.<br><br>**Przewodniki Szybki Start**: od momentu symulowania urządzenia nie ma roli producenta. Zobacz rolę operatora, aby uzyskać szczegółowe informacje na temat sposobu uzyskiwania tożsamości urządzenia, która jest używana do rejestrowania symulowanego urządzenia w wystąpieniu usługi Device Provisioning. |
+| Operator | Konfigurowanie autoaprowizacji | Ta operacja odpowiada pierwszej fazie inicjowania obsługi.<br><br>**Przewodniki Szybki Start**: wykonywanie roli operatora, Konfigurowanie usługi Device Provisioning i wystąpień IoT Hub w ramach subskrypcji platformy Azure. |
+|  | Rejestrowanie tożsamości urządzenia | Ta operacja odpowiada drugiej fazie aprowizacji samoobsługowego.<br><br>**Przewodniki Szybki Start**: wykonujesz rolę operatora, rejestrując urządzenie symulowane w wystąpieniu usługi Device Provisioning. Tożsamość urządzenia jest określana przez metodę zaświadczania symulowaną w przewodniku szybki start (TPM lub X. 509). Szczegółowe informacje o zaświadczeniu można znaleźć w roli dewelopera. |
+| Usługa Device Provisioning,<br>IoT Hub | \<wszystkie operacje\> | W przypadku wdrożenia produkcyjnego z urządzeniami fizycznymi i przewodników szybki start z symulowanymi urządzeniami te role są spełnione za pośrednictwem usług IoT skonfigurowanych w ramach subskrypcji platformy Azure. Role/operacje działają dokładnie tak samo, co usługi IoT różnią się w zależności od aprowizacji urządzeń fizycznych a symulowanych. |
+| Deweloper | Kompiluj/Wdróż oprogramowanie rejestracyjne | Ta operacja odpowiada trzeciej fazie inicjowania obsługi. Deweloper jest odpowiedzialny za tworzenie i wdrażanie oprogramowania do rejestracji na urządzeniu przy użyciu odpowiedniego zestawu SDK.<br><br>**Przewodniki Szybki Start**: kompilacja przykładowej aplikacji do rejestracji symuluje rzeczywiste urządzenie dla wybranej platformy/języka, który działa na stacji roboczej (zamiast wdrażać ją na urządzeniu fizycznym). Aplikacja do rejestracji wykonuje te same operacje, które zostały wdrożone na urządzeniu fizycznym. Należy określić metodę zaświadczania (Certyfikat modułu TPM lub X. 509) oraz adres URL rejestracji i "zakres identyfikatorów" wystąpienia usługi Device Provisioning Service. Tożsamość urządzenia jest określana przez logikę zaświadczania zestawu SDK w czasie wykonywania na podstawie określonej metody: <ul><li>**Zaświadczanie modułu TPM** — na stacji roboczej deweloperskiej jest uruchomiona [aplikacja symulatora modułu TPM](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator). Po uruchomieniu oddzielna aplikacja jest używana do wyodrębnienia "klucza poręczenia" i "Identyfikator rejestracji" do użycia podczas rejestrowania tożsamości urządzenia. Logika zaświadczania zestawu SDK używa również symulatora podczas rejestracji, aby przedstawić podpisany token sygnatury dostępu współdzielonego w celu uwierzytelniania i weryfikacji rejestracji.</li><li>**Zaświadczanie** [o certyfikatach x509 — wygenerowanie certyfikatu](how-to-use-sdk-tools.md#x509-certificate-generator)jest możliwe za pomocą narzędzia. Po wygenerowaniu należy utworzyć plik certyfikatu wymagany do użycia podczas rejestracji. Logika zaświadczania zestawu SDK używa również certyfikatu podczas rejestracji, aby można było zaprezentować uwierzytelnianie i weryfikację rejestracji.</li></ul> |
+| Urządzenie | Rozruchu i zarejestruj | Ta operacja jest zgodna z trzecią fazą samoobsługowego inicjowania obsługi przez oprogramowanie do rejestracji urządzeń utworzone przez dewelopera. Aby uzyskać szczegółowe informacje, zobacz rolę dewelopera. Po pierwszym rozruchu: <ol><li>Aplikacja nawiązuje połączenie z wystąpieniem usługi Device Provisioning, używając globalnego adresu URL i usługi "Scope ID" określonego podczas tworzenia.</li><li>Po nawiązaniu połączenia urządzenie jest uwierzytelniane w oparciu o metodę zaświadczania i tożsamość określoną podczas rejestracji.</li><li>Po uwierzytelnieniu urządzenie zostanie zarejestrowane przy użyciu wystąpienia IoT Hub określonego przez wystąpienie usługi aprowizacji.</li><li>Po pomyślnej rejestracji unikatowy identyfikator urządzenia i punkt końcowy IoT Hub są zwracane do aplikacji rejestracji w celu komunikowania się z IoT Hub.</li><li> Z tego miejsca urządzenie może pobrać stan wstępnej [splotu urządzenia](~/articles/iot-hub/iot-hub-devguide-device-twins.md) w celu skonfigurowania i rozpocząć proces raportowania danych telemetrycznych.</li></ol>**Przewodniki Szybki Start**: ponieważ urządzenie jest symulowane, oprogramowanie do rejestracji działa na stacji roboczej deweloperskiej.|
 
-Poniższy diagram zawiera Podsumowanie ról i sekwencji operacji podczas aprowizacji automatycznej urządzenia:
+Poniższy diagram podsumowuje role i sekwencjonowanie operacji podczas samoobsługowego dostarczania urządzeń:
 <br><br>
-[![Sekwencja automatycznej aprowizacji dla urządzenia](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[![sekwencję autoaprowizacji dla urządzenia](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> Opcjonalnie, producent można również wykonać operacji "Rejestrowanie tożsamości urządzenia", przy użyciu interfejsów API usługi aprowizacji urządzeń (zamiast przy użyciu operatora). Szczegółowe omówienie tej sekwencjonowania i nie tylko zobacz [Zero touch rejestracji urządzeń w usłudze wideo usługi Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) (rozpoczyna się od znacznika 41:00)
+> Opcjonalnie producent może również wykonać operację "Zarejestruj tożsamość urządzenia" przy użyciu interfejsów API usługi Device Provisioning (zamiast za pośrednictwem operatora). Aby uzyskać szczegółową dyskusję na temat tej sekwencji i innych informacji, zobacz temat [Rejestracja urządzenia dotykowego w usłudze Azure IoT wideo](https://youtu.be/cSbDRNg72cU?t=2460) (od znacznika 41:00).
 
-## <a name="roles-and-azure-accounts"></a>Role i kont platformy Azure
+## <a name="roles-and-azure-accounts"></a>Role i konta platformy Azure
 
-Jak każda rola jest mapowany na konto platformy Azure jest zależny od scenariusza, a istnieje kilka scenariuszy, które mogą być wykonywane. Typowe wzorce poniżej należy zapewnić ogólną wiedzą na temat jak role zazwyczaj są mapowane na konto platformy Azure.
+Sposób, w jaki każda rola jest mapowana na konto platformy Azure, jest zależna od scenariusza i istnieje kilka scenariuszy, które mogą być używane. Typowe wzorce poniżej powinny pomóc w ustaleniu ogólnego zagadnienia dotyczącego sposobu, w jaki role są zwykle mapowane na konto platformy Azure.
 
-#### <a name="chip-manufacturer-provides-security-services"></a>Producenta udostępnia usługi zabezpieczeń
+#### <a name="chip-manufacturer-provides-security-services"></a>Producent mikroukładu dostarcza usługi zabezpieczeń
 
-W tym scenariuszu producenta zarządza zabezpieczeń dla klientów o jeden poziom. Ten scenariusz może preferowane przez tych klientów jeden poziom, nie ma do zarządzania zabezpieczeniami szczegółowe. 
+W tym scenariuszu producent zarządza zabezpieczeniami dla klientów poziomu jednego. Ten scenariusz może być preferowany przez ten poziom — jeden klient nie musi zarządzać szczegółowymi zabezpieczeniami. 
 
-Producent wprowadza zabezpieczeń do sprzętowych modułów zabezpieczeń (HSM). To zabezpieczeń mogą obejmować producenta, uzyskiwania kluczy, certyfikaty, itp. z potencjalnym klientom, którzy mają już wystąpień usługi DPS i konfiguracji grup rejestracji. Producent może również wygenerować informacji o zabezpieczeniach dla swoich klientów.
+Producent wprowadza zabezpieczenia do sprzętowych modułów zabezpieczeń (sprzętowych modułów zabezpieczeń). Zabezpieczenia te mogą obejmować producentom uzyskanie kluczy, certyfikatów itp. od potencjalnych klientów, którzy mają już wystąpienia usługi DPS i konfigurację grup rejestracji. Producent może również generować te informacje o zabezpieczeniach dla swoich klientów.
 
-W tym scenariuszu mogą istnieć dwa konta platformy Azure zaangażowanych:
+W tym scenariuszu mogą być uwzględnione dwa konta platformy Azure:
 
-- **Konto #1**: Prawdopodobnie współużytkowane przez role operatora i dla deweloperów w pewnym stopniu. Ta strona zakupić od producenta mikroukładami modułu HSM. Te moduły są wskazywał wystąpienia usługi DPS skojarzone z kontem nr 1. Za pomocą rejestracji punktu dystrybucji ta strona może dzierżawić urządzenia do wielu klientów poziomu drugiego przez ponowne skonfigurowanie ustawień rejestracji urządzeń w usłudze DPS. Ta strona może być konieczne centra IoT Hub przydzielone dla użytkowników końcowych systemów zaplecza do połączenia interfejsem z w celu uzyskania dostępu do danych telemetrycznych z urządzenia itp. W tym drugim przypadku drugiego konta nie mogą być potrzebne.
+- **#1 konta**: możliwe, że w ramach ról operatora i dewelopera chcesz mieć pewien stopień. Ta strona może zakupić wióry modułu HSM od producenta. Te wióry są wskazywane dla wystąpień DPS skojarzonych z #1 konta. W przypadku rejestracji w usłudze DPS ta strona może dzierżawić urządzenia wielu klientom z wieloma poziomami przez ponowne skonfigurowanie ustawień rejestracji urządzeń w usłudze DPS. Ta strona może również mieć przypisane centra IoT przeznaczone dla systemów zaplecza użytkowników końcowych do interfejsów w programie w celu uzyskania dostępu do telemetrii urządzenia itp. W tym drugim przypadku drugie konto może nie być konieczna.
 
-- **Konto #2**: Użytkownicy końcowi poziom dwóch klientów może mieć własne centra IoT Hub. Strona skojarzonej z punktami tylko 1 konta dzierżawy urządzenia poprawne Centrum na tym koncie. Ta konfiguracja wymaga usługi DPS i IoT hubs zawierający linki między kontami platformy Azure, które może odbywać się przy użyciu szablonów usługi Azure Resource Manager.
+- **#2 konta**: użytkownicy końcowi, poziom — dwaj klienci mogą mieć własne centra IoT Hub. Strona skojarzona z kontem #1 jedynie punkty dzierżawione urządzenia do właściwego centrum w ramach tego konta. Ta konfiguracja wymaga łączenia usługi DPS i centrów IoT na kontach platformy Azure, które można wykonać za pomocą szablonów Azure Resource Manager.
 
-#### <a name="all-in-one-oem"></a>W jednym OEM
+#### <a name="all-in-one-oem"></a>Wszyscy producenci OEM
 
-Producent może być "OEM w jednym", gdy będą potrzebne na koncie jednego producenta. Producent obsługuje zabezpieczenia i Inicjowanie obsługi administracyjnej typu end to end.
+Producent może być "Wszyscy producenci OEM", w przypadku którego będzie wymagana tylko jedno konto producenta. Producent obsługuje kompleksowe zabezpieczenia i Inicjowanie obsługi administracyjnej.
 
-Producent może dostarczyć oparte na chmurze aplikacji klientów, którzy zakupią urządzeń. Ta aplikacja będzie interfejs z usługą IoT Hub, przydzielany przez producenta.
+Producent może udostępnić aplikacji opartej na chmurze klientom, którzy kupują urządzenia. Ta aplikacja będzie mieć interfejs z IoT Hub przyznanym przez producenta.
 
-Automaty lub zautomatyzowane kawy reprezentują przykłady w tym scenariuszu.
-
-
+W tym scenariuszu maszyny sprzedaży lub zautomatyzowane komputery kawowe reprezentują przykłady.
 
 
-## <a name="next-steps"></a>Kolejne kroki
 
-Może okazać się przydatne do zakładki w tym artykule jako punkt odniesienia, podczas pracy swój sposób za pomocą odpowiedniej automatycznej aprowizacji przewodników Szybki Start. 
 
-Rozpocznij, wykonując "Konfigurowanie automatycznego aprowizowania" Szybki Start najlepiej odpowiadającą Preferencje narzędzia do zarządzania, przeprowadzi Cię przez fazy "Konfiguracja usługi":
+## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie automatycznego aprowizowania za pomocą wiersza polecenia platformy Azure](quick-setup-auto-provision-cli.md)
-- [Konfigurowanie automatycznego aprowizowania za pomocą witryny Azure portal](quick-setup-auto-provision.md)
-- [Konfigurowanie automatycznego aprowizowania za pomocą szablonu usługi Resource Manager](quick-setup-auto-provision-rm.md)
+Pomocne może być zakładanie tego artykułu jako punktu odniesienia podczas pracy przez odpowiednie Przewodniki Szybki Start dotyczące samoobsługowego udostępniania. 
 
-Następnie przejdź do przewodnika Szybki Start "Auto aprowizowanie symulowanego urządzenia", pasujące swoje mechanizm zaświadczania urządzenia i usługi Device Provisioning Service SDK/języka ustawionego preferencji. W tym przewodniku Szybki Start opisano fazy "Rejestrowanie urządzeń" i "urządzenia, Rejestracja i konfiguracja": 
+Zacznij od wykonania kroku "Konfigurowanie automatycznej aprowizacji" przewodnika Szybki Start, który najlepiej odpowiada preferencjom narzędzia do zarządzania, które przeprowadzi Cię przez fazę "Konfiguracja usługi":
 
-|  | Mechanizm zaświadczania z symulowanego urządzenia | Zestaw SDK/języka ustawionego Szybki Start |  |
+- [Konfigurowanie samoobsługowego inicjowania obsługi przy użyciu interfejsu wiersza polecenia platformy Azure](quick-setup-auto-provision-cli.md)
+- [Skonfiguruj funkcję autoaprowizacji przy użyciu Azure Portal](quick-setup-auto-provision.md)
+- [Konfigurowanie samoobsługowego inicjowania obsługi przy użyciu szablonu Menedżer zasobów](quick-setup-auto-provision-rm.md)
+
+Następnie przejdź do przewodnika Szybki Start "Autouzupełnianie urządzenia symulowanego", który odpowiada mechanizmowi zaświadczania urządzenia i zestawie SDK/języka usługi aprowizacji urządzeń. W tym przewodniku szybki start przeprowadzisz etapy "rejestracja urządzeń" i "rejestracja urządzeń i konfiguracji": 
+
+|  | Mechanizm zaświadczania urządzenia symulowanego | Zestaw SDK/język szybkiego startu |  |
 |--|--|--|--|
-|  | Moduł zaufanej platformy (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | Certyfikat X.509 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | Moduł TPM | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
+|  | Certyfikat X. 509 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

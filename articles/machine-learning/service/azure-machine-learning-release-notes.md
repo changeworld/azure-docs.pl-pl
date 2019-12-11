@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 82db94dd201676b769f1ea151b23fa1b149f609c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: eea58c700b370531247a51630af478c56f2b551a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807106"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973683"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -23,6 +23,27 @@ W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
 
+## <a name="2019-12-09"></a>2019-12-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1079"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.79
+
++ **Poprawki i ulepszenia błędów**
+  + **Azure-automl-Core**
+    + Usunięto featurizationConfig do zarejestrowania
+      + Zaktualizowano rejestrowanie w celu zarejestrowania tylko "Auto"/"off"/"dostosowany".
+  + **Azure automl — środowisko uruchomieniowe**
+    + Dodano obsługę Pandas. Seria i Pandas. Kategorii do wykrywania typu danych kolumny. Poprzednio obsługiwane tylko numpy. ndarray
+      + Dodano powiązane zmiany kodu w celu poprawnego obsłużenia kategorii dtype.
+    + Ulepszono interfejs funkcji prognozowania: parametr y_pred został wykonany jako opcjonalny. -Docstrings zostały ulepszone.
+  + **Azure contrib — zestaw danych**
+    + Naprawiono usterkę, w której nie można zainstalować zestawów danych z etykietami.
+  + **azureml-core**
+    + Poprawka usterki dla `Environment.from_existing_conda_environment(name, conda_environment_name)`. Użytkownik może utworzyć wystąpienie środowiska, które jest dokładną repliką środowiska lokalnego
+    + Zmieniono metody zestawów danych powiązane z serią czasową, aby `include_boundary=True` domyślnie.
+  + **Azure-pociąg-automl-Client**
+    + Rozwiązano problem polegający na tym, że wyniki walidacji nie są drukowane, gdy dla opcji Pokaż dane wyjściowe ustawiono wartość FAŁSZ.
+
+  
 ## <a name="2019-11-25"></a>2019-11-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.76
@@ -78,7 +99,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
     + **Azure contrib — zestaw danych**
       + Po zaimportowaniu programu Azure-contrib-DataSet można wywołać `Dataset.Labeled.from_json_lines` zamiast `._Labeled`, aby utworzyć zestaw danych z etykietą.
       + Podczas wywoływania `to_pandas_dataframe` na oznaczonym zestawie danych z opcją pobierania można teraz określić, czy zastąpić istniejące pliki, czy nie.
-      + Podczas wywoływania `keep_columns` lub `drop_columns`, w wyniku których zostanie porzucona szeregów czasowych, etykieta lub kolumna obrazu, odpowiednie możliwości zostaną również porzucone dla zestawu danych.
+      + Podczas wywoływania `keep_columns` lub `drop_columns`, które powoduje porzucanie szeregów czasowych, etykiet lub kolumn obrazu, odpowiednie możliwości zostaną również porzucone dla zestawu danych.
       + Rozwiązano problemy z modułem ładującym PyTorch podczas wywoływania `dataset.to_torchvision()`.
 
 + **Poprawki i ulepszenia błędów**
@@ -88,7 +109,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
     + Dodano typ Load Balancer do MLC dla typów AKS
   + **Azure-automl-Core**
     + Rozwiązano problem z wykrywaniem maksymalnego poziomu w szeregach czasowych, mających brakujące wartości i wiele ziaren.
-    + Rozwiązano problem z generowaniem rozbicie wzajemnego sprawdzania poprawności.
+    + Rozwiązano problem z błędami podczas generowania podziałów wzajemnego sprawdzania poprawności.
     + Zastąp tę sekcję komunikatem w formacie promocji, aby pojawić się w informacjach o wersji:-Ulepszona obsługa krótkich ziaren w zestawach danych prognozowanie.
     + Rozwiązano problem związany z maską niektórych informacji o użytkowniku podczas rejestrowania. -Ulepszone rejestrowanie błędów podczas prognozowania przebiegów.
     + Dodawanie psutil jako zależności Conda do automatycznie generowanego pliku wdrożenia YML.
@@ -101,7 +122,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
     + Dodano Load Balancer typ do MLC dla typów AKS.
     + Dodano append_prefix parametru bool do download_files w run.py i download_artifacts_from_prefix w artifacts_client. Ta flaga służy do selektywnego spłaszczania ścieżki źródła, więc do output_directory dodawany jest tylko nazwa pliku lub folderu.
     + Rozwiąż problem z deserializacji `run_config.yml` przy użyciu zestawu danych.
-    + Podczas wywoływania `keep_columns` lub `drop_columns`, w wyniku których zostanie usunięta kolumna szeregów czasowych, odpowiednie możliwości zostaną również porzucone dla zestawu danych.
+    + Podczas wywoływania `keep_columns` lub `drop_columns`, w wyniku których powstaje kolumna szeregów czasowych, odpowiednie możliwości zostaną porzucone również dla zestawu danych.
   + **Azure — interpretowanie**
     + Zaktualizowano interpreter — wersja społecznościowa do 0.1.0.3
   + **azureml-train-automl**
@@ -159,8 +180,8 @@ Zapoznaj się z [witryną internetową pakietu](https://azure.github.io/azureml-
 ### <a name="azure-machine-learning-sdk-for-python-v1072"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.72
 
 + **Nowe funkcje**
-  + Dodano monitory zestawu danych za pośrednictwem pakietu [**Azure-datadryfing**](https://docs.microsoft.com/python/api/azureml-datadrift) , co pozwala na monitorowanie szeregów czasowych zestawów danych w celu przechodzenia przez dane lub innych statystycznych zmian w czasie. Alerty i zdarzenia mogą być wyzwalane w przypadku wykrycia dryfu lub spełnienia innych warunków dotyczących danych. Zapoznaj się z [naszą dokumentacją](https://aka.ms/datadrift) , aby uzyskać szczegółowe informacje. 
-  + Ogłaszamy dwie nowe wersje (nazywane także zamiennie jednostkami SKU) w Azure Machine Learning. W tej wersji możesz teraz utworzyć obszar roboczy usługi Azure ML w warstwie Podstawowa lub Enterprise. Wszystkie istniejące obszary robocze zostaną domyślnie przeszukane w wersji podstawowa. Możesz też przejść do Azure Portal lub do programu Studio, aby uaktualnić obszar roboczy w dowolnym momencie. W witrynie Azure Portal można utworzyć obszar roboczy podstawowy lub Enterprise. Zapoznaj się z [naszą dokumentacją](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) , aby dowiedzieć się więcej. W zestawie SDK wersja obszaru roboczego można określić przy użyciu właściwości "SKU" obiektu obszaru roboczego.
+  + Dodano monitory zestawu danych za pośrednictwem pakietu [**Azure-datadryfing**](https://docs.microsoft.com/python/api/azureml-datadrift) , co pozwala na monitorowanie zestawów danych szeregów czasowych na potrzeby dryfowania lub innych zmian statystycznych w czasie. Alerty i zdarzenia mogą być wyzwalane w przypadku wykrycia dryfu lub spełnienia innych warunków dotyczących danych. Zapoznaj się z [naszą dokumentacją](https://aka.ms/datadrift) , aby uzyskać szczegółowe informacje. 
+  + Ogłaszamy dwie nowe wersje (nazywane także zamiennie jednostkami SKU) w Azure Machine Learning. W tej wersji możesz teraz utworzyć obszar roboczy Azure Machine Learning podstawowy lub Enterprise. Wszystkie istniejące obszary robocze zostaną domyślnie przeszukane w wersji podstawowa. Możesz też przejść do Azure Portal lub do programu Studio, aby uaktualnić obszar roboczy w dowolnym momencie. Możesz utworzyć obszar roboczy podstawowy lub Enterprise na podstawie Azure Portal. Zapoznaj się z [naszą dokumentacją](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) , aby dowiedzieć się więcej. W zestawie SDK wersja obszaru roboczego można określić przy użyciu właściwości "SKU" obiektu obszaru roboczego.
   + Wprowadzono również usprawnienia Azure Machine Learning obliczeń — teraz można wyświetlać metryki dla klastrów (takie jak łączna liczba węzłów, uruchomione węzły, łączny przydział rdzeni) w Azure Monitor, oprócz wyświetlania dzienników diagnostycznych na potrzeby debugowania. Ponadto można również wyświetlać uruchomione lub kolejkowane uruchomienia w klastrze oraz szczegóły, takie jak adresy IP różnych węzłów w klastrze. Można je wyświetlić w portalu lub za pomocą odpowiednich funkcji w zestawie SDK lub interfejsie wiersza polecenia. 
   
   + **Funkcje w wersji zapoznawczej**
@@ -202,7 +223,7 @@ Zapoznaj się z [witryną internetową pakietu](https://azure.github.io/azureml-
     + Dodano Guardrail do prognozowania zadań, aby sprawdzić, czy określony max_horizon spowoduje problem z pamięcią na danym komputerze. W takim przypadku zostanie wyświetlony komunikat Guardrail.
     + Dodano obsługę złożonych częstotliwości, takich jak 2 lata i 1 miesiąc. -Dodano zrozumiały komunikat o błędzie, jeśli nie można ustalić częstotliwości.
     + Dodaj usługę Azure-default do automatycznie generowanej ENV Conda, aby rozwiązać błąd wdrażania modelu
-    + Zezwalaj na konwertowanie pośrednich danych w potoku Azure Machine Learning, które mają być konwertowane do tabelarycznego zestawu danych i używane w `AutoMLStep`.
+    + Zezwalaj na dane pośrednie w Azure Machine Learning pPipeline do przekonwertowania na tabelaryczny zestaw danych i używane w `AutoMLStep`.
     + Zaimplementowana aktualizacja celu kolumny na potrzeby przesyłania strumieniowego.
     + Zaimplementowana aktualizacja parametrów transformatora dla programu Streamer i HashOneHotEncoder na potrzeby przesyłania strumieniowego.
     + Dodano bieżący rozmiar danych i minimalny wymagany rozmiar danych do komunikatów o błędach walidacji.
@@ -230,7 +251,7 @@ Zapoznaj się z [witryną internetową pakietu](https://azure.github.io/azureml-
     + Dodano flagę zastępowania dla wdrożenia usługi (ACI i AKS) w zestawie SDK i interfejsie wiersza polecenia. Jeśli ta wartość jest określona, zastąpi istniejącą usługę, jeśli usługa o nazwie już istnieje. Jeśli usługa nie istnieje, program utworzy nową usługę.
   + [**Azure — datadryfowanie**](https://docs.microsoft.com/python/api/azureml-datadrift)
     + Przeniesiono z `azureml-contrib-datadrift` do `azureml-datadrift`
-    + Dodano obsługę monitorowania szeregów czasowych zestawów danych dla dryfowania i innych środków statystycznych 
+    + Dodano obsługę monitorowania zestawów danych szeregów czasowych dla dryfowania i innych środków statystycznych 
     + Nowe metody `create_from_model()` i `create_from_dataset()` do klasy [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) . Metoda `create()` będzie przestarzała. 
     + Korekty wizualizacji w języku Python i interfejsie użytkownika w programie Azure Machine Learning Studio.
     + Obsługuj cotygodniowe i comiesięczne planowanie monitorów, a także codziennie dla monitorów zestawu danych.
@@ -287,7 +308,7 @@ Zapoznaj się z [witryną internetową pakietu](https://azure.github.io/azureml-
     + Dodano interfejs API zestawu danych w celu sprawdzenia czasu zmiany danych. `dataset.data_changed_time`.
     + Możliwość użycia `FileDataset` i `TabularDataset` jako danych wejściowych `PythonScriptStep`, `EstimatorStep`i `HyperDriveStep` w potoku Azure Machine Learning
     + Ulepszona wydajność `FileDataset.mount` dla folderów zawierających dużą liczbę plików
-    + Możliwość korzystania z [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) i [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) jako danych wejściowych [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)i [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) w potoku Azure Machine Learning.
+    + Możliwość korzystania z [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) i [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) jako danych wejściowych dla [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)i [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) w potoku Azure Machine Learning.
     + Wydajność FileDataset. Ulepszono [instalację ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset#mount-mount-point-none-) w przypadku folderów zawierających dużą liczbę plików
     + Dodano adres URL do znanych zaleceń dotyczących błędów w szczegółach uruchomienia.
     + Naprawiono usterkę w programie Run. get_metrics, w której żądania mogą zakończyć się niepowodzeniem, Jeśli uruchomienie miało zbyt wiele elementów podrzędnych
@@ -344,7 +365,7 @@ Zapoznaj się z [witryną internetową pakietu](https://azure.github.io/azureml-
     + Obsługa pobierania danych wyjściowych z dryfem opartym na DataSet.
   + **[Uczenie maszynowe — wyjaśnienie modelu](https://docs.microsoft.com/python/api/azureml-explain-model)**
     + Zmienia nazwę pakietu usługi Uczenie maszynowe-Wyjaśnij, aby obtłumaczyć usługę Azure i zachować stary pakiet na potrzeby zgodności z poprzednimi wersjami.
-    + stała usterka automl z nieprzetworzonymi wyjaśnieniami, które zostały ustawione na zadanie klasyfikacji zamiast regresji domyślnie przy pobieraniu z ExplanationClient.
+    + stała usterka AutoML z nieprzetworzonymi wyjaśnieniami, które zostały ustawione na zadanie klasyfikacji zamiast regresji domyślnie przy pobieraniu z ExplanationClient.
     + Dodawanie obsługi [ScoringExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.scoring.scoring_explainer.scoringexplainer) do tworzenia bezpośrednio przy użyciu [MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper)
   + **[Azure — potok — rdzeń](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Ulepszona wydajność tworzenia dużych potoków.
@@ -426,8 +447,8 @@ Karta eksperymenty w [nowym portalu obszaru roboczego](https://ml.azure.com) zos
   + **azureml-pipeline-core**
     + Dodano Notes do opisywania modułów, ModuleVersion i ModuleStep
   + **azureml-pipeline-steps**
-    + Dodano RScriptStep do obsługi skryptu języka R za pośrednictwem potoku AML
-    + Analizowanie stałych parametrów metadanych w AzureBatchStep, co spowodowało, że komunikat o błędzie "przypisanie dla identyfikatora subskrypcji parametru nie jest określony"
+    + Dodano RScriptStep do obsługi skryptu języka R za pośrednictwem potoku AML.
+    + Stałe analizowanie parametrów metadanych w AzureBatchStep, co spowodowało, że komunikat o błędzie "przypisanie dla identyfikatora subskrypcji parametru nie jest określony".
   + **azureml-train-automl**
     + Obsługiwane training_data, validation_data, label_column_name weight_column_name jako format danych wejściowych
     + Dodano komunikat o zaniechaniu dla explain_model () i retrieve_model_explanations ()
@@ -517,7 +538,7 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
 1. Nie można usunąć pliku ani zmienić jego nazwy w notesach i plikach. W publicznej wersji zapoznawczej można użyć interfejsu użytkownika Jupyter lub terminalu w maszynie wirtualnej notesu do wykonywania operacji aktualizacji plików. Ponieważ jest to zainstalowany system plików NFS, wszystkie zmiany wprowadzone na maszynie wirtualnej notesu są natychmiast odzwierciedlane w obszarze roboczym Notes. 
 
 1. Aby SSH do maszyny wirtualnej notesu:
-   1. Znajdź klucze SSH, które zostały utworzone podczas konfiguracji maszyny wirtualnej. Lub Znajdź klucze na platformie Azure ML Azure Portal > Otwórz kartę COMPUTE > Znajdź maszynę wirtualną Notes na liście > Otwórz jej właściwości: Skopiuj klucze z okna dialogowego.
+   1. Znajdź klucze SSH, które zostały utworzone podczas konfiguracji maszyny wirtualnej. Lub Znajdź klucze w obszarze roboczym Azure Machine Learning > Otwórz kartę obliczeniową > Znajdź maszynę wirtualną Notes na liście > Otwórz jej właściwości: Skopiuj klucze z okna dialogowego.
    1. Zaimportuj te publiczne i prywatne klucze SSH do komputera lokalnego.
    1. Używaj ich do używania protokołu SSH w notesie maszyn wirtualnych. 
 
@@ -555,7 +576,7 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
     + Wprowadź `partition_format` jako argument do `Dataset.Tabular.from_delimited_files` i `Dataset.Tabular.from_parquet.files`. Informacje o partycji każdej ścieżki danych zostaną wyodrębnione do kolumn w oparciu o określony format. "{column_name}" tworzy kolumnę String, a "{column_name: RRRR/MM/DD/HH/mm/SS}" tworzy kolumnę datetime, gdzie "RRRR", "MM", "DD", "gg", "mm" i "SS" są używane do wyodrębniania wartości typu Year, month, Day, Hour, minute i Second. Partition_format powinna rozpoczynać się od pozycji pierwszego klucza partycji aż do końca ścieżki pliku. Na przykład dana ścieżka ". /USA/2019/01/01/data.csv "gdzie partycja jest według kraju i godziny, partition_format ="/{Country}/{PartitionDate: RRRR/MM/DD}/Data. csv "tworzy kolumnę ciągu" Country "z wartością" USA "i kolumną DateTime" PartitionDate "o wartości" 2019-01-01 ".
     + Metody `to_csv_files` i `to_parquet_files` zostały dodane do `TabularDataset`. Te metody umożliwiają konwersję między `TabularDataset` i `FileDataset`, konwertując dane do plików o określonym formacie.
     + Podczas zapisywania pliku dockerfile wygenerowanego przez model () automatycznie loguj się do podstawowego rejestru obrazu.
-    + "gpu_support" nie jest już konieczne; Platforma Azure jest teraz automatycznie wykrywana i używa rozszerzenia platformy Docker firmy NVIDIA, gdy jest dostępne. Zostanie usunięta w przyszłej wersji.
+    + "gpu_support" nie jest już konieczne; AML teraz automatycznie wykrywa i używa rozszerzenia platformy Docker firmy NVIDIA, gdy jest dostępne. Zostanie usunięta w przyszłej wersji.
     + Dodano obsługę tworzenia, aktualizowania i używania PipelineDrafts.
     + Ta wersja zwiększa wydajność wykonywania zautomatyzowanych uruchomień lokalnych w usłudze Machine Learning.
     + Użytkownicy mogą badać metryki z historii uruchamiania według nazwy.
@@ -737,7 +758,7 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
     + Opis modelu można teraz zaktualizować po rejestracji
   + **Azure-automl-Core**
     + Zaktualizuj zależność NimbusML do wersji 1.2.0 (aktualna Najnowsza wersja).
-    + Dodawanie obsługi Nimbus ML & szacowania potoki, które mają być używane w AutoML szacowania.
+    + Dodawanie obsługi potoków NimbusML szacowania &, które mają być używane w AutoML szacowania.
     + Naprawianie usterki w procedurze wyboru kompletu, która niepotrzebnie zwiększa wynikowy element, nawet jeśli wyniki pozostawały stałe.
     + Włącz ponowne użycie niektórych featurizations w ramach podziałów OKS na potrzeby prognozowania zadań. Przyspiesza to Uruchamianie Instalatora przez przekroczenie współczynnika n_cross_validations dla kosztownych featurizations, takich jak spowolnienia i stopniowające okna.
     + Rozwiązywanie problemu, jeśli czas jest poza Pandas obsługiwanym zakresem czasu. Teraz możemy podnieść wartość DataException, jeśli czas jest krótszy niż PD. Sygnatura czasowa. minimalna lub większa od PD. Timestamp. Max
@@ -752,9 +773,9 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
     +  Ulepszenia przykładowego notesu, w tym przełączanie do platformy Uczenie maszynowe opendatasets zamiast platformy Azure-contrib-opendatasets i wydajności podczas wzbogacania danych
   + **Azure-contrib-opis-model**
     + Stałe przekształcenia — argument dla objaśniania WAPNa dla wagi nieprzetworzonej funkcji w usłudze Azure contrib-Wyjaśnij pakiet modelu
-    + dodano segmentacji do wyjaśnień obrazu w wyjaśnieniu obrazu dla pakietu Azure-contrib-Wyjaśnij
+    + Dodano segmentacji do wyjaśnień obrazu w opisie obrazu dla pakietu Azure-contrib-Wyjaśnij-model
     + Dodaj obsługę rozrzedzenia scipy dla LimeExplainer
-    + dodano `batch_size` do programu wyjaśniającego, gdy `include_local=False`do przesyłania strumieniowego globalnych wyjaśnień w partiach w celu poprawienia czasu wykonywania DecisionTreeExplainableModel
+    + Dodano `batch_size` do programu wyjaśniającego, gdy `include_local=False`do przesyłania strumieniowego globalnych wyjaśnień w partiach w celu poprawienia czasu wykonywania DecisionTreeExplainableModel
   + **Azure-contrib-featureengineering**
     + Poprawka do wywoływania set_featurizer_timeseries_params (): DICT zmiana typu wartości i sprawdzanie wartości null — Dodawanie notesu dla `timeseries` featurized
     + Zaktualizuj zależność NimbusML do wersji 1.2.0 (aktualna Najnowsza wersja).
@@ -794,13 +815,17 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
     + Błąd poprawki, gdzie mlflow. log_artifacts ("my_dir") zapisze artefakty w obszarze "my_dir/< artefaktów >" zamiast "< ścieżek artefaktów >"
   + **azureml-opendatasets**
     + Przypnij `pyarrow` `opendatasets` do starych wersji (< 0.14.0) z powodu problemu z pamięcią nowo wprowadzonego w tym miejscu.
-    +  Przenieś usługę Azure-contrib-opendatasets do programu Azure opendatasets. -Zezwalaj na rejestrację otwartych klas DataSet w obszarze roboczym AML i bezproblemowo wykorzystują możliwości zestawu danych AML. — Znacznie Zwiększ wydajność wzbogacania NoaaIsdWeather w wersji innej niż SPARK.
+    + Przenieś usługę Azure-contrib-opendatasets do programu Azure opendatasets.
+    + Zezwalaj na rejestrację otwartych klas DataSet w obszarze roboczym Azure Machine Learning i bezproblemowo korzystaj z możliwości zestawu danych AML.
+    + Znacznie Zwiększ wydajność wzbogacania NoaaIsdWeather w wersji innej niż SPARK.
   + **azureml-pipeline-steps**
     + Magazyn danych DBFS jest teraz obsługiwany w przypadku wejść i wyjść w DatabricksStep.
     + Zaktualizowana dokumentacja Azure Batch kroku w odniesieniu do danych wejściowych/wyjściowych.
     + W AzureBatchStep, zmieniono wartość domyślną *delete_batch_job_after_finish* na *true*.
   + **Azure-Telemetria**
-    +  Przenieś usługę Azure-contrib-opendatasets do programu Azure opendatasets. -Zezwalaj na rejestrację otwartych klas DataSet w obszarze roboczym AML i bezproblemowo wykorzystują możliwości zestawu danych AML. — Znacznie Zwiększ wydajność wzbogacania NoaaIsdWeather w wersji innej niż SPARK.
+    +  Przenieś usługę Azure-contrib-opendatasets do programu Azure opendatasets.
+    + Zezwalaj na rejestrację otwartych klas DataSet w obszarze roboczym Azure Machine Learning i bezproblemowo korzystaj z możliwości zestawu danych AML.
+    + Znacznie Zwiększ wydajność wzbogacania NoaaIsdWeather w wersji innej niż SPARK.
   + **azureml-train-automl**
     + Zaktualizowana dokumentacja dotycząca get_output odzwierciedla faktyczny zwracany typ i udostępnia dodatkowe uwagi dotyczące pobierania właściwości klucza.
     + Zaktualizuj zależność NimbusML do wersji 1.2.0 (aktualna Najnowsza wersja).
@@ -829,7 +854,7 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
 + **Nowe funkcje**
   + **azureml-opendatasets**
     + **Azure-contrib-opendatasets** jest teraz dostępny jako **Azure-opendatasets**. Stary pakiet może nadal korzystać z programu, ale zalecamy użycie usługi **Azure-opendatasets** do przodu w celu uzyskania bogatszych możliwości i ulepszeń.
-    + Ten nowy pakiet umożliwia zarejestrowanie otwartych zestawów danych jako zestawu obiektów w obszarze roboczym AML i wykorzystanie funkcji oferowanych przez zestaw danych.
+    + Ten nowy pakiet umożliwia zarejestrowanie otwartych zestawów danych jako zestaw DataSet w obszarze roboczym Azure Machine Learning i wykorzystanie funkcji oferowanych przez zestaw danych.
     + Obejmuje ona również istniejące funkcje, takie jak zużywanie otwartych zestawów danych jako Pandas/SPARK dataframes, a także przyłączania do lokalizacji dla niektórych elementów DataSet, takich jak pogoda.
 
 + **Funkcje w wersji zapoznawczej**
@@ -844,7 +869,7 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
     + Rozwiązano problem uniemożliwiający użycie przetwarzania wstępnego, gdy AutoML mógłby zostać użyty w kontekście potoków usługi Azure ML.
   + **azureml-opendatasets**
     + Przeniesiono usługę Azure-contrib-opendatasets do programu Azure opendatasets.
-    + Dozwolone są otwarte klasy DataSet do zarejestrowania w obszarze roboczym AML i bezproblemowo wykorzystują możliwości zestawu danych AML.
+    + Dozwolone są otwarte klasy zestawu danych do zarejestrowania w obszarze roboczym Azure Machine Learning i bezproblemowo wykorzystują możliwości zestawu danych AML.
     + Znacznie Ulepszono NoaaIsdWeather wzbogacanie wydajności w wersji innej niż SPARK.
   + **azureml-explain-model**
     + Zaktualizowana dokumentacja online dla obiektów interpretera.
@@ -1029,7 +1054,7 @@ Przywrócono zmianę, która zwiększyła wydajność, ponieważ powodowała to 
 W Azure Portal można teraz:
 + Tworzenie i uruchamianie zautomatyzowanych eksperymentów ML 
 + Utwórz maszynę wirtualną notesu, aby wypróbować przykładowe notesy Jupyter lub własne.
-+ Zupełnie nowa sekcja tworzenia (wersja zapoznawcza) w obszarze roboczym usługi Machine Learning, która obejmuje automatyczne Machine Learning, interfejs wizualny i hostowane maszyny wirtualne notesu
++ Zupełnie nowa sekcja tworzenia (wersja zapoznawcza) w obszarze roboczym Azure Machine Learning, która obejmuje automatyczne Machine Learning, interfejs wizualizacji i hostowane maszyny wirtualne notesy
     + Automatycznie twórz model przy użyciu automatycznego uczenia maszynowego 
     + Używanie interfejsu wizualizacji przeciągnij i upuść do uruchamiania eksperymentów
     + Tworzenie maszyny wirtualnej notesu do eksplorowania danych, tworzenia modeli i wdrażania usług.
@@ -1037,7 +1062,7 @@ W Azure Portal można teraz:
 + Zaktualizowano Podgląd plików dla dzienników, danych wyjściowych i migawek na stronach szczegółów uruchamiania.
 + Nowe i ulepszone środowisko tworzenia raportów na karcie eksperymenty. 
 + Dodano możliwość pobrania pliku config. JSON z strony przegląd obszaru roboczego Azure Machine Learning.
-+ Obsługa Machine Learning tworzenia obszaru roboczego usługi z poziomu obszaru roboczego Azure Databricks 
++ Obsługa Azure Machine Learning tworzenia obszarów roboczych w obszarze roboczym Azure Databricks.
 
 ## <a name="2019-04-26"></a>2019-04-26
 
@@ -1233,10 +1258,10 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
   + Azure Machine Learning teraz zapewnia obsługę pierwszej klasy dla popularnego łańcucha DNN Framework. Za pomocą [`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) klasy użytkownicy mogą łatwo uczeni i wdrażać modele łańcucha.
     + Dowiedz się, jak [uruchomić szkolenie rozproszone z ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
     + Dowiedz się, jak [uruchomić dostrajanie parametrów za pomocą łańcucha](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
-  + Azure Machine Learning potoki dodaliśmy możliwość wyzwalania uruchomienia potoku na podstawie modyfikacji magazynu danych. [Notes harmonogramu](https://aka.ms/pl-schedule) potoku został zaktualizowany w celu pokazania tej funkcji.
+  + Potoki Azure Machine Learning dodane zdolność do wyzwalania uruchomienia potoku na podstawie modyfikacji magazynu danych. [Notes harmonogramu](https://aka.ms/pl-schedule) potoku został zaktualizowany w celu pokazania tej funkcji.
 
 + **Poprawki i ulepszenia błędów**
-  + Dodaliśmy obsługę potoków Azure Machine Learning, aby ustawić właściwość source_directory_data_store na żądany magazyn danych (np. Magazyn obiektów BLOB) na [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , które są dostarczane do [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Zgodnie z domyślnymi krokami usługa Azure File Store jest używana jako zapasowy magazyn danych, co może powodować problemy z ograniczaniem wydajności w przypadku wykonywania dużej liczby kroków współbieżnie.
+  + Dodaliśmy obsługę w potokach Azure Machine Learning, aby ustawić właściwość source_directory_data_store na żądany magazyn danych (np. Magazyn obiektów BLOB) w witrynie [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , które są dostarczane do [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Zgodnie z domyślnymi krokami usługa Azure File Store jest używana jako zapasowy magazyn danych, co może powodować problemy z ograniczaniem wydajności w przypadku wykonywania dużej liczby kroków współbieżnie.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -1395,7 +1420,7 @@ Usługa Azure obliczeniowego usługi Machine Learning można tworzyć w języku 
   * `SummaryFunction.N` Nazwa została zmieniona na `SummaryFunction.Count`.
   
 + **Poprawki błędów**
-  * Użyj najnowszej AML Uruchom tokenu podczas odczytywanie z oraz zapisywanie do magazynów danych na zdalnych przebiegów. Wcześniej Jeśli tokenu Uruchom AML zostanie zaktualizowany w języku Python, przygotowywanie danych środowiska uruchomieniowego nie zostanie zaktualizowany przy użyciu zaktualizowanych AML Uruchom tokenu.
+  * Użyj najnowszego tokenu uruchamiania AML podczas odczytywania i zapisywania do magazynów danych na zdalnych uruchomieniach. Wcześniej Jeśli tokenu Uruchom AML zostanie zaktualizowany w języku Python, przygotowywanie danych środowiska uruchomieniowego nie zostanie zaktualizowany przy użyciu zaktualizowanych AML Uruchom tokenu.
   * Dodatkowe przejrzyste komunikaty o błędach
   * to_spark_dataframe () nie będzie już ulegać awarii, gdy platforma Spark używa serializacji `Kryo`
   * Liczba wartości Inspector umożliwia teraz wyświetlanie więcej niż 1000 unikatowe wartości
@@ -1455,7 +1480,7 @@ Więcej informacji na temat zestawu SDK usługi Data Prep, czytając [odwołania
    * Stałe i/lub wyrażenia, które mają być podobne do sposobu, w jaki `pandas` je obsłużyć
    * Naprawiono odczytu ze ścieżki dbfs
    * Wprowadzone bardziej zrozumiałe komunikaty o błędach 
-   * Teraz już nie kończy się niepowodzeniem podczas odczytywania na zdalnym obliczeniowych elementów docelowych przy użyciu tokenu AML
+   * Teraz nie kończy się już w przypadku odczytywania na zdalnym miejscu docelowym obliczeń przy użyciu tokenu AML
    * Teraz już nie kończy się niepowodzeniem na DSVM systemu Linux
    * Teraz już ulega awarii podczas wartości innych niż ciąg znajdują się w ciągu predykatów
    * Teraz obsługuje błędy potwierdzenia, gdy przepływ danych powinna zakończyć się niepowodzeniem poprawnie

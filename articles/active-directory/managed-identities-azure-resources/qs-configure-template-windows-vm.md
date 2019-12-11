@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bbc596321b4882ef99104e045ee2da752b125a
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6b12cd339aee0e9ae0e1cd6d31e523b9b1457c57
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547197"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971064"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonów
 
@@ -32,7 +32,7 @@ W tym artykule, korzystając z szablonu wdrażania Azure Resource Manager, dowie
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz doświadczenia w korzystaniu z szablonu wdrażania Azure Resource Manager, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Jeśli nie masz doświadczenia w korzystaniu z szablonu wdrażania Azure Resource Manager, zapoznaj się z [sekcją przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 
 ## <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
@@ -117,12 +117,12 @@ Aby przypisać rolę do tożsamości przypisanej do systemu przez maszynę wirtu
 
     ```JSON
     "builtInRoleType": {
-          "type": "string",
-          "defaultValue": "Reader"
-        },
-        "rbacGuid": {
-          "type": "string"
-        }
+        "type": "string",
+        "defaultValue": "Reader"
+    },
+    "rbacGuid": {
+        "type": "string"
+    }
     ```
 
     W sekcji `variables` Dodaj następujące elementy:
@@ -136,16 +136,16 @@ Aby przypisać rolę do tożsamości przypisanej do systemu przez maszynę wirtu
     ```JSON
     {
         "apiVersion": "2017-09-01",
-         "type": "Microsoft.Authorization/roleAssignments",
-         "name": "[parameters('rbacGuid')]",
-         "properties": {
-                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-                "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
-                "scope": "[resourceGroup().id]"
-          },
-          "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-            ]
+        "type": "Microsoft.Authorization/roleAssignments",
+        "name": "[parameters('rbacGuid')]",
+        "properties": {
+            "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+            "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
+            "scope": "[resourceGroup().id]"
+        },
+         "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+        ]
     }
     ```
 
@@ -167,17 +167,17 @@ Aby usunąć tożsamość zarządzaną przypisaną przez system z maszyny wirtua
    
 Poniższy przykład pokazuje, jak usunąć tożsamość zarządzaną przypisaną przez system z maszyny wirtualnej bez tożsamości zarządzanych przez użytkownika:
 
-```JSON
-{
-    "apiVersion": "2018-06-01",
-    "type": "Microsoft.Compute/virtualMachines",
-    "name": "[parameters('vmName')]",
-    "location": "[resourceGroup().location]",
-    "identity": { 
-        "type": "None"
-        },
-}
-```
+ ```JSON
+ {
+     "apiVersion": "2018-06-01",
+     "type": "Microsoft.Compute/virtualMachines",
+     "name": "[parameters('vmName')]",
+     "location": "[resourceGroup().location]",
+     "identity": { 
+         "type": "None"
+     }
+ }
+ ```
 
 ## <a name="user-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez użytkownika
 
@@ -196,26 +196,26 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    Jeśli `apiVersion` jest `2018-06-01`, zarządzane tożsamości przypisane przez użytkownika są przechowywane w formacie słownika `userAssignedIdentities`, a wartość `<USERASSIGNEDIDENTITYNAME>` musi być przechowywana w zmiennej zdefiniowanej w sekcji `variables` szablonu.
 
-   ```json
-   {
-       "apiVersion": "2018-06-01",
-       "type": "Microsoft.Compute/virtualMachines",
-       "name": "[variables('vmName')]",
-       "location": "[resourceGroup().location]",
-       "identity": {
-           "type": "userAssigned",
-           "userAssignedIdentities": {
-               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
-           }
+   ```JSON
+    {
+        "apiVersion": "2018-06-01",
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[variables('vmName')]",
+        "location": "[resourceGroup().location]",
+        "identity": {
+            "type": "userAssigned",
+            "userAssignedIdentities": {
+                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+            }
         }
-   }
+    }
    ```
    
    **Interfejs API Microsoft. COMPUTE/virtualMachines w wersji 2017-12-01**
     
    Jeśli `apiVersion` jest `2017-12-01`, zarządzane tożsamości przypisane przez użytkownika są przechowywane w tablicy `identityIds`, a wartość `<USERASSIGNEDIDENTITYNAME>` musi być przechowywana w zmiennej zdefiniowanej w sekcji `variables` szablonu.
     
-   ```json
+   ```JSON
    {
        "apiVersion": "2017-12-01",
        "type": "Microsoft.Compute/virtualMachines",
@@ -265,10 +265,10 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "port": 50342
+                }
             }
         }
-       }
-    ]
+    ]   
    ```
    **Interfejs API Microsoft. COMPUTE/virtualMachines w wersji 2017-12-01**
    
@@ -304,8 +304,8 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "port": 50342
+                }
             }
-        }
        }
     ]
    ```
@@ -347,4 +347,3 @@ Aby usunąć tożsamość przypisaną przez użytkownika z maszyny wirtualnej, T
 ## <a name="next-steps"></a>Następne kroki
 
 - [Zarządzanie tożsamościami dla zasobów platformy Azure — omówienie](overview.md).
-

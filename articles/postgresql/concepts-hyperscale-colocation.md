@@ -1,18 +1,18 @@
 ---
-title: Pojęcia dotyczące serwerów w Azure Database for PostgreSQL
-description: Ten artykuł zawiera zagadnienia i wskazówki dotyczące konfigurowania serwerów Azure Database for PostgreSQL i zarządzania nimi.
+title: Kolokacja tabeli — przeskalowanie (Citus) — Azure Database for PostgreSQL
+description: Jak przechowywać powiązane informacje razem z szybszymi zapytaniami
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482762"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967341"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Współlokalizacja tabeli w Azure Database for PostgreSQL — funkcja do skalowania (Citus)
 
@@ -132,7 +132,7 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Ze względu na filtr i sprzężenie w tenant_id, funkcja Citus (przeskaling) wie, że całe zapytanie może być odpowiedzią przy użyciu zestawu współdzielonej fragmentów, który zawiera dane dla danej dzierżawy. Pojedynczy węzeł PostgreSQL może odpowiedzieć na zapytanie w jednym kroku.
+Ze względu na filtr i sprzężenie w tenant_id, funkcja Citus (fragmentów) wie, że całe zapytanie może być odpowiedzią przy użyciu zestawu współdzielonego elementu, który zawiera dane dla danej dzierżawy. Pojedynczy węzeł PostgreSQL może odpowiedzieć na zapytanie w jednym kroku.
 
 ![Lepsze zapytanie](media/concepts-hyperscale-colocation/colocation-better-query.png)
 

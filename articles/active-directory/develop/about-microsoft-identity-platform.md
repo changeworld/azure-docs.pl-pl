@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca1b6cc6288b75dc7194ead916f2ecb468b053d2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845913"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996990"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Ewolucja platformy tożsamości firmy Microsoft
 
@@ -26,13 +26,13 @@ Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej A
 
 Do tej pory większość deweloperów pracowała z platformą Azure AD v 1.0 do uwierzytelniania kont służbowych (zainicjowanych przez usługę Azure AD) przez żądanie tokenów z punktu końcowego usługi Azure AD v 1.0, przy użyciu biblioteki Azure AD Authentication Library (ADAL), Azure Portal dla programu Rejestracja i konfiguracja aplikacji oraz interfejs API programu Graph usługi Azure AD na potrzeby konfiguracji aplikacji programistycznych.
 
-Korzystając z platformy Identity platform (v 2.0), Rozszerz zasięg na swoich użytkowników:
+Za pomocą ujednoliconej platformy tożsamości firmy Microsoft (v 2.0) można napisać kod jednokrotnie i uwierzytelnić tożsamość firmy Microsoft w swojej aplikacji. W przypadku kilku platform zaleca się używanie w pełni obsługiwanej biblioteki uwierzytelniania Microsoft Open Source (MSAL) w odniesieniu do punktów końcowych platformy tożsamości. Usługa MSAL jest prosta do użycia, zapewnia użytkownikom doskonałe funkcje logowania jednokrotnego (SSO, Single Sign-on), pomaga osiągnąć wysoką niezawodność i wydajność oraz jest opracowywana przy użyciu usługi Microsoft Secure Development (SDL). Podczas wywoływania interfejsów API można skonfigurować aplikację tak, aby korzystała z powiększej zgody, która pozwala opóźnić żądanie zgody na bardziej inwazyjne zakresy, dopóki użycie aplikacji zagwarantuje to w czasie wykonywania.  Program MSAL obsługuje również Azure Active Directory B2C, więc klienci używają własnych tożsamości dla konta społecznościowego, przedsiębiorstwa lub lokalnego do uzyskiwania dostępu jednokrotnego do aplikacji i interfejsów API.
+
+Korzystając z platformy tożsamości firmy Microsoft, Rozszerz swój dostęp do tego rodzaju użytkowników:
 
 - Konta służbowe (konta aprowizacji usługi Azure AD)
 - Konta osobiste (takie jak Outlook.com lub Hotmail.com)
-- Klienci, którzy korzystają z własnej poczty e-mail lub tożsamości społecznościowej (na przykład LinkedIn, Facebook, Google) za pośrednictwem oferty Azure AD B2C
-
-Dzięki ujednoliconej platformie tożsamości firmy Microsoft można napisać kod jednokrotnie i uwierzytelnić tożsamość firmy Microsoft w aplikacji. W przypadku kilku platform dostępna jest w pełni obsługiwana Biblioteka typu open source o nazwie Microsoft Authentication Library (MSAL). Usługa MSAL jest prosta do użycia, zapewnia użytkownikom doskonałe funkcje logowania jednokrotnego (SSO, Single Sign-on), pomaga osiągnąć wysoką niezawodność i wydajność oraz jest opracowywana przy użyciu usługi Microsoft Secure Development (SDL). Podczas wywoływania interfejsów API można skonfigurować aplikację tak, aby korzystała z powiększej zgody, która pozwala opóźnić żądanie zgody na bardziej inwazyjne zakresy, dopóki użycie aplikacji zagwarantuje to w czasie wykonywania.
+- Klienci, którzy korzystają z własnych wiadomości e-mail lub tożsamości społecznościowej (takich jak LinkedIn, Facebook, Google) za pośrednictwem MSAL i Azure AD B2C
 
 Za pomocą Azure Portal można zarejestrować i skonfigurować aplikację oraz użyć interfejsu API Microsoft Graph do konfiguracji aplikacji programistycznych.
 

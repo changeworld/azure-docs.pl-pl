@@ -1,5 +1,5 @@
 ---
-title: Utwórz listę aplikacji w galerii aplikacji Azure Active Directory | Microsoft Docs
+title: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure AD | Microsoft Docs
 description: Dowiedz się, jak wyświetlić listę aplikacji, która obsługuje logowanie jednokrotne w galerii aplikacji Azure Active Directory
 services: active-directory
 author: rwike77
@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54c51a10f950fb5381ab29968a866772dcaec78c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3bfdeaba26e98f600b81b3a473326ff4086f1aa2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918013"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967154"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 

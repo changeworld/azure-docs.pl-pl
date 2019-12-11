@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aaaafcbf2a20aa96437d06401e0a1d54b647bb28
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: bf9e843123f332a120d6665e6be8ff635ef0b8e2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176432"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973768"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Szybki Start: Wyodrębnianie wydrukowanych i odręcznych tekstu przy użyciu interfejsu API REST przetwarzanie obrazów i języka Python
 
-W tym przewodniku szybki start wyodrębnisz drukowany i/lub odręczny tekst z obrazu za pomocą interfejsu API REST przetwarzanie obrazów. Przy użyciu metod operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) możesz wykryć tekst w obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który można odczytać. Interfejs API określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, aby obsługiwał obrazy zarówno w postaci tekstu, jak i w postaci odręcznej.
+W tym przewodniku Szybki Start zostanie wyodrębniony drukowany i/lub odręczny tekst z obrazu przy użyciu interfejsu API REST przetwarzanie obrazów. Przy użyciu metod operacji odczytu i [odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [partii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) możesz wykryć tekst w obrazie i wyodrębnić rozpoznane znaki do strumienia znaków, który można odczytać. Interfejs API określi model rozpoznawania, który ma być używany dla każdego wiersza tekstu, aby obsługiwał obrazy zarówno w postaci tekstu, jak i w postaci odręcznej.
 
 > [!IMPORTANT]
 > W przeciwieństwie do metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) Metoda [odczytywania wsadowego](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) jest uruchamiana asynchronicznie. Ta metoda nie zwraca żadnych informacji w treści pomyślnej odpowiedzi. Zamiast tego metoda odczytywania wsadowego zwraca identyfikator URI w wartości pola nagłówka odpowiedzi `Operation-Content`. Następnie można wywołać ten identyfikator URI, który reprezentuje interfejs API [wyniku operacji odczytu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) , aby sprawdzić stan i zwrócić wyniki wywołania metody odczytu wsadowego.
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz uruchomić próbkę lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
+- Jeśli chcesz uruchomić przykładowy kod lokalnie, musisz mieć zainstalowany język [Python](https://www.python.org/downloads/).
 - Musisz mieć klucz subskrypcji funkcji przetwarzania obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Następnie [Utwórz zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla ciągu punktu końcowego klucza i usługi, odpowiednio nazwane `COMPUTER_VISION_SUBSCRIPTION_KEY` i `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>Tworzenie i uruchamianie przykładowego kodu
@@ -44,7 +44,7 @@ Aby utworzyć i uruchomić przykład, wykonaj następujące kroki:
 1. Opcjonalnie należy zamienić wartość `image_url` na adres URL innego obrazu, z którego ma zostać wyodrębniony tekst.
 1. Zapisz kod jako plik z rozszerzeniem `.py`. Na przykład `get-text.py`.
 1. Otwórz okno wiersza polecenia.
-1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python get-text.py`.
+1. W wierszu polecenia użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python get-text.py`.
 
 ```python
 import requests

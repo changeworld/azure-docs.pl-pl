@@ -1,17 +1,17 @@
 ---
-title: Konfigurowanie alertów metryk dla Azure Database for PostgreSQL-ze skalowaniem (Citus)
+title: Konfigurowanie alertów — funkcja do skalowania (Citus) — Azure Database for PostgreSQL
 description: W tym artykule opisano sposób konfigurowania i uzyskiwania dostępu do alertów metryk dla Azure Database for PostgreSQL-ze skalowaniem (Citus)
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5f45df16ac294f50e99cc7e05ab6eba43c0ae85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516021"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977611"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Użyj Azure Portal, aby skonfigurować alerty dotyczące metryk dla Azure Database for PostgreSQL-Citus
 
@@ -27,7 +27,7 @@ Można skonfigurować alert, aby wykonał następujące akcje po jego wyzwoleniu
 Można skonfigurować i uzyskać informacje o regułach alertów przy użyciu:
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Interfejs wiersza polecenia platformy Azure](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Interfejs API REST Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Interfejs API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Tworzenie reguły alertu na podstawie metryki z Azure Portal
 1. W [Azure Portal](https://portal.azure.com/)wybierz serwer Azure Database for PostgreSQL, który chcesz monitorować.

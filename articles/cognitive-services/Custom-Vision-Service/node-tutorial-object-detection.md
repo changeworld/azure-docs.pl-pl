@@ -8,18 +8,18 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: b922073df468ca2d92e319e4e59cae098734c13c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 648a9d43f911ffb7f4d6bc97fd63c2ea97ec84e9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "73518989"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977441"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Szybki Start: Tworzenie projektu wykrywania obiektów przy użyciu zestawu SDK Custom Vision Node. js
 
-Ten artykuł zawiera informacje i przykładowy kod, dzięki którym można łatwiej rozpocząć tworzenie modeli wykrywania obiektów za pomocą zestawu Custom Vision SDK i platformy Node.js. Po jego utworzeniu można dodać otagowane regiony, przekazać obrazy, przeszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji Node.js.
+W tym artykule pokazano, jak rozpocząć pracę z zestawem SDK Custom Vision przy użyciu środowiska Node. js w celu utworzenia modelu wykrywania obiektów. Po jego utworzeniu można dodać otagowane regiony, przekazać obrazy, przeszkolić projekt, uzyskać opublikowany adres URL punktu końcowego przewidywania projektu i użyć punktu końcowego do programistycznego testowania obrazu. Użyj tego przykładu jako szablonu do utworzenia własnej aplikacji Node.js.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

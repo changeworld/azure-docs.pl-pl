@@ -1,5 +1,5 @@
 ---
-title: Aplikacja internetowa, która loguje się do użytkowników (logowanie) — platforma tożsamości firmy Microsoft
+title: Napisz aplikację sieci Web, która loguje się do użytkowników — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (logowanie)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b41e46401d600ebaba1febb86aafbd55c8399a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482567"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961985"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Aplikacja internetowa, która loguje użytkowników: Logowanie i wylogowywanie
 
@@ -431,7 +431,7 @@ W przewodniku szybki start w języku Python identyfikator URI przekierowania po 
 
 ---
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol (Protokół)
 
 Jeśli chcesz dowiedzieć się więcej o wylogowaniu, Przeczytaj dokumentację dotyczącą protokołu dostępną w programie [Open ID Connect](./v2-protocols-oidc.md).
 

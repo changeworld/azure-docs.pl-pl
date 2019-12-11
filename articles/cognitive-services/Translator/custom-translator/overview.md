@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 0269b4e611432093ea677e2ea7e429c84ce9db87
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e002a5fbe38596d6507eec81ba3dd2a05c25153a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257668"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975809"
 ---
 # <a name="what-is-custom-translator"></a>Co to jest rozszerzenie Custom Translator?
 
@@ -28,7 +28,7 @@ Rozszerzenie Custom Translator obsługuje ponad trzy tuziny języków i jest map
 
 Rozszerzenie Custom Translator udostępnia różne funkcje umożliwiające utworzenie niestandardowego systemu tłumaczenia, a następnie uzyskiwanie do niego dostępu.
 
-|Cecha  |Opis  |
+|Funkcja  |Opis  |
 |---------|---------|
 |[Wykorzystanie technologii neuronowego tłumaczenia maszynowego](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Ulepsz swoje tłumaczenia dzięki wykorzystaniu neuronowego tłumaczenia maszynowego (NMT) dostarczanego przez rozszerzenie Custom Translator.       |
 |[Tworzenie systemów, które znają terminologię biznesową użytkownika](what-are-parallel-documents.md)     |  Dostosowywanie i tworzenie systemów tłumaczenia przy użyciu równoległych dokumentów, które rozumieją terminologie używane w firmie i w branży.       |

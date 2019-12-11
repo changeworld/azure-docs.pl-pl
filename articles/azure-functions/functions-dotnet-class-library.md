@@ -3,12 +3,12 @@ title: Dokumentacja C# dla deweloperów Azure Functions
 description: Dowiedz się, jak opracowywać C#Azure Functions przy użyciu programu.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665580"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975486"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Dokumentacja C# dla deweloperów Azure Functions
 
@@ -21,11 +21,19 @@ Azure Functions obsługuje C# Języki C# programowania skryptów i. Jeśli szuka
 W tym artykule przyjęto założenie, że zostały już przeczytane następujące artykuły:
 
 * [Przewodnik dla deweloperów Azure Functions](functions-reference.md)
-* [Azure Functions narzędzia programu Visual Studio 2019](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
 
-Środowisko uruchomieniowe Azure Functions 2. x używa programu .NET Core 2,2. Kod funkcji może korzystać z interfejsów API platformy .NET Core 2,2, aktualizując ustawienia projektu programu Visual Studio. Szablony funkcji nie są domyślne dla programu .NET Core 2,2, aby uniknąć niekorzystnego wpływu na klientów, którzy nie mają zainstalowanego programu .NET Core 2,2.
+Wersje środowiska uruchomieniowego Functions działają z określonymi wersjami platformy .NET. W poniższej tabeli przedstawiono najwyższy poziom .NET Core i .NET Framework i .NET Core, których można używać z określoną wersją funkcji w projekcie. 
+
+| Wersja środowiska uruchomieniowego funkcji | Maksymalna wersja platformy .NET |
+| ---- | ---- |
+| Funkcje 3. x | .NET Core 3,1 |
+| Functions w wersji 2.x | .NET Core 2.2 |
+| Functions w wersji 1.x | Program .NET Framework 4.6 |
+
+Aby dowiedzieć się więcej, zobacz [Omówienie wersji środowiska uruchomieniowego Azure Functions](functions-versions.md)
 
 ## <a name="functions-class-library-project"></a>Projekt biblioteki klas funkcji
 
@@ -49,7 +57,7 @@ Podczas kompilowania projektu, struktura folderów, która wygląda podobnie do 
 Ten katalog jest wdrażany w aplikacji funkcji na platformie Azure. Rozszerzenia powiązań wymagane w [wersji 2. x](functions-versions.md) środowiska uruchomieniowego funkcji są [dodawane do projektu jako pakiety NuGet](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Proces kompilacji tworzy plik *Function. JSON* dla każdej funkcji. Plik *Function. JSON* nie jest przeznaczony do edycji bezpośrednio. Nie można zmienić konfiguracji powiązań ani wyłączyć funkcji, edytując ten plik. Aby dowiedzieć się, jak wyłączyć funkcję, zobacz [How to disable](disable-function.md#functions-2x---c-class-libraries)Functions.
+> Proces kompilacji tworzy plik *Function. JSON* dla każdej funkcji. Plik *Function. JSON* nie jest przeznaczony do edycji bezpośrednio. Nie można zmienić konfiguracji powiązań ani wyłączyć funkcji, edytując ten plik. Aby dowiedzieć się, jak wyłączyć funkcję, zobacz [How to disable](disable-function.md)Functions.
 
 
 ## <a name="methods-recognized-as-functions"></a>Metody rozpoznawane jako funkcje
@@ -149,7 +157,7 @@ Wygenerowany plik *Function. JSON* zawiera właściwość `configurationSource`,
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. Sdk. Functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
 Generowanie pliku *Function. JSON* jest wykonywane przez pakiet NuGet [Microsoft\..net\.SDK\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
@@ -247,7 +255,7 @@ public static class SimpleExample
 
 Należy unikać używania `Console.Write` w Azure Functions. Aby uzyskać więcej informacji, zobacz [Zapisywanie dzienników C# w funkcjach](functions-monitoring.md#write-logs-in-c-functions) w artykule **monitor Azure Functions** .
 
-## <a name="async"></a>Asynchroniczne
+## <a name="async"></a>Async
 
 Aby wykonać funkcję [asynchroniczną](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), należy użyć słowa kluczowego `async` i zwrócić obiekt `Task`.
 

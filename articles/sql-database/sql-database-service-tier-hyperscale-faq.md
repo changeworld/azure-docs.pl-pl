@@ -1,5 +1,5 @@
 ---
-title: Hiperskala — często zadawane pytania
+title: Często zadawane pytania — skalowanie (Citus) — Azure Database for PostgreSQL
 description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure SQL Database w warstwie usług skalowania — zwykle nazywanej bazą danych w skali.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 89316811f39b4cab918b913b45ae5945686e6b15
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818228"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974023"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database często zadawane pytania dotyczące skalowania
 
@@ -39,19 +39,19 @@ Warstwa usługi do skalowania jest dostępna tylko dla pojedynczych baz danych k
 
 Warstwy usług oparte na rdzeń wirtualny są zróżnicowane w zależności od dostępności bazy danych i typu magazynu, wydajności i maksymalnego rozmiaru, zgodnie z opisem w poniższej tabeli.
 
-| | Typ zasobu | Ogólnego przeznaczenia |  Hiperskala | Krytyczne dla działania firmy |
+| | Typ zasobu | Ogólne zastosowanie |  Hiperskalowanie | Krytyczne dla działania firmy |
 |:---:|:---:|:---:|:---:|:---:|
-| **Najlepsze dla** |Wszyscy|Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.|Większość obciążeń firmowych. Skalowanie automatyczne magazynu o rozmiarze do 100 TB, szybkie skalowanie w pionie i w poziomie, szybkie przywracanie bazy danych.|Aplikacje OLTP o wysokim współczynniku transakcji i niskim opóźnieniu we/wy. Oferuje największą odporność na błędy i szybkie przełączanie w tryb failover przy użyciu wielu replik synchronicznie zaktualizowanych.|
+| **Najlepsze dla** |Wszystko|Oferuje zorientowane na budżety Opcje obliczeniowe i magazynowe.|Większość obciążeń firmowych. Skalowanie automatyczne magazynu o rozmiarze do 100 TB, szybkie skalowanie w pionie i w poziomie, szybkie przywracanie bazy danych.|Aplikacje OLTP o wysokim współczynniku transakcji i niskim opóźnieniu we/wy. Oferuje największą odporność na błędy i szybkie przełączanie w tryb failover przy użyciu wielu replik synchronicznie zaktualizowanych.|
 |  **Typ zasobu** ||Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane | Pojedyncza baza danych | Pojedyncza baza danych/Pula elastyczna/wystąpienie zarządzane |
 | **Rozmiar obliczeń**|Pojedyncza baza danych/Pula elastyczna * | od 1 do 80 rdzeni wirtualnych | od 1 do 80 rdzeni wirtualnych * | od 1 do 80 rdzeni wirtualnych |
-| |Wystąpienie zarządzane | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych | Nie dotyczy | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
-| **Typ magazynu** | Wszyscy |Magazyn zdalny w warstwie Premium (na wystąpienie) | Niepołączony magazyn z lokalną pamięcią podręczną dysków SSD (na wystąpienie) | Lokalny magazyn SSD o wysokiej szybkości (na wystąpienie) |
+| |Wystąpienie zarządzane | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych | ND | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
+| **Typ magazynu** | Wszystko |Magazyn zdalny w warstwie Premium (na wystąpienie) | Niepołączony magazyn z lokalną pamięcią podręczną dysków SSD (na wystąpienie) | Lokalny magazyn SSD o wysokiej szybkości (na wystąpienie) |
 | **Rozmiar magazynu** | Pojedyncza baza danych/Pula elastyczna *| 5 GB – 4 TB | Do 100 TB | 5 GB – 4 TB |
-| | Wystąpienie zarządzane  | 32 GB – 8 TB | Nie dotyczy | 32 GB – 4 TB |
-| **Wejścia** | Pojedyncza baza danych | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
-| | Wystąpienie zarządzane | Zależy od rozmiaru pliku | Nie dotyczy | 1375 operacji we/wy na sekundę |
-|**Dostępność**|Wszyscy|1 replika, brak skalowania do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 4 odczyt skalowalny w poziomie, częściowa lokalna pamięć podręczna | 3 repliki, odczyt skalowalny w poziomie, strefa nadmiarowa, pełny magazyn lokalny |
-|**Kopii zapasowych**|Wszyscy|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
+| | Wystąpienie zarządzane  | 32 GB – 8 TB | ND | 32 GB – 4 TB |
+| **IOPS** | Pojedyncza baza danych | 500 operacji we/wy na sekundę z 7000 maksymalną liczbą IOPS | Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia. | 5000 operacji we/wy z maksymalną liczbą IOPS 200 000|
+| | Wystąpienie zarządzane | Zależy od rozmiaru pliku | ND | 1375 operacji we/wy na sekundę |
+|**Dostępność**|Wszystko|1 replika, brak skalowania do odczytu, brak lokalnej pamięci podręcznej | Wiele replik, do 4 odczyt skalowalny w poziomie, częściowa lokalna pamięć podręczna | 3 repliki, odczyt skalowalny w poziomie, strefa nadmiarowa, pełny magazyn lokalny |
+|**Kopii zapasowych**|Wszystko|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
 
 \* pule elastyczne nie są obsługiwane w warstwie usługi w ramach skalowania
 
@@ -117,7 +117,7 @@ Funkcja skalowania obsługuje wszystkie SQL Server obciążenia, ale jest głów
 
 Jeśli obecnie uruchamiasz interaktywne zapytania analityczne przy użyciu SQL Server jako magazynu danych, funkcja wieloskalowania jest świetną opcją, ponieważ umożliwia hostowanie małych i średnich magazynów danych (takich jak kilka TB do 100 TB) przy niższych kosztach. można migrować SQL Server dane War ehouse obciążenia do skalowania przy minimalnych zmianach kodu T-SQL.
 
-W przypadku korzystania z analizy danych na dużą skalę z złożonymi zapytaniami i pozyskanymi szybkościami pozyskiwania większymi niż 100 MB/s lub przy użyciu usługi Parallel Data Warehouse (PDW), Teradata lub innych magazynów danych z możliwością przetwarzania równoległego (MPP), SQL Data Warehouse może być najlepszy wybór.
+W przypadku korzystania z analizy danych na dużą skalę z złożonymi zapytaniami i pozyskanymi szybkościami pozyskiwania większymi niż 100 MB/s lub przy użyciu usługi Parallel Data Warehouse (PDW), Teradata lub innych magazynów danych z możliwością przetwarzania równoległego (MPP), SQL Data Warehouse mogą być najlepszym wyborem.
   
 ## <a name="hyperscale-compute-questions"></a>Pytania obliczeniowe w ramach skalowania
 
@@ -143,7 +143,7 @@ W bazach danych w ramach skalowania odporność na dane jest zapewniana na pozio
 
 Jeśli jednak istnieje tylko jedna replika, może upłynąć trochę czasu, aby utworzyć lokalną pamięć podręczną w nowej replice po przejściu w tryb failover. W fazie odbudowywania pamięci podręcznej baza danych pobiera dane bezpośrednio z serwerów stronicowania, co skutkuje wyższym opóźnieniem magazynu i obniżeniem wydajności zapytań.
 
-W przypadku aplikacji o krytycznym znaczeniu, które wymagają wysokiej dostępności przy minimalnym wpływie na pracę w trybie failover, należy udostępnić co najmniej 2 repliki obliczeniowe, w tym podstawową replikę obliczeniową. Jest to konfiguracja domyślna. W ten sposób dostępna jest replika gorąca w stanie gotowości, która służy jako docelowy tryb failover.
+W przypadku aplikacji o krytycznym znaczeniu, które wymagają wysokiej dostępności przy minimalnym wpływie na pracę w trybie failover, należy udostępnić co najmniej 2 repliki obliczeniowe, w tym podstawową replikę obliczeniową. To jest konfiguracja domyślna. W ten sposób dostępna jest replika gorąca w stanie gotowości, która służy jako docelowy tryb failover.
 
 ## <a name="data-size-and-storage-questions"></a>Rozmiar danych i pytania dotyczące magazynu
 
@@ -278,7 +278,7 @@ Tak.  Przywracanie geograficzne jest w pełni obsługiwane.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Czy można skonfigurować replikację geograficzną za pomocą bazy danych ze skalowaniem
 
-Nie w tej chwili.
+Obecnie nie.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Czy można wykonać kopię zapasową bazy danych i przywrócić ją na serwerze lokalnym lub na SQL Server na maszynie wirtualnej
 

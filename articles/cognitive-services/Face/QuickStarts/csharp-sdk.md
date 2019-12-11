@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/20/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 2b095f76eb2c2c9ca420e0049ced3e7af1e742c4
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 5602e26e2e1b327d65d411f8e92f264f1bf9fb91
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405917"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977866"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla platformy .NET
 
@@ -29,7 +29,7 @@ Użyj biblioteki klienta programu Front for .NET, aby:
 * [Identyfikowanie kroju](#identify-a-face)
 * [Utwórz migawkę migracji danych](#take-a-snapshot-for-data-migration)
 
-[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) [ | ](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Dokumentacja referencyjna](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [pakietu (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | [próbka](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

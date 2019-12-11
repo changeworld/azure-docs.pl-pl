@@ -1,5 +1,5 @@
 ---
-title: Wysoka dostępność w Azure Database for PostgreSQL — skalowanie (Citus)
+title: Wysoka dostępność — funkcja do skalowania (Citus) — Azure Database for PostgreSQL
 description: Pojęcia dotyczące wysokiej dostępności i odzyskiwania po awarii
 author: jonels-msft
 ms.author: jonels
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 616b5bff735f52d137c12c58ac6023c38a2d4044
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514747"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975537"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Wysoka dostępność w Azure Database for PostgreSQL — skalowanie (Citus)
 
-Wysoka dostępność (HA) pozwala uniknąć przestojów bazy danych przez utrzymywanie replik w trybie rezerwy dla każdego węzła w grupie serwerów. Jeśli węzeł ulegnie awarii, przełączają połączenia przychodzące z węzła niepowodzenie do stanu wstrzymania. Tryb failover występuje w ciągu kilku minut, a podwyższone węzły zawsze mają nowe dane za pomocą synchronicznej replikacji przesyłania strumieniowego PostgreSQL.
+Duża dostępność zapobiega przerwom w działaniu baz danych dzięki przechowywaniu rezerwowych replik każdego węzła w grupie serwerów. Jeśli węzeł ulegnie awarii, Hiperskala przełączy połączenia przychodzące z uszkodzonego węzła na jego rezerwę. Przez kilka minut węzeł będzie działał w trybie failover, a dzięki synchronicznej replikacji przesyłania strumieniowego PostgreSQL awansowane węzły zawsze będą zawierały świeże dane.
 
 Aby korzystać z wysokiej dostępności na węźle koordynatora, aplikacje bazy danych muszą wykrywać i ponawiać próby porzucenia połączeń i transakcji zakończonych niepowodzeniem. Nowo podwyższony koordynator będzie dostępny z tymi samymi parametrami połączenia.
 

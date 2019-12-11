@@ -1,5 +1,5 @@
 ---
-title: Chroniony internetowy interfejs API — konfiguracja kodu aplikacji
+title: Konfigurowanie chronionych aplikacji internetowego interfejsu API | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć chroniony internetowy interfejs API i skonfigurować kod aplikacji.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882622"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965402"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chroniony internetowy interfejs API: Konfiguracja kodu
 
@@ -32,7 +32,7 @@ Aby skonfigurować kod chronionego internetowego interfejsu API, należy zrozumi
 
 Podobnie jak w przypadku aplikacji sieci Web, interfejsy API sieci Web ASP.NET/ASP.NET Core są chronione, ponieważ ich akcje kontrolera są poprzedzone atrybutem `[Authorize]`. Tak więc akcje kontrolera można wywołać tylko wtedy, gdy interfejs API jest wywoływany przy użyciu tożsamości, która jest autoryzowana.
 
-Weź pod uwagę następujące pytania:
+Zastanów się nad następującymi pytaniami:
 
 - Jak interfejs API sieci Web wie tożsamość aplikacji, która ją wywołuje? (Tylko aplikacja może wywołać interfejs API sieci Web).
 - Jeśli aplikacja wywołała internetowy interfejs API w imieniu użytkownika, co to jest tożsamość użytkownika?

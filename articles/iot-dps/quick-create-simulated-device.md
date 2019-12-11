@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: Inicjowanie obsługi symulowanego urządzenia TPM w usłudze Azure IoT Hub przy użyciu języka C'
-description: W tym przewodniku Szybki start używane są rejestracje indywidualne. W tym przewodniku Szybki start utworzysz i aprowizujesz symulowane urządzenie TPM za pomocą zestawu SDK języka C dla usługi Azure IoT Hub Device Provisioning.
+description: W tym przewodniku Szybki start używane są rejestracje indywidualne. W tym przewodniku szybki start utworzysz i zainicjujesz symulowane urządzenie TPM przy użyciu zestawu SDK języka C dla usługi Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0330476650af205854b6d0d4be098c28b46e78a1
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 9ee40d4dadd25e37028a7381583d1f333bc4f19a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423174"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976863"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Szybki start: aprowizowanie symulowanego urządzenia TPM za pomocą zestawu SDK języka C usługi Azure IoT
 

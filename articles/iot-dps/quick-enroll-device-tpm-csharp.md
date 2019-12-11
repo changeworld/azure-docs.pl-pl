@@ -1,6 +1,6 @@
 ---
 title: Rejestrowanie urządzenia TPM w usłudze Azure Device Provisioning przy użyciuC#
-description: Szybki Start — rejestrowanie urządzenia TPM w usłudze Azure C# IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi. W tym przewodniku Szybki start używane są rejestracje indywidualne.
+description: Szybki Start — rejestrowanie urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service (DPS C# ) przy użyciu zestawu SDK usługi. W tym przewodniku Szybki start używane są rejestracje indywidualne.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a95a50e5931f42e442e11fe593a151dd273449e8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ee1b803459e0c81b86021b617a29e0b29ee19909
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423010"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976846"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Szybki Start: rejestrowanie urządzenia TPM w celu C# IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi
 
@@ -93,7 +93,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
 
    * Jeśli korzystasz z tego przewodnika Szybki Start wraz z opcją [Utwórz i Udostępnij symulowane urządzenie C# TPM przy użyciu zestawu SDK urządzenia](quick-create-simulated-device-tpm-csharp.md) w celu aprowizacji symulowanego urządzenia, Zastąp Klucz poręczenia i Identyfikator rejestracji wartościami zanotowanymi w tym przewodniku Szybki Start. Identyfikator urządzenia można zastąpić wartością sugerowaną w tym przewodniku Szybki Start, użyć własnej wartości lub użyć wartości domyślnej w tym przykładzie.
 
-1. Dodaj następującą metodę do klasy `Program`.  Ten kod tworzy poszczególne wpisy rejestracji, a następnie wywołuje metodę `CreateOrUpdateIndividualEnrollmentAsync` na `ProvisioningServiceClient` w celu dodania rejestracji indywidualnej do usługi aprowizacji.
+1. Dodaj następującą metodę do `Program` klasy.  Ten kod tworzy poszczególne wpisy rejestracji, a następnie wywołuje metodę `CreateOrUpdateIndividualEnrollmentAsync` na `ProvisioningServiceClient` w celu dodania rejestracji indywidualnej do usługi aprowizacji.
 
    ```csharp
    public static async Task RunSample()

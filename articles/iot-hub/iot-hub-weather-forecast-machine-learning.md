@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74079262"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976183"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Prognoza pogody przy użyciu danych czujników z Centrum IoT Hub w Azure Machine Learning
 
@@ -45,20 +45,20 @@ Dowiesz się, jak używać Azure Machine Learning do prognozowania pogody (szans
   - Aktywna subskrypcja platformy Azure.
   - Usługa Azure IoT Hub w ramach Twojej subskrypcji.
   - Aplikacja kliencka, która wysyła komunikaty do usługi Azure IoT Hub.
-- Konto [Azure Machine Learning Studio](https://studio.azureml.net/) .
+- Konto [Azure Machine Learning Studio (klasyczne)](https://studio.azureml.net/) .
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Wdrażanie modelu przewidywania pogody jako usługi sieci Web
 
 1. Przejdź do [strony modelu przewidywania pogody](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. Kliknij pozycję **Otwórz w programie Studio** w Microsoft Azure Machine Learning Studio.
+1. Kliknij pozycję **Otwórz w programie Studio** w Microsoft Azure Machine Learning Studio (klasyczny).
    ![otworzyć stronę modelu przewidywania pogody w Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
 1. Kliknij przycisk **Uruchom** , aby sprawdzić poprawność kroków w modelu. Wykonanie tego kroku może potrwać 2 minuty.
-   ![otworzyć model prognozowania pogody w Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![otworzyć model prognozowania pogody w Azure Machine Learning Studio (klasyczny)](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Kliknij pozycję **Skonfiguruj usługę sieci web** > **predykcyjną usługę sieci Web**.
-   ![wdrożyć model prognozowania pogody w Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![wdrożyć model prognozowania pogody w Azure Machine Learning Studio (klasyczny)](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Na diagramie przeciągnij moduł **wejściowy usługi sieci Web** w sąsiedztwie modułu **modelu oceny** .
 1. Podłącz moduł **danych wejściowych usługi sieci Web** do modułu **modelu oceny** .
-   ![połączyć dwa moduły w Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![połączyć dwa moduły w Azure Machine Learning Studio (klasyczny)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
 1. Kliknij przycisk **Uruchom** , aby sprawdzić poprawność kroków w modelu.
 1. Kliknij pozycję **Wdróż usługę sieci Web** , aby wdrożyć model jako usługę sieci Web.
 1. Na pulpicie nawigacyjnym modelu Pobierz **skoroszyt Excel 2010 lub wcześniejszy** dla **żądania/odpowiedzi**.
@@ -89,7 +89,7 @@ Dowiesz się, jak używać Azure Machine Learning do prognozowania pogody (szans
 
    ![Tworzenie zadania Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
@@ -105,7 +105,7 @@ Dowiesz się, jak używać Azure Machine Learning do prognozowania pogody (szans
 
    ![Dodawanie danych wejściowych do zadania Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 
@@ -124,7 +124,7 @@ Dowiesz się, jak używać Azure Machine Learning do prognozowania pogody (szans
 
    ![Dodawanie danych wyjściowych do zadania Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Dodaj funkcję do zadania Stream Analytics, aby wywołać wdrożoną usługę sieci Web
 
@@ -143,7 +143,7 @@ Dowiesz się, jak używać Azure Machine Learning do prognozowania pogody (szans
 
    ![Dodawanie funkcji do zadania Stream Analytics na platformie Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurowanie zapytania zadania usługi Stream Analytics
 
@@ -163,7 +163,7 @@ Dowiesz się, jak używać Azure Machine Learning do prognozowania pogody (szans
 
    Zastąp element `[YourOutputAlias]` aliasem wyjściowym zadania.
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="run-the-stream-analytics-job"></a>Uruchamianie zadania usługi Stream Analytics
 

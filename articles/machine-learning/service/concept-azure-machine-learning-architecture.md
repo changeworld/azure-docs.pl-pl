@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1e67fc3a2f878e5e04834f67027c98e0b37e9059
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580614"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973598"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
 
@@ -29,8 +29,8 @@ Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
 
 1. **Trasy**
     + Opracowywanie skryptów szkoleniowych dotyczących uczenia maszynowego w języku **Python** lub przy użyciu projektanta wizualnego.
-    + Utwórz i skonfiguruj **obiekt docelowy obliczeń**.
-    + **Prześlij skrypty** do skonfigurowanego obiektu docelowego obliczeń do uruchomienia w tym środowisku. Podczas szkoleń skrypty mogą odczytywać dane z **magazynu**danych lub zapisywać do niego. Rekordy wykonywania są zapisywane jako **uruchomienia** w **obszarze roboczym** i pogrupowane w obszarze **eksperymenty**.
+    + Tworzenie i konfigurowanie **obliczeniowego elementu docelowego**.
+    + **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkoleń skrypty mogą odczytywać dane z **magazynu**danych lub zapisywać do niego. Rekordy wykonywania są zapisywane jako **uruchomienia** w **obszarze roboczym** i pogrupowane w obszarze **eksperymenty**.
 
 1. **Pakiet** — po znalezieniu zadowalającego przebiegu Zarejestruj trwały model w **rejestrze modelu**.
 
@@ -59,28 +59,28 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#compute-instance">Maszyna wirtualna Notes</a>
 + <a href="#compute-targets">Cele obliczeń</a>
 + <a href="#datasets-and-datastores">& Magazynów danych</a>
-+ <a href="#endpoints">Punktów końcowych</a>
-+ <a href="#environments">Wiejski</a>
++ <a href="#endpoints">Punkty końcowe</a>
++ <a href="#environments">Środowiska</a>
 + [Szacowania](#estimators)
 + <a href="#experiments">Eksperymenty</a>
 + <a href="#github-tracking-and-integration">Śledzenie git</a>
 + <a href="#iot-module-endpoints">Moduły IoT</a>
-+ <a href="#logging">Rejestrować</a>
++ <a href="#logging">Rejestrowanie</a>
 + <a href="#ml-pipelines">Potoki ML</a>
 + <a href="#models">Przykładów</a>
-+ <a href="#runs">Wykonane</a>
++ <a href="#runs">Run</a>
 + <a href="#run-configurations">Uruchom konfigurację</a>
-+ <a href="#snapshots">Zdjęcie</a>
++ <a href="#snapshots">Migawka</a>
 + <a href="#training-scripts">Skrypt szkoleniowy</a>
 + <a href="#web-service-endpoint">Usługi sieci Web</a>
-+ <a href="#workspaces">Obszary</a>
++ <a href="#workspaces">Workspace</a>
 
 ### <a name="activities"></a>Działania
 
-Działanie reprezentuje długotrwałą operację. Następujące operacje są przykładami działań:
+Działanie reprezentuje długotrwałej operacji. Następujące operacje są przykłady działań:
 
-* Tworzenie lub usuwanie elementu docelowego obliczeń
-* Uruchamianie skryptu w obiekcie docelowym obliczeń
+* Tworzenie lub usuwanie obliczeniowego elementu docelowego
+* Uruchomienie skryptu na obliczeniowego elementu docelowego
 
 Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internetowego interfejsu użytkownika, dzięki czemu można łatwo monitorować postęp tych operacji.
 
@@ -90,7 +90,7 @@ Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internet
 
 Dowiedz się więcej o maszynach wirtualnych notesu.
 
-### <a name="compute-targets"></a>Cele obliczeń
+### <a name="compute-targets"></a>Celów obliczeń
 
 [Obiekt docelowy obliczeń](concept-compute-target.md) pozwala określić zasób obliczeniowy służący do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze.
 
@@ -151,7 +151,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 ### <a name="experiments"></a>Eksperymenty
 
-Eksperyment to grupa wielu przebiegów z określonego skryptu. Zawsze należy do obszaru roboczego. Podczas przesyłania przebiegu należy podać nazwę eksperymentu. Informacje dotyczące przebiegu są przechowywane w ramach tego eksperymentu. Jeśli przesyłasz przebieg i określisz nieistniejącą nazwę eksperymentu, zostanie automatycznie utworzony nowy eksperyment z nowo określoną nazwą.
+Eksperyment to grupa wielu przebiegów z określonego skryptu. Zawsze należy do obszaru roboczego. Po przesłaniu przebiegu można podać nazwę eksperymentu. Informacje dotyczące uruchomienia są przechowywane w ramach tego eksperymentu. Jeśli przesyłasz przebieg i określisz nieistniejącą nazwę eksperymentu, zostanie automatycznie utworzony nowy eksperyment z nowo określoną nazwą.
 
 Przykład korzystania z eksperymentu można znaleźć w [samouczku: uczenie pierwszego modelu](tutorial-1st-experiment-sdk-train.md).
 
@@ -166,9 +166,9 @@ Aby uzyskać więcej informacji, zobacz Integracja z usługą [git dla Azure Mac
 
 Podczas opracowywania rozwiązania Użyj zestawu SDK języka Python Azure Machine Learning w skrypcie języka Python, aby rejestrować arbitralne metryki. Po uruchomieniu Zbadaj metryki, aby określić, czy przebieg został utworzony przez model, który chcesz wdrożyć.
 
-### <a name="ml-pipelines"></a>Potoki ML
+### <a name="ml-pipelines"></a>Potokach uczenia Maszynowego
 
-Potoki uczenia maszynowego umożliwiają tworzenie przepływów pracy, które łączą etapy uczenia maszynowego, oraz zarządzanie nimi. Na przykład potok może obejmować przygotowanie danych, szkolenie modeli, wdrożenie modelu i etapy wnioskowania/oceniania. Każda faza może obejmować wiele kroków, z których każdy może działać bez nadzoru w różnych obiektach docelowych obliczeń. 
+Potoki uczenia maszynowego umożliwiają tworzenie przepływów pracy, które łączą etapy uczenia maszynowego, oraz zarządzanie nimi. Na przykład potok może obejmować przygotowanie danych, szkolenie modeli, wdrożenie modelu i etapy wnioskowania/oceniania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń. 
 
 Kroki potoku są wielokrotnego użytku i można je uruchomić bez ponownego uruchomienia kolejnych kroków, jeśli dane wyjściowe tego kroku nie uległy zmianie. Na przykład możesz ponownie przeprowadzić uczenie modelu bez ponownego uruchamiania kosztownych kroków przygotowywania danych, jeśli dane nie uległy zmianie. Potoki umożliwiają również analitykom danych współpracę podczas pracy nad osobnymi obszarami przepływu pracy uczenia maszynowego.
 
@@ -176,9 +176,9 @@ Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą
 
 ### <a name="models"></a>Modele
 
-W najprostszej postaci model to fragment kodu, który pobiera dane wejściowe i generuje dane wyjściowe. Tworzenie modelu uczenia maszynowego obejmuje wybranie algorytmu, dostarczenie go z danymi i dostrajanie parametrów. Uczenie to proces iteracyjny, który tworzy szkolony model, który hermetyzuje model, który jest uzyskiwany przez proces szkolenia.
+W najprostszym modelem jest fragmentem kodu, który przyjmuje dane wejściowe i generuje dane wyjściowe. Tworzenie modelu uczenia maszynowego obejmuje algorytmu, wybierając dostarczanie danych i dostosowywanie hiperparametrów. Szkolenie jest procesem iteracyjnym, tworzącego trenowanego modelu, który hermetyzuje, jakie zakorzenione podczas procesu uczenia modelu.
 
-Model jest tworzony przez uruchomienie w Azure Machine Learning. Można również użyć modelu, który jest przeszkolony poza Azure Machine Learning. Model można zarejestrować w obszarze roboczym Azure Machine Learning.
+Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Można również użyć modelu, który jest przeszkolony poza Azure Machine Learning. Model można zarejestrować w obszarze roboczym Azure Machine Learning.
 
 Azure Machine Learning to struktura niezależny od. Podczas tworzenia modelu można użyć dowolnej popularnej platformy uczenia maszynowego, takiej jak Scikit-Learning, XGBoost, PyTorch, TensorFlow i łańcucha.
 
@@ -186,7 +186,7 @@ Aby zapoznać się z przykładem szkoleń dotyczących modelu przy użyciu Sciki
 
 **Rejestr modelu** śledzi wszystkie modele w obszarze roboczym Azure Machine Learning.
 
-Modele są identyfikowane według nazwy i wersji. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie jak istniejący, rejestr założono, że jest to nowa wersja. Wersja jest zwiększana, a nowy model jest zarejestrowany pod tą samą nazwą.
+Modele są identyfikowane przez nazwę i wersję. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie jak istniejący, rejestr założono, że jest to nowa wersja. Wersja jest zwiększana, a nowy model jest zarejestrowany pod tą samą nazwą.
 
 Po zarejestrowaniu modelu można podać dodatkowe Tagi metadanych, a następnie użyć tagów podczas wyszukiwania modeli.
 
@@ -204,9 +204,9 @@ Uruchomienie to pojedyncze wykonanie skryptu szkoleniowego. Azure Machine Learni
 * Metadane dotyczące przebiegu (Sygnatura czasowa, czas trwania itd.)
 * Metryki rejestrowane przez skrypt
 * Pliki wyjściowe, które są zbierane przez eksperyment lub jawnie przekazane przez użytkownika
-* Migawka katalogu zawierającego skrypty przed uruchomieniem
+* Migawka katalogu, który zawiera skrypty, przed przebiegu
 
-Podczas przesyłania skryptu w celu uczenia modelu należy utworzyć przebieg. Uruchomienie może mieć zero lub więcej uruchomień podrzędnych. Na przykład uruchomienie najwyższego poziomu może mieć dwa uruchomienia podrzędne, z których każdy może mieć własne uruchomienie podrzędne.
+Podczas przesyłania skryptu w celu uczenia modelu należy utworzyć przebieg. Uruchom może mieć zero lub więcej uruchomień podrzędnych. Na przykład uruchomienie najwyższego poziomu może mieć dwa uruchomienia podrzędne, z których każdy może mieć własne uruchomienie podrzędne.
 
 ### <a name="run-configurations"></a>Uruchom konfiguracje
 
@@ -217,14 +217,14 @@ Konfigurację przebiegu można utrwalić do pliku znajdującego się w katalogu,
 Na przykład Uruchom konfiguracje, zobacz [Wybieranie i używanie elementu docelowego obliczeń do uczenia modelu](how-to-set-up-training-targets.md).
 ### <a name="snapshots"></a>Migawki
 
-W przypadku przesyłania przebiegu Azure Machine Learning kompresuje katalog zawierający skrypt jako plik zip i wysyła go do obiektu docelowego obliczeń. Następnie plik zip zostanie wyodrębniony, a skrypt zostanie uruchomiony w tym miejscu. Azure Machine Learning również zapisuje plik zip jako migawkę w ramach rekordu uruchomieniowego. Każda osoba mająca dostęp do obszaru roboczego może przeglądać rekord uruchomienia i pobrać migawkę.
+W przypadku przesyłania przebiegu Azure Machine Learning kompresuje katalog zawierający skrypt jako plik zip i wysyła go do obiektu docelowego obliczeń. Następnie plik zip zostanie wyodrębniony, a skrypt zostanie uruchomiony w tym miejscu. Usługa Azure Machine Learning są także przechowywane w pliku zip jako migawka jako część rekordu uruchomienia. Każda osoba mająca dostęp do obszaru roboczego można przeglądać rekordu uruchomienia i pobrać migawki.
 
 > [!NOTE]
 > Aby zapobiec dołączeniu niepotrzebnych plików do migawki, należy wykonać ignorowanie pliku (. gitignore lub. amlignore). Umieść ten plik w katalogu migawek i Dodaj do niego nazwy plików. Plik. amlignore używa tej samej [składni i wzorców co plik. gitignore](https://git-scm.com/docs/gitignore). Jeśli istnieją oba pliki, plik. amlignore ma pierwszeństwo.
 
-### <a name="training-scripts"></a>Skrypty szkoleniowe
+### <a name="training-scripts"></a>Skryptów szkolenia
 
-Aby szkolić model, należy określić katalog zawierający skrypt szkoleniowy i skojarzone pliki. Należy również określić nazwę eksperymentu, która jest używana do przechowywania informacji zebranych podczas szkolenia. Podczas szkolenia cały katalog jest kopiowany do środowiska szkoleniowego (elementu docelowego obliczeń), a skrypt określony przez konfigurację uruchamiania jest uruchamiany. Migawka katalogu jest również przechowywana w ramach eksperymentu w obszarze roboczym.
+Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia i skojarzone pliki. Należy również określić nazwę eksperymentu, która jest używana do przechowywania informacji zebranych podczas szkolenia. Podczas szkolenia cały katalog jest kopiowany do środowiska szkoleniowego (elementu docelowego obliczeń), a skrypt określony przez konfigurację uruchamiania jest uruchamiany. Migawka katalogu znajduje się również w obszarze eksperymentu, w obszarze roboczym.
 
 Aby zapoznać się z przykładem, zobacz [Samouczek: uczenie modelu klasyfikacji obrazów przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
 
@@ -237,5 +237,5 @@ Aby zapoznać się z przykładem, zobacz [Samouczek: uczenie modelu klasyfikacji
 Aby rozpocząć pracę z Azure Machine Learning, zobacz:
 
 * [Co to jest Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md)
+* [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md)
 * [Samouczek (część 1): uczenie modelu](tutorial-train-models-with-aml.md)

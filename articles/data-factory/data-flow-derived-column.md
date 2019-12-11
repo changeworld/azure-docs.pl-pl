@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: ce774868acc281f769e7f2991472e7d2a5da9739
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930392"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972255"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformacja kolumn pochodnych w mapowaniu przepływu danych
 
@@ -27,6 +27,16 @@ Aby zastąpić istniejącą kolumnę, wybierz ją za pomocą listy rozwijanej ko
 Aby dodać dodatkowe kolumny pochodne, umieść kursor na istniejącej kolumnie pochodnej i kliknij ikonę znaku plus. Wybierz opcję **Dodaj kolumnę** lub **Dodaj wzorzec kolumny**. Wzorce kolumn mogą być przydatne, jeśli nazwy kolumn są zmienne ze źródeł. Aby uzyskać więcej informacji, zobacz [wzorce kolumn](concepts-data-flow-column-pattern.md).
 
 ![Nowy wybór kolumny pochodnej](media/data-flow/columnpattern.png "Nowy wybór kolumny pochodnej")
+
+## <a name="build-schemas-in-output-schema-pane"></a>Kompiluj schematy w okienku schematu danych wyjściowych
+
+Kolumny modyfikowane i dodawane do schematu są wyświetlane w okienku schematu danych wyjściowych. W tym miejscu możesz interaktywnie kompilować proste i złożone struktury danych. Aby dodać dodatkowe pola, wybierz pozycję **Dodaj kolumnę**. Aby utworzyć hierarchie, wybierz pozycję **Dodaj podkolumnę**.
+
+![Dodaj podkolumnę](media/data-flow/addsubcolumn.png "Dodaj podkolumnę")
+
+Aby uzyskać więcej informacji na temat obsługi typów złożonych w przepływie danych, zobacz [Obsługa JSON w mapowaniu przepływu danych](concepts-data-flow-json.md)
+
+![Dodawanie złożonej kolumny](media/data-flow/complexcolumn.png "Dodawanie kolumn")
 
 ## <a name="data-flow-script"></a>Skrypt przepływu danych
 

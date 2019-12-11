@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84b7f56ebcbb87a31fbfb85ea6d88c3388870872
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824349"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975996"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Wprowadzenie do Azure Machine Learning dla Visual Studio Code
 
@@ -94,8 +94,8 @@ Aby zmodyfikować projekt w taki sposób, aby platforma Azure mogła mieć świa
     import azureml
     from azureml.core import Run
 
-    # access the Azure ML run
-    # init run param to check if running within AML
+    # Access the Azure ML run
+    # Init run param to check if running within AML
     def get_AMLRun():
         try:
             run = Run.get_submitted_run()
@@ -128,7 +128,7 @@ Aby zmodyfikować projekt w taki sposób, aby platforma Azure mogła mieć świa
     ...
             acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
 
-            # log accuracies to AML logger if using AML
+            # Log accuracies to AML logger if using AML
             if run != None:
                 run.log('Validation Accuracy', np.float(acc_val))
                 run.log('Training Accuracy', np.float(acc_train))
@@ -137,14 +137,14 @@ Aby zmodyfikować projekt w taki sposób, aby platforma Azure mogła mieć świa
     ...
     ```
 ### <a name="run-the-script-in-azure"></a>Uruchamianie skryptu na platformie Azure
-Gotowe. Teraz po prostu Użyj rozszerzenia, aby uruchomić skrypt w chmurze! Należy zauważyć, że następujące instruktażowe wideo pobierają postanowienie dotyczące kompresowania czasu potrzebnego do utworzenia nowego obszaru roboczego usługi Azure ML i obliczeń, jak również czasu potrzebnego do uruchomienia skryptu szkoleniowego.
+Gotowe. Teraz po prostu Użyj rozszerzenia, aby uruchomić skrypt w chmurze! Należy zauważyć, że następujące instruktażowe wideo pobierają pewne kwestie związane z kompresowaniem czasu potrzebnego do utworzenia nowego obszaru roboczego Azure Machine Learning i obliczeń, a także czasu potrzebnego na uruchomienie skryptu szkoleniowego.
 
    [![uruchomić eksperyment z platformą Azure ML](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
 
 Po kliknięciu przycisku Uruchom eksperyment należy odpowiedzieć na pytania w następujący sposób:
 
-1. Wybieranie Twojej subskrypcji platformy Azure
-1. Wybierz, aby utworzyć *Nowy* obszar roboczy usługi Azure ml
+1. Wybierz subskrypcję platformy Azure.
+1. Wybierz opcję utworzenia *nowego* obszaru roboczego Azure Machine Learning.
 1. Wybierz zestaw wstępnie skonfigurowanych szablonów, aby zainicjować środowisko Python dla przebiegów. Szablony udostępniają punkt początkowy oraz ustawienia dołączania dla:
     1. **PyTorch**, **TensorFlow**lub **Scikit — uczenie się**
     1. Szkolenie dotyczące **pojedynczych** lub **rozproszonych** obliczeń
@@ -155,7 +155,7 @@ Po kliknięciu przycisku Uruchom eksperyment należy odpowiedzieć na pytania w 
 
     [Uczenie ![w chmurze](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
 
-W ciągu kilku sekund otrzymasz powiadomienie o tym, że eksperyment został przesłany na platformę Azure, w którym można wyświetlić postęp w programie Azure Machine Learning Studio, klikając link **Wyświetl uruchomienie eksperymentu** w powiadomieniu vs Code lub wewnątrz vs Code przez po naciśnięciu przycisku Odśwież na karcie Azure.
+W ciągu kilku sekund otrzymasz powiadomienie o tym, że eksperyment został przesłany na platformę Azure, w którym można wyświetlić postęp w programie Azure Machine Learning Studio, klikając link **Wyświetl uruchomienie eksperymentu** w powiadomieniu vs Code lub wewnątrz vs Code, naciskając przycisk Odśwież na karcie Azure.
 
 W tej chwili wyświetlanie metryk przebiegu jest obsługiwane tylko w programie Studio. Link **Obejrzyj uruchomienie eksperymentu** wymieniony powyżej spowoduje przejście do przebiegu, w którym zostaną wyświetlone zarejestrowane metryki.
 [![przebiegu eksperymentu w portalu](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
@@ -195,7 +195,7 @@ Co najmniej jedno eksperymenty można utworzyć w obszarze roboczym, aby śledzi
     [![utworzyć eksperyment](./media/vscode-tools-for-ai/create-experiment.gif)](./media/vscode-tools-for-ai/create-experiment.gif#lightbox)
 
 
-### <a name="create-and-manage-compute-targets"></a>Tworzenie docelowych elementów obliczeniowych i zarządzanie nimi
+### <a name="create-and-manage-compute-targets"></a>Tworzenie i zarządzanie nimi obliczeniowych elementów docelowych
 
 Za pomocą Azure Machine Learning dla Visual Studio Code można przygotować swoje dane, przeszkolić modele i wdrożyć je lokalnie i na zdalnych celach obliczeniowych.
 
@@ -209,7 +209,7 @@ Aby utworzyć obiekt docelowy obliczeń:
 
 1. W widoku drzewa rozwiń swoją subskrypcję platformy Azure i obszar roboczy Azure Machine Learning.
 
-1. W obszarze roboczym kliknij prawym przyciskiem myszy węzeł **obliczeniowy** , a następnie wybierz pozycję **Utwórz obliczenia**.
+1. W węźle obszaru roboczego kliknij prawym przyciskiem myszy **obliczenia** węzeł i wybierz polecenie **Tworzenie obliczeń**.
 
 1. Wybierz typ docelowy obliczeń z listy.
 
@@ -235,7 +235,7 @@ Oto przykład sposobu tworzenia konfiguracji uruchamiania dla AmlCompute utworzo
 
 Aby można było uruchamiać eksperymenty z platformą Azure ML na komputerze lokalnym, jest nadal wymagany plik konfiguracji uruchomieniowej. Podczas tworzenia konfiguracji lokalnego uruchomienia środowisko Python zostanie domyślnie użyte w ścieżce do interpretera, który został ustawiony w VS Code.
 
-### <a name="train-and-tune-models"></a>Uczenie i dostrajanie modeli
+### <a name="train-and-tune-models"></a>Szkolenie i dostrajanie modeli
 
 Za pomocą rozszerzenia usługi Azure ML dla VS Code istnieje wiele sposobów uruchamiania skryptu szkoleniowego w eksperymentie.
 
@@ -252,7 +252,7 @@ Aby uruchomić eksperyment Azure Machine Learning:
 
 1. W obszarze węzła obszaru roboczego rozwiń węzeł **eksperymenty** , a następnie kliknij prawym przyciskiem myszy eksperyment, który chcesz uruchomić.
 
-1. Wybierz pozycję **Uruchom eksperyment**.
+1. Wybierz **uruchamiania eksperymentu**.
 
 1. Wybierz nazwę pliku języka Python, który chcesz uruchomić, aby szkolić model i naciśnij klawisz ENTER w celu przesłania przebiegu. Uwaga: wybrany plik musi znajdować się w folderze, który jest obecnie otwarty w VS Code.
 
@@ -262,7 +262,7 @@ Oto przykład sposobu uruchamiania eksperymentu w przypadku obliczeń utworzonyc
 
 [![uruchomić eksperyment lokalnie](./media/vscode-tools-for-ai/run-experiment.gif)](./media/vscode-tools-for-ai/run-experiment.gif#lightbox)
 
-### <a name="deploy-and-manage-models"></a>Wdrażanie modeli i zarządzanie nimi
+### <a name="deploy-and-manage-models"></a>Wdrażanie modeli i zarządzania nimi
 W Azure Machine Learning można wdrożyć modele uczenia maszynowego i zarządzać nimi w chmurze i na krawędzi.
 
 #### <a name="register-your-model-to-azure-machine-learning-from-visual-studio-code"></a>Zarejestruj model, aby Azure Machine Learning z Visual Studio Code
@@ -275,13 +275,13 @@ Aby zarejestrować model:
 
 1. W widoku drzewa rozwiń swoją subskrypcję platformy Azure i obszar roboczy Azure Machine Learning.
 
-1. W obszarze węzła obszaru roboczego kliknij prawym przyciskiem myszy pozycję **modele** i wybierz polecenie **zarejestruj model**.
+1. W węźle obszaru roboczego kliknij prawym przyciskiem myszy **modeli** i wybierz polecenie **zarejestrować Model**.
 
 1. W palecie poleceń w polu Wprowadź nazwę modelu.
 
 1. Z listy wybierz, czy chcesz przekazać **plik modelu** (dla pojedynczych modeli) czy **folder modelu** (dla modeli z wieloma plikami, takimi jak TensorFlow).
 
-1. Wybierz folder lub plik.
+1. Wybieranie pliku lub folderu.
 
 1. Po zakończeniu konfigurowania właściwości modelu w prawym dolnym rogu okna wybierz pozycję **Prześlij**.
 
@@ -304,7 +304,7 @@ Aby wdrożyć usługę sieci Web:
 
 1. W widoku drzewa rozwiń swoją subskrypcję platformy Azure i obszar roboczy Azure Machine Learning.
 
-1. W węźle obszar roboczy rozwiń węzeł **modele** .
+1. W obszarze węzła obszaru roboczego, należy rozwinąć **modeli** węzła.
 
 1. Kliknij prawym przyciskiem myszy Model, który chcesz wdrożyć, a następnie wybierz polecenie **Wdróż usługę z zarejestrowanego modelu** z menu kontekstowego.
 
@@ -318,7 +318,7 @@ Aby wdrożyć usługę sieci Web:
 
 1. Po zakończeniu konfigurowania właściwości usługi w prawym dolnym rogu okna wybierz pozycję **Prześlij** do wdrożenia. W pliku właściwości usługi można określić lokalny plik platformy Docker lub plik Schema. JSON.
 
-Usługa sieci Web jest teraz wdrożona.
+Teraz jest wdrożona usługa sieci web.
 
 Oto przykład sposobu wdrażania usługi sieci Web:
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a56096ffa760bcddd6bd423d1262e57dc1db3e3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420071"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973564"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą Azure Machine Learning
 
@@ -72,7 +72,7 @@ Przekonwertowanie modelu na [otwarty program neuronowych Network Exchange](https
 
 Aby uzyskać więcej informacji na temat ONNX z Azure Machine Learning, zobacz artykuł [Tworzenie i przyspieszenie modeli ml](concept-onnx.md) .
 
-### <a name="use-models"></a>Używaj modeli
+### <a name="use-models"></a>Używanie modeli
 
 Przeszkolone modele uczenia maszynowego są wdrażane jako usługi sieci Web w chmurze lub lokalnie. Możesz również wdrażać modele na Azure IoT Edge urządzeniach. Wdrożenia używają macierzy procesora CPU, procesora GPU lub programowalnych pól (FPGA) dla inferencing. Można również używać modeli z Power BI.
 
@@ -116,10 +116,9 @@ Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli](how-to-deploy-and-wh
 
 Firma Microsoft Power BI obsługuje używanie modeli uczenia maszynowego na potrzeby analizy danych. Aby uzyskać więcej informacji, zobacz [Azure Machine Learning Integration w Power BI (wersja zapoznawcza)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Przechwyć dane ładu wymagane do przechwycenia kompleksowego cyklu życia ML
 
-Usługa Azure ML oferuje możliwość śledzenia kompleksowego dziennika inspekcji wszystkich zasobów w sieci. Są to:
+Usługa Azure ML oferuje możliwość śledzenia kompleksowego dziennika inspekcji wszystkich zasobów w sieci. W szczególności:
 
 - Platforma Azure ML [integruje się z usługą git](how-to-set-up-training-targets.md#gitintegration) , aby śledzić informacje o repozytorium/rozgałęzieniu/Zatwierdź swój kod.
 - [Zestawy danych usługi Azure ml](how-to-create-register-datasets.md) ułatwiają śledzenie, profilowanie i przechowywanie wersji. 
@@ -129,6 +128,7 @@ Usługa Azure ML oferuje możliwość śledzenia kompleksowego dziennika inspekc
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Powiadamianie, Automatyzowanie i wyzwalanie alertów dotyczących zdarzeń w cyklu życia w ML
 Usługa Azure ML publikuje kluczowe zdarzenia w usłudze Azure EventGrid, które mogą służyć do powiadamiania i automatyzowania zdarzeń w cyklu życia w ML. Aby uzyskać więcej informacji, zobacz [ten dokument](how-to-use-event-grid.md).
 
+
 ## <a name="monitor-for-operational--ml-issues"></a>Monitoruj problemy dotyczące operacyjnego & ML
 
 Monitorowanie pozwala zrozumieć, jakie dane są wysyłane do modelu, oraz przewidywane, które zwraca.
@@ -136,7 +136,6 @@ Monitorowanie pozwala zrozumieć, jakie dane są wysyłane do modelu, oraz przew
 Te informacje ułatwiają zrozumienie sposobu korzystania z modelu. Zebrane dane wejściowe mogą być również przydatne w przypadku szkoleń w przyszłych wersjach modelu.
 
 Aby uzyskać więcej informacji, zobacz [jak włączyć zbieranie danych modelu](how-to-enable-data-collection.md).
-
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatyzowanie cyklu życia ML 
 

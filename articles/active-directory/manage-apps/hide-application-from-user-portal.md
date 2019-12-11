@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/26/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be29f51771e24c67a8cd99a81e6a69be830dacb8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274004"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970639"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Ukryj aplikacje przed użytkownikami końcowymi w Azure Active Directory
 
@@ -40,8 +40,21 @@ Wykonaj następujące kroki, aby ukryć aplikację z poziomu panelu aplikacje i 
 5.  Wyszukaj aplikację, którą chcesz ukryć, a następnie kliknij aplikację.  Zostanie otwarta przegląd aplikacji.
 6.  Kliknij pozycję **Właściwości**. 
 7.  W przypadku pytania **widoczny dla użytkowników** kliknij przycisk **nie**.
-8.  Kliknij pozycję **Zapisz**.
+8.  Kliknij przycisk **Save** (Zapisz).
 
+## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Ukrywanie aplikacji przy użyciu programu Azure AD PowerShell
+
+Aby ukryć aplikację z poziomu panelu Moje aplikacje, można ręcznie dodać tag HideApp do nazwy głównej usługi dla aplikacji. Uruchom następujące polecenia [programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) w programie AzureAD, aby ustawić **widoczność aplikacji dla użytkowników?** wartość **nie**. 
+
+```PowerShell
+Connect-AzureAD
+
+$objectId = "<objectId>"
+$servicePrincipal = Get-AzureADServicePrincipal -ObjectId $objectId
+$tags = $servicePrincipal.tags
+$tags.Add("HideApp")
+Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
+```
 
 ## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Ukrywanie aplikacji pakietu Office 365 z poziomu panelu Moje aplikacje
 
@@ -52,8 +65,7 @@ Wykonaj następujące kroki, aby ukryć wszystkie aplikacje pakietu Office 365 z
 3.  Wybierz pozycję **Ustawienia użytkownika**.
 4.  W obszarze **aplikacje dla przedsiębiorstw**kliknij pozycję **Zarządzaj sposobem uruchamiania i wyświetlania aplikacji przez użytkowników końcowych.**
 5.  Aby **użytkownicy mogli zobaczyć tylko aplikacje pakietu office 365 w portalu pakietu office 365**, kliknij przycisk **tak**.
-6.  Kliknij pozycję **Zapisz**.
-
+6.  Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="next-steps"></a>Następne kroki
 * [Zobacz wszystkie moje grupy](../fundamentals/active-directory-groups-view-azure-portal.md)

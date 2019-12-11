@@ -1,17 +1,17 @@
 ---
-title: Reguły zapory w Azure Database for PostgreSQL-Citus
+title: Reguły zapory-skalowanie (Citus) — Azure Database for PostgreSQL
 description: W tym artykule opisano reguły zapory dla Azure Database for PostgreSQL-Citus.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273739"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975571"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Reguły zapory w Azure Database for PostgreSQL-Citus
 Zapora serwera Azure Database for PostgreSQL zapobiega wszystkim dostępowi do węzła koordynatora w skali (Citus) do momentu określenia komputerów, które mają uprawnienia. Zapora przyznaje dostęp do serwera na podstawie źródłowego adresu IP każdego żądania.
@@ -31,7 +31,7 @@ Zapora grupy serwerów ze skalą (Citus) kontroluje, kto może połączyć się 
 
 Gdy Zapora blokuje połączenia, może spowodować błędy aplikacji. Na przykład za pomocą sterownika PostgreSQL JDBC wywołuje błąd podobny do tego:
 
-> Java. util. współbieżne. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: Błąd krytyczny:\_brak wpisu HBA. conf dla hosta "123.45.67.890", użytkownika "Citus", bazy danych "Citus", SSL
+> Java. util. współbieżne. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: KRYTYCZNy: brak PG\_HBA. conf wpis dla hosta "123.45.67.890", użytkownika "Citus", baza danych "Citus", SSL
 
 Aby dowiedzieć się, jak są zdefiniowane reguły, zobacz [Tworzenie reguł zapory i zarządzanie nimi](howto-hyperscale-manage-firewall-using-portal.md) .
 
@@ -43,9 +43,9 @@ Gdy dostęp do usługi Microsoft Azure Database for PostgreSQL-Citus) nie zachow
 * **Użytkownik nie ma autoryzacji lub użyto nieprawidłowego hasła:** Jeśli użytkownik nie ma uprawnień na serwerze lub użyte hasło jest nieprawidłowe, nastąpiło odmowa połączenia z serwerem. Utworzenie ustawienia zapory zapewnia klientom możliwość próby nawiązania połączenia z serwerem; Każdy klient musi nadal podawać niezbędne poświadczenia zabezpieczeń.
 
 Na przykład przy użyciu klienta JDBC może pojawić się następujący błąd.
-> Java. util. współbieżne. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: Błąd krytyczny: uwierzytelnianie hasła użytkownika "yourUserName" nie powiodło się
+> Java. util. współbieżne. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: KRYTYCZNy: uwierzytelnianie hasła dla użytkownika "yourUserName" nie powiodło się
 
-* **Dynamiczny adres IP:** Jeśli masz połączenie internetowe z dynamicznym adresem IP i masz problemy z uzyskaniem przez zaporę, możesz wypróbować jedno z następujących rozwiązań:
+* **Dynamiczny adres IP:** jeśli używane jest połączenie internetowe za pomocą dynamicznego adresowania IP i występują problemy z przejściem przez zaporę, można wypróbować jedno z poniższych rozwiązań:
 
 * Poproszenie usługodawcy internetowego (ISP) o zakres adresów IP przypisany do komputerów klienckich, które uzyskują dostęp do węzła koordynatora ze skalowaniem (Citus), a następnie Dodaj zakres adresów IP jako regułę zapory.
 

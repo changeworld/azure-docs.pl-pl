@@ -4,12 +4,12 @@ description: Poznaj Azure Functions koncepcje i techniki, które są potrzebne d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226659"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974227"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów Azure Functions
 W Azure Functions określone funkcje udostępniają kilka podstawowych pojęć i składników technicznych, niezależnie od używanego języka lub powiązania. Przed przejściem do szczegółów szczegółowych informacji dotyczących danego języka lub powiązania należy zapoznać się z tym omówieniem, który ma zastosowanie do wszystkich z nich.
@@ -42,9 +42,9 @@ Właściwość `bindings` służy do konfigurowania wyzwalaczy i powiązań. Ka�
 
 | Właściwość | Wartości/typy | Komentarze |
 | --- | --- | --- |
-| `type` |ciąg |Typ powiązania. Na przykład `queueTrigger`. |
+| `type` |string |Typ powiązania. Na przykład `queueTrigger`. |
 | `direction` |"in", "out" |Wskazuje, czy powiązanie służy do otrzymywania danych do funkcji, czy wysyłania danych z funkcji. |
-| `name` |ciąg |Nazwa, która jest używana dla powiązanych danych w funkcji. Dla C#, jest to nazwa argumentu; w przypadku języka JavaScript jest to klucz na liście kluczy/wartości. |
+| `name` |string |Nazwa, która jest używana dla powiązanych danych w funkcji. Dla C#, jest to nazwa argumentu; w przypadku języka JavaScript jest to klucz na liście kluczy/wartości. |
 
 ## <a name="function-app"></a>Aplikacja funkcji
 Aplikacja funkcji udostępnia kontekst wykonywania na platformie Azure, w którym działają funkcje. W związku z tym jest to jednostka wdrażania i zarządzania dla swoich funkcji. Aplikacja funkcji składa się z co najmniej jednej konkretnej funkcji, która jest zarządzana, wdrażana i skalowana ze sobą. Wszystkie funkcje w aplikacji funkcji mają ten sam plan cenowy, metodę wdrażania i wersję środowiska uruchomieniowego. Zastanów się nad aplikacją funkcji, aby zorganizować i wspólnie zarządzać funkcjami. Aby dowiedzieć się więcej, zobacz [jak zarządzać aplikacją funkcji](functions-how-to-use-azure-function-app-settings.md). 
@@ -73,7 +73,7 @@ Gdy wielokrotne zdarzenia wyzwalające są wykonywane szybciej niż środowisko 
 
 ## <a name="functions-runtime-versioning"></a>Przechowywanie wersji środowiska uruchomieniowego funkcji
 
-Wersję środowiska uruchomieniowego funkcji można skonfigurować przy użyciu ustawienia aplikacji `FUNCTIONS_EXTENSION_VERSION`. Na przykład wartość "~ 2" wskazuje, że aplikacja funkcji będzie używać 2. x jako wersji głównej. Aplikacje funkcji są uaktualniane do każdej nowej wersji pomocniczej po ich wydaniu. Aby uzyskać więcej informacji, w tym o sposobie wyświetlania dokładnej wersji aplikacji funkcji, zobacz [jak dowiedzieć się, jak kierować Azure Functions wersje środowiska uruchomieniowego](set-runtime-version.md).
+Wersję środowiska uruchomieniowego funkcji można skonfigurować przy użyciu ustawienia aplikacji `FUNCTIONS_EXTENSION_VERSION`. Na przykład wartość "~ 3" wskazuje, że aplikacja funkcji będzie używać 3. x jako wersji głównej. Aplikacje funkcji są uaktualniane do każdej nowej wersji pomocniczej po ich wydaniu. Aby uzyskać więcej informacji, w tym o sposobie wyświetlania dokładnej wersji aplikacji funkcji, zobacz [jak dowiedzieć się, jak kierować Azure Functions wersje środowiska uruchomieniowego](set-runtime-version.md).
 
 ## <a name="repositories"></a>Repozytoria
 Kod dla Azure Functions jest otwartym źródłem i przechowywany w repozytoriach usługi GitHub:
@@ -82,8 +82,8 @@ Kod dla Azure Functions jest otwartym źródłem i przechowywany w repozytoriach
 * [Host Azure Functions](https://github.com/Azure/azure-functions-host/)
 * [Portal Azure Functions](https://github.com/azure/azure-functions-ux)
 * [Szablony Azure Functions](https://github.com/azure/azure-functions-templates)
-* [Zestaw SDK Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/)
-* [Rozszerzenia zestawu SDK Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk-extensions/)
+* [Zestaw SDK usługi Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/)
+* [Rozszerzenia zestawu SDK usługi Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## <a name="bindings"></a>Powiązania
 Oto tabela wszystkich obsługiwanych powiązań.

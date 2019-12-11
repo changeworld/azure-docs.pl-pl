@@ -3,23 +3,23 @@ title: Dokumentacja pliku host. JSON dla Azure Functions 2. x
 description: Dokumentacja referencyjna dotycząca pliku Azure Functions hosta. JSON z użyciem środowiska uruchomieniowego v2.
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323075"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975452"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x  
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x i nowszych 
 
 > [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-host-json-v1.md)
 > * [Wersja 2](functions-host-json.md)
 
-Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono ustawienia, które są dostępne dla środowiska uruchomieniowego w wersji 2.  
+Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono dostępne ustawienia zaczynające się od wersji 2. x środowiska uruchomieniowego Azure Functions.  
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla Azure Functions 2. x.  Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
+> Ten artykuł jest przeznaczony dla Azure Functions 2. x i nowszych.  Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
 
 Inne opcje konfiguracji aplikacji funkcji są zarządzane w [ustawieniach aplikacji](functions-app-settings.md).
 
@@ -141,7 +141,7 @@ Zestawy rozszerzeń umożliwiają dodawanie zgodnego zestawu funkcji powiązania
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="functions"></a>— funkcje
+## <a name="functions"></a>functions
 
 Lista funkcji uruchomionych przez hosta zadań. Pusta tablica oznacza uruchamianie wszystkich funkcji. Przeznaczone do użytku tylko w przypadku [uruchamiania lokalnego](functions-run-local.md). W aplikacjach funkcji na platformie Azure zamiast tego należy wykonać kroki opisane w temacie [Jak wyłączyć funkcje w Azure Functions](disable-function.md) , aby wyłączyć określone funkcje zamiast używać tego ustawienia.
 
@@ -183,7 +183,7 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|dostępny|true|Określa, czy funkcja jest włączona. | 
+|enabled|true|Określa, czy funkcja jest włączona. | 
 |healthCheckInterval|10 sekund|Przedział czasu między okresowymi kontrolami kondycji w tle. | 
 |healthCheckWindow|2 minuty|Przedział czasu, który jest używany w połączeniu z ustawieniem `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maksymalna liczba przypadków, w których Sprawdzenie kondycji może zakończyć się niepowodzeniem przed zainicjowaniem odtwarzania hosta.| 
@@ -193,7 +193,7 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 
 Ustawienia konfiguracji można znaleźć w tematach [wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>rejestrować
+## <a name="logging"></a>rejestrowanie
 
 Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 
@@ -216,9 +216,9 @@ Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Określa, jaki poziom rejestrowania plików jest włączony.  Dostępne są `never`, `always`, `debugOnly`. |
-|logLevel|Nie dotyczy|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. Wersja 2. x jest zgodna z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
-|console|Nie dotyczy| Ustawienie rejestrowania [konsoli](#console) . |
-|applicationInsights|Nie dotyczy| Ustawienie [applicationInsights](#applicationinsights) . |
+|logLevel|nd.|Obiekt, który definiuje filtrowanie kategorii dzienników dla funkcji w aplikacji. W wersji 2. x i nowszych postępuj zgodnie z układem ASP.NET Core dla filtrowania kategorii dzienników. Pozwala to na filtrowanie rejestrowania dla określonych funkcji. Aby uzyskać więcej informacji, zobacz [filtrowanie dzienników](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) w dokumentacji ASP.NET Core. |
+|console|nd.| [console](#console) ustawień rejestrowania. |
+|applicationInsights|nd.| Ustawienie [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -252,7 +252,7 @@ Zależność zarządzana to funkcja, która jest obecnie obsługiwana tylko w pr
 }
 ```
 
-## <a name="queues"></a>tworzone
+## <a name="queues"></a>kolejki
 
 Ustawienia konfiguracji można znaleźć w temacie [wyzwalacze i powiązania kolejki magazynu](functions-bindings-storage-queue.md#host-json).  
 
@@ -286,7 +286,7 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 |listenerLockPeriod|00:01:00|Okres, w którym są wykonywane blokady odbiornika.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Przedział czasu używany do odzyskiwania blokady odbiornika, jeśli nie można uzyskać blokady odbiornika podczas uruchamiania.| 
 |lockAcquisitionTimeout|00:01:00|Maksymalny czas, przez jaki środowisko uruchomieniowe podejmie próbę uzyskania blokady.| 
-|lockAcquisitionPollingInterval|Nie dotyczy|Interwał między kolejnymi próbami przejęcia blokady.| 
+|lockAcquisitionPollingInterval|nd.|Interwał między kolejnymi próbami przejęcia blokady.| 
 
 ## <a name="version"></a>version
 

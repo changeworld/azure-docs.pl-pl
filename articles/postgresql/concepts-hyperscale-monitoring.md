@@ -1,17 +1,17 @@
 ---
-title: Monitorowanie i dostrajanie w Azure Database for PostgreSQL-Citus
+title: Monitorowanie i dostrajanie-skalowanie (Citus) — Azure Database for PostgreSQL
 description: W tym artykule opisano funkcje monitorowania i dostrajania w Azure Database for PostgreSQL-Citus
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6c9bf7a427c0d3d26c3accd1d0d7098413916993
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d2e9fcd6f6292c1da76e725e90deda4547b3682d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512693"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975520"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Monitorowanie i dostrajanie Azure Database for PostgreSQL-ze skalowaniem (Citus)
 
@@ -29,14 +29,14 @@ Te metryki są dostępne dla węzłów ze skalowaniem (Citus):
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Opis|
 |---|---|---|---|
-|active_connections|Aktywne połączenia|Licznik|Liczba aktywnych połączeń z serwerem.|
+|active_connections|Aktywne połączenia|Liczba|Liczba aktywnych połączeń z serwerem.|
 |cpu_percent|Procent użycia procesora CPU|Procent|Procent użycia procesora CPU.|
-|Wejścia|Liczba operacji we/wy na sekundę|Licznik|Zobacz [definicję IOPS](../virtual-machines/linux/premium-storage-performance.md#iops) i [przepływność w ramach skalowania](concepts-hyperscale-configuration-options.md)|
+|Wejścia|Operacje wejścia/wyjścia|Liczba|Zobacz [definicję IOPS](../virtual-machines/linux/premium-storage-performance.md#iops) i [przepływność w ramach skalowania](concepts-hyperscale-configuration-options.md)|
 |memory_percent|Procent pamięci|Procent|Procent używanej pamięci.|
-|network_bytes_ingress|Sieć — wejście|Szybkość|Sieć w ramach aktywnych połączeń.|
-|network_bytes_egress|Sieć — wyjście|Szybkość|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
+|network_bytes_ingress|Sieć — wejście|Bajty|Sieć w ramach aktywnych połączeń.|
+|network_bytes_egress|Sieć — wyjście|Bajty|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
 |storage_percent|Procent miejsca do magazynowania|Procent|Wartość procentowa używanej przestrzeni dyskowej poza maksymalną.|
-|storage_used|Użyty magazyn|Szybkość|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
+|storage_used|Użyty magazyn|Bajty|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
 
 Platforma Azure nie udostępnia zagregowanych metryk dla klastra jako całości, ale metryki dla wielu węzłów można umieścić na tym samym grafie.
 

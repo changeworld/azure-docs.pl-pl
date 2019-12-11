@@ -1,5 +1,5 @@
 ---
-title: Aplikacja internetowa, która loguje użytkowników (Konfiguracja kodu) — platforma tożsamości firmy Microsoft
+title: Konfigurowanie aplikacji sieci Web, która loguje się do użytkowników — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (Konfiguracja kodu)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b7032f8568cc944fb95d2e56a84a3d475c3994
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b077a71a541d29c9b93778babc096ea40c3b43cb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482741"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964875"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Aplikacja internetowa, która loguje użytkowników: Konfiguracja kodu
 
