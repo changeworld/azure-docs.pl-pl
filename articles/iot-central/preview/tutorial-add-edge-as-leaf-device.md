@@ -3,18 +3,18 @@ title: Dodawanie urządzenia Azure IoT Edge do usługi Azure IoT Central | Micro
 description: Jako operator Dodaj urządzenie Azure IoT Edge do aplikacji IoT Central platformy Azure
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f16db7ebff087b164228f2b23d6fa7ec302705bb
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e5d60c77e9bdc0733c12bca891eb6c3e33a1fceb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406343"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979074"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Samouczek: Dodawanie urządzenia Azure IoT Edge do aplikacji IoT Central platformy Azure
 
@@ -122,7 +122,7 @@ Edytuj plik IoT Edge config. YAML.
 
 Przewiń w dół i Skomentuj część parametrów połączenia w pliku YAML. 
 
-**Umożliwić**
+**Przed**
 
 ![Zrzut ekranu konsoli](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
 
@@ -132,11 +132,11 @@ Przewiń w dół i Skomentuj część parametrów połączenia w pliku YAML.
 
 Usuń komentarz do części klucza symetrycznego pliku YAML. 
 
-**Umożliwić**
+**Przed**
 
 ![Zrzut ekranu konsoli](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
 
-**Otrzyma**
+**Po**
 
 ![Zrzut ekranu konsoli](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
 

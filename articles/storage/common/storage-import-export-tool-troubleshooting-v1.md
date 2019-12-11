@@ -1,39 +1,39 @@
 ---
-title: Rozwiązywanie problemów z narzędziem Azure Import/Export | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o niektórych typowych problemów, które są widoczne podczas korzystania z narzędzia Import/Eksport Azure i jak je obsłużyć.
-author: muralikk
+title: Rozwiązywanie problemów z narzędziem Azure Import/Export | Microsoft Docs
+description: Poznaj niektóre typowe problemy występujące podczas korzystania z narzędzia Azure Import/Export oraz jak je obsługiwać.
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 9a4e47143515c7f9c21d701809c35d61853d91ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e463e1cdd340f852af46e39cca0dd9bfce7b8da
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320452"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978938"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Rozwiązywanie problemów z narzędziem Azure Import/Export
-Narzędzie importu/eksportu platformy Microsoft Azure zwraca komunikaty o błędach, jeśli działa problemy. Ten temat zawiera listę typowych problemów, które użytkownicy mogą uruchamiać w.  
+Narzędzie Microsoft Azure Import/Export zwraca komunikaty o błędach, jeśli występują problemy. W tym temacie wymieniono niektóre typowe problemy, które użytkownicy mogą uruchamiać.  
   
-## <a name="a-copy-session-fails-what-i-should-do"></a>Kopiowanie sesja nie powiedzie się, co należy zrobić?  
- Podczas sesji kopiowania zakończy się niepowodzeniem, dostępne są dwie opcje:  
+## <a name="a-copy-session-fails-what-i-should-do"></a>Sesja kopiowania kończy się niepowodzeniem, co należy zrobić?  
+ Gdy sesja kopiowania nie powiedzie się, dostępne są dwie opcje:  
   
- Jeśli błąd umożliwiający ponowienie próby, na przykład jeśli udział sieciowy była w trybie offline przez krótki okres, a teraz jest wróci do trybu online, można wznowić sesji kopiowania. Jeśli ten błąd nie jest powtarzający operację, na przykład, jeśli określono nieprawidłowe źródło pliku katalogu za pomocą parametrów wiersza polecenia, musisz przerwać sesję kopiowania. Zobacz [przygotowywania dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md) Aby uzyskać więcej informacji na temat wznawianie i przerywanie sesji kopiowania.  
+ Jeśli błąd zostanie ponowiony, na przykład jeśli udział sieciowy był w trybie offline przez krótki czas, a teraz jest w trybie online, można wznowić sesję kopiowania. Jeśli błąd nie zostanie ponowiony, na przykład jeśli w parametrach wiersza polecenia określono nieprawidłowy katalog pliku źródłowego, należy przerwać sesję kopiowania. Aby uzyskać więcej informacji na temat wznawiania i przerywania sesji kopiowania, zobacz [Przygotowywanie dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md) .  
   
-## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nie można wznowić lub Przerwij sesję kopiowania.  
- Jeśli sesja kopiowania jest pierwsza sesja kopiowania dla dysku, powinien podać komunikat o błędzie: "Pierwsza sesja kopiowania nie może być wznowione lub zostało przerwane". W takim przypadku można usunąć starego pliku dziennika i ponownie uruchom polecenie.  
+## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nie można wznowić lub przerwać sesji kopiowania.  
+ Jeśli sesja kopiowania jest pierwszą sesją kopiowania dysku, komunikat o błędzie powinien zawierać następujący stan: "Pierwsza sesja kopiowania nie może zostać wznowiona ani przerwana". W takim przypadku można usunąć stary plik dziennika i ponownie uruchomić polecenie.  
   
- Jeśli sesja kopiowania nie jest pierwszy z nich dla dysku, można go zawsze wznowione lub zostało przerwane.  
+ Jeśli sesja kopiowania nie jest pierwszą dla dysku, zawsze może zostać wznowiona lub przerwana.  
   
-## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Utratą pliku dziennika, mimo to mogę tworzyć zadania?  
- Plik dziennika dla dysku zawiera pełnych informacji kopiowania danych na tym dysku i potrzebny do dodania większej liczby plików na dysku i będzie używany do utworzenia zadania importu. Jeśli plik dziennika zostanie utracony, trzeba będzie ponownie wszystkie sesje kopii dysku.  
+## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>Mimo że plik dziennika został utracony, można utworzyć zadanie?  
+ Plik dziennika dla dysku zawiera pełne informacje o kopiowaniu danych na ten dysk i koniecznie dodać więcej plików do dysku i zostanie użyty do utworzenia zadania importu. Jeśli plik dziennika zostanie utracony, należy ponownie wykonać wszystkie sesje kopiowania dla dysku.  
   
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
-* [Konfigurowanie narzędzia azure import/export](../storage-import-export-tool-setup-v1.md)   
+* [Konfigurowanie narzędzia Azure Import/Export](../storage-import-export-tool-setup-v1.md)   
 * [Przygotowywanie dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Sprawdzanie stanu zadania za pomocą plików dziennika kopiowania](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Naprawianie zadania importu](../storage-import-export-tool-repairing-an-import-job-v1.md)   

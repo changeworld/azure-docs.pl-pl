@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815776"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997279"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja do SQL Database jednej i puli baz danych
 
@@ -32,14 +32,17 @@ Replikację SQL Server można skonfigurować na pojedynczej i w puli bazach dany
 
 ## <a name="versions"></a>Wersje  
 
-- Wydawca i dystrybutor muszą mieć co najmniej jedną z następujących wersji:  
-- SQL Server 2017 (14. x)
-- SQL Server 2016 (13. x)
-- SQL Server 2014 (12. x) CU3 SP1
-- SQL Server 2014 (12. x) RTM CU10
-- SQL Server 2012 (11. x) SP2 CU8 lub SP3
-- Próba skonfigurowania replikacji przy użyciu starszej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie mógł nawiązać połączenia z subskrybentem) i MSSQL_REPL40532 (nie można otworzyć \<nazwy serwera > żądanego podczas logowania. Logowanie nie powiodło się.  
-- Aby korzystać ze wszystkich funkcji Azure SQL Database, musisz używać najnowszych wersji narzędzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+Lokalni wydawcy SQL Server i dystrybutorzy muszą korzystać z jednej z następujących wersji (co najmniej):  
+
+- SQL Server 2016 i nowsze
+- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) lub [z dodatkiem SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) lub [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> Próba skonfigurowania replikacji za pomocą nieobsługiwanej wersji może spowodować wystąpienie błędu MSSQL_REPL20084 (proces nie może połączyć się z subskrybentem) i MSSQL_REPL40532 (nie można otworzyć \<nazwy serwera > żądanego przez nazwę logowania. Logowanie nie powiodło się.  
+
+Aby korzystać ze wszystkich funkcji Azure SQL Database, musisz używać najnowszych wersji narzędzi [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) i [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
+
   
 ## <a name="remarks"></a>Uwagi
 
@@ -56,7 +59,7 @@ Replikację SQL Server można skonfigurować na pojedynczej i w puli bazach dany
 
 ## <a name="replication-architecture"></a>Architektura replikacji  
 
-![replikacja do bazy danych SQL](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Scenariusze  
 
@@ -106,7 +109,7 @@ Następujące opcje nie są obsługiwane w przypadku subskrypcji Azure SQL Datab
 Utwórz publikację i subskrypcję wypychaną. Aby uzyskać więcej informacji, zobacz:
   
 - [Tworzenie publikacji](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Utwórz subskrypcję wypychaną](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład **N'azuresqldbdns. Database. Windows. NET**) i nazwy bazy danych SQL Azure jako docelowej bazy danych (na przykład **AdventureWorks** ).  
+- [Utwórz subskrypcję wypychaną](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) , używając nazwy serwera Azure SQL Database jako subskrybenta (na przykład **N'azuresqldbdns. Database. Windows. NET**) i nazwy bazy danych SQL Azure jako docelowej bazy danych (na przykład **AdventureWorks**).  
 
 ## <a name="see-also"></a>Zobacz też  
 

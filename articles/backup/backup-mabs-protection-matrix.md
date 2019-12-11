@@ -3,12 +3,12 @@ title: Co można Azure Backup Server utworzyć kopię zapasową
 description: Ten artykuł zawiera informacje o wszystkich obciążeniach, typach danych i instalacjach, które Azure Backup Server chronić.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: a7794ac82c70239693e91b3ae65c6292a6b4ed7f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841357"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996157"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Macierz ochrony usługi Azure Backup Server
 
@@ -38,7 +38,8 @@ W tym artykule wymieniono różne serwery i obciążenia, które można chronić
 |Serwery (32-bitowe i 64-bitowe)|Windows Server 2008 SP2|Serwer fizyczny<br /><br />Lokalna maszyna wirtualna funkcji Hyper-V<br /> <br /> Azure Stack|Brak obsługi|Wolumin, udział, folder, plik, stan systemu/bez systemu operacyjnego|
 |Serwery (32-bitowe i 64-bitowe)|Windows Server 2008 SP2|Maszyna wirtualna systemu Windows w środowisku programu VMWare (chroni obciążenia działające na maszynie wirtualnej systemu Windows w programie VMWare)<br /> <br /> Azure Stack|V3, V2|Wolumin, udział, folder, plik, stan systemu/bez systemu operacyjnego|
 |Serwery (32-bitowe i 64-bitowe)|Windows Storage Server 2008|Serwer fizyczny<br /><br />Lokalna maszyna wirtualna funkcji Hyper-V<br /> <br /> Azure Stack|V3, V2|Wolumin, udział, folder, plik, stan systemu/bez systemu operacyjnego|
-|Oprogramowanie SQL Server|SQL Server 2017|Serwer fizyczny <br /><br /> Lokalna maszyna wirtualna funkcji Hyper-V <br /> <br /> Maszyna wirtualna platformy Azure <br /><br /> Maszyna wirtualna systemu Windows w środowisku programu VMWare (chroni obciążenia działające na maszynie wirtualnej systemu Windows w programie VMWare)<br /> <br /> Azure Stack|V3|Wszystkie scenariusze wdrażania: baza danych|
+|Oprogramowanie SQL Server|SQL Server 2019|Serwer fizyczny <br /><br /> Lokalna maszyna wirtualna funkcji Hyper-V <br /> <br /> Maszyna wirtualna platformy Azure (gdy obciążenie działa jako maszyna wirtualna platformy Azure) <br /><br /> Maszyna wirtualna systemu Windows w środowisku programu VMWare (chroni obciążenia działające na maszynie wirtualnej systemu Windows w programie VMWare)<br /> <br /> Azure Stack|V3|Wszystkie scenariusze wdrażania: baza danych|
+|Oprogramowanie SQL Server|SQL Server 2017|Serwer fizyczny <br /><br /> Lokalna maszyna wirtualna funkcji Hyper-V <br /> <br /> Maszyna wirtualna platformy Azure (gdy obciążenie działa jako maszyna wirtualna platformy Azure) <br /><br /> Maszyna wirtualna systemu Windows w środowisku programu VMWare (chroni obciążenia działające na maszynie wirtualnej systemu Windows w programie VMWare)<br /> <br /> Azure Stack|V3|Wszystkie scenariusze wdrażania: baza danych|
 |Oprogramowanie SQL Server|SQL Server 2016 SP2|Serwer fizyczny <br /><br /> Lokalna maszyna wirtualna funkcji Hyper-V <br /> <br /> Maszyna wirtualna platformy Azure <br /><br /> Maszyna wirtualna systemu Windows w środowisku programu VMWare (chroni obciążenia działające na maszynie wirtualnej systemu Windows w programie VMWare)<br /> <br /> Azure Stack|V3, V2|Wszystkie scenariusze wdrażania: baza danych|
 |Oprogramowanie SQL Server|SQL Server 2016 SP1|Serwer fizyczny <br /><br /> Lokalna maszyna wirtualna funkcji Hyper-V <br /> <br /> Maszyna wirtualna platformy Azure <br /><br /> Maszyna wirtualna systemu Windows w środowisku programu VMWare (chroni obciążenia działające na maszynie wirtualnej systemu Windows w programie VMWare)<br /> <br /> Azure Stack|V3, V2|Wszystkie scenariusze wdrażania: baza danych|
 |Oprogramowanie SQL Server|SQL Server 2016|Serwer fizyczny <br /><br /> Lokalna maszyna wirtualna funkcji Hyper-V <br /> <br /> Maszyna wirtualna platformy Azure <br /><br /> Maszyna wirtualna systemu Windows w środowisku programu VMWare (chroni obciążenia działające na maszynie wirtualnej systemu Windows w programie VMWare)<br /> <br /> Azure Stack|V3, V2|Wszystkie scenariusze wdrażania: baza danych|

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d76a11fc41fd964ff4e43518aee34aad3ecffd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922667"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997058"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie mapowania atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory
 
@@ -139,7 +139,7 @@ Standard scim RFC definiuje podstawowy schemat użytkownika i grupy, a także um
    1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com), wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz aplikację, a następnie wybierz pozycję **Inicjowanie obsługi**.
    2. W obszarze **mapowania**wybierz obiekt (użytkownika lub grupę), dla którego chcesz dodać atrybut niestandardowy.
    3. W dolnej części strony wybierz pozycję **Pokaż opcje zaawansowane**.
-   4. Wybierz **Edytuj listę atrybutów dla nazwa_aplikacji*.
+   4. Wybierz pozycję **Edytuj listę atrybutów dla elementu nazwa_aplikacji**.
    5. W dolnej części listy atrybutów wprowadź informacje o atrybucie niestandardowym w udostępnionych polach. Następnie wybierz pozycję **Dodaj atrybut**.
 
 W przypadku aplikacji Standard scim nazwa atrybutu musi być zgodna ze wzorcem przedstawionym w poniższym przykładzie. Parametry "CustomExtensionName" i "CustomAttribute" można dostosować zgodnie z wymaganiami aplikacji, na przykład: urn: IETF: params: Standard scim: schematy: rozszerzenie: 2.0: CustomExtensionName: CustomAttribute
