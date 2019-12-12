@@ -222,6 +222,8 @@
       items:
         - name: Tworzenie magazynu usługi Recovery Services
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: Aktualizacja konfiguracji magazynu usługi Recovery Services
+          href: use-restapi-update-vault-properties.md
         - name: Tworzenie i aktualizowanie zasad tworzenia kopii zapasowej
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
