@@ -159,7 +159,7 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litwa            | EUR               |
 | LU         | Luksemburg           | EUR               |
-| MK         | Północna Macedonia      | MKD               |
+| MK         | Macedonia Północna      | MKD               |
 | MY         | Malezja             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksyk               | MXN               |

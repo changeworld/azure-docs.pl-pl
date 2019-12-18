@@ -132,7 +132,7 @@ Można skonfigurować zasady filtrowania geograficznego dla drzwi z przodu przy 
 | MA | Maroko|
 | MD | Republika Mołdawii|
 | MG | Madagaskar|
-| MK | Północna Macedonia|
+| MK | Macedonia Północna|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolia|

@@ -277,7 +277,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | MA | Maroko|
 | MD | Republika Mołdawii|
 | MG | Madagaskar|
-| MK | Północna Macedonia|
+| MK | Macedonia Północna|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolia|

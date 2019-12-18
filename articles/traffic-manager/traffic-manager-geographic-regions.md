@@ -548,7 +548,7 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - SD (Sudan)
 
-        - SH (wyspa Świętej Heleny, Wyspa Wniebowstąpienia, Tristan da Cunha)
+        - SH (Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha)
 
         - SL (Sierra Leone)
 

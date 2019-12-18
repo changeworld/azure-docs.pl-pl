@@ -152,7 +152,7 @@ Tymczasowe i końcowe licencje SSPK mogą przesyłać pytania techniczne do [smo
 * SmarDTV sa
 * SoftAtHome
 * Firma Sony Corporation
-* TCL — Marketing zamorski (Makau) — ograniczone
+* TCL — Marketing zamorski (SRA Makau) — ograniczone
 * Technologie dostarczania Technicolor, SAS
 * Tongfang Global Ltd.
 * Najlepsze inwestycje Victory, Ltd.

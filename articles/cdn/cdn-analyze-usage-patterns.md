@@ -89,7 +89,7 @@ Aby zmniejszyć trafień w pamięci podręcznej wygasłe, ustaw zasobów `max-ag
 * TCP_HIT: Obsługiwane z serwer graniczny. Obiekt w pamięci podręcznej i nie przekroczył jego max-age.
 * TCP_MISS: Obsługiwane z serwera źródłowego. Obiekt nie był w pamięci podręcznej, a odpowiedź była do źródła.
 * TCP_EXPIRED _MISS: Obsługiwane z serwera źródłowego po ponownej weryfikacji za pomocą źródła. Obiekt był w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego przy użyciu źródła spowodowała obiektu pamięci podręcznej, jest zastępowany przez nową odpowiedź od źródła.
-* TCP_EXPIRED _HIT: Obsługiwane z przeglądarki Edge po ponownej weryfikacji za pomocą źródła. Obiekt w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego w serwerze źródłowym w wyniku obiektu pamięci podręcznej są modyfikowane.
+* TCP_EXPIRED _HIT: Obsługiwane z przeglądarki Microsoft Edge po ponownej weryfikacji za pomocą źródła. Obiekt w pamięci podręcznej, ale przekroczył jego max-age. Ponowne sprawdzenie poprawności zależnego w serwerze źródłowym w wyniku obiektu pamięci podręcznej są modyfikowane.
 
 ### <a name="full-list-of-cache-statuses"></a>Pełna lista stany pamięci podręcznej
 * TCP_HIT — ten stan jest zgłaszany, gdy żądanie jest obsługiwany bezpośrednio w punkcie POP do klienta. Element zawartości natychmiast są dostarczane z punktu POP, gdy jest buforowana na POP najbliżej danego klienta, a ma nieprawidłowy czas wygaśnięcia (TTL). Czas wygaśnięcia jest określany przez następujące nagłówki odpowiedzi:

@@ -186,7 +186,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litwa                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Luksemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Północna Macedonia                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Macedonia Północna                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mołdawia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Monako                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |

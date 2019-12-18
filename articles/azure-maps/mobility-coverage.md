@@ -119,7 +119,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 | Szwajcaria | Basel, Genewa, Yverdon-les-Bains, Zurych | 
 | Turcja | Adana-Mersin, Ankara, Antalya, Balıkesir, bilecik, Bolu, Bursa, Denizli, duzce, Elazig, Eskisehir, Stambuł, Izmir-Aydin, Kahramanmaras, Kayseri, Konya, Malatya, Muğla, Samsun, Şanlıurfa |    
 | Wielka Brytania | Wschodnie Anglia, wschód Midlands, Londyn i Południowo-Wschodnia, północno-wschodnia, północne Zachodnie, Irlandia Północna, Szkocja, południowe zachodnie, Walia, zachodnie Midlands, Yorkshire |
-| Ukraina | Kharkiv, Zhytomyr, Kijów, Lviv, Chernivtsi |
+| Ukraina | Kharkiv, Zhytomyr, Kijów, Lwów, Chernivtsi |
 
 
 ## <a name="middle-east-and-africa"></a>Bliski Wschód i Afryka

@@ -74,7 +74,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Nigeria                          | ✓ | ✓ |
 | Reunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Saint Helena, Wyspa Wniebowstąpienia i Tristan da Cunha | ✓ | O |
+| Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha | ✓ | O |
 | Wyspy Świętego Tomasza i Książęca            | ✓ | O |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |

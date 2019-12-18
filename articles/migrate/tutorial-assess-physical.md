@@ -54,7 +54,7 @@ Skonfiguruj nowy projekt usługi Azure Migrate w następujący sposób.
 
 4. W obszarze **Wprowadzenie** kliknij pozycję **Dodaj narzędzia**.
 5. W obszarze **Projekt migracji**wybierz subskrypcję platformy Azure i utwórz grupę zasobów, jeśli jej nie masz.     
-6. W obszarze **szczegóły projektu**Określ nazwę projektu i lokalizację geograficzną, w której chcesz utworzyć projekt. Azja, Europa, Wielka Brytania i Stany Zjednoczone są obsługiwane.
+6. W obszarze **szczegóły projektu**Określ nazwę projektu i lokalizację geograficzną, w której chcesz utworzyć projekt. Azja, Europa, Zjednoczone Królestwo i Stany Zjednoczone są obsługiwane.
 
     - Lokalizacja geograficzna projektu służy tylko do przechowywania metadanych zebranych z serwerów lokalnych.
     - Podczas przeprowadzania migracji można wybrać dowolny region docelowy.
