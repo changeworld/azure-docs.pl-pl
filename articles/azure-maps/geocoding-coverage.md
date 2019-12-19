@@ -130,7 +130,7 @@ Możliwość geokodowania w kraju/regionie jest zależna od pokrycia danych drog
 | Filipiny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
 | Zachodniego                                               |                 |                |              |      ✓     |          ✓         |
-| Wyspy Senkaku                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Wyspy Senkaku/Diaoyutai                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Wyspy Salomona                                     |                 |                |              |      ✓     |          ✓         |
 | Kurils południowy                                     |        ✓        |                |              |      ✓     |          ✓         |

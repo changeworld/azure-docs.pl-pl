@@ -191,7 +191,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Katar                     | ✓ | ✓ |
 | Republika Korei         | ✓ | O |
 | Arabia Saudyjska              | ✓ | ✓ |
-| Wyspy Senkaku           |   | ✓ |
+| Wyspy Senkaku/Diaoyutai           |   | ✓ |
 | Singapur                 | ✓ | ✓|
 | Sri Lanka                 |   | O |
 | Arabska Republika Syryjska      |   | O |
@@ -273,7 +273,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Liechtenstein             | ✓ | ✓ |
 | Litwa                 | ✓ | ✓ |
 | Luksemburg                | ✓ | ✓ |
-| Północna Macedonia           | ✓ | ✓ |
+| Macedonia Północna           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Mołdawia                   | ✓ | ✓ |
 | Monako                    | ✓ | ✓ |

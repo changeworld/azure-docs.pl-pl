@@ -191,7 +191,7 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Wyspa Norfolk                      | OZNACZONA        |
 | Korea Północna                         | KP        |
 | Mariany Północne            | BIEGŁ        |
-| Północna Macedonia                     | MK        |
+| Macedonia Północna                     | MK        |
 | Norwegia                              | NO        |
 | Oman                                | OM        |
 | Pakistan                            | PK        |
