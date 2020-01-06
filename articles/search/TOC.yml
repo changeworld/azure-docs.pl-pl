@@ -13,9 +13,9 @@
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Tworzenie indeksu wyszukiwania
+        - name: Tworzenie indeksu
           href: search-get-started-portal.md
-        - name: Tworzenie aplikacji (wersja zapoznawcza)
+        - name: Tworzenie aplikacji
           href: search-create-app-portal.md
         - name: Tworzenie zestawu umiejętności poznawczych
           href: cognitive-search-quickstart-blob.md
@@ -61,7 +61,7 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
-- name: Przykłady
+- name: Samples
   items:
     - name: 'Przykłady w języku C#'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
@@ -109,7 +109,7 @@
           href: search-performance-optimization.md
         - name: Architektura wielodostępności
           href: search-modeling-multitenant-saas-applications.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Omówienie zabezpieczeń
           href: search-security-overview.md

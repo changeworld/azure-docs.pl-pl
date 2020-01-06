@@ -44,7 +44,7 @@
       href: 'https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function'
     - name: Aplikacja internetowa wdrażana w rozwiązaniu Docker w systemie Linux
       href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       items:
@@ -189,14 +189,14 @@
 - name: Zasoby
   items:
     - name: Limity przydziału i ograniczenia platformy Azure
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Regiony świadczenia usługi Azure
       href: 'https://azure.microsoft.com/regions/'
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Przykłady
+    - name: Samples
       href: 'https://azure.microsoft.com/resources/samples/'
     - name: Filmy wideo
       href: 'https://azure.microsoft.com/resources/videos/home/'

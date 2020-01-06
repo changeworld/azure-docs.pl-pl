@@ -4,18 +4,16 @@ summary: Usługa Azure Advisor skanuje konfiguracje platformy Azure i zaleca zmi
 metadata:
   title: Dokumentacja usługi Azure Advisor
   description: Azure Advisor to spersonalizowany konsultant w zakresie chmury ułatwiający stosowanie najlepszych rozwiązań w celu zoptymalizowania wdrożeń platformy Azure. Analizuje on konfigurację zasobów i dane telemetryczne użycia. Następnie zaleca rozwiązania ułatwiające zwiększenie wydajności, poprawę bezpieczeństwa oraz zwiększenie wysokiej dostępności zasobów, a także szuka możliwości zmniejszenia ogólnych wydatków związanych z platformą Azure.
-  services: advisor
-  ms.service: advisor
   ms.topic: landing-page
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: d0a5dc66a752e49dd32cd742e3856d7edac0d879
-  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.openlocfilehash: 43e35c1d6afd96ff78ebd938fa76a503dd4e935d
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72963976"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443020"
 landingContent:
 - title: Informacje o usłudze Azure Advisor
   linkLists:

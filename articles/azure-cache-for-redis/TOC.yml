@@ -1,5 +1,5 @@
 - name: Dokumentacja usługi Azure Cache for Redis
-  href: index.md
+  href: index.yml
 - name: Omówienie
   items:
     - name: Informacje o usłudze Azure Cache for Redis
@@ -23,7 +23,7 @@
   items:
     - name: Używanie buforowania z rankingami
       href: cache-web-app-cache-aside-leaderboard.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady usługi Azure Cache for Redis
       href: cache-redis-samples.md
@@ -35,7 +35,7 @@
   items:
     - name: Tryb failover i stosowanie poprawek
       href: cache-failover.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: cache-best-practices.md
     - name: Najlepsze rozwiązania architektury dotyczące buforowania
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'

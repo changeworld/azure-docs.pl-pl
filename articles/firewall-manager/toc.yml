@@ -42,11 +42,11 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: Zasoby
   items:
     - name: Tworzenie szablonów
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Szablony społeczności

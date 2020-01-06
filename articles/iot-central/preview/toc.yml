@@ -4,8 +4,6 @@
   items:
     - name: Co to jest usługa Azure IoT Central
       href: overview-iot-central.md
-    - name: Opcje rozwiązania IoT
-      href: ../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - name: Przewodnik po interfejsie użytkownika
       href: overview-iot-central-tour.md
     - name: Łączenie się

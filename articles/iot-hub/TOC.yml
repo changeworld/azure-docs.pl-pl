@@ -83,6 +83,8 @@
       href: tutorial-connectivity.md
 - name: Pojęcia
   items:
+    - name: Wymuszanie protokołu TLS 1.2
+      href: tls-1.2-everywhere.md
     - name: Przegląd wzbogaceń wiadomości
       href: iot-hub-message-enrichments-overview.md
     - name: Zarządzanie urządzeniami — omówienie
@@ -164,7 +166,7 @@
           href: iot-hub-amqp-support.md
         - name: Słownik
           href: iot-hub-devguide-glossary.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Zalecenia
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc

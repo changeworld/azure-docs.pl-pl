@@ -19,7 +19,9 @@
       href: terminology.md
     - name: Role i wymagania
       href: concepts-roles-permissions.md
-- name: Przykłady
+    - name: Odzyskiwanie po awarii
+      href: disaster-recovery.md
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'

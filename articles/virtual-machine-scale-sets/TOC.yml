@@ -55,7 +55,7 @@
           href: tutorial-autoscale-powershell.md
         - name: Szablon
           href: tutorial-autoscale-template.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
@@ -64,7 +64,7 @@
 - name: Pojęcia
   items:
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Regiony
       href: ../virtual-machines/windows/regions.md
@@ -152,7 +152,7 @@
     - name: Automatyzacja infrastruktury
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Zabezpieczenia i zasady
           href: ../virtual-machines/windows/security-policy.md

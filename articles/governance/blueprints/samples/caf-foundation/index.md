@@ -3,12 +3,12 @@ title: Omówienie przykładu strategii CAF Foundation
 description: Omówienie i architektura strategii Cloud Adoption Framework (CAF) dla usługi Azure Foundation z przykładem.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: 8339b7335ff2946dcd602db6ece4637ac4bc1d92
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545448"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562565"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Omówienie przykładowej strategii Microsoft Cloud Adoption Framework for Azure Foundation
 
@@ -43,7 +43,7 @@ Wszystkie te elementy są zgodne ze sprawdzonymi rozwiązaniami opublikowanymi n
 > Strategia CAF Foundation określa architekturę podstaw dla obciążeń.
 > Nadal należy wdrożyć dla niej obciążenia.
 
-Aby uzyskać więcej informacji, zobacz [Przewodnik Microsoft Cloud Adoption Framework dla platformy Azure — gotowość](/azure/architecture/cloud-adoption/ready/azure-readiness-guide/govern-org-compliance?tabs=AzurePolicy).
+Aby uzyskać więcej informacji, zobacz [Przewodnik Microsoft Cloud Adoption Framework dla platformy Azure — gotowość](/azure/cloud-adoption-framework/ready/).
 
 ## <a name="next-steps"></a>Następne kroki
 
