@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a8e189e8070de0fccf9428e26337e1091ba7f7b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34fcaef5416fe976c051317c0273d245f1ff8358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449121"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Wykorzystanie interfejsów API rozliczeń platformy Azure do uzyskiwania szczegółowych informacji o użyciu platformy Azure
 Użyj interfejsów API rozliczeń platformy Azure, aby pobrać dane dotyczących użycia i zasobów do preferowanych narzędzi do analizy danych. Interfejsy API usługi RateCard i użycia zasobów platformy Azure mogą ułatwić dokładne przewidywanie kosztów i zarządzanie nimi. Interfejsy API są implementowane jako dostawca zasobów i należą do rodziny interfejsów API uwidacznianych przez usługę Azure Resource Manager.  
@@ -71,4 +71,4 @@ Poniżej przedstawiono niektóre scenariusze, które są możliwe za pomocą kom
 
   * [Przykład kodu dla interfejsu API usługi RateCard](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Aby dowiedzieć się więcej na temat usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+* Aby dowiedzieć się więcej na temat usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/management/overview.md).
