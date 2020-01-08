@@ -69,6 +69,8 @@
   items:
     - name: Obszar roboczy
       href: concept-workspace.md
+    - name: Środowiska
+      href: concept-environments.md
     - name: Dane
       href: concept-data.md
     - name: Trenowanie modelu

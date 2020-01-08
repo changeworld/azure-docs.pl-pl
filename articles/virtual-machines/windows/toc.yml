@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 — Tworzenie kopii zapasowych maszyn wirtualnych
       href: tutorial-backup-vms.md
-    - name: 10 — Nadzorowanie maszyn wirtualnych
+    - name: 10 — Zarządzanie maszynami wirtualnymi
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
     - name: 11 — Śledzenie i aktualizowanie maszyn wirtualnych
