@@ -1,133 +1,109 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Dokumentacja usługi Azure Resource Manager
-summary: Szablon usługi Resource Manager to plik w formacie JavaScript Object Notation (JSON) definiujący infrastrukturę i konfigurację projektu.
+summary: Usługa Azure Resource Manager to usługa wdrażania i zarządzania dla platformy Azure. Korzystaj z infrastruktury jako kodu, aby niezawodnie wdrażać rozwiązania platformy Azure i nimi zarządzać.
+brand: azure
 metadata:
   title: Dokumentacja usługi Azure Resource Manager
-  description: Dowiedz się, jak opracowywać szablony usługi Azure Resource Manager i jak za ich pomocą wdrażać zasoby platformy Azure
-  services: azure-resource-manager
+  description: Usługa Azure Resource Manager to usługa wdrażania i zarządzania dla platformy Azure.
   ms.service: azure-resource-manager
-  ms.subservice: na
-  ms.topic: landing-page
-  ms.collection: na
-  author: mumian
-  ms.author: jgao
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 1d50556eb09a35857ed9db4ccbbba99397606f8b
-  ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/25/2019
-  ms.locfileid: "74483432"
-landingContent:
-- title: Informacje o usłudze Resource Manager
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75642476"
+highlightedContent:
+  items:
+  - title: Co to są szablony?
+    itemType: overview
+    url: templates/overview.md
+  - title: Tworzenie pierwszego szablonu
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+  - title: Co to jest usługa Resource Manager?
+    itemType: overview
+    url: management/overview.md
+conceptualContent:
+  items:
+  - title: Wdrażanie szablonów usługi Resource Manager
     links:
-    - text: Co to jest usługa Resource Manager?
-      url: resource-group-overview.md
-    - text: Co to jest szablon usługi Resource Manager?
-      url: template-deployment-overview.md
-  - linkListType: concept
+    - url: templates/overview.md
+      itemType: overview
+      text: Omówienie
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: Seria samouczków dla początkujących
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: Struktura pliku szablonu
+    - url: templates/template-functions.md
+      itemType: reference
+      text: Funkcje szablonów
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: Wdrażanie
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: Najlepsze rozwiązania
+    footerLink:
+      url: templates/index.yml
+      text: Zobacz więcej
+  - title: Zarządzanie zasobami
     links:
-    - text: Najlepsze praktyki
-      url: template-best-practices.md
-    - text: Tryby wdrażania
-      url: deployment-modes.md
-    - text: Połączone szablony
-      url: resource-group-linked-templates.md
-    - text: Wdrażanie poziomu subskrypcji
-      url: deploy-to-subscription.md
-    - text: Deployment Manager
-      url: deployment-manager-overview.md
-  - linkListType: video
+    - url: management/overview.md
+      itemType: overview
+      text: Omówienie
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: Tagowanie zasobów
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: Przenoszenie zasobów
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: Blokowanie zasobów
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: Dostawcy zasobów i ich typy
+    footerLink:
+      url: management/index.yml
+      text: Zobacz więcej
+  - title: Aplikacje zarządzane
     links:
-    - text: Co nowego?
-      url: https://youtu.be/3D-JIKShrws
-- title: Rozpoczęcie pracy
-  linkLists:
-  - linkListType: quickstart
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: Omówienie
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: Publikowanie aplikacji w katalogu usług
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: Tworzenie definicji interfejsu użytkownika
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: Dodawanie w witrynie Marketplace
+    footerLink:
+      url: managed-applications/index.yml
+      text: Zobacz więcej
+  - title: Azure Custom Providers
     links:
-    - text: Tworzenie szablonów — portal
-      url: resource-manager-quickstart-create-templates-use-the-portal.md
-    - text: tworzenie szablonów — program VS Code
-      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - text: tworzenie szablonów — program Visual Studio
-      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: Samouczki dla początkujących
-      url: template-tutorial-create-first-template.md
-    - text: Wdrażanie wielu wystąpień
-      url: resource-manager-tutorial-create-multiple-instances.md
-    - text: Ustawianie kolejności wdrażania
-      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - text: Integrowanie usługi Key Vault
-      url: resource-manager-tutorial-use-key-vault.md
-- title: Tworzenie szablonów
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Korzystanie z programu VS Code
-      url: resource-manager-tools-vs-code.md
-    - text: Korzystanie z funkcji
-      url: resource-group-template-functions.md
-    - text: Definiowanie parametrów
-      url: template-parameters.md
-    - text: Definiowanie zmiennych
-      url: template-variables.md
-    - text: Definiowanie zasobów
-      url: child-resource-name-type.md
-    - text: Definiowanie danych wyjściowych
-      url: template-outputs.md
-  - linkListType: reference
-    links:
-    - text: Szablony przewodników Szybki start platformy Azure
-      url: template-deployment-overview.md
-- title: Wdrażanie szablonów
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Przy użyciu programu PowerShell
-      url: resource-group-template-deploy.md
-    - text: Przy użyciu interfejsu wiersza polecenia
-      url: resource-group-template-deploy-cli.md
-    - text: Przy użyciu portalu
-      url: resource-group-template-deploy-portal.md
-    - text: Przy użyciu interfejsu API REST
-      url: resource-group-template-deploy-rest.md
-- title: Zarządzanie szablonami
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Eksportowanie szablonów
-      url: export-template-portal.md
-    - text: CI/CD
-      url: vs-resource-groups-project-devops-pipelines.md
-- title: Zarządzanie zasobami
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Przenoszenie zasobów
-      url: resource-group-move-resources.md
-    - text: Tagowanie zasobów
-      url: resource-group-using-tags.md
-    - text: Blokowanie zasobów
-      url: resource-group-lock-resources.md
-- title: Monitorowanie i rozwiązywanie problemów
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Wyświetlanie dzienników aktywności
-      url: resource-group-audit.md
-    - text: Wyświetlanie operacji wdrażania
-      url: resource-manager-deployment-operations.md
-    - text: Usuwanie błędów związanych z wdrażaniem
-      url: resource-manager-common-deployment-errors.md
-- title: Eksplorowanie zawartości referencyjnej
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Dostawcy zasobów i ich typy
-      url: resource-manager-supported-services.md
-    - text: Dokumentacja dotycząca szablonów
-      url: /azure/templates/
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: Omówienie
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: Tworzenie dostawcy niestandardowego
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: Tworzenie niestandardowych akcji i zasobów
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: Dodawanie akcji niestandardowych do interfejsu API REST platformy Azure
+    footerLink:
+      url: custom-providers/index.yml
+      text: Zobacz więcej

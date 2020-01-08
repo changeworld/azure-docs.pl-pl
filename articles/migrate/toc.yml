@@ -6,6 +6,14 @@
       href: migrate-services-overview.md
     - name: Co nowego
       href: whats-new.md
+    - name: Często zadawane pytania
+      items:
+        - name: Pytania dotyczące usługi Azure Migrate
+          href: resources-faq.md
+        - name: Pytania dotyczące urządzenia usługi Azure Migrate
+          href: common-questions-appliance.md
+        - name: 'Pytania dotyczące odnajdywania, oceny/wizualizacji zależności'
+          href: common-questions-discovery-assessment.md
 - name: Samouczki
   items:
     - name: Ocena i migrowanie maszyn wirtualnych VMware
@@ -44,8 +52,6 @@
           href: tutorial-assess-import.md
 - name: Pojęcia
   items:
-    - name: Często zadawane pytania
-      href: resources-faq.md
     - name: Tabele obsługi
       items:
         - name: Macierz obsługi dla usługi Azure Migrate

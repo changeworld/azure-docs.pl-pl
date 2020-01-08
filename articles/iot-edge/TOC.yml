@@ -93,7 +93,7 @@
       href: offline-capabilities.md
     - name: Urządzenie IoT Edge jako brama
       href: iot-edge-as-gateway.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Zabezpieczanie usługi Azure IoT Edge
           href: security.md
@@ -125,6 +125,10 @@
           href: how-to-install-iot-edge-ubuntuvm.md
         - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
+        - name: Instalowanie certyfikatów produkcyjnych
+          href: how-to-install-production-certificates.md
+        - name: Tworzenie certyfikatów testowych
+          href: how-to-create-test-certificates.md
         - name: Aktualizacja wersji środowiska uruchomieniowego
           href: how-to-update-iot-edge.md
     - name: Automatyczne aprowizowanie za pomocą usługi DPS

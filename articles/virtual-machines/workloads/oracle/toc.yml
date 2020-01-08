@@ -22,6 +22,8 @@
   items:
     - name: Architektury aplikacji Oracle
       href: oracle-oci-applications.md
+    - name: Architektury baz danych Oracle
+      href: oracle-reference-architecture.md
     - name: Tworzenie architektury bazy danych Oracle
       href: oracle-design.md
     - name: Strategia tworzenia kopii zapasowych bazy danych Oracle

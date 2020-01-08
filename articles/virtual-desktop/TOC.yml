@@ -56,6 +56,8 @@
           href: customize-rdp-properties.md
         - name: Równoważenie obciążenia dla pul hostów w pulach
           href: configure-host-pool-load-balancing.md
+        - name: Typ przypisania pulpitu osobistego
+          href: configure-host-pool-personal-desktop-assignment-type.md
     - name: Używanie licencji Windows Virtual Desktop
       href: apply-windows-license.md
     - name: Dostosowywanie obrazu hosta sesji
@@ -68,8 +70,12 @@
       href: set-up-scaling-script.md
     - name: Dostosowywanie źródła
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Wdrażanie narzędzia diagnostycznego
-      href: deploy-diagnostics.md
+    - name: Korzystanie z diagnostyki usługi
+      items:
+        - name: Wdrażanie narzędzia diagnostycznego
+          href: deploy-diagnostics.md
+        - name: Korzystanie z diagnostyki z usługą Log Analytics
+          href: diagnostics-log-analytics.md
     - name: Publikowanie wbudowanych aplikacji
       href: publish-apps.md
     - name: Konfigurowanie dołączania aplikacji MSIX
@@ -78,8 +84,6 @@
   items:
     - name: Środowisko usługi Windows Virtual Desktop
       href: environment-setup.md
-    - name: Zalecenia dotyczące przepustowości dla sesji zdalnych
-      href: bandwidth-recommendations.md
     - name: Określanie opóźnienia połączenia użytkownika
       href: connection-latency.md
     - name: Dostęp delegowany w usłudze Windows Virtual Desktop
@@ -110,8 +114,10 @@
       href: troubleshoot-windows-7-vm.md
     - name: Rozwiązywanie problemów z narzędziem zarządzania Windows Virtual Desktop
       href: troubleshoot-management-tool.md
-    - name: Połączenia klienta pulpitu zdalnego
-      href: troubleshoot-client-connection.md
+    - name: Połączenia usług pulpitu zdalnego
+      href: troubleshoot-service-connection.md
+    - name: Problemy z klientem pulpitu zdalnego
+      href: troubleshoot-client.md
     - name: Program PowerShell dla usługi Windows Virtual Desktop
       href: troubleshoot-powershell.md
     - name: Diagnozowanie problemów z wydajnością grafiki

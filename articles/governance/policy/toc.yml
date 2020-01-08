@@ -34,7 +34,7 @@
     - name: Warsztaty — poznawanie usługi Azure Policy
       displayName: 'create, policy, training, learn'
       href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
-- name: Przykłady
+- name: Samples
   items:
     - name: Indeks
       displayName: 'list, examples'
@@ -300,6 +300,11 @@
     - name: Korygowanie niezgodnych zasobów
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: Integracja magazynu kluczy Azure
+      items:
+        - name: Integrowanie usługi Key Vault z usługą Azure Policy
+          displayName: 'key vault, certificate, key'
+          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Integracja z usługą Azure Lighthouse
       items:
         - name: Wdrażanie zasad w dużej skali
@@ -375,7 +380,7 @@
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Konfiguracja gościa — filmy
       items:
-        - name: Wprowadzenie
+        - name: Getting Started
           href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
         - name: Informacje o inicjatywach
           href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'

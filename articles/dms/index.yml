@@ -2,18 +2,18 @@
 title: Dokumentacja usługi Azure Database Migration Service
 summary: Usługa Azure Database Migration Service umożliwia bezproblemową migrację z wielu źródeł baz danych do platform danych platformy Azure przy minimalnych przestojach. Za pomocą narzędzia Data Migration Assistant usługa generuje raporty z ocenami, które zawierają zalecenia prowadzące użytkownika przez zmiany wymagane przed migracją. Gdy wszystko będzie gotowe do rozpoczęcia procesu migracji, usługa Azure Database Migration Service wykona wszystkie wymagane kroki.
 metadata:
-  description: " Dowiedz się, jak usługa Azure Database Migration Service umożliwia bezproblemową migrację z wielu źródeł baz danych do platform danych platformy Azure przy minimalnych przestojach."
+  description: Dowiedz się, jak usługa Azure Database Migration Service umożliwia bezproblemową migrację z wielu źródeł baz danych do platform danych platformy Azure przy minimalnych przestojach.
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/25/2019
+  ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 1d064144d040a45fbc655879a6869da4ceaa4b79
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73584005"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75437877"
 landingContent:
 - title: Informacje o usłudze Azure Database Migration Service
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
       url: quickstart-create-data-migration-service-portal.md
     - text: Tworzenie usługi w trybie hybrydowym — portal
       url: quickstart-create-data-migration-service-hybrid-portal.md
+  - linkListType: reference
+    links:
+    - text: Znane problemy — korzystanie z trybu hybrydowego
+      url: known-issues-dms-hybrid-mode.md
   - linkListType: video
     links:
     - text: Wprowadzenie do usługi Azure Data Migration Service
@@ -65,6 +69,8 @@ landingContent:
     links:
     - text: Znane problemy — migracja online do pojedynczej bazy danych usługi SQL Database
       url: known-issues-azure-sql-online.md
+    - text: Znane problemy — migracja online do wystąpienia zarządzanego usługi SQL Database
+      url: known-issues-azure-sql-db-managed-instance-online.md
     - text: Topologie sieci na potrzeby migracji wystąpienia zarządzanego usługi SQL Database
       url: resource-network-topologies.md
     - text: Role niestandardowe na potrzeby migracji w trybie online z programu SQL Server do wystąpienia zarządzanego usługi SQL Database

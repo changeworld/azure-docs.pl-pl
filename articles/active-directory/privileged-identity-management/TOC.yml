@@ -45,6 +45,8 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Zarządzanie rolami usługi Azure AD
       items:
+        - name: Aktualizacja funkcji
+          href: azure-ad-roles-features.md
         - name: Przypisywanie ról
           href: pim-how-to-add-role-to-user.md
         - name: Zatwierdzanie żądań

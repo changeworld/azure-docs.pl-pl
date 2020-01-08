@@ -32,70 +32,78 @@
     - name: Łączenie ze źródłami danych
       href: connect-data-sources.md
       items:
-        - name: Łączenie z usługami firmy Microsoft
+        - name: Nawiązywanie połączenia usługa-usługa
           items:
-            - name: Łączenie z usługą Azure AD
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: Łączenie z usługą Office 365
+            - name: Office 365
               href: connect-office-365.md
-            - name: Łączenie z usługą Cloud App Security
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: Łączenie z dziennikiem aktywności platformy Azure
+            - name: Dziennik aktywności platformy Azure
               href: connect-azure-activity.md
-            - name: Łączenie z usługą Azure AD Identity Protection
+            - name: Usługa Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Łączenie z usługą Azure Information Protection
+            - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Łączenie z usługą Microsoft Defender ATP
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Łączenie z usługą Azure ATP
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: Łączenie z usługą Azure Security Center
+            - name: Azure Security Center
               href: connect-azure-security-center.md
-            - name: Łączenie z serwerem nazw domen
+            - name: Serwer nazw domen
               href: connect-dns.md
-            - name: Łączenie z zaporą aplikacji internetowej firmy Microsoft
+            - name: Zapora aplikacji internetowej firmy Microsoft
               href: connect-microsoft-waf.md
-            - name: Łączenie z zaporą systemu Windows
+            - name: Zapora systemu Windows
               href: connect-windows-firewall.md
-            - name: Łączenie ze zdarzeniami zabezpieczeń systemu Windows
+            - name: Zdarzenia zabezpieczeń systemu Windows
               href: connect-windows-security-events.md
         - name: Łączenie z rozwiązaniami zewnętrznymi
           items:
-            - name: Łączenie z ogólnymi źródłami CEF
-              href: connect-common-event-format.md
-            - name: Łączenie usługi AWS
-              href: connect-aws.md
-            - name: Łączenie z rozwiązaniami Barracuda
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: Łączenie z rozwiązaniami Check Point
-              href: connect-checkpoint.md
-            - name: Łączenie z rozwiązaniami Palo Alto Networks
-              href: connect-paloalto.md
-            - name: Łączenie z rozwiązaniami Fortinet
-              href: connect-fortinet.md
-            - name: Łączenie z rozwiązaniami F5
-              href: connect-f5.md
-            - name: Łączenie z rozwiązaniem F5 BIG-IP
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: Łączenie ze źródłami Syslog
+            - name: Dziennik systemu
               href: connect-syslog.md
-            - name: Łączenie z rozwiązaniem Symantec ICDX
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: Łączenie z rozwiązaniami Cisco
-              href: connect-cisco.md
-            - name: Łączenie z rozwiązaniem Barracuda CloudGen Firewall
+            - name: Barracuda CloudGen Firewall
               href: connect-barracuda-cloudgen-firewall.md
-            - name: Łączenie z rozwiązaniem Citrix Analytics (Security)
+            - name: Citrix Analytics (Security)
               href: connect-citrix-analytics.md
-            - name: Łączenie z rozwiązaniem ExtraHop Reveal(x)
-              href: connect-extrahop.md
-            - name: Łączenie z rozwiązaniem One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Trend Micro Deep Security
-              href: connect-trend-micro.md
-            - name: Łączenie z rozwiązaniem Zscaler
-              href: connect-zscaler.md
+            - name: Rozwiązania oparte na formacie CEF
+              href: connect-common-event-format.md
+              items:
+                - name: KROK 1. Wdrażanie agenta
+                  href: connect-cef-agent.md
+                - name: KROK 2. Konfigurowanie rozwiązania zabezpieczeń
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: Check Point
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: Łączenie z rozwiązaniem One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: KROK 3. Weryfikowanie łączności
+                  href: connect-cef-verify.md
         - name: Łączenie z funkcjami analizy zagrożeń
           href: connect-threat-intelligence.md
         - name: Łączenie maszyn wirtualnych usługi Azure Stack

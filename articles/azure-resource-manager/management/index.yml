@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Dokumentacja dotycząca zarządzania zasobami
+summary: Dowiedz się, jak zarządzać zasobami i z nich korzystać.
+metadata:
+  title: Dokumentacja usługi Azure Resource Manager
+  description: Dowiedz się, jak opracowywać szablony usługi Azure Resource Manager i jak za ich pomocą wdrażać zasoby platformy Azure
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: ba00994808e50f10c7153535f442e03f85fe2202
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75657937"
+landingContent:
+- title: Informacje o usłudze Azure Resource Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Resource Manager?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Wdrażanie za pomocą usługi Resource Manager i klasyczne
+      url: deployment-models.md
+- title: Informacje o usługach platformy Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Limity usług i subskrypcji
+      url: azure-subscription-service-limits.md
+    - text: Dostawcy zasobów i ich typy
+      url: resource-providers-and-types.md
+    - text: Dostawcy zasobów dla poszczególnych usług platformy Azure
+      url: azure-services-resource-providers.md
+- title: Zarządzanie zasobami
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Przenoszenie między grupami zasobów i subskrypcjami
+      url: move-resource-group-and-subscription.md
+    - text: Przechodzenie między regionami
+      url: move-region.md
+    - text: Tagowanie zasobów
+      url: tag-resources.md
+    - text: Blokowanie zasobów
+      url: lock-resources.md
+    - text: Usuwanie grup zasobów
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: Obsługa przenoszenia
+      url: move-support-resources.md
+    - text: Pomoc techniczna dla tagów
+      url: tag-support.md
+    - text: Limity wystąpień zasobów
+      url: resources-without-resource-group-limit.md
+- title: Zestawy SDK i narzędzia
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: Śledzenie operacji
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Wyświetlanie dzienników aktywności
+      url: view-activity-logs.md
+    - text: Limity żądań i ograniczanie
+      url: request-limits-and-throttling.md
+    - text: Operacje asynchroniczne
+      url: async-operations.md

@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: f3e1abc46b79953d5a6d44abe4e7a5cecfa256be
-  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+  ms.openlocfilehash: 8b08503be49c3052312d28bc1f65d1be5c775cd9
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73646819"
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75553056"
 landingContent:
 - title: Informacje o usłudze Blob Storage
   linkLists:
@@ -71,7 +71,7 @@ landingContent:
       url: data-lake-storage-data-scenarios.md
     - text: Dostęp za pomocą wielu protokołów
       url: data-lake-storage-multi-protocol-access.md
-    - text: Najlepsze praktyki
+    - text: Najlepsze rozwiązania
       url: data-lake-storage-best-practices.md
   - linkListType: tutorial
     links:
@@ -91,10 +91,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Korzystanie z platformy .NET
+    - text: Azure Blob Storage dla platformy.NET
       url: storage-quickstart-blobs-dotnet.md
-    - text: Korzystanie z języka Python
+    - text: Azure Blob Storage dla języka Java
+      url: storage-quickstart-blobs-java.md
+    - text: Azure Blob Storage dla języka Python
       url: storage-quickstart-blobs-python.md
+    - text: Azure Blob Storage dla języka JavaScript
+      url: storage-quickstart-blobs-nodejs.md
     - text: Kierowanie zdarzeń do internetowego punktu końcowego
       url: ../../event-grid/blob-event-quickstart-portal.md
     - text: Hostowanie statycznej witryny internetowej
@@ -144,9 +148,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: Skalowalność i wydajność
-      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: scalability-targets.md
     - text: Lista kontrolna wydajności i skalowalności
-      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: storage-performance-checklist.md
   - linkListType: tutorial
     links:
     - text: Optymalizowanie pod kątem wydajności i skalowalności

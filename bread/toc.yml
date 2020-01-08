@@ -139,6 +139,10 @@
     - name: Azure Monitor
       tocHref: /azure/azure-monitor/
       topicHref: /azure/azure-monitor/
+      items:
+        - name: Application Insights
+          tocHref: /azure/azure-monitor/azure-monitor-app-hub
+          topicHref: /azure/azure-monitor/azure-monitor-app-hub
     - name: Azure Spatial Anchors
       tocHref: /azure/spatial-anchors/
       topicHref: /azure/spatial-anchors/
@@ -170,7 +174,7 @@
     - name: Rozwiązanie Azure VMware firmy CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
-    - name: Dostosowywanie witryny Azure Portal
+    - name: Dokumentacja witryny Azure Portal
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/\
     - name: Internet rzeczy
@@ -226,6 +230,19 @@
     - name: Resource Manager
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
+      items:
+        - name: Szablony
+          tocHref: /azure/azure-resource-manager/templates/
+          topicHref: /azure/azure-resource-manager/templates/
+        - name: Zarządzanie
+          tocHref: /azure/azure-resource-manager/management/
+          topicHref: /azure/azure-resource-manager/management/
+        - name: Aplikacje zarządzane
+          tocHref: /azure/azure-resource-manager/managed-applications/
+          topicHref: /azure/azure-resource-manager/managed-applications/
+        - name: Azure Custom Providers
+          tocHref: /azure/azure-resource-manager/custom-providers/
+          topicHref: /azure/azure-resource-manager/custom-providers/
     - name: SignalR Service
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
@@ -649,7 +666,7 @@
     - name: Scheduler
       tocHref: /azure/scheduler/
       topicHref: /azure/scheduler/
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       tocHref: /azure/security/
       topicHref: /azure/security/
       items:
@@ -659,6 +676,9 @@
         - name: Programowanie
           tocHref: /azure/security/develop/
           topicHref: /azure/security/develop/
+        - name: Testy porównawcze
+          tocHref: /azure/security/benchmarks/
+          topicHref: /azure/security/benchmarks/
     - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/
@@ -686,7 +706,7 @@
     - name: Synapse Analytics
       tocHref: /azure/sql-data-warehouse/
       topicHref: /azure/sql-data-warehouse/
-    - name: SQL Database
+    - name: Baza danych SQL
       tocHref: /azure/sql-database/
       topicHref: /azure/sql-database/
     - name: SQL Database Edge

@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2b83d09932aaa39e31d04f30bc660541efcbb50b
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 7ebb44ec1f3483b9bf3f29ddb6dc7a73266b8cea
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73882803"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443361"
 landingContent:
 - title: Informacje o zarządzaniu aplikacjami
   linkLists:
@@ -53,22 +53,22 @@ landingContent:
     links:
     - text: Co to jest automatyczna aprowizacja użytkowników?
       url: user-provisioning.md
-  - linkListType: concept
+    - text: Jak działa aprowizacja
+      url: how-provisioning-works.md
+  - linkListType: tutorial
     links:
-    - text: Aprowizacja użytkowników i grup przy użyciu standardu SCIM
-      url: use-scim-to-provision-users-and-groups.md
+    - text: Samouczki aprowizacji dla aplikacji SaaS
+      url: /azure/active-directory/saas-apps/
   - linkListType: how-to-guide
     links:
-    - text: Konfigurowanie automatycznej aprowizacji użytkowników
+    - text: Tworzysz aplikację? Automatyczna aprowizacja przy użyciu standardu SCIM
+      url: use-scim-to-provision-users-and-groups.md
+    - text: Dodajesz aplikację z galerii? Konfigurowanie aprowizacji w aplikacji
       url: configure-automatic-user-provisioning-portal.md
     - text: Dostosowywanie mapowań atrybutów
       url: customize-application-attributes.md
-    - text: Sprawdzanie stanu aprowizacji
-      url: application-provisioning-when-will-provisioning-finish-specific-user.md
-  - linkListType: reference
-    links:
-    - text: Pisanie wyrażeń do mapowania atrybutów
-      url: functions-for-customizing-application-data.md
+    - text: Korzystanie z filtrów określania zakresu
+      url: define-conditional-rules-for-provisioning-user-accounts.md
 - title: Publikowanie aplikacji lokalnych za pomocą serwera proxy aplikacji
   linkLists:
   - linkListType: overview

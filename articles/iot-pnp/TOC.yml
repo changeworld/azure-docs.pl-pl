@@ -7,18 +7,34 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie urządzenia — Windows
-      href: quickstart-create-pnp-device.md
-    - name: Tworzenie urządzenia — Linux
-      href: quickstart-create-pnp-device-linux.md
-    - name: Łączenie urządzenia z usługą IoT Hub — Windows
-      href: quickstart-connect-pnp-device.md
-    - name: Łączenie urządzenia z usługą IoT Hub — Linux
-      href: quickstart-connect-pnp-device-linux.md
+    - name: Tworzenie urządzenia
+      items:
+        - name: C — Linux
+          href: quickstart-create-pnp-device-linux.md
+        - name: C — Windows
+          href: quickstart-create-pnp-device-windows.md
+    - name: Łączenie urządzenia z usługą IoT Hub
+      items:
+        - name: C — Linux
+          href: quickstart-connect-pnp-device-c-linux.md
+        - name: C — Windows
+          href: quickstart-connect-pnp-device-c-windows.md
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-node.md
     - name: Łączenie urządzenia z usługą IoT Central
-      href: ../iot-central/preview/quick-create-pnp-device.md
+      href: ../iot-central/preview/tutorial-connect-pnp-device.md
     - name: Nawiązywanie połączenia z urządzeniem w rozwiązaniu
-      href: quickstart-connect-pnp-device-solution.md
+      items:
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-solution-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-solution-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-solution-node.md
 - name: Samouczki
   items:
     - name: Tworzenie urządzenia przy użyciu programu VS Code

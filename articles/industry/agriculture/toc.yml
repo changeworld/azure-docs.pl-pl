@@ -1,42 +1,42 @@
 - name: Omówienie
   items:
-    - name: Co to jest projekt FarmBeats?
-      href: overview.md
+    - name: Co to jest projekt Azure FarmBeats?
+      href: overview-azure-farmbeats.md
 - name: Samouczki
   expanded: true
   items:
     - name: Generowanie mapy wilgotności gleby
-      href: generate-soil-moisture-map.md
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: Pozyskiwanie historycznych danych telemetrycznych
-      href: ingest-historical-telemetry-data.md
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
 - name: Pojęcia
   items:
     - name: Wzorce integracji
-      href: integration-patterns.md
+      href: integration-patterns-in-azure-farmbeats.md
     - name: Integracja z partnerami obsługującymi czujniki
-      href: sensor-partner-integration.md
+      href: sensor-partner-integration-in-azure-farmbeats.md
     - name: Integracja z partnerami obsługującymi obrazy
-      href: imagery-partner-integration.md
+      href: imagery-partner-integration-in-azure-farmbeats.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Wdrażanie projektu FarmBeats
-      href: prepare-for-deployment.md
+    - name: Zainstaluj projekt Azure FarmBeats
+      href: install-azure-farmbeats.md
     - name: Zarządzanie użytkownikami
-      href: manage-users.md
+      href: manage-users-in-azure-farmbeats.md
     - name: Zarządzanie farmami
-      href: manage-farms.md
+      href: manage-farms-in-azure-farmbeats.md
     - name: Pobieranie danych czujników
       href: get-sensor-data-from-sensor-partner.md
     - name: Generowanie map
-      href: generate-maps.md
+      href: generate-maps-in-azure-farmbeats.md
     - name: Konfigurowanie reguł i zarządzanie alertami
-      href: configure-rules-alerts.md
+      href: configure-rules-alerts-in-azure-farmbeats.md
     - name: Pobieranie obrazów z dronów
-      href: get-drone-imagery.md
+      href: get-drone-imagery-in-azure-farmbeats.md
 - name: Rozwiązywanie problemów
   items:
-    - name: Rozwiązywanie problemów z projektem FarmBeats
-      href: troubleshoot-project-farmbeats.md
+    - name: Rozwiązywanie problemów z projektem Azure FarmBeats
+      href: troubleshoot-azure-farmbeats.md
 - name: Dokumentacja
   items: null
-  href: references-for-farmbeats.md
+  href: references-for-azure-farmbeats.md

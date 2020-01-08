@@ -10,7 +10,7 @@
       href: vpn-gateway-tutorial-create-gateway-powershell.md
     - name: Tworzenie połączeń sieci VPN typu S2S i zarządzanie nimi
       href: vpn-gateway-tutorial-vpnconnection-powershell.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -50,7 +50,7 @@
       items:
         - name: Tworzenie bramy sieci VPN opartej na trasie
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: create-routebased-vpn-gateway-portal.md
             - name: Azure PowerShell
               href: create-routebased-vpn-gateway-powershell.md
@@ -62,7 +62,7 @@
           href: vpn-gateway-resetgw-classic.md
         - name: Usuwanie bramy VPN Gateway
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: vpn-gateway-delete-vnet-gateway-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-delete-vnet-gateway-powershell.md
@@ -72,7 +72,7 @@
       items:
         - name: Konfigurowanie połączeń typu lokacja-lokacja
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-create-site-to-site-rm-powershell.md
@@ -88,7 +88,7 @@
       items:
         - name: Konfigurowanie połączeń między sieciami wirtualnymi
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-vnet-vnet-rm-ps.md
@@ -96,7 +96,7 @@
               href: vpn-gateway-howto-vnet-vnet-cli.md
         - name: Konfigurowanie połączenia sieć wirtualna-sieć wirtualna między modelami wdrażania
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: vpn-gateway-connect-different-deployment-models-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-connect-different-deployment-models-powershell.md
@@ -106,7 +106,7 @@
           items:
             - name: Konfigurowanie sieci VPN typu P2S
               items:
-                - name: Portal Azure
+                - name: Azure Portal
                   href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
                 - name: Azure PowerShell
                   href: vpn-gateway-howto-point-to-site-rm-ps.md
@@ -136,6 +136,8 @@
           items:
             - name: Konfigurowanie dzierżawy
               href: openvpn-azure-ad-tenant.md
+            - name: Konfigurowanie dzierżawy z wieloma aplikacjami klienckimi
+              href: openvpn-azure-ad-tenant-multi-app.md
             - name: Konfigurowanie uwierzytelniania wieloskładnikowego
               href: openvpn-azure-ad-mfa.md
             - name: Konfigurowanie klienta sieci VPN
@@ -180,7 +182,7 @@
           href: vpn-gateway-peering-gateway-transit.md
     - name: Modyfikowanie bramy sieci lokalnej
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: vpn-gateway-modify-local-network-gateway-portal.md
         - name: Azure PowerShell
           href: vpn-gateway-modify-local-network-gateway.md
@@ -266,7 +268,7 @@
     - name: Forum
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: Limity usług i subskrypcji
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
     - name: Kalkulator cen

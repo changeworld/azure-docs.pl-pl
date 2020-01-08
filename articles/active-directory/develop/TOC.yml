@@ -35,6 +35,7 @@
               href: quickstart-v2-aspnet-core-webapp.md
             - name: NodeJS
               href: quickstart-v2-nodejs-webapp.md
+              displayName: OIDC
             - name: Java
               href: quickstart-v2-java-webapp.md
             - name: Python
@@ -85,7 +86,7 @@
           items:
             - name: Aplikacja internetowa demona platformy ASP.NET
               href: tutorial-v2-aspnet-daemon-web-app.md
-    - name: Przykłady
+    - name: Samples
       href: sample-v2-code.md
     - name: Pojęcia
       items:
@@ -135,7 +136,7 @@
                   href: scenario-web-app-call-api-app-registration.md
                 - name: Konfiguracja kodu
                   href: scenario-web-app-call-api-app-configuration.md
-                - name: Logowanie
+                - name: Globalne wylogowywanie
                   href: scenario-web-app-call-api-sign-in.md
                 - name: Uzyskiwanie tokenu dla aplikacji
                   href: scenario-web-app-call-api-acquire-token.md
@@ -213,7 +214,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
-                    - name: Używanie brokerów z aplikacjami Xamarin dla systemów iOS i Android
+                    - name: Używanie brokerów z platformą Xamarin dla systemów iOS i Android
+                      displayName: Microsoft Authenticator Microsoft Intune
                       href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Platforma uniwersalna systemu Windows
                       href: msal-net-uwp-considerations.md
@@ -241,13 +243,13 @@
                   href: msal-compare-msal-js-and-adal-js.md
                 - name: Migrowanie do biblioteki MSAL.Android
                   href: migrate-android-adal-msal.md
-                - name: Migrowanie do biblioteki MSAL.iOS i systemu MacOS
+                - name: Migrowanie do biblioteki MSAL.iOS/systemu MacOS
                   href: migrate-objc-adal-msal.md
                 - name: Migrowanie do biblioteki MSAL dla języka Python
                   href: migrate-python-adal-msal.md
                 - name: Migrowanie do biblioteki MSAL dla języka Java
                   href: migrate-adal-msal-java.md
-                - name: Migrowanie aplikacji platformy Xamarin przy użyciu brokerów z biblioteki ADAL.NET do MSAL.NET
+                - name: Migrowanie aplikacji platformy Xamarin do biblioteki MSAL.NET przy użyciu brokerów
                   href: msal-net-migration-ios-broker.md
             - name: Obsługiwane przepływy uwierzytelniania
               href: msal-authentication-flows.md
@@ -263,7 +265,7 @@
               items:
                 - name: Aplikacje klienckie
                   href: msal-client-applications.md
-                - name: Konfiguracja aplikacji (.NET)
+                - name: Konfiguracja aplikacji
                   href: msal-client-application-configuration.md
                 - name: Inicjowanie aplikacji (.NET)
                   href: msal-net-initializing-client-applications.md
@@ -317,7 +319,7 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Znane problemy — Safari
                       href: msal-js-known-issues-safari-browser.md
-                - name: Problemy z protokołem SSL dotyczące biblioteki MSAL dla systemów iOS i macOS
+                - name: Rozwiązywanie problemów z protokołem SSL (biblioteka MSAL iOS/system macOS)
                   href: ssl-issues.md
         - name: Protokół uwierzytelniania
           items:
@@ -400,9 +402,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Konfiguracja aplikacji
           items:
-            - name: Przejście z rejestracji aplikacji (starszej wersji) do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
+            - name: Nowy przewodnik szkoleniowy na temat rejestracji aplikacji w witrynie Azure Portal
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Przejście z portalu rejestracji aplikacji do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
+            - name: Nowe środowisko rejestracji aplikacji w witrynie Azure Portal
               href: app-registration-portal-training-guide.md
             - name: Konwertowanie aplikacji z jedną dzierżawą na aplikację z wieloma dzierżawami
               href: howto-convert-app-to-be-multi-tenant.md
@@ -418,7 +420,7 @@
               href: howto-add-app-roles-in-azure-ad-apps.md
             - name: Wytyczne dotyczące oznaczania marką
               href: howto-add-branding-in-azure-ad-apps.md
-            - name: Domena wydawcy
+            - name: Konfigurowanie domeny wydawcy
               href: howto-configure-publisher-domain.md
             - name: Warunki użytkowania usługi i oświadczenie o ochronie prywatności
               href: howto-add-terms-of-service-privacy-statement.md
@@ -432,7 +434,7 @@
                   href: msal-net-token-cache-serialization.md
                 - name: Czyszczenie pamięci podręcznej tokenu
                   href: msal-net-clear-token-cache.md
-                - name: Tworzenie wystąpienia klienta publicznego z opcjami
+                - name: Tworzenie wystąpienia publicznej aplikacji klienckiej
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Tworzenie wystąpienia klienta poufnego z opcjami
                   href: msal-net-instantiate-confidential-client-config-options.md
@@ -462,13 +464,13 @@
                   href: redirect-uris-ios.md
             - name: Biblioteka MSAL dla języka Python
               items:
-                - name: Serializacja pamięci podręcznej tokenu
+                - name: Serializacja pamięci podręcznej tokenu niestandardowego
                   href: msal-python-token-cache-serialization.md
             - name: Biblioteka MSAL dla języka Java
               items:
-                - name: Serializacja pamięci podręcznej tokenu
+                - name: Serializacja pamięci podręcznej tokenu niestandardowego
                   href: msal-java-token-cache-serialization.md
-                - name: Dodawanie kont do pamięci podręcznej tokenów i usuwanie ich z niej
+                - name: Pobieranie i usuwanie kont z pamięci podręcznej tokenów
                   href: msal-java-get-remove-accounts-token-cache.md
         - name: Praca z programem Visual Studio
           items:
@@ -482,7 +484,7 @@
               href: vs-active-directory-webapi-getting-started.md
             - name: Co się stało z moim projektem WebAPI?
               href: vs-active-directory-webapi-what-happened.md
-            - name: Wystąpił błąd podczas wykrywania uwierzytelniania
+            - name: Diagnozowanie błędów podczas uwierzytelniania
               href: vs-active-directory-error.md
     - name: Dokumentacja
       items:
@@ -558,7 +560,7 @@
           items:
             - name: Konsola platformy .NET Core (demon)
               href: quickstart-v1-netcore-daemon.md
-    - name: Przykłady
+    - name: Samples
       href: sample-v1-code.md
     - name: Pojęcia
       items:

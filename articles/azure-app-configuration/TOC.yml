@@ -49,7 +49,7 @@
       href: use-key-vault-references-dotnet-core.md
     - name: Integracja z potokiem ciągłej integracji/ciągłego wdrażania
       href: integrate-ci-cd-pipeline.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
@@ -75,7 +75,7 @@
       href: howto-import-export-data.md
     - name: Kierowanie zdarzeń do niestandardowego punktu końcowego
       href: howto-app-configuration-event.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: howto-best-practices.md
 - name: Dokumentacja
   items:
@@ -87,15 +87,15 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: Konstruktor platformy .NET Framework
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: Zestaw .NET Azure SDK
+        - name: Zestaw Azure SDK dla platformy .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Dostawca rozwiązania Java Spring
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
-        - name: Zestaw Java Azure SDK
+        - name: Zestaw Azure SDK dla języka Java
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-        - name: Zestaw Python Azure SDK
+        - name: Zestaw Azure SDK dla środowiska Python
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-        - name: Zestaw JavaScript Azure SDK
+        - name: Zestaw Azure SDK dla języka JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'

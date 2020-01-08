@@ -31,7 +31,7 @@
       href: stream-analytics-edge-csharp-udf.md
     - name: 6 — Tworzenie niestandardowego deserializatora platformy .NET
       href: custom-deserializer.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: Wejścia danych referencyjnych
           href: stream-analytics-use-reference-data.md
-        - name: Pisanie niestandardowych deserializatorów platformy .NET
+        - name: Odczytywanie danych wejściowych w dowolnym formacie za pomocą niestandardowych deserializatorów
           href: custom-deserializer-examples.md
     - name: Typy wyjść zadania
       items:
@@ -174,9 +174,9 @@
       items:
         - name: Instalowanie narzędzi
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Testowanie przy użyciu przykładowych danych
+        - name: Testowanie lokalne przy użyciu danych przykładowych
           href: stream-analytics-vs-tools-local-run.md
-        - name: Testowanie przy użyciu bieżących danych
+        - name: Testowanie lokalne przy użyciu rzeczywistych danych
           href: stream-analytics-live-data-local-testing.md
         - name: Wyświetlanie zadań w programie Visual Studio
           href: stream-analytics-vs-tools.md
@@ -188,12 +188,14 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: Testowanie przy użyciu przykładowych danych
-          href: vscode-local-run.md
+        - name: Testowanie lokalne przy użyciu danych przykładowych
+          href: visual-studio-code-local-run.md
+        - name: Testowanie lokalne przy użyciu rzeczywistych danych
+          href: visual-studio-code-local-run-live-input.md
         - name: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania
           href: setup-cicd-vs-code.md
         - name: Eksplorowanie zadań
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
     - name: Rozwiązywanie problemów
       items:
         - name: Dane wejściowe

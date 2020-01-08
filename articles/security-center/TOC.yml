@@ -49,6 +49,8 @@
       items:
         - name: Omówienie alertów zabezpieczeń
           href: security-center-alerts-overview.md
+        - name: Referencyjna lista alertów
+          href: alerts-reference.md
         - name: Zarządzanie alertami zabezpieczeń
           href: security-center-managing-and-responding-alerts.md
         - name: Zarządzanie zdarzeniami zabezpieczeń
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Wykrywanie zagrożeń dla warstw usługi platformy Azure
           href: security-center-alerts-service-layer.md
-        - name: Integracja z produktami zabezpieczeń platformy Azure
+        - name: Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection
           href: security-center-alerts-integration.md
         - name: Korelacja alertów inteligentnych w chmurze (zdarzenia)
           href: security-center-alerts-cloud-smart.md
@@ -75,6 +77,14 @@
       href: security-center-secure-score.md
     - name: Przechodzenie na zabezpieczenia zaawansowane
       href: security-center-onboarding.md
+    - name: Skanowanie maszyn wirtualnych pod kątem luk w zabezpieczeniach
+      items:
+        - name: Omówienie skanowania pod kątem luk w zabezpieczeniach
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: Zintegrowany skaner luk w zabezpieczeniach dla maszyn wirtualnych
+          href: built-in-vulnerability-assessment.md
+        - name: Korzystanie ze skanerów zewnętrznych
+          href: partner-vulnerability-assessment.md
     - name: Ochrona serwerów za pomocą usługi Microsoft Defender ATP
       href: security-center-wdatp.md
     - name: Używanie zaawansowanych zabezpieczeń danych dla bazy danych SQL na maszynach wirtualnych platformy Azure
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: Zwiększanie poziomu bezpieczeństwa
           href: security-center-monitoring.md
+        - name: Referencyjna lista zaleceń
+          href: recommendations-reference.md
         - name: Ochrona maszyn i aplikacji
           href: security-center-virtual-machine-protection.md
-        - name: Dokumentacja zaleceń dotyczących maszyn i aplikacji
-          href: recommendations-compute-and-apps.md
         - name: Ochrona zasobów sieciowych
           href: security-center-network-recommendations.md
-        - name: Dokumentacja zaleceń dotyczących sieci
-          href: recommendations-network.md
         - name: Ochrona usług magazynu i danych
           href: security-center-sql-service-recommendations.md
         - name: Ochrona tożsamości i dostępu
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: Zainstaluj punkt końcowy
           href: security-center-install-endpoint-protection.md
-        - name: Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: Raporty na temat zagrożeń
           href: security-center-threat-report.md
         - name: Współczynnik ufności alertu

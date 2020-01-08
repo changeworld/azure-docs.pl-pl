@@ -61,23 +61,23 @@
       href: data-manager-cosmosdb.md
 - name: Zasoby
   items:
+    - name: Zestaw deweloperski usługi Azure Blockchain
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Interfejs API REST łańcucha bloków
       href: 'https://docs.microsoft.com/rest/api/blockchain/'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: Rozszerzenie programu Visual Studio Code w usłudze Azure Blockchain
-      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Przykłady kodu
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: Społeczność
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: Forum
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Forum pomocy technicznej MSDN
       href: 'https://aka.ms/workbenchforum'
+    - name: Pomoc techniczna w społeczności
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Pomoc techniczna w witrynie Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
     - name: Opinia dotycząca produktu
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/blockchain-service'
     - name: Dostępność w danym regionie
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=blockchainservice'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

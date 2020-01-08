@@ -159,6 +159,8 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
+    - name: 'Ponowne uruchamianie, zamykanie lub zatrzymywanie usług'
+      href: boot-error-troubleshoot-windows.md
 - name: Nazwy urządzeń ulegają zmianie
   href: troubleshoot-device-names-problems.md
 - name: Dostęp do odzyskiwania maszyny wirtualnej
@@ -173,7 +175,7 @@
       items:
         - name: Interfejs wiersza polecenia
           href: troubleshoot-recovery-disks-linux.md
-        - name: Portal Azure
+        - name: Azure Portal
           href: troubleshoot-recovery-disks-portal-linux.md
 - name: Błędy rozruchu systemu Linux
   href: boot-error-troubleshoot-linux.md

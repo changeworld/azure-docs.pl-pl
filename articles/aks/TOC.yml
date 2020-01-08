@@ -55,7 +55,7 @@
       href: concepts-clusters-workloads.md
     - name: Dostęp i tożsamość
       href: concepts-identity.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       href: concepts-security.md
       items: null
     - name: Networking
@@ -64,7 +64,7 @@
       href: concepts-storage.md
     - name: Skalowanie
       href: concepts-scale.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       items:
         - name: Omówienie
           href: best-practices.md
@@ -218,6 +218,8 @@
           maintainContext: true
         - name: Wymiana certyfikatów
           href: certificate-rotation.md
+        - name: Tworzenie klastra prywatnego
+          href: private-clusters.md
     - name: Monitorowanie i rejestrowanie
       items:
         - name: Usługa Azure Monitor dla kontenerów
@@ -308,6 +310,9 @@
           href: gpu-cluster.md
         - name: Korzystanie z usługi Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
+          maintainContext: true
+        - name: Korzystanie z usługi Azure API Management
+          href: ../api-management/api-management-kubernetes.md
           maintainContext: true
     - name: Wybór i wdrażanie siatki usług
       items:

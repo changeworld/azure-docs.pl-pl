@@ -123,6 +123,9 @@
         - name: Konfigurowanie klastrów
           href: /azure/databricks/clusters/configure
           maintainContext: true
+        - name: Kontenery niestandardowe
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
         - name: Inicjowanie węzłów klastrów
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
@@ -408,7 +411,7 @@
                 - name: Przekształcanie złożonych typów danych
                   href: /azure/databricks/delta/data-transformation/complex-types
                   maintainContext: true
-            - name: Najlepsze praktyki
+            - name: Najlepsze rozwiązania
               href: /azure/databricks/delta/best-practices
               maintainContext: true
             - name: Obsługa wersji tabel
@@ -772,6 +775,14 @@
             - name: Zapisywanie danych do plików TFRecord za pomocą biblioteki TensorFlow
               href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
+            - name: Określanie cech
+              items:
+                - name: Omówienie określania cech
+                  href: /azure/databricks/applications/deep-learning/featurization/index
+                  maintainContext: true
+                - name: Uczenie z użyciem transferu
+                  href: /azure/databricks/applications/deep-learning/featurization/transfer-learning-keras
+                  maintainContext: true
         - name: Trenowania pojedynczego węzła
           items:
             - name: Omówienie trenowania pojedynczego węzła
@@ -826,9 +837,12 @@
             - name: Wnioskowanie modelu przy użyciu biblioteki TensorFlow
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: Rozwiązanie referencyjne dla wnioskowania modelu obrazu rozproszonego
-              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+            - name: Dostrajanie wydajności wnioskowania modelu
+              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
               maintainContext: true
+        - name: Rozwiązanie referencyjne dla wnioskowania modelu obrazu rozproszonego
+          href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+          maintainContext: true
     - name: MLflow
       items:
         - name: Omówienie platformy MLflow
@@ -1062,6 +1076,9 @@
           items:
             - name: Omówienie konfiguracji klastra
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Włączanie usług kontenerów
+              href: /azure/databricks/administration-guide/clusters/container-services
               maintainContext: true
             - name: Włączanie składnika Databricks Runtime dla usługi Genomics
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
@@ -1518,11 +1535,37 @@
       href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: Interfejs wiersza polecenia usługi Databricks
-      href: /azure/databricks/dev-tools/databricks-cli
-      maintainContext: true
-    - name: Interfejs wiersza polecenia usługi Stack
-      href: /azure/databricks/dev-tools/stack
-      maintainContext: true
+      items:
+        - name: Omówienie interfejsu wiersza polecenia usługi Databricks
+          href: /azure/databricks/dev-tools/cli/index
+          maintainContext: true
+        - name: Klastry
+          href: /azure/databricks/dev-tools/cli/clusters-cli
+          maintainContext: true
+        - name: DBFS
+          href: /azure/databricks/dev-tools/cli/dbfs-cli
+          maintainContext: true
+        - name: Grupy
+          href: /azure/databricks/dev-tools/cli/groups-cli
+          maintainContext: true
+        - name: Pule wystąpień
+          href: /azure/databricks/dev-tools/cli/instance-pools-cli
+          maintainContext: true
+        - name: Stanowiska
+          href: /azure/databricks/dev-tools/cli/jobs-cli
+          maintainContext: true
+        - name: Biblioteki
+          href: /azure/databricks/dev-tools/cli/libraries-cli
+          maintainContext: true
+        - name: Wpisy tajne
+          href: /azure/databricks/dev-tools/cli/secrets-cli
+          maintainContext: true
+        - name: Stos
+          href: /azure/databricks/dev-tools/cli/stack-cli
+          maintainContext: true
+        - name: Obszar roboczy
+          href: /azure/databricks/dev-tools/cli/workspace-cli
+          maintainContext: true
     - name: Interfejs API REST usługi Azure Databricks
       href: /rest/api/databricks
     - name: Szablon usługi Resource Manager
@@ -1620,6 +1663,9 @@
                   maintainContext: true
                 - name: Databricks Runtime 6.2 ML
                   href: /azure/databricks/release-notes/runtime/6.2ml
+                  maintainContext: true
+                - name: Środowisko Databricks Runtime 6.2 Genomics
+                  href: /azure/databricks/release-notes/runtime/6.2genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

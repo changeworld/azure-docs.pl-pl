@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: Dodawanie aplikacji lokalnej za pomocą serwera proxy aplikacji
       href: application-proxy-add-on-premises-application.md
+- name: Samples
+  items:
+    - name: Przykłady programu Azure PowerShell dla serwera proxy aplikacji
+      href: application-proxy-powershell-samples.md
 - name: Pojęcia
   expanded: true
   items:
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: Aprowizowanie aplikacji (SCIM)
       items:
+        - name: Jak działa aprowizacja
+          href: how-provisioning-works.md
         - name: Planowanie wdrożenia automatycznego aprowizowania użytkowników
           href: plan-auto-user-provisioning.md
-        - name: Automatyczna aprowizacja w aplikacjach obsługujących standard SCIM
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Aprowizowanie automatyczne a ręczne
-          href: application-provisioning-config-how-to.md
     - name: Aprowizacja w usłudze Cloud HR
       items:
         - name: Planowanie wdrożenia aprowizowania użytkowników w usłudze Cloud HR
@@ -90,7 +92,7 @@
           href: application-proxy-connectors.md
         - name: Grupy łączników
           href: application-proxy-connector-groups.md
-        - name: Bezpieczeństwo
+        - name: Zabezpieczenia
           href: application-proxy-security.md
         - name: Topologia sieci
           href: application-proxy-network-topology.md
@@ -139,6 +141,8 @@
           items:
             - name: Konfigurowanie zgody użytkownika
               href: configure-user-consent.md
+            - name: Udzielanie zgody administratora całej dzierżawy
+              href: grant-admin-consent.md
             - name: Konfigurowanie przepływu pracy zgody administratora (wersja zapoznawcza)
               href: configure-admin-consent-workflow.md
             - name: Metody przypisywania użytkowników i grup do aplikacji
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Aprowizowanie aplikacji (SCIM)
       items:
-        - name: Konfigurowanie aprowizacji aplikacji
+        - name: Konfigurowanie aprowizacji dla aplikacji z galerii
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Tworzenie punktu końcowego SCIM i konfigurowanie aprowizacji
+          href: use-scim-to-provision-users-and-groups.md
+        - name: Edytowanie mapowań atrybutów
           items:
-            - name: Konfigurowanie automatycznej aprowizacji użytkowników
-              href: configure-automatic-user-provisioning-portal.md
-            - name: Automatyczna aprowizacja przy użyciu standardu SCIM
-              href: use-scim-to-provision-users-and-groups.md
             - name: Dostosowywanie mapowań atrybutów
               href: Customize-application-attributes.md
             - name: Pisanie wyrażeń do mapowania atrybutów
               href: functions-for-customizing-application-data.md
+        - name: Dołączanie użytkowników i grup do zakresu lub ich wykluczanie
+          items:
             - name: Określanie zakresu użytkowników lub grup do aprowizacji
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Pomijanie usuwania dla użytkowników spoza zakresu
               href: skip-out-of-scope-deletions.md
+        - name: Monitorowanie aprowizacji i raportowanie
+          items:
             - name: Monitorowanie stanu i wydajności aprowizacji
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Raport dotyczący aprowizacji aplikacji
               href: check-status-user-account-provisioning.md
             - name: Eksportowanie i importowanie konfiguracji
               href: export-import-provisioning-configuration.md
-            - name: Automatyzowanie konfiguracji przy użyciu programu MS Graph
-              href: application-provisioning-configure-api.md
+        - name: Automatyzowanie konfiguracji przy użyciu programu MS Graph
+          href: application-provisioning-configure-api.md
         - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
           items:
             - name: Rozwiązywanie problemów z aprowizowaniem aplikacji

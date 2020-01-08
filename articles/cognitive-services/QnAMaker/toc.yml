@@ -14,6 +14,8 @@
       href: quickstarts/add-question-metadata-portal.md
     - name: Uzyskiwanie odpowiedzi przy użyciu narzędzia Postman lub cURL
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: Testowanie przy użyciu pliku wsadowego
+      href: Quickstarts/batch-testing.md
     - name: Korzystanie z interfejsów API REST
       items:
         - name: Tworzenie nowej bazy wiedzy
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-knowledge-rest-api-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: Publikowanie bazy wiedzy
@@ -37,7 +39,7 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: Uzyskiwanie odpowiedzi
@@ -79,7 +81,7 @@
     - name: Cykl życia opracowywania bazy wiedzy
       href: Concepts/development-lifecycle-knowledge-base.md
       displayName: 'version control, test, index, publish, monitor usage, create'
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
     - name: Współczynnik ufności
@@ -156,7 +158,7 @@
         - name: Interfejs API trenowania
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: Przykłady
+    - name: Samples
       items:
         - name: Bot pomocy funkcji QnA Maker
           href: 'https://aka.ms/qnamakerhelpbotsample'
@@ -168,7 +170,7 @@
               href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
             - name: Pakiet NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
-            - name: Przykłady
+            - name: Samples
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp'
         - name: Przejdź
           items:
@@ -176,7 +178,7 @@
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker'
             - name: SDK
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker'
-            - name: Przykłady
+            - name: Samples
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-go'
         - name: Node.js
           items:
@@ -184,7 +186,7 @@
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
               href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
-            - name: Przykłady
+            - name: Samples
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
           items:
@@ -192,7 +194,7 @@
               href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
-            - name: Przykłady
+            - name: Samples
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-python'
         - name: Ruby
           items:

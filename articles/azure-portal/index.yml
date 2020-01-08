@@ -3,21 +3,21 @@ title: Dokumentacja witryny Azure Portal
 summary: Witryna Azure Portal to ujednolicona, oparta na sieci Web konsola, która stanowi alternatywę dla narzędzi wiersza polecenia. Przy użyciu witryny Azure Portal można zarządzać subskrypcją platformy Azure. Twórz i monitoruj zarówno proste aplikacje internetowe, jak i złożone wdrożenia w chmurze oraz zarządzaj nimi. Twórz niestandardowe pulpity nawigacyjne, aby zorganizować widok zasobów i skonfigurować opcje ułatwień dostępu w celu zapewnienia najlepszego środowiska.
 metadata:
   title: Dokumentacja witryny Azure Portal
-  description: Dowiedz się, jak zarządzać subskrypcją i zasobami platformy Azure za pomocą konsoli internetowej Azure Portal.
+  description: Dowiedz się, jak zarządzać subskrypcjami i zasobami platformy Azure za pomocą konsoli internetowej Azure Portal. Witryna Azure Portal jest alternatywą dla korzystania z narzędzi wiersza polecenia.
   services: Azure portal
   ms.service: azure-portal
   ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: kfollis
-  ms.author: kfollis
-  ms.date: 09/17/2019
-  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
-  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  author: mblythe
+  ms.author: mblythe
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 4c04ae88f69ab4e17ea70e94683ce0add4823040
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 09/17/2019
-  ms.locfileid: "71076651"
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75640044"
 landingContent:
 - title: Informacje o witrynie Azure Portal
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Ustawianie preferencji portalu
+      url: set-preferences.md
     - text: Tworzenie i udostępnianie niestandardowych pulpitów nawigacyjnych
       url: azure-portal-dashboards.md
     - text: Zarządzanie elementami ulubionymi

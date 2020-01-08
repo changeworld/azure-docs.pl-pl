@@ -36,7 +36,15 @@
       href: tutorial-backup-windows-server-to-azure.md
     - name: Przywracanie plików do systemu Windows Server
       href: tutorial-backup-restore-files-windows-server.md
-- name: Przykłady
+    - name: Bazy danych platformy SAP HANA na maszynach wirtualnych platformy Azure — używanie interfejsu wiersza polecenia
+      items:
+        - name: Wykonywanie kopii zapasowej baz danych platformy SAP HANA — interfejs wiersza polecenia
+          href: tutorial-sap-hana-backup-cli.md
+        - name: Przywracanie baz danych platformy SAP HANA — interfejs wiersza polecenia
+          href: tutorial-sap-hana-restore-cli.md
+        - name: Zarządzanie kopiami zapasowymi baz danych platformy SAP HANA — interfejs wiersza polecenia
+          href: tutorial-sap-hana-manage-cli.md
+- name: Samples
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
@@ -58,7 +66,7 @@
           href: sap-hana-backup-support-matrix.md
         - name: Obsługiwane jednostki SKU maszyny wirtualnej dla usługi Azure Policy
           href: backup-azure-policy-supported-skus.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Kontrola dostępu oparta na rolach
           href: backup-rbac-rs-vault.md
@@ -122,7 +130,7 @@
               href: backup-azure-exchange-mabs.md
             - name: Farma programu SharePoint
               href: backup-azure-backup-sharepoint-mabs.md
-            - name: Oprogramowanie SQL Server
+            - name: SQL Server
               href: backup-azure-sql-mabs.md
             - name: Ochrona stanu systemu i odzyskiwanie systemu od zera
               href: backup-mabs-system-state-and-bmr.md
@@ -244,6 +252,8 @@
           href: manage-monitor-sql-database-backup.md
     - name: Bazy danych platformy SAP HANA na maszynach wirtualnych platformy Azure
       items:
+        - name: Informacje o kopii zapasowej platformy SAP HANA na maszynach wirtualnych platformy Azure
+          href: sap-hana-db-about.md
         - name: Tworzenie kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
           href: backup-azure-sap-hana-database.md
         - name: Przywracanie baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
@@ -292,7 +302,7 @@
           href: backup-azure-mars-troubleshoot.md
         - name: Udział plików platformy Azure
           href: troubleshoot-azure-files.md
-        - name: Oprogramowanie SQL Server
+        - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
         - name: Kopia zapasowa systemu SAP HANA na maszynach wirtualnych platformy Azure
           href: backup-azure-sap-hana-database-troubleshoot.md

@@ -64,11 +64,13 @@
       href: sql-database-features.md
     - name: Przewodnik z instrukcjami
       href: sql-database-howto.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Omówienie zabezpieczeń
           href: sql-database-security-overview.md
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+        - name: Najlepsze rozwiązania dotyczące zabezpieczeń
+          href: sql-database-security-best-practice.md
         - name: Zarządzanie dostępem
           items:
             - name: Kontrola dostępu
@@ -157,7 +159,7 @@
               href: 'https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
             - name: SSMS
               href: sql-database-connect-query-ssms.md
-            - name: Portal Azure
+            - name: Azure Portal
               href: sql-database-connect-query-portal.md
             - name: VS Code
               href: sql-database-connect-query-vscode.md
@@ -292,7 +294,7 @@
               href: sql-database-elastic-scale-introduction.md
             - name: Słownik
               href: sql-database-elastic-scale-glossary.md
-            - name: Elastyczna biblioteka kliencka — konsolidowanie
+            - name: Elastyczna biblioteka kliencka
               href: sql-database-elastic-database-client-library.md
             - name: Dzielenie map na fragmenty
               href: sql-database-elastic-scale-shard-map-management.md
@@ -473,7 +475,7 @@
           href: sql-database-servers.md
     - name: Przewodniki Szybki start
       items:
-        - name: Przycisk Utwórz
+        - name: Utwórz
           items:
             - name: Korzystanie z witryny Azure Portal
               href: sql-database-single-database-get-started.md
@@ -672,7 +674,7 @@
               href: elastic-jobs-tsql.md
             - name: Migracja (ze starego zadania elastycznego)
               href: elastic-jobs-migrate.md
-    - name: Przykłady
+    - name: Samples
       items:
         - name: Interfejs wiersza polecenia platformy Azure
           href: sql-database-cli-samples.md?tabs=single-database
@@ -683,18 +685,19 @@
         - name: Przykłady kodu
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Wystąpienie zarządzane SQL
+  href: sql-database-managed-instance-index.yml
   items:
-    - name: Dokumentacja wystąpienia zarządzanego
-      href: sql-database-managed-instance-index.yml
     - name: Omówienie
-      href: sql-database-managed-instance.md
-    - name: Pule wystąpień
-      href: sql-database-instance-pools.md
-    - name: Często zadawane pytania
-      href: sql-database-managed-instance-faq.md
+      items:
+        - name: Wystąpienie zarządzane
+          href: sql-database-managed-instance.md
+        - name: Pule wystąpień
+          href: sql-database-instance-pools.md
+        - name: Często zadawane pytania
+          href: sql-database-managed-instance-faq.md
     - name: Przewodniki Szybki start
       items:
-        - name: Przycisk Utwórz
+        - name: Utwórz
           items:
             - name: Korzystanie z witryny Azure Portal
               href: sql-database-managed-instance-get-started.md
@@ -718,14 +721,18 @@
       items:
         - name: Migrowanie za pomocą usługi DMS
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-        - name: Konfigurowanie replikacji transakcyjnej
-          href: replication-with-sql-database-managed-instance.md
         - name: Konfigurowanie zabezpieczeń
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Dodawanie wystąpienia zarządzanego do grupy trybu failover
           href: sql-database-managed-instance-failover-group-tutorial.md
         - name: Migrowanie lokalnych użytkowników i grup
           href: tutorial-managed-instance-azure-active-directory-migration.md
+        - name: Replikacja transakcyjna
+          items:
+            - name: Z publicznego wystąpienia zarządzanego do podsieci wystąpienia zarządzanego
+              href: replication-with-sql-database-managed-instance.md
+            - name: 'Publiczne wystąpienie zarządzane, rozproszone wystąpienie zarządzane, podsieć SQL'
+              href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: Pojęcia
       items:
         - name: Dokumentacja interfejsu API zarządzania
@@ -740,7 +747,7 @@
           items:
             - name: Serwery połączone
               href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
-            - name: Usługa Service Broker
+            - name: Service Broker
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/sql-database/toc.json'
             - name: Poczta bazy danych
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/sql-database/toc.json'
@@ -778,7 +785,7 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Łączenie aplikacji
           href: sql-database-managed-instance-connect-app.md
-    - name: Przykłady
+    - name: Samples
       items:
         - name: Interfejs wiersza polecenia platformy Azure
           href: sql-database-cli-samples.md?tabs=managed-instance

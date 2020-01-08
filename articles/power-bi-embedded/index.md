@@ -1,5 +1,5 @@
 ---
-title: Dokumentacja usługi Power BI Embedded — samouczki i dokumentacja interfejsu API | Microsoft Docs
+title: Dokumentacja usługi Azure Power BI Embedded
 description: Dowiedz się, jak osadzać w aplikacjach wizualizacje danych i interakcyjne raporty usługi Power BI. Samouczki, dokumentacja interfejsu API i inne dokumenty.
 services: power-bi-embedded
 author: rkarlin
@@ -9,12 +9,12 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: decbe7c59f46ea77b1f5088bab8daf64722f2a8c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bdc609735380a280b754841009d2706c245af961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427097"
 ---
 # <a name="power-bi-embedded-documentation"></a>Dokumentacja usługi Power BI Embedded
 

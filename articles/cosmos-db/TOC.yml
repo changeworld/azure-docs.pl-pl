@@ -10,7 +10,7 @@
     - name: Tworzenie zasobów usługi Cosmos DB
       expanded: true
       items:
-        - name: Portal Azure
+        - name: Azure Portal
           href: create-cosmosdb-resources-portal.md
         - name: Aplikacja platformy .NET — wersja 4 zestawu SDK
           href: create-sql-api-dotnet-v4.md
@@ -60,7 +60,7 @@
       href: create-notebook-visualize-data.md
     - name: 5 — Globalne dystrybuowanie danych
       href: tutorial-global-distribution-sql-api.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady zestawów SDK dla platformy .NET V2
       href: sql-api-dotnet-samples.md
@@ -129,6 +129,8 @@
           href: set-throughput.md
         - name: Aprowizacja przepływności — tryb autopilota
           href: provision-throughput-autopilot.md
+        - name: Autopilot — często zadawane pytania
+          href: autopilot-faq.md
     - name: Dokumentacja dotycząca zapytań SQL
       items:
         - name: Wprowadzenie
@@ -508,7 +510,7 @@
           href: optimize-dev-test.md
         - name: Optymalizacja kosztów z użyciem pojemności zarezerwowanej
           href: cosmos-db-reserved-capacity.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Omówienie
           href: database-security.md
@@ -777,7 +779,7 @@
               href: tutorial-query-table.md
             - name: 4 — Globalne dystrybuowanie danych
               href: tutorial-global-distribution-table.md
-        - name: Przykłady
+        - name: Samples
           items:
             - name: .NET
               href: table-storage-how-to-use-dotnet.md
@@ -891,7 +893,7 @@
           href: how-to-manage-indexing-policy.md
         - name: Definiowanie unikatowych kluczy
           href: how-to-define-unique-keys.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       items:
         - name: Porady dotyczące wydajności
           items:
@@ -955,7 +957,7 @@
           href: how-to-write-javascript-query-api.md
         - name: 'Używanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)'
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Konfigurowanie zapory IP
           href: how-to-configure-firewall.md
@@ -982,6 +984,8 @@
       items:
         - name: Monitorowanie usługi Cosmos DB
           href: monitor-cosmos-db.md
+        - name: Monitorowanie za pomocą dzienników diagnostycznych
+          href: cosmosdb-monitor-resource-logs.md
         - name: Usługa Azure Monitor dla rozwiązania Cosmos (wersja zapoznawcza)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
         - name: Wyświetlanie metryk z konta usługi Cosmos DB

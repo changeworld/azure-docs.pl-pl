@@ -19,7 +19,7 @@
           href: tutorial-bulk-invite.md
         - name: Wymuszanie uwierzytelniania wieloskładnikowego
           href: b2b-tutorial-require-mfa.md
-    - name: Przykłady
+    - name: Samples
       items:
         - name: Przykład portalu do samodzielnej rejestracji
           href: self-service-portal.md
@@ -28,6 +28,8 @@
     - name: Pojęcia
       expanded: false
       items:
+        - name: Najlepsze rozwiązania B2B
+          href: b2b-fundamentals.md
         - name: Licencjonowanie B2B
           href: licensing-guidance.md
         - name: Model B2B i udostępnianie zewnętrzne w usłudze Office 365

@@ -28,6 +28,8 @@
           href: classroom-labs-scenarios.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Podręcznik administratora
+      href: administrator-guide.md
     - name: Laboratoria klas — typy klas
       items:
         - name: Omówienie typów klas
@@ -52,6 +54,8 @@
           href: how-to-connect-peer-virtual-network.md
         - name: Dołączanie lub odłączanie galerii obrazów udostępnionych
           href: how-to-attach-detach-shared-image-gallery.md
+        - name: Dodawanie użytkownika jako właściciela do laboratorium zajęć
+          href: how-to-add-user-lab-owner.md
     - name: Tworzenie i konfigurowanie laboratoriów na potrzeby zajęć (instruktor)
       items:
         - name: Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi
@@ -70,6 +74,8 @@
           href: how-to-use-shared-image-gallery.md
         - name: Włączanie połączenia pulpitu zdalnego dla systemu Linux
           href: how-to-enable-remote-desktop-linux.md
+        - name: Włączanie automatycznego zamykania po rozłączeniu
+          href: how-to-enable-shutdown-disconnect.md
         - name: Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
           href: how-to-enable-nested-virtualization-template-vm.md
         - name: Przygotowywanie maszyny wirtualnej szablonu z systemem Windows

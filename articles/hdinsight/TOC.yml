@@ -17,9 +17,11 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: Zarządzanie klastrami usługi HDInsight — Powershell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Tworzenie klastrów przy użyciu elementów Runbook
+          href: ./manage-clusters-runbooks.md
         - name: Tworzenie potoku ETL
           href: ./hdinsight-sales-insights-etl.md
-    - name: Przykłady
+    - name: Samples
       items:
         - name: Przykłady interfejsu wiersza polecenia platformy Azure
           href: ./azure-cli-samples.md
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: Tworzenie klastrów przy użyciu platformy .NET
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: Korzystanie z magazynu klastra
-          items:
-            - name: Korzystanie z usługi Azure Storage
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: Korzystanie z usługi Azure Data Lake Storage Gen2
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Korzystanie z usługi Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Błędy podczas tworzenia klastrów
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: Korzystanie z magazynu klastra
+                  items:
+                    - name: Korzystanie z usługi Azure Storage
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: Korzystanie z usługi Azure Data Lake Storage Gen2
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: Korzystanie z usługi Azure Data Lake Storage Gen1
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: Rozszerzanie klastrów
           items:
             - name: Instalowanie aplikacji usługi HDInsight
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: Pojęcia
       items:
+        - name: Migrowanie obciążeń platformy Kafka do wersji 4.0
+          href: ./kafka/migrate-versions.md
         - name: Magazyn i skalowalność
           href: ./kafka/apache-kafka-scalability.md
         - name: Wysoka dostępność danych
@@ -545,6 +564,8 @@
       items:
         - name: Programowanie
           items:
+            - name: Korzystanie z serwera proxy REST platformy Kafka
+              href: ./kafka/rest-proxy.md
             - name: Włączanie automatycznego tworzenia tematów
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Używanie usługi Apache Kafka z usługą IoT Hub
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Powolny reduktor
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Limit czasu bramy usługi Apache Hive
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: Przekroczenie limitu czasu widoku w usłudze Apache Hive
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: Błąd uprawnień podczas tworzenia tabeli
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: Instrukcje
       items:
+        - name: Zarządzanie poświadczeniami przy użyciu brokera tożsamości
+          href: ./domain-joined/identity-broker.md
         - name: Tworzenie klastrów ESP i synchronizowanie ich ze środowiskiem lokalnym
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: Tworzenie sieci wirtualnych dla usługi HDInsight
           href: ./hdinsight-create-virtual-network.md
         - name: Łączenie usługi HDInsight z siecią lokalną
           href: ./connect-on-premises-network.md
-        - name: Konfigurowanie zabezpieczeń przedsiębiorstwa w usłudze HDInsight
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: Konfigurowanie klastrów ESP za pomocą usługi Azure AD DS
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: Synchronizowanie użytkowników usługi Azure AD z klastrem usługi HDInsight

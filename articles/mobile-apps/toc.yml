@@ -22,7 +22,7 @@
       href: code-hosting-services.md
     - name: DevOps
       items:
-        - name: Co to jest metodyka DevOps
+        - name: Co to jest metodyka DevOps?
           href: devops.md
         - name: Ciągła kompilacja i integracja
           href: continuous-integration.md
@@ -32,7 +32,7 @@
           href: continuous-delivery.md
     - name: Analizowanie użycia i zachowania użytkowników
       href: analytics.md
-    - name: Raportowanie awarii w czasie rzeczywistym
+    - name: Raportowanie błędów w czasie rzeczywistym
       href: diagnostics.md
     - name: Powiadomienia push
       href: push-notifications.md
@@ -42,7 +42,7 @@
       href: cognitive-services.md
     - name: Azure Maps
       href: azure-maps.md
-    - name: Usługa Azure CDN
+    - name: Azure Content Delivery Network
       href: azure-cdn.md
     - name: Azure Cognitive Search
       href: azure-search.md

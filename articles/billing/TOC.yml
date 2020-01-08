@@ -3,6 +3,12 @@
 - name: Informacje na temat rozliczeń na platformie Azure
   expanded: true
   items:
+    - name: Konta rozliczeniowe i zakresy
+      href: billing-view-all-accounts.md
+    - name: Konta rozliczeniowe dla umowy klienta firmy Microsoft
+      href: billing-mca-overview.md
+    - name: Konta rozliczeniowe dla umowy partnera firmy Microsoft
+      href: mpa-overview.md
     - name: Opis zawartości rachunku
       href: billing-understand-your-bill.md
     - name: Opis zawartości rachunku — umowa klienta firmy Microsoft
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: Jak zapłacić rachunek — umowa klienta firmy Microsoft
       href: billing-how-to-pay-bill.md
-    - name: Konta rozliczeniowe dla umowy klienta firmy Microsoft
-      href: billing-mca-overview.md
-    - name: Konta rozliczeniowe dla umowy partnera firmy Microsoft
-      href: mpa-overview.md
 - name: Zarządzanie kosztami
   items:
     - name: Zapobieganie powstawaniu nieoczekiwanych kosztów
@@ -69,7 +71,7 @@
               href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
             - name: Cosmos DB
               href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
-            - name: SQL Database
+            - name: Baza danych SQL
               href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
             - name: Azure Data Explorer
               href: ../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: Identyfikator partnera linku
       href: billing-partner-admin-link-started.md
-    - name: Wyświetlanie kont bilingowych
-      href: billing-view-all-accounts.md
     - name: Organizowanie kosztów w sekcjach faktury
       href: billing-mca-section-invoice.md
     - name: Zadania umowy EA w umowie klienta firmy Microsoft
@@ -216,7 +216,7 @@
     - name: Dołączanie dzierżawy usługi Azure AD
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: Limity przydziału i ograniczenia
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Rozwiązywanie problemów
   items:
     - name: Nie odnaleziono żadnych subskrypcji
@@ -233,7 +233,7 @@
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontakt z pomocą techniczną
       href: ../azure-supportability/how-to-create-azure-support-request.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs API REST
       items:

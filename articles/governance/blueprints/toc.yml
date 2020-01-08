@@ -25,7 +25,7 @@
     - name: Ochrona nowych zasobów za pomocą blokad zasobów strategii
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Indeks
       displayName: 'list, examples'
@@ -63,6 +63,17 @@
         - name: Procedura wdrażania
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: HIPAA HITRUST
+      items:
+        - name: Omówienie
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/index.md
+        - name: Mapowanie kontrolek
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/control-mapping.md
+        - name: Procedura wdrażania
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/deploy.md
     - name: IRS 1075
       items:
         - name: Omówienie

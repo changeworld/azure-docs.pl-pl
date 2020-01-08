@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Custom Providers
+summary: Definiowanie niestandardowych interfejsów API rozszerzających środowisko platformy Azure
+metadata:
+  title: Dokumentacja usługi Azure Custom Providers
+  description: Usługa Azure Custom Providers to platforma rozszerzeń platformy Azure umożliwiająca definiowanie niestandardowych interfejsów API
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648348"
+landingContent:
+- title: Informacje o usłudze Azure Custom Providers
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Custom Providers?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Usługa Azure Policy dla skojarzeń dostawcy niestandardowego
+      url: concepts-built-in-policy.md
+    - text: Omówienie dołączania zasobów
+      url: concepts-resource-onboarding.md
+- title: Tworzenie dostawców niestandardowych
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie niestandardowego dostawcy zasobów
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: Wprowadzenie do dostawców niestandardowych
+      url: tutorial-get-started-with-custom-providers.md
+    - text: Konfigurowanie usługi Azure Functions
+      url: tutorial-custom-providers-function-setup.md
+    - text: Tworzenie punktu końcowego usługi RESTful
+      url: tutorial-custom-providers-function-authoring.md
+    - text: Tworzenie i używanie dostawców niestandardowych
+      url: tutorial-custom-providers-create.md
+    - text: Rozszerzanie zasobów
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: Dodawanie akcji niestandardowych do platformy Azure
+      url: custom-providers-action-endpoint-how-to.md
+    - text: Dodawanie zasobów niestandardowych do platformy Azure
+      url: custom-providers-resources-endpoint-how-to.md
+- title: Przykłady
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Dokumentacja serwera proxy zasobu niestandardowego
+      url: proxy-resource-endpoint-reference.md
+    - text: Dokumentacja pamięci podręcznej zasobu niestandardowego
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: Dokumentacja punktu końcowego usługi RESTful dostawcy niestandardowego
+      url: reference-custom-providers-csharp-endpoint.md

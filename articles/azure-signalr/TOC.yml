@@ -25,7 +25,11 @@
   items:
     - name: Tworzenie bezserwerowej aplikacji czasu rzeczywistego z uwierzytelnianiem
       href: signalr-tutorial-authenticate-azure-functions.md
-- name: Przykłady
+    - name: Monitorowanie
+      items:
+        - name: Monitorowanie usługi SignalR Service przy użyciu dzienników diagnostycznych
+          href: signalr-tutorial-diagnostic-logs.md
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://github.com/aspnet/AzureSignalR-samples'
@@ -100,7 +104,7 @@
     - name: Często zadawane pytania
       href: signalr-resource-faq.md
     - name: Limity poziomów subskrypcji usługi SignalR Service
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: Cennik
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Filmy wideo

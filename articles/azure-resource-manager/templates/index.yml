@@ -1,0 +1,125 @@
+### YamlMime:Landing
+title: Dokumentacja szablonów usługi Azure Resource Manager
+summary: Szablon usługi Resource Manager to plik w formacie JavaScript Object Notation (JSON) definiujący infrastrukturę i konfigurację projektu.
+metadata:
+  title: Dokumentacja usługi Azure Resource Manager
+  description: Dowiedz się, jak opracowywać szablony usługi Azure Resource Manager i jak za ich pomocą wdrażać zasoby platformy Azure
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75469934"
+landingContent:
+- title: Informacje o szablonach usługi Azure Resource Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to są szablony?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Najlepsze rozwiązania
+      url: template-best-practices.md
+    - text: Tryby wdrażania
+      url: deployment-modes.md
+    - text: Połączone szablony
+      url: linked-templates.md
+    - text: Wdrażanie poziomu subskrypcji
+      url: deploy-to-subscription.md
+  - linkListType: video
+    links:
+    - text: Co nowego?
+      url: https://youtu.be/3D-JIKShrws
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie szablonów — portal
+      url: quickstart-create-templates-use-the-portal.md
+    - text: Tworzenie szablonów — program VS Code
+      url: quickstart-create-templates-use-visual-studio-code.md
+    - text: Tworzenie szablonów — program Visual Studio
+      url: create-visual-studio-deployment-project.md
+  - linkListType: tutorial
+    links:
+    - text: Samouczki dla początkujących
+      url: template-tutorial-create-first-template.md
+    - text: Wdrażanie wielu wystąpień
+      url: template-tutorial-create-multiple-instances.md
+    - text: Ustawianie kolejności wdrażania
+      url: template-tutorial-create-templates-with-dependent-resources.md
+    - text: Integrowanie usługi Key Vault
+      url: template-tutorial-use-key-vault.md
+- title: Tworzenie szablonów
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Korzystanie z programu VS Code
+      url: use-vs-code-to-create-template.md
+    - text: Korzystanie z funkcji
+      url: template-functions.md
+    - text: Definiowanie parametrów
+      url: template-parameters.md
+    - text: Definiowanie zmiennych
+      url: template-variables.md
+    - text: Definiowanie zasobów
+      url: template-syntax.md#resources
+    - text: Definiowanie danych wyjściowych
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Składnia pliku szablonu
+      url: template-syntax.md
+    - text: Szablony przewodników Szybki start platformy Azure
+      url: https://azure.microsoft.com/resources/templates/
+- title: Wdrażanie szablonów
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Przy użyciu programu PowerShell
+      url: deploy-powershell.md
+    - text: Przy użyciu interfejsu wiersza polecenia
+      url: deploy-cli.md
+    - text: Przy użyciu portalu
+      url: deploy-portal.md
+    - text: Przy użyciu interfejsu API REST
+      url: deploy-rest.md
+    - text: Wdrożenie warunkowe
+      url: template-deploy-what-if.md
+    - text: Wyświetlanie historii wdrażania
+      url: deployment-history.md
+- title: Zarządzanie szablonami
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Eksportowanie szablonów
+      url: export-template-portal.md
+    - text: CI/CD
+      url: add-template-to-azure-pipelines.md
+- title: Eksplorowanie zawartości referencyjnej
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Dokumentacja dotycząca szablonów
+      url: /azure/templates/
+    - text: Interfejs API REST
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python

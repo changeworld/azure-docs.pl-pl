@@ -6,6 +6,8 @@
       href: api-management-key-concepts.md
     - name: Dostępność funkcji usługi API Management
       href: api-management-features.md
+    - name: Zarządzanie mikrousługami wdrożonymi w usłudze AKS
+      href: api-management-kubernetes.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -33,7 +35,7 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 — Dostosowywanie portalu deweloperów
       href: api-management-howto-developer-portal-customize.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Zasady
       href: policy-samples.md
@@ -49,7 +51,7 @@
           href: api-management-howto-policies.md
         - name: Informacje ogólne o zasadach — indeks
           href: api-management-policies.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Wbudowane mechanizmy zabezpieczeń
           href: api-management-security-controls.md

@@ -24,22 +24,22 @@
 - name: Pojęcia
   items:
     - name: Platformy sztucznej inteligencji i uczenia głębokiego
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: Języki programowania
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: Narzędzia programistyczne
       href: dsvm-tools-development.md
     - name: Narzędzia ML i nauki o danych
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: Platformy danych
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: Narzędzia do wprowadzania danych
       href: dsvm-tools-ingestion.md
-    - name: Narzędzia do eksploracji i wizualizacji danych
-      href: dsvm-tools-explore-and-visualize.md
+    - name: Narzędzia do pracy
+      href: dsvm-tools-productivity.md
     - name: Wskazówki i zabezpieczenia dotyczące przedsiębiorstwa
       href: dsvm-enterprise-overview.md
-- name: Przykłady
+- name: Samples
   href: dsvm-samples-and-walkthroughs.md
 - name: Przewodniki z instrukcjami
   items:

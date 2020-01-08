@@ -8,7 +8,17 @@
       href: terminology.md
 - name: Przewodniki Szybki start
   items:
-    - name: Aplikacje
+    - name: Monitorowanie zasobu platformy Azure
+      href: learn/quick-monitor-azure-resource.md
+    - name: Monitorowanie maszyn wirtualnych
+      items:
+        - name: Zbieranie — maszyny wirtualne platformy Azure
+          href: learn/quick-collect-azurevm.md
+        - name: Zbieranie — komputer z systemem Linux
+          href: learn/quick-collect-linux-computer.md
+        - name: Zbieranie — komputer z systemem Windows
+          href: learn/quick-collect-windows-computer.md
+    - name: Monitorowanie aplikacji
       items:
         - name: Aplikacja .NET
           href: learn/quick-monitor-portal.md
@@ -20,26 +30,20 @@
           href: learn/mobile-center-quickstart.md
         - name: Aplikacja internetowa
           href: app/website-monitoring.md
-    - name: Maszyny wirtualne
-      items:
-        - name: Zbieranie — maszyny wirtualne platformy Azure
-          href: learn/quick-collect-azurevm.md
-        - name: Zbieranie — komputer z systemem Linux
-          href: learn/quick-collect-linux-computer.md
-        - name: Zbieranie — komputer z systemem Windows
-          href: learn/quick-collect-windows-computer.md
 - name: Samouczki
   items:
-    - name: Dzienniki
-      items:
-        - name: Log Analytics
-          href: log-query/get-started-portal.md
-        - name: Rejestrowanie zapytań
-          href: log-query/get-started-queries.md
-        - name: Pulpit nawigacyjny z danymi dziennika
-          href: learn/tutorial-logs-dashboards.md
-        - name: Alerty dotyczące danych dziennika
-          href: learn/tutorial-response.md
+    - name: Tworzenie wykresu metryk
+      href: learn/tutorial-metrics-explorer.md
+    - name: Zbieranie dzienników z zasobu platformy Azure
+      href: learn/tutorial-resource-logs.md
+    - name: Pisanie zapytań dziennika
+      href: log-query/get-started-queries.md
+    - name: Tworzenie pulpitu nawigacyjnego na podstawie zapytania dziennika
+      href: learn/tutorial-logs-dashboards.md
+    - name: Tworzenie alertu na podstawie zapytania dziennika
+      href: learn/tutorial-response.md
+    - name: Automatyczne skalowanie dotyczące wydajności i harmonogramu
+      href: learn/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: Znajdowanie wyjątków aplikacji w czasie wykonywania
@@ -52,11 +56,7 @@
           href: learn/tutorial-users.md
         - name: Pulpit nawigacyjny z danymi aplikacji
           href: learn/tutorial-app-dashboards.md
-    - name: Archiwizowanie danych dzienników i metryk platformy
-      href: learn/tutorial-archive-data.md
-    - name: Automatyczne skalowanie dotyczące wydajności i harmonogramu
-      href: learn/tutorial-autoscale-performance-schedule.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Azure PowerShell
       href: platform/powershell-samples.md
@@ -479,50 +479,46 @@
           href: insights/monitor-azure-resource.md
         - name: Monitorowanie grup zasobów
           href: insights/resource-group-insights.md
-        - name: Omówienie dzienników platformy
-          href: platform/platform-logs-overview.md
-        - name: Dzienniki zasobów
+        - name: Dzienniki platformy
           items:
             - name: Omówienie
-              displayname: Resource logs
-              href: platform/resource-logs-overview.md
-            - name: Zbieranie dzienników w usłudze Azure Monitor
-              displayname: Resource logs
-              href: platform/resource-logs-collect-workspace.md
-            - name: Archiwizowanie w magazynie
-              displayname: Resource logs
-              href: platform/resource-logs-collect-storage.md
-            - name: Przesyłanie strumieniowe do usługi Event Hubs
-              displayname: Resource logs
-              href: platform/resource-logs-stream-event-hubs.md
-        - name: Dziennik aktywności
-          items:
-            - name: Omówienie
-              displayname: Activity log
-              href: platform/activity-logs-overview.md
-            - name: Zbieranie danych przy użyciu ustawienia diagnostycznego
-              displayname: Activity log
-              href: platform/diagnostic-settings-subscription.md
-            - name: Wyświetlanie i pobieranie
-              displayname: Activity log
+              displayName: 'Platform logs, Resource logs, Activity log'
+              href: platform/platform-logs-overview.md
+            - name: Wyświetlanie dziennika aktywności
+              displayName: Platform logs
               href: platform/activity-log-view.md
-            - name: Zbieranie i analizowanie
-              displayname: Activity log
-              href: platform/activity-log-collect.md
-            - name: Zbieranie w wielu dzierżawach
-              displayname: Activity log
-              href: platform/activity-log-collect-tenants.md
-            - name: Eksportowanie
-              displayname: Activity log
-              href: platform/activity-log-export.md
-            - name: Schemat
-              displayname: Activity log
-              href: platform/activity-log-schema.md
+            - name: Wysyłanie do miejsc docelowych
+              items:
+                - name: Obszar roboczy usługi Log Analytics
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-workspace.md
+                - name: Azure Storage
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-stream-event-hubs.md
+            - name: Starsza kolekcja dzienników aktywności
+              items:
+                - name: Omówienie
+                  displayName: Resource logs
+                  href: platform/diagnostic-settings-legacy.md
+                - name: Zbieranie i analizowanie
+                  displayname: Activity log
+                  href: platform/activity-log-collect.md
+                - name: Zbieranie w wielu dzierżawach
+                  displayname: Activity log
+                  href: platform/activity-log-collect-tenants.md
+                - name: Eksportowanie
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
         - name: Ustawienia diagnostyczne
           items:
             - name: Tworzenie ustawienia diagnostycznego
+              displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings.md
-            - name: Tworzenie ustawienia diagnostycznego przy użyciu usługi Resource Manager
+            - name: Tworzenie przy użyciu usługi Resource Manager
+              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings-template.md
             - name: Zmiana na format magazynu obiektów blob
               displayname: Diagnostic settings
@@ -579,6 +575,8 @@
                   href: platform/log-analytics-agent.md
                 - name: Agenci dla systemu Windows
                   href: platform/agent-windows.md
+                - name: Agenci dla systemu Linux
+                  href: platform/agent-linux.md
                 - name: Rozszerzenie maszyny wirtualnej dla systemu Windows
                   href: ../virtual-machines/windows/extensions-oms.md
                 - name: Rozszerzenie maszyny wirtualnej dla systemu Linux
@@ -739,7 +737,7 @@
           items:
             - name: Azure SQL
               href: insights/azure-sql.md
-            - name: Oprogramowanie SQL Server
+            - name: SQL Server
               href: insights/sql-assessment.md
             - name: Azure Cosmos DB
               href: insights/cosmosdb-insights-overview.md
@@ -1061,7 +1059,7 @@
               href: platform/autoscale-get-started.md
             - name: Ustawienia konfiguracji
               href: platform/autoscale-understanding-settings.md
-            - name: Najlepsze praktyki
+            - name: Najlepsze rozwiązania
               href: platform/autoscale-best-practices.md
             - name: Często używane metryki
               href: platform/autoscale-common-metrics.md
@@ -1111,7 +1109,7 @@
               href: insights/solutions-resources-searches-alerts.md
             - name: Widoki
               href: insights/solutions-resources-views.md
-            - name: Najlepsze praktyki
+            - name: Najlepsze rozwiązania
               href: insights/solutions-best-practices.md
     - name: Integracja z programem System Center
       items:
@@ -1161,10 +1159,16 @@
       items:
         - name: Obsługiwane metryki
           href: platform/metrics-supported.md
+        - name: Metryki eksportowane z użyciem ustawień diagnostycznych
+          href: platform/metrics-supported-export-diagnostic-settings.md
         - name: Obsługiwane metryki dla nowszych alertów
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Usługi, kategorie i schematy dziennika platformy'
-      href: platform/diagnostic-logs-schema.md
+    - name: Dzienniki platformy
+      items:
+        - name: 'Usługi, kategorie i schematy dziennika zasobów'
+          href: platform/diagnostic-logs-schema.md
+        - name: Schemat dziennika aktywności
+          href: platform/activity-log-schema.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Interfejs wiersza polecenia platformy Azure — usługa Application Insights (wersja zapoznawcza)

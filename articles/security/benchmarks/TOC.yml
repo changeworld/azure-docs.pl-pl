@@ -1,0 +1,30 @@
+- name: Test porównawczy zabezpieczeń platformy Azure
+  href: index.yml
+- name: Wprowadzenie
+  href: introduction.md
+- name: Mechanizmy zabezpieczeń
+  items:
+    - name: Omówienie
+      href: overview.md
+    - name: Bezpieczeństwo sieci
+      href: security-control-network-security.md
+    - name: Rejestrowanie i monitorowanie
+      href: security-control-logging-monitoring.md
+    - name: Tożsamość i kontrola dostępu
+      href: security-control-identity-access-control.md
+    - name: Ochrona danych
+      href: security-control-data-protection.md
+    - name: Zarządzanie lukami w zabezpieczeniach
+      href: security-control-vulnerability-management.md
+    - name: Zarządzanie magazynem i zasobami
+      href: security-control-inventory-asset-management.md
+    - name: Bezpieczna konfiguracja
+      href: security-control-secure-configuration.md
+    - name: Ochrona przed złośliwym oprogramowaniem
+      href: security-control-malware-defense.md
+    - name: Odzyskiwanie danych
+      href: security-control-data-recovery.md
+    - name: Reagowanie na zdarzenia
+      href: security-control-incident-response.md
+    - name: Testy penetracyjne i ćwiczenia typu „red team”
+      href: security-control-penetration-tests-red-team-exercises.md

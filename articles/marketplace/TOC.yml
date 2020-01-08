@@ -76,6 +76,8 @@
 - name: Portal Cloud Partner
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
+    - name: Migracja z witryny Cloud Partner Portal do Centrum partnerskiego
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: Przewodnik po portalu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -128,7 +130,7 @@
               href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md
         - name: Szczegółowe informacje o sprzedawcy
           items:
-            - name: Wprowadzenie
+            - name: Getting Started
               href: ./cloud-partner-portal-orig/si-getting-started.md
             - name: Co nowego
               href: ./cloud-partner-portal-orig/si-changes.md
@@ -449,6 +451,8 @@
               href: ./partner-center-portal/create-new-azure-apps-offer.md
             - name: Obsługa opinii dla przeglądu
               href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: Interfejs API do dołączania
+              href: ./partner-center-portal/azure-app-apis.md
         - name: Oferty Dynamics 365
           items:
             - name: Tworzenie oferty Dynamics 365 for Customer Engagement & PowerApps
@@ -512,13 +516,33 @@
     - name: Opcje pomocy technicznej
       href: ./partner-center-portal/support.md
     - name: Analiza w Centrum partnerskim
-      href: ./partner-center-portal/analytics.md
+      items:
+        - name: Analiza na komercyjnej platformie handlowej
+          href: ./partner-center-portal/analytics.md
+        - name: Pulpit nawigacyjny Podsumowanie
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: Pulpit nawigacyjny Zamówienia
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: Pulpit nawigacyjny Użycie
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: Pulpit nawigacyjny Klient
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: Pulpit nawigacyjny Szczegółowe informacje na temat platformy handlowej
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: Pulpit nawigacyjny Pobieranie
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: Pulpit nawigacyjny Oceny i recenzje
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: Często zadawane pytania i terminologia
+          href: ./partner-center-portal/faq-terminology.md
     - name: Uzyskiwanie zapłaty
       items:
         - name: Uzyskiwanie zapłaty
           href: ./partner-center-portal/get-paid.md
         - name: Konfigurowanie konta do wypłaty i formularzy podatkowych
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: Szczegóły rozliczeń
+          href: ./partner-center-portal/billing-details.md
         - name: 'Progi, metody i horyzonty czasowe płatności'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: Podsumowanie wypłaty

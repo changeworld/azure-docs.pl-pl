@@ -4,23 +4,53 @@
   items:
     - name: Co to jest rozpoznawanie formularzy?
       href: overview.md
+    - name: Co nowego
+      href: whats-new.md
 - name: Przewodniki Szybki start
   expaned: true
   items:
+    - name: Używanie przykładowego narzędzia do oznaczania etykietami
+      items:
+        - name: Trenowanie modelu niestandardowego przy użyciu etykiet
+          href: quickstarts/label-tool.md
     - name: Korzystanie z interfejsu API REST
       items:
-        - name: Trenowanie modelu niestandardowego i wyodrębnianie danych
+        - name: Trenowanie i używanie modelu niestandardowego bez etykiet
           items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
+            - name: Wersja 2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract.md
+                - name: Python
+                  href: quickstarts/python-train-extract.md
+            - name: Wersja 1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract-v1.md
+                - name: Python
+                  href: quickstarts/python-train-extract-v1.md
+        - name: Trenowanie i używanie modelu niestandardowego z etykietami
+          items:
             - name: Python
-              href: quickstarts/python-train-extract.md
+              href: quickstarts/python-labeled-data.md
         - name: Używanie wstępnie utworzonego modelu potwierdzenia
           items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
+            - name: Wersja 2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts.md
+                - name: Python
+                  href: quickstarts/python-receipts.md
+            - name: Wersja 1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts-v1.md
+                - name: Python
+                  href: quickstarts/python-receipts-v1.md
+        - name: Uzyskiwanie informacji o układzie tekstu
+          items:
             - name: Python
-              href: quickstarts/python-receipts.md
+              href: quickstarts/python-layout.md
     - name: Korzystanie z zestawu .NET SDK
       href: quickstarts/dotnet-sdk.md
 - name: Samouczki
@@ -43,8 +73,10 @@
           href: deploy-form-recognizer-on-container-instances.md
 - name: Dokumentacja
   items:
-    - name: Interfejs API rozpoznawania formularzy
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: Interfejs API rozpoznawania formularzy w wersji 2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+    - name: Interfejs API rozpoznawania formularzy w wersji 1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: Zestawy SDK
       items:
         - name: .NET
