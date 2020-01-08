@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: 62a16a6a96fbfdfbb4ed2d70b74470e29efaa844
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 03464fca6d7e0694d9492de698c70d5caac89358
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849857"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644481"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure
 
@@ -38,7 +38,7 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 
 |Rola| Limit użytkowników|
 |---|---|
-|Administrator przedsiębiorstwa|Nieograniczona liczba|
+|Administratora przedsiębiorstwa|Nieograniczona liczba|
 |Administrator przedsiębiorstwa (tylko odczyt)|Nieograniczona liczba|
 |Administrator działu|Nieograniczona liczba|
 |Administrator działu (tylko odczyt)|Nieograniczona liczba|
@@ -48,7 +48,7 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Struktura i uprawnienia organizacji według roli
 
-|Zadania| Administrator przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt)|Właściciel konta|
+|Zadania| Administratora przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt)|Właściciel konta|
 |---|---|---|---|---|---|
 |Wyświetlanie administratorów przedsiębiorstwa|✔|✔|✘|✘|✘|
 |Dodawanie lub usuwanie administratorów przedsiębiorstwa|✔|✘|✘|✘|✘|
@@ -67,7 +67,7 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 
 ## <a name="usage-and-costs-access-by-role"></a>Dostęp do danych użycia i kosztów według roli
 
-|Zadania| Administrator przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt) |Właściciel konta|
+|Zadania| Administratora przedsiębiorstwa|Administrator przedsiębiorstwa (tylko odczyt)|Administrator działu|Administrator działu (tylko odczyt) |Właściciel konta|
 |---|---|---|---|---|---|
 |Wyświetlanie salda środków, w tym zobowiązania pieniężnego|✔|✔|✘|✘|✘|
 |Wyświetlanie limitów przydziału wydatków dla działu|✔|✔|✘|✘|✘|

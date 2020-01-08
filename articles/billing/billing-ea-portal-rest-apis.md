@@ -4,16 +4,16 @@ description: W tym artykule opisano interfejsy API REST, których można używa�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841425"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644532"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Interfejsy API REST usługi Azure Enterprise
 
@@ -75,7 +75,7 @@ Przykład: bearer \&lt;APIKey\&gt; |
 
 ### <a name="swagger"></a>Swagger
 
-Punkt końcowy struktury Swagger jest dostępny w [interfejsach API raportowania klientów Enterprise w wersji 3](https://consumption.azure.com/swagger/ui/index) dla następujących interfejsów API. Struktura Swagger pomaga w inspekcji interfejsu API. Użyj struktury Swagger w celu wygenerowania zestawów SDK klienta przy użyciu funkcji [AutoRest](https://github.com/Azure/AutoRest) lub narzędzia [Swagger CodeGen](http://swagger.io/swagger-codegen/). Dane dostępne po 1 maja 2014 r. są dostępne za pośrednictwem interfejsu API.
+Punkt końcowy struktury Swagger jest dostępny w [interfejsach API raportowania klientów Enterprise w wersji 3](https://consumption.azure.com/swagger/ui/index) dla następujących interfejsów API. Struktura Swagger pomaga w inspekcji interfejsu API. Użyj struktury Swagger w celu wygenerowania zestawów SDK klienta przy użyciu funkcji [AutoRest](https://github.com/Azure/AutoRest) lub narzędzia [Swagger CodeGen](https://swagger.io/swagger-codegen/). Dane dostępne po 1 maja 2014 r. są dostępne za pośrednictwem interfejsu API.
 
 ### <a name="api-response-codes"></a>Kody odpowiedzi interfejsu API
 
@@ -121,12 +121,12 @@ Format JSON jest generowany na podstawie raportu CSV. W związku z tym format je
 | SubscriptionId | SubscriptionId | SubscriptionId |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Subscription Name | SubscriptionName | SubscriptionName |   |
-| Date | Date | Date | Pokazuje datę uruchomienia raportu wykazu usług. Format to ciąg daty bez sygnatury czasowej. |
+| Data | Data | Data | Pokazuje datę uruchomienia raportu wykazu usług. Format to ciąg daty bez sygnatury czasowej. |
 | Month | Month | Month |   |
 | Day | Day | Day |   |
 | Year | Year | Year |   |
 | Product (Produkt) | BillableItemName | Product (Produkt) |   |
-| Identyfikator miernika | ResourceGUID | MeterId |   |
+| Identyfikator miernika | ResourceGUID | Identyfikator miernika |   |
 | Kategoria miernika | Usługa | MeterCategory | Przydatne do znajdowania usług. Dotyczy usług, które mają wiele właściwości ServiceType. Na przykład maszyn wirtualnych. |
 | Podkategoria miernika | ServiceType | MeterSubCategory | Zapewnia drugi poziom szczegółowości dla usługi. Na przykład maszyna wirtualna A1 (system inny niż Windows).  |
 | Region miernika | ServiceRegion | MeterRegion | Trzeci poziom szczegółowości wymagany dla usługi. Przydatne do znajdowania kontekstu regionu identyfikatora GUID zasobu. |
@@ -156,7 +156,7 @@ Format JSON jest generowany na podstawie raportu CSV. W związku z tym format je
 | SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Subscription Name | SubscriptionName |  SubscriptionName |
-| Date | BillingCycle |  Date (Tylko ciąg daty. Bez sygnatury czasowej)
+| Data | BillingCycle |  Date (Tylko ciąg daty. Bez sygnatury czasowej)
 | Month | Month |  Month |
 | Day | Day |  Day |
 | Year | Year |  Year |
