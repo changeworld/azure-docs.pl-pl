@@ -1,17 +1,17 @@
 ---
-title: Szablony Azure Resource Manager dla interfejsu API usługi Azure Cosmos DB Gremlin
+title: Szablony Menedżer zasobów dla interfejsu API usługi Azure Cosmos DB Gremlin
 description: Użyj szablonów Azure Resource Manager, aby utworzyć i skonfigurować interfejs API usługi Azure Cosmos DB Gremlin.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: c5ddea40c384496f2790ae4ab7c88888f1e9120a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 857af7ecd9ff3d7b3c771d048a802c6d3c1e5e4f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441642"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API usługi Azure Cosmos DB Gremlin przy użyciu szablonów Azure Resource Manager
 

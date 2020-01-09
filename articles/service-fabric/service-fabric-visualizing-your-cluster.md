@@ -1,27 +1,18 @@
 ---
-title: Wizualizacja klastra przy użyciu usługi Azure Service Fabric Explorer | Microsoft Docs
+title: Wizualizacja klastra przy użyciu usługi Azure Service Fabric Explorer
 description: Service Fabric Explorer to aplikacja do inspekcji i zarządzania aplikacjami w chmurze oraz węzłami w klastrze Microsoft Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464104"
 ---
-# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer
+# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra za pomocą Eksploratora usługi Service Fabric
 
 Service Fabric Explorer (SFX) to narzędzie Open Source służące do sprawdzania klastrów Service Fabric platformy Azure i zarządzania nimi. Service Fabric Explorer to aplikacja klasyczna dla systemów Windows, macOS i Linux.
 
@@ -128,7 +119,7 @@ Podgląd magazynu obrazów jest funkcją oferowaną w przypadku korzystania z na
 
 ![Service Fabric Explorer mapowanie klastra][sfx-imagestore]
 
-## <a name="backup-and-restore"></a>Wykonywanie kopii zapasowych i przywracanie
+## <a name="backup-and-restore"></a>Wykonywanie kopii zapasowych i odzyskiwanie danych
 Service Fabric Explorer oferuje możliwość tworzenia interfejsów przy użyciu [kopii zapasowych i przywracania](./service-fabric-reliable-services-backup-restore.md). Aby można było wyświetlić funkcje tworzenia kopii zapasowych i przywracania w programie SFX, należy włączyć tryb zaawansowany.
 
 ![Włącz tryb zaawansowany][0]

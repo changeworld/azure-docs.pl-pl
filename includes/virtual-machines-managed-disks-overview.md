@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355916"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
@@ -37,7 +37,7 @@ Usługa Managed disks obsługuje [strefy dostępności](../articles/availability
 
 ### <a name="azure-backup-support"></a>Obsługa Azure Backup
 
-Aby chronić przed awariami regionalnymi, [Azure Backup](../articles/backup/backup-overview.md) może służyć do tworzenia zadania tworzenia kopii zapasowej z użyciem kopii zapasowych opartych na czasie i zasad przechowywania kopii zapasowych. Dzięki temu można wykonywać proste przywracanie maszyny wirtualnej. Azure Backup obsługuje tworzenie kopii zapasowych i przywracanie dysków zarządzanych. [Dowiedz się więcej](../articles/backup/backup-support-matrix-iaas.md) o obsłudze kopii zapasowych maszyny wirtualnej platformy Azure.
+Aby chronić przed awariami regionalnymi, [Azure Backup](../articles/backup/backup-overview.md) może służyć do tworzenia zadania tworzenia kopii zapasowej z użyciem kopii zapasowych opartych na czasie i zasad przechowywania kopii zapasowych. Dzięki temu można wykonywać proste przywracanie maszyny wirtualnej. Obecnie Azure Backup obsługuje rozmiary dysków do czterech dysków tebibyte (TiB).  Azure Backup obsługuje tworzenie kopii zapasowych i przywracanie dysków zarządzanych. [Dowiedz się więcej](../articles/backup/backup-support-matrix-iaas.md) o obsłudze kopii zapasowych maszyny wirtualnej platformy Azure.
 
 ### <a name="granular-access-control"></a>Szczegółowa kontrola dostępu
 
@@ -126,5 +126,7 @@ Platforma Azure używa priorytetowego kanału sieciowego dla ruchu dyskowego, kt
 Zapoznaj się z naszym [projektem w celu uzyskania wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md) artykułu, aby poznać najlepsze rozwiązania dotyczące optymalizowania konfiguracji maszyn wirtualnych i dysków, dzięki czemu można osiągnąć żądaną wydajność
 
 ## <a name="next-steps"></a>Następne kroki
+
+Jeśli chcesz uzyskać więcej szczegółów na temat dysków zarządzanych, zapoznaj się z tematem: [Lepsza odporność maszyn wirtualnych platformy Azure za pomocą Managed disks](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 
 Dowiedz się więcej na temat poszczególnych typów dysków oferowanych przez platformę Azure, które są odpowiednie dla Twoich potrzeb, i poznaj ich cele wydajności w naszym artykule na temat typów dysków.

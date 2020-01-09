@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350681"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Tworzenie maszyny wirtualnej z systemem Linux na podstawie dysku niestandardowego przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -53,7 +53,7 @@ Aby wykonać następujące kroki, potrzebne są:
 
 W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami, takimi jak `myResourceGroup`, `mystorageaccount`i `mydisks`.
 
-<a id="prepimage"></a>
+<a id="prepimage"> </a>
 
 ## <a name="prepare-the-vm"></a>Przygotowywanie maszyny wirtualnej
 
@@ -134,4 +134,4 @@ az vm create \
 Powinno być możliwe nawiązanie połączenia SSH z maszyną wirtualną z poświadczeniami ze źródłowej maszyny wirtualnej. 
 
 ## <a name="next-steps"></a>Następne kroki
-Po przygotowaniu i przekazaniu niestandardowego dysku wirtualnego możesz przeczytać więcej na temat [używania Menedżer zasobów i szablonów](../../azure-resource-manager/resource-group-overview.md). Możesz również [dodać dysk z danymi](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) do nowych maszyn wirtualnych. Jeśli masz aplikacje uruchomione na maszynach wirtualnych, do których musisz uzyskać dostęp, pamiętaj, aby [otworzyć porty i punkty końcowe](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Po przygotowaniu i przekazaniu niestandardowego dysku wirtualnego możesz przeczytać więcej na temat [używania Menedżer zasobów i szablonów](../../azure-resource-manager/management/overview.md). Możesz również [dodać dysk z danymi](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) do nowych maszyn wirtualnych. Jeśli masz aplikacje uruchomione na maszynach wirtualnych, do których musisz uzyskać dostęp, pamiętaj, aby [otworzyć porty i punkty końcowe](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

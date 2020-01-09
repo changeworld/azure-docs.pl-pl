@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1fe1d50f24c70c89ea0fbaa952673cdeacc4f1bf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8dbccdfdcf2a309c8324328f46336bab74839da4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357530"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD
 
@@ -50,7 +50,7 @@ Administrator konta, administrator usługi i współadministrator to trzy role k
 
 W witrynie Azure Portal można zarządzać współadministratorami lub wyświetlać administratora usługi za pomocą karty **Klasyczni administratorzy**.
 
-![Klasyczni administratorzy subskrypcji platformy Azure w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/classic-administrators.png)
+![Klasyczni administratorzy subskrypcji platformy Azure w witrynie Azure Portal](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
 
 W witrynie Azure Portal możesz wyświetlić lub zmienić administratora usługi albo wyświetlić administratora konta w bloku właściwości Twojej subskrypcji.
 
@@ -70,7 +70,7 @@ Konta i subskrypcje są zarządzane w [Centrum konta platformy Azure](https://ac
 
 ## <a name="azure-rbac-roles"></a>Role RBAC platformy Azure
 
-Kontrola dostępu oparta na rolach (RBAC) platformy Azure stanowi system autoryzacji oparty na usłudze [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md), umożliwiający szczegółowe zarządzanie dostępem do zasobów platformy Azure, takich jak zasoby obliczeniowe i magazynowe. Kontrola RBAC platformy Azure obejmuje ponad 70 wbudowanych ról. Istnieją cztery podstawowe role RBAC. Pierwsze trzy mają zastosowanie do wszystkich typów zasobów:
+Kontrola dostępu oparta na rolach (RBAC) platformy Azure stanowi system autoryzacji oparty na usłudze [Azure Resource Manager](../azure-resource-manager/management/overview.md), umożliwiający szczegółowe zarządzanie dostępem do zasobów platformy Azure, takich jak zasoby obliczeniowe i magazynowe. Kontrola RBAC platformy Azure obejmuje ponad 70 wbudowanych ról. Istnieją cztery podstawowe role RBAC. Pierwsze trzy mają zastosowanie do wszystkich typów zasobów:
 
 | Rola RBAC platformy Azure | Uprawnienia | Uwagi |
 | --- | --- | --- |
@@ -93,7 +93,7 @@ Po kliknięciu karty **Role** zostanie wyświetlona lista wbudowanych i niestand
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md).
 
-## <a name="azure-ad-administrator-roles"></a>Role administratora usługi Azure AD
+## <a name="azure-ad-administrator-roles"></a>i role administratora usługi Azure AD
 
 Role administratora usługi Azure AD służą do zarządzania zasobami usługi Azure AD w katalogu, takimi jak tworzenie lub edytowanie użytkowników, przypisywanie ról administracyjnych innym osobom, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników i zarządzanie domenami. W poniższej tabeli opisano kilka najważniejszych ról administratora usługi Azure AD.
 
@@ -111,7 +111,7 @@ Listę ról administratora usługi Azure AD można wyświetlić w bloku **Role i
 
 Na wysokim poziomie role RBAC platformy Azure kontrolują uprawnienia do zarządzania zasobami platformy Azure, natomiast role administratora usługi Azure AD kontrolują uprawnienia do zarządzania zasobami usługi Azure Active Directory. W poniższej tabeli porównano niektóre różnice.
 
-| Role RBAC platformy Azure | Role administratora usługi Azure AD |
+| Role RBAC platformy Azure | i role administratora usługi Azure AD |
 | --- | --- |
 | Zarządzanie dostępem do zasobów platformy Azure | Zarządzanie dostępem do zasobów usługi Azure Active Directory |
 | Obsługa ról niestandardowych | Obsługa ról niestandardowych |

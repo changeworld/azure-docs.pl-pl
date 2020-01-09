@@ -1,25 +1,14 @@
 ---
-title: Omówienie Service Fabric i kontenerów | Microsoft Docs
+title: Przegląd Service Fabric i kontenerów
 description: Omówienie Service Fabric i używania kontenerów do wdrażania aplikacji mikrousług. Ten artykuł zawiera omówienie sposobu użycia kontenerów i dostępne możliwości w Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/8/2018
-ms.author: atsenthi
-ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458225"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric i kontenery
 
@@ -27,7 +16,7 @@ ms.locfileid: "68599762"
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług i kontenerów oraz zarządzanie nimi.
 
-Service Fabric jest koordynatorem [kontenera](service-fabric-cluster-resource-manager-introduction.md) firmy Microsoft do wdrażania mikrousług w klastrze maszyn. Service Fabric korzyści z lekcji zdobytych w trakcie lat, w których działają usługi w firmie Microsoft na ogromną skalę.
+Service Fabric jest [koordynatorem kontenera](service-fabric-cluster-resource-manager-introduction.md) firmy Microsoft do wdrażania mikrousług w klastrze maszyn. Service Fabric korzyści z lekcji zdobytych w trakcie lat, w których działają usługi w firmie Microsoft na ogromną skalę.
 
 Mikrousługi można tworzyć na wiele sposobów, na przykład korzystając z [modeli programowania usługi Service Fabric](service-fabric-choose-framework.md) czy struktury [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) lub wdrażając [dowolnie wybrany kod](service-fabric-guest-executables-introduction.md). Jeśli chcesz tylko [wdrożyć kontenery i zarządzać nimi](service-fabric-containers-overview.md), Service Fabric jest również doskonałym wyborem.
 
@@ -35,8 +24,8 @@ Domyślnie program Service Fabric wdraża i aktywuje te usługi jako procesy. Pr
 
 Aby przejść do właściwych i wypróbować kontenery na Service Fabric, wypróbuj Przewodnik Szybki Start, samouczek lub przykład:  
 
-[Szybki start: Wdrażanie aplikacji kontenera systemu Linux w Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[Szybki start: Wdrażanie aplikacji kontenera systemu Windows do Service Fabric](service-fabric-quickstart-containers.md)  
+[Szybki Start: wdrażanie aplikacji kontenera systemu Linux w Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Szybki Start: wdrażanie aplikacji kontenera systemu Windows do Service Fabric](service-fabric-quickstart-containers.md)  
 [Konteneryzowanie istniejącej aplikacji .NET](service-fabric-host-app-in-a-container.md)  
 [Przykłady kontenera usługi Service Fabric](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +37,10 @@ Kontenery są uruchamiane bezpośrednio na poziomie jądra i mają izolowany wid
 
 W porównaniu z maszynami wirtualnymi kontenery mają następujące zalety:
 
-* **Małe**: Kontenery używają pojedynczej przestrzeni dyskowej i wersji warstwy oraz aktualizacji w celu zwiększenia wydajności.
-* **Szybka**: Kontenery nie muszą uruchamiać całego systemu operacyjnego, więc mogą zacząć znacznie szybciej — zwykle w ciągu kilku sekund.
-* **Przenośność**: Obraz aplikacji kontenera można przenieść do uruchamiania w chmurze, lokalnie, wewnątrz maszyn wirtualnych lub bezpośrednio na maszynach fizycznych.
-* **Zarządzanie zasobami**: Kontener może ograniczyć zasoby fizyczne, których może zużywać na jego hoście.
+* **Małe**: kontenery używają pojedynczej przestrzeni dyskowej i wersji warstwy oraz aktualizacji w celu zwiększenia wydajności.
+* **Szybka**: kontenery nie muszą uruchamiać całego systemu operacyjnego, więc mogą zacząć znacznie szybciej — zwykle w ciągu kilku sekund.
+* **Przenośność**: obraz aplikacji kontenera można przenieść do uruchamiania w chmurze, lokalnie, wewnątrz maszyn wirtualnych lub bezpośrednio na maszynach fizycznych.
+* **Zarządzanie zasobami**: kontener może ograniczyć zasoby fizyczne, które mogą być używane na hoście.
 
 ### <a name="container-types-and-supported-environments"></a>Typy kontenerów i obsługiwane środowiska
 
@@ -76,11 +65,11 @@ Na poniższej ilustracji przedstawiono różne typy wirtualizacji i dostępne po
 
 Oto typowe przykłady, w których kontener jest dobry wybór:
 
-* **Przesunięcia i Shift usług IIS**: Istnieje możliwość umieszczenia istniejącej aplikacji [ASP.NET MVC](https://www.asp.net/mvc) w kontenerze zamiast migrowania jej do ASP.NET Core. Te aplikacje ASP.NET MVC są zależne od Internet Information Services (IIS). Te aplikacje można spakować na obrazy kontenerów ze utworzonego obrazu usług IIS i wdrożyć je za pomocą Service Fabric. Zobacz [obrazy kontenerów w systemie Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) , aby uzyskać informacje o kontenerach systemu Windows.
+* **Przesunięcia i Shift usług IIS**: można umieścić istniejącą aplikację [ASP.NET MVC](https://www.asp.net/mvc) w kontenerze zamiast migrować ją do ASP.NET Core. Te aplikacje ASP.NET MVC są zależne od Internet Information Services (IIS). Te aplikacje można spakować na obrazy kontenerów ze utworzonego obrazu usług IIS i wdrożyć je za pomocą Service Fabric. Zobacz [obrazy kontenerów w systemie Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) , aby uzyskać informacje o kontenerach systemu Windows.
 
-* **Kontenery Mix i Service Fabric mikrousługi**: Użyj istniejącego obrazu kontenera dla części aplikacji. Można na przykład użyć [kontenera Nginx](https://hub.docker.com/_/nginx/) dla frontonu sieci Web aplikacji i usług stanowych w celu uzyskania bardziej intensywnych obliczeń zaplecza.
+* **Mieszaj kontenery i Service Fabric mikrousługi**: Użyj istniejącego obrazu kontenera dla części aplikacji. Można na przykład użyć [kontenera Nginx](https://hub.docker.com/_/nginx/) dla frontonu sieci Web aplikacji i usług stanowych w celu uzyskania bardziej intensywnych obliczeń zaplecza.
 
-* **Ogranicz wpływ usług "sąsiedzi" na "zakłócenia"** : Można użyć funkcji ładu zasobów kontenera, aby ograniczyć zasoby używane przez usługę na hoście. Jeśli usługi mogą zużywać wiele zasobów i wpływać na wydajność innych (takich jak długotrwała operacja przypominających zapytania), należy rozważyć umieszczenie tych usług w kontenerach, które mają zarządzanie zasobami.
+* Ogranicz **wpływ usług "sąsiedzi" na "zakłócenia"** : możesz użyć funkcji ładu zasobów kontenerów, aby ograniczyć zasoby używane przez usługę na hoście. Jeśli usługi mogą zużywać wiele zasobów i wpływać na wydajność innych (takich jak długotrwała operacja przypominających zapytania), należy rozważyć umieszczenie tych usług w kontenerach, które mają zarządzanie zasobami.
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric obsługa kontenerów
 

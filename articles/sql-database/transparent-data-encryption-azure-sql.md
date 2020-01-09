@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995885"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354888"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla SQL Database i magazynu danych
 
@@ -79,7 +79,7 @@ Aby skonfigurować przezroczyste szyfrowanie danych za pomocą Azure Portal, mus
 
 Na poziomie bazy danych włączać i wyłączać przezroczyste szyfrowanie danych. Aby włączyć funkcję przezroczystego szyfrowania danych w bazie danych, przejdź do [Azure Portal](https://portal.azure.com) i zaloguj się przy użyciu konta administratora platformy Azure lub współautora. Znajdź ustawienia przezroczystego szyfrowania danych w bazie danych użytkownika. Domyślnie jest używane zarządzane szyfrowanie danych w ramach usługi. Certyfikat przezroczystego szyfrowania danych jest generowany automatycznie dla serwera, który zawiera bazę danych. W przypadku wystąpienia zarządzanego Azure SQL Użyj języka T-SQL do włączenia i wyłączenia przezroczystego szyfrowania danych w bazie danych.
 
-![Zarządzane szyfrowanie danych przez usługę](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
+![Zarządzane szyfrowanie danych przez usługę](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
 
 Należy ustawić klucz główny szyfrowania danych przezroczystych, znany również jako funkcja ochrony przezroczystego szyfrowania danych na poziomie serwera. Aby można było używać funkcji przezroczystego szyfrowania danych z Bring Your Own Key obsługi i ochrony baz danych przy użyciu klucza z Key Vault, należy otworzyć ustawienia przezroczystego szyfrowania danych na serwerze.
 

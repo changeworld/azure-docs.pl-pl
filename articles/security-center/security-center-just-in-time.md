@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355561"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem do maszyny wirtualnej przy użyciu funkcji just in Time
 
@@ -99,7 +99,7 @@ W Security Center można skonfigurować zasady JIT i zażądać dostępu do masz
       - 5986 — WinRM
 6. Możesz również skonfigurować porty niestandardowe:
 
-      1. Kliknij pozycję **Add** (Dodaj). Zostanie otwarte okno **Dodaj konfigurację portu** .
+      1. Kliknij pozycję **Dodaj**. Zostanie otwarte okno **Dodaj konfigurację portu** .
       2. Dla każdego skonfigurowanego portu, zarówno domyślnego, jak i niestandardowego, można dostosować następujące ustawienia:
 
     - **Typ protokołu**— protokół, który jest dozwolony na tym porcie w przypadku zatwierdzenia żądania.
@@ -108,7 +108,7 @@ W Security Center można skonfigurować zasady JIT i zażądać dostępu do masz
 
      3. Kliknij przycisk **OK**.
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 > [!NOTE]
 >Gdy dla maszyny wirtualnej jest włączony dostęp JIT dla maszyny wirtualnej, Azure Security Center tworzy reguły "Odmów wszystkim ruchem przychodzącym" dla wybranych portów w grupach zabezpieczeń sieci skojarzonych i z tą zaporą platformy Azure. Jeśli zostały utworzone inne reguły dla wybranych portów, istniejące reguły mają pierwszeństwo przed nowym regułą "odmowa całego ruchu przychodzącego". Jeśli nie ma żadnych istniejących reguł na wybranych portach, nowy reguły "Odrzuć cały ruch przychodzący" mają najwyższy priorytet w grupach zabezpieczeń sieci i zaporze platformy Azure.

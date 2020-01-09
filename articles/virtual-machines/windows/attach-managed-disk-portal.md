@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d98fdab6dcd0abb70967d1e17d138a860a31da5f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463435"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Dołączanie dysku danych zarządzanych do maszyny Wirtualnej z systemem Windows przy użyciu witryny Azure portal
 
@@ -21,7 +21,7 @@ W tym artykule pokazano, jak dołączyć nowy dysk danych zarządzanych na maszy
 
 ## <a name="add-a-data-disk"></a>Dodawanie dysku danych
 
-1. W [witryny Azure portal](https://portal.azure.com), w menu po lewej stronie wybierz **maszyn wirtualnych**.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby dodać dysk danych. Wyszukaj i wybierz pozycję **maszyny wirtualne**.
 2. Wybierz maszynę wirtualną z listy.
 3. Na **maszyny wirtualnej** wybierz opcję **dysków**.
 4. Na **dysków** wybierz opcję **Dodaj dysk danych**.
@@ -42,7 +42,7 @@ W tym artykule pokazano, jak dołączyć nowy dysk danych zarządzanych na maszy
 6. Zamknij **Zarządzanie dyskami**.
 7. Pojawi się okno podręczne, informujący o tym, należy sformatować nowy dysk przed jego użyciem. Wybierz **Format dysku**.
 8. W **Formatuj nowy dysk** , sprawdź ustawienia, a następnie wybierz pozycję **Start**.
-9. Zostanie wyświetlone ostrzeżenie z informacją, że formatowanie dyski na partycje powoduje usunięcie wszystkich danych. Wybierz **OK**.
+9. Zostanie wyświetlone ostrzeżenie z informacją, że formatowanie dyski na partycje powoduje usunięcie wszystkich danych. Kliknij przycisk **OK**.
 10. Po zakończeniu formatowania wybierz **OK**.
 
 ## <a name="next-steps"></a>Następne kroki

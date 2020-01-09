@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje dla interfejsu API Gremlin
+title: Skrypt programu PowerShell do wyświetlania i pobierania operacji dla Azure Cosmos DB interfejsu API Gremlin
 description: Azure PowerShell listę Azure Cosmos DB skryptu i Pobierz operacje dla interfejsu API Gremlin
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 532d28e5d10177e25ff700e35c9c2387690d4609
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 7359a444884fb062405ee383ccff2c6b26f7dcb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441478"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Wyświetl i Pobierz bazy danych i wykresy dla interfejsu API Azure Cosmos DB Gremlin
 

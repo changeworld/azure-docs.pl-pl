@@ -3,12 +3,12 @@ title: Blokowanie obrazów
 description: Ustaw atrybuty dla obrazu kontenera lub repozytorium, aby nie można go było usunąć ani zastąpić w rejestrze kontenerów platformy Azure.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442217"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Blokowanie obrazu kontenera w usłudze Azure Container Registry
 
@@ -23,7 +23,11 @@ Ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w 
 
 Domyślnie oznakowany obraz w Azure Container Registry jest *modyfikowalny*, więc z odpowiednimi uprawnieniami można wielokrotnie aktualizować i wypchnąć obraz z tym samym tagiem do rejestru. Obrazy kontenerów można także [usuwać](container-registry-delete.md) w razie konieczności. To zachowanie jest przydatne w przypadku tworzenia obrazów i zachowywania rozmiaru rejestru.
 
-Jednak podczas wdrażania obrazu kontenera w środowisku produkcyjnym może być potrzebny *niezmienny* obraz kontenera. Niezmienny obraz to taki, którego nie można przypadkowo usunąć ani zastąpić. Użyj polecenia [AZ ACR Repository Update][az-acr-repository-update] , aby ustawić atrybuty repozytorium, dzięki czemu możesz:
+Jednak podczas wdrażania obrazu kontenera w środowisku produkcyjnym może być potrzebny *niezmienny* obraz kontenera. Niezmienny obraz to taki, którego nie można przypadkowo usunąć ani zastąpić.
+
+Zapoznaj się z [zaleceniami dotyczącymi tagowania i przechowywania wersji obrazów kontenerów](container-registry-image-tag-version.md) w celu uzyskania strategii tagów i wersji obrazów w rejestrze.
+
+Użyj polecenia [AZ ACR Repository Update][az-acr-repository-update] , aby ustawić atrybuty repozytorium, dzięki czemu możesz:
 
 * Zablokuj wersję obrazu lub całe repozytorium
 
@@ -31,7 +35,7 @@ Jednak podczas wdrażania obrazu kontenera w środowisku produkcyjnym może być
 
 * Zapobiegaj operacji odczytu (ściągania) w wersji obrazu lub w całym repozytorium
 
-Przykłady można znaleźć w poniższych sekcjach.
+Przykłady można znaleźć w poniższych sekcjach. 
 
 ## <a name="lock-an-image-or-repository"></a>Blokowanie obrazu lub repozytorium 
 

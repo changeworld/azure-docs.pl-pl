@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
-ms.translationtype: MT
+ms.openlocfilehash: ef7d78b292561e87eac12200bc0b9d68299759d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443626"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Wizualizuj dane z Time Series Insights w Power BI
 
@@ -70,7 +70,7 @@ Aby rozpocząć:
 
    1. Jeśli nie skonfigurowano wystąpienia usługi Time Series Insights dla **magazynu ciepłego**, zostanie wyświetlone ostrzeżenie.
 
-       [![Połącz](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [Ostrzeżenie dotyczące sklepu ![grzane](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
        > Istniejące wystąpienie dla **magazynu ciepłego** można skonfigurować w Azure Portal.

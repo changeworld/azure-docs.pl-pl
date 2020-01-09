@@ -1,87 +1,86 @@
 ---
-title: Optymalizacja wydajności w przypadku klastrów Apache Kafka HDInsight
-description: Przegląd techniki optymalizacji obciążeń platformy Apache Kafka w usłudze Azure HDInsight.
+title: Optymalizacja wydajności dla Apache Kafka klastrów usługi HDInsight
+description: Zawiera omówienie technik optymalizacji obciążeń Apache Kafka w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 8226d1f49b8ba73870dba009e97ff2718a0eee27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/19/2019
+ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689355"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494913"
 ---
-# <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Optymalizacja wydajności w przypadku klastrów Apache Kafka HDInsight
+# <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Optymalizacja wydajności dla Apache Kafka klastrów usługi HDInsight
 
-Ten artykuł zawiera sugestie dotyczące optymalizacji wydajności obciążeń platformy Apache Kafka w HDInsight. Koncentruje się na dostosowywanie producentów i konfiguracji brokera. Istnieją różne sposoby pomiaru wydajności i optymalizacje, które można zastosować zależy od potrzeb biznesowych.
+Ten artykuł zawiera sugestie dotyczące optymalizacji wydajności obciążeń Apache Kafka w usłudze HDInsight. Koncentruje się na dostosowywaniu konfiguracji producenta i brokera. Istnieją różne sposoby mierzenia wydajności, a Optymalizacja do zastosowania będzie zależeć od potrzeb firmy.
 
 ## <a name="architecture-overview"></a>Omówienie architektury
 
-Tematów platformy Kafka są używane do organizowania rekordów. Rekordy są produkowane przez producentów i używane przez klientów. Producenci wysyłać rekordy do brokerów Kafka, które następnie przechowywania danych. Każdy węzeł procesu roboczego w klastrze usługi HDInsight jest brokerem platformy Kafka.
+Tematy Kafka są używane do organizowania rekordów. Rekordy są wytwarzane przez producentów i zużywane przez konsumentów. Producenci wysyłają rekordy do brokerów Kafka, które następnie przechowują dane. Każdy węzeł procesu roboczego w klastrze usługi HDInsight jest brokerem platformy Kafka.
 
 Tematy dzielą rekordy między brokerami. Podczas korzystania z rekordów można użyć maksymalnie jednego odbiorcy na jedną partycję, aby osiągnąć równoległe przetwarzanie danych.
 
-Replikacja jest używana do duplikowania partycji na węzłach. Chroni to przed awariami węzła (brokera). Jedna partycja w grupie repliki jest wyznaczony jako lidera w partycji. Ruch producenta jest kierowany do partycji wiodącej w każdym węźle przy użyciu stanu zarządzanego przez usługę ZooKeeper.
+Replikacja jest używana do duplikowania partycji między węzłami. Chroni przed awarią węzła (brokera). Pojedyncza partycja między grupą replik jest wyznaczony jako lider partycji. Ruch producenta jest kierowany do partycji wiodącej w każdym węźle przy użyciu stanu zarządzanego przez usługę ZooKeeper.
 
 ## <a name="identify-your-scenario"></a>Identyfikowanie własnego scenariusza
 
-Wydajności platformy Apache Kafka ma dwa główne aspekty — przepływności i opóźnień. Przepływność jest maksymalna szybkość danych mogą być przetwarzane. Zazwyczaj lepiej jest większej przepływności. Opóźnienie to czas, potrzebny dla danych do zapisania lub pobrać. Zazwyczaj lepiej jest mniejsze opóźnienie. Znajdowanie równowagę między przepływności, opóźnienia i koszty infrastruktury aplikacji może być wyzwaniem. Wymagań dotyczących wydajności prawdopodobnie będzie zgodna z jedną z następujących trzy typowe sytuacje, w oparciu wymagają wysokiej przepływności, małego opóźnienia i / lub:
+Apache Kafka wydajność ma dwa główne aspekty — przepływność i czas oczekiwania. Przepływność to maksymalna szybkość, z jaką mogą być przetwarzane dane. Wyższa przepływność jest zwykle lepsza. Opóźnienie to czas potrzebny na przechowywanie lub pobieranie danych. Mniejsze opóźnienie jest zwykle lepsze. Znalezienie odpowiedniej równowagi między przepływem, opóźnieniem i kosztem infrastruktury aplikacji może być trudne. Twoje wymagania dotyczące wydajności będą prawdopodobnie zgodne z jedną z następujących trzech typowych sytuacji w zależności od tego, czy jest wymagana Wysoka przepływność, małe opóźnienia czy obie:
 
-* Wysokiej przepływności, małego opóźnienia. Ten scenariusz wymaga wysokiej przepływności i małego opóźnienia (w milisekundach ~ 100). Przykładem tego typu aplikacji jest usługi monitorowania dostępności.
-* Wysoka przepływność, duże opóźnienie. Ten scenariusz wymaga wysokiej przepływności (~1.5 GB/s), ale może tolerować wyższy opóźnienie (< 250 ms). Przykładem tego typu aplikacji jest pozyskiwanie danych telemetrii dla niemal w czasie rzeczywistym procesy, takie jak aplikacje wykrywania zabezpieczeń i nieautoryzowanego dostępu.
-* Mało przepływność, krótki czas oczekiwania. Ten scenariusz wymaga małe opóźnienia (< 10 ms) na potrzeby przetwarzania w czasie rzeczywistym, ale umożliwia tolerowanie niższe przepływności. Przykładem tego typu aplikacji jest sprawdzania pisowni i gramatyki w trybie online.
+* Wysoka przepływność, małe opóźnienia. W tym scenariuszu wymagana jest Wysoka przepływność i małe opóźnienia (~ 100 ms). Przykładem tego typu aplikacji jest monitorowanie dostępności usług.
+* Wysoka przepływność i duże opóźnienia. Ten scenariusz wymaga dużej przepływności (~ 1,5 GB/s), ale może tolerować wyższe opóźnienie (< 250 MS). Przykładem tego typu aplikacji jest pozyskiwanie danych telemetrycznych dla procesów niemal w czasie rzeczywistym, takich jak zabezpieczenia i wykrywanie nieautoryzowanych aplikacji.
+* Niska przepływność, małe opóźnienia. Ten scenariusz wymaga małych opóźnień (< 10 ms) do przetwarzania w czasie rzeczywistym, ale może tolerować niższą przepływność. Przykładem tego typu aplikacji jest sprawdzanie pisowni w trybie online i gramatyki.
 
-## <a name="producer-configurations"></a>Konfiguracje producenta
+## <a name="producer-configurations"></a>Konfiguracje producentów
 
-W poniższych sekcjach zostaną omówiono niektóre z najważniejszych właściwości konfiguracji, aby zoptymalizować wydajność usługi Kafka producentów. Aby uzyskać szczegółowy opis wszystkich właściwości konfiguracji, zobacz [dokumentacja platformy Apache Kafka w konfiguracjach producentów](https://kafka.apache.org/documentation/#producerconfigs).
+W poniższych sekcjach opisano niektóre najważniejsze właściwości konfiguracji w celu zoptymalizowania wydajności producentów Kafka. Aby uzyskać szczegółowy opis wszystkich właściwości konfiguracji, zobacz [dokumentację Apache Kafka na temat konfiguracji producentów](https://kafka.apache.org/documentation/#producerconfigs).
 
 ### <a name="batch-size"></a>Rozmiar partii
 
-Producenci platformy Apache Kafka złóż grup wiadomości (nazywane w partiach), które są wysyłane jako jednostki mają być przechowywane w partycji pojedynczy magazyn. Rozmiar partii oznacza liczbę bajtów, które musi znajdować się przed wysłaniem tej grupy. Zwiększenie `batch.size` parametru może zwiększyć przepływność, ponieważ zmniejsza przetwarzania narzut żądań We/Wy i sieć. W małym obciążeniem rozmiar partii zwiększone może zwiększyć opóźnienie wysyłania platformy Kafka jako producent czeka, aż gotowość zadaniu wsadowym. Pod dużym obciążeniem zaleca się zwiększyć rozmiar partii w celu zwiększenia przepływności i opóźnień.
+Producenci Apache Kafka mogą złożyć grupy komunikatów (nazywanych partiami), które są wysyłane jako jednostka, która ma być przechowywana w jednej partycji magazynu. Rozmiar wsadu oznacza liczbę bajtów, które muszą być obecne przed przesłaniem tej grupy. Zwiększenie `batch.size` parametru może zwiększyć przepływność, ponieważ zmniejsza to obciążenie związane z przetwarzaniem żądań sieci i operacji we/wy. W obszarze lekkich obciążeń zwiększenie rozmiaru partii może zwiększyć czas oczekiwania na Kafka, ponieważ producent czeka na gotowość partii. W przypadku dużego obciążenia zaleca się zwiększenie rozmiaru partii w celu zwiększenia przepływności i opóźnień.
 
-### <a name="producer-required-acknowledgements"></a>Producent wymaga potwierdzenia
+### <a name="producer-required-acknowledgments"></a>Wymagane potwierdzenia przez producenta
 
-Producent wymaga `acks` konfiguracji określa liczbę potwierdzeń wymagane przez lidera partycji przed żądania zapisu jest uznawany za ukończone. To ustawienie ma wpływ na niezawodność danych i potrzebny wartości `0`, `1`, lub `-1`. Wartość `-1` oznacza, że potwierdzenie muszą dostarczony z wszystkie repliki przed zakończeniem zapisu. Ustawienie `acks = -1` zapewnia lepsze gwarancje przed utratą danych, ale również wyniki w większych opóźnień i przepływności niższe. Jeśli wymagania aplikacji wymagają wyższej przepustowości, spróbuj ustawienie `acks = 0` lub `acks = 1`. Należy pamiętać, który nie potwierdzają jedynie wszystkie repliki może zmniejszyć niezawodności dotyczącej danych.
+Wymagana przez producenta `acks` konfiguracja określa liczbę potwierdzeń wymaganych przez lidera partycji przed ukończeniem żądania zapisu. To ustawienie wpływa na niezawodność danych i pobiera wartości `0`, `1`lub `-1`. Wartość `-1` oznacza, że przed ukończeniem zapisu należy odebrać potwierdzenie ze wszystkich replik. Ustawienie `acks = -1` zapewnia silniejsze gwarancje związane z utratą danych, ale również skutkuje wyższym opóźnieniem i niższą przepływność. Jeśli wymagania dotyczące aplikacji wymagają większej przepływności, spróbuj ustawić `acks = 0` lub `acks = 1`. Należy pamiętać, że nie jest to potwierdzenie, że wszystkie repliki mogą zmniejszyć niezawodność danych.
 
 ### <a name="compression"></a>Kompresja
 
-Aby skompresować komunikatów przed ich wysłaniem do brokerów można skonfigurować producenta platformy Kafka. `compression.type` Ustawienie umożliwia określenie kodera-dekodera kompresji ma być używany. Kodery-dekodery kompresji obsługiwanych są "gzip," "snappy," i "lz4." Kompresja jest korzystne i należy rozważyć w przypadku limitu pojemności dysku.
+Producenta Kafka można skonfigurować w taki sposób, aby kompresuje komunikaty przed wysłaniem ich do brokerów. Ustawienie `compression.type` określa koder-dekoder kompresji do użycia. Obsługiwane kodery-dekoder kompresji to "gzip", "przyciąganie" i "lz4". Kompresowanie jest korzystne i powinno być brane pod uwagę w przypadku ograniczenia pojemności dysku.
 
-Między dwa kodery-dekodery kompresji powszechnie używane `gzip` i `snappy`, `gzip` ma wyższy stopień kompresji, co skutkuje niższe użycie dysku kosztem wyższe obciążenie procesora CPU. `snappy` Kodera-dekodera umożliwia mniej stopień kompresji i mniejsze obciążenie procesora CPU. Można zdecydować, które kodera-dekodera umożliwia oparte na ograniczenia brokera dysku lub producent procesora CPU. `gzip` można kompresować dane z szybkością pięć razy wyższa niż `snappy`.
+Między dwoma najczęściej używanymi koderami-dekoder kompresji, `gzip` i `snappy`, `gzip` ma wyższy współczynnik kompresji, co skutkuje obniżeniem użycia dysku przy kosztach wyższego obciążenia procesora CPU. Koder-dekoder `snappy` zapewnia mniejszą kompresję z mniejszym obciążeniem procesora CPU. Można zdecydować, który koder-dekoder ma być używany w oparciu o ograniczenia procesora CPU na dysku lub producencie. `gzip` może kompresować dane z częstotliwością pięć razy większą niż `snappy`.
 
-Przy użyciu kompresji danych zwiększy liczbę rekordów, które mogą być przechowywane na dysku. To może również zwiększyć Procesora obciążenie w przypadkach, gdzie występuje niezgodność między formatów kompresji używany przez producenta i brokera. jak musi być kompresowane przed wysłaniem i następnie dekompresowane przed rozpoczęciem przetwarzania danych.
+Użycie kompresji danych spowoduje zwiększenie liczby rekordów, które mogą być przechowywane na dysku. Może również zwiększyć obciążenie procesora CPU w przypadkach, gdy występuje niezgodność między formatami kompresji używanymi przez producenta i brokera. dane muszą być kompresowane przed wysłaniem, a następnie dekompresowane przed przetworzeniem.
 
 ## <a name="broker-settings"></a>Ustawienia brokera
 
-W poniższych sekcjach zostaną omówiono niektóre z najważniejszych ustawień w celu zoptymalizowania wydajności usługi brokerów platformy Kafka. Aby uzyskać szczegółowy opis wszystkich brokera ustawień, zobacz [dokumentacja platformy Apache Kafka w konfiguracjach producentów](https://kafka.apache.org/documentation/#producerconfigs).
-
+W poniższych sekcjach opisano niektóre najważniejsze ustawienia optymalizacji wydajności brokerów Kafka. Szczegółowe wyjaśnienie wszystkich ustawień brokera można znaleźć [w dokumentacji Apache Kafka na temat konfiguracji producentów](https://kafka.apache.org/documentation/#producerconfigs).
 
 ### <a name="number-of-disks"></a>Liczba dysków
 
-Dyski magazynu mają ograniczone operacje We/Wy (dane wejściowe i wyjściowe operacji na sekundę) i odczyt/zapis bajtów na sekundę. Podczas tworzenia nowych partycji, platforma Kafka przechowuje każdej nowej partycji na dysk z najmniejszą liczbą istniejące partycje w celu ich zrównoważenia różnych dostępnych dysków. Pomimo strategię magazynowania, podczas przetwarzania kilkuset replik partycji na poszczególnych dyskach Kafka można łatwo saturate przepustowości dostępnego miejsca na dysku. Kosztem, w tym miejscu znajduje się między przepływność i kosztów. Jeśli aplikacja wymaga większej przepływności, Utwórz klaster z bardziej zarządzanych dysków na brokera. HDInsight aktualnie nie obsługuje dodawania dysków zarządzanych do działającego klastra. Aby uzyskać więcej informacji na temat konfigurowania liczbę dysków zarządzanych, zobacz [Konfigurowanie magazynu i skalowalności klastra Apache kafka w HDInsight](apache-kafka-scalability.md). Poznanie skutków koszt zwiększa miejsca do magazynowania dla węzłów w klastrze.
+Dyski magazynu mają ograniczoną liczbę IOPS (operacje wejścia/wyjścia na sekundę) i bajty odczytu/zapisu na sekundę. Podczas tworzenia nowych partycji Kafka przechowuje każdą nową partycję na dysku z najmniejszą liczbą istniejących partycji, aby zrównoważyć je na dostępnych dyskach. Pomimo strategii magazynowania przy przetwarzaniu setek replik partycji na każdym dysku Kafka może łatwo zaszeregować dostępną przepływność na dysku. Poniżej znajduje się kompromis między przepływem i kosztami. Jeśli aplikacja wymaga większej przepływności, Utwórz klaster o większej liczbie dysków zarządzanych na brokera. Usługa HDInsight nie obsługuje obecnie dodawania dysków zarządzanych do uruchomionego klastra. Aby uzyskać więcej informacji na temat konfigurowania liczby dysków zarządzanych, zobacz [Konfigurowanie magazynu i skalowalności Apache Kafka w usłudze HDInsight](apache-kafka-scalability.md). Zapoznaj się z kosztami związanymi z zwiększeniem ilości miejsca do magazynowania dla węzłów w klastrze.
 
 ### <a name="number-of-topics-and-partitions"></a>Liczba tematów i partycji
 
-Producenci Kafka zapisu do tematów. Odbiorcy platformy Kafka są odczytywane z tematów. Temat jest skojarzony z dziennika, która jest strukturą danych na dysku. Platforma Kafka dołącza rekordów z producentów do końca dziennika tematu. Dziennik tematu składa się z wielu partycji, które jest rozłożona na wiele plików. Te pliki z kolei rozkładają się na wielu węzłach klastra Kafka. Konsumenci odczytywać tematów platformy Kafka w ich cykl i wybrać ich pozycji (przesunięciem) w dzienniku tematu.
+Kafka producenci mogą zapisywać w tematach. Kafka konsumentów do odczytu z tematów. Temat jest skojarzony z dziennikiem, który jest strukturą danych na dysku. Kafka dołącza rekordy od producentów do końca dziennika tematu. Dziennik tematu składa się z wielu partycji, które są rozmieszczone na wielu plikach. Te pliki są z kolei rozmieszczane w wielu węzłach klastra Kafka. Konsumenci czytają Kafka tematy w ich erze i mogą wybrać ich pozycję (przesunięcie) w dzienniku tematu.
 
-Każdej partycji platformy Kafka jest plik dziennika w systemie i wątki producentów mogą zapisywać dane w wielu dzienników jednocześnie. Podobnie ponieważ każdy wątek odbiorców odczytuje komunikaty z jednej partycji, korzystanie z różnych partycji odbywa się również równolegle.
+Każda partycja Kafka jest plikiem dziennika w systemie, a wątki producenci mogą jednocześnie zapisywać w wielu dziennikach. Podobnie, ponieważ każdy wątek konsumencki odczytuje komunikaty z jednej partycji, używanie wielu partycji jest również obsługiwane równolegle.
 
-Zwiększenie gęstości partycji (liczba partycji na broker) dodaje obciążenie związane z operacji na metadanych i poszczególnych partycji żądania/odpowiedzi między lidera partycji i jego obserwatorów. Nawet w przypadku braku dane przepływają przez replik partycji nadal pobrać dane z liderów, co skutkuje dodatkowego przetwarzania wysyłania i odbierania żądań za pośrednictwem sieci.
+Zwiększenie gęstości partycji (liczba partycji na brokera) powoduje dodanie narzutu związanego z operacjami metadanych oraz na żądanie partycji/odpowiedź między liderem partycji i jego obserwatorami. Nawet w przypadku braku przepływu danych w programie repliki partycji nadal pobierają dane od liderów, co skutkuje dodatkowym przetwarzaniem żądań wysyłania i odbierania przez sieć.
 
-Apache Kafka klastrów 1.1 powyżej w HDInsight, zaleca się do maksymalnie 1000 partycji przypadających na brokera, łącznie z repliki. Zwiększenie liczby partycji przypadających na brokera zmniejsza przepustowość i może również spowodować niedostępność tematu. Aby uzyskać więcej informacji dotyczących obsługi różnych partycji platformy Kafka, zobacz [oficjalne wpis w blogu platformy Apache Kafka wzrost liczby partycji obsługiwane w wersji 1.1.0](https://blogs.apache.org/kafka/entry/apache-kafka-supports-more-partitions). Aby uzyskać więcej informacji na temat modyfikowania tematów, zobacz [platformy Apache Kafka: modyfikowanie tematy](https://kafka.apache.org/documentation/#basic_ops_modify_topic).
+W przypadku klastrów Apache Kafka 1,1 i nowszych w usłudze HDInsight zalecamy użycie maksymalnie 1000 partycji na brokera, w tym replik. Zwiększenie liczby partycji na brokera zmniejsza przepływność i może również spowodować niedostępność tematu. Aby uzyskać więcej informacji na temat obsługi partycji Kafka, zapoznaj [się z Apache Kafka oficjalnym wpisem w blogu, aby dowiedzieć się więcej o zwiększeniu liczby obsługiwanych partycji w wersji 1.1.0](https://blogs.apache.org/kafka/entry/apache-kafka-supports-more-partitions). Aby uzyskać szczegółowe informacje na temat modyfikowania tematów, zobacz [Apache Kafka: modyfikowanie tematów](https://kafka.apache.org/documentation/#basic_ops_modify_topic).
 
 ### <a name="number-of-replicas"></a>Liczba replik
 
-Wyższy współczynnik replikacji powoduje dodatkowe żądania między lidera partycji i obserwatorów. W związku z tym, wyższy współczynnik replikacji zużywa więcej dysku i procesora CPU do obsługi dodatkowych żądań zwiększenia zapisu opóźnienia i zmniejszenie przepływności.
+Wyższa wartość współczynnika replikacji skutkuje dodatkowymi żądaniami między liderem partycji a obserwatorami. W związku z tym wyższym czynnikiem replikacji zużywa więcej dysku i procesora do obsługi dodatkowych żądań, co zwiększa opóźnienie zapisu i zmniejsza przepływność.
 
-Zalecamy użycie co najmniej 3 x replikacji dla platformy Kafka w usłudze Azure HDInsight. Większości regionów platformy Azure mają trzy domeny błędów, ale w regionach z tylko dwie domeny błędów, użytkownicy powinni używać 4 x replikacji.
+Zalecamy używanie co najmniej 3-krotnej replikacji dla Kafka w usłudze Azure HDInsight. Większość regionów świadczenia usługi Azure ma trzy domeny błędów, ale w regionach mających tylko dwie domeny błędów użytkownicy powinni korzystać z replikacji 4x.
 
-Aby uzyskać więcej informacji na temat replikacji, zobacz [platformy Apache Kafka: replikacja](https://kafka.apache.org/documentation/#replication) i [platformy Apache Kafka: zwiększenie współczynnika replikacji](https://kafka.apache.org/documentation/#basic_ops_increase_replication_factor).
+Aby uzyskać więcej informacji na temat replikacji, zobacz [Apache Kafka: replikacja](https://kafka.apache.org/documentation/#replication) i [Apache Kafka: zwiększanie współczynnika replikacji](https://kafka.apache.org/documentation/#basic_ops_increase_replication_factor).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Processing trillions of events per day with Apache Kafka on Azure (Przetwarzanie bilionów zdarzeń dziennie za pomocą platformy Apache Kafka na platformie Azure)](https://azure.microsoft.com/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/)
-* [Co to jest platforma Apache Kafka w HDInsight?](apache-kafka-introduction.md)
+* [Co to jest Apache Kafka w usłudze HDInsight?](apache-kafka-introduction.md)

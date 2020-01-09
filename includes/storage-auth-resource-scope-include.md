@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/28/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 518c57bc3327511b70deef143826f2a1b9df8639
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 74ef8270b5efcd3b7cdf756c103dcc2e1c935508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460498"
 ---
-Przed przypisaniem roli RBAC do podmiotu zabezpieczeń, należy określić zakres dostępu, którą powinien posiadać podmiotu zabezpieczeń. Najlepsze rozwiązania określają, że zawsze najlepiej jest udzielić tylko to możliwe najwęższego zakresu.
+Przed przypisaniem roli RBAC do podmiotu zabezpieczeń należy określić zakres dostępu, który powinien mieć podmiot zabezpieczeń. Najlepsze rozwiązania określają, że zawsze najlepiej jest przyznać tylko najwęższy możliwy zakres.
 
-Na poniższej liście opisano poziomów, w których możesz ograniczyć dostęp do zasobów platformy Azure obiektów blob i kolejek, począwszy od najwęższego zakresu:
+Na poniższej liście opisano poziomy, w których można określić zakres dostępu do zasobów usługi Azure BLOB i kolejek, rozpoczynając od najwęższego zakresu:
 
-- **Pojedynczy kontener.** W tym zakresie przypisania roli ma zastosowanie do wszystkich obiektów blob w kontenerze, a także właściwości kontenera i metadanych.
-- **Pojedynczej kolejki.** W tym zakresie przypisania roli ma zastosowanie do wiadomości w kolejce, a także właściwości kolejki i metadanych.
-- **Konto magazynu.** W tym zakresie przypisania roli dotyczy wszystkich kontenerów i ich obiektów blob lub wszystkich kolejek i ich wiadomości.
-- **Grupa zasobów.** W tym zakresie przypisania roli ma zastosowanie do wszystkich kontenerów lub kolejek we wszystkich kont magazynu w grupie zasobów.
-- **Subskrypcja.** W tym zakresie przypisania roli ma zastosowanie do wszystkich kontenerów lub kolejek we wszystkich kont magazynu we wszystkich grupach zasobów w subskrypcji.
+- **Pojedynczy kontener.** W tym zakresie przypisanie roli dotyczy wszystkich obiektów BLOB w kontenerze, a także właściwości kontenera i metadanych.
+- **Poszczególne kolejki.** W tym zakresie przypisanie roli ma zastosowanie do komunikatów w kolejce, a także do właściwości i metadanych kolejki.
+- **Konto magazynu.** W tym zakresie przypisanie roli dotyczy wszystkich kontenerów i ich obiektów blob, a także do wszystkich kolejek i ich komunikatów.
+- **Grupa zasobów.** W tym zakresie przypisanie roli dotyczy wszystkich kontenerów lub kolejek we wszystkich kontach magazynu w grupie zasobów.
+- **Subskrypcja.** W tym zakresie przypisanie roli dotyczy wszystkich kontenerów lub kolejek we wszystkich kontach magazynu we wszystkich grupach zasobów w subskrypcji.
 
 > [!IMPORTANT]
-> Jeśli Twoja subskrypcja obejmuje przestrzeni nazw usługi Azure DataBricks, role przypisane w zakresie subskrypcji zostanie zablokowany udzielanie dostępu do danych obiektów blob i kolejek.
+> Jeśli subskrypcja obejmuje przestrzeń nazw usługi Azure datakostki, role należące do zakresu subskrypcji nie będą udzielać dostępu do danych obiektów blob i kolejek. Zamiast nich role zakresu z grupą zasobów, kontem magazynu lub kontenerem lub kolejką.     

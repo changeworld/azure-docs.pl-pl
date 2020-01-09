@@ -1,21 +1,21 @@
 ---
-title: Jak wywoływać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika przy użyciu zestawów SDK usługi Azure Cosmos DB
+title: Rejestrowanie i używanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika w zestawach SDK Azure Cosmos DB
 description: Dowiedz się, jak rejestrować i wywoływać procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika przy użyciu zestawów SDK usługi Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 5aea7c0b6b2008724a4a84bca7a63ae745f2dd1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104826"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441755"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Jak rejestrować procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika oraz jak ich używać w usłudze Azure Cosmos DB
 
-Interfejs API SQL w usłudze Azure Cosmos DB obsługuje rejestrowanie i wywoływanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) napisanych w języku JavaScript. Aby zarejestrować i wywołać procedury składowane, można [użyć interfejsów API](sql-api-sdk-dotnet.md)SQL, .NET [Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)lub [Python](sql-api-sdk-python.md) SDK. Po zdefiniowaniu kilku procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika można je załadować i wyświetlić w witrynie [Azure Portal](https://portal.azure.com/) za pomocą Eksploratora danych.
+Interfejs API SQL w usłudze Azure Cosmos DB obsługuje rejestrowanie i wywoływanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika (UDF) napisanych w języku JavaScript. Aby zarejestrować i wywołać procedury składowane, można [użyć interfejsów API SQL, .NET](sql-api-sdk-dotnet.md) [Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)lub [Python](sql-api-sdk-python.md) SDK. Po zdefiniowaniu kilku procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika można je załadować i wyświetlić w witrynie [Azure Portal](https://portal.azure.com/) za pomocą Eksploratora danych.
 
 ## <a id="stored-procedures"></a>Jak uruchamiać procedury składowane
 
@@ -144,7 +144,7 @@ Poniższy przykład pokazuje, jak zarejestrować procedurę składowaną przy u�
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-await container.storedProcedures.create({
+await container.scripts.storedProcedures.create({
     id: sprocId,
     body: require(`../js/${sprocId}`)
 });
@@ -161,7 +161,7 @@ const newItem = [{
 }];
 const container = client.database("myDatabase").container("myContainer");
 const sprocId = "spCreateToDoItem";
-const {body: result} = await container.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
+const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
 ### <a name="stored-procedures---python-sdk"></a>Procedury składowane — zestaw SDK języka Python

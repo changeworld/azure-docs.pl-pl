@@ -1,25 +1,16 @@
 ---
-title: Diagnozowanie typowych błędów pakietów kodu przy użyciu Service Fabric | Microsoft Docs
+title: Diagnozowanie typowych błędów pakietów kodu przy użyciu Service Fabric
 description: Dowiedz się, jak rozwiązywać typowe błędy pakietu kodu za pomocą usługi Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
 author: grzuber
-manager: gkhanna
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249220"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463099"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnozowanie typowych błędów pakietów kodu przy użyciu Service Fabric
 
@@ -63,9 +54,9 @@ Kod zakończenia | Wartość szesnastkowa | Krótki opis | Główna przyczyna | 
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Ten błąd czasami oznacza, że na maszynie zabrakło miejsca na stercie. Ta przyczyna jest szczególnie przydatna, jeśli masz wiele procesów należących do aplikacji uruchomionej w węźle. | Jeśli program nie został skompilowany w celu reagowania na sygnały Ctrl + C, można włączyć ustawienie **EnableActivateNoWindow** w manifeście klastra. Włączenie tego ustawienia oznacza, że pakiet kodu zostanie uruchomiony bez okna graficznego interfejsu użytkownika i nie otrzyma sygnałów Ctrl + C. Ta akcja zmniejsza również ilość miejsca użycia sterty pulpitu przez każdy proces. Jeśli pakiet kodu musi odbierać sygnały Ctrl + C, można zwiększyć rozmiar sterty pulpitu węzła.
 3762504530 | 0xe0434352 | ND | Ta wartość reprezentuje kod błędu dla nieobsłużonego wyjątku z kodu zarządzanego (czyli platformy .NET). | Ten kod zakończenia wskazuje, że aplikacja zgłosiła wyjątek, który pozostanie nieobsłużony i który zakończył proces. Pierwszym krokiem w ustaleniu, co wyzwolił ten błąd, debugowanie dzienników aplikacji i plików zrzutów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [diagnozowaniu innych typowych scenariuszy](service-fabric-diagnostics-common-scenarios.md).
 * Zapoznaj się z bardziej szczegółowym omówieniem dzienników Azure Monitor i ich oferty, odczytując [Azure monitor przegląd](../operations-management-suite/operations-management-suite-overview.md).
 * Dowiedz się więcej o dziennikach Azure Monitor [alerty](../log-analytics/log-analytics-alerts.md) dotyczące pomocy w wykrywaniu i diagnostyce.
-* Zapoznaj się z funkcjami przeszukiwania [dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) , które są oferowane w ramach dzienników Azure monitor.
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) , które są oferowane w ramach dzienników Azure monitor.

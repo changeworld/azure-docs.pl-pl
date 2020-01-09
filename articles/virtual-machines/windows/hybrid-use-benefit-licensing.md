@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461159"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 W przypadku klientów z programem Software Assurance Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server umożliwia korzystanie z lokalnych licencji systemu Windows Server i uruchamianie maszyn wirtualnych z systemem Windows na platformie Azure przy niższych kosztach. Za pomocą Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server można wdrożyć nowe maszyny wirtualne z systemem operacyjnym Windows. W tym artykule opisano procedurę wdrażania nowych maszyn wirtualnych przy użyciu programu Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server i sposobu aktualizowania istniejących uruchomionych maszyn wirtualnych. Aby uzyskać więcej informacji na temat Korzyść użycia hybrydowego platformy Azure licencjonowania i oszczędności w systemie Windows Server, zobacz [stronę licencjonowanie korzyść użycia hybrydowego platformy Azure dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -64,7 +64,7 @@ New-AzVm `
     -LicenseType "Windows_Server"
 ```
 
-### <a name="cli"></a>Interfejs wiersza polecenia
+### <a name="cli"></a>Interfejs CLI
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
@@ -110,7 +110,7 @@ W bloku maszyny wirtualnej portalu możesz zaktualizować maszynę wirtualną, a
     Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
-### <a name="cli"></a>Interfejs wiersza polecenia
+### <a name="cli"></a>Interfejs CLI
 - Konwertuj istniejące maszyny wirtualne z systemem Windows Server na Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 
     ```azurecli
@@ -143,7 +143,7 @@ Location                 : westus
 LicenseType              :
 ```
 
-### <a name="cli"></a>Interfejs wiersza polecenia
+### <a name="cli"></a>Interfejs CLI
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVM --query "[?licenseType=='Windows_Server']" -o table
 ```
@@ -164,7 +164,7 @@ $vms = Get-AzVM
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 
-### <a name="cli"></a>Interfejs wiersza polecenia
+### <a name="cli"></a>Interfejs CLI
 ```azurecli
 az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
@@ -201,4 +201,4 @@ Możesz również dowiedzieć się więcej na temat [modyfikowania zestawu skalo
 - Dowiedz się więcej [na temat szczegółowych wskazówek dotyczących licencjonowania systemu Windows Server korzyść użycia hybrydowego platformy Azure](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 - Dowiedz się więcej [na temat korzyść użycia hybrydowego platformy Azure dla systemu Windows Server i Azure Site Recovery Migrowanie aplikacji na platformę Azure jeszcze bardziej opłacalne](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 - Dowiedz się więcej o [systemie Windows 10 na platformie Azure z prawem hostingu](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) wielodostępnego
-- Dowiedz się więcej o [korzystaniu z szablonów Menedżer zasobów](../../azure-resource-manager/resource-group-overview.md)
+- Dowiedz się więcej o [korzystaniu z szablonów Menedżer zasobów](../../azure-resource-manager/management/overview.md)

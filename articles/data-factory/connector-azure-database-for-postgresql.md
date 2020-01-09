@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
-ms.openlocfilehash: 3729d43716a0f4e133fb175da2546aac560b0525
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 67d59e3f733efe5a248e6763f46402302496d437
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444390"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych do i z Azure Database for PostgreSQL przy użyciu Azure Data Factory
 
@@ -48,7 +48,7 @@ Następujące właściwości są obsługiwane dla Azure Database for PostgreSQL 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **AzurePostgreSql**. | Tak |
-| connectionString | Ciąg połączenia ODBC, nawiązać połączenia z usługi Azure Database for PostgreSQL.<br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz następujące przykłady i [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
+| connectionString | Ciąg połączenia ODBC, nawiązać połączenia z usługi Azure Database for PostgreSQL.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz następujące przykłady i [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md) . | Tak |
 | connectVia | Ta właściwość reprezentuje [środowisko Integration Runtime](concepts-integration-runtime.md) , które ma być używane do nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 Typowe parametry połączenia jest `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Poniżej przedstawiono więcej właściwości, które można ustawić dla danego przypadku:
@@ -66,10 +66,7 @@ Typowe parametry połączenia jest `Server=<server>.postgres.database.azure.com;
     "properties": {
         "type": "AzurePostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
-            }
+            "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
         }
     }
 }
@@ -85,10 +82,7 @@ Typowe parametry połączenia jest `Server=<server>.postgres.database.azure.com;
     "properties": {
         "type": "AzurePostgreSql",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

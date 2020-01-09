@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie konta interfejsu API Cassandra przy użyciu interfejsu aplikacji Java — Azure Cosmos DB'
+title: 'Samouczek: kompilowanie aplikacji Java do tworzenia konta Azure Cosmos DB interfejs API Cassandra'
 description: W tym samouczku przedstawiono sposób tworzenia konta interfejsu API Cassandra, dodawania bazy danych (nazywanej także przestrzenią kluczy) oraz dodawania tabeli do tego konta przy użyciu aplikacji języka Java.
 author: kanshiG
 ms.author: govindk
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: d2d4d568f53c426b063f3285cc8d3d510c3db440
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b0103f7b827de77c522f78000c8d28683ac85f4b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034622"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441900"
 ---
-# <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Samouczek: Tworzenie konta interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java w celu przechowywania danych kluczy/wartości
+# <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Samouczek: Tworzenie konta interfejs API Cassandra w Azure Cosmos DB przy użyciu aplikacji Java do przechowywania danych klucza/wartości
 
 Jako deweloper być może masz aplikacje, które używają par klucz-wartość. Możesz przechowywać dane kluczy/wartości przy użyciu konta interfejsu API Cassandra w usłudze Azure Cosmos DB. W tym samouczku przedstawiono sposób użycia aplikacji języka Java do tworzenia konta interfejsu API Cassandra w usłudze Azure Cosmos DB, dodawania bazy danych (nazywanej także przestrzenią kluczy) oraz dodawania tabeli. Aplikacja języka Java używa [sterownika Java](https://github.com/datastax/java-driver) do tworzenia bazy danych użytkowników, która zawiera szczegółowe informacje, takie jak identyfikator użytkownika, nazwa użytkownika i miasto użytkownika.  
 
@@ -28,7 +28,7 @@ Ten samouczek obejmuje następujące zadania:
 > * Pobieranie parametrów połączenia konta
 > * Tworzenie projektu Maven i zależności
 > * Dodawanie bazy danych i tabeli
-> * Uruchamianie aplikacji
+> * Uruchomienie aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
@@ -41,7 +41,7 @@ Ten samouczek obejmuje następujące zadania:
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). 
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/). 
 
 2. Wybierz kolejno pozycje **Utwórz zasób** > **Bazy danych** > **Azure Cosmos DB**. 
 
@@ -50,10 +50,10 @@ Ten samouczek obejmuje następujące zadania:
    |Ustawienie   |Sugerowana wartość  |Opis  |
    |---------|---------|---------|
    |ID   |   Wprowadź unikatową nazwę    | Wprowadź unikatową nazwę do identyfikacji tego konta usługi Azure Cosmos. <br/><br/>Ponieważ cassandra.cosmosdb.azure.com jest dołączany do podania identyfikatora w celu utworzenia punktu kontaktu, należy użyć unikatowego, ale zidentyfikowanego identyfikatora.         |
-   |interfejs API    |  Cassandra   |  Interfejs API określa typ konta do utworzenia. <br/> Wybierz pozycję **Cassandra**, ponieważ w tym artykule utworzysz bazę danych z szeroką kolumną, którą można zbadać przy użyciu składni Cassandra Query Language (CQL).  |
-   |Subscription    |  Twoja subskrypcja        |  Wybierz subskrypcję platformy Azure, która ma być używana dla tego konta usługi Azure Cosmos.        |
+   |API    |  Cassandra   |  Interfejs API określa typ konta do utworzenia. <br/> Wybierz pozycję **Cassandra**, ponieważ w tym artykule utworzysz bazę danych z szeroką kolumną, którą można zbadać przy użyciu składni Cassandra Query Language (CQL).  |
+   |Subskrypcja    |  Twoja subskrypcja        |  Wybierz subskrypcję platformy Azure, która ma być używana dla tego konta usługi Azure Cosmos.        |
    |Grupa zasobów   | Wprowadź nazwę    |  Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę nowej grupy zasobów dla swojego konta. Dla uproszczenia można użyć takiej samej nazwy jak identyfikator.    |
-   |Location    |  Wybierz region najbliżej Twoich użytkowników    |  Wybierz lokalizację geograficzną, w której będzie hostowane Twoje konto usługi Azure Cosmos. Użyj lokalizacji znajdującej się najbliżej Twoich użytkowników, aby zapewnić im najszybszy dostęp do danych.    |
+   |Lokalizacja    |  Wybierz region najbliżej Twoich użytkowników    |  Wybierz lokalizację geograficzną, w której będzie hostowane Twoje konto usługi Azure Cosmos. Użyj lokalizacji znajdującej się najbliżej Twoich użytkowników, aby zapewnić im najszybszy dostęp do danych.    |
 
    ![Tworzenie konta za pomocą portalu](./media/create-cassandra-api-account-java/create-account.png)
 
@@ -204,7 +204,7 @@ Ta sekcja zawiera opis sposobu dodawania bazy danych (przestrzeni kluczy) oraz t
    } 
    ```
  
-## <a name="run-the-app"></a>Uruchamianie aplikacji 
+## <a name="run-the-app"></a>Uruchomienie aplikacji 
 
 1. Otwórz wiersz polecenia lub okno terminala. Wklej poniższy blok kodu. 
 

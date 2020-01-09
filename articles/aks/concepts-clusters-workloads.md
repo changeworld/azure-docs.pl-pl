@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
-ms.translationtype: MT
+ms.openlocfilehash: a6b696e16d2c946572cc213115fb440775fce3fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442972"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -152,7 +152,7 @@ Aby uzyskać więcej informacji na temat sposobu kontrolowania, gdzie są planow
 
 Kubernetes używa *zasobników* do uruchomienia wystąpienia aplikacji. Element pod reprezentuje pojedyncze wystąpienie aplikacji. Zasobniki zwykle mają 1:1 mapowania z kontenerem, chociaż istnieją zaawansowane scenariusze, w których część może zawierać wiele kontenerów. Te wielokontenerowe działy są planowane razem w tym samym węźle i umożliwiają kontenerom udostępnianie powiązanych zasobów.
 
-Podczas tworzenia elementu pod można zdefiniować *limity zasobów* , aby zażądać określonej ilości zasobów procesora CPU lub pamięci. Harmonogram Kubernetes próbuje zaplanować uruchomienie programu w węźle z dostępnymi zasobami w celu spełnienia żądania. Można również określić maksymalne limity zasobów uniemożliwiające korzystanie z zbyt dużej ilości zasobów obliczeniowych z bazowego węzła. Najlepszym rozwiązaniem jest uwzględnienie limitów zasobów dla wszystkich zasobników, aby pomóc harmonogramowi Kubernetes zrozumieć, które zasoby są zbędne i dozwolone.
+Podczas tworzenia elementu pod można zdefiniować *żądania zasobów* , aby zażądać określonej ilości zasobów procesora CPU lub pamięci. Harmonogram Kubernetes próbuje zaplanować uruchomienie programu w węźle z dostępnymi zasobami w celu spełnienia żądania. Można również określić maksymalne limity zasobów uniemożliwiające korzystanie z zbyt dużej ilości zasobów obliczeniowych z bazowego węzła. Najlepszym rozwiązaniem jest uwzględnienie limitów zasobów dla wszystkich zasobników, aby pomóc harmonogramowi Kubernetes zrozumieć, które zasoby są zbędne i dozwolone.
 
 Aby uzyskać więcej informacji, zobacz [Kubernetes][kubernetes-pods] i [Kubernetes pod cykl życia][kubernetes-pod-lifecycle].
 

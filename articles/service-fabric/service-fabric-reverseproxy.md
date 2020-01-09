@@ -1,96 +1,87 @@
 ---
-title: Usługa Azure Service Fabric zwrotny serwer proxy | Dokumentacja firmy Microsoft
-description: Zwrotny serwer proxy usługi Service Fabric na użytek komunikacji z mikrousług z i spoza klastra.
-services: service-fabric
-documentationcenter: .net
+title: Zwrotny serwer proxy Service Fabric platformy Azure
+description: Użyj zwrotnego serwera proxy Service Fabric do komunikacji z mikrousługami z wewnątrz i na zewnątrz klastra.
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 6ce6f1f6559b43a64fb7edd0773a20f8ee0cf8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464300"
 ---
-# <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy w usłudze Azure Service Fabric
-Zwrotny serwer proxy, wbudowana w usłudze Azure Service Fabric pomaga mikrousług działającego w klastrze usługi Service Fabric, odnajdywanie i komunikować się z innymi usługami, które mają punktów końcowych http.
+# <a name="reverse-proxy-in-azure-service-fabric"></a>Zwrotny serwer proxy na platformie Azure Service Fabric
+Zwrotny serwer proxy wbudowany w usługę Azure Service Fabric ułatwia mikrousługi działające w klastrze Service Fabric odnajdywania i komunikowania się z innymi usługami, które mają punkty końcowe http.
 
-## <a name="microservices-communication-model"></a>Model komunikacji Mikrousług
-Mikrousługi w usłudze Service Fabric Uruchom dla podzbioru węzłów w klastrze i jest Migrowanie między węzłami z różnych powodów. W rezultacie punkty końcowe dla mikrousług można dynamicznie zmieniać. Aby odnaleźć i komunikować się z innymi usługami w klastrze, mikrousługi musi przejść przez następujące kroki:
+## <a name="microservices-communication-model"></a>Model komunikacji mikrousług
+Mikrousługi w Service Fabric działają na podzestawie węzłów w klastrze i mogą migrować między węzłami z różnych powodów. W efekcie punkty końcowe dla mikrousług mogą zmieniać się dynamicznie. Aby odnajdywać i komunikować się z innymi usługami w klastrze, należy wykonać następujące czynności:
 
-1. Ustala lokalizację usługi, za pośrednictwem usługi nazewnictwa.
-2. Połączenia z usługą.
-3. OPAKOWYWANIE poprzednie kroki w pętli, który implementuje usługę rozpoznawania, a następnie spróbuj ponownie zasady do zastosowania na błędy połączenia
+1. Rozpoznaj lokalizację usługi za pomocą usługi nazewnictwa.
+2. Połącz się z usługą.
+3. Zawiń poprzednie kroki w pętli implementującej rozwiązanie usługi i zasady ponawiania, aby zastosować je do błędów połączenia
 
-Aby uzyskać więcej informacji, zobacz [Connect i komunikować się z usługami](service-fabric-connect-and-communicate-with-services.md).
+Aby uzyskać więcej informacji, zobacz [łączenie się z usługami i komunikowanie się z nimi](service-fabric-connect-and-communicate-with-services.md).
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>Komunikacja przy użyciu zwrotnego serwera proxy
-Zwrotny serwer proxy to usługa, która działa w każdym węźle i obsługuje punkt końcowy rozpoznawania, automatyczny i inne błędy połączeń w imieniu usługi klienta. Zwrotny serwer proxy można skonfigurować do zastosowania różnych zasad, ponieważ obsługuje on żądania z klienta usług. Przy użyciu zwrotnego serwera proxy umożliwia usługę klienta korzystać z żadnych bibliotek komunikacji HTTP po stronie klienta i nie wymagają specjalnych rozwiązania i Logika ponawiania w usłudze. 
+Zwrotny serwer proxy to usługa, która działa w każdym węźle i obsługuje rozpoznawanie punktów końcowych, automatyczne ponawianie próby i inne błędy połączeń w imieniu usług klienta. Zwrotny serwer proxy można skonfigurować w taki sposób, aby zastosować różne zasady w miarę obsługi żądań z usług klienta. Użycie zwrotnego serwera proxy umożliwia usłudze klienta korzystanie z dowolnych bibliotek komunikacji HTTP po stronie klienta i nie wymaga specjalnej rozdzielczości i logiki ponawiania w usłudze. 
 
-Zwrotny serwer proxy przedstawia jeden lub więcej punktów końcowych na lokalny węzeł usługi klienta używany do wysyłania żądań do innych usług.
+Zwrotny serwer proxy uwidacznia jeden lub więcej punktów końcowych w węźle lokalnym dla usług klienta, które mają być używane do wysyłania żądań do innych usług.
 
-![Wewnętrznej komunikacji][1]
+![Komunikacja wewnętrzna][1]
 
 > [!NOTE]
 > **Obsługiwane platformy**
 >
-> Zwrotny serwer proxy w usłudze Service Fabric aktualnie obsługuje następujące platformy
-> * *Klaster Windows*: System Windows 8 lub nowszym lub Windows Server 2012 i nowsze
-> * *Klaster systemu Linux*: Zwrotny serwer Proxy nie jest obecnie dostępna w przypadku klastrów systemu Linux
+> Zwrotny serwer proxy w Service Fabric obecnie obsługuje następujące platformy
+> * *Klaster systemu Windows*: system Windows 8 lub nowszy lub windows Server 2012 lub nowszy
+> * *Klaster systemu Linux*: zwrotny serwer proxy nie jest obecnie dostępny dla klastrów systemu Linux
 >
 
-## <a name="reaching-microservices-from-outside-the-cluster"></a>Docieranie do mikrousług z poza klastrem
-Domyślny model łączności zewnętrznej dla mikrousług jest model opt-in, gdzie każdej z tych usług nie są dostępne bezpośrednio z klientami zewnętrznymi. [Usługa Azure Load Balancer](../load-balancer/load-balancer-overview.md), czyli granicę sieci między mikrousług i zewnętrznych klientów, wykonuje translatora adresów sieciowych i przekazuje zewnętrznych żądania z punktami końcowymi IP:port wewnętrznego. Aby udostępnić punkt końcowy mikrousług bezpośrednio dla klientów zewnętrznych, należy najpierw skonfigurować moduł równoważenia obciążenia do przesyłania ruchu do każdy port używany przez usługę w klastrze. Ponadto większość mikrousług, szczególnie mikrousług stanowych, nie znajdują się we wszystkich węzłach klastra. Mikrousługi można przenosić między węzłami w trybie failover. W takich przypadkach modułu równoważenia obciążenia nie może skutecznie określenia lokalizacji węzeł docelowy replik, do których należy przekazywać ruch.
+## <a name="reaching-microservices-from-outside-the-cluster"></a>Osiąganie mikrousług spoza klastra
+Domyślnym zewnętrznym modelem komunikacji dla mikrousług jest model, w którym nie można uzyskać dostępu do poszczególnych usług bezpośrednio od klientów zewnętrznych. [Azure Load Balancer](../load-balancer/load-balancer-overview.md), czyli granica sieci między mikrousługami i klientami zewnętrznymi, wykonuje translację adresów sieciowych i przekazuje zewnętrzne żądania do wewnętrznego adresu IP: punkty końcowe portów. Aby punkt końcowy mikrousługi był dostępny bezpośrednio dla klientów zewnętrznych, należy najpierw skonfigurować Load Balancer, aby przekazywać ruch do każdego portu używanego przez usługę w klastrze. Co więcej, większość mikrousług, szczególnie mikrousługi stanowe, nie działa na wszystkich węzłach klastra. Mikrousługi mogą przechodzić między węzłami w trybie failover. W takich przypadkach Load Balancer nie może efektywnie ustalić lokalizacji węzła docelowego replik, do których powinien przesłać ruch.
 
-### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Docieranie do mikrousług przy użyciu zwrotnego serwera proxy spoza klastra
-Zamiast konfigurować portu poszczególnych usług w module równoważenia obciążenia, można skonfigurować tylko port zwrotnego serwera proxy w module równoważenia obciążenia. Ta konfiguracja pozwala klientom spoza klastra dotrzeć do usług w klastrze przy użyciu zwrotnego serwera proxy bez dodatkowej konfiguracji.
+### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Osiąganie mikrousług za pośrednictwem zwrotnego serwera proxy spoza klastra
+Zamiast konfigurować port pojedynczej usługi w Load Balancer, można skonfigurować tylko port zwrotnego serwera proxy w programie Load Balancer. Ta konfiguracja umożliwia klientom spoza klastra dostęp do usług znajdujących się w klastrze przy użyciu zwrotnego serwera proxy bez dodatkowej konfiguracji.
 
-![Zewnętrzne komunikacji][0]
+![Komunikacja zewnętrzna][0]
 
 > [!WARNING]
-> Po skonfigurowaniu port zwrotnego serwera proxy w module równoważenia obciążenia, wszystkie mikrousług w klastrze, które ujawniają punkt końcowy HTTP adresowane z poza klastrem. Oznacza to, że mikrousług należy traktować jako wewnętrzny mogą być wykrywalny przez złośliwego użytkownika określone. Potencjalnie stwarza poważne luki w zabezpieczeniach, które mogą być wykorzystane; na przykład:
+> Po skonfigurowaniu portu zwrotnego serwera proxy w Load Balancer wszystkie mikrousługi w klastrze, które uwidaczniają punkt końcowy HTTP, są adresowane spoza klastra. Oznacza to, że mikrousługi mające być wewnętrzne mogą być odnajdywane przez określonego złośliwego użytkownika. Jest to potencjalnie przyczyną poważnych luk w zabezpieczeniach, które mogą zostać wykorzystane; na przykład:
 >
-> * Złośliwy użytkownik będą mogły uruchamiać wielokrotnie, wywołując wewnętrzna usługa, która nie ma wystarczająco ataku typu "odmowa usługi".
-> * Złośliwy użytkownik może dostarczyć źle sformułowane pakiety do wewnętrzna usługa skutkuje niezamierzone zachowanie.
-> * Usługi, należy traktować jako wewnętrzny mogą zwracać prywatne lub poufne informacje, nie mają być udostępniana dla usług poza klastrem, w związku z tym udostępnianie danych poufnych na złośliwy użytkownik. 
+> * Złośliwy użytkownik może uruchomić atak typu "odmowa usługi", wielokrotnie wywołując usługę wewnętrzną, która nie ma wystarczająco niezawodnej powierzchni ataku.
+> * Złośliwy użytkownik może dostarczyć wadliwe pakiety do usługi wewnętrznej, powodując niezamierzone zachowanie.
+> * Usługa, która ma być wewnętrzna, może zwracać informacje prywatne lub poufne, które nie są przeznaczone do ujawnienia usług poza klastrem, dzięki czemu ujawniają te poufne informacje złośliwemu użytkownikowi. 
 >
-> Upewnij się, w pełni zrozumieć i eliminowanie potencjalnych zagadnienia zabezpieczeń dla klastra i aplikacje działające na, zanim można upublicznić port zwrotnego serwera proxy. 
+> Pamiętaj, aby w pełni zrozumieć i wyeliminować potencjalne konsekwencje dotyczące zabezpieczeń klastra i uruchomione na nim aplikacje przed przystąpieniem do publicznego przywróceniu portu serwera proxy. 
 >
 
 
-## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>Format identyfikatora URI do adresowania usług przy użyciu zwrotnego serwera proxy
-Zwrotny serwer proxy w formacie określonym uniform resource identifier identyfikator (URI) do identyfikowania partycji usługi, do której należy przesłać żądanie przychodzące:
+## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>Format identyfikatora URI dla usług adresowania przy użyciu zwrotnego serwera proxy
+Zwrotny serwer proxy używa określonego formatu identyfikatora URI (Uniform Resource Identifier) do identyfikowania partycji usługi, do której ma zostać przesłane żądanie przychodzące:
 
 ```
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http (s):** Zwrotny serwer proxy można skonfigurować do akceptowania ruchu HTTP lub HTTPS. Przekazywanie protokołu HTTPS można znaleźć [nawiązywanie połączenia z bezpiecznej usłudze przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md) po instalacji zwrotny serwer proxy do nasłuchiwania przy użyciu protokołu HTTPS.
-* **Klaster w pełni kwalifikowaną nazwę domeny (FQDN) | wewnętrzny adres IP:** Dla klientów zewnętrznych zwrotny serwer proxy można skonfigurować, tak aby był dostępny za pośrednictwem domeny klastra, takie jak mycluster.eastus.cloudapp.azure.com. Domyślnie zwrotny serwer proxy jest uruchamiane w każdym węźle. W przypadku ruchu wewnętrznego zwrotny serwer proxy jest osiągalna na hoście lokalnym lub na dowolny adres IP węzła wewnętrznego, np. 10.0.0.1.
-* **Port:** Jest to port, np. 19081, który został określony dla zwrotnego serwera proxy.
-* **ServiceInstanceName:** Jest to w pełni kwalifikowana nazwa wystąpienia wdrożonej usługi, z którym próbujesz nawiązać połączenie bez "Service fabric: /" schematu. Na przykład, aby osiągnąć *Service fabric: / myapp/Moja_usługa/* usługi, należy użyć *myapp/Moja_usługa*.
+* **http (s):** Zwrotny serwer proxy można skonfigurować tak, aby akceptował ruch HTTP lub HTTPS. W przypadku przekazywania HTTPS zapoznaj się z tematem łączenie się z [bezpieczną usługą za pomocą zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md) po zakończeniu instalacji zwrotnego serwera proxy do nasłuchiwania przy użyciu protokołu HTTPS.
+* W **pełni kwalifikowana nazwa domeny (FQDN) klastra | wewnętrzny adres IP:** W przypadku klientów zewnętrznych można skonfigurować zwrotny serwer proxy w taki sposób, aby był osiągalny za pomocą domeny klastra, na przykład mycluster.eastus.cloudapp.azure.com. Domyślnie zwrotny serwer proxy działa w każdym węźle. W przypadku ruchu wewnętrznego można uzyskać dostęp do zwrotnego serwera proxy na hoście lokalnym lub w dowolnym wewnętrznym adresie IP węzła, na przykład 10.0.0.1.
+* **Port:** Jest to port, na przykład 19081, który został określony dla zwrotnego serwera proxy.
+* **ServiceInstanceName:** Jest to w pełni kwalifikowana nazwa wdrożonego wystąpienia usługi, do którego próbujesz uzyskać dostęp bez "sieci szkieletowej:/" równaniu. Na przykład, aby uzyskać dostęp do *sieci szkieletowej:/MojaApl/WebService/* Service, należy użyć *MojaApl/* moje usługi.
 
-    Nazwa wystąpienia usługi jest rozróżniana wielkość liter. Przy użyciu innej wielkości liter dla nazwy wystąpienia usługi w adresie URL powoduje, że żądania z 404 (nie znaleziono).
-* **Sufiks ścieżki:** Jest rzeczywista Ścieżka adresu URL, taki jak *myapi/wartości/Dodaj/3*, usługi, którą chcesz nawiązać połączenie.
-* **PartitionKey:** Dla podzielonej na partycje usługi to klucz partycji obliczanej partycji, który chcesz się połączyć. Należy zauważyć, że jest to *nie* partycji Identyfikatora GUID. Ten parametr nie jest wymagane dla usług, które używają schematu partycji pojedynczego wystąpienia.
-* **PartitionKind:** Jest to schemat partycji usługi. Może to być "Int64Range" lub "Named". Ten parametr nie jest wymagane dla usług, które używają schematu partycji pojedynczego wystąpienia.
-* **ListenerName** punkty końcowe usługi są w formie {"Punkty końcowe": {"Listener1": "Punk końcowy 1", "Listener2": "Endpoint2" …}}. Gdy usługa udostępnia wiele punktów końcowych, identyfikuje punkt końcowy, który żądanie klienta powinien być przekazywany do. To można pominąć, jeśli usługa ma tylko jeden odbiornik.
-* **TargetReplicaSelector** Określa, jak należy wybrać docelowej repliki lub wystąpienia.
-  * Gdy Usługa docelowa jest stanową, TargetReplicaSelector może być jedną z następujących czynności:  "PrimaryReplica", "RandomSecondaryReplica" lub "RandomReplica". Jeśli ten parametr nie jest określony, wartością domyślną jest "PrimaryReplica".
-  * Po bezstanowa Usługa docelowa zwrotny serwer proxy wybiera losową wystąpienia partycji usługi w celu przesłania żądania do.
-* **Limit czasu:**  To ustawienie określa limit czasu żądania HTTP, utworzone przez zwrotny serwer proxy do usługi w imieniu żądania klienta. Wartość domyślna to 60 sekund. Jest to parametr opcjonalny.
+    W nazwie wystąpienia usługi jest rozróżniana wielkość liter. Użycie innej wielkości liter dla nazwy wystąpienia usługi w adresie URL powoduje, że żądania kończą się niepowodzeniem z 404 (nie znaleziono).
+* **Ścieżka sufiksu:** Jest to rzeczywista ścieżka URL, na przykład *myapi/Values/Add/3*dla usługi, z którą chcesz nawiązać połączenie.
+* **PartitionKey:** W przypadku usługi partycjonowanej jest to obliczony klucz partycji partycji, która ma zostać osiągnięta. Należy zauważyć, że *nie* jest to identyfikator GUID identyfikatora partycji. Ten parametr nie jest wymagany w przypadku usług, które korzystają z schematu partycji pojedynczej.
+* **PartitionKind:** To jest schemat partycji usług. Może to być "Int64Range" lub "nazwa". Ten parametr nie jest wymagany w przypadku usług, które korzystają z schematu partycji pojedynczej.
+* Nr **odbiornika** Punkty końcowe usługi mają postać {"Endpoints": {"Listener1": "Endpoint1", "Listener2": "Endpoint2"...}}. Gdy usługa ujawnia wiele punktów końcowych, identyfikuje punkt końcowy, do którego żądanie klienta powinno być przekazywane. Można to pominąć, jeśli usługa ma tylko jeden odbiornik.
+* **TargetReplicaSelector** Określa sposób, w jaki powinna zostać wybrana replika docelowa lub wystąpienie.
+  * Gdy usługa docelowa jest stanowa, TargetReplicaSelector może być jedną z następujących: "PrimaryReplica", "RandomSecondaryReplica" lub "RandomReplica". Jeśli ten parametr nie jest określony, wartością domyślną jest "PrimaryReplica".
+  * Gdy usługa docelowa jest bezstanowa, zwrotny serwer proxy wybiera losowo wystąpienie partycji usługi, aby przesłać żądanie do programu.
+* **Limit czasu:**  Określa limit czasu żądania HTTP utworzonego przez zwrotny serwer proxy do usługi w imieniu żądania klienta. Wartość domyślna to 60 sekund. Jest to opcjonalny parametr.
 
 ### <a name="example-usage"></a>Przykład użycia
-Na przykład Weźmy *Service fabric: / MyApp/Moja_usługa* usługa, która otwiera odbiornika protokołu HTTP na następujący adres URL:
+Na przykład przyjrzyjmy się usłudze *Fabric:/MojaApl/WebService* , która otwiera odbiornik http przy następującym adresie URL:
 
 ```
 http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
@@ -101,71 +92,71 @@ Poniżej przedstawiono zasoby usługi:
 * `/index.html`
 * `/api/users/<userId>`
 
-Jeśli usługa używa pojedynczego schematu partycjonowania *PartitionKey* i *PartitionKind* parametry ciągu zapytania nie są wymagane, a usługa jest osiągalna przy użyciu bramy jako:
+Jeśli usługa korzysta z schematu partycjonowania singleton, parametry ciągu zapytania *PartitionKey* i *PartitionKind* nie są wymagane i można uzyskać dostęp do usługi przy użyciu bramy jako:
 
-* Zewnętrzne: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* Zewnętrznie: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
 * Wewnętrznie: `http://localhost:19081/MyApp/MyService`
 
-Jeśli usługa używa schematu partycjonowania jednolitego Int64 *PartitionKey* i *PartitionKind* parametry ciągu zapytania należy użyć, aby dotrzeć do partycji usługi:
+Jeśli usługa używa jednorodnego schematu partycjonowania Int64, parametry ciągu zapytania *PartitionKey* i *PartitionKind* muszą być używane do uzyskania dostępu do partycji usługi:
 
-* Zewnętrzne: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Zewnętrznie: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 * Wewnętrznie: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
-Dostęp do zasobów, które uwidacznia usługa, po prostu umieść ścieżka zasobu po nazwie usługi w adresie URL:
+Aby dotrzeć do zasobów udostępnianych przez usługę, wystarczy umieścić ścieżkę zasobu po nazwie usługi w adresie URL:
 
-* Zewnętrzne: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* Zewnętrznie: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
 * Wewnętrznie: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
-Brama będzie przesyłania dalej tych żądań do adresu URL usługi:
+Następnie Brama przekaże te żądania do adresu URL usługi:
 
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
-## <a name="special-handling-for-port-sharing-services"></a>Specjalna obsługa współużytkowania portów usług
-Zwrotny serwer proxy usługi Service Fabric próbuje rozpoznać adres usługi ponownie i ponów żądanie, gdy nie można nawiązać połączenia usługi. Ogólnie rzecz biorąc gdy nie można połączyć się z usługą, wystąpienie usługi lub repliki został przeniesiony do innego węzła jako część jej cyklu projektowania normalny. W takim przypadku zwrotny serwer proxy może zostać wyświetlony błąd połączenia sieciowego, wskazujący, że punkt końcowy nie jest już otwarty na pierwotnie rozpoznany adres.
+## <a name="special-handling-for-port-sharing-services"></a>Specjalna obsługa usług udostępniania portów
+Service Fabric zwrotny serwer proxy próbuje ponownie rozpoznać adres usługi i ponowić próbę żądania, gdy nie można nawiązać połączenia z usługą. Ogólnie rzecz biorąc, gdy nie można skontaktować się z usługą, wystąpienie usługi lub replika została przeniesiona do innego węzła w ramach normalnego cyklu życia. W takim przypadku zwrotny serwer proxy może otrzymać błąd połączenia sieciowego wskazujący, że punkt końcowy nie jest już otwarty na pierwotnie rozwiązanym adresie.
 
-Jednak replik lub wystąpień usługi można udostępniać procesu hosta i może także udostępnić obsługiwanej przez serwer sieci web opartych na http.sys port w tym:
+Jednak repliki lub wystąpienia usług mogą współużytkować proces hosta i mogą również udostępnić port, który jest obsługiwany przez serwer sieci Web oparty na protokole HTTP. sys, w tym:
 
 * [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [ASP.NET Core webListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-W tej sytuacji jest serwer sieci web jest dostępna w procesie hosta i odpowiadanie na żądania, że wystąpienie usługi rozwiązany lub replika nie jest już dostępny na hoście. W tym przypadku bramy z serwera sieci web otrzyma komunikat odpowiedzi HTTP 404. W związku z tym komunikat odpowiedzi HTTP 404 może mieć dwie różne znaczenie:
+W takiej sytuacji jest możliwe, że serwer sieci Web jest dostępny w procesie hosta i odpowiada na żądania, ale rozpoznane wystąpienie usługi lub replika nie jest już dostępna na hoście. W takim przypadku Brama otrzyma odpowiedź HTTP 404 z serwera sieci Web. W rezultacie odpowiedź HTTP 404 może mieć dwie odrębne znaczenie:
 
-- Przypadek #1: Adres usługi jest poprawny, ale zasób, który użytkownik zażądał nie istnieje.
-- Przypadek #2: Adres usługi jest nieprawidłowa, a zasób, który użytkownik zażądał może istnieć w innym węźle.
+- #1 przypadku: adres usługi jest poprawny, ale zasób, którego zażądał użytkownik, nie istnieje.
+- #2 przypadku: adres usługi jest niepoprawny, a zasób żądany przez użytkownika może istnieć w innym węźle.
 
-Pierwszy przypadek jest normalne 404 protokołu HTTP, który jest uważany za błąd użytkownika. Jednak w drugim przypadku użytkownik zażądał zasobem, który istnieje. Zwrotny serwer proxy nie może go znaleźć, ponieważ sama usługa została przeniesiona. Zwrotny serwer proxy musi rozpoznać adresu ponownie i ponów próbę żądania.
+Pierwszym przypadkiem jest normalne HTTP 404, który jest traktowany jako błąd użytkownika. Jednak w drugim przypadku użytkownik zażądał zasobu, który już istnieje. Zwrotny serwer proxy nie mógł go zlokalizować, ponieważ sama usługa została przeniesiona. Zwrotny serwer proxy musi ponownie rozpoznać adres i ponowić próbę żądania.
 
-Zwrotny serwer proxy w związku z tym musi mieć możliwość rozróżnienie tych dwóch przypadkach. Aby tego rozróżnienia, wskazówkę z serwera jest wymagany.
+Zwrotny serwer proxy w ten sposób wymaga sposobu rozróżnienia między tymi dwoma przypadkami. Aby wprowadzić takie rozróżnienie, wymagana jest Wskazówka z serwera.
 
-* Domyślnie zwrotny serwer proxy zakłada przypadek #2 i próbuje rozpoznać i ponownie wysłać żądanie.
-* Aby wskazać, w przypadku #1 do zwrotnego serwera proxy, usługa powinna zwrócić następujące nagłówka odpowiedzi HTTP:
+* Domyślnie zwrotny serwer proxy zakłada przypadek #2 i próbuje rozwiązać i wydać żądanie ponownie.
+* Aby wskazać przypadek #1 do zwrotnego serwera proxy, usługa powinna zwrócić następujący nagłówek odpowiedzi HTTP:
 
   `X-ServiceFabric : ResourceNotFound`
 
-Ten nagłówek odpowiedzi HTTP wskazuje normalnej sytuacji HTTP 404, w której żądany zasób nie istnieje, a zwrotny serwer proxy nie będzie próbował rozpoznać adres usługi ponownie.
+Ten nagłówek odpowiedzi HTTP wskazuje normalną sytuację HTTP 404, w której żądany zasób nie istnieje i zwrotny serwer proxy nie będzie próbować ponownie rozpoznać adresu usługi.
 
 ## <a name="special-handling-for-services-running-in-containers"></a>Specjalna obsługa usług działających w kontenerach
 
-W przypadku usług działających w kontenerach, można użyć zmiennej środowiskowej `Fabric_NodeIPOrFQDN` do konstruowania [Wycofaj adres URL serwera proxy](#uri-format-for-addressing-services-by-using-the-reverse-proxy) zgodnie z poniższym kodem:
+W przypadku usług działających wewnątrz kontenerów można użyć zmiennej środowiskowej, `Fabric_NodeIPOrFQDN` utworzyć [adres URL zwrotnego serwera proxy](#uri-format-for-addressing-services-by-using-the-reverse-proxy) , tak jak w poniższym kodzie:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
-Dla klastra lokalnego `Fabric_NodeIPOrFQDN` jest domyślnie do "localhost". Uruchom lokalny klaster przy użyciu `-UseMachineName` parametru, aby upewnić się, kontenerów może osiągnąć zwrotny serwer proxy, uruchomione w węźle. Aby uzyskać więcej informacji, zobacz [konfigurowania środowiska dewelopera w celu debugowania kontenery](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+W przypadku klastra lokalnego `Fabric_NodeIPOrFQDN` jest domyślnie ustawiona na "localhost". Uruchom klaster lokalny z parametrem `-UseMachineName`, aby upewnić się, że kontenery mogą uzyskać dostęp do zwrotnego serwera proxy uruchomionego w węźle. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego do debugowania kontenerów](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
-Usługi Service Fabric, działających w kontenerach Docker Compose wymagają specjalnych docker-compose.yml *porty sekcji* http: lub https: konfiguracji. Aby uzyskać więcej informacji, zobacz [narzędzia Docker Compose Obsługa wdrażania w usłudze Azure Service Fabric](service-fabric-docker-compose.md).
+Usługi Service Fabric, które są uruchamiane w ramach kontenerów Docker Compose, wymagają specjalnej *sekcji portów* Docker-Compose. yml http: lub https: Configuration. Aby uzyskać więcej informacji, zobacz [Docker Compose obsługa wdrażania w usłudze Azure Service Fabric](service-fabric-docker-compose.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Instalowanie i konfigurowanie zwrotnego serwera proxy w klastrze](service-fabric-reverseproxy-setup.md).
-* [Konfigurowanie funkcji przekazywania danych do bezpiecznej usługi HTTP przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md)
-* [Diagnozowanie zdarzenia zwrotny serwer proxy](service-fabric-reverse-proxy-diagnostics.md)
-* Zobacz przykład protokołu HTTP do komunikacji między usługami w [przykładowy projekt w witrynie GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [Zdalne wywołania procedur z wywołaniem funkcji zdalnych usług Reliable Services](service-fabric-reliable-services-communication-remoting.md)
-* [Internetowy interfejs API, który używa OWIN usług Reliable Services](service-fabric-reliable-services-communication-webapi.md)
-* [Komunikacji WCF przy użyciu usług Reliable Services](service-fabric-reliable-services-communication-wcf.md)
+## <a name="next-steps"></a>Następne kroki
+* Skonfiguruj [i skonfiguruj zwrotny serwer proxy w klastrze](service-fabric-reverseproxy-setup.md).
+* [Skonfiguruj przekazywanie do bezpiecznej usługi HTTP przy użyciu zwrotnego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md)
+* [Diagnozuj zdarzenia zwrotnego serwera proxy](service-fabric-reverse-proxy-diagnostics.md)
+* Zobacz przykład komunikacji HTTP między usługami w [przykładowym projekcie w witrynie GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
+* [Zdalne wywołania procedur z Reliable Services komunikacji zdalnej](service-fabric-reliable-services-communication-remoting.md)
+* [Internetowy interfejs API, który używa OWIN w Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Komunikacja WCF przy użyciu Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

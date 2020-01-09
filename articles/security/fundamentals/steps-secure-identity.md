@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353232"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości
 
@@ -112,9 +112,14 @@ Aplikacje korzystające z własnych starszych metod do uwierzytelniania w usłud
 
 Korzystając z zakładanego naruszenia warunków, należy zmniejszyć wpływ naruszenia poświadczeń użytkownika. Dla każdej aplikacji w danym środowisku należy wziąć pod uwagę prawidłowe przypadki użycia: które grupy, które sieci, urządzenia i inne elementy są autoryzowane, Zablokuj resztę. Za pomocą [dostępu warunkowego usługi Azure AD](../../active-directory/conditional-access/overview.md)można kontrolować sposób, w jaki autoryzowani użytkownicy uzyskują dostęp do swoich aplikacji i zasobów na podstawie określonych warunków.
 
-### <a name="block-end-user-consent"></a>Zablokuj zgodę użytkownika końcowego
+### <a name="restrict-user-consent-operations"></a>Ogranicz operacje wyrażania zgody użytkownika
 
-Domyślnie wszyscy użytkownicy w usłudze Azure AD mogą przyznawać aplikacje, które korzystają z protokołu OAuth 2,0 i uprawnienia do [struktury zgody](../../active-directory/develop/consent-framework.md) na tożsamość firmy Microsoft w celu uzyskania dostępu do danych firmowych. Podczas wyrażania zgody użytkownicy mogą łatwo uzyskać użyteczne aplikacje, które integrują się z Microsoft 365 i platformą Azure, może stanowić ryzyko, jeśli nie są używane i monitorowane uważnie. [Wyłączenie wszystkich przyszłych operacji wyrażania zgody użytkowników](../../active-directory/manage-apps/methods-for-removing-user-access.md) może pomóc w zmniejszeniu obszaru powierzchni i złagodzeniu tego ryzyka. Jeśli zgoda użytkownika końcowego jest wyłączona, poprzednie dotacje będą nadal honorowane, ale wszystkie przyszłe operacje wyrażania zgody muszą być wykonywane przez administratora. Przed wyłączeniem tej funkcji zaleca się zapewnienie, że użytkownicy będą zrozumieć, jak zażądać zatwierdzenia przez administratora dla nowych aplikacji; Dzięki temu można zmniejszyć liczbę użytkowników, zminimalizować ilość pomocy technicznej i upewnić się, że użytkownicy nie zarejestrują się w aplikacjach przy użyciu poświadczeń niezwiązanych z usługą Azure AD.
+Ważne jest, aby zrozumieć różne środowiska, w których można [wyrazić zgodę na usługę Azure AD](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), [typy uprawnień i zgody](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)oraz ich wpływ na stan zabezpieczeń organizacji. Domyślnie wszyscy użytkownicy w usłudze Azure AD mogą przyznawać aplikacje korzystające z platformy tożsamości firmy Microsoft w celu uzyskania dostępu do danych organizacji. Zezwalanie użytkownikom na zgodę samodzielnie pozwala użytkownikom na łatwe uzyskiwanie przydatnych aplikacji, które integrują się z Microsoft 365, platformą Azure i innymi usługami, ale może to stanowić ryzyko, jeśli nie są one używane i monitorowane uważnie.
+
+Firma Microsoft zaleca [wyłączenie w przyszłości operacji wyrażania zgody użytkowników](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) na zmniejszenie obszaru powierzchni i uniknięcie tego ryzyka. Jeśli użytkownik końcowy wyraża zgodę na wyłączenie, poprzednie dotacje zgody nadal będą honorowane, ale wszystkie przyszłe operacje wyrażania zgody muszą być wykonywane przez administratora. Użytkownicy mogą żądać zgody administratora za pomocą [przepływu pracy zintegrowanego żądania zgody administratora](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) lub przez własne procesy obsługi. Przed wyłączeniem tej funkcji zaleca się zapoznanie się z dziennikiem inspekcji, aby zrozumieć, które aplikacje są już używane, i odpowiednio zaplanować zmianę. W przypadku aplikacji, dla których chcesz zezwolić wszystkim użytkownikom na dostęp, rozważ [udzielenie zgody w imieniu wszystkich użytkowników](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), aby upewnić się, że użytkownicy, którzy nie zostali jeszcze zadani indywidualnie, będą mogli uzyskać dostęp do aplikacji. Jeśli nie chcesz, aby te aplikacje były dostępne dla wszystkich użytkowników we wszystkich scenariuszach, użyj [przypisywania aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) i [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) , aby ograniczyć dostęp użytkowników do aplikacji.
+
+Upewnij się, że użytkownicy mogą zażądać zatwierdzenia przez administratora dla nowych aplikacji, aby zmniejszyć liczbę użytkowników, zminimalizować ilość pomocy technicznej i uniemożliwić użytkownikom rejestrowanie się w aplikacjach przy użyciu poświadczeń spoza usługi Azure AD. Po uregulowaniu operacji wyrażania zgody Administratorzy powinni regularnie przeprowadzać inspekcję aplikacji i uprawnień.
+
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Implementowanie Azure AD Privileged Identity Management
 
@@ -173,7 +178,9 @@ Azure AD Identity Protection oferuje dwa ważne raporty, które należy monitoro
 
 ### <a name="audit-apps-and-consented-permissions"></a>Inspekcja aplikacji i przyzwoleń do nich
 
-Użytkownicy mogą dochodzić do nawigowania do witryny lub aplikacji sieci Web, które będą uzyskiwać dostęp do informacji o profilu i danych użytkownika, takich jak ich wiadomości e-mail. Złośliwy aktor może korzystać z uzyskanych uprawnień, które otrzymały w celu zaszyfrowania zawartości skrzynki pocztowej, i uzyskania dostępu do oprogramowania wymuszającego okup w celu odzyskania danych skrzynki pocztowej. [Administratorzy powinni przeglądać i przeprowadzać inspekcję](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) uprawnień określonych przez użytkowników.
+Użytkownicy mogą dochodzić do nawigowania do witryny lub aplikacji sieci Web, które będą uzyskiwać dostęp do informacji o profilu i danych użytkownika, takich jak ich wiadomości e-mail. Złośliwy aktor może korzystać z uzyskanych uprawnień, które otrzymały w celu zaszyfrowania zawartości skrzynki pocztowej, i uzyskania dostępu do oprogramowania wymuszającego okup w celu odzyskania danych skrzynki pocztowej. [Administratorzy powinni przeglądać i przeprowadzać inspekcję](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) uprawnień określonych przez użytkowników lub wyłączać możliwość udzielania zgody użytkownikom. 
+
+Oprócz inspekcji uprawnień określonych przez użytkowników może pomóc w próbie [zlokalizowania ryzykownych lub niechcianych aplikacji OAuth](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth), które są dostępne dla środowisk w warstwie Premium.
 
 ## <a name="step-5---enable-end-user-self-service"></a>Krok 5 — Włączanie samoobsługowego użytkownika końcowego
 

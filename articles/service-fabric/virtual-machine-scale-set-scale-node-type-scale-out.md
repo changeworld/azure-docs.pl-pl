@@ -1,25 +1,14 @@
 ---
-title: Dodawanie typu węzła do klastra usługi Azure Service Fabric | Microsoft Docs
+title: Dodawanie typu węzła do klastra usługi Azure Service Fabric
 description: Dowiedz się, jak skalować w poziomie klaster Service Fabric, dodając zestaw skalowania maszyn wirtualnych.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/13/2019
-ms.author: atsenthi
-ms.openlocfilehash: 1414e656a358af1e258c823cc7ec747fefa986ba
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1e7bae89561d43d717eb4d15e95183761b077443
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598696"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463979"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Skalowanie klastra Service Fabric przez dodanie zestawu skalowania maszyn wirtualnych
 W tym artykule opisano sposób skalowania klastra Service Fabric platformy Azure przez dodanie nowego typu węzła do istniejącego klastra. Klaster Service Fabric jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym są wdrażane i zarządzane mikrousługi. Maszyna lub maszyna wirtualna będąca częścią klastra nazywa się węzłem. Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy platformy Azure, który służy do wdrażania kolekcji maszyn wirtualnych jako zestawu i zarządzania nią. Każdy typ węzła, który jest zdefiniowany w klastrze platformy Azure [, jest ustawiany jako oddzielny zestaw skalowania](service-fabric-cluster-nodetypes.md). Każdy typ węzła może być następnie zarządzany osobno. Po utworzeniu klastra Service Fabric można skalować klaster w poziomie, dodając nowy typ węzła (zestaw skalowania maszyn wirtualnych) do istniejącego klastra.  Klaster można skalować w dowolnym momencie, nawet w przypadku uruchamiania obciążeń w klastrze.  W miarę skalowania klastra aplikacje są automatycznie skalowane.

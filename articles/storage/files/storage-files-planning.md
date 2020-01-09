@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: a315b012cf103840eae6b141fe5177dfa709896d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931105"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463946"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -212,14 +212,19 @@ Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W n
 |Indie Środkowe  |LRS     |
 |Środkowe stany USA *   |LRS     |
 |Azja Wschodnia      |LRS     |
-|Wschodnie stany USA *        |LRS     |
+|Wschodnie stany USA *        |LRS, ZRS|
 |Wschodnie stany USA 2 *      |LRS     |
 |Francja Środkowa |LRS, ZRS|
 |Francja Południowa   |LRS     |
-|Północno-środkowe stany USA |LRS     |
+|Japonia Wschodnia     |LRS     |
+|Północno-środkowe stany USA |LRS   |
 |Europa Północna   |LRS     |
 |Indie Południowe    |LRS     |
+|Południowo-środkowe stany USA |LRS     |
 |Azja Południowo-Wschodnia |LRS, ZRS|
+|Środkowe Zjednoczone Emiraty Arabskie    |LRS     |
+|Południowe Zjednoczone Królestwo   |LRS     |
+|Zachodnie Zjednoczone Królestwo    |LRS     |
 |Zachodnio-środkowe stany USA|LRS     |
 |Europa Zachodnia *    |LRS, ZRS|
 |Zachodnie stany USA *        |LRS     |

@@ -1,81 +1,72 @@
 ---
-title: Occurs Chaos w klastrach usługi Service Fabric | Dokumentacja firmy Microsoft
-description: Za pomocą technika wstrzykiwania błędów i interfejsów API usługi analizy klaster do zarządzania Chaos w klastrze.
-services: service-fabric
-documentationcenter: .net
+title: Wywoływanie chaos w klastrach Service Fabric
+description: Używanie iniekcji błędów i interfejsów API usługi analizy klastrów do zarządzania chaos w klastrze.
 author: motanv
-manager: anmola
-editor: motanv
-ms.assetid: 2bd13443-3478-4382-9a5a-1f6c6b32bfc9
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 7a22b17d45218c2f78220f980605b3c211495606
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463170"
 ---
-# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Occurs kontrolowanego chaosu w klastrach usługi Service Fabric
-Systemów, takich jak infrastruktur chmury są założenia zawodnych rozproszonych na dużą skalę. Usługa Azure Service Fabric umożliwia programistom pisanie usług reliable services rozproszone na szczycie infrastruktury wiarygodne. Można zapisać niezawodnych usług rozproszonych na szczycie infrastruktury zawodnych, deweloperzy muszą można testować stabilność ich usług, podczas gdy podstawowej infrastruktury zawodnych przechodzi skomplikowane stanami z powodu błędów.
+# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Chaos kontrolowane w klastrach Service Fabric
+Systemy rozproszone o dużej skali, takie jak infrastruktury chmury, są z natury zawodowe. Dzięki platformie Azure Service Fabric deweloperzy mogą pisać niezawodne usługi rozproszone w oparciu o niezawodną infrastrukturę. Aby pisać niezawodne usługi rozproszone w oparciu o niezawodną infrastrukturę, deweloperzy muszą mieć możliwość przetestowania stabilności usług, podczas gdy podstawowa zawodna infrastruktura przechodzi przez skomplikowane przejścia stanu z powodu błędów.
 
-[Technika wstrzykiwania błędów i usługa analityczna klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (znany także jako usługa analizy błędów) daje deweloperom możliwość powodować błędy, aby przetestować swoje usługi. Błędy, są przeznaczone symulowanych jak [ponowne uruchomienie partycji](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), ułatwia wykonywanie typowych stanami. Jednak docelowych symulowane błędy są obciążona zgodnie z definicją i dlatego może brakować usterek przedstawiające się tylko w twardych przewidzieć, długie i złożone sekwencji stanami. Do testowania bezstronna, możesz użyć Chaos.
+[Iniekcja błędów i usługa analizy klastrów](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (znana również jako usługa błędu analizy) oferuje deweloperom możliwość wywołania błędów w celu przetestowania ich usług. Te wystąpienia symulowanych błędów, takich jak [Ponowne uruchamianie partycji](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), mogą pomóc w wykonywaniu najczęstszych przejść między Stanami. Jednak ukierunkowane błędy symulowane są rozdzielone przez definicję i w związku z tym mogą pominąć usterki, które są wyświetlane tylko w trudnej do przewidywania, długotrwałej i skomplikowanej sekwencji przejść stanu. W przypadku testowania nieobciążonego można użyć chaos.
 
-Chaos symuluje błędów przeplotem, okresowe (łagodne i nieprawidłowego) w całym klastrze przez dłuższy czas. Łagodne błędów zawiera zestaw wywołań interfejsu API usługi Service Fabric, na przykład ponowne uruchomienie repliki błędów jest łagodne błędów, ponieważ jest to zamknięcia, a następnie otwórz w replice. Usuń replikę, przeniesienia replikę podstawową i replikę pomocniczą przeniesienia są inne błędy łagodne wykonywane przez Chaos. Błędy nieprawidłowego są wyjścia procesu, takie jak ponownie uruchomić węzeł i uruchom ponownie pakiet kodu. 
+Chaos symuluje okresowe, przeplatane błędy (zarówno bezpieczne, jak i nieprolongaty) w całym klastrze przez dłuższy czas. Płynna awaria składa się z zestawu Service Fabric wywołań interfejsu API, na przykład ponowne uruchomienie błędu repliki jest bezpieczne, ponieważ jest to zamknięcie, a następnie otwarty w replice. Usuń replikę, Przenieś replikę podstawową i Przenieś replikę pomocniczą na inne bezpieczne błędy wykonywane przez chaos. Błędne błędy to wyjścia procesów, takie jak ponowne uruchomienie węzła i ponowne uruchomienie pakietu kodu. 
 
-Po skonfigurowaniu Chaos przy użyciu stawki i rodzaju błędów, można uruchomić Chaos przy użyciu języka C#, programu Powershell lub interfejsu API REST można uruchomić generowania błędy w klastrze, w usługach. Chaosu do uruchamiania w określonym przedziale czasu (na przykład jedna godzina), po których zatrzymuje Chaos można skonfigurować automatycznie lub wywołując StopChaos API (C#, programu Powershell lub REST) aby ją wyłączyć w dowolnym momencie.
+Po skonfigurowaniu usługi chaos przy użyciu stawki i rodzaju błędów można rozpocząć od chaos za pomocą C#programu PowerShell lub interfejsu API REST, aby rozpocząć generowanie błędów w klastrze i w usługach. Można skonfigurować chaos do uruchamiania przez określony czas (na przykład przez jedną godzinę), po którym chaos zostaje zatrzymana automatycznie, lub wywołać StopChaos API (C#, POWERSHELL lub REST), aby zatrzymać go w dowolnym momencie.
 
 > [!NOTE]
-> W jego obecnej formie Chaos wywołuje tylko bezpiecznych błędów, co oznacza, że w przypadku braku błędów zewnętrznych utraciła kworum lub utraty danych nigdy nie następuje.
+> W bieżącej postaci chaos wywołuje tylko bezpieczne błędy, co oznacza, że w przypadku braku zewnętrznych błędów utraconych kworum lub utraty danych.
 >
 
-Po uruchomieniu Chaos tworzy różnych zdarzeń, które przechwytują stan wykonywania w tej chwili. Na przykład ExecutingFaultsEvent zawiera wszystkie błędy, które Chaos zdecydował się do wykonywania w tej iteracji. ValidationFailedEvent zawiera szczegóły błędu sprawdzania poprawności (problemy dotyczące kondycji lub stabilności), który został znaleziony podczas sprawdzania poprawności klastra. Możesz wywołać raporcie GetChaosReport interfejsu API (C#, programu Powershell lub REST) można pobrać raportu Chaos przebiegów. Te zdarzenia pobieranie utrwalonych w [niezawodnego słownika](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), która zawiera zasady obcięcie przez dwie konfiguracje: **MaxStoredChaosEventCount** (wartość domyślna to 25000) i **StoredActionCleanupIntervalInSeconds** (wartość domyślna to 3600). Każdy *StoredActionCleanupIntervalInSeconds* Chaos kontroli i wszystkie, ale najbardziej aktualną *MaxStoredChaosEventCount* zdarzenia, są usuwane z niezawodnego słownika.
+Podczas gdy Chaos jest uruchomiony, generuje inne zdarzenia, które w tej chwili przechwytują stan przebiegu. Na przykład ExecutingFaultsEvent zawiera wszystkie błędy, które chaos zdecydował się wykonać w tej iteracji. ValidationFailedEvent zawiera szczegóły błędu walidacji (problemy z kondycją lub stabilnością), które zostały znalezione podczas weryfikacji klastra. Można wywołać interfejs API raporcie getchaosreport (C#, POWERSHELL lub REST), aby uzyskać raport o uruchomieniach chaos. Te zdarzenia są utrwalane w [niezawodnym słowniku](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), który ma zasady obcinania podyktowane dwiema konfiguracjami: **MaxStoredChaosEventCount** (wartość domyślna to 25000) i **StoredActionCleanupIntervalInSeconds** (wartość domyślna to 3600). Każdy *StoredActionCleanupIntervalInSeconds* chaos sprawdza i wszystkie ostatnie zdarzenia *MaxStoredChaosEventCount* są czyszczone ze niezawodnego słownika.
 
-## <a name="faults-induced-in-chaos"></a>Błędy wywołanego w chaosu
-Chaos generuje błędy dla całego klastra usługi Service Fabric i kompresuje błędy, które są widoczne w ciągu miesięcy lub lat w ciągu kilku godzin. Kombinacja przeplotem błędów przy użyciu współczynnika wysoką odporność znajduje przypadki brzegowe, które w przeciwnym razie mogą zostać pominięci. To ćwiczenie Chaos prowadzi do znacznej poprawy jakości kodu usługi.
+## <a name="faults-induced-in-chaos"></a>Błędy wywołane w chaos
+Chaos generuje błędy w całym klastrze Service Fabric i kompresuje błędy, które pojawiły się w ciągu kilku miesięcy lub lat, na kilka godzin. Kombinacja błędów z przeplotem o wysokim współczynniku błędów powoduje znalezienie przypadków narożnych, które mogą być pominięte. To ćwiczenie chaos prowadzi do znacznej poprawy jakości kodu usługi.
 
-Chaos wywołuje usterek z następujących kategorii:
+Chaos wywołuje błędy z następujących kategorii:
 
-* Ponowne uruchomienie węzła
-* Uruchom ponownie pakiet wdrożonego kodu
-* Usuwanie repliki
+* Ponowne uruchamianie węzła
+* Ponowne uruchamianie wdrożonego pakietu kodu
+* Usuń replikę
 * Uruchom ponownie replikę
-* Przenieś repliki podstawowej (z możliwością konfiguracji)
-* Przenieś tylko do repliki pomocniczej (z możliwością konfiguracji)
+* Przenieś replikę podstawową (konfigurowalną)
+* Przenieś replikę pomocniczą (konfigurowalną)
 
-Chaos działa w wielu iteracji. Każda iteracja składa się z błędów i sprawdzanie poprawności klastra w wybranym okresie. Możesz skonfigurować czas dla klastra to stabilizację i sprawdzanie poprawności zakończyło się sukcesem. Jeśli błąd zostanie znaleziony podczas sprawdzania poprawności klastra, Chaos generuje i będzie się powtarzał ValidationFailedEvent sygnatura czasowa UTC i szczegóły błędu. Na przykład należy wziąć pod uwagę wystąpienie elementu Chaos, skonfigurowanej do uruchomienia na godzinę z maksymalnie trzech współbieżnych błędów. Chaos wywołuje trzy błędów, a następnie sprawdza poprawność kondycji klastra. Iteruje poprzedniego kroku, dopóki nie zostanie jawnie zatrzymana za pomocą interfejsu API StopChaosAsync lub godzinna przekazuje. Jeśli klaster staje się zła w dowolnym iteracji (oznacza to, nie stabilizacji lub go nie poprawi w ramach MaxClusterStabilizationTimeout przekazanego) Chaos generuje ValidationFailedEvent. To zdarzenie wskazuje, że wystąpił problem i mogą wymagać dalszej analizy.
+Chaos działa w wielu iteracjach. Każda iteracja składa się z błędów i weryfikacji klastra w określonym przedziale czasu. Istnieje możliwość skonfigurowania czasu poświęcanego na stabilizację klastra i sprawdzenia poprawności. W przypadku znalezienia błędu w weryfikacji klastra chaos generuje i utrzymuje ValidationFailedEvent z sygnaturą czasową UTC oraz ze szczegółami błędu. Rozważmy na przykład wystąpienie chaos, które jest skonfigurowane do uruchamiania przez godzinę i maksymalnie trzy współbieżne błędy. Chaos wywołuje trzy usterki, a następnie sprawdza kondycję klastra. Wykonuje iterację w poprzednim kroku, dopóki nie zostanie on jawnie zatrzymany za pomocą interfejsu API StopChaosAsync lub jednogodzinnych przebiegów. Jeśli klaster ulegnie złej kondycji w dowolnej iteracji (to oznacza, że nie jest ustabilizowany lub nie stanie się w dobrej kondycji w ramach przekazaną MaxClusterStabilizationTimeout), chaos generuje ValidationFailedEvent. To zdarzenie wskazuje, że coś pozostało niewłaociwe i może wymagać dalszych badań.
 
-Można pobrać błędów, które Chaos wywołane, można użyć raporcie GetChaosReport API (powershell, C# lub REST). Interfejs API pobiera następny segment Chaos raportu na podstawie token kontynuacji w przekazanym lub przekazany w czasie zakresie. Można określić token kontynuacji, można pobrać następny segment raportu Chaos lub można określić zakres czasu za pośrednictwem StartTimeUtc i EndTimeUtc, ale nie można określić zakres czasu i token kontynuacji, które znajdują się w tym samym wywołaniu. W przypadku więcej niż 100 zdarzeń Chaos raportu Chaos jest zwracany w segmentów, których segment zawiera nie więcej niż 100 zdarzeń Chaos.
+Aby uzyskać chaos błędy, można użyć interfejsu API raporcie getchaosreport (PowerShell, C#lub REST). Interfejs API pobiera następny segment raportu chaos na podstawie pożądanego tokenu kontynuacji lub przenoszonego zakresu czasu. Można określić ContinuationToken, aby uzyskać następny segment raportu chaos lub określić zakres czasu za pomocą StartTimeUtc i EndTimeUtc, ale nie można określić zarówno ContinuationToken, jak i zakresu czasu w tym samym wywołaniu. Jeśli istnieje więcej niż 100 zdarzeń chaos, raport Chaos jest zwracany w segmentach, w których segment nie zawiera więcej niż 100 zdarzeń chaos.
 
-## <a name="important-configuration-options"></a>Opcje konfiguracji ważne
-* **Wartość TimeToRun**: Całkowity czas, który uruchamia Chaos przed kończy się sukcesem. Zostało uruchomione przez wartość TimeToRun, za pomocą interfejsu API StopChaos, można je zatrzymać Chaos.
+## <a name="important-configuration-options"></a>Ważne opcje konfiguracji
+* **TimeToRun**: łączny czas działania chaos przed zakończeniem z sukcesem. Można zatrzymać chaos przed uruchomieniem okresu TimeToRun za pomocą interfejsu API StopChaos.
 
-* **MaxClusterStabilizationTimeout**: Maksymalna ilość czasu oczekiwania na poprawi przed utworzeniem ValidationFailedEvent klastra. Ta oczekiwania jest zmniejszenie obciążenia w klastrze, gdy trwa jej odzyskiwanie. Kontrole wykonywane są następujące:
+* **MaxClusterStabilizationTimeout**: maksymalny czas oczekiwania, aż klaster stanie się w dobrej kondycji przed rozpoczęciem tworzenia ValidationFailedEvent. Jest to oczekiwane zmniejszenie obciążenia klastra podczas odzyskiwania. Wykonane sprawdzenia:
   * Jeśli kondycja klastra jest OK
-  * Jeśli kondycja usługi jest OK
-  * Jeśli rozmiar zestawu replik docelowej uzyskuje się partycji usługi
-  * Czy istnieją nie replik w stanie InBuild
-* **MaxConcurrentFaults**: Maksymalna liczba współbieżnych błędów, które są wywołane w każdej iteracji. Jest wyższa Chaos liczba, tym bardziej agresywne i trybu failover i kombinacji przejście stanu, które klaster przechodzi przez, są również bardziej złożone. 
+  * Jeśli kondycja usługi jest prawidłowa
+  * Jeśli docelowy rozmiar zestawu replik zostanie osiągnięty dla partycji usługi
+  * Nie istnieją repliki inbuild
+* **MaxConcurrentFaults**: Maksymalna liczba równoczesnych błędów, które zostały wywołane w każdej iteracji. Im większa liczba, tym bardziej agresywna chaos, a także przejścia w tryb failover i zmiany stanu, do których prowadzi klaster, są również bardziej skomplikowane. 
 
 > [!NOTE]
-> Niezależnie od tego jak wysoka wartość *MaxConcurrentFaults* ma Chaos gwarantuje — w przypadku braku błędów zewnętrznych — Brak utraty danych lub utraciła kworum.
+> Bez względu na to, jak wysoka wartość *MaxConcurrentFaults* , chaos gwarancje — brak zewnętrznych błędów — nie ma utraty kworum ani utraty danych.
 >
 
-* **EnableMoveReplicaFaults**: Włącza lub wyłącza błędy, które powodują repliki podstawowej lub dodatkowej, aby przenieść. Te błędy są domyślnie włączone.
-* **WaitTimeBetweenIterations**: Ilość czasu oczekiwania między poszczególnymi iteracjami. Oznacza to czas Chaos zatrzyma się po wykonaniu round błędów i o zakończeniu odpowiedniego sprawdzania poprawności kondycji klastra. Im wyższa wartość, niższa jest częstotliwość iniekcji błędów średni.
-* **WaitTimeBetweenFaults**: Ilość czasu oczekiwania między dwa kolejne błędy w jednej iteracji. Im większa wartość, dolna wartość współbieżności to (lub nakładania się) błędów.
-* **ClusterHealthPolicy**: Zasady dotyczące kondycji klastra jest używany do sprawdzania poprawności kondycji klastra między Chaos iteracji. Jeśli kondycja klastra jest w wyniku błędu lub sytuacji wystąpił nieoczekiwany wyjątek podczas wykonywania błędów Chaos będzie czekać przez 30 minut przed następnym — sprawdzenie kondycji — zapewnienie klastra recuperate trochę czasu.
-* **Kontekst**: Kolekcja (string, string) wpisz pary klucz wartość. Mapy może służyć do rejestrowania informacji o przebiegu Chaos. Nie może istnieć więcej niż 100 takich pary i każdego ciągu (klucza lub wartości) mogą mieć maksymalnie 4095 znaków. Ta mapa jest ustawiany przez początkowego elementu Chaos, uruchom na przechowywanie kontekst dotyczący określonego przebiegu.
-* **ChaosTargetFilter**: Ten filtr może służyć do docelowego Chaos błędów tylko do niektórych typów węzłów lub tylko do niektórych wystąpień aplikacji. Jeśli w obiekcie ChaosTargetFilter nie jest używany, Chaos błędów wszystkie jednostki klastra. Jeśli obiekcie ChaosTargetFilter Chaos błędów jednostek, które spełniają specyfikacji obiekcie ChaosTargetFilter. Obie opcje NodeTypeInclusionList i ApplicationInclusionList umożliwiają tylko semantyki Unii. Innymi słowy nie jest możliwe określenie część wspólna obie opcje NodeTypeInclusionList i ApplicationInclusionList. Na przykład nie jest możliwe określenie "błędów tej aplikacji, tylko wtedy, gdy jej dla tego typu węzła". Gdy obie opcje NodeTypeInclusionList i ApplicationInclusionList zawiera jednostki, tej jednostki nie można wykluczyć za pomocą obiekcie ChaosTargetFilter. Nawet wtedy, gdy opcja ApplicationInclusionList nie ma applicationX, w niektórych iteracji Chaos applicationX mogą być błędne ponieważ zdarza się w węźle nodeTypeY, który znajduje się w obie opcje NodeTypeInclusionList. Jeśli obie opcje NodeTypeInclusionList i ApplicationInclusionList o wartości null ani być pusta, zostanie zgłoszony ArgumentException.
-    * **Obie opcje NodeTypeInclusionList**: Lista typy węzłów, które mają zostać objęte Chaos błędów. Wszystkie typy błędów (ponownie uruchomić węzeł, uruchom ponownie codepackage, usunąć replikę, uruchom ponownie repliki, Przenieś podstawowego i przenoszenie dodatkowej) są włączone dla węzłów z tych typów węzłów. Jeśli element nodetype (powiedzieć NodeTypeX) nie jest widoczna w obie opcje NodeTypeInclusionList, a następnie węzeł poziomu błędów (np. NodeRestart) nigdy nie zostanie włączona dla węzłów NodeTypeX, ale błędów pakietu i repliki kod nadal może zostać włączona dla NodeTypeX, jeśli aplikacja w Opcja ApplicationInclusionList stanie się znajdują się w węźle NodeTypeX. Co najwyżej 100 nazw typ węzła może obejmować na tej liście, aby zwiększyć tę liczbę, wymagane jest uaktualnienie konfiguracji dla konfiguracji MaxNumberOfNodeTypesInChaosTargetFilter.
-    * **Opcja ApplicationInclusionList**: Lista aplikacji identyfikatorów URI Chaos błędów. Wszystkie repliki należących do usługi te aplikacje są podatna na błędy repliki (repliki ponownego uruchomienia, Usuń replikę, Przenieś podstawowego i zapasowego przenoszenia) przez Chaos. Chaos może ponownie uruchomić pakiet kodu, tylko wtedy, gdy pakiet kodu obsługuje replik tylko do tych aplikacji. Jeśli aplikacja nie ma na tej liście, jego może nadal wystąpi błąd w niektórych iteracji Chaos Jeśli aplikacja kończy się w węźle typ węzła, który znajduje się w obie opcje NodeTypeInclusionList. Jednak jeśli applicationX jest powiązany z nodeTypeY ograniczeniami dotyczącymi umieszczania i applicationX Brak ApplicationInclusionList i nodeTypeY jest nieobecny w obie opcje NodeTypeInclusionList, następnie applicationX nigdy nie wystąpi błąd. Maksymalnie 1000 nazwy aplikacji mogły zostać uwzględnione w tej liście, aby zwiększyć tę liczbę, wymagane jest uaktualnienie konfiguracji dla konfiguracji MaxNumberOfApplicationsInChaosTargetFilter.
+* **EnableMoveReplicaFaults**: włącza lub wyłącza błędy, które powodują przeniesienie repliki podstawowej lub pomocniczej. Te błędy są domyślnie włączone.
+* **WaitTimeBetweenIterations**: ilość czasu oczekiwania między iteracjami. Oznacza to, że czas chaos będzie wstrzymywany po wykonaniu rundy błędów i zakończeniu odpowiedniej weryfikacji kondycji klastra. Im większa wartość, tym niższa jest wskaźnik średniego iniekcji błędów.
+* **WaitTimeBetweenFaults**: ilość czasu oczekiwania między dwoma kolejnymi błędami w jednej iteracji. Im wyższa wartość, tym mniejsza liczba błędów współbieżności (lub nakładania się między).
+* **ClusterHealthPolicy**: zasady kondycji klastra są używane do weryfikacji kondycji klastra między iteracjami chaos. Jeśli kondycja klastra wystąpi błąd lub jeśli wystąpił nieoczekiwany wyjątek podczas wykonywania, chaos będzie oczekiwać przez 30 minut przed kolejną kondycją — Sprawdź, czy klaster ma jakiś czas na recuperate.
+* **Context**: kolekcja par klucz-wartość typu (String, String). Mapa może służyć do rejestrowania informacji o przebiegu chaos. Nie może być więcej niż 100 takich par, a każdy ciąg (klucz lub wartość) może mieć maksymalnie 4095 znaków. Ta mapa jest ustawiana przez Starter chaos Run, aby opcjonalnie przechowywać kontekst o określonym przebiegu.
+* **ChaosTargetFilter**: ten filtr może służyć do kierowania błędów chaos tylko do określonych typów węzłów lub tylko do określonych wystąpień aplikacji. Jeśli ChaosTargetFilter nie jest używany, chaos wszystkie jednostki klastra. Jeśli ChaosTargetFilter jest używany, chaos błędy tylko dla jednostek, które spełniają wymagania specyfikacji ChaosTargetFilter. NodeTypeInclusionList i ApplicationInclusionList zezwalają tylko na semantykę Unii. Innymi słowy, nie można określić przedziału NodeTypeInclusionList i ApplicationInclusionList. Na przykład nie jest możliwe określenie "błąd tej aplikacji tylko wtedy, gdy znajduje się ona w danym typie węzła". Gdy jednostka jest uwzględniona w NodeTypeInclusionList lub ApplicationInclusionList, ta jednostka nie może zostać wykluczona przy użyciu ChaosTargetFilter. Nawet jeśli applicationX nie pojawia się w ApplicationInclusionList, w niektórych chaos iteracji applicationX może być uszkodzona, ponieważ występuje w węźle nodeTypeY, który jest zawarty w NodeTypeInclusionList. Jeśli zarówno NodeTypeInclusionList, jak i ApplicationInclusionList mają wartość null lub są puste, zostanie zgłoszony ArgumentException.
+    * **NodeTypeInclusionList**: Lista typów węzłów do uwzględnienia w błędach chaos. Wszystkie typy błędów (węzeł ponownego uruchomienia, uruchom ponownie codepackage, Usuń replikę, uruchom replikę, Przenieś podstawowe i Przenieś pomocnicze) są włączone dla węzłów tych typów węzłów. Jeśli NodeType (Powiedz NodeTypeX) nie występuje w NodeTypeInclusionList, wówczas błędy na poziomie węzła (na przykład NodeRestart) nie będą nigdy włączane dla węzłów NodeTypeX, ale pakiet kodu i błędy replik nadal mogą być włączone dla NodeTypeX, jeśli aplikacja w ApplicationInclusionList występuje w węźle NodeTypeX. Na tej liście można umieścić maksymalnie 100 nazw typów węzłów, aby zwiększyć tę liczbę, do konfiguracji MaxNumberOfNodeTypesInChaosTargetFilter jest wymagane uaktualnienie konfiguracji.
+    * **ApplicationInclusionList**: Lista identyfikatorów URI aplikacji do uwzględnienia w błędach chaos. Wszystkie repliki należące do usług tych aplikacji są gotowe do błędów replik (ponownie uruchom replikę, Usuń replikę, Przenieś podstawową i Przenieś pomocniczą) przez chaos. Chaos może ponownie uruchomić pakiet kodu tylko wtedy, gdy pakiet kodu hostuje repliki tych aplikacji. Jeśli aplikacja nie jest wyświetlana na tej liście, nadal może być uszkodzona w pewnej iteracji chaos, jeśli aplikacja zostanie zakończona w węźle typu węzła, który jest zawarty w NodeTypeInclusionList. Jeśli jednak applicationX jest powiązany z nodeTypeY za pośrednictwem ograniczeń umieszczania, a applicationX nie jest obecny w ApplicationInclusionList i nodeTypeY nie jest w NodeTypeInclusionList, wówczas applicationX nie będzie nigdy występować. Na tej liście można umieścić maksymalnie 1000 nazw aplikacji, aby zwiększyć tę liczbę, do konfiguracji MaxNumberOfApplicationsInChaosTargetFilter jest wymagane uaktualnienie konfiguracji.
 
-## <a name="how-to-run-chaos"></a>Jak uruchomić chaosu
+## <a name="how-to-run-chaos"></a>Jak uruchomić chaos
 
 ```csharp
 using System;

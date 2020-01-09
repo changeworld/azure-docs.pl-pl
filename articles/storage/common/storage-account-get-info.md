@@ -1,5 +1,6 @@
 ---
-title: Pobieranie typu konta magazynu i nazwy jednostki SKU przy użyciu platformy .NET — Azure Storage
+title: Pobierz typ konta magazynu i nazwę jednostki SKU z platformą .NET
+titleSuffix: Azure Storage
 description: Dowiedz się, jak uzyskać typ konta usługi Azure Storage i nazwę jednostki SKU przy użyciu biblioteki klienckiej platformy .NET.
 services: storage
 author: mhopkins-msft
@@ -8,12 +9,12 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0008d8fa9a33db95b0695ce998d4fc267d6222da
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457474"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Pobierz typ konta magazynu i nazwę jednostki SKU z platformą .NET
 
@@ -23,9 +24,9 @@ Informacje o koncie są dostępne w wersjach usługi począwszy od wersji 2018-0
 
 ## <a name="about-account-type-and-sku-name"></a>Informacje o typie konta i nazwie jednostki SKU
 
-**Typ konta**: Prawidłowe typy kont to `BlobStorage`m.in `BlockBlobStorage` `FileStorage`.,,, `StorageV2`i. `Storage` [Omówienie konta usługi Azure Storage](storage-account-overview.md) zawiera więcej informacji, w tym opisy różnych kont magazynu.
+**Typ konta**: prawidłowe typy kont to `BlobStorage`, `BlockBlobStorage`, `FileStorage`, `Storage`i `StorageV2`. [Omówienie konta usługi Azure Storage](storage-account-overview.md) zawiera więcej informacji, w tym opisy różnych kont magazynu.
 
-**Nazwa jednostki SKU**: Prawidłowe nazwy jednostek SKU `Premium_LRS`obejmują `Premium_ZRS`, `Standard_GRS` `Standard_GZRS` ,,`Standard_LRS` ,,`Standard_ZRS`, ,i.`Standard_RAGZRS` `Standard_RAGRS` Nazwy jednostek SKU są rozróżniane wielkości liter i są polami ciągów w [klasie SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
+**Nazwa jednostki SKU**: prawidłowe nazwy jednostek sku obejmują `Premium_LRS`, `Premium_ZRS`, `Standard_GRS`, `Standard_GZRS`, `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`i `Standard_ZRS`. Nazwy jednostek SKU są rozróżniane wielkości liter i są polami ciągów w [klasie SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
 
 ## <a name="retrieve-account-information"></a>Pobierz informacje o koncie
 
@@ -63,6 +64,4 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 Dowiedz się więcej o innych operacjach, które można wykonać na koncie magazynu za pomocą [Azure Portal](https://portal.azure.com) i interfejsu API REST platformy Azure.
 
-- [Zarządzanie kontem magazynu](storage-account-manage.md)
-- [Uaktualnianie konta magazynu](storage-account-upgrade.md)
 - [Operacja pobrania informacji o koncie (REST)](/rest/api/storageservices/get-account-information)
