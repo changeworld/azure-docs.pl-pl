@@ -1,5 +1,5 @@
 ---
-title: 'Skopiuj dane z usługi Azure Blob Storage do SQL Database '
+title: Skopiuj dane z usługi Azure Blob Storage do Azure SQL Database
 description: Ten samouczek zawiera instrukcje krok po kroku dotyczące kopiowania danych z usługi Azure Blob Storage do bazy danych Azure SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -9,21 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seo-lt-2019
-ms.date: 02/20/2019
+ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 93f674cf080ccbc94b9dbdc6ee9a66eb091c3542
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926590"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439434"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych z obiektu blob platformy Azure do bazy danych Azure SQL Database przy użyciu usługi Azure Data Factory
 
-W tym samouczku utworzysz potok fabryki danych, który kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL Database. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+W tym samouczku utworzysz potok fabryki danych, który kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL Database. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia, zobacz [obsługiwane magazyny i formaty danych](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Ten samouczek obejmuje następujące procedury:
+W tym samouczku wykonasz następujące kroki:
 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
@@ -33,36 +32,40 @@ Ten samouczek obejmuje następujące procedury:
 > * Uruchom potok.
 > * Monitorowanie uruchomień potoku i działań.
 
-W tym samouczku jest używany zestaw SDK platformy .NET. Aby uzyskać informacje o innych mechanizmach interakcji z usługą Azure Data Factory, przejdź do próbek w obszarze „Samouczki Szybki start”.
+W tym samouczku jest używany zestaw SDK platformy .NET. Można użyć innych mechanizmów do współpracy z Azure Data Factory; Zapoznaj się z przykładami w sekcji **Przewodniki Szybki Start**.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Konto usługi Azure Storage**. Magazyn obiektów blob jest używany jako **źródłowy** magazyn danych. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
-* **Usługa Azure SQL Database**. Baza danych jest używana jako magazyn danych **ujścia**. Jeśli nie masz bazy danych Azure SQL Database, utwórz ją, wykonując czynności przedstawione w artykule [Create an Azure SQL database (Tworzenie bazy danych Azure SQL Database)](../sql-database/sql-database-get-started-portal.md).
-* Program **Visual Studio** w wersji 2015 lub 2017. W przewodniku w tym artykule jest używany program Visual Studio 2017.
-* **Pobierz i zainstaluj zestaw [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
-* **Utwórz aplikację w usłudze Azure Active Directory**, wykonując [tę instrukcję](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Zapisz następujące wartości, których użyjesz w kolejnych krokach: **identyfikator aplikacji**, **klucz uwierzytelniania** i **identyfikator dzierżawy**. Przypisz aplikację do roli „**Współautor**”, wykonując instrukcje przedstawione w tym samym artykule.
+* *Konto usługi Azure Storage*. Magazyn obiektów blob jest używany jako *źródłowy* magazyn danych. Jeśli nie masz konta usługi Azure Storage, zobacz [Tworzenie konta magazynu ogólnego przeznaczenia](../storage/common/storage-quickstart-create-account.md).
+* *Usługa Azure SQL Database*. Baza danych jest używana jako magazyn danych *ujścia*. Jeśli nie masz Azure SQL Database, zobacz [Tworzenie bazy danych Azure SQL Database](../sql-database/sql-database-single-database-get-started.md).
+* Program *Visual Studio*. W przewodniku w tym artykule jest wykorzystywany program Visual Studio 2019.
+* *[Zestaw Azure SDK dla platformy .NET](/dotnet/azure/dotnet-tools)* .
+* *Azure Active Directory aplikacji*. Jeśli nie masz aplikacji Azure Active Directory, zapoznaj się z sekcją [Tworzenie aplikacji Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) [: używanie portalu do tworzenia aplikacji usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Skopiuj następujące wartości do użycia w kolejnych krokach: **Identyfikator aplikacji (klienta)** , **klucz uwierzytelniania**i **Identyfikator katalogu (dzierżawy)** . Przypisz aplikację do roli **współautor** , postępując zgodnie z instrukcjami w tym samym artykule.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Tworzenie obiektu blob i tabeli SQL
 
-Teraz przygotuj swój obiekt Blob platformy Azure i bazę danych Azure SQL Database w ramach tego samouczka, wykonując następujące kroki:
+Teraz możesz przygotować obiekt blob platformy Azure i Azure SQL Database dla tego samouczka, tworząc blog źródłowy i ujścia tabeli SQL.
 
 #### <a name="create-a-source-blob"></a>Tworzenie źródłowego obiektu Blob
 
-1. Uruchom program Notatnik. Skopiuj poniższy tekst i zapisz go na dysku jako plik **inputEmp.txt**.
+Najpierw utwórz źródłowy obiekt BLOB przez utworzenie kontenera i przekazanie wejściowego pliku tekstowego:
 
-    ```
+1. Otwórz program Notatnik. Skopiuj poniższy tekst i Zapisz go lokalnie w pliku o nazwie *plik inputemp. txt*.
+
+    ```inputEmp.txt
     John|Doe
     Jane|Doe
     ```
 
-2. Użyj narzędzi, takich jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/), aby utworzyć kontener **adfv2tutorial** i przekazać plik **inputEmp.txt** do kontenera.
+2. Użyj narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) , aby utworzyć kontener *adfv2tutorial* i przekazać plik *plik inputemp. txt* do kontenera.
 
 #### <a name="create-a-sink-sql-table"></a>Tworzenie tabeli SQL ujścia
 
-1. Poniższy skrypt SQL umożliwia utworzenie tabeli **dbo.emp** w bazie danych Azure SQL Database.
+Następnie utwórz tabelę programu SQL dla ujścia:
+
+1. Poniższy skrypt SQL umożliwia utworzenie tabeli *dbo.emp* w bazie danych Azure SQL Database.
 
     ```sql
     CREATE TABLE dbo.emp
@@ -76,51 +79,62 @@ Teraz przygotuj swój obiekt Blob platformy Azure i bazę danych Azure SQL Datab
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Zezwól usługom platformy Azure na dostęp do serwera SQL. Upewnij się, że ustawienie **Zezwalaj na dostęp do usług Azure** jest włączone i ma wartość **WŁĄCZ** dla serwera SQL platformy Azure, aby usługa Data Factory mogła zapisywać dane na serwerze Azure SQL. W celu sprawdzenia i włączenia tego ustawienia wykonaj następujące kroki:
+2. Zezwól usługom platformy Azure na dostęp do serwera SQL. Upewnij się, że zezwalasz na dostęp do usług platformy Azure na serwerze SQL platformy Azure, aby usługa Data Factory mogła zapisywać dane na serwerze Azure SQL. W celu sprawdzenia i włączenia tego ustawienia wykonaj następujące kroki:
 
-    1. Kliknij centrum **Więcej usług** po lewej stronie, a następnie kliknij przycisk **Serwery SQL**.
-    2. Wybierz swój serwer, a następnie kliknij przycisk **Zapora** w obszarze **USTAWIENIA**.
-    3. Na stronie **Ustawienia zapory** kliknij pozycję **WŁĄCZ** dla ustawienia **Zezwalaj na dostęp do usług platformy Azure**.
+    1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać programem SQL Server. Wyszukaj i wybierz pozycję **serwery SQL**.
 
+    2. Wybierz serwer.
+    
+    3. W obszarze menu programu SQL Server **Wybierz pozycję** **zapory i sieci wirtualne**.
+
+    4. Na stronie **Zapora i sieci wirtualne** w obszarze **Zezwól usługom i zasobom platformy Azure na dostęp do tego serwera**wybierz pozycję **włączone**.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C#.
+Za pomocą programu Visual Studio Utwórz C# aplikację konsolową .NET.
 
-1. Uruchom program **Visual Studio**.
-2. Kliknij pozycję **Plik**, wskaż polecenie **Nowy** i kliknij pozycję **Projekt**.
-3. Wybierz pozycję **Visual C#**  -> **Aplikacja konsolowa (.NET Framework)** z listy typów projektów po prawej stronie. Wymagana jest platforma .NET w wersji 4.5.2 lub nowszej.
-4. Wprowadź nazwę **ADFv2Tutorial**.
-5. Kliknij przycisk **OK**, aby utworzyć projekt.
+1. Otwórz program Visual Studio.
+2. W oknie **uruchamiania** wybierz pozycję **Utwórz nowy projekt**.
+3. W oknie **Utwórz nowy projekt** wybierz C# wersję **aplikacji konsolowej (.NET Framework)** z listy typów projektów. Następnie wybierz przycisk **Dalej**.
+4. W oknie **Konfigurowanie nowego projektu** wprowadź **nazwę projektu** *ADFv2Tutorial*. W polu **Lokalizacja**przejdź do katalogu i/lub Utwórz katalog, w którym ma zostać zapisany projekt. Następnie wybierz przycisk **Utwórz**. Nowy projekt zostanie wyświetlony w środowisku IDE programu Visual Studio.
 
 ## <a name="install-nuget-packages"></a>Instalowanie pakietów NuGet
 
-1. Kliknij pozycję **Narzędzia** -> **Menedżer pakietów NuGet** -> **Konsola menedżera pakietów**.
-2. W oknie **Konsola menedżera pakietów** uruchom następujące polecenia, aby zainstalować pakiety. Aby uzyskać szczegóły, zobacz [pakiet nuget Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
+Następnie zainstaluj wymagane pakiety biblioteki przy użyciu Menedżera pakietów NuGet.
 
-    ```powershell
+1. Na pasku menu wybierz kolejno opcje **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów**.
+2. W okienku **konsoli Menedżera pakietów** Uruchom następujące polecenia, aby zainstalować pakiety. Informacje o pakiecie NuGet Azure Data Factory można znaleźć w [witrynie Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
+
+    ```package manager console
     Install-Package Microsoft.Azure.Management.DataFactory
-    Install-Package Microsoft.Azure.Management.ResourceManager
+    Install-Package Microsoft.Azure.Management.ResourceManager -PreRelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 
 ## <a name="create-a-data-factory-client"></a>Tworzenie klienta fabryki danych
 
-1. Otwórz plik **Program.cs**, a następnie dołącz poniższe instrukcje, aby dodać odwołania do przestrzeni nazw.
+Wykonaj następujące kroki, aby utworzyć klienta fabryki danych.
+
+1. Otwórz *program.cs*, a następnie Zastąp istniejące instrukcje `using` poniższym kodem, aby dodać odwołania do przestrzeni nazw.
 
     ```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.DataFactory;
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-    
-2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+2. Dodaj następujący kod do metody `Main`, która ustawia zmienne. Zastąp 14 symbole zastępcze własnymi wartościami.
+
+    Aby wyświetlić listę regionów świadczenia usługi Azure, w których Data Factory są obecnie dostępne, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/). Z listy rozwijanej **produkty** wybierz kolejno pozycje **przeglądaj** > **Analytics** > **Data Factory**. Następnie na liście rozwijanej **regiony** wybierz interesujące Cię regiony. Zostanie wyświetlona siatka ze stanem dostępności Data Factory produktów dla wybranych regionów.
+
+    > [!NOTE]
+    > Magazyny danych, takie jak usługa Azure Storage i Azure SQL Database, a także obliczenia, takie jak HDInsight, używane Data Factory mogą znajdować się w innych regionach niż wybrane do Data Factory.
 
     ```csharp
     // Set variables
@@ -130,8 +144,8 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
     string subscriptionId = "<your subscription ID to create the factory>";
     string resourceGroup = "<your resource group to create the factory>";
 
-    string region = "East US";
-    string dataFactoryName = "<specify the name of a data factory to create. It must be globally unique.>";
+    string region = "<location to create the data factory in, such as East US>";
+    string dataFactoryName = "<name of data factory to create (must be globally unique)>";
 
     // Specify the source Azure Blob information
     string storageAccount = "<your storage account name to copy data>";
@@ -140,7 +154,12 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = "Server=tcp:<your server name>.database.windows.net,1433;Database=<your database name>;User ID=<your username>@<your server name>;Password=<your password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+    string azureSqlConnString = 
+        "Server=tcp:<your server name>.database.windows.net,1433;" +
+        "Database=<your database name>;" +
+        "User ID=<your username>@<your server name>;" +
+        "Password=<your password>;" +
+        "Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
     string azureSqlTableName = "dbo.emp";
 
     string storageLinkedServiceName = "AzureStorageLinkedService";
@@ -150,20 +169,22 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
     string pipelineName = "Adfv2TutorialBlobToSqlCopy";
     ```
 
-3. Dodaj do metody **Main** poniższy kod, który tworzy wystąpienie klasy **DataFactoryManagementClient**. Ten obiekt jest używany do tworzenia fabryki danych, połączonej usługi, zestawów danych i potoku. Umożliwia on również monitorowanie szczegółów uruchomienia potoku.
+3. Dodaj następujący kod do metody `Main`, która tworzy wystąpienie klasy `DataFactoryManagementClient`. Ten obiekt jest używany do tworzenia fabryki danych, połączonej usługi, zestawów danych i potoku. Umożliwia on również monitorowanie szczegółów uruchomienia potoku.
 
     ```csharp
     // Authenticate and create a data factory management client
     var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
     ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
-    AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
+    AuthenticationResult result = context.AcquireTokenAsync(
+        "https://management.azure.com/", cc
+    ).Result;
     ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
-Dodaj do metody **Main** poniższy kod, który tworzy **fabrykę danych**.
+Dodaj następujący kod do metody `Main`, która tworzy *fabrykę danych*.
 
 ```csharp
 // Create a data factory
@@ -172,12 +193,18 @@ Factory dataFactory = new Factory
 {
     Location = region,
     Identity = new FactoryIdentity()
-
 };
-client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
-Console.WriteLine(SafeJsonConvert.SerializeObject(dataFactory, client.SerializationSettings));
 
-while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
+client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(dataFactory, client.SerializationSettings)
+);
+
+while (
+    client.Factories.Get(
+        resourceGroup, dataFactoryName
+    ).ProvisioningState == "PendingCreation"
+)
 {
     System.Threading.Thread.Sleep(1000);
 }
@@ -185,11 +212,11 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 
-W tym samouczku utworzysz dwie połączone usługi dla źródła i ujścia odpowiednio:
+W tym samouczku utworzysz odpowiednio dwie połączone usługi dla źródła i ujścia.
 
 ### <a name="create-an-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
 
-Dodaj do metody **Main** poniższy kod, który tworzy **połączoną usługę Azure Storage**. Szczegółowe informacje o obsługiwanych właściwościach można znaleźć w artykule [Właściwości połączonej usługi obiektów blob platformy Azure](connector-azure-blob-storage.md#linked-service-properties).
+Dodaj następujący kod do metody `Main`, która tworzy *połączoną usługę Azure Storage*. Aby uzyskać informacje o obsługiwanych właściwościach i szczegółach, zobacz [Właściwości połączonej usługi obiektów blob platformy Azure](connector-azure-blob-storage.md#linked-service-properties).
 
 ```csharp
 // Create an Azure Storage linked service
@@ -198,16 +225,24 @@ Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...")
 LinkedServiceResource storageLinkedService = new LinkedServiceResource(
     new AzureStorageLinkedService
     {
-        ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
+        ConnectionString = new SecureString(
+            "DefaultEndpointsProtocol=https;AccountName=" + storageAccount +
+            ";AccountKey=" + storageKey
+        )
     }
 );
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, storageLinkedService);
-Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
+
+client.LinkedServices.CreateOrUpdate(
+    resourceGroup, dataFactoryName, storageLinkedServiceName, storageLinkedService
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings)
+);
 ```
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Tworzenie połączonej usługi Azure SQL Database
 
-Dodaj do metody **Main** poniższy kod, który tworzy **połączoną usługę Azure SQL Database**. Szczegółowe informacje o obsługiwanych właściwościach można znaleźć w artykule [Właściwości połączonej usługi Azure SQL Database](connector-azure-sql-database.md#linked-service-properties).
+Dodaj następujący kod do metody `Main`, która tworzy *Azure SQL Database połączoną usługę*. Aby uzyskać informacje o obsługiwanych właściwościach i szczegółach, zobacz [Azure SQL Database właściwości połączonej usługi](connector-azure-sql-database.md#linked-service-properties).
 
 ```csharp
 // Create an Azure SQL Database linked service
@@ -219,23 +254,28 @@ LinkedServiceResource sqlDbLinkedService = new LinkedServiceResource(
         ConnectionString = new SecureString(azureSqlConnString)
     }
 );
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, sqlDbLinkedServiceName, sqlDbLinkedService);
-Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.SerializationSettings));
+
+client.LinkedServices.CreateOrUpdate(
+    resourceGroup, dataFactoryName, sqlDbLinkedServiceName, sqlDbLinkedService
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-datasets"></a>Utwórz zestawy danych
 
-W tej sekcji utworzysz zestaw danych źródła i ujścia. 
+W tej sekcji utworzysz dwa zestawy danych: jeden dla źródła, drugi dla ujścia. 
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Tworzenie zestawu danych źródłowego obiektu blob platformy Azure
 
-Dodaj do metody **Main** poniższy kod, który tworzy **zestaw danych obiektu blob platformy Azure**. Informacje o obsługiwanych właściwościach można znaleźć w artykule [Właściwości zestawu danych obiektu Blob platformy Azure](connector-azure-blob-storage.md#dataset-properties).
+Dodaj następujący kod do metody `Main`, która tworzy *zestaw danych obiektów blob platformy Azure*. Aby uzyskać informacje o obsługiwanych właściwościach i szczegółach, zobacz [Właściwości zestawu danych obiektów blob platformy Azure](connector-azure-blob-storage.md#dataset-properties).
 
 Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu blob odwołuje się do połączonej usługi Azure Storage utworzonej w poprzednim kroku i zawiera opis następujących elementów:
 
-- Lokalizacja źródłowa obiektu blob do skopiowania: **FolderPath** i **FileName**.
-- Format obiektów Blob wskazujący, jak przeanalizować zawartość: **TextFormat** i jego ustawienia (na przykład ogranicznik kolumny).
-- Struktura danych, taka jak nazwy kolumn i typy danych, które w tym przypadku są mapowane na tabelę SQL ujścia.
+- Lokalizacja obiektu BLOB do skopiowania: `FolderPath` i `FileName`
+- Format obiektu BLOB wskazujący sposób analizowania zawartości: `TextFormat` i jej ustawień, takich jak ogranicznik kolumny
+- Struktura danych, w tym nazwy kolumn i typy danych, które mapują w tym przykładzie do tabeli SQL ujścia
 
 ```csharp
 // Create an Azure Blob dataset
@@ -243,37 +283,33 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference
-        {
-            ReferenceName = storageLinkedServiceName
+        LinkedServiceName = new LinkedServiceReference { 
+            ReferenceName = storageLinkedServiceName 
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
         Format = new TextFormat { ColumnDelimiter = "|" },
         Structure = new List<DatasetDataElement>
         {
-            new DatasetDataElement
-            {
-                Name = "FirstName",
-                Type = "String"
-            },
-            new DatasetDataElement
-            {
-                Name = "LastName",
-                Type = "String"
-            }
+            new DatasetDataElement { Name = "FirstName", Type = "String" },
+            new DatasetDataElement { Name = "LastName", Type = "String" }
         }
     }
 );
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobDatasetName, blobDataset);
-Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
+
+client.Datasets.CreateOrUpdate(
+    resourceGroup, dataFactoryName, blobDatasetName, blobDataset
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings)
+);
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-sql-database"></a>Tworzenie zestawu danych ujścia obiektu Blob platformy Azure
 
-Dodaj do metody **Main** poniższy kod, który tworzy **zestaw danych bazy danych Azure SQL Database**. Informacje o obsługiwanych właściwościach można znaleźć w artykule [Właściwości zestawu danych bazy danych Azure SQL Dataset](connector-azure-sql-database.md#dataset-properties).
+Dodaj następujący kod do metody `Main`, która tworzy *Azure SQL Database zestaw danych*. Aby uzyskać informacje o obsługiwanych właściwościach i szczegółach, zobacz [Azure SQL Database właściwości zestawu danych](connector-azure-sql-database.md#dataset-properties).
 
-Zdefiniuj zestaw danych reprezentujący ujście danych w bazie danych Azure SQL Database. Ten zestaw danych odwołuje się do połączonej usługi Azure SQL Database utworzonej w poprzednim kroku. Określa on również tabelę SQL, która przechowuje skopiowane dane. 
+Zdefiniuj zestaw danych reprezentujący ujście danych w bazie danych Azure SQL Database. Ten zestaw danych odwołuje się do Azure SQL Database połączonej usługi utworzonej w poprzednim kroku. Określa on również tabelę SQL, która przechowuje skopiowane dane. 
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -288,13 +324,18 @@ DatasetResource sqlDataset = new DatasetResource(
         TableName = azureSqlTableName
     }
 );
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, sqlDatasetName, sqlDataset);
-Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDataset, client.SerializationSettings));
+
+client.Datasets.CreateOrUpdate(
+    resourceGroup, dataFactoryName, sqlDatasetName, sqlDataset
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(sqlDataset, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
-Dodaj do metody **Main** poniższy kod, który tworzy **potok z działaniem kopiowania**. W tym samouczku ten potok zawiera jedno działanie: działanie kopiowania, które pobiera zestaw danych obiektu Blob jako źródło i zestaw danych SQL jako ujście. Dowiedz się więcej o szczegółach działania kopiowania w [omówieniu działania kopiowania](copy-activity-overview.md).
+Dodaj następujący kod do metody `Main`, która tworzy *potok z działaniem kopiowania*. W tym samouczku ten potok zawiera jedno działanie: `CopyActivity`, które przejmuje w zestawie danych obiektów BLOB jako źródło i zestaw danych SQL jako ujścia. Informacje o szczegółach działania kopiowania znajdują się [w sekcji działanie kopiowania w Azure Data Factory](copy-activity-overview.md).
 
 ```csharp
 // Create a pipeline with copy activity
@@ -308,41 +349,42 @@ PipelineResource pipeline = new PipelineResource
             Name = "CopyFromBlobToSQL",
             Inputs = new List<DatasetReference>
             {
-                new DatasetReference()
-                {
-                    ReferenceName = blobDatasetName
-                }
+                new DatasetReference() { ReferenceName = blobDatasetName }
             },
             Outputs = new List<DatasetReference>
             {
-                new DatasetReference
-                {
-                    ReferenceName = sqlDatasetName
-                }
+                new DatasetReference { ReferenceName = sqlDatasetName }
             },
             Source = new BlobSource { },
             Sink = new SqlSink { }
         }
     }
 };
+
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, pipeline);
-Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.SerializationSettings));
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(pipeline, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-a-pipeline-run"></a>Tworzenie uruchomienia potoku
 
-Dodaj do metody **Main** poniższy kod, który **wyzwala uruchomienie potoku**.
+Dodaj następujący kod do metody `Main`, która *wyzwala uruchomienie potoku*.
 
 ```csharp
 // Create a pipeline run
 Console.WriteLine("Creating pipeline run...");
-CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName).Result.Body;
+CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
+    resourceGroup, dataFactoryName, pipelineName
+).Result.Body;
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Monitorowanie uruchomienia potoku
 
-1. Dodaj do metody **Main** poniższy kod, aby stale sprawdzać stan uruchomienia potoku do momentu zakończenia kopiowania danych.
+Teraz Wstaw kod, aby sprawdzić Stany przebiegu potoku i uzyskać szczegółowe informacje o przebiegu działania kopiowania.
+
+1. Dodaj następujący kod do metody `Main`, aby stale sprawdzać stan uruchomienia potoku do momentu zakończenia kopiowania danych.
 
     ```csharp
     // Monitor the pipeline run
@@ -350,7 +392,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     PipelineRun pipelineRun;
     while (true)
     {
-        pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
+        pipelineRun = client.PipelineRuns.Get(
+            resourceGroup, dataFactoryName, runResponse.RunId
+        );
         Console.WriteLine("Status: " + pipelineRun.Status);
         if (pipelineRun.Status == "InProgress")
             System.Threading.Thread.Sleep(15000);
@@ -359,21 +403,26 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. Dodaj do metody **Main** poniższy kod, który pobiera szczegóły uruchomienia działania kopiowania, na przykład rozmiar odczytanych/zapisanych danych.
+2. Dodaj następujący kod do metody `Main`, która pobiera szczegóły uruchomienia działania kopiowania, na przykład rozmiar danych odczytywanych lub zapisywana.
 
     ```csharp
     // Check the copy activity run details
     Console.WriteLine("Checking copy activity run details...");
 
-    List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
-    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
+    RunFilterParameters filterParams = new RunFilterParameters(
+        DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)
+    );
+
+    ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
+        resourceGroup, dataFactoryName, runResponse.RunId, filterParams
+    );
  
     if (pipelineRun.Status == "Succeeded")
     {
-        Console.WriteLine(activityRuns.First().Output);
+        Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
-        Console.WriteLine(activityRuns.First().Error);
+        Console.WriteLine(queryResponse.Value.First().Error);
     
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
@@ -381,9 +430,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-Skompiluj i uruchom aplikację, a następnie zweryfikuj wykonywanie potoku.
+Skompiluj aplikację, wybierając opcję **kompiluj** > **Kompiluj rozwiązanie**. Następnie uruchom aplikację, wybierając kolejno opcje **debuguj** > **Rozpocznij debugowanie**i sprawdź wykonywanie potoku.
 
-Konsola wypisuje postęp tworzenia fabryki danych, połączonej usługi, zestawów danych, potoku i działania potoku. Następnie sprawdza stan uruchomienia potoku. Poczekaj na wyświetlenie szczegółów uruchomienia działania kopiowania z rozmiarem odczytanych/zapisanych danych. Następnie użyj narzędzi, takich jak program SSMS (SQL Server Management Studio) lub program Visual Studio, aby podłączyć się do docelowej bazy danych Azure SQL i sprawdzić, czy dane są kopiowane do określonej przez Ciebie tabeli.
+Konsola wypisuje postęp tworzenia fabryki danych, połączonej usługi, zestawów danych, potoku i działania potoku. Następnie sprawdza stan uruchomienia potoku. Poczekaj, aż zobaczysz szczegóły uruchomienia działania kopiowania z rozmiarem odczytu/zapisu danych. Następnie przy użyciu narzędzi, takich jak SQL Server Management Studio (SSMS) lub Visual Studio, można nawiązać połączenie z Azure SQL Databaseą docelową i sprawdzić, czy określona tabela docelowa zawiera skopiowane dane.
 
 ### <a name="sample-output"></a>Przykładowe dane wyjściowe
 
@@ -513,7 +562,6 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-
 ## <a name="next-steps"></a>Następne kroki
 
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. W tym samouczku omówiono: 
@@ -522,10 +570,9 @@ Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji 
 > * Tworzenie fabryki danych.
 > * Tworzenie połączonych usług Azure Storage i Azure SQL Database.
 > * Tworzenie zestawów danych obiektu Blob platformy Azure i bazy danych Azure SQL Database.
-> * Tworzenie potoku zawierającego działanie kopiowania.
+> * Utwórz potok zawierający działanie kopiowania.
 > * Uruchom potok.
 > * Monitorowanie uruchomień potoku i działań.
-
 
 Przejdź do następującego samouczka, aby dowiedzieć się więcej o kopiowaniu danych lokalnych do chmury: 
 

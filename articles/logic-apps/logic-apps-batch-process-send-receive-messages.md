@@ -1,6 +1,6 @@
 ---
 title: Przetwarzanie wsadowe komunikatów jako grupy
-description: Wysyłanie i odbieranie komunikatów jako partii w Azure Logic Apps
+description: Wysyłanie i odbieranie komunikatów w grupach między przepływami pracy przy użyciu przetwarzania wsadowego w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791563"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666758"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Wysyłanie, odbieranie i przetwarzanie wsadowe komunikatów w Azure Logic Apps
 
@@ -89,7 +89,7 @@ Przed wysłaniem wiadomości do partii, ta partia musi znajdować się jako miej
 
    3. Wybierz tę akcję: **Wyślij wiadomość e-mail <*dostawcy poczty e-mail*>**
 
-      Na przykład:
+      Przykład:
 
       ![Wybierz akcję "Wyślij wiadomość e-mail" dla dostawcy poczty e-mail](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 

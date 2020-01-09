@@ -1,5 +1,5 @@
 ---
-title: Wady dostępności i wydajności dla różnych poziomów spójności w Azure Cosmos DB
+title: Azure Cosmos DB kompromisy dotyczące spójności, dostępności i wydajności
 description: Wady dostępności i wydajności dla różnych poziomów spójności w Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990616"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445547"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
 
-Rozproszone bazy danych korzystające z replikacji w celu zapewnienia wysokiej dostępności, małych opóźnień lub obu muszą mieć wpływ na kompromisy. Te kompromisy dotyczą spójności odczytu i dostępności, opóźnienia i przepływności.
+Rozproszone bazy danych polegające na replikacji do zapewnienia wysokiej dostępności, małych opóźnień lub obu tych charakterystyk muszą iść na pewne kompromisy. Te kompromisy dotyczą spójności odczytu wobec dostępności, opóźnienia i przepływności.
 
 Azure Cosmos DB podejścia do spójności danych jako szeroki wybór. Takie podejście obejmuje więcej opcji niż dwa skrajne silne i ostateczne spójność. W spektrum spójności można wybrać spośród pięciu dobrze zdefiniowanych modeli. Od najsilniejszych do najsłabszych modele są:
 
-- *Najwyższy*
+- *Silne*
 - *Powiązana nieaktualność*
-- *Obrad*
+- *Sesji*
 - *Spójny prefiks*
-- *Ewentualn*
+- *Ostateczna*
 
 Każdy model zapewnia kompromisy dostępności i wydajności i jest wspierany przez kompleksową umowy SLA.
 
@@ -50,14 +50,14 @@ W globalnie rozproszonym środowisku bazy danych istnieje bezpośrednia relacja 
 
 W poniższej tabeli zdefiniowano relacje między modelem spójności i trwałością danych w przypadku awarii całego regionu. Należy pamiętać, że w systemie rozproszonym, nawet ze silną spójnością, nie można mieć rozproszonej bazy danych z RPO i RTO zero ze względu na zakończenie theorem. Aby dowiedzieć się więcej na temat przyczyn, zobacz [poziomy spójności w Azure Cosmos DB](consistency-levels.md).
 
-|**Regiony**|**Tryb replikacji**|**Poziom spójności**|**ODZYSKIWANIA**|**RTO**|
+|**Regiony**|**Tryb replikacji**|**Poziom spójności**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jeden lub wiele wzorców|Dowolny poziom spójności|< 240 minut|< 1 tydzień|
-|> 1|Pojedynczy wzorzec|Sesja, spójny prefiks, ostateczna|< 15 minut|< 15 minut|
-|> 1|Pojedynczy wzorzec|Powiązana nieaktualność|*K*  & *t*|< 15 minut|
-|> 1|Pojedynczy wzorzec|Strong|0|< 15 minut|
-|> 1|Wiele wzorców|Sesja, spójny prefiks, ostateczna|< 15 minut|0|
-|> 1|Wiele wzorców|Powiązana nieaktualność|*K*  & *t*|0|
+|>1|Pojedynczy wzorzec|Sesja, spójny prefiks, ostateczna|< 15 minut|< 15 minut|
+|>1|Pojedynczy wzorzec|Powiązana nieaktualność|*K* & *t*|< 15 minut|
+|>1|Pojedynczy wzorzec|Strong|0|< 15 minut|
+|>1|Wiele wzorców|Sesja, spójny prefiks, ostateczna|< 15 minut|0|
+|>1|Wiele wzorców|Powiązana nieaktualność|*K* & *t*|0|
 
 *K* = liczba wersji *"K"* (tj. aktualizacji) elementu.
 

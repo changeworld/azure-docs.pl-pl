@@ -1,6 +1,6 @@
 ---
 title: Zdarzenia kształtu — Azure Time Series Insights | Microsoft Docs
-description: Dowiedz się, jak kształtować zdarzenia za pomocą wersji zapoznawczej Azure Time Series Insights.
+description: Dowiedz się więcej o najlepszych rozwiązaniach i sposobach tworzenia kształtów zapytań w usłudze Azure Time Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 37846aacd9e2c5c63cdf5d29bccb42df8e02fce9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452613"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
 Ten artykuł pomaga w utworzeniu kształtu pliku JSON na potrzeby pozyskiwania i zmaksymalizowania wydajności zapytań Azure Time Series Insights w wersji zapoznawczej.
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Zastanów się, jak wysyłasz zdarzenia do Time Series Insights wersji zapoznawczej. To znaczy należy zawsze:
 

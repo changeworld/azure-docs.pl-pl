@@ -1,21 +1,21 @@
 ---
-title: Konfigurowanie i Konfigurowanie integracji raportów o kosztach i użyciu AWS za pomocą Azure Cost Management
+title: Konfigurowanie integracji AWS z usługą Azure Cost Management
 description: W tym artykule przedstawiono sposób konfigurowania i konfigurowania integracji raportów o kosztach i użyciu AWS przy użyciu Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/15/2019
+ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 66dbe45ff1a8ee773fdf7fcb0aa7cfe8e6ad6437
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 77bc7772e1d9b8144199c865a8d82f818d5e1963
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444607"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Konfigurowanie i Konfigurowanie integracji raportów o kosztach i użyciu AWS
 
@@ -68,7 +68,7 @@ Użyj Kreatora tworzenia nowej roli:
 4. Na następnej stronie wybierz **inne konto AWS**.
 5. W polu **Identyfikator konta**wprowadź **432263259397**.
 6. W obszarze **Opcje**wybierz pozycję **Wymagaj zewnętrznego identyfikatora (najlepszym rozwiązaniem, gdy ta rola zostanie przyjęta przez osobę trzecią)** .
-7. W polu **Identyfikator zewnętrzny**wprowadź identyfikator zewnętrzny. Identyfikator zewnętrzny to współużytkowany kod dostępu między rolą AWS i Azure Cost Management. Ten sam identyfikator zewnętrzny jest również używany na **nowej stronie łącznika** w Cost Management. Na przykład zewnętrzny identyfikator przypomina _Companyname1234567890123_.
+7. W polu **Identyfikator zewnętrzny**wprowadź identyfikator zewnętrzny, który jest udostępnionym kodem dostępu między rolą AWS a Azure Cost Management. Ten sam identyfikator zewnętrzny jest również używany na **nowej stronie łącznika** w Cost Management. Firma Microsoft zaleca użycie silnych zasad kodów dostępu podczas wprowadzania identyfikatora zewnętrznego.
 
     > [!NOTE]
     > Nie zmieniaj zaznaczenia dla opcji **Wymagaj uwierzytelniania wieloskładnikowego**. Powinien pozostać wyczyszczony.
@@ -150,7 +150,7 @@ KOD JSON zasad powinien wyglądać podobnie do poniższego przykładu. Zastąp _
 
 Skorzystaj z poniższych informacji, aby utworzyć łącznik AWS i rozpocząć monitorowanie kosztów AWS:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Przejdź do **Cost Management i Rozliczeń** > **Cost Management**.
 3. W obszarze **Ustawienia**wybierz pozycję **Łączniki chmury (wersja zapoznawcza)** .  
     ![przykład pokazujący ustawienie łączników Cloud (wersja zapoznawcza)](./media/aws-integration-setup-configure/cloud-connectors-preview01.png).

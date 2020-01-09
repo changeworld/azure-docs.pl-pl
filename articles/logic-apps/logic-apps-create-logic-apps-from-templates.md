@@ -1,6 +1,6 @@
 ---
-title: Tworzenie przepływów pracy na podstawie szablonów
-description: Szybsze Kompilowanie przepływów pracy przy użyciu szablonów aplikacji logiki w Azure Logic Apps
+title: Szybsze tworzenie przepływów pracy aplikacji logiki przy użyciu wbudowanych szablonów
+description: Szybko Twórz przepływy pracy aplikacji logiki przy użyciu wstępnie utworzonych szablonów dostarczonych przez Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793185"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666826"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Tworzenie przepływów pracy aplikacji logiki na podstawie wbudowanych szablonów
 
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
 
 ## <a name="create-logic-apps-from-templates"></a>Tworzenie aplikacji logiki na podstawie szablonów
 
-1. Jeśli jeszcze tego nie zrobiono, zaloguj się do [Azure Portal](https://portal.azure.com "Azure Portal").
+1. Jeśli jeszcze tego nie zrobiono, zaloguj się do [Azure Portal](https://portal.azure.com "Portal Azure").
 
 2. Z głównego menu platformy Azure wybierz pozycję **Utwórz zasób** > **Integracja dla przedsiębiorstw** > **Aplikacja logiki**.
 
@@ -48,7 +48,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
    | ------- | ----- | ----------- | 
    | **Nazwa** | *Twoja nazwa aplikacji logiki* | Podaj unikatową nazwę aplikacji logiki. | 
    | **Subskrypcja** | *nazwa_Twojej_susbkrypcji_Azure* | Wybierz subskrypcję platformy Azure, której chcesz użyć. | 
-   | **Grupa zasobów** | *nazwa_Twojej_grupy_zasobów_Azure* | Utwórz lub wybierz [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) dla tej aplikacji logiki i zorganizuj wszystkie zasoby skojarzone z tą aplikacją. | 
+   | **Grupa zasobów** | *nazwa_Twojej_grupy_zasobów_Azure* | Utwórz lub wybierz [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md) dla tej aplikacji logiki i zorganizuj wszystkie zasoby skojarzone z tą aplikacją. | 
    | **Lokalizacja** | *region_Twojego_centrum_danych_Azure* | Wybierz region centrum danych do wdrożenia swojej aplikacji logiki, na przykład Zachodnie stany USA. | 
    | **Log Analytics** | **Wyłączone** (domyślnie) lub **na** | Włącz [rejestrowanie diagnostyczne](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) dla aplikacji logiki za poorednictwem [dzienników Azure monitor](../log-analytics/log-analytics-overview.md). Wymaga, aby masz już obszar roboczy Log Analytics. | 
    |||| 
@@ -61,7 +61,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
    Gdy platforma Azure wdroży aplikację logiki, zostanie otwarty Projektant aplikacji usługi Logic Apps wyświetlający stronę z wprowadzającym wideo. 
    Pod wideo znajdziesz szablony typowych wzorców aplikacji logiki. 
 
-5. Przewiń zawartość wideo z wprowadzeniem i typowe wyzwalacze do **szablonów**. Wybierz wstępnie utworzony szablon. Na przykład:
+5. Przewiń zawartość wideo z wprowadzeniem i typowe wyzwalacze do **szablonów**. Wybierz wstępnie utworzony szablon. Przykład:
 
    ![Wybieranie szablonu aplikacji logiki](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
@@ -69,7 +69,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
    > Aby utworzyć aplikację logiki od podstaw, wybierz pozycję **pusta aplikacja logiki**.
 
    Po wybraniu prekompilowanego szablonu można wyświetlić więcej informacji na temat tego szablonu. 
-   Na przykład:
+   Przykład:
 
    ![Wybieranie wstępnie skompilowanego szablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
@@ -83,7 +83,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
 
    * Jeśli te połączenia zostały już skonfigurowane, wybierz pozycję **Kontynuuj**.
 
-   Na przykład:
+   Przykład:
 
    ![Tworzenie połączeń](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
@@ -99,18 +99,18 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
 
 ## <a name="update-logic-apps-with-templates"></a>Aktualizowanie aplikacji logiki za pomocą szablonów
 
-1. W [Azure Portal](https://portal.azure.com "Azure Portal")Znajdź i Otwórz aplikację logiki w programie Logic App Designer.
+1. W [Azure Portal](https://portal.azure.com "Portal Azure")Znajdź i Otwórz aplikację logiki w programie Logic App Designer.
 
-2. Na pasku narzędzi projektanta wybierz pozycję **Szablony**. Ta akcja odrzuca wszystkie niezapisane zmiany, dlatego zostanie wyświetlony komunikat ostrzegawczy, aby potwierdzić, że chcesz kontynuować. Aby potwierdzić, wybierz **przycisk OK**. Na przykład:
+2. Na pasku narzędzi projektanta wybierz pozycję **Szablony**. Ta akcja odrzuca wszystkie niezapisane zmiany, dlatego zostanie wyświetlony komunikat ostrzegawczy, aby potwierdzić, że chcesz kontynuować. Aby potwierdzić, wybierz **przycisk OK**. Przykład:
 
    ![Wybieranie "szablonów"](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Przewiń zawartość wideo z wprowadzeniem i typowe wyzwalacze do **szablonów**. Wybierz wstępnie utworzony szablon. Na przykład:
+3. Przewiń zawartość wideo z wprowadzeniem i typowe wyzwalacze do **szablonów**. Wybierz wstępnie utworzony szablon. Przykład:
 
    ![Wybieranie szablonu aplikacji logiki](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    Po wybraniu prekompilowanego szablonu można wyświetlić więcej informacji na temat tego szablonu. 
-   Na przykład:
+   Przykład:
 
    ![Wybieranie wstępnie skompilowanego szablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 

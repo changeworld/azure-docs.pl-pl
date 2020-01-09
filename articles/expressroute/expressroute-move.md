@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076638"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645909"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Przenoszenie obwodów usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager | Microsoft Azure
 W tym artykule wyjaśniono przenoszenie obwodu usługi Azure ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager.
@@ -39,7 +39,7 @@ Można włączyć ustawienie obwodów usługi ExpressRoute tworzonych w modelu w
 * Dostęp do klasycznego modelu wdrażania jest kontrolowany przy użyciu parametru **allowClassicOperations** w obwodzie usługi ExpressRoute.
 
 > [!IMPORTANT]
-> Wszystkie przydziały udokumentowane na stronie [limitów usług](../azure-subscription-service-limits.md) obowiązują. Na przykład standardowy obwód może obejmować najwyżej 10 linków/połączeń sieci wirtualnej — zarówno w klasycznym modelu wdrażania, jak i w modelu wdrażania usługi Resource Manager.
+> Wszystkie przydziały udokumentowane na stronie [limitów usług](../azure-resource-manager/management/azure-subscription-service-limits.md) obowiązują. Na przykład standardowy obwód może obejmować najwyżej 10 linków/połączeń sieci wirtualnej — zarówno w klasycznym modelu wdrażania, jak i w modelu wdrażania usługi Resource Manager.
 > 
 > 
 
@@ -87,7 +87,7 @@ W tej sekcji opisano, jakie operacje nie są obsługiwane dla obwodów usługi E
 * Zarządzanie cyklem życia obwodu usługi ExpressRoute z klasycznego modelu wdrażania.
 * Obsługa kontroli dostępu opartej na rolach (RBAC) dla klasycznego modelu wdrażania. W klasycznym modelu wdrażania nie można wykonywać kontrolek RBAC do obwodu. Dowolny administrator/współadministrator subskrypcji może połączyć sieci wirtualne z obwodem lub je od niego odłączyć.
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 Wykonaj instrukcje opisane w artykule [Move an ExpressRoute circuit from the classic to the Resource Manager deployment model](expressroute-howto-move-arm.md) (Przenoszenie obwodu usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager).
 
 ## <a name="next-steps"></a>Następne kroki

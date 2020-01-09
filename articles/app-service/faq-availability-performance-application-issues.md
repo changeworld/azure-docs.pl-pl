@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671706"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659717"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące wydajności aplikacji dla Web Apps na platformie Azure
 
@@ -85,7 +85,7 @@ Aby zobaczyć, co jest przyczyną błędu i rozwiązać ten problem, wykonaj czy
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Gdzie można dowiedzieć się więcej o limitach przydziału i limitów dla różnych planów App Service?
 
-Informacje o przydziałach i limitach można znaleźć w temacie [App Service limitów](../azure-subscription-service-limits.md#app-service-limits). 
+Informacje o przydziałach i limitach można znaleźć w temacie [App Service limitów](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits). 
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>Jak mogę skrócić czas odpowiedzi dla pierwszego żądania po czasie bezczynności?
 

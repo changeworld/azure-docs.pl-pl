@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432813"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Samouczek: implementowanie analizy przestrzennej IoT przy użyciu Azure Maps
 
@@ -104,7 +104,8 @@ Aby wykonać kroki opisane w tym samouczku, musisz najpierw utworzyć grupę zas
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps 
 
-Aby zaimplementować logikę biznesową na podstawie Azure Maps analiz przestrzennych, należy utworzyć konto Azure Maps w utworzonej grupie zasobów. Postępuj zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1, a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby uzyskać podstawowy klucz subskrypcji dla konta.
+Aby zaimplementować logikę biznesową na podstawie Azure Maps analiz przestrzennych, należy utworzyć konto Azure Maps w utworzonej grupie zasobów. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1, i wykonaj kroki opisane w sekcji [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](how-to-manage-authentication.md).
+
 
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
@@ -167,7 +168,7 @@ Otwórz aplikację Poster i postępuj zgodnie z poniższymi instrukcjami, aby pr
     
     Wartość "GEOJSON" dotycząca parametru `dataFormat` w ścieżce URL reprezentuje Format przekazywanych danych.
 
-3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczową subskrypcją Azure Maps.
+3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczem Azure Maps.
    
     ![Parametry klucz-wartość narzędzia Postman](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 

@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 2350586501fae84726aa2aa2438ea676b90c1dbb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a988fbb089bd94456e0b91b377574ab27a67617f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437204"
 ---
-# <a name="use-firewall-rules"></a>Korzystanie z reguł zapory
+# <a name="azure-event-hubs---use-firewall-rules"></a>Event Hubs platformy Azure — używanie reguł zapory
 
 W przypadku scenariuszy, w których usługa Azure Event Hubs powinna być dostępna tylko z niektórych dobrze znanych lokacji, reguły zapory umożliwiają konfigurowanie reguł akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
 
@@ -34,7 +34,7 @@ Wszystkie próby połączenia z adresu IP, które nie pasują do dozwolonej regu
 
 ## <a name="default-setting"></a>Ustawienie domyślne
 
-Domyślnie siatka **filtrów IP** w portalu dla Event Hubs jest pusta. To ustawienie domyślne oznacza, że Centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
+Domyślnie **filtru IP** siatki w portalu usługi Event Hubs jest pusty. To ustawienie domyślne oznacza, że Centrum zdarzeń akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
 
 ## <a name="ip-filter-rule-evaluation"></a>Ocenę reguł filtrowania adresów IP
 
@@ -46,31 +46,31 @@ Reguły filtrowania adresów IP są stosowane w kolejności, a pierwszej reguły
 > Zaufane usługi firmy Microsoft nie są obsługiwane, gdy są implementowane filtrowanie adresów IP (zapory) i wkrótce zostaną udostępnione.
 >
 > Typowe scenariusze platformy Azure, które nie współpracują z filtrowaniem adresów IP (należy zauważyć, że lista **nie** jest wyczerpująca) —
-> - Usługa Azure Stream Analytics
+> - Azure Stream Analytics
 > - Integracja z usługą Azure Event Grid
 > - Trasy usługi Azure IoT Hub
 > - Device Explorer usługi Azure IoT
 >
 > Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
 > - Azure Web Apps
-> - Azure Functions
+> - Stan usługi Funkcje Azure
 
 ### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły zapory za pomocą szablonów Azure Resource Manager
 
 > [!IMPORTANT]
-> Reguły zapory są obsługiwane w warstwach **standardowa** i **dedykowana** Event Hubs. Nie jest obsługiwana w warstwie podstawowa.
+> Reguły zapory są obsługiwane w warstwach **standardowa** i **dedykowana** Event Hubs. Nie są obsługiwane w warstwie Podstawowa.
 
 Następujący szablon usługi Resource Manager umożliwia dodawanie reguły filtrowania adresów IP do istniejącej przestrzeni nazw usługi Event Hubs.
 
 Parametry szablonu:
 
-- **ipMask** to pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
+- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
 
 > [!NOTE]
 > Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
 > Podczas tworzenia reguł Virtual Network lub zapór należy zmienić wartość ***"DefaultAction"***
 > 
-> from
+> z
 > ```json
 > "defaultAction": "Allow"
 > ```

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901458"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452844"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Tworzenie zasobów Time Series Insights przy użyciu szablonów Azure Resource Manager
 
@@ -64,7 +64,7 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
      | eventHubNamespaceName | Przestrzeń nazw źródłowego centrum zdarzeń. |
      | eventHubName | Nazwa źródłowego centrum zdarzeń. |
      | consumerGroupName | Nazwa grupy odbiorców, która będzie używana przez usługę Time Series Insights do odczytywania danych z centrum zdarzeń. **Uwaga:** Aby uniknąć rywalizacji o zasoby, ta grupa odbiorców musi być przeznaczona dla usługi Time Series Insights i nie może być udostępniana innym czytelnikom. |
-     | environmentName | Nazwa środowiska. Nazwa nie może zawierać takich znaków: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`i żadnych kontrolek. Wszystkie inne znaki są dozwolone.|
+     | EnvironmentName | Nazwa środowiska. Nazwa nie może zawierać takich znaków: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`i żadnych kontrolek. Wszystkie inne znaki są dozwolone.|
      | eventSourceName | Nazwa zasobu podrzędnego źródła zdarzeń. Nazwa nie może zawierać takich znaków: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`i żadnych kontrolek. Wszystkie inne znaki są dozwolone. |
 
     <div id="optional-parameters"></div>
@@ -119,7 +119,7 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
      }
      ```
   
-    * Aby uzyskać więcej informacji, zobacz artykuł dotyczący [parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) .
+    * Aby uzyskać więcej informacji, zobacz artykuł dotyczący [parametrów](../azure-resource-manager/templates/parameter-files.md) .
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Wdrażanie szablonu szybkiego startu przy użyciu programu PowerShell
 
@@ -148,7 +148,7 @@ Poniższa procedura opisuje sposób użycia programu PowerShell do wdrożenia sz
 
 1. Utwórz nową grupę zasobów, jeśli taka nie istnieje.
 
-   * Jeśli nie masz istniejącej grupy zasobów, Utwórz nową grupę zasobów za pomocą polecenia **New-AzResourceGroup** . Podaj nazwę grupy zasobów i lokalizacji, której chcesz użyć. Na przykład:
+   * Jeśli nie masz istniejącej grupy zasobów, Utwórz nową grupę zasobów za pomocą polecenia **New-AzResourceGroup** . Podaj nazwę grupy zasobów i lokalizacji, której chcesz użyć. Przykład:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"

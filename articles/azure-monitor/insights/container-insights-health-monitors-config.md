@@ -1,23 +1,14 @@
 ---
 title: Azure Monitor konfiguracji monitorów kondycji kontenerów | Microsoft Docs
 description: Ten artykuł zawiera informacje dotyczące szczegółowej konfiguracji monitorów kondycji w Azure Monitor dla kontenerów.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.date: 12/01/2019
+ms.openlocfilehash: d2d602d767fa6a39b7f72650c426c90be210a6ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664951"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405043"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Przewodnik konfigurowania monitora kondycji kontenerów Azure Monitor
 
@@ -29,9 +20,9 @@ Monitory to podstawowy element służący do mierzenia kondycji i wykrywania bł
 
 ## <a name="monitors"></a>Monitory
 
-Monitor mierzy kondycję pewnego aspektu obiektu zarządzanego. Każdy monitor ma dwa lub trzy stany kondycji. Monitor będzie w jednym i tylko jednym z jego potencjalnych stanów w danym momencie. Gdy monitor ładowany przez agenta kontenera, jest on zainicjowany w dobrej kondycji. Stan zmienia się tylko wtedy, gdy zostaną wykryte określone warunki dla innego stanu.
+Monitor mierzy kondycję, analizując pewien aspekt zarządzanego obiektu. Każdy monitor ma dwa lub trzy stany kondycji. W danym momencie monitor jest w jednym i tylko w jednym ze swoich potencjalnych stanów. Gdy monitor ładowany przez agenta kontenera, jest on zainicjowany w dobrej kondycji. Stan zmienia się tylko wtedy, gdy zostaną wykryte określone warunki dla innego stanu.
 
-Ogólna kondycja konkretnego obiektu jest określana na podstawie kondycji każdego z jego monitorów. Ta hierarchia jest przedstawiana w okienku hierarchia kondycji w Azure Monitor dla kontenerów. Zasady tworzenia kondycji są częścią konfiguracji monitorów agregujących.
+Ogólna kondycja konkretnego obiektu jest ustalana na podstawie kondycji każdego z jego monitorów. Ta hierarchia jest przedstawiana w okienku hierarchia kondycji w Azure Monitor dla kontenerów. Zasady tworzenia kondycji są częścią konfiguracji monitorów agregujących.
 
 ## <a name="types-of-monitors"></a>Typy monitorów
 
@@ -63,7 +54,7 @@ Azure Monitor kontenerów zawiera kilka kluczowych scenariuszy monitorowania, kt
 
 ### <a name="unit-monitors"></a>Monitory jednostkowe
 
-|**Nazwa monitora** | Typ monitora | **Opis** | **Konstruktora** | **Wartość** |
+|**Nazwa monitora** | Typ monitora | **Opis** | **Parametr** | **Wartość** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Użycie pamięci przez węzeł |Monitor jednostkowy |Ten monitor szacuje użycie pamięci przez węzeł co minutę przy użyciu danych raportowanych przez cadvisor. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Użycie procesora CPU przez węzeł |Monitor jednostkowy |Ten monitor sprawdza użycie procesora CPU przez węzeł co minutę przy użyciu danych raportowanych przez cadvisor. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

@@ -3,14 +3,14 @@ title: Trwałe jednostki — Azure Functions
 description: Dowiedz się, co to są trwałe jednostki i jak ich używać w rozszerzeniu Durable Functions Azure Functions.
 author: cgillum
 ms.topic: overview
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232928"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433317"
 ---
 # <a name="entity-functions"></a>Funkcje jednostki
 
@@ -34,13 +34,14 @@ Do jednostek uzyskuje się dostęp za pośrednictwem unikatowego identyfikatora,
 
 Na przykład funkcja jednostki `Counter` może być używana do przechowywania wyników w grze online. Każde wystąpienie gry ma unikatowy identyfikator jednostki, taki jak `@Counter@Game1` i `@Counter@Game2`. Wszystkie operacje przeznaczone dla określonej jednostki wymagają określenia identyfikatora jednostki jako parametru.
 
-### <a name="entity-operations"></a>Operacje jednostki ###
+### <a name="entity-operations"></a>Operacje na jednostkach ###
 
 Aby wywołać operację na jednostce, określ:
 
 * **Identyfikator jednostki** docelowej.
 * **Nazwa operacji**, która jest ciągiem, który określa operację do wykonania. Na przykład jednostka `Counter` może obsługiwać operacje `add`, `get`lub `reset`.
 * **Wejście operacji**, który jest opcjonalnym parametrem wejściowym dla operacji. Na przykład operacja dodawania może przyjmować liczbę całkowitą jako dane wejściowe.
+* **zaplanowany czas*, który jest opcjonalnym parametrem służącym do określania czasu dostarczania operacji. Na przykład operacja może być niezawodnie zaplanowana do uruchomienia kilku dni w przyszłości.
 
 Operacje mogą zwracać wartość wyniku lub wynik błędu, takie jak błąd JavaScript lub wyjątek programu .NET. Ten wynik lub błąd może być zauważalny przez aranżacje, które wywołały operację.
 
@@ -165,7 +166,7 @@ W poniższych przykładach przedstawiono różne sposoby uzyskiwania dostępu do
 
 ### <a name="example-client-signals-an-entity"></a>Przykład: klient sygnalizuje jednostkę
 
-Aby uzyskać dostęp do jednostek z zwykłej funkcji platformy Azure, która jest również znana jako funkcja klienta, należy użyć [powiązania danych wyjściowych klienta jednostki](durable-functions-bindings.md#entity-client). Poniższy przykład pokazuje funkcję wyzwalaną przez kolejkę przy użyciu tego powiązania.
+Aby uzyskać dostęp do jednostek z zwykłej funkcji platformy Azure, która jest również znana jako funkcja klienta, należy użyć [powiązania klienta jednostki](durable-functions-bindings.md#entity-client). Poniższy przykład pokazuje funkcję wyzwalaną przez kolejkę przy użyciu tego powiązania.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -186,7 +187,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    await context.df.signalEntity(entityId, "add", 1);
+    await client.signalEntity(entityId, "add", 1);
 };
 ```
 
@@ -203,8 +204,8 @@ public static async Task<HttpResponseMessage> Run(
     [DurableClient] IDurableEntityClient client)
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
-    JObject state = await client.ReadEntityStateAsync<JObject>(entityId);
-    return req.CreateResponse(HttpStatusCode.OK, state);
+    EntityStateResponse<JObject> stateResponse = await client.ReadEntityStateAsync<JObject>(entityId);
+    return req.CreateResponse(HttpStatusCode.OK, stateResponse.EntityState);
 }
 ```
 
@@ -214,7 +215,8 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    return context.df.readEntityState(entityId);
+    const stateResponse = await context.df.readEntityState(entityId);
+    return stateResponse.entityState;
 };
 ```
 
@@ -249,12 +251,11 @@ module.exports = df.orchestrator(function*(context){
 
     // Two-way call to the entity which returns a value - awaits the response
     currentValue = yield context.df.callEntity(entityId, "get");
-    if (currentValue < 10) {
-        // One-way signal to the entity which updates the value - does not await a response
-        yield context.df.signalEntity(entityId, "add", 1);
-    }
 });
 ```
+
+> [!NOTE]
+> Język JavaScript nie obsługuje obecnie sygnalizowania jednostką od koordynatora. Zamiast tego użyj polecenia cmdlet `callEntity`.
 
 Tylko aranżacje mogą wywołać jednostki i uzyskać odpowiedź, co może być wartością zwracaną lub wyjątkiem. Funkcje klienta, które używają [powiązania klienta](durable-functions-bindings.md#entity-client) , mogą jedynie sygnalizować jednostki.
 
@@ -375,7 +376,7 @@ Wszelkie naruszenia tych reguł powodują wystąpienie błędu czasu wykonywania
 
 ## <a name="comparison-with-virtual-actors"></a>Porównanie z aktorami wirtualnymi
 
-Wiele funkcji jednostek trwałych jest inspirowany [modelem aktora](https://en.wikipedia.org/wiki/Actor_model). Jeśli znasz już uczestników, możesz rozpoznać wiele pojęć opisanych w tym artykule. Trwałe jednostki są szczególnie podobne do [aktorów wirtualnych](https://research.microsoft.com/projects/orleans/)lub ziaren, które są popularne przez [projekt Orleans](http://dotnet.github.io/orleans/). Na przykład:
+Wiele funkcji jednostek trwałych jest inspirowany [modelem aktora](https://en.wikipedia.org/wiki/Actor_model). Jeśli znasz już uczestników, możesz rozpoznać wiele pojęć opisanych w tym artykule. Trwałe jednostki są szczególnie podobne do [aktorów wirtualnych](https://research.microsoft.com/projects/orleans/)lub ziaren, które są popularne przez [projekt Orleans](http://dotnet.github.io/orleans/). Przykład:
 
 * Jednostki trwałe są adresowane za pośrednictwem identyfikatora jednostki.
 * Trwałe operacje jednostki wykonują szeregowo, pojedynczo, aby uniknąć sytuacji wyścigu.

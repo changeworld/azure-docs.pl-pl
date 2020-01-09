@@ -1,19 +1,19 @@
 ---
 title: Topologie Apache Storm przy użyciu programu C# Visual Studio i usługi Azure HDInsight
 description: Dowiedz się, jak tworzyć topologie burzy w programie C#. Utwórz topologię zliczania wyrazów w programie Visual Studio przy użyciu narzędzi Hadoop dla programu Visual Studio.
-ms.service: hdinsight
+ROBOTS: NOINDEX
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f59328c5894a53b6337ecc04e3daebb2ef180c59
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 12/31/2019
+ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927924"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612295"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Tworzenie C# topologii dla Apache Storm przy użyciu narzędzi Data Lake Tools for Visual Studio
 
@@ -21,20 +21,17 @@ Dowiedz się, jak C# utworzyć topologię Apache Storm przy użyciu narzędzi Az
 
 Dowiesz się również, jak tworzyć topologie hybrydowe używające składników C# i.
 
-> [!NOTE]  
-> Chociaż kroki opisane w tym dokumencie polegają na środowisku programistycznym systemu Windows z programem Visual Studio, skompilowany projekt można przesłać do klastra usługi HDInsight opartego na systemie Linux lub Windows. Tylko w przypadku klastrów opartych na systemie Linux utworzonych po 28 października 2016 obsługiwane są topologie SCP.NET.
-
-Aby użyć C# topologii z klastrem opartym na systemie Linux, należy zaktualizować pakiet NuGet `Microsoft.SCP.Net.SDK` używany przez projekt do wersji 0.10.0.6 lub nowszej. Wersja pakietu musi być również zgodna z wersją główną systemu Storm zainstalowanego w usłudze HDInsight.
+C#topologie korzystają z programu .NET 4,5 i używają narzędzia mono do uruchamiania w klastrze usługi HDInsight. Aby uzyskać informacje o potencjalnych niezgodności, zobacz Zgodność z programem [mono](https://www.mono-project.com/docs/about-mono/compatibility/). Aby użyć C# topologii, należy zaktualizować pakiet NuGet `Microsoft.SCP.Net.SDK` używany przez projekt do wersji 0.10.0.6 lub nowszej. Wersja pakietu musi być również zgodna z wersją główną systemu Storm zainstalowanego w usłudze HDInsight.
 
 | Wersja usługi HDInsight | Wersja Apache Storm | Wersja SCP.NET | Domyślna wersja narzędzia mono |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10. x |0.10. x. x</br>(tylko w usłudze HDInsight opartej na systemie Windows) | Nie dotyczy |
-| 3.4 | 0.10.0. x | 0.10.0. x | 3.2.8 |
-| 3,5 | 1.0.2. x | 1.0.0. x | 4.2.1 |
-| 3,6 | 1.1.0. x | 1.0.0. x | 4.2.8 |
+| 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
+| 3,5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
+| 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
 
-> [!IMPORTANT]  
-> Topologie C# w klastrach opartych na systemie Linux muszą korzystać z platformy .NET 4.5 i używać platformy Mono, aby mogły działać w klastrze usługi HDInsight. Aby uzyskać informacje o potencjalnych niezgodności, zobacz Zgodność z programem [mono](https://www.mono-project.com/docs/about-mono/compatibility/).
+## <a name="prerequisite"></a>Warunek wstępny
+
+Klaster Apache Storm w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **burza** dla **typu klastra**.
 
 ## <a name="install-visual-studio"></a>Instalacja programu Visual Studio
 
@@ -52,7 +49,7 @@ Po przesłaniu topologii burzy z programu Visual Studio SCP.NET generuje plik zi
 
 2. Ustaw zmienną środowiskową `JAVA_HOME` na katalog zawierający język Java.
 
-3. Ustaw zmienną środowiskową `PATH` tak, aby obejmowała katalog *% JAVA_HOME% \ bin* .
+3. Ustaw zmienną środowiskową `PATH` na dołączenie katalogu `%JAVA_HOME%\bin`.
 
 Możesz skompilować i uruchomić następującą C# aplikację konsolową, aby sprawdzić, czy środowisko Java i JDK są prawidłowo zainstalowane:
 
@@ -92,7 +89,7 @@ namespace ConsoleApplication2
 
 Narzędzia Data Lake Tools for Visual Studio oferują następujące szablony:
 
-| Project type (Typ projektu) | Pokazuje |
+| Project type (Typ projektu) | Demonstracje |
 | --- | --- |
 | Aplikacja burza |Pusty projekt topologii burzowej. |
 | Przykład składnika zapisywania SQL platformy Azure |Jak pisać do Azure SQL Database. |
@@ -144,8 +141,6 @@ Po utworzeniu projektu należy mieć następujące pliki:
 * *Bolt.cs*: przykładowy piorun, który przechowuje liczbę liczb emitowanych przez elementu Spout.
 
 Podczas tworzenia projektu NuGet pobiera najnowszy [pakiet SCP.NET](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
-
-[!INCLUDE [scp.net version important](../../../includes/hdinsight-storm-scpdotnet-version.md)]
 
 ### <a name="implement-the-spout"></a>Implementowanie elementu Spout
 
@@ -410,12 +405,13 @@ return topologyBuilder;
 
 Teraz można przystąpić do przesyłania topologii do klastra usługi HDInsight.
 
+1. Przejdź do **widoku** > **Eksplorator serwera**.
+
+1. Kliknij prawym przyciskiem myszy pozycję **Azure**, wybierz pozycję **Połącz z subskrypcją Microsoft Azure...** i Ukończ proces logowania.
+
 1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt, a następnie wybierz polecenie **Prześlij do burzy w usłudze HDInsight**.
 
-    > [!NOTE]  
-    > Jeśli zostanie wyświetlony monit, wprowadź poświadczenia dla subskrypcji platformy Azure. Jeśli masz więcej niż jedną subskrypcję, zaloguj się do niej, która zawiera swoją burzę w klastrze usługi HDInsight.
-
-2. W oknie dialogowym **przesyłanie topologii** na liście rozwijanej **klaster burzy** wybierz swoją burzę w klastrze usługi HDInsight, a następnie wybierz pozycję **Prześlij**. Możesz sprawdzić, czy przesyłanie zakończy się pomyślnie, wyświetlając okienko **dane wyjściowe** .
+1. W oknie dialogowym **przesyłanie topologii** na liście rozwijanej **klaster burzy** wybierz swoją burzę w klastrze usługi HDInsight, a następnie wybierz pozycję **Prześlij**. Możesz sprawdzić, czy przesyłanie zakończy się pomyślnie, wyświetlając okienko **dane wyjściowe** .
 
     Po pomyślnym przesłaniu topologii należy **wyświetlić okno widok topologii burzy** dla tego klastra. Wybierz topologię **WORDCOUNT** z listy, aby wyświetlić informacje o uruchomionej topologii.
 
@@ -426,7 +422,7 @@ Teraz można przystąpić do przesyłania topologii do klastra usługi HDInsight
 
     Aby wyświetlić informacje o składnikach w topologii, wybierz składnik na diagramie.
 
-3. W sekcji **Podsumowanie topologii** wybierz pozycję **Kill** , aby zatrzymać topologię.
+1. W sekcji **Podsumowanie topologii** wybierz pozycję **Kill** , aby zatrzymać topologię.
 
     > [!NOTE]  
     > Topologie burzy są nadal uruchamiane, dopóki nie zostaną dezaktywowane lub klaster zostanie usunięty.
@@ -492,7 +488,7 @@ W wersji SCP.NET 0.9.4.203 wprowadzono nową klasę i metodę przeznaczone do pr
 > [!NOTE]  
 > Nadal należy używać `CustomizedInteropJSONSerializer` do serializacji danych wytworzonych przez elementu Spout.
 
-## <a id="configurationmanager"></a>Użyj ConfigurationManager
+## <a name="use-configurationmanager"></a>Użyj ConfigurationManager
 
 Nie należy używać programu **ConfigurationManager** do pobierania wartości konfiguracyjnych ze składników piorun i elementu Spout. Wykonanie tej operacji może spowodować wystąpienie wyjątku wskaźnika o wartości null. Zamiast tego należy przekazać konfigurację projektu do topologii burzy jako parę klucz-wartość w kontekście topologii. Każdy składnik, który opiera się na wartościach konfiguracji, musi pobrać je z kontekstu podczas inicjalizacji.
 
@@ -552,9 +548,9 @@ W przypadku korzystania z C# topologii z klastrem usługi HDInsight opartej na s
 
 Konfiguracja projektu jest przenoszona do topologii burzy jako para klucza i wartości w kontekście topologii. Można go pobrać z obiektu dictionary, który jest przesyłany do składników, gdy są one inicjowane.
 
-Aby uzyskać więcej informacji, zobacz sekcję [use ConfigurationManager](#configurationmanager) tego dokumentu.
+Aby uzyskać więcej informacji, zobacz sekcję [use ConfigurationManager](#use-configurationmanager) tego dokumentu.
 
-### <a name="systemtypeloadexception"></a>System. TypeLoadException
+### <a name="systemtypeloadexception"></a>System.TypeLoadException
 
 W przypadku korzystania z C# topologii z klastrem usługi HDInsight opartej na systemie Linux może wystąpić następujący błąd:
 
@@ -725,7 +721,7 @@ Aby wyświetlić błędy, które wystąpiły w uruchomionej topologii, wykonaj n
 
 W przypadku wystąpienia błędów przesyłania topologii do usługi HDInsight można znaleźć dzienniki dla składników po stronie serwera, które obsługują przesyłanie topologii w klastrze HDInsight. Aby pobrać te dzienniki, użyj następującego polecenia w wierszu polecenia:
 
-```shell
+```cmd
 scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 
@@ -753,7 +749,7 @@ Aby uzyskać więcej informacji na temat C# tworzenia topologii, zobacz witrynę
 
 Aby uzyskać więcej metod pracy z usługą HDInsight i więcej informacji na temat przykładów usługi HDInsight, zobacz następujące dokumenty:
 
-**SCP.NET firmy Microsoft**
+**Microsoft SCP.NET**
 
 * [Przewodnik programowania SCP dla Apache Storm w usłudze Azure HDInsight](apache-storm-scp-programming-guide.md)
 

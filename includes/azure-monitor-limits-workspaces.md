@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 0f55f3ce4856e7b6eccf665faaa1b1fa45b84b58
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 49dc69eb73bd19509b5e14c5a4976cfa7208545a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392309"
 ---
 **Wolumin zbierania danych i ich przechowywanie** 
 
@@ -51,7 +51,7 @@ ms.locfileid: "72302333"
 
 | Kategoria | Limity | Komentarze |
 |:---|:---|:---|
-| Maksymalna liczba rekordów zwrócona w pojedynczym zapytaniu | 500 000 | |
+| Maksymalna liczba rekordów zwrócona w pojedynczym zapytaniu | 500,000 | |
 | Maksymalny rozmiar zwracanych danych | 64 000 000 bajtów (~ 61 MiB)| |
 | Maksymalny czas działania zapytania | 10 minut | Aby uzyskać szczegółowe informacje, zobacz [limity czasu](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
 | Maksymalna liczba żądań | 200 żądań w ciągu 30 sekund na użytkownika usługi AAD lub adres IP klienta | Aby uzyskać szczegółowe informacje, zobacz [limity szybkości](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
@@ -62,8 +62,7 @@ ms.locfileid: "72302333"
 |:---|:---|:---|
 | Maksymalna liczba kolumn w tabeli         | 500 | |
 | Maksymalna liczba znaków w nazwie kolumny | 500 | |
-| Regiony w pojemności | Zachodnio-środkowe stany USA | Obecnie nie można utworzyć nowego obszaru roboczego w tym regionie, ponieważ ma on tymczasowy limit pojemności. Ten limit jest planowany do rozróżnienia z końcem listopada, 2019. |
-| Eksport danych | obecnie niedostępne | Agreguj i Eksportuj dane przy użyciu funkcji platformy Azure lub aplikacji logiki. | 
+| Eksport danych | Obecnie niedostępne | Agreguj i Eksportuj dane przy użyciu funkcji platformy Azure lub aplikacji logiki. | 
 
 **Współczynnik ilości woluminu pozyskiwania danych**
 

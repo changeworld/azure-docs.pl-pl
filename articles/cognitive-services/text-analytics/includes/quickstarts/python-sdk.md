@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 6d4076563ac803c72f3749399bed6aaa235a0343
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7f113a9f1cc13278b7949570fec394ccee7f7437
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446283"
 ---
 <a name="HOLTop"></a>
 
@@ -42,11 +42,15 @@ Utwórz nowy plik w języku Python i zaimportuj następujące biblioteki.
 
 [!code-python[import statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-Utwórz zmienne dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Uzyskaj te wartości ze zmiennych środowiskowych TEXT_ANALYTICS_SUBSCRIPTION_KEY i TEXT_ANALYTICS_ENDPOINT. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych.
+Utwórz zmienne dla punktu końcowego platformy Azure i klucza subskrypcji zasobu.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-python[endpoint and key variables](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=initialVars)]
+```python
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
+```
+
 
 ## <a name="object-model"></a>Model obiektów
 
@@ -61,7 +65,7 @@ Obiekt Response jest listą zawierającą informacje o analizie dla każdego dok
 Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta analiza tekstu dla języka Python:
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
-* [analiza tonacji](#sentiment-analysis)
+* [Analiza tonacji](#sentiment-analysis)
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek](#entity-recognition)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)

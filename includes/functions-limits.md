@@ -4,19 +4,19 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322900"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75658529"
 ---
 | Zasób | [Plan zużycia](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plan Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [Plan App Service](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Skalowanie w poziomie | Sterowane zdarzeniami | Sterowane zdarzeniami | [Ręczne/automatyczne skalowanie](../articles/app-service/manage-scale-up.md) | 
 | Maksymalna liczba wystąpień | 200 | 100 | 10-20 |
-|Domyślny [czas trwania](../articles/azure-functions/functions-scale.md#timeout) (w min) |5 | 30 |30<sup>2</sup> |
-|Maksymalny czas [trwania](../articles/azure-functions/functions-scale.md#timeout) (w min) |10 | 60 | niepowiązane<sup>3</sup> |
+|Domyślny [limit czasu](../articles/azure-functions/functions-scale.md#timeout) (w min) |5 | 30 |30<sup>2</sup> |
+|Maksymalny [czas trwania](../articles/azure-functions/functions-scale.md#timeout) (w min) |10 | 60 | niepowiązane<sup>3</sup> |
 | Maksymalna liczba połączeń wychodzących (na wystąpienie) | 600 aktywne (łącznie 1200) | Unbounded | Unbounded |
 | Maksymalny rozmiar żądania (MB)<sup>4</sup> | 100 | 100 | 100 |
 | Maksymalna długość ciągu zapytania<sup>4</sup> | 4096 | 4096 | 4096 |
@@ -29,7 +29,7 @@ ms.locfileid: "74322900"
 | Domeny niestandardowe na</a> aplikacji |500<sup>7</sup> |500 |500 |
 | [Obsługa protokołu SSL](../articles/app-service/configure-ssl-bindings.md) domeny niestandardowej |uwzględniono niepowiązane połączenie SNI SSL | uwzględniono niepowiązane SNI SSL i 1 Połączenie SSL z adresu IP połączeń |uwzględniono niepowiązane SNI SSL i 1 Połączenie SSL z adresu IP połączeń | 
 
-<sup>1</sup> Aby uzyskać określone limity dla różnych opcji planu App Service, zobacz [limity App Service planu](../articles/azure-subscription-service-limits.md#app-service-limits).  
+<sup>1</sup> Aby uzyskać określone limity dla różnych opcji planu App Service, zobacz [limity App Service planu](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).  
 <sup>2</sup> domyślnie przekroczenie limitu czasu dla funkcji 1. x środowiska uruchomieniowego w planie App Service jest niepowiązane.  
 <sup>3</sup> wymaga, aby plan App Service był ustawiony na wartość [zawsze włączone](../articles/azure-functions/functions-scale.md#always-on). Płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/)standardowych.  
 <sup>4</sup> te limity są [ustawiane na hoście](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  

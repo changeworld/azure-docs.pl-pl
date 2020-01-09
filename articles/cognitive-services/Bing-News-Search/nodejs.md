@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wyszukiwanie wiadomości przy użyciu środowiska Node.js i interfejsu API REST wyszukiwania wiadomości Bing'
+title: 'Szybki Start: wykonywanie wyszukiwania wiadomości za pomocą środowiska Node. js — wyszukiwanie wiadomości Bing interfejsu API REST'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejsu API REST wyszukiwania wiadomości Bing przy użyciu środowiska Node.js i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423727"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383136"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu środowiska Node.js i interfejsu API REST wyszukiwania wiadomości Bing
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Szybki Start: wykonywanie wyszukiwania wiadomości za pomocą środowiska Node. js i interfejsu API REST wyszukiwanie wiadomości Bing
 
-Ten przewodnik Szybki start umożliwia tworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
 Ta aplikacja jest napisana w języku JavaScript i uruchamiana w środowisku Node.js, a interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
@@ -34,8 +34,6 @@ Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://githu
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
 1. Utwórz nowy plik JavaScript w swoim ulubionym środowisku IDE lub edytorze i ustaw wymagania dotyczące poziomu ścisłości oraz protokołu HTTPS.
@@ -45,7 +43,8 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
     let https = require('https');
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, ścieżki wyszukiwania interfejsu API obrazów, klucza subskrypcji i wyszukiwanego terminu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, ścieżki wyszukiwania interfejsu API obrazów, klucza subskrypcji i wyszukiwanego terminu. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu. 
+
     ```javascript
     let subscriptionKey = 'enter key here';
     let host = 'api.cognitive.microsoft.com';

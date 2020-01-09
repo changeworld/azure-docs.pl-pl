@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: aeac3b5ab1894e4392152ff255d582c338ceff18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972429"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527930"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Szybki Start: Azure Key Vaulta Biblioteka kliencka dla języka Python
 
@@ -64,7 +64,7 @@ az group create --name "myResourceGroup" -l "EastUS"
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
+### <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 Najprostszym sposobem uwierzytelniania aplikacji .NET opartej na chmurze jest tożsamość zarządzana; Aby uzyskać szczegółowe informacje [, zobacz używanie Azure Key Vault tożsamości zarządzanej App Service](managed-identity.md) . W tym przewodniku szybki start można jednak utworzyć aplikację konsolową platformy .NET. Uwierzytelnianie aplikacji klasycznej przy użyciu platformy Azure wymaga użycia nazwy głównej usługi i zasad kontroli dostępu.
 
@@ -142,7 +142,7 @@ Uwierzytelnianie w magazynie kluczy i tworzenie klienta magazynu kluczy zależy 
 ```python
 credential = DefaultAzureCredential()
 
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 ```
 
 ### <a name="save-a-secret"></a>Zapisz klucz tajny
@@ -150,7 +150,7 @@ client = SecretClient(vault_endpoint=KVUri, credential=credential)
 Teraz, gdy aplikacja jest uwierzytelniana, możesz umieścić klucz tajny w magazynie kluczy przy użyciu klienta. Setsecret — Metoda] (/dotnet/API/Microsoft.Azure.keyvault.keyvaultclientextensions.setsecretasync) to wymaga nazwy wpisu tajnego — w tym przykładzie jest używana wartość "My Secret".  
 
 ```python
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 ```
 
 Można sprawdzić, czy wpis tajny został ustawiony za pomocą polecenia [AZ The Secret show klucza tajnego](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
@@ -174,7 +174,7 @@ Wpis tajny jest teraz zapisywany jako `retrieved_secret.value`.
 Na koniec Usuń wpis tajny z magazynu kluczy z [klientem programu. DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
 ```python
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 ```
 
 Możesz sprawdzić, czy klucz tajny został usunięty za pomocą polecenia [AZ The Secret show klucza tajnego](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
@@ -203,37 +203,37 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-keyVaultName = os.environ["KEY_VAULT_NAME"];
-KVUri = "https://" + keyVaultName + ".vault.azure.net";
+keyVaultName = os.environ["KEY_VAULT_NAME"]
+KVUri = "https://" + keyVaultName + ".vault.azure.net"
 
 credential = DefaultAzureCredential()
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 
-secretName = "mySecret";
+secretName = "mySecret"
 
-print("Input the value of your secret > ");
-secretValue = raw_input();
+print("Input the value of your secret > ")
+secretValue = raw_input()
 
-print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...")
 
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 
-print(" done.");
+print(" done.")
 
-print("Forgetting your secret.");
-secretValue = "";
-print("Your secret is '" + secretValue + "'.");
+print("Forgetting your secret.")
+secretValue = ""
+print("Your secret is '" + secretValue + "'.")
 
-print("Retrieving your secret from " + keyVaultName + ".");
+print("Retrieving your secret from " + keyVaultName + ".")
 
 retrieved_secret = client.get_secret(secretName)
 
-print("Your secret is '" + retrieved_secret.value + "'.");
-print("Deleting your secret from " + keyVaultName + " ...");
+print("Your secret is '" + retrieved_secret.value + "'.")
+print("Deleting your secret from " + keyVaultName + " ...")
 
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 
-print(" done.");
+print(" done.")
 ```
 
 ## <a name="next-steps"></a>Następne kroki

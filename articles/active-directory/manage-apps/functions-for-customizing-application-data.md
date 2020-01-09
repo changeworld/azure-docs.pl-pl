@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a346b264afc23e21ccf3e6d5dbf7a8f5d96518d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93b8387d4453a3d83bcce55c739548d914545f2f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430066"
 ---
-# <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
+# <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń na potrzeby mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
 
 ## <a name="syntax-overview"></a>Omówienie składni
@@ -29,7 +29,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 
 * Całe wyrażenie musi być zdefiniowany w zakresie funkcji, które składają się z nazwy argumentów w nawiasach: <br>
   *FunctionName (`<<argument 1>>`,`<<argument N>>`)*
-* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Na przykład: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Przykład: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Trzy różne rodzaje argumenty można przekazać do funkcji:
   
   1. Atrybuty, które muszą być ujęte w nawiasy kwadratowe. Na przykład: [attributeName]
@@ -38,7 +38,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 * Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Na przykład: "Nazwa firmy: \\" contoso\\""
 
 ## <a name="list-of-functions"></a>Lista funkcji
-[Dołącz](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Dołącz](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;[&nbsp;&nbsp; &nbsp;](#replace) &nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [](#not) [&nbsp;&nbsp;](#selectuniquevalue) &nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [przełącznik](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -52,6 +52,134 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **suffix** |Wymagane |Ciąg |Ciąg, który chcesz dołączyć do końca wartość źródła. |
+
+---
+### <a name="bitand"></a>BitAnd
+**Funkcja:**<br> BitAnd (wartość1, wartość2)
+
+**Opis:**<br> Ta funkcja konwertuje oba parametry na reprezentację binarną i ustawia bit na:
+
+0 — Jeśli jedna lub obie odpowiadające bity w wartość1 i wartość2 są równe 0                                                  
+1 — Jeśli obie odpowiadające bity są 1.                                    
+
+Innymi słowy zwraca 0 we wszystkich przypadkach, z wyjątkiem sytuacji, gdy odpowiadające im bity obu parametrów są 1.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **sekwencj** |Wymagane |num |Wartość liczbowa, która powinna być AND'ed z wartość2|
+| **value2** |Wymagane |num |Wartość liczbowa, która powinna być AND'ed z wartość1|
+
+**Przykład:**<br>
+BitAnd (& HF, & HF7)                                                                                
+11110111 i 00000111 = 00000111, tak aby BitAnd zwracała 7, wartość binarną 00000111
+
+---
+### <a name="cbool"></a>CBool
+**Funkcja:**<br> CBool (wyrażenie)
+
+**Opis:**<br> CBool zwraca wartość logiczną opartą na obliczonym wyrażeniu. Jeśli wyrażenie zwróci wartość różną od zera, Funkcja CBool zwraca wartość true, w przeciwnym razie zwraca wartość false..
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **expression** |Wymagane | expression | Dowolne prawidłowe wyrażenie |
+
+**Przykład:**<br>
+CBool ([Attribute1] = [attribute2])                                                                    
+Zwraca wartość true, jeśli oba atrybuty mają tę samą wartość.
+
+---
+### <a name="coalesce"></a>Coalesce
+**Funkcja:**<br> Połączenie (source1, SOURCE2,..., DefaultValue)
+
+**Opis:**<br> Zwraca pierwszą wartość źródłową, która nie jest RÓWNa NULL. Jeśli wszystkie argumenty mają wartość NULL, a właściwość DefaultValue jest obecna, zostanie zwrócona wartość DefaultValue. Jeśli wszystkie argumenty mają wartość NULL i właściwość DefaultValue nie istnieje, funkcja łączenia zwraca wartość NULL.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **źródło1... źródłoN** | Wymagane | Ciąg |Wymagana, zmienna liczba razy. Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
+| **defaultValue** | Opcjonalne | Ciąg | Wartość domyślna, która ma być używana, jeśli wszystkie wartości źródłowe mają wartość NULL. Może być pustym ciągiem ("").
+
+---
+### <a name="converttobase64"></a>ConvertToBase64
+**Funkcja:**<br> ConvertToBase64 (Źródło)
+
+**Opis:**<br> Funkcja ConvertToBase64 konwertuje ciąg na ciąg Unicode Base64.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **source** |Wymagane |Ciąg |Ciąg do przekonwertowania na podstawowy 64|
+
+**Przykład:**<br>
+ConvertToBase64 ("Witaj świecie!")                                                                                                        
+Zwraca wartość "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
+
+---
+### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
+**Funkcja:**<br> ConvertToUTF8Hex (Źródło)
+
+**Opis:**<br> Funkcja ConvertToUTF8Hex konwertuje ciąg na zakodowaną wartość szesnastkową UTF8.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **source** |Wymagane |Ciąg |Ciąg, który ma zostać przekonwertowany na kodowanie szesnastkowe|
+
+**Przykład:**<br>
+ConvertToUTF8Hex ("Witaj świecie!")                                                                                                         
+Zwraca 48656C6C6F20776F726C6421
+
+---
+### <a name="count"></a>Liczba
+**Funkcja:**<br> Count (atrybut)
+
+**Opis:**<br> Funkcja count zwraca liczbę elementów w atrybucie wielowartościowym
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **attribute** |Wymagane |— atrybut |Wielowartościowy atrybut, który będzie miał zliczane elementy|
+
+---
+### <a name="cstr"></a>CStr
+**Funkcja:**<br> CStr (wartość)
+
+**Opis:**<br> Funkcja CStr konwertuje wartość na typ danych ciągu.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **value** |Wymagane | liczbowe, odwołanie lub wartość logiczna | Może być wartością liczbową, atrybutem odwołania lub wartością logiczną. |
+
+**Przykład:**<br>
+CStr ([DN])                                                            
+Zwraca wartość "CN = Jan, DC = contoso, DC = com"
+
+---
+### <a name="datefromnum"></a>DateFromNum
+**Funkcja:**<br> DateFromNum (wartość)
+
+**Opis:**<br> Funkcja DateFromNum konwertuje wartość w formacie daty usługi AD na typ DateTime.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **value** |Wymagane | Data | Data usługi AD do przekonwertowania na typ DateTime |
+
+**Przykład:**<br>
+DateFromNum([lastLogonTimestamp])                                                                                                   
+DateFromNum(129699324000000000)                                                            
+Zwraca datę i godzinę reprezentującą 2012-01-01 23:00:00
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -68,6 +196,110 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 | **outputFormat** |Wymagane |Ciąg |Format wyjściowej daty. |
 
 ---
+### <a name="guid"></a>Identyfikator GUID
+**Funkcja:**<br> Identyfikator GUID ()
+
+**Opis:**<br> Identyfikator GUID funkcji generuje nowy losowy identyfikator GUID
+
+---
+### <a name="instr"></a>InStr
+**Funkcja:**<br> InStr (wartość1, wartość2, początek, comparetype)
+
+**Opis:**<br> Funkcja InStr Znajdowanie pierwszego wystąpienia podciągu w ciągu
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **sekwencj** |Wymagane |Ciąg |Ciąg do przeszukania |
+| **value2** |Wymagane |Ciąg |Ciąg, który ma zostać znaleziony |
+| **start** |Opcjonalne |Liczba całkowita |Pozycja początkowa do znalezienia podciągu|
+| **comparetype** |Opcjonalne |Wyliczenie |Może być vbTextCompare lub vbBinaryCompare |
+
+**Przykład:**<br>
+InStr ("Quick brązowy Fox", "Quick")                                                                             
+Evalues do 5
+
+InStr ("powtórzone", "e", 3, vbBinaryCompare)                                                                                  
+Szacuje się w 7
+
+---
+### <a name="isnull"></a>IsNull
+**Funkcja:**<br> IsNull (wyrażenie)
+
+**Opis:**<br> Jeśli wyrażenie daje w wyniku wartość null, Funkcja IsNull zwraca wartość true. W przypadku atrybutu wartość null jest wyrażana przez nieobecność atrybutu.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **expression** |Wymagane |expression |Wyrażenie, które ma zostać obliczone |
+
+**Przykład:**<br>
+IsNull ([displayName])                                                                                                
+Zwraca wartość true, jeśli atrybut nie jest obecny
+
+---
+### <a name="isnullorempty"></a>IsNullorEmpty
+**Funkcja:**<br> IsNullOrEmpty (wyrażenie)
+
+**Opis:**<br> Jeśli wyrażenie ma wartość null lub jest pustym ciągiem, funkcja IsNullOrEmpty zwraca wartość true. W przypadku atrybutu wynikiem tego jest wartość true, jeśli atrybut jest nieobecny lub jest obecny, ale jest ciągiem pustym.
+Odwrotność tej funkcji ma nazwę isobecne.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **expression** |Wymagane |expression |Wyrażenie, które ma zostać obliczone |
+
+**Przykład:**<br>
+IsNullOrEmpty ([displayName])                                               
+Zwraca wartość true, jeśli atrybut nie jest obecny lub jest ciągiem pustym
+
+---
+### <a name="ispresent"></a>Isobecne
+**Funkcja:**<br> IsNullOrEmpty (wyrażenie)
+
+**Opis:**<br> Jeśli wyrażenie daje w wyniku ciąg, który nie ma wartości null i nie jest pusty, funkcja isprezent zwraca wartość true. Odwrotność tej funkcji ma nazwę IsNullOrEmpty.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **expression** |Wymagane |expression |Wyrażenie, które ma zostać obliczone |
+
+**Przykład:**<br>
+Przełącznik (isobecny ([directmanager]), [directmanager], isobecny ([skiplevelManager]), [skiplevelManager], isobecny ([dyrektor]), [dyrektor])
+
+---
+### <a name="isstring"></a>IsString
+**Funkcja:**<br> IsString (wyrażenie)
+
+**Opis:**<br> Jeśli wyrażenie może być szacowane do typu ciągu, funkcja IsString daje w wyniku wartość true.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **expression** |Wymagane |expression |Wyrażenie, które ma zostać obliczone |
+
+---
+### <a name="item"></a>Element
+**Funkcja:**<br> Element (atrybut, indeks)
+
+**Opis:**<br> Funkcja Item zwraca jeden element z wielowartościowego ciągu/atrybutu.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **attribute** |Wymagane |Atrybut |Wielowartościowy atrybut do przeszukania |
+| **index** |Wymagane |Liczba całkowita | Indeksuj do elementu w ciągu wielowartościowym|
+
+**Przykład:**<br>
+Element ([proxyAddresses], 1)
+
+---
 ### <a name="join"></a>Join
 **Funkcja:**<br> Dołącz do (separator, źródło1 źródło2...)
 
@@ -81,6 +313,26 @@ Jeśli jedna z wartości źródłowych jest atrybutem wielowartościowym, każda
 | --- | --- | --- | --- |
 | **Separator** |Wymagane |Ciąg |Ciąg używany do oddzielania wartości źródła, gdy są one połączone w jeden ciąg. Może być "" Jeśli separator nie jest wymagana. |
 | **źródło1... źródłoN** |Wymagana zmienna — liczba razy |Ciąg |Ciąg wartości, które mają zostać połączone ze sobą. |
+
+---
+### <a name="left"></a>W lewo
+**Funkcja:**<br> Left (ciąg, NumChars)
+
+**Opis:**<br> Funkcja Left Zwraca określoną liczbę znaków z lewej strony ciągu. Jeśli numChars = 0, zwraca pusty ciąg.
+Jeśli numChars < 0, zwracany ciąg wejściowy.
+Jeśli ciąg ma wartość null, zwracany jest pusty ciąg.
+Jeśli ciąg zawiera mniej znaków niż liczba określona w numChars, zwracany jest ciąg identyczny jak ciąg (czyli zawierający wszystkie znaki w parametrze 1).
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **Ciąg** |Wymagane |Atrybut | Ciąg, z którego mają zostać zwrócone znaki |
+| **NumChars** |Wymagane |Liczba całkowita | Liczba określająca liczbę znaków do zwrócenia od początku (po lewej) ciągu|
+
+**Przykład:**<br>
+Left ("Jan Nowak", 3)                                                            
+Zwraca wartość "Joh"
 
 ---
 ### <a name="mid"></a>MID
@@ -119,6 +371,22 @@ Jeśli jedna z wartości źródłowych jest atrybutem wielowartościowym, każda
 | Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
 | **source** |Wymagane |Wartości logicznych |Oczekiwane wartości **źródłowe** to "true" lub "false". |
+
+---
+### <a name="removeduplicates"></a>RemoveDuplicates —
+**Funkcja:**<br> RemoveDuplicates — (atrybut)
+
+**Opis:**<br> Funkcja RemoveDuplicates — przyjmuje ciąg o wartości wielowartościowej i upewnij się, że każda wartość jest unikatowa.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **attribute** |Wymagane |Wielowartościowy atrybut |Atrybut wielowartościowy, który zostanie usunięty duplikaty|
+
+**Przykład:**<br>
+RemoveDuplicates — ([proxyAddresses])                                                                                                       
+Zwraca oczyszczony atrybut proxyAddress, w którym usunięto wszystkie zduplikowane wartości
 
 ---
 ### <a name="replace"></a>Replace
@@ -229,7 +497,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **value** |Wymagane |Ciąg |Wartość zastąpienia dla **źródła** pasujący do klucza. |
 
 ---
-### <a name="tolower"></a>ToLower
+### <a name="tolower"></a>toLower
 **Funkcja:**<br> ToLower (Źródło, kultura)
 
 **Opis:**<br> Pobiera wartość ciągu *źródłowego* i konwertuje ją na małe litery przy użyciu określonych reguł kultury. Jeśli nie określono informacji o *kulturze* , będzie ona używać niezmiennej kultury.
@@ -253,6 +521,33 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | --- | --- | --- | --- |
 | **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **dziedzinie** |Opcjonalne |Ciąg |Format nazwy kultury opartej na dokumencie RFC 4646 to *languagecode2-Country/regioncode2*, gdzie *languagecode2* to kod języka dwuliterowego i *kraj/regioncode2* to kod podkultury dwuliterowej. Przykłady obejmują ja-JP dla języka japońskiego (Japonia) i EN-US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowego nie jest dostępny, używany jest trzyliterowy kod pochodzący z normy ISO 639-2.|
+
+---
+### <a name="word"></a>Word
+**Funkcja:**<br> Słowo (String, WordNumber, ograniczniki)
+
+**Opis:**<br> Funkcja słowa zwraca słowo zawarte w ciągu, w oparciu o parametry opisujące ograniczniki do użycia i numer wyrazu do zwrócenia. Każdy ciąg znaków w ciągu rozdzielony przez jeden ze znaków w ogranicznikach jest identyfikowany jako wyrazy:
+
+Jeśli liczba < 1, zwraca pusty ciąg.
+Jeśli ciąg ma wartość null, zwraca pusty ciąg.
+Jeśli ciąg zawiera mniej niż liczbowe słowa lub ciąg nie zawiera słów identyfikowanych przez ograniczniki, zwracany jest pusty ciąg.
+
+**Parametry:**<br> 
+
+| Nazwa | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **Ciąg** |Wymagane |Wielowartościowy atrybut |Ciąg, z którego ma zostać zwrócony wyraz.|
+| **WordNumber** |Wymagane | Liczba całkowita | Numer identyfikacyjny, który ma zwracać numer wyrazu|
+| **Ograniczniki** |Wymagane |Ciąg| Ciąg reprezentujący ograniczniki, które powinny być używane do identyfikowania wyrazów|
+
+**Przykład:**<br>
+Word ("Quick Brown Fox", 3, "")                                                                                       
+Zwraca "brązowy"
+
+Słowo ("this, String! & wiele separatorów", 3, ",! & #")                                                                       
+Zwraca "ma"
+
+---
 
 ## <a name="examples"></a>Przykłady
 ### <a name="strip-known-domain-name"></a>Nazwa domeny znanych paska
@@ -379,6 +674,18 @@ Oparte na użytkownika imię, drugie imię i nazwisko, należy do generowania wa
 * **Dane wyjściowe**: "John.Smith@contoso.com" Jeśli wartość nazwy UPN John.Smith@contoso.com jeszcze nie istnieje w katalogu
 * **Dane wyjściowe**: "J.Smith@contoso.com" Jeśli wartość nazwy UPN John.Smith@contoso.com już istnieje w katalogu
 * **Dane wyjściowe**: "Jo.Smith@contoso.com" Jeśli powyższe dwie wartości nazwy UPN już istnieje w katalogu
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>Wartość poczty w przepływie, jeśli nie ma wartości NULL, w przeciwnym wypadku Flow
+Jeśli ten atrybut jest obecny, należy go przepływać. Jeśli tak nie jest, chcesz zamiast tego przepływać wartość userPrincipalName.
+
+**Wyrażenie:** <br>
+`Coalesce([mail],[userPrincipalName])`
+
+**Przykładowe dane wejściowe/wyjściowe:** <br>
+
+* **Dane wejściowe** (poczta): null
+* **Dane wejściowe** (userPrincipalName): "John.Doe@contoso.com"
+* **DANE WYJŚCIOWE**: "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>Powiązane artykuły
 * [Automatyzowanie użytkownika aprowizacji/Deprovisioning do aplikacji SaaS](user-provisioning.md)

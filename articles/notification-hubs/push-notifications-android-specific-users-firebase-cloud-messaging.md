@@ -1,5 +1,5 @@
 ---
-title: Wysyłanie powiadomień wypychanych do określonych aplikacji systemu Android przy użyciu usługi Azure Notification Hubs | Microsoft Docs
+title: Wysyłanie powiadomień wypychanych do określonych aplikacji systemu Android przy użyciu usługi Azure Notification Hubs
 description: Dowiedz się, jak wysyłać powiadomienia push do konkretnych użytkowników przy użyciu usługi Azure Notification Hubs.
 documentationcenter: android
 services: notification-hubs
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 5bd709236667dd43e623047ad995b0a7b981e9cb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387424"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531126"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień wypychanych do określonych aplikacji systemu Android przy użyciu usługi Azure Notification Hubs
 
@@ -261,7 +261,7 @@ Następnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w [
     ```
 
     Ten składnik implementuje wywołania REST wymagane do skontaktowania się z zapleczem aplikacji w celu zarejestrowania powiadomień wypychanych. Ponadto zapisuje lokalnie identyfikatory *registrationId* utworzone przez centrum powiadomień zgodnie z opisem w sekcji [Rejestrowanie z poziomu zaplecza aplikacji](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend). Używa tokenu autoryzacji przechowywanego w magazynie lokalnym po kliknięciu przycisku **Zaloguj** .
-4. W klasie `MainActivity` i Dodaj pole dla klasy `RegisterClient` i ciąg dla punktu końcowego zaplecza ASP.NET. Pamiętaj, aby zastąpić ciąg `<Enter Your Backend Endpoint>` wcześniej pozyskanym, faktycznym punktem końcowym zaplecza. Na przykład `http://mybackend.azurewebsites.net`.
+4. W klasie `MainActivity` i Dodaj pole dla klasy `RegisterClient` i ciąg dla punktu końcowego zaplecza usługi ASP.NET. Pamiętaj, aby zastąpić ciąg `<Enter Your Backend Endpoint>` wcześniej pozyskanym, faktycznym punktem końcowym zaplecza. Na przykład `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -412,7 +412,7 @@ Następnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w [
     }
     ```
 
-    Procedura obsługi `login` dla przycisku **Zaloguj** generuje podstawowy token uwierzytelniania przy użyciu nazwy użytkownika i hasła (reprezentuje dowolny token używany przez schemat uwierzytelniania), a następnie używa `RegisterClient` do wywołania zaplecza do rejestracji.
+    Procedura obsługi `login` dla przycisku **Zaloguj** spowoduje wygenerowanie podstawowego tokenu uwierzytelniania przy użyciu nazwy użytkownika i hasła wejściowego (reprezentuje dowolny token używany przez schemat uwierzytelniania), a następnie używa `RegisterClient` do wywołania zaplecza do rejestracji.
 
     Metoda `sendPush` wywołuje zaplecze, aby wyzwolić bezpieczne powiadomienie do użytkownika w oparciu o tag użytkownika. Docelowa usługa powiadomień platformy dla metody `sendPush` zależy od przekazanego ciągu `pns`.
 
@@ -472,7 +472,7 @@ Następnym krokiem jest zaktualizowanie aplikacji systemu Android utworzonej w [
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Jeśli aplikacja jest ukierunkowana na poziom interfejsu API 28 (Android 9,0) lub nowszego, należy uwzględnić następującą deklarację w ramach elementu `<application>` `AndroidManifest.xml`.
+13. Jeśli aplikacja jest ukierunkowana na poziom interfejsu API 28 (Android 9,0) lub nowszego, Uwzględnij następującą deklarację w ramach `<application>` elementu `AndroidManifest.xml`.
 
     ```xml
     <uses-library

@@ -1,16 +1,16 @@
 ---
-title: Włącz autokopię zapasową przy tworzeniu maszyny wirtualnej za pomocą Azure Policy
+title: Automatyczne włączanie kopii zapasowych podczas tworzenia maszyny wirtualnej za pomocą usługi Azure Policy
 description: Artykuł opisujący sposób użycia Azure Policy do samodzielnego włączania kopii zapasowych dla wszystkich maszyn wirtualnych utworzonych w danym zakresie
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450134"
 ---
-# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Włącz autokopię zapasową przy tworzeniu maszyny wirtualnej za pomocą Azure Policy
+# <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatyczne włączanie kopii zapasowych podczas tworzenia maszyny wirtualnej za pomocą usługi Azure Policy
 
 Jednym z kluczowych obowiązków administratora kopii zapasowej i zgodności w organizacji jest upewnienie się, że kopie zapasowe wszystkich maszyn o krytycznym znaczeniu dla firmy zostały uwzględnione w odpowiednim przechowywaniu.
 
@@ -25,6 +25,8 @@ Obecnie Azure Backup udostępnia wbudowane zasady (przy użyciu Azure Policy), k
 * Określony magazyn i maszyny wirtualne skonfigurowane do tworzenia kopii zapasowych mogą znajdować się w różnych grupach zasobów.
 
 * Zakres grupy zarządzania nie jest obecnie obsługiwany.
+
+* Wbudowane zasady nie są obecnie dostępne w chmurach krajowych.
 
 ## <a name="using-the-built-in-policy"></a>Korzystanie z zasad wbudowanych
 

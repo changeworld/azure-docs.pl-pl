@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687076"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680889"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Omówienie lokalnej pamięci podręcznej Azure App Service
 
@@ -36,7 +36,7 @@ Funkcja lokalnej pamięci podręcznej Azure App Service udostępnia widok roli s
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Jak lokalna pamięć podręczna zmienia zachowanie App Service
 * _D:\home_ wskazuje lokalną pamięć podręczną, która jest tworzona w wystąpieniu maszyny wirtualnej podczas uruchamiania aplikacji. _D:\Local_ nadal wskazuje na tymczasowy magazyn specyficzny dla maszyny wirtualnej.
-* Lokalna pamięć podręczna zawiera jednorazową kopię folderów _/Konfiguracja_ i _/siteextensions_ magazynu zawartości udostępnionej odpowiednio w _D:\home\site_ i _D:\home\siteextensions_. Pliki są kopiowane do lokalnej pamięci podręcznej podczas uruchamiania aplikacji. Rozmiar dwóch folderów dla każdej aplikacji jest domyślnie ograniczony do 300 MB, ale można go zwiększyć do 2 GB.
+* Lokalna pamięć podręczna zawiera jednorazową kopię folderów _/Konfiguracja_ i _/siteextensions_ magazynu zawartości udostępnionej odpowiednio w _D:\home\site_ i _D:\home\siteextensions_. Pliki są kopiowane do lokalnej pamięci podręcznej podczas uruchamiania aplikacji. Rozmiar dwóch folderów dla każdej aplikacji jest domyślnie ograniczony do 300 MB, ale można go zwiększyć do 2 GB. Jeśli skopiowane pliki przekroczą rozmiar lokalnej pamięci podręcznej, App Service dyskretnie ignoruje lokalną pamięć podręczną i odczytuje ze zdalnego udziału plików.
 * Lokalna pamięć podręczna to odczyt i zapis. Jednak jakakolwiek modyfikacja zostanie odrzucona, gdy aplikacja przenosi maszyny wirtualne lub zostanie uruchomiona ponownie. Nie należy używać lokalnej pamięci podręcznej dla aplikacji, które przechowują dane o kluczowym znaczeniu w magazynie zawartości.
 * _D:\home\LogFiles_ i _D:\home\Data_ zawierają pliki dziennika i dane aplikacji. Dwa podfoldery są przechowywane lokalnie w wystąpieniu maszyny wirtualnej i są kopiowane do magazynu zawartości udostępnionej okresowo. Aplikacje mogą utrwalać pliki i dane dziennika, pisząc je w tych folderach. Kopiowanie do magazynu zawartości udostępnionej jest jednak najlepszym rozwiązaniem, więc możliwe jest utratę plików dziennika i danych z powodu nagłej awarii wystąpienia maszyny wirtualnej.
 * Jest to wpływ na [przesyłanie strumieniowe dzienników](troubleshoot-diagnostic-logs.md#stream-logs) . W dziennikach przesyłanych strumieniowo można obserwować maksymalnie jedną minutę.
@@ -83,7 +83,7 @@ Lokalna pamięć podręczna jest włączana na podstawie aplikacji dla sieci Web
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Zmień ustawienie rozmiaru w lokalnej pamięci podręcznej
-Domyślnie rozmiar lokalnej pamięci podręcznej wynosi **1 GB**. Obejmuje to foldery/konfiguracja i/siteextensions, które są kopiowane z magazynu zawartości, a także wszystkie utworzone lokalnie dzienniki i foldery danych. Aby zwiększyć ten limit, użyj ustawienia aplikacji `WEBSITE_LOCAL_CACHE_SIZEINMB`. Można zwiększyć rozmiar do **2 GB** (2000 MB) na aplikację.
+Domyślnie rozmiar lokalnej pamięci podręcznej to **300 MB**. Obejmuje to foldery/konfiguracja i/siteextensions, które są kopiowane z magazynu zawartości, a także wszystkie utworzone lokalnie dzienniki i foldery danych. Aby zwiększyć ten limit, użyj ustawienia aplikacji `WEBSITE_LOCAL_CACHE_SIZEINMB`. Można zwiększyć rozmiar do **2 GB** (2000 MB) na aplikację.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Najlepsze rozwiązania dotyczące korzystania z App Service lokalnej pamięci podręcznej
 Zalecamy używanie lokalnej pamięci podręcznej w połączeniu z funkcją [środowisk przejściowych](../app-service/deploy-staging-slots.md) .

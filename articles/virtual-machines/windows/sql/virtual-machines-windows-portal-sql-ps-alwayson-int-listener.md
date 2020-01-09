@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037455"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647887"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden odbiornik grupy dostępności — Menedżer zasobów
 W tym temacie pokazano, jak:
@@ -68,7 +68,7 @@ W przykładach w tym artykule określono moduł równoważenia obciążenia w wa
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Aby utworzyć podstawowy moduł równoważenia obciążenia, Usuń `-sku Standard` z wiersza, który tworzy moduł równoważenia obciążenia. Na przykład:
+Aby utworzyć podstawowy moduł równoważenia obciążenia, Usuń `-sku Standard` z wiersza, który tworzy moduł równoważenia obciążenia. Przykład:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
@@ -137,7 +137,7 @@ Port frontonu to port używany przez aplikacje do łączenia się z wystąpienie
 > [!NOTE]
 > W przypadku grup dostępności SQL Server każdy adres IP wymaga określonego portu sondowania. Na przykład jeśli jeden adres IP w module równoważenia obciążenia używa portu sondy 59999, żadne inne adresy IP w tym module równoważenia obciążenia nie mogą korzystać z portu sondy 59999.
 
-* Aby uzyskać informacje na temat limitów modułu równoważenia obciążenia, zobacz **prywatny adres IP frontonu dla modułu równoważenia obciążenia** w obszarze [limity sieciowe — Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+* Aby uzyskać informacje na temat limitów modułu równoważenia obciążenia, zobacz **prywatny adres IP frontonu dla modułu równoważenia obciążenia** w obszarze [limity sieciowe — Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 * Aby uzyskać informacje na temat limitów grup dostępności, zobacz [ograniczenia (grupy dostępności)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 Poniższy skrypt dodaje nowy adres IP do istniejącego modułu równoważenia obciążenia. ILB używa portu odbiornika dla portu frontonu równoważenia obciążenia. Port ten może być portem, na którym nasłuchuje SQL Server. Dla domyślnych wystąpień SQL Server Port to 1433. Reguła równoważenia obciążenia dla grupy dostępności wymaga swobodnego adresu IP (bezpośredni zwrot serwera), dlatego port zaplecza jest taki sam jak port frontonu. Aktualizowanie zmiennych dla środowiska. 

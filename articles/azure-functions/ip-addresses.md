@@ -3,12 +3,12 @@ title: Adresy IP w Azure Functions
 description: Dowiedz się, jak znaleźć przychodzące i wychodzące adresy IP dla aplikacji funkcji i co powoduje ich zmianę.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230341"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612891"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Adresy IP w Azure Functions
 
@@ -25,9 +25,9 @@ Adresy IP są skojarzone z aplikacjami funkcji, a nie z poszczególnymi funkcjam
 
 Każda aplikacja funkcji ma jeden adres IP ruchu przychodzącego. Aby znaleźć ten adres IP:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Przejdź do aplikacji funkcji.
-3. Wybierz **funkcje platformy**.
+3. Wybierz pozycję **Funkcje platformy**.
 4. Wybierz **Właściwości**, a adres IP ruchu przychodzącego jest wyświetlany w obszarze **wirtualny adres IP**.
 
 ## <a name="find-outbound-ip-addresses"></a>Wychodzące adresy IP aplikacji funkcji
@@ -86,9 +86,9 @@ Adres IP ruchu przychodzącego **może** ulec zmianie, gdy:
 
 - Usuń aplikację funkcji i utwórz ją ponownie w innej grupie zasobów.
 - Usuń ostatnią aplikację funkcji w kombinacji grupy zasobów i regionu i utwórz ją ponownie.
-- Usuwanie powiązania SSL, na przykład podczas [odnawiania certyfikatu](../app-service/configure-ssl-certificate.md#renew-certificate)).
+- Usuń powiązanie SSL, takie jak podczas [odnawiania certyfikatu](../app-service/configure-ssl-certificate.md#renew-certificate).
 
-Gdy aplikacja funkcji zostanie uruchomiona w [planie zużycia](functions-scale.md#consumption-plan), adres IP ruchu przychodzącego może ulec zmianie, gdy nie wykonano żadnych akcji, takich jak wymienione na liście.
+Gdy aplikacja funkcji jest uruchamiana w [planie zużycia](functions-scale.md#consumption-plan), adres IP ruchu przychodzącego również może ulec zmianie nawet wtedy, gdy nie wykonano żadnych akcji, takich jak [wymienione powyżej](#inbound-ip-address-changes).
 
 ## <a name="outbound-ip-address-changes"></a>Zmiany wychodzącego adresu IP
 
@@ -97,7 +97,7 @@ Zestaw dostępnych wychodzących adresów IP dla aplikacji funkcji może ulec zm
 * Wykonaj wszelkie akcje, które mogą zmienić przychodzące adresy IP.
 * Zmień warstwę cenową planu App Service. Lista wszystkich możliwych wychodzących adresów IP, które mogą być używane przez aplikację dla wszystkich warstw cenowych, znajduje się we właściwości `possibleOutboundIPAddresses`. Zobacz [Znajdź wychodzące adresy IP](#find-outbound-ip-addresses).
 
-Po uruchomieniu aplikacji funkcji w [planie zużycia](functions-scale.md#consumption-plan)wychodzący adres IP może ulec zmianie, gdy nie wykonano żadnych akcji, takich jak wymienione na liście.
+Po uruchomieniu aplikacji funkcji w [planie zużycia](functions-scale.md#consumption-plan)wychodzący adres IP może ulec zmianie nawet wtedy, gdy nie wykonano żadnych akcji, takich jak [wymienione powyżej](#inbound-ip-address-changes).
 
 Aby celowo wymusić zmianę wychodzącego adresu IP:
 
@@ -105,7 +105,7 @@ Aby celowo wymusić zmianę wychodzącego adresu IP:
 2. Odczekaj 10 minut.
 3. Skaluj z powrotem do miejsca, w którym rozpoczęto pracę.
 
-## <a name="ip-address-restrictions"></a>Ograniczenia adresów IP
+## <a name="ip-address-restrictions"></a>ograniczenia adresów IP
 
 Można skonfigurować listę adresów IP, dla których chcesz zezwolić na dostęp lub odmówić dostępu do aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [Azure App Service ograniczeń statycznych adresów IP](../app-service/app-service-ip-restrictions.md).
 
@@ -115,9 +115,9 @@ Jeśli potrzebujesz statycznych, dedykowanych adresów IP, zalecamy [App Service
 
 Aby dowiedzieć się, czy aplikacja funkcji działa w App Service Environment:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Przejdź do aplikacji funkcji.
-3. Wybierz kartę **Przegląd** .
+3. Wybierz kartę **Omówienie**.
 4. Warstwa planu App Service zostanie wyświetlona w obszarze **App Service planu/warstwy cenowej**. Warstwa cenowa App Service Environment jest **izolowana**.
  
 Alternatywnie można użyć [Cloud Shell](../cloud-shell/quickstart.md):

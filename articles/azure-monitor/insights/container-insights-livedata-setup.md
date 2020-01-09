@@ -1,24 +1,14 @@
 ---
 title: Azure Monitor Instalatora dla kontenerów dane dynamiczne (wersja zapoznawcza) | Microsoft Docs
 description: W tym artykule opisano sposób konfigurowania widoku w czasie rzeczywistym dzienników kontenerów (stdout/stderr) i zdarzeń bez używania polecenia kubectl z Azure Monitor dla kontenerów.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404698"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Jak skonfigurować funkcję Live Data (wersja zapoznawcza)
 
@@ -26,8 +16,8 @@ Aby wyświetlić dane na żywo (wersja zapoznawcza) przy użyciu Azure Monitor k
 
 Ta funkcja obsługuje trzy różne metody kontroli dostępu do dzienników, zdarzeń i metryk:
 
-- AKS bez włączonej autoryzacji RBAC Kubernetes
-- AKS włączone z autoryzacją RBAC Kubernetes
+- AKS, bez autoryzacji Kubernetes RBAC włączone
+- Włączone z autoryzacji RBAC platformy Kubernetes w usłudze AKS
 - AKS włączone z logowaniem jednokrotnym opartym na protokole SAML Azure Active Directory (AD)
 
 Te instrukcje wymagają zarówno dostępu administracyjnego do klastra Kubernetes, jak i w przypadku konfigurowania do korzystania z Azure Active Directory (AD) do uwierzytelniania użytkowników, dostępu administracyjnego do usługi Azure AD.  
@@ -55,17 +45,17 @@ Azure Portal poprosi o zweryfikowanie poświadczeń logowania do klastra Azure A
 >[!IMPORTANT]
 >Aby możliwe było pobranie `kubeconfig` i użycie tej funkcji, użytkownicy tych funkcji muszą mieć [rolę użytkownika klastra usługi Azure Kubernetes](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) w klastrze. Użytkownicy **nie** wymagają dostępu współautora do klastra w celu korzystania z tej funkcji. 
 
-## <a name="kubernetes-cluster-without-rbac-enabled"></a>Klaster Kubernetes bez włączonego RBAC
+## <a name="kubernetes-cluster-without-rbac-enabled"></a>Klaster Kubernetes bez RBAC włączone
 
-Jeśli masz klaster Kubernetes, który nie jest skonfigurowany przy użyciu autoryzacji RBAC Kubernetes lub jest zintegrowany z logowaniem jednokrotnym usługi Azure AD, nie musisz wykonywać tych czynności. Wynika to z faktu, że uprawnienia administracyjne są domyślnie dostępne w konfiguracji bez kontroli RBAC.
+Jeśli masz klaster Kubernetes, nie jest skonfigurowany z autoryzacji Kubernetes RBAC lub zintegrowana z usługą Azure AD logowania jednokrotnego, nie musisz wykonaj następujące kroki. Wynika to z faktu, że uprawnienia administracyjne są domyślnie dostępne w konfiguracji bez kontroli RBAC.
 
 ## <a name="configure-kubernetes-rbac-authentication"></a>Konfigurowanie uwierzytelniania RBAC Kubernetes
 
 Po włączeniu autoryzacji RBAC Kubernetes są wykorzystywane dwa użytkownicy: **clusterUser** i **clusterAdmin** , aby uzyskać dostęp do interfejsu API Kubernetes. Jest to podobne do uruchamiania `az aks get-credentials -n {cluster_name} -g {rg_name}` bez opcji administracyjnych. Oznacza to, że **clusterUser** musi mieć przyznane dostęp do punktów końcowych w interfejsie API Kubernetes.
 
-W poniższych przykładowych krokach pokazano, jak skonfigurować powiązanie roli klastra z tego szablonu konfiguracji YAML.
+Krokach w poniższym przykładzie pokazano sposób konfigurowania powiązania rolę klastra za pomocą tego szablonu konfiguracji yaml.
 
-1. Skopiuj i wklej plik YAML i Zapisz go jako LogReaderRBAC. YAML.  
+1. Skopiuj i wklej plik yaml i zapisz go jako LogReaderRBAC.yaml.  
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1 
@@ -127,7 +117,7 @@ Aby uzyskać więcej informacji na temat zaawansowanej konfiguracji zabezpiecze�
 4. Po zarejestrowaniu adresów URL przekierowania w obszarze **Ustawienia zaawansowane**wybierz pozycję Opcje **dostępu tokeny** i **identyfikatory** , a następnie Zapisz zmiany.
 
 >[!NOTE]
->Konfigurowanie uwierzytelniania przy użyciu Azure Active Directory logowania jednokrotnego można wykonać tylko podczas początkowego wdrażania nowego klastra AKS. Nie można skonfigurować logowania jednokrotnego dla klastra AKS, który już został wdrożony.
+>Konfigurowanie uwierzytelniania przy użyciu Azure Active Directory logowania jednokrotnego można wykonać tylko podczas początkowego wdrażania nowego klastra AKS. Nie można skonfigurować logowania jednokrotnego na dla klastra usługi AKS już wdrożone.
   
 >[!IMPORTANT]
 >W przypadku zmiany konfiguracji usługi Azure AD na potrzeby uwierzytelniania użytkowników przy użyciu zaktualizowanego identyfikatora URI Wyczyść pamięć podręczną przeglądarki, aby upewnić się, że zaktualizowany token uwierzytelniania zostanie pobrany i zastosowany.

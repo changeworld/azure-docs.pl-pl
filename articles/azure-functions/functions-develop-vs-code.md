@@ -3,12 +3,12 @@ title: Opracowywanie Azure Functions przy użyciu Visual Studio Code
 description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu rozszerzenia Azure Functions dla Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975588"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667544"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Opracowywanie Azure Functions przy użyciu Visual Studio Code
 
@@ -94,10 +94,6 @@ Możesz również [dodać nową funkcję do projektu](#add-a-function-to-your-pr
 
 Z wyjątkiem wyzwalaczy HTTP i Timer, powiązania są implementowane w pakietach rozszerzeń. Należy zainstalować pakiety rozszerzeń dla wyzwalaczy i powiązań, które ich potrzebują. Proces instalacji rozszerzeń powiązań zależy od języka projektu.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Uruchom polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) w oknie terminalu, aby zainstalować pakiety rozszerzeń, które są potrzebne w projekcie. Następujące polecenie instaluje rozszerzenie usługi Azure Storage, które implementuje powiązania dla obiektów blob, Queue i Table Storage.
@@ -105,6 +101,10 @@ Uruchom polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) w 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ---
 
@@ -114,13 +114,13 @@ Nową funkcję można dodać do istniejącego projektu przy użyciu jednego ze w
 
 Wyniki tej akcji zależą od języka projektu:
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-W projekcie zostanie utworzony nowy folder. Folder zawiera nowy plik Function. JSON i nowy plik kodu JavaScript.
-
 # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 Do projektu C# zostanie dodany nowy plik biblioteki klas (. cs).
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+W projekcie zostanie utworzony nowy folder. Folder zawiera nowy plik Function. JSON i nowy plik kodu JavaScript.
 
 ---
 
@@ -129,6 +129,24 @@ Do projektu C# zostanie dodany nowy plik biblioteki klas (. cs).
 Funkcję można rozszerzyć przez dodanie powiązań wejściowych i wyjściowych. Proces dodawania powiązań zależy od języka projektu. Aby dowiedzieć się więcej na temat powiązań, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
 
 Poniższe przykłady nawiązują połączenie z kolejką magazynu o nazwie `outqueue`, gdzie parametry połączenia dla konta magazynu są ustawiane w ustawieniach aplikacji `MyStorageConnection` w pliku Local. Settings. JSON.
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+Zaktualizuj metodę funkcji, aby dodać następujący parametr do definicji metody `Run`:
+
+```cs
+[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
+```
+
+Ten kod wymaga dodania następującej instrukcji `using`:
+
+```cs
+using Microsoft.Azure.WebJobs.Extensions.Storage;
+```
+
+`msg` parametr jest typu `ICollector<T>`, który reprezentuje kolekcję komunikatów, które są zapisywane do powiązania danych wyjściowych po zakończeniu działania funkcji. Do kolekcji dodasz co najmniej jeden komunikat. Te komunikaty są wysyłane do kolejki po zakończeniu działania funkcji.
+
+Aby dowiedzieć się więcej, zobacz dokumentację [powiązania danych wyjściowych kolejki magazynu](functions-bindings-storage-queue.md#output---c-example) .
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -144,7 +162,7 @@ Poniżej przedstawiono przykładowe monity o zdefiniowanie nowego powiązania da
 | **Wybieranie powiązania z kierunkiem** | `Azure Queue Storage` | Powiązanie to powiązanie kolejki usługi Azure Storage. |
 | **Nazwa używana do identyfikowania tego powiązania w kodzie** | `msg` | Nazwa, która identyfikuje parametr powiązania przywoływany w kodzie. |
 | **Kolejka, do której zostanie wysłany komunikat** | `outqueue` | Nazwa kolejki, w której ma zostać zapisywany powiązania. Gdy *Kolejka* nie istnieje, powiązanie tworzy je przy pierwszym użyciu. |
-| **Wybierz ustawienie z pliku "Local. Setting. JSON"** | `MyStorageConnection` | Nazwa ustawienia aplikacji, które zawiera parametry połączenia dla konta magazynu. Ustawienie `AzureWebJobsStorage` zawiera parametry połączenia dla konta magazynu utworzonego za pomocą aplikacji funkcji. |
+| **Wybierz ustawienie z pliku "Local. Settings. JSON"** | `MyStorageConnection` | Nazwa ustawienia aplikacji, które zawiera parametry połączenia dla konta magazynu. Ustawienie `AzureWebJobsStorage` zawiera parametry połączenia dla konta magazynu utworzonego za pomocą aplikacji funkcji. |
 
 W tym przykładzie następujące powiązanie jest dodawane do tablicy `bindings` w pliku Function. JSON:
 
@@ -168,25 +186,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Aby dowiedzieć się więcej, zobacz informacje o [powiązaniach wyjściowych magazynu kolejki](functions-bindings-storage-queue.md#output---javascript-example) .
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-Zaktualizuj metodę funkcji, aby dodać następujący parametr do definicji metody `Run`:
-
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
-
-Ten kod wymaga dodania następującej instrukcji `using`:
-
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
-
 ---
-
-`msg` parametr jest typu `ICollector<T>`, który reprezentuje kolekcję komunikatów, które są zapisywane do powiązania danych wyjściowych po zakończeniu działania funkcji. Do kolekcji dodasz co najmniej jeden komunikat. Te komunikaty są wysyłane do kolejki po zakończeniu działania funkcji.
-
-Aby dowiedzieć się więcej, zobacz dokumentację [powiązania danych wyjściowych kolejki magazynu](functions-bindings-storage-queue.md#output---c-example) .
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 

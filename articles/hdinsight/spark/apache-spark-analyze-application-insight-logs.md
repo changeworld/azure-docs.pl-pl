@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435241"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analizowanie Application Insights dzienników telemetrii za pomocą Apache Spark w usłudze HDInsight
 
@@ -64,15 +64,13 @@ Wykonaj kroki opisane w sekcji [Konfigurowanie eksportu ciągłego](../../azure-
 
 ## <a name="configure-hdinsight-to-access-the-data"></a>Konfigurowanie usługi HDInsight do uzyskiwania dostępu do danych
 
-W przypadku tworzenia klastra usługi HDInsight należy dodać konto magazynu podczas tworzenia klastra.
+Jeśli tworzysz klaster usługi HDInsight, Dodaj konto magazynu podczas tworzenia klastra.
 
 Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacji zawartych w dokumencie [Dodawanie dodatkowych kont magazynu](../hdinsight-hadoop-add-storage.md) .
 
-## <a name="analyze-the-data-pyspark"></a>Analizuj dane: PySpark
+## <a name="analyze-the-data-pyspark"></a>Analizowanie danych: PySpark
 
-1. Z [Azure Portal](https://portal.azure.com)wybierz klaster Spark w usłudze HDInsight. W sekcji **szybkie linki** wybierz pozycję **pulpity nawigacyjne klastra**, a następnie wybierz pozycję **Jupyter Notebook** z sekcji Dashboard__ klastra.
-
-    ![Pyspark pulpitu nawigacyjnego klastra Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net/jupyter` gdzie CLUSTERname jest nazwą klastra.
 
 2. W prawym górnym rogu strony Jupyter, wybierz pozycję **Nowy**, a następnie **PySpark**. Zostanie otwarta nowa karta przeglądarki zawierająca Jupyter Notebook oparty na języku Python.
 
@@ -82,9 +80,9 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Ten kod konfiguruje platformę Spark w celu rekursywnego uzyskiwania dostępu do struktury katalogów dla danych wejściowych. Dane `/{telemetry type}/YYYY-MM-DD/{##}/`telemetryczne Application Insights są rejestrowane w strukturze katalogów podobnej do.
+    Ten kod konfiguruje platformę Spark w celu rekursywnego uzyskiwania dostępu do struktury katalogów dla danych wejściowych. Application Insights dane telemetryczne są rejestrowane w strukturze katalogów podobnej do `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Aby uruchomić kod, użyj **klawiszy SHIFT + ENTER** . Po lewej stronie komórki "\*" pojawia się między nawiasami, aby wskazać, że kod w tej komórce jest wykonywany. Po zakończeniu zostanie wyświetlony tekst "\*" zmiany w liczbie i dane wyjściowe podobne do następującego tekstu poniżej komórki:
+4. Aby uruchomić kod, użyj **klawiszy SHIFT + ENTER** . Po lewej stronie komórki "\*" pojawia się między nawiasami, aby wskazać, że kod w tej komórce jest wykonywany. Po zakończeniu wartość "\*" zmieni się na liczbę, a dane wyjściowe podobne do poniższego tekstu są wyświetlane poniżej komórki:
 
         Creating SparkContext as 'sc'
 
@@ -93,24 +91,25 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Zostanie utworzona nowa komórka poniżej pierwszej. Wprowadź następujący tekst w nowej komórce. `CONTAINER` Zastąp `STORAGEACCOUNT` wartość i nazwą konta usługi Azure Storage i nazwą kontenera obiektów blob, która zawiera Application Insights dane.
+
+5. Zostanie utworzona nowa komórka poniżej pierwszej. Wprowadź następujący tekst w nowej komórce. Zastąp `CONTAINER` i `STORAGEACCOUNT` nazwą konta usługi Azure Storage i nazwą kontenera obiektów blob, która zawiera Application Insights dane.
 
    ```python
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     Aby wykonać tę komórkę, użyj **klawiszy SHIFT + ENTER** . Zobaczysz wynik podobny do następującego tekstu:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Zwrócona ścieżka wasb jest lokalizacją danych telemetrycznych Application Insights. Zmień wiersz w komórce, aby używał zwróconej ścieżki wasb, a następnie użyj **klawiszy SHIFT + ENTER** , aby ponownie uruchomić komórkę. `hdfs dfs -ls` Tym razem wyniki powinny zawierać katalogi zawierające dane telemetryczne.
+    Zwrócona ścieżka wasbs jest lokalizacją danych telemetrycznych Application Insights. Zmień wiersz `hdfs dfs -ls` w komórce, aby użyć zwróconej ścieżki wasbs, a następnie użyj **klawiszy SHIFT + ENTER** , aby ponownie uruchomić komórkę. Tym razem wyniki powinny zawierać katalogi zawierające dane telemetryczne.
 
    > [!NOTE]  
-   > W pozostałych krokach w tej sekcji `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` katalog został użyty. Struktura katalogów może się różnić.
+   > W pozostałej części kroków w tej sekcji został użyty katalog `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests`. Struktura katalogów może się różnić.
 
-6. W następnej komórce wprowadź następujący kod: Zamień `WASB_PATH` na ścieżkę z poprzedniego kroku.
+6. W następnej komórce wprowadź następujący kod: Zastąp `WASB_PATH` ścieżką z poprzedniego kroku.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -124,7 +123,7 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
    jsonData.printSchema()
    ```
 
-    Schemat dla każdego typu telemetrii jest różny. Poniższy przykład to schemat generowany dla żądań sieci Web (dane przechowywane w `Requests` podkatalogu):
+    Schemat dla każdego typu telemetrii jest różny. Poniższy przykład to schemat generowany dla żądań sieci Web (dane przechowywane w podkatalogu `Requests`):
 
         root
         |-- context: struct (nullable = true)
@@ -186,6 +185,7 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
+
 8. Użyj następujących elementów do zarejestrowania ramki danych jako tabeli tymczasowej i uruchomienia zapytania dotyczącego:
 
    ```python
@@ -211,22 +211,21 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
         ...
         +---------+
 
-## <a name="analyze-the-data-scala"></a>Analizuj dane: Scala
+## <a name="analyze-the-data-scala"></a>Analizowanie danych: Scala
 
-1. Z [Azure Portal](https://portal.azure.com)wybierz klaster Spark w usłudze HDInsight. W sekcji **szybkie linki** wybierz pozycję **pulpity nawigacyjne klastra**, a następnie wybierz pozycję **Jupyter Notebook** z sekcji Dashboard__ klastra.
-
-    ![Scala pulpitu nawigacyjnego klastra Azure Portal](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net/jupyter` gdzie CLUSTERname jest nazwą klastra.
 
 2. W prawym górnym rogu strony Jupyter, wybierz pozycję **Nowy**, a następnie **Scala**. Zostanie wyświetlona nowa karta przeglądarki zawierająca Jupyter Notebook oparty na Scala.
+
 3. W pierwszym polu (zwanym **komórką**) na stronie Wprowadź następujący tekst:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Ten kod konfiguruje platformę Spark w celu rekursywnego uzyskiwania dostępu do struktury katalogów dla danych wejściowych. Dane telemetryczne Application Insights są rejestrowane w strukturze katalogów `/{telemetry type}/YYYY-MM-DD/{##}/`podobnej do.
+    Ten kod konfiguruje platformę Spark w celu rekursywnego uzyskiwania dostępu do struktury katalogów dla danych wejściowych. Application Insights dane telemetryczne są rejestrowane w strukturze katalogów podobnej do `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Aby uruchomić kod, użyj **klawiszy SHIFT + ENTER** . Po lewej stronie komórki "\*" pojawia się między nawiasami, aby wskazać, że kod w tej komórce jest wykonywany. Po zakończeniu zostanie wyświetlony tekst "\*" zmiany w liczbie i dane wyjściowe podobne do następującego tekstu poniżej komórki:
+4. Aby uruchomić kod, użyj **klawiszy SHIFT + ENTER** . Po lewej stronie komórki "\*" pojawia się między nawiasami, aby wskazać, że kod w tej komórce jest wykonywany. Po zakończeniu wartość "\*" zmieni się na liczbę, a dane wyjściowe podobne do poniższego tekstu są wyświetlane poniżej komórki:
 
         Creating SparkContext as 'sc'
 
@@ -235,24 +234,25 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Zostanie utworzona nowa komórka poniżej pierwszej. Wprowadź następujący tekst w nowej komórce. `CONTAINER` Zastąp `STORAGEACCOUNT` wartość i nazwą konta usługi Azure Storage i nazwą kontenera obiektów blob, która zawiera Application Insights dzienniki.
+
+5. Zostanie utworzona nowa komórka poniżej pierwszej. Wprowadź następujący tekst w nowej komórce. Zastąp `CONTAINER` i `STORAGEACCOUNT` nazwą konta usługi Azure Storage i nazwą kontenera obiektów blob, która zawiera Application Insights dzienników.
 
    ```scala
    %%bash
-   hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
+   hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
     Aby wykonać tę komórkę, użyj **klawiszy SHIFT + ENTER** . Zobaczysz wynik podobny do następującego tekstu:
 
         Found 1 items
-        drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
+        drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Zwrócona ścieżka wasb jest lokalizacją danych telemetrycznych Application Insights. Zmień wiersz w komórce, aby używał zwróconej ścieżki wasb, a następnie użyj **klawiszy SHIFT + ENTER** , aby ponownie uruchomić komórkę. `hdfs dfs -ls` Tym razem wyniki powinny zawierać katalogi zawierające dane telemetryczne.
+    Zwrócona ścieżka wasbs jest lokalizacją danych telemetrycznych Application Insights. Zmień wiersz `hdfs dfs -ls` w komórce, aby użyć zwróconej ścieżki wasbs, a następnie użyj **klawiszy SHIFT + ENTER** , aby ponownie uruchomić komórkę. Tym razem wyniki powinny zawierać katalogi zawierające dane telemetryczne.
 
    > [!NOTE]  
-   > W pozostałych krokach w tej sekcji `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` katalog został użyty. Ten katalog może nie istnieć, chyba że dane telemetryczne są przeznaczone dla aplikacji sieci Web.
+   > W pozostałej części kroków w tej sekcji został użyty katalog `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests`. Ten katalog może nie istnieć, chyba że dane telemetryczne są przeznaczone dla aplikacji sieci Web.
 
-6. W następnej komórce wprowadź następujący kod: Zamień `WASB\_PATH` na ścieżkę z poprzedniego kroku.
+6. W następnej komórce wprowadź następujący kod: Zastąp `WASB\_PATH` ścieżką z poprzedniego kroku.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -268,7 +268,7 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
    jsonData.printSchema
    ```
 
-    Schemat dla każdego typu telemetrii jest różny. Poniższy przykład to schemat generowany dla żądań sieci Web (dane przechowywane w `Requests` podkatalogu):
+    Schemat dla każdego typu telemetrii jest różny. Poniższy przykład to schemat generowany dla żądań sieci Web (dane przechowywane w podkatalogu `Requests`):
 
         root
         |-- context: struct (nullable = true)
@@ -335,15 +335,13 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
 
    ```scala
    jsonData.registerTempTable("requests")
-   var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
+   var city = sqlContext.sql("select context.location.city from requests where context.location.city isn't null limit 10").show()
    ```
 
     To zapytanie zwraca informacje o mieście dla 20 najważniejszych rekordów, w których Context. Location. City nie ma wartości null.
 
    > [!NOTE]  
    > Struktura kontekstu jest obecna we wszystkich danych telemetrycznych zarejestrowanych przez Application Insights. W dziennikach nie można wypełnić elementu miasto. Użyj schematu, aby zidentyfikować inne elementy, które można badać, które mogą zawierać dane dla dzienników.
-   >
-   >
 
     To zapytanie zwraca informacje podobne do następującego tekstu:
 
@@ -361,9 +359,9 @@ Aby dodać konto usługi Azure Storage do istniejącego klastra, użyj informacj
 
 Aby uzyskać więcej przykładów użycia Apache Spark do pracy z danymi i usługami na platformie Azure, zobacz następujące dokumenty:
 
-* [Apache Spark z usługą BI: Przeprowadzanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark z Machine Learning: Korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark z usługą BI: wykonywanie interaktywnej analizy danych przy użyciu platformy Spark w usłudze HDInsight przy użyciu narzędzi analizy biznesowej](apache-spark-use-bi-tools.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: korzystanie z platformy Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](apache-spark-machine-learning-mllib-ipython.md)
 * [Analiza dzienników witryny sieci Web przy użyciu Apache Spark w usłudze HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 Aby uzyskać informacje na temat tworzenia i uruchamiania aplikacji platformy Spark, zobacz następujące dokumenty:

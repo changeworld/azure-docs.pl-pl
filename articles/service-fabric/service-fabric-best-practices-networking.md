@@ -1,31 +1,22 @@
 ---
-title: Najlepsze rozwiązania dotyczące sieci Service Fabric platformy Azure | Microsoft Docs
-description: Najlepsze rozwiązania związane z zarządzaniem Service Fabric sieciami.
-services: service-fabric
-documentationcenter: .net
+title: Najlepsze rozwiązania dotyczące sieci Service Fabric platformy Azure
+description: Najlepsze rozwiązania i zagadnienia dotyczące projektowania dotyczące zarządzania łącznością sieciową za pomocą usługi Azure Service Fabric.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262246"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551798"
 ---
 # <a name="networking"></a>Networking
 
 Podczas tworzenia klastrów Service Fabric platformy Azure i zarządzania nimi można zapewnić łączność sieciową dla węzłów i aplikacji. Zasoby sieci obejmują zakresy adresów IP, sieci wirtualne, moduły równoważenia obciążenia i sieciowe grupy zabezpieczeń. W tym artykule przedstawiono najlepsze rozwiązania dotyczące tych zasobów.
 
-Przejrzyj [wzorce sieci Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) platformy Azure, aby dowiedzieć się, jak tworzyć klastry korzystające z następujących funkcji: Istniejąca sieć wirtualna lub podsieć, statyczny publiczny adres IP, moduł równoważenia obciążenia wyłącznie wewnętrznie lub wewnętrzny i zewnętrzny moduł równoważenia obciążenia.
+Przejrzyj [wzorce sieci Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) platformy Azure, aby dowiedzieć się, jak tworzyć klastry korzystające z następujących funkcji: istniejąca sieć wirtualna lub podsieć, statyczny publiczny adres IP, moduł równoważenia obciążenia wyłącznie wewnętrznie lub wewnętrzny i zewnętrzny moduł równoważenia obciążenia.
 
 ## <a name="infrastructure-networking"></a>Sieć infrastruktury
 Zmaksymalizuj wydajność maszyny wirtualnej za pomocą przyspieszonej sieci, deklarując Właściwość enableAcceleratedNetworking w szablonie Menedżer zasobów, Poniższy fragment kodu jest NetworkInterfaceConfigurations zestawu skalowania maszyn wirtualnych. Włącza przyspieszone sieci:
@@ -48,13 +39,13 @@ Zmaksymalizuj wydajność maszyny wirtualnej za pomocą przyspieszonej sieci, de
 ```
 Klaster Service Fabric może być inicjowany w systemie [Linux przy użyciu przyspieszonej sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)i [systemu Windows z przyspieszoną siecią](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
-Obsługiwane są przyspieszone sieci dla jednostek SKU serii maszyn wirtualnych platformy Azure: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 i MS/MMS. Przyspieszona sieć została pomyślnie przetestowana przy użyciu jednostki SKU Standard_DS8_v3 na 1/23/2019 Service Fabric dla klastra systemu Windows, a przy użyciu Standard_DS12_v2 w systemie 01/29/2019 dla klastra Service Fabric Linux.
+Przyspieszona sieć jest obsługiwana w przypadku jednostek SKU serii maszyn wirtualnych platformy Azure: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 i MS/MMS. Przyspieszona sieć została pomyślnie przetestowana przy użyciu jednostki SKU Standard_DS8_v3 na 1/23/2019 dla Service Fabric klastra systemu Windows i przy użyciu Standard_DS12_v2 na 01/29/2019 dla klastra Service Fabric Linux.
 
 Aby włączyć przyspieszone sieci w istniejącym klastrze Service Fabric, należy najpierw [skalować klaster Service Fabric przez dodanie zestawu skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), aby wykonać następujące czynności:
 1. Inicjowanie obsługi administracyjnej NodeType z włączoną obsługą przyspieszonej sieci
 2. Migrowanie usług i ich stanu do aprowizacji NodeType z włączoną obsługą przyspieszonej sieci
 
-Skalowanie w górę infrastruktury jest wymagane do włączenia przyspieszonej sieci w istniejącym klastrze, ponieważ włączenie przyspieszonej sieci może spowodować przestoje, ponieważ wymaga ono [zatrzymania i cofnięcia przydziału wszystkich maszyn wirtualnych w zestawie dostępności Włączanie przyspieszonej sieci na wszystkich istniejących KARTAch](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms)sieciowych.
+Skalowanie w górę infrastruktury jest wymagane do włączenia przyspieszonej sieci w istniejącym klastrze, ponieważ włączenie przyspieszonej sieci spowoduje przestoje, ponieważ wymaga ono zatrzymania i cofnięcia przydziału wszystkich maszyn wirtualnych w zestawie dostępności [przed włączeniem przyspieszonej sieci na dowolnej istniejącej karcie sieciowej](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
 
 ## <a name="cluster-networking"></a>Sieć klastrów
 
@@ -76,7 +67,7 @@ Skalowanie w górę infrastruktury jest wymagane do włączenia przyspieszonej s
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Tworzenie klastra na maszynach wirtualnych lub komputerach z systemem Windows Server: [Tworzenie klastra Service Fabric dla systemu Windows Server](service-fabric-cluster-creation-for-windows-server.md)
+* Tworzenie klastra na maszynach wirtualnych lub komputerach z systemem Windows Server: [Service Fabric tworzenia klastra dla systemu Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 * Tworzenie klastra na maszynach wirtualnych lub komputerach z systemem Linux: [Tworzenie klastra systemu Linux](service-fabric-cluster-creation-via-portal.md)
 * Uzyskaj informacje o [opcjach pomocy technicznej usługi Service Fabric](service-fabric-support.md)
 

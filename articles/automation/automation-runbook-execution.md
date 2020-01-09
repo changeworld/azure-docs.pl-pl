@@ -2,19 +2,15 @@
 title: Wykonanie elementu Runbook w Azure Automation
 description: Opisuje szczegóły dotyczące sposobu przetwarzania elementu Runbook w Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddeeaeccc0a10d19a070a91d7bd9bef2b31c0570
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850758"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658121"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w Azure Automation
 
@@ -37,11 +33,11 @@ Elementy Runbook w Azure Automation mogą być uruchamiane w piaskownicy na plat
 |Integracja z zasobami platformy Azure|Azure Sandbox|Uwierzytelnianie jest obsługiwane na platformie Azure. Jeśli używasz hybrydowego procesu roboczego elementu Runbook na maszynie wirtualnej platformy Azure, możesz używać [tożsamości zarządzanych dla zasobów platformy Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)|
 |Optymalna wydajność zarządzania zasobami platformy Azure|Azure Sandbox|Skrypt jest uruchamiany w tym samym środowisku, co z kolei ma mniejsze opóźnienia|
 |Minimalizuj koszty operacyjne|Azure Sandbox|Nie ma żadnych nakładów obliczeniowych, brak potrzeby dla maszyny wirtualnej|
-|Długi uruchomiony skrypt|Hybrydowy proces roboczy elementu Runbook|Piaskownice platformy Azure mają [ograniczenia dotyczące zasobów](../azure-subscription-service-limits.md#automation-limits)|
+|Długi uruchomiony skrypt|Hybrydowy proces roboczy elementu Runbook|Piaskownice platformy Azure mają [ograniczenia dotyczące zasobów](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |Korzystanie z usług lokalnych|Hybrydowy proces roboczy elementu Runbook|Może mieć dostęp bezpośrednio do komputera hosta|
 |Wymagaj oprogramowania i plików wykonywalnych innej firmy|Hybrydowy proces roboczy elementu Runbook|Zarządzasz systemem operacyjnym i można instalować oprogramowanie|
 |Monitorowanie pliku lub folderu za pomocą elementu Runbook|Hybrydowy proces roboczy elementu Runbook|Korzystanie z [zadania obserwatora](automation-watchers-tutorial.md) w hybrydowym procesie roboczym elementu Runbook|
-|Skrypt intensywnie korzystający z zasobów|Hybrydowy proces roboczy elementu Runbook| Piaskownice platformy Azure mają [ograniczenia dotyczące zasobów](../azure-subscription-service-limits.md#automation-limits)|
+|Skrypt intensywnie korzystający z zasobów|Hybrydowy proces roboczy elementu Runbook| Piaskownice platformy Azure mają [ograniczenia dotyczące zasobów](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |Korzystanie z modułów z określonymi wymaganiami| Hybrydowy proces roboczy elementu Runbook|Przykłady to:</br> **WinSCP** — zależność w WinSCP. exe </br> **IISAdministration** — wymaga włączenia usług IIS|
 |Zainstaluj moduł wymagający Instalatora|Hybrydowy proces roboczy elementu Runbook|Moduły dla piaskownicy muszą być możliwe do przeniesień|
 |Korzystanie z elementów Runbook lub modułów, które wymagają .NET Framework różnych od 4.7.2|Hybrydowy proces roboczy elementu Runbook|Piaskownice automatyzacji mają .NET Framework 4.7.2 i nie ma możliwości jego uaktualnienia|
@@ -177,7 +173,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>Rzuć
+#### <a name="throw"></a>Throw
 
 [Throw](/powershell/module/microsoft.powershell.core/about/about_throw) można użyć do wygenerowania błędu kończącego. Może to być przydatne podczas definiowania własnej logiki w elemencie Runbook. Jeśli spełnione są pewne kryteria, które powinny zatrzymać skrypt, można użyć `throw`, aby zatrzymać skrypt. Poniższy przykład pokazuje, że komputer jest parametrem funkcji wymaganym przy użyciu `throw`.
 
@@ -320,7 +316,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 Aby udostępnić zasoby między wszystkimi elementami Runbook w chmurze, Azure Automation tymczasowo zwalnia lub przerywa każde zadanie, które zostało uruchomione przez ponad trzy godziny. Zadania dla [elementów Runbook opartych na programie PowerShell](automation-runbook-types.md#powershell-runbooks) i [elementów Runbook języka Python](automation-runbook-types.md#python-runbooks) są zatrzymane i nie uruchamiane ponownie, a stan zadania to zatrzymane.
 
-W przypadku długotrwałych zadań zaleca się użycie [hybrydowego procesu roboczego elementu Runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowe procesy robocze elementów Runbook nie są ograniczone przez sprawiedliwy udział i nie mają ograniczenia czasu wykonywania elementu Runbook. Pozostałe [limity](../azure-subscription-service-limits.md#automation-limits) zadań dotyczą zarówno piaskownic systemu Azure, jak i hybrydowych procesów roboczych elementów Runbook. Chociaż hybrydowe procesy robocze elementów Runbook nie są ograniczone przez 3-godzinny limit udziałów, elementy Runbook są uruchamiane w celu obsługi zachowań ponownego uruchamiania z nieoczekiwanych problemów z infrastrukturą lokalną.
+W przypadku długotrwałych zadań zaleca się użycie [hybrydowego procesu roboczego elementu Runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowe procesy robocze elementów Runbook nie są ograniczone przez sprawiedliwy udział i nie mają ograniczenia czasu wykonywania elementu Runbook. Pozostałe [limity](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) zadań dotyczą zarówno piaskownic systemu Azure, jak i hybrydowych procesów roboczych elementów Runbook. Chociaż hybrydowe procesy robocze elementów Runbook nie są ograniczone przez 3-godzinny limit udziałów, elementy Runbook są uruchamiane w celu obsługi zachowań ponownego uruchamiania z nieoczekiwanych problemów z infrastrukturą lokalną.
 
 Kolejną opcją jest optymalizacja elementu Runbook przy użyciu podrzędnych elementów Runbook. Jeśli element Runbook pętle za pomocą tej samej funkcji w kilku zasobach, takich jak operacja bazy danych w kilku bazach danych, można przenieść tę funkcję do [podrzędnego elementu Runbook](automation-child-runbooks.md) i wywołać ją za pomocą polecenia cmdlet [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) . Każdy z tych podrzędnych elementów Runbook jest wykonywany równolegle w oddzielnych procesach. To zachowanie zmniejsza łączny czas pracy nadrzędnego elementu Runbook. W elemencie Runbook można użyć polecenia cmdlet [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) , aby sprawdzić stan zadania dla każdego elementu podrzędnego, jeśli istnieją operacje wykonywane po zakończeniu podrzędnego elementu Runbook.
 

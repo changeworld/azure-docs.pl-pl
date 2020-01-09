@@ -1,6 +1,6 @@
 ---
 title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — .NET
-description: Szybko uruchamiaj zadania i zadania podrzędne usługi Batch za pomocą biblioteki klienta .NET usługi Batch.
+description: Szybkie uruchamianie Azure Batch przykładowego zadania i zadań z C# aplikacji za pomocą biblioteki klienckiej usługi Batch .NET.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 613f771af71c4f03f7ccf9283b98c09836c312cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322323"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390314"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: Uruchamianie pierwszego zadania Azure Batch za pomocą interfejsu API platformy .NET
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Azure Batch za pomocą interfejsu API platformy .NET
 
 Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch z poziomu aplikacji w języku C# utworzonej w oparciu o interfejs API platformy .NET usługi Azure Batch. Aplikacja przekazuje kilka plików danych wejściowych do usługi Azure Storage oraz tworzy *pulę* węzłów obliczeniowych (maszyn wirtualnych) usługi Batch. Następnie aplikacja tworzy przykładowe *zadanie*, które uruchamia *zadania podrzędne* w celu przetworzenia każdego pliku wejściowego w puli przy użyciu podstawowego polecenia. Po ukończeniu tego przewodnika Szybki start będziesz rozumieć kluczowe pojęcia związane z usługą Batch, co pozwoli na wypróbowanie tej usługi z bardziej realistycznymi obciążeniami na większą skalę.
 
@@ -31,7 +31,7 @@ Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch
 
 * Konto usługi Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -119,7 +119,7 @@ Do interakcji z kontem magazynu aplikacja używa biblioteki klienta usługi Azur
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-Za pomocą odwołania `blobClient` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
+Za pomocą odwołania `blobClient` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych.
 
 ```csharp
 List<string> inputFilePaths = new List<string>
@@ -248,7 +248,7 @@ Aplikacja automatycznie usuwa utworzony kontener magazynu, a także udostępnia 
 
 Gdy grupa zasobów, konto usługi Batch i konto magazynu nie będą już potrzebne, usuń je. W tym celu w witrynie Azure Portal zaznacz grupę zasobów konta usługi Batch i kliknij pozycję **Usuń grupę zasobów**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start uruchomiono niewielką aplikację utworzoną za pomocą interfejsu API platformy .NET usługi Batch w celu utworzenia puli i zadania usługi Batch. Zadanie uruchomiło przykładowe zadania podrzędne i pobrało dane wyjściowe utworzone w węzłach. Teraz, gdy już rozumiesz kluczowe pojęcia związane z usługą Batch, możesz wypróbować tę usługę z bardziej realistycznymi obciążeniami na większą skalę. Aby dowiedzieć się więcej o usłudze Azure Batch i zapoznać się z przewodnikiem dotyczącym obciążenia równoległego o rzeczywistym zastosowaniu, kontynuuj naukę w ramach samouczka platformy .NET usługi Batch.
 

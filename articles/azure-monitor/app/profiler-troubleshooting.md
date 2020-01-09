@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure Application Insights Profiler | Microsoft Docs
+title: Rozwiązywanie problemów z usługą Azure Application Insights Profiler
 description: W tym artykule przedstawiono kroki rozwiązywania problemów oraz informacje pomocne w przypadku deweloperów, którzy mają problemy z włączaniem lub używaniem Application Insights Profiler.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432385"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów z włączaniem lub wyświetlaniem Application Insights Profiler
 
@@ -77,7 +77,7 @@ Aby Profiler działał prawidłowo:
    1. W menu **Narzędzia** wybierz pozycję **pulpit nawigacyjny WebJobs**.  
       Zostanie otwarte okienko **Zadania WebJob** . 
    
-      ![Profiler — zadanie WebJob]   
+      ![profiler-webjob]   
    
    1. Aby wyświetlić szczegóły zadania WebJob, w tym dziennik, wybierz łącze **ApplicationInsightsProfiler3** .  
      Zostanie otwarte okienko **szczegóły ciągłego Zadania WebJob** .
@@ -107,11 +107,11 @@ Podczas konfigurowania programu Profiler są wprowadzane aktualizacje ustawień 
 
 Obecnie można włączyć program Profiler dla maksymalnie czterech usługi Azure Web Apps i miejsc wdrożenia, które działają w ramach tego samego planu usługi. Jeśli masz więcej niż cztery aplikacje sieci Web działające w ramach jednego planu usługi App Service, profiler może zgłosić element *Microsoft. Serviceprofiling. Exceptions. TooManyETWSessionException*. Profiler jest uruchamiany oddzielnie dla każdej aplikacji sieci Web i podejmuje próbę uruchomienia sesji śledzenia zdarzeń systemu Windows (ETW) dla każdej aplikacji. Jednak w tej chwili może być aktywna ograniczona liczba sesji ETW. Jeśli zadanie WebJob profilera raportuje zbyt wiele aktywnych sesji profilowania, przenieś niektóre aplikacje sieci Web do innego planu usługi.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Błąd wdrożenia: katalog nie jest pusty\\:%\\lokacji głównej\\wwwroot\\App_Data\\jobs "
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Błąd wdrożenia: katalog nie jest pusty\\:%\\lokacji głównej\\katalogu wwwroot\\App_Data\\zadań "
 
 W przypadku ponownego wdrażania aplikacji sieci Web w ramach zasobu Web Apps z włączonym profilerem może zostać wyświetlony następujący komunikat:
 
-*Katalog nie jest pusty:\\\\głównej lokacji\\wwwroot\\App_Data\\jobs "*
+*Katalog nie jest pusty:\\\\witryny głównej\\katalogu wwwroot\\App_Data\\zadań "*
 
 Ten błąd występuje w przypadku uruchamiania Web Deploy ze skryptów lub z potoku wdrażania usługi Azure DevOps. Rozwiązaniem jest dodanie następujących dodatkowych parametrów wdrażania do zadania Web Deploy:
 
@@ -165,9 +165,14 @@ Aby sprawdzić ustawienia, które zostały użyte do skonfigurowania Diagnostyka
     Podczas przekazywania śladu zostanie wyświetlony następujący komunikat: *Rozpocznij przekazywanie śledzenia*. 
 
 
+## <a name="edit-network-proxy-or-firewall-rules"></a>Edytowanie reguł serwera proxy lub zapory sieciowej
+
+Jeśli aplikacja łączy się z Internetem za pośrednictwem serwera proxy lub zapory, może być konieczne edytowanie reguł, aby umożliwić aplikacji komunikację z usługą Application Insights Profiler. Adresy IP używane przez Application Insights Profiler są zawarte w tagu usługi Azure Monitor.
+
+
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[Profiler — zadanie WebJob]:./media/profiler-troubleshooting/Profiler-webjob.png
-[Profiler-WebJob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

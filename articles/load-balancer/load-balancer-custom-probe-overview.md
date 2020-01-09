@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077072"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690405"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji usługi Load Balancer
 
-W przypadku używania reguł równoważenia obciążenia z Azure Load Balancer należy określić sondy kondycji, aby umożliwić Load Balancer wykryć stan punktu końcowego zaplecza.  Konfiguracja sondy kondycji i odpowiedzi sondy określają, które wystąpienia puli zaplecza będą otrzymywać Nowe przepływy. Sond kondycji można użyć do wykrywania awarii aplikacji w punkcie końcowym zaplecza. Możesz również wygenerować niestandardową odpowiedź na sondę kondycji i użyć sondy kondycji do sterowania przepływem, aby zarządzać obciążeniem lub planowanym przestojem. Gdy sonda kondycji zakończy się niepowodzeniem, Load Balancer przestanie wysyłać Nowe przepływy do odpowiedniego wystąpienia w złej kondycji.
+W przypadku używania reguł równoważenia obciążenia z Azure Load Balancer należy określić sondy kondycji, aby umożliwić Load Balancer wykryć stan punktu końcowego zaplecza.  Konfiguracja sondy kondycji i odpowiedzi sondy określają, które wystąpienia puli zaplecza będą otrzymywać Nowe przepływy. Sond kondycji można użyć do wykrywania awarii aplikacji w punkcie końcowym zaplecza. Możesz również wygenerować niestandardową odpowiedź na sondę kondycji i użyć sondy kondycji do sterowania przepływem, aby zarządzać obciążeniem lub planowanym przestojem. Gdy sonda kondycji zakończy się niepowodzeniem, Load Balancer przestanie wysyłać Nowe przepływy do odpowiedniego wystąpienia w złej kondycji. Nie ma to wpływu na łączność wychodzącą. dotyczy to tylko łączności przychodzącej.
 
 Sondy kondycji obsługują wiele protokołów. Dostępność określonego protokołu sondy kondycji zależy od jednostki SKU Load Balancer.  Ponadto zachowanie usługi różni się w zależności od Load Balancer jednostki SKU, jak pokazano w poniższej tabeli:
 
 | | Standardowy SKU | Podstawowy SKU |
 | --- | --- | --- |
-| [Typy sondy](#types) | TCP I HTTP, HTTPS | TCP I HTTP |
+| [Typy sondy](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [Badanie zachowania w dół](#probedown) | Wszystkie sondy, wszystkie przepływy TCP nadal. | Wszystkie sondy w dół, wszystkie przepływy TCP wygasają. | 
 
 
@@ -49,8 +49,8 @@ Konfiguracja sondy kondycji składa się z następujących elementów:
 - Port sondy
 - Ścieżka HTTP do użycia w przypadku protokołu HTTP GET podczas korzystania z sond HTTP (S)
 
-> [!NOTE]
-> Definicja sondy nie jest obowiązkowa lub sprawdzana w przypadku używania Azure PowerShell, interfejsu wiersza polecenia platformy Azure, szablonów lub interfejsu API. Testy weryfikacyjne sondy są wykonywane tylko w przypadku korzystania z witryny Azure Portal.
+>[!NOTE]
+>Definicja sondy nie jest obowiązkowa lub sprawdzana w przypadku używania Azure PowerShell, interfejsu wiersza polecenia platformy Azure, szablonów lub interfejsu API. Testy weryfikacyjne sondy są wykonywane tylko w przypadku korzystania z witryny Azure Portal.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Informacje o sygnale aplikacji, wykrywaniu sygnału i reakcji platformy
 
@@ -120,6 +120,9 @@ Poniżej pokazano, jak można wyrazić ten rodzaj konfiguracji sondy w szablonie
 Sondy protokołu HTTP i HTTPS kompilują sondę TCP i wystawią HTTP GET z określoną ścieżką. Obsługa obu tych sond HTTP GET ścieżek względnych. Sondy protokołu HTTPS są takie same jak sondy HTTP, dodając Transport Layer Security (TLS, znana wcześniej jako SSL) otoki. Sonda kondycji jest oznaczony jako, gdy wystąpienie odpowiada ze stanem HTTP 200 przed upływem limitu czasu.  Sonda kondycji próbuje domyślnie sprawdzić skonfigurowany port sondy kondycji co 15 sekund. Interwał sondy minimalna to 5 sekund. Łączny czas trwania wszystkich interwałów nie może przekroczyć 120 sekund.
 
 Sondy protokołu HTTP/HTTPS mogą również być przydatne do implementowania własnej logiki do usuwania wystąpień z rotacji modułu równoważenia obciążenia, jeśli port sondy jest również odbiornikiem dla samej usługi. Na przykład możesz zdecydować usunąć wystąpienie, gdy przekracza 90% zasobów Procesora i zwrócenia stanu 200 HTTP. 
+
+> [!NOTE] 
+> Sonda HTTPS wymaga użycia certyfikatów opartych na minimalnym skrócie podpisu SHA256 w całym łańcuchu.
 
 Jeśli korzystasz z usług w chmurze i mieć role sieci web, które używają w3wp.exe, możesz również uzyskać automatyczne monitorowanie witryny sieci Web. Błędy w kodzie witryny sieci Web zwrócenia stanu – 200 do sondy modułu równoważenia obciążenia.
 

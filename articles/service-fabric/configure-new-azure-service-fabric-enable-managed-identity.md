@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric — wdróż nowy klaster usługi Azure Service Fabric z obsługą tożsamości zarządzanej | Microsoft Docs
+title: Wdróż nowy klaster Service Fabric z tożsamością zarządzaną
 description: W tym artykule pokazano, jak utworzyć nowy klaster Service Fabric z włączoną tożsamością zarządzaną
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: cb32251c2507f3def7f5e830af15828ff2f04c29
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640719"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614863"
 ---
 # <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>Utwórz nowy klaster Service Fabric platformy Azure z obsługą tożsamości zarządzanej (wersja zapoznawcza)
 
@@ -38,7 +34,7 @@ Aby włączyć usługę zarządzanych tokenów tożsamości podczas tworzenia kl
 ]
 ```
 
-## <a name="errors"></a>Błędy
+## <a name="errors"></a>Errors
 
 Jeśli wdrożenie nie powiedzie się, oznacza to, że klaster nie znajduje się w wymaganej wersji Service Fabric (Minimalna obsługiwana wersja środowiska uruchomieniowego to 6,5 ZASTOSUJESZ pakietu CU2):
 

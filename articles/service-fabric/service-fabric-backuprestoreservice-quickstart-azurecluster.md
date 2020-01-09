@@ -1,27 +1,18 @@
 ---
 title: Okresowe tworzenie kopii zapasowych i przywracanie na platformie Azure Service Fabric
 description: Użyj funkcji okresowej kopii zapasowej i przywracania Service Fabric, aby umożliwić okresowe wykonywanie kopii zapasowych danych aplikacji.
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAA58600-897E-4CEE-9D1C-93FACF98AD1C
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 83a267453cd0c4f36fa5819d9d29934cf543bb76
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209603"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526332"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Okresowe tworzenie kopii zapasowych i przywracanie na platformie Azure Service Fabric 
+# <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Okresowe tworzenie kopii zapasowych i przywracanie w klastrze Service Fabric platformy Azure
 > [!div class="op_single_selector"]
 > * [Klastry na platformie Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Klastry autonomiczne](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)

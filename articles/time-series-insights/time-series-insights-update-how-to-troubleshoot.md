@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452492"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnozowanie i rozwiązywanie problemów dotyczących środowiska w wersji zapoznawczej
 
@@ -25,7 +25,7 @@ W tym artykule opisano kilka typowych problemów, które mogą wystąpić podcza
 
 Ten problem może wystąpić, jeśli nie masz uprawnień dostępu do środowiska Time Series Insights. Aby wyświetlić środowisko Time Series Insights, użytkownicy muszą mieć rolę dostępu na poziomie czytnika. Aby sprawdzić bieżące poziomy dostępu i udzielić dodatkowego dostępu, przejdź do sekcji **zasady dostępu do danych** w zasobie Time Series Insights w [Azure Portal](https://portal.azure.com/).
 
-  [Środowisko ![](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![sprawdzić zasady dostępu do danych.](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problem: w Eksploratorze wersji zapoznawczej nie są widoczne żadne dane
 
@@ -35,7 +35,7 @@ Istnieje kilka typowych przyczyn, dla których Twoje dane mogą nie być widoczn
 
     Sprawdź, czy źródło zdarzeń, które jest centrum zdarzeń lub Centrum IoT, otrzymuje dane ze swoich tagów lub wystąpień. Aby sprawdzić, przejdź do strony Przegląd zasobu w Azure Portal.
 
-    [Pulpit nawigacyjny ![— szczegółowe informacje](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [Przegląd metryk pulpitu nawigacyjnego ![.](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - Dane źródłowe zdarzenia nie są w formacie JSON.
 
@@ -45,14 +45,15 @@ Istnieje kilka typowych przyczyn, dla których Twoje dane mogą nie być widoczn
 
   * W przypadku usługi IoT Hub należy podać klucz, który ma uprawnienia do **połączenia z usługą** .
 
-    [![Konfiguracja](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
+    [![sprawdzić uprawnienia do centrum IoT Hub.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-  * Jak pokazano na powyższym obrazie, oba zasady **iothubowner** i pracują z **usługą** , ponieważ mają uprawnienia do **połączenia z usługą** .
+    * Zarówno zasady **iothubowner** , jak i działanie **usługi** , ponieważ mają uprawnienie do **łączenia usług** .
+
   * W przypadku centrum zdarzeń należy podać klucz, który ma uprawnienia do **nasłuchiwania** .
   
-    [Uprawnienia ![](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [![przeglądać uprawnień centrum zdarzeń.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-  * Jak pokazano na powyższym obrazie, obie zasady **odczytu** i **zarządzania** działają, ponieważ mają one uprawnienia do **nasłuchiwania** .
+    * Zasady **odczytu** i **zarządzania** działają, ponieważ mają uprawnienia do **nasłuchiwania** .
 
 - Podana Grupa odbiorców nie ma wyłącznej Time Series Insights.
 
@@ -98,7 +99,7 @@ Jeśli właściwość sygnatury czasowej nie zostanie określona jawnie, jako do
 
    Modele szeregów czasowych są obsługiwane tylko w środowiskach z opcją płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do środowiska S1 lub S2 z programu Time Series Insights Explorer w wersji zapoznawczej, zobacz [Wizualizacja danych w Eksploratorze](./time-series-insights-update-explorer.md).
 
-   [Dostęp ![](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [Nie ![żadnych zdarzeń w środowisku.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - Być może nie masz uprawnień do wyświetlania i edytowania modelu.
 
@@ -108,10 +109,12 @@ Jeśli właściwość sygnatury czasowej nie zostanie określona jawnie, jako do
 
 Ten problem może wystąpić, jeśli środowisko nie ma zdefiniowanej hierarchii modelu czasu szeregów czasowych. Aby uzyskać więcej informacji, zobacz temat [współpraca z modelami szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
 
-  [![modele szeregów czasowych](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [w ![wystąpienia nienadrzędne będą wyświetlane ostrzeżenie.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Czytaj informacje [o pracy z modelami szeregów czasowych](./time-series-insights-update-how-to-tsm.md).
+
 - Poznaj [obsługiwane kształty JSON](./how-to-shape-query-json.md).
+
 - Zapoznaj się z tematem [Planowanie i limity](./time-series-insights-update-plan.md) w programie Azure Time Series Insights Preview.

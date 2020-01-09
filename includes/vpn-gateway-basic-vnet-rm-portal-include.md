@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 02297a45c9560f867e97d7024862ea0de5d3f7b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467681"
 ---
 Możesz utworzyć sieć wirtualną w modelu wdrożenia usługi Resource Manager w witrynie Azure Portal, wykonując poniższe kroki. Aby uzyskać więcej informacji na temat sieci wirtualnych, zobacz [Virtual network overview](../articles/virtual-network/virtual-networks-overview.md) (Omówienie sieci wirtualnych).
 
@@ -42,7 +42,7 @@ Możesz utworzyć sieć wirtualną w modelu wdrożenia usługi Resource Manager 
 
    - **Subskrypcja**: Sprawdź, czy jest wyświetlana prawidłowa subskrypcja. Subskrypcje można zmieniać, korzystając z listy rozwijanej.
 
-   - **Grupa zasobów**: wybierz istniejącą grupę zasobów lub Utwórz nową, wprowadzając nazwę nowej grupy zasobów. Jeśli tworzysz nową grupę, nadaj jej nazwę odpowiadającą wartościom planowanej konfiguracji. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+   - **Grupa zasobów**: wybierz istniejącą grupę zasobów lub Utwórz nową, wprowadzając nazwę nowej grupy zasobów. Jeśli tworzysz nową grupę, nadaj jej nazwę odpowiadającą wartościom planowanej konfiguracji. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../articles/azure-resource-manager/management/overview.md#resource-groups).
 
    - **Lokalizacja**: Wybierz lokalizację sieci wirtualnej. Lokalizacja określa miejsce, w którym zostaną umieszczone zasoby wdrażane w tej sieci wirtualnej.
 

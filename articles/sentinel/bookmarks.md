@@ -1,27 +1,21 @@
 ---
-title: Śledź dane podczas polowania na platformie Azure — wskaźnikiem polowań | Microsoft Docs
+title: Korzystanie z zakładek łowiectwa do badań danych na platformie Azure — wskaźnik
 description: W tym artykule opisano, jak używać zakładek polowania na platformie Azure do śledzenia danych.
-services: sentinel
-documentationcenter: na
 author: cabailey
+ms.author: cabailey
 manager: rkarlin
-editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2019
-ms.author: cabailey
-ms.openlocfilehash: f4714dd09ada01f1adaa9081819e836601599a53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935322"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563738"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Śledź dane podczas polowania z platformą Azure — wskaźnikiem
 
@@ -29,7 +23,7 @@ Polowanie zagrożeń zwykle wymaga przejrzenia górach danych dzienników szukaj
 
 Zakładki polowania w usłudze Azure badającej pomoc można wykonać, zachowując zapytania wykonane w **dziennikach badania platformy Azure**, a także wyniki zapytania, które są odpowiednie. Możesz również rejestrować uwagi kontekstowe i odwoływać się do wyników, dodając notatki i Tagi. Dane oznaczone zakładką są widoczne dla Ciebie i Twoich członków zespołu w celu ułatwienia współpracy.
 
-W dowolnym momencie możesz ponownie odwiedzić dane z zakładkami na karcie **zakładki** okienka **polowania** . Możesz użyć opcji filtrowania i wyszukiwania, aby szybko znaleźć konkretne dane dla bieżącego badania. Alternatywnie możesz wyświetlać dane z zakładek bezpośrednio w tabeli **HuntingBookmark** w obszarze roboczym log Analytics. Na przykład:
+W dowolnym momencie możesz ponownie odwiedzić dane z zakładkami na karcie **zakładki** okienka **polowania** . Możesz użyć opcji filtrowania i wyszukiwania, aby szybko znaleźć konkretne dane dla bieżącego badania. Alternatywnie możesz wyświetlać dane z zakładek bezpośrednio w tabeli **HuntingBookmark** w obszarze roboczym log Analytics. Przykład:
 
 > [!div class="mx-imgBorder"]
 > ![widoku tabeli HuntingBookmark](./media/bookmarks/bookmark-table.png)
@@ -46,7 +40,7 @@ Ponadto w wersji zapoznawczej można wizualizować dane oznaczone zakładką, kl
 
 2. Wybierz jedną z zapytań polowania i po prawej stronie, w szczegółach zapytania polowania wybierz pozycję **Uruchom zapytanie**. 
 
-3. Wybierz pozycję **Wyświetl wyniki zapytania**. Na przykład:
+3. Wybierz pozycję **Wyświetl wyniki zapytania**. Przykład:
     
     > [!div class="mx-imgBorder"]
     > ![Wyświetl wyniki zapytania z łowiectwa wskaźnikowego platformy Azure](./media/bookmarks/new-processes-observed-example.png)
@@ -62,7 +56,7 @@ Ponadto w wersji zapoznawczej można wizualizować dane oznaczone zakładką, kl
 
 6. Po prawej stronie w okienku **Dodaj zakładkę** możesz opcjonalnie zaktualizować nazwę zakładki, dodać tagi i notatki, aby ułatwić identyfikację interesujących elementów.
 
-7. W sekcji **Informacje o zapytaniu** Użyj pól listy rozwijanej, aby wyodrębnić informacje z wyników zapytania dla typu **konta**, **hosta**i jednostki **adresów IP** . Ta akcja mapuje wybrany typ jednostki na określoną kolumnę z wyniku zapytania. Na przykład:
+7. W sekcji **Informacje o zapytaniu** Użyj pól listy rozwijanej, aby wyodrębnić informacje z wyników zapytania dla typu **konta**, **hosta**i jednostki **adresów IP** . Ta akcja mapuje wybrany typ jednostki na określoną kolumnę z wyniku zapytania. Przykład:
     
     > [!div class="mx-imgBorder"]
     > ![typy jednostek mapy dla zakładki polowania](./media/bookmarks/map-entity-types-bookmark.png)
@@ -124,7 +118,7 @@ Aby uzyskać instrukcje dotyczące korzystania z grafu badania, zobacz temat [Ko
 Aby wyświetlić zakładkę w zdarzeniu: Przejdź do > **wskaźnik** **zarządzania zagrożeniami** > **incydenty** i wybierz zdarzenie z zakładką. Wybierz pozycję **Wyświetl pełne szczegóły**, a następnie wybierz zakładkę **zakładki** .
 
 > [!TIP]
-> Jako alternatywę dla opcji **Akcje zdarzenia (wersja zapoznawcza)** na pasku poleceń możesz użyć menu kontekstowego ( **...** ) dla jednej lub kilku zakładek, aby wybrać opcje **tworzenia nowego zdarzenia**, **dodawania do istniejącego zdarzenia**i **usuwania z zdarzenie**. 
+> Jako alternatywę dla opcji **Akcje zdarzenia (wersja zapoznawcza)** na pasku poleceń możesz użyć menu kontekstowego ( **...** ) dla jednej lub kilku zakładek, aby wybrać opcje **tworzenia nowego zdarzenia**, **dodać do istniejącego zdarzenia**i **usunąć ze zdarzenia**. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Wyświetlanie danych z zakładkami w dziennikach
 

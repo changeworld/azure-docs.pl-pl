@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1986f51b834f177a7c8d70392cc532cbfadb7170
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434659"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Przewodnik Szybki start: rejestrowanie urządzeń X.509 w usłudze Device Provisioning Service przy użyciu języka C#
 
@@ -32,7 +32,7 @@ Chociaż kroki opisane w tym artykule działają na komputerach z systemem Windo
 
 * Zainstaluj program [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Zainstaluj [zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/download/).
+* Zainstaluj oprogramowanie [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-test-certificates"></a>Przygotowywanie certyfikatów testowych
 
@@ -49,17 +49,21 @@ Na potrzeby tego przewodnika Szybki start musisz mieć plik pem lub cer, który 
 
 Aby użyć tego narzędzia testowego do wygenerowania certyfikatów, wykonaj następujące czynności:
 
-1. Otwórz okno wiersza polecenia lub powłokę usługi git bash i przejdź do folderu roboczego na komputerze. Uruchom następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK usługi Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
+1. Znajdź nazwę tagu dla [najnowszej wersji](https://github.com/Azure/azure-iot-sdk-c/releases/latest) zestawu SDK języka C usługi Azure IoT.
 
-   ```cmd/sh
-   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
-   ```
+2. Otwórz wiersz polecenia lub powłokę Git Bash i przejdź do folderu roboczego na swojej maszynie. Uruchom następujące polecenia, aby sklonować najnowszą wersję repozytorium [usługi Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) w witrynie GitHub. Użyj znacznika znalezionego w poprzednim kroku jako wartości parametru `-b`:
 
-   Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
+    ```cmd/sh
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
+    ```
+
+    Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
    Narzędzia testowe znajdują się w folderze *azure-iot-sdk-c/tools/CACertificates* sklonowanego repozytorium.
 
-1. Postępuj zgodnie z instrukcjami opisanymi w artykule [Zarządzanie certyfikatami testowymi urzędu certyfikacji na potrzeby przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+3. Postępuj zgodnie z instrukcjami opisanymi w artykule [Zarządzanie certyfikatami testowymi urzędu certyfikacji na potrzeby przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
 Oprócz narzędzi w zestawie C SDK, [przykład weryfikacji certyfikatu grupy](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) w *zestawie Microsoft Azure IoT SDK dla platformy .NET* pokazuje, jak przeprowadzić potwierdzenie posiadania w programie C# przy użyciu istniejącego certyfikatu X. 509 pośredniego lub głównego urzędu certyfikacji.
 
@@ -119,7 +123,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core, kt�
    > * Trwałe kodowanie parametrów połączenia administratora usługi aprowizacji jest niezgodne z najlepszymi rozwiązaniami dotyczącymi zabezpieczeń. Zamiast tego parametry połączenia powinny być przechowywane w sposób bezpieczny, np. w zabezpieczonym pliku konfiguracji lub rejestrze.
    > * Pamiętaj, aby przekazać tylko publiczną część certyfikatu podpisywania. Nigdy nie przekazuj plików pfx (PKCS12) ani plików pem zawierających klucze prywatne do usługi aprowizacji.
 
-1. Dodaj następującą metodę do `Program` klasy. Ten kod tworzy wpis grupy rejestracji, a następnie wywołuje metodę `CreateOrUpdateEnrollmentGroupAsync` na `ProvisioningServiceClient` w celu dodania grupy rejestracji do usługi aprowizacji.
+1. Dodaj następującą metodę do klasy `Program`. Ten kod tworzy wpis grupy rejestracji, a następnie wywołuje metodę `CreateOrUpdateEnrollmentGroupAsync` na `ProvisioningServiceClient` w celu dodania grupy rejestracji do usługi aprowizacji.
 
    ```csharp
    public static async Task RunSample()

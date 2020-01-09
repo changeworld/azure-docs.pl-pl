@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432535"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
-Masz pytania lub problemy z [usługą Azure Application Insights w języku Java][java]? Poniżej przedstawiono niektóre porady.
+Masz pytania lub problemy z [usługą Azure Application Insights w języku Java][java]? Oto kilka wskazówek.
 
 ## <a name="build-errors"></a>Błędy kompilacji
 **W przypadku, gdy dodajesz zestaw Application Insights SDK za pośrednictwem Maven lub Gradle, nastąpiło przebudowywanie lub IntelliJ.**
@@ -52,7 +52,6 @@ Masz pytania lub problemy z [usługą Azure Application Insights w języku Java]
 * Czy skonfigurowano agenta Java przez [skonfigurowanie agenta Java](java-agent.md) ?
 * Upewnij się, że pliki jar i AI-Agent. XML agenta Java są umieszczane w tym samym folderze.
 * Upewnij się, że zależność, którą próbujesz zbierać, jest obsługiwana przez funkcję Autocollection. Obecnie obsługujemy tylko usługę MySQL, MsSQL, Oracle DB i pamięć podręczną Azure dla kolekcji zależności Redis.
-* Czy używasz JDK 1,7 lub 1,8? Obecnie nie obsługujemy kolekcji zależności w programie JDK 9.
 
 ## <a name="no-usage-data"></a>Brak danych użycia
 **Widzę dane dotyczące żądań i czasów odpowiedzi, ale nie wyświetlaj strony, przeglądarki ani danych użytkownika.**
@@ -75,7 +74,7 @@ W kodzie:
     config.setTrackingIsDisabled(true);
 ```
 
-**Oraz**
+**Or**
 
 Zaktualizuj plik ApplicationInsights. XML (w folderze Resources w projekcie). Dodaj następujące elementy w węźle głównym:
 
@@ -100,7 +99,7 @@ Przy użyciu metody XML, należy ponownie uruchomić aplikację po zmianie warto
 
 Aby uzyskać więcej informacji na temat tego, co dzieje się w interfejsie API, Dodaj `<SDKLogger/>` w węźle głównym pliku konfiguracji ApplicationInsights. XML.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 Możesz również nakazać Rejestratorowi wyjście do pliku:
 

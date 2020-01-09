@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593606"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660634"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co to jest sieć dostarczania zawartości na platformie Azure?
 Sieć dostarczania zawartości (CDN, content delivery network) to rozproszona sieć serwerów, które pozwalają wydajnie dostarczać użytkownikom zawartość internetową. Sieci CDN umożliwiają przechowywanie buforowanej zawartości na serwerach brzegowych w lokalizacjach punktu obecności (POP, Point-of-Presence), które znajdują się blisko użytkowników końcowych, co pozwala zminimalizować opóźnienie. 
@@ -35,7 +35,7 @@ Zalety używania usługi Azure CDN do dostarczania zasobów witryn internetowych
 
 Aby wyświetlić listę bieżących lokalizacji węzłów usługi CDN, zobacz [Lokalizacje POP usługi Azure CDN](cdn-pop-locations.md).
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 ![Omówienie usługi CDN](./media/cdn-overview/cdn-overview.png)
 
 1. Użytkownik (Alice) żąda pliku (nazywanego również zasobem) przy użyciu adresu URL ze specjalną nazwą domeny, taką jak _&lt;nazwa punktu końcowego&gt;_ .azureedge.net. Ta nazwa może być nazwą hosta punktu końcowego lub domeną niestandardową. System DNS kieruje żądanie do lokalizacji POP o najwyższej wydajności — zwykle jest to punkt POP znajdujący się geograficznie najbliżej użytkownika.
@@ -59,7 +59,7 @@ Każda subskrypcja platformy Azure ma limity domyślne dla następujących zasob
  - Liczba punktów końcowych, które można utworzyć w profilu CDN. 
  - Liczba domen niestandardowych, które można zamapować na punkt końcowy.
 
-Aby dowiedzieć się więcej o limitach subskrypcji usługi CDN, zobacz [Limity usługi CDN](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Aby dowiedzieć się więcej o limitach subskrypcji usługi CDN, zobacz [Limity usługi CDN](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
     
 ## <a name="azure-cdn-features"></a>Funkcje usługi Azure CDN
 Usługa Azure CDN oferuje następujące kluczowe funkcje:

@@ -1,25 +1,18 @@
 ---
-title: Tworzenie klastrów Service Fabric platformy Azure w systemach Windows Server i Linux | Microsoft Docs
+title: Tworzenie klastrów w systemach Windows Server i Linux
 description: Klastry Service Fabric są uruchamiane w systemach Windows Server i Linux, co oznacza, że będzie można wdrażać i hostować aplikacje Service Fabric wszędzie tam, gdzie będzie można uruchamiać system Windows Server lub Linux.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: edb6a84762ce65e65ff33492f3a7bcebbce60777
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390377"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614676"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Omówienie klastrów Service Fabric na platformie Azure
 Klaster Service Fabric jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym są wdrażane i zarządzane mikrousługi. Maszyna lub maszyna wirtualna będąca częścią klastra nazywa się węzłem klastra. Klastry mogą być skalowane do tysięcy węzłów. Jeśli dodasz nowe węzły do klastra, Service Fabric ponownie zrównoważą repliki partycji usługi i wystąpienia w większej liczbie węzłów. Ogólna wydajność aplikacji zwiększa się i rywalizacja o zmniejszenie ilości pamięci. Jeśli węzły w klastrze nie są efektywnie używane, można zmniejszyć liczbę węzłów w klastrze. Service Fabric ponownie zrównoważy repliki partycji i wystąpienia na zmniejszonej liczbie węzłów, aby lepiej wykorzystać sprzęt w każdym węźle.
@@ -30,7 +23,7 @@ Typ węzła definiuje rozmiar, liczbę i właściwości zestawu węzłów (maszy
 Klaster Service Fabric na platformie Azure to zasób platformy Azure, który używa i współdziała z innymi zasobami platformy Azure:
 * Maszyny wirtualne i karty sieci wirtualnych
 * zestawy skalowania maszyn wirtualnych
-* sieci wirtualne
+* sieci wirtualnych
 * moduły równoważenia obciążenia
 * konta magazynu
 * publiczne adresy IP
@@ -55,9 +48,9 @@ Zestawy skalowania umożliwiają wdrażanie kolekcji maszyn wirtualnych jako zes
 Aby uzyskać więcej informacji, Przeczytaj [Service Fabric typy węzłów i zestawy skalowania maszyn wirtualnych](service-fabric-cluster-nodetypes.md).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-Wystąpienia maszyn wirtualnych są przyłączone za [modułem równoważenia obciążenia platformy Azure](/azure/load-balancer/load-balancer-overview), który jest skojarzony z [publicznym adresem IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) i etykietą DNS.  W przypadku inicjowania obsługi administracyjnej klastra z  *&lt;&gt;klastrem*nazwa DNS,  *&lt;ClusterName.&lt; &gt; Location&gt;. cloudapp.Azure.com* to etykieta DNS skojarzona z modułem równoważenia obciążenia przed zestawem skalowania.
+Wystąpienia maszyn wirtualnych są przyłączone za [modułem równoważenia obciążenia platformy Azure](/azure/load-balancer/load-balancer-overview), który jest skojarzony z [publicznym adresem IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) i etykietą DNS.  W przypadku inicjowania obsługi administracyjnej klastra przy użyciu *&lt;clustername&gt;* nazwa DNS *&lt;ClusterName&gt;.&lt;location&gt;. CLOUDAPP.Azure.com* to etykieta DNS skojarzona z modułem równoważenia obciążenia przed zestawem skalowania.
 
-Maszyny wirtualne w klastrze mają tylko [prywatne adresy IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Ruch związany z zarządzaniem i ruch usługi są kierowane przez publiczny moduł równoważenia obciążenia.  Ruch sieciowy jest kierowany do tych maszyn za pośrednictwem reguł translatora adresów sieciowych (połączenia klientów z określonymi węzłami/wystąpieniami) lub reguł równoważenia obciążenia (ruch przechodzi do działania okrężnego maszyn wirtualnych).  Moduł równoważenia obciążenia ma skojarzony publiczny adres IP z nazwą DNS w formacie:  *&lt;ClusterName.&lt; &gt; Location&gt;. cloudapp.Azure.com*.  Publiczny adres IP jest innym zasobem platformy Azure w grupie zasobów.  W przypadku zdefiniowania wielu typów węzłów w klastrze dla każdego typu węzła/zestawu skalowania zostanie utworzony moduł równoważenia obciążenia. Lub można skonfigurować pojedynczy moduł równoważenia obciążenia dla wielu typów węzłów.  Typ węzła podstawowego ma etykietę  *&lt;DNS ClusterName.&lt; &gt; Location&gt;. cloudapp.Azure.com*, inne typy węzłów mają  *&lt;&gt;&gt;etykietęDNS&lt; ClusterName-NodeType.&lt; Location&gt;. cloudapp.Azure.com*.
+Maszyny wirtualne w klastrze mają tylko [prywatne adresy IP](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Ruch związany z zarządzaniem i ruch usługi są kierowane przez publiczny moduł równoważenia obciążenia.  Ruch sieciowy jest kierowany do tych maszyn za pośrednictwem reguł translatora adresów sieciowych (połączenia klientów z określonymi węzłami/wystąpieniami) lub reguł równoważenia obciążenia (ruch przechodzi do działania okrężnego maszyn wirtualnych).  Moduł równoważenia obciążenia ma skojarzony publiczny adres IP z nazwą DNS w formacie: *&lt;clustername&gt;.&lt;location&gt;. cloudapp.Azure.com*.  Publiczny adres IP jest innym zasobem platformy Azure w grupie zasobów.  W przypadku zdefiniowania wielu typów węzłów w klastrze dla każdego typu węzła/zestawu skalowania zostanie utworzony moduł równoważenia obciążenia. Lub można skonfigurować pojedynczy moduł równoważenia obciążenia dla wielu typów węzłów.  Typ węzła podstawowego ma etykietę DNS *&lt;clustername&gt;.&lt;location&gt;. cloudapp.Azure.com*, inne typy węzłów mają etykietę DNS *&lt;ClusterName&gt;-&lt;nodetype&gt;.&lt;lokalizacji&gt;. cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Konta magazynu
 Każdy typ węzła klastra jest obsługiwany przez [konto usługi Azure Storage](/azure/storage/common/storage-introduction) i dyski zarządzane.
@@ -80,11 +73,11 @@ Aby uzyskać więcej informacji, zapoznaj się z artykułem [Zabezpieczenia klie
 ### <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 Access Control oparte na rolach (RBAC) umożliwia przypisywanie szczegółowych kontroli dostępu do zasobów platformy Azure.  Można przypisać różne reguły dostępu do subskrypcji, grup zasobów i zasobów.  Reguły RBAC są dziedziczone wzdłuż hierarchii zasobów, chyba że zostaną zastąpione na niższym poziomie.  Można przypisać dowolnych grup użytkowników lub użytkowników w usłudze AAD za pomocą reguł RBAC, aby wyznaczeni Użytkownicy i grupy mogli modyfikować klaster.  Aby uzyskać więcej informacji, zapoznaj się z [omówieniem usługi Azure RBAC](/azure/role-based-access-control/overview).
 
-Service Fabric obsługuje również kontrolę dostępu, aby ograniczyć dostęp do niektórych operacji klastra dla różnych grup użytkowników. Dzięki temu klaster jest bezpieczniejszy. Dla klientów, którzy łączą się z klastrem, są obsługiwane dwa typy kontroli dostępu: Rola administratora i rola użytkownika.  
+Service Fabric obsługuje również kontrolę dostępu, aby ograniczyć dostęp do niektórych operacji klastra dla różnych grup użytkowników. Dzięki temu klaster jest bezpieczniejszy. Obsługiwane są dwa typy kontroli dostępu dla klientów łączących się z klastrem: rola administratora i rola użytkownika.  
 
 Aby uzyskać więcej informacji, Przeczytaj [Service Fabric Access Control opartych na rolach (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
 
-### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci 
+### <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń 
 Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) kontrolują ruch przychodzący i wychodzący podsieci, maszyny wirtualnej lub konkretnej karty sieciowej.  Domyślnie, gdy wiele maszyn wirtualnych jest umieszczanych w tej samej sieci wirtualnej, mogą komunikować się ze sobą za pośrednictwem dowolnego portu.  Jeśli chcesz ograniczyć komunikację między maszynami, możesz zdefiniować sieciowych grup zabezpieczeń do segmentacji sieci lub izolowania maszyn wirtualnych od siebie.  Jeśli w klastrze istnieje wiele typów węzłów, można zastosować sieciowych grup zabezpieczeń do podsieci, aby uniemożliwić komunikację między maszynami należącymi do różnych typów węzłów.  
 
 Aby uzyskać więcej informacji, Przeczytaj o [grupach zabezpieczeń](/azure/virtual-network/security-overview)

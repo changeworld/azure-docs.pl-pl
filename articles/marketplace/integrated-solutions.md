@@ -1,31 +1,33 @@
 ---
-title: Zintegrowane rozwiązania | Azure
+title: Zintegrowane rozwiązania — Azure Marketplace
 description: Zintegrowane rozwiązania w witrynie Azure Marketplace i AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: v-chjen
-ms.openlocfilehash: 420dfbc117a45c325db8e9fa2a622414bc78bd07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 11f1504e8bd57fe34eb7acdc50598403225adcd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427174"
 ---
-# <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Zintegrowane rozwiązania w witrynie Azure Marketplace i AppSource
+# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Zintegrowane rozwiązania w Microsoft AppSource i Azure Marketplace
 
-Zintegrowane rozwiązanie wiąże się z najlepszymi technologiami partnerów firmy Microsoft, a także konsultacji, wdrażania i wsparcia zapewnianych przez Integratory systemów specjalistycznych (SI).
+Zintegrowane rozwiązanie wiąże się z najlepszymi technologiami z partnerów firmy Microsoft, a także konsultacji, wdrażania i wsparcia udostępnianych przez partnerów usług specjalistycznych.
 
-Te rozwiązania zostały stworzone z myślą o konkretnym potrzebie klienta lub scenariuszu, który rozpoczyna się od znajomości wyzwania branżowego lub problemów. Dwie lub więcej najlepszych technologii są zintegrowane przez SI, aby utworzyć ujednolicone i powtarzalne środowisko wdrażania dla klientów, co ułatwia ich szybkie uruchamianie. Integrator systemów udostępnia również pojedynczy punkt kontaktu dla klienta, który zapewnia odpowiednie dostosowania, doradztwo i pomoc techniczną dla rozwiązania.  Wynikiem jest zintegrowane rozwiązanie, w tym technologia i usługi.
+Co najmniej dwóch partnerów firmy Microsoft integrują swoją technologię i usługi w celu utworzenia ujednoliconego, bezproblemowego i powtarzalnego środowiska wdrażania, aby klienci mogli szybko rozpocząć pracę.  Partner lidera w rozwiązaniu (zazwyczaj partner usług) oferuje pojedynczy punkt kontaktu dla klienta, który zapewnia odpowiednie dostosowania, doradztwo i pomoc techniczną dotyczącą rozwiązania.
+
+W innych scenariuszach partnerzy współsprzedają lub wspólnie wspólnie ze sobą swoje rozwiązanie, natomiast zintegrowane rozwiązanie to wspólnie skompilowane nowe rozwiązanie, które integruje technologię i usługi między partnerami.
 
 ## <a name="advantages"></a>Zalety
 
 Zalety zintegrowanego podejścia to:
 
-* *Znajomość branżowa*: Integratory systemów dostarczające rozwiązania i wiedzę charakterystyczną dla branży
+* *Ekspertyza branżowa*: Partnerzy usług oferujący rozwiązania i wiedzę specyficzną dla branży
 * *Czas do wartości*: zintegrowane podejście do wdrażania, które pomaga w realizacji natychmiastowych korzyści
 * *Najlepsze rozwiązania z zakresu rasy*: odkryj łatwość zintegrowanego środowiska zakupu i implementacji
 

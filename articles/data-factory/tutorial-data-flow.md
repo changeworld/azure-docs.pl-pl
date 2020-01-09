@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e686648680261e2d13707f1704c56f306c510397
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439470"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Przekształcanie danych przy użyciu mapowania przepływów danych
 
@@ -57,7 +57,7 @@ W tym kroku utworzysz fabrykę danych i otworzysz środowisko Data Factory, aby 
 
     b. Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów. 
          
-    Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/resource-group-overview.md). 
+    Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources (Używanie grup zasobów do zarządzania zasobami platformy Azure)](../azure-resource-manager/management/overview.md). 
 6. W obszarze **Wersja** wybierz pozycję **V2**.
 7. W obszarze **Lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (np. usługi Azure Storage i SQL Database) i obliczenia (na przykład usługa Azure HDInsight) używane przez fabrykę danych mogą znajdować się w innych regionach.
 8. Wybierz pozycję **Utwórz**. 

@@ -1,25 +1,14 @@
 ---
-title: Obsługiwane wersje klastra na platformie Azure Service Fabric | Microsoft Docs
-description: Dowiedz się więcej o wersjach klastra w usłudze Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Obsługiwane wersje klastra w usłudze Azure Service Fabric
+description: Dowiedz się więcej o wersjach klastra w usłudze Azure Service Fabric, łącznie z linkiem do najnowszych wydań z blogu zespołu Service Fabric.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: c2453167bbdabbb201f2463e1eec8206be6d4223
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1d54f4f459b71469c5d10c949d35841572242c07
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186492"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639007"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane Service Fabric wersje
 
@@ -38,10 +27,10 @@ W poniższej tabeli wymieniono wersje Service Fabric i ich daty końcowe pomocy 
 | --- | --- |--- | --- |
 | Wszystkie wersje klastra przed 5.3.121 | 5.1.158.* |Mniejsze niż lub równe wersji 2,3 |20 stycznia 2017 |
 | 5.3.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,3 |24 lutego 2017 |
-| 5.4.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,4 |10 maja 2017       |
+| 5.4.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,4 |10 maja 2017 r.       |
 | 5.5.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,5 |10 sierpnia 2017 r.    |
 | 5.6.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,6 |13 października 2017 r.   |
-| 5.7.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,7 |15 grudnia 2017  |
+| 5.7.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,7 |15 grudnia 2017 r.  |
 | 6.0.* | 5.6.205.* |Mniejsze niż lub równe wersji 2,8 |30 marca 2018     |
 | 6.1.* | 5.7.221.* |Mniejsze niż lub równe wersji 3,0 |15 lipca 2018 r.      |
 | 6.2.* | 6.0.232.* |Mniejsze niż lub równe wersji 3,1 |26 października 2018   |

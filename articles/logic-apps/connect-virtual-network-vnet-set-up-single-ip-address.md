@@ -1,21 +1,23 @@
 ---
-title: Konfigurowanie dostępu dla wielu ISEs
-description: W przypadku wielu środowisk usługi Integration Service (ISEs) można skonfigurować jeden publiczny adres IP wychodzący, aby uzyskać dostęp do systemów zewnętrznych z Azure Logic Apps
+title: Skonfiguruj publiczny adres IP wychodzący dla ISEs
+description: Dowiedz się, jak skonfigurować jeden publiczny adres IP dla środowisk usług integracji (ISEs) w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/16/2019
+ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453477"
 ---
-# <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>Konfigurowanie dostępu dla wielu środowisk usługi integracji w Azure Logic Apps
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Skonfiguruj pojedynczy adres IP dla co najmniej jednego środowiska usługi integracji w Azure Logic Apps
 
-Podczas pracy z Azure Logic Apps można skonfigurować [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) do hostowania aplikacji logiki, które wymagają dostępu do zasobów w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli masz wiele wystąpień ISE, które wymagają dostępu do innych punktów końcowych, które mają ograniczenia adresów IP, wdróż [zaporę platformy Azure](../firewall/overview.md) lub [sieciowe urządzenie wirtualne](../virtual-network/virtual-networks-overview.md#filter-network-traffic) w sieci wirtualnej i Roześlij ruch wychodzący za pomocą tej zapory lub wirtualnego urządzenia sieciowego. Następnie wszystkie wystąpienia ISE w sieci wirtualnej używają jednego, przewidywalnego i publicznego adresu IP do komunikacji z systemami docelowymi. Dzięki temu nie trzeba konfigurować dodatkowych otwartych zapór w systemach docelowych dla każdego ISEu. W tym temacie pokazano, jak skierować ruch wychodzący za pośrednictwem zapory platformy Azure, ale możesz zastosować podobne koncepcje do wirtualnego urządzenia sieciowego, takiego jak zapora innej firmy z witryny Azure Marketplace.
+Podczas pracy z Azure Logic Apps można skonfigurować [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) do hostowania aplikacji logiki, które wymagają dostępu do zasobów w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli masz wiele wystąpień ISE, które wymagają dostępu do innych punktów końcowych, które mają ograniczenia adresów IP, wdróż [zaporę platformy Azure](../firewall/overview.md) lub [sieciowe urządzenie wirtualne](../virtual-network/virtual-networks-overview.md#filter-network-traffic) w sieci wirtualnej i Roześlij ruch wychodzący za pomocą tej zapory lub wirtualnego urządzenia sieciowego. Następnie wszystkie wystąpienia ISE w sieci wirtualnej używają jednego, publicznego, statycznego i przewidywalnego adresu IP do komunikowania się z systemami docelowymi. Dzięki temu nie trzeba konfigurować dodatkowych otwartych zapór w tych systemach docelowych dla każdego ISEu.
+
+W tym temacie pokazano, jak skierować ruch wychodzący za pośrednictwem zapory platformy Azure, ale możesz zastosować podobne koncepcje do sieciowego urządzenia wirtualnego, takiego jak zapora innej firmy z portalu Azure Marketplace. Ten temat koncentruje się na konfiguracji wielu wystąpień ISE, ale można również użyć tej metody dla jednego ISEu, gdy scenariusz wymaga ograniczenia liczby adresów IP, które wymagają dostępu. Należy rozważyć, czy dodatkowe koszty zapory lub urządzenia sieci wirtualnej mają sens dla danego scenariusza. Dowiedz się więcej o [cenach zapory platformy Azure](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: e33d981429f0e79accbe47ea0edea5f3c7a2157b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ed0cd51fc686735f2d9c110ce46d5904107cafc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430611"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Jak używać Access Control opartych na rolach na platformie Azure API Management
 
@@ -28,32 +28,32 @@ Usługa Azure API Management opiera się na Access Control opartej na rolach (RB
 
 ## <a name="built-in-roles"></a>Wbudowane role
 
-API Management obecnie udostępnia trzy wbudowane role i doda dwie kolejne role w najbliższej przyszłości. Role te można przypisywać w różnych zakresach, w tym w ramach subskrypcji, grupy zasobów i wystąpienia poszczególnych API Management. Jeśli na przykład przypiszesz rolę "czytnik usługi Azure API Management Service" do użytkownika na poziomie grupy zasobów, użytkownik ma dostęp do odczytu do wszystkich wystąpień API Management wewnątrz grupy zasobów. 
+API Management obecnie udostępnia trzy wbudowane role i doda dwie kolejne role w najbliższej przyszłości. Role te można przypisywać w różnych zakresach, w tym w ramach subskrypcji, grupy zasobów i wystąpienia poszczególnych API Management. Jeśli na przykład przypiszesz rolę "API Management Service Reader" do użytkownika na poziomie grupy zasobów, użytkownik ma dostęp do odczytu do wszystkich wystąpień API Management wewnątrz grupy zasobów. 
 
-W poniższej tabeli przedstawiono krótkie opisy wbudowanych ról. Role te można przypisywać przy użyciu Azure Portal lub innych narzędzi, w tym [programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), interfejsu [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)i [interfejsów API REST](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Aby uzyskać szczegółowe informacje o sposobie przypisywania ról wbudowanych, zobacz Korzystanie z przypisań [ról w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+W poniższej tabeli przedstawiono krótkie opisy wbudowanych ról. Role te można przypisywać przy użyciu Azure Portal lub innych narzędzi, w tym [programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), interfejsu [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)i [interfejsów API REST](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Aby uzyskać szczegółowe informacje o sposobie przypisywania ról wbudowanych, zobacz [Korzystanie z przypisań ról w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
-| Role          | Dostęp do odczytu<sup>[1]</sup> | Dostęp do zapisu<sup>[2]</sup> | Tworzenie, usuwanie, skalowanie, Sieć VPN i konfiguracja domeny niestandardowej usługi | Dostęp do starszego portalu wydawców | Opis
+| Rola          | Dostęp do odczytu<sup>[1]</sup> | Dostęp do zapisu<sup>[2]</sup> | Tworzenie, usuwanie, skalowanie, Sieć VPN i konfiguracja domeny niestandardowej usługi | Dostęp do starszego portalu wydawców | Opis
 | ------------- | ---- | ---- | ---- | ---- | ---- 
-| Współautor usługi API Management platformy Azure | ✓ | ✓ | ✓ | ✓ | Administrator. Ma pełny dostęp CRUD do usług i jednostek API Management (na przykład interfejsów API i zasad). Ma dostęp do starszego portalu wydawców. |
-| Czytnik usługi API Management platformy Azure | ✓ | | || Ma dostęp tylko do odczytu do usług API Management i jednostek. |
-| Operator usługi API Management platformy Azure | ✓ | | ✓ | | Może zarządzać usługami API Management, ale nie do jednostek.|
-| Edytor usługi API Management platformy Azure<sup>*</sup> | ✓ | ✓ | |  | Może zarządzać jednostkami API Management, ale nie usługami.|
-| Usługa Azure API Management Content Manager<sup>*</sup> | ✓ | | | ✓ | Może zarządzać portalem dla deweloperów. Dostęp tylko do odczytu do usług i jednostek.|
+| Współautor usługi API Management | ✓ | ✓ | ✓ | ✓ | Administrator. Ma pełny dostęp CRUD do usług i jednostek API Management (na przykład interfejsów API i zasad). Ma dostęp do starszego portalu wydawców. |
+| API Management czytnika usług | ✓ | | || Ma dostęp tylko do odczytu do usług API Management i jednostek. |
+| Operator usługi API Management | ✓ | | ✓ | | Może zarządzać usługami API Management, ale nie do jednostek.|
+| API Management Edytor usług<sup>*</sup> | ✓ | ✓ | |  | Może zarządzać jednostkami API Management, ale nie usługami.|
+| API Management<sup>*</sup> programu Content Manager | ✓ | | | ✓ | Może zarządzać portalem dla deweloperów. Dostęp tylko do odczytu do usług i jednostek.|
 
 <sup>[1] dostęp do odczytu do usług API Management i jednostek (na przykład interfejsów API i zasad).</sup>
 
 <sup>[2] dostęp do zapisu do usług API Management i jednostek z wyjątkiem następujących operacji: Tworzenie, usuwanie i skalowanie wystąpienia; Konfiguracja sieci VPN; i konfiguracja domeny niestandardowej.</sup>
 
-<sup>\*Rola Edytor usługi będzie dostępna po przeprowadzeniu migracji wszystkich interfejsów użytkownika administratora z istniejącego portalu wydawców do Azure Portal. Rola Menedżera zawartości będzie dostępna po rozpoczęciu portalu wydawców tylko w celu uwzględnienia funkcji związanych z zarządzaniem portalem dla deweloperów.</sup>  
+<sup>\* rola edytora usługi będzie dostępna po przeprowadzeniu migracji wszystkich interfejsów użytkownika administratora z istniejącego portalu wydawców do Azure Portal. Rola Menedżera zawartości będzie dostępna po rozpoczęciu portalu wydawców tylko w celu uwzględnienia funkcji związanych z zarządzaniem portalem dla deweloperów.</sup>  
 
 ## <a name="custom-roles"></a>Role niestandardowe
 
 Jeśli żadna z wbudowanych ról nie spełnia określonych wymagań, można utworzyć role niestandardowe, aby zapewnić bardziej szczegółowy sposób zarządzania dostępem dla API Management jednostek. Można na przykład utworzyć rolę niestandardową, która ma dostęp tylko do odczytu do usługi API Management, ale ma dostęp tylko do zapisu do jednego określonego interfejsu API. Aby dowiedzieć się więcej na temat ról niestandardowych, zobacz [role niestandardowe w usłudze Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
 > [!NOTE]
-> Aby można było zobaczyć wystąpienie API Management w Azure Portal, rola niestandardowa musi zawierać ```Microsoft.ApiManagement/service/read``` akcję.
+> Aby można było zobaczyć wystąpienie API Management w Azure Portal, rola niestandardowa musi zawierać akcję ```Microsoft.ApiManagement/service/read```.
 
-Gdy tworzysz rolę niestandardową, łatwiej jest zacząć od jednej z wbudowanych ról. Edytuj atrybuty, aby dodać **Akcje**,nochangess lub **AssignableScopes**, a następnie Zapisz zmiany jako nową rolę. Poniższy przykład rozpoczyna się od roli "czytnik usługi Azure API Management Service" i tworzy rolę niestandardową o nazwie "Edytor interfejsu API kalkulatora". Rolę niestandardową można przypisać do określonego interfejsu API. W związku z tym ta rola ma dostęp tylko do tego interfejsu API. 
+Gdy tworzysz rolę niestandardową, łatwiej jest zacząć od jednej z wbudowanych ról. Edytuj **atrybuty, aby**dodać **Akcje**, nochangess lub **AssignableScopes**, a następnie Zapisz zmiany jako nową rolę. Poniższy przykład rozpoczyna się od roli "API Management Service Reader" i tworzy rolę niestandardową o nazwie "Edytor interfejsu API kalkulatora". Rolę niestandardową można przypisać do określonego interfejsu API. W związku z tym ta rola ma dostęp tylko do tego interfejsu API. 
 
 ```powershell
 $role = Get-AzRoleDefinition "API Management Service Reader Role"
@@ -70,7 +70,7 @@ New-AzRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionNa
 
 Artykuł [działania dostawcy zasobów Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement) zawiera listę uprawnień, które mogą być udzielane na poziomie API Management.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Role-Based-Access-Control-in-API-Management/player]

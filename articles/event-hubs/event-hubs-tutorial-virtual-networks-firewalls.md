@@ -1,22 +1,22 @@
 ---
-title: Samouczek — Włączanie integracji sieci wirtualnych i zapór w usłudze Event Hubs | Microsoft Docs
+title: Event Hubs platformy Azure — Włączanie integracji i zapór sieci wirtualnych
 description: W tym samouczku dowiesz się, jak zintegrować usługę Event Hubs z sieciami wirtualnymi i zaporami, aby umożliwić bezpieczny dostęp.
 services: event-hubs
 author: axisc
 manager: darosa
 ms.author: aschhab
-ms.date: 11/28/2018
+ms.date: 12/20/2019
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f911a1513c6f89180ea51cc0de96dc8a475c7fc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605860"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437123"
 ---
-# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Samouczek: Włączanie integracji sieci wirtualnych i zapór w przestrzeni nazw usługi Event Hubs
+# <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Samouczek: Włączanie integracji i zapór sieci wirtualnych w Event Hubs przestrzeni nazw
 
 [Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) rozszerzają prywatną przestrzeń adresową i tożsamość sieci wirtualnej do usług platformy Azure za pośrednictwem bezpośredniego połączenia. Punkty końcowe umożliwiają zabezpieczanie krytycznych zasobów usługi platformy Azure tylko do sieci wirtualnych. Ruch z sieci wirtualnej do usługi platformy Azure zawsze pozostaje w sieci szkieletowej platformy Microsoft Azure.
 
@@ -35,7 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > Gdy włączone są sieci wirtualne, integracje firmy Microsoft nie są obsługiwane.
 > Typowe scenariusze platformy Azure, które nie działają z sieciami wirtualnymi:
 > * Diagnostyka Azure i rejestrowanie
-> * Usługa Azure Stream Analytics
+> * Azure Stream Analytics
 > * Integracja usługi Event Grid
 > * Usługi Web Apps i Functions muszą być włączone w sieci wirtualnej.
 > * Funkcja IoT Hub Routes
@@ -53,7 +53,7 @@ Będziemy korzystać z istniejącej przestrzeni nazw usługi Event Hubs, dlatego
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Przejdź najpierw do [witryny Azure portal][Azure portal] i zaloguj się przy użyciu subskrypcji platformy Azure.
+Najpierw przejdź do [Azure Portal][Azure portal] i zaloguj się przy użyciu subskrypcji platformy Azure.
 
 ## <a name="select-event-hubs-namespace"></a>Wybieranie przestrzeni nazw usługi Event Hubs
 

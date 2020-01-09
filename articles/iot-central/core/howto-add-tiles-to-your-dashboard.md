@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: affd5b58c312e07177fbfdaaf88f689b1a8caebd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435128"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurowanie pulpitu nawigacyjnego aplikacji
 
-**Pulpit nawigacyjny** to strona, która ładuje się, gdy użytkownicy, którzy mają dostęp do aplikacji, przejdą do adresu URL aplikacji. Jeśli aplikacja została utworzona przy użyciu jednego z **szablonów aplikacji**, aplikacja będzie mieć wstępnie zdefiniowany pulpit nawigacyjny do uruchomienia. Jeśli aplikacja została utworzona przy użyciu szablonu aplikacja **niestandardowa** , pulpit nawigacyjny będzie pusty do uruchomienia.
+**Pulpit nawigacyjny** to strona, która ładuje się, gdy użytkownicy, którzy mają dostęp do aplikacji, przejdą do adresu URL aplikacji. Jeśli aplikacja została utworzona przy użyciu jednego z **szablonów aplikacji**, aplikacja będzie mieć wstępnie zdefiniowany pulpit nawigacyjny do uruchomienia. Jeśli aplikacja została utworzona za pomocą szablonu aplikacji ze **starszej wersji** , pulpit nawigacyjny będzie pusty do uruchomienia.
 
 > [!NOTE]
 > Oprócz domyślnego pulpitu nawigacyjnego aplikacji użytkownicy mogą [tworzyć wiele pulpitów nawigacyjnych](howto-create-personal-dashboards.md) . Te pulpity nawigacyjne mogą być osobiste tylko dla użytkownika lub udostępniane wszystkim użytkownikom aplikacji. 
@@ -70,10 +70,10 @@ Wizualizację wykresu można także zmienić, klikając ikonę **linijki** na ka
 
 Poniższa tabela zawiera podsumowanie użycia kafelków w usłudze Azure IoT Central:
  
-| Tabliczek | Pulpit nawigacyjny | Opis
+| Tile | Pulpit nawigacyjny | Opis
 | ----------- | ------- | ------- |
 | Zawartość | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki obsługiwane przez promocji są kafelkami, które wyświetlają tekst nagłówka i opisu. Możesz również użyć tego kafelka jako kafelka linku, aby umożliwić użytkownikowi nawigację do adresu URL związanego z Twoją aplikacją.|
-| Image (Obraz) | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki obrazu wyświetlają obraz niestandardowy i można go kliknąć. Za pomocą kafelka obrazu Dodaj grafikę do pulpitu nawigacyjnego i opcjonalnie Zezwól użytkownikowi na przejście do adresu URL istotnego dla aplikacji.|
+| Obraz | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki obrazu wyświetlają obraz niestandardowy i można go kliknąć. Za pomocą kafelka obrazu Dodaj grafikę do pulpitu nawigacyjnego i opcjonalnie Zezwól użytkownikowi na przejście do adresu URL istotnego dla aplikacji.|
 | Etykieta | Pulpity nawigacyjne aplikacji |Kafelki etykiet wyświetlają niestandardowy tekst na pulpicie nawigacyjnym. Możesz wybrać rozmiar tekstu. Użyj kafelka etykiety, aby dodać odpowiednie informacje do pulpitu nawigacyjnego, takie opisy, szczegóły kontaktu lub pomoc.|
 | Mapa | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki mapy wyświetlają lokalizację i stan urządzenia na mapie. Można na przykład wyświetlić, gdzie znajduje się urządzenie i czy jego wentylator jest włączony.|
 | Wykres liniowy | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki wykresu liniowego przedstawiają wykres zagregowanej miary dla urządzenia w danym okresie czasu. Na przykład można wyświetlić wykres liniowy, który pokazuje średnią temperaturę i ciśnienie urządzenia w ciągu ostatniej godziny.|

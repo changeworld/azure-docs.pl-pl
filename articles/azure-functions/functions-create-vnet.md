@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433208"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Samouczek: Integrowanie funkcji z siecią wirtualną platformy Azure
 
@@ -61,7 +61,7 @@ Następnie Utwórz wstępnie skonfigurowaną maszynę wirtualną z systemem Word
     | Ustawienie      | Sugerowana wartość  | Opis      |
     | ------------ | ---------------- | ---------------- |
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której są tworzone zasoby. | 
-    | **[Grupa zasobów](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Wybierz `myResourceGroup`lub grupę zasobów utworzoną za pomocą aplikacji funkcji. Korzystanie z tej samej grupy zasobów dla aplikacji funkcji, maszyny wirtualnej WordPress i planu hostingu ułatwia czyszczenie zasobów po zakończeniu pracy z tym samouczkiem. |
+    | **[Grupa zasobów](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Wybierz `myResourceGroup`lub grupę zasobów utworzoną za pomocą aplikacji funkcji. Korzystanie z tej samej grupy zasobów dla aplikacji funkcji, maszyny wirtualnej WordPress i planu hostingu ułatwia czyszczenie zasobów po zakończeniu pracy z tym samouczkiem. |
     | **Nazwa maszyny wirtualnej** | Sieć wirtualna — WordPress | Nazwa maszyny wirtualnej musi być unikatowa w grupie zasobów |
     | **[Okolicy](https://azure.microsoft.com/regions/)** | (Europa) Europa Zachodnia | Wybierz region znajdujący się w sąsiedztwie lub w sąsiedztwie funkcji, które uzyskują dostęp do maszyny wirtualnej. |
     | **Rozmiar** | B1s | Wybierz **Zmień rozmiar** , a następnie wybierz obraz B1s Standard, który ma 1 vCPU i 1 GB pamięci. |
@@ -138,13 +138,13 @@ Przy włączonej integracji sieci wirtualnej można utworzyć w aplikacji funkcj
 
     | Ustawienie  | Sugerowana wartość  | Opis      |
     | -------- | ---------------- | ---------------- |
-    | **Nazwa** | Zakłady | Nazwa może być dowolną wartością. Służy do identyfikowania serwera proxy. |
+    | **Nazwa** | Zakład | Nazwa może być dowolną wartością. Służy do identyfikowania serwera proxy. |
     | **Szablon trasy** | /plant | Trasy mapowane do zasobu maszyny wirtualnej. |
     | **Adres URL zaplecza** | http://< YOUR_VM_IP >/wp-content/themes/twentyseventeen/assets/images/header.jpg | Zastąp `<YOUR_VM_IP>` adresem IP utworzonej wcześniej maszyny wirtualnej WordPress. To mapowanie zwraca pojedynczy plik z lokacji. |
 
 1. Wybierz pozycję **Utwórz** , aby dodać serwer proxy do aplikacji funkcji.
 
-## <a name="try-it-out"></a>Testowanie
+## <a name="try-it-out"></a>Wypróbuj
 
 1. W przeglądarce spróbuj uzyskać dostęp do adresu URL, który był używany jako **adres URL zaplecza**. Zgodnie z oczekiwaniami upłynął limit czasu żądania. Limit czasu występuje, ponieważ witryna WordPress jest połączona tylko z siecią wirtualną, a nie z Internetem.
 

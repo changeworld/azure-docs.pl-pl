@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 848b15cef43efa62fdff6715bfcfef9819f4e100
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7fae3c08dd4b51b8c8dc9437fce5b5b5de063726
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078271"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637920"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -31,8 +31,8 @@ ms.locfileid: "70078271"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -178,7 +178,7 @@ ms.locfileid: "70078271"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -219,35 +219,35 @@ W systemie Windows wystąpienie SAP ASCS/SCS zawiera usługi SAP Central Service
 Wystąpienie SAP ASCS/SCS ma następujące składniki:
 
 * Usługi SAP Central:
-    * Dwa procesy, serwer wiadomości i kolejki oraz \<nazwa hosta wirtualnego ASCS/SCS >, które są używane do uzyskiwania dostępu do tych dwóch procesów.
-    * Struktura pliku: S:\usr\sap\\SID\&gt;ASCS/SCS\<wystąpienie numeru wystąpienia&lt;\>
+    * Dwa procesy, serwer wiadomości i kolejki, a \<ASCS/SCS nazwa hosta wirtualnego >, który służy do uzyskiwania dostępu do tych dwóch procesów.
+    * Struktura pliku: S:\usr\sap\\&lt;identyfikator SID&gt;\ ASCS/SCS\<wystąpienia numeru\>
 
 
 * Pliki hosta globalnego SAP:
-  * Struktura pliku: S:\usr\sap\\\SYS&lt;SID.&gt;..\.
-  * Udział plików sapmnt, który umożliwia dostęp\\do tych globalnych S:\usr\sap&lt;SID&gt;\SYS\... plików przy użyciu następującej ścieżki UNC:
+  * Struktura pliku: S:\usr\sap\\&lt;SID&gt;\SYS\...
+  * Udział plików sapmnt, który umożliwia dostęp do tych globalnych S:\usr\sap\\&lt;SID&gt;\SYS\... pliki przy użyciu następującej ścieżki UNC:
 
-    \\\\<\>ASCS/SCS nazwa hosta wirtualnego \sapmnt\\&lt;identyfikator&gt;SID\.\SYS..
+    \\\\< ASCS/SCS nazwę hosta wirtualnego\>\sapmnt\\&lt;SID&gt;\SYS\...
 
 
-![Rysunek 2. Procesy, struktura plików i sapmnt Host globalny udział plików w wystąpieniu SAP ASCS/SCS][sap-ha-guide-figure-8001]
+![Rysunek 2. procesy, struktura plików i globalny udział plików sapmnt w wystąpieniu SAP ASCS/SCS][sap-ha-guide-figure-8001]
 
 _**Rysunek 2.** Procesy, struktura plików i sapmnt Host globalny udział plików w wystąpieniu SAP ASCS/SCS_
 
 W przypadku ustawienia wysokiej dostępności są dostępne wystąpienia oprogramowania SAP ASCS/SCS. Do umieszczenia plików hosta globalnego SAP ASCS/SCS i SAP są używane *klastrowane dyski udostępnione* (Drives, w naszym przykładzie).
 
-![Rysunek 3. Architektura architektury SAP ASCS/SCS z udostępnionym dyskiem][sap-ha-guide-figure-8002]
+![Rysunek 3. Architektura SAP ASCS/SCS z udostępnionym dyskiem][sap-ha-guide-figure-8002]
 
 _**Rysunek 3.** Architektura architektury SAP ASCS/SCS z udostępnionym dyskiem_
 
 > [!IMPORTANT]
 > Te dwa składniki są uruchamiane w ramach tego samego wystąpienia SAP ASCS/SCS:
->* Ta sama \<nazwa hosta wirtualnego ASCS/SCS > jest używana w celu uzyskania dostępu do procesów serwera komunikatów SAP i kolejki oraz plików hosta globalnego SAP za pośrednictwem udziału plików sapmnt.
+>* Ta sama \<nazwa hosta wirtualnego ASCS/SCS > służy do uzyskiwania dostępu do procesów serwera komunikatów SAP i kolejkowania oraz plików hosta globalnego SAP za pośrednictwem udziału plików sapmnt.
 >* Ten sam dysk udostępniony dysku S jest współużytkowany między nimi.
 >
 
 
-![Rysunek 4. Architektura architektury SAP ASCS/SCS z udostępnionym dyskiem][sap-ha-guide-figure-8003]
+![Rysunek 4. architektura oprogramowania SAP ASCS/SCS z udostępnionym dyskiem][sap-ha-guide-figure-8003]
 
 _**Rysunek 4.** Architektura architektury SAP ASCS/SCS z udostępnionym dyskiem_
 
@@ -263,9 +263,9 @@ Aby utworzyć zasób dysku udostępnionego dla klastra:
 2. Uruchom oprogramowanie SIOS DataKeeper Cluster Edition w obu węzłach maszyn wirtualnych.
 3. Skonfiguruj program oprogramowanie SIOS DataKeeper Cluster w taki sposób, aby replikować zawartość dodatkowego woluminu dołączonego do dysku ze źródłowej maszyny wirtualnej do dodatkowego woluminu dołączonego do dysku docelowej maszyny wirtualnej. OPROGRAMOWANIE SIOS DataKeeper abstrakcyjne źródłowe i docelowe woluminy lokalne, a następnie prezentuje je do klastra trybu failover systemu Windows Server jako jednego dysku udostępnionego.
 
-Uzyskaj więcej informacji na temat [oprogramowanie SIOS](https://us.sios.com/products/datakeeper-cluster/)DataKeeper.
+Uzyskaj więcej informacji na temat [oprogramowanie SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
-![Rysunek 5. Konfiguracja klastra trybu failover systemu Windows Server na platformie Azure z usługą oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-1002]
+![Rysunek 5. Konfiguracja klastra trybu failover z systemem Windows Server na platformie Azure z usługą oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-1002]
 
 _**Rysunek 5.** Konfiguracja klastra trybu failover systemu Windows na platformie Azure z usługą oprogramowanie SIOS DataKeeper_
 

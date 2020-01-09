@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 4a8f7383a298fdb66456eaadeb99b22478c9f39b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383820"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382705"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST wyszukiwanie wideo Bing iC#
 
@@ -42,7 +42,7 @@ Kod źródłowy dla tego przykładu jest dostępny w serwisie [GitHub](https://g
     using System.Collections.Generic;
     ```
 
-2. Dodaj zmienne dla klucza subskrypcji, punktu końcowego i terminu wyszukiwania.
+2. Dodaj zmienne dla klucza subskrypcji, punktu końcowego i terminu wyszukiwania. `uriBase` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -226,6 +226,6 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
  [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)

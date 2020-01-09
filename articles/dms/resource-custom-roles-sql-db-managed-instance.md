@@ -1,6 +1,7 @@
 ---
-title: Role niestandardowe dla SQL Server SQL Database migracje w trybie online wystąpienia zarządzanego | Microsoft Docs
-description: Dowiedz się, jak używać ról niestandardowych SQL Server do SQL Database migracji w trybie online wystąpienia zarządzanego.
+title: 'Role niestandardowe: SQL Server online do migracji wystąpienia zarządzanego SQL'
+titleSuffix: Azure Database Migration Service
+description: Dowiedz się, jak używać ról niestandardowych SQL Server do Azure SQL Database migracji w trybie online wystąpienia zarządzanego.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 8148e029bf343613a230b20d0397fa7851c96712
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 85c70968eb0f8a5752bbfa338918a8bba2fe7794
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437698"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>Role niestandardowe na potrzeby SQL Server SQL Database migracji w trybie online wystąpienia zarządzanego
 
@@ -31,7 +32,7 @@ Obecnie zalecamy utworzenie co najmniej dwóch ról niestandardowych dla identyf
 > [!NOTE]
 > Ostatnią wymaganą rolę niestandardową można ostatecznie usunąć, ponieważ na platformie Azure wdrożono nowy kod wystąpienia zarządzanego SQL Database.
 
-**Rola niestandardowa dla identyfikatora aplikacji**. Ta rola jest wymagana do Azure Database Migration Service migracji na poziomie *zasobu* lub *grupy zasobów* (Aby uzyskać więcej informacji na temat identyfikatora aplikacji, zobacz artykuł [Używanie portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
+**Rola niestandardowa dla identyfikatora aplikacji**. Ta rola jest wymagana do Azure Database Migration Service migracji na poziomie *zasobu* lub *grupy zasobów* (Aby uzyskać więcej informacji na temat identyfikatora aplikacji, zobacz artykuł [Używanie portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
 
 ```json
 {

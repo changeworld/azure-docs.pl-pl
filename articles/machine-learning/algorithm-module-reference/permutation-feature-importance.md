@@ -1,7 +1,7 @@
 ---
 title: 'Ważność funkcji permutacji: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu ważności funkcji permutacji w usłudze Azure Machine Learning, aby obliczyć wyniki ważności funkcji permutacji zmiennych funkcji w ramach przeszkolonego modelu i zestawu danych testowych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu ważności funkcji permutacji w Azure Machine Learning, aby obliczyć wyniki ważności funkcji permutacji zmiennych funkcji, pod kątem modelu przeszkolonego i zestawu danych testowych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b939e88606fba5d7759e55239838d5308bf0563c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837551"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428492"
 ---
 # <a name="permutation-feature-importance"></a>Ważność funkcji permutacji
 
@@ -48,7 +48,7 @@ Generowanie zestawu wyników funkcji wymaga, aby był już szkolony model, a tak
 
         Dokładność, precyzja, odwołanie, średnia utrata dziennika  
 
-    -   **Ubytk**
+    -   **Regression**
 
         Precyzja, odwoływanie, średnie Błędy bezwzględne, główny, średni, błąd względny  
 
@@ -69,4 +69,4 @@ Przyczyna różnic polega na tym, że ważność funkcji permutacji nie mierzy s
   
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

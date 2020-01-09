@@ -1,5 +1,6 @@
 ---
-title: Autoryzuj konta dewelopera przy użyciu protokołu OAuth 2,0 na platformie Azure API Management | Microsoft Docs
+title: Autoryzuj konta dewelopera przy użyciu protokołu OAuth 2,0 w API Management
+titleSuffix: Azure API Management
 description: Dowiedz się, jak autoryzować użytkowników przy użyciu protokołu OAuth 2,0 w API Management.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 99a49aa4627dc23d5f7531ac961d63e3e75ccff9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430687"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autoryzować konta dewelopera przy użyciu protokołu OAuth 2,0 na platformie Azure API Management
 
@@ -73,7 +74,7 @@ W tym przewodniku pokazano, jak skonfigurować wystąpienie usługi API Manageme
 
     Domyślnym ustawieniem dla **metod uwierzytelniania klienta** jest **podstawowa**, a **metoda wysyłania tokenu dostępu** jest **nagłówkiem autoryzacji**. Te wartości są konfigurowane w tej sekcji formularza wraz z **zakresem domyślnym**.
 
-6. Sekcja **poświadczenia klienta** zawiera **Identyfikator klienta** i **klucz tajny klienta**, które są uzyskiwane podczas procesu tworzenia i konfiguracji serwera OAuth 2,0. Po określeniu **identyfikatora klienta** i **klucza tajnego klienta** zostanie wygenerowany **parametr redirect_uri** dla **kodu autoryzacji** . Ten identyfikator URI służy do konfigurowania adresu URL odpowiedzi w konfiguracji serwera OAuth 2,0.
+6. Sekcja **poświadczenia klienta** zawiera **Identyfikator klienta** i **klucz tajny klienta**, które są uzyskiwane podczas procesu tworzenia i konfiguracji serwera OAuth 2,0. Po określeniu **identyfikatora klienta** i **klucza tajnego klienta** zostanie wygenerowany **redirect_uri** dla **kodu autoryzacji** . Ten identyfikator URI służy do konfigurowania adresu URL odpowiedzi w konfiguracji serwera OAuth 2,0.
 
     ![Nowy serwer OAuth 2,0](./media/api-management-howto-oauth2/oauth-04.png)
 

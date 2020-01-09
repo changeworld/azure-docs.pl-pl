@@ -1,25 +1,14 @@
 ---
-title: Skalowanie klastra usługi Service Fabric wewnątrz lub na zewnątrz | Dokumentacja firmy Microsoft
+title: Skalowanie klastra Service Fabric lub wychodzącego
 description: Skalowanie klastra Service Fabric w celu dopasowania do zapotrzebowania przez ustawienie reguł automatycznego skalowania dla każdego typu węzła/zestawu skalowania maszyn wirtualnych. Dodawanie lub usuwanie węzłów w klastrze usługi Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/12/2019
-ms.author: atsenthi
-ms.openlocfilehash: b1b3c0e6440212474bf356d4204c0dd91c1491fa
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ef7d4c3d3d48bed790851834d848f05060243636
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599900"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451944"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Skalowanie klastra w poziomie lub w pionie
 
@@ -107,7 +96,7 @@ Usługa stanowa wymaga określonej liczby węzłów można zawsze do zapewnienia
 
 ### <a name="remove-the-service-fabric-node"></a>Usuwanie węzła usługi Service Fabric
 
-Procedura ręcznego usuwania stanu węzła ma zastosowanie tylko do typów węzłów z warstwą trwałości Bronze.  W przypadku warstwy trwałości *Silver* i *Gold* te kroki są wykonywane automatycznie przez platformę. Aby uzyskać więcej informacji na temat trwałości, zobacz [Service Fabric planowanie pojemności klastra][durability].
+Procedura ręcznego usuwania stanu węzła ma zastosowanie tylko do typów węzłów z warstwą trwałości *Bronze* .  W przypadku warstwy trwałości *Silver* i *Gold* te kroki są wykonywane automatycznie przez platformę. Aby uzyskać więcej informacji na temat trwałości, zobacz [Service Fabric planowanie pojemności klastra][durability].
 
 Aby zachować równe rozłożenie węzłów klastra w domenach uaktualniania i błędów, a tym samym umożliwić ich równomierne wykorzystywanie, najpierw należy usunąć ostatnio utworzony węzeł. Innymi słowy węzły należy usuwać w kolejności odwrotnej niż były tworzone. Ostatnio utworzony węzeł to ten, który ma największą wartość właściwości `virtual machine scale set InstanceId`. Poniższe przykłady kodu zwracają ostatnio utworzony węzeł.
 
@@ -258,7 +247,7 @@ Zapoznaj się [szczegółowe informacje dotyczące poziomów trwałości](servic
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przeczytaj następujące polecenie, aby także wiedzę na temat planowania pojemności klastra, Uaktualnianie klastra i partycjonowanie usług:
 
 * [Planowanie pojemności klastra](service-fabric-cluster-capacity.md)

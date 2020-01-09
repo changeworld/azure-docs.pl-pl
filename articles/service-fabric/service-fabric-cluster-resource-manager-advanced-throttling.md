@@ -1,49 +1,40 @@
 ---
-title: Ograniczanie żądań w usłudze Menedżer zasobów klastra usługi Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się skonfigurować ograniczenia podana przez usługę Service Fabric Menedżer zasobów klastra.
-services: service-fabric
-documentationcenter: .net
+title: Ograniczanie przepustowości w Menedżerze zasobów klastra Service Fabric
+description: Dowiedz się, jak skonfigurować ograniczenia zapewniane przez Menedżer zasobów klastra Service Fabric.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4abc3e4a28b8b98070affe19b7b7ca38f904c45b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452172"
 ---
-# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Ograniczanie Menedżer zasobów klastra usługi Service Fabric
-Nawet jeśli Menedżer zasobów klastra zostały skonfigurowane poprawnie, można uzyskać zakłócone klastra. Na przykład może być jednocześnie węzła błędów domeny awarii i — co się stanie, jeśli, które wystąpiły podczas uaktualniania? Menedżer zasobów klastra zawsze próbuje naprawić wszystkie elementy, zużywają zasoby klastra próby reorganizowanie i naprawić klastra. Ograniczenia zapewniają backstop tak, aby klaster może używać zasobów w celu stabilizacji — możesz wrócić w węzłach, poprawianie partycje sieci, wdrożony poprawiony usługi bits.
+# <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Ograniczanie Menedżer zasobów klastra Service Fabric
+Nawet jeśli klaster Menedżer zasobów prawidłowo skonfigurowany, może to spowodować zakłócenie klastra. Na przykład mogą wystąpić jednoczesne awarie domen węzła i błędów — co się stanie, jeśli wystąpił podczas uaktualniania? Klaster Menedżer zasobów zawsze próbuje naprawić wszystko, zużywając zasoby klastra próbujące zreorganizować i naprawić klaster. Ograniczenia ograniczają wydajność w celu zapewnienia, że klaster może korzystać z zasobów w celu stabilizacji — te węzły zostaną przywrócone, a partycje sieciowe zostały poprawione i wdrożone.
 
-Aby ułatwić te wielu sytuacjach, Menedżer zasobów klastra usługi Service Fabric zawiera kilka ograniczenia. Te ograniczenia są wszystkie młotki dość duży. Ogólnie nie można zmienić bez starannego planowania i testowania.
+Aby pomóc w tym sortowaniu sytuacji, klaster Service Fabric Menedżer zasobów obejmuje kilka przepustnic. Te ograniczenia są dość dużymi młotami. Zazwyczaj nie należy ich zmieniać bez dokładnego planowania i testowania.
 
-Jeśli zmienisz ograniczenia Menedżer zasobów klastra, możesz określić je do oczekiwanego rzeczywistego obciążenia. Mogą określić, że musisz mieć pewne ograniczenia obowiązuje, nawet w przypadku oznacza to, że klastra trwa dłużej, w celu stabilizacji w niektórych sytuacjach. Testowanie jest wymagane, aby określić poprawne wartości dla ograniczenia. Ograniczenia muszą być odpowiednio wysoka, aby umożliwić klastrowi reagowanie na zmiany w rozsądnym czasie, a tyle niskie, aby faktycznie zapobiegania zbyt dużo zużycie zasobów. 
+W przypadku zmiany ograniczenia przepustowości Menedżer zasobów klastra należy je dostosować do oczekiwanego rzeczywistego obciążenia. Możesz określić, że trzeba mieć pewne ograniczenia, nawet jeśli oznacza to, że w niektórych sytuacjach klaster trwa dłużej. Do określenia poprawnych wartości ograniczania są wymagane testy. Ograniczenia muszą być wystarczająco duże, aby umożliwić klastrowi reagowanie na zmiany w rozsądnym czasie, a ich niska ilość, aby faktycznie uniknąć zbyt dużej ilości zasobów. 
 
-W większości przypadków, w związku z czym dostrzegliśmy klientów za pomocą ograniczenia, których minęło, ponieważ zostały one już środowisku ograniczonych zasobów. Niektóre przykłady będzie ograniczona przepustowość sieci dla poszczególnych węzłów lub dysków, które nie są możliwe do skompilowania wiele stanowych replik równolegle ze względu na ograniczenia przepływności. Bez ograniczenia operacje można przeciąży tych zasobów, powodując operacje się niepowodzeniem lub wolne. W takich sytuacjach klienci używane ograniczenia i wiedzieliśmy, że na rozszerzeniu czas zajęłoby klaster osiągnął stabilności. Klienci także rozumieć, że może pozostać uruchomione w dolnym ogólną niezawodność, chociaż były one ograniczone.
+W większości przypadków, w których klienci korzystali z ograniczania przepustowości, ponieważ znajdowały się one już w środowisku ograniczonym do zasobów. Niektóre przykłady byłyby ograniczoną przepustowością sieci dla poszczególnych węzłów lub dysków, które nie mogą równolegle kompilować wiele replik stanowych ze względu na ograniczenia przepływności. Bez ograniczania, operacje mogą przeciążyć te zasoby, powodując niepowodzenie operacji lub powolne. W takich sytuacjach klienci korzystali z ograniczania i wiedziały, że przekroczą czas, przez jaki klaster osiągnął stabilny stan. Klienci rozumieją również, że mogą oni zakończyć działanie o niższej ogólnej niezawodności, podczas gdy zostały ograniczone.
 
 
-## <a name="configuring-the-throttles"></a>Konfigurowanie ograniczenia
+## <a name="configuring-the-throttles"></a>Konfigurowanie ograniczania przepustowości
 
-Usługa Service Fabric ma dwa mechanizmy ograniczenie liczby operacji repliki. Domyślnego mechanizmu, które istniały przed wykonaniem usługi Service Fabric w wersji 5.7 reprezentuje ograniczania jako wartość bezwzględną przeniesień dozwolone. Nie działa w przypadku klastrów dowolnego rozmiaru. W szczególności w przypadku dużych klastrach wartość domyślna może być za mały, znacznie spowalniać równoważenie nawet wtedy, gdy jest to konieczne, mając efektu w mniejszych klastrów. Ten mechanizm wcześniejsze została zastąpiona opartych na procentach ograniczanie przepustowości, która skaluje się lepiej za pomocą dynamiczne klastry, w których liczba usług i węzły są regularnie zmieniane.
+Service Fabric ma dwa mechanizmy ograniczania liczby przesunięć między replikami. Domyślny mechanizm, który istniał przed Service Fabric 5,7 reprezentuje ograniczenie jako bezwzględną liczbę dozwolonych ruchów. Nie działa to w przypadku klastrów o wszystkich rozmiarach. W szczególności w przypadku dużych klastrów wartość domyślna może być zbyt mała, co znacznie spowalnia równoważenie nawet wtedy, gdy jest to konieczne, ale nie ma wpływu na mniejsze klastry. Ten wcześniejszy mechanizm został zastąpiony przez procentowe ograniczenie przepustowości, które można skalować lepiej przy użyciu klastrów dynamicznych, w których liczba usług i węzłów regularnie zmienia się.
 
-Ograniczenia są oparte na procent liczby replik w klastrach. Ograniczenia na podstawie wartości procentowej Włącz wyrażanie reguła: "nie przenoś więcej niż 10% replik w 10 minut", na przykład.
+Ograniczenia są oparte na procentach liczby replik w klastrach. Ograniczenia oparte na procentach umożliwiają wyrażenie zasad: "nie przenoś więcej niż 10% replik w przypadku 10-minutowego interwału".
 
-Ustawienia konfiguracji opartych na procentach ograniczania są następujące:
+Ustawienia konfiguracji dla ograniczania procentowo są następujące:
 
-  - GlobalMovementThrottleThresholdPercentage — maksymalna liczba przeniesień dozwolone w klastrze, w dowolnym momencie, wyrażone jako procent łącznej liczby replik w klastrze. 0 oznacza brak limitu. Wartość domyślna to 0. Jeśli określono zarówno tego ustawienia, jak i GlobalMovementThrottleThreshold bardziej konserwatywnego limit jest używany.
-  - GlobalMovementThrottleThresholdPercentageForPlacement — maksymalna liczba przeniesień typu dozwolone w fazie umieszczania, wyrażony jako procent łącznej liczby replik w klastrze. 0 oznacza brak limitu. Wartość domyślna to 0. Jeśli określono zarówno tego ustawienia, jak i GlobalMovementThrottleThresholdForPlacement bardziej konserwatywnego limit jest używany.
-  - GlobalMovementThrottleThresholdPercentageForBalancing — maksymalna liczba przeniesień typu dozwolone w fazie równoważenia wyrażony jako procent łącznej liczby replik w klastrze. 0 oznacza brak limitu. Wartość domyślna to 0. Jeśli określono zarówno tego ustawienia, jak i GlobalMovementThrottleThresholdForBalancing bardziej konserwatywnego limit jest używany.
+  - GlobalMovementThrottleThresholdPercentage — Maksymalna liczba przesunięć dozwolonych w klastrze w dowolnym momencie wyrażona jako procent łącznej liczby replik w klastrze. wartość 0 oznacza brak limitu. Wartość domyślna to 0. Jeśli oba te ustawienia i GlobalMovementThrottleThreshold są określone, zostanie użyty bardziej ostrożny limit.
+  - GlobalMovementThrottleThresholdPercentageForPlacement — Maksymalna liczba przesunięć dozwolona w fazie umieszczania wyrażona jako procent łącznej liczby replik w klastrze. wartość 0 oznacza brak limitu. Wartość domyślna to 0. Jeśli oba te ustawienia i GlobalMovementThrottleThresholdForPlacement są określone, zostanie użyty bardziej ostrożny limit.
+  - GlobalMovementThrottleThresholdPercentageForBalancing — Maksymalna liczba przesunięć dozwolona w fazie równoważenia, wyrażona jako procent łącznej liczby replik w klastrze. wartość 0 oznacza brak limitu. Wartość domyślna to 0. Jeśli oba te ustawienia i GlobalMovementThrottleThresholdForBalancing są określone, zostanie użyty bardziej ostrożny limit.
 
-Podczas określania procent przepustowości, należy określić jako 0,05 5%. Interwał, w którym te ograniczenia są regulowane jest GlobalMovementThrottleCountingInterval, która jest określona w ciągu kilku sekund.
+Podczas określania wartości procentowej ograniczenia przepustowości należy określić 5% jako 0,05. Interwałem, w którym podlegają te ograniczenia, jest GlobalMovementThrottleCountingInterval, który jest określony w sekundach.
 
 
 ``` xml
@@ -55,7 +46,7 @@ Podczas określania procent przepustowości, należy określić jako 0,05 5%. In
 </Section>
 ```
 
-za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json na platformie Azure hostowane klastrów:
+za pośrednictwem ClusterConfig. JSON dla wdrożeń autonomicznych lub Template. JSON dla klastrów hostowanych przez platformę Azure:
 
 ```json
 "fabricSettings": [
@@ -83,14 +74,14 @@ za pomocą ClusterConfig.json dla autonomicznych wdrożeniach lub Template.json 
 ]
 ```
 
-### <a name="default-count-based-throttles"></a>Ograniczenia na podstawie liczby domyślne
-Te informacje są dostarczane w przypadku, gdy masz starsze klastry lub nadal zachować te konfiguracje w klastrach, które od zostały uaktualnione. Ogólnie rzecz biorąc zalecane jest, że te są zastępowane powyższe ograniczenia na podstawie wartości procentowej. Ponieważ opartych na procentach ograniczania przepustowości jest domyślnie wyłączony, te ograniczenia pozostają ograniczenia domyślne dla klastra, do momentu ich są wyłączone i zastąpione przez ograniczenia na podstawie. 
+### <a name="default-count-based-throttles"></a>Domyślne ograniczenia oparte na liczbie
+Te informacje są dostępne w przypadku starszych klastrów lub nadal zachowują te konfiguracje w klastrach, które zostały uaktualnione. Ogólnie rzecz biorąc, zaleca się, aby były one zastępowane powyżej opartych na procentach ograniczeniach. Ponieważ ograniczenie procentowe jest wyłączone domyślnie, te ograniczenia pozostają domyślnymi ograniczeniami klastra, dopóki nie zostaną wyłączone i zastąpione ograniczeniami procentowymi. 
 
-  - GlobalMovementThrottleThreshold — to ustawienie kontroluje łączną liczbę przepływów w klastrze trochę czasu. Czas jest określona w ciągu kilku sekund jako GlobalMovementThrottleCountingInterval. Wartością domyślną dla GlobalMovementThrottleThreshold wynosi 1000, a wartość domyślna dla GlobalMovementThrottleCountingInterval to 600.
-  - MovementPerPartitionThrottleThreshold — to ustawienie kontroluje łączną liczbę przepływów, każda partycja usługi trochę czasu. Czas jest określona w ciągu kilku sekund jako MovementPerPartitionThrottleCountingInterval. Wartością domyślną dla MovementPerPartitionThrottleThreshold to 50, a wartość domyślna dla MovementPerPartitionThrottleCountingInterval to 600.
+  - GlobalMovementThrottleThreshold — to ustawienie steruje całkowitą liczbą przesunięć w klastrze przez jakiś czas. Ilość czasu jest określona w sekundach jako GlobalMovementThrottleCountingInterval. Wartość domyślna GlobalMovementThrottleThreshold to 1000, a wartość domyślna dla GlobalMovementThrottleCountingInterval to 600.
+  - MovementPerPartitionThrottleThreshold — to ustawienie steruje łączną liczbą przesunięć dla każdej partycji usługi w pewnym czasie. Ilość czasu jest określona w sekundach jako MovementPerPartitionThrottleCountingInterval. Wartość domyślna MovementPerPartitionThrottleThreshold to 50, a wartość domyślna dla MovementPerPartitionThrottleCountingInterval to 600.
 
-Konfiguracja te ograniczenia następuje jako ograniczenie na podstawie tego samego wzorca.
+Konfiguracja tych ograniczeń jest zgodna z tym samym wzorcem co ograniczenie procentowe.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Aby dowiedzieć się o zarządza Menedżer zasobów klastra i równoważy obciążenie w klastrze, zapoznaj się z artykułem na [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
-- Menedżer zasobów klastra ma wiele opcji do opisywania klastra. Aby dowiedzieć się więcej na ich temat, zapoznaj się z tego artykułu na [opisujące klaster usługi Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
+## <a name="next-steps"></a>Następne kroki
+- Aby dowiedzieć się, w jaki sposób klaster Menedżer zasobów zarządza i równoważenia obciążenia w klastrze, zapoznaj się z artykułem dotyczącym [równoważenia obciążenia](service-fabric-cluster-resource-manager-balancing.md)
+- Klaster Menedżer zasobów ma wiele opcji opisywania klastra. Aby dowiedzieć się więcej na ten temat, zapoznaj się z tym artykułem na temat [opisywania Service Fabric klastra](service-fabric-cluster-resource-manager-cluster-description.md)

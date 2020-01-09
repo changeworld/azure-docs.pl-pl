@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa58f63e70c09e17328b849e7728604a65cb7ae1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 811fc7a4fc5d8ffba894bad837e95d6b27ecc8c3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964323"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689409"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma tożsamości firmy Microsoft i protokół OAuth 2,0 w imieniu użytkownika
 
@@ -35,12 +35,12 @@ W tym artykule opisano, jak programować bezpośrednio w odniesieniu do protoko�
 
 > [!NOTE]
 >
-> - Punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje wszystkich scenariuszy i funkcji. Aby określić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj artykuł [ograniczenia dotyczące platformy tożsamości firmy Microsoft](active-directory-v2-limitations.md). W szczególnych przypadkach znane aplikacje klienckie nie są obsługiwane w przypadku aplikacji z usługami konto Microsoft (MSA) i odbiorcami usługi Azure AD. W ten sposób wspólny wzorzec zgody dla OBO nie będzie działał w przypadku klientów, którzy logują się zarówno do kont osobistych, jak i służbowych. Aby dowiedzieć się więcej o tym, jak obsłużyć ten krok przepływu, zobacz [Uzyskaj zgodę na aplikację warstwy środkowej](#gaining-consent-for-the-middle-tier-application).
+> - Punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje wszystkich scenariuszy i funkcji. Aby określić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj artykuł [ograniczenia dotyczące platformy tożsamości firmy Microsoft](active-directory-v2-limitations.md). 
 > - Począwszy od maja 2018, niektóre pochodne `id_token` pochodnych nie mogą być używane dla przepływu OBO. Aplikacje jednostronicowe (aplikacji jednostronicowych) powinny przekazać token **dostępu** do klienta poufnego w warstwie środkowej, aby w zamian wykonać przepływy OBO. Aby uzyskać więcej informacji o tym, którzy klienci mogą wykonywać wywołania OBO, zobacz [ograniczenia](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 
-Załóżmy, że użytkownik został uwierzytelniony w aplikacji przy użyciu [przepływu przyznawania kodu autoryzacji OAuth 2,0](v2-oauth2-auth-code-flow.md). W tym momencie aplikacja ma token dostępu *dla interfejsu API a* (token a) z oświadczeniami użytkownika i wyraża zgodę na dostęp do internetowego interfejsu API sieci Web (API A). Teraz interfejs API A musi wykonać uwierzytelnione żądanie do podrzędnego interfejsu API sieci Web (API B).
+Załóżmy, że użytkownik został uwierzytelniony w aplikacji przy użyciu [przepływu przyznawania kodu autoryzacji OAuth 2,0](v2-oauth2-auth-code-flow.md) lub innego przepływu logowania. W tym momencie aplikacja ma token dostępu *dla interfejsu API a* (token a) z oświadczeniami użytkownika i wyraża zgodę na dostęp do internetowego interfejsu API sieci Web (API A). Teraz interfejs API A musi wykonać uwierzytelnione żądanie do podrzędnego interfejsu API sieci Web (API B).
 
 Kroki, które należy wykonać, stanowią "OBO Flow" i objaśniono na poniższym diagramie.
 
@@ -48,9 +48,9 @@ Kroki, które należy wykonać, stanowią "OBO Flow" i objaśniono na poniższym
 
 1. Aplikacja kliencka wysyła żądanie do interfejsu API A z tokenem A (z `aud`m domaganym interfejsem API A).
 1. Interfejs API A uwierzytelnia się w punkcie końcowym wystawiania tokenów platformy tożsamości firmy Microsoft i żąda tokenu w celu uzyskania dostępu do interfejsu API B.
-1. Punkt końcowy wystawiania tokenów platformy tożsamości firmy Microsoft sprawdza poprawność poświadczeń interfejsu API A i wystawia token dostępu dla interfejsu API B (token B).
-1. Token B jest ustawiany w nagłówku autoryzacji żądania do interfejsu API B.
-1. Dane z zabezpieczonego zasobu są zwracane przez interfejs API B.
+1. Punkt końcowy wystawiania tokenów platformy tożsamości firmy Microsoft sprawdza poprawność poświadczeń interfejsu API A wraz z tokenem a i wystawia token dostępu dla interfejsu API B (token B) w interfejsie API A.
+1. Token B jest ustawiany przez interfejs API A w nagłówku autoryzacji żądania do interfejsu API B.
+1. Dane z zabezpieczonego zasobu są zwracane przez interfejs API B do interfejsu API A, a następnie do klienta.
 
 > [!NOTE]
 > W tym scenariuszu Usługa warstwy środkowej nie ma interakcji z użytkownikiem, aby uzyskać zgodę użytkownika na dostęp do podrzędnego interfejsu API. W związku z tym, opcja udzielenia dostępu do podrzędnego interfejsu API jest przedstawiona jako część kroku wyrażania zgody podczas uwierzytelniania. Aby dowiedzieć się, jak skonfigurować to ustawienie dla aplikacji, zobacz temat [Uzyskiwanie zgody na aplikację warstwy środkowej](#gaining-consent-for-the-middle-tier-application).
@@ -74,7 +74,7 @@ Gdy jest używany wspólny klucz tajny, żądanie tokenu dostępu między usług
 | `grant_type` | Wymagane | Typ żądania tokenu. Dla żądania korzystającego z tokenu JWT wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
 | `client_id` | Wymagane | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. |
 | `client_secret` | Wymagane | Wpis tajny klienta wygenerowany dla aplikacji na stronie Azure Portal-Rejestracje aplikacji. |
-| `assertion` | Wymagane | Wartość tokenu użytego w żądaniu. |
+| `assertion` | Wymagane | Wartość tokenu użytego w żądaniu.  Ten token musi mieć odbiorców aplikacji wykonujących to żądanie OBO (aplikacja oznaczona przez pole `client-id`). |
 | `scope` | Wymagane | Rozdzielana spacjami lista zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md). |
 | `requested_token_use` | Wymagane | Określa, w jaki sposób żądanie powinno być przetwarzane. W przepływie OBO wartość musi być ustawiona na `on_behalf_of`. |
 
@@ -161,7 +161,7 @@ Poniższy przykład przedstawia Pomyślne odpowiedzi na żądanie tokenu dostęp
 ```
 
 > [!NOTE]
-> Powyższy token dostępu jest tokenem sformatowanym w wersji 1.0. Wynika to z faktu, że token jest określony na podstawie zasobu, do którego uzyskiwany jest dostęp. Microsoft Graph żąda tokenów v 1.0, więc platforma Microsoft Identity platform tworzy tokeny dostępu w wersji 1.0, gdy klient żąda tokenów dla Microsoft Graph. Tylko aplikacje powinny przeglądać tokeny dostępu. Klienci nie muszą ich sprawdzać.
+> Powyższy token dostępu jest tokenem sformatowanym w wersji 1.0. Wynika to z faktu, że token jest określony na podstawie **zasobu** , do którego uzyskiwany jest dostęp. Microsoft Graph jest skonfigurowany do akceptowania tokenów v 1.0, więc platforma tożsamości firmy Microsoft generuje tokeny dostępu w wersji 1.0, gdy klient żąda tokenów dla Microsoft Graph. Tylko aplikacje powinny przeglądać tokeny dostępu. Klienci **nie muszą** ich sprawdzać.
 
 ### <a name="error-response-example"></a>Przykład odpowiedzi na błąd
 
@@ -193,29 +193,24 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Uzyskanie zgody na aplikację warstwy środkowej
 
-W zależności od odbiorców aplikacji można wziąć pod uwagę różne strategie, aby upewnić się, że przepływ OBO zakończył się pomyślnie. We wszystkich przypadkach ostatecznym celem jest zapewnienie właściwej zgody. W takim przypadku zależy jednak od tego, którzy użytkownicy obsługują aplikację.
+W zależności od architektury lub użycia aplikacji można wziąć pod uwagę różne strategie, aby upewnić się, że przepływ OBO zakończył się pomyślnie. We wszystkich przypadkach ostatecznym celem jest zapewnienie odpowiedniej zgody, dzięki czemu aplikacja kliencka może wywołać aplikację warstwy środkowej, a aplikacja warstwy środkowej ma uprawnienia do wywołania zasobu zaplecza. 
 
-### <a name="consent-for-azure-ad-only-applications"></a>Wyrażanie zgody na aplikacje tylko w usłudze Azure AD
+> [!NOTE]
+> Wcześniej system konto Microsoft (konta osobiste) nie obsługiwał pola "znana aplikacja kliencka" ani nie może wyświetlić połączonej zgody.  Zostało to dodane, a wszystkie aplikacje na platformie tożsamości firmy Microsoft mogą używać znanego podejścia aplikacji klienta do gettign zgody na wywołania OBO. 
 
-#### <a name="default-and-combined-consent"></a>/.default i połączona zgoda
+### <a name="default-and-combined-consent"></a>/.default i połączona zgoda
 
-W przypadku aplikacji, które wymagają tylko zalogowania się do konta służbowego, wystarczy zastosować tradycyjne podejście "znane aplikacje klienckie". Aplikacja warstwy środkowej dodaje klienta do listy znanych aplikacji klienckich w jego manifeście, a następnie klient może wyzwolić połączony przepływ zgody zarówno dla siebie, jak i dla aplikacji warstwy środkowej. W punkcie końcowym platformy tożsamości firmy Microsoft odbywa się to przy użyciu [zakresu`/.default`](v2-permissions-and-consent.md#the-default-scope). Gdy Wyzwalasz ekran wyrażania zgody przy użyciu znanych aplikacji klienckich i `/.default`, na ekranie zgody zostaną wyświetlone uprawnienia zarówno dla klienta, jak i do interfejsu API warstwy środkowej, a także żądania uprawnień wymaganych przez interfejs API warstwy środkowej. Użytkownik wyraża zgodę na obie aplikacje, a następnie przepływ OBO działa.
+Aplikacja warstwy środkowej dodaje klienta do listy znanych aplikacji klienckich w jego manifeście, a następnie klient może wyzwolić połączony przepływ zgody zarówno dla siebie, jak i dla aplikacji warstwy środkowej. W punkcie końcowym platformy tożsamości firmy Microsoft odbywa się to przy użyciu [zakresu`/.default`](v2-permissions-and-consent.md#the-default-scope). Gdy Wyzwalasz ekran wyrażania zgody przy użyciu znanych aplikacji klienckich i `/.default`, na ekranie zgody zostaną wyświetlone uprawnienia **zarówno** dla klienta, jak i do interfejsu API warstwy środkowej, a także żądania uprawnień wymaganych przez interfejs API warstwy środkowej. Użytkownik wyraża zgodę na obie aplikacje, a następnie przepływ OBO działa.
 
-W tej chwili osobisty system konto Microsoft nie obsługuje połączonej zgody i dlatego to podejście nie działa w przypadku aplikacji, które chcą zalogować się do kont osobistych. Osobiste konta Microsoft używane jako konta gościa w dzierżawie są obsługiwane przy użyciu systemu Azure AD i mogą przejść przez połączone wyrażenie.
+### <a name="pre-authorized-applications"></a>Wstępnie autoryzowane aplikacje
 
-#### <a name="pre-authorized-applications"></a>Wstępnie autoryzowane aplikacje
+Zasoby mogą wskazywać, że dana aplikacja zawsze ma uprawnienia do odbierania określonych zakresów. Jest to szczególnie przydatne w przypadku, gdy połączenia między klientem frontonu i zasobem zaplecza są bardziej bezproblemowe. Zasób może deklarować wiele wstępnie autoryzowanych aplikacji — każda taka aplikacja może zażądać tych uprawnień w przepływie OBO i odbierać je bez zgody użytkownika.
 
-Funkcja portalu aplikacji to "wstępnie autoryzowane aplikacje". W ten sposób zasób może wskazywać, że dana aplikacja zawsze ma uprawnienia do odbierania określonych zakresów. Jest to szczególnie przydatne w przypadku, gdy połączenia między klientem frontonu i zasobem zaplecza są bardziej bezproblemowe. Zasób może deklarować wiele wstępnie autoryzowanych aplikacji — każda taka aplikacja może zażądać tych uprawnień w przepływie OBO i odbierać je bez zgody użytkownika.
-
-#### <a name="admin-consent"></a>zgoda administratora
+### <a name="admin-consent"></a>zgoda administratora
 
 Administrator dzierżawy może zagwarantować, że aplikacje mają uprawnienia do wywoływania wymaganych interfejsów API, zapewniając zgodę administratora na aplikację warstwy środkowej. Aby to zrobić, administrator może znaleźć aplikację warstwy środkowej w swojej dzierżawie, otworzyć stronę wymagane uprawnienia i wybrać opcję udzielenia uprawnienia do aplikacji. Aby dowiedzieć się więcej na temat zgody administratora, zapoznaj się z [dokumentacją dotyczącą zgody i uprawnień](v2-permissions-and-consent.md).
 
-### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Wyrażanie zgody na aplikacje usługi Azure AD i konto Microsoft
-
-Ze względu na ograniczenia w modelu uprawnień dla kont osobistych i braku dzierżawy zarządzającej wymagania dotyczące zgody dla kont osobistych są nieco inne niż w przypadku usługi Azure AD. Brak dzierżawców, aby zapewnić zgodę na dostęp do dzierżawy, nie ma możliwości łączenia się z nią. W ten sposób inne strategie same są obecne — należy pamiętać, że są one przeznaczone dla aplikacji, które również muszą obsługiwać tylko konta usługi Azure AD.
-
-#### <a name="use-of-a-single-application"></a>Korzystanie z pojedynczej aplikacji
+### <a name="use-of-a-single-application"></a>Korzystanie z pojedynczej aplikacji
 
 W niektórych scenariuszach może istnieć tylko jedno skojarzenie klienta warstwy środkowej i frontonu. W tym scenariuszu może być łatwiejsze tworzenie tej pojedynczej aplikacji, co wyklucza konieczność całkowitego zastosowania aplikacji warstwy środkowej. Aby przeprowadzić uwierzytelnianie między frontonem a interfejsem API sieci Web, można użyć plików cookie, id_token lub tokenu dostępu żądanego dla aplikacji. Następnie Zażądaj zgody tej pojedynczej aplikacji na zasób zaplecza.
 

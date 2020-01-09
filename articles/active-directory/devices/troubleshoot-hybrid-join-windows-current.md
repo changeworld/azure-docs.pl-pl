@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379163"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689122"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Rozwiązywanie problemów z przyłączonymi urządzeniami hybrydowymi Azure Active Directory 
 
@@ -102,7 +102,8 @@ To pole wskazuje, czy urządzenie jest zarejestrowane w usłudze Azure AD jako u
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: tak  
 
-To pole wskazuje, czy urządzenie jest przyłączone do usługi Azure AD. Jeśli wartość **nie**jest, przyłączenie do usługi Azure AD nie zostało jeszcze ukończone. 
+To pole wskazuje, czy urządzenie jest przyłączone. Ta wartość będzie równa **tak** , jeśli urządzenie jest przyłączone do usługi Azure AD lub do hybrydowego urządzenia dołączonego do usługi Azure AD.
+Jeśli wartość **nie**jest, przyłączenie do usługi Azure AD nie zostało jeszcze ukończone. 
 
 Przejdź do następnych kroków w celu dalszego rozwiązywania problemów.
 
@@ -371,13 +372,13 @@ Użyj dzienników Podgląd zdarzeń, aby zlokalizować fazę i kod błędu dla b
 
 ##### <a name="federated-join-server-errors"></a>Błędy serwera dołączania federacyjnego
 
-| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozwiązanie |
+| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozdzielczość |
 | --- | --- | --- | --- |
 | DirectoryError | Twoje żądanie zostało tymczasowo ograniczone. Spróbuj ponownie za 300 sekund. | Oczekiwany błąd. Prawdopodobnie z powodu wykonywania wielu żądań rejestracji w krótkim sukcesie. | Ponów próbę przyłączenia po okresie cooldown |
 
 ##### <a name="sync-join-server-errors"></a>Błędy serwera łączenia z synchronizacją
 
-| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozwiązanie |
+| Kod błędu serwera | Komunikat o błędzie serwera | Możliwe przyczyny | Rozdzielczość |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002: nie znaleziono <UUID> dzierżawy. Ten błąd może wystąpić, jeśli nie ma aktywnych subskrypcji dla dzierżawy. Skontaktuj się z administratorem subskrypcji. | Identyfikator dzierżawy w obiekcie SCP jest nieprawidłowy | Upewnij się, że obiekt SCP jest skonfigurowany z prawidłowym IDENTYFIKATORem dzierżawy usługi Azure AD i aktywnymi subskrypcjami, które znajdują się w dzierżawie. |
 | DirectoryError | Nie znaleziono obiektu urządzenia o podanym IDENTYFIKATORze. | Oczekiwany błąd podczas przyłączania do synchronizacji. Obiekt urządzenia nie został zsynchronizowany z usługi AD z usługą Azure AD | Poczekaj na zakończenie synchronizacji Azure AD Connect, a kolejna próba sprzężenia po zakończeniu synchronizacji rozwiąże problem |

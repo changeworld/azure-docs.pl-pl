@@ -1,25 +1,19 @@
 ---
-title: Konfigurowanie zasad eksportowania dla woluminu NFS przy użyciu Azure NetApp Files | Microsoft Docs
+title: Konfigurowanie zasad eksportowania dla woluminu NFS — Azure NetApp Files
 description: Opisuje sposób konfigurowania zasad eksportu w celu kontrolowania dostępu do woluminu NFS przy użyciu Azure NetApp Files
 services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: b-juche
-ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674928"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551562"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurowanie zasad eksportu dla woluminu NFS
 

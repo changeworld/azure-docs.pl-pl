@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cab63a17ddfed49684cc37609d9f2ae5bde9bdd3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178193"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689385"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Adresy IP API Management platformy Azure
 
@@ -61,7 +61,7 @@ W [przypadku wdrożeń w wielu regionach](api-management-howto-deploy-multi-regi
 
 Jeśli usługa API Management znajduje się w sieci wirtualnej, będzie mieć dwa typy adresów IP — Public i Private.
 
-Publiczne adresy IP są używane do komunikacji wewnętrznej na porcie `3443` — do zarządzania konfiguracją (na przykład przez Azure Resource Manager). W konfiguracji zewnętrznej sieci wirtualnej są one również używane na potrzeby ruchu interfejsu API środowiska uruchomieniowego. Gdy żądanie jest wysyłane z API Management do publicznego zaplecza (dostępnego z Internetu), publiczny adres IP będzie widoczny jako źródło żądania.
+Publiczne adresy IP są używane do komunikacji wewnętrznej na `3443` portów — do zarządzania konfiguracją (na przykład przez Azure Resource Manager). W konfiguracji zewnętrznej sieci wirtualnej są one również używane na potrzeby ruchu interfejsu API środowiska uruchomieniowego. Gdy żądanie jest wysyłane z API Management do publicznego zaplecza (dostępnego z Internetu), publiczny adres IP będzie widoczny jako źródło żądania.
 
 Prywatne wirtualne adresy IP (VIP) są używane do nawiązywania połączenia z siecią w celu API Management punktów końcowych — bram, portalu deweloperów i płaszczyzny zarządzania do bezpośredniego dostępu do interfejsu API. Można ich używać do konfigurowania rekordów DNS w sieci.
 
@@ -88,6 +88,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
   ...
 }
 ```
+
+API Management używa publicznego adresu IP dla połączeń poza siecią wirtualną i prywatnego adresu IP dla połączeń w sieci wirtualnej.
 
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>Adresy IP dla warstwy zużycia API Management usługi
 

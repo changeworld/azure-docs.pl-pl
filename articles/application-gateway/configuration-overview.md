@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996650"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658342"
 ---
 # <a name="application-gateway-configuration-overview"></a>Przegląd konfiguracji Application Gateway
 
@@ -46,9 +46,9 @@ Zalecamy użycie rozmiaru podsieci co najmniej/28. Ten rozmiar daje 11 przydatny
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Sieciowe grupy zabezpieczeń w podsieci Application Gateway
 
-Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) są obsługiwane w Application Gateway. Istnieje jednak kilka ograniczeń:
+Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) są obsługiwane w Application Gateway. Istnieją jednak pewne ograniczenia:
 
-- Należy zezwolić na ruch przychodzący z Internetu na portach TCP 65503-65534 dla jednostki SKU Application Gateway V1 i portów TCP 65200-65535 dla jednostki SKU w wersji 2z podsiecią docelową. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez certyfikaty platformy Azure. Jednostki zewnętrzne, w tym klienci tych bram, nie mogą inicjować zmian w tych punktach końcowych bez odpowiednich certyfikatów.
+- Należy zezwolić na przychodzący ruch internetowy na portach TCP 65503-65534 dla jednostki SKU Application Gateway V1 i portów TCP 65200-65535 dla jednostki SKU v2 z podsiecią docelową jako **dowolny** i źródłowy jako tag usługi **gatewaymanager** . Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez certyfikaty platformy Azure. Jednostki zewnętrzne, w tym klienci tych bram, nie mogą komunikować się z tymi punktami końcowymi.
 
 - Nie można zablokować wychodzącej łączności z Internetem. Domyślne reguły ruchu wychodzącego w sieciowej grupy zabezpieczeń umożliwiają łączność z Internetem. Zalecamy wykonanie następujących czynności:
 
@@ -57,12 +57,12 @@ Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) są obsługiwane w 
 
 - Ruch ze znacznika **AzureLoadBalancer** musi być dozwolony.
 
-##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Zezwalaj na Application Gateway dostęp do kilku źródłowych adresów IP
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Zezwalaj na Application Gateway dostęp do kilku źródłowych adresów IP
 
 W tym scenariuszu należy użyć sieciowych grup zabezpieczeń w podsieci Application Gateway. W tej kolejności należy umieścić następujące ograniczenia w podsieci:
 
-1. Zezwalaj na ruch przychodzący ze źródłowego adresu IP lub zakresu adresów IP oraz miejsca docelowego jako całej podsieci Application Gateway lub do określonego skonfigurowanego prywatnego adresu IP frontonu. SIECIOWEJ grupy zabezpieczeń nie działa w publicznym adresie IP.
-2. Zezwalaj na żądania przychodzące ze wszystkich źródeł do portów 65503-65534 dla jednostki SKU Application Gateway V1 oraz portów 65200-65535 dla wersji 2 jednostki SKU na potrzeby komunikacji w celu zapewnienia [kondycji wewnętrznej bazy](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)danych. Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez certyfikaty platformy Azure. Bez odpowiednich certyfikatów jednostki zewnętrzne nie mogą inicjować zmian w tych punktach końcowych.
+1. Zezwalaj na ruch przychodzący ze źródłowego adresu IP lub zakresu adresów IP z miejscem docelowym jako cały zakres adresów podsieci Application Gateway i port docelowy jako port dostępu przychodzącego, na przykład port 80 dla dostępu za pośrednictwem protokołu HTTP.
+2. Zezwalaj na przychodzące żądania ze źródła jako tag usługi **gatewaymanager** i miejsce docelowe jako **dowolnych** i docelowych portów as 65503-65534 dla jednostki SKU Application Gateway V1 oraz portów 65200-65535 dla wersji 2 jednostki SKU do [komunikacji z stanem kondycji zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure. Te porty są chronione (zablokowane) przez certyfikaty platformy Azure. Bez odpowiednich certyfikatów jednostki zewnętrzne nie mogą inicjować zmian w tych punktach końcowych.
 3. Zezwalaj na wychodzące sondy Azure Load Balancer (tag*AzureLoadBalancer* ) i ruchu przychodzącego sieci wirtualnej (tag*VirtualNetwork* ) w [sieciowej grupie zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Blokuj cały ruch przychodzący za pomocą reguły Odmów.
 5. Zezwalaj na ruch wychodzący do Internetu dla wszystkich miejsc docelowych.
@@ -74,10 +74,10 @@ W przypadku jednostki SKU w wersji 1 trasy zdefiniowane przez użytkownika (UDR)
 W przypadku jednostki SKU v2 UDR nie są obsługiwane w podsieci Application Gateway. Aby uzyskać więcej informacji, zobacz [jednostka SKU platformy Azure Application Gateway v2](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
-> UDR nie są obsługiwane w przypadku jednostki SKU w wersji 2.  W przypadku konieczności UDR należy kontynuować wdrażanie jednostki SKU w wersji 1.
+> UDR nie są obecnie obsługiwane dla jednostki SKU w wersji 2.
 
 > [!NOTE]
-> Użycie UDR w podsieci Application Gateway powoduje, że stan kondycji w [widoku kondycji zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) będzie wyświetlany jako "nieznany". Powoduje to również, że generowanie dzienników Application Gateway i metryk kończy się niepowodzeniem. Zalecamy, aby nie używać UDR w podsieci Application Gateway, aby można było wyświetlić kondycję, dzienniki i metryki zaplecza.
+> Użycie UDR w podsieci Application Gateway może spowodować, że stan kondycji w [widoku kondycji zaplecza](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) będzie wyświetlany jako "nieznany". Może to spowodować, że generowanie dzienników Application Gateway i metryk kończy się niepowodzeniem. Zalecamy, aby nie używać UDR w podsieci Application Gateway, aby można było wyświetlić kondycję, dzienniki i metryki zaplecza.
 
 ## <a name="front-end-ip"></a>Adres IP frontonu
 
@@ -165,7 +165,7 @@ Aby skonfigurować globalną stronę błędu niestandardowego, zobacz [konfigura
 
 Można scentralizować zarządzanie certyfikatami SSL i zmniejszyć obciążenie odszyfrowywania szyfrowania dla farmy serwerów zaplecza. Scentralizowana obsługa protokołu SSL umożliwia również określenie centralnych zasad protokołu SSL, które są odpowiednie do wymagań dotyczących zabezpieczeń. Można wybrać *domyślne*, *wstępnie zdefiniowane*lub *niestandardowe* zasady protokołu SSL.
 
-Należy skonfigurować zasady protokołu SSL w celu kontrolowania wersji protokołu SSL. Bramę aplikacji można skonfigurować tak, aby korzystała z protokołu minimalna dla uzgadniania TLS z protokołów TLS 1.0, TLS 1.1 i TLS 1.2. Domyślnie protokoły SSL 2,0 i 3,0 są wyłączone i nie można ich konfigurować. Aby uzyskać więcej informacji, zobacz [Application Gateway Omówienie zasad protokołu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+Należy skonfigurować zasady protokołu SSL w celu kontrolowania wersji protokołu SSL. Bramę aplikacji można skonfigurować tak, aby korzystała z minimalnej wersji protokołu dla uzgadniania TLS z protokołów TLS 1.0, TLS 1.1 i TLS 1.2. Domyślnie protokoły SSL 2,0 i 3,0 są wyłączone i nie można ich konfigurować. Aby uzyskać więcej informacji, zobacz [Application Gateway Omówienie zasad protokołu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
 Po utworzeniu odbiornika należy skojarzyć go z regułą routingu żądania. Ta reguła określa, jak żądania odbierane w odbiorniku są kierowane do zaplecza.
 
@@ -256,7 +256,7 @@ Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym
 
 ### <a name="connection-draining"></a>Opróżnianie połączeń
 
-Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji planowanych usług. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguły. Gwarantuje to, że wszystkie wyrejestrujące się wystąpienia puli zaplecza nadal utrzymują istniejące połączenia i obsługują żądania w celu skonfigurowania limitu czasu i nie otrzymają żadnych nowych żądań ani połączeń. Jedynym wyjątkiem są żądania powiązane z wystąpieniami deregistring z powodu koligacji sesji zarządzanej przez bramę i nadal będzie on serwerem proxy w wystąpieniach deregistring. Opróżnianie połączeń dotyczy wystąpień zaplecza, które są jawnie usuwane z puli zaplecza.
+Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji planowanych usług. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguły. Gwarantuje to, że wszystkie wyrejestrujące się wystąpienia puli zaplecza nadal utrzymują istniejące połączenia i obsługują żądania w celu skonfigurowania limitu czasu i nie otrzymają żadnych nowych żądań ani połączeń. Jedynym wyjątkiem są żądania związane z wyrejestrowywaniem wystąpień z powodu koligacji sesji zarządzanej przez bramę i będzie on nadal przekazywany do wyrejestrowania wystąpień. Opróżnianie połączeń dotyczy wystąpień zaplecza, które są jawnie usuwane z puli zaplecza.
 
 ### <a name="protocol"></a>Protocol (Protokół)
 

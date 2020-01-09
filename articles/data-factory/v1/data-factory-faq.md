@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139815"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645144"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory — często zadawane pytania
 > [!NOTE]
@@ -44,7 +44,7 @@ Szczegóły cennika Azure Data Factory można znaleźć na [stronie Szczegóły 
 Data Factory jest dostępny w regionie **zachodnie stany USA** i **Europa Północna**. Usługi obliczeniowe i magazynowe używane przez fabrykę danych mogą znajdować się w innych regionach. Zobacz [Obsługiwane regiony](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jakie są limity dotyczące liczby fabryk danych/potoków/działań/zestawów DataSet?
-Zapoznaj się z sekcją **limity Azure Data Factory** w artykule dotyczącym [limitów subskrypcji i usług, przydziałów i ograniczeń usługi](../../azure-subscription-service-limits.md#data-factory-limits) .
+Zapoznaj się z sekcją **limity Azure Data Factory** w artykule dotyczącym [limitów subskrypcji i usług, przydziałów i ograniczeń usługi](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Co to jest środowisko tworzenia i programowania za pomocą usługi Azure Data Factory?
 Fabryki danych można tworzyć/utworzyć przy użyciu jednego z następujących narzędzi/zestawów SDK:

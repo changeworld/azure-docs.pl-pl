@@ -4,19 +4,19 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 653c175a559f5c0b7dc551b396e91276332df20a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468734"
 ---
-Urządzenie jest skojarzone z kontem magazynu, który jest używany jako miejsce docelowe dla danych na platformie Azure. Dostęp do konta magazynu jest kontrolowany przez subskrypcję i dwa magazynu 512-bitowe klucze skojarzone z tym kontem magazynu dostępu.
+Urządzenie jest skojarzone z kontem magazynu, które jest używane jako miejsce docelowe danych na platformie Azure. Dostęp do konta magazynu jest kontrolowany przez subskrypcję i 2 512-bitowe klucze dostępu do magazynu skojarzone z tym kontem magazynu.
 
-Jeden z kluczy jest używany do uwierzytelniania, gdy urządzenie brzegowe pole danych uzyskuje dostęp do konta magazynu. Drugi klucz jest przechowywany w rezerwie, aby okresowo zmieniać klucze.
+Jeden z tych kluczy jest używany do uwierzytelniania, gdy urządzenie Data Box Edge uzyskuje dostęp do konta magazynu. Drugi klucz jest przechowywany w rezerwie, dzięki czemu można obrócić klucze okresowo.
 
-Ze względów bezpieczeństwa wiele centrów danych wymagają wymiany kluczy. Firma Microsoft zaleca, aby wykonać te najlepsze praktyki dotyczące wymiany kluczy:
+Ze względów bezpieczeństwa wiele centrów danych wymaga rotacji kluczy. Zalecamy przestrzeganie następujących najlepszych rozwiązań dotyczących rotacji kluczy:
 
-- Klucz konta magazynu jest podobny do hasła głównego konta magazynu. Starannie Chroń klucz konta. Nie dystrybucji haseł do innych użytkowników, ciężko zakodować go lub zapisać go w dowolnym miejscu w postaci zwykłego tekstu, który jest dostępny dla innych użytkowników.
-- [Wygeneruj ponownie klucz konta](../articles/storage/common/storage-account-manage.md#regenerate-access-keys) za pośrednictwem platformy Azure portal, jeśli sądzisz, że może to mieć negatywny.
-- Administrator platformy Azure należy okresowo zmiany lub ponownie wygenerować klucz podstawowy lub pomocniczy przy użyciu sekcji magazyn w witrynie Azure Portal, aby bezpośrednio dostęp do konta magazynu.
+- Klucz konta magazynu jest podobny do hasła głównego konta magazynu. Starannie Chroń klucz konta. Nie Dystrybuuj hasła do innych użytkowników, twardy kod lub Zapisz go w dowolnym miejscu w postaci zwykłego tekstu, który jest dostępny dla innych osób.
+- Wygeneruj ponownie klucz konta za pośrednictwem Azure Portal, jeśli uważasz, że jego zabezpieczenia mogły zostać naruszone. Aby uzyskać więcej informacji, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../articles/storage/common/storage-account-keys-manage.md).
+- Administrator platformy Azure powinien okresowo zmieniać lub ponownie generować klucz podstawowy lub pomocniczy przy użyciu sekcji Magazyn Azure Portal, aby uzyskać bezpośredni dostęp do konta magazynu.

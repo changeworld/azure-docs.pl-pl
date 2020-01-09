@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 08f9310c2ffdb2e7b8d4249495c2ee90b522d694
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 609b1c4500e1602c38f3383df6cbe176a3333bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439548"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 
@@ -144,7 +144,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
       - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
-        Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
+        Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
@@ -195,7 +195,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
 
     1. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**.
     2. Wybierz swoje konto usługi Azure Storage w polu **Nazwa konta magazynu**.
-    3. Kliknij przycisk **Save** (Zapisz).
+    3. Kliknij pozycję **Zapisz**.
 
    ![Nowa połączona usługa Azure Storage](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Wprowadź wartość `@pipeline().parameters.sourceBlobContainer` jako folder oraz `emp.txt` jako nazwę pliku. Parametr potoku sourceBlobContainer umożliwia ustawienie ścieżki folderu dla zestawu danych. 
@@ -309,7 +309,7 @@ W tym kroku jest tworzony potok z jednym działaniem kopiowania i dwoma działan
     1. Wprowadź wartość **adftutorial/dummy/input** dla parametru **sourceBlobContainer**. Upewnij się, że folder „dummy” nie istnieje w kontenerze adftutorial. 
     2. Wprowadź wartość **adftutorial/dummy/output** dla parametru **sinkBlobContainer**. 
     3. Wprowadź **adres e-mail** dla parametru **receiver**. 
-    4. Kliknij przycisk **Finish** (Zakończ).
+    4. Kliknij przycisk **Zakończ**.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>Monitorowanie zakończonego niepowodzeniem uruchomienia potoku
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227024"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562055"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Omówienie diagnostyki Azure Functions
 
@@ -26,11 +26,11 @@ Aby uzyskać dostęp do diagnostyki Azure Functions:
 3. Wybierz opcję **Diagnozuj i rozwiąż problemy** w obszarze **Zarządzanie zasobami**, co spowoduje otwarcie Azure Functions diagnostyki.
 4. Wybierz kategorię, która najlepiej opisuje problem z aplikacją funkcji przy użyciu słów kluczowych na kafelku strony głównej. Możesz również wpisać słowo kluczowe, które najlepiej opisuje Twój problem na pasku wyszukiwania. Można na przykład wpisać `execution`, aby wyświetlić listę raportów diagnostycznych związanych z wykonywaniem aplikacji funkcji i otworzyć je bezpośrednio z poziomu strony głównej.
 
-![Głównej](./media/functions-diagnostics/homepage.png)
+![Strona główna](./media/functions-diagnostics/homepage.png)
 
 ## <a name="use-the-interactive-interface"></a>Korzystanie z interfejsu interakcyjnego
 
-Po wybraniu kategorii głównej najlepiej dopasowanej do problemu z aplikacją funkcji Azure Functions Diagnostyka "Interactive Interface Genie" może przeprowadzić Cię przez diagnozowanie i rozwiązywanie problemów z aplikacją. Aby wyświetlić pełny raport diagnostyczny interesującej kategorii problemu, można użyć skrótów, które są udostępniane przez Genie. Skróty kafelków zapewniają bezpośredni sposób uzyskiwania dostępu do metryk diagnostycznych.
+Po wybraniu kategorii głównej najlepiej dopasowanej do problemu z aplikacją funkcji Azure Functions Diagnostyka "Interactive Interface Genie" może przeprowadzić Cię przez diagnozowanie i rozwiązywanie problemów z aplikacją. Aby wyświetlić pełny raport diagnostyczny dotyczącej interesującej kategorii problemu, możesz skorzystać z skrótów dostępnych w genie. Skróty kafelków zapewniają bezpośredni sposób uzyskiwania dostępu do metryk diagnostycznych.
 
 ![Genie](./media/functions-diagnostics/genie.png)
 
@@ -40,11 +40,11 @@ Po wybraniu kafelka zobaczysz listę tematów związanych z problemem opisanym w
 
 ## <a name="view-a-diagnostic-report"></a>Wyświetl raport diagnostyczny
 
-Po wybraniu tematu można wyświetlić raport diagnostyczny specyficzny dla aplikacji funkcji. Raporty diagnostyczne używają ikon stanu, aby wskazać, czy występują konkretne problemy z aplikacją. Zobaczysz szczegółowy opis problemu, zalecane akcje, powiązane z nią metryki i przydatne dokumenty. Niestandardowe raporty diagnostyczne są generowane na podstawie serii kontroli wykonywanych w aplikacji funkcji. Raporty diagnostyczne mogą być użytecznym narzędziem do lokalizowania problemów w aplikacji funkcji, a także do rozwiązywania problemu.
+Po wybraniu tematu można wyświetlić raport diagnostyczny specyficzny dla aplikacji funkcji. Raporty diagnostyczne używają ikon stanu, aby wskazać, czy występują pewne problemy z aplikacją. Zobaczysz szczegółowy opis problemu, zalecane akcje, powiązane z nią metryki i przydatne dokumenty. Niestandardowe raporty diagnostyczne są generowane na podstawie serii kontroli wykonywanych w aplikacji funkcji. Raporty diagnostyczne mogą być użytecznym narzędziem do lokalizowania problemów w aplikacji funkcji, a także do rozwiązywania problemu.
 
 ## <a name="find-the-problem-code"></a>Znajdź kod problemu 
 
-W przypadku funkcji opartych na skryptach można użyć **funkcji wykonywania** i **błędów w obszarze aplikacja funkcji lub raportowania błędów** , aby zawęzić wiersz kodu powodujący wyjątki lub błędy. Ta funkcja może być przydatnym narzędziem do uzyskiwania dostępu do głównej przyczyny i rozwiązywania problemów z określonym wierszem kodu. Ta opcja jest niedostępna dla C# funkcji prekompilowanych i języka Java.
+W przypadku funkcji opartych na skryptach można użyć **funkcji wykonywania** i **błędów** w obszarze **aplikacja funkcji lub raportowania błędów** , aby zawęzić wiersz kodu powodujący wyjątki lub błędy. Ta funkcja może być przydatnym narzędziem do uzyskiwania dostępu do głównej przyczyny i rozwiązywania problemów z określonym wierszem kodu. Ta opcja jest niedostępna dla C# funkcji prekompilowanych i języka Java.
 
 ![Raport diagnostyczny dotyczący błędów wykonania funkcji](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

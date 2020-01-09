@@ -1,5 +1,5 @@
 ---
-title: Samouczek — optymalizowanie kosztów wystąpień zarezerwowanych za pomocą rozwiązania Cloudyn na platformie Azure | Microsoft Docs
+title: Samouczek — Optymalizowanie kosztu wystąpienia rezerwowego za pomocą Cloudyn — Azure
 description: W tym samouczku dowiesz się, jak optymalizować koszty wystąpień zarezerwowanych na platformach Azure i Amazon Web Services (AWS).
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444568"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -41,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz mieć konto platformy Azure.
-- Musisz mieć rejestrację próbną lub płatną subskrypcję rozwiązania Cloudyn.
+- Musisz mieć rejestrację próbną lub płatną subskrypcję usługi Cloudyn.
 - Musisz mieć wystąpienia zarezerwowane kupione na platformie Azure lub AWS.
 
 ## <a name="understand-azure-ri-costs"></a>Poznanie kosztów wystąpień zarezerwowanych na platformie Azure

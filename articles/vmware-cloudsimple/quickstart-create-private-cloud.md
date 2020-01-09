@@ -1,5 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — szybki start — tworzenie chmury prywatnej
+title: 'Szybki Start: Tworzenie chmury prywatnej'
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Dowiedz się, jak utworzyć i skonfigurować chmurę prywatną z rozwiązaniem VMware platformy Azure przez CloudSimple
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452391"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Szybki Start — Konfigurowanie środowiska chmury prywatnej
 

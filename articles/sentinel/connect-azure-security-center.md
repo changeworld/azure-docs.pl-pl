@@ -1,26 +1,20 @@
 ---
-title: Łączenie Azure Security Center danych z platformą Azure — wskaźnikiem Microsoft Docs
+title: Łączenie Azure Security Center danych z platformą Azure — wskaźnikiem
 description: Dowiedz się, jak połączyć Azure Security Center dane z platformą Azure — wskaźnikiem.
-services: sentinel
-documentationcenter: na
 author: rkarlin
 manager: rkarlin
-editor: ''
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240220"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563670"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Łączenie danych z Azure Security Center
 

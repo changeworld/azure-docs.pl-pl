@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449821"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji wsadowych
 
@@ -94,7 +94,7 @@ Zalecamy utworzenie konta magazynu *przeznaczonego* do użycia z kontem usługi 
 > Obecnie nie można używać pakietów aplikacji z kontem usługi Azure Storage skonfigurowanym przy użyciu [reguł zapory](../storage/common/storage-network-security.md).
 > 
 
-Usługa Batch używa usługi Azure Storage do przechowywania pakietów aplikacji jako blokowych obiektów BLOB. Opłaty są [naliczone jako normalne][storage_pricing] dla danych blokowych obiektów blob, a rozmiar każdego pakietu nie może przekroczyć [maksymalnego rozmiaru bloku obiektów BLOB](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets). Należy wziąć pod uwagę rozmiar i liczbę pakietów aplikacji oraz okresowe usuwanie przestarzałych pakietów w celu zminimalizowania kosztów.
+Usługa Batch używa usługi Azure Storage do przechowywania pakietów aplikacji jako blokowych obiektów BLOB. Opłaty są [naliczone jako normalne][storage_pricing] dla danych blokowych obiektów blob, a rozmiar każdego pakietu nie może przekroczyć maksymalnego rozmiaru bloku obiektów BLOB. Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajności usługi Azure Storage dla kont magazynu](../storage/blobs/scalability-targets.md). Należy wziąć pod uwagę rozmiar i liczbę pakietów aplikacji oraz okresowe usuwanie przestarzałych pakietów w celu zminimalizowania kosztów.
 > 
 > 
 
@@ -171,7 +171,7 @@ Po wybraniu pliku kliknij przycisk **OK** , aby rozpocząć przekazywanie do us�
 > 
 
 ### <a name="add-a-new-application-package"></a>Dodaj nowy pakiet aplikacji
-Aby dodać wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w oknach **aplikacje** , a następnie kliknij pozycję **pakiety**  > **Dodaj**.
+Aby dodać wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w oknach **aplikacje** , a następnie kliknij pozycję **pakiety** > **Dodaj**.
 
 ![Dodaj blok pakietu aplikacji w Azure Portal][8]
 
@@ -260,7 +260,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-W węzłach systemu Linux format jest nieco inny. Kropki (.), łączniki (-) i znaki liczbowe (#) są spłaszczone do podkreślenia w zmiennej środowiskowej. Należy również pamiętać, że sprawa identyfikatora aplikacji jest zachowywana. Na przykład:
+W węzłach systemu Linux format jest nieco inny. Kropki (.), łączniki (-) i znaki liczbowe (#) są spłaszczone do podkreślenia w zmiennej środowiskowej. Należy również pamiętać, że sprawa identyfikatora aplikacji jest zachowywana. Przykład:
 
 ```
 Linux:

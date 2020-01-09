@@ -1,20 +1,16 @@
 ---
 title: Kontrolki zabezpieczeń dla usługi Azure Service Fabric
-description: Lista kontrolna zabezpieczeń na potrzeby oceny Service Fabric platformy Azure
-services: service-fabric
-documentationcenter: ''
+description: Dowiedz się więcej o kontrolkach zabezpieczeń dla usługi Azure Service Fabric. Zawiera listę kontrolną wbudowanych kontrolek zabezpieczeń.
 author: msmbaldwin
-manager: rkarlin
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d62c7848588c494c8190f0d429ce2d6641928b52
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886743"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645433"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Kontrolki zabezpieczeń dla usługi Azure Service Fabric
 
@@ -22,7 +18,7 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Sieć
+## <a name="network"></a>Network (Sieć)
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
@@ -44,13 +40,13 @@ W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Az
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
 | Authentication| Tak | Uwierzytelnianie odbywa się za Azure Active Directory. |
-| Authorization| Tak | Zarządzanie tożsamościami i dostępem (IAM) dla wywołań za pośrednictwem usługi SFRP. Wywołania bezpośrednio do punktu końcowego klastra obsługują dwie role: Użytkownik i administrator. Klient może mapować interfejsy API na jedną rolę. |
+| Autoryzacja| Tak | Zarządzanie tożsamościami i dostępem (IAM) dla wywołań za pośrednictwem usługi SFRP. Wywołania bezpośrednio do punktu końcowego klastra obsługują dwie role: użytkownik i administrator. Klient może mapować interfejsy API na jedną rolę. |
 
 ## <a name="data-protection"></a>Ochrona danych
 
 | Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: Klucze zarządzane przez firmę Microsoft | Tak | Klient jest właścicielem klastra i zestawu skalowania maszyn wirtualnych, na którym został skompilowany klaster. Usługę Azure Disk Encryption można włączyć na zestawie skalowania maszyn wirtualnych. |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Klient jest właścicielem klastra i zestawu skalowania maszyn wirtualnych, na którym został skompilowany klaster. Usługę Azure Disk Encryption można włączyć na zestawie skalowania maszyn wirtualnych. |
 | Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Tak | Klient jest właścicielem klastra i zestawu skalowania maszyn wirtualnych, na którym został skompilowany klaster. Usługę Azure Disk Encryption można włączyć na zestawie skalowania maszyn wirtualnych. |
 | Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND |  |
 | Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak |  |

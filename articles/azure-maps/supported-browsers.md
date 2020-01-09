@@ -7,13 +7,13 @@ ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: d867e9a1afcb495aee7e8b0e0b3b001104f48a4c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+manager: cpendle
+ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432790"
 ---
 # <a name="web-sdk-supported-browsers"></a>Przeglądarki obsługiwane przez zestaw Web SDK
 
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Pulpitu
+## <a name="desktop"></a>Klasyczna
 
 Azure Maps Web SDK obsługuje następujące przeglądarki pulpitu:
 
@@ -40,7 +40,7 @@ Azure Maps Web SDK obsługuje następujące przeglądarki pulpitu:
 
 Zobacz też więcej niż [starsze przeglądarki](#Target-Legacy-Browsers) w dalszej części tego artykułu.
 
-## <a name="mobile"></a>Urządzenia przenośne
+## <a name="mobile"></a>Aplikacje mobilne
 
 Zestaw SDK sieci Web Azure Maps obsługuje następujące przeglądarki dla urządzeń przenośnych:
 
@@ -59,7 +59,7 @@ Zestaw SDK sieci Web Azure Maps obsługuje następujące przeglądarki dla urzą
 
 W programie Node. js są również obsługiwane następujące moduły zestawu SDK sieci Web:
 
-- Module usług ([Dokumentacja](how-to-use-services-module.md) | [npm module](https://www.npmjs.com/package/azure-maps-rest))
+- Moduł usług ([dokumentacja](how-to-use-services-module.md) | [module npm](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="Target-Legacy-Browsers"></a>Docelowe starsze przeglądarki
 

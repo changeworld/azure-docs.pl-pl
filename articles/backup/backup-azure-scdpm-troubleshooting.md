@@ -1,14 +1,14 @@
 ---
 title: Rozwiązywanie problemów z programem System Center Data Protection Manager
 description: W tym artykule Odkryj rozwiązania problemów, które mogą wystąpić podczas korzystania z programu System Center Data Protection Manager.
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/30/2019
-ms.openlocfilehash: 8ecd2f469c8fcaea9761a1a3033fa0c44a255ae7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172694"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664746"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Rozwiązywanie problemów z programem System Center Data Protection Manager
 

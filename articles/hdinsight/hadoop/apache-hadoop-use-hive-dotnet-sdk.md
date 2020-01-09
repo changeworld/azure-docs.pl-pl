@@ -1,147 +1,149 @@
 ---
-title: Uruchamianie zapytania usługi Apache Hive przy użyciu HDInsight platformy .NET SDK — platformy Azure
-description: Dowiedz się, jak można przesłać zadania technologii Apache Hadoop do usługi Azure HDInsight Apache Hadoop przy użyciu zestawu .NET SDK HDInsight.
-ms.reviewer: jasonh
+title: Uruchamianie zapytań Apache Hive przy użyciu zestawu .NET SDK usługi HDInsight — Azure
+description: Dowiedz się, jak przesyłać zadania Apache Hadoop do usługi Azure HDInsight Apache Hadoop przy użyciu zestawu .NET SDK HDInsight.
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 947e797842000e4da2f9e22077bc32c24d6c6a74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: a9d71c8aebb9cc4a0adbd461aead6e2612bd13bd
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718838"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552495"
 ---
-# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Uruchamianie zapytań Apache Hive przy użyciu zestawu .NET SDK usługi HDInsight
+
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Dowiedz się, jak przesyłać zapytania usługi Apache Hive przy użyciu zestawu .NET SDK HDInsight. Napisz program C#, można przesłać zapytania programu Hive w taki sposób, aby uzyskać listę tabel programu Hive i wyświetlić wyniki.
+Dowiedz się, jak przesyłać zapytania Apache Hive przy użyciu zestawu .NET SDK usługi HDInsight. Napiszesz C# program do przesyłania zapytania programu Hive w celu wyświetlenia listy tabel programu Hive i wyświetlania wyników.
 
 > [!NOTE]  
-> Kroki opisane w tym artykule, należy wykonać w kliencie Windows. Instrukcje dotyczące używania systemu Linux, OS X lub klienta systemu Unix do pracy z programu Hive selektor karty wyświetlane w górnej części tego artykułu.
+> Kroki opisane w tym artykule należy wykonać z poziomu klienta systemu Windows. Aby uzyskać informacje na temat używania klienta z systemem Linux, OS X lub UNIX do pracy z usługą Hive, użyj selektora kart wyświetlanego w górnej części artykułu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed przystąpieniem do wykonywania w tym artykule, musi mieć następujące elementy:
 
-* **Klaster platformy Apache Hadoop w HDInsight**. Zobacz [rozpoczęcie korzystania z opartą na systemie Linux platformą Hadoop w HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+Przed rozpoczęciem pracy z tym artykułem należy dysponować następującymi elementami:
 
-    > [!WARNING]  
-    > Od 15 września 2017 r. zestawu .NET SDK HDInsight obsługuje tylko zwracanie wyników zapytania programu Hive z konta usługi Azure Storage. Jeśli używasz w tym przykładzie z klastrem usługi HDInsight, który używa usługi Azure Data Lake Storage jako magazynu podstawowego, nie można pobrać wyników wyszukiwania za pomocą zestawu .NET SDK.
+* Klaster Apache Hadoop w usłudze HDInsight. Zobacz [wprowadzenie do korzystania z platformy Hadoop opartej na systemie Linux w usłudze HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
-* **Visual Studio 2013/2015/2017**.
+    > [!IMPORTANT]  
+    > Od 15 września 2017, zestaw SDK usługi HDInsight .NET obsługuje tylko zwracanie wyników zapytania Hive z kont usługi Azure Storage. W przypadku użycia tego przykładu z klastrem usługi HDInsight, który używa Azure Data Lake Storage jako magazynu podstawowego, nie można pobrać wyników wyszukiwania przy użyciu zestawu .NET SDK.
 
-## <a name="run-a-hive-query"></a>Uruchomienie zapytania programu Hive
-Zestaw .NET SDK HDInsight zawiera biblioteki klienckie programu .NET, dzięki czemu łatwiej jest pracować z klastrami HDInsight za pomocą platformy .NET. 
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 lub więcej. Należy zainstalować co najmniej obciążenie **aplikacji klasycznej platformy .NET** .
 
-**Aby przesłać zadania**
+## <a name="run-a-hive-query"></a>Uruchamianie zapytania programu Hive
 
-1. Tworzenie aplikacji konsolowej C# w programie Visual Studio.
-2. Z poziomu konsoli Menedżera pakietów Nuget uruchom następujące polecenie:
-   
+Zestaw SDK platformy .NET dla usługi HDInsight zawiera biblioteki klienckie platformy .NET, które ułatwiają pracę z klastrami usługi HDInsight z poziomu platformy .NET.
+
+1. Utwórz aplikację C# konsolową w programie Visual Studio.
+
+1. W konsoli Menedżera pakietów NuGet Uruchom następujące polecenie:
+
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. Użyj następującego kodu:
+
+1. Edytuj Poniższy kod, aby zainicjować wartości zmiennych: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`. Następnie użyj poprawionego kodu jako całej zawartości **program.cs** w programie Visual Studio.
 
     ```csharp
-        using System.Collections.Generic;
-        using System.IO;
-        using System.Text;
-        using System.Threading;
-        using Microsoft.Azure.Management.HDInsight.Job;
-        using Microsoft.Azure.Management.HDInsight.Job.Models;
-        using Hyak.Common;
-   
-        namespace SubmitHDInsightJobDotNet
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text;
+    using System.Threading;
+    using Microsoft.Azure.Management.HDInsight.Job;
+    using Microsoft.Azure.Management.HDInsight.Job.Models;
+    using Hyak.Common;
+
+    namespace SubmitHDInsightJobDotNet
+    {
+        class Program
         {
-            class Program
+            private static HDInsightJobManagementClient _hdiJobManagementClient;
+
+            private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
+            private const string ExistingClusterUsername = "<Cluster Username>";
+            private const string ExistingClusterPassword = "<Cluster User Password>";
+
+            // Only Azure Storage accounts are supported by the SDK
+            private const string DefaultStorageAccountName = "<Default Storage Account Name>";
+            private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
+            private const string DefaultStorageContainerName = "<Default Blob Container Name>";
+
+            private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
+
+            static void Main(string[] args)
             {
-                private static HDInsightJobManagementClient _hdiJobManagementClient;
-   
-                private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
-                private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
-                private const string ExistingClusterUsername = "<Cluster Username>";
-                private const string ExistingClusterPassword = "<Cluster User Password>";
-                
-                // Only Azure Storage accounts are supported by the SDK
-                private const string DefaultStorageAccountName = "<Default Storage Account Name>";
-                private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
-                private const string DefaultStorageContainerName = "<Default Blob Container Name>";
-   
-                static void Main(string[] args)
+                System.Console.WriteLine("The application is running ...");
+
+                var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
+                _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
+
+                SubmitHiveJob();
+
+                System.Console.WriteLine("Press ENTER to continue ...");
+                System.Console.ReadLine();
+            }
+
+            private static void SubmitHiveJob()
+            {
+                Dictionary<string, string> defines = new Dictionary<string, string> { { "hive.execution.engine", "tez" }, { "hive.exec.reducers.max", "1" } };
+                List<string> args = new List<string> { { "argA" }, { "argB" } };
+                var parameters = new HiveJobSubmissionParameters
                 {
-                    System.Console.WriteLine("The application is running ...");
-   
-                    var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
-                    _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
-   
-                    SubmitHiveJob();
-   
-                    System.Console.WriteLine("Press ENTER to continue ...");
-                    System.Console.ReadLine();
+                    Query = "SHOW TABLES",
+                    Defines = defines,
+                    Arguments = args
+                };
+
+                System.Console.WriteLine("Submitting the Hive job to the cluster...");
+                var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
+                var jobId = jobResponse.JobSubmissionJsonResponse.Id;
+                System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
+                System.Console.WriteLine("JobId is " + jobId);
+
+                System.Console.WriteLine("Waiting for the job completion ...");
+
+                // Wait for job completion
+                var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
+                while (!jobDetail.Status.JobComplete)
+                {
+                    Thread.Sleep(1000);
+                    jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
                 }
-   
-                private static void SubmitHiveJob()
+
+                // Get job output
+                var storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey,
+                    DefaultStorageContainerName);
+                var output = (jobDetail.ExitValue == 0)
+                    ? _hdiJobManagementClient.JobManagement.GetJobOutput(jobId, storageAccess) // fetch stdout output in case of success
+                    : _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); // fetch stderr output in case of failure
+
+                System.Console.WriteLine("Job output is: ");
+
+                using (var reader = new StreamReader(output, Encoding.UTF8))
                 {
-                    Dictionary<string, string> defines = new Dictionary<string, string> { { "hive.execution.engine", "tez" }, { "hive.exec.reducers.max", "1" } };
-                    List<string> args = new List<string> { { "argA" }, { "argB" } };
-                    var parameters = new HiveJobSubmissionParameters
-                    {
-                        Query = "SHOW TABLES",
-                        Defines = defines,
-                        Arguments = args
-                    };
-   
-                    System.Console.WriteLine("Submitting the Hive job to the cluster...");
-                    var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
-                    var jobId = jobResponse.JobSubmissionJsonResponse.Id;
-                    System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
-                    System.Console.WriteLine("JobId is " + jobId);
-   
-                    System.Console.WriteLine("Waiting for the job completion ...");
-   
-                    // Wait for job completion
-                    var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
-                    while (!jobDetail.Status.JobComplete)
-                    {
-                        Thread.Sleep(1000);
-                        jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
-                    }
-   
-                    // Get job output
-                    var storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey,
-                        DefaultStorageContainerName);
-                    var output = (jobDetail.ExitValue == 0)
-                        ? _hdiJobManagementClient.JobManagement.GetJobOutput(jobId, storageAccess) // fetch stdout output in case of success
-                        : _hdiJobManagementClient.JobManagement.GetJobErrorLogs(jobId, storageAccess); // fetch stderr output in case of failure
-   
-                    System.Console.WriteLine("Job output is: ");
-   
-                    using (var reader = new StreamReader(output, Encoding.UTF8))
-                    {
-                        string value = reader.ReadToEnd();
-                        System.Console.WriteLine(value);
-                    }
+                    string value = reader.ReadToEnd();
+                    System.Console.WriteLine(value);
                 }
             }
         }
+    }
     ```
-4. Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-Dane wyjściowe aplikacji będą podobne do:
+1. Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
-![Dane wyjściowe zadania programu Hive HDInsight Hadoop](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+Dane wyjściowe aplikacji powinny wyglądać podobnie do:
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule mają przedstawiono kilka sposobów, aby utworzyć klaster usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+![Dane wyjściowe zadania Hive usługi HDInsight Hadoop](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+W tym artykule przedstawiono sposób przesyłania zapytań Apache Hive przy użyciu zestawu .NET SDK usługi HDInsight. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
-* [Tworzenie klastrów usługi Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Odwołanie do zestawu SDK .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [Apache Pig za pomocą HDInsight](hdinsight-use-pig.md)
-* [Za pomocą HDInsight przy użyciu narzędzia Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md)
+* [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Dokumentacja zestawu SDK platformy .NET dla usługi HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Korzystanie z platformy Apache Sqoop z usługą HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
 * [Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
- 
-
-

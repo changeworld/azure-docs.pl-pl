@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e08fe23f99cbf2fac7fc0528b04360f36d22b875
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a72859e378bc1f97ebaed6a11ea3b250a33651d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448524"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Szybki Start: uzyskiwanie Aktualności wyników przy użyciu interfejsu API REST wyszukiwanie wiadomości Bing i języka go
 
@@ -26,13 +26,13 @@ Ten przewodnik Szybki Start używa języka go do wywoływania interfejs API wysz
 * Zainstaluj bibliotekę przejdź do Spew, aby wyświetlić wyniki
     * Zainstaluj tę bibliotekę: `$ go get -u https://github.com/davecgh/go-spew`
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Tworzenie projektu i importowanie bibliotek
 
 Utwórz nowy projekt przejdź do środowiska IDE lub edytora. Następnie zaimportuj `net/http` dla żądań, `ioutil` odczytać odpowiedź i `encoding/json` do obsługi tekstu JSON wyników. Biblioteka go-Spew jest wymagana do analizowania kodu JSON. 
 
-```
+```go
 package main
 
 import (
@@ -49,7 +49,7 @@ import (
 
 Struktura `NewsAnswer` formatuje dane zawarte w odpowiedzi. KOD JSON odpowiedzi jest wielopoziomowy i dość skomplikowany.  W poniższej implementacji przedstawiono podstawowe informacje dotyczące programu.
 
-```
+```go
 // This struct formats the answer provided by the Bing News Search API.
 type NewsAnswer struct {
     ReadLink       string `json: "readLink"` 
@@ -87,9 +87,9 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarowanie funkcji main i definiowanie zmiennych  
 
-Poniższy kod deklaruje główną funkcję i przypisuje wymagane zmienne. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure.
+Poniższy kod deklaruje główną funkcję i przypisuje wymagane zmienne. Upewnij się, że punkt końcowy jest poprawny, i zamień wartość `token` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.  
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
@@ -110,7 +110,7 @@ func main() {
 
 Dodawanie ciągu zapytania i nagłówka klucza dostępu
 
-```
+```go
 // Add the query to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
@@ -125,7 +125,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 Utwórz klienta i Wyślij żądanie Get. 
 
-```
+```go
 // Instantiate a client.  
 client := new(http.Client)
 
@@ -141,7 +141,7 @@ if err != nil {
 
 Wyślij żądanie i przeczytaj wyniki przy użyciu `ioutil`.
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -162,7 +162,7 @@ if err != nil {
 
 Funkcja `Unmarshall` wyodrębnia informacje z tekstu JSON zwróconego przez interfejs API wyszukiwanie wiadomości.  Następnie można wyświetlić węzły z wyników przy użyciu `go-spew` całkiem Printer.
 
-```
+```go
 // Create a new answer object 
 ans := new(NewsAnswer)
 err = json.Unmarshal(body, &ans)

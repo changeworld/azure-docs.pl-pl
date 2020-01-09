@@ -1,16 +1,16 @@
 ---
 title: Korzystanie z niestandardowego kontrolera traefik Ingres i Konfigurowanie protokołu HTTPS
 services: azure-dev-spaces
-ms.date: 08/13/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 description: Dowiedz się, jak skonfigurować Azure Dev Spaces, aby użyć niestandardowego kontrolera traefikal i skonfigurować protokół HTTPS za pomocą tego kontrolera
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 8ddaa7b3e982cb85428a7faef20b59525a175778
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: db9afc3a5e33d1a12246c2af80428137043aa242
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438491"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Korzystanie z niestandardowego kontrolera traefik Ingres i Konfigurowanie protokołu HTTPS
 
@@ -22,12 +22,12 @@ W tym artykule opisano sposób konfigurowania Azure Dev Spaces do używania nies
 * [Zainstalowany interfejs wiersza polecenia platformy Azure][az-cli].
 * [Klaster usługi Azure Kubernetes Service (AKS) z włączonym Azure dev Spaces][qs-cli].
 * [polecenia kubectl][kubectl] .
-* [Helm 2,13-2,16 zainstalowana][helm-installed].
+* [Helm 3][helm-installed].
 * [Domena niestandardowa][custom-domain] ze [strefą DNS][dns-zone] w tej samej grupie zasobów co klaster AKS.
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Konfigurowanie niestandardowego kontrolera traefik Ingres
 
-Nawiąż połączenie z klastrem za pomocą [polecenia kubectl][kubectl], Kubernetes klienta wiersza polecenia. Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
+Nawiąż połączenie z klastrem za pomocą [polecenia kubectl][kubectl], Kubernetes klienta wiersza polecenia. Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i zastosowanie ich w konfiguracji interfejsu wiersza polecenia Kubernetes.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -41,12 +41,17 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
+Dodaj [oficjalne, stabilne repozytorium Helm][helm-stable-repo], w którym znajduje się wykres traefik Helm kontroler transferu danych przychodzących.
+
+```console
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
+
 Utwórz przestrzeń nazw Kubernetes dla kontrolera traefik transferu danych przychodzących i zainstaluj ją przy użyciu `helm`.
 
 ```console
 kubectl create ns traefik
-helm init --wait
-helm install stable/traefik --name traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true
+helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
 
 Pobierz adres IP usługi traefik Ingres Controller przy użyciu funkcji [polecenia kubectl Get][kubectl-get].
@@ -106,18 +111,23 @@ gateway:
 
 Zapisz zmiany i zamknij plik.
 
+Utwórz miejsce *deweloperskie* za pomocą przykładowej aplikacji przy użyciu `azds space select`.
+
+```console
+azds space select -n dev -y
+```
+
 Wdróż przykładową aplikację przy użyciu `helm install`.
 
 ```console
-helm install -n bikesharing . --dep-up --namespace dev --atomic
+helm install bikesharing . --dependency-update --namespace dev --atomic
 ```
 
 Powyższy przykład służy do wdrażania przykładowej aplikacji w przestrzeni nazw *dev* .
 
-Wybierz przestrzeń *dev* z przykładową aplikacją przy użyciu `azds space select` i Wyświetl adresy URL, aby uzyskać dostęp do przykładowej aplikacji przy użyciu `azds list-uris`.
+Wyświetlenie adresów URL w celu uzyskania dostępu do przykładowej aplikacji przy użyciu `azds list-uris`.
 
 ```console
-azds space select -n dev
 azds list-uris
 ```
 
@@ -152,70 +162,94 @@ Przejdź do usługi *bikesharingweb* w podrzędnym obszarze deweloperskim *azure
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Konfigurowanie kontrolera traefik Ingress do korzystania z protokołu HTTPS
 
-Utwórz plik `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` podobny do poniższego przykładu. Zaktualizuj wartość *e-mail* przy użyciu własnej poczty e-mail, która jest używana do generowania certyfikatu z szyfrowaniem.
-
-```yaml
-fullnameOverride: traefik
-replicas: 1
-cpuLimit: 400m
-memoryRequest: 200Mi
-memoryLimit: 500Mi
-externalTrafficPolicy: Local
-kubernetes:
-  ingressClass: traefik
-  ingressEndpoint:
-    useDefaultPublishedService: true
-dashboard:
-  enabled: false
-debug:
-  enabled: false
-accessLogs:
-  enabled: true
-  fields:
-    defaultMode: keep
-    headers:
-      defaultMode: keep
-      names:
-        Authorization: redact
-acme:
-  enabled: true
-  email: "someone@example.com"
-  staging: false
-  challengeType: tls-alpn-01
-ssl:
-  enabled: true
-  enforced: true
-  permanentRedirect: true
-  tlsMinVersion: VersionTLS12
-  cipherSuites:
-    - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-    - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-    - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-    - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-    - TLS_RSA_WITH_AES_128_GCM_SHA256
-    - TLS_RSA_WITH_AES_256_GCM_SHA384
-    - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-```
-
-Zaktualizuj usługę *traefik* przy użyciu `helm repo update` i łącznie z utworzonym plikiem *traefik-Values. YAML* .
+Za pomocą [Menedżera certyfikatów][cert-manager] Automatyzuj zarządzanie certyfikatem TLS podczas konfigurowania kontrolera traefik ingresing do korzystania z protokołu HTTPS. Użyj `helm`, aby zainstalować wykres *certmanager* .
 
 ```console
-cd ..
-helm upgrade traefik stable/traefik --namespace traefik --values traefik-values.yaml
+kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
+kubectl label namespace traefik certmanager.k8s.io/disable-validation=true
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install cert-manager --namespace traefik --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Powyższe polecenie uruchamia nową wersję usługi traefik przy użyciu wartości z *traefik-Values. YAML* i usuwa poprzednią usługę. Usługa traefik tworzy również certyfikat TLS przy użyciu szyfrowania i uruchamia przekierowywanie ruchu internetowego do korzystania z protokołu HTTPS.
+Utwórz plik `letsencrypt-clusterissuer.yaml` i zaktualizuj pole e-mail przy użyciu adresu e-mail.
+
+```yaml
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: MY_EMAIL_ADDRESS
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
+```
 
 > [!NOTE]
-> Uruchomienie nowej wersji usługi traefik może potrwać kilka minut. Postęp można sprawdzić przy użyciu `kubectl get pods --namespace traefik --watch`.
+> W przypadku testowania istnieje również [serwer przejściowy][letsencrypt-staging-issuer] , którego można użyć do *ClusterIssuer*.
 
-Przejdź do przykładowej aplikacji w obszarze podrzędnym *dev/azureuser1* i zwróć uwagę na to, że nastąpi przekierowanie do korzystania z protokołu HTTPS. Zauważ również, że strona jest ładowana, ale w przeglądarce są wyświetlane pewne błędy. Otwarcie konsoli przeglądarki pokazuje błąd dotyczący strony HTTPS próbującej załadować zasoby HTTP. Na przykład:
+Użyj `kubectl`, aby zastosować `letsencrypt-clusterissuer.yaml`.
+
+```console
+kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
+```
+
+Uaktualnij traefik, aby używać protokołu HTTPS przy użyciu `helm`.
+
+```console
+helm upgrade traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0 --set ssl.enabled=true --set ssl.enforced=true --set ssl.permanentRedirect=true
+```
+
+Zaktualizuj [wartości. YAML][values-yaml] , aby uwzględnić szczegóły dotyczące korzystania z *Menedżera certyfikatów* i protokołu HTTPS. Poniżej znajduje się przykładowy zaktualizowany plik `values.yaml`:
+
+```yaml
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+bikesharingweb:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: traefik  # Custom Ingress
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN  # Assumes deployment to the 'dev' space
+    tls:
+    - hosts:
+      - dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN
+      secretName: dev-bikesharingweb-secret
+
+gateway:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: traefik  # Custom Ingress
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - dev.gateway.traefik.MY_CUSTOM_DOMAIN  # Assumes deployment to the 'dev' space
+    tls:
+    - hosts:
+      - dev.gateway.traefik.MY_CUSTOM_DOMAIN
+      secretName: dev-gateway-secret
+```
+
+Uaktualnij przykładową aplikację przy użyciu `helm`:
+
+```console
+helm upgrade bikesharing . --namespace dev --atomic
+```
+
+Przejdź do przykładowej aplikacji w obszarze podrzędnym *dev/azureuser1* i zwróć uwagę na to, że nastąpi przekierowanie do korzystania z protokołu HTTPS. Zauważ również, że strona jest ładowana, ale w przeglądarce są wyświetlane pewne błędy. Otwarcie konsoli przeglądarki pokazuje błąd dotyczący strony HTTPS próbującej załadować zasoby HTTP. Przykład:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Aby naprawić ten błąd, zaktualizuj [BikeSharingWeb/azds. YAML][azds-yaml] , aby użyć *traefik* dla *Kubernetes.IO/Ingress.class* i niestandardowej domeny dla *$ (hostSuffix)* . Na przykład:
+Aby naprawić ten błąd, zaktualizuj [BikeSharingWeb/azds. YAML][azds-yaml] , aby użyć *traefik* dla *Kubernetes.IO/Ingress.class* i niestandardowej domeny dla *$ (hostSuffix)* . Przykład:
 
 ```yaml
 ...
@@ -260,7 +294,7 @@ Zaktualizuj metodę *getApiHostAsync* w [BikeSharingWeb/Pages/helps. js][helpers
 Przejdź do katalogu `BikeSharingWeb` i użyj `azds up`, aby uruchomić zaktualizowaną usługę BikeSharingWeb.
 
 ```console
-cd BikeSharingWeb/
+cd ../BikeSharingWeb/
 azds up
 ```
 
@@ -284,9 +318,12 @@ Dowiedz się, jak Azure Dev Spaces ułatwiają tworzenie bardziej złożonych ap
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[cert-manager]: https://cert-manager.io/
+[helm-installed]: https://helm.sh/docs/intro/install/
+[helm-stable-repo]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[letsencrypt-staging-issuer]: https://cert-manager.io/docs/configuration/acme/#creating-a-basic-acme-issuer
 [package-json]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/package.json
 [values-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml

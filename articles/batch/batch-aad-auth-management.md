@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 3f7ba22fa8e2a8709fc37a891b3da64b6d83e654
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2fd5867d910d29533eb17a4660039cc7b9610290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449833"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań do zarządzania partiami przy użyciu Active Directory
 
@@ -29,13 +29,13 @@ Biblioteka platformy .NET zarządzania usługą Batch udostępnia typy do pracy 
 
 W tym artykule omówiono korzystanie z usługi Azure AD do uwierzytelniania z poziomu aplikacji, które korzystają z biblioteki zarządzania usługą Batch dla platformy .NET. Pokazujemy, jak używać usługi Azure AD do uwierzytelniania administratora lub współadministratora subskrypcji przy użyciu uwierzytelniania zintegrowanego. Korzystamy z przykładowego projektu [zarządzania kontem][acct_mgmt_sample] , dostępnego w witrynie GitHub, aby zapoznać się z użyciem usługi Azure AD z biblioteką zarządzania usługą Batch dla platformy .NET.
 
-Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET Management Library i przykładu zarządzania kontem, zobacz Zarządzanie kontami i przydziałami usługi Batch [za pomocą biblioteki klienta zarządzania usługą Batch dla platformy .NET](batch-management-dotnet.md).
+Aby dowiedzieć się więcej o korzystaniu z biblioteki .NET Management Library i przykładu zarządzania kontem, zobacz [Zarządzanie kontami i przydziałami usługi Batch za pomocą biblioteki klienta zarządzania usługą Batch dla platformy .NET](batch-management-dotnet.md).
 
 ## <a name="register-your-application-with-azure-ad"></a>Rejestrowanie aplikacji w usłudze Azure AD
 
 Usługa Azure [Active Directory Authentication Library][aad_adal] (ADAL) udostępnia interfejs programistyczny usługi Azure AD do użycia w aplikacjach. Aby wywołać biblioteki ADAL z poziomu aplikacji, musisz zarejestrować aplikację w dzierżawie usługi Azure AD. Po zarejestrowaniu aplikacji dostarczasz usługę Azure AD z informacjami o swojej aplikacji, w tym jej nazwą w ramach dzierżawy usługi Azure AD. Następnie usługa Azure AD udostępnia identyfikator aplikacji, który służy do kojarzenia aplikacji z usługą Azure AD w czasie wykonywania. Aby dowiedzieć się więcej o IDENTYFIKATORze aplikacji, zobacz [obiekty główne aplikacji i usługi w Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Aby zarejestrować przykładową aplikację zarządzania kontem, wykonaj kroki opisane w sekcji [Dodawanie aplikacji](../active-directory/develop/quickstart-register-app.md) w temacie [Integrowanie aplikacji z Azure Active Directory][aad_integrate]. Określ **natywną aplikację kliencką** dla typu aplikacji. Standardowy identyfikator URI protokołu OAuth 2,0 dla **identyfikatora URI** przekierowania `urn:ietf:wg:oauth:2.0:oob`to. Można jednak określić dowolny prawidłowy identyfikator URI (na przykład `http://myaccountmanagementsample`) dla **identyfikatora URI przekierowania**, ponieważ nie musi to być rzeczywisty punkt końcowy:
+Aby zarejestrować przykładową aplikację zarządzania kontem, wykonaj kroki opisane w sekcji [Dodawanie aplikacji](../active-directory/develop/quickstart-register-app.md) w temacie [Integrowanie aplikacji z Azure Active Directory][aad_integrate]. Określ **natywną aplikację kliencką** dla typu aplikacji. Standardowy identyfikator URI protokołu OAuth 2,0 dla **identyfikatora URI przekierowania** jest `urn:ietf:wg:oauth:2.0:oob`. Można jednak określić dowolny prawidłowy identyfikator URI (na przykład `http://myaccountmanagementsample`) dla **identyfikatora URI przekierowania**, ponieważ nie musi to być rzeczywisty punkt końcowy:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -47,9 +47,9 @@ Po zakończeniu procesu rejestracji zostanie wyświetlony Identyfikator aplikacj
 
 Następnie musisz delegować dostęp do aplikacji do interfejsu API Azure Resource Manager. Identyfikator usługi Azure AD dla interfejsu API Menedżer zasobów to **Windows Azure interfejs API zarządzania usługami**.
 
-Wykonaj następujące kroki w Azure Portal:
+Wykonaj następujące kroki w witrynie Azure Portal:
 
-1. W okienku nawigacji po lewej stronie Azure Portal wybierz pozycję **wszystkie usługi**, kliknij pozycję rejestracje **aplikacji**, a następnie kliknij przycisk **Dodaj**.
+1. W okienku nawigacji po lewej stronie Azure Portal wybierz pozycję **wszystkie usługi**, kliknij pozycję **rejestracje aplikacji**, a następnie kliknij przycisk **Dodaj**.
 2. Wyszukaj nazwę aplikacji na liście rejestracji aplikacji:
 
     ![Wyszukaj nazwę aplikacji](./media/batch-aad-auth-management/search-app-registration.png)
@@ -137,4 +137,4 @@ Aby uwierzytelnić aplikacje usługi Batch za pomocą usługi Azure AD, zobacz t
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Integrowanie aplikacji z Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md

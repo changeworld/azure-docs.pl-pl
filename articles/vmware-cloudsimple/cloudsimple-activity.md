@@ -1,5 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — zarządzanie działaniami CloudSimple
+title: Zarządzanie działaniami CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Opisuje koncepcje działania w ramach rozwiązania VMware według CloudSimple
 author: sharaths-cs
 ms.author: dikamath
@@ -8,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ad7905244ca190badf73c9a812a8f72282cbcdf3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430258"
 ---
 # <a name="activity-management-overview"></a>Przegląd zarządzania działaniami
 
 CloudSimple śledzi wszystkie działania, które mogą mieć wpływ na działanie środowiska chmury prywatnej. Działania obejmują alerty, zdarzenia, zadania i działania inspekcji. [Strony działań](monitor-activity.md) podsumowują wszystkie bieżące działania i umożliwiają przechodzenie do szczegółów w celu uzyskania dodatkowych szczegółów.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Wydarzenia
 
 Zdarzenia śledzą aktywność użytkowników i systemu w portalu CloudSimple. Zdarzenia pokazują działanie powiązane z określonym zasobem i ważnością wpływu.  Zdarzenia można wyświetlić w portalu CloudSimple.
 

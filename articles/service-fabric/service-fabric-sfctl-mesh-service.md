@@ -1,25 +1,16 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric — usługa siatki sfctl | Microsoft Docs
-description: Zawiera opis poleceń usługi sfctl Service Fabric w sieci interfejsu wiersza polecenia.
-services: service-fabric
-documentationcenter: na
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — usługa siatki sfctl
+description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń pobierania szczegółów usługi dla zasobu aplikacji.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: d2ddc34f8b298a4037a1c8286eceb9ef13b1f416
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 1ae04d054a254746d59b85f4fe366cebf19e3faf
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901149"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646096"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
 Pobierz szczegóły usługi i Wyświetl listę usług dla zasobu aplikacji.
@@ -46,8 +37,8 @@ Pobiera informacje o wszystkich usługach zasobu aplikacji. Informacje obejmują
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
@@ -68,8 +59,8 @@ Pobiera informacje o zasobie usługi o podanej nazwie. Informacje obejmują opis
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |

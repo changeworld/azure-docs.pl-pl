@@ -1,5 +1,5 @@
 ---
-title: Bezpieczny dostęp do konta Azure Cosmos DB przy użyciu punktu końcowego usługi Azure Virtual Network
+title: Bezpieczny dostęp do kont Azure Cosmos DB przy użyciu punktu końcowego usługi sieci wirtualnej
 description: W tym dokumencie opisano kontrolę dostępu do sieci wirtualnej i podsieci dla konta usługi Azure Cosmos.
 author: kanshiG
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 0023710ff3cfe180b628d1da14b8a3ea9c136026
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896234"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444621"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Dostęp do Azure Cosmos DB z sieci wirtualnych (VNet)
 

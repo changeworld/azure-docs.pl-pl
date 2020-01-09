@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestandardowego — wyszukiwanie niestandardowe Bing'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak skonfigurować niestandardowe wystąpienie wyszukiwania Bing i zintegrować je ze stroną sieci Web.
+description: Dowiedz się, jak skonfigurować niestandardowe wystąpienie wyszukiwania Bing i zintegrować je ze stroną sieci Web za pomocą tego samouczka.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5a4d797fecca8e040a6e22bf59a5776b1ffff80f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977203"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448785"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Samouczek: tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
 
@@ -45,7 +45,7 @@ Aby utworzyć wystąpienie wyszukiwania niestandardowego Bing:
   
 2. Przejdź do [portalu](https://customsearch.ai) wyszukiwania niestandardowego.  
   
-3. Zaloguj się do portalu przy użyciu konta Microsoft (MSA). Jeśli nie masz konta MSA, kliknij pozycję **Create a Microsoft account** (Utwórz konto Microsoft). Jeśli korzystasz z portalu po raz pierwszy, zostanie wyświetlony monit o udzielenie uprawnień dostępu do danych. Kliknij przycisk **Yes** (Tak).  
+3. Zaloguj się do portalu przy użyciu konta Microsoft (MSA). Jeśli nie masz konta MSA, kliknij pozycję **Create a Microsoft account** (Utwórz konto Microsoft). Jeśli korzystasz z portalu po raz pierwszy, zostanie wyświetlony monit o udzielenie uprawnień dostępu do danych. Kliknij przycisk **Tak**.  
   
 4. Po zalogowaniu się kliknij pozycję **New custom search** (Nowe wyszukiwanie niestandardowe). W oknie **Create a new custom search instance** (Tworzenie nowego wystąpienia wyszukiwania niestandardowego) wprowadź istotną nazwę opisową typu zawartości zwracanej przez funkcję wyszukiwania. Nazwę można zmienić w dowolnym momencie.  
   

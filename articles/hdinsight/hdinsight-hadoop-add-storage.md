@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435575"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Dodawanie dodatkowych kont magazynu do usługi HDInsight
 
@@ -24,13 +24,13 @@ Dowiedz się, jak za pomocą akcji skryptu dodać dodatkowe *konta* magazynu pla
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Klaster usługi Hadoop w usłudze HDInsight. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* Nazwa i klucz konta magazynu. Zobacz [Zarządzanie ustawieniami konta magazynu w Azure Portal](../storage/common/storage-account-manage.md).
+* Nazwa i klucz konta magazynu. Zobacz [Zarządzanie kluczami dostępu do konta magazynu](../storage/common/storage-account-keys-manage.md).
 * [Nazwa klastra jest poprawnie uwzględniana](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
 * W przypadku korzystania z programu PowerShell należy użyć polecenia AZ module.  Zobacz [omówienie Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 * Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [Azure Command Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 * Jeśli jest używany bash lub wiersz polecenia systemu Windows, potrzebny jest również **JQ**, procesor JSON w wierszu polecenia.  Zobacz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). W przypadku usługi Bash on Ubuntu w systemie Windows 10 zapoznaj się z artykułem systemowy [podsystem instalacji systemu Linux dla systemu Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Ten skrypt przyjmuje następujące parametry:
 
@@ -100,7 +100,7 @@ az hdinsight script-action execute ^
     --script-parameters "ACCOUNTNAME ACCOUNTKEY"
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 Zobacz [Zastosuj akcję skryptu do działającego klastra](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
@@ -108,7 +108,7 @@ Zobacz [Zastosuj akcję skryptu do działającego klastra](hdinsight-hadoop-cust
 
 ### <a name="storage-firewall"></a>Zapora magazynu
 
-Jeśli wybierzesz opcję zabezpieczenia konta magazynu za pomocą ograniczeń **zapory i sieci wirtualnych** w **wybranych sieciach**, należy włączyć wyjątek **Zezwalaj na zaufane usługi firmy Microsoft...** , aby Usługa HDInsight mogła uzyskać dostęp do magazynu koncie.
+Jeśli wybierzesz opcję zabezpieczenia konta magazynu za pomocą ograniczeń **zapory i sieci wirtualnych** w **wybranych sieciach**, należy włączyć wyjątek **Zezwalaj na zaufane usługi firmy Microsoft...** , aby Usługa HDInsight mogła uzyskać dostęp do konta magazynu.
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Konta magazynu nie są wyświetlane w Azure Portal lub narzędziach
 

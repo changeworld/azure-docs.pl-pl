@@ -1,19 +1,14 @@
 ---
 title: Wyświetl Azure Monitor dla wdrożeń kontenerów (wersja zapoznawcza) | Microsoft Docs
 description: W tym artykule opisano widok Kubernetes wdrożeń w czasie rzeczywistym bez użycia polecenia kubectl w Azure Monitor dla kontenerów.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404776"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Jak wyświetlać wdrożenia (wersja zapoznawcza) w czasie rzeczywistym
 
@@ -27,7 +22,7 @@ Za pomocą Azure Monitor dla kontenerów Funkcja Wyświetl wdrożenia (wersja za
 
 Aby dowiedzieć się więcej, zapoznaj się z dokumentacją Kubernetes dotyczącą [wdrożeń](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/). 
 
-## <a name="how-it-works"></a>Jak to działa
+## <a name="how-it-works"></a>Zasady działania
 
 Funkcja dane dynamiczne (wersja zapoznawcza) bezpośrednio uzyskuje dostęp do interfejsu API Kubernetes. dodatkowe informacje o modelu uwierzytelniania można znaleźć [tutaj](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 
@@ -69,6 +64,6 @@ Można również filtrować według przestrzeni nazw lub zdarzeń na poziomie kl
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby kontynuować uczenie się, jak używać Azure Monitor i monitorować inne aspekty klastra AKS, zobacz [Wyświetlanie usługi Azure Kubernetes Service Health](container-insights-analyze.md).
+- Aby kontynuować, jak używać usługi Azure Monitor i monitorowanie innych aspektów wybranego działania klastra usługi AKS, zobacz [widok usługi Azure Kubernetes Service health](container-insights-analyze.md).
 
 - Wyświetl [przykłady zapytań dzienników](container-insights-log-search.md#search-logs-to-analyze-data) , aby wyświetlić wstępnie zdefiniowane zapytania i przykłady do tworzenia alertów, wizualizacji lub przeprowadzenia dalszej analizy klastrów.

@@ -3,12 +3,12 @@ title: Włączanie tworzenia kopii zapasowej przy tworzeniu maszyny wirtualnej p
 description: Opisuje sposób włączania tworzenia kopii zapasowej podczas tworzenia maszyny wirtualnej platformy Azure przy użyciu Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f34c5dd8cfdc94775b9bd9a896b4cfbe4154ecf8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449913"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Włączanie tworzenia kopii zapasowej przy tworzeniu maszyny wirtualnej platformy Azure
 
@@ -20,7 +20,7 @@ W tym artykule opisano sposób włączania tworzenia kopii zapasowej podczas two
 
 - [Sprawdź](backup-support-matrix-iaas.md#supported-backup-actions) , które systemy operacyjne są obsługiwane w przypadku włączenia tworzenia kopii zapasowej podczas tworzenia maszyny wirtualnej.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Jeśli jeszcze nie zalogowano się na koncie, zaloguj się do [Azure Portal](https://portal.azure.com).
 
@@ -48,8 +48,22 @@ Jeśli jeszcze nie zalogowano się na koncie, zaloguj się do [Azure Portal](htt
 
       ![Domyślne zasady kopii zapasowych](./media/backup-during-vm-creation/daily-policy.png)
 
-> [!NOTE]
-> Usługa Azure Backup tworzy oddzielną grupę zasobów (inną niż grupa zasobów maszyny wirtualnej) do przechowywania migawki przy użyciu formatu nazewnictwa **AzureBackupRG_geography_number** (przykład: AzureBackupRG_northeurope_1). Dane w tej grupie zasobów będą przechowywane przez czas trwania w dniach, jak określono w sekcji *zachowywanie migawki odzyskiwania natychmiastowego* zasad tworzenia kopii zapasowej maszyny wirtualnej platformy Azure.  Zastosowanie blokady do tej grupy zasobów może spowodować błędy kopii zapasowych. <br> Ta grupa zasobów powinna być również wykluczona z dowolnych ograniczeń nazw/tagów, ponieważ zasady ograniczeń blokują tworzenie kolekcji punktów zasobów w tym momencie, powodując błędy kopii zapasowych.
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup grupę zasobów dla Virtual Machines
+
+Usługa Backup tworzy oddzielną grupę zasobów (RG), inną niż grupa zasobów maszyny wirtualnej, do przechowywania kolekcji punktów przywracania (RPC). Usługa RPC przechowuje natychmiastowe punkty odzyskiwania zarządzanych maszyn wirtualnych. Domyślny format nazewnictwa grupy zasobów utworzonej przez usługę kopii zapasowej to: `AzureBackupRG_<Geo>_<number>`. Na przykład: *AzureBackupRG_northeurope_1*. Teraz można dostosować nazwę grupy zasobów utworzoną przez Azure Backup.
+
+Informacje, które należy zwrócić uwagę:
+
+1. Możesz użyć domyślnej nazwy RG lub edytować ją zgodnie z wymaganiami firmy.
+2. Wzorzec nazwy RG można podać jako dane wejściowe podczas tworzenia zasad kopii zapasowej maszyny wirtualnej. Nazwa RG powinna mieć następujący format: `<alpha-numeric string>* n <alpha-numeric string>`. element "n" jest zastępowany liczbą całkowitą (rozpoczynając od 1) i jest używany do skalowania w górę, jeśli pierwszy RG jest pełny. Jedna RG może mieć maksymalnie 600 wywołań RPC.
+              ![wybrać nazwę podczas tworzenia zasad](./media/backup-during-vm-creation/create-policy.png)
+3. Wzorzec powinien być zgodny z regułami nazewnictwa RG poniżej, a łączna długość nie powinna przekraczać maksymalnej dozwolonej długości nazwy RG.
+    1. Nazwa grupy zasobów zezwala tylko na znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Nie mogą kończyć się kropką.
+    2. Nazwy grup zasobów mogą zawierać do 74 znaków, w tym nazwę RG i sufiks.
+4. Pierwszy `<alpha-numeric-string>` jest obowiązkowy, podczas gdy drugi po "n" jest opcjonalny. Ma to zastosowanie tylko w przypadku nadania niestandardowej nazwy. Jeśli nie wprowadzisz niczego w żadnej z pól tekstowych, zostanie użyta nazwa domyślna.
+5. Nazwę RG można edytować, modyfikując zasady, jeśli są wymagane. Jeśli wzorzec nazwy zostanie zmieniony, w nowym RG zostanie utworzony nowy RPS pliku. Jednak stary RPS pliku nadal będzie znajdował się w starej RG i nie zostanie przeniesiony, ponieważ kolekcja RP nie obsługuje przenoszenia zasobów. Ostatecznie RPS pliku będzie odbierać elementy bezużyteczne w miarę wygasania punktów.
+![zmienić nazwy podczas modyfikowania zasad](./media/backup-during-vm-creation/modify-policy.png)
+6. Zaleca się, aby nie blokować grupy zasobów utworzonej do użycia przez usługę kopii zapasowej.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Rozpocznij tworzenie kopii zapasowej po utworzeniu maszyny wirtualnej
 

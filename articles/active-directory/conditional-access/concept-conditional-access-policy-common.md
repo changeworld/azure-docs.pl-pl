@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3d85850fb18b80490bba44b293ece7765124133
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1d8d803a8256845c61def1b1df4d633ce95a3ce6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846117"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424986"
 ---
 # <a name="common-conditional-access-policies"></a>Typowe zasady dostępu warunkowego
 
-Zasady ochrony linii bazowej są doskonałe, ale wiele organizacji wymaga większej elastyczności niż oferta. Na przykład w wielu organizacjach wymagana jest możliwość wykluczenia określonych kont, takich jak ich dostęp awaryjny lub konta administracyjne w przypadku awarii z zasad dostępu warunkowego, które wymagają uwierzytelniania wieloskładnikowego. W przypadku tych organizacji typowe zasady, do których odwołuje się ten artykuł, mogą być używane.
+[Wartości domyślne zabezpieczeń](../fundamentals/concept-fundamentals-security-defaults.md) są wspaniałe w przypadku niektórych organizacji, które wymagają większej elastyczności niż oferta. Na przykład wiele potrzeb umożliwia wykluczenie określonych kont, takich jak ich dostęp awaryjny lub konta administracyjne w ramach awarii z zasad dostępu warunkowego, które wymagają uwierzytelniania wieloskładnikowego. W przypadku tych organizacji typowe zasady, do których odwołuje się ten artykuł, mogą być używane.
 
 ![Zasady dostępu warunkowego w Azure Portal](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 

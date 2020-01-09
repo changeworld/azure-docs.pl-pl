@@ -7,26 +7,26 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874928"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433014"
 ---
-# <a name="create-a-data-source"></a>Utwórz źródło danych
+# <a name="create-a-data-source"></a>Tworzenie źródła danych
 
 Azure Maps Web SDK przechowuje dane w źródłach danych, które optymalizują dane do wykonywania zapytań i renderowania. Obecnie istnieją dwa typy źródeł danych:
 
 **Źródło danych GEOJSON**
 
-Źródło danych GEOJSON pozwala na ładowanie i przechowywanie danych lokalnie przy użyciu `DataSource` klasy. Dane GEOJSON można utworzyć ręcznie lub utworzyć przy użyciu klas pomocnika w przestrzeni nazw [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource` Klasa zawiera funkcje do importowania lokalnych lub zdalnych plików GeoJSON. Pliki zdalnego GEOJSON muszą być hostowane w punkcie końcowym z obsługą mechanizmu CORs. `DataSource` Klasa zawiera funkcje dla danych punktu klastrowania. Dane można łatwo dodawać, usuwać i aktualizować przy użyciu `DataSource` klasy.
+Źródło danych GEOJSON pozwala na ładowanie i przechowywanie danych lokalnie przy użyciu klasy `DataSource`. Dane GEOJSON można utworzyć ręcznie lub utworzyć przy użyciu klas pomocnika w przestrzeni nazw [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . Klasa `DataSource` udostępnia funkcje do importowania lokalnych lub zdalnych plików GeoJSON. Pliki zdalnego GEOJSON muszą być hostowane w punkcie końcowym z obsługą mechanizmu CORs. Klasa `DataSource` zapewnia funkcjonalność dla danych punktu klastrowania. Dane można łatwo dodać, usunąć i zaktualizować za pomocą klasy `DataSource`.
 
 
 > [!TIP]
-> Jeśli chcesz zastąpić wszystkie dane w `DataSource`, w przypadku wywołania `clear` funkcji then `add` , Mapa spróbuje ponownie renderować dwa razy, co może spowodować nieco opóźnienia. Zamiast tego należy `setShapes` użyć funkcji, która spowoduje usunięcie i zamianę wszystkich danych w źródle danych i wyzwolenie tylko jednego ponownego renderowania mapy.
+> Jeśli chcesz zastąpić wszystkie dane w `DataSource`, jeśli nastąpi wywołanie do `clear` następnie `add` funkcje, Mapa spróbuje ponownie renderować dwa razy, co może spowodować nieco opóźnienia. Zamiast tego należy użyć funkcji `setShapes`, która spowoduje usunięcie i zamianę wszystkich danych w źródle danych i wyzwolenie tylko jednego ponownego renderowania mapy.
 
 **Źródło kafelków wektora**
 
@@ -37,9 +37,9 @@ Azure Maps Web SDK przechowuje dane w źródłach danych, które optymalizują d
  - Zmiana stylu danych w mapach wektorów nie wymaga ponownego pobierania danych, ponieważ na kliencie można zastosować nowy styl. Natomiast zmiana stylu warstwy kafelków rastrowych zazwyczaj wymaga załadowania kafelków z serwera, do którego zastosowano nowy styl.
  - Ze względu na to, że dane są dostarczane w formie wektorowej, do przygotowania danych nie jest wymagane przetwarzanie po stronie serwera, co oznacza, że nowsze dane można szybciej udostępnić.
 
-Wszystkie warstwy używające źródła wektora muszą określać `sourceLayer` wartość. 
+Wszystkie warstwy używające źródła wektora muszą określać wartość `sourceLayer`. 
 
-Po utworzeniu źródła danych można dodać do mapy za pomocą `map.sources` właściwości, która jest elementem [sourcemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Poniższy kod pokazuje `DataSource` , jak utworzyć a i dodać go do mapy.
+Po utworzeniu źródła danych można dodać do mapy za pomocą właściwości `map.sources`, która jest obiektem [sourcemanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Poniższy kod przedstawia sposób tworzenia `DataSource` i dodawania go do mapy.
 
 ```javascript
 //Create a data source and add it to the map.

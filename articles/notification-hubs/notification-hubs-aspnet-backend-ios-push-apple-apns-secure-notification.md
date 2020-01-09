@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs bezpieczne wypychanie
+title: Azure Notification Hubs bezpieczne wypychanie dla systemu iOS
 description: Dowiedz się, jak wysyłać bezpieczne powiadomienia wypychane do aplikacji systemu iOS z platformy Azure. Przykłady kodu zapisywana w celu zamierzenia C i C#.
 documentationcenter: ios
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212150"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530752"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs bezpieczne wypychanie
 
@@ -60,19 +60,19 @@ Po zmodyfikowaniu zaplecza aplikacji w celu wysłania tylko *identyfikatora* pow
 
 Aby osiągnąć ten cel, należy napisać logikę, aby pobrać bezpieczną zawartość z zaplecza aplikacji.
 
-1. W `AppDelegate.m`programie upewnij się, że aplikacja jest zarejestrowana na potrzeby powiadomień dyskretnych, aby przetworzyć identyfikator powiadomienia, który został wysłany z zaplecza. `UIRemoteNotificationTypeNewsstandContentAvailability` Dodaj opcję w didFinishLaunchingWithOptions:
+1. W `AppDelegate.m`upewnij się, że aplikacja rejestruje się pod kątem powiadomień dyskretnych, aby przetworzyć identyfikator powiadomienia, który został wysłany z zaplecza. Dodaj opcję `UIRemoteNotificationTypeNewsstandContentAvailability` w didFinishLaunchingWithOptions:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. W sekcji `AppDelegate.m` Dodaj implementację u góry z następującą deklaracją:
+2. W `AppDelegate.m` Dodaj sekcję implementacji w górnej części z następującą deklaracją:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Następnie Dodaj do sekcji implementacji następujący kod, zastępując symbol zastępczy `{back-end endpoint}` punktem końcowym, który został uzyskany wcześniej:
+3. Następnie Dodaj do sekcji implementacji następujący kod, zastępując symbol zastępczy `{back-end endpoint}` z punktem końcowym, który został uzyskany wcześniej:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -126,7 +126,7 @@ Aby osiągnąć ten cel, należy napisać logikę, aby pobrać bezpieczną zawar
 
     ![][IOS1]
 
-6. W `AppDelegate.m` obszarze Dodaj następującą metodę do obsługi powiadomień wypychanych:
+6. W `AppDelegate.m` Dodaj następującą metodę w celu obsługi powiadomień wypychanych:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

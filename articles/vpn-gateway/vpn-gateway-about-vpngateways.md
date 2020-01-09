@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11187b403b9bc23a0aa20eb5ee7a5e4923bb7276
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1a5859517d2f858086c9034c8ee190e99bce5cd5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896663"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647751"
 ---
 # <a name="what-is-vpn-gateway"></a>Co to jest usługa VPN Gateway?
 
@@ -159,5 +159,5 @@ Aby zapoznać się z często zadawanymi pytaniami dotyczącymi bramy sieci VPN, 
 ## <a name="next-steps"></a>Następne kroki
 
 - Więcej informacji można znaleźć w temacie [Brama VPN Gateway — często zadawane pytania](vpn-gateway-vpn-faq.md).
-- Wyświetl [limity usług i subskrypcji](../azure-subscription-service-limits.md#networking-limits).
+- Wyświetl [limity usług i subskrypcji](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 - Poznaj inne kluczowe [możliwości sieciowe](../networking/networking-overview.md) platformy Azure.

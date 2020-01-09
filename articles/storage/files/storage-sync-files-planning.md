@@ -4,15 +4,15 @@ description: Dowiedz się, co należy wziąć pod uwagę podczas planowania wdro
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927863"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665260"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -35,7 +35,7 @@ Zarejestrowany obiekt serwera reprezentuje relację zaufania między serwerem (l
 
 ### <a name="azure-file-sync-agent"></a>Agent Azure File Sync
 Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia synchronizowanie systemu Windows Server z udziałem plików platformy Azure. Agent Azure File Sync ma trzy główne składniki: 
-- **FileSyncSvc. exe**: usługa w tle systemu Windows, która jest odpowiedzialna za monitorowanie zmian w punktach końcowych serwera oraz Inicjowanie sesji synchronizacji z platformą Azure.
+- **FileSyncSvc. exe**: usługa w tle, która jest odpowiedzialna za monitorowanie zmian w punktach końcowych serwera oraz Inicjowanie sesji synchronizacji z platformą Azure.
 - **StorageSync. sys**: filtr systemu plików Azure File Sync, który jest odpowiedzialny za pliki warstwowe do Azure Files (w przypadku włączenia obsługi warstw w chmurze).
 - **Polecenia cmdlet zarządzania programu PowerShell**: polecenia cmdlet programu PowerShell, które służą do współpracy z dostawcą zasobów Microsoft. StorageSync. Można je znaleźć w następujących (domyślnych) lokalizacjach:
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
@@ -69,7 +69,7 @@ Obsługa warstw w chmurze jest opcjonalną funkcją Azure File Sync, w której c
 W tej części omówiono wymagania systemowe Azure File Sync agenta i współdziałanie z funkcjami i rolami systemu Windows Server oraz rozwiązaniami innych firm.
 
 ### <a name="evaluation-cmdlet"></a>Polecenie cmdlet do oceny
-Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu polecenia cmdlet do oceny Azure File Sync. To polecenie cmdlet sprawdza potencjalne problemy z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Należy zauważyć, że sprawdzenia te obejmują większość funkcji wymienionych poniżej: Zalecamy zapoznanie się z pozostałą częścią tej sekcji, aby upewnić się, że wdrożenie przebiega bezproblemowo. 
+Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem przy użyciu polecenia cmdlet do oceny Azure File Sync. To polecenie cmdlet sprawdza potencjalne problemy z systemem plików i zestawem danych, na przykład nieobsługiwane znaki lub nieobsługiwaną wersję systemu operacyjnego. Kontrole obejmują większość funkcji wymienionych poniżej: Zalecamy zapoznanie się z pozostałą częścią tej sekcji, aby upewnić się, że wdrożenie przebiega bezproblemowo. 
 
 Polecenie cmdlet do oceny można zainstalować, instalując moduł AZ PowerShell module, który można zainstalować, postępując zgodnie z instrukcjami tutaj: [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
@@ -141,8 +141,10 @@ Aby wyświetlić wyniki w formacie CSV:
 
 | Plik/folder | Uwaga |
 |-|-|
+| pagefile.sys | Plik specyficzny dla systemu |
 | Desktop.ini | Plik specyficzny dla systemu |
-| ethumbs.db$ | Plik tymczasowy dla miniatur |
+| thumbs.db | Plik tymczasowy dla miniatur |
+| ehThumbs. DB | Plik tymczasowy dla miniatur multimediów |
 | ~$\*.\* | Plik tymczasowy pakietu Office |
 | \*.tmp | Plik tymczasowy |
 | \*.laccdb | Plik blokowania dostępu do bazy danych|
@@ -173,11 +175,11 @@ Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym sam
 
 **Uwagi**
 - Jeśli Deduplikacja danych jest zainstalowana przed zainstalowaniem agenta Azure File Sync, ponowne uruchomienie jest wymagane do obsługi deduplikacji danych i warstw w chmurze na tym samym woluminie.
-- Jeśli Deduplikacja danych jest włączona w woluminie po włączeniu obsługi warstw w chmurze, początkowe zadanie optymalizacji deduplikacji zoptymalizuje pliki na woluminie, które nie są jeszcze warstwowe i będą miały następujący wpływ na obsługę warstw w chmurze:
+- Jeśli Deduplikacja danych jest włączona w woluminie po włączeniu obsługi warstw w chmurze, początkowe zadanie optymalizacji deduplikacji zoptymalizuje pliki na woluminie, które nie zostały jeszcze warstwowe i będzie miało następujący wpływ na obsługę warstw w chmurze:
     - Zasady wolnego miejsca będą nadal korzystać z warstw plików zgodnie z ilością wolnego miejsca na woluminie przy użyciu mapę cieplną.
     - Zasady dotyczące dat spowodują pominięcie warstw plików, które mogą być w inny sposób kwalifikujące się do obsługi warstw z powodu zadania optymalizacji deduplikacji uzyskującego dostęp do plików.
 - W przypadku trwających zadań optymalizacji deduplikacji Obsługa warstw w chmurze z zasadami daty zostanie opóźniona przez ustawienie [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) deduplikacji danych, jeśli plik nie jest już warstwowy. 
-    - Przykład: Jeśli ustawienie MinimumFileAgeDays to 7 dni, a zasady dotyczące warstw w chmurze to 30 dni, zasady dat będą mieć pliki warstwy po 37 dniach.
+    - Przykład: Jeśli ustawienie MinimumFileAgeDays to siedem dni, a zasady dotyczące warstw w chmurze to 30 dni, zasady dat będą mieć pliki warstwy po 37 dniach.
     - Uwaga: gdy plik jest warstwą Azure File Sync, zadanie optymalizacji deduplikacji pominie ten plik.
 - Jeśli serwer z systemem Windows Server 2012 R2 z zainstalowanym agentem Azure File Sync został uaktualniony do systemu Windows Server 2016 lub Windows Server 2019, należy wykonać następujące czynności w celu zapewnienia obsługi deduplikacji danych i warstw w chmurze na tym samym woluminie:  
     - Odinstaluj agenta Azure File Sync dla systemu Windows Server 2012 R2 i ponownie uruchom serwer.
@@ -205,7 +207,7 @@ Aby Azure File Sync i DFS-R działały obok siebie:
 Aby uzyskać więcej informacji, zobacz [Replikacja systemu plików DFS przegląd](https://technet.microsoft.com/library/jj127250).
 
 ### <a name="sysprep"></a>Narzędzie Sysprep
-Korzystanie z programu Sysprep na serwerze, na którym zainstalowano agenta Azure File Sync, nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy przeprowadzić instalację agenta i rejestrację serwera.
+Korzystanie z programu Sysprep na serwerze z zainstalowanym agentem Azure File Sync nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy przeprowadzić instalację agenta i rejestrację serwera.
 
 ### <a name="windows-search"></a>Windows Search
 Jeśli Obsługa warstw w chmurze jest włączona w punkcie końcowym serwera, pliki, które są warstwami, są pomijane i nie są indeksowane przez funkcję wyszukiwania systemu Windows. Pliki niewarstwowe są indeksowane prawidłowo.
@@ -227,7 +229,7 @@ Jeśli używasz lokalnego rozwiązania do tworzenia kopii zapasowych, kopie zapa
 > Przywracanie bez systemu operacyjnego (BMR) może spowodować nieoczekiwane wyniki i nie jest obecnie obsługiwane.
 
 > [!Note]  
-> W wersji 9 agenta usługi Azure File SYnc migawki VSS (w tym poprzednie wersje karty) są teraz obsługiwane na woluminach, na których włączono obsługę warstw w chmurze. Należy jednak włączyć zgodność poprzedniej wersji za poorednictwem programu PowerShell. [Dowiedz się, jak to zrobić](storage-files-deployment-guide.md).
+> W wersji 9 agenta Azure File Sync, migawki usługi VSS (w tym poprzednie wersje karty) są teraz obsługiwane na woluminach, na których włączono obsługę warstw w chmurze. Należy jednak włączyć zgodność poprzedniej wersji za poorednictwem programu PowerShell. [Dowiedz się, jak to zrobić](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Rozwiązania do szyfrowania
 Obsługa rozwiązań szyfrowania zależy od sposobu ich implementacji. Azure File Sync jest znana z:
@@ -333,6 +335,30 @@ Aby zapewnić obsługę integracji trybu failover między magazynem geograficzni
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zasady aktualizacji agenta usługi Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="recommended-azure-file-sync-machine-configuration"></a>Zalecana konfiguracja maszyny Azure File Sync
+
+Wymagania dotyczące maszyny Azure File Sync są określane przez liczbę obiektów w przestrzeni nazw i zmiany w zestawie danych. Pojedynczy serwer może zostać dołączony do wielu grup synchronizacji i liczba obiektów wymienionych w poniższej tabeli konta dla pełnej przestrzeni nazw, do której jest dołączony serwer. Na przykład punkt końcowy serwera A z 10 000 000 obiektów + serwer punktu końcowego B z 10 000 000 obiektów = 20 000 000 obiektów. W tym przykładowym wdrożeniu zalecamy 8CPU, 16GiB pamięci dla stanu stałego oraz (jeśli to możliwe) 48GiB pamięci do początkowej migracji.
+ 
+Dane przestrzeni nazw są przechowywane w pamięci ze względu na wydajność. Ze względu na to, że większe przestrzenie nazw wymagają większej ilości pamięci, aby zapewnić dobrą wydajność, a większa liczba operacji wymaga więcej czasu procesora. 
+ 
+W poniższej tabeli podano zarówno rozmiar przestrzeni nazw, jak i konwersję do pojemności typowych udziałów plików ogólnego przeznaczenia, gdzie średni rozmiar pliku to 512KiB. Jeśli rozmiary plików są mniejsze, należy rozważyć dodanie dodatkowej pamięci dla tej samej pojemności. Zmień konfigurację pamięci na rozmiar przestrzeni nazw.
+
+| Przestrzeń nazw — pliki & katalogów (miliony)  | Typowa pojemność (TiB)  | Rdzenie procesora  | Zalecana pamięć (GiB) |
+|---------|---------|---------|---------|
+| 3        | 1.4     | 2        | 8 (synchronizacja początkowa)/2 (typowe zmiany)      |
+| 5        | 2.3     | 2        | 16 (synchronizacja początkowa)/4 (typowe zmiany)    |
+| 10       | 4.7     | 4        | 32 (synchronizacja początkowa)/8 (typowe zmiany)   |
+| 30       | 14,0    | 8        | 48 (synchronizacja początkowa)/16 (typowe zmiany)   |
+| 50       | 23,3    | 16       | 64 (synchronizacja początkowa)/32 (typowe zmiany)  |
+| 100 *     | 46,6    | 32       | 128 (synchronizacja początkowa)/32 (typowe zmiany)  |
+
+\*więcej niż 100 000 000 plików & katalogi nie są w tej chwili obsługiwane. Jest to ograniczenie elastyczne.
+
+> [!TIP]
+> Początkowa synchronizacja przestrzeni nazw jest operacją intensywną, a zalecamy przydzielenie większej ilości pamięci do czasu zakończenia synchronizacji początkowej. Nie jest to wymagane, ale może przyspieszyć synchronizację początkową. 
+> 
+> Typowa zmiana to 0,5% przestrzeni nazw zmienianej dziennie. W przypadku wyższych poziomów zmian należy rozważyć dodanie większej liczby procesorów. 
 
 ## <a name="next-steps"></a>Następne kroki
 * [Rozważ użycie ustawień zapory i serwera proxy](storage-sync-files-firewall-and-proxy.md)

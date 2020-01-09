@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498094"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647428"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Rozwiązywanie problemów dotyczących wolnego lub niepowodzenia zadania w klastrze usługi HDInsight
 
@@ -90,7 +90,7 @@ Usługa HDInsight bazuje na kilku usługach platformy Azure. Uruchamia serwery w
 
 #### <a name="check-azure-service-usage-limits"></a>Sprawdź limity użycia usługi platformy Azure
 
-Jeśli uruchamiasz duży klaster lub jednocześnie uruchomiłeś wiele klastrów, klaster może zakończyć się niepowodzeniem, jeśli Przekroczono limit usługi platformy Azure. Limity usługi różnią się w zależności od subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Limity, przydziały i ograniczenia usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Jeśli uruchamiasz duży klaster lub jednocześnie uruchomiłeś wiele klastrów, klaster może zakończyć się niepowodzeniem, jeśli Przekroczono limit usługi platformy Azure. Limity usługi różnią się w zależności od subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Limity, przydziały i ograniczenia usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 Możesz zażądać, aby firma Microsoft zwiększyła liczbę dostępnych zasobów usługi HDInsight (takich jak rdzenie maszyn wirtualnych i wystąpienia maszyn wirtualnych) z [żądaniem zwiększenia limitu przydziału Menedżer zasobów Core](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>Sprawdź wersję wydania

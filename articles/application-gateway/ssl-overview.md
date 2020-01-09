@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883577"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75657985"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Omówienie kończenia protokołu SSL i kompleksowej usługi SSL z usługą Application Gateway
 
@@ -42,15 +42,15 @@ Aby połączenie SSL działało, należy się upewnić, że certyfikat SSL speł
 
 Brama aplikacji obsługuje następujące typy certyfikatów:
 
-- Certyfikat urzędu certyfikacji: Certyfikat urzędu certyfikacji jest certyfikatem cyfrowym wystawionym przez urząd certyfikacji (CA)
-- Certyfikat EV (rozszerzone sprawdzanie poprawności): Certyfikat EV jest standardową zasadą certyfikatu branżowego. Spowoduje to również przekształcenie paska lokalizatora przeglądarki na zieloną i opublikowanie nazwy firmy.
-- Certyfikat z symbolami wieloznacznymi: Ten certyfikat obsługuje dowolną liczbę poddomen w oparciu o *. site.com, gdzie poddomena zastąpi *. Nie jest to jednak obsługiwane w site.com, więc w przypadku, gdy użytkownicy uzyskują dostęp do witryny sieci Web bez konieczności pisania wiodącego "www", certyfikat wieloznaczny nie będzie uwzględniał tego.
-- Certyfikaty z podpisem własnym: Przeglądarki klienta nie ufają tym certyfikatom i ostrzegają użytkownika o tym, że certyfikat usługi wirtualnej nie jest częścią łańcucha zaufania. Certyfikaty z podpisem własnym są przydatne w przypadku testowania lub środowisk, w których Administratorzy kontrolują klientów i mogą bezpiecznie pomijać alerty zabezpieczeń przeglądarki. Obciążenia produkcyjne nigdy nie powinny korzystać z certyfikatów z podpisem własnym.
+- Certyfikat urzędu certyfikacji: certyfikat urzędu certyfikacji jest certyfikatem cyfrowym wystawionym przez urząd certyfikacji (CA)
+- Certyfikat EV (rozszerzone sprawdzanie poprawności): certyfikat EV jest standardową zasadą certyfikatu branżowego. Spowoduje to również przekształcenie paska lokalizatora przeglądarki na zieloną i opublikowanie nazwy firmy.
+- Certyfikat z symbolami wieloznacznymi: ten certyfikat obsługuje dowolną liczbę poddomen opartych na *. site.com, gdzie poddomena zastąpi *. Nie jest to jednak obsługiwane w site.com, więc w przypadku, gdy użytkownicy uzyskują dostęp do witryny sieci Web bez konieczności pisania wiodącego "www", certyfikat wieloznaczny nie będzie uwzględniał tego.
+- Certyfikaty z podpisem własnym: przeglądarki klienta nie ufają tym certyfikatom i ostrzegają użytkownika o tym, że certyfikat usługi wirtualnej nie jest częścią łańcucha zaufania. Certyfikaty z podpisem własnym są przydatne w przypadku testowania lub środowisk, w których Administratorzy kontrolują klientów i mogą bezpiecznie pomijać alerty zabezpieczeń przeglądarki. Obciążenia produkcyjne nigdy nie powinny korzystać z certyfikatów z podpisem własnym.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie zakończenia protokołu SSL w usłudze Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Rozmiar certyfikatu
-Sprawdź sekcję [limity Application Gateway](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) , aby poznać maksymalny obsługiwany rozmiar certyfikatu SSL.
+Sprawdź sekcję [limity Application Gateway](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) , aby poznać maksymalny obsługiwany rozmiar certyfikatu SSL.
 
 ## <a name="end-to-end-ssl-encryption"></a>Kompleksowe szyfrowanie SSL
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451356"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -38,7 +38,6 @@ Jako zatwierdzony dostawca korzyści z pulpitu wirtualnego systemu Windows zosta
 
 - [Zarejestruj się w celu uzyskania wersji zapoznawczej chmury horyzontowej w Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Przejdź do witryny sieci Web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -82,6 +81,16 @@ deviceTRUST rozszerza wartość pulpitu wirtualnego systemu Windows z ich kontek
 
 - [Przejdź do witryny sieci Web partnera](https://devicetrust.com/wvd).
 
+## <a name="hp"></a>HP
+
+![Logo firmy HP](./media/partners/hp.png)
+
+Klient HP zubożonego jest zatwierdzonym i zweryfikowanym partnerem usług pulpitu wirtualnego platformy Microsoft Azure i systemu Windows. Klienci firmy HP z systemem Windows 10 IoT Enterprise oferują wbudowaną obsługę obciążeń opartych na platformie Azure oraz pulpity hostowane pulpitów wirtualnych systemu Windows. Sprzęt i system operacyjny są zoptymalizowane pod kątem zapewniania najlepszych w swojej klasie środowiska, które efektywnie zapewnia zdalne obciążenia przy jednoczesnym zmniejszeniu rozmiaru, sprzętu i kosztów konserwacji systemu operacyjnego.
+
+Jako że HP przegląda trendy branżowe, wyzwania dla klientów i wirtualizację rozwiązań oferowaną w trakcie procesu opracowywania, byli inspiracją do wystawiania idealnego punktu końcowego w chmurze przy użyciu propozycji wartości z czterema filarami: projektowanie, zarządzanie, zabezpieczenia i wielofunkcyjność. Każdy klient HP zubożony jest zaprojektowany z myślą o podejmowaniu decyzji IT. Klienci z systemem HP cienkim są długotrwałym, bezpiecznym i łatwym w obsłudze i wydajnym wdrażaniem, dzięki czemu można bezproblemowo przejść do przetwarzania infrastruktury VDI lub chmury. Wszechstronne portfolio firmy HP zapewnia swobodę wyboru nowoczesnego rozwiązania punktu końcowego, które jest odpowiednie dla Ciebie.
+
+- [Przejdź do witryny sieci Web partnera](https://hp.com/go/thin).
+
 ## <a name="igel"></a>IGEL
 
 ![Logo IGEL](./media/partners/igel.png)
@@ -90,7 +99,7 @@ IGEL jest zatwierdzonym i zweryfikowanym partnerem Microsoft Azure i usług pulp
  
 System operacyjny IGEL obsługuje wszystkie popularne aplikacje wirtualne, komputery stacjonarne i protokoły klienckie w chmurze z firmy Citrix, Microsoft i VMware. Obejmuje ona zintegrowane technologie od 85 urządzeń peryferyjnych, interfejsów i protokołów, które ułatwiają organizacjom szybkie wdrażanie usług pulpitu wirtualnego systemu Windows we własnych unikatowych środowiskach użytkownika. System operacyjny IGEL jest tylko do odczytu i modularnym punktem końcowym, który pomaga chronić go przed manipulacją. Teraz zawiera również kompletny "łańcuch zaufania", który weryfikuje integralność wszystkich najważniejszych procesów wykonywanych w punkcie końcowym, od sprzętu punktu końcowego (niektóre z wybranych modeli) lub procesu UEFI, aż do chmury platformy Azure i usług pulpitu wirtualnego systemu Windows. Dzięki IGEL systemu operacyjnego przedsiębiorstwa mogą subskrybować pulpity wirtualne systemu Windows z chmury platformy Azure z pełnym zaufaniem do integralności, zabezpieczeń i możliwości zarządzania urządzeniami końcowymi użytkowników.
 
-- [Przejdź do witryny sieci Web partnera.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Przejdź do witryny sieci Web partnera](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
 

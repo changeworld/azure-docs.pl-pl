@@ -1,5 +1,5 @@
 ---
-title: Problemy z MSAL. js w programie Internet Explorer & Microsoft Edge | Azure
+title: Problemy w programie Internet Explorer & Microsoft Edge (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o znanych problemach dotyczących używania biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) z przeglądarkami Internet Explorer i Microsoft Edge.
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424325"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Znane problemy w programie Internet Explorer i przeglądarki Microsoft Edge z MSAL. js
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Znane problemy w programie Internet Explorer i przeglądarki Microsoft Edge (MSAL. js)
 
 ## <a name="issues-due-to-security-zones"></a>Problemy ze względu na strefy zabezpieczeń
 Mamy wiele raportów o problemach z uwierzytelnianiem w programie IE i Microsoft Edge (od aktualizacji *przeglądarki Microsoft Edge do 40.15063.0.0*). Śledzimy te informacje i znamy zespół Microsoft Edge. Chociaż przeglądarka Microsoft Edge działa w ramach rozwiązania, poniżej przedstawiono opis często występujących problemów oraz możliwe obejścia, które można zaimplementować.

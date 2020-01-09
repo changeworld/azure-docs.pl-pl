@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 9c79a6ba1a6b7b5582c6430c6de7a4a309bf4920
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437304"
 ---
 # <a name="what-is-azure-event-grid"></a>Co to jest usługa Azure Event Grid?
 
@@ -82,7 +82,7 @@ Oto główne funkcje usługi Azure Event Grid:
 * **Płatność za zdarzenia** — płacisz tylko za rzeczywiste użycie usługi Event Grid.
 * **Wysoka przepływność** — usługa Event Grid jest przeznaczona do obsługi dużych obciążeń i milionów zdarzeń na sekundę.
 * **Wbudowane zdarzenia** — wbudowane zdarzenia definiowane przez zasoby pozwalają szybko rozpocząć pracę.
-* **Niestandardowe zdarzenia** — usługa Event Grid pozwala kierować i filtrować zdarzenia oraz niezawodnie dostarczać zdarzenia niestandardowe w aplikacji.
+* **Zdarzenia niestandardowe** — używanie Event Grid do kierowania, filtrowania i niezawodnego dostarczania niestandardowych zdarzeń w aplikacji.
 
 Porównanie usług Event Grid, Event Hubs i Service Bus można znaleźć w temacie [Choose between Azure services that deliver messages (Wybieranie usługi platformy Azure służącej do dostarczania komunikatów)](compare-messaging-services.md).
 
@@ -94,7 +94,7 @@ Usługa Azure Event Grid udostępnia kilka funkcji, które znacząco usprawniaj�
 
 ![Architektura aplikacji bez użycia serwera](./media/overview/serverless_web_app.png)
 
-Usługa Event Grid łączy źródła danych i procedury obsługi zdarzeń. Usługi Event Grid można na przykład użyć, aby wyzwolić funkcję bezserwerową, która analizuje obrazy po dodaniu do kontenera magazynu obiektów blob. 
+Usługa Event Grid łączy źródła danych i programy obsługi zdarzeń. Usługi Event Grid można na przykład użyć, aby wyzwolić funkcję bezserwerową, która analizuje obrazy po dodaniu do kontenera magazynu obiektów blob. 
 
 ### <a name="ops-automation"></a>Automatyzacja operacji
 

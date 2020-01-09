@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628031515a9b0fdf3aa7b7ec88ee1b6b7f41f51
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672190"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681185"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Zarządzanie planem App Service na platformie Azure
 
@@ -24,11 +24,15 @@ ms.locfileid: "74672190"
 
 Można utworzyć pusty plan App Service lub utworzyć plan w ramach tworzenia aplikacji.
 
-1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Nowa** **aplikacja sieci Web** > lub inny rodzaj aplikacji App Service.
+1. W witrynie [Azure Portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób**.
 
-   ![Utwórz aplikację w Azure Portal.][createWebApp]
+   ![Utwórz zasób w Azure Portal.][createResource] 
 
-2. Skonfiguruj sekcję **szczegóły wystąpienia** przed skonfigurowaniem planu App Service. Takie ustawienia jak **Publikowanie** i **systemy operacyjne** mogą zmieniać dostępne warstwy cenowe dla planu App Service. **Region** określa miejsce utworzenia planu App Service.
+1. Wybierz pozycję Nowa **aplikacja internetowa** > lub inna aplikacja usługi App Service.
+
+   ![Utwórz aplikację w Azure Portal.][createWebApp] 
+
+2. Skonfiguruj sekcję **szczegóły wystąpienia** przed skonfigurowaniem planu App Service. Takie ustawienia jak **Publikowanie** i **systemy operacyjne** mogą zmieniać dostępne warstwy cenowe dla planu App Service. **Region** określa miejsce utworzenia planu App Service. 
    
 3. W sekcji **Plan App Service** wybierz istniejący plan lub Utwórz plan, wybierając pozycję **Utwórz nowy**.
 
@@ -48,7 +52,7 @@ Możesz przenieść aplikację do innego planu App Service, o ile plan źródło
 > Nie można określić miejsca sieci Web, które ma być używane podczas tworzenia planu, ale istnieje możliwość upewnienia się, że plan jest tworzony w tym samym obszarze sieci Web co istniejący plan. We wszystkich planach utworzonych za pomocą tej samej kombinacji grupy zasobów i regionu są wdrażane w tym samym obszarze sieci Web. Na przykład jeśli utworzono plan w grupie zasobów a i w regionie B, to każdy plan, który następnie utworzysz w grupie zasobów a i region B jest wdrażany w tym samym obszarze sieci Web. Należy pamiętać, że plany nie mogą przenosić obszarów sieci Web po ich utworzeniu, dlatego nie można przenieść planu do "tego samego obszaru sieci Web" jako innego planu przez przeniesienie go do innej grupy zasobów.
 > 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do aplikacji, którą chcesz przenieść.
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services** , a następnie wybierz aplikację, którą chcesz przenieść.
 
 2. Z menu po lewej stronie wybierz pozycję **zmień App Service plan**.
 
@@ -61,7 +65,7 @@ Możesz przenieść aplikację do innego planu App Service, o ile plan źródło
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 
-5. Po zakończeniu wybierz **przycisk OK**.
+5. Po zakończeniu wybierz przycisk **OK**.
    
    ![Selektor planu App Service.][change] 
 
@@ -97,3 +101,4 @@ Aby uniknąć nieoczekiwanych opłat, po usunięciu ostatniej aplikacji w planie
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
+[createResource]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-a-resource.png

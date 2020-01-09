@@ -1,25 +1,14 @@
 ---
-title: Utwórz klaster Service Fabric w Azure Portal | Microsoft Docs
+title: Tworzenie klastra usługi Service Fabric w witrynie Azure Portal
 description: Dowiedz się, jak skonfigurować bezpieczny klaster Service Fabric na platformie Azure przy użyciu Azure Portal i Azure Key Vault.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934058"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452280"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Tworzenie klastra Service Fabric na platformie Azure przy użyciu Azure Portal
 > [!div class="op_single_selector"]
@@ -41,7 +30,7 @@ Jest to przewodnik krok po kroku, który przeprowadzi Cię przez kroki konfiguro
 ## <a name="cluster-security"></a>Zabezpieczenia klastra 
 W usłudze Service Fabric używa się certyfikatów, aby zapewniać uwierzytelnianie i szyfrowanie w celu zabezpieczania różnych aspektów klastra i jego aplikacji. Aby uzyskać więcej informacji o sposobie wykorzystania certyfikatów w usłudze Service Fabric, zobacz [Scenariusze zabezpieczeń klastra usługi Service Fabric][service-fabric-cluster-security].
 
-Jeśli tworzysz klaster usługi Service Fabric lub wdrażasz klaster dla obciążeń testowych po raz pierwszy, możesz przejść do następnej sekcji (**Utwórz klaster w witrynie Azure Portal**) i mieć system generujący certyfikaty potrzebne dla klastrów z systemem obciążenia testowe. W przypadku konfigurowania klastra dla obciążeń produkcyjnych, należy kontynuować odczytywanie.
+Jeśli tworzysz klaster usługi Service Fabric lub wdrażasz klaster dla obciążeń testowych po raz pierwszy, możesz przejść do następnej sekcji (**Utwórz klaster w witrynie Azure Portal**) i utworzyć certyfikaty potrzebne dla klastrów, które uruchamiają obciążenia testowe. W przypadku konfigurowania klastra dla obciążeń produkcyjnych, należy kontynuować odczytywanie.
 
 #### <a name="cluster-and-server-certificate-required"></a>Certyfikat klastra i serwera (wymagany)
 Ten certyfikat jest wymagany do zabezpieczenia klastra i uniemożliwia nieautoryzowany dostęp do niego. Zapewnia zabezpieczenia klastra na kilka sposobów:

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6bb93c3fb6599a05978e11ef5fbc179ccfaa9ec2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895221"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614901"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn Geograficznie nadmiarowy (GRS): replikacja w wielu regionach dla usługi Azure Storage
 
@@ -31,7 +31,7 @@ Zagadnienia, które należy wziąć pod uwagę podczas korzystania z usługi RA-
 
 - Aplikacja musi zarządzać tym, z którym punktem końcowym korzysta podczas korzystania z usługi RA-GRS.
 - Ponieważ replikacja asynchroniczna obejmuje opóźnienie, zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone, jeśli nie można odzyskać danych z regionu podstawowego.
-- Możesz sprawdzić czas ostatniej synchronizacji konta magazynu. Czas ostatniej synchronizacji to wartość daty/godziny GMT. Wszystkie zapisy podstawowe sprzed ostatniej synchronizacji zostały pomyślnie zapisany w lokalizacji dodatkowej, co oznacza, że są one dostępne do odczytania z lokalizacji pomocniczej. Zapisy podstawowe po ostatniej synchronizacji mogą być jeszcze niedostępne dla operacji odczytu. Tę wartość można wykonać przy użyciu [Azure Portal](https://portal.azure.com/), [Azure PowerShell](storage-powershell-guide-full.md)lub z jednej z bibliotek klienta usługi Azure Storage.
+- Możesz sprawdzić Właściwość **godzina ostatniej synchronizacji** dla konta magazynu. **Czas ostatniej synchronizacji** to wartość daty/godziny GMT. Wszystkie zapisy podstawowe wykonane przed upływem **ostatniej synchronizacji** zostały pomyślnie zapisany w lokalizacji dodatkowej, co oznacza, że są dostępne do odczytu z lokalizacji dodatkowej. Zapisy podstawowe po **ostatniej synchronizacji** mogą być jeszcze niedostępne dla operacji odczytu. Można wysłać zapytanie do tej wartości przy użyciu programu PowerShell, interfejsu wiersza polecenia platformy Azure lub jednej z bibliotek klienta usługi Azure Storage. Aby uzyskać więcej informacji, zobacz **pobieranie czasu ostatniej synchronizacji** w [projektowaniu aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego do odczytu](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time).
 - Jeśli zainicjujesz tryb failover konta (wersja zapoznawcza) konta GRS lub RA-GRS do regionu pomocniczego, dostęp do zapisu do tego konta zostanie przywrócony po zakończeniu pracy w trybie failover. Aby uzyskać więcej informacji, zobacz [odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza)](storage-disaster-recovery-guidance.md).
 - RA-GRS jest przeznaczony do celów o wysokiej dostępności. Aby uzyskać wskazówki dotyczące skalowalności, przejrzyj [listę kontrolną wydajności](storage-performance-checklist.md).
 - Aby uzyskać informacje na temat sposobu projektowania pod kątem wysokiej dostępności za pomocą usługi RA-GRS, zobacz [projektowanie wysoce dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md).

@@ -1,28 +1,19 @@
 ---
-title: 'Samouczek: instalowanie aplikacji w autonomicznym klastrze usługi Service Fabric — Azure Service Fabric | Microsoft Docs'
+title: Instalowanie aplikacji w klastrze autonomicznym
 description: W tym samouczku dowiesz się, jak zainstalować aplikację w autonomicznym klastrze Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384996"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613962"
 ---
-# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: Wdrażanie aplikacji w klastrze autonomicznym Service Fabric
+# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Samouczek: wdrażanie aplikacji w autonomicznym klastrze usługi Service Fabric
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany w AWS i wdrożono w nim aplikację.
 
@@ -38,8 +29,8 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 
 Przed rozpoczęciem tego samouczka:
 
-* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj obciążenia związane z  programowaniem i programowaniem na **platformie Azure** .
-* [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
+* [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/) i zainstaluj obciążenia związane z programowaniem i **programowaniem** na **platformie Azure** .
+* [Instalowanie zestawu SDK usługi Service Fabric](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>Pobieranie przykładowej aplikacji do głosowania
 

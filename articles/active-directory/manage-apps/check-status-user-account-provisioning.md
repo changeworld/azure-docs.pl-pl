@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430228"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowanie dotyczące automatycznego aprowizacji kont użytkowników
 
@@ -28,7 +28,7 @@ Usługa Azure Active Directory (Azure AD) obejmuje [usługę aprowizacji kont u�
 
 W tym artykule opisano sposób sprawdzania stanu zadań aprowizacji po ich skonfigurowaniu oraz rozwiązywania problemów z inicjowaniem obsługi poszczególnych użytkowników i grup.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Łączniki aprowizacji są konfigurowane i konfigurowane przy użyciu [Azure Portal](https://portal.azure.com), zgodnie z [podaną dokumentacją](../saas-apps/tutorial-list.md) dla obsługiwanej aplikacji. Po skonfigurowaniu i uruchomieniu zadań aprowizacji można zgłaszać przy użyciu jednej z dwóch metod:
 
@@ -55,8 +55,8 @@ W tym miejscu możesz uzyskać dostęp do paska postępu aprowizacji i dziennik�
 [Pasek postępu aprowizacji](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) jest widoczny na karcie **aprowizacji** dla danej aplikacji. Znajduje się w sekcji **Current status** poniżej **ustawień**i pokazuje stan bieżącego początkowego lub przyrostowego cyklu. Ta sekcja zawiera również następujące:
 
 * Łączna liczba użytkowników i/grup, które zostały zsynchronizowane i są obecnie w zakresie aprowizacji między systemem źródłowym a systemem docelowym.
-* Ostatnia synchronizacja została uruchomiona. Synchronizacje zwykle odbywają się co 20-40 minut po zakończeniu [cyklu początkowego](user-provisioning.md#what-happens-during-provisioning) .
-* Czy [cykl początkowy](user-provisioning.md#what-happens-during-provisioning) został ukończony.
+* Ostatnia synchronizacja została uruchomiona. Synchronizacje zwykle odbywają się co 20-40 minut po zakończeniu [cyklu początkowego](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) .
+* Czy [cykl początkowy](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) został ukończony.
 * Czy proces aprowizacji został umieszczony w kwarantannie, a powód stanu kwarantanny to (na przykład niepowodzenie komunikacji z systemem docelowym z powodu nieprawidłowych poświadczeń administratora).
 
 **Bieżący stan** powinien być pierwszym miejscem, w którym administratorzy muszą sprawdzić kondycję operacyjną zadania aprowizacji.
@@ -73,7 +73,7 @@ Raport podsumowujący aprowizacji i dzienniki aprowizacji odgrywają kluczową r
 
 Aby zapoznać się ze wskazówkami dotyczącymi sposobu rozwiązywania problemów dotyczących automatycznego aprowizacji użytkowników, zobacz [problemy dotyczące konfigurowania i aprowizacji użytkowników w aplikacji](application-provisioning-config-problem.md).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](what-is-single-sign-on.md)

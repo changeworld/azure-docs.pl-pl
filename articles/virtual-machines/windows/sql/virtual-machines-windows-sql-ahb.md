@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790617"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690911"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Zmień model licencji dla SQL Server maszyny wirtualnej na platformie Azure
 W tym artykule opisano, jak zmienić model licencji dla SQL Server maszyny wirtualnej (VM) na platformie Azure przy użyciu nowego dostawcy zasobów maszyny wirtualnej SQL, **Microsoft. SqlVirtualMachine**.
@@ -45,7 +45,7 @@ Typ licencji SQL Server jest ustawiany podczas aprowizacji maszyny wirtualnej. M
 
 Zmiana modelu licencjonowania maszyny wirtualnej SQL Server ma następujące wymagania: 
 
-- [Subskrypcja platformy Azure](https://azure.microsoft.com/free/).
+- [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
 - [Maszyna wirtualna SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zarejestrowana w [dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).
 - [Program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) jest wymagana do korzystania z [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 
@@ -129,7 +129,7 @@ Zmiana modelu licencji to:
    - Dostępne tylko dla klientów z programem [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview).
    - Obsługiwane tylko w wersjach Standard i Enterprise SQL Server. Zmiany licencji dla ekspresowych, sieci Web i dewelopera nie są obsługiwane. 
    - Obsługiwane tylko w przypadku maszyn wirtualnych wdrożonych za pomocą modelu Azure Resource Manager. Maszyny wirtualne wdrożone za pomocą modelu klasycznego nie są obsługiwane. 
-   - Dostępne tylko dla instalacji chmury publicznej. 
+   - Dostępne tylko dla chmur publicznych lub Azure Government. 
    - Obsługiwane tylko na maszynach wirtualnych, które mają pojedynczy interfejs sieciowy (NIC). 
 
 
@@ -144,7 +144,7 @@ Ten błąd występuje podczas próby zmiany modelu licencji na SQL Server maszyn
 Musisz zarejestrować swoją subskrypcję u dostawcy zasobów, a następnie [zarejestrować SQL Serverą maszynę wirtualną przy użyciu dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
-## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Maszyna wirtualna "\<VMName\>" ma skojarzoną więcej niż jedną kartę sieciową
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Maszyna wirtualna "\<VMName\>" ma skojarzoną więcej niż jedną kartę sieciową
 
 Ten błąd występuje na maszynach wirtualnych, które mają więcej niż jedną kartę sieciową. Przed zmianą modelu licencjonowania Usuń jedną z kart sieciowych. Mimo że można dodać kartę sieciową z powrotem do maszyny wirtualnej po zmianie modelu licencji, operacje w Azure Portal, takie jak automatyczne tworzenie kopii zapasowych i stosowanie poprawek, nie będą już obsługiwane. 
 

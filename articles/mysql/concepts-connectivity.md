@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765210"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659223"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Obsługa błędów przejściowych i wydajne łączenie się z Azure Database for MySQL
 
@@ -52,7 +52,7 @@ Połączenia bazy danych są zasobami ograniczonymi, więc efektywne wykorzystan
 
 Zarządzanie połączeniami z bazą danych może mieć znaczny wpływ na wydajność aplikacji jako całości. Aby zoptymalizować wydajność aplikacji, należy zastanowić się, aby ograniczyć liczbę połączeń i czas ustanawiania połączeń w kluczowych ścieżkach kodu. Zdecydowanie zalecamy użycie puli połączeń z bazą danych lub połączeń trwałych w celu nawiązania połączenia z usługą Azure Database for MySQL. Pule połączeń bazy danych obsługują tworzenie, zarządzanie i przydzielanie połączeń z bazą danych. Gdy program żąda połączenia z bazą danych, ustala priorytet przydziału istniejących bezczynnych połączeń bazy danych zamiast tworzenia nowego połączenia. Po zakończeniu działania programu przy użyciu połączenia z bazą danych połączenie zostanie odzyskane w celu późniejszego użycia, a nie po prostu zamknięte.
 
-Aby uzyskać lepszą ilustrację, ten artykuł zawiera [fragment przykładowego kodu](./sample-scripts-java-connection-pooling.md) , który używa języka Java jako przykładu. Aby uzyskać więcej informacji, zobacz [Apache Common DBCP](http://commons.apache.org/proper/commons-dbcp/).
+Aby uzyskać lepszą ilustrację, ten artykuł zawiera [fragment przykładowego kodu](./sample-scripts-java-connection-pooling.md) , który używa języka Java jako przykładu. Aby uzyskać więcej informacji, zobacz [Apache Common DBCP](https://commons.apache.org/proper/commons-dbcp/).
 
 > [!NOTE]
 > Serwer konfiguruje mechanizm przekroczenia limitu czasu w celu zamknięcia połączenia, które było w stanie bezczynności przez jakiś czas, aby zwolnić zasoby. Należy pamiętać o skonfigurowaniu systemu weryfikacyjnego w celu zapewnienia skuteczności połączeń trwałych podczas ich używania. Aby uzyskać więcej informacji, zobacz [Konfigurowanie systemów weryfikacyjnych po stronie klienta w celu zapewnienia skuteczności połączeń trwałych](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections).

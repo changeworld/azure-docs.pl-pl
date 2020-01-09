@@ -5,22 +5,21 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435493"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix w usłudze Azure HDInsight
 
 [Apache Phoenix](https://phoenix.apache.org/) to "open source", wysoce równoległa warstwa relacyjnej bazy danych oparta na platformie [Apache HBase](hbase/apache-hbase-overview.md). Phoenix umożliwia korzystanie z zapytań przypominających SQL w HBase. Phoenix korzysta ze sterowników JDBC, aby umożliwić użytkownikom tworzenie, usuwanie, modyfikowanie tabel SQL, indeksów, widoków i sekwencji oraz wierszy upsert indywidualnie i zbiorczo. Phoenix używa kompilacji natywnej noSQL zamiast używania MapReduce do kompilowania zapytań, co umożliwia tworzenie aplikacji o małym opóźnieniu na HBase. Phoenix dodaje współprocesory obsługujące uruchamianie kodu dostarczonego przez klienta w przestrzeni adresowej serwera, wykonując z danymi. Takie podejście minimalizuje transfer danych klienta/serwera.
 
 Apache Phoenix otwiera zapytania o dane big data dla innych niż deweloperzy, którzy mogą używać składni podobnej do języka SQL, a nie programowania. Phoenix jest wysoce zoptymalizowany pod kątem HBase, w przeciwieństwie do innych narzędzi, takich jak [Apache Hive](hadoop/hdinsight-use-hive.md) i Apache Spark SQL. Korzyści dla deweloperów polegają na pisaniu wysoce wydajnych zapytań z znacznie mniejszym kodem.
-<!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 Podczas przesyłania zapytania SQL, Phoenix kompiluje zapytanie w celu HBase natywnych wywołań i uruchamia skanowania (lub planu) równolegle w celu optymalizacji. Ta warstwa abstrakcji zwalnia dewelopera z pisania zadań MapReduce, aby skoncentrować się na logice biznesowej i przepływie pracy aplikacji otaczającej magazyn danych Big Data.
 
@@ -51,8 +50,8 @@ Na przykład poniżej znajduje się tabela fizyczna o nazwie `product_metrics` z
 ```sql
 CREATE  TABLE product_metrics (
     metric_type CHAR(1),
-    created_by VARCHAR, 
-    created_date DATE, 
+    created_by VARCHAR,
+    created_date DATE,
     metric_id INTEGER
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
@@ -71,7 +70,7 @@ Aby później dodać więcej kolumn, użyj instrukcji `ALTER VIEW`.
 
 Funkcja pomijania skanowania używa co najmniej jednej kolumny indeksu złożonego, aby znaleźć różne wartości. W przeciwieństwie do skanowania zakresu, pomijanie skanowania implementuje skanowanie wewnątrz wierszy, co [zwiększa wydajność](https://phoenix.apache.org/performance.html#Skip-Scan). Podczas skanowania pierwsza dopasowana wartość jest pomijana wraz z indeksem do momentu znalezienia następnej wartości.
 
-Pomijanie skanowania używa wyliczenia `SEEK_NEXT_USING_HINT` filtru HBase. Korzystając z `SEEK_NEXT_USING_HINT`, skanowanie pomijania śledzi zbiór kluczy lub zakresów kluczy, które są wyszukiwane w każdej kolumnie. Funkcja pomijania skanowania Pobiera klucz, który został przesłany do niego podczas obliczania filtru, i określa, czy jest jedną z kombinacji. W przeciwnym razie pomijanie skanowania szacuje następny najwyższy klucz, aby przejść do.
+Pomijanie skanowania używa wyliczenia `SEEK_NEXT_USING_HINT` filtru HBase. Przy użyciu `SEEK_NEXT_USING_HINT`pomijanie skanowania śledzi zbiór kluczy lub zakresów kluczy, które są wyszukiwane w każdej kolumnie. Funkcja pomijania skanowania Pobiera klucz, który został przesłany do niego podczas obliczania filtru, i określa, czy jest to jedna z kombinacji. W przeciwnym razie pomijanie skanowania szacuje następny najwyższy klucz, aby przejść do.
 
 ### <a name="transactions"></a>Transakcje
 
@@ -138,3 +137,5 @@ HDInsight An klaster HBase zawiera [interfejs użytkownika Ambari](hdinsight-had
 ## <a name="see-also"></a>Zobacz także
 
 * [Używanie Apache Phoenix z klastrami HBase opartymi na systemie Linux w usłudze HDInsight](hbase/apache-hbase-query-with-phoenix.md)
+
+* [Korzystanie z programu Apache Zeppelin do uruchamiania zapytań Apache Phoenix w usłudze Apache HBase w usłudze Azure HDInsight](./hbase/apache-hbase-phoenix-zeppelin.md)

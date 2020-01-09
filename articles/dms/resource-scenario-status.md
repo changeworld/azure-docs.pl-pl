@@ -1,5 +1,6 @@
 ---
-title: Stan scenariusza migracji bazy danych | Microsoft Docs
+title: Stan scenariusza migracji bazy danych
+titleSuffix: Azure Database Migration Service
 description: Dowiedz się więcej na temat stanu scenariuszy migracji obsługiwanych przez Azure Database Migration Service.
 services: database-migration
 author: HJToland3
@@ -11,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437673"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stan scenariuszy migracji obsługiwanych przez Azure Database Migration Service
 
@@ -44,7 +45,7 @@ W poniższych tabelach przedstawiono, które scenariusze migracji są obsługiwa
 
 W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migracji w trybie offline.
 
-| Cel  | Source | Pomoc techniczna | State |
+| Cel  | Źródło | Pomoc techniczna | Stan |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Baza danych SQL Azure** | SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS |  |  |
@@ -54,7 +55,7 @@ W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migr
 |   | Oracle |  |   |
 | **Maszyna wirtualna Azure SQL** | SQL Server | ✔ | Ogólna dostępność |
 |   | Oracle |   |   |
-| **Usługi Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
+| **Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
 | **Azure DB dla MySQL** | MySQL |   |   |
 |   | RDS MySQL |   |   |
 | **Azure DB dla PostgreSQL** | PostgreSQL |  |
@@ -64,7 +65,7 @@ W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migr
 
 W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migracji w trybie online.
 
-| Cel  | Source | Pomoc techniczna | State |
+| Cel  | Źródło | Pomoc techniczna | Stan |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Baza danych SQL Azure** | SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS | ✔ | Ogólna dostępność |
@@ -74,7 +75,7 @@ W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migr
 |   | Oracle | ✔ | Prywatna wersja zapoznawcza |
 | **Maszyna wirtualna Azure SQL** | SQL Server |   |   |
 |   | Oracle  |  |  |
-| **Usługi Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
+| **Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
 | **Azure DB dla MySQL** | MySQL | ✔ | Ogólna dostępność |
 |   | RDS MySQL | ✔ | Ogólna dostępność |
 | **Azure DB dla PostgreSQL** | PostgreSQL | ✔ | Ogólna dostępność |

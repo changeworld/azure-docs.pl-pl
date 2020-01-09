@@ -1,5 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — składniki VMware chmury prywatnej
+title: Składniki VMware chmury prywatnej
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Opisuje, jak składniki VMware są instalowane w chmurze prywatnej
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452317"
 ---
 # <a name="private-cloud-vmware-components"></a>Składniki VMware chmury prywatnej
 
@@ -28,12 +29,12 @@ Chmura prywatna to izolowany ze stosu oprogramowania VMware (hosty ESXi, vCenter
 
 Stos VMware chmury prywatnej jest wdrażany z użyciem następującej wersji oprogramowania.
 
-| Składnik | Version | Licencjonowana wersja |
+| Składnik | Wersja | Licencjonowana wersja |
 |-----------|---------|------------------|
 | ESXi | 6.7 U2 | Enterprise Plus |
 | vCenter | 6.7 U2 | Program vCenter Standard |
 | Sieci vSAN | 6.7 | Enterprise |
-| Centrum danych NSX | 2.4.1 | Zaawansowane |
+| Centrum danych NSX | 2.4.1 | Advanced |
 
 ## <a name="esxi"></a>ESXi
 
@@ -47,7 +48,7 @@ Program vCenter Server Appliance (VCSA) zapewnia funkcje uwierzytelniania, zarz�
 
 ### <a name="vcenter-single-sign-on"></a>Logowanie jednokrotne vCenter
 
-Osadzony kontroler usług platformy VCSA jest skojarzony z **domeną logowania**jednokrotnego.  Nazwa domeny to **cloudsimple. Local**.  Tworzony jest domyślny **CloudOwner@cloudsimple.com** użytkownik mający dostęp do programu vCenter.  Możesz dodać [źródła tożsamości](set-vcenter-identity.md)lokalnego/usługi Azure Active Directory dla serwera vCenter.
+Osadzony kontroler usług platformy VCSA jest skojarzony z **domeną logowania**jednokrotnego.  Nazwa domeny to **cloudsimple. Local**.  Zostanie utworzony domyślny **CloudOwner@cloudsimple.com** użytkownika umożliwiający dostęp do programu vCenter.  Możesz dodać [źródła tożsamości](set-vcenter-identity.md)lokalnego/usługi Azure Active Directory dla serwera vCenter.
 
 ## <a name="vsan-storage"></a>Magazyn sieci vSAN
 
@@ -81,11 +82,11 @@ NSX Data Center zapewnia wirtualizację sieci, mikrosegmenty i możliwości zabe
 
 ## <a name="vsphere-cluster"></a>klaster vSphere
 
-Hosty ESXi są skonfigurowane jako klaster, aby zapewnić wysoką dostępność chmury prywatnej.  Podczas tworzenia chmury prywatnej składniki zarządzania programu vSphere są wdrażane w pierwszym klastrze.  Pula zasobów jest tworzona dla składników zarządzania, a wszystkie maszyny wirtualne zarządzania są wdrażane w tej puli zasobów. Nie można usunąć pierwszego klastra, aby zmniejszyć chmurę prywatną.  klaster vSphere zapewnia wysoką dostępność maszyn wirtualnych korzystających z **VSPHERE ha**.  Niepowodzenia do tolerowania są zależne od liczby dostępnych węzłów w klastrze.  Można użyć formuły ```Number of nodes = 2N+1``` , gdzie ```N``` jest liczbą niepowodzeń, które mają być tolerowane.
+Hosty ESXi są skonfigurowane jako klaster, aby zapewnić wysoką dostępność chmury prywatnej.  Podczas tworzenia chmury prywatnej składniki zarządzania programu vSphere są wdrażane w pierwszym klastrze.  Pula zasobów jest tworzona dla składników zarządzania, a wszystkie maszyny wirtualne zarządzania są wdrażane w tej puli zasobów. Nie można usunąć pierwszego klastra, aby zmniejszyć chmurę prywatną.  klaster vSphere zapewnia wysoką dostępność maszyn wirtualnych korzystających z **VSPHERE ha**.  Niepowodzenia do tolerowania są zależne od liczby dostępnych węzłów w klastrze.  Można użyć ```Number of nodes = 2N+1``` formuły, gdzie ```N``` jest liczbą niepowodzeń, które mają być tolerowane.
 
 ### <a name="vsphere-cluster-limits"></a>limity klastrów vSphere
 
-| Resource | Limit |
+| Zasób | Limit |
 |----------|-------|
 | Minimalna liczba węzłów do utworzenia chmury prywatnej (pierwszy klaster vSphere) | 3 |
 | Maksymalna liczba węzłów w klastrze vSphere w chmurze prywatnej | 16 |

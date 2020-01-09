@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840061"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449801"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Używanie Azure Pipelines do kompilowania i wdrażania rozwiązań HPC
 
@@ -52,7 +52,7 @@ Struktura codebase użyta w tym przykładzie jest podobna do następującej:
 W tej sekcji założono, że znasz kontrolę wersji i projektujesz szablony Menedżer zasobów. Jeśli nie znasz tych pojęć, zobacz następujące strony, aby uzyskać więcej informacji.
 
 * [Co to jest kontrola źródła?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
@@ -303,7 +303,7 @@ To repozytorium zawiera cztery główne sekcje:
 * Folder **ARM-templates** przechowujący naszą infrastrukturę jako kod
 * Folder **HPC-aplikacja** zawierający pliki binarne dla narzędzia FFmpeg
 * Folder **potoków** zawierający definicję dla naszego potoku kompilacji.
-* **Opcjonalnie**: Folder **klient-aplikacja** , który będzie przechowywać kod dla aplikacji .NET. Nie używamy tego przykładu w przykładzie, ale w Twoim projekcie możesz chcieć wykonać przebiegi aplikacji wsadowej HPC za pośrednictwem aplikacji klienckiej.
+* **Opcjonalne**: folder **klient-aplikacja** , który będzie przechowywać kod dla aplikacji .NET. Nie używamy tego przykładu w przykładzie, ale w Twoim projekcie możesz chcieć wykonać przebiegi aplikacji wsadowej HPC za pośrednictwem aplikacji klienckiej.
 
 > [!NOTE]
 > Jest to tylko jeden przykład struktury do bazy kodu. Takie podejście służy do prezentowania tego, że aplikacja, infrastruktura i kod potoku są przechowywane w tym samym repozytorium.
@@ -390,15 +390,15 @@ Istnieje kilka kroków związanych z wdrażaniem infrastruktury. W przypadku uż
 
 1. Przejdź do sekcji **zmienne** . Zaleca się utworzenie wielu zmiennych w potoku, dlatego nie można umieścić tych samych informacji w wielu zadaniach. Są to zmienne używane w tym przykładzie i wpływ na wdrożenie.
 
-    * **applicationStorageAccountName**: Nazwa konta magazynu do przechowywania plików binarnych aplikacji HPC
+    * **applicationStorageAccountName**: nazwa konta magazynu do przechowywania plików binarnych aplikacji HPC
     * **batchAccountApplicationName**: Nazwa aplikacji na koncie Azure Batch
-    * **batchAccountName**: Nazwa konta Azure Batch
+    * **batchAccountName**: nazwa konta Azure Batch
     * **batchAccountPoolName**: Nazwa puli maszyn wirtualnych przetwarzających przetwarzanie
-    * **batchApplicationId**: Unikatowy identyfikator aplikacji Azure Batch
-    * **batchApplicationVersion**: Semantyka wersji aplikacji wsadowej (czyli plików binarnych narzędzia FFmpeg)
+    * **batchApplicationId**: unikatowy identyfikator aplikacji Azure Batch
+    * **batchApplicationVersion**: wersja semantyczna aplikacji wsadowej (czyli pliki binarne narzędzia FFmpeg)
     * **Lokalizacja**: Lokalizacja zasobów platformy Azure, które mają zostać wdrożone
     * **resourceGroupName**: Nazwa grupy zasobów, która ma zostać utworzona, oraz miejsce, w której zostaną wdrożone zasoby
-    * **storageAccountName**: Nazwa konta magazynu do przechowywania połączonych Menedżer zasobów szablonów
+    * **storageAccountName**: nazwa konta magazynu do przechowywania połączonych Menedżer zasobów szablonów
 
     ![Przykład zmiennych ustawionych dla Azure Pipelines wydania](media/batch-ci-cd/Release-4.jpg)
 
@@ -416,7 +416,7 @@ Istnieje kilka kroków związanych z wdrażaniem infrastruktury. W przypadku uż
     Dodaj zadanie **wdrażania grupy zasobów platformy Azure** i ustaw następujące właściwości:
     * **Nazwa wyświetlana:** Wdróż konto magazynu dla szablonów Menedżer zasobów
     * **Subskrypcja platformy Azure:** Wybierz odpowiednią subskrypcję platformy Azure
-    * **Akcja**: Utwórz lub zaktualizuj grupę zasobów
+    * **Akcja**: Utwórz lub Zaktualizuj grupę zasobów
     * **Grupa zasobów**: $ (resourceGroupName)
     * **Lokalizacja**: $ (lokalizacja)
     * **Szablon**: $ (System. ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /ARM-templates/storageAccount.JSON
@@ -428,7 +428,7 @@ Istnieje kilka kroków związanych z wdrażaniem infrastruktury. W przypadku uż
     * **Źródło:** $ (System. ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /ARM-templates/
     * **Typ połączenia platformy Azure**: Azure Resource Manager
     * **Subskrypcja platformy Azure:** Wybierz odpowiednią subskrypcję platformy Azure
-    * **Typ docelowy**: Obiekt bob Azure
+    * **Typ docelowy**: obiekt blob platformy Azure
     * **Konto magazynu RM**: $ (storageAccountName)
     * **Nazwa kontenera**: szablony
     * **Identyfikator URI kontenera magazynu**: templateContainerUri
@@ -439,11 +439,11 @@ Istnieje kilka kroków związanych z wdrażaniem infrastruktury. W przypadku uż
     Dodaj zadanie **wdrażania grupy zasobów platformy Azure** i ustaw następujące właściwości:
     * **Nazwa wyświetlana:** Wdróż Azure Batch
     * **Subskrypcja platformy Azure:** Wybierz odpowiednią subskrypcję platformy Azure
-    * **Akcja**: Utwórz lub zaktualizuj grupę zasobów
+    * **Akcja**: Utwórz lub Zaktualizuj grupę zasobów
     * **Grupa zasobów**: $ (resourceGroupName)
     * **Lokalizacja**: $ (lokalizacja)
     * **Szablon**: $ (System. ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /ARM-templates/Deployment.JSON
-    * **Przesłoń parametry szablonu**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Przesłoń parametry szablonu**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Typowym sposobem jest użycie zadań Azure Key Vault. Jeśli nazwa główna usługi (połączenie z subskrypcją platformy Azure) ma odpowiednie zasady dostępu, można pobrać klucze tajne z Azure Key Vault i używać ich jako zmiennych w potoku. Nazwa wpisu tajnego zostanie ustawiona z skojarzoną wartością. Na przykład wpis tajny sshPassword może być przywoływany przy użyciu $ (sshPassword) w definicji wydania.
 
@@ -452,16 +452,16 @@ Typowym sposobem jest użycie zadań Azure Key Vault. Jeśli nazwa główna usł
     Dodaj zadanie **interfejsu wiersza polecenia platformy Azure** i ustaw następujące właściwości:
     * **Nazwa wyświetlana:** Tworzenie aplikacji na koncie Azure Batch
     * **Subskrypcja platformy Azure:** Wybierz odpowiednią subskrypcję platformy Azure
-    * **Lokalizacja skryptu**: Wbudowany skrypt
-    * **Skrypt wbudowany**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Lokalizacja skryptu**: skrypt wbudowany
+    * **Skrypt wbudowany**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. Drugi krok służy do przekazywania skojarzonych pakietów do aplikacji. W naszym przypadku pliki narzędzia FFmpeg.
 
     Dodaj zadanie **interfejsu wiersza polecenia platformy Azure** i ustaw następujące właściwości:
     * **Nazwa wyświetlana:** Przekaż pakiet do konta Azure Batch
     * **Subskrypcja platformy Azure:** Wybierz odpowiednią subskrypcję platformy Azure
-    * **Lokalizacja skryptu**: Wbudowany skrypt
-    * **Skrypt wbudowany**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Lokalizacja skryptu**: skrypt wbudowany
+    * **Skrypt wbudowany**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Numer wersji pakietu aplikacji jest ustawiony na zmienną. Jest to wygodne, Jeśli zastępowanie poprzednich wersji pakietu działa prawidłowo, a jeśli chcesz ręcznie kontrolować numer wersji pakietu wypchnięcia do Azure Batch.
@@ -478,8 +478,8 @@ Po skonfigurowaniu środowiska upewnij się, że następujące testy mogą zosta
 
 Połącz się z nowym kontem Azure Batch przy użyciu interfejsu wiersza polecenia platformy Azure z wiersza poleceń programu PowerShell.
 
-* Zaloguj się do konta platformy Azure przy `az login` użyciu i postępuj zgodnie z instrukcjami dotyczącymi uwierzytelniania.
-* Teraz uwierzytelniaj konto w usłudze Batch:`az batch account login -g <resourceGroup> -n <batchAccount>`
+* Zaloguj się do konta platformy Azure przy użyciu `az login` i postępuj zgodnie z instrukcjami w celu uwierzytelnienia.
+* Teraz uwierzytelniaj konto wsadowe: `az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>Wyświetl listę dostępnych aplikacji
 

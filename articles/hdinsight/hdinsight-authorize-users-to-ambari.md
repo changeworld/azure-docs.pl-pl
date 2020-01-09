@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435640"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Apache Ambari
 
@@ -248,7 +248,7 @@ Widok listy umożliwia szybkie edytowanie funkcji w dwóch kategoriach: Użytkow
 
     ![Widok listy ról Apache Ambari — użytkownicy](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* Kategoria grupy w widoku listy wyświetla wszystkie grupy i rolę przypisaną do każdej grupy. W naszym przykładzie lista grup jest synchronizowana z grup usługi Azure AD określonych we właściwości **dostęp do grupy użytkowników** w ustawieniach domeny klastra. Zobacz [Tworzenie klastra usługi HDInsight z włączoną funkcją ESP](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
+* Kategoria grupy w widoku listy wyświetla wszystkie grupy i rolę przypisaną do każdej grupy. W naszym przykładzie lista grup jest synchronizowana z grup usługi Azure AD określonych we właściwości **dostęp do grupy użytkowników** w ustawieniach domeny klastra. Zobacz [Tworzenie klastra usługi HDInsight z włączoną funkcją ESP](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 
     ![Widok listy ról Apache Ambari — grupy](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

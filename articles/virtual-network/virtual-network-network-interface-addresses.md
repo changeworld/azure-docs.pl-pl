@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 7df58c3f866ffd28348ecfa2e43bdccbd1d96001
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965692"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647258"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie lub usuwanie adresów IP dla interfejsu sieciowego platformy Azure
 
@@ -43,7 +43,7 @@ Konto, do którego należy się zalogować lub połączyć się z platformą Azu
 
 ## <a name="add-ip-addresses"></a>Dodaj adresy IP
 
-Możesz dodać dowolną liczbę [prywatnych](#private) i [publicznych](#public) adresów [IPv4](#ipv4) do interfejsu sieciowego, w granicach wymienionych w artykule [limity platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Prywatny adres IPv6 można dodać do jednej [pomocniczej konfiguracji adresu IP](#secondary) (o ile nie istnieją żadne istniejące konfiguracje pomocniczych adresów IP) dla istniejącego interfejsu sieciowego. Każdy interfejs sieciowy może mieć co najwyżej jeden prywatny adres IPv6. Opcjonalnie możesz dodać publiczny adres IPv6 do konfiguracji interfejsu sieciowego IPv6. Szczegółowe informacje o używaniu adresów IPv6 można znaleźć w [protokole IPv6](#ipv6) .
+Możesz dodać dowolną liczbę [prywatnych](#private) i [publicznych](#public) adresów [IPv4](#ipv4) do interfejsu sieciowego, w granicach wymienionych w artykule [limity platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) . Prywatny adres IPv6 można dodać do jednej [pomocniczej konfiguracji adresu IP](#secondary) (o ile nie istnieją żadne istniejące konfiguracje pomocniczych adresów IP) dla istniejącego interfejsu sieciowego. Każdy interfejs sieciowy może mieć co najwyżej jeden prywatny adres IPv6. Opcjonalnie możesz dodać publiczny adres IPv6 do konfiguracji interfejsu sieciowego IPv6. Szczegółowe informacje o używaniu adresów IPv6 można znaleźć w [protokole IPv6](#ipv6) .
 
 1. W polu zawierającym *zasoby wyszukiwania* tekstu w górnej części Azure Portal wpisz *interfejsy sieciowe*. Gdy **interfejsy sieciowe** pojawiają się w wynikach wyszukiwania, wybierz je.
 2. Wybierz interfejs sieciowy, dla którego chcesz dodać adres IPv4 z listy.
@@ -68,7 +68,7 @@ Możesz dodać dowolną liczbę [prywatnych](#private) i [publicznych](#public) 
 
 ## <a name="change-ip-address-settings"></a>Zmień ustawienia adresu IP
 
-Może być konieczna zmiana metody przypisania adresu IPv4, zmiana statycznego adresu IPv4 lub zmiana publicznego adresu IP przypisanego do interfejsu sieciowego. Jeśli zmieniasz prywatny adres IPv4 dodatkowej konfiguracji protokołu IP skojarzonej z pomocniczym interfejsem sieciowym na maszynie wirtualnej (Dowiedz się więcej o [podstawowych i dodatkowych interfejsach sieciowych](virtual-network-network-interface-vm.md)), umieść maszynę wirtualną w zatrzymanym ( cofnięto przydział) przed wykonaniem następujących kroków:
+Może być konieczna zmiana metody przypisania adresu IPv4, zmiana statycznego adresu IPv4 lub zmiana publicznego adresu IP przypisanego do interfejsu sieciowego. Jeśli zmieniasz prywatny adres IPv4 dodatkowej konfiguracji adresu IP skojarzonego z dodatkowym interfejsem sieciowym na maszynie wirtualnej (Dowiedz się więcej na temat [podstawowych i dodatkowych interfejsów sieciowych](virtual-network-network-interface-vm.md)), umieść maszynę wirtualną w stanie zatrzymania (bez przydziału) przed wykonaniem następujących kroków:
 
 1. W polu zawierającym *zasoby wyszukiwania* tekstu w górnej części Azure Portal wpisz *interfejsy sieciowe*. Gdy **interfejsy sieciowe** pojawiają się w wynikach wyszukiwania, wybierz je.
 2. Wybierz z listy interfejs sieciowy, dla którego chcesz wyświetlić lub zmienić ustawienia adresu IP.
@@ -118,7 +118,7 @@ Każdy interfejs sieciowy ma przypisaną jedną podstawową konfigurację adresu
 
 Oprócz podstawowej konfiguracji adresu IP, interfejs sieciowy może mieć przypisaną zero lub więcej pomocniczych konfiguracji adresów IP. Pomocnicza Konfiguracja adresu IP:
 
-- Musi mieć przypisany prywatny adres IPv4 lub IPv6. Jeśli adres jest adresem IPv6, interfejs sieciowy może mieć tylko jedną dodatkową konfigurację adresu IP. Jeśli adres jest adresem IPv4, interfejs sieciowy może mieć przypisane wiele pomocniczych konfiguracji adresów IP. Aby dowiedzieć się więcej na temat liczby prywatnych i publicznych adresów IPv4, które można przypisać do interfejsu sieciowego, zobacz artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .
+- Musi mieć przypisany prywatny adres IPv4 lub IPv6. Jeśli adres jest adresem IPv6, interfejs sieciowy może mieć tylko jedną dodatkową konfigurację adresu IP. Jeśli adres jest adresem IPv4, interfejs sieciowy może mieć przypisane wiele pomocniczych konfiguracji adresów IP. Aby dowiedzieć się więcej na temat liczby prywatnych i publicznych adresów IPv4, które można przypisać do interfejsu sieciowego, zobacz artykuł dotyczący [limitów platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .
 - Może również mieć przypisany publiczny adres IPv4 lub IPv6. Przypisywanie wielu adresów IPv4 do interfejsu sieciowego jest przydatne w scenariuszach takich jak:
   - Hostowanie wielu witryn sieci Web lub usług z różnymi adresami IP i certyfikatami SSL na jednym serwerze.
   - Maszyna wirtualna służąca jako sieciowe urządzenie wirtualne, takie jak zapora lub moduł równoważenia obciążenia.
@@ -154,7 +154,7 @@ Poza umożliwieniem, aby maszyna wirtualna mogła komunikować się z innymi zas
 
 Publiczne adresy IP przypisane za pośrednictwem zasobu publicznego adresu IP umożliwiają komunikację przychodzącą z maszyną wirtualną z Internetu. Połączenia wychodzące z Internetem używają przewidywalnego adresu IP. Aby uzyskać szczegółowe informacje, zobacz [Opis połączeń wychodzących na platformie Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Do konfiguracji adresu IP można przypisać publiczny adres IP, ale nie jest to wymagane. Jeśli publiczny adres IP nie zostanie przypisany do maszyny wirtualnej przez skojarzenie zasobu publicznego adresu IP, maszyna wirtualna może nadal komunikować się z Internetem. W tym przypadku prywatny adres IP jest adresem sieci źródłowej przetłumaczonym przez platformę Azure do nieprzewidywalnego publicznego adresu IP. Aby dowiedzieć się więcej na temat zasobów publicznego adresu IP, zobacz [zasób publicznego adresu IP](virtual-network-public-ip-address.md).
 
-Istnieją limity liczby prywatnych i publicznych adresów IP, które można przypisać do interfejsu sieciowego. Aby uzyskać szczegółowe informacje, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .
+Istnieją limity liczby prywatnych i publicznych adresów IP, które można przypisać do interfejsu sieciowego. Aby uzyskać szczegółowe informacje, przeczytaj artykuł dotyczący [limitów platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) .
 
 > [!NOTE]
 > Platforma Azure tłumaczy prywatny adres IP maszyny wirtualnej na publiczny adres IP. W związku z tym system operacyjny maszyny wirtualnej nie jest uważany za każdy przypisany do niego publiczny adres IP, dlatego nie trzeba ręcznie przypisywać publicznego adresu IP w ramach systemu operacyjnego.
@@ -181,11 +181,11 @@ Możesz (opcjonalnie) przypisywać publiczny lub prywatny statyczny adres IPv4 l
 
 Podczas przypisywania adresów można określić następujące wersje:
 
-### <a name="ipv4"></a>Adresów
+### <a name="ipv4"></a>IPv4
 
 Każdy interfejs sieciowy musi mieć jedną [podstawową](#primary) konfigurację adresu IP z przypisanym [prywatnym](#private) adresem [IPv4](#ipv4) . Można dodać jedną lub więcej [pomocniczych](#secondary) konfiguracji adresów IP, z których każdy ma prywatny adres IPv4, i (opcjonalnie), [publicznego](#public) adresu IP IPv4.
 
-### <a name="ipv6"></a>If
+### <a name="ipv6"></a>IPv6
 
 Można przypisać zero lub jeden prywatny adres [IPv6](#ipv6) do jednej dodatkowej konfiguracji adresu IP interfejsu sieciowego. Interfejs sieciowy nie może mieć żadnych istniejących konfiguracji pomocniczych adresów IP. Każdy interfejs sieciowy może mieć co najwyżej jeden prywatny adres IPv6. Opcjonalnie możesz dodać publiczny adres IPv6 do konfiguracji interfejsu sieciowego IPv6.
 

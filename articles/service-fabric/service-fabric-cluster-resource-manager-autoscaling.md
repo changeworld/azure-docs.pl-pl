@@ -1,67 +1,58 @@
 ---
-title: Usługa Azure Service Fabric automatyczne skalowanie usług i kontenerów | Dokumentacja firmy Microsoft
-description: Usługa Azure Service Fabric umożliwia ustawienie automatycznego skalowania zasad dla usług i kontenerów.
-services: service-fabric
-documentationcenter: .net
+title: Platforma Azure Service Fabric Skalowanie automatyczne usług i kontenerów
+description: Usługa Azure Service Fabric umożliwia ustawianie zasad skalowania automatycznego dla usług i kontenerów.
 author: radicmilos
-manager: ''
-editor: nipuzovi
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452087"
 ---
 # <a name="introduction-to-auto-scaling"></a>Wprowadzenie do automatycznego skalowania
-Automatyczne skalowanie jest dodatkowe możliwości usługi Service Fabric dynamicznie skalować swoje usługi, w oparciu o obciążenie, które usługi są raportowania lub na podstawie ich użycia zasobów. Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej dodatkowych wystąpień lub partycje usługi na żądanie. Cały automatycznego skalowania procesu jest zautomatyzowanych i przejrzystości, a po skonfigurowaniu zasad w usłudze nie ma potrzeby ręcznego operacji skalowania na poziomie usługi. Automatyczne skalowanie może zostać włączona podczas tworzenia usługi lub w dowolnej chwili, aktualizując usługę.
+Skalowanie automatyczne to dodatkowa funkcja Service Fabric do dynamicznego skalowania usług na podstawie obciążenia, które usługi są raportowane lub na podstawie ich użycia. Skalowanie automatyczne zapewnia doskonałą elastyczność i umożliwia obsługę dodatkowych wystąpień lub partycji usługi na żądanie. Cały proces skalowania automatycznego jest zautomatyzowany i przejrzysty, a po skonfigurowaniu zasad w ramach usługi nie ma potrzeby ręcznego skalowania operacji na poziomie usługi. Skalowanie automatyczne może być włączane podczas tworzenia usługi lub w dowolnym momencie przez aktualizację usługi.
 
-Typowy scenariusz, w których jest użyteczny automatyczne skalowanie jest, gdy obciążenie określonej usługi zmienia się wraz z upływem czasu. Na przykład usługi takie jak bramy można skalować na podstawie ilości zasobów potrzebnych do obsługi żądań przychodzących. Spójrzmy na przykład jak może wyglądać te reguły skalowania:
-* Jeśli wszystkie wystąpienia elementu mojej bramy średnio z więcej niż dwa rdzenie, skalować usługi bramy w poziomie przez dodanie jednego wystąpienia więcej. To co godzinę, ale nigdy nie mają więcej niż siedem wystąpień w sumie.
-* Jeśli wszystkie wystąpienia elementu mojej bramy średnio z mniej niż 0,5 rdzenia, skalować usługę w przez usunięcie jednego wystąpienia. To co godzinę, ale nigdy nie mają mniej niż trzy wystąpienia w sumie.
+Typowy scenariusz, w którym funkcja automatycznego skalowania jest użyteczna, polega na tym, że obciążenie określonej usługi różni się w miarę upływu czasu. Na przykład usługa, taka jak Brama, może skalować w zależności od ilości zasobów potrzebnych do obsługi żądań przychodzących. Przyjrzyjmy się przykładowi, w jaki sposób te reguły skalowania mogą wyglądać następująco:
+* Jeśli wszystkie wystąpienia mojej bramy używają średnio więcej niż dwóch rdzeni, należy skalować usługę bramy przez dodanie jednego wystąpienia. Zrób to co godzinę, ale w sumie nie ma więcej niż siedem wystąpień.
+* Jeśli wszystkie wystąpienia mojej bramy używają średnio mniej niż 0,5 rdzeni, wówczas skalowanie usługi w programie przez usunięcie jednego wystąpienia. Zrób to co godzinę, ale w sumie nie ma więcej niż trzy wystąpienia.
 
-Automatyczne skalowanie jest obsługiwana dla kontenerów i regularnego usługi Service Fabric. Aby korzystać z automatycznego skalowania, konieczne będzie działać w wersji 6.2 lub nowszej środowiska uruchomieniowego usługi Service Fabric. 
+Automatyczne skalowanie jest obsługiwane zarówno w przypadku kontenerów, jak i zwykłych Service Fabric usług. Aby można było używać skalowania automatycznego, należy uruchomić program w wersji 6,2 lub nowszej środowiska uruchomieniowego Service Fabric. 
 
-W pozostałej części tego artykułu opisano zasady skalowania, sposobów, aby włączyć lub wyłączyć automatyczne skalowanie i przedstawiono przykłady dotyczące używania tej funkcji.
+W pozostałej części tego artykułu opisano zasady skalowania, sposoby włączania lub wyłączania skalowania automatycznego oraz przedstawiono przykłady użycia tej funkcji.
 
-## <a name="describing-auto-scaling"></a>Opisujące Autoskalowanie
-Automatyczne skalowanie zasady mogą być definiowane dla poszczególnych usług w klastrze usługi Service Fabric. Wszystkie zasady skalowania składa się z dwóch części:
-* **Skalowanie wyzwalacza** opisuje, kiedy wykonać skalowanie usługi. Warunki, które są zdefiniowane w wyzwalaczu sprawdzane są okresowo ustalenie, jeśli usługa powinna być skalowana.
+## <a name="describing-auto-scaling"></a>Opisywanie automatycznego skalowania
+Zasady skalowania automatycznego można definiować dla każdej usługi w klastrze Service Fabric. Każda zasada skalowania składa się z dwóch części:
+* **Wyzwalacz skalowania** opisuje, kiedy zostanie wykonana skalowanie usługi. Warunki, które są zdefiniowane w wyzwalaczu są okresowo sprawdzane w celu określenia, czy usługa powinna być skalowana, czy nie.
 
-* **Skalowanie mechanizm** w tym artykule opisano, jak skalowanie zostanie wykonane po jej wyzwoleniu. Mechanizm są stosowane tylko po spełnieniu warunków z wyzwalacza.
+* **Mechanizm skalowania** opisuje, jak skalowanie zostanie wykonane po jego wyzwoleniu. Mechanizm jest stosowany tylko wtedy, gdy spełnione są warunki wyzwalacza.
 
-Wszystkie wyzwalacze, które są obecnie obsługiwane pracy za pomocą [miar logiczne obciążenia](service-fabric-cluster-resource-manager-metrics.md), lub za pomocą fizycznych metryk, takich jak użycie procesora CPU lub pamięci. W obu przypadkach usługi Service Fabric będzie monitorował zgłoszonych obciążenia metryki i oceni wyzwalacza okresowo, aby określić, czy skalowanie jest potrzebne.
+Wszystkie aktualnie obsługiwane wyzwalacze pracują z [metrykami obciążenia logicznego](service-fabric-cluster-resource-manager-metrics.md)lub z metrykami fizycznymi, takimi jak użycie procesora CPU lub pamięci. W obu przypadkach Service Fabric będzie monitorować zgłoszone obciążenie dla metryki i okresowo oblicza wyzwalacz, aby określić, czy jest konieczne skalowanie.
 
-Istnieją dwa mechanizmy, które są obecnie obsługiwane przez automatyczne skalowanie. Pierwsza z nich jest przeznaczona dla usługi bezstanowej lub kontenery, gdy automatyczne skalowanie odbywa się przez dodanie lub usunięcie [wystąpień](service-fabric-concepts-replica-lifecycle.md). Dla usług stanowych i bezstanowych, automatycznego skalowania można również przeprowadzić przez dodawanie lub usuwanie nazwanej [partycje](service-fabric-concepts-partitioning.md) usługi.
+Istnieją dwa mechanizmy, które są obecnie obsługiwane do skalowania automatycznego. Pierwszy z nich jest przeznaczony dla usług bezstanowych lub kontenerów, w których automatyczne skalowanie jest wykonywane przez dodawanie lub usuwanie [wystąpień](service-fabric-concepts-replica-lifecycle.md). W przypadku usług stanowych i bezstanowych automatyczne skalowanie można wykonać, dodając lub usuwając nazwane [partycje](service-fabric-concepts-partitioning.md) usługi.
 
 > [!NOTE]
-> Obecnie są obsługiwane tylko jedne zasady skalowania na usługę i tylko jeden wyzwalacz skalowania na zasady skalowania.
+> Obecnie jest obsługiwana tylko jedna zasada skalowania na usługę i tylko jeden wyzwalacz skalowania na zasady skalowania.
 
-## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Wyzwalacz obciążenia średni partycji o skalowanie na podstawie wystąpienia
-Pierwszy typ wyzwalacza opiera się na obciążenie wystąpień w partycji o bezstanowa usługa. Metryki obciążenia są najpierw wygładzone uzyskać obciążenia dla każdego wystąpienia partycji, a następnie te wartości są uśredniane we wszystkich wystąpieniach partycji. Istnieją trzy czynniki, które określają, kiedy będzie można skalować usługi:
+## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Średni wyzwalacz ładowania partycji z skalowaniem opartym na wystąpieniach
+Pierwszy typ wyzwalacza jest oparty na ładowaniu wystąpień w bezstanowej partycji usługi. Obciążenia metryk są najpierw wygładzone w celu uzyskania obciążenia dla każdego wystąpienia partycji, a następnie te wartości są uśredniane we wszystkich wystąpieniach partycji. Istnieją trzy czynniki, które określają, kiedy usługa będzie skalowana:
 
-* _Dolny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **przeskalować w pionie**. Jeśli średnie obciążenie wszystkie wystąpienia elementu partycji jest niższa niż ta wartość, usługa będzie skalowana w.
-* _Próg ładowania górny_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkie wystąpienia partycji jest wyższa niż ta wartość, następnie usługi będzie można skalować w poziomie.
-* _Interwału skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Gdy wyzwalacz jest zaznaczone, w razie potrzeby skalowania jest mechanizm zostaną zastosowane. Jeśli skalowanie nie jest wymagana, żadna akcja zostaną wykonane. W obu przypadkach wyzwalacz nie będą sprawdzane ponownie wygaśnięcia interwału skalowania ponownie.
+* _Dolny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **skalowana w programie**. Jeśli średnie obciążenie wszystkich wystąpień partycji jest mniejsze niż ta wartość, usługa zostanie przeskalowana w poziomie.
+* _Górny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkich wystąpień partycji jest wyższe niż ta wartość, usługa zostanie przeskalowana w poziomie.
+* _Interwał skalowania_ określa, jak często wyzwalacz zostanie sprawdzony. Po sprawdzeniu wyzwalacza, jeśli jest wymagany, mechanizm zostanie zastosowany. Jeśli skalowanie nie jest wymagane, nie zostanie podjęta żadna akcja. W obu przypadkach wyzwalacz nie zostanie ponownie sprawdzony przed ponownym upływem interwału skalowania.
 
-Tego wyzwalacza można używać tylko w przypadku usług bezstanowych (bezstanowe, kontenery lub usługi Service Fabric). W przypadku, gdy usługa jest podzielona na partycje, wyzwalacz jest szacowana osobno dla każdej partycji, a każda partycja będzie mieć określony mechanizm zastosowano niezależnie. W związku z tym w tym przypadku jest możliwe, że niektóre partycje usługi będzie być skalowana w poziomie, niektóre treść będzie skalowana w i niektóre nie będzie można skalować w ogóle w tym samym czasie, na podstawie ich obciążenia.
+Tego wyzwalacza można używać tylko w przypadku usług bezstanowych (kontenerów bezstanowych lub usług Service Fabricch). W przypadku gdy usługa ma wiele partycji, wyzwalacz jest obliczany osobno dla każdej partycji, a każda partycja będzie miała określony mechanizm. W tym przypadku jest możliwe, że niektóre partycje usługi będą skalowane w poziomie, niektóre będą skalowane w, a niektóre nie będą skalowane w tym samym czasie, na podstawie ich obciążenia.
 
-Tylko mechanizm, który może być używany z tego wyzwalacza jest PartitionInstanceCountScaleMechanism. Istnieją trzy czynniki, które określają, jak ten mechanizm jest stosowany:
-* _Skalowanie przyrostu_ Określa, ile wystąpień zostaną dodane lub usunięte po wyzwoleniu mechanizm.
-* _Maksymalna liczba wystąpień_ definiuje górny limit skalowania. Jeśli wiele wystąpień partycji osiągnie ten limit, następnie usługa będzie nie być skalowana w poziomie, niezależnie od obciążenia. Istnieje możliwość pominąć ten limit, określając wartość -1, a w tym, że treść będzie skalowana w przypadku usługi out możliwie (limit jest liczba węzłów, które są dostępne w klastrze).
-* _Minimalna liczba wystąpień_ określa dolną granicę dla skalowania. Jeśli wiele wystąpień partycji osiągnie ten limit, następnie usługa nie będzie skalowana w niezależnie od obciążenia.
+Jedynym mechanizmem, który może być używany z tym wyzwalaczem jest PartitionInstanceCountScaleMechanism. Istnieją trzy czynniki, które określają sposób stosowania tego mechanizmu:
+* _Przyrost skali_ określa liczbę wystąpień, które zostaną dodane lub usunięte, gdy mechanizm zostanie wyzwolony.
+* _Maksymalna liczba wystąpień_ definiuje górny limit skalowania. Jeśli liczba wystąpień partycji osiągnie ten limit, usługa nie będzie skalowana w poziomie, niezależnie od obciążenia. Można pominąć ten limit, określając wartość-1, a w takim przypadku usługa zostanie przeskalowana w poziomie możliwie największej liczby węzłów, które są dostępne w klastrze.
+* _Minimalna liczba wystąpień_ definiuje dolny limit skalowania. Jeśli liczba wystąpień partycji osiągnie ten limit, usługa nie będzie skalowana w przypadku, gdy jest to możliwe.
 
-## <a name="setting-auto-scaling-policy"></a>Ustawienie automatycznego skalowania zasad
+## <a name="setting-auto-scaling-policy"></a>Ustawianie zasad automatycznego skalowania
 
-### <a name="using-application-manifest"></a>Przy użyciu manifest aplikacji
+### <a name="using-application-manifest"></a>Korzystanie z manifestu aplikacji
 ``` xml
 <LoadMetrics>
 <LoadMetric Name="MetricB" Weight="High"/>
@@ -73,7 +64,7 @@ Tylko mechanizm, który może być używany z tego wyzwalacza jest PartitionInst
 </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>Za pomocą interfejsów API języka C#
+### <a name="using-c-apis"></a>Korzystanie C# z interfejsów API
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
@@ -94,7 +85,7 @@ serviceDescription.ScalingPolicies.Add(policy);
 serviceDescription.ServicePackageActivationMode = ServicePackageActivationMode.ExclusiveProcess
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
-### <a name="using-powershell"></a>Przy użyciu programu Powershell
+### <a name="using-powershell"></a>Przy użyciu programu PowerShell
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.PartitionInstanceCountScaleMechanism
 $mechanism.MinInstanceCount = 1
@@ -115,35 +106,35 @@ $scalingpolicies.Add($scalingpolicy)
 Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName" -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Wyzwalacz obciążenia średniej usług o skalowanie na podstawie partycji
-Drugi wyzwalacz zależy od obciążenia wszystkich partycji w jednej usłudze. Metryki obciążenia są najpierw wygładzone uzyskać obciążenia dla każdej repliki lub wystąpienie partycji. Dla usług stanowych obciążenia partycji jest uważana obciążenie związane z repliką podstawową, gdy w przypadku usług bezstanowych obciążenia partycji jest średnie obciążenie wszystkie wystąpienia partycji. Te wartości są we wszystkich partycjach usługi, a ta wartość jest używana do wyzwolenia automatycznego skalowania. Takie same jak w poprzednim mechanizmu, istnieją trzy czynniki, które określają, w przypadku skalowania usługi:
+## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Średni wyzwalacz obciążenia usługi z skalowaniem opartym na partycji
+Drugi wyzwalacz jest oparty na obciążeniu wszystkich partycji jednej usługi. Obciążenia metryk są najpierw wygładzone w celu uzyskania obciążenia dla każdej repliki lub wystąpienia partycji. W przypadku usług stanowych obciążenie partycji jest uznawane za załadowanie repliki podstawowej, natomiast w przypadku usług bezstanowych obciążenie partycji jest średnim obciążeniem wszystkich wystąpień partycji. Te wartości są uśredniane we wszystkich partycjach usługi, a ta wartość jest używana do wyzwalania skalowania automatycznego. Analogicznie jak w poprzednim mechanizmie, istnieją trzy czynniki, które określają, kiedy usługa będzie skalowana:
 
-* _Dolny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **przeskalować w pionie**. Jeśli średnie obciążenie wszystkich partycji usługi jest niższa niż ta wartość, usługa będzie skalowana w.
-* _Próg ładowania górny_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkich partycji usługi jest wyższa niż ta wartość, następnie usługi będzie można skalować w poziomie.
-* _Interwału skalowania_ Określa, jak często będą sprawdzane wyzwalacza. Gdy wyzwalacz jest zaznaczone, w razie potrzeby skalowania jest mechanizm zostaną zastosowane. Jeśli skalowanie nie jest wymagana, żadna akcja zostaną wykonane. W obu przypadkach wyzwalacz nie będą sprawdzane ponownie wygaśnięcia interwału skalowania ponownie.
+* _Dolny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **skalowana w programie**. Jeśli średnie obciążenie wszystkich partycji usługi jest mniejsze niż ta wartość, usługa zostanie przeskalowana w poziomie.
+* _Górny próg obciążenia_ jest wartością, która określa, kiedy usługa będzie **skalowana w poziomie**. Jeśli średnie obciążenie wszystkich partycji usługi jest wyższe niż ta wartość, usługa zostanie przeskalowana w poziomie.
+* _Interwał skalowania_ określa, jak często wyzwalacz zostanie sprawdzony. Po sprawdzeniu wyzwalacza, jeśli jest wymagany, mechanizm zostanie zastosowany. Jeśli skalowanie nie jest wymagane, nie zostanie podjęta żadna akcja. W obu przypadkach wyzwalacz nie zostanie ponownie sprawdzony przed ponownym upływem interwału skalowania.
 
-Tego wyzwalacza można używać zarówno usługi stanowe i bezstanowe. Tylko mechanizm, który może być używany z tego wyzwalacza jest AddRemoveIncrementalNamedPartitionScalingMechanism. Gdy usługa jest skalowana w poziomie, a następnie dodaje się nową partycję i podczas skalowania usługi w jednej z istniejących partycji jest usuwany. Ma ograniczeń, które będą sprawdzane, gdy usługa jest tworzony lub aktualizowany i tworzenia/aktualizacji usługi zakończy się niepowodzeniem, jeśli te warunki nie są spełnione:
-* Schemat partycji nazwanej, należy użyć dla usługi.
-* Nazwy partycji musi być liczby całkowite kolejnych, takie jak "0", "1"...
-* Pierwsza partycji musi mieć nazwę "0".
+Tego wyzwalacza można używać zarówno w przypadku stanowych, jak i bezstanowych usług. Jedynym mechanizmem, który może być używany z tym wyzwalaczem jest AddRemoveIncrementalNamedPartitionScalingMechanism. Gdy usługa jest skalowana w poziomie, dodawana jest Nowa partycja, a gdy usługa jest skalowana w jednej z istniejących partycji, zostanie usunięta. Istnieją ograniczenia, które będą sprawdzane po utworzeniu lub zaktualizowaniu usługi, a utworzenie usługi/aktualizacja zakończy się niepowodzeniem, jeśli te warunki nie zostaną spełnione:
+* Dla usługi należy użyć schematu nazwanej partycji.
+* Nazwy partycji muszą być kolejnymi liczbami całkowitymi, takimi jak "0", "1",...
+* Pierwsza nazwa partycji musi mieć wartość "0".
 
-Na przykład jeśli usługa jest początkowo utworzony ze trzy partycje, możliwość jedyne prawidłowe nazwy partycji jest "0", "1" i "2".
+Na przykład, jeśli usługa jest początkowo tworzona z trzema partycjami, jedyną prawidłową możliwością dla nazw partycji są "0", "1" i "2".
 
-Rzeczywiste automatycznego skalowania operacji, która jest wykonywana będzie uwzględniać ta oraz schemat nazewnictwa:
-* Jeśli bieżące partycje usługi są nazywane "0", "1" i "2", następnie partycji, który zostanie dodany do skalowania w poziomie będzie miał nazwę "3".
-* Jeśli bieżące partycje usługi są nazywane "0", "1" i "2", partycji, która zostanie usunięta dla skalowania w jest partycja o nazwie "2".
+Wykonywana operacja automatycznego skalowania będzie uwzględniać również ten schemat nazewnictwa:
+* Jeśli bieżące partycje usługi mają nazwy "0", "1" i "2", wówczas partycja, która zostanie dodana do skalowania, będzie mieć nazwę "3".
+* Jeśli bieżące partycje usługi mają nazwy "0", "1" i "2", wówczas partycja, która zostanie usunięta do skalowania w programie, jest partycją o nazwie "2".
 
-Takie same jak w przypadku mechanizm, który używa skalowania, dodając lub usuwając wystąpienia, istnieją trzy parametry, które określają, jak ten mechanizm jest stosowany:
-* _Skalowanie przyrostu_ Określa, ile partycje zostaną dodane lub usunięte po wyzwoleniu mechanizm.
-* _Maksymalna liczba partycji_ definiuje górny limit skalowania. Jeśli liczba partycji usługi osiągnie ten limit, następnie usługa będzie nie być skalowana w poziomie, niezależnie od obciążenia. Istnieje możliwość pominąć ten limit, określając wartość -1, a w tym, że treść będzie skalowana w przypadku usługi out możliwie (limit wynosi Rzeczywista wydajność klastra).
-* _Minimalna liczba wystąpień_ określa dolną granicę dla skalowania. Jeśli liczba partycji usługi osiągnie ten limit, następnie usługa nie będzie skalowana w niezależnie od obciążenia.
+Analogicznie jak w przypadku mechanizmu, który używa skalowania poprzez dodawanie lub usuwanie wystąpień, istnieją trzy parametry, które określają sposób stosowania tego mechanizmu:
+* _Przyrost skali_ określa, ile partycji zostanie dodanych i usuniętych po wyzwoleniu mechanizmu.
+* _Maksymalna liczba partycji_ definiuje górny limit skalowania. Jeśli liczba partycji usługi osiągnie ten limit, usługa nie będzie skalowana w poziomie, niezależnie od obciążenia. Można pominąć ten limit, określając wartość-1, a w takim przypadku usługa zostanie przeskalowana w poziomie możliwie największej liczby (limit jest rzeczywistą pojemnością klastra).
+* _Minimalna liczba wystąpień_ definiuje dolny limit skalowania. Jeśli liczba partycji usługi osiągnie ten limit, wówczas usługa nie będzie skalowana w przypadku, gdy jest to możliwe.
 
 > [!WARNING] 
-> Stosowania AddRemoveIncrementalNamedPartitionScalingMechanism usługi stanowej usługi Service Fabric spowoduje dodanie lub usunięcie partycji **bez powiadomienia i ostrzeżenie**. Ponowny podział danych nie zostanie wykonane po wyzwoleniu mechanizm skalowania. W przypadku, gdy operacja skalowania w górę, nowe partycje będzie pusty, a w przypadku skalowania w dół operacji **partycji zostaną usunięte wraz z danymi, które zawiera**.
+> Gdy AddRemoveIncrementalNamedPartitionScalingMechanism jest używany z usługami stanowymi, Service Fabric doda lub usunie partycje **bez powiadomienia lub ostrzeżenia**. Ponowne Partycjonowanie danych nie zostanie wykonane, gdy zostanie wyzwolony mechanizm skalowania. W przypadku operacji skalowania w górę nowe partycje będą puste i w przypadku operacji skalowania w dół **partycja zostanie usunięta wraz ze wszystkimi danymi, które zawiera**.
 
-## <a name="setting-auto-scaling-policy"></a>Ustawienie automatycznego skalowania zasad
+## <a name="setting-auto-scaling-policy"></a>Ustawianie zasad automatycznego skalowania
 
-### <a name="using-application-manifest"></a>Przy użyciu manifest aplikacji
+### <a name="using-application-manifest"></a>Korzystanie z manifestu aplikacji
 ``` xml
 <ServiceScalingPolicies>
     <ScalingPolicy>
@@ -152,7 +143,7 @@ Takie same jak w przypadku mechanizm, który używa skalowania, dodając lub usu
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>Za pomocą interfejsów API języka C#
+### <a name="using-c-apis"></a>Korzystanie C# z interfejsów API
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
@@ -171,7 +162,7 @@ serviceUpdate.ScalingPolicies = new List<ScalingPolicyDescription>;
 serviceUpdate.ScalingPolicies.Add(policy);
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), serviceUpdate);
 ```
-### <a name="using-powershell"></a>Przy użyciu programu Powershell
+### <a name="using-powershell"></a>Przy użyciu programu PowerShell
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
@@ -194,7 +185,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="auto-scaling-based-on-resources"></a>Automatyczne skalowanie na podstawie zasobów
 
-Aby włączyć usługę monitor zasobów w celu skalowania na podstawie rzeczywistych zasobów
+Aby umożliwić skalowanie usługi Monitor zasobów na podstawie rzeczywistych zasobów
 
 ``` json
 "fabricSettings": [
@@ -204,8 +195,8 @@ Aby włączyć usługę monitor zasobów w celu skalowania na podstawie rzeczywi
     "ResourceMonitorService"
 ],
 ```
-Istnieją dwie metryki, które reprezentują rzeczywistych zasobów fizycznych. Jeden z nich jest servicefabric: _CpuCores, którą reprezentują rzeczywiste użycie procesora cpu (dzięki czemu 0,5 reprezentuje wysokości równej połowie rdzenia), a drugi ma rozmiar servicefabric: / _MemoryInMB, który reprezentuje użycie pamięci w MB.
-ResourceMonitorService jest odpowiedzialny za śledzenie użycia procesora cpu i pamięci z usług użytkownika. Ta usługa zostanie zastosowana ważona średnia ruchoma aby uwzględnić potencjalnych wartości szczytowych krótkotrwałe. Monitorowanie zasobów jest obsługiwane dla aplikacji konteneryzowanych oraz niekonteneryzowanych na Windows i konteneryzowanych z nich w systemie Linux. Automatyczne skalowanie zasobów jest włączone tylko dla usług aktywowane w [model procesu wyłączne](service-fabric-hosting-model.md#exclusive-process-model).
+Istnieją dwie metryki reprezentujące rzeczywiste zasoby fizyczne. Jednym z nich jest element servicefabric:/_CpuCores reprezentujący rzeczywiste użycie procesora CPU (więc 0,5 reprezentuje połowę rdzenia), a drugi to w przypadku elementu servicefabric:/_MemoryInMB, który reprezentuje użycie pamięci w MB.
+ResourceMonitorService jest odpowiedzialny za śledzenie użycia procesora i pamięci przez usługi użytkownika. Ta usługa będzie stosowała ważoną średnią przesunięcia w celu uwzględnienia potencjalnych gwałtownych skoków. Monitorowanie zasobów jest obsługiwane w przypadku aplikacji kontenerowych i niekontenerowych w systemie Windows oraz dla kontenerów w systemie Linux. Skalowanie automatyczne na zasobach jest włączone tylko dla usług aktywowanych w [modelu procesów wyłącznych](service-fabric-hosting-model.md#exclusive-process-model).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o [skalowalności aplikacji](service-fabric-concepts-scalability.md).

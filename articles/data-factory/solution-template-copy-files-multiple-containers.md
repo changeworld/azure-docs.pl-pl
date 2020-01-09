@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c4c26ba163f83483b3eb48e51d91f9a919a887c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927700"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439850"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopiowanie plików z wielu kontenerów za pomocą Azure Data Factory
 
@@ -34,9 +34,11 @@ Szablon zawiera trzy działania:
 - Instrukcja **foreach** pobiera listę kontenerów z działania **GetMetadata** , a następnie wykonuje iterację na liście i przekazuje poszczególne kontenery do działania kopiowania.
 - **Kopiuj** kopiuje każdy kontener ze źródłowego magazynu magazynu do magazynu docelowego.
 
-Szablon definiuje dwa parametry:
-- *Sourcefilepath* to ścieżka magazynu źródła danych, w którym można uzyskać listę kontenerów. W większości przypadków ścieżka jest katalogiem głównym, który zawiera wiele folderów kontenerów. Wartość domyślna tego parametru to `/`.
-- *DestinationFilePath* to ścieżka, w której pliki zostaną skopiowane do magazynu docelowego. Wartość domyślna tego parametru to `/`.
+Szablon definiuje następujące parametry:
+- *SourceFileFolder* to ścieżka folderu magazynu źródła danych, w której można uzyskać listę kontenerów. Ścieżka jest katalogiem głównym, który zawiera wiele folderów kontenerów. Wartość domyślna tego parametru to `sourcefolder`.
+- *SourceFileDirectory* to ścieżka podfolderu w katalogu głównym magazynu źródła danych. Wartość domyślna tego parametru to `subfolder`.
+- *DestinationFileFolder* to ścieżka folderu, w której pliki zostaną skopiowane do magazynu docelowego. Wartość domyślna tego parametru to `destinationfolder`.
+- *DestinationFileDirectory* to ścieżka podfolderu, w którym pliki zostaną skopiowane do magazynu docelowego. Wartość domyślna tego parametru to `subfolder`.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 

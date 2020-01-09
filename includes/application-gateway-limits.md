@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 3b692ed697d69deca4c50a0595cc54251bac4990
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74174989"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75662937"
 ---
 | Zasób | Domyślny/maksymalny limit | Uwaga |
 | --- | --- | --- |
@@ -36,7 +36,7 @@ ms.locfileid: "74174989"
 | Maksymalna długość adresu URL|32 KB| |
 | Maksymalny rozmiar nagłówka dla protokołu HTTP/2 |4 KB| |
 | Maksymalny rozmiar przekazywania pliku, standardowa |2 GB | |
-| Maksymalny rozmiar przekazywania pliku WAF |Średnie bramy WAF, 100 MB<br>Duże WAFe bramy, 500 MB| |
+| Maksymalny rozmiar przekazywania pliku WAF |bramy WAF o rozmiarze V1, 100 MB<br>Duże bramy WAF w wersji 1, 500 MB<br>v2 WAF, 750 MB| |
 | Limit rozmiaru treści WAF, bez plików|128 KB||
 | Maksymalna liczba reguł niestandardowych WAF|100||
 | Maksymalne wykluczenia WAF|100||

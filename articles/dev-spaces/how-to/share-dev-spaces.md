@@ -3,14 +3,14 @@ title: Jak udostępnić Azure Dev Spaces
 services: azure-dev-spaces
 ms.date: 05/11/2018
 ms.topic: conceptual
-description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
+description: Dowiedz się, jak za pomocą Azure Dev Spaces udostępniać miejsce deweloperskie w usłudze Azure Kubernetes Service innym członkom zespołu
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 2c85625a4f61b701bc1e8b0a4a06f71dc0989ce0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e3a18ea205eda5617eab094046ec6536e82d113
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438433"
 ---
 # <a name="share-azure-dev-spaces"></a>Udostępnianie obszarów Azure Dev Spaces
 

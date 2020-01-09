@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598119"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690992"
 ---
 # <a name="list-blob-containers-with-net"></a>Wyświetlanie listy kontenerów obiektów BLOB przy użyciu platformy .NET
 
@@ -49,7 +49,8 @@ Aby zwrócić metadane kontenera z wynikami, określ wartość **metadanych** dl
 Poniższy przykład asynchronicznie wyświetla listę kontenerów na koncie magazynu, które zaczynają się od określonego prefiksu. Przykład zawiera listę kontenerów z przyrostem 5 wyników w czasie i używa tokenu kontynuacji w celu uzyskania następnego segmentu wyników. Przykład zwraca również metadane kontenera z wynikami.
 
 ```csharp
-private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
+private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
+                                                        string prefix)
 {
     Console.WriteLine("List all containers beginning with prefix {0}, plus container metadata:", prefix);
 

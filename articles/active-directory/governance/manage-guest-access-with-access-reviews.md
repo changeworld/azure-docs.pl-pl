@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie dostępem gościa za pomocą przeglądów dostępu — Azure Active Directory | Microsoft Docs
+title: Zarządzanie dostępem gościa za pomocą przeglądów dostępu — Azure AD
 description: Zarządzanie użytkownikami-gość jako członkami grupy lub przypisanymi do aplikacji przy użyciu Azure Active Directory przeglądy dostępu
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a982b97bcef6a24f026bf6ad2943661db18d6af0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499472"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422475"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem gościa za pomocą przeglądów dostępu w usłudze Azure AD
 
@@ -117,7 +117,7 @@ W niektórych organizacjach Goście mogą nie wiedzieć o członkostwie w grupac
 
 5. Usuń dostęp gościa dla Gości, którzy mieli odmowę, nie dokończył przeglądu lub nie zaakceptował wcześniej zaproszenia. Jeśli niektórzy Goście są kontaktami, którzy zostali wybrani do wzięcia udziału w recenzji lub nie zaakceptowali wcześniej zaproszenia, możesz wyłączyć swoje konta za pomocą Azure Portal lub programu PowerShell. Jeśli gość nie potrzebuje już dostępu i nie jest osobą kontaktową, możesz usunąć swój obiekt użytkownika z katalogu za pomocą Azure Portal lub PowerShell, aby usunąć obiekt użytkownika-gościa.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md)
 

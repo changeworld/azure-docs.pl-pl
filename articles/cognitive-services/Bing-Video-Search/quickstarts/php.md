@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 481bc700f86dfd8a28c074134fd5dcc85bb748c4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378609"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448361"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST wyszukiwanie wideo Bing i języka PHP
 
@@ -37,7 +37,7 @@ Zapoznaj się [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api
 1. Upewnij się, że w Twoim pliku `php.ini` włączoną obsługę bezpiecznego protokołu HTTP, jak opisano w komentarzu do tego kodu.
 2. Utwórz nowy projekt PHP w ulubionym środowisku IDE lub edytorze.
 3. Dodaj kod przedstawiony poniżej.
-4. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
+4. Zastąp wartość `$accessKey` kluczem dostępu właściwym dla Twojej subskrypcji. `$endpoint` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
 5. Uruchom program.
 
 ```php
@@ -215,6 +215,6 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
  [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)

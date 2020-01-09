@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Language Understanding bot Node. js v4'
 titleSuffix: Azure Cognitive Services
-description: Przy użyciu platformy Node.js utwórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa aplikacji Human Resources, aby szybko wdrożyć rozwiązanie bota. Bot jest tworzony za pomocą platformy Bot Framework w wersji 4 i bota aplikacji internetowej platformy Azure.
+description: Korzystając ze środowiska Node. js, skompiluj bot z integracją języka (LUIS) w tym samouczku. Ten czatbot używa aplikacji Human Resources, aby szybko wdrożyć rozwiązanie bota. Bot jest tworzony za pomocą platformy Bot Framework w wersji 4 i bota aplikacji internetowej platformy Azure.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447996"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Samouczek: używanie bot aplikacji sieci Web w programie Node. js przy użyciu Language Understanding 
 
@@ -56,9 +56,9 @@ Użyj środowiska Node. js, aby skompilować bot z integracją z funkcją interp
     |Nazwa aplikacji|Nazwa jest używana jako domena podrzędna, gdy bot jest wdrażany w chmurze (na przykład humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, na przykład `luis-nodejs-bot-johnsmith`|
     |Szablon bota|Ustawienia struktury bota — zobacz następną tabelę|
     |Lokalizacja aplikacji usługi LUIS|Musi być taka sama jak region zasobu usługi LUIS|`westus`|
-    |Plan/Lokalizacja usługi App Service|Nie zmieniaj podanej wartości domyślnej.|
+    |Plan usługi App Service/lokalizacja|Nie zmieniaj podanej wartości domyślnej.|
     |Application Insights|Nie zmieniaj podanej wartości domyślnej.|
-    |Identyfikator i hasło aplikacji firmy Microsoft|Nie zmieniaj podanej wartości domyślnej.|
+    |Identyfikator aplikacji firmy Microsoft i hasło|Nie zmieniaj podanej wartości domyślnej.|
 
 1. W **szablonie bot**wybierz poniższe opcje, a następnie wybierz przycisk **Wybierz** w obszarze te ustawienia:
 
@@ -81,11 +81,11 @@ Proces tworzenia usługi bot tworzy również nową aplikację LUIS z intencjami
 |Intencje usługi LUIS bota podstawowego|przykładowa wypowiedź|
 |--|--|
 |Lot z książki|`Travel to Paris`|
-|Cancel|`bye`|
+|Anuluj|`bye`|
 |Getpogoda|`what's the weather like?`|
 |Brak|Cokolwiek spoza domeny aplikacji.|
 
-## <a name="test-the-bot-in-web-chat"></a>Testowanie bot w rozmowie w sieci Web
+## <a name="test-the-bot-in-web-chat"></a>Testowanie bota w czatów internetowych
 
 1. Mimo że w Azure Portal dla nowego bot, wybierz pozycję **Testuj w rozmowie w sieci Web**. 
 1. W polu tekstowym **wpisz wiadomość** wpisz tekst `Book a flight from Seattle to Berlin tomorrow`. Bot reaguje na weryfikację, aby zaksięgować lot. 

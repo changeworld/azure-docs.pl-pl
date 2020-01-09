@@ -4,15 +4,15 @@ description: Skonfiguruj ustawienia, które mają zastosowanie do całego środo
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 36208b4662242b37c135eaffc745a819c11fa015
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 42a06724274288955b11c3daf9cbf33d72ddf75d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430499"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Niestandardowe ustawienia konfiguracji dla środowisk App Service Environment
 ## <a name="overview"></a>Przegląd
@@ -56,6 +56,19 @@ Usługę App Service Environment można również aktualizować przy użyciu wit
 
 Bez względu na to, jak prześlesz zmianę, jej zastosowanie potrwa około 30 minut pomnożonych przez liczbę frontonów w środowisku App Service Environment.
 Jeśli na przykład środowisko App Service Environment ma cztery frontony, kończenie aktualizacji konfiguracji potrwa około dwie godziny. W trakcie wdrażania żadne inne operacje skalowania ani zmian konfiguracji nie mogą być wykonywane w środowisku App Service Environment.
+
+## <a name="enable-internal-encryption"></a>Włącz szyfrowanie wewnętrzne
+
+App Service Environment działa jako system czarnego pudełka, w którym nie są widoczne wewnętrzne składniki lub komunikacja w systemie. Aby zapewnić większą przepływność, szyfrowanie nie jest domyślnie włączone między składnikami wewnętrznymi. System jest zabezpieczony, ponieważ ruch jest całkowicie niedostępny do monitorowania lub dostępu. Jeśli istnieje wymóg zgodności, który wymaga pełnego szyfrowania ścieżki danych od końca do końca, istnieje możliwość włączenia tego elementu przy użyciu clusterSetting.  
+
+        "clusterSettings": [
+            {
+                "name": "InternalEncryption",
+                "value": "1"
+            }
+        ],
+ 
+Po włączeniu InternalEncryption clusterSetting może mieć wpływ na wydajność systemu. Po wprowadzeniu zmiany w celu włączenia InternalEncryption środowisko ASE będzie w stanie niestabilnym, dopóki zmiana nie zostanie w pełni rozpropagowana. Zakończenie propagacji zmiany może potrwać kilka godzin, w zależności od liczby wystąpień w środowisku ASE. Zdecydowanie zalecamy, aby nie włączać tego na platformie ASE, gdy jest ona używana. Jeśli musisz włączyć tę funkcję w aktywnie używanym środowisku ASE, zdecydowanie zalecamy przekierowanie ruchu do środowiska kopii zapasowej do momentu zakończenia operacji. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>Wyłączanie protokołów TLS 1.0 i TLS 1.1
 

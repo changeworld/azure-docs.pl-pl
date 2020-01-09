@@ -4,14 +4,14 @@ description: Dowiedz się, jak skalować wystąpienie usługi Azure Signal Servi
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/11/2019
 ms.author: zhshang
-ms.openlocfilehash: 0c4f91ee9cea5e8b13ecfedafffdc1715fc242c2
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464180"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659291"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak skalować wystąpienie usługi Azure sygnalizujące?
 W tym artykule opisano sposób skalowania wystąpienia usługi Azure Signal Service. Istnieją dwa scenariusze skalowania, skalowanie w górę i w poziomie.
@@ -19,12 +19,12 @@ W tym artykule opisano sposób skalowania wystąpienia usługi Azure Signal Serv
 * [Skalowanie w górę](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): uzyskiwanie większej liczby jednostek, połączeń, wiadomości i innych. Skalowanie w górę przez zmianę warstwy cenowej z bezpłatna na Standard.
 * [Skalowanie w poziomie](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Zwiększ liczbę jednostek sygnalizujących. Możesz skalować w poziomie do maksymalnie 100 jednostek.
 
-Zastosowanie ustawień skalowania może potrwać kilka minut. Nie wymagają one zmiany kodu ani ponownego wdrażania aplikacji serwera.
+Zastosowanie ustawień skalowania może potrwać kilka minut. W rzadkich przypadkach może upłynąć około 30 minut. Nie wymagają one zmiany kodu ani ponownego wdrażania aplikacji serwera.
 
 Aby uzyskać informacje na temat cen i pojemności poszczególnych usług sygnalizujących, zobacz [szczegóły cennika usługi Azure sygnalizującej](https://azure.microsoft.com/pricing/details/signalr-service/).  
 
 > [!NOTE]
-> Zmiana usługi sygnalizującej z warstwy **bezpłatna** na warstwę **standardowa** lub odwrotnie, publiczny adres IP usługi zostanie zmieniony i zwykle trwa 3-60 minut, aby PROPAGOWAĆ zmianę do serwerów DNS w całym Internecie. Usługa może być nieosiągalna, zanim system DNS zostanie zaktualizowany. Zazwyczaj nie zaleca się zbyt częstej zmiany warstwy cenowej.
+> Zmiana usługi sygnalizującej z warstwy **bezpłatna** na warstwę **standardowa** lub odwrotnie, publiczny adres IP usługi zostanie zmieniony i zwykle trwa 30-60 minut, aby PROPAGOWAĆ zmianę do serwerów DNS w całym Internecie. Usługa może być nieosiągalna, zanim system DNS zostanie zaktualizowany. Zazwyczaj nie zaleca się zbyt częstej zmiany warstwy cenowej.
 
 
 ## <a name="scale-on-azure-portal"></a>Skalowanie na Azure Portal
@@ -33,7 +33,7 @@ Aby uzyskać informacje na temat cen i pojemności poszczególnych usług sygnal
 
 2. Z menu po lewej stronie usługi sygnalizującego wybierz pozycję **Skala**.
    
-3. Wybierz warstwę cenową, a następnie kliknij pozycję **Wybierz**. Należy ustawić liczbę jednostek dla warstwy **standardowa** .
+3. Wybierz warstwę cenową, a następnie kliknij pozycję **Wybierz**. Ustaw liczbę jednostek dla warstwy **standardowa** .
    
     ![Skalowanie w portalu](./media/signalr-howto-scale/signalr-howto-scale.png)
 
@@ -41,7 +41,7 @@ Aby uzyskać informacje na temat cen i pojemności poszczególnych usług sygnal
 
 ## <a name="scale-using-azure-cli"></a>Skalowanie przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Ten skrypt tworzy nowy zasób usługi sygnalizującego dla warstwy **bezpłatna** i nowej grupy zasobów, a następnie skaluje go do warstwy **standardowa** . 
+Ten skrypt tworzy nowy zasób usługi sygnalizującego dla warstwy **bezpłatna** i nowej grupy zasobów, a następnie skaluje je do warstwy **standardowa** . 
 
 ```azurecli-interactive
 #!/bin/bash
@@ -81,7 +81,7 @@ Zanotuj rzeczywistą nazwę wygenerowaną dla nowej grupy zasobów. Tej nazwy gr
 
 Aby uzyskać szczegółowe informacje, takie jak uwzględnione komunikaty i połączenia dla każdej warstwy cenowej, zobacz [szczegóły cennika usługi sygnalizującego](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-Aby zapoznać się z tabelą limity usług, przydziałów i ograniczeń w poszczególnych warstwach, zobacz [limity usługi sygnałów](../azure-subscription-service-limits.md#azure-signalr-service-limits).
+Aby zapoznać się z tabelą limity usług, przydziałów i ograniczeń w poszczególnych warstwach, zobacz [limity usługi sygnałów](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits).
 
 ## <a name="next-steps"></a>Następne kroki
 

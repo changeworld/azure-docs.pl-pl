@@ -1,5 +1,5 @@
 ---
-title: Diagnozowanie i rozwiązywanie problemów z kwerendą podczas korzystania z Azure Cosmos DB
+title: Rozwiązywanie problemów z kwerendą podczas korzystania z Azure Cosmos DB
 description: Dowiedz się, jak identyfikować, diagnozować i rozwiązywać problemy z Azure Cosmos DB zapytań SQL.
 author: ginamr
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184708"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444724"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Rozwiązywanie problemów z wydajnością zapytań dla Azure Cosmos DB
 W tym artykule opisano sposób identyfikowania, diagnozowania i rozwiązywania problemów z Azure Cosmos DB zapytań SQL. Aby osiągnąć optymalną wydajność zapytań Azure Cosmos DB, wykonaj poniższe kroki rozwiązywania problemów. 
@@ -26,7 +26,7 @@ Najniższe możliwe opóźnienie jest realizowane przez zagwarantowanie, że apl
 
 ## <a name="log-the-executed-sql-query"></a>Rejestruj wykonane zapytanie SQL 
 
-Wykonane zapytanie SQL można zarejestrować na koncie magazynu lub w tabeli dzienników diagnostycznych. [Dzienniki zapytań SQL za pomocą dzienników diagnostycznych](monitor-cosmos-db.md#diagnostic-settings) umożliwiają rejestrowanie zasłoniętego zapytania na wybranym koncie magazynu. Pozwala to na wyświetlenie dzienników i znalezienie zapytania, które używa wyższych jednostek ru. Później można użyć identyfikatora działania, aby dopasować rzeczywiste zapytanie w QueryRuntimeStatistics. Zapytanie jest ukrywane ze względów bezpieczeństwa i nazw parametrów zapytania, a ich wartości w klauzulach WHERE są inne niż rzeczywiste nazwy i wartości. Możesz użyć rejestrowania na koncie magazynu, aby zachować długoterminowe przechowywanie wykonanych zapytań.  
+Wykonane zapytanie SQL można zarejestrować na koncie magazynu lub w tabeli dzienników diagnostycznych. [Dzienniki zapytań SQL za pomocą dzienników diagnostycznych](cosmosdb-monitor-resource-logs.md) umożliwiają rejestrowanie zasłoniętego zapytania na wybranym koncie magazynu. Pozwala to na wyświetlenie dzienników i znalezienie zapytania, które używa wyższych jednostek ru. Później można użyć identyfikatora działania, aby dopasować rzeczywiste zapytanie w QueryRuntimeStatistics. Zapytanie jest ukrywane ze względów bezpieczeństwa i nazw parametrów zapytania, a ich wartości w klauzulach WHERE są inne niż rzeczywiste nazwy i wartości. Możesz użyć rejestrowania na koncie magazynu, aby zachować długoterminowe przechowywanie wykonanych zapytań.  
 
 ## <a name="log-query-metrics"></a>Metryki zapytań dziennika
 
@@ -117,7 +117,7 @@ Poniżej znajduje się lista funkcji ciągów, które mogą korzystać z indeksu
   * Jeśli to możliwe, twórz zapytania korzystające z filtru klucza partycji.
   * Aby osiągnąć wykonywanie zapytań, należy unikać wywoływania GÓRNych/NIŻSZYch w filtrze. Zamiast tego należy znormalizować wielkość liter podczas wstawiania. Dla każdej wartości Wstaw wartość z pożądaną wielkością liter lub Wstaw zarówno oryginalną, jak i wartość z pożądaną wielkością liter. 
 
-    Na przykład:
+    Przykład:
     
     ```sql
 

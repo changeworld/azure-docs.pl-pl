@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823307"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691014"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna z pojedynczymi, w puli i wystąpieniami baz danych w Azure SQL Database
 
@@ -29,7 +29,7 @@ Replikacja transakcyjna jest przydatna w następujących scenariuszach:
 - Utrzymuj synchronizację kilku rozproszonych baz danych.
 - Migrowanie baz danych z jednego SQL Server lub wystąpienia zarządzanego do innej bazy danych przez ciągłe publikowanie zmian.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Najważniejsze składniki replikacji transakcyjnej przedstawiono na poniższej ilustracji:  
 
@@ -80,13 +80,14 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Macierz obsługi dla baz danych wystąpień i systemów lokalnych
   Macierz obsługi replikacji dla baz danych wystąpień jest taka sama jak dla SQL Server lokalnego. 
   
-  | **Wydawca**   | **Dystrybutor** | **Subscriber** |
+| **Wydawca**   | **Dystrybutor** | **Subscriber** |
 | :------------   | :-------------- | :------------- |
-| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
-| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
-| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
-| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
-| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
+| SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2019 <br/>SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2019 <br/> SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |  SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>Wymagania
@@ -95,11 +96,13 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 - Udział konta usługi Azure Storage dla katalogu roboczego używanego przez replikację. 
 - Port 445 (ruch wychodzący TCP) musi być otwarty w regułach zabezpieczeń podsieci wystąpienia zarządzanego w celu uzyskania dostępu do udziału plików platformy Azure. 
 - Port 1433 (ruch wychodzący TCP) musi zostać otwarty, jeśli Wydawca/dystrybutor znajduje się w wystąpieniu zarządzanym, a subskrybent jest w środowisku lokalnym.
+- Wszystkie typy uczestników replikacji (wydawcy, dystrybutora, subskrybent ściągania i wypychania) mogą być umieszczane w wystąpieniach zarządzanych, ale Wydawca i dystrybutor muszą być zarówno w chmurze, jak i w środowisku lokalnym.
+- Jeśli Wydawca, dystrybutor i/lub subskrybent istnieje w różnych sieciach wirtualnych, Komunikacja równorzędna sieci VPN musi być ustanowiona między poszczególnymi jednostkami, na przykład w przypadku komunikacji równorzędnej VPN między wydawcą i dystrybutorem, a/lub komunikacji równorzędnej między dystrybutorem a subskrybentem. 
 
 
 >[!NOTE]
 > - W przypadku nawiązywania połączenia z plikiem usługi Azure Storage może wystąpić błąd 53, jeśli port wychodzącej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) 445 jest blokowany, gdy dystrybutor jest bazą danych wystąpienia, a subskrybent jest w środowisku lokalnym. Aby rozwiązać ten problem [, zaktualizuj sieciowej grupy zabezpieczeń sieci wirtualnej](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) . 
-> - Jeśli bazy danych wydawcy i dystrybutora w wystąpieniach zarządzanych używają [grup Autotryb failover](sql-database-auto-failover-group.md), administrator wystąpienia zarządzanego musi [usunąć wszystkie publikacje na starym serwerze podstawowym i skonfigurować je ponownie na nowym serwerze podstawowym po przejściu w tryb failover](sql-database-managed-instance-transact-sql-information.md#replication).
+
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Porównywanie synchronizacji danych z replikacją transakcyjną
 
@@ -137,13 +140,53 @@ Wydawca i dystrybutor są konfigurowane w dwóch zarządzanych wystąpieniach. I
  
 W tej konfiguracji Azure SQL Database (pojedyncza, w puli i baza danych wystąpienia) jest subskrybentem. Ta konfiguracja obsługuje migrację z lokalizacji lokalnej na platformę Azure. Jeśli subskrybent znajduje się w jednej lub puli baz danych, musi być w trybie push.  
 
+## <a name="with-failover-groups"></a>Z grupami trybu failover
+
+W przypadku włączenia replikacji geograficznej w wystąpieniu **wydawcy** lub **dystrybutora** w [grupie trybu failover](sql-database-auto-failover-group.md)administrator wystąpienia zarządzanego musi oczyścić wszystkie publikacje na starym serwerze podstawowym i ponownie skonfigurować je na nowym serwerze podstawowym po przejściu w tryb failover. W tym scenariuszu są niezbędne następujące działania:
+
+1. Zatrzymaj wszystkie zadania replikacji uruchomione w bazie danych, jeśli istnieją.
+2. Porzuć metadane subskrypcji z wydawcą, uruchamiając następujący skrypt w bazie danych wydawcy:
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. Usuwanie metadanych subskrypcji z subskrybenta. Uruchom następujący skrypt na wystąpieniu bazy danych subskrypcji na subskrybencie:
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. Wymuszone porzucenie wszystkich obiektów replikacji z wydawcy przez uruchomienie następującego skryptu w opublikowanej bazie danych:
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. Wymuszone porzucanie starego dystrybutora z oryginalnego wystąpienia podstawowego (w przypadku powrotu po awarii do starego elementu głównego, który używa dystrybutora). Uruchom następujący skrypt w bazie danych Master w starym wystąpieniu zarządzanym dystrybutora:
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
+
+W przypadku włączenia replikacji geograficznej w wystąpieniu **subskrybenta** w grupie trybu failover publikacja powinna być skonfigurowana w taki sposób, aby nawiązać połączenie z punktem końcowym odbiornika grupy trybu failover dla wystąpienia zarządzanego przez subskrybenta. W przypadku przełączenia w tryb failover kolejne akcje podejmowane przez administratora wystąpienia zarządzanego są zależne od typu trybu failover, który wystąpił: 
+
+- W przypadku przejścia w tryb failover bez utraty danych replikacja będzie działać po przejściu do trybu failover. 
+- W przypadku pracy awaryjnej z utratą danych replikacja również będzie działała. Spowoduje to ponowną replikację utraconych zmian. 
+- W przypadku przejścia w tryb failover z utratą danych, ale utrata danych jest poza okresem przechowywania bazy danych dystrybucji, administrator wystąpienia zarządzanego będzie musiał ponownie zainicjować bazę danych subskrypcji. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-1. [Skonfiguruj replikację między dwoma wystąpieniami zarządzanymi](replication-with-sql-database-managed-instance.md). 
-1. [Utwórz publikację](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-1. [Utwórz subskrypcję wypychaną](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , używając nazwy serwera Azure SQL Database jako subskrybenta (na przykład `N'azuresqldbdns.database.windows.net` i nazwy Azure SQL Database jako docelowej bazy danych (na przykład **AdventureWorks**. )
-1. Informacje o [ograniczeniach replikacji transakcyjnej dla wystąpienia zarządzanego](sql-database-managed-instance-transact-sql-information.md#replication)
+- [Skonfiguruj replikację między wydawcą a subskrybentem](replication-with-sql-database-managed-instance.md)
+- [Skonfiguruj replikację między wydawcą MI, dystrybutorem i SQL Server subskrybentem](sql-database-managed-instance-configure-replication-tutorial.md)
+- [Utwórz publikację](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
+- [Utwórz subskrypcję wypychaną](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , używając nazwy serwera Azure SQL Database jako subskrybenta (na przykład `N'azuresqldbdns.database.windows.net` i nazwy Azure SQL Database jako docelowej bazy danych (na przykład **AdventureWorks**. )
+
+
+Aby uzyskać więcej informacji na temat konfigurowania replikacji transakcyjnej, zobacz następujące samouczki:
 
 
 

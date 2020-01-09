@@ -6,17 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 274a20f84b978b38a284d1feb315d6621b7d3ccd
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414332"
 ---
 # <a name="cluster-tuning"></a>Dostrajanie klastra
 
-
-Większość klastrów vFXT może korzystać z niestandardowych ustawień wydajności. Te ustawienia pomagają, aby klaster działał najlepiej z określonym przepływem pracy, zestawem danych i narzędziami. 
+Większość klastrów vFXT może korzystać z niestandardowych ustawień wydajności. Te ustawienia pomagają, aby klaster działał najlepiej z określonym przepływem pracy, zestawem danych i narzędziami.
 
 Takie dostosowanie powinno odbywać się wraz z przedstawicielem pomocy technicznej, ponieważ zazwyczaj obejmuje Konfigurowanie funkcji, które nie są dostępne w panelu sterowania avere.
 
@@ -34,9 +33,9 @@ W tej sekcji opisano niektóre niestandardowe dostrajania, które można wykona�
 
 Te zmiany mogą być zalecane na podstawie jakości zestawu danych lub stylu przepływu pracy.
 
-* Jeśli obciążenie ma duże możliwości zapisu, należy zwiększyć rozmiar pamięci podręcznej zapisu z wartości domyślnej 20%. 
-* Jeśli zestaw danych zawiera wiele małych plików, zwiększ limit liczby plików pamięci podręcznej klastra. 
-* Jeśli prace obejmują kopiowanie lub przeniesienie danych między dwoma repozytoriami, Dostosuj liczbę wątków używanych do przeniesienia danych: 
+* Jeśli obciążenie ma duże możliwości zapisu, należy zwiększyć rozmiar pamięci podręcznej zapisu z wartości domyślnej 20%.
+* Jeśli zestaw danych zawiera wiele małych plików, zwiększ limit liczby plików pamięci podręcznej klastra.
+* Jeśli prace obejmują kopiowanie lub przeniesienie danych między dwoma repozytoriami, Dostosuj liczbę wątków używanych do przeniesienia danych:
   * Aby zwiększyć szybkość, można zwiększyć liczbę używanych wątków równoległych.
   * Jeśli wolumin magazynu zaplecza zostanie przeciążony, może być konieczne zmniejszenie liczby użytych wątków równoległych.
 * Jeśli klaster buforuje dane dla podstawowego pliku, który używa list ACL NFSv4, Włącz buforowanie trybu dostępu, aby usprawnić autoryzację plików dla określonych klientów.
@@ -58,4 +57,4 @@ W scenariuszu obejmującym scalanie w chmurze lub hybrydowe scenariusze optymali
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Pomóż zoptymalizować swój avere vFXT dla platformy Azure
 
-Skorzystaj z procedury opisanej w artykule [Uzyskaj pomoc](avere-vfxt-open-ticket.md) dotyczącą systemu, aby skontaktować się z personelem pomocy technicznej na temat tych optymalizacji. 
+Skorzystaj z procedury opisanej w artykule [Uzyskaj pomoc](avere-vfxt-open-ticket.md) dotyczącą systemu, aby skontaktować się z personelem pomocy technicznej na temat tych optymalizacji.

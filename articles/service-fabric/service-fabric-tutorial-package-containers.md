@@ -1,29 +1,19 @@
 ---
-title: Tworzenie pakietów kontenerów i wdrażanie ich jako aplikacji usługi Service Fabric na platformie Azure | Microsoft Docs
+title: Pakowanie i wdrażanie kontenerów
 description: Z tego samouczka dowiesz się, jak wygenerować definicję aplikacji usługi Azure Service Fabric przy użyciu narzędzia Yeoman i utworzyć pakiet aplikacji.
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker, Containers, Microservices, Service Fabric, Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b4931b62aaf04db2ee4ff6f4a5e2b96274b8af88
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385041"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614030"
 ---
-# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Samouczek: Tworzenie pakietów kontenerów i wdrażanie ich jako aplikacji usługi Service Fabric za pomocą usługi Yeoman
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Samouczek: tworzenie pakietów kontenerów i wdrażanie ich jako aplikacji usługi Service Fabric za pomocą usługi Yeoman
 
 Niniejszy samouczek jest drugą częścią serii. W tym samouczku narzędzie generatora szablonów (Yeoman) jest używane do generowania definicji aplikacji usługi Service Fabric. Ta aplikacja może być następnie używana do wdrażania kontenerów w usłudze Service Fabric. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -282,11 +272,11 @@ Użyj skryptu instalacji udostępnionego w katalogu **TestContainer**, aby skopi
 ./install.sh
 ```
 
-Otwórz przeglądarkę i przejdź do Service Fabric Explorer przy użyciu protokołu HTTP\/:/containertestcluster.eastus.cloudapp.Azure.com:19080/Explorer. Rozwiń węzeł Aplikacje i zwróć uwagę, że istnieje wpis dla danego typu aplikacji i inny wpis dla wystąpienia.
+Otwórz przeglądarkę i przejdź do Service Fabric Explorer przy użyciu protokołu http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Rozwiń węzeł Aplikacje i zwróć uwagę, że istnieje wpis dla danego typu aplikacji i inny wpis dla wystąpienia.
 
 ![Service Fabric Explorer][sfx]
 
-Aby połączyć się z uruchomioną aplikacją, Otwórz przeglądarkę internetową i przejdź do adresu URL klastra — na przykład http:\//containertestcluster.eastus.cloudapp.Azure.com:80. W przeglądarce powinien zostać wyświetlony internetowy interfejs użytkownika.
+Aby połączyć się z uruchomioną aplikacją, Otwórz przeglądarkę internetową i przejdź do adresu URL klastra — na przykład http:\//containertestcluster.eastus.cloudapp.azure.com:80. W przeglądarce powinien zostać wyświetlony internetowy interfejs użytkownika.
 
 ![votingapp][votingapp]
 

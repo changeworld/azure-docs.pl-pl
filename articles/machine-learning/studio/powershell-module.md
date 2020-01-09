@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: c1f9a9248494344cd6577ca2bf743a4c80730cda
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427545"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Moduły programu PowerShell dla Azure Machine Learning Studio (klasyczne)
 
 Korzystając z modułów programu PowerShell, można programowo zarządzać zasobami programu Studio (klasycznymi), takimi jak obszary robocze, zestawy danych i usługi sieci Web.
 
-Można korzystać z klasycznej wersji zasobów programu Studio przy użyciu trzech modułów programu PowerShell:
+Można korzystać z zasobów Studio (klasycznych) przy użyciu trzech modułów programu PowerShell:
 
 * [Azure PowerShell AZ](#az-rm) wydana w 2018, obejmuje wszystkie funkcje AzureRM, chociaż z różnymi nazwami poleceń cmdlet
 * [AzureRM](#az-rm) wydane w 2016, zastąpione przez PowerShell AZ
@@ -51,7 +51,7 @@ Aby rozpocząć pracę z klasycznym programem PowerShell, Pobierz [pakiet Releas
 ## <a name="support-table"></a>Tabela obsługi programu PowerShell
 
 
-| | **AZ** |  **PowerShell — model klasyczny** |
+| | **Az** |  **PowerShell — model klasyczny** |
 | --- | --- | --- |
 | Tworzenie/usuwanie obszarów roboczych | [Szablony usługi Resource Manager](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | Zarządzanie planami zobowiązań obszaru roboczego | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |

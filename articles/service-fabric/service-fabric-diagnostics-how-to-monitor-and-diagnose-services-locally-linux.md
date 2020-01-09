@@ -1,27 +1,16 @@
 ---
-title: Debugowanie aplikacji Service Fabric platformy Azure w systemie Linux | Microsoft Docs
+title: Debugowanie aplikacji Service Fabric platformy Azure w systemie Linux
 description: Dowiedz się, jak monitorować i diagnozować usługi Service Fabric na lokalnym komputerze deweloperskim systemu Linux.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 017b359f4c6da438f5179813fa3ed1ad2c536834
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168871"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526298"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w konfiguracji lokalnego tworzenia maszyn
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w ramach instalacji lokalnego komputera z systemem Linux
 
 
 > [!div class="op_single_selector"]
@@ -35,7 +24,7 @@ Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów, dzięki cz
 
 ## <a name="debugging-service-fabric-java-applications"></a>Debugowanie Service Fabric aplikacji Java
 
-W przypadku aplikacji Java dostępnych jest [wiele platform rejestrowania](https://en.wikipedia.org/wiki/Java_logging_framework) . Ponieważ `java.util.logging` jest opcją domyślną środowiska JRE, jest również używana do [przykładów kodu w usłudze GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). W poniższej dyskusji wyjaśniono, jak skonfigurować strukturę `java.util.logging`.
+W przypadku aplikacji Java dostępnych jest [wiele platform rejestrowania](https://en.wikipedia.org/wiki/Java_logging_framework) . Ponieważ `java.util.logging` jest domyślną opcją środowiska JRE, jest również używana do [przykładów kodu w usłudze GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). W poniższej dyskusji wyjaśniono, jak skonfigurować strukturę `java.util.logging`.
 
 Za pomocą języka Java. util. rejestrowanie można przekierować Dzienniki aplikacji do pamięci, strumieni danych wyjściowych, plików konsoli lub gniazd. Dla każdej z tych opcji istnieją już domyślne programy obsługi w strukturze. Można utworzyć plik `app.properties`, aby skonfigurować procedurę obsługi plików dla aplikacji w celu przekierowania wszystkich dzienników do pliku lokalnego.
 
@@ -51,14 +40,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Folder wskazany przez plik `app.properties` musi istnieć. Po utworzeniu pliku `app.properties` należy również zmodyfikować skrypt punktu wejścia `entrypoint.sh` w folderze `<applicationfolder>/<servicePkg>/Code/`, aby ustawić właściwość `java.util.logging.config.file` na `app.properties` plik. Wpis powinien wyglądać podobnie do następującego fragmentu kodu:
+Folder wskazany przez plik `app.properties` musi istnieć. Po utworzeniu pliku `app.properties` należy również zmodyfikować skrypt punktu wejścia, `entrypoint.sh` w folderze `<applicationfolder>/<servicePkg>/Code/`, aby ustawić właściwość `java.util.logging.config.file` na `app.properties` plik. Wpis powinien wyglądać podobnie do następującego fragmentu kodu:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Ta konfiguracja powoduje, że dzienniki są zbierane w sposób rotacyjny na `/tmp/servicefabric/logs/`. Plik dziennika w tym przypadku ma nazwę mysfapp% u.% g. log, gdzie:
+Ta konfiguracja powoduje, że dzienniki są zbierane w sposób rotacyjny na `/tmp/servicefabric/logs/`. Plik dziennika w tym przypadku ma nazwę mysfapp% u .% g. log, gdzie:
 * **% u** jest unikatowym numerem do rozwiązywania konfliktów między jednoczesnymi procesami Java.
 * **% g** jest numerem generacji umożliwiającym rozróżnienie między obracanymi dziennikami.
 

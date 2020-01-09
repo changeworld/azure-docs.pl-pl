@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/12/2019
+ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406250"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435726"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Korzystanie z klienta Apache Z usługi Beeline z usługą Apache Hive
 
 Dowiedz się, jak używać oprogramowania [Apache z usługi Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) do uruchamiania zapytań Apache Hive w usłudze HDInsight.
 
-Z usługi Beeline jest klientem programu Hive, który znajduje się w węzłach głównych klastra usługi HDInsight. Z usługi Beeline używa JDBC do nawiązywania połączenia z serwera hiveserver2, usługą hostowaną w klastrze usługi HDInsight. Możesz również użyć Z usługi Beeline, aby zdalnie uzyskiwać dostęp do usługi Hive w usłudze HDInsight za pośrednictwem Internetu. W poniższych przykładach przedstawiono najbardziej typowe parametry połączenia używane do nawiązywania połączenia z usługą HDInsight z Z usługi Beeline:
+Z usługi Beeline jest klientem programu Hive, który znajduje się w węzłach głównych klastra usługi HDInsight. Aby zainstalować Z usługi Beeline lokalnie, zobacz [install z usługi Beeline Client](#install-beeline-client). Z usługi Beeline używa JDBC do nawiązywania połączenia z serwera hiveserver2, usługą hostowaną w klastrze usługi HDInsight. Możesz również użyć Z usługi Beeline, aby zdalnie uzyskiwać dostęp do usługi Hive w usłudze HDInsight za pośrednictwem Internetu. W poniższych przykładach przedstawiono najbardziej typowe parametry połączenia używane do nawiązywania połączenia z usługą HDInsight z Z usługi Beeline:
 
 ## <a name="types-of-connections"></a>Typy połączeń
 
@@ -46,7 +46,7 @@ Zastąp `<headnode-FQDN>` z w pełni kwalifikowaną nazwą domeny klastra węzł
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Do klastra usługi HDInsight pakiet Enterprise Security (ESP) przy użyciu protokołu Kerberos
 
-Podczas nawiązywania połączenia z klientem z klastrem pakiet Enterprise Security (ESP) przyłączonym do Azure Active Directory (AAD) — DS na komputerze w tym samym obszarze klastra należy również określić nazwę domeny `<AAD-Domain>` i nazwę konta użytkownika domeny z uprawnieniami Uzyskaj dostęp do `<username>`klastra:
+Podczas nawiązywania połączenia z klientem z klastrem pakiet Enterprise Security (ESP) przyłączonym do Azure Active Directory (AAD) — DS na komputerze w tym samym obszarze klastra należy również określić nazwę domeny `<AAD-Domain>` i nazwę konta użytkownika domeny z uprawnieniami dostępu do klastra `<username>`:
 
 ```bash
 kinit <username>
@@ -59,19 +59,19 @@ Zastąp `<username>` nazwą konta w domenie uprawnieniami dostępu do klastra. Z
 
 ### <a name="over-public-or-private-endpoints"></a>Za pośrednictwem publicznych lub prywatnych punktów końcowych
 
-Podczas nawiązywania połączenia z klastrem przy użyciu publicznych lub prywatnych punktów końcowych należy podać nazwę konta logowania klastra (domyślnie `admin`) i hasło. Na przykład w celu nawiązania połączenia z adresem `<clustername>.azurehdinsight.net` przy użyciu Z usługi Beeline z systemu klienckiego. To połączenie jest nawiązywane za pośrednictwem `443`portów i szyfrowane przy użyciu protokołu SSL:
+Podczas nawiązywania połączenia z klastrem przy użyciu publicznych lub prywatnych punktów końcowych należy podać nazwę konta logowania klastra (domyślnie `admin`) i hasło. Na przykład w celu nawiązania połączenia z adresem `clustername.azurehdinsight.net` przy użyciu Z usługi Beeline z systemu klienckiego. To połączenie jest nawiązywane za pośrednictwem `443`portów i szyfrowane przy użyciu protokołu SSL:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
 lub dla prywatnego punktu końcowego:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `<username>` kontem logowania klastra dla klastra. W przypadku klastrów ESP Użyj pełnej nazwy UPN (np. user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
+Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `admin` kontem logowania klastra dla klastra. W przypadku klastrów ESP Użyj pełnej nazwy UPN (na przykład user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
 
 Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji [, zobacz ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Można użyć `curl` polecenie z opcją `-v`, aby rozwiązać problemy z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
 
@@ -86,16 +86,16 @@ Apache Spark udostępnia własną implementację serwera hiveserver2, która jes
 Użyte parametry połączenia są nieco inne. Zamiast zawiera `httpPath=/hive2` `httpPath/sparkhive2`:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 lub dla prywatnego punktu końcowego:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
-Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `<username>` kontem logowania klastra dla klastra. W przypadku klastrów ESP Użyj pełnej nazwy UPN (np. user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
+Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zastąp `admin` kontem logowania klastra dla klastra. W przypadku klastrów ESP Użyj pełnej nazwy UPN (np. user@domain.com). Zastąp `password` hasłem dla konta logowania klastra.
 
 Prywatne punkty końcowe wskazują podstawowy moduł równoważenia obciążenia, do którego można uzyskać dostęp tylko z sieci wirtualnych komunikacji równorzędnej w tym samym regionie. Aby uzyskać więcej informacji [, zobacz ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Można użyć `curl` polecenie z opcją `-v`, aby rozwiązać problemy z łącznością z publicznymi lub prywatnymi punktami końcowymi przed użyciem z usługi Beeline.
 
@@ -238,7 +238,7 @@ Ten przykład jest oparty na użyciu klienta Z usługi Beeline z połączenia SS
 
 6. Aby wyjść z Z usługi Beeline, użyj `!exit`.
 
-## <a id="file"></a>Uruchamianie pliku HiveQL
+## <a name="run-a-hiveql-file"></a>Uruchamianie pliku HiveQL
 
 Jest to kontynuacja z poprzedniego przykładu. Wykonaj następujące kroki, aby utworzyć plik, a następnie uruchom go za pomocą Z usługi Beeline.
 
@@ -292,7 +292,64 @@ Jest to kontynuacja z poprzedniego przykładu. Wykonaj następujące kroki, aby 
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>Następne kroki
+## <a name="install-beeline-client"></a>Zainstaluj klienta z usługi Beeline
+
+Chociaż Z usługi Beeline jest dołączany do węzłów głównych klastra usługi HDInsight, można go zainstalować na komputerze lokalnym.  Poniższe kroki służące do instalowania Z usługi Beeline na komputerze lokalnym są oparte na [podsystemie Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+
+1. Aktualizowanie list pakietów. Wprowadź następujące polecenie w powłoce bash:
+
+    ```bash
+    sudo apt-get update
+    ```
+
+1. Zainstaluj język Java, jeśli nie jest zainstalowany. Możesz sprawdzić za pomocą polecenia `which java`.
+
+    1. Jeśli nie zainstalowano żadnego pakietu Java, wprowadź następujące polecenie:
+
+        ```bash
+        sudo apt install openjdk-11-jre-headless
+        ```
+
+    1. Popraw plik BASHRC (zwykle znajduje się w ~/.bashrc.). Otwórz plik z `nano ~/.bashrc` a następnie Dodaj następujący wiersz na końcu pliku:
+
+        ```bash
+        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+        ```
+
+        Naciśnij **klawisze Ctrl + X**, a następnie **Y**, a następnie ENTER.
+
+1. Pobierz archiwa Hadoop i Z usługi Beeline, wprowadź następujące polecenia:
+
+    ```bash
+    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Rozpakuj archiwa, wprowadź następujące polecenia:
+
+    ```bash
+    tar -xvzf hadoop-2.7.3.tar.gz
+    tar -xvzf apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Dalsze zmiany pliku bashrc. Należy określić ścieżkę, w której archiwa zostały rozpakowane. W przypadku korzystania z [podsystemu Windows dla systemu Linux](https://docs.microsoft.com/windows/wsl/install-win10), jeśli wykonano kroki dokładnie, ścieżka zostanie `/mnt/c/Users/user/`, gdzie `user` jest nazwą użytkownika.
+
+    1. Otwórz plik: `nano ~/.bashrc`
+    1. Zmodyfikuj poniższe polecenia z odpowiednią ścieżką, a następnie wprowadź je na końcu pliku bashrc:
+
+        ```bash
+        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
+        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        PATH=$PATH:$HIVE_HOME/bin
+        ```
+
+    1. Naciśnij **klawisze Ctrl + X**, a następnie **Y**, a następnie ENTER.
+
+1. Zamknij i ponownie otwórz sesję bash.
+
+1. Przetestuj połączenie. Użyj formatu połączenia z [ponad publiczne lub prywatne punkty końcowe](#over-public-or-private-endpoints), powyżej.
+
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej ogólnych informacji na temat platformy Hive w usłudze HDInsight, zobacz [używanie Apache Hive z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
 

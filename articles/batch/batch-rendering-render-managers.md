@@ -1,18 +1,18 @@
 ---
 title: Obsługa programu renderowania Manager — Azure Batch
-description: Używanie platformy Azure do renderowania przy użyciu integracji programu Azure Batch Render Manager
+description: Korzystanie z integracji z programem Azure Batch Render Manager. Poznaj wbudowane wsparcie lub Dodatki dla popularnych menedżerów renderowania.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 246907b16534d1a91833cab633a1973c97429f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983671"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449682"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>Używanie Azure Batch z menedżerami renderowania farmy
 
@@ -26,7 +26,7 @@ Obsługiwane są następujące Menedżery renderowania:
 * [Renderowanie wzdania](https://www.royalrender.de/)
 * [Thinkbox termin](https://deadline.thinkboxsoftware.com/)
 
-## <a name="azure-render-hub"></a>Centrum renderowania platformy Azure
+## <a name="azure-render-hub"></a>Azure Render Hub
 
 Centrum renderowania platformy Azure upraszcza tworzenie Farm renderowania platformy Azure i zarządzanie nimi.  Centrum renderowania ma natywną obsługę PipelineFx Qube i ostateczny termin 10.  Aby uzyskać więcej informacji i szczegółowe instrukcje, zobacz [repozytorium GitHub](https://github.com/Azure/azure-render-hub).
 

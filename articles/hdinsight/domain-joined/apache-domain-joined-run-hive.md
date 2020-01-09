@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435875"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurowanie zasad technologii Apache Hive w usłudze HDInsight przy użyciu pakietu Enterprise Security
 
@@ -40,11 +40,11 @@ Dowiedz się, jak skonfigurować zasady Apache Ranger dla Apache Hive. Korzystaj
 
 ## <a name="create-domain-users"></a>Tworzenie użytkowników domeny
 
-Więcej informacji na temat tworzenia hiveruser1 i hiveuser2 można znaleźć w temacie [Tworzenie klastra usługi HDInsight przy użyciu protokołu ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). Te dwa konta użytkowników są używane w tym artykule.
+Więcej informacji na temat tworzenia hiveruser1 i hiveuser2 można znaleźć w temacie [Tworzenie klastra usługi HDInsight przy użyciu protokołu ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp). Te dwa konta użytkowników są używane w tym artykule.
 
 ## <a name="create-ranger-policies"></a>Tworzenie zasad platformy Ranger
 
-W tej sekcji utworzysz dwie zasady Ranger na potrzeby uzyskiwania dostępu do hivesampletable. Możesz przydzielić uprawnienie select (wybór) do innego zestawu kolumn. Dwóch użytkowników zostało utworzonych przy użyciu polecenia [Utwórz klaster usługi HDInsight z partycją ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). W następnej sekcji przetestujesz dwie zasady w programie Excel.
+W tej sekcji utworzysz dwie zasady Ranger na potrzeby uzyskiwania dostępu do hivesampletable. Możesz przydzielić uprawnienie select (wybór) do innego zestawu kolumn. Dwóch użytkowników zostało utworzonych przy użyciu polecenia [Utwórz klaster usługi HDInsight z partycją ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp). W następnej sekcji przetestujesz dwie zasady w programie Excel.
 
 **Aby utworzyć zasady platformy Ranger**
 
@@ -56,10 +56,10 @@ W tej sekcji utworzysz dwie zasady Ranger na potrzeby uzyskiwania dostępu do hi
     |---|---|
     |Policy Name (Nazwa zasad)|Read-hivesampletable-All|
     |Baza danych programu Hive|default|
-    |tabele|hivesampletable|
+    |table|hivesampletable|
     |Kolumna Hive|*|
     |Select User (Wybierz użytkownika)|Użytkownik hiveuser1|
-    |Uprawnienia|zaznaczenia|
+    |Uprawnienia|wybierz z listy pozycję|
 
     ![Konfiguracja zasad Hive ESP Ranger usługi HDInsight](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
@@ -74,10 +74,10 @@ W tej sekcji utworzysz dwie zasady Ranger na potrzeby uzyskiwania dostępu do hi
     |---|---|
     |Policy Name (Nazwa zasad)|Read-hivesampletable-devicemake|
     |Baza danych programu Hive|default|
-    |tabele|hivesampletable|
+    |table|hivesampletable|
     |Kolumna Hive|ClientID, devicemake|
     |Select User (Wybierz użytkownika)|hiveuser2|
-    |Uprawnienia|zaznaczenia|
+    |Uprawnienia|wybierz z listy pozycję|
 
 ## <a name="create-hive-odbc-data-source"></a>Tworzenie źródła danych ODBC usługi Hive
 
@@ -88,7 +88,7 @@ Instrukcje można znaleźć w sekcji [Create Hive ODBC data source](../hadoop/ap
  | Data Source Name (Nazwa źródła danych) | Nadaj nazwę źródła danych. |
  | Host | Wprowadź CLUSTERNAME.azurehdinsight.net. np. myHDICluster.azurehdinsight.net. |
  | Port | Użyj portu **443**. (Ten port został zmieniony z 563 na 443). |
- | Database (Baza danych) | Użyj wartości **Default** (Domyślna). |
+ | baza danych | Użyj wartości **Default** (Domyślna). |
  | Hive Server Type (Typ serwera Hive) | Wybierz wartość **Hive Server 2**. |
  | Mechanism (Mechanizm) | Wybierz wartość **Azure HDInsight Service** (Usługa Azure HDInsight). |
  | HTTP Path (Ścieżka HTTP) | Pozostaw to pole puste. |

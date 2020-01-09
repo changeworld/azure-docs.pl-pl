@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Tworzenie, publikowanie i odbieranie odpowiedzi w QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Utwórz nową bazę wiedzy z pytaniami i odpowiedziami z publicznych często zadawanych pytań. Zapisz, Wyszkol i Opublikuj bazę wiedzy. Po opublikowaniu bazy wiedzy Wyślij pytanie i odbierz odpowiedź z poleceniem zwinięcie. Następnie utwórz bot i przetestuj bot z tym samym pytaniem.
+description: W tym samouczku pokazano, jak utworzyć nową bazę wiedzy z pytaniami i odpowiedziami z publicznych często zadawanych pytań. Zapisz, Wyszkol i Opublikuj bazę wiedzy. Po opublikowaniu bazy wiedzy Wyślij pytanie i odbierz odpowiedź z poleceniem zwinięcie. Następnie utwórz bot i przetestuj bot z tym samym pytaniem.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,18 +11,18 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 51d051fee1da1f9bb0c89ea9123748b512f84007
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5b2f2decf3d070da2fb58bebd424b4209f353316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327990"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447384"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Samouczek: w portalu QnA Maker Utwórz bazę wiedzy
 
 Utwórz nową bazę wiedzy z pytaniami i odpowiedziami z publicznych często zadawanych pytań. Zapisz, Wyszkol i Opublikuj bazę wiedzy. Po opublikowaniu bazy wiedzy Wyślij pytanie i odbierz odpowiedź z poleceniem zwinięcie. Następnie utwórz bot i przetestuj bot z tym samym pytaniem. 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
 > * Utwórz bazę wiedzy w portalu QnA Maker.
@@ -109,7 +109,7 @@ Nie zamykaj tej strony **publikowania** . Będzie ona potrzebna w dalszej częś
 
     ![Zrzut ekranu przedstawiający kartę zwinięcie](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Skopiuj tekst z karty **zwinięcie** i uruchom ją w terminalu z włączonym zwinięciem lub w wierszu polecenia. Wartość nagłówka autoryzacji obejmuje tekst `Endpoint`, z końcowym miejscem, a następnie klawiszem.
+1. Skopiuj tekst z karty **zwinięcie** i uruchom ją w terminalu z włączonym zwinięciem lub w wierszu polecenia. Wartość nagłówka autoryzacji obejmuje tekst `Endpoint`, z końcowym spacją i kluczem.
 
 1. Zastąp element `<Your question>` pytaniem `How large can my KB be?`. Jest ono podobne do pytania `How large a knowledge base can I create?`, ale nie identyczne. Usługa QnA Maker stosuje przetwarzanie języka naturalnego w celu określenia, czy dwa pytania są takie same.     
 

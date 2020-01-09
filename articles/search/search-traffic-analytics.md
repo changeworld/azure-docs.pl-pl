@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932569"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426988"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Implementowanie analizy ruchu wyszukiwania na platformie Azure Wyszukiwanie poznawcze
 
@@ -167,9 +167,7 @@ Za każdym razem, gdy użytkownik kliknie dokument, jest to sygnał, który musi
 
 ## <a name="3---analyze-in-power-bi"></a>3 — analizowanie w Power BI
 
-Po przydzieleniu aplikacji i zweryfikowaniu, że aplikacja została prawidłowo połączona z Application Insights, możesz użyć wstępnie zdefiniowanego szablonu utworzonego przez usługę Azure Wyszukiwanie poznawcze dla programu Power BI Desktop. 
-
-Usługa Azure poznawcze wyszukiwanie udostępnia [pakiet zawartości monitorowania Power BI](https://app.powerbi.com/getdata/services/azure-search) , dzięki czemu można analizować dane dziennika. Pakiet zawartości dodaje wstępnie zdefiniowane wykresy i tabele przydatne do analizowania dodatkowych danych przechwyconych na potrzeby analizy ruchu wyszukiwania. Aby uzyskać więcej informacji, zobacz [stronę pomocy pakietu zawartości](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
+Po przydzieleniu aplikacji i zweryfikowaniu, że aplikacja jest prawidłowo połączona z Application Insights, można pobrać wstępnie zdefiniowany szablon raportu w celu przeanalizowania danych w programie Power BI Desktop. Raport zawiera wstępnie zdefiniowane wykresy i tabele przydatne do analizowania dodatkowych danych przechwyconych na potrzeby analizy ruchu wyszukiwania. 
 
 1. W lewym okienku nawigacyjnym pulpitu nawigacyjnego usługi Azure Wyszukiwanie poznawcze w obszarze **Ustawienia**kliknij pozycję **Analiza ruchu wyszukiwania**.
 
@@ -179,7 +177,7 @@ Usługa Azure poznawcze wyszukiwanie udostępnia [pakiet zawartości monitorowan
 
 2. Na tej samej stronie kliknij pozycję **pobierz Power BI raport**.
 
-3. Raport zostanie otwarty w Power BI Desktop i zostanie wyświetlony monit o połączenie z Application Insights. Te informacje można znaleźć na Azure Portal stronach dla zasobu Application Insights.
+3. Raport zostanie otwarty w Power BI Desktop i zostanie wyświetlony monit o połączenie z Application Insights i podanie poświadczeń. Informacje o połączeniu można znaleźć na Azure Portal stronach dla zasobu Application Insights. W polu poświadczenia podaj tę samą nazwę użytkownika i hasło, które są używane podczas logowania do portalu.
 
    ![Połącz z Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Połączenie z usługą Application Insights")
 
@@ -189,11 +187,8 @@ Raport zawiera wykresy i tabele, które ułatwiają podejmowanie bardziej świad
 
 Metryki obejmują następujące elementy:
 
-* Kliknij pozycję za pomocą rate (Rob): współczynnik dla użytkowników, którzy klikają określony dokument, do całkowitej liczby wyszukiwań.
+* Wyszukaj wolumin i najpopularniejsze pary dokumentów terminowych: warunki, które powodują, że ten sam dokument kliknięto, uporządkowany według kliknięć.
 * Wyszukiwania bez kliknięć: warunki dla najważniejszych zapytań, które rejestrują brak kliknięć
-* Najczęściej kliknięte dokumenty: ostatnio kliknięte dokumenty według identyfikatora w ciągu ostatnich 24 godzin, 7 dni i 30 dni.
-* Popularne pary dokumentów: warunki, które powodują kliknięcie tego samego dokumentu, uporządkowane według kliknięć.
-* Czas kliknięcia: kliknięcia przedziału według czasu od czasu zapytania wyszukiwania
 
 Na poniższym zrzucie ekranu przedstawiono wbudowane raporty i wykresy umożliwiające analizowanie analizy ruchu wyszukiwania.
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453412"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Tworzenie kont integracji dla integracji z przedsiębiorstwem B2B i zarządzanie nimi w Azure Logic Apps
 
@@ -59,8 +59,8 @@ W przypadku tego zadania można użyć Azure Portal, wykonując kroki opisane w 
    |----------|----------|-------|-------------|
    | **Nazwa** | Tak | <*integrację — nazwa konta*> | Nazwa konta integracji, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "Fabrikam-Integration". |
    | **Subskrypcja** | Tak | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
-   | **Grupa zasobów** | Tak | <*Azure-Resource-Group-name*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) , która ma być używana do organizowania powiązanych zasobów. W tym przykładzie Utwórz nową grupę zasobów o nazwie "FabrikamIntegration-RG". |
-   | **Warstwa cenowa** | Tak | <> *poziomu cen* | Warstwa cenowa konta integracji, którą można później zmienić. Na potrzeby tego przykładu wybierz pozycję **Free**. Aby uzyskać więcej informacji, zobacz następujące tematy: <p>[model cen Logic Apps](../logic-apps/logic-apps-pricing.md#integration-accounts) -  <p>- [Logic Apps limitów i konfiguracji](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>[cennik Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) -  |
+   | **Grupa zasobów** | Tak | <*Azure-resource-group-name*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) , która ma być używana do organizowania powiązanych zasobów. W tym przykładzie Utwórz nową grupę zasobów o nazwie "FabrikamIntegration-RG". |
+   | **Warstwa cenowa** | Tak | <> *poziomu cen* | Warstwa cenowa konta integracji, którą można później zmienić. Na potrzeby tego przykładu wybierz pozycję **Free**. Aby uzyskać więcej informacji zobacz następujące tematy: <p>[model cen Logic Apps](../logic-apps/logic-apps-pricing.md#integration-accounts) -  <p>- [Logic Apps limitów i konfiguracji](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>[cennik Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) -  |
    | **Lokalizacja** | Tak | <> *platformy Azure* | Region, w którym przechowywane są metadane konta integracji. Wybierz tę samą lokalizację, w której znajduje się aplikacja logiki, lub Utwórz Aplikacje logiki w tej samej lokalizacji co konto integracji. Na potrzeby tego przykładu Użyj "zachodnie stany USA". <p>**Uwaga**: Aby utworzyć konto integracji w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wybierz tę ISE jako lokalizację. Aby uzyskać więcej informacji, zobacz [Tworzenie kont integracji w ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | Nie | Wyłączone, włączone | Pozostaw ustawienie **off** dla tego przykładu. |
    |||||
@@ -112,7 +112,7 @@ Aby zwiększyć [limity](../logic-apps/logic-apps-limits-and-config.md#integrati
 
 Aby wprowadzić tę zmianę, można użyć Azure Portal, wykonując kroki opisane w tej sekcji lub [interfejsie wiersza polecenia platformy Azure](#upgrade-tier-azure-cli).
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Portal Azure
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
@@ -206,7 +206,7 @@ Jeśli chcesz połączyć aplikację logiki z innym kontem integracji lub nie ko
    },
    ```
 
-   Na przykład:
+   Przykład:
 
    ![Znajdź obiekt "integrationAccount"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 

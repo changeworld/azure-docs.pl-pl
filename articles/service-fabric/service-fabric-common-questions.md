@@ -1,27 +1,17 @@
 ---
-title: Często zadawane pytania dotyczące Microsoft Azure Service Fabric | Microsoft Docs
-description: Często zadawane pytania dotyczące Service Fabric i ich odpowiedzi
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Często zadawane pytania dotyczące Microsoft Azure Service Fabric
+description: Często zadawane pytania dotyczące Service Fabric, w tym możliwości, przypadków użycia i typowych scenariuszy.
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481639"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614642"
 ---
-# <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania Service Fabric
+# <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania dotyczące usługi Service Fabric
 
 Istnieje wiele często zadawanych pytań na temat tego, co Service Fabric może zrobić, i jak powinny być używane. Ten dokument zawiera wiele typowych pytań i odpowiedzi na nie.
 
@@ -94,7 +84,7 @@ W przypadku obciążeń produkcyjnych musisz być odporne na jednoczesne awarie 
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Czy mogę wyłączyć mój klaster w nocy/weekendy, aby zaoszczędzić koszty?
 
-Ogólnie rzecz biorąc, nie. Service Fabric przechowuje stan na lokalnych, tymczasowych dyskach, co oznacza, że jeśli maszyna wirtualna zostanie przeniesiona do innego hosta, dane nie zostaną przesunięte na inne hosty. W normalnej operacji nie jest to problem, ponieważ nowy węzeł jest uaktualniany przez inne węzły. Jeśli jednak zatrzymasz wszystkie węzły i uruchomisz je ponownie później, istnieje znacząca możliwość, że większość węzłów zaczyna się na nowych hostach i nie będzie można odzyskać systemu.
+Ogólnie rzecz biorąc — nie. Service Fabric przechowuje stan na lokalnych, tymczasowych dyskach, co oznacza, że jeśli maszyna wirtualna zostanie przeniesiona do innego hosta, dane nie zostaną przesunięte na inne hosty. W normalnej operacji nie jest to problem, ponieważ nowy węzeł jest uaktualniany przez inne węzły. Jeśli jednak zatrzymasz wszystkie węzły i uruchomisz je ponownie później, istnieje znacząca możliwość, że większość węzłów zaczyna się na nowych hostach i nie będzie można odzyskać systemu.
 
 Jeśli chcesz utworzyć klastry do testowania aplikacji przed jej wdrożeniem, zalecamy dynamiczne tworzenie tych klastrów w ramach [potoku ciągłej integracji/ciągłego wdrażania](service-fabric-tutorial-deploy-app-with-cicd-vsts.md).
 
@@ -111,13 +101,13 @@ Nie. Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Jakie są katalogi i procesy, które należy wykluczyć podczas uruchamiania programu antywirusowego w moim klastrze?
 
-| **Wykluczone katalogi oprogramowania antywirusowego** |
+| **Antywirusowe wykluczone katalogi** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (z konfiguracji klastra) |
 | FabricLogRoot (z konfiguracji klastra) |
 
-| **Wykluczone procesy programu antywirusowego** |
+| **Antywirusowe wykluczone procesy** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |

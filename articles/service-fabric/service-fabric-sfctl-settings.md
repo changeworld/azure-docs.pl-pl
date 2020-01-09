@@ -1,24 +1,16 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric — ustawienia sfctl | Microsoft Docs
-description: Zawiera Service Fabric opis poleceń sfctl interfejsu wiersza polecenia.
-services: service-fabric
-documentationcenter: na
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — ustawienia sfctl
+description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń konfigurowania lokalnych ustawień sfctl.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: ace4c28ad04b684e7e1e38fe099d095d408c081a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4920409e0d37a6cbb64e011fd9cd5f08fb39d30c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900961"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639047"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 Skonfiguruj ustawienia lokalne dla tego wystąpienia sfctl.

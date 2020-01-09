@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7e71c940d0c083642954114cf4fa1617b93335b9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979108"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531264"
 ---
 # <a name="manage-models-in-the-repository"></a>Zarządzanie modelami w repozytorium
 
@@ -37,7 +37,7 @@ Istnieją dwa typy repozytorium modelu do przechowywania modeli możliwości urz
 W [portalu Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com)można wykonać następujące zadania:
 
 - [Ukończ proces certyfikacji urządzenia IoT](./tutorial-certification-test.md).
-- Znajdź modele możliwości urządzeń Plug and Play IoT. Za pomocą tych modeli można [szybko tworzyć urządzenia gotowe do użycia w usłudze IoT i integrować je z rozwiązaniami](./quickstart-connect-pnp-device-solution.md).
+- Znajdź modele możliwości urządzeń Plug and Play IoT. Za pomocą tych modeli można [szybko tworzyć urządzenia gotowe do użycia w usłudze IoT i integrować je z rozwiązaniami](./quickstart-connect-pnp-device-solution-node.md).
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 

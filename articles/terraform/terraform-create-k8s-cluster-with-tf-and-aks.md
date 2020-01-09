@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie klastra Kubernetes za pomocą usługi Azure Kuber
 description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 792c075cfb40eb4904a30b63e9902a59ceda9bc1
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159300"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708278"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Samouczek: Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service przy użyciu Terraform
 
@@ -138,12 +138,10 @@ Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację zasobów
             }
         }
 
-        agent_pool_profile {
+        default_node_pool {
             name            = "agentpool"
-            count           = var.agent_count
+            node_count      = var.agent_count
             vm_size         = "Standard_DS1_v2"
-            os_type         = "Linux"
-            os_disk_size_gb = 30
         }
 
         service_principal {
@@ -168,7 +166,7 @@ Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację zasobów
 
     Rekord `linux_profile` umożliwia skonfigurowanie ustawień umożliwiających zalogowanie się w węzłach procesu roboczego przy użyciu protokołu SSH.
 
-    W przypadku usługi AKS płacisz tylko za węzły procesu roboczego. Rekord `agent_pool_profile` konfiguruje szczegóły dla tych węzłów procesu roboczego. `agent_pool_profile record` obejmuje liczbę węzłów procesu roboczego do utworzenia i typ węzłów procesu roboczego. Jeśli w przyszłości konieczne jest skalowanie klastra w górę lub w dół, należy zmodyfikować wartość `count` w tym rekordzie.
+    W przypadku usługi AKS płacisz tylko za węzły procesu roboczego. Rekord `default_node_pool` konfiguruje szczegóły dla tych węzłów procesu roboczego. `default_node_pool record` obejmuje liczbę węzłów procesu roboczego do utworzenia i typ węzłów procesu roboczego. Jeśli w przyszłości konieczne jest skalowanie klastra w górę lub w dół, należy zmodyfikować wartość `count` w tym rekordzie.
 
 1. Zapisz plik ( **&lt;Ctrl > S**) i wyjdź z edytora ( **&lt;Ctrl > Q**).
 
@@ -289,7 +287,7 @@ W tej sekcji przedstawiono sposób wykonywania następujących zadań:
 
     ![Menu konta magazynu](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. Zanotuj wartość **klucza** **key1**. (Wybranie ikony po prawej stronie klucza spowoduje skopiowanie wartości do schowka).
+1. Zanotuj wartość klucza **Klucz1** . (Wybranie ikony po prawej stronie klucza spowoduje skopiowanie wartości do schowka).
 
     ![Klucze dostępu konta magazynu](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 

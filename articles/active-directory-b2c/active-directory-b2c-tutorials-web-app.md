@@ -11,18 +11,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367607"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Samouczek: Włączanie uwierzytelniania w aplikacji sieci Web przy użyciu Azure Active Directory B2C
 
 W tym samouczku pokazano, jak używać programu Azure Active Directory B2C (Azure AD B2C) do logowania się i rejestrowania użytkowników w aplikacji sieci Web ASP.NET. Usługa Azure AD B2C umożliwia aplikacjom uwierzytelnianie się na kontach społecznościowych, kontach przedsiębiorstw i kontach usługi Azure Active Directory za pomocą otwartych standardowych protokołów.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Aktualizowanie aplikacji w usłudze Azure AD B2C
@@ -92,9 +92,9 @@ Zaktualizuj ustawienia w pliku Web. config, aby współdziałać z przepływem u
 
 1. Otwórz rozwiązanie **B2C-WebAPI-DotNet** w programie Visual Studio.
 1. W projekcie **TaskWebApp** otwórz plik **Web.config**.
-    1. Zaktualizuj wartość `ida:Tenant` i `ida:AadInstance` nazwą utworzonego Azure AD B2C dzierżawy. Na przykład zastąp ciąg `fabrikamb2c` ciągiem `contoso`.
+    1. Zaktualizuj wartość `ida:Tenant` i `ida:AadInstance` nazwą utworzonego Azure AD B2C dzierżawy. Na przykład Zastąp `fabrikamb2c` z `contoso`.
     1. Zastąp wartość `ida:ClientId` IDENTYFIKATORem aplikacji, która została zarejestrowana.
-    1. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem. Przed dodaniem do pliku Web. config należy kodować kod tajny klienta.
+    1. Zastąp wartość elementu `ida:ClientSecret` zanotowanym kluczem. Jeśli wpis tajny klienta zawiera wszystkie wstępnie zdefiniowane jednostki XML, na przykład mniejsze niż (`<`), większe niż (`>`), "handlowe" i`&`"podwójne cudzysłowy (`"`), należy wprowadzić te znaki w formacie XML — kodowanie wpisu tajnego klienta przed dodaniem go do pliku Web. config.
     1. Zastąp wartość `ida:SignUpSignInPolicyId` wartością `b2c_1_signupsignin1`.
     1. Zastąp wartość `ida:EditProfilePolicyId` wartością `b2c_1_profileediting1`.
     1. Zastąp wartość `ida:ResetPasswordPolicyId` wartością `b2c_1_passwordreset1`.

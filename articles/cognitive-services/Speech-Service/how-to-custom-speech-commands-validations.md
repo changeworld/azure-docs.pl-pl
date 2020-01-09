@@ -1,7 +1,7 @@
 ---
 title: 'Instrukcje: Dodawanie walidacji do parametrów polecenia niestandardowego (wersja zapoznawcza)'
 titleSuffix: Azure Cognitive Services
-description: W tym artykule Dodaj walidacje do parametrów polecenia niestandardowego
+description: W tym artykule wyjaśniono, jak dodać walidacje do parametru w poleceniach niestandardowych.
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 64e092405686caca7baeaf58f19d577a3f80e169
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c89c388f919ca95a331d1d406f5b1776c127ebad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446915"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Instrukcje: Dodawanie walidacji do parametrów polecenia niestandardowego (wersja zapoznawcza)
 
@@ -42,11 +42,11 @@ Aby zademonstrować walidacje, Utwórzmy nowe polecenie umożliwiające użytkow
    | Ustawienie           | Sugerowana wartość                                          | Opis                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
    | Nazwa              | Temperatura                                              | Opisowa nazwa parametru polecenia                                                    |
-   | Wymagany          | true                                                     | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru |
-   | Szablon odpowiedzi | "Jakiej temperatury chcesz?".                       | Monit o podanie wartości tego parametru, gdy nie jest on znany                              |
+   | Wymagane          | true                                                     | Pole wyboru wskazujące, czy przed ukończeniem polecenia jest wymagana wartość tego parametru |
+   | Szablon odpowiedzi | "— Jakiej temperatury chcesz?".                     | Monit o podanie wartości tego parametru, gdy nie jest on znany                              |
    | Typ              | Liczba                                                   | Typ parametru, taki jak Number, String lub Data Time                                      |
-   | Walidacja        | Wartość minimalna: 60, wartość maksymalna: 80                             | Dla parametrów liczbowych dozwolony zakres wartości parametru                              |
-   | Szablon odpowiedzi | "Niestety, można ustawić tylko między 60 i 80 stopni"        | Monituj o podanie zaktualizowanej wartości, Jeśli weryfikacja nie powiedzie się                                       |
+   | Sprawdzanie poprawności        | Wartość minimalna: 60, wartość maksymalna: 80                             | Dla parametrów liczbowych dozwolony zakres wartości parametru                             |
+   | Szablon odpowiedzi | "— Niestety, można ustawić tylko między 60 i 80 stopni"      | Monituj o podanie zaktualizowanej wartości, Jeśli weryfikacja nie powiedzie się                                       |
 
 1. Dodaj przykładowe zdania
 
@@ -59,16 +59,16 @@ Aby zademonstrować walidacje, Utwórzmy nowe polecenie umożliwiające użytkow
 
 1. Dodawanie reguły uzupełniania w celu potwierdzenia wyniku
 
-   | Ustawienie    | Sugerowana wartość                                         | Opis                                        |
-   | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
-   | Nazwa reguły  | Komunikat z potwierdzeniem                                    | Nazwa opisująca przeznaczenie reguły          |
-   | Warunki | Wymagana temperatura parametru                        | Warunki określające, kiedy można uruchomić regułę    |
-   | Akcje    | SpeechResponse — "OK, ustawienie na {temperatura} stopni" | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
+   | Ustawienie    | Sugerowana wartość                                           | Opis                                        |
+   | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
+   | Nazwa reguły  | Komunikat z potwierdzeniem                                      | Nazwa opisująca przeznaczenie reguły          |
+   | Warunki | Wymagana temperatura parametru                          | Warunki określające, kiedy można uruchomić regułę    |
+   | Akcje    | SpeechResponse-"-OK, ustawienia do {temperatura} stopni" | Akcja, która ma zostać podjęta po spełnieniu warunku reguły |
 
 > [!TIP]
 > Ten przykład używa odpowiedzi mowy, aby potwierdzić wynik. Aby zapoznać się z przykładami dotyczącymi kończenia polecenia z akcją klienta, zobacz: [jak: zrealizować polecenia na kliencie przy użyciu zestawu Speech SDK (wersja zapoznawcza)](./how-to-custom-speech-commands-fulfill-sdk.md)
 
-## <a name="try-it-out"></a>Testowanie
+## <a name="try-it-out"></a>Wypróbuj
 
 Wybierz panel testowania i wypróbuj kilka interakcji.
 
@@ -79,3 +79,8 @@ Wybierz panel testowania i wypróbuj kilka interakcji.
 - Wynik: "Niestety, można ustawić tylko między 60 i 80 stopni"
 - Dane wejściowe: Zwiększ do 72 stopni.
 - Wynik: "OK, ustawienie na 72 stopni"
+
+## <a name="next-steps"></a>Następne kroki
+
+> [!div class="nextstepaction"]
+> [Instrukcje: Dodawanie potwierdzenia do polecenia niestandardowego (wersja zapoznawcza)](./how-to-custom-speech-commands-confirmations.md)

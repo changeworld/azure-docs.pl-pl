@@ -2,19 +2,15 @@
 title: Azure Automation — hybrydowy proces roboczy elementu Runbook
 description: Ten artykuł zawiera informacje na temat instalowania i używania hybrydowego procesu roboczego elementu Runbook, który jest funkcją Azure Automation, której można użyć do uruchamiania elementów Runbook na maszynach w lokalnym dostawcy centrum danych lub w chmurze.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fd90b98f4df195297e31a5dda91f64efcc1f5212
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850265"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658041"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzowanie zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego elementu Runbook
 
@@ -26,7 +22,7 @@ Na poniższej ilustracji przedstawiono tę funkcję:
 
 Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowych procesów roboczych elementu Runbook, która została określona podczas instalacji agenta. Grupa może zawierać jednego agenta, ale w celu zapewnienia wysokiej dostępności można zainstalować wielu agentów w grupie. Każdy komputer może obsługiwać jedno zgłoszenie hybrydowego procesu roboczego na jedno konto usługi Automation.
 
-Po uruchomieniu elementu Runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, w której ma ona działać. Każdy proces roboczy w grupie sonduje Azure Automation, aby sprawdzić, czy jakieś zadania są dostępne. Jeśli zadanie jest dostępne, pierwszy proces roboczy, aby pobrać to zadanie. Czas przetwarzania kolejki zadań zależy od profilu sprzętu hybrydowego procesu roboczego i obciążenia. Nie można określić określonego pracownika. Hybrydowe procesy robocze elementów Runbook nie udostępniają wielu limitów, które są dostępne w piaskownicach platformy Azure. Nie mają one tych samych limitów dotyczących miejsca na dysku, pamięci lub gniazd sieciowych. Hybrydowe procesy robocze elementów Runbook są ograniczone przez zasoby samego hybrydowego procesu roboczego elementu Runbook. Ponadto hybrydowe procesy robocze elementu Runbook nie współdzielą 180-minutowy dozwolony czas [udziału](automation-runbook-execution.md#fair-share) w piaskownicach systemu Azure. Aby dowiedzieć się więcej na temat limitów usługi dla piaskownic platformy Azure i hybrydowych procesów roboczych elementów Runbook, zobacz stronę [limity](../azure-subscription-service-limits.md#automation-limits) zadań.
+Po uruchomieniu elementu Runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, w której ma ona działać. Każdy proces roboczy w grupie sonduje Azure Automation, aby sprawdzić, czy jakieś zadania są dostępne. Jeśli zadanie jest dostępne, pierwszy proces roboczy, aby pobrać to zadanie. Czas przetwarzania kolejki zadań zależy od profilu sprzętu hybrydowego procesu roboczego i obciążenia. Nie można określić określonego pracownika. Hybrydowe procesy robocze elementów Runbook nie udostępniają wielu limitów, które są dostępne w piaskownicach platformy Azure. Nie mają one tych samych limitów dotyczących miejsca na dysku, pamięci lub gniazd sieciowych. Hybrydowe procesy robocze elementów Runbook są ograniczone przez zasoby samego hybrydowego procesu roboczego elementu Runbook. Ponadto hybrydowe procesy robocze elementu Runbook nie współdzielą 180-minutowy dozwolony czas [udziału](automation-runbook-execution.md#fair-share) w piaskownicach systemu Azure. Aby dowiedzieć się więcej na temat limitów usługi dla piaskownic platformy Azure i hybrydowych procesów roboczych elementów Runbook, zobacz stronę [limity](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) zadań.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook
 

@@ -2,18 +2,18 @@
 title: Tworzenie klastrów Apache Hadoop przy użyciu interfejsu API REST platformy Azure — Azure
 description: Dowiedz się, jak tworzyć klastry usługi HDInsight, przesyłając szablony Azure Resource Manager do interfejsu API REST platformy Azure.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435528"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Tworzenie klastrów Apache Hadoop przy użyciu interfejsu API REST platformy Azure
 
@@ -216,7 +216,7 @@ Ten przykład jest używany w procedurach przedstawionych w tym dokumencie. Zast
 
 Wykonaj kroki opisane w temacie Wprowadzenie do [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) i nawiąż połączenie z subskrypcją za pomocą polecenia `az login`.
 
-## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 > [!NOTE]  
 > Te kroki są skróconą wersją sekcji *Tworzenie nazwy głównej usługi z hasłem* w [interfejsie wiersza polecenia Użyj platformy Azure, aby utworzyć nazwę główną usługi do uzyskiwania dostępu do zasobów](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) . W tych krokach opisano tworzenie jednostki usługi, która jest używana do uwierzytelniania w interfejsie API REST platformy Azure.
@@ -227,7 +227,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie do [interfejsu wiersza polecenia pl
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    Z listy wybierz subskrypcję, której chcesz użyć, i zanotuj kolumny **Subscription_ID** i __Tenant_ID__ . Zapisz te wartości.
+    Z listy wybierz subskrypcję, której chcesz użyć, a następnie zanotuj **Subscription_ID** i __Tenant_ID__ kolumny. Zapisz te wartości.
 
 2. Użyj następującego polecenia, aby utworzyć aplikację w Azure Active Directory.
 
@@ -286,7 +286,7 @@ Dokument JSON zwrócony przez to żądanie zawiera element o nazwie **access_tok
 }
 ```
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Aby utworzyć grupę zasobów, należy wykonać następujące czynności.
 
@@ -343,7 +343,7 @@ To polecenie zwraca dokument JSON zawierający informacje o operacji wdrażania.
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](hdinsight-hadoop-create-linux-clusters-portal.md).
+W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -352,7 +352,6 @@ Teraz, gdy klaster usługi HDInsight został pomyślnie utworzony, Skorzystaj z 
 ### <a name="apache-hadoop-clusters"></a>Klastry Apache Hadoop
 
 * [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z Apache świni z usługą HDInsight](hadoop/hdinsight-use-pig.md)
 * [Korzystanie z MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase

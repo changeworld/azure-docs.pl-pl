@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425096"
 ---
-# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Obsługa administracyjna chmury pilotażowej dla istniejącego synchronizowanego lasu usługi AD 
+# <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotażowa aprowizacja w chmurze dla istniejącego zsynchronizowanego lasu usługi AD 
 
 Ten samouczek przeprowadzi Cię przez pilotażowe Inicjowanie obsługi administracyjnej chmury dla Active Directory lasu testowego, która jest już synchronizowana przy użyciu usługi Azure Active Directory (Azure AD) Connect Sync.
 
@@ -86,7 +86,7 @@ Synchronizacja Azure AD Connect synchronizuje zmiany występujące w katalogu lo
     ![Reguła niestandardowa](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Na stronie reguły **sprzężenia** kliknij przycisk **dalej**.
- 6. Na stronie **przekształcenia** Dodaj stałą transformację: przepływaj do cloudNoFlow atrybutu. Kliknij pozycję **Add** (Dodaj).
+ 6. Na stronie **przekształcenia** Dodaj stałą transformację: przepływaj do cloudNoFlow atrybutu. Kliknij pozycję **Dodaj**.
  ![](media/how-to-cloud-custom-user-rule/user4.png) regułę niestandardową</br>
 
 Należy wykonać te same czynności dla wszystkich typów obiektów (użytkownik, Grupa i kontakt). Powtórz kroki według skonfigurowanego łącznika usługi AD/dla każdego lasu usługi AD. 
@@ -119,21 +119,6 @@ Należy wykonać te same czynności dla wszystkich typów obiektów (użytkownik
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Zainstaluj agenta aprowizacji Azure AD Connect
 1. Zaloguj się na serwerze, który będzie używany z uprawnieniami administratora przedsiębiorstwa.  Jeśli używasz podstawowego samouczka [środowiska usług AD i Azure](tutorial-basic-ad-azure.md) , będzie on CP1.
-2. Pobierz [tutaj](https://go.microsoft.com/fwlink/?linkid=2109037)agenta aprowizacji Azure AD Connect w chmurze.
-3. Uruchamianie Azure AD Connect aprowizacji w chmurze (AADConnectProvisioningAgent. Installer)
-3. Na ekranie powitalnym **Zaakceptuj** postanowienia licencyjne, a następnie kliknij przycisk **Instaluj**.</br>
-![Ekran powitalny](media/how-to-install/install1.png)</br>
-
-4. Po zakończeniu tej operacji zostanie uruchomiony Kreator konfiguracji.  Zaloguj się przy użyciu konta administratora globalnego usługi Azure AD.
-5. Na ekranie **połącz Active Directory** kliknij pozycję **Dodaj katalog** , a następnie zaloguj się przy użyciu konta administratora Active Directory.  Ta operacja spowoduje dodanie katalogu lokalnego.  Kliknij przycisk **Dalej**.</br>
-![Ekran powitalny](media/how-to-install/install3.png)</br>
-
-6. Na ekranie **Konfiguracja ukończona** kliknij przycisk **Potwierdź**.  Ta operacja spowoduje zarejestrowanie i ponowne uruchomienie agenta.</br>
-![Ekran powitalny](media/how-to-install/install4.png)</br>
-
-7. Po zakończeniu tej operacji powinna zostać wyświetlona informacja o **tym, że została pomyślnie zweryfikowana.**  Możesz kliknąć przycisk **Zakończ**.</br>
-![Ekran powitalny](media/how-to-install/install5.png)</br>
-8. Jeśli nadal widzisz początkowy ekran powitalny, kliknij przycisk **Zamknij**. 1. Zaloguj się na serwerze, który będzie używany z uprawnieniami administratora przedsiębiorstwa.
 2. Pobierz [tutaj](https://go.microsoft.com/fwlink/?linkid=2109037)agenta aprowizacji Azure AD Connect w chmurze.
 3. Uruchamianie Azure AD Connect aprowizacji w chmurze (AADConnectProvisioningAgent. Installer)
 3. Na ekranie powitalnym **Zaakceptuj** postanowienia licencyjne, a następnie kliknij przycisk **Instaluj**.</br>

@@ -3,23 +3,23 @@ title: Instalowanie i używanie programu Azure IoT Explorer | Microsoft Docs
 description: Zainstaluj narzędzie Azure IoT Explorer i użyj go do współpracy z urządzeniami z programem IoT Plug and Play w wersji zapoznawczej podłączonym do centrum IoT Hub.
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679853"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529630"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalowanie i korzystanie z programu Azure IoT Explorer
 
 Program Azure IoT Explorer jest graficznym narzędziem do współdziałania z urządzeniami w wersji zapoznawczej IoT Plug and Play i testowania. Po zainstalowaniu narzędzia na komputerze lokalnym można używać go do nawiązywania połączenia z urządzeniem. Możesz użyć narzędzia, aby wyświetlić dane telemetryczne wysyłane przez urządzenie, współpracować z właściwościami urządzenia i wywoływać polecenia.
 
-W tym artykule pokazano, jak:
+W tym artykule wyjaśniono, jak:
 
 - Zainstaluj i skonfiguruj narzędzie Azure IoT Explorer.
 - Użyj narzędzia, aby korzystać z i testować urządzenia.
@@ -93,7 +93,7 @@ Ta sekcja zawiera karty **tożsamość urządzenia**, **dane** **telemetrii, dan
 
 Możesz użyć narzędzia, aby wyświetlić wystąpienie cyfrowego przędzenia urządzenia. W przypadku urządzenia Plug and Play IoT wszystkie interfejsy skojarzone z modelem możliwości urządzenia są wyświetlane w tej sekcji Narzędzia. Wybierz interfejs, aby rozwinąć odpowiednie elementy podstawowe [Plug and Play IoT](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL).
 
-### <a name="interface"></a>Interfejsu
+### <a name="interface"></a>Interface
 
 Na stronie **interfejs** można wyświetlić definicję JSON interfejsu.
 

@@ -1,6 +1,7 @@
 ---
-title: Artykuł dotyczący znanych problemów/ograniczeń migracji z migracją online do Azure Database for MySQL | Microsoft Docs
-description: Informacje o znanych problemach/ograniczeniach migracji z migracją online do Azure Database for MySQL.
+title: 'Znane problemy: migracje online do Azure Database for MySQL'
+titleSuffix: Azure Database Migration Service
+description: Informacje o znanych problemach i ograniczeniach migracji z migracją online do Azure Database for MySQL podczas korzystania z Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: 39c1928f1d38276418b2e1a3e766c4b9d8a0d8d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 905a14bd78d120e27ebc4d44ede86e9f0e3783cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437842"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Znane problemy/ograniczenia migracji z migracją online do usługi Azure DB for MySQL
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Problemy z migracją w trybie online & ograniczenia dotyczące usługi Azure DB dla programu MySQL z Azure Database Migration Service
 
 Znane problemy i ograniczenia związane z migracją w trybie online z programu MySQL do Azure Database for MySQL są opisane w poniższych sekcjach.
 
 ## <a name="online-migration-configuration"></a>Konfiguracja migracji w trybie online
+
 
 - Źródłowa wersja serwera MySQL musi być w wersji 5.6.35, 5.7.18 lub nowszej
 - Azure Database for MySQL obsługuje:

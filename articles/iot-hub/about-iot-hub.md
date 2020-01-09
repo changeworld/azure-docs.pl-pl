@@ -8,14 +8,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 0dde7bd9bd3372f0f5eddbbd56727eca3ae4a9dd
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950461"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647411"
 ---
-# <a name="what-is-azure-iot-hub"></a>Czym jest usługa Azure IoT Hub?
+# <a name="what-is-azure-iot-hub"></a>Co jest Azure IoT Hub?
 
 Usługa IoT Hub jest usługą zarządzaną, hostowaną w chmurze, która działa jako centrum komunikatów w dwukierunkowej komunikacji między aplikacją IoT a zarządzanymi przez nią urządzeniami. Za pomocą usługi Azure IoT Hub możesz tworzyć rozwiązania IoT zapewniające niezawodną i bezpieczną komunikację między milionami urządzeń IoT a hostowanym w chmurze zapleczem rozwiązania. Z usługą IoT Hub możesz połączyć praktycznie każde urządzenie.
 
@@ -25,7 +25,7 @@ Możliwości usługi IoT Hub ułatwiają tworzenie skalowalnych, kompleksowych r
 
 ## <a name="scale-your-solution"></a>Skalowanie rozwiązania
 
-Usługa IoT Hub może zarządzać milionami równocześnie połączonych urządzeń i obsługiwać miliony zdarzeń na sekundę w celu obsługi obciążeń IoT. Aby uzyskać więcej informacji na temat skalowania IoT Hub, zobacz [IoT Hub skalowanie](iot-hub-scaling.md?branch=release-iotbasic). Aby dowiedzieć się więcej na temat wielu warstw usługi oferowanych przez IoT Hub i jak najlepiej dopasować się do potrzeb skalowalności, zapoznaj [](https://azure.microsoft.com/pricing/details/iot-hub/)się z cennikiem.
+Usługa IoT Hub może zarządzać milionami równocześnie połączonych urządzeń i obsługiwać miliony zdarzeń na sekundę w celu obsługi obciążeń IoT. Aby uzyskać więcej informacji na temat skalowania IoT Hub, zobacz [IoT Hub skalowanie](iot-hub-scaling.md?branch=release-iotbasic). Aby dowiedzieć się więcej na temat wielu warstw usługi oferowanych przez IoT Hub i jak najlepiej dopasować się do potrzeb skalowalności, zapoznaj się z [cennikiem](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Zabezpieczanie komunikacji
 
@@ -81,7 +81,7 @@ Możesz zarządzać urządzeniami połączonymi z usługą IoT Hub za pomocą sz
 
 Obowiązuje [umowa dotycząca poziomu usług dla usługi IoT Hub](https://azure.microsoft.com/support/legal/sla/iot-hub/) gwarantująca dostępność na poziomie 99,9%. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
 
-## <a name="connect-your-devices"></a>Łączenie urządzeń
+## <a name="connect-your-devices"></a>Podłącz swoje urządzenia
 
 Za pomocą bibliotek [zestawu SDK urządzeń Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) możesz tworzyć aplikacje działające na Twoich urządzeniach i wchodzące w interakcje z usługą IoT Hub. Do obsługiwanych platform należy wiele dystrybucji systemów Linux i Windows oraz systemów operacyjnych czasu rzeczywistego. Obsługiwane języki:
 
@@ -111,7 +111,7 @@ Jeśli w rozwiązaniu nie można użyć obsługiwanych protokołów, możesz roz
 
 W każdej subskrypcji platformy Azure obowiązują domyślne limity przydziału mające uniemożliwiać nadużywanie usług. Te limity mogą mieć wpływ na zakres rozwiązania IoT. Bieżący limit subskrypcji na subskrypcję to 50 centrów IoT na subskrypcję. Możesz zażądać zwiększenia limitu przydziału, kontaktując się z pomocą techniczną. Aby uzyskać więcej informacji, zobacz [IoT Hub przydziałów i ograniczania przepustowości](iot-hub-devguide-quotas-throttling.md). Aby uzyskać więcej informacji na temat limitów przydziału, zobacz jeden z następujących artykułów:
 
-* [Limity usług subskrypcji platformy Azure](../azure-subscription-service-limits.md)
+* [Limity usług subskrypcji platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [Ograniczanie przepustowości w usłudze IoT Hub](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
@@ -119,4 +119,8 @@ W każdej subskrypcji platformy Azure obowiązują domyślne limity przydziału 
 
 Aby wypróbować kompleksowe rozwiązanie IoT, zapoznaj się z przewodnikami Szybki start:
 
-* [Szybki start: Wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-node.md)
+* [Szybki start: Wysyłanie danych telemetrycznych z urządzenia do centrum IoT](quickstart-send-telemetry-node.md)
+
+Aby dowiedzieć się więcej o sposobach kompilowania i wdrażania rozwiązań IoT za pomocą usługi Azure IoT, odwiedź stronę:
+
+* [Podstawy: technologie i rozwiązania Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).

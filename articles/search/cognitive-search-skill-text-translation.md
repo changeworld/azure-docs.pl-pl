@@ -1,24 +1,21 @@
 ---
-title: Umiejętność tłumaczenia tekstu (wersja zapoznawcza)
+title: Umiejętność tłumaczenia tekstu
 titleSuffix: Azure Cognitive Search
-description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze. Ta umiejętność jest obecnie dostępna w publicznej wersji zapoznawczej.
+description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460771"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Umiejętność tłumaczenia tekstu
-
-> [!IMPORTANT] 
-> Ta umiejętność jest obecnie dostępna w publicznej wersji zapoznawczej. Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza](search-api-preview.md) zapewnia funkcje w wersji zapoznawczej. Dostępna jest obecnie ograniczona obsługa portalu i nie ma obsługi zestawu SDK platformy .NET.
 
 Umiejętność **tłumaczenia tekstu** oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy. Ta umiejętność używa [interfejs API tłumaczenia tekstu w usłudze translator v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostępnych w Cognitive Services.
 
@@ -39,7 +36,7 @@ Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych p
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
 
-W parametrach jest rozróżniana wielkość liter.
+W nazwach parametrów jest rozróżniana wielkość liter.
 
 | Dane wejściowe                | Opis |
 |---------------------|-------------|
@@ -151,7 +148,7 @@ Jeśli podano nieobsługiwany kod języka dla języka "from" lub "do", zostanie 
 Jeśli tekst jest pusty, zostanie wygenerowane ostrzeżenie.
 Jeśli tekst jest większy niż 50 000 znaków, zostaną przetłumaczone tylko pierwsze 50 000 znaków i zostanie wygenerowane ostrzeżenie.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

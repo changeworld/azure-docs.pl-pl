@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start — używanie programu Azure PowerShell do tworzenia kolejki usługi Service Bus | Microsoft Docs
+title: używanie programu Azure PowerShell do tworzenia kolejki usługi Service Bus
 description: Z tego przewodnika Szybki start dowiesz się, jak użyć programu Azure PowerShell do utworzenia kolejki usługi Service Bus. Następnie użyjesz przykładowej aplikacji, aby wysyłać komunikaty do kolejki i odbierać komunikaty z kolejki.
 services: service-bus-messaging
 author: spelluru
@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 80cef3efd65a3f68dba1856a892a9a120f7d95cd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426939"
 ---
-# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Szybki start: używanie programu Azure PowerShell do tworzenia kolejki usługi Service Bus
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Szybki Start: Tworzenie kolejki Service Bus za pomocą Azure PowerShell
 W tym przewodniku Szybki start opisano, jak wysyłać i odbierać komunikaty z i do kolejki usługi Service Bus, używając programu PowerShell do utworzenia przestrzeni nazw na potrzeby przesyłania komunikatów i kolejki w ramach tej przestrzeni nazw, a także jak uzyskać poświadczenia autoryzacji do tej przestrzeni nazw. Następnie w procedurze przedstawiono, jak wysyłać i odbierać komunikaty z tej kolejki przy użyciu [biblioteki platformy .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -30,12 +30,12 @@ W tym przewodniku Szybki start opisano, jak wysyłać i odbierać komunikaty z i
 Aby ukończyć kroki tego samouczka, upewnij się, że zainstalowano następujące elementy:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][]. 
-- [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy. Tworzenie przykładowej, który wysyła wiadomości i odbiera wiadomości z kolejki przy użyciu programu Visual Studio. Przykład służy do testowania kolejki utworzonej w portalu. 
+- [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](https://www.visualstudio.com/vs) lub nowszy. Używasz programu Visual Studio do tworzenia przykładu, który wysyła wiadomości do i odbiera komunikat z kolejki. Przykładem jest testowanie kolejki utworzonej w portalu. 
 - [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
 
-Ten przewodnik Szybki start wymaga używania najnowszej wersji programu Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell][]. Jeśli znasz usługę Azure Cloud Shell, można użyć go bez konieczności instalowania programu Azure PowerShell na komputerze. Aby uzyskać szczegółowe informacje o usłudze Azure Cloud Shell, zobacz [Omówienie usługi Azure Cloud Shell](../cloud-shell/overview.md)
+Ten przewodnik Szybki start wymaga używania najnowszej wersji programu Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell][]. Jeśli znasz Azure Cloud Shell, możesz go używać bez instalowania Azure PowerShell na komputerze. Aby uzyskać szczegółowe informacje na temat Azure Cloud Shell, zobacz [omówienie Azure Cloud Shell](../cloud-shell/overview.md)
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 1. Najpierw, o ile ta czynność nie została jeszcze wykonana, należy zainstalować moduł programu PowerShell usługi Service Bus:
 
@@ -78,7 +78,7 @@ Po uruchomieniu polecenia cmdlet `Get-AzServiceBusKey` skopiuj i wklej parametry
 
 ## <a name="send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów
 
-Po utworzeniu przestrzeni nazw i kolejki (i jeśli masz niezbędne poświadczenia) możesz wysyłać i odbierać komunikaty. Kod można zbadać w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
+Po utworzeniu przestrzeni nazw i kolejki (i jeśli masz niezbędne poświadczenia) możesz wysyłać i odbierać komunikaty. Kod można analizować w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
 
 Aby uruchomić kod, wykonaj następujące czynności:
 
@@ -128,7 +128,7 @@ Ta sekcja zawiera więcej szczegółów na temat operacji wykonywanych przez prz
 
 ### <a name="get-connection-string-and-queue"></a>Pobieranie kolejki i parametrów połączenia
 
-Nazwa ciągu i kolejki połączenia są przekazywane do `Main()` metodę jako argumenty wiersza polecenia. Element `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
+Parametry połączenia i nazwa kolejki są przekazane do metody `Main()` jako argumenty wiersza polecenia. Element `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
 
 ```csharp
 static void Main(string[] args)
@@ -165,7 +165,7 @@ Metoda `Main()` następnie rozpoczyna asynchroniczną pętlę komunikatów, `Mai
 
 ### <a name="message-loop"></a>Pętla komunikatów
 
-Metoda MainAsync() tworzy klienta kolejki za pomocą argumentów wiersza polecenia, wywołuje odbieranie obsługi wiadomości o nazwie `RegisterOnMessageHandlerAndReceiveMessages()`, a następnie wysyła zestaw komunikatów:
+Metoda MainAsync () tworzy klienta kolejki z argumentami wiersza polecenia, wywołuje procedurę obsługi komunikatów o nazwie `RegisterOnMessageHandlerAndReceiveMessages()`i wysyła zestaw komunikatów:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -256,11 +256,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
+> Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu w celu wysyłania i odbierania wiadomości, przejdź do samouczków w **wysyłania i odbierania komunikatów** sekcji. 
+W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu w celu wysyłania i odbierania wiadomości, przejdź do samouczków w sekcji **wysyłanie i odbieranie komunikatów** . 
 
 > [!div class="nextstepaction"]
 > [Wysyłanie i odbieranie komunikatów](service-bus-dotnet-get-started-with-queues.md)

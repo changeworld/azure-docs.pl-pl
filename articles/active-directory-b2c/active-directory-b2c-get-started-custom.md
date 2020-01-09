@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f802c2d1f986f5da62f4ffd3205523423f04e49c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367896"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w Azure Active Directory B2C
 
@@ -31,10 +31,10 @@ ms.locfileid: "74664067"
 
 ## <a name="add-signing-and-encryption-keys"></a>Dodaj klucze podpisywania i szyfrowania
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-1. Użyj filtru **katalogów i subskrypcji** w górnym menu, aby wybrać katalog, który zawiera dzierżawę Azure AD B2C.
-1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
-1. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości** z okienka **zasady** .
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. Na stronie Przegląd w obszarze **zasady**wybierz pozycję **platforma obsługi tożsamości**.
 
 ### <a name="create-the-signing-key"></a>Utwórz klucz podpisywania
 
@@ -77,10 +77,9 @@ Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżą
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 
-1. Zaznacz **wszystkie usługi** w lewym górnym rogu Azure Portal.
-1. W polu wyszukiwania wpisz `Azure Active Directory`.
-1. W wynikach wyszukiwania wybierz pozycję **Azure Active Directory**.
-1. W obszarze **Zarządzaj** w menu po lewej stronie wybierz pozycję **rejestracje aplikacji (starsza wersja)** .
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure Active Directory**.
+1. W menu przegląd **Azure Active Directory** w obszarze **zarządzaj**wybierz pozycję **rejestracje aplikacji (starsza wersja)** .
 1. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 1. W obszarze **Nazwa**wprowadź `IdentityExperienceFramework`.
 1. W obszarze **Typ aplikacji**wybierz pozycję **aplikacja sieci Web/interfejs API**.

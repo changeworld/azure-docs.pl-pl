@@ -5,16 +5,16 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6ff1dac312bcb4df1e1afc9679df09fc8a2b28ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74897366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437097"
 ---
-# <a name="about-expressroute-fastpath"></a>Informacje o ExpressRoute FastPath
+# <a name="about-expressroute-fastpath"></a>Informacje o usłudze ExpressRoute FastPath
 
 Brama sieci wirtualnej ExpressRoute jest przeznaczona do wymiany tras sieciowych i kierowania ruchu sieciowego. FastPath zaprojektowano w celu poprawienia wydajności ścieżki danych między siecią lokalną i siecią wirtualną. Po włączeniu FastPath wysyła ruch sieciowy bezpośrednio do maszyn wirtualnych w sieci wirtualnej, pomijając bramę.
 
@@ -26,12 +26,22 @@ FastPath jest dostępny we wszystkich obwodach ExpressRoute.
 
 ### <a name="gateways"></a>Bramy
 
-FastPath nadal wymaga utworzenia bramy sieci wirtualnej w celu wymiany tras między siecią wirtualną i siecią lokalną. Aby uzyskać więcej informacji o bramach sieci wirtualnych i ExpressRoute, zobacz [ExpressRoute bram sieci wirtualnej](expressroute-about-virtual-network-gateways.md).
+FastPath nadal wymaga utworzenia bramy sieci wirtualnej w celu wymiany tras między siecią wirtualną i siecią lokalną. Aby uzyskać więcej informacji o bramach sieci wirtualnych i ExpressRoute, w tym informacje o wydajności i jednostkach SKU bramy, zobacz [ExpressRoute bram sieci wirtualnej](expressroute-about-virtual-network-gateways.md).
 
-Brama sieci wirtualnej musi być:
+Aby można było skonfigurować FastPath, Brama sieci wirtualnej musi być:
 
 * Niesamowita wydajność
 * ErGw3AZ
+
+#### <a name="aggthroughput"></a>Szacowany wydajności według jednostek SKU bramy
+W poniższej tabeli przedstawiono typy bram i szacowaną parametrów. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym.
+
+[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
+
+> [!IMPORTANT]
+> Wydajność aplikacji zależy od wielu czynników, takich jak opóźnienie end-to-end i liczba przepływów ruchu, który aplikacja zostanie otwarta. Liczby w tabeli reprezentują górną granicę, którą aplikacji może teoretycznie osiągnąć w idealne środowisko.
+>
+>
 
 ## <a name="supported-features"></a>Obsługiwane funkcje
 

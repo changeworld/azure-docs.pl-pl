@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875445"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663040"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
@@ -222,7 +222,7 @@ Możesz utworzyć zasób udostępnionej galerii obrazów przy użyciu szablonów
 
 Aby wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów między subskrypcjami, do których masz dostęp na Azure Portal, wykonaj następujące czynności:
 
-1. Otwórz [portal Azure](https://portal.azure.com).
+1. Otwórz [Portalu Azure](https://portal.azure.com).
 1. Przejdź do pozycji **wszystkie zasoby**.
 1. Wybierz wszystkie subskrypcje, w ramach których chcesz wyświetlić listę wszystkich zasobów.
 1. Wyszukaj zasoby typu **Galeria prywatna**.
@@ -239,9 +239,9 @@ Aby wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów mi�
  
 Tak. Istnieją 3 scenariusze na podstawie typów obrazów, które mogą mieć.
 
- Scenariusz 1. Jeśli masz obraz zarządzany, możesz utworzyć definicję obrazu i wersję obrazu.
+ Scenariusz 1. Jeśli masz zarządzany obraz w tej samej subskrypcji co SIG, możesz utworzyć definicję obrazu i wersję obrazu.
 
- Scenariusz 2. Jeśli masz obraz niezarządzany, możesz utworzyć z niego obraz zarządzany, a następnie utworzyć definicję obrazu i wersję obrazu. 
+ Scenariusz 2. Jeśli masz niezarządzany obraz w tej samej subskrypcji co rekord SIG, możesz utworzyć zarządzany obraz z tego elementu, a następnie utworzyć definicję obrazu i wersję obrazu. 
 
  Scenariusz 3. Jeśli masz dysk VHD w lokalnym systemie plików, musisz przekazać wirtualny dysk twardy do zarządzanego obrazu, a następnie utworzyć definicję obrazu i wersję obrazu.
 

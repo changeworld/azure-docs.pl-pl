@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: c5675dea2676122d96276b7cdb90b4c3c5340c7a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961201"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646765"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Co to jest link do sieci wirtualnej?
 
@@ -33,7 +33,7 @@ Jedna prywatna strefa DNS może mieć wiele sieci wirtualnych rozpoznawania, a s
 
 ## <a name="limits"></a>Limity
 
-Aby zrozumieć, ile sieci rejestrowania i rozpoznawania można połączyć z prywatnymi strefami DNS, zobacz [limity Azure DNS](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+Aby zrozumieć, ile sieci rejestrowania i rozpoznawania można połączyć z prywatnymi strefami DNS, zobacz [limity Azure DNS](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="other-considerations"></a>Inne zagadnienia
 

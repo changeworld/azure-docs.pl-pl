@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji internetowej Flask za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB i zestawu SDK języka Python
+title: Utwórz aplikację sieci Web z kolbą Python przy użyciu interfejsu API Azure Cosmos DB dla MongoDB
 description: Przykładowy kod Python Flask, którego można używać do nawiązywania połączeń i wykonywania zapytań przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 author: markjbrown
 ms.author: mjbrown
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 2bd8fa81d0825e604c42c54c0f789b7939206804
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8e58d0bdaaa5e4fb4564a68b46de7887ec28336d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445495"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Szybki Start: Tworzenie aplikacji w języku Python przy użyciu interfejsu API Azure Cosmos DB dla MongoDB
 
@@ -58,7 +58,7 @@ Teraz sklonujemy aplikację Flask bazy danych MongoDB z repozytorium GitHub, ust
     cd "C:\git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze.
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze.
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git
@@ -72,7 +72,7 @@ Teraz sklonujemy aplikację Flask bazy danych MongoDB z repozytorium GitHub, ust
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Uruchamianie aplikacji internetowej](#run-the-web-app). 
+Ten krok jest opcjonalny. Jeśli chcesz się dowiedzieć, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Uruchamianie aplikacji internetowej](#run-the-web-app). 
 
 Wszystkie poniższe fragmenty kodu pochodzą z pliku app.py i używają parametrów połączenia lokalnego emulatora usługi Azure Cosmos DB. Hasło musi zostać podzielone, jak pokazano poniżej, aby uwzględnić ukośniki, których w przeciwnym razie nie można by było przeanalizować.
 
@@ -128,7 +128,7 @@ Jeśli chcesz przetestować kod na aktywnym koncie usługi Cosmos, przejdź do w
 
 5. Na końcu skopiuj wartość **password** z portalu i przypisz ją do klucza **password** w pliku **app.py**.
 
-Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do nawiązania komunikacji z usługą Cosmos DB. Możesz ją uruchomić tak jak wcześniej.
+Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do komunikowania się z usługą Cosmos DB. Możesz ją uruchomić tak jak wcześniej.
 
 ## <a name="deploy-to-azure"></a>Wdrażanie na platformie Azure
 
@@ -166,4 +166,4 @@ Jeśli nie chcesz tworzyć rozwidlenia tego repozytorium, możesz też kliknąć
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos i uruchamiania aplikacji Flask. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importuj dane usługi MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
+> [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)

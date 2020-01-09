@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia LinkedIn Sales Navigator | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i narzędzia LinkedIn Sales Navigator.
+title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu narzędzia do nawigatora sprzedaży w serwisie LinkedIn | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i nawigatorem sprzedaży w serwisie LinkedIn.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,175 +13,154 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38ce83df4d4de6d7816ee969a4fee153ad5457d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d8293b23559860e70191576db13c3cd14f520e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097998"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430882"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą narzędzia LinkedIn Sales Navigator
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) za pomocą nawigatora sprzedaży w serwisie LinkedIn
 
-W tym samouczku dowiesz się, jak zintegrować narzędzia LinkedIn Sales Navigator w usłudze Azure Active Directory (Azure AD).
-Integrowanie narzędzia LinkedIn Sales Navigator z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować nawigatora sprzedaży serwisu LinkedIn z Azure Active Directory (Azure AD). Po zintegrowaniu z usługą Azure AD nawigatora sprzedaży w serwisie LinkedIn można:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do narzędzia LinkedIn Sales Navigator.
-* Użytkownikom można automatycznie zalogowany do narzędzia LinkedIn Sales Navigator (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do nawigatora sprzedaży w serwisie LinkedIn.
+* Zezwól użytkownikom na automatyczne logowanie do nawigatora sprzedaży w serwisie LinkedIn przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą narzędzia LinkedIn Sales Navigator, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* Narzędzia LinkedIn Sales Navigator logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja usługi LinkedIn Sales Navigator — Rejestracja jednokrotna (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje narzędzia LinkedIn Sales Navigator **dodatkiem SP oraz dostawców tożsamości** jednokrotne logowanie inicjowane przez
+* Nawigator sprzedaży serwisu LinkedIn obsługuje usługę **SP i dostawcy tożsamości** zainicjowane przez usługę SSO
+* Nawigator sprzedaży w serwisie LinkedIn obsługuje funkcję aprowizacji użytkowników **just in Time**
+* Nawigator sprzedaży w serwisie LinkedIn obsługuje [ **Automatyczne** Inicjowanie obsługi użytkowników](linkedinsalesnavigator-provisioning-tutorial.md)
 
-* Obsługuje narzędzia LinkedIn Sales Navigator **Just In Time** aprowizacji użytkowników
+## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>Dodawanie nawigatora sprzedaży serwisu LinkedIn z galerii
 
-* Obsługuje narzędzia LinkedIn Sales Navigator [ **automatyczne** aprowizacji użytkowników](linkedinsalesnavigator-provisioning-tutorial.md)
+Aby skonfigurować integrację usługi LinkedIn Sales Navigator z usługą Azure AD, musisz dodać nawigatora sprzedaży serwisu LinkedIn z galerii do listy zarządzanych aplikacji SaaS.
 
-## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>Dodawania narzędzia LinkedIn Sales Navigator z galerii
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Nawigator sprzedaży w serwisie LinkedIn** w polu wyszukiwania.
+1. Wybierz kolejno pozycje **LinkedIn Sales Navigator** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-Aby skonfigurować integrację z narzędzia LinkedIn Sales Navigator w usłudze Azure AD, należy dodać narzędzia LinkedIn Sales Navigator z galerii z listą zarządzanych aplikacji SaaS.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-sales-navigator"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla nawigatora sprzedaży w serwisie LinkedIn
 
-**Aby dodać narzędzia LinkedIn Sales Navigator z galerii, wykonaj następujące czynności:**
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą nawigatora sprzedaży LinkedIn przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w usłudze LinkedIn Sales Navigator.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą nawigatora sprzedaży w serwisie LinkedIn, wykonaj następujące bloki konstrukcyjne:
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj usługę LinkedIn Sales Navigator — logowanie JEDNOkrotne](#configure-linkedin-sales-navigator-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego nawigatora sprzedaży w serwisie LinkedIn](#create-linkedin-sales-navigator-test-user)** , aby dysponować odpowiednikiem B. Simon w usłudze LinkedIn Sales Navigator, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji w usłudze **LinkedIn Sales Navigator** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-4. W polu wyszukiwania wpisz **narzędzia LinkedIn Sales Navigator**, wybierz opcję **narzędzia LinkedIn Sales Navigator** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
-    ![Narzędzia LinkedIn Sales Navigator na liście wyników](common/search-new-app.png)
+    a. W polu tekstowym **Identyfikator** wprowadź wartość **identyfikatora jednostki** . wartość identyfikatora jednostki zostanie skopiowana z portalu LinkedIn w dalszej części tego samouczka.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    b. W polu tekstowym **adres URL odpowiedzi** wprowadź wartość **adresu URL dostępu konsumenta potwierdzenia (ACS** ), a w dalszej części tego samouczka skopiuj wartość adresu URL dostępu do odbiorcy usługi ACS z portalu LinkedIn.
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą narzędzia LinkedIn Sales Navigator w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w serwisie LinkedIn Sales Navigator musi zostać ustanowione.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą narzędzia LinkedIn Sales Navigator, należy wykonać poniższe bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie usługi LinkedIn Sales Navigator logowania jednokrotnego](#configure-linkedin-sales-navigator-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego narzędzia LinkedIn Sales Navigator](#create-linkedin-sales-navigator-test-user)**  — aby odpowiednikiem Britta Simon w narzędzia LinkedIn Sales Navigator połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z narzędzia LinkedIn Sales Navigator, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/)na **narzędzia LinkedIn Sales Navigator** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
-
-    ![LinkedIn Sales Navigator domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
-
-    a. W **identyfikator** tekstu wprowadź **identyfikator jednostki** wartość będzie skopiuj wartość Identyfikatora jednostki z portalu usługi Linkedin wyjaśnione w dalszej części tego samouczka.
-
-    b. W **adres URL odpowiedzi** tekstu wprowadź **adresu Url asercji klienta dostępu (ACS)** wartości, zostanie skopiowany adres Url asercji klienta dostępu (ACS) wartość z portalu usługi Linkedin wyjaśnione w dalszej części tego samouczka.
-
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
-
-    ![LinkedIn Sales Navigator domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
-6. Narzędzia LinkedIn Sales Navigator aplikacja oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**. Narzędzia LinkedIn Sales Navigator aplikacja oczekuje nameidentifier mają być mapowane z **user.mail**, więc trzeba edytować mapowanie atrybutów, klikając ikonę edycji i zmienić mapowanie atrybutu.
+1. Aplikacja nawigatora sprzedaży w serwisie LinkedIn oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-7. Ponadto powyżej narzędzia LinkedIn Sales Navigator aplikacja oczekuje kilka więcej atrybutów, które mają być przekazywane w odpowiedzi SAML. W sekcji oświadczenia użytkowników na **atrybutów użytkownika** okna dialogowego, wykonaj następujące kroki, aby dodać atrybut tokenu SAML, jak pokazano w poniższej tabeli:
+1. Oprócz powyższych, aplikacja nawigatora sprzedaży w serwisie LinkedIn oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
 
-    | Name (Nazwa) | Atrybut źródłowy|
+    | Nazwa | Atrybut źródłowy|
     | --- | --- |
     | email| user.mail |
     | department| user.department |
     | firstname| user.givenname |
     | lastname| user.surname |
+    | Unikatowy identyfikator użytkownika | user.mail |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![image](common/new-save-attribute.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
-
-    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
-
-    d. Pozostaw pole **Przestrzeń nazw** puste.
-
-    d. Dla opcji Źródło wybierz wartość **Atrybut**.
-
-    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
-
-    f. Kliknij przycisk **OK**.
-
-    g. Kliknij pozycję **Zapisz**.
-
-8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
-
-    ![Link pobierania certyfikatu](common/metadataxml.png)
-
-9. Na **Konfigurowanie narzędzia LinkedIn Sales Navigator** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **Konfigurowanie nawigatora sprzedaży w serwisie LinkedIn** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    a. Adres URL logowania
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-    b. Identyfikator usługi Azure AD
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-    c. Adres URL wylogowywania
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij przycisk **Utwórz**.
 
-### <a name="configure-linkedin-sales-navigator-single-sign-on"></a>Konfigurowanie usługi LinkedIn Sales Navigator logowania jednokrotnego
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-1. W oknie przeglądarki internetowej innej, zaloguj się do Twojej **narzędzia LinkedIn Sales Navigator** witryny sieci Web jako administrator.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając dostęp do nawigatora sprzedaży w serwisie LinkedIn.
 
-1. W **Centrum kont** kliknij przycisk **Ustawienia globalne** w obszarze **Ustawienia**. Zaznacz również **Sales Navigator** z listy rozwijanej.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz opcję **Nawigator sprzedaży w serwisie LinkedIn**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
+
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+## <a name="configure-linkedin-sales-navigator-sso"></a>Konfigurowanie rejestracji jednokrotnej w serwisie LinkedIn Sales Navigator
+
+1. W innym oknie przeglądarki sieci Web Zaloguj się do witryny sieci Web **nawigatora sprzedaży** w serwisie LinkedIn jako administrator.
+
+1. W **Centrum kont** kliknij przycisk **Ustawienia globalne** w obszarze **Ustawienia**. Ponadto wybierz pozycję **Nawigator sprzedaży** z listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Kliknij pozycję **lub kliknij tutaj, aby załadować i skopiuj poszczególne pola w formularzu** i wykonaj następujące czynności:
+1. Kliknij **lub kliknij tutaj, aby załadować i skopiować pojedyncze pola z formularza** , i wykonaj następujące czynności:
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
-    a. Kopiuj **identyfikator jednostki** i wklej go w **identyfikator** polu tekstowym **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    a. Skopiuj **Identyfikator jednostki** i wklej go do pola tekstowego **Identyfikator** w **podstawowej konfiguracji SAML** w Azure Portal.
 
-    b. Kopiuj **adresu Url asercji klienta dostępu (ACS)** i wklej go w **adres URL odpowiedzi** polu tekstowym **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    b. Skopiuj **adres URL dostępu konsumenta (ACS) potwierdzenia** i wklej go w polu tekstowym **adres URL odpowiedzi** w **podstawowej konfiguracji SAML** w Azure Portal.
 
-1. Przejdź do sekcji **LinkedIn Admin Settings** (Ustawienia administratora LinkedIn). Przekaż plik XML, który został pobrany z witryny Azure portal, klikając **pliku XML Przekaż** opcji.
+1. Przejdź do sekcji **LinkedIn Admin Settings** (Ustawienia administratora LinkedIn). Przekaż pobrany plik XML z Azure Portal, klikając opcję **Przekaż plik XML** .
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
@@ -189,73 +168,24 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z narzędzia LinkedIn
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+### <a name="create-linkedin-sales-navigator-test-user"></a>Tworzenie użytkownika testowego nawigatora sprzedaży w serwisie LinkedIn
 
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
-
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`. Na przykład: BrittaSimon@contoso.com
-
-    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
-
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do narzędzia LinkedIn Sales Navigator.
-
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **narzędzia LinkedIn Sales Navigator**.
-
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
-
-2. Na liście aplikacji wybierz **narzędzia LinkedIn Sales Navigator**.
-
-    ![Link narzędzia LinkedIn Sales Navigator na liście aplikacji](common/all-applications.png)
-
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
-
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
-
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
-
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
-
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
-
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
-
-### <a name="create-linkedin-sales-navigator-test-user"></a>Tworzenie użytkownika testowego narzędzia LinkedIn Sales Navigator
-
-Połączone Sales Navigator aplikacji obsługuje tylko w aprowizacji użytkowników czas (JIT) i uwierzytelnianie użytkowników są tworzone automatycznie w aplikacji. Aktywuj **automatycznie przypisywać licencje** Aby przypisać licencję do użytkownika.
+Aplikacja połączonego nawigatora sprzedaży obsługuje Inicjowanie obsługi użytkowników just in Time (JIT) i po automatycznym utworzeniu użytkowników uwierzytelniania w aplikacji. Aktywuj **automatyczne przypisywanie licencji** , aby przypisać licencję do użytkownika.
 
    ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka narzędzia LinkedIn Sales Navigator w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze narzędzia LinkedIn Sales Navigator, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Nawigator sprzedaży w serwisie LinkedIn w panelu dostępu należy automatycznie zalogować się do nawigatora sprzedaży w serwisie LinkedIn, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Wypróbuj nawigatora sprzedaży serwisu LinkedIn z usługą Azure AD](https://aad.portal.azure.com/)

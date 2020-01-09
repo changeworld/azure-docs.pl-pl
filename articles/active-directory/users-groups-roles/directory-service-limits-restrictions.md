@@ -1,6 +1,6 @@
 ---
-title: Usługi, limity i ograniczenia — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Ograniczenia używania i inne limity usługi dotyczące usługi Azure Active Directory
+title: Limity i ograniczenia usługi — Azure Active Directory | Microsoft Docs
+description: Ograniczenia użycia i inne limity usługi dla usługi Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,18 +15,18 @@ ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1191fb5c9aefb55896d5c44714f1061ff2674a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64415239"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659648"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Ograniczenia i limity usługi Azure AD
-Ten artykuł zawiera ograniczenia używania i inne limity usługi dotyczące usługi Azure Active Directory (Azure AD). Jeśli potrzebujesz pełnego zestawu limity usługi Microsoft Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md).
+Ten artykuł zawiera ograniczenia użycia i inne limity usługi dla usługi Azure Active Directory (Azure AD). Jeśli szukasz pełnego zestawu Microsoft Azure limitów usługi, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Tworzenie konta na platformie Azure jako organizacja](../fundamentals/sign-up-organization.md)
 * [How Azure subscriptions are associated with Azure AD](../fundamentals/active-directory-how-subscriptions-associated-directory.md) (Na czym polega kojarzenie subskrypcji platformy Azure z usługą Azure AD)

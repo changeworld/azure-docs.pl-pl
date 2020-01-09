@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki Start platformy Azure — tworzenie dedykowanego klastra Event Hubs przy użyciu Azure Portal
+title: Tworzenie dedykowanego klastra Event Hubs przy użyciu Azure Portal
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć klaster usługi Azure Event Hubs przy użyciu Azure Portal.
 services: event-hubs
 documentationcenter: ''
@@ -8,14 +8,14 @@ manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/20/2019
 ms.author: xurui
-ms.openlocfilehash: bde6844962561232e4af51f2b4e803d49bf5398e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dbe34b95652d972a9e75f4ab8f2c208061359ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437225"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Szybki Start: tworzenie dedykowanego klastra Event Hubs przy użyciu Azure Portal 
 Klastry Event Hubs oferują wdrożenia z jedną dzierżawą dla klientów z najbardziej wymaganymi potrzebami przesyłania strumieniowego. Ta oferta ma gwarantowaną umowę SLA na 99,99% i jest dostępna tylko w naszej dedykowanej warstwie cenowej. [Klaster Event Hubs](event-hubs-dedicated-overview.md) może odbierać miliony zdarzeń na sekundę z gwarantowaną pojemnością i drugim opóźnieniem. Przestrzenie nazw i centra zdarzeń utworzone w ramach klastra obejmują wszystkie funkcje standardowej oferty i wiele innych, ale bez ograniczeń związanych z transferem danych przychodzących. Oferta dedykowana obejmuje również popularne funkcje [przechwytywania Event Hubs](event-hubs-capture-overview.md) bez dodatkowych kosztów, co pozwala na automatyczne tworzenie partii i rejestrowanie strumieni danych na [platformie Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) lub [Azure Data Lake Storage generacji 1](../data-lake-store/data-lake-store-overview.md).

@@ -2,18 +2,18 @@
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: 485a76cb91e5146f59e6be592ffd9cbba68e585a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f63510771e4bd71a3ab6cf048bc5fb5296042a4d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183348"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564675"
 ---
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-W tym samouczku rozszerzenie narzędzia IoT platformy Azure służy do zbudowania modułu i utworzyć **obraz kontenera** z plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.
+W tym samouczku użyjesz rozszerzenia narzędzi Azure IoT Tools, aby skompilować moduł i utworzyć **obraz kontenera** na podstawie plików. Następnie ten obraz zostanie wypchnięty do **rejestru**, w którym obrazy są przechowywane i zarządzane. Na koniec obraz zostanie wdrożony z rejestru w celu uruchomienia na urządzeniu usługi IoT Edge.
 
 Do przechowywania obrazów kontenerów możesz użyć dowolnego rejestru zgodnego z platformą Docker. Dwie popularne usługi rejestru Docker to [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) i [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). W tym samouczku używana jest usługa Azure Container Registry.
 
@@ -30,12 +30,12 @@ Jeśli nie masz jeszcze rejestru kontenerów, wykonaj następujące kroki, aby u
    | Grupa zasobów | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
    | Lokalizacja | Wybierz bliską lokalizację. |
    | Administrator | Ustaw na wartość **Włącz**. |
-   | SKU | Wybierz pozycję **Podstawowa**. |
+   | JSZ | Wybierz pozycję **Podstawowa**. |
 
-5. Wybierz pozycję **Utwórz**.
+3. Wybierz pozycję **Utwórz**.
 
-6. Po utworzeniu kontenera rejestru przejdź do niego i wybierz pozycję **Klucze dostępu**.
+4. Po utworzeniu rejestru kontenerów przejdź do niego, a następnie w okienku po lewej stronie wybierz pozycję **klucze dostępu** z menu znajdującego się w obszarze **Ustawienia**.
 
-7. Skopiuj wartości pól **serwer logowania**, **Username**, i **hasło** i zapisywać je w dogodnym miejscu. Użyjesz tych wartości w tym samouczku do zapewniają dostęp do rejestru kontenerów.
+5. Skopiuj wartości dla opcji **serwer logowania**, **Nazwa użytkownika**i **hasło** i Zapisz je w wygodnym miejscu. Te wartości są używane w tym samouczku, aby zapewnić dostęp do rejestru kontenerów.
 
-   ![Kopiowanie logowania serwera, nazwę użytkownika i hasło dla rejestru kontenerów](./media/iot-edge-create-container-registry/registry-access-key.png)
+   ![Kopiuj serwer logowania, nazwę użytkownika i hasło dla rejestru kontenerów](./media/iot-edge-create-container-registry/registry-access-key.png)

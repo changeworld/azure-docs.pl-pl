@@ -1,33 +1,24 @@
 ---
-title: Współużytkowania wątkowości w aktorów usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Wprowadzenie do współużytkowania wątkowości dla elementów Reliable Actors usługi Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Współużytkowania wątkowości na platformie Azure Service Fabric
+description: Wprowadzenie do współużytkowania wątkowości Service Fabric Reliable Actors, sposób logicznego unikania blokowania na podstawie kontekstu wywołania.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725418"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645535"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors współużytkowania wątkowości
-Środowisko uruchomieniowe elementów Reliable Actors, domyślnie umożliwia wielobieżność oparte na kontekście wywołań logicznych. Dzięki temu Aktorzy stanowią współużytkowane, gdy mają one ten sam łańcuch wywołań w kontekście. Na przykład A Aktor wysyła komunikat do aktora B, który wysyła wiadomość do aktora. W ramach przetwarzania wiadomości Jeśli C aktora wywołuje aktora A, komunikat jest współużytkowane, dzięki czemu będzie można. Inne komunikaty, które są częścią kontekstu wywołań różnych zostaną zablokowane na A Aktor, do momentu zakończenia przetwarzania.
+Domyślnie środowisko uruchomieniowe Reliable Actors zezwala na współużytkowania wątkowości na kontekst wywołania logicznego. Pozwala to na współużytkowanie aktorów, jeśli znajdują się w tym samym łańcuchu kontekstu wywołania. Na przykład aktor A wysyła komunikat do aktora B, który wysyła komunikat do aktora C. W ramach przetwarzania wiadomości, jeśli aktor w języku C wywołuje aktora A, komunikat jest współużytkowany, więc będzie dozwolony. Wszystkie inne komunikaty, które są częścią innego kontekstu wywołania, będą blokowane na aktora A do momentu zakończenia przetwarzania.
 
-Dostępne są dwie opcje współużytkowania wątkowości aktora zdefiniowane w `ActorReentrancyMode` wyliczenia:
+Dostępne są dwie opcje aktora współużytkowania wątkowości zdefiniowane w wyliczeniu `ActorReentrancyMode`:
 
 * `LogicalCallContext` (zachowanie domyślne)
-* `Disallowed` — Wyłącza współużytkowania wątkowości
+* `Disallowed` — wyłącza współużytkowania wątkowości
 
 ```csharp
 public enum ActorReentrancyMode
@@ -43,9 +34,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Można skonfigurować współużytkowania wątkowości w `ActorService`tego ustawienia podczas rejestracji. To ustawienie ma zastosowanie do wszystkich wystąpień aktora utworzone w usłudze aktora.
+Współużytkowania wątkowości można skonfigurować w ustawieniach `ActorService`podczas rejestracji. To ustawienie ma zastosowanie do wszystkich wystąpień aktora utworzonych w usłudze aktora.
 
-Poniższy przykład pokazuje usługi aktora, który ustawia tryb współużytkowania wątkowości `ActorReentrancyMode.Disallowed`. W tym przypadku Aktor wysyła komunikat współużytkowane do innego aktora, wyjątek typu `FabricException` zostanie zgłoszony.
+W poniższym przykładzie przedstawiono usługę aktora, która ustawia tryb współużytkowania wątkowości na `ActorReentrancyMode.Disallowed`. W takim przypadku, jeśli aktor wysyła komunikat Współużytkowany do innego aktora, zostanie zgłoszony wyjątek typu `FabricException`.
 
 ```csharp
 static class Program
@@ -110,5 +101,5 @@ static class Program
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej na temat współużytkowania wątkowości w [dokumentacji interfejsu API aktora](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej o współużytkowania wątkowości w dokumentacji dotyczącej [interfejsu API aktora](https://msdn.microsoft.com/library/azure/dn971626.aspx)

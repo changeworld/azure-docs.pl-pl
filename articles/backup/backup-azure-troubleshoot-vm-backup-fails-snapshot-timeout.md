@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391845"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: problemy z agentem lub rozszerzeniem
 
@@ -28,6 +28,7 @@ Agent maszyny wirtualnej platformy Azure może zostać zatrzymany, nieaktualny, 
 - **Otwórz blok właściwości > > > maszyny wirtualnej w witrynie Azure Portal** > Upewnij się, że **stan** maszyny wirtualnej jest **uruchomiony** , a **stan agenta** to **gotowe**. Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w niespójnym stanie, należy ponownie uruchomić agenta.<br>
   - W przypadku maszyn wirtualnych z systemem Windows wykonaj następujące [kroki](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) , aby ponownie uruchomić agenta gościa.<br>
   - W przypadku maszyn wirtualnych z systemem Linux wykonaj następujące [kroki](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) , aby ponownie uruchomić agenta gościa.
+- **Otwórz Portal Azure > ustawienia > maszyny wirtualnej > rozszerzenia** > Upewnij się, że wszystkie rozszerzenia są w stanie " **powodzenie aprowizacji** ". Jeśli nie, wykonaj następujące [kroki](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) , aby rozwiązać ten problem.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError — nie można skomunikować się z agentem maszyny wirtualnej w celu uzyskania stanu migawki
 
@@ -53,8 +54,8 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup ba
 
 Ten błąd występuje, gdy jeden z błędów rozszerzenia przełączy maszynę wirtualną w stan niepowodzenia aprowizacji.<br>**Otwórz Portal Azure > ustawienia > maszyn wirtualnych > rozszerzenia >** rozszerzenia, a następnie sprawdź, czy wszystkie rozszerzenia mają stan **Pomyślne inicjowanie obsługi** .
 
-- Jeśli rozszerzenie VMSnapshot jest w stanie niepowodzenia, kliknij prawym przyciskiem myszy nieudane rozszerzenie i usuń je. Wyzwól tworzenie kopii zapasowej ad hoc, spowoduje to ponowne zainstalowanie rozszerzeń i uruchomienie zadania tworzenia kopii zapasowej.  <br>
-- Jeśli dowolne inne rozszerzenie jest w stanie niepowodzenia, może zakłócać tworzenie kopii zapasowej. Upewnij się, że problemy z rozszerzeniem zostały rozwiązane, i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.  
+- Jeśli rozszerzenie VMSnapshot jest w stanie niepowodzenia, kliknij prawym przyciskiem myszy nieudane rozszerzenie i usuń je. Wyzwól kopię zapasową na żądanie, spowoduje to ponowne zainstalowanie rozszerzeń i uruchomienie zadania tworzenia kopii zapasowej.  <br>
+- Jeśli jakiekolwiek inne rozszerzenie jest w stanie niepowodzenia, może zakłócać tworzenie kopii zapasowej. Upewnij się, że problemy z rozszerzeniem zostały rozwiązane, i spróbuj ponownie wykonać operację tworzenia kopii zapasowej.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached — Osiągnięto maksymalny limit kolekcji punktów przywracania
 
@@ -229,7 +230,7 @@ Aby odinstalować rozszerzenie:
 1. W [Azure Portal](https://portal.azure.com/)przejdź do maszyny wirtualnej, na której występuje błąd kopii zapasowej.
 2. Wybierz **ustawienia**.
 3. Wybierz pozycję **Rozszerzenia**.
-4. Wybierz **rozszerzenie VMSnapshot**.
+4. Wybierz pozycję **rozszerzenie migawki**.
 5. Wybierz opcję **Odinstaluj**.
 
 W przypadku maszyny wirtualnej z systemem Linux, jeśli rozszerzenie VMSnapshot nie jest wyświetlane w Azure Portal, [zaktualizuj agenta systemu Azure Linux](../virtual-machines/linux/update-agent.md), a następnie uruchom kopię zapasową.

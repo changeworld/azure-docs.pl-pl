@@ -1,16 +1,16 @@
 ---
-title: Tworzenie definicji OpenAPI dla interfejsu API bezserwerowego przy użyciu usługi Azure API Management
+title: Uwidacznianie funkcji za pomocą usługi OpenAPI na platformie API Management Azure
 description: Utwórz definicję interfejsu OpenAPI, która umożliwia innym aplikacjom i usługom wywołanie Twojej funkcji na platformie Azure.
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 659c05b3d31f5673e95cb27f10eaa8bd872e4be6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226817"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562017"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Tworzenie definicji OpenAPI dla interfejsu API bezserwerowego przy użyciu usługi Azure API Management
 
@@ -18,7 +18,7 @@ Interfejsy API REST są często opisane przy użyciu definicji OpenAPI. Ta defin
 
 W ramach tego samouczka utworzysz funkcję, która pozwoli określić, czy awaryjna naprawa turbiny wiatrowej jest opłacalna. Następnie utworzysz definicję OpenAPI dla aplikacji funkcji przy użyciu [usługi Azure API Management](../api-management/api-management-key-concepts.md) , aby można było wywołać funkcję z innych aplikacji i usług.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie funkcji na platformie Azure
@@ -39,7 +39,7 @@ W tym samouczku jest stosowana funkcja wyzwalana przez protokół HTTP, która p
 * Szacowany czas trwania naprawy turbiny w godzinach.
 * Pojemność turbiny w kilowatach. 
 
-Następnie funkcja oblicza koszt naprawy oraz przychody, które mogą zostać uzyskane dzięki turbinie w ciągu 24 godzin. Aby utworzyć funkcję wyzwalaną przez protokół HTTP w [Azure Portal](https://portal.azure.com).
+Następnie funkcja oblicza koszt naprawy oraz przychody, które mogą zostać uzyskane dzięki turbinie w ciągu 24 godzin. Aby utworzyć funkcję wyzwalaną przez protokół HTTP w [Azure Portal](https://portal.azure.com):
 
 1. Rozwiń aplikację funkcji i wybierz przycisk **+** obok pozycji **Funkcje**. Wybierz pozycję **w portalu** > **Kontynuuj**.
 
@@ -139,23 +139,23 @@ Teraz możesz przystąpić do generowania definicji interfejsu OpenAPI.
     | ------------ |  ------- | -------------------------------------------------- |
     | **Nazwa** | Nazwa unikatowa w skali globalnej | Nazwa jest generowana na podstawie nazwy aplikacji funkcji. |
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której jest tworzony nowy zasób. |  
-    | **[Grupa zasobów](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Ten sam zasób, który jest używany przez aplikację funkcji, który powinien zostać ustawiony dla Ciebie. |
+    | **[Grupa zasobów](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Ten sam zasób, który jest używany przez aplikację funkcji, który powinien zostać ustawiony dla Ciebie. |
     | **Lokalizacja** | Zachodnie stany USA | Wybierz lokalizację zachodnie stany USA. |
     | **Nazwa organizacji** | Contoso | Nazwa organizacji używanej w portalu dla deweloperów i powiadomień e-mail. |
     | **Adres e-mail administratora** | Twój adres e-mail | Wiadomość e-mail, która otrzymała powiadomienia systemowe od API Management. |
     | **Warstwa cenowa** | Użycie (wersja zapoznawcza) | Warstwa zużycia jest w wersji zapoznawczej i nie jest dostępna we wszystkich regionach. Aby uzyskać szczegółowe informacje o cenach, zobacz [stronę z cennikiem API Management](https://azure.microsoft.com/pricing/details/api-management/) . |
 
-1. Wybierz pozycję **Utwórz** , aby utworzyć wystąpienie API Management, co może potrwać kilka minut.
+1. Wybierz pozycję **Utwórz**, aby utworzyć wystąpienie usługi API Management, co może potrwać kilka minut.
 
 1. Wybierz pozycję **włącz Application Insights** , aby wysyłać dzienniki do tego samego miejsca, w którym znajduje się aplikacja funkcji, a następnie zaakceptuj pozostałe wartości domyślne i wybierz pozycję **interfejs API łączenia**.
 
-1. Zostanie otwarty **Azure Functions importowania** z wyróżnioną funkcją **TurbineRepair** . Wybierz **pozycję Wybierz** , aby kontynuować.
+1. Zostanie otwarty **Azure Functions importowania** z wyróżnioną funkcją **TurbineRepair** . Wybierz pozycję **Wybierz**, aby kontynuować.
 
     ![Importowanie Azure Functions do API Management](media/functions-openapi-definition/import-function-openapi.png)
 
 1. Na stronie **Tworzenie na podstawie aplikacja funkcji** zaakceptuj wartości domyślne i wybierz pozycję **Utwórz** .
 
-    ![Utwórz z aplikacja funkcji](media/functions-openapi-definition/create-function-openapi.png)
+    ![Tworzenie z aplikacji funkcji](media/functions-openapi-definition/create-function-openapi.png)
 
 Interfejs API jest teraz tworzony dla funkcji.
 

@@ -1,5 +1,5 @@
 ---
-title: Funkcje i polecenia bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB
+title: Funkcje bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB
 description: Dowiedz się więcej o obsłudze funkcji bazy danych Apache Cassandra w interfejsie API Cassandra usługi Azure Cosmos DB
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445642"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkcje bazy danych Apache Cassandra obsługiwane przez interfejs API Cassandra usługi Azure Cosmos DB 
 
@@ -98,7 +98,7 @@ Interfejs API Cassandra usługi Azure Cosmos DB obsługuje następujące funkcje
 
 Interfejs API Cassandra usługi Azure Cosmos DB nie ma żadnych ograniczeń dotyczących rozmiaru danych przechowywanych w tabeli. Można przechowywać setki terabajtów lub petabajtów danych przy zapewnieniu uznania limitów klucza partycji. Podobnie każdy odpowiednik jednostki lub wiersza nie ma żadnych limitów liczby kolumn. Jednak łączny rozmiar jednostki nie powinien przekraczać 2 MB. Dane na klucz partycji nie mogą być dłuższe niż 10 GB, podobnie jak w przypadku wszystkich innych interfejsów API.
 
-## <a name="tools"></a>Narzędzia 
+## <a name="tools"></a>narzędzia 
 
 Interfejs API Cassandra usługi Azure Cosmos DB to platforma usług zarządzanych. Nie wymaga żadnego narzutu związanego z zarządzaniem ani narzędzi, takich jak moduł odzyskiwania pamięci, wirtualna maszyna Java (JVM) i narzędzie nodetool do zarządzania klastrem. Obsługuje narzędzia, takie jak cqlsh, korzystające ze zgodności binarnej z językiem CQL w wersji 4. 
 
@@ -149,7 +149,7 @@ Usługa Azure Cosmos DB obsługuje następujące polecenia bazy danych na kontac
 * USE 
 * INSERT 
 * SELECT 
-* UPDATE 
+* AKTUALIZACJA 
 * BATCH — obsługiwane są tylko polecenia nierejestrowane 
 * DELETE
 

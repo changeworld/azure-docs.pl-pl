@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 9a8c3fd6c591f25aadc696c3c71f8c4cdfca745f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450211"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service — FAQ
 
@@ -52,7 +52,7 @@ Jeśli sygnały pulsu nie są odbierane przez określony czas, serwer aplikacji 
 
 ## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Dlaczego mój niestandardowy `IUserIdProvider` zgłasza wyjątek w przypadku przejścia z zestawu SDK biblioteki SignalR dla platformy ASP.NET Core do zestawu SDK usługi Azure SignalR Service?
 
-Przy wywoływaniu `HubConnectionContext context` parametr `IUserIdProvider` dla zestawu SDK biblioteki SignalR dla platformy ASP.NET Core jest inny niż dla zestawu SDK usługi Azure SignalR Service.
+Przy wywoływaniu `IUserIdProvider` parametr `HubConnectionContext context` dla zestawu SDK biblioteki SignalR dla platformy ASP.NET Core jest inny niż dla zestawu SDK usługi Azure SignalR Service.
 
 W bibliotece SignalR platformy ASP.NET Core parametr `HubConnectionContext context` zawiera kontekst z prawidłowymi wartościami dla wszystkich właściwości połączenia fizycznego klienta.
 
@@ -67,4 +67,4 @@ Nie.
 
 Usługa Azure SignalR Service oferuje wszystkie trzy rodzaje transportu, które domyślnie obsługuje biblioteka SignalR platformy ASP.NET Core. Tego nie można konfigurować. Usługa SignalR Service będzie obsługiwać połączenia i transport dla wszystkich połączeń klienckich.
 
-Możesz skonfigurować transport po stronie klienta, zgodnie z opisem umieszczonym [tutaj](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).
+Możesz skonfigurować transport po stronie klienta, zgodnie z opisem umieszczonym [tutaj](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2).

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 04/26/2019
+ms.date: 12/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 82c1159aca51bc30839f5380a414bd2b3b488bb8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446682"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Szybki Start: uzyskiwanie szczegółowych informacji o obrazach przy użyciu interfejsu API REST wyszukiwanie wizualne Bing iC#
 
@@ -41,7 +41,7 @@ Ten przewodnik Szybki Start przedstawia sposób przekazywania obrazu do interfej
     using System.Collections.Generic;
     ```
 
-2. Dodaj zmienne dla klucza subskrypcji, punktu końcowego i ścieżki do obrazu, który chcesz przekazać:
+2. Dodaj zmienne dla klucza subskrypcji, punktu końcowego i ścieżki do obrazu, który chcesz przekazać. `uriBase` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu:
 
     ```csharp
         const string accessKey = "<my_subscription_key>";

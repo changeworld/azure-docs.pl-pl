@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d899f477612e4c738314187f61551fe5c0b17f8d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422838"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -73,11 +73,14 @@ Dzisiaj większość nieżądanych prób logowania pochodzi ze starszego uwierzy
 
 Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablokowane wszystkie żądania uwierzytelnienia podejmowane przez starszy protokół. Ustawienia domyślne zabezpieczeń nie blokują programu Exchange ActiveSync.
 
+> [!WARNING]
+> Przed włączeniem ustawień domyślnych zabezpieczeń upewnij się, że administratorzy nie używają starszych protokołów uwierzytelniania. Aby uzyskać więcej informacji, zobacz [jak przenieść się z starszego uwierzytelniania](concept-fundamentals-block-legacy-authentication.md).
+
 ### <a name="protecting-privileged-actions"></a>Ochrona uprzywilejowanych akcji
 
 Organizacje korzystają z różnych usług platformy Azure zarządzanych za pomocą interfejsu API Azure Resource Manager, w tym:
 
-- Azure Portal 
+- Portal Azure 
 - Program Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure
 
@@ -89,22 +92,30 @@ Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie każdy użytkow
 
 Jeśli użytkownik nie jest zarejestrowany do Multi-Factor Authentication, użytkownik będzie musiał zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby można było wykonać tę operację. Nie zostanie podany 14-dniowy okres rejestracji Multi-Factor Authentication.
 
+> [!NOTE]
+> Konto synchronizacji Azure AD Connect jest wykluczone z domyślnych ustawień zabezpieczeń i nie zostanie wyświetlony monit o zarejestrowanie się w usłudze lub przeprowadzenie uwierzytelniania wieloskładnikowego. Organizacje nie powinny używać tego konta do innych celów.
+
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
 Poniższe zagadnienia dodatkowe są związane z wdrażaniem ustawień domyślnych zabezpieczeń dla dzierżawy.
 
-### <a name="older-protocols"></a>Starsze protokoły
+### <a name="authentication-methods"></a>Metody uwierzytelniania
 
-Klienci poczty używają starszych protokołów uwierzytelniania (takich jak IMAP, SMTP i POP3), aby wykonywać żądania uwierzytelniania. Te protokoły nie obsługują Multi-Factor Authentication. Większość zabezpieczeń konta, które firma Microsoft widzi przed atakami na starsze protokoły, które próbują obejść Multi-Factor Authentication. 
+Domyślne ustawienia zabezpieczeń umożliwiają rejestrację i korzystanie z usługi Azure Multi-Factor Authentication **przy użyciu tylko aplikacji Microsoft Authenticator przy użyciu powiadomień**. Dostęp warunkowy umożliwia korzystanie z dowolnej metody uwierzytelniania, która ma zostać włączona przez administratora.
 
-Aby upewnić się, że Multi-Factor Authentication jest wymagane do logowania się do konta administracyjnego i że osoby atakujące nie mogą go obejść, domyślnie są blokowane wszystkie żądania uwierzytelnienia skierowane do kont administratorów ze starszych protokołów.
+|   | Domyślne ustawienia zabezpieczeń | Dostęp warunkowy |
+| --- | --- | --- |
+| Powiadomienie przez aplikację mobilną | X | X |
+| Kod weryfikacyjny z aplikacji mobilnej lub tokenu sprzętowego |   | X |
+| Wiadomość SMS na telefon |   | X |
+| Połączenie z telefonem |   | X |
+| Hasła aplikacji |   | X * * |
 
-> [!WARNING]
-> Przed włączeniem tego ustawienia upewnij się, że administratorzy nie używają starszych protokołów uwierzytelniania. Aby uzyskać więcej informacji, zobacz [jak przenieść się z starszego uwierzytelniania](concept-fundamentals-block-legacy-authentication.md).
+\* * Hasła aplikacji są dostępne tylko w ramach usługi MFA dla poszczególnych użytkowników ze starszymi scenariuszami uwierzytelniania tylko wtedy, gdy są włączone przez administratorów.
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
 
-Za pomocą dostępu warunkowego można skonfigurować zasady zapewniające takie samo zachowanie, które są włączone przez domyślne ustawienia zabezpieczeń. Jeśli używasz dostępu warunkowego i w środowisku włączono zasady dostępu warunkowego, nie będą dostępne żadne ustawienia domyślne zabezpieczeń. Jeśli masz licencję, która zapewnia dostęp warunkowy, ale nie masz włączonych zasad dostępu warunkowego w danym środowisku, możesz użyć domyślnych ustawień zabezpieczeń do momentu włączenia zasad dostępu warunkowego.
+Za pomocą dostępu warunkowego można skonfigurować zasady podobne do domyślnych ustawień zabezpieczeń, ale z większą szczegółowością, w tym wykluczeniami użytkowników, które nie są dostępne w domyślnych ustawieniach zabezpieczeń. Jeśli używasz dostępu warunkowego i w środowisku włączono zasady dostępu warunkowego, nie będą dostępne żadne ustawienia domyślne zabezpieczeń. Jeśli masz licencję, która zapewnia dostęp warunkowy, ale nie masz włączonych zasad dostępu warunkowego w danym środowisku, możesz użyć domyślnych ustawień zabezpieczeń do momentu włączenia zasad dostępu warunkowego. Więcej informacji na temat licencjonowania usługi Azure AD można znaleźć na [stronie cennika usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ![Komunikat ostrzegawczy, który może mieć wartości domyślne zabezpieczeń lub dostęp warunkowy nie zarówno](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

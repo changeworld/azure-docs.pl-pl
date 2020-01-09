@@ -1,5 +1,5 @@
 ---
-title: Co to jest zarządzanie upoważnieniami w usłudze Azure AD? -Azure Active Directory
+title: Co to jest zarządzanie upoważnieniami? — Azure AD
 description: Zapoznaj się z omówieniem zarządzania uprawnieniami Azure Active Directory i sposobami korzystania z niego do zarządzania dostępem do grup, aplikacji i witryn usługi SharePoint Online dla użytkowników wewnętrznych i zewnętrznych.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422572"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD?
 
@@ -38,7 +38,7 @@ Organizacje korporacyjne często napotykają problemy związane z zarządzaniem 
 - Użytkownicy mogą nie wiedzieć, jaki ma dostęp, a nawet jeśli tak, mogą mieć problemy z lokalizowaniem właściwych osób w celu zatwierdzenia dostępu
 - Gdy użytkownicy znajdą i uzyskają dostęp do zasobu, mogą uzyskać dostęp do niego dłużej niż jest to wymagane do celów służbowych
 
-Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innej organizacji, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Na przykład:
+Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innej organizacji, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Przykład:
 
 - Żadna osoba nie może znać wszystkich konkretnych osób w katalogach innych organizacji, aby móc je zapraszać
 - Nawet jeśli udało Ci się zaprosić tych użytkowników, nikt w tej organizacji nie może pamiętać o konieczności spójnego zarządzania wszystkimi prawami dostępu użytkownika
@@ -71,7 +71,7 @@ Zarządzanie prawami wprowadza do usługi Azure AD pojęcie *pakietu dostępu*. 
 - Przypisywanie do aplikacji usługi Azure AD Enterprise, w tym aplikacji SaaS i aplikacji zintegrowanych niestandardowo obsługujących Federacji/Logowanie jednokrotne i/lub obsługę administracyjną
 - Członkostwo w witrynach usługi SharePoint Online
 
-Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Na przykład:
+Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Przykład:
 
 - Można udzielić użytkownikom licencji na Microsoft Office 365 przy użyciu grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i konfigurowania [licencjonowania opartego na grupach](../users-groups-roles/licensing-groups-assign.md) dla tej grupy.
 - Można udzielić użytkownikom dostępu do zarządzania zasobami platformy Azure za pomocą grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i tworzenia [przypisania roli platformy Azure](../../role-based-access-control/role-assignments-portal.md) dla tej grupy
@@ -114,16 +114,16 @@ Pakiety dostępu nie zastępują innych mechanizmów do przypisywania dostępu. 
 
 Aby lepiej zrozumieć Zarządzanie uprawnieniami i jej dokumentację, można odwołać się z powrotem do poniższej listy warunków.
 
-| Termin | Opis |
+| Okres obowiązywania Umowy | Opis |
 | --- | --- |
 | pakiet dostępu | Zbiór zasobów wymaganych przez zespół lub projekt i podlega zasadom. Pakiet dostępu jest zawsze zawarty w wykazie. Należy utworzyć nowy pakiet dostępu dla scenariusza, w którym użytkownicy muszą zażądać dostępu.  |
 | żądanie dostępu | Żądanie dostępu do zasobów w pakiecie dostępu. Żądanie jest zwykle wykonywane przez przepływ pracy zatwierdzania.  W przypadku zatwierdzenia użytkownik żądający otrzymuje przypisanie do pakietu. |
-| wykorzystując | Przypisanie pakietu dostępu do użytkownika gwarantuje, że użytkownik ma wszystkie role zasobów tego pakietu.  Przypisania pakietów dostępu zwykle mają limit czasu, zanim wygasną. |
-| pełnotekstowy | Kontener powiązanych zasobów i pakietów dostępu.  Wykazy są używane do delegowania, aby uniemożliwić administratorom tworzenie własnych pakietów dostępu. Właściciele wykazu mogą dodawać zasoby należące do wykazu. |
+| przypisanie | Przypisanie pakietu dostępu do użytkownika gwarantuje, że użytkownik ma wszystkie role zasobów tego pakietu.  Przypisania pakietów dostępu zwykle mają limit czasu, zanim wygasną. |
+| catalog | Kontener powiązanych zasobów i pakietów dostępu.  Wykazy są używane do delegowania, aby uniemożliwić administratorom tworzenie własnych pakietów dostępu. Właściciele wykazu mogą dodawać zasoby należące do wykazu. |
 | Twórca katalogu | Kolekcja użytkowników, którzy mają uprawnienia do tworzenia nowych wykazów.  Gdy użytkownik niebędący administratorem, który jest autoryzowany jako twórca katalogu tworzy nowy wykaz, automatycznie staje się właścicielem tego katalogu. |
 | połączona organizacja | Zewnętrzny katalog lub domena usługi Azure AD, z którą istnieje relacja. Użytkownicy z połączonej organizacji mogą być określeni w zasadach jako mogą żądać dostępu. |
 | policy | Zestaw reguł definiujących cykl życia dostępu, na przykład informacje o tym, jak użytkownicy uzyskują dostęp, kto może zatwierdzić i jak długo użytkownicy mają dostęp przez przypisanie. Zasady są połączone z pakietem dostępu. Na przykład pakiet dostępu może mieć dwie zasady — jeden dla pracowników do żądania dostępu, a drugi do żądania dostępu przez użytkowników zewnętrznych. |
-| zasoby | Element zawartości, taki jak grupa pakietu Office, Grupa zabezpieczeń, aplikacja lub witryna usługi SharePoint Online, z rolą, do której użytkownik może uzyskać uprawnienia. |
+| resource | Element zawartości, taki jak grupa pakietu Office, Grupa zabezpieczeń, aplikacja lub witryna usługi SharePoint Online, z rolą, do której użytkownik może uzyskać uprawnienia. |
 | Katalog zasobów | Katalog, który ma co najmniej jeden zasób do udostępnienia. |
 | Rola zasobu | Kolekcja uprawnień skojarzonych z i zdefiniowanych przez zasób. Grupa ma dwie role — element członkowski i właściciel. Witryny programu SharePoint zazwyczaj mają 3 role, ale mogą mieć dodatkowe role niestandardowe. Aplikacje mogą mieć role niestandardowe. |
 

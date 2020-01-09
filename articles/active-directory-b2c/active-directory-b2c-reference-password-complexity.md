@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d37d1ae3871e8b14a44540883b1d03c29b58d27e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5879bbda9dba0d5484ffe6e7083243a299347f9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367490"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurowanie wymagań dotyczących złożoności haseł w Azure Active Directory B2C
 
@@ -38,15 +38,15 @@ Jeśli używasz zasad niestandardowych, możesz ([skonfigurować złożoność h
 ## <a name="configure-password-complexity"></a>Konfigurowanie złożoności hasła
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
-3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-4. Wybierz pozycję **przepływy użytkownika**.
+2. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+3. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
+4. Wybierz pozycję **przepływy użytkownika (zasady)** .
 2. Wybierz przepływ użytkownika, a następnie kliknij pozycję **Właściwości**.
 3. W obszarze **złożoność hasła**Zmień złożoność hasła dla tego przepływu użytkownika na **prostą**, **silną**lub **niestandardową**.
 
 ### <a name="comparison-chart"></a>Wykres porównawczy
 
-| Złożoność | Opis |
+| Stopień złożoności | Opis |
 | --- | --- |
 | Prostota | Hasło, które ma co najmniej 8 do 64 znaków. |
 | Strong | Hasło, które ma co najmniej 8 do 64 znaków. Wymaga 3 z 4 z małych i wielkich liter, cyfr lub symboli. |
@@ -68,7 +68,7 @@ Pozwala kontrolować wymagania dotyczące długości hasła.
 - **Minimalna długość** musi wynosić co najmniej 4.
 - **Maksymalna długość** musi być większa lub równa długości minimalnej, a maksymalnie 64 znaków.
 
-### <a name="character-classes"></a>Klasy znaku
+### <a name="character-classes"></a>Klasy znaków
 
 Umożliwia sterowanie różnymi typami znaków używanymi w haśle.
 

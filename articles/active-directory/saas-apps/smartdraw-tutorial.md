@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7d4a400681113736c52046fb6aa5c04098ddda
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: fe08f1523b4b61653d89a9b3472355dd3eeaf69f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893233"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640095"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą SmartDraw
 
@@ -44,13 +43,8 @@ Aby rozpocząć, potrzebne są następujące elementy:
 
 W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-
-
 * SmartDraw obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
 * SmartDraw obsługuje Inicjowanie obsługi użytkowników **just in Time**
-
-> [!NOTE]
-> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
 
 ## <a name="adding-smartdraw-from-the-gallery"></a>Dodawanie SmartDraw z galerii
 
@@ -63,7 +57,6 @@ Aby skonfigurować integrację programu SmartDraw z usługą Azure AD, musisz do
 1. W sekcji **Dodaj z galerii** wpisz **SmartDraw** w polu wyszukiwania.
 1. Wybierz pozycję **SmartDraw** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla SmartDraw
 
 Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą SmartDraw przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w SmartDraw.
@@ -71,10 +64,10 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Smart
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą SmartDraw, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj Logowanie jednokrotne](#configure-smartdraw-sso)** w usłudze SmartDraw, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego SmartDraw](#create-smartdraw-test-user)** , aby dysponować odpowiednikiem B. Simon w SmartDraw, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+    * **[Utwórz użytkownika testowego SmartDraw](#create-smartdraw-test-user)** , aby dysponować odpowiednikiem B. Simon w SmartDraw, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
 1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
@@ -87,7 +80,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja SAML** aplikacja została wstępnie skonfigurowana w trybie inicjalizacji programu **dostawcy tożsamości** i wymagane adresy URL są już wstępnie wypełnione na platformie Azure. Użytkownik musi zapisać konfigurację, klikając przycisk **zapisz** .
+1. W sekcji **Podstawowa konfiguracja protokołu SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
@@ -96,11 +89,13 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > [!NOTE]
     > Wartość adresu URL logowania nie jest prawdziwa. Ta wartość adresu URL logowania zostanie zaktualizowana przy użyciu rzeczywistego adresu URL logowania, co objaśniono w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
+1. Kliknij pozycję **Zapisz**.
+
 1. Aplikacja SmartDraw oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
-1. Oprócz powyższych, aplikacja SmartDraw oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami.
+1. Oprócz powyższych, aplikacja SmartDraw oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
 
     | Nazwa | Atrybut źródłowy|
     | ---------------| --------------- |
@@ -116,7 +111,6 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 1. W sekcji **Konfigurowanie SmartDraw** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -150,20 +144,28 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-smartdraw-sso"></a>Konfigurowanie logowania jednokrotnego SmartDraw
 
-1. W innym oknie przeglądarki sieci Web Zaloguj się do SmartDraw jako administrator.
+1. Aby zautomatyzować konfigurację w programie SmartDraw, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-2. Kliknij pozycję **Logowanie jednokrotne** w obszarze Zarządzanie licencją SmartDraw.
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+1. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję **Skonfiguruj** , aby przekierować użytkownika do aplikacji SmartDraw. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do usługi SmartDraw. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-5.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+1. Jeśli chcesz ręcznie skonfigurować SmartDraw, Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy SmartDraw jako administrator i wykonaj następujące czynności:
+
+1. Kliknij pozycję **Logowanie jednokrotne** w obszarze Zarządzanie licencją SmartDraw.
 
     ![Konfiguracja SmartDraw](./media/smartdraw-tutorial/configure01.png)
 
-3. Na stronie Konfiguracja wykonaj następujące czynności:
+1. Na stronie Konfiguracja wykonaj następujące czynności:
 
     ![Konfiguracja SmartDraw](./media/smartdraw-tutorial/configure02.png)
 
     a. W polu tekstowym **domena (na przykład Acme.com)** wpisz swoją domenę.
 
     b. Skopiuj **adres URL logowania zainicjowany przez Sp** dla Twojego wystąpienia i wklej go w polu tekstowym adres URL logowania w **podstawowej konfiguracji SAML** na Azure Portal.
-    
+
     d. W obszarze **grupy zabezpieczeń, aby zezwolić na dostęp SmartDraw** , wpisz **każdy**.
 
     d. W polu tekstowym **adres URL wystawcy SAML** należy wkleić wartość **identyfikatora usługi Azure AD** skopiowaną z Azure Portal.
@@ -174,9 +176,9 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ### <a name="create-smartdraw-test-user"></a>Utwórz użytkownika testowego SmartDraw
 
-W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w SmartDraw. SmartDraw obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze SmartDraw, zostanie utworzony nowy po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie B. Simon został utworzony w SmartDraw. SmartDraw obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze SmartDraw, zostanie utworzony nowy po uwierzytelnieniu.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
@@ -191,4 +193,3 @@ Po kliknięciu kafelka SmartDraw w panelu dostępu należy automatycznie zalogow
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj SmartDraw z usługą Azure AD](https://aad.portal.azure.com/)
-

@@ -1,20 +1,20 @@
 ---
 title: Połącz z usługą dysk Google
-description: Twórz pliki i zarządzaj nimi za pomocą interfejsów API REST usługi Google Drive i Azure Logic Apps
+description: Automatyzowanie przepływów pracy służących do tworzenia plików dla usługi dysk Google i zarządzania nimi za pomocą Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 155a579438747ca7de67eba6449b8a0191e86e2c
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789694"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666843"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>Wprowadzenie do łącznika usługi dysk Google
+# <a name="create-and-manage-files-for-google-drive-by-using-azure-logic-apps"></a>Tworzenie plików dla usługi dysk Google i zarządzanie nimi za pomocą Azure Logic Apps
 
 Połącz się z usługą dysk Google, aby tworzyć pliki, uzyskiwać wiersze i nie tylko. Za pomocą usługi dysk Google można: 
 
@@ -33,8 +33,8 @@ Po utworzeniu połączenia należy wprowadzić właściwości dysku Google, taki
 
 ## <a name="connector-specific-details"></a>Szczegóły dotyczące łącznika
 
-Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze Swagger, a także wszystkich ograniczeń w [szczegółach łącznika](/connectors/googledrive/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie struktury Swagger łącznika, przejrzyj [stronę odwołania łącznika](/connectors/googledrive/).
 
-## <a name="more-connectors"></a>Więcej łączników
+## <a name="next-steps"></a>Następne kroki
 
-Wróć do [listy interfejsów API](apis-list.md).
+* Dowiedz się więcej na temat innych [łączników Logic Apps](apis-list.md)

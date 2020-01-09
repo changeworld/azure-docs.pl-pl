@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Przeprowadź wyszukiwanie w wiadomościach za pomocą interfejsu API REST i wyszukiwanie wiadomości Bing'
+title: 'Szybki Start: wykonywanie wyszukiwania w wiadomościach za pomocą języka Ruby i interfejsu API REST wyszukiwanie wiadomości Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania wiadomości Bing przy użyciu języka Ruby i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/19/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448548"
 ---
-# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Szybki start: Wyszukiwanie wiadomości przy użyciu języka Ruby i interfejsu API REST wyszukiwania wiadomości Bing
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Szybki Start: wykonywanie wyszukiwania w wiadomościach przy użyciu języka Ruby i interfejsu API REST wyszukiwanie wiadomości Bing
 
 Ten przewodnik Szybki start umożliwi Ci utworzenie pierwszego wywołania do interfejsu API wyszukiwania wiadomości Bing i odebranie odpowiedzi JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i przetwarza wyniki.
 
@@ -30,8 +30,6 @@ Mimo że ta aplikacja jest napisana w języku Python, interfejs API jest usług�
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
-
 ## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
 1. Zaimportuj następujące pakiety do pliku kodu.
@@ -42,7 +40,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
     require 'json'
     ```
 
-2. Utwórz zmienne dla punktu końcowego interfejsu API, adresu wyszukiwania wiadomości, klucza subskrypcji i wyszukiwanego terminu.
+2. Utwórz zmienne dla punktu końcowego interfejsu API, adresu wyszukiwania wiadomości, klucza subskrypcji i wyszukiwanego terminu. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
     ```ruby
     accessKey = "enter key here"
@@ -176,7 +174,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ```
 
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Tworzenie aplikacji jednostronicowej](tutorial-bing-news-search-single-page-app.md)

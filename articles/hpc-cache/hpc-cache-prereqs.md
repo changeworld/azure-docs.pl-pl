@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 406b77a428ec725a3d8d070bd60fcd4440a5cb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166471"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645773"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Wymagania wstępne dotyczące usługi Azure HPC cache
 
@@ -80,7 +80,7 @@ Magazyn zaplecza systemu plików NFS musi być zgodnym sprzętem/platformą opro
 
 Jeśli chcesz używać usługi Azure Blob Storage z pamięcią podręczną, potrzebujesz zgodnego konta magazynu i pustego kontenera obiektów blob lub kontenera, który jest wypełniony danymi z pamięci podręcznej platformy Azure HPC, zgodnie z opisem w sekcji [przenoszenie danych do usługi Azure Blob Storage](hpc-cache-ingest.md).
 
-Utwórz konto i kontener przed podjęciem próby dodania go jako miejsca docelowego magazynu.
+Utwórz konto przed podjęciem próby dodania miejsca docelowego magazynu. Nowy kontener można utworzyć po dodaniu obiektu docelowego.
 
 Aby utworzyć zgodne konto magazynu, użyj następujących ustawień:
 

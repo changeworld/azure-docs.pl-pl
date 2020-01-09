@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb09228b561718819c0c48aac4fc66d8205fe384
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843992"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424614"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
@@ -165,6 +165,7 @@ Domyślnie program MSAL korzysta z przeglądarki systemu, z wyjątkiem .NET Fram
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się ze [słownikiem Microsoft Identity platform Developer](developer-glossary.md) , aby zapoznać się z typowymi terminami.
-Zobacz [przepływy uwierzytelniania i scenariusze aplikacji](authentication-flows-app-scenarios.md) , aby dowiedzieć się więcej o innych scenariuszach uwierzytelniania użytkowników obsługiwanych przez platformę tożsamości firmy Microsoft.
-Zobacz [biblioteki MSAL](msal-overview.md) , aby dowiedzieć się więcej o bibliotekach firmy Microsoft, które ułatwiają tworzenie aplikacji współpracujących z kontami Microsoft, kontami usługi Azure AD i Azure AD B2C użytkowników w jednym, usprawnionym modelu programowania.
+- Zapoznaj się ze [słownikiem Microsoft Identity platform Developer](developer-glossary.md) , aby zapoznać się z typowymi terminami.
+- Zobacz [przepływy uwierzytelniania i scenariusze aplikacji](authentication-flows-app-scenarios.md) , aby dowiedzieć się więcej o innych scenariuszach uwierzytelniania użytkowników obsługiwanych przez platformę tożsamości firmy Microsoft.
+- Zobacz [biblioteki MSAL](msal-overview.md) , aby dowiedzieć się więcej o bibliotekach firmy Microsoft, które ułatwiają tworzenie aplikacji współpracujących z kontami Microsoft, kontami usługi Azure AD i Azure AD B2C użytkowników w jednym, usprawnionym modelu programowania.
+- Aby dowiedzieć się, jak skonfigurować uwierzytelnianie dla aplikacji App Service, zobacz [integrowanie App Service z platformą tożsamości Microsfot](/azure/app-service/configure-authentication-provider-aad) .

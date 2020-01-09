@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824275"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665377"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -127,20 +127,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 * <a id="afs-files-excluded"></a>
   **które pliki lub foldery są automatycznie wykluczane przez Azure File Sync?**  
-    Domyślnie Azure File Sync wyklucza następujące pliki:
-  * desktop.ini
-  * thumbs.db
-  * ehThumbs. DB
-  * ~$\*.\*
-  * \*.laccdb
-  * \*.tmp
-  * 635D02A9D91C401B97884B82B3BCDAEA.\*
-
-    Następujące foldery są również Domyślnie wykluczone:
-
-  * Informacje o woluminie \System
-  * \$RECYCLE.BIN
-  * \SyncShareState
+  Zobacz [pliki pominięte](storage-sync-files-planning.md#files-skipped).
 
 * <a id="afs-os-support"></a>
   **można używać Azure File Sync z systemem Windows Server 2008 R2, Linux lub na moim urządzeniu magazynującym podłączonym do sieci (nas)?**  
@@ -252,7 +239,7 @@ czy **można określić uprawnienia tylko do odczytu lub tylko do zapisu w folde
 
     Udział plików można zainstalować przy użyciu protokołu SMB, jeśli jest otwarty port 445 (ruch wychodzący TCP), a klient obsługuje protokół SMB 3,0 (na przykład jeśli używasz systemu Windows 10 lub Windows Server 2016). Jeśli port 445 jest blokowany przez zasady organizacji lub przez usługodawcę internetowego, możesz użyć Azure File Sync, aby uzyskać dostęp do udziału plików platformy Azure.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 * <a id="backup-share"></a>
 **Jak mogę utworzyć kopię zapasową udziału plików platformy Azure?**  
     Można użyć okresowych [migawek udziałów](storage-snapshots-files.md) do ochrony przed przypadkowym usunięciem. Można również użyć narzędzia do tworzenia kopii zapasowych AzCopy, Robocopy lub innych firm, które umożliwia utworzenie kopii zapasowej zainstalowanego udziału plików. Azure Backup oferuje kopię zapasową Azure Files. Dowiedz się więcej [na temat tworzenia kopii zapasowych udziałów plików platformy Azure przez Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
@@ -374,7 +361,7 @@ mogę **usunąć mój udział, ale nie usunąć moich migawek udostępniania?**
 
 * <a id="rest-rename"></a>
 **czy istnieje operacja zmiany nazwy w interfejsie API REST?**  
-    Nie w tej chwili.
+    Obecnie nie.
 
 * <a id="nested-shares"></a>
 **można skonfigurować udziały zagnieżdżone? Innymi słowy, udział w udziale?**  

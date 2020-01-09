@@ -13,36 +13,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 22c1e3050915fc697a62862620ef492ef22f80b8
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542833"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638276"
 ---
-# <a name="what-is-azure-virtual-network"></a>Co to jest usługa Azure Virtual Network?
+# <a name="what-is-azure-virtual-network"></a>Co to jest Azure Virtual Network?
 
-Usługa Azure Virtual Network (VNet) jest podstawowym blokiem sieci prywatnej, na platformie Azure. Sieć wirtualna umożliwia wielu typom zasobów platformy Azure, takich jak Azure Virtual Machines (VM), bezpieczne komunikowanie się ze sobą internetowego i sieciami lokalnymi. Sieć wirtualna jest podobny do tradycyjnego sieci, która będzie działać w centrum danych, ale wnosi dodatkowych zalet infrastruktury platformy Azure, takie jak skalowalność, dostępność i izolację.
+Usługa Azure Virtual Network (VNet) to podstawowy blok konstrukcyjny dla sieci prywatnej na platformie Azure. Sieć wirtualna umożliwia bezpieczne komunikowanie się ze sobą za pomocą Internetu i sieci lokalnych w wielu typach zasobów platformy Azure, takich jak Azure Virtual Machines (VM). Sieć wirtualna jest podobna do tradycyjnej sieci, która działa w Twoim centrum danych, ale oferuje dodatkowe korzyści wynikające z infrastruktury platformy Azure, takiej jak skalowanie, dostępność i izolacja.
 
-## <a name="vnet-concepts"></a>Pojęcia dotyczące sieci wirtualnej
+## <a name="vnet-concepts"></a>Pojęcia sieci wirtualnej
 
-- **Przestrzeń adresowa:** Podczas tworzenia sieci wirtualnej, należy określić niestandardowe przestrzeń prywatnych adresów IP przy użyciu publicznych i prywatnych adresów (RFC 1918). Platforma Azure przypisze zasobom w sieci wirtualnej prywatny adres IP z przydzielonej przestrzeni adresowej. Na przykład w przypadku wdrożenia maszyny Wirtualnej w sieci wirtualnej z przestrzenią adresów 10.0.0.0/16, maszyna wirtualna zostanie przypisany prywatny adres IP, takich jak 10.0.0.4.
-- **Podsieci:** Podsieci umożliwiają segmentu sieci wirtualnej do co najmniej jedną podrzędną sieć i przydzielić części przestrzeni adresowej sieci wirtualnej w każdej podsieci. Następnie można wdrożyć zasoby platformy Azure w określonej podsieci. Podobnie jak w przypadku tradycyjnej sieci podsieci pozwalają na segment przestrzeń adresowa sieci wirtualnej na segmenty, które są odpowiednie dla sieci wewnętrznej organizacji. Zwiększa to wydajność przydziału adresu. Można zabezpieczyć zasobów w podsieci za pomocą sieciowych grup zabezpieczeń. Aby uzyskać więcej informacji, zobacz [grup zabezpieczeń](security-overview.md).
-- **Regiony**: Sieć wirtualna jest ograniczone do jednego regionu/lokalizacji; Jednak wiele sieci wirtualnych z różnych regionów mogą być połączone ze sobą przy użyciu komunikacji równorzędnej sieci wirtualnej.
-- **Subskrypcja:** Subskrypcja obejmuje sieć wirtualną. W każdej [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) platformy Azure oraz w każdym [regionie](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) świadczenia usługi Azure możesz zaimplementować wiele sieci wirtualnych.
+- **Przestrzeń adresowa:** Podczas tworzenia sieci wirtualnej należy określić niestandardową prywatną przestrzeń adresową IP przy użyciu adresów Public i Private (RFC 1918). Platforma Azure przypisze zasobom w sieci wirtualnej prywatny adres IP z przydzielonej przestrzeni adresowej. Na przykład jeśli maszyna wirtualna jest wdrażana w sieci wirtualnej z przestrzenią adresową 10.0.0.0/16, do maszyny wirtualnej zostanie przypisany prywatny adres IP, taki jak 10.0.0.4.
+- **Podsieci:** Podsieci umożliwiają segmentację sieci wirtualnej w co najmniej jedną podsiecią i przydzielenie części przestrzeni adresowej sieci wirtualnej do każdej podsieci. Następnie można wdrożyć zasoby platformy Azure w określonej podsieci. Podobnie jak w przypadku tradycyjnego sieci, podsieci umożliwiają segmentację przestrzeni adresowej sieci wirtualnej na segmenty, które są odpowiednie dla sieci wewnętrznej w organizacji. Zwiększa to również efektywność alokacji adresów. Zasoby w podsieciach można zabezpieczyć za pomocą sieciowych grup zabezpieczeń. Aby uzyskać więcej informacji, zobacz [grupy zabezpieczeń](security-overview.md).
+- **Regiony**: Sieć wirtualna jest objęta zakresem pojedynczego regionu/lokalizacji; Jednak wiele sieci wirtualnych z różnych regionów można połączyć ze sobą za pomocą komunikacji równorzędnej Virtual Network.
+- **Subskrypcja:** Sieć wirtualna jest objęta zakresem subskrypcji. W każdej [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) platformy Azure oraz w każdym [regionie](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) świadczenia usługi Azure możesz zaimplementować wiele sieci wirtualnych.
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
-Podczas tworzenia sieci na platformie Azure należy pamiętać o następujących zasadach uniwersalnego projektu:
+Podczas tworzenia sieci na platformie Azure ważne jest, aby pamiętać o następujących zasadach dotyczących projektowania uniwersalnego:
 
-- Upewnij się, bez nakładających się przestrzeni adresowych. Upewnij się, ponieważ przestrzeń adresowa sieci wirtualnej (blok CIDR) nie nakładają się z Twoją organizacją w pozostałych zakresów sieci.
-- Podsieci nie powinno obejmować całą przestrzenią adresową sieci wirtualnej. Planuj z wyprzedzeniem i zarezerwować kilka przestrzeni adresowej w przyszłości.
-- Zalecane jest, że masz mniej dużych sieciach wirtualnych niż wiele małych sieci wirtualnych. Uniemożliwi to narzut na zarządzanie.
-- Zabezpieczanie sieci wirtualnej przy użyciu sieciowych grup zabezpieczeń (NSG).
+- Upewnij się, że przestrzenie adresowe nie nakładają się na siebie. Upewnij się, że przestrzeń adresowa sieci wirtualnej (blok CIDR) nie nakłada się na inne zakresy sieci w organizacji.
+- Podsieci nie powinny obejmować całej przestrzeni adresowej sieci wirtualnej. Planuj z wyprzedzeniem i Zarezerwuj pewną przestrzeń adresową na przyszłość.
+- Zalecane jest używanie mniejszej ilości sieci wirtualnych niż w przypadku wielu małych sieci wirtualnychów. Pozwoli to zapobiec obciążeniu zarządzania.
+- Zabezpiecz sieć wirtualną za pomocą sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń).
 
 ## <a name="communicate-with-the-internet"></a>Komunikacja z Internetem
 
-Wszystkie zasoby w sieci wirtualnej mogą komunikować się ruch wychodzący do Internetu, domyślnie. Z zasobem w ruchu przychodzącym możesz komunikować się przez przypisanie publicznego adresu IP lub publicznego modułu równoważenia obciążenia. Publicznego adresu IP lub publicznego modułu równoważenia obciążenia możesz używać również do zarządzania połączeniami w ruchu wychodzącym.  Aby dowiedzieć się więcej na temat połączeń wychodzących na platformie Azure, zobacz [Połączenia wychodzące](../load-balancer/load-balancer-outbound-connections.md), [Publiczne adresy IP](virtual-network-public-ip-address.md) i [Moduł równoważenia obciążenia](../load-balancer/load-balancer-overview.md).
+Wszystkie zasoby w sieci wirtualnej mogą domyślnie komunikować się z Internetem. Z zasobem w ruchu przychodzącym możesz komunikować się przez przypisanie publicznego adresu IP lub publicznego modułu równoważenia obciążenia. Publicznego adresu IP lub publicznego modułu równoważenia obciążenia możesz używać również do zarządzania połączeniami w ruchu wychodzącym.  Aby dowiedzieć się więcej na temat połączeń wychodzących na platformie Azure, zobacz [Połączenia wychodzące](../load-balancer/load-balancer-outbound-connections.md), [Publiczne adresy IP](virtual-network-public-ip-address.md) i [Moduł równoważenia obciążenia](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 >W przypadku korzystania tylko z wewnętrznej [usługi Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md) łączność wychodząca nie jest dostępna, dopóki nie zdefiniujesz współdziałania [połączeń wychodzących](../load-balancer/load-balancer-outbound-connections.md) z publicznym adresem IP na poziomie wystąpienia lub publicznym modułem równoważenia obciążenia.
@@ -53,7 +53,7 @@ Zasoby platformy Azure komunikują się bezpiecznie ze sobą nawzajem, korzystaj
 
 - **Za pośrednictwem sieci wirtualnej**: możesz wdrożyć maszyny wirtualne i kilka innych typów zasobów platformy Azure w sieci wirtualnej, np. środowiskach Azure App Service Environment, usłudze Azure Kubernetes Service (AKS) oraz zestawach usługi Azure Virtual Machine Scale Sets. Aby wyświetlić kompletną listę zasobów platformy Azure, które można wdrożyć w sieci wirtualnej, zobacz [Integracja sieci wirtualnej z usługą](virtual-network-for-azure-services.md).
 - **Za pośrednictwem punktu końcowego usługi dla sieci wirtualnej**: możesz rozszerzyć prywatną przestrzeń adresową oraz tożsamość sieci wirtualnej na zasoby usług Azure, takie jak konta usługi Azure Storage i bazy danych Azure SQL Database, korzystając z połączenia bezpośredniego. Punkty końcowe usługi umożliwiają zabezpieczanie krytycznych zasobów usługi platformy Azure tylko do sieci wirtualnej. Aby dowiedzieć się więcej, zobacz [Omówienie punktów końcowych usługi dla sieci wirtualnej](virtual-network-service-endpoints-overview.md).
-- **Za pomocą komunikacji równorzędnej sieci wirtualnych**: Sieci wirtualne możesz łączyć ze sobą, co umożliwi komunikację pomiędzy zasobami w każdej z sieci wirtualnych przy użyciu komunikacji równorzędnej sieci wirtualnych. Łączone sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach świadczenia usługi Azure. Aby dowiedzieć się więcej, zobacz [Komunikacja równorzędna sieci wirtualnych](virtual-network-peering-overview.md).
+- **Za pośrednictwem komunikacji równorzędnej**sieci wirtualnych: można połączyć między sobą między sobą, aby umożliwić komunikację między sieciami wirtualnymi za pomocą komunikacji równorzędnej sieci wirtualnych. Łączone sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach świadczenia usługi Azure. Aby dowiedzieć się więcej, zobacz [Komunikacja równorzędna sieci wirtualnych](virtual-network-peering-overview.md).
 
 ## <a name="communicate-with-on-premises-resources"></a>Komunikacja z zasobami lokalnymi
 
@@ -67,7 +67,7 @@ Komputery i sieci lokalne możesz połączyć z siecią wirtualną przy użyciu 
 
 Ruch sieciowy pomiędzy podsieciami możesz filtrować przy użyciu jednej lub obu poniższych opcji:
 
-- **Grupy zabezpieczeń:** sieciowe grupy zabezpieczeń i grupy zabezpieczeń aplikacji mogą zawierać wiele reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego, które umożliwiają filtrowanie ruchu związanego z zasobami według źródłowych i docelowych adresów IP, portów i protokołów. Aby dowiedzieć się więcej, zobacz [Sieciowe grupy zabezpieczeń](security-overview.md#network-security-groups) i [Grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups).
+- **Grupy zabezpieczeń:** Sieciowe grupy zabezpieczeń i grupy zabezpieczeń aplikacji mogą zawierać wiele reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego, które umożliwiają filtrowanie ruchu do i z zasobów za pomocą źródłowego i docelowego adresu IP, portu i protokołu. Aby dowiedzieć się więcej, zobacz [Sieciowe grupy zabezpieczeń](security-overview.md#network-security-groups) i [Grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups).
 - **Wirtualne urządzenia sieciowe:** wirtualne urządzenie sieciowe to maszyna wirtualna wykonująca funkcję sieciową, np. funkcję zapory, optymalizacji WAN lub inną. Aby wyświetlić listę dostępnych wirtualnych urządzeń sieciowych, które możesz wdrożyć w sieci wirtualnej, zobacz witrynę [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
 ## <a name="route-network-traffic"></a>Routing ruchu sieciowego
@@ -79,12 +79,12 @@ Platforma Azure domyślnie kieruje ruchem pomiędzy podsieciami, połączonymi s
 
 ## <a name="azure-vnet-limits"></a>Limity sieci wirtualnej platformy Azure
 
-Istnieją pewne ograniczenia na liczbę zasobów platformy Azure, które można wdrożyć. Ograniczenia sieci najbardziej platformy Azure znajdują się w wartości maksymalnej. Można jednak [zwiększyć określone limity dotyczące sieci](../azure-supportability/networking-quota-requests.md) jak określono na [sieci ogranicza strony](../azure-subscription-service-limits.md#networking-limits). 
+Istnieją pewne ograniczenia dotyczące liczby zasobów platformy Azure, które można wdrożyć. Większość limitów sieci platformy Azure znajduje się na maksymalnych wartościach. Można jednak [zwiększyć niektóre limity sieci](../azure-supportability/networking-quota-requests.md) , zgodnie z [limitem na stronie limity Sieć wirtualna](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
 
 ## <a name="pricing"></a>Cennik
 
-Nie ma opłaty za korzystanie z sieci wirtualnej platformy Azure, jest bezpłatna. Standardowe opłaty są odpowiednie dla zasobów, takich jak maszyny wirtualne (VM) i innych produktów. Aby dowiedzieć się więcej, zobacz [cennik sieci wirtualnej](https://azure.microsoft.com/pricing/details/virtual-network/) i Azure [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/).
+Za korzystanie z sieci wirtualnej platformy Azure nie są naliczane opłaty. Opłaty standardowe są stosowane do zasobów, takich jak Virtual Machines (maszyny wirtualne) i inne produkty. Aby dowiedzieć się więcej, zobacz [Cennik sieci VNET](https://azure.microsoft.com/pricing/details/virtual-network/) i [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
  Aby rozpocząć korzystanie z sieci wirtualnej, utwórz ją, wdróż w niej kilka maszyn wirtualnych i rozpocznij komunikację pomiędzy maszynami wirtualnymi. Aby dowiedzieć się więcej, zobacz przewodnik Szybki start [Tworzenie sieci wirtualnej](quick-create-portal.md).

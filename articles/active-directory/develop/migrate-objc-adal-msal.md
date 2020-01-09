@@ -1,5 +1,5 @@
 ---
-title: Migrowanie aplikacji do MSAL (iOS/macOS) | Azure
+title: Przewodnik migracji biblioteki ADAL do MSAL (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Zapoznaj się z różnicami między programem MSAL for iOS/macOS i biblioteką uwierzytelniania usługi Azure AD dla ObjectiveC (ADAL. ObjC) i sposób migracji do MSAL dla systemu iOS/macOS.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fcb3422c900419abf68173ff5026a7dd0b87ea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f35243e29755c42dbe8e3a696f2718ee3d10178c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424434"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrowanie aplikacji do MSAL dla systemów iOS i macOS
 
@@ -66,7 +66,7 @@ W MSAL zamiast pojedynczego identyfikatora zasobu aplikacje udostępniają zesta
 
 Istnieją dwa sposoby udostępniania zakresów w MSAL:
 
-* Podaj listę wszystkich uprawnień wymaganych przez aplikacje. Na przykład: 
+* Podaj listę wszystkich uprawnień wymaganych przez aplikacje. Przykład: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -147,7 +147,7 @@ Aby włączyć brokera dla aplikacji:
 
 1. Zarejestruj format URI przekierowania zgodnego z brokerem dla aplikacji. Format identyfikatora URI przekierowania zgodnego z brokerem jest `msauth.<app.bundle.id>://auth`. Zastąp `<app.bundle.id>` IDENTYFIKATORem pakietu aplikacji. Jeśli przeprowadzasz migrację z biblioteki ADAL, a Twoja aplikacja została już obsługiwana przez brokera, nie musisz wykonywać żadnych dodatkowych czynności. Poprzedni identyfikator URI przekierowania jest w pełni zgodny z MSAL, więc możesz przejść do kroku 3.
 
-2. Dodaj schemat identyfikatora URI przekierowania aplikacji do pliku info. plist. W przypadku domyślnego identyfikatora URI przekierowania MSAL format jest `msauth.<app.bundle.id>`. Na przykład:
+2. Dodaj schemat identyfikatora URI przekierowania aplikacji do pliku info. plist. W przypadku domyślnego identyfikatora URI przekierowania MSAL format jest `msauth.<app.bundle.id>`. Przykład:
 
     ```xml
     <key>CFBundleURLSchemes</key>

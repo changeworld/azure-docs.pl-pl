@@ -1,7 +1,7 @@
 ---
 title: 'Polecający ciąg SVD: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu polecania SVD (pociąg) w usłudze Azure Machine Learning do uczenia Bayesowskieego przy użyciu algorytmu SVD.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu polecania SVD (pociąg) w Azure Machine Learning, aby szkolić Bayesowskieer przy użyciu algorytmu SVD.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: dc78322b09548e4e9c2f666e0c8315ce688d6541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716904"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428419"
 ---
-# <a name="train-svd-recommender"></a>Polecający pociąg
+# <a name="train-svd-recommender"></a>Trenowanie modułu poleceń SVD
 
 W tym artykule opisano, jak używać modułu polecania SVD w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł służy do uczenia modelu rekomendacji na podstawie algorytmu pojedynczego rozkładu wartości (SVD).  
 
@@ -50,14 +50,14 @@ Przed użyciem modułu, dane wejściowe muszą być w formacie, którego oczekuj
 
 Zestaw danych **klasyfikacji restauracji** w projektancie Azure Machine Learning (wybierz pozycję **zapisane zestawy danych** , a następnie **przykłady**) demonstruje oczekiwany format:
 
-|Nazwa|placeID|rating|
+|userID|placeID|rating|
 |------------|-------------|------------|
 |U1077|135085|2|
 |U1077|135038|2|
 
 Z tego przykładu można zobaczyć, że jeden użytkownik ocenił dwa osobne Restauracje. 
 
-### <a name="train-the-model"></a>Uczenie modelu
+### <a name="train-the-model"></a>Trenowanie modelu
 
 1.  Dodaj moduł polecający SVD (szkolenie) do potoku w Projektancie i podłącz go do danych szkoleniowych.  
    
@@ -76,4 +76,4 @@ Z tego przykładu można zobaczyć, że jeden użytkownik ocenił dwa osobne Res
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

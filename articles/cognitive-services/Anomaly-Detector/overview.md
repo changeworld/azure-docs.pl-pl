@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/05/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012057"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448967"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co to jest interfejs API narzędzia do wykrywania anomalii?
 
@@ -36,7 +36,7 @@ Dzięki detektorowi anomalii można automatycznie wykrywać anomalie w danych sz
 | Uzyskaj dodatkowe informacje na temat danych. | Uzyskaj przydatne szczegóły dotyczące danych i wszelkich obserwowanych anomalii, w tym oczekiwanych wartości, granic anomalii i pozycji. |
 | Dostosuj granice wykrywania anomalii. | Interfejs API wykrywania anomalii automatycznie tworzy granice na potrzeby wykrywania anomalii. Dostosuj te granice, aby zwiększyć lub zmniejszyć czułość interfejsu API na anomalie danych i lepiej dopasować dane. |
 
-## <a name="demo"></a>Demonstracja
+## <a name="demo"></a>Pokaz
 
 Zapoznaj się z tą [interaktywną prezentacją](https://aka.ms/adDemo) , aby dowiedzieć się, jak działa detektor anomalii.
 Aby uruchomić demonstrację, należy utworzyć zasób wykrywania anomalii i uzyskać klucz interfejsu API i punkt końcowy.
@@ -72,8 +72,12 @@ Po zarejestrowaniu:
 
 ## <a name="algorithms"></a>Algorytmy
 
-* Zapoznaj się z blogami technicznymi dotyczącymi [interfejsu API wykrywania anomalii platformy Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) i [Omówienie algorytmu SR-CNN w usłudze Azure anomalie wykrywania](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) na temat algorytmów pod okapem.
-* Zapoznaj się z tym papierem [usługi wykrywania anomalii w szeregach czasowych w firmie Microsoft](https://arxiv.org/abs/1906.03821) (zaakceptowanej przez KDD 2019) dla algorytmów SR-CNN opracowanych przez firmę Microsoft.
+* Aby uzyskać informacje o używanych algorytmach, zobacz następujące Blogi techniczne:
+    * [Wprowadzenie do interfejsu API wykrywania anomalii platformy Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
+    * [Omówienie algorytmu SR-CNN w usłudze Azure anomalie wykrywania](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798)
+
+Aby dowiedzieć się więcej na temat algorytmów SR-CNN opracowanych przez firmę Microsoft, możesz przeczytać informacje na temat [usługi wykrywania anomalii w serii czasowej w firmie Microsoft](https://arxiv.org/abs/1906.03821) (zaakceptowanej przez KDD 2019).
+
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 

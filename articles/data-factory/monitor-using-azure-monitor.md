@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 67709ef96ffb8190812d625c04cd9749c0ebb900
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684621"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645195"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Generowanie alertów i monitorowanie fabryk danych przy użyciu Azure Monitor
 
@@ -49,7 +49,7 @@ Użyj ustawień diagnostycznych, aby skonfigurować dzienniki diagnostyczne dla 
 * Określają miejsce wysyłania dzienników diagnostycznych. Przykłady obejmują konto usługi Azure Storage, centrum zdarzeń platformy Azure lub dzienniki monitora.
 * Określają, które kategorie dzienników są wysyłane.
 * Określają, jak długo każda kategoria dziennika ma być przechowywana na koncie magazynu.
-* Przechowywanie przez zero dni oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbą dni od 1 do 2 147 483 647.
+* Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbą dni od 1 do 2 147 483 647.
 * Jeśli zasady przechowywania są ustawione, ale przechowywanie dzienników na koncie magazynu jest wyłączone, zasady przechowywania nie mają żadnego efektu. Ten stan może wystąpić na przykład wtedy, gdy wybrano opcję tylko Event Hubs lub monitorowanie dzienników.
 * Zasady przechowywania są stosowane dziennie. Granica między dniami występuje o północy czasu uniwersalnego skoordynowanego (UTC). Po upływie dnia dzienniki są usuwane z dni, które wykraczają poza zasady przechowywania. Na przykład jeśli masz zasady przechowywania o jeden dzień, na początku dzisiaj dzienniki przed wczoraj zostaną usunięte.
 
@@ -57,7 +57,7 @@ Użyj ustawień diagnostycznych, aby skonfigurować dzienniki diagnostyczne dla 
 
 #### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Tworzenie lub aktualizowanie ustawień diagnostycznych w interfejsie API REST monitora
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Prośba
 
 ```
 PUT
@@ -116,14 +116,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- |
 | **storageAccountId** |Ciąg | Identyfikator zasobu konta magazynu, do którego chcesz wysłać dzienniki diagnostyczne. |
 | **serviceBusRuleId** |Ciąg | Identyfikator reguły magistrali usług dla przestrzeni nazw usługi Service Bus, w której chcesz utworzyć Event Hubs na potrzeby przesyłania strumieniowego dzienników diagnostycznych. Identyfikator reguły ma format `{service bus resource ID}/authorizationrules/{key name}`.|
-| **Identyfikator obszaru roboczego** | Typ złożony | Tablica ziaren i ich zasad przechowywania. Wartość tej właściwości jest pusta. |
+| **workspaceId** | Typ złożony | Tablica ziaren i ich zasad przechowywania. Wartość tej właściwości jest pusta. |
 |**metrics**| Wartości parametrów przebiegu potoku do przekazanie do wywołanego potoku| Obiekt JSON, który mapuje nazwy parametrów na wartości argumentów. |
 | **Dziennik**| Typ złożony| Nazwa kategorii dziennika diagnostycznego dla typu zasobu. Aby uzyskać listę kategorii dzienników diagnostycznych dla zasobu, wykonaj operację pobierania ustawień diagnostycznych. |
-| **kategorii**| Ciąg| Tablica kategorii dzienników i ich zasad przechowywania. |
+| **category**| Ciąg| Tablica kategorii dzienników i ich zasad przechowywania. |
 | **timeGrain** | Ciąg | Stopień szczegółowości metryk, które są przechwytywane w formacie czasu trwania ISO 8601. Wartość właściwości musi być `PT1M`, co oznacza jedną minutę. |
 | **dostępny**| Wartość logiczna | Określa, czy dla tego zasobu jest włączona kolekcja kategorii metryki lub dziennika. |
 | **retentionPolicy**| Typ złożony| Zawiera opis zasad przechowywania dla kategorii Metryka lub dziennik. Ta właściwość jest używana tylko w przypadku kont magazynu. |
-|**dni**| ZAOKR| Liczba dni przechowywania metryk lub dzienników. Jeśli wartość właściwości to 0, dzienniki są przechowywane w nieskończoność. Ta właściwość jest używana tylko w przypadku kont magazynu. |
+|**dni**| Int| Liczba dni przechowywania metryk lub dzienników. Jeśli wartość właściwości to 0, dzienniki są przechowywane w nieskończoność. Ta właściwość jest używana tylko w przypadku kont magazynu. |
 
 ##### <a name="response"></a>Odpowiedź
 
@@ -178,7 +178,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="get-information-about-diagnostics-settings-in-the-monitor-rest-api"></a>Uzyskaj informacje na temat ustawień diagnostycznych w interfejsie API REST monitora
 
-##### <a name="request"></a>Żądanie
+##### <a name="request"></a>Prośba
 
 ```
 GET
@@ -290,14 +290,14 @@ Aby uzyskać więcej informacji, zobacz [Ustawienia diagnostyczne](https://docs.
 | Właściwość | Typ | Opis | Przykład |
 | --- | --- | --- | --- |
 | **Poziom** |Ciąg | Poziom dzienników diagnostycznych. W przypadku dzienników uruchomienia działania ustaw wartość właściwości na 4. | `4` |
-| **korelacj** |Ciąg | Unikatowy identyfikator śledzenia określonego żądania. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **pierwszym** | Ciąg | Czas zdarzenia w formacie czasu UTC `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
+| **correlationId** |Ciąg | Unikatowy identyfikator śledzenia określonego żądania. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **czas** | Ciąg | Czas zdarzenia w formacie czasu UTC `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
 |**activityRunId**| Ciąg| Identyfikator uruchomienia działania. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |**pipelineRunId**| Ciąg| Identyfikator uruchomienia potoku. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**Identyfikator**| Ciąg | Identyfikator skojarzony z zasobem fabryki danych. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**kategorii**| Ciąg | Kategoria dzienników diagnostycznych. Ustaw wartość właściwości na `ActivityRuns`. | `ActivityRuns` |
+|**resourceId**| Ciąg | Identyfikator skojarzony z zasobem fabryki danych. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**category**| Ciąg | Kategoria dzienników diagnostycznych. Ustaw wartość właściwości na `ActivityRuns`. | `ActivityRuns` |
 |**poziomie**| Ciąg | Poziom dzienników diagnostycznych. Ustaw wartość właściwości na `Informational`. | `Informational` |
-|**operationName**| Ciąg | Nazwa działania z jego stanem. Jeśli działanie jest pulsem startowym, wartość właściwości jest `MyActivity -`. Jeśli działanie jest pulsem końcowym, wartość właściwości jest `MyActivity - Succeeded`. | `MyActivity - Succeeded` |
+|**OperationName**| Ciąg | Nazwa działania z jego stanem. Jeśli działanie jest pulsem startowym, wartość właściwości jest `MyActivity -`. Jeśli działanie jest pulsem końcowym, wartość właściwości jest `MyActivity - Succeeded`. | `MyActivity - Succeeded` |
 |**potokname**| Ciąg | Nazwa potoku. | `MyPipeline` |
 |**activityName**| Ciąg | Nazwa działania. | `MyActivity` |
 |**start**| Ciąg | Godzina rozpoczęcia działania jest uruchamiana w formacie czasu UTC. | `2017-06-26T20:55:29.5007959Z`|
@@ -336,17 +336,17 @@ Aby uzyskać więcej informacji, zobacz [Ustawienia diagnostyczne](https://docs.
 | Właściwość | Typ | Opis | Przykład |
 | --- | --- | --- | --- |
 | **Poziom** |Ciąg | Poziom dzienników diagnostycznych. W przypadku dzienników uruchomienia działania ustaw wartość właściwości na 4. | `4` |
-| **korelacj** |Ciąg | Unikatowy identyfikator śledzenia określonego żądania. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **pierwszym** | Ciąg | Czas zdarzenia w formacie czasu UTC `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
+| **correlationId** |Ciąg | Unikatowy identyfikator śledzenia określonego żądania. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **czas** | Ciąg | Czas zdarzenia w formacie czasu UTC `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
 |**runId**| Ciąg| Identyfikator uruchomienia potoku. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|**Identyfikator**| Ciąg | Identyfikator skojarzony z zasobem fabryki danych. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**kategorii**| Ciąg | Kategoria dzienników diagnostycznych. Ustaw wartość właściwości na `PipelineRuns`. | `PipelineRuns` |
+|**resourceId**| Ciąg | Identyfikator skojarzony z zasobem fabryki danych. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**category**| Ciąg | Kategoria dzienników diagnostycznych. Ustaw wartość właściwości na `PipelineRuns`. | `PipelineRuns` |
 |**poziomie**| Ciąg | Poziom dzienników diagnostycznych. Ustaw wartość właściwości na `Informational`. | `Informational` |
-|**operationName**| Ciąg | Nazwa potoku wraz z jego stanem. Po zakończeniu uruchomienia potoku wartość właściwości jest `Pipeline - Succeeded`. | `MyPipeline - Succeeded`. |
+|**OperationName**| Ciąg | Nazwa potoku wraz z jego stanem. Po zakończeniu uruchomienia potoku wartość właściwości jest `Pipeline - Succeeded`. | `MyPipeline - Succeeded`. |
 |**potokname**| Ciąg | Nazwa potoku. | `MyPipeline` |
 |**start**| Ciąg | Godzina rozpoczęcia działania jest uruchamiana w formacie czasu UTC. | `2017-06-26T20:55:29.5007959Z`. |
 |**punktów**| Ciąg | Czas zakończenia działania jest uruchamiany w formacie czasu UTC. Jeśli w dzienniku diagnostycznym zostało wyświetlone działanie, ale jeszcze nie zakończono, wartość właściwości jest `1601-01-01T00:00:00Z`.  | `2017-06-26T20:55:29.5007959Z` |
-|**Stany**| Ciąg | Końcowy stan uruchomienia potoku. Możliwe wartości właściwości to `Succeeded` i `Failed`. | `Succeeded`|
+|**status**| Ciąg | Końcowy stan uruchomienia potoku. Możliwe wartości właściwości to `Succeeded` i `Failed`. | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>Wyzwalacz uruchomienia — atrybuty dziennika
 
@@ -380,18 +380,18 @@ Aby uzyskać więcej informacji, zobacz [Ustawienia diagnostyczne](https://docs.
 | Właściwość | Typ | Opis | Przykład |
 | --- | --- | --- | --- |
 | **Poziom** |Ciąg | Poziom dzienników diagnostycznych. W przypadku dzienników uruchomienia działania ustaw wartość właściwości na 4. | `4` |
-| **korelacj** |Ciąg | Unikatowy identyfikator śledzenia określonego żądania. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **pierwszym** | Ciąg | Czas zdarzenia w formacie czasu UTC `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
+| **correlationId** |Ciąg | Unikatowy identyfikator śledzenia określonego żądania. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| **czas** | Ciąg | Czas zdarzenia w formacie czasu UTC `YYYY-MM-DDTHH:MM:SS.00000Z`. | `2017-06-28T21:00:27.3534352Z` |
 |**triggerId**| Ciąg| Identyfikator uruchomienia wyzwalacza. | `08587023010602533858661257311` |
-|**Identyfikator**| Ciąg | Identyfikator skojarzony z zasobem fabryki danych. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**kategorii**| Ciąg | Kategoria dzienników diagnostycznych. Ustaw wartość właściwości na `PipelineRuns`. | `PipelineRuns` |
+|**resourceId**| Ciąg | Identyfikator skojarzony z zasobem fabryki danych. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|**category**| Ciąg | Kategoria dzienników diagnostycznych. Ustaw wartość właściwości na `PipelineRuns`. | `PipelineRuns` |
 |**poziomie**| Ciąg | Poziom dzienników diagnostycznych. Ustaw wartość właściwości na `Informational`. | `Informational` |
-|**operationName**| Ciąg | Nazwa wyzwalacza ze stanem końcowym, który wskazuje, czy wyzwalacz został pomyślnie wywołany. Jeśli puls zakończył się pomyślnie, wartość właściwości jest `MyTrigger - Succeeded`. | `MyTrigger - Succeeded` |
+|**OperationName**| Ciąg | Nazwa wyzwalacza ze stanem końcowym, który wskazuje, czy wyzwalacz został pomyślnie wywołany. Jeśli puls zakończył się pomyślnie, wartość właściwości jest `MyTrigger - Succeeded`. | `MyTrigger - Succeeded` |
 |**triggerName**| Ciąg | Nazwa wyzwalacza. | `MyTrigger` |
 |**triggerType**| Ciąg | Typ wyzwalacza. Możliwe wartości właściwości to `Manual Trigger` i `Schedule Trigger`. | `ScheduleTrigger` |
 |**triggerEvent**| Ciąg | Zdarzenie wyzwalacza. | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**start**| Ciąg | Godzina rozpoczęcia wyzwalacza wyzwalana w formacie czasu UTC. | `2017-06-26T20:55:29.5007959Z`|
-|**Stany**| Ciąg | Końcowy stan pokazujący, czy wyzwalacz został pomyślnie wywołany. Możliwe wartości właściwości to `Succeeded` i `Failed`. | `Succeeded`|
+|**status**| Ciąg | Końcowy stan pokazujący, czy wyzwalacz został pomyślnie wywołany. Możliwe wartości właściwości to `Succeeded` i `Failed`. | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Schemat Log Analytics
 
@@ -404,11 +404,11 @@ Log Analytics dziedziczy schemat z monitora z następującymi wyjątkami:
     | Kolumna Azure Monitor | Kolumna Log Analytics | Typ |
     | --- | --- | --- |
     | $. Properties. UserProperties | UserProperties | Dynamiczny |
-    | $. Properties. Adnotacj | Adnotacj | Dynamiczny |
+    | $. Properties. Adnotacj | Adnotacje | Dynamiczny |
     | $. Properties. Klawiatur | Dane wejściowe | Dynamiczny |
     | $. Properties. Rozdzielczości | Dane wyjściowe | Dynamiczny |
-    | $. Properties. Błąd. errorCode | Kodzie | int |
-    | $. Properties. Błąd. komunikat | errorMessage | ciąg |
+    | $. Properties. Błąd. errorCode | ErrorCode | int |
+    | $. Properties. Błąd. komunikat | ErrorMessage | string |
     | $. Properties. Porn | Błąd | Dynamiczny |
     | $. Properties. Poprzednikami hostowanymi | Poprzednikami hostowanymi | Dynamiczny |
     | $. Properties. Wejściowe | Parametry | Dynamiczny |
@@ -421,16 +421,19 @@ Dzięki monitorowi możesz uzyskać wgląd w wydajność i kondycję obciążeń
 
 Azure Data Factory wersja 2 emituje następujące metryki.
 
-| **Metryka**           | **Nazwa wyświetlana metryki**         | **Jednostka** | **Typ agregacji** | **Opis**                                       |
+| **Metryka**           | **Nazwa wyświetlana metryki**         | **Unit** | **Typ agregacji** | **Opis**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRuns | Metryki uruchamiania potoków zakończonych powodzeniem | Licznik    | Łącznie                | Całkowita liczba uruchomień potoków zakończonych powodzeniem w oknie minuty. |
-| PipelineFailedRuns   | Metryki uruchomionych potoków zakończonych niepowodzeniem    | Licznik    | Łącznie                | Całkowita liczba uruchomień potoków zakończonych niepowodzeniem w oknie minuty.    |
-| ActivitySucceededRuns | Metryki uruchamiania działań zakończonych powodzeniem | Licznik    | Łącznie                | Całkowita liczba uruchomień działania zakończonych powodzeniem w oknie minuty.  |
-| ActivityFailedRuns   | Metryki uruchamiania działań zakończonych niepowodzeniem    | Licznik    | Łącznie                | Całkowita liczba uruchomień działania, które zakończyły się niepowodzeniem w oknie minuty.     |
-| TriggerSucceededRuns | Wyzwalacze uruchomienia wyzwalają metryki  | Licznik    | Łącznie                | Całkowita liczba uruchomień wyzwalacza zakończonych powodzeniem w oknie minuty.   |
-| TriggerFailedRuns    | Metryki uruchomienia wyzwalacza zakończonego niepowodzeniem     | Licznik    | Łącznie                | Całkowita liczba uruchomień wyzwalacza zakończonych niepowodzeniem w oknie minuty.      |
+| PipelineSucceededRuns | Metryki uruchamiania potoków zakończonych powodzeniem | Liczba    | Łącznie                | Całkowita liczba uruchomień potoków zakończonych powodzeniem w oknie minuty. |
+| PipelineFailedRuns   | Metryki uruchomionych potoków zakończonych niepowodzeniem    | Liczba    | Łącznie                | Całkowita liczba uruchomień potoków zakończonych niepowodzeniem w oknie minuty.    |
+| ActivitySucceededRuns | Metryki uruchamiania działań zakończonych powodzeniem | Liczba    | Łącznie                | Całkowita liczba uruchomień działania zakończonych powodzeniem w oknie minuty.  |
+| ActivityFailedRuns   | Metryki uruchamiania działań zakończonych niepowodzeniem    | Liczba    | Łącznie                | Całkowita liczba uruchomień działania, które zakończyły się niepowodzeniem w oknie minuty.     |
+| TriggerSucceededRuns | Wyzwalacze uruchomienia wyzwalają metryki  | Liczba    | Łącznie                | Całkowita liczba uruchomień wyzwalacza zakończonych powodzeniem w oknie minuty.   |
+| TriggerFailedRuns    | Metryki uruchomienia wyzwalacza zakończonego niepowodzeniem     | Liczba    | Łącznie                | Całkowita liczba uruchomień wyzwalacza zakończonych niepowodzeniem w oknie minuty.      |
 
 Aby uzyskać dostęp do metryk, wykonaj instrukcje podane w temacie [Azure monitor Data Platform](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+
+> [!NOTE]
+> Emitowane są tylko zdarzenia zakończone, wyzwolone działania i uruchomienia potoku. W toku, a uruchomienia piaskownicy/debugowania **nie** są emitowane. 
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Monitoruj metryki Data Factory przy użyciu Azure Monitor
 
@@ -452,7 +455,7 @@ Utwórz lub Dodaj ustawienia diagnostyczne dla fabryki danych.
 
 1. Wybierz fabrykę danych, dla której chcesz ustawić ustawienie diagnostyczne.
 
-1. Jeśli w wybranej fabryce danych nie istnieją żadne ustawienia, zostanie wyświetlony monit o utworzenie ustawienia. Wybierz pozycję **Włącz diagnostykę**.
+1. Jeśli w wybranej fabryce danych nie istnieją żadne ustawienia, zostanie wyświetlony monit o utworzenie ustawienia. Wybierz **Włącz diagnostykę**.
 
    ![Utwórz ustawienie diagnostyczne, jeśli nie istnieją żadne ustawienia](media/data-factory-monitor-oms/monitor-oms-image1.png)
 

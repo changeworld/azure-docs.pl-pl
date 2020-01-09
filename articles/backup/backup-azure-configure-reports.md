@@ -3,12 +3,12 @@ title: Konfigurowanie raportów usługi Power BI
 description: Skonfiguruj Power BI raporty dla Azure Backup przy użyciu magazynu Recovery Services.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 6e8482aea4f1d757550d4490e3a9972f664729c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450106"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 
@@ -88,7 +88,7 @@ Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykona
 4. Wprowadź nazwę konta magazynu, które zostało skonfigurowane w poprzednim kroku 5, a następnie wybierz przycisk **dalej**.
 
     ![Wprowadź nazwę konta magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)
-5. Przy użyciu metody uwierzytelniania "klucz" Wprowadź klucz konta magazynu dla tego konta magazynu. Aby [wyświetlić i skopiować klucze dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys), przejdź do swojego konta magazynu w Azure Portal.
+5. Przy użyciu metody uwierzytelniania "klucz" Wprowadź klucz konta magazynu dla tego konta magazynu. Klucze dostępu do konta magazynu można znaleźć w Azure Portal. Aby uzyskać więcej informacji, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../storage/common/storage-account-keys-manage.md).
 
      ![Wprowadź konto magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
 
@@ -114,7 +114,7 @@ Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykona
 
 ## <a name="troubleshooting-errors"></a>Rozwiązywanie problemów z błędami
 
-| Szczegóły błędu | Rozwiązanie |
+| Szczegóły błędu | Rozdzielczość |
 | --- | --- |
 | Po skonfigurowaniu konta magazynu dla raportów kopii zapasowych nadal **nie jest skonfigurowane** **konto magazynu** . | Po pomyślnym skonfigurowaniu konta magazynu dane raportowania są przesyłane pomimo tego problemu. Aby rozwiązać ten problem, przejdź do Azure Portal i wybierz pozycję **wszystkie usługi** > **ustawienia diagnostyczne** > **Recovery Services magazyn** > **Edytuj ustawienie**. Usuń poprzednio skonfigurowane ustawienie i Utwórz nowe ustawienie w tym samym bloku. Tym razem w polu **Nazwa** wybierz pozycję **Usługa**. Teraz zostanie wyświetlone skonfigurowane konto magazynu. |
 |Po zaimportowaniu aplikacji Azure Backup Template w programie Power BI zostanie wyświetlony komunikat o błędzie "404-kontener nie zostanie znaleziony". | Jak wspomniano wcześniej, należy odczekać 24 godziny od momentu skonfigurowania raportów w magazynie Recovery Services, aby zobaczyć je prawidłowo w Power BI. Jeśli spróbujesz uzyskać dostęp do raportów przed 24 godzinami, zostanie wyświetlony komunikat o błędzie, ponieważ kompletne dane nie są jeszcze dostępne, aby pokazać prawidłowe raporty. |

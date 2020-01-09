@@ -1,25 +1,14 @@
 ---
-title: Serializacja niezawodnych obiektów kolekcji na platformie Azure Service Fabric | Microsoft Docs
-description: Serializacja obiektu niezawodnych kolekcji Service Fabric platformy Azure
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Serializacja niezawodnych obiektów kolekcji
+description: Dowiedz się więcej na temat serializacji niezawodnych kolekcji obiektów Service Fabric platformy Azure, w tym domyślnej strategii i sposobu definiowania serializacji niestandardowej.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599309"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639551"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Serializacja niezawodnych obiektów kolekcji na platformie Azure Service Fabric
 Niezawodne kolekcje "Replikuj i utrwalają swoje elementy", aby upewnić się, że są one trwałe przez awarie maszyn i przestoje.
@@ -34,28 +23,28 @@ Niezawodny Menedżer stanu zawiera wbudowany serializator dla niektórych typów
 Wbudowane serializatory są bardziej wydajne, ponieważ wiedzą, że ich typy nie mogą ulec zmianie i nie muszą zawierać informacji o typie, takim jak nazwa jego typu.
 
 Niezawodny Menedżer stanu ma wbudowany serializator dla następujących typów: 
-- Guid
+- Identyfikator GUID
 - bool
 - byte
-- SByte
+- sbyte
 - byte[]
 - char
-- ciąg
+- string
 - decimal
 - double
 - float
 - int
 - uint
-- long
+- długi
 - ulong
-- wybierak
-- UShort
+- short
+- ushort
 
 ## <a name="custom-serialization"></a>Serializacja niestandardowa
 
 Niestandardowe serializatory są często używane do zwiększania wydajności lub szyfrowania danych za pośrednictwem sieci i na dysku. Z tego względu niestandardowe serializatory są zwykle bardziej wydajne niż serializator ogólny, ponieważ nie muszą serializować informacji o typie. 
 
-[IReliableStateManager. TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) służy do rejestrowania niestandardowego serializatora dla danego typu T. Ta rejestracja powinna wystąpić w przygotowaniu StatefulServiceBase, aby upewnić się, że przed rozpoczęciem odzyskiwania wszystkie niezawodne kolekcje mają dostęp do odpowiedniego serializatora w celu odczytania danych utrwalonych.
+[IReliableStateManager. TryAddStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) służy do rejestrowania niestandardowego serializatora dla danego typu t. Ta rejestracja powinna wystąpić w przygotowaniu StatefulServiceBase, aby upewnić się, że przed rozpoczęciem odzyskiwania wszystkie niezawodne kolekcje mają dostęp do odpowiedniego serializatora w celu odczytania danych utrwalonych.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,7 +62,7 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Jak zaimplementować serializator niestandardowy
 
-Serializator niestandardowy musi implementować interfejs [\<IStateSerializer T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) .
+Niestandardowa serializator musi zaimplementować interfejs [IStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) .
 
 > [!NOTE]
 > IStateSerializer\<T > zawiera Przeciążenie do zapisu i odczytu, który przyjmuje dodatkową wartość T o nazwie bazowej. Ten interfejs API jest przeznaczony do serializacji różnicowej. Obecnie funkcja serializacji różnicowej nie jest udostępniona. W związku z tym te dwa przeciążenia nie są wywoływane, dopóki Serializacja różnicowa nie zostanie udostępniona i włączona.

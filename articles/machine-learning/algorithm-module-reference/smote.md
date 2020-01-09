@@ -1,7 +1,7 @@
 ---
 title: SMOTE
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu SMOTE w usłudze Azure Machine Learning, aby zwiększyć liczbę przykładów o niskim poziomie w zestawie danych przy użyciu próbkowania.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu SMOTE w Azure Machine Learning, aby zwiększyć liczbę przykładów o niskim poziomie w zestawie danych przy użyciu próbkowania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717022"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428430"
 ---
 # <a name="smote"></a>SMOTE
 
@@ -40,7 +40,7 @@ Jeśli dodasz zestaw danych do potoku i wybierzesz opcję **Wizualizuj** w danyc
  
 Aby zwiększyć liczbę przypadków, można ustawić wartość **procentu SMOTE**przy użyciu wielokrotności 100 w następujący sposób:
 
-||Klasa 0|Klasa 1|ogólnego|  
+||Klasa 0|Klasa 1|łącznie|  
 |-|-------------|-------------|-----------|  
 |Oryginalny zestaw danych<br /><br /> (odpowiednik **wartości procentowej SMOTE** = **0**)|570<br /><br /> 76%|178<br /><br /> codzienne|748|  
 |**SMOTE procent** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
@@ -62,7 +62,7 @@ Aby zwiększyć liczbę przypadków, można ustawić wartość **procentu SMOTE*
   
 4.  Moduł SMOTE automatycznie identyfikuje klasę mniejszości w kolumnie etykieta, a następnie pobiera wszystkie przykłady dla klasy mniejszości. Wszystkie kolumny nie mogą mieć wartości NaN.
   
-5.  W opcji **procent SMOTE** wprowadź liczbę całkowitą, która wskazuje docelowy procent przypadków mniejszościowych w wyjściowym zestawie danych. Na przykład:  
+5.  W opcji **procent SMOTE** wprowadź liczbę całkowitą, która wskazuje docelowy procent przypadków mniejszościowych w wyjściowym zestawie danych. Przykład:  
   
     - Wprowadzisz **wartość 0**. Moduł SMOTE zwraca dokładnie ten sam zestaw danych, który został dostarczony jako dane wejściowe. Nie dodaje żadnych nowych przypadków mniejszościowych. W tym zestawie danych proporcja klasy nie uległa zmianie.  
   
@@ -99,5 +99,5 @@ Aby zwiększyć liczbę przypadków, można ustawić wartość **procentu SMOTE*
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
 

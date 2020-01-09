@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: de42acd9cb8ca0520db616237c23b7db9fadb77f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 666bd2f9575019f3bfb77050d27363fef66474bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923030"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439283"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 
@@ -151,7 +151,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
-1. Zdefiniuj zmienną nazwy grupy zasobów, której użyjesz później w poleceniach programu PowerShell. Skopiuj poniższy tekst polecenia do programu PowerShell, podaj nazwę [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w podwójnych cudzysłowach, a następnie uruchom polecenie. Na przykład: `"adfrg"`. 
+1. Zdefiniuj zmienną nazwy grupy zasobów, której użyjesz później w poleceniach programu PowerShell. Skopiuj poniższy tekst polecenia do programu PowerShell, podaj nazwę [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) w podwójnych cudzysłowach, a następnie uruchom polecenie. Na przykład: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -197,7 +197,7 @@ Pamiętaj o następujących kwestiach:
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów danych i usług obliczeniowych z fabryką danych. W tej sekcji utworzysz usługi połączone ze swoim kontem usługi Azure Storage i bazą danych Azure SQL Database. 
 
-### <a name="create-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage.
+### <a name="create-azure-storage-linked-service"></a>Utwórz połączoną usługę Azure Storage.
 W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 
 1. Utwórz plik JSON o nazwie **AzureStorageLinkedService.json** w folderze **C:\ADFTutorials\IncCopyChangeTrackingTutorial** o następującej zawartości: (utwórz folder, jeśli jeszcze nie istnieje). Przed zapisaniem pliku zastąp wartości `<accountName>` i `<accountKey>` nazwą i kluczem konta usługi Azure Storage.
@@ -208,10 +208,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
         "properties": {
             "type": "AzureStorage",
             "typeProperties": {
-                "connectionString": {
-                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>",
-                    "type": "SecureString"
-                }
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>"
             }
         }
     }
@@ -235,7 +232,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 ### <a name="create-azure-sql-database-linked-service"></a>Utwórz połączoną usługę Azure SQL Database.
 W tym kroku opisano sposób łączenia bazy danych Azure SQL Database z fabryką danych.
 
-1. Przed zapisaniem pliku utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService.json** w folderze **C:\ADFTutorials\IncCopyChangeTrackingTutorial** o następującej zawartości: zastąp wartości **&lt;serwer&gt;, &lt;nazwa bazy danych&gt;, &lt;identyfikator użytkownika&gt; i &lt;hasło&gt;** nazwą używanego serwera Azure SQL Server, nazwą bazy danych, identyfikatorem użytkownika i hasłem. 
+1. Utwórz plik JSON o nazwie **AzureSQLDatabaseLinkedService. JSON** w folderze **C:\ADFTutorials\IncCopyChangeTrackingTutorial** o następującej zawartości: zastąp **&lt;Server&gt; &lt;nazwa bazy danych&gt;, &lt;identyfikator użytkownika&gt;, a &lt;hasło&gt;** z nazwą serwera SQL Azure, nazwą bazy danych, identyfikatorem użytkownika i hasłem, przed zapisaniem pliku. 
 
     ```json
     {
@@ -243,10 +240,7 @@ W tym kroku opisano sposób łączenia bazy danych Azure SQL Database z fabryką
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
-                    "type": "SecureString"
-                }
+                "connectionString": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name>; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;"
             }
         }
     }

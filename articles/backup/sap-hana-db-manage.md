@@ -3,14 +3,14 @@ title: Zarządzanie kopiami zapasowymi baz danych SAP HANAymi na maszynach wirtu
 description: W tym artykule przedstawiono typowe zadania związane z zarządzaniem i monitorowaniem SAP HANA baz danych uruchomionych na maszynach wirtualnych platformy Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: f76054c7c78c55a9754975267ee4fa3caab968a3
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288349"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390637"
 ---
-# <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Zarządzanie kopiami zapasowymi baz danych SAP HANA i ich monitorowanie
+# <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Zarządzanie kopiami zapasowymi baz danych platformy SAP HANA i ich monitorowanie
 
 W tym artykule opisano typowe zadania związane z zarządzaniem i monitorowaniem SAP HANA baz danych, które są uruchomione na maszynie wirtualnej platformy Azure (VM) i których kopia zapasowa jest wykonywana w magazynie Recovery Services Azure Backup przez usługę [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) . Dowiesz się, jak monitorować zadania i alerty, wyzwalać kopie zapasowe na żądanie, edytować zasady, zatrzymywać i wznawiać ochronę bazy danych oraz wyrejestrować maszynę wirtualną z kopii zapasowych.
 
@@ -22,7 +22,7 @@ Azure Backup przedstawia wszystkie zadania wyzwalane ręcznie w sekcji **zadania
 
 ![Sekcja zadań tworzenia kopii zapasowej](./media/sap-hana-db-manage/backup-jobs.png)
 
-Zadania widoczne w tym portalu obejmują odnajdywanie i rejestrowanie bazy danych oraz operacje tworzenia kopii zapasowych i przywracania. W tej sekcji nie są wyświetlane zaplanowane zadania, w tym kopie zapasowe dzienników. Ręcznie wyzwolone kopie zapasowe z SAP HANA natywnych klientów (Panel sterowania Studio/Panel sterowania/DBA) również nie są wyświetlane w tym miejscu.
+Zadania widoczne w tym portalu obejmują odnajdywanie i rejestrowanie bazy danych oraz operacje tworzenia kopii zapasowych i przywracania. Zaplanowane zadania, w tym kopie zapasowe dzienników, nie są wyświetlane w tej sekcji. Ręcznie wyzwolone kopie zapasowe z SAP HANA natywnych klientów (Panel sterowania Studio/Panel sterowania/DBA) również nie są wyświetlane w tym miejscu.
 
 ![Lista zadań tworzenia kopii zapasowej](./media/sap-hana-db-manage/backup-jobs-list.png)
 
@@ -32,7 +32,7 @@ Aby dowiedzieć się więcej o monitorowaniu, przejdź do [obszaru monitorowanie
 
 Alerty to prosta metoda monitorowania kopii zapasowych baz danych SAP HANA. Alerty ułatwiają skoncentrowanie się na zdarzeniach, których nie można uzyskać w wielu przypadkach, które generują kopie zapasowe. Azure Backup umożliwia Ustawianie alertów i monitorowanie ich w następujący sposób:
 
-* Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+* Zaloguj się do [portalu Azure](https://portal.azure.com/).
 * Na pulpicie nawigacyjnym magazynu wybierz pozycję **alerty kopii zapasowych**.
 
   ![Alerty kopii zapasowej na pulpicie nawigacyjnym magazynu](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -75,25 +75,38 @@ Jeśli chcesz utworzyć lokalną kopię zapasową (przy użyciu platformy HANA S
 3. Aby to zrobić, kliknij dwukrotnie pozycję **systemdb** > **Configuration** > **Wybierz pozycję Database** > **Filter (log)** .
 4. Ustaw **enable_auto_log_backup** na wartość **nie**.
 5. Ustaw **log_backup_using_backint** na **wartość false**.
-6. Utwórz pełną kopię zapasową bazy danych ad hoc.
+6. Wykonaj pełną kopię zapasową bazy danych.
 7. Poczekaj na zakończenie pełnej kopii zapasowej i kopii zapasowej wykazu.
 8. Przywróć poprzednie ustawienia z powrotem do tych dla platformy Azure:
    * Ustaw wartość **enable_auto_log_backup** na **tak**.
    * Ustaw **log_backup_using_backint** na **wartość true**.
 
-### <a name="edit-underlying-policy"></a>Edytuj podstawowe zasady
+### <a name="change-policy"></a>Zmień zasady
 
-Zmodyfikuj zasady, aby zmienić częstotliwość tworzenia kopii zapasowych lub zakres przechowywania:
+Można zmienić podstawowe zasady dla SAP HANA elementu kopii zapasowej.
 
-* Na pulpicie nawigacyjnym magazynu przejdź do pozycji **zarządzaj** > **zasady tworzenia kopii zapasowych**
+* Na pulpicie nawigacyjnym magazynu przejdź do **pozycji elementy kopii zapasowej**:
 
-  ![Zasady tworzenia kopii zapasowych na pulpicie nawigacyjnym magazynu](./media/sap-hana-db-manage/backup-policies-dashboard.png)
+  ![Wybierz elementy kopii zapasowej](./media/sap-hana-db-manage/backup-items.png)
 
-* Wybierz zasady, które chcesz edytować:
+* Wybierz **SAP HANA na maszynie wirtualnej platformy Azure**
 
-  ![Lista zasad tworzenia kopii zapasowych](./media/sap-hana-db-manage/backup-policies-list.png)
+  ![Wybierz SAP HANA na maszynie wirtualnej platformy Azure](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
-  ![Szczegóły zasad kopii zapasowych](./media/sap-hana-db-manage/backup-policy-details.png)
+* Wybierz element kopii zapasowej, którego podstawowe zasady chcesz zmienić
+* Kliknij istniejące zasady tworzenia kopii zapasowych
+
+  ![Wybierz istniejące zasady tworzenia kopii zapasowych](./media/sap-hana-db-manage/existing-backup-policy.png)
+
+* Zmień zasady, wybierając z listy. [Utwórz nowe zasady tworzenia kopii zapasowych w](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy) razie konieczności.
+
+  ![Wybieranie zasad z listy rozwijanej](./media/sap-hana-db-manage/choose-backup-policy.png)
+
+* Zapisz zmiany
+
+  ![Zapisz zmiany](./media/sap-hana-db-manage/save-changes.png)
+
+* Modyfikacje zasad będą mieć wpływ na wszystkie powiązane elementy kopii zapasowej i wyzwalają odpowiednie zadania **konfigurowania ochrony** .
 
 >[!NOTE]
 > Każda zmiana w okresie przechowywania będzie stosowana z mocą wsteczną do wszystkich starszych punktów odzyskiwania poza nowymi.
@@ -175,4 +188,3 @@ Wyrejestruj wystąpienie SAP HANA po wyłączeniu ochrony, ale przed usunięciem
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, jak [rozwiązywać typowe problemy podczas tworzenia kopii zapasowych baz danych SAP HANA.](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)
-

@@ -8,47 +8,49 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183767"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692552"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Tworzenie konta magazynu dla hosta procesora zdarzeń
 Host procesora zdarzeń to inteligentny agent, który upraszcza odbieranie zdarzeń z usługi Event Hubs przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami. W przypadku obsługi punktów kontrolnych host procesora zdarzeń wymaga konta magazynu. Poniższy przykład pokazuje, jak utworzyć konto magazynu oraz uzyskać jego klucze na potrzeby dostępu:
 
-1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** w lewym górnym rogu ekranu.
+1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**.
 
-2. Wybierz pozycję **Storage**, a następnie wybierz pozycję **Konto usługi Storage — Blob, File, Table, Queue**.
+    ![Utwórz element menu zasobu, Microsoft Azure Portal](./media/event-hubs-create-storage/create-resource.png)
+
+2. Wybierz pozycję **Magazyn** > **Konto magazynu**.
    
-    ![Wybieranie konta magazynu](./media/event-hubs-create-storage/create-storage1.png)
+    ![Wybierz pozycję konto magazynu, Microsoft Azure Portal](./media/event-hubs-create-storage/select-storage-account.png)
 
 3. Na stronie **Utwórz konto magazynu** wykonaj następujące kroki: 
 
-   1. Wprowadź nazwę konta magazynu. 
-   2. Wybierz subskrypcję platformy Azure zawierającą centrum zdarzeń.
-   3. Wybierz grupę zasobów zawierającą centrum zdarzeń.
-   4. Wybierz lokalizację, w której chcesz utworzyć zasób. 
-   5. Następnie kliknij pozycję **Przeglądanie + tworzenie**.
+   1. Wprowadź **nazwę konta magazynu**.
+   2. Wybierz **subskrypcję** platformy Azure, która zawiera centrum zdarzeń.
+   3. Wybierz lub Utwórz **grupę zasobów** , w której znajduje się centrum zdarzeń.
+   4. Wybierz **lokalizację** , w której chcesz utworzyć zasób. 
+   5. Wybierz pozycję **Przegląd + utwórz**.
    
-      ![Utwórz konto magazynu — strona](./media/event-hubs-create-storage/create-storage2.png)
+        ![Przejrzyj + Utwórz, Utwórz konto magazynu, Microsoft Azure Portal](./media/event-hubs-create-storage/review-create.png)
 
 4. Na stronie **Przeglądanie + tworzenie** sprawdź wartości i wybierz pozycję **Utwórz**. 
 
-    ![Przeglądanie ustawień konta magazynu i tworzenie](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. Po wyświetleniu **wdrożenia zakończone pomyślnie** komunikatu wybierz **przejdź do zasobu** w górnej części strony. Na stronie konta magazynu można również uruchomić, wybierając konto magazynu z listy zasobów.  
+    ![Przejrzyj ustawienia konta magazynu i Utwórz, Microsoft Azure Portal](./media/event-hubs-create-storage/create-storage-account.png)
+5. Po wyświetleniu komunikatu **wdrożenia zakończone powodzeniem** w powiadomieniach wybierz pozycję **Przejdź do zasobu** , aby otworzyć stronę konto magazynu. Alternatywnie możesz rozwinąć **Szczegóły wdrożenia** , a następnie wybrać nowy zasób z listy zasobów.  
 
-    ![Wybieranie konta magazynu z wdrożenia](./media/event-hubs-create-storage/select-storage-deployment.png) 
-7. W oknie **Podstawowe elementy** wybierz pozycję **Obiekty blob**. 
+    ![Przejdź do zasobów, wdrożenie konta magazynu, Microsoft Azure Portal](./media/event-hubs-create-storage/go-to-resource.png) 
+6. Wybierz **kontenery**.
 
-    ![Wybierz usługę obiektów blob](./media/event-hubs-create-storage/select-blobs-service.png)
-1. Wybierz **+ kontener** u góry strony, wprowadź **nazwa** dla kontenera, a następnie wybierz **OK**. 
+    ![Wybierz usługę kontenera obiektów blob, konta magazynu, Microsoft Azure Portal](./media/event-hubs-create-storage/select-blob-container-service.png)
+7. Wybierz pozycję **+ kontener** u góry, wprowadź **nazwę** kontenera, a następnie wybierz **przycisk OK**. 
 
-    ![Tworzenie kontenera obiektów blob](./media/event-hubs-create-storage/create-blob-container.png)
-1. Wybierz **klucze dostępu** w menu po lewej stronie, a następnie skopiuj wartość **klucz1**. 
+    ![Tworzenie nowego kontenera obiektów blob, kont magazynu Microsoft Azure Portal](./media/event-hubs-create-storage/create-new-blob-container.png)
+8. Wybierz pozycję **klucze dostępu** z menu strony **konta magazynu** i skopiuj wartość **Klucz1**.
 
-    Zapisz następujące wartości do Notatnika lub innej tymczasowej lokalizacji.
+    Zapisz następujące wartości w Notatniku lub innej lokalizacji tymczasowej.
     - Nazwa konta magazynu
     - Klucz dostępu dla konta magazynu
     - Nazwa kontenera

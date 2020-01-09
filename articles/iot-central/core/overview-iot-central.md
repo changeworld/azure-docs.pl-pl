@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 30e7b4c39c24f4271c53f7a9f8940e4fb3c2e298
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048671"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434968"
 ---
 <!---
 Purpose of an Overview article: 
@@ -70,7 +70,7 @@ Konstruktor może też dostosować interfejs użytkownika aplikacji usługi Azur
 - Konfigurowanie niestandardowych pulpitów nawigacyjnych ułatwiających operatorom odnajdywanie szczegółowych informacji i szybsze rozwiązywanie problemów.
 - Konfigurowanie niestandardowych analiz w celu eksplorowania danych serii czasu na połączonych urządzeniach.
 
-## <a name="connect-your-devices"></a>Łączenie urządzeń
+## <a name="connect-your-devices"></a>Podłącz swoje urządzenia
 
 Po zdefiniowaniu przez konstruktora typów urządzeń, które mogą łączyć się z aplikacją, deweloper urządzenia tworzy kod do uruchamiania na urządzeniach. Deweloper urządzenia tworzy kod urządzenia przy użyciu zestawów [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) typu „open source” firmy Microsoft. Te zestawy SDK oferują szeroką obsługę języków, platform i protokołów, aby umożliwić łączenie urządzeń z aplikacją usługi Azure IoT Central. Zestawy SDK ułatwiają zaimplementowanie następujących możliwości urządzeń:
 
@@ -99,7 +99,7 @@ Administratorzy zarządzają dostępem do aplikacji przy użyciu [ról i uprawni
 
 Oto następne sugerowane kroki po zapoznaniu się z omówieniem usługi Azure IoT Central:
 
-- Poznanie różnic między [usługą Azure IoT Central i akceleratorami rozwiązań Azure IoT](overview-iot-options.md).
+- Zapoznaj się z dostępnymi [technologiami i usługami platformy Azure służącymi do tworzenia rozwiązań IoT](../../iot-fundamentals/iot-services-and-technologies.md).
 - Zapoznanie się z [interfejsem użytkownika usługi Azure IoT Central](overview-iot-central-tour.md).
 - Rozpoczęcie pracy przez [utworzenie aplikacji usługi Azure IoT Central](quick-deploy-iot-central.md).
 - Wykonanie sekwencji samouczków dotyczących następujących kwestii:

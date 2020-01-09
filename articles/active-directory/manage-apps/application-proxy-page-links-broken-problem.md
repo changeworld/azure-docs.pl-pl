@@ -2,26 +2,21 @@
 title: Linki na stronie nie działają w przypadku aplikacji serwera proxy aplikacji
 description: Jak rozwiązywać problemy z przerwanymi łączami w aplikacjach serwera proxy aplikacji zintegrowanych z usługą Azure AD
 services: active-directory
-documentationcenter: ''
 author: msmimart
-manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268775d125e783b0c640e565c5f63e416cb197fd
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: ca782b5a190704911472d70c414d12afa7e558f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430243"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Linki na stronie nie działają w przypadku aplikacji serwera proxy aplikacji
 
@@ -41,7 +36,7 @@ Istnieją trzy sposoby rozwiązania tego problemu. Poniższe opcje są wymienion
     Jeśli zmienisz wewnętrzny adres URL, ale nie chcesz zmienić strony docelowej dla użytkowników, Zmień adres URL strony głównej na wcześniej opublikowany wewnętrzny adres URL. Można to zrobić, przechodząc do "Azure Active Directory" —&gt; rejestracji aplikacji —&gt; wybrać markę&gt; aplikacji. W sekcji znakowania zobaczysz pole "adres URL strony głównej", które można dostosować do żądanej strony docelowej. Jeśli nadal korzystasz ze starszej wersji Rejestracje aplikacji, na karcie właściwości zostanie wyświetlony szczegółowy adres URL strony głównej. 
     
     > [!IMPORTANT]
-    > W celu wprowadzenia powyższych zmian wymagane są uprawnienia do modyfikowania obiektów aplikacji w usłudze Azure AD. Użytkownik musi mieć przypisaną rolę "[administrator aplikacji](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/roles-delegate-app-roles#assign-built-in-application-admin-roles)", która przyznaje użytkownikowi uprawnienia modificaion do aplikacji w usłudze Azure AD. 
+    > W celu wprowadzenia powyższych zmian wymagane są uprawnienia do modyfikowania obiektów aplikacji w usłudze Azure AD. Użytkownik musi mieć przypisaną rolę [administratora aplikacji](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) , która przyznaje użytkownikowi uprawnienia modificaion do aplikacji w usłudze Azure AD.
     >
 
 2.  Jeśli aplikacje używają w pełni kwalifikowanych nazw domen (FQDN), użyj [domen niestandardowych](application-proxy-configure-custom-domain.md) do publikowania aplikacji. Ta funkcja umożliwia użycie tego samego adresu URL zarówno wewnętrznie, jak i zewnętrznie.

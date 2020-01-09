@@ -1,5 +1,5 @@
 ---
-title: Globalnie dystrybuowany magazyn transakcyjny i analityczny dla kontenerów usługi Azure Cosmos
+title: Globalnie dystrybuowane transakcyjne i analityczne (w prywatnej wersji zapoznawczej) magazyn dla kontenerów usługi Azure Cosmos
 description: Dowiedz się więcej o magazynie transakcyjnym i analitycznym oraz ich opcjach konfiguracji dla kontenerów usługi Azure Cosmos.
 author: markjbrown
 ms.author: mjbrown
@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601229"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445404"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globalnie dystrybuowany magazyn transakcyjny i analityczny dla kontenerów usługi Azure Cosmos
 
-Kontener usługi Azure Cosmos jest wewnętrznie obsługiwany przez dwa aparaty magazynu — transakcyjny aparat magazynu i aktualizowalny aparat magazynu analitycznego. Zarówno aparaty magazynu mają strukturę dzienników, jak i są zoptymalizowane pod kątem zapisu w celu przyspieszenia aktualizacji. Jednak każdy z nich jest zakodowany inaczej:
+Kontener usługi Azure Cosmos jest wewnętrznie obsługiwany przez dwa aparaty magazynu — transakcyjny aparat magazynu i aktualizowalny aparat magazynu analitycznego (w ramach prywatnej wersji zapoznawczej). Zarówno aparaty magazynu mają strukturę dzienników, jak i są zoptymalizowane pod kątem zapisu w celu przyspieszenia aktualizacji. Jednak każdy z nich jest zakodowany inaczej:
 
 * **Transakcyjny aparat magazynu** — jest zakodowany w formacie zorientowanym na wiersze dla szybkich operacji odczytu i zapytań transakcyjnych.
 
@@ -29,8 +29,8 @@ Transakcyjny aparat magazynu jest obsługiwany przez lokalną dysków SSD, podcz
 
 |Funkcja  |Magazyn transakcyjny  |Magazyn analityczny |
 |---------|---------|---------|
-|Maksymalny rozmiar magazynu na kontener usługi Azure Cosmos |   Nieograniczona liczba      |    Nieograniczona liczba     |
-|Maksymalny rozmiar magazynu na klucz partycji logicznej   |   10 GB      |   Nieograniczona liczba      |
+|Maksymalny rozmiar magazynu na kontener usługi Azure Cosmos |   Bez ograniczeń      |    Bez ograniczeń     |
+|Maksymalny rozmiar magazynu na klucz partycji logicznej   |   10 GB      |   Bez ograniczeń      |
 |Kodowanie magazynu  |   Zorientowane na wiersze przy użyciu formatu wewnętrznego.   |   Zorientowane na kolumny przy użyciu formatu Apache Parquet. |
 |Miejscowość magazynu |   Zreplikowane magazyny obsługiwane przez lokalne/wewnętrzne dysków SSD klastra. |  Replikowany magazyn został poddany niedrogim dysków SSD zdalnego/wyłączenia klastra.       |
 |Trwałość  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |

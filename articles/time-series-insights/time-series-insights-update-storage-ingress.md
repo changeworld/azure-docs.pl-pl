@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014709"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615099"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i ruch przychodzący w wersji zapoznawczej Azure Time Series Insights
 
@@ -23,7 +23,9 @@ W tym artykule opisano aktualizacje usługi Data Storage i transfer danych przyc
 
 ## <a name="data-ingress"></a>Dane wejściowe
 
-Środowisko Azure Time Series Insights zawiera aparat pozyskiwania do zbierania, przetwarzania i przechowywania danych szeregów czasowych. Podczas planowania środowiska należy wziąć pod uwagę pewne zagadnienia, aby zapewnić, że wszystkie dane przychodzące są przetwarzane i aby osiągnąć wysoką skalę transferu danych przychodzących i zminimalizować opóźnienia pozyskiwania (czas potrzebny przez TSI do odczytu i przetworzenia z zdarzenia Źródło). W programie Time Series Insights w wersji zapoznawczej zasady danych przychodzących określają, z których danych mogą pochodzić i jakie dane mają być dostępne w formacie.
+Środowisko Azure Time Series Insights zawiera aparat pozyskiwania do zbierania, przetwarzania i przechowywania danych szeregów czasowych. Podczas planowania środowiska należy wziąć pod uwagę pewne zagadnienia, aby zapewnić, że wszystkie dane przychodzące są przetwarzane i aby osiągnąć wysoką skalę transferu danych przychodzących i zminimalizować opóźnienia pozyskiwania (czas potrzebny przez TSI do odczytu i przetworzenia z zdarzenia Źródło). 
+
+W programie Time Series Insights w wersji zapoznawczej zasady danych przychodzących określają, z których danych mogą pochodzić i jakie dane mają być dostępne w formacie.
 
 ### <a name="ingress-policies"></a>Zasady dotyczące transferu danych przychodzących
 
@@ -32,12 +34,12 @@ Wersja zapoznawcza Time Series Insights obsługuje następujące źródła zdarz
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Wersja zapoznawcza Time Series Insights obsługuje maksymalnie dwa źródła zdarzeń na wystąpienie.
-  
-Azure Time Series Insights obsługuje dane JSON przesłane za pomocą usługi Azure IoT Hub lub Azure Event Hubs.
+Wersja zapoznawcza Time Series Insights obsługuje maksymalnie dwa źródła zdarzeń na wystąpienie. Azure Time Series Insights obsługuje dane JSON przesłane za pomocą usługi Azure IoT Hub lub Azure Event Hubs.
 
 > [!WARNING] 
-> W przypadku dołączania nowego źródła zdarzeń do środowiska Time Series Insights w wersji zapoznawczej, w zależności od liczby zdarzeń znajdujących się obecnie w IoT Hub lub centrum zdarzeń, może wystąpić duże opóźnienie pozyskiwania. W miarę pozyskiwania danych należy oczekiwać, że jest to duże opóźnienie, ale jeśli środowisko użytkownika wskazuje w inny sposób, skontaktuj się z nami, przesyłając bilet pomocy technicznej za pomocą Azure Portal.
+> * W przypadku dołączania źródła zdarzeń do środowiska w wersji zapoznawczej mogą wystąpić wysokie początkowe opóźnienia. 
+> Opóźnienie źródła zdarzenia zależy od liczby zdarzeń znajdujących się obecnie w IoT Hub lub centrum zdarzeń.
+> * Duże opóźnienie zostanie umieszczone po pierwszym pozyskaniu danych źródła zdarzenia. Skontaktuj się z nami, przesyłając zgłoszenie do pomocy technicznej przez Azure Portal, jeśli wystąpią ciągłe duże opóźnienia.
 
 ## <a name="ingress-best-practices"></a>Najlepsze rozwiązania związane z transferem danych przychodzących
 
@@ -49,12 +51,19 @@ Zalecamy stosowanie następujących najlepszych rozwiązań:
 
 ### <a name="ingress-scale-and-limitations-in-preview"></a>Skala ruchu przychodzącego i ograniczenia w wersji zapoznawczej
 
-Domyślnie Time Series Insights wersja zapoznawcza obsługuje początkową skalę ruchu przychodzącego do 1 megabajtów na sekundę (MB/s) na środowisko. W razie potrzeby jest dostępna maksymalnie 16 MB/s, skontaktuj się z nami, przesyłając bilet pomocy technicznej w Azure Portal, jeśli jest to konieczne. Ponadto istnieje limit partycji na 0,5 MB/s. Ma to wpływ na to, że klienci korzystający z IoT Hub, w odniesieniu do koligacji między urządzeniem IoT Hub a partycją. W scenariuszach, w których jedno urządzenie bramy przekazuje komunikaty do usługi Hub przy użyciu identyfikatora urządzenia i parametrów połączenia, występuje niebezpieczeństwo w stosunku do limitu 0,5 MB/s, pod warunkiem, że komunikaty docierają do jednej partycji, nawet jeśli ładunek zdarzenia określa inny TS Identyfikatory. Ogólnie stawka transferu danych przychodzących jest wyświetlana jako współczynnik liczby urządzeń w organizacji, częstotliwości emisji zdarzeń i rozmiaru zdarzenia. Podczas obliczania współczynnika pozyskiwania IoT Hub użytkownicy powinni używać liczby używanych połączeń centrów zamiast łącznego urządzenia w organizacji. Trwa Ulepszona obsługa skalowania. Ta dokumentacja zostanie zaktualizowana w celu odzwierciedlenia tych ulepszeń. 
+Domyślnie środowiska w wersji zapoznawczej obsługują stawki za transfer danych przychodzących do **1 MB na sekundę (MB/s) na środowisko**. W razie potrzeby klienci mogą skalować swoje środowiska w wersji zapoznawczej do **16 MB/s** .
+Istnieje również limit partycji wynoszący **0,5 MB/s**. 
 
-> [!WARNING]
-> W przypadku środowisk, w których IoT Hub jako źródło zdarzenia, Oblicz szybkość pozyskiwania przy użyciu liczby używanych urządzeń koncentratora.
+Limit na partycję ma konsekwencje dla klientów korzystających z IoT Hub. W odróżnieniu od koligacji między urządzeniem IoT Hub i partycją. W scenariuszach, w których jedno urządzenie bramy przekazuje komunikaty do koncentratora przy użyciu własnego identyfikatora urządzenia i parametrów połączenia, występuje niebezpieczeństwo osiągania limitu 0,5 MB/s, w wyniku których komunikaty zostaną dostarczone w pojedynczej partycji, nawet jeśli ładunek zdarzenia określi różne identyfikatory szeregów czasowych. 
 
-Aby uzyskać więcej informacji na temat jednostek przepływności i partycji, zobacz następujące linki:
+Ogólnie rzecz biorąc, stawki za transfer danych przychodzących są wyświetlane jako współczynnik liczby urządzeń w organizacji, częstotliwości emisji zdarzeń i rozmiaru każdego zdarzenia:
+
+*  **Liczba urządzeń** × **częstotliwość emisji zdarzeń** × **rozmiar każdego zdarzenia**.
+
+> [!TIP]
+> W przypadku środowisk, w których IoT Hub jako źródło zdarzeń, Oblicz wskaźnik pozyskiwania przy użyciu liczby używanych połączeń centrów, a nie łącznych używanych urządzeń lub w organizacji.
+
+Aby uzyskać więcej informacji na temat jednostek przepływności, limitów i partycji:
 
 * [Skalowanie IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [Skala centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -113,7 +122,7 @@ Dostęp do danych można uzyskać na trzy sposoby:
 
 ### <a name="data-deletion"></a>Usuwanie danych
 
-Nie usuwaj plików w wersji zapoznawczej Time Series Insights. Pokrewnymi danymi należy zarządzać wyłącznie w programie Time Series Insights Preview.
+Nie usuwaj plików w wersji zapoznawczej Time Series Insights. Zarządzaj powiązanymi danymi wyłącznie w programie Time Series Insights Preview.
 
 ## <a name="parquet-file-format-and-folder-structure"></a>Parquet format pliku i struktura folderów
 
@@ -136,7 +145,7 @@ W obu przypadkach wartości czasu odpowiadają czasowi utworzenia obiektu BLOB. 
 > [!NOTE]
 > * `<YYYY>` mapuje do czwartej reprezentacji roku.
 > * `<MM>` mapuje na dwucyfrowy reprezentację miesiąca.
-> * `<YYYYMMDDHHMMSSfff>` mapuje do sygnatury czasowej z czterocyfrowym rokiem (`YYYY`), dwucyfrowym miesiącem (`MM`), dwucyfrowym i dwucyfrowym (`DD`), godziną dwucyfrową (`HH`), dwucyfrową minutą (`MM`), cyfrą sekundową (`SS`) i 3-cyfrową milisekundą (`fff`).
+> * `<YYYYMMDDHHMMSSfff>` mapuje do sygnatury czasowej przy użyciu czterocyfrowego roku (`YYYY`), dwucyfrowego miesiąca (`MM`), dwucyfrowego dnia (`DD`), godziny dwucyfrowej (`HH`), dwucyfrowej minuty (`MM`), dwucyfrowej sekundy (`SS`) i 3-cyfrowy milisekundy (`fff`).
 
 Zdarzenia w wersji zapoznawczej Time Series Insights są mapowane do zawartości pliku Parquet w następujący sposób:
 

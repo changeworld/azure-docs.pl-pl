@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433030"
 ---
 # <a name="clustering-point-data"></a>Dane punktu klastrowania
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Klasa `DataSource` ma również następujące metody związane z klastrowaniem:
 
-| Metoda | Typ zwracany | Opis |
+| Metoda | Zwracany typ | Opis |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: Number) | Funkcja Promise&lt;Array&lt;funkcji&lt;geometria&gt; \|&gt;&gt; | Pobiera elementy podrzędne danego klastra na następnym poziomie powiększenia. Te elementy podrzędne mogą być kombinacją kształtów i podklastrów. Podklastry będą funkcjami o właściwościach pasujących do ClusteredProperties. |
 | getClusterExpansionZoom (clusterId: Number) | Numer&lt;Promise&gt; | Oblicza poziom powiększenia, przy którym klaster rozpocznie rozszerzanie lub przerywanie. |
@@ -88,12 +88,12 @@ Zapoznaj się <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>z Azure Maps</a
 
 Gdy zdarzenia myszy występują na warstwie zawierającej klastrowane punkty danych, klastrowany punkt danych zostanie zwrócony do zdarzenia jako obiekt funkcji punktu GEOJSON. Ta funkcja wskazuje następujące właściwości:
 
-| Nazwa właściwości | Typ | Opis |
-|---------------|------|-------------|
-| hosta | wartość logiczna | Wskazuje, czy funkcja reprezentuje klaster. |
-| cluster_id | ciąg | Unikatowy identyfikator klastra, który może być używany z metodami DataSource `getClusterExpansionZoom`, `getClusterChildren`i `getClusterLeaves`. |
-| point_count | numer | Liczba punktów, które zawiera klaster. |
-| point_count_abbreviated | ciąg | Ciąg, który skróci wartość `point_count`, jeśli jest długi. (na przykład 4 000 to 4K) |
+| Nazwa właściwości             | Typ    | Opis   |
+|---------------------------|---------|---------------|
+| `cluster`                 | wartość logiczna | Wskazuje, czy funkcja reprezentuje klaster. |
+| `cluster_id`              | string  | Unikatowy identyfikator klastra, który może być używany z metodami DataSource `getClusterExpansionZoom`, `getClusterChildren`i `getClusterLeaves`. |
+| `point_count`             | numer  | Liczba punktów, które zawiera klaster.  |
+| `point_count_abbreviated` | string  | Ciąg, który skróci wartość `point_count`, jeśli jest długi. (na przykład 4 000 to 4K)  |
 
 Ten przykład pobiera warstwę bąbelkową, która renderuje punkty klastra i dodaje zdarzenie kliknięcia, które po wyzwoleniu, obliczeniu i powiększeniu mapy do następnego poziomu powiększenia, przy którym klaster zostanie rozbicie przy użyciu metody `getClusterExpansionZoom` klasy `DataSource` i właściwości `cluster_id` klikniętego klastrowanego punktu danych. 
 

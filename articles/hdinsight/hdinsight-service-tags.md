@@ -4,15 +4,15 @@ description: Użyj tagów usługi HDInsight, aby zezwolić na ruch przychodzący
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/19/2019
-ms.openlocfilehash: 7e3ce33bdf0773ababe5eb190877a9288c094c5c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.custom: hdinsightactive
+ms.date: 12/05/2019
+ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435433"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Tagi usług sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) dla usługi Azure HDInsight
 
@@ -26,13 +26,23 @@ Dostępne są dwie opcje używania tagów usługi w sieciowych grupach zabezpiec
 
 1. Użyj jednego tagu usługi HDInsight — ta opcja spowoduje otwarcie sieci wirtualnej dla wszystkich adresów IP używanych przez usługę HDInsight do monitorowania klastrów we wszystkich regionach. Ta opcja jest najprostszą metodą, ale może nie być odpowiednia, jeśli istnieją restrykcyjne wymagania dotyczące zabezpieczeń.
 
-1. Użyj wielu tagów usługi regionalnej — ta opcja spowoduje otwarcie sieci wirtualnej tylko do adresów IP, których Usługa HDInsight używa w tym konkretnym regionie. Jeśli jednak korzystasz z wielu regionów, musisz dodać wiele tagów usługi do sieci wirtualnej.
+1. Użyj wielu tagów usługi regionalnej — ta opcja spowoduje otwarcie sieci wirtualnej tylko do adresów IP, których Usługa HDInsight używa w tym konkretnym regionie. Jeśli jednak używasz wielu regionów, musisz dodać wiele tagów usługi do sieci wirtualnej.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Użyj jednego globalnego tagu usługi HDInsight
 
-Najprostszym sposobem rozpoczęcia korzystania z tagów usług w klastrze usługi HDInsight jest dodanie tagu globalnego `HDInsight` do reguły sieciowej grupy zabezpieczeń. Aby uzyskać instrukcje dotyczące dodawania tagów usługi do sieciowej grupy zabezpieczeń, zobacz [grupy zabezpieczeń: Tagi usług](../virtual-network/security-overview.md#service-tags).
+Najprostszym sposobem rozpoczęcia korzystania z tagów usług w klastrze usługi HDInsight jest dodanie tagu globalnego `HDInsight` do reguły sieciowej grupy zabezpieczeń.
 
-Ten tag zawiera adresy IP usług kondycji i zarządzania dla wszystkich regionów, w których Usługa HDInsight jest dostępna, i zapewnia, że klaster będzie mógł komunikować się z niezbędnymi usługami kondycji i zarządzania niezależnie od miejsca, w którym zostały utworzone.
+1. W [Azure Portal](https://portal.azure.com/)wybierz grupę zabezpieczeń sieci.
+
+1. W obszarze **Ustawienia**wybierz pozycję **reguły zabezpieczeń ruchu przychodzącego**, a następnie wybierz pozycję **+ Dodaj**.
+
+1. Z listy rozwijanej **Źródło** wybierz pozycję **tag usługi**.
+
+1. Z listy rozwijanej **tag usługi źródłowej** wybierz pozycję **HDInsight**.
+
+    ![Azure Portal Dodaj tag usługi](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+
+Ten tag zawiera adresy IP usług kondycji i zarządzania dla wszystkich regionów, w których Usługa HDInsight jest dostępna, i zapewnia, że klaster będzie mógł komunikować się z niezbędnymi usługami kondycji i zarządzania niezależnie od miejsca, w którym została utworzona.
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Korzystanie z regionalnych tagów usługi HDInsight
 
@@ -51,25 +61,25 @@ Jeśli wolisz używać opcji tagów usługi dwa, a klaster znajduje się w jedny
 | &nbsp; | Australia Środkowa | HDInsight. AustraliaCentral |
 | Chiny | Chiny Wschodnie 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Chiny Północne 2 | HDInsight. ChinaNorth2 |
-| Stany Zjednoczone | Środkowo-północne stany USA | HDInsight. NorthCentralUS |
+| Stany Zjednoczone | Północno-środkowe stany USA | HDInsight. NorthCentralUS |
 | &nbsp; | Zachodnie stany USA 2 | HDInsight. WestUS2 |
-| &nbsp; | Środkowo-zachodnie stany USA | HDInsight. WestCentralUS |
+| &nbsp; | Zachodnio-środkowe stany USA | HDInsight. WestCentralUS |
 | Kanada | Kanada Wschodnia | HDInsight. CanadaEast |
 | Brazylia | Brazylia Południowa | HDInsight. BrazilSouth |
-| Korea | Korea Środkowa | HDInsight. KoreaCentral |
+| Korea Południowa | Korea Środkowa | HDInsight. KoreaCentral |
 | &nbsp; | Korea Południowa | HDInsight. KoreaSouth |
 | Indie | Indie Środkowe | HDInsight. CentralIndia |
 | &nbsp; | Indie Południowe | HDInsight. SouthIndia |
 | Japonia | Japonia Zachodnia | HDInsight. JapanWest |
 | Francja | Francja Środkowa| HDInsight. FranceCentral |
 | Zjednoczone Królestwo | Południowe Zjednoczone Królestwo | HDInsight. UKSouth |
-| Azure Government (Fairfax) | USDoD środkowe   | HDInsight. USDoDCentral |
+| Platforma Azure dla instytucji rządowych | USDoD środkowe   | HDInsight. USDoDCentral |
 | &nbsp; | USGov Texas | HDInsight. USGovTexas |
 | &nbsp; | UsDoD wschód | HDInsight. USDoDEast |
 
 ### <a name="use-multiple-regional-service-tags"></a>Używanie wielu tagów usługi regionalnej
 
-Jeśli wolisz używać opcji tagów usługi dwa, a region, w którym tworzony jest klaster, nie został wymieniony powyżej, musisz zezwolić na wiele tagów usługi regionalnej. Konieczność korzystania z więcej niż jednego jest spowodowana różnicami w rozmieszczeniu dostawców zasobów dla różnych regionów.
+Jeśli wolisz skorzystać z opcji tagów usługi dwa, a region, w którym tworzony jest klaster, nie został wymieniony powyżej, musisz zezwolić na wiele tagów usługi regionalnej. Konieczność korzystania z więcej niż jednego jest spowodowana różnicami w rozmieszczeniu dostawców zasobów dla różnych regionów.
 
 Pozostałe regiony są podzielone na grupy w oparciu o używane przez nie Tagi usług regionalnych.
 
@@ -88,7 +98,7 @@ Na przykład jeśli klaster jest tworzony w regionie `East US 2`, należy dodać
 | Stany Zjednoczone | Wschodnie stany USA 2 | HDInsight. EastUS2 |
 | &nbsp; | Środkowe stany USA | HDInsight. środkowe |
 | &nbsp; | NorthCentral nam | HDInsight. NorthCentralUS |
-| &nbsp; | Środkowo-południowe stany USA | HDInsight. SouthCentralUS |
+| &nbsp; | Południowo-środkowe stany USA | HDInsight. SouthCentralUS |
 | &nbsp; | Wschodnie stany USA | HDInsight. wschód |
 | &nbsp; | Zachodnie stany USA | HDInsight. Zachodnie |
 | Japonia | Japonia Wschodnia | HDInsight. JapanEast |
@@ -112,5 +122,5 @@ Klastry w regionach **Niemiec środkowe** i **Niemcy**Wschodnie muszą zezwalać
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Sieciowe grupy zabezpieczeń — Tagi usług](../virtual-network/security-overview.md#security-rules)
-* [Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md)
+- [Sieciowe grupy zabezpieczeń — Tagi usług](../virtual-network/security-overview.md#security-rules)
+- [Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md)

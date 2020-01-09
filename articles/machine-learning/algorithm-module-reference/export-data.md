@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497898"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529596"
 ---
 # <a name="export-data-module"></a>Eksportuj moduł danych
 
@@ -29,7 +29,7 @@ Ten moduł obsługuje eksportowanie danych do następujących usług danych w ch
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../service/how-to-access-data.md).
+Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Jak skonfigurować dane eksportu
 
@@ -39,7 +39,7 @@ Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn d
 
 1. Wybierz pozycję **Eksportuj dane** , aby otworzyć okienko **Właściwości** .
 
-1. W obszarze **Magazyn**danych wybierz istniejący magazyn danych z listy rozwijanej. Możesz również utworzyć nowy magazyn danych. Zapoznaj się z tematem jak [uzyskać dostęp do danych](../service/how-to-access-data.md)
+1. W obszarze **Magazyn**danych wybierz istniejący magazyn danych z listy rozwijanej. Możesz również utworzyć nowy magazyn danych. Zapoznaj się z tematem jak [uzyskać dostęp do danych](../how-to-access-data.md)
 
 1. Zdefiniuj ścieżkę w magazynie danych, w której mają zostać zapisane dane. 
 

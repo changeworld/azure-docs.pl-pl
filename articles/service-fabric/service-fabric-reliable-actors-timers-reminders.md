@@ -1,33 +1,24 @@
 ---
-title: Reliable Actors czasomierze i przypomnienia | Dokumentacja firmy Microsoft
-description: Wprowadzenie do czasomierzy i przypomnień dla elementów Reliable Actors usługi Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Reliable Actors czasomierze i przypomnienia
+description: Wprowadzenie do czasomierzy i przypomnień dla Reliable Actors Service Fabric, w tym wskazówki dotyczące używania każdego z nich.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 00c48716-569e-4a64-bd6c-25234c85ff4f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 323de842645cced3c6f490e98112fcbcd184aa64
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726812"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639619"
 ---
-# <a name="actor-timers-and-reminders"></a>Aktor czasomierze i przypomnienia
-Aktorzy można zaplanować okresowe prace nad samodzielnie, rejestrując czasomierze i przypomnienia. W tym artykule przedstawiono sposób użycia czasomierze i przypomnienia i wyjaśnia różnice między nimi.
+# <a name="actor-timers-and-reminders"></a>Czasomierze aktora i przypomnienia
+Aktory mogą zaplanować okresowe prace na siebie przez zarejestrowanie czasomierza lub przypomnień. W tym artykule przedstawiono sposób korzystania z czasomierzy i przypomnień oraz wyjaśniono różnice między nimi.
 
 ## <a name="actor-timers"></a>Czasomierze aktora
-Czasomierze aktora zapewniają prosty otokę .NET lub Java czasomierza upewnij się, że metody wywołania zwrotnego przestrzegać współbieżności tury gwarantuje, że Aktorzy środowisko wykonawcze zapewnia.
+Czasomierze aktora zapewniają prostą otokę wokół czasomierza programu .NET lub języka Java, aby zapewnić, że metody wywołania zwrotnego uwzględniają gwarancje współbieżności oparte na włączeniu, które udostępnia aktory.
 
-Można użyć aktorów `RegisterTimer`(C#) lub `registerTimer`(Java) i `UnregisterTimer`(C#) lub `unregisterTimer`metody (Java) w swojej klasie bazowej można rejestrować i wyrejestrowywać swoje czasomierzy. W poniższym przykładzie pokazano użycie czasomierza interfejsów API. Interfejsy API są bardzo podobne do czasomierz .NET lub Java czasomierza. W tym przykładzie, kiedy czasomierz ma zostać, środowisko uruchomieniowe aktorów wywoła `MoveObject`(C#) lub `moveObject`— metoda (Java). Metoda jest gwarantowane do przestrzegania tury współbieżności. Oznacza to, że nie ma innych metod aktora lub wywołań zwrotnych czasomierza/przypomnienie będzie w toku to wywołanie zwrotne zakończenie wykonywania.
+Aktory mogą używać metod `RegisterTimer`C#() lub `registerTimer`(Java) i `UnregisterTimer`C#() lub `unregisterTimer`(Java), aby rejestrować i wyrejestrować ich czasomierze. W poniższym przykładzie pokazano użycie interfejsów API czasomierza. Interfejsy API są bardzo podobne do czasomierza .NET lub czasomierza Java. W tym przykładzie, gdy czasomierz jest zaległy, środowisko uruchomieniowe aktorów wywoła metodę `MoveObject`C#() lub `moveObject`(Java). Metoda ma na celu uwzględnienie współbieżności opartej na włączeniu. Oznacza to, że żadne inne metody aktora lub wywołania zwrotne czasomierz/przypomnienie nie będą w toku do momentu zakończenia wykonywania tego wywołania zwrotnego.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -127,16 +118,16 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 }
 ```
 
-Na następny okres timer rozpoczyna się po wywołania zwrotnego kończy wykonywanie. Oznacza to, czy czasomierz została zatrzymana, gdy wywołanie zwrotne jest wykonywane i jest uruchomiona, po zakończeniu wywołania zwrotnego.
+Następny okres czasomierza rozpocznie się po wykonaniu wywołania zwrotnego. Oznacza to, że czasomierz jest zatrzymany podczas wykonywania wywołania zwrotnego i uruchamiany po zakończeniu wywołania zwrotnego.
 
-Środowiska uruchomieniowego aktorów zapisuje zmiany wprowadzone do menedżera stanu aktora, po zakończeniu wywołania zwrotnego. Jeśli wystąpi błąd podczas zapisywania stanu, ten obiekt aktora zostaną dezaktywowane i nowe wystąpienie zostanie uaktywnione.
+Środowisko uruchomieniowe aktorów zapisuje zmiany wprowadzone do menedżera stanu aktora po zakończeniu wywołania zwrotnego. Jeśli wystąpi błąd podczas zapisywania stanu, ten obiekt aktora zostanie zdezaktywowany i zostanie aktywowane nowe wystąpienie.
 
-Zatrzymuje wszystkie czasomierze dezaktywacji aktora w ramach operacji wyrzucania elementów bezużytecznych. Nie czasomierza wywołania zwrotne są wywoływane po tym. Ponadto środowisko uruchomieniowe aktorów nie zachowuje żadnych informacji na temat czasomierzy, które były uruchomione przed dezaktywacji. Jest aktora, aby zarejestrować wszystkie zegary, których potrzebuje, gdy zostanie ponownie aktywowany w przyszłości. Aby uzyskać więcej informacji, zobacz sekcję na [aktora wyrzucania elementów bezużytecznych](service-fabric-reliable-actors-lifecycle.md).
+Wszystkie czasomierze są przerywane, gdy aktor zostanie zdezaktywowany w ramach odzyskiwania pamięci. Żadne wywołania zwrotne czasomierza nie są wywoływane po tym elemencie. Ponadto środowisko uruchomieniowe aktorów nie zachowuje żadnych informacji na temat czasomierzy, które były uruchomione przed dezaktywacją. Do aktora można rejestrować wszelkie czasomierze, których potrzebuje, gdy zostanie ona ponownie aktywowana w przyszłości. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą [zbierania elementów bezużytecznych aktora](service-fabric-reliable-actors-lifecycle.md).
 
 ## <a name="actor-reminders"></a>Przypomnienia aktora
-Monity są mechanizm do wyzwolenia trwałego wywołań zwrotnych na aktora w określonych godzinach. Ich funkcjonalność jest podobny do czasomierzy. Jednak w przeciwieństwie do czasomierze, przypomnienia są wyzwalane w każdych okolicznościach aż do ich wyrejestrowuje jawnie aktora lub jawnie usuniesz aktora. W szczególności przypomnienia są wyzwalane deactivations aktora i pracy w trybie Failover, ponieważ środowisko uruchomieniowe aktorów będzie się powtarzać, informacje o przypomnienia aktora przy użyciu dostawcy stanu aktora. Należy pamiętać, że niezawodność przypomnienia jest powiązany z gwarancje niezawodności stanu udostępnionych przez dostawcę stanu aktora. Oznacza to, że dla podmiotów, w których utrwalanie stanu jest ustawiona na wartość None, monitów, nie zostanie wyzwolony po przejściu w tryb failover. 
+Przypomnienia są mechanizmem do wyzwalania trwałych wywołań zwrotnych w aktorze o określonych godzinach. Ich funkcje są podobne do czasomierzy. Ale w przeciwieństwie do czasomierzy, przypomnienia są wyzwalane w każdym przypadku, dopóki aktor jawnie wyrejestruje je lub aktor został jawnie usunięty. W każdym przypadku przypomnienia są wyzwalane przez dezaktywacje aktora i tryb failover, ponieważ środowisko wykonawcze aktorów utrzymuje informacje o przypomnieniach aktora przy użyciu dostawcy stanu aktora. Należy pamiętać, że niezawodność przypomnień jest związana z gwarancją niezawodności stanu zapewnioną przez dostawcę stanu aktora. Oznacza to, że dla uczestników, których stan trwałości jest ustawiony na None, przypomnienia nie będą wyzwalane po przejściu w tryb failover. 
 
-Aby zarejestrować przypomnienie, wywołań aktora `RegisterReminderAsync` metody dostarczone w klasie bazowej, jak pokazano w poniższym przykładzie:
+Aby zarejestrować przypomnienie, aktor wywołuje metodę `RegisterReminderAsync` podaną w klasie bazowej, jak pokazano w następującym przykładzie:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -167,9 +158,9 @@ protected CompletableFuture onActivateAsync()
 }
 ```
 
-W tym przykładzie `"Pay cell phone bill"` nazywa się przypomnienie. Jest to ciąg, który aktora używany do jednoznacznego identyfikowania przypomnienie. `BitConverter.GetBytes(amountInDollars)`(C#) jest kontekst, który jest skojarzony z przypomnienia. Jej zostanie przekazany z powrotem do aktora jako argument wywołania zwrotnego przypomnienie, czyli `IRemindable.ReceiveReminderAsync`(C#) lub `Remindable.receiveReminderAsync`(Java).
+W tym przykładzie `"Pay cell phone bill"` jest nazwą przypomnienia. Jest to ciąg, którego aktor używa do unikatowego identyfikowania przypomnienia. `BitConverter.GetBytes(amountInDollars)`(C#) to kontekst, który jest skojarzony z przypomnieniem. Zostanie ona przeniesiona z powrotem do aktora jako argument do wywołania zwrotnego przypomnienia, np. `IRemindable.ReceiveReminderAsync`C#() lub `Remindable.receiveReminderAsync`(Java).
 
-Aktorzy używających przypomnienia musi implementować `IRemindable` interfejsu, jak pokazano w poniższym przykładzie.
+Aktory korzystające z przypomnień muszą implementować interfejs `IRemindable`, jak pokazano w poniższym przykładzie.
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -210,11 +201,11 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Po wyzwoleniu przypomnienia elementów Reliable Actors środowiska uruchomieniowego wywoła `ReceiveReminderAsync`(C#) lub `receiveReminderAsync`metody aktora (Java). Aktor można zarejestrować wiele przypomnień i `ReceiveReminderAsync`(C#) lub `receiveReminderAsync`(Java), metoda jest wywoływana po dowolnego z tych monitów wyzwoleniu. Aktor można użyć nazwy przypomnienia, który jest przekazywany do `ReceiveReminderAsync`(C#) lub `receiveReminderAsync`metodę (Java), aby zorientować się przypomnienie, które zostały wyzwolone.
+Po wyzwoleniu przypomnienia środowisko uruchomieniowe Reliable Actors wywoła metodę `ReceiveReminderAsync`(C#) lub `receiveReminderAsync`(Java) dla aktora. Aktor może rejestrować wiele przypomnień, a metoda `ReceiveReminderAsync`(C#) lub `receiveReminderAsync`(Java) jest wywoływana, gdy zostanie wyzwolone dowolne z tych przypomnień. Aktor może użyć nazwy przypomnienia, która została przeniesiona do metody `ReceiveReminderAsync`(C#) lub `receiveReminderAsync`(Java), aby ustalić, które przypomnienie zostało wyzwolone.
 
-Aktorzy środowiska uruchomieniowego zapisuje aktora stan, kiedy `ReceiveReminderAsync`(C#) lub `receiveReminderAsync`zakończy się wywołanie (Java). Jeśli wystąpi błąd podczas zapisywania stanu, ten obiekt aktora zostaną dezaktywowane i nowe wystąpienie zostanie uaktywnione.
+Środowisko wykonawcze aktorów zapisuje stan aktora po zakończeniu wywołaniaC#`ReceiveReminderAsync`() lub `receiveReminderAsync`(Java). Jeśli wystąpi błąd podczas zapisywania stanu, ten obiekt aktora zostanie zdezaktywowany i zostanie aktywowane nowe wystąpienie.
 
-Aby wyrejestrować przypomnienie, wywołuje Aktor `UnregisterReminderAsync`(C#) lub `unregisterReminderAsync`metodzie (Java), jak pokazano w poniższych przykładach.
+Aby wyrejestrować przypomnienie, aktor wywołuje metodę `UnregisterReminderAsync`(C#) lub `unregisterReminderAsync`(Java), jak pokazano w poniższych przykładach.
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
@@ -225,9 +216,9 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-Jak wspomniano powyżej, `UnregisterReminderAsync`(C#) lub `unregisterReminderAsync`(Java) metoda przyjmuje `IActorReminder`(C#) lub `ActorReminder`interfejsu (Java). Obsługuje klasy bazowej aktora `GetReminder`(C#) lub `getReminder`— metoda (Java), który może służyć do pobierania `IActorReminder`(C#) lub `ActorReminder`interfejsu (Java), przekazując nazwę przypomnienia. Jest to wygodne, ponieważ aktora nie musi pozostać `IActorReminder`(C#) lub `ActorReminder`interfejsu (Java), który został zwrócony z `RegisterReminder`(C#) lub `registerReminder`wywołania metody (Java).
+Jak pokazano powyżej, Metoda `UnregisterReminderAsync`(C#) lub `unregisterReminderAsync`(Java) akceptuje interfejs `IActorReminder`(C#) lub `ActorReminder`(Java). Klasa bazowa aktora obsługuje metodę `GetReminder`(C#) lub `getReminder`(Java), która może być używana do pobierania interfejsu `IActorReminder`(C#) lub `ActorReminder`(Java) przez przekazanie nazwy przypomnienia. Jest to wygodne, ponieważ aktor nie musi utrwalać interfejsu `IActorReminder`(C#) lub `ActorReminder`(Java), który został zwrócony z wywołania metody `RegisterReminder`(C#) lub `registerReminder`(Java).
 
 ## <a name="next-steps"></a>Następne kroki
-Więcej informacji na temat zdarzeń Reliable Actor i współużytkowania wątkowości:
+Poznaj niezawodne zdarzenia aktora i współużytkowania wątkowości:
 * [Zdarzenia aktora](service-fabric-reliable-actors-events.md)
-* [Wielobieżność aktora](service-fabric-reliable-actors-reentrancy.md)
+* [Współużytkowania wątkowości aktora](service-fabric-reliable-actors-reentrancy.md)

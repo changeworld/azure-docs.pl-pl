@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767710"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552206"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Korzystanie z narzędzia MirrorMaker do replikowania tematów Apache Kafka z Kafka w usłudze HDInsight
 
@@ -75,8 +75,8 @@ Ta architektura zawiera dwa klastry w różnych grupach zasobów i sieci wirtual
 
     | Nazwa klastra | Grupa zasobów | Sieć wirtualna | Konto magazynu |
     |---|---|---|---|
-    | Kafka — klaster podstawowy | Kafka — podstawowy — RG | Kafka — Sieć wirtualna | kafkaprimarystorage |
-    | Kafka — klaster pomocniczy | Kafka-pomocniczy — RG | Kafka — pomocnicza Sieć wirtualna | kafkasecondarystorage |
+    | kafka-primary-cluster | Kafka — podstawowy — RG | kafka-primary-vnet | kafkaprimarystorage |
+    | kafka-secondary-cluster | Kafka-pomocniczy — RG | kafka-secondary-vnet | kafkasecondarystorage |
 
 1. Utwórz wirtualne sieci równorzędne. Ten krok spowoduje utworzenie dwóch komunikacji równorzędnych: jeden z **Kafka-Primary-VNET** - **Kafka-------** ------------------------- **--**
     1. Wybierz sieć wirtualną **Kafka-Primary-VNET** .
@@ -86,36 +86,41 @@ Ta architektura zawiera dwa klastry w różnych grupach zasobów i sieci wirtual
 
         ![Usługa HDInsight Kafka Dodawanie komunikacji równorzędnej sieci wirtualnej](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. Skonfiguruj anonsowanie adresów IP:
-    1. Przejdź do pulpitu nawigacyjnego Ambari dla klastra podstawowego: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. Wybierz pozycję **usługi** > **Kafka**. CliSelectck kartę **konfiguracje** .
-    1. Dodaj następujące wiersze konfiguracji do dolnej sekcji **szablonu Kafka-ENV** . Wybierz pozycję **Zapisz**.
+### <a name="configure-ip-advertising"></a>Konfigurowanie reklamy adresów IP
 
-        ```
-        # Configure Kafka to advertise IP addresses instead of FQDN
-        IP_ADDRESS=$(hostname -i)
-        echo advertised.listeners=$IP_ADDRESS
-        sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-        echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
-        ```
+Skonfiguruj anonsowanie adresów IP, aby umożliwić klientowi łączenie się przy użyciu adresów IP brokera zamiast nazw domen.
 
-    1. Wprowadź uwagę na ekranie **Zapisywanie konfiguracji** i kliknij przycisk **Zapisz**.
-    1. Jeśli zostanie wyświetlony monit z ostrzeżeniem o konfiguracji, kliknij przycisk **Kontynuuj mimo to**.
-    1. W obszarze **Zapisz zmiany konfiguracji**wybierz pozycję **OK** .
-    1. Wybierz pozycję **Uruchom ponownie** > **ponownie uruchom wszystkie, których dotyczy** powiadomienie **wymagane do ponownego uruchomienia** . Wybierz pozycję **Potwierdź ponowne uruchomienie wszystkich**.
+1. Przejdź do pulpitu nawigacyjnego Ambari dla klastra podstawowego: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
+1. Wybierz pozycję **usługi** > **Kafka**. CliSelectck kartę **konfiguracje** .
+1. Dodaj następujące wiersze konfiguracji do dolnej sekcji **szablonu Kafka-ENV** . Wybierz pozycję **Zapisz**.
 
-        ![System Apache Ambari](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    ```
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    ```
 
-1. Skonfiguruj Kafka do nasłuchiwania na wszystkich interfejsach sieciowych.
-    1. Pozostań na **karcie konfiguracje w** obszarze **usługi** > **Kafka**. W sekcji **brokera Kafka** ustaw właściwość **detektory** na `PLAINTEXT://0.0.0.0:9092`.
-    1. Wybierz pozycję **Zapisz**.
-    1. Wybierz pozycję **Uruchom ponownie**i **Potwierdź wszystkie ponowne uruchomienie**.
+1. Wprowadź uwagę na ekranie **Zapisywanie konfiguracji** i kliknij przycisk **Zapisz**.
+1. Jeśli zostanie wyświetlony monit z ostrzeżeniem o konfiguracji, kliknij przycisk **Kontynuuj mimo to**.
+1. W obszarze **Zapisz zmiany konfiguracji**wybierz pozycję **OK** .
+1. Wybierz pozycję **Uruchom ponownie** > **ponownie uruchom wszystkie, których dotyczy** powiadomienie **wymagane do ponownego uruchomienia** . Wybierz pozycję **Potwierdź ponowne uruchomienie wszystkich**.
 
-1. Rejestruj adresy IP brokera i adresy dozorcy dla klastra podstawowego.
-    1. Wybierz pozycję **hosty** na pulpicie nawigacyjnym Ambari.
-    1. Zanotuj adresy IP dla brokerów i Dozorcami. Węzły brokera mają wartość **WN** jako pierwsze dwie litery nazwy hosta, a węzły dozorcy mają **ZK** jako pierwsze dwie litery nazwy hosta.
+    ![System Apache Ambari](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-        ![Adresy IP węzłów widoku Apache Ambari](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Skonfiguruj Kafka do nasłuchiwania na wszystkich interfejsach sieciowych.
+    
+1. Pozostań na **karcie konfiguracje w** obszarze **usługi** > **Kafka**. W sekcji **brokera Kafka** ustaw właściwość **detektory** na `PLAINTEXT://0.0.0.0:9092`.
+1. Wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Uruchom ponownie**i **Potwierdź wszystkie ponowne uruchomienie**.
+
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Rejestruj adresy IP brokera i adresy dozorcy dla klastra podstawowego.
+
+1. Wybierz pozycję **hosty** na pulpicie nawigacyjnym Ambari.
+1. Zanotuj adresy IP dla brokerów i Dozorcami. Węzły brokera mają wartość **WN** jako pierwsze dwie litery nazwy hosta, a węzły dozorcy mają **ZK** jako pierwsze dwie litery nazwy hosta.
+
+    ![Adresy IP węzłów widoku Apache Ambari](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. Powtórz poprzednie trzy kroki dla drugiego klastra **Kafka-dodatkowy**klaster: Skonfiguruj anonsowanie adresów IP, ustaw odbiorniki i zanotuj adresy IP brokera i dozorcy.
 

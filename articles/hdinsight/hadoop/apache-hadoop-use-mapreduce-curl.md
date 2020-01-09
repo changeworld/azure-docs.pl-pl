@@ -1,41 +1,41 @@
 ---
-title: Używanie MapReduce i Curl przy użyciu technologii Apache Hadoop w HDInsight — Azure
-description: Dowiedz się, jak i zdalne uruchamianie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu programu Curl.
+title: Korzystanie z MapReduce i Zwinięciea przy użyciu Apache Hadoop w usłudze HDInsight — Azure
+description: Dowiedz się, jak zdalnie uruchamiać zadania MapReduce z Apache Hadoop w usłudze HDInsight przy użyciu programu zwinięcie.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 274d8dc80d9318aa3ddf4a904a5b623319ea01f4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716123"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645008"
 ---
-# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Wykonywanie zadań MapReduce z usługą Apache Hadoop w HDInsight przy użyciu interfejsu REST
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Uruchamianie zadań MapReduce za pomocą Apache Hadoop w usłudze HDInsight przy użyciu usługi REST
 
-Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomienie zadania MapReduce na technologii Apache Hadoop w klastrze HDInsight. Narzędzie curl jest używany do pokazują, jak możesz porozmawiać z HDInsight przy użyciu surowego żądania HTTP do uruchamiania zadań MapReduce.
+Dowiedz się, jak używać interfejsu API REST Apache Hive WebHCat do uruchamiania zadań MapReduce na Apache Hadoop w klastrze usługi HDInsight. Zwinięcie służy do zademonstrowania, w jaki sposób można korzystać z usługi HDInsight przy użyciu nieprzetworzonych żądań HTTP do uruchamiania zadań MapReduce.
 
 > [!NOTE]  
-> Jeśli znasz już przy użyciu serwerów opartą na systemie Linux platformą Hadoop, ale dopiero zaczynasz korzystać z HDInsight, zobacz [co musisz wiedzieć o opartych na systemie Linux platformą Apache Hadoop w HDInsight](../hdinsight-hadoop-linux-information.md) dokumentu.
+> Jeśli masz już doświadczenie w korzystaniu z serwerów Hadoop opartych na systemie Linux, ale dopiero zaczynasz korzystać z usługi HDInsight, zapoznaj się z [informacjami o Apache Hadoop opartych na systemie Linux w](../hdinsight-hadoop-linux-information.md) dokumencie usługi HDInsight.
 
 
 ## <a id="prereq"></a>Wymagania wstępne
 
-* W klastrze HDInsight Hadoop
-* Program Windows PowerShell lub [Curl](https://curl.haxx.se/) i [jq](https://stedolan.github.io/jq/)
+* Usługa Hadoop w klastrze usługi HDInsight
+* Windows PowerShell lub [zwinięcie](https://curl.haxx.se/) i [JQ](https://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Uruchom zadanie MapReduce
+## <a id="curl"></a>Uruchamianie zadania MapReduce
 
 > [!NOTE]  
-> Używając programu Curl lub innego połączenia REST z usługą WebHCat, należy uwierzytelnić żądania, podając nazwę użytkownika administratora klastra HDInsight i hasło. Należy użyć nazwy klastra jako części identyfikatora URI, który jest używany do wysyłania żądań do serwera.
+> W przypadku korzystania z zwinięcie lub innej komunikacji REST z WebHCat należy uwierzytelnić żądania, podając nazwę użytkownika i hasło administratora klastra usługi HDInsight. Należy użyć nazwy klastra jako części identyfikatora URI, który jest używany do wysyłania żądań do serwera.
 >
-> Interfejs API REST jest zabezpieczony za pomocą [uwierzytelniania podstawowego dostępu](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS, aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
+> Interfejs API REST jest zabezpieczony przy użyciu [podstawowego uwierzytelniania dostępu](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS, aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
 
-1. Aby ustawić logowania do klastra, który jest używany przez skrypty w tym dokumencie, użyj jednej z następujących poleceń:
+1. Aby ustawić identyfikator logowania klastra używany przez skrypty w tym dokumencie, użyj jednego z następujących poleceń:
 
     ```bash
     read -p "Enter your cluster login account name: " LOGIN
@@ -45,7 +45,7 @@ Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomieni
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login name and password"
     ```
 
-2. Aby ustawić nazwę klastra, użyj jednej z następujących poleceń:
+2. Aby ustawić nazwę klastra, użyj jednego z następujących poleceń:
 
     ```bash
     read -p "Enter the HDInsight cluster name: " CLUSTERNAME
@@ -68,16 +68,16 @@ Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomieni
     $resp.Content
     ```
 
-    Pojawi się odpowiedź podobna do następujące dane JSON:
+    Otrzymasz odpowiedź podobną do następującej:
 
         {"status":"ok","version":"v1"}
 
     W tym poleceniu są używane następujące parametry:
 
-   * **-u**: Wskazuje nazwę użytkownika i hasło używane do uwierzytelniania żądania
-   * **-G**: Wskazuje, że ta operacja jest żądanie GET
+   * **-u**: wskazuje nazwę użytkownika i hasło używane do uwierzytelniania żądania
+   * **-G**: wskazuje, że ta operacja jest żądaniem Get
 
-   Początek identyfikatora URI **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** , jest taka sama dla wszystkich żądań.
+   Początek identyfikatora URI, `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`, jest taki sam dla wszystkich żądań.
 
 4. Aby przesłać zadanie MapReduce, użyj następującego polecenia:
 
@@ -103,15 +103,15 @@ Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomieni
     $jobID
     ```
 
-    Koniec identyfikatora URI (/ mapreduce/jar) informuje usługi WebHCat, to żądanie rozpoczęcia zadania MapReduce z klasy w pliku jar. W tym poleceniu są używane następujące parametry:
+    Koniec identyfikatora URI (/MapReduce/jar) informuje WebHCat, że to żądanie uruchamia zadanie MapReduce z klasy w pliku JAR. W tym poleceniu są używane następujące parametry:
 
-   * **-d**: `-G` nie jest używana, więc żądanie domyślnie metody POST. `-d` Określa wartości danych, które są wysyłane z żądania.
-     * **User.name**: Użytkownik, który uruchamia polecenie
-     * **Plik JAR**: Lokalizacja pliku jar, który zawiera klasę, aby uruchomić
+   * **-d**: `-G` nie jest używany, dlatego żądanie jest domyślnie zgodne z metodą post. `-d` określa wartości danych, które są wysyłane wraz z żądaniem.
+     * **User.Name**: użytkownik, który uruchamia polecenie
+     * **jar**: Lokalizacja pliku JAR, który zawiera klasę do uruchomienia
      * **Klasa**: Klasa, która zawiera logikę MapReduce
-     * **ARG**: Argumenty do przekazania do zadania MapReduce. W tym przypadku, wejściowy plik tekstowy i katalog, w którym są używane dla danych wyjściowych
+     * **ARG**: argumenty, które mają zostać przekazane do zadania MapReduce. W takim przypadku wejściowy plik tekstowy i katalog, które są używane na potrzeby danych wyjściowych
 
-   To polecenie powinien zwrócić identyfikator zadania, który może służyć do sprawdzania stanu zadania:
+   To polecenie powinno zwrócić identyfikator zadania, którego można użyć do sprawdzenia stanu zadania:
 
        job_1415651640909_0026
 
@@ -133,24 +133,24 @@ Dowiedz się, jak Apache Hive WebHCat interfejsu API REST umożliwia uruchomieni
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    Jeśli zadanie zostało ukończone, zwracany jest stan `SUCCEEDED`.
+    Jeśli zadanie zostało zakończone, zwracany jest stan `SUCCEEDED`.
 
    > [!NOTE]  
-   > To żądanie Curl zwraca dokument JSON przy użyciu informacji o zadaniu. Jq służy do pobierania wartości stan.
+   > To żądanie zwinięcie zwraca dokument JSON zawierający informacje o zadaniu. JQ służy do pobierania tylko wartości stanu.
 
-6. Gdy stan zadania został zmieniony na `SUCCEEDED`, możesz pobrać wyniki zadania z usługi Azure Blob storage. `statusdir` Parametr, który jest przekazywany z zapytaniem zawiera lokalizację pliku wyjściowego. W tym przykładzie lokalizacja to `/example/curl`. Ten adres przechowuje dane wyjściowe zadania w klastrach domyślnego magazynu w `/example/curl`.
+6. Gdy stan zadania został zmieniony na `SUCCEEDED`, wyniki zadania można pobrać z usługi Azure Blob Storage. Parametr `statusdir`, który jest przesyłany z zapytaniem, zawiera lokalizację pliku wyjściowego. W tym przykładzie lokalizacja jest `/example/curl`. Ten adres przechowuje dane wyjściowe zadania w domyślnym magazynie klastrów w `/example/curl`.
 
-Można wyświetlić listę i pobierać te pliki przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat pracy z obiektami blob z wiersza polecenia platformy Azure, zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentu.
+Możesz wyświetlić i pobrać te pliki przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat pracy z obiektami BLOB w interfejsie wiersza polecenia platformy Azure, zobacz artykuł [Używanie interfejsu wiersza polecenia platformy Azure z dokumentem usługi Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) .
 
 ## <a id="nextsteps"></a>Następne kroki
 
-Aby uzyskać ogólne informacje na temat zadań MapReduce w HDInsight:
+Aby uzyskać ogólne informacje na temat zadań MapReduce w usłudze HDInsight:
 
-* [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)
+* [Używanie MapReduce z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
 
-Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w HDInsight:
+Aby uzyskać informacje o innych sposobach pracy z usługą Hadoop w usłudze HDInsight:
 
-* [Apache Hive za pomocą technologii Apache Hadoop w HDInsight](hdinsight-use-hive.md)
-* [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
+* [Używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
+* [Korzystanie z usługi Apache świni z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
 
-Aby uzyskać więcej informacji na temat interfejsu REST, który jest używany w tym artykule, zobacz [odwołanie do usługi WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
+Aby uzyskać więcej informacji o interfejsie REST używanym w tym artykule, zobacz [odwołanie WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).

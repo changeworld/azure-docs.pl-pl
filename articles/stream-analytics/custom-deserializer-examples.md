@@ -1,25 +1,24 @@
 ---
-title: Użyj deserializacji platformy .NET na potrzeby zadań Azure Stream Analytics
+title: Odczytaj dane wejściowe w dowolnym formacie przy użyciu niestandardowych deserializacji platformy .NET w Azure Stream Analytics
 description: W tym artykule wyjaśniono format serializacji i interfejsy, które definiują niestandardowe deserializacji platformy .NET na potrzeby zadań w chmurze i krawędzi Azure Stream Analytics.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 12/30/2019
+ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024938"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553022"
 ---
-# <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>Użyj deserializacji platformy .NET na potrzeby zadań Azure Stream Analytics
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Odczytaj dane wejściowe w dowolnym formacie przy użyciu niestandardowych deserializacji platformy .NET
 
-Niestandardowe deserializacji platformy .NET umożliwiają zadanie Azure Stream Analytics odczytywanie danych z formatów poza trzema [wbudowanymi formatami danych](stream-analytics-parsing-json.md). W tym artykule wyjaśniono format serializacji i interfejsy, które definiują niestandardowe deserializacji platformy .NET na potrzeby zadań w chmurze i krawędzi Azure Stream Analytics. Istnieją również przykłady deserializacji dla buforu protokołu i formatu CSV.
+Niestandardowe deserializacji .NET umożliwiają zadanie Azure Stream Analytics odczytywanie danych z formatów poza trzema [wbudowanymi formatami danych](stream-analytics-parsing-json.md). W tym artykule wyjaśniono format serializacji i interfejsy, które definiują niestandardowe deserializacji platformy .NET na potrzeby zadań w chmurze i krawędzi Azure Stream Analytics. Istnieją również przykłady deserializacji dla buforu protokołu i formatu CSV.
 
-## <a name="custom-net-deserializer"></a>Niestandardowa deserializacja platformy .NET
+## <a name="net-custom-deserializer"></a>Deserializacja niestandardowa .NET
 
 Poniższe przykłady kodu są interfejsami, które definiują niestandardową Deserializator i implementują `StreamDeserializer<T>`.
 
@@ -226,12 +225,12 @@ Poniższy kod JavaScript jest przykładem formatu serializacji deserializacji .N
 
 Ta funkcja jest dostępna w następujących regionach:
 
-* Zachodnio-środkowe stany USA (dostępne)
-* Europa Północna (dostępna)
-* Wschodnie stany USA (dostępne)
-* Zachodnie stany USA (od razu — trwa wycofywanie)
-* Wschodnie stany USA 2 (od razu w trakcie wdrażania)
-* Europa Zachodnia (wkrótce)
+* Zachodnio-środkowe stany USA
+* Europa Północna
+* Wschodnie stany USA
+* Zachodnie stany USA
+* Wschodnie stany USA 2
+* Europa Zachodnia
 
 Możesz [zażądać obsługi](https://aka.ms/ccodereqregion) dodatkowych regionów.
 
@@ -239,7 +238,7 @@ Możesz [zażądać obsługi](https://aka.ms/ccodereqregion) dodatkowych region�
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Kiedy ta funkcja będzie dostępna we wszystkich regionach świadczenia usługi Azure?
 
-Ta funkcja jest dostępna w 6 regionach (#region-Support). Jeśli interesuje Cię korzystanie z tej funkcji w innym regionie, możesz [przesłać żądanie](https://aka.ms/ccodereqregion). Obsługa wszystkich regionów świadczenia usługi Azure jest zaplanowania.
+Ta funkcja jest dostępna w [6 regionach](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support). Jeśli interesuje Cię korzystanie z tej funkcji w innym regionie, możesz [przesłać żądanie](https://aka.ms/ccodereqregion). Obsługa wszystkich regionów świadczenia usługi Azure jest zaplanowania.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Czy mogę uzyskać dostęp do MetadataPropertyValue z danych wejściowych, podobnie jak funkcja GetMetadataPropertyValue?
 
@@ -251,4 +250,4 @@ Po zaimplementowaniu deserializacji można ułatwić innym użytkownikom udostę
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Niestandardowe deserializacji platformy .NET dla Azure Stream Analytics zadań w chmurze](custom-deserializer.md)
+* [Deserializatory niestandardowe platformy .NET dla Azure Stream Analytics zadań w chmurze](custom-deserializer.md)

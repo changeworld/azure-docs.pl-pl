@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677805"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680753"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Przełączanie preferencji interfejsu API dla alertów dzienników
 
@@ -46,10 +46,13 @@ Poniżej przedstawiono wpływ przełączania preferencji do interfejsu API sched
 - Każda Nowa reguła alertu dziennika utworzona w Azure Portal, zostanie utworzona tylko przy użyciu [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) i umożliwi użytkownikom korzystanie z [dodatkowych funkcji nowego interfejsu API](#benefits-of-switching-to-new-azure-api) za pośrednictwem Azure Portal
 - Ważność reguł alertów dziennika zmienia się z: *krytyczne, ostrzegawcze & informacyjne*, do *wartości ważności 0, 1 & 2*. Wraz z opcją tworzenia/aktualizacji reguł alertów o ważności 3 i 4.
 
-Proces przechodzenia reguł alertów ze [starszej wersji interfejsu API alertu log Analytics](api-alerts.md) nie obejmuje zmiany definicji alertu, zapytania ani konfiguracji. Reguły alertów i monitorowanie nie są modyfikowane, a alerty nie zatrzymają się ani nie zostaną wstrzymane podczas przełączania lub po nim. Jedyną zmianą jest zmiana preferencji interfejsu API i dostęp do reguł za pośrednictwem nowego interfejsu API.
+Proces przechodzenia reguł alertów ze [starszej wersji interfejsu API alertu log Analytics](api-alerts.md) nie obejmuje zmiany definicji alertu, zapytania ani konfiguracji. Reguły alertów i monitorowanie nie są modyfikowane, a alerty nie zatrzymają się ani nie zostaną wstrzymane podczas przełączania lub po nim. Jedyne zmiany:
+
+- Zmiana preferencji interfejsu API i dostęp do reguł za pośrednictwem nowego interfejsu API.
+- Zmieniony identyfikator URI zasobu reguły alertu zawierający identyfikatory używane w [starszym interfejsie API alertu log Analytics](api-alerts.md) zamiast nazwy reguły alertu w tej strukturze `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`. Nazwa wyświetlana reguły alertu pozostanie niezmieniona.
 
 > [!NOTE]
-> Gdy użytkownik zdecyduje się przełączyć preferencję do nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), nie można wrócić ani przywrócić do korzystania z starszego, [starszego interfejsu api alertów log Analytics](api-alerts.md).
+> Gdy użytkownik zdecyduje się na przełączenie preferencji do nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nie jest możliwe przywrócenie starszej [wersji interfejsu API alertów programu log Analytics](api-alerts.md).
 
 Wszyscy klienci, którzy chcą przełączać się dobrowolnie do nowego [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) i blokować użycie ze [starszego interfejsu API alertów log Analytics](api-alerts.md). można to zrobić przez wykonanie wywołania PUT na poniższym interfejsie API w celu przełączenia wszystkich reguł alertów skojarzonych z określonym obszarem roboczym Log Analytics.
 

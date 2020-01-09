@@ -3,18 +3,18 @@ title: Wprowadzenie do wersji zapoznawczej IoT Plug and Play | Microsoft Docs
 description: Dowiedz się więcej o usłudze IoT Plug and Play Preview. Plug and Play IoT jest oparta na otwartym języku modelowania, który umożliwia urządzeniom IoT zadeklarować swoje możliwości. Urządzenia IoT stanowią tę deklarację nazywaną modelem możliwości urządzenia, gdy łączą się z rozwiązaniami w chmurze, takimi jak Azure IoT Central lub Aplikacje partnerskie. Rozwiązanie w chmurze może następnie automatycznie zrozumieć urządzenie i zacząć z niego korzystać — wszystko to bez konieczności pisania kodu.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935394"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531166"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Co to jest IoT Plug and Play w wersji zapoznawczej?
 
@@ -37,7 +37,7 @@ Ten artykuł zawiera opis:
 - Jak opracowywać aplikację urządzenia IoT, która obsługuje Plug and Play IoT.
 - Jak zatwierdzić urządzenie Plug and Play IoT i opublikować je w [wykazie urządzeń z certyfikatem usługi IoT](https://catalog.azureiotsolutions.com/).
 
-## <a name="user-roles"></a>Role użytkowników
+## <a name="user-roles"></a>Role użytkownika
 
 Plug and Play IoT jest przydatne dla dwóch typów deweloperów:
 
@@ -86,6 +86,6 @@ W publicznej wersji zapoznawczej urządzenia IoT Plug and Play wysyłają osobne
 
 Teraz, gdy masz przegląd Plug and Play IoT, sugerowanym następnym krokiem jest wypróbowanie jednego z przewodników szybki start:
 
-- [Tworzenie urządzenia Plug and Play IoT przy użyciu modelu możliwości urządzenia](./quickstart-create-pnp-device.md)
-- [Połącz urządzenie z usługą IoT Hub](./quickstart-connect-pnp-device.md)
-- [Nawiązywanie połączenia z urządzeniem w rozwiązaniu](./quickstart-connect-pnp-device-solution.md)
+- [Tworzenie urządzenia Plug and Play IoT przy użyciu modelu możliwości urządzenia](./quickstart-create-pnp-device-windows.md)
+- [Połącz urządzenie z usługą IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
+- [Nawiązywanie połączenia z urządzeniem w rozwiązaniu](./quickstart-connect-pnp-device-solution-node.md)

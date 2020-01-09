@@ -1,17 +1,17 @@
 ---
-title: Dodawanie i wywoływanie usługi Azure Functions z poziomu Azure Logic Apps
-description: Dodawanie i uruchamianie usługi Azure Functions w usłudze Logic Apps
+title: Dodawanie i wywoływanie Azure Functions z Azure Logic Apps
+description: Wywoływanie i uruchamianie niestandardowego kodu w Azure Functions z zautomatyzowanych zadań i przepływów pracy w programie Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453472"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Wywoływanie usługi Azure Functions z Azure Logic Apps
 
@@ -125,7 +125,7 @@ Aby można było utworzyć funkcję platformy Azure rozpoczynającą się od wew
 
    1. W polu **kod** Dodaj kod do szablonu funkcji, łącznie z odpowiedzią i ładunkiem, która ma zostać zwrócona do aplikacji logiki po zakończeniu działania funkcji. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-   Na przykład:
+   Przykład:
 
    ![Zdefiniuj funkcję](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

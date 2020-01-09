@@ -1,29 +1,29 @@
 ---
 title: Struktura pulpitów nawigacyjnych platformy Azure | Microsoft Docs
-description: W tym artykule wyjaśniono strukturę JSON pulpitu nawigacyjnego platformy Azure
+description: Zapoznaj się ze strukturą JSON pulpitu nawigacyjnego platformy Azure, korzystając z przykładowego pulpitu nawigacyjnego. Zawiera odwołanie do właściwości zasobów.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 12/20/2019
+ms.author: mblythe
+ms.openlocfilehash: 18125e119e7ffdd2f8fa8ca3c5c1b12c8c9a94e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832791"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640367"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura pulpitów nawigacyjnych platformy Azure
 Ten dokument przedstawia strukturę pulpitu nawigacyjnego platformy Azure, korzystając z następującego pulpitu nawigacyjnego:
 
-![Przykładowy pulpit nawigacyjny](./media/azure-portal-dashboards-structure/sample-dashboard.png)
+![przykładowy pulpit nawigacyjny](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
 Ponieważ udostępnione [pulpity nawigacyjne platformy Azure to zasoby](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ten pulpit nawigacyjny może być reprezentowany w formacie JSON.  Poniższy kod JSON przedstawia wizualizację pulpitu nawigacyjnego powyżej.
 
@@ -312,13 +312,13 @@ Tagi to typowa funkcja zasobów platformy Azure, która umożliwia organizowanie
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>Obiekt właściwości
-Obiekt Properties zawiera dwie właściwości, __soczewki__ i __metadane__. Właściwość __soczewki__ zawiera informacje o kafelkach (vel części) na pulpicie nawigacyjnym.  Właściwość __Metadata__ jest dostępna w przypadku potencjalnych przyszłych funkcji.
+Obiekt Properties zawiera dwie właściwości, __soczewki__ i __metadane__. Właściwość __soczewki__ zawiera informacje o kafelkach na pulpicie nawigacyjnym.  Właściwość __Metadata__ jest dostępna w przypadku potencjalnych przyszłych funkcji.
 
 ### <a name="the-lenses-property"></a>Właściwość soczewki
 Właściwość __soczewki__ zawiera pulpit nawigacyjny. Należy zauważyć, że obiekt soczewki w tym przykładzie zawiera pojedynczą właściwość o nazwie "0". Soczewki to koncepcja grupowania, która nie jest obecnie zaimplementowana w pulpitach nawigacyjnych. Na razie wszystkie pulpity nawigacyjne mają tę samą właściwość w obiekcie obiektywu, ponownie o nazwie "0".
 
 ### <a name="the-lens-object"></a>Obiekt obiektywu
-Obiekt poniżej "0" zawiera dwie właściwości, __kolejność__ i __części__.  W bieżącej wersji pulpitów nawigacyjnych __kolejność__ jest zawsze równa 0. Właściwość __części__ zawiera obiekt definiujący poszczególne części (vel kafelki) na pulpicie nawigacyjnym.
+Obiekt poniżej "0" zawiera dwie właściwości, __kolejność__ i __części__.  W bieżącej wersji pulpitów nawigacyjnych __kolejność__ jest zawsze równa 0. Właściwość __części__ zawiera obiekt definiujący poszczególne części (nazywane również kafelkami) na pulpicie nawigacyjnym.
 
 Obiekt __części__ zawiera właściwość dla każdej części, gdzie nazwa właściwości jest liczbą. Ta liczba nie jest istotna. 
 

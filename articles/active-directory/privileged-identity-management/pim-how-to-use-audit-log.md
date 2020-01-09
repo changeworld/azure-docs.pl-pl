@@ -10,20 +10,31 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/22/2019
+ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c4a157d8d5bcd281ca9fee488e58c455034e898
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a275b08beac842c7d435d77d6b4c1338e817fbc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022058"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430105"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Wyświetlanie historii inspekcji dla ról usługi Azure AD w usłudze PIM
 
 Możesz użyć historii inspekcji Privileged Identity Management (PIM), aby zobaczyć wszystkie przypisania ról i aktywacje w ciągu ostatnich 30 dni dla wszystkich ról uprzywilejowanych. Jeśli chcesz zobaczyć pełną historię inspekcji działania w organizacji usługi Azure Active Directory (Azure AD), w tym administratora, użytkownika końcowego i działania synchronizacji, możesz użyć [raportów zabezpieczeń i działań Azure Active Directory](../reports-monitoring/overview-reports.md).
+
+## <a name="determine-your-version-of-pim"></a>Określanie używanej wersji programu PIM
+
+Od listopada 2019 część Privileged Identity Management ról usługi Azure AD jest aktualizowana do nowej wersji, która jest zgodna z środowiskami dla ról zasobów platformy Azure. Spowoduje to utworzenie dodatkowych funkcji, a także [zmian w istniejącym interfejsie API](azure-ad-roles-features.md#api-changes). Gdy nowa wersja jest wdrażana, procedury, które należy wykonać w tym artykule, zależą od aktualnie posiadanej wersji Privileged Identity Management. Wykonaj kroki opisane w tej sekcji, aby określić, która wersja Privileged Identity Management masz. Po uzyskaniu informacji o wersji Privileged Identity Management możesz wybrać procedury w tym artykule, które pasują do tej wersji.
+
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika, który znajduje się w roli [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Otwórz **Azure AD Privileged Identity Management**. Jeśli masz baner w górnej części strony przegląd, postępuj zgodnie z instrukcjami wyświetlanymi na karcie **Nowa wersja** tego artykułu. W przeciwnym razie postępuj zgodnie z instrukcjami podanymi w **poprzedniej wersji** karty.
+
+    ![Nowa wersja ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+
+# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
 
 ## <a name="view-audit-history"></a>Wyświetlanie historii inspekcji
 
@@ -33,9 +44,9 @@ Wykonaj następujące kroki, aby wyświetlić historię inspekcji dla ról usłu
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. Kliknij pozycję **role usługi Azure AD**.
+1. Wybierz pozycję **role usługi Azure AD**.
 
-1. Kliknij kolejno pozycje **katalog role historia Inspekcja**.
+1. Wybierz opcję **Historia inspekcji ról katalogu**.
 
     W zależności od historii inspekcji zostanie wyświetlony wykres kolumnowy wraz z łączną liczbą aktywacji, maksymalną liczbą aktywacji dziennie i średnimi aktywacje dziennie.
 
@@ -45,13 +56,13 @@ Wykonaj następujące kroki, aby wyświetlić historię inspekcji dla ról usłu
 
     | Kolumna | Opis |
     | --- | --- |
-    | Time | Gdy wystąpiła akcja. |
-    | Obiektu żądającego | Użytkownik, który zażądał aktywacji lub zmiany roli. Jeśli wartość to **Azure system**, sprawdź historię inspekcji platformy Azure, aby uzyskać więcej informacji. |
-    | Akcja | Akcje podejmowane przez zleceniodawcę. Akcje mogą obejmować Przypisywanie, cofanie przypisania, aktywowanie, dezaktywowanie lub AddedOutsidePIM. |
+    | Czas | Gdy wystąpiła akcja. |
+    | Requestor | Użytkownik, który zażądał aktywacji lub zmiany roli. Jeśli wartość to **Azure system**, sprawdź historię inspekcji platformy Azure, aby uzyskać więcej informacji. |
+    | Działanie | Akcje podejmowane przez zleceniodawcę. Akcje mogą obejmować Przypisywanie, cofanie przypisania, aktywowanie, dezaktywowanie lub AddedOutsidePIM. |
     | Członek | Użytkownik, który jest uaktywniany lub przypisany do roli. |
     | Rola | Rola przypisana lub aktywowana przez użytkownika. |
     | Analizowanie | Tekst wprowadzony w polu przyczyna podczas aktywacji. |
-    | datę | Po wygaśnięciu aktywowanej roli. Dotyczy tylko kwalifikujących się przypisań ról. |
+    | Wygaśnięcie | Po wygaśnięciu aktywowanej roli. Dotyczy tylko kwalifikujących się przypisań ról. |
 
 1. Aby posortować historię inspekcji, kliknij przycisk **godziny**, **akcję**i **rola** .
 
@@ -67,7 +78,43 @@ Wykonaj następujące kroki, aby wyświetlić historię inspekcji dla ról usłu
 
     ![Okienko aktualizowanie parametrów wykresu](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
-1. Kliknij pozycję **gotowe** , aby wyświetlić przefiltrowaną historię inspekcji.
+1. Wybierz pozycję **gotowe** , aby wyświetlić przefiltrowaną historię inspekcji.
+
+# <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
+
+Wykonaj następujące kroki, aby wyświetlić historię inspekcji dla ról usługi Azure AD.
+
+## <a name="view-resource-audit-history"></a>Wyświetl historię inspekcji zasobów
+
+Inspekcja zasobów umożliwia wyświetlenie wszystkich działań skojarzonych z rolami usługi Azure AD.
+
+1. Otwórz **Azure AD Privileged Identity Management**.
+
+1. Wybierz pozycję **role usługi Azure AD**.
+
+1. Wybierz pozycję **Inspekcja zasobów**.
+
+1. Przefiltruj historię przy użyciu wstępnie zdefiniowanej daty lub niestandardowego zakresu.
+
+    ![Lista inspekcji zasobów z filtrami](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+## <a name="view-my-audit"></a>Wyświetl moją inspekcję
+
+Moja Inspekcja umożliwia wyświetlenie własnej aktywności roli użytkownika.
+
+1. Otwórz **Azure AD Privileged Identity Management**.
+
+1. Wybierz pozycję **role usługi Azure AD**.
+
+1. Wybierz zasób, dla którego ma zostać wyświetlona Historia inspekcji.
+
+1. Wybierz pozycję **Moje inspekcje**.
+
+1. Przefiltruj historię przy użyciu wstępnie zdefiniowanej daty lub niestandardowego zakresu.
+
+    ![Lista inspekcji dla bieżącego użytkownika](media/azure-pim-resource-rbac/my-audit-time.png)
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

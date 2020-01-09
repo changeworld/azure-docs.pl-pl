@@ -3,18 +3,18 @@ title: Słownik terminów — IoT Plug and Play Preview | Microsoft Docs
 description: Pojęcia — słownik typowych terminów dotyczących programu IoT Plug and Play w wersji zapoznawczej.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 10/10/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890337"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531205"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Słownik terminów dotyczących usługi IoT Plug and Play w wersji zapoznawczej
 
@@ -71,7 +71,7 @@ Usługa IoT Hub jest usługą zarządzaną, hostowaną w chmurze, która działa
 - Urządzenia wysyłające dane telemetryczne do rozwiązania opartego na chmurze.
 - Rozwiązanie oparte na chmurze służące do zarządzania podłączonymi urządzeniami.
 
-## <a name="azure-iot-device-sdk"></a>Zestaw SDK urządzeń usługi Azure IoT
+## <a name="azure-iot-device-sdk"></a>Zestaw SDK urządzenia usługi Azure IoT
 
 Istnieją zestawy SDK urządzeń dla wielu języków, których można użyć do tworzenia aplikacji klienckich urządzenia IoT Plug and Play. Jednym z wymagań dotyczących [certyfikacji urządzenia](#device-certification) jest użycie przez kod klienta urządzenia jednego z zestawów SDK urządzeń usługi Azure IoT.
 
@@ -105,7 +105,7 @@ Model możliwości urządzenia opisuje [urządzenie Plug and Play IoT](#iot-plug
 
 ## <a name="device-certification"></a>Certyfikacja urządzenia
 
-Certyfikat urządzenia to proces certyfikowania [urządzenia Plug and Play IoT](#iot-plug-and-play-device) , aby można go było dodać do [wykazu urządzeń z certyfikatem usługi IoT](#certified-for-iot-device-catalog) oraz [modelu możliwości urządzenia](#device-capability-model) i [interfejsów](#interface) dodanych do [modelu publicznego repozytorium](#public-model-repository).
+Certyfikat urządzenia to proces certyfikowania [urządzenia Plug and Play IoT](#iot-plug-and-play-device) , dzięki czemu można go dodać do [wykazu urządzeń z certyfikatem usługi IoT](#certified-for-iot-device-catalog) oraz [modelu możliwości urządzenia](#device-capability-model) i [interfejsów](#interface) dodanych do [repozytorium modelu publicznego](#public-model-repository).
 
 ## <a name="device-developer"></a>Deweloper urządzeń
 
@@ -143,7 +143,7 @@ Język służący do opisywania modeli i interfejsów dla [urządzeń Plug and P
 
 Trasa skonfigurowana w [Centrum IoT Hub](#azure-iot-hub) w celu dostarczania [cyfrowych sznurów wydarzeń](#digital-twin-change-events) do punktów końcowych, takich jak Kolejka Service Bus.
 
-## <a name="interface"></a>Interfejsu
+## <a name="interface"></a>Interface
 
 Interfejs opisuje powiązane funkcje, które są implementowane przez [urządzenie IoT Plug and Play](#iot-plug-and-play-device) lub pojedyncze [sznurki cyfrowe](#digital-twin). Można ponownie użyć interfejsów w różnych [modelach możliwości urządzeń](#device-capability-model).
 
@@ -155,7 +155,7 @@ Język zapytań IoT Hub jest używany w wielu celach. Można na przykład użyć
 
 Urządzenie Plug and Play IoT to zwykle niezależne, autonomiczne urządzenie komputerowe, które zbiera dane lub steruje innymi urządzeniami oraz uruchamia oprogramowanie lub oprogramowanie układowe implementujące [model możliwości urządzenia](#device-capability-model).  Na przykład urządzenie IoT Plug and Play może być urządzeniem monitorującym środowisko lub kontrolerem systemu nawadniania inteligentnego. Możesz napisać rozwiązanie IoT hostowane w chmurze, aby móc polecenie, kontrolować i odbierać dane z urządzeń Plug and Play IoT. [Wykaz urządzeń z certyfikatem platformy Azure dla IoT](#certified-for-iot-device-catalog) zawiera listę dostępnych urządzeń Plug and Play IoT. Każde urządzenie Plug and Play IoT w wykazie zostało zweryfikowane i ma [model możliwości urządzenia](#device-capability-model).
 
-## <a name="microsoft-partner-center"></a>Centrum partnerskie firmy Microsoft
+## <a name="microsoft-partner-center"></a>Centrum partnerskie Microsoft
 
 [Centrum partnerskie firmy Microsoft](https://docs.microsoft.com/partner-center/) to miejsce, w którym organizacja zarządza kompleksową relacją z firmą Microsoft. Musisz mieć konto Centrum partnerskiego firmy Microsoft, aby móc certyfikowania [urządzenia IoT Plug and Play](#iot-plug-and-play-device) w [portalu Azure Certified for IoT](#azure-certified-for-iot-portal).
 

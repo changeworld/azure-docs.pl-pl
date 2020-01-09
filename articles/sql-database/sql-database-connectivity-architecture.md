@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 6f6c64acf814b39d38138ed0e6a9c6075b693c7d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707979"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647683"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -39,11 +39,11 @@ W poniższych krokach opisano, jak nawiązać połączenie z bazą danych Azure 
 
 Azure SQL Database obsługuje następujące trzy opcje dla ustawienia zasad połączenia serwera SQL Database:
 
-- **Przekierowanie (zalecane):** Klienci nawiązują połączenia bezpośrednio z węzłem hostującym bazę danych, co prowadzi do zredukowania opóźnień i udoskonalonych przez program. W przypadku połączeń do korzystania z tego trybu klienci muszą
+- **Przekierowanie (zalecane):** Klienci nawiązują połączenia bezpośrednio z węzłem hostującym bazę danych, co prowadzi do zredukowania opóźnień i zwiększonej przepływności. W przypadku połączeń do korzystania z tego trybu klienci muszą
    - Zezwalaj na komunikację przychodzącą i wychodzącą z klienta na wszystkie adresy IP platformy Azure w regionie na portach z zakresu 11000 11999.  
    - Zezwalaj na komunikację przychodzącą i wychodzącą z klienta do Azure SQL Database adresów IP bramy na porcie 1433.
 
-- **Serwer proxy:** W tym trybie wszystkie połączenia są nawiązywane za pośrednictwem bram Azure SQL Database, co prowadzi do zwiększonego opóźnienia i zmniejsza się w całym systemie. W przypadku połączeń do korzystania z tego trybu klienci muszą zezwalać na komunikację przychodzącą i wychodzącą z klienta do Azure SQL Database adresów IP bramy na porcie 1433.
+- **Serwer proxy:** W tym trybie wszystkie połączenia są nawiązywane za pośrednictwem bram Azure SQL Database, co prowadzi do zwiększonego opóźnienia i ograniczonej przepływności. W przypadku połączeń do korzystania z tego trybu klienci muszą zezwalać na komunikację przychodzącą i wychodzącą z klienta do Azure SQL Database adresów IP bramy na porcie 1433.
 
 - **Wartość domyślna:** Jest to zasada połączenia obowiązująca na wszystkich serwerach po utworzeniu, chyba że jawnie zmienisz zasady połączenia na `Proxy` lub `Redirect`. Zasady domyślne są`Redirect` dla wszystkich połączeń klientów pochodzących z platformy Azure (np. z maszyny wirtualnej platformy Azure) i `Proxy`dla wszystkich połączeń klientów pochodzących z zewnątrz (np. połączeń z lokalnej stacji roboczej).
 

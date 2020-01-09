@@ -4,93 +4,93 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 276ddf0a70fa450451cd3ddc78c7610c4ab1edc1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183188"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468489"
 ---
-Odbiornik grupy dostępności jest nazwa i adres IP sieci, grupy dostępności programu SQL Server nasłuchuje. Aby utworzyć odbiornik grupy dostępności, wykonaj następujące czynności:
+Odbiornik grupy dostępności jest adresem IP i nazwą sieci, na której nasłuchuje SQL Server grupy dostępności. Aby utworzyć odbiornik grupy dostępności, wykonaj następujące czynności:
 
 1. <a name="getnet"></a>Pobierz nazwę zasobu sieci klastra.
 
-    a. Użyj protokołu RDP, aby nawiązać połączenie z maszyny wirtualnej platformy Azure, który obsługuje replikę podstawową. 
+    a. Użyj protokołu RDP, aby nawiązać połączenie z maszyną wirtualną platformy Azure, która obsługuje replikę podstawową. 
 
-    b. Otwórz Menedżera klastra trybu Failover.
+    b. Otwórz Menedżer klastra trybu failover.
 
-    c. Wybierz **sieci** węzła i zanotuj nazwy sieciowej klastra. Należy użyć tej nazwy w `$ClusterNetworkName` zmiennych w skrypcie programu PowerShell. Na poniższej ilustracji Nazwa sieciowa klastra jest **klastra sieci 1**:
+    d. Wybierz węzeł **sieci** i zanotuj nazwę sieci klastra. Użyj tej nazwy w zmiennej `$ClusterNetworkName` w skrypcie programu PowerShell. Na poniższej ilustracji nazwa sieci klastra to **Network 1**:
 
-   ![Nazwa sieciowa klastra](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
+   ![Nazwa sieci klastra](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
 1. <a name="addcap"></a>Dodaj punkt dostępu klienta.  
-    Punkt dostępu klienta jest nazwą sieci, które aplikacje korzystają z bazami danych w grupie dostępności. Utwórz punkt dostępu klienta w Menedżerze klastra trybu Failover.
+    Punkt dostępu klienta to nazwa sieci używana przez aplikacje do łączenia się z bazami danych w grupie dostępności. Utwórz punkt dostępu klienta w Menedżer klastra trybu failover.
 
-    a. Rozwiń nazwę klastra, a następnie kliknij przycisk **role**.
+    a. Rozwiń węzeł Nazwa klastra, a następnie kliknij pozycję **role**.
 
-    b. W **role** okienku kliknij prawym przyciskiem myszy nazwę grupy dostępności, a następnie wybierz **Dodaj zasób** > **punktu dostępu klienta**.
+    b. W okienku **role** kliknij prawym przyciskiem myszy nazwę grupy dostępności, a następnie wybierz pozycję **Dodaj zasób** > **punktu dostępu klienta**.
 
    ![Punkt dostępu klienta](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-    c. W **nazwa** Utwórz nazwę dla tego nowego odbiornika. 
-   Nazwa dla nowego odbiornika jest nazwa sieci, które aplikacje korzystają z bazami danych w grupie dostępności programu SQL Server.
+    d. W polu **Nazwa** Utwórz nazwę dla tego nowego odbiornika. 
+   Nazwa nowego odbiornika to nazwa sieci używana przez aplikacje do łączenia się z bazami danych w grupie dostępności SQL Server.
 
-    d. Aby zakończyć tworzenie odbiornika, kliknij przycisk **dalej** dwa razy, a następnie kliknij przycisk **Zakończ**. Nie należy przełączać odbiornika lub zasób w tryb online w tym momencie.
+    d. Aby zakończyć tworzenie odbiornika, kliknij przycisk **dalej** dwa razy, a następnie kliknij przycisk **Zakończ**. W tym momencie nie należy przenosić odbiornika ani zasobu do trybu online.
 
-1. Przełącz rolę klastra grupy dostępności do trybu offline. W **Menedżera klastra trybu Failover** w obszarze **role**, kliknij prawym przyciskiem myszy rolę i wybierz **Zatrzymaj rolę**.
+1. Przełącz rolę klastra grupy dostępności w tryb offline. W **Menedżer klastra trybu failover** w obszarze **role**kliknij prawym przyciskiem myszy rolę, a następnie wybierz pozycję **Zatrzymaj rolę**.
 
-1. <a name="congroup"></a>Skonfiguruj zasób adresu IP dla grupy dostępności.
+1. <a name="congroup"></a>Skonfiguruj zasób IP dla grupy dostępności.
 
-    a. Kliknij przycisk **zasobów** kartę, a następnie rozwiń utworzony punkt dostępu klienta.  
+    a. Kliknij kartę **zasoby** , a następnie rozwiń utworzony punkt dostępu klienta.  
     Punkt dostępu klienta jest w trybie offline.
 
    ![Punkt dostępu klienta](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. Kliknij prawym przyciskiem myszy zasób adresu IP, a następnie kliknij polecenie Właściwości. Zanotuj nazwę adresu IP i używać go w `$IPResourceName` zmiennych w skrypcie programu PowerShell.
+    b. Kliknij prawym przyciskiem myszy zasób IP, a następnie kliknij polecenie Właściwości. Zanotuj nazwę adresu IP i użyj go w zmiennej `$IPResourceName` w skrypcie programu PowerShell.
 
-    c. W obszarze **adresu IP**, kliknij przycisk **statyczny adres IP**. Ustaw adres IP jako ten sam adres, która została użyta podczas ustawisz adres usługi równoważenia obciążenia w witrynie Azure portal.
+    d. W obszarze **adres IP**kliknij pozycję **statyczny adres IP**. Ustaw adres IP jako ten sam adres, który był używany podczas ustawiania adresu usługi równoważenia obciążenia na Azure Portal.
 
-   ![Zasób adresu IP](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![Zasób IP](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
-1. <a name = "dependencyGroup"></a>Zasób grupy dostępności programu SQL Server należy zależne od punktu dostępu klienta.
+1. <a name = "dependencyGroup"></a>Włącz zasób grupy dostępności SQL Server zależny od punktu dostępu klienta.
 
-    a. W Menedżerze klastra trybu Failover kliknij **role**, a następnie kliknij pozycję grupy dostępności.
+    a. W Menedżer klastra trybu failover kliknij pozycję **role**, a następnie kliknij swoją grupę dostępności.
 
-    b. Na **zasobów** , w obszarze **inne zasoby**, kliknij prawym przyciskiem myszy grupę dostępności zasobów, a następnie kliknij przycisk **właściwości**. 
+    b. Na karcie **zasoby** w obszarze **inne zasoby**kliknij prawym przyciskiem myszy grupę zasobów dostępność, a następnie kliknij polecenie **Właściwości**. 
 
-    c. Na karcie zależności należy dodać nazwę zasobu (odbiornika) punktu dostępu klienta.
+    d. Na karcie zależności Dodaj nazwę zasobu punktu dostępu klienta (odbiornika).
 
-   ![Zasób adresu IP](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![Zasób IP](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. Kliknij przycisk **OK**.
 
-1. <a name="listname"></a>Marka zależne od adresu IP zasobu punktu dostępu klienta.
+1. <a name="listname"></a>Udostępnij zasób punktu dostępu klienta zależnie od adresu IP.
 
-    a. W Menedżerze klastra trybu Failover kliknij **role**, a następnie kliknij pozycję grupy dostępności. 
+    a. W Menedżer klastra trybu failover kliknij pozycję **role**, a następnie kliknij swoją grupę dostępności. 
 
-    b. Na **zasobów** kartę, kliknij prawym przyciskiem myszy zasób punktu dostępu klienta w obszarze **nazwy serwera**, a następnie kliknij przycisk **właściwości**. 
+    b. Na karcie **zasoby** kliknij prawym przyciskiem myszy zasób punktu dostępu klienta w obszarze **Nazwa serwera**, a następnie kliknij polecenie **Właściwości**. 
 
-   ![Zasób adresu IP](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![Zasób IP](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Kliknij przycisk **zależności** kartę. Sprawdź, czy adres IP jest zależność. Jeśli nie jest, należy ustawić zależność dla adresu IP. W przypadku wielu zasobów, na liście, sprawdź, czy adresy IP są lub nie oraz zależności. Kliknij przycisk **OK**. 
+    d. Kliknij kartę **zależności** . Sprawdź, czy adres IP jest zależnością. Jeśli tak nie jest, ustaw zależność od adresu IP. Jeśli na liście znajduje się wiele zasobów, sprawdź, czy adresy IP mają zależności lub, nie i. Kliknij przycisk **OK**. 
 
-   ![Zasób adresu IP](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
+   ![Zasób IP](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Aby zweryfikować, czy zależności są poprawnie skonfigurowane. W Menedżerze klastra trybu Failover, przejdź do ról, kliknij prawym przyciskiem myszy grupę dostępności, kliknij przycisk **więcej akcji**, a następnie kliknij przycisk **Pokaż raport zależności**. Gdy zależności są poprawnie skonfigurowane, grupa dostępności jest zależna od nazwy sieci, a nazwa sieciowa jest zależny od adresu IP. 
+    >Można sprawdzić, czy zależności są prawidłowo skonfigurowane. W Menedżer klastra trybu failover przejdź do ról, kliknij prawym przyciskiem myszy grupę dostępności, kliknij polecenie **więcej akcji**, a następnie kliknij pozycję **Pokaż raport zależności**. Po poprawnym skonfigurowaniu zależności Grupa dostępności jest zależna od nazwy sieci, a nazwa sieci zależy od adresu IP. 
 
 
 1. <a name="setparam"></a>Ustaw parametry klastra w programie PowerShell.
 
-   a. Skopiuj poniższy skrypt programu PowerShell do jednego wystąpienia programu SQL Server. Zaktualizuj zmienne w danym środowisku.
+   a. Skopiuj poniższy skrypt programu PowerShell do jednego z wystąpień SQL Server. Aktualizowanie zmiennych dla środowiska.
 
-   - `$ListenerILBIP` to adres IP, który został utworzony w usłudze równoważenia obciążenia platformy Azure dla odbiornika grupy dostępności.
+   - `$ListenerILBIP` jest adresem IP utworzonym w module równoważenia obciążenia platformy Azure dla odbiornika grupy dostępności.
     
-   - `$ListenerProbePort` jest to port skonfigurowany w module równoważenia obciążenia platformy Azure dla odbiornika grupy dostępności.
+   - `$ListenerProbePort` jest port skonfigurowany w module równoważenia obciążenia platformy Azure dla odbiornika grupy dostępności.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -106,25 +106,25 @@ Odbiornik grupy dostępności jest nazwa i adres IP sieci, grupy dostępności p
    b. Ustaw parametry klastra, uruchamiając skrypt programu PowerShell na jednym z węzłów klastra.  
 
    > [!NOTE]
-   > Wystąpień programu SQL Server znajdują się w oddzielnych regionach, należy uruchomić skrypt programu PowerShell, dwa razy. Po raz pierwszy, użyj `$ListenerILBIP` i `$ListenerProbePort` z pierwszym regionie. Następnie należy użyć `$ListenerILBIP` i `$ListenerProbePort` z drugiego regionu. Nazwa sieciowa klastra i nazwę zasobu adresu IP klastra są również inne dla każdego regionu.
+   > Jeśli wystąpienia SQL Server znajdują się w osobnych regionach, należy dwukrotnie uruchomić skrypt programu PowerShell. Po raz pierwszy Użyj `$ListenerILBIP` i `$ListenerProbePort` z pierwszego regionu. Następnie użyj `$ListenerILBIP` i `$ListenerProbePort` w drugim regionie. Nazwa sieci klastra i nazwa zasobu adresu IP klastra są również różne dla każdego regionu.
 
-1. Przenieś rolę klastra grupy dostępności online. W **Menedżera klastra trybu Failover** w obszarze **role**, kliknij prawym przyciskiem myszy rolę i wybierz **Uruchom rolę**.
+1. Przełącz rolę klastra grupy dostępności do trybu online. W **Menedżer klastra trybu failover** w obszarze **role**kliknij prawym przyciskiem myszy rolę, a następnie wybierz pozycję **Uruchom rolę**.
 
 W razie potrzeby powtórz powyższe kroki, aby ustawić parametry klastra dla adresu IP klastra usługi WSFC.
 
-1. Pobierz nazwę adres IP adres IP klastra usługi WSFC. W **Menedżera klastra trybu Failover** w obszarze **zasoby podstawowe klastra**, zlokalizuj **nazwy serwera**.
+1. Pobierz nazwę adresu IP klastra usługi WSFC. W **Menedżer klastra trybu failover** w obszarze **zasoby podstawowe klastra**Zlokalizuj **nazwę serwera**.
 
-1. Kliknij prawym przyciskiem myszy **adresu IP**i wybierz **właściwości**.
+1. Kliknij prawym przyciskiem myszy pozycję **adres IP**, a następnie wybierz polecenie **Właściwości**.
 
-1. Kopiuj **nazwa** adresu IP. Może być `Cluster IP Address`. 
+1. Skopiuj **nazwę** adresu IP. Może być `Cluster IP Address`. 
 
 1. <a name="setwsfcparam"></a>Ustaw parametry klastra w programie PowerShell.
   
-   a. Skopiuj poniższy skrypt programu PowerShell do jednego wystąpienia programu SQL Server. Zaktualizuj zmienne w danym środowisku.
+   a. Skopiuj poniższy skrypt programu PowerShell do jednego z wystąpień SQL Server. Aktualizowanie zmiennych dla środowiska.
 
-   - `$ClusterCoreIP` to adres IP, który został utworzony w usłudze równoważenia obciążenia platformy Azure dla zasobu klastra usługi WSFC core. Różni się od adresu IP dla odbiornika grupy dostępności.
+   - `$ClusterCoreIP` jest adresem IP utworzonym w module równoważenia obciążenia platformy Azure dla zasobu podstawowego klastra usługi WSFC. Różni się od adresu IP odbiornika grupy dostępności.
 
-   - `$ClusterProbePort` jest to port skonfigurowany w module równoważenia obciążenia platformy Azure dla sondy kondycji usługi WSFC. Różni się od sondy dla odbiornika grupy dostępności.
+   - `$ClusterProbePort` jest port skonfigurowany w module równoważenia obciążenia platformy Azure dla sondy kondycji usługi WSFC. Różni się od sondy odbiornika grupy dostępności.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -140,4 +140,4 @@ W razie potrzeby powtórz powyższe kroki, aby ustawić parametry klastra dla ad
    b. Ustaw parametry klastra, uruchamiając skrypt programu PowerShell na jednym z węzłów klastra.  
 
 >[!WARNING]
->Port sondy kondycji odbiornika grupy dostępności musi być inna niż port sondy kondycji adres IP klastra core. W tych przykładach na port odbiornika jest 59999 i adres IP klastra core jest 58888. Oba porty wymagają reguła zapory dla ruchu przychodzącego.
+>Port sondy kondycji odbiornika grupy dostępności musi być inny niż port sondy kondycji podstawowego adresu IP klastra. W tych przykładach portem odbiornika jest 59999, a port sondy kondycji podstawowego adresu IP klastra to 58888. Oba porty wymagają reguły zapory Zezwalaj na ruch przychodzący.

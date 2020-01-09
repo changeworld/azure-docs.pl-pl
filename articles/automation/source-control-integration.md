@@ -2,19 +2,15 @@
 title: Integracja kontroli źródła w Azure Automation
 description: W tym artykule opisano integrację kontroli źródła z usługą GitHub w Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/10/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 837ebd71886e9435a44080b06c079623c3936c69
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417067"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 

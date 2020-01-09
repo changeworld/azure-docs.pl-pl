@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8db3baf9fa4c0d054e743d0b52964847b37ec281
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f42713eb579da34ad4b150eec2c89b9645315d0b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078290"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638072"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -37,8 +37,8 @@ ms.locfileid: "70078290"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -197,7 +197,7 @@ ms.locfileid: "70078290"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -234,7 +234,7 @@ Usługa Azure Load Balancer udostępnia *wewnętrzny moduł równoważenia obci�
 
 Wdróż wewnętrzny moduł równoważenia obciążenia w grupie zasobów zawierającej węzły klastra. Następnie należy skonfigurować wszystkie wymagane reguły przekazywania portów przy użyciu portów sondy wewnętrznego modułu równoważenia obciążenia. Klienci mogą łączyć się za pośrednictwem nazwy hosta wirtualnego. Serwer DNS rozpoznaje adres IP klastra. Wewnętrzny moduł równoważenia obciążenia obsługuje przekazywanie portów do aktywnego węzła klastra.
 
-![Rysunek 1. Konfiguracja klastra trybu failover systemu Windows Server na platformie Azure bez dysku udostępnionego][sap-ha-guide-figure-1001]
+![Rysunek 1. Konfiguracja klastra trybu failover z systemem Windows Server na platformie Azure bez dysku udostępnionego][sap-ha-guide-figure-1001]
 
 _**Rysunek 1.** Konfiguracja klastra trybu failover systemu Windows Server na platformie Azure bez dysku udostępnionego_
 
@@ -250,36 +250,36 @@ Ta architektura jest specyficzna dla następujących sposobów:
 
 * Usługi SAP Central (z własną strukturą plików i procesami dodawania komunikatów i kolejkowania) są niezależne od plików hosta globalnego SAP.
 * Usługi SAP Central działają w wystąpieniu SAP ASCS/SCS.
-* Wystąpienie SAP ASCS/SCS jest klastrowane i jest dostępne przy użyciu \<nazwy\> hosta wirtualnego ASCS/SCS nazwa hosta wirtualnego.
-* Pliki globalne SAP są umieszczane w udziale plików SMB i są dostępne przy użyciu \<nazwy\> hosta globalnego hosta SAP: \\\\&lt;Globalny host&gt;SAP \sapmnt\\&lt;SID&gt;\SYS..\.
+* Wystąpienie SAP ASCS/SCS jest klastrowane i jest dostępne przy użyciu nazwy hosta wirtualnego \<ASCS/SCS\> nazwy hosta wirtualnego.
+* Pliki globalne SAP są umieszczane w udziale plików SMB i uzyskuje się do nich dostęp przy użyciu \<hosta globalnego SAP\> nazwa hosta: \\\\&lt;na komputerze SAP Global Host&gt;\sapmnt\\&lt;SID&gt;\SYS\..
 * Wystąpienie SAP ASCS/SCS jest zainstalowane na dysku lokalnym na obu węzłach klastra.
-* Nazwa sieci nazwy\> hosta wirtualnego &lt;&gt;ASCS/SCS różni się od hosta globalnego SAP. \<
+* Nazwa hosta wirtualnego \<ASCS/SCS\> Nazwa sieciowa różni się od &lt;&gt;hosta SAP.
 
-![Rysunek 2. Architektura architektury SAP ASCS/SCS z udziałem plików SMB][sap-ha-guide-figure-8004]
+![Rysunek 2: architektura SAP ASCS/SCS z udziałem plików SMB][sap-ha-guide-figure-8004]
 
 _**Rysunek 2.** Nowa architektura oprogramowania SAP ASCS/SCS z udziałem plików SMB_
 
 Wymagania wstępne dotyczące udziału plików SMB:
 
 * Protokół SMB 3,0 (lub nowszy).
-* Możliwość ustawienia Active Directory list kontroli dostępu (ACL) dla Active Directory grup użytkowników i `computer$` obiektu komputera.
+* Możliwość ustawienia Active Directory list kontroli dostępu (ACL) dla Active Directory grup użytkowników i obiektu komputera `computer$`.
 * Udział plików musi mieć włączoną obsługę HA:
     * Dyski używane do przechowywania plików nie mogą być single point of failure.
     * Przestój serwera lub maszyny wirtualnej nie powoduje przestoju w udziale plików.
 
-Rola klastra \<identyfikatora\> SID SAP nie zawiera udostępnionych dysków klastra ani zasobu klastra ogólnego udziału plików.
+Usługa SAP \<identyfikator SID\> rolę klastra nie zawiera udostępnionych dysków klastra ani zasobu klastra ogólnego udziału plików.
 
 
-![Rysunek 3. Zasoby \<roli\> klastra usługi SAP SID do korzystania z udziału plików][sap-ha-guide-figure-8005]
+![Rysunek 3. identyfikator SID \<SAP\> zasobów roli klastra przy użyciu udziału plików][sap-ha-guide-figure-8005]
 
-_**Rysunek 3.** Zasoby &lt;roli&gt; klastra usługi SAP SID do korzystania z udziału plików_
+_**Rysunek 3.** &gt; zasobów roli klastra przy użyciu udziału plików &lt;usługi SAP_
 
 
 ## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>Udziały plików skalowalne w poziomie z Bezpośrednie miejsca do magazynowania na platformie Azure jako udział plików SAPMNT
 
 Udziału plików skalowalnego w poziomie można używać do hostowania i ochrony plików hosta globalnego SAP. Udział plików skalowalny w poziomie oferuje również SAPMNT usługę udziału plików o wysokiej dostępności.
 
-![Rysunek 4. Udział plików skalowalny w poziomie używany do ochrony plików hosta globalnego SAP][sap-ha-guide-figure-8006]
+![Rysunek 4: udział plików skalowalny w poziomie używany do ochrony plików hosta globalnego SAP][sap-ha-guide-figure-8006]
 
 _**Rysunek 4.** Udział plików skalowalny w poziomie używany do ochrony plików hosta globalnego SAP_
 
@@ -303,7 +303,7 @@ Aby można było użyć udziału plików skalowalnego w poziomie, system musi sp
 
 * Co najmniej dwa węzły klastra dla udziału plików skalowalnego w poziomie.
 * Każdy węzeł musi mieć co najmniej dwa dyski lokalne.
-* Ze względu na wydajność należy użyćfunkcji odporności dublowania:
+* Ze względu na wydajność należy użyć funkcji *odporności dublowania*:
     * Dwukierunkowa dublowanie dla udziału plików skalowalnego w poziomie z dwoma węzłami klastra.
     * Trójwymiarowe dublowanie dla udziału plików skalowalnego w poziomie z trzema (lub więcej) węzłami klastra.
 * Zaleca się, aby w udziale plików skalowalnym w poziomie co najmniej trzy węzły klastra z funkcją dublowania.
@@ -317,23 +317,23 @@ Aby można było użyć udziału plików skalowalnego w poziomie, system musi sp
 * Aby zapewnić dobrą wydajność sieci między maszynami wirtualnymi, które są niezbędne do Bezpośrednie miejsca do magazynowania synchronizacji dysków, użyj typu maszyny wirtualnej z co najmniej przepustowością sieci "High".
     Aby uzyskać więcej informacji, zobacz specyfikacje [serii DSv2][dv2-series] i [ds][ds-series] .
 * Zalecamy zarezerwowanie pewnej nieprzypisanej pojemności w puli magazynów. Pozostawienie nieprzypisanej pojemności w puli magazynów powoduje, że miejsce na woluminy do naprawy "w miejscu" w przypadku awarii dysku. Zwiększa to bezpieczeństwo i wydajność danych.  Aby uzyskać więcej informacji, zobacz [Wybieranie rozmiaru woluminu][choosing-the-size-of-volumes-s2d].
-* Nie trzeba konfigurować wewnętrznego modułu równoważenia obciążenia platformy Azure dla nazwy sieciowej udziału plików skalowalnego w poziomie, na przykład dla \<hosta\>globalnego SAP. Jest to wykonywane dla \<nazwy\> hosta wirtualnego ASCS/SCS wystąpienia SAP ASCS/SCS lub dla systemu DBMS. Udział plików skalowalny w poziomie skaluje obciążenie we wszystkich węzłach klastra. \<Host\> globalny SAP używa lokalnego adresu IP dla wszystkich węzłów klastra.
+* Nie trzeba konfigurować wewnętrznego modułu równoważenia obciążenia platformy Azure dla nazwy sieciowej udziału plików skalowalnego w poziomie, takiej jak \<\>hosta globalnego SAP. Jest to wykonywane dla nazwy hosta wirtualnego \<ASCS/SCS\> wystąpienia SAP ASCS/SCS lub dla systemu DBMS. Udział plików skalowalny w poziomie skaluje obciążenie we wszystkich węzłach klastra. \<\> hosta globalnego SAP używa lokalnego adresu IP dla wszystkich węzłów klastra.
 
 
 > [!IMPORTANT]
-> Nie można zmienić nazwy udziału plików SAPMNT, który wskazuje na \<hosta\>globalnego SAP. SAP obsługuje tylko nazwę udziału "sapmnt".
+> Nie można zmienić nazwy udziału plików SAPMNT, który wskazuje na \<\>hosta globalnego SAP. SAP obsługuje tylko nazwę udziału "sapmnt".
 >
 > Aby uzyskać więcej informacji, zobacz temat [SAP uwaga 2492395 — czy nazwa udziału sapmnt być zmieniona?][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Skonfiguruj wystąpienia SAP ASCS/SCS i udział plików skalowalny w poziomie w dwóch klastrach
 
-Wystąpienia SAP ASCS/SCS można wdrożyć w jednym klastrze z własną rolą klastra identyfikatorów SID \<\> SAP. W takim przypadku należy skonfigurować udział plików skalowalny w poziomie w innym klastrze przy użyciu innej roli klastra.
+Wystąpienia SAP ASCS/SCS można wdrożyć w jednym klastrze przy użyciu własnego identyfikatora SID \<SAP\> roli klastra. W takim przypadku należy skonfigurować udział plików skalowalny w poziomie w innym klastrze przy użyciu innej roli klastra.
 
 > [!IMPORTANT]
->W tym scenariuszu wystąpienie SAP ASCS/SCS jest skonfigurowane do uzyskiwania dostępu do hosta globalnego SAP przy użyciu ścieżki \\ \\ &lt;UNC hosta&gt;globalnego SAP \sapmnt\\&lt;SID&gt;\SYS\.
+>W tym scenariuszu wystąpienie SAP ASCS/SCS jest skonfigurowane do uzyskiwania dostępu do hosta globalnego SAP przy użyciu ścieżki UNC \\\\&lt;hosta globalnego SAP&gt;\sapmnt\\&lt;SID&gt;\SYS\.
 >
 
-![Rysunek 5. Wystąpienie SAP ASCS/SCS i udział plików skalowalny w poziomie wdrożony w dwóch klastrach][sap-ha-guide-figure-8007]
+![Rysunek 5: wystąpienie SAP ASCS/SCS oraz udział plików skalowalny w poziomie wdrożony w dwóch klastrach][sap-ha-guide-figure-8007]
 
 _**Rysunek 5.** Wystąpienie SAP ASCS/SCS i udział plików skalowalny w poziomie wdrożony w dwóch klastrach_
 
@@ -354,4 +354,4 @@ W takim przypadku można użyć rozwiązania oprogramowanie SIOS innej firmy jak
 * [Instalowanie oprogramowania SAP NetWeaver HA w klastrze trybu failover systemu Windows i udziału plików dla wystąpienia SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk]
 * [Wdrażanie serwera plików skalowalnego w poziomie z dwoma węzłami Bezpośrednie miejsca do magazynowania dla magazynu UPD na platformie Azure][deploy-sofs-s2d-in-azure]
 * [Bezpośrednie miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
-* [Głębokie szczegółowe: Woluminy w Bezpośrednie miejsca do magazynowania][deep-dive-volumes-in-s2d]
+* [Głębokie szczegółowe: woluminy w Bezpośrednie miejsca do magazynowania][deep-dive-volumes-in-s2d]

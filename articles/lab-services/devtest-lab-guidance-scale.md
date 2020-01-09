@@ -1,6 +1,6 @@
 ---
-title: Skalowanie infrastruktury usługi Azure DevTest Labs
-description: Ten artykuł zawiera wskazówki dotyczące skalowania w górę infrastruktury usługi Azure DevTest Labs.
+title: Skalowanie infrastruktury Azure DevTest Labs
+description: Ten artykuł zawiera wskazówki dotyczące skalowania infrastruktury Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,58 +13,58 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561493"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644838"
 ---
-# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Skalowanie infrastruktury usługi Azure DevTest Labs
-Przed ich wprowadzeniem DevTest Labs na skalę przedsiębiorstwa, istnieje kilka punktów kluczowe decyzje. Zrozumienie tych decyzje na wysokim poziomie pomaga organizacji decyzji projektowych w przyszłości. Jednak te punkty powinna nie pozostałe organizacji uruchamianie weryfikacji koncepcji. Dostępne są następujące obszary trzy pierwsze, planowanie początkowej skalowanie w górę:
+# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Skalowanie infrastruktury Azure DevTest Labs
+Przed wdrożeniem laboratoriów DevTest w skali przedsiębiorstwa istnieje kilka najważniejszych punktów decyzji. Zrozumienie tych punktów decyzji na wyższym poziomie ułatwia organizacjom podejmowanie decyzji projektowych w przyszłości. Jednak te punkty nie powinny pomieścić z powrotem organizacji przed rozpoczęciem weryfikacji koncepcji. Trzy pierwsze obszary do wstępnego planowania skalowania są następujące:
 
-- Sieci i zabezpieczeń
+- Sieci i zabezpieczenia
 - Topologia subskrypcji
 - Role i obowiązki
 
-## <a name="networking-and-security"></a>Sieci i zabezpieczeń
-Sieci i zabezpieczeń są filary posiadać wszystkie organizacje. Podczas wdrażania całego przedsiębiorstwa wymaga dużo dokładniejszej analizy, istnieją zmniejszenie liczby wymagań, aby pomyślnie wykonać weryfikacji koncepcji. Kilka kluczowych obszarów fokus obejmują:
+## <a name="networking-and-security"></a>Sieci i zabezpieczenia
+Sieci i zabezpieczenia są podstawą dla wszystkich organizacji. Chociaż wdrożenie w całym przedsiębiorstwie wymaga znacznie dokładniejszej analizy, istnieje zmniejszona liczba wymagań, które pomogą pomyślnie wykonać weryfikację koncepcji. Oto kilka kluczowych obszarów fokusu:
 
-- **Subskrypcja platformy Azure** — w celu wdrożenia usługi DevTest Labs, musi mieć dostęp do subskrypcji platformy Azure przy użyciu odpowiednich uprawnień do tworzenia zasobów. Istnieją różne sposoby, aby uzyskać dostęp do subskrypcji platformy Azure, łącznie z umową Enterprise Agreement i płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji o uzyskiwaniu dostępu do subskrypcji platformy Azure, zobacz [licencjonowania platformy Azure dla przedsiębiorstw](https://azure.microsoft.com/pricing/enterprise-agreement/).
-- **Dostęp do zasobów lokalnych** — niektóre organizacje wymagają ich zasobów w usłudze DevTest Labs mają dostęp do zasobów lokalnych. Jest wymagane bezpieczne połączenie ze środowiska lokalnego do platformy Azure. Dlatego jest ważne, aby ustawić w górę/Konfigurowanie połączenia sieci VPN lub Expressroute przed rozpoczęciem pracy. Aby uzyskać więcej informacji, zobacz [omówienie sieci wirtualnych](../virtual-network/virtual-networks-overview.md).
-- **Dodatkowe wymagania dotyczące zabezpieczeń** — inne wymagania dotyczące zabezpieczeń, takie jak zasady maszyny, dostęp do publicznych adresów IP w celu nawiązywania połączenia z Internetu są scenariusze, które mogą wymagać przejrzenia przed wdrożeniem weryfikacji koncepcji. 
+- **Subskrypcja platformy Azure** — aby wdrożyć DevTest Labs, musisz mieć dostęp do subskrypcji platformy Azure z odpowiednimi prawami do tworzenia zasobów. Istnieje kilka sposobów uzyskiwania dostępu do subskrypcji platformy Azure, w tym Umowa Enterprise i płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do subskrypcji platformy Azure, zobacz [Licencjonowanie platformy Azure dla przedsiębiorstwa](https://azure.microsoft.com/pricing/enterprise-agreement/).
+- **Dostęp do zasobów lokalnych** — niektóre organizacje wymagają, aby zasoby w DevTest Labs miały dostęp do zasobów lokalnych. Wymagana jest bezpieczne połączenie ze środowiska lokalnego z platformą Azure. W związku z tym ważne jest, aby skonfigurować/skonfigurować połączenie sieci VPN lub Express Route przed rozpoczęciem. Aby uzyskać więcej informacji, zobacz [Omówienie sieci wirtualnych](../virtual-network/virtual-networks-overview.md).
+- **Dodatkowe wymagania dotyczące zabezpieczeń** — inne wymagania dotyczące zabezpieczeń, takie jak zasady komputera, dostęp do publicznych adresów IP, nawiązywanie połączenia z Internetem to scenariusze, które mogą wymagać sprawdzenia przed wdrożeniem weryfikacji koncepcji. 
 
 ## <a name="subscription-topology"></a>Topologia subskrypcji
-Topologia subskrypcji jest krytycznie ważnym założeniem projektowym w przypadku wdrażania usługi DevTest Labs przedsiębiorstwa. Jednak nie jest wymagane do zestalenia podczas podejmowania wszystkich decyzji do czasu, po zakończeniu etapu weryfikacji koncepcji. Podczas obliczania liczby subskrypcji, wymagane do wdrożenia dla przedsiębiorstwa, są dwoma skrajnymi poziomami: 
+Topologia subskrypcji to krytyczne zagadnienia dotyczące projektowania podczas wdrażania DevTest Labs w przedsiębiorstwie. Nie jest jednak konieczne zwiększyć wszystkich decyzji do momentu ukończenia weryfikacji koncepcji. Gdy oceniasz liczbę subskrypcji wymaganych dla implementacji przedsiębiorstwa, istnieją dwa skrajnie: 
 
 - Jedna subskrypcja dla całej organizacji
-- Subskrypcji na użytkownika
+- Subskrypcja na użytkownika
 
-Następnie możemy wyróżnić profesjonaliści każde podejście.
+Następnie wykorzystamy zalety poszczególnych rozwiązań.
 
 ### <a name="one-subscription"></a>Jedna subskrypcja
-Często podejście jedna subskrypcja nie jest zarządzany w dużych przedsiębiorstw. Jednak ograniczenie liczby subskrypcji ma następujące zalety:
+Często podejście do jednej subskrypcji nie jest zarządzane w dużych przedsiębiorstwach. Jednak ograniczenie liczby subskrypcji zapewnia następujące korzyści:
 
-- **Prognozowanie** kosztów dla przedsiębiorstw.  Budżetowania staje się znacznie łatwiejsze, w ramach jednej subskrypcji, ponieważ wszystkie zasoby znajdują się w jednej puli. To podejście umożliwia prostsze podejmowania decyzji w przypadku sprawowanie kontroli kosztów miary w danym momencie w okresie rozliczeniowym.
-- **Możliwości zarządzania** maszyn wirtualnych, artefakty, formuły, konfiguracja sieci, uprawnienia, zasady, łatwiej jest itp., ponieważ wszystkie aktualizacje są wymagane tylko w jednej subskrypcji, w przeciwieństwie do wprowadzania aktualizacji w wielu subskrypcjach.
-- **Sieć** nakład pracy jest znacznie uproszczone w ramach jednej subskrypcji dla przedsiębiorstw, w których łączność lokalna jest wymagany. Łączenie sieci wirtualnych między subskrypcjami (model piasty i szprych) jest wymagany w przypadku dodatkowych subskrypcji, co wymaga dodatkowej konfiguracji, zarządzania, przestrzenie adresów IP, itp.
-- **Zespołowej** jest łatwiejsze, gdy wszyscy działa w tej samej subskrypcji — na przykład łatwiej Przypisz ponownie Maszynę wirtualną do współpracownika, udostępnianie zasobów zespołu, itp.
+- **Prognozowanie** kosztów dla przedsiębiorstwa.  Budżetowanie jest znacznie łatwiejsze w jednej subskrypcji, ponieważ wszystkie zasoby znajdują się w jednej puli. Takie podejście umożliwia prostsze podejmowanie decyzji w czasie wykonywania środków kontroli kosztów w danym momencie w cyklu rozliczeniowym.
+- **Zarządzanie** maszynami wirtualnymi, artefaktami, formułami, konfiguracją sieci, uprawnieniami, zasadami itp. jest łatwiejsze, ponieważ wszystkie aktualizacje są wymagane tylko w jednej subskrypcji, w przeciwieństwie do dokonywania aktualizacji w wielu subskrypcjach.
+- Praca w **sieci** jest znacznie uproszczona w ramach jednej subskrypcji dla przedsiębiorstw, w której jest wymagane połączenie lokalne. Łączenie sieci wirtualnych między subskrypcjami (model gwiazdy) jest wymagane z dodatkowymi subskrypcjami, co wymaga dodatkowej konfiguracji, zarządzania, przestrzeni adresów IP itp.
+- **Współpraca zespołowa** jest łatwiejsza, gdy wszyscy pracują w tej samej subskrypcji — na przykład można łatwiej ponownie przypisać maszynę wirtualną do współpracowników, udostępnić zasoby zespołu itd.
 
-### <a name="subscription-per-user"></a>Subskrypcji na użytkownika
-Oddzielnej subskrypcji na użytkownika zapewnia możliwości równy do alternatywnego spektrum. Masz wiele subskrypcji zalety:
+### <a name="subscription-per-user"></a>Subskrypcja na użytkownika
+Oddzielna subskrypcja na użytkownika zapewnia równe szanse na zakres alternatywny. Korzyści wynikające z posiadania wielu subskrypcji obejmują:
 
-- **Azure skalowanie przydziały** nie będą utrudniać przyjęcia. Na przykład w trakcie tworzenia tej dokumentacji, które platforma Azure zezwoli 200 kont magazynu na subskrypcję. Istnieją operacyjnej przydziały dla większości usług platformy Azure (wiele można dostosować, niektóre nie). W tym modelu subskrypcji na użytkownika jest mało prawdopodobne, osiągnięciu większości przydziałów. Aby uzyskać więcej informacji na temat bieżące limity przydziału skalowania platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
-- **Obciążenia zwrotne u** do grup lub poszczególnych deweloperów stają się znacznie łatwiejsze, umożliwiając organizacjom w celu uwzględnienia kosztów za pomocą ich bieżącego modelu.
-- **Własność i uprawnień** usługi DevTest Labs środowiska są proste. Oferuje deweloperom dostęp na poziomie subskrypcji i są odpowiedzialne za wszystko w tym konfiguracji sieci, zasad laboratorium i zarządzania maszyną Wirtualną w 100%.
+- **Przydziały skalowania platformy Azure** nie przeszkadzają na przyjęciu. Na przykład podczas pisania na platformie Azure dozwolone są 200 kont magazynu na subskrypcję. Istnieją przydziały operacyjne dla większości usług na platformie Azure (wiele z nich może być dostosowana). W tym modelu subskrypcji na użytkownika bardzo mało prawdopodobne jest osiągnięcie większości przydziałów. Aby uzyskać więcej informacji na temat bieżących przydziałów skalowania platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- **Obciążeń zwrotnych** z grupami lub Indywidualni deweloperzy stają się znacznie łatwiejsze, aby organizacje mogli obsłużyć koszty związane z bieżącym modelem.
+- **Prawa własności &** w środowiskach DevTest Labs są proste. Deweloperzy mogą uzyskać dostęp na poziomie subskrypcji i są 100% odpowiedzialności za wszystko, w tym konfigurację sieci, zasady laboratorium i zarządzanie maszyną wirtualną.
 
-W przedsiębiorstwie może być za mało ograniczeń skrajnymi poziomami spektrum. W związku z tym konieczne może konfigurować subskrypcje w sposób, który znajduje się w trakcie ekstremalnymi te. Najlepszym rozwiązaniem jest celem organizacja powinna dotyczyć pełnić minimalnej liczby subskrypcji możliwe pamiętając o tym, wymuszania funkcji, które zwiększają łączna liczba subskrypcji. Aby przypomnę topologii subskrypcji ma kluczowe znaczenie dla wdrożenia w przedsiębiorstwie usługi DevTest Labs, ale nie powinno opóźniać weryfikacji koncepcji. Istnieją dodatkowe informacje w [nadzoru](devtest-lab-guidance-governance-policy-compliance.md) artykuł na temat wyboru szczegółowości subskrypcji i laboratorium w organizacji.
+W przedsiębiorstwie mogą istnieć wystarczające ograniczenia dotyczące skrajnych wartości spektrum. W związku z tym może być konieczne skonfigurowanie subskrypcji w taki sposób, aby mieściły się w środku tych skrajnych wartości. Najlepszym rozwiązaniem jest, aby celem organizacji było użycie minimalnej liczby subskrypcji, jak to możliwe, z uwzględnieniem funkcji wymuszania, które zwiększają łączną liczbę subskrypcji. Aby ponownie wykonać iterację, topologia subskrypcji ma kluczowe znaczenie dla wdrożenia w przedsiębiorstwie DevTest Labs, ale nie powinna opóźniać weryfikacji koncepcji. W artykule dotyczącym [ładu](devtest-lab-guidance-governance-policy-compliance.md) znajdują się dodatkowe szczegółowe informacje na temat podejmowania decyzji dotyczących subskrypcji i stopnia szczegółowości laboratorium w organizacji.
 
 ## <a name="roles-and-responsibilities"></a>Role i obowiązki
-DevTest Labs weryfikacji koncepcji ma trzech głównych ról z określonymi obowiązkami — właściciel subskrypcji, właściciel usługi DevTest Labs, użytkownik usługi DevTest Labs i opcjonalnie współautora.
+Weryfikacja koncepcji DevTest Labs obejmuje trzy podstawowe role z określonymi zobowiązaniami — właściciela subskrypcji, właściciela DevTest Labs, użytkownika DevTest Labs, a opcjonalnie współautorem.
 
-- **Właściciel subskrypcji** — właściciel subskrypcji ma wystarczające uprawnienia do administrowania subskrypcji platformy Azure łącznie z przypisaniem użytkowników, Zarządzanie zasadami, tworzenie i Zarządzanie topologią sieci żądanie zwiększenia limitu przydziału, itp. Więcej informacji znajduje się w [tym artykule](../role-based-access-control/rbac-and-directory-admin-roles.md).
-- **Właściciel usługi DevTest Labs** — właściciel laboratorium ma pełny dostęp administracyjny do laboratorium. Ta osoba jest odpowiedzialny za dodawanie/usuwanie użytkowników, zarządzania ustawieniami kosztów, ustawienia ogólne lab i inne zadania oparte na maszynę Wirtualną/artefaktu. Właściciel laboratorium ma również wszystkie prawa użytkownik usługi DevTest Labs.
-- **Użytkownik usługi DevTest Labs** — użytkownik usługi DevTest Labs mogą tworzyć i wykorzystywać maszyn wirtualnych w środowisku laboratoryjnym. Osoby te mają niektóre minimalne możliwości administracyjnych na maszynach wirtualnych, które tworzą (start/stop/delete/Konfigurowanie maszyn wirtualnych). Użytkownicy nie mogą zarządzać maszynami wirtualnymi w innych użytkowników.
+- **Właściciel subskrypcji** — właściciel subskrypcji ma uprawnienia do administrowania subskrypcją platformy Azure, w tym do przypisywania użytkowników, zarządzania zasadami, tworzenia & zarządzania topologią sieci, żądania zwiększenia limitu przydziału itd. Aby uzyskać więcej informacji, zobacz [ten artykuł](../role-based-access-control/rbac-and-directory-admin-roles.md).
+- **Właściciel DevTest Labs** — właściciel DevTest Labs ma pełny dostęp administracyjny do laboratorium. Ta osoba jest odpowiedzialna za Dodawanie/usuwanie użytkowników, zarządzanie ustawieniami kosztów, ogólnymi ustawieniami laboratorium i innymi zadaniami maszyn wirtualnych/artefaktów. Właściciel laboratorium ma także wszystkie prawa użytkownika DevTest Labs.
+- **Użytkownik DevTest Labs** — użytkownik DevTest Labs może tworzyć i zużywać maszyny wirtualne w laboratorium. Te osoby mają pewne minimalne możliwości administracyjne na maszynach wirtualnych, które tworzą (uruchamianie/zatrzymywanie/usuwanie/Konfigurowanie ich maszyn wirtualnych). Użytkownicy nie mogą zarządzać maszynami wirtualnymi innych użytkowników.
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następny artykuł w tej serii: [Organizowanie wdrażania usługi Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)
+## <a name="next-steps"></a>Następne kroki
+Zobacz następny artykuł z tej serii: [organizowanie implementacji Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)

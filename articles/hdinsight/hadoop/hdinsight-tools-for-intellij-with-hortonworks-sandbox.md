@@ -3,18 +3,18 @@ title: Używanie Azure Toolkit for IntelliJ z piaskownicą Hortonworks
 description: Dowiedz się, jak używać narzędzi HDInsight w Azure Toolkit for IntelliJ z piaskownicą Hortonworks.
 keywords: narzędzia Hadoop, zapytanie Hive, IntelliJ, Piaskownica Hortonworks, zestaw narzędzi platformy Azure dla IntelliJ
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076260"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647836"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Korzystanie z narzędzi HDInsight Tools for IntelliJ z piaskownicą Hortonworks
 
@@ -52,8 +52,8 @@ W tej sekcji utworzysz przykładowy projekt Scala za pomocą POMYSŁu IntelliJ. 
    1. Wybierz pozycję **HDInsight** > **Spark w usłudze HDInsight (Scala)** .
    2. Na liście **narzędzia kompilacji** wybierz jedną z następujących opcji, w zależności od scenariusza:
 
-      * **Maven**: Do obsługi Kreatora tworzenia projektów Scala.
-      * **SBT**: Do zarządzania zależnościami i kompilowania dla projektu Scala.
+      * **Maven**: na potrzeby obsługi Kreatora tworzenia projektów Scala.
+      * **SBT**: na potrzeby zarządzania zależnościami i kompilowania dla projektu Scala.
 
    ![IntelliJ Utwórz nowy projekt Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
@@ -62,7 +62,7 @@ W tej sekcji utworzysz przykładowy projekt Scala za pomocą POMYSŁu IntelliJ. 
 
    1. W polu **Nazwa projektu** wprowadź nazwę projektu.
    2. W polu **Lokalizacja projektu** wprowadź lokalizację projektu.
-   3. Obok listy rozwijanej **zestaw SDK projektu** wybierz pozycję **Nowy**, wybierz pozycję **JDK**, a następnie określ folder dla języka Java JDK w wersji 1,7 lub nowszej. Wybierz pozycję **Java 1,8** dla klastra Spark 2. x. Wybierz pozycję **Java 1,7** dla klastra Spark 1. x. Domyślna lokalizacja to C:\Program Files\Java\jdk1.8.x_xxx.
+   3. Obok listy rozwijanej **zestaw SDK projektu** wybierz pozycję **Nowy**, wybierz pozycję **JDK**, a następnie określ folder dla języka Java JDK w wersji 1,7 lub nowszej. Wybierz pozycję **Java 1,8** dla klastra Spark 2. x. Wybierz pozycję **Java 1,7** dla klastra Spark 1. x. Domyślna lokalizacja to C:\Program Files\Java\jdk1.8. x_xxx.
    4. Z listy rozwijanej **wersja platformy Spark** Kreator tworzenia projektu Scala integruje poprawną wersję zestawu SDK Spark i zestawu SDK Scala. Jeśli wersja klastra Spark jest starsza niż 2.0, wybierz wartość **Spark 1.x**. W przeciwnym razie wybierz **Spark2.x**. W tym przykładzie jest stosowane rozwiązanie Spark 1.6.2 (Scala 2.10.5). Upewnij się, że używasz repozytorium oznaczonego jako **Scala 2.10. x**. Nie należy używać repozytorium oznaczonego jako Scala 2.11. x.
     
       ![Tworzenie właściwości projektu IntelliJ Scala](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
@@ -144,7 +144,7 @@ Aby przesłać projekt do emulatora:
     1. Na liście rozwijanej **klaster Spark (tylko system Linux)** wybierz lokalną piaskownicę Hortonworks.
     2. W polu **Nazwa klasy głównej** wybierz lub wprowadź nazwę klasy głównej. W tym artykule nazwa to **GroupByTest**.
 
-3. Wybierz **przesłać**. Dzienniki przesłania zadania są wyświetlane w oknie narzędzia do przesłaniania Spark.
+3. Wybierz pozycję **Prześlij**. Dzienniki przesłania zadania są wyświetlane w oknie narzędzia do przesłaniania Spark.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -158,4 +158,3 @@ Aby przesłać projekt do emulatora:
 
 - Dowiedz się, jak [tworzyć aplikacje Apache Spark przy użyciu narzędzi usługi HDInsight w Azure Toolkit for Eclipse](../spark/apache-spark-eclipse-tool-plugin.md).
 
-- Film wideo dotyczący narzędzi HDInsight Tools for zaćmienie znajduje się w temacie [Korzystanie z narzędzi HDInsight Tools for zaćmienie w celu tworzenia aplikacji platformy Spark](https://mix.office.com/watch/1rau2mopb6fha).

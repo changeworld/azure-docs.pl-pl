@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: b85c68b19a44021710dbc9143e255600b43b2cba
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670885"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666146"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurowanie aplikacji App Service do korzystania z usługi Azure AD login
 
@@ -29,9 +29,9 @@ Podczas konfigurowania aplikacji i uwierzytelniania postępuj zgodnie z następu
 
 ## <a name="express"> </a>Skonfiguruj przy użyciu ustawień ekspresowych
 
-1. W [Azure Portal]przejdź do aplikacji App Service.
-1. Wybierz pozycję **ustawienia** > **uwierzytelnianie/autoryzacja** w okienku po lewej stronie i upewnij się, że **App Service uwierzytelnianie** jest **włączone**.
-1. Wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **Express** w obszarze **tryb zarządzania**.
+1. W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację.
+1. W lewym okienku w obszarze **Ustawienia** wybierz pozycję **uwierzytelnianie/autoryzacja** i upewnij się, że **uwierzytelnianie App Service** jest **włączone**.
+1. Wybierz pozycję **Azure Active Directory**, a następnie w obszarze **tryb zarządzania** wybierz pozycję **Express**.
 1. Wybierz **przycisk OK** , aby zarejestrować aplikację App Service w Azure Active Directory. Zostanie utworzona nowa Rejestracja aplikacji.
 
    Jeśli chcesz wybrać istniejącą rejestrację aplikacji:
@@ -65,7 +65,7 @@ Podczas konfigurowania aplikacji App Service będą potrzebne następujące info
 
 Wykonaj poniższe czynności:
 
-1. Zaloguj się do [Azure Portal] i przejdź do aplikacji App Service. Zanotuj **adres URL**aplikacji. Zostanie ona użyta do skonfigurowania rejestracji aplikacji Azure Active Directory.
+1. Zaloguj się do [Azure Portal], Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. Zanotuj **adres URL**aplikacji. Zostanie ona użyta do skonfigurowania rejestracji aplikacji Azure Active Directory.
 1. Wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **Nowa rejestracja**.
 1. Na stronie **zarejestruj aplikację** wprowadź **nazwę** rejestracji aplikacji.
 1. W obszarze **Identyfikator URI przekierowania**wybierz pozycję **Sieć Web** i wprowadź adres URL aplikacji App Service i Dołącz `/.auth/login/aad/callback`ścieżki. Na przykład `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
@@ -86,8 +86,8 @@ Wykonaj poniższe czynności:
 
 ### <a name="secrets"> </a>Dodawanie Azure Active Directory informacji do aplikacji App Service
 
-1. W [Azure Portal]przejdź do aplikacji App Service. 
-1. Wybierz pozycję **ustawienia > uwierzytelnianie/autoryzacja** w okienku po lewej stronie i upewnij się, że **App Service uwierzytelnianie** jest **włączone**.
+1. W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. 
+1. W lewym okienku w obszarze **Ustawienia**wybierz pozycję **uwierzytelnianie/autoryzacja** i upewnij się, że **uwierzytelnianie App Service** jest **włączone**.
 1. Obowiązkowe Domyślnie uwierzytelnianie App Service zezwala na nieuwierzytelniony dostęp do aplikacji. Aby wymusić uwierzytelnianie użytkowników, należy ustawić **akcję podejmowaną, gdy żądanie nie zostanie uwierzytelnione** w celu **zalogowania się za pomocą Azure Active Directory**.
 1. W obszarze dostawcy uwierzytelniania wybierz pozycję **Azure Active Directory**.
 1. W obszarze **tryb zarządzania**wybierz pozycję **Zaawansowane** i Skonfiguruj uwierzytelnianie App Service zgodnie z poniższą tabelą:

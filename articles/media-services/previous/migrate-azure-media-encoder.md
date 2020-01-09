@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: e9c83a25147696b5e492241a191b3104df001c7c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7bbebe71f6a3278d70767ac9f9dbb9d55e6d481a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453376"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrowanie z Azure Media Encoder do Media Encoder Standard
 
-W tym artykule omówiono procedurę migrowania z starszego procesora nośnika Azure Media Encoder (AZWA), który jest wycofywany z dniem 1 marca 2020 do procesora multimediów Media Encoder Standard.  
+W tym artykule omówiono procedurę migrowania z starszego procesora nośnika Azure Media Encoder (AZWA), który jest wycofywany z 31 marca 2020 do Media Encoder Standard procesora multimediów.  
 
 Podczas kodowania plików o nazwie AZWA klienci zazwyczaj używają nazwanego ciągu wstępnie zdefiniowanego, takiego jak `H264 Adaptive Bitrate MP4 Set 1080p`. Aby przeprowadzić migrację, należy zaktualizować kod, aby używał **Media Encoder Standard** procesora multimediów zamiast azwa i jednego z odpowiedników [ustawień systemowych](media-services-mes-presets-overview.md) , takich jak `H264 Multiple Bitrate 1080p`. 
 
@@ -67,7 +67,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 Jeśli utworzono własne ustawienie wstępne kodowania dla opcji AZWA przy użyciu schematu, istnieje [odpowiedni schemat dla Media Encoder Standard](media-services-mes-schema.md). Jeśli masz pytania dotyczące sposobu mapowania starszych ustawień do nowego kodera, skontaktuj się z nami za pośrednictwem mailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Znane różnice 
 
-Media Encoder Standard jest bardziej niezawodna, niezawodna, ma lepszą wydajność i produkuje lepsze dane wyjściowe niż w przypadku starszego kodera AZWA. Ponadto: 
+Media Encoder Standard jest bardziej niezawodna, niezawodna, ma lepszą wydajność i produkuje lepsze dane wyjściowe niż w przypadku starszego kodera AZWA. Dodatkowo: 
 
 * Media Encoder Standard tworzy pliki wyjściowe z inną konwencją nazewnictwa niż AZWA.
 * Media Encoder Standard tworzy artefakty, takie jak pliki zawierające [metadane plików wejściowych](media-services-input-metadata-schema.md) i [metadane plików wyjściowych](media-services-output-metadata-schema.md).

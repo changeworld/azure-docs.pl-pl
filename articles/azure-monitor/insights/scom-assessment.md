@@ -4,15 +4,15 @@ description: Możesz użyć rozwiązania System Center Operations Manager Health
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 33aa246e21b54aebaa902304ff92d4b74bfaac4b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402865"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska przy użyciu rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -32,9 +32,9 @@ Po dodaniu rozwiązania i wykonaniu oceny informacje podsumowujące dotyczące o
 
 ![Pulpit nawigacyjny System Center Operations Manager Health Check](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
-## <a name="installing-and-configuring-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
+## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 
-Rozwiązanie współpracuje z programem Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager i Microsoft System Centrum Operations Manager 1807
+Rozwiązanie współpracuje z programem Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager i Microsoft System Centrum Operations Manager 1807. Na każdym serwerze zarządzania musi być zainstalowana obsługiwana wersja programu .NET Framework 4.6.2.
 
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
@@ -56,7 +56,7 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 Rozwiązanie System Center Operations Manager Health Check zbiera dane z następujących źródeł:
 
 * Rejestr
-* Instrumentacja zarządzania Windows (WMI)
+* Windows Management Instrumentation (WMI)
 * Dziennik zdarzeń
 * Dane pliku
 * Bezpośrednio z Operations Manager przy użyciu programu PowerShell i zapytań SQL, z serwera zarządzania, który został określony.  
@@ -148,7 +148,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 Pakiet administracyjny rozwiązania System Center Operations Manager Health Check zawiera regułę o nazwie *Uruchom test kondycji programu Microsoft System Center Operations Manager*. Ta reguła jest odpowiedzialna za uruchamianie kontroli kondycji. Aby włączyć regułę i skonfigurować częstotliwość, Użyj poniższych procedur.
 
-Domyślnie reguła sprawdzania kondycji programu Microsoft System Center Operations Manager jest wyłączona. Aby uruchomić kontrolę kondycji, należy włączyć regułę na serwerze zarządzania programu. Wykonaj poniższe kroki.
+Domyślnie reguła sprawdzania kondycji programu Microsoft System Center Operations Manager jest wyłączona. Aby uruchomić kontrolę kondycji, należy włączyć regułę na serwerze zarządzania programu. Skorzystaj z poniższych instrukcji.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Włączanie reguły dla określonego serwera zarządzania
 
@@ -273,7 +273,7 @@ Jeśli masz zalecenia, które chcesz zignorować, możesz utworzyć plik tekstow
 
 *Jeśli po dodaniu rozwiązania System Center Operations Manager Health Check zostanie odnaleziony inny serwer, zostanie on sprawdzony?* Tak, po przeprowadzeniu odnajdywania jest ono domyślnie zaznaczone co siedem dni.
 
-*Jaka jest nazwa procesu, który wykonuje zbieranie danych?* AdvisorAssessment. exe
+*Jaka jest nazwa procesu, który wykonuje zbieranie danych?* AdvisorAssessment.exe
 
 *Gdzie działa proces AdvisorAssessment. exe?* AdvisorAssessment. exe jest uruchamiany w ramach procesu HealthService serwera zarządzania, na którym włączono regułę sprawdzania kondycji. Korzystając z tego procesu, odnajdywanie całego środowiska jest realizowane za pośrednictwem zdalnego zbierania danych.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4c53d1c1ffbc80e694a9a7b423b2aaf9c6d38b48
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5f69bcafbc3abb39b4185e0144ff6029808c0704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914377"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432975"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Żądanie danych w czasie rzeczywistym przy użyciu usługi mobilności Azure Maps
 
@@ -29,7 +29,8 @@ W tym artykule dowiesz się, jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać wywołania do Azure Maps interfejsów API tranzytu publicznego, potrzebne jest konto i klucz mapy. Aby uzyskać informacje na temat tworzenia konta, postępuj zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby pobrać podstawowy klucz subskrypcji dla konta.
+Aby wykonać wywołania do Azure Maps interfejsów API tranzytu publicznego, potrzebne jest konto i klucz mapy. Aby uzyskać informacje na temat tworzenia konta i uzyskiwania klucza, postępuj zgodnie z instrukcjami podanymi w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) w celu utworzenia subskrypcji konta Azure Maps i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) w celu pobrania klucza podstawowego dla konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
+
 
 W tym artykule jest wykorzystywana [aplikacja Poster](https://www.getpostman.com/apps) do kompilowania wywołań REST. Możesz użyć dowolnego preferowanego środowiska deweloperskiego interfejsu API.
 
@@ -129,7 +130,7 @@ Aby można było wysłać żądanie do interfejsu API uzyskiwania informacji o D
 
 Aby uzyskać **dockID**, wykonaj poniższe kroki, aby wysłać żądanie do interfejsu API uzyskiwania bliskiej tranzytu:
 
-1. W programie Poster kliknij pozycję **nowe żądanie** | **Pobierz żądanie** , a następnie nadaj jej nazwę **Identyfikator dokowania**.
+1. W programie Poster kliknij pozycję **nowe żądanie** , | **Pobierz żądanie** i nadaj mu nazwę **Identyfikator dokowania**.
 
 2.  Na karcie Konstruktor wybierz metodę **Get** http, wprowadź następujący adres URL żądania, a następnie kliknij przycisk **Wyślij**.
  

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847870"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560260"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -129,11 +129,13 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
      Wynik powinien zawierać **stan** "uruchomiona".
 
 1. Zarejestruj serwer proxy.
-   * Po wykonaniu kroku 3 usługa serwera proxy jest uruchomiona na komputerze. Jednak usługa nie ma jeszcze wymaganych poświadczeń do komunikowania się z usługą Azure AD. Wymagana jest rejestracja w usłudze Azure AD:
+   * Po wykonaniu kroku 3 Usługa proxy jest uruchomiona na komputerze, ale nie ma jeszcze wymaganych poświadczeń do komunikowania się z usługą Azure AD. Wymagana jest rejestracja w usłudze Azure AD:
 
      `Register-AzureADPasswordProtectionProxy`
 
-     To polecenie cmdlet wymaga poświadczeń administratora globalnego dla dzierżawy platformy Azure. Wymagane są również lokalne Active Directory uprawnienia administratora domeny w domenie głównej lasu. Po jednokrotnym pomyślnym wykonaniu tego polecenia dla usługi serwera proxy dodatkowe wywołania będą się kończyć powodzeniem, ale nie są potrzebne.
+     To polecenie cmdlet wymaga poświadczeń administratora globalnego dla dzierżawy platformy Azure. Wymagane są również lokalne Active Directory uprawnienia administratora domeny w domenie głównej lasu. To polecenie cmdlet należy również uruchomić przy użyciu konta z uprawnieniami administratora lokalnego.
+
+     Po jednokrotnym pomyślnym wykonaniu tego polecenia dla usługi serwera proxy dodatkowe wywołania będą się kończyć powodzeniem, ale nie są potrzebne.
 
       `Register-AzureADPasswordProtectionProxy` polecenie cmdlet obsługuje następujące trzy tryby uwierzytelniania. Pierwsze dwa tryby obsługują platformę Azure Multi-Factor Authentication, ale trzeci tryb nie jest. Aby uzyskać więcej informacji, zobacz komentarze poniżej.
 
@@ -177,7 +179,9 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
    > Podczas pierwszego uruchomienia tego polecenia cmdlet dla określonej dzierżawy platformy Azure może wystąpić zauważalne opóźnienie. O ile nie zgłoszono błędu, nie martw się o to opóźnienie.
 
 1. Zarejestruj Las.
-   * Aby komunikować się z platformą Azure przy użyciu polecenia cmdlet programu PowerShell `Register-AzureADPasswordProtectionForest`, należy zainicjować Las Active Directory lokalnego z poświadczeniami niezbędnymi. Polecenie cmdlet wymaga poświadczeń administratora globalnego dla dzierżawy platformy Azure. Wymaga również lokalnego Active Directory uprawnień administratora przedsiębiorstwa. Ten krok jest uruchamiany raz na las.
+   * Aby komunikować się z platformą Azure przy użyciu polecenia cmdlet programu PowerShell `Register-AzureADPasswordProtectionForest`, należy zainicjować Las Active Directory lokalnego z poświadczeniami niezbędnymi.
+
+      Polecenie cmdlet wymaga poświadczeń administratora globalnego dla dzierżawy platformy Azure.  To polecenie cmdlet należy również uruchomić przy użyciu konta z uprawnieniami administratora lokalnego. Wymaga również lokalnego Active Directory uprawnień administratora przedsiębiorstwa. Ten krok jest uruchamiany raz na las.
 
       `Register-AzureADPasswordProtectionForest` polecenie cmdlet obsługuje następujące trzy tryby uwierzytelniania. Pierwsze dwa tryby obsługują platformę Azure Multi-Factor Authentication, ale trzeci tryb nie jest. Aby uzyskać więcej informacji, zobacz komentarze poniżej.
 
@@ -302,7 +306,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
 
    Usługę agenta DC można zainstalować na komputerze, który nie jest jeszcze kontrolerem domeny. W takim przypadku usługa zostanie uruchomiona i uruchomiona, ale pozostanie nieaktywna, dopóki komputer nie zostanie podwyższony do poziomu kontrolera domeny.
 
-   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Na przykład:
+   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Przykład:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 

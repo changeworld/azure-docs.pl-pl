@@ -6,24 +6,24 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 11ff310dae3c4733283d965a518df42a0711ce01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256265"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416040"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Konfiguracja DNS klastra Avere
 
-W tej sekcji objaśniono podstawowe informacje dotyczące konfigurowania systemu DNS na potrzeby równoważenia obciążenia klastra avere vFXT. 
+W tej sekcji objaśniono podstawowe informacje dotyczące konfigurowania systemu DNS na potrzeby równoważenia obciążenia klastra avere vFXT.
 
-Ten dokument nie *zawiera* instrukcji dotyczących KONFIGUROWANIA serwera DNS i zarządzania nim w środowisku platformy Azure. 
+Ten dokument nie *zawiera* instrukcji dotyczących KONFIGUROWANIA serwera DNS i zarządzania nim w środowisku platformy Azure.
 
-Zamiast korzystać z usługi DNS w trybie okrężnym do równoważenia obciążenia klastra vFXT na platformie Azure, należy rozważyć użycie metod ręcznych w celu przypisywania adresów IP nawet wśród klientów po ich zainstalowaniu. Kilka metod opisano w temacie [Instalowanie klastra avere](avere-vfxt-mount-clients.md). 
+Zamiast korzystać z usługi DNS w trybie okrężnym do równoważenia obciążenia klastra vFXT na platformie Azure, należy rozważyć użycie metod ręcznych w celu przypisywania adresów IP nawet wśród klientów po ich zainstalowaniu. Kilka metod opisano w temacie [Instalowanie klastra avere](avere-vfxt-mount-clients.md).
 
-Należy pamiętać o tym, czy należy używać serwera DNS: 
+Należy pamiętać o tym, czy należy używać serwera DNS:
 
-* Jeśli system jest dostępny tylko dla klientów NFS, korzystanie z systemu DNS nie jest wymagane — można określić wszystkie adresy sieciowe przy użyciu liczbowych adresów IP. 
+* Jeśli system jest dostępny tylko dla klientów NFS, korzystanie z systemu DNS nie jest wymagane — można określić wszystkie adresy sieciowe przy użyciu liczbowych adresów IP.
 
 * Jeśli system obsługuje dostęp do protokołu SMB (CIFS), wymagany jest system DNS, ponieważ należy określić domenę DNS dla serwera Active Directory.
 
@@ -41,12 +41,12 @@ W celu uzyskania optymalnej wydajności Skonfiguruj serwer DNS, aby obsługiwał
 
 Vserver klastra jest pokazywany po lewej stronie, a adresy IP są wyświetlane w centrum i po prawej stronie. Skonfiguruj każdy punkt dostępu klienta zawierający rekordy i wskaźniki, jak pokazano.
 
-![diagram DNS działania okrężnego klastra avere](media/avere-vfxt-rrdns-diagram.png) 
+![diagram DNS działania okrężnego klastra avere](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Każdy adres IP skierowany na klienta musi mieć unikatową nazwę do użytku wewnętrznego w klastrze. (Na tym diagramie adresy IP klientów mają nazwę VS1-Client-IP-* dla jasności, ale w środowisku produkcyjnym należy raczej używać czegoś bardziej zwięzłego, takiego jak klient *).
 
-Klienci instalują klaster przy użyciu nazwy vserver jako argumentu serwera. 
+Klienci instalują klaster przy użyciu nazwy vserver jako argumentu serwera.
 
 Zmodyfikuj plik ``named.conf`` serwera DNS, aby ustawić kolejność cykliczną zapytań do vserver. Ta opcja zapewnia, że wszystkie dostępne wartości są przetwarzane przez. Dodaj następującą instrukcję:
 
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-Następujące polecenia nsupdate umożliwiają poprawne skonfigurowanie usługi DNS:
+Następujące polecenia ``nsupdate`` umożliwiają poprawne skonfigurowanie usługi DNS:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -81,5 +81,3 @@ Określ serwer DNS, którego używa klaster vFXT na stronie ustawień **sieci ad
 * Domeny wyszukiwania DNS
 
 Aby uzyskać więcej informacji na temat korzystania z tej strony, Przeczytaj [Ustawienia DNS](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) w przewodniku konfigurowania klastra avere.
-
-

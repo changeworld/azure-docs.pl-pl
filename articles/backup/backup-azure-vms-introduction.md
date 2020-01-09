@@ -3,12 +3,12 @@ title: Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 description: W tym artykule dowiesz się, jak usługa Azure Backup wykonuje kopie zapasowe maszyn wirtualnych platformy Azure oraz jak postępować zgodnie z najlepszymi rozwiązaniami.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391898"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Omówienie kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -102,14 +102,13 @@ Te typowe scenariusze mogą mieć wpływ na łączny czas wykonywania kopii zapa
 - Zmiany **dysku:** W przypadku dysków chronionych, które przechodzą przyrostową kopię zapasową, można wykonać codzienne zmiany o ponad 200 GB, a wykonywanie kopii zapasowej może trwać długo (więcej niż osiem godzin).
 - **Wersje kopii zapasowej:** Najnowsza wersja kopii zapasowej (znana jako wersja natychmiastowego przywracania) używa bardziej zoptymalizowanego procesu niż porównanie sum kontrolnych w celu identyfikowania zmian. Ale jeśli używasz natychmiastowego przywracania i usunięto migawkę kopii zapasowej, kopia zapasowa przełączy się do porównania sum kontrolnych. W takim przypadku operacja tworzenia kopii zapasowej będzie przekroczyć 24 godziny (lub zakończyć się niepowodzeniem).
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 Podczas konfigurowania kopii zapasowych maszyn wirtualnych Sugerujemy następujące rozwiązania:
 
 - Zmodyfikuj domyślne czasy harmonogramu, które są ustawiane w ramach zasad. Na przykład jeśli domyślny czas w zasadach wynosi 12:00, Zwiększ czas trwania o kilka minut, aby zasoby były optymalnie używane.
 - Jeśli przywracasz maszyny wirtualne z jednego magazynu, zdecydowanie zalecamy użycie różnych [kont magazynu ogólnego przeznaczenia w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) , aby upewnić się, że docelowe konto magazynu nie zostanie ograniczone. Na przykład każda maszyna wirtualna musi mieć inne konto magazynu. Na przykład jeśli zostaną przywrócone 10 maszyn wirtualnych, użyj 10 różnych kont magazynu.
 - W przypadku tworzenia kopii zapasowych maszyn wirtualnych korzystających z usługi Premium Storage z natychmiastowym przywróceniem zaleca się alokowanie *50%* wolnego miejsca w łącznym przydzielonym miejscu do magazynowania, które jest wymagane **tylko** dla pierwszej kopii zapasowej. Ilość wolnego miejsca na 50% nie jest wymagana w przypadku kopii zapasowych po wykonaniu pierwszej kopii zapasowej
-- Przywracanie z warstwy magazynowania ogólnego przeznaczenia V1 (migawka) zostanie ukończone w ciągu kilku minut, ponieważ migawka znajduje się na tym samym koncie magazynu. Przywrócenie z warstwy magazynu ogólnego przeznaczenia w wersji 2 (magazyn) może zająć kilka godzin. W przypadkach, gdy dane są dostępne w magazynie ogólnego przeznaczenia w wersji 1, zalecamy użycie funkcji [natychmiastowego przywracania](backup-instant-restore-capability.md) , aby przyspieszyć przywracanie. (Jeśli dane muszą zostać przywrócone z magazynu, zajmie więcej czasu).
 - Limit liczby dysków na konto magazynu jest określany względem tego, w jakim stopniu uzyskuje się dostęp do dysków przez aplikacje działające na maszynie wirtualnej infrastruktura jako usługa (IaaS). Ogólnie rzecz biorąc, jeśli na jednym koncie magazynu znajdują się od 5 do 10 dysków lub więcej, należy zrównoważyć obciążenie przez przeniesienie niektórych dysków do oddzielnych kont magazynu.
 
 ## <a name="backup-costs"></a>Koszty kopii zapasowych
@@ -124,14 +123,14 @@ Obliczanie rozmiaru chronionego wystąpienia jest zależne od *rzeczywistego* ro
 
 Podobnie opłata za magazyn kopii zapasowych zależy od ilości danych przechowywanych w Azure Backup, która jest sumą rzeczywistych danych w poszczególnych punktach odzyskiwania.
 
-Na przykład należy utworzyć maszynę wirtualną o rozmiarze a2, która ma dwa dodatkowe dyski z danymi o maksymalnym rozmiarze wynoszącym 4 TB. W poniższej tabeli przedstawiono rzeczywiste dane przechowywane na każdym z tych dysków:
+Załóżmy na przykład, że maszyna wirtualna o rozmiarze a2 ma dwa dodatkowe dyski z danymi o maksymalnym rozmiarze 32 TB. W poniższej tabeli przedstawiono rzeczywiste dane przechowywane na każdym z tych dysków:
 
 **Dysk** | **Maksymalny rozmiar** | **Rzeczywiste dane obecne**
 --- | --- | ---
-Dysk systemu operacyjnego | 4095 GB | 17 GB
+Dysk systemu operacyjnego | 32 TB | 17 GB
 Dysk lokalny/tymczasowy | 135 GB | 5 GB (nie uwzględniono w kopii zapasowej)
-Dysk danych 1 | 4095 GB | 30 GB
-Dysk danych 2 | 4095 GB | 0 GB
+Dysk danych 1 | 32 TB| 30 GB
+Dysk danych 2 | 32 TB | 0 GB
 
 Rzeczywistą wielkością maszyny wirtualnej w tym przypadku jest 17 GB + 30 GB + 0 GB = 47 GB. Ten rozmiar chronionego wystąpienia (47 GB) stanowi podstawę dla rachunku miesięcznego. Wraz ze wzrostem ilości danych w maszynie wirtualnej rozmiar chronionego wystąpienia używany do zmiany rozliczeń jest zgodny.
 

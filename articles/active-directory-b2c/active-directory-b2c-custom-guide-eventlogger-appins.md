@@ -1,7 +1,7 @@
 ---
 title: Śledzenie zachowania użytkowników przy użyciu Application Insights
 titleSuffix: Azure AD B2C
-description: Dowiedz się, jak włączyć dzienniki zdarzeń w Application Insights z Azure AD B2C użytkowników przy użyciu zasad niestandardowych (wersja zapoznawcza).
+description: Dowiedz się, jak włączyć dzienniki zdarzeń w Application Insights z Azure AD B2C użytkowników przy użyciu zasad niestandardowych.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8376deecb5e184c01b41495b868b57bd8fd745d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367964"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Śledzenie zachowania użytkowników w Azure Active Directory B2C przy użyciu Application Insights
 
@@ -33,7 +33,7 @@ W przypadku korzystania z Azure Active Directory B2C (Azure AD B2C) razem z usł
 
 Platforma obsługi tożsamości w Azure AD B2C obejmuje `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`dostawcy. Dane zdarzenia są wysyłane bezpośrednio do Application Insights przy użyciu klucza Instrumentacji dostarczonego do Azure AD B2C.
 
-Profil techniczny używa tego dostawcy do definiowania zdarzenia z Azure AD B2C. Profil określa nazwę zdarzenia, rejestrowane oświadczenia oraz klucz Instrumentacji. W celu opublikowania zdarzenia profil techniczny zostanie następnie dodany jako `orchestration step`lub jako `validation technical profile` w przypadku niestandardowej podróży użytkownika.
+Profil techniczny używa tego dostawcy do definiowania zdarzenia z Azure AD B2C. Profil określa nazwę zdarzenia, rejestrowane oświadczenia oraz klucz Instrumentacji. W celu opublikowania zdarzenia profil techniczny zostanie następnie dodany jako `orchestration step` w trakcie niestandardowej podróży użytkownika.
 
 Application Insights może ujednolicić zdarzenia, używając identyfikatora korelacji do rejestrowania sesji użytkownika. Application Insights powoduje, że zdarzenie i sesja są dostępne w ciągu kilku sekund i prezentuje wiele narzędzi do wizualizacji, eksportowania i analitycznych.
 

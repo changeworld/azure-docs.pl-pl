@@ -1,6 +1,6 @@
 ---
-title: Tworzenie nowego raportu z zestawu danych w kolekcji obszarów roboczych usługi Power BI | Dokumentacja firmy Microsoft
-description: Teraz można tworzyć raporty usługi Power BI kolekcji obszarów roboczych z zestawu danych w swojej aplikacji.
+title: Tworzenie raportu z kolekcji obszarów roboczych Power BI
+description: Raporty kolekcji obszarów roboczych Power BI można teraz tworzyć z zestawu danych w aplikacji.
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
 author: rkarlin
@@ -8,33 +8,33 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 2034c62a17b71b92b43a7afd794c2c172288d58c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: bcc6044d0f0f5270f81a619e4d1ad71ea35cc170
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672445"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427053"
 ---
-# <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Tworzenie nowego raportu z zestawu danych w kolekcji obszarów roboczych usługi Power BI
+# <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Tworzenie nowego raportu z zestawu danych w Power BI kolekcje obszarów roboczych
 
-Teraz można tworzyć raporty usługi Power BI kolekcji obszarów roboczych z zestawu danych w swojej aplikacji.
+Raporty kolekcji obszarów roboczych Power BI można teraz tworzyć z zestawu danych w aplikacji.
 
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-Metoda uwierzytelniania jest podobny do osadzania raportu. Jest ona oparta na tokeny dostępu, które są specyficzne dla zestawu danych. Tokeny używane dla witryny PowerBI.com są wydawane przez usługę Azure Active Directory (AAD). Tokeny kolekcji obszarów roboczych usługi Power BI zasilania są wydawane przez własną aplikację.
+Metoda uwierzytelniania jest podobna do osadzania raportu. Jest on oparty na tokenach dostępu, które są specyficzne dla zestawu danych. Tokeny używane na potrzeby PowerBI.com są wystawiane przez Azure Active Directory (AAD). Tokeny kolekcji obszarów roboczych Power BI są wystawiane przez własną aplikację.
 
-Podczas tworzenia raportu osadzone tokeny wystawione dotyczą konkretnego zestawu danych. Tokeny powinna być skojarzona z adres URL osadzania w tym samym elemencie, aby upewnić się, że każde z nich ma unikatowy token. Aby utworzyć raport osadzone *Dataset.Read i Workspace.Report.Create* zakresy musi być podana w tokenie dostępu.
+W przypadku tworzenia osadzonego raportu tokeny wystawione dotyczą określonego zestawu danych. Tokeny powinny być skojarzone z adresem URL osadzania w tym samym elemencie, aby upewnić się, że każdy z nich ma unikatowy token. Aby można było utworzyć osadzony raport, należy podać w tokenie dostępu *zestaw zakresów DataSet. Read i Workspace. Create* .
 
-## <a name="create-access-token-needed-to-create-new-report"></a>Tworzenie tokenu dostępu wymagane do utworzenia nowego raportu
+## <a name="create-access-token-needed-to-create-new-report"></a>Utwórz token dostępu wymagany do utworzenia nowego raportu
 
-Kolekcje obszarów roboczych usługi Power BI Użyj osadzania tokenu, który jest HMAC podpisany tokenów sieci Web JSON. Tokeny są podpisane za pomocą klucza dostępu z kolekcji obszarów roboczych usługi Power BI. Osadzonych tokenów, domyślnie, są używane w celu zapewnienia dostępu tylko do odczytu do raportów w celu osadzenia w aplikacji. Osadzanie tokeny wystawione dla konkretnego raportu i powinny być skojarzone z adresem URL osadzania.
+Power BI kolekcje obszarów roboczych używają tokenu osadzania, który jest tokenami sieci Web JSON podpisanymi przez HMAC. Tokeny są podpisane przy użyciu klucza dostępu z kolekcji obszarów roboczych Power BI. Domyślnie tokeny osadzania są używane do zapewnienia dostępu tylko do odczytu do raportu w celu osadzenia w aplikacji. Tokeny osadzania są wystawiane dla określonego raportu i powinny być skojarzone z adresem URL osadzania.
 
-Tokeny dostępu należy utworzyć na serwerze, klucze dostępu są używane do logowania/szyfrowanie tokenów. Aby uzyskać informacje na temat tworzenia tokenu dostępu, zobacz [uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI](app-token-flow.md). Możesz również przejrzeć [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody. Oto przykład to będzie wyglądać podobnie jak przy użyciu zestawu SDK .NET dla usługi Power BI.
+Tokeny dostępu należy tworzyć na serwerze, ponieważ klucze dostępu są używane do podpisywania/szyfrowania tokenów. Aby uzyskać informacje na temat sposobu tworzenia tokenu dostępu, zobacz [uwierzytelnianie i autoryzacja przy użyciu kolekcji obszarów roboczych Power BI](app-token-flow.md). Możesz również przejrzeć metodę [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) . Oto przykład tego, jak będzie wyglądać tak jak w przypadku Power BI.
 
-W tym przykładzie mamy nasz identyfikator zestawu danych, które chcemy utworzyć nowy raport na. Należy również dodać zakresy dla *Dataset.Read i Workspace.Report.Create*.
+W tym przykładzie mamy identyfikator zestawu danych, dla którego chcemy utworzyć nowy raport. Konieczne jest również dodanie zakresów dla *elementu DataSet. Read i Workspace. Report. Create*.
 
-*Klasy PowerBIToken* wymaga zainstalowania [usługi Power BI Core NuGut pakietu](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+*Klasa PowerBIToken* wymaga zainstalowania [pakietu Power BI Core NuGut](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **Instalacja pakietu NuGet**
 
@@ -42,7 +42,7 @@ W tym przykładzie mamy nasz identyfikator zestawu danych, które chcemy utworzy
 Install-Package Microsoft.PowerBI.Core
 ```
 
-**Kod C#**
+**C#kodu**
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -54,12 +54,12 @@ PowerBIToken embedToken = PowerBIToken.CreateReportEmbedTokenForCreation(workspa
 var token = embedToken.Generate("{access key}");
 ```
 
-## <a name="create-a-new-blank-report"></a>Tworzenie nowego pustego raportu
+## <a name="create-a-new-blank-report"></a>Utwórz nowy pusty raport
 
-Aby utworzyć nowy raport, należy podać Utwórz konfigurację. Powinno to obejmować token dostępu i embedURL datasetID, który chcemy, aby utworzyć raport względem. Wymaga to, że instalujesz program nuget [pakietu usługi Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Po prostu będzie embedUrl https://embedded.powerbi.com/appTokenReportEmbed.
+Aby można było utworzyć nowy raport, należy podać konfigurację tworzenia. Powinno to obejmować token dostępu, embedURL i datasetID, dla których chcemy utworzyć raport. Wymaga to zainstalowania [pakietu nuget Power BI języka JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl będzie po prostu https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Możesz użyć [przykład osadzania raportu JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) w celu przetestowania funkcjonalności. Daje ona również przykłady kodu dla różnych operacji, które są dostępne.
+> W celu przetestowania funkcjonalności można użyć [przykładu Osadź raport JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) . Zawiera również przykłady kodu dla różnych dostępnych operacji.
 
 **Instalacja pakietu NuGet**
 
@@ -87,13 +87,13 @@ var embedCreateConfiguration = {
 </script>
 ```
 
-Wywoływanie *powerbi.createReport()* sprawia, że pojawiają się w pustej kanwy w trybie edycji *div* elementu.
+Wywołanie metody *PowerBI. GetReport ()* powoduje, że w trybie edycji pojawia się pusta Kanwa w obrębie elementu *DIV* .
 
 ![Nowy pusty raport](media/create-report-from-dataset/create-new-report.png)
 
 ## <a name="save-new-reports"></a>Zapisz nowe raporty
 
-Raport nie zostanie utworzony, dopóki nie zostanie wywołana **Zapisz jako** operacji. Można to zrobić z menu Plik lub JavaScript.
+Raport nie zostanie utworzony do momentu wywołania operacji **Zapisz jako** . Można to zrobić z menu plik lub JavaScript.
 
 ```javascript
  // Get a reference to the embedded report.
@@ -108,13 +108,13 @@ Raport nie zostanie utworzony, dopóki nie zostanie wywołana **Zapisz jako** op
 ```
 
 > [!IMPORTANT]
-> Nowy raport jest tworzony dopiero po **Zapisz jako** jest wywoływana. Po zapisaniu, obszar roboczy w dalszym ciągu będzie zestawu danych w trybie edycji i nie raportu. Należy ponownie załadować nowy raport, tak jak w przypadku dowolnego innego raportu.
+> Nowy raport jest tworzony dopiero po wywołaniu metody **Save as** . Po zapisaniu Kanwa nadal będzie wyświetlać zestaw danych w trybie edycji, a nie raport. Należy ponownie załadować nowy raport, taki jak każdy inny raport.
 
-![Menu — Zapisz plik jako](media/create-report-from-dataset/save-new-report.png)
+![Menu plik — Zapisz jako](media/create-report-from-dataset/save-new-report.png)
 
 ## <a name="load-the-new-report"></a>Załaduj nowy raport
 
-W celu interakcji z nowy raport, który należy ją osadzić w taki sam sposób, w aplikacji osadza zwykłego raportu, co oznacza, nowego tokenu musi zostać wystawiony dla nowego raportu, a następnie wywołaj metodę osadzania.
+Aby można było korzystać z nowego raportu, należy go osadzić w taki sam sposób, w jaki aplikacja domyślnie osadza raport zwykły, co oznacza, że nowy token musi zostać wystawiony dla nowego raportu, a następnie wywołać metodę osadzania.
 
 ```html
 <div id="reportContainer"></div>
@@ -133,9 +133,9 @@ var embedConfiguration = {
 </script>
 ```
 
-## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Nie można załadować nowy raport za pomocą "zapisane" zdarzenia i zautomatyzować Zapisz
+## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Automatyzowanie zapisywania i ładowania nowego raportu przy użyciu zdarzenia "zapisane"
 
-Aby zautomatyzować proces "Zapisz jako" i następnie ładowania nowy raport, można skorzystać "zapisane" zdarzenia. To zdarzenie jest wywoływane podczas zapisywania operacja została zakończona i zwraca obiektem Json zawierającym nowe reportId, nazwę raportu, stare reportId (jeśli jest to była jedna) i jeśli operacja zakończyła się zapisywanie jako lub zapisać.
+Aby zautomatyzować proces operacji "Zapisz jako", a następnie załadować nowy raport, możesz użyć zdarzenia "zapisane". To zdarzenie jest wywoływane, gdy operacja zapisywania zostanie ukończona i zwraca obiekt JSON zawierający nową identyfikatorem ReportID, nazwę raportu, stary identyfikatorem ReportID (jeśli taki istnieje) i jeśli operacja została zapisana lub zapisywana.
 
 ```json
 {
@@ -146,7 +146,7 @@ Aby zautomatyzować proces "Zapisz jako" i następnie ładowania nowy raport, mo
 }
 ```
 
-Aby zautomatyzować proces może nasłuchiwać zdarzeń "zapisane", podjąć nowe reportId, Utwórz nowy token i osadzić nowy raport z nim.
+Aby zautomatyzować proces, można nasłuchiwać "zapisanego" zdarzenia, pobrać nowe identyfikatorem ReportID, utworzyć nowy token i osadzić w nim nowy raport.
 
 ```html
 <div id="reportContainer"></div>
@@ -204,7 +204,7 @@ var embedCreateConfiguration = {
 [Authenticating and authorizing with Power BI Workspace Collections (Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI)](app-token-flow.md)  
 [Program Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [Przykład osadzania skryptu JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[Usługa Power BI Core NuGut pakietu](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
-[Usługa Power BI JavaScript pakietu](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
+[Power BI podstawowy pakiet NuGut](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
+[Power BI pakiet JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
 Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](https://community.powerbi.com/)

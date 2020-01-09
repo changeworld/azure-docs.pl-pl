@@ -1,6 +1,6 @@
 ---
 title: Informacje o schemacie i wyrażeniach niestandardowych usługi Azure AD
-description: W tym temacie opisano schemat usługi Azure AD, atrybuty, które są przesyłane przez agenta aprowizacji i wyrażenia niestandardowe.
+description: W tym artykule opisano schemat usługi Azure AD, atrybuty obsługiwane przez agenta aprowizacji i wyrażenia niestandardowe.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,34 +15,34 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eae594bcc20e3c4ed1c6fbd0333699de8c9f4452
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5fc68626959daaccb5ddc05ce6148c5948052d41
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794499"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549384"
 ---
-# <a name="understanding-the-azure-ad-schema"></a>Informacje o schemacie usługi Azure AD
-Obiekt w usłudze Azure AD, podobnie jak każdy katalog, to programowa konstrukcja danych wysokiego poziomu, która reprezentuje takie elementy jak użytkownicy, grupy i kontakty.  Gdy tworzysz nowego użytkownika lub kontakt w usłudze Azure AD, tworzysz nowe wystąpienie tego obiektu.  Te wystąpienia można rozróżnić w zależności od ich właściwości.
+# <a name="understand-the-azure-ad-schema"></a>Informacje o schemacie usługi Azure AD
+Obiekt w Azure Active Directory (Azure AD), podobnie jak każdy katalog, to programowa konstrukcja danych wysokiego poziomu, która reprezentuje takie elementy jak użytkownicy, grupy i kontakty. Gdy tworzysz nowego użytkownika lub kontakt w usłudze Azure AD, tworzysz nowe wystąpienie tego obiektu. Te wystąpienia można rozróżnić w zależności od ich właściwości.
 
-Właściwości w usłudze Azure AD to elementy odpowiedzialne za przechowywanie informacji o wystąpieniu obiektu w usłudze Azure AD.  
+Właściwości w usłudze Azure AD to elementy odpowiedzialne za przechowywanie informacji o wystąpieniu obiektu w usłudze Azure AD.
 
 Schemat usługi Azure AD definiuje reguły, dla których właściwości mogą być używane w danym wpisie, rodzaje wartości, które mogą mieć te właściwości, oraz sposób, w jaki użytkownicy mogą współdziałać z tymi wartościami. 
 
-Usługa Azure AD ma dwa typy właściwości.  Właściwości są następujące:
-- **Wbudowane właściwości** — właściwości, które są wstępnie zdefiniowane przez schemat usługi Azure AD.  Te właściwości zapewniają różne zastosowania i mogą być niedostępne.
-- **Rozszerzenia katalogów** — właściwości, które są udostępniane, aby można było dostosować usługę Azure AD do własnych potrzeb.  Na przykład jeśli rozszerzono Active Directory lokalne z określonym atrybutem i chcesz przepływać ten atrybut, możesz użyć jednej z podanych właściwości niestandardowych. 
+Usługa Azure AD ma dwa typy właściwości:
+- **Wbudowane właściwości**: właściwości, które są wstępnie zdefiniowane przez schemat usługi Azure AD. Te właściwości zapewniają różne zastosowania i mogą być niedostępne.
+- **Rozszerzenia katalogu**: właściwości, które są udostępniane, aby można było dostosować usługę Azure AD do własnych potrzeb. Na przykład jeśli rozszerzono Active Directory lokalne z określonym atrybutem i chcesz przepływać ten atrybut, możesz użyć jednej z podanych właściwości niestandardowych. 
 
 ## <a name="attributes-and-expressions"></a>Atrybuty i wyrażenia
-Gdy do usługi Azure AD jest inicjowany obiekt, taki jak użytkownik, zostanie utworzone nowe wystąpienie obiektu użytkownika.  To tworzenie obejmuje właściwości tego obiektu, które są również znane jako atrybuty.  Początkowo nowo utworzony obiekt będzie miał atrybuty ustawione na wartości, które są określone przez reguły synchronizacji.  Te atrybuty są następnie aktualne za pośrednictwem agenta aprowizacji w chmurze.
+Gdy obiekt taki jak użytkownik jest zainicjowany do usługi Azure AD, zostanie utworzone nowe wystąpienie obiektu użytkownika. To tworzenie obejmuje właściwości tego obiektu, które są również znane jako atrybuty. Początkowo nowo utworzony obiekt ma atrybuty ustawione na wartości, które są określone przez reguły synchronizacji. Te atrybuty są następnie aktualne za pośrednictwem agenta aprowizacji w chmurze.
 
-![](media/concept-attributes/attribute1.png)
+![Inicjowanie obsługi obiektów](media/concept-attributes/attribute1.png)
 
-Na przykład jeśli użytkownik jest częścią działu marketingu, jego atrybut działu usługi Azure AD będzie początkowo tworzony podczas aprowizacji, a następnie wartość zostanie ustawiona na marketing.  Jednak następnie sześć miesięcy później zmienią się na sprzedaż.  Atrybut lokalnego działu usługi AD został zmieniony na sprzedaż.  Ta zmiana zostanie następnie przesynchronizowana do usługi Azure AD i odzwierciedlona w obiekcie użytkownika usługi Azure AD.
+Na przykład użytkownik może być częścią działu marketingu. Atrybut działu usługi Azure AD jest początkowo tworzony, gdy są one inicjowane, a wartość jest ustawiana na marketing. Sześć miesięcy później, jeśli zmienią się na sprzedaż, atrybut działu Active Directory lokalnego został zmieniony na sprzedaż. Ta zmiana jest synchronizowana z usługą Azure AD i jest odzwierciedlana w obiekcie użytkownika usługi Azure AD.
 
-Synchronizacja atrybutów może być bezpośrednia, gdzie wartość w usłudze Azure AD jest ustawiona bezpośrednio na wartość atrybutu lokalnego.  Lub może istnieć wyrażenie programistyczne obsługujące tę synchronizację.  Konieczne jest wyrażenie programistyczne w przypadkach, gdy konieczne jest wykonanie pewnych logiki lub określenia w celu wypełnienia wartości.
+Synchronizacja atrybutów może być bezpośrednia, gdzie wartość w usłudze Azure AD jest ustawiona bezpośrednio na wartość atrybutu lokalnego. Lub wyrażenie programistyczne może obsłużyć synchronizację. Wyrażenie programowe jest wymagane w przypadkach, gdy konieczne jest wykonanie pewnych logiki lub określenia w celu wypełnienia wartości.
 
-Na przykład jeśli mam atrybut poczty ("john.smith@contoso.com") i potrzebuję części "@contoso.com" i przepływam tylko na wartość "Jan. Smith", można użyć podobnej do tego:
+Na przykład, jeśli masz atrybut mail "john.smith@contoso.com" i jest wymagany do rozdzielenia części "@contoso.com" i przeniesiesz tylko wartość "Jan. Smith", używasz podobnej do tego:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
@@ -51,29 +51,29 @@ Na przykład jeśli mam atrybut poczty ("john.smith@contoso.com") i potrzebuję 
 * **Dane wejściowe** (poczta): "john.smith@contoso.com"
 * **Dane wyjściowe**: "Jan. Kowalski"
 
-Aby uzyskać dodatkowe informacje na temat pisania wyrażeń niestandardowych i składni, zobacz [Pisanie wyrażeń do mapowania atrybutów w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
+Aby uzyskać więcej informacji na temat pisania wyrażeń niestandardowych i składni, zobacz [Pisanie wyrażeń pod kątem mapowań atrybutów w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
 
-Poniżej wymieniono typowe atrybuty i sposób ich synchronizacji z usługą Azure AD.
+W poniższej tabeli wymieniono typowe atrybuty i sposób ich synchronizacji z usługą Azure AD.
 
 
 |Lokalna usługa Active Directory|Typ mapowania|Azure AD|
 |-----|-----|-----|
-|CN|Direct|commonName
+|cn|Direct|commonName
 |countryCode|Direct|countryCode|
 |displayName|Direct|displayName|
 |givenName|Wyrażenie|givenName|
 |objectGUID|Direct|sourceAnchorBinary|  
 |userprincipalName|Direct|userPrincipalName|
-|ProxyAdress|Direct|proxyAddress|
+|ProxyAdress|Direct|ProxyAddress|
 
-## <a name="viewing-the-schema"></a>Wyświetlanie schematu
-Aby wyświetlić schemat i sprawdzić go, wykonaj następujące czynności:
+## <a name="view-the-schema"></a>Wyświetl schemat
+Aby wyświetlić schemat i sprawdzić go, wykonaj następujące kroki.
 
 1.  Przejdź do [Eksploratora grafów](https://developer.microsoft.com/graph/graph-explorer).
-2.  Zaloguj się przy użyciu konta administratora globalnego
-3.  Po lewej stronie kliknij pozycję **Modyfikuj uprawnienia** i upewnij się, że jest wyrażana zgoda na **katalog. ReadWrite. All** .
-4.  Uruchom następujące zapytanie: https://graph.microsoft.com/beta/serviceprincipals/.  To zapytanie zwróci listę jednostek usługi.
-5.  Znajdź "appDisplayName": "Active Directory do Azure Active Directory aprowizacji" i zanotuj wartość "ID:".
+1.  Zaloguj się przy użyciu konta administratora globalnego.
+1.  Po lewej stronie wybierz pozycję **Modyfikuj uprawnienia** i upewnij się, że jest *wyrażana zgoda*na **katalog. ReadWrite. All** .
+1.  Uruchom kwerendę https://graph.microsoft.com/beta/serviceprincipals/. To zapytanie zwraca listę jednostek usługi.
+1.  Znajdź `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` i zanotuj wartość `"id"`.
     ```
     "value": [
             {
@@ -146,8 +146,8 @@ Aby wyświetlić schemat i sprawdzić go, wykonaj następujące czynności:
                 "passwordCredentials": []
             },
     ```
-6. Zastąp wartość {Service Principal ID} wartością i uruchom następujące zapytanie: `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`
-7. Znajdź sekcję "ID": "AD2AADProvisioning. fd1c9b9e8077402c8bc03a7186c8f976" i zanotuj "ID:".
+1. Zastąp `{Service Principal id}` wartością i uruchom zapytanie `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`.
+1. Znajdź `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` i zanotuj wartość `"id"`.
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -238,16 +238,17 @@ Aby wyświetlić schemat i sprawdzić go, wykonaj następujące czynności:
                 ]
             }
     ```
-8. Teraz uruchom następujące zapytanie: `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`
+1. Teraz uruchom zapytanie `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`.
  
     Przykład: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
- Zastąp wartości {Service Principal ID} i {AD2ADD ID} wartościami.
+   Zastąp `{Service Principal Id}` i `{AD2ADD Provisioning Id}` wartościami.
 
-9. To zapytanie zwróci schemat.
-  ![](media/concept-attributes/schema1.png)
+1. To zapytanie zwraca schemat.
+
+   ![Zwrócony schemat](media/concept-attributes/schema1.png)
  
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Następne kroki
 
 - [Co to jest inicjowanie obsługi?](what-is-provisioning.md)
 - [Co to jest Azure AD Connect aprowizacji w chmurze?](what-is-cloud-provisioning.md)

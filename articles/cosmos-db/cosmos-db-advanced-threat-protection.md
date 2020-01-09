@@ -3,19 +3,19 @@ title: Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB
 description: Dowiedz się, jak Azure Cosmos DB zapewnia szyfrowanie danych w stanie spoczynku i sposób ich implementacji.
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555029"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445546"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB (wersja zapoznawcza)
 
 Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB stanowi dodatkową warstwę analizy zabezpieczeń, która wykrywa nietypowe i potencjalnie szkodliwe próby dostępu do kont Azure Cosmos DB lub korzystania z nich. Ta warstwa ochrony pozwala na rozwiązywanie zagrożeń, nawet bez biegłych zabezpieczeń, i integrowanie ich z centralnymi systemami monitorowania zabezpieczeń.
 
@@ -27,6 +27,14 @@ Alerty zabezpieczeń są wyzwalane, gdy wystąpią anomalie działania. Te alert
 > * Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB nie jest obecnie dostępna w regionach platformy Azure dla instytucji rządowych i suwerennych.
 
 W przypadku pełnego badania alertów zabezpieczeń zaleca się włączenie [rejestrowania diagnostycznego w Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging), które rejestruje operacje na samej bazie danych, w tym CRUD operacje na wszystkich dokumentach, kontenerach i bazach danych.
+
+## <a name="threat-types"></a>Typy zagrożeń
+
+Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB wykrywa anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania. Obecnie można wyzwolić następujące alerty:
+
+- **Dostęp z nietypowych lokalizacji**: ten alert jest wyzwalany w przypadku zmiany wzorca dostępu do konta usługi Azure Cosmos, w którym ktoś nawiązał połączenie z punktem końcowym Azure Cosmos DB z nietypowej lokalizacji geograficznej. W niektórych przypadkach alert wykrywa legalną akcję, co oznacza, że jest to nowa aplikacja lub operacja konserwacji dewelopera. W innych przypadkach alert wykrywa złośliwe działanie od byłego pracownika, ataku zewnętrznego itp.
+
+- **Nietypowa wyodrębnianie danych**: ten alert jest wyzwalany, gdy klient wyodrębnia nietypową ilość danych z konta Azure Cosmos DB. Może to być objaw niektórych eksfiltracji danych, które są wykonywane w celu przetransferowania wszystkich danych przechowywanych na koncie do zewnętrznego magazynu danych.
 
 ## <a name="set-up-advanced-threat-protection"></a>Skonfiguruj zaawansowaną ochronę przed zagrożeniami
 
@@ -41,7 +49,7 @@ W przypadku pełnego badania alertów zabezpieczeń zaleca się włączenie [rej
 3. W bloku **zaawansowanej konfiguracji zabezpieczeń** :
 
     * Kliknij opcję **zaawansowanej ochrony przed zagrożeniami** , aby ustawić ją **na wartość włączone**.
-    * Kliknij przycisk **Zapisz** , aby zapisać nowe lub zaktualizowane zasady zaawansowanej ochrony przed zagrożeniami.   
+    * Kliknij przycisk **Zapisz**, aby zapisać nowe lub zaktualizowane zasady usługi Advanced Threat Protection.   
 
 ### <a name="set-up-atp-using-rest-api"></a>Konfigurowanie usługi ATP przy użyciu interfejsu API REST
 
@@ -101,5 +109,5 @@ Powiadomienie e-mail jest również wysyłane z danymi alertów i zalecanymi akc
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [rejestrowaniu diagnostycznym w Azure Cosmos DB](monitor-cosmos-db.md#diagnostic-settings)
+* Dowiedz się więcej o [rejestrowaniu diagnostycznym w Azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
 * Dowiedz się więcej o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

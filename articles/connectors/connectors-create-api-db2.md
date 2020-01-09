@@ -1,22 +1,22 @@
 ---
-title: Nawiązywanie połączenia z programem IBM DB2
-description: Zarządzanie zasobami za pomocą interfejsów API REST programu IBM DB2 i Azure Logic Apps
+title: Dostęp do zasobów IBM DB2 i zarządzanie nimi
+description: Odczytuj, Edytuj, Aktualizuj i Zarządzaj zasobami programu IBM DB2 przez Tworzenie zautomatyzowanych przepływów pracy przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789903"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446178"
 ---
-# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Zarządzanie zasobami programu IBM DB2 przy użyciu Azure Logic Apps
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Dostęp do zasobów IBM DB2 i zarządzanie nimi przy użyciu Azure Logic Apps
 
-Za pomocą Azure Logic Apps i łącznika programu IBM DB2 można tworzyć automatyczne zadania i przepływy pracy oparte na zasobach przechowywanych w bazie danych programu DB2. Przepływy pracy mogą łączyć się z zasobami w bazie danych, czytać i wyświetlać tabele baz danych, dodawać wiersze, zmieniać wiersze, usuwać wiersze i nie tylko. Możesz uwzględnić akcje w aplikacjach logiki, które uzyskują odpowiedzi z bazy danych, i udostępnienia danych wyjściowych dla innych akcji.
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [łącznika programu IBM DB2](/connectors/db2/)można tworzyć automatyczne zadania i przepływy pracy oparte na zasobach przechowywanych w bazie danych programu DB2. Przepływy pracy mogą łączyć się z zasobami w bazie danych, czytać i wyświetlać tabele baz danych, dodawać wiersze, zmieniać wiersze, usuwać wiersze i nie tylko. Możesz uwzględnić akcje w aplikacjach logiki, które uzyskują odpowiedzi z bazy danych, i udostępnienia danych wyjściowych dla innych akcji.
 
 W tym artykule pokazano, jak utworzyć aplikację logiki, która wykonuje różne operacje bazy danych. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
@@ -39,12 +39,12 @@ W tym artykule pokazano, jak utworzyć aplikację logiki, która wykonuje różn
 
 | Operacja bazy danych | Akcja łącznika |
 |--------------------|------------------|
-| Wyświetl listę tabel bazy danych | Pobierz tabele |
+| Wyświetl listę tabel bazy danych | Pobieranie tabel |
 | Odczytaj jeden wiersz przy użyciu polecenia SELECT | Pobierz wiersz |
 | Czytaj wszystkie wiersze przy użyciu polecenia SELECT | Pobierz wiersze |
 | Dodaj jeden wiersz przy użyciu instrukcji INSERT | Wstaw wiersz |
 | Edytuj jeden wiersz przy użyciu aktualizacji | Aktualizuj wiersz |
-| Usuń jeden wiersz przy użyciu polecenia DELETE | Usuń wiersz |
+| Usuń jeden wiersz przy użyciu polecenia DELETE | Usuń rząd |
 |||
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -90,7 +90,7 @@ Aby skonfigurować połączenie, podaj te szczegóły połączenia po wyświetle
 | **Hasło** | Tak | Hasło do bazy danych |
 ||||
 
-Na przykład:
+Przykład:
 
 ![Szczegóły połączenia dla baz danych opartych na chmurze](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -112,7 +112,7 @@ Przed utworzeniem połączenia należy zainstalować lokalną bramę danych. W p
 | **Brama** | Tak | Nazwa zainstalowanej lokalnej bramy danych <p><p>**Uwaga**: Wybierz tę wartość z listy, która obejmuje wszystkie zainstalowane bramy danych w ramach subskrypcji i grupy zasobów platformy Azure. |
 ||||
 
-Na przykład:
+Przykład:
 
 ![Szczegóły połączenia dla lokalnych baz danych](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -239,7 +239,7 @@ Aby dodać pojedynczy rekord do tabeli bazy danych DB2, użyj akcji **Wstaw wier
    | **Identyfikator regionu** | Tak | Identyfikator regionu do dodania, na przykład "102" |
    |||| 
 
-   Na przykład:
+   Przykład:
 
    ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
@@ -287,7 +287,7 @@ Aby zaktualizować pojedynczy rekord w tabeli bazy danych DB2, użyj akcji **Akt
    | **Identyfikator regionu** | Tak | Nowy identyfikator regionu, taki jak "102" |
    ||||
 
-   Na przykład:
+   Przykład:
 
    ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
@@ -312,7 +312,7 @@ Rozwiń akcję **Aktualizuj wiersz** .
 
    ![Wyświetl dane wyjściowe ze zaktualizowanym wierszem](./media/connectors-create-api-db2/db2-connector-update-row-outputs.png)
 
-## <a name="delete-row"></a>Usuń wiersz
+## <a name="delete-row"></a>Usuń rząd
 
 Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj akcji **Usuń wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję `DELETE` bazy danych DB2, na przykład `DELETE FROM AREA WHERE AREAID = '99999'`.
 
@@ -332,7 +332,7 @@ Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj akcji **Usuń wie
    | **Identyfikator wiersza** | Tak | Identyfikator rekordu do usunięcia, na przykład "99999" |
    ||||
 
-   Na przykład:
+   Przykład:
 
    ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 

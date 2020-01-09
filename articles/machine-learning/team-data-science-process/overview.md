@@ -3,26 +3,26 @@ title: Co to jest zespołowe przetwarzanie danych dla celów naukowych?
 description: Udostępnia metodologia nauki o danych w celu dostarczania rozwiązań do analizy predykcyjnej i inteligentnych aplikacji.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/04/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429420"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665073"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co to jest zespołowe przetwarzanie danych dla celów naukowych?
 
-Proces do nauki o danych zespołu (TDSP) jest metodologia nauki o danych agile, iteracyjne wydajnie dostarczać rozwiązania do analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.
+Proces do nauki o danych zespołu (TDSP) jest metodologia nauki o danych agile, iteracyjne wydajnie dostarczać rozwiązania do analizy predykcyjnej i inteligentnych aplikacji. PRZETWARZANIA TDSP pomaga ulepszyć współpracę zespołową i uczenie się, sugerując, w jaki sposób role zespołu najlepiej współpracują ze sobą. PRZETWARZANIA TDSP zawiera najlepsze rozwiązania i struktury od firmy Microsoft i innych liderów branżowych, aby pomóc w pomyślnym wdrożeniu inicjatyw dotyczących analizy danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.
 
-Ten artykuł zawiera omówienie przetwarzania TDSP i jego głównych składnikach. Firma Microsoft zapewnia ogólny opis poniżej proces, którą można implementować przy użyciu różnych narzędzi. Bardziej szczegółowy opis zadania projektu oraz role zaangażowane w cyklu życia procesu jest dostępna w dodatkowych powiązanych tematach. Udostępniane są również wskazówki dotyczące implementowania przetwarzania TDSP korzystających z określonego zestawu narzędzi firmy Microsoft i infrastrukturą, używaną do zaimplementowania przetwarzania TDSP w naszych zespołów.
+Ten artykuł zawiera omówienie przetwarzania TDSP i jego głównych składnikach. Udostępniamy ogólny opis procesu, który można zaimplementować przy użyciu różnych rodzajów narzędzi. Bardziej szczegółowy opis zadania projektu oraz role zaangażowane w cyklu życia procesu jest dostępna w dodatkowych powiązanych tematach. Udostępniane są również wskazówki dotyczące implementowania przetwarzania TDSP korzystających z określonego zestawu narzędzi firmy Microsoft i infrastrukturą, używaną do zaimplementowania przetwarzania TDSP w naszych zespołów.
 
 ## <a name="key-components-of-the-tdsp"></a>Najważniejsze składniki przetwarzania TDSP
 
@@ -63,7 +63,7 @@ Cele, zadania i dokumentacji artefaktów na każdym etapie cyklu życia w przetw
 
 Na poniższym diagramie przedstawiono widoku siatki zadań (na niebiesko) i artefakty (w kolorze zielonym), które zostały skojarzone z każdym etapie cyklu życia (na osi poziomej) dla tych ról (na osi pionowej). 
 
-[![Przetwarzania TDSP-role i zadania](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![przetwarzania TDSP — role i zadania](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>Struktura projektu standardowe
 
@@ -79,14 +79,14 @@ Firma Microsoft zapewnia szablony dla struktury folderów i dokumentów wymagane
 
 [![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
-Struktura katalogów mogą być klonowane z [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
+Strukturę katalogów można sklonować z usługi [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
 ## <a name="infrastructure-and-resources-for-data-science-projects"></a>Infrastruktura i zasoby dla projektów do nauki o danych  
 
 Przetwarzanie TDSP zawiera zalecenia dotyczące zarządzania udostępnionego analizy i infrastruktury magazynu, takie jak:
 
 - systemy plików w chmurze do przechowywania zestawów danych 
-- bazy danych
+- databases
 - dane big data klastrów (usługi Hadoop lub Spark) 
 - Usługa Machine learning 
 
@@ -94,14 +94,14 @@ Infrastruktura analizy i magazynowania można w chmurze lub lokalnie. Jest to, g
 
 Oto przykład udostępnianie różne składniki infrastruktury analizy cloud i Praca nad wieloma projektami zespołu.
 
-[![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![przetwarzania TDSP — infrastruktura](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Narzędzia i narzędzia umożliwiające wykonywanie projektu
 
-Wprowadzenie do procesów, które w większości organizacji staje się wyzwaniem. Narzędzia podane Implementowanie pomocy procesu i cyklem życia nauki o danych niższych barier i poprawia spójność ich wdrażania. Przetwarzanie TDSP zapewnia początkowy zestaw narzędzi i skryptów, które pozwalają szybko rozpocząć wdrożenie przetwarzania TDSP w zespole. Pomaga również zautomatyzować niektóre typowe zadania w cykl życia analizy danych, takich jak Eksploracja danych i modelowania linii bazowej. Jest dobrze zdefiniowanej strukturze podane dla użytkowników indywidualnych współtworzyć współużytkowanymi narzędziami i narzędzia do repozytorium udostępnionego kodu swojego zespołu. Te zasoby mogą zostać następnie wykorzystane przez inne projekty w ramach zespołu lub organizacji. Przetwarzanie TDSP planuje Włącz wkładów narzędzia i programy narzędziowe całej społeczności. Programy narzędziowe przetwarzania TDSP mogą być klonowane z [GitHub](https://github.com/Azure/Azure-TDSP-Utilities).
+Wprowadzenie do procesów, które w większości organizacji staje się wyzwaniem. Narzędzia podane Implementowanie pomocy procesu i cyklem życia nauki o danych niższych barier i poprawia spójność ich wdrażania. Przetwarzanie TDSP zapewnia początkowy zestaw narzędzi i skryptów, które pozwalają szybko rozpocząć wdrożenie przetwarzania TDSP w zespole. Pomaga również zautomatyzować niektóre typowe zadania w cykl życia analizy danych, takich jak Eksploracja danych i modelowania linii bazowej. Jest dobrze zdefiniowanej strukturze podane dla użytkowników indywidualnych współtworzyć współużytkowanymi narzędziami i narzędzia do repozytorium udostępnionego kodu swojego zespołu. Te zasoby mogą zostać następnie wykorzystane przez inne projekty w ramach zespołu lub organizacji. Przetwarzanie TDSP planuje Włącz wkładów narzędzia i programy narzędziowe całej społeczności. Narzędzia przetwarzania TDSP można sklonować z usługi [GitHub](https://github.com/Azure/Azure-TDSP-Utilities).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Zespół danych dla celów naukowych: Role i zadania](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) opisano role kluczy, personelu i ich skojarzonych zadań dla zespołu do nauki o danych, który standaryzuje na temat tego procesu. 
+[Zespołu danych dla celów naukowych: Role i zadania](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) opisano role kluczy, personelu i ich skojarzonych zadań dla zespołu do nauki o danych, który standaryzuje na temat tego procesu. 

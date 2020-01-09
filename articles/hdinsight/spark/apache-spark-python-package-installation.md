@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215546"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529647"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Bezpieczne zarządzanie środowiskiem Python w usłudze Azure HDInsight za pomocą akcji skryptu
 
@@ -24,7 +24,7 @@ Usługa HDInsight ma dwie wbudowane instalacje języka Python w klastrze Spark, 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -52,8 +52,8 @@ Klaster usługi HDInsight Spark jest tworzony z instalacją Anaconda. W klastrze
 | |Python 2.7|Python 3,5|
 |----|----|----|
 |Ścieżka|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|platforma Spark|Domyślnie ustawiona na 2,7|Nie dotyczy|
-|Livy|Domyślnie ustawiona na 2,7|Nie dotyczy|
+|Spark|Domyślnie ustawiona na 2,7|ND|
+|Livy|Domyślnie ustawiona na 2,7|ND|
 |Jupyter|Jądro PySpark|Jądro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpieczne Instalowanie zewnętrznych pakietów języka Python
@@ -81,7 +81,7 @@ Klaster usługi HDInsight zależy od wbudowanego środowiska języka Python, zar
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    Jeśli nie znasz nazwy środowiska wirtualnego, możesz używać protokołu SSH do węzła nagłówka klastra i uruchamiać `/usr/bin/anaconda/bin/conda info -e`, aby wyświetlić wszystkie środowiska wirtualne.
+    Jeśli nie znasz nazwy środowiska wirtualnego, możesz używać protokołu SSH do węzła głównego klastra i uruchamiać `/usr/bin/anaconda/bin/conda info -e`, aby wyświetlić wszystkie środowiska wirtualne.
 
 3. Zmień konfigurację platformy Spark i usługi Livy, a następnie wskaż utworzone środowisko wirtualne.
 

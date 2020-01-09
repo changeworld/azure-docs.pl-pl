@@ -1,45 +1,48 @@
 ---
 title: Przygotowywanie danych testowych dla usługi Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
-description: Bez względu na to, czy testujesz, jak Precyzyjna funkcja rozpoznawania mowy firmy Microsoft jest zgodna z własnymi modelami, będziesz potrzebować danych (w postaci audio i/lub tekstu). Na tej stronie omówiono typy danych, sposób ich użycia i sposób zarządzania nimi.
+description: Podczas testowania dokładności rozpoznawania mowy firmy Microsoft lub uczenia modeli niestandardowych będziesz potrzebować danych audio i tekstowych. Na tej stronie omówiono typy danych, sposób ich używania i zarządzania nimi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951840"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660413"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotuj dane dla Custom Speech
 
-Bez względu na to, czy testujesz, jak Precyzyjna funkcja rozpoznawania mowy firmy Microsoft jest zgodna z własnymi modelami, będziesz potrzebować danych w postaci audio i tekstu. Na tej stronie omówiono typy danych, sposób ich użycia i sposób zarządzania nimi.
+Podczas testowania dokładności rozpoznawania mowy firmy Microsoft lub uczenia modeli niestandardowych będziesz potrzebować danych audio i tekstowych. Na tej stronie omówiono typy danych, sposób ich używania i zarządzania nimi.
 
 ## <a name="data-types"></a>Typy danych
 
 Ta tabela zawiera listę akceptowanych typów danych, gdy należy użyć poszczególnych typów danych i zalecanej ilości. Do utworzenia modelu nie jest wymagany każdy typ danych. Wymagania dotyczące danych będą się różnić w zależności od tego, czy tworzysz test czy uczenie modelu.
 
-| Typ danych | Używane do testowania | Zalecana ilość | Używany do szkolenia | Zalecana ilość |
+| Typ danych | Używany do testowania | Zalecana ilość | Używany do szkolenia | Zalecana ilość |
 |-----------|-----------------|----------|-------------------|----------|
 | [Audio](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
-| [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Tak | 1 – 1 000 godzin audio |
+| [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Tak | 1 – 1000 godzin audio |
 | [Powiązany tekst](#related-text-data-for-training) | Nie | Nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
 
-Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
+Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jako plik. zip. Każdy zestaw danych może zawierać tylko jeden typ danych.
+
+> [!TIP]
+> Aby szybko rozpocząć pracę, rozważ użycie przykładowych danych. Zapoznaj się z tym repozytorium GitHub, aby uzyskać <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">przykładowe dane <span class="docon docon-navigate-external x-hidden-focus"></span> Custom Speech</a>
 
 ## <a name="upload-data"></a>Przekazywanie danych
 
-Gdy wszystko będzie gotowe do przekazania danych, przejdź do [portalu Custom Speech](https://speech.microsoft.com/customspeech), a następnie kliknij pozycję **Przekaż dane** , aby uruchomić kreatora i utworzyć swój pierwszy zestaw danych. Przed umożliwieniem przekazania danych użytkownik zostanie poproszony o wybranie typu danych mowy dla zestawu danych.
+Aby przekazać dane, przejdź do <a href="https://speech.microsoft.com/customspeech" target="_blank">portalu <span class="docon docon-navigate-external x-hidden-focus"> </span>Custom Speech </a>. W portalu kliknij pozycję **Przekaż dane** , aby uruchomić kreatora i utworzyć swój pierwszy zestaw danych. Przed umożliwieniem przekazania danych użytkownik zostanie poproszony o wybranie typu danych mowy dla zestawu danych.
 
 ![Wybierz dźwięk z portalu mowy](./media/custom-speech/custom-speech-select-audio.png)
 
-Każdy przekazywany zestaw danych musi spełniać wymagania dotyczące wybranego typu danych. Ważne jest, aby poprawnie sformatować dane przed ich przekazaniem. Gwarantuje to, że dane będą prawidłowo przetwarzane przez usługę Custom Speech. Wymagania są wymienione w poniższych sekcjach.
+Każdy przekazywany zestaw danych musi spełniać wymagania dotyczące wybranego typu danych. Dane muszą być poprawnie sformatowane przed ich przekazaniem. Prawidłowo sformatowane dane zapewniają, że będzie ono prawidłowo przetwarzane przez usługę Custom Speech. Wymagania są wymienione w poniższych sekcjach.
 
 Po przekazaniu zestawu danych można korzystać z kilku opcji:
 
@@ -63,14 +66,14 @@ Użyj tej tabeli, aby upewnić się, że pliki audio są poprawnie sformatowane 
 | Maksymalny rozmiar archiwum | 2 GB |
 
 > [!TIP]
-> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Jeśli potrzebujesz więcej danych do szkolenia i testowania, Podziel je na kilka plików zip i przekaż je oddzielnie. Później możesz wybrać opcję uczenia i testowania z *wielu* zestawów danych.
+> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Jeśli potrzebujesz więcej danych do szkolenia, Podziel je na kilka plików zip i przekaż je oddzielnie. Później możesz wybrać opcję uczenia się z *wielu* zestawów danych. Jednak można testować tylko z *jednego* zestawu danych.
 
-Jeśli dźwięk nie spełnia tych właściwości lub chcesz sprawdzić, czy jest to konieczne, zalecamy pobranie [SOX](http://sox.sourceforge.net) w celu sprawdzenia lub przekonwertowania dźwięku. Poniżej przedstawiono kilka przykładów działania poszczególnych działań za pomocą wiersza polecenia:
+Aby sprawdzić właściwości dźwięku lub przekonwertować istniejące audio na odpowiednie formaty, użyj <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . Poniżej przedstawiono kilka przykładów działania poszczególnych działań za pomocą wiersza polecenia SoX:
 
-| Działanie | Opis | SOX — polecenie |
+| Działanie | Opis | SoX — polecenie |
 |----------|-------------|-------------|
-| Sprawdź format dźwięku | Użyj tego polecenia, aby sprawdzić format pliku dźwiękowego. | `sox --i <filename>` |
-| Konwertuj format audio | Użyj tego polecenia, aby skonwertować plik audio na pojedynczy kanał, 16-bitowy, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+| Sprawdź format dźwięku | Użyj tego polecenia, aby sprawdzić<br>Format pliku dźwiękowego. | `sox --i <filename>` |
+| Konwertuj format audio | Użyj tego polecenia, aby skonwertować<br>plik audio do pojedynczego kanału, 16-bitowy, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Audio + oznakowane przez człowieka dane zapisu do testowania/uczenia
 
@@ -81,45 +84,49 @@ Aby zmierzyć dokładność dokładności zamiany mowy na tekst firmy Microsoft 
 | Format pliku | RIFF (WAV) |
 | Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
 | Kanały | 1 (mono) |
-| Maksymalna długość na dźwięk | 60 s |
+| Maksymalna długość na dźwięk | 2 godziny (testowanie)/60 s (szkolenie) |
 | Przykładowy format | PCM, 16-bitowe |
 | Format archiwum | zip |
 | Maksymalny rozmiar pliku zip | 2 GB |
 
-> [!TIP]
-> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Jeśli potrzebujesz więcej danych do szkolenia i testowania, Podziel je na kilka plików zip i przekaż je oddzielnie. Później możesz wybrać opcję uczenia i testowania z *wielu* zestawów danych.
+> [!NOTE]
+> Podczas przekazywania szkoleń i testowania danych rozmiar pliku zip nie może przekroczyć 2 GB. Uou można testować tylko z *jednego* zestawu danych, pamiętając, aby zachować go w odpowiednim rozmiarze pliku.
 
 Aby rozwiązać problemy, takie jak usuwanie lub podstawianie wyrazów, wymagana jest znaczna ilość danych w celu usprawnienia rozpoznawania. Ogólnie rzecz biorąc, zaleca się dostarczenie transkrypcji słów-by-Word dla około 10 do 1 000 godzin. Transkrypcje dla wszystkich plików WAV powinny znajdować się w jednym pliku tekstowym (zwykły tekst). Każdy wiersz pliku z transkrypcją powinien zawierać nazwę jednego z plików dźwiękowych, a następnie odpowiednią transkrypcję. Nazwę pliku i transkrypcję należy rozdzielać przy użyciu tabulatora (\t).
 
-  Na przykład:
+  Przykład:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
   speech03.wav  the lazy dog was not amused
 ```
-> [!NOTE]
+
+> [!IMPORTANT]
 > Transkrypcja powinna być kodowana za pomocą kodowania UTF-8 ze znacznikiem kolejności bajtów (BOM).
 
-Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Jednak istnieją pewne ważne normalizacji, które muszą zostać wykonane przez użytkownika _przed_ przekazaniem danych do programu Speech Studio. Aby uzyskać odpowiedni język do użycia podczas przygotowywania transkrypcji, zobacz [jak utworzyć transkrypcję z oznaczeniem ludzkim](how-to-custom-speech-human-labeled-transcriptions.md)
+Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Istnieje jednak kilka ważnych normalizacji, które należy wykonać przed przekazaniem danych do programu Speech Studio. Aby uzyskać odpowiedni język do użycia podczas przygotowywania transkrypcji, zobacz [jak utworzyć transkrypcję z oznaczeniem ludzkim](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Po zebraniu plików audio i odpowiednich transkrypcji należy je spakować jako jeden plik zip przed przekazaniem do [portalu Custom Speech](https://speech.microsoft.com/customspeech). Jest to przykładowy zestaw danych z trzema plikami audio i plik transkrypcji z etykietą o podanych przez człowieka:
+Po zebraniu plików audio i odpowiednich transkrypcji należy je spakować jako jeden plik zip przed przekazaniem do <a href="https://speech.microsoft.com/customspeech" target="_blank">portalu <span class="docon docon-navigate-external x-hidden-focus"> </span>Custom Speech </a>. Poniżej znajduje się przykładowy zestaw danych z trzema plikami audio i plik transkrypcji z etykietami ludzkimi:
 
-![Wybierz dźwięk z portalu mowy](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+> [!div class="mx-imgBorder"]
+> ![Wybierz dźwięk z portalu mowy](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
 ## <a name="related-text-data-for-training"></a>Powiązane dane tekstowe do szkolenia
 
-Jeśli posiadasz nazwy produktów lub funkcje, które są unikatowe, i chcesz się upewnić, że są one rozpoznawane prawidłowo, ważne jest, aby uwzględnić powiązane dane tekstowe do szkolenia. W celu usprawnienia rozpoznawania można podać dwa typy powiązanych danych tekstowych:
+Nazwy produktów lub funkcje, które są unikatowe, powinny zawierać powiązane dane tekstowe do szkoleń. Pokrewny tekst pomaga zapewnić poprawne rozpoznawanie. W celu usprawnienia rozpoznawania można podać dwa typy powiązanych danych tekstowych:
 
 | Typ danych | Jak te dane ulepszają rozpoznawanie |
 |-----------|------------------------------------|
-| Wyrażenia długości i/lub zdania | Mogą one zwiększyć dokładność podczas rozpoznawania nazw produktów lub słownika właściwych dla branż w kontekście zdania. |
-| Wymowy | Mogą one poprawić wymowę nietypowych warunków, akronimów lub innych słów z niezdefiniowanymi wymowiemi. |
+| Zdania (wyrażenia długości) | Popraw dokładność podczas rozpoznawania nazw produktów lub słownika właściwych dla branż w kontekście zdania. |
+| Wymowy | Popraw wymowę nietypowych warunków, akronimów lub innych wyrazów z niezdefiniowanymi wymowiemi. |
 
-Wyrażenia długości można podać jako jeden lub wiele plików tekstowych. Im bliżej danych tekstowych jest wypowiadane, tym większe prawdopodobieństwo poprawy dokładności. Wymowy należy dostarczyć jako pojedynczy plik tekstowy. Wszystkie elementy można spakować jako jeden plik zip i przekazać je do [portalu Custom Speech](https://speech.microsoft.com/customspeech).
+Zdania można podać jako pojedynczy plik tekstowy lub wiele plików tekstowych. Aby poprawić dokładność, użyj danych tekstowych, które są bliżej oczekiwanego wyrażenia długości. Wymowy należy dostarczyć jako pojedynczy plik tekstowy. Wszystkie elementy można spakować jako jeden plik zip i przekazać je do <a href="https://speech.microsoft.com/customspeech" target="_blank">portalu <span class="docon docon-navigate-external x-hidden-focus"> </span>Custom Speech </a>.
 
-### <a name="guidelines-to-create-an-utterances-file"></a>Wskazówki dotyczące tworzenia pliku wyrażenia długości
+### <a name="guidelines-to-create-a-sentences-file"></a>Wskazówki dotyczące tworzenia pliku zdań
 
-Aby utworzyć niestandardowy model przy użyciu pokrewnego tekstu, należy podać listę przykładowych wyrażenia długości. Te wyrażenia długości nie muszą być pełnymi zdaniami ani gramatycznie prawidłowymi, ale muszą dokładnie odzwierciedlać dane wejściowe, których oczekujesz w środowisku produkcyjnym. Jeśli chcesz, aby niektóre terminy miały zwiększoną wagę, możesz dodać kilka zdań do powiązanego pliku danych, które zawierają te określone warunki.
+Aby utworzyć niestandardowy model przy użyciu zdań, należy podać listę przykładowych wyrażenia długości. Wyrażenia długości _nie_ muszą być kompletne ani gramatycznie prawidłowe, ale muszą dokładnie odzwierciedlać dane wejściowe, których oczekujesz w środowisku produkcyjnym. Jeśli chcesz, aby pewne terminy miały zwiększoną wagę, Dodaj kilka zdań zawierających te określone warunki.
+
+Ogólnie rzecz biorąc, adaptacja modelu jest najbardziej skuteczna, gdy tekst szkolenia jest jak najbliżej rzeczywistego tekstu oczekiwanego w środowisku produkcyjnym. Żargon charakterystyczne dla domeny i frazy, które chcesz rozszerzyć, powinny być zawarte w tekście szkoleniowym. Gdy to możliwe, spróbuj mieć jedno zdanie lub słowo kluczowe, które są kontrolowane w osobnym wierszu. Słowa kluczowe i frazy, które są dla Ciebie ważne (na przykład nazwy produktów), można skopiować kilka razy. Należy jednak pamiętać, że nie Kopiuj zbyt wiele — może to mieć wpływ na ogólną częstotliwość rozpoznawania.
 
 Użyj tej tabeli, aby upewnić się, że plik powiązane dane dla wyrażenia długości został poprawnie sformatowany:
 
@@ -132,7 +139,7 @@ Użyj tej tabeli, aby upewnić się, że plik powiązane dane dla wyrażenia dł
 Ponadto należy uwzględnić następujące ograniczenia:
 
 * Unikaj powtarzania znaków więcej niż cztery razy. Na przykład: "aaaa" lub "uuuu".
-* Nie używaj znaków specjalnych ani znaków UTF-8 powyżej U + 00A1.
+* Nie używaj znaków specjalnych ani znaków UTF-8 powyżej `U+00A1`.
 * Identyfikatory URI zostaną odrzucone.
 
 ### <a name="guidelines-to-create-a-pronunciation-file"></a>Wskazówki dotyczące tworzenia pliku wymowy
@@ -140,26 +147,26 @@ Ponadto należy uwzględnić następujące ograniczenia:
 Jeśli istnieją nietypowe terminy bez standardowych wymowy, których użytkownicy będą napotykać lub których używają, możesz podać niestandardowy plik wymowy, aby poprawić rozpoznawanie.
 
 > [!IMPORTANT]
-> Nie zaleca się korzystania z tej funkcji w celu zmiany wymowy typowych wyrazów.
+> Nie zaleca się używania niestandardowych plików wymowy, aby zmienić wymowę typowych wyrazów.
 
 Obejmuje to przykłady mówionych wypowiedź i niestandardową wymowę dla każdej z nich:
 
 | Rozpoznany/wyświetlany formularz | Mówionej formy |
 |--------------|--------------------------|
-| 3CPO | trzy c p o |  
+| 3CPO | trzy c p o |
 | CNTK | c n t k |
 | IEEE | Potrójna e |
 
 Mówiony formularz jest wyszukiwaną sekwencją fonetyczną. Może składać się z litery, słów, sylab lub kombinacji wszystkich trzech.
 
-Dostosowana wymowa jest dostępna w języku angielskim (EN-US) i niemiecki (de-DE). W tej tabeli przedstawiono obsługiwane znaki według języka:
+Dostosowana wymowa jest dostępna w języku angielskim (`en-US`) i niemieckim (`de-DE`). W tej tabeli przedstawiono obsługiwane znaki według języka:
 
 | Język | Ustawienia regionalne | Znaki |
 |----------|--------|------------|
-| Polski | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
-| niemiecki | de-DE. | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Polski | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
+| Niemiecki | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
-Użyj tej tabeli, aby upewnić się, że plik powiązanych danych dla wymowy jest sformatowany prawidłowo. Pliki wymowy są małe i nie powinny przekraczać kilku artykułów bazy wiedzy.
+Skorzystaj z poniższej tabeli, aby upewnić się, że pokrewny plik danych dla wymowy jest poprawnie sformatowany. Pliki wymowy są małe i powinny mieć tylko kilka kilobajtów rozmiaru.
 
 | Właściwość | Wartość |
 |----------|-------|
@@ -171,5 +178,5 @@ Użyj tej tabeli, aby upewnić się, że plik powiązanych danych dla wymowy jes
 
 * [Inspekcja danych](how-to-custom-speech-inspect-data.md)
 * [Oceń dane](how-to-custom-speech-evaluate-data.md)
-* [Uczenie modelu](how-to-custom-speech-train-model.md)
+* [Szkolenie modelu](how-to-custom-speech-train-model.md)
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)

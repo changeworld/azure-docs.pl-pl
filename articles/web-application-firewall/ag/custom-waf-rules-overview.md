@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585392"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645093"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Reguły niestandardowe dla zapory aplikacji sieci Web V2 na platformie Azure Application Gateway
 
@@ -29,7 +29,7 @@ Różne warunki dopasowywania w ramach tej samej reguły są zawsze składane pr
 Jeśli chcesz **lub** dwa różne warunki, te dwa warunki muszą być w różnych regułach. Na przykład Zablokuj ruch z określonego adresu IP lub Zablokuj ruch, jeśli korzysta z określonej przeglądarki.
 
 > [!NOTE]
-> Maksymalna liczba reguł niestandardowych WAF to 100. Aby uzyskać więcej informacji na temat limitów Application Gateway, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-subscription-service-limits.md#application-gateway-limits).
+> Maksymalna liczba reguł niestandardowych WAF to 100. Aby uzyskać więcej informacji na temat limitów Application Gateway, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 Wyrażenia regularne są również obsługiwane w regułach niestandardowych, podobnie jak w zestawach reguł KSR. Aby zapoznać się z przykładami, zobacz przykłady 3 i 5 w temacie [Tworzenie i używanie niestandardowych reguł zapory aplikacji sieci Web](create-custom-waf-rules.md).
 
@@ -133,7 +133,7 @@ Musi być jednym z następujących operatorów:
 - GreaterThanOrEqual
 - Zaczyna się od
 - EndsWith
-- wyrażeń
+- Wyrażenie regularne
 - Geodopasowanie (wersja zapoznawcza)
 
 ### <a name="negate-condition-optional"></a>Negate warunek [opcjonalny]
@@ -215,10 +215,10 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | CU | Kuba|
 | CV | Wyspy Zielonego Przylądka|
 | CY | Cypr|
-| CZ | Czechy|
-| DE | Niemcy|
+| CZ | Republika Czeska|
+| Niemcy | Niemcy|
 | DK | Dania|
-| DO | Republika Dominikańska|
+| DO | Dominikana|
 | DZ | Algieria|
 | EC | Ekwador|
 | EE | Estonia|
@@ -229,7 +229,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | FJ | Fidżi|
 | FM | Federalne Stany Mikronezji|
 | PW | Francja|
-| GB | Wielka Brytania|
+| GB | Zjednoczone Królestwo|
 | GE | Gruzja|
 | GF | Gujana Francuska|
 | GH | Ghana|
@@ -238,9 +238,9 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | GR | Grecja|
 | GT | Gwatemala|
 | GY | Gujana|
-| HK | Hongkong SAR|
+| HK | SRA Hongkong|
 | HN | Honduras|
-| HR | Chorwacja|
+| Kadry | Chorwacja|
 | HT | Haiti|
 | HU | Węgry|
 | ID | Indonezja|
@@ -264,7 +264,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | KW | Kuwejt|
 | KY | Kajmany|
 | KZ | Kazachstan|
-| LA | Laotańska Republika Ludowo-Demokratyczna|
+| AMERYKA ŁACIŃSKA | Laotańska Republika Ludowo-Demokratyczna|
 | LB | Liban|
 | LI | Liechtenstein|
 | LK | Sri Lanka|
@@ -281,7 +281,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolia|
-| MO | Makau SAR|
+| MO | SRA Makau|
 | MQ | Martynika|
 | MR | Mauretania|
 | MT | Malta|
@@ -328,7 +328,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | SV | Salwador|
 | SY | Arabska Republika Syryjska|
 | SZ | Suazi|
-| TC | Wyspy Turks i Caicos|
+| TC | Turks i Caicos|
 | TG | Togo|
 | TH | Tajlandia|
 | TN | Tunezja|
@@ -338,7 +338,7 @@ Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następu
 | TZ | Zjednoczona Republika Tanzanii|
 | UA | Ukraina|
 | UG | Uganda|
-| USA | Stany Zjednoczone|
+| Stany Zjednoczone | Stany Zjednoczone|
 | UY | Urugwaj|
 | UZ | Uzbekistan|
 | VC | Saint Vincent i Grenadyny|

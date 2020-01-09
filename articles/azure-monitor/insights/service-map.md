@@ -1,18 +1,18 @@
 ---
 title: Korzystanie z rozwiązania Service Map na platformie Azure | Microsoft Docs
-description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące wdrażania Service Map w środowisku użytkownika i korzystania z niego w różnych scenariuszach.
+description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące wdrażania rozwiązania Service Map w danym środowisku i korzystania z niego w różnych scenariuszach.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554001"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402596"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Korzystanie z rozwiązania Service Map na platformie Azure
 
@@ -38,7 +38,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 1. Włącz rozwiązanie Service Map z [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) lub przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań monitorowania z Galeria rozwiązań](solutions.md).
 1. [Zainstaluj agenta zależności w systemie Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) lub [Zainstaluj agenta zależności programu](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) dla systemu Linux na każdym komputerze, na którym chcesz pobrać dane. Agent Dependency Agent może monitorować połączenia do najbliższych sąsiadów, więc nie jest konieczny na każdym komputerze.
 
-Dostęp do Service Map w Azure Portal z obszaru roboczego Log Analytics i wybierz **rozwiązania** opcji w okienku po lewej stronie.<br><br> Opcja ![Select Solutions w obszarze roboczym ](./media/service-map/select-solution-from-workspace.png).<br> Z listy rozwiązań wybierz pozycję **ServiceMap (WorkspaceName)** i na stronie przegląd rozwiązania Service map kliknij kafelek podsumowanie Service map.<br><br> ](./media/service-map/service-map-summary-tile.png) kafelka podsumowania mapy ![Service.
+Dostęp do Service Map w Azure Portal z obszaru roboczego Log Analytics i wybierz **rozwiązania** opcji w okienku po lewej stronie.<br><br> ![wybierz opcję rozwiązań w obszarze roboczym](./media/service-map/select-solution-from-workspace.png).<br> Z listy rozwiązań wybierz pozycję **ServiceMap (WorkspaceName)** i na stronie przegląd rozwiązania Service map kliknij kafelek podsumowanie Service map.<br><br> ![Service Map](./media/service-map/service-map-summary-tile.png)kafelka podsumowania.
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Przypadki użycia: uczyń proces IT Rozpoznaj zależności
 
@@ -114,7 +114,7 @@ Po utworzeniu niektórych grup można je wyświetlić, wybierając kartę grupy.
 ![Karta grupy](media/service-map/machine-groups-tab.png)
 
 Następnie wybierz nazwę grupy, aby wyświetlić mapę dla tej grupy maszyn.
-Grupa ![Machine ](media/service-map/machine-group.png) komputery należące do grupy są opisane w białej formie mapy.
+![grupy maszyn](media/service-map/machine-group.png) komputery należące do grupy są opisane na białej mapie.
 
 Rozszerzanie grupy spowoduje wyświetlenie listy maszyn, które tworzą grupę maszyn.
 
@@ -190,7 +190,7 @@ Grupy portów serwera to pola reprezentujące porty serwera na serwerach, na kt�
 
 ![Grupy portów serwera](media/service-map/server-port-groups.png)
 
-## <a name="context-menu"></a>Menu kontekstowe
+## <a name="context-menu"></a>Menu Kontekst
 
 Kliknięcie wielokropka (...) w prawym górnym rogu dowolnego serwera powoduje wyświetlenie menu kontekstowego dla tego serwera.
 
@@ -274,16 +274,16 @@ W okienku **wydajność komputera** są wyświetlane metryki wydajności standar
 Aby wyświetlić dane dotyczące wydajności, może być konieczne [włączenie odpowiednich liczników wydajności log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Liczniki, które chcesz włączyć:
 
 W systemie Windows:
-- Procesor (*) \\ czas procesora (%)
-- Pamięć \\% zadeklarowanych bajtów w użyciu
-- Karta sieciowa (*) \\Bytes wysłane/s
-- Karta sieciowa (*) \\Bytes odebrane/s
+- Procesor (*)\\czas procesora (%)
+- Pamięć\\% zadeklarowanych bajtów w użyciu
+- Karta sieciowa (*)\\Bajty wysłane/s
+- Karta sieciowa (*)\\bajty odebrane/s
 
 W systemie Linux:
-- Procesor (*) \\ czas procesora (%)
-- Pamięć (*) \\ używana pamięć
-- Karta sieciowa (*) \\Bytes wysłane/s
-- Karta sieciowa (*) \\Bytes odebrane/s
+- Procesor (*)\\czas procesora (%)
+- Pamięć (*)\\używana pamięć
+- Karta sieciowa (*)\\Bajty wysłane/s
+- Karta sieciowa (*)\\bajty odebrane/s
 
 Aby uzyskać dane dotyczące wydajności sieci, należy również włączyć rozwiązanie Wire Data 2.0 w obszarze roboczym.
  
@@ -307,14 +307,14 @@ W okienku **aktualizacje komputera** są wyświetlane dane z rozwiązania Update
 
 Service Map komputer i dane spisu procesu są dostępne do [wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w log Analytics. Te dane można zastosować do scenariuszy, które obejmują Planowanie migracji, analizę pojemności, odnajdywanie i rozwiązywanie problemów z wydajnością na żądanie.
 
-Jeden rekord jest generowany na godzinę dla każdego unikatowego komputera i procesu, oprócz rekordów generowanych podczas uruchamiania procesu lub komputera w celu Service Map. Te rekordy mają właściwości w poniższych tabelach. Pola i wartości w zdarzeniach ServiceMapComputer_CL są mapowane na pola zasobu maszyny w interfejsie API usługi ServiceMap Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobu procesu w interfejsie API Azure Resource Manager ServiceMap. Pole ResourceName_s pasuje do pola Name w odpowiednim zasobie Menedżer zasobów. 
+Jeden rekord jest generowany na godzinę dla każdego unikatowego komputera i procesu, oprócz rekordów generowanych podczas uruchamiania procesu lub komputera w celu Service Map. Te rekordy mają właściwości w poniższych tabelach. Pola i wartości w ServiceMapComputer_CL zdarzenia są mapowane na pola zasobu maszyny w interfejsie API usługi ServiceMap Azure Resource Manager. Pola i wartości w zdarzeniach ServiceMapProcess_CL są mapowane na pola zasobu procesu w interfejsie API usługi ServiceMap Azure Resource Manager. Pole ResourceName_s pasuje do pola Nazwa w odpowiednim zasobie Menedżer zasobów. 
 
 >[!NOTE]
 >W miarę rozwoju funkcji Service Map te pola mogą ulec zmianie.
 
 Istnieją wewnętrznie wygenerowane właściwości, których można użyć do identyfikowania unikatowych procesów i komputerów:
 
-- Komputer: Użyj *ResourceID* lub *ResourceName_s* w celu jednoznacznego zidentyfikowania komputera w obszarze roboczym log Analytics.
+- Komputer: Użyj *ResourceID* lub *ResourceName_s* , aby jednoznacznie zidentyfikować komputer w obszarze roboczym log Analytics.
 - Proces: Użyj *ResourceID* , aby jednoznacznie zidentyfikować proces w obszarze roboczym log Analytics. *ResourceName_s* jest unikatowy w kontekście maszyny, na której jest uruchomiony proces (MachineResourceName_s) 
 
 Ponieważ wiele rekordów może istnieć dla określonego procesu i komputera w określonym przedziale czasu, kwerendy mogą zwrócić więcej niż jeden rekord dla tego samego komputera lub procesu. Aby dołączyć tylko najnowszy rekord, Dodaj element "| Identyfikator zasobu deduplikacji "do zapytania.
@@ -391,7 +391,7 @@ Każda właściwość RemoteIp w tabeli *VMConnection* jest sprawdzana względem
 | Właściwość | Opis |
 |:--|:--|
 | `MaliciousIp` |Adres RemoteIp |
-| `IndicatorThreadType` |Wykryty wskaźnik zagrożeń to jedna z następujących wartości: *botnet*, *C2*, *CryptoMining*, *sieci darknet*, *DDoS*, *MaliciousUrl*, *złośliwe oprogramowanie*, *phishing*, *proxy*, *opierająca*,  *Listy do obejrzenia*.   |
+| `IndicatorThreadType` |Wykryty wskaźnik zagrożeń to jedna z następujących wartości: *botnet*, *C2*, *CryptoMining*, *sieci darknet*, *DDoS*, *MaliciousUrl*, *złośliwe oprogramowanie*, *phishing*, *proxy*, *opierająca*, *listy do obejrzenia*.   |
 | `Description` |Opis zaobserwowanego zagrożenia. |
 | `TLPLevel` |Poziom protokołu Traffic Light Protocol (TLP) to jedna ze zdefiniowanych wartości: *biały*, *zielony*, *bursztynowy*, *czerwony*. |
 | `Confidence` |Wartości to *0 – 100*. |
@@ -404,7 +404,7 @@ Każda właściwość RemoteIp w tabeli *VMConnection* jest sprawdzana względem
 
 ### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL rekordy
 
-Rekordy z typem *ServiceMapComputer_CL* mają dane spisu dla serwerów z agentami Service map. Te rekordy mają właściwości w poniższej tabeli:
+Rekordy z typem *ServiceMapComputer_CL* mają dane spisu dla serwerów z agentami Service map. Te rekordy mają właściwości podane w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--|:--|
@@ -428,9 +428,9 @@ Rekordy z typem *ServiceMapComputer_CL* mają dane spisu dla serwerów z agentam
 | `VirtualMachineName_s` | Nazwa maszyny wirtualnej |
 | `BootTime_t` | Czas rozruchu |
 
-### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL typy rekordów
+### <a name="servicemapprocess_cl-type-records"></a>Rekordy typu ServiceMapProcess_CL
 
-Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesów połączonych z protokołem TCP na serwerach z agentami Service map. Te rekordy mają właściwości w poniższej tabeli:
+Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesów połączonych z protokołem TCP na serwerach z agentami Service map. Te rekordy mają właściwości podane w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--|:--|
@@ -458,35 +458,35 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesów połączon
 
 ### <a name="list-all-known-machines"></a>Wyświetl listę wszystkich znanych maszyn
 
-ServiceMapComputer_CL | podsumowujący arg_max (TimeGenerated, *) według ResourceId
+ServiceMapComputer_CL | Podsumuj arg_max (TimeGenerated, *) według ResourceId
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Wyświetl listę pojemności pamięci fizycznej wszystkich zarządzanych komputerów.
 
-ServiceMapComputer_CL | podsumowujący arg_max (TimeGenerated, *) według ResourceId | Project PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | Podsumuj arg_max (TimeGenerated, *) według ResourceId | PhysicalMemory_d projektu, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Wyświetl listę nazw komputerów, DNS, IP i systemu operacyjnego.
 
-ServiceMapComputer_CL | podsumowujący arg_max (TimeGenerated, *) według ResourceId | Project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Znajdź wszystkie procesy z "SQL" w wierszu polecenia
 
-ServiceMapProcess_CL | gdzie CommandLine_s contains_cs "SQL" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
+ServiceMapProcess_CL | gdzie CommandLine_s contains_cs "SQL" | Podsumuj arg_max (TimeGenerated, *) według ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Znajdź maszynę (najnowszy rekord) według nazwy zasobu
 
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
+Wyszukaj w (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | Podsumuj arg_max (TimeGenerated, *) według ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Znajdź komputer (najnowszy rekord) według adresu IP
 
-search in (ServiceMapComputer_CL) "10.229.243.232" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
+Wyszukaj w (ServiceMapComputer_CL) "10.229.243.232" | Podsumuj arg_max (TimeGenerated, *) według ResourceId
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Wyświetl listę wszystkich znanych procesów na określonym komputerze
 
-ServiceMapProcess_CL | gdzie MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | podsumowujący arg_max (TimeGenerated, *) według ResourceId
+ServiceMapProcess_CL | gdzie MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | Podsumuj arg_max (TimeGenerated, *) według ResourceId
 
 ### <a name="list-all-computers-running-sql"></a>Wyświetl listę wszystkich komputerów z uruchomionym programem SQL
 
-ServiceMapComputer_CL | gdzie ResourceName_s ((search in (ServiceMapProcess_CL) "\*sql \*" | DISTINCT MachineResourceName_s)) | różne ComputerName_s
+ServiceMapComputer_CL | gdzie ResourceName_s ((search in (ServiceMapProcess_CL) "\*SQL\*" | różne MachineResourceName_s)) | różne ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Wyświetl listę wszystkich unikatowych wersji programu zwinięcie w moim centrum danych
 
@@ -543,11 +543,11 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 Wszystkie dane dotyczące serwera, procesu i zależności w Service Map są dostępne za pośrednictwem [interfejsu API REST Service map](https://docs.microsoft.com/rest/api/servicemap/).
 
-## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i użycia
+## <a name="diagnostic-and-usage-data"></a>Dane diagnostyczne i dane dotyczące użycia
 
-Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności za pomocą usługi Service Map. Firma Microsoft używa tych danych w celu zapewnienia i poprawy jakości, bezpieczeństwa i integralności usługi Service Map. Aby zapewnić dokładne i wydajne możliwości rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, takie jak system operacyjny, wersja, adres IP, nazwa DNS i nazwa stacji roboczej. Firma Microsoft nie zbiera nazw, adresów ani innych informacji kontaktowych.
+Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi mapy usługi. Aby zapewnić dokładne i wydajne możliwości rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, takie jak system operacyjny, wersja, adres IP, nazwa DNS i nazwa stacji roboczej. Firma Microsoft nie zbiera nazw, adresów ani innych informacji kontaktowych.
 
-Aby uzyskać więcej informacji na temat zbierania i używania danych, zobacz [zasady zachowania poufności informacji w witrynie Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -555,33 +555,33 @@ Dowiedz się więcej o [przeszukiwaniu dzienników](../../azure-monitor/log-quer
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli masz problemy z instalowaniem lub uruchamianiem Service Map, ta sekcja może Ci pomóc. Jeśli nadal nie możesz rozwiązać problemu, skontaktuj się z pomoc techniczna firmy Microsoft.
+Jeśli masz problemy z Instalowanie i uruchamianie rozwiązania Service Map, w tej sekcji mogą pomóc. Jeśli nadal nie możesz rozwiązać problemu, skontaktuj się z Microsoft Support.
 
 ### <a name="dependency-agent-installation-problems"></a>Problemy z instalacją agenta zależności
 
-#### <a name="installer-prompts-for-a-reboot"></a>Instalator prosi o ponowne uruchomienie
-Agent zależności *zazwyczaj* nie wymaga ponownego uruchomienia podczas instalacji lub usuwania. Jednak w niektórych rzadkich przypadkach system Windows Server wymaga ponownego uruchomienia w celu kontynuowania instalacji. Dzieje się tak, gdy zależność, zazwyczaj Biblioteka redystrybucyjna firmy Microsoft C++ , wymaga ponownego uruchomienia ze względu na zablokowany plik.
+#### <a name="installer-prompts-for-a-reboot"></a>Instalator monituje o ponowne uruchomienie komputera
+Agent zależności *zazwyczaj* nie wymaga ponownego uruchomienia podczas instalacji lub usuwania. Jednak w niektórych przypadkach rzadkich systemu Windows Server wymaga ponownego uruchomienia, aby kontynuować instalację. Dzieje się tak, gdy zależność, zazwyczaj Biblioteka redystrybucyjna firmy Microsoft C++ , wymaga ponownego uruchomienia ze względu na zablokowany plik.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Komunikat "nie można zainstalować agenta zależności: nie można zainstalować bibliotek środowiska uruchomieniowego programu Visual Studio (kod = [code_number])"
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Komunikat "nie można zainstalować agenta zależności: bibliotek środowiska uruchomieniowego Visual Studio instalacja nie powiodła się (kod = [Numer_kodu])" pojawi się
 
-Program Microsoft Dependency Agent jest oparty na bibliotekach środowiska uruchomieniowego Microsoft Visual Studio. Jeśli wystąpi problem podczas instalacji bibliotek, otrzymasz komunikat o błędzie. 
+Program Microsoft Dependency agent jest oparta na bibliotekach środowiska uruchomieniowego programu Microsoft Visual Studio. Jeśli występuje problem podczas instalacji bibliotek, zostanie wyświetlony komunikat. 
 
-Instalatorzy biblioteki środowiska uruchomieniowego tworzą dzienniki w folderze%LOCALAPPDATA%\temp. Plik jest `dd_vcredist_arch_yyyymmddhhmmss.log`, gdzie *Arch* jest `x86` lub `amd64` i *rrrrmmddggmmss* jest datą i godziną (zegar 24-godzinny) podczas tworzenia dziennika. Dziennik zawiera szczegółowe informacje o problemie, który blokuje instalację.
+Instalatory biblioteki środowiska uruchomieniowego twórz dzienniki w folderze %LOCALAPPDATA%\temp. Plik jest `dd_vcredist_arch_yyyymmddhhmmss.log`, gdzie *Arch* jest `x86` lub `amd64` i *rrrrmmddggmmss* jest datą i godziną (zegar 24-godzinny) podczas tworzenia dziennika. Dziennik zawiera szczegółowe informacje o problemie, który blokuje instalację.
 
 Czasami warto zainstalować [najnowsze biblioteki środowiska uruchomieniowego](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
 
-W poniższej tabeli przedstawiono numery kodów i sugerowane rozwiązania.
+W poniższej tabeli wymieniono numery kodu i sugerowanymi metodami rozwiązania.
 
-| Kod | Opis | Rozdzielczość |
+| Code | Opis | Rozdzielczość |
 |:--|:--|:--|
-| 0x17 | Instalator biblioteki wymaga aktualizacji systemu Windows, która nie została zainstalowana. | Zapoznaj się z najnowszym dziennikiem Instalatora biblioteki.<br><br>Jeśli po odwołaniu do `Windows8.1-KB2999226-x64.msu` następuje wiersz `Error 0x80240017: Failed to execute MSU package,` nie ma wymagań wstępnych dotyczących instalacji KB2999226. Postępuj zgodnie z instrukcjami w sekcji wymagania wstępne w [środowisku uruchomieniowym uniwersalnego języka C w artykule systemu Windows](https://support.microsoft.com/kb/2999226) . Aby zainstalować wymagania wstępne, może być konieczne uruchomienie Windows Update i ponowne uruchomienie komputera.<br><br>Uruchom ponownie Instalatora programu Microsoft Dependency Agent. |
+| 0x17 | Instalator biblioteki wymaga aktualizacji Windows, która nie została ona zainstalowana. | Poszukaj w dzienniku Instalatora usługi najnowszej biblioteki.<br><br>Jeśli po odwołaniu do `Windows8.1-KB2999226-x64.msu` następuje wiersz `Error 0x80240017: Failed to execute MSU package,` nie ma wymagań wstępnych dotyczących instalacji KB2999226. Postępuj zgodnie z instrukcjami w sekcji wymagania wstępne w [środowisku uruchomieniowym uniwersalnego języka C w artykule systemu Windows](https://support.microsoft.com/kb/2999226) . Może być konieczne, uruchom usługę Windows Update i ponownie uruchomić wiele razy, aby można było zainstalować wymagania wstępne.<br><br>Ponownie uruchom Instalatora agenta Dependency firmy Microsoft. |
 
-### <a name="post-installation-issues"></a>Problemy po instalacji
+### <a name="post-installation-issues"></a>Problemy z instalacją po
 
-#### <a name="server-doesnt-appear-in-service-map"></a>Serwer nie jest wyświetlany w Service Map
+#### <a name="server-doesnt-appear-in-service-map"></a>Serwer nie jest wyświetlane w mapy usługi
 
 Jeśli instalacja agenta zależności zakończyła się pomyślnie, ale nie widzisz maszyny w Service Map rozwiązaniu:
-* Czy Agent zależności został zainstalowany pomyślnie? Można to sprawdzić, sprawdzając, czy usługa jest zainstalowana i uruchomiona.<br><br>
+* Agent zależności zainstalowano pomyślnie? Aby to sprawdzić przez sprawdzanie, czy usługa jest zainstalowana i uruchomiona.<br><br>
 **Windows**: Wyszukaj usługę o nazwie **Microsoft Dependency Agent**.
 **Linux**: Wyszukaj uruchomiony proces **Microsoft-Dependency-Agent**.
 
@@ -593,13 +593,13 @@ Jeśli instalacja agenta zależności zakończyła się pomyślnie, ale nie widz
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Czy w wynikach pojawiły się wiele zdarzeń? Czy dane są ostatnie? Jeśli tak, Agent Log Analytics działa prawidłowo i komunikuje się z obszarem roboczym. Jeśli nie, sprawdź, czy Agent na komputerze: [log Analytics Agent do rozwiązywania problemów z systemem Windows](../platform/agent-windows-troubleshoot.md) lub [agenta log Analytics dla systemu Linux](../platform/agent-linux-troubleshoot.md).
+Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, Agent Log Analytics działa prawidłowo i komunikuje się z obszarem roboczym. Jeśli nie, sprawdź, czy Agent na komputerze: [log Analytics Agent do rozwiązywania problemów z systemem Windows](../platform/agent-windows-troubleshoot.md) lub [agenta log Analytics dla systemu Linux](../platform/agent-linux-troubleshoot.md).
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Serwer pojawia się w Service Map ale nie ma procesów
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Serwer jest wyświetlany w rozwiązania Service Map, ale żadne procesy nie ma
 
 Jeśli komputer jest widoczny w Service Map, ale nie ma żadnych procesów ani danych połączenia, oznacza to, że Agent zależności został zainstalowany i uruchomiony, ale nie załadowano sterownika jądra. 
 
-Sprawdź `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) lub `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Ostatni wiersz pliku powinien wskazywać, dlaczego jądro nie zostało załadowane. Na przykład jądro może nie być obsługiwane w systemie Linux, jeśli zaktualizowano jądro.
+Sprawdź `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) lub `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Ostatnie wiersze pliku powinno wskazywać, dlaczego jądra nie została załadowana. Na przykład jądra mogą nie być obsługiwane w systemie Linux, jeśli zaktualizowane swoje jądra.
 
 ## <a name="feedback"></a>Opinia
 

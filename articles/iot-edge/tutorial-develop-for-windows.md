@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a56a79798acf4948739b26062ab770fcbb47f7b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 55ae542ed0490248d501cd7c4f50c0a7ba32091a
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707086"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665193"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Samouczek: opracowywanie modułów IoT Edge dla urządzeń z systemem Windows
 
@@ -24,7 +24,7 @@ W tym przewodniku szybki start utworzono urządzenie IoT Edge przy użyciu maszy
 
 Ten samouczek używa przykładu wdrażania  **C# modułu na urządzeniu z systemem Windows**. Ten przykład został wybrany, ponieważ jest to najbardziej typowy scenariusz programistyczny. Jeśli interesuje Cię programowanie w innym języku lub Zaplanowanie wdrożenia usług platformy Azure jako modułów, ten samouczek nadal będzie przydatny do poznania narzędzi programistycznych. Po zrozumieniu koncepcji związanych z programowaniem możesz wybrać preferowany język lub usługę platformy Azure, aby szczegółowe się ze szczegółowymi informacjami. 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj komputer deweloperski.
@@ -45,11 +45,11 @@ Ten samouczek dotyczy urządzeń z systemem Windows, na których działa IoT Edg
 
 W poniższej tabeli przedstawiono obsługiwane scenariusze programowania dla **kontenerów systemu Windows** w Visual Studio Code i Visual Studio.
 
-|   | Visual Studio Code | Program Visual Studio 2017/2019 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Usługi platformy Azure** | Stan usługi Funkcje Azure <br> Usługa Azure Stream Analytics |   |
+| **Usługi platformy Azure** | Stan usługi Funkcje Azure <br> Azure Stream Analytics |   |
 | **Języki** | C#(debugowanie nie jest obsługiwane) | C <br> C# |
-| **Więcej informacji** | [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Narzędzia Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Narzędzia Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
+| **Więcej informacji** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -58,7 +58,7 @@ Komputer deweloperski:
 * System Windows 10 z aktualizacją 1809 lub nowszą.
 * Możesz użyć własnego komputera lub maszyny wirtualnej, w zależności od preferencji programistycznych.
   * Upewnij się, że komputer deweloperski obsługuje wirtualizację zagnieżdżoną. Ta funkcja jest niezbędna do uruchomienia aparatu kontenera, który jest instalowany w następnej sekcji.
-* [Zainstaluj oprogramowanie Git](https://git-scm.com/). 
+* Zainstaluj oprogramowanie [Git](https://git-scm.com/). 
 
 Urządzenie Azure IoT Edge w systemie Windows:
 
@@ -75,7 +75,7 @@ Moduły IoT Edge są spakowane jako kontenery, więc potrzebujesz aparatu konten
 
 Użyj dokumentacji platformy Docker, aby zainstalować program na komputerze deweloperskim: 
 
-* [Zainstaluj program Docker Desktop dla systemu Windows](https://docs.docker.com/docker-for-windows/install/)
+* [Instalowanie programu Docker Desktop dla systemu Windows](https://docs.docker.com/docker-for-windows/install/)
 
   * Gdy instalujesz program Docker Desktop dla systemu Windows, zostanie wyświetlony monit z pytaniem, czy chcesz użyć kontenerów systemu Linux czy Windows. W tym samouczku Użyj **kontenerów systemu Windows**. Aby uzyskać więcej informacji, zobacz [przełączanie między kontenerami systemów Windows i Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
@@ -91,7 +91,7 @@ W tym samouczku przedstawiono kroki deweloperskie dla programu Visual Studio 201
    * Jeśli nie masz jeszcze programu Visual Studio na komputerze deweloperskim, [Zainstaluj program Visual studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) z następującymi obciążeniami: 
 
       * Tworzenie aplikacji na platformie Azure
-      * Programowanie aplikacji klasycznychC++
+      * Programowanie aplikacji klasycznych w języku C++
       * Tworzenie aplikacji dla wielu platform w środowisku .NET Core
 
    * Jeśli masz już program Visual Studio 2019 na komputerze deweloperskim, postępuj zgodnie z instrukcjami w sekcji [modyfikowanie programu Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) , aby dodać wymagane obciążenia.
@@ -158,7 +158,7 @@ Po załadowaniu nowego projektu w oknie programu Visual Studio Poświęć chwil�
 
 1. Otwórz plik **Deployment. Template. JSON** w rozwiązaniu modułu.
 
-1. Znajdź właściwość **registryCredentials** w $edgeAgent żądanych właściwościach i upewnij się, że zawiera ona prawidłowe informacje.
+1. Znajdź właściwość **registryCredentials** w $edgeAgent żądanych właściwościach. Powinien mieć adres rejestru autowypełniany na podstawie informacji podanych podczas tworzenia projektu, a następnie pola username i Password powinny zawierać nazwy zmiennych. Przykład: 
 
    ```json
    "registryCredentials": {
@@ -176,7 +176,7 @@ Po załadowaniu nowego projektu w oknie programu Visual Studio Poświęć chwil�
 
 1. Zapisz zmiany w pliku ENV.
 
-### <a name="review-the-sample-code"></a>Zapoznaj się z przykładowym kodem
+### <a name="review-the-sample-code"></a>Przejrzyj przykładowy kod
 
 Utworzony szablon rozwiązania zawiera przykładowy kod dla modułu IoT Edge. Ten przykładowy moduł po prostu odbiera komunikaty, a następnie przekazuje je. Funkcje potoku przedstawiają ważne koncepcje w IoT Edge, które są zgodne z tym, jak moduły komunikują się ze sobą.
 
@@ -338,5 +338,5 @@ Polecenia w tej sekcji dotyczą urządzenia IoT Edge, a nie komputera dewelopers
 W tym samouczku skonfigurujesz program Visual Studio 2019 na komputerze deweloperskim i wdrożono pierwszy moduł IoT Edge. Teraz, gdy znasz podstawowe pojęcia, spróbuj dodać funkcje do modułu, aby umożliwić przeanalizowanie danych. Wybierz preferowany język: 
 
 > [!div class="nextstepaction"] 
-> 
->  [C](tutorial-c-module-windows.md)[C#](tutorial-csharp-module-windows.md)
+> [C](tutorial-c-module-windows.md)
+> [C#](tutorial-csharp-module-windows.md)

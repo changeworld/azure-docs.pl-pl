@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/15/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468052"
 ---
 ### <a name="regions"></a>Które regiony są dostępne?
 
@@ -22,6 +22,10 @@ ms.locfileid: "74875549"
 ### <a name="publicip"></a>Czy na mojej maszynie wirtualnej jest potrzebny publiczny adres IP?
 
 NIE potrzebujesz publicznego adresu IP na maszynie wirtualnej platformy Azure, z którą nawiązujesz połączenie z usługą Azure bastionu. Usługa bastionu otworzy sesję/połączenie RDP/SSH z maszyną wirtualną za pośrednictwem prywatnego adresu IP maszyny wirtualnej w sieci wirtualnej.
+
+### <a name="is-ipv6-supported"></a>Czy jest obsługiwany protokół IPv6?
+
+W tej chwili protokół IPv6 nie jest obsługiwany. Usługa Azure bastionu obsługuje tylko protokół IPv4.
 
 ### <a name="rdpssh"></a>Czy potrzebuję klienta RDP lub SSH?
 

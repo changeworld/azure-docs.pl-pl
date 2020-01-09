@@ -7,22 +7,22 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 1f7251225184f79fc15c1fccbdc24f47ea624c7b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a501eb8426dd31f1ce63bece132c1065e277b54e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453170"
 ---
 # <a name="what-is-devops"></a>Co to jest metodyka DevOps?
-DevOps (kombinacja "rozwoju" i "operacji") wyróżnia znaczenie komunikacji i współpracy między programistami oprogramowania i produkcyjnymi specjalistami IT przy automatyzowaniu wdrażania zmian oprogramowania i infrastruktury. Koncentruje się na wdrażaniu metod agile i Lean i automatyzowaniu powtarzających się zadań, z jednokrotnym celem, których wersje aplikacji zostały zakończone pomyślnie.
+Słowo "DevOps" pochodzi z kombinacji "rozwoju" i "operacji". DevOps podkreśla znaczenie komunikacji i współpracy między deweloperami oprogramowania i produkcyjnymi specjalistami IT podczas automatyzowania wdrażania zmian oprogramowania i infrastruktury. DevOps koncentruje się na przyjęciu metodologii Agile i Lean i automatyzowaniu powtarzających się zadań. Celem DevOps jest pomyślne wydanie aplikacji.
 
-Firma Microsoft oferuje kompleksowy zestaw [rozwiązań DevOps](https://azure.microsoft.com/solutions/devops/) za pomocą [usługi Azure DevOps](https://azure.microsoft.com/services/devops/) (Cloud) i [Visual Studio App Center](https://azure.microsoft.com/services/app-center/). Te produkty tworzą środowisko robocze, w którym kompilowanie, testowanie i wdrażanie oprogramowania może odbywać się szybko, często i niezawodnie. Pozwalają również organizacjom na osiąganie celów, co pozwala na szybszy i szybkością oferowaną czas wdrażania nowych funkcji, poprawek zabezpieczeń i poprawek błędów.
+Firma Microsoft oferuje kompleksowy zestaw [rozwiązań DevOps](https://azure.microsoft.com/solutions/devops/) za pomocą [usługi Azure DevOps](https://azure.microsoft.com/services/devops/) (Cloud) i [Visual Studio App Center](https://azure.microsoft.com/services/app-center/). Te produkty tworzą środowisko robocze, w którym członkowie zespołu mogą szybko i często kompilować, testować i wdrażać oprogramowanie. Organizacje mogą szybko osiągnąć cele z powodu szybszego szybkością oferowaną czasu wdrażania nowych funkcji, poprawek zabezpieczeń i poprawek błędów.
 
 **Znaczenie DevOps**
 - Przyspiesza cykl życia całego oprogramowania, od przekazania kodu do wdrożenia produkcyjnego.
 - Umożliwia organizacjom szybsze dostarczanie oprogramowania i aktualizacji zabezpieczeń wewnętrznie i klientom.
-- Celem jest zmniejszenie konfliktów, które powstają, gdy deweloperzy koncentrują się na zaspokajaniu wymagań firmy w celu dodania funkcjonalności i zwiększenia użyteczności aplikacji, ale zespoły operacyjne są tradycyjnie bardziej ukierunkowane na stabilność i bezpieczeństwo obliczeń wiejski.
+- Ma na celu zmniejszenie konfliktów, które powstają między zespołami programistycznymi i operacyjnymi. Deweloperzy zwykle koncentrują się na spełnianiu wymagań firmy w celu dodania funkcjonalności i zwiększenia użyteczności aplikacji. Zespoły operacyjne są tradycyjnie bardziej ukierunkowane na stabilność i bezpieczeństwo środowisk obliczeniowych.
 - Zapewnia większą elastyczność, zwiększa elastyczność klientów i skraca czas wprowadzenia na rynek.
-- Rozszerza elastyczność, łącząc osoby, procesy i produkty w celu zapewnienia ciągłego dostarczania wartości użytkownikom końcowym.
-- Praktyki DevOps doprowadziły do obniżenia kosztów, a wszystkie organizacje mają lepszy dostęp do swoich celów, niezależnie od ich działalności.
+- Rozszerza elastyczność, łącząc osoby, procesy i produkty w celu zapewnienia ciągłego dostarczania wartości użytkownikom.
+- Prowadzi do obniżonych kosztów, gdy organizacje przestrzegają praktyk DevOps. Organizacje mogą lepiej osiągnąć swoje cele bez względu na to, jak ich misja.

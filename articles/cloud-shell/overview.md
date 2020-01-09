@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449004"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie Azure Cloud Shell
 Azure Cloud Shell to interaktywna, uwierzytelniona powłoka dostępna dla przeglądarki służąca do zarządzania zasobami platformy Azure.
-Zapewnia ona elastyczność wybierania środowiska powłoki, które najlepiej odpowiada pracy, bash lub PowerShell.
+Oferuje ona elastyczny wybór środowiska powłoki, Bash lub PowerShell, które najlepiej pasuje do sposobu, w jaki wykonujesz swoją pracę.
 
 Wypróbuj program shell.azure.com, klikając poniżej.
 
-[![Uruchom osadzenie](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell uruchamiania")](https://shell.azure.com)
+[![Uruchom osadzenie](https://shell.azure.com/images/launchcloudshell.png "Uruchamianie usługi Azure Cloud Shell")](https://shell.azure.com)
 
 Wypróbuj Azure Portal przy użyciu ikony Cloud Shell.
 
@@ -52,7 +52,7 @@ Cloud Shell jest zarządzany przez firmę Microsoft, dzięki czemu zawiera popul
 Zapoznaj się z pełną [listą narzędzi zainstalowanych w programie Cloud Shell.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Zintegrowany edytor Cloud Shell
-Cloud Shell oferuje zintegrowany edytor tekstu graficznego w oparciu o Edytor Monako "open source". Po prostu Twórz i edytuj pliki konfiguracji, `code .` uruchamiając je w celu bezproblemowego wdrożenia za pomocą interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.
+Cloud Shell oferuje zintegrowany edytor tekstu graficznego w oparciu o Edytor Monako "open source". Po prostu Twórz i edytuj pliki konfiguracyjne, uruchamiając `code .` w celu bezproblemowego wdrożenia za pomocą interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.
 
 [Dowiedz się więcej o edytorze Cloud Shell](using-cloud-shell-editor.md).
 
@@ -70,9 +70,12 @@ Cloud Shell to elastyczne narzędzie, które może być używane z:
 * [Visual Studio Code rozszerzenie konta platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Łączenie magazynu plików Microsoft Azure
-Maszyny Cloud Shell są tymczasowe, ale pliki są utrwalane na dwa sposoby: za pomocą obrazu dysku, a przez zainstalowany udział plików o nazwie `clouddrive`.  Przy pierwszym uruchomieniu Cloud Shell monitowani o utworzenie grupy zasobów, konta magazynu i udziału Azure Files w Twoim imieniu. Jest to krok jednorazowy, który zostanie automatycznie dołączony do wszystkich sesji. Pojedynczy udział plików może być mapowany i będzie używany przez programy bash i PowerShell w Cloud Shell.
+Maszyny Cloud Shell są tymczasowe, ale pliki są utrwalane na dwa sposoby: za pomocą obrazu dysku oraz zainstalowanego udziału plików o nazwie `clouddrive`.  Podczas pierwszego uruchomienia usługa Cloud Shell monituje o utworzenie grupy zasobów, konta magazynu i udziału usługi Azure Files w Twoim imieniu. Jest to krok jednorazowy, który zostanie automatycznie dołączony do wszystkich sesji. Pojedynczy udział plików może być mapowany i będzie używany przez programy bash i PowerShell w Cloud Shell.
 
 Przeczytaj więcej, aby dowiedzieć się, jak zainstalować [nowe lub istniejące konto magazynu](persisting-shell-storage.md) lub poznać [mechanizmy trwałości używane w Cloud Shell](persisting-shell-storage.md#how-cloud-shell-storage-works).
+
+> [!NOTE]
+> Zapora magazynu Azure nie jest obsługiwana dla kont magazynu usługi Cloud Shell.
 
 ## <a name="concepts"></a>Pojęcia
 * Cloud Shell działa na tymczasowym hoście dostępnym dla poszczególnych sesji i poszczególnych użytkowników

@@ -1,22 +1,22 @@
 ---
 title: 'Szybki Start: używanie języka Java do wywoływania interfejsu API REST analiza tekstu'
 titleSuffix: Azure Cognitive Services
-description: Uzyskaj informacje i przykłady kodu, aby szybko rozpocząć korzystanie z interfejs API analizy tekstu na platformie Azure Cognitive Services.
+description: W tym przewodniku szybki start pokazano, jak uzyskać informacje i przykłady kodu, aby szybko rozpocząć korzystanie z interfejs API analizy tekstu na platformie Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: f4bae69f1ce65b98a4b83d50e906a1636833a1fd
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0541438659f25780be0c7bc1c87670cab6d7ca08
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446324"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Szybki Start: używanie języka Java do wywoływania usługi poznawczej platformy Azure analiza tekstu
 <a name="HOLTop"></a>
@@ -37,9 +37,9 @@ Musisz również mieć [punkt końcowy i klucz dostępu](../../cognitive-service
 
 Interfejs API wykrywania języka wykrywa język dokumentu tekstowego przy użyciu [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt Java w ulubionym środowisku IDE (lub nowym folderze na pulpicie). Utwórz klasę o nazwie `DetectLanguage.java`.
 1. Dodaj kod podany poniżej do klasy.
+1. Skopiuj klucz analiza tekstu i punkt końcowy do kodu. 
 1. Upewnij się, że masz zainstalowaną bibliotekę [Gson](https://github.com/google/gson) .
 1. Uruchom program w środowisku IDE lub użyj wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
@@ -96,17 +96,8 @@ public class DetectLanguage {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/languages";
@@ -215,9 +206,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 Interfejs API analizy tonacji wykrywa tonację zestawu rekordów tekstowych przy użyciu [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). W poniższym przykładzie oceniane są dwa dokumenty, jeden w języku angielskim, a drugi w hiszpańskim.
 
-1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt Java w ulubionym środowisku IDE (lub nowym folderze na pulpicie). Utwórz w nim klasę o nazwie `GetSentiment.java`.
 1. Dodaj kod podany poniżej do klasy.
+1. Skopiuj klucz analiza tekstu i punkt końcowy do kodu.
 1. Upewnij się, że masz zainstalowaną bibliotekę [Gson](https://github.com/google/gson) .
 1. Uruchom program w środowisku IDE lub użyj wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
@@ -275,17 +266,8 @@ public class GetSentiment {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/sentiment";
@@ -370,9 +352,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 Interfejs API wyodrębniania kluczowych fraz wyodrębnia kluczowe frazy w dokumencie tekstowym przy użyciu [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). W poniższym przykładzie wyodrębniono frazy kluczowe dla dokumentów w języku angielskim i hiszpańskim.
 
-1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt Java w ulubionym środowisku IDE (lub nowym folderze na pulpicie). Utwórz klasę o nazwie `GetKeyPhrases.java`.
 1. Dodaj kod podany poniżej do klasy.
+1. Skopiuj klucz analiza tekstu i punkt końcowy do kodu. 
 1. Upewnij się, że masz zainstalowaną bibliotekę [Gson](https://github.com/google/gson) .
 1. Uruchom program w środowisku IDE lub użyj wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
@@ -430,17 +412,8 @@ public class GetKeyPhrases {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/keyPhrases";
@@ -544,9 +517,9 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 
 Interfejs API jednostek identyfikuje dobrze znane jednostki w dokumencie tekstowym przy użyciu [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Jednostki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) wyodrębniają wyrazy z tekstu, takie jak "Stany Zjednoczone", a następnie zawierają link do typu i/lub Wikipedia dla tych wyrazów. Typ dla "Stany Zjednoczone" jest `location`, podczas gdy link do witryny Wikipedia jest `https://en.wikipedia.org/wiki/United_States`.  W poniższym przykładzie zidentyfikowano jednostki dla dokumentów w języku angielskim.
 
-1. Utwórz zmienne środowiskowe `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych środowiskowych.
 1. Utwórz nowy projekt Java w ulubionym środowisku IDE (lub nowym folderze na pulpicie). Utwórz w nim klasę o nazwie `GetEntities.java`.
 1. Dodaj kod podany poniżej do klasy.
+1. Skopiuj klucz analiza tekstu i punkt końcowy do kodu. 
 1. Upewnij się, że masz zainstalowaną bibliotekę [Gson](https://github.com/google/gson) .
 1. Uruchom program w środowisku IDE lub użyj wiersza polecenia do uruchomienia (instrukcje w komentarzach do kodu).
 
@@ -604,17 +577,8 @@ public class GetEntities {
     static String endpoint;
 
     public static void Initialize () throws Exception {
-        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
-        subscription_key = System.getenv(subscription_key_var);
-        if (null == subscription_key) {
-            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
-        }
-
-        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
-        endpoint = System.getenv(endpoint_var);
-        if (null == endpoint) {
-            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
-        }
+        subscription_key = "<paste-your-text-analytics-key-here>";
+        endpoint = "<paste-your-text-analytics-endpoint-here>";
     }
 
     static String path = "/text/analytics/v2.1/entities";
@@ -725,7 +689,7 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Analiza tekstu przy użyciu usługi Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
  [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)

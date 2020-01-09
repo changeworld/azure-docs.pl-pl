@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535303"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422947"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Dokumentacja podręcznika obsługi ogólnej Azure Active Directory
 
@@ -90,9 +90,9 @@ Niektóre usługi zarządzania tożsamościami i dostępem wymagają agentów lo
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>Agenci w lokalnych dziennikach rejestrują zalecaną czytelność
 
-- [Rozwiązywanie problemów z serwerem proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+- [Rozwiązywanie problemów z serwera Proxy aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
 - [Rozwiązywanie problemów z samoobsługowym resetowaniem hasła — Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Omówienie łączników serwer proxy aplikacji usługi Azure AD platformy Azure](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
+- [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
 - [Azure AD Connect: Rozwiązywanie problemów z uwierzytelnianiem przekazywanym](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
 - [Rozwiązywanie problemów z kodami błędów dla rozszerzenia serwera NPS usługi Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
 
@@ -106,8 +106,8 @@ Stosowanie najlepszych rozwiązań może pomóc w optymalnym działaniu agentów
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>Zalecane odczyty lokalnego zarządzania agentami
 
-- [Omówienie łączników serwer proxy aplikacji usługi Azure AD platformy Azure](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Uwierzytelnianie przekazywane przez usługę Azure AD — Szybki Start](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Omówienie łączników serwera Proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Uwierzytelnianie przekazywane przez usługę Azure AD — Szybki Start](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Zarządzanie na dużą skalę
 
@@ -131,10 +131,10 @@ Istnieją dwa adresy "od" używane przez usługę Azure AD: <o365mc@email2.micro
 
 - [Przeglądy dostępu w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Powiadomienie o wygaśnięciu certyfikatu aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
-- Powiadomienia usługi aprowizacji aplikacji dla przedsiębiorstw
+- Powiadomienia usługi inicjowania obsługi administracyjnej aplikacji przedsiębiorstwa
 
 Zapoznaj się z poniższą tabelą, aby uzyskać informacje o typie wysyłanych powiadomień i o tym, gdzie je sprawdzić:
 
@@ -166,9 +166,9 @@ Active Directory model warstwy administracyjnej został zaprojektowany tak, aby 
 
 [Model warstwowy](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) składa się z trzech poziomów i zawiera tylko konta administracyjne, a nie konta użytkowników standardowych.
 
-- **Warstwa 0** — bezpośrednią kontrolę tożsamości przedsiębiorstwa w środowisku. Warstwa 0 obejmuje konta, grupy i inne zasoby, które mają bezpośrednią lub pośrednią kontrolę administracyjną Active Directory lesie, domen lub kontrolerów domeny oraz wszystkie znajdujące się w niej zasoby. Czułość zabezpieczeń wszystkich zasobów warstwy 0 jest taka sama jak w praktyce.
-- **Warstwa 1** kontroli nad serwerami i aplikacjami przedsiębiorstwa. Zasoby warstwy 1 obejmują systemy operacyjne serwera, usługi w chmurze i aplikacje dla przedsiębiorstw. Konta administratorów warstwy 1 mają kontrolę administracyjną nad znaczną wartością biznesową, która jest hostowana w tych zasobach. Typowym przykładem roli jest Administratorzy serwerów, którzy utrzymują te systemy operacyjne z możliwością wpływu na wszystkie usługi w przedsiębiorstwie.
-- **Warstwa 2** kontroli nad stacjami roboczymi i urządzeniami użytkowników. Konta administratorów warstwy 2 mają kontrolę administracyjną nad znaczną wartością biznesową hostowaną na stacjach roboczych i urządzeniach użytkownika. Przykłady obejmują administratorów pomocy technicznej i komputerów, ponieważ mogą one mieć wpływ na integralność niemal dowolnych danych użytkownika.
+- **Warstwa 0** — bezpośrednią kontrolę tożsamości przedsiębiorstwa w środowisku. Warstwa 0 obejmuje konta, grupy i inne zasoby, które mają bezpośrednią lub pośrednią kontrolę administracyjną nad lasem usługi Active Directory, domenami, kontrolerami domeny i wszystkimi zasobami znajdującymi się w tym lesie. Czułość zabezpieczeń wszystkich zasobów warstwy 0 jest równoważna ich wzajemnej, efektywnej kontroli.
+- **Warstwa 1** kontroli nad serwerami i aplikacjami przedsiębiorstwa. Zasoby warstwy 1 obejmują systemy operacyjne serwerów, usługi w chmurze i aplikacje używane w przedsiębiorstwie. Konta administratorów w warstwie 1 umożliwiają prowadzenie nadzoru nad znaczną częścią elementów generujących wartość biznesową, które są hostowane w tych zasobach. Typowym przykładem takiej roli są administratorzy serwerów, którzy obsługują te systemy operacyjne i mogą zmieniać działanie wszystkich usług w przedsiębiorstwie.
+- **Warstwa 2** kontroli nad stacjami roboczymi i urządzeniami użytkowników. Konta administratorów w warstwie 2 umożliwiają prowadzenie nadzoru nad znaczną częścią elementów generujących wartość biznesową, które są hostowane na urządzeniach i stacjach roboczych użytkowników. Przykłady obejmują administratorów pomocy technicznej, którzy mają wpływ na spójność prawie wszystkich danych użytkowników.
 
 Zablokuj dostęp do lokalnych składników tożsamości, takich jak Azure AD Connect, AD FS i usługi SQL w taki sam sposób, jak w przypadku kontrolerów domeny.
 

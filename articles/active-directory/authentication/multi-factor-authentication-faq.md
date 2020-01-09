@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86cce0ee2a4966e2c2c8d74ad63a50976c199eb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425139"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Często zadawane pytania dotyczące usługi Azure Multi-Factor Authentication
 
@@ -26,9 +26,12 @@ Często zadawane pytania odpowiedzą się na często zadawane pytania dotyczące
 
 > [!IMPORTANT]
 > Od 1 lipca 2019 firma Microsoft nie będzie już oferować serwera MFA dla nowych wdrożeń. Nowi klienci, którzy chcą wymagać uwierzytelniania wieloskładnikowego od użytkowników, powinni korzystać z usługi Azure Multi-Factor Authentication opartej na chmurze. Istniejący klienci, którzy aktywowali serwer usługi MFA przed 1 lipca, będą mogli pobrać najnowszą wersję, przyszłe aktualizacje i generować poświadczenia aktywacji w zwykły sposób.
+> 
+> Licencjonowanie oparte na zużyciu nie jest już dostępne dla nowych klientów obowiązujące od 1 września 2018.
+> Od 1 września 2018 nowych dostawców uwierzytelniania nie można już tworzyć. Istniejący dostawcy uwierzytelniania mogą nadal być używane i aktualizowane. Uwierzytelnianie wieloskładnikowe będzie nadal mieć dostępną funkcję w Azure AD — wersja Premium licencji.
+
 > [!NOTE]
 > Informacje udostępnione poniżej dotyczące Serwer Multi-Factor Authentication platformy Azure mają zastosowanie tylko do użytkowników, którzy mają już uruchomiony serwer usługi MFA.
-
 
 **P: w jaki sposób platforma Azure Serwer Multi-Factor Authentication obsłużyć dane użytkowników?**
 
@@ -202,7 +205,7 @@ Istnieje kilka powodów, dla których użytkownicy mogą uzyskać monit o zareje
 - Organizacja utworzyła i włączyła zasady rejestracji usługi MFA, które zostały zastosowane do użytkownika.
 - Użytkownik zarejestrował się wcześniej do uwierzytelniania wieloskładnikowego, ale wybiera metodę weryfikacji, która została wyłączona przez administratora. W związku z tym użytkownik musi ponownie wykonać rejestrację usługi MFA, aby wybrać nową domyślną metodę weryfikacji.
 
-## <a name="errors"></a>Błędy
+## <a name="errors"></a>Errors
 
 **P: co należy zrobić, Jeśli zobaczysz komunikat o błędzie "żądanie uwierzytelnienia nie dotyczy aktywowanego konta" podczas korzystania z powiadomień aplikacji mobilnej?**
 

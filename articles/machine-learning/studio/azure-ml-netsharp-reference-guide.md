@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839746"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427668"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Przewodnik dotyczący języka specyfikacji sieci NET # neuronowych dla Azure Machine Learning Studio (klasyczny)
 
@@ -56,7 +56,7 @@ Ponadto NET # obsługuje cztery następujące rodzaje zaawansowanych pakietów p
 
 ## <a name="supported-customizations"></a>Obsługiwane dostosowania
 
-Architektura modeli sieci neuronowych utworzonych w klasycznej wersji Azure Machine Learning Studio może być szeroko dostosowywana przy użyciu net #. Możesz:
+Architektura modeli sieci neuronowych utworzonych w Azure Machine Learning Studio (klasyczny) może być szeroko dostosowywana przy użyciu usługi net #. Przekonaj się:
 
 + Utwórz ukryte warstwy i kontroluj liczbę węzłów w każdej warstwie.
 + Określ, w jaki sposób warstwy mają być połączone ze sobą.
@@ -89,17 +89,17 @@ Na przykład następująca instrukcja definiuje stałą `x`:
 
 `Const X = 28;`
 
-Aby zdefiniować dwie lub więcej stałych jednocześnie, należy ująć nazwy i wartości identyfikatorów w nawiasach klamrowych i oddzielić je średnikami. Na przykład:
+Aby zdefiniować dwie lub więcej stałych jednocześnie, należy ująć nazwy i wartości identyfikatorów w nawiasach klamrowych i oddzielić je średnikami. Przykład:
 
 `Const { X = 28; Y = 4; }`
 
-Prawa strona każdego wyrażenia przypisania może być liczbą całkowitą, liczbą rzeczywistą, wartością logiczną (true lub false) lub wyrażeniem matematycznym. Na przykład:
+Prawa strona każdego wyrażenia przypisania może być liczbą całkowitą, liczbą rzeczywistą, wartością logiczną (true lub false) lub wyrażeniem matematycznym. Przykład:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Deklaracja warstwy
 
-Deklaracja warstwy jest wymagana. Definiuje rozmiar i źródło warstwy, łącznie z pakietami połączeń i atrybutami. Instrukcja deklaracji zaczyna się od nazwy warstwy (dane wejściowe, ukryte lub wyjściowe), po której następuje wymiary warstwy (spójna kolekcja liczb całkowitych). Na przykład:
+Deklaracja warstwy jest wymagana. Definiuje rozmiar i źródło warstwy, łącznie z pakietami połączeń i atrybutami. Instrukcja deklaracji zaczyna się od nazwy warstwy (dane wejściowe, ukryte lub wyjściowe), po której następuje wymiary warstwy (spójna kolekcja liczb całkowitych). Przykład:
 
 ```Net#
 input Data auto;
@@ -129,14 +129,14 @@ Deklaracja warstwy dla warstwy możliwej do przeprowadzenia (ukryte lub wyjścio
 Obsługiwane są następujące funkcje wyjściowe:
 
 + sigmoid
-+ liniowej
++ liniowe
 + softmax
 + rlinear
 + kwadratowe
-+ Sqrt
++ sqrt
 + srlinear
-+ ABS
-+ TANH —
++ abs
++ tanh
 + brlinear
 
 Na przykład następująca deklaracja używa funkcji **softmax** :
@@ -169,7 +169,7 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ W predykacie dla `ByRow`, `s` jest parametrem reprezentującym indeks do prostokątnego tablicy węzłów warstwy wejściowej, `Pixels`i `d` jest parametr reprezentujący indeks do tablicy węzłów ukrytych warstwy. , `ByRow`. Typ obu `s` i `d` jest krotką liczb całkowitych długości dwóch. Koncepcyjnie, `s` zakresy wszystkich par liczb całkowitych z `0 <= s[0] < 10` i `0 <= s[1] < 20`i `d` zakresy dla wszystkich par liczb całkowitych, z `0 <= d[0] < 10` i `0 <= d[1] < 12`.
++ W predykacie dla `ByRow`, `s` jest parametrem reprezentującym indeks do prostokątnego tablicy węzłów warstwy wejściowej, `Pixels`i `d` jest parametr reprezentujący indeks do tablicy węzłów warstwy danych wejściowych, `ByRow`. Typ obu `s` i `d` jest krotką liczb całkowitych długości dwóch. Koncepcyjnie, `s` zakresy wszystkich par liczb całkowitych z `0 <= s[0] < 10` i `0 <= s[1] < 20`i `d` zakresy dla wszystkich par liczb całkowitych, z `0 <= d[0] < 10` i `0 <= d[1] < 12`.
 
 + Po prawej stronie wyrażenia predykatu istnieje warunek. W tym przykładzie dla każdej wartości `s` i `d` w taki sposób, że warunek ma wartość true, między węzłem warstwy źródłowej a docelowym węzłem warstwy znajduje się krawędź. W związku z tym wyrażenie filtru wskazuje, że pakiet zawiera połączenie z węzła zdefiniowanego przez `s` do węzła zdefiniowanego przez `d` we wszystkich przypadkach, gdzie s [0] jest równe d [0].
 
@@ -259,7 +259,7 @@ Aby uzyskać więcej informacji o warstwach puli, zobacz następujące artykuły
 
 **Normalizacja odpowiedzi** to lokalny schemat normalizacji, który został po raz pierwszy wprowadzony przez Geoffrey Hinton, et al, w [klasyfikacji papierowej ImageNet z głębokiego splotowych neuronowych](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
-Normalizacja odpowiedzi jest używana do uogólniania w sieci neuronowych. Gdy jeden neuron jest wyzwalany na wysokim poziomie aktywacji, warstwa normalizacji odpowiedzi lokalnej pomija poziom aktywacji otaczającego neurons. Jest to realizowane przy użyciu trzech parametrów (`α`, `β`i `k`) oraz struktury splotowych (lub kształtu klubu). Każdy neuron w warstwie docelowej **y** odpowiada neuron **x** w warstwie źródłowej. Poziom aktywacji **y** jest przyznany przez poniższą formułę, gdzie `f` jest poziomem aktywacji neuron, a `Nx` jest jądrem (lub zestawem zawierającym neurons w okolicy **x**), zgodnie z definicją w następującym splotowych XML
+Normalizacja odpowiedzi jest używana do uogólniania w sieci neuronowych. Gdy jeden neuron jest wyzwalany na wysokim poziomie aktywacji, warstwa normalizacji odpowiedzi lokalnej pomija poziom aktywacji otaczającego neurons. Jest to realizowane przy użyciu trzech parametrów (`α`, `β`i `k`) oraz struktury splotowych (lub kształtu klubu). Każdy neuron w warstwie docelowej **y** odpowiada neuron **x** w warstwie źródłowej. Poziom aktywacji **y** jest podawany przez następującą formułę, gdzie `f` jest poziomem aktywacji neuron, a `Nx` jest jądrem (lub zestawem zawierającym neurons w sąsiedztwie **x**), zgodnie z definicją w następującej strukturze splotowych:
 
 ![Formuła dla struktury splotowych](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
@@ -460,6 +460,6 @@ output Digit [10] from Hid3 all;
 + Łączna liczba węzłów można obliczyć przy użyciu deklarowanej wartości wymiaru warstwy [50, 5, 5] w następujący sposób: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Ponieważ `Sharing[d]` ma wartość false tylko dla `d == 0`, liczba jądra jest `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Potwierdzeń
+## <a name="acknowledgements"></a>Potwierdzanie
 
 Język NET # do dostosowywania architektury sieci neuronowych został opracowany przez firmę Microsoft przez Shon Katzenberger (architekt, Machine Learning) i Alexey Kamenev (inżynier oprogramowania, Microsoft Research). Jest używany wewnętrznie w przypadku projektów i aplikacji usługi Machine Learning w zakresie od wykrywania obrazów do analizy tekstu. Aby uzyskać więcej informacji, zobacz [neuronowych sieci w Azure Machine Learning Studio — wprowadzenie do usługi NET #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

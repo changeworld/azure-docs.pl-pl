@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a1fb3b1260beb6bd85363f4611dae23cd3d321f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427347"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure
 
@@ -26,10 +26,10 @@ Temat, który przedstawia opcje przenoszenia danych do usługi Azure SQL Databas
 
 Poniższa tabela podsumowuje Opcje przenoszenia danych do programu SQL Server na maszynie wirtualnej platformy Azure.
 
-| <b>ŹRÓDŁO</b> | <b>MIEJSCE DOCELOWE: Program SQL Server na maszynie Wirtualnej platformy Azure</b> |
+| <b>ŹRÓDŁO</b> | <b>Miejsce docelowe: SQL Server na maszynie Wirtualnej platformy Azure</b> |
 | --- | --- |
-| <b>Plik prosty</b> |1. <a href="#insert-tables-bcp">Narzędzie wiersza polecenia zbiorczego kopiowania (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">Zapytanie SQL wstawiania zbiorczego </a><br> 3. <a href="#sql-builtin-utilities">Graficznych narzędzi wbudowanych w programie SQL Server</a> |
-| <b>Na lokalnym serwerze SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Wdrażanie bazy danych programu SQL Server do kreatora Microsoft Azure VM</a><br> 2. <a href="#export-flat-file">Eksportuj do pliku prostego </a><br> 3. <a href="#sql-migration">Kreator migracji bazy danych SQL </a> <br> 4. <a href="#sql-backup">Baza danych kopii zapasowej i przywracanie </a><br> |
+| <b>Plik prosty</b> |1. <a href="#insert-tables-bcp">Narzędzie do kopiowania zbiorczego wiersza polecenia (bcp)</a><br> 2. <a href="#insert-tables-bulkquery">zbiorczo Wstaw zapytanie SQL</a><br> 3. <a href="#sql-builtin-utilities">graficzne wbudowane narzędzia w SQL Server</a> |
+| <b>Na lokalnym serwerze SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Wdróż bazę danych SQL Server w kreatorze Microsoft Azure VM</a><br> 2. <a href="#export-flat-file">wyeksportuj do pliku prostego</a><br> 3. <a href="#sql-migration">Kreator migracji SQL Database</a> <br> 4. <a href="#sql-backup">Tworzenie kopii zapasowej i przywracanie bazy danych</a><br> |
 
 Należy pamiętać, że w tym dokumencie przyjęto założenie, że polecenia SQL są wykonywane z programu SQL Server Management Studio lub Visual Studio Explorer bazy danych.
 
@@ -42,7 +42,7 @@ Należy pamiętać, że w tym dokumencie przyjęto założenie, że polecenia SQ
 W tym samouczku przyjęto założenie, że masz:
 
 * **Subskrypcji platformy Azure**. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
-* **Konta usługi Azure storage**. Użyjesz konta usługi Azure storage do przechowywania danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) artykułu. Po utworzeniu konta magazynu, należy uzyskać klucz konta, które umożliwiają dostęp do magazynu. Zobacz [zarządzanie kluczami dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
+* **Konta usługi Azure storage**. Użyjesz konta usługi Azure storage do przechowywania danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) artykułu. Po utworzeniu konta magazynu, należy uzyskać klucz konta, które umożliwiają dostęp do magazynu. Zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
 * Zainicjowano obsługę administracyjną **programu SQL Server na maszynie Wirtualnej platformy Azure**. Aby uzyskać instrukcje, zobacz [Konfigurowanie maszyny wirtualnej serwera SQL Azure jako serwera IPython Notebook na potrzeby zaawansowanej analizy](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * Zainstalowany i skonfigurowany **programu Azure PowerShell** lokalnie. Aby uzyskać instrukcje, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
@@ -90,11 +90,11 @@ CREATE TABLE <tablename>
 Jeśli dane, które są przenoszone jest duża, można przyspieszyć rzeczy przez jednoczesne wykonywanie wielu poleceń narzędzia BCP równolegle w skrypcie programu PowerShell.
 
 > [!NOTE]
-> **Pozyskiwanie danych big data** w celu zoptymalizowania danych ładowania dla dużych i bardzo dużych zestawów danych, Partycjonowanie tabel bazy danych logicznych i fizycznych przy użyciu wielu grup plików i tabel partycji. Aby uzyskać więcej informacji na temat tworzenia i ładowanie danych do tabel partycji SQL, zobacz [równoległe tabel partycji SQL obciążenia](parallel-load-sql-partitioned-tables.md).
+> Pozyskiwanie **danych Big Data** Aby zoptymalizować ładowanie danych pod kątem dużych i bardzo dużych zestawów danych, Podziel swoje logiczne i fizyczne tabele bazy z wieloma grupami plików i tabelami partycji. Aby uzyskać więcej informacji na temat tworzenia i ładowanie danych do tabel partycji SQL, zobacz [równoległe tabel partycji SQL obciążenia](parallel-load-sql-partitioned-tables.md).
 >
 >
 
-Przykładowy skrypt programu PowerShell pokazuje wstawia równoległych, przy użyciu narzędzia bcp:
+Poniższy przykładowy skrypt programu PowerShell demonstruje równoległe wstawienia przy użyciu narzędzia bcp:
 
 ```powershell
 $NO_OF_PARALLEL_JOBS=2

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e5aa41023e1d7f84e8de095d13835d5ebdf66f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434866"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Definiowanie nowego typu urządzenia Azure IoT Edge w aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -47,7 +47,7 @@ Ponadto w tym samouczku utworzysz szablon urządzenia bramy środowiska. Urządz
 * Umożliwia relacje z innymi modelami możliwości urządzeń.
 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz nowy szablon urządzenia Azure IoT Edge.
@@ -400,4 +400,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Teraz, po utworzeniu szablonu urządzenia w aplikacji IoT Central platformy Azure, możesz to zrobić w następujący sposób:
 
 > [!div class="nextstepaction"]
-> [Połącz urządzenie](./tutorial-connect-pnp-device.md)
+> [Połącz urządzenie brzegowe](./tutorial-add-edge-as-leaf-device.md)

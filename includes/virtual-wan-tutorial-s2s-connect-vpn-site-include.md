@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bcc4af837cc28a18345e49cd39ddf88d24e44dd8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450834"
 ---
 1. Wybierz pozycję **Połącz Lokacje sieci VPN** , aby otworzyć stronę **łączenie witryn** .
 
@@ -22,13 +22,13 @@ ms.locfileid: "73488912"
    Wypełnij następujące pola:
 
    * Wprowadź klucz wstępny. Jeśli klucz nie zostanie wprowadzony, platforma Azure automatycznie wygeneruje je automatycznie.
-   * Wybierz protokół i ustawienia protokołu IPsec. Odwołaj się do domyślnych/niestandardowych szczegółów protokołu IPSec (Umieść link na stronie)
+   * Wybierz protokół i ustawienia protokołu IPsec. Zapoznaj się z tematem [domyślne/niestandardowe szczegóły protokołu IPSec] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
    * Wybierz odpowiednią opcję **propagacji trasy domyślnej**. Opcja **Włącz** umożliwia koncentratorowi wirtualnemu propagowanie rozkierowanej trasy domyślnej do tego połączenia. Ta flaga włącza propagację trasy domyślnej do połączenia tylko wtedy, gdy trasa domyślna jest już wykorzystana przez koncentrator wirtualnych sieci WAN w wyniku wdrożenia zapory w koncentratorze lub jeśli w innej połączonej lokacji włączono tunelowanie wymuszone. Trasa domyślna nie pochodzi z wirtualnego koncentratora sieci WAN.
 
 2. Wybierz przycisk **Połącz**.
 3. W ciągu kilku minut lokacja będzie zawierać stan połączenia i łączności.
 
-   ![Stany](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **Stan połączenia:** Jest to stan zasobu platformy Azure służący do nawiązywania połączenia, które łączy lokację sieci VPN z bramą sieci VPN centrum platformy Azure. Po pomyślnym zakończeniu tej operacji płaszczyzny kontroli usługa Azure VPN Gateway i lokalne urządzenie sieci VPN przejdzie do ustanowienia łączności.
 

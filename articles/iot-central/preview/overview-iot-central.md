@@ -3,18 +3,18 @@ title: Co to jest usługa Azure IoT Central | Microsoft Docs
 description: Azure IoT Central to platforma aplikacji IoT, która upraszcza tworzenie rozwiązań IoT i pomaga w zmniejszeniu obciążenia i kosztów operacji zarządzania IoT oraz rozwoju. Ten artykuł zawiera omówienie funkcji usługi Azure IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 12/10/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 52504fb8333b286407b3f2df8f962da59b80ac53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434848"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co to jest usługa Azure IoT Central (funkcje w wersji zapoznawczej)?
 
@@ -41,15 +41,11 @@ Ten artykuł zawiera opis IoT Central:
 > [!Note]
 > Te znane problemy dotyczą tylko aplikacji IoT Central w wersji zapoznawczej.
 
-- Reguły nie obsługują wszystkich akcji (tylko wiadomości e-mail).
-- W przypadku typów złożonych — reguły, analiza i grupy urządzeń nie są obsługiwane.
 - Ciągły eksport danych nie obsługuje formatu Avro (niezgodność).
-- Symulowane urządzenia nie obsługują wszystkich typów złożonych.
 - GEOJSON nie jest obecnie obsługiwany.
 - Kafelek mapy nie jest obecnie obsługiwany.
 - Zadania nie obsługują typów złożonych.
 - Typy schematów tablicy nie są obsługiwane.
-- Eksportowanie szablonu aplikacji i kopiowanie aplikacji nie są obsługiwane.
 - Obsługiwane są tylko zestawy SDK dla urządzeń C i Node. js.
 - Jest on dostępny tylko w lokalizacjach Stany Zjednoczone i Europy.
 - Modele możliwości urządzeń muszą mieć wszystkie interfejsy zdefiniowane wewnętrznie w tym samym pliku.
@@ -104,7 +100,7 @@ Jako Konstruktor rozwiązań można także dostosować interfejs użytkownika ap
 - Konfigurowanie niestandardowych pulpitów nawigacyjnych ułatwiających operatorom odnajdywanie szczegółowych informacji i szybsze rozwiązywanie problemów.
 - Konfigurowanie niestandardowych analiz w celu eksplorowania danych serii czasu na połączonych urządzeniach.
 
-## <a name="connect-your-devices"></a>Łączenie urządzeń
+## <a name="connect-your-devices"></a>Podłącz swoje urządzenia
 
 Po zdefiniowaniu przez konstruktora typów urządzeń, które mogą łączyć się z aplikacją, deweloper urządzenia tworzy kod do uruchamiania na urządzeniach. Deweloper urządzenia tworzy kod urządzenia przy użyciu zestawów [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) typu „open source” firmy Microsoft. Te zestawy SDK mają szeroką obsługę języków, platform i protokołów, aby sprostać potrzebom do łączenia urządzeń z aplikacją IoT Central. Zestawy SDK ułatwiają zaimplementowanie następujących możliwości urządzeń:
 
@@ -149,7 +145,7 @@ Każda subskrypcja platformy Azure ma domyślne przydziały, które mogą mieć 
 
 Teraz, gdy masz przegląd IoT Central, poniżej przedstawiono sugerowane następne kroki:
 
-- Zapoznaj się z różnicami między [IoT Central i akceleratorami rozwiązań usługi Azure IoT](../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json).
+- Zapoznaj się z dostępnymi [technologiami i usługami platformy Azure służącymi do tworzenia rozwiązań IoT](../../iot-fundamentals/iot-services-and-technologies.md).
 - Zapoznanie się z [interfejsem użytkownika usługi Azure IoT Central](overview-iot-central-tour.md).
 - Rozpoczęcie pracy przez [utworzenie aplikacji usługi Azure IoT Central](quick-deploy-iot-central.md).
 - Dowiedz się więcej o usłudze [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md)

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie przeglądu dostępu do grup lub aplikacji — Azure Active Directory | Microsoft Docs
+title: Tworzenie przeglądu dostępu do grup & aplikacji — Azure AD
 description: Dowiedz się, jak utworzyć przegląd dostępu dla członków grupy lub dostępu do aplikacji w Azure Active Directory przeglądy dostępu.
 services: active-directory
 author: msaburnley
@@ -15,14 +15,14 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 230fb40c8e3a100d2fdfa0af6b40c93c3e5b47d2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 583eb62e6eeaaa799d2ea75261ee511fb8ddb7ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499723"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422668"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu do grup lub aplikacji w przeglądach dostępu usługi Azure AD
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu do grup i aplikacji w przeglądach dostępu usługi Azure AD
 
 Dostęp do grup i aplikacji dla pracowników i Gości zmienia się wraz z upływem czasu. Aby zmniejszyć ryzyko związane ze starymi przypisaniami dostępu, Administratorzy mogą używać Azure Active Directory (Azure AD) do tworzenia przeglądów dostępu dla członków grupy lub dostępu do aplikacji. Jeśli musisz rutynowo przeglądać dostęp, możesz również utworzyć cykliczne przeglądy dostępu. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [Zarządzanie dostępem użytkowników](manage-user-access-with-access-reviews.md) i [Zarządzanie dostępem gościa](manage-guest-access-with-access-reviews.md).
 
@@ -87,7 +87,7 @@ Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć lice
 
     Aby wyświetlić listę programów, przejdź do strony przeglądy dostępu i wybierz pozycję **programy**. Jeśli jesteś administratorem globalnym lub rolą administratora użytkownika, możesz utworzyć dodatkowe programy. Na przykład można wybrać opcję posiadania jednego programu dla każdej inicjatywy zgodności lub celu prowadzenia działalności biznesowej. Jeśli program nie jest już potrzebny i nie ma żadnych kontrolek, można go usunąć.
 
-### <a name="upon-completion-settings"></a>Ustawienia działań po zakończeniu
+### <a name="upon-completion-settings"></a>Po zakończeniu ustawień
 
 1. Aby określić, co się stanie po zakończeniu przeglądu, rozwiń sekcję **po zakończeniu ustawień** .
 
@@ -100,7 +100,7 @@ Aby uzyskać więcej informacji, zobacz, [którzy użytkownicy muszą mieć lice
     - **Bez zmian — nie** zmieniaj dostępu użytkownika
     - **Usuwanie dostępu** — Usuwanie dostępu użytkownika
     - **Zatwierdzanie dostępu** — zatwierdzanie dostępu użytkownika
-    - **Zapoznaj** się z zaleceniami — zapoznaj się z zaleceniami systemu dotyczącymi odmowy lub zatwierdzenia ciągłego dostępu użytkownika
+    - Zapoznaj się z **zaleceniami** — zapoznaj się z zaleceniami systemu dotyczącymi odmowy lub zatwierdzenia ciągłego dostępu użytkownika
 
 ### <a name="advanced-settings"></a>Ustawienia zaawansowane
 

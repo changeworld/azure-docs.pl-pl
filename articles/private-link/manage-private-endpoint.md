@@ -2,17 +2,17 @@
 title: Zarządzanie połączeniem prywatnego punktu końcowego na platformie Azure
 description: Dowiedz się, jak zarządzać połączeniami prywatnego punktu końcowego na platformie Azure
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232532"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452959"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Zarządzanie połączeniem prywatnego punktu końcowego
 Łącze prywatne platformy Azure działa w modelu przepływu wywołań zatwierdzania, w którym odbiorca usługi linku prywatnego może zażądać połączenia z dostawcą usług w celu korzystania z usługi. Dostawca usług może następnie zdecydować, czy zezwolić konsumentowi na nawiązanie połączenia. Link prywatny platformy Azure umożliwia dostawcom usług Zarządzanie połączeniem prywatnego punktu końcowego w swoich zasobach. Ten artykuł zawiera instrukcje dotyczące zarządzania połączeniami prywatnego punktu końcowego.
@@ -30,8 +30,8 @@ W poniższej tabeli przedstawiono różne akcje dostawcy usług oraz Stany poł�
 |---------|---------|---------|
 |Brak    |    Oczekujące     |    Połączenie jest tworzone ręcznie i oczekuje na zatwierdzenie przez właściciela zasobu link prywatny.       |
 |Zatwierdzenie    |  Approved (Zatwierdzono)       |  Połączenie zostało automatycznie lub ręcznie zatwierdzone i jest gotowe do użycia.     |
-|Reject     | Odrzucono        | Połączenie zostało odrzucone przez właściciela zasobu link prywatny.        |
-|Remove    |  Odłączony       | Połączenie zostało usunięte przez właściciela zasobu linku prywatnego, prywatny punkt końcowy zmieni się na format i powinien zostać usunięty w celu oczyszczenia.        |
+|Reject     | Odrzucone        | Połączenie zostało odrzucone przez właściciela zasobu link prywatny.        |
+|Usuń    |  Odłączony       | Połączenie zostało usunięte przez właściciela zasobu linku prywatnego, prywatny punkt końcowy zmieni się na format i powinien zostać usunięty w celu oczyszczenia.        |
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Zarządzanie połączeniami prywatnego punktu końcowego w zasobach usługi Azure PaaS

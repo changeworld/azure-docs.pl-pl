@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c4351afe7781f4340dfd943828d65e94efbdc0a7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120967"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659308"
 ---
 # <a name="networking-limit-increase"></a>Zwiększanie limitu sieci
 
@@ -27,7 +27,7 @@ Możesz poprosić o zwiększenie za pośrednictwem bloku **Pomoc i obsługa tech
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "pomoc i obsługa techniczna platformy Azure" dostępnego w Azure Portal. 
 
-1. W obszarze https://portal.azure.comwybierz pozycję **Pomoc i obsługa techniczna**.
+1. W obszarze https://portal.azure.com wybierz pozycję **Pomoc i obsługa techniczna**.
 
     ![Pomoc i obsługa techniczna](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -64,13 +64,13 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy tec
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy technicznej za pomocą bloku "użycie i limit przydziału" platformy Azure dostępnego w Azure Portal. 
 
-1. W obszarze https://portal.azure.comwybierz pozycję **subskrypcje**.
+1. W obszarze https://portal.azure.com wybierz pozycję **subskrypcje**.
 
     ![Subskrypcje](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 
-    ![Wybieranie subskrypcji](./media/resource-manager-core-quotas-request/select-subscription.png)
+    ![Wybierz subskrypcję](./media/resource-manager-core-quotas-request/select-subscription.png)
 
 3. Wybierz **użycie i przydziały**
 
@@ -84,4 +84,4 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć żądanie pomocy tec
 
 ## <a name="about-networking-limits"></a>Informacje o limitach sieci
 
-Aby dowiedzieć się więcej na temat limitów sieci, zobacz sekcję dotyczącą [sieci](../azure-subscription-service-limits.md#networking-limits) na stronie limity lub nasza liczba często zadawanych pytań dotyczących sieci
+Aby dowiedzieć się więcej na temat limitów sieci, zobacz sekcję dotyczącą [sieci](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) na stronie limity lub nasza liczba często zadawanych pytań dotyczących sieci

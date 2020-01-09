@@ -8,21 +8,87 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ff6f24e30febd57a3a9740ec72a927225b37933
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 56c46b8f2804e37544c94ec2d6ced7e8879b1ffa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367131"
 ---
 # <a name="json-claims-transformations"></a>Przekształcenia oświadczeń JSON
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 W tym artykule przedstawiono przykłady użycia przekształceń oświadczeń JSON schematu platformy Identity Experience w Azure Active Directory B2C (Azure AD B2C). Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
+
+## <a name="generatejson"></a>GenerateJson
+
+Aby wygenerować ciąg JSON, użyj wartości lub stałych. Ciąg ścieżki następujący zapis kropki jest używany do wskazania, gdzie wstawić dane do ciągu JSON. Po podzieleniu według kropek wszystkie liczby całkowite są interpretowane jako indeks tablicy JSON, a wartości inne niż liczby całkowite są interpretowane jako indeks obiektu JSON.
+
+| Element | TransformationClaimType | Typ danych | Uwagi |
+| ---- | ----------------------- | --------- | ----- |
+| Oświadczenie inputclaim | Dowolny ciąg następujący po kropce | string | Wykryto pliku JSON, w którym zostanie wstawiona wartość żądania. |
+| InputParameter | Dowolny ciąg następujący po kropce | string | Wykryto w formacie JSON, w którym zostanie wstawiona stała wartość ciągu. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | string | Wygenerowany ciąg JSON. |
+
+Poniższy przykład generuje ciąg JSON na podstawie wartości "e-mail" i "OTP" oraz ciągów stałych.
+
+```XML
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
+    <InputClaim ClaimTypeReferenceId="otp" TransformationClaimType="personalizations.0.dynamic_template_data.otp" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="template_id" DataType="string" Value="d-4c56ffb40fa648b1aa6822283df94f60"/>
+    <InputParameter Id="from.email" DataType="string" Value="service@contoso.com"/>
+    <InputParameter Id="personalizations.0.subject" DataType="string" Value="Contoso account email verification code"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Przykład
+
+Następujące przekształcanie oświadczeń wyprowadza oświadczenie ciągu JSON, które będzie treścią żądania wysłanego do SendGrid (dostawca poczty e-mail innej firmy). Struktura obiektu JSON jest definiowana przez identyfikatory w notacji kropkowej obiektu InputParameters i TransformationClaimTypes InputClaims. Liczby w zapisie kropkowym oznaczają tablice. Wartości pochodzą z wartości InputClaims i właściwości InputParameters "".
+
+- Oświadczenia wejściowe:
+  - **adres e-mail**, personalizacje typów zgłaszanych roszczeń **. 0. do. 0. adres e-mail**: "someone@example.com"
+  - personalizacje **OTP**, typy zgłaszania typu odszkodowania **. 0. dynamic_template_data. OTP** "346349"
+- Parametr wejściowy:
+  - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
+  - **z adresu e-mail**: "service@contoso.com"
+  - **personalizacje. 0. podmiot** "kod weryfikacyjny E-mail konta Contoso"
+- Zgłoszenie wyjściowe:
+  - **elemencie requestbody**: wartość JSON
+
+```JSON
+{
+  "personalizations": [
+    {
+      "to": [
+        {
+          "email": "someone@example.com"
+        }
+      ],
+      "dynamic_template_data": {
+        "otp": "346349",
+        "verify-email" : "someone@example.com"
+      },
+      "subject": "Contoso account email verification code"
+    }
+  ],
+  "template_id": "d-989077fbba9746e89f3f6411f596fb96",
+  "from": {
+    "email": "service@contoso.com"
+  }
+}
+```
 
 ## <a name="getclaimfromjson"></a>GetClaimFromJson
 
@@ -228,4 +294,3 @@ Zgłoszenie wyjściowe:
   }
 }
 ```
-

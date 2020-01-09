@@ -1,5 +1,6 @@
 ---
-title: Funkcje stylu mapy w Azure Maps | Microsoft Docs
+title: Ustawianie stylu mapy w Azure Maps przy użyciu Android SDK
+titleSuffix: Azure Maps
 description: Dowiedz się więcej na temat Azure Maps funkcji związanych z stylem Android SDK.
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcc73c63e7c9d804d01df98551aa51b81d98d07
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1a898508e5c99f6cb8be46605c156106b47c08f3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844852"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528100"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Ustawianie stylu mapy przy użyciu Azure Maps Android SDK
 
@@ -27,7 +28,7 @@ Aby ukończyć proces w tym artykule, należy zainstalować [Azure Maps Android 
 
 ## <a name="set-map-style-in-the-layout"></a>Ustawianie stylu mapy w układzie
 
-Styl mapy można ustawić w pliku układu dla klasy Activity. Edytuj **układ > res > activity_main. XML**, tak aby wyglądał następująco:
+Styl mapy można ustawić w pliku układu dla klasy Activity. Edytuj **> układ zasobów > activity_main. XML**, tak aby wyglądał wyglądać następująco:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,15 +52,15 @@ Styl mapy można ustawić w pliku układu dla klasy Activity. Edytuj **układ > 
 </FrameLayout>
 ```
 
-Powyższy atrybut ustawia styl mapy na **grayscale_dark.** `mapcontrol_style` 
+Powyższy atrybut `mapcontrol_style` ustawia styl mapy do **grayscale_dark**. 
 
 <center>
 
-![styl — grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![stylu grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
 ## <a name="set-map-style-in-the-activity-class"></a>Ustaw styl mapy w klasie Activity
 
-Styl mapy można ustawić w klasie Activity. Skopiuj poniższy fragment kodu do metody `MainActivity.java` **OnCreate ()** klasy. Spowoduje to ustawienie stylu mapy na **satellite_road_labels**.
+Styl mapy można ustawić w klasie Activity. Skopiuj poniższy fragment kodu do metody **OnCreate ()** klasy `MainActivity.java`. Spowoduje to ustawienie stylu mapy na **satellite_road_labels**.
 
 ```Java
 mapControl.onReady(map -> {

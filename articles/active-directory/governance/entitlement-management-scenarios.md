@@ -1,5 +1,5 @@
 ---
-title: Typowe scenariusze związane z zarządzaniem prawami w usłudze Azure AD — Azure Active Directory
+title: Typowe scenariusze związane z zarządzaniem prawami — Azure AD
 description: Zapoznaj się z ogólnymi krokami, które należy wykonać w przypadku typowych scenariuszy w Azure Active Directory Zarządzanie uprawnieniami.
 services: active-directory
 documentationCenter: ''
@@ -16,18 +16,18 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422503"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Typowe scenariusze zarządzania prawami w usłudze Azure AD
 
 Istnieje kilka sposobów konfigurowania zarządzania prawami dla organizacji. Jednak jeśli dopiero zaczynasz pracę, warto zrozumieć typowe scenariusze dla administratorów, właścicieli wykazu, menedżerów pakietów dostępu, osób zatwierdzających i osoby żądające.
 
-## <a name="delegate"></a>Wierz
+## <a name="delegate"></a>Deleguj
 
 ### <a name="administrator-delegate-management-of-resources"></a>Administrator: delegowanie zarządzania zasobami
 
@@ -61,7 +61,7 @@ Istnieje kilka sposobów konfigurowania zarządzania prawami dla organizacji. Je
 
 1. [Logowanie się do portalu My Access](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. Znajdź pakiet dostępu
-1. [Żądaj dostępu](entitlement-management-request-access.md#request-an-access-package)
+1. [Poproś o dostęp](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Osoba zatwierdzająca: zatwierdzanie żądań do zasobów
 
@@ -94,7 +94,7 @@ Istnieje kilka sposobów konfigurowania zarządzania prawami dla organizacji. Je
 
 1. Znajdź link pakietu dostępu otrzymany od kontaktu
 1. [Logowanie się do portalu My Access](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [Żądaj dostępu](entitlement-management-request-access.md#request-an-access-package)
+1. [Poproś o dostęp](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Osoba zatwierdzająca: zatwierdzanie żądań do zasobów
 

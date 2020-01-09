@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak zaktualizować konfigurację magaz
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: cbd958dd71d2d62f7b4c7e8d66ab7e56dc679a51
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390537"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizowanie konfiguracji magazynu Recovery Services platformy Azure przy użyciu interfejsu API REST
 
@@ -88,11 +88,11 @@ Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu API R
 |Element ETag     |         |   Ciąg      |  Opcjonalny element eTag       |
 |location     |  true       |Ciąg         |   Lokalizacja zasobu      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
-|tags     |         | Obiekt        |     Tagi zasobów    |
+|tagów     |         | Obiekt        |     Tagi zasobów    |
 
 #### <a name="example-request-body"></a>Przykładowa treść żądania
 
-Poniższy przykład służy do aktualizowania nietrwałego usuwania sate na wartość "Disabled".
+Poniższy przykład służy do aktualizowania stanu nietrwałego usuwania do "Disabled".
 
 ```json
 {

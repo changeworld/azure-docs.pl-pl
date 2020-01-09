@@ -3,14 +3,14 @@ title: Programowanie zespołowe za pomocą środowiska Node. js i Visual Studio 
 services: azure-dev-spaces
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
+description: W tym samouczku pokazano, jak używać Azure Dev Spaces i Visual Studio Code do tworzenia zespołu w aplikacji node. js w usłudze Azure Kubernetes Service
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 374a6f0944c7d2fe8d97ea2fa4610ba63598ee2e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e2124d6c3f903f6a9faa6c41a2015b7198faf42d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438133"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Programowanie zespołowe przy użyciu środowiska Node. js i Visual Studio Code z Azure Dev Spaces
 

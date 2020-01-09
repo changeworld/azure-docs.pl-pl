@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c840cf452f047177c1244caedf09d976f0514961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435551"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów Apache Hadoop w usłudze HDInsight przy użyciu szablonów Menedżer zasobów
 
@@ -25,10 +25,10 @@ W tym artykule przedstawiono kilka sposobów tworzenia klastrów usługi Azure H
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Subskrypcja platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* [Subskrypcji platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure PowerShell i/lub interfejs wiersza polecenia platformy Azure.
 
-### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
+### <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
 
 Szablon Menedżer zasobów ułatwia tworzenie następujących zasobów dla aplikacji w ramach jednej, skoordynowanej operacji:
 * Klastry usługi HDInsight i ich zasoby zależne (takie jak domyślne konto magazynu).
@@ -40,18 +40,18 @@ Przykłady szablonów usługi HDInsight można znaleźć w [szablonach szybkiego
 
 Aby uzyskać więcej informacji na temat szablonów Menedżer zasobów, zobacz następujące artykuły i przykłady:
 
-* [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Wdrażanie aplikacji za pomocą szablonów Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md)
 * Dokumentacja szablonu [Microsoft. HDInsight/klastrów](/azure/templates/microsoft.hdinsight/allversions)
 * [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Generowanie szablonów
 
-Menedżer zasobów umożliwia eksportowanie szablonu Menedżer zasobów z istniejących zasobów w ramach subskrypcji przy użyciu różnych narzędzi. Możesz użyć wygenerowanego szablonu, aby dowiedzieć się więcej o składni szablonu lub aby zautomatyzować ponowne wdrożenie rozwiązania, w razie potrzeby. Aby uzyskać więcej informacji, zobacz [Eksportowanie szablonów](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+Menedżer zasobów umożliwia eksportowanie szablonu Menedżer zasobów z istniejących zasobów w ramach subskrypcji przy użyciu różnych narzędzi. Możesz użyć wygenerowanego szablonu, aby dowiedzieć się więcej o składni szablonu lub aby zautomatyzować ponowne wdrożenie rozwiązania, w razie potrzeby. Aby uzyskać więcej informacji, zobacz [Eksportowanie szablonów](../azure-resource-manager/templates/export-template-portal.md).
 
 ## <a name="deploy-using-the-portal"></a>Wdrażanie przy użyciu portalu
 
-Szablon Menedżer zasobów można wdrożyć przy użyciu Azure Portal. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów z szablonu niestandardowego](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Szablon Menedżer zasobów można wdrożyć przy użyciu Azure Portal. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów z szablonu niestandardowego](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="deploy-using-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 
@@ -83,5 +83,5 @@ W tym artykule przedstawiono kilka sposobów tworzenia klastra usługi HDInsight
 * Aby zapoznać się z przykładem wdrażania zasobów za pośrednictwem biblioteki klienta .NET, zobacz [wdrażanie zasobów przy użyciu bibliotek .NET i szablonu](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Aby zapoznać się z szczegółowym przykładem wdrażania aplikacji, zobacz temat [udostępnianie i wdrażanie mikrousług na platformie Azure](../app-service/deploy-complex-application-predictably.md).
 * Aby uzyskać wskazówki dotyczące wdrażania rozwiązania w różnych środowiskach, zobacz [Development and test environments in Microsoft Azure](../solution-dev-test-environments.md) (Środowiska projektowe i testowe na platformie Microsoft Azure).
-* Aby dowiedzieć się więcej na temat sekcji szablonu Azure Resource Manager, zobacz [Tworzenie szablonów](../azure-resource-manager/resource-group-authoring-templates.md).
+* Aby dowiedzieć się więcej na temat sekcji szablonu Azure Resource Manager, zobacz [Tworzenie szablonów](../azure-resource-manager/templates/template-syntax.md).
 * Aby zapoznać się z listą funkcji, których można użyć w szablonie Azure Resource Manager, zobacz [funkcje szablonu](../azure-resource-manager/resource-group-template-functions.md).

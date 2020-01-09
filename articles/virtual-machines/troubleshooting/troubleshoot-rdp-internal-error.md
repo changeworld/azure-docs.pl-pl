@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dac941b621c8df6b5c242bb5d0e0d5cdd1f864a9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9eb7a80599966345d90cc4a079b586e743ca37d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451222"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Występuje błąd wewnętrzny podczas próby połączenia z Maszyną wirtualną platformy Azure za pośrednictwem pulpitu zdalnego
 
 W tym artykule opisano błędem, które mogą wystąpić podczas próby nawiązania połączenia z maszyną wirtualną (VM) w systemie Microsoft Azure.
 > [!NOTE]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -54,7 +54,7 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej lub [napraw maszy
 Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do strony [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline) sekcji.
 
-#### <a name="step-1-check-the-rdp-port"></a>Czynności 1 Sprawdź port RDP
+#### <a name="step-1-check-the-rdp-port"></a>Krok 1. sprawdzenie portu RDP
 
 1. W wystąpieniu programu PowerShell, użyj [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) do sprawdzenia, czy port 8080 jest używany przez inne aplikacje:
@@ -86,7 +86,7 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
     3. [Aktualizowanie sieciowej grupy zabezpieczeń dla nowego portu](../../virtual-network/security-overview.md) w portalu Azure portem RDP.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Ustawianie prawidłowych uprawnień dla certyfikatu z podpisem własnym protokołu RDP
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Uprawnienia są poprawne certyfikatu z podpisem własnym protokołu RDP
 
 1.  W wystąpieniu programu PowerShell uruchom następujące polecenia pojedynczo, aby odnowić certyfikat z podpisem własnym protokołu RDP:
 
@@ -135,7 +135,7 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
 4. Uruchom ponownie maszynę Wirtualną, a następnie spróbuj Start Podłączanie pulpitu zdalnego z maszyną wirtualną. Jeśli błąd będzie nadal występował, przejdź do następnego kroku.
 
-Krok 3: Włącz wszystkie obsługiwane wersje protokołu TLS
+#### <a name="step-3-enable-all-supported-tls-versions"></a>Krok 3: Włącz wszystkie obsługiwane wersje protokołu TLS
 
 Klient protokołu RDP korzysta z protokołu TLS 1.0 jako domyślnego protokołu. Jednak to można zmienić do protokołu TLS 1.1 stał się nowym standardem. Wyłączenie protokołu TLS 1.1 na maszynie Wirtualnej, połączenie nie powiedzie się.
 1.  W wystąpieniu CMD Włącz protokół TLS:
@@ -197,7 +197,7 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>Resetuj uprawnienia do folderu MachineKeys
 
 1. Otwórz sesję wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**).
-2. Uruchom poniższy skrypt. W tym skrypcie przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest F. Zastąp tę literę dysku z odpowiednią wartością dla maszyny Wirtualnej.
+2. Uruchom następujący skrypt. W tym skrypcie przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest F. Zastąp tę literę dysku z odpowiednią wartością dla maszyny Wirtualnej.
 
         Md F:\temp
 

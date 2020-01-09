@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122143"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530922"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Zarządzanie usługą Azure cache for Redis za pomocą Azure PowerShell
 > [!div class="op_single_selector"]
@@ -76,7 +76,7 @@ lub
 
 Aby utworzyć pamięć podręczną w chmurze Azure Government, użyj jednej z następujących lokalizacji.
 
-* USGov Wirginia
+* USGov Virginia
 * USGov Iowa
 
 Aby uzyskać więcej informacji na temat chmury Azure Government, zobacz [przewodnik dewelopera](../azure-government-developer-guide.md) [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) i Microsoft Azure Government.
@@ -95,7 +95,7 @@ Aby utworzyć pamięć podręczną w chmurze platformy Azure w Chinach, użyj je
 * Chiny Wschodnie
 * Chiny Północne
 
-Aby uzyskać więcej informacji o chmurze platformy Azure w Chinach, zobacz [AzureChinaCloud for Azure obsługiwane przez firmę 21Vianet w Chinach](http://www.windowsazure.cn/).
+Aby uzyskać więcej informacji o chmurze platformy Azure w Chinach, zobacz [AzureChinaCloud for Azure obsługiwane przez firmę 21Vianet w Chinach](https://www.windowsazure.cn/).
 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Aby nawiązać połączenie z Microsoft Azure (Niemcy)
 Aby nawiązać połączenie z Microsoft Azure (Niemcy), użyj jednego z następujących poleceń.
@@ -124,12 +124,12 @@ Poniższa tabela zawiera właściwości i opisy często używanych parametrów p
 | ResourceGroupName |Nazwa grupy zasobów, w której ma zostać utworzona pamięć podręczna | |
 | Rozmiar |Rozmiar pamięci podręcznej. Prawidłowe wartości to: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Liczba fragmentów do utworzenia podczas tworzenia pamięci podręcznej Premium z włączoną obsługą klastrowania. Prawidłowe wartości to: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| SKU |Określa jednostkę SKU pamięci podręcznej. Prawidłowe wartości to: Basic, standard, Premium |Standardowa (Standard) |
+| JSZ |Określa jednostkę SKU pamięci podręcznej. Prawidłowe wartości to: Basic, standard, Premium |Standardowa |
 | RedisConfiguration |Określa ustawienia konfiguracji Redis. Aby uzyskać szczegółowe informacje na temat każdego ustawienia, zobacz następującą tabelę [Właściwości RedisConfiguration](#redisconfiguration-properties) . | |
-| EnableNonSslPort |Wskazuje, czy port bez obsługi protokołu SSL jest włączony. |False |
+| EnableNonSslPort |Wskazuje, czy port bez obsługi protokołu SSL jest włączony. |Fałsz |
 | MaxMemoryPolicy |Ten parametr jest przestarzały — zamiast tego należy użyć RedisConfiguration. | |
 | StaticIP |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podany, jeden z nich zostanie wybrany dla Ciebie z podsieci. | |
-| Subnet |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa nazwę podsieci, w której ma zostać wdrożona pamięć podręczna. | |
+| Podsieć |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa nazwę podsieci, w której ma zostać wdrożona pamięć podręczna. | |
 | VirtualNetwork |W przypadku hostowania pamięci podręcznej w sieci wirtualnej określa identyfikator zasobu sieci wirtualnej, w którym ma zostać wdrożona pamięć podręczna. | |
 | KeyType |Określa, który klucz dostępu ma zostać wygenerowany ponownie podczas odnawiania kluczy dostępu. Prawidłowe wartości to: podstawowa, pomocnicza | |
 
@@ -147,7 +147,7 @@ Poniższa tabela zawiera właściwości i opisy często używanych parametrów p
 | set-max-intset-entries |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
 | zset-max-ziplist-entries |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
 | zset-max-ziplist-value |Konfiguruje [optymalizację pamięci](https://redis.io/topics/memory-optimization) dla małych typów zagregowanych danych |Standardowa i Premium |
-| bazy danych |Konfiguruje liczbę baz danych. Tę właściwość można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
+| databases |Konfiguruje liczbę baz danych. Tę właściwość można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Aby utworzyć pamięć podręczną platformy Azure dla usługi Redis
 Nowe wystąpienia usługi Azure cache dla wystąpień Redis są tworzone za pomocą polecenia cmdlet [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) .

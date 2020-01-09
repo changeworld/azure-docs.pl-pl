@@ -1,5 +1,5 @@
 ---
-title: Ogranicz użytkowników zarejestrowanych Azure Active Directory aplikacji | Azure
+title: Ograniczanie aplikacji usługi Azure AD do zestawu użytkowników | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak ograniczyć dostęp do aplikacji zarejestrowanych w usłudze Azure AD do wybranego zestawu użytkowników.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424462"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Instrukcje: ograniczanie aplikacji usługi Azure AD do zestawu użytkowników
 
@@ -46,7 +46,7 @@ Opcja ograniczenia aplikacji do określonego zestawu użytkowników lub grup zab
 
 Istnieją dwa sposoby tworzenia aplikacji z włączonym przypisaniem użytkownika. Jeden z nich wymaga roli **administratora globalnego** , a druga nie.
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>Aplikacje dla przedsiębiorstw (wymaga roli administratora globalnego)
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Aplikacje dla przedsiębiorstw (wymaga roli administratora globalnego)
 
 1. Przejdź do [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny**.
 1. Na górnym pasku wybierz konto zalogowane. 

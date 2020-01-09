@@ -1,6 +1,5 @@
 ---
-title: Tworzenie aplikacji Angular przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB — łączenie z usługą Cosmos DB za pomocą wtyczki Mongoose
-titleSuffix: Azure Cosmos DB
+title: Połącz aplikację kątową z interfejsem API Azure Cosmos DB dla MongoDB za pomocą Mongoose
 description: W tym samouczku opisano sposób tworzenia aplikacji w środowisku Node.js przy użyciu platformy Angular i programu Express do zarządzania danymi przechowywanymi w usłudze Cosmos DB. W tej części wtyczka Mongoose zostanie użyta do nawiązania połączenia z usługą Azure Cosmos DB.
 author: johnpapa
 ms.service: cosmos-db
@@ -12,12 +11,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ba893eeb8c2560397f3524d1042566dbafee7d1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69616419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444708"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Tworzenie aplikacji Angular przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB — łączenie z usługą Cosmos DB za pomocą wtyczki Mongoose
 
@@ -228,11 +227,11 @@ Następnie należy skonfigurować trasy, które będą obsługiwać adresy URL d
 
 Poświęćmy teraz chwilę na zapoznanie się z wcześniejszym kodem. Najpierw wchodzimy do pliku index.js, który konfiguruje serwer węzłów. Zwróć uwagę, że ten plik konfiguruje i definiuje Twoje trasy. Następnie plik routes.js komunikuje się z usługą hero i informuje ją o konieczności pobrania funkcji, takich jak **getHeroes**, oraz przekazania żądania i odpowiedzi. Plik hero.service.js pobiera model i nawiązuje połączenie z bazą danych Mongo. Następnie po wywołaniu wykonuje funkcję **getHeroes** i zwraca odpowiedź 200. 
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 Następnie uruchom aplikację, wykonując poniższe kroki:
 
-1. W programie Visual Studio Code zapisz wszystkie zmiany. Po lewej stronie wybierz przycisk **debugowania** ![ikona debugowania w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png), po czym wybierz przycisk **uruchamiania debugowania** ![ikona debugowania w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
+1. W programie Visual Studio Code zapisz wszystkie zmiany. Po lewej stronie wybierz przycisk **debugowania**![ikona debugowania w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png), po czym wybierz przycisk **uruchamiania debugowania**![ikona debugowania w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
 
 1. Teraz przełącz się na przeglądarkę. Otwórz **Narzędzia deweloperskie** i **kartę Sieć**. Przejdź do `http://localhost:3000`, a zobaczysz naszą aplikację.
 

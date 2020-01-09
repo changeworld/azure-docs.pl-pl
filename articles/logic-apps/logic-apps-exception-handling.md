@@ -1,6 +1,6 @@
 ---
 title: Obsługa błędów i wyjątków
-description: Informacje o wzorcach obsługi błędów i wyjątków w Azure Logic Apps
+description: Dowiedz się, jak obsługiwać błędy i wyjątki, które występują w zautomatyzowanych zadaniach i przepływach pracy utworzonych przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: dereklee
@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa197a04b91f398bda2e402b18a638b9bf0ab9a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453392"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w Azure Logic Apps
 
@@ -32,7 +32,7 @@ Oto typy zasad ponawiania prób:
 | **Domyślne** | Te zasady wysyłają do czterech ponownych prób w *wykładniczo rosnących* odstępach czasu, które są skalowane o 7,5 sekund, ale są ograniczone do zakresu od 5 do 45 sekund. | 
 | **Interwał wykładniczy**  | Te zasady czekają losowy interwał wybrany z wykładniczo rosnącego zakresu przed wysłaniem kolejnego żądania. | 
 | **Stały interwał**  | Te zasady czekają określony interwał przed wysłaniem kolejnego żądania. | 
-| **Dawaj**  | Nie wysyłaj ponownie żądania. | 
+| **Brak**  | Nie wysyłaj ponownie żądania. | 
 ||| 
 
 Aby uzyskać informacje na temat limitów ponowień zasad, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -76,7 +76,7 @@ Można też ręcznie określić zasady ponawiania w sekcji `inputs` dla akcji lu
 | <*ponownych prób*> | Liczba całkowita | Liczba ponownych prób, które muszą zawierać się w przedziale od 1 do 90 | 
 ||||
 
-*Obowiązkowe*
+*Opcjonalne*
 
 | Wartość | Typ | Opis |
 |-------|------|-------------|
@@ -162,7 +162,7 @@ W tej tabeli przedstawiono sposób, w jaki Logic Apps generuje jednorodną zmien
 
 Każda akcja aplikacji logiki deklaruje akcje, które muszą zakończyć się przed rozpoczęciem tej akcji, podobnie jak w przypadku określania kolejności kroków w przepływie pracy. W definicji akcji właściwość **runAfter** definiuje tę kolejność i jest obiektem opisującym, które akcje i stan akcji wykonują akcję.
 
-Domyślnie wszystkie akcje dodane w Projektancie aplikacji logiki są ustawiane do uruchomienia po poprzednim kroku, gdy wynik poprzedniego kroku **zakończy się pomyślnie**. Można jednak dostosować wartość **runAfter** , tak aby akcje były wyzwalane, gdy poprzednie działania spowodują wynik **niepowodzenia**, **pominięte**lub kombinację tych wartości. Na przykład, aby dodać element do określonego tematu Service Bus po niepowodzeniu konkretnej akcji **Insert_Row** , można użyć tego przykładowej definicji **runAfter** :
+Domyślnie wszystkie akcje dodane w Projektancie aplikacji logiki są ustawiane do uruchomienia po poprzednim kroku, gdy wynik poprzedniego kroku **zakończy się pomyślnie**. Można jednak dostosować **runAfter** tak, aby akcje zostać wywołane podczas poprzedniej akcji powoduje jako **,** **pomijane**, lub kombinacji tych wartości. Na przykład, aby dodać element do określonego tematu Service Bus po niepowodzeniu konkretnej akcji **Insert_Row** , można użyć tego przykładowej definicji **runAfter** :
 
 ```json
 "Send_message": {
@@ -190,7 +190,7 @@ Domyślnie wszystkie akcje dodane w Projektancie aplikacji logiki są ustawiane 
 }
 ```
 
-Właściwość **runAfter** jest ustawiona do uruchamiania, gdy akcja **Insert_Row** stanie się **niepowodzeniem**. Aby uruchomić **akcję, jeśli stan akcji to powodzenie**, **Niepowodzenie**lub **pominięto**, użyj następującej składni:
+**RunAfter** uruchomiony, jeśli właściwość ma wartość **Insert_Row** stanu akcji jest. Aby uruchomić akcję, gdy stan działania to **zakończyło się pomyślnie**, lub **pomijane**, należy użyć następującej składni:
 
 ```json
 "runAfter": {
@@ -209,11 +209,11 @@ Właściwość **runAfter** jest ustawiona do uruchamiania, gdy akcja **Insert_R
 
 Podobnie jak w przypadku wykonywania pojedynczych akcji za pomocą właściwości **runAfter** , można grupować akcje w obrębie [zakresu](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). Zakresy można używać w celu logicznego grupowania akcji, oceny stanu zagregowanego zakresu i wykonywania akcji na podstawie tego stanu. Po zakończeniu wszystkich akcji w zakresie, sam zakres uzyskuje własny stan. 
 
-Aby sprawdzić stan zakresu, można użyć tych samych kryteriów, które są używane do sprawdzania stanu uruchomienia aplikacji logiki, takich jak **sukces**, **Niepowodzenie**i tak dalej. 
+Aby sprawdzić stan zakresu, można użyć takich samych kryteriów używanych do sprawdzenia stanu uruchomienia aplikacji logiki, takich jak **zakończyło się pomyślnie**, i tak dalej. 
 
-Domyślnie, gdy wszystkie akcje tego zakresu zakończyły się powodzeniem, stan zakresu jest oznaczony jako **zakończony powodzeniem**. Jeśli Ostatnia akcja w zakresie jest wynikiem **niepowodzenia** lub **przerwania**, stan zakresu jest oznaczony jako **Niepowodzenie**. 
+Domyślnie, gdy wszystkie akcje tego zakresu zakończyły się powodzeniem, stan zakresu jest oznaczony jako **zakończony powodzeniem**. Jeśli powoduje ostatecznych działań w zakresie lub **przerwania**, stan zakresu jest oznaczony jako **nie powiodło się**. 
 
-Aby przechwytywać wyjątki w **nieprawidłowym** zakresie i uruchamiać akcje, które obsługują te błędy, można użyć właściwości **runAfter** dla tego zakresu **zakończonych niepowodzeniem** . W ten sposób, jeśli *jakiekolwiek* akcje w zakresie zakończą się niepowodzeniem i używasz właściwości **runAfter** dla tego zakresu, można utworzyć pojedynczą akcję w celu przechwycenia błędów.
+Przechwytują wyjątki w **nie powiodło się** zakres i wykonywania działań, które obsługi tych błędów, można użyć **runAfter** właściwości, dla którego zakresu. W ten sposób, jeśli *jakiekolwiek* akcje w zakresie zakończą się niepowodzeniem i używasz właściwości **runAfter** dla tego zakresu, można utworzyć pojedynczą akcję w celu przechwycenia błędów.
 
 Aby uzyskać ograniczenia dotyczące zakresów, zobacz [limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md).
 

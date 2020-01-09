@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania — skalowanie (Citus) — Azure Database for PostgreSQL
+title: Azure SQL Database często zadawane pytania dotyczące skalowania
 description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure SQL Database w warstwie usług skalowania — zwykle nazywanej bazą danych w skali.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974023"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615002"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database często zadawane pytania dotyczące skalowania
 
@@ -157,7 +157,7 @@ Dziennik transakcji ze skalą jest praktycznie nieskończony. Nie trzeba martwi�
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>`tempdb` skalowanie w miarę wzrostu rozmiaru bazy danych
 
-Baza danych `tempdb` znajduje się w lokalnym magazynie dysków SSD i jest konfigurowana na podstawie wymaganego rozmiaru obliczeń. `tempdb` jest zoptymalizowany pod kątem zapewniania maksymalnej wydajności. nie można skonfigurować rozmiaru `tempdb` i jest on zarządzany przez Ciebie.
+Baza danych `tempdb` znajduje się w lokalnym magazynie dysków SSD i ma rozmiar proporcjonalnie do wymaganego rozmiaru obliczeń. `tempdb` jest zoptymalizowany pod kątem zapewniania maksymalnej wydajności. nie można skonfigurować rozmiaru `tempdb` i jest on zarządzany przez Ciebie.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Czy rozmiar bazy danych jest automatycznie zwiększany, czy muszę zarządzać rozmiarem plików danych
 
@@ -165,7 +165,7 @@ Rozmiar bazy danych jest automatycznie zwiększany podczas wstawiania/pozyskiwan
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Co to jest najmniejszy rozmiar bazy danych, który jest obsługiwany przez funkcję preskalowania lub zaczyna się od
 
-10 GB.
+40 GB. Tworzona jest baza danych ze skalą o rozmiarze rozpoczynającym 10 GB. Następnie rozpocznie się zwiększanie o 10 GB co 10 minut, aż osiągnie rozmiar 40 GB. Każdy z tych 10 GB Chucks jest przypisywany na innym serwerze stronicowania w celu zapewnienia większej liczby operacji we/wy i większej równoległości operacji wejścia/wyjścia. Ze względu na tę optymalizację nawet w przypadku wybrania początkowej bazy danych o rozmiarze mniejszym niż 40 GB baza danych zostanie powiększona do co najmniej 40 GB.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>W jaki sposób zwiększa się rozmiar bazy danych
 
@@ -268,13 +268,13 @@ Tak.
 
 Cel punktu odzyskiwania to 0 min. Cel RTO jest krótszy niż 10 minut, niezależnie od rozmiaru bazy danych. 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Czy kopie zapasowe dużych baz danych wpływają na wydajność obliczeń na serwerze podstawowym
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Czy kopia zapasowa bazy danych wpływa na wydajność obliczeń w przypadku replik podstawowych lub pomocniczych
 
-Nie. Kopie zapasowe są zarządzane przez podsystem magazynowania i wykorzystują migawki magazynu. Nie wpływają one na obciążenie użytkownika podstawowego.
+Nie. Kopie zapasowe są zarządzane przez podsystem magazynowania i wykorzystują migawki magazynu. Nie wpływają one na obciążenia użytkowników.
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Czy można wykonać przywracanie geograficzne za pomocą bazy danych w ramach skalowania
 
-Tak.  Przywracanie geograficzne jest w pełni obsługiwane.
+Tak.  Przywracanie geograficzne jest w pełni obsługiwane. W przeciwieństwie do przywracania do punktu w czasie, przywracanie geograficzne może wymagać długotrwałej operacji na danych.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Czy można skonfigurować replikację geograficzną za pomocą bazy danych ze skalowaniem
 
@@ -296,7 +296,7 @@ Nie. Baza Base nie jest obsługiwana w Azure SQL Database.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Czy funkcja wieloskalowania obsługuje język R i Python
 
-Nie. Język R i Python nie są obsługiwane w Azure SQL Database.
+Obecnie nie.
 
 ### <a name="are-compute-nodes-containerized"></a>Czy węzły obliczeniowe są kontenerami
 
@@ -306,11 +306,11 @@ Nie. Procesy skalowania są uruchamiane na [Service Fabric](https://azure.micros
 
 ### <a name="how-much-write-throughput-can-i-push-in-a-hyperscale-database"></a>Jak dużo przepływności zapisu można wypchnąć w bazie danych w skali
 
-Limit przepływności dziennika transakcji jest ustawiany na 100 MB/s dla dowolnego rozmiaru obliczeń w skali. Możliwość osiągnięcia tego współczynnika zależy od wielu czynników, w tym między innymi typu obciążenia, konfiguracji klienta i posiadania wystarczającej pojemności obliczeniowej w podstawowej replice obliczeniowej w celu utworzenia dziennika na tym wskaźniku.
+Limit przepływności dziennika transakcji jest ustawiony na 100 MB/s dla dowolnego rozmiaru obliczeń w skali. Możliwość osiągnięcia tego współczynnika zależy od wielu czynników, w tym między innymi typu obciążenia, konfiguracji klienta i posiadania wystarczającej pojemności obliczeniowej w podstawowej replice obliczeniowej w celu utworzenia dziennika na tym wskaźniku.
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>Ile operacji we/wy na największe obliczenie
 
-Liczba operacji we/wy i czas oczekiwania na sekundę różnią się w zależności od wzorców obciążenia. Jeśli dostęp do danych jest buforowany w replice obliczeniowej, zostanie wyświetlona taka sama wydajność we/wy jak w przypadku lokalnego dysku SSD.
+Liczba operacji we/wy i czas oczekiwania na sekundę różnią się w zależności od wzorców obciążenia. Jeśli dostęp do danych jest buforowany w replice obliczeniowej, zobaczysz podobną wydajność we/wy, tak jak w przypadku lokalnego dysku SSD.
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>Czy na moją przepływność wpływają kopie zapasowe
 
@@ -318,7 +318,11 @@ Nie. Obliczenia są oddzielone od warstwy magazynowania. Eliminuje to wpływ na 
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>Czy moja przepływność jest narażona na dostęp w przypadku udostępniania dodatkowych replik obliczeniowych
 
-Ponieważ magazyn jest współużytkowany i nie ma żadnej bezpośredniej replikacji fizycznej między podstawową i pomocniczą repliką obliczeniową, techniczną nie wpłynie to na przepływność na replice podstawowej. Firma Microsoft może jednak ograniczyć ciągłość zapisywania obciążenia, aby umożliwić wykonywanie dzienników na replikach pomocniczych i serwerach stron, a nawet uniknąć niskiej wydajności odczytu w replikach pomocniczych.
+Ponieważ magazyn jest współużytkowany i nie ma żadnej bezpośredniej replikacji fizycznej między podstawową i pomocniczą repliką obliczeniową, nie ma bezpośrednio wpływać na przepływność w replice podstawowej, dodając repliki pomocnicze. Można jednak ograniczyć ciągłie zapisywanie obciążeń na serwerze podstawowym, aby umożliwić wykonywanie dzienników na replikach pomocniczych i na serwerach stron, aby uniknąć niskiej wydajności odczytu w replikach pomocniczych.
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>Jak mogę diagnozowanie i rozwiązywanie problemów z wydajnością w bazie danych w ramach skalowania
+
+W przypadku większości problemów z wydajnością, w szczególności tych, które nie zostały umieszczone w wydajności magazynu, mają zastosowanie typowe kroki diagnostyki SQL Server i rozwiązywania problemów. Aby uzyskać informacje na temat diagnostyki magazynów z konkretnym skalowaniem, zobacz [Diagnostyka rozwiązywania problemów z wydajnością w programie SQL](sql-database-hyperscale-performance-diagnostics.md).
 
 ## <a name="scalability-questions"></a>Pytania dotyczące skalowalności
 
@@ -367,7 +371,7 @@ Nie. Można łączyć się tylko z odczytaniem replik skalowalnych w poziomie pr
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Czy system ma inteligentne Równoważenie obciążenia podczas odczytu obciążenia
 
-Nie. Połączenie z intencją tylko do odczytu jest przekierowywane do dowolnej repliki skalowalnej w poziomie.
+Nie. Nowe połączenie z zamiarem tylko do odczytu jest przekierowywane do dowolnej repliki skalowalnej w poziomie.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>Czy można skalować w górę/w dół pomocnicze repliki obliczeniowe niezależnie od repliki podstawowej
 
@@ -383,7 +387,7 @@ Nie. Bazy danych w ramach skalowania mają magazyn udostępniony, co oznacza, ż
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Jak dużo opóźnić między podstawową i pomocniczą repliką obliczeniową
 
-Od momentu, gdy transakcja jest zatwierdzana na poziomie podstawowym, w zależności od bieżącej stawki generacji dziennika, może być chwilowo lub w niskiej wartości milisekundowej.
+Opóźnienie danych od momentu, gdy transakcja jest zatwierdzona na serwerze podstawowym, do czasu, gdy jest on widoczny w dodatkowej, zależy od bieżącej szybkości generowania dziennika. Typowe opóźnienia danych są w małym milisekundach.
 
 ## <a name="next-steps"></a>Następne kroki
 

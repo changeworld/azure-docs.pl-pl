@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446941"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Informacje o wersji: zestaw SDK urządzeń mowy
 
@@ -23,14 +23,14 @@ W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
 
 ## <a name="speech-devices-sdk-170"></a>1\.7.0 zestawu SDK urządzeń mowy:
 
-*   System Linux ARM jest teraz obsługiwany.
-*   Dostępne są początkowe pliki binarne dla Roobov2 (Linux ARM64).
-*   Użytkownicy systemu Windows mogą używać AudioConfig. fromDefaultMicrophoneInput () lub AudioConfig. fromMicrophoneInput (DeviceName), aby określić mikrofon, który ma być używany.
-*   Rozmiar biblioteki został zoptymalizowany.
-*   Obsługa rozpoznawania wieloskładnikowego przy użyciu tego samego obiektu rozpoznawania mowy/konwersji.
-*   Usuń sporadyczne zawieszenie, które nastąpiło podczas zatrzymywania rozpoznawania.
-*   Przykładowe aplikacje zawierają teraz przykładowy plik uczestników. właściwości, aby przedstawić format pliku.
-*   Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.7.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
+- System Linux ARM jest teraz obsługiwany.
+- Dostępne są początkowe pliki binarne dla roobo v2 (Linux ARM64).
+- Użytkownicy systemu Windows mogą używać `AudioConfig.fromDefaultMicrophoneInput()` lub `AudioConfig.fromMicrophoneInput(deviceName)` do określenia mikrofonu, który ma być używany.
+- Rozmiar biblioteki został zoptymalizowany.
+- Obsługa rozpoznawania wieloskładnikowego przy użyciu tego samego obiektu rozpoznawania mowy/konwersji.
+- Usuń sporadyczne zawieszenie, które nastąpiło podczas zatrzymywania rozpoznawania.
+- Przykładowe aplikacje zawierają teraz przykładowy plik uczestników. właściwości, aby przedstawić format pliku.
+- Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.7.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-160"></a>1\.6.0 zestawu SDK urządzeń mowy:
 
@@ -68,8 +68,8 @@ W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
 
 - [Instalacja słowa kluczowego](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) została uproszczona, jest teraz częścią aplikacji i nie wymaga osobnej instalacji na urządzeniu.
 - Rozpoznawanie słów kluczowych zostało zmienione i obsługiwane są dwa zdarzenia.
-  - RecognizingKeyword, wskazuje, że wynik mowy zawiera (niezweryfikowany) tekst słowa kluczowego.
-  - RecognizedKeyword, wskazuje, że rozpoznawanie słów kluczowych zostało zakończone rozpoznanie danego słowa kluczowego.
+  - `RecognizingKeyword,` wskazuje, że wynik mowy zawiera (niezweryfikowany) tekst słowa kluczowego.
+  - `RecognizedKeyword`, wskazuje, że rozpoznawanie słów kluczowych zostało zakończone rozpoznanie danego słowa kluczowego.
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech Devices SDK 1.1.0:2018-lis Release
 

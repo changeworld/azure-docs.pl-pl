@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e921059caa0d34c9ba1e303ff7f4a8de027a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434986"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Architektura usługi Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -152,7 +152,7 @@ W aplikacji IoT Central platformy Azure można [tworzyć i uruchamiać zadania](
 
 ## <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
 
-[Administrator może zdefiniować reguły dostępu](howto-administer.md) dla aplikacji IoT Central platformy Azure przy użyciu wstępnie zdefiniowanych ról. Administrator może przypisywać użytkowników do ról, które określają obszary aplikacji, do których użytkownik ma dostęp.
+[Administrator może zdefiniować reguły dostępu](howto-manage-users-roles.md) dla aplikacji IoT Central platformy Azure przy użyciu jednej ze wstępnie zdefiniowanych ról lub tworząc rolę niestandardową. Role określają obszary aplikacji, do których użytkownik ma dostęp i jakie akcje mogą wykonywać.
 
 ## <a name="security"></a>Zabezpieczenia
 

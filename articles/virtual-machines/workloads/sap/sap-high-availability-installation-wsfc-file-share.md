@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bdd1e1922d9d8845a8187cabb3fd39af4694ab
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077894"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647513"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalowanie rozwiązania SAP NetWeaver o wysokiej dostępności w klastrze trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS na platformie Azure
 
@@ -36,8 +36,8 @@ ms.locfileid: "70077894"
 
 [sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [sofs-overview]:https://technet.microsoft.com/library/hh831349(v=ws.11).aspx
@@ -193,7 +193,7 @@ ms.locfileid: "70077894"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -203,7 +203,7 @@ W tym artykule opisano sposób instalowania i konfigurowania systemu SAP o wysok
 
 Przed rozpoczęciem instalacji zapoznaj się z następującymi artykułami:
 
-* [Przewodnik po architekturze: Klastrowanie wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-file-share]
+* [Przewodnik po architekturze: klastrowanie wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-file-share]
 
 * [Przygotowywanie wysokiej dostępności SAP infrastruktury platformy Azure przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
 
@@ -231,13 +231,13 @@ Nie ma specjalnych zagadnień, w przypadku których różne usługi DBMS współ
 
 Utwórz następujący wolumin i udział plików w klastrze SOFS:
 
-* Struktura plików `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` SAP GLOBALHOST w udostępnionym woluminie klastra SOFS (CSV)
+* Struktura `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` plików SAP GLOBALHOST w udostępnionym woluminie klastra SOFS (CSV)
 
 * SAPMNT udział plików
 
 * Ustaw zabezpieczenia dla udziału plików SAPMNT i folderu z pełną kontrolą dla:
-    * Domena > \SAP_\<SID > grupy użytkowników _GlobalAdmin \<
-    * Węzeł \<klastra SAP ASCS/SCS w domenie > \ClusterNode1 $ i \<domena > \ClusterNode2 $
+    * Domena \<> \ SAP_\<SID > _GlobalAdmin grupy użytkowników
+    * Obiekty komputera węzła klastra SAP ASCS/SCS, \<domena > \ClusterNode1 $ i \<domeny > \ClusterNode2 $
 
 Aby utworzyć wolumin CSV z odpornością dublowania, należy wykonać następujące polecenie cmdlet programu PowerShell na jednym z węzłów klastra SOFS:
 
@@ -299,7 +299,7 @@ Utwórz nazwę sieci klastra SAP ASCS/SCS (na przykład **PR1-ASCS [10.0.6.7]** 
 
 Zainstaluj wystąpienie SAP ASCS/SCS w pierwszym węźle klastra. Aby zainstalować wystąpienie, w narzędziu instalacji SAP SWPM przejdź do:
 
-**\<Produkt >**  > DBMS> > **instalacji** **aplikacji serwera ABAP** (lub **Java**) > **systemie wysokiej dostępności**  >  **\<**  >  **Wystąpienie ASCS/SCS** **Pierwszy węzeł klastra.**  > 
+**\<> produktu** >  **\<systemie DBMS >**  > **instalacji** > **Application Server ABAP** (lub **Java**) > **systemu wysokiej dostępności** > **wystąpienia ASCS/SCS** > **pierwszym węźle klastra**.
 
 ### <a name="add-a-probe-port"></a>Dodaj port sondy
 
@@ -309,18 +309,18 @@ Skonfiguruj zasób klastra SAP, port sondy SAP-SID-IP przy użyciu programu Powe
 
 Zainstaluj wystąpienie SAP ASCS/SCS w drugim węźle klastra. Aby zainstalować wystąpienie, w narzędziu instalacji SAP SWPM przejdź do:
 
-**\<Produkt >**  > DBMS> > **instalacji** **aplikacji serwera ABAP** (lub **Java**) > **systemie wysokiej dostępności**  >  **\<**  >  **Wystąpienie ASCS/SCS** **Dodatkowy węzeł klastra.**  > 
+**\<> produktu** >  **\<systemie DBMS >**  > **instalacji** > **Application Server ABAP** (lub **Java**) > **systemu wysokiej dostępności** > **wystąpienia ASCS/SCS** > **dodatkowym węźle klastra**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizowanie profilu wystąpienia SAP ASCS/SCS
 
-Zaktualizuj parametry w identyfikatorze SID profilu \<wystąpienia SAP ASCS/SCS >_ASCS/\<SCS nr >_ \<hosta >.
+Zaktualizuj parametry w profilu wystąpienia SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_ \<hosta >.
 
 
 | Nazwa parametru | Wartość parametru |
 | --- | --- |
 | gw/netstat_once | **0** |
-| umieścić/encni/set_so_keepalive  | **oznacza** |
+| umieścić/encni/set_so_keepalive  | **prawda** |
 | service/ha_check_node | **1** |
 
 Uruchom ponownie wystąpienie SAP ASCS/SCS. Ustaw `KeepAlive` parametry w węzłach klastra SAP ASCS/SCS postępuj zgodnie z instrukcjami, aby [ustawić wpisy rejestru w węzłach klastra wystąpienia SAP ASCS/SCS][high-availability-guide]. 

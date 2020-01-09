@@ -8,12 +8,12 @@ author: brahmnes
 ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ded4a1a718d2cb061aba5f0d27565633e6cb603a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432329"
 ---
 # <a id="troubleshooting"></a>Rozwiązywanie problemów z włączaniem Application Insights Snapshot Debugger lub wyświetlania migawek
 Jeśli włączono Application Insights Snapshot Debugger dla aplikacji, ale nie widzisz migawek dla wyjątków, możesz użyć tych instrukcji do rozwiązywania problemów. Może istnieć wiele różnych powodów, dla których migawki nie są generowane. Możesz uruchomić kontrolę kondycji migawek, aby zidentyfikować niektóre z możliwych częstych przyczyn.
@@ -219,4 +219,4 @@ Jeśli nadal nie widzisz wyjątków o takim identyfikatorze migawki, dane teleme
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Edytowanie reguł serwera proxy lub zapory sieciowej
 
-Jeśli aplikacja łączy się z Internetem za pośrednictwem serwera proxy lub zapora, może być konieczne edytowanie reguły, aby umożliwić aplikacji do komunikowania się z usługą rozszerzenia Snapshot Debugger. Oto [listę adresów IP i porty używane przez rozszerzenie Snapshot Debugger](../../azure-monitor/app/ip-addresses.md#snapshot-debugger).
+Jeśli aplikacja łączy się z Internetem za pośrednictwem serwera proxy lub zapora, może być konieczne edytowanie reguły, aby umożliwić aplikacji do komunikowania się z usługą rozszerzenia Snapshot Debugger. Adresy IP używane przez Snapshot Debugger są zawarte w tagu usługi Azure Monitor.

@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426981"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Szybki Start: tablica wskaźnikowa platformy Azure
 
@@ -41,12 +41,14 @@ Po nawiązaniu połączenia ze źródłami danych wybierz jedną z galerii ze sz
  
 ## Włącz platformę Azure — wskaźnik<a name="enable"></a>
 
-1. Przejdź do Azure Portal.
-2. Upewnij się, że wybrano subskrypcję, w której jest tworzony wskaźnik "Azure,". 
-3. Wyszukaj platformę Azure — wskaźnik. 
-   ](./media/quickstart-onboard/search-product.png) wyszukiwania ![
+1. Zaloguj się do Portalu Azure. Upewnij się, że wybrano subskrypcję, w której tworzony jest wskaźnik "Azure".
 
-1. Kliknij pozycję **+ Dodaj**.
+1. Wyszukaj i wybierz pozycję **wskaźnik na platformie Azure**.
+
+   ![search](./media/quickstart-onboard/search-product.png)
+
+1. Wybierz pozycję **Dodaj**.
+
 1. Wybierz obszar roboczy, którego chcesz użyć, lub Utwórz nowy. Możesz uruchomić wskaźnik platformy Azure na więcej niż jednym obszarze roboczym, ale dane są izolowane do jednego obszaru roboczego.
 
    ![search](./media/quickstart-onboard/choose-workspace.png)
@@ -55,7 +57,7 @@ Po nawiązaniu połączenia ze źródłami danych wybierz jedną z galerii ze sz
    > - Domyślne obszary robocze utworzone przez Azure Security Center nie będą wyświetlane na liście; nie można zainstalować na nich wskaźnikiem na platformie Azure.
    > - Wskaźnik "Azure" może działać w obszarach roboczych w dowolnym [regionie log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) z wyjątkiem Chin, niemiec i Azure Government regionów. Dane generowane przez wskaźnik na platformie Azure (takie jak zdarzenia, zakładki i reguły alertów, które mogą zawierać niektóre dane klienta pochodzące z tych obszarów roboczych) są zapisywane w Europie Zachodniej (dla obszarów roboczych znajdujących się w Europie) lub Wschodnie stany USA (dla wszystkich obszarów roboczych opartych na USA, a także Każdy inny region z wyjątkiem Europy).
 
-6. Kliknij pozycję **Dodaj wskaźnik platformy Azure**.
+1. Wybierz pozycję **Dodaj wskaźnik platformy Azure**.
   
 
 ## <a name="connect-data-sources"></a>Łączenie ze źródłami danych

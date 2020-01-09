@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 50cb61394043bb8d0e67cae2aea8be4285f3432c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f6a0a2631c3f7458548a2ff435c3e565e744f41
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926262"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660220"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -71,7 +71,7 @@ Load Balancer obsługuje zarówno podstawowe, jak i standardowe jednostki SKU. T
 Kompletna konfiguracja scenariusza może się nieco różnić w zależności od jednostki SKU. W dokumentacji modułu równoważenia obciążenia zaznaczone jest, gdy dany artykuł ma zastosowanie tylko do określonej jednostki SKU. Aby porównać i poznać różnice, zapoznaj się z poniższą tabelą. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
 >[!NOTE]
-> Usługa Load Balancer w warstwie Standardowa Microsoft reccomends.
+> Firma Microsoft zaleca usługa Load Balancer w warstwie Standardowa.
 Autonomiczne maszyny wirtualne, zestawy dostępności i zestawy skalowania maszyn wirtualnych można połączyć tylko jednej jednostki SKU — nigdy do obu. Load Balancer oraz jednostka SKU publicznego adresu IP muszą być zgodne, gdy są używane z publicznymi adresami IP. Jednostki SKU Load Balancer i publicznych adresów IP nie są modyfikowalne.
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]

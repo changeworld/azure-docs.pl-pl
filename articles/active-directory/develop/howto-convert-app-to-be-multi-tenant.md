@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c4e820867e22d23135f9c50255902447e6063ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424469"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego Azure Active Directory użytkownika przy użyciu wzorca aplikacji wielodostępnych
 
@@ -38,7 +38,7 @@ Istnieją cztery proste kroki umożliwiające przekonwertowanie aplikacji do apl
 3. [Zaktualizuj swój kod, aby obsługiwał wiele wartości wystawcy](#update-your-code-to-handle-multiple-issuer-values)
 4. [Zrozumienie zgody użytkownika i administratora oraz wprowadzenie odpowiednich zmian w kodzie](#understand-user-and-admin-consent)
 
-Przyjrzyjmy się szczegółowym krokom. Możesz też przejść bezpośrednio do [tej listy przykładów z wieloma dzierżawcami][AAD-Samples-MT].
+Przyjrzyjmy się szczegółowym krokom. Możesz też przejść bezpośrednio do [tej listy przykładów z wieloma dzierżawcami](https://docs.microsoft.com/samples/browse/?products=azure-active-directory).
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizowanie rejestracji w ramach wielu dzierżawców
 
@@ -135,7 +135,7 @@ Aplikacja może mieć wiele warstw, z których każda jest reprezentowana przez 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Wiele warstw w jednej dzierżawie
 
-Może to być problem, jeśli aplikacja logiczna składa się z co najmniej dwóch rejestracji aplikacji, na przykład oddzielnego klienta i zasobu. Jak należy najpierw pobrać zasób do dzierżawy klienta? Usługa Azure AD omawia ten przypadek, umożliwiając klientowi i zalogowanie się w jednym kroku. Użytkownik widzi łączną sumę uprawnień wymaganych przez klienta i zasób na stronie wyrażania zgody. Aby włączyć to zachowanie, Rejestracja aplikacji zasobu musi zawierać identyfikator aplikacji klienta jako `knownClientApplications` w [manifeście aplikacji][AAD-App-Manifest]. Na przykład:
+Może to być problem, jeśli aplikacja logiczna składa się z co najmniej dwóch rejestracji aplikacji, na przykład oddzielnego klienta i zasobu. Jak należy najpierw pobrać zasób do dzierżawy klienta? Usługa Azure AD omawia ten przypadek, umożliwiając klientowi i zalogowanie się w jednym kroku. Użytkownik widzi łączną sumę uprawnień wymaganych przez klienta i zasób na stronie wyrażania zgody. Aby włączyć to zachowanie, Rejestracja aplikacji zasobu musi zawierać identyfikator aplikacji klienta jako `knownClientApplications` w [manifeście aplikacji][AAD-App-Manifest]. Przykład:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
@@ -177,7 +177,7 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 
 ## <a name="related-content"></a>Powiązana zawartość
 
-* [Przykłady aplikacji z wieloma dzierżawcami][AAD-Samples-MT]
+* [Przykłady aplikacji z wieloma dzierżawcami](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
 * [Wskazówki dotyczące znakowania aplikacji][AAD-App-Branding]
 * [Obiekty aplikacji i obiekty główne usługi][AAD-App-SP-Objects]
 * [Integrating applications with Azure Active Directory][AAD-Integrating-Apps] (Integrowanie aplikacji za pomocą usługi Azure Active Directory)
@@ -196,7 +196,7 @@ W tym artykule przedstawiono sposób tworzenia aplikacji, która może zalogowa�
 [AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
+[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview

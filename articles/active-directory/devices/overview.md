@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56319579bc8766bbd8467296daf41e25fc31862
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423118"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
@@ -58,7 +58,10 @@ Urządzeniami w usłudze Azure AD można zarządzać przy użyciu narzędzi do z
 
 ## <a name="resource-access"></a>Dostęp do zasobów
 
-Zarejestrowanie i dołączanie umożliwia użytkownikom bezproblemowe logowanie się do zasobów w chmurze i administratorów możliwość stosowania zasad dostępu warunkowego do tych zasobów. 
+Rejestrowanie i dołączanie urządzeń do usługi Azure AD zapewnia użytkownikom bezproblemowe logowanie do zasobów w chmurze. Ten proces umożliwia także administratorom stosowanie zasad dostępu warunkowego do zasobów w oparciu o urządzenie, z którego są uzyskiwane dostęp. 
+
+> [!NOTE]
+> Zasady dostępu warunkowego opartego na urządzeniach wymagają urządzeń przyłączonych do hybrydowej usługi Azure AD lub zgodnych urządzeń z usługą Azure AD, które są zarejestrowane.
 
 Urządzenia, które są przyłączone do usługi Azure AD lub korzystają z hybrydowej usługi Azure AD z logowaniem jednokrotnym do zasobów lokalnych organizacji, a także zasobów w chmurze. Więcej informacji można znaleźć w artykule, w [jaki sposób logowanie JEDNOkrotne do zasobów lokalnych działa na urządzeniach przyłączonych do usługi Azure AD](azuread-join-sso.md).
 
@@ -66,14 +69,14 @@ Urządzenia, które są przyłączone do usługi Azure AD lub korzystają z hybr
 
 - **Zarejestrowane urządzenia usługi Azure AD** wykorzystują konto zarządzane przez użytkownika końcowego, to konto jest konto Microsoft lub innym lokalnym zarządzanym poświadczeniami zabezpieczonymi przy użyciu co najmniej jednej z poniższych opcji.
    - Hasło
-   - WEJŚCIE
+   - PRZYPNIJ
    - Wzorce
    - Windows Hello
 - **Przyłączone do usługi Azure AD lub hybrydowe urządzenia z usługą Azure AD** wykorzystują konto organizacyjne w usłudze Azure AD zabezpieczone przy użyciu co najmniej jednego z następujących elementów.
    - Hasło
    - Windows Hello dla firm
 
-## <a name="provisioning"></a>Inicjowanie obsługi
+## <a name="provisioning"></a>Inicjowanie obsługi administracyjnej
 
 Uzyskiwanie urządzeń w usłudze Azure AD może odbywać się w sposób samoobsługowy lub kontrolowany proces aprowizacji przez administratorów.
 

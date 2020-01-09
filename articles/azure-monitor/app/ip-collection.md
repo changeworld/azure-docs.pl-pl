@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432602"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Obsługa geolokalizacji i adresów IP
 
@@ -20,7 +20,7 @@ W tym artykule wyjaśniono, w jaki sposób wyszukiwanie geolokalizacji i obsług
 
 ## <a name="default-behavior"></a>Zachowanie domyślne
 
-Domyślnie adresy IP są zbierane tymczasowo, ale nie są przechowywane w Application Insights. Podstawowy proces jest następujący:
+Domyślnie adresy IP są zbierane tymczasowo, ale nie są przechowywane w Application Insights. Podstawowy proces przebiega w następujący sposób:
 
 Adresy IP są wysyłane do Application Insights w ramach danych telemetrycznych. Po osiągnięciu punktu końcowego pozyskiwania na platformie Azure adres IP jest używany do przeszukiwania geolokalizacji przy użyciu [GeoLite2 z MaxMind](https://dev.maxmind.com/geoip/geoip2/geolite2/). Wyniki tego wyszukiwania są używane do wypełniania następujących pól `client_City`, `client_StateOrProvince`, `client_CountryOrRegion`. W tym momencie adres IP zostanie odrzucony i `0.0.0.0` jest zapisywana w polu `client_IP`.
 
@@ -154,7 +154,7 @@ namespace MyWebApp
 > [!NOTE]
 > Jeśli nie możesz uzyskać dostępu do `ISupportProperties`, sprawdź i upewnij się, że korzystasz z najnowszej stabilnej wersji zestawu Application Insights SDK. `ISupportProperties` są przeznaczone dla wartości dużej kardynalności, a `GlobalProperties` są bardziej odpowiednie dla niskich wartości kardynalnych, takich jak nazwa regionu, Nazwa środowiska itp. 
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>Włącz inicjatora telemetrii dla. ASP.NET
+### <a name="enable-telemetry-initializer-for-aspnet"></a>Włącz inicjatora telemetrii dla ASP.NET
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

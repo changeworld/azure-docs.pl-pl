@@ -3,12 +3,12 @@ title: Dzierżawy, role i użytkownicy w scenariuszach usługi Azure Lighthouse
 description: Zapoznaj się z pojęciami Azure Active Directory dzierżawców, użytkowników i ról, a także, jak mogą one być używane w scenariuszach usługi Azure Lighthouse.
 ms.date: 11/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1ad004c79f90f4642640405da9e8876b9202e98
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453568"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Dzierżawy, role i użytkownicy w scenariuszach usługi Azure Lighthouse
 
@@ -22,13 +22,13 @@ Niezależnie od wybranej metody dołączania należy zdefiniować *autoryzacje*.
 
 ## <a name="role-support-for-azure-delegated-resource-management"></a>Obsługa ról dla delegowanego zarządzania zasobami platformy Azure
 
-Podczas definiowania autoryzacji każde konto użytkownika musi mieć przypisaną jedną z [wbudowanych ról kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). Role niestandardowe i [role administratora klasycznej subskrypcji](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) nie są obsługiwane.
+Podczas definiowania autoryzacji każde konto użytkownika musi mieć przypisaną jedną z [wbudowanych ról kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/built-in-roles.md). Role niestandardowe i [role administratora klasycznej subskrypcji](../../role-based-access-control/classic-administrators.md) nie są obsługiwane.
 
-Wszystkie [wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z następującymi wyjątkami:
+Wszystkie [wbudowane role](../../role-based-access-control/built-in-roles.md) są obecnie obsługiwane przez delegowane zarządzanie zasobami platformy Azure z następującymi wyjątkami:
 
-- Rola [właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) nie jest obsługiwana.
-- Wszystkie wbudowane role z uprawnieniami [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) nie są obsługiwane.
-- Wbudowana rola [administratora dostępu użytkowników](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) jest obsługiwana, ale tylko w ograniczonym celu [przypisywania ról do tożsamości zarządzanej w dzierżawie klienta](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Ta rola nie ma żadnych innych uprawnień zwykle przyznanych przez tę rolę. W przypadku zdefiniowania użytkownika z tą rolą należy również określić wbudowane role, które ten użytkownik może przypisać do zarządzanych tożsamości.
+- Rola [właściciela](../../role-based-access-control/built-in-roles.md#owner) nie jest obsługiwana.
+- Wszystkie wbudowane role z uprawnieniami [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) nie są obsługiwane.
+- Wbudowana rola [administratora dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) jest obsługiwana, ale tylko w ograniczonym celu [przypisywania ról do tożsamości zarządzanej w dzierżawie klienta](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Ta rola nie ma żadnych innych uprawnień zwykle przyznanych przez tę rolę. W przypadku zdefiniowania użytkownika z tą rolą należy również określić wbudowane role, które ten użytkownik może przypisać do zarządzanych tożsamości.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Najlepsze rozwiązania dotyczące definiowania użytkowników i ról
 
@@ -36,8 +36,8 @@ Podczas tworzenia autoryzacji zalecamy następujące najlepsze rozwiązania:
 
 - W większości przypadków użytkownik chce przypisać uprawnienia do grupy użytkowników usługi Azure AD lub nazwy głównej usług, a nie do serii poszczególnych kont użytkowników. Pozwala to na dodawanie lub usuwanie dostępu dla poszczególnych użytkowników bez konieczności aktualizacji i ponownego publikowania planu, gdy zmienią się wymagania dotyczące dostępu.
 - Upewnij się, że przestrzegasz zasad najniższych uprawnień, aby użytkownicy mieli tylko uprawnienia potrzebne do ukończenia swoich zadań, pomagając w zmniejszeniu ryzyka wystąpienia błędów. Aby uzyskać więcej informacji, zobacz [zalecane praktyki dotyczące zabezpieczeń](../concepts/recommended-security-practices.md).
-- Dołącz użytkownika z [rolą usuwania przydziału rejestracji usług zarządzanych](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) , aby można było później [usunąć dostęp do delegowania](../how-to/onboard-customer.md#remove-access-to-a-delegation) w razie potrzeby. Jeśli ta rola nie jest przypisana, delegowane zasoby mogą zostać usunięte tylko przez użytkownika w dzierżawie klienta.
-- Upewnij się, że każdy użytkownik, który musi [wyświetlić stronę moi klienci w Azure Portal](../how-to/view-manage-customers.md) ma rolę [czytelnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika).
+- Dołącz użytkownika z [rolą usuwania przydziału rejestracji usług zarządzanych](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) , aby można było później [usunąć dostęp do delegowania](../how-to/onboard-customer.md#remove-access-to-a-delegation) w razie potrzeby. Jeśli ta rola nie jest przypisana, delegowane zasoby mogą zostać usunięte tylko przez użytkownika w dzierżawie klienta.
+- Upewnij się, że każdy użytkownik, który musi [wyświetlić stronę moi klienci w Azure Portal](../how-to/view-manage-customers.md) ma rolę [czytelnika](../../role-based-access-control/built-in-roles.md#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika).
 
 ## <a name="next-steps"></a>Następne kroki
 

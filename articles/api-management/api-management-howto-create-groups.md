@@ -1,5 +1,6 @@
 ---
-title: Zarządzanie kontami deweloperów przy użyciu grup w usłudze Azure API Management | Microsoft Docs
+title: Zarządzanie kontami deweloperów przy użyciu grup w usłudze Azure API Management
+titleSuffix: Azure API Management
 description: Dowiedz się, jak zarządzać kontami deweloperów przy użyciu grup w usłudze Azure API Management
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073635"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430725"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Jak tworzyć grupy i używać ich do zarządzania kontami deweloperów na platformie Azure API Management
 
@@ -39,7 +40,7 @@ Oprócz tworzenia grup i zarządzania nimi w portalu wydawców można tworzyć g
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj zadania w tym artykule: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
+Wykonaj zadania w tym artykule: [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -52,7 +53,7 @@ W tej sekcji przedstawiono sposób dodawania nowej grupy do konta API Management
 3. Wprowadź unikatową nazwę grupy i opcjonalny opis.
 4. Kliknij przycisk **Utwórz**.
 
-    ![Dodaj nową grupę](./media/api-management-howto-create-groups/groups001.png)
+    ![Dodawanie nowej grupy](./media/api-management-howto-create-groups/groups001.png)
 
 Po utworzeniu grupy zostanie ona dodana do listy **grup** . <br/>Aby edytować **nazwę** lub **Opis** grupy, kliknij nazwę grupy i **Ustawienia**.<br/>Aby usunąć grupę, kliknij jej nazwę i naciśnij klawisz **delete**.
 
@@ -86,10 +87,10 @@ W tej sekcji pokazano, jak skojarzyć grupy z członkami.
 1. Wybierz kartę **grupy** po lewej stronie ekranu.
 2. Wybierz **członków**.
 
-    ![Dodaj członka](./media/api-management-howto-create-groups/groups005.png)
+    ![Dodawanie członków](./media/api-management-howto-create-groups/groups005.png)
 3. Naciśnij klawisze **+ Dodaj** i wybierz element członkowski.
 
-    ![Dodaj członka](./media/api-management-howto-create-groups/groups006.png)
+    ![Dodawanie członków](./media/api-management-howto-create-groups/groups006.png)
 4. Naciśnij **pozycję Wybierz**.
 
 Po dodaniu skojarzenia między deweloperem a grupą można wyświetlić ją na karcie **Użytkownicy** .

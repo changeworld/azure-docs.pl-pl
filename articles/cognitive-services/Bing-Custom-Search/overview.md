@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 06/27/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 4b0b0d91af15912e1c64761351ba33acfd3e2725
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405160"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448735"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Co to jest interfejs API wyszukiwania niestandardowego Bing?
 
@@ -23,7 +23,7 @@ Interfejs API wyszukiwania niestandardowego Bing umożliwia tworzenie dostosowan
 
 ## <a name="features"></a>Funkcje
 
-|Cecha  |Opis  |
+|Funkcja  |Opis  |
 |---------|---------|
 |[Sugestie dotyczące wyszukiwania niestandardowego w czasie rzeczywistym](define-custom-suggestions.md)     | Podaj sugestie dotyczące wyszukiwania, które mogą być wyświetlane jako lista rozwijana podczas wpisywania przez użytkowników.       | 
 |[Środowiska niestandardowego wyszukiwania obrazów](get-images-from-instance.md)     | Pozwól użytkownikom wyszukiwać obrazy z domen i witryn internetowych określonych w Twoim wystąpieniu wyszukiwania niestandardowego.        |        
@@ -36,7 +36,7 @@ Używając [portalu wyszukiwania niestandardowego Bing](https://customsearch.ai)
 
 Po utworzeniu wystąpienia wyszukiwania możesz zintegrować je (opcjonalnie także interfejs użytkownika) z witryną internetową lub aplikacją, wywołując interfejs API wyszukiwania niestandardowego Bing:
 
-![Obraz pokazujący, że można nawiązać połączenie z funkcją wyszukiwania niestandardowego Bing za pośrednictwem interfejsu API](media/BCS-Overview.png "Sposób działania wyszukiwania niestandardowego Bing.")
+![Obraz pokazujący, że możesz nawiązać połączenie z wyszukiwaniem niestandardowym Bing za pośrednictwem interfejsu API](media/BCS-Overview.png "Jak działa wyszukiwanie niestandardowe Bing.")
 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -46,6 +46,8 @@ Aby szybko rozpocząć pracę, zobacz [Tworzenie pierwszego wystąpienia usługi
 Aby uzyskać szczegółowe informacje na temat dostosowywania wystąpienia wyszukiwania, zobacz [Define a custom search instance (Definiowanie wystąpienia wyszukiwania niestandardowego)](define-your-custom-view.md).
 
 Pamiętaj o przeczytaniu [wymagań dotyczących używania i wyświetlania usługi Bing](./use-and-display-requirements.md) w celu korzystania z wyników wyszukiwania w Twoich usługach i aplikacjach.
+
+Odwiedź [stronę centrum interfejsu API wyszukiwanie Bing](../bing-web-search/search-the-web.md) , aby poznać inne dostępne interfejsy API.
 
 Zapoznaj się z dokumentacją poszczególnych punktów końcowych wyszukiwania niestandardowego. Dokumentacja zawiera listę punktów końcowych, nagłówków i parametrów zapytań, które są stosowane w żądaniach wyników wyszukiwania. Zawiera także definicje obiektów odpowiedzi.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: allensu
-ms.openlocfilehash: 5d4cc57c4cb5db7f04d604c8ccbc408df1a3e707
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4e6b5dc200f49b34d8f808e5587b173197b9da8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437313"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Jak zarządzać Strefy DNS w Azure Portal
 
@@ -43,7 +43,7 @@ W tym artykule pokazano, jak zarządzać strefami DNS przy użyciu Azure Portal.
    |---|---|---|
    |**Nazwa**|contoso.com|Nazwa strefy DNS|
    |**Subskrypcja**|[Twoja subskrypcja]|Wybierz subskrypcję, aby utworzyć w jej ramach strefę DNS.|
-   |**Grupa zasobów**|**Utwórz nową:** contosoDNSRG|Utwórz grupę zasobów. Nazwa grupy zasobów musi być unikatowa w obrębie wybranej subskrypcji. Aby dowiedzieć się więcej na temat grup zasobów, zapoznaj się z artykułem [Omówienie usługi Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
+   |**Grupa zasobów**|**Utwórz nową:** contosoDNSRG|Utwórz grupę zasobów. Nazwa grupy zasobów musi być unikatowa w obrębie wybranej subskrypcji. Aby dowiedzieć się więcej na temat grup zasobów, zapoznaj się z artykułem [Omówienie usługi Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
    |**Lokalizacja**|Zachodnie stany USA||
 
 > [!NOTE]

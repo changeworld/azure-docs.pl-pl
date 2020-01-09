@@ -2,18 +2,18 @@
 title: Rozwiązywanie problemów z kopią zapasową stanu systemu
 description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzeniem kopii zapasowej stanu systemu dla lokalnych serwerów z systemem Windows.
 ms.reviewer: srinathv
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 116f8f40193ea276c6150452b0aa6f2d2ce5bc6c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fde5fd9f2464c2aff9a7a34ffa440ab9a6a1ca51
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172621"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665042"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopią zapasową stanu systemu
 
-W tym artykule opisano rozwiązania problemów, które mogą wystąpić podczas korzystania z kopii zapasowej stanu systemu.
+W tym artykule opisano rozwiązania problemów, które mogą występować podczas tworzenia kopii zapasowej stanu systemu.
 
 ## <a name="basic-troubleshooting"></a>Podstawowe rozwiązywanie problemów
 
@@ -29,16 +29,16 @@ Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu
 - [Upewnij się, że nieobsługiwane dyski i pliki z nieobsługiwanymi atrybutami są wyłączone z kopii zapasowej](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Upewnij się, że **zegar systemowy** chronionego systemu ma skonfigurowaną prawidłową strefę czasową <br>
 - [Upewnij się, że na serwerze zainstalowano program .NET Framework w wersji 4.5.2 lub nowszej](https://www.microsoft.com/download/details.aspx?id=30653)<br>
-- Jeśli próbujesz **ponownie zarejestrować serwer** w magazynie, wykonaj następujące czynności: <br>
-  - Upewnij się, że agent został odinstalowany z serwera oraz usunięty z portalu <br>
+- Jeśli próbujesz ponownie **zarejestrować serwer** w magazynie,: <br>
+  - Upewnij się, że agent zostanie odinstalowany na serwerze i usunięty z portalu <br>
   - Użyj tego samego hasła, które zostało początkowo użyte podczas rejestrowania serwera <br>
-- W przypadku tworzenia kopii zapasowej offline upewnij się, że Azure PowerShell wersji 3.7.0 jest zainstalowana na komputerze źródłowym i skopiuj przed rozpoczęciem operacji tworzenia kopii zapasowej w trybie offline
+- Jeśli jest to kopia zapasowa offline, przed rozpoczęciem operacji tworzenia kopii zapasowej w trybie offline upewnij się, że Azure PowerShell wersja 3.7.0 jest zainstalowana na komputerze źródłowym i skopiuj
 - [Uwzględnianie, gdy Agent kopii zapasowej jest uruchomiony na maszynie wirtualnej platformy Azure](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>Ograniczenia
 
 - Odzyskiwanie na inny komputer przy użyciu funkcji odzyskiwania stanu systemu nie jest zalecane przez firmę Microsoft.
-- Kopia zapasowa stanu systemu obsługuje obecnie serwery z systemem Windows "lokalne", ale ta funkcja nie jest dostępna dla maszyn wirtualnych platformy Azure.
+- Kopia zapasowa stanu systemu obsługuje obecnie serwery z systemem Windows "lokalne". Ta funkcja jest niedostępna dla maszyn wirtualnych platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -86,7 +86,7 @@ Aby zainstalować Kopia zapasowa systemu Windows Server przy użyciu Menedżer s
 
 ### <a name="system-volume-information-permission"></a>Uprawnienie do informacji o woluminie systemowym
 
-Upewnij się, że SYSTEM lokalny ma pełną kontrolę nad folderem **informacji o woluminie systemowym** znajdującym się w woluminie, na którym zainstalowano system Windows. Zwykle jest to **C:\System informacje o woluminie**. Kopia zapasowa systemu Windows Server może zakończyć się niepowodzeniem, jeśli powyższe uprawnienia nie są ustawione prawidłowo
+Upewnij się, że SYSTEM lokalny ma pełną kontrolę nad folderem **informacji o woluminie systemowym** , który znajduje się w woluminie, na którym zainstalowano system Windows. Zwykle jest to **C:\System informacje o woluminie**. Kopia zapasowa systemu Windows Server może zakończyć się niepowodzeniem, jeśli powyższe uprawnienia nie są ustawione prawidłowo
 
 ### <a name="dependent-services"></a>Usługi zależne
 
@@ -94,15 +94,15 @@ Upewnij się, że poniższe usługi są w stanie uruchomienia:
 
 **Nazwa usługi** | **Typ uruchomienia**
 --- | ---
-Zdalne wywołanie procedury (RPC) | Automatyczne
-System zdarzeń modelu COM+ (EventSystem) | Automatyczne
-Usługa powiadamiania o zdarzeniach systemowych (SENS) | Automatyczne
-Kopiowanie woluminów w tle (VSS) | Ręcznie
-Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręcznie
+Zdalne wywołanie procedury (RPC) | Automatyczny
+System zdarzeń modelu COM+ (EventSystem) | Automatyczny
+Usługa powiadamiania o zdarzeniach systemowych (SENS) | Automatyczny
+Kopiowanie woluminów w tle (VSS) | Ręczna
+Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręczna
 
 ### <a name="validate-windows-server-backup-status"></a>Weryfikuj stan Kopia zapasowa systemu Windows Server
 
-Aby sprawdzić stan Kopia zapasowa systemu Windows Server, wykonaj poniższe czynności:
+Aby sprawdzić stan Kopia zapasowa systemu Windows Server, wykonaj następujące czynności:
 
 - Upewnij się, że program WSB PowerShell jest uruchomiony
 
@@ -111,7 +111,7 @@ Aby sprawdzić stan Kopia zapasowa systemu Windows Server, wykonaj poniższe czy
     > [!WARNING]
     > Get-WBJob: termin "Get-WBJob" nie jest rozpoznawany jako nazwa polecenia cmdlet, funkcji, pliku skryptu ani programu interoperacyjnego. Sprawdź pisownię nazwy lub, jeśli ścieżka została uwzględniona, sprawdź, czy ścieżka jest poprawna, i spróbuj ponownie.
 
-    - Jeśli ten błąd nie powiedzie się, należy ponownie zainstalować funkcję Kopia zapasowa systemu Windows Server na komputerze serwera, jak wspomniano w sekcji Krok 1. wymagania wstępne.
+    - Jeśli ten błąd nie powiedzie się, należy ponownie zainstalować funkcję Kopia zapasowa systemu Windows Server na komputerze serwera, jak wspomniano w kroku 1 wymagań wstępnych.
 
   - Upewnij się, że kopia zapasowa WSB działa prawidłowo, uruchamiając następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień:
 
@@ -129,19 +129,19 @@ Jeśli zadanie nie powiedzie się, wskazuje to na problem z WSB, który spowoduj
 
 ### <a name="vss-writer-timeout-error"></a>Błąd limitu czasu składnika zapisywania usługi VSS
 
-| Objaw | Przyczyna | Rozwiązanie
+| Objaw | Przyczyna | Rozdzielczość
 | -- | -- | --
-| -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "zadanie WSB nie powiodło się z błędami usługi VSS. Sprawdź dzienniki zdarzeń usługi VSS, aby rozwiązać ten problem.<br/><br/> — Następujący dziennik błędów znajduje się w dziennikach zdarzeń aplikacji usługi VSS: "składnik zapisywania usługi VSS odrzucił zdarzenie z błędem 0x800423f2, upłynął limit czasu modułu zawieszania i odblokowywania."| Nie można wykonać składnika zapisywania usługi VSS w czasie z powodu braku zasobów procesora i pamięci na maszynie <br/><br/> Inne oprogramowanie do tworzenia kopii zapasowych korzysta już z składnika zapisywania usługi VSS, ponieważ nie można ukończyć operacji migawki wyniku dla tej kopii zapasowej | Poczekaj, aż procesor/pamięć zostaną zwolnione w systemie lub przerywa procesy trwające zbyt dużą ilość pamięci/procesora, a następnie spróbuj ponownie wykonać operację. <br/><br/>  Poczekaj na zakończenie trwającej kopii zapasowej i spróbuj wykonać operację w późniejszym czasie, gdy na maszynie nie są uruchomione żadne kopie zapasowe
+| -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "zadanie WSB nie powiodło się z błędami usługi VSS. Sprawdź dzienniki zdarzeń usługi VSS, aby rozwiązać ten problem.<br/><br/> — Następujący dziennik błędów znajduje się w dziennikach zdarzeń aplikacji usługi VSS: "składnik zapisywania usługi VSS odrzucił zdarzenie z błędem 0x800423f2, upłynął limit czasu modułu zawieszania i odblokowywania."| Nie można wykonać składnika zapisywania usługi VSS w czasie z powodu braku zasobów procesora i pamięci na maszynie <br/><br/> Inne oprogramowanie do tworzenia kopii zapasowych korzysta już z składnika zapisywania usługi VSS, ponieważ nie można ukończyć operacji migawki wyniku dla tej kopii zapasowej | Poczekaj na zwolnienie procesora CPU/pamięci w systemie lub Przerwij procesy, które zajmują zbyt dużo pamięci/procesora, i spróbuj wykonać operację ponownie. <br/><br/>  Poczekaj na zakończenie trwającej kopii zapasowej i spróbuj wykonać operację w późniejszym czasie, gdy na maszynie nie są uruchomione żadne kopie zapasowe.
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Za mało miejsca na dysku, aby zwiększyć ilość kopii w tle
 
-| Objaw | Rozwiązanie
+| Objaw | Rozdzielczość
 | -- | --
 | -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: wykonywanie kopii zapasowej nie powiodło się, ponieważ nie można było zwiększyć woluminu kopii w tle z powodu niewystarczającej ilości miejsca na woluminach <br/><br/> — Następujący dziennik błędów/ostrzeżeń jest obecny w dzienniku zdarzeń systemu Volsnap: "za mało miejsca na dysku w woluminie C:, aby zwiększyć magazyn kopii w tle dla kopii w tle C: z powodu tego błędu wszystkie kopie w tle woluminu C: są zagrożone. | -Zwolnij miejsce na wyróżnionym woluminie w dzienniku zdarzeń, tak że jest wystarczająca ilość miejsca na zwiększenie rozmiaru kopii w tle, gdy trwa wykonywanie kopii zapasowej <br/><br/> — Podczas konfigurowania obszaru kopiowania w tle możemy ograniczyć ilość miejsca używanego do kopiowania w tle. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
 
 ### <a name="efi-partition-locked"></a>Zablokowana partycja EFI
 
-| Objaw | Rozwiązanie
+| Objaw | Rozdzielczość
 | -- | --
 | Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "kopia zapasowa stanu systemu nie powiodła się, ponieważ partycja systemowa EFI jest Może to być spowodowane dostępem do partycji systemowej przez zabezpieczenia innej firmy lub oprogramowanie do tworzenia kopii zapasowych. | — Jeśli problem jest spowodowany przez oprogramowanie zabezpieczeń innej firmy, należy skontaktować się z dostawcą oprogramowania antywirusowego, aby umożliwić mu agenta MARS <br/><br/> — Jeśli działa oprogramowanie do tworzenia kopii zapasowych innej firmy, zaczekaj na jego zakończenie, a następnie ponów próbę wykonania kopii zapasowej
 

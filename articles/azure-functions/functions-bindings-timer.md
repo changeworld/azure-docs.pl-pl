@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d5e78c3ab08e791a5f484e45d487c3a85dc95de7
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928376"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613095"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla Azure Functions 
 
@@ -166,7 +166,9 @@ public void keepAlive(
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Konstruktor atrybutu przyjmuje wyrażenie typu CRONUS lub `TimeSpan`. `TimeSpan` można używać tylko wtedy, gdy aplikacja funkcji jest uruchomiona w planie App Service. Poniższy przykład przedstawia wyrażenie firmy CRONUS:
+Konstruktor atrybutu przyjmuje wyrażenie typu CRONUS lub `TimeSpan`. `TimeSpan` można używać tylko wtedy, gdy aplikacja funkcji jest uruchomiona w planie App Service. `TimeSpan` nie jest obsługiwana w przypadku funkcji użycia ani elastycznych wersji Premium.
+
+Poniższy przykład przedstawia wyrażenie firmy CRONUS:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3063767c73f4639e667d5f64b0563f1da396cfbf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440036"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Kopiowanie masowe z bazy danych za pomocą tabeli formantów
 
@@ -33,12 +33,16 @@ Szablon zawiera trzy działania:
 - Instrukcja **foreach** pobiera listę partycji z działania Lookup i iteruje każdą partycję w działaniu kopiowania.
 - **Kopiuj** kopiuje każdą partycję ze źródłowego magazynu bazy danych do magazynu docelowego.
 
-Szablon definiuje pięć parametrów:
+Szablon definiuje następujące parametry:
 - *Control_Table_Name* jest tabelą formantów zewnętrznych, która przechowuje listę partycji dla źródłowej bazy danych.
 - *Control_Table_Schema_PartitionID* to nazwa kolumny w tabeli formantów zewnętrznych, która przechowuje każdy identyfikator partycji. Upewnij się, że identyfikator partycji jest unikatowy dla każdej partycji w źródłowej bazie danych.
 - *Control_Table_Schema_SourceTableName* jest tabelą formantów zewnętrznych, która przechowuje każdą nazwę tabeli ze źródłowej bazy danych.
 - *Control_Table_Schema_FilterQuery* to nazwa kolumny w tabeli formantów zewnętrznych, która przechowuje zapytanie filtru, aby pobrać dane z każdej partycji w źródłowej bazie danych. Na przykład w przypadku partycjonowania danych według roku zapytanie przechowywane w każdym wierszu może być podobne do elementu "select * from DataSource, gdzie LastModifytime > =" "2015-01-01 00:00:00" "i LastModifytime < =" "2015-12-31 23:59:59.999" "".
-- *Data_Destination_Folder_Path* to ścieżka, w której dane są kopiowane do magazynu docelowego. Ten parametr jest widoczny tylko w przypadku, gdy wybrane miejsce docelowe jest magazynem opartym na plikach. W przypadku wybrania SQL Data Warehouse jako magazynu docelowego ten parametr nie jest wymagany. Nazwy tabel i schematu w SQL Data Warehouse muszą być takie same jak te w źródłowej bazie danych.
+- *Data_Destination_Folder_Path* to ścieżka, w której dane są kopiowane do magazynu docelowego (odpowiednie do wybranego miejsca docelowego to "system plików" lub "Azure Data Lake Storage Gen1"). 
+- *Data_Destination_Container* to ścieżka folderu głównego, w której dane są kopiowane do magazynu docelowego. 
+- *Data_Destination_Directory* jest ścieżką katalogu w katalogu głównym, gdzie dane są kopiowane do magazynu docelowego. 
+
+Ostatnie trzy parametry, które definiują ścieżkę w magazynie docelowym, są widoczne tylko wtedy, gdy wybrane miejsce docelowe jest magazynem opartym na plikach. Jeśli wybierzesz pozycję "Azure Synapse Analytics (wcześniej SQL DW)" jako magazyn docelowy, te parametry nie są wymagane. Nazwy tabel i schematu w SQL Data Warehouse muszą być takie same jak te w źródłowej bazie danych.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
 
@@ -68,7 +72,7 @@ Szablon definiuje pięć parametrów:
 
 3. Utwórz **nowe** połączenie z źródłową bazą danych, z której są kopiowane dane.
 
-     ![Utwórz nowe połączenie ze źródłową bazą danych](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+    ![Utwórz nowe połączenie ze źródłową bazą danych](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
 4. Utwórz **nowe** połączenie z docelowym magazynem danych, do którego chcesz skopiować dane.
 
@@ -76,8 +80,6 @@ Szablon definiuje pięć parametrów:
 
 5. Wybierz przycisk **Użyj tego szablonu**.
 
-    ![Użyj tego szablonu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
-    
 6. Zostanie wyświetlony potok, jak pokazano w następującym przykładzie:
 
     ![Przeglądanie potoku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
@@ -90,7 +92,7 @@ Szablon definiuje pięć parametrów:
 
     ![Przejrzyj wynik](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Obowiązkowe W przypadku wybrania SQL Data Warehouse jako miejsca docelowego danych należy wprowadzić połączenie z usługą Azure Blob Storage na potrzeby przemieszczania, zgodnie z wymaganiami SQL Data Warehouse Base. Upewnij się, że kontener w usłudze BLOB Storage został już utworzony.
+9. Obowiązkowe W przypadku wybrania opcji "Azure Synapse Analytics (dawniej SQL DW)" jako miejsca docelowego danych należy wprowadzić połączenie z magazynem obiektów blob platformy Azure na potrzeby przemieszczania, zgodnie z wymaganiami SQL Data Warehouse Base. Szablon spowoduje automatyczne wygenerowanie ścieżki kontenera dla magazynu obiektów BLOB. Sprawdź, czy kontener został utworzony po uruchomieniu potoku.
     
     ![Ustawienie bazy](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

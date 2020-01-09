@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/08/2019
-ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/17/2019
+ms.openlocfilehash: 2abdae95e14ecc9dab673216a2c6aef652915988
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435419"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -23,7 +23,7 @@ Ten artykuł zawiera informacje **o najnowszych aktualizacjach wersji usługi Az
 
 Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klientów korporacyjnych na potrzeby analizy w narzędziach typu open source Apache Hadoop i Apache Spark na platformie Azure.
 
-## <a name="release-date-11072019"></a>Data wydania: 11/07/2019
+## <a name="release-date-12172019"></a>Data wydania: 12/17/2019
 
 Ta wersja dotyczy zarówno usługi HDInsight 3,6, jak i 4,0.
 
@@ -33,61 +33,54 @@ Ta wersja dotyczy zarówno usługi HDInsight 3,6, jak i 4,0.
 
 ## <a name="new-features"></a>Nowe funkcje
 
-### <a name="hdinsight-identity-broker-hib-preview"></a>HDInsight Identity Broker (HIB) (wersja zapoznawcza)
-
-Usługa HDInsight Identity Broker (HIB) umożliwia użytkownikom zalogowanie się do usługi Apache Ambari przy użyciu uwierzytelniania wieloskładnikowego (MFA) i uzyskanie wymaganych biletów Kerberos bez konieczności używania skrótów haseł w Azure Active Directory Domain Services (AAD-DS). Obecnie HIB jest dostępna tylko dla klastrów wdrożonych przy użyciu szablonu ARM.
-
-### <a name="kafka-rest-api-proxy-preview"></a>Serwer proxy interfejsu API REST Kafka (wersja zapoznawcza)
-
-Serwer proxy interfejsu API REST usługi Kafka umożliwia wdrożenie jednego kliknięcia serwera proxy REST o wysokiej dostępności z klastrem Kafka za pośrednictwem zabezpieczonej autoryzacji w usłudze AAD i protokołu OAuth. 
-
-### <a name="auto-scale"></a>Automatyczne skalowanie
-
-Funkcja automatycznego skalowania dla usługi Azure HDInsight jest teraz ogólnie dostępna we wszystkich regionach dla typów klastrów Apache Spark i Hadoop. Ta funkcja umożliwia zarządzanie obciążeniami analizy danych Big Data w bardziej wydajny i wydajny sposób. Teraz możesz zoptymalizować korzystanie z klastrów usługi HDInsight i płacisz tylko za to, czego potrzebujesz.
-
-W zależności od wymagań możesz wybierać między automatycznym skalowaniem opartym na obciążeniu i automatycznym skalowaniem opartym na harmonogramie. Automatyczne skalowanie na podstawie obciążenia może skalować rozmiar klastra w górę i w dół w zależności od bieżących potrzeb zasobów, gdy automatyczne skalowanie oparte na harmonogramie może zmienić rozmiar klastra na podstawie wstępnie zdefiniowanego harmonogramu. 
-
-Obsługa automatycznego skalowania dla obciążeń HBase i LLAP jest również publiczną wersją zapoznawczą. Aby uzyskać więcej informacji, zobacz [Automatyczne skalowanie klastrów usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters).
-
-### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Szybsze zapisy usługi HDInsight dla platformy Apache HBase 
-
-Funkcja przyspieszonych zapisów korzysta z dysków zarządzanych SSD w warstwie Azure Premium w celu zwiększenia wydajności usługi Apache HBase Write Ahead Log (WAL). Aby uzyskać więcej informacji, zobacz [Usługa Azure HDInsight — przyspieszone zapisy dla oprogramowania Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes).
+### <a name="service-tags"></a>Tagi usługi
+Tagi usług upraszczają zabezpieczenia maszyn wirtualnych platformy Azure i sieci wirtualnych platformy Azure, umożliwiając łatwe ograniczanie dostępu sieciowego do usług platformy Azure. Możesz użyć tagów usługi w regułach sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), aby zezwalać na ruch do określonej usługi platformy Azure globalnie lub w danym regionie platformy Azure. Platforma Azure zapewnia konserwację adresów IP poszczególnych tagów. Tagi usługi HDInsight dla sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) to grupy adresów IP dla usług kondycji i zarządzania. Te grupy pomagają zminimalizować złożoność tworzenia reguł zabezpieczeń. Klienci usługi HDInsight mogą włączyć tag usług za pomocą witryny Azure Portal, programu PowerShell i interfejsu API REST. Aby uzyskać więcej informacji, zobacz [Tagi usług sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) dla usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags).
 
 ### <a name="custom-ambari-db"></a>Niestandardowa baza danych Ambari
+Usługa HDInsight umożliwia teraz korzystanie z własnej bazy danych SQL dla platformy Apache Ambari. Tę niestandardową bazę danych Ambari można skonfigurować z poziomu Azure Portal lub przy użyciu szablonu usługi Resource Manager.  Ta funkcja umożliwia wybranie odpowiedniej bazy danych SQL na potrzeby przetwarzania i pojemności. Możesz również łatwo uaktualnić, aby dopasować wymagania dotyczące rozwoju firmy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie klastrów usługi HDInsight za pomocą niestandardowej bazy danych Ambari](hdinsight-custom-ambari-db.md).
 
-Usługa HDInsight oferuje teraz nową wydajność, która umożliwia klientom korzystanie z własnych baz danych SQL dla Ambari. Teraz klienci mogą wybrać odpowiednią bazę danych SQL dla Ambari i łatwo ją uaktualnić w oparciu o własne wymagania dotyczące rozwoju firmy. Wdrożenie jest wykonywane z szablonem Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Konfigurowanie klastrów usługi HDInsight za pomocą niestandardowej bazy danych Ambari](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
-
-### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>Maszyny wirtualne z serii F są teraz dostępne w usłudze HDInsight
-
-Maszyny wirtualne z serii F są dobrym wyborem, aby rozpocząć pracę z usługą HDInsight z wymaganiami dotyczącymi przetwarzania światła. Oferując niższą cenę za godzinę, seria F zapewnia najlepszy w portfolio platformy Azure stosunek ceny do wydajności, określany na podstawie liczby jednostek ACU (Azure Compute Unit) na procesor wirtualny vCPU. Aby uzyskać więcej informacji, zobacz [Wybieranie odpowiedniego rozmiaru maszyny wirtualnej dla klastra usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-selecting-vm-size).
+![Niestandardowa baza danych Ambari](./media/hdinsight-release-notes/custom-ambari-db.png)
 
 ## <a name="deprecation"></a>Przestarzałe
-
-### <a name="g-series-virtual-machine-deprecation"></a>Przestarzałe maszyny wirtualne z serii G
-W tej wersji maszyny wirtualne z serii G nie są już dostępne w usłudze HDInsight.
-
-### <a name="dv1-virtual-machine-deprecation"></a>Dv1 przestarzałą maszynę wirtualną
-W tej wersji korzystanie z maszyn wirtualnych Dv1 z usługą HDInsight jest przestarzałe. Wszystkie żądania klienta dotyczące usługi Dv1 będą obsługiwane z użyciem usługi Dv2 automatycznie. Nie ma różnicy cen między maszynami wirtualnymi Dv1 i Dv2.
+Brak zaniecheń dla tej wersji. Aby przygotować się do nadchodzących przestarzałych, zobacz [nadchodzące zmiany](#upcoming-changes).
 
 ## <a name="behavior-changes"></a>Zmiany zachowania
-
-### <a name="cluster-managed-disk-size-change"></a>Zmiana rozmiaru dysku zarządzanego przez klaster
-Usługa HDInsight zapewnia zarządzane miejsce na dysku z klastrem. W tej wersji rozmiar dysku zarządzanego każdego węzła w nowym klastrze zostanie zmieniony na 128 GB.
+Brak zmian w zachowaniu dla tej wersji. Aby przygotować się do nadchodzących zmian w zachowaniu, zobacz [nadchodzące zmiany](#upcoming-changes).
 
 ## <a name="upcoming-changes"></a>Nadchodzące zmiany
-Następujące zmiany zostaną wykonane w przyszłych wersjach. 
+Następujące zmiany zostaną wykonane w przyszłych wydaniach. 
+
+### <a name="transport-layer-security-tls-12-enforcement"></a>Transport Layer Security (TLS) 1,2
+Transport Layer Security (TLS) i SSL (SSL) to protokoły kryptograficzne zapewniające bezpieczeństwo komunikacji w sieci komputerowej. Aby uzyskać więcej informacji, zobacz [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). Klastry usługi Azure HDInsight akceptują połączenia protokołu TLS 1,2 na publicznych punktach końcowych HTTPS, więc protokół TLS 1,1 jest nadal obsługiwany w celu zapewnienia zgodności ze starszymi klientami.
+
+Począwszy od kolejnej wersji, będzie można wybrać i skonfigurować nowe klastry usługi HDInsight do akceptowania tylko połączeń TLS 1,2. 
+
+W dalszej części roku, począwszy od 6/30/2020, usługa Azure HDInsight wymusi dla wszystkich połączeń HTTPS wartość TLS 1,2 lub nowszą. Zalecamy, aby upewnić się, że wszyscy klienci są gotowi do obsługi protokołu TLS 1,2 lub jego nowszych wersji.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Przechodzenie do zestawów skalowania maszyn wirtualnych platformy Azure
-Usługa HDInsight teraz używa maszyn wirtualnych platformy Azure do aprowizacji klastra. Począwszy od grudnia Usługa HDInsight będzie używać zestawów skalowania maszyn wirtualnych platformy Azure. Zobacz więcej informacji o [zestawach skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+Usługa HDInsight teraz używa maszyn wirtualnych platformy Azure do aprowizacji klastra. Rozpoczynając od Feburary 2020 (dokładna data zostanie przekazana później), Usługa HDInsight będzie używać zestawów skalowania maszyn wirtualnych platformy Azure. Zobacz więcej informacji o [zestawach skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+
+### <a name="esp-spark-cluster-node-size-change"></a>Zmiana rozmiaru węzła klastra Spark w ramach platformy ESP 
+W nadchodzącym wydaniu:
+- Minimalny dozwolony rozmiar węzła dla klastra ESP Spark zostanie zmieniony na Standard_D13_V2. 
+- Maszyny wirtualne z serii a są przestarzałe do tworzenia nowych klastrów ESP, ponieważ maszyny wirtualne z serii A mogą powodować problemy z klastrem ESP ze względu na stosunkowo niską pojemność procesora i pamięci.
 
 ### <a name="hbase-20-to-21"></a>HBase 2,0 do 2,1
 W nadchodzącym wydaniu usługi HDInsight 4,0 wersja HBase zostanie uaktualniona z wersji 2,0 do 2,1.
-
-### <a name="a-series-virtual-machine-deprecation-for-esp-cluster"></a>Przestarzałe maszyny wirtualne z serii A dla klastra ESP
-Maszyny wirtualne z serii A mogą powodować problemy z klastrem ESP z powodu stosunkowo niskiej pojemności procesora i pamięci. W nadchodzącym wydaniu maszyny wirtualne z serii A będą przestarzałe do tworzenia nowych klastrów ESP.
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 Usługa HDInsight kontynuuje zwiększanie niezawodności i wydajności klastrów. 
 
 ## <a name="component-version-change"></a>Zmiana wersji składnika
-Nie ma żadnej zmiany wersji składnika dla tej wersji. Bieżące wersje składników usługi HDInsight 4,0 i HDInsight 3,6 można znaleźć [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Rozszerzona obsługa usługi HDInsight 3,6 do 31 grudnia 2020. Więcej szczegółów można znaleźć w temacie [obsługiwane wersje usługi HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
+
+Brak zmian wersji składnika usługi HDInsight 4,0.
+
+Apache Zeppelin w usłudze HDInsight 3,6:0.7.0--> 0.7.3. 
+
+Najbardziej aktualne wersje składników można znaleźć w [tym dokumencie](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions).
+
+## <a name="new-regions"></a>Nowe regiony
+
+### <a name="uae-north"></a>Północne Zjednoczone Emiraty Arabskie
+Adresy IP zarządzania w regionie Zjednoczone Emiraty Arabskie to: `65.52.252.96` i `65.52.252.97`.

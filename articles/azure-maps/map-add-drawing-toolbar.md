@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6bc754c9a4f333da85e57c5ad9780da8df93e895
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ed16d8797e541ee474b4f52f3d4379721922a734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432881"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Dodawanie paska narzędzi narzędzi do rysowania do mapy
 
 W tym artykule pokazano, jak używać modułu narzędzi do rysowania i wyświetlać pasek narzędzi rysowania na mapie. Kontrolka [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) dodaje pasek narzędzi Rysowanie na mapie. Dowiesz się, jak tworzyć mapy za pomocą tylko jednego i wszystkich narzędzi do rysowania oraz jak dostosować renderowanie kształtów rysowania w Menedżerze rysowania.
 
-## <a name="add-drawing-toolbar"></a>Dodaj pasek narzędzi rysowania
+## <a name="add-drawing-toolbar"></a>Dodawanie paska narzędzi rysowania
 
 Poniższy kod tworzy wystąpienie Menedżera rysowania i wyświetla pasek narzędzi na mapie.
 
@@ -37,7 +37,7 @@ Poniżej znajduje się kompletny przykładowy kod wykonywany w powyższych funkc
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Dodaj pasek narzędzi rysowania" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Dodawanie paska narzędzi rysowania" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zapoznaj się z piórem <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Dodawanie paska narzędzi Rysowanie</a> przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -62,7 +62,7 @@ Poniżej znajduje się kompletny przykładowy kod wykonywany w powyższych funkc
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Dodawanie narzędzia do rysowania wielokątów" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz pióro <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Dodaj narzędzie do rysowania wielokątów</a> , Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() w <a href='https://codepen.io'>CodePen</a>.
+Zobacz pióro <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Dodaj narzędzie do rysowania wielokątów</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -94,16 +94,27 @@ Poniżej znajduje się kompletny przykładowy kod wykonywany w powyższych funkc
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Zmień styl renderowania rysowania" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz styl renderowania dla pióra <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>zmiana rysowania</a> według Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+Zobacz styl renderowania dla pióra <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>zmiana rysowania</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="next-steps"></a>Następne kroki
 
+Dowiedz się, jak używać dodatkowych funkcji modułu narzędzi do rysowania:
+
+> [!div class="nextstepaction"]
+> [Pobierz dane kształtu](map-get-shape-data.md)
+
+> [!div class="nextstepaction"]
+> [Reagowanie na zdarzenia rysowania](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [Typy interakcji i skróty klawiaturowe](drawing-tools-interactions-keyboard-shortcuts.md)
+
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Rysowanie paska narzędzi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

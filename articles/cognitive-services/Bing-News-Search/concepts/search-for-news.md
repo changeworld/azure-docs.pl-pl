@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 06/19/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448560"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Wyszukiwanie wiadomości za pomocą interfejsu API wyszukiwania wiadomości Bing
 
@@ -107,7 +107,7 @@ Jeśli usłudze Bing uda się określić kategorię artykułu z wiadomościami, 
 
 ## <a name="get-todays-top-news"></a>Pobieranie dzisiejszych najważniejszych wiadomości
 
-Aby uzyskać dzisiejsze najpopularniejsze artykuły z wiadomościami, możesz wysłać te same ogólne żądanie, tak jak wcześniej, `q` pozostawiając parametr bez ustawienia.
+Aby uzyskać dzisiejsze najpopularniejsze artykuły z wiadomościami, możesz wysłać te same ogólne żądanie, tak jak wcześniej, pozostawiając `q` nie można cofnąć.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpowiedź na korzystanie z najważniejszych wiadomości jest niemal taka sama jak w przypadku uzyskiwania ogólnych wiadomości. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Upewnij się, `provider` że pole jest używane do poatrybutowania artykułu.
+Odpowiedź na korzystanie z najważniejszych wiadomości jest niemal taka sama jak w przypadku uzyskiwania ogólnych wiadomości. Jednak odpowiedź `news` nie zawiera pola `totalEstimatedMatches`, ponieważ obowiązuje określona liczba wyników. Liczba najważniejszych artykułów może być inna w zależności od cyklu życia informacji. Pamiętaj, aby użyć pola `provider`, aby pomieścić artykuł.
 
 ## <a name="get-news-by-category"></a>Pobieranie wiadomości według kategorii
 

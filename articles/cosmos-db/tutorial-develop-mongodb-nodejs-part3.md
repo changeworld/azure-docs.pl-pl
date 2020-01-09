@@ -1,6 +1,5 @@
 ---
-title: Tworzenie aplikacji Angular przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB — kompilowanie interfejsu użytkownika za pomocą aplikacji Angular
-titleSuffix: Azure Cosmos DB
+title: Tworzenie interfejsu użytkownika aplikacji kątowej z interfejsem API Azure Cosmos DB dla MongoDB (part3)
 description: Część 3 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB za pomocą platformy Angular i języka Node w usłudze Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767097"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444737"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Tworzenie aplikacji Angular przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB — kompilowanie interfejsu użytkownika za pomocą aplikacji Angular
 
@@ -397,7 +396,7 @@ Teraz, gdy mamy składnik, jak możemy doprowadzić do wyświetlenia go na ekran
 
     ![Żarówka w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
 
-6. Kliknij ikonę żarówki, a następnie kliknij pozycję **Importuj element Hero z folderu „/app/hero”** lub **Importuj element Hero z folderu „./hero”**. (Komunikat zmienia się w zależności od konfiguracji).
+6. Kliknij ikonę żarówki, a następnie kliknij pozycję **Importuj element Hero z folderu „/app/hero”** lub **Importuj element Hero z folderu „./hero”** . (Komunikat zmienia się w zależności od konfiguracji).
 
     W wierszu 2 pojawi się nowy wiersz kodu. Jeśli wiersz 2 odwołuje się do folderu /app/hero, zmodyfikuj go tak, aby odwoływał się do pliku hero z folderu lokalnego (./hero). Wiersz 2 powinien wyglądać następująco:
 
@@ -415,7 +414,7 @@ Teraz, gdy mamy składnik, jak możemy doprowadzić do wyświetlenia go na ekran
     ng g s hero -m app.module
     ```
 
-2. W programie Visual Studio Code wróć do pliku **heroes.components.ts**. Zwróć uwagę, że w wierszu `constructor(private heroService: HeroService) {}` (wiersz 13) element `HeroService` jest podkreślony czerwoną linią. Kliknij pozycję `HeroService`, a z lewej strony bloku kodu pojawi się żarówka. Kliknij żarówkę, a następnie kliknij pozycję **Importuj element HeroService z folderu „./hero.service ”** lub **Importuj element HeroService z folderu „/app/hero.service”**.
+2. W programie Visual Studio Code wróć do pliku **heroes.components.ts**. Zwróć uwagę, że w wierszu `constructor(private heroService: HeroService) {}` (wiersz 13) element `HeroService` jest podkreślony czerwoną linią. Kliknij pozycję `HeroService`, a z lewej strony bloku kodu pojawi się żarówka. Kliknij żarówkę, a następnie kliknij pozycję **Importuj element HeroService z folderu „./hero.service ”** lub **Importuj element HeroService z folderu „/app/hero.service”** .
 
     Kliknięcie żarówki powoduje wstawienie nowego wiersza kodu w wierszu 2. Jeśli wiersz 2 odwołuje się do folderu /app/hero.service, zmodyfikuj go tak, aby odwoływał się do pliku hero z folderu lokalnego (./hero.service). Wiersz 2 powinien wyglądać następująco:
     
@@ -487,7 +486,7 @@ Teraz, gdy mamy składnik, jak możemy doprowadzić do wyświetlenia go na ekran
 
     Teraz uruchommy aplikację.
 
-2. W programie Visual Studio Code kliknij przycisk **Debugowanie** ![ikona Debugowanie w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) po lewej stronie, następnie kliknij przycisk **Rozpocznij debugowanie** ![ikona Debugowanie w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
+2. W programie Visual Studio Code kliknij przycisk **Debugowanie**![ikona Debugowanie w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) po lewej stronie, następnie kliknij przycisk **Rozpocznij debugowanie**![ikona Debugowanie w programie Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
 
 3. Teraz otwórz przeglądarkę internetową, przejdź pod adres **localhost:3000** i obejrzyj lokalnie uruchomioną aplikację.
 

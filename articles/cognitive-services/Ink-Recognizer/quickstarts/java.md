@@ -1,21 +1,21 @@
 ---
 title: 'Szybki Start: Rozpoznawanie cyfrowego atramentu za pomocą interfejsu API REST rozpoznawania atramentu i języka Java'
 titleSuffix: Azure Cognitive Services
-description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć rozpoznawanie cyfrowych pociągnięć atramentu.
+description: Użyj interfejsu API rozpoznawania pisma odręcznego, aby rozpocząć rozpoznawanie cyfrowych pociągnięć atramentu w tym przewodniku Szybki Start.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 09/23/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: e8cd6a4acbd1492bba1c9e88b523a7c44a44f009
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: d2cd4e56477ea39587ce318538c9ddd84c51b03b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448119"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Szybki Start: Rozpoznawanie cyfrowego atramentu za pomocą interfejsu API REST rozpoznawania atramentu i języka Java
 

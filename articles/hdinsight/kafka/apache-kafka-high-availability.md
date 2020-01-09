@@ -1,19 +1,19 @@
 ---
 title: Wysoka dostępność dzięki Apache Kafka usługi Azure HDInsight
 description: Dowiedz się, jak zapewnić wysoką dostępność dzięki platformie Apache Kafka w usłudze Azure HDInsight. Dowiedz się, jak przeprowadzić ponowne równoważenie replik partycji na platformie Kafka, tak aby znajdowały się one w różnych domenach błędów w regionie świadczenia usługi Azure, który udostępnia usługę HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: d570cdf32ccf0f7037fd772f71a4296904ba7921
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: a90be471ca068869ee26fb02bba77dfdd476a44e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435285"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Wysoka dostępność danych dzięki platformie Apache Kafka w usłudze HDInsight
 
@@ -51,7 +51,7 @@ Użyj [Narzędzia do ponownego równoważenia Apache Kafka partycji](https://git
 
 Aby uzyskać więcej informacji dotyczących nawiązywania połączenia z usługą HDInsight przy użyciu protokołu SSH, zobacz dokument [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Skalowalność Apache Kafka w usłudze HDInsight](apache-kafka-scalability.md)
 * [Dublowanie przy użyciu Apache Kafka w usłudze HDInsight](apache-kafka-mirroring.md)

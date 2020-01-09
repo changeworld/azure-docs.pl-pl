@@ -1,5 +1,5 @@
 ---
-title: Tworzenie wykazu zasobów i zarządzanie nim w usłudze Azure AD uprawnienia zarządzania — Azure Active Directory
+title: Tworzenie & Zarządzanie zasobami w usłudze zarządzania prawami — Azure AD
 description: Dowiedz się, jak utworzyć nowy kontener zasobów i pakietów dostępu w Azure Active Directory zarządzania prawami.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422641"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Tworzenie wykazu zasobów i zarządzanie nim w usłudze Azure AD uprawnienia zarządzania
 
@@ -129,7 +129,7 @@ Można edytować nazwę i opis wykazu. Użytkownicy zobaczą te informacje w szc
 
     ![Edytuj ustawienia katalogu](./media/entitlement-management-shared/catalog-edit.png)
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 ## <a name="delete-a-catalog"></a>Usuwanie wykazu
 

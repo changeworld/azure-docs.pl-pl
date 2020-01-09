@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych i Przywracanie zaszyfrowanych maszyn wirtualny
 description: Opisuje sposób tworzenia kopii zapasowych i przywracania zaszyfrowanych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449979"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanej maszyny wirtualnej platformy Azure
 
@@ -28,7 +28,7 @@ Azure Backup można tworzyć kopie zapasowe maszyn wirtualnych platformy Azure i
 **Typ dysku maszyny wirtualnej** | **ADE (klucz szyfrowania bloków/dm-crypt)** | **ADE i KEK**
 --- | --- | ---
 **Niepodlegającą** | Tak | Tak
-**Zarządzanych**  | Tak | Tak
+**Zarządzany**  | Tak | Tak
 
 - Dowiedz się więcej na temat [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)i [KEKs](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
 - Przeczytaj [często zadawane pytania](../security/azure-security-disk-encryption-faq.md) dotyczące szyfrowania dysków maszyn wirtualnych platformy Azure.
@@ -136,10 +136,10 @@ Aby ustawić uprawnienia:
 Zaszyfrowane maszyny wirtualne są przywracane w następujący sposób:
 
 1. [Przywróć dysk maszyny wirtualnej](backup-azure-arm-restore-vms.md#restore-disks).
-2. Następnie wykonaj jedną z następujących czynności:
-    - Użyj szablonu wygenerowanego podczas operacji przywracania, aby dostosować ustawienia maszyny wirtualnej i wyzwolić wdrożenie maszyny wirtualnej. [Dowiedz się więcej](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    - Utwórz nową maszynę wirtualną na podstawie przywróconych dysków przy użyciu programu PowerShell. [Dowiedz się więcej](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
-    - W przypadku maszyn wirtualnych z systemem Linux Zresetuj rozszerzenie ADE, aby dyski z danymi były otwarte i zainstalowane.
+2. Utwórz ponownie wystąpienie maszyny wirtualnej, wykonując jedną z następujących czynności:
+    1. Użyj szablonu wygenerowanego podczas operacji przywracania, aby dostosować ustawienia maszyny wirtualnej i wyzwolić wdrożenie maszyny wirtualnej. [Dowiedz się więcej](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Utwórz nową maszynę wirtualną na podstawie przywróconych dysków przy użyciu programu PowerShell. [Dowiedz się więcej](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+3. W przypadku maszyn wirtualnych z systemem Linux ponownie zainstaluj rozszerzenie ADE, aby dyski z danymi były otwarte i zainstalowane.
 
 ## <a name="next-steps"></a>Następne kroki
 

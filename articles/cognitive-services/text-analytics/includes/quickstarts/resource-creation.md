@@ -2,18 +2,28 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 2fe3104d61b5fe2fbf9624ed2fd4fdb2de5686a2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446212"
 ---
-Pobierz klucz i punkt końcowy do uwierzytelniania aplikacji. Utwórz zasób dla analiza tekstu przy użyciu [Azure Portal](../../../cognitive-services-apis-create-account.md) lub [interfejsu wiersza polecenia platformy Azure](../../../cognitive-services-apis-create-account-cli.md) na komputerze lokalnym. Możesz również wykonać następujące czynności:
+Zacznij korzystać z interfejs API analizy tekstu z jedną z poniższych opcji.
 
-* Uzyskaj [klucz wersji próbnej](https://azure.microsoft.com/try/cognitive-services/#decision) ważny przez 7 dni bezpłatnie. Po utworzeniu rejestracji będzie on dostępny w [witrynie sieci Web systemu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Wyświetl zasób na [Azure Portal](https://portal.azure.com/)
 
-Po otrzymaniu klucza i punktu końcowego z subskrypcji próbnej lub zasobu Utwórz dwie [zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication). Jeden nazwany `TEXT_ANALYTICS_SUBSCRIPTION_KEY` dla klucza i jeden nazwany `TEXT_ANALYTICS_ENDPOINT` dla punktu końcowego.
+* <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="utworzyć zasób próbny analiza tekstu" target="_blank">utworzyć zasób <span class="docon docon-navigate-external x-hidden-focus"></span> próbny</a>
+    * Nie jest wymagana żadna subskrypcja platformy Azure. 
+    * Ważne przez siedem dni bezpłatnie. Po zarejestrowaniu się w [witrynie sieci Web platformy Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)będzie dostępny klucz wersji próbnej i punkt końcowy. 
+    * Jest to świetna opcja, jeśli chcesz wypróbować interfejs API analizy tekstu, ale nie masz subskrypcji platformy Azure.
+    
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="utworzyć zasób analiza tekstu"  target="_blank">utworzyć zasób <span class="docon docon-navigate-external x-hidden-focus"></span> analiza tekstu</a>
+    * Dostępne w Azure Portal do momentu usunięcia zasobu.
+    * Skorzystaj z warstwy cenowej bezpłatna do wypróbowania usługi i przeprowadź uaktualnienie później do warstwy płatnej dla środowiska produkcyjnego.
+     
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="utworzyć zasób dla wielu usług" target="_blank">utworzyć zasób <span class="docon docon-navigate-external x-hidden-focus"></span> z wieloma usługami</a>
+    * Dostępne w Azure Portal do momentu usunięcia zasobu.  
+    * Użyj tego samego klucza i punktu końcowego dla aplikacji w wielu Cognitive Services.
+    

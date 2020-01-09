@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: ładowanie przykładowych danych do tabeli interfejsu API Cassandra w usłudze Azure Cosmos DB za pomocą aplikacji języka Java | Microsoft Docs'
+title: 'Samouczek: aplikacja Java do ładowania przykładowych danych do tabeli interfejs API Cassandra w Azure Cosmos DB'
 description: W tym samouczku pokazano, jak załadować przykładowe dane użytkownika do tabeli na koncie interfejsu API Cassandra w usłudze Azure Cosmos DB przy użyciu aplikacji języka Java.
 author: kanshiG
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: e9fc96b9f26344045aa7e45fe7bdbe389e329377
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 66c292bcb02e3b2b215cabe4968fa30a45422cef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445661"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Samouczek: ładowanie przykładowych danych do tabeli interfejsu API Cassandra w usłudze Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
 > * Ładowanie danych do tabeli Cassandra
-> * Uruchamianie aplikacji
+> * Uruchomienie aplikacji
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -74,7 +74,7 @@ Wykonaj poniższe czynności, aby załadować dane do tabeli interfejsu API Cass
      repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
    ```
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 Otwórz wiersz polecenia lub okno terminalu i zmień ścieżkę na folder, w którym utworzono projekt. Uruchom polecenie „mvn clean install”, aby wygenerować plik cosmosdb-cassandra-examples.jar w folderze docelowym, a następnie uruchom aplikację. 
 

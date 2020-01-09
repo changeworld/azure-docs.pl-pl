@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448643"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Szybki Start: wysyłanie żądania wyszukiwania za pomocą zestawu SDK wyszukiwanie jednostek Bing dla języka Java
 
@@ -23,7 +23,7 @@ Użyj tego poradnika Szybki start, aby zacząć wyszukiwać jednostki za pomocą
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zestaw [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Zestaw Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
 * Zestaw SDK wyszukiwania jednostek Bing dla języka Java
 
@@ -67,7 +67,7 @@ Zainstaluj zależności zestawu SDK wyszukiwania jednostek Bing przy użyciu opr
 
 ## <a name="create-a-search-client"></a>Tworzenie klienta wyszukiwania
 
-1. Zaimplementuj klienta `dominantEntityLookup`, który wymaga punktu końcowego interfejsu API i wystąpienia klasy `ServiceClientCredentials`.
+1. Zaimplementuj klienta `dominantEntityLookup`, który wymaga punktu końcowego interfejsu API i wystąpienia klasy `ServiceClientCredentials`. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {

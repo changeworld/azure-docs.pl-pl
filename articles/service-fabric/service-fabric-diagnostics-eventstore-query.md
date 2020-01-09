@@ -1,45 +1,36 @@
 ---
-title: Zapytanie dla zdarzenia klastrowania w klastrach usługi Azure Service Fabric przy użyciu interfejsów API bazy danych EventStore | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Service Fabric bazy danych EventStore interfejsów API usługi Azure do wykonywania zapytań dla zdarzenia platformy
-services: service-fabric
-documentationcenter: .net
+title: Zapytanie o zdarzenia klastra przy użyciu interfejsów API EventStore
+description: Dowiedz się, jak używać interfejsów API usługi Azure Service Fabric EventStore do wykonywania zapytań dotyczących zdarzeń platformy
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392878"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614404"
 ---
-# <a name="query-eventstore-apis-for-cluster-events"></a>Wykonanie kwerendy interfejsów API bazy danych EventStore zdarzenia klastra
+# <a name="query-eventstore-apis-for-cluster-events"></a>Wykonywanie zapytań dotyczących interfejsów API EventStore dla zdarzeń klastra
 
-W tym artykule opisano sposób tworzenia zapytań względem bazy danych EventStore interfejsów API, które są dostępne w usłudze Service Fabric w wersji 6.2 i nowsze wersje — Jeśli chcesz dowiedzieć się więcej o usłudze bazy danych EventStore, zobacz [Omówienie usługi bazy danych EventStore](service-fabric-diagnostics-eventstore.md). Obecnie usługa bazy danych EventStore dostęp tylko do danych w ciągu ostatnich 7 dni (oparte na zasady przechowywania danych diagnostycznych z klastra).
+W tym artykule opisano, jak wykonywać zapytania dotyczące interfejsów API EventStore, które są dostępne w Service Fabric w wersji 6,2 i nowszych — Jeśli chcesz dowiedzieć się więcej na temat usługi EventStore, zobacz [Omówienie usługi EventStore](service-fabric-diagnostics-eventstore.md). Obecnie usługa EventStore może uzyskać dostęp tylko do danych w ciągu ostatnich 7 dni (jest to zależne od zasad przechowywania danych diagnostycznych klastra).
 
 >[!NOTE]
->Interfejsy API bazy danych EventStore są ogólnie dostępne począwszy od usługi Service Fabric w wersji 6.4 tylko klastrów Windows działających na platformie Azure.
+>Interfejsy API EventStore są dostępne dla Service Fabric w wersji 6,4 tylko dla klastrów systemu Windows działających na platformie Azure.
 
-Są dostępne interfejsy API bazy danych EventStore bezpośrednio za pośrednictwem punktu końcowego REST lub programowo. Zależnie od zapytania istnieje kilka parametrów, które są wymagane do zbierania odpowiednie dane. Parametry te zwykle obejmują:
-* `api-version`: wersja są przy użyciu interfejsów API bazy danych EventStore
-* `StartTimeUtc`: Określa początek okresu interesuje Cię spojrzenie na
-* `EndTimeUtc`: koniec okresu czasu
+Do interfejsów API EventStore można uzyskać dostęp bezpośrednio za pośrednictwem punktu końcowego REST lub programowo. W zależności od zapytania istnieje kilka parametrów, które są wymagane do zebrania odpowiednich danych. Te parametry zwykle obejmują:
+* `api-version`: wersja interfejsów API EventStore, których używasz
+* `StartTimeUtc`: określa początek okresu, w którym chcesz się zainteresować
+* `EndTimeUtc`: koniec okresu
 
-Oprócz tych parametrów dostępne są następujące parametry opcjonalne, takie jak:
-* `timeout`: Przesłoń domyślną 60 drugi limitu czasu dla operacji żądania
+Oprócz tych parametrów dostępne są również parametry opcjonalne, takie jak:
+* `timeout`: Zastąp domyślny limit czasu 60 drugi dla wykonywania operacji żądania
 * `eventstypesfilter`: umożliwia filtrowanie dla określonych typów zdarzeń
-* `ExcludeAnalysisEvents`: zwraca zdarzeń "Analizy". Domyślnie zapytań w bazie danych EventStore zwróci ze zdarzeniami "Analiza", jeśli jest to możliwe. Zdarzenia analizy są bardziej rozbudowane zdarzeń kanał operacyjny, które zawiera dodatkowy kontekst lub informacji po przekroczeniu regularne zdarzeń usługi Service Fabric i zapewnia bardziej szczegółowe informacje.
-* `SkipCorrelationLookup`: nie szukać potencjalnych zdarzenia skorelowane w klastrze. Domyślnie bazy danych EventStore podejmie próbę korelowanie zdarzeń w klastrze, a następnie połącz zdarzeń, gdy jest to możliwe. 
+* `ExcludeAnalysisEvents`: nie zwracaj zdarzeń "Analysis". Domyślnie zapytania EventStore będą zwracały ze zdarzeniami "Analysis", jeśli jest to możliwe. Zdarzenia analizy to bogatsze zdarzenia kanału operacyjnego, które zawierają dodatkowy kontekst lub informacje poza regularnym zdarzeniem Service Fabric i zapewniają większą głębokość.
+* `SkipCorrelationLookup`: nie Szukaj możliwych skorelowanych zdarzeń w klastrze. Domyślnie EventStore podejmie próbę skorelowania zdarzeń w klastrze i łączy zdarzenia ze sobą, gdy jest to możliwe. 
 
-Każda jednostka w klastrze może być zapytań dotyczących zdarzenia. Możesz także zbadać zdarzenia dla wszystkich obiektów tego typu. Można na przykład wyszukać zdarzenia dla określonego węzła lub dla wszystkich węzłów w klastrze. Bieżący zestaw jednostek, dla których można wyszukiwać zdarzenia jest (jak zapytanie będzie wyglądać struktura):
+Każda jednostka w klastrze może być kwerendą dla zdarzeń. Można także wysyłać zapytania o zdarzenia dla wszystkich jednostek typu. Można na przykład wykonać zapytania o zdarzenia dla określonego węzła lub dla wszystkich węzłów w klastrze. Bieżący zestaw jednostek, dla których można wykonywać zapytania o zdarzenia, to (z możliwością uporządkowania zapytania):
 * Klaster: `/EventsStore/Cluster/Events`
 * Węzły: `/EventsStore/Nodes/Events`
 * Węzeł: `/EventsStore/Nodes/<NodeName>/$/Events`
@@ -50,24 +41,24 @@ Każda jednostka w klastrze może być zapytań dotyczących zdarzenia. Możesz 
 * Partycje: `/EventsStore/Partitions/Events`
 * Partycja: `/EventsStore/Partitions/<PartitionID>/$/Events`
 * Repliki: `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* Replika jest: `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+* Replika: `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
->Podczas odwoływania się do aplikacji lub nazwę usługi, zapytanie nie musi zawierać "Service fabric: /" prefiks. Ponadto, jeśli Twoja aplikacja lub usługa nazwy "/" w nich, przełącz go do "~" Aby kontynuować pracę zapytania. Na przykład, jeśli aplikacja jest wyświetlany jako "Service fabric: / App1/FrontendApp", określonego zapytania aplikacji będzie postacią `/EventsStore/Applications/App1~FrontendApp/$/Events`.
->Ponadto raportów o kondycji usług już dziś pojawiają się w odpowiadającej jej aplikacji, dzięki czemu będzie szukać `DeployedServiceHealthReportCreated` zdarzenia dla jednostki prawo aplikacji. 
+>W przypadku odwoływania się do nazwy aplikacji lub usługi zapytanie nie musi zawierać "sieci szkieletowej:/" prefiks. Ponadto, jeśli nazwy aplikacji lub usług mają w nich "/", przełącz je na "~", aby zachować działanie zapytania. Jeśli na przykład aplikacja jest wyświetlana jako "Sieć szkieletowa:/APP1/FrontendApp", zapytania specyficzne dla aplikacji byłyby uporządkowane jako `/EventsStore/Applications/App1~FrontendApp/$/Events`.
+>Ponadto raporty kondycji dotyczące usług są wyświetlane dzisiaj w ramach odpowiedniej aplikacji, więc można wykonywać zapytania o zdarzenia `DeployedServiceHealthReportCreated` dla właściwej jednostki aplikacji. 
 
-## <a name="query-the-eventstore-via-rest-api-endpoints"></a>Zapytanie bazy danych EventStore za pośrednictwem punktów końcowych interfejsu API REST
+## <a name="query-the-eventstore-via-rest-api-endpoints"></a>Wysyłanie zapytań do EventStore za pośrednictwem punktów końcowych interfejsu API REST
 
-Można tworzyć zapytania bazy danych EventStore bezpośrednio za pośrednictwem punktu końcowego REST, wprowadzając `GET` żądania: `<your cluster address>/EventsStore/<entity>/Events/`.
+Możesz wysyłać zapytania do EventStore bezpośrednio za pośrednictwem punktu końcowego REST, wprowadzając `GET` żądania: `<your cluster address>/EventsStore/<entity>/Events/`.
 
-Na przykład w celu wysłania zapytania o wszystkie zdarzenia klastra między `2018-04-03T18:00:00Z` i `2018-04-04T18:00:00Z`, żądania powinien wyglądać tak:
+Na przykład w celu zbadania wszystkich zdarzeń klastra między `2018-04-03T18:00:00Z` i `2018-04-04T18:00:00Z`, żądanie będzie wyglądać następująco:
 
 ```
 Method: GET 
 URL: http://mycluster:19080/EventsStore/Cluster/Events?api-version=6.4&StartTimeUtc=2018-04-03T18:00:00Z&EndTimeUtc=2018-04-04T18:00:00Z
 ```
 
-To ustawienie może zwrócić albo, żadnych zdarzeń lub listę zdarzeń zwracane w formacie json:
+Może to oznaczać brak zdarzeń lub listę zdarzeń zwróconych w formacie JSON:
 
 ```json
 Response: 200
@@ -115,15 +106,15 @@ Body:
 ]
 ```
 
-W tym miejscu można widzimy, że między `2018-04-03T18:00:00Z` i `2018-04-04T18:00:00Z`, ten klaster pomyślnie ukończył jego najpierw uaktualnić po najpierw został miały, z `"CurrentClusterVersion": "0.0.0.0:"` do `"TargetClusterVersion": "6.2:1.0"`w `"OverallUpgradeElapsedTimeInMs": "120196.5212"`.
+W tym miejscu można zobaczyć, że między `2018-04-03T18:00:00Z` i `2018-04-04T18:00:00Z`, ten klaster pomyślnie zakończył swoje pierwsze uaktualnienie, gdy został po raz pierwszy postawiliśmy, od `"CurrentClusterVersion": "0.0.0.0:"` do `"TargetClusterVersion": "6.2:1.0"`w `"OverallUpgradeElapsedTimeInMs": "120196.5212"`.
 
-## <a name="query-the-eventstore-programmatically"></a>Programowe zapytania bazy danych EventStore
+## <a name="query-the-eventstore-programmatically"></a>EventStore programowo zapytania
 
-Możesz także zbadać bazy danych EventStore programowo, za pośrednictwem [biblioteki klienckiej usługi Service Fabric](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
+Można również programowo zbadać EventStore za pomocą [biblioteki klienta Service Fabric](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
 
-Po utworzeniu, aby skonfigurować klienta usługi sieci szkieletowej, można wyszukiwać zdarzenia, uzyskując dostęp do bazy danych EventStore w następujący sposób: `sfhttpClient.EventStore.<request>`
+Po skonfigurowaniu klienta Service Fabric można wysyłać zapytania o zdarzenia, uzyskując dostęp do EventStore w następujący sposób: `sfhttpClient.EventStore.<request>`
 
-Oto przykładowe żądanie, wszystkie zdarzenia dla klastra `2018-04-03T18:00:00Z` i `2018-04-04T18:00:00Z`, za pośrednictwem `GetClusterEventListAsync` funkcji.
+Oto przykładowe żądanie dotyczące wszystkich zdarzeń klastra między `2018-04-03T18:00:00Z` i `2018-04-04T18:00:00Z`, za pomocą funkcji `GetClusterEventListAsync`.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -136,7 +127,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Oto inny przykład, który wysyła zapytanie o kondycji klastra i wszystkich zdarzeń węzła w września 2018 r i wyświetla je.
+Oto inny przykład, który wykonuje zapytania dotyczące kondycji klastra i wszystkich zdarzeń węzła we wrześniu 2018 i drukuje je na zewnątrz.
 
 ```csharp
   const int timeoutSecs = 60;
@@ -174,39 +165,39 @@ Oto inny przykład, który wysyła zapytanie o kondycji klastra i wszystkich zda
   }
 ```
 
-## <a name="sample-scenarios-and-queries"></a>Przykładowe scenariusze i zapytań
+## <a name="sample-scenarios-and-queries"></a>Przykładowe scenariusze i zapytania
 
-Poniżej przedstawiono kilka przykładów, w jak wywołać interfejsy API REST Store zdarzeń do zrozumienia stanu klastra.
+Poniżej przedstawiono kilka przykładów dotyczących sposobu wywoływania interfejsów API REST magazynu zdarzeń w celu zrozumienia stanu klastra.
 
-*Uaktualnianie klastra:*
+*Uaktualnienia klastra:*
 
-Aby wyświetlić czas ostatniego klastra zostało pomyślnie lub podjęto próbę uaktualnienia w ostatnim tygodniu, można tworzyć zapytania interfejsów API do ostatnio wykonanych uaktualnień z klastrem przy użyciu zapytań dotyczących zdarzenia "ClusterUpgradeCompleted" w bazie danych EventStore: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+Aby zobaczyć, kiedy ostatnio klaster został pomyślnie lub podjęto próbę uaktualnienia do ostatniego tygodnia, można wysłać zapytanie do interfejsów API w celu uzyskania ostatnio zakończonych uaktualnień do klastra, badając zapytania dotyczące zdarzeń "ClusterUpgradeCompleted" w EventStore: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
-*Problemy z uaktualnieniem klastra:*
+*Problemy z uaktualnianiem klastra:*
 
-Podobnie jeśli wystąpiły problemy z uaktualnieniem klastra, wysłać zapytanie o wszystkie zdarzenia dla jednostki klastra. Zostaną wyświetlone różne zdarzenia, w tym rozpoczęcia uaktualnienia i każdy UD, dla którego uaktualnienia przedstawiana przez pomyślnie. Zobaczysz również zdarzenia do punktu, w którym wycofanie pracę i odpowiadających im zdarzenia dotyczące kondycji. Oto zapytanie, które są używane w tym: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Podobnie, jeśli wystąpiły problemy z ostatnim uaktualnieniem klastra, można wykonać zapytanie o wszystkie zdarzenia dla jednostki klastra. Zobaczysz różne zdarzenia, w tym inicjowanie uaktualnień i każdy UD, dla którego uaktualnienie zostało przebudowane pomyślnie. Zobaczysz również zdarzenia dla punktu, w którym rozpoczęto wycofywanie i odpowiednie zdarzenia dotyczące kondycji. Oto zapytanie, którego można użyć w tym celu: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Zmiany stanu węzła:*
 
-Aby wyświetlić Twój status węzła zmian w ciągu ostatnich kilku dni — gdy węzły błąd w górę lub w dół, lub zostały aktywowane lub dezaktywowane (przez platformę, usługa chaos lub z danych wejściowych użytkownika) — Użyj następującego zapytania: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Aby zobaczyć zmiany stanu węzła w ciągu ostatnich kilku dni — gdy węzły przestaną się w górę lub w dół albo zostały aktywowane lub zdezaktywowane (za pomocą platformy, usługi chaos lub z danych wejściowych użytkownika), użyj następującego zapytania: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 *Zdarzenia aplikacji:*
 
-Można także śledzić najnowsze wdrożeń aplikacji i uaktualnień. Użyj następującego zapytania, aby wyświetlić wszystkie zdarzenia aplikacji w klastrze: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Możesz również śledzić najnowsze wdrożenia i uaktualnienia aplikacji. Użyj następującego zapytania, aby wyświetlić wszystkie zdarzenia aplikacji w klastrze: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-*Historyczne kondycji dla aplikacji:*
+*Historyczna kondycja dla aplikacji:*
 
-Oprócz możliwości wyświetlania tylko zdarzenia cyklu życia aplikacji, można także wyświetlić dane historyczne dotyczące kondycji określonej aplikacji. Można to zrobić, określając nazwę aplikacji, dla której chcesz zbierać dane. Użyj tego zapytania, aby uzyskać wszystkie zdarzenia kondycji aplikacji: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`. Jeśli chcesz uwzględnić zdarzenia dotyczące kondycji, które mogą wygasnąć (zniknął przekazywane czasu wygaśnięcia (TTL)) Dodaj `,ApplicationHealthReportExpired` na końcu zapytania, aby filtrować na dwa typy zdarzeń.
+Oprócz tylko wyświetlania zdarzeń cyklu życia aplikacji można także zobaczyć historyczne dane dotyczące kondycji określonej aplikacji. Można to zrobić, określając nazwę aplikacji, dla której chcesz zebrać dane. Użyj tego zapytania, aby pobrać wszystkie zdarzenia dotyczące kondycji aplikacji: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`. Jeśli chcesz uwzględnić zdarzenia kondycji, które mogły wygasnąć (czas wygaśnięcia (TTL)), Dodaj `,ApplicationHealthReportExpired` na końcu zapytania, aby odfiltrować dwa typy zdarzeń.
 
-*Historyczne kondycji dla wszystkich usług w wartości "myApp":*
+*Historyczna kondycja wszystkich usług w "MojaApl":*
 
-Obecnie zdarzenia raportów kondycji usługi są wyświetlane jako `DeployedServicePackageNewHealthReport` zdarzenia w obszarze odpowiednia jednostka aplikacji. Aby zobaczyć, sposobu usługi mają zostały działania dla komputera "App1", użyj następującego zapytania: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Obecnie zdarzenia raportów kondycji dla usług są wyświetlane jako zdarzenia `DeployedServicePackageNewHealthReport` w ramach odpowiedniej jednostki aplikacji. Aby dowiedzieć się, jak usługi zostały wdrożone dla "APP1", użyj następującego zapytania: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
 *Ponowna konfiguracja partycji:*
 
-Aby wyświetlić wszystkie przeniesień partycji, które wystąpiły w klastrze, wykonanie kwerendy `PartitionReconfigured` zdarzeń. Może to ułatwić ustalenie obciążenia uruchomione na który węzeł, w określonym czasie, podczas diagnozowania problemów w klastrze. Poniżej przedstawiono przykładowe zapytanie, tak, że: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+Aby wyświetlić wszystkie przesunięcia partycji, które wystąpiły w klastrze, wykonaj zapytanie dotyczące zdarzenia `PartitionReconfigured`. Może to pomóc ustalić, jakie obciążenia są wykonywane w danym węźle w określonym czasie podczas diagnozowania problemów w klastrze. Oto przykładowe zapytanie, które robi: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
 *Usługa chaos:*
 
-Istnieje zdarzenie po Chaos usługa jest uruchomiona lub zatrzymana, oznacza to dostępne na poziomie klastra. Aby wyświetlić najnowsze użytkowania usługi chaosu, użyj następującego zapytania: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+Istnieje zdarzenie, dla którego usługa Chaos jest uruchomiona lub zatrzymana, która jest dostępna na poziomie klastra. Aby zobaczyć ostatnie użycie usługi chaos, użyj następującego zapytania: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

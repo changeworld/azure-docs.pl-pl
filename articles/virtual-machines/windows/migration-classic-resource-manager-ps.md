@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: f87e7795416431305141de24497e9760eb03641e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484377"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647564"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrowanie zasobów IaaS z klasycznej do Azure Resource Manager przy użyciu programu PowerShell
 W tych krokach pokazano, jak za pomocą poleceń Azure PowerShell przeprowadzić migrację zasobów infrastruktury jako usługi (IaaS) z klasycznego modelu wdrażania do modelu wdrażania Azure Resource Manager.
@@ -58,7 +58,7 @@ Instrukcje instalacji znajdują się w temacie [How to Install and configure Azu
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Krok 3. upewnienie się, że jesteś administratorem subskrypcji
 Aby przeprowadzić migrację, należy dodać jako administratora dla subskrypcji w [Azure Portal](https://portal.azure.com).
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. W menu **centrum** wybierz pozycję **subskrypcja**. Jeśli go nie widzisz, wybierz pozycję **wszystkie usługi**.
 3. Znajdź odpowiedni wpis subskrypcji, a następnie poszukaj pola **My role** . W przypadku współadministratora wartość powinna być _administratorem konta_.
 
@@ -125,7 +125,7 @@ Ustaw subskrypcję platformy Azure dla bieżącej sesji. W tym przykładzie usta
 <br>
 
 ## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Krok 5. posiadanie wystarczającej Menedżer zasobów procesorów wirtualnych vCPU maszyny wirtualnej
-Upewnij się, że masz wystarczającą Azure Resource Manager procesorów wirtualnych vCPU maszyny wirtualnej w regionie świadczenia usługi Azure bieżącego wdrożenia lub sieci wirtualnej. Aby sprawdzić bieżącą liczbę procesorów wirtualnych vCPU w Azure Resource Manager, można użyć następującego polecenia programu PowerShell. Aby dowiedzieć się więcej o przydziałach vCPU, zobacz [limity i Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+Upewnij się, że masz wystarczającą Azure Resource Manager procesorów wirtualnych vCPU maszyny wirtualnej w regionie świadczenia usługi Azure bieżącego wdrożenia lub sieci wirtualnej. Aby sprawdzić bieżącą liczbę procesorów wirtualnych vCPU w Azure Resource Manager, można użyć następującego polecenia programu PowerShell. Aby dowiedzieć się więcej o przydziałach vCPU, zobacz [limity i Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
 Ten przykład sprawdza dostępność w regionie **zachodnie stany USA** . Zamień nazwę przykładowego regionu na własny.
 

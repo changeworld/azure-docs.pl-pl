@@ -3,12 +3,12 @@ title: Przegląd architektury
 description: Zawiera omówienie architektury, składników i procesów używanych przez usługę Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450197"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -48,7 +48,7 @@ Recovery Services magazyny mają następujące funkcje:
   - **Magazyn Geograficznie nadmiarowy (GRS)** : aby chronić przed awarią całego regionu, możesz użyć GRS. GRS replikuje dane do regionu pomocniczego. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Domyślnie magazyny Recovery Services używają GRS.
 
-## <a name="backup-agents"></a>Agenci kopii zapasowych
+## <a name="backup-agents"></a>Agenci tworzenia kopii zapasowych
 
 Azure Backup udostępnia różnych agentów kopii zapasowych, w zależności od tego, jakiego typu maszyny jest tworzona kopia zapasowa:
 
@@ -63,7 +63,7 @@ W poniższej tabeli objaśniono różne typy kopii zapasowych i używane:
 
 **Typ kopii zapasowej** | **Szczegóły** | **Użycie**
 --- | --- | ---
-**Full** | Pełna kopia zapasowa zawiera całe źródło danych. Zwiększa przepustowość sieci niż różnicowe lub przyrostowe kopie zapasowe. | Używany do początkowej kopii zapasowej.
+**Szczegółowe** | Pełna kopia zapasowa zawiera całe źródło danych. Zwiększa przepustowość sieci niż różnicowe lub przyrostowe kopie zapasowe. | Używany do początkowej kopii zapasowej.
 **Różnicy** |  Różnicowa kopia zapasowa przechowuje bloki, które uległy zmianie od początkowej pełnej kopii zapasowej. Program używa mniejszej ilości sieci i magazynu i nie zachowuje nadmiarowych kopii niezmienionych danych.<br/><br/> Niewydajne, ponieważ bloki danych, które nie są zmieniane między nowszymi kopiami zapasowymi, są transferowane i przechowywane. | Nieużywane przez Azure Backup.
 **Interlini** | Przyrostowa kopia zapasowa przechowuje tylko te bloki danych, które uległy zmianie od czasu utworzenia poprzedniej kopii zapasowej. Wysoka wydajność magazynu i sieci. <br/><br/> Dzięki przyrostowym kopiom zapasowym nie trzeba uzupełniać z pełnymi kopiami zapasowymi. | Używane przez program DPM/serwera usługi MAB do tworzenia kopii zapasowych na dyskach i używane we wszystkich kopiach zapasowych na platformie Azure. Nieużywany do SQL Server kopii zapasowej.
 
@@ -174,7 +174,7 @@ Aby uzyskać więcej informacji o magazynie dyskowym i dostępnych typach dyskó
 Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure przy użyciu usługi Premium Storage z Azure Backup:
 
 - Podczas tworzenia kopii zapasowych maszyn wirtualnych w usłudze Premium Storage usługa Backup tworzy tymczasową lokalizację przejściową o nazwie *AzureBackup-* , na koncie magazynu. Rozmiar lokalizacji przejściowej jest równy rozmiarowi migawki punktu odzyskiwania.
-- Upewnij się, że na koncie magazynu w warstwie Premium jest wystarczająca ilość wolnego miejsca, aby pomieścić tymczasową lokalizację przemieszczania. [Dowiedz się więcej](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Nie należy modyfikować lokalizacji tymczasowej.
+- Upewnij się, że na koncie magazynu w warstwie Premium jest wystarczająca ilość wolnego miejsca, aby pomieścić tymczasową lokalizację przemieszczania. Aby uzyskać więcej informacji, zobacz [elementy docelowe skalowalności dla kont usługi BLOB Storage na stronie Premium](../storage/blobs/scalability-targets-premium-page-blobs.md). Nie należy modyfikować lokalizacji tymczasowej.
 - Po zakończeniu zadania tworzenia kopii zapasowej lokalizacja tymczasowa zostanie usunięta.
 - Cena magazynu używana w lokalizacji tymczasowej jest spójna z [cenami usługi Premium Storage](../virtual-machines/windows/disks-types.md#billing).
 

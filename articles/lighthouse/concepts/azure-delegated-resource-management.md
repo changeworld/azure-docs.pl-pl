@@ -3,12 +3,12 @@ title: Zarządzanie zasobami delegowanymi na platformie Azure
 description: Dzięki usługom zarządzanym dostawcy usług mogą sprzedawać oferty zarządzania zasobami klientom w portalu Azure Marketplace.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464007"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453639"
 ---
 # <a name="azure-delegated-resource-management"></a>Zarządzanie zasobami delegowanymi na platformie Azure
 
@@ -33,7 +33,7 @@ Po dołączeniu klienta do zarządzania zasobami delegowanymi przez platformę A
 
 Na wysokim poziomie poniżej przedstawiono sposób działania zarządzania zasobami delegowanymi przez platformę Azure:
 
-1. Jako dostawca usług identyfikujesz dostęp (role), których grupy, nazwy główne usług lub użytkownicy będą musieli zarządzać zasobami platformy Azure klienta. Definicja dostępu zawiera identyfikator dzierżawy dostawcy usług wraz z wymaganym dostępem do oferty, zdefiniowanym przy użyciu tożsamości **principalId** z dzierżawy zamapowanej do [wbudowanych wartości **definicji** ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (współautor, maszyna wirtualna Współautor, czytelnik itp.).
+1. Jako dostawca usług identyfikujesz dostęp (role), których grupy, nazwy główne usług lub użytkownicy będą musieli zarządzać zasobami platformy Azure klienta. Definicja dostępu zawiera identyfikator dzierżawy dostawcy usług wraz z wymaganym dostępem do oferty, zdefiniowanym przy użyciu tożsamości **principalId** z dzierżawy zamapowanej do [wbudowanych wartości **definicji** ](../../role-based-access-control/built-in-roles.md) (współautor, współautor maszyny wirtualnej, czytelnik itp.).
 2. Należy określić ten dostęp i dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure na jeden z dwóch sposobów:
    - [Publikowanie oferty usług zarządzanych w portalu Azure Marketplace](../how-to/publish-managed-services-offers.md) (prywatnej lub publicznej), która zostanie zaakceptowana przez klienta
    - [Wdrażanie szablonu Azure Resource Manager w dzierżawie klienta](../how-to/onboard-customer.md) dla jednej lub wielu określonych subskrypcji lub grup zasobów

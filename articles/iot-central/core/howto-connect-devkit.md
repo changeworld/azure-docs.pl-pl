@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 270f92365823fb0f9378a9daae77dbbe08b53b14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582980"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435073"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central
 
@@ -25,12 +25,12 @@ W tym artykule opisano, jak deweloper urządzenia łączy urządzenie zestawu de
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące zasoby:
 
-1. Aplikacja IoT Central platformy Azure utworzona na podstawie **przykładowego** szablonu aplikacji Devkits. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+1. Aplikacja IoT Central platformy Azure utworzona na podstawie szablonu aplikacji **starszej** aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 1. Urządzenie DevKit. Aby kupić urządzenie z systemem DevKit, odwiedź stronę [zestawu deweloperskiego IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
-## <a name="sample-devkits-application"></a>Przykładowa aplikacja Devkits
+## <a name="add-a-device-template"></a>Dodawanie szablonu urządzenia
 
-Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **zestawu deweloperskiego** , który definiuje następujące właściwości urządzenia:
+W aplikacji IoT Central platformy Azure Dodaj nowy szablon urządzenia **zestawu deweloperskiego** , który definiuje następujące właściwości urządzenia:
 
 - Pomiary danych telemetrycznych dla **wilgotności**, **temperatury**, **ciśnienia**, **Magnetometer** (mierzone wzdłuż x, y, z osi z), **przyspieszeniomierz** (mierzone wzdłuż x, y, z osi z) i **żyroskop** (mierzone wzdłuż x, y, osi z).
 - Pomiar stanu **urządzenia**.
@@ -40,6 +40,11 @@ Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits z
 - Właściwość chmury **została wyprodukowana w**.
 - Polecenia **echo** i **odliczanie**. Gdy rzeczywiste urządzenie odbiera polecenie **echo** , wyświetla wartość wysłaną na ekranie urządzenia. Gdy rzeczywiste urządzenie odbiera polecenie **odliczania** , przechodzi przez wzorzec, a urządzenie wysyła odliczane wartości z powrotem do IoT Central.
 
+1. Wybierz pozycję **+ Nowy** z szablonów urządzeń ![szablon urządzenia](media/howto-connect-devkit/adddevicetemplate.png)
+   
+
+2. Wybierz pozycję **zestawu deweloperskiego** i Utwórz szablon urządzenia zestawu deweloperskiego ![Dodaj szablon urządzenia](media/howto-connect-devkit/newtemplate.png)
+
 Aby uzyskać szczegółowe informacje o konfiguracji, zobacz [zestawu deweloperskiego Device Template Details](#mxchip-device-template-details)
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
@@ -48,7 +53,7 @@ Aby uzyskać szczegółowe informacje o konfiguracji, zobacz [zestawu dewelopers
 
 W aplikacji IoT Central platformy Azure Dodaj rzeczywiste urządzenie z szablonu urządzenia **zestawu deweloperskiego** i zanotuj szczegóły połączenia urządzenia: **Identyfikator zakresu, identyfikator urządzenia i klucz podstawowy**:
 
-1. Dodaj **rzeczywiste urządzenie** z Device Explorer, wybierz pozycję **+ Nowy > rzeczywiste** , aby dodać rzeczywiste urządzenie.
+1. Dodaj **rzeczywiste urządzenie** z urządzeń, a następnie wybierz pozycję **+ Nowy > rzeczywista** , aby dodać rzeczywiste urządzenie.
 
     * Wprowadź **Identyfikator urządzenia**małymi literami lub użyj sugerowanego **identyfikatora urządzenia**.
     * Wprowadź **nazwę urządzenia**lub użyj sugerowanej nazwy
@@ -197,7 +202,7 @@ Aplikacja utworzona na podstawie przykładowego szablonu aplikacji Devkits zawie
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| temp           | OC     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
@@ -210,11 +215,11 @@ Aplikacja utworzona na podstawie przykładowego szablonu aplikacji Devkits zawie
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stany 
-| Nazwa          | Nazwa wyświetlana   | TYPOW | Ostrzeżenie | STANOWIĄ | 
+| Nazwa          | Nazwa wyświetlana   | NORMAL (priorytet normalny) | Ostrzeżenie | STANOWIĄ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Stan urządzenia   | Zielony  | Orange  | Czerwony    | 
+| DeviceState   | Stan urządzenia   | Zielony  | Pomarańczowy  | Czerwony    | 
 
-#### <a name="events"></a>Zdarzenia 
+#### <a name="events"></a>Wydarzenia 
 | Nazwa             | Nazwa wyświetlana      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Naciśnięto przycisk B  | 
@@ -223,17 +228,17 @@ Aplikacja utworzona na podstawie przykładowego szablonu aplikacji Devkits zawie
 
 Ustawienia liczbowe
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowego |
+| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Wartość początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Zakres      | setnapięci | Wolty | 0              | 0       | 240     | 0       |
-| Obecne      | SetCurrent | Amper  | 0              | 0       | 100     | 0       |
+| Bieżący      | SetCurrent | Amper  | 0              | 0       | 100     | 0       |
 | Szybkość wentylatorów    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 Przełącz ustawienia
 
-| Nazwa wyświetlana | Nazwa pola | Na tekst | Off text | Początkowego |
+| Nazwa wyświetlana | Nazwa pola | Na tekst | Off text | Wartość początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | Logowanie      | Wyłączone     |
+| IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 
@@ -241,14 +246,14 @@ Przełącz ustawienia
 | --------------- | ------------ | ---------- | --------- |
 | Właściwość urządzenia | Numer struktury   | dieNumber  | numer    |
 | Właściwość urządzenia | Lokalizacja urządzenia   | location  | location    |
-| Tekst            | Wyprodukowane w     | wytworzono   | Nie dotyczy       |
+| Tekst            | Wyprodukowane w     | wytworzono   | ND       |
 
 ### <a name="commands"></a>Polecenia
 
-| Nazwa wyświetlana | Nazwa pola | Typ zwracany | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
+| Nazwa wyświetlana | Nazwa pola | Zwracany typ | Nazwa wyświetlana pola wejściowego | Nazwa pola wejściowego | Typ pola wejściowego |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| ECHA         | echo       | tekst        | wartość do wyświetlenia         | displayedValue   | tekst             |
-| Licz    | Licz  | numer      | Liczba od               | countFrom        | numer           |
+| Echo         | echo       | tekst        | wartość do wyświetlenia         | displayedValue   | tekst             |
+| Licz    | licz  | numer      | Liczba od               | countFrom        | numer           |
 
 ## <a name="next-steps"></a>Następne kroki
 

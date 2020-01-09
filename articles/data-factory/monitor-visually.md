@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278369"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690927"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Wizualnie Monitoruj Azure Data Factory
 
@@ -35,10 +35,10 @@ Domyślny widok monitorowania to lista uruchomień potoku w wybranym okresie. Wy
 | Czas trwania | Czas trwania uruchomienia (HH: MM: SS) |
 | Wyzwolone przez | Nazwa wyzwalacza, który uruchomił potok |
 | Stan | **Zakończone niepowodzeniem**, **zakończone powodzeniem**, **w toku**, **anulowane**lub **umieszczone w kolejce** |
-| Adnotacj | Tagi z możliwością filtrowania skojarzone z potokiem  |
+| Adnotacje | Tagi z możliwością filtrowania skojarzone z potokiem  |
 | Parametry | Parametry uruchomienia potoku (pary nazwa/wartość) |
 | Błąd | Jeśli potok nie powiódł się, błąd przebiegu |
-| Identyfikator przebiegu | Identyfikator uruchomienia potoku |
+| Identyfikator uruchomienia | Identyfikator uruchomienia potoku |
 
 ![Widok listy na potrzeby monitorowania przebiegów potoku](media/monitor-visually/pipeline-runs.png)
 
@@ -61,7 +61,7 @@ Aby wyświetlić uruchomienia działań dla każdego uruchomienia potoku, wybier
 | Integration Runtime | Integration Runtime działanie zostało uruchomione |
 | Właściwości użytkownika | Właściwości działania zdefiniowane przez użytkownika |
 | Błąd | Jeśli działanie nie powiodło się, błąd przebiegu |
-| Identyfikator przebiegu | Identyfikator uruchomienia działania |
+| Identyfikator uruchomienia | Identyfikator uruchomienia działania |
 
 ![Widok listy dla uruchomionych działań monitorowania](media/monitor-visually/activity-runs.png)
 
@@ -93,7 +93,7 @@ Przełączenie przebiegów w kolejności malejącej lub rosnącej według czasu 
 | Nazwa potoku | Filtruj według nazwy potoku. |
 | Uruchom uruchomienie |  Określ zakres czasu wyświetlanych uruchomień potoku. Opcje obejmują szybkie filtry dla **ostatnich 24 godzin**, **ubiegłego tygodnia**i **ostatnich 30 dni** lub do wybierania niestandardowej daty i godziny. |
 | Stan uruchomienia | Filtry przebiega według stanu: **zakończone powodzeniem**, **zakończone niepowodzeniem**, do **kolejki**, **anulowane**lub **w toku**. |
-| Adnotacj | Filtruj według tagów zastosowanych do każdego potoku |
+| Adnotacje | Filtruj według tagów zastosowanych do każdego potoku |
 | Uruchomienia | Filtruj, czy chcesz zobaczyć potoki reran |
 
 ![Opcje filtrowania](media/monitor-visually/filter.png)
@@ -113,6 +113,12 @@ Możesz ponownie uruchomić działania wewnątrz potoku. Wybierz pozycję **Wyś
 ![Wyświetlanie uruchomień działania](media/monitor-visually/rerun-activities-image1.png)
 
 ![Wybierz przebieg działania](media/monitor-visually/rerun-activities-image2.png)
+
+### <a name="rerun-from-failed-activity"></a>Uruchom ponownie z działania zakończonego niepowodzeniem
+
+Jeśli działanie zakończy się niepowodzeniem, przekracza limit czasu lub zostanie anulowane, można ponownie uruchomić potok z działania zakończonego niepowodzeniem, wybierając pozycję **Uruchom ponownie z działania zakończonego niepowodzeniem**.
+
+![Uruchom ponownie działanie zakończone niepowodzeniem](media/monitor-visually/rerun-failed-activity.png)
 
 ### <a name="view-rerun-history"></a>Wyświetl historię ponownego uruchamiania
 

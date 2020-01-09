@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Wykonaj wyszukiwanie w wiadomościach przy użyciu języka PHP i interfejsu API REST wyszukiwanie wiadomości Bing'
+title: 'Szybki Start: wykonywanie wyszukiwania w wiadomościach przy użyciu języka PHP i interfejsu API REST wyszukiwanie wiadomości Bing'
 titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania wiadomości Bing przy użyciu języka PHP i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383097"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu języka PHP i interfejsu API REST wyszukiwania wiadomości Bing
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Szybki Start: wykonywanie wyszukiwania w wiadomościach przy użyciu języka PHP i interfejsu API REST wyszukiwanie wiadomości Bing
 
-Ten przewodnik Szybki start umożliwia tworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
+Ten przewodnik Szybki start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
 Chociaż ta aplikacja jest napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
@@ -40,6 +40,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
 2. Utwórz nowy projekt PHP w ulubionym środowisku IDE lub edytorze.
 3. Dodaj kod przedstawiony poniżej.
 4. Zastąp wartość `accessKey` kluczem dostępu właściwym dla Twojej subskrypcji.
+5. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 5. Uruchom program.
 
 ```php

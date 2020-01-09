@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671777"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680957"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokalne wdrożenie narzędzia Git do Azure App Service
 
@@ -97,7 +97,9 @@ Jeśli Twoje konto ma wymagane uprawnienia, możesz skonfigurować Azure Pipelin
 
 Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu Azure Pipelines (wersja zapoznawcza):
 
-1. Przejdź do strony aplikacji Azure App Service w [Azure Portal](https://portal.azure.com), a następnie wybierz pozycję **centrum wdrażania** w menu po lewej stronie.
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**. 
+
+1. Wybierz aplikację Azure App Service i wybierz pozycję **centrum wdrażania** w menu po lewej stronie.
    
 1. Na stronie **centrum wdrażania** wybierz pozycję **lokalny program git**, a następnie wybierz pozycję **Kontynuuj**. 
    

@@ -1,22 +1,18 @@
 ---
 title: Konfigurowanie Azure Monitor do integracji kontenerów Prometheus | Microsoft Docs
 description: W tym artykule opisano sposób konfigurowania Azure Monitor dla agenta kontenerów w celu wypróbowania metryk z Prometheus z klastrem usługi Azure Kubernetes Service.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 51bdf0cfedb30fbd95f9a44e8f4a0efe4e857104
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1da2142f287bde83be7cede282bd854ce822d23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403512"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurowanie wycinków metryk Prometheus za pomocą Azure Monitor dla kontenerów
 
-[Prometheus](https://prometheus.io/) to popularne rozwiązanie do monitorowania metryk typu open source stanowiące składnik fundacji [Cloud Native Compute Foundation](https://www.cncf.io/). Azure Monitor dla kontenerów to bezproblemowe środowisko dołączania do zbierania metryk Prometheus. Zwykle do korzystania z Prometheus należy skonfigurować serwer Prometheus i zarządzać nim za pomocą magazynu. Przez integrację z Azure Monitor serwer Prometheus nie jest wymagany. Wystarczy uwidocznić punkt końcowy metryk Prometheus przez eksporterów lub punkty (aplikację), a agent kontenerowy dla Azure Monitor kontenerów może wyrównać te metryki. 
+[Prometheus](https://prometheus.io/) to popularne rozwiązanie do monitorowania metryk typu "open source" i jest częścią [natywnej platformy obliczeniowej w chmurze](https://www.cncf.io/). Azure Monitor dla kontenerów to bezproblemowe środowisko dołączania do zbierania metryk Prometheus. Zwykle do korzystania z Prometheus należy skonfigurować serwer Prometheus i zarządzać nim za pomocą magazynu. Przez integrację z Azure Monitor serwer Prometheus nie jest wymagany. Wystarczy uwidocznić punkt końcowy metryk Prometheus przez eksporterów lub punkty (aplikację), a agent kontenerowy dla Azure Monitor kontenerów może wyrównać te metryki. 
 
 ![Architektura monitorowania kontenerów dla Prometheus](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
@@ -30,7 +26,7 @@ Aktywne odróżnienie metryk z Prometheus jest wykonywane z jednej z dwóch pers
 * Adres URL protokołu HTTP w całym klastrze i odnajdywanie obiektów docelowych z listy punktów końcowych usługi. Na przykład usługi k8s Services, takie jak polecenia-DNS i polecenia-State-Metrics oraz adnotacje specyficzne dla aplikacji. Metryki zebrane w tym kontekście zostaną zdefiniowane w sekcji ConfigMap *[Prometheus data_collection_settings. cluster]* .
 * Adres URL protokołu HTTP w całym węźle i odnajdywanie obiektów docelowych z listy punktów końcowych usługi. Metryki zebrane w tym kontekście zostaną zdefiniowane w sekcji ConfigMap *[Prometheus_data_collection_settings. Node]* .
 
-| Endpoint | Zakres | Przykład |
+| Punkt końcowy | Zakres | Przykład |
 |----------|-------|---------|
 | Pod adnotacją | Cały klaster | adnotacj <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Usługa Kubernetes | Cały klaster | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -123,7 +119,7 @@ Wykonaj następujące kroki, aby skonfigurować i wdrożyć plik konfiguracyjny 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          Jeśli chcesz ograniczyć monitorowanie do określonych obszarów nazw dla kart, które mają adnotacje, na przykład Uwzględnij tylko zasobniki dedykowane dla obciążeń produkcyjnych, ustaw `monitor_kubernetes_pod` na `true` w ConfigMap i Dodaj filtr przestrzeni nazw `monitor_kubernetes_pods_namespaces` określenie przestrzenie nazw, z których można odcinać. Na przykład: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          Jeśli chcesz ograniczyć monitorowanie do określonych obszarów nazw dla kart, które mają adnotacje, na przykład Uwzględnij tylko zasobniki dedykowane dla obciążeń produkcyjnych, ustaw `monitor_kubernetes_pod` tak, aby `true` w ConfigMap, i Dodaj filtr przestrzeni nazw `monitor_kubernetes_pods_namespaces` określenie przestrzeni nazw, z których mają zostać wycinki. Na przykład: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 3. Utwórz ConfigMap, uruchamiając następujące polecenie polecenia kubectl: `kubectl apply -f <configmap_yaml_file.yaml>`.
     

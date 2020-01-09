@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 3056b6c56be32cf5c054c4526a88157650a3e30b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432521"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Zero monitorowanie aplikacji Instrumentacji dla aplikacji hostowanych Kubernetes
 
@@ -21,10 +21,10 @@ ms.locfileid: "72820765"
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Monitor teraz korzysta z usługi Service siatk Tech w klastrze Kubernetes, aby umożliwić monitorowanie aplikacji w usłudze Box dla dowolnej hostowanej aplikacji Kubernetes. Za pomocą domyślnych funkcji usługi Application Insight, takich jak [Mapa aplikacji](../../azure-monitor/app/app-map.md) , aby modelować zależności, [Live Metrics Stream](../../azure-monitor/app/live-stream.md) do monitorowania w czasie rzeczywistym, zaawansowanych wizualizacji z [domyślnym pulpitem nawigacyjnym](../../azure-monitor/app/overview-dashboard.md), [Eksploratorem metryk](../../azure-monitor/platform/metrics-getting-started.md)i [ Skoroszyty](../../azure-monitor/app/usage-workbooks.md). Ta funkcja ułatwi użytkownikom dostęp do wąskich gardeł wydajności i hotspotów niepowodzeń we wszystkich obciążeniach Kubernetes w ramach wybranej przestrzeni nazw Kubernetes. Wielką literą dla istniejących inwestycji w siatkę usług przy użyciu technologii, takich jak Istio, Azure Monitor umożliwia monitorowanie aplikacji z autoinstrumentacją bez żadnych modyfikacji w kodzie aplikacji.
+Azure Monitor teraz korzysta z usługi Service siatk Tech w klastrze Kubernetes, aby umożliwić monitorowanie aplikacji w usłudze Box dla dowolnej hostowanej aplikacji Kubernetes. Za pomocą domyślnych funkcji usługi Application Insight, takich jak [Mapa aplikacji](../../azure-monitor/app/app-map.md) , aby modelować zależności, [Live Metrics Stream](../../azure-monitor/app/live-stream.md) do monitorowania w czasie rzeczywistym, zaawansowanych wizualizacji z [domyślnym pulpitem nawigacyjnym](../../azure-monitor/app/overview-dashboard.md), [Eksploratorem metryk](../../azure-monitor/platform/metrics-getting-started.md)i [skoroszytami](../../azure-monitor/app/usage-workbooks.md). Ta funkcja ułatwi użytkownikom dostęp do wąskich gardeł wydajności i hotspotów niepowodzeń we wszystkich obciążeniach Kubernetes w ramach wybranej przestrzeni nazw Kubernetes. Wielką literą dla istniejących inwestycji w siatkę usług przy użyciu technologii, takich jak Istio, Azure Monitor umożliwia monitorowanie aplikacji z autoinstrumentacją bez żadnych modyfikacji w kodzie aplikacji.
 
 > [!NOTE]
-> Jest to jeden z wielu sposobów przeprowadzania monitorowania aplikacji na Kubernetes. Możesz również instrumentować każdą aplikację hostowaną w Kubernetes za pomocą [zestawu SDK Application Insights](../../azure-monitor/azure-monitor-app-hub.md) bez potrzeby używania siatki usług. Aby monitorować Kubernetes bez Instrumentacji aplikacji za pomocą zestawu SDK, można użyć poniższej metody.
+> Jest to jeden z wielu sposobów przeprowadzania monitorowania aplikacji na Kubernetes. Możesz również instrumentować każdą aplikację hostowaną w Kubernetes za pomocą [zestawu SDK Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) bez potrzeby używania siatki usług. Aby monitorować Kubernetes bez Instrumentacji aplikacji za pomocą zestawu SDK, można użyć poniższej metody.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -74,9 +74,9 @@ Aplikacje działające poza siatką usługi nie podlegają usterce.
 
 1. Pobierz i Wyodrębnij [wersję *adaptera Application Insights* ](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/).
 2. Przejdź do */src/Kubernetes/* wewnątrz folderu Release.
-3. Edycja *Application-Insights-istio-mikser-adapter-Deployment. YAML*
-    - Edytuj wartość zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* , aby zawierała klucz Instrumentacji zasobu Application Insights w Azure Portal, aby można było zawierać dane telemetryczne.
-    - W razie potrzeby Edytuj wartość zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* tak, aby zawierała rozdzielaną przecinkami listę przestrzeni nazw, dla których chcesz włączyć monitorowanie. Pozostaw to pole puste, aby monitorować wszystkie przestrzenie nazw.
+3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
+    - Edytuj wartość zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* , aby zawierała klucz Instrumentacji zasobu Application Insights w Azure Portal, aby zawierała dane telemetryczne.
+    - W razie potrzeby Edytuj wartość zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* , aby zawierała rozdzieloną przecinkami listę przestrzeni nazw, dla których chcesz włączyć monitorowanie. Pozostaw to pole puste, aby monitorować wszystkie przestrzenie nazw.
 4. Zastosuj *każdy* plik YAML znaleziony w obszarze *src/Kubernetes/* , wykonując następujące czynności (nadal musisz być wewnątrz */src/Kubernetes/* ):
 
    ```console
@@ -104,7 +104,7 @@ Poniżej znajduje się przepływ rozwiązywania problemów, który ma być używ
 
 1. Upewnij się, że aplikacja jest pod obciążeniem i wysyła/otrzymuje żądania w postaci zwykłego protokołu HTTP. Ze względu na to, że dane telemetryczne są zniesione, szyfrowany ruch nie jest obsługiwany. Jeśli nie ma żadnych żądań przychodzących lub wychodzących, nie będzie żadnych danych telemetrycznych.
 2. Upewnij się, że prawidłowy klucz Instrumentacji jest podany w zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* w temacie *Application-Insights-ISTIO-mikser-adapter-Deployment. YAML*. Klucz Instrumentacji znajduje się na karcie *Przegląd* zasobu Application Insights w Azure Portal.
-3. Upewnij się, że poprawna przestrzeń nazw Kubernetes znajduje się w zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* w temacie *Application-Insights-ISTIO-mikser-adapter-Deployment. YAML*. Pozostaw to pole puste, aby monitorować wszystkie przestrzenie nazw.
+3. Upewnij się, że poprawna przestrzeń nazw Kubernetes jest podana w zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* w *aplikacji Application-Insights-ISTIO-mikser-adapter-Deployment. YAML*. Pozostaw to pole puste, aby monitorować wszystkie przestrzenie nazw.
 4. Upewnij się, że Twoje zasobniki aplikacji zostały dodane do sieci przyczepki przez Istio. Upewnij się, że na każdym z nich znajduje się Przyczepka Istio.
 
    ```console

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43a2c64560b145531e15a35deb9321b6553782a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171403"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430820"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -54,6 +54,10 @@ Podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują moduł r
 * Definiowanie jednostki SKU modułu równoważenia obciążenia można wykonać tylko podczas tworzenia klastra AKS. Nie można zmienić jednostki SKU modułu równoważenia obciążenia po utworzeniu klastra AKS.
 * W pojedynczym klastrze można używać tylko jednego typu jednostki SKU usługi równoważenia obciążenia (Basic lub standard).
 * *Standard* Usługi równoważenia obciążenia jednostki SKU obsługują tylko adresy IP *standardowej* jednostki SKU.
+
+## <a name="use-the-standard-sku-load-balancer"></a>Korzystanie ze *standardowego* modułu równoważenia obciążenia jednostki SKU
+
+Podczas tworzenia klastra AKS domyślnie używany jest *Standardowy* moduł równoważenia obciążenia jednostki SKU w przypadku uruchamiania usług w tym klastrze. Na przykład [Przewodnik Szybki Start przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] wdraża przykładową aplikację korzystającą ze *standardowego* modułu równoważenia obciążenia jednostki SKU. 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurowanie usługi równoważenia obciążenia jako wewnętrznej
 
@@ -177,12 +181,34 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 W przykładowym wyjściu *AllocatedOutboundPorts* jest 0. Wartość dla *AllocatedOutboundPorts* oznacza, że alokacja portów podzestawu adresów sieciowych zostanie przywrócona do automatycznego przypisywania na podstawie rozmiaru puli zaplecza. Aby uzyskać więcej informacji, zobacz [Load Balancer reguł ruchu wychodzącego][azure-lb-outbound-rules] i [połączeń wychodzących na platformie Azure][azure-lb-outbound-connections] .
 
+## <a name="restrict-access-to-specific-ip-ranges"></a>Ograniczanie dostępu do określonych zakresów adresów IP
+
+Grupa zabezpieczeń sieci (sieciowej grupy zabezpieczeń) skojarzona z siecią wirtualną dla usługi równoważenia obciążenia domyślnie ma regułę zezwalającą na cały ruch przychodzący zewnętrzny. Tę regułę można zaktualizować tak, aby zezwalać tylko na określone zakresy adresów IP dla ruchu przychodzącego. Następujący manifest używa *loadBalancerSourceRanges* , aby określić nowy zakres adresów IP dla przychodzącego ruchu zewnętrznego:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+  loadBalancerSourceRanges:
+  - MY_EXTERNAL_IP_RANGE
+```
+
+Powyższy przykład aktualizuje regułę tak, aby zezwalała na ruch zewnętrzny przychodzący z zakresu *MY_EXTERNAL_IP_RANGE* . Więcej informacji na temat korzystania z tej metody w celu ograniczenia dostępu do usługi równoważenia obciążenia jest dostępnych w [dokumentacji Kubernetes][kubernetes-cloud-provider-firewall].
+
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o usługach Kubernetes Services w [dokumentacji usług Kubernetes Services][kubernetes-services].
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

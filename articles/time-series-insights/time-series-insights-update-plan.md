@@ -1,6 +1,6 @@
 ---
 title: Planowanie środowiska w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs
-description: Dowiedz się, jak zaplanować środowisko Azure Time Series Insights w wersji zapoznawczej.
+description: Najlepsze rozwiązania dotyczące konfigurowania, planowania i wdrażania środowiska Azure Time Series Insights w wersji zapoznawczej oraz zarządzania nim.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420312"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452439"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
@@ -48,7 +48,7 @@ W ramach procesu inicjowania obsługi administracyjnej należy określić, czy m
 Zapytania dotyczące sklepu w sklepie są bezpłatne, podczas gdy zapytania dotyczące magazynu zimnego są ponoszone. Ważne jest, aby zrozumieć wzorce zapytań i odpowiednio zaplanować konfigurację magazynu ciepłego. Zalecamy, aby interakcyjna analiza najnowszych danych znajdował się w magazynie ciepłym i analizie wzorców oraz długoterminowe trendy znajdowały się na zimno.
 
 > [!NOTE]
-> Obecnie obsługujemy maksymalnie 1 000 właściwości z magazynem ciepłym.
+> Aby dowiedzieć się więcej na temat wykonywania zapytań dotyczących danych ciepłych, [Zobacz tutaj](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters).
 
 Aby rozpocząć, potrzebne są trzy dodatkowe elementy:
 

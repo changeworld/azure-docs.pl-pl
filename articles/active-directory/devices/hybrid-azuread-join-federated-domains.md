@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb415d7434130c6ea2e7c9e2e11daccc657ddbf8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b1f5c837f1912df407960fca41387eb84986381e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423150"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen federacyjnych
 
@@ -40,7 +40,7 @@ Przełączenie urządzeń do usługi Azure AD maksymalizuje produktywność uży
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **Usługi ADFS/Services/Trust/2005/windowstransport** lub **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być udostępniane jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu Windows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
+> **Usługi ADFS/Services/Trust/2005/windowstransport** oraz **ADFS/Services/Trust/13/windowstransport** powinny być włączone tylko jako punkty końcowe dostępne dla intranetu i nie mogą być uwidocznione jako punkty końcowe dla ekstranetu za pośrednictwem serwera proxy aplikacji sieci Web. Aby dowiedzieć się więcej na temat wyłączania punktów końcowych usługi WS-Trust systemu Windows, zobacz temat [wyłączanie punktów końcowych systemu Windows WS-Trust na serwerze proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Możesz zobaczyć, jakie punkty końcowe są włączone, za pomocą konsoli zarządzania usług AD FS w obszarze **Usługi** > **Punkty końcowe**.
 
 W tym samouczku dowiesz się, jak skonfigurować sprzężenie hybrydowe usługi Azure AD dla Active Directory urządzeń przyłączonych do domeny w środowisku federacyjnym przy użyciu AD FS.
 
@@ -106,7 +106,7 @@ Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure
 
 1. Uruchom Azure AD Connect, a następnie wybierz pozycję **Konfiguruj**.
 
-   ![Powitanie](./media/hybrid-azuread-join-federated-domains/11.png)
+   ![Zapraszamy!](./media/hybrid-azuread-join-federated-domains/11.png)
 
 1. Na stronie **dodatkowe zadania** wybierz pozycję **Konfiguruj opcje urządzenia**, a następnie wybierz przycisk **dalej**.
 
@@ -114,7 +114,7 @@ Aby skonfigurować hybrydowe dołączanie do usługi Azure AD przy użyciu Azure
 
 1. Na stronie **Przegląd** wybierz pozycję **dalej**.
 
-   ![Omówienie](./media/hybrid-azuread-join-federated-domains/13.png)
+   ![Przegląd](./media/hybrid-azuread-join-federated-domains/13.png)
 
 1. Na stronie **Połącz z usługą Azure AD** wprowadź poświadczenia administratora globalnego dla dzierżawy usługi Azure AD, a następnie wybierz przycisk **dalej**.
 
@@ -185,7 +185,7 @@ Korzystając z polecenia cmdlet **Get-MSolDevice** , można sprawdzić szczegó�
 
 **Aby sprawdzić szczegóły usługi**:
 
-1. Otwórz program Windows PowerShell jako administrator.
+1. Uruchom program Windows PowerShell jako administrator.
 1. Wprowadź `Connect-MsolService`, aby nawiązać połączenie z dzierżawcą platformy Azure.  
 1. Wprowadź polecenie `get-msoldevice -deviceId <deviceId>`.
 1. Upewnij się, że opcja **Włączone** ma wartość **Prawda**.

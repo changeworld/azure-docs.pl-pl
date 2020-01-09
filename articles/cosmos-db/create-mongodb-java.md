@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji sieci Web przy użyciu interfejsu API platformy Azure dla Mongo DB i Java SDK — Azure Cosmos DB'
-description: Przykładowy kod języka Java, którego można używać do nawiązywania połączeń i wykonywania zapytań przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+title: 'Szybki Start: Tworzenie aplikacji sieci Web przy użyciu interfejsu API Azure Cosmos DB dla Mongo DB i zestawu Java SDK'
+description: Dowiedz się, jak utworzyć przykładowy kod Java, którego można użyć do nawiązania połączenia z interfejsem API Azure Cosmos DB i wykonywania zapytań przy użyciu interfejsu MongoDB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bfded407790d01d65feec0b6e069c23739064e97
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 05a796e5bf197bf9ea4f8f47adfbf30851b300ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445503"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Szybki Start: Tworzenie aplikacji konsolowej przy użyciu języka Java i interfejsu API MongoDB w Azure Cosmos DB
 
@@ -66,7 +66,7 @@ Teraz sklonujemy aplikację z repozytorium GitHub, ustawimy parametry połączen
     cd "C:\git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze.
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
@@ -76,7 +76,7 @@ Teraz sklonujemy aplikację z repozytorium GitHub, ustawimy parametry połączen
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string). 
+Ten krok jest opcjonalny. Jeśli chcesz się dowiedzieć, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string). 
 
 Wszystkie poniższe fragmenty kodu pochodzą z pliku Program.java.
 
@@ -120,7 +120,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
     
 ## <a name="run-the-console-app"></a>Uruchamianie aplikacji konsolowej
 
-1. Uruchom polecenie `mvn package` w terminalu, aby zainstalować wymagane moduły npm
+1. Uruchom polecenie `mvn package` w terminalu, aby zainstalować wymagane moduły npm.
 
 2. Uruchom polecenie `mvn exec:java -D exec.mainClass=GetStarted.Program` w terminalu, aby uruchomić aplikację Java.
 
@@ -139,4 +139,4 @@ Teraz możesz używać narzędzia [Robomongo](mongodb-robomongo.md) / [Studio 3T
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos, tworzenia kolekcji i uruchamiania aplikacji konsolowej. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos.
 
 > [!div class="nextstepaction"]
-> [Importuj dane usługi MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
+> [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)

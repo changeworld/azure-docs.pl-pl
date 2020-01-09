@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ce6459dd65c75c6fcff5591d4e4667e4b0c75fa
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 56194bcfb9531def87a9918ad442a2927413c964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432956"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Znajdź adres przy użyciu usługi wyszukiwania Azure Maps
 
@@ -28,7 +28,7 @@ W tym artykule dowiesz się, jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać wywołania do interfejsów API usługi Maps, musisz mieć konto i klucz mapy. Aby uzyskać informacje na temat tworzenia konta, postępuj zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby pobrać podstawowy klucz subskrypcji dla konta.
+Aby wykonać wywołania do interfejsów API usługi Maps, musisz mieć konto i klucz mapy. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta Azure Maps, i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla Twojego konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 W tym artykule jest wykorzystywana [aplikacja Poster](https://www.getpostman.com/apps) do kompilowania wywołań REST. Możesz użyć dowolnego preferowanego środowiska deweloperskiego interfejsu API.
 
@@ -44,25 +44,25 @@ Większość zapytań wyszukiwania jest domyślnie `maxFuzzyLevel=1`, aby uzyska
 
 2. Na karcie Konstruktor wybierz metodę **Get** http i wprowadź adres URL żądania dla punktu końcowego interfejsu API.
 
-    ![Wyszukiwanie rozmyte](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | Parametr | Sugerowana wartość |
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Autoryzacja | Brak uwierzytelniania |
+    | Autoryzacja | Brak autoryzacji |
 
     Atrybut **JSON** w ścieżce URL określa format odpowiedzi. Używasz formatu JSON w tym artykule, aby ułatwić ich użycie i czytelność. Dostępne formaty odpowiedzi można znaleźć w definicji **rozmytego wyszukiwania** w usłudze [Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
 
-    ![Wyszukiwanie rozmyte](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_params.png)
 
     | Klucz | Wartość |
     |------------------|-------------------------|
-    | wersja interfejsu API | 1.0 |
+    | api-version | 1.0 |
     | klucz subskrypcji | \<klucz Azure Maps\> |
-    | query | Pizza |
+    | query | pizza |
 
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
 
@@ -74,7 +74,7 @@ Większość zapytań wyszukiwania jest domyślnie `maxFuzzyLevel=1`, aby uzyska
 
     | Klucz | Wartość |
     |------------------|-------------------------|
-    | countrySet | USA |
+    | countrySet | Stany Zjednoczone |
   
     Wyniki są teraz ograniczone przez kod kraju, a zapytanie zwraca Pizza Restauracje w Stany Zjednoczone.
   
@@ -82,12 +82,12 @@ Większość zapytań wyszukiwania jest domyślnie `maxFuzzyLevel=1`, aby uzyska
   
 6. W polu Parametry wprowadź następujące pary klucz/wartość, a następnie kliknij pozycję **Wyślij**:
 
-    ![Wyszukiwanie rozmyte](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![Fuzzy Search](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
     | Klucz | Wartość |
     |-----|------------|
     | usługę | 47,620525 |
-    | Długość | -122,349274 |
+    | Długość | -122.349274 |
 
 ## <a name="search-for-address-properties-and-coordinates"></a>Wyszukaj właściwości adresu i współrzędne
 
@@ -102,7 +102,7 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Autoryzacja | Brak uwierzytelniania |
+    | Autoryzacja | Brak autoryzacji |
 
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
   
@@ -110,9 +110,9 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
   
     | Klucz | Wartość |
     |------------------|-------------------------|
-    | wersja interfejsu API | 1.0 |
+    | api-version | 1.0 |
     | klucz subskrypcji | \<klucz Azure Maps\> |
-    | query | 400 szerokie St, Seattle, WA 98109 |
+    | query | 400 Broad St, Seattle, WA 98109 |
   
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
   
@@ -143,7 +143,7 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Autoryzacja | Brak uwierzytelniania |
+    | Autoryzacja | Brak autoryzacji |
   
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
   
@@ -151,7 +151,7 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
   
     | Klucz | Wartość |
     |------------------|-------------------------|
-    | wersja interfejsu API | 1.0 |
+    | api-version | 1.0 |
     | klucz subskrypcji | \<klucz Azure Maps\> |
     | query | 47.591180,-122,332700 |
   
@@ -203,13 +203,13 @@ Można przekazać pełny lub częściowo ulica adresu do interfejsu API adresu w
     |---------------|------------------------------------------------|
     | Metoda HTTP | GET |
     | Adres URL żądania | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Autoryzacja | Brak uwierzytelniania |
+    | Autoryzacja | Brak autoryzacji |
   
 3. Kliknij pozycję **params**i wprowadź następujące pary klucz/wartość, które mają być używane jako parametry zapytania lub ścieżki w adresie URL żądania:
   
     | Klucz | Wartość |
     |------------------|-------------------------|
-    | wersja interfejsu API | 1.0 |
+    | api-version | 1.0 |
     | klucz subskrypcji | \<klucz Azure Maps\> |
     | query | 47.591180,-122,332700 |
   

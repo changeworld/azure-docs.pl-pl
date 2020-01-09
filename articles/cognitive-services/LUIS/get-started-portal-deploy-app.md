@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448066"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki Start: wdrażanie aplikacji w portalu LUIS
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Gdy aplikacja LUIS jest gotowa do zwrócenia prognoz wypowiedź do aplikacji klienckiej (na przykład bot rozmowy), należy wdrożyć aplikację w punkcie końcowym przewidywania.
 
@@ -61,7 +59,7 @@ Tworzysz zasób punktu końcowego przewidywania w Azure Portal. Tego zasobu nale
 
 Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do aplikacji LUIS. Po jego przypisaniu nie trzeba wykonać tego kroku ponownie, chyba że zostanie utworzony nowy zasób. Możesz utworzyć nowy zasób, aby rozszerzyć regiony aplikacji lub obsłużyć większą liczbę zapowiadanych zapytań.
 
-1. Zaloguj się do [portalu Luis](https://preview.luis.ai) i wybierz aplikację **myEnglishApp** z listy aplikacji.
+1. Zaloguj się do [portalu Luis w wersji zapoznawczej](https://preview.luis.ai) i wybierz aplikację **myEnglishApp** z listy aplikacji.
 
 1. Wybierz pozycję **Zarządzaj** w prawym górnym menu, a następnie wybierz pozycję **zasoby platformy Azure**.
 
@@ -69,7 +67,7 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
     ![Aby dodać zasób przewidywania LUIS, wybierz pozycję Dodaj zasób predykcyjny](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz pozycję **Przypisz zasób**.
+1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz **przypisany zasób**.
 
    ![Przydziel zasób do aplikacji](./media/get-started-portal-deploy-app/assign-resource.png)
 

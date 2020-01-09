@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446743"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Szybki start: Tworzenie, wdrażanie i używanie niestandardowego modelu tłumaczenia
 
@@ -37,7 +37,7 @@ Na stronie docelowej portalu Custom Translator kliknij pozycję New Project (Now
 
 ## <a name="upload-documents"></a>Przekazywanie dokumentów
 
-Następnie przekaż zestawy dokumentów dotyczących [szkolenia](training-and-model.md#training-dataset-for-custom-translator), [dostrajania](training-and-model.md#tuning-dataset-for-custom-translator) i [testowania](training-and-model.md#testing-dataset-for-custom-translator). Możesz przekazać zarówno dokumenty [równoległe](what-are-parallel-documents.md), jak i dokumenty kombinowane. Możesz również przekazać [słownik](what-is-dictionary.md).
+Następnie przekaż zestawy dokumentów dotyczących [szkolenia](training-and-model.md#training-document-type-for-custom-translator), [dostrajania](training-and-model.md#tuning-document-type-for-custom-translator) i [testowania](training-and-model.md#testing-dataset-for-custom-translator). Możesz przekazać zarówno dokumenty [równoległe](what-are-parallel-documents.md), jak i dokumenty kombinowane. Możesz również przekazać [słownik](what-is-dictionary.md).
 
 Dokumenty można przekazywać na karcie dokumentów lub na stronie danego projektu.
 
@@ -49,7 +49,7 @@ Przekazując materiały, wybierz typ dokumentu (szkolenie, dostrajanie lub testo
 
 Po przekazaniu wszystkich wymaganych dokumentów należy utworzyć model.
 
-Wybierz utworzony projekt. Pojawią się wszystkie przekazane dokumenty, których para języków jest zgodna z parą języków w projekcie. Wybierz dokumenty, które chcesz uwzględnić w modelu. Możesz wybrać dane [szkoleniowe](training-and-model.md#training-dataset-for-custom-translator), [dostrajania](training-and-model.md#tuning-dataset-for-custom-translator) i [testowe](training-and-model.md#testing-dataset-for-custom-translator) albo wskazać tylko dane szkoleniowe — rozszerzenie Custom Translator automatycznie utworzy zestaw dostrajania i zestaw testowy w modelu.
+Wybierz utworzony projekt. Pojawią się wszystkie przekazane dokumenty, których para języków jest zgodna z parą języków w projekcie. Wybierz dokumenty, które chcesz uwzględnić w modelu. Możesz wybrać dane [szkoleniowe](training-and-model.md#training-document-type-for-custom-translator), [dostrajania](training-and-model.md#tuning-document-type-for-custom-translator) i [testowe](training-and-model.md#testing-dataset-for-custom-translator) albo wskazać tylko dane szkoleniowe — rozszerzenie Custom Translator automatycznie utworzy zestaw dostrajania i zestaw testowy w modelu.
 
 ![Tworzenie modelu](media/quickstart/ct-how-to-train.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Platforma Azure Cloud Services def. Schemat LoadBalancerProbe | Microsoft Docs
+title: Azure Cloud Services def. LoadBalancerProbe schemat | Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -7,16 +7,16 @@ ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 14
 author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 6f82406772f650b4565f2c9240efe580545dcad9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: bc2c0f5137ce78392a8df7c6c2fdd402ded5355a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449058"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Schemat LoadBalancerProbe definicji Cloud Services platformy Azure
-Sonda modułu równoważenia obciążenia to zdefiniowana przez klienta sonda kondycji punktów końcowych UDP i punktów końcowych w wystąpieniach roli. Nie `LoadBalancerProbe` jest elementem autonomicznym; jest on połączony z rolą sieci Web lub procesu roboczego w pliku definicji usługi. `LoadBalancerProbe` Może być używany przez więcej niż jedną rolę.
+Sonda modułu równoważenia obciążenia to zdefiniowana przez klienta sonda kondycji punktów końcowych UDP i punktów końcowych w wystąpieniach roli. `LoadBalancerProbe` nie jest elementem autonomicznym; jest on połączony z rolą sieci Web lub proces roboczy w pliku definicji usługi. `LoadBalancerProbe` może być używany przez więcej niż jedną rolę.
 
 Domyślnym rozszerzeniem dla pliku definicji usługi jest. csdef.
 
@@ -41,27 +41,27 @@ Jeśli używasz sondy modułu równoważenia obciążenia, musisz upewnić się,
 ```
 
 ## <a name="schema-elements"></a>Elementy schematu
-`LoadBalancerProbes` Element pliku definicji usługi zawiera następujące elementy:
+Element `LoadBalancerProbes` pliku definicji usługi zawiera następujące elementy:
 
 - [LoadBalancerProbes Element](#LoadBalancerProbes)
 - [LoadBalancerProbe Element](#LoadBalancerProbe)
 
 ##  <a name="LoadBalancerProbes"></a>LoadBalancerProbes, element
-`LoadBalancerProbes` Element opisuje zbieranie sond modułu równoważenia obciążenia. Ten element jest elementem nadrzędnym [elementu LoadBalancerProbe](#LoadBalancerProbe). 
+Element `LoadBalancerProbes` opisuje zbieranie sond modułu równoważenia obciążenia. Ten element jest elementem nadrzędnym [elementu LoadBalancerProbe](#LoadBalancerProbe). 
 
 ##  <a name="LoadBalancerProbe"></a>LoadBalancerProbe, element
-`LoadBalancerProbe` Element definiuje sondę kondycji dla modelu. Można zdefiniować wiele sond modułu równoważenia obciążenia. 
+Element `LoadBalancerProbe` definiuje sondę kondycji dla modelu. Można zdefiniować wiele sond modułu równoważenia obciążenia. 
 
-W poniższej tabeli opisano atrybuty `LoadBalancerProbe` elementu:
+W poniższej tabeli opisano atrybuty elementu `LoadBalancerProbe`:
 
-|Atrybut|Type|Opis|
+|Atrybut|Typ|Opis|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Wymagany. Nazwa sondy modułu równoważenia obciążenia. Nazwa musi być unikatowa.|
-| `protocol`          | `string` | Wymagany. Określa protokół punktu końcowego. Możliwe wartości to `http` lub `tcp`. Jeśli `tcp` jest określony, odebrane potwierdzenie jest wymagane do pomyślnego sondowania. Jeśli `http` jest określony, wymagana jest odpowiedź 200 OK od określonego identyfikatora URI, aby sonda zakończyła się pomyślnie.|
-| `path`              | `string` | Identyfikator URI używany do żądania stanu kondycji z maszyny wirtualnej. `path`jest wymagana, `protocol` jeśli jest ustawiona `http`na. W przeciwnym razie jest to niedozwolone.<br /><br /> Brak wartości domyślnej.|
-| `port`              | `integer` | Opcjonalny. Port do komunikacji z sondą. Jest to opcjonalne dla każdego punktu końcowego, ponieważ ten sam port będzie używany do sondowania. Możesz również skonfigurować inny port dla ich sondowania. Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie.<br /><br /> Wartość domyślna jest ustawiana przez punkt końcowy.|
-| `intervalInSeconds` | `integer` | Opcjonalny. Interwał (w sekundach), w którym częstotliwość sondowania punktu końcowego dla stanu kondycji. Zazwyczaj interwał jest nieco krótszy niż połowa przydzielonych przedziałów czasu (w sekundach), co umożliwia uzyskanie dwóch pełnych sond przed przeprowadzeniem obrotu.<br /><br /> Wartość domyślna to 15, a wartość minimalna to 5.|
-| `timeoutInSeconds`  | `integer` | Opcjonalna. Przedział czasu (w sekundach) stosowany do sondy, w której nie zostanie zatrzymywany dalsze przesyłanie ruchu do punktu końcowego. Ta wartość umożliwia wypróbowanie punktów końcowych szybciej lub wolniej niż zwykle używane na platformie Azure (które są wartościami domyślnymi).<br /><br /> Wartość domyślna to 31, wartość minimalna to 11.|
+| `protocol`          | `string` | Wymagany. Określa protokół punktu końcowego. Możliwe wartości to `http` lub `tcp`. Jeśli określono `tcp`, odebrane potwierdzenie jest wymagane do pomyślnego sondowania. Jeśli `http` jest określony, wymagana jest odpowiedź 200 OK od określonego identyfikatora URI, aby sonda zakończyła się pomyślnie.|
+| `path`              | `string` | Identyfikator URI używany do żądania stanu kondycji z maszyny wirtualnej. `path` jest wymagana, jeśli `protocol` jest ustawiona na `http`. W przeciwnym razie jest to niedozwolone.<br /><br /> Nie ma żadnej wartości domyślnej.|
+| `port`              | `integer` | Element opcjonalny. Port do komunikacji z sondą. Jest to opcjonalne dla każdego punktu końcowego, ponieważ ten sam port będzie używany do sondowania. Możesz również skonfigurować inny port dla ich sondowania. Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie.<br /><br /> Wartość domyślna jest ustawiana przez punkt końcowy.|
+| `intervalInSeconds` | `integer` | Element opcjonalny. Interwał (w sekundach), w którym częstotliwość sondowania punktu końcowego dla stanu kondycji. Zazwyczaj interwał jest nieco krótszy niż połowa przydzielonych przedziałów czasu (w sekundach), co umożliwia uzyskanie dwóch pełnych sond przed przeprowadzeniem obrotu.<br /><br /> Wartość domyślna to 15, a wartość minimalna to 5.|
+| `timeoutInSeconds`  | `integer` | Element opcjonalny. Przedział czasu (w sekundach) stosowany do sondy, w której nie zostanie zatrzymywany dalsze przesyłanie ruchu do punktu końcowego. Ta wartość umożliwia wypróbowanie punktów końcowych szybciej lub wolniej niż zwykle używane na platformie Azure (które są wartościami domyślnymi).<br /><br /> Wartość domyślna to 31, wartość minimalna to 11.|
 
 ## <a name="see-also"></a>Zobacz też
 [Schemat definicji usługi w chmurze (klasycznej)](schema-csdef-file.md)

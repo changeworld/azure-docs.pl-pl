@@ -1,17 +1,17 @@
 ---
 title: Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie klienta Redis
-description: Dowiedz się, jak rozwiązywać typowe problemy po stronie klienta w usłudze Azure cache for Redis
+description: Dowiedz się, jak rozwiązywać typowe problemy po stronie klienta w usłudze Azure cache for Redis, takie jak obciążenie pamięci klienta Redis, Seria ruchu, wysoki procesor CPU, ograniczona przepustowość, duże żądania lub duża wielkość odpowiedzi.
 author: yegu-ms
-ms.service: cache
-ms.topic: conceptual
-ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: troubleshooting
+ms.date: 10/18/2019
+ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122616"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433377"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie klienta Redis
 
@@ -104,5 +104,5 @@ Rozwiązania dla dużych rozmiarów odpowiedzi są różne, ale obejmują:
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
-- [Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie serwera Redis](cache-troubleshoot-server.md)
+- [Rozwiązywanie problemów z usługą Azure Cache for Redis po stronie serwera](cache-troubleshoot-server.md)
 - [Jak można sprawdzić i przetestować wydajność mojej pamięci podręcznej?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

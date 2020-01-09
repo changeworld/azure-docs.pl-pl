@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3e60c0e165b8f9ec79aac2048011d9e315b0ce18
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483965"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666639"
 ---
 # <a name="using-custom-security-policies-preview"></a>Korzystanie z niestandardowych zasad zabezpieczeń (wersja zapoznawcza)
 
 Aby pomóc w zabezpieczeniu systemów i środowiska, Azure Security Center generuje zalecenia dotyczące zabezpieczeń. Zalecenia te są oparte na najlepszych rozwiązaniach branżowych, które są włączone do ogólnych, domyślnych zasad zabezpieczeń dostarczonych wszystkim klientom. Mogą również pochodzić z Security Center znajomości standardów branżowych i prawnych.
 
-Za pomocą tej funkcji w wersji zapoznawczej możesz dodać własne inicjatywy *niestandardowe* . Następnie otrzymasz zalecenia, jeśli środowisko nie będzie zgodne z tworzonymi zasadami.
+Za pomocą tej funkcji w wersji zapoznawczej możesz dodać własne inicjatywy *niestandardowe* . Następnie otrzymasz zalecenia, jeśli środowisko nie będzie zgodne z tworzonymi zasadami. Wszelkie utworzone inicjatywy niestandardowe będą wyświetlane wraz z wbudowanymi inicjatywami na pulpicie nawigacyjnym zgodności z przepisami, które opisano w samouczku [poprawianie zgodności z przepisami](security-center-compliance-dashboard.md).
 
 Zgodnie z [opisem w dokumentacji](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) Azure Policy, gdy określisz lokalizację dla inicjatywy niestandardowej, musi to być grupa zarządzania lub subskrypcja. 
 
@@ -58,6 +58,12 @@ Zgodnie z [opisem w dokumentacji](https://docs.microsoft.com/azure/governance/po
 
     > [!NOTE]
     > Tworzenie nowych inicjatyw wymaga poświadczeń właściciela subskrypcji. Aby uzyskać więcej informacji na temat ról platformy Azure, zobacz [uprawnienia w Azure Security Center](security-center-permissions.md).
+
+    Twoja nowa inicjatywa zacznie obowiązywać i zobaczysz wpływ na dwa sposoby:
+
+    * Na pasku bocznym Security Center w obszarze Zasady & Zgodność wybierz pozycję **zgodność z przepisami**. Zostanie otwarty pulpit nawigacyjny zgodności pokazujący nową inicjatywę niestandardową wraz z wbudowaną inicjatywą.
+    
+    * Jeśli środowisko nie będzie zgodne ze zdefiniowanymi zasadami, zaczniesz otrzymywać zalecenia.
 
 1. Aby zobaczyć, jakie są zalecenia dotyczące zasad, kliknij przycisk **zalecenia** na pasku bocznym, aby otworzyć stronę zalecenia. Zalecenia będą wyświetlane z etykietą "niestandardowy" i będą dostępne w ciągu około godziny.
 

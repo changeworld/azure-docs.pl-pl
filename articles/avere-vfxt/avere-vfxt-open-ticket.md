@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415111"
 ---
 # <a name="get-help-with-your-system"></a>Uzyskaj pomoc dotyczącą systemu
 
@@ -19,15 +19,15 @@ Jeśli potrzebujesz pomocy dotyczącej programu avere vFXT for Azure, poniżej p
 
 * **Problem z avere vFXT** — Użyj Azure Portal, aby otworzyć bilet pomocy technicznej dla vFXT avere, zgodnie z [poniższym](#open-a-support-ticket-for-your-avere-vfxt)opisem.
 * **Przydział** — Jeśli masz problem związany z przydziałem, [Poproś o zwiększenie limitu przydziału](#request-a-quota-increase)
-* **Dokumentacja i przykłady** — Jeśli znajdziesz problemy z tą dokumentacją lub przykładami, przewiń w dół strony, a następnie skorzystaj z sekcji **Opinie** , aby wyszukać istniejące problemy i w razie potrzeby zastąpić nowe rozwiązanie.  
+* **Dokumentacja i przykłady** — Jeśli znajdziesz problemy z tą dokumentacją lub przykładami, przewiń w dół strony, a następnie skorzystaj z sekcji **Opinie** , aby wyszukać istniejące problemy i w razie potrzeby zastąpić nowe rozwiązanie.
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Otwórz bilet pomocy technicznej dla Twojego avere vFXT
 
-Jeśli wystąpią problemy podczas wdrażania lub korzystania z avere vFXT, poproś o pomoc za pośrednictwem Azure Portal.  
+Jeśli wystąpią problemy podczas wdrażania lub korzystania z avere vFXT, poproś o pomoc za pośrednictwem Azure Portal.
 
-Wykonaj następujące kroki, aby upewnić się, że bilet pomocy technicznej jest oznaczony przy użyciu zasobu z klastra. Tagowanie biletu pomaga nam kierować go do poprawnego zasobu pomocy technicznej. 
+Wykonaj następujące kroki, aby upewnić się, że bilet pomocy technicznej jest oznaczony przy użyciu zasobu z klastra. Tagowanie biletu pomaga nam kierować go do poprawnego zasobu pomocy technicznej.
 
-1. W [https://portal.azure.com](https://portal.azure.com)wybierz pozycję **grupy zasobów**.
+1. W obszarze [https://portal.azure.com](https://portal.azure.com)wybierz pozycję **grupy zasobów**.
 
    ![zrzut ekranu przedstawiający menu Azure Portal z lewej strony z wyróżnioną "grupami zasobów"](media/avere-vfxt-ticket-rg.png)
 
@@ -43,7 +43,7 @@ Wykonaj następujące kroki, aby upewnić się, że bilet pomocy technicznej jes
 
     ![zrzut ekranu przedstawiający nowy ekran żądania obsługi w Azure Portal z nagłówkiem "podstawowe" i okręgiem dookoła elementu "usługa". Wybrano przycisk "wszystkie usługi", a pole menu rozwijanego ma wartość "avere vFXT"](media/avere-vfxt-ticket-service.png)
 
-1. Na stronie dwie wybierz typ problemu i kategorię, które najlepiej pasują do Twojego problemu. Dodaj krótki tytuł i opis, który zawiera czas wystąpienia problemu. 
+1. Na stronie dwie wybierz typ problemu i kategorię, które najlepiej pasują do Twojego problemu. Dodaj krótki tytuł i opis, który zawiera czas wystąpienia problemu.
 
    ![zrzut ekranu przedstawiający nowy ekran żądania obsługi z nagłówkiem "problem" zawierającym wiele pól, które należy wypełnić](media/avere-vfxt-ticket-problem.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: uruchamianie zadania Azure Batch — interfejs API języka Python'
-description: Szybko uruchamiaj zadania i zadania podrzędne usługi Batch za pomocą biblioteki klienta Python usługi Batch.
+description: Szybkie uruchamianie Azure Batch przykładowego zadania i zadań przy użyciu biblioteki klienckiej języka Python w usłudze Batch. Poznaj kluczowe pojęcia związane z usługą Batch.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -12,12 +12,12 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390240"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
 
@@ -59,7 +59,7 @@ W środowisku projektowym Python zainstaluj wymagane pakiety przy użyciu mened�
 pip install -r requirements.txt
 ```
 
-Otwórz plik `config.py`. Zaktualizuj ciągi poświadczeń konta usługi Batch i konta magazynu, podając wartości uzyskane dla Twoich kont. Na przykład:
+Otwórz plik `config.py`. Zaktualizuj ciągi poświadczeń konta usługi Batch i konta magazynu, podając wartości uzyskane dla Twoich kont. Przykład:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -69,7 +69,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 Aby zobaczyć przepływ pracy usługi Batch w akcji, uruchom skrypt:
 
@@ -128,7 +128,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-Za pomocą odwołania `blob_client` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
+Za pomocą odwołania `blob_client` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),

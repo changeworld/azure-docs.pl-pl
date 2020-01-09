@@ -1,28 +1,19 @@
 ---
-title: 'Samouczek: instalowanie klienta autonomicznego usługi Service Fabric — Azure Service Fabric | Microsoft Docs'
+title: Instalowanie Service Fabric klienta autonomicznego
 description: W tym samouczku dowiesz się, jak zainstalować klienta autonomicznego usługi Service Fabric w klastrze utworzonym w poprzedniej części samouczka.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385001"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613945"
 ---
-# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Samouczek: Instalowanie i tworzenie klastra Service Fabric
+# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Samouczek: instalowanie i tworzenie klastra usługi Service Fabric
 
 Klastry autonomiczne usługi Service Fabric umożliwiają wybór własnego środowiska i utworzenie klastra zgodnie z obowiązującą w usłudze Service Fabric zasadą „dowolnego systemu operacyjnego i dowolnej chmury”. W tej serii samouczków utworzysz klaster autonomiczny hostowany na AWS lub na platformie Azure i zainstaluje do niego aplikację.
 
@@ -129,7 +120,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>Otwórz narzędzie Service Fabric Explorer
 
-Teraz można nawiązać połączenie z klastrem przy użyciu Service Fabric Explorer bezpośrednio z jednej z maszyn przy użyciu protokołu\/http:/localhost:19080/Explorer/index.html lub zdalnie przy\/użyciu protokołu http:/<*IPAddressofaMachine*> : 19080/Explorer/index.html.
+Teraz można nawiązać połączenie z klastrem przy użyciu Service Fabric Explorer bezpośrednio z jednej z maszyn przy użyciu protokołu http:\//localhost:19080/Explorer/index.html lub zdalnie przy użyciu protokołu http:\//<*IPAddressofaMachine*>: 19080/Explorer/index. html.
 
 ## <a name="add-and-remove-nodes"></a>Dodawanie i usuwanie węzłów
 

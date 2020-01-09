@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876146"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453071"
 ---
 # <a name="microsoft-global-network"></a>Globalna sieć firmy Microsoft
 
@@ -40,14 +40,14 @@ Na przykład, jeśli użytkownik w Londynie próbuje uzyskać dostęp do usługi
   
 Czy oznacza to, że to wszystko i cały ruch w przypadku korzystania z usług firmy Microsoft? Tak, cały ruch między centrami danych, w Microsoft Azure lub między usługami firmy Microsoft, takimi jak Virtual Machines, Office 365, XBox, SQL baz danych, Storage i Virtual Networks, jest kierowany w naszej sieci globalnej i nigdy nie przez publiczny Internet, aby zapewnić optymalne wydajność i integralność.  
  
-Duże inwestycje w pojemność i różnorodność w sieciach Metro, lądowych i podmorski mają kluczowe znaczenie dla nas, aby zachować spójny i wysoki poziom usług, jednocześnie dostarczając jednocześnie paliwo do najwyższej ilości naszych chmur i Usługi online. Najnowsze dodatki do naszej sieci globalnej to nasz kabel podmorski [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) , pierwszy otwarty system line (OLS) firmy Subsea, między Bilbao, Hiszpania i Wirginia sekwencje, WIRGINIA, USA, a także [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) między Nowym Jorku, USA i Dublin, Irlandia i [Nowy krzyżyk (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) między Tokio, Japonia i Portland, Oregon, USA. 
+Duże inwestycje w pojemność i różnorodność w sieciach Metro, lądowych i podmorski mają kluczowe znaczenie dla nas, aby zachować spójny i wysoki poziom usług, jednocześnie dostarczając jednocześnie paliwo do najwyższej ilości naszych chmur i Usługi online. Najnowsze dodatki do naszej sieci globalnej to nasz kabel podmorski [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) , pierwszy otwarty system line (OLS) firmy Subsea, między Bilbao, Hiszpania i Wirginia sekwencje, WIRGINIA, USA, a także [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) między Nowym Jorku, USA i Dublin, Irlandia i [Nowy krzyżyk (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) między Tokio, Japonia i Warszawa, Oregon, USA. 
  
 
 ## <a name="our-network-is-your-network"></a>Nasza sieć to sieć
 
 Wprowadziliśmy dwa dekady środowiska, a także duże inwestycje w sieć, aby zapewnić optymalną wydajność przez cały czas. Firmy mogą w pełni korzystać z zasobów sieciowych i tworzyć zaawansowane architektury nakładki na górze. 
  
-Microsoft Azure oferuje bogatsze portfolio usług i możliwości, dzięki czemu klienci mogą szybko i łatwo tworzyć, rozwijać i zaspokajać wymagania sieciowe w dowolnym miejscu. Nasza rodzina usług łączności obejmuje wirtualne sieci równorzędne między regionami, hybrydową i architekturą typu punkt-lokacja i lokacja-lokacja, a także scenariusze globalne przesyłania adresów IP.  W przypadku przedsiębiorstw, które chcą połączyć własne centrum danych lub sieć z platformą Azure, lub Klienci mający ogromne potrzeby pozyskiwania lub tranzytu, [ExpressRoute](../expressroute/expressroute-introduction.md), a [ExpressRoute Direct](../expressroute/expressroute-erdirect-about.md) zapewniają opcje do 100 GB/s przepustowości bezpośrednio w Globalna sieć firmy Microsoft w lokalizacjach komunikacji równorzędnej na całym świecie.  
+Microsoft Azure oferuje bogatsze portfolio usług i możliwości, dzięki czemu klienci mogą szybko i łatwo tworzyć, rozwijać i zaspokajać wymagania sieciowe w dowolnym miejscu. Nasza rodzina usług łączności obejmuje wirtualne sieci równorzędne między regionami, hybrydową i architekturą typu punkt-lokacja i lokacja-lokacja, a także scenariusze globalne przesyłania adresów IP.  W przypadku przedsiębiorstw, które chcą połączyć własne centrum danych lub sieci z platformą Azure lub klienci z ogromnymi potrzebami pozyskiwania lub tranzytu, [ExpressRoute](../expressroute/expressroute-introduction.md), a [ExpressRoute Direct](../expressroute/expressroute-erdirect-about.md) udostępniają opcje do 100 GB/s, bezpośrednio do sieci globalnej firmy Microsoft w lokalizacjach komunikacji równorzędnej na całym świecie.  
  
 [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) jest zaprojektowana w celu uzupełnienia implementacji sieci WAN dostawcy usług i łączenia lokacji lokalnych na całym świecie. Jeśli uruchamiasz operację globalną, możesz użyć ExpressRoute Global Reach w połączeniu z preferowanymi i lokalnymi dostawcami usług, aby połączyć wszystkie lokacje globalne przy użyciu sieci globalnej firmy Microsoft. Rozszerzanie nowej sieci w chmurze (WAN) w taki sposób, aby obejmowała dużą liczbę rozgałęzień, można osiągnąć za pośrednictwem wirtualnej sieci WAN platformy Azure, która umożliwia bezproblemowe łączenie gałęzi z siecią globalną firmy Microsoft za pomocą SDWAN & urządzeń sieci VPN (czyli Sprzęt lokalny lub CPE) z wbudowanym łatwym w użyciu i zautomatyzowanego zarządzania łącznością i konfiguracją. 
  
@@ -56,7 +56,7 @@ Microsoft Azure oferuje bogatsze portfolio usług i możliwości, dzięki czemu 
 
 ## <a name="well-managed-using-software-defined-innovation"></a>Dobre zarządzanie przy użyciu innowacji zdefiniowanych programowo
 
-W przypadku korzystania z jednej z wiodących chmur na świecie firma Microsoft zyskała wiele szczegółowych informacji i umożliwia tworzenie infrastruktury globalnej o wysokiej wydajności [oraz zarządzanie nią](https://myignite.techcommunity.microsoft.com/sessions/66668) .  
+W przypadku korzystania z jednej z wiodących chmur na świecie firma Microsoft zyskała wiele szczegółowych informacji i umożliwia tworzenie infrastruktury globalnej o wysokiej wydajności oraz zarządzanie nią.  
  
 Stosujemy się do niezawodnego zestawu zasad operacyjnych: 
  

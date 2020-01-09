@@ -1,6 +1,7 @@
 ---
-title: Ponowne wdrażanie pakietów usług SQL Server Integration Services do usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić migrację pakietów usług SQL Server Integration Services do usługi Azure SQL Database.
+title: Ponowne wdrażanie pakietów usług SSIS w pojedynczej bazie danych SQL
+titleSuffix: Azure Database Migration Service
+description: Dowiedz się, jak migrować i ponownie wdrażać SQL Server Integration Services pakiety i projekty, aby Azure SQL Database pojedynczą bazę danych przy użyciu Azure Database Migration Service i Data Migration Assistant.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,110 +9,110 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/08/2019
-ms.openlocfilehash: 603a9df8e3f499c832bbfdcbef966de86003d6b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437972"
 ---
-# <a name="redeploy-sql-server-integration-services-packages-to-azure-sql-database"></a>Ponowne wdrażanie pakietów usług SQL Server Integration Services do usługi Azure SQL Database
+# <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Wdróż ponownie pakiety usług SSIS w Azure SQL Database z Azure Database Migration Service
 
-Jeśli używasz programu SQL Server Integration Services (SSIS) i chcesz przeprowadzić migrację projektów SSIS/pakietów ze źródła danych SSISDB hostowaną przez program SQL Server do miejsca docelowego danych SSISDB hostowaną przez usługę Azure SQL Database, możesz ponownie wdrożyć je przy użyciu wdrożenia usług integracji Kreator. Można uruchomić kreatora z w ramach programu SQL Server Management Studio (SSMS).
+Jeśli używasz SQL Server Integration Services (SSIS) i chcesz migrować projekty SSIS/pakiety z SSISDB źródłowego hostowanego przez SQL Server do SSISDB docelowego hostowanego przez Azure SQL Database, można je wdrożyć ponownie przy użyciu Kreatora wdrażania usług Integration Services. Kreatora można uruchomić z poziomu programu SQL Server Management Studio (SSMS).
 
-Jeśli wersja korzystasz z usług SSIS jest wcześniejszą niż 2012, przed ponowne wdrożenie usługi SSIS projektów/pakietów do modelu wdrażania przy użyciu projektu, najpierw musisz konwertować je za pomocą integracji usług projektu konwersji kreatora, w którym można także uruchomić z programu SSMS. Aby uzyskać więcej informacji, zobacz artykuł [konwertowanie projektów do modelu wdrażania projektu](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Jeśli używana wersja usług SSIS jest wcześniejsza niż 2012, przed ponownym wdrożeniem projektów i pakietów SSIS w modelu wdrażania projektu, najpierw należy je przekonwertować przy użyciu Kreatora konwersji projektu usług Integration Services, który można także uruchomić z programu SSMS. Aby uzyskać więcej informacji, zobacz artykuł [konwertowanie projektów na model wdrażania projektu](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
 
 > [!NOTE]
-> Azure Database Migration Service (DMS) aktualnie nie obsługuje migracji źródła SSISDB do serwera usługi Azure SQL Database, ale można ponownie wdrożyć swoje projektów SSIS/pakietów przy użyciu poniższego procesu.
+> Azure Database Migration Service (DMS) obecnie nie obsługuje migracji źródłowej SSISDB do serwera Azure SQL Database, ale można ponownie wdrożyć projekty i pakiety SSIS w ramach następującego procesu.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!div class="checklist"]
 >
-> * Oceń źródła projektów SSIS/pakietów.
-> * Migrowanie projektów SSIS/pakietów na platformę Azure.
+> * Oceń źródłowe projekty SSIS/pakiety.
+> * Migruj projekty SSIS/pakiety na platformę Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby wykonać te kroki, potrzebne są:
 
-* SSMS wersji 17.2 lub nowszej.
-* Wystąpienie bazy danych serwera docelowego do hostowania bazy SSISDB. Jeśli nie masz jeszcze jeden, tworzenie serwera usługi Azure SQL Database (bez bazy danych) w witrynie Azure portal, przechodząc do programu SQL Server (ltylko serwer logiczny) [formularza](https://ms.portal.azure.com/#create/Microsoft.SQLServer).
-* SSIS musi być obsługiwana w usłudze Azure Data Factory (ADF) zawierający środowiska Azure-SSIS Integration Runtime (IR) z lokalizacją docelową bazą danych SSISDB hostowaną przez wystąpienie serwera Azure SQL Database (zgodnie z opisem w artykule [obsługi administracyjnej integracji usług SSIS na platformie Azure Środowisko uruchomieniowe w usłudze Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)).
+* SSMS w wersji 17,2 lub nowszej.
+* Wystąpienie docelowego serwera bazy danych do hostowania SSISDB. Jeśli jeszcze go nie masz, Utwórz serwer Azure SQL Database (bez bazy danych) przy użyciu Azure Portal, przechodząc do [formularza](https://ms.portal.azure.com/#create/Microsoft.SQLServer)SQL Server (tylko serwer logiczny).
+* Program SSIS musi być zainicjowany w Azure Data Factory (ADF) zawierający Azure-SSIS Integration Runtime (IR) z miejscem docelowym SSISDB hostowanym przez wystąpienie serwera Azure SQL Database (zgodnie z opisem w artykule [zainicjuj Azure-SSIS Integration Runtime w Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)).
 
-## <a name="assess-source-ssis-projectspackages"></a>Ocena projektów SSIS/pakietów źródła
+## <a name="assess-source-ssis-projectspackages"></a>Oceń źródłowe projekty SSIS/pakiety
 
-Podczas oceny źródłowej bazy danych SSISDB nie jest jeszcze zintegrowana narzędzia Database Migration Assistant (DMA) lub usługi Azure Database Migration Service (DMS), projektów SSIS/pakietów zostanie ocenione/zweryfikowana, ponieważ są one ponownie wdrażana do docelowej bazy danych SSISDB w serwisie Serwer bazy danych SQL Azure.
+Ocena źródłowej SSISDB nie jest jeszcze zintegrowana z bazą danych Asystent migracji (DMA) ani Azure Database Migration Service (DMS), projekty i pakiety usług SSIS zostaną ocenione/zweryfikowane po ponownym wdrożeniu do SSISDB docelowego hostowanego na serwerze Azure SQL Database.
 
-## <a name="migrate-ssis-projectspackages"></a>Migrowanie projektów SSIS/pakietów
+## <a name="migrate-ssis-projectspackages"></a>Migrowanie projektów/pakietów SSIS
 
-Aby przeprowadzić migrację projektów SSIS/pakietów do serwera Azure SQL Database, wykonaj następujące czynności.
+Aby przeprowadzić migrację projektów/pakietów SSIS na serwer Azure SQL Database, wykonaj następujące czynności.
 
-1. Otwórz program SSMS, a następnie wybierz **opcje** do wyświetlenia **Połącz z serwerem** okno dialogowe.
+1. Otwórz program SSMS, a następnie wybierz **Opcje** , aby wyświetlić okno dialogowe **łączenie z serwerem** .
 
-2. Na **logowania** karcie, określ informacje niezbędne do łączenia się z serwerem usługi Azure SQL Database, który będzie hostował docelowej bazy danych SSISDB.
+2. Na karcie **Logowanie** Określ informacje niezbędne do nawiązania połączenia z serwerem Azure SQL Database, który będzie obsługiwał SSISDB docelowy.
 
-    ![Karta logowania usług SSIS](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
+    ![Karta logowania SSIS](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
-3. Na **właściwości połączenia** na karcie **Połącz z bazą danych** pola tekstowego, wybierz lub wprowadź **SSISDB**, a następnie wybierz pozycję **Connect**.
+3. Na karcie **Właściwości połączenia** w polu tekstowym **Połącz z bazą danych** wybierz lub wpisz **SSISDB**, a następnie wybierz pozycję **Połącz**.
 
-    ![Karta właściwości połączenia usług SSIS](media/how-to-migrate-ssis-packages/dms-ssis-conncetion-properties-tab.png)
+    ![Karta właściwości połączenia SSIS](media/how-to-migrate-ssis-packages/dms-ssis-conncetion-properties-tab.png)
 
-4. W Eksploratorze obiektów programu SSMS, rozwiń **Integracja usług katalogów** węzła, rozwiń węzeł **SSISDB**i jeśli nie ma żadnych istniejących folderów, kliknij prawym przyciskiem myszy **SSISDB** i Utwórz nowy folder.
+4. W Eksplorator obiektów SSMS rozwiń węzeł **katalogi usług integracji** , rozwiń węzeł **SSISDB**i jeśli nie ma żadnych istniejących folderów, kliknij prawym przyciskiem myszy pozycję **SSISDB** i Utwórz nowy folder.
 
-5. W obszarze **SSISDB**rozwiń dowolnego folderu, kliknij prawym przyciskiem myszy **projektów**, a następnie wybierz pozycję **wdrażanie projektu**.
+5. W obszarze **SSISDB**Rozwiń wszystkie foldery, kliknij prawym przyciskiem myszy pozycję **projekty**, a następnie wybierz polecenie **Wdróż projekt**.
 
-    ![Węzeł bazy danych SSISDB SSIS rozwinięte](media/how-to-migrate-ssis-packages/dms-ssis-ssisdb-node-expanded.png)
+    ![Rozwinięto węzeł SSIS SSISDB](media/how-to-migrate-ssis-packages/dms-ssis-ssisdb-node-expanded.png)
 
-6. W Kreatorze wdrażania usług integracji na **wprowadzenie** strony, przejrzyj informacje, a następnie wybierz pozycję **dalej**.
+6. W Kreatorze wdrażania usług Integration Services na stronie **wprowadzenie** Przejrzyj informacje, a następnie wybierz przycisk **dalej**.
 
-    ![Strona wprowadzenia Kreatora wdrażania](media/how-to-migrate-ssis-packages/dms-deployment-wizard-introduction-page.png)
+    ![Strona wprowadzenia kreatora wdrażania](media/how-to-migrate-ssis-packages/dms-deployment-wizard-introduction-page.png)
 
-7. Na **wybierz źródło** Określ istniejący projekt usług SSIS, który chcesz wdrożyć.
+7. Na stronie **Wybierz źródło** określ istniejący projekt SSIS, który ma zostać wdrożony.
 
-    Jeśli program SSMS również jest podłączony do serwera SQL hostującego źródłowej bazy danych SSISDB, wybierz opcję **wykaz usług Integration Services**, a następnie wprowadź ścieżkę serwera nazwę i Projekt w katalogu wdrażania projektu bezpośrednio.
+    Jeśli program SSMS jest również połączony z SQL Server hostem źródła, wybierz pozycję **Katalog usług Integration Services**, a następnie wprowadź nazwę serwera i ścieżkę projektu w katalogu, aby wdrożyć projekt bezpośrednio.
 
-    Alternatywnie zaznacz **pliku wdrażania projektu**, a następnie określ ścieżkę do istniejącego projektu wdrażania pliku (.ispac) do wdrażania projektu.
+    Alternatywnie wybierz pozycję **plik wdrożenia projektu**, a następnie określ ścieżkę do istniejącego pliku wdrożenia projektu (. ispac), aby wdrożyć projekt.
 
-    ![Strona kreatora wybierz źródło wdrożenia](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
+    ![Wybieranie strony źródłowej przez Kreatora wdrażania](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
 8. Wybierz opcję **Dalej**.
-9. Na **wybierz lokalizację docelową** Określ lokalizację docelową dla projektu.
+9. Na stronie **Wybierz miejsce docelowe** określ miejsce docelowe dla projektu.
 
-    a. W polu tekstowym Nazwa serwera, wpisz w pełni kwalifikowana nazwa serwera usługi Azure SQL Database (< nazwa_serwera >. database.windows.net).
+    a. W polu tekstowym Nazwa serwera wprowadź w pełni kwalifikowaną nazwę serwera Azure SQL Database (< server_name >. Database. Windows. NET).
 
-    b. Podaj informacje dotyczące uwierzytelniania, a następnie wybierz pozycję **Connect**.
+    b. Podaj informacje o uwierzytelnianiu, a następnie wybierz pozycję **Połącz**.
 
-    ![Strona kreatora wybierz lokalizację docelową wdrożenia](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
+    ![Kreator wdrażania — Wybieranie strony docelowej](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
 
-    c. Wybierz **Przeglądaj** do określania folderu docelowego w SSISDB, a następnie wybierz **dalej**.
+    d. Wybierz pozycję **Przeglądaj** , aby określić folder docelowy w SSISDB, a następnie wybierz przycisk **dalej**.
 
     > [!NOTE]
-    > **Dalej** przycisk jest aktywny tylko wtedy, gdy wybrano **Connect**.
+    > Przycisk **dalej** jest włączony dopiero po wybraniu pozycji **Połącz**.
 
-10. Na **weryfikacji** się wyświetlić wszelkie błędy/ostrzeżenia, a następnie w razie potrzeby pakietów odpowiednio zmodyfikować.
+10. Na stronie **Walidacja Sprawdź** wszystkie błędy/ostrzeżenia, a następnie w razie potrzeby zmodyfikuj odpowiednie pakiety.
 
-    ![Strona kreatora sprawdzania poprawności wdrożenia](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
+    ![Strona weryfikacji kreatora wdrażania](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
 11. Wybierz opcję **Dalej**.
 
-12. Na **Przejrzyj** Przejrzyj ustawienia wdrożenia.
+12. Na stronie **Przegląd** przejrzyj ustawienia wdrożenia.
 
     > [!NOTE]
-    > Ustawienia można zmienić, wybierając **Wstecz** lub wybierając dowolny z linków krok w okienku po lewej stronie.
+    > Ustawienia można zmienić, wybierając pozycję **poprzednie** lub wybierając dowolne z kroków w okienku po lewej stronie.
 
-13. Wybierz **Wdróż** do rozpoczęcia procesu wdrażania.
+13. Wybierz pozycję **Wdróż** , aby rozpocząć proces wdrażania.
 
-14. Po ukończeniu procesu wdrażania można wyświetlić strony wyników Wyświetla powodzenie lub niepowodzenie akcji każdego wdrożenia.
-    a. Jeśli wszystkie akcja nie powiodła się, w **wynik** wybierz opcję **nie powiodło się** Aby wyświetlić wyjaśnienie błędu.
-    b. Opcjonalnie można zaznaczyć **Zapisz raport** zapisać wyniki w pliku XML.
+14. Po zakończeniu procesu wdrażania można wyświetlić stronę wyniki, która wyświetla powodzenie lub niepowodzenie każdej akcji wdrożenia.
+    a. Jeśli jakakolwiek akcja zakończyła się niepowodzeniem, w kolumnie **wynik** wybierz pozycję **nie można** wyświetlić wyjaśnienia błędu.
+    b. Opcjonalnie wybierz pozycję **Zapisz raport** , aby zapisać wyniki w pliku XML.
 
-15. Wybierz **Zamknij** aby zakończyć działanie Kreatora wdrażania usługi integracyjnego.
+15. Wybierz pozycję **Zamknij** , aby zakończyć działanie Kreatora wdrażania usług Integration Services.
 
-Jeśli wdrożenie projektu zakończy się pomyślnie bez błędów, można wybrać dowolnego pakietu, zawartych w nim do uruchamiania na usługi platformy Azure-SSIS IR.
+Jeśli wdrożenie projektu zakończy się niepowodzeniem, możesz wybrać wszystkie pakiety, które zawiera, aby uruchomić je na Azure-SSIS IR.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Przejrzyj wskazówki dotyczące migracji w programie Microsoft [Przewodnik po migracji bazy danych](https://datamigration.microsoft.com/).
+* Zapoznaj się ze wskazówkami dotyczącymi migracji w [przewodniku migracji bazy danych](https://datamigration.microsoft.com/)firmy Microsoft.

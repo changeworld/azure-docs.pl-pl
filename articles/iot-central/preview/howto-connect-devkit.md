@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9ba68e90b5ac64c7bdb08af2b567f00c1a076808
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849004"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453919"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -52,7 +52,7 @@ Aby wykonać kroki opisane w tym artykule, potrzebne są następujące zasoby:
 
 ## <a name="prepare-the-device"></a>Przygotowywanie urządzenia
 
-1. Pobierz najnowsze [wstępnie skompilowane oprogramowanie układowe Plug and Play IoT Central platformy Azure](https://github.com/MXCHIP/IoTDevKit/raw/master/pnp/iotc_devkit/bin/iotc_devkit.bin) dla urządzenia DevKit z usługi GitHub.
+1. Pobierz najnowsze [wstępnie skompilowane oprogramowanie układowe Plug and Play IoT Central platformy Azure](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) dla urządzenia DevKit z usługi GitHub.
 
 1. Podłącz urządzenie DevKit do komputera deweloperskiego przy użyciu kabla USB. W systemie Windows okno Eksploratora plików otwiera się na dysku mapowanym na magazyn na urządzeniu DevKit. Na przykład dysk może mieć nazwę **AZ3166 (D:)** .
 

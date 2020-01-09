@@ -1,18 +1,17 @@
 ---
 title: Przykłady usługi Azure Cache for Redis
-description: Dowiedz się, jak używać usługi Azure Cache for Redis
+description: 'Dowiedz się, jak używać usługi Azure cache for Redis z następującymi przykładami kodu: łączenie z pamięcią podręczną, odczytywanie i zapisywanie danych w pamięci podręcznej, ASP.NET Azure cache for Redis Providers.'
 author: yegu-ms
-ms.service: cache
-ms.devlang: multiple
-ms.topic: conceptual
-ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 9097a25c0223faebd91fe3c01ff3edea6c4e6f9f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.service: cache
+ms.topic: sample
+ms.date: 01/23/2017
+ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433405"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Przykłady usługi Azure Cache for Redis
 Ten temat zawiera listę pamięci podręcznej systemu Azure dla przykładów Redis, obejmujących scenariusze, takie jak nawiązywanie połączenia z pamięcią podręczną, odczytywanie i zapisywanie danych w pamięci podręcznej oraz korzystanie z usługi ASP.NET Azure cache for Redis Providers. Niektóre przykłady są projektami do pobrania, a niektóre zawierają wskazówki krok po kroku i zawierają fragmenty kodu, ale nie łączą się z projektem do pobrania.
@@ -62,4 +61,3 @@ Przykładem [Retwis](https://github.com/SyntaxC4-MSFT/retwis) jest Redis Hello W
 
 ## <a name="bandwidth-monitor"></a>Monitor przepustowości
 Przykład [monitora przepustowości](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) pozwala monitorować przepustowość używaną na kliencie. Aby zmierzyć przepustowość, uruchom próbkę na komputerze klienckim pamięci podręcznej, wykonaj wywołania do pamięci podręcznej i obserwuj przepustowość zgłoszoną przez próbkę monitora przepustowości.
-

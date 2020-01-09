@@ -1,5 +1,5 @@
 ---
-title: Scenariusze uwierzytelniania platformy tożsamości firmy Microsoft | Azure
+title: Microsoft Identity platform Authentication — przepływy & scenariusze aplikacji | Azure
 description: Dowiedz się więcej na temat przepływów uwierzytelniania i scenariuszy aplikacji dla platformy tożsamości firmy Microsoft. Poznaj różne typy aplikacji, które mogą uwierzytelniać tożsamości, uzyskiwać tokeny i wywoływać chronione interfejsy API.
 services: active-directory
 author: jmprieur
@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969c7b6c86e09ec73ccf1ffa5cc4dc9703a3d25c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: be561595c90d73e3e1e7b88291aa92883e8b8dfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424625"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Przepływy uwierzytelniania i scenariusze aplikacji
 

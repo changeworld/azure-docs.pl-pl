@@ -2,13 +2,14 @@
 title: Dostępność zasobów według regionów
 description: Dostępność zasobów obliczeniowych i pamięci dla usługi Azure Container Instances w różnych regionach świadczenia usługi Azure.
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533472"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445834"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostępność zasobów dla Azure Container Instances w regionach świadczenia usługi Azure
 
@@ -25,24 +26,23 @@ Aby uzyskać informacje na temat przydziałów i innych limitów wdrożenia, zob
 
 Następujące regiony i zasoby są dostępne dla grup kontenerów z systemem Linux i [obsługiwanymi](container-instances-faq.md#what-windows-base-os-images-are-supported) kontenerami systemu Windows Server 2016.
 
-| Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
+| Regiony | System operacyjny | Maks. | Maksymalna ilość pamięci (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, zachodnie stany USA | Linux | 4 | 16 |
-| Europa Zachodnia, zachodnie stany USA 2 | Linux | 4 | 14 |
+| Brazylia Południowa, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Kanada, Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA, zachodnie stany USA 2 | Linux | 4 | 16 |
 | Australia Wschodnia, Japonia Wschodnia | Linux | 2 | 8 |
-| Północno-środkowe stany USA, Indie Południowe | Linux | 2 | 3,5 |
-| Europa Zachodnia | Windows | 4 | 16 |
+| Północno-środkowe stany USA | Linux | 2 | 3,5 |
+| Brazylia Południowa, Japonia Wschodnia, Europa Zachodnia | Windows | 4 | 16 |
 | Zachodnie stany USA, Wschodnie stany USA | Windows | 4 | 14 |
-| Australia Wschodnia, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA 2, Japonia Wschodnia, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo Indie Południowe | Windows | 2 | 3,5 |
+| Australia Wschodnia, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA 2, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Kanada, Południowe Zjednoczone Królestwo, zachodnie stany USA 2 | Windows | 2 | 3,5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostępność — wdrożenia systemu Windows Server 2019 LTSC, 1809 (wersja zapoznawcza)
 
 Następujące regiony i zasoby są dostępne dla grup kontenerów z kontenerami opartymi na systemie Windows Server 2019 (wersja zapoznawcza).
 
-| Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
+| Regiony | System operacyjny | Maks. | Maksymalna ilość pamięci (GB) |
 | -------- | -- | :---: | :-----------: |
-| Azja Południowo-Wschodnia, Europa Północna, Europa Zachodnia, środkowe stany USA, Wschodnie stany USA, zachodnie stany USA, zachodnie stany USA 2 | Windows | 4 | 16 |
-| Wschodnie stany USA 2 | Windows | 2 | 3,5 |
+| Australia Wschodnia, Brazylia Południowa, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Japonia Wschodnia, Północna środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Południowe Zjednoczone Królestwo, Europa Zachodnia | Windows | 4 | 16 |
+| Wschodnie stany USA 2, zachodnie stany USA 2 | Windows | 2 | 3,5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>Dostępność — wdrażanie sieci wirtualnej (wersja zapoznawcza)

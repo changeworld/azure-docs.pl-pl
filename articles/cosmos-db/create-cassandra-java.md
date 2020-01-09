@@ -1,5 +1,5 @@
 ---
-title: Używanie interfejs API Cassandra i języka Java do kompilowania aplikacji Azure Cosmos DB
+title: Tworzenie aplikacji Java za pomocą Azure Cosmos DB interfejs API Cassandra
 description: W tym przewodniku Szybki start przedstawiono używanie interfejsu API bazy danych Cassandra w usłudze Azure Cosmos DB do tworzenia aplikacji profilów przy użyciu witryny Azure Portal i języka Java
 ms.service: cosmos-db
 author: SnehaGunda
@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5b1eacb1d0121f2dd0d97807f07042e828fe7932
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1f9151ab174a9a1f9e492bd068b5285772f6a546
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442056"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Szybki start: Tworzenie aplikacji Java do zarządzania danymi interfejs API Cassandra Azure Cosmos DB
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Szybki Start: Tworzenie aplikacji Java do zarządzania danymi interfejs API Cassandra Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -39,7 +39,7 @@ Potrzebne są też następujące elementy:
     * Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
 * [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne [Maven](https://maven.apache.org/)
     * W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.
-* [Usługa Git](https://www.git-scm.com/)
+* [Git](https://www.git-scm.com/)
     * W systemie Ubuntu możesz uruchomić polecenie `sudo apt-get install git`, aby zainstalować usługę Git.
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
@@ -64,7 +64,7 @@ Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację bazy danych Cassandra z
     cd "C:\git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze.
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started.git
@@ -154,7 +154,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     ![Wyświetlanie i kopiowanie nazwy użytkownika z witryny Portal Azure, strona Parametry połączenia](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
-2. Użyj ![Kopiuj](./media/create-cassandra-java/copy-button-azure-portal.png) po prawej stronie ekranu, aby skopiować wartość PUNKT KONTAKTOWY.
+2. Użyj przycisku ![Przycisk Kopiuj](./media/create-cassandra-java/copy-button-azure-portal.png) po prawej stronie ekranu, aby skopiować wartość PUNKT KONTAKTOWY.
 
 3. Otwórz plik `config.properties` z folderu `C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources`. 
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4db330a875b8241b642bcbc71fb0866c9833ee7e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182702"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638684"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Skonfiguruj ustawienia roli zasobów platformy Azure w Privileged Identity Management
 
@@ -58,10 +58,17 @@ Wykonaj następujące kroki, aby otworzyć ustawienia roli zasobów platformy Az
 
 1. Skorzystaj z karty **powiadomień** lub przycisku **Dalej: Aktywacja** w dolnej części strony, aby przejść do karty Ustawienia powiadomień dla tej roli. Te ustawienia kontrolują wszystkie powiadomienia e-mail powiązane z tą rolą.
 
-    > [!NOTE]
-    > Ten interfejs użytkownika powiadomień jest obecnie rzutowany na regiony i subskrypcje platformy Azure. Jeśli nie możesz skonfigurować tych szczegółowych powiadomień, zapoznaj się z powrotem na dzień lub dwa.
-
     ![Karta powiadomienia o rolach na stronie ustawień roli](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+    Na karcie **powiadomienia** na stronie ustawienia roli Privileged Identity Management umożliwia szczegółową kontrolę nad tym, kto otrzymuje powiadomienia i jakie otrzymywane powiadomienia.
+
+    - **Wyłączanie poczty e-mail**<br>Niektóre wiadomości e-mail można wyłączyć, czyszcząc pole wyboru domyślny odbiorca i usuwając wszystkich dodatkowych adresatów.  
+
+    - **Ogranicz wiadomości e-mail do określonych adresów e-mail**<br>Możesz wyłączyć wiadomości e-mail wysyłane do domyślnych adresatów, czyszcząc pole wyboru domyślny odbiorca. Następnie można dodać kolejne adresy e-mail jako dodatkowych adresatów. Jeśli chcesz dodać więcej niż jeden adres e-mail, rozdziel je przy użyciu średnika (;).
+
+    - **Wyślij wiadomości e-mail do domyślnych odbiorców i dodatkowych adresatów**<br>Wiadomości e-mail można wysyłać zarówno do domyślnego odbiorcy, jak i do dodatkowego adresata, zaznaczając pole wyboru domyślny odbiorca i dodając adresy e-mail dla dodatkowych adresatów.
+
+    - **Tylko krytyczne wiadomości e-mail**<br>Dla każdego typu wiadomości e-mail można zaznaczyć pole wyboru, aby otrzymywać tylko krytyczne wiadomości e-mail. Oznacza to, że Privileged Identity Management będą nadal wysyłać wiadomości e-mail do skonfigurowanych adresatów tylko wtedy, gdy wiadomość e-mail wymaga natychmiastowego działania. Na przykład wiadomości e-mail z monitem o rozszerzenie przypisania roli nie będą wyzwalane, gdy zostaną wyzwolone wiadomości e-mail wymagające od administratorów zatwierdzenia żądania rozszerzenia.
 
 1. Aby zaktualizować ustawienia roli, wybierz przycisk **Aktualizuj** w dowolnym momencie.
 

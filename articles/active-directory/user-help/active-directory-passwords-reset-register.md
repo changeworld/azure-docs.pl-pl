@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279051"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681365"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Zarejestruj informacje o metodzie weryfikacji, aby zresetować własne hasło
 
@@ -29,7 +29,7 @@ Jako użytkownik końcowy możesz zresetować hasło lub odblokować konto przez
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Rejestrowanie lub potwierdzanie danych uwierzytelniania na potrzeby samoobsługowego resetowania hasła
 
-1. Otwórz przeglądarkę sieci Web na urządzeniu i przejdź do [strony rejestracji resetowania haseł](https://aka.ms/ssprsetup).
+1. Otwórz przeglądarkę sieci Web na urządzeniu i przejdź do [strony rejestracji resetowania haseł](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup).
 2. Wprowadź nazwę użytkownika i hasło podane przez administratora.
 3. W zależności od tego, jak pracownicy IT skonfigurowali elementy, można skonfigurować i zweryfikować co najmniej jedną z następujących opcji. Jeśli administrator ma uprawnienia do korzystania z Twoich informacji, może wypełnić niektóre informacje.
     * **Telefon biurowy**: tylko administrator może ustawić tę opcję.

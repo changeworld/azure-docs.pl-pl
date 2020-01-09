@@ -1,39 +1,39 @@
 ---
-title: Korzystanie z renderowania aplikacji — Azure Batch
-description: Jak korzystać z aplikacji renderowanie przy użyciu usługi Azure Batch
+title: Korzystanie z aplikacji renderowania — Azure Batch
+description: Jak używać aplikacji renderowania z Azure Batch. Ten artykuł zawiera krótki opis sposobu uruchamiania każdej aplikacji renderowania.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775393"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390479"
 ---
 # <a name="rendering-applications"></a>Renderowanie aplikacji
 
-Renderowanie aplikacji są używane przez utworzenie zadania wsadowe i zadania. Określa właściwość wiersza polecenia zadania, odpowiedni wiersz polecenia i parametry.  Najprostszym sposobem utworzenia zadania jest za pomocą szablonów programu Batch Explorer, jak to określono w [w tym artykule](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  Szablony można wyświetlać i modyfikować wersji tworzonych w razie potrzeby.
+Renderowanie aplikacji jest używane przez tworzenie zadań i zadań wsadowych. Właściwość wiersza polecenia zadania określa odpowiedni wiersz polecenia i parametry.  Najprostszym sposobem tworzenia zadań zadania jest użycie szablonów Batch Explorer zgodnie z opisem w [tym artykule](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  Szablony mogą być przeglądane i modyfikowane w razie potrzeby.
 
-Ten artykuł zawiera krótki opis sposobu uruchamiania każdej aplikacji do renderowania.
+Ten artykuł zawiera krótki opis sposobu uruchamiania każdej aplikacji renderowania.
 
-## <a name="rendering-with-autodesk-3ds-max"></a>Renderowanie za pomocą programu Autodesk 3ds Max
+## <a name="rendering-with-autodesk-3ds-max"></a>Renderowanie przy użyciu programu Autodesk 3ds Max
 
-### <a name="renderer-support"></a>Obsługa programu renderującego
+### <a name="renderer-support"></a>Obsługa modułu renderowania
 
-Oprócz renderowania wbudowanych w aplikacji 3ds Max, następujące programy renderujące są dostępne na renderowanie obrazów maszyn wirtualnych i mogą być przywoływane przez plik 3ds Max sceny:
+Oprócz renderowania wbudowanych w 3ds Max, następujące moduły renderowania są dostępne na wyrenderowanych obrazach maszyn wirtualnych i można do nich odwoływać się przy użyciu maksymalnego pliku sceny 3DS:
 
 * Autodesk Arnold
 * Chaos Group V-Ray
 
 ### <a name="task-command-line"></a>Wiersz polecenia zadania
 
-Wywoływanie `3dsmaxcmdio.exe` aplikacji w celu wykonywania wiersza polecenia renderowania w węźle puli.  Ta aplikacja jest na ścieżce, gdy zadanie zostanie uruchomione. `3dsmaxcmdio.exe` Aplikacja ma te same parametry dostępne jako `3dsmaxcmd.exe` aplikację, która jest udokumentowany w [3ds Max dokumentacji](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (renderowania | Sekcja renderowania wiersza polecenia).
+Wywołaj aplikację `3dsmaxcmdio.exe`, aby wykonać renderowanie wiersza polecenia w węźle puli.  Ta aplikacja znajduje się na ścieżce, gdy zadanie jest uruchomione. Aplikacja `3dsmaxcmdio.exe` ma takie same parametry, jak aplikacja `3dsmaxcmd.exe`, która jest udokumentowana w [dokumentacji 3ds Max help](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (renderowanie | Sekcja renderowania wiersza polecenia).
 
-Na przykład:
+Przykład:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
@@ -41,48 +41,48 @@ Na przykład:
 
 Uwagi:
 
-* Szczególną uwagę należy upewnić się, że znajdują się pliki zasobów.  Upewnij się, ścieżki są względne i poprawne przy użyciu **trwałe** okna lub użyj `-bitmapPath` parametr w wierszu polecenia.
-* Czy istnieją problemy z renderowania, takich jak brakiem, aby znaleźć zasoby, sprawdzając `stdout.txt` plików zapisanych przez 3ds Max, gdy zadanie zostanie uruchomione.
+* Należy zachować szczególną ostrożność, aby upewnić się, że pliki zasobów zostaną znalezione.  Upewnij się, że ścieżki są poprawne i względne przy użyciu okna **śledzenia zasobów** , lub użyj parametru `-bitmapPath` w wierszu polecenia.
+* Sprawdź, czy występują problemy z renderowaniem, takie jak niemożność odnalezienia zasobów, sprawdzając plik `stdout.txt` zapisany przez 3ds Max, gdy zadanie zostanie uruchomione.
 
-### <a name="batch-explorer-templates"></a>Eksplorator szablonów usługi Batch
+### <a name="batch-explorer-templates"></a>Szablony Batch Explorer
 
-Szablony puli i zadania są dostępne z **galerii** programu Batch Explorer.  Pliki źródłowe szablonu są dostępne w [programu Batch Explorer repozytorium danych w usłudze GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax).
+Dostęp do puli i szablonów zadań można uzyskać z **galerii** w Batch Explorer.  Pliki źródłowe szablonu są dostępne w [repozytorium danych Batch Explorer w witrynie GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax).
 
-## <a name="rendering-with-autodesk-maya"></a>Renderowanie na platformie programy Autodesk Maya
+## <a name="rendering-with-autodesk-maya"></a>Renderowanie przy użyciu Autodesk Maya
 
-### <a name="renderer-support"></a>Obsługa programu renderującego
+### <a name="renderer-support"></a>Obsługa modułu renderowania
 
-Oprócz wbudowanych w programie Maya programy renderujące następujące programy renderujące są dostępne na renderowanie obrazów maszyn wirtualnych i mogą być przywoływane przez plik 3ds Max sceny:
+Oprócz renderowania wbudowanych w Maya, następujące moduły renderowania są dostępne na wyrenderowanych obrazach maszyn wirtualnych i można do nich odwoływać się przy użyciu maksymalnego pliku sceny 3DS:
 
 * Autodesk Arnold
 * Chaos Group V-Ray
 
 ### <a name="task-command-line"></a>Wiersz polecenia zadania
 
-`renderer.exe` Renderowania wiersza polecenia jest używany w wierszu polecenia zadania. Renderowanie wiersza polecenia jest udokumentowany w [Pomoc programu Maya](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
+Moduł renderujący wiersza polecenia `renderer.exe` jest używany w wierszu polecenia zadania. Renderowanie w wierszu polecenia jest udokumentowane w [pomocy Maya](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
 
-W poniższym przykładzie zadanie podrzędne przygotowania zadania jest używana do kopiowania plików scen i zasoby do katalogu roboczego zadania przygotowania folder wyjściowy jest używany do przechowywania obrazu renderowania i ramki 10 jest renderowany.
+W poniższym przykładzie zadanie przygotowania zadania służy do kopiowania plików sceny i zasobów do katalogu roboczego przygotowania zadania, folder wyjściowy jest używany do przechowywania obrazu renderowania, a ramka 10 jest renderowana.
 
 ```
 render -renderer sw -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Renderowanie V-Ray pliku sceny programu Maya zazwyczaj określić V-Ray jako modułu renderowania.  Można go również określić w wierszu polecenia:
+W przypadku renderowania za pomocą usługi V-Ray plik sceny Maya zazwyczaj określa V-Ray jako moduł renderowania.  Można go również określić w wierszu polecenia:
 
 ```
 render -renderer vray -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Aby uzyskać Arnold renderowanie, plik sceny programu Maya zazwyczaj określić Arnold jako modułu renderowania.  Można go również określić w wierszu polecenia:
+W przypadku renderowania Arnold plik sceny Maya zwykle określa Arnold jako moduł renderowania.  Można go również określić w wierszu polecenia:
 
 ```
 render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-### <a name="batch-explorer-templates"></a>Eksplorator szablonów usługi Batch
+### <a name="batch-explorer-templates"></a>Szablony Batch Explorer
 
-Szablony puli i zadania są dostępne z **galerii** programu Batch Explorer.  Pliki źródłowe szablonu są dostępne w [programu Batch Explorer repozytorium danych w usłudze GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya).
+Dostęp do puli i szablonów zadań można uzyskać z **galerii** w Batch Explorer.  Pliki źródłowe szablonu są dostępne w [repozytorium danych Batch Explorer w witrynie GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Korzystanie z szablonów puli i zadania z [repozytorium danych w usłudze GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) przy użyciu programu Batch Explorer.  Gdy jest to wymagane, tworzyć nowych szablonów, lub zmodyfikuj jedną dostarczane szablony.
+Użyj szablonów puli i zadań z [repozytorium danych w usłudze GitHub](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) przy użyciu Batch Explorer.  W razie potrzeby utwórz nowe szablony lub zmodyfikuj jeden z podanych szablonów.

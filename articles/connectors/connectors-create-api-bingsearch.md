@@ -1,20 +1,20 @@
 ---
 title: Połącz z Wyszukiwanie Bing
-description: Znajdowanie wiadomości za pomocą interfejsów API REST Wyszukiwanie Bing i Azure Logic Apps
+description: Automatyzowanie zadań i przepływów pracy, które wyszukują wyniki Wyszukiwanie Bing przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789948"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665891"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Znajdź wiadomości Wyszukiwanie Bing i Azure Logic Apps
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Znajdź wyniki w Wyszukiwanie Bing przy użyciu Azure Logic Apps
 
 W tym artykule pokazano, jak można znaleźć wiadomości, klipy wideo i inne elementy za pośrednictwem Wyszukiwanie Bing z poziomu aplikacji logiki za pomocą łącznika Wyszukiwanie Bing. Dzięki temu można tworzyć aplikacje logiki, które automatyzują zadania i przepływy pracy związane z przetwarzaniem wyników wyszukiwania i udostępniają te elementy innym akcjom. 
 
@@ -52,14 +52,14 @@ Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla wyzwalac
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | Zapytanie wyszukiwania | Tak | <*Wyszukiwanie słów*> | Wprowadź słowa kluczowe wyszukiwania, które mają być używane. |
+   | Search Query | Tak | <*Wyszukiwanie słów*> | Wprowadź słowa kluczowe wyszukiwania, które mają być używane. |
    | Rynek | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
-   | Bezpieczne wyszukiwanie | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
-   | Liczba | Nie | *wyniki <-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Safe Search | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Liczba | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
    | Przesunięcie | Nie | <*wartość pomijania*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
-   Na przykład:
+   Przykład:
 
    ![Konfigurowanie wyzwalacza](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -103,10 +103,10 @@ Z listy Akcje wybierz żądaną akcję.
 
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | Zapytanie wyszukiwania | Tak | *wyrażenie wyszukiwania* <> | Wprowadź wyrażenie służące do wykonywania zapytań dotyczących wyników wyzwalacza. Możesz wybrać spośród pól na liście zawartości dynamicznej lub utworzyć wyrażenie przy użyciu Konstruktora wyrażeń. |
+   | Search Query | Tak | <*search-expression*> | Wprowadź wyrażenie służące do wykonywania zapytań dotyczących wyników wyzwalacza. Możesz wybrać spośród pól na liście zawartości dynamicznej lub utworzyć wyrażenie przy użyciu Konstruktora wyrażeń. |
    | Rynek | Tak | <*Ustawienia regionalne*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
-   | Bezpieczne wyszukiwanie | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
-   | Liczba | Nie | *wyniki <-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Safe Search | Tak | <> *poziomu wyszukiwania* | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Liczba | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
    | Przesunięcie | Nie | <*wartość pomijania*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
@@ -121,7 +121,7 @@ Z listy Akcje wybierz żądaną akcję.
 
    2. Z listy funkcje wybierz funkcję **Contains ()** , która zostanie wyświetlona w polu wyrażenie. Kliknij pozycję **zawartość dynamiczna** , aby wyświetlić listę pól ponownie, ale upewnij się, że kursor pozostaje wewnątrz nawiasów.
 
-      ![Wybierz funkcję](./media/connectors-create-api-bing-search/expression-select-function.png)
+      ![Wybieranie funkcji](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. Z listy pól wybierz **kategorię**, która konwertuje do parametru. 
    Dodaj przecinek po pierwszym parametrze, a po przecinku Dodaj następujący wyraz: `'tech'` 
@@ -152,10 +152,10 @@ Z listy Akcje wybierz żądaną akcję.
    |----------|----------|-------|-------------|
    | Nazwa połączenia | Tak | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
    | Wersja interfejsu API | Tak | <*API-version*> | Domyślnie wersja interfejsu API Wyszukiwanie Bing jest ustawiona na bieżącą wersję. W razie potrzeby możesz wybrać wcześniejszą wersję. |
-   | Klucz interfejsu API | Tak | > <*API-Key* | Wcześniej pobrano klucz interfejsu API Wyszukiwanie Bing. Jeśli nie masz klucza, Pobierz [klucz interfejsu API teraz](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Klucz interfejsu API | Tak | <*API-key*> | Wcześniej pobrano klucz interfejsu API Wyszukiwanie Bing. Jeśli nie masz klucza, Pobierz [klucz interfejsu API teraz](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
-   Na przykład:
+   Przykład:
 
    ![Tworzenie połączenia](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
@@ -163,7 +163,7 @@ Z listy Akcje wybierz żądaną akcję.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/bingsearch/).
+Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Swagger łącznika, zobacz [stronę odwołania łącznika](/connectors/bingsearch/).
 
 ## <a name="next-steps"></a>Następne kroki
 

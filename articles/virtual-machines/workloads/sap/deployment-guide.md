@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 549fd8f4cb770d472eefd1c504e42837fa8230dd
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066867"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645858"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP NetWeaver
 
@@ -77,8 +77,8 @@ ms.locfileid: "71066867"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md (Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP)
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f (Buforowanie dla maszyn wirtualnych i wirtualnych dysków twardych)
@@ -234,7 +234,7 @@ ms.locfileid: "71066867"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Magazyn: Microsoft Azure Storage i dyski z danymi)
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
 [sap-pam]: https://support.sap.com/pam (Macierz dostępności produktu SAP)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -253,7 +253,7 @@ ms.locfileid: "71066867"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -432,7 +432,7 @@ Kreator przeprowadzi Cię przez proces konfigurowania wymaganych parametrów w c
      Listę obsługiwanych typów maszyn wirtualnych można znaleźć w temacie SAP Note [1928533]. Upewnij się, że wybrano poprawny typ maszyny wirtualnej, jeśli chcesz użyć usługi Azure Premium Storage. Nie wszystkie typy maszyn wirtualnych obsługują Premium Storage. Aby uzyskać więcej informacji, zobacz temat [Magazyn: Microsoft Azure Storage i dyski danych][planning-guide-storage-microsoft-azure-storage-and-data-disks] oraz [Azure Premium Storage][planning-guide-azure-premium-storage] na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide].
 
 1. **Ustawienia**:
-   * **Storage**
+   * **Magazyn**
      * **Typ dysku**: Wybierz typ dysku dysku systemu operacyjnego. Jeśli chcesz używać Premium Storage dla dysków z danymi, zalecamy również korzystanie z Premium Storage dla dysku systemu operacyjnego.
      * **Użyj dysków zarządzanych**: Jeśli chcesz użyć Managed disks, wybierz pozycję tak. Aby uzyskać więcej informacji na temat Managed Disks, zobacz rozdział [Managed disks][planning-guide-managed-disks] w przewodniku planowania.
      * **Konto magazynu**: Wybierz istniejące konto magazynu lub Utwórz nowe. Nie wszystkie typy magazynów działają w przypadku uruchamiania aplikacji SAP. Aby uzyskać więcej informacji na temat typów magazynów, zobacz [Struktura magazynu maszyny wirtualnej na potrzeby wdrożeń RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
@@ -572,7 +572,7 @@ Kreator przeprowadzi Cię przez proces konfigurowania wymaganych parametrów w c
      Listę obsługiwanych typów maszyn wirtualnych można znaleźć w temacie SAP Note [1928533]. Upewnij się, że wybrano poprawny typ maszyny wirtualnej, jeśli chcesz użyć usługi Azure Premium Storage. Nie wszystkie typy maszyn wirtualnych obsługują Premium Storage. Aby uzyskać więcej informacji, zobacz temat [Magazyn: Microsoft Azure Storage i dyski danych][planning-guide-storage-microsoft-azure-storage-and-data-disks] oraz [Azure Premium Storage][planning-guide-azure-premium-storage] na [platformie Azure Virtual Machines planowanie i wdrażanie oprogramowania SAP NetWeaver][planning-guide].
 
 1. **Ustawienia**:
-   * **Storage**
+   * **Magazyn**
      * **Typ dysku**: Wybierz typ dysku dysku systemu operacyjnego. Jeśli chcesz używać Premium Storage dla dysków z danymi, zalecamy również korzystanie z Premium Storage dla dysku systemu operacyjnego.
      * **Użyj dysków zarządzanych**: Jeśli chcesz użyć Managed disks, wybierz pozycję tak. Aby uzyskać więcej informacji na temat Managed Disks, zobacz rozdział [Managed disks][planning-guide-managed-disks] w przewodniku planowania.
    * **Sieć**
@@ -882,7 +882,7 @@ Aby można było uzyskać dostęp do Internetu, należy prawidłowo skonfigurowa
 1. Wyczyść pole wyboru **Automatycznie wykryj ustawienia** .
 1. Zaznacz pole wyboru **Użyj serwera proxy dla sieci LAN** , a następnie wprowadź adres i port serwera proxy.
 1. Wybierz przycisk **Zaawansowane** .
-1. W polu **wyjątki** wprowadź adres IP **168.63.129.16**. Wybierz **OK**.
+1. W polu **wyjątki** wprowadź adres IP **168.63.129.16**. Kliknij przycisk **OK**.
 
 #### <a name="linux"></a>Linux
 

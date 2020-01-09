@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196229"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454552"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Przygotowywanie maszyn wirtualnych VMware na potrzeby oceny i migracji na platformę Azure
 
@@ -21,7 +21,7 @@ Ten artykuł ułatwia przygotowanie się do oceny i/lub migracji lokalnych maszy
 [Azure Migrate](migrate-overview.md) udostępnia centrum narzędzi, które ułatwiają odnajdywanie, ocenianie i Migrowanie aplikacji, infrastruktury i obciążeń do Microsoft Azure. Centrum obejmuje narzędzia Azure Migrate i oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
 
-Ten samouczek jest pierwszą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne VMware. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest pierwszą częścią serii, która pokazuje, jak oceniać i migrować maszyny wirtualne VMware. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Przygotuj platformę Azure do pracy z Azure Migrate.
@@ -124,7 +124,7 @@ Przed wdrożeniem urządzenia Sprawdź wymagania dotyczące urządzenia.
 
 1. [Sprawdź](migrate-support-matrix-vmware.md#assessment-appliance-requirements) wymagania i ograniczenia dotyczące urządzeń.
 2. Jeśli używasz serwera proxy zapory opartego na adresie URL, [Przejrzyj](migrate-support-matrix-vmware.md#assessment-url-access-requirements) adresy URL platformy Azure, do których urządzenie będzie musiało uzyskać dostęp. Upewnij się, że serwer proxy rozpoznaje wszystkie rekordy CNAME otrzymane podczas wyszukiwania adresów URL.
-3. Zapoznaj się z [danymi wydajności](migrate-appliance.md#collected-performance-data-vmware)i [metadanymi](migrate-appliance.md#collected-metadata-vmware) , które urządzenie zbiera podczas odnajdywania i oceny.
+3. Przejrzyj [dane wydajności](migrate-appliance.md#collected-performance-data-vmware) i [metadane](migrate-appliance.md#collected-metadata-vmware) zbierane przez urządzenie podczas odnajdywania i oceny.
 4. [Zanotuj](migrate-support-matrix-vmware.md#assessment-port-requirements) porty, do których uzyskuje dostęp urządzenie.
 5. Na vCenter Server upewnij się, że konto ma uprawnienia do tworzenia maszyny wirtualnej przy użyciu pliku komórek jajowych. Należy wdrożyć urządzenie Azure Migrate jako maszynę wirtualną VMware przy użyciu pliku komórki jajowe.
 
@@ -156,7 +156,7 @@ Zapoznaj się z wymaganiami dotyczącymi migracji maszyn wirtualnych VMware [na 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku zostały wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj uprawnienia platformy Azure.

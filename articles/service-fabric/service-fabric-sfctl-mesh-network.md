@@ -1,25 +1,16 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric — sieć siatkowa sfctl | Microsoft Docs
-description: Opisuje Service Fabric interfejsu wiersza polecenia dla sieci siatkowych sfctl.
-services: service-fabric
-documentationcenter: na
+title: Interfejs wiersza polecenia platformy Azure Service Fabric — sieć siatkowa sfctl
+description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń do pobierania i usuwania zasobów sieciowych Service Fabric siatki.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 4d74e3d37891ad50d8bbaa69757d0d99c80591cc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 2d9d86d41dc031cca2730011c2322e9feb30c827
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901216"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646130"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
 Pobierz i Usuń zasoby sieci siatki.
@@ -47,8 +38,8 @@ Usuwa zasób sieciowy identyfikowany przez nazwę.
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
@@ -62,8 +53,8 @@ Pobiera informacje o wszystkich zasobach sieciowych w danej grupie zasobów. Inf
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
@@ -83,8 +74,8 @@ Pobiera informacje o zasobie sieciowym o podanej nazwie. Informacje obejmują op
 
 |Argument|Opis|
 | --- | --- |
-| --Debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --Help-h | Pokaż ten komunikat pomocy i Zakończ. |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
 | --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |

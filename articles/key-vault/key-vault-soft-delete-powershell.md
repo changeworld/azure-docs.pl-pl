@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985756"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562140"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać nietrwałego usuwania Key Vault za pomocą programu PowerShell
 
@@ -30,7 +30,7 @@ Funkcja usuwania nietrwałego Azure Key Vault umożliwia Odzyskiwanie usuniętyc
 
 >[!NOTE]
 > Istnieje nieaktualna wersja Key Vault naszego pliku formatowania danych wyjściowych programu PowerShell, który **może** zostać załadowany do środowiska, a nie w poprawnej wersji. Przewidujemy, że zaktualizowana wersja programu PowerShell będzie zawierać wymaganą poprawkę dla formatowania danych wyjściowych i zaktualizuje ten temat w tym czasie. Bieżące obejście, jeśli wystąpi ten problem z formatowaniem, to:
-> - Jeśli zauważysz, że nie widzisz właściwości Enabled z włączonym usuwaniem w tym temacie, użyj następującego zapytania `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`:.
+> - Jeśli zauważysz, że nie widzisz właściwości z włączonym usuwaniem nietrwałego opisanego w tym temacie, użyj następującego zapytania: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
 
 
 Aby uzyskać szczegółowe informacje dotyczące Key Vault programu PowerShell, zobacz [Azure Key Vault Dokumentacja programu PowerShell](/powershell/module/az.keyvault).
@@ -41,9 +41,9 @@ Operacje Key Vault są zarządzane oddzielnie za pośrednictwem uprawnień kontr
 
 | Operacja | Opis | Uprawnienie użytkownika |
 |:--|:--|:--|
-|List|Wyświetla listę usuniętych magazynów kluczy.|Microsoft.KeyVault/deletedVaults/read|
-|Odzyskaj|Przywraca usunięty Magazyn kluczy.|Microsoft.KeyVault/vaults/write|
-|Przeczyść|Trwale usuwa usunięty Magazyn kluczy i całą jego zawartość.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|Lista|Wyświetla listę usuniętych magazynów kluczy.|Microsoft.KeyVault/deletedVaults/read|
+|Recover|Przywraca usunięty Magazyn kluczy.|Microsoft.KeyVault/vaults/write|
+|Purge|Trwale usuwa usunięty Magazyn kluczy i całą jego zawartość.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Aby uzyskać więcej informacji na temat uprawnień i kontroli dostępu, zobacz temat [Zabezpieczanie magazynu kluczy](key-vault-secure-your-key-vault.md).
 
@@ -160,7 +160,7 @@ Aby trwale usunąć (nazywane także przeczyszczaniem) klucz nietrwałego:
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
-Akcje odzyskania i **przeczyszczania** mają własne uprawnienia skojarzone z zasadami dostępu magazynu kluczy. Aby użytkownik lub usługa mogła wykonać akcję odzyskania lub przeczyszczania , muszą mieć odpowiednie uprawnienia do tego klucza lub wpisu tajnego. Domyślnie przeczyszczanie nie jest dodawane do zasad dostępu magazynu kluczy, gdy skrót "wszystkie" jest używany do udzielania wszystkich uprawnień. Musisz jawnie udzielić uprawnienia do przeczyszczania. 
+Akcje **odzyskania** i **przeczyszczania** mają własne uprawnienia skojarzone z zasadami dostępu magazynu kluczy. Aby użytkownik lub usługa mogła wykonać akcję **odzyskania** lub **przeczyszczania** , muszą mieć odpowiednie uprawnienia do tego klucza lub wpisu tajnego. Domyślnie **przeczyszczanie** nie jest dodawane do zasad dostępu magazynu kluczy, gdy skrót "wszystkie" jest używany do udzielania wszystkich uprawnień. Musisz jawnie udzielić uprawnienia do **przeczyszczania** . 
 
 #### <a name="set-a-key-vault-access-policy"></a>Ustawianie zasad dostępu do magazynu kluczy
 
@@ -216,7 +216,7 @@ Ta sama wartość dotyczy magazynu kluczy. W celu trwałego usunięcia nietrwał
 
 ### <a name="purging-a-key-vault"></a>Przeczyszczanie magazynu kluczy
 
-Po przeczyszczeniu magazynu kluczy jego cała zawartość jest trwale usuwana, w tym kluczy, wpisów tajnych i certyfikatów. Aby przeczyścić usunięty nietrwale Magazyn kluczy, użyj `Remove-AzKeyVault` polecenia z opcją `-InRemovedState` i określając lokalizację `-Location location` usuniętego magazynu kluczy z argumentem. Lokalizację usuniętego magazynu można znaleźć za pomocą polecenia `Get-AzKeyVault -InRemovedState`.
+Po przeczyszczeniu magazynu kluczy jego cała zawartość jest trwale usuwana, w tym kluczy, wpisów tajnych i certyfikatów. Aby przeczyścić Magazyn kluczy usunięty z nietrwałego, użyj polecenia `Remove-AzKeyVault` z opcją `-InRemovedState` i określając lokalizację usuniętego magazynu kluczy z argumentem `-Location location`. Lokalizację usuniętego magazynu można znaleźć za pomocą polecenia `Get-AzKeyVault -InRemovedState`.
 
 ```powershell
 Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -232,7 +232,7 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 Wyświetlanie listy usuniętych obiektów magazynu kluczy również pokazuje, kiedy mają być przeczyszczone przez Key Vault. *Zaplanowana data przeczyszczania* wskazuje, kiedy obiekt magazynu kluczy zostanie trwale usunięty, jeśli nie zostanie podjęta żadna akcja. Domyślnie okres przechowywania usuniętego obiektu magazynu kluczy wynosi 90 dni.
 
 >[!IMPORTANT]
->Przeczyszczony obiekt magazynu wyzwalany przez zaplanowaną wartość pola *Data przeczyszczania* zostanie trwale usunięty. Nie jest możliwe do odzyskania!
+>Przeczyszczony obiekt magazynu wyzwalany przez *zaplanowaną wartość pola Data przeczyszczania* zostanie trwale usunięty. Nie jest możliwe do odzyskania!
 
 ## <a name="enabling-purge-protection"></a>Włączanie ochrony przed czyszczeniem
 
@@ -257,4 +257,4 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ## <a name="other-resources"></a>Inne zasoby
 
 - Omówienie funkcji usuwania nietrwałego Key Vault można znaleźć w temacie [Azure Key Vault unsoft-Delete Overview](key-vault-ovw-soft-delete.md).
-- Aby uzyskać ogólne omówienie użycia Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md). wartość daty = sukces =
+- Aby uzyskać ogólne omówienie użycia Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md).

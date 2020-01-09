@@ -6,23 +6,23 @@ services: cloud-services
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 12
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 481301333ada39297bf2813bbea5f096c2abd3ad
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: 0f0e79b462726b1aa6a953a4b8c92334d6b16492
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449082"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Schemat roli konfiguracji Cloud Services platformy Azure
 
-`Role` Element pliku konfiguracji określa liczbę wystąpień roli do wdrożenia dla każdej roli w usłudze, wartości ustawień konfiguracji i odcisków palców dla wszystkich certyfikatów skojarzonych z rolą.
+`Role` element pliku konfiguracji określa liczbę wystąpień roli do wdrożenia dla każdej roli w usłudze, wartości dowolnych ustawień konfiguracji oraz odcisków palców dla wszystkich certyfikatów skojarzonych z rolą.
 
 Aby uzyskać więcej informacji na temat schematu konfiguracji usługi platformy Azure, zobacz [Schemat konfiguracji usługi w chmurze (klasycznej)](schema-cscfg-file.md). Aby uzyskać więcej informacji na temat schematu definicji usługi platformy Azure, zobacz [schemat definicji usługi w chmurze (klasycznej)](schema-csdef-file.md).
 
 ##  <a name="Role"></a>Element roli
-Poniższy przykład pokazuje `Role` element i jego elementy podrzędne.
+Poniższy przykład pokazuje element `Role` i jego elementy podrzędne.
 
 ```xml 
 <ServiceConfiguration>
@@ -38,20 +38,20 @@ Poniższy przykład pokazuje `Role` element i jego elementy podrzędne.
 </ServiceConfiguration>
 ```
 
-W poniższej tabeli opisano atrybuty `Role` elementu.
+W poniższej tabeli opisano atrybuty elementu `Role`.
 
 | Atrybut | Opis |
 | --------- | ----------- |
-| name   | Wymagana. Określa nazwę roli. Nazwa musi być zgodna z nazwą podaną dla roli w pliku definicji usługi.|
-| vmName | Opcjonalny. Określa nazwę DNS maszyny wirtualnej. Nazwa może składać się z maksymalnie 10 znaków.|
+| name   | Wymagany. Określa nazwę roli. Nazwa musi być zgodna z nazwą podaną dla roli w pliku definicji usługi.|
+| vmName | Element opcjonalny. Określa nazwę DNS maszyny wirtualnej. Nazwa może składać się z maksymalnie 10 znaków.|
 
-W poniższej tabeli opisano elementy `Role` podrzędne elementu.
+W poniższej tabeli opisano elementy potomne elementu `Role`.
 
 | Element | Opis |
 | ------- | ----------- |
-| Wystąpienia | Wymagane. Określa liczbę wystąpień do wdrożenia dla roli. Liczba wystąpień jest definiowana przez liczbę całkowitą dla `count` atrybutu.|
-| Ustawienie   | Opcjonalny. Określa nazwę i wartość ustawienia w kolekcji ustawień dla roli. Nazwa ustawienia jest definiowana przez ciąg dla `name` atrybutu, a wartość ustawienia jest definiowana przez ciąg `value` dla atrybutu.|
-| Certyfikat | Opcjonalna. Określa nazwę, odcisk palca i algorytm certyfikatu usługi, który ma zostać skojarzony z rolą. Nazwa certyfikatu jest definiowana przez ciąg dla `name` atrybutu. Odcisk palca certyfikatu jest definiowany przez ciąg liczb szesnastkowych zawierających spacje dla `thumbprint` atrybutu. Liczby szesnastkowe muszą być reprezentowane przy użyciu cyfr i wielkich liter w znakach alfanumerycznych. Algorytm certyfikatu jest definiowany przez ciąg dla `thumbprintAlgorithm` atrybutu.|
+| Wystąpienia | Wymagany. Określa liczbę wystąpień do wdrożenia dla roli. Liczba wystąpień jest definiowana przez liczbę całkowitą dla atrybutu `count`.|
+| Ustawienie   | Element opcjonalny. Określa nazwę i wartość ustawienia w kolekcji ustawień dla roli. Nazwa ustawienia jest definiowana przez ciąg dla atrybutu `name` i wartość ustawienia jest definiowana przez ciąg dla atrybutu `value`.|
+| Certyfikat | Element opcjonalny. Określa nazwę, odcisk palca i algorytm certyfikatu usługi, który ma zostać skojarzony z rolą. Nazwa certyfikatu jest definiowana przez ciąg dla atrybutu `name`. Odcisk palca certyfikatu jest definiowany przez ciąg liczb szesnastkowych zawierających spacje dla atrybutu `thumbprint`. Liczby szesnastkowe muszą być reprezentowane przy użyciu cyfr i wielkich liter w znakach alfanumerycznych. Algorytm certyfikatu jest definiowany przez ciąg dla atrybutu `thumbprintAlgorithm`.|
 
 ## <a name="see-also"></a>Zobacz też
 [Schemat konfiguracji usługi w chmurze (klasycznej)](schema-cscfg-file.md)

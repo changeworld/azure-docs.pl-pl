@@ -2,36 +2,33 @@
 title: Używanie Apache Hive z programem PowerShell w usłudze HDInsight — Azure
 description: Uruchamianie zapytań Apache Hive w usłudze Apache Hadoop w usłudze Azure HDInsight przy użyciu programu PowerShell
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: 89fa7976b922ba0e40e97b72de5d4eb9a02f0dfd
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736078"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552597"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Uruchamianie zapytań Apache Hive przy użyciu programu PowerShell
+
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ten dokument zawiera przykład użycia Azure PowerShell w trybie grupy zasobów platformy Azure do uruchamiania zapytań programu Hive w Apache Hadoop klastra usługi HDInsight.
+Ten dokument zawiera przykład użycia Azure PowerShell do uruchamiania zapytań Apache Hive w Apache Hadoop w klastrze usługi HDInsight.
 
 > [!NOTE]  
 > Ten dokument nie zawiera szczegółowego opisu instrukcji HiveQL, które są używane w przykładach. Aby uzyskać informacje na temat HiveQL, który jest używany w tym przykładzie, zobacz [używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* Klaster Apache Hadoop w usłudze HDInsight. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Apache Hadoop oparte na systemie Linux w klastrze usługi HDInsight w wersji 3,4 lub nowszej.
-
-* Klient z Azure PowerShell.
-
-[!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
+* Program PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/overview) został zainstalowany.
 
 ## <a name="run-a-hive-query"></a>Uruchomienie zapytania programu Hive
 
@@ -39,13 +36,13 @@ Azure PowerShell udostępnia *polecenia cmdlet* , które umożliwiają zdalne ur
 
 Następujące polecenia cmdlet są używane podczas uruchamiania zapytań programu Hive w zdalnym klastrze usługi HDInsight:
 
-* `Connect-AzAccount`: Uwierzytelnia Azure PowerShell w ramach subskrypcji platformy Azure.
-* `New-AzHDInsightHiveJobDefinition`: Tworzy *definicję zadania* przy użyciu określonych instrukcji HiveQL.
-* `Start-AzHDInsightJob`: Wysyła definicję zadania do usługi HDInsight i uruchamia zadanie. Obiekt *zadania* jest zwracany.
-* `Wait-AzHDInsightJob`: Używa obiektu zadanie do sprawdzenia stanu zadania. Czeka na zakończenie zadania lub przekroczenie czasu oczekiwania.
-* `Get-AzHDInsightJobOutput`: Służy do pobierania danych wyjściowych zadania.
-* `Invoke-AzHDInsightHiveJob`: Służy do uruchamiania instrukcji HiveQL. To polecenie cmdlet blokuje wykonywanie zapytania, a następnie zwraca wyniki.
-* `Use-AzHDInsightCluster`: Ustawia bieżący klaster do użycia dla `Invoke-AzHDInsightHiveJob` polecenia.
+* `Connect-AzAccount`: uwierzytelnia Azure PowerShell w subskrypcji platformy Azure.
+* `New-AzHDInsightHiveJobDefinition`: tworzy *definicję zadania* przy użyciu określonych instrukcji HiveQL.
+* `Start-AzHDInsightJob`: wysyła definicję zadania do usługi HDInsight i uruchamia zadanie. Obiekt *zadania* jest zwracany.
+* `Wait-AzHDInsightJob`: używa obiektu Job do sprawdzenia stanu zadania. Czeka na zakończenie zadania lub przekroczenie czasu oczekiwania.
+* `Get-AzHDInsightJobOutput`: służy do pobierania danych wyjściowych zadania.
+* `Invoke-AzHDInsightHiveJob`: służy do uruchamiania instrukcji HiveQL. To polecenie cmdlet blokuje wykonywanie zapytania, a następnie zwraca wyniki.
+* `Use-AzHDInsightCluster`: ustawia bieżący klaster do użycia dla polecenia `Invoke-AzHDInsightHiveJob`.
 
 Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zadania w klastrze usługi HDInsight:
 
@@ -53,7 +50,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
-2. Otwórz nowy wiersz polecenia **Azure PowerShell** . Zmień katalogi na lokalizację `hivejob.ps1` pliku, a następnie użyj następującego polecenia, aby uruchomić skrypt:
+2. Otwórz nowy wiersz polecenia **Azure PowerShell** . Zmień katalogi na lokalizację pliku `hivejob.ps1`, a następnie użyj następującego polecenia, aby uruchomić skrypt:
 
         .\hivejob.ps1
 
@@ -66,7 +63,7 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
         2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
         2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
 
-4. Jak wspomniano wcześniej `Invoke-Hive` , można użyć do uruchomienia zapytania i poczekać na odpowiedź. Użyj następującego skryptu, aby zobaczyć, jak działa wywołanie programu Hive:
+4. Jak wspomniano wcześniej, `Invoke-Hive` może służyć do uruchamiania zapytania i oczekiwania na odpowiedź. Użyj następującego skryptu, aby zobaczyć, jak działa wywołanie programu Hive:
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
@@ -77,15 +74,15 @@ Poniższe kroki pokazują, jak używać tych poleceń cmdlet do uruchamiania zad
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]  
-   > Aby uzyskać dłuższe zapytania HiveQL, można użyć polecenia cmdlet Azure PowerShell **tutaj-String** lub plików skryptów HiveQL. Poniższy fragment kodu przedstawia sposób użycia `Invoke-Hive` polecenia cmdlet do uruchamiania pliku skryptu HiveQL. Plik skryptu HiveQL musi zostać przekazany do wasb://.
+   > Aby uzyskać dłuższe zapytania HiveQL, można użyć polecenia cmdlet Azure PowerShell **tutaj-String** lub plików skryptów HiveQL. Poniższy fragment kodu przedstawia sposób korzystania z polecenia cmdlet `Invoke-Hive`, aby uruchomić plik skryptu HiveQL. Plik skryptu HiveQL musi zostać przekazany do wasbs://.
    >
-   > `Invoke-AzHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+   > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
    > Aby uzyskać więcej informacji na temat **ciągów**, zobacz sekcję <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">using Windows PowerShell tutaj-Strings</a>.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli po zakończeniu zadania nie zostaną zwrócone żadne informacje, wyświetl dzienniki błędów. Aby wyświetlić informacje o błędzie dla tego zadania, Dodaj następujący element na końcu `hivejob.ps1` pliku, Zapisz go, a następnie uruchom ponownie.
+Jeśli po zakończeniu zadania nie zostaną zwrócone żadne informacje, wyświetl dzienniki błędów. Aby wyświetlić informacje o błędzie dla tego zadania, Dodaj następujący element na końcu pliku `hivejob.ps1`, Zapisz go, a następnie uruchom ponownie.
 
 ```powershell
 # Print the output of the Hive job.
@@ -110,5 +107,4 @@ Aby uzyskać ogólne informacje na temat usługi Hive w usłudze HDInsight:
 
 Aby uzyskać informacje o innych sposobach pracy z usługą Hadoop w usłudze HDInsight:
 
-* [Korzystanie z usługi Apache świni z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
 * [Używanie MapReduce z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)

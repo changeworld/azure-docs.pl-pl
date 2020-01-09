@@ -1,6 +1,6 @@
 ---
-title: Integracja produktów zabezpieczeń platformy Azure z Azure Security Center
-description: W tym temacie przedstawiono produkty zabezpieczeń platformy Azure, które zostały zintegrowane z Azure Security Center.
+title: Wykrywanie zagrożeń dla produktów zabezpieczeń platformy Azure w Azure Security Center
+description: W tym temacie przedstawiono produkty zabezpieczeń platformy Azure, dla których Azure Security Center może zapewnić wykrywanie zagrożeń
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 693e7d35a0bb4c7dfbb3e033690a5e86e2c398a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278346"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665714"
 ---
-# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integracja produktów zabezpieczeń platformy Azure w Azure Security Center
+# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection
 
-Azure Security Center zapewnia dodatkowe licencje firmy Microsoft na korzystanie z następujących produktów zabezpieczeń:
+Azure Security Center może zapewnić wykrywanie zagrożeń dla następujących produktów zabezpieczeń platformy Azure (wymagane jest oddzielną licencję dla każdego produktu):
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)
@@ -38,12 +38,4 @@ Atak DDoS polega na próbie wyczerpania zasobów aplikacji, przez co aplikacja s
 
 Azure DDoS Protection, w połączeniu z najlepszymi rozwiązaniami dotyczącymi projektowania aplikacji, należy zapewnić ochronę przed atakami DDoS. DDoS Protection oferuje różne warstwy usług. Aby uzyskać więcej informacji, zobacz [Azure DDoS Protection przegląd](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
-Standard DDoS Protection może ograniczyć ataki następujących typów:
-
-> [!div class="mx-tableFixed"]
-
-|Alerty|Opis|
-|---|---|
-|**Wykryto atak objętościowy**|Celem tego ataku jest zalanie warstwy sieci przy użyciu dużej ilości pozornie uzasadnionego ruchu. Obejmuje to zalewania protokołu UDP, zalewania wzpełnień oraz inne zalewania pakietów sfałszowanych. DDoS Protection Standard ogranicza te potencjalne ataki z obsługą wielodostępności przez przeciąganie i szybkie ich kontrolę przy użyciu globalnej skali sieci.|
-|**Wykryto atak z wykorzystaniem protokołu**|Te ataki sprawiają, że element docelowy jest niedostępny, przez wykorzystanie słabego poziomu stosów w warstwach 3 i 4. Obejmuje to ataki na zalanie, ataki na odbicie i inne ataki protokołów. DDoS Protection Standard ogranicza te ataki, różnią się od złośliwego i wiarygodnego ruchu, współpracując z klientem i blokując złośliwy ruch.|
-|**Wykryto atak na warstwę zasobów (aplikacji)**|Te ataki są docelowymi pakietami aplikacji sieci Web, aby przerwać przesyłanie danych między hostami. Ataki obejmują naruszenia protokołu HTTP, wstrzykiwanie kodu SQL, skrypty między lokacjami i inne ataki warstwy 7. Aby chronić przed atakami, Użyj usługi Azure Application Gateway WAF z opcją DDoS Protection Standard. Istnieją także oferty WAF innych firm dostępne w witrynie Azure Marketplace.|
+Listę alertów Azure DDoS Protection można znaleźć w [tabeli referencyjnej alertów](alerts-reference.md#alerts-azureddos).

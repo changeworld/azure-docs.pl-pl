@@ -1,5 +1,5 @@
 ---
-title: Plik konfiguracji biblioteki uwierzytelniania firmy Microsoft dla systemu Android | Azure
+title: Plik konfiguracji MSAL systemu Android | Azure
 titleSuffix: Microsoft identity platform
 description: Omówienie pliku konfiguracji biblioteki uwierzytelniania firmy Microsoft (MSAL) systemu Android, który reprezentuje konfigurację aplikacji w Azure Active Directory.
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424389"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Plik konfiguracji biblioteki uwierzytelniania firmy Microsoft dla systemu Android
 
@@ -342,7 +342,7 @@ Poniższy przykład ilustruje podstawową konfigurację, która określa identyf
 ## <a name="how-to-use-a-configuration-file"></a>Jak używać pliku konfiguracji
 
 1. Utwórz plik konfiguracji. Zalecamy utworzenie niestandardowego pliku konfiguracji w `res/raw/auth_config.json`. Ale możesz ją umieścić w dowolnym miejscu.
-2. Poinformuj MSAL o tym, gdzie należy wyszukać konfigurację podczas konstruowania `PublicClientApplication`. Na przykład:
+2. Poinformuj MSAL o tym, gdzie należy wyszukać konfigurację podczas konstruowania `PublicClientApplication`. Przykład:
 
    ```java
    //On Worker Thread

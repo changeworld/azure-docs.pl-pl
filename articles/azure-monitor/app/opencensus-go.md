@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819269"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432556"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Zbierz rozproszone dane śledzenia z języka go (wersja zapoznawcza)
 
@@ -43,7 +43,7 @@ Najpierw należy utworzyć zasób Application Insights, który spowoduje wygener
 
    Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
-    | Ustawienia        | Wartość           | Opis  |
+   | Ustawienia        | Wartość           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
@@ -53,7 +53,7 @@ Najpierw należy utworzyć zasób Application Insights, który spowoduje wygener
 
 ## <a name="configure-local-forwarder"></a>Konfigurowanie usługi przesyłania dalej lokalnego
 
-1. Wybierz pozycję **Przegląd**  >  **Podstawy** i skopiuj **klucz instrumentacji** aplikacji.
+1. Wybierz pozycję **Przegląd** > **Podstawy** i skopiuj **klucz instrumentacji** aplikacji.
 
    ![Zrzut ekranu klucza Instrumentacji](./media/opencensus-Go/0003-instrumentation-key.png)
 

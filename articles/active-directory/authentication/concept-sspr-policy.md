@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425319"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady i ograniczenia haseł w usłudze Azure Active Directory
 
@@ -54,7 +54,7 @@ Zasady dwóch bram wymagają dwóch danych uwierzytelniania, takich jak **adres 
   * Administrator uprzywilejowanego uwierzytelniania
 
 * W przypadku upływu 30 dni od subskrypcji próbnej oraz
-* Domena znaczącym jest obecna, na przykład contoso.com; oraz
+* Skonfigurowano domenę niestandardową dla dzierżawy usługi Azure AD, np. *contoso.com*; oraz
 * Azure AD Connect synchronizuje tożsamości z katalogu lokalnego
 
 ### <a name="exceptions"></a>Wyjątki
@@ -62,7 +62,7 @@ Zasady dwóch bram wymagają dwóch danych uwierzytelniania, takich jak **adres 
 Zasady pojedynczej bramy wymagają jednej części danych uwierzytelniania, takich jak adres e-mail *lub* numer telefonu. Zasady pojedynczej bramy są stosowane w następujących okolicznościach:
 
 * Jest to w ciągu pierwszych 30 dni subskrypcji wersji próbnej; oraz
-* Domena znaczącym nie jest obecna (*. onmicrosoft.com); lub
+* Domena niestandardowa nie została skonfigurowana dla dzierżawy usługi Azure AD, więc jest używana wartość domyślna * *. onmicrosoft.com*. Należy pamiętać, że domyślna domena * *. onmicrosoft.com* nie jest zalecana do użycia w środowisku produkcyjnym; lub
 * Azure AD Connect nie synchronizuje tożsamości
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Zasady UserPrincipalName mające zastosowanie do wszystkich kont użytkowników

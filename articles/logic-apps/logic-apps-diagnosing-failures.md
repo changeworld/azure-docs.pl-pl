@@ -1,17 +1,17 @@
 ---
-title: Rozwiązywanie problemów i Diagnozowanie błędów
-description: Dowiedz się, jak rozwiązywać problemy i diagnozować błędy przepływu pracy w programie Azure Logic Apps
+title: Rozwiązywanie problemów i Diagnozowanie błędów przepływu pracy
+description: Dowiedz się, jak rozwiązywać problemy, błędy i błędy w przepływach pracy w programie Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790765"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666809"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Rozwiązywanie problemów i Diagnozowanie błędów przepływu pracy w Azure Logic Apps
 
@@ -91,7 +91,7 @@ Każdy uruchamiany wyzwalacz uruchamia przebieg przepływu pracy. Możesz sprawd
 
    ![Wyświetlanie szczegółów uruchomienia aplikacji logiki](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Aby przeanalizować dane wejściowe, wyjściowe i wszystkie komunikaty o błędach dla określonego kroku, należy wybrać ten krok, aby kształt rozszerzał i pokazywał szczegóły. Na przykład:
+3. Aby przeanalizować dane wejściowe, wyjściowe i wszystkie komunikaty o błędach dla określonego kroku, należy wybrać ten krok, aby kształt rozszerzał i pokazywał szczegóły. Przykład:
 
    ![Wyświetlanie szczegółów kroku](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 

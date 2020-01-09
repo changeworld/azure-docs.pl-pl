@@ -3,12 +3,12 @@ title: Używanie parametrów do tworzenia planów dynamicznych
 description: Poznaj parametry statyczne i dynamiczne oraz sposób ich używania do tworzenia bezpiecznych i dynamicznych planów.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128938"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644974"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych planów za poorednictwem parametrów
 
@@ -40,7 +40,7 @@ Jeśli przypisanie planu używa **tożsamości zarządzanej przypisanej do syste
 Jeśli przypisanie planu używa **tożsamości zarządzanej przypisanej przez użytkownika**, przywoływane Key Vault _mogą_ istnieć w scentralizowanej subskrypcji. Tożsamość zarządzana musi mieć przyznane odpowiednie prawa na Key Vault przed przypisaniem planu.
 
 > [!IMPORTANT]
-> W obu przypadkach Key Vault musi mieć **włączony dostęp do Azure Resource Manager dla wdrożenia szablonu** skonfigurowanego na stronie **zasady dostępu** . Aby uzyskać instrukcje dotyczące włączania tej funkcji, zobacz [Key Vault-Enable Template Deployment](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> W obu przypadkach Key Vault musi mieć **włączony dostęp do Azure Resource Manager dla wdrożenia szablonu** skonfigurowanego na stronie **zasady dostępu** . Aby uzyskać instrukcje dotyczące włączania tej funkcji, zobacz [Key Vault-Enable Template Deployment](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
 Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [Key Vault Omówienie](../../../key-vault/key-vault-overview.md).
 

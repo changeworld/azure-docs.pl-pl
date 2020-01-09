@@ -1,26 +1,15 @@
 ---
-title: Integrowanie usługi API Management z usługą Service Fabric na platformie Azure | Microsoft Docs
+title: Integracja API Management z Service Fabric na platformie Azure
 description: Dowiedz się, jak szybko rozpocząć pracę z usługą Azure API Management i kierować ruchem do usługi zaplecza w programie Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465354"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integracja API Management z Service Fabric na platformie Azure
 
@@ -43,11 +32,11 @@ Przed rozpoczęciem:
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Zainstaluj program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Utwórz bezpieczny [klaster systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) w sieciowej grupie zabezpieczeń.
-* W przypadku wdrażania klastra systemu Windows skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com) oraz wieloplatformowe obciążenia programistyczne **platformy Azure**, **ASP.NET i Web Development**oraz **platformy .NET Core** .  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
+* W przypadku wdrażania klastra systemu Windows skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com) oraz **wieloplatformowe obciążenia programistyczne** **platformy Azure**, **ASP.NET i Web Development**oraz platformy .NET Core.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
 
 ## <a name="network-topology"></a>Topologia sieci
 
-Teraz, gdy masz bezpieczny [klaster systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure, wdróż API Management w sieci wirtualnej (VNET) w podsieci i sieciowej grupy zabezpieczeń Wyznaczeni dla API Management. W tym artykule szablon Menedżer zasobów API Management jest wstępnie skonfigurowany do używania nazw sieci wirtualnej, podsieci i sieciowej grupy zabezpieczeń, które zostały skonfigurowane w [samouczku klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) , w tym artykule opisano wdrażanie następującej topologii na platformie Azure, w której API Management i Service Fabric znajdują się w podsieciach tego samego Virtual Network:
+Teraz, gdy masz bezpieczny [klaster systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure, wdróż API Management w sieci wirtualnej (VNET) w podsieci i sieciowej grupy zabezpieczeń Wyznaczeni dla API Management. W tym artykule szablon Menedżer zasobów API Management jest wstępnie skonfigurowany do używania nazw sieci wirtualnej, podsieci i sieciowej grupy zabezpieczeń, które zostały skonfigurowane w [samouczku klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . w tym artykule opisano następujące topologie na platformie Azure, w których API Management i Service Fabric znajdują się w podsieciach tego samego Virtual Network:
 
  ![Podpis pod obrazem][sf-apim-topology-overview]
 
@@ -158,7 +147,7 @@ Aby dodać operację interfejsu API frontonu, podaj następujące wartości:
 
 * Pola **displayName** i **description** opisują operację. Na potrzeby tego artykułu Użyj "wartości".
 * Pole **method** określa polecenie HTTP.  W tym artykule określ polecenie **Get**.
-* Wartość pola **urlTemplate** jest dołączana do podstawowego adresu URL interfejsu API i określa pojedynczą operację HTTP.  W tym artykule należy użyć `/api/values` , jeśli dodano usługę zaplecza platformy .NET `getMessage` lub dodano usługę zaplecza Java.  Określona tutaj ścieżka URL jest domyślnie wysyłana do usługi Service Fabric zaplecza. W przypadku podania ścieżki URL używanej przez usługę, takiej jak „/api/values”, operacja działa bez dodatkowych modyfikacji. Można również podać ścieżkę URL, która różni się od ścieżki URL używanej przez usługę Service Fabric zaplecza. W takim przypadku należy później określić nadpisanie ścieżki w zasadach operacji.
+* Wartość pola **urlTemplate** jest dołączana do podstawowego adresu URL interfejsu API i określa pojedynczą operację HTTP.  W tym artykule Użyj `/api/values`, jeśli dodano usługę zaplecza platformy .NET lub `getMessage`, jeśli dodano usługę zaplecza Java.  Określona tutaj ścieżka URL jest domyślnie wysyłana do usługi Service Fabric zaplecza. W przypadku podania ścieżki URL używanej przez usługę, takiej jak „/api/values”, operacja działa bez dodatkowych modyfikacji. Można również podać ścieżkę URL, która różni się od ścieżki URL używanej przez usługę Service Fabric zaplecza. W takim przypadku należy później określić nadpisanie ścieżki w zasadach operacji.
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 

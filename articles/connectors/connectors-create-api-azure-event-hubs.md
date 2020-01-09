@@ -1,18 +1,18 @@
 ---
 title: Nawiązywanie połączenia z usługą Azure Event Hubs
-description: Zarządzanie zdarzeniami i monitorowanie ich przy użyciu usługi Azure Event Hubs i Azure Logic Apps
+description: Twórz zautomatyzowane zadania i przepływy pracy, które monitorują zdarzenia i zarządzają nimi przy użyciu usługi Azure Event Hubs i Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446162"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitoruj, odbieraj i wysyłaj zdarzenia za pomocą usługi Azure Event Hubs i Azure Logic Apps
 
@@ -76,7 +76,7 @@ Ten przykład pokazuje, jak uruchomić przepływ pracy aplikacji logiki, gdy do 
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa centrum zdarzeń** | Tak | Nazwa centrum zdarzeń, które ma być monitorowane. |
+   | **Nazwa Centrum zdarzeń** | Tak | Nazwa centrum zdarzeń, które ma być monitorowane. |
    | **Typ zawartości** | Nie | Typ zawartości zdarzenia. Wartość domyślna to `application/octet-stream`. |
    | **Nazwa grupy konsumentów** | Nie | [Nazwa grupy konsumentów centrum zdarzeń](../event-hubs/event-hubs-features.md#consumer-groups) , która ma być używana do odczytywania zdarzeń. Jeśli nie zostanie określony, zostanie użyta domyślna grupa odbiorców. |
    | **Maksymalna liczba zdarzeń** | Nie | Maksymalna liczba zdarzeń. Wyzwalacz zwraca między jedną i liczbą zdarzeń określonych przez tę właściwość. |
@@ -132,9 +132,9 @@ Z listy Akcje wybierz pozycję Ta akcja: **Wyślij Zdarzenie — Event Hubs**
 
    | Właściwość | Wymagane | Opis |
    |----------|----------|-------------|
-   | **Nazwa centrum zdarzeń** | Tak | Centrum zdarzeń, w którym chcesz wysłać zdarzenie |
+   | **Nazwa Centrum zdarzeń** | Tak | Centrum zdarzeń, w którym chcesz wysłać zdarzenie |
    | **Zawartość** | Nie | Zawartość dla zdarzenia, które chcesz wysłać. |
-   | **Aœciwoœci** | Nie | Właściwości i wartości aplikacji do wysłania |
+   | **Właściwości** | Nie | Właściwości i wartości aplikacji do wysłania |
    | **Klucz partycji** | Nie | Identyfikator [partycji](../event-hubs/event-hubs-features.md#partitions) , dla której ma zostać wysłane zdarzenie |
    ||||
 
@@ -155,10 +155,10 @@ Z listy Akcje wybierz pozycję Ta akcja: **Wyślij Zdarzenie — Event Hubs**
    | Właściwość | Wymagane | Wartość | Opis |
    |----------|----------|-------|-------------|
    | **Nazwa połączenia** | Tak | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
-   | **Event Hubs przestrzeń nazw** | Tak | <*zdarzeń — centra nazw*> | Wybierz przestrzeń nazw Event Hubs, której chcesz użyć. |
+   | **Event Hubs przestrzeń nazw** | Tak | <*event-hubs-namespace*> | Wybierz przestrzeń nazw Event Hubs, której chcesz użyć. |
    |||||  
 
-   Na przykład:
+   Przykład:
 
    ![Utwórz połączenie centrum zdarzeń](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 

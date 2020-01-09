@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435393"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Przesyłanie strumieniowe na dużą skalę w usłudze HDInsight
 
@@ -37,7 +37,7 @@ Aby uzyskać więcej informacji, zobacz [co to jest Apache Storm w usłudze Azur
 
 ## <a name="spark-streaming"></a>Przesyłanie strumieniowe Spark
 
-Przetwarzanie strumieniowe Spark to rozszerzenie platformy Spark, które umożliwia ponowne użycie tego samego kodu, który jest używany do przetwarzania wsadowego. W tej samej aplikacji można łączyć zarówno zapytania wsadowe, jak i interakcyjne. W przeciwieństwie do burzy, przesyłanie strumieniowe Spark zapewnia bezstanową semantykę przetwarzania. Gdy jest używany w połączeniu z [interfejsem API Direct Kafka](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), co zapewnia, że wszystkie dane Kafka są odbierane przez funkcję przesyłania strumieniowego usługi Spark dokładnie jeden raz, można osiągnąć kompleksowe gwarancje dokładnie jednokrotnie. Jedną z mocnych funkcji przesyłania strumieniowego platformy Spark jest funkcja odporna na uszkodzenia, która umożliwia szybkie odzyskiwanie węzłów o błędach w przypadku używania wielu węzłów w klastrze.
+Przetwarzanie strumieniowe Spark to rozszerzenie platformy Spark, które umożliwia ponowne użycie tego samego kodu, który jest używany do przetwarzania wsadowego. W tej samej aplikacji można łączyć zarówno zapytania wsadowe, jak i interakcyjne. W przeciwieństwie do burzy, przesyłanie strumieniowe w usłudze Spark zapewnia bezstanowe przetwarzanie semantyki. Gdy jest używany w połączeniu z [interfejsem API Direct Kafka](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), który zapewnia, że wszystkie dane Kafka są odbierane przez funkcję przesyłania strumieniowego usługi Spark dokładnie jeden raz, możliwe jest osiągnięcie kompleksowych danych. Jedną z mocnych funkcji przesyłania strumieniowego platformy Spark jest funkcja odporna na uszkodzenia, która umożliwia szybkie odzyskiwanie węzłów o błędach w przypadku używania wielu węzłów w klastrze.
 
 Aby uzyskać więcej informacji, zobacz [co to jest Apache Spark Streaming?](hdinsight-spark-streaming-overview.md).
 
@@ -49,7 +49,7 @@ Istnieją zalety oddzielania technologii. Na przykład Kafka jest technologią b
 
 ### <a name="scale-the-stream-buffering-layer"></a>Skalowanie warstwy buforowania strumienia
 
-Technologie buforowania strumienia Event Hubs i Kafka obu używają partycji, a konsumenci odczytują te partycje. Skalowanie przepływności danych wejściowych wymaga skalowania w górę liczby partycji, a Dodawanie partycji umożliwia zwiększenie równoległości. W Event Hubs nie można zmienić liczby partycji po wdrożeniu, dlatego ważne jest, aby zacząć od docelowej skali. Za pomocą Kafka można [dodawać partycje](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), nawet gdy Kafka przetwarza dane. Kafka udostępnia narzędzie do ponownego przypisywania partycji `kafka-reassign-partitions.sh`. Usługa HDInsight udostępnia [Narzędzie ponownego równoważenia repliki partycji](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. To narzędzie do ponownego równoważenia wywołuje `kafka-reassign-partitions.sh` narzędzie w taki sposób, że każda replika znajduje się w oddzielnej domenie błędów i domenie aktualizacji, co sprawia, że Kafka stojaka i zwiększa odporność na uszkodzenia.
+Technologie buforowania strumienia Event Hubs i Kafka obu używają partycji, a konsumenci odczytują te partycje. Skalowanie przepływności danych wejściowych wymaga skalowania w górę liczby partycji, a Dodawanie partycji umożliwia zwiększenie równoległości. W Event Hubs nie można zmienić liczby partycji po wdrożeniu, dlatego ważne jest, aby zacząć od docelowej skali. Za pomocą Kafka można [dodawać partycje](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)nawet wtedy, gdy Kafka przetwarza dane. Kafka udostępnia narzędzie do ponownego przypisywania partycji, `kafka-reassign-partitions.sh`. Usługa HDInsight udostępnia [Narzędzie ponownego równoważenia repliki partycji](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. To narzędzie do ponownego równoważenia wywołuje narzędzie `kafka-reassign-partitions.sh` w taki sposób, że każda replika znajduje się w oddzielnej domenie błędów i domenie aktualizacji, co sprawia, że Kafka stojaka i zwiększa odporność na uszkodzenia.
 
 ### <a name="scale-the-stream-processing-layer"></a>Skalowanie warstwy przetwarzania strumienia
 
@@ -57,7 +57,7 @@ Zarówno Apache Storm, jak i obsługa przesyłania strumieniowego Spark Dodawani
 
 Aby skorzystać z nowych węzłów dodanych poprzez skalowanie burzy, należy ponownie zrównoważyć wszystkie topologie burzy uruchomione przed zwiększeniem rozmiaru klastra. To ponowne zrównoważenie można wykonać za pomocą interfejsu użytkownika sieci Web burzy lub jego interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz [dokumentację Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-Apache Spark używa trzech kluczowych parametrów do konfigurowania środowiska, w zależności od wymagań aplikacji: `spark.executor.instances`, `spark.executor.cores`i `spark.executor.memory`. Program *wykonujący* to proces, który jest uruchamiany dla aplikacji Spark. Program wykonujący działa w węźle procesu roboczego i jest odpowiedzialny za wykonywanie zadań aplikacji. Domyślna liczba modułów wykonujących i rozmiary wykonawców dla każdego klastra są obliczane na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Te liczby są przechowywane w `spark-defaults.conf`pliku w każdym węźle głównym klastra.
+Apache Spark używa trzech kluczowych parametrów do konfigurowania środowiska, w zależności od wymagań aplikacji: `spark.executor.instances`, `spark.executor.cores`i `spark.executor.memory`. Program *wykonujący* to proces, który jest uruchamiany dla aplikacji Spark. Program wykonujący działa w węźle procesu roboczego i jest odpowiedzialny za wykonywanie zadań aplikacji. Domyślna liczba modułów wykonujących i rozmiary wykonawców dla każdego klastra są obliczane na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Te liczby są przechowywane w pliku `spark-defaults.conf`w każdym węźle głównym klastra.
 
 Te trzy parametry można skonfigurować na poziomie klastra dla wszystkich aplikacji uruchamianych w klastrze, a także dla każdej pojedynczej aplikacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami dla klastrów Apache Spark](spark/apache-spark-resource-manager.md).
 

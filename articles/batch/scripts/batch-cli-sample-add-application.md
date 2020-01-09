@@ -1,6 +1,6 @@
 ---
-title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — dodawanie aplikacji w usłudze Batch | Microsoft Docs
-description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — dodawanie aplikacji w usłudze Batch
+title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — dodawanie aplikacji w usłudze Batch
+description: Ten przykładowy skrypt pokazuje, jak dodać aplikację do użycia z pulą Azure Batch lub zadaniem.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: ba7f64910e033751df7d158a6fddf36371f2933f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9c580fa7ed4834ca516d373b3c7bb47f4cfd1b38
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322241"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390465"
 ---
-# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Przykład użycia interfejsu wiersza polecenia: Dodawanie aplikacji do konta usługi Azure Batch
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Przykład interfejsu wiersza polecenia: dodawanie aplikacji do konta usługi Azure Batch
 
 Ten skrypt demonstruje sposób dodawania aplikacji do użycia z pulą lub zadaniem podrzędnym usługi Azure Batch. Aby skonfigurować aplikację w celu dodania jej do konta usługi Batch, spakuj plik wykonywalny razem ze wszystkimi zależnościami do pliku zip. 
 

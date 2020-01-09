@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 1b619ca7bb3b095a5707077beb3e0750dee1c2b7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f7ad05402745f17ff60dbaab8d736acc8f92196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923479"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439404"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 
@@ -169,7 +169,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
       - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
       - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę grupy zasobów.   
          
-        Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
+        Informacje na temat grup zasobów znajdują się w artykule [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Używanie grup zasobów do zarządzania zasobami platformy Azure).  
 4. Wybierz wartość **V2 (wersja zapoznawcza)** dla **wersji**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
@@ -188,7 +188,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
 Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów danych i usług obliczeniowych z fabryką danych. W tej sekcji utworzysz usługi połączone ze swoim kontem usługi Azure Storage i bazą danych Azure SQL Database. 
 
-### <a name="create-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage.
+### <a name="create-azure-storage-linked-service"></a>Utwórz połączoną usługę Azure Storage.
 W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 
 1. Kliknij kolejno pozycje **Połączenia** i **+ Nowy**.
@@ -201,7 +201,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 
     1. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**. 
     2. W polu **Nazwa konta magazynu** wybierz konto usługi Azure Storage. 
-    3. Kliknij przycisk **Save** (Zapisz). 
+    3. Kliknij pozycję **Zapisz**. 
     
    ![Ustawienia konta usługi Azure Storage](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430850"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 
@@ -36,7 +36,7 @@ Polecenia cmdlet są częścią modułu Azure Active Directory PowerShell V2. Ab
 
 ## <a name="install-powershell-cmdlets"></a>Instalowanie poleceń cmdlet programu PowerShell
 
-Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory PowerShell dla programu Graph z programu Windows PowerShell i zainstalować moduł [Azure Active Directory PowerShell dla programu Graph w publicznej wersji zapoznawczej 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) przed uruchomieniem poleceń programu PowerShell.
+Pamiętaj, aby odinstalować wszystkie starsze wersje modułu Azure Active Directory PowerShell for Graph dla środowiska Windows PowerShell i zainstalować program [Azure Active Directory PowerShell dla programu Graph — publiczna wersja zapoznawcza (nowsza niż 2.0.0.137)](https://www.powershellgallery.com/packages/AzureADPreview) przed uruchomieniem poleceń programu PowerShell.
 
 1. Otwórz aplikację Windows PowerShell jako administrator.
 2. Odinstaluj poprzednią wersję programu AzureADPreview.
@@ -53,7 +53,7 @@ Pamiętaj, aby odinstalować starszą wersję modułu Azure Active Directory Pow
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Tworzenie ustawień na poziomie katalogu
-Te kroki umożliwiają utworzenie ustawień na poziomie katalogu, które mają zastosowanie do wszystkich grup pakietu Office 365 w katalogu. Polecenie cmdlet Get-AzureADDirectorySettingTemplate jest dostępne tylko w [module programu Azure AD PowerShell w wersji zapoznawczej dla programu Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+Te kroki umożliwiają utworzenie ustawień na poziomie katalogu, które mają zastosowanie do wszystkich grup pakietu Office 365 w katalogu. Polecenie cmdlet Get-AzureADDirectorySettingTemplate jest dostępne tylko w [module programu Azure AD PowerShell w wersji zapoznawczej dla programu Graph](https://www.powershellgallery.com/packages/AzureADPreview).
 
 1. W poleceniach cmdlet obiektów directorysettings należy określić identyfikator SettingsTemplate, który ma być używany. Jeśli nie znasz tego identyfikatora, to polecenie cmdlet zwróci listę wszystkich szablonów ustawień:
   
@@ -76,12 +76,13 @@ Te kroki umożliwiają utworzenie ustawień na poziomie katalogu, które mają z
 2. Aby dodać adres URL wytycznych użytkowania, najpierw należy uzyskać obiekt SettingsTemplate, który definiuje wartość adresu URL dla wskazówki dotyczące użycia; oznacza to, że szablon grupy. ujednolicony:
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. Następnie utwórz nowy obiekt ustawień na podstawie tego szablonu:
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. Następnie zaktualizuj wartość wskazówki dotyczące użycia:
   
@@ -91,22 +92,57 @@ Te kroki umożliwiają utworzenie ustawień na poziomie katalogu, które mają z
 5. Następnie Zastosuj ustawienie:
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. Można odczytać wartości przy użyciu:
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>Aktualizowanie ustawień na poziomie katalogu
-Aby zaktualizować wartość dla UsageGuideLinesUrl w szablonie ustawienia, po prostu Edytuj adres URL w kroku 4 powyżej, a następnie wykonaj krok 5, aby ustawić nową wartość.
+Aby zaktualizować wartość dla UsageGuideLinesUrl w szablonie ustawienia, zapoznaj się z bieżącymi ustawieniami z usługi Azure AD. w przeciwnym razie możemy zakończyć zastąpienie istniejących ustawień innych niż UsageGuideLinesUrl.
 
-Aby usunąć wartość UsageGuideLinesUrl, Edytuj adres URL tak, aby był pustym ciągiem, w kroku 4 powyżej:
-
+1. Pobierz bieżące ustawienia z grupy. ujednolicony SettingsTemplate:
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. Sprawdź bieżące ustawienia:
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   Dane wyjściowe:
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. Aby usunąć wartość UsageGuideLinesUrl, Edytuj adres URL jako pusty ciąg:
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-Następnie wykonaj krok 5, aby ustawić nową wartość.
+4. Zapisz aktualizację do katalogu:
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>Ustawienia szablonu
 Oto ustawienia zdefiniowane w grupie. ujednolicone SettingsTemplate. O ile nie wskazano inaczej, te funkcje wymagają licencji na Azure Active Directory — wersja Premium P1. 

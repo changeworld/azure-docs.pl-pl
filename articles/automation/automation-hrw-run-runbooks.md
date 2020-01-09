@@ -2,19 +2,15 @@
 title: Uruchamianie elementów Runbook na Azure Automation hybrydowego procesu roboczego elementu Runbook
 description: Ten artykuł zawiera informacje na temat uruchamiania elementów Runbook na maszynach w lokalnym centrum danych lub dostawcy chmury z rolą hybrydowego procesu roboczego elementu Runbook.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/29/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c8da5736869a39815d9abf33cf4a03353681b193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac31783f0eb270823b71c86cc8d7f0975d3a586a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849721"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452265"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -141,7 +137,6 @@ This allows the use of the AzureRunAsConnection to authenticate to Azure and man
 .\Export-RunAsCertificateToHybridWorker
 
 .NOTES
-AUTHOR: Azure Automation Team
 LASTEDIT: 2016.10.13
 #>
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: 2a22039b3499f1ba0f2d7acb2e86a1991d35a380
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202122"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665772"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Zarządzanie zdarzeniami zabezpieczeń w Azure Security Center
 
@@ -55,7 +55,7 @@ Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasob
 W poniższych tematach opisano, jak Security Center używa różnych danych telemetrycznych zbieranych z integracji z infrastrukturą platformy Azure w celu zastosowania dodatkowych warstw ochrony dla zasobów wdrożonych na platformie Azure:
 
 * [Alerty warstwy usług](security-center-alerts-service-layer.md)
-* [Integracja z produktami zabezpieczeń platformy Azure](security-center-alerts-integration.md)
+* [Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection](security-center-alerts-integration.md)
 
 ## <a name="see-also"></a>Zobacz także
 W tym dokumencie przedstawiono sposób użycia funkcji zdarzeń naruszenia zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: c40c4cf9f25ce17bc7042191324aeb864696995f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 50608365adcef47971a18589dce3a07abbeb7e8b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074583"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640554"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurowanie kończenia połączeń SSL z certyfikatami Key Vault przy użyciu Azure PowerShell
 
@@ -65,10 +65,13 @@ Set-AzKeyVaultAccessPolicy -VaultName $kv -PermissionsToSecrets get -ObjectId $i
 $policy = New-AzKeyVaultCertificatePolicy -ValidityInMonths 12 `
   -SubjectName "CN=www.contoso11.com" -IssuerName self `
   -RenewAtNumberOfDaysBeforeExpiry 30
+Set-AzKeyVaultAccessPolicy -VaultName $kv -EmailAddress <your email address> -PermissionsToCertificates create,get,list
 $certificate = Add-AzKeyVaultCertificate -VaultName $kv -Name "cert1" -CertificatePolicy $policy
 $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
+> [!NOTE]
+> Flaga-EnableSoftDelete musi być używana do poprawnego działania protokołu SSL.
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 

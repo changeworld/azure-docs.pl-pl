@@ -1,21 +1,21 @@
 ---
 title: 'Szybki Start: sprawdzanie pisowni za pomocą interfejsu API REST i środowiska Node. js — sprawdzanie pisowni Bing'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij korzystanie z interfejsu API REST sprawdzania pisowni Bing, aby sprawdzać pisownię i poprawność gramatyczną.
+description: Rozpocznij pracę z interfejsem API REST sprawdzanie pisowni Bing, aby sprawdzić pisownię i gramatykę w tym przewodniku Szybki Start.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: aahill
-ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382862"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Szybki Start: sprawdzanie pisowni przy użyciu interfejsu API REST sprawdzanie pisowni Bing i środowiska Node. js
 
@@ -30,7 +30,7 @@ Użyj tego przewodnika Szybki start, aby wykonać pierwsze wywołanie interfejsu
 
 ## <a name="create-and-initialize-a-project"></a>Tworzenie i inicjowanie projektu
 
-1. Utwórz nowy plik JavaScript w ulubionym środowisku IDE lub edytorze. Ustaw rygorystyczność i wymagaj `https`. Następnie utwórz zmienne dla hosta punktu końcowego interfejsu API, ścieżki i klucza subskrypcji.
+1. Utwórz nowy plik JavaScript w ulubionym środowisku IDE lub edytorze. Ustaw rygorystyczność i wymagaj `https`. Następnie utwórz zmienne dla hosta punktu końcowego interfejsu API, ścieżki i klucza subskrypcji. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
     ```javascript
     'use strict';
@@ -96,6 +96,18 @@ let req = https.request (request_params, response_handler);
 req.write ("text=" + text);
 req.end ();
 ```
+
+
+## <a name="run-the-application"></a>Uruchamianie aplikacji
+
+Skompiluj i Uruchom projekt.
+
+Jeśli używasz wiersza polecenia, użyj następujących poleceń, aby skompilować i uruchomić aplikację.
+
+```bash
+node <FILE_NAME>.js
+```
+
 
 ## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 

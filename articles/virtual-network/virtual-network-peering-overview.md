@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 59854d7d46f533510bea97a6845554fc0ce83dbb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328348"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646748"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -91,7 +91,7 @@ Następujące ograniczenia mają zastosowanie tylko wtedy, gdy sieci wirtualne s
 * Zasoby w jednej sieci wirtualnej nie mogą komunikować się z adresem IP frontonu podstawowego wewnętrznego Load Balancer (ILB) w wirtualnej sieci równorzędnej.
 * Niektóre usługi korzystające z podstawowego modułu równoważenia obciążenia nie działają w przypadku globalnej komunikacji równorzędnej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [jakie są ograniczenia dotyczące globalnej komunikacji równorzędnej sieci wirtualnej i modułów równoważenia obciążenia?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
-Aby uzyskać więcej informacji, zobacz [wymagania i ograniczenia](virtual-network-manage-peering.md#requirements-and-constraints). Aby dowiedzieć się więcej o obsługiwanej liczbie komunikacji równorzędnej, zobacz [limity dotyczące sieci](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Aby uzyskać więcej informacji, zobacz [wymagania i ograniczenia](virtual-network-manage-peering.md#requirements-and-constraints). Aby dowiedzieć się więcej o obsługiwanej liczbie komunikacji równorzędnej, zobacz [limity dotyczące sieci](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="permissions"></a>Uprawnienia
 

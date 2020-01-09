@@ -7,18 +7,18 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 90aec113661405f9a68d70a43d90523c1fb2376b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad4babc68f39851beeb3a5c46d295a3342c63026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795616"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453204"
 ---
-# <a name="azure-cognitive-services-to-solve-business-problems-using-artificial-intelligence"></a>Platforma Azure Cognitive Services do rozwiązywania problemów z firmą przy użyciu sztucznej analizy
-[Usługa Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) oferuje zaawansowane usługi umożliwiające Dodaj aplikacji przy użyciu inteligentnych algorytmów, aby zobaczyć, słyszeć, mówić, zrozumieć i interpretować potrzebę użytkownika do przekształcenia Twojej firmy z ai. Aplikacje mobilne można tworzyć w sposób inteligentny, atrakcyjny i kontekstowy dla użytkowników. Interfejsy API, zestawy SDK i usługi umożliwiają deweloperom Dodawanie AI do ich oferty i ułatwiają tworzenie inteligentnych aplikacji bez konieczności bezpośredniego uzyskania umiejętności w zakresie AI lub nauki o danych.
+# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Cognitive Services pomaga rozwiązywać problemy biznesowe przy użyciu AI
+[Usługa Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) oferuje zaawansowane usługi umożliwiające Dodaj aplikacji przy użyciu inteligentnych algorytmów, aby zobaczyć, słyszeć, mówić, zrozumieć i interpretować, że użytkownik musi przekształcić swoją firmę przy użyciu sztucznej analizy (AI). Aplikacje mobilne można tworzyć w sposób inteligentny, atrakcyjny i kontekstowy dla użytkowników. Deweloperzy mogą korzystać z interfejsów API, zestawów SDK i usług, aby dodać AI do ich ofert i pomóc w tworzeniu inteligentnych aplikacji bez konieczności bezpośredniego korzystania z usługi AI lub nauki o danych.
 
 ## <a name="cognitive-services-capabilities"></a>Możliwości Cognitive Services
-- **Została**
+- **Wizja**
     - Znakowanie obrazu, miniatury
     - OCR (rozpoznawanie pisma ręcznego)
     - Wykrywanie twarzy
@@ -27,7 +27,7 @@ ms.locfileid: "72795616"
     - Moderowanie obrazów i wideo
     - Rozpoznawanie obrazu niestandardowego
 
-- **Narzędzia**
+- **Mowa**
     - Zamiana mowy na tekst (transkrypcja mowy)
     - Dostosowany transkrypcja mowy (złożone słowa, środowisko z zakłóceniami)
     - Zamiana tekstu na mowę
@@ -35,7 +35,7 @@ ms.locfileid: "72795616"
     - Tłumaczenie mowy w czasie rzeczywistym
 
 - **Język**
-    - Zrozumienie języka kontekstowego — dostosowana analiza przeznaczenie
+    - Interpretacja języka kontekstowego, dostosowana analiza założeń
     - Analiza tonacji, wykrywanie fraz kluczy
     - Tłumaczenie tekstu do 60 języków
     - Moderowanie tekstu
@@ -52,11 +52,11 @@ ms.locfileid: "72795616"
     - Kompleksowe wyszukiwanie w postaci obszernych wiadomości, obrazów, wideo, sieci Web i lokalnych jednostek gospodarczych
     - Dostosowane i dostosowane środowiska wyszukiwania
 
-- Obsługa **kontenerów** dla Cognitive Services
+- Obsługa kontenerów dla Cognitive Services
 
  ## <a name="references"></a>Informacje
    - [Azure Portal](https://portal.azure.com) 
-   - [Łączoną](/azure/cognitive-services/welcome)
+   - [Dokumentacja usług Cognitive Services](/azure/cognitive-services/welcome)
    - [Przewodniki Szybki start](/azure/cognitive-services/cognitive-services-apis-create-account)
    - [Obsługa kontenerów](/azure/cognitive-services/cognitive-services-container-support)
    - [Przewodniki Szybki start](/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)

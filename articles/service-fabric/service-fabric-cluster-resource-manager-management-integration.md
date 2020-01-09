@@ -1,25 +1,16 @@
 ---
-title: Service Fabric Menedżer zasobów klastra — Integracja zarządzania | Microsoft Docs
+title: Menedżer zasobów klastra — Integracja zarządzania
 description: Przegląd punktów integracji między Menedżer zasobów klastra a zarządzaniem Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196492"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614625"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integracja z usługą Resource Manager za pomocą Service Fabric zarządzania klastrami
 Menedżer zasobów klastra Service Fabric nie ma na dysku uaktualnień w Service Fabric, ale jest to konieczne. Pierwszy sposób, w jaki klaster Menedżer zasobów pomaga zarządzać, to śledzenie żądanego stanu klastra i usług w nim. Klaster Menedżer zasobów wysyła raporty kondycji, gdy nie można umieścić klastra w żądanej konfiguracji. Na przykład jeśli nie ma wystarczającej pojemności, klaster Menedżer zasobów wysyła ostrzeżenia dotyczące kondycji i błędy wskazujące problem. Inna część integracji polega na tym, jak działają uaktualnienia. Klaster Menedżer zasobów nieco zmienia zachowanie podczas uaktualnień.  

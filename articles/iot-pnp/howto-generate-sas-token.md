@@ -3,17 +3,17 @@ title: Generuj token zabezpieczający, aby uzyskać dostęp do repozytorium IoT 
 description: Generuj token sygnatury dostępu współdzielonego, który będzie używany podczas programistycznego uzyskiwania dostępu do repozytorium modeli Plug and Play IoT.
 author: Philmea
 ms.author: philmea
-ms.date: 08/06/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2530c5b3561ad90eac0556770a8a356cfaa6a52c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976030"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531291"
 ---
 # <a name="generate-sas-token"></a>Generuj token SAS
 
@@ -74,7 +74,7 @@ public static string generateSasToken(string hostName, string repoId, string key
 
 ## <a name="use-the-sas-token"></a>Używanie tokenu sygnatury dostępu współdzielonego
 
-Po wygenerowaniu tokenu sygnatury dostępu współdzielonego można użyć go do utworzenia żądania HTTP POST. Na przykład:
+Po wygenerowaniu tokenu sygnatury dostępu współdzielonego można użyć go do utworzenia żądania HTTP POST. Przykład:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview

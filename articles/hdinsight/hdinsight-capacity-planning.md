@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682257"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640945"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -47,7 +47,7 @@ Jeśli masz już konto magazynu lub Data Lake Storage zawierające dane i chcesz
 
 Po wdrożeniu klastra usługi HDInsight można dołączyć dodatkowe konta magazynu platformy Azure lub uzyskać dostęp do innych Data Lake Storage. Wszystkie konta magazynu muszą znajdować się w tej samej lokalizacji co klaster. Data Lake Storage może znajdować się w innej lokalizacji, chociaż może to spowodować opóźnienie odczytu/zapisu danych.
 
-Usługa Azure Storage ma pewne [limity pojemności](../azure-subscription-service-limits.md#storage-limits), a Data Lake Storage Gen1 jest praktycznie nieograniczona.
+Usługa Azure Storage ma pewne [limity pojemności](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), a Data Lake Storage Gen1 jest praktycznie nieograniczona.
 
 Klaster może uzyskać dostęp do kombinacji różnych kont magazynu. Typowe przykłady to:
 
@@ -92,9 +92,19 @@ Czasami mogą wystąpić błędy spowodowane równoległym wykonywaniem wielu ma
 
 ## <a name="quotas"></a>Przydziały
 
-Po określeniu rozmiaru, skali i typu docelowej maszyny wirtualnej klastra sprawdź bieżące limity pojemności przydziału dla subskrypcji. Po osiągnięciu limitu przydziału może nie być możliwe wdrożenie nowych klastrów lub skalowanie istniejących klastrów przez dodanie więcej węzłów procesu roboczego. Jedynym limitem przydziału jest przydział rdzeni procesora CPU, który istnieje na poziomie regionu dla każdej subskrypcji. Na przykład subskrypcja może mieć limit 30 rdzeni w regionie Wschodnie stany USA. Jeśli musisz zażądać zwiększenia limitu przydziału, wykonaj następujące czynności:
+Po określeniu rozmiaru, skali i typu docelowej maszyny wirtualnej klastra sprawdź bieżące limity pojemności przydziału dla subskrypcji. Po osiągnięciu limitu przydziału może nie być możliwe wdrożenie nowych klastrów lub skalowanie istniejących klastrów przez dodanie więcej węzłów procesu roboczego. Jedynym limitem przydziału jest przydział rdzeni procesora CPU, który istnieje na poziomie regionu dla każdej subskrypcji. Na przykład subskrypcja może mieć limit 30 rdzeni w regionie Wschodnie stany USA. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Aby sprawdzić dostępne rdzenie, wykonaj następujące czynności:
+
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+2. Przejdź do strony **Przegląd** klastra usługi HDInsight. 
+3. W menu po lewej stronie kliknij pozycję **limity przydziałów**.
+
+   Na stronie zostanie wyświetlona liczba używanych rdzeni, liczba dostępnych rdzeni i łączna liczba rdzeni.
+
+Jeśli musisz zażądać zwiększenia limitu przydziału, wykonaj następujące czynności:
+
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 1. Wybierz pozycję **Pomoc i obsługa techniczna** w lewej dolnej części strony.
 1. Wybierz pozycję **Nowe żądanie obsługi**.
 1. Na stronie **nowe żądanie obsługi** w obszarze **podstawowe** karty wybierz następujące opcje:
@@ -115,7 +125,7 @@ Po określeniu rozmiaru, skali i typu docelowej maszyny wirtualnej klastra spraw
 
 Możesz [skontaktować się z pomocą techniczną, aby zażądać zwiększenia limitu przydziału](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Istnieją jednak pewne limity przydziałów, na przykład jedna subskrypcja platformy Azure może mieć co najwyżej 10 000 rdzeni. Aby uzyskać szczegółowe informacje dotyczące tych limitów, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Istnieją jednak pewne limity przydziałów, na przykład jedna subskrypcja platformy Azure może mieć co najwyżej 10 000 rdzeni. Aby uzyskać szczegółowe informacje dotyczące tych limitów, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Następne kroki
 

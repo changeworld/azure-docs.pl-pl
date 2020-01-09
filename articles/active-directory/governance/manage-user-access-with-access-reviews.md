@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu — Azure Active Directory | Microsoft Docs
+title: Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu — Azure AD
 description: Dowiedz się, jak za pomocą przeglądów dostępu w usłudze Azure Active Directory zarządzać dostępem użytkowników — członkostwem w grupie lub przypisaniem do aplikacji
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70b6d925772548e6703b57c265ebacf6b7f3f4c9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57956573dfe913828fb20db08397fac52528403d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499635"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422430"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD
 
@@ -55,7 +55,7 @@ W przeglądzie dostępu może uczestniczyć jeden lub większa liczba recenzent�
 7. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu do grup lub aplikacji](complete-access-review.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie przeglądu dostępu do grup lub aplikacji](create-access-review.md)
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415057"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Autoryzowanie osób niebędących właścicielami do wdrożenia systemu Avere vFXT
 
@@ -19,11 +19,11 @@ Te instrukcje to obejście, które umożliwia użytkownikowi bez uprawnień wła
 
 (Zalecanym sposobem wdrożenia systemu avere vFXT jest posiadanie użytkownikowi z uprawnieniami właściciela wykonania kroków tworzenia, zgodnie z opisem w sekcji [przygotowanie do utworzenia avere vFXT](avere-vfxt-prereqs.md).)  
 
-Obejście obejmuje utworzenie dodatkowej roli dostępu zapewniającej użytkownikom wystarczające uprawnienia do instalacji klastra. Rola musi być utworzona przez właściciela subskrypcji, a właściciel musi przypisać go do odpowiednich użytkowników. 
+Obejście obejmuje utworzenie dodatkowej roli dostępu zapewniającej użytkownikom wystarczające uprawnienia do instalacji klastra. Rola musi być utworzona przez właściciela subskrypcji, a właściciel musi przypisać go do odpowiednich użytkowników.
 
-Właściciel subskrypcji musi również [zaakceptować warunki użytkowania](avere-vfxt-prereqs.md) obrazu witryny Marketplace avere vFXT. 
+Właściciel subskrypcji musi również [zaakceptować warunki użytkowania](avere-vfxt-prereqs.md) obrazu witryny Marketplace avere vFXT.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Wszystkie te kroki muszą zostać wykonane przez użytkownika z uprawnieniami właściciela do subskrypcji, która będzie używana w klastrze.
 
 1. Skopiuj te wiersze i Zapisz je w pliku (na przykład `averecreatecluster.json`). Użyj identyfikatora subskrypcji w instrukcji `AssignableScopes`.
@@ -49,7 +49,7 @@ Właściciel subskrypcji musi również [zaakceptować warunki użytkowania](ave
            "Microsoft.Network/routeTables/routes/delete",
            "Microsoft.Network/virtualNetworks/subnets/join/action",
            "Microsoft.Network/virtualNetworks/subnets/read",
-   
+
            "Microsoft.Resources/subscriptions/resourceGroups/read",
            "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
            "Microsoft.Storage/*/read",
@@ -63,6 +63,7 @@ Właściciel subskrypcji musi również [zaakceptować warunki użytkowania](ave
    `az role definition create --role-definition <PATH_TO_FILE>`
 
     Przykład:
+
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```
@@ -71,7 +72,7 @@ Właściciel subskrypcji musi również [zaakceptować warunki użytkowania](ave
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Po wykonaniu tej procedury wszyscy użytkownicy przypisani do tej roli mają następujące uprawnienia do subskrypcji: 
+Po wykonaniu tej procedury wszyscy użytkownicy przypisani do tej roli mają następujące uprawnienia do subskrypcji:
 
 * Tworzenie i Konfigurowanie infrastruktury sieciowej
 * Tworzenie kontrolera klastra

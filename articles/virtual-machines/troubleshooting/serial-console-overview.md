@@ -14,21 +14,21 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/30/2019
 ms.author: alsin
-ms.openlocfilehash: 2ae1f3769254575e33eaa5b4e3a24c47b9eb1aff
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451240"
 ---
 # <a name="azure-serial-console"></a>Konsola szeregowa platformy Azure
 
-Konsola szeregowa w Azure Portal zapewnia dostęp do konsoli opartej na tekście dla maszyn wirtualnych i wystąpień zestawów skalowania maszyn wirtualnych z systemem Linux lub Windows. To połączenie szeregowe łączy się z portem szeregowym ttyS0 lub COM1 wystąpienia zestawu skalowania maszyn wirtualnych, zapewniając dostęp niezależny od sieci lub stanu systemu operacyjnego. Dostęp do konsoli szeregowej można uzyskać tylko przy użyciu Azure Portal i jest to dozwolone tylko dla tych użytkowników, którzy mają rolę dostępu współautora lub wyższą dla maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych.
+Konsola szeregowa w Azure Portal zapewnia dostęp do konsoli opartej na tekście dla maszyn wirtualnych i wystąpień zestawów skalowania maszyn wirtualnych z systemem Linux lub Windows. Połączenie szeregowe umożliwia komunikację za pośrednictwem portu szeregowego ttyS0 lub COM1 maszyny wirtualnej albo wystąpienia zestawu skalowania maszyn wirtualnych niezależnie od stanu sieci bądź systemu operacyjnego. Dostęp do konsoli szeregowej można uzyskać tylko przy użyciu Azure Portal i jest to dozwolone tylko dla tych użytkowników, którzy mają rolę dostępu współautora lub wyższą dla maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych.
 
 Konsola szeregowa działa w taki sam sposób w przypadku maszyn wirtualnych i wystąpień zestawów skalowania maszyn wirtualnych. W tym dokumencie wszystkie wzmianki dotyczące maszyn wirtualnych będą niejawnie obejmować wystąpienia zestawu skalowania maszyn wirtualnych, chyba że określono inaczej.
 
 > [!NOTE]
-> Konsola szeregowa jest ogólnie dostępna w globalnych regionach platformy Azure. Nie jest jeszcze dostępne w Azure dla instytucji rządowych lub chmury chińskiej wersji platformy Azure.
+> Konsola szeregowa jest ogólnie dostępna w globalnych regionach platformy Azure i w publicznej wersji zapoznawczej w Azure Government. Nie jest jeszcze dostępna w chmurze platformy Azure w Chinach.
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Wymagania wstępne dotyczące uzyskiwania dostępu do konsoli szeregowej platformy Azure
 Aby uzyskać dostęp do konsoli szeregowej na maszynie wirtualnej lub wystąpieniu zestawu skalowania maszyn wirtualnych, potrzebne są następujące elementy:
@@ -45,7 +45,7 @@ Konsola szeregowa dla maszyn wirtualnych i zestawu skalowania maszyn wirtualnych
 
 ### <a name="serial-console-for-virtual-machines"></a>Konsola szeregowa dla Virtual Machines
 Konsola szeregowa dla maszyn wirtualnych jest tak prosta jak kliknięcie **konsola szeregowa** w sekcji **Pomoc techniczna i rozwiązywanie problemów** w Azure Portal.
-  1. Otwórz [portal Azure](https://portal.azure.com).
+  1. Otwórz [Portalu Azure](https://portal.azure.com).
 
   1. Przejdź do opcji **wszystkie zasoby** i wybierz maszynę wirtualną. Zostanie otwarta strona przegląd dla maszyny wirtualnej.
 
@@ -55,7 +55,7 @@ Konsola szeregowa dla maszyn wirtualnych jest tak prosta jak kliknięcie **konso
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Konsola szeregowa dla Virtual Machine Scale Sets
 Konsola szeregowa jest dostępna dla zestawów skalowania maszyn wirtualnych, które są dostępne dla każdego wystąpienia w zestawie skalowania. Przed wyświetleniem przycisku **konsola szeregowa** należy przejść do poszczególnych wystąpień zestawu skalowania maszyn wirtualnych. Jeśli zestaw skalowania maszyn wirtualnych nie ma włączonej diagnostyki rozruchu, należy zaktualizować model zestawu skalowania maszyn wirtualnych, aby umożliwić diagnostykę rozruchu, a następnie uaktualnić wszystkie wystąpienia do nowego modelu w celu uzyskania dostępu do konsoli szeregowej.
-  1. Otwórz [portal Azure](https://portal.azure.com).
+  1. Otwórz [Portalu Azure](https://portal.azure.com).
 
   1. Przejdź do opcji **wszystkie zasoby** i wybierz zestaw skalowania maszyn wirtualnych. Zostanie otwarta strona przegląd zestawu skalowania maszyn wirtualnych.
 

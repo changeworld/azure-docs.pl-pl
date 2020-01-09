@@ -1,17 +1,17 @@
 ---
-title: Inicjowanie sprzętowego Microsoft Azure FXT Edge
+title: 'Samouczek: Inicjowanie sprzętu — usługa Azure FXT Edge'
 description: Jak ustawić początkowe hasło w węzłach usługi Azure FXT Edge
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256019"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550895"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Samouczek: Ustawianie haseł sprzętowych
 
@@ -80,7 +80,7 @@ Wprowadzone hasło jest używane dla dwóch rzeczy:
 
 * Jest to tymczasowe hasło główne dla tego węzła usługi Azure FXT Edge. 
 
-  To hasło zostanie zmienione podczas tworzenia klastra przy użyciu tego węzła lub po dodaniu tego węzła do klastra. Hasło zarządzania klastrem (skojarzone z użytkownikiem ``admin``) jest również hasłem głównym dla wszystkich węzłów w klastrze.
+  To hasło zostanie zmienione podczas tworzenia klastra przy użyciu tego węzła lub po dodaniu tego węzła do klastra. Hasło zarządzania klastrami (skojarzone z ``admin``użytkownika) jest również hasłem głównym dla wszystkich węzłów w klastrze.
 
 * Jest to hasło długoterminowe dla portu zarządzania sprzętem iDRAC/IPMI.
 

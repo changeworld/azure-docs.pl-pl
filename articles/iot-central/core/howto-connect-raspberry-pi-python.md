@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 258410bcd4f916ac381188bb38d90a3b89c87c89
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3daa567a916bd0abeb407028c7d06bd1f2bd464b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454106"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Łączenie Raspberry Pi z aplikacją platformy Azure IoT Central (Python)
 
@@ -27,31 +27,36 @@ W tym artykule opisano sposób, w jaki deweloper urządzenia nawiązuje połącz
 
 Aby wykonać kroki opisane w tym artykule, potrzebne są następujące składniki:
 
-* Aplikacja IoT Central platformy Azure utworzona na podstawie **przykładowego** szablonu aplikacji Devkits. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
+* Aplikacja IoT Central platformy Azure utworzona na podstawie szablonu aplikacji **starszej** aplikacji. Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central.md).
 * Urządzenie Raspberry Pi działające w systemie operacyjnym raspbian. Raspberry Pi musi mieć możliwość nawiązania połączenia z Internetem. Aby uzyskać więcej informacji, zobacz [Konfigurowanie Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 > [!TIP]
 > Aby dowiedzieć się więcej o konfigurowaniu i łączeniu się z urządzeniem Raspberry Pi, odwiedź stronę wprowadzenie do [Raspberry Pi](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi)
 
-## <a name="sample-devkits-application"></a>**Przykładowa aplikacja Devkits**
+## <a name="add-a-device-template"></a>Dodawanie szablonu urządzenia
 
-Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits zawiera szablon urządzenia **Raspberry Pi** o następujących cechach:
+W aplikacji IoT Central platformy Azure Dodaj nowy szablon urządzenia **Raspberry Pi** o następujących cechach:
 
 - Dane telemetryczne, które obejmują następujące pomiary zebrane przez urządzenie:
   - Wilgotność
   - Temperatura
-  - Wykorzystania
+  - Ciśnienie
   - Magnetometer (X, Y, Z)
   - Przyspieszeniomierz (X, Y, Z)
   - Żyroskop (X, Y, Z)
 - Ustawienia
   - Zakres
-  - Obecne
+  - Bieżący
   - Szybkość wentylatorów
   - Przełącznik IR.
 - Właściwości
   - Właściwość urządzenia numeru wartości
   - Właściwość chmury lokalizacji
+
+1. Wybierz pozycję **+ Nowy** z szablonów urządzeń ![szablon urządzenia](media/howto-connect-raspberry-pi-python/adddevicetemplate.png)
+   
+
+2. Wybierz pozycję **Raspberry Pi** i Utwórz szablon urządzenia Raspberry Pi ![Dodaj szablon urządzenia](media/howto-connect-raspberry-pi-python/newdevicetemplate.png)
 
 Aby uzyskać szczegółowe informacje na temat konfiguracji szablonu urządzenia, zobacz [szczegóły szablonu urządzenia Raspberry Pi](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details).
 
@@ -108,7 +113,7 @@ Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits z
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| temp           | OC     | -40     | 120     | 0              |
+| temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
@@ -124,17 +129,17 @@ Aplikacja utworzona na podstawie **przykładowego** szablonu aplikacji Devkits z
 
 Ustawienia liczbowe
 
-| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Początkowego |
+| Nazwa wyświetlana | Nazwa pola | Jednostki | Miejsca dziesiętne | Minimalne | Maksimum | Wartość początkowa |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Zakres      | setnapięci | Wolty | 0              | 0       | 240     | 0       |
-| Obecne      | SetCurrent | Amper  | 0              | 0       | 100     | 0       |
+| Bieżący      | SetCurrent | Amper  | 0              | 0       | 100     | 0       |
 | Szybkość wentylatorów    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 Przełącz ustawienia
 
-| Nazwa wyświetlana | Nazwa pola | Na tekst | Off text | Początkowego |
+| Nazwa wyświetlana | Nazwa pola | Na tekst | Off text | Wartość początkowa |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | ON      | Logowanie      | Wyłączone     |
+| IR           | activateIR | ON      | WYŁĄCZONE      | Wyłączone     |
 
 ### <a name="properties"></a>Właściwości
 

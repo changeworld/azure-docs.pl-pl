@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424970"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontrole dostępu w Azure Active Directory dostęp warunkowy?
 
 Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)można kontrolować sposób, w jaki autoryzowani użytkownicy uzyskują dostęp do aplikacji w chmurze. W zasadach dostępu warunkowego należy zdefiniować odpowiedź ("zrób to") z powodu wyzwolenia zasad ("w przypadku takiej sytuacji").
 
-![Formant](./media/controls/10.png)
+![Kontrola](./media/controls/10.png)
 
 W kontekście dostępu warunkowego,
 
@@ -31,7 +31,7 @@ W kontekście dostępu warunkowego,
 
 Kombinacja instrukcji Condition z kontrolkami reprezentuje zasady dostępu warunkowego.
 
-![Formant](./media/controls/61.png)
+![Kontrola](./media/controls/61.png)
 
 Każda kontrolka jest wymaganiem, które musi zostać spełnione przez osobę lub System logowania, lub ograniczeniem działania użytkownika po zalogowaniu się.
 
@@ -49,13 +49,13 @@ Dzięki udzieleniu kontroli można zablokować dostęp całkowicie lub zezwolić
 - Wszystkie wybrane kontrolki do spełnienia (*i*)
 - Jedna wybrana kontrolka do spełnienia (*lub*)
 
-![Formant](./media/controls/18.png)
+![Kontrola](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
 Za pomocą tego formantu można wymagać uwierzytelniania wieloskładnikowego w celu uzyskania dostępu do określonej aplikacji w chmurze. Ta kontrolka obsługuje następujących dostawców wieloskładnikowych:
 
-- Azure Multi-Factor Authentication
+- Usługa Azure Multi-Factor Authentication
 - Dostawca lokalnego uwierzytelniania wieloskładnikowego, połączony z Active Directory Federation Services (AD FS).
 
 Korzystanie z uwierzytelniania wieloskładnikowego pomaga chronić zasoby przed dostępem nieautoryzowanego użytkownika, którzy mieli dostęp do podstawowych poświadczeń prawidłowego użytkownika.
@@ -76,7 +76,7 @@ Aby uzyskać więcej informacji, zobacz [temat jak wymagać zarządzanych urząd
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Urządzenie dołączone do hybrydowej usługi Azure AD
 
-Wymaganie hybrydowego urządzenia dołączonego do usługi Azure AD jest kolejną opcją, aby skonfigurować zasady dostępu warunkowego oparte na urządzeniach. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów z systemem Windows, które są przyłączone do Active Directory lokalnego. W przypadku wybrania tej opcji zasady dostępu warunkowego udzielą dostępu do prób dostępu do tych urządzeń, które są przyłączone do Active Directory lokalnego i Azure Active Directory.  
+Wymaganie hybrydowego urządzenia dołączonego do usługi Azure AD jest kolejną opcją, aby skonfigurować zasady dostępu warunkowego oparte na urządzeniach. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów z systemem Windows, które są przyłączone do Active Directory lokalnego. W przypadku wybrania tej opcji zasady dostępu warunkowego udzielą dostępu do prób dostępu do tych urządzeń, które są przyłączone do Active Directory lokalnego i Azure Active Directory. Urządzenia Mac nie obsługują hybrydowego sprzężenia usługi Azure AD.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzeniach Azure Active Directory](require-managed-devices.md).
 
@@ -114,7 +114,7 @@ Dostawcy oferujący obecnie zgodną usługę obejmują:
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Wyślij polecenie ping do tożsamości](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- RSA
+- [RSA](https://community.rsa.com/docs/DOC-81278)
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Adres VIP firmy Symantec](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
@@ -123,7 +123,7 @@ Dostawcy oferujący obecnie zgodną usługę obejmują:
 
 Aby uzyskać więcej informacji na temat tych usług, skontaktuj się bezpośrednio z dostawcami.
 
-### <a name="creating-custom-controls"></a>Tworzenie niestandardowych kontrolek
+### <a name="creating-custom-controls"></a>Tworzenie niestandardowych formantów
 
 Aby utworzyć kontrolkę niestandardową, należy najpierw skontaktować się z dostawcą, którego chcesz użyć. Każdy dostawca firmy innej niż Microsoft ma własny proces i wymagania, aby zarejestrować się, subskrybować lub w inny sposób stać się częścią usługi i wskazać, że chcesz zintegrować się z dostępem warunkowym. W tym momencie dostawca dostarczy blok danych w formacie JSON. Te dane umożliwiają dostawcy i dostęp warunkowy współdziałanie dla dzierżawy, tworzy nową kontrolkę i definiuje, jak dostęp warunkowy może stwierdzić, czy użytkownicy pomyślnie przeprowadzili weryfikację u dostawcy.
 
@@ -133,11 +133,11 @@ Skopiuj dane JSON, a następnie wklej je do powiązanego pola tekstowego. Nie wp
 
 Opcja tworzenia kontrolki niestandardowej znajduje się w sekcji **Zarządzanie** na stronie **dostęp warunkowy** .
 
-![Formant](./media/controls/82.png)
+![Kontrola](./media/controls/82.png)
 
 Kliknięcie przycisku **Nowy formant niestandardowy**powoduje otwarcie bloku z polem tekstowym dla danych JSON formantu.  
 
-![Formant](./media/controls/81.png)
+![Kontrola](./media/controls/81.png)
 
 ### <a name="deleting-custom-controls"></a>Usuwanie formantów niestandardowych
 
@@ -155,7 +155,7 @@ Aby edytować kontrolkę niestandardową, należy usunąć bieżącą kontrolkę
 
 Kontrolki sesji umożliwiają ograniczoną obsługę w ramach aplikacji w chmurze. Kontrolki sesji są wymuszane przez aplikacje w chmurze i polegają na dodatkowych informacjach dostarczonych przez usługę Azure AD do aplikacji dotyczącej sesji.
 
-![Formant](./media/controls/31.png)
+![Kontrola](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Użyj ograniczeń wymuszonych przez aplikację
 

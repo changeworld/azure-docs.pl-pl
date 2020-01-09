@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: Jednostronicowa aplikacja internetowa korzystająca z wyszukiwania jednostek Bing'
+title: 'Samouczek: jednostronicowa aplikacja internetowa korzystająca z wyszukiwania jednostek Bing'
 titleSuffix: Azure Cognitive Services
-description: Pokazuje sposób użycia interfejsu API wyszukiwania jednostek Bing w jednostronicowej aplikacji internetowej.
+description: W tym samouczku pokazano, jak używać interfejs API wyszukiwania jednostek Bing w jednostronicowej aplikacji sieci Web.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a8276f06207eb69ffec0e21c6d92794973f3b83
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448590"
 ---
-# <a name="tutorial-single-page-web-app"></a>Samouczek: Jednostronicowa aplikacja internetowa
+# <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
 
 Interfejs API wyszukiwania jednostek Bing umożliwia wyszukiwanie w Internecie informacji o *jednostkach* i *miejscach.* W danym zapytaniu można zażądać dowolnego z tych dwóch rodzajów wyników lub obu. Poniżej znajdują się definicje miejsc i jednostek.
 
@@ -86,7 +86,7 @@ Kod HTML zawiera także podziały (tagi `<div>`) tam, gdzie są wyświetlane wyn
 
 Aby uniknąć konieczności umieszczania kluczy subskrypcji interfejsu API wyszukiwania Bing oraz interfejsu API usługi Mapy Bing w kodzie, używamy magazynu trwałego przeglądarki do przechowywania klucza. Jeśli żaden klucz nie został zapisany, wyświetlamy monit o jego wprowadzenie i zapisujemy go do późniejszego użycia. W przypadku późniejszego odrzucenia klucza przez interfejs API unieważniamy przechowywany klucz, aby użytkownikowi został ponownie wyświetlony monit podczas następnego wyszukiwania.
 
-Definiujemy funkcje `storeValue` i `retrieveValue`, które używają obiektu `localStorage` (jeśli przeglądarka go obsługuje) lub pliku cookie. Nasza funkcja `getSubscriptionKey()` używa tych funkcji do przechowywania i pobierania klucza użytkownika.
+Definiujemy funkcje `storeValue` i `retrieveValue`, które używają obiektu `localStorage` (jeśli przeglądarka go obsługuje) lub pliku cookie. Nasza funkcja `getSubscriptionKey()` używa tych funkcji do przechowywania i pobierania klucza użytkownika. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
 ```javascript
 // cookie names for data we store
@@ -380,7 +380,7 @@ function handleBingResponse() {
 
 Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
-|Etap|Potencjalne błędy|Obsługiwane przez|
+|Stage|Potencjalne błędy|Obsługiwane przez|
 |-|-|-|
 |Tworzenie obiektu żądania języka JavaScript|Nieprawidłowy adres URL|Blok `try`/`catch`|
 |Wykonywanie żądania|Błędy sieci, przerwane połączenia|Obsługa zdarzeń `error` i `abort`|
@@ -451,7 +451,7 @@ Funkcja renderująca może akceptować następujące parametry:
 
 Parametry `index` i `count` mogą służyć do numerowania wyników, do generowania specjalnego kodu HTML wstawianego na początku lub końcu kolekcji, do wstawiania podziałów wiersza po określonej liczbie elementów i tak dalej. Jeśli funkcja renderująca nie wymaga takiej funkcjonalności, nie musi akceptować tych dwóch parametrów. W rzeczywistości nie używamy ich w funkcjach renderujących w naszej aplikacji samouczka.
 
-Przyjrzyjmy się bliżej funkcji renderującej `entities`:
+Przyjrzyjmy się bliżej programowi renderującemu `entities`:
 
 ```javascript
     entities: function(item) {
@@ -525,7 +525,7 @@ Po drugie usługa Bing może losowo wybierać użytkowników, którzy będą kor
 Zasady zabezpieczeń przeglądarki (CORS) mogą powodować, że nagłówek `X-MSEdge-ClientID` będzie niedostępny dla kodu JavaScript. To ograniczenie występuje, gdy odpowiedź wyszukiwania ma inne źródło niż strona, z której pochodzi żądanie. W środowisku produkcyjnym, aby rozwiązać ten problem, należy udostępnić skrypt po stronie serwera, który wykonuje wywołanie interfejsu API w tej samej domenie, co strona internetowa. Ponieważ skrypt ma to samo źródło co strona internetowa, nagłówek `X-MSEdge-ClientID` jest dostępny dla kodu JavaScript.
 
 > [!NOTE]
-> W aplikacji internetowej w środowisku produkcyjnym należy wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
+> W aplikacji internetowej w środowisku produkcyjnym należy mimo to wykonać to żądanie po stronie serwera. W przeciwnym razie należy dołączyć klucz interfejsu API wyszukiwania Bing do strony internetowej, aby był on dostępny dla każdego, kto wyświetli źródło. Płacisz za wszystkie użycia związane z Twoim kluczem subskrypcji interfejsu API, nawet za żądania wykonane przez osoby nieupoważnione, zatem ważne jest, aby nie ujawniać swojego klucza.
 
 W celach programistycznych możesz wykonywać żądania interfejsu API wyszukiwania w sieci Web Bing za pośrednictwem serwera proxy CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
 

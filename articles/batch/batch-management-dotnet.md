@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f7554993e2e3d8d2f6bce71db57a746a4392ce1a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 32133fc5c01544250075ece2458babe2f0b6a62a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095071"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660702"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Zarządzanie kontami i przydziałami usługi Batch za pomocą biblioteki klienta zarządzania usługą Batch dla platformy .NET
 
@@ -63,7 +63,7 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 ```
 
 > [!NOTE]
-> Aplikacje korzystające z biblioteki .NET Management Library i jej klasy BatchManagementClient wymagają dostępu **administratora usługi** lub współadministratora do subskrypcji należącej do konta usługi Batch, które ma być zarządzane. Aby uzyskać więcej informacji, zobacz sekcję Azure Active Directory i przykład kodu [zarządzania kontem][acct_mgmt_sample] .
+> Aplikacje korzystające z biblioteki .NET Management Library i jej klasy BatchManagementClient wymagają dostępu **administratora usługi** lub **współadministratora** do subskrypcji należącej do konta usługi Batch, które ma być zarządzane. Aby uzyskać więcej informacji, zobacz sekcję Azure Active Directory i przykład kodu [zarządzania kontem][acct_mgmt_sample] .
 > 
 > 
 
@@ -95,7 +95,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 > 
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>Sprawdź limity przydziału subskrypcji platformy Azure i konta usługi Batch
-Subskrypcje platformy Azure i indywidualne usługi platformy Azure, takie jak Batch All, mają domyślne przydziały, które ograniczają liczbę niektórych jednostek w ramach tych usług. Aby uzyskać domyślne przydziały dla subskrypcji platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../azure-subscription-service-limits.md). W przypadku domyślnych przydziałów usługi Batch Zobacz przydziały [i limity dla usługi Azure Batch](batch-quota-limit.md). Za pomocą biblioteki usługi Batch Management .NET można sprawdzić te przydziały w aplikacjach. Dzięki temu można podejmować decyzje dotyczące alokacji przed dodaniem kont lub zasobów obliczeniowych, takich jak pule i węzły obliczeniowe.
+Subskrypcje platformy Azure i indywidualne usługi platformy Azure, takie jak Batch All, mają domyślne przydziały, które ograniczają liczbę niektórych jednostek w ramach tych usług. Aby uzyskać domyślne przydziały dla subskrypcji platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../azure-resource-manager/management/azure-subscription-service-limits.md). W przypadku domyślnych przydziałów usługi Batch zobacz [przydziały i limity dla usługi Azure Batch](batch-quota-limit.md). Za pomocą biblioteki usługi Batch Management .NET można sprawdzić te przydziały w aplikacjach. Dzięki temu można podejmować decyzje dotyczące alokacji przed dodaniem kont lub zasobów obliczeniowych, takich jak pule i węzły obliczeniowe.
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Sprawdź subskrypcję platformy Azure dla przydziałów konta usługi Batch
 Przed utworzeniem konta usługi Batch w regionie możesz sprawdzić swoją subskrypcję platformy Azure, aby sprawdzić, czy można dodać konto w tym regionie.
@@ -124,10 +124,10 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-W powyższym `creds` fragmencie kodu jest wystąpienie elementu [TokenCloudCredentials][azure_tokencreds]. Aby zapoznać się z przykładem tworzenia tego obiektu, zobacz przykładowy kod [zarządzania kontem][acct_mgmt_sample] w witrynie GitHub.
+W powyższym fragmencie kodu `creds` jest wystąpieniem [TokenCloudCredentials][azure_tokencreds]. Aby zapoznać się z przykładem tworzenia tego obiektu, zobacz przykładowy kod [zarządzania kontem][acct_mgmt_sample] w witrynie GitHub.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Sprawdź konto usługi Batch dla przydziałów zasobów obliczeniowych
-Przed zwiększeniem zasobów obliczeniowych w rozwiązaniu wsadowym można sprawdzić, czy zasoby, które mają zostać przydzielone, nie przekraczają przydziałów konta. W poniższym fragmencie kodu wypisujemy informacje o przydziale dla konta usługi Batch `mybatchaccount`o nazwie. W aplikacji można użyć takich informacji w celu ustalenia, czy konto może obsługiwać dodatkowe zasoby, które mają zostać utworzone.
+Przed zwiększeniem zasobów obliczeniowych w rozwiązaniu wsadowym można sprawdzić, czy zasoby, które mają zostać przydzielone, nie przekraczają przydziałów konta. W poniższym fragmencie kodu wypisujemy informacje o przydziale dla konta usługi Batch o nazwie `mybatchaccount`. W aplikacji można użyć takich informacji w celu ustalenia, czy konto może obsługiwać dodatkowe zasoby, które mają zostać utworzone.
 
 ```csharp
 // First obtain the Batch account
@@ -198,7 +198,7 @@ Aby pomyślnie uruchomić przykładową aplikację, należy najpierw zarejestrow
 [resman_api]: https://msdn.microsoft.com/library/azure/mt418626.aspx
 [resman_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspx
 [resman_subclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.subscriptions.subscriptionclient.aspx
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png
 [2]: ./media/batch-management-dotnet/portal-02.png

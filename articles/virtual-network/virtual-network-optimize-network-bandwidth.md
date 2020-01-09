@@ -1,6 +1,6 @@
 ---
-title: Optymalizowanie przepływności sieci maszyny Wirtualnej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zoptymalizować przepływność sieci maszyny wirtualnej platformy Azure.
+title: Optymalizowanie przepływności sieci maszyn wirtualnych | Microsoft Docs
+description: Dowiedz się, jak zoptymalizować przepływność sieci maszyn wirtualnych platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202914"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690885"
 ---
-# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optymalizowanie przepływności sieci maszyn wirtualnych platformy Azure
+# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optymalizowanie przepływności sieci dla maszyn wirtualnych platformy Azure
 
-Usługa Azure virtual machines (VM) ma domyślne ustawienia sieci, które można dodatkowo zoptymalizować przepustowości sieci. W tym artykule opisano sposób optymalizowanie przepływności sieci dla programu Microsoft Azure Windows i maszyn wirtualnych systemu Linux, łącznie z głównych są takie dystrybucje jak Red Hat, Ubuntu i CentOS.
+Maszyny wirtualne platformy Azure mają domyślne ustawienia sieciowe, które mogą być bardziej zoptymalizowane pod kątem przepływności sieci. W tym artykule opisano, jak zoptymalizować przepływność sieci dla Microsoft Azure maszyn wirtualnych z systemami Windows i Linux, w tym dystrybucji głównych, takich jak Ubuntu, CentOS i Red Hat.
 
 ## <a name="windows-vm"></a>Maszyna wirtualna z systemem Windows
 
-Jeśli maszyna wirtualna Windows obsługuje [Accelerated Networking](create-vm-accelerated-networking-powershell.md), włączenie tej funkcji może być konfiguracją optymalną przepływności. W przypadku wszystkich innych Windows maszyn wirtualnych przy użyciu skalowanie po stronie odbierania (RSS) docierać do większej przepływności maksymalny niż maszynę Wirtualną bez danych RSS. Funkcja RSS może być domyślnie wyłączona w systemie maszyny Wirtualnej z systemem Windows. Aby ustalić, czy RSS jest włączone, a następnie włącz go, jeśli jest obecnie wyłączona, wykonaj następujące czynności:
+Jeśli maszyna wirtualna z systemem Windows obsługuje [przyspieszone sieci](create-vm-accelerated-networking-powershell.md), włączenie tej funkcji będzie optymalną konfiguracją przepływności. W przypadku wszystkich innych maszyn wirtualnych z systemem Windows Korzystanie ze skalowania po stronie odbierającej (RSS) może osiągnąć wyższą maksymalną przepływność niż maszyna wirtualna bez funkcji RSS. Funkcja RSS może być domyślnie wyłączona na maszynie wirtualnej z systemem Windows. Aby określić, czy funkcja RSS jest włączona, i włączyć ją, jeśli jest ona aktualnie wyłączona, wykonaj następujące czynności:
 
-1. Zobacz, czy funkcja RSS jest włączone dla karty sieciowej z `Get-NetAdapterRss` polecenia programu PowerShell. W następujące przykładowe dane wyjściowe zwrócone w wyniku `Get-NetAdapterRss`, RSS jest wyłączona.
+1. Sprawdź, czy funkcja RSS jest włączona dla karty sieciowej za pomocą polecenia `Get-NetAdapterRss` PowerShell. W poniższych przykładowych danych wyjściowych zwróconych z `Get-NetAdapterRss`funkcja RSS nie jest włączona.
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : False
     ```
-2. Aby włączyć RSS, wprowadź następujące polecenie:
+2. Aby włączyć funkcję RSS, wprowadź następujące polecenie:
 
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
-    Poprzednie polecenie nie ma danych wyjściowych. Polecenie zmienić ustawienia karty Sieciowej, powodujące utraty łączności tymczasowego dla około jednej minuty. Podczas utraty połączenia pojawia się okno dialogowe Ponowne nawiązywanie połączenia. Zwykle po przywróceniu łączności po próbie trzeciego.
-3. Upewnij się, że RSS jest włączone w maszynę Wirtualną, wprowadzając `Get-NetAdapterRss` ponownie polecenie. Jeśli to się powiedzie, jest zwracany następujące przykładowe dane wyjściowe:
+    Poprzednie polecenie nie ma danych wyjściowych. Polecenie zmieniło ustawienia karty sieciowej, powodując utratę łączności tymczasowej przez około minutę. Podczas utraty łączności pojawia się okno dialogowe Ponowne łączenie. Połączenie jest zwykle przywracane po trzeciej próbie.
+3. Upewnij się, że w maszynie wirtualnej jest włączona funkcja RSS, wprowadzając ponownie polecenie `Get-NetAdapterRss`. Jeśli to się powiedzie, zwracane są następujące przykładowe dane wyjściowe:
 
     ```powershell
     Name                    : Ethernet
@@ -52,11 +52,11 @@ Jeśli maszyna wirtualna Windows obsługuje [Accelerated Networking](create-vm-a
 
 ## <a name="linux-vm"></a>Maszyna wirtualna z systemem Linux
 
-Funkcja RSS jest zawsze włączona domyślnie w maszynie Wirtualnej systemu Linux platformy Azure. Jądra systemu Linux wydane od października 2017 r. obejmują nowe opcje optymalizacji sieci, które umożliwiają maszyny Wirtualnej systemu Linux w celu uzyskania większej przepływności sieci.
+Funkcja RSS jest zawsze włączona domyślnie na maszynie wirtualnej z systemem Linux na platformie Azure. Jądra systemu Linux wydane od października 2017 obejmują nowe opcje optymalizacji sieci, które umożliwiają maszynie wirtualnej z systemem Linux osiągnięcie większej przepływności sieci.
 
-### <a name="ubuntu-for-new-deployments"></a>Ubuntu w przypadku nowych wdrożeń
+### <a name="ubuntu-for-new-deployments"></a>Ubuntu dla nowych wdrożeń
 
-Jądra Ubuntu Azure zapewnia najlepszą wydajność sieci na platformie Azure i została domyślnego jądra od 21 września 2017 r. Aby uzyskać ten jądra, najpierw w następujący sposób zainstalować najnowszą obsługiwaną wersję 16.04 LTS:
+Ubuntu jądro platformy Azure zapewnia najlepszą wydajność sieci na platformie Azure i jest domyślnym jądrem od 21 września 2017. Aby można było pobrać to jądro, należy najpierw zainstalować najnowszą obsługiwaną wersję 16,04-LTS w następujący sposób:
 
 ```json
 "Publisher": "Canonical",
@@ -65,7 +65,7 @@ Jądra Ubuntu Azure zapewnia najlepszą wydajność sieci na platformie Azure i 
 "Version": "latest"
 ```
 
-Po zakończeniu tworzenia wprowadź następujące polecenia w celu uzyskania najnowszych aktualizacji. Te kroki również działać w przypadku maszyn wirtualnych, aktualnie uruchomione jądra Ubuntu Azure.
+Po zakończeniu tworzenia wprowadź następujące polecenia, aby pobrać najnowsze aktualizacje. Te kroki działają również w przypadku maszyn wirtualnych, na których obecnie działa jądro platformy Azure Ubuntu.
 
 ```bash
 #run as root or preface with sudo
@@ -74,7 +74,7 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-Następujący zestaw opcjonalne polecenia mogą być pomocne dla istniejących wdrożeń Ubuntu, który jeszcze jądrze systemu Azure, ale który nie powiodło się dalsze aktualizacje z błędami.
+Następujący opcjonalny zestaw poleceń może być przydatny w przypadku istniejących wdrożeń Ubuntu, które mają już jądro platformy Azure, ale które nie powiodło się dalszej aktualizacji z błędami.
 
 ```bash
 #optional steps may be helpful in existing deployments with the Azure kernel
@@ -87,9 +87,9 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu Azure jądra uaktualnienie dla istniejących maszyn wirtualnych
+#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu uaktualnienie jądra platformy Azure dla istniejących maszyn wirtualnych
 
-Po uaktualnieniu do jądra systemu Linux platformy Azure można osiągnąć znaczne obniżenie przepustowości. Aby sprawdzić, czy ten jądra, sprawdź wersję jądra.
+Znaczną wydajność przepływności można osiągnąć przez uaktualnienie do jądra systemu Linux platformy Azure. Aby sprawdzić, czy masz to jądro, sprawdź wersję jądra.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -99,7 +99,7 @@ uname -r
 #4.13.0-1007-azure
 ```
 
-Jeśli maszyna wirtualna nie ma jądra systemu Azure, numer wersji zazwyczaj rozpoczyna się od "w wersji 4.4." Jeśli maszyna wirtualna nie ma jądra systemu Azure, uruchom następujące polecenia jako użytkownik główny:
+Jeśli maszyna wirtualna nie ma jądra platformy Azure, numer wersji zwykle zaczyna się od "4,4". Jeśli maszyna wirtualna nie ma jądra platformy Azure, uruchom następujące polecenia jako główne:
 
 ```bash
 #run as root or preface with sudo
@@ -112,7 +112,7 @@ reboot
 
 ### <a name="centos"></a>CentOS
 
-Aby uzyskać najnowsze optymalizacje, najlepiej jest utworzyć maszynę Wirtualną z najnowszą obsługiwaną wersję, określając następujące parametry:
+W celu uzyskania najnowszych optymalizacji najlepiej utworzyć maszynę wirtualną z najnowszą obsługiwaną wersją, określając następujące parametry:
 
 ```json
 "Publisher": "OpenLogic",
@@ -121,7 +121,7 @@ Aby uzyskać najnowsze optymalizacje, najlepiej jest utworzyć maszynę Wirtualn
 "Version": "latest"
 ```
 
-Nowe i istniejące maszyny wirtualne mogą korzystać z instalowanie najnowszych integracji usługi LIS (Linux). Optymalizacji w trybie przepływności jest lis, od 4.2.2-2, chociaż nowsze wersje zawierają dalsze ulepszenia. Wprowadź następujące polecenia, aby zainstalować najnowsze LIS:
+Nowe i istniejące maszyny wirtualne mogą korzystać z instalowania najnowszych usług integracji systemu Linux (LIS). Optymalizacja przepływności jest w LIS, począwszy od 4.2.2-2, chociaż nowsze wersje zawierają dalsze ulepszenia. Wprowadź następujące polecenia, aby zainstalować najnowszą wersję systemu LIS:
 
 ```bash
 sudo yum update
@@ -131,7 +131,7 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-Aby uzyskać optymalizacje, najlepiej jest utworzyć maszynę Wirtualną z najnowszą obsługiwaną wersję, określając następujące parametry:
+W celu uzyskania optymalizacji najlepiej jest utworzyć maszynę wirtualną z najnowszą obsługiwaną wersją, określając następujące parametry:
 
 ```json
 "Publisher": "RedHat"
@@ -140,20 +140,18 @@ Aby uzyskać optymalizacje, najlepiej jest utworzyć maszynę Wirtualną z najno
 "Version": "latest"
 ```
 
-Nowe i istniejące maszyny wirtualne mogą korzystać z instalowanie najnowszych integracji usługi LIS (Linux). Optymalizacji w trybie przepływności jest lis, zaczynając od 4.2. Wprowadź następujące polecenia, aby pobrać i zainstalować LIS:
+Nowe i istniejące maszyny wirtualne mogą korzystać z instalowania najnowszych usług integracji systemu Linux (LIS). Optymalizacja przepływności jest w LIS, rozpoczynając od 4,2. Wprowadź następujące polecenia, aby pobrać i zainstalować funkcję LIS:
 
 ```bash
-mkdir lis4.2.3-5
-cd lis4.2.3-5
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
-tar xvzf lis-rpms-4.2.3-5.tar.gz
+wget https://aka.ms/lis
+tar xvf lis
 cd LISISO
-install.sh #or upgrade.sh if prior LIS was previously installed
+sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 ```
 
-Więcej informacji na temat 4.2 wersję usług integracji systemu Linux dla funkcji Hyper-V, wyświetlając [stronę pobierania](https://www.microsoft.com/download/details.aspx?id=55106).
+Dowiedz się więcej o usługach integracji systemu Linux w wersji 4,2 dla funkcji Hyper-V, wyświetlając [stronę pobierania](https://www.microsoft.com/download/details.aspx?id=55106).
 
-## <a name="next-steps"></a>Kolejne kroki
-* Zobacz zoptymalizowane wyników za pomocą [przepustowość/testowania maszyny Wirtualnej platformy Azure](virtual-network-bandwidth-testing.md) dla danego scenariusza.
-* Przeczytaj o tym, jak [przepustowość jest przydzielona do maszyn wirtualnych](virtual-machine-network-throughput.md)
-* Dowiedz się więcej dzięki [sieci wirtualnej platformy Azure — często zadawane pytania (FAQ)](virtual-networks-faq.md)
+## <a name="next-steps"></a>Następne kroki
+* Zapoznaj się z zoptymalizowanym wynikiem [testowania przepustowości/przepływności maszyny wirtualnej platformy Azure](virtual-network-bandwidth-testing.md) dla Twojego scenariusza.
+* Przeczytaj o sposobie [przydzielenia przepustowości do maszyn wirtualnych](virtual-machine-network-throughput.md)
+* Dowiedz się więcej na temat [usługi Azure Virtual Network często zadawanych pytań](virtual-networks-faq.md)

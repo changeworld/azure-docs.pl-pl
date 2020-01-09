@@ -1,18 +1,14 @@
 ---
 title: Monitoruj nowy klaster usługi Azure Kubernetes Service (AKS) | Microsoft Docs
 description: Dowiedz się, jak włączyć monitorowanie dla nowego klastra usługi Azure Kubernetes Service (AKS) przy użyciu subskrypcji kontenerów Azure Monitor.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/25/2019
-ms.openlocfilehash: 01553eb020c1493488e941705d9df8c8c946340a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405445"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Włącz monitorowanie nowego klastra usługi Azure Kubernetes Service (AKS)
 
@@ -23,42 +19,42 @@ Można włączyć monitorowanie klastra AKS przy użyciu jednej z obsługiwanych
 * Interfejs wiersza polecenia platformy Azure
 * Terraform
 
-## <a name="enable-using-azure-cli"></a>Włączanie przy użyciu interfejsu wiersza polecenia platformy Azure
+## <a name="enable-using-azure-cli"></a>Włącz przy użyciu wiersza polecenia platformy Azure
 
-Aby włączyć monitorowanie nowego klastra AKS utworzonego za pomocą interfejsu wiersza polecenia platformy Azure, wykonaj kroki opisane w artykule szybki start w sekcji [Tworzenie klastra AKS](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
-
->[!NOTE]
->Jeśli zdecydujesz się na korzystanie z interfejsu wiersza polecenia platformy Azure, musisz najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.74 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Jeśli zainstalowano rozszerzenie wiersza polecenia AKS-Preview w wersji 0.4.12 lub nowszej, Usuń wszelkie zmiany wprowadzone w celu włączenia rozszerzenia w wersji zapoznawczej, ponieważ może ono zastąpić domyślne zachowanie interfejsu wiersza polecenia platformy Azure, ponieważ funkcja AKS Preview nie jest dostępna w chmurze usługi Azure US governmnet.
-
-## <a name="enable-using-terraform"></a>Włącz korzystanie z Terraform
-
-Jeśli [wdrażasz nowy klaster AKS przy użyciu Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), określisz argumenty wymagane w profilu, [Aby utworzyć obszar roboczy log Analytics](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) , jeśli nie wybrano, aby określić istniejący. 
+Aby włączyć monitorowanie nowy klaster AKS utworzone przy użyciu wiersza polecenia platformy Azure, przejdź do kroku w artykule przewodnika Szybki Start w sekcji [klastra AKS tworzenie](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Jeśli zdecydujesz się na korzystanie z Terraform, musisz mieć uruchomiony program Terraform platformy Azure RM w wersji 1.17.0 lub nowszej.
+>Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.74 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Jeśli zainstalowano rozszerzenie wiersza polecenia AKS-Preview w wersji 0.4.12 lub nowszej, Usuń wszelkie zmiany wprowadzone w celu włączenia rozszerzenia w wersji zapoznawczej, ponieważ może ono zastąpić domyślne zachowanie interfejsu wiersza polecenia platformy Azure, ponieważ funkcja AKS Preview nie jest dostępna w chmurze usługi Azure US governmnet.
 
-Aby dodać Azure Monitor kontenerów do obszaru roboczego, zobacz [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) i Ukończ profil, dołączając [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) i określ **oms_agent**. 
+## <a name="enable-using-terraform"></a>Włącz przy użyciu programu Terraform
 
-Po włączeniu monitorowania i zakończeniu wszystkich zadań konfiguracji można monitorować wydajność klastra na jeden z dwóch sposobów:
+Jeśli jesteś [Wdrażanie nowego klastra AKS przy użyciu programu Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), zostaną określone argumenty, wymagane do profilu [utworzyć obszar roboczy usługi Log Analytics](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) Jeśli nie chcesz określić istniejącą grupę. 
 
-* Bezpośrednio w klastrze AKS, wybierając pozycję **kondycja** w okienku po lewej stronie.
-* Wybierając kafelek **monitoruj informacje o kontenerze** na stronie klastra AKS dla wybranego klastra. W obszarze Azure Monitor w lewym okienku wybierz pozycję **kondycja**. 
+>[!NOTE]
+>Jeśli zdecydujesz się za pomocą narzędzia Terraform, musisz używać dostawcy Menedżera zasobów Azure Terraform wersji 1.17.0 lub nowszej.
 
-  ![Opcje wybierania Azure Monitor dla kontenerów w AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+Aby dodać usługi Azure Monitor dla kontenerów do obszaru roboczego, zobacz [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) i wypełnij profil umieszczając [ **addon_profile** ](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) i określ **oms_agent**. 
 
-Po włączeniu monitorowania może upłynąć około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
+Po włączeniu monitorowania i wszystkie zadania konfiguracji zostaną ukończone pomyślnie, można monitorować wydajność klastra w jeden z dwóch sposobów:
 
-## <a name="verify-agent-and-solution-deployment"></a>Weryfikowanie wdrożenia agenta i rozwiązania
-W przypadku agenta w wersji *06072018* lub nowszej można sprawdzić, czy zarówno Agent, jak i rozwiązanie zostały pomyślnie wdrożone. W przypadku wcześniejszych wersji agenta można zweryfikować tylko wdrożenie agenta.
+* Bezpośrednio w klastrze AKS, wybierając **kondycji** w okienku po lewej stronie.
+* Wybierając **szczegółowe informacje o kontenerze Monitor** kafelka na stronie klastra AKS dla wybranego klastra. W usłudze Azure Monitor w okienku po lewej stronie wybierz **kondycji**. 
 
-### <a name="agent-version-06072018-or-later"></a>Agent w wersji 06072018 lub nowszej
-Uruchom następujące polecenie, aby sprawdzić, czy Agent został wdrożony pomyślnie. 
+  ![Opcje dotyczące wybierania usługi Azure Monitor dla kontenerów w usłudze AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+
+Po włączeniu monitorowania może potrwać około 15 minut, zanim będzie można wyświetlić metryki kondycji klastra. 
+
+## <a name="verify-agent-and-solution-deployment"></a>Sprawdź wdrożenie agenta i rozwiązania
+Za pomocą wersji agenta *06072018* lub później, sprawdź, czy agent i rozwiązania zostały pomyślnie wdrożone. W starszych wersjach programu agent można sprawdzić tylko na wdrożenie agenta.
+
+### <a name="agent-version-06072018-or-later"></a>Wersja agenta 06072018 lub nowszy
+Uruchom następujące polecenie, aby sprawdzić, czy agent zostanie wdrożony pomyślnie. 
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-Dane wyjściowe powinny wyglądać podobnie do poniższego, co oznacza, że zostało prawidłowo wdrożone:
+Dane wyjściowe powinien przypominać poniższe polecenie, co oznacza, że została prawidłowo wdrożona:
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -72,7 +68,7 @@ Aby zweryfikować wdrożenie rozwiązania, uruchom następujące polecenie:
 kubectl get deployment omsagent-rs -n=kube-system
 ```
 
-Dane wyjściowe powinny wyglądać podobnie do poniższego, co oznacza, że zostało prawidłowo wdrożone:
+Dane wyjściowe powinien przypominać poniższe polecenie, co oznacza, że została prawidłowo wdrożona:
 
 ```
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -80,15 +76,15 @@ NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
 
-### <a name="agent-version-earlier-than-06072018"></a>Wersja agenta wcześniejsza niż 06072018
+### <a name="agent-version-earlier-than-06072018"></a>Agent w wersji wcześniejszej niż 06072018
 
-Aby sprawdzić, czy wersja agenta Log Analytics wydana przed *06072018* zostanie wdrożona prawidłowo, uruchom następujące polecenie:  
+Aby sprawdzić, czy wersja agenta usługi Log Analytics wydanych przed *06072018* jest wdrażany prawidłowo, uruchom następujące polecenie:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-Dane wyjściowe powinny wyglądać podobnie do poniższego, co oznacza, że zostało prawidłowo wdrożone:  
+Dane wyjściowe powinien przypominać poniższe polecenie, co oznacza, że została prawidłowo wdrożona:  
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -97,13 +93,13 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-configuration-with-cli"></a>Wyświetl konfigurację przy użyciu interfejsu wiersza polecenia
-Użyj `aks show` polecenia, aby uzyskać szczegółowe informacje, takie jak rozwiązanie włączone lub nie, co to jest identyfikator zasobu Log Analytics obszaru roboczego oraz szczegóły podsumowania klastra.  
+Użyj `aks show` polecenia w celu uzyskania szczegółowych informacji takich, w jakim są rozwiązania włączony, czy nie, co to jest identyfikator zasobu obszaru roboczego usługi Log Analytics i podsumowanie szczegółowych informacji o klastrze.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 ```
 
-Po kilku minutach polecenie zostanie wykonane i zwróci informacje w formacie JSON o rozwiązaniu.  Wyniki polecenia powinny zawierać profil dodatku monitorowania i podobne do następujących przykładowych danych wyjściowych:
+Po kilku minutach polecenie kończy i zwraca sformatowanego JSON informacji na temat rozwiązania.  Wyniki polecenia powinien być wyświetlony profilu monitorowania dodatku i podobne do następujących przykładowych danych wyjściowych:
 
 ```
 "addonProfiles": {
@@ -118,6 +114,6 @@ Po kilku minutach polecenie zostanie wykonane i zwróci informacje w formacie JS
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Jeśli wystąpią problemy podczas próby dołączenia rozwiązania, zapoznaj się z [przewodnikiem rozwiązywania problemów](container-insights-troubleshoot.md)
+* Jeśli występują problemy podczas próby dołączyć rozwiązanie, zapoznaj się z [przewodnik rozwiązywania problemów](container-insights-troubleshoot.md)
 
 * Po włączeniu monitorowania w celu zbierania danych o kondycji i użyciu zasobów klastra AKS oraz obciążeń na nich uruchomionych należy dowiedzieć się, [jak używać](container-insights-analyze.md) Azure monitor do kontenerów.

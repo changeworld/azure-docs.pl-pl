@@ -1,6 +1,7 @@
 ---
-title: Artykuł dotyczący znanych problemów/ograniczeń migracji z migracją online z PostgreSQL do Azure Database for PostgreSQL-pojedynczego serwera | Microsoft Docs
-description: Informacje o znanych problemach/ograniczeniach migracji z migracją online z PostgreSQL do Azure Database for PostgreSQL.
+title: 'Znane problemy: migracje online z PostgreSQL do Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
+description: Informacje o znanych problemach i ograniczeniach migracji z migracją online z PostgreSQL do Azure Database for PostgreSQL-pojedynczego serwera przy użyciu Azure Database Migration Service.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,17 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 10/27/2019
-ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c5c0015c5034dd3b30b716264fd97e9881b3fe67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043202"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437871"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Znane problemy/ograniczenia migracji z migracją online z PostgreSQL do usługi Azure DB dla PostgreSQL — jeden serwer
 
@@ -32,7 +35,7 @@ Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure
 
 - Aby włączyć replikację logiczną w pliku **Source PostgreSQL PostgreSQL. conf** , ustaw następujące parametry:
   - **wal_level** = logiczny
-  - **max_replication_slots** = [Maksymalna liczba baz danych do migracji]; Jeśli chcesz migrować cztery bazy danych, ustaw wartość na 4.
+  - **max_replication_slots** = [Maksymalna liczba baz danych na potrzeby migracji]; Jeśli chcesz migrować cztery bazy danych, ustaw wartość na 4.
   - **max_wal_senders** = [liczba baz danych uruchomionych współbieżnie]; Zalecana wartość to 10
 - Dodawanie adresu IP agenta DMS do źródła PostgreSQL pg_hba. conf
   1. Zanotuj adres IP DMS po zakończeniu aprowizacji wystąpienia DMS.
@@ -113,7 +116,7 @@ Kolumny dużego obiektu (LOB) są kolumnami, które mogą rosnąć duże. W przy
 
 ## <a name="postgresql10-workaround"></a>Obejście PostgreSQL10
 
-PostgreSQL 10. x wprowadza różne zmiany nazw folderów pg_xlog, co sprawia, że migracja nie działa zgodnie z oczekiwaniami. Jeśli przeprowadzasz migrację z PostgreSQL 10. x do Azure Database for PostgreSQL 10,3, wykonaj następujący skrypt w źródłowej bazie danych PostgreSQL, aby utworzyć funkcję otoki wokół funkcji pg_xlog.
+PostgreSQL 10. x wprowadza różne pg_xlog zmiany nazw folderów, co sprawia, że migracja nie działa zgodnie z oczekiwaniami. Jeśli przeprowadzasz migrację z PostgreSQL 10. x do Azure Database for PostgreSQL 10,3, wykonaj następujący skrypt w źródłowej bazie danych PostgreSQL, aby utworzyć funkcję otoki wokół funkcji pg_xlog.
 
 ```
 BEGIN;

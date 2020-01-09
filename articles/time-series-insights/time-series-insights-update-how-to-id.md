@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452742"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Najlepsze rozwiązania dotyczące wybierania Identyfikatora serii czasu
 
@@ -23,23 +23,28 @@ Ten artykuł podsumowuje ważność identyfikatora szeregów czasowych dla środ
 
 ## <a name="choose-a-time-series-id"></a>Wybieranie identyfikatora szeregów czasowych
 
-Wybieranie Identyfikatora serii czasu przypomina wybór klucza partycji dla bazy danych. Należy ją wybrać podczas tworzenia środowiska Time Series Insights w wersji zapoznawczej. Jest to *niezmienna* właściwość. Oznacza to, że po utworzeniu środowiska Time Series Insights w wersji zapoznawczej przy użyciu identyfikatora szeregów czasowych nie można zmienić go dla tego środowiska. 
+Wybór odpowiedniego identyfikatora szeregów czasowych ma krytyczne znaczenie. Wybieranie Identyfikatora serii czasu przypomina wybór klucza partycji dla bazy danych. Jest to wymagane w przypadku tworzenia środowiska Time Series Insights w wersji zapoznawczej. 
 
 > [!IMPORTANT]
-> W IDENTYFIKATORze szeregów czasowych jest rozróżniana wielkość liter.
+> Identyfikatory szeregów czasowych:
+> * Właściwość uwzględniająca *wielkość* liter: litery i wielkości liter znaków są używane w wyszukiwaniach, porównaniach, aktualizacjach i podczas partycjonowania.
+> * *Niezmienna* Właściwość: po utworzeniu nie można jej zmienić.
 
-Wybór odpowiedniego identyfikatora szeregów czasowych ma krytyczne znaczenie. Poniżej przedstawiono niektóre najlepsze rozwiązania, które można wykonać:
+> [!TIP]
+> Jeśli źródłem zdarzenia jest centrum IoT, identyfikator szeregów czasowych będzie prawdopodobnie ***iothub-Connection-ID***.
+
+Najważniejsze wskazówki dotyczące najważniejszych rozwiązań:
 
 * Wybierz klucz partycji z wieloma unikatowymi wartościami (na przykład setki lub tysiące). W wielu przypadkach może to być identyfikator urządzenia, identyfikator czujnika lub identyfikator tagu w formacie JSON.
 * Identyfikator serii czasu powinna być unikatowa na poziomie liścia węzła usługi [modelu szeregów czasowych](./time-series-insights-update-tsm.md).
-* Jeśli źródłem zdarzenia jest centrum IoT, identyfikator szeregów czasowych najprawdopodobniej będzie *iothub-Connection-ID*.
 * Limit znaków dla ciągu nazwy właściwości identyfikatora szeregów czasowych to 128. W przypadku wartości właściwości identyfikator szeregów czasowych limit znaków to 1 024.
 * Jeśli brakuje unikatowej wartości właściwości identyfikatora szeregów czasowych, jest ona traktowana jako wartość null i zgodna z tą samą regułą ograniczenia unikatowości.
 * Możesz również wybrać do *trzech* właściwości klucza jako identyfikator szeregów czasowych. Ich kombinacje będą kluczem złożonym, który reprezentuje identyfikator szeregów czasowych.  
-
   > [!NOTE]
   > Twoje trzy właściwości klucza muszą być ciągami.
   > Należy wykonać zapytanie względem tego klucza złożonego zamiast jednej właściwości naraz.
+
+## <a name="select-more-than-one-key-property"></a>Wybierz więcej niż jedną właściwość klucza
 
 W poniższych scenariuszach opisano wybieranie więcej niż jednej właściwości klucza jako identyfikatora szeregów czasowych.  
 
@@ -67,9 +72,11 @@ Przykładowe zdarzenie pierwotne:
 }
 ```
 
-W Azure Portal można wprowadzić ten klucz złożony jako: 
+W Azure Portal można następnie wprowadzić klucz złożony w następujący sposób: 
 
-`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

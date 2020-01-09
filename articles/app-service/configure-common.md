@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671959"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666191"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Skonfiguruj aplikację App Service w Azure Portal
 
@@ -21,7 +21,11 @@ W tym temacie opisano sposób konfigurowania typowych ustawień aplikacji sieci 
 
 W App Service ustawienia aplikacji są zmienne, które są przesyłane jako zmienne środowiskowe do kodu aplikacji. W przypadku aplikacji systemu Linux i kontenerów niestandardowych App Service przekazuje ustawienia aplikacji do kontenera przy użyciu flagi `--env` w celu ustawienia zmiennej środowiskowej w kontenerze.
 
-W [Azure Portal]przejdź do strony zarządzania aplikacji. W menu po lewej stronie aplikacji kliknij pozycję **konfiguracja** > **Ustawienia aplikacji**.
+W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. 
+
+![Wyszukaj App Services](./media/configure-common/search-for-app-services.png)
+
+W menu po lewej stronie aplikacji wybierz pozycję **konfiguracja** > **Ustawienia aplikacji**.
 
 ![Ustawienia aplikacji](./media/configure-common/open-ui.png)
 
@@ -82,7 +86,7 @@ Ustawienia aplikacji mają następujące formatowanie JSON:
 
 ## <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączeń
 
-W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję **konfiguracja** > **Ustawienia aplikacji**.
+W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. W menu po lewej stronie aplikacji wybierz pozycję **konfiguracja** > **Ustawienia aplikacji**.
 
 ![Ustawienia aplikacji](./media/configure-common/open-ui.png)
 
@@ -153,7 +157,7 @@ Parametry połączenia mają następujące formatowanie JSON:
 
 ## <a name="configure-general-settings"></a>Konfigurowanie ustawień ogólnych
 
-W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję **konfiguracja** > **Ustawienia aplikacji**.
+W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. W menu po lewej stronie aplikacji wybierz pozycję **konfiguracja** > **Ustawienia ogólne**.
 
 ![Ustawienia ogólne](./media/configure-common/open-general.png)
 
@@ -176,9 +180,9 @@ Tutaj można skonfigurować niektóre typowe ustawienia dla aplikacji. Niektóre
 
 To ustawienie dotyczy tylko aplikacji systemu Windows.
 
-W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję **konfiguracja** > **dokumenty domyślne**.
+W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. W menu po lewej stronie aplikacji wybierz pozycję **konfiguracja** > **dokumenty domyślne**.
 
-![Ustawienia ogólne](./media/configure-common/open-documents.png)
+![Domyślne dokumenty](./media/configure-common/open-documents.png)
 
 Dokument domyślny jest stroną sieci Web, która jest wyświetlana na głównym adresie URL witryny sieci Web. Używany jest pierwszy pasujący plik na liście. Aby dodać nowy dokument domyślny, kliknij pozycję **Nowy dokument**. Nie zapomnij kliknąć przycisk **Zapisz**.
 
@@ -186,9 +190,9 @@ Jeśli aplikacja używa modułów, które są oparte na adresie URL zamiast obs�
 
 ## <a name="configure-path-mappings"></a>Konfiguruj mapowania ścieżek
 
-W [Azure Portal]przejdź do strony zarządzania aplikacją. W menu po lewej stronie aplikacji kliknij pozycję **konfiguracja** > **mapowania ścieżki**.
+W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. W menu po lewej stronie aplikacji wybierz pozycję **konfiguracja** > **mapowania ścieżki**.
 
-![Ustawienia ogólne](./media/configure-common/open-path.png)
+![Mapowania ścieżki](./media/configure-common/open-path.png)
 
 Na stronie **mapowania ścieżki** są wyświetlane różne elementy w oparciu o typ systemu operacyjnego.
 

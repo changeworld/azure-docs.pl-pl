@@ -1,5 +1,5 @@
 ---
-title: Diagnozowanie błędów za pomocą usługi połączonej z usługą Azure AD
+title: Diagnozowanie błędów za pomocą usługi połączonej z usługą Azure AD (Visual Studio)
 description: Usługa połączona z usługą Active Directory wykryła niezgodny typ uwierzytelniania
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a7528bafd9183ae917370a6de35d1d94c3783e5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 379acbe8493f57fca97497b1b1483036ace905b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423168"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnozowanie błędów za pomocą połączonej usługi Azure Active Directory
 

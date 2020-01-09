@@ -1,19 +1,19 @@
 ---
 title: Najlepsze rozwiązania dotyczące środowiska Node. js i rozwiązywanie problemów
 description: Poznaj najlepsze rozwiązania i kroki rozwiązywania problemów z aplikacjami Node. js uruchomionymi w programie Azure App Service.
-author: ranjithr
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bwren
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430561"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Najlepsze rozwiązania i wskazówki dotyczące rozwiązywania problemów z aplikacjami węzłów w systemie Azure App Service Windows
 
@@ -83,7 +83,7 @@ Oprócz tego w przypadku aplikacji przesyłanych strumieniowo należy również 
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Rozdzielana średnikami lista plików, które są oglądane pod kątem zmian. Wszelkie zmiany w pliku powodują odzyskanie aplikacji. Każdy wpis składa się z opcjonalnej nazwy katalogu, a także wymaganej nazwy pliku, odnoszącej się do katalogu, w którym znajduje się główny punkt wejścia aplikacji. Symbole wieloznaczne są dozwolone tylko w części nazwy pliku. Wartość domyślna to `*.js;iisnode.yml`
+Rozdzielana średnikami lista plików, które są oglądane pod kątem zmian. Wszelkie zmiany w pliku powodują odzyskanie aplikacji. Każdy wpis składa się z opcjonalnej nazwy katalogu, a także wymaganej nazwy pliku, odnoszącej się do katalogu, w którym znajduje się główny punkt wejścia aplikacji. Symbole wieloznaczne są dozwolone tylko w części nazwy pliku. Wartością domyślną jest `*.js;iisnode.yml`.
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 

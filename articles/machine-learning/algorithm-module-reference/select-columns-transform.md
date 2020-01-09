@@ -1,7 +1,7 @@
 ---
 title: 'Wybierz kolumny Przekształć: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu przekształcanie kolumn w usłudze Azure Machine Learning, aby utworzyć transformację, która wybiera ten sam podzestaw kolumn jak w danym zestawie danych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak użyć modułu przekształcanie kolumn w Azure Machine Learning, aby utworzyć transformację, która wybiera ten sam podzestaw kolumn jak w danym zestawie danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 383adeb2bd081893d4202239cb97c12bf9a5a170
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0dfbec3abd379c7bf8add6445296dff74d92a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717032"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428472"
 ---
-# <a name="select-columns-transform"></a>Wybierz kolumny Przekształć
+# <a name="select-columns-transform"></a>Wybieranie przekształcenia kolumn
 
 W tym artykule opisano sposób korzystania z modułu SELECT Columns Transform w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem modułu SELECT Columns Transform jest upewnienie się, że przewidywalna spójny zestaw kolumn jest używany w operacjach uczenia maszynowego.
 
@@ -55,4 +55,4 @@ Ten proces zapisywania i stosowania wybranej kolumny zapewnia, że ten sam schem
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

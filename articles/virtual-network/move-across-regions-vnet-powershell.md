@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 753c239f4bf4d6a8f31d4dc5ca771f312cd34578
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828995"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646714"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Przenoszenie sieci wirtualnej platformy Azure do innego regionu przy użyciu Azure PowerShell
 
@@ -32,7 +32,7 @@ Możesz użyć szablonu Azure Resource Manager, aby zakończyć przenoszenie sie
 
 - Sprawdź, czy subskrypcja platformy Azure umożliwia tworzenie sieci wirtualnych w regionie docelowym. Aby włączyć wymagany limit przydziału, skontaktuj się z pomocą techniczną.
 
-- Upewnij się, że Twoja subskrypcja ma wystarczającą ilość zasobów, aby obsłużyć Dodawanie sieci wirtualnych dla tego procesu. Aby uzyskać więcej informacji, zobacz [Limity, przydziały i ograniczenia usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Upewnij się, że Twoja subskrypcja ma wystarczającą ilość zasobów, aby obsłużyć Dodawanie sieci wirtualnych dla tego procesu. Aby uzyskać więcej informacji, zobacz [Limity, przydziały i ograniczenia usług i subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Przygotuj do przeniesienia
@@ -60,7 +60,7 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. Pobrany plik ma taką samą nazwę jak grupa zasobów, z której został wyeksportowany zasób. Znajdź plik *\<resource-Group-name >. JSON* , który został wyeksportowany za pomocą polecenia, a następnie otwórz go w edytorze:
+1. Pobrany plik ma taką samą nazwę jak grupa zasobów, z której został wyeksportowany zasób. Znajdź plik *\<Resource-Group-name >. JSON* , który został wyeksportowany za pomocą polecenia, a następnie otwórz go w edytorze:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,9 +105,9 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
     Get-AzLocation | format-table
     ```
 
-1. Obowiązkowe Możesz również zmienić inne parametry w pliku *\<resource-Group-name >. JSON* , w zależności od wymagań:
+1. Obowiązkowe Możesz również zmienić inne parametry w pliku *\<Resource-Group-name >. JSON* , w zależności od wymagań:
 
-    * **Przestrzeń adresowa**: przed zapisaniem pliku można zmienić przestrzeń adresową sieci wirtualnej, modyfikując **zasoby** > **AddressSpace** sekcja i zmieniając właściwość **addressPrefixes** :
+    * **Przestrzeń adresowa**: przed zapisaniem pliku można zmienić przestrzeń adresową sieci wirtualnej, modyfikując **zasoby** > **addressSpace** i zmieniając właściwość **addressPrefixes** :
 
         ```json
                 "resources": [
@@ -193,7 +193,7 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
          ]
         ```
 
-1. Zapisz plik *\<resource-Group-name >. JSON* .
+1. Zapisz plik *\<Resource-Group-name >. JSON* .
 
 1. Utwórz grupę zasobów w regionie docelowym dla docelowej sieci wirtualnej, która ma zostać wdrożona przy użyciu polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
@@ -201,7 +201,7 @@ Aby wyeksportować sieć wirtualną i wdrożyć docelową sieć wirtualną przy 
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Wdróż edytowany plik *\<resource-Group-name >. JSON* w grupie zasobów utworzonej w poprzednim kroku przy użyciu polecenia [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+1. Wdróż edytowaną plik *\<Resource-Group-name >. JSON* w grupie zasobów utworzonej w poprzednim kroku przy użyciu polecenia [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

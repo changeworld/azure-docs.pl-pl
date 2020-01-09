@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 630535103656e13ca43d958ef2a4124a4ea940ac
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546938"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658291"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Często zadawane pytania dotyczące Azure NetApp Files
 
@@ -131,7 +131,7 @@ Tak, przed wdrożeniem woluminu SMB należy utworzyć połączenie Active Direct
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Ile połączeń Active Directory są obsługiwane?
 
-Azure NetApp Files obecnie obsługuje jedno połączenie Active Directory na subskrypcję. Ponadto połączenie Active Directory jest specyficzne dla jednego konta NetApp; nie jest ona udostępniana przez konta. 
+Azure NetApp Files obecnie obsługuje tylko jedno połączenie Active Directory na konto NetApp, na subskrypcję i w każdym regionie; połączenie nie jest współużytkowane przez konta usługi NetApp.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Czy Azure NetApp Files obsługiwać Azure Active Directory? 
 

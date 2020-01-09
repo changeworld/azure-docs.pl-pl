@@ -1,6 +1,6 @@
 ---
-title: Azure Database Migration Service umożliwia monitorowanie działania migracji | Dokumentacja firmy Microsoft
-description: Dowiedz się, na potrzeby monitorowania działania migracji usługi Azure Database Migration Service.
+title: Monitorowanie działania migracji — Azure Database Migration Service
+description: Dowiedz się, jak używać Azure Database Migration Service do monitorowania aktywności migracji.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,28 +8,28 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437934"
 ---
-# <a name="monitor-migration-activity"></a>Monitorowanie działań migracji
-W tym artykule dowiesz się, jak monitorować postęp migracji zarówno w poziomie bazy danych, jak i w poziomie tabeli.
+# <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Monitorowanie aktywności migracji przy użyciu Azure Database Migration Service
+W tym artykule dowiesz się, jak monitorować postęp migracji zarówno na poziomie bazy danych, jak i na poziomie tabeli.
 
-## <a name="monitor-at-the-database-level"></a>Monitorowanie na poziomie bazy danych
-Aby monitorować aktywność na poziomie bazy danych, należy wyświetlić blok poziomu bazy danych:
+## <a name="monitor-at-the-database-level"></a>Monitoruj na poziomie bazy danych
+Aby monitorować aktywność na poziomie bazy danych, Wyświetl blok poziomu bazy danych:
 
 ![Blok poziomu bazy danych](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
-> Zaznaczanie hiperlinku bazy danych zostanie wyświetlona lista tabel i ich postęp migracji.
+> Po wybraniu hiperłącza do bazy danych zostanie wyświetlona lista tabel i postęp migracji.
 
-Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym artykule opisano różne wartości stanu związany z każdą.
+W poniższej tabeli wymieniono pola w bloku na poziomie bazy danych i opisano różne wartości stanu skojarzone z każdym z nich.
 
 <table id='overview' class='overview'>
   <thead>
@@ -43,49 +43,49 @@ Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym ar
     <tr>
       <td rowspan="3" class="ActivityStatus"><strong>Stan działania</strong></td>
       <td>Działanie</td>
-      <td>Uruchomiono działanie migracji.</td>
+      <td>Działanie migracji jest uruchomione.</td>
     </tr>
     <tr>
       <td>Powodzenie</td>
-      <td>Działania migracji zakończyła się pomyślnie bez problemów.</td>
+      <td>Działanie migracji zakończyło się pomyślnie bez problemów.</td>
     </tr>
     <tr>
-      <td>Wystąpił błąd</td>
-      <td>Migracja nie powiodła się. Wybierz link "Patrz szczegóły błędu" w obszarze Szczegóły migracji pełną komunikatu o błędzie.</td>
+      <td>Faulted</td>
+      <td>Migracja nie powiodła się. Wybierz link "Zobacz szczegóły błędu" w obszarze Szczegóły migracji, aby uzyskać pełny komunikat o błędzie.</td>
     </tr>
     <tr>
       <td rowspan="4" class="Status"><strong>Stan</strong></td>
       <td>Inicjowanie</td>
-      <td>Usługa DMS to Konfigurowanie procesu migracji.</td>
+      <td>DMS konfiguruje potok migracji.</td>
     </tr>
     <tr>
       <td>Działanie</td>
-      <td>Usługa DMS potoku jest uruchomiona i przeprowadzanie migracji.</td>
+      <td>Potok DMS jest uruchomiony i przeprowadza migrację.</td>
     </tr>
     <tr>
-      <td>Zakończ</td>
+      <td>Kompletne</td>
       <td>Migracja została zakończona.</td>
     </tr>
     <tr>
       <td>Niepowodzenie</td>
-      <td>Migracja nie powiodła się. Kliknij przycisk Szczegóły migracji, aby wyświetlić błędy migracji.</td>
+      <td>Migracja nie powiodła się. Kliknij Szczegóły migracji, aby zobaczyć błędy migracji.</td>
     </tr>
     <tr>
       <td rowspan="5" class="migration-details"><strong>Szczegóły migracji</strong></td>
       <td>Inicjowanie potoku migracji</td>
-      <td>Usługa DMS to Konfigurowanie procesu migracji.</td>
+      <td>DMS konfiguruje potok migracji.</td>
     </tr>
     <tr>
-      <td>Pełne ładowanie danych w toku</td>
-      <td>Usługa DMS wykonuje ładowania początkowego.</td>
+      <td>Pełne ładowanie danych jest w toku</td>
+      <td>Usługa DMS wykonuje ładowanie początkowe.</td>
     </tr>
     <tr>
-      <td>Gotowe do uruchomienia produkcyjnego</td>
-      <td>Po zakończeniu ładowania początkowego DMS spowoduje oznaczenie bazy danych jako gotowe do uruchomienia produkcyjnego. Należy sprawdzić, jeśli dane złapał ciągłej synchronizacji.</td>
+      <td>Gotowe do uruchomienie produkcyjne</td>
+      <td>Po zakończeniu ładowania początkowego DMS spowoduje oznaczenie bazy danych jako gotowej do uruchomienie produkcyjne. Użytkownik powinien sprawdzić, czy dane przechwyciły synchronizację ciągłą.</td>
     </tr>
     <tr>
-      <td>Wszystkie zmiany zastosowane</td>
-      <td>Zakończeniu ładowania początkowego i ciągłej synchronizacji. Ten stan występuje także po pomyślnym baza danych jest uruchomienie produkcyjne.</td>
+      <td>Wszystkie zmiany zostały zastosowane</td>
+      <td>Ładowanie wstępne i ciągła synchronizacja są kompletne. Ten stan występuje również po pomyślnym uruchomienie produkcyjne bazy danych.</td>
     </tr>
     <tr>
       <td>Zobacz szczegóły błędu</td>
@@ -94,52 +94,52 @@ Poniższa tabela zawiera listę pól, w bloku bazy danych na poziomie i w tym ar
     <tr>
       <td rowspan="1" class="duration"><strong>Czas trwania</strong></td>
       <td>ND</td>
-      <td>Łączny czas działania migracji inicjowany do migracji lub ustawienia komunikacji niezawodnej migracji.</td>
+      <td>Łączny czas trwania działania migracji na zakończenie migracji lub błąd migracji.</td>
     </tr>
      </tbody>
 </table>
 
-## <a name="monitor-at-table-level--quick-summary"></a>Monitorowanie na poziomie tabeli — krótkie podsumowanie
-Aby monitorować aktywność na poziomie tabeli, należy wyświetlić bloku na poziomie tabeli. Górna część bloku pokazuje szczegółowy liczbę wierszy migracji w pełne ładowanie i przyrostowych aktualizacji. 
+## <a name="monitor-at-table-level--quick-summary"></a>Monitoruj na poziomie tabeli — szybkie podsumowanie
+Aby monitorować aktywność na poziomie tabeli, zobacz blok poziomu tabeli. W górnej części bloku wyświetlana jest szczegółowa liczba wierszy migrowanych w ramach pełnych obciążeń i aktualizacji przyrostowych. 
 
-Dolnej części bloku są wyświetlane tabele i przedstawiono krótkie podsumowanie postęp migracji.
+Dolna część bloku wyświetla listę tabel i zawiera krótkie podsumowanie postępu migracji.
 
-![Blok tabeli — krótkie podsumowanie](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
+![Blok poziomu tabeli — szybkie podsumowanie](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
-W poniższej tabeli opisano pola wyświetlane w obszarze szczegółów na poziomie tabeli.
+W poniższej tabeli opisano pola wyświetlane w szczegółach na poziomie tabeli.
 
 | Nazwa pola        | Opis       |
 | ------------- | ------------- |
-| **Ukończono pełne ładowanie**      | Liczba tabel ukończono pełne ładowanie danych. |
-| **Pełne ładowanie w kolejce**      | Liczba tabel pełne ładowanie ich umieszczenia w kolejce.      |
-| **Pełne ładowanie** | Liczba tabel nie powiodła się.      |
-| **Aktualizacje przyrostowe**      | Liczba zmian danych przechwycenie aktualizacji (CDC) w wierszach zastosowany do obiektu docelowego. |
-| **Wstawia przyrostowe**      | Wstawia liczbę przechwytywania zmian danych w wierszach zastosowany do obiektu docelowego.      |
-| **Usuwa przyrostowe** | Usuwa liczba przechwytywania zmian danych w wierszach zastosowany do obiektu docelowego.      |
-| **Oczekujące zmiany**      | Liczba przechwytywania zmian danych w wierszach, które wciąż oczekują na zastosowane do obiektu docelowego. |
-| **Zastosowane zmiany**      | Łączna liczba przechwytywania zmian danych operacji wstawiania, aktualizacji i usuwa w wierszach zastosowany do obiektu docelowego.      |
-| **Tabele w stanie Błąd** | Liczba tabel, które są w stanie "error" podczas migracji. Kilka przykładów, które tabele mogą być wprowadzanie do stanu błędu są, gdy znajdują się duplikaty określone w elemencie docelowym lub dane nie są zgodne, ładowanie w tabeli docelowej.      |
+| **Ukończono pełne ładowanie**      | Liczba tabel, które ukończyły pełne ładowanie danych. |
+| **Pełne ładowanie w kolejce**      | Liczba tabel umieszczonych w kolejce w celu pełnego załadowania.      |
+| **Pełne ładowanie ładowania** | Liczba tabel nie powiodła się.      |
+| **Aktualizacje przyrostowe**      | Liczba aktualizacji funkcji przechwytywania zmian danych w wierszach zastosowanych do celu. |
+| **Wstawiania przyrostowe**      | Liczba wstawek operacji przechwytywania w wierszach zastosowanych do celu.      |
+| **Usunięcia przyrostowe** | Liczba usunięć danych przechwytywania w wierszach zastosowanych do celu.      |
+| **Oczekujące zmiany**      | Liczba obiektów przestawnych w wierszach, które nadal oczekują na zastosowanie do celu. |
+| **Zastosowane zmiany**      | Łączna liczba aktualizacji, wstawianych i usuwanych obiektów przestawnych w wierszach zastosowanych do celu.      |
+| **Tabele w stanie błąd** | Liczba tabel, które znajdują się w stanie "Error" podczas migracji. Niektóre przykłady, które mogą przechodzić do stanu błędu, są w przypadku, gdy istnieją duplikaty identyfikowane w elemencie docelowym lub dane nie są zgodne z ładowaniem w tabeli docelowej.      |
 
-## <a name="monitor-at-table-level--detailed-summary"></a>Monitorowanie na poziomie tabeli — szczegółowe podsumowanie
-Istnieją dwie karty, pokazujące postęp migracji w pełne ładowanie i Przyrostowa synchronizacja danych.
+## <a name="monitor-at-table-level--detailed-summary"></a>Monitoruj na poziomie tabeli — szczegółowe podsumowanie
+Istnieją dwie karty pokazujące postęp migracji w ramach pełnego ładowania i przyrostowej synchronizacji danych.
     
 ![Karta pełne ładowanie](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![Karta synchronizacji przyrostowej danych](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
+![Karta przyrostowa synchronizacja danych](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
-W poniższej tabeli opisano pola wyświetlane w tabeli migracji poziomu postępu.
+W poniższej tabeli opisano pola, które przedstawiono w postęp migracji na poziomie tabeli.
 
 | Nazwa pola        | Opis       |
 | ------------- | ------------- |
-| **Stan — synchronizacja**      | Ciągłej synchronizacji jest uruchomiona. |
-| **Wstaw**      | Wstawia liczbę przechwytywania zmian danych w wierszach zastosowany do obiektu docelowego.      |
-| **Aktualizacja** | Liczba aktualizacji przechwytywania zmian danych w wierszach zastosowany do obiektu docelowego.      |
-| **Usuwanie**      | Usuwa liczba przechwytywania zmian danych w wierszach zastosowany do obiektu docelowego. |
-| **Całkowita liczba zastosowanych**      | Łączna liczba przechwytywania zmian danych operacji wstawiania, aktualizacji i usuwa w wierszach zastosowany do obiektu docelowego. |
-| **Błędy danych** | Liczba błędów danych wydarzyło się w tej tabeli. Oto kilka przykładów błędów *511: Nie można utworzyć wiersza o wielkości %d, który jest większy niż dopuszczalny rozmiar maksymalny rozmiar wiersza % d, 8114: Błąd podczas konwertowania typu danych %ls % ls.*  Klient powinien zapytanie z tabeli dms_apply_exceptions w celu platformy Azure, aby wyświetlić szczegóły błędu.    |
+| **Stan — synchronizacja**      | Działa ciągła synchronizacja. |
+| **Wstaw**      | Liczba wstawek operacji przechwytywania w wierszach zastosowanych do celu.      |
+| **Aktualizacja** | Liczba aktualizacji przechwytywania zmian w wierszach zastosowanych do celu.      |
+| **Usuwanie**      | Liczba usunięć danych przechwytywania w wierszach zastosowanych do celu. |
+| **Suma zastosowania**      | Łączna liczba aktualizacji, wstawianych i usuwanych obiektów przestawnych w wierszach zastosowanych do celu. |
+| **Błędy danych** | Liczba błędów danych w tej tabeli. Przykłady błędów to *511: nie można utworzyć wiersza o rozmiarze% d, który jest większy niż dozwolony maksymalny rozmiar wiersza równy% d, 8114: błąd podczas konwertowania typu danych% ls na% ls.*  Klient powinien wykonać zapytanie z tabeli dms_apply_exceptions w elemencie docelowym platformy Azure, aby wyświetlić szczegóły błędu.    |
 
 > [!NOTE]
-> Przechwytywanie zmian danych wartości Insert, Update i Delete i łączna liczba stosowane mogą się zmniejszyć, gdy baza danych jest uruchomienie produkcyjne lub ponownym uruchomieniu migracji.
+> Wartości przestawne dotyczące operacji INSERT, Update i DELETE oraz łącznego zastosowania mogą ulec zmniejszeniu, gdy baza danych jest uruchomienie produkcyjnea, a migracja zostanie uruchomiona ponownie.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Przejrzyj wskazówki dotyczące migracji w programie Microsoft [Przewodnik po migracji bazy danych](https://datamigration.microsoft.com/).
+## <a name="next-steps"></a>Następne kroki
+- Zapoznaj się ze wskazówkami dotyczącymi migracji w [przewodniku migracji bazy danych](https://datamigration.microsoft.com/)firmy Microsoft.

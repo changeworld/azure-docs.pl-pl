@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd3f61ffc07881ed8e502788b11fc0f435735b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425196"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Włącz rejestrację połączonych informacji o zabezpieczeniach (wersja zapoznawcza)
 
@@ -39,10 +39,10 @@ Przed włączeniem nowego środowiska zapoznaj się z artykułem [łączenie inf
 Wykonaj następujące kroki, aby włączyć rejestrację połączoną:
 
 1. Zaloguj się do Azure Portal jako administrator użytkownika lub Administrator globalny.
-2. Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika** > **Zarządzanie ustawieniami funkcji Podgląd panelu dostępu**.
-3. W obszarze **Użytkownicy mogą korzystać z funkcji w wersji zapoznawczej na potrzeby rejestrowania i zarządzania informacjami o zabezpieczeniach — odświeżanie**, Wybieranie opcji do włączenia dla **wybranej** grupy użytkowników lub dla **wszystkich** użytkowników.
+2. Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika** > **Zarządzanie ustawieniami wersji zapoznawczej funkcji użytkownika**.
+3. W obszarze **Użytkownicy mogą używać funkcji w wersji zapoznawczej do rejestrowania i zarządzania informacjami o zabezpieczeniach**, wybierz opcję Włącz dla **wybranej** grupy użytkowników lub dla **wszystkich** użytkowników.
 
-   ![Włącz środowisko wersji zapoznawczej połączonej informacji zabezpieczeń dla wszystkich użytkowników](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![Włącz środowisko wersji zapoznawczej połączonej informacji zabezpieczeń dla wszystkich użytkowników](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!IMPORTANT]
 > Od marca 2019 opcje połączeń telefonicznych nie będą dostępne dla Multi-Factor Authentication i SSPR użytkowników w bezpłatnych/bezpłatnych dzierżawach usługi Azure AD. Ta zmiana nie wpłynie na wiadomości SMS. Opcje połączenia telefonicznego będą nadal dostępne dla użytkowników z płatnymi dzierżawami usługi Azure AD.
@@ -64,9 +64,9 @@ Zabezpieczanie, kiedy i jak użytkownicy rejestrują się w usłudze Azure Multi
 
 Poniższe zasady mają zastosowanie do wszystkich wybranych użytkowników, którzy próbują zarejestrować się przy użyciu połączonego środowiska rejestracji i blokują dostęp, chyba że nawiązują połączenie z lokalizacji oznaczonej jako zaufane sieci.
 
-![Tworzenie zasad urzędu certyfikacji w celu kontrolowania rejestracji informacji zabezpieczających](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+![Tworzenie zasad urzędu certyfikacji w celu kontrolowania rejestracji informacji zabezpieczających](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. W **Azure Portal**przejdź do **Azure Active Directory** > **dostęp warunkowy**
+1. W **Azure Portal**przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**
 1. Wybierz pozycję **Nowe zasady**
 1. W polu Nazwa wprowadź nazwę dla tych zasad. Przykładowa **rejestracja informacji o zabezpieczeniach w zaufanych sieciach**
 1. W obszarze **przypisania**kliknij pozycję **Użytkownicy i grupy**, a następnie wybierz użytkowników i grupy, do których te zasady mają być stosowane

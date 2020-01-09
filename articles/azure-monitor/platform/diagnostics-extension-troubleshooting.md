@@ -4,15 +4,15 @@ description: Rozwiązywanie problemów podczas korzystania z diagnostyki platfor
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450559"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów Diagnostyka Azure
 W tym artykule opisano Rozwiązywanie problemów związanych z używaniem Diagnostyka Azure. Aby uzyskać więcej informacji na temat diagnostyki platformy Azure, zobacz [omówienie Diagnostyka Azure](diagnostics-extension-overview.md).
@@ -27,28 +27,28 @@ W tym artykule opisano Rozwiązywanie problemów związanych z używaniem Diagno
 ## <a name="logartifact-paths"></a>Ścieżki dzienników/artefaktów
 Poniżej przedstawiono ścieżki do ważnych dzienników i artefaktów. Te informacje są używane w pozostałej części dokumentu.
 
-### <a name="azure-cloud-services"></a>usług Azure Cloud Services
+### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Artefakt | Ścieżka |
 | --- | --- |
-| **Plik konfiguracji Diagnostyka Azure** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<wersja > \Config.txt |
-| **Pliki dziennika** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<wersja > \ |
-| **Magazyn lokalny dla danych diagnostycznych** | Folderze c:\resources\directory\<CloudServiceDeploymentID >.\<rolename >. DiagnosticStore\WAD0107\Tables |
-| **Plik konfiguracyjny monitorowania agenta** | Folderze c:\resources\directory\<CloudServiceDeploymentID >.\<rolename >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Diagnostyka Azure pakiet rozszerzenia** | Wersja%SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<> |
+| **Plik konfiguracji Diagnostyka Azure** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
+| **Pliki dziennika** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **Magazyn lokalny dla danych diagnostycznych** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
+| **Plik konfiguracyjny monitorowania agenta** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Diagnostyka Azure pakiet rozszerzenia** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **Ścieżka narzędzia do zbierania dzienników** | %SystemDrive%\Packages\GuestAgent\ |
-| **Plik dziennika MonAgentHost** | Folderze c:\resources\directory\<CloudServiceDeploymentID >.\<rolename >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Plik dziennika MonAgentHost** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>Maszyny wirtualne
 | Artefakt | Ścieżka |
 | --- | --- |
-| **Plik konfiguracji Diagnostyka Azure** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<wersja > \RuntimeSettings |
-| **Pliki dziennika** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \ |
-| **Magazyn lokalny dla danych diagnostycznych** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
-| **Plik konfiguracyjny monitorowania agenta** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Plik stanu** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<wersja > \Status |
-| **Diagnostyka Azure pakiet rozszerzenia** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
+| **Plik konfiguracji Diagnostyka Azure** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
+| **Pliki dziennika** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **Magazyn lokalny dla danych diagnostycznych** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
+| **Plik konfiguracyjny monitorowania agenta** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **Plik stanu** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
+| **Diagnostyka Azure pakiet rozszerzenia** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Ścieżka narzędzia do zbierania dzienników** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **Plik dziennika MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **Plik dziennika MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Dane metryk nie są wyświetlane w Azure Portal
 Diagnostyka Azure udostępnia dane metryk, które mogą być wyświetlane w Azure Portal. Jeśli masz problemy z wyświetlaniem danych w portalu, sprawdź tabelę WADMetrics\* na koncie magazynu Diagnostyka Azure, aby sprawdzić, czy są tam odpowiednie rekordy metryk.
@@ -213,7 +213,7 @@ Ten kod generuje cztery tabele:
 | Provider = "prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Informacje
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Jak sprawdzić konfigurację rozszerzenia diagnostyki
 Najprostszym sposobem sprawdzenia konfiguracji rozszerzenia jest przejście do [Azure Resource Explorer](https://resources.azure.com), a następnie przejście do maszyny wirtualnej lub usługi w chmurze, w której znajduje się rozszerzenie Diagnostyka Azure (IaaSDiagnostics/PaaDiagnostics).

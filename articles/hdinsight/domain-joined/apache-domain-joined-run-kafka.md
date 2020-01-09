@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435852"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: konfigurowanie zasad platformy Apache Kafka w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
 
 Dowiedz się, jak skonfigurować zasady platformy Apache Ranger na potrzeby klastrów Apache Kafka pakietów Enterprise Security Package (ESP). Klastry ESP są łączone z domeną, co pozwala użytkownikom na uwierzytelnianie przy użyciu poświadczeń domeny. Korzystając z tego artykułu, utworzysz dwie zasady platformy Ranger, aby ograniczyć dostęp do tematów `sales` i `marketingspend`.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie użytkowników domeny
@@ -93,7 +93,7 @@ Aby utworzyć dwa tematy — `salesevents` i `marketingspend`:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Zastąp ciąg `DOMAINADMIN` za pomocą użytkownika będącego administratorem dla klastra skonfigurowanego podczas [tworzenia klastra](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), a ciąg `CLUSTERNAME` zastąp nazwą klastra. Jeśli zostanie wyświetlony monit, wprowadź hasło konta użytkownika będącego administratorem. Aby uzyskać więcej informacji na temat używania polecenia `SSH` w usłudze HDInsight, zobacz [Korzystanie z protokołu SSH w usłudze HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+   Zastąp ciąg `DOMAINADMIN` za pomocą użytkownika będącego administratorem dla klastra skonfigurowanego podczas [tworzenia klastra](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp), a ciąg `CLUSTERNAME` zastąp nazwą klastra. Jeśli zostanie wyświetlony monit, wprowadź hasło konta użytkownika będącego administratorem. Aby uzyskać więcej informacji na temat używania polecenia `SSH` w usłudze HDInsight, zobacz [Korzystanie z protokołu SSH w usłudze HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Użyj następujących poleceń, aby zapisać nazwę klastra w zmiennej i zainstalować narzędzie do analizy JSON, `jq`. Po wyświetleniu monitu wprowadź nazwę klastra platformy Kafka.
 
@@ -193,7 +193,7 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster Kafka, który 
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 1. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Usługi**.
 1. Na wyświetlonej liście klastrów usługi HDInsight kliknij symbol **...** obok klastra utworzonego na potrzeby tego samouczka. 
-1. Kliknij polecenie **Usuń**. Kliknij przycisk **Yes** (Tak).
+1. Kliknij polecenie **Usuń**. Kliknij przycisk **Tak**.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Przenieś aplikacje z BizTalk Services do Azure Logic Apps
-description: Migrowanie z usługi Azure BizTalk Services (serwera usługi MAB) do Azure Logic Apps
+title: Migrowanie aplikacji z BizTalk Services do Azure Logic Apps
+description: Jak przenieść aplikacje i rozwiązania z Microsoft Azure BizTalk Services (serwera usługi MAB) do Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,14 +8,14 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97b498091451b0bf39741ed4340b8e02517c5447
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791873"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666656"
 ---
-# <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migrowanie z BizTalk Services do Azure Logic Apps
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migruj swoje aplikacje i rozwiązania z BizTalk Services do Azure Logic Apps
 
 Trwa wycofywanie Microsoft Azure BizTalk Services (serwera usługi MAB). Aby przenieść rozwiązania integracji serwera usługi MAB do [Azure Logic Apps](../logic-apps/logic-apps-overview.md), postępuj zgodnie ze wskazówkami w tym artykule. 
 
@@ -79,7 +79,7 @@ W BizTalk Services można odbierać różne typy komunikatów XML i określać p
 
 Logic Apps oferuje podobne funkcje. Użytkownik otrzymuje plik prosty za pośrednictwem różnych protokołów przy użyciu różnych wyzwalaczy łączników (systemu plików, FTP, HTTP i tak dalej), a następnie używa akcji [dekodowania pliku prostego](../logic-apps/logic-apps-enterprise-integration-flatfile.md) do konwersji danych przychodzących do formatu XML. Istniejące płaskie schematy plików można przenieść bezpośrednio do Logic Apps bez wprowadzania żadnych zmian, a następnie przekazać schematy do konta integracji.
 
-### <a name="validation"></a>Walidacja
+### <a name="validation"></a>Sprawdzanie poprawności
 
 Po przekonwertowaniu danych przychodzących na kod XML (lub jeśli w kodzie XML był otrzymany format wiadomości), sprawdzanie poprawności przebiega w celu ustalenia, czy komunikat jest zgodny ze schematem XSD. Aby wykonać to zadanie w Logic Apps, użyj akcji [walidacji kodu XML](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) . Możesz użyć tych samych schematów z BizTalk Services bez wprowadzania żadnych zmian.
 

@@ -1,5 +1,5 @@
 ---
-title: Konwertowanie magazynu Azure Managed disks z wersji Standard do Premium lub Premium na Standard
+title: Przekształć magazyn Managed disks między warstwami SSD Standard i Premium
 description: Jak skonwertować usługi Azure Managed disks z wersji Standard do Premium lub Premium na Standard przy użyciu Azure PowerShell.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cbc2d09429c0a36992167b8c8251d0a570ffbae3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033927"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563313"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizowanie typu magazynu na dysku zarządzanym
 
@@ -113,7 +113,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Wybierz MASZYNę wirtualną z listy **maszyn wirtualnych** w portalu.
 3. Jeśli maszyna wirtualna nie jest zatrzymana, wybierz pozycję **Zatrzymaj** w górnej części okienka **Przegląd** maszyny wirtualnej, a następnie poczekaj, aż maszyna wirtualna zostanie zatrzymana.
 3. W okienku dla maszyny wirtualnej wybierz pozycję **dyski** z menu.
@@ -122,7 +122,7 @@ Wykonaj następujące kroki:
 6. Zmień **Typ konta** z **HDD w warstwie Standardowa** na **SSD w warstwie Premium**.
 7. Kliknij przycisk **Zapisz**, a następnie zamknij okienko dysk.
 
-Konwersja typu dysku jest chwilowo. Po konwersji można uruchomić ponownie maszynę wirtualną.
+Konwersja typu dysku jest chwilowo. Po konwersji można uruchomić maszynę wirtualną.
 
 ## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Przełącz dyski zarządzane między HDD w warstwie Standardowa i SSD w warstwie Standardowa 
 

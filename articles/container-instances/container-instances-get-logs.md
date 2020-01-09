@@ -1,25 +1,25 @@
 ---
 title: Pobierz dzienniki wystąpienia kontenera & zdarzenia
-description: Dowiedz się, jak debugować przy użyciu dzienników kontenerów i zdarzeń za pomocą Azure Container Instances
+description: Dowiedz się, jak pobrać dzienniki kontenerów i zdarzenia w Azure Container Instances, aby pomóc w rozwiązywaniu problemów z kontenerami
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: 57d35b9423fd8c64e5a58ee4d8055aa3b238ba8c
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481750"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664737"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Pobieranie dzienników kontenerów i zdarzeń w Azure Container Instances
 
-W przypadku kontenera błędna Zacznij od wyświetlenia jego dzienników za pomocą [AZ Container Logs][az-container-logs]i przesyłania strumieniowego standardowego błędu out i standard za pomocą [AZ Container Attach][az-container-attach].
+Jeśli masz kontener błędna w Azure Container Instances, Zacznij od wyświetlenia jego dzienników przy użyciu [AZ Container Logs][az-container-logs]i strumieniowo jego standardowego i standardowego błędu za pomocą [AZ Container Attach][az-container-attach]. Możesz również wyświetlać dzienniki i zdarzenia dla wystąpień kontenera w Azure Portal lub wysyłać dane dziennika i zdarzeń dla grup kontenerów do [Azure monitor dzienników](container-instances-log-analytics.md).
 
 ## <a name="view-logs"></a>Wyświetlanie dzienników
 
 Aby wyświetlić dzienniki z kodu aplikacji w kontenerze, można użyć polecenia [AZ Container Logs][az-container-logs] .
 
-Poniżej przedstawiono dane wyjściowe dziennika z przykładowego kontenera opartego na zadaniach w [uruchamianiu kontenerowego zadania w ACI](container-instances-restart-policy.md), po otrzymaniu przez niego nieprawidłowego adresu URL do przetworzenia:
+Poniżej znajdują się dane wyjściowe dziennika z przykładowego kontenera opartego na zadaniach w przypadku [ustawienia wiersza polecenia w wystąpieniu kontenera](container-instances-start-command.md#azure-cli-example), po podaniu nieprawidłowego adresu URL przy użyciu przesłonięcia wiersza polecenia:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -47,7 +47,7 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 Polecenie [AZ Container Attach][az-container-attach] zawiera informacje diagnostyczne podczas uruchamiania kontenera. Po rozpoczęciu pracy kontenera strumienie STDOUT i STDERR są przesyłane do lokalnej konsoli.
 
-Na przykład dane wyjściowe z kontenera opartego na zadaniach w programie [uruchamiają zadanie kontenerowe w ACI, po podaniu](container-instances-restart-policy.md)prawidłowego adresu URL dużego pliku tekstowego do przetworzenia:
+Na przykład dane wyjściowe z kontenera opartego na zadaniach są [ustawiane w wierszu polecenia w wystąpieniu kontenera](container-instances-start-command.md#azure-cli-example), po podaniu prawidłowego adresu URL dużego pliku tekstowego do przetworzenia:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -76,7 +76,7 @@ Start streaming logs:
 
 ## <a name="get-diagnostic-events"></a>Pobieranie zdarzeń diagnostycznych
 
-Jeśli pomyślne wdrożenie kontenera nie powiedzie się, należy przejrzeć informacje diagnostyczne dostarczone przez dostawcę zasobów Azure Container Instances. Aby wyświetlić zdarzenia dla kontenera, uruchom polecenie [AZ Container show] [AZ-Container-show]:
+Jeśli nie można pomyślnie wdrożyć kontenera, przejrzyj informacje diagnostyczne dostarczone przez dostawcę zasobów Azure Container Instances. Aby wyświetlić zdarzenia dla swojego kontenera, uruchom polecenie [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
@@ -145,6 +145,9 @@ Dane wyjściowe obejmują podstawowe właściwości kontenera oraz zdarzenia wdr
 ## <a name="next-steps"></a>Następne kroki
 Dowiedz się, jak [rozwiązywać typowe problemy dotyczące kontenera i wdrażania](container-instances-troubleshooting.md) Azure Container Instances.
 
+Dowiedz się, jak wysyłać dane dzienników i zdarzeń dla grup kontenerów do [dzienników Azure monitor](container-instances-log-analytics.md).
+
 <!-- LINKS - Internal -->
 [az-container-attach]: /cli/azure/container#az-container-attach
 [az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show

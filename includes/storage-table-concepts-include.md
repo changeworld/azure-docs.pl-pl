@@ -4,15 +4,15 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 042aedf1a043cd89d74ff099554642d38a3c7dd3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 83f66fb7e4d9b07cdcd72e47da1b397a85886e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469313"
 ---
 ## <a name="what-is-table-storage"></a>Co to jest usługa Table Storage
-Usługa Azure Table storage przechowuje duże ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z chmury Azure i spoza niej. Tabele platformy Azure są idealnym rozwiązaniem do przechowywania strukturalnych danych nierelacyjnych. Najczęstsze zastosowania usługi Table Storage to:
+Usługa Azure Table Storage służy do przechowywania dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który przyjmuje uwierzytelnione wywołania z chmury Azure i spoza niej. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych. Najczęstsze zastosowania usługi Table Storage to:
 
 * Przechowywanie tabel danych strukturalnych umożliwiających obsługę aplikacji w skali sieci Web
 * Zapisywanie zestawów danych, które nie wymagają złożonych sprzężeń, kluczy obcych lub przechowywanych procedur i mogą być nieznormalizowane w celu zapewniania szybkiego dostępu
@@ -26,17 +26,17 @@ Usługa Table Storage zawiera następujące składniki:
 
 ![Diagram składników usługi Table Storage][Table1]
 
-* **Format adresu URL:** Konta usługi Azure Table Storage, użyj następującego formatu: `http://<storage account>.table.core.windows.net/<table>`
+* **Format adresu URL:** Konta usługi Azure Table Storage używają następującego formatu: `http://<storage account>.table.core.windows.net/<table>`
 
   Konta interfejsu API tabel usługi Azure Cosmos DB używają następującego formatu: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
-  Możesz odwołać się do tabel platformy Azure bezpośrednio przy użyciu tego adresu i protokołu OData. Więcej informacji znajduje się w witrynie [OData.org][OData.org].
-* **Konta:** Dostęp do usługi Azure Storage odbywa się za pośrednictwem konta magazynu. Aby uzyskać szczegółowe informacje na temat pojemności konta magazynu, zobacz temat [Cele dotyczące skalowalności i wydajności usługi Azure Storage](../articles/storage/common/storage-scalability-targets.md). 
+  Możesz odwołać się do tabel platformy Azure bezpośrednio przy użyciu tego adresu i protokołu OData. Aby uzyskać więcej informacji, zobacz [OData.org][OData.org].
+* **Konta:** Cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Aby uzyskać więcej informacji na temat kont magazynu, zobacz [Omówienie konta magazynu] [... /articles/storage/common/storage-account-overview.md].
 
     Cały dostęp do usługi Azure Cosmos DB odbywa się przez konto interfejsu API tabel. Zobacz [Tworzenie konta interfejsu API tabel](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account), aby uzyskać szczegółowe informacje na temat tworzenia konta interfejsu API tabel.
-* **Tabela**: Tabela jest kolekcję jednostek. Tabele nie wymuszają schematu na obiektach, co oznacza, że jedna tabela może zawierać obiekty o różnych zestawach właściwości.  
-* **Jednostka**: Jednostka jest zestawem właściwości podobnym do wiersza bazy danych. Maksymalny rozmiar jednostki w usłudze Azure Storage to 1 MB. Maksymalny rozmiar jednostki w usłudze Azure Cosmos DB to 2 MB.
-* **Właściwości**: Właściwości to pary nazwa wartość. Każdy obiekt może zawierać maksymalnie 252 właściwości do przechowywania danych. Każdy obiekt ma również trzy właściwości systemowe, które określają klucz partycji, klucz wiersza i znacznik czasu. Obiekty o tym samym kluczu partycji mogą być szybciej badane oraz wstawiane/aktualizowane w operacjach niepodzielnych. Klucz wiersza obiektu jest jego unikatowym identyfikatorem w partycji.
+* **Tabela**: tabela jest kolekcją obiektów. Tabele nie wymuszają schematu na obiektach, co oznacza, że jedna tabela może zawierać obiekty o różnych zestawach właściwości.  
+* **Obiekt**: obiekt jest zestawem właściwości podobnym do wiersza bazy danych. Maksymalny rozmiar jednostki w usłudze Azure Storage to 1 MB. Maksymalny rozmiar jednostki w usłudze Azure Cosmos DB to 2 MB.
+* **Właściwości**: właściwość to połączenie nazwy i wartości. Każdy obiekt może zawierać maksymalnie 252 właściwości do przechowywania danych. Każdy obiekt ma również trzy właściwości systemowe, które określają klucz partycji, klucz wiersza i znacznik czasu. Obiekty o tym samym kluczu partycji mogą być szybciej badane oraz wstawiane/aktualizowane w operacjach niepodzielnych. Klucz wiersza obiektu jest jego unikatowym identyfikatorem w partycji.
 
 Szczegółowe informacje na temat nazewnictwa tabel i właściwości można znaleźć w temacie [Omówienie modelu danych usługi Table service](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 

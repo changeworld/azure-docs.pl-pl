@@ -1,6 +1,6 @@
 ---
 title: 'Przegląd: co to jest wersja zapoznawcza Azure Time Series Insights? -Azure Time Series Insights | Microsoft Docs'
-description: Poznaj kluczowe ulepszenia w wersji zapoznawczej Azure Time Series Insights.
+description: Informacje na temat zmian, ulepszeń i funkcji dostępnych w wersji zapoznawczej Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 10/29/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: cde846152ff183db857b8a0549fafd24700ffff9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f6f6039be1d8837b4b1fe4eb225289f4cd1642cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452473"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co to jest wersja zapoznawcza usługi Azure Time Series Insights?
 
@@ -23,7 +23,7 @@ Wersja zapoznawcza Azure Time Series Insights to kompleksowa oferta typu "platfo
 
 Time Series Insights jest przeznaczony do eksploracji danych ad hoc i analizy operacyjnej. Jest to rozszerzalna i dostosowana oferta usług, która spełnia szeroką gamę potrzeb przemysłowych wdrożeń IoT.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 Dowiedz się więcej o Azure Time Series Insights wersji zapoznawczej.
 
@@ -82,7 +82,7 @@ Wraz z wprowadzeniem tych kluczowych funkcji IoT rzeczy Time Series Insights ró
 | Model szeregów czasowych do contextualize nieprzetworzonej telemetrii i uzyskiwania szczegółowych informacji opartych na zasobach | Możesz użyć modelu szeregów czasowych, aby utworzyć wystąpienia, hierarchie, typy i zmienne dla danych szeregów czasowych. Aby dowiedzieć się więcej na temat modelu szeregów czasowych, zobacz [model szeregów czasowych](./time-series-insights-update-tsm.md).  |
 | Bezproblemowe i ciągłe integrację z innymi rozwiązaniami dotyczącymi danych | Dane znajdujące się w Time Series Insights chłodny magazyn są [przechowywane](./time-series-insights-update-storage-ingress.md) w plikach Apache Parquet. Pozwala to na integrację danych z innymi rozwiązaniami dotyczącymi danych, 1 lub trzecimi, w przypadku scenariuszy obejmujących analizę biznesową, zaawansowaną Uczenie maszynowe i analizę predykcyjną. |
 | Eksploracja danych w czasie niemal rzeczywistym | Środowisko użytkownika [eksploratora usługi Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-explorer.md) udostępnia wizualizacje dla wszystkich danych przesyłanych strumieniowo za pośrednictwem potoku pozyskiwania. Po nawiązaniu połączenia ze źródłem zdarzeń można wyświetlać, eksplorować i wysyłać zapytania dotyczące danych zdarzeń. W ten sposób można sprawdzić, czy urządzenie emituje dane zgodnie z oczekiwaniami. Można również monitorować kondycję, wydajność i ogólną efektywność zasobu IoT. | 
-| Rozszerzalność i integracja | Integracja łącznika Power BI Azure Time Series Insights jest dostępna bezpośrednio w środowisku użytkownika Eksploratora szeregów czasowych za pomocą opcji **eksportu** , umożliwiając klientom eksportowanie zapytań szeregów czasowych tworzonych w środowisku użytkownika bezpośrednio na pulpicie Power BI i Wyświetl ich wykresy szeregów czasowych wraz z inną analizą analizy biznesowej. Spowoduje to otwarcie drzwi do nowej klasy scenariuszy dla firmowych przedsiębiorstw IoT, które zainwestowali w Power BI przez zapewnienie pojedynczego okienka Glass przez analizę z różnych źródeł danych, w tym szeregów czasowych IoT. | 
+| Rozszerzalność i integracja | Integracja łącznika Power BI Azure Time Series Insights jest dostępna bezpośrednio w środowisku użytkownika Eksploratora szeregów czasowych za pomocą opcji **eksportu** , umożliwiając klientom eksportowanie zapytań szeregów czasowych tworzonych w środowisku użytkownika bezpośrednio na pulpit Power BI i wyświetlanie ich wykresów szeregów czasowych wraz z inną ANALIZĄ analizy biznesowej. Spowoduje to otwarcie drzwi do nowej klasy scenariuszy dla firmowych przedsiębiorstw IoT, które zainwestowali w Power BI przez zapewnienie pojedynczego okienka Glass przez analizę z różnych źródeł danych, w tym szeregów czasowych IoT. | 
 | Aplikacje niestandardowe skompilowane na platformie Time Series Insights | Usługa Time Series Insights obsługuje [zestaw SDK języka JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Ten zestaw SDK zapewnia zaawansowane kontrolki i uproszczony dostęp do zapytań. Użyj zestawu SDK do kompilowania niestandardowych aplikacji IoT na Time Series Insights, aby odpowiadały potrzebom biznesowym. Można również bezpośrednio korzystać z [interfejsów API zapytań](./time-series-insights-update-tsq.md) usługi Time Series Insights, aby kierować dane do niestandardowych aplikacji IoT. |
 
 ## <a name="next-steps"></a>Następne kroki

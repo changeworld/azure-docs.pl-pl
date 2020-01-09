@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: cbe5f0023b16aec1ed68e7a78ddb3103f40eb85b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8222a940909b98fbcce9797fe2d59f0bfb554526
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448342"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Szybki Start: wykonywanie wyszukiwania wideo przy użyciu zestawu SDK wyszukiwanie wideo Bing dla języka Java
 
@@ -23,7 +23,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć wyszukiwanie wiadomości za
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zestaw [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* [Zestaw Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * [Biblioteka Gson](https://github.com/google/gson)
 
@@ -161,7 +161,7 @@ Utwórz nowy projekt w języku Java w ulubionym środowisku IDE lub edytorze i z
 > [!div class="nextstepaction"]
 > [Tworzenie internetowej aplikacji jednostronicowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
 * [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)
 * [Cognitive services .NET SDK samples (Przykłady zestawów SKD .NET usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

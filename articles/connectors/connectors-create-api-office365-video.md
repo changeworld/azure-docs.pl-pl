@@ -1,20 +1,20 @@
 ---
 title: Łączenie z wideo pakietu Office 365
-description: Zarządzaj filmami wideo za pomocą interfejsów API REST i Azure Logic Apps wideo pakietu Office 365
+description: Automatyzowanie zadań i przepływów pracy, które zarządzają klipami wideo w wideo pakietu Office 365 przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/18/2016
 tags: connectors
-ms.openlocfilehash: bf3c7c4faac3fcd4dd0c3f368fbe18a224ed591b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8ac6b7b411e7f42dd076c5b16e7b500a819c617f
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789492"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665789"
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Wprowadzenie do łącznika wideo usługi Office 365
+# <a name="manage-videos-in-office365-video-by-using-azure-logic-apps"></a>Zarządzanie filmami wideo w usłudze Office 365 za pomocą Azure Logic Apps
 
 Połącz się z filmem wideo pakietu Office 365, aby uzyskać informacje na temat wideo z pakietem Office 365, uzyskać listę filmów wideo i wiele więcej. Film wideo z pakietem Office 365 umożliwia:
 
@@ -26,7 +26,7 @@ Na przykład możesz użyć łącznika Wyszukiwanie Bing, aby wyszukać wideo pa
 
 Teraz możesz zacząć od utworzenia aplikacji logiki, zobacz [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Utwórz połączenie z łącznikiem wideo usługi Office 365
+## <a name="connect-to-office365-video"></a>Łączenie z wideo w usłudze Office 365
 
 Po dodaniu tego łącznika do aplikacji logiki należy zalogować się do konta wideo pakietu Office 365 i zezwolić aplikacjom logiki na łączenie się ze swoim kontem.
 

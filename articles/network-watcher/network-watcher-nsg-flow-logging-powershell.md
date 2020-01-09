@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 162e499ba44557db388484639c21877fd8b852bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2b42f829add4e6227ae8a46fa5d4da359e6bae14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454231"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurowanie dzienników przepływu sieciowych grup zabezpieczeń przy użyciu programu PowerShell
 
@@ -91,8 +91,6 @@ Jeśli określono konto magazynu, pliki dziennika przepływu są zapisywane na k
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-> [!IMPORTANT]
-> Obecnie występuje problem polegający na tym, że [dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) dla Network Watcher nie są automatycznie usuwane z magazynu obiektów BLOB na podstawie ustawień zasad przechowywania. Jeśli masz istniejące zasady przechowywania inne niż zero, zalecamy okresowe usuwanie obiektów blob magazynu, które przekroczyły okres przechowywania, aby uniknąć naliczania opłat. Aby uzyskać więcej informacji o usuwaniu blogu magazynu dzienników sieciowej grupy zabezpieczeń Flow, zobacz [usuwanie obiektów blob magazynu dzienników usługi sieciowej grupy zabezpieczeń Flow](network-watcher-delete-nsg-flow-log-blobs.md).
 
 Aby uzyskać informacje na temat struktury dziennika, zobacz [Dziennik przepływu sieciowych grup zabezpieczeń — omówienie](network-watcher-nsg-flow-logging-overview.md)
 

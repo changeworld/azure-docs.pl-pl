@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9b148e413bc7dc6af7eff064e5ff3ec6385cfef4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75d32cc038d3dbf0f06a844d35a3e626ffaa67f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446217"
 ---
 [Dokumentacja referencyjna](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [przykłady](https://github.com/Azure-Samples/cognitive-services-quickstart-code) | [kodu źródłowego](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [pakietu (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
 
@@ -82,7 +82,7 @@ Obiekt Response jest listą zawierającą informacje o analizie dla każdego dok
 Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta analiza tekstu dla języka Python:
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
-* [analiza tonacji](#sentiment-analysis)
+* [Analiza tonacji](#sentiment-analysis)
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek](#entity-recognition)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)
@@ -90,15 +90,25 @@ Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą bi
 ## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
 
 
-W nowej funkcji Utwórz zmienne dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Uzyskaj te wartości ze zmiennych środowiskowych `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT`. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych.
+W nowej funkcji Utwórz zmienne dla punktu końcowego platformy Azure i klucza subskrypcji zasobu.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 Utwórz nowy obiekt [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) . Przekaż klucz do [AutoRest. Funkcja NewCognitiveServicesAuthorizer ()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) , która zostanie następnie przeniesiona do właściwości `authorizer` klienta.
 
-[!code-go[Client creation ](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=client)]
+```go
+func GetTextAnalyticsClient() textanalytics.BaseClient {
+    var key string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
 
-## <a name="sentiment-analysis"></a>Analiza tonacji
+    textAnalyticsClient := textanalytics.New(endpoint)
+    textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(key)
+
+    return textAnalyticsClient
+}
+```
+
+## <a name="sentiment-analysis"></a>Analiza opinii
 
 Utwórz nową funkcję o nazwie `SentimentAnalysis()` i Utwórz klienta przy użyciu metody `GetTextAnalyticsClient()` utworzonej wcześniej. Utwórz listę obiektów [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) zawierających dokumenty, które chcesz przeanalizować. Każdy obiekt będzie zawierać `id`, `Language` i `text` atrybut. Atrybut `text` przechowuje tekst do przeanalizowania, `language` jest językiem dokumentu, a `id` może być dowolną wartością. 
 

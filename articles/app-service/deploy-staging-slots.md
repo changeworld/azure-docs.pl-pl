@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 09/19/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671754"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666463"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w Azure App Service
 <a name="Overview"></a>
@@ -23,20 +23,24 @@ Wdrażanie aplikacji w gnieździe nieprodukcyjnym ma następujące zalety:
 * Najpierw Wdrażaj aplikację w gnieździe i wymieniaj ją w środowisku produkcyjnym, aby upewnić się, że wszystkie wystąpienia gniazda są rozgrzane przed zamianą na środowisko produkcyjne. Eliminuje to przestoje podczas wdrażania aplikacji. Przekierowywanie ruchu jest płynne i żadne żądania nie są porzucane z powodu operacji zamiany. Możesz zautomatyzować ten cały przepływ pracy, konfigurując [Automatyczne zamienianie](#Auto-Swap) , gdy nie jest wymagana Walidacja sprzed wymiany.
 * Po wymianie miejsce z wcześniej przemieszczoną aplikacją ma teraz poprzednią aplikację produkcyjną. Jeśli zmiany wprowadzone w gnieździe produkcyjnym nie są oczekiwane, można wykonać te same zamiany w celu przywrócenia "ostatniej znanej dobrej lokacji".
 
-Każda App Service warstwy planu obsługuje inną liczbę miejsc wdrożenia. Nie ma dodatkowych opłat za korzystanie z miejsc wdrożenia. Aby sprawdzić liczbę gniazd obsługiwanych przez warstwę aplikacji, zobacz [limity App Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+Każda App Service warstwy planu obsługuje inną liczbę miejsc wdrożenia. Nie ma dodatkowych opłat za korzystanie z miejsc wdrożenia. Aby sprawdzić liczbę gniazd obsługiwanych przez warstwę aplikacji, zobacz [limity App Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits). 
 
 Aby skalować aplikację do innej warstwy, upewnij się, że warstwa docelowa obsługuje liczbę gniazd używanych przez aplikację. Na przykład jeśli aplikacja ma więcej niż pięć gniazd, nie można skalować jej w dół do warstwy **standardowa** , ponieważ warstwa **standardowa** obsługuje tylko pięć miejsc wdrożenia. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Dodaj gniazdo
+## <a name="add-a-slot"></a>Dodawanie miejsca
 Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub **izolowanej** , aby można było włączyć wiele miejsc wdrożenia.
 
-1. W [Azure Portal](https://portal.azure.com/)Otwórz [stronę zasobów](../azure-resource-manager/manage-resources-portal.md#manage-resources)aplikacji.
+
+1. w [Azure Portal](https://portal.azure.com/)Wyszukaj i wybierz pozycję **App Services** i wybierz aplikację. 
+   
+    ![Wyszukaj App Services](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. W lewym okienku wybierz pozycję miejsca **wdrożenia** > **Dodaj miejsce**.
    
-    ![Dodaj nowe miejsce wdrożenia](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Dodawanie nowego miejsca wdrożenia](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Jeśli aplikacja nie jest jeszcze w warstwie **standardowa**, **Premium**lub **izolowana** , zostanie wyświetlony komunikat z informacją o obsługiwanych warstwach umożliwiających publikowanie etapowe. W tym momencie możesz wybrać opcję **Uaktualnij** i przejść do karty **Skala** aplikacji przed kontynuowaniem.
@@ -166,7 +170,7 @@ Jeśli jakiekolwiek błędy wystąpią w gnieździe docelowym (na przykład w gn
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Skonfiguruj funkcję autoswap
+## <a name="configure-auto-swap"></a>Konfigurowanie zamiany automatycznej
 
 > [!NOTE]
 > Funkcja autoswap nie jest obsługiwana w aplikacjach sieci Web w systemie Linux.
@@ -206,7 +210,7 @@ Aby uzyskać więcej informacji na temat dostosowywania elementu `applicationIni
 
 Możesz również dostosować zachowanie rozgrzewania, korzystając z jednego lub obu następujących [ustawień aplikacji](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: ścieżka do polecenia ping do rozgrzewania lokacji. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartość domyślna to `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: ścieżka do polecenia ping do rozgrzewania lokacji. Dodaj to ustawienie aplikacji, określając ścieżkę niestandardową rozpoczynającą się od ukośnika jako wartość. Może to być na przykład `/statuscheck`. Wartością domyślną jest `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: prawidłowe kody odpowiedzi HTTP dla operacji rozgrzewania. Dodaj to ustawienie aplikacji z rozdzieloną przecinkami listą kodów HTTP. Przykładem jest `200,202`. Jeśli zwrócony kod stanu nie znajduje się na liście, operacje rozgrzewania i swap są zatrzymane. Domyślnie wszystkie kody odpowiedzi są prawidłowe.
 
 > [!NOTE]
@@ -241,7 +245,7 @@ Po zapisaniu tego ustawienia określony procent klientów jest losowo kierowany 
 Po automatycznym przekierowaniu klienta do określonego gniazda zostanie on przypięty do tego gniazda w okresie istnienia sesji klienta. W przeglądarce klienta możesz sprawdzić, do którego gniazda sesja jest przypięta, przeglądając plik cookie `x-ms-routing-name` w nagłówkach HTTP. Żądanie kierowane do gniazda "przemieszczania" ma `x-ms-routing-name=staging`plików cookie. Żądanie przesyłane do miejsca produkcyjnego ma `x-ms-routing-name=self`plików cookie.
 
    > [!NOTE]
-   > W witrynie Azure Portal możesz również użyć [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) polecenie w interfejsie wiersza polecenia platformy Azure, aby ustawić wartości procentowe routingu z narzędzi Ci/CD, takich jak potoki DevOps lub inne systemy automatyzacji.
+   > Obok Azure Portal można również użyć [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) polecenie w interfejsie wiersza polecenia platformy Azure, aby ustawić wartości procentowe routingu z narzędzi Ci/CD, takich jak potoki DevOps lub inne systemy automatyzacji.
    > 
 
 ### <a name="route-production-traffic-manually"></a>Ręczne kierowanie ruchu produkcyjnego
@@ -268,7 +272,7 @@ Domyślnie nowe gniazda otrzymują regułę routingu `0%`, która jest wyświetl
 
 ## <a name="delete-a-slot"></a>Usuń gniazdo
 
-Przejdź do strony zasobów aplikacji. Wybierz pozycję miejsca **wdrożenia** > *miejsce\<do usunięcia >*  > **Przegląd**. Na pasku poleceń wybierz pozycję **Usuń** .  
+Wyszukaj i wybierz aplikację. Wybierz pozycję miejsca **wdrożenia** > *miejsce\<do usunięcia >*  > **Przegląd**. Na pasku poleceń wybierz pozycję **Usuń** .  
 
 ![Usuń miejsce wdrożenia](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -327,16 +331,16 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automatyzowanie przy użyciu szablonów ARM
+## <a name="automate-with-resource-manager-templates"></a>Automatyzowanie przy użyciu szablonów Menedżer zasobów
 
-[Szablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) to DEKLARACYJNE pliki JSON używane do automatyzowania wdrażania i konfigurowania zasobów platformy Azure. Aby zamienić miejsca przy użyciu szablonów ARM, należy ustawić dwie właściwości dla zasobów *Microsoft. Web/Sites/Slots* i *Microsoft. Web/Sites* :
+[Szablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) to DEKLARACYJNE pliki JSON używane do automatyzowania wdrażania i konfigurowania zasobów platformy Azure. Aby zamienić miejsca przy użyciu szablonów Menedżer zasobów, należy ustawić dwie właściwości dla zasobów *Microsoft. Web/Sites/Slots* i *Microsoft. Web/Sites* :
 
 - `buildVersion`: jest to właściwość ciągu reprezentująca bieżącą wersję aplikacji wdrożonej w gnieździe. Na przykład: "v1", "1.0.0.1" lub "2019-09-20T11:53:25.2887393-07:00".
 - `targetBuildVersion`: jest to właściwość ciągu określająca, co `buildVersion` powinno mieć miejsce. Jeśli targetBuildVersion nie jest taka sama jak bieżąca `buildVersion`, spowoduje to wyzwolenie operacji zamiany przez znalezienie miejsca, w którym określono `buildVersion`.
 
-### <a name="example-arm-template"></a>Przykładowy szablon ARM
+### <a name="example-resource-manager-template"></a>Przykładowy szablon Menedżer zasobów
 
-Następujący szablon ARM zaktualizuje `buildVersion` miejsca przejściowego i ustawi `targetBuildVersion` w miejscu produkcyjnym. Spowoduje to zamianę dwóch miejsc. Szablon zakłada, że masz już webapp utworzony z miejscem o nazwie "przemieszczanie".
+Poniższy szablon Menedżer zasobów zaktualizuje `buildVersion` miejsca przejściowego i ustawi `targetBuildVersion` w miejscu produkcyjnym. Spowoduje to zamianę dwóch miejsc. Szablon zakłada, że masz już webapp utworzony z miejscem o nazwie "przemieszczanie".
 
 ```json
 {
@@ -380,7 +384,7 @@ Następujący szablon ARM zaktualizuje `buildVersion` miejsca przejściowego i u
 }
 ```
 
-Ten szablon ARM jest idempotentne, co oznacza, że może być wykonywany wielokrotnie i generować ten sam stan miejsc. Po pierwszym wykonaniu `targetBuildVersion` będzie zgodna z bieżącą `buildVersion`, więc nie zostanie wyzwolone zamiana.
+Ten szablon Menedżer zasobów jest idempotentne, co oznacza, że może być wykonywany wielokrotnie i generować ten sam stan miejsc. Po pierwszym wykonaniu `targetBuildVersion` będzie zgodna z bieżącą `buildVersion`, więc nie zostanie wyzwolone zamiana.
 
 <!-- ======== Azure CLI =========== -->
 

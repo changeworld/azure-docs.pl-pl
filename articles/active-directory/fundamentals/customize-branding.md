@@ -1,5 +1,5 @@
 ---
-title: Dodawać oznaczenia marki do Twojej organizacji strony logowania — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Dodawanie znakowania do strony logowania w organizacji — Azure AD
 description: Instrukcje dotyczące sposobu dodawania organizacji znakowania na stronie logowania w usłudze Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422835"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Dodawanie znakowania na stronie logowania w usłudze Azure Active Directory w organizacji
 Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azure Active Directory (Azure AD), należy użyć logo organizacji i niestandardowych schematów kolorów. Strony logowania są wyświetlane, gdy użytkownicy logują się do Twojej organizacji opartej na sieci web aplikacji, takich jak Office 365, która używa usługi Azure AD jako dostawcy tożsamości.
@@ -29,7 +29,7 @@ Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azu
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Dostosuj swoją stronę logowania w usłudze Azure AD
 Można dostosować swoje usługi Azure AD logowania stron, które są wyświetlane, gdy użytkownicy logują się do aplikacji specyficznym dla dzierżawy organizacji, takich jak [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), lub przy przekazywaniu zmiennej domeny, takich jak [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Niestandardowa znakowanie nie zostanie natychmiast wyświetlone, gdy użytkownicy przejdą do witryn,\.takich jak Office.com www. Zamiast tego użytkownik będzie musiał zalogować przed wyświetleniem dostosowanego znakowania. Po zalogowaniu się użytkownika znakowanie może potrwać 15 minut lub dłużej. 
+Niestandardowa znakowanie nie zostanie natychmiast wyświetlone, gdy użytkownicy przejdą do witryn takich jak www\.office.com. Zamiast tego użytkownik będzie musiał zalogować przed wyświetleniem dostosowanego znakowania. Po zalogowaniu się użytkownika znakowanie może potrwać 15 minut lub dłużej. 
 
 > [!NOTE]
 > Wszystkie elementy znakowania są opcjonalne. Na przykład jeśli określisz Baner logo z Brak obrazu tła strony logowania Pokaż logo przy użyciu domyślnego obrazu tła, z lokacji docelowej (na przykład Office 365).<br><br>Ponadto znakowanie strony logowania nie jest przenoszone do osobistych kont Microsoft. Jeśli użytkowników lub Goście biznesowi logują się przy użyciu osobistego konta Microsoft, strony logowania nie będzie zawierać znakowania organizacji.
@@ -76,7 +76,7 @@ Niestandardowa znakowanie nie zostanie natychmiast wyświetlone, gdy użytkownic
     
         - **Obraz kwadratowego logo, motyw ciemny.** Taka sama jak powyższy obraz kwadratowego logo. Ten obraz logo odbywa się obraz kwadratowego logo, gdy jest używana na ciemnym tle, takie jak z ekranami przyłączone do systemu Windows 10 w usłudze Azure AD podczas początkowego out-of-box (OOBE).  Jeśli logo wygląda dobrze na biały, ciemny niebieski i czarnego tła, nie trzeba dodać ten obraz. 
         
-        - **Wyświetl opcję umożliwiającą pozostanie zalogowanym.** Można wybrać umożliwić użytkownikom pozostania zalogowanym do usługi Azure AD, aż jawnie wylogowywania. Jeśli wybierzesz **nie**, ta opcja jest ukryta, a użytkownicy muszą logować się za każdym razem, zamknięcia i ponownego otworzenia przeglądarki.
+        - **Wyświetl opcję umożliwiającą pozostanie zalogowanym.** Możesz zezwolić użytkownikom na logowanie się do usługi Azure AD do momentu jawnego wylogowania. Jeśli wybierzesz opcję **nie**, ta opcja jest ukryta, a użytkownicy muszą logować się za każdym razem, gdy przeglądarka zostanie zamknięta i ponownie otwarta.
         
             >[!Note]
             >Niektóre funkcje usługi SharePoint Online oraz pakietu Office 2010 zależą od tego, czy użytkownicy mogą wybrać opcję pozostania zalogowanym. Jeśli ta opcja zostanie ustawiona na **Nie**, użytkownicy mogą otrzymywać dodatkowe i nieoczekiwane monity o zalogowanie.

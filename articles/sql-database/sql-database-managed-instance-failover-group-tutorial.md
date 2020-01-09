@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286756"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552767"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Samouczek: dodawanie wystąpienia zarządzanego SQL Database do grupy trybu failover
 
@@ -31,6 +31,7 @@ Dodaj wystąpienie zarządzane SQL Database do grupy trybu failover. W tym artyk
   > [!NOTE]
   > - Korzystając z tego samouczka, należy się upewnić, że skonfigurowano zasoby z [wymaganiami wstępnymi dotyczącymi konfigurowania grup trybu failover dla wystąpienia zarządzanego](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Tworzenie wystąpienia zarządzanego może zająć dużo czasu. W związku z tym ten samouczek może trwać kilka godzin. Aby uzyskać więcej informacji o czasach udostępniania, zobacz [operacje zarządzania wystąpieniami zarządzanymi](sql-database-managed-instance.md#managed-instance-management-operations). 
+  > - Wystąpienia zarządzane uczestniczące w grupie trybu failover wymagają [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) lub dwóch podłączonych bram sieci VPN. Ten samouczek zawiera instrukcje dotyczące tworzenia i łączenia bram sieci VPN. Pomiń te kroki, jeśli skonfigurowano już ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -728,7 +729,9 @@ W tej części samouczka są stosowane następujące polecenia cmdlet programu P
 ---
 
 ## <a name="4---create-primary-gateway"></a>4 — Tworzenie bramy podstawowej 
-W przypadku dwóch wystąpień zarządzanych, które mają być uwzględnione w grupie trybu failover, musi istnieć Brama skonfigurowana między sieciami wirtualnymi dwóch wystąpień zarządzanych, aby umożliwić komunikację sieciową. Bramę dla podstawowego wystąpienia zarządzanego można utworzyć przy użyciu Azure Portal. 
+W przypadku dwóch wystąpień zarządzanych, które mają być uwzględnione w grupie trybu failover, musi istnieć albo ExpressRoute, albo Brama skonfigurowana między sieciami wirtualnymi dwóch wystąpień zarządzanych, aby umożliwić komunikację sieciową. Jeśli zdecydujesz się skonfigurować [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) zamiast łączyć dwie bramy sieci VPN, przejdź do [kroku 7](#7---create-a-failover-group).  
+
+Ten artykuł zawiera instrukcje tworzenia dwóch bram sieci VPN i łączenia ich, ale można przejść do tworzenia grupy trybu failover, jeśli zamiast tego została skonfigurowana ExpressRoute. 
 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
@@ -754,7 +757,7 @@ Utwórz bramę dla sieci wirtualnej głównego wystąpienia zarządzanego przy u
     | **Subskrypcja** |  Subskrypcja, w której znajduje się główne wystąpienie zarządzane. |
     | **Nazwa** | Nazwa bramy sieci wirtualnej, na przykład `primary-mi-gateway`. | 
     | **Region** | Region, w którym znajduje się pomocnicze wystąpienie zarządzane. |
-    | **Typ bramy** | wybierz pozycję **VPN**. |
+    | **Typ bramy** | Wybierz pozycję **Sieć VPN**. |
     | **Typ sieci VPN** | Wybierz pozycję **oparta na trasach** |
     | **SKU**| Pozostaw wartość domyślną `VpnGw1`. |
     | **Lokalizacja**| Lokalizacja, w której znajduje się podstawowe wystąpienie zarządzane i podstawowa Sieć wirtualna.   |
@@ -836,7 +839,7 @@ Korzystając z Azure Portal, powtórz kroki opisane w poprzedniej sekcji, aby ut
    | **Subskrypcja** |  Subskrypcja, w której znajduje się pomocnicze wystąpienie zarządzane. |
    | **Nazwa** | Nazwa bramy sieci wirtualnej, na przykład `secondary-mi-gateway`. | 
    | **Region** | Region, w którym znajduje się pomocnicze wystąpienie zarządzane. |
-   | **Typ bramy** | wybierz pozycję **VPN**. |
+   | **Typ bramy** | Wybierz pozycję **Sieć VPN**. |
    | **Typ sieci VPN** | Wybierz pozycję **oparta na trasach** |
    | **SKU**| Pozostaw wartość domyślną `VpnGw1`. |
    | **Lokalizacja**| Lokalizacja, w której znajduje się pomocnicze wystąpienie zarządzane i pomocnicza Sieć wirtualna.   |
@@ -1075,7 +1078,7 @@ Wyczyść zasoby, usuwając najpierw wystąpienie zarządzane, klaster wirtualny
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Przejdź do grupy zasobów w [Azure Portal](https://portal.azure.com). 
-1. Wybierz wystąpienia zarządzane, a następnie wybierz pozycję **Usuń**. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. Ukończenie tego procesu może potrwać trochę czasu w tle i do momentu wykonania operacji "s" nie będzie można usunąć *klastra wirtualnego* ani żadnych innych zasobów zależnych. Monitoruj pozycję Usuń na karcie działanie, aby potwierdzić, że zarządzane wystąpienie zostało usunięte. 
+1. Wybierz wystąpienia zarządzane, a następnie wybierz pozycję **Usuń**. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. Ten proces może potrwać trochę czasu w tle, a do momentu ukończenia nie będzie można usunąć *klastra wirtualnego* ani żadnych innych zasobów zależnych. Monitoruj pozycję Usuń na karcie działanie, aby potwierdzić, że zarządzane wystąpienie zostało usunięte. 
 1. Po usunięciu wystąpienia zarządzanego Usuń *klaster wirtualny* , wybierając go w grupie zasobów, a następnie wybierając pozycję **Usuń**. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. 
 1. Usuń wszystkie pozostałe zasoby. Wpisz `yes` w polu tekstowym, aby potwierdzić, że chcesz usunąć zasób, a następnie wybierz pozycję **Usuń**. 
 1. Aby usunąć grupę zasobów, wybierz pozycję **Usuń grupę zasobów**, wpisz nazwę grupy zasobów, `myResourceGroup`a następnie wybierz pozycję **Usuń**. 

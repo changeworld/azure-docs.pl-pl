@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837641"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427649"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Wykonywanie skryptów w języku Python Machine Learning w Azure Machine Learning Studio (klasyczny)
 
@@ -53,7 +53,7 @@ Funkcja `azureml_main` musi zwracać pojedynczą Pandas Dataframe spakowaną w [
 
 ## <a name="translation-of-input-and-output-data-types"></a>Tłumaczenie typów danych wejściowych i wyjściowych
 
-Zestawy danych programu Studio nie są takie same jak Panda dataframes. W związku z tym wejściowe zestawy danych w klasycznej wersji programu Studio są konwertowane na Pandas Dataframe, a wyjściowe ramki danych są konwertowane z powrotem do zestawu danych programu Studio (klasycznego). W trakcie tego procesu konwersji są również wykonywane następujące tłumaczenia:
+Zestawy danych programu Studio nie są takie same jak Panda dataframes. W efekcie wejściowe zestawy danych w programie Studio (klasyczne) są konwertowane na Pandas Dataframe, a wyjściowe ramki danych są konwertowane z powrotem do zestawu danych programu Studio (klasycznego). W trakcie tego procesu konwersji są również wykonywane następujące tłumaczenia:
 
  **Typ danych języka Python** | **Studio — procedura tłumaczenia** |
 | --- | --- |
@@ -67,9 +67,9 @@ Zestawy danych programu Studio nie są takie same jak Panda dataframes. W związ
 
 ## <a id="import-modules"></a>Importowanie istniejących modułów skryptów języka Python
 
-Zaplecze używane do wykonywania języka Python opiera się na [Anaconda](https://www.anaconda.com/distribution/), szeroko używanym do nauki dystrybucji języka Python. Jest on dostępny w pobliżu 200 najpopularniejszych pakietów języka Python używanych w obciążeniu zorientowanym na dane. Klasyczna wersja programu Studio obecnie nie obsługuje korzystania z systemów zarządzania pakietami, takich jak PIP lub Conda, do instalowania bibliotek zewnętrznych i zarządzania nimi.  Jeśli okaże się, że musisz uwzględnić dodatkowe biblioteki, użyj następującego scenariusza jako przewodnika.
+Zaplecze używane do wykonywania języka Python opiera się na [Anaconda](https://www.anaconda.com/distribution/), szeroko używanym do nauki dystrybucji języka Python. Jest on dostępny w pobliżu 200 najpopularniejszych pakietów języka Python używanych w obciążeniu zorientowanym na dane. Studio (klasyczny) obecnie nie obsługuje korzystania z systemów zarządzania pakietami, takich jak PIP lub Conda, do instalowania bibliotek zewnętrznych i zarządzania nimi.  Jeśli okaże się, że musisz uwzględnić dodatkowe biblioteki, użyj następującego scenariusza jako przewodnika.
 
-Typowym przypadkiem użycia jest dołączenie istniejących skryptów języka Python do klasycznej wersji eksperymentów Studio. Moduł [wykonywania skryptu języka Python][execute-python-script] akceptuje plik zip zawierający moduły Python na trzecim porcie wejściowym. Plik jest rozpakowany przez strukturę wykonywania w czasie wykonywania, a zawartość jest dodawana do ścieżki biblioteki interpretera języka Python. Funkcja punktu wejścia `azureml_main` może następnie importować te moduły bezpośrednio. 
+Typowy przypadek użycia polega na uwzględnieniu istniejących skryptów języka Python w programie Studio (klasycznym). Moduł [wykonywania skryptu języka Python][execute-python-script] akceptuje plik zip zawierający moduły Python na trzecim porcie wejściowym. Plik jest rozpakowany przez strukturę wykonywania w czasie wykonywania, a zawartość jest dodawana do ścieżki biblioteki interpretera języka Python. Funkcja punktu wejścia `azureml_main` może następnie importować te moduły bezpośrednio. 
 
 Rozważmy na przykład plik Hello.py zawierający prostą funkcję "Hello, World".
 
@@ -79,7 +79,7 @@ Następnie tworzymy plik Hello. zip, który zawiera Hello.py:
 
 ![Plik zip zawierający kod języka Python zdefiniowany przez użytkownika](./media/execute-python-scripts/figure5.png)
 
-Przekaż plik zip jako zestaw danych do klasycznej wersji programu Studio. Następnie utwórz i uruchom eksperyment, który używa kodu Python w pliku Hello. zip przez dołączenie go do trzeciego portu wejściowego modułu **skryptu języka Python** , jak pokazano na poniższej ilustracji.
+Przekaż plik zip jako zestaw danych do programu Studio (klasyczny). Następnie utwórz i uruchom eksperyment, który używa kodu Python w pliku Hello. zip przez dołączenie go do trzeciego portu wejściowego modułu **skryptu języka Python** , jak pokazano na poniższej ilustracji.
 
 ![Przykładowy eksperyment z Hello. zip jako dane wejściowe do modułu skryptu języka Python](./media/execute-python-scripts/figure6a.png)
 
@@ -141,11 +141,11 @@ Ten proces jest przedstawiony w poniższych obrazach, które tworzą macierz pun
 
 ![Wizualizacja wykresów na potrzeby przykładowego eksperymentu przy użyciu kodu języka Python](./media/execute-python-scripts/figure-v2-9b.png)
 
-Istnieje możliwość zwrócenia wielu cyfr przez zapisanie ich w różnych obrazach. Klasyczna wersja środowiska uruchomieniowego Studio pobiera wszystkie obrazy i łączy je w celu wizualizacji.
+Istnieje możliwość zwrócenia wielu cyfr przez zapisanie ich w różnych obrazach. Studio (klasyczne) środowisko uruchomieniowe pobiera wszystkie obrazy i łączy je w celu wizualizacji.
 
 ## <a name="advanced-examples"></a>Zaawansowane przykłady
 
-Środowisko Anaconda zainstalowane w klasycznej wersji programu Studio zawiera wspólne pakiety, takie jak NumPy, SciPy i Scikits — uczenie się. Te pakiety mogą być efektywnie używane do przetwarzania danych w potoku uczenia maszynowego.
+Środowisko Anaconda zainstalowane w programie Studio (klasyczne) zawiera wspólne pakiety, takie jak NumPy, SciPy i Scikits — uczenie się. Te pakiety mogą być efektywnie używane do przetwarzania danych w potoku uczenia maszynowego.
 
 Na przykład następujące eksperymenty i skrypty ilustrują korzystanie z wieloskładnikowych informacji w Scikits — Dowiedz się więcej na temat oceny ważności funkcji obliczeniowej dla zestawu danych. Wyniki mogą być używane do przeprowadzania nadzorowanego wyboru funkcji przed wprowadzeniem ich do innego modelu.
 
@@ -153,7 +153,7 @@ Oto funkcja języka Python użyta do obliczenia oceny ważności i uporządkowan
 
 ![Funkcja do rangi funkcji według wyników](./media/execute-python-scripts/figure8.png)
 
-Poniższy eksperyment następnie obliczy i zwróci wyniki ważności funkcji w zestawie danych "Pima indyjski cukrzycą" w klasycznej wersji Azure Machine Learning Studio:
+Poniższy eksperyment następnie obliczy i zwróci wyniki ważności funkcji w zestawie danych "Pima indyjski cukrzycą" w Azure Machine Learning Studio (klasyczny):
 
 ![Eksperymentowanie z funkcjami rangi w Pima indyjskich zestawów danych cukrzycą przy użyciu języka Python](./media/execute-python-scripts/figure9a.png)
 

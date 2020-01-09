@@ -1,6 +1,6 @@
 ---
 title: Ochrona maszyn i aplikacji
-description: Ten dokument zawiera zalecenia dotyczące Security Center, które pomagają chronić maszyny wirtualne i komputery oraz aplikacje sieci Web i środowiska App Service.
+description: Tym dokumencie przedstawiono zalecenia w usłudze Security Center, które ułatwiają ochronę maszyn wirtualnych i komputerów i aplikacji sieci web i środowisk usługi App Service.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 4a6d733b490edd892136f6febcc90c29a5a865e1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766807"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553005"
 ---
 # <a name="protect-your-machines-and-applications"></a>Ochrona maszyn i aplikacji
-Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania niezbędnych kontrolek. 
+Gdy Azure Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
 
-W tym artykule opisano stronę **obliczenia i aplikacje** w sekcji zabezpieczenia zasobów Azure Security Center. Opisano w nim również niektóre zalecenia, które pojawią się w tym miejscu.
+W tym artykule opisano stronę **obliczenia i aplikacje** w sekcji zabezpieczenia zasobów Security Center.
 
-Aby zapoznać się z pełną listą zaleceń dotyczących usług obliczeniowych i aplikacji, zobacz [zalecenia dotyczące obliczeń i aplikacji](recommendations-compute-and-apps.md).
+Aby zapoznać się z pełną listą zaleceń, które mogą zostać wyświetlone na tej stronie, zobacz [zalecenia dotyczące danych i magazynu](recommendations-reference.md#recs-computeapp).
+
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>Wyświetlanie zabezpieczeń zasobów obliczeniowych i aplikacji
 
-![Pulpit nawigacyjny usługi Security Center](./media/security-center-virtual-machine-recommendations/overview.png)
+[Pulpit nawigacyjny Security Center ![](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
 
 Aby wyświetlić stan zasobów obliczeniowych i aplikacji, wybierz pozycję **oblicz & aplikacje** w obszarze **zasoby** na pasku bocznym Security Center. Dostępne są następujące karty:
 
@@ -53,7 +54,7 @@ Każda karta zawiera wiele sekcji, a w każdej sekcji można przejść do szczeg
 
 Na każdej karcie zobaczysz również zalecenia dotyczące odpowiednich zasobów w monitorowanym środowisku. Pierwsza kolumna zawiera listę zaleceń, drugi pokazuje łączną liczbę zasobów, a trzecia pokazuje ważność problemu.
 
-Każde zalecenie zawiera zestaw akcji, które można wykonać po ich wybraniu. Na przykład w przypadku wybrania opcji **brakujące aktualizacje systemu**zostanie wyświetlona liczba maszyn wirtualnych i komputerów, na których brakuje poprawek, oraz ważność brakującej aktualizacji.
+Każdy zalecenie obejmuje zestaw akcji, które można wykonać po jej wybraniu. Na przykład w przypadku wybrania opcji **brakujące aktualizacje systemu**zostanie wyświetlona liczba maszyn wirtualnych i komputerów, na których brakuje poprawek, oraz ważność brakującej aktualizacji.
 
 > [!NOTE]
 > Zalecenia dotyczące zabezpieczeń są takie same jak te na stronie **zalecenia** , ale w tym miejscu są one filtrowane według wybranego typu zasobu. Aby uzyskać więcej informacji o sposobach rozwiązywania zaleceń, zobacz [implementowanie zaleceń dotyczących zabezpieczeń w Azure Security Center](security-center-recommendations.md).
@@ -64,17 +65,18 @@ Sekcja maszyny wirtualne i komputery zawiera przegląd wszystkich zaleceń dotyc
 
 ![Komputer spoza platformy Azure](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Komputer bez platformy Azure.
 
-![Azure Resource Manager maszynę wirtualną](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Azure Resource Manager maszynę wirtualną.
+![Maszyna wirtualna platformy Azure Resource Manager](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Maszyna wirtualna platformy Azure Resource Manager.
 
-![Klasyczna maszyna wirtualna platformy Azure](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Klasyczna maszyna wirtualna platformy Azure.
+![Klasyczne maszyny Wirtualnej platformy Azure](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Klasyczna maszyna wirtualna platformy Azure.
 
-![Maszyny wirtualne zidentyfikowane w obszarze roboczym](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Maszyny wirtualne, które są identyfikowane tylko z obszaru roboczego będącego częścią przeglądanej subskrypcji. Obejmuje to maszyny wirtualne z innych subskrypcji, które są raportowane do obszaru roboczego w tej subskrypcji, oraz maszyny wirtualne, które zostały zainstalowane przy użyciu agenta Operations Manager bezpośredniego, i nie mają identyfikatora zasobu.
+![Maszyny wirtualne wskazane w obszarze roboczym](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Maszyny wirtualne, które są identyfikowane tylko z obszaru roboczego będącego częścią przeglądanej subskrypcji. Obejmuje to maszyny wirtualne z innych subskrypcji, które są raportowane do obszaru roboczego w tej subskrypcji, oraz maszyny wirtualne, które zostały zainstalowane przy użyciu agenta Operations Manager bezpośredniego, i nie mają identyfikatora zasobu.
 
-Ikona wyświetlana pod każdym zaleceniem pomaga szybko określić maszynę wirtualną i komputer wymagający uwagi oraz typ zalecenia. Możesz również użyć filtrów, aby przeszukać listę według **typu zasobów** i według **ważności**.
+Ikona wyświetlana pod każdym zaleceniem pomaga szybko zidentyfikować maszyny Wirtualnej, a komputer, który wymaga uwagi oraz jakiego typu zalecenie ma do nich. Możesz również użyć filtrów, aby przeszukać listę według **typu zasobów** i według **ważności**.
 
 Aby przejść do szczegółów zaleceń dotyczących zabezpieczeń dla każdej maszyny wirtualnej, kliknij maszynę wirtualną.
-W tym miejscu są wyświetlane szczegóły zabezpieczeń dotyczące maszyny wirtualnej lub komputera. Na dole można zobaczyć zalecaną akcję i ważność poszczególnych problemów.
-![Usługi w chmurze](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
+W tym miejscu wyświetlane szczegóły zabezpieczeń dotyczące maszyny Wirtualnej lub komputera. Na dole można zobaczyć zalecaną akcję i ważność poszczególnych problemów.
+
+[![Cloud Services](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
 ### <a name="cloud-services"></a>Cloud Services
 W przypadku usług w chmurze zalecenie jest tworzone, gdy wersja systemu operacyjnego jest nieaktualna.
@@ -87,13 +89,13 @@ W scenariuszu, w którym masz zalecenie, postępuj zgodnie z instrukcjami w zale
 Aby wyświetlić informacje o App Service, musisz mieć Security Center standardowej warstwy cenowej i włączyć App Service w ramach subskrypcji. Aby uzyskać instrukcje dotyczące włączania tej funkcji, zobacz [ochrona App Service przy użyciu Azure Security Center](security-center-app-services.md).
 
 
-W obszarze **usługi App Services**znajdziesz listę środowisk usługi App Service oraz podsumowanie kondycji w oparciu o wykonane Security Center oceny.
+W obszarze **usług App services**Znajdź listę środowisk App service Environment i wykonywane podsumowanie kondycji opartego na ocenie usługi Security Center.
 
 ![Usługi aplikacji](./media/security-center-virtual-machine-recommendations/app-services.png)
 
 Są wyświetlane trzy typy usług aplikacji:
 
-![Środowisko usługi App Services](./media/security-center-virtual-machine-recommendations/ase.png) Środowisko usługi App Services
+![Środowiska usług aplikacji](./media/security-center-virtual-machine-recommendations/ase.png) Środowiska usług aplikacji
 
 ![Aplikacja internetowa](./media/security-center-virtual-machine-recommendations/web-app.png) Aplikacja internetowa
 
@@ -102,18 +104,18 @@ Są wyświetlane trzy typy usług aplikacji:
 W przypadku wybrania aplikacji sieci Web zostanie otwarty widok podsumowania z trzema kartami:
 
    - **Zalecenia**: na podstawie ocen wykonanych przez Security Center zakończonych niepowodzeniem.
-   - Przeprowadzono **oceny**: Lista ocen wykonanych przez Security Center, które zakończono.
-   - **Niedostępne oceny**: Lista ocen, których uruchomienie nie powiodło się z powodu błędu lub zalecenie nie jest istotne dla określonej usługi App Service
+   - **Przekazano ocen**: Lista ocen wykonywane przez usługę Security Center, które przekazane.
+   - **Oceny niedostępne**: Lista ocen, którzy nie uruchomili z powodu błędu lub zalecenie nie jest odpowiednie dla określonej usługi App service
 
-   W obszarze **zalecenia** znajduje się lista zaleceń dotyczących wybranej aplikacji sieci Web i ważności poszczególnych zaleceń.
+   W obszarze **zalecenia** listę zaleceń dla wybranej aplikacji sieci web i ważność poszczególne zalecenia.
 
    ![Zalecenia dotyczące App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 Wybierz zalecenie, aby wyświetlić opis zalecenia i listę zasobów w złej kondycji, zdrowe zasoby i niezeskanowane zasoby.
 
-   - W kolumnie **przekazana oceny** jest wyświetlana lista zakończonych ocen. Ważność tych ocen jest zawsze zielona.
+   - W kolumnie **przekazana oceny** jest wyświetlana lista zakończonych ocen. Ważność te oceny zawsze ma kolor zielony.
 
-   - Wybierz przekazaną ocenę z listy, aby zapoznać się z opisem oceny, listą nieprawidłowych i zdrowych zasobów oraz listą niezeskanowanych zasobów. Istnieje karta dla zasobów o złej kondycji, ale ta lista jest zawsze pusta od czasu przeprowadzenia oceny.
+   - Wybierz ocenę przekazany z listy opis oceny, lista zasobów w złej kondycji i w dobrej kondycji i listę nieprzeskanowane zasoby. Ma kartę zasoby w złej kondycji, ale ta lista jest zawsze pusta, ponieważ przekazana oceny.
 
 ### <a name="vmscale-sets"></a>Zestawy skalowania maszyn wirtualnych
 Security Center automatycznie wykrywa, czy masz zestawy skalowania i zaleca się zainstalowanie na nich Microsoft Monitoring Agent.
@@ -141,6 +143,7 @@ Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania w celu zainstalo
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o zaleceniach dotyczących innych typów zasobów platformy Azure, zobacz następujące artykuły:
 
+* [Pełna lista referencyjna zaleceń dotyczących zabezpieczeń Azure Security Center](recommendations-reference.md)
 * [Monitorowanie tożsamości i dostępu w usłudze Azure Security Center](security-center-identity-access.md)
 * [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
-* [Ochrona usługi Azure SQL w Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrona usługi Azure SQL w usłudze Azure Security Center](security-center-sql-service-recommendations.md)

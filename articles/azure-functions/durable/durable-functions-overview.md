@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 24738e4d6a9f18bccdbc775fa20cccec222a85fb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706120"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561630"
 ---
 # <a name="what-are-durable-functions"></a>Co to jest Durable Functions?
 
@@ -48,7 +48,7 @@ W wzorcu łańcucha funkcji sekwencja funkcji jest wykonywana w określonej kole
 
 Można użyć Durable Functions do zaimplementowania wzorca łańcucha funkcji zwięzłie, jak pokazano w poniższym przykładzie.
 
-W tym przykładzie wartości `F1`, `F2`, `F3`i `F4` są nazwami innych funkcji w aplikacji funkcji. Przepływ sterowania można zaimplementować przy użyciu zwykłych konstrukcji kodowania. Kod jest wykonywany z góry. Kod może dotyczyć istniejącej semantyki przepływu sterowania języka, takich jak warunkowe i pętle. Logikę obsługi błędów można uwzględnić w `try`/`catch`/`finally` bloków.
+W tym przykładzie wartości `F1`, `F2`, `F3`i `F4` są nazwami innych funkcji w tej samej aplikacji funkcji. Przepływ sterowania można zaimplementować przy użyciu zwykłych konstrukcji kodowania. Kod jest wykonywany z góry. Kod może dotyczyć istniejącej semantyki przepływu sterowania języka, takich jak warunkowe i pętle. Logikę obsługi błędów można uwzględnić w `try`/`catch`/`finally` bloków.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -353,7 +353,7 @@ Klient zewnętrzny może dostarczyć powiadomienie o zdarzeniu do oczekującej f
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Zdarzenie może być również zgłaszane przy użyciu nietrwałego klienta aranżacji z innej funkcji:
+Zdarzenie może być również zgłaszane przy użyciu nietrwałego klienta aranżacji z innej funkcji w tej samej aplikacji funkcji:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

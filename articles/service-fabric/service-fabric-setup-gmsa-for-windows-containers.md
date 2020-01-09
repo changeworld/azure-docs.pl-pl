@@ -1,29 +1,18 @@
 ---
-title: GMSA Instalatora usługi Azure Service Fabric Container Services | Microsoft Docs
-description: Dowiedz się teraz, jak skonfigurować gMSA dla kontenera działającego na platformie Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
+title: GMSA Instalatora usługi Azure Service Fabric Container Services
+description: Dowiedz się teraz, jak skonfigurować konta usług zarządzane przez grupę (gMSA) dla kontenera działającego na platformie Azure Service Fabric.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: 45fc4c924a8fb794ad81529de74b98ee812f46c5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9873e2d7672412b0e1e22c6c2a774cf629fd728a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170438"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639211"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Skonfiguruj gMSA dla kontenerów systemu Windows uruchomionych w systemie Service Fabric
 
-Aby skonfigurować gMSA (konta usług zarządzane przez grupę), plik specyfikacji poświadczeń (`credspec`) jest umieszczany na wszystkich węzłach w klastrze. Plik można skopiować na wszystkie węzły przy użyciu rozszerzenia maszyny wirtualnej.  Plik `credspec` musi zawierać informacje o koncie gMSA. Aby uzyskać więcej informacji na temat pliku `credspec`, zobacz [Tworzenie specyfikacji poświadczeń](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Specyfikacja poświadczeń i tag `Hostname` są określone w manifeście aplikacji. Tag `Hostname` musi być zgodny z nazwą konta gMSA, w którym działa kontener.  Znacznik `Hostname` umożliwia kontenerowi uwierzytelnienie się w innych usługach w domenie przy użyciu uwierzytelniania Kerberos.  Przykład służący do określania `Hostname` i `credspec` w manifeście aplikacji jest przedstawiony w następującym fragmencie kodu:
+Aby skonfigurować gMSA (konta usług zarządzane przez grupę), plik specyfikacji poświadczeń (`credspec`) jest umieszczany na wszystkich węzłach w klastrze. Plik można skopiować na wszystkie węzły przy użyciu rozszerzenia maszyny wirtualnej.  Plik `credspec` musi zawierać informacje o koncie gMSA. Aby uzyskać więcej informacji na temat pliku `credspec`, zobacz [Tworzenie specyfikacji poświadczeń](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Specyfikacja poświadczeń i znacznik `Hostname` są określone w manifeście aplikacji. Tag `Hostname` musi być zgodny z nazwą konta gMSA, w którym działa kontener.  Znacznik `Hostname` umożliwia kontener do samodzielnego uwierzytelnienia w innych usługach w domenie przy użyciu uwierzytelniania Kerberos.  Przykład służący do określania `Hostname` i `credspec` w manifeście aplikacji przedstawiono w następującym fragmencie kodu:
 
 ```xml
 <Policies>

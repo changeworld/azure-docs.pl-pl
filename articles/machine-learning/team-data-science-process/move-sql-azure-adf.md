@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59f8b8b253fc914e5723a9c41475ec78bc3f376e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b95fb8d5a0c05d2d66744a91f4200d58a71470d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427361"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Przenoszenie danych z lokalnego programu SQL server do usługi SQL Azure z usługą Azure Data Factory
 
-W tym artykule pokazano, jak przenieść dane z bazy danych lokalnego programu SQL Server do usługi Azure SQL Database za pomocą usługi Azure Blob Storage przy użyciu usługi Azure Data Factory (ADF).
+W tym artykule pokazano, jak przenieść dane z lokalnej bazy danych SQL Server do bazy danych SQL Azure za pośrednictwem platformy Azure Blob Storage przy użyciu Azure Data Factory (ADF): Ta metoda jest obsługiwanym starszym podejściem, które ma zalety zreplikowanej kopii przemieszczania, ale [sugerujemy przechodzenie do strony migracji danych w celu uzyskania najnowszych opcji](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Dla tabeli, który podsumowuje różne opcje przenoszenia danych do usługi Azure SQL Database, zobacz [przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning](move-sql-azure.md).
 
@@ -43,7 +43,7 @@ Skonfigurujemy potoku usługi ADF, który komponuje się dwa działania migracji
 * Kopiowanie danych z konta usługi Azure Blob Storage do usługi Azure SQL Database.
 
 > [!NOTE]
-> Kroki opisane w tym miejscu zostały zaczerpnięte z bardziej szczegółowy samouczek dotyczący dostarczane przez zespół usługi ADF: [Kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odwołania do odpowiednich sekcji tego tematu znajdują się w odpowiednich przypadkach.
+> Kroki opisane w tym miejscu zostały zaczerpnięte z bardziej szczegółowy samouczek dotyczący dostarczane przez zespół usługi ADF: [kopiowanie danych z lokalnej bazy danych programu SQL Server do usługi Azure Blob storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odwołania do odpowiednich sekcji tego tematu znajdują się kiedy jest to właściwe.
 >
 >
 
@@ -51,8 +51,8 @@ Skonfigurujemy potoku usługi ADF, który komponuje się dwa działania migracji
 W tym samouczku przyjęto założenie, że masz:
 
 * **Subskrypcji platformy Azure**. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
-* **Konta usługi Azure storage**. Używasz konta usługi Azure storage do przechowywania danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) artykułu. Po utworzeniu konta magazynu, należy uzyskać klucz konta, które umożliwiają dostęp do magazynu. Zobacz [zarządzanie kluczami dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
-* Dostęp do **usługi Azure SQL Database**. Jeśli musisz skonfigurować usługi Azure SQL Database, temat [wprowadzenie do programu Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) zawiera informacje o udostępnienie nowego wystąpienia usługi Azure SQL Database.
+* **Konta usługi Azure storage**. Używasz konta usługi Azure storage do przechowywania danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) artykułu. Po utworzeniu konta magazynu, należy uzyskać klucz konta, które umożliwiają dostęp do magazynu. Zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
+* Dostęp do **usługi Azure SQL Database**. Jeśli konieczne jest skonfigurowanie Azure SQL Database, temat [wprowadzenie z Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) zawiera informacje na temat sposobu aprowizacji nowego wystąpienia Azure SQL Database.
 * Zainstalowany i skonfigurowany **programu Azure PowerShell** lokalnie. Aby uzyskać instrukcje, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
 > [!NOTE]
@@ -99,7 +99,7 @@ Definicje opartych na formacie JSON w tabelach stosować następujących nazw:
 Trzy definicje tabel są wymagane przez ten potok ADF:
 
 1. [Tabela programu on-premises SQL](#adf-table-onprem-sql)
-2. [Tabela obiektów blob](#adf-table-blob-store)
+2. [Tabela obiektów BLOB](#adf-table-blob-store)
 3. [SQL tabeli platformy Azure](#adf-table-azure-sql)
 
 > [!NOTE]

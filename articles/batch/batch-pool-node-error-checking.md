@@ -1,18 +1,18 @@
 ---
 title: Sprawdź błędy puli i węzłów — Azure Batch
-description: Błędy do sprawdzenia i sposoby ich unikania podczas tworzenia pul i węzłów
+description: W tym artykule opisano operacje w tle, które mogą wystąpić, a także błędy do sprawdzenia i sposoby ich unikania podczas tworzenia pul i węzłów.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350063"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449786"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sprawdź, czy występują błędy puli i węzłów
 
@@ -56,7 +56,7 @@ Możesz uzyskać informacje na temat ostatniej automatycznej oceny skalowania pr
 
 [Zdarzenie ukończenia zmiany rozmiaru puli](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) przechwytuje informacje o wszystkich obliczeniach.
 
-### <a name="delete"></a>Usuwanie
+### <a name="delete"></a>Usuń
 
 Po usunięciu puli zawierającej węzły, pierwsza partia danych Usuwa węzły. Spowoduje to usunięcie samego obiektu puli. Usunięcie węzłów puli może potrwać kilka minut.
 
@@ -98,7 +98,7 @@ Węzły w stanie **niezdatnym do użytku** , ale bez [błędów](https://docs.mi
 
 Jeśli partia może ustalić przyczynę, właściwość [Błędy](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) węzła zgłasza ją.
 
-Dodatkowe przykłady przyczyn nieużytecznych węzłów obejmują:
+Dodatkowe przykłady przyczyn **nieużytecznych** węzłów obejmują:
 
 - Niestandardowy obraz maszyny wirtualnej jest nieprawidłowy. Na przykład obraz, który nie jest prawidłowo przygotowany.
 

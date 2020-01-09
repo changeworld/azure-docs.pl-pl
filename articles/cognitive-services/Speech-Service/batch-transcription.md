@@ -8,42 +8,46 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 2cccd17ce04b3954a7d0720d9ba25bbe792da3b6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 765a74ac20d6a1c79dfc31c5e11b1f214dd2aa97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446963"
 ---
-# <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
+# <a name="how-to-use-batch-transcription"></a>Jak korzystać z transkrypcji partii
 
-Transkrypcja partii jest idealnym rozwiązaniem, jeśli chcesz także dużej ilości dźwięk w magazynie, takim jak obiektów blob platformy Azure. Za pomocą dedykowanego interfejsu API REST, można wskazać pliki audio, przy użyciu sygnatury dostępu współdzielonego (SAS) identyfikator URI i asynchronicznie otrzymywać transkrypcji.
+Transkrypcja usługi Batch jest idealnym rozwiązaniem w przypadku jego przepisywania dużej ilości danych audio w magazynie. Korzystając z dedykowanego interfejsu API REST, można wskazać pliki audio przy użyciu identyfikatora URI sygnatury dostępu współdzielonego (SAS) i asynchronicznie otrzymywać wyniki transkrypcji.
+
+Interfejs API oferuje asynchroniczne transkrypcje zamiany mowy na tekst i inne funkcje. Interfejsu API REST można użyć do udostępnienia metod:
+
+- Tworzenie żądań przetwarzania wsadowego
+- Zbadaj stan
+- Pobierz wyniki transkrypcji
+- Usuwanie informacji o transkrypcji z usługi
+
+Szczegółowy interfejs API jest dostępny jako [dokument struktury Swagger](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A), pod nagłówkiem `Custom Speech transcriptions`.
+
+Zadania transkrypcji partii są planowane na podstawie najlepszego nakładu pracy. Obecnie nie ma oszacowania, kiedy zadanie zostanie zmienione w stanie uruchomienia. W przypadku normalnego ładowania systemu powinno to nastąpić w ciągu kilku minut. Po uruchomieniu rzeczywista transkrypcja jest przetwarzana szybciej niż w czasie rzeczywistym dźwięku.
+
+Obok łatwego w użyciu interfejsu API nie musisz wdrażać niestandardowych punktów końcowych i nie masz żadnych wymagań współbieżności do obserwowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="subscription-key"></a>Klucz subskrypcji
 
-Jak z wszystkich funkcji usługi rozpoznawania mowy, tworzenie klucz subskrypcji z [witryny Azure portal](https://portal.azure.com) postępując zgodnie z naszym [Wprowadzenie — przewodnik](get-started.md). Jeśli planujesz uzyskiwanie transkrypcje modeli podstawowych w naszym Tworzenie klucza jest wszystko, co należy zrobić.
+Jak z wszystkich funkcji usługi rozpoznawania mowy, tworzenie klucz subskrypcji z [witryny Azure portal](https://portal.azure.com) postępując zgodnie z naszym [Wprowadzenie — przewodnik](get-started.md).
 
 >[!NOTE]
-> Aby można było użyć transkrypcji partii, wymagana jest Standardowa subskrypcja (S0) dla usługi rozpoznawania mowy. Bezpłatna subskrypcja kluczy (F0) nie będzie działać. Aby uzyskać więcej informacji, zobacz [ceny i limity](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Aby można było użyć transkrypcji partii, wymagana jest Standardowa subskrypcja (S0) dla usługi rozpoznawania mowy. Bezpłatna subskrypcja kluczy (F0) nie będzie działać. Aby uzyskać więcej informacji, zobacz [Cennik i limity](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Modele niestandardowe
 
-Jeśli planujesz dostosowanie modeli akustycznych lub modelowych, postępuj zgodnie z instrukcjami w temacie [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md) i [Dostosowywanie modeli języków](how-to-customize-language-model.md). Aby można było użyć utworzonych modeli w transkrypcji wsadowej, potrzebne są ich identyfikatory modeli. Ten identyfikator nie jest IDENTYFIKATORem punktu końcowego, który znajduje się w widoku szczegółów punktu końcowego, jest IDENTYFIKATORem modelu, który można pobrać po wybraniu szczegółów dla modeli.
+Jeśli planujesz dostosowanie modeli akustycznych lub modelowych, postępuj zgodnie z instrukcjami w temacie [Dostosowywanie modeli akustycznych](how-to-customize-acoustic-models.md) i [modeli języków dostosowania projektu](how-to-customize-language-model.md). Aby można było używać utworzonych modeli w transkrypcji partii, potrzebne są ich identyfikatory modeli. Identyfikator modelu można pobrać podczas inspekcji szczegółów modelu. Wdrożony niestandardowy punkt końcowy nie jest wymagany w przypadku usługi transkrypcji partii.
 
 ## <a name="the-batch-transcription-api"></a>Transkrypcji interfejsu API usługi Batch
-
-Interfejs API transkrypcji usługi Batch oferuje asynchroniczne transkrypcja mowy na tekst, oraz dodatkowe funkcje. To interfejs API REST, który udostępnia metody:
-
-1. Tworzenie żądań przetwarzania wsadowego
-1. Stan zapytania
-1. Pobieranie transkrypcji
-
-> [!NOTE]
-> Interfejs API transkrypcji usługi Batch jest idealny dla wywołania roboczych, które zazwyczaj są gromadzone tysiące godzin audio. Ułatwia to transkrypcja dużych ilości nagrań dźwiękowych.
 
 ### <a name="supported-formats"></a>Obsługiwane formaty
 
@@ -51,11 +55,11 @@ Interfejs API transkrypcji usługi Batch obsługuje następujące formaty:
 
 | Format | Koder-dekoder | Szybkość transmisji bitów | Częstotliwość próbkowania |
 |--------|-------|---------|-------------|
-| WAV | MODUŁU PCM | 16-bitowych | stereo mono, kHz, 8 lub 16 |
-| MP3 | MODUŁU PCM | 16-bitowych | stereo mono, kHz, 8 lub 16 |
-| OGG | DZIELE | 16-bitowych | stereo mono, kHz, 8 lub 16 |
+| WAV | MODUŁU PCM | 16-bitowych | 8 kHz lub 16 kHz, mono lub stereo |
+| MP3 | MODUŁU PCM | 16-bitowych | 8 kHz lub 16 kHz, mono lub stereo |
+| OGG | DZIELE | 16-bitowych | 8 kHz lub 16 kHz, mono lub stereo |
 
-Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. To przykładowe żądanie zawiera właściwości dotyczące filtrowania niewulgarności, interpunkcji i znaczników czasu na poziomie wyrazów.
+W przypadku strumieni stereofonicznych audio lewy i prawy są dzielone podczas transkrypcji. Dla każdego kanału tworzony jest plik wynikowy JSON. Sygnatury czasowe wygenerowane na wypowiedź umożliwiają deweloperowi utworzenie uporządkowanej końcowej transkrypcji.
 
 ### <a name="configuration"></a>Konfigurowanie
 
@@ -69,38 +73,119 @@ Parametry konfiguracji są podane jako dane JSON:
   "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
-    "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True",
-    "AddSentiment" : "True"
+    "ProfanityFilterMode": "None | Removed | Tags | Masked",
+    "PunctuationMode": "None | Dictated | Automatic | DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True | False",
+    "AddSentiment" : "True | False",
+    "AddDiarization" : "True | False",
+    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
   }
 }
 ```
-
-> [!NOTE]
-> Interfejs API transkrypcji usługi Batch korzysta z usługi REST, do żądania transkrypcje, stanu i skojarzonych wyników. Można użyć interfejsu API z dowolnego języka. W następnej sekcji opisano sposób użycia interfejsu API.
 
 ### <a name="configuration-properties"></a>Właściwości konfiguracji
 
 Użyj tych opcjonalnych właściwości, aby skonfigurować transkrypcję:
 
 | Parametr | Opis |
-|-----------|-------------|
-| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `None` która wyłącza filtrowanie wulgaryzmów `masked` gwiazdek, która zastępuje wulgaryzmów `removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `masked`. |
-| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `None` która wyłącza znak interpunkcyjny, `dictated` co oznacza jawne znak interpunkcyjny, `automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `dictatedandautomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. |
- | `AddWordLevelTimestamps` | Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych. Akceptowane wartości to `true`, które umożliwiają wyłączanie sygnatur czasowych na poziomie programu Word i `false` (wartość domyślna). |
- | `AddSentiment` | Należy dodać tonacji do wypowiedź. Akceptowane wartości to `true`, które umożliwiają wyłączenie opcji tonacji na wypowiedź i `false` (wartość domyślna). |
- | `AddDiarization` | Określa, że analiza diarization powinna zostać przeprowadzona na wejściu, który powinien być kanałem mono zawierającym dwa głosy. Akceptowane wartości to `true`, które umożliwiają wyłączenie programu diarization i `false` (wartość domyślna). Wymaga również, aby `AddWordLevelTimestamps` mieć wartość true.|
+|-----------|------------|
+|`ProfanityFilterMode`|Określa sposób obsługi niezbyt wulgarności w wynikach rozpoznawania
+||**`Masked`** — wartość domyślna. Zastępuje wulgarność gwiazdkami<br>`None` — wyłącza filtrowanie niepotrzebnych<br>`Removed` — usuwa z wyniku wszystkie niewulgarności<br>`Tags` — dodaje Tagi o niewulgarności
+|`PunctuationMode`|Określa, aby obsłużyć interpunkcję w wynikach rozpoznawania
+||`Automatic` — usługa wstawia interpunkcję<br>`Dictated` (wymawiane) interpunkcja<br>**`DictatedAndAutomatic`** — wartość domyślna. Podyktowane i automatyczne interpunkcja<br>`None` — wyłącza interpunkcję
+|`AddWordLevelTimestamps`|Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych
+||`True` — Włącza znaczniki czasu na poziomie słowa<br>**`False`** — wartość domyślna. Wyłącz sygnatury czasowe poziomu wyrazu
+|`AddSentiment`|Określa, czy analiza tonacji jest dodawana do wypowiedź
+||`True` — włącza tonacji na wypowiedź<br>**`False`** — wartość domyślna. Wyłącz tonacji
+|`AddDiarization`|Określa, czy analiza diarization jest przeprowadzana. Jeśli `true`, dane wejściowe powinny być audio mono, zawierające maksymalnie dwa głosy. `AddWordLevelTimestamps` należy ustawić na `true`
+||`True` — włącza diarization<br>**`False`** — wartość domyślna. Wyłącz diarization
+|`TranscriptionResultsContainerUrl`|Opcjonalny token sygnatury dostępu współdzielonego do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze
 
 ### <a name="storage"></a>Usługa Storage
 
 Transkrypcja usługi Batch obsługuje [usługę Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) do odczytu i zapisywania transkrypcji w magazynie.
 
+## <a name="the-batch-transcription-result"></a>Wynik transkrypcji partii
+
+W przypadku wejścia audio mono jest tworzony jeden plik wynikowy transkrypcji. W przypadku dźwięku wejściowego stereo, tworzone są dwa pliki wyników transkrypcji. Każda z nich ma następującą strukturę:
+
+```json
+{
+  "AudioFileResults":[ 
+    {
+      "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
+      "AudioFileUrl": null                                  'always null'
+      "AudioLengthInSeconds": number                        'Real number. Two decimal places'
+      "CombinedResults": [
+        {
+          "ChannelNumber": null                             'always null'
+          "Lexical": string
+          "ITN": string
+          "MaskedITN": string
+          "Display": string
+        }
+      ]
+      SegmentResults:[                                     'for each individual segment'
+        {
+          "RecognitionStatus": Success | Failure
+          "ChannelNumber": null
+          "SpeakerId": null | "1 | 2"                     'null if no diarization
+                                                            or stereo input file, the
+                                                            speakerId as a string if
+                                                            diarization requested for
+                                                            mono audio file'
+          "Offset": number                                'time in milliseconds'
+          "Duration": number                              'time in milliseconds'
+          "OffsetInSeconds" : number                      'Real number. Two decimal places'
+          "DurationInSeconds" : number                    'Real number. Two decimal places'
+          "NBest": [
+            {
+              "Confidence": number                        'between 0 and 1'
+              "Lexical": string
+              "ITN": string
+              "MaskedITN": string
+              "Display": string
+              "Sentiment":
+                {                                          'this is omitted if sentiment is
+                                                            not requested'
+                  "Negative": number                        'between 0 and 1'
+                  "Neutral": number                         'between 0 and 1'
+                  "Positive": number                        'between 0 and 1'
+                }
+              "Words": [
+                {
+                  "Word": string
+                  "Offset": number                         'time in milliseconds'
+                  "Duration": number                       'time in milliseconds'
+                  "OffsetInSeconds": number                'Real number. Two decimal places'
+                  "DurationInSeconds": number              'Real number. Two decimal places'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Wynik zawiera następujące formularze:
+
+|Formularz|Zawartość|
+|-|-|
+|`Lexical`|Rzeczywiste wyrazy zostały rozpoznane.
+|`ITN`|Odwrócony tekst — znormalizowana forma rozpoznanego tekstu. Skróty ("Lekarz Kowalski" do "Dr Kowalski"), numery telefonów i inne przekształcenia są stosowane.
+|`MaskedITN`|Formularz ITN z zastosowanym maską wulgarności.
+|`Display`|Formularz wyświetlania rozpoznanego tekstu. Obejmuje to dodawanie interpunkcji i wielkich liter.
+
 ## <a name="speaker-separation-diarization"></a>Separacja głośników (Diarization)
 
-Diarization to proces oddzielania głośników w części audio. Nasz potok wsadowy obsługuje Diarization i jest w stanie rozpoznawać dwa głośniki w nagraniach kanału mono.
+Diarization to proces oddzielania głośników w części audio. Nasz potok wsadowy obsługuje diarization i jest w stanie rozpoznawać dwa głośniki w nagraniach kanału mono. Funkcja nie jest dostępna w nagraniach stereo.
 
-Aby zażądać przetworzenia żądania transkrypcji audio dla diarization, wystarczy dodać odpowiedni parametr w żądaniu HTTP, jak pokazano poniżej.
+Wszystkie dane wyjściowe transkrypcji zawierają `SpeakerId`. Jeśli diarization nie jest używany, zostanie wyświetlony `"SpeakerId": null` w danych wyjściowych JSON. W przypadku diarization Obsługujemy dwa głosy, więc głośniki będą identyfikowane jako `"1"` lub `"2"`.
+
+Aby zażądać diarization, wystarczy dodać odpowiedni parametr w żądaniu HTTP, jak pokazano poniżej.
 
  ```json
 {
@@ -116,28 +201,19 @@ Aby zażądać przetworzenia żądania transkrypcji audio dla diarization, wysta
 }
 ```
 
-Sygnatury czasowe poziomu słów również muszą mieć wartość "włączone", ponieważ parametry w powyższym żądaniu wskazują. 
+Znaczniki czasu na poziomie słowa również muszą mieć wartość "włączone", ponieważ parametry w powyższym żądaniu wskazują.
 
-Odpowiedni dźwięk będzie zawierać głośniki identyfikowane przez liczbę (obecnie obsługujemy tylko dwa głosy, więc głośniki będą identyfikowane jako "prelegent 1" i "prelegent 2"), a następnie dane wyjściowe transkrypcji.
+## <a name="sentiment-analysis"></a>Analiza opinii
 
-Należy również zauważyć, że Diarization nie jest dostępny w nagraniach stereo. Ponadto wszystkie dane wyjściowe JSON będą zawierać tag głośników. Jeśli diarization nie jest używany, w danych wyjściowych JSON zostanie wyświetlony element "Prelegent: null".
+Funkcja tonacji szacuje tonacji wyrażoną w dźwięku. Tonacji jest wyrażona wartością z zakresu od 0 do 1 dla `Negative`, `Neutral`i `Positive` tonacji. Na przykład analiza tonacji może być używana w scenariuszach centrum połączeń:
 
-> [!NOTE]
-> Diarization jest dostępny we wszystkich regionach i dla wszystkich ustawień regionalnych.
+- Uzyskaj wgląd w szczegółowe informacje na temat zadowolenia klientów
+- Uzyskaj wgląd w wydajność agentów (zespół przejmowania wywołań)
+- Znajdowanie dokładnego punktu w czasie, gdy wywołanie zajęło negatywny kierunek
+- Co się stało, gdy ujemne wywołanie jest wynikiem pozytywnym
+- Określ, co Ci klienci i co nie lubię o produkcie lub usłudze
 
-## <a name="sentiment"></a>Opinia
-
-Tonacji to nowa funkcja w interfejsie API transkrypcji usługi Batch i jest ważną funkcją w domenie usługi Call Center. Klienci mogą używać parametrów `AddSentiment` do ich żądań, aby
-
-1.  Uzyskaj wgląd w szczegółowe informacje na temat zadowolenia klientów
-2.  Uzyskaj wgląd w wydajność agentów (zespół przejmowania wywołań)
-3.  Lokalizowanie dokładnego punktu w czasie, gdy wywołanie zajęło negatywny kierunek
-4.  Określ, co poszło dobrze, gdy wyłączają ujemne wywołania dodatnie
-5.  Określ, co Ci klienci i co nie lubię o produkcie lub usłudze
-
-Tonacji jest oceniane dla segmentu audio, gdzie segment audio jest zdefiniowany, gdy czas przepada między początkiem wypowiedź (offset) i wykryciem ostatniego strumienia bajtów. Cały tekst w tym segmencie jest używany do obliczania tonacji. NIE obliczamy żadnych zagregowanych wartości tonacji dla całego wywołania ani całej mowy każdego kanału. Te agregacje pozostały do właściciela domeny w celu dalszej zastosowania.
-
-Tonacji jest zastosowany do formy leksykalnej.
+Tonacji jest oceniane na segment audio w oparciu o postać leksykalną. Cały tekst w tym segmencie audio służy do obliczania tonacji. Nie jest obliczany zagregowany tonacji dla całego transkrypcji.
 
 Przykład danych wyjściowych JSON wygląda następująco:
 
@@ -174,7 +250,10 @@ Przykład danych wyjściowych JSON wygląda następująco:
   ]
 }
 ```
-Funkcja używa modelu tonacji, który jest obecnie w wersji beta.
+
+## <a name="best-practices"></a>Najlepsze rozwiązania
+
+Usługa transkrypcji może obsłużyć dużą liczbę przesłanych transkrypcji. Można badać stan transkrypcji za pomocą `GET` w [metodzie transkrypcji](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions). Zachowaj informacje zwracane do rozsądnego rozmiaru, określając parametr `take` (kilka setek). [Usuwanie transkrypcji](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) regularnie z usługi po pobraniu wyników. Pozwoli to zagwarantować szybkie odpowiedzi od wywołań zarządzania transkrypcji.
 
 ## <a name="sample-code"></a>Przykładowy kod
 
@@ -200,9 +279,6 @@ Bieżący kod przykładowy nie określono modelu niestandardowego. Usługa używ
 ## <a name="download-the-sample"></a>Pobierz przykład
 
 Przykład można znaleźć w katalogu `samples/batch` w [przykładowym repozytorium GitHub](https://aka.ms/csspeech/samples).
-
-> [!NOTE]
-> Zadania transkrypcji usługi Batch są planowane według najlepszego nakładu pracy, ale nie ma oszacowania czasu, gdy zadanie zostanie zmienione w stanie uruchomionym. Po uruchomieniu rzeczywista transkrypcja jest przetwarzana szybciej niż w czasie rzeczywistym.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,7 @@
 ---
-title: Ograniczenia i znane problemy dotyczące importowania usługi Azure API Management API | Microsoft Docs
-description: Szczegóły znanych problemów i ograniczeń dotyczących importowania do usługi Azure API Management przy użyciu formatów Open API, WSDL lub WADL.
+title: Ograniczenia i szczegóły obsługi formatów interfejsu API
+titleSuffix: Azure API Management
+description: Szczegóły znanych problemów i ograniczeń dotyczących obsługi formatów Open API, WSDL i WADL w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,37 +12,37 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/06/2019
+ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: a1c514368960d39834125bd497d05b3d9ebeae7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796037"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640707"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 
 ## <a name="about-this-list"></a>Informacje o tej liście
 
-Podczas importowania interfejsu API mogą występować pewne ograniczenia lub zidentyfikować problemy, które należy skorygować przed pomyślnym zaimportowaniem. W tym artykule opisano te dokumenty uporządkowane według formatu importu interfejsu API.
+Podczas importowania interfejsu API mogą występować pewne ograniczenia lub zidentyfikować problemy, które należy skorygować przed pomyślnym zaimportowaniem. W tym artykule opisano te ograniczenia uporządkowane według formatu importu interfejsu API. Opisano w nim również, jak działa eksport OpenAPI.
 
-## <a name="open-api"> </a>Openapi/Swagger
+## <a name="open-api"> </a>Ograniczenia importu openapi/Swagger
 
 Jeśli otrzymujesz błędy podczas importowania dokumentu OpenAPI, upewnij się, że został on wcześniej sprawdzony. Można to zrobić przy użyciu narzędzia Projektant w Azure Portal (Edytor specyfikacji OpenAPI frontonu) lub za pomocą narzędzi innych firm, takich jak <a href="https://editor.swagger.io">Edytor Swagger</a>.
 
 ### <a name="open-api-general"> </a>Ogólne
 
 -   Wymagane parametry w ścieżce i zapytaniu muszą mieć unikatowe nazwy. (W OpenAPI Nazwa parametru musi być unikatowa w obrębie lokalizacji, na przykład Path, Query, header. Jednakże w API Management zezwalamy na rozróżnienie operacji przy użyciu parametrów Path i Query (które nie są obsługiwane przez OpenAPI). Dlatego wymagamy, aby nazwy parametrów były unikatowe w ramach całego szablonu adresu URL.
--   wskaźniki **ref\$** nie mogą odwoływać się do plików zewnętrznych.
--   **ścieżki x-MS** i **x-Server** są jedynymi obsługiwanymi rozszerzeniami.
+-   wskaźniki `\$ref` nie mogą odwoływać się do plików zewnętrznych.
+-   `x-ms-paths` i `x-servers` są jedynymi obsługiwanymi rozszerzeniami.
 -   Rozszerzenia niestandardowe są ignorowane podczas importowania i nie są zapisywane ani zachowywane do eksportu.
--   **Rekursja** — API Management nie obsługuje definicji zdefiniowanych cyklicznie (na przykład schematów odnoszących się do siebie).
+-   `Recursion`-API Management nie obsługuje definicji zdefiniowanych cyklicznie (na przykład schematów odwołujących się do siebie).
 -   Adres URL pliku źródłowego (jeśli jest dostępny) jest stosowany do względnych adresów URL serwera.
 -   Definicje zabezpieczeń zostały zignorowane.
 -   Wbudowane definicje schematu dla operacji interfejsu API nie są obsługiwane. Definicje schematu są zdefiniowane w zakresie interfejsu API i można do nich odwoływać się w zakresach żądań lub odpowiedzi operacji interfejsu API.
 -   Określony parametr adresu URL musi być częścią szablonu adresu URL.
--   **Tworzy** słowo kluczowe, które OPISUJE typy MIME zwracane przez interfejs API, nie jest obsługiwane. 
+-   `Produces` słowo kluczowe, które opisuje typy MIME zwracane przez interfejs API, nie jest obsługiwane. 
 
 ### <a name="open-api-v2"> </a>Openapi wersja 2
 
@@ -49,9 +50,47 @@ Jeśli otrzymujesz błędy podczas importowania dokumentu OpenAPI, upewnij się,
 
 ### <a name="open-api-v3"> </a>Openapi wersja 3
 
--   Jeśli określono wiele **serwerów** , API Management spróbuje wybrać pierwszy adres URL https. Jeśli nie ma żadnych adresów URL HTTPs — pierwszy adres URL protokołu HTTP. Jeśli nie ma adresów URL protokołu HTTP, adres URL serwera będzie pusty.
--   **Przykłady** nie są obsługiwane, ale **przykład** to.
--   **Wieloczęściowe/formularz — dane** nie są obsługiwane.
+-   Jeśli określono wiele `servers`, API Management próbuje wybrać pierwszy adres URL HTTPs. Jeśli nie ma żadnych adresów URL HTTPs — pierwszy adres URL protokołu HTTP. Jeśli nie ma adresów URL protokołu HTTP, adres URL serwera będzie pusty.
+-   `Examples` nie jest obsługiwana, ale `example` jest.
+-   `Multipart/form-data` nie jest obsługiwana.
+
+## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI mechanizmy importowania, aktualizowania i eksportowania
+
+### <a name="add-new-api-via-openapi-import"></a>Dodawanie nowego interfejsu API za pomocą importu OpenAPI
+
+Dla każdej operacji znalezionej w dokumencie OpenAPI zostanie utworzona nowa operacja z nazwą zasobu platformy Azure, a nazwa wyświetlana zostanie odpowiednio `operationId` i `summary`. wartość `operationId` jest znormalizowana po zasadach opisanych poniżej. wartość `summary` jest zaimportowana jako-is, a jej długość jest ograniczona do 300 znaków.
+
+Jeśli nie określono `operationId` (to nie jest obecne, `null`lub puste), zostanie wygenerowana wartość Nazwa zasobu platformy Azure, łącząc metodę HTTP i szablon ścieżki, na przykład `get-foo`.
+
+Jeśli nie określono `summary` (to nie jest obecne, `null`lub puste), `display name` wartość zostanie ustawiona na `operationId`. Jeśli nie określono `operationId`, zostanie wygenerowana wartość Nazwa wyświetlana przez połączenie metody HTTP i szablonu ścieżki, na przykład `Get - /foo`.
+
+### <a name="update-an-existing-api-via-openapi-import"></a>Aktualizowanie istniejącego interfejsu API za pomocą importu OpenAPI
+
+Podczas importowania istniejący interfejs API jest zmieniany na zgodny z interfejsem API opisanym w dokumencie OpenAPI. Każda operacja w dokumencie OpenAPI jest dopasowywana do istniejącej operacji, porównując jej wartość `operationId` z nazwą zasobu platformy Azure istniejącej operacji.
+
+W przypadku znalezienia dopasowania właściwości istniejącej operacji zostaną zaktualizowane "w miejscu".
+
+Jeśli dopasowanie nie zostanie znalezione, Nowa operacja zostanie utworzona przy użyciu reguł opisanych w powyższej sekcji. Dla każdej nowej operacji import podejmie próbę skopiowania zasad z istniejącej operacji z tą samą metodą HTTP i szablonem ścieżki.
+
+Wszystkie istniejące niedopasowane operacje zostaną usunięte.
+
+Aby zaimportować bardziej przewidywalne instrukcje, postępuj zgodnie z następującymi wskazówkami:
+
+- Upewnij się, że dla każdej operacji określono Właściwość `operationId`.
+- Nie zmieniaj `operationId` po początkowym imporcie.
+- Nigdy nie zmieniaj metody `operationId` i HTTP lub szablonu ścieżki w tym samym czasie.
+
+### <a name="export-api-as-openapi"></a>Eksportowanie interfejsu API jako OpenAPI
+
+Dla każdej operacji nazwa zasobu platformy Azure zostanie wyeksportowana jako `operationId`, a nazwa wyświetlana zostanie wyeksportowana jako `summary`.
+Reguły normalizacji dla operationId
+
+- Konwertuj na małe litery.
+- Zastąp każdą sekwencję znaków innych niż alfanumeryczne pojedynczą kreską, na przykład `GET-/foo/{bar}?buzz={quix}` zostanie przekształcona w `get-foo-bar-buzz-quix-`.
+- Przytnij łączniki na obu stronach, na przykład `get-foo-bar-buzz-quix-` stanie się `get-foo-bar-buzz-quix`
+- Obcinaj do 76 znaków, cztery znaki poniżej maksymalnego limitu dla nazwy zasobu.
+- Użyj pozostałych czterech znaków dla sufiksu deduplikacji, w razie potrzeby, w postaci `-1, -2, ..., -999`.
+
 
 ## <a name="wsdl"> </a>Język WSDL
 
@@ -63,7 +102,7 @@ Pliki WSDL są używane do tworzenia protokołu SOAP przekazującego i interfejs
 -   **WCF WSHttpBinding** — usługa SOAP utworzona przy użyciu Windows Communication Foundation powinna używać BasicHttpBinding-WSHttpBinding nie jest obsługiwana.
 -   **MTOM** — usługi korzystające z mechanizmu MTOM <em>mogą</em> funkcjonować. Oficjalne wsparcie nie jest w tej chwili oferowane.
 -   **Rekursja** — typy, które są zdefiniowane cyklicznie (na przykład odnoszą się do tablicy samej) nie są obsługiwane przez APIM.
--   **Wiele przestrzeni nazw** — w schemacie można używać wielu przestrzeni nazw, ale tylko docelowa przestrzeń nazw może służyć do definiowania części komunikatów. Przestrzenie nazw inne niż element docelowy, które są używane do definiowania innych elementów wejściowych lub wyjściowych, nie są zachowywane. Mimo że ten dokument WSDL można zaimportować, w obszarze Eksportuj wszystkie części wiadomości będzie miał docelowy obszar nazw WSDL.
+-   **Wiele przestrzeni nazw** — w schemacie można używać wielu przestrzeni nazw, ale tylko docelowa przestrzeń nazw może służyć do definiowania części komunikatów. Obszary nazw inne niż element docelowy, które są używane do definiowania innych elementów wejściowych lub wyjściowych, nie są zachowywane. Mimo że ten dokument WSDL można zaimportować, w obszarze Eksportuj wszystkie części wiadomości będzie miał docelowy obszar nazw WSDL.
 -   **Tablice** — transformacja protokołu SOAP do REST obsługuje tylko opakowane tablice przedstawione w poniższym przykładzie:
 
 ```xml

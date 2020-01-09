@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnień zarządzania — Azure Active Directory
+title: Samouczek — Tworzenie pakietu dostępu — Zarządzanie prawami w usłudze Azure AD
 description: Samouczek krok po kroku dotyczący sposobu tworzenia pierwszego pakietu dostępu w Azure Active Directory Zarządzanie uprawnieniami.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174876"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422654"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Samouczek: Tworzenie pierwszego pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
 
@@ -31,7 +31,7 @@ W tym samouczku będziesz używać banku Woodgrove jako administrator IT. Zażą
 
 ![Omówienie scenariusza](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie pakietu dostępu z grupą jako zasobem

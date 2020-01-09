@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 01327d24aebee02c3b14594c2b0b2f2f175211fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424156"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450792"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurowanie połączenia typu punkt-lokacja przy użyciu uwierzytelniania certyfikatu (wersja klasyczna)
 
@@ -87,7 +87,7 @@ Przed rozpoczęciem sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie 
 
 ### <a name="part-1-create-a-virtual-network"></a>Część 1. Tworzenie sieci wirtualnej
 
-Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekranu są przykładowe. Przedstawione wartości należy zastąpić własnymi. Aby utworzyć sieć wirtualną przy użyciu witryny Azure Portal, wykonaj poniższe kroki:
+Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekranu są przykładowe. Przedstawione na nich wartości należy zastąpić własnymi. Aby utworzyć sieć wirtualną przy użyciu witryny Azure Portal, wykonaj poniższe kroki:
 
 1. W menu [Azure Portal](https://portal.azure.com) lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Zostanie otwarta strona **Nowy**.
 
@@ -101,7 +101,7 @@ Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Zamieszczone zrzuty ekran
 
 5. Na liście rozwijanej wybierz **subskrypcję**, której chcesz użyć.
 
-6. Wybierz istniejącą **grupę zasobów**. Możesz też utworzyć nową grupę zasobów, wybierając pozycję **Utwórz nową** i wprowadzając nazwę. Jeśli tworzysz nową grupę zasobów, nadaj jej nazwę odpowiadającą wartościom planowanej konfiguracji. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Wybierz istniejącą **grupę zasobów**. Możesz też utworzyć nową grupę zasobów, wybierając pozycję **Utwórz nową** i wprowadzając nazwę. Jeśli tworzysz nową grupę zasobów, nadaj jej nazwę odpowiadającą wartościom planowanej konfiguracji. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/management/overview.md#resource-groups).
 
 7. Wybierz **lokalizację** sieci wirtualnej. To ustawienie określa lokalizację geograficzną zasobów wdrażanych w tej sieci wirtualnej.
 
@@ -148,7 +148,7 @@ W tym kroku tworzona jest podsieć bramy i brama o dynamicznym routingu. W klasy
 
 Na platformie Azure certyfikaty są używane do uwierzytelniania klientów sieci VPN w obrębie sieci VPN typu punkt-lokacja. Informacje o kluczu publicznym certyfikatu głównego należy przekazać na platformę Azure. Klucz publiczny jest wtedy uważany za *zaufany*. Certyfikaty klienta muszą zostać wygenerowane na podstawie zaufanego certyfikatu głównego, a następnie zainstalowane na każdym komputerze klienckim w magazynie certyfikatów Certificates-Current User\Personal\Certificates. Certyfikat jest używany do uwierzytelniania klienta, gdy inicjuje on połączenie z siecią wirtualną. 
 
-Jeśli używasz certyfikatów z podpisem własnym, musisz je utworzyć przy użyciu określonych parametrów. Certyfikat z podpisem własnym możesz utworzyć przy użyciu polecenia [MakeCert](vpn-gateway-certificates-point-to-site.md) lub instrukcji dotyczących [środowiska PowerShell i systemu Windows 10](vpn-gateway-certificates-point-to-site-makecert.md). Ważne jest, aby wykonać kroki opisane w tych instrukcjach w przypadku używania certyfikatów głównych z podpisem własnym i generowania certyfikatów klienta na podstawie certyfikatu głównego z podpisem własnym. W przeciwnym razie utworzone przez Ciebie certyfikaty nie będą zgodne z połączeniami typu punkt-lokacja i zostanie wyświetlony błąd połączenia.
+Jeśli używasz certyfikatów z podpisem własnym, musisz je utworzyć przy użyciu określonych parametrów. Certyfikat z podpisem własnym możesz utworzyć przy użyciu polecenia [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) lub instrukcji dotyczących [środowiska PowerShell i systemu Windows 10](vpn-gateway-certificates-point-to-site.md). Ważne jest, aby wykonać kroki opisane w tych instrukcjach w przypadku używania certyfikatów głównych z podpisem własnym i generowania certyfikatów klienta na podstawie certyfikatu głównego z podpisem własnym. W przeciwnym razie utworzone przez Ciebie certyfikaty nie będą zgodne z połączeniami typu punkt-lokacja i zostanie wyświetlony błąd połączenia.
 
 ### <a name="acquire-the-public-key-cer-for-the-root-certificate"></a>Uzyskiwanie klucza publicznego (pliku cer) dla certyfikatu głównego
 
@@ -183,7 +183,7 @@ Po utworzeniu bramy przekaż plik cer (który zawiera informacje o kluczu public
 
 Aby nawiązać połączenie z siecią wirtualną przy użyciu połączenia sieci VPN typu punkt-lokacja, na każdym kliencie trzeba zainstalować pakiet do konfiguracji natywnego klienta sieci VPN systemu Windows. Pakiet konfiguracji powoduje skonfigurowanie natywnego klienta sieci VPN systemu Windows za pomocą ustawień koniecznych do łączenia się z siecią wirtualną.
 
-Tego samego pakietu konfiguracyjnego klienta VPN można użyć na każdym komputerze klienckim, o ile wersja jest zgodna z architekturą dla klienta. Lista obsługiwanych systemów operacyjnych klientów znajduje się w sekcji [Często zadawane pytania dotyczące połączeń typu punkt-lokacja](#point-to-site-faq).
+Tego samego pakietu konfiguracji klienta VPN można użyć na każdym komputerze klienckim, o ile wersja jest zgodna z architekturą dla klienta. Lista obsługiwanych systemów operacyjnych klientów znajduje się w sekcji [Często zadawane pytania dotyczące połączeń typu punkt-lokacja](#point-to-site-faq).
 
 ### <a name="generate-and-install-a-vpn-client-configuration-package"></a>Generowanie i instalowanie pakietu konfiguracji klienta sieci VPN
 

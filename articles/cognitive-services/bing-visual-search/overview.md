@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 08/30/2019
+ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446657"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co to jest interfejs API wyszukiwania wizualnego Bing?
 
@@ -26,7 +26,7 @@ Jeśli używasz [interfejs API wyszukiwania obrazów Bing](../bing-image-search/
 > [!IMPORTANT]
 > Jeśli uzyskujesz szczegółowe informacje o obrazach za pomocą interfejsu API wyszukiwania obrazów Bing, rozważ przejście do interfejsu API wyszukiwania wizualnego Bing, który zapewnia bardziej kompleksowe szczegółowe informacje.
 
-## <a name="insights"></a>Insights
+## <a name="insights"></a>Analizy
 
 Poniższe informacje można odnaleźć przy użyciu wyszukiwanie wizualne Bing:
 
@@ -57,10 +57,12 @@ Interfejs API wyszukiwania wizualnego Bing jest usługą internetową zgodną z 
 Najpierw wypróbuj interfejs API wyszukiwania wizualnego Bing [Interactive](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
 Demonstracja pokazuje, jak można szybko dostosować zapytanie wyszukiwania i wyszukuj sieć Web dla obrazów.
 
-Aby szybko rozpocząć pracę z pierwszym żądaniem, zobacz przewodniki Szybki start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Aby szybko rozpocząć pracę z pierwszym żądaniem, zobacz przewodniki Szybki start dla języków: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Zobacz także
 
 * Informacje o [obrazach Wyszukiwanie wizualne](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) zawierają opis definicji i informacji na temat punktów końcowych, nagłówków żądań, odpowiedzi i parametrów zapytania, których można użyć do żądania wyników wyszukiwania na podstawie obrazu.
 
 * [Użycie interfejsu api wyszukiwanie Bing i wymagania dotyczące wyświetlania](../bing-web-search/use-display-requirements.md) określają akceptowalne zastosowania zawartości i informacji uzyskanych za pośrednictwem interfejsów API wyszukiwania Bing.
+
+* Odwiedź [stronę centrum interfejsu API wyszukiwanie Bing](../bing-web-search/search-the-web.md) , aby poznać inne dostępne interfejsy API.

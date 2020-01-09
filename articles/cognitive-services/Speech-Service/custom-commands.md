@@ -1,7 +1,7 @@
 ---
 title: Polecenia niestandardowe (wersja zapoznawcza) — usługa mowy
 titleSuffix: Azure Cognitive Services
-description: Omówienie funkcji, możliwości i ograniczeń dla poleceń niestandardowych (wersja zapoznawcza), rozwiązanie do tworzenia asystentów głosowych.
+description: Omówienie funkcji, możliwości i ograniczeń dla poleceń niestandardowych (wersja zapoznawcza), rozwiązanie do tworzenia aplikacji głosowych.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9349969f1f9b037a271cb727233517daba999acd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446975"
 ---
 # <a name="custom-commands-preview"></a>Polecenia niestandardowe (wersja zapoznawcza)
 
-[Asystenci głosowani](voice-assistants.md) nasłuchują użytkowników i podejmują działania w odpowiedzi, często mówiąc z powrotem. Używają [zamiany mowy na tekst](speech-to-text.md) , aby transkrypcja mowę użytkownika, a następnie podejmować działania dotyczące interpretacji języka naturalnego tekstu. Ta akcja często obejmuje głosowanie danych wyjściowych wygenerowanego przez asystenta z funkcją [zamiany tekstu na mowę](text-to-speech.md). Urządzenia łączą się z asystentami przy użyciu obiektu `DialogServiceConnector` zestawu mowy SDK.
+Aplikacje głosowe, takie jak [Asystenci głosu](voice-assistants.md) , nasłuchują użytkowników i podejmują działania w odpowiedzi, często mówiąc z powrotem. Używają [zamiany mowy na tekst](speech-to-text.md) , aby transkrypcja mowę użytkownika, a następnie podejmować działania dotyczące interpretacji języka naturalnego tekstu. Ta akcja często obejmuje głosowanie danych wyjściowych wygenerowanego przez asystenta z funkcją [zamiany tekstu na mowę](text-to-speech.md). Urządzenia łączą się z asystentami przy użyciu obiektu `DialogServiceConnector` zestawu mowy SDK.
 
-**Polecenia niestandardowe (wersja zapoznawcza)** to usprawnione rozwiązanie do tworzenia asystenta głosowego. Zapewnia ujednolicone środowisko tworzenia, automatyczny model hostingu i stosunkowo niższą złożoność, a także inne opcje tworzenia asystenta, takie jak [Direct line Speech](direct-line-speech.md). Upraszcza to jednak zmniejszenie elastyczności. W związku z tym polecenia niestandardowe (wersja zapoznawcza) najlepiej nadają się do wykonywania zadań lub scenariuszy kontroli poleceń. Jest to szczególnie dobrze dopasowane do Internet rzeczy (IoT) i urządzeń bezobsługowych.
+**Polecenia niestandardowe (wersja zapoznawcza)** to usprawnione rozwiązanie do tworzenia aplikacji głosowych. Zapewnia ujednolicone środowisko tworzenia, automatyczny model hostingu i stosunkowo niższą złożoność, a także inne opcje, takie jak [bezpośrednie rozpoznawanie linii](direct-line-speech.md). Upraszcza to jednak zmniejszenie elastyczności. W związku z tym polecenia niestandardowe (wersja zapoznawcza) najlepiej nadają się do wykonywania zadań lub scenariuszy kontroli poleceń. Jest to szczególnie dobrze dopasowane do Internet rzeczy (IoT) i urządzeń bezobsługowych.
 
 W przypadku złożonej interakcji z konwersacjami i integracji z innymi rozwiązaniami, takimi jak [rozwiązanie dla Asystenta wirtualnego i szablon przedsiębiorstwa](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , zaleca się korzystanie z bezpośredniej mowy wiersza.
 
@@ -31,7 +31,7 @@ Dobre kandydaci dla poleceń niestandardowych (wersja zapoznawcza) mają stałe 
 
 ## <a name="getting-started-with-custom-commands-preview"></a>Wprowadzenie do poleceń niestandardowych (wersja zapoznawcza)
 
-Pierwszym krokiem korzystania z poleceń niestandardowych (wersja zapoznawcza) w celu udostępnienia asystenta głosowego jest [uzyskanie klucza subskrypcji mowy](get-started.md) i uzyskanie dostępu do konstruktora poleceń niestandardowych (wersja zapoznawcza) w programie [Speech Studio](https://speech.microsoft.com). Z tego miejsca można utworzyć nową aplikację poleceń niestandardowych (wersja zapoznawcza) i opublikować ją, po której aplikacja na urządzeniu może komunikować się z nią przy użyciu zestawu Speech SDK.
+Pierwszym krokiem korzystania z poleceń niestandardowych (wersja zapoznawcza) w celu utworzenia aplikacji głosowej jest [uzyskanie klucza subskrypcji mowy](get-started.md) i uzyskanie dostępu do konstruktora poleceń niestandardowych (wersja zapoznawcza) w programie [Speech Studio](https://speech.microsoft.com). Z tego miejsca można utworzyć nową aplikację poleceń niestandardowych (wersja zapoznawcza) i opublikować ją, po której aplikacja na urządzeniu może komunikować się z nią przy użyciu zestawu Speech SDK.
 
    ![Przepływ tworzenia dla poleceń niestandardowych (wersja zapoznawcza)](media/voice-assistants/custom-commands-flow.png "Przepływ tworzenia poleceń niestandardowych (wersja zapoznawcza)")
 
@@ -41,24 +41,15 @@ Oferujemy Przewodniki Szybki Start zaprojektowane do uruchamiania kodu w mniej n
 * [Tworzenie aplikacji poleceń niestandardowych (wersja zapoznawcza) z parametrami](quickstart-custom-speech-commands-create-parameters.md)
 * [Nawiązywanie połączenia z aplikacją Custom Commands (wersja zapoznawcza) za pomocą zestawu Speech SDKC#](quickstart-custom-speech-commands-speech-sdk.md)
 
-## <a name="sample-code"></a>Przykładowy kod
+Po zakończeniu pracy z przewodnikami szybki start Poznaj nasze porady.
 
-Przykładowy kod służący do tworzenia asystenta głosowego z poleceniami niestandardowymi (wersja zapoznawcza) jest dostępny w witrynie GitHub.
-
-* [Przykłady asystenta głosowego (SDK)](https://aka.ms/csspeech/samples)
-
-## <a name="customization"></a>Dostosowywanie
-
-Asystentzy głosu Skompilowani przy użyciu usługi mowy mogą korzystać z pełnego zakresu opcji dostosowywania dostępnych na potrzeby [zamiany mowy na tekst](speech-to-text.md), zamiany [tekstu na mowę](text-to-speech.md)i [niestandardowego słowa kluczowego](speech-devices-sdk-create-kws.md).
-
-> [!NOTE]
-> Opcje dostosowywania różnią się w zależności od języka/ustawień regionalnych (zobacz [obsługiwane języki](supported-languages.md)).
-
-## <a name="reference-docs"></a>Dokumentacja
-
-* [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
+- [Dodawanie walidacji do parametrów polecenia niestandardowego](./how-to-custom-speech-commands-validations.md)
+- [Spełnienie poleceń na kliencie przy użyciu zestawu Speech SDK](./how-to-custom-speech-commands-fulfill-sdk.md)
+- [Dodawanie potwierdzenia do polecenia niestandardowego](./how-to-custom-speech-commands-confirmations.md)
+- [Dodawanie korekty jednoetapowej do polecenia niestandardowego](./how-to-custom-speech-commands-one-step-correction.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
+* [Przejdź do narzędzia Speech Studio, aby wypróbować polecenia niestandardowe](https://speech.microsoft.com)
 * [Pobieranie zestawu Speech SDK](speech-sdk.md)

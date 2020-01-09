@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 8f078bdfa1c6c106bb12116f30dc69abce42baa0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 33ecef4dde3787546afd28e5f5b31e8dd535fc7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790462"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646368"
 ---
 # <a name="azure-sql-database-features"></a>Funkcje Azure SQL Database
 
@@ -65,7 +65,7 @@ Poniższa tabela zawiera listę głównych funkcji SQL Server i zawiera informac
 | [Zdarzenia rozszerzone (XEvent)](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Niektóre — zobacz [zdarzenia rozszerzone w SQL Database](sql-database-xevent-db-diff-from-svr.md) | Tak — zobacz [różnice zdarzeń rozszerzonych](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Rozszerzone procedury składowane](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nie | Nie |
 | [Pliki i grupy plików](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Tylko podstawowa grupa plików | Tak. Ścieżki plików są przypisywane automatycznie, a w [instrukcji](sql-database-managed-instance-transact-sql-information.md#alter-database-statement)`ALTER DATABASE ADD FILE` nie można określić lokalizacji pliku.  |
-| [Strumieni](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nie | [Nie](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
+| [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nie | [Nie](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
 | [Wyszukiwanie pełnotekstowe (operacje ft)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Tak, ale moduły dzielenia wyrazów innych firm nie są obsługiwane | Tak, ale [moduły dzielenia wyrazów innych firm nie są obsługiwane](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [Funkcje](https://docs.microsoft.com/sql/t-sql/functions/functions) | Większość — Zobacz pojedyncze funkcje | Tak — zobacz [procedury składowane, funkcje i różnice wyzwalaczy](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Optymalizacja w pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Warstwy "tak- [Premium" i krytyczne dla działania firmy obsługują tylko](sql-database-in-memory.md) ograniczoną obsługę nietrwałych obiektów w pamięci, takich jak typy tabel | Tak — [tylko krytyczne dla działania firmy warstwy](sql-database-managed-instance.md) |
@@ -80,10 +80,10 @@ Poniższa tabela zawiera listę głównych funkcji SQL Server i zawiera informac
 | [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql)|Nie|Tak, tylko do innych baz danych i serwerów SQL platformy Azure. Zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENQUERY](https://docs.microsoft.com/sql/t-sql/functions/openquery-transact-sql)|Nie|Tak, tylko do innych baz danych i serwerów SQL platformy Azure. Zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)|Tak, tylko w przypadku importowania z usługi Azure Blob Storage. |Tak, tylko do innych baz danych i serwerów SQL platformy Azure oraz do importowania z usługi Azure Blob Storage. Zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md)|
-| [Zainteresowanych](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Większość — Zobacz pojedyncze operatory |Tak — zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md) |
+| [Operatory](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Większość — Zobacz pojedyncze operatory |Tak — zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nie. Możesz wykonywać zapytania dotyczące danych w plikach umieszczonych na platformie Azure Blob Storage przy użyciu funkcji `OPENROWSET`. | Nie. Możesz wykonywać zapytania dotyczące danych w plikach umieszczonych na platformie Azure Blob Storage przy użyciu funkcji `OPENROWSET`. |
 | [Powiadomienia o zapytaniach](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nie | Tak |
-| [Usługi języka R](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Tak, w [publicznej wersji zapoznawczej](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nie |
+| [Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)(_dawniej usługi R_)| Tak, w [publicznej wersji zapoznawczej](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nie |
 | [Modele odzyskiwania](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Obsługiwane jest tylko pełne odzyskiwanie, które gwarantuje wysoką dostępność. Proste i zbiorczo zarejestrowane modele odzyskiwania są niedostępne. | Obsługiwane jest tylko pełne odzyskiwanie, które gwarantuje wysoką dostępność. Proste i zbiorczo zarejestrowane modele odzyskiwania są niedostępne. | 
 | [Zarządca zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nie | Tak |
 | [Przywróć instrukcje](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nie | Tak, przy użyciu opcji obowiązkowe `FROM URL` dla plików kopii zapasowych umieszczonych w usłudze Azure Blob Storage. Zobacz sekcję [przywracanie różnic](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
@@ -144,12 +144,12 @@ Platforma Azure udostępnia wiele możliwości PaaS, które są dodawane jako do
 | Punkt końcowy usługi sieci wirtualnej | [Tak](sql-database-vnet-service-endpoint-rule-overview.md) | Nie |
 | Globalna komunikacja równorzędna sieci wirtualnej | Tak, za pomocą [prywatnego adresu IP i punktów końcowych usługi](sql-database-vnet-service-endpoint-rule-overview.md) | Nie, [wystąpienie zarządzane nie jest obsługiwane](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) ze względu na [ograniczenie modułu równoważenia obciążenia w globalnej komunikacji równorzędnej sieci wirtualnej](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
 
-## <a name="tools"></a>Narzędzia
+## <a name="tools"></a>narzędzia
 Usługa Azure SQL Database obsługuje różne narzędzia danych, które mogą pomóc w zarządzaniu danymi.
 
 | **Narzędzie** | **Pojedyncze bazy danych i pule elastyczne** | **Wystąpienia zarządzane i pule wystąpień** |
 | --- | --- | --- |
-| Azure Portal | Tak | Tak |
+| Portal Azure | Tak | Tak |
 | Interfejs wiersza polecenia platformy Azure | Tak | Tak|
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Tak | Tak |
 | Azure PowerShell | Tak | Tak |

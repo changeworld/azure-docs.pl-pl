@@ -4,12 +4,12 @@ description: Funkcja błyskawicznego przywracania platformy Azure i często zada
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391302"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskiwanie ulepszonej wydajności tworzenia kopii zapasowych i przywracania dzięki funkcji Azure Backup natychmiastowego przywracania
 
@@ -52,7 +52,7 @@ Domyślnie migawki są przechowywane przez dwa dni. Ta funkcja umożliwia przywr
 
 ## <a name="cost-impact"></a>Wpływ na koszty
 
-Migawki przyrostowe są przechowywane na koncie magazynu maszyny wirtualnej, które jest używane do natychmiastowego odzyskiwania. Migawka przyrostowa oznacza, że miejsce zajęte przez migawkę jest równe zajętemu miejscu zajmowanym przez strony, które są zapisywane po utworzeniu migawki. Opłaty są naliczane za GB zajętego miejsca zajętego przez migawkę, a cena za GB jest taka sama jak na [stronie cennika](https://azure.microsoft.com/pricing/details/managed-disks/).
+Migawki przyrostowe są przechowywane na koncie magazynu maszyny wirtualnej, które jest używane do natychmiastowego odzyskiwania. Migawka przyrostowa oznacza, że miejsce zajęte przez migawkę jest równe zajętemu miejscu zajmowanym przez strony, które są zapisywane po utworzeniu migawki. Opłaty są naliczane za GB zajętego miejsca zajętego przez migawkę, a cena za GB jest taka sama jak na [stronie cennika](https://azure.microsoft.com/pricing/details/managed-disks/). W przypadku maszyn wirtualnych korzystających z dysków niezarządzanych migawki mogą być widoczne w menu dla pliku VHD każdego dysku. W przypadku dysków zarządzanych migawki są przechowywane w zasobie kolekcji punktów przywracania w wyoznaczonej grupie zasobów, a migawki same nie są widoczne bezpośrednio.
 
 >[!NOTE]
 > Czas przechowywania migawek jest ustalony na 5 dni w przypadku zasad tygodniowych.

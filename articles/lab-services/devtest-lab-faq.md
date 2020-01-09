@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565336"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644923"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące Azure DevTest Labs.
 
-## <a name="blog-post"></a>Wpis na blogu
+## <a name="blog-post"></a>Wpis w blogu
 Nasz blog zespołu DevTest Labs został wycofany z 20 marca 2019. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Gdzie mogę teraz śledzić aktualizacje funkcji?
@@ -39,8 +39,8 @@ Obecnie pracujemy nad migrowaniem istniejących wpisów w blogu (z wyjątkiem ak
 ### <a name="where-do-i-see-outage-updates"></a>Gdzie mogę zobaczyć aktualizacje przestoju?
 Będziemy ogłaszać aktualizacje przestojów przy użyciu naszego uchwytu Twitter od razu. Zapoznaj się z nami w serwisie Twitter, aby uzyskać najnowsze aktualizacje dotyczące awarii i znanych usterek.
 
-### <a name="twitter"></a>Twitter
-Nasz uchwyt usługi Twitter:[@azlabservices](https://twitter.com/azlabservices)
+### <a name="twitter"></a>Serwis Twitter
+Nasz uchwyt usługi Twitter: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Ogólne
 ### <a name="what-if-my-question-isnt-answered-here"></a>Co zrobić, jeśli w tym miejscu nie udzielono odpowiedzi na moje pytanie?
@@ -76,18 +76,18 @@ Poniżej przedstawiono scenariusze, do których nasi klienci używają DevTest L
 ### <a name="how-am-i-billed-for-devtest-labs"></a>Jak naliczane są opłaty za DevTest Labs?
 DevTest Labs to bezpłatna usługa. Tworzenie laboratoriów oraz Konfigurowanie zasad, szablonów i artefaktów w usłudze DevTest Labs jest bezpłatne. Płacisz tylko za zasoby platformy Azure używane w laboratoriach, takie jak maszyny wirtualne, konta magazynu i sieci wirtualne. Aby uzyskać więcej informacji na temat kosztów zasobów laboratorium, zobacz [Azure DevTest Labs Cennik](https://azure.microsoft.com/pricing/details/devtest-lab/).
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jakie są różne poziomy zabezpieczeń w DevTest Labs?
 Dostęp zabezpieczeń jest określany przez Access Control oparte na rolach (RBAC). Aby dowiedzieć się, jak działa program Access, można poznać różnice między uprawnieniami, rolą i zakresem zdefiniowanym przez RBAC.
 
-- **Uprawnienie**: Uprawnienie to zdefiniowany dostęp do konkretnej akcji. Na przykład uprawnienie może mieć dostęp do odczytu do wszystkich maszyn wirtualnych.
-- **Rola**: Rola to zestaw uprawnień, które mogą być pogrupowane i przypisywane do użytkownika. Na przykład użytkownik z rolą właściciela subskrypcji ma dostęp do wszystkich zasobów w ramach subskrypcji.
-- **Zakres**: Zakres jest poziomem w hierarchii zasobu platformy Azure. Na przykład zakres może być grupą zasobów, jednym laboratorium lub całą subskrypcją.
+- **Uprawnienie**: uprawnienie jest zdefiniowany dostęp do konkretnej akcji. Na przykład uprawnienie może mieć dostęp do odczytu do wszystkich maszyn wirtualnych.
+- **Rola**: rola to zestaw uprawnień, które mogą być pogrupowane i przypisywane do użytkownika. Na przykład użytkownik z rolą właściciela subskrypcji ma dostęp do wszystkich zasobów w ramach subskrypcji.
+- **Zakres**: zakres jest poziomem w hierarchii zasobu platformy Azure. Na przykład zakres może być grupą zasobów, jednym laboratorium lub całą subskrypcją.
 
 W zakresie DevTest Labs istnieją dwa typy ról, które definiują uprawnienia użytkownika:
 
-- **Właściciel laboratorium**: Właściciel laboratorium ma dostęp do wszystkich zasobów w laboratorium. Właściciel laboratorium może modyfikować zasady, odczytywać i zapisywać na wszystkich maszynach wirtualnych, zmieniać sieć wirtualną i tak dalej.
+- **Właściciel laboratorium**: właściciel laboratorium ma dostęp do wszystkich zasobów w laboratorium. Właściciel laboratorium może modyfikować zasady, odczytywać i zapisywać na wszystkich maszynach wirtualnych, zmieniać sieć wirtualną i tak dalej.
 - **Użytkownik laboratorium**: Użytkownik laboratorium może wyświetlać wszystkie zasoby laboratorium, takie jak maszyny wirtualne, zasady i sieci wirtualne. Jednak użytkownik laboratorium nie może modyfikować zasad ani żadnych maszyn wirtualnych, które zostały utworzone przez innych użytkowników.
 
 Role niestandardowe można także tworzyć w DevTest Labs. Aby dowiedzieć się, jak utworzyć role niestandardowe w DevTest Labs, zobacz [udzielanie uprawnień użytkownika do określonych zasad laboratorium](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
@@ -99,7 +99,7 @@ Istnieje szeroki wzorzec, jednak szczegóły są zależne od organizacji.
 
 Centralna powinna być tylko to, co jest niezbędne, i umożliwia zespołom projektu i aplikacji posiadanie wymaganego poziomu kontroli. Zazwyczaj oznacza to, że Central IT jest właścicielem subskrypcji i obsługuje podstawowe funkcje IT, takie jak konfiguracje sieci. Zestaw **właścicieli** dla subskrypcji powinien być niewielki. Tacy właściciele mogą mianować dodatkowych właścicieli w razie potrzeby lub zastosować zasady na poziomie subskrypcji, na przykład "Brak publicznego adresu IP".
 
-Może istnieć podzbiór użytkowników, którzy wymagają dostępu między subskrypcjami, takimi jak pomoc lub obsługa warstwy 2. W tym przypadku zalecamy nadanie tym użytkownikom dostępu współautora, aby mogli zarządzać zasobami, ale nie zapewniają dostępu użytkowników ani dostosowywać zasad.
+Może istnieć podzbiór użytkowników, którzy wymagają dostępu między subskrypcjami, takimi jak pomoc lub obsługa warstwy 2. W tym przypadku zalecamy nadanie tym użytkownikom dostępu **współautora** , aby mogli zarządzać zasobami, ale nie zapewniają dostępu użytkowników ani dostosowywać zasad.
 
 Zasób DevTest Labs powinien należeć do właścicieli, którzy znajdują się blisko zespołu projektu/aplikacji. Jest to spowodowane tym, że rozumieją one wymagania dotyczące maszyn i wymaganego oprogramowania. W większości organizacji właściciel tego zasobu DevTest Labs jest często liderem projektu/projektowania. Ten właściciel może zarządzać użytkownikami i zasadami w środowisku laboratoryjnym i może zarządzać wszystkimi maszynami wirtualnymi w środowisku DevTest Labs.
 
@@ -162,11 +162,11 @@ Scenariusz typowej grupy zasobów:
 Możesz chcieć przyciągnąć bieżące konwencje nazewnictwa przedsiębiorstwa do operacji platformy Azure i zapewnić ich spójność w środowisku DevTest Labs. Zalecamy, aby podczas wdrażania DevTest Labs były określone zasady uruchamiania. Te zasady są wdrażane za pomocą centralnego skryptu i szablonów JSON w celu wymuszenia spójności. Zasady nazewnictwa można zaimplementować za pomocą zasad platformy Azure, które są stosowane na poziomie subskrypcji. Aby uzyskać przykłady JSON dla Azure Policy, zobacz [Azure Policy Samples](../governance/policy/samples/index.md).
 
 ### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Ile laboratoriów można utworzyć w ramach tej samej subskrypcji?
-Nie ma określonego limitu liczby laboratoriów, które można utworzyć na subskrypcję. Ilość używanych zasobów na subskrypcję jest jednak ograniczona. Możesz zapoznać się z [limitami i przydziałami dla subskrypcji platformy Azure](../azure-subscription-service-limits.md) oraz [jak zwiększyć te limity](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Nie ma określonego limitu liczby laboratoriów, które można utworzyć na subskrypcję. Ilość używanych zasobów na subskrypcję jest jednak ograniczona. Możesz zapoznać się z [limitami i przydziałami dla subskrypcji platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) oraz [jak zwiększyć te limity](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>Ile maszyn wirtualnych można utworzyć na laboratorium?
-Nie ma określonego limitu liczby maszyn wirtualnych, które można utworzyć dla laboratorium. Jednak zasoby (rdzenie maszyn wirtualnych, publiczne adresy IP itp.), które są używane, są ograniczone na subskrypcję. Możesz zapoznać się z [limitami i przydziałami dla subskrypcji platformy Azure](../azure-subscription-service-limits.md) oraz [jak zwiększyć te limity](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Nie ma określonego limitu liczby maszyn wirtualnych, które można utworzyć dla laboratorium. Jednak zasoby (rdzenie maszyn wirtualnych, publiczne adresy IP itp.), które są używane, są ograniczone na subskrypcję. Możesz zapoznać się z [limitami i przydziałami dla subskrypcji platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) oraz [jak zwiększyć te limity](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 ### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Jak mogę określić stosunek użytkowników na laboratorium i ogólną liczbę laboratoriów, które są w danej organizacji?
 Zalecamy, aby jednostki biznesowe i grupy programistyczne skojarzone z tym samym projektem programistycznym były skojarzone z tym samym laboratorium. Umożliwia zastosowanie tych samych typów zasad, obrazów i zasad zamykania do obu grup.
@@ -176,7 +176,7 @@ Może być również konieczne rozważenie granic geograficznych. Na przykład d
 Możesz również użyć laboratorium dla określonego projektu w Azure DevOps Projects. Następnie należy zastosować zabezpieczenia za pomocą określonej grupy Azure Active Directory, co umożliwia dostęp do obu zestawów zasobów. Sieć wirtualna przypisana do laboratorium może być kolejną granicą, aby skonsolidować użytkowników.
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Jak zapobiegamy usunięciu zasobów w ramach laboratorium?
-Zaleca się, aby ustawić odpowiednie uprawnienia na poziomie laboratorium, tak aby tylko autoryzowani użytkownicy mogli usuwać zasoby lub zmieniać zasady laboratorium. Deweloperzy powinni być umieszczani w grupie **użytkowników DevTest Labs** . Deweloperem potencjalnego klienta lub liderem infrastruktury powinien być **właściciel DevTest Labs**. Zalecamy posiadanie tylko dwóch właścicieli laboratorium. Te zasady rozszerzają się do repozytorium kodu w celu uniknięcia uszkodzenia. Użytkownicy laboratorium mają prawa do używania zasobów, ale nie mogą aktualizować zasad laboratorium. Zapoznaj się z następującym artykułem zawierającym listę ról i praw, które są używane przez każdą wbudowaną grupę w laboratorium: [Dodawanie właścicieli i użytkowników w Azure DevTest Labs](devtest-lab-add-devtest-user.md).
+Zaleca się, aby ustawić odpowiednie uprawnienia na poziomie laboratorium, tak aby tylko autoryzowani użytkownicy mogli usuwać zasoby lub zmieniać zasady laboratorium. Deweloperzy powinni być umieszczani w grupie **użytkowników DevTest Labs** . Deweloperem potencjalnego klienta lub liderem infrastruktury powinien być **właściciel DevTest Labs**. Zalecamy posiadanie tylko dwóch właścicieli laboratorium. Te zasady rozszerzają się do repozytorium kodu w celu uniknięcia uszkodzenia. Użytkownicy laboratorium mają prawa do używania zasobów, ale nie mogą aktualizować zasad laboratorium. Zapoznaj się z poniższym artykułem zawierającym listę ról i praw, które każda wbudowana grupa ma w laboratorium: [Dodawanie właścicieli i użytkowników w Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Jak mogę udostępniać bezpośredni link do mojego laboratorium?
 
@@ -214,7 +214,7 @@ Tak, możesz dołączyć wiele dysków do maszyn wirtualnych.
 Aby użyć obrazów systemu operacyjnego klienta systemu Windows (systemu Windows 7 lub nowszej wersji) do programowania lub testowania na platformie Azure, wykonaj jedną z następujących czynności:
 
 - [Kup subskrypcję MSDN](https://www.visualstudio.com/products/how-to-buy-vs).
-- Jeśli masz Umowa Enterprise, Utwórz subskrypcję platformy Azure z ofertą [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p).
+- Jeśli masz Umowa Enterprise, Utwórz subskrypcję platformy Azure z [ofertą Enterprise — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0148p).
 
 Aby uzyskać więcej informacji na temat środków na korzystanie z platformy Azure dla każdej oferty MSDN, zobacz [comiesięczne kredyty na korzystanie z platformy Azure dla subskrybentów Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
@@ -285,7 +285,7 @@ Aby zautomatyzować przekazywanie plików VHD do tworzenia obrazów niestandardo
 
 Aby znaleźć docelowe konto magazynu skojarzone z Twoim laboratorium:
 
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1.  Zaloguj się do [portalu Azure](https://portal.azure.com).
 2.  Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 3.  Znajdź i wybierz grupę zasobów, która jest skojarzona z laboratorium.
 4.  W obszarze **Przegląd**wybierz jedno z kont magazynu.
@@ -304,7 +304,7 @@ Portal Azure Marketplace powinien być używany domyślnie, chyba że istnieją 
 - Warunki zgodności lub przepisy prawne (na przykład zasady zabezpieczeń), które muszą być stosowane dla wszystkich maszyn.
 - Używanie obrazów niestandardowych nie powinno być uznawane za jasne. Wprowadzają one dodatkową złożoność, ponieważ teraz trzeba zarządzać plikami VHD dla tych podstawowych obrazów bazowych. Należy również regularnie uaktualniać te obrazy podstawowe przy użyciu aktualizacji oprogramowania. Aktualizacje te obejmują nowe aktualizacje systemu operacyjnego, a także wszelkie aktualizacje lub zmiany konfiguracji, które są potrzebne dla samego pakietu oprogramowania.
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Co to są artefakty?
 Artefakty to dostosowywalne elementy, których można użyć do wdrożenia najnowszych bitów lub wdrożenia narzędzi deweloperskich na maszynie wirtualnej. Dołącz artefakty do maszyny wirtualnej podczas tworzenia maszyny wirtualnej. Po aprowizacji maszyny wirtualnej artefakty wdrażają i konfigurują maszynę wirtualną. Różne istniejące już artefakty są dostępne w naszym [publicznym repozytorium GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Możesz również [tworzyć własne artefakty](devtest-lab-artifact-author.md).
@@ -352,7 +352,7 @@ Jeśli maszyny wirtualne muszą współdziałać z istniejącą infrastrukturą,
 
 Rozważ użycie wzorca komunikacji równorzędnej sieci wirtualnej tutaj ([model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)gwiazdy). Takie podejście umożliwia komunikację sieci wirtualnej/podsieci między subskrypcjami. W przeciwnym razie każde środowisko DevTest Labs może mieć własną sieć wirtualną. 
 
-Istnieją [limity](../azure-subscription-service-limits.md) liczby sieci wirtualnych na subskrypcję. Wartość domyślna to 50, chociaż ten limit można podwyższyć do 100.
+Istnieją [limity](../azure-resource-manager/management/azure-subscription-service-limits.md) liczby sieci wirtualnych na subskrypcję. Wartość domyślna to 50, chociaż ten limit można podwyższyć do 100.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Kiedy należy używać udostępnionego adresu IP a publicznego adresu IP a prywatny adres IP?
  
@@ -367,8 +367,8 @@ W przypadku korzystania ze współużytkowanych publicznych adresów IP maszyny 
 
 Tak. Istnieją dwa aspekty, które należy wziąć pod uwagę — ruch przychodzący i wychodzący.
 
-- **Ruch** przychodzący — Jeśli maszyna wirtualna nie ma publicznego adresu IP, nie można jej skontaktować z Internetem. Typowym podejściem jest upewnienie się, że ustawiono zasady na poziomie subskrypcji, w tym, że żaden użytkownik nie może utworzyć publicznego adresu IP.
-- **Ruch** wychodzący — Jeśli chcesz uniemożliwić maszynom wirtualnym bezpośredni dostęp do publicznej sieci Internet i wymusić ruch przez zaporę firmową, możesz kierować ruchem lokalnym za pośrednictwem usługi Express Route lub VPN przy użyciu protokołu wymuszonego routingu.
+- **Ruch przychodzący** — Jeśli maszyna wirtualna nie ma publicznego adresu IP, nie można jej skontaktować z Internetem. Typowym podejściem jest upewnienie się, że ustawiono zasady na poziomie subskrypcji, w tym, że żaden użytkownik nie może utworzyć publicznego adresu IP.
+- **Ruch wychodzący** — Jeśli chcesz uniemożliwić maszynom wirtualnym bezpośredni dostęp do publicznej sieci Internet i wymusić ruch przez zaporę firmową, możesz kierować ruchem lokalnym za pośrednictwem usługi Express Route lub VPN przy użyciu protokołu wymuszonego routingu.
 
 > [!NOTE]
 > Jeśli masz serwer proxy, który blokuje ruch bez ustawień serwera proxy, nie zapomnij dodać wyjątków do konta magazynu artefaktów laboratorium.

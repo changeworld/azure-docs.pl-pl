@@ -1,44 +1,35 @@
 ---
-title: Zarządzanie stanem w usługach Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Definiowanie stanu usługi i zarządzanie usługami usługi Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Zarządzanie stanem w usłudze Azure Service Fabric Services
+description: Poznaj informacje o stanie na platformie Azure Service Fabric, w tym o sposobie definiowania stanu usługi i zarządzania nim w usłudze Service Fabric Services.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3ab36def2d210bd763f3ce2dc5df155e37e2dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870897"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614574"
 ---
 # <a name="service-state"></a>Stan usługi
-**Stan usługi** odnosi się do w pamięci lub na dysku dane usługi wymaga funkcji. Obejmuje, na przykład struktury danych i zmiennych składowych, które Usługa odczytuje i zapisuje do pracy. W zależności od tego, jak usługa została zaprojektowana może to również obejmować pliki lub inne zasoby, które są przechowywane na dysku. Na przykład pliki bazy danych będzie używać do przechowywania danych i dzienników transakcji.
+**Stan usługi** odnosi się do danych znajdujących się w pamięci lub na dysku, których usługa wymaga do działania. Obejmuje to na przykład struktury danych i zmienne składowe, które Usługa odczytuje i zapisuje do pracy. W zależności od tego, jak usługa jest poddana analizie, może również zawierać pliki lub inne zasoby, które są przechowywane na dysku. Na przykład pliki, których baza danych będzie używać do przechowywania danych i dzienników transakcji.
 
-Jako usługa przykład rozważmy Kalkulator. Usługa podstawowe Kalkulator przyjmuje dwie liczby i zwraca ich suma. Wykonanie tego obliczenia pociąga za sobą żadnych zmiennych Członkowskich ani innych informacji.
+Jako Przykładowa usługa Rozważmy Kalkulator. Podstawowa usługa kalkulatora przyjmuje dwie liczby i zwraca ich sumę. Wykonanie tego obliczenia nie wiąże się z żadną zmienną członkowską ani innymi informacjami.
 
-Teraz należy wziąć pod uwagę samej Kalkulator, ale z dodatkową metodę do przechowywania i zwracanie sumy ostatni ma obliczanej. Ta usługa jest teraz stanowych. Stanowa oznacza, że zawiera on pewnego stanu, która zapisuje do oblicza nowy sum i odczytuje z kiedy możesz zadawać pytania do zwrócenia ostatniego obliczona suma.
+Teraz Rozważmy ten sam kalkulator, ale z dodatkową metodą przechowywania i zwracania ostatniej obliczonej sumy. Ta usługa jest teraz stanowa. Stanowy oznacza, że zawiera on jakiś stan, w którym jest on zapisywany, gdy oblicza nową sumę i odczytuje z pytania o zwrócenie ostatniej obliczonej sumy.
 
-W usłudze Azure Service Fabric nosi nazwę pierwszej usługi bezstanowej usługi. Druga usługa nosi nazwę usługi stanowej.
+W usłudze Azure Service Fabric pierwsza usługa jest nazywana usługą bezstanową. Druga usługa jest nazywana usługą stanową.
 
 ## <a name="storing-service-state"></a>Przechowywanie stanu usługi
-Stan może zostać zewnętrznych albo wspólnie z kodem, który jest manipulowanie stanu. O eksternalizację stanu jest zazwyczaj wykonywane za pomocą zewnętrznej bazy danych lub innym magazynie danych, która działa na różnych maszynach, za pośrednictwem sieci lub poza procesem na tym samym komputerze. W naszym przykładzie kalkulatora magazynu danych może być bazy danych SQL database lub wystąpienia Store tabeli platformy Azure. Każde żądanie, aby obliczyć sumę przeprowadzi aktualizację, oparte na tych danych, a żądania do usługi do zwrócenia wyniku wartości w bieżącej wartości, które są pobierane z magazynu. 
+Stan może być zewnętrzny lub wspólnie zlokalizowany z kodem, który operuje na stanie. Externalization stanu zwykle odbywa się przy użyciu zewnętrznej bazy danych lub innego magazynu danych, który działa na różnych komputerach za pośrednictwem sieci lub poza procesami na tym samym komputerze. W naszym przykładzie kalkulatora magazyn danych może być bazą danych SQL lub wystąpieniem magazynu tabel platformy Azure. Każde żądanie obliczenia sumy wykonuje aktualizację tych danych, a żądania kierowane do usługi zwracają wartość wyniku bieżącej wartości pobieranej ze sklepu. 
 
-Stan może być również wspólnie z kodem, który obsługuje stan. Usług stanowych w usłudze Service Fabric są zazwyczaj tworzone przy użyciu tego modelu. Usługa Service Fabric udostępnia infrastrukturę, aby upewnić się, że ten stan jest wysoko dostępna, spójne i niezawodne i że usługi utworzonych w ten sposób można łatwo skalować.
+Stan może również znajdować się w tym samym miejscu przy użyciu kodu, który operuje na stanie. Usługi stanowe w Service Fabric są zwykle tworzone przy użyciu tego modelu. Service Fabric zapewnia infrastrukturę, aby zapewnić wysoką dostępność, spójność i trwałość oraz zapewnić, że usługi skompilowane w ten sposób mogą łatwo skalować.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat pojęć usługi Service Fabric zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat pojęć Service Fabric, zobacz następujące artykuły:
 
-* [Dostępność usługi Service Fabric](service-fabric-availability-services.md)
-* [Skalowalność usługi Service Fabric](service-fabric-concepts-scalability.md)
-* [Partycjonowanie usługi Service Fabric](service-fabric-concepts-partitioning.md)
-* [Usług usługi Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)
+* [Dostępność usług Service Fabric Services](service-fabric-availability-services.md)
+* [Skalowalność usług Service Fabric Services](service-fabric-concepts-scalability.md)
+* [Partycjonowanie Service Fabric usług](service-fabric-concepts-partitioning.md)
+* [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)

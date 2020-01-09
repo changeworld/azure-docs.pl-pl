@@ -1,23 +1,23 @@
 ---
-title: Dodawanie, usuwanie i sortowanie ulubionych w Azure Portal | Microsoft Docs
-description: Dowiedz się, jak dodawać lub usuwać elementy z listy ulubionych i sortować kolejność elementów
+title: Dodawanie, usuwanie i rozmieszczanie ulubionych w Azure Portal | Microsoft Docs
+description: Dowiedz się, jak dodać lub usunąć elementy z listy ulubionych i zmienić kolejność elementów
 services: azure-portal
-keywords: Ulubiony
-author: kfollis
-ms.author: kfollis
-ms.date: 11/01/2019
+keywords: Ulubione, Portal
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 51228f4a28b5c6e19bf341b5576540d36bcaae64
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579539"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640571"
 ---
-# <a name="add-remove-and-sort-favorites"></a>Dodawanie, usuwanie i sortowanie ulubionych
+# <a name="add-remove-and-rearrange-favorites"></a>Dodawanie, usuwanie i zmiana rozmieszczenia ulubionych
 
 Dodaj lub Usuń elementy z listy **ulubionych** , aby szybko przejść do najczęściej używanych usług. Niektóre popularne usługi zostały już dodane do listy **ulubionych** , ale prawdopodobnie zechcesz ją dostosować. Jesteś jedyną osobą, która widzi zmiany wprowadzane do **ulubionych**.
 
@@ -51,7 +51,7 @@ Teraz możesz usunąć element bezpośrednio z listy **ulubionych** .
 
 2. Na karcie informacje Wybierz gwiazdkę, aby zmieniła się z wypełniony na unfill. Usługa zostanie usunięta z listy **ulubionych** .
 
-## <a name="sort-favorites"></a>Sortuj Ulubione
+## <a name="rearrange-favorites"></a>Zmień rozmieszczenie ulubionych
 
 Można zmienić kolejność na liście ulubionych usług. Po prostu przeciągnij i upuść element menu do innej lokalizacji w obszarze **Ulubione**.
 

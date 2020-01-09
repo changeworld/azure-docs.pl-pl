@@ -1,28 +1,25 @@
 ---
-title: Pobieranie zasobów platformy Azure przy użyciu interfejsu API REST zdarzenia dotyczące kondycji | Dokumentacja firmy Microsoft
-description: Użyj interfejsów API REST platformy Azure, aby pobrać zdarzenia kondycji zasobów platformy Azure.
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
+title: Pobieranie zdarzeń usługi Azure Resource Health przy użyciu interfejsu API REST | Microsoft Docs
+description: Użyj interfejsów API REST platformy Azure, aby pobrać zdarzenia dotyczące kondycji zasobów platformy Azure.
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790916"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451391"
 ---
-# <a name="get-resource-health-using-the-rest-api"></a>Pobierz kondycję zasobów przy użyciu interfejsu API REST 
+# <a name="get-resource-health-using-the-rest-api"></a>Uzyskiwanie Resource Health przy użyciu interfejsu API REST 
 
-W tym artykule przykład pokazuje, jak pobrać listę zdarzenia dotyczące kondycji zasobów platformy Azure w subskrypcji przy użyciu [interfejsu API REST usługi Azure](/rest/api/azure/).
+W tym przykładowym artykule pokazano, jak pobrać listę zdarzeń dotyczących kondycji zasobów platformy Azure w ramach subskrypcji za pomocą [interfejsu API REST platformy Azure](/rest/api/azure/).
 
-Pełna dokumentacja i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
+Kompletna dokumentacja referencyjna i dodatkowe przykłady dla interfejsu API REST są dostępne w temacie [Azure monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Żądanie kompilacji
+## <a name="build-the-request"></a>Tworzenie żądania
 
-Należy użyć następującego `GET` żądania HTTP, aby wyświetlić listę zdarzenia kondycji dla Twojej subskrypcji dla zakresu czasu między `2018-05-16` i `2018-06-20`.
+Użyj następującego `GET` żądania HTTP, aby wyświetlić listę zdarzeń dotyczących kondycji dla subskrypcji w zakresie czasu między `2018-05-16` i `2018-06-20`.
 
 ```http
 https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
@@ -34,25 +31,25 @@ Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Wymagany. Ustaw `application/json`.|  
-|*Authorization:*|Wymagany. Ustawić prawidłową `Bearer` [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Wymagany. Ustaw wartość `application/json`.|  
+|*Authorization:*|Wymagany. Ustaw prawidłowy [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |  
 
 ### <a name="uri-parameters"></a>Parametry identyfikatora URI
 
-| Name (Nazwa) | Opis |
+| Nazwa | Opis |
 | :--- | :---------- |
-| subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| api-version | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano parametru api-version `2015-04-01`zawarte w powyższym adresie URL.  |
-| $filter | Opcję filtrowania, aby zmniejszyć zestaw wyników zwrócony. Dostępne są dozwolone wzorce dla tego parametru [w odwołaniu dla operacji dzienników aktywności](/rest/api/monitor/activitylogs/list#uri-parameters). Przykład pokazany rejestruje wszystkie zdarzenia w zakresie czasu między 2018-05-16 i 2018-06-20 |
+| subscriptionId | Identyfikator subskrypcji, który identyfikuje subskrypcję platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| api-version | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano `2015-04-01`API-Version, zawarte w powyższym adresie URL.  |
+| $filter | Opcja filtrowania w celu zmniejszenia zestawu zwracanych wyników. Dozwolone wzorce dla tego parametru są dostępne [w odniesieniu do operacji dzienników aktywności](/rest/api/monitor/activitylogs/list#uri-parameters). Pokazany przykład przechwytuje wszystkie zdarzenia w przedziale czasu od 2018-05-16 do 2018-06-20 |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Treść żądania
 
-Nie treści żądania jest wymagana dla tej operacji.
+Żadna treść żądania nie jest wymagana dla tej operacji.
 
 ## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
-Z listy wartości zdarzenia kondycji odpowiadający parametr filtru wraz z zwróciła kod stanu 200 `nextlink` identyfikator URI do pobrania następnej strony wyników.
+Kod stanu 200 jest zwracany z listą wartości zdarzeń dotyczących kondycji odpowiadającej parametrowi filtru wraz z identyfikatorem URI `nextlink`, aby pobrać następną stronę wyników.
 
 ## <a name="example-response"></a>Przykładowa odpowiedź 
 

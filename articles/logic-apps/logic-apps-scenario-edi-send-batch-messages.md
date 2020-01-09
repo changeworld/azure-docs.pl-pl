@@ -1,20 +1,20 @@
 ---
 title: Przetwarzanie wsadowe komunikatów EDI jako grupy
-description: Wysyłanie i odbieranie komunikatów EDI jako partii, grup lub kolekcji w Azure Logic Apps
+description: Wysyłanie i odbieranie komunikatów EDI jako partii, grup lub kolekcji przy użyciu przetwarzania wsadowego w Azure Logic Apps
 services: logic-apps
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793004"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666673"
 ---
-# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Wysyłanie komunikatów EDI w partiach do partnerów handlowych przy użyciu Azure Logic Apps
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Komunikaty programu Exchange EDI jako partie lub grupy między partnerami handlowymi w Azure Logic Apps
 
 W scenariuszach Business-Business (B2B) partnerzy często wymieniają komunikaty w grupach lub *partiach*. Podczas tworzenia rozwiązania wsadowego za pomocą Logic Apps można wysyłać komunikaty do partnerów handlowych i przetwarzać je razem w partiach. W tym artykule pokazano, jak można wsadowo przetwarzać komunikaty EDI przy użyciu X12 na przykład przez utworzenie aplikacji logiki "nadawca usługi Batch" i aplikacji logiki "odbiorca usługi Batch". 
 
@@ -66,12 +66,12 @@ W przypadku tego odbiorcy usługi Batch należy określić tryb wsadowy, nazwę,
 
    | Właściwość | Wartość | Uwagi | 
    |----------|-------|-------|
-   | **Tryb wsadowy** | Alert |  |  
+   | **Tryb wsadowy** | wbudowane |  |  
    | **Nazwa partii** | TestBatch | Dostępne tylko z **wbudowanym** trybem wsadowym | 
    | **Kryteria wydania** | Na podstawie liczby komunikatów na podstawie harmonogramu | Dostępne tylko z **wbudowanym** trybem wsadowym | 
    | **Liczba komunikatów** | 10 | Dostępne tylko w przypadku kryteriów wydania **opartych na liczbie komunikatów** | 
    | **Interwał** | 10 | Dostępne tylko w przypadku kryteriów wydania **opartych na harmonogramie** | 
-   | **Częstotliwość** | minutę | Dostępne tylko w przypadku kryteriów wydania **opartych na harmonogramie** | 
+   | **Częstotliwość** | minuta | Dostępne tylko w przypadku kryteriów wydania **opartych na harmonogramie** | 
    ||| 
 
    ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -126,7 +126,7 @@ Aby upewnić się, że odbiornik usługi Batch działa zgodnie z oczekiwaniami, 
    | Właściwość | Opis | 
    |----------|-------------|
    | **Metoda** | Z tej listy wybierz pozycję **post**. | 
-   | **Adresu** | Wygeneruj identyfikator URI dla pojemnika żądania, a następnie wprowadź ten identyfikator URI w tym polu. | 
+   | **Identyfikator URI** | Wygeneruj identyfikator URI dla pojemnika żądania, a następnie wprowadź ten identyfikator URI w tym polu. | 
    | **Treść** | Kliknij wewnątrz tego pola i po otwarciu listy zawartości dynamicznej wybierz token **treści** , który jest wyświetlany w sekcji, **zakodować zadanie wsadowe według nazwy umowy**. <p>Jeśli nie widzisz tokenu **treści** , obok pozycji **Koduj zadanie wsadowe według nazwy umowy**wybierz pozycję **Zobacz więcej**. | 
    ||| 
 

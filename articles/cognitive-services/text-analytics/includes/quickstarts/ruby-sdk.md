@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/02/2019
 ms.author: aahi
-ms.openlocfilehash: 847b2d0489dc04b4275465dbe957b72418bbf1a4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ffa14a4e3628bdc3453e8d536797b0edf6129a12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750246"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446306"
 ---
 [Dokumentacja referencyjna](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) [(RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) [ | ](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -45,12 +45,14 @@ W pliku Ruby Zaimportuj następujące pakiety.
 
 [!code-ruby[Import statements](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=includeStatement)]
 
-Utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource o nazwie `TEXT_ANALYTICS_ENDPOINT` i `TEXT_ANALYTICS_SUBSCRIPTION_KEY`. Jeśli zmienna środowiskowa została utworzona po uruchomieniu aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę, na których jest uruchomiona, aby uzyskać dostęp do zmiennej. 
+Utwórz zmienne dla punktu końcowego i klucza usługi Azure Resource. 
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-
-[!code-ruby[endpoint, key variables](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=vars)]
+```ruby
+const subscription_key = '<paste-your-text-analytics-key-here>'
+const endpoint = `<paste-your-text-analytics-endpoint-here>`
+```
 
 ## <a name="object-model"></a>Model obiektów 
 
@@ -65,7 +67,7 @@ Obiekt Response jest listą zawierającą informacje o analizie dla każdego dok
 Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta analiza tekstu dla języka Python:
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
-* [analiza tonacji](#sentiment-analysis)
+* [Analiza tonacji](#sentiment-analysis)
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek](#entity-recognition)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)
@@ -81,7 +83,7 @@ class TextAnalyticsClient
 end
 ```
 
-W tej klasie Utwórz funkcję o nazwie `initialize` w celu uwierzytelnienia klienta. Użyj `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT` zmiennych środowiskowych. 
+W tej klasie Utwórz funkcję o nazwie `initialize`, aby uwierzytelnić klienta przy użyciu klucza i punktu końcowego. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
@@ -91,7 +93,7 @@ Poza klasą Użyj funkcji `new()` klienta, aby ją utworzyć.
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="sentiment-analysis"></a>Analiza tonacji
+## <a name="sentiment-analysis"></a>Analiza opinii
 
 W obiekcie Client Utwórz funkcję o nazwie `AnalyzeSentiment()`, która pobiera listę dokumentów wejściowych, które zostaną utworzone później. Wywołaj funkcję `sentiment()` klienta i uzyskaj wynik. Następnie można wykonać iterację w wynikach i wydrukować identyfikator każdego dokumentu oraz tonacji ocenę. Wynik zbliżony do 0 wskazuje negatywną tonacji, natomiast wynik zbliżony do 1 wskazuje pozytywny tonacji.
 

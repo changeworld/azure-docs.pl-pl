@@ -1,25 +1,14 @@
 ---
 title: Wdrażanie Service Fabric platformy Azure za pomocą programu PowerShell
-description: Jak wdrażać i usuwać aplikacje w Service Fabric przy użyciu programu PowerShell.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
+description: Dowiedz się więcej o usuwaniu i wdrażaniu aplikacji na platformie Azure Service Fabric i sposobach wykonywania tych akcji w programie PowerShell.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 0080ba0807a4cb31fedeb132932e2e08137dd40b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013288"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614506"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Wdrażanie i usuwanie aplikacji przy użyciu programu PowerShell
 

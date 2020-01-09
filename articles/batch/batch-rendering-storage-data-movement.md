@@ -1,99 +1,99 @@
 ---
-title: Przenoszenie magazynu i danych do renderowania — Azure Batch
-description: Opcje przenoszenia magazynu i danych dla obciążenia renderowania
+title: Magazynowanie i przenoszenie danych do renderowania — Azure Batch
+description: Dowiedz się więcej na temat różnych opcji przechowywania i przenoszenia danych w przypadku renderowania zasobów i obciążeń plików wyjściowych.
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5a0d4dc82995e63697cc673bc54695c9c6d586df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1076fc152ddf2c3a2d4f2346262ca90215d68ddf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390382"
 ---
-# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opcje przenoszenia magazynu i danych renderowania plików zasobów i danych wyjściowych
+# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opcje przenoszenia magazynu i danych na potrzeby renderowania zasobów i plików wyjściowych
 
-Istnieje wiele opcji udostępniania plików scen i zasobów do aplikacji renderowanie w puli maszyn wirtualnych:
+Istnieje wiele opcji udostępniania plików sceny i zasobów dla aplikacji do renderowania na maszynach wirtualnych puli:
 
-* [Usługa Azure blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction):
-  * Pliki sceny i zasobów są przekazywane do usługi blob storage w lokalnym systemie plików. Gdy aplikacja jest uruchamiana przez zadanie, wymagane pliki są kopiowane z magazynu obiektów blob na maszynie Wirtualnej, dzięki czemu są one dostępne przez aplikację renderowania. Pliki wyjściowe są zapisywane przez aplikację renderowania na dysku maszyny Wirtualnej i następnie kopiowane do magazynu obiektów blob.  Jeśli to konieczne, można pobrać pliki wyjściowe z magazynu obiektów blob do lokalnego systemu plików.
-  * Usługa Azure blob storage jest to proste i ekonomiczne rozwiązanie dla mniejsze projekty.  Wszystkich zasobów, które są wymagane pliki dla każdej puli maszyn wirtualnych, następnie po zwiększa liczbę i rozmiar plików zasobów jak najbardziej efektywne są opieki musi podjąć w celu zapewnienia transferu plików.  
-* Usługa Azure storage jako systemu plików przy użyciu [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux):
-  * W przypadku maszyn wirtualnych systemu Linux na koncie magazynu można udostępniane i używany jako system plików, stosowania sterownik systemu plików wirtualnych blobfuse.
-  * Ta opcja ma tę zaletę, że jest to bardzo ekonomiczna jako żadnych maszyn wirtualnych są wymagane przez system plików, a także blobfuse buforowanie na maszynach wirtualnych pozwala uniknąć wielokrotnego pliki do pobrania tych samych plików dla wielu zadań i zadań podrzędnych.  Przenoszenie danych również jest proste, jak pliki są po prostu obiektów blob i standardowych interfejsów API i narzędzi, takich jak narzędzia azcopy, może służyć do skopiowania plików między lokalnym systemem plików i magazynu platformy Azure.
+* [Magazyn obiektów blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction):
+  * Pliki sceny i elementów zawartości są przekazywane do magazynu obiektów blob z lokalnego systemu plików. Gdy aplikacja jest uruchamiana przez zadanie, wymagane pliki są kopiowane z magazynu obiektów BLOB do maszyny wirtualnej, dzięki czemu można uzyskać do nich dostęp za pomocą aplikacji renderowania. Pliki wyjściowe są zapisywane przez aplikację renderowania na dysku maszyny wirtualnej, a następnie kopiowane do magazynu obiektów BLOB.  W razie potrzeby pliki wyjściowe można pobrać z usługi BLOB Storage do lokalnego systemu plików.
+  * Usługa Azure Blob Storage to prosta i ekonomiczna opcja dla mniejszych projektów.  Wszystkie pliki zasobów są wymagane na każdej maszynie wirtualnej puli, a następnie liczba i rozmiar plików zasobów zwiększa potrzebę działania, aby zapewnić, że transfery plików są możliwie wydajne.  
+* Usługa Azure Storage jako system plików przy użyciu [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux):
+  * W przypadku maszyn wirtualnych z systemem Linux konto magazynu może być uwidocznione i używane jako system plików, gdy jest używany sterownik wirtualnego systemu plików blobfuse.
+  * Ta opcja ma bardzo ekonomiczne zalety, ponieważ nie są wymagane żadne maszyny wirtualne dla systemu plików, a buforowanie blobfuse na maszynach wirtualnych pozwala uniknąć wielokrotnego pobierania tych samych plików dla wielu zadań i zadań.  Przenoszenie danych jest również proste, ponieważ pliki są po prostu obiektami BLOB i standardowymi interfejsami API i narzędziami, takimi jak AzCopy, mogą służyć do kopiowania plików między lokalnym systemem plików i usługą Azure Storage.
 * System plików lub udział plików:
-  * W zależności od systemu operacyjnego maszyny Wirtualnej i wydajność/skalowania wymagań, następnie opcje obejmują [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), za pomocą maszyny Wirtualnej z dyskami dołączonymi systemu plików NFS, przy użyciu wielu maszyn wirtualnych z dyskami dołączonymi systemu plików rozproszonych, takich jak GlusterFS, lub Korzystanie z oferty innej firmy.
-  * [Systemy Avere](https://www.averesystems.com/) jest teraz częścią firmy Microsoft i będzie miał w najbliższej przyszłości rozwiązania, które są idealne dla renderowanie na dużą skalę, wysokiej wydajności.  Spowoduje to włączenie rozwiązania Avere systemu plików NFS opartych na platformie Azure lub pamięć podręczną protokołu SMB, aby utworzyć, która działa w połączeniu z usługą blob storage lub urządzeniach NAS w środowisku lokalnym.
-  * W systemie plików, pliki można je odczytać lub zapisywane bezpośrednio w systemie plików lub można kopiować między systemem plików i puli maszyn wirtualnych.
-  * Udostępniony system plików umożliwia dużą liczbę zasobów współużytkowanych przez projekty i zadania można używać z renderowania zadania tylko dostęp, co jest wymagane.
+  * W zależności od systemu operacyjnego maszyny wirtualnej i wymagań dotyczących wydajności/skalowalności opcje obejmują [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), przy użyciu maszyny wirtualnej z dołączonymi dyskami dla systemu plików NFS, używając wielu maszyn wirtualnych z dołączonymi dyskami dla rozproszonego systemu plików, takiego jak GlusterFS, lub korzystając z oferty innej firmy.
+  * [Systemy avere](https://www.averesystems.com/) są teraz częścią firmy Microsoft i będą mieć rozwiązania w najbliższej przyszłości, które doskonale nadają się do wysokiej wydajności.  Rozwiązanie avere umożliwia tworzenie pamięci podręcznej systemu plików NFS lub SMB opartej na platformie Azure, która działa w połączeniu z usługą BLOB Storage lub lokalnymi urządzeniami NAS.
+  * W systemie plików, pliki mogą być odczytywane lub zapisywane bezpośrednio w systemie plików lub mogą być kopiowane między systemem plików i maszynami wirtualnymi puli.
+  * Udostępniony system plików umożliwia korzystanie z dużej liczby zasobów współużytkowanych między projektami i zadaniami, które mają być używane, z zadaniami renderowania, które uzyskują dostęp tylko do tego, co jest wymagane.
 
-## <a name="using-azure-blob-storage"></a>Za pomocą usługi Azure blob storage
+## <a name="using-azure-blob-storage"></a>Korzystanie z usługi Azure Blob Storage
 
-Należy używać konta usługi blob storage lub konta magazynu ogólnego przeznaczenia w wersji 2.  Te dwa typy kont magazynu można skonfigurować za pomocą znacznie wyższe limity w porównaniu do konta magazynu ogólnego przeznaczenia w wersji 1, zgodnie z opisem w [ten wpis w blogu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).  Po skonfigurowaniu wyższe limity umożliwi znacznie lepszą wydajność i skalowalność, szczególnie w przypadku, gdy istnieje wiele puli maszyn wirtualnych, uzyskiwania dostępu do konta magazynu.
+Powinno być używane konto magazynu obiektów blob lub konto magazynu ogólnego przeznaczenia w wersji 2.  Te dwa typy kont magazynu można skonfigurować przy użyciu znacznie wyższych limitów w porównaniu z kontem magazynu ogólnego przeznaczenia w wersji 1, zgodnie z opisem w [tym wpisie w blogu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).  Po skonfigurowaniu wyższe limity umożliwią znacznie lepszą wydajność i skalowalność, zwłaszcza w przypadku wielu maszyn wirtualnych puli uzyskujących dostęp do konta magazynu.
 
-### <a name="copying-files-between-client-and-blob-storage"></a>Kopiowanie plików między klienta i blob storage
+### <a name="copying-files-between-client-and-blob-storage"></a>Kopiowanie plików między klientem a magazynem obiektów BLOB
 
-Aby skopiować pliki do i z usługi Azure storage, różne mechanizmy służy obiekt blob magazynu interfejsu API, w tym [Biblioteka przenoszenia danych usługi Azure Storage](https://github.com/Azure/azure-storage-net-data-movement), narzędzie wiersza polecenia azcopy dla [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) lub [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux), [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), i [usługa Azure Batch Explorer](https://azure.github.io/BatchExplorer/).
+Aby skopiować pliki do i z usługi Azure Storage, można użyć różnych mechanizmów, w tym interfejsu API magazynu obiektów blob, [biblioteki przenoszenia danych usługi Azure Storage](https://github.com/Azure/azure-storage-net-data-movement), narzędzia wiersza polecenia AzCopy dla [systemu Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) lub [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux), [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/)i [Azure Batch Explorer](https://azure.github.io/BatchExplorer/).
 
-Na przykład przy użyciu narzędzia azcopy, wszystkie zasoby w folderze można przenieść w następujący sposób:
+Na przykład przy użyciu AzCopy wszystkie zasoby w folderze można przenieść w następujący sposób:
 
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /Y`
 
-Aby skopiować tylko zmodyfikowane pliki, parametr /XO może służyć do:
+Aby skopiować tylko zmodyfikowane pliki, można użyć parametru/XO:
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /XO /Y`
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopiowanie plików wejściowych zasobu z magazynu obiektów blob do maszynami wirtualnymi pul usługi Batch
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopiowanie wejściowych plików zasobów z magazynu obiektów BLOB do maszyn wirtualnych puli usługi Batch
 
-Istnieje kilka różnych podejść do kopiowania plików z najlepszym rozwiązaniem, określony przez rozmiar zasobów zadania.
-Najprostszą metodą jest do skopiowania wszystkich plików zasobów do puli maszyn wirtualnych dla każdego zadania:
+Istnieje kilka różnych podejścia do kopiowania plików z najlepszym podejściem ustalonym przez rozmiar zasobów zadania.
+Najprostszym podejściem jest skopiowanie wszystkich plików zasobów do maszyn wirtualnych puli dla każdego zadania:
 
-* Gdy pliki są unikatowe dla zadania, ale są wymagane dla wszystkich zadań, zadania, a następnie [zadania podrzędnego przygotowania zadania](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask) można określić do skopiowania wszystkich plików.  Zadanie przygotowania zadania jest uruchamiane jeden raz po pierwsze zadanie jest wykonywane na maszynie Wirtualnej, ale nie jest ponownie uruchamiany dla kolejnych zadań.
-* A [zadanie podrzędne zwolnienia zadania](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask) należy określić umożliwiającego usunięcie plików dla zadania, po zakończeniu zadania; pozwoli to uniknąć wprowadzenie uzupełnione przez wszystkie pliki zasobów zadania dysku maszyny Wirtualnej.
-* W przypadku wielu zadań przy użyciu tych samych zasobów, przy użyciu tylko zmiany przyrostowe zasobów dla każdego zadania, następnie wszystkie pliki zawartości są nadal kopiowane, nawet jeśli zostały zaktualizowane tylko ich podzestaw.  Powinien to być nieefektywne, gdy istnieje wiele zasobów dużych plików.
+* Jeśli istnieją jakieś pliki, które są unikatowe dla zadania, ale są wymagane dla wszystkich zadań zadania, można określić [zadanie przygotowania zadania](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask) w celu skopiowania wszystkich plików.  Zadanie przygotowania zadania jest uruchamiane raz, gdy pierwsze zadanie zadania jest wykonywane na maszynie wirtualnej, ale nie jest uruchamiane ponownie w przypadku kolejnych zadań zadania.
+* [Zadanie zwolnienia zadania](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask) należy określić w celu usunięcia plików poszczególnych zadań po zakończeniu zadania. pozwoli to uniknąć zapełnienia dysku maszyny wirtualnej przez wszystkie pliki zasobów zadania.
+* Jeśli istnieje wiele zadań korzystających z tych samych zasobów i tylko przyrostowe zmiany zasobów dla każdego zadania, wszystkie pliki zasobów są nadal kopiowane, nawet jeśli tylko podzbiór został zaktualizowany.  Będzie to niewydajne, gdy istnieje wiele plików zasobów.
 
-Gdy pliki zawartości są ponownie między zadaniami przy użyciu tylko przyrostowe zmiany między zadaniami, jest bardziej wydajne, ale wymaga nieco więcej wysiłku podejście jest do przechowywania zasobów w folderze udostępnionym na maszynie Wirtualnej i synchronizowanie zmienionych plików.
+Gdy pliki zasobów są ponownie używane między zadaniami, a jedynie przyrostowe zmiany między zadaniami, a następnie bardziej wydajnym podejściem jest przechowywanie zasobów w folderze udostępnionym na maszynie wirtualnej i synchronizowanie zmienionych plików.
 
-* Zadanie przygotowania zadania wykona kopiowania przy użyciu narzędzia azcopy z parametrem /XO do folderu udostępnionego maszyny Wirtualnej, określone przez zmienną środowiskową AZ_BATCH_NODE_SHARED_DIR.  To spowoduje tylko skopiowanie zmienionych plików do każdej maszyny Wirtualnej.
-* Myślenia musi nadać rozmiarowi wszystkich trwałych upewnij się, że mieści się na tymczasowym dysku w puli maszyn wirtualnych.
+* Zadanie przygotowania zadania wykona kopię przy użyciu AzCopy z parametrem/XO do udostępnionego folderu maszyny wirtualnej określonego przez zmienną środowiskową AZ_BATCH_NODE_SHARED_DIR.  Spowoduje to skopiowanie zmienionych plików na każdą maszynę wirtualną.
+* Należy zwrócić szczególną część zasobów, aby upewnić się, że będą one dopasowane do tymczasowego dysku maszyn wirtualnych puli.
 
-Usługa Azure Batch ma wbudowaną funkcję kopiować pliki między maszynami wirtualnymi pul usługi Batch i konta magazynu.  Zadanie [pliki zasobów](https://docs.microsoft.com/rest/api/batchservice/job/add#resourcefile) kopiowania plików z magazynu do puli maszyn wirtualnych i może być określona dla zadania podrzędnego przygotowania zadania.  Niestety w przypadku setek plików jest możliwość osiągnięty limit i zadania nie powiedzie się.  W przypadku dużej liczby zasobów zaleca się w zadania podrzędnego przygotowania zadania, można używać symboli wieloznacznych, która nie ma żadnych ograniczeń za pomocą wiersza polecenia narzędzia azcopy.
+Azure Batch ma wbudowaną obsługę kopiowania plików między dyskami i maszynami wirtualnymi puli zadań magazynu.  [Pliki zasobów](https://docs.microsoft.com/rest/api/batchservice/job/add#resourcefile) zadań Kopiuj pliki z magazynu do maszyn wirtualnych puli i można je określić dla zadania przygotowania zadania.  Niestety, gdy istnieją setki plików, możliwe jest osiągnięcie limitu i zadań zakończonych niepowodzeniem.  W przypadku dużej liczby zasobów zaleca się użycie wiersza polecenia AzCopy w zadaniu przygotowania zadania, które może używać symboli wieloznacznych i nie ma limitu.
 
-### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Kopiowanie plików wyjściowych do usługi blob storage z maszynami wirtualnymi pul usługi Batch
+### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Kopiowanie plików wyjściowych do magazynu obiektów blob z maszyn wirtualnych puli usługi Batch
 
-[Pliki wyjściowe](https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile) mogą być używane kopiowania plików z puli maszyn wirtualnych do magazynu.  Jeden lub więcej plików może zostać skopiowany na określone konto magazynu z maszyny Wirtualnej, po ukończeniu zadania.  Powinny zostać skopiowane wyniku renderowania, ale również może być pożądane do przechowywania plików dziennika.
+[Pliki wyjściowe](https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile) mogą być używane do przechowywania kopii plików z maszyny wirtualnej puli.  Co najmniej jeden plik można skopiować z maszyny wirtualnej na określone konto magazynu po zakończeniu zadania.  Renderowane dane wyjściowe powinny być kopiowane, ale mogą być również wymagane do przechowywania plików dziennika.
 
-## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>W przypadku pul maszyn wirtualnych systemu Linux przy użyciu blobfuse wirtualny system plików
+## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Korzystanie z blobfuse wirtualnego systemu plików dla pul maszyn wirtualnych z systemem Linux
 
-Blobfuse jest sterownik systemu plików wirtualnych usługi Azure Blob Storage, która umożliwia dostęp do plików przechowywanych jako obiekty BLOB na koncie magazynu za pomocą systemu plików w systemie Linux.
+Blobfuse to wirtualny sterownik systemu plików dla Blob Storage platformy Azure, który umożliwia dostęp do plików przechowywanych jako obiekty blob na koncie magazynu za pomocą systemu plików Linux.
 
-Węzły puli można zainstalować system plików, podczas uruchamiania lub instalacja może się zdarzyć, jako część zadania przygotowania zadania — zadanie jest uruchomione tylko pierwsze zadanie w ramach zadania działa w węźle.  Blobfuse można skonfigurować na wykorzystanie dysku RAM i lokalny dysk SSD maszyn wirtualnych do buforowania plików, co spowoduje zwiększenie wydajności znacznie Jeśli wiele zadań w węźle dostęp do niektórych z tych samych plików.
+Węzły puli mogą zainstalować system plików po rozpoczęciu lub instalacji może wystąpić w ramach zadania przygotowania zadania — zadanie, które jest uruchamiane tylko wtedy, gdy pierwsze zadanie w zadaniu jest uruchamiane w węźle.  Blobfuse można skonfigurować w taki sposób, aby korzystały z dysku RAMDisk i lokalnych dysków SSD na potrzeby buforowania plików, co znacznie zwiększa wydajność, jeśli wiele zadań w węźle ma dostęp do niektórych z tych samych plików.
 
-[Dostępne są przykładowe szablony](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) uruchamianie autonomicznego V-Ray renderowany przy użyciu systemu plików blobfuse i może służyć jako podstawa dla szablonów dla innych aplikacji.
+[Szablony przykładowe są dostępne](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) do uruchamiania autonomicznego renderowania w języku V-Ray przy użyciu systemu plików blobfuse i mogą być używane jako podstawa szablonów dla innych aplikacji.
 
 ### <a name="accessing-files"></a>Uzyskiwanie dostępu do plików
 
-Zadania podrzędne, określ ścieżki dla plików wejściowych i pliki wyjściowe przy użyciu systemu zainstalowanego pliku.
+Zadania zadań określają ścieżki plików wejściowych i plików wyjściowych przy użyciu zainstalowanego systemu plików.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopiowanie plików wejściowych zasobu z magazynu obiektów blob do maszynami wirtualnymi pul usługi Batch
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopiowanie wejściowych plików zasobów z magazynu obiektów BLOB do maszyn wirtualnych puli usługi Batch
 
-Ponieważ pliki są po prostu obiektów blob w usłudze Azure Storage, następnie blob standardowych interfejsów API, narzędzi i interfejsów użytkownika może służyć do kopiowania plików między lokalnych plików systemu i blob storage; na przykład, narzędzia azcopy Eksploratora usługi Storage, narzędzie Batch Explorer itp.
+Ponieważ pliki są po prostu obiektami BLOB w usłudze Azure Storage, standardowe interfejsy API obiektów blob, narzędzia i interfejsów użytkownika mogą służyć do kopiowania plików między lokalnym systemem plików i magazynem obiektów BLOB. na przykład AzCopy, Eksplorator usługi Storage, Batch Explorer itd.
 
-## <a name="using-azure-files-with-windows-vms"></a>Za pomocą usługi Azure Files przy użyciu maszyn wirtualnych Windows
+## <a name="using-azure-files-with-windows-vms"></a>Używanie Azure Files z maszynami wirtualnymi z systemem Windows
 
-[Usługa Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem protokołu SMB.  Usługa pliki Azure opiera się na usłudze Azure blob storage; jest [efektywny kosztowo sposób](https://azure.microsoft.com/pricing/details/storage/files/) i może być konfigurowana przy użyciu replikacji danych do innego regionu, więc globalnie nadmiarowy.  [Skalowanie elementów docelowych](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) powinny być przejrzane w celu ustalenia, jeśli należy użyć usługi Azure Files podany rozmiar prognozy puli i liczby plików zasobów.
+[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem protokołu SMB.  Azure Files jest oparta na usłudze Azure Blob Storage; jest to [koszt wydajny](https://azure.microsoft.com/pricing/details/storage/files/) i można go skonfigurować z replikacją danych w innym regionie, tak aby globalnie nadmiarowo.  [Elementy docelowe skali](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) powinny być przeglądane w celu określenia, czy Azure Files powinny być używane w celu uwzględnienia rozmiaru puli prognozy i liczby plików zasobów.
 
-Brak [wpis w blogu](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) i [dokumentacji](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) obejmujące sposób instalacji udziału plików platformy Azure.
+Istnieje wpis w [blogu](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) i [Dokumentacja dotycząca](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) sposobu instalowania udziału plików platformy Azure.
 
-### <a name="mounting-an-azure-files-share"></a>Instalowanie udziału plików platformy Azure
+### <a name="mounting-an-azure-files-share"></a>Instalowanie udziału Azure Files
 
-Operacja instalacji do użycia w usłudze Batch, należy wykonać każdorazowo, ponieważ nie jest możliwe utrwalanie połączeń między zadaniami można uruchomić zadania w.  W tym celu najłatwiej na potrzeby cmdkey utrwalanie poświadczeń przy użyciu zadania podrzędnego uruchamiania w konfiguracji puli, a następnie zainstalować ten udział przed każdym zadaniu.
+Aby można było korzystać z usługi Batch, należy wykonać operację instalacji za każdym razem, gdy zadanie w trakcie działania nie jest możliwe, aby zachować połączenie między zadaniami.  Najprostszym sposobem jest użycie polecenia cmdkey w celu utrwalenia poświadczeń przy użyciu zadania uruchamiania w konfiguracji puli, a następnie zainstalowanie udziału przed każdym zadaniem.
 
-Przykład użytkowania cmdkey w szablonie puli (poprzedzone znakiem zmiany znaczenia do użycia w pliku JSON) — należy pamiętać, że gdy oddzielając wywołanie cmdkey z wywołania polecenie net use, kontekstu użytkownika dla zadania podrzędnego uruchamiania musi być taka sama jak używane do uruchamiania zadań:
+Przykładowe użycie polecenia cmdkey w szablonie puli (w przypadku użycia w pliku JSON) — należy pamiętać, że w przypadku oddzielenia wywołania cmdkey od wywołania net use kontekst użytkownika dla zadania uruchomieniowego musi być taki sam, jak w przypadku uruchamiania zadań podrzędnych:
 
 ```
 "startTask": {
@@ -107,7 +107,7 @@ Przykład użytkowania cmdkey w szablonie puli (poprzedzone znakiem zmiany znacz
 }
 ```
 
-Przykładowy wiersz polecenia zadania zadania:
+Przykładowy wiersz polecenia zadania:
 ```
 "commandLine":"net use S:
   \\\\storageaccountname.file.core.windows.net\\rendering &
@@ -120,18 +120,18 @@ Przykładowy wiersz polecenia zadania zadania:
 
 ### <a name="accessing-files"></a>Uzyskiwanie dostępu do plików
 
-Zadania podrzędne, określ ścieżki dla plików wejściowych i plików wyjściowych przy użyciu zainstalowany system plików, za pomocą zamapowany dysk lub ścieżkę UNC.
+Zadania zadań określają ścieżki plików wejściowych i plików wyjściowych przy użyciu zainstalowanego systemu plików przy użyciu dysku zamapowanego lub ścieżki UNC.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopiowanie plików wejściowych zasobu z magazynu obiektów blob do maszynami wirtualnymi pul usługi Batch
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopiowanie wejściowych plików zasobów z magazynu obiektów BLOB do maszyn wirtualnych puli usługi Batch
 
-Usługa pliki systemu Azure są obsługiwane przez wszystkie główne interfejsów API i narzędzi usługi Azure Storage obsługuje; np. narzędzia azcopy, wiersza polecenia platformy Azure, Eksploratora usługi Storage, programu PowerShell usługi Azure Batch Explorer itp.
+Azure Files są obsługiwane przez wszystkie główne interfejsy API i narzędzia obsługujące usługę Azure Storage. np. AzCopy, interfejs wiersza polecenia platformy Azure, Eksplorator usługi Storage, Azure PowerShell, Batch Explorer itd.
 
-[Usługa Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) jest dostępny do automatycznej synchronizacji plików między lokalnym systemem plików i udział plików platformy Azure.
+[Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) jest dostępny do automatycznego synchronizowania plików między lokalnym systemem plików i udziałem plików platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji o opcjach magazynu Zobacz szczegółowa dokumentacja:
+Więcej informacji o opcjach magazynu znajduje się w szczegółowej dokumentacji:
 
-* [Usługa Azure blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
+* [Magazyn obiektów blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
 * [Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
-* [Usługa pliki Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)
+* [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)

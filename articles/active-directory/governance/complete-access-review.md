@@ -1,5 +1,5 @@
 ---
-title: Wykonaj przegląd dostępu do grup lub aplikacji — Azure Active Directory | Microsoft Docs
+title: Dokończ przegląd dostępu grup & aplikacji — Azure AD
 description: Dowiedz się, jak wykonać przegląd dostępu członków grupy lub dostępu do aplikacji w Azure Active Directory przeglądy dostępu.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489141"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422718"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokończ przegląd dostępu grup lub aplikacji w przeglądach dostępu usługi Azure AD
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Dokończ przegląd dostępu grup i aplikacji w przeglądach dostępu usługi Azure AD
 
-Jako administrator [utworzysz przegląd dostępu do grup lub aplikacji](create-access-review.md) , a recenzenci przeprowadzili [Przegląd dostępu](perform-access-review.md). W tym artykule opisano, jak wyświetlić wyniki przeglądu dostępu i zastosować wyniki.
+Jako administrator [utworzysz przegląd dostępu do grup lub aplikacji](create-access-review.md) , a recenzenci [przeprowadzili przegląd dostępu](perform-access-review.md). W tym artykule opisano, jak wyświetlić wyniki przeglądu dostępu i zastosować wyniki.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -66,7 +66,7 @@ Jeśli **Funkcja autoapply** nie została włączona na potrzeby przeglądu, kli
 
 ![Zastosuj zmiany przeglądu dostępu](./media/complete-access-review/apply-changes.png)
 
-Stan przeglądu zostanie zmieniony z ukończonej przez  Stany pośrednie, takie jak **stosowanie** i zakończenie do stanu **wyniku**. Należy się spodziewać, że w ciągu kilku minut będzie widocznych odrzuconych użytkowników (jeśli istnieją) z członkostwa w grupie lub przypisywania aplikacji.
+Stan przeglądu zostanie zmieniony z **ukończonej** przez Stany pośrednie, takie jak **stosowanie** i zakończenie do stanu **wyniku**. Należy się spodziewać, że w ciągu kilku minut będzie widocznych odrzuconych użytkowników (jeśli istnieją) z członkostwa w grupie lub przypisywania aplikacji.
 
 Skonfigurowany autorecenzja lub **wybór nie ma** wpływu na grupę, która pochodzi z katalogu lokalnego lub grupy dynamicznej. Jeśli chcesz zmienić grupę, która pochodzi z lokalizacji lokalnej, Pobierz wyniki i Zastosuj te zmiany do reprezentacji grupy w tym katalogu.
 

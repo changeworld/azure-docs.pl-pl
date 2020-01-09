@@ -1,6 +1,6 @@
 ---
-title: Dodaj warstwę wielokątów wytłoczenia do Azure Maps | Microsoft Docs
-description: Jak dodać warstwę wielokątów wytłoczenia do zestawu SDK sieci Web Azure Maps.
+title: Dodaj warstwę wytłoczenia wielokąta do Azure Maps | Microsoft Docs
+description: Jak dodać warstwę wytłoczenia wielokąta do Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e6858359549f6a54513eda7bc692adcbc7d7e71b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a357545bedde6a4e859a671005083a0fc665340d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432838"
 ---
-# <a name="add-an-extrusion-polygon-layer-to-the-map"></a>Dodaj warstwę wielokątów wytłoczenia do mapy
+# <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Dodaj warstwę wytłoczenia wielokąta do mapy
 
 W tym artykule pokazano, jak za pomocą warstwy wytłoczenia wielokąta renderować obszary `Polygon` i `MultiPolygon` funkcji geometrie jako kształty wyciągnięcia na mapie. Zestaw SDK sieci Web Azure Maps obsługuje również tworzenie okręgów geometrie zgodnie z definicją w [schemacie rozszerzonego kodu JSON](extend-geojson.md#circle). Te okręgi są przekształcane na wielokąty, gdy są renderowane na mapie. Wszystkie funkcje geometrie można także łatwo aktualizować, jeśli zawinięte z [Atlasem. Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) — Klasa.
 
@@ -46,7 +46,7 @@ Zapoznaj się z piórem <a href='https://codepen.io/azuremaps/pen/eYYYNox'>na ma
 
 ## <a name="add-a-circle-to-the-map"></a>Dodaj okrąg do mapy
 
-Azure Maps używa rozszerzonej wersji schematu GEOJSON, który zawiera definicję okręgów, jak pokazano [tutaj](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Wykreślone koło może być renderowane na mapie, tworząc `point` funkcję z właściwością `subType` `Circle` oraz numerowaną Właściwość `Radius` reprezentującą promień w **licznikach**. Na przykład:
+Azure Maps używa rozszerzonej wersji schematu GEOJSON, który zawiera definicję okręgów, jak pokazano [tutaj](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Wykreślone koło może być renderowane na mapie, tworząc `point` funkcję z właściwością `subType` `Circle` oraz numerowaną Właściwość `Radius` reprezentującą promień w **licznikach**. Przykład:
 
 ```Javascript
 {

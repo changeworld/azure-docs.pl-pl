@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d88df0c7e17d297162a1921021b89f02077c2ac7
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893369"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560389"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -361,7 +361,7 @@ Użyj tego typu próbkowania, jeśli aplikacja często przechodzi przez swój mi
 
 Ustaw częstotliwość próbkowania na stronie użycie i szacowane koszty:
 
-![W bloku przegląd aplikacji kliknij pozycję Ustawienia, przydziały, próbki, a następnie wybierz pozycję częstotliwość próbkowania, a następnie kliknij pozycję Aktualizuj.](./media/sampling/04.png)
+![W bloku przegląd aplikacji kliknij pozycję Ustawienia, przydziały, próbki, a następnie wybierz pozycję częstotliwość próbkowania, a następnie kliknij pozycję Aktualizuj.](./media/sampling/data-sampling.png)
 
 Podobnie jak w przypadku innych typów próbkowania, algorytm zachowuje powiązane elementy telemetrii. Na przykład podczas przeprowadzania inspekcji danych telemetrycznych w programie Search będziesz mieć możliwość znalezienia żądania związanego z określonym wyjątkiem. Liczby metryk, takie jak częstotliwość żądań i częstotliwość wyjątków, są prawidłowo zachowywane.
 
@@ -543,7 +543,7 @@ Postępuj zgodnie z instrukcjami podanymi w [tym](https://docs.microsoft.com/azu
         {
             if(somecondition)
             {
-                ((ISupportSampling)item).SamplingPercentage = 100;
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
             }
         }
       }

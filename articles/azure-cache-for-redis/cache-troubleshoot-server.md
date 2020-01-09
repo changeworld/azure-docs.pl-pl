@@ -1,17 +1,17 @@
 ---
 title: Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie serwera Redis
-description: Dowiedz się, jak rozwiązywać typowe problemy po stronie serwera w usłudze Azure cache for Redis
+description: Dowiedz się, jak rozwiązywać typowe problemy po stronie serwera w usłudze Azure cache for Redis, takie jak wykorzystanie pamięci, duże użycie procesora, długotrwałe polecenia lub ograniczenia przepustowości.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: 22cb4beb3411c617882972e1b91c5f538019fae4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122560"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433347"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie serwera Redis
 
@@ -75,7 +75,7 @@ Aby wyeliminować sytuacje, w których wykorzystanie przepustowości sieci zbli�
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
-- [Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie klienta Redis](cache-troubleshoot-client.md)
+- [Rozwiązywanie problemów z usługą Azure Cache for Redis po stronie klienta](cache-troubleshoot-client.md)
 - [Jakiej pamięci podręcznej platformy Azure dla oferty Redis i rozmiaru należy użyć?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 - [Jak można sprawdzić i przetestować wydajność mojej pamięci podręcznej?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Jak monitorować usługę Azure cache for Redis](cache-how-to-monitor.md)

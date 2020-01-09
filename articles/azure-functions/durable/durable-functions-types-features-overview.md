@@ -1,18 +1,18 @@
 ---
-title: Typy funkcji w Durable Functions rozszerzeniu Azure Functions
+title: Typy funkcji w usłudze Azure Durable Functions
 description: Dowiedz się więcej o typach funkcji i ról, które obsługują komunikację typu "funkcja-funkcja" w Durable Functions aranżacji w Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7a485f31ed7e112745cf3b45bbfe348e6a2e0fd3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433263"
 ---
-# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy i funkcje (Azure Functions)
+# <a name="durable-functions-types-and-features"></a>Durable Functions — typy i funkcje
 
 Durable Functions jest rozszerzeniem [Azure Functions](../functions-overview.md). Durable Functions służy do organizowania stanowej aranżacji wykonywania funkcji. Trwała aplikacja funkcji to rozwiązanie, które składa się z różnych funkcji platformy Azure. Funkcje mogą odtwarzać różne role w trwałej aranżacji funkcji. 
 

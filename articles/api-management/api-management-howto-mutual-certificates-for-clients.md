@@ -1,5 +1,6 @@
 ---
-title: Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów w API Management API Management platformy Azure | Microsoft Docs
+title: Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów w API Management
+titleSuffix: Azure API Management
 description: Dowiedz się, jak zabezpieczyć dostęp do interfejsów API przy użyciu certyfikatów klienta
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: apimpm
-ms.openlocfilehash: 263f8495b9dbb0a1c5b3c54301b4b4deab425e31
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430645"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Jak zabezpieczyć interfejsy API przy użyciu uwierzytelniania certyfikatów klientów w API Management
 
@@ -28,7 +29,7 @@ Aby uzyskać informacje o zabezpieczaniu dostępu do usługi zaplecza interfejsu
 > [!IMPORTANT]
 > Aby otrzymywać i weryfikować certyfikaty klienta w warstwie zużycia, należy najpierw włączyć ustawienie "Żądaj certyfikatu klienta" w bloku "domeny niestandardowe", jak pokazano poniżej.
 
-![Żądaj certyfikatu klienta](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![Zażądaj certyfikatu klienta](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>Sprawdzanie wystawcy i tematu
 
@@ -45,8 +46,8 @@ Poniższe zasady można skonfigurować w celu sprawdzenia wystawcy i tematu cert
 ```
 
 > [!NOTE]
-> Aby wyłączyć sprawdzanie użycia `context.Request.Certificate.VerifyNoRevocation()` listy odwołania certyfikatów `context.Request.Certificate.Verify()`zamiast.
-> Jeśli certyfikat klienta jest podpisany z podpisem własnym, certyfikaty urzędu certyfikacji głównego (lub pośredniego) muszą zostać [przekazane](api-management-howto-ca-certificates.md) do `context.Request.Certificate.Verify()` API Management `context.Request.Certificate.VerifyNoRevocation()` programu i do pracy.
+> Aby wyłączyć sprawdzanie listy odwołania certyfikatów, użyj `context.Request.Certificate.VerifyNoRevocation()`, a nie `context.Request.Certificate.Verify()`.
+> Jeśli certyfikat klienta jest podpisany z podpisem własnym, certyfikat urzędu certyfikacji (lub pośredni) musi zostać [przekazany](api-management-howto-ca-certificates.md) do API Management, aby `context.Request.Certificate.Verify()` i `context.Request.Certificate.VerifyNoRevocation()` działały.
 
 ## <a name="checking-the-thumbprint"></a>Sprawdzanie odcisku palca
 
@@ -63,8 +64,8 @@ Poniższe zasady można skonfigurować w celu sprawdzenia odcisku palca certyfik
 ```
 
 > [!NOTE]
-> Aby wyłączyć sprawdzanie użycia `context.Request.Certificate.VerifyNoRevocation()` listy odwołania certyfikatów `context.Request.Certificate.Verify()`zamiast.
-> Jeśli certyfikat klienta jest podpisany z podpisem własnym, certyfikaty urzędu certyfikacji głównego (lub pośredniego) muszą zostać [przekazane](api-management-howto-ca-certificates.md) do `context.Request.Certificate.Verify()` API Management `context.Request.Certificate.VerifyNoRevocation()` programu i do pracy.
+> Aby wyłączyć sprawdzanie listy odwołania certyfikatów, użyj `context.Request.Certificate.VerifyNoRevocation()`, a nie `context.Request.Certificate.Verify()`.
+> Jeśli certyfikat klienta jest podpisany z podpisem własnym, certyfikat urzędu certyfikacji (lub pośredni) musi zostać [przekazany](api-management-howto-ca-certificates.md) do API Management, aby `context.Request.Certificate.Verify()` i `context.Request.Certificate.VerifyNoRevocation()` działały.
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Sprawdzanie odcisku palca w odniesieniu do certyfikatów przekazanych do API Management
 
@@ -82,11 +83,11 @@ Poniższy przykład pokazuje, jak sprawdzić odcisk palca certyfikatu klienta wz
 ```
 
 > [!NOTE]
-> Aby wyłączyć sprawdzanie użycia `context.Request.Certificate.VerifyNoRevocation()` listy odwołania certyfikatów `context.Request.Certificate.Verify()`zamiast.
-> Jeśli certyfikat klienta jest podpisany z podpisem własnym, certyfikaty urzędu certyfikacji głównego (lub pośredniego) muszą zostać [przekazane](api-management-howto-ca-certificates.md) do `context.Request.Certificate.Verify()` API Management `context.Request.Certificate.VerifyNoRevocation()` programu i do pracy.
+> Aby wyłączyć sprawdzanie listy odwołania certyfikatów, użyj `context.Request.Certificate.VerifyNoRevocation()`, a nie `context.Request.Certificate.Verify()`.
+> Jeśli certyfikat klienta jest podpisany z podpisem własnym, certyfikat urzędu certyfikacji (lub pośredni) musi zostać [przekazany](api-management-howto-ca-certificates.md) do API Management, aby `context.Request.Certificate.Verify()` i `context.Request.Certificate.VerifyNoRevocation()` działały.
 
 > [!TIP]
-> Problem zakleszczenia certyfikatu klienta opisany w [tym artykule](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) może być manifestem na kilka sposobów, np. żądania zawieszania `403 Forbidden` , żądania powodują powstanie kodu stanu `context.Request.Certificate` po `null`upływie limitu czasu. Ten problem ma zwykle `POST` wpływ `PUT` na żądania z zawartością o długości około 60KB lub większą.
+> Problem zakleszczenia certyfikatu klienta opisany w tym [artykule](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) może być manifestem na kilka sposobów, np. żądania zawieszania, żądania spowodują `403 Forbidden` kodu stanu po upływie limitu czasu, `context.Request.Certificate` jest `null`. Ten problem ma zwykle wpływ na żądania `POST` i `PUT` o długości zawartości wynoszącej około 60KB lub większą.
 > Aby zapobiec wystąpieniu tego problemu, Włącz ustawienie "Negocjuj certyfikat klienta" dla żądanych nazw hostów w bloku "domeny niestandardowe", jak pokazano poniżej. Ta funkcja nie jest dostępna w warstwie zużycia.
 
 ![Negocjuj certyfikat klienta](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)

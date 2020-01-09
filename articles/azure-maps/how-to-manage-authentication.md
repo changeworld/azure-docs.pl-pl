@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432989"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Zarządzanie uwierzytelnianiem w Azure Maps
 
@@ -21,11 +21,11 @@ Po utworzeniu konta Azure Maps, identyfikator klienta i klucze są tworzone w ce
 
 ## <a name="view-authentication-details"></a>Wyświetlanie szczegółów uwierzytelniania
 
+Po utworzeniu konta Azure Maps są generowane klucze podstawowe i pomocnicze. Zaleca się używanie klucza podstawowego jako klucza subskrypcji podczas wywoływania Azure Maps przy użyciu uwierzytelniania za pomocą [klucza współużytkowanego](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication). Klucz pomocniczy może być używany w scenariuszach, takich jak stopniowe zmiany klawiszy. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie przy użyciu Azure Maps](https://aka.ms/amauth).
+
 Szczegóły uwierzytelniania można wyświetlić na Azure Portal. Przejdź do swojego konta i wybierz pozycję **uwierzytelnianie** w menu **Ustawienia** .
 
 ![Szczegóły uwierzytelniania](./media/how-to-manage-authentication/how-to-view-auth.png)
-
- Aby dowiedzieć się więcej, zobacz [uwierzytelnianie przy użyciu Azure Maps](https://aka.ms/amauth).
 
 
 ## <a name="set-up-azure-ad-app-registration"></a>Konfigurowanie rejestracji aplikacji usługi Azure AD
@@ -67,7 +67,7 @@ Po skojarzeniu konta Azure Maps z dzierżawą usługi Azure AD można udzielić 
 
 2. W oknie **Dodawanie przypisania roli** w obszarze **rola**wybierz pozycję **Azure Maps Data Reader (wersja zapoznawcza)** . W obszarze **Przypisywanie dostępu do**wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**. W obszarze **Wybierz**wybierz użytkownika lub aplikację. Wybierz pozycję **Zapisz**.
 
-    ![Dodaj przypisanie roli](./media/how-to-manage-authentication/add-role-assignment.png)
+    ![Dodawanie przypisania roli](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>Wyświetl dostępne Azure Maps ról RBAC
 
@@ -91,12 +91,12 @@ Po zarejestrowaniu aplikacji i skojarzeniu jej z Azure Maps można zażądać to
 
 * Jeśli aplikacja korzysta z uwierzytelniania za pomocą tokenu użytkownika w Azure Maps Web SDK, należy skonfigurować stronę HTML z IDENTYFIKATORem klienta Azure Maps i IDENTYFIKATORem aplikacji usługi Azure AD.
 
-* Jeśli aplikacja używa uwierzytelniania serwera/aplikacji, musisz zażądać tokenu z punktu końcowego tokenu usługi Azure AD `https://login.microsoftonline.com` z IDENTYFIKATORem zasobu usługi Azure AD `https://atlas.microsoft.com/`, IDENTYFIKATORem klienta Azure Maps, IDENTYFIKATORem aplikacji usługi Azure AD oraz hasłem rejestracji aplikacji usługi Azure AD lub certyfikatu.
+* Jeśli aplikacja używa uwierzytelniania serwera/aplikacji, musisz zażądać tokenu z punktu końcowego tokenu usługi Azure AD `https://login.microsoftonline.com` z IDENTYFIKATORem zasobu usługi Azure AD `https://atlas.microsoft.com/`, IDENTYFIKATORem klienta Azure Maps, IDENTYFIKATORem aplikacji usługi Azure AD oraz hasłem lub certyfikatem rejestracji aplikacji usługi Azure AD.
 
 | Środowisko platformy Azure   | Punkt końcowy tokenu usługi Azure AD | Identyfikator zasobu platformy Azure |
 | --------------------|-------------------------|-------------------|
 | Azure Public        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
-| Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
+| Platforma Azure dla instytucji rządowych    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 Aby uzyskać więcej informacji na temat żądania tokenów dostępu z usługi Azure AD dla użytkowników i podmiotów usługi, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 

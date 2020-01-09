@@ -3,12 +3,12 @@ title: Przywracanie SQL Server baz danych na maszynie wirtualnej platformy Azure
 description: W tym artykule opisano sposób przywracania SQL Server baz danych, które są uruchomione na maszynie wirtualnej platformy Azure i których kopia zapasowa została utworzona przy użyciu Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0dbf5c48884dc665355d2806ff343facfbeffc29
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171901"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390765"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Przywracanie SQL Server baz danych na maszynach wirtualnych platformy Azure
 
@@ -110,7 +110,15 @@ Aby przywrócić dane kopii zapasowej jako pliki. bak zamiast bazy danych, wybie
 
 1. W menu **Przywróć konfigurację** w obszarze **gdzie należy przywrócić**wybierz pozycję **Przywróć jako pliki**.
 2. Wybierz nazwę SQL Server, do której chcesz przywrócić pliki kopii zapasowej.
-3. W **ścieżce docelowej na serwerze** wprowadź ścieżkę folderu na serwerze wybranym w kroku 2. Jest to lokalizacja, w której usługa będzie zrzucać wszystkie niezbędne pliki kopii zapasowej. Zwykle ścieżka udziału sieciowego lub ścieżka zainstalowanego udziału plików platformy Azure, gdy zostanie określona jako ścieżka docelowa, zapewnia łatwiejszy dostęp do tych plików przez inne maszyny w tej samej sieci lub z tym samym udziałem plików platformy Azure.
+3. W **ścieżce docelowej na serwerze** wprowadź ścieżkę folderu na serwerze wybranym w kroku 2. Jest to lokalizacja, w której usługa będzie zrzucać wszystkie niezbędne pliki kopii zapasowej. Zwykle ścieżka udziału sieciowego lub ścieżka zainstalowanego udziału plików platformy Azure, gdy zostanie określona jako ścieżka docelowa, zapewnia łatwiejszy dostęp do tych plików przez inne maszyny w tej samej sieci lub z tym samym udziałem plików platformy Azure.<BR>
+
+>Aby przywrócić pliki kopii zapasowej bazy danych w udziale plików platformy Azure zainstalowanym na docelowej zarejestrowanych maszynach wirtualnych, upewnij się, że usługa NT NT\SYSTEM ma dostęp do udziału plików. Aby udzielić uprawnień do odczytu/zapisu dla procesu AFS zainstalowanego na maszynie wirtualnej, można wykonać kroki podane poniżej:
+>- Uruchom `PsExec -s cmd`, aby wejść do powłoki NT NT\SYSTEM
+>   - Wykonaj polecenie `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
+>   - Weryfikowanie dostępu przy użyciu `dir \\<storageacct>.file.core.windows.net\<filesharename>`
+>- Rozpocznij przywracanie plików z magazynu kopii zapasowych w celu `\\<storageacct>.file.core.windows.net\<filesharename>` jako ścieżki<BR>
+Możesz pobrać PsExec przez <https://docs.microsoft.com/sysinternals/downloads/psexec>
+
 4. Kliknij przycisk **OK**.
 
 ![Wybierz pozycję Przywróć jako pliki](./media/backup-azure-sql-database/restore-as-files.png)

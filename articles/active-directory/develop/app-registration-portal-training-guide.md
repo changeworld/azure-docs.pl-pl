@@ -1,5 +1,5 @@
 ---
-title: Przejście z portalu rejestracji aplikacji do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
+title: Nowe środowisko rejestracji aplikacji w witrynie Azure Portal
 titleSuffix: Microsoft identity platform
 description: Wprowadzenie do nowego środowiska rejestracji aplikacji w Azure Portal
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424653"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Przejście z portalu rejestracji aplikacji do nowego środowiska rejestracji aplikacji w witrynie Azure Portal
+# <a name="the-new-azure-portal-app-registration-experience"></a>Nowe środowisko rejestracji aplikacji Azure Portal
 
 Istnieje wiele ulepszeń w nowych [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowiska Azure Portal. Jeśli masz więcej informacji na temat korzystania z portalu rejestracji aplikacji (apps.dev.microsoft.com) do rejestrowania aplikacji i zarządzania nimi, nazywanego starym doświadczeniem, ten przewodnik szkoleniowy umożliwi rozpoczęcie pracy przy użyciu nowego środowiska.
 
 ## <a name="whats-not-changing"></a>Co nie jest zmieniane?
 
--   Aplikacje i powiązane konfiguracje można znaleźć w temacie w nowym środowisku. Nie trzeba ponownie rejestrować aplikacji, a użytkownicy aplikacji nie będą musieli zalogować się ponownie.
+- Aplikacje i powiązane konfiguracje można znaleźć w temacie w nowym środowisku. Nie trzeba ponownie rejestrować aplikacji, a użytkownicy aplikacji nie będą musieli zalogować się ponownie.
 
     > [!NOTE]
     > Musisz zalogować się przy użyciu konta użytego do zarejestrowania aplikacji, aby znaleźć je w Azure Portal. Zalecamy sprawdzenie, czy zalogowany użytkownik w Azure Portal jest zgodny z użytkownikiem, który został zalogowany do portalu rejestracji aplikacji, porównując adres e-mail z Twojego profilu.
     > 
     > W niektórych przypadkach, zwłaszcza gdy logujesz się przy użyciu osobistych kont Microsoft (np. Outlook, Live, Xbox itp.) za pomocą adresu e-mail usługi Azure AD, wiemy, że po przejściu do Azure Portal ze starego środowiska, nastąpi zalogowanie do innego konta z tą samą Wyślij wiadomość e-mail do dzierżawy usługi Azure AD. Jeśli nadal sądzisz, że brakuje aplikacji, Wyloguj się i zaloguj się przy użyciu odpowiedniego konta.
 
--   Aplikacje na żywo SDK utworzone przy użyciu osobistych kont Microsoft nie są jeszcze obsługiwane w Azure Portal i nadal pozostają w starym środowisku w najbliższej przyszłości.
+- Aplikacje na żywo SDK utworzone przy użyciu osobistych kont Microsoft nie są jeszcze obsługiwane w Azure Portal i nadal pozostają w starym środowisku w najbliższej przyszłości.
 
 ## <a name="key-changes"></a>Zmiany kluczy
 

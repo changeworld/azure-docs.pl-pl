@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109601"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613690"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
 
@@ -39,9 +39,11 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 Aby ukończyć ten samouczek, musisz najpierw utworzyć konto Azure Maps i uzyskać klucz podstawowy (klucz subskrypcji). 
 
-Aby utworzyć subskrypcję konta Azure Maps w warstwie cenowej S1, postępuj zgodnie z instrukcjami podanymi w temacie [Zarządzanie kontem usługi Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account). 
+Aby utworzyć subskrypcję konta Azure Maps w warstwie cenowej S1, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1. 
 
-Aby uzyskać podstawowy klucz subskrypcji dla konta, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta i pobieranie klucza](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key).
+Aby uzyskać podstawowy klucz subskrypcji dla konta, postępuj zgodnie z instrukcjami podanymi w temacie [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+
+Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="create-an-azure-notebook"></a>Tworzenie notesu platformy Azure
 
@@ -111,7 +113,7 @@ Ze względu na to, że firma preferuje używanie tras wymagających zrównoważe
 Aby określić granice dostępnego zakresu dla pojazdu elektrycznego, uruchom skrypt w następującej komórce:
 
 ```python
-subscriptionKey = "Your Azure Maps primary subscription key"
+subscriptionKey = "Your Azure Maps key"
 currentLocation = [34.028115,-118.5184279]
 session = aiohttp.ClientSession()
 
@@ -398,6 +400,6 @@ Aby poznać Azure Maps interfejsów API, które są używane w tym samouczku, zo
 * [Macierz po trasie](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Pobierz wskazówki dotyczące trasy](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Aby uzyskać pełną listę Azure Maps interfejsów API REST, zobacz [Azure Maps interfejsów API REST](https://docs.microsoft.com/azure/azure-maps/#reference).
+Aby uzyskać pełną listę Azure Maps interfejsów API REST, zobacz [Azure Maps interfejsów API REST](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
 Aby dowiedzieć się więcej na temat Azure Notebooks, zobacz [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

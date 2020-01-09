@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848633"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425339"
 ---
 # <a name="combined-security-information-registration-preview"></a>Rejestracja połączonych informacji o zabezpieczeniach (wersja zapoznawcza)
 
@@ -95,7 +95,7 @@ Poniżej przedstawiono kilka scenariuszy, w których użytkownicy mogą zostać 
 
 W przypadku wymuszania rejestracji użytkownicy są pokazani minimalną liczbę metod, które muszą być zgodne z zasadami Multi-Factor Authentication i SSPR, od najbezpieczniejszego do najmniej zabezpieczonego.
 
-Na przykład:
+Przykład:
 
 - Użytkownik jest włączony do SSPR. Zasady SSPR muszą mieć dwie metody resetowania i włączenia kodu aplikacji mobilnej, poczty e-mail i telefonu.
    - Ten użytkownik jest wymagany do zarejestrowania dwóch metod.
@@ -108,7 +108,7 @@ Ten schemat blokowy opisuje, które metody są wyświetlane użytkownikowi po pr
 
 Jeśli masz Multi-Factor Authentication i SSPR włączone, zalecamy wymuszenie rejestracji Multi-Factor Authentication.
 
-Jeśli zasady SSPR wymagają od użytkowników przeglądania ich informacji zabezpieczających w regularnych odstępach czasu, użytkownicy są przerywani podczas logowania i pokazują wszystkie zarejestrowane metody. Mogą oni potwierdzić bieżące informacje, jeśli są aktualne lub mogą wprowadzać zmiany, jeśli ich potrzebują.
+Jeśli zasady SSPR wymagają od użytkowników przeglądania ich informacji zabezpieczających w regularnych odstępach czasu, użytkownicy są przerywani podczas logowania i pokazują wszystkie zarejestrowane metody. Mogą oni potwierdzić bieżące informacje, jeśli są aktualne lub mogą wprowadzać zmiany, jeśli ich potrzebują. Użytkownicy muszą korzystać z uwierzytelniania wieloskładnikowego podczas uzyskiwania dostępu do tej strony.
 
 ### <a name="manage-mode"></a>Tryb zarządzania
 

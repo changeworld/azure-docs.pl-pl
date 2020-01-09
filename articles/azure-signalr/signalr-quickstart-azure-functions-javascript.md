@@ -1,40 +1,38 @@
 ---
 title: Usługa Azure Signal Service — szybki start — JavaScript
-description: Przewodnik Szybki Start dotyczący korzystania z usługi Azure Signal Service i Azure Functions tworzenia pokoju rozmów.
+description: Przewodnik Szybki start pokazujący, jak za pomocą usług Azure SignalR Service i Azure Functions utworzyć pokój czatu.
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: fd935ffda7d16988781d5debce9333ccf2adb16f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709752"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450265"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Szybki Start: Tworzenie pokoju rozmów z usługami Azure Functions i sygnalizacyjnymi przy użyciu języka JavaScript
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Szybki start: tworzenie pokoju czatu za pomocą usług Azure Functions i SignalR Service przy użyciu języka JavaScript
 
-Usługa Azure Signal Service umożliwia łatwe dodawanie funkcji w czasie rzeczywistym do aplikacji. Azure Functions jest platformą bezserwerową, która umożliwia uruchamianie kodu bez konieczności zarządzania infrastrukturą. W tym przewodniku szybki start dowiesz się, jak używać usługi sygnalizującej i funkcji do kompilowania aplikacji do rozmowy w czasie rzeczywistym.
+Usługa Azure SignalR Service umożliwia łatwe dodawanie funkcji czasu rzeczywistego do aplikacji. Usługa Azure Functions to bezserwerowa platforma, która pozwala uruchamiać kod bez zarządzania jakąkolwiek infrastrukturą. W tym przewodniku Szybki start dowiesz się, jak utworzyć bezserwerową aplikację czatu w czasie rzeczywistym za pomocą usług SignalR Service i Functions.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten przewodnik Szybki Start można uruchomić w systemie macOS, Windows lub Linux.
+Czynności przedstawione w tym przewodniku Szybki start można wykonywać w systemie macOS, Windows lub Linux.
 
-Upewnij się, że masz zainstalowany edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/) .
+Upewnij się, że masz zainstalowany edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/).
 
-Zainstaluj [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) do lokalnego uruchamiania aplikacji funkcji platformy Azure.
+Zainstaluj [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (wersja 2 lub nowsza), aby lokalnie uruchamiać aplikacje funkcji platformy Azure.
 
-Azure Functions wymaga środowiska [Node. js](https://nodejs.org/en/download/) w wersji 8 lub 10.
-
-Aby można było zainstalować rozszerzenia, Azure Functions Core Tools obecnie wymagane [zestaw .NET Core SDK](https://www.microsoft.com/net/download) zainstalowane. Niemniej jednak znajomość platformy .NET nie jest wymagana do kompilowania aplikacji funkcji JavaScript platformy Azure.
+Ten przewodnik Szybki Start używa środowiska [Node. js](https://nodejs.org/en/download/) 10. x, ale powinien współpracować z innymi wersjami. Więcej informacji na temat obsługiwanych wersji środowiska Node. js znajduje się w [dokumentacji Azure Functions Runtime](../azure-functions/functions-versions.md#languages) .
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
-Zaloguj się do Azure Portal pod adresem <https://portal.azure.com/> przy użyciu konta platformy Azure.
+Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> przy użyciu danych konta Azure.
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -42,40 +40,34 @@ Zaloguj się do Azure Portal pod adresem <https://portal.azure.com/> przy użyci
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurowanie i uruchamianie aplikacji funkcji platformy Azure
 
-1. W przeglądarce, w której Azure Portal jest otwarty, potwierdź, że wystąpienie usługi sygnalizujące zostało wdrożone wcześniej, wyszukując jej nazwę w polu wyszukiwania w górnej części portalu. Wybierz wystąpienie, aby je otworzyć.
+1. W przeglądarce z otwartą witryną Azure Portal potwierdź, że wdrożone wcześniej wystąpienie usługi SignalR Service zostało pomyślnie utworzone, wyszukując jego nazwę w polu wyszukiwania w górnej części witryny. Wybierz wystąpienie, aby je otworzyć.
 
-    ![Wyszukaj wystąpienie usługi sygnalizującej](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
+    ![Wyszukiwanie wystąpienia usługi SignalR Service](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. Wybierz pozycję **klucze** , aby wyświetlić parametry połączenia dla wystąpienia usługi sygnalizującej.
+1. Wybierz pozycję **Klucze**, aby wyświetlić parametry połączenia dla wystąpienia usługi SignalR Service.
 
-1. Wybierz i skopiuj podstawowe parametry połączenia.
+1. Zaznacz i skopiuj podstawowe parametry połączenia.
 
-    ![Tworzenie usługi sygnalizującej](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![Tworzenie usługi SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. W edytorze kodu Otwórz folder *src/Chat/JavaScript* w sklonowanym repozytorium.
 
-1. Zmień nazwę pliku *Local. Settings. sample. JSON* na *Local. Settings. JSON*.
+1. Zmień nazwę pliku *local.settings.sample.json* na *local.settings.json*.
 
-1. W pliku **Local. Settings. JSON**wklej parametry połączenia do wartości ustawienia **AzureSignalRConnectionString** . Zapisz plik.
+1. W pliku **local.settings.json** wklej parametry połączenia jako wartość ustawienia **AzureSignalRConnectionString**. Zapisz plik.
 
-1. Funkcje JavaScript są zorganizowane w foldery. W każdym folderze są dwa pliki: *Function. JSON* definiuje powiązania, które są używane w funkcji, a *index. js* jest treścią funkcji. W tej aplikacji funkcji są dostępne dwie funkcje wyzwalane przez protokół HTTP:
+1. Funkcje języka JavaScript są organizowane w foldery. W każdym folderze znajdują się dwa pliki: plik *function.json* definiuje powiązania używane w funkcji, a plik *index.js* to treść funkcji. W tej aplikacji funkcji znajdują się dwie funkcje wyzwalane przez protokół HTTP:
 
-    - **Negotiate** — używa powiązania danych wejściowych *SignalRConnectionInfo* do generowania i zwracania prawidłowych informacji o połączeniu.
-    - **messages — odbiera** komunikat rozmowy w treści żądania i używa powiązania danych wyjściowych *sygnalizującego* , aby emitować komunikat do wszystkich połączonych aplikacji klienckich.
+    - **negotiate** — ta funkcja generuje i zwraca ważne informacje o połączeniu przy użyciu danych wejściowych powiązania *SignalRConnectionInfo*.
+    - **messages** — ta funkcja otrzymuje wiadomość czatu w treści żądania i używa powiązania danych wyjściowych *SignalR* do rozgłoszenia wiadomości do wszystkich połączonych aplikacji klienckich.
 
-1. Upewnij się, że jesteś w folderze *src/Chat/JavaScript* . Użyj Azure Functions Core Tools, aby zainstalować rozszerzenia wymagane do uruchomienia aplikacji.
-
-    ```bash
-    func extensions install
-    ```
-
-1. Uruchom aplikację funkcji.
+1. Upewnij się, że jesteś w folderze *src/Chat/JavaScript* . Uruchom aplikację funkcji.
 
     ```bash
     func start
     ```
 
-    ![Tworzenie usługi sygnalizującej](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
+    ![Tworzenie usługi SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
@@ -83,7 +75,7 @@ Zaloguj się do Azure Portal pod adresem <https://portal.azure.com/> przy użyci
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono i uruchomiono aplikację bezserwerową w czasie rzeczywistym w VS Code. Następnie Dowiedz się więcej na temat sposobu wdrażania Azure Functions z VS Code.
+W tym przewodniku szybki start utworzono i uruchomiono aplikację bezserwerową w czasie rzeczywistym w VS Code. Teraz dowiedz się więcej o sposobie wdrażania usługi Azure Functions z programu VS Code.
 
 > [!div class="nextstepaction"]
-> [Wdróż Azure Functions z VS Code](/azure/javascript/tutorial-vscode-serverless-node-01)
+> [Wdrażanie usługi Azure Functions za pomocą programu VS Code](/azure/javascript/tutorial-vscode-serverless-node-01)

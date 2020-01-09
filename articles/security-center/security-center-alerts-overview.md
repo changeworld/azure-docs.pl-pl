@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: bd538d436d1c900a370f522bccf724eaf87210b4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582603"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666282"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Alerty zabezpieczeń w Centrum zabezpieczeń Azure
 
@@ -35,7 +35,7 @@ Ponadto osoby atakujące rozwinęły swoje metody w celu podwyższenia liczby za
 
 ## <a name="what-are-security-alerts"></a>Czym są alerty zabezpieczeń?
 
-Alerty są powiadomieniami generowanymi przez Security Center w przypadku wykrycia zagrożeń dotyczących zasobów. Security Center priorytetów i wyświetla listę alertów wraz z informacjami wymaganymi do szybkiego zbadania problemu. Security Center również zawiera zalecenia dotyczące sposobu korygowania ataku.
+Alerty to powiadomienia generowane przez usługę Security Center w razie wykrycia zagrożeń dotyczących zasobów. Security Center priorytetów i wyświetla listę alertów wraz z informacjami wymaganymi do szybkiego zbadania problemu. Usługa Security Center udostępnia również zalecenia dotyczące sposobu korygowania ataku.
 
 ## Jak Security Center wykrywać zagrożenia? <a name="detect-threats"> </a>
 
@@ -105,13 +105,17 @@ Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasob
 W poniższych tematach opisano, jak Security Center używa różnych danych telemetrycznych zbieranych z integracji z infrastrukturą platformy Azure w celu zastosowania dodatkowych warstw ochrony dla zasobów wdrożonych na platformie Azure:
 
 * [Alerty warstwy usług](security-center-alerts-service-layer.md)
-* [Integracja z produktami zabezpieczeń platformy Azure](security-center-alerts-integration.md)
+* [Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection](security-center-alerts-integration.md)
 
 ## <a name="what-are-security-incidents"></a>Co to są zdarzenia związane z bezpieczeństwem?
 
 Zdarzenie zabezpieczeń to kolekcja powiązanych alertów, a nie każdego pojedynczego alertu. Security Center używa [korelacji alertów inteligentnych w chmurze](security-center-alerts-cloud-smart.md) w celu skorelowania różnych alertów i niskiej dokładności sygnałów do zdarzeń zabezpieczeń.
 
 Korzystając z incydentów, Security Center zapewnia jeden widok kampanii ataku i wszystkich powiązanych alertów. Ten widok umożliwia szybkie zrozumienie działań podejmowanych przez osobę atakującą oraz zasobów, których dotyczy. Aby uzyskać więcej informacji, zobacz [korelacja alertów inteligentnych w chmurze](security-center-alerts-cloud-smart.md).
+
+## <a name="security-alerts-in-azure-activity-log"></a>Alerty zabezpieczeń w dzienniku aktywności platformy Azure
+
+Oprócz udostępniania w Azure Portal lub programowo, alerty zabezpieczeń i zdarzenia są poddawane inspekcji jako zdarzenia w [dzienniku aktywności platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Aby uzyskać więcej informacji o schemacie zdarzeń, zobacz [alerty zabezpieczeń w dzienniku aktywności platformy Azure](https://go.microsoft.com/fwlink/?linkid=2114113).
 
 ## <a name="next-steps"></a>Następne kroki
 

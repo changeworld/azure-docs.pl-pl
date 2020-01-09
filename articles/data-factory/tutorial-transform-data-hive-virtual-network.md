@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: f90933dea5421d68116d29df6b9429d298bb0d88
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ab8df188027ada2119334e058ffc5a10cca23914
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925084"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439167"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Przekształcanie danych w usłudze Azure Virtual Network przy użyciu działania programu Hive w usłudze Azure Data Factory
 
@@ -174,10 +174,7 @@ Utwórz plik w formacie JSON za pomocą preferowanego edytora, skopiuj poniższ�
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       },
       "connectVia": {
         "referenceName": "MySelfhostedIR",
@@ -221,7 +218,7 @@ Utwórz plik w formacie JSON za pomocą preferowanego edytora, skopiuj poniższ�
 Zaktualizuj wartości następujących właściwości w definicji połączonej usługi:
 
 - **userName**. Nazwa użytkownika logowania do klastra określona podczas tworzenia klastra. 
-- **password**. Hasło użytkownika.
+- **password**. Hasło dla użytkownika.
 - **clusterUri**. Określ adres URL klastra usługi HDInsight w następującym formacie: `https://<clustername>.azurehdinsight.net`.  W tym artykule przyjęto założenie, że masz dostęp do klastra za pośrednictwem Internetu. Na przykład możesz połączyć się z klastrem pod adresem `https://clustername.azurehdinsight.net`. Ten adres używa publicznej bramy, która jest niedostępna w przypadku używania sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika (UDR) do ograniczania dostępu z Internetu. Aby fabryka danych mogła przekazywać zadania do klastrów usługi HDInsight w usłudze Azure Virtual Network, należy skonfigurować usługę Azure Virtual Network w taki sposób, aby adres URL mógł zostać rozpoznany jako prywatny adres IP bramy używanej przez usługę HDInsight.
 
   1. W witrynie Azure Portal otwórz sieć wirtualną, w której znajduje się usługa HDInsight. Otwórz interfejs sieciowy mający nazwę zaczynającą się od `nic-gateway-0`. Zanotuj jego prywatny adres IP. Na przykład 10.6.0.15. 

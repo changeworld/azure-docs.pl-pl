@@ -1,18 +1,18 @@
 ---
 title: Co to jest usługa Azure Cache for Redis?
-description: Dowiedz się, co to jest usługa Azure Cache for Redis i jak jest zwykle używana.
+description: Dowiedz się, co to jest usługa Azure cache for Redis i typowe zastosowania, w tym pamięć podręczna, buforowanie zawartości, buforowanie sesji użytkownika, obsługa zadań i kolejkowanie komunikatów oraz transakcje rozproszone.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/26/2018
-ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.date: 03/26/2018
+ms.openlocfilehash: 5224be999ff8ff52c2f52568a504095dc5962398
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122655"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433420"
 ---
 # <a name="azure-cache-for-redis-description"></a>Opis usługi Azure cache for Redis
 
@@ -40,8 +40,8 @@ Usługa Azure Cache for Redis jest dostępna w następujących warstwach:
 
 | Warstwa | Opis |
 |---|---|
-Podstawowa | Pamięć podręczna z jednym węzłem. Ta warstwa obsługuje wiele rozmiarów pamięci (250 MB–53 GB). Idealnie nadaje się do programowania/testowania i obsługi obciążeń niekrytycznych. Warstwa Podstawowa nie ma umowy dotyczącej poziomu usług (SLA) |
-| Standardowa (Standard) | Replikowana pamięć podręczna w postaci dwóch węzłów (podstawowy/dodatkowy) zarządzanych przez firmę Microsoft i objętych umową SLA zapewniającą wysoką dostępność (99,9%). |
+Basic | Pamięć podręczna z jednym węzłem. Ta warstwa obsługuje wiele rozmiarów pamięci (250 MB–53 GB). Idealnie nadaje się do programowania/testowania i obsługi obciążeń niekrytycznych. Warstwa Podstawowa nie ma umowy dotyczącej poziomu usług (SLA) |
+| Standardowa | Replikowana pamięć podręczna w postaci dwóch węzłów (podstawowy/dodatkowy) zarządzanych przez firmę Microsoft i objętych umową SLA zapewniającą wysoką dostępność (99,9%). |
 | Premium | Warstwa Premium jest warstwą gotową dla przedsiębiorstw. Pamięci podręczne w warstwie Premium obsługują więcej funkcji i mają większą przepływność przy niższych opóźnieniach. Pamięci podręczne w warstwie Premium są wdrażane na mocniejszym sprzęcie, zapewniając większą wydajność w porównaniu do warstw Podstawowa i Standardowa. Ta zaleta oznacza, że przepływność dla pamięci podręcznej o takim samym rozmiarze będzie wyższa w porównaniu do warstwy Standardowa. |
 
 > [!TIP]
@@ -54,13 +54,13 @@ Pamięć podręczną można po utworzeniu skalować w górę do wyższej warstwy
 
 Strona [Azure Cache for Redis — cennik](https://azure.microsoft.com/pricing/details/cache/) zawiera szczegółowe porównanie wszystkich warstw. W poniższej tabeli opisano niektóre funkcje obsługiwane przez warstwy:
 
-| Opis funkcji | Premium | Standardowa (Standard) | Podstawowa |
+| Opis funkcji | Premium | Standardowa | Basic |
 | ------------------- | :-----: | :------: | :---: |
 | [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Trwałość danych Redis](cache-how-to-premium-persistence.md) |✔|-|-|
 | [Klaster Redis](cache-how-to-premium-clustering.md) |✔|-|-|
 | [Zabezpieczanie za pomocą reguł zapory](cache-configure.md#firewall) |✔|✔|✔|
-| Szyfrowanie podczas przesyłania |✔|✔|✔|
+| Szyfrowanie danych przesyłanych |✔|✔|✔|
 | [Większe bezpieczeństwo i izolacja z użyciem sieci wirtualnej](cache-how-to-premium-vnet.md) |✔|-|-|
 | [Import/Export](cache-how-to-import-export-data.md) |✔|-|-|
 | [Zaplanowane aktualizacje](cache-administration.md#schedule-updates) |✔|✔|✔|

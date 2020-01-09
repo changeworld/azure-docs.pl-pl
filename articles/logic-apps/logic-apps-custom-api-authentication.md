@@ -1,17 +1,17 @@
 ---
-title: Dodawanie uwierzytelniania do niestandardowych interfejsów API
-description: Konfigurowanie uwierzytelniania na potrzeby wywoływania niestandardowych interfejsów API z Azure Logic Apps
+title: Dodawanie uwierzytelniania na potrzeby zabezpieczania wywołań niestandardowych interfejsów API
+description: Jak skonfigurować uwierzytelnianie na potrzeby zabezpieczania wywołań niestandardowych interfejsów API z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793146"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666900"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Bezpieczne wywołania niestandardowych interfejsów API z Azure Logic Apps
 
@@ -199,14 +199,14 @@ Otwórz definicję aplikacji logiki w widoku Kod, przejdź do definicji akcji **
 
 | Właściwość | Wymagane | Opis | 
 | -------- | -------- | ----------- | 
-| dzierżaw | Tak | Identyfikator GUID dzierżawy usługi Azure AD | 
-| publiczn | Tak | Identyfikator GUID zasobu docelowego, do którego chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci Web lub aplikacji interfejsu API | 
+| tenant | Tak | Identyfikator GUID dzierżawy usługi Azure AD | 
+| audience | Tak | Identyfikator GUID zasobu docelowego, do którego chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci Web lub aplikacji interfejsu API | 
 | clientId | Tak | Identyfikator GUID klienta żądającego dostępu, który jest IDENTYFIKATORem klienta z tożsamości aplikacji dla aplikacji logiki | 
 | wpis tajny | Tak | Klucz lub hasło tożsamości aplikacji dla klienta żądającego tokenu dostępu | 
-| type | Tak | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
+| type | Tak | Typ uwierzytelnienia. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
 |||| 
 
-Na przykład:
+Przykład:
 
 ``` json
 {
@@ -250,7 +250,7 @@ W sekcji **autoryzacja** uwzględnij następujące właściwości:
 
 | Właściwość | Wymagane | Opis |
 | -------- | -------- | ----------- |
-| `type` | Tak | Typ uwierzytelniania. W przypadku certyfikatów klienta SSL wartość musi być `ClientCertificate`. |
+| `type` | Tak | Typ uwierzytelnienia. W przypadku certyfikatów klienta SSL wartość musi być `ClientCertificate`. |
 | `password` | Nie | Hasło do uzyskiwania dostępu do certyfikatu klienta (plik PFX) |
 | `pfx` | Tak | Zakodowana w formacie base64 zawartość certyfikatu klienta (plik PFX) |
 ||||

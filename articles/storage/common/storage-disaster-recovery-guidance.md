@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2e0ae05ff8c32a70991769171cb29b229c2b0be1
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895347"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526366"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Odzyskiwanie po awarii i tryb failover konta (wersja zapoznawcza)
 
@@ -174,10 +174,11 @@ Należy pamiętać, że wszystkie dane przechowywane na dysku tymczasowym zostan
 ### <a name="unsupported-features-or-services"></a>Nieobsługiwane funkcje lub usługi
 Następujące funkcje lub usługi nie są obsługiwane w przypadku przełączania do trybu failover dla konta w wersji zapoznawczej:
 
-- Azure File Sync nie obsługuje trybu failover dla konta magazynu. Konta magazynu zawierające udziały plików platformy Azure używane jako punkty końcowe chmury w Azure File Sync nie powinny być przenoszone do trybu failover. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych.  
+- Azure File Sync nie obsługuje trybu failover dla konta magazynu. Kont magazynu zawierających udziały plików platformy Azure używane jako punkty końcowe w chmurze w usłudze Azure File Sync nie należy przełączać w tryb failover. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych.  
 - Nie można przełączyć konta magazynu zawierającego zarchiwizowane obiekty blob w tryb failover. Obsługa zarchiwizowanych obiektów BLOB na oddzielnym koncie magazynu, które nie są planowane do trybu failover.
 - Nie można przełączyć konta magazynu zawierającego blokowe obiekty blob w warstwie Premium. Konta magazynu obsługujące blokowe obiekty blob w warstwie Premium nie obsługują obecnie nadmiarowości geograficznej.
-- Po zakończeniu pracy w trybie failover następujące funkcje przestaną działać, jeśli zostały początkowo włączone: [subskrypcje zdarzeń](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zasady cyklu życia](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Rejestrowanie analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Nie można przełączyć do trybu failover konta magazynu zawierającego wszystkie kontenery z włączonymi [zasadami niezmiennościymi](../blobs/storage-blob-immutable-storage.md) . Odblokowanie/blokowanie oparte na czasie lub zasady wstrzymania w trybie failover w celu zachowania zgodności.
+- Po zakończeniu pracy w trybie failover następujące funkcje mogą przestać działać, jeśli zostały pierwotnie włączone: [subskrypcje zdarzeń](../blobs/storage-blob-event-overview.md), [Źródło zmian](../blobs/storage-blob-change-feed.md), [zasady cyklu życia](../blobs/storage-lifecycle-management-concepts.md)i [Rejestrowanie analityka magazynu](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopiowanie danych jako alternatywy dla trybu failover
 

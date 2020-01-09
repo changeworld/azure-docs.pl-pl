@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099987"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645848"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrożenie systemu Azure Virtual Machines DBMS dla obciążeń SAP
 
@@ -77,8 +77,8 @@ ms.locfileid: "70099987"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "70099987"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "70099987"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -372,20 +372,20 @@ Aby zidentyfikować obsługiwane typy maszyn wirtualnych platformy Azure, zobacz
 
 Minimalna konfiguracja jest następująca: 
 
-| Składnik | Dysk | Buforowanie | Pula magazynów |
+| Składnik | Dysk | Pamięć podręczna | Pula magazynu |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & mirrlogB | Premium | Brak | Niewymagane |
-| \oracle\<SID > \origlogaB & mirrlogA | Premium | Brak | Niewymagane |
+| \oracle\<SID > \origlogaA & mirrlogB | Premium | Brak | Nie jest wymagany |
+| \oracle\<SID > \origlogaB & mirrlogA | Premium | Brak | Nie jest wymagany |
 | \oracle\<identyfikator SID > \sapdata1... Azotan | Premium | Tylko do odczytu | Mogą być używane |
-| \oracle\<identyfikator SID > \oraarch | Standardowa (Standard) | Brak | Niewymagane |
-| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | | Niewymagane |
+| \oracle\<identyfikator SID > \oraarch | Standardowa | Brak | Nie jest wymagany |
+| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | | Nie jest wymagany |
 
 
 Dyski wybierające do hostowania dzienników wykonywania w trybie online powinny być zależne od wymagań IOPs. Możliwe jest przechowywanie wszystkich sapdata1... n (obszary tabel) na jednym zainstalowanym dysku, o ile rozmiar, liczba operacji we/wy i przepływność spełniają wymagania. 
 
 Konfiguracja wydajności jest następująca:
 
-| Składnik | Dysk | Buforowanie | Pula magazynów |
+| Składnik | Dysk | Pamięć podręczna | Pula magazynu |
 | --- | ---| --- | --- |
 | \oracle\<identyfikator SID > \origlogaA | Premium | Brak | Mogą być używane  |
 | \oracle\<identyfikator SID > \origlogaB | Premium | Brak | Mogą być używane |
@@ -393,8 +393,8 @@ Konfiguracja wydajności jest następująca:
 | \oracle\<identyfikator SID > \mirrlogBA | Premium | Brak | Mogą być używane |
 | \oracle\<identyfikator SID > \sapdata1... Azotan | Premium | Tylko do odczytu | Zalecane  |
 | \oracle\SID\sapdata (n + 1) * | Premium | Brak | Mogą być używane |
-| \oracle\<SID > \oraarch * | Premium | Brak | Niewymagane |
-| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | Niewymagane |
+| \oracle\<SID > \oraarch * | Premium | Brak | Nie jest wymagany |
+| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | Nie jest wymagany |
 
 \* (n + 1): hostowanie systemu, TEMP i COFAnie tabel. Wzorzec we/wy systemowych i cofania tabel przeszukanych różni się od innych tabel przechowujących dane aplikacji. Żadne buforowanie nie jest najlepszą opcją dla wydajności systemu i cofania tabel.
 
@@ -448,7 +448,7 @@ W przypadku jądra Oracle Linux UEK wymagane jest co najmniej UEK w wersji 4 do 
 
 Zdecydowanie zaleca się używanie [usługi Azure Managed disks](../../windows/managed-disks-overview.md). Zdecydowanie zaleca się również korzystanie z [usługi Azure Premium dysków SSD](../../windows/disks-types.md) na potrzeby wdrożeń Oracle Database.
 
-Dyski sieciowe lub udziały zdalne, takie jak usługi plików platformy Azure, nie są obsługiwane w przypadku plików Oracle Database. Aby uzyskać więcej informacji, zobacz następujące tematy: 
+Dyski sieciowe lub udziały zdalne, takie jak usługi plików platformy Azure, nie są obsługiwane w przypadku plików Oracle Database. Więcej informacji zawierają następujące sekcje: 
 
 - [Introducing Microsoft Azure File Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx) (Wprowadzenie do usługi plików platformy Microsoft Azure)
 
@@ -462,13 +462,13 @@ Aby zidentyfikować obsługiwane typy maszyn wirtualnych platformy Azure, zobacz
 
 Minimalna konfiguracja:
 
-| Składnik | Dysk | Buforowanie | Obcięcie |
+| Składnik | Dysk | Pamięć podręczna | Obcięcie |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Brak | Niewymagane |
-| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Brak | Niewymagane |
+| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Brak | Nie jest wymagany |
+| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Brak | Nie jest wymagany |
 | /Oracle/\<identyfikator SID >/sapdata1... Azotan | Premium | Tylko do odczytu | Mogą być używane |
-| /Oracle/\<identyfikator SID >/oraarch | Standardowa (Standard) | Brak | Niewymagane |
-| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | | Niewymagane |
+| /Oracle/\<identyfikator SID >/oraarch | Standardowa | Brak | Nie jest wymagany |
+| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | | Nie jest wymagany |
 
 \* Odcięcie: LVM lub MDADM przy użyciu RAID0
 
@@ -476,7 +476,7 @@ Wybór dysku do hostowania dzienników wykonywania w trybie online firmy Oracle 
 
 Konfiguracja wydajności:
 
-| Składnik | Dysk | Buforowanie | Obcięcie |
+| Składnik | Dysk | Pamięć podręczna | Obcięcie |
 | --- | ---| --- | --- |
 | /Oracle/\<identyfikator SID >/origlogaA | Premium | Brak | Mogą być używane  |
 | /Oracle/\<identyfikator SID >/origlogaB | Premium | Brak | Mogą być używane |
@@ -484,8 +484,8 @@ Konfiguracja wydajności:
 | /Oracle/\<identyfikator SID >/mirrlogBA | Premium | Brak | Mogą być używane |
 | /Oracle/\<identyfikator SID >/sapdata1... Azotan | Premium | Tylko do odczytu | Zalecane  |
 | /oracle/\<SID>/sapdata(n+1)* | Premium | Brak | Mogą być używane |
-| /Oracle/\<SID >/oraarch * | Premium | Brak | Niewymagane |
-| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | Niewymagane |
+| /Oracle/\<SID >/oraarch * | Premium | Brak | Nie jest wymagany |
+| Strona główna firmy Oracle, saptrace,... | Dysk systemu operacyjnego | Nie jest wymagany |
 
 \* Odcięcie: LVM lub MDADM przy użyciu RAID0
 

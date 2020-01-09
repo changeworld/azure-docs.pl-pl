@@ -3,17 +3,17 @@ title: Użyj rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy A
 description: Zainstaluj rozszerzenie Azure IoT dla interfejsu wiersza polecenia platformy Azure i użyj go do współpracy z urządzeniami Plug and Play IoT podłączonymi do centrum IoT Hub.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571019"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529579"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalowanie i używanie rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure
 
@@ -26,7 +26,7 @@ Rozszerzenie Azure IoT dla interfejsu wiersza polecenia platformy Azure to narz�
 - Pracuj z właściwościami urządzeń.
 - Wywoływanie poleceń dotyczących urządzeń.
 
-W tym artykule pokazano, jak:
+W tym artykule wyjaśniono, jak:
 
 - Zainstaluj i skonfiguruj rozszerzenie Azure IoT dla interfejsu wiersza polecenia platformy Azure.
 - Użyj rozszerzenia, aby korzystać z i testować urządzenia.

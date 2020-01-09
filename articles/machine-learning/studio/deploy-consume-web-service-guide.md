@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 1c97fd4f4d5646b6654f5261abd99372c521c389
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 564126ab262306f2b01948e29baf239b725083e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427604"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasyczne) usługi sieci Web: wdrażanie i użycie
 
@@ -23,7 +23,7 @@ Azure Machine Learning Studio (klasyczny) służy do wdrażania przepływów pra
 
 W kolejnych sekcjach zawierają łącza do przewodników, kod i dokumentację ułatwiającą rozpoczęcie pracy.
 
-## <a name="deploy-a-web-service"></a>Wdrażanie usługi internetowej
+## <a name="deploy-a-web-service"></a>Wdrażanie usługi sieci Web
 
 ### <a name="with-azure-machine-learning-studio-classic"></a>Z Azure Machine Learning Studio (klasyczny)
 
@@ -31,27 +31,27 @@ Portal Studio (klasyczny) i Portal usług sieci Web Microsoft Azure Machine Lear
 
 Poniższe linki zawierają ogólne informacje o sposobie wdrażania nowej usługi sieci web:
 
-* Aby zapoznać się z omówieniem sposobu wdrażania nowej usługi sieci Web opartej na Azure Resource Manager, zobacz [wdrażanie nowej usługi sieci Web](deploy-a-machine-learning-web-service.md).
-* Aby zapoznać się z przewodnikiem dotyczącym wdrażania usługi sieci Web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md).
+* Aby uzyskać ogólne informacje o sposobie wdrażania nowej usługi sieci web, który jest oparty na usłudze Resource Manager, zobacz [Wdrażanie nowej usługi sieci web](deploy-a-machine-learning-web-service.md).
+* Aby uzyskać wskazówki dotyczące wdrażania usługi sieci web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 * Aby zapoznać się z pełnym przewodnikiem dotyczącym tworzenia i wdrażania usługi sieci Web, Rozpocznij od [samouczka 1: przewidywanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 * Aby uzyskać szczegółowe przykłady, które wdrażanie usługi sieci web zobacz:
 
   * [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md)
-  * [Jak wdrożyć usługę sieci Web w wielu regionach](deploy-a-machine-learning-web-service.md#multi-region)
+  * [Jak wdrożyć usługę sieci web do wielu regionów](deploy-a-machine-learning-web-service.md#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Za pomocą dostawcy zasobów usługi sieci web API (interfejsów API usługi Azure Resource Manager)
 
-Klasyczna wersja dostawcy zasobów Azure Machine Learning Studio dla usług sieci Web umożliwia wdrażanie usług sieci Web i zarządzanie nimi przy użyciu wywołań interfejsu API REST. Aby uzyskać więcej informacji, zobacz informacje dotyczące [usługi sieci Web Machine Learning (REST)](/rest/api/machinelearning/index) .
+Dostawca zasobów Azure Machine Learning Studio (klasyczny) dla usług sieci Web umożliwia wdrażanie usług sieci Web i zarządzanie nimi przy użyciu wywołań interfejsu API REST. Aby uzyskać więcej informacji, zobacz informacje dotyczące [usługi sieci Web Machine Learning (REST)](/rest/api/machinelearning/index) .
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
 ### <a name="with-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
 
-Klasyczna wersja dostawcy zasobów Azure Machine Learning Studio dla usług sieci Web umożliwia wdrażanie usług sieci Web i zarządzanie nimi za pomocą poleceń cmdlet programu PowerShell.
+Dostawca zasobów Azure Machine Learning Studio (klasyczny) dla usług sieci Web umożliwia wdrażanie usług sieci Web i zarządzanie nimi za pomocą poleceń cmdlet programu PowerShell.
 
-Aby użyć poleceń cmdlet, musisz najpierw zalogować się do konta platformy Azure z poziomu środowiska programu PowerShell przy użyciu polecenia cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Jeśli nie znasz sposobu wywoływania poleceń programu PowerShell opartych na Menedżer zasobów, zobacz [używanie Azure PowerShell z Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
+Aby użyć poleceń cmdlet, musisz najpierw zalogować się do konta platformy Azure z poziomu środowiska programu PowerShell przy użyciu polecenia cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Jeśli znasz sposób wywoływania poleceń programu PowerShell, które są oparte na Menedżera zasobów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
-Aby wyeksportować eksperyment predykcyjny, użyj [tego przykładowego kodu](https://github.com/ritwik20/AzureML-WebServices). Po utworzeniu pliku .exe, od kodu, należy wpisać:
+Aby wyeksportować eksperymentu predykcyjnego, należy użyć [ten przykładowy kod](https://github.com/ritwik20/AzureML-WebServices). Po utworzeniu pliku .exe, od kodu, należy wpisać:
 
     C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
@@ -59,12 +59,12 @@ Uruchomiona jest aplikacja tworzy szablon JSON usługi sieci web. Aby użyć sza
 
 * Nazwa konta magazynu i klucza
 
-    Możesz pobrać nazwę i klucz konta magazynu z [Azure Portal](https://portal.azure.com/).
+    Możesz pobrać nazwę konta magazynu i klucza z [witryny Azure portal](https://portal.azure.com/).
 * Identyfikator planu zobowiązania
 
-    Identyfikator planu można uzyskać z portalu [usług sieci Web Azure Machine Learning](https://services.azureml.net) , logując się i klikając nazwę planu.
+    Możesz uzyskać identyfikator planu z [usług sieci Web Azure Machine Learning](https://services.azureml.net) portalu, rejestrując się i klikając nazwę planu.
 
-Dodaj je do szablonu JSON jako elementy podrzędne węzła *Właściwości* na tym samym poziomie, co węzeł *MachineLearningWorkspace* .
+Dodaj je do szablonu JSON jako elementy podrzędne *właściwości* węzła w tym samym poziomie co *MachineLearningWorkspace* węzła.
 
 Oto przykład:
 
@@ -79,7 +79,7 @@ Oto przykład:
 Zobacz następujące artykuły i przykładowy kod, aby uzyskać więcej informacji:
 
 * Dokumentacja [poleceń cmdlet Azure Machine Learning Studio (klasycznych)](https://docs.microsoft.com/powershell/module/az.machinelearning) w witrynie MSDN
-* Przykładowa [Przewodnik](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) w witrynie GitHub
+* Przykładowe [wskazówki](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) w witrynie GitHub
 
 ## <a name="consume-the-web-services"></a>Korzystanie z usług sieci web
 
@@ -88,15 +88,15 @@ Zobacz następujące artykuły i przykładowy kod, aby uzyskać więcej informac
 Można testować usługi sieci web z poziomu portalu usług sieci Web Azure Machine Learning. W tym testowanie usługi odpowiedź na żądanie (RRS) i interfejsy usługę wykonywania wsadowego (BES).
 
 * [Wdrażanie nowej usługi sieci Web](deploy-a-machine-learning-web-service.md)
-* [Wdrażanie usługi sieci Web Azure Machine Learning](deploy-a-machine-learning-web-service.md)
+* [Wdrażanie usługi sieci web Azure Machine Learning](deploy-a-machine-learning-web-service.md)
 * [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z poziomu programu Excel
 
 Można pobrać szablonu programu Excel, który wykorzystuje usługę sieci web:
 
-* [Zużywanie Azure Machine Learning usługi sieci Web z programu Excel](consuming-from-excel.md)
-* [Dodatek programu Excel dla usług Azure Machine Learning Web Services](excel-add-in-for-web-services.md)
+* [Korzystanie z usługi sieci web Azure Machine Learning z poziomu programu Excel](consuming-from-excel.md)
+* [Dodatek programu Excel dla usług sieci Web Azure Machine Learning](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>W kliencie oparty na protokole REST
 

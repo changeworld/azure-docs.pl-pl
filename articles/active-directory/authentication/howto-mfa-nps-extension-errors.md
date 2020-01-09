@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e93666c9a6388fb008bbe85c836d732685ed63a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d67d1d318bf823145a57d2e55774695d151996
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425318"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Rozwiązywanie komunikatów o błędach z rozszerzenia serwera NPS dla platformy Azure Multi-Factor Authentication
 
@@ -96,7 +96,11 @@ W przypadku wystąpienia jednego z tych błędów zalecamy [skontaktowanie się 
 
 Jeśli użytkownicy mają [problemy z weryfikacją dwuetapową](../user-help/multi-factor-authentication-end-user-troubleshoot.md), Pomóż im w rozwiązywaniu problemów.
 
-### <a name="contact-microsoft-support"></a>Skontaktuj się z pomocą techniczną firmy Microsoft
+### <a name="health-check-script"></a>Skrypt sprawdzania kondycji
+
+[Skrypt sprawdzania kondycji rozszerzenia serwera NPS usługi Azure MFA](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb) jest dostępny w galerii TechNet, aby przeprowadzić podstawowe Sprawdzanie kondycji podczas rozwiązywania problemów z rozszerzeniem serwera NPS. Uruchom skrypt i wybierz opcję 3.
+
+### <a name="contact-microsoft-support"></a>Kontaktowanie się z pomocą techniczną firmy Microsoft
 
 Jeśli potrzebujesz dodatkowej pomocy, skontaktuj się z specjalistą pomocy technicznej za pomocą [usługi Azure serwer Multi-Factor Authentication support](https://support.microsoft.com/oas/default.aspx?prid=14947). Gdy kontaktuje się z nami, jest to przydatne, jeśli możesz dołączyć tyle informacji o problemie, ile to możliwe. Informacje, które można podać, obejmują stronę, na której wystąpił błąd, konkretny kod błędu, identyfikator konkretnej sesji, identyfikator użytkownika, który obsłużył błąd, oraz Dzienniki debugowania.
 

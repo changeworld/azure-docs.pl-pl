@@ -1,5 +1,5 @@
 ---
-title: Skrypt Azure PowerShell — Azure Cosmos DB aktualizacji RU/s dla interfejsu API SQL (rdzeń)
+title: Skrypt programu PowerShell do aktualizacji RU/s dla interfejsu API Azure Cosmos DB SQL (rdzeń)
 description: Aktualizowanie przepływności dla bazy danych lub kontenera usługi Azure Cosmos za pomocą skryptu programu PowerShell — interfejsu API SQL (rdzeń)
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5a03c992e1ce1dc17c53bf414f0b07d2b60ddcce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 70dd5810d3549f19075b437044ce0dd332c45c49
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871894"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444952"
 ---
 # <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Aktualizowanie RU/s dla bazy danych lub kontenera dla interfejsu API Azure Cosmos DB-SQL (rdzeń)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 09179ff0cf8275e96cb87e0c183eb4a384dcb37b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008441"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564834"
 ---
 Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
 
@@ -29,7 +29,7 @@ Platforma Azure zawiera specjalne regiony, których można użyć podczas kompil
 * **US Gov Wirginia** i **US Gov Iowa**
   * Wystąpienie platformy Azure odizolowane fizycznie i na poziomie sieci logicznej dla instytucji rządowych oraz obsługiwane przez sprawdzony pod kątem bezpieczeństwa personel z obywatelstwem Stanów Zjednoczonych. Uwzględnia dodatkowe certyfikaty zgodności, takie jak [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) i [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Dowiedz się więcej o [platformie Azure Government](https://azure.microsoft.com/features/gov/).
 * **Chiny Północne** i **Chiny Wschodnie**
-  * Te regiony są dostępne dzięki unikatowemu partnerstwu firm Microsoft i 21Vianet, w ramach którego firma Microsoft nie zarządza bezpośrednio centrami danych. Zobacz więcej informacji na temat [platformy Azure w Chinach](http://www.windowsazure.cn/).
+  * Te regiony są dostępne dzięki unikatowemu partnerstwu firm Microsoft i 21Vianet, w ramach którego firma Microsoft nie zarządza bezpośrednio centrami danych. Zobacz więcej informacji na temat [platformy Azure w Chinach](https://www.windowsazure.cn/).
 * **Niemcy Środkowe** i **Niemcy Północno-Wschodnie**
   * Regiony te są dostępne za pośrednictwem modelu zarządca danych, zgodnie z którym dane klienta pozostają w Niemczech pod kontrolą systemu T-Systems, niemieckiej firmy Telekom, działającej jako niemiecki zarządca danych.
 
@@ -65,7 +65,7 @@ Zrozumienie sposobu działania regionów i obszarów geograficznych platformy Az
   * Umożliwia trzykrotne replikowanie danych w regionie, w którym utworzono konto magazynu.
 * Magazyn strefowo nadmiarowy (ZRS)
   * Umożliwia trzykrotne replikowanie danych w ramach dwóch lub trzech obiektów, w jednym lub dwóch regionach.
-* Magazyn geograficznie nadmiarowy (GRS)
+* Magazyn geograficznie nadmiarowy
   * Umożliwia replikowanie danych do regionu pomocniczego, który jest oddalony od regionu podstawowego o setki kilometrów.
 * Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)
   * Umożliwia replikowanie danych do regionu pomocniczego, podobnie jak w przypadku magazynu GRS, ale oferuje także dostęp tylko do odczytu do danych w lokalizacji pomocniczej.
@@ -80,7 +80,7 @@ W poniższej tabeli przedstawiono krótkie podsumowanie różnic między typami 
 
 Aby uzyskać więcej informacji, zobacz [opcje replikacji magazynu Azure Storage tutaj](../articles/storage/common/storage-redundancy.md). Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Omówienie usługi Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
-### <a name="storage-costs"></a>Koszty magazynowania
+### <a name="storage-costs"></a>Koszty magazynu
 Ceny różnią się w zależności od wybranego typu magazynu i dostępności.
 
 **Dyski zarządzane platformy Azure**

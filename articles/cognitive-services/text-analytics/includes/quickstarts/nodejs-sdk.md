@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: 54aadd22b8f2bbccaa4c5e4f1444aa08279a4773
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: eaaa6ea7c5986a71f298119b5074ae32504ab73b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446246"
 ---
 <a name="HOLTop"></a>
 
@@ -44,11 +44,14 @@ Utwórz plik o nazwie `index.js` i Dodaj następujące biblioteki:
 
 [!code-javascript[Const statements](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=constStatements)]
 
-Utwórz zmienne dla punktu końcowego platformy Azure i klucza subskrypcji zasobu. Uzyskaj te wartości ze zmiennych środowiskowych `TEXT_ANALYTICS_SUBSCRIPTION_KEY` i `TEXT_ANALYTICS_ENDPOINT`. Jeśli te zmienne środowiskowe zostały utworzone po rozpoczęciu edytowania aplikacji, należy zamknąć i ponownie otworzyć Edytor, środowisko IDE lub powłokę używaną w celu uzyskania dostępu do zmiennych.
+Utwórz zmienne dla punktu końcowego platformy Azure i klucza subskrypcji zasobu.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-javascript[Key and endpoint vars](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyVars)]
+```javascript
+const subscription_key = '<paste-your-text-analytics-key-here>';
+const endpoint = `<paste-your-text-analytics-endpoint-here>`;
+```
 
 ### <a name="install-the-client-library"></a>Zainstaluj bibliotekę kliencką
 
@@ -84,7 +87,7 @@ Utwórz nowy obiekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
 
-## <a name="sentiment-analysis"></a>Analiza tonacji
+## <a name="sentiment-analysis"></a>Analiza opinii
 
 Utwórz listę obiektów słownika zawierającego dokumenty, które chcesz przeanalizować. Wywołaj metodę [tonacji ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) klienta i otrzymaj zwrócony [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Wykonaj iterację na liście wyników, a następnie wydrukuj identyfikator każdego dokumentu i ocenę tonacji. Wynik zbliżony do 0 wskazuje negatywną tonacji, natomiast wynik zbliżony do 1 wskazuje pozytywny tonacji.
 

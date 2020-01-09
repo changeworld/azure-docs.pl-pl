@@ -7,15 +7,15 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 12/12/2019
+ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440217"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>Przekształcanie źródła na potrzeby mapowania przepływu danych 
+# <a name="source-transformation-in-mapping-data-flow"></a>Transformacja źródła w strumieniu danych mapowania 
 
 Transformacja źródła konfiguruje źródło danych dla przepływu danych. Podczas projektowania przepływów danych pierwszy krok zawsze skonfiguruje transformację źródłową. Aby dodać źródło, kliknij pole **Dodaj źródło** na kanwie przepływu danych.
 
@@ -23,18 +23,20 @@ Każdy przepływ danych wymaga co najmniej jednego przekształcenia źródła, a
 
 Każda transformacja źródła jest skojarzona z dokładnie jednym Data Factory zestawem danych. Zestaw danych definiuje kształt i lokalizację danych, które mają być zapisywane lub odczytywane. W przypadku korzystania z zestawu danych opartego na plikach można używać symboli wieloznacznych i list plików w źródle, aby współpracowały z więcej niż jednym plikiem naraz.
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Obsługiwane łączniki w mapowaniu przepływu danych
+## <a name="supported-source-connectors-in-mapping-data-flow"></a>Obsługiwane łączniki źródła w mapowaniu przepływu danych
 
 Mapowanie przepływu danych odbywa się zgodnie z podejściem wyodrębniania, ładowania, przekształcania (ELT) i współdziała z *tymczasowymi* zestawami danych, które są wszystkie na platformie Azure. Obecnie następujące zestawy danych mogą być używane w transformacji źródłowej:
     
-* Azure Blob Storage (JSON, Avro, text, parquet)
-* Azure Data Lake Storage Gen1 (JSON, Avro, text, parquet)
-* Azure Data Lake Storage Gen2 (JSON, Avro, text, parquet)
-* Azure SQL Data Warehouse
-* Azure SQL Database
-* Azure CosmosDB
+* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, text, parquet)
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, text, parquet)
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, text, parquet)
+* [Analiza usługi Azure Synapse](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Azure Data Factory ma dostęp do ponad 80 łączników natywnych. Aby dołączyć dane z innych źródeł w przepływie danych, Użyj działania kopiowania w celu załadowania tych danych do jednego z obsługiwanych obszarów tymczasowych.
+Ustawienia specyficzne dla tych łączników znajdują się na karcie **Opcje źródła** . informacje dotyczące tych ustawień znajdują się w dokumentacji łącznika. 
+
+Azure Data Factory ma dostęp do ponad [90 łączników natywnych](connector-overview.md). Aby dołączyć dane z innych źródeł w przepływie danych, Użyj działania kopiowania w celu załadowania tych danych do jednego z obsługiwanych obszarów tymczasowych.
 
 ## <a name="source-settings"></a>Ustawienia źródła
 
@@ -54,95 +56,12 @@ Po dodaniu źródła skonfiguruj go za pomocą karty **Ustawienia źródła** . 
 
 **Próbkowanie:** Włącz próbkowanie, aby ograniczyć liczbę wierszy ze źródła. Użyj tego ustawienia, gdy testujesz lub przykładowe dane ze źródła do celów debugowania.
 
-**Wiersze wielowierszowe:** Zaznacz wiersze wielowierszowe, Jeśli źródłowy plik tekstowy zawiera wartości ciągów, które rozciągają się na wiele wierszy, tzn. nowego wiersza wewnątrz wartości.
+**Wiersze wielowierszowe:** Zaznacz wiersze wielowierszowe, Jeśli źródłowy plik tekstowy zawiera wartości ciągów, które rozciągają się na wiele wierszy, tzn. nowego wiersza wewnątrz wartości. To ustawienie jest dostępne tylko w zestawach danych DelimitedText.
 
 Aby sprawdzić, czy źródło jest prawidłowo skonfigurowane, Włącz tryb debugowania i Pobierz Podgląd danych. Aby uzyskać więcej informacji, zobacz [tryb debugowania](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
 > Gdy tryb debugowania jest włączony, konfiguracja limitu wierszy w ustawieniach debugowania spowoduje zastąpienie ustawienia próbkowania w źródle podczas wyświetlania podglądu danych.
-
-## <a name="file-based-source-options"></a>Opcje źródła na podstawie plików
-
-Jeśli używasz zestawu danych opartego na plikach, takiego jak Azure Blob Storage lub Azure Data Lake Storage, karta **Opcje źródła** umożliwia zarządzanie sposobem odczytywania plików przez źródło.
-
-![Opcje źródła](media/data-flow/sourceOPtions1.png "Opcje źródła")
-
-**Ścieżka symboli wieloznacznych:** Użycie wzorca wieloznacznego spowoduje, że ADF będzie przełączać pętlę do każdego pasującego folderu i pliku w ramach pojedynczego przekształcenia źródła. Jest to efektywny sposób przetwarzania wielu plików w ramach pojedynczego przepływu. Dodaj wiele symboli wieloznacznych wzorców ze znakiem +, który pojawia się po umieszczeniu wskaźnika myszy na istniejącym wzorcu symboli wieloznacznych.
-
-Z kontenera źródłowego wybierz serię plików, które pasują do wzorca. W zestawie danych można określić tylko kontener. Ścieżka symbolu wieloznacznego musi zawierać również ścieżkę folderu z folderu głównego.
-
-Przykłady symboli wieloznacznych:
-
-* ```*``` reprezentuje dowolny zestaw znaków
-* ```**``` reprezentuje zagnieżdżanie katalogów cyklicznych
-* ```?``` zastępuje jeden znak
-* ```[]``` dopasowuje jeden z więcej znaków w nawiasach
-
-* ```/data/sales/**/*.csv``` pobiera wszystkie pliki CSV w obszarze/Data/Sales
-* ```/data/sales/20??/**``` pobiera wszystkie pliki w 20-wieku
-* ```/data/sales/2004/*/12/[XY]1?.csv``` pobiera wszystkie pliki CSV w 2004 w grudniu, zaczynając od X lub Y poprzedzone przez dwucyfrowy numer
-
-**Ścieżka katalogu głównego partycji:** Jeśli masz partycjonowane foldery w źródle plików o formacie ```key=value``` (na przykład Year = 2019), możesz przypisać najwyższy poziom tego drzewa folderów partycji do nazwy kolumny w strumieniu danych przepływu danych.
-
-Najpierw ustaw symbol wieloznaczny, aby uwzględnić wszystkie ścieżki, które są folderami partycjonowanymi oraz pliki liści, które chcesz odczytać.
-
-![Ustawienia pliku źródłowego partycji](media/data-flow/partfile2.png "Ustawienie pliku partycji")
-
-Użyj ustawienia ścieżka katalogu głównego partycji, aby określić, jaki jest najwyższy poziom struktury folderów. Gdy przeglądasz zawartość danych za pośrednictwem wersji zapoznawczej, zobaczysz, że na AUTOMATYCZNYm ekranie zostaną dodane rozpoznane partycje znalezione na każdym z poziomów folderów.
-
-![Ścieżka katalogu głównego partycji](media/data-flow/partfile1.png "Podgląd ścieżki katalogu głównego partycji")
-
-**Lista plików:** To jest zestaw plików. Utwórz plik tekstowy, który zawiera listę plików ścieżek względnych do przetworzenia. Wskaż ten plik tekstowy.
-
-**Kolumna do przechowywania nazwy pliku:** Zapisz nazwę pliku źródłowego w kolumnie w danych. Wprowadź tutaj nazwę nowej kolumny, aby zapisać ciąg nazw plików.
-
-**Po zakończeniu:** Wybierz, aby nic nie robić z plikiem źródłowym po uruchomieniu przepływu danych, usuń plik źródłowy lub Przenieś plik źródłowy. Ścieżki do przenoszenia są względne.
-
-Aby przenieść pliki źródłowe do innej lokalizacji po przetworzeniu, najpierw wybierz pozycję "Przenieś" dla operacji na pliku. Następnie ustaw katalog "z". Jeśli nie używasz symboli wieloznacznych dla ścieżki, ustawienie "od" będzie takie samo jak folder źródłowy.
-
-Jeśli masz ścieżkę źródłową z symbolem wieloznacznym, składnia będzie wyglądać następująco:
-
-```/data/sales/20??/**/*.csv```
-
-Możesz określić wartość "od" jako
-
-```/data/sales```
-
-I "do" jako
-
-```/backup/priorSales```
-
-W takim przypadku wszystkie pliki, które zostały objęte usługą/Data/Sales, są przenoszone do/backup/priorSales.
-
-> [!NOTE]
-> Operacje na plikach są uruchamiane tylko wtedy, gdy rozpoczyna się przepływ danych z uruchomienia potoku (debugowania lub przebiegu wykonywania) używającego działania wykonywania przepływu danych w potoku. Operacje na plikach *nie są* uruchamiane w trybie debugowania przepływu danych.
-
-**Filtruj według ostatniej modyfikacji:** Można filtrować, które pliki są przetwarzane, określając zakres dat, po którym były ostatnio modyfikowane. Wszystkie daty i godziny są w formacie UTC. 
-
-### <a name="add-dynamic-content"></a>Dodaj zawartość dynamiczną
-
-Wszystkie ustawienia źródła można określić jako wyrażenia przy użyciu [języka wyrażenia przekształcenia przepływu danych mapowania](data-flow-expression-functions.md). Aby dodać zawartość dynamiczną, kliknij lub umieść kursor wewnątrz pól w panelu ustawień. Kliknij hiperlink, aby **dodać zawartość dynamiczną**. Spowoduje to uruchomienie konstruktora wyrażeń, w którym można ustawić wartości dynamicznie przy użyciu wyrażeń, statycznych wartości literałów lub parametrów.
-
-![Parametry](media/data-flow/params6.png "Parametry")
-
-## <a name="sql-source-options"></a>Opcje źródła SQL
-
-Jeśli źródło jest w SQL Database lub SQL Data Warehouse, na karcie **Opcje źródła** są dostępne dodatkowe ustawienia specyficzne dla bazy danych SQL. 
-
-**Dane wejściowe:** Wybierz, czy chcesz wskazać źródło w tabeli (równoważnej ```Select * from <table-name>```), czy wprowadzić niestandardowe zapytanie SQL.
-
-**Zapytanie**: w przypadku wybrania zapytania w polu wejściowym wprowadź zapytanie SQL dla źródła. To ustawienie przesłania każdą tabelę, która została wybrana w zestawie danych. Klauzule **order by** nie są obsługiwane w tym miejscu, ale można ustawić pełną instrukcję SELECT FROM. Można również użyć funkcji tabeli zdefiniowanej przez użytkownika. **SELECT * FROM udfGetData ()** to format UDF w języku SQL, który zwraca tabelę. To zapytanie spowoduje utworzenie tabeli źródłowej, której można użyć w przepływie danych. Używanie zapytań jest również doskonałym sposobem zredukowania liczby wierszy do testowania lub wyszukiwania. Przykład: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
-
-**Rozmiar wsadu**: wprowadź rozmiar partii, aby podzielić duże ilości danych na odczyt.
-
-**Poziom izolacji**: wartość domyślna dla źródeł SQL w mapowaniu przepływu danych jest odczytana. Poziom izolacji można zmienić tutaj na jedną z następujących wartości:
-* Odczytaj zatwierdzone
-* Odczytaj niezatwierdzone
-* Odczyt powtarzalny
-* Serializable
-* Brak (Ignoruj poziom izolacji)
-
-![Poziom izolacji](media/data-flow/isolationlevel.png "Poziom izolacji")
 
 ## <a name="projection"></a>Projekcja
 
@@ -157,15 +76,6 @@ Typy danych kolumny można modyfikować w transformacjach kolumn pochodnych w d�
 ### <a name="import-schema"></a>Importuj schemat
 
 Zestawy danych, takie jak Avro i CosmosDB, które obsługują złożone struktury, nie wymagają, aby definicje schematu istniały w zestawie danych. W związku z tym będzie można kliknąć przycisk **Importuj schemat** na karcie **projekcja** dla tych typów źródeł.
-
-## <a name="cosmosdb-specific-settings"></a>Ustawienia CosmosDB
-
-W przypadku używania CosmosDB jako typu źródła istnieje kilka opcji, które należy wziąć pod uwagę:
-
-* Uwzględnij kolumny systemowe: w przypadku zaznaczenia tej opcji ```id```, ```_ts```i inne kolumny systemowe zostaną uwzględnione w metadanych przepływu danych z CosmosDB. Podczas aktualizowania kolekcji należy uwzględnić to, aby można było uzyskać istniejący identyfikator wiersza.
-* Rozmiar strony: liczba dokumentów na stronę wyników zapytania. Wartość domyślna to "-1", która używa strony dynamicznej usługi do 1000.
-* Przepływność: Ustaw opcjonalną wartość dla liczby jednostek ru, która ma zostać zastosowana do kolekcji CosmosDB dla każdego wykonywania tego przepływu danych podczas operacji odczytu. Wartość minimalna to 400.
-* Preferowane regiony: możesz wybrać preferowane regiony odczytu dla tego procesu.
 
 ## <a name="optimize-the-source-transformation"></a>Optymalizuj transformację źródłową
 

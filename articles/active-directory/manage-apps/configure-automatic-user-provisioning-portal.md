@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430198"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw w Azure Portal
 
-W tym artykule opisano sposób korzystania z [Azure Portal](https://portal.azure.com) w celu zarządzania automatyczną obsługą kont użytkowników i anulowaniem aprowizacji dla aplikacji, które go obsługują. Aby dowiedzieć się więcej o automatycznym inicjowaniu obsługi kont użytkowników i sposobie jej działania, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu Azure Active Directory](user-provisioning.md).
+W tym artykule opisano ogólne czynności związane z zarządzaniem automatycznym inicjowaniem obsługi kont użytkowników i anulowaniem aprowizacji dla aplikacji, które je obsługują. *Inicjowanie obsługi konta użytkownika* to czynność tworzenia, aktualizowania i/lub wyłączania rekordów kont użytkowników w lokalnym magazynie profilów użytkownika aplikacji. Większość aplikacji w chmurze i SaaS przechowuje rolę i uprawnienia użytkowników w lokalnym magazynie profilów użytkownika, a obecność takiego rekordu użytkownika w lokalnym magazynie użytkownika jest *wymagana* do logowania jednokrotnego i dostępu do pracy. Aby dowiedzieć się więcej o automatycznym inicjowaniu obsługi kont użytkowników, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu Azure Active Directory](user-provisioning.md).
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD) zawiera galerię zawierającą tysiące wstępnie zintegrowanych aplikacji, które obsługują automatyczną obsługę administracyjną w usłudze Azure AD. Należy zacząć od znalezienia samouczka dotyczącego konfiguracji aprowizacji określonego dla aplikacji na [liście samouczków dotyczących integrowania aplikacji SaaS z Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). Prawdopodobnie znajdziesz wskazówki krok po kroku dotyczące konfigurowania aplikacji i usługi Azure AD w celu utworzenia połączenia aprowizacji.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
 

@@ -10,23 +10,23 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454701"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretowanie wyników modelu w Azure Machine Learning Studio (klasyczny)
 W tym temacie wyjaśniono, jak wizualizować i interpretować wyniki prognozowania w Azure Machine Learning Studio (klasyczny). Po przeprowadzeniu szkolenia modelu i zakończeniu przewidywania względem niego ("Ocena modelu") należy zrozumieć i zinterpretować wynik przewidywania.
 
 
 
-Istnieją cztery główne rodzaje modeli uczenia maszynowego w klasycznej wersji Azure Machine Learning Studio:
+Istnieją cztery główne rodzaje modeli uczenia maszynowego w Azure Machine Learning Studio (klasyczny):
 
 * Klasyfikacja
-* Usługę
-* ubytk
+* Klastrowanie
+* Regresja
 * Systemy zalecające
 
 Moduły używane do przewidywania w oparciu o te modele są następujące:
@@ -39,7 +39,7 @@ W tym dokumencie wyjaśniono, jak interpretować wyniki prognoz dla każdego z t
 
 Ten temat dotyczy interpretacji przewidywania, ale nie oceny modelu. Aby uzyskać więcej informacji o sposobach oceny modelu, zobacz [jak oszacować wydajność modelu w Azure Machine Learning Studio (klasyczny)](evaluate-model-performance.md).
 
-Jeśli dopiero zaczynasz korzystać z klasycznej wersji Azure Machine Learning Studio i potrzebujesz pomocy przy tworzeniu prostego eksperymentu, aby rozpocząć pracę, zobacz [Tworzenie prostego eksperymentu w Azure Machine Learning Studio (klasyczny)](create-experiment.md).
+Jeśli jesteś nowym do Azure Machine Learning Studio (klasyczny) i potrzebujesz pomocy przy tworzeniu prostego eksperymentu, aby rozpocząć pracę, zobacz [Tworzenie prostego eksperymentu w Azure Machine Learning Studio (klasyczny)](create-experiment.md).
 
 ## <a name="classification"></a>Klasyfikacja
 Istnieją dwie podkategorie problemów klasyfikacji:
@@ -52,7 +52,7 @@ Azure Machine Learning Studio (klasyczny) zawiera różne moduły do obsłużeni
 ### <a name="two-class-classification"></a>Klasyfikacja dwuklasowa
 **Przykładowy eksperyment**
 
-Przykładem problemu klasyfikacji z dwoma klasami jest klasyfikacja dla kwiatów Iris. Zadaniem jest klasyfikowanie kwiatów w formacie Iris na podstawie ich funkcji. Zestaw danych Iris podany w klasycznej wersji Azure Machine Learning Studio to podzestaw popularnego [zestawu danych Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) zawierający wystąpienia tylko dwóch gatunków kwiatowych (klasy 0 i 1). Każdy kwiat ma cztery funkcje (długość słupka, Szerokość słupka, Długość płatka i szerokość).
+Przykładem problemu klasyfikacji z dwoma klasami jest klasyfikacja dla kwiatów Iris. Zadaniem jest klasyfikowanie kwiatów w formacie Iris na podstawie ich funkcji. Zestaw danych Iris podany w Azure Machine Learning Studio (klasyczny) to podzestaw popularnego [zestawu danych Iris](https://en.wikipedia.org/wiki/Iris_flower_data_set) zawierający wystąpienia tylko dwóch gatunków kwiatowych (klasy 0 i 1). Każdy kwiat ma cztery funkcje (długość słupka, Szerokość słupka, Długość płatka i szerokość).
 
 ![Zrzut ekranu eksperymentu Iris](./media/interpret-model-results/1.png)
 
@@ -137,7 +137,7 @@ Po opublikowaniu i uruchomieniu usługi sieci Web, a następnie wprowadzeniu nie
 
 Rysunek 10. Wynik usługi sieci Web klasyfikacji wieloklasowej
 
-## <a name="regression"></a>ubytk
+## <a name="regression"></a>Regresja
 Problemy z regresją różnią się od błędów klasyfikacji. W przypadku problemu klasyfikacji próbujesz przewidzieć klasy dyskretne, takie jak Klasa, do której należy kwiat. Ale jak widać w poniższym przykładzie problemu z regresją, próbujesz przewidzieć zmienną ciągłą, taką jak cena samochodu.
 
 **Przykładowy eksperyment**
@@ -174,7 +174,7 @@ Po uruchomieniu usługi sieci Web zwrócony wynik wygląda jak rysunek 14. Przew
 
 Rysunek 14. Wynik usługi sieci Web problemu z metodą regresji cen dla samochodów
 
-## <a name="clustering"></a>Usługę
+## <a name="clustering"></a>Klastrowanie
 **Przykładowy eksperyment**
 
 Użyjmy ponownie zestawu danych Iris, aby skompilować eksperyment z klastrem. W tym miejscu możesz odfiltrować etykiety klas w zestawie danych, aby miało tylko funkcje i mogą być używane do klastrowania. W tym przypadku użycia tęczówki należy określić liczbę klastrów, które mają być dwa w procesie szkoleniowym, co oznacza, że można umieścić kwiaty w dwóch klasach. Eksperyment jest przedstawiony na rysunku 15.
@@ -224,9 +224,9 @@ W przypadku systemów zalecanych można użyć problemu z zaleceniem restauracji
 
 * Klasyfikacje restauracji od klientów
 * Dane funkcji klienta
-* Dane funkcji restauracji
+* Dane cech restauracji
 
-Istnieje kilka rzeczy, które można wykonać za pomocą modułu [polecania szkolenia Matchbox][train-matchbox-recommender] w klasycznej wersji Azure Machine Learning Studio:
+Istnieje kilka rzeczy, które można wykonać za pomocą modułu [polecania szkolenia Matchbox][train-matchbox-recommender] w Azure Machine Learning Studio (klasyczny):
 
 * Prognozowanie klasyfikacji dla danego użytkownika i elementu
 * Zalecane elementy dla danego użytkownika

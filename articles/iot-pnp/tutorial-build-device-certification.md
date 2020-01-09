@@ -3,18 +3,18 @@ title: Utwórz urządzenie usługi IoT Plug and Play w wersji zapoznawczej, któ
 description: Jako deweloper urządzenia zapoznaj się z informacjami na temat tworzenia urządzenia usługi IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569640"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550270"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Utwórz urządzenie usługi IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji
 
@@ -35,7 +35,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Narzędzia Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack
 
-Potrzebne jest również urządzenie IoT Plug and Play utworzone w ramach [szybkiego startu: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie](quickstart-create-pnp-device.md).
+Potrzebne jest również urządzenie IoT Plug and Play utworzone w ramach [szybkiego startu: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie](quickstart-create-pnp-device-windows.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Przechowywanie modelu możliwości i interfejsów
 
@@ -58,7 +58,7 @@ Aby przekazać proces certyfikacji, należy uwzględnić i zaimplementować inte
 ```
 
 > [!NOTE]
-> Jeśli ukończono [Przewodnik Szybki Start: korzystanie z modelu możliwości urządzenia do utworzenia urządzenia](quickstart-create-pnp-device.md), interfejs **informacji o urządzeniu** został już uwzględniony w modelu.
+> Jeśli ukończono [Przewodnik Szybki Start: korzystanie z modelu możliwości urządzenia do utworzenia urządzenia](quickstart-create-pnp-device-windows.md), interfejs **informacji o urządzeniu** został już uwzględniony w modelu.
 
 Aby dołączyć Interfejs **informacji o urządzeniu** do modelu urządzenia, Dodaj identyfikator interfejsu do właściwości `implements` modelu możliwości:
 
