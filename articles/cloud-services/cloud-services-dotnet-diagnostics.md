@@ -3,19 +3,19 @@ title: Jak korzystać z diagnostyki Azure (.NET) z Cloud Services | Microsoft Do
 description: Używanie diagnostyki Azure do zbierania danych z usług Azure Cloud Services na potrzeby debugowania, mierzenia wydajności, monitorowania, analizy ruchu i nie tylko.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361117"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączanie Diagnostyka Azure na platformie Azure Cloud Services
 Zobacz [Diagnostyka Azure przegląd](../azure-diagnostics.md) dla tła na Diagnostyka Azure.
@@ -26,7 +26,7 @@ W tym przewodniku opisano sposób implementacji roli procesu roboczego platformy
 ### <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule przyjęto założenie, że masz subskrypcję platformy Azure i korzystasz z programu Visual Studio z zestawem Azure SDK. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć konto [bezpłatnej wersji próbnej][Free Trial]. Upewnij się [, że instalujesz i konfigurujesz Azure PowerShell w wersji 0.8.7 lub nowszej][Install and configure Azure PowerShell version 0.8.7 or later].
 
-### <a name="step-1-create-a-worker-role"></a>Krok 1: Utwórz rolę procesu roboczego
+### <a name="step-1-create-a-worker-role"></a>Krok 1. Tworzenie roli procesu roboczego
 1. Uruchom program **Visual Studio**.
 2. Utwórz projekt **usługi w chmurze platformy Azure** na podstawie szablonu w **chmurze** , który jest przeznaczony dla .NET Framework 4,5.  Nadaj projektowi nazwę "WadExample" i kliknij przycisk OK.
 3. Wybierz **rolę proces roboczy** , a następnie kliknij przycisk OK. Projekt zostanie utworzony.
@@ -34,7 +34,7 @@ W tym artykule przyjęto założenie, że masz subskrypcję platformy Azure i ko
 5. Na karcie **Konfiguracja** Cofnij zaznaczenie pola wyboru **Włącz diagnostykę** , aby wyłączyć diagnostykę 1,0 (zestaw Azure SDK 2,4 lub starszy).
 6. Skompiluj rozwiązanie, aby sprawdzić, czy nie ma żadnych błędów.
 
-### <a name="step-2-instrument-your-code"></a>Krok 2: Instrumentacja kodu
+### <a name="step-2-instrument-your-code"></a>Krok 2. Instrumentacja kodu
 Zastąp zawartość WorkerRole.cs następującym kodem. Klasa SampleEventSourceWriter, dziedziczona z [klasy EventSource][EventSource Class], implementuje cztery metody rejestrowania: **SendEnums**, **MessageMethod**, **setother** i **HighFreq**. Pierwszy parametr metody **metody WriteEvent** definiuje identyfikator dla odpowiedniego zdarzenia. Metoda run implementuje nieskończoną pętlę, która wywołuje każdą metodę rejestrowania zaimplementowaną w klasie **SampleEventSourceWriter** co 10 sekund.
 
 ```csharp
@@ -118,7 +118,7 @@ namespace WorkerRole1
 ```
 
 
-### <a name="step-3-deploy-your-worker-role"></a>Krok 3: Wdróż rolę procesu roboczego
+### <a name="step-3-deploy-your-worker-role"></a>Krok 3. Wdrażanie roli procesu roboczego
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -130,13 +130,13 @@ namespace WorkerRole1
 6. Zmodyfikuj odpowiednio inne **Ustawienia** , a następnie kliknij przycisk **Publikuj**.
 7. Po zakończeniu wdrożenia Sprawdź, czy Azure Portal, że usługa w chmurze jest **uruchomiona** .
 
-### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Krok 4: Utwórz plik konfiguracji diagnostyki i zainstaluj rozszerzenie
+### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Krok 4. Tworzenie pliku konfiguracji diagnostyki i Instalowanie rozszerzenia
 1. Pobierz definicję schematu pliku konfiguracji publicznej, wykonując następujące polecenie programu PowerShell:
 
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Dodaj plik XML do projektu **WorkerRole1** , klikając prawym przyciskiem myszy projekt **WorkerRole1** i wybierając polecenie **Dodaj** -> **nowy element...** -> **C#**  -> **Plik XML**danychelementówwizualnych -> . Nazwij plik "WadExample. xml".
+2. Dodaj plik XML do projektu **WorkerRole1** , klikając prawym przyciskiem myszy projekt **WorkerRole1** i wybierając pozycję **Dodaj** -> **nowy element...** -> **elementy C# wizualne** -> **danych** -> **pliku XML**. Nazwij plik "WadExample. xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Skojarz plik WadConfig. xsd z plikiem konfiguracji. Upewnij się, że okno edytora WadExample. XML jest oknem aktywnym. Naciśnij klawisz **F4** , aby otworzyć okno **Właściwości** . Kliknij właściwość **schematy** w oknie **Właściwości** . Kliknij przycisk **...** we właściwości **schematy** . Kliknij przycisk **Dodaj...** i przejdź do lokalizacji, w której zapisano plik XSD, a następnie wybierz plik WadConfig. xsd. Kliknij przycisk **OK**.
@@ -170,7 +170,7 @@ namespace WorkerRole1
 Polecenia cmdlet programu PowerShell służące do zarządzania diagnostyką w ramach roli sieci Web lub procesu roboczego są następujące: Set-AzureServiceDiagnosticsExtension, get-AzureServiceDiagnosticsExtension i Remove-AzureServiceDiagnosticsExtension.
 
 1. Otwórz Azure PowerShell.
-2. Wykonaj skrypt, aby zainstalować diagnostykę w roli procesu roboczego (Zamień *StorageAccountKey* na klucz konta magazynu dla konta magazynu wadexample i *config_path* ze ścieżką do pliku *wadexample. XML* ):
+2. Wykonaj skrypt, aby zainstalować diagnostykę w roli procesu roboczego (Zastąp *StorageAccountKey* z kluczem konta magazynu dla konta magazynu wadexample i *config_path* ze ścieżką do pliku *wadexample. XML* ):
 
 ```powershell
 $storage_name = "wadexample"
@@ -181,13 +181,13 @@ $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -Sto
 Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Staging -Role WorkerRole1
 ```
 
-### <a name="step-6-look-at-your-telemetry-data"></a>Krok 6: Przyjrzyj się danych telemetrycznych
+### <a name="step-6-look-at-your-telemetry-data"></a>Krok 6. Przyjrzyj się danych telemetrii
 W programie Visual Studio **Eksplorator serwera**przejdź do konta magazynu wadexample. Po uruchomieniu usługi w chmurze około pięciu (5) minut powinna zostać wyświetlona tabela **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** i **WADSetOtherTable**. Kliknij dwukrotnie jedną z tabel, aby wyświetlić dane telemetryczne, które zostały zebrane.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schemat pliku konfiguracji
-Plik konfiguracji diagnostyki definiuje wartości, które są używane do inicjowania ustawień konfiguracji diagnostyki podczas uruchamiania agenta diagnostyki. Zobacz [najnowsze informacje](/azure/azure-monitor/platform/diagnostics-extension-schema) o schemacie dotyczące prawidłowych wartości i przykładów.
+Plik konfiguracji diagnostyki definiuje wartości, które są używane do inicjowania ustawień konfiguracji diagnostyki podczas uruchamiania agenta diagnostyki. Zobacz [najnowsze informacje o schemacie](/azure/azure-monitor/platform/diagnostics-extension-schema) dotyczące prawidłowych wartości i przykładów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Jeśli masz problemy, zobacz [Rozwiązywanie problemów Diagnostyka Azure](../azure-diagnostics-troubleshooting.md) , aby uzyskać pomoc dotyczącą typowych problemów.
@@ -201,3 +201,6 @@ Zapoznaj się z [listą artykułów diagnostycznych dotyczących maszyn wirtualn
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+
+
+

@@ -1,25 +1,14 @@
 ---
-title: Lista kontrolna gotowości produkcyjnej platformy Azure Service Fabric | Microsoft Docs
+title: Lista kontrolna gotowości produkcyjnej platformy Azure Service Fabric
 description: Zapoznaj się z Service Fabric aplikacji i środowiska produkcyjnego klastra, wykonując następujące najlepsze rozwiązania.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/05/2019
-ms.author: atsenthi
-ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376804"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
@@ -27,7 +16,7 @@ Czy Twoja aplikacja i klaster są gotowe do przetworzenia ruchu produkcyjnego? U
 
 
 ## <a name="prerequisites-for-production"></a>Wymagania wstępne dotyczące produkcji
-1. Najlepsze rozwiązania dotyczące platformy Azure Service Fabric: [Projektowanie aplikacji](./service-fabric-best-practices-applications.md), [zabezpieczenia](./service-fabric-best-practices-security.md), [Sieć](./service-fabric-best-practices-networking.md), [Planowanie pojemności i skalowanie](./service-fabric-best-practices-capacity-scaling.md), [infrastruktura jako kod](./service-fabric-best-practices-infrastructure-as-code.md)oraz [monitorowanie i Diagnostyka](./service-fabric-best-practices-monitoring.md). 
+1. Najlepsze rozwiązania dotyczące platformy Azure Service Fabric: [projektowanie aplikacji](./service-fabric-best-practices-applications.md), [zabezpieczenia](./service-fabric-best-practices-security.md), [Sieć](./service-fabric-best-practices-networking.md), [Planowanie pojemności i skalowanie](./service-fabric-best-practices-capacity-scaling.md), [infrastruktura jako kod](./service-fabric-best-practices-infrastructure-as-code.md)oraz [monitorowanie i Diagnostyka](./service-fabric-best-practices-monitoring.md). 
 1. Zaimplementuj konfigurację zabezpieczeń Reliable Actors w przypadku korzystania z modelu programowania aktorów
 1. W przypadku klastrów mających więcej niż 20 rdzeni lub 10 węzłów Utwórz dedykowany typ węzła podstawowego dla usług systemowych. Dodaj [ograniczenia umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) w celu zarezerwowania typu węzła podstawowego dla usług systemowych.
 1. Użyj jednostki SKU D2v2 lub wyższej dla typu węzła podstawowego. Zalecane jest wybranie jednostki SKU z co najmniej 50 GB miejsca na dysku twardym.
@@ -52,7 +41,7 @@ Czy Twoja aplikacja i klaster są gotowe do przetworzenia ruchu produkcyjnego? U
 
 
 W przypadku korzystania z Service Fabric Reliable Services lub modelu programowania Reliable Actors należy wyewidencjonować następujące elementy:
-1. Uaktualnij aplikacje podczas lokalnego tworzenia, aby sprawdzić, czy kod usługi jest uznawany za token anulowania `RunAsync` w metodzie i zamykając niestandardowe odbiorniki komunikacji.
+1. Uaktualnij aplikacje podczas lokalnego opracowywania, aby sprawdzić, czy kod usługi jest uznawany za token anulowania w metodzie `RunAsync` i zamykając niestandardowe odbiorniki komunikacji.
 1. Unikaj [typowych pułapek](service-fabric-work-with-reliable-collections.md) podczas korzystania z niezawodnych kolekcji.
 1. Monitoruj liczniki wydajności pamięci środowiska CLR platformy .NET podczas uruchamiania testów obciążenia i sprawdzaj, czy nie ma wysokiego współczynnika wyrzucania elementów bezużytecznych lub wzrostu sterty.
 1. Zachowaj kopię zapasową offline [Reliable Services i Reliable Actors](service-fabric-reliable-services-backup-restore.md) i przetestuj proces przywracania.

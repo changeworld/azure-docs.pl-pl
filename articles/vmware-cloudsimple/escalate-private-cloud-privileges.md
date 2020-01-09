@@ -1,5 +1,6 @@
 ---
-title: Eskalacja uprawnień chmury prywatnej — rozwiązanie Azure VMware według CloudSimple
+title: Eskalacja uprawnień chmury prywatnej
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Opisuje sposób eskalacji uprawnień w chmurze prywatnej na potrzeby funkcji administracyjnych w programie vCenter
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372775"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Eskalacja uprawnień vCenter w chmurze prywatnej z portalu CloudSimple
 
@@ -24,7 +25,7 @@ Nowych użytkowników można utworzyć w domenie vCenter SSO i uzyskać dostęp 
 > [!CAUTION]
 > Nie wprowadzaj żadnych zmian w konfiguracji składników zarządzania. Akcje podejmowane w ramach eskalacji uprzywilejowanego stanu mogą mieć negatywny wpływ na system lub mogą spowodować, że system stanie się niedostępny.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -38,7 +39,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
     ![Zmień uprawnienie vSphere](media/escalate-private-cloud-privilege.png)
 
-4. Wybierz typ użytkownika vSphere.  Można `CloudOwner@cloudsimple.local` eskalować tylko użytkownika lokalnego.
+4. Wybierz typ użytkownika vSphere.  Tylko `CloudOwner@cloudsimple.local` użytkownika lokalnego można eskalować.
 
 5. Wybierz przedział czasu eskalacji z listy rozwijanej. Wybierz najkrótszy okres, który pozwoli na ukończenie zadania.
 
@@ -59,7 +60,7 @@ Eskalacja uprawnień rozpoczyna się i trwa do końca wybranego interwału.  Mo�
 
 Jeśli potrzebujesz dodatkowego czasu na ukończenie zadań, możesz zwiększyć okres eskalacji uprawnień.  Wybierz dodatkowy interwał okresu eskalacji, który umożliwia wykonywanie zadań administracyjnych.
 
-1. W**chmurach prywatnych** **zasobów** > w portalu CloudSimple Wybierz chmurę prywatną, dla której chcesz rozłożyć eskalację uprawnień.
+1. W obszarze **zasoby** > **chmurami prywatnymi** w portalu CloudSimple Wybierz chmurę prywatną, dla której chcesz rozłożyć eskalację uprawnień.
 
 2. W dolnej części karty Podsumowanie kliknij polecenie **Zwiększ eskalację uprawnień**.
 
@@ -73,7 +74,7 @@ Jeśli potrzebujesz dodatkowego czasu na ukończenie zadań, możesz zwiększyć
 
 Po zakończeniu zadań administracyjnych należy anulować eskalację uprawnień.  
 
-1. W**chmurach prywatnych** **zasobów** > w portalu CloudSimple Wybierz chmurę prywatną, dla której chcesz cofnąć eskalację uprawnień.
+1. W obszarze **zasoby** > **chmurami prywatnymi** w portalu CloudSimple Wybierz chmurę prywatną, dla której chcesz cofnąć eskalację uprawnień.
 
 2. Kliknij przycisk **Anuluj eskalację**.
 

@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755266"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382127"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Umiarkowane z niestandardowymi listami terminów w konsoli interfejsu API
 
 Domyślna globalna lista terminów w usługach Azure Content Moderator wystarcza w przypadku większości potrzeb moderowania zawartości. Jednak może być konieczne sprawdzanie terminów, które są specyficzne dla organizacji. Na przykład warto oznaczyć tagiem nazwy konkurencji w celu dalszego przeglądu. 
 
-Użyj [interfejsu API zarządzania listami](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) , aby utworzyć niestandardowe listy terminów do użycia z interfejsem API moderowania tekstu. Operacja **ekranu tekstowego** skanuje tekst pod kątem niewulgarności, a także porównuje tekst z niestandardowym i udostępnionymi listami zabronionymi.
+Użyj [interfejsu API zarządzania listami](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) , aby utworzyć niestandardowe listy terminów do użycia z interfejsem API moderowania tekstu. Operacja **ekranu tekstowego** skanuje tekst pod kątem niewulgarności, a także porównuje tekst z niestandardowym i udostępnionym listy blokowania adresów.
 
 > [!NOTE]
 > Istnieje maksymalny limit wynoszący **5 list terminów**, a poszczególne listy **nie mogą przekraczać 10 000 terminów**.

@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6f0c33ee7fd5790a060574230f1156c569a63936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425666"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurowanie tunelu zawsze włączonego urządzenia sieci VPN
 
@@ -37,7 +37,7 @@ Skonfiguruj bramę sieci VPN do korzystania z protokołu IKEv2 i uwierzytelniani
 
 Aby można było pomyślnie ustanowić tunel urządzenia, muszą zostać spełnione następujące wymagania:
 
-* Urządzenie musi być komputerem przyłączonym do domeny z systemem Windows 10 Enterprise lub Education w wersji 1709 lub nowszej.
+* Urządzenie musi być komputerem przyłączonym do domeny z systemem Windows 10 Enterprise lub Education w wersji 1809 lub nowszej.
 * Tunel można skonfigurować tylko dla wbudowanego rozwiązania sieci VPN systemu Windows i jest ustanawiany przy użyciu protokołu IKEv2 z uwierzytelnianiem certyfikatu komputera. 
 * Na urządzenie można skonfigurować tylko jeden tunel urządzenia.
 
@@ -139,15 +139,15 @@ Po skonfigurowaniu bramy sieci wirtualnej i zainstalowaniu certyfikatu klienta w
 1. W wierszu polecenia administratora uruchom program PowerShell, uruchamiając polecenie:
 
    ```
-   C:\PsTools\PsExec.exe Powershell for 32-bit Windows
-   C:\PsTools\PsExec64.exe Powershell for 64-bit Windows
+   PsExec.exe Powershell for 32-bit Windows
+   PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![narzędzia](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
+   ![powershell](./media/vpn-gateway-howto-always-on-device-tunnel/powershell.png)
 1. W programie PowerShell przejdź do folderu, w którym znajdują się **devicecert. ps1** i **VPNProfile. XML** , a następnie uruchom następujące polecenie:
 
    ```powershell
-   C:\> .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
+   .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-device-tunnel/machinecerttest.png)
@@ -156,7 +156,7 @@ Po skonfigurowaniu bramy sieci wirtualnej i zainstalowaniu certyfikatu klienta w
    ![pliku](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Wyszukaj wpis **MachineCertTest** , a następnie kliknij przycisk **Połącz**.
 
-   ![Połączenie](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Łączenie](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Jeśli połączenie zakończy się pomyślnie, należy ponownie uruchomić komputer. Tunel zostanie automatycznie nawiązane.
 
 ## <a name="cleanup"></a>Czyszczenie

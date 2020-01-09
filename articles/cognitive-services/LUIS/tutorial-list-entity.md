@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 83644ac7144adaa664b13b6e7d7993c50da0e779
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447784"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Samouczek: uzyskiwanie dokładnych danych dopasowanych do tekstu z wypowiedź za pomocą jednostki listy
 
 W tym samouczku dowiesz się, jak pobierać dane, które dokładnie pasują do wstępnie zdefiniowanej listy elementów.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -51,7 +49,7 @@ Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
 ## <a name="import-example-json-and-add-utterances"></a>Importuj plik example. JSON i Dodaj wyrażenia długości
 
-1.  Pobierz i Zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
+1.  Pobierz i Zapisz [plik JSON aplikacji](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json).
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -82,7 +80,7 @@ Przykłady podstawowej nazwy i synonimów to:
 
 1. Wybierz pozycję **+ Utwórz**.
 
-1. W oknie podręcznym jednostki wprowadź `CrustList` jako nazwę jednostki i **Lista** (Lista) jako typ jednostki. Wybierz opcję **Dalej**.
+1. W oknie podręcznym jednostki wprowadź ciąg `CrustList` jako nazwę jednostki i wartość **List** (Lista) jako typ jednostki. Wybierz opcję **Dalej**.
 
     > [!div class="mx-imgBorder"]
     > Zrzut ekranu przedstawiający ![tworzenia nowego okna podręcznego nowej jednostki](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)

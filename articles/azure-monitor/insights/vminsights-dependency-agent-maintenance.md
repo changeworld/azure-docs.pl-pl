@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób uaktualniania agenta zależności Az
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f062dead8d479fe4da5de46b76b82cee9207bd83
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400797"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Jak uaktualnić agenta zależności Azure Monitor dla maszyn wirtualnych
 
@@ -46,7 +46,7 @@ W [tym miejscu](https://aka.ms/dependencyagentwindows)możesz pobrać najnowszą
 
 6. W oknie dialogowym **Agent zależności Odinstaluj 9.9.0** kliknij przycisk **Odinstaluj** , aby kontynuować Odinstalowywanie poprzedniej wersji ze ścieżki określonej w oknie dialogowym. 
 
-7. W oknie dialogowym **Agent zależności Odinstalowywanie 9.9.0** zostanie wyświetlony postęp odinstalowywania i po zakończeniu zostanie wyświetlona strona **ukończ Odinstalowywanie Agent zależności** . Kliknij przycisk **Finish** (Zakończ).
+7. W oknie dialogowym **Agent zależności Odinstalowywanie 9.9.0** zostanie wyświetlony postęp odinstalowywania i po zakończeniu zostanie wyświetlona strona **ukończ Odinstalowywanie Agent zależności** . Kliknij przycisk **Zakończ**.
 
 8. W oknie dialogowym **Agent zależności Instalatora 9.9.1** zostanie wyświetlony postęp instalacji. Gdy zostanie wyświetlona strona **kończenie Agent zależności dezinstalacji** , kliknij przycisk **Zakończ**. 
 
@@ -62,7 +62,7 @@ W [tym miejscu](https://aka.ms/dependencyagentwindows)możesz pobrać najnowszą
 
     `/RebootMode=manual` parametr uniemożliwia automatyczne ponowne uruchomienie komputera, jeśli niektóre procesy używają plików z poprzedniej wersji i mają blokadę. 
 
-3. Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, sprawdź `install.log`, aby uzyskać szczegółowe informacje dotyczące instalacji. Katalog dziennika to *%ProgramFiles%\Microsoft Dependency Agent\logs*.
+3. Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, sprawdź `install.log`, aby uzyskać szczegółowe informacje dotyczące instalacji. Katalog dziennika jest *%Programfiles%\Microsoft Agent\logs zależności*.
 
 ## <a name="upgrade-linux-agent"></a>Uaktualnij agenta systemu Linux 
 
@@ -74,7 +74,7 @@ W [tym miejscu](https://aka.ms/dependencyagentlinux)możesz pobrać najnowszą w
 
 2. Uruchom następujące polecenie jako główne`sh InstallDependencyAgent-Linux64.bin -s`. 
 
-Jeśli uruchomienie agenta zależności nie powiedzie się, Sprawdź dzienniki, aby uzyskać szczegółowe informacje o błędzie. W przypadku agentów systemu Linux katalog dziennika to */var/opt/Microsoft/Dependency-Agent/log*. 
+Jeśli agenta zależności nie powiedzie się, sprawdź dzienniki Aby uzyskać szczegółowe informacje o błędzie. Na agentach systemu Linux jest katalog dziennika */var/opt/microsoft/dependency-agent/log*. 
 
 ## <a name="next-steps"></a>Następne kroki
 

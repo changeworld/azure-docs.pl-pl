@@ -1,5 +1,6 @@
 ---
-title: Samouczek dotyczący konfigurowania konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń do punktu końcowego sieci Web | Microsoft Docs
+title: 'Samouczek: wysyłanie zdarzeń do punktu końcowego sieci Web za pomocą usługi Azure App Configuration'
+titleSuffix: Azure App Configuration
 description: W tym samouczku dowiesz się, jak skonfigurować subskrypcje zdarzeń konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń modyfikacji klucza do internetowego punktu końcowego.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433687"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Szybki Start: kierowanie zdarzeń konfiguracji aplikacji platformy Azure do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure
 

@@ -4,15 +4,15 @@ description: Użyj rozwiązania Surface Hub, aby śledzić kondycję centrów Su
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7ced5f678b9f8b2d4aa073a984276f41b8b7c4b9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 32ac14a06230341d21ff1b14a33cbcdd0992e4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400899"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Monitorowanie urządzeń Surface Hub przy użyciu Azure Monitor do śledzenia ich kondycji
 
@@ -22,7 +22,7 @@ W tym artykule opisano, jak można użyć rozwiązania Surface Hub w programie A
 
 Każda Surface Hub ma zainstalowany Microsoft Monitoring Agent. Za pośrednictwem agenta można wysyłać dane z Surface Hub do Log Analytics obszaru roboczego w Azure Monitor. Pliki dziennika są odczytywane z centrów Surface Hub i są następnie wysyłane do Azure Monitor. Problemy, takie jak serwery w trybie offline, niesynchronizowane z kalendarzem lub jeśli konto urządzenia nie może się zalogować do programu Skype, są wyświetlane na pulpicie nawigacyjnym Surface Hub w Azure Monitor. Za pomocą danych na pulpicie nawigacyjnym można identyfikować urządzenia, które nie są uruchomione lub które mają inne problemy, a także mogą dotyczyć wykrytych problemów.
 
-## <a name="install-and-configure-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
+## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie. Aby zarządzać centrami powierzchni w Azure Monitor, potrzebne są następujące elementy:
 
 * Poziom [subskrypcji log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) , który będzie obsługiwał liczbę urządzeń, które mają być monitorowane. Ceny Log Analytics różnią się w zależności od liczby zarejestrowanych urządzeń i ilości przetwarzanych danych. W tym celu należy wziąć pod uwagę podczas planowania wdrożenia Surface Hub.

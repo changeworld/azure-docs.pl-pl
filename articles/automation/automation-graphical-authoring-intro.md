@@ -2,19 +2,15 @@
 title: Tworzenie graficzne w Azure Automation
 description: Tworzenie graficzne pozwala tworzyć elementy Runbook dla Azure Automation bez pracy z kodem. Ten artykuł zawiera wprowadzenie do tworzenia graficznego oraz wszystkie szczegóły, które trzeba wykonać, aby rozpocząć tworzenie graficznego elementu Runbook.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c1b864eb83a9ffb69c0cb532dc2061636010c60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850299"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450752"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Tworzenie graficzne w Azure Automation
 
@@ -105,7 +101,7 @@ W poniższym przykładzie polecenie cmdlet Get-AzureRmVM ma trzy zestawy paramet
 
 ![Zestaw parametrów](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
 
-#### <a name="parameter-values"></a>Wartości parametru
+#### <a name="parameter-values"></a>Wartości parametrów
 
 Po określeniu wartości parametru, należy wybrać źródło danych w celu określenia sposobu określania wartości. Źródła danych dostępne dla określonego parametru są zależne od prawidłowych wartości dla tego parametru. Na przykład wartość null nie jest dostępna dla parametru, który nie zezwala na wartości null.
 

@@ -1,20 +1,18 @@
 ---
 title: Agregacje JavaScript zdefiniowane przez użytkownika w usłudze Azure Stream Analytics
 description: W tym artykule opisano sposób wykonywania zaawansowanych zapytań Mechanics z agregacjami zdefiniowanymi przez użytkownika w języku JavaScript w Azure Stream Analytics.
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426092"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics kodu JavaScript zdefiniowanych przez użytkownika
  
@@ -80,7 +78,7 @@ Każdy UDA JavaScript jest zdefiniowany przez deklarację obiektu funkcji. Poni�
 
 ### <a name="function-alias"></a>Alias funkcji
 
-Alias funkcji jest identyfikatorem UDA. Gdy jest wywoływana w Stream Analytics Query, zawsze używaj aliasu UDA razem z "uda". prefiks.
+Alias funkcji jest identyfikatorem UDA. Gdy jest wywoływana w Stream Analytics Query, zawsze używaj aliasu UDA razem z "uda". .
 
 ### <a name="function-type"></a>Typ funkcji
 
@@ -175,7 +173,7 @@ Teraz Utwórzmy kod JavaScript UDA w ramach istniejącego zadania ASA, wykonują
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>Wywołanie JavaScript UDA w zapytaniu ASA
 
-W Azure Portal i Otwórz zadanie, Edytuj zapytanie i wywołaj funkcję TWA () z prefiksem mandatu "uda". Na przykład:
+W Azure Portal i Otwórz zadanie, Edytuj zapytanie i wywołaj funkcję TWA () z prefiksem mandatu "uda". Przykład:
 
 ```SQL
 WITH value AS

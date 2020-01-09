@@ -4,15 +4,15 @@ description: Dowiedz się, jak wdrażać i konfigurować Azure Monitor dla maszy
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400616"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -36,14 +36,14 @@ Przed rozpoczęciem upewnij się, że rozumiesz, informacje w poniższych sekcja
 
 Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy Log Analytics w następujących regionach:
 
-- Środkowo-zachodnie stany USA
+- Zachodnio-środkowe stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
-- Środkowo-południowe stany USA
+- Południowo-środkowe stany USA
 - Wschodnie stany USA
 - Wschodnie stany USA 2
 - Środkowe stany USA
-- Środkowo-północne stany USA
+- Północno-środkowe stany USA
 - Kanada Środkowa
 - Południowe Zjednoczone Królestwo
 - Europa Północna
@@ -81,7 +81,7 @@ Aby skonfigurować obszar roboczy na potrzeby scenariusza w skali, użyj jednej 
 
 W poniższej tabeli wymieniono systemy operacyjne Windows i Linux obsługiwane przez Azure Monitor dla maszyn wirtualnych. W dalszej części tej sekcji znajdziesz pełną listę zawierającą szczegóły głównej i pomocniczej wersji systemu operacyjnego Linux oraz obsługiwane wersje jądra.
 
-|Wersja systemu operacyjnego |Wydajność |Maps |
+|Wersja systemu operacyjnego |Wydajność |Mapy |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
 |System Windows Server 2016 1803 | X | X |
@@ -113,7 +113,7 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux obsługiwane p
 
 | Wersja systemu operacyjnego | Wersja jądra |
 |:--|:--|
-| 7,6 | 3.10.0-957 |
+| 7.6 | 3.10.0-957 |
 | 7.5 | 3.10.0-862 |
 | 7.4 | 3.10.0-693 |
 
@@ -168,13 +168,13 @@ W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję 
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
-| Agenci dla systemu Windows | Yes | Wraz z [agentem log Analytics dla systemu Windows](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Windows potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
-| Agenci dla systemu Linux | Yes | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Windows | Tak | Wraz z [agentem log Analytics dla systemu Windows](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Windows potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
+| Agenci dla systemu Linux | Tak | Wraz z [agentem log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md)agenci systemu Linux potrzebują agenta zależności. Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne](#supported-operating-systems). |
 | Grupa zarządzania programu System Center Operations Manager | Nie | |
 
 Agenta zależności można pobrać z następujących lokalizacji:
 
-| Plik | OS | Wersja | SHA-256 |
+| Plik | System operacyjny | Wersja | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
@@ -218,7 +218,7 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 |Dysk logiczny |Bajty zapisu na dysku/s |
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
-|Memory (Pamięć) |Dostępna pamięć (MB) |
+|Pamięć |Dostępna pamięć (MB) |
 |Karta sieciowa |Bajty odebrane/s |
 |Karta sieciowa |Bajty wysłane/s |
 |Procesor |Czas procesora (%) |
@@ -235,9 +235,9 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
 |Dysk logiczny |Bajty dysku logicznego/s |
-|Memory (Pamięć) |Dostępna pamięć (MB) |
-|Sieć |Całkowita liczba odebranych bajtów |
-|Sieć |Całkowita liczba przesłanych bajtów |
+|Pamięć |Dostępna pamięć (MB) |
+|Network (Sieć) |Całkowita liczba odebranych bajtów |
+|Network (Sieć) |Całkowita liczba przesłanych bajtów |
 |Procesor |Czas procesora (%) |
 
 ## <a name="management-packs"></a>Pakiety administracyjne

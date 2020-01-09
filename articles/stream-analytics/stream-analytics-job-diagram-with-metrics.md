@@ -1,87 +1,85 @@
 ---
-title: Oparte na danych debugowania w usłudze Azure Stream Analytics
-description: W tym artykule opisano, jak rozwiązywać problemy z zadania usługi Azure Stream Analytics za pomocą diagramu zadania i metryki w witrynie Azure portal.
-services: stream-analytics
+title: Debugowanie oparte na danych w Azure Stream Analytics
+description: W tym artykule opisano sposób rozwiązywania problemów z zadaniem Azure Stream Analytics przy użyciu diagramu zadania i metryk w Azure Portal.
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426071"
 ---
-# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Oparte na danych debugowanie za pomocą diagramu zadania
+# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Debugowanie oparte na danych przy użyciu diagramu zadań
 
-Diagram zadań na **monitorowanie** bloku w witrynie Azure portal może pomóc w wizualizacji potok zadania. Pokazuje wejścia, wyjścia i kroki zapytania. Za pomocą diagramu zadań można sprawdzać metryki dla poszczególnych kroków, aby szybciej ustalić źródło problemu podczas rozwiązywania problemów.
+Diagram zadań w bloku **monitorowanie** w Azure Portal może ułatwić wizualizację potoku zadań. Pokazuje wejścia, wyjścia i kroki zapytania. Za pomocą diagramu zadań można sprawdzać metryki dla poszczególnych kroków, aby szybciej ustalić źródło problemu podczas rozwiązywania problemów.
 
-## <a name="using-the-job-diagram"></a>Za pomocą diagramu zadania
+## <a name="using-the-job-diagram"></a>Korzystanie z diagramu zadań
 
-W witrynie Azure portal podczas gdy w ramach zadania usługi Stream Analytics w obszarze **pomoc techniczna i rozwiązywanie problemów**, wybierz opcję **diagram zadania**:
+W Azure Portal, podczas Stream Analytics zadania, w obszarze **Pomoc techniczna i rozwiązywanie problemów**wybierz pozycję **Diagram zadań**:
 
-![Diagram zadań za pomocą metryk - lokalizacji](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
+![Diagram zadań z metrykami — lokalizacja](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
-Zaznacz każdy krok zapytania, aby zobaczyć, do odpowiedniej sekcji w zapytaniu do edycji okienko. Wykres metryk dla kroku jest wyświetlany w dolnym okienku na stronie.
+Wybierz każdy krok zapytania, aby wyświetlić odpowiadającą sekcję w okienku edycji zapytania. Wykres metryki dla kroku jest wyświetlany w dolnym okienku na stronie.
 
-![Diagram zadań za pomocą metryk - podstawowe zadania](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
+![Diagram zadań z metrykami — podstawowe zadanie](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-Aby wyświetlić partycji danych wejściowych usługi Azure Event Hubs, wybierz **...** Zostanie wyświetlone menu kontekstowe. Widać również połączenia danych wejściowych.
+Aby wyświetlić partycje danych wejściowych platformy Azure Event Hubs, wybierz pozycję **...** Zostanie wyświetlone menu kontekstowe. Można także zobaczyć dane wejściowe.
 
-![Diagram zadań za pomocą metryk - rozwiń węzeł partycji](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
+![Diagram zadań z metrykami — rozszerzanie partycji](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
-Aby wyświetlić wykresu metryki dla jednej partycji, wybierz węzeł partycji. Metryki są wyświetlane w dolnej części strony.
+Aby wyświetlić wykres metryki tylko dla jednej partycji, wybierz węzeł partycji. Metryki są wyświetlane w dolnej części strony.
 
 ![Diagram zadań z metrykami — więcej metryk](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
 
-Aby wyświetlić wykres metryk, aby połączenie, wybierz węzeł połączenia. Na poniższym wykresie przedstawiono, że zdarzenia nie zostały porzucone lub dopasowane.
+Aby wyświetlić wykres metryk dla fuzji, wybierz węzeł łączenie. Poniższy wykres pokazuje, że żadne zdarzenia nie zostały porzucone ani dostosowane.
 
-![Diagram zadań za pomocą metryk - siatki](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
+![Diagram zadań z metrykami — siatka](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
 
-Aby wyświetlić szczegóły wartość metryki i czasu, wskaż polecenie wykresu.
+Aby wyświetlić szczegóły wartości metryki i godziny, wskaż wykres.
 
-![Zadania diagramu z metrykami — Zatrzymaj wskaźnik myszy](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
+![Diagram zadań z metrykami — aktywowanie](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
 
 ## <a name="troubleshoot-by-using-metrics"></a>Rozwiązywanie problemów przy użyciu metryk
 
-**QueryLastProcessedTime** Metryka wskazuje, kiedy określonego kroku Odebrano dane. Patrząc topologii, możesz podjąć wstecz z przetwarzania danych wyjściowych, aby zobaczyć, który krok nie odbiera danych. Jeśli krok nie uzyskuje dane, przejdź do kroku zapytania tuż przed. Sprawdź, czy poprzedni krok zapytania ma przedział czasu, a jeśli minęło wystarczająco dużo czasu na jego dane wyjściowe. (Uwaga czasu systemu windows są wyrównywane do godziny.)
+Metryka **QueryLastProcessedTime** wskazuje, kiedy określony krok otrzymał dane. Przeglądając topologię, możesz przejść do tyłu od procesora wyjściowego, aby zobaczyć, który krok nie otrzymuje danych. Jeśli krok nie pobiera danych, przejdź do kroku zapytania tuż przed nim. Sprawdź, czy poprzedni krok zapytania ma przedział czasu, a w przypadku przeprowadzenia przez niego wystarczającej ilości danych wyjściowych. (Należy pamiętać, że okna czasowe są przyłączone do godziny).
  
-Jeśli w poprzednim kroku zapytania danych wejściowych, użyj metryk wejściowych, mogą ułatwić uzyskanie odpowiedzi następujące pytania. One może pomóc w określeniu, czy zadanie jest pobierających dane ze swoich źródeł wejściowych. Jeśli zapytanie jest podzielone na partycje, sprawdź każdą partycję.
+Jeśli poprzedni krok zapytania jest procesorem wejściowym, użyj metryk wejściowych, aby pomóc odpowiedzieć na następujące pytania. Mogą one pomóc w ustaleniu, czy zadanie pobiera dane ze źródeł danych wejściowych. Jeśli zapytanie jest podzielone na partycje, sprawdź każdą partycję.
  
 ### <a name="how-much-data-is-being-read"></a>Jak dużo danych jest odczytywanych?
 
-*   **InputEventsSourcesTotal** jest to liczba jednostek danych odczytu. Na przykład liczbę obiektów blob.
-*   **InputEventsTotal** jest liczbę odczytanych zdarzeń. Ta metryka jest dostępna dla każdej partycji.
-*   **InputEventsInBytesTotal** jest liczba odczytanych bajtów.
-*   **InputEventsLastArrivalTime** jest aktualizowana co odebranego zdarzenia.
+*   **Metryka inputeventssourcestotal** to liczba odczytanych jednostek danych. Na przykład liczba obiektów BLOB.
+*   **InputEventsTotal** to liczba odczytanych zdarzeń. Ta metryka jest dostępna dla każdej partycji.
+*   **InputEventsInBytesTotal** to liczba odczytanych bajtów.
+*   **InputEventsLastArrivalTimea** jest aktualizowana przy każdym zdarzeniu przydanym zdarzenia w kolejce.
  
-### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Czy czas płynie do przodu? Jeśli są odczytywane rzeczywiste zdarzenia, wyróżnienie może nie być wystawiane.
+### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Czy czas jest przenoszony do przodu? Jeśli są odczytywane rzeczywiste zdarzenia, znaki interpunkcyjne mogą nie zostać wystawione.
 
-*   Metryka **InputEventsLastPunctuationTime** wskazuje, kiedy wyróżnienie zostało wystawione, aby czas płynął do przodu. Jeśli wyróżnienie nie zostało wystawione, przepływ danych może zostać zablokowany.
+*   Metryka **InputEventsLastPunctuationTime** wskazuje, kiedy wyróżnienie zostało wystawione, aby czas płynął do przodu. Jeśli interpunkcja nie zostanie wystawiona, przepływ danych może zostać zablokowany.
  
 ### <a name="are-there-any-errors-in-the-input"></a>Czy istnieją błędy w danych wejściowych?
 
-*   **InputEventsEventDataNullTotal** jest liczbę zdarzeń, które zawierają dane o wartości null.
-*   **InputEventsSerializerErrorsTotal** jest liczba zdarzeń, które mogły nie zostać poprawnie zdeserializowane.
-*   **InputEventsDegradedTotal** jest liczba zdarzeń, których problem innych niż z deserializacji.
+*   **Metryka inputeventseventdatanulltotal** to liczba zdarzeń, które mają dane o wartości null.
+*   **Metryka inputeventsserializererrorstotal** to liczba zdarzeń, które nie mogły zostać prawidłowo deserializowane.
+*   **Metryka inputeventsdegradedtotal** to liczba zdarzeń, które były problemem innym niż deserializacja.
  
-### <a name="are-events-being-dropped-or-adjusted"></a>Czy zdarzenia są porzucone lub dopasowane?
+### <a name="are-events-being-dropped-or-adjusted"></a>Czy zdarzenia są usuwane lub dostosowywane?
 
-*   **InputEventsEarlyTotal** jest liczbę zdarzeń, które mają sygnaturą czasową aplikacji wcześniejszą górnego limitu.
-*   **InputEventsLateTotal** jest liczba zdarzeń, które mają sygnaturą czasową aplikacji po górnego limitu.
-*   **InputEventsDroppedBeforeApplicationStartTimeTotal** jest liczbę zdarzeń porzuconych przed czas rozpoczęcia zadania.
+*   **InputEventsEarlyTotal** to liczba zdarzeń, które mają sygnaturę czasową aplikacji przed górnym limitem.
+*   **InputEventsLateTotal** to liczba zdarzeń, które mają sygnaturę czasową aplikacji po górnym znaku wodnym.
+*   **Metryka inputeventsdroppedbeforeapplicationstarttimetotal** to liczba zdarzeń porzuconych przed godziną rozpoczęcia zadania.
  
-### <a name="are-we-falling-behind-in-reading-data"></a>Firma Microsoft malejących podczas odczytywania danych?
+### <a name="are-we-falling-behind-in-reading-data"></a>Czy w trakcie odczytywania danych?
 
-*   **Dane wejściowe zdarzenia zaległe (łącznie)** informujący o tym, ile komunikatów więcej muszą zostać odczytana dla danych wejściowych usługi Event Hubs i Azure IoT Hub. Jeśli ta liczba jest większa niż 0, oznacza to, że zadania nie może przetworzyć dane bezpośrednio po ich otrzymaniu. W takim przypadku może być konieczne zwiększenie liczby jednostek przesyłania strumieniowego i/lub upewnij się, że zadanie może być przetwarzane równolegle. Więcej informacji na ten może zobaczyć na [strona przetwarzania równoległego zapytań](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
+*   **Zarejestrowane zdarzenia (łącznie)** wskazują, ile więcej komunikatów należy odczytać dla Event Hubs i danych wejściowych platformy Azure IoT Hub. Gdy ta liczba jest większa niż 0, oznacza to, że zadanie nie może przetworzyć danych tak szybko, jak to się dzieje. W takim przypadku może być konieczne zwiększenie liczby jednostek przesyłania strumieniowego i/lub upewnienie się, że zadanie może być równoległe. Więcej informacji na ten temat można znaleźć na [stronie zapytania przetwarzanie równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dodatkową pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+Aby uzyskać dodatkową pomoc, wypróbuj nasze [forum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Następne kroki
 * [Wprowadzenie do usługi Stream Analytics](stream-analytics-introduction.md)

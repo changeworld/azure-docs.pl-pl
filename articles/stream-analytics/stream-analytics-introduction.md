@@ -3,17 +3,17 @@ title: Omówienie usługi Azure Stream Analytics
 description: Poznaj usługę Stream Analytics — zarządzaną usługę, która pomaga analizować dane przesyłane strumieniowo z Internetu rzeczy (IoT) w czasie rzeczywistym.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 0982cc90d26c9f04e8d547c7d634e09280d7fca2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426182"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Co to jest usługa Azure Stream Analytics?
 
@@ -61,7 +61,7 @@ Azure Stream Analytics używa prostego języka zapytań opartego na języku SQL,
 
 Język zapytań Stream Analytics oferuje szeroką gamę funkcji służących do analizowania i przetwarzania danych przesyłanych strumieniowo. Ten język zapytań obsługuje proste manipulowanie danymi, funkcje agregacji i złożone funkcje geoprzestrzenne. Można edytować zapytania w portalu i testować je przy użyciu przykładowych danych wyodrębnionych z strumienia na żywo.
 
-Możliwości języka zapytań można rozszerzyć, definiując i wywołując dodatkowe funkcje. Możesz definiować wywołania funkcji w Azure Machine Learning, aby skorzystać z rozwiązań Azure Machine Learning, i zintegrować skrypty JavaScript lub C# funkcje zdefiniowane przez użytkownika (UDF) lub agregacje zdefiniowane przez użytkownika, aby wykonywać złożone obliczenia jako część strumienia. Zapytanie analityczne.
+Możliwości języka zapytań można rozszerzyć, definiując i wywołując dodatkowe funkcje. Możesz definiować wywołania funkcji w Azure Machine Learning, aby skorzystać z rozwiązań Azure Machine Learning, i zintegrować skrypty JavaScript lub C# funkcje zdefiniowane przez użytkownika (UDF) lub agregacje zdefiniowane przez użytkownika, aby wykonywać złożone obliczenia jako część zapytania Stream Analytics.
 
 ## <a name="fully-managed"></a>W pełni zarządzana
 
@@ -87,7 +87,7 @@ Usługa Azure Stream Analytics ma wbudowane funkcje odzyskiwania na wypadek awar
 
 Jako usługa zarządzana, Stream Analytics gwarantuje przetwarzanie zdarzeń o dostępności 99,9% na poziomie minuty. Aby uzyskać więcej informacji, zobacz stronę [umów SLA Stream Analytics](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) . 
 
-### <a name="security"></a>Bezpieczeństwo
+### <a name="security"></a>Zabezpieczenia
 
 Z punktu widzenia zabezpieczeń usługa Azure Stream Analytics szyfruje całą komunikację przychodzącą i wychodzącą oraz obsługuje protokół TLS 1.2. Wbudowane punkty kontrolne również są szyfrowane. Usługa Stream Analytics nie przechowuje danych przychodzących, ponieważ całe przetwarzanie odbywa się w pamięci.
 

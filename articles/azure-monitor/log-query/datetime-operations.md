@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365346"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Praca z wartościami daty i godziny w zapytaniach dziennika Azure Monitor
 
@@ -31,11 +31,11 @@ Wartości TimeSpan są wyrażone jako liczba dziesiętna, po której następuje 
 
 |skrócon   | jednostka czasu    |
 |:---|:---|
-|Wykres           | dzień          |
+|d           | dzień          |
 |g           | godz.         |
-|ś           | minutę       |
-|s           | Drugi       |
-|Arial          | milisekund  |
+|ś           | minuta       |
+|s           | sekunda       |
+|ms          | milisekund  |
 |mikrosekundowych | mikrosekundowych  |
 |Investor        | nanosekund   |
 
@@ -128,7 +128,7 @@ Event
 
 To zapytanie daje następujące wyniki:
 
-|sygnatura czasowa|liczbą|
+|sygnatura czasowa|liczba_|
 |--|--|
 |2018 r-07-28T00:00:00.000|7 136|
 |2018 r-07-29T00:00:00.000|12 315|

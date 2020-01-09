@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431469"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu klawisza F5
 
@@ -370,7 +370,7 @@ Serwer Active Directory AAA można skonfigurować w Menedżerze zasad dostępu (
     >[!Note]
     > Konieczne będzie utworzenie i określenie konta delegowania protokołu Kerberos. Odwołaj się do KCD sekcji (zobacz dodatek dla odwołań do zmiennych)
 
-    * **Źródło nazwy użytkownika**: Session.SAML.Last.ATTR.Name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **Źródło nazwy użytkownika**: Session. SAML. Last. ATTR. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenName
 
     * **Źródło obszaru użytkownika**: Session. Logon. Last. domain
 

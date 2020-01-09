@@ -1,17 +1,17 @@
 ---
 title: Jak używać Redis-CLI z pamięcią podręczną platformy Azure dla Redis
-description: Dowiedz się, jak używać interfejsu wiersza polecenia Redis z usługą Azure cache for Redis.
+description: Dowiedz się, jak używać programu *Redis-CLI. exe* jako narzędzia wiersza polecenia do współdziałania z pamięcią podręczną platformy Azure dla Redis jako klienta.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: yegu
-ms.openlocfilehash: 510110a201e943b8ffce07fc7d0de1361264ae62
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122721"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412686"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak używać narzędzia wiersza polecenia Redis z usługą Azure cache for Redis
 
@@ -29,7 +29,7 @@ Informacje potrzebne do uzyskania dostępu do pamięci podręcznej można zebra�
 
 1. Interfejs wiersza polecenia platformy Azure korzystający z polecenia [AZ Redis list-Keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
 2. Azure PowerShell przy użyciu polecenia [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
-3. Przy użyciu Azure Portal.
+3. Za pomocą witryny Azure Portal.
 
 W tej sekcji zostaną pobrane klucze z Azure Portal.
 

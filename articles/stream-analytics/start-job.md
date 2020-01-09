@@ -1,19 +1,18 @@
 ---
 title: Jak uruchomić zadanie Azure Stream Analytics
 description: W tym artykule opisano sposób uruchamiania zadania Stream Analytics z Azure Portal, programu PowerShell i programu Visual Studio.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1e4cb63accf7e89ac02451e9c25b9902a8a10812
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426464"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Jak uruchomić zadanie Azure Stream Analytics
 
@@ -21,19 +20,19 @@ Zadanie Azure Stream Analytics można uruchomić za pomocą Azure Portal, progra
 
 ## <a name="start-options"></a>Opcje uruchamiania
 Trzy poniższe opcje są dostępne do uruchomienia zadania. Należy zauważyć, że wszystkie podane poniżej godziny są określone w [znaczniku czasu przez](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics). Jeśli SYGNATURa CZASowa przez nie zostanie określona, zostanie użyty czas odbioru.
-* **Teraz**: Sprawia, że punkt początkowy strumienia zdarzeń wyjściowych jest taki sam jak czas uruchomienia zadania. Jeśli jest używany operator danych czasowych (np. przedział czasu, opóźnienie lub SPRZĘŻENIe), Azure Stream Analytics automatycznie powróci do danych w źródle wejściowym. Na przykład, jeśli uruchomisz zadanie "teraz" i jeśli zapytanie korzysta z okna wirowania 5 minut, Azure Stream Analytics będzie szukać danych z 5 minut temu w danych wejściowych.
+* **Teraz**: sprawia, że punkt początkowy strumienia zdarzeń wyjściowych jest taki sam jak podczas uruchamiania zadania. Jeśli jest używany operator danych czasowych (np. przedział czasu, opóźnienie lub SPRZĘŻENIe), Azure Stream Analytics automatycznie powróci do danych w źródle wejściowym. Na przykład, jeśli uruchomisz zadanie "teraz" i jeśli zapytanie korzysta z okna wirowania 5 minut, Azure Stream Analytics będzie szukać danych z 5 minut temu w danych wejściowych.
 Pierwsze możliwe zdarzenie wyjściowe ma sygnaturę czasową równą lub większą od bieżącego czasu, a w systemie ASA są gwarancje, że wszystkie zdarzenia wejściowe, które mogą logicznie wchodzić w skład danych wyjściowych, zostały uwzględnione. Na przykład nie są generowane częściowe agregacje okna. Zawsze jest to pełna agregowana wartość.
 
-* **Niestandardowy**: Możesz wybrać punkt początkowy danych wyjściowych. Podobnie jak w przypadku opcji **teraz** , Azure Stream Analytics automatycznie odczytywać dane przed upływem tego czasu, jeśli jest używany operator danych czasowych 
+* **Niestandardowe**: możesz wybrać punkt początkowy danych wyjściowych. Podobnie jak w przypadku opcji **teraz** , Azure Stream Analytics automatycznie odczytywać dane przed upływem tego czasu, jeśli jest używany operator danych czasowych 
 
 * **Gdy ostatnie zostało zatrzymane**. Ta opcja jest dostępna, gdy zadanie zostało wcześniej uruchomione, ale zostało zatrzymane ręcznie lub niepowodzeniem. Po wybraniu tej opcji Azure Stream Analytics użyje ostatniego czasu wyjściowego, aby ponownie uruchomić zadanie, dzięki czemu żadne dane nie zostaną utracone. Podobnie jak w przypadku poprzednich opcji, Azure Stream Analytics automatycznie odczytywać dane przed upływem tego czasu, jeśli używany jest operator danych czasowych. Ponieważ kilka partycji wejściowych może mieć różny czas, jest używany Najwcześniejszy czas zatrzymania wszystkich partycji, ponieważ niektóre duplikaty mogą być widoczne w danych wyjściowych. Więcej informacji na temat przetwarzania jednokrotnego jest dostępnych na stronie [gwarancje dostarczenia zdarzeń](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics).
 
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal Azure
 
 Przejdź do zadania w Azure Portal i wybierz pozycję **Rozpocznij** na stronie Przegląd. Wybierz **godzinę rozpoczęcia zadania wyjściowego** , a następnie wybierz pozycję **Uruchom**.
 
-Wybierz jedną z opcji dla **czasu rozpoczęcia zadania**. Opcje są *teraz*, *niestandardowe*i, jeśli zadanie zostało wcześniej uruchomione, *gdy ostatnie*zostało zatrzymane. Aby uzyskać więcej informacji na temat tych opcji, zobacz powyżej.
+Wybierz jedną z opcji dla **czasu rozpoczęcia zadania**. Opcje są *teraz*, *niestandardowe*i, jeśli zadanie zostało wcześniej uruchomione, *gdy ostatnie zostało zatrzymane*. Aby uzyskać więcej informacji na temat tych opcji, zobacz powyżej.
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -55,10 +54,10 @@ Start-AzStreamAnalyticsJob `
 
 Dostępne są trzy opcje **Jeśli**: *JobStartTime*, *CustomTime*i *LastOutputEventTime*. Jeśli ta właściwość jest nieobecna, wartość domyślna to *JobStartTime*. Aby uzyskać więcej informacji na temat tych opcji, zobacz powyżej.
 
-Aby uzyskać więcej informacji na `Start-AzStreamAnalyitcsJob` temat polecenia cmdlet, zobacz temat [Start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
+Aby uzyskać więcej informacji na temat polecenia cmdlet `Start-AzStreamAnalyitcsJob`, zobacz temat [Start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Szybki start: Tworzenie zadania Stream Analytics przy użyciu Azure Portal](stream-analytics-quick-create-portal.md)
-* [Szybki start: Tworzenie zadania Stream Analytics przy użyciu Azure PowerShell](stream-analytics-quick-create-powershell.md)
-* [Szybki start: Tworzenie zadania Stream Analytics przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio](stream-analytics-quick-create-vs.md)
+* [Szybki Start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
+* [Szybki Start: Tworzenie zadania Stream Analytics przy użyciu Azure PowerShell](stream-analytics-quick-create-powershell.md)
+* [Szybki Start: Tworzenie zadania Stream Analytics przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio](stream-analytics-quick-create-vs.md)

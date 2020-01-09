@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 32ab81d618cb0a6ee40814b644ad934008ee7719
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438822"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -440,7 +440,7 @@ Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką
 2. Kliknij pozycję **nowy magazyn danych** na pasku poleceń i wybierz pozycję **Azure Storage**. Powinien zostać wyświetlony skrypt JSON do tworzenia połączonej usługi Azure Storage w edytorze.
 
     ![Nowy magazyn danych — Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Zastąp `<accountname>` nazwą konta usługi Azure Storage i `<accountkey>` z kluczem dostępu do konta usługi Azure Storage. Informacje na temat pobierania klucza dostępu do magazynu znajdują się w artykule [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
+3. Zastąp `<accountname>` nazwą konta usługi Azure Storage i `<accountkey>` z kluczem dostępu do konta usługi Azure Storage. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
 
     ![Usługa polubienia usługi Azure Storage](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Kliknij przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.

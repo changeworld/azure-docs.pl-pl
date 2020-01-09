@@ -3,12 +3,12 @@ title: Aktualizowanie istniejącego przypisania z portalu
 description: Dowiedz się więcej o mechanizmie aktualizowania istniejącego przypisania strategii z portalu w planach platformy Azure.
 ms.date: 11/21/2019
 ms.topic: how-to
-ms.openlocfilehash: 3cce84127475b2f11388b4ad4eb48dedec19cd1d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436582"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie strategii
 
@@ -55,7 +55,7 @@ Wdrożenie zaktualizowanych przypisań następuje po kilku ważnych regułach. T
 
 ## <a name="possible-errors-on-updating-assignments"></a>Możliwe błędy podczas aktualizowania przypisań
 
-Podczas aktualizowania przypisań można wprowadzać zmiany, które są przerywane po wykonaniu. Przykładem jest zmiana lokalizacji grupy zasobów, która została już wdrożona. Można wprowadzić wszelkie zmiany, które są obsługiwane przez [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) , ale wszelkie zmiany, które spowodują wystąpienie błędu za pomocą Azure Resource Manager, spowodują również niepowodzenie przypisania.
+Podczas aktualizowania przypisań można wprowadzać zmiany, które są przerywane po wykonaniu. Przykładem jest zmiana lokalizacji grupy zasobów, która została już wdrożona. Można wprowadzić wszelkie zmiany, które są obsługiwane przez [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) , ale wszelkie zmiany, które spowodują wystąpienie błędu za pomocą Azure Resource Manager, spowodują również niepowodzenie przypisania.
 
 Nie ma żadnego limitu, ile razy można zaktualizować przypisanie. W przypadku wystąpienia błędu należy określić błąd i wprowadzić kolejną aktualizację do przypisania.  Przykładowe scenariusze błędów:
 

@@ -1,6 +1,6 @@
 ---
-title: Usuwanie kont z pamięci podręcznej na wylogowanie — platforma tożsamości firmy Microsoft | Azure
-description: Dowiedz się, jak usunąć konto z pamięci podręcznej tokenu przy wylogowaniu
+title: Usuwanie kont z pamięci podręcznej tokenu na wylogowaniu — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak usunąć konto z pamięci podręcznej tokeny przy wylogowaniu
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961662"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423509"
 ---
 # <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Usuwanie kont z pamięci podręcznej na globalne wylogowywanie
 
@@ -38,7 +38,7 @@ Ten mechanizm jest przedstawiony w `AddMsal()` metodzie [WebAppServiceCollection
 
 **Adres URL wylogowania** , który został zarejestrowany dla aplikacji, umożliwia wdrożenie rejestracji jednokrotnej. Punkt końcowy `logout` platformy tożsamości firmy Microsoft będzie wywoływał **adres URL wylogowania** zarejestrowany w aplikacji. To wywołanie występuje, jeśli wylogowanie zostało zainicjowane z aplikacji sieci Web lub z innej aplikacji sieci Web lub przeglądarki. Aby uzyskać więcej informacji, zobacz [Logowanie](v2-protocols-oidc.md#single-sign-out)jednokrotne.
 
-```CSharp
+```csharp
 public static class WebAppServiceCollectionExtensions
 {
  public static IServiceCollection AddMsal(this IServiceCollection services, IConfiguration configuration, IEnumerable<string> initialScopes, string configSectionName = "AzureAd")

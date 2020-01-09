@@ -2,18 +2,14 @@
 title: Monitorowanie elementów Runbook Azure Automation przy użyciu alertów metryk
 description: Ten artykuł przeprowadzi Cię przez proces monitorowania Azure Automation elementów Runbook opartych na metrykach
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/01/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: bea99820bee107b8329dd3c36ac3ceb84a042b86
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367097"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorowanie elementów Runbook przy użyciu alertów metryk
 
@@ -62,7 +58,7 @@ W Azure Portal przejdź do konta usługi Automation. W obszarze **monitorowanie*
 
 1. Na stronie **E-mail/SMS/Push/Głos** nadaj nazwę. Zaznacz pole wyboru **E-mail** i wpisz prawidłowy adres e-mail, który ma być używany.
 
-   ![Skonfiguruj grupę akcji poczty e-mail](./media/automation-alert-activity-log/add-action-group.png)
+   ![Konfigurowanie grupy akcji dla poczty e-mail](./media/automation-alert-activity-log/add-action-group.png)
 
 1. Kliknij przycisk **OK** na stronie **E-mail/SMS/Push/Głos**, aby ją zamknąć, a następnie kliknij przycisk **OK**, aby zamknąć stronę **Dodawanie grupy akcji**. Nazwa określona na tej stronie jest zapisywana jako **Nazwa akcji**.
 

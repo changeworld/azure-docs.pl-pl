@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428848"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Dzienniki Azure Monitor dla publicznych Load Balancer podstawowych
 
@@ -34,11 +34,11 @@ Możesz użyć różnych typów dzienników na platformie Azure do zarządzania 
 > [!IMPORTANT]
 > Dzienniki Azure Monitor są obecnie przeznaczone tylko dla publicznych usług równoważenia obciążenia. Dzienniki są dostępne tylko dla zasobów wdrożonych w modelu wdrażania Menedżer zasobów. Nie można używać dzienników dla zasobów w klasycznym modelu wdrażania. Aby uzyskać więcej informacji na temat modeli wdrażania, zobacz [opis Menedżer zasobów wdrożenia i wdrożenia klasycznego](../azure-resource-manager/resource-manager-deployment-model.md).
 
-## <a name="enable-logging"></a>Włącz rejestrowanie
+## <a name="enable-logging"></a>Włączanie rejestrowania
 
 Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów usługi Resource Manager. Włącz rejestrowanie sondowania zdarzeń i kondycji, aby rozpocząć zbieranie danych dostępnych w tych dziennikach. Wykonaj następujące kroki, aby włączyć rejestrowanie.
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Jeśli nie masz jeszcze modułu równoważenia obciążenia, przed kontynuowaniem [Utwórz moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
+Zaloguj się do [portalu Azure](https://portal.azure.com). Jeśli nie masz jeszcze modułu równoważenia obciążenia, przed kontynuowaniem [Utwórz moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. W portalu kliknij pozycję **grupy zasobów**.
 2. Wybierz pozycję **\<Resource-Group-name >** , w której znajduje się moduł równoważenia obciążenia.
@@ -51,7 +51,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Jeśli nie mas
    * **Przesyłanie strumieniowe do centrum zdarzeń**
    * **Wyślij do Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archiwizowanie na koncie magazynu
+    ### <a name="archive-to-a-storage-account"></a>Zarchiwizuj na koncie magazynu
     Konieczne jest już konto magazynu utworzone dla tego procesu.  Aby utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
 
     1. Zaznacz pole wyboru obok pozycji **Archiwizowanie na koncie magazynu**.
@@ -60,7 +60,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Jeśli nie mas
     4. Wybierz nazwę konta magazynu w obszarze **konto magazynu** w polu ściąganie. 
     5. Wybierz przycisk OK.
 
-    ### <a name="stream-to-an-event-hub"></a>Przesyłanie strumieniowe do centrum zdarzeń
+    ### <a name="stream-to-an-event-hub"></a>Przesyłaj strumieniowo do centrum zdarzeń
     Musisz już utworzyć centrum zdarzeń dla tego procesu.  Aby utworzyć centrum zdarzeń, zobacz [Szybki Start: tworzenie centrum zdarzeń przy użyciu Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
     1. Zaznacz pole wyboru obok pozycji **strumień do centrum zdarzeń**
@@ -170,8 +170,8 @@ Połącz się z kontem magazynu i Pobierz wpisy dziennika JSON dla dzienników s
 > [!TIP]
 > Jeśli znasz program Visual Studio oraz podstawowe pojęcia dotyczące zmiany wartości stałych i zmiennych w języku C#, możesz skorzystać z [konwerterów dzienników](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostępnych w witrynie GitHub.
 
-## <a name="stream-to-an-event-hub"></a>Przesyłanie strumieniowe do centrum zdarzeń
-Gdy informacje diagnostyczne są przesyłane strumieniowo do centrum zdarzeń, mogą służyć do scentralizowanej analizy dzienników w narzędziu SIEM innej firmy z integracją Azure Monitor. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
+## <a name="stream-to-an-event-hub"></a>Przesyłaj strumieniowo do centrum zdarzeń
+Gdy informacje diagnostyczne są przesyłane strumieniowo do centrum zdarzeń, mogą służyć do scentralizowanej analizy dzienników w narzędziu SIEM innej firmy z integracją Azure Monitor. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>Wysyłanie do usługi Log Analytics
 Zasoby na platformie Azure mogą być wysyłane bezpośrednio do obszaru roboczego Log Analytics, w którym można uruchamiać złożone zapytania, aby uzyskać informacje na temat rozwiązywania problemów i analizy.  Aby uzyskać więcej informacji, zobacz [zbieranie dzienników zasobów platformy Azure w obszarze roboczym log Analytics w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)

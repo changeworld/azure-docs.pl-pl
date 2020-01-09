@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792972"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428744"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Tworzenie pierwszej aplikacji bezserwerowej przy użyciu Azure Logic Apps i Azure Functions w programie Visual Studio
 
@@ -38,11 +38,11 @@ Do utworzenia aplikacji bezserwerowej w programie Visual Studio potrzebne są:
 
   * Azure Logic Apps narzędzia dla wersji programu Visual Studio, którą chcesz:
 
-    * [Program Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
+    * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
     * [Visual Studio 2017](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017)
 
-    * [Program Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
+    * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
     Możesz pobrać i zainstalować narzędzia Azure Logic Apps Tools bezpośrednio z witryny Visual Studio Marketplace lub dowiedzieć się, [jak zainstalować to rozszerzenie z poziomu programu Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Upewnij się, że po zakończeniu instalacji program Visual Studio zostanie ponownie uruchomiony.
@@ -56,7 +56,7 @@ Do utworzenia aplikacji bezserwerowej w programie Visual Studio potrzebne są:
 
 ## <a name="create-a-resource-group-project"></a>Tworzenie projektu grupy zasobów
 
-Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) dla aplikacji bezserwerowej. Na platformie Azure Możesz tworzyć zasoby w *grupie zasobów*, która jest kolekcją logiczną używaną do organizowania, zarządzania i wdrażania zasobów dla całej aplikacji jako pojedynczego zasobu. W przypadku aplikacji bezserwerowej na platformie Azure Grupa zasobów zawiera zasoby dla Azure Logic Apps i Azure Functions. Dowiedz się więcej o [zasobach i grupach zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md).
+Aby rozpocząć, Utwórz [projekt grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) dla aplikacji bezserwerowej. Na platformie Azure Możesz tworzyć zasoby w *grupie zasobów*, która jest kolekcją logiczną używaną do organizowania, zarządzania i wdrażania zasobów dla całej aplikacji jako pojedynczego zasobu. W przypadku aplikacji bezserwerowej na platformie Azure Grupa zasobów zawiera zasoby dla Azure Logic Apps i Azure Functions. Dowiedz się więcej o [zasobach i grupach zasobów platformy Azure](../azure-resource-manager/management/overview.md).
 
 1. Uruchom program Visual Studio i zaloguj się przy użyciu konta platformy Azure.
 

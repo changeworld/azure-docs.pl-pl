@@ -1,23 +1,18 @@
 ---
 title: Ujednolicenie wielu zasobów Application Insights Azure Monitor | Microsoft Docs
 description: Ten artykuł zawiera szczegółowe informacje dotyczące używania funkcji w dziennikach Azure Monitor do wykonywania zapytań dotyczących wielu zasobów Application Insights i wizualizacji tych danych.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: azure-monitor
+author: bwren
+ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: magoedte
-ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650136"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364972"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wielu zasobów Application Insights Azure Monitor 
 W tym artykule opisano sposób wykonywania zapytań i wyświetlania wszystkich danych dziennika Application Insights w jednym miejscu, nawet w przypadku, gdy znajdują się one w różnych subskrypcjach platformy Azure, jako zamiennik dla zaniechania Application Insights Connector. Liczba zasobów Application Insights, które można uwzględnić w pojedynczym zapytaniu, jest ograniczona do 100.
@@ -34,12 +29,12 @@ ApplicationInsights
 
 Utwórz funkcję używającą operatora UNION z listą aplikacji, a następnie Zapisz zapytanie w obszarze roboczym jako funkcję z aliasem *applicationsScoping*. 
 
-W dowolnym momencie możesz modyfikować wymienione aplikacje w portalu, przechodząc do Eksploratora zapytań w obszarze roboczym i wybierając funkcję do edycji, a następnie zapisując lub używając `SavedSearch` polecenia cmdlet programu PowerShell. 
+W dowolnym momencie możesz modyfikować wymienione aplikacje w portalu, przechodząc do Eksploratora zapytań w obszarze roboczym i wybierając funkcję do edycji, a następnie zapisując lub używając polecenia cmdlet `SavedSearch` PowerShell. 
 
 >[!NOTE]
 >Ta metoda nie może być używana z alertami dziennika, ponieważ sprawdzanie dostępu do zasobów reguły alertów, w tym obszarów roboczych i aplikacji, odbywa się w czasie tworzenia alertu. Dodawanie nowych zasobów do funkcji po utworzeniu alertu nie jest obsługiwane. Jeśli wolisz używać funkcji dla określania zakresu zasobów w alertach dziennika, musisz zmodyfikować regułę alertu w portalu lub z szablonem Menedżer zasobów, aby zaktualizować zasoby w zakresie. Alternatywnie możesz dołączyć listę zasobów do zapytania alertu dziennika.
 
-`withsource= SourceApp` Polecenie dodaje kolumnę do wyników, które wyznaczają aplikację, która wysłała dziennik. Operator Parse jest opcjonalny w tym przykładzie i służy do wyodrębniania nazwy aplikacji z właściwości SourceApp. 
+Polecenie `withsource= SourceApp` dodaje kolumnę do wyników, które wyznaczają aplikację, która wysłała dziennik. Operator Parse jest opcjonalny w tym przykładzie i służy do wyodrębniania nazwy aplikacji z właściwości SourceApp. 
 
 ```
 union withsource=SourceApp 
@@ -67,7 +62,7 @@ Zapytanie używa schematu Application Insights, mimo że zapytanie jest wykonywa
 ![Przykład wyników między zapytaniami](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Wykonywanie zapytań dotyczących zasobów Application Insights i danych obszaru roboczego 
-Po zatrzymaniu łącznika i zalogowaniu się w przedziale czasowym, który został przycięty przez Application Insights przechowywanie danych (90 dni), należy wykonać [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) w obszarze roboczym i Application Insights zasobów dla pośredniego czasu. Jest to do momentu, aż dane aplikacji będą gromadzone na nowe Application Insights przechowywanie danych wymienionych powyżej. Zapytanie wymaga pewnego manipulowania, ponieważ schematy w Application Insights i obszar roboczy są różne. Zapoznaj się z tabelą w dalszej części tej sekcji, aby wyróżnić różnice między schematami. 
+Po zatrzymaniu łącznika i zalogowaniu się w przedziale czasowym, który został przycięty przez Application Insights przechowywanie danych (90 dni), należy wykonać [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) w obszarze roboczym i Application Insights zasoby dla okresu pośredniego. Jest to do momentu, aż dane aplikacji będą gromadzone na nowe Application Insights przechowywanie danych wymienionych powyżej. Zapytanie wymaga pewnego manipulowania, ponieważ schematy w Application Insights i obszar roboczy są różne. Zapoznaj się z tabelą w dalszej części tej sekcji, aby wyróżnić różnice między schematami. 
 
 >[!NOTE]
 >[Zapytanie między zasobami](../log-query/cross-workspace-query.md) w ramach alertów dziennika jest obsługiwane w nowym [interfejsie API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Domyślnie Azure Monitor używa [starszego interfejsu API alertów log Analytics](../platform/api-alerts.md) na potrzeby tworzenia nowych reguł alertów dziennika z Azure Portal, chyba że zostanie przełączony w [STARSZEJ wersji interfejsu API alertów dziennika](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po przełączeniu nowy interfejs API zostanie ustawiony jako domyślny dla nowych reguł alertów w Azure Portal i umożliwia tworzenie reguł alertów dziennika zapytań dla wielu zasobów. Można tworzyć reguły alertów dziennika [zapytań dla wielu zasobów](../log-query/cross-workspace-query.md) bez przełączenia przy użyciu [szablonu ARM dla interfejsu API scheduledQueryRules](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale ta reguła alertu jest możliwa do zarządzania, chociaż [interfejs API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , a nie z Azure Portal.
@@ -108,12 +103,12 @@ W poniższej tabeli przedstawiono różnice schematu między Log Analytics i App
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
-| AvailabilityTimestamp | timestamp |
-| Browser | client_browser |
-| City | client_city |
+| AvailabilityTimestamp | sygnatura czasowa |
+| Przeglądarka | client_browser |
+| Miasto | client_city |
 | ClientIP | client_IP |
-| Computer | cloud_RoleInstance | 
-| Country | client_CountryOrRegion | 
+| Computer (Komputer) | cloud_RoleInstance | 
+| Kraj | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
@@ -123,25 +118,25 @@ W poniższej tabeli przedstawiono różnice schematu między Log Analytics i App
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
 | ExceptionType | type |
-| OperationID | parametrów |
+| OperationID | operation_id |
 | OperationName | operation_Name | 
-| OS | client_OS | 
+| System operacyjny | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
 | PageViewName | name | 
-| ParentOperationID | Parametrów | 
+| ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
-| RequestID | id | 
+| Identyfikator żądania | id | 
 | RequestName | name | 
-| RequestSuccess | success | 
+| RequestSuccess | powodzenie | 
 | ResponseCode | resultCode | 
-| Role | cloud_RoleName |
+| Rola | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
-| SessionId | session_Id | 
+| Identyfikator sesji | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| URL | url |
+| Adres URL | url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>Następne kroki

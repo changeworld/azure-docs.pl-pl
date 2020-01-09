@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889128"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406921"
 ---
 # <a name="eventcounters-introduction"></a>Wprowadzenie do EventCounters
 
@@ -55,7 +55,7 @@ W przypadku aplikacji uruchamianych na platformie .NET Core 3,0 następujące li
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> Liczniki kategorii Microsoft. AspNetCore. hosting są dodawane tylko w aplikacjach Asp.Net Core.
+> Liczniki kategorii Microsoft. AspNetCore. hosting są dodawane tylko w aplikacjach ASP.NET Core.
 
 ## <a name="customizing-counters-to-be-collected"></a>Dostosowywanie liczników do zebrania
 
@@ -95,19 +95,19 @@ Poniższy przykład pokazuje, jak dodać lub usunąć liczniki. To dostosowanie 
 
 ## <a name="event-counters-in-metric-explorer"></a>Liczniki zdarzeń w Eksploratorze metryk
 
-Aby wyświetlić metryki EventCounter w [Eksploratorze metryk](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), wybierz pozycję Application Insights Resource i wybrane metryki oparte na dzienniku jako przestrzeń nazw metryki. Następnie metryki EventCounter są wyświetlane w kategorii PerformanceCounter.
+Aby wyświetlić metryki EventCounter w [Eksploratorze metryk](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), wybierz pozycję Application Insights Resource i wybrane metryki oparte na dzienniku jako przestrzeń nazw metryki. Następnie metryki EventCounter są wyświetlane w obszarze Kategoria niestandardowa.
 
 > [!div class="mx-imgBorder"]
 > Liczniki zdarzeń ![raportowane w Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Liczniki zdarzeń w analizie
 
-Raporty licznika zdarzeń można także wyszukiwać i wyświetlać w [analizie](../../azure-monitor/app/analytics.md)w tabeli **liczniki wydajności** .
+Raporty licznika zdarzeń można także wyszukiwać i wyświetlać w [analizie](../../azure-monitor/app/analytics.md)w tabeli **customMetrics** .
 
 Na przykład uruchom następujące zapytanie, aby zobaczyć, jakie liczniki są zbierane i dostępne dla kwerendy:
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 Aby uzyskać wykres określonego licznika (na przykład: `ThreadPool Completed Work Item Count`) w ciągu ostatniego okresu, uruchom następujące zapytanie.
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,7 +125,7 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > ![rozmowy o pojedynczym liczniku w Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
-Podobnie jak w przypadku innych telemetrii, **liczniki wydajności** ma również kolumnę `cloud_RoleInstance`, która wskazuje tożsamość wystąpienia serwera hosta, na którym działa aplikacja. Powyższe zapytanie pokazuje wartość licznika na wystąpienie i może służyć do porównywania wydajności różnych wystąpień serwera.
+Podobnie jak w przypadku innych telemetrii, **customMetrics** ma również kolumnę `cloud_RoleInstance`, która wskazuje tożsamość wystąpienia serwera hosta, na którym działa aplikacja. Powyższe zapytanie pokazuje wartość licznika na wystąpienie i może służyć do porównywania wydajności różnych wystąpień serwera.
 
 ## <a name="alerts"></a>Alerty
 Podobnie jak w przypadku innych metryk, można [ustawić alert](../../azure-monitor/app/alerts.md) ostrzegający o tym, czy licznik zdarzeń wykracza poza określony limit. Otwórz okienko alerty, a następnie kliknij pozycję Dodaj alert.

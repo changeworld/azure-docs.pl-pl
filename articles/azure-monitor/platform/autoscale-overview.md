@@ -1,18 +1,15 @@
 ---
 title: Omówienie automatycznego skalowania w Virtual Machines, Cloud Services i Web Apps
 description: Skalowanie automatyczne w Microsoft Azure. Dotyczy Virtual Machines, zestawów skalowania maszyn wirtualnych, Cloud Services i Web Apps.
-ms.service: azure-monitor
 ms.subservice: autoscale
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364377"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w Microsoft Azure Virtual Machines, Cloud Services i Web Apps
 W tym artykule opisano, co Microsoft Azure automatyczne skalowanie, jego zalety oraz jak rozpocząć korzystanie z niego.  
@@ -97,7 +94,7 @@ Można skonfigurować Skalowanie automatyczne za pomocą
 * [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
 * [Program PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Międzyplatformowy interfejs wiersza polecenia (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
-* [Interfejs API REST Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Obsługiwane usługi skalowania automatycznego
 | Usługa | Dokumentacja & schematu |

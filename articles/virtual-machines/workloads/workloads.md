@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 11d503e7dd15f148208da65d551f9c6ae71a7e7f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: a08a8c6afd4670bea1c3775466d23135016bf08c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265568"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373268"
 ---
 # <a name="workloads-on-azure-virtual-machines"></a>Obciążenia w usłudze Azure Virtual Machines
 
@@ -27,8 +27,9 @@ Maszyny wirtualne na platformie Azure mogą obsługiwać wiele obciążeń. Każ
 
 - [Obliczenia o wysokiej wydajności](./hpc/overview.md) na platformie Azure używają maszyn wirtualnych zoptymalizowanych pod kątem procesora CPU lub procesora GPU w celu rozwiązywania złożonych problemów intensywnie korzystających z obliczeń.
 - W oprogramowaniu [SAP](./sap/get-started.md) na platformie Azure można uruchamiać krytyczne obciążenia SAP i scenariusze na skalowalnej, zgodnej i sprawdzonej dla przedsiębiorstwa platformie.
-- Program [Oracle](./oracle/oracle-considerations.md) obsługuje uruchamianie Oracle DB 12,1 w wersjach Standard i Enterprise na platformie Azure w obrazach maszyn wirtualnych na podstawie Oracle Linux. 
-- [Rehostowanie komputera mainframe](./mainframe-rehosting/overview.md) 
+- Program [Oracle](./oracle/oracle-considerations.md) obsługuje uruchamianie Oracle DB 12,1 w wersjach Standard i Enterprise na platformie Azure w obrazach maszyn wirtualnych na podstawie Oracle Linux.
+- [Red Hat](./redhat/redhat-overview.md) na platformie Azure jest obsługiwany za pośrednictwem różnych ofert obrazu Red Hat Enterprise Linux i infrastruktury aktualizacji firmy Red Hat w celu dostarczania aktualizacji na żądanie.
+- [Rehostowanie komputera mainframe](./mainframe-rehosting/overview.md)
 
 
 

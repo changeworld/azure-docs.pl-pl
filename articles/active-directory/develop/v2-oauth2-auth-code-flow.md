@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform & przepływ kodu autoryzacji OAuth | Azure
-description: Tworzenie aplikacji sieci Web przy użyciu implementacji platformy tożsamości firmy Microsoft w ramach protokołu uwierzytelniania OAuth 2,0.
+title: Przepływ kodu autoryzacji OAuth — platforma tożsamości firmy Microsoft | Azure
+description: Twórz aplikacje sieci Web przy użyciu implementacji platformy tożsamości firmy Microsoft w ramach protokołu uwierzytelniania OAuth 2,0.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58a82caf825daf83ce58dffdf7056e063e74faa6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1f49e93d6dd405e849dec3806c979b1ea2fc1d37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423270"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Przepływ kodu autoryzacji Microsoft Identity platform i OAuth 2,0
 
@@ -76,7 +76,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `prompt`  | opcjonalnie    | Wskazuje typ interakcji użytkownika, która jest wymagana. Jedyne prawidłowe wartości w tym momencie to `login`, `none`i `consent`.<br/><br/>- `prompt=login` wymusi, aby użytkownik wprowadził swoje poświadczenia na tym żądaniu, negację logowania jednokrotnego.<br/>- `prompt=none` jest przeciwieństwem-zapewnia, że użytkownik nie będzie wyświetlany z żadnym interaktywnym monitem. Jeśli żądanie nie może zostać zakończone dyskretnie przy użyciu logowania jednokrotnego, punkt końcowy platformy tożsamości firmy Microsoft zwróci błąd `interaction_required`.<br/>- `prompt=consent` będzie wyzwalać okno dialogowe zgody OAuth po zalogowaniu się użytkownika, z prośbą o udzielenie uprawnień do aplikacji. |
 | `login_hint`  | opcjonalnie    | Może służyć do wstępnego wypełniania pola Nazwa użytkownika/adres e-mail strony logowania dla użytkownika, jeśli znana jest jego nazwa użytkownika przed czasem. Często aplikacje będą używać tego parametru podczas ponownego uwierzytelniania, ponieważ już wyodrębnili nazwę użytkownika z poprzedniego logowania przy użyciu `preferred_username`.   |
 | `domain_hint`  | opcjonalnie    | Może to być jeden z `consumers` lub `organizations`.<br/><br/>W przypadku pominięcia zostanie pominięty proces odnajdywania na podstawie poczty e-mail, który użytkownik przejdzie na stronie logowania, co prowadzi do nieco bardziej usprawnionego środowiska użytkownika. Często aplikacje będą używać tego parametru podczas ponownego uwierzytelniania przez wyodrębnienie `tid` z poprzedniego logowania. Jeśli `tid` wartość żądania jest `9188040d-6c67-4c5b-b112-36a304b66dad`, należy użyć `domain_hint=consumers`. W przeciwnym razie użyj `domain_hint=organizations`.  |
-| `code_challenge_method` | opcjonalnie    | Metoda używana do kodowania `code_verifier` dla parametru `code_challenge`. Może miec jedną z następujuących wartości:<br/><br/>- `plain` <br/>- `S256`<br/><br/>W przypadku wykluczenia `code_challenge` przyjmuje się, że jest to zwykły tekst, jeśli `code_challenge` jest uwzględniony. Platforma tożsamości firmy Microsoft obsługuje zarówno `plain`, jak i `S256`. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
+| `code_challenge_method` | opcjonalnie    | Metoda używana do kodowania `code_verifier` dla parametru `code_challenge`. Może być jedną z następujących wartości:<br/><br/>- `plain` <br/>- `S256`<br/><br/>W przypadku wykluczenia `code_challenge` przyjmuje się, że jest to zwykły tekst, jeśli `code_challenge` jest uwzględniony. Platforma tożsamości firmy Microsoft obsługuje zarówno `plain`, jak i `S256`. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 | `code_challenge`  | opcjonalnie | Używane do zabezpieczania kodu autoryzacji za pośrednictwem klucza testowego dla wymiany kodu (PKCE) z klienta natywnego. Wymagane, jeśli `code_challenge_method` jest uwzględniony. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
 W tym momencie użytkownik zostanie poproszony o wprowadzenie poświadczeń i zakończenie uwierzytelniania. Punkt końcowy platformy tożsamości firmy Microsoft sprawdzi również, czy użytkownik wyraził zgodę na uprawnienia wskazane w `scope` parametr zapytania. Jeśli użytkownik nie wyraził zgody na żadne z tych uprawnień, poprosił użytkownika o zgodę na wymagane uprawnienia. Szczegółowe informacje o [uprawnieniach, zgodzie i aplikacjach wielodostępnych są dostępne tutaj](v2-permissions-and-consent.md).

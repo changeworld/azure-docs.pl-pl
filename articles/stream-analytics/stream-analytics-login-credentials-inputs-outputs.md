@@ -1,20 +1,19 @@
 ---
 title: Zamiana poświadczeń logowania w zadaniach usługi Azure Stream Analytics
 description: W tym artykule opisano, jak można zaktualizować poświadczeń w danych wejściowych i danych wyjściowych wychwytywanie w usłudze Azure Stream Analytics, zadania.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aad6f237a37ce4782e2c103a7a14e0a3951093de
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425972"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Zamiana poświadczeń logowania na potrzeby wejść i wyjść zadania usługi Stream Analytics
 
@@ -32,7 +31,7 @@ W tej sekcji omówimy proces zostanie wygenerowane ponownie poświadczenia dla u
 4. W witrynie Azure portal, przeglądać zadania usługi Stream Analytics > Wybierz **zatrzymać** i zaczekaj na zatrzymanie zadania.    
 5. Znajdź obiekt Blob/Table storage wejścia/wyjścia, dla której chcesz zaktualizować poświadczenia.    
 6. Znajdź **klucza konta magazynu** pola, a następnie wklej swój klucz nowo wygenerowane > kliknij **Zapisz**.    
-7. Test połączenia zostanie automatycznie uruchomiony po zapisaniu zmian, można je wyświetlić, korzystając z karty powiadomienia. Istnieją dwa jednego powiadomienia odnosi się do zapisywania aktualizacji i innych odnosi się do testowania połączenia:  
+7. Test połączenia zostanie uruchomiony automatycznie po zapisaniu zmian, można go wyświetlić na karcie powiadomienia. Istnieją dwie powiadomienia — jeden odpowiada za zapisanie aktualizacji, a inne odpowiadają za testowanie połączenia:  
    ![Powiadomienia po wprowadzeniu zmian klucza](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Przejdź do [Uruchom zadanie z ostatniego czasu zatrzymania](#start-your-job-from-the-last-stopped-time) sekcji.
 
@@ -48,7 +47,7 @@ W tej sekcji omówimy proces zostanie wygenerowane ponownie poświadczenia dla u
 7. Test połączenia zostanie automatycznie uruchomiony po zapisaniu zmian, upewnij się, że został przekazany pomyślnie.    
 8. Przejdź do [Uruchom zadanie z ostatniego czasu zatrzymania](#start-your-job-from-the-last-stopped-time) sekcji.
 
-### <a name="sql-database"></a>SQL Database
+### <a name="sql-database"></a>Baza danych SQL
 
 Należy połączyć się z bazą danych SQL, aby zaktualizować poświadczenia logowania dla istniejącego użytkownika. Należy zaktualizować poświadczenia, za pomocą witryny Azure portal lub narzędzi po stronie klienta, takich jak SQL Server Management Studio. W tej sekcji przedstawiono proces aktualizowania poświadczeń przy użyciu witryny Azure portal.
 
@@ -81,7 +80,7 @@ Należy połączyć się z bazą danych SQL, aby zaktualizować poświadczenia l
 2. Wybierz **ostatnio zatrzymane** > kliknij **Start**. Należy zauważyć, że opcja "ostatnio zatrzymane" pojawia się tylko, jeśli potrzebujesz wcześniej uruchomiono zadanie i pewne dane wyjściowe generowane. Zadanie jest uruchamiane ponownie oparte na od czasu ostatniej wartości danych wyjściowych.
    ![Uruchamianie zadania usługi Stream Analytics](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)

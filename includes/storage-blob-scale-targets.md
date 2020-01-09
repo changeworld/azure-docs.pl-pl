@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: 0fda881b805eb3a967cf3b05f6c6df8c65d20730
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392411"
 ---
-| Zasób | Środowisko docelowe        |
+| Zasób | Cel        |
 |----------|---------------|
 | Maksymalny rozmiar pojedynczego kontenera obiektów BLOB | Taka sama jak Maksymalna pojemność konta magazynu |
 | Maksymalna liczba bloków w blokowym obiekcie blob lub dołączeniu obiektu BLOB | bloki 50 000 |
@@ -25,4 +25,4 @@ ms.locfileid: "73905792"
 |Docelowa przepływność dla jednostronicowego obiektu BLOB | Do 60 MiB na sekundę |
 |Docelowa przepływność dla pojedynczego bloku obiektu BLOB |Limity ruchu przychodzącego/wychodzącego do konta magazynu<sup>1</sup> |
 
-<sup>1</sup> przepływność pojedynczego obiektu zależy od kilku czynników, w tym między innymi: współbieżność, rozmiar żądania, warstwa wydajności, szybkość źródła dla operacji przekazywania oraz miejsce docelowe do pobrania. Aby skorzystać z ulepszeń wydajności [blokowych obiektów BLOB o wysokiej przepływności](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) , Użyj rozmiaru obiektu BLOB lub bloku Put dla żądania > 4 MiB (> 256 KiB dla magazynu obiektów BLOB w warstwie premium lub Data Lake Storage Gen2).
+<sup>1</sup> przepływność dla pojedynczego obiektu BLOB zależy od kilku czynników, w tym między innymi: współbieżność, rozmiar żądania, warstwa wydajności, szybkość źródła dla przekazywania i miejsce docelowe do pobrania. Aby wykorzystać ulepszenia wydajności [blokowych obiektów BLOB o wysokiej przepływności](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/), Przekaż większe obiekty blob lub bloki. W celu wywołaj operację [Put obiektu BLOB](/rest/api/storageservices/put-blob) lub [Put blok](/rest/api/storageservices/put-block) z rozmiarem obiektu BLOB lub bloku, który jest większy niż 4 MIB dla kont magazynu w warstwie Standardowa. W przypadku blokowych obiektów BLOB w warstwie Premium lub dla kont magazynu Data Lake Storage Gen2 Użyj rozmiaru bloku lub obiektu BLOB, który jest większy niż 256 KiB.

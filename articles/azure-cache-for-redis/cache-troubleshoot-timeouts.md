@@ -1,17 +1,17 @@
 ---
 title: Rozwiązywanie problemów z usługą Azure cache dla limitów czasu Redis
-description: Dowiedz się, jak rozwiązywać typowe problemy z przekroczeniem limitu czasu w usłudze Azure cache for Redis
+description: Dowiedz się, jak rozwiązywać typowe problemy z przekroczeniem limitu czasu w usłudze Azure cache for Redis, takie jak Redis serwera poprawek i StackExchange. Redis wyjątki dotyczące limitu czasu.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: yegu
-ms.openlocfilehash: e58b305a43cc5ad339fb87b9b8a09af04c410839
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412085"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Rozwiązywanie problemów z usługą Azure cache dla limitów czasu Redis
 
@@ -45,7 +45,7 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskazanie przy
 | qs |67 operacji w toku zostały wysłane do serwera, ale odpowiedź nie jest jeszcze dostępna. Odpowiedź może być `Not yet sent by the server` lub `sent by the server but not yet processed by the client.` |
 | qc |0 z operacji w toku ma przejrzane odpowiedzi, ale nie zostały jeszcze oznaczone jako ukończone, ponieważ oczekują na pętlę ukończenia |
 | oznacza |Istnieje aktywny składnik zapisywania (oznacza to, że 6 niewysłanych żądań nie jest ignorowany) bajty/activewriters |
-| Podczas |Brak aktywnych czytników i zero bajtów jest dostępnych do odczytu na karcie sieciowej bajty/activereaders |
+| Sekcja  w temacie |Brak aktywnych czytników i zero bajtów jest dostępnych do odczytu na karcie sieciowej bajty/activereaders |
 
 Aby zbadać możliwe przyczyny główne, można wykonać następujące czynności.
 
@@ -113,7 +113,7 @@ Aby zbadać możliwe przyczyny główne, można wykonać następujące czynnośc
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
-- [Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie klienta Redis](cache-troubleshoot-client.md)
-- [Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie serwera Redis](cache-troubleshoot-server.md)
+- [Rozwiązywanie problemów z usługą Azure Cache for Redis po stronie klienta](cache-troubleshoot-client.md)
+- [Rozwiązywanie problemów z usługą Azure Cache for Redis po stronie serwera](cache-troubleshoot-server.md)
 - [Jak można sprawdzić i przetestować wydajność mojej pamięci podręcznej?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Jak monitorować usługę Azure cache for Redis](cache-how-to-monitor.md)

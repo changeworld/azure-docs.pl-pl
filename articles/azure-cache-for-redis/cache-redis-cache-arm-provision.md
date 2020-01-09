@@ -1,18 +1,17 @@
 ---
-title: Inicjowanie obsługi administracyjnej pamięci podręcznej platformy Azure dla usługi Redis przy użyciu Azure Resource Manager
-description: Użyj szablonu Azure Resource Manager, aby wdrożyć pamięć podręczną platformy Azure dla Redis.
-services: app-service
+title: Wdróż usługę Azure cache for Redis za pomocą Azure Resource Manager
+description: Dowiedz się, jak użyć szablonu Azure Resource Manager do wdrożenia pamięci podręcznej platformy Azure dla zasobu Redis. Szablony są udostępniane dla typowych scenariuszy.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: yegu
-ms.openlocfilehash: f215cb79adc02da857f7aa93d8933bd12c06818a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412406"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Tworzenie pamięci podręcznej platformy Azure dla usługi Redis przy użyciu szablonu
 
@@ -22,7 +21,7 @@ W tym temacie dowiesz się, jak utworzyć szablon Azure Resource Manager, który
 
 Obecnie ustawienia diagnostyczne są udostępniane dla wszystkich pamięci podręcznych w tym samym regionie dla subskrypcji. Aktualizacja jednej pamięci podręcznej w regionie ma wpływ na wszystkie inne pamięci podręczne w regionie.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Aby dowiedzieć się więcej na temat składni i właściwości JSON dla typów zasobów pamięci podręcznej, zobacz [Microsoft. cache — typy zasobów](/azure/templates/microsoft.cache/allversions).
+Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Aby dowiedzieć się więcej na temat składni i właściwości JSON dla typów zasobów pamięci podręcznej, zobacz [Microsoft. cache — typy zasobów](/azure/templates/microsoft.cache/allversions).
 
 Aby zapoznać się z pełnym szablonem, zobacz [pamięć podręczna Azure dla szablonu Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
@@ -117,8 +116,6 @@ Tworzy pamięć podręczną platformy Azure dla Redis.
       ]
     }
 
-
-
 ## <a name="commands-to-run-deployment"></a>Polecenia umożliwiające uruchomienie wdrożenia
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
@@ -128,5 +125,3 @@ Tworzy pamięć podręczną platformy Azure dla Redis.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
-
-

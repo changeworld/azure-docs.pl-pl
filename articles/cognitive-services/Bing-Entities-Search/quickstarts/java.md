@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 13e25ce0a237d34b98ec42140b86c4955f9058cb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384155"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Szybki Start: wysyłanie żądania wyszukiwania do wyszukiwanie jednostek Bing interfejsu API REST przy użyciu języka Java
 
@@ -25,7 +25,7 @@ Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zestaw [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* [Zestaw Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 * [Biblioteka Gson](https://github.com/google/gson)
 
 
@@ -50,7 +50,7 @@ Chociaż ta aplikacja jest napisana w języku Java, interfejs API jest usługą 
    import com.google.gson.JsonParser;
    ```
 
-2. W nowej klasie utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i zapytania wyszukiwania.
+2. W nowej klasie utwórz zmienne dla punktu końcowego interfejsu API, klucza subskrypcji i zapytania wyszukiwania. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
    ```java
    public class EntitySearch {

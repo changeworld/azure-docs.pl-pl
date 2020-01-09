@@ -1,18 +1,17 @@
 ---
 title: Arkusz Ściągawka zapytania dziennika SQL do Azure Monitor | Microsoft Docs
 description: Pomoc dla użytkowników znających program SQL podczas pisania zapytań dzienników w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 4acf3c2f8cee3ca9e679915eec677b6dd92792bf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c76ab145fd2fdd077075b345ecac9c6a473f2369
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365193"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>Arkusz Ściągawka zapytania dziennika SQL do Azure Monitor 
 
@@ -20,7 +19,7 @@ Poniższa tabela ułatwia użytkownikom znającym język SQL uzyskanie informacj
 
 ## <a name="sql-to-azure-monitor"></a>SQL do Azure Monitor
 
-Opis                             |Zapytanie SQL                                                                                          |Azure Monitor zapytanie dziennika
+Opis                             |SQL Query                                                                                          |Azure Monitor zapytanie dziennika
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 Zaznacz wszystkie dane z tabeli            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 Wybieranie określonych kolumn z tabeli    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
@@ -33,7 +32,7 @@ Porównanie dat: ostatni 1 dzień             |`SELECT * FROM dependencies WHERE
 Porównanie dat: zakres dat             |`SELECT * FROM dependencies WHERE timestamp BETWEEN '2016-10-01' AND '2016-11-01'`                 |<code>dependencies <br>&#124; where timestamp between (datetime(2016-10-01) .. datetime(2016-10-01))</code>
 Porównanie wartości logicznych                      |`SELECT * FROM dependencies WHERE !(success)`                                                      |<code>dependencies <br>&#124; where success == "False" </code>
 Sortuj                                    |`SELECT name, timestamp FROM dependencies ORDER BY timestamp asc`                                  |<code>dependencies <br>&#124; order by timestamp asc </code>
-Itp                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
+Distinct                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
 Grupowanie, agregacja                   |`SELECT name, AVG(duration) FROM dependencies GROUP BY name`                                       |<code>dependencies <br>&#124; summarize avg(duration) by name </code>
 Aliasy kolumn, rozszerzone                  |`SELECT operation_Name as Name, AVG(duration) as AvgD FROM dependencies GROUP BY name`             |<code>dependencies <br>&#124; summarize AvgD=avg(duration) by operation_Name <br>&#124; project Name=operation_Name, AvgD</code>
 Pierwsze n rekordów według miary                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>

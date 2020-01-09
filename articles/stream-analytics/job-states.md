@@ -1,19 +1,18 @@
 ---
 title: Stany zadań Azure Stream Analytics
 description: W tym artykule opisano cztery różne stany zadania Stream Analyticsowego. Uruchamianie, zatrzymywanie, obniżanie wydajności i niepowodzenie.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c533463ff544dc315142f7fb95c34c67933f9614
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 454474333cac94dc25deae8196e9ba45bcb3a574
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444246"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359770"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Stany zadań Azure Stream Analytics
 

@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8e9748360b22cd1c693b2c601024c0824ffb483
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437042"
 ---
 # <a name="expressroute-encryption"></a>Szyfrowanie ExpressRoute
  
-ExpressRoute obsługuje kilka technologii szyfrowania w celu zapewnienia poufności i integralności danych przechodzących między siecią i siecią firmy Microsoft.
+ExpressRoute obsługuje kilka technologii szyfrowania, aby zapewnić poufność i integralność danych przechodzących między siecią i siecią firmy Microsoft.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>Szyfrowanie punkt-punkt przez MACsec — często zadawane pytania
 MACsec jest [standardem IEEE](https://1.ieee802.org/security/802-1ae/). Szyfruje dane na poziomie kontroli dostępu do nośnika (MAC) lub 2. Można użyć MACsec do szyfrowania fizycznych linków między urządzeniami sieciowymi i urządzeniami sieciowymi firmy Microsoft w przypadku łączenia się z firmą Microsoft za pośrednictwem [ExpressRoute Direct](expressroute-erdirect-about.md). MACsec jest domyślnie wyłączona w portach bezpośrednie ExpressRoute. Możesz wprowadzić własny klucz MACsec na potrzeby szyfrowania i zapisać go w [Azure Key Vault](../key-vault/key-vault-overview.md). Należy określić, kiedy należy obrócić klucz. Zobacz inne często zadawane pytania poniżej.
@@ -40,7 +40,7 @@ Tak. MACsec zabezpiecza połączenia fizyczne między ty i firmą Microsoft. Pro
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Czy mogę użyć usługi Azure VPN Gateway, aby skonfigurować tunel IPsec między siecią lokalną a moją siecią wirtualną platformy Azure?
 Tak. Ten tunel IPsec można skonfigurować za pośrednictwem komunikacji równorzędnej firmy Microsoft obwodu usługi ExpressRoute. Postępuj zgodnie z naszym [przewodnikiem konfiguracyjnym](site-to-site-vpn-over-microsoft-peering.md).
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Czy można używać usługi Azure VPN Gateway do konfigurowania tunelu IPsec za pośrednictwem prywatnej komunikacji równorzędnej Azure?
-Nie. Należy wdrożyć bramę sieci VPN innej firmy w sieci wirtualnej platformy Azure i ustanowić tunel IPsec między nim i lokalną bramą sieci VPN.
+Jeśli zostanie przyjęta wirtualna sieć WAN platformy Azure, możesz wykonać następujące [kroki](../virtual-wan/vpn-over-expressroute.md) , aby zaszyfrować kompleksowe połączenie. Jeśli masz zwykłą sieć wirtualną platformy Azure, możesz wdrożyć bramę sieci VPN innej firmy w sieci wirtualnej i utworzyć tunel IPsec między nim i lokalną bramą sieci VPN.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>Jaka jest przepływność po włączeniu protokołu IPsec na moim połączeniu ExpressRoute?
 Jeśli jest używana usługa Azure VPN Gateway, sprawdź [tutaj numery wydajności](../vpn-gateway/vpn-gateway-about-vpngateways.md). Jeśli jest używana Brama sieci VPN innej firmy, należy skontaktować się z dostawcą dla numerów wydajności.
 

@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób włączania Azure Monitor dla maszyn
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 4a89eb36c9aa7369d6145304b572b4245cef3483
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365822"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Włącz Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) za pomocą Azure Policy
 
@@ -113,7 +113,7 @@ Aby utworzyć przypisanie zasad na stronie **pokrycie zasad Azure monitor dla ma
 
 Po przypisaniu zasad lub inicjatywy zakres wybrany w ramach przypisania może być zakresem wymienionym tutaj lub jego podzbiorem. Na przykład mogło zostać utworzone przypisanie dla subskrypcji (zakres zasad), a nie do grupy zarządzania (zakres pokrycia). W takim przypadku procent pokrycia będzie wskazywał maszyny wirtualne w zakresie zasad lub inicjatywy podzielone przez maszyny wirtualne w zakresie pokrycia. W innym przypadku można wykluczyć niektóre maszyny wirtualne lub grupy zasobów albo subskrypcję z zakresu zasad. Jeśli ta wartość jest pusta, oznacza to, że zasady lub inicjatywy nie istnieją lub nie masz uprawnień. Informacje są dostępne w obszarze **stan przypisania**.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 2. W witrynie Azure portal wybierz **Monitor**. 
 
@@ -145,10 +145,10 @@ Poniższa macierz odwzorowuje każdy możliwy stan zgodności dla inicjatywy.
 
 | Stan zgodności | Opis | 
 |------------------|-------------|
-| **Komputera** | Wszystkie maszyny wirtualne w zakresie mają wdrożonych Log Analytics i agentów zależności.|
+| **Zgodne** | Wszystkie maszyny wirtualne w zakresie mają wdrożonych Log Analytics i agentów zależności.|
 | **Niezgodne** | Nie wszystkie maszyny wirtualne w zakresie mają wdrożone Log Analytics i agentów zależności i mogą wymagać skorygowania.|
 | **Nie uruchomiono** | Dodano nowe przypisanie. |
-| **Skręt** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
+| **Blokada** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
 | **Puste** | Nie przypisano żadnych zasad. | 
 
 <sup>1</sup> Jeśli nie masz dostępu do grupy zarządzania, poproszenie właściciela o udzielenie dostępu. Można też wyświetlić zgodność i zarządzać przypisaniami za pomocą podrzędnych grup zarządzania lub subskrypcji. 
@@ -160,7 +160,7 @@ Poniższa tabela odwzorowuje każdy możliwy stan przypisania dla inicjatywy.
 | **Prawnego** | Wszystkie maszyny wirtualne w zakresie mają wdrożonych Log Analytics i agentów zależności.|
 | **Ostrzeżenie** | Subskrypcja nie należy do grupy zarządzania.|
 | **Nie uruchomiono** | Dodano nowe przypisanie. |
-| **Skręt** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
+| **Blokada** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
 | **Puste** | Nie istnieją żadne maszyny wirtualne lub nie przypisano zasad. | 
 | **Akcja** | Przypisz zasady lub Edytuj przypisanie. | 
 
@@ -197,7 +197,7 @@ W dowolnym momencie po przypisaniu inicjatywy do grupy zarządzania lub subskryp
 - Nazwa przypisania
 - Opis
 - Przypisane przez
-- Log Analytics obszar roboczy
+- Obszar roboczy usługi Log Analytics
 - Wyjątki
 
 ## <a name="next-steps"></a>Następne kroki

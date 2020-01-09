@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373234"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
@@ -58,7 +58,7 @@ Na poniższej ilustracji przedstawiono sposób działania narzędzia Virtual Net
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed utworzeniem sieci wirtualnej należy otrzymać wiadomość potwierdzającą, która została zarejestrowana w wersji zapoznawczej, i utworzyć co najmniej jedną maszynę wirtualną, która została utworzona przy użyciu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) model wdrażania i rozwiązanie partnerskie do agregowania ruchu w ramach tego samego regionu platformy Azure. Jeśli nie masz rozwiązania partnerskiego w sieci wirtualnej, zapoznaj się z tematem [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) , aby wdrożyć aplikację. Możesz użyć tego samego zasobu sieci wirtualnej, aby agregować ruch z wielu interfejsów sieciowych w ramach tej samej lub różnych subskrypcji. Jeśli monitorowane interfejsy sieciowe znajdują się w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą Azure Active Directory. Ponadto monitorowane interfejsy sieciowe i docelowy punkt końcowy do agregowania ruchu dla programu TAP mogą znajdować się w równorzędnych sieciach wirtualnych w tym samym regionie. Jeśli używasz tego modelu wdrażania, upewnij się, że [Komunikacja równorzędna sieci wirtualnej](virtual-network-peering-overview.md) jest włączona przed SKONFIGUROWANIEm naciskania sieci wirtualnej.
+Przed utworzeniem sieci wirtualnej należy otrzymać wiadomość potwierdzającą, która została zarejestrowana w wersji zapoznawczej, i utworzyć co najmniej jedną maszynę wirtualną, która została utworzona przy użyciu [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) model wdrażania i rozwiązanie partnerskie do agregowania ruchu w ramach tego samego regionu platformy Azure. Jeśli nie masz rozwiązania partnerskiego w sieci wirtualnej, zapoznaj się z tematem [rozwiązania partnerskie](#virtual-network-tap-partner-solutions) , aby wdrożyć aplikację. Możesz użyć tego samego zasobu sieci wirtualnej, aby agregować ruch z wielu interfejsów sieciowych w ramach tej samej lub różnych subskrypcji. Jeśli monitorowane interfejsy sieciowe znajdują się w różnych subskrypcjach, subskrypcje muszą być skojarzone z tą samą dzierżawą Azure Active Directory. Ponadto monitorowane interfejsy sieciowe i docelowy punkt końcowy do agregowania ruchu dla programu TAP mogą znajdować się w równorzędnych sieciach wirtualnych w tym samym regionie. Jeśli używasz tego modelu wdrażania, upewnij się, że [Komunikacja równorzędna sieci wirtualnej](virtual-network-peering-overview.md) jest włączona przed SKONFIGUROWANIEm naciskania sieci wirtualnej.
 
 ## <a name="permissions"></a>Uprawnienia
 

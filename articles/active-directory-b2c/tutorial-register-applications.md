@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76d38e4b35111cd2c09685653fb4948f98387132
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950786"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425481"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Samouczek: rejestrowanie aplikacji w Azure Active Directory B2C
 
@@ -40,8 +40,9 @@ Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżą
 
 #### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
 
-1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
-1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 1. Wprowadź nazwę aplikacji. Na przykład *webapp1*.
 1. Dla pozycji **Uwzględnij aplikację internetową/internetowy interfejs API** i **Zezwalaj na niejawny przepływ** wybierz wartość **Tak**.
@@ -54,13 +55,13 @@ Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżą
     * Adres URL odpowiedzi musi rozpoczynać się od schematu `https`.
     * W adresie URL odpowiedzi jest rozróżniana wielkość liter. Jego wielkość liter musi być zgodna z wielkością liter w ścieżce URL działającej aplikacji. Na przykład jeśli aplikacja zawiera jako część ścieżki `.../abc/response-oidc`, nie określaj `.../ABC/response-oidc` w adresie URL odpowiedzi. Ponieważ przeglądarka sieci Web traktuje ścieżki w miarę uwzględniania wielkości liter, pliki cookie powiązane z `.../abc/response-oidc` mogą być wykluczone w przypadku przekierowania do niezgodnego `.../ABC/response-oidc` adresu URL.
 
-1. Kliknij przycisk **Utwórz** , aby zakończyć rejestrację aplikacji.
+1. Wybierz pozycję **Utwórz** , aby zakończyć rejestrację aplikacji.
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
-1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
 1. Wprowadź **nazwę** aplikacji. Na przykład *webapp1*.
 1. Wybierz pozycję **konta w dowolnym katalogu organizacyjnym lub dowolnym dostawcy tożsamości**.

@@ -1,23 +1,24 @@
 ---
-title: Śledzenie przepływu w aplikacji Cloud Services przy użyciu Diagnostyka Azure | Microsoft Docs
+title: Śledzenie przepływu w aplikacji Cloud Services z Diagnostyka Azure
+titleSuffix: Azure Cloud Services
 description: Dodawanie komunikatów śledzenia do aplikacji platformy Azure w celu ułatwienia debugowania, mierzenia wydajności, monitorowania, analizy ruchu i nie tylko.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
-ms.author: gwallace
-ms.openlocfilehash: b8d195fba934ceae98af383b96a8c0d9a9b88c5f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.author: tagore
+ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386514"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Śledzenie przepływu aplikacji Cloud Services z Diagnostyka Azure
-Śledzenie służy do monitorowania wykonywania aplikacji w trakcie jej działania. Za pomocą klas [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. Debug](/dotnet/api/system.diagnostics.debug)i [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) można rejestrować informacje o błędach i wykonywaniu aplikacji w dziennikach, plikach tekstowych lub innych urządzeniach w przyszłości. analizy. Aby uzyskać więcej informacji na temat śledzenia, zobacz [śledzenie i Instrumentacja aplikacji](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
+Śledzenie służy do monitorowania wykonywania aplikacji w trakcie jej działania. Za pomocą klas [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace), [System. Diagnostics. Debug](/dotnet/api/system.diagnostics.debug)i [System. Diagnostics. TraceSource](/dotnet/api/system.diagnostics.tracesource) można rejestrować informacje o błędach i wykonywaniu aplikacji w dziennikach, plikach tekstowych lub innych urządzeniach w celu późniejszej analizy. Aby uzyskać więcej informacji na temat śledzenia, zobacz [śledzenie i Instrumentacja aplikacji](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
 
 ## <a name="use-trace-statements-and-trace-switches"></a>Używanie instrukcji Trace i przełączników śledzenia
 Zaimplementuj śledzenie w aplikacji Cloud Services, dodając [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) do konfiguracji aplikacji i wykonując wywołania do System. Diagnostics. Trace lub system. Diagnostics. Debug w kodzie aplikacji. Użyj pliku konfiguracji *App. config* dla ról procesów roboczych i *Web. config* dla ról sieci Web. Podczas tworzenia nowej usługi hostowanej przy użyciu szablonu programu Visual Studio Diagnostyka Azure jest automatycznie dodawana do projektu i DiagnosticMonitorTraceListener jest dodawany do odpowiedniego pliku konfiguracji dla ról, które zostały dodane.
@@ -71,4 +72,7 @@ Po wykonaniu kroków w celu dodania odbiornika można dodać do niego instrukcje
     ```
 3. Dodaj instrukcje śledzenia, w których chcesz przechwytywać informacje o stanie aplikacji. Aby sformatować dane wyjściowe instrukcji Trace, można użyć różnych metod. Aby uzyskać więcej informacji, zobacz [jak: dodać instrukcje śledzenia do kodu aplikacji](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 4. Zapisz plik źródłowy.
+
+
+
 

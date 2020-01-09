@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8c96bea6fc55d45a7e2d790f355f6fe19323029d
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 1039b72d5834ff837bcddd34d1d2c518364f96ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447633"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Go
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API.
 
 Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
-* [Tworzenie bazy wiedzy](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Tworzenie bazy wiedzy](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Pobieranie szczegółów operacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+Przykład [dokumentacji referencyjnej](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [go](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -31,8 +33,6 @@ Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
 
 * [Środowisko Go w wersji 1.10.1](https://golang.org/dl/)
 * Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
-
-[Przykładowy kod](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go) jest dostępny w repozytorium GitHub dla QNA Maker za pomocą języka go.
 
 ## <a name="create-a-knowledge-base-go-file"></a>Tworzenie pliku Go bazy wiedzy
 
@@ -45,7 +45,12 @@ Na początku pliku `create-new-knowledge-base.go` dodaj następujące wiersze, a
 [!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Dodawanie wymaganych stałych
-Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Zastąp wartość zmiennej `subscriptionKey` własnym kluczem usługi QnA Maker.
+Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker.
+
+Ustaw następujące wartości:
+
+* `<your-qna-maker-subscription-key>` — **klucz** jest ciągiem znaków 32 i jest dostępny w Azure Portal na stronie szybkiego startu na QNA Maker zasobu. Ta wartość nie jest taka sama jak klucz punktu końcowego przewidywania.
+* `{your-resource-name}` — **nazwa zasobu** służy do KONSTRUOWANIA adresu URL tworzenia punktu końcowego na potrzeby tworzenia w formacie `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Nie jest to ten sam adres URL służący do wykonywania zapytań dotyczących punktu końcowego przewidywania.
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
 
@@ -66,17 +71,17 @@ Następnie dodaj poniższe funkcje pomocnicze.
 
     [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
 
-3. Dodaj następującą metodę w celu obsługi żądań GET wysyłanych do interfejsów API usługi QnA Maker. W tym przewodniku Szybki start żądanie GET służy do sprawdzenia stanu operacji tworzenia. 
+3. Dodaj następującą metodę w celu obsługi żądań GET wysyłanych do interfejsów API usługi QnA Maker. W tym przewodniku Szybki start żądanie GET służy do sprawdzenia stanu operacji tworzenia.
 
     [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
 
 ## <a name="add-function-to-create-kb"></a>Dodawanie funkcji tworzącej bazę wiedzy
 
-Dodaj następujące funkcje, aby spowodować, że żądanie HTTP POST utworzy bazę wiedzy. **Identyfikator operacji** _create_ jest zwracany w polu **Location** nagłówka odpowiedzi POST, a następnie używany jako część trasy w żądaniu GET. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania. 
+Dodaj następujące funkcje, aby spowodować, że żądanie HTTP POST utworzy bazę wiedzy. **Identyfikator operacji** _tworzenia_ jest zwracany w **lokalizacji**pola nagłówka odpowiedzi post, a następnie używany jako część trasy w żądaniu get. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania.
 
 [!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
 
-To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona. 
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona.
 
 ```JSON
 {
@@ -90,11 +95,11 @@ To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera i
 
 ## <a name="add-function-to-get-status"></a>Dodawanie funkcji pobierającej stan
 
-Dodaj następującą funkcję, aby spowodować, że żądanie HTTP GET sprawdzi stan operacji. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania. 
+Dodaj następującą funkcję, aby spowodować, że żądanie HTTP GET sprawdzi stan operacji. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania.
 
 [!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
 
-Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia: 
+Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 
 ```JSON
 {
@@ -128,9 +133,9 @@ Wprowadź następujące polecenie w wierszu polecenia, aby uruchomić program. P
 go run create-new-knowledge-base
 ```
 
-Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices). 
+Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices).
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

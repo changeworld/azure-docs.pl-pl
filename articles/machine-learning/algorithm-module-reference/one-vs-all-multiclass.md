@@ -1,7 +1,7 @@
 ---
 title: moduł wieloklasowy "jeden przeciw wszystkim"
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu moduł wieloklasowy "jeden przeciw wszystkim" w usłudze Azure Machine Learning do tworzenia wieloklasowego modelu klasyfikacji na podstawie zestawy danych binarnych modeli klasyfikacji.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu moduł wieloklasowy "jeden przeciw wszystkim" w programie Azure Machine Learning do tworzenia wieloklasowego modelu klasyfikacji na podstawie kompletnych modeli klasyfikacji binarnych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 5c59f2865e7ebf768cdd8b80e59d69359f8607c6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf4f176eef502cdd1c68f19904a24bd2500e1302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428511"
 ---
 # <a name="one-vs-all-multiclass"></a>moduł wieloklasowy "jeden przeciw wszystkim"
 
@@ -61,4 +61,4 @@ Alternatywnie, można przekazać [niesprawdzony klasyfikator do modelu krzyżowe
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

@@ -2,19 +2,15 @@
 title: Zarządzanie elementami Runbook w Azure Automation
 description: W tym artykule opisano sposób zarządzania elementami Runbook w programie Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 42b973ce8a25abff60211afb34ef719d42366175
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 42fbb224981123a7cb0f39f07c144b5d2ffbc587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417877"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Zarządzanie elementami Runbook w Azure Automation
 
@@ -108,7 +104,7 @@ Procedura testowania każdego [typu elementu Runbook](automation-runbook-types.m
 
 Podczas tworzenia lub importowania nowego elementu Runbook należy go opublikować przed jego uruchomieniem.  Każdy element Runbook w usłudze Automation ma wersję roboczą i opublikowaną. Opublikowana wersja jest dostępna do uruchomienia, a tylko wersję roboczą można edytować. Wersję opublikowaną nie mają wpływu żadne zmiany wprowadzone w wersji roboczej. Gdy wersja robocza powinna być dostępna, opublikuj ją, która zastępuje opublikowaną wersję wersją roboczą.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 1. Otwórz element Runbook w Azure Portal.
 2. Kliknij przycisk **Edytuj**.

@@ -1,17 +1,17 @@
 ---
-title: Szablony Azure Resource Manager dla Azure Cosmos DB interfejs API tabel
+title: Szablony Menedżer zasobów dla Azure Cosmos DB interfejs API tabel
 description: Utwórz i skonfiguruj Azure Cosmos DB interfejs API tabel za pomocą szablonów Azure Resource Manager.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: bd30f240700ea4dcf9c9ec20b8007a4445ae35e5
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 0f3c4562fde9ac57315c72b89ed156051aea062b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445228"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejs API tabel Azure Cosmos DB przy użyciu szablonów Azure Resource Manager
 

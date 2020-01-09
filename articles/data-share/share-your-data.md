@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438733"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Samouczek: udostępnianie danych za pomocą udziału danych platformy Azure  
 
@@ -47,13 +47,15 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     create user <share_acct_name> from external provider;     
     exec sp_addrolemember db_owner, <share_acct_name>; 
 ```                   
-Należy pamiętać, że *< share_acc_name >* to nazwa konta udziału danych. Jeśli konto udziału danych nie zostało jeszcze utworzone, możesz wrócić do tego wymagania wstępnego później.  
+Należy pamiętać, że *< share_acc_name >* jest nazwą konta udziału danych. Jeśli konto udziału danych nie zostało jeszcze utworzone, możesz wrócić do tego wymagania wstępnego później.  
+
+* [Azure SQL Database użytkownikowi z dostępem `db_owner`](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) do nawigowania i wybierania tabel i/lub widoków, które chcesz udostępnić. 
 
 * Adres IP klienta SQL Server dostęp do zapory: można to zrobić, wykonując następujące kroki: 1. Przejdź do obszarze *zapory i sieci wirtualne* 1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Tworzenie konta udziału danych
 
@@ -99,7 +101,7 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
     ![Zestawy danych](./media/datasets.png "Zestawy danych")
 
-1. Wybierz typ zestawu danych, który chcesz dodać. 
+1. Wybierz typ zestawu danych, który chcesz dodać. W przypadku udostępniania z Azure SQL Database lub usługi Azure SQL DataWarehouse zostanie wyświetlony monit o podanie pewnych poświadczeń SQL. Uwierzytelnianie przy użyciu użytkownika utworzonego w ramach wymagań wstępnych.
 
     ![Adddatasets](./media/add-datasets.png "Dodaj zestawy danych")    
 

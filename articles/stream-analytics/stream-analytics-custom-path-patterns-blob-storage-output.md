@@ -1,7 +1,6 @@
 ---
-title: Usługa Azure Stream Analytics niestandardowych obiektów blob, partycjonowanie danych wyjściowych
-description: W tym artykule opisano niestandardowe wzorców ścieżki daty/godziny i funkcje pola lub atrybuty niestandardowe dla danych wyjściowych z magazynu obiektów blob z zadań usługi Azure Stream Analytics.
-services: stream-analytics
+title: Azure Stream Analytics partycjonowanie niestandardowego obiektu BLOB
+description: W tym artykule opisano niestandardowe wzorce ścieżki DateTime oraz funkcje niestandardowego pola lub atrybutów dla danych wyjściowych usługi BLOB Storage z zadań Azure Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,62 +8,62 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789424"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426383"
 ---
-# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Usługa Azure Stream Analytics niestandardowych obiektów blob, partycjonowanie danych wyjściowych
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics partycjonowanie niestandardowego obiektu BLOB
 
-Usługa Azure Stream Analytics obsługuje danych wyjściowych obiektu blob niestandardowych partycjonowania z polami niestandardowymi lub atrybutów i niestandardowe daty/godziny wzorców ścieżki. 
+Azure Stream Analytics obsługuje partycjonowanie niestandardowego obiektu BLOB przy użyciu niestandardowych pól lub atrybutów oraz niestandardowych wzorców ścieżki DateTime. 
 
-## <a name="custom-field-or-attributes"></a>Pole niestandardowe lub atrybutów
+## <a name="custom-field-or-attributes"></a>Niestandardowe pole lub atrybuty
 
-Pole niestandardowe lub atrybutów wejściowych poprawić podrzędnych przetwarzania danych i raportowanie przepływów pracy, umożliwiając większą kontrolę nad dane wyjściowe.
+Atrybuty pola niestandardowego lub danych wejściowych usprawniają przepływy pracy przetwarzania danych i raportowania przez umożliwienie większej kontroli nad danymi wyjściowymi.
 
 ### <a name="partition-key-options"></a>Opcje klucza partycji
 
-Klucz partycji lub nazwa kolumny, użyty do partycjonowania danych wejściowych może zawierać znaki alfanumeryczne, łączniki, podkreślenia i spacji. Nie jest możliwe użycie zagnieżdżonych pól jako klucza partycji, chyba że używana w połączeniu z użyciem aliasów. Klucz partycji musi być typu NVARCHAR(MAX).
+Klucz partycji lub nazwa kolumny używana do partycjonowania danych wejściowych mogą zawierać znaki alfanumeryczne z łącznikami, podkreśleniami i spacjami. Nie można używać zagnieżdżonych pól jako klucza partycji, chyba że są używane w połączeniu z aliasami. Klucz partycji musi być NVARCHAR (MAX).
 
 ### <a name="example"></a>Przykład
 
-Załóżmy, że wykonanie zadania trwa danych wejściowych z sesji użytkownika na żywo, połączenie z usługą zewnętrznych gry wideo, w którym pozyskiwanych danych zawiera kolumnę **client_id** do identyfikowania sesji. W celu podzielenia danych przez **client_id**, ustawić pole wzorzec ścieżki obiektu Blob, aby zawierać token partycji **{client_id}** we właściwościach danych wyjściowych obiektu blob podczas tworzenia zadania. Jak w przypadku danych z różnymi **client_id** wartości przepływać przez zadanie usługi Stream Analytics, dane wyjściowe są zapisywane w oddzielnych folderach oparta na pojedynczym **client_id** wartość na folder.
+Załóżmy, że zadanie pobiera dane wejściowe z sesji użytkownika na żywo połączone z zewnętrzną usługą gier wideo, w której pozyskiwane dane zawierają kolumnę **client_id** do identyfikowania sesji. Aby podzielić dane przez **client_id**, należy ustawić pole wzorca ścieżki obiektu BLOB w celu uwzględnienia tokenu partycji **{client_id}** we właściwościach danych wyjściowych obiektu BLOB podczas tworzenia zadania. Jako że dane zawierające różne wartości **client_id** przepływają przez zadanie Stream Analytics, dane wyjściowe są zapisywane w oddzielnych folderach na podstawie pojedynczej **client_id** wartości dla każdego folderu.
 
 ![Wzorzec ścieżki z identyfikatorem klienta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-Podobnie gdy zadanie wejściowe został danych z czujników z milionów urządzeń, czujników, gdzie czujnik każdego miał **sensor_id**, byłoby wzorzec ścieżki **{sensor_id}** do partycjonowania poszczególnych danych czujnika do różnych folderów.  
+Podobnie, jeśli dane wejściowe zadania były danymi czujnika z milionów czujników, w których każdy czujnik miał **sensor_id**, wzorzec ścieżki będzie **{sensor_id}** do partycjonowania poszczególnych danych czujników w różnych folderach.  
 
 
-Za pomocą interfejsu API REST części danych wyjściowych JSON plik używany dla tego żądania może wyglądać następująco:  
+W przypadku korzystania z interfejsu API REST sekcja Output pliku JSON użyta dla tego żądania może wyglądać następująco:  
 
-![Dane wyjściowe z interfejsu API REST](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+![Wyjście interfejsu API REST](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
 
-Gdy zadanie zacznie działać, *klientów* kontener może wyglądać podobnie do następującego:  
+Po uruchomieniu zadania kontener *klienci* może wyglądać następująco:  
 
 ![Kontener klientów](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
 
-Każdy folder może zawierać wiele obiektów blob, w których każdy obiekt blob zawiera jeden lub więcej rekordów. W powyższym przykładzie istnieje pojedynczy obiekt blob w folderze oznaczone jako "06000000" z następującą zawartością:
+Każdy folder może zawierać wiele obiektów blob, w których każdy obiekt BLOB zawiera jeden lub więcej rekordów. W powyższym przykładzie istnieje pojedynczy obiekt BLOB w folderze o nazwie "06000000" z następującą zawartością:
 
-![Zawartość obiektu blob](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
+![Zawartość obiektu BLOB](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
 
-Należy zauważyć, że każdy rekord w obiekcie blob ma **client_id** kolumny dopasowania folder nazw, ponieważ został kolumn użyty do partycjonowania danych wyjściowych w ścieżce wyjściowej **client_id**.
+Zwróć uwagę, że każdy rekord w obiekcie blob ma **client_id** kolumnę pasującą do nazwy folderu, ponieważ kolumna używana do partycjonowania danych wyjściowych w ścieżce danych wyjściowych została **client_id**.
 
 ### <a name="limitations"></a>Ograniczenia
 
-1. Tylko jeden niestandardowego klucza partycji jest dozwolone w właściwości danych wyjściowych obiektu blob wzorzec ścieżki. Wszystkie z następujących wzorców ścieżki są prawidłowe:
+1. W właściwości Output obiektu BLOB wzorca ścieżki jest dozwolony tylko jeden klucz partycji niestandardowej. Wszystkie następujące wzorce ścieżki są prawidłowe:
 
-   * Klaster1 / {date} / {aFieldInMyData}  
-   * Klaster1 / {time} / {aFieldInMyData}  
-   * Klaster1 / {aFieldInMyData}  
-   * Klaster1 / {date} / {time} / {aFieldInMyData} 
+   * Klaster1/{Date}/{aFieldInMyData}  
+   * Klaster1/{Time}/{aFieldInMyData}  
+   * Klaster1/{aFieldInMyData}  
+   * Klaster1/{Date}/{Time}/{aFieldInMyData} 
    
-2. Klucze partycji są bez uwzględniania wielkości liter, dlatego klucze partycji, takich jak "John" i "john" są równoważne. Ponadto wyrażenia nie może służyć jako klucze partycji. Na przykład **{columnA + columnB}** nie działa.  
+2. W kluczach partycji nie jest rozróżniana wielkość liter, dlatego klucze partycji, takie jak "Jan" i "Jan", są równoważne. Wyrażenia nie mogą być również używane jako klucze partycji. Na przykład **{ColumnA + ColumnB}** nie działa.  
 
-3. Gdy strumień wejściowy składa się z rekordów z kardynalnością klucza partycji w obszarze 8000, rekordy zostaną dołączone do istniejących obiektów blob i tylko tworzyć nowe obiekty BLOB, gdy jest to konieczne. Jeśli kardynalność jest za pośrednictwem 8000 ma żadnej gwarancji, istniejące obiekty BLOB zostaną zapisane i nowe obiekty BLOB nie będzie można utworzyć dowolną liczbę rekordów z tym samym kluczem partycji.
+3. Gdy strumień wejściowy składa się z rekordów z kardynalnością klucza partycji poniżej 8000, rekordy będą dołączane do istniejących obiektów blob i w razie potrzeby tworzyć nowe obiekty blob. Jeśli Kardynalność przekracza 8000, nie ma gwarancji, że istniejące obiekty blob zostaną zapisane w programie, a nowe obiekty blob nie zostaną utworzone dla dowolnej liczby rekordów z tym samym kluczem partycji.
 
-## <a name="custom-datetime-path-patterns"></a>Niestandardowe wzorców ścieżki daty/godziny
+## <a name="custom-datetime-path-patterns"></a>Niestandardowe wzorce ścieżki DateTime
 
 Zezwalaj na niestandardowe wzorców ścieżki daty/godziny, można określić format danych wyjściowych, była zgodna z konwencjami Hive przesyłania strumieniowego, co daje możliwość wysyłania danych do usługi Azure HDInsight i Azure Databricks dla podrzędnych przetwarzania usługi Azure Stream Analytics. Niestandardowe wzorców ścieżki daty/godziny są łatwo zaimplementować przy użyciu `datetime` — słowo kluczowe w polu Prefiks ścieżki obiektu blob danych wyjściowych, wraz ze specyfikatora formatu. Na przykład `{datetime:yyyy}`.
 
@@ -130,6 +129,6 @@ Podczas uruchamiania zadania strukturę folderów na podstawie wzorca ścieżki 
 
 ![Stream Analytics obiektu blob danych wyjściowych za pomocą wzorzec ścieżki niestandardowej](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zrozumieć dane wyjściowe z usługi Azure Stream Analytics](stream-analytics-define-outputs.md)

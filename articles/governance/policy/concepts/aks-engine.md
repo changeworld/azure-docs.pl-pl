@@ -3,16 +3,16 @@ title: Uczenie Azure Policy aparatu AKS
 description: Dowiedz się, w jaki sposób Azure Policy CustomResourceDefinitions i Otwórz agenta zasad z strażnik v3, aby zarządzać klastrami z aparatem AKS.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436423"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Opis Azure Policy aparatu AKS
 
-Azure Policy integruje się z [aparatem AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md), system, który zapewnia wygodne narzędzia umożliwiające szybkie uruchomienie samozarządzanego klastra Kubernetes na platformie Azure. Ta Integracja umożliwia wymuszanie skalowania i ochronę w przypadku klastrów samodzielnego zarządzania aparatem AKS w scentralizowany, spójny sposób. Rozszerzając użycie [agenta Open Policy Agent](https://www.openpolicyagent.org/) (nieprzez) w [wersji v3 (beta),](https://github.com/open-policy-agent/gatekeeper) _elementu webhook kontrolera przyjęcia_ dla Kubernetes, Azure Policy umożliwia zarządzanie stanem zgodności zasobów platformy Azure i aparatu AKS oraz raportowanie go. klastry z własnym zarządzaniem z jednego miejsca.
+Azure Policy integruje się z [aparatem AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md), system, który zapewnia wygodne narzędzia umożliwiające szybkie uruchomienie samozarządzanego klastra Kubernetes na platformie Azure. Ta Integracja umożliwia wymuszanie skalowania i ochronę w przypadku klastrów samodzielnego zarządzania aparatem AKS w scentralizowany, spójny sposób. Rozszerzając użycie programu [Open Policy Agent](https://www.openpolicyagent.org/) (nieprzez) — [strażnik](https://github.com/open-policy-agent/gatekeeper) v3 (beta), _elementu webhook kontrolera systemu Admission_ dla Kubernetes, Azure Policy umożliwia zarządzanie stanem zgodności zasobów platformy Azure i klastrami z własnym programem AKS Engine z jednego miejsca.
 
 > [!NOTE]
 > Azure Policy dla aparatu AKS jest w publicznej wersji zapoznawczej i nie ma umowy SLA. Program strażnik V3 jest w wersji beta i jest obsługiwany przez społeczność programu Open Source. Usługa obsługuje tylko wbudowane definicje zasad i pojedynczy klaster aparatu AKS dla każdej grupy zasobów skonfigurowanej przy użyciu nazwy głównej usługi.
@@ -20,7 +20,7 @@ Azure Policy integruje się z [aparatem AKS](https://github.com/Azure/aks-engine
 > [!IMPORTANT]
 > Aby uzyskać pomoc techniczną dotyczącą Azure Policy aparatu AKS, aparatu AKS lub strażnika v3, Utwórz [nowy problem](https://github.com/Azure/aks-engine/issues/new/choose) w repozytorium GITHUB aparatu AKS.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby włączyć i używać Azure Policy dla aparatu AKS z własnym zarządzanym klastrem Kubernetes na platformie Azure, wykonaj następujące czynności:
 
@@ -33,7 +33,7 @@ Aby włączyć i używać Azure Policy dla aparatu AKS z własnym zarządzanym k
 
 Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji usługi subskrypcja musi włączyć dostawcę zasobów **Microsoft. PolicyInsights** i utworzyć przypisanie roli dla jednostki usługi klastra. 
 
-1. Aby włączyć dostawcę zasobów, postępuj zgodnie z instrukcjami w obszarze [dostawcy zasobów i typy](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) lub Uruchom interfejs wiersza polecenia platformy Azure lub Azure PowerShell polecenie:
+1. Aby włączyć dostawcę zasobów, postępuj zgodnie z instrukcjami w obszarze [dostawcy zasobów i typy](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) lub Uruchom interfejs wiersza polecenia platformy Azure lub Azure PowerShell polecenie:
 
    - Interfejs wiersza polecenia platformy Azure
 
@@ -44,7 +44,7 @@ Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji us�
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
-   - Azure PowerShell
+   - Program Azure PowerShell
    
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -233,7 +233,7 @@ Aby usunąć dodatek Azure Policy i strażnika z klastra aparatu AKS, użyj meto
 
   1. Usuń stare ograniczenia
 
-     Obecnie mechanizm odinstalowywania usuwa jedynie system strażnika, nie usuwa żadnych zasobów _ConstraintTemplate_, _ograniczeń_ani _konfiguracji_ , które zostały utworzone przez użytkownika, ani nie usuwa ich towarzyszącego _CRDs_ .
+     Obecnie mechanizm odinstalowywania usuwa jedynie system strażnika, nie usuwa żadnych zasobów _ConstraintTemplate_, _ograniczeń_ani _konfiguracji_ , które zostały utworzone przez użytkownika, ani nie usuwa ich towarzyszącego _CRDs_.
 
      Gdy strażnik jest uruchomiony, można usunąć niepożądane ograniczenia przez:
 

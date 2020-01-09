@@ -1,32 +1,23 @@
 ---
-title: Monitorowanie klastra Service Fabric na platformie Azure | Microsoft Docs
+title: Monitorowanie klastra Service Fabric na platformie Azure
 description: W tym samouczku dowiesz się, jak monitorować klaster, wyświetlając Service Fabric zdarzenia, wykonując zapytania dotyczące interfejsów API EventStore, monitorowania liczników wydajności i wyświetlania raportów o kondycji.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385275"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376634"
 ---
-# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Samouczek: Monitorowanie klastra Service Fabric na platformie Azure
+# <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Samouczek: monitorowanie klastra Service Fabric na platformie Azure
 
 Monitorowanie i Diagnostyka mają kluczowe znaczenie dla opracowywania, testowania i wdrażania obciążeń w dowolnym środowisku chmury. Ten samouczek jest drugą częścią serii i pokazuje, jak monitorować i diagnozować klaster Service Fabric przy użyciu zdarzeń, liczników wydajności i raportów kondycji.   Aby uzyskać więcej informacji, zapoznaj się z omówieniem [monitorowanie klastra](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) i [monitorowanie infrastruktury](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring).
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wyświetlanie zdarzeń Service Fabric
@@ -219,7 +210,7 @@ Niezawodne zdarzenia aktora można wyświetlać w podobny sposób:
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-Aby skonfigurować bardziej szczegółowe zdarzenia dla niezawodnych aktorów, można `scheduledTransferKeywordFilter` zmienić w pliku config dla rozszerzenia diagnostyki w szablonie klastra. Szczegółowe informacje na temat tych wartości znajdują się w odniesieniu do [zdarzeń](service-fabric-reliable-actors-diagnostics.md#keywords)niezawodnych aktorów.
+Aby skonfigurować bardziej szczegółowe zdarzenia dla niezawodnych aktorów, można zmienić `scheduledTransferKeywordFilter` w konfiguracji dla rozszerzenia diagnostyki w szablonie klastra. Szczegółowe informacje na temat tych wartości znajdują się w [odniesieniu do zdarzeń niezawodnych aktorów](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [

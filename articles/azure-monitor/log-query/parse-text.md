@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 5a3b6852563955bfac940073bdda7d0afa02e77f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 82ad197a1f64040dfb91aa73d7a6dfd4210f99a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365278"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Analizowanie danych tekstowych w dziennikach Azure Monitor
 Niektóre dane dziennika zbierane przez Azure Monitor będą zawierać wiele informacji w jednej właściwości. Analizowanie tych danych w wielu właściwościach ułatwia korzystanie z nich w zapytaniach. Typowym przykładem jest [Dziennik niestandardowy](../../log-analytics/log-analytics-data-sources-custom-logs.md) , który zbiera cały wpis dziennika z wieloma wartościami w jednej właściwości. Tworząc osobne właściwości różnych wartości, można wyszukiwać i agregowania na każdej z nich.
@@ -138,8 +138,8 @@ MyCustomCSVLog_CL
 Jeśli dane są sformatowane w znanej strukturze, może być możliwe użycie jednej z funkcji w [języku zapytań Kusto](/azure/kusto/query/) do analizowania wstępnie zdefiniowanych struktur:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
-- [DOKUMENT](/azure/kusto/query/parse-xmlfunction)
-- [Adresów](/azure/kusto/query/parse-ipv4function)
+- [XML](/azure/kusto/query/parse-xmlfunction)
+- [IPv4](/azure/kusto/query/parse-ipv4function)
 - [Adres URL](/azure/kusto/query/parseurlfunction)
 - [Zapytanie URL](/azure/kusto/query/parseurlqueryfunction)
 - [Ścieżka pliku](/azure/kusto/query/parsepathfunction)
@@ -189,4 +189,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Informacje na temat [zapytań dzienników](log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.
+* Dowiedz się więcej o [rejestrowania zapytań](log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.

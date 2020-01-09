@@ -3,12 +3,12 @@ title: 'Szybki Start: Tworzenie strategii w portalu'
 description: W tym przewodniku szybki start używasz planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów za pomocą Azure Portal.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436614"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki Start: Definiowanie i Przypisywanie planu w portalu
 
@@ -268,7 +268,9 @@ Teraz, gdy plan został przypisany do subskrypcji, sprawdź postęp wdrożenia:
 
 1. Na stronie **przypisanie** strategii Sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone i czy nie wystąpiły żadne błędy podczas wdrażania. Jeśli wystąpią błędy, zobacz tematy dotyczące [rozwiązywania problemów](./troubleshoot/general.md) , aby określić, co poszło źle.
 
-## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+### <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
 Jeśli nie potrzebujesz już przypisania planu, usuń je z subskrypcji. Plan mógł zostać zastąpiony przez nowszy plan z zaktualizowanymi wzorcami, zasadami i projektami. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następujące kroki:
 
@@ -278,7 +280,7 @@ Jeśli nie potrzebujesz już przypisania planu, usuń je z subskrypcji. Plan mó
 
 1. Przeczytaj komunikat z potwierdzeniem, a następnie wybierz przycisk **OK**.
 
-## <a name="delete-a-blueprint"></a>Usuwanie strategii
+### <a name="delete-a-blueprint"></a>Usuwanie strategii
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 

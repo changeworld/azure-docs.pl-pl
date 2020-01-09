@@ -2,19 +2,15 @@
 title: Migrowanie wdrożeń aktualizacji pakietu OMS do platformy Azure
 description: W tym artykule opisano sposób migrowania istniejących wdrożeń aktualizacji pakietu OMS na platformę Azure
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 08b3f11f3e44c6580df9942aab2a890115c79ba3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417777"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Migrowanie wdrożeń aktualizacji pakietu OMS do platformy Azure
 

@@ -1,7 +1,7 @@
 ---
 title: 'Konwertuj na zestaw danych: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu konwersji do zestawu danych w usłudze Azure Machine Learning, aby konwertować dane wejściowe do wewnętrznego formatu zestawu danych używanego przez Microsoft Azure Machine Learning.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu Konwertuj do zestawu danych w Azure Machine Learning, aby konwertować dane wejściowe do wewnętrznego formatu zestawu danych używanego przez Microsoft Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 81eb71da43623f6478e267f55d6576789d494f9b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428571"
 ---
-# <a name="convert-to-dataset"></a>Konwertuj na zestaw danych
+# <a name="convert-to-dataset"></a>Konwertowanie na zestaw danych
 
 W tym artykule opisano, jak używać modułu Konwertuj do zestawu danych w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu przekonwertowania wszelkich danych dla potoku do wewnętrznego formatu projektanta.
   
@@ -70,4 +70,4 @@ Zalecamy użycie modułu [Edytowanie metadanych](edit-metadata.md) w celu przygo
   
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

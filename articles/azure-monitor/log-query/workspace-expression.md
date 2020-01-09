@@ -1,18 +1,17 @@
 ---
 title: wyrażenie Workspace () w kwerendzie dziennika Azure Monitor | Microsoft Docs
 description: Wyrażenie obszaru roboczego jest używane w zapytaniu dziennika Azure Monitor do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupie zasobów lub innej subskrypcji.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932854"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364955"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>wyrażenie obszaru roboczego () w zapytaniu dziennika Azure Monitor
 
@@ -27,11 +26,11 @@ Wyrażenie `workspace` jest używane w zapytaniu Azure Monitor do pobierania dan
 
 - *Identyfikator*: określa obszar roboczy przy użyciu jednego z formatów w poniższej tabeli.
 
-| Identyfikatora | Opis | Przykład
+| Identyfikator | Opis | Przykład
 |:---|:---|:---|
 | Nazwa zasobu | Czytelna dla człowieka nazwa obszaru roboczego ("Nazwa składnika") | obszar roboczy ("ContosoRetail") |
-| Kwalifikowana nazwa | Pełna nazwa obszaru roboczego w postaci: "subscriptionname/resourceName/ComponentName" | obszar roboczy ("contoso/ContosoResource/ContosoWorkspace") |
-| ID | Identyfikator GUID obszaru roboczego | obszar roboczy ("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| Kwalifikowana nazwa | Pełna nazwa obszaru roboczego w postaci: "subscriptionname/resourceName/ComponentName" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
+| ID | Identyfikator GUID obszaru roboczego | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure | obszar roboczy ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 

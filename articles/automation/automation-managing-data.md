@@ -2,19 +2,15 @@
 title: Zarządzanie danymi usługi Azure Automation
 description: Ten artykuł zawiera wiele tematów dotyczących zarządzania środowiskiem Azure Automation.  Obecnie obejmuje przechowywanie danych i wykonywanie kopii zapasowych Azure Automation odzyskiwania po awarii w Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: daa5bab7c8d4cbe98ffe9a8a8a4b66da029fef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850775"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421885"
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
 Ten artykuł zawiera wiele tematów dotyczących zarządzania środowiskiem Azure Automation.
@@ -32,7 +28,7 @@ Poniższa tabela zawiera podsumowanie zasad przechowywania dla różnych zasobó
 | Elementy zawartości |Trwale usunięto 90 dni po usunięciu zasobu przez użytkownika lub 90 dni po usunięciu zasobu przez użytkownika. |
 | Moduły |Trwale usunięto 90 dni po usunięciu modułu przez użytkownika lub 90 dni po usunięciu przez użytkownika konta, które przechowuje moduł. |
 | Elementy Runbook |Trwale usunięto 90 dni od momentu usunięcia zasobu przez użytkownika lub 90 dni po usunięciu zasobu przez użytkownika. |
-| Stanowiska |Usunięte i trwale usunięte 90 dni po ostatniej modyfikacji. Może to być po zakończeniu zadania, zostanie zatrzymane lub wstrzymane. |
+| Zadania |Usunięte i trwale usunięte 90 dni po ostatniej modyfikacji. Może to być po zakończeniu zadania, zostanie zatrzymane lub wstrzymane. |
 | Konfiguracje węzłów/pliki MOF |Konfiguracja starego węzła została trwale usunięta 90 dni po wygenerowaniu nowej konfiguracji węzła. |
 | Węzły DSC |Trwale usunięto 90 dni po wyrejestrowaniu węzła z konta usługi Automation przy użyciu Azure Portal lub polecenia cmdlet [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) w programie Windows PowerShell. Węzły są również trwale usuwane 90 dni po usunięciu przez użytkownika konta, które przechowuje węzeł. |
 | Raporty węzła |Trwale usunięto 90 dni od momentu wygenerowania nowego raportu dla tego węzła |

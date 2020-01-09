@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038105"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436812"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurowanie sieci VPN lokacja lokacja za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute
 
@@ -130,7 +130,7 @@ Na poniższym diagramie przedstawiono omówienie abstrakcyjną przykładowej sie
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>Przykłady szablonów usługi Azure Resource Manager — informacje
 
-W przykładach bramy sieci VPN i zakończeń tunelu IPsec są skonfigurowane przy użyciu szablonu usługi Azure Resource Manager. Jeśli jesteś nowym użytkownikiem przy użyciu szablonów usługi Resource Manager, lub podstawy szablonu usługi Resource Manager, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Ten szablon w tej sekcji tworzy rozwiązanie środowiska platformy Azure (VNet). Jednak jeśli masz istniejącej sieci wirtualnej, można się odwołać je w szablonie. Jeśli użytkownik nie jest zaznajomiony z konfiguracjami lokacja lokacja protokołu IPsec/IKE bramy sieci VPN, zobacz [utworzyć połączenie lokacja lokacja](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+W przykładach bramy sieci VPN i zakończeń tunelu IPsec są skonfigurowane przy użyciu szablonu usługi Azure Resource Manager. Jeśli jesteś nowym użytkownikiem przy użyciu szablonów usługi Resource Manager, lub podstawy szablonu usługi Resource Manager, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Ten szablon w tej sekcji tworzy rozwiązanie środowiska platformy Azure (VNet). Jednak jeśli masz istniejącej sieci wirtualnej, można się odwołać je w szablonie. Jeśli użytkownik nie jest zaznajomiony z konfiguracjami lokacja lokacja protokołu IPsec/IKE bramy sieci VPN, zobacz [utworzyć połączenie lokacja lokacja](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
 >Nie trzeba za pomocą szablonów usługi Azure Resource Manager, aby można było utworzyć tej konfiguracji. Można utworzyć tej konfiguracji, za pomocą witryny Azure portal lub programu PowerShell.
@@ -360,7 +360,7 @@ Brama sieci VPN platformy Azure jest zgodna z wielu urządzeń sieci VPN od ró�
 
 Podczas konfigurowania urządzenia sieci VPN, potrzebne są następujące elementy:
 
-* Klucz wspólny. Jest to ten sam klucz współużytkowany, którego należy określić podczas tworzenia połączenia sieci VPN typu lokacja lokacja. W przykładach użyto podstawowego klucza współużytkowanego. Zalecamy, aby do użycia wygenerować bardziej złożony klucz.
+* Klucz współużytkowany. Jest to ten sam klucz współużytkowany, którego należy określić podczas tworzenia połączenia sieci VPN typu lokacja lokacja. W przykładach użyto podstawowego klucza współużytkowanego. Zalecamy, aby do użycia wygenerować bardziej złożony klucz.
 * Publiczny adres IP bramy sieci VPN. Publiczny adres IP można wyświetlić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia. Aby znaleźć publiczny adres IP bramy sieci VPN przy użyciu witryny Azure portal, przejdź do bramy sieci wirtualnej, a następnie kliknij nazwę bramy.
 
 Zazwyczaj eBGP elementów równorzędnych były bezpośrednio podłączone (często w ciągu połączenia WAN). Konfigurując eBGP za pośrednictwem tuneli IPsec sieci VPN za pośrednictwem komunikacji równorzędnej firmy Microsoft usługi ExpressRoute, istnieją jednak wiele domen routingu między komputerami równorzędnymi eBGP. Użyj **wielokrotnego przeskoku ebgp** polecenie, aby ustanowić relację sąsiada eBGP między tymi dwoma nie-bezpośrednio połączonych elementów równorzędnych. Liczba całkowita, która następuje po wielokrotnego przeskoku ebgp polecenia określa wartość czasu wygaśnięcia w pakiety protokołu BGP. Polecenie **eibgp ścieżki maksymalnie 2** umożliwia równoważenie obciążenia ruchem między tych dwóch ścieżek protokołu BGP.

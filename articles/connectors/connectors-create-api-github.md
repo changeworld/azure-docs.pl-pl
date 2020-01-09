@@ -1,20 +1,20 @@
 ---
-title: Łączenie z usługą GitHub
-description: Monitoruj zdarzenia usługi GitHub za pomocą interfejsów API REST usługi GitHub i Azure Logic Apps
+title: Dostęp do repozytorium GitHub i zarządzanie nim
+description: Monitoruj zdarzenia usługi GitHub i Zarządzaj repozytorium GitHub, tworząc zautomatyzowane przepływy pracy za pomocą Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789754"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378453"
 ---
-# <a name="connect-to-github-from-azure-logic-apps"></a>Łączenie z usługą GitHub z Azure Logic Apps
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Monitorowanie repozytorium GitHub i zarządzanie nim za pomocą Azure Logic Apps
 
 GitHub to usługa hostingu repozytorium git oparta na sieci Web, która oferuje wszystkie rozproszone funkcje kontroli poprawek i zarządzania kodem źródłowym (SCM) w systemie Git oraz inne funkcje.
 

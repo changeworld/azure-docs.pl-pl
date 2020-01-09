@@ -9,37 +9,57 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: a7114044f5e29af4bbf8e7c38b390b833ac818ec
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2b3ec7611fec779fcd387f45204f2e1cada1161c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447656"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka C#
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>Szybki Start: Tworzenie bazy wiedzy w QnA Maker przy C# użyciu usługi REST
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie i publikowanie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie i publikowanie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API.
 
 Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
-* [Tworzenie bazy wiedzy](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Tworzenie bazy wiedzy](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Pobieranie szczegółów operacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
-* [Publikowanie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
+
+[Dokumentacja referencyjna](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [ C# przykład](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Najnowsza [**wersja programu Visual Studio Community**](https://www.visualstudio.com/downloads/).
-* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal. 
+* Bieżąca wersja [platformy .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Musisz mieć [zasób QNA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
 
-> [!NOTE] 
-> Pliki kompletnego rozwiązania są dostępne w [repozytorium GitHub **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
+### <a name="create-a-new-c-application"></a>Utwórz nową C# aplikację
 
-## <a name="create-a-knowledge-base-project"></a>Tworzenie projektu bazy wiedzy
+Utwórz nową aplikację platformy .NET Core w preferowanym edytorze lub środowisku IDE.
 
-[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj polecenia `dotnet new`, aby utworzyć nową aplikację konsolową o nazwie `qna-maker-quickstart`. To polecenie tworzy prosty projekt "Hello world" C# z pojedynczym plikiem źródłowym: *program.cs*.
+
+```dotnetcli
+dotnet new console -n qna-maker-quickstart
+```
+
+Zmień katalog na nowo utworzony folder aplikacji. Aplikację można skompilować przy użyciu:
+
+```dotnetcli
+dotnet build
+```
+
+Dane wyjściowe kompilacji nie powinny zawierać ostrzeżeń ani błędów.
+
+```console
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
 
 ## <a name="add-the-required-dependencies"></a>Dodawanie wymaganych zależności
 
@@ -49,7 +69,12 @@ Na początku pliku Program.cs zastąp pojedynczą instrukcję using następując
 
 ## <a name="add-the-required-constants"></a>Dodawanie wymaganych stałych
 
-W górnej części klasy Program dodaj następujące stałe, aby uzyskać dostęp do usługi QnA Maker:
+W górnej części klasy program Dodaj wymagane stałe, aby uzyskać dostęp do QnA Maker.
+
+Ustaw następujące wartości w zmiennych środowiskowych:
+
+* `QNA_MAKER_SUBSCRIPTION_KEY` — **klucz** jest ciągiem znaków 32 i jest dostępny w Azure Portal, na QNA Maker zasobu na stronie szybkiego startu. Ta wartość nie jest taka sama jak klucz punktu końcowego przewidywania.
+* `QNA_MAKER_ENDPOINT` — **punkt końcowy** to adres URL do tworzenia w formacie `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Nie jest to ten sam adres URL służący do wykonywania zapytań dotyczących punktu końcowego przewidywania.
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-26 "Add the required constants")]
 
@@ -72,7 +97,7 @@ Poniższy kod umożliwia wysłanie żądania HTTPS do interfejsu API usługi QnA
 
 [!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=101-122 "Add a POST request to create KB")]
 
-To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona. 
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona.
 
 ```JSON
 {
@@ -92,7 +117,7 @@ Sprawdź stan operacji.
 
 [!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=124-143 "Add GET request to determine creation status")]
 
-To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera stan operacji: 
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera stan operacji:
 
 ```JSON
 {
@@ -104,7 +129,7 @@ To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera s
 }
 ```
 
-Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia: 
+Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 
 ```JSON
 {
@@ -119,7 +144,7 @@ Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 
 ## <a name="add-createkb-method"></a>Dodawanie metody CreateKB
 
-Poniższa metoda tworzy bazę wiedzy i powtarza sprawdzanie stanu.  **Identyfikator operacji** _create_ jest zwracany w polu **Location** nagłówka odpowiedzi POST, a następnie używany jako część trasy w żądaniu GET. Tworzenie bazy wiedzy może nieco potrwać, dlatego musisz powtarzać wywołania sprawdzenia stanu do czasu uzyskania stanu powodzenia lub niepowodzenia. Po pomyślnym zakończeniu operacji identyfikator bazy wiedzy jest zwracany w elemencie **resourceLocation**. 
+Poniższa metoda tworzy bazę wiedzy i powtarza sprawdzanie stanu.  **Identyfikator operacji** _tworzenia_ jest zwracany w **lokalizacji**pola nagłówka odpowiedzi post, a następnie używany jako część trasy w żądaniu get. Tworzenie bazy wiedzy może nieco potrwać, dlatego musisz powtarzać wywołania sprawdzenia stanu do czasu uzyskania stanu powodzenia lub niepowodzenia. Po pomyślnym zakończeniu operacji identyfikator bazy wiedzy jest zwracany w elemencie **resourceLocation**.
 
 [!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=189-254 "Add CreateKB method")]
 
@@ -133,10 +158,10 @@ Zmień metodę Main, aby wywołać metodę CreateKB:
 
 Skompiluj i uruchom program. Program automatycznie wyśle żądanie do interfejsu API usługi QnA Maker, aby utworzyć bazę wiedzy, a następnie będzie sondować wyniki co 30 sekund. Każda odpowiedź jest wypisywana w oknie konsoli.
 
-Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices). 
+Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices).
 
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

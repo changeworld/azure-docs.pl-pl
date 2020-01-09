@@ -3,12 +3,12 @@ title: 'Szybki Start: Tworzenie strategii przy użyciu programu PowerShell'
 description: W tym przewodniku szybki start używasz planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów przy użyciu programu PowerShell.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436636"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu programu PowerShell
 
@@ -379,7 +379,9 @@ Po opublikowaniu planu przy użyciu programu PowerShell można go przypisać do 
      > [!IMPORTANT]
      > Strategie nie zarządzają tożsamością przypisaną przez użytkownika. Użytkownicy są odpowiedzialni za przypisywanie wystarczających ról i uprawnień — w przeciwnym razie przypisanie strategii kończy się niepowodzeniem.
 
-## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+### <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
 Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, gdy zasoby artefaktu przestają być potrzebne. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie planu, użyj `Remove-AzBlueprintAssignment` polecenia cmdlet:
 

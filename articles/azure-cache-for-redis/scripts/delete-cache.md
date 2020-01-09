@@ -1,19 +1,19 @@
 ---
-title: Przykładowy skrypt wiersza polecenia platformy Azure — usuwania pamięci podręcznej Azure redis Cache
-description: Przykładowy skrypt wiersza polecenia platformy Azure — usuwania pamięci podręcznej Azure redis Cache
+title: Usuwanie pamięci podręcznej platformy Azure dla programu Redis — interfejs wiersza polecenia platformy Azure
+description: Ten przykładowy kod interfejsu wiersza polecenia platformy Azure pokazuje, jak usunąć wystąpienie usługi Azure cache for Redis za pomocą polecenia AZ Redis Delete.
 author: yegu-ms
+ms.author: yegu
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: a2884fd326b6091680b8d81a905f3ee3320a2740
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e5178ab4069cc5ffa8607c5feea6ffac86284a5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411079"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Usunięcie pamięci podręcznej Azure redis Cache
 

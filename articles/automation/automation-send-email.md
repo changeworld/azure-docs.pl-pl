@@ -2,25 +2,21 @@
 title: Wyślij wiadomość e-mail z elementu Runbook Azure Automation
 description: Dowiedz się, jak wysyłać wiadomości e-mail z poziomu elementu Runbook za pomocą usługi SendGrid.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/15/2019
 ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 8550635b581eb944719c39cc8c195859a2c9e868
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420705"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Samouczek: wysyłanie wiadomości e-mail z Azure Automation elementu Runbook
 
 Możesz wysłać wiadomość e-mail z elementu Runbook za pomocą usługi [SendGrid](https://sendgrid.com/solutions) przy użyciu programu PowerShell. W tym samouczku przedstawiono sposób tworzenia elementu Runbook wielokrotnego użytku, który wysyła wiadomość e-mail przy użyciu klucza interfejsu API przechowywanego w [magazynie kluczy platformy Azure](/azure/key-vault/).
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
@@ -156,7 +152,7 @@ Użyj tego przykładu, aby utworzyć element Runbook o nazwie **send-GridMailMes
 Aby sprawdzić, czy element Runbook został wykonany pomyślnie, możesz wykonać czynności opisane w sekcji [testowanie elementu Runbook](manage-runbooks.md#test-a-runbook) lub [Uruchamianie elementu Runbook](start-runbooks.md).
 Jeśli nie widzisz początkowo testową pocztą e-mail, Sprawdź foldery **wiadomości-śmieci** i **spamu** .
 
-## <a name="clean-up"></a>Wyczyść
+## <a name="clean-up"></a>Oczyść
 
 Gdy element runbook nie będzie już potrzebny, usuń go. Aby to zrobić, zaznacz element runbook na liście i kliknij pozycję **Usuń**.
 

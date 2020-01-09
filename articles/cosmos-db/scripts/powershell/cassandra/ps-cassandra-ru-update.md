@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell skryptu — Azure Cosmos DB aktualizacji RU/s dla interfejs API Cassandra
+title: Skrypt programu PowerShell służący do aktualizowania RU/s w zasobach interfejs API Cassandra Azure Cosmos DB
 description: Dowiedz się, jak za pomocą skryptu programu PowerShell zaktualizować przepływność dla przestrzeni kluczy lub tabeli w Azure Cosmos DB interfejs API Cassandra
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 417ee8d839e65a7625b8ba8daa84cc0dcc41abf5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4f81f278c87b096b2dae844252229fb1dee45599
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445063"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Zaktualizuj RU/s dla przestrzeni kluczy lub tabeli dla Azure Cosmos DB-interfejs API Cassandra
 

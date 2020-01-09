@@ -1,17 +1,17 @@
 ---
-title: Skrypt Azure PowerShell — Tworzenie konta usługi Azure Cosmos za pomocą zapory IP
+title: Skrypt programu PowerShell do tworzenia konta usługi Azure Cosmos za pomocą zapory IP
 description: Przykładowy skrypt Azure PowerShell — Tworzenie konta usługi Azure Cosmos za pomocą zapory IP
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: c0e7d2b4fe1e63b468a4ef8c88310c5d7e115ebe
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 6f018815bb8afd50bd9f21f8c088fd688ace1174
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445084"
 ---
 # <a name="create-an-azure-cosmos-account-with-ip-firewall"></a>Tworzenie konta usługi Azure Cosmos za pomocą zapory IP
 

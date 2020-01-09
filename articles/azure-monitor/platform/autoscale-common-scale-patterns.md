@@ -1,64 +1,60 @@
 ---
-title: Omówienie typowe wzorce skalowania automatycznego
-description: Dowiedz się, niektóre typowe wzorce automatycznego skalowania zasobu na platformie Azure.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Przegląd typowych wzorców autoskalowania
+description: Zapoznaj się z typowymi wzorcami, aby automatycznie skalować zasoby na platformie Azure.
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534254"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396090"
 ---
-# <a name="overview-of-common-autoscale-patterns"></a>Omówienie typowe wzorce skalowania automatycznego
-W tym artykule opisano niektóre typowe wzorce skalowania zasobu na platformie Azure.
+# <a name="overview-of-common-autoscale-patterns"></a>Przegląd typowych wzorców autoskalowania
+W tym artykule opisano niektóre typowe wzorce umożliwiające skalowanie zasobów na platformie Azure.
 
-Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Automatyczne skalowanie Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)i [usług API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="lets-get-started"></a>Umożliwia rozpoczęcie pracy
 
-W tym artykule założono, że czytelnik zna automatycznego skalowania. Możesz [Rozpocznij tutaj skalować zasób][1]. Poniżej przedstawiono niektóre typowe wzorce skalowania.
+W tym artykule założono, że znasz automatyczne skalowanie. Możesz [zacząć tutaj, aby skalować zasób][1]. Poniżej przedstawiono niektóre typowe wzorce skalowania.
 
-## <a name="scale-based-on-cpu"></a>Skalowanie procesora CPU
+## <a name="scale-based-on-cpu"></a>Skalowanie w oparciu o procesor CPU
 
-Masz aplikację sieci web (/ zestawu skalowania maszyn wirtualnych/rola usługi w chmurze) a
+Masz aplikację sieci Web (rolę usługi/VMSS/cloud) i
 
-- Chcesz skalowania poza/skalowania do wewnątrz na podstawie procesora CPU.
-- Ponadto należy upewnić się, że minimalna liczba wystąpień.
-- Ponadto chcesz mieć pewność, ustawienie limitu maksymalnej liczby wystąpień, które można skalować na potrzeby.
+- Skalowanie w poziomie i skalowanie w oparciu o procesor CPU.
+- Ponadto należy upewnić się, że istnieje minimalna liczba wystąpień.
+- Należy również upewnić się, że ustawisz maksymalny limit liczby wystąpień, do których można skalować.
 
-![Skalowanie procesora CPU][2]
+![Skalowanie w oparciu o procesor CPU][2]
 
-## <a name="scale-differently-on-weekdays-vs-weekends"></a>Skalować w różny sposób w weekendy vs dni tygodnia
+## <a name="scale-differently-on-weekdays-vs-weekends"></a>Skalowanie w różny sposób w dniach tygodnia a weekendy
 
-Masz aplikację sieci web (/ zestawu skalowania maszyn wirtualnych/rola usługi w chmurze) a
+Masz aplikację sieci Web (rolę usługi/VMSS/cloud) i
 
-- Ma domyślnie 3 wystąpień (w dni robocze)
-- Ruch nie powinien w weekendy, i dlatego ma być skalowana w dół, wystąpienia: 1 w weekendy.
+- Chcesz domyślnie 3 wystąpienia (w dniach roboczych)
+- Nie oczekujesz ruchu w weekendy, dlatego chcesz skalować w dół do jednego wystąpienia w weekendy.
 
-![Skalować w różny sposób w weekendy vs dni tygodnia][3]
+![Skalowanie w różny sposób w dniach tygodnia a weekendy][3]
 
-## <a name="scale-differently-during-holidays"></a>Skalować w różny sposób podczas dni wolnych od pracy
+## <a name="scale-differently-during-holidays"></a>Skalowanie w różny sposób podczas świąt
 
-Masz aplikację sieci web (/ zestawu skalowania maszyn wirtualnych/rola usługi w chmurze) a
+Masz aplikację sieci Web (rolę usługi/VMSS/cloud) i
 
-- Chcesz skalowanie w górę/w dół na podstawie użycia procesora CPU, domyślnie
-- Jednak w okresie świątecznym (lub określone dni, które są istotne dla Twojej firmy) mają być zastąpi wartości domyślne i mają więcej pojemności do dyspozycji.
+- Chcesz skalować w górę/w dół na podstawie użycia procesora CPU domyślnie
+- Jednak w sezonach świątecznych (lub określonych dniach ważnych dla Twojej firmy) chcesz przesłonić wartości domyślne i zwiększyć pojemność.
 
-![Dni wolne inaczej w skali][4]
+![Skalowanie w różny sposób w przypadku świąt][4]
 
-## <a name="scale-based-on-custom-metric"></a>Skali, w oparciu o metryki niestandardowe
+## <a name="scale-based-on-custom-metric"></a>Skalowanie na podstawie metryki niestandardowej
 
-Masz frontonu sieci web i warstwę interfejsu API, który komunikuje się z wewnętrznej bazy danych.
+Masz fronton internetowy i warstwę interfejsu API, która komunikuje się z zapleczem.
 
-- Aby skalować warstwę interfejsu API na podstawie niestandardowych zdarzeń frontonu (przykład: Chcesz skalować proces wyewidencjonowania na podstawie liczby elementów w koszyku)
+- Chcesz skalować warstwę interfejsu API na podstawie zdarzeń niestandardowych na frontonie (przykład: chcesz skalować proces wyewidencjonowywania na podstawie liczby elementów w koszyku)
 
-![Skali, w oparciu o metryki niestandardowe][5]
+![Skalowanie na podstawie metryki niestandardowej][5]
 
 <!--Reference-->
 [1]: ./autoscale-get-started.md

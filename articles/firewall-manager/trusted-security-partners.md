@@ -7,14 +7,14 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
-ms.openlocfilehash: cb8a2fdd14cfa7d361e3d78a64f3aaf60ea7676d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468569"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436769"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Co to są zaufani partnerzy zabezpieczeń (wersja zapoznawcza)?
+# <a name="what-are-trusted-security-partners-preview"></a>Co to są zaufani partnerzy w zakresie zabezpieczeń (wersja zapoznawcza)?
 
 > [!IMPORTANT]
 > Ten podgląd publiczny nie jest objęty umową dotyczącą poziomu usług i nie należy korzystać z niego w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -23,11 +23,11 @@ ms.locfileid: "73468569"
 
 Dzięki szybkiej konfiguracji można zabezpieczyć koncentrator z obsługiwanym partnerem zabezpieczeń oraz skierować i przefiltrować ruch internetowy z sieci wirtualnych (sieci wirtualnych) lub lokalizacji rozgałęzień w obrębie regionu. Odbywa się to za pomocą zautomatyzowanego zarządzania trasami bez konieczności konfigurowania tras zdefiniowanych przez użytkownika i zarządzania nimi (UDR).
 
-Można wdrożyć zabezpieczone centra skonfigurowane z wybranym przez partnera zabezpieczeń w wielu regionach świadczenia usługi Azure, aby uzyskać łączność i bezpieczeństwo użytkowników w dowolnym miejscu na świecie w tych regionach. Dzięki możliwości korzystania z oferty partnera zabezpieczeń na potrzeby ruchu aplikacji internetowych/SaaS oraz zapory platformy Azure dla ruchu prywatnego w zabezpieczonych centrach możesz teraz rozpocząć tworzenie swojej krawędzi zabezpieczeń na platformie Azure, która jest bliska globalnie rozproszonym użytkownikom. zastosowania.
+Można wdrożyć zabezpieczone centra skonfigurowane z wybranym przez partnera zabezpieczeń w wielu regionach świadczenia usługi Azure, aby uzyskać łączność i bezpieczeństwo użytkowników w dowolnym miejscu na świecie w tych regionach. Dzięki możliwości korzystania z oferty partnera zabezpieczeń na potrzeby ruchu aplikacji internetowych/SaaS oraz zapory platformy Azure dla ruchu prywatnego w zabezpieczonych centrach możesz teraz rozpocząć tworzenie swojej krawędzi zabezpieczeń na platformie Azure, która jest blisko globalnie dystrybuowanych użytkowników i aplikacji.
 
 W przypadku tej wersji zapoznawczej obsługiwane partnerzy zabezpieczeń to **rozwiązania Zscaler** i **iboss**. Obsługiwane regiony to WestCentralUS, NorthCentralUS, zachodnie, WestUS2 i wschód.
 
-![Zaufani partnerzy zabezpieczeń](media/trusted-security-partners/trusted-security-partners.png)
+![Zaufani partnerzy w zakresie zabezpieczeń](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Kluczowe scenariusze
 
@@ -75,7 +75,7 @@ W przypadku pakietu Office 365 opóźnienie sieci i wydajność mają kluczowe z
 
 [Zasady łączności sieciowej z pakietem office 365](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) są wywoływane w przypadku połączeń sieciowych z pakietem Office 365, które mają być kierowane lokalnie z gałęzi użytkownika lub urządzenia przenośnego i bezpośrednio przez Internet do najbliższego punktu sieci firmy Microsoft.
 
-Ponadto połączenia pakietu Office 365 są silnie zaszyfrowane w celu zachowania poufności i używania wydajnych protokołów ze względów wydajnościowych. To sprawia, że nie jest to praktyczne i ma wpływ na te połączenia z tradycyjnymi rozwiązaniami zabezpieczeń na poziomie sieci. Z tego względu zdecydowanie zalecamy, aby klienci wysyłali ruch pakietu Office 365 bezpośrednio z gałęzi przed wysłaniem reszty ruchu przez platformę Azure. Firma Microsoft współpracuje z kilkoma dostawcami rozwiązań SD-WAN, którzy integrują się z platformą Azure i pakietem Office 365 i ułatwiają klientom korzystanie z pakietu Office 365 Direct i lokalnego zagadnień internetowego. Aby uzyskać szczegółowe informacje, zobacz [Jak mogę ustawić moje zasady usługi O365 za pośrednictwem wirtualnej sieci WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview#how-do-i-set-my-o365-policies-via-virtual-wan)
+Ponadto połączenia pakietu Office 365 są silnie zaszyfrowane w celu zachowania poufności i używania wydajnych protokołów ze względów wydajnościowych. To sprawia, że nie jest to praktyczne i ma wpływ na te połączenia z tradycyjnymi rozwiązaniami zabezpieczeń na poziomie sieci. Z tego względu zdecydowanie zalecamy, aby klienci wysyłali ruch pakietu Office 365 bezpośrednio z gałęzi przed wysłaniem reszty ruchu przez platformę Azure. Firma Microsoft współpracuje z kilkoma dostawcami rozwiązań SD-WAN, którzy integrują się z platformą Azure i pakietem Office 365 i ułatwiają klientom korzystanie z pakietu Office 365 Direct i lokalnego zagadnień internetowego. Aby uzyskać szczegółowe informacje, zobacz [Jak mogę ustawić moje zasady usługi O365 za pośrednictwem wirtualnej sieci WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
 
 
 ## <a name="next-steps"></a>Następne kroki

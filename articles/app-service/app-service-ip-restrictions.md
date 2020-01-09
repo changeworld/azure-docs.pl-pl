@@ -1,18 +1,18 @@
 ---
-title: Ograniczanie dostępu do adresów IP
-description: Dowiedz się, jak zabezpieczyć aplikację w Azure App Service, jawnie listy dozwolonych adresy IP lub zakresy adresów klientów.
+title: Ograniczenia dostępu Azure App Service
+description: Dowiedz się, jak zabezpieczyć aplikację w Azure App Service, określając ograniczenia dostępu.
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422241"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Ograniczenia dostępu Azure App Service #
 
@@ -24,7 +24,7 @@ Gdy żądanie zostanie wysłane do aplikacji, adres od jest oceniany pod kątem 
 
 Funkcja ograniczeń dostępu jest implementowana w ramach ról frontonu App Service, które są nadrzędne w stosunku do hostów procesów roboczych, na których działa kod. W związku z tym ograniczenia dostępu są skutecznymi listami ACL sieci.
 
-Możliwość ograniczenia dostępu do aplikacji sieci Web z usługi Azure Virtual Network (VNet) nazywa się [punktami końcowymi usługi][serviceendpoints]. Punkty końcowe usługi umożliwiają ograniczenie dostępu do usługi z obsługą wielu dzierżawców z wybranych podsieci. Musi być włączona zarówno po stronie sieci, jak i w usłudze, w której jest włączona. Nie działa w sposób ograniczający ruch do aplikacji hostowanych w App Service Environment.  Jeśli jesteś w App Service Environment, możesz kontrolować dostęp do aplikacji przy użyciu reguł adresów IP.
+Możliwość ograniczenia dostępu do aplikacji sieci Web z usługi Azure Virtual Network (VNet) nazywa się [punktami końcowymi usługi][serviceendpoints]. Punkty końcowe usługi umożliwiają ograniczenie dostępu do usługi z obsługą wielu dzierżawców z wybranych podsieci. Musi być włączona zarówno po stronie sieci, jak i w usłudze, w której jest włączona. Nie działa w sposób ograniczający ruch do aplikacji hostowanych w App Service Environment. Jeśli jesteś w App Service Environment, możesz kontrolować dostęp do aplikacji przy użyciu reguł adresów IP.
 
 ![przepływ ograniczeń dostępu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -58,7 +58,7 @@ Punkty końcowe usługi umożliwiają ograniczenie dostępu do wybranych podsiec
 
 Punkty końcowe usługi nie mogą być używane do ograniczania dostępu do aplikacji, które działają w App Service Environment. Gdy aplikacja jest w App Service Environment, możesz kontrolować dostęp do aplikacji za pomocą reguł dostępu do adresów IP. 
 
-Za pomocą punktów końcowych usługi można skonfigurować aplikację przy użyciu bram aplikacji lub innych urządzeń WAF. Możesz również skonfigurować wielowarstwowe aplikacje z bezpiecznymi punktami końcowymi. Aby uzyskać więcej informacji na temat niektórych możliwości, Odczytaj [funkcje sieciowe i App Service](networking-features.md).
+Za pomocą punktów końcowych usługi można skonfigurować aplikację przy użyciu bram aplikacji lub innych urządzeń WAF. Możesz również skonfigurować wielowarstwowe aplikacje z bezpiecznymi punktami końcowymi. Aby uzyskać więcej informacji na temat niektórych możliwości, Odczytaj [funkcje sieciowe i App Service](networking-features.md) i [Application Gateway integrację z punktami końcowymi usługi](networking/app-gateway-with-service-endpoints.md).
 
 ## <a name="managing-access-restriction-rules"></a>Zarządzanie regułami ograniczeń dostępu
 
@@ -90,34 +90,49 @@ Oprócz możliwości kontrolowania dostępu do aplikacji można także ograniczy
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programistyczne manipulowanie regułami ograniczeń dostępu ##
 
-Obecnie nie ma interfejsu wiersza polecenia lub programu PowerShell dla nowych możliwości ograniczeń dostępu, ale wartości można ustawić ręcznie przy użyciu operacji Put [interfejsu API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/) dla konfiguracji aplikacji w Menedżer zasobów. Na przykład można użyć resources.azure.com i edytować blok ipSecurityRestrictions, aby dodać wymagany kod JSON.
+[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) i [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) obsługują edytowanie ograniczeń dostępu. Przykład dodawania ograniczenia dostępu przy użyciu interfejsu wiersza polecenia platformy Azure:
+
+```azurecli-interactive
+az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
+    --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
+```
+Przykład dodawania ograniczenia dostępu przy użyciu Azure PowerShell:
+
+```azurepowershell-interactive
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
+    -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
+```
+
+Wartości można również ustawić ręcznie przy użyciu operacji Put [interfejsu API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/) w konfiguracji aplikacji w Menedżer zasobów lub przy użyciu szablonu Azure Resource Manager. Na przykład można użyć resources.azure.com i edytować blok ipSecurityRestrictions, aby dodać wymagany kod JSON.
 
 Lokalizacja tych informacji w Menedżer zasobów:
 
 **Identyfikator subskrypcji**Management.Azure.com/subscriptions//resourceGroups/**grupy zasobów**/Providers/Microsoft.Web/Sites/**Nazwa aplikacji sieci Web**/config/Web? API-Version = 2018 r-02-01
 
 Składnia JSON dla poprzedniego przykładu:
-
-    {
-      "properties": {
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "122.133.144.0/24",
-            "action": "Allow",
-            "tag": "Default",
-            "priority": 100,
-            "name": "IP example rule"
-          }
-        ]
+```json
+{
+  "properties": {
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "122.133.144.0/24",
+        "action": "Allow",
+        "priority": 100,
+        "name": "IP example rule"
       }
-    }
+    ]
+  }
+}
+```
 
-## <a name="function-app-ip-restrictions"></a>aplikacja funkcji ograniczenia adresów IP
+## <a name="azure-function-app-access-restrictions"></a>Ograniczenia dostępu aplikacja funkcji platformy Azure
 
-Ograniczenia adresów IP są dostępne dla obu aplikacji funkcji, które mają takie same funkcje jak App Service plany. Włączenie ograniczeń adresów IP spowoduje wyłączenie edytora kodu portalu dla wszelkich niedozwolonych adresów IP.
+Ograniczenia dostępu są dostępne dla obu aplikacji funkcji mających takie same funkcje jak plany App Service. Włączenie ograniczeń dostępu spowoduje wyłączenie edytora kodu portalu dla wszelkich niedozwolonych adresów IP.
 
-[Dowiedz się więcej tutaj](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+## <a name="next-steps"></a>Następne kroki
+[Ograniczenia dostępu do aplikacji funkcji platformy Azure](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
+[Application Gateway integrację z punktami końcowymi usługi](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

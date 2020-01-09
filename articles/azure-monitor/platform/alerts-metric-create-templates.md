@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872948"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397337"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , aby skonfigurować [nowsze alerty metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md) w programie Azure monitor. Szablony Menedżer zasobów umożliwiają programistyczne Konfigurowanie alertów w sposób spójny i powtarzalny w środowiskach. Nowsze alerty metryk są obecnie dostępne dla [tego zestawu typów zasobów](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , aby skonfigurować [nowsze alerty metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md) w programie Azure monitor. Szablony Menedżer zasobów umożliwiają programistyczne Konfigurowanie alertów w sposób spójny i powtarzalny w środowiskach. Nowsze alerty metryk są obecnie dostępne dla [tego zestawu typów zasobów](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
 > Szablon zasobu do tworzenia alertów metryk dla typu zasobu: `Microsoft.OperationalInsights/workspaces`obszaru roboczego platformy Azure Log Analytics (tj.) wymaga wykonania dodatkowych czynności. Aby uzyskać szczegółowe informacje, zobacz artykuł dotyczący [alertu dotyczącego metryk dla dzienników zasobów](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
@@ -3552,6 +3552,11 @@ Zapisz Poniższy kod JSON jako availabilityalert. JSON na potrzeby tego przewodn
 ```
 
 Można ustawić wartości parametrów w wierszu polecenia lub za pomocą pliku parametrów. Poniżej przedstawiono przykładowy plik parametrów.
+
+
+> [!NOTE]
+>
+> `&amp`; jest odwołaniem do jednostki HTML dla &. Parametry adresu URL są nadal oddzielone pojedynczym &, ale jeśli adres URL jest wymieniany w formacie HTML, należy go zakodować. Tak więc, jeśli masz jakiekolwiek "&" w wartości parametru pingURL, musisz je zmienić na "`&amp`;"
 
 Zapisz Poniższy kod JSON jako availabilityalert. Parameters. JSON i zmodyfikuj go zgodnie z potrzebami.
 

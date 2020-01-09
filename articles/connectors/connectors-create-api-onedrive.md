@@ -1,22 +1,22 @@
 ---
-title: Nawiązywanie połączenia z usługą OneDrive
-description: Przekazywanie plików i zarządzanie nimi za pomocą interfejsów API REST usługi OneDrive i Azure Logic Apps
+title: Dostęp do plików i zarządzanie nimi w usłudze Microsoft OneDrive
+description: Przekazywanie plików i zarządzanie nimi w usłudze OneDrive przez Tworzenie zautomatyzowanych przepływów pracy w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378436"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>Wprowadzenie do łącznika usługi OneDrive
+# <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Dostęp do plików w łączniku usługi OneDrive i zarządzanie nimi za pomocą Azure Logic Apps
 
-Połącz się z usługą OneDrive, aby zarządzać plikami, w tym przekazywaniem, pobieraniem, usuwaniem plików itp. Za pomocą usługi OneDrive można wykonywać następujące zadania:
+Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [łącznika usługi OneDrive](/connectors/onedriveconnector/)można tworzyć automatyczne zadania i przepływy pracy umożliwiające zarządzanie plikami, w tym przekazywanie, pobieranie, usuwanie plików i inne. Za pomocą usługi OneDrive można wykonywać następujące zadania:
 
 * Kompilowanie przepływu pracy przez przechowywanie plików w usłudze OneDrive lub aktualizowanie istniejących plików w usłudze OneDrive. 
 * Użyj wyzwalaczy, aby uruchomić przepływ pracy po utworzeniu lub zaktualizowaniu pliku w usłudze OneDrive.
@@ -26,7 +26,7 @@ W tym artykule pokazano, jak używać łącznika usługi OneDrive w aplikacji lo
 
 Aby dowiedzieć się więcej na temat Logic Apps, zobacz [co to są aplikacje logiki](../logic-apps/logic-apps-overview.md) i [Utwórz aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="connect-to-onedrive"></a>Nawiązywanie połączenia z usługą OneDrive
+## <a name="connect-to-onedrive"></a>Łączenie z usługą OneDrive
 
 Zanim aplikacja logiki będzie mogła uzyskać dostęp do dowolnej usługi, należy najpierw utworzyć *połączenie* z usługą. Połączenie zapewnia łączność między aplikacją logiki a inną usługą. Na przykład, aby połączyć się z usługą OneDrive, najpierw musisz mieć *połączenie*z usługą OneDrive. Aby utworzyć połączenie, wprowadź poświadczenia, które zwykle są używane w celu uzyskania dostępu do usługi, z którą chcesz nawiązać połączenie. Aby utworzyć połączenie, w usłudze OneDrive wprowadź poświadczenia dla konta usługi OneDrive.
 
@@ -38,7 +38,7 @@ Zanim aplikacja logiki będzie mogła uzyskać dostęp do dowolnej usługi, nale
 
 Wyzwalacz to zdarzenie, którego można użyć do uruchomienia przepływu pracy zdefiniowanego w aplikacji logiki. Wyzwala "sondowanie" usługi z interwałem i częstotliwością. [Dowiedz się więcej o wyzwalaczach](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. W aplikacji logiki wpisz "OneDrive", aby uzyskać listę wyzwalaczy:  
+1. W Projektancie aplikacji logiki wpisz `onedrive`, aby uzyskać listę wyzwalaczy:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +66,7 @@ Akcja jest operacją wykonywaną przez przepływ pracy zdefiniowany w aplikacji 
 
 2. Wybierz pozycję **Dodaj akcję**.
 
-3. W polu tekstowym wpisz "OneDrive", aby wyświetlić listę wszystkich dostępnych akcji.
+3. W polu wyszukiwania wpisz `onedrive`, aby uzyskać listę wszystkich dostępnych akcji.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

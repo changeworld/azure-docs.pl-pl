@@ -3,23 +3,23 @@ title: Wprowadzenie do usług Azure Cloud Services i programu ASP.NET | Microsof
 description: Dowiedz się, jak utworzyć aplikację wielowarstwową przy użyciu kontrolera ASP.NET MVC i platformy Azure. Aplikacja jest uruchamiana w usłudze w chmurze z rolą Sieć Web i Proces roboczy. Używa platformy Entity Framework, bazy danych SQL Database oraz obiektów blob i kolejek usługi Azure Storage.
 services: cloud-services, storage
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: gwallace
-ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: tagore
+ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827662"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386735"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym samouczku wyjaśniono, jak utworzyć wielowarstwową aplikację .NET z frontonem ASP.NET MVC i wdrożyć ją w [usłudze w chmurze Azure](cloud-services-choose-me.md). Aplikacja używa [bazy danych Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)), [usługi obiektów blob platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) i [usługi kolejek platformy Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt programu Visual Studio można pobrać](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z Galerii kodu MSDN.
 
 W samouczku opisano, jak utworzyć i uruchomić aplikację lokalnie, jak wdrożyć ją na platformie Azure i uruchomić w chmurze oraz jak utworzyć ją od samego początku. Można również rozpocząć od kompilowania aplikacji od początku, a dopiero później przeprowadzić testowanie i wdrażanie.
@@ -31,7 +31,7 @@ Ta aplikacja to reklamowa tablica ogłoszeń. Aby utworzyć reklamę, użytkowni
 
 Aplikacja korzysta z [przetwarzania kolejkowego](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby przekazać obciążające procesor zadania związane z tworzeniem miniatur do procesu zaplecza.
 
-## <a name="alternative-architecture-app-service-and-webjobs"></a>Architektura alternatywna: usługi App Service i WebJobs
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Architektura alternatywna: App Service i Zadania WebJob
 Ten samouczek pokazuje, jak uruchamiać fronton i zaplecze w usłudze w chmurze Azure. Alternatywą jest uruchomienie frontonu w usłudze [Azure App Service](/azure/app-service/) i używanie funkcji zadań [WebJob](https://go.microsoft.com/fwlink/?LinkId=390226) dla zaplecza. Aby zapoznać się z samouczkiem korzystającym z zadań WebJob, zobacz artykuł [Wprowadzenie do zestawu SDK zadań WebJob na platformie Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informacje o wybieraniu usług najlepiej spełniających potrzeby scenariusza zawiera artykuł [Porównanie usług Azure App Service, Cloud Services i Virtual Machines](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Zawartość
@@ -155,7 +155,7 @@ Aplikacja uruchomiona w chmurze będzie używać bazy danych opartej na chmurze.
     ![Nowy serwer usługi SQL Database](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Kliknij przycisk **Utwórz**.
 
-### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure storage
+### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 Konto magazynu platformy Azure udostępnia zasoby służące do przechowywania danych kolejek i obiektów blob w chmurze.
 
 W rzeczywistych aplikacjach przeważnie tworzy się oddzielne konta dla danych aplikacji porównywanych z danymi rejestrowania oraz oddzielne konta dla danych testowych porównywanych z danymi produkcyjnymi. W tym samouczku będzie używane tylko jedno konto.
@@ -229,7 +229,7 @@ Parametry połączenia konta magazynu platformy Azure dla projektu roli Sieć We
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy pozycję **ContosoAdsWeb** w obszarze **Role** w projekcie **ContosoAdsCloudService**, a następnie kliknij polecenie **Właściwości**.
 
     ![Właściwości roli](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Kliknij kartę **Ustawienia**. W polu listy rozwijanej **Konfiguracja usługi** wybierz wartość **Chmura**.
+2. Kliknij kartę **Ustawienia** . W polu listy rozwijanej **Konfiguracja usługi** wybierz pozycję **chmura**.
 
     ![Konfiguracja chmury](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Wybierz wpis **StorageConnectionString**. Na prawym końcu wiersza pojawi się przycisk z wielokropkiem ( **...** ). Kliknij przycisk z wielokropkiem, aby otworzyć okno dialogowe **Tworzenie parametrów połączenia konta usługi Storage**.
@@ -280,7 +280,7 @@ Ustawienie `<Instances>` określa liczbę maszyn wirtualnych, na których platfo
 ### <a name="deploy-the-project-to-azure"></a>Wdrażanie projektu na platformie Azure
 1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt w chmurze **ContosoAdsCloudService**, a następnie wybierz polecenie **Opublikuj**.
 
-   ![Menu Publikowanie](./media/cloud-services-dotnet-get-started/pubmenu.png)
+   ![Menu Publikuj](./media/cloud-services-dotnet-get-started/pubmenu.png)
 2. W kroku **Logowanie** kreatora **Publikowanie aplikacji platformy Azure** kliknij przycisk **Dalej**.
 
     ![Krok Logowanie](./media/cloud-services-dotnet-get-started/pubsignin.png)
@@ -361,7 +361,7 @@ Po utworzeniu rozwiązania można przejrzeć kod unikatowy dla projektów usług
 
     Ten zestaw jest używany przez zaplecze na potrzeby konwertowania obrazów na miniatury.
 
-### <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączenia
+### <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączeń
 W tej sekcji będziesz konfigurować parametry połączenia usługi Azure Storage i danych SQL na potrzeby testowania lokalnego. Podane wcześniej w samouczku instrukcje dotyczące wdrażania wyjaśniają, w jaki sposób należy skonfigurować parametry połączenia aplikacji uruchomionej w chmurze.
 
 1. W projekcie ContosoAdsWeb otwórz plik Web.config aplikacji i wstaw następujący element `connectionStrings` po elemencie `configSections`.
@@ -388,7 +388,7 @@ W tej sekcji będziesz konfigurować parametry połączenia usługi Azure Storag
 8. Pozostając w oknie właściwości **ContosoAdsWorker — [Rola]** dodaj inny ciąg połączenia:
 
    * Nazwa: ContosoAdsDbConnectionString
-   * Wpisz: Ciąg
+   * Typ: ciąg
    * Wartość: wklej parametry połączenia zastosowane już do projektu roli Sieć Web. (Poniższy przykład dotyczy programu Visual Studio 2013. Nie zapomnij zmienić źródła danych, jeśli kopiujesz ten przykład i korzystasz z programu Visual Studio 2015 lub nowszego).
 
        ```
@@ -758,7 +758,7 @@ Aby zmienić projekt tak, aby korzystał z pełnego emulatora, kliknij prawym pr
 
 Aby można było uruchomić aplikację w pełnym emulatorze, należy otworzyć program Visual Studio z uprawnieniami administratora.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aplikacja Contoso Ads została celowo uproszczona na potrzeby samouczka wprowadzającego. Na przykład: nie implementuje [wstrzykiwania zależności](https://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) ani [wzorców repozytorium i jednostki pracy](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nie [używa interfejsu do rejestrowania](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nie używa [migracji Code First platformy EF](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) do zarządzania zmianami modelu danych ani [opcji elastyczności połączenia platformy EF](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) do zarządzania błędami sieci itd.
 
 Poniżej przedstawiono niektóre przykładowe aplikacje usług w chmurze, w których zastosowano więcej rzeczywistych rozwiązań dotyczących kodowania. Zostały one uporządkowane w kolejności od mniej do bardziej złożonych:
@@ -770,9 +770,12 @@ Aby uzyskać ogólne informacje o tworzeniu aplikacji w chmurze, zobacz [Tworzen
 
 Film wideo zawierający wprowadzenie do najlepszych rozwiązań i wzorców usługi Azure Storage można znaleźć w temacie [Microsoft Azure Storage — nowości, najlepsze rozwiązania i wzorce](https://channel9.msdn.com/Events/Build/2014/3-628).
 
-Aby uzyskać więcej informacji, zobacz następujące zasoby:
+Więcej informacji zawierają następujące zasoby:
 
-* [Usługi Azure Cloud Services — część 1: Wprowadzenie](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure Cloud Services, część 1: wprowadzenie](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak zarządzać usługami Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak wybrać dostawcę usług w chmurze](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
+
+
+

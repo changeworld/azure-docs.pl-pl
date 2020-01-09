@@ -4,33 +4,33 @@ description: Za pomocą szablonów Azure Resource Manager można tworzyć i konf
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 5410d6ef11c3f95bb4f02dbd914a1aacbd068a1b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363391"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszarem roboczym Log Analytics przy użyciu szablonów Azure Resource Manager
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Za pomocą [szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) można tworzyć i konfigurować log Analytics obszary robocze w Azure monitor. Przykłady zadań, które można wykonywać za pomocą szablonów, to m.in.:
+Za pomocą [szablonów Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) można tworzyć i konfigurować log Analytics obszary robocze w Azure monitor. Przykłady zadań, które można wykonywać za pomocą szablonów, to m.in.:
 
 * Tworzenie obszaru roboczego, w tym Ustawianie warstwy cenowej 
 * Dodawanie rozwiązania
 * Utwórz zapisane wyszukiwania
 * Utwórz grupę komputerów
-* Włącz zbieranie dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
-* Zbieranie liczników wydajności z komputerów z systemem Linux i Windows
-* Zbieranie zdarzeń z dziennika systemowego na komputerach z systemem Linux 
-* Zbierz zdarzenia z dzienników zdarzeń systemu Windows
+* Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
+* Liczniki wydajności są zbierane z komputerów z systemami Linux i Windows
+* Zbieraj zdarzenia z dziennika systemu na komputerach z systemem Linux 
+* Zbieranie zdarzeń z dzienników zdarzeń Windows
 * Zbieranie niestandardowych dzienników z komputera z systemem Windows
-* Dodawanie agenta usługi log Analytics do maszyny wirtualnej platformy Azure
-* Konfigurowanie usługi log Analytics do indeksowania danych zbieranych za pomocą diagnostyki Azure
+* Dodaj agenta usługi log analytics na maszynie wirtualnej platformy Azure
+* Skonfiguruj usługę log analytics do indeksowania danych zebranych za pomocą diagnostyki Azure
 
 W tym artykule przedstawiono przykłady szablonów, które ilustrują część konfiguracji, którą można wykonać za pomocą szablonów.
 
@@ -40,16 +40,16 @@ W poniższej tabeli wymieniono wersje interfejsu API dla zasobów używanych w t
 
 | Zasób | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
-| Obszar roboczy   | obszarów roboczych    | 2017-03-15 — wersja zapoznawcza |
+| Obszar roboczy   | obszary robocze    | 2017-03-15 — wersja zapoznawcza |
 | Search      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01 — wersja zapoznawcza |
 | Rozwiązanie    | rozwiązania     | 2015-11-01 — wersja zapoznawcza |
 
-## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego usługi Log Analytics
 
 Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z komputera lokalnego. Szablon JSON jest skonfigurowany tak, aby wymagał tylko nazwy i lokalizacji nowego obszaru roboczego (przy użyciu wartości domyślnych dla innych parametrów obszaru roboczego, takich jak warstwa cenowa i przechowywanie).  
 
-### <a name="create-and-deploy-template"></a>Utwórz i Wdróż szablon
+### <a name="create-and-deploy-template"></a>Tworzenie i wdrażanie szablonu
 
 1. Skopiuj i wklej następującą składnię JSON do pliku:
 
@@ -113,8 +113,8 @@ Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z komputera loka
     }
     ```
 
-2. Edytuj szablon w celu spełnienia wymagań. Zapoznaj się z tematem dokumentacja [szablonu Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) , aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
-3. Zapisz ten plik jako **deploylaworkspacetemplate. JSON** w folderze lokalnym.
+2. Edytuj szablon do własnych wymagań. Przegląd [szablonu Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odwołania, aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
+3. Zapisz ten plik jako **deploylaworkspacetemplate.json** do folderu lokalnego.
 4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Za pomocą programu PowerShell lub wiersza polecenia można utworzyć obszar roboczy, określając nazwę i lokalizację obszaru roboczego w ramach polecenia. Nazwa obszaru roboczego musi być globalnie unikatowa w ramach wszystkich subskrypcji platformy Azure.
 
    * W przypadku programu PowerShell Użyj następujących poleceń z folderu zawierającego szablon:
@@ -130,7 +130,7 @@ Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z komputera loka
         azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
-Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do następującego:<br><br> ![Przykładowy wynik po zakończeniu wdrażania](./media/template-workspace-configuration/template-output-01.png)
+Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony komunikat podobny do poniższego, który zawiera wynik:<br><br> ![Przykład wyniku, gdy wdrożenie jest ukończone](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego Log Analytics
 
@@ -139,11 +139,11 @@ Poniższy przykładowy szablon ilustruje sposób wykonywania następujących czy
 1. Dodawanie rozwiązań do obszaru roboczego
 2. Utwórz zapisane wyszukiwania
 3. Utwórz grupę komputerów
-4. Włącz zbieranie dzienników usług IIS z komputerów z zainstalowanym agentem systemu Windows
-5. Zbieranie liczników wydajności dysku logicznego z komputerów z systemem Linux (% użytych węzłów i; Wolne megabajty; Zajęte miejsce:% Transfery dysku/s; Odczyty dysku/s; Zapisy dysku/s)
+4. Włącz zbieranie dzienników usług IIS na komputerach z zainstalowanym agentem Windows
+5. Zbieranie liczników wydajności dysku logicznego z komputerów z systemem Linux (% użytych węzłów i; Wolne megabajty; Używany obszar; % Transfery dyskowe/s; Odczyty dysku/s; Zapisy dysku/s)
 6. Zbieranie zdarzeń dziennika systemu z komputerów z systemem Linux
-7. Zbieraj zdarzenia błędów i ostrzeżeń z dziennika zdarzeń aplikacji z komputerów z systemem Windows
-8. Zbieranie danych licznika wydajności dostępna pamięć (MB) z komputerów z systemem Windows
+7. Zbieranie zdarzeń błędu i ostrzeżenia w dzienniku zdarzeń aplikacji z komputerów Windows
+8. Zbieraj dane licznika wydajności dostępna pamięć (MB) z komputerów Windows
 9. Zbieranie dzienników usług IIS i dzienników zdarzeń systemu Windows, które zostały zapisane przez diagnostykę platformy Azure na koncie magazynu
 10. Zbieranie niestandardowych dzienników z komputera z systemem Windows
 

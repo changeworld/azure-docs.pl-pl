@@ -4,15 +4,15 @@ description: Aby obsługiwać istniejącą inwestycję w programie System Center
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363663"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Połącz Operations Manager z Azure Monitor
 
@@ -66,7 +66,7 @@ Przed rozpoczęciem należy zapoznać się z następującymi wymaganiami.
 >- W przypadku System Center Operations Manager 2012 R2 Pobierz pakiet administracyjny z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=57171).  
 
 
-### <a name="network"></a>Sieć
+### <a name="network"></a>Network (Sieć)
 
 W poniższych informacjach przedstawiono informacje o konfiguracji serwera proxy i zapory wymagane dla Operations Manager agenta, serwerów zarządzania i konsoli operacje w celu komunikowania się z Azure Monitor. Ruch z każdego składnika jest wychodzący z sieci do Azure Monitor.
 
@@ -94,9 +94,9 @@ W poniższych informacjach przedstawiono informacje o konfiguracji serwera proxy
 |api.loganalytics.io| 80 i 443||
 |docs.loganalytics.io| 80 i 443||  
 
-### <a name="tls-12-protocol"></a>Protokół TLS 1,2
+### <a name="tls-12-protocol"></a>Protokół TLS 1.2
 
-Aby zapewnić bezpieczeństwo danych przesyłanych do Azure Monitor, zdecydowanie zachęcamy do skonfigurowania agenta i grupy zarządzania do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Starsze wersje protokołu TLS/SSL (SSL) są zagrożone i chociaż nadal działają tak, aby umożliwić zgodność z poprzednimi wersjami, nie są **zalecane**. Aby uzyskać dodatkowe informacje, zapoznaj się z [bezpiecznym przesyłaniem danych przy użyciu protokołu TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Aby zapewnić bezpieczeństwo danych przesyłanych do Azure Monitor, zdecydowanie zachęcamy do skonfigurowania agenta i grupy zarządzania do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**. Aby uzyskać dodatkowe informacje, przejrzyj [wysyłanie danych przy użyciu protokołu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Łączenie Operations Manager z Azure Monitor
 
@@ -105,8 +105,8 @@ Wykonaj następujące czynności, aby skonfigurować grupę zarządzania program
 Podczas początkowej rejestracji grupy zarządzania Operations Manager z obszarem roboczym Log Analytics, opcja określania konfiguracji serwera proxy dla grupy zarządzania nie jest dostępna w konsoli operacje.  Ta opcja staje się dostępna dopiero po pomyślnym zarejestrowaniu grupy zarządzania w usłudze.  Aby obejść ten sposób, należy zaktualizować konfigurację serwera proxy systemu przy użyciu narzędzia Netsh w systemie, w którym uruchomiono konsolę Operacje programu, w celu skonfigurowania integracji i wszystkich serwerów zarządzania w grupie zarządzania.  
 
 1. Otwórz wiersz polecenia z podwyższonymi uprawnieniami.
-   a. Przejdź do pozycji **Start** i wpisz **cmd**.
-   b. Kliknij prawym przyciskiem myszy **wiersz polecenia** i wybierz polecenie Uruchom jako administrator * *.
+   a. Przejdź do **Start** i typ **cmd**.
+   b. Kliknij prawym przyciskiem myszy **polecenia** i wybierz polecenie Uruchom jako administrator **.
 1. Wprowadź następujące polecenie i naciśnij klawisz **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`

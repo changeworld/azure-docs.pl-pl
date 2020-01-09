@@ -2,14 +2,14 @@
 title: Powiązania dla Durable Functions — Azure
 description: Jak używać wyzwalaczy i powiązań dla rozszerzenia Durable Functions Azure Functions.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40b5f0f17cbb6867a6ef293a485d728141a012ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233022"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410216"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla Durable Functions (Azure Functions)
 
@@ -36,7 +36,7 @@ W przypadku pisania funkcji programu Orchestrator w językach skryptów (np. Jav
 
 Wewnętrznie to powiązanie wyzwalacza sonduje serię kolejek w domyślnym koncie magazynu dla aplikacji funkcji. Te kolejki są wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie są one jawnie skonfigurowane we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalania
+### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
 
 Poniżej znajdują się pewne uwagi dotyczące wyzwalacza aranżacji:
 
@@ -143,7 +143,7 @@ Jeśli używasz VS Code lub Azure Portal do programowania, wyzwalacz aktywności
 
 Wewnętrznie to powiązanie wyzwalacza sonduje kolejkę w domyślnym koncie magazynu dla aplikacji funkcji. Ta kolejka jest wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie jest on jawnie skonfigurowany we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalania
+### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
 
 Poniżej przedstawiono niektóre uwagi dotyczące wyzwalacza działania:
 
@@ -372,7 +372,7 @@ W przypadku korzystania z narzędzi Visual Studio Tools for Azure Functions wyzw
 
 Wewnętrznie to powiązanie wyzwalacza sonduje serię kolejek w domyślnym koncie magazynu dla aplikacji funkcji. Te kolejki są wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie są one jawnie skonfigurowane we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalania
+### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
 
 Poniżej przedstawiono niektóre uwagi dotyczące wyzwalacza jednostki:
 
@@ -398,7 +398,7 @@ Każda funkcja jednostki ma typ parametru `IDurableEntityContext`, który ma nas
 * **DeleteState ()** : usuwa stan jednostki. 
 * **Getinput\<TInput > ()** : Pobiera dane wejściowe dla bieżącej operacji. Parametr typu `TInput` musi być typem pierwotnym lub obiektem serializacji JSON.
 * **Return (arg)** : zwraca wartość aranżacji, która wywołała operację. Parametr `arg` musi być obiektem pierwotnym lub serializowanym z notacją JSON.
-* **SignalEntity (EntityId, operacja, dane wejściowe)** : wysyła jednokierunkową wiadomość do jednostki. Parametr `operation` musi być ciągiem o wartości innej niż null, a parametr `input` musi być obiektem pierwotnym lub serializowanym z notacją JSON.
+* **SignalEntity (EntityId, scheduledTimeUtc, Operation, input)** : wysyła komunikat jednokierunkowy do jednostki. Parametr `operation` musi być ciągiem o wartości innej niż null, opcjonalny `scheduledTimeUtc` musi być czasem UTC, przy którym ma zostać wywołana operacja, a parametr `input` musi być obiektem pierwotnym lub serializowanym z notacją JSON.
 * **CreateNewOrchestration (orchestratorFunctionName, input)** : uruchamia nową aranżację. Parametr `input` musi być obiektem pierwotnym lub serializowanym z notacją JSON.
 
 Do obiektu `IDurableEntityContext` przekazana do funkcji Entity można uzyskać dostęp za pomocą właściwości `Entity.Current` Async-Local. Takie podejście jest wygodne w przypadku korzystania z modelu programowania opartego na klasie.
@@ -519,7 +519,7 @@ Jeśli używasz języków skryptów (na przykład plików *. CSX* lub *. js* ) d
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -535,6 +535,7 @@ W programie .NET Functions zwykle wiąże się z `IDurableEntityClient`, które 
 
 * **ReadEntityStateAsync\<t >** : odczytuje stan jednostki. Zwraca odpowiedź wskazującą, czy jednostka docelowa istnieje, a jeśli tak, to jaki jest jej stan.
 * **SignalEntityAsync**: wysyła komunikat jednokierunkowy do jednostki i czeka na jego przekolejkowanie.
+* **ListEntitiesAsync**: wykonuje zapytania dotyczące stanu wielu jednostek. Jednostki mogą być zapytania według *nazwy* i *czasu ostatniej operacji*.
 
 Nie ma potrzeby tworzenia jednostki docelowej przed wysłaniem sygnału — stan jednostki można utworzyć z poziomu funkcji jednostki, która obsługuje sygnał.
 

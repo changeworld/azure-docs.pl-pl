@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920161"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423865"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — wywołuje internetowy interfejs API
 
@@ -100,7 +100,7 @@ task.resume()
 
 Jeśli konieczne jest wywołanie kilku interfejsów API dla tego samego użytkownika, po uzyskaniu tokenu dla pierwszego interfejsu API można tylko wywołać `AcquireTokenSilent`i uzyskać token dla innych interfejsów API w większości czasu.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -113,7 +113,7 @@ Sytuacje, w których wymagane jest interakcja, to:
 - Użytkownik wyraził zgodę na pierwszy interfejs API, ale teraz musi powyrazić zgody na więcej zakresów (powiększanie zgody)
 - Pierwszy interfejs API nie wymagał uwierzytelniania wieloskładnikowego, ale Następna z nich robi.
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

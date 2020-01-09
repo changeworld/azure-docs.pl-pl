@@ -2,17 +2,17 @@
 title: Uruchamianie zadań uruchamiania na platformie Azure Cloud Services | Microsoft Docs
 description: Zadania uruchamiania ułatwiają przygotowanie środowiska usługi w chmurze dla Twojej aplikacji. Naucz się, jak działają zadania uruchamiania i jak je wprowadzać
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: cea28aba4c57f69a030d05ac192f9578967cbc3f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359463"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360314"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak skonfigurować i uruchomić zadania uruchamiania dla usługi w chmurze
 Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli. Operacje, które można wykonać, obejmują zainstalowanie składnika, zarejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchomienie długotrwałego procesu.
@@ -23,11 +23,11 @@ Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli
 > 
 
 ## <a name="how-startup-tasks-work"></a>Jak działają zadania uruchamiania
-Zadania uruchamiania to akcje, które są wykonywane przed rozpoczęciem ról i są zdefiniowane w pliku [ServiceDefinition.csdef] za pomocą elementu [Zadanie] w ramach elementu [Folderze] . Często zadania uruchamiania to pliki wsadowe, ale mogą to być również aplikacje konsolowe lub pliki wsadowe uruchamiające skrypty programu PowerShell.
+Zadania uruchamiania to akcje, które są wykonywane przed rozpoczęciem ról i są zdefiniowane w pliku [ServiceDefinition.csdef] za pomocą elementu [Zadanie podrzędne] w ramach elementu [Startup] . Często zadania uruchamiania to pliki wsadowe, ale mogą to być również aplikacje konsolowe lub pliki wsadowe uruchamiające skrypty programu PowerShell.
 
 Zmienne środowiskowe przekazują informacje do zadania uruchamiania, a Magazyn lokalny może służyć do przekazywania informacji z zadania uruchamiania. Na przykład zmienna środowiskowa może określać ścieżkę do programu, który chcesz zainstalować, a pliki mogą być zapisywane w magazynie lokalnym, które mogą być później odczytywane przez role.
 
-Zadanie uruchamiania może rejestrować informacje i błędy do katalogu określonego przez zmienną środowiskową **temp** . Podczas zadania uruchamiania, zmienna środowiskowa **temp** jest rozpoznawana jako *C:\\\\Resources temp\\[Guid]. [ rolename\\] RoleTemp* Directory podczas uruchamiania w chmurze.
+Zadanie uruchamiania może rejestrować informacje i błędy do katalogu określonego przez zmienną środowiskową **temp** . Podczas zadania uruchamiania, zmienna środowiskowa **temp** jest rozpoznawana jako *zasoby C:\\\\temp\\[Guid]. [ rolename]\\katalog RoleTemp* podczas uruchamiania w chmurze.
 
 Zadania uruchamiania mogą być również wykonywane kilka razy między ponownymi uruchomieniami. Na przykład zadanie uruchamiania będzie uruchamiane przy każdym odtworzeniu roli, ale odtwarzanie roli nie zawsze obejmuje ponowne uruchomienie. Zadania uruchamiania należy zapisywać w taki sposób, aby umożliwiały ich uruchamianie kilka razy bez problemów.
 
@@ -52,7 +52,7 @@ Poniżej wymieniono procedurę uruchamiania roli na platformie Azure:
 6. Metoda [Microsoft. windowsazure. serviceruntime. RoleEntryPoint. Run](/previous-versions/azure/reference/ee772746(v=azure.100)) jest wywoływana.
 
 ## <a name="example-of-a-startup-task"></a>Przykład zadania uruchamiania
-Zadania uruchamiania są zdefiniowane w pliku [ServiceDefinition.csdef] w elemencie **Task** . Atrybut **CommandLine** określa nazwę i parametry pliku wsadowego uruchamiania lub konsoli, atrybut **kontekście wykonywania** określa poziom uprawnień zadania uruchamiania, a atrybut **TaskType** określa, jak zadanie zostanie wykonane.
+Zadania uruchamiania są zdefiniowane w pliku [ServiceDefinition.csdef] w elemencie **Task** . Atrybut **CommandLine** określa nazwę i parametry pliku wsadowego uruchamiania lub konsoli, atrybut **kontekście wykonywania** określa poziom uprawnień zadania uruchamiania, a atrybut **TaskType** określa sposób wykonywania zadania.
 
 W tym przykładzie zmienna środowiskowa **MyVersionNumber**, jest tworzona dla zadania uruchamiania i ma ustawioną wartość "**1.0.0.0**".
 
@@ -68,7 +68,7 @@ W tym przykładzie zmienna środowiskowa **MyVersionNumber**, jest tworzona dla 
 </Startup>
 ```
 
-W poniższym przykładzie plik wsadowy **Startup. cmd** zapisuje wiersz "Bieżąca wersja pliku 1.0.0.0" do StartupLog. txt w katalogu określonym przez zmienną środowiskową temp. Wiersz gwarantuje, że zadanie uruchamiania zostanie zakończone przy użyciu **zmiennej ERRORLEVEL** równej zero. `EXIT /B 0`
+W poniższym przykładzie plik wsadowy **Startup. cmd** zapisuje wiersz "Bieżąca wersja pliku 1.0.0.0" do StartupLog. txt w katalogu określonym przez zmienną środowiskową temp. Linia `EXIT /B 0` zapewnia, że zadanie uruchamiania zostanie zakończone z wartością **ERRORLEVEL** równą zero.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,7 +76,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> W programie Visual Studio Właściwość **Kopiuj do katalogu wyjściowego** dla pliku wsadowego uruchamiania powinna być ustawiona na wartość **Kopiuj zawsze** upewnij się, że plik wsadowy uruchamiania jest prawidłowo wdrożony w projekcie na platformie Azure **(\\głównego aplikacji bin** for Web role i **głównego aplikacji** dla ról procesów roboczych).
+> W programie Visual Studio Właściwość **Kopiuj do katalogu wyjściowego** dla pliku wsadowego uruchamiania powinna być ustawiona na wartość **Kopiuj zawsze** upewnij się, że plik wsadowy uruchamiania jest prawidłowo wdrożony w projekcie na platformie Azure (**głównego aplikacji\\bin** dla ról sieci Web i **głównego aplikacji** dla ról procesów roboczych).
 > 
 > 
 
@@ -87,13 +87,13 @@ Poniżej opisano atrybuty elementu **Task** w pliku [ServiceDefinition.csdef] :
 
 * Polecenie z opcjonalnymi parametrami wiersza polecenia, które rozpoczyna zadanie uruchamiania.
 * Często jest to nazwa pliku wsadowego. cmd lub. bat.
-* Zadanie jest względem folderu bin głównego aplikacji\\dla wdrożenia. Zmienne środowiskowe nie są rozszerzane podczas określania ścieżki i pliku zadania. Jeśli jest wymagane rozwinięcie środowiska, można utworzyć mały skrypt. cmd, który wywołuje zadanie uruchamiania.
+* Zadanie jest względem folderu głównego aplikacji\\bin dla wdrożenia. Zmienne środowiskowe nie są rozszerzane podczas określania ścieżki i pliku zadania. Jeśli jest wymagane rozwinięcie środowiska, można utworzyć mały skrypt. cmd, który wywołuje zadanie uruchamiania.
 * Może to być Aplikacja konsolowa lub plik wsadowy, który uruchamia [skrypt programu PowerShell](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task).
 
 **kontekście wykonywania** — określa poziom uprawnień dla zadania uruchamiania. Poziom uprawnień może być ograniczony lub podwyższony:
 
 * **Separator**  
-  Zadanie uruchamiania jest uruchamiane z tymi samymi uprawnieniami co rola. Gdy atrybut **kontekście wykonywania** dla elementu [Środowiska uruchomieniowego] jest również **ograniczony**, są używane uprawnienia użytkownika.
+  Zadanie uruchamiania jest uruchamiane z tymi samymi uprawnieniami co rola. Gdy atrybut **kontekście wykonywania** dla elementu [Środowisko uruchomieniowe] jest również **ograniczony**, są używane uprawnienia użytkownika.
 * **pełny**  
   Zadanie uruchamiania jest uruchamiane z uprawnieniami administratora. Dzięki temu zadania uruchamiania mogą instalować programy, wprowadzać zmiany w konfiguracji usług IIS, wykonywać zmiany w rejestrze i inne zadania na poziomie administratora bez zwiększania poziomu uprawnień samej roli.  
 
@@ -112,7 +112,7 @@ Poniżej opisano atrybuty elementu **Task** w pliku [ServiceDefinition.csdef] :
   > 
   > 
   
-    Aby upewnić się, że plik wsadowy kończy się liczbą **ERRORLEVEL** równą zero `EXIT /B 0` , wykonaj polecenie na końcu procesu pliku wsadowego.
+    Aby upewnić się, że plik wsadowy kończy się liczbą **ERRORLEVEL** równą zero, wykonaj polecenie `EXIT /B 0` na końcu procesu pliku wsadowego.
 * **tle**  
   Zadania są wykonywane asynchronicznie, równolegle z uruchomieniem roli.
 * **pierwszego planu**  
@@ -123,7 +123,7 @@ Zmienne środowiskowe umożliwiają przekazywanie informacji do zadania uruchami
 
 Istnieją dwa rodzaje zmiennych środowiskowych dla zadań uruchamiania; statyczne zmienne środowiskowe i zmienne środowiskowe oparte na elementach członkowskich klasy [RoleEnvironment] . Oba znajdują się w sekcji [Środowisko] pliku [ServiceDefinition.csdef] i używają atrybutu element [zmiennej] i **nazwy** .
 
-Zmienne środowiskowe static używają atrybutu **Value** elementu [Zmiennej] . W powyższym przykładzie powstaje zmienna środowiskowa **MyVersionNumber** , która ma wartość statyczną "**1.0.0.0**". Innym przykładem jest utworzenie zmiennej środowiskowej **StagingOrProduction** , którą można ręcznie ustawić na wartości "przemieszczanie" lub "**produkcja**", aby wykonać różne akcje uruchamiania na podstawie wartości **StagingOrProduction** zmienna środowiskowa.
+Zmienne środowiskowe static używają atrybutu **Value** elementu [Zmiennej] . W powyższym przykładzie powstaje zmienna środowiskowa **MyVersionNumber** , która ma wartość statyczną "**1.0.0.0**". Innym przykładem jest utworzenie zmiennej środowiskowej **StagingOrProduction** , którą można ręcznie ustawić na wartości "**przemieszczanie**" lub "**produkcja**", aby wykonać różne akcje uruchamiania na podstawie wartości zmiennej środowiskowej **StagingOrProduction** .
 
 Zmienne środowiskowe oparte na elementach członkowskich klasy RoleEnvironment nie używają atrybutu **Value** elementu [Zmiennej] . Zamiast tego element podrzędny [RoleInstanceValue] z odpowiednią wartością atrybutu **XPath** służy do tworzenia zmiennej środowiskowej na podstawie określonego elementu członkowskiego klasy [RoleEnvironment] . Wartości atrybutu **XPath** umożliwiające dostęp do różnych wartości [RoleEnvironment] można znaleźć [tutaj](cloud-services-role-config-xpath.md).
 
@@ -154,10 +154,13 @@ Dowiedz się, jak wykonywać [typowe zadania uruchomieniowe](cloud-services-star
 [Pakowanie](cloud-services-model-and-package.md) usługi w chmurze.  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Zadanie]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Folderze]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Środowiska uruchomieniowego]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
+[Zadanie podrzędne]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
+[Środowisko uruchomieniowe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Środowisko]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Zmiennej]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+
+
+

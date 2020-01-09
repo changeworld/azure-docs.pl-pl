@@ -9,41 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 508fa192a014501bad6488e5be8278731230913b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381566"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Samouczek: Tworzenie aplikacji LUIS w celu określenia zamiarów użytkownika
 
-W tym samouczku utworzysz aplikację niestandardową, która przewiduje zamiar użytkownika w oparciu o wypowiedź (tekst). 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+W tym samouczku utworzysz aplikację niestandardową, która przewiduje zamiar użytkownika w oparciu o wypowiedź (tekst).
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
-> * Tworzenie nowej aplikacji 
+> * Tworzenie nowej aplikacji
 > * Tworzenie intencji
 > * Dodawanie przykładowych wypowiedzi
 > * Szkolenie aplikacji
 > * Publikowanie aplikacji
 > * Pobierz prognozowanie intencji z punktu końcowego
 
-
-[!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
-
 ## <a name="user-intentions-as-intents"></a>Zamiary użytkownika jako intencje
 
-Zadaniem aplikacji jest ustalenie intencji konwersacyjnego tekstu w języku naturalnym: 
+Zadaniem aplikacji jest ustalenie intencji konwersacyjnego tekstu w języku naturalnym:
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-Intencje są podzielone na kategorie **intencji**. 
+Intencje są podzielone na kategorie **intencji**.
 
 |Intencja|Przeznaczenie|
 |--|--|
@@ -56,11 +51,11 @@ Intencje są podzielone na kategorie **intencji**.
 
 [!INCLUDE [Follow these steps to create a new LUIS app](includes/create-pizza-app.md)]
 
-## <a name="create-a-new-intent"></a>Tworzenie nowej intencji 
+## <a name="create-a-new-intent"></a>Tworzenie nowej intencji
 
 1. W portalu w sekcji **kompilacja** aplikacji wybierz pozycję **+ Utwórz**. Wprowadź nazwę nowego celu, `OrderPizza`a następnie wybierz pozycję **gotowe**.
 
-    Zamierzone `OrderPizza` jest przewidywane: użytkownik chce zamówić Pizza. 
+    Zamierzone `OrderPizza` jest przewidywane: użytkownik chce zamówić Pizza.
 
 1. Dodaj kilka przykładowych wypowiedzi do tej intencji — takich, których spodziewasz się ze strony użytkownika:
 
@@ -74,9 +69,9 @@ Intencje są podzielone na kategorie **intencji**.
 
     ![Dodawanie przykładowych wypowiedzi](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Dostarczając _przykładowe wypowiedzi_, trenujesz usługę LUIS, jakiego rodzaju wypowiedzi powinny być przewidywane dla tej intencji. 
+    Dostarczając _przykładowe wypowiedzi_, trenujesz usługę LUIS, jakiego rodzaju wypowiedzi powinny być przewidywane dla tej intencji.
 
-    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>Utwórz pozostałe intencje
 
@@ -90,7 +85,7 @@ Intencje są podzielone na kategorie **intencji**.
     |`Start`|
     |`Begin`|
 
-1. Utwórz zamiar `Confirm` i Dodaj następujący przykład wyrażenia długości. Jest to cel, aby określić, czy użytkownik ukończy porządkowanie i akceptuje szczegóły zamówienia. 
+1. Utwórz zamiar `Confirm` i Dodaj następujący przykład wyrażenia długości. Jest to cel, aby określić, czy użytkownik ukończy porządkowanie i akceptuje szczegóły zamówienia.
 
     |`Confirm` przykład wyrażenia długości|
     |--|
@@ -104,13 +99,13 @@ Intencje są podzielone na kategorie **intencji**.
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
-## <a name="train-the-app"></a>Uczenie aplikacji 
+## <a name="train-the-app"></a>Uczenie aplikacji
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Publikowanie aplikacji 
+## <a name="publish-the-app"></a>Publikowanie aplikacji
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="get-intent-prediction"></a>Pobierz prognozowanie intencji
 
@@ -118,11 +113,11 @@ Intencje są podzielone na kategorie **intencji**.
 
 1. Przejdź na koniec adresu URL na pasku adresu i wprowadź:
 
-    `get a medium vegetarian pizza for delivery` 
+    `get a medium vegetarian pizza for delivery`
 
     Nie jest to dokładnie takie samo, jak przykład wypowiedź, dlatego jest dobrym testem, aby sprawdzić, czy LUIS może dowiedzieć się, co należy przewidzieć w tym zamierzeniu.
 
-    Ostatni parametr ciągu zapytania to `query`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź nie przypomina żadnej z przykładowych wypowiedzi. Jest to dobry test, który powinien zwrócić intencję `OrderPizza` jako najwyżej ocenioną. 
+    Ostatni parametr ciągu zapytania to `query`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź nie przypomina żadnej z przykładowych wypowiedzi. Jest to dobry test, który powinien zwrócić intencję `OrderPizza` jako najwyżej ocenioną.
 
     ```JSON
     {
@@ -148,15 +143,15 @@ Intencje są podzielone na kategorie **intencji**.
     }
     ```
 
-    Tablica jednostek jest pusta, ponieważ ta aplikacja nie ma obecnie żadnych jednostek (jednostka danych wewnątrz wypowiedź do wyodrębnienia). 
+    Tablica jednostek jest pusta, ponieważ ta aplikacja nie ma obecnie żadnych jednostek (jednostka danych wewnątrz wypowiedź do wyodrębnienia).
 
-    Wynik w formacie JSON określa najwyżej ocenioną intencję jako właściwość **`prediction.topIntent`** . Wszystkie wyniki są z zakresu od 1 do 0, a lepszy wynik jest zbliżony do 1. 
+    Wynik w formacie JSON określa najwyżej ocenioną intencję jako właściwość **`prediction.topIntent`** . Wszystkie wyniki są z zakresu od 1 do 0, a lepszy wynik jest zbliżony do 1.
 
 1. Zmień parametr **zapytania** adresu URL, aby określić cel **powitania** :
 
     `Howdy`
 
-    Nie jest to dokładnie takie samo, jak przykład wypowiedź, dlatego jest dobrym testem, aby sprawdzić, czy LUIS może dowiedzieć się, co należy przewidzieć w tym zamierzeniu. 
+    Nie jest to dokładnie takie samo, jak przykład wypowiedź, dlatego jest dobrym testem, aby sprawdzić, czy LUIS może dowiedzieć się, co należy przewidzieć w tym zamierzeniu.
 
     ```json
     {
@@ -179,14 +174,14 @@ Intencje są podzielone na kategorie **intencji**.
             },
             "entities": {}
         }
-    }    
+    }
     ```
- 
-    To prognozowanie ma 44% wyniku ufności. Aby zwiększyć wynik pewności, Dodaj od 15 do 30 przykład wyrażenia długości.  
+
+    To prognozowanie ma 44% wyniku ufności. Aby zwiększyć wynik pewności, Dodaj od 15 do 30 przykład wyrażenia długości.
 
 ## <a name="client-application-next-steps"></a>Następne czynności dotyczące aplikacji klienckiej
 
-Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane. Usługa LUIS nie odpowiada na wypowiedzi użytkowników, tylko określa, o jakie informacje proszą oni w języku naturalnym. Dalsza konwersacja jest udostępniana przez aplikację kliencką, na przykład Azure Bot. 
+Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane. Usługa LUIS nie odpowiada na wypowiedzi użytkowników, tylko określa, o jakie informacje proszą oni w języku naturalnym. Dalsza konwersacja jest udostępniana przez aplikację kliencką, na przykład Azure Bot.
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
@@ -202,7 +197,7 @@ Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzono aplikację LUIS, utworzono intencje, dodano przykład wyrażenia długości do każdego zamiaru, dodaliśmy przykład wyrażenia długości do zamiaru brak, przeszkolony, opublikowany i przetestowany w punkcie końcowym. Są to podstawowe kroki tworzenia modelu usługi LUIS. 
+W tym samouczku utworzono aplikację LUIS, utworzono intencje, dodano przykład wyrażenia długości do każdego zamiaru, dodaliśmy przykład wyrażenia długości do zamiaru brak, przeszkolony, opublikowany i przetestowany w punkcie końcowym. Są to podstawowe kroki tworzenia modelu usługi LUIS.
 
 > [!div class="nextstepaction"]
 > [Dodaj jednostkę, do której ma zostać utworzona aplikacja](tutorial-machine-learned-entity.md)

@@ -2,19 +2,15 @@
 title: Zasoby połączenia w Azure Automation
 description: Zasoby połączeń w Azure Automation zawierają informacje wymagane do nawiązania połączenia z zewnętrzną usługą lub aplikacją z poziomu elementu Runbook lub konfiguracji DSC. W tym artykule opisano szczegółowe informacje o połączeniach i sposobach pracy z nimi zarówno w tworzeniu tekstu, jak i w formie graficznej.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366794"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Zasoby połączenia w Azure Automation
 

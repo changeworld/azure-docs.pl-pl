@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: a197f95963e5a4138136f5d336e276ec1c7f7af7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407629"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps pokrycie pogodowe
 
@@ -23,7 +23,7 @@ Azure Maps nie ma tego samego poziomu informacji i dokładności dla wszystkich 
 
 Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które można zażądać od poszczególnych krajów/regionów.
 
-| Symboliczn | Znaczenie |
+| Symbol | Znaczenie |
 |--------|---------|
 |*       |Obejmuje Pogoda na trasie, bieżące warunki, prognozę godzinową, prognozę kwartalną i dzienne interfejsy API prognozowania |
 
@@ -52,7 +52,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Kostaryka                               | ✓ |   |  ✓| 
 | Kuba                                     | ✓ |   |  ✓| 
 | Curaçao                                  | ✓ |   |  ✓| 
-| Mini                                 | ✓ |   |  ✓| 
+| Dominika                                 | ✓ |   |  ✓| 
 | Dominikana                       | ✓ |   |  ✓| 
 | Ekwador                                  | ✓ |   |  ✓| 
 | Salwador                              | ✓ |   |  ✓| 
@@ -78,7 +78,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Saint Kitts i Nevis                    | ✓ |   |  ✓| 
 | Saint Lucia                              | ✓ |   |  ✓| 
 | Saint-Martin                             | ✓ |   |  ✓| 
-| Saint-Pierre i Miquelon                | ✓ |   |  ✓| 
+| Saint Pierre i Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent i Grenadyny         | ✓ |   |  ✓| 
 | Sint Eustatius                           | ✓ |   |  ✓|  
 | Sint Maarten                             | ✓ |   |  ✓| 
@@ -86,7 +86,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Surinam                                 | ✓ |   |  ✓| 
 | Trynidad i Tobago                      | ✓ |   |  ✓| 
 | Turks i Caicos                 | ✓ |   |  ✓| 
-| Odległe wyspy Stanów Zjednoczonych                    | ✓ |   |  ✓| 
+| Odległe Mniejsze Wyspy Stanów Zjednoczonych                    | ✓ |   |  ✓| 
 | Wyspy Dziewicze Stanów Zjednoczonych                      | ✓ |   |  ✓| 
 | Stany Zjednoczone                            | ✓ | ✓ |  ✓| 
 | Urugwaj                                  | ✓ |   |  ✓| 
@@ -118,9 +118,9 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Erytrea                     | ✓               |                              |        ✓| 
 | eSwatini                    | ✓               |                              |        ✓| 
 | Etiopia                    | ✓               |                              |        ✓| 
-| Francuskie Terytoria Południowe | ✓               |                              |        ✓| 
+| Francuskie Terytoria Południowe i Antarktyczne | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
-| Przybrzeżn                      | ✓               |                              |        ✓| 
+| Gambia                      | ✓               |                              |        ✓| 
 | Ghana                       | ✓               |                              |        ✓| 
 | Gwinea                      | ✓               |                              |        ✓| 
 | Gwinea Bissau               | ✓               |                              |        ✓| 
@@ -139,7 +139,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Mali                        | ✓               |                              |        ✓| 
 | Mauretania                  | ✓               |                              |        ✓| 
 | Mauritius                   | ✓               |                              |        ✓| 
-| Majotta                     | ✓               |                              |        ✓| 
+| Wyspa Majotta                     | ✓               |                              |        ✓| 
 | Maroko                     | ✓               |                              |        ✓| 
 | Mozambik                  | ✓               |                              |        ✓| 
 | Namibia                     | ✓               |                              |        ✓| 
@@ -148,7 +148,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Oman                        | ✓               |                              |        ✓| 
 | Autonomia Palestyńska       | ✓               |                              |        ✓| 
 | Katar                       | ✓               |                              |        ✓| 
-| Reunion                     | ✓               |                              |        ✓| 
+| Réunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
 | Święta Helena, Wyspa Wniebowstąpienia, Tristan da Cunha        | ✓               |                              |        ✓| 
 | Wyspy Świętego Tomasza i Książęca       | ✓               |                              |        ✓| 
@@ -158,7 +158,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Somalia                     | ✓               |                              |        ✓| 
 | Republika Południowej Afryki                | ✓               |                              |        ✓| 
-| Sudan południowy                 | ✓               |                              |        ✓| 
+| Sudan Południowy                 | ✓               |                              |        ✓| 
 | Sudan                       | ✓               |                              |        ✓| 
 | Syria                       | ✓               |                              |        ✓| 
 | Tanzania                    | ✓               |                              |        ✓| 
@@ -193,7 +193,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Polinezja Francuska                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Wyspy Heard i McDonald | ✓ |   |  ✓| 
-| Hongkong SAR                     | ✓ |   |  ✓| 
+| SRA Hongkong                     | ✓ |   |  ✓| 
 | Indie                             | ✓ |   |  ✓| 
 | Indonezja                         | ✓ |   |  ✓| 
 | Japonia                             | ✓ | ✓ |  ✓| 
@@ -202,7 +202,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Korea Południowa                             | ✓ | ✓ |  ✓| 
 | Kirgistan                        | ✓ |   |  ✓| 
 | Laos                              | ✓ |   |  ✓| 
-| Makau SAR                         | ✓ |   |  ✓| 
+| SRA Makau                         | ✓ |   |  ✓| 
 | Malezja                          | ✓ |   |  ✓| 
 | Malediwy                          | ✓ |   |  ✓| 
 | Wyspy Marshalla                  | ✓ |   |  ✓| 
@@ -214,7 +214,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Nowa Kaledonia                     | ✓ |   |  ✓| 
 | Nowa Zelandia                       | ✓ |   |  ✓| 
 | Niue                              | ✓ |   |  ✓| 
-| Wyspa Norfolk                    | ✓ |   |  ✓| 
+| Norfolk                    | ✓ |   |  ✓| 
 | Korea Północna                       | ✓ |   |  ✓| 
 | Mariany Północne          | ✓ |   |  ✓| 
 | Pakistan                          | ✓ |   |  ✓| 
@@ -222,14 +222,14 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Papua Nowa Gwinea                  | ✓ |   |  ✓| 
 | Filipiny                       | ✓ |   |  ✓| 
 | Wyspy Pitcairn                  | ✓ |   |  ✓| 
-| Zachodniego                             | ✓ |   |  ✓| 
+| Samoa                             | ✓ |   |  ✓| 
 | Singapur                         | ✓ |   |  ✓| 
 | Wyspy Salomona                   | ✓ |   |  ✓| 
 | Sri Lanka                         | ✓ |   |  ✓| 
 | Tajwan                            | ✓ |   |  ✓| 
 | Tadżykistan                        | ✓ |   |  ✓| 
 | Tajlandia                          | ✓ |   |  ✓| 
-| Timor — Wschodni                       | ✓ |   |  ✓| 
+| Timor-Leste                       | ✓ |   |  ✓| 
 | Tokelau                           | ✓ |   |  ✓| 
 | Tonga                             | ✓ |   |  ✓| 
 | Turkmenistan                      | ✓ |   |  ✓| 
@@ -276,7 +276,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Liechtenstein          | ✓ | ✓ |  ✓| 
 | Litwa              | ✓ |   |  ✓| 
 | Luksemburg             | ✓ | ✓ |  ✓| 
-| Północna Macedonia        | ✓ |   |  ✓| 
+| Macedonia Północna        | ✓ |   |  ✓| 
 | Malta                  | ✓ |   |  ✓| 
 | Mołdawia                | ✓ | ✓ |  ✓| 
 | Monako                 | ✓ | ✓ |  ✓| 

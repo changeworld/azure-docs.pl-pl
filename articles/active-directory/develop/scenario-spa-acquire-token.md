@@ -1,5 +1,5 @@
 ---
-title: Uzyskiwanie tokenu w aplikacjach jednostronicowych — platforma tożsamości firmy Microsoft | Azure
+title: Uzyskaj token do wywoływania internetowego interfejsu API (aplikacje jednostronicowe) — Microsoft Identity platform | Azure
 description: Dowiedz się, jak utworzyć aplikację jednostronicową (uzyskać token, aby wywołać interfejs API)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9723e9a58704a583c7332db11bae7da6b045a5f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17c11b8cb4c1d7f4eef22903b81f38d93b54b41b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423676"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Aplikacja jednostronicowa: uzyskiwanie tokenu do wywoływania interfejsu API
 

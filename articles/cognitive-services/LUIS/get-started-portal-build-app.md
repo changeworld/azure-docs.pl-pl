@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381991"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki Start: Tworzenie nowej aplikacji w portalu LUIS
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 W tym przewodniku szybki start utworzysz nową aplikację w portalu LUIS. Najpierw utworzysz podstawowe elementy aplikacji, **intencje**i **jednostki**. Następnie przetestuj aplikację, dostarczając przykładowej wypowiedź użytkownika w panelu testów interakcyjnych, aby uzyskać przewidywany cel.
 
@@ -37,9 +35,9 @@ Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gd
 
    |Nazwa ustawienia| Wartość | Przeznaczenie|
    |--|--|--|
-   |Nazwa|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>Wymagane|
-   |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>Wymagane|
-   |Opis (opcjonalnie)|`App made with LUIS Portal`|Opis aplikacji<br>obowiązkowe|
+   |Nazwa|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>{1&gt;wymagane&lt;1}|
+   |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>{1&gt;wymagane&lt;1}|
+   |Opis (opcjonalnie)|`App made with LUIS Portal`|Opis aplikacji<br>opcjonalnie|
    |Zasób predykcyjny (opcjonalnie) |-  |Nie wybieraj. LUIS udostępnia klucz początkowy do użycia bezpłatnie na potrzeby tworzenia i 1 000 żądań punktu końcowego przewidywania. |
 
    ![Wprowadź nowe ustawienia aplikacji](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -97,7 +95,7 @@ Dodaj następujące 15 przykładowych wyrażenia długości do zamiaru `FindForm
 Zgodnie z projektem, te przykładowe wyrażenia długości różnią się w następujący sposób:
 
 * Długość wypowiedź
-* interpunkcyjny
+* znaki interpunkcyjne
 * wybór wyrazów
 * intensywność czasownika (is, jest, będzie)
 * kolejność wyrazów

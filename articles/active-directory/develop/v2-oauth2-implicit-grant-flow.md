@@ -1,6 +1,6 @@
 ---
-title: Bezpieczne aplikacje jednostronicowe z niejawnym przepływem platformy tożsamości firmy Microsoft | Azure
-description: Tworzenie aplikacji sieci Web przy użyciu implementacji platformy tożsamości firmy Microsoft dla niejawnego przepływu dla aplikacji jednostronicowych.
+title: Niejawny przepływ uwierzytelniania OAuth 2,0 — platforma tożsamości firmy Microsoft | Azure
+description: Zabezpiecz aplikacje jednostronicowe przy użyciu niejawnego przepływu platformy tożsamości firmy Microsoft.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afae9535c190c05bca3153dfbe5279cd4c47968
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a73056914d08cc9c0c90b1c91cc67c18eaad86da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423242"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity platform i niejawny przepływ dotacji
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408668"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Korzystanie z modułu Azure Maps Services
 
@@ -29,14 +29,14 @@ Zestaw SDK sieci Web Azure Maps zawiera *moduł usług*. Ten moduł jest bibliot
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - Alternatywnie Załaduj kod źródłowy zestawu SDK sieci Web Azure Maps lokalnie, używając pakietu [Azure-Maps-REST](https://www.npmjs.com/package/azure-maps-rest) npm, a następnie hostować go w aplikacji. Ten pakiet zawiera również definicje języka TypeScript. Użyj tego polecenia:
+    - Alternatywnie możesz załadować moduł usługi dla kodu źródłowego Azure Maps Web SDK lokalnie przy użyciu pakietu [Azure-Maps-REST](https://www.npmjs.com/package/azure-maps-rest) npm, a następnie hostować go w aplikacji. Ten pakiet zawiera również definicje języka TypeScript. Użyj tego polecenia:
     
-        > **npm Zainstaluj platformę Azure — Maps — REST**
+        > **npm install azure-maps-rest**
     
         Następnie Dodaj odwołanie do skryptu do `<head>` elementu pliku:
 
          ```html
-        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
 1. Utwórz potok uwierzytelniania. Należy utworzyć potok, aby można było zainicjować punkt końcowy klienta adresu URL usługi. Aby uwierzytelnić klienta usługi wyszukiwania Azure Maps, użyj własnego klucza konta Azure Maps lub poświadczeń Azure Active Directory (Azure AD). W tym przykładzie zostanie utworzony klient adresu URL usługi wyszukiwania. 
@@ -162,6 +162,28 @@ Zestaw SDK sieci Web Azure Maps zawiera *moduł usług*. Ten moduł jest bibliot
 <iframe height="500" style="width: 100%;" scrolling="no" title="Korzystanie z modułu usług" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zobacz pióro <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>przy użyciu modułu usług</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w witrynie <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+<br/>
+
+## <a name="azure-government-cloud-support"></a>Obsługa Azure Government w chmurze
+
+Azure Maps Web SDK obsługuje chmurę Azure Government. Wszystkie adresy URL JavaScript i CSS używane do uzyskiwania dostępu do zestawu SDK sieci Web Azure Maps pozostają takie same. należy jednak wykonać następujące zadania w celu nawiązania połączenia z wersją Azure Government w chmurze platformy Azure Maps.
+
+W przypadku używania kontrolki mapy interaktywnej Dodaj następujący wiersz kodu przed utworzeniem wystąpienia klasy `Map`. 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+Podczas uwierzytelniania mapy i usług upewnij się, że Azure Maps szczegóły uwierzytelniania na platformie Azure Government Cloud.
+
+W przypadku korzystania z modułu usługi domena dla usług musi być ustawiona podczas tworzenia wystąpienia punktu końcowego adresu URL interfejsu API. Na przykład poniższy kod tworzy wystąpienie klasy `SearchURL` i wskazuje domenę na Azure Government chmurę.
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+W przypadku bezpośredniego uzyskiwania dostępu do Azure Maps usług REST Zmień domenę adresu URL na `atlas.azure.us`. Na przykład jeśli korzystasz z usługi interfejsu API wyszukiwania, Zmień domenę adresu URL z `https://atlas.microsoft.com/search/` na `https://atlas.azure.us/search/`.
 
 ## <a name="next-steps"></a>Następne kroki
 

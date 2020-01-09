@@ -12,28 +12,39 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f663f7daad19e77dcc1cc95a6a324e881d92b28
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847127"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429941"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Zatwierdzanie lub odrzucanie żądań dla ról usługi Azure AD w Privileged Identity Management
 
 Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można skonfigurować role, aby wymagały zatwierdzenia dla aktywacji, i wybrać jednego lub wielu użytkowników lub grupy jako delegowane osoby zatwierdzające. Delegowane osoby zatwierdzające mają 24 godziny na zatwierdzanie żądań. Jeśli żądanie nie zostanie zatwierdzone w ciągu 24 godzin, wówczas uprawniony użytkownik musi ponownie przesłać nowe żądanie. Nie można skonfigurować okna czasu zatwierdzania 24-godzinnego.
 
+## <a name="determine-your-version-of-pim"></a>Określanie używanej wersji programu PIM
+
+Od listopada 2019 część Privileged Identity Management ról usługi Azure AD jest aktualizowana do nowej wersji, która jest zgodna z środowiskami dla ról zasobów platformy Azure. Spowoduje to utworzenie dodatkowych funkcji, a także [zmian w istniejącym interfejsie API](azure-ad-roles-features.md#api-changes). Gdy nowa wersja jest wdrażana, procedury, które należy wykonać w tym artykule, zależą od aktualnie posiadanej wersji Privileged Identity Management. Wykonaj kroki opisane w tej sekcji, aby określić, która wersja Privileged Identity Management masz. Po uzyskaniu informacji o wersji Privileged Identity Management możesz wybrać procedury w tym artykule, które pasują do tej wersji.
+
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika, który znajduje się w roli [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Otwórz **Azure AD Privileged Identity Management**. Jeśli masz baner w górnej części strony przegląd, postępuj zgodnie z instrukcjami wyświetlanymi na karcie **Nowa wersja** tego artykułu. W przeciwnym razie postępuj zgodnie z instrukcjami podanymi w **poprzedniej wersji** karty.
+
+    ![Nowa wersja ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+
 Wykonaj kroki opisane w tym artykule, aby zatwierdzić lub odrzucić żądania dla ról usługi Azure AD.
 
-## <a name="view-pending-requests"></a>Wyświetl oczekujące żądania
+# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
+
+## <a name="view-pending-requests"></a>Wyświetlanie oczekujących żądań
 
 W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli usługi Azure AD oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
@@ -41,7 +52,7 @@ W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, g
 
 1. Kliknij pozycję **Zatwierdź żądania**.
 
-    ![Role usługi Azure AD — zatwierdzanie żądań](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Role usługi Azure AD — zatwierdzanie żądań](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
     Zostanie wyświetlona lista żądań oczekujących na zatwierdzenie.
 
@@ -55,7 +66,7 @@ W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, g
 
     ![Zatwierdź okienko wybrane żądania z przyczyną zatwierdzenia](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Kliknij przycisk **Zatwierdź**.
+1. Kliknij polecenie **Zatwierdź**.
 
     Symbol stanu zostanie zaktualizowany przy użyciu zatwierdzenia.
 
@@ -74,6 +85,58 @@ W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, g
 1. Kliknij przycisk **Odmów**.
 
     Symbol stanu zostanie zaktualizowany z odmową.
+
+# <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
+
+## <a name="view-pending-requests"></a>Wyświetlanie oczekujących żądań
+
+W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli zasobu platformy Azure oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
+
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+
+1. Otwórz **Azure AD Privileged Identity Management**.
+
+1. Wybierz pozycję **Zatwierdź żądania**.
+
+    ![Zatwierdź żądania — na stronie zasobów platformy Azure zostanie wyświetlona prośba o przejrzenie](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+
+    W sekcji **żądania aktywacji roli** zobaczysz listę żądań oczekujących na zatwierdzenie.
+
+## <a name="approve-requests"></a>Zatwierdzanie żądań
+
+1. Znajdź i wybierz żądanie, które chcesz zatwierdzić. Zostanie wyświetlona strona zatwierdzanie lub odmowa.
+
+    ![Okienko zatwierdzanie żądań — zatwierdzanie lub odrzucanie z użyciem pola szczegóły i uzasadnienia](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+
+1. W polu **uzasadnienie** wprowadź uzasadnienie biznesowe.
+
+1. Wybierz pozycję **Zatwierdź**. Otrzymasz powiadomienie o zatwierdzeniu na platformie Azure.
+
+    ![Zatwierdź powiadomienie z zatwierdzeniem żądania](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+
+## <a name="deny-requests"></a>Odmów żądań
+
+1. Znajdź i wybierz żądanie, które chcesz odmówić. Zostanie wyświetlona strona zatwierdzanie lub odmowa.
+
+    ![Okienko zatwierdzanie żądań — zatwierdzanie lub odrzucanie z użyciem pola szczegóły i uzasadnienia](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. W polu **uzasadnienie** wprowadź uzasadnienie biznesowe.
+
+1. Wybierz pozycję **Odmów**. Zostanie wyświetlone powiadomienie z odmową.
+
+## <a name="workflow-notifications"></a>Powiadomienia przepływu pracy
+
+Oto kilka informacji o powiadomieniach dotyczących przepływu pracy:
+
+- Osoby zatwierdzające są powiadamiane za pośrednictwem poczty e-mail, gdy żądanie dotyczące roli oczekuje na przegląd. Powiadomienia e-mail zawierają bezpośredni link do żądania, gdzie osoba zatwierdzająca może zatwierdzić lub odmówić.
+- Żądania są rozwiązywane przez pierwszej osoby zatwierdzającej, która zatwierdza lub odmówi.
+- Gdy osoba zatwierdzająca odpowie na żądanie, wszyscy osoby zatwierdzające są powiadamiani o akcji.
+- Administratorzy zasobów są powiadamiani, gdy zatwierdzony użytkownik zostanie uaktywniony w roli.
+
+>[!NOTE]
+>Administrator zasobów, który uważa, że zatwierdzona osoba nie powinna być aktywna, może usunąć przypisanie aktywnej roli w Privileged Identity Management. Mimo że administratorzy zasobów nie są powiadamiani o oczekujących żądaniach, chyba że są osobami zatwierdzającymi, mogą wyświetlać i anulować oczekujące żądania dla wszystkich użytkowników, wyświetlając oczekujące żądania w Privileged Identity Management.
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

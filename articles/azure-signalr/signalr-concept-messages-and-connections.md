@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392811"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Komunikaty i połączenia w usłudze Azure SignalR Service
 
@@ -38,8 +38,6 @@ Komunikaty o rozmiarze przekraczającym 2 KB są liczone jako większa liczba ko
 
 Na przykład możesz mieć trzech klientów i jeden serwer aplikacji. Jeden klient wysyła komunikat o rozmiarze 4 KB, a serwer rozgłasza go do wszystkich klientów. Liczba komunikatów to 8: jeden od usługi do serwera aplikacji i trzy od usługi do klientów. Każdy komunikat jest liczony jako dwa komunikaty o rozmiarze 2 KB.
 
-Liczba komunikatów wyświetlana w witrynie Azure Portal ma jednak wartość 0 aż do chwili, gdy przekroczy ona wartość 100.
-
 ## <a name="how-connections-are-counted"></a>Jak liczone są połączenia
 
 Istnieją połączenia z serwerem i połączenia klienckie z usługą Azure Signal Service. Domyślnie każdy serwer aplikacji jest uruchamiany z pięciu początkowych połączeń na koncentrator, a każdy klient ma jedno połączenie z klientem.
@@ -54,7 +52,7 @@ W okresie istnienia serwera aplikacji usługa i serwer aplikacji zachowują stan
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Jak jest liczony ruch przychodzący/wychodzący
 
-Rozróżnienie między ruchem przychodzącym a wychodzącym jest oparte na perspektywie usługi Azure SignalR Service. Ruch jest obliczany w bajtach. Tak jak w przypadku liczby komunikatów, ruch również ma swoją częstotliwość próbkowania. Wykres ruchu przychodzącego/wychodzącego w witrynie Azure Portal jest uaktualniany co 100 KB dla centrum.
+Rozróżnienie między ruchem przychodzącym a wychodzącym jest oparte na perspektywie usługi Azure SignalR Service. Ruch jest obliczany w bajtach.
 
 ## <a name="related-resources"></a>Zasoby powiązane
 

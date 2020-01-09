@@ -1,7 +1,7 @@
 ---
 title: 'Oceń polecania: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu do szacowania programu polecania w usłudze Azure Machine Learning, aby oszacować dokładność prognoz modelu zalecenia.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu do szacowania w Azure Machine Learning, aby oszacować dokładność prognoz modelu zalecanych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9a80fce04aa939895d1dc9572714046d9203bad7
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428534"
 ---
-# <a name="evaluate-recommender"></a>Oceń zalecaną
+# <a name="evaluate-recommender"></a>Ocena modułu poleceń
 
 W tym artykule opisano sposób korzystania z modułu "Oceń polecania" w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem jest zmierzenie dokładności prognoz, które zostały wykonane przez model rekomendacji. Korzystając z tego modułu, można oszacować różne rodzaje zaleceń:  
   
@@ -90,4 +90,4 @@ Ze względu na to, że w przypadku zalecanych elementów nie jest wiadomo, że w
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

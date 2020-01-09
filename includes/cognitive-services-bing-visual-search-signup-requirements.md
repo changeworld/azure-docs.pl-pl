@@ -3,20 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/18/2019
-ms.openlocfilehash: 16ee9ae9a4eec6b38c57b984b3acb75479b437e6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 12/17/2019
+ms.openlocfilehash: 7aa478c764ea1d9720d91068fa04d353e6a4db02
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277393"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379503"
 ---
-Musisz mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. Przed kontynuowaniem, konieczne będzie klucz dostępu podany po uruchomieniu subskrypcji w warstwie cena S9, jak pokazano na [Cognitive Services cennik — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+## <a name="create-an-azure-resource"></a>Tworzenie zasobu platformy Azure
 
-Aby rozpocząć subskrypcję w witrynie Azure Portal:
-1. Wprowadź tekst „BingSearchV7” w polu tekstowym w górnej części witryny Azure Portal, w którym wyświetlany jest komunikat `Search resources, services, and docs`.  
-2. W witrynie Marketplace z listy rozwijanej wybierz pozycję `Bing Search v7`.
-3. Wprowadź wartość `Name` dla nowego zasobu.
-4. Wybierz subskrypcję `Pay-As-You-Go`.
-5. Wybierz warstwę cenową `S9`.
-6. Kliknij pozycję `Enable`, aby rozpocząć subskrypcję.
+Zacznij korzystać z interfejs API wyszukiwania wizualnego Bing, tworząc jeden z poniższych zasobów platformy Azure.
+
+* [Utwórz zasób w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Nie jest wymagana żadna subskrypcja platformy Azure.
+    * Ważne przez siedem dni bezpłatnie. Po zarejestrowaniu się w [witrynie sieci Web platformy Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)będzie dostępny klucz wersji próbnej i punkt końcowy.
+
+* [Utwórz zasób wyszukiwanie Bing wersji 7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * Dostępne w Azure Portal do momentu usunięcia zasobu.
+    * Wybierz warstwę cenową `S9`.
+
+* [Tworzenie zasobu wielousługowego](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Dostępne w Azure Portal do momentu usunięcia zasobu.  
+    * Użyj tego samego klucza i punktu końcowego dla aplikacji w wielu Cognitive Services.

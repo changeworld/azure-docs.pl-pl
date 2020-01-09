@@ -1,19 +1,18 @@
 ---
 title: Przetwarzanie zdarzeń w czasie rzeczywistym przy użyciu Azure Stream Analytics
 description: W tym artykule opisano architekturę referencyjną do osiągnięcia przetwarzania zdarzeń w czasie rzeczywistym i analizy przy użyciu Azure Stream Analytics.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 21a0e4e468b606ec7bb7e33bf1a616e68cd6cf50
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d219b3fcb27b23527c0a651bc8e842a9e036bfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431481"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Architektura referencyjna: przetwarzanie zdarzeń w czasie rzeczywistym za pomocą Microsoft Azure Stream Analytics
 Architektura referencyjna dla przetwarzania zdarzeń w czasie rzeczywistym z Azure Stream Analytics ma na celu zapewnienie ogólnego planu wdrażania rozwiązania do przetwarzania strumieniowego platformy jako usługi (PaaS) w czasie rzeczywistym z Microsoft Azure.
@@ -48,7 +47,7 @@ Microsoft Azure udostępnia obszerny katalog technologii analitycznych, które m
 Aby uzyskać dalszą pomoc, wypróbuj [forum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Następne kroki
-* [Wprowadzenie do Azure Stream Analytics](stream-analytics-introduction.md)
+* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

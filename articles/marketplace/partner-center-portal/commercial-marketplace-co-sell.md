@@ -1,52 +1,71 @@
 ---
 title: Opcja co do Sprzedaj w centrum partnerskim | Portal Azure Marketplace
 description: Informacje wprowadzone na karcie współsprzedanie oferty będą używane przez zespoły sprzedaży firmy Microsoft, aby dowiedzieć się więcej o Twoim rozwiązaniu podczas oceny jego dopasowania do potrzeb klientów.
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/06/2019
+ms.openlocfilehash: 5f5f98b908ce54624a5d73a2ed74b2e9ea8966ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812718"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431954"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Opcja współsprzedawana w centrum partnerskim
 
 Przekazywanie informacji na karcie współsprzedażowe jest całkowicie opcjonalne. Jest to wymagane do osiągnięcia gotowej do rozsprzedażu i gotowego do zakupu stanu do współdziałania. Te informacje będą używane przez zespoły sprzedaży firmy Microsoft, aby dowiedzieć się więcej na temat rozwiązania podczas oceny jego dopasowania do potrzeb klientów. Nie jest on dostępny bezpośrednio dla klientów. Aby uzyskać więcej informacji, zobacz artykuł [sprzedawanie przez firmę Microsoft](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
 
-## <a name="applicable-products"></a>Odpowiednie produkty
+Opcja współsprzedaży w centrum partnerskim jest obecnie dostępna dla niektórych typów ofert. Obsługa dodatkowych typów ofert zostanie udostępniona z upływem czasu.
 
-Wybierz dowolne produkty firmy Microsoft, w których oferta została utworzona w oparciu o lub zaprojektowana z myślą o pracy.
+| **Typ oferty** | **Strona współsprzedawcy dostępna w centrum partnerskim** |
+|    -----------------------    |    -----------------------------  |
+| Oprogramowanie jako usługa (SaaS) |     Ogólna dostępność około lutego. 2020      |
+| Dynamics 365 dla zaangażowania klienta & PowerApps      |     Dostępne teraz      |
+| Dynamics 365 for Operations     |     Dostępne teraz       |
+| Dynamics 365 Business Central      |  Ogólna dostępność około lutego. 2020     |
+| Azure Application     |     Ogólna dostępność około lutego. 2020     |
+| Maszyna wirtualna systemu Azure      |     Do ogłoszenia       |
+| Kontener platformy Azure     |     Do ogłoszenia       |
+| Usługa konsultingowa      |     Do ogłoszenia       |
+| Moduł IoT Edge      |     Do ogłoszenia       |
+| Aplikacja usługi Power BI     |     Do ogłoszenia       |
+|  |
 
-## <a name="customer-segments"></a>Segmenty klientów
+## <a name="listing"></a>Zawierające
 
-Wybierz rozmiar firmy, której dotyczy Twoja oferta.
+Aukcje ze wspólną sprzedażą będą pomocne dla zespołów sprzedaży firmy Microsoft na rynku Twojego rozwiązania dla szerszego grona odbiorców.
 
-## <a name="offer-type"></a>Typ oferty
+- Wybierz platformy firmy Microsoft, z którymi została skompilowana oferta, która rozszerza lub integruje się z usługą.
+- Wybierz segmenty rynku, dla których oferta ma znaczenie.
+- Wybierz [Typ rozwiązania](#solution-type) dla swojej oferty.
+- Wybierz maksymalnie trzy [obszary rozwiązań](#solution-areas) i obszary podrzędne.
 
-Wybierz typ oferty:
+### <a name="solution-type"></a>Typ rozwiązania
 
-| **Typ oferty**    | **Opis**  |
+Typy rozwiązań ułatwiają Definiowanie scenariuszy, w których oferta została zaprojektowana.
+
+| **Typ rozwiązania**    | **Opis**  |
 | :------------------- | :-------------------|
-| Urządzenie | Oferta, która obejmuje tworzenie i sprzedawanie sprzętu od producenta urządzenia. |
-| Adres IP | Aplikacje lub inne materiały z prawem autorskim licencjonowane na użytek klienta. Na przykład: Program CRM, który może być licencjonowany i instalowany lokalnie. |
+| Urządzenie (sprzęt) | Oferta, która obejmuje tworzenie i sprzedawanie sprzętu od producenta urządzenia. |
+| Adres IP (aplikacja) | Aplikacje lub inne materiały z prawem autorskim licencjonowane na użytek klienta. Na przykład: Program CRM, który może być licencjonowany i instalowany lokalnie. |
 | Usługa | Praktyczne doświadczenie dla konkretnego projektu jednorazowego, często dostarczane przez konsultantów. Na przykład: Konfigurowanie bazy danych klienta dla klienta programu (przy użyciu klienta przy założeniu, że jest on odpowiedzialny za obsługę bazy danych po dostarczeniu). |
 | Usługa zarządzana | Praktyczne doświadczenie w odniesieniu do projektu opartego na chmurze, zwykle w sposób ciągły. Przykład: dostarczenie platformy i narzędzi do uruchamiania bazy danych w trybie online z trwającym zarządzaniem udostępnianym przez dostawcę usług zarządzanych. |
 
-## <a name="solution-areas"></a>Obszary rozwiązania
+### <a name="solution-areas"></a>Obszary rozwiązania
 
-Możesz dodać maksymalnie trzy obszary rozwiązań dla swojej oferty.  Dla każdego obszaru rozwiązania można wybrać maksymalnie dwa podobszary rozwiązania. Aby wybrać wiele podkategorii, użyj klucza `Ctrl` (w systemie Windows) lub klucza polecenia (on Mac OS).
+Obszary rozwiązań ułatwiają dalsze Definiowanie rozwiązania.
 
-Obszary rozwiązań ułatwiają Definiowanie scenariuszy, w których oferta została zaprojektowana.
+Możesz dodać maksymalnie trzy obszary rozwiązań dla swojej oferty. Dla każdego obszaru rozwiązania można wybrać maksymalnie dwa podobszary rozwiązania. Aby wybrać wiele podkategorii, użyj klucza `Ctrl` (w systemie Windows) lub klucza polecenia (on Mac OS).
 
 ## <a name="documents"></a>Dokumenty
 
-| **Secret**    | **Opis**  |
+W celu oceny potrzeb klientów można dostarczyć firmie Microsoft zabezpieczenie.
+
+| **Dokumenty**    | **Opis**  |
 | :------------------- | :-------------------|
 | *Klient z jednym modułem stronicowania* | Gotowy do użycia opis oferty przez klienta. Zespoły sprzedaży firmy Microsoft mogą współdzielić te informacje z klientami, aby pomóc w ustaleniu, czy oferta może być dobrze dopasowana, i upewnić się, że jest ona gotowa dla klienta. <br> <br> Użyj jednego z odpowiednich szablonów dostępnych w centrum partnerskim: <br> <ul> <li> Microsoft Azure szablon z jednym modułem stronicowania </li> <li> Microsoft Dynamics 365 1 — szablon modułu stronicowania </li> <li> Office 365 1 — szablon modułu stronicowania </li> <li> Windows 10 1 — szablon modułu stronicowania </li> </ul>
  |
@@ -60,7 +79,7 @@ Obszary rozwiązań ułatwiają Definiowanie scenariuszy, w których oferta zost
 
 ## <a name="contacts"></a>Kontakty
 
-Informacje kontaktowe umożliwiają zespołom sprzedaży firmy Microsoft i odsprzedawców kanałów zażądać dodatkowych informacji od odpowiedniego zasobu w organizacji. Informacje kontaktowe są dostępne dla wszystkich zespołów sprzedaży firmy Microsoft. Jeśli wybierzesz opcję udostępnienia oferty w programie CSP, informacje kontaktowe są również dostępne dla odsprzedawcaów kanałów. 
+Informacje kontaktowe umożliwiają zespołom sprzedaży firmy Microsoft i odsprzedawców kanałów zażądać dodatkowych informacji od odpowiedniego zasobu w organizacji. Informacje kontaktowe są dostępne dla wszystkich zespołów sprzedaży firmy Microsoft. Jeśli wybierzesz opcję udostępnienia oferty w programie CSP, informacje kontaktowe są również dostępne dla odsprzedawcaów kanałów.
 
 Ten dokument zawiera wskazówki dotyczące różnych ról partnerów oraz sposób wybierania między nimi. Możesz udostępnić swoje kontakty, pobierając szablon CSV z Centrum partnerskiego, wypełniając każdy wiersz informacjami o kontakcie i importując ten plik CSV. Importowanie pliku CSV spowoduje zastąpienie istniejących kontaktów.
 

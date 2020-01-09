@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107099"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407830"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps
 
@@ -36,7 +36,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps 
 
-Aby wykonać kroki opisane w tym samouczku, postępuj zgodnie z instrukcjami podanymi w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , aby utworzyć subskrypcję konta usługi Azure Maps za pomocą warstwy cenowej S1, a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby uzyskać podstawowy klucz subskrypcji dla konta.
+Aby wykonać kroki opisane w tym samouczku, postępuj zgodnie z instrukcjami podanymi w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) w celu utworzenia subskrypcji konta Azure Maps przy użyciu warstwy cenowej S1 i postępuj zgodnie z instrukcjami w sekcji [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby pobrać klucz podstawowy dla konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="upload-geofences"></a>Przekazywanie geofencingu
 
@@ -56,7 +56,7 @@ Otwórz aplikację Postman i wykonaj poniższe kroki, aby przekazać geofencing 
     
     Parametr GEOJSON w ścieżce adresu URL reprezentuje format przekazywanych danych.
 
-3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczową subskrypcją Azure Maps.
+3. Kliknij pozycję **Params** (Parametry), a następnie wprowadź poniższą parę klucz-wartość, która będzie używana w przypadku adresu URL żądania POST. Zastąp wartość klucza subskrypcji kluczem Azure Maps.
    
     ![Parametry klucz-wartość narzędzia Postman](./media/tutorial-geofence/postman-key-vals.png)
 

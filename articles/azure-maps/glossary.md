@@ -1,6 +1,6 @@
 ---
-title: Słownik usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Słownik powszechnie używanych terminów związanych z usługi Azure Maps, usług Location Based Services i GIS.
+title: Słownik Azure Maps | Microsoft Docs
+description: Słownik często używanych terminów związanych z Azure Maps, usługami lokalizacyjnymi i GIS.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,395 +8,405 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64575356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408874"
 ---
 # <a name="glossary"></a>Słownik
 
-Oto lista popularnych wyrazów, używany przy użyciu usługi Azure Maps.
+Poniżej znajduje się lista typowych wyrazów używanych z Azure Maps.
 
 ## <a name="a"></a>A
 
-<a name="address-validation"></a> **Sprawdzanie poprawności adresu**: Proces sprawdzania, czy istnienie adresu.
+<a name="address-validation"></a>**Weryfikacja adresów**: proces weryfikacji istnienia adresu.
 
-<a name="advanced-routing"></a> **Zaawansowany routing**: Kolekcja usług, które wykonują operacje zaawansowane przy użyciu routingu danych podróży, takich jak obliczanie dostępne zakresy (isochrones), macierzach odległości i batch kierowanie żądań.
+<a name="advanced-routing"></a>**Zaawansowane Routing**: zbiór usług, które wykonują operacje z wyprzedzeniem przy użyciu danych routingu drogowego, takich jak obliczanie dostępnych zakresów (izochron), macierze odległości i żądania tras wsadowych.
 
-<a name="aerial-imagery"></a> **Zdjęcia lotnicze**: Zobacz [Satellite obrazach](#satellite-imagery). 
+<a name="aerial-imagery"></a>**Zdjęcia z anteny**: Zobacz zdjęcia [satelitarne](#satellite-imagery). 
 
-<a name="along-a-route-search"></a> **Wzdłuż wyszukiwania trasy**: Przestrzenne zapytanie szuka danych, który znajduje się w określonym przekierowania, czasu lub odległości od ścieżka trasy.
+<a name="along-a-route-search"></a>**Wyszukiwanie przy użyciu trasy**: zapytanie przestrzenne, które wyszukuje dane znajdujące się w określonym czasie lub odległości od ścieżki trasy.
 
-<a name="altitude"></a> **Wysokość**: Wysokość lub pionowy podniesienie poziomu punktu nawierzchni odwołania. Wysokość pomiarów opierają się na danym odniesienia, takie jak średnia poziomem morza. Zobacz też podniesienia uprawnień.
+<a name="altitude"></a>**Wysokość**: wysokość lub pozioma poszerzenie punktu nad powierzchnią odniesienia. Pomiary wysokości są oparte na danym wymiarze odniesienia, takim jak średni poziom morza. Zobacz również podniesienie uprawnień.
 
-<a name="ambiguous"></a> **Niejednoznaczny**: Stan niepewność co do klasyfikacji danych, który istnieje, gdy obiekt odpowiednio przypisane dwa lub więcej wartości danego atrybutu. Na przykład, gdy geokodowania "CA" dwóch Niejednoznaczne wyniki są zwracane; "Kanada" i "Kalifornia" jako "CA" to kod kraju i stanu dla każdego odpowiednio. 
+<a name="ambiguous"></a>**Niejednoznaczny**: stan niepewności klasyfikacji danych, który istnieje, gdy obiekt może być odpowiednio przypisany do dwóch lub więcej wartości dla danego atrybutu. Na przykład podczas geokodowania "CA" są zwracane dwa niejednoznaczne wyniki; "Kanada" i "Kalifornia" jako "CA" to kod kraju i Województwo dla każdego z nich. 
 
-<a name="annotation"></a> **Adnotacja**: Tekst i grafikę, wyświetlanych na mapie, aby podać informacje dla użytkownika. Adnotacja może zidentyfikować opisują jednostki mapowania określonych, podawanie ogólnych informacji o obszar na mapie lub podać informacje dotyczące mapowania, sam.
+<a name="annotation"></a>**Adnotacja**: tekst lub grafika wyświetlana na mapie, aby zapewnić użytkownikowi informacje. Adnotacja może identyfikować lub opisywać określoną jednostkę mapy, podawać ogólne informacje o obszarze mapy lub podawać informacje o samej mapie.
 
-<a name="antimeridian"></a> **Antimeridian**: Nazywane również 180<sup>th</sup> południków to punkt, gdy spełniają stopnie-180 oraz 180 stopni długości geograficznej. Jest to przeciwne południków prime na całym świecie.
+<a name="antimeridian"></a>- **Południka**: znany również<sup>jako 180,</sup> o ile jest to punkt, gdzie – 180 stopni i 180 stopni długości geograficznej. Jest to przeciwieństwo do podstawy Południowej na całym świecie.
 
-<a name="application-programming-interface-api"></a> **Interfejs programowania aplikacji (API)** : Specyfikacja, która umożliwia deweloperom tworzenie aplikacji.
+<a name="application-programming-interface-api"></a>**Interfejs programowania aplikacji (API)** : Specyfikacja, która umożliwia deweloperom tworzenie aplikacji.
 
-<a name="api-key"></a> **Klucz interfejsu API**: Zobacz klucza usługi Azure Maps.
+<a name="api-key"></a>**Klucz interfejsu API**: zobacz [uwierzytelnianie klucza wspólnego](#shared-key-authentication).
 
-<a name="area-of-interest-aoi"></a> **Obszar zainteresowania (AOI)** : Zakres używany do definiowania obszar koncentracji uwagi dla mapy albo bazy danych środowiska produkcyjnego.
+<a name="area-of-interest-aoi"></a>**Obszar zainteresowania (AOI)** : zakres używany do definiowania obszaru koncentracji dla produkcji mapy lub bazy danych.
 
-<a name="asset-tracking"></a> **Śledzenie zasobów**: Proces śledzenie lokalizacji elementu zawartości, takich jak osoby, pojazdu lub innego obiektu.
+<a name="asset-tracking"></a>**Śledzenie zasobów**: proces śledzenia lokalizacji zasobu, na przykład osoby, pojazdu lub innego obiektu.
 
-<a name="asynchronous-request"></a> **Żądania asynchronicznego**: Żądanie HTTP, które otwiera połączenie i zgłasza żądanie do serwera, który zwraca identyfikator żądania asynchronicznego, a następnie zamyka połączenie. Serwer kontynuuje przetwarzanie żądania i sprawdzić stan przy użyciu identyfikatora użytkownika. Jeśli żądanie jest Zakończono przetwarzanie, użytkownik może następnie pobierania odpowiedzi. Ten typ żądania jest zwykle używany dla długotrwałych uruchomionych procesów.
+<a name="asynchronous-request"></a>**Żądanie asynchroniczne**: żądanie HTTP, które otwiera połączenie i wysyła żądanie do serwera zwracającego identyfikator dla żądania asynchronicznego, a następnie zamyka połączenie. Serwer nadal przetwarza żądanie, a użytkownik może sprawdzić stan przy użyciu identyfikatora. Po zakończeniu przetwarzania żądania użytkownik może pobrać odpowiedź. Ten typ żądania jest używany do długotrwałych procesów.
 
-<a name="autocomplete"></a> **Autouzupełnianie**: Funkcja w aplikacji przewiduje pozostałej części programu word, który wpisywany przez użytkownika. 
+<a name="autocomplete"></a>**Autouzupełnianie**: funkcja w aplikacji przewiduje resztę wyrazu wpisywanego przez użytkownika. 
 
-<a name="autosuggest"></a> **Automatyczne sugerowanie**: Funkcja w aplikacji przewiduje logiczne możliwości co wpisywany przez użytkownika.
+<a name="autosuggest"></a>Automatyczne **sugerowanie**: funkcja w aplikacji przewiduje logiczne możliwości wpisywania przez użytkownika.
 
-<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** : Poprzednia nazwa usługi Azure Maps podczas w wersji zapoznawczej.
+<a name="azure-location-based-services-lbs"></a>**Azure Location based Services (funt)** : wcześniejsza nazwa Azure Maps, gdy była w wersji zapoznawczej.
 
-<a name="azure-maps-key"></a> **Klucz usługi Azure Maps**: Klucz mapy platformy Azure jest unikatowy ciąg, który jest używany do uwierzytelniania aplikacji usługi Azure Maps przez użytkownika lub żądania obsługi. 
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)** : usługa Azure AD jest usługą zarządzania tożsamościami i dostępem opartymi na chmurze firmy Microsoft. Azure Maps integracja z usługą Azure AD jest obecnie dostępna w wersji zapoznawczej dla wszystkich Azure Maps interfejsów API. Usługa Azure AD obsługuje kontrolę dostępu opartą na rolach (RBAC) w celu umożliwienia szczegółowego dostępu do zasobów Azure Maps. Aby dowiedzieć się więcej na temat Azure Maps integracji z usługą Azure AD, zobacz [Azure Maps i usługi Azure AD](azure-maps-authentication.md) oraz [Zarządzanie uwierzytelnianiem w Azure Maps](how-to-manage-authentication.md).
+
+<a name="azure-maps-key"></a>**Klucz Azure Maps**: zobacz [uwierzytelnianie klucza wspólnego](#shared-key-authentication).
 
 ## <a name="b"></a>B
 
-<a name="base-map"></a> **Mapą podstawową**: Część aplikacji mapy, która wyświetla tła informacje takie jak dróg, charakterystycznych elementów krajobrazu i granice polityczne.
+<a name="base-map"></a>**Mapa podstawowa**: część aplikacji mapy, która wyświetla informacje o odwołaniach w tle, takie jak drogi, punkty orientacyjne i granice polityczne.
 
-<a name="batch-request"></a> **Żądanie wsadowe**: Proces łączenia wielu żądań w pojedynczym żądaniu.
+<a name="batch-request"></a>**Żądanie wsadowe**: proces łączenia wielu żądań w jedno żądanie.
 
-<a name="bearing"></a> **Mając**: Poziomy kierunek punkt w odniesieniu do innego punktu. To wymaganie jest wyrażone jako wartość kąta względem Północna z 0-stopni 360-stopni w prawo. 
+<a name="bearing"></a>**Mając**: poziomy kierunek punktu w odniesieniu do innego punktu. Jest to wyrażane jako kąt względem północy, od 0 do 360-stopni w kierunku w prawo. 
 
-<a name="boundary"></a> **Granica**: Wiersz lub wielokąta oddzielenie sąsiadujących polityczne jednostki, takie jak kraje/regiony, okręgi i właściwości. Granica jest wiersz, który może być lub może nie być zgodne z fizycznego funkcje, takie jak rzek górach oraz ścian.
+<a name="boundary"></a>**Granica**: linia lub Wielokąt oddzielający przyległe jednostki polityczne, takie jak kraje/regiony, okręgi i właściwości. Granica to linia, która może być niezgodna z funkcjami fizycznymi, takimi jak rzek, górach czy ściany.
 
-<a name="bounds"></a> **Granice**: Zobacz [pole Bounding](#bounding-box).
+<a name="bounds"></a>**Ograniczenia**: zobacz [obwiednia](#bounding-box).
 
-<a name="bounding-box"></a> **Pole ograniczenia**: Zestaw współrzędnych używana do reprezentowania prostokątny obszar na mapie. 
+<a name="bounding-box"></a>**Pole ograniczenia**: zestaw współrzędnych używany do reprezentowania prostokątnego obszaru na mapie. 
 
 ## <a name="c"></a>C
 
-<a name="cadastre"></a> **Katastrem**: Rekord zarejestrowanych ziemi i właściwości. Zobacz też [działka](#parcel).
+<a name="cadastre"></a>**Cadastre**: rejestr zarejestrowanych gruntów i właściwości. Zobacz również artykuł [Parcel](#parcel).
 
-<a name="camera"></a> **Aparat fotograficzny**: W kontekście kontrolkę mapy interakcyjnej aparatu definiuje mapy pole widzenia. Okienko ekranu kamery jest określana na podstawie kilku parametrów mapy; Centrum, poziomu powiększenia pomysłu, żadnego wpływu. 
+<a name="camera"></a>**Aparat fotograficzny**: w kontekście interaktywnej kontrolki mapy aparat definiuje pole Maps widoku. Okienko ekranu aparatu jest określane na podstawie kilku parametrów mapy; Wyśrodkuj, poziom powiększenia, Wysokość i szerokość. 
 
-<a name="centroid"></a> **Centroida — oś**: Geometryczne Centrum funkcji. Centroida — oś wiersza będzie punktu środkowego podczas centroida — oś wielokąta byłoby środek obszaru.
+<a name="centroid"></a>**Centroida**: środek geometryczny funkcji. Centroidaem wiersza będzie punkt środkowy, podczas gdy centroida wielokąta będzie centrum obszaru.
 
-<a name="choropleth-map"></a> **Mapy na mapie Choropleth**: Mapa tematycznych, w którym obszary są zacieniowane proporcjonalnie do pomiaru zmiennej statystyczne są wyświetlane na mapie. Na przykład Pokoloruj granicy każdego stanu USA na podstawie jego względne populacji dla wszystkich innych Państw.
+<a name="choropleth-map"></a>**Na mapie choropleth**: mapa tematyczna, w której obszary są cieniowane proporcjonalnie do miary zmiennej statystycznej wyświetlanej na mapie. Na przykład kolorowanie granicy każdego stanu Stanów Zjednoczonych w oparciu o jego względną populację na wszystkie inne Stany.
 
-<a name="concave-hull"></a> **Wklęsłych kadłuba**: Kształtu, który reprezentuje możliwe geometrię wklęsłych, która zawiera wszystkie kształty w określonym zestawie danych. Wygenerowany kształt jest podobny do opakowywanie dane przy użyciu zawinięcie i następnie ogrzewania go, powodując duży rozciąga się między punktami do cave kierunku innych punktów danych.
+<a name="concave-hull"></a>**Kadłub**: kształt, który reprezentuje możliwą geometryczną geometrię, która zawiera wszystkie kształty w określonym zestawie danych. Wygenerowany kształt jest podobny do zawijania danych z otoką plastikową, a następnie podgrzewania go, co sprawia, że duże zakresy między punktami mogą być wklęsłe w kierunku innych punktów danych.
 
-<a name="consumption-model"></a> **Model użycia**: Informacje, które określa szybkość jaką pojazdu zużywa paliwa lub energii elektrycznej. Zobacz też [dokumentacji modelu zużycia](consumption-model.md).
+<a name="consumption-model"></a>**Model użycia**: informacje definiujące szybkość, z jaką pojazd zużywa paliwo lub energię elektryczną. Zapoznaj się również z [dokumentacją modelu zużycia](consumption-model.md).
 
-<a name="control"></a> **Kontrolka**: Składnik samodzielne lub gazecie, składający się z graficznego interfejsu użytkownika, który definiuje zestaw zachowań dla interfejsu. Na przykład kontrolkę mapy zazwyczaj jest to część interfejsu użytkownika, który ładuje mapę interaktywną.
+<a name="control"></a>**Kontrolka**: składnik samodzielny lub wielokrotnego użytku składający się z graficznego interfejsu użytkownika, który definiuje zestaw zachowań dla interfejsu. Na przykład kontrolka mapy jest ogólnie częścią interfejsu użytkownika, który ładuje mapę interaktywną.
 
-<a name="convex-hull"></a> **Wypukłe kadłuba**: Wypukłe kadłuba jest kształt, który reprezentuje minimalne geometrię wypukłe, która zawiera wszystkie kształty w określonym zestawie danych. Wygenerowany kształt jest podobny do zawijania poza pasmem elastyczna baza danych w całym zestawie danych.
+<a name="convex-hull"></a>**Kadłub wypukły**: kadłub wypukły to kształt reprezentujący minimalną geometrię wypukłą, która zawiera wszystkie kształty w określonym zestawie danych. Wygenerowany kształt jest podobny do zawijania elastycznego pasma wokół zestawu danych.
 
-<a name="coordinate"></a> **Koordynowanie**: Składa się z wartości długości i szerokości geograficznej, używany do reprezentowania lokalizacji na mapie.
+<a name="coordinate"></a>**Koordynuj**: składa się z wartości długości geograficznej i szerokości geograficznej używanej do reprezentowania lokalizacji na mapie.
 
-<a name="coordinate-system"></a> **System współrzędnych**: Punkt odniesienia używany do definiowania położenie punktów w przestrzeni w dwóch lub trzech wymiarach.
+<a name="coordinate-system"></a>**Układ współrzędnych**: Struktura referencyjna służąca do definiowania pozycji punktów w przestrzeni w dwóch lub trzech wymiarach.
 
-<a name="country-code"></a> **Numer kierunkowy kraju**: Unikatowy identyfikator dla kraju/regionu, oparty na standardzie ISO. ISO2 to dwuznakowy kod kraju (na przykład US), który reprezentuje ISO3 3 znakowy kod (np. USA).
+<a name="country-code"></a>**Kod kraju**: unikatowy identyfikator kraju/regionu oparty na standardzie ISO. ISO2 to dwuznakowy kod dla kraju (na przykład US), który ISO3 reprezentuje kod składający się z trzech znaków (na przykład USA).
 
-<a name="country-subdivision"></a> **Podpodział kraju**: Fragment pierwszego poziomu Kraj/region, powszechnie znane jako województwo.
+<a name="country-subdivision"></a>Obszar **podziału kraju**: pierwszy poziom części kraju/regionu, często znany jako Województwo.
 
-<a name="country-secondary-subdivision"></a> **Podpodział dodatkowej kraju**: Fragment drugiego poziomu Kraj/region, powszechnie znane jako powiat.
+<a name="country-secondary-subdivision"></a>**Pomocnicza jednostka podziału kraju**: Dwupoziomowa część kraju/regionu, często znana jako powiat.
 
-<a name="country-tertiary-subdivision"></a> **Podpodział trzeciorzędny kraju**: Fragment trzeciego poziomu Kraj/region, zwykle o nazwie obszaru, takiego jak tyłu.
+<a name="country-tertiary-subdivision"></a>**Podpodział**(trzeciego szczebla): Dwupoziomowa część kraju/regionu, zazwyczaj nazwany obszar, taki jak do wewnątrz.
 
-<a name="cross-street"></a> **Ulica między**: Punkt przecięcia się co najmniej dwóch Streets (ulice).
+<a name="cross-street"></a>**Krzyżyk**: punkt, w którym dwa lub więcej ulice przecinają się.
 
-<a name="cylindrical-projection"></a> **Cylindryczne**: Rzutowania, który przekształca punktów z sferoidalny lub sphere na cylinder tangens lub secans. Następnie cylindra określonego przedziału od góry do dołu i jako spłaszczone do płaszczyzny.
+<a name="cylindrical-projection"></a>**Rzutowanie cylindryczne**: projekcja, która przekształca punkty z spheroid lub sfery na cylinder styczny lub secans. Cylinder jest następnie pofragmentowany od góry do dołu i spłaszczony do płaszczyzny.
 
 ## <a name="d"></a>D
 
-<a name="datum"></a> **Datum**: System współrzędnych do specyfikacji systemu pomiarowego, umieszcza na powierzchni (poziomy datum) lub wysokości powyżej lub poniżej powierzchni (datum pionowych).
+<a name="datum"></a>**Datum**: specyfikacje referencyjne systemu pomiarowego, system położenia układu współrzędnych na powierzchni (w pionie) lub wysokości powyżej lub poniżej powierzchni (wymiar pionowy).
 
-<a name="dbf-file"></a> **Plik DBF;** : Format pliku bazy danych, który jest używany w połączeniu z pliki kształtów (SHP).
+<a name="dbf-file"></a>**DBF**: plik bazy danych, który jest używany w połączeniu z plikami kształtów (SHP).
 
-<a name="degree-minutes-seconds-dms"></a> **Stopień minut sekund (DMS)** : Jednostka miary do opisywania szerokości i długości geograficznej. Stopień to 1/360<sup>th</sup> koła. Stopień jest podzielona na 60 minut, a minuta jest podzielony na 60 sekund.
+<a name="degree-minutes-seconds-dms"></a>**Stopień minut w sekundach (DMS)** : jednostka miary opisująca szerokość i długość geograficzną. Stopień to 1/360<sup>ty</sup> koła. Stopień jest dalej podzielony na 60 minut, a minuta jest dzielona na 60 sekund.
 
-<a name="delaunay-triangulation"></a> **Triangulacja Delaunay**: Techniki tworzenia siatki trójkąty ciągłe, nienakładające się z zestawu danych punktów. Okrąg circumscribing każdego trójkąta nie zawiera punktów z zestawu danych w jego wewnętrznych.
+<a name="delaunay-triangulation"></a>**Triangulacja Delaunay**: technika tworzenia siatki ciągłego, nienakładających się trójkątów z zestawu danych punktów. Okrąg circumscribing każdego trójkąta nie zawiera żadnych punktów z zestawu danych w jego wnętrzu.
 
-<a name="demographics"></a> **Dane demograficzne**: Statystyczne charakterystyki (np. wiek, szybkość urodzenia i przychody) populacji ludzi.
+<a name="demographics"></a>Dane **demograficzne**: cechy statystyczne (takie jak wiek, wskaźnik urodzenia i dochód) populacji ludzkiej.
 
-<a name="destination"></a> **Miejsce docelowe**: Punkt końcowy lub lokalizacji, w którym jest ktoś podróżującym na.
+<a name="destination"></a>**Miejsce docelowe**: punkt końcowy lub lokalizacja, w której ktoś jest Podróżujący.
 
-<a name="digital-elevation-model-dem"></a> **Cyfrowy podniesienia uprawnień modelu (DEM)** : Zestaw wartości związane z powierzchni, przechwycone przez obszar w regularnych odstępach czasu przy użyciu typowych datum podniesienia uprawnień. DEMs są zwykle używane do reprezentowania zwolnienia terenu.
+<a name="digital-elevation-model-dem"></a>**Model podniesienia uprawnień cyfrowych (DEM)** : zestaw danych z wartościami podniesienia uprawnień związanymi z powierzchnią, przechwyconych przez obszar w regularnych odstępach czasu przy użyciu wspólnego punktu odniesienia. DEMs są zwykle używane do reprezentowania ulgi terenowej.
 
-<a name="dijkstra's-algorithm"></a> **Algorytm firmy Dijkstra**: Algorytm, który sprawdza łączność sieci, aby najkrótsze ścieżki między dwoma punktami.
+<a name="dijkstra's-algorithm"></a>**Algorytm Dijkstra**: algorytm, który analizuje łączność sieci, aby znaleźć najkrótszą ścieżkę między dwoma punktami.
 
-<a name="distance-matrix"></a> **Macierz odległości**: Macierz, która zawiera są przesyłane informacje o i odległości między zestaw źródeł i miejsc docelowych. 
+<a name="distance-matrix"></a>**Macierz odległości**: macierz, która zawiera czas podróży i informacje o odległości między zestawem źródeł i miejscami docelowymi. 
 
 ## <a name="e"></a>E
 
-<a name="elevation"></a> **Podniesienie poziomu**: Odległość w pionie punktu lub obiekt powyżej lub poniżej powierzchni odwołanie lub datum (zazwyczaj mean Morza poziom). Podniesienie poziomu zazwyczaj odnosi się do wysokość lądzie.
+<a name="elevation"></a>**Podniesienie poziomu**: pionowa odległość punktu lub obiektu powyżej lub poniżej powierzchni odniesienia lub podstawki (na ogół średni poziom morski). Podniesienie uprawnień ogólnie odnosi się do pionowej wysokości terenu.
 
-<a name="envelope"></a> **Koperta**: Zobacz [pole Bounding](#bounding-box).
+<a name="envelope"></a>**Koperta**: zobacz [pole ograniczenia](#bounding-box).
 
-<a name="extended-postal-code"></a> **Rozszerzony kod pocztowy**: Kod pocztowy może zawierać dodatkowe informacje. Na przykład w Stanach Zjednoczonych, kody pocztowe mają pięć cyfr, ale rozszerzonego kodu pocztowego, znane jako zip + 4, będzie zawierać cztery dodatkowe cyfry. Te dodatkowe cyfry są używane do identyfikowania geograficzne segmentu, w obszarze 5 cyfrowy dostarczania, takich jak blok miasta, grupa apartamentach lub skrytki, która pomaga w wydajny poczty, sortowanie i dostarczanie.
+<a name="extended-postal-code"></a>**Rozszerzony kod pocztowy**: kod pocztowy, który może zawierać dodatkowe informacje. Na przykład w Stanach Zjednoczonych kody ZIP mają pięć cyfr, ale rozszerzony kod pocztowy, znany jako zip + 4, będzie zawierać cztery dodatkowe cyfry. Te dodatkowe cyfry są używane do identyfikowania segmentu geograficznego w obrębie obszaru dostarczania pięciu cyfr, takiego jak blok miasto, Grupa apartamentach lub skrytka biurowa, która pomaga w efektywnym sortowaniu i dostarczaniu poczty.
 
-<a name="extent"></a> **Zakres**: Zobacz [pole Bounding](#bounding-box).
+<a name="extent"></a>**Zakres**: zobacz [obwiednia](#bounding-box).
 
 ## <a name="f"></a>F
 
-<a name="federated-authentication"></a> **Uwierzytelnianie federacyjne**: Metoda uwierzytelniania, umożliwiający mechanizmu pojedynczego logowania lub uwierzytelniania można stosować w przypadku wielu aplikacji internetowych i mobilnych. 
+<a name="federated-authentication"></a>**Uwierzytelnianie federacyjne**: Metoda uwierzytelniania, która umożliwia użycie jednego mechanizmu logowania/uwierzytelniania w wielu aplikacjach sieci Web i mobilnych. 
 
-<a name="feature"></a> **Funkcja**: Obiekt, który łączy geometrii z informacjami o dodatkowe metadane. 
+<a name="feature"></a>**Funkcja**: obiekt łączący geometrię z dodatkowymi informacjami o metadanych. 
 
-<a name="feature-collection"></a> **Funkcji zbierania**: Kolekcja obiektów funkcji.
+<a name="feature-collection"></a>**Kolekcja funkcji**: Kolekcja obiektów funkcji.
 
-<a name="find-along-route"></a> **Znajdź wzdłuż trasy**: Przestrzenne zapytanie szuka danych, który znajduje się w określonym przekierowania, czasu lub odległości od ścieżka trasy.
+<a name="find-along-route"></a>**Znajdź wzdłuż trasy**: zapytanie przestrzenne, które wyszukuje dane znajdujące się w określonym czasie lub odległości od ścieżki trasy.
 
-<a name="find-nearby"></a> **Znajdź w pobliżu**: Przestrzenne zapytanie, które wyszukuje Stała odległość liniową (tak jak w linii prostej) z punktu.
+<a name="find-nearby"></a>**Znajdź w pobliżu**: zapytanie przestrzenne, które przeszukuje stałą odległość prostą (jak w linii prostej) od punktu.
 
-<a name="fleet-management"></a> **Grupy floty zarządzania**: Zarządzanie pojazdów użytkowych, takich jak samochody, ciężarówek, dostarczany i płaszczyzny. Zarządzanie flotą mogą obejmować szeroką gamę funkcji, takich jak finansowania pojazdu, obsługi, telematyka (śledzenie i Diagnostyka) także sterownika, szybkość, paliwa i bezpieczeństwo zarządzania. Zarządzanie flotą to proces używany przez firmy, które polegają na transport w działalności firmy, aby zminimalizować ryzyko i zmniejszenie swoje ogólne koszty transportu i personelu, przy jednoczesnym zapewnieniu zgodności z przepisami dla instytucji rządowych.
+<a name="fleet-management"></a>**Zarządzanie flotą**: Zarządzanie samochodami komercyjnymi, takimi jak samochody, samochody, statki i płaszczyzny. Zarządzanie flotą może obejmować szereg funkcji, takich jak finansowanie pojazdów, konserwacja, telematyka (śledzenie i Diagnostyka), jak również sterownik, szybkość, paliwo i kondycja oraz zarządzanie bezpieczeństwem. Zarządzanie flotą jest procesem używanym przez firmy, które opierają się na transportach w firmie, aby zminimalizować ryzyko i zmniejszyć ich ogólny koszt transportu i kadry oraz zapewnić zgodność z przepisami obowiązującymi dla instytucji rządowych.
 
-<a name="free-flow-speed"></a> **Bezpłatne szybkości przepływu**: Szybkość swobodnego przepływu, oczekiwano w warunkach idealnym rozwiązaniem. Zwykle limit szybkości.
+<a name="free-flow-speed"></a>**Bezpłatna szybkość przepływu**: oczekiwana szybkość przepływu w warunkach idealnych. Zwykle jest to limit szybkości.
 
-<a name="free-form-address"></a> **Adres w dowolnej postaci**: Pełny adres, który jest reprezentowany jako pojedynczy wiersz tekstu.
+<a name="free-form-address"></a>**Adres w postaci bezpłatnej**: pełny adres, który jest reprezentowany jako pojedynczy wiersz tekstu.
 
-<a name="fuzzy-search"></a> **Wyszukiwanie rozmyte**: Wyszukiwanie, która przyjmuje w dowolnej postaci ciąg tekstowy, który może być adresem lub punktu orientacyjnego. 
+<a name="fuzzy-search"></a>**Wyszukiwanie rozmyte**: wyszukiwanie, które zajmuje bezpłatny ciąg tekstowy, który może być adresem lub punktem zainteresowania. 
 
 ## <a name="g"></a>G
 
-<a name="geocode"></a> **Geocode**: Adres lub lokalizacji, w której został przekształcony w współrzędnych, który może służyć do wyświetlania tej lokalizacji na mapie. 
+<a name="geocode"></a>**Geokod**: adres lub lokalizacja, która została przekonwertowana na współrzędną, która może być używana do wyświetlania tej lokalizacji na mapie. 
 
-<a name="geocoding"></a> **Geokodowanie**: Nazywane również do przodu geokodowania, to proces konwertowania adres lokalizacji danych na współrzędnych. 
+<a name="geocoding"></a>**Geokodowanie**: jest to również nazywane geokodowaniem geokodowania, to proces konwersji adresów danych lokalizacji na współrzędne. 
 
-<a name="geodesic-path"></a> **Ścieżka geodezyjnych**: Najkrótsze ścieżki między dwoma punktami krzywych powierzchni. Podczas renderowania na usługi Azure Maps ta ścieżka jest wyświetlana jako krzywej z powodu projekcji Mercator.
+<a name="geodesic-path"></a>**Ścieżka geodesic**: najkrótsza ścieżka między dwoma punktami na zakrzywionej powierzchni. Gdy jest renderowany na Azure Maps Ta ścieżka pojawia się jako linia zakrzywiona ze względu na projekcję Merkatora.
 
-<a name="geofence"></a> **Wirtualnego ogrodzenia**: Zdefiniowany region geograficzny, która może służyć do wyzwolenia zdarzenia, gdy urządzenie wprowadza, czy istnieje regionu.
+<a name="geofence"></a>**Geoogrodzenie**: zdefiniowany region geograficzny, który może służyć do wyzwalania zdarzeń, gdy urządzenie przejdzie do regionu lub już istnieje.
 
-<a name="geojson"></a> **GeoJSON**: Wspólny format plików opartych na formacie JSON służy do przechowywania danych geograficznych wektor takich jak punkty, wierszy i wielokątów. **Uwaga**: Rozszerzona wersja GeoJSON jako korzysta z usługi Azure Maps [opisane tutaj](extend-geojson.md).
+<a name="geojson"></a>**GEOJSON**: jest typowym FORMATEM pliku JSON używanym do przechowywania danych wektorów geograficznych, takich jak punkty, linie i wielokąty. **Uwaga**: Azure Maps używa rozszerzonej wersji GEOJSON, jak [opisano tutaj](extend-geojson.md).
 
-<a name="geometry"></a> **Geometria**: Reprezentuje obiekt przestrzennych, takie jak punkt, linii lub wielokąta.
+<a name="geometry"></a>**Geometria**: reprezentuje obiekt przestrzenny, taki jak punkt, linia lub Wielokąt.
 
-<a name="geometrycollection"></a> **GeometryCollection**: Kolekcja obiektów geometrii.
+<a name="geometrycollection"></a>**GeometryCollection**: Kolekcja obiektów geometrycznych.
 
-<a name="geopol"></a> **GeoPol**: Odnosi się do kwestie geopolityczne poufnych danych, takich jak sporne obramowanie i nazw.
+<a name="geopol"></a>**GeoPol**: odnosi się do danych geopolitycznych poufnych, takich jak obramowania sporne i nazwy miejsc.
 
-<a name="georeference"></a> **Geograficznego określania**: Proces wyrównywania dane geograficzne lub obrazów do znanych współrzędnych. Ten proces może obejmować zmiany, obracanie, skalowania lub pochylanie danych.
+<a name="georeference"></a>**Georeferencja**: proces wyrównywania danych geograficznych lub obrazów do znanego systemu współrzędnych. Ten proces może obejmować przesuwanie, obracanie, skalowanie lub pochylanie danych.
 
-<a name="georss"></a> **GeoRSS**: Rozszerzenie XML dotyczący dodawania danych przestrzennych źródeł danych RSS.
+<a name="georss"></a>**GeoRSS**: rozszerzenie XML umożliwiające dodawanie danych przestrzennych do kanałów informacyjnych RSS.
 
-<a name="gis"></a> **GIS**: Akronim "System informacji geograficznej". Wspólny termin używany do opisania branży mapowania.
+<a name="gis"></a>**GIS**: akronim dla "systemu informacji geograficznej". Wspólny termin używany do opisywania branży mapowania.
 
-<a name="gml"></a> **GML**: Nazywane również Geography Markup Language. Rozszerzenie pliku XML do przechowywania danych przestrzennych.
+<a name="gml"></a>**GML**: znany również jako język znaczników geograficznych. Rozszerzenie pliku XML do przechowywania danych przestrzennych.
 
-<a name="gps"></a> **GPS**: Znany także jako globalnego systemu pozycjonowania to system satelity, używany do określenia pozycji urządzeń, na ziemi. Orbiting satelity przesyłać sygnałów, które umożliwiają odbiornik GPS dowolne miejsce na ziemi. obliczyć lokalizacji za pośrednictwem trilateration.
+<a name="gps"></a>**GPS**: znany również jako GPS, to system satelitów służący do określania pozycji urządzenia na ziemi. Na stronie orbity satelity są przesyłane sygnały umożliwiające odbiornikowi GPS w dowolnym miejscu na ziemi, aby obliczyć własną lokalizację za pośrednictwem trilateration.
 
-<a name="gpx"></a> **GPX**: Również znane jako format wymiany GPS, pliku w formacie XML często utworzeniu z urządzenia GPS.  
+<a name="gpx"></a>**GPX**: jest również znany jako format GPS Exchange Format pliku XML często tworzony z urządzeń GPS.  
 
-<a name="great-circle-distance"></a> **Najkrótszej odległości**: Najkrótszy odległość między dwoma punktami na powierzchni kuli.
+<a name="great-circle-distance"></a>**Odległość**: najkrótsza odległość między dwoma punktami na powierzchni sfery.
 
-<a name="greenwich-mean-time-gmt"></a> **Czas uniwersalny Greenwich (GMT)** : Czas na południków prime, który jest uruchamiany za pośrednictwem Centrum Royal w Greenwich w Anglii.
+<a name="greenwich-mean-time-gmt"></a>**Czas uniwersalny Greenwich (GMT)** : czas od pierwszego południka, który jest uruchamiany przez Obserwatorium wzdziału w Greenwich, Anglii.
 
-<a name="guid"></a> **IDENTYFIKATOR GUID**: Unikatowy identyfikator globalny. Ciąg używany do jednoznacznego identyfikowania interfejsu, klasy, biblioteki typów, kategorii składników lub rekordu.
+<a name="guid"></a>**Identyfikator GUID**: unikatowy identyfikator globalny. Ciąg służący do unikatowego identyfikowania interfejsu, klasy, biblioteki typów, kategorii składników lub rekordu.
 
 ## <a name="h"></a>H
 
-<a name="haversine-formula"></a> **Formuła Haversine**: Typowe równania, służące do obliczania najkrótszej — odległość między dwoma punktami na kuli.
+<a name="haversine-formula"></a>**Formuła Haversine**: typowe równanie używane do obliczania odległości między dwoma punktami w sferze.
 
-<a name="hd-maps"></a> **HD mapy**: Znany także jako wysoki definicji mapy, składa się z o dużej wierności drogowej sieci informacje, takie jak oznaczenia lane znakowania i kierunek światła wymagane do obsługi autonomicznych.
+<a name="hd-maps"></a>**Mapy HD**: są również znane jako mapy o wysokiej rozdzielczości, składają się z informacji o wysokiej wierności sieci dróg, takich jak oznaczenia Lane, znakowanie i światła kierunkowe wymagane do samodzielnego prowadzenia.
 
-<a name="heading"></a> **Nagłówek**: Kierunek coś wskazujący lub połączonego z. Zobacz też [mając](#heading).
+<a name="heading"></a>**Nagłówek**: kierunek jest wskazywany lub skierowany. Zobacz również [temat](#heading).
 
-<a name="heatmap"></a> **Mapy cieplnej**: Wizualizacja danych, w którym zakresu kolorów reprezentuje gęstość punktów w określonym obszarze. Zobacz też tematycznych mapy.
+<a name="heatmap"></a>**Mapę cieplną**: Wizualizacja danych, w której zakres kolorów reprezentuje gęstość punktów w konkretnym obszarze. Zobacz również plan tematyczny.
 
-<a name="hybrid-imagery"></a> **Obrazach hybrydowych**: Satelitarne i zdjęcia lotnicze, dane i etykiety nałożony na jego podstawie.
+<a name="hybrid-imagery"></a>Obrazy **hybrydowe**: Zdjęcia satelitarne lub satelitarne, które mają nałożone na siebie dane drogowe i etykiety.
 
 ## <a name="i"></a>I
 
-<a name="iana"></a> **ORGANIZACJA IANA**: Akronim Internet Assigned Numbers Authority. Grupa organizacji nonprofit nadzoruje globalnego przydzielanie adresów IP.
+<a name="iana"></a>**Organizacja Iana**: akronim do urzędu przypisanych numerów internetowych. Grupa niedochodowa, która widzi globalną alokację adresów IP.
 
-<a name="isochrone"></a> **Isochrone**: Isochrone definiuje obszar, w którym osoby mogą być przesyłane w określonym czasie dla trybu transportu w dowolnym kierunku z danej lokalizacji. Zobacz też [dostępny zakres](#reachable-range).
+<a name="isochrone"></a>**Isochrone**: isochrone definiuje obszar, w którym ktoś może podróżować w określonym czasie dla trybu transportu w dowolnym kierunku z danej lokalizacji. Zobacz też [osiągalny zakres](#reachable-range).
 
-<a name="isodistance"></a> **Isodistance**: Biorąc pod uwagę lokalizację, isochrone definiuje obszar, w którym osoby mogą być przesyłane w określonej odległości dla trybu transportu w dowolnym kierunku. Zobacz też [dostępny zakres](#reachable-range).
+<a name="isodistance"></a>**Isodistance**: podano lokalizację, a isochrone definiuje obszar, w którym ktoś może poruszać się w określonej odległości dla trybu transportu w dowolnym kierunku. Zobacz też [osiągalny zakres](#reachable-range).
 
 ## <a name="k"></a>tys.
 
-<a name="kml"></a> **KML**: Znany także jako język znaczników dziurką od klucza, jest wspólny format plików XML do przechowywania danych geograficznych wektor takich jak punkty, wierszy i wielokątów. 
+<a name="kml"></a>**KML**: znany również jako język oznakowania, jest typowym FORMATEM pliku XML do przechowywania danych wektorów geograficznych, takich jak punkty, linie i wielokąty. 
 
 ## <a name="l"></a>L
 
-<a name="landsat"></a> **Landsat**: Wielospektralne, orbiting ziemi satelity, opracowane przez NASA Zbierz obrazach ziemi, która jest używana w wielu branżach, takich jak rolnictwo, leśnictwo i map.
+<a name="landsat"></a>**LANDSAT**: wielowidmowe i ziemskie satelity opracowane przez NASA, które gromadzą obraz ziemi, który jest używany w wielu branżach, takich jak rolnictwo, Leśnictwo i Cartography.
 
-<a name="latitude"></a> **Szerokość geograficzna**: Odległość kątowa mierzony w stopniach od równika na północ lub kierunek południowo.
+<a name="latitude"></a>**Szerokość geograficzna**: odległość kątowa mierzona w stopniach od równika w kierunku północnym lub południe.
 
-<a name="level-of-detail"></a> **Poziom szczegółowości**: Zobacz powiększenia poziomu.
+<a name="level-of-detail"></a>**Poziom szczegółowości**: Zobacz poziom powiększenia.
 
-<a name="lidar"></a> **LIDAR'owych**: Akronim światła wykrywania i zakresu. Wykrywanie zdalnego technika, która używa laserami, aby zmierzyć odległość do odbijające powierzchni.
+<a name="lidar"></a>**LIDAR**: akronim dla wykrywania światła i zakresu. Technika zdalna, która używa laserów do mierzenia odległości do powierzchni odbijających.
 
-<a name="linear-interpolation"></a> **Interpolacji liniowej**: Oszacowanie nieznaną wartość przy użyciu odstęp między znane wartości.
+<a name="linear-interpolation"></a>**Interpolacja liniowa**: oszacowanie nieznanej wartości przy użyciu odległości liniowej między znanymi wartościami.
 
-<a name="linestring"></a> **LineString**: Typy geometryczne, używany do reprezentowania wiersza. Nazywane również wielokąt. 
+<a name="linestring"></a>**LineString**: geometria użyta do reprezentowania wiersza. Nazywana również linią łamaną. 
 
-<a name="localization"></a> **Lokalizacja**: Obsługa innych języków i kultur.
+<a name="localization"></a>**Lokalizacja**: Obsługa różnych języków i kultur.
 
-<a name="logistics"></a> **Logistyka**: Proces przechodzenia osób, pojazdów, dostawy lub zasobów w skoordynowany sposób.
+<a name="logistics"></a>**Logistyka**: proces przemieszczania ludzi, pojazdów, dostaw lub zasobów w skoordynowany sposób.
 
-<a name="longitude"></a> **Długość geograficzna**: Odległość kątowa mierzony w stopniach południków prime w kierunku wschodnie lub zachodnie.
+<a name="longitude"></a>**Długość geograficzna**: odległość kątowa mierzona w stopniach od zachodniej południka w kierunku wschodnim lub zachodnim.
 
-## <a name="m"></a>M
+## <a name="m"></a>milionów
 
-<a name="map-tile"></a> **Kafelek mapy**: Prostokątne obraz, który reprezentuje partycji kanwy mapy. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i Kafelek dokumentacja grid](zoom-levels-and-tile-grid.md).
+<a name="map-tile"></a>**Kafelek mapy**: prostokątny obraz reprezentujący partycję kanwy mapy. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i dokumentacja siatki kafelków](zoom-levels-and-tile-grid.md).
 
-<a name="marker"></a> **Znacznik**: Numer pin lub Pinezka jest znany także jako ikonę która reprezentuje lokalizację punkt na mapie.
+<a name="marker"></a>**Znacznik**: znany również jako numer PIN lub Pinezka, jest ikoną reprezentującą lokalizację punktu na mapie.
 
-<a name="mercator-projection"></a> **Projekcja mercator**: Rzutowania mapy cylindrycznych, które stały się rzutowania mapy standardowe celów morskich ze względu na możliwość reprezentować linie stałej kurs, znane jako wiersze rumbu, jako proste segmenty oszczędzać kąty z południków. Wszystkie projekcje prostego mapy zniekształcają kształty lub rozmiary mapy w porównaniu do true układu kuli ziemskiej. Projekcji Mercator exaggerates obszarów oni daleko od równika, w taki sposób, że mniejsze obszary są wyświetlane w większych na mapie, podejście biegunów. 
+<a name="mercator-projection"></a>**Rzutowanie Merkatora**: Rzutowanie mapy cylindrycznej, która stała się tablicą standardową, w celach morskich ze względu na możliwość reprezentowania linii stałych kursów, znanych jako linie Rhumb, jako segmenty proste, które współużytkują kąty z południki. Wszystkie projekcje prostej mapy zniekształcają kształty lub rozmiary mapy w porównaniu do rzeczywistego układu powierzchni ziemi. Projekcja Merkatora exaggeratesa obszary daleko od równika, tak że mniejsze obszary pojawiają się na mapie w miarę podejścia do Poles. 
 
-<a name="multilinestring"></a> **MultiLineString**: Geometrię, która reprezentuje kolekcję obiektów LineString. 
+<a name="multilinestring"></a>**MultiLineString**: geometria, która reprezentuje kolekcję obiektów LineString. 
 
-<a name="multipoint"></a> **MultiPoint**: Geometrię, która reprezentuje kolekcję obiektów punktów.
+<a name="multipoint"></a>**MultiPoint**: geometria, która reprezentuje kolekcję obiektów punktu.
 
-<a name="multipolygon"></a> **MultiPolygon**: Geometrię, która reprezentuje kolekcję obiektów wielokąta. Na przykład aby wyświetlić granicy Hawaje, czy obramowany każdego Wyspa wielokąta i granicy Hawaje w związku z tym będzie MultiPolygon.
+<a name="multipolygon"></a>**MultiPolygon**: geometria, która reprezentuje kolekcję obiektów wielokąt. Na przykład, aby pokazać granicę Hawaje, każda wyspa zostanie pokreślona wielokąta, a granica Hawaje byłaby MultiPolygon.
 
-<a name="municipality"></a> **Gmina**: Miasto lub miejscowość. 
+<a name="municipality"></a>**Gmina**: miasto lub miejscowość. 
 
-<a name="municipality-subdivision"></a> **Gmina podpodział**: Fragment jednostki administracyjnej, takie jak Otoczenie lub nazwy lokalne, takie jak "Centrum".
+<a name="municipality-subdivision"></a>**Podpodział (gmina miejska**): część gminy, na przykład nazwę klubu lub lokalnego obszaru, na przykład "centrum".
 
-## <a name="n"></a>Nie
+## <a name="n"></a>N
 
-<a name="navigation-bar"></a> **Pasek nawigacyjny**: Zestaw formantów na mapie, używane do dostosowywania poziom powiększenia, wysokość, obrotu i przełączanie warstwy podstawowej mapy.
+<a name="navigation-bar"></a>**Pasek nawigacyjny**: zestaw kontrolek na mapie używany do dostosowywania poziomu powiększenia, skoku, obrotu i przełączania podstawowej warstwy mapy.
 
-<a name="nearby-search"></a> **W pobliżu wyszukiwania**: Przestrzenne zapytanie, które wyszukuje Stała odległość liniową (tak jak w linii prostej) z punktu.
+<a name="nearby-search"></a>**Wyszukiwanie w pobliżu**: zapytanie przestrzenne, które przeszukuje stałą odległość prostą (jak w linii prostej) z punktu.
 
-<a name="neutral-ground-truth"></a> **Prawdę niezależny od podstaw**: Mapa, który renderuje etykiety w języku regionu, który reprezentuje i skryptów lokalnych, jeśli jest dostępny.
+<a name="neutral-ground-truth"></a>**Neutralna wartość prawdy**: Mapa, która renderuje etykiety w języku urzędowym regionu, który reprezentuje i w lokalnych skryptach, jeśli jest dostępny.
 
 ## <a name="o"></a>O
 
-<a name="origin"></a> **Pochodzenie**: Punkt początkowy lub lokalizacji, w którym użytkownik jest.
+<a name="origin"></a>**Źródło**: punkt początkowy lub lokalizacja, w której znajduje się użytkownik.
 
 ## <a name="p"></a>P
 
-<a name="panning"></a> **Przesuwanie**: Proces przechodzenia na mapie w dowolnym kierunku, przy zachowaniu stałej powiększenia.
+<a name="panning"></a>**Panoramowanie**: proces przesuwania mapy w dowolnym kierunku przy zachowaniu stałego poziomu powiększenia.
 
-<a name="parcel"></a> **Paczka**: Powierzchni ziemi lub właściwość granicy.
+<a name="parcel"></a>**Działka**: Działka gruntu lub właściwości.
 
-<a name="pitch"></a> **Gęstość**: Ilość pochylenie mapa ma względem pionowy, gdzie 0 zagląda dół mapy.
+<a name="pitch"></a>**Gęstość**: wielkość pochylenia dla mapy względem wartości pionowej, gdzie 0 oznacza prostą w dół na mapie.
 
-<a name="point"></a> **Punkt**: Geometrię, która reprezentuje pojedynczy położeniu na mapie. 
+<a name="point"></a>**Point**: geometria reprezentująca pojedynczą pozycję na mapie. 
 
-<a name="points-of-interest-poi"></a> **Punktów orientacyjnych (punktów POI)** : Praca, charakterystycznych elementów krajobrazu lub wspólnym miejscu zainteresowania.
+<a name="points-of-interest-poi"></a>**Punkty orientacyjne (punkt POI)** : działalność, dzielnica lub typowe miejsce.
 
-<a name="polygon"></a> **Wielokąt**: Geometria niezawodnej, który reprezentuje obszar na mapie. 
+<a name="polygon"></a>**Wielokąt**: solidna geometria, która reprezentuje obszar na mapie. 
 
-<a name="polyline"></a> **Wielokąt**: Typy geometryczne, używany do reprezentowania wiersza. Znany także jako element LineString. 
+<a name="polyline"></a>**Łamana**: geometria użyta do reprezentowania wiersza. Znana także jako LineString. 
 
-<a name="position"></a> **Pozycja**: Szerokości geograficznej, szerokość i wysokość (x, y, z współrzędne) punktu.
+<a name="position"></a>**Położenie**: Długość geograficzna, Szerokość geograficzna i wysokość (współrzędne x, y, z) punktu.
 
-<a name="post-code"></a> **Kod pocztowy**: Zobacz [kod pocztowy](#postal-code).
+<a name="post-code"></a>**Kod post**: zobacz [Kod pocztowy](#postal-code).
 
-<a name="postal-code"></a> **Kod pocztowy**: Seria litery lub cyfry lub zarówno w określonym formacie używane przez usługi pocztowe w kraju/regionu można podzielić obszarów geograficznych stref w celu uproszczenia dostarczania poczty.
+<a name="postal-code"></a>**Kod pocztowy**: szereg liter lub cyfr, lub w określonym formacie, używany przez usługę pocztową kraju/regionu do dzielenia obszarów geograficznych na strefy w celu uproszczenia dostarczania poczty.
 
-<a name="prime-meridian"></a> **Pierwsze południków**: Wiersz długość geograficzna, który reprezentuje 0 stopni długości geograficznej. Ogólnie rzecz biorąc, wartości długości geograficznej zmniejszyć podczas podróży w kierunku zachodnim aż do 180 stopni i zwiększyć podczas poruszania się we wschodnim kierunkach-180-stopni. 
+<a name="primary-key"></a>**Klucz podstawowy**: pierwsze dwa klucze subskrypcji udostępniane do Azure Maps uwierzytelniania klucza współużytkowanego. Zobacz [uwierzytelnianie klucza wspólnego](#shared-key-authentication).
 
-<a name="prj"></a> **PRJ**: Plik tekstowy, który często dołączony plik pliku kształtu, który zawiera informacje o przewidywanych współrzędnych trwa zestawu danych.
+<a name="prime-meridian"></a>**Podstawowa południka**: wiersz długości geograficznej reprezentujący 0 stopni długości geograficznej. Ogólnie rzecz biorąc, wartości długości geograficznej zmniejszają się, gdy podróżują w kierunku zachodnim do 180-stopniowych i zwiększają się, gdy podróżuje w kierunkach wschodnich do-180 
 
-<a name="projection"></a> **Projekcja**: Przewidywany współrzędnych oparte na rzutowania mapy, takie jak Mercator poprzecznej, Albers równa obszaru i Robinson. Te zapewniają możliwość mapy kulistego kuli ziemskiej na płaszczyznę dwuwymiarowe współrzędne formułuje projektu. Przewidywany współrzędnych są czasami określane jako mapa projekcji.
+<a name="prj"></a>**PRJ**: plik tekstowy, który często towarzyszy plikowi kształtu zawierającego informacje o przewidywanym systemie współrzędnych, w których znajduje się zestaw danych.
 
-## <a name="q"></a>Q
+<a name="projection"></a>**Projekcja**: rzutowany układ współrzędnych oparty na projekcji mapy, takiej jak Merkatora poprzeczny, Albers równy obszar i Robinson. Zapewniają one możliwość projektu mapy sferycznej powierzchni ziemi na dwuwymiarowej płaszczyźnie współrzędnych kartezjańskiego. Planowane systemy współrzędnych są czasami określane jako projekcje map.
 
-<a name="quadkey"></a> **Quadkey**: Indeks 4 podstawowy adres kafelków w obrębie obszaru quadtree fragmentacji systemu. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md) dokumentacji, aby uzyskać więcej informacji.
+## <a name="q"></a>PYTANIA I ODPOWIEDZI
 
-<a name="quadtree"></a> **Obszaru Quadtree**: Struktura danych, w którym każdy węzeł ma dokładnie cztery elementy podrzędne. System fragmentacji, używane w usługi Azure Maps używa struktury obszaru quadtree taki sposób, że jako użytkownik powiększa się o jeden poziom, każdy Kafelek mapy dzielony na cztery Kafelki podrzędnych.  Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md) dokumentacji, aby uzyskać więcej informacji.
+<a name="quadkey"></a>**Quadkey**: podstawowy indeks adresu dla kafelka w systemie QuadTree. Aby uzyskać więcej informacji, zapoznaj się z dokumentacją dotyczącą [poziomów powiększenia i siatki kafelków](zoom-levels-and-tile-grid.md) , aby uzyskać więcej informacji.
 
-<a name="queries-per-second-qps"></a> **Zapytania na sekundę (QPS)** : Liczba zapytań lub żądań, które mogą być wykonane w ciągu sekundy do usługi lub platformy. 
+<a name="quadtree"></a>**QuadTree**: struktura danych, w której każdy węzeł ma dokładnie cztery elementy podrzędne. System rozmieszczania używany w Azure Maps używa struktury QuadTree, takiej jak powiększenie użytkownika na jednym poziomie, każdy kafelek mapy jest podzielony na cztery kafelki podrzędne.  Aby uzyskać więcej informacji, zapoznaj się z dokumentacją dotyczącą [poziomów powiększenia i siatki kafelków](zoom-levels-and-tile-grid.md) , aby uzyskać więcej informacji.
+
+<a name="queries-per-second-qps"></a>**Zapytania na sekundę (zapytań)** : liczba zapytań lub żądań, które można wykonać w usłudze lub platformie w jednej sekundzie. 
 
 ## <a name="r"></a>R
 
-<a name="radial-search"></a> **Wyszukiwanie promieniowego**: Przestrzenne zapytanie, które wyszukuje Stała odległość liniową (tak jak w linii prostej) z punktu. 
+<a name="radial-search"></a>**Wyszukiwanie promieniowe**: zapytanie przestrzenne, które przeszukuje stałą odległość liniową (jak w linii prostej) z punktu. 
 
-<a name="raster-data"></a> **Dane rastrowe**: Macierz komórki (lub pikselach) zorganizowanych w wiersze i kolumny (lub siatkę) gdzie każda komórka zawiera wartość reprezentujących informacje, takie jak temperatury. Firmy rastrowych obejmują cyfrowych zdjęć lotniczych obrazów z satelity, obrazów cyfrowych i zeskanowane map.
+<a name="raster-data"></a>**Dane rastrowe**: Macierz komórek (lub pikseli) zorganizowanych w wiersze i kolumny (lub siatka), gdzie każda komórka zawiera wartość reprezentującą informacje, takie jak temperatura. Grafiki rastrowe obejmują fotografie cyfrowe, obrazy z satelitów, zdjęć cyfrowych i zeskanowanych map.
 
-<a name="raster-layer"></a> **Warstwy rastrowej**: Warstwa kafelków, która składa się z obrazów rastrowych.
+<a name="raster-layer"></a>**Warstwa rastrowa**: warstwa kafelków, która składa się z obrazów rastrowych.
 
-<a name="reachable-range"></a> **Zakres dostępny**: Dostępny zakres definiuje obszar, w którym osoby mogą być przesyłane w wyznaczonym okresie lub odległości dla trybu transportu przechodzić w dowolnym kierunku z lokalizacji. Zobacz też [Isochrone](#isochrone) i [Isodistance](#isodistance).
+<a name="reachable-range"></a>**Osiągalny zakres**: dostępny zakres definiuje obszar, w którym ktoś może poruszać się w określonym czasie lub na odległość, w przypadku trybu transportu do podróży w dowolnym kierunku od lokalizacji. Zobacz również [isochrone](#isochrone) i [Isodistance](#isodistance).
 
-<a name="remote-sensing"></a> **Wykrywanie zdalnego**: Proces zbierania i interpretowanie danych z czujników z dużej odległości.
+<a name="remote-sensing"></a>**Wykrywanie zdalne**: proces zbierania i interpretowania danych czujników z odległości.
 
-<a name="rest-service"></a> **Usługa REST**: Akronim REST oznacza Representational Transfer stanu. Usługa REST jest oparty na adresach URL usługi sieci web korzystającej z technologii internetowych podstawowe do komunikowania się najbardziej typowe metody są żądania HTTP GET i POST. Tego rodzaju usług zwykle do mnie znacznie szybszy i mniejszy niż tradycyjne usługi oparte na protokole SOAP.
+<a name="rest-service"></a>**Usługa REST**: akronim jest rozmieszczeniem dla reprezentacji stanu. Usługa REST to oparta na adresach URL usługa sieci Web, która opiera się na podstawowej technologii sieci Web do komunikowania się, najczęściej używane metody HTTP GET i POST. Te typy usług są znacznie szybsze i mniejsze niż tradycyjne usługi oparte na protokole SOAP.
 
-<a name="reverse-geocode"></a> **Odwróć geocode**: Reprezentuje proces przełączania Współrzędna, a także określenie, adres, w którym znajduje się na mapie.
+<a name="reverse-geocode"></a>**Odwrócony geokod**: proces podejmowania współrzędnych i ustalania adresu, który jest reprezentowany na mapie.
 
-<a name="reproject"></a> **Reproject**: Zobacz [przekształcania](#transformation).
+<a name="reproject"></a>**Przeprojektowanie**: zobacz [transformacja](#transformation).
 
-<a name="rest-service"></a> **Usługa REST**: Akronim Representational State Transfer. Architektura wymianę informacji między komputerami w środowisku zdecentralizowanego, rozproszonych. REST umożliwia programom na różnych komputerach do komunikowania się niezależnie od systemu operacyjnego lub platformy, wysyłając żądanie protokołu HTTP (Hypertext Transfer) do uniwersalnego lokatora zasobów (URL) i odzyskać dane.
+<a name="rest-service"></a>**Usługa REST**: akronim w przypadku przenoszenia stanu dla reprezentacji. Architektura wymiany informacji między elementami równorzędnymi w zdecentralizowanym, rozproszonym środowisku. Funkcja REST umożliwia programom na różnych komputerach komunikowanie się niezależnie od systemu operacyjnego lub platformy przez wysłanie żądania HTTP (Hypertext Transfer Protocol) do adresu URL (Uniform Resource Locator) i odwracanie danych.
 
-<a name="route"></a> **Trasy**: Ścieżka między co najmniej dwóch lokalizacjach, które również mogą zawierać dodatkowe informacje, takie jak instrukcje dotyczące waypoints wzdłuż trasy.
+<a name="route"></a>**Route**: ścieżka między dwiema lub więcej lokalizacjami, które mogą również zawierać dodatkowe informacje, takie jak instrukcje dotyczące waypoints na trasie.
 
-<a name="requests-per-second-rps"></a> **Żądań na sekundę (RPS)** : Zobacz [zapytań na sekundę (QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a>**Liczba żądań na sekundę (RPS pliku)** : zobacz [zapytania na sekundę (zapytań)](#queries-per-second-qps). 
 
-<a name="rss"></a> **FUNKCJA RSS**: Akronim naprawdę proste syndykacji, Podsumowanie witryny Framework opis zasobu (RDF) lub rozbudowane Podsumowanie witryny, w zależności od źródła. Proste, ze strukturą format XML na potrzeby udostępniania zawartości między różnych witrynach sieci Web. Funkcja RSS dokumenty zawierają metadanych klucza elementów, takich jak tworzenie, Data, tytuł, krótki opis i łącze hipertekstowe. Dzięki temu informacje użytkownika (lub usługi wydawcy RSS) zdecydować, materiałów są warte dalszych badań.
+<a name="rss"></a>**RSS**: akronim dla opcji naprawdę Simple Syndication, Resource Description Framework (RDF) lub obszerne Podsumowanie witryny, w zależności od źródła. Prosty, strukturalny format XML służący do udostępniania zawartości między różnymi witrynami sieci Web. Dokumenty RSS zawierają kluczowe elementy metadanych, takie jak autor, Data, tytuł, Krótki opis i link hipertekst. Te informacje pomagają użytkownikowi (lub usłudze wydawcy RSS) zdecydować, jakie materiały są bardziej szczegółowe.
 
 ## <a name="s"></a>S
 
-<a name="satellite-imagery"></a> **Satelitarne obrazach**: Aplikacje, które zostały przechwycone przez płaszczyzn i satelity skierowana bezpośrednio w dół.
+<a name="satellite-imagery"></a>Obraz **satelitarny**: obraz, który został przechwycony przez płaszczyzny i satelity wskazujące prostą.
 
-<a name="software-development-kit-sdk"></a> **Zestaw Software development kit (SDK)** : Kolekcja dokumentację, przykładowy kod i przykładowych aplikacji, aby ułatwić zastosowanie dla deweloperów do tworzenia aplikacji interfejsu API.
+<a name="secondary-key"></a>**Klucz pomocniczy**: drugi z dwóch kluczy subskrypcji dostarczonych do Azure Maps uwierzytelniania klucza współużytkowanego. Zobacz [uwierzytelnianie klucza wspólnego](#shared-key-authentication).
 
-<a name="shapefile-shp"></a> **Plik kształtu (SHP)** : Znany także jako plik kształtu ESRI jest wektor formatu przechowywania danych do przechowywania lokalizacji, kształt i atrybutów funkcji geograficznego. Plik kształtu, który jest przechowywany w zestawu powiązanych plików.
+<a name="shapefile-shp"></a>Plik **kształtu (SHP)** : znany również jako Esri, jest formatem magazynu danych wektorowych do przechowywania lokalizacji, kształtu i atrybutów funkcji geograficznych. Plik kształtu jest przechowywany w zestawie powiązanych plików.
 
-<a name="spherical-mercator-projection"></a> **Kulistego projekcji Mercator**: Zobacz [Web Mercator](#web-mercator). 
+<a name="shared-key-authentication"></a>**Uwierzytelnianie klucza wspólnego**: uwierzytelnianie klucza wspólnego polega na przekazaniu kluczy wygenerowanych przez konto Azure Maps przy użyciu poszczególnych żądań do Azure Maps. Klucze te są często określane mianem kluczy subskrypcji. Zaleca się, aby klucze były regularnie generowane ponownie w celu zabezpieczenia. Dostarczone są dwa klucze, dzięki czemu można zachować połączenia przy użyciu jednego klucza podczas ponownego generowania drugiego. Po ponownym wygenerowaniu kluczy należy zaktualizować wszystkie aplikacje uzyskujące dostęp do tego konta pod kątem używania nowych kluczy. Aby dowiedzieć się więcej o uwierzytelnianiu Azure Maps, zobacz [Azure Maps i Azure AD](azure-maps-authentication.md) oraz [Zarządzanie uwierzytelnianiem w Azure Maps](how-to-manage-authentication.md).
 
-<a name="spatial-query"></a> **Zapytań przestrzennych**: Żądanie do usługi, który wykonuje operację przestrzennych. Przykład wyszukiwania promieniowego, lub wzdłuż wyszukiwania trasy.
+<a name="software-development-kit-sdk"></a>**Zestaw SDK (Software Development Kit)** : zbiór dokumentacji, przykładowy kod i przykładowe aplikacje, które ułatwiają deweloperom tworzenie aplikacji przy użyciu interfejsu API.
 
-<a name="spatial-reference"></a> **Odwołania przestrzennego**: Współrzędna lokalnego, regionalnego lub globalnego systemu używana do lokalizowania dokładnie geograficzne jednostki. Definiuje układ współrzędnych używany do tworzenia powiązań współrzędnych mapy do lokalizacji w świecie rzeczywistym. Odwołania przestrzennego upewnij się, można zintegrować wyświetlanie dokładnego lub analizy danych przestrzennych z różnych warstw lub źródeł. Usługa Azure Maps korzysta [EPSG:3857](https://epsg.io/3857) koordynacji systemu odniesienia i WGS 84 dla danych wejściowych geometrii. 
+<a name="spherical-mercator-projection"></a>**Rzutowanie sferyczne Merkatora**: zobacz [Merkatora sieci Web](#web-mercator). 
 
-<a name="sql-spatial"></a> **Przestrzenne programu SQL**: Odnosi się do przestrzenne funkcje wbudowane w SQL Azure i programu SQL Server 2008 lub nowszym. Ta funkcja przestrzennego jest również dostępny jako bibliotekę .NET, który może służyć niezależnie od programu SQL Server. Aby uzyskać więcej informacji, zobacz [danych przestrzennych (SQL Server) dokumentacji](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) Aby uzyskać więcej informacji.
+<a name="spatial-query"></a>**Zapytanie przestrzenne**: żądanie wysłane do usługi, która wykonuje operację przestrzenną. Na przykład wyszukiwanie promieniowe lub wyszukiwanie w trasie.
 
-<a name="synchronous-request"></a> **Żądań synchronicznych**: Żądanie HTTP otwiera połączenie i czeka na odpowiedź. Przeglądarki ograniczają liczbę jednoczesnych żądań HTTP, które mogą być wykonane ze strony. Jeśli wiele długotrwałych żądań synchronicznych zostaną wprowadzone w tym samym czasie, limit ten można z Tobą skontaktować i żądań opóźnione, dopóki nie zakończy się jedną z innych żądań.
+<a name="spatial-reference"></a>**Odwołanie przestrzenne**: System lokalny, regionalny lub globalny oparty na współrzędnych służący do precyzyjnego lokalizowania jednostek geograficznych. Definiuje układ współrzędnych służący do powiązania współrzędnych mapy z lokalizacjami w świecie rzeczywistym. Odwołania przestrzenne zapewniają, że dane przestrzenne z różnych warstw lub źródeł można zintegrować w celu dokładnego wyświetlenia lub analizy. Azure Maps używa systemu odniesienia współrzędnych [EPSG: 3857](https://epsg.io/3857) i WGS 84 do wprowadzania danych geometrycznych. 
 
-## <a name="t"></a>T
+<a name="sql-spatial"></a>**Przestrzenne SQL**: odnosi się do funkcji przestrzennych wbudowanych w usługę SQL Azure oraz SQL Server 2008 i nowszych. Ta funkcjonalność przestrzenna jest również dostępna jako biblioteka .NET, która może być używana niezależnie od SQL Server. Aby uzyskać więcej informacji, zobacz [dokumentację danych przestrzennych (SQL Server)](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) , aby uzyskać więcej informacji.
 
-<a name="telematics"></a> **Telematyka**: Wysyłanie, odbieranie i przechowywania informacji za pośrednictwem usług telekomunikacyjnych urządzeń w połączeniu z kilkukrotnie zawieszenie sterowania zdalnego obiektów. 
+<a name="subscription-key"></a>**Klucz subskrypcji**: zobacz [uwierzytelnianie klucza wspólnego](#shared-key-authentication).
 
-<a name="temporal-data"></a> **Dane czasowe**: Dane, które odwołuje się do godziny lub daty. Danych czasowych mogą odwoływać się do dyskretnych zdarzeń, takich jak ataki zaowocowało; Przenoszenie obiektów, takich jak pociągów; lub obserwacji powtarzane, np. liczby elementów z czujników ruchu.
+<a name="synchronous-request"></a>**Żądanie synchroniczne**: żądanie HTTP otwiera połączenie i czeka na odpowiedź. Przeglądarki ograniczają liczbę współbieżnych żądań HTTP, które można wprowadzać ze strony. Jeśli wiele długotrwałych żądań synchronicznych jest wykonywanych w tym samym czasie, ten limit można osiągnąć i żądania są opóźnione do momentu ukończenia jednego z innych żądań.
 
-<a name="terrain"></a> **Terenu**: Obszar terenu o szczególne cechy, takie jak piaszczystej terenu lub po górach terenu.
+## <a name="t"></a>trylionów
 
-<a name="thematic-maps"></a> **Mapy tematycznych**: Tematycznych mapa jest proste mapy wprowadzone w celu odzwierciedlenia motywu o obszaru geograficznego. Typowy scenariusz dla tego typu mapy jest kolorów regionów administracyjnych, takich jak kraje/regiony, w oparciu o niektóre metryki danych.
+<a name="telematics"></a>**Telematyka**: wysyłanie, otrzymywanie i przechowywanie informacji za pośrednictwem urządzeń telekomunikacyjnych w połączeniu z efektem kontroli nad obiektami zdalnymi. 
 
-<a name="tile-layer"></a> **Warstwa kafelków**: Warstwa, wyświetlane przez łączenie kafelków map (prostokątna sekcje) do ciągłego warstwy. Kafelki są albo rastrowych obrazów kafelków lub wektorowych kafelków. Warstwy kafelków rastrowych są zwykle renderowane wcześniejsze i przechowywane jako obrazy z serwera. Może to zająć dużo miejsca do magazynowania. Wektor kafelka warstwy są renderowane na bieżąco w aplikacji klienta, dlatego są mniejsze wymagania dotyczące magazynu po stronie serwera.
+<a name="temporal-data"></a>**Dane**czasowe: dane, które odwołują się do godzin lub dat. Dane czasowe mogą odwoływać się do zdarzeń dyskretnych, takich jak uderzenia. przeniesienie obiektów, takich jak pociągi; lub powtórzone obserwacje, na przykład liczniki z czujników ruchu.
 
-<a name="time-zone"></a> **Strefa czasowa**: Obszar świata, która przestrzega jednolita postać czasu standardowego do celów prawnych, komercyjnych i społecznościowych. Strefy czasowe często wykonują granice krajów/regionów i ich części.
+<a name="terrain"></a>**Teren**: obszar terenu z określoną cechą, taki jak teren piaskowobrązowy lub górski teren.
 
-<a name="transaction"></a> **Transakcja**: Usługi Azure Maps używa transakcji modelu licencjonowania gdzie;
+<a name="thematic-maps"></a>**Mapy tematyczne**: mapa tematyczna to prosta mapa zastosowana w celu odzwierciedlenia motywu obszaru geograficznego. Typowym scenariuszem dla tego typu mapy jest kolorowanie regionów administracyjnych, takich jak kraje/regiony, na podstawie pewnej metryki danych.
 
-- Jedna transakcja jest tworzona dla każdego 15 kafelków mapy lub ruch żądanie.
-- Jedna transakcja jest tworzona dla każdego wywołania interfejsu API do jednej z usług Azure Maps, takie jak wyszukiwanie lub routingu.
+<a name="tile-layer"></a>**Warstwa kafelków**: warstwa wyświetlana przez asembler kafelków mapy (sekcje prostokątne) do warstwy ciągłej. Kafelki to kafelki obrazów rastrowych lub kafelki wektorowe. Warstwy kafelków rastrowych są zwykle renderowane przed czasem i przechowywane jako obrazy na serwerze. Może to zająć dużo miejsca w magazynie. Warstwy kafelków wektorowych są renderowane na bieżąco w aplikacji klienckiej, więc wymagania dotyczące magazynu po stronie serwera są mniejsze.
 
-<a name="transformation"></a> **Przekształcenie**: Proces konwersji danych między różnymi systemami współrzędnych geograficznych. Może na przykład mieć niektóre dane, które zostały przechwycone w Wielkiej Brytanii, a następnie oparte na układ współrzędnych geograficznych OSGB 1936. Usługa Azure Maps korzysta [EPSG:3857](https://epsg.io/3857) wariant system współrzędnych odwołanie WGS84. Jako takie do poprawnego wyświetlania danych, będzie musiała mieć współrzędnych przekształcone z jednego systemu do innego.
+<a name="time-zone"></a>**Strefa czasowa**: region globusa, który obserwuje jednolity czas standardowy dla celów prawnych, komercyjnych i społecznych. Strefy czasowe są zgodne z granicami krajów/regionów i ich podziałów.
 
-<a name="traveling-salesmen-problem-tsp"></a> **Problem sprzedawców Traveling (TSP)** :  Hamiltonian problem obwodu, w którym sprzedawcy musi znaleźć najbardziej efektywny sposób, aby przejść do serii zostanie ono zatrzymane, następnie wróć do lokalizacja początkowa.  
+<a name="transaction"></a>**Transakcja**: Azure Maps używa transakcyjnego modelu licencjonowania, gdzie;
 
-<a name="trilateration"></a> **Trilateration**: Proces określające położenie punktu na kuli ziemskiej w odniesieniu do dwóch innych punktów przez dokonywanie pomiarów odległości między wszystkie trzy punkty.
+- Jedna transakcja jest tworzona dla każdego żądanego 15 mapy lub kafelków ruchu.
+- Jedna transakcja jest tworzona dla każdego wywołania interfejsu API do jednej z usług w Azure Maps, takich jak Search lub Routing.
 
-<a name="turn-by-turn-navigation"></a> **Włącz, wyłącz nawigacji**: Aplikacja, która zawiera instrukcje trasy dla każdego kroku trasę jako użytkownicy zbliża się do następnego manewrów.
+<a name="transformation"></a>**Transformacja**: proces konwersji danych między różnymi systemami współrzędnych geograficznych. Możesz na przykład mieć pewne dane, które zostały przechwycone w Zjednoczonym Królestwie i oparte na układzie współrzędnych geograficznych OSGB 1936. Azure Maps używa wariantu [EPSG: 3857](https://epsg.io/3857) system Reference of WGS84. W związku z tym, że dane mają być prawidłowo wyświetlane, jego współrzędne muszą być przekształcone z jednego systemu na drugi.
+
+<a name="traveling-salesmen-problem-tsp"></a>**Problem z podróżą Salesmen (TSP)** : problem ze obwodem hamiltonian, w którym sprzedawca musi znaleźć najbardziej wydajny sposób na odwiedzenie serii zatrzymań, a następnie powrócić do lokalizacji początkowej.  
+
+<a name="trilateration"></a>**Trilateration**: proces określania pozycji punktu na powierzchni ziemi, w odniesieniu do dwóch innych punktów, mierząc odległość między wszystkimi trzema punktami.
+
+<a name="turn-by-turn-navigation"></a>**Nawigacja z przełączaniem**: aplikacja udostępniająca instrukcje dotyczące trasy dla każdego kroku trasy, gdy użytkownicy zbliżają się do następnego manewrówu.
 
 ## <a name="v"></a>V
 
-<a name="vector-data"></a> **Dane wektorowe**: Koordynowanie oparte na danych, który jest reprezentowany jako punkty, linie lub wielokątów.
+<a name="vector-data"></a>**Dane wektorowe**: dane oparte na współrzędnych, które są reprezentowane jako punkty, linie lub wielokąty.
 
-<a name="vector-tile"></a> **Wektor, Kafelek**: Specyfikacja otwartej obsługi danych do przechowywania danych wektorowych dane geograficzne przy użyciu tego samego systemu kafelków jako formantu mapy. Zobacz też [warstwę kafelków](#tile-layer).
+<a name="vector-tile"></a>**Kafelek wektor**: otwarta Specyfikacja danych do przechowywania danych wektorów geoprzestrzennych przy użyciu tego samego systemu kafelków co formant mapy. Zobacz również [warstwa kafelków](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a> **Problemu z routingiem pojazdu (VRP)** : Klasa problemów, w których zestawu uporządkowanych tras dla pojazdów floty jest obliczana, biorąc pod uwagę jako zestaw ograniczeń. Te ograniczenia może obejmować elementy, takie jak okna czasowe dostarczania, wiele możliwości trasy, a ograniczenia czasu trwania podróży.
+<a name="vehicle-routing-problem-vrp"></a>**Problem z routingiem pojazdu (VRP)** : Klasa problemów, w których zestaw uporządkowanych tras dla floty pojazdów jest obliczany podczas uwzględniania zestawu ograniczeń. Te ograniczenia mogą obejmować takie elementy, jak czas dostawy systemu Windows, wiele pojemności trasy i ograniczenia czasu podróży.
 
-<a name="voronoi-diagram"></a> **Voronoi diagram**: Rozkład miejsca do obszarów lub komórki otaczające zestaw obiektów geometrycznego (zazwyczaj funkcje punktów). Te komórki lub wiersze i wielokątów, musi spełniać kryteria Delaunay trójkąty. Wszystkie lokalizacje w regionie są bliżej obiektu, który otacza niż do jakiegokolwiek innego obiektu w zestawie. Diagramy Voronoi są często używane do odróżnić obszarów wpływ wokół funkcji geograficznego. 
+<a name="voronoi-diagram"></a>**Diagram Voronoi**: podział przestrzeni na obszary lub komórki, które są otoczone zestawem obiektów geometrycznych (zazwyczaj funkcje punktów). Te komórki lub wielokąty muszą spełniać kryteria dla trójkątów Delaunay. Wszystkie lokalizacje w obszarze znajdują się bliżej obiektu, który jest otaczający, niż każdy inny obiekt w zestawie. Diagramy Voronoi są często używane do odróżnić obszarów mających wpływ na funkcje geograficzne. 
 
 ## <a name="w"></a>W
 
-<a name="waypoint"></a> **Punkt nawigacyjny**: Punkt nawigacyjny jest w określonej lokalizacji geograficznej, zdefiniowane przez długość i szerokość geograficzną, która jest używana do celów nawigacyjne. Często używane do reprezentowania punktu, w której ktoś przechodzi Rozsyłanie za pomocą.
+<a name="waypoint"></a>**Punkt nawigacyjny**: punkt nawigacyjny jest określoną lokalizacją geograficzną zdefiniowaną na podstawie długości geograficznej i szerokości geograficznej, która jest używana do celów nawigacyjnych. Często używany do reprezentowania punktu, w którym ktoś nawiguje do trasy przez.
 
-<a name="waypoint-optimization"></a> **Punkt nawigacyjny optymalizacji**: Proces zmiany kolejności zbiór waypoints, aby zminimalizować podróży czas lub przebieg musieli przechodzi przez wszystkie podane waypoints. Często określane jako [Problem sprzedawców Traveling](#traveling-salesmen-problem-tsp) lub [problemu routingu pojazdu](#vehicle-routing-problem-vrp) w zależności od złożoności optymalizacji.
+<a name="waypoint-optimization"></a>**Optymalizacja punkt nawigacyjny**: proces zmiany kolejności zestawu waypoints w celu zminimalizowania czasu podróży lub odległości wymaganej do przechodzenia przez wszystkie podane waypoints. Często określana jako problem z [podróżą Salesmen](#traveling-salesmen-problem-tsp) lub [problemem z routingiem pojazdu](#vehicle-routing-problem-vrp) w zależności od złożoności optymalizacji.
 
-<a name="web-map-service-wms"></a> **Web Service dla Map (WMS)** : Usługi WMS do obsługi jest standardem Otwórz konsorcjum geograficznych (OGC), który definiuje opartej na obrazie mapy usług. Usługi WMS do obsługi usługi zapewniają obrazy mapy dla szczególnych obszarów w obrębie mapy na żądanie. Obrazy zawierają wstępnie renderowana Symbolika i może być renderowana w jednym z kilku nazwanych stylów, zdefiniowane przez usługę.
+<a name="web-map-service-wms"></a>**Usługa mapy sieci Web (WMS)** : WMS jest standardem Open OGC Consortium, który definiuje usługi map opartych na obrazie. Usługi WMS zapewniają obrazy map dla określonych obszarów w ramach mapy na żądanie. Obrazy zawierają wstępnie renderowane Symbology i mogą być renderowane w jednym z kilku nazwanych stylów, jeśli są zdefiniowane przez usługę.
 
-<a name="web-mercator"></a> **Web Mercator**: Nazywane również kulistego Mercator jest niewielkie wariant projekcji Mercator, jeden używane głównie w programach mapowanie oparte na sieci Web. Używa tych samych formuł jako standardowa projekcji Mercator jako używane w przypadku map na małą skalę. Jednak używa Web Mercator kulistego formuły skaluje na wszystkich, natomiast na dużą skalę Mercator mapuje zwykle formularz ellipsoidal projekcji. Niezgodność jest imperceptible na skalę globalną, ale powoduje, że mapy lokalne obszary, które różni się nieco od wartość true, ellipsoidal Mercator mapy w tej samej skali.
+<a name="web-mercator"></a>**Merkatora sieci Web**: znany również jako sferyczny rzut Merkatora jest niewielką odmianą projekcji Merkatora, która jest używana głównie w programach mapowania opartego na sieci Web. Używa tych samych formuł co w przypadku standardowego rzutowania Merkatora, który jest używany dla map małych. Jednak Merkatora sieci Web używa formuł sferycznych we wszystkich skalach, a mapy Merkatora na dużą skalę zwykle korzystają z formy projekcji ellipsoidal. Niezgodność jest niezauważalna w skali globalnej, ale powoduje, że mapy obszarów lokalnych odbiegają nieco inaczej niż prawdziwe ellipsoidal Merkatora Maps w tej samej skali.
 
-<a name="wgs84"></a> **WGS84**: Zestaw stałych używanych do wiązania przestrzenne współrzędne lokalizacjach na powierzchni mapy. WGS84 datum jest standardowa używane przez większość dostawców mapowania online i urządzenia GPS. Usługa Azure Maps korzysta [EPSG:3857](https://epsg.io/3857) wariant system współrzędnych odwołanie WGS84.
+<a name="wgs84"></a>**WGS84**: zestaw stałych służący do powiązania współrzędnych przestrzennych z lokalizacjami na powierzchni mapy. WGS84 podstawą jest standardem używanym przez większość dostawców mapowania online i urządzeń GPS. Azure Maps używa wariantu [EPSG: 3857](https://epsg.io/3857) system Reference of WGS84.
 
 ## <a name="z"></a>Z
 
-<a name="z-coordinate"></a> **Współrzędna Z**: Zobacz [wysokość](#altitude). 
+<a name="z-coordinate"></a>**Współrzędna Z**: zobacz [wysokość](#altitude). 
 
-<a name="zip-code"></a> **Kod pocztowy**: Zobacz [kod pocztowy](#postal-code).
+<a name="zip-code"></a>**Kod pocztowy**: zobacz [Kod pocztowy](#postal-code).
 
-<a name="Zoom level"></a> **Poziom powiększenia**: Określa poziom szczegółowości oraz ile mapy jest widoczna. Pomniejszeniu aż poziom 0, mapę świata pełną często będzie w widoku, ale pokaże ograniczone szczegóły, takie jak nazwy kraju/regionu i obramowanie i nazwy ocean. Po powiększeniu bliżej poziomu 17 mapy wyświetli obszar kilka bloków Miasto drogowej szczegółowe informacje. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md) dokumentacji.
+<a name="Zoom level"></a>**Poziom powiększenia**: określa poziom szczegółowości i ilość widocznej mapy. W przypadku powiększenia całego poziomu 0 cały świat mapa świata często będzie w widoku, ale będzie zawierać ograniczone szczegóły, takie jak nazwy kraju/regionu i obramowania oraz nazwy oceanów. W przypadku powiększenia do poziomu 17 mapa będzie wyświetlać obszar kilku bloków miast ze szczegółowymi informacjami o podróży. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i dokumentacja siatki kafelków](zoom-levels-and-tile-grid.md) .
 

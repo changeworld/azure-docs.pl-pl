@@ -1,25 +1,14 @@
 ---
-title: Planowanie pojemności dla aplikacji Service Fabric | Microsoft Docs
+title: Planowanie pojemności dla aplikacji Service Fabric
 description: Opisuje sposób identyfikowania liczby węzłów obliczeniowych wymaganych dla aplikacji Service Fabric
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377212"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Planowanie pojemności dla aplikacji Service Fabric
 W tym dokumencie przedstawiono sposób oszacowania ilości zasobów (procesor CPU, pamięć RAM, magazyn dyskowy) potrzebnych do uruchamiania aplikacji Service Fabric platformy Azure. Często wymagania dotyczące zasobów mogą ulec zmianie w czasie. Zwykle wymaga to kilku zasobów podczas opracowywania lub testowania usługi, a następnie wymaga większej ilości zasobów podczas pracy w środowisku produkcyjnym, a aplikacja rośnie w popularności. Podczas projektowania aplikacji należy wziąć pod uwagę długoterminowe wymagania i wprowadzić opcje, które umożliwiają skalowanie usługi w celu sprostania wysokim zapotrzebowaniem klienta.
@@ -33,7 +22,7 @@ W przypadku usług, które zarządzają dużymi ilościami danych na maszynach w
 ## <a name="determine-how-many-nodes-you-need"></a>Określ liczbę potrzebnych węzłów
 Partycjonowanie usługi pozwala na skalowanie danych usługi. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [partycjonowanie Service Fabric](service-fabric-concepts-partitioning.md). Każda partycja musi być zgodna z jedną maszyną wirtualną, ale wiele partycji (małych) może być umieszczanych na jednej maszynie wirtualnej. Dlatego, że więcej małych partycji zapewnia większą elastyczność niż w przypadku kilku większych partycji. W ten sposób jest to, że duże ilości partycji zwiększają obciążenie Service Fabric i nie można wykonywać operacji transakcyjnych w różnych partycjach. Istnieje również większy ruch sieciowy, jeśli kod usługi często potrzebuje dostępu do fragmentów danych, które znajdują się w różnych partycjach. Podczas projektowania usługi należy uważnie rozważyć te specjaliści i wady, aby dotrzeć do skutecznej strategii partycjonowania.
 
-Załóżmy, że aplikacja ma jedną usługę stanową, która ma rozmiar magazynu, który powinien zostać powiększony do DB_Size GB w ciągu roku. Użytkownik chce dodać więcej aplikacji (i partycji) w miarę wzrostu tego roku.  Współczynnik replikacji (RF), który określa liczbę replik dla usługi ma wpływ na łączną DB_Size. Łączna liczba DB_Size we wszystkich replikach to współczynnik replikacji pomnożony przez DB_Size.  Node_Size reprezentuje miejsce na dysku/pamięć RAM dla każdego węzła, który ma być używany przez usługę. Aby uzyskać najlepszą wydajność, DB_Size powinien mieścić się w pamięci w klastrze, a następnie należy wybrać Node_Size, który należy do pamięci RAM maszyny wirtualnej. Przydzielenie Node_Size, który jest większy niż pojemność pamięci RAM, polega na stronicowaniu udostępnianym przez środowisko uruchomieniowe Service Fabric. W związku z tym wydajność może nie być optymalna, jeśli całe dane są uważane za gorącą (od momentu, gdy dane są stronicowane/wychodzące). Jednak w przypadku wielu usług, w których tylko część danych jest gorąca, jest bardziej opłacalna.
+Załóżmy, że aplikacja ma jedną usługę stanową, która ma rozmiar magazynu, który powinien zostać powiększony do DB_Size GB w roku. Użytkownik chce dodać więcej aplikacji (i partycji) w miarę wzrostu tego roku.  Współczynnik replikacji (RF), który określa liczbę replik dla usługi ma wpływ na łączną DB_Size. Łączna DB_Size wszystkich replik to współczynnik replikacji pomnożony przez DB_Size.  Node_Size reprezentuje miejsce na dysku/pamięć RAM dla każdego węzła, który ma być używany przez usługę. Aby uzyskać najlepszą wydajność, DB_Size powinien mieścić się w pamięci w klastrze, a następnie należy wybrać Node_Size, który należy do pamięci RAM maszyny wirtualnej. Przydzielenie Node_Size, który jest większy niż pojemność pamięci RAM, polega na stronicowaniu udostępnianym przez środowisko uruchomieniowe Service Fabric. W związku z tym wydajność może nie być optymalna, jeśli całe dane są uważane za gorącą (od momentu, gdy dane są stronicowane/wychodzące). Jednak w przypadku wielu usług, w których tylko część danych jest gorąca, jest bardziej opłacalna.
 
 Liczba węzłów wymaganych do maksymalnej wydajności można obliczyć w następujący sposób:
 
@@ -44,11 +33,11 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 
 
 ## <a name="account-for-growth"></a>Konto do wzrostu
-Możesz chcieć obliczyć liczbę węzłów na podstawie DB_Size, do których będzie się zwiększać Twoja usługa, oprócz DB_Size, w którym się rozpoczęło. Następnie Zwiększ liczbę węzłów w miarę rozwoju usługi, aby nie przekroczyć aprowizacji liczby węzłów. Jednak liczba partycji powinna być oparta na liczbie węzłów, które są potrzebne, gdy korzystasz z usługi przy maksymalnym wzroście.
+Możesz chcieć obliczyć liczbę węzłów na podstawie DB_Size, do której będzie się zwiększać, do DB_Size, w którym się zaczynasz. Następnie Zwiększ liczbę węzłów w miarę rozwoju usługi, aby nie przekroczyć aprowizacji liczby węzłów. Jednak liczba partycji powinna być oparta na liczbie węzłów, które są potrzebne, gdy korzystasz z usługi przy maksymalnym wzroście.
 
 W dowolnym momencie warto udostępnić kilka dodatkowych maszyn, aby można było obsłużyć wszelkie nieoczekiwane skoki lub błędy (na przykład jeśli kilka maszyn wirtualnych zostanie zamkniętych).  Mimo że dodatkowa pojemność powinna zostać ustalona przy użyciu oczekiwanych skoków, punkt początkowy ma zarezerwować kilka dodatkowych maszyn wirtualnych (5-10 procent dodatkowych).
 
-Powyższym założono, że jest to jedna usługa stanowa. Jeśli masz więcej niż jedną usługę stanową, musisz dodać DB_Sizeą skojarzoną z innymi usługami do równania. Alternatywnie można obliczyć liczbę węzłów oddzielnie dla każdej usługi stanowej.  Usługa może mieć repliki lub partycje, które nie są zrównoważone. Należy pamiętać, że partycje mogą także mieć więcej danych niż inne. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [artykuł partycjonowanie na temat najlepszych](service-fabric-concepts-partitioning.md)rozwiązań. Jednak poprzednie równanie to partycja i replika niezależny od, ponieważ Service Fabric zapewnia, że repliki są rozłożone między węzłami w sposób zoptymalizowany.
+Powyższym założono, że jest to jedna usługa stanowa. Jeśli masz więcej niż jedną usługę stanową, musisz dodać DB_Size skojarzoną z innymi usługami do równania. Alternatywnie można obliczyć liczbę węzłów oddzielnie dla każdej usługi stanowej.  Usługa może mieć repliki lub partycje, które nie są zrównoważone. Należy pamiętać, że partycje mogą także mieć więcej danych niż inne. Aby uzyskać więcej informacji na temat partycjonowania, zobacz [artykuł partycjonowanie na temat najlepszych](service-fabric-concepts-partitioning.md)rozwiązań. Jednak poprzednie równanie to partycja i replika niezależny od, ponieważ Service Fabric zapewnia, że repliki są rozłożone między węzłami w sposób zoptymalizowany.
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>Używanie arkusza kalkulacyjnego do obliczania kosztów
 Teraz Umieśćmy pewne liczby rzeczywiste w formule. [Przykład arkusza kalkulacyjnego](https://github.com/Azure/service-fabric/raw/master/docs_resources/SF_VM_Cost_calculator-NEW.xlsx) pokazuje, jak zaplanować pojemność aplikacji, która zawiera trzy typy obiektów danych. Dla każdego obiektu przybliżony rozmiar i liczba obiektów, których oczekujemy. Wybieramy również liczbę replik dla każdego typu obiektu. Arkusz kalkulacyjny oblicza łączną ilość pamięci, która ma być przechowywana w klastrze.

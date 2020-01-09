@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 823527af81e0cb22fb59421b84983684d4cdfffd
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286241"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407504"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights aplikacji ASP.NET Core
 
@@ -66,7 +66,7 @@ Przykład będziemy używać w tym miejscu jako [aplikacji MVC](https://docs.mic
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.0" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
         </ItemGroup>
     ```
 
@@ -107,7 +107,7 @@ Przykład będziemy używać w tym miejscu jako [aplikacji MVC](https://docs.mic
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Na przykład:
+    Przykład:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -195,7 +195,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Pełna lista ustawień w `ApplicationInsightsServiceOptions`
 
-|Ustawienie | Opis | Domyślny
+|Ustawienie | Opis | Domyślne
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | Włącz/Wyłącz funkcję LiveMetrics | true
 |EnableAdaptiveSampling | Włącz/Wyłącz próbkowanie adaptacyjne | true
@@ -441,9 +441,9 @@ Ten zestaw SDK wymaga `HttpContext`, w związku z czym nie działa w żadnej apl
 
 ## <a name="open-source-sdk"></a>Zestaw SDK open source
 
-[Odczytuj i współtworzyć kod](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
+[Odczytuj i współtworzyć kod](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 - Zapoznaj się z tym zewnętrznym filmem krok po kroku, aby [skonfigurować Application Insights z użyciem platformy .NET Core i programu Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) od podstaw.
 - Zapoznaj się z tym zewnętrznym filmem krok po kroku, aby [skonfigurować Application Insights przy użyciu platformy .NET Core i Visual Studio Code](https://youtu.be/ygGt84GDync) od podstaw.

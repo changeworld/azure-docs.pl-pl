@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bfa8982fb49b31540d1926bdeb75a96dc1d79cf0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425619"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj własny profil techniczny w Azure Active Directory B2C zasad niestandardowych
 
@@ -38,7 +38,7 @@ Poniższy przykład przedstawia profil techniczny z własnym potwierdzeniem do r
 
 ## <a name="input-claims"></a>Oświadczenia wejściowe
 
-W profilu technicznym z własnym potwierdzeniem można użyć elementów **InputClaims** i **InputClaimsTransformations** , aby wstępnie wypełnić wartość oświadczeń, które pojawiają się na stronie z możliwością potwierdzenia (oświadczenia wyjściowe). Na przykład w obszarze Edytowanie zasad profilu Użytkownik najpierw odczytuje profil użytkownika z usługi Azure AD B2C Directory, a następnie samodzielnie potwierdzony profil techniczny ustawi oświadczenia wejściowe przy użyciu danych użytkownika przechowywanych w profilu użytkownika. Te oświadczenia są zbierane z profilu użytkownika, a następnie prezentowane użytkownikowi, który może edytować istniejące dane.
+W profilu technicznym z własnym potwierdzeniem można użyć elementów **InputClaims** i **InputClaimsTransformations** , aby wstępnie wypełnić wartość oświadczeń, które pojawiają się na stronie z możliwością potwierdzenia (wyświetlanie oświadczeń). Na przykład w obszarze Edytowanie zasad profilu Użytkownik najpierw odczytuje profil użytkownika z usługi Azure AD B2C Directory, a następnie samodzielnie potwierdzony profil techniczny ustawi oświadczenia wejściowe przy użyciu danych użytkownika przechowywanych w profilu użytkownika. Te oświadczenia są zbierane z profilu użytkownika, a następnie prezentowane użytkownikowi, który może edytować istniejące dane.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -51,31 +51,92 @@ W profilu technicznym z własnym potwierdzeniem można użyć elementów **Input
   </InputClaims>
 ```
 
+## <a name="display-claims"></a>Wyświetl oświadczenia
+
+Funkcja wyświetlania oświadczeń jest obecnie w **wersji zapoznawczej**.
+
+Element **DisplayClaims** zawiera listę oświadczeń, które mają być wyświetlane na ekranie w celu zbierania danych od użytkownika. Aby wstępnie wypełnić wartości oświadczeń wyjściowych, należy użyć oświadczeń wejściowych, które zostały wcześniej opisane. Element może również zawierać wartość domyślną.
+
+Kolejność oświadczeń w **DisplayClaims** określa kolejność, w której Azure AD B2C renderuje oświadczenia na ekranie. Aby wymusić dostarczenie przez użytkownika wartości określonego żądania, należy ustawić **wymagany** atrybut elementu **DisplayClaim** , aby `true`.
+
+Element **ClaimType** w kolekcji **DisplayClaims** musi określać element **UserInputType** dla dowolnego typu danych wejściowych użytkownika obsługiwanego przez Azure AD B2C. Na przykład: `TextBox` lub `DropdownSingleSelect`.
+
+### <a name="add-a-reference-to-a-displaycontrol"></a>Dodawanie odwołania do elementu DisplayControl
+
+W kolekcji Wyświetl oświadczenia można dołączyć odwołanie [do utworzonego ekranu](display-controls.md) . Kontrolka wyświetlania to element interfejsu użytkownika, który ma specjalne funkcje i współdziała z Azure AD B2C usługą zaplecza. Umożliwia użytkownikowi wykonywanie akcji na stronie, które wywołują profil techniczny weryfikacji na zapleczu. Na przykład weryfikacja adresu e-mail, numeru telefonu lub numeru lojalnościowego klienta.
+
+Poniższy przykład `TechnicalProfile` ilustruje użycie oświadczeń wyświetlania z kontrolkami wyświetlania.
+
+* Pierwsze to wyświetlenie powoduje odwołanie do kontrolki wyświetlania `emailVerificationControl`, która zbiera i weryfikuje adres e-mail.
+* Piąte zgłoszenie do wyświetlania umożliwia odwołanie do kontrolki wyświetlania `phoneVerificationControl`, która zbiera i weryfikuje numer telefonu.
+* Inne oświadczenia są wyświetlane jako oświadczenia, które mają być zbierane od użytkownika.
+
+```XML
+<TechnicalProfile Id="Id">
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim DisplayControlReferenceId="phoneVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
+</TechnicalProfile>
+```
+
+Jak wspomniano wcześniej, w przypadku wystąpienia elementu z odwołaniem do kontrolki wyświetlania może zostać uruchomione własne sprawdzenie poprawności, na przykład zweryfikowanie adresu e-mail. Ponadto strona samodzielna obsługuje sprawdzanie poprawności całej strony, w tym wszelkie dane wejściowe użytkownika (typy lub kontrolki wyświetlania), przed przejściem do następnego kroku aranżacji.
+
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>Dokładne łączenie użycia oświadczeń i oświadczeń wyjściowych
+
+W przypadku określenia co najmniej jednego elementu **DisplayClaim** w profilu technicznym z własnym poproszonym należy użyć DisplayClaim dla *każdego* żądania, które ma być wyświetlane na ekranie i zbierać od użytkownika. Żadne oświadczenia wyjściowe nie są wyświetlane przez własny profil techniczny, który zawiera co najmniej jedno oświadczenie dotyczące wyświetlania.
+
+Rozważmy następujący przykład, w którym rolę `age` jest definiowana jako zgłoszenie **wyjściowe** w zasadach podstawowych. Przed dodaniem jakichkolwiek oświadczeń ekranu do profilu technicznego z własnym potwierdzeniem na ekranie zostanie wyświetlone oświadczenie `age` na potrzeby zbierania danych od użytkownika:
+
+```XML
+<TechnicalProfile Id="id">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="age" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+Jeśli zasada liścia, która dziedziczy tę bazę, w przyszłości określa `officeNumber` jako rolę **wyświetlaną** :
+
+```XML
+<TechnicalProfile Id="id">
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="officeNumber" />
+  </DisplayClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="officeNumber" />
+  </OutputClaims>
+</TechnicalProfile>
+```
+
+`age`e nie są już wyświetlane na ekranie dla użytkownika, co jest efektywnie "ukryte". Aby wyświetlić `age` i zebrać wartość wieku od użytkownika, należy dodać `age` **DisplayClaim**.
 
 ## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-Element **OutputClaims** zawiera listę oświadczeń, które mają być prezentowane w celu zbierania danych od użytkownika. Aby wstępnie wypełnić oświadczenia wyjściowe z niektórymi wartościami, użyj oświadczeń wejściowych, które zostały wcześniej opisane. Element może również zawierać wartość domyślną. Kolejność oświadczeń w **OutputClaims** kontroluje kolejność, w której Azure AD B2C renderuje oświadczenia na ekranie. Atrybut **DefaultValue** działa tylko wtedy, gdy nie został wcześniej ustawiony. Ale jeśli został on wcześniej ustawiony przed w poprzednim kroku aranżacji, nawet jeśli użytkownik opuści wartość pustą, wartość domyślna nie zacznie obowiązywać. Aby wymusić użycie wartości domyślnej, ustaw atrybut **AlwaysUseDefaultValue** na `true`. Aby wymusić użytkownikowi podanie wartości dla określonego zgłoszenia wyjściowego, należy ustawić **wymagany** atrybut elementu **OutputClaims** , aby `true`.
+Element **OutputClaims** zawiera listę oświadczeń do zwrócenia do następnego kroku aranżacji. Atrybut **DefaultValue** działa tylko wtedy, gdy nie ustawiono tego żądania. Jeśli została ustawiona w poprzednim kroku aranżacji, wartość domyślna nie zacznie obowiązywać, nawet jeśli użytkownik opuści wartość pustą. Aby wymusić użycie wartości domyślnej, ustaw atrybut **AlwaysUseDefaultValue** na `true`.
 
-Element **ClaimType** w kolekcji **OutputClaims** musi określać element **UserInputType** dla dowolnego typu danych wejściowych użytkownika obsługiwanego przez Azure AD B2C, takich jak `TextBox` lub `DropdownSingleSelect`. Lub element **oświadczenie outputclaim** musi mieć ustawioną wartość **DefaultValue**.
+> [!NOTE]
+> W poprzednich wersjach programu Identity Experience Framework (IEF) oświadczenia wyjściowe były używane do zbierania danych od użytkownika. Aby zebrać dane od użytkownika, należy zamiast tego użyć kolekcji **DisplayClaims** .
 
 Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
-Następujące zgłoszenie wyjściowe jest zawsze ustawione na `live.com`:
+### <a name="when-you-should-use-output-claims"></a>Kiedy należy używać oświadczeń wyjściowych
 
-```XML
-<OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" AlwaysUseDefaultValue="true" />
-```
+W profilu technicznym z własnym potwierdzeniem kolekcja oświadczeń wychodzących zwraca oświadczenia do następnego kroku aranżacji.
 
-### <a name="use-case"></a>Przypadek użycia
+Należy używać oświadczeń wyjściowych, gdy:
 
-Istnieją cztery scenariusze dotyczące oświadczeń wyjściowych:
-
-- **Zbieranie oświadczeń wyjściowych od użytkownika** — w przypadku konieczności zebrania informacji od użytkownika, takich jak Data urodzenia, należy dodać oświadczenie do kolekcji **OutputClaims** . Oświadczenia, które są prezentowane użytkownikowi, muszą określać **UserInputType**, takie jak `TextBox` lub `DropdownSingleSelect`. Jeśli profil techniczny z własnym potwierdzeniem zawiera profil techniczny weryfikacji, który wyprowadza to samo zastrzeżenie, Azure AD B2C nie zaprezentuje tego żądania użytkownikowi. Jeśli nie ma żadnych żadnych roszczeń wyjściowych do zaprezentowania użytkownikowi, Azure AD B2C pomija profil techniczny.
-- **Ustawianie wartości domyślnej w ramach zgłoszenia wyjściowego** — bez zbierania danych od użytkownika lub zwracania danych z profilu kontroli technicznej. `LocalAccountSignUpWithLogonEmail` samodzielnie poproszony profil techniczny ustawia **SelfAsserted** do wykonania, aby `true`.
+- **Oświadczenia są wyprowadzane przez transformację oświadczeń wyjściowych**.
+- **Ustawianie wartości domyślnej w ramach zgłoszenia wyjściowego** bez zbierania danych od użytkownika lub zwracania danych z profilu kontroli technicznej. `LocalAccountSignUpWithLogonEmail` samodzielnie poproszony profil techniczny ustawia **SelfAsserted** do wykonania, aby `true`.
 - **Profil techniczny weryfikacji zwraca oświadczenia wyjściowe** — Twój profil techniczny może wywołać profil techniczny weryfikacji, który zwraca pewne oświadczenia. Można chcieć wyrównać oświadczenia i zwrócić je do następnych kroków aranżacji w podróży użytkownika. Na przykład podczas logowania się przy użyciu konta lokalnego profil techniczny z własnym potwierdzeń o nazwie `SelfAsserted-LocalAccountSignin-Email` wywołuje profil techniczny weryfikacji o nazwie `login-NonInteractive`. Ten profil techniczny sprawdza poprawność poświadczeń użytkownika, a także zwraca profil użytkownika. Takie jak "userPrincipalName", "displayName", "podaną nazwę" i "nazwisko".
-- **Wyprowadzanie oświadczeń przez transformację oświadczeń wyjściowych**
+- **Kontrolka wyświetlania zwraca oświadczenia wyjściowe** — Twój profil techniczny może mieć odwołanie do [kontrolki wyświetlania](display-controls.md). Kontrolka wyświetlania zwraca pewne oświadczenia, takie jak zweryfikowany adres e-mail. Można chcieć wyrównać oświadczenia i zwrócić je do następnych kroków aranżacji w podróży użytkownika. Funkcja kontrolki wyświetlania jest obecnie w **wersji zapoznawczej**.
 
-W poniższym przykładzie profil techniczny z własnymi potwierdzeń `LocalAccountSignUpWithLogonEmail` demonstruje użycie oświadczeń wyjściowych i ustawia polecenie **SelfAsserted-Input** do `true`. `objectId`, `authenticationSource`, `newUser` oświadczenia są danymi wyjściowymi profilu technicznego weryfikacji `AAD-UserWriteUsingLogonEmail` i nie są widoczne dla użytkownika.
+W poniższym przykładzie zademonstrowano korzystanie z własnego profilu technicznego, który używa zarówno oświadczeń, jak i oświadczeń wyjściowych.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -86,32 +147,30 @@ W poniższym przykładzie profil techniczny z własnymi potwierdzeń `LocalAccou
     <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
     <Item Key="language.button_continue">Create</Item>
   </Metadata>
-  <CryptographicKeys>
-    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-  </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" />
   </InputClaims>
+  <DisplayClaims>
+    <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+    <DisplayClaim DisplayControlReferenceId="SecondaryEmailVerificationControl" />
+    <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+  </DisplayClaims>
   <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" Required="true" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
-    <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
-    <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
     <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
     <OutputClaim ClaimTypeReferenceId="authenticationSource" />
     <OutputClaim ClaimTypeReferenceId="newUser" />
-
-    <!-- Optional claims, to be collected from the user -->
-    <OutputClaim ClaimTypeReferenceId="displayName" />
-    <OutputClaim ClaimTypeReferenceId="givenName" />
-    <OutputClaim ClaimTypeReferenceId="surName" />
   </OutputClaims>
   <ValidationTechnicalProfiles>
     <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
   </ValidationTechnicalProfiles>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
 </TechnicalProfile>
-
 ```
 
 ## <a name="persist-claims"></a>Utrwalanie oświadczeń
@@ -142,16 +201,3 @@ Możesz również wywołać profil techniczny interfejsu API REST z logiką bizn
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 
 Element **CryptographicKeys** nie jest używany.
-
-
-
-
-
-
-
-
-
-
-
-
-

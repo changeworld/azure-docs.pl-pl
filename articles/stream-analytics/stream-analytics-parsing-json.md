@@ -1,28 +1,27 @@
 ---
-title: Analizowanie JSON i AVRO w usłudze Azure Stream Analytics
-description: W tym artykule opisano, jak może działać w złożonych typach danych takich jak tablice, JSON, CSV sformatowany dane.
-services: stream-analytics
+title: Analizowanie JSON i AVRO w Azure Stream Analytics
+description: W tym artykule opisano sposób działania na złożonych typach danych, takich jak tablice, JSON, dane w formacie CSV.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431607"
 ---
-# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analizowanie danych JSON i Avro w usłudze Azure Stream Analytics
+# <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analizowanie danych JSON i Avro w Azure Stream Analytics
 
-Usługa Azure Stream Analytics obsługuje przetwarzanie zdarzeń w pliku CSV, JSON i Avro formaty danych. Dane JSON i Avro mogą mieć strukturę i zawierają niektóre typy złożone, np. zagnieżdżone obiekty (rekordy) i tablice. 
-
-
+Azure Stream Analytics obsługiwać zdarzenia przetwarzania w formatach danych CSV, JSON i Avro. Dane JSON i Avro mogą być strukturalne i zawierać niektóre złożone typy, takie jak obiekty zagnieżdżone (rekordy) i tablice. 
 
 
-## <a name="record-data-types"></a>Typy danych rekordu
-Typy danych rekordu są używane do reprezentowania tablice JSON i Avro, gdy odpowiadające im formaty są używane w strumieniach danych wejściowych. Przykłady te pokazują czujnik przykład odczytuje zdarzenia wejściowe w formacie JSON. Oto przykład pojedyncze zdarzenie:
+
+
+## <a name="record-data-types"></a>Rejestruj typy danych
+Typy danych rekordów służą do reprezentowania tablic JSON i Avro, gdy w strumieniach danych wejściowych są używane odpowiednie formaty. Przykładowe przykłady przedstawiają czujnik próbek, który odczytuje zdarzenia wejściowe w formacie JSON. Oto przykład pojedynczego zdarzenia:
 
 ```json
 {
@@ -48,8 +47,8 @@ Typy danych rekordu są używane do reprezentowania tablice JSON i Avro, gdy odp
 ```
 
 
-### <a name="access-nested-fields-in-known-schema"></a>Zagnieżdżone dostęp do pól w znanym schematem
-Użyj notacji z kropką (.), aby łatwo uzyskać dostęp do pól zagnieżdżonych, bezpośrednio z zapytania. Na przykład to zapytanie wybiera współrzędne długości i szerokości geograficznej, w obszarze właściwości Location w poprzednim dane JSON. Zapisu kropkowego może służyć do nawigacji wiele poziomów, jak pokazano poniżej.
+### <a name="access-nested-fields-in-known-schema"></a>Dostęp do zagnieżdżonych pól w znanym schemacie
+Użyj notacji kropki (.), aby łatwo uzyskać dostęp do zagnieżdżonych pól bezpośrednio z zapytania. Na przykład to zapytanie wybiera współrzędne geograficzne i Długość geograficzna we właściwości Location w poprzednich danych JSON. Notacja kropka może służyć do nawigowania na wielu poziomach, jak pokazano poniżej.
 
 ```SQL
 SELECT
@@ -61,14 +60,14 @@ FROM input
 ```
 
 ### <a name="select-all-properties"></a>Zaznacz wszystkie właściwości
-Można wybrać wszystkie właściwości zagnieżdżone rekordu przy użyciu ' *' symboli wieloznacznych. Rozważmy następujący przykład:
+Można wybrać wszystkie właściwości zagnieżdżonego rekordu przy użyciu symbolu wieloznacznego "*". Rozważmy następujący przykład:
 
 ```SQL
 SELECT input.Location.*
 FROM input
 ```
 
-Wynik jest:
+Wynik:
 
 ```json
 {
@@ -78,10 +77,10 @@ Wynik jest:
 ```
 
 
-### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Dostęp zagnieżdżone pola, gdy nazwa właściwości jest zmienną
-Użyj [funkcji GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) działać, jeśli nazwa właściwości jest to zmienna. 
+### <a name="access-nested-fields-when-property-name-is-a-variable"></a>Dostęp do zagnieżdżonych pól, gdy nazwa właściwości jest zmienną
+Użyj funkcji [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) , jeśli nazwa właściwości jest zmienną. 
 
-Na przykład Wyobraź sobie, że strumień danych przykładowych, musi być łączone z odwołania zawierającego progi danych dla każdego czujników urządzenia. Poniżej przedstawiono fragment takich danych referencyjnych.
+Załóżmy na przykład, że przykładowy strumień danych musi być połączony z danymi referencyjnymi zawierającymi progi dla każdego czujnika urządzenia. Poniżej przedstawiono fragment kodu dotyczący takich danych referencyjnych.
 
 ```json
 {
@@ -104,8 +103,8 @@ WHERE
     -- the where statement selects the property value coming from the reference data
 ```
 
-### <a name="convert-record-fields-into-separate-events"></a>Konwertuj pola rekordu w oddzielnych zdarzenia
-Aby przekonwertować pola rekordu odrębne zdarzenia, należy użyć [Zastosuj](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operator wraz z [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) funkcji. Na przykład jeśli poprzedni przykład kilka rekordów dla SensorReading, następujące zapytanie może służyć do wyodrębnić je do różnych zdarzeń:
+### <a name="convert-record-fields-into-separate-events"></a>Konwertuj pola rekordów na oddzielne zdarzenia
+Aby przekonwertować pola rekordu na oddzielne zdarzenia, użyj operatora [apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) razem z funkcją [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) . Na przykład jeśli poprzedni przykład zawierał kilka rekordów dla SensorReading, można użyć następującego zapytania, aby wyodrębnić je do różnych zdarzeń:
 
 ```SQL
 SELECT
@@ -118,14 +117,14 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 
 
-## <a name="array-data-types"></a>Tablica typów danych
+## <a name="array-data-types"></a>Array — typy danych
 
-Typy danych tablicy są uporządkowany zbiór wartości. Niektóre typowe operacje na wartości tablicy są szczegółowo opisane poniżej. W poniższych przykładach założono zdarzenia wejściowe ma właściwość o nazwie "arrayField" oznacza to typ danych tablicy.
+Typy danych tablicy to uporządkowana Kolekcja wartości. Poniżej przedstawiono niektóre typowe operacje dotyczące wartości tablicy. W tych przykładach przyjęto założenie, że zdarzenia wejściowe mają właściwość o nazwie "arrayField", która jest typem danych Array.
 
-Te przykłady, użyj funkcji [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)i [Zastosuj](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operatora.
+W tych przykładach użyto funkcji [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)i operator [apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) .
 
-### <a name="working-with-a-specific-array-element"></a>Praca z określonego elementu tablicy
-Wybierz element tablicy od określonego indeksu (zaznaczając pierwszy element tablicy):
+### <a name="working-with-a-specific-array-element"></a>Praca z określonym elementem tablicy
+Wybierz element tablicy w określonym indeksie (zaznaczając pierwszy element tablicy):
 
 ```SQL
 SELECT
@@ -133,7 +132,7 @@ SELECT
 FROM input
 ```
 
-### <a name="select-array-length"></a>Wybierz długość tablicy
+### <a name="select-array-length"></a>Wybierz Długość tablicy
 
 ```SQL
 SELECT
@@ -141,8 +140,8 @@ SELECT
 FROM input
 ```
 
-### <a name="convert-array-elements-into-separate-events"></a>Konwertuj elementy tablicy w oddzielnych zdarzenia
-Wybierz wszystkie elementu tablicy poszczególne zdarzenia. [Zastosuj](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operator wraz z [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) wbudowanej funkcji wyodrębnia wszystkie elementy tablicy jako pojedyncze zdarzenia:
+### <a name="convert-array-elements-into-separate-events"></a>Konwertuj elementy tablicy na oddzielne zdarzenia
+Zaznacz wszystkie elementy tablicy jako pojedyncze zdarzenia. Operator [apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) wraz z wbudowaną funkcją [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) wyodrębnia wszystkie elementy tablicy jako pojedyncze zdarzenia:
 
 ```SQL
 SELECT
@@ -154,4 +153,4 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 
 
 ## <a name="see-also"></a>Zobacz też
-[Typy danych w usłudze Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Typy danych w Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

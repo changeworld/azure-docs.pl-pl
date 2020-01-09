@@ -1,7 +1,7 @@
 ---
 title: Stosowanie operacji matematycznej
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu operacji matematycznej w usłudze Azure Machine Learning, aby zastosować operację matematyczną do wartości kolumn w potoku.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu operacji matematycznej w Azure Machine Learning, aby zastosować operację matematyczną do wartości kolumn w potoku.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493928"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428605"
 ---
 # <a name="apply-math-operation"></a>Stosowanie operacji matematycznej
 
@@ -36,7 +36,7 @@ Poszukaj potrzebnych operacji w następujących kategoriach:
   
      Funkcje w kategorii **Basic** mogą służyć do manipulowania pojedynczą wartością lub kolumną wartości. Na przykład możesz uzyskać wartość bezwzględną wszystkich liczb w kolumnie lub obliczyć pierwiastek kwadratowy dla każdej wartości w kolumnie.  
   
--   [Porównaniu](#comparison-operations)  
+-   [Compare](#comparison-operations)  
   
       Funkcje w kategorii **porównywania** są używane do porównania: można wykonać porównanie par wartości w dwóch kolumnach lub porównać każdą wartość w kolumnie z określoną stałą. Na przykład można porównać kolumny, aby określić, czy wartości były takie same w dwóch zestawach danych. Lub można użyć stałej, na przykład maksymalnej dozwolonej wartości, aby znaleźć elementy odstające w kolumnie liczbowej.  
   
@@ -92,7 +92,7 @@ Każde wystąpienie tego modułu może wykonywać tylko jeden typ operacji jedno
 
 W przypadku generowania wyników przy użyciu opcji **Dołącz** lub **ResultOnly** nagłówki kolumn zwracanego zestawu danych wskazują operację i używane kolumny. Na przykład w przypadku porównania dwóch kolumn za pomocą operatora **Equals** wyniki będą wyglądać następująco:  
   
--   **Equals (Col2_Col1)** , co oznacza, że przetestowano Col2 z Kol1.  
+-   **Równa się (Col2_Col1)** , co oznacza, że przetestowano Col2 z Kol1.  
 -   **Równa się (Col2_ $10)** , wskazujący, że kolumna 2 została porównana z stałą 10.  
 
 Nawet jeśli używasz opcji **InPlace** , dane źródłowe nie zostaną usunięte ani zmienione; kolumna w oryginalnym zestawie danych jest nadal dostępna w projektancie. Aby wyświetlić oryginalne dane, można połączyć moduł [Dodaj kolumny](add-columns.md) i dołączyć go do danych wyjściowych **operacji Zastosuj matematyczne**.  
@@ -103,7 +103,7 @@ Funkcje w kategorii **podstawowa** zazwyczaj przyjmują jedną wartość z kolum
   
  Azure Machine Learning obsługuje następujące funkcje w kategorii **podstawowa** :  
 
-### <a name="abs"></a>ABS
+### <a name="abs"></a>Abs
 
 Zwraca wartość bezwzględną zaznaczonych kolumn.  
   
@@ -148,13 +148,13 @@ Na przykład w przypadku wybrania kolumny z wartościami {0,1,2,3,4,5} dla mnoż
 
 Zwraca wykładnik ujemny dla wartości w zaznaczonej kolumnie.  
 
-### <a name="factorial"></a>Siln
+### <a name="factorial"></a>Silnia
 Zwraca silnię dla wartości w zaznaczonej kolumnie.  
 
 ### <a name="hypotenuse"></a>Przeciwprostokątnej
 Oblicza przeciwprostokątnej dla trójkąta, w którym długość jednej strony jest określona jako kolumna wartości, a długość drugiej strony jest określana jako stała lub dwie kolumny.  
 
-### <a name="ln"></a>LOGARYTM
+### <a name="ln"></a>Logarytm naturalny
 
 Zwraca logarytm naturalny dla wartości z zaznaczonej kolumny.  
 
@@ -162,7 +162,7 @@ Zwraca logarytm naturalny dla wartości z zaznaczonej kolumny.
 
 Zwraca logarytm naturalny plus jeden dla wartości w zaznaczonej kolumnie.  
 
-### <a name="log"></a>Log
+### <a name="log"></a>Dziennik
 
 Zwraca dziennik wartości z zaznaczonej kolumny, z uwzględnieniem określonej podstawy.  
 
@@ -253,12 +253,12 @@ Kolejność, w której wybierasz kolumny do dzielenia i odejmowania, może wydaw
 
 Operacja|Num1|Num2|Kolumna wyników|Wartość wyniku|
 ----|----|----|----|----
-|Dodatkowo|1|5|Dodaj (Num2_Num1)| 4|
-|Mnożenia|1|5|Wiele (Num2_Num1)|5|
-|Odejmowania|1|5|Odejmij (Num2_Num1)|4|
-|Odejmowania|0|1|Odejmij (Num2_Num1)|0|
-|Przegrod|1|5|Podziel (Num2_Num1)|5|
-|Przegrod|0|1|Podziel (Num2_Num1)|Infinity|
+|Znak dodawania|1|5|Dodaj (Num2_Num1)| 4|
+|Znak mnożenia|1|5|Wiele (Num2_Num1)|5|
+|Odejmowanie|1|5|Odejmij (Num2_Num1)|4|
+|Odejmowanie|0|1|Odejmij (Num2_Num1)|0|
+|Dział|1|5|Podziel (Num2_Num1)|5|
+|Dział|0|1|Podziel (Num2_Num1)|Infinity|
 
 ### <a name="add"></a>Dodawanie
 
@@ -266,7 +266,7 @@ Określ kolumny źródłowe za pomocą **zestawu kolumn**, a następnie Dodaj do
 
 Aby dodać wartości w dwóch kolumnach, wybierz kolumnę lub kolumny przy użyciu **zestawu kolumn**, a następnie wybierz drugą kolumnę przy użyciu **drugiego argumentu**.  
 
-### <a name="divide"></a>Mieszczon
+### <a name="divide"></a>Dzielenie
 
 Dzieli wartości w **kolumnie ustawionych** przez stałą lub przez wartości kolumn zdefiniowane w **drugim argumencie**.  Inaczej mówiąc, najpierw wybierasz dzielnik, a następnie dzielną. Wartość wyjściowa jest ilorazem.
 
@@ -274,7 +274,7 @@ Dzieli wartości w **kolumnie ustawionych** przez stałą lub przez wartości ko
 
 Mnoży wartości w **kolumnie ustawionych** przez określone wartości stałej lub kolumny.  
 
-### <a name="subtract"></a>Odjęt
+### <a name="subtract"></a>Odejmij
 
 Określ kolumnę wartości, na które mają być wykonywane operacje ( *odjemna*), wybierając inną kolumnę przy użyciu opcji **zestawu kolumn** . Następnie określ liczbę, która ma zostać odjęta ( *odjemnik*) przy użyciu **drugiego** listy rozwijanej. Można wybrać stałą lub kolumnę wartości.
 
@@ -298,7 +298,7 @@ Zwraca kwadratowy pułap dla wartości w **zestawie kolumn**.
 
 Zwraca piętro dla wartości w **zestawie kolumn**do określonej precyzji.  
 
-### <a name="mod"></a>Funkcja
+### <a name="mod"></a>Mod
 
 Zwraca część ułamkową wartości w **zestawie kolumn**do określonej precyzji.  
 
@@ -306,7 +306,7 @@ Zwraca część ułamkową wartości w **zestawie kolumn**do określonej precyzj
 
 Zwraca część ułamkową wartości w **zestawie kolumn**do określonej precyzji.  
 
-### <a name="remainder"></a>Pozostałej części
+### <a name="remainder"></a>Reszta
 
 Zwraca resztę dla wartości w **zestawie kolumn**.  
 
@@ -430,7 +430,7 @@ Oblicza arcus cosinus wartości kolumn (w stopniach).
 
 Oblicza arcus cosinus hiperboliczny wartości kolumn.  
 
-### <a name="acot"></a>ACOT
+### <a name="acot"></a>Acot
 
 Oblicza cotangens wartości kolumn.  
 
@@ -497,7 +497,7 @@ Oblicza cosinus wartości kolumn (w stopniach).
 
 Oblicza cosinus hiperboliczny dla wartości kolumn.  
 
-### <a name="cot"></a>COT
+### <a name="cot"></a>Cot
 
 Oblicza wartość cotangens dla wartości kolumn.  
 
@@ -524,7 +524,7 @@ Oblicza wartość cosecans hiperboliczny dla wartości kolumn.
 
 Konwertuje stopnie na radiany.  
 
-### <a name="sec"></a>S
+### <a name="sec"></a>Pom
 
 Oblicza secans wartości kolumn.  
 
@@ -536,7 +536,7 @@ Oblicza secans dla wartości kolumn (w stopniach).
 
 Oblicza secans hiperboliczny wartości kolumn.  
 
-### <a name="sign"></a>Zapis
+### <a name="sign"></a>Zaloguj
 
 Zwraca znak wartości kolumny.  
 
@@ -590,4 +590,4 @@ Alternatywnie możesz użyć jednego z następujących modułów, aby wykonać w
   
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

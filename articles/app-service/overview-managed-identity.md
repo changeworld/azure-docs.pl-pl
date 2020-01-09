@@ -1,17 +1,17 @@
 ---
-title: Zarządzane tożsamości
+title: Tożsamości zarządzane
 description: Dowiedz się, jak zarządzane tożsamości działają w Azure App Service i Azure Functions, jak skonfigurować tożsamość zarządzaną i wygenerować token dla zasobu zaplecza.
 author: mattchenderson
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422051"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
@@ -38,9 +38,9 @@ Aby skonfigurować tożsamość zarządzaną w portalu, musisz najpierw utworzy�
 
 3. Wybierz pozycję **tożsamość**.
 
-4. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij przycisk **Save** (Zapisz).
+4. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij pozycję **Zapisz**.
 
-    ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 
@@ -167,9 +167,9 @@ Najpierw należy utworzyć zasób tożsamości przypisany przez użytkownika.
 
 5. Na karcie **przypisane przez użytkownika** kliknij przycisk **Dodaj**.
 
-6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Add** (Dodaj).
+6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Dodaj**.
 
-    ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Korzystanie z szablonu Azure Resource Manager
 
@@ -251,10 +251,10 @@ Aplikacja z zarządzaną tożsamością ma zdefiniowane dwie zmienne środowisko
 
 **MSI_ENDPOINT** jest lokalnym adresem URL, z którego aplikacja może żądać tokenów. Aby uzyskać token dla zasobu, wprowadź żądanie HTTP GET do tego punktu końcowego, w tym następujące parametry:
 
-> |Nazwa parametru|Podczas|Opis|
+> |Nazwa parametru|W|Opis|
 > |-----|-----|-----|
-> |zasoby|Zapytanie|Identyfikator URI zasobu usługi AAD zasobu, dla którego ma zostać uzyskany token. Może to być jedna z [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub dowolny inny identyfikator URI zasobu.|
-> |wersja interfejsu API|Zapytanie|Wersja interfejsu API tokenu, który ma być używany. "2017-09-01" jest obecnie jedyną obsługiwaną wersją.|
+> |resource|Zapytanie|Identyfikator URI zasobu usługi AAD zasobu, dla którego ma zostać uzyskany token. Może to być jedna z [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) lub dowolny inny identyfikator URI zasobu.|
+> |api-version|Zapytanie|Wersja interfejsu API tokenu, który ma być używany. "2017-09-01" jest obecnie jedyną obsługiwaną wersją.|
 > |wpis tajny|Nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Ten nagłówek jest używany, aby pomóc w ograniczeniu ataków SSRF (po stronie serwera).|
 > |clientid|Zapytanie|(Opcjonalnie, chyba że zostanie przypisany przez użytkownika) Identyfikator tożsamości przypisanej do użytkownika, który ma być używany. W przypadku pominięcia zostanie użyta tożsamość przypisana do systemu.|
 
@@ -267,7 +267,7 @@ Pomyślne odpowiedź 200 OK zawiera treść JSON o następujących właściwośc
 > |-------------|----------|
 > |access_token|Żądany token dostępu. Wywoływana usługa sieci Web może używać tego tokenu do uwierzytelniania w usłudze sieci Web otrzymującej.|
 > |expires_on|Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczba sekund od 1970-01-01T0:0: 0Z UTC do czasu wygaśnięcia. Ta wartość służy do określenia okresu istnienia buforowanych tokenów.|
-> |zasoby|Identyfikator URI identyfikatora aplikacji dla usługi sieci Web odbiorczej.|
+> |resource|Identyfikator URI identyfikatora aplikacji dla usługi sieci Web odbiorczej.|
 > |token_type|Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD jest znak. Aby uzyskać więcej informacji o tokenach okaziciela, zobacz [Framework uwierzytelniania OAuth 2,0: użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Ta odpowiedź jest taka sama jak [odpowiedź na żądanie tokenu dostępu między usługą AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

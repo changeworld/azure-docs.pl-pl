@@ -1,31 +1,30 @@
 ---
 title: Użyj interfejsów API REST do wykonania ciągłej integracji/ciągłego wdrażania Azure Stream Analytics na urządzeniach IoT Edge
-description: Dowiedz się, jak wdrożyć potok ciągłej integracji i wdrażania dla Azure Stream Analytics przy użyciu interfejsów API REST.
-services: stream-analytics
+description: Dowiedz się, jak wdrożyć ciągłą integrację i wdrażanie potoku usługi Azure Stream Analytics przy użyciu interfejsów API REST.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: a716991eaa84a6937c959885ff9c4ae5c18be35e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 78f2e06947c2b81ffe5e6cd8a88438db4dabf158
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163641"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426419"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementowanie ciągłej integracji/ciągłego wdrażania Stream Analytics na IoT Edge przy użyciu interfejsów API
 
-Można włączyć ciągłą integrację i wdrażanie dla Azure Stream Analytics zadań przy użyciu interfejsów API REST. W tym artykule przedstawiono przykłady użycia interfejsów API i sposobu ich używania. Interfejsy API REST nie są obsługiwane w Azure Cloud Shell.
+Aby umożliwić ciągłej integracji i ciągłego wdrażania dla zadań usługi Azure Stream Analytics przy użyciu interfejsów API REST. Ten artykuł zawiera przykłady, w których interfejsy API i sposobu ich używania. Interfejsy API REST nie są obsługiwane w usłudze Azure Cloud Shell.
 
-## <a name="call-apis-from-different-environments"></a>Wywoływanie interfejsów API z różnych środowisk
+## <a name="call-apis-from-different-environments"></a>Wywoływanie interfejsów API w różnych środowiskach
 
-Interfejsy API REST można wywołać z systemów Linux i Windows. Następujące polecenia pokazują poprawną składnię wywołania interfejsu API. Określone użycie interfejsu API zostanie opisane w dalszej części tego artykułu.
+Interfejsy API REST można wywołać z systemów Linux i Windows. Poniższe polecenia są przykładem poprawna składnia wywołania interfejsu API. Określone użycie interfejsu API będzie opisane w kolejnych sekcjach tego artykułu.
 
 ### <a name="linux"></a>Linux
 
-W przypadku systemu Linux można użyć poleceń `Curl` lub `Wget`:
+Dla systemu Linux, możesz użyć `Curl` lub `Wget` poleceń:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
@@ -37,7 +36,7 @@ wget -q -O- --{ <method> } -data="<request body>" --header=Content-Type:applicat
  
 ### <a name="windows"></a>Windows
 
-W przypadku systemu Windows należy użyć programu PowerShell: 
+Dla Windows za pomocą programu Powershell: 
 
 ```powershell 
 $user = "<username>" 
@@ -52,15 +51,15 @@ $response = Invoke-RestMethod <url> -Method <method> -Body $content -Headers $He
 echo $response 
 ```
  
-## <a name="create-an-asa-job-on-edge"></a>Tworzenie zadania ASA na krawędzi 
+## <a name="create-an-asa-job-on-edge"></a>Tworzenie zadania usługi ASA na urządzeniach brzegowych 
  
-Aby utworzyć zadanie Stream Analytics, wywołaj metodę PUT przy użyciu interfejsu API Stream Analytics.
+Aby utworzyć zadanie usługi Stream Analytics, wywołaj metodę PUT przy użyciu interfejsu API analizy Stream.
 
 |Metoda|Adres URL żądania|
 |------|-----------|
-|Ubrani|https://management.azure.com/subscriptions/{**Subscription-ID**}/ResourceGroups/{-**Group-Name**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**Nazwa zadania**}? API-Version = 2017-04 -01 — wersja zapoznawcza|
+|PUT|https://management.azure.com/subscriptions/{**Identyfikator subskrypcji**} /resourcegroups/ {**Nazwa grupy zasobów**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**Nazwa zadania**}? api-version = 2017-04-01-preview|
  
-Przykład polecenia korzystającego z **zwinięcie**:
+Przykład użycia polecenia **curl**:
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
@@ -137,42 +136,42 @@ Przykład treści żądania w formacie JSON:
 } 
 ```
  
-Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API](/rest/api/streamanalytics/stream-analytics-job).  
+Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu API](/rest/api/streamanalytics/stream-analytics-job).  
  
 ## <a name="publish-edge-package"></a>Publikowanie pakietu Edge 
  
-Aby opublikować zadanie Stream Analytics na IoT Edge, wywołaj metodę POST przy użyciu interfejsu API publikowania pakietu Edge.
+Aby opublikować zadania usługi Stream Analytics w usłudze IoT Edge, należy wywołać metody POST, przy użyciu interfejsu API publikowanie pakietu Edge.
 
 |Metoda|Adres URL żądania|
 |------|-----------|
-|POUBOJOWEGO|https://management.azure.com/subscriptions/{**subskrypcji**}/resourceGroups/{**ResourceGroupName**}/Providers/Microsoft.StreamAnalytics/streamingjobs/{**JobName**}/publishedgepackage? API-Version = 2017-04 -01 — wersja zapoznawcza|
+|POST|https://management.azure.com/subscriptions/{**subscriptionid**} /resourceGroups/ {**resourcegroupname**} / providers/Microsoft.StreamAnalytics/streamingjobs/ {**jobname**} / publishedgepackage? api-version = 2017-04-01 - (wersja zapoznawcza)|
 
-Ta operacja asynchroniczna zwraca stan 202 do momentu pomyślnego opublikowania zadania. Nagłówek odpowiedzi lokalizacji zawiera identyfikator URI używany do uzyskiwania stanu procesu. Gdy proces jest uruchomiony, wywołanie identyfikatora URI w nagłówku lokalizacji zwraca stan 202. Po zakończeniu procesu identyfikator URI w nagłówku lokalizacji zwraca stan 200. 
+Ta operacja asynchroniczna zwraca stan 202 do czasu zadania zostały pomyślnie opublikowane. Lokalizacja nagłówek odpowiedzi zawiera identyfikator URI używany do pobierania stanu procesu. Po uruchomieniu procesu wywołania do identyfikatora URI w nagłówku location zwraca stan 202. Po zakończeniu procesu identyfikatora URI w nagłówku location zwraca stan 200. 
 
-Przykład wywołania publikowania pakietu brzegowego przy użyciu narzędzia **zwinięcie**: 
+Przykład pakietu Edge publikowania za pomocą wywołania **curl**: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
 ```
  
-Po wykonaniu wywołania POST powinna być oczekiwana odpowiedź z pustą treścią. Wyszukaj adres URL znajdujący się w NAGŁÓWKu odpowiedzi i Zapisz go do dalszej pracy.
+Po wprowadzeniu wywołanie metody POST, należy oczekiwać odpowiedzi o pustej treści. Wyszukaj adres URL znajduje się w NAGŁÓWKU odpowiedzi i zapisz go w celu dalszego użycia.
  
-Adres URL od SZEFa odpowiedzi:
+Przykład adres URL z nagłówek odpowiedzi:
 
 ```
 https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/StreamingJobs/{**resourcename**}/OperationResults/023a4d68-ffaf-4e16-8414-cb6f2e14fe23?api-version=2017-04-01-preview 
 ```
-Przed uruchomieniem następującego polecenia poczekaj na dwie minuty, aby wykonać wywołanie interfejsu API z adresem URL znalezionym w NAGŁÓWKu odpowiedzi. Spróbuj ponownie wykonać polecenie, jeśli nie otrzymasz odpowiedzi 200.
+Oczekiwanie na jednej do dwóch minut przed uruchomieniem następujące polecenie, aby wykonywanie wywołania interfejsu API z adresem URL znalezione w NAGŁÓWKU odpowiedzi. Spróbuj ponownie wykonać polecenie, jeśli nie otrzymasz odpowiedzi 200.
  
-Przykład tworzenia wywołania interfejsu API z zwróconym adresem URL z **zwinięciem**:
+Przykład wywołania interfejsu API za pomocą zwrócony adres URL z **curl**:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 
 ```
 
-Odpowiedź zawiera informacje, które należy dodać do skryptu wdrażania Edge. W poniższych przykładach pokazano, jakie informacje należy zebrać i gdzie dodać do manifestu wdrażania.
+Odpowiedź zawiera informacje, które należy dodać do skryptu wdrażania krawędzi. Poniższe przykłady pokazują, co manifest potrzebnych do zbierania informacji i gdzie można dodać go we wdrożeniu.
  
-Przykładowa treść odpowiedzi po pomyślnym opublikowaniu:
+Treść odpowiedzi przykładowych po opublikowaniu pomyślnie:
 
 ```json
 { 
@@ -183,7 +182,7 @@ Przykładowa treść odpowiedzi po pomyślnym opublikowaniu:
 } 
 ```
 
-Przykład manifestu wdrażania: 
+Przykład Manifest wdrożenia: 
 
 ```json
 { 
@@ -253,11 +252,11 @@ Przykład manifestu wdrażania:
 } 
 ```
 
-Po skonfigurowaniu manifestu wdrożenia zapoznaj się z tematem [wdrażanie modułów Azure IoT Edge za pomocą interfejsu wiersza polecenia platformy Azure](../iot-edge/how-to-deploy-modules-cli.md) w celu wdrożenia.
+Po przeprowadzeniu konfiguracji manifestu wdrażania, można znaleźć [modułów wdrożenia usługi Azure IoT Edge przy użyciu wiersza polecenia platformy Azure](../iot-edge/how-to-deploy-modules-cli.md) dla wdrożenia.
 
 
 ## <a name="next-steps"></a>Następne kroki 
  
-* [Azure Stream Analytics na urządzeniach IoT Edge](stream-analytics-edge.md)
-* [IoT Edge — samouczek](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Opracowywanie zadań Stream Analytics Edge przy użyciu narzędzi Visual Studio Tools](stream-analytics-tools-for-visual-studio-edge-jobs.md)
+* [Azure Stream Analytics w usłudze IoT Edge](stream-analytics-edge.md)
+* [Usługa ASA na samouczek dotyczący usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Tworzenie zadań usługi Stream Analytics Edge przy użyciu narzędzi programu Visual Studio](stream-analytics-tools-for-visual-studio-edge-jobs.md)

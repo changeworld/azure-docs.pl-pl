@@ -4,15 +4,15 @@ description: Odpowiedzi na często zadawane pytania dotyczące Azure Monitor dla
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/09/2018
-ms.openlocfilehash: 579538996e934c7068c397a284d819f5ddb92f08
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fa47606112c562402a42bd5ca503ed2d9a311268
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305466"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400384"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ta firma Microsoft — często zadawane pytania dotyczące Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do [forum dyskusyjnego](https://feedback.azure.com/forums/34192--general-feedback) i Opublikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -67,7 +67,7 @@ W przypadku zmodyfikowania dowolnego ustawienia wystąpienia kryterium kondycji 
 Nie, w przypadku systemu Windows nie są uwzględniane kryteria kondycji poszczególnych procesorów i logicznych poziomów procesora, a domyślnie tylko całkowite użycie procesora CPU jest monitorowane w celu efektywnego oszacowania użycia procesora na podstawie łącznej liczby procesorów logicznych dostępnych dla maszyny wirtualnej platformy Azure. 
 
 ## <a name="are-all-health-criteria-thresholds-configurable"></a>Czy wszystkie progi kryteriów kondycji są konfigurowalne?  
-Progi dla kryteriów kondycji przeznaczonych dla maszyny wirtualnej z systemem Windows nie można modyfikować, ponieważ ich Stany kondycji są ustawione na *Uruchamianie* lub *dostępne*. Po zbadaniu kondycji w [interfejsie API monitora obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)jest wyświetlana wartość *operatorporównania* **LessThan** lub **GreaterThan** z wartością *progową* **4** dla usługi lub jednostki, jeśli:
+Progi dla kryteria kondycji, których platformą docelową maszyny Wirtualnej z systemem Windows nie są można modyfikować, ponieważ ich stany kondycji są ustawione na *systemem* lub *dostępne*. Podczas wysyłania zapytania stanu kondycji z [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), wyświetla *OperatorPorównania* wartość **mniejsze** lub **większe** z *próg* wartość **4** usługi lub jednostki jeśli:
    - Kondycja usługi klienta DNS — usługa nie jest uruchomiona. 
    - Kondycja usługi klienta DHCP — usługa nie jest uruchomiona. 
    - Kondycja usługi RPC — usługa nie jest uruchomiona. 
@@ -77,13 +77,13 @@ Progi dla kryteriów kondycji przeznaczonych dla maszyny wirtualnej z systemem W
    - Kondycja usługi zdalnego zarządzania Windows — usługi nie jest uruchomiony. 
    - Błąd systemu plików lub uszkodzeniem — dysku logicznego jest niedostępny.
 
-Progi dla następujących kryteriów kondycji systemu Linux nie można modyfikować, ponieważ ich stan kondycji jest już ustawiony na *wartość true*. Stan kondycji przedstawia *operatorporównania* z wartością **LessThan** i wartością *progową* **1** w przypadku zapytania z interfejsu API monitorowania obciążenia dla jednostki, w zależności od jego kontekstu:
+Progi następujące kryteria kondycji systemu Linux nie są można modyfikować, ponieważ ich kondycji, są już ustawione na *true*. Wyświetla stan kondycji *OperatorPorównania* z wartością **mniejsze** i *próg* wartość **1** po otrzymaniu kwerendy od Obciążenie monitorowania interfejsu API dla jednostki, w zależności od jej kontekstu:
    - Stan dysku logicznego — dysk logiczny nie jest online / dostępne
    - Stan dysku — dysku nie jest online / dostępne
    - Stan karty sieciowej — karty sieciowej jest wyłączona.
 
 ## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Jak mogę modyfikować alerty dołączone do funkcji kondycji?
-Reguły alertów, które są zdefiniowane dla każdego kryterium kondycji nie są wyświetlane w witrynie Azure portal. Regułę alertu kondycji można włączyć lub wyłączyć tylko w [interfejsie API monitora obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ponadto nie można przypisać [Azure monitor grupy akcji](../../azure-monitor/platform/action-groups.md) dla alertów dotyczących kondycji w Azure Portal. Za pomocą interfejsu API ustawienia powiadomienia można skonfigurować grupę akcji, która ma być wyzwalana za każdym razem, gdy zostanie wyzwolony alert kondycji. Obecnie można przypisać grupy akcji do maszyny wirtualnej, aby wszystkie *alerty kondycji* zostały wyzwolone dla maszyny wirtualnej wyzwalają te same grupy akcji. W przeciwieństwie do tradycyjnych alertów platformy Azure nie obowiązuje koncepcja grupy osobną akcję dla każdej reguły alertu kondycji. Ponadto podczas są wyzwalane przez alerty dotyczące kondycji są obsługiwane tylko grupy akcji, które są skonfigurowane do dostarczania poczty e-mail lub powiadomienia SMS. 
+Reguły alertów, które są zdefiniowane dla każdego kryterium kondycji nie są wyświetlane w witrynie Azure portal. Można włączać lub wyłączać alert o kondycji reguły tylko w [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ponadto nie można przypisać [Azure monitor grupy akcji](../../azure-monitor/platform/action-groups.md) dla alertów dotyczących kondycji w Azure Portal. Za pomocą interfejsu API ustawienia powiadomienia można skonfigurować grupę akcji, która ma być wyzwalana za każdym razem, gdy zostanie wyzwolony alert kondycji. Obecnie można przypisać grup akcji względem maszyny Wirtualnej tak, aby wszystkie *alerty dotyczące kondycji* uruchamiane względem wyzwalacza maszyn wirtualnych tej samej grupy akcji. W przeciwieństwie do tradycyjnych alertów platformy Azure nie obowiązuje koncepcja grupy osobną akcję dla każdej reguły alertu kondycji. Ponadto podczas są wyzwalane przez alerty dotyczące kondycji są obsługiwane tylko grupy akcji, które są skonfigurowane do dostarczania poczty e-mail lub powiadomienia SMS. 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Nie widzę żadnych danych w przypadku wykresów wydajności dla mojej maszyny Wirtualnej
 Jeśli nie widzisz danych dotyczących wydajności w tabeli dysku lub na niektórych wykresach wydajności, liczniki wydajności mogą nie być skonfigurowane w obszarze roboczym. Aby rozwiązać ten problem, uruchom następujący [skrypt programu PowerShell](vminsights-enable-at-scale-powershell.md#enable-with-powershell).

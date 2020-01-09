@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422146"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Wdrażanie niestandardowego kontenera systemu Linux w celu Azure App Service
 
@@ -26,7 +26,7 @@ App Service w systemie Linux udostępnia wstępnie zdefiniowane stosy aplikacji 
 
 ## <a name="create-an-image"></a>Tworzenie obrazu
 
-Aby ukończyć ten przewodnik Szybki Start, potrzebny będzie odpowiedni obraz aplikacji sieci Web przechowywany w [Azure Container Registry](/azure/container-registry). Postępuj zgodnie z instrukcjami podanymi w [przewodniku szybki start: Tworzenie prywatnego rejestru kontenerów przy użyciu Azure Portal](/azure/container-registry/container-registry-get-started-portal), ale użyj obrazu `mcr.microsoft.com/azuredocs/go` zamiast obrazu `hello-world`.
+Aby ukończyć ten przewodnik Szybki Start, potrzebny będzie odpowiedni obraz aplikacji sieci Web przechowywany w [Azure Container Registry](/azure/container-registry). Postępuj zgodnie z instrukcjami podanymi w [przewodniku szybki start: Tworzenie prywatnego rejestru kontenerów przy użyciu Azure Portal](/azure/container-registry/container-registry-get-started-portal), ale użyj obrazu `mcr.microsoft.com/azuredocs/go` zamiast obrazu `hello-world`. Aby uzyskać odwołanie, [przykład pliku dockerfile znajduje się w repozytorium przykładów platformy Azure](https://github.com/Azure-Samples/go-docs-hello-world).
 
 > [!IMPORTANT]
 > Należy pamiętać o ustawieniu opcji **użytkownik administrator** , aby **włączyć** ją podczas tworzenia rejestru kontenerów. Można również ustawić ją z sekcji **klucze dostępu** na stronie rejestru w Azure Portal. To ustawienie jest wymagane do App Service dostępu.

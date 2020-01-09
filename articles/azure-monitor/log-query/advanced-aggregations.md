@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f34e71c4e15e3bb09676e366313e90a7261439e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 882582191b5794e3978d955dfa9bded294064037
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398311"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Agregacje zaawansowane w zapytaniach dziennika Azure Monitor
 
@@ -33,10 +33,10 @@ Event
 | summarize makelist(EventID) by Computer
 ```
 
-|Computer|list_EventID|
+|Computer (Komputer)|list_EventID|
 |---|---|
 | Komputer1 | [704, no, 1501, 1500, 1085, 704, 704 |
-| KOMPUTER2 | [326 105 302 301 300 102] |
+| KOMPUTER2 | [326,105,302,301,300,102] |
 | Przyciski ... | Przyciski ... |
 
 `makelist` generuje listę w kolejności, w jakiej przekazano do niej dane. Aby sortować zdarzenia z najstarszych do najnowszych, użyj `asc` w instrukcji Order zamiast `desc`. 
@@ -50,10 +50,10 @@ Event
 | summarize makeset(EventID) by Computer
 ```
 
-|Computer|list_EventID|
+|Computer (Komputer)|list_EventID|
 |---|---|
 | Komputer1 | [704, no, 1501, 1500, 1085] |
-| KOMPUTER2 | [326 105 302 301 300 102] |
+| KOMPUTER2 | [326,105,302,301,300,102] |
 | Przyciski ... | Przyciski ... |
 
 Podobnie jak `makelist`, `makeset` również działa z uporządkowanymi danymi i generuje tablice na podstawie kolejności wierszy, które są do niego przenoszone.
@@ -67,7 +67,7 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| Computer | Rozwiązania | 
+| Computer (Komputer) | Rozwiązania | 
 |--------------|----------------------|
 | Komputer1 | "zabezpieczenia", "aktualizacje", "śledzenia zmian" |
 | KOMPUTER2 | "zabezpieczenia", "aktualizacje" |
@@ -83,7 +83,7 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| Computer | Rozwiązania | 
+| Computer (Komputer) | Rozwiązania | 
 |--------------|----------------------|
 | Komputer1 | bezpieczeństw |
 | Komputer1 | dostępności |
@@ -122,13 +122,13 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Kategoria | TimeGenerated | liczbą |
+| Kategoria | TimeGenerated | liczba_ |
 |--------------|----------------------|--------|
-| Agent bezpośredni | 2017 — 06-06T17:00:00Z | 15 |
+| Agent bezpośredni | 2017-06-06T17:00:00Z | 15 |
 | Agent bezpośredni | 2017 — 06-06T18:00:00Z | 60 |
 | Agent bezpośredni | 2017 — 06-06T20:00:00Z | 55 |
-| Agent bezpośredni | 2017 — 06-06T21:00:00Z | 57 |
-| Agent bezpośredni | 2017 — 06-06T22:00:00Z | 60 |
+| Agent bezpośredni | 2017-06-06T21:00:00Z | 57 |
+| Agent bezpośredni | 2017-06-06T22:00:00Z | 60 |
 | Przyciski ... | Przyciski ... | Przyciski ... |
 
 W tych rezultatach brakuje zasobnika skojarzonego z "2017-06-06T19:00:00Z", ponieważ nie ma żadnych danych pulsu dla tej godziny. Użyj funkcji `make-series`, aby przypisać wartość domyślną do pustych zasobników. Spowoduje to wygenerowanie wiersza dla każdej kategorii zawierającej dwie dodatkowe kolumny tablicowe, jedną dla wartości i jeden dla zgodnych przedziałów czasu:
@@ -138,9 +138,9 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Kategoria | liczbą | TimeGenerated |
+| Kategoria | liczba_ | TimeGenerated |
 |---|---|---|
-| Agent bezpośredni | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000 Z", "2017-06-06T18:00:00.0000000 Z", "2017-06-06T19:00:00.0000000 Z", "2017-06-06T20:00:00.0000000 Z", "2017-06-06T21:00:00.0000000 Z",...] |
+| Agent bezpośredni | [15, 60, 0, 55, 60, 57, 60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | Przyciski ... | Przyciski ... | Przyciski ... |
 
 Trzeci element tablicy *count_* ma wartość 0 zgodnie z oczekiwaniami i istnieje zgodna sygnatura czasowa "2017-06-06T19:00:00.0000000 z" w tablicy _TimeGenerated_ . Ten format tablicy jest trudny do odczytania. Użyj `mvexpand`, aby rozwinąć tablice i wygenerować ten sam format danych wyjściowych, jak wygenerowany przez `summarize`:
@@ -152,14 +152,14 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Kategoria | TimeGenerated | liczbą |
+| Kategoria | TimeGenerated | liczba_ |
 |--------------|----------------------|--------|
-| Agent bezpośredni | 2017 — 06-06T17:00:00Z | 15 |
+| Agent bezpośredni | 2017-06-06T17:00:00Z | 15 |
 | Agent bezpośredni | 2017 — 06-06T18:00:00Z | 60 |
 | Agent bezpośredni | 2017 — 06-06T19:00:00Z | 0 |
 | Agent bezpośredni | 2017 — 06-06T20:00:00Z | 55 |
-| Agent bezpośredni | 2017 — 06-06T21:00:00Z | 57 |
-| Agent bezpośredni | 2017 — 06-06T22:00:00Z | 60 |
+| Agent bezpośredni | 2017-06-06T21:00:00Z | 57 |
+| Agent bezpośredni | 2017-06-06T22:00:00Z | 60 |
 | Przyciski ... | Przyciski ... | Przyciski ... |
 
 

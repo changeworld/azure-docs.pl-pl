@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 614d93a16b9149a217b5ff1004031e0a2d7337ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d430d7d94f8eed76bb78042a174aeddf2e6ccaa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410206"
 ---
 Ustawienia konfiguracji dla [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -52,14 +52,15 @@ Ustawienia konfiguracji dla [Durable Functions](../articles/azure-functions/dura
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
-      "controlQueueBatchSize": 32,
-      "partitionCount": 4,
-      "controlQueueVisibilityTimeout": "00:05:00",
-      "workItemQueueVisibilityTimeout": "00:05:00",
-      "maxQueuePollingInterval": "00:00:30",
       "connectionStringName": "AzureWebJobsStorage",
+      "controlQueueBatchSize": 32,
+      "controlQueueBufferThreshold": 256,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "maxQueuePollingInterval": "00:00:30",
+      "partitionCount": 4,
       "trackingStoreConnectionStringName": "TrackingStorage",
-      "trackingStoreNamePrefix": "DurableTask"
+      "trackingStoreNamePrefix": "DurableTask",
+      "workItemQueueVisibilityTimeout": "00:05:00",
     },
     "tracing": {
       "traceInputsAndOutputs": false,
@@ -82,7 +83,8 @@ Ustawienia konfiguracji dla [Durable Functions](../articles/azure-functions/dura
     "maxConcurrentActivityFunctions": 10,
     "maxConcurrentOrchestratorFunctions": 10,
     "extendedSessionsEnabled": false,
-    "extendedSessionIdleTimeoutInSeconds": 30
+    "extendedSessionIdleTimeoutInSeconds": 30,
+    "useGracefulShutdown": false
   }
 }
 ```
@@ -93,6 +95,7 @@ Nazwy centrów zadań muszą zaczynać się literą i składać się tylko z lit
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Alternatywne nazwy [centrów zadań](../articles/azure-functions/durable-functions-task-hubs.md) mogą służyć do izolowania wielu Durable Functions aplikacji od siebie, nawet jeśli używają tego samego zaplecza magazynu.|
 |controlQueueBatchSize|32|Liczba komunikatów do ściągnięcia z kolejki kontroli w danym momencie.|
+|controlQueueBufferThreshold|256|Liczba komunikatów w kolejce sterującej, które mogą być buforowane w pamięci w danym momencie, gdy Dyspozytor będzie oczekiwać przed dekolejkowanie wszelkich dodatkowych komunikatów.|
 |partitionCount |4|Liczba partycji dla kolejki sterującej. Może to być dodatnia liczba całkowita z zakresu od 1 do 16.|
 |controlQueueVisibilityTimeout |5 minut|Przekroczenie limitu czasu widoczności komunikatów w kolejce sterującej.|
 |workItemQueueVisibilityTimeout |5 minut|Przekroczenie limitu czasu widoczności komunikatów w kolejce elementów roboczych.|
@@ -109,5 +112,6 @@ Nazwy centrów zadań muszą zaczynać się literą i składać się tylko z lit
 |eventGridPublishRetryCount|0|Liczba ponownych prób w przypadku, gdy publikowanie w temacie Event Grid nie powiedzie się.|
 |eventGridPublishRetryInterval|5 minut|Event Grid publikuje interwał ponawiania prób w formacie *gg: mm: SS* .|
 |eventGridPublishEventTypes||Lista typów zdarzeń do opublikowania w Event Grid. Jeśli nie zostanie określony, zostaną opublikowane wszystkie typy zdarzeń. Dozwolone wartości to `Started`, `Completed`, `Failed``Terminated`.|
+|useGracefulShutdown|false|Przeglądania Włącz bezpieczne zamykanie, aby zmniejszyć prawdopodobieństwo niepowodzenia zamykania funkcji w procesie.|
 
 Wiele z tych ustawień umożliwia optymalizację wydajności. Aby uzyskać więcej informacji, zobacz [wydajność i skalowanie](../articles/azure-functions/durable-functions-perf-and-scale.md).

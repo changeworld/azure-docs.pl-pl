@@ -1,14 +1,14 @@
 ---
 title: 'Samouczek: Tworzenie zasad w celu wymuszenia zgodności'
 description: W tym samouczku użyjesz zasad, aby wymusić standardy, kontrolować koszty, obsługiwać zabezpieczenia i nakładać zasady projektowania całego przedsiębiorstwa.
-ms.date: 11/25/2019
+ms.date: 12/20/2019
 ms.topic: tutorial
-ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a4e4190e5ff6a87098c349cde99572df2dba4331
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436277"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Samouczek: Tworzenie zasad i zarządzanie nimi w celu wymuszenia zgodności
 
@@ -42,7 +42,8 @@ Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy j
 
    ![Przypisywanie definicji zasad ze strony przypisań](../media/create-and-manage/select-assign-policy.png)
 
-1. Na stronie **przypisywanie zasad** wybierz **zakres** , wybierając wielokropek i wybierz grupę zarządzania lub subskrypcję. Opcjonalnie możesz wybrać grupę zasobów. Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad. Następnie wybierz pozycję **Wybierz** w dolnej części strony **zakres** .
+1. Na stronie **przypisywanie zasad** i **podstawowe informacje** wybierz **zakres** , wybierając wielokropek i wybrać grupę zarządzania lub subskrypcję. Opcjonalnie możesz wybrać grupę zasobów. Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad.
+   Następnie wybierz pozycję **Wybierz** w dolnej części strony **zakres** .
 
    W tym przykładzie użyto subskrypcji **Contoso**. Twoja subskrypcja będzie inna.
 
@@ -50,16 +51,29 @@ Pierwszym krokiem w celu wymuszenia zgodności za pomocą usługi Azure Policy j
 
 1. W polu **Definicja zasad** wybierz wielokropek, aby otworzyć listę dostępnych definicji. Definicje zasad możesz filtrować, wybierając w polu **Typ** wartość *Wbudowany*, aby wyświetlić wszystkie definicje i przeczytać ich opisy.
 
-1. Wybierz definicję zasad **Require SQL Server Version 12.0** (Wymagaj programu SQL Server w wersji 12.0). Jeśli nie możesz znaleźć go od razu, wpisz w polu wyszukiwania pozycję **Wymagaj programu SQL Server** , a następnie naciśnij klawisz ENTER lub zaznacz pole wyszukiwania. Po znalezieniu i wybraniu definicji zasad wybierz **opcję Wybierz** w dolnej części strony **dostępne definicje** .
+1. Wybierz pozycję **Dodaj lub Zamień tag zasobów**. Jeśli nie możesz znaleźć go od razu, wpisz **Dodaj lub Zamień** w polu wyszukiwania, a następnie naciśnij klawisz ENTER lub zaznacz pole wyszukiwania. Po znalezieniu i wybraniu definicji zasad wybierz **opcję Wybierz** w dolnej części strony **dostępne definicje** .
 
    ![Korzystanie z filtru wyszukiwania do lokalizowania zasad](../media/create-and-manage/select-available-definition.png)
 
-1. W polu **Nazwa przypisania** jest automatycznie wpisywana nazwa wybranej zasady, ale można ją zmienić. Na potrzeby tego przykładu pozostaw nazwę *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0). Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.
-   Pole **Przypisane przez** jest wypełniane automatycznie w zależności od tego, kto jest zalogowany. To pole jest opcjonalne, dzięki czemu można wprowadzić wartości niestandardowe.
+1. W polu **Nazwa przypisania** jest automatycznie wpisywana nazwa wybranej zasady, ale można ją zmienić. Na potrzeby tego przykładu należy *dodać lub zamienić tag w zasobach*. Można również dodać opcjonalny **Opis**. Opis zawiera szczegóły dotyczące danego przypisania zasad.
 
-1. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. To pole _musi_ być zaznaczone, gdy przypisywane zasady lub inicjatywa obejmują zasady z efektem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Pozostaw **wymuszanie zasad** jako _włączone_. Gdy to ustawienie jest _wyłączone_, umożliwia testowanie wyników zasad bez wyzwalania efektu. Aby uzyskać więcej informacji, zobacz [Tryb wymuszania](../concepts/assignment-structure.md#enforcement-mode).
 
-1. Wybierz opcję **Przypisz**.
+1. Pole **Przypisane przez** jest wypełniane automatycznie w zależności od tego, kto jest zalogowany. To pole jest opcjonalne, dzięki czemu można wprowadzić wartości niestandardowe.
+
+1. Wybierz kartę **Parametry** w górnej części kreatora.
+
+1. W obszarze **nazwa tagu**wprowadź wartość w obszarze _środowisko_ i dla **wartości tag** .
+
+1. Wybierz kartę **korygowanie** w górnej części kreatora.
+
+1. Nie zaznaczaj zaznaczenia pola **Utwórz zadanie korygujące** . To pole umożliwia utworzenie zadania zmiany istniejących zasobów oprócz nowych lub zaktualizowanych zasobów. Aby uzyskać więcej informacji, zobacz [korygowanie zasobów](../how-to/remediate-resources.md).
+
+1. **Tworzenie tożsamości zarządzanej** jest automatycznie sprawdzane, ponieważ ta definicja zasad używa efektu [modyfikowania](../concepts/effects.md#modify) . **Uprawnienia** są ustawiane _automatycznie na_ podstawie definicji zasad. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
+
+1. Wybierz kartę **Recenzja + tworzenie** w górnej części kreatora.
+
+1. Przejrzyj wybrane opcje, a następnie wybierz pozycję **Utwórz** w dolnej części strony.
 
 ## <a name="implement-a-new-custom-policy"></a>Implementowanie nowych zasad niestandardowych
 
@@ -78,8 +92,8 @@ Teraz, gdy wbudowana definicja zasad została przypisana, możesz wykonywać dal
      > [!NOTE]
      > Jeśli planujesz zastosowanie tej definicji zasad w wielu subskrypcjach, lokalizacja musi być grupą zarządzania zawierającą subskrypcje, do których zostaną przypisane zasady. To samo dotyczy definicji inicjatywy.
 
-   - Nazwa definicji zasad — *Wymagaj jednostek SKU maszyn wirtualnych mniejszych niż seria G*
-   - Opis wskazujący, jaki jest cel tej definicji zasad — *Ta definicja zasad wymusza jednostki SKU mniejsze niż seria G dla wszystkich maszyn wirtualnych tworzonych w tym zakresie, aby ograniczyć koszty.*
+   - Nazwa definicji zasad-_ *_wymaga, aby jednostki SKU maszyny wirtualnej były mniejsze niż Seria G_
+   - Opis wskazujący, jaki jest cel tej definicji zasad — _Ta definicja zasad wymusza jednostki SKU mniejsze niż seria G dla wszystkich maszyn wirtualnych tworzonych w tym zakresie, aby ograniczyć koszty._
    - Wybierz jedną z istniejących opcji (np. _Compute_) lub utwórz nową kategorię dla tej definicji zasad.
    - Skopiuj poniższy kod JSON, a następnie zaktualizuj go zgodnie ze swoimi potrzebami przy użyciu następujących danych:
       - Parametry zasad.
@@ -109,7 +123,7 @@ Teraz, gdy wbudowana definicja zasad została przypisana, możesz wykonywać dal
    }
    ```
 
-   Właściwość *Field* w regule zasad musi mieć jedną z następujących wartości: Name, Type, Location, Tags lub alias. Przykładem aliasu może być `"Microsoft.Compute/VirtualMachines/Size"`.
+   Właściwość _Field_ w regule zasad musi być obsługiwaną wartością. Pełna lista wartości znajduje się w [polach struktury definicji zasad](../concepts/definition-structure.md#fields). Przykładem aliasu może być `"Microsoft.Compute/VirtualMachines/Size"`.
 
    Aby wyświetlić więcej przykładowych zasad Azure, zobacz [Przykłady dla usługi Azure Policy](../samples/index.md).
 
@@ -263,7 +277,7 @@ PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962
 
 ## <a name="create-a-policy-definition-with-azure-cli"></a>Tworzenie definicji zasad za pomocą wiersza polecenia platformy Azure
 
-Definicję zasad możesz utworzyć przy użyciu interfejsu wiersza polecenia platformy Azure, korzystając z polecenia policy definition. Aby utworzyć definicję zasad z wbudowaną regułą, skorzystaj z następującego przykładu:
+Definicję zasad można utworzyć przy użyciu interfejsu wiersza polecenia platformy Azure z poleceniem `az policy definition`. Aby utworzyć definicję zasad z wbudowaną regułą, skorzystaj z następującego przykładu:
 
 ```azurecli-interactive
 az policy definition create --name 'denyCoolTiering' --description 'Deny cool access tiering for storage' --rules '{
@@ -333,7 +347,7 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
    ![Strona przeglądu definicji inicjatywy](../media/create-and-manage/initiative-definition.png)
 
-1. Za pomocą wielokropka przy opcji **Lokalizacja definicji** wybierz grupę zarządzania lub subskrypcję, w której definicja ma być przechowywana. Jeśli poprzednia strona dotyczyła tylko jednej grupy zarządzania lub subskrypcji, pole **Lokalizacja definicji** zostanie wypełnione automatycznie.
+1. Za pomocą wielokropka przy opcji **Lokalizacja definicji** wybierz grupę zarządzania lub subskrypcję, w której definicja ma być przechowywana. Jeśli poprzednia strona dotyczyła tylko jednej grupy zarządzania lub subskrypcji, pole **Lokalizacja definicji** zostanie wypełnione automatycznie. Po wybraniu są wypełniane **definicje dostępne** .
 
 1. Wprowadź wartości w polach **Nazwa** i **Opis** inicjatywy.
 
@@ -343,24 +357,67 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
 1. Przejrzyj listę **Dostępne definicje** (w lewej części strony**Definicja inicjatywy**) i wybierz definicje zasad, które chcesz dodać do tej inicjatywy. W przypadku inicjatywy **Get Secure** należy dodać następujące wbudowane definicje zasad, wybierając **+** obok informacji o definicji zasad lub wybierając wiersz definicji zasad, a następnie opcję **+ Dodaj** na stronie szczegółów:
 
-   - Require SQL Server Version 12.0 (Wymagaj programu SQL Server w wersji 12.0)
-   - [Preview]: Monitor unprotected web applications in Security Center.
-   - [Preview]: Monitor permissive network across in Security Center.
-   - [Preview]: Monitor possible app Whitelisting in Security Center.
-   - [Preview]: Monitor unencrypted VM Disks in Security Center.
+   - Dozwolone lokalizacje
+   - Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center
+   - Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone
+   - Azure Backup powinna być włączona dla Virtual Machines
+   - Należy zastosować szyfrowanie dysków na maszynach wirtualnych
 
-   Po wybraniu definicji zasad z listy zostanie ona dodana w obszarze **Zasady i parametry**.
+   Po wybraniu definicji zasad z listy, każda zostanie dodana poniżej **kategorii**.
 
    ![Przejrzyj parametry definicji inicjatywy](../media/create-and-manage/initiative-definition-2.png)
 
-1. Jeśli definicja zasad dodawana do inicjatywy zawiera parametry, są one wyświetlane pod nazwą zasad w obszarze **Zasady i parametry**. Pole _Wartość_ może mieć ustawienie „Ustaw wartość” (wartość będzie zakodowana dla wszystkich przypisań tej inicjatywy) lub „Użyj parametru inicjatywy” (wartość będzie ustawiana w trakcie każdego przypisania inicjatywy). Jeśli wybrano pozycję „Ustaw wartość”, menu rozwijane z prawej strony pozycji _Wartości_ umożliwia wprowadzenie lub wybranie odpowiednich wartości. Jeśli wybrano pozycję „Użyj parametru inicjatywy”, zostanie wyświetlona nowa sekcja **Parametry inicjatywy**, umożliwiająca zdefiniowane parametru, który zostanie ustawiony podczas przypisania inicjatywy. Dozwolone wartości tego parametru inicjatywy mogą dodatkowo ograniczać wartości możliwe do ustawienia podczas przypisania inicjatywy.
+1. Jeśli definicja zasad dodawana do inicjatywy zawiera parametry, są one wyświetlane pod nazwą zasad w obszarze obszaru **kategorii** . Pole _Wartość_ może mieć ustawienie „Ustaw wartość” (wartość będzie zakodowana dla wszystkich przypisań tej inicjatywy) lub „Użyj parametru inicjatywy” (wartość będzie ustawiana w trakcie każdego przypisania inicjatywy). Jeśli wybrano opcję "Ustaw wartość", lista rozwijana z prawej strony _wartości_ umożliwia wprowadzanie lub wybieranie wartości. Jeśli wybrano pozycję „Użyj parametru inicjatywy”, zostanie wyświetlona nowa sekcja **Parametry inicjatywy**, umożliwiająca zdefiniowane parametru, który zostanie ustawiony podczas przypisania inicjatywy. Dozwolone wartości tego parametru inicjatywy mogą dodatkowo ograniczać wartości możliwe do ustawienia podczas przypisania inicjatywy.
 
    ![Zmień parametry definicji inicjatywy z dozwolonych wartości](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
    > W przypadku niektórych parametrów `strongType` listy wartości nie można określić automatycznie. W takich przypadkach z prawej strony wiersza parametru jest wyświetlany symbol wielokropka. Wybranie tej opcji spowoduje otwarcie strony "zakres parametrów (&lt;parametru name&gt;)". Na tej stronie wybierz subskrypcję, która ma zostać użyta do podania opcji wartości. Ten zakres parametru jest używany wyłącznie w trakcie tworzenia definicji inicjatywy i nie ma żadnego wpływu na ocenę zasad lub zakres inicjatywy podczas przypisania.
 
+   Ustaw parametr "dozwolone lokalizacje" na wartość "Wschodnie stany USA 2" i pozostaw inne jako wartość domyślną "AuditifNotExists".
+
 1. Wybierz pozycję **Zapisz**.
+
+#### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Tworzenie definicji inicjatywy zasad przy użyciu interfejsu wiersza polecenia platformy Azure
+
+Definicję inicjatywy zasad można utworzyć przy użyciu interfejsu wiersza polecenia platformy Azure z poleceniem `az policy set-definition`. Aby utworzyć definicję inicjatywy zasad z istniejącą definicją zasad, należy użyć następującego przykładu:
+
+```azurecli-interactive
+az policy set-definition create -n readOnlyStorage --definitions '[
+        {
+            "policyDefinitionId": "/subscriptions/mySubId/providers/Microsoft.Authorization/policyDefinitions/storagePolicy",
+            "parameters": { "storageSku": { "value": "[parameters(\"requiredSku\")]" } }
+        }
+    ]' \
+    --params '{ "requiredSku": { "type": "String" } }'
+```
+
+#### <a name="create-a-policy-initiative-definition-with-azure-powershell"></a>Tworzenie definicji inicjatywy zasad przy użyciu Azure PowerShell
+
+Definicję inicjatywy zasad można utworzyć przy użyciu Azure PowerShell za pomocą polecenia cmdlet `New-AzPolicySetDefinition`. Aby utworzyć definicję inicjatywy zasad z istniejącą definicją zasad, użyj następującego pliku definicji inicjatywy zasad jako `VMPolicySet.json`:
+
+```json
+[
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+        "parameters": {
+            "tagName": {
+                "value": "Business Unit"
+            },
+            "tagValue": {
+                "value": "Finance"
+            }
+        }
+    },
+    {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
+    }
+]
+```
+
+```azurepowershell-interactive
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}' -PolicyDefinition C:\VMPolicySet.json
+```
 
 ### <a name="assign-an-initiative-definition"></a>Przypisywanie definicji inicjatywy
 
@@ -381,11 +438,16 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
    - Wyjątki: skonfiguruj wszystkie zasoby w zakresie, aby zapobiec zastosowaniu wobec nich przypisania inicjatywy.
    - Definicja inicjatywy i Nazwa przypisania: „Uzyskiwanie bezpieczeństwa” (wypełniane wstępnie jako nazwa przypisywanej inicjatywy).
    - Opis: to przypisanie inicjatywy jest dostosowane w celu wymuszenia tej grupy definicji zasad.
+   - Wymuszanie zasad: pozostaw domyślnie _włączone_.
    - Przypisane przez: jest wypełniane automatycznie w zależności od tego, kto jest zalogowany. To pole jest opcjonalne, dzięki czemu można wprowadzić wartości niestandardowe.
 
-1. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. To pole _musi_ być zaznaczone, gdy przypisywane zasady lub inicjatywa obejmują zasady z efektem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Wybierz kartę **Parametry** w górnej części kreatora. Jeśli w poprzednich krokach skonfigurowano parametr Initiative, należy ustawić wartość w tym miejscu.
 
-1. Wybierz opcję **Przypisz**.
+1. Wybierz kartę **korygowanie** w górnej części kreatora. Pozostaw pole **Utwórz tożsamość zarządzaną** niezaznaczone. To pole _należy_ zaznaczyć, gdy zasada lub przypisana inicjatywa zawiera zasady z efektami [deployIfNotExists](../concepts/effects.md#deployifnotexists) lub [Modify](../concepts/effects.md#modify) . Ponieważ w przypadku zasad stosowanych na potrzeby tego samouczka tak nie jest, pozostaw to pole puste. Aby uzyskać więcej informacji, zobacz tematy dotyczące [tożsamości zarządzanych](../../../active-directory/managed-identities-azure-resources/overview.md) i [sposobu działania zabezpieczeń w zakresie korygowania](../how-to/remediate-resources.md#how-remediation-security-works).
+
+1. Wybierz kartę **Recenzja + tworzenie** w górnej części kreatora.
+
+1. Przejrzyj wybrane opcje, a następnie wybierz pozycję **Utwórz** w dolnej części strony.
 
 ## <a name="check-initial-compliance"></a>Sprawdzanie zgodności początkowej
 
@@ -400,46 +462,42 @@ Za pomocą definicji inicjatywy możesz grupować kilka definicji zasad w celu o
 
    ![Strona zgodności z inicjatywą — zgodne zasoby](../media/create-and-manage/compliance-status-compliant.png)
 
-1. Po wybraniu zasad na stronie Zgodność z inicjatywą zostanie otwarta strona szczegóły zgodności dla zasad. Ta strona zawiera szczegółowe informacje dotyczące zgodności na poziomie zasobów.
+1. Po wybraniu zasad na stronie Zgodność z inicjatywą zostanie otwarta strona szczegóły zgodności dla tych zasad. Ta strona zawiera szczegółowe informacje dotyczące zgodności na poziomie zasobów.
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Dopuszczanie niezgodnego lub odrzuconego zasobu przy użyciu wykluczenia
 
-W powyższym przykładzie po przypisaniu definicji zasad wymagającej programu SQL Server w wersji 12.0 próba utworzenia programu SQL Server w innej wersji niż 12.0 zostałaby odrzucona. W tej sekcji opisano rozwiązywanie problemu z odmową żądania utworzenia serwera SQL przez utworzenie wykluczenia pojedynczej grupy zasobów. To wykluczenie zapobiega wymuszeniu zasady (lub inicjatywy) dla danego zasobu.
-W poniższym przykładzie dopuszczalna jest dowolna wersja programu SQL Server w pojedynczej grupie zasobów. Wykluczenie można zastosować do subskrypcji, grupy zasobów lub zawęzić je do pojedynczych zasobów.
+Po przypisaniu inicjatywy zasad w celu wymagania określonej lokalizacji wszystkie zasoby utworzone w innej lokalizacji są odrzucane. W tej sekcji opisano sposób rozwiązywania odrzuconego żądania utworzenia zasobu przez utworzenie wykluczenia dla pojedynczej grupy zasobów. Wykluczenie uniemożliwia wymuszanie zasad (lub inicjatywę) w tej grupie zasobów. W poniższym przykładzie każda lokalizacja jest dozwolona w wykluczonej grupie zasobów. Wykluczenie może dotyczyć subskrypcji, grupy zasobów lub poszczególnych zasobów.
 
-Wdrożenie uniemożliwione ze względu na przypisane zasady lub inicjatywę można przeglądać w dwóch miejscach:
+Wdrożenia nieobjęte przypisanymi zasadami lub inicjatywą można wyświetlić w grupie zasobów, której dotyczy wdrożenie: wybierz pozycję **wdrożenia** w lewej części strony, a następnie wybierz **nazwę wdrożenia** zakończonego niepowodzeniem. Zasób, do którego odmówiono dostępu, jest wyświetlany jako _Zabroniony_. Aby określić zasady lub inicjatywę i przypisanie, które odrzuciły zasób, wybierz pozycję **Niepowodzenie. Kliknij tutaj, aby uzyskać szczegółowe informacje — >** na stronie Przegląd wdrożenia. W prawej części strony wyświetli się okno z informacjami o błędzie. W obszarze **Szczegóły błędu** są widoczne identyfikatory GUID powiązanych obiektów zasad.
 
-- W grupie zasobów, do której należy wdrożenie: wybierz pozycję **wdrożenia** w lewej części strony, a następnie wybierz **nazwę wdrożenia** , którego wdrożenie nie powiodło się. Zasób, do którego odmówiono dostępu, jest wyświetlany jako _Zabroniony_. Aby określić zasady lub inicjatywę i przypisanie, które odrzuciły zasób, wybierz pozycję **Niepowodzenie. Kliknij tutaj, aby uzyskać szczegółowe informacje — >** na stronie Przegląd wdrożenia.
-  W prawej części strony wyświetli się okno z informacjami o błędzie. W obszarze **Szczegóły błędu** są widoczne identyfikatory GUID powiązanych obiektów zasad.
+![Odmowa wdrożenia spowodowana przypisaniem zasad](../media/create-and-manage/rg-deployment-denied.png)
 
-  ![Odmowa wdrożenia spowodowana przypisaniem zasad](../media/create-and-manage/rg-deployment-denied.png)
+Na stronie Azure Policy: wybierz pozycję **zgodność** w lewej części strony i wybierz pozycję **Pobierz bezpieczną** zasadę. Na tej stronie jest zwiększana liczba **odmowy** dla zablokowanych zasobów. Na karcie **zdarzenia** znajdują się szczegółowe informacje o tym, kto próbował utworzyć lub wdrożyć zasób, który został odrzucony przez definicję zasad.
 
-- Na stronie Azure Policy: wybierz pozycję **zgodność** po lewej stronie i wybierz zasady **Wymagaj SQL Server w wersji 12,0** . Zostanie otwarta strona, na której wartość licznika **Odmów** jest zwiększona. Na karcie **Zdarzenia** można również zobaczyć, kto rozpoczął wdrożenie, które zostało odrzucone przez zasady.
+![Omówienie zgodności przypisanych zasad](../media/create-and-manage/compliance-overview.png)
 
-  ![Omówienie zgodności przypisanych zasad](../media/create-and-manage/compliance-overview.png)
-
-W tym przykładzie Trent Baker, jeden z doświadczonych specjalistów firmy Contoso w dziedzinie wirtualizacji, wykonywał swoją pracę. Należy przyznać mu wyjątek, ale nie chcemy, aby serwery SQL w wersji innej niż 12.0 znajdowały się w dowolnej grupie zasobów. Utworzyliśmy nową grupę zasobów, **SQLServers_Excluded** i teraz przypiszemy jej wyjątek od przypisanych zasad.
+W tym przykładzie Trent Baker, jeden z doświadczonych specjalistów firmy Contoso w dziedzinie wirtualizacji, wykonywał swoją pracę. Musimy przyznać Trent miejsce na wyjątek. Utworzono nową grupę zasobów, **LocationsExcluded**i następne przyznaj jej wyjątek dla tego przypisania zasad.
 
 ### <a name="update-assignment-with-exclusion"></a>Aktualizacja przypisania z wykluczeniem
 
 1. W lewej części strony usługi Azure Policy wybierz opcję **Przypisania** w obszarze **Tworzenie**.
 
-1. Przejrzyj wszystkie przypisania zasad i otwórz przypisanie *Require SQL Server Version 12.0* (Wymagaj programu SQL Server w wersji 12.0).
+1. Przejrzyj wszystkie przypisania zasad i Otwórz przypisanie zasady _Pobierz zabezpieczenie_ .
 
-1. Ustaw **wykluczenie** , wybierając wielokropek i wybierając grupę zasobów do wykluczenia, *SQLServers_Excluded* w tym przykładzie.
+1. Ustaw **wykluczenie** , wybierając wielokropek i wybierając grupę zasobów do wykluczenia, _LocationsExcluded_ w tym przykładzie. Wybierz pozycję **Dodaj do wybranego zakresu** , a następnie wybierz pozycję **Zapisz**.
 
    ![Dodawanie wykluczonej grupy zasobów do przypisania zasad](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
-   > W zależności od zasad i ich wpływu wykluczenie może dotyczyć określonych zasobów w grupie zasobów w zakresie przypisania. Ponieważ w tym samouczku użyto funkcji **Odmów**, więc ustawienie wykluczenia dla określonego, istniejącego już zasobu nie miałoby sensu.
+   > W zależności od definicji zasad i jej działania wykluczenia można także udzielić określonym zasobom w grupie zasobów w ramach zakresu przypisania. Ponieważ w tym samouczku użyto efektu **odmowy** , nie ma sensu ustawienia wykluczenia dla określonego zasobu, który już istnieje.
 
-1. Wybierz pozycję **Wybierz** , a następnie wybierz pozycję **Zapisz**.
+1. Wybierz pozycję **Recenzja + Zapisz** , a następnie wybierz pozycję **Zapisz**.
 
 W tej sekcji rozwiązano problem z odmową żądania przez utworzenie wykluczenia pojedynczej grupy zasobów.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie planujesz dalszej pracy z zasobami utworzonymi w tym samouczku, wykonaj poniższe kroki, aby usunąć wszystkie utworzone powyżej przypisania lub definicje:
+Jeśli wykonujesz pracę z zasobami z tego samouczka, wykonaj następujące kroki, aby usunąć wszystkie utworzone powyżej przypisania zasad lub definicje:
 
 1. Wybierz pozycję **Definicje** (lub **Przypisania**, jeśli próbujesz usunąć przypisanie) w obszarze **Tworzenie** w lewej części strony usługi Azure Policy.
 

@@ -2,19 +2,15 @@
 title: Wyświetl zmiany zawartości plików przy użyciu Azure Automation
 description: Użyj funkcji Zmień zawartość pliku śledzenia zmian, aby wyświetlić zawartość pliku, który został zmieniony.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/03/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4ab88aa2dc604172f00d875353dabba61fd101af
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418813"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Wyświetl zawartość pliku, który jest śledzony za pomocą Change Tracking
 
@@ -62,7 +58,7 @@ Poniższe kroki przeprowadzą Cię przez włączenie śledzenia zmian dla pliku:
 
 1. Na stronie **Zmień szczegóły** zobaczysz Standard przed i po informacjach o pliku w lewym górnym rogu, a następnie kliknij pozycję **Wyświetl zawartość pliku zmiany** , aby zobaczyć zawartość pliku.
 
-   ![Szczegóły zmiany](./media/change-tracking-file-contents/change-details.png)
+   ![szczegóły zmiany](./media/change-tracking-file-contents/change-details.png)
 
 1. Na nowej stronie zostanie wyświetlona zawartość pliku w widoku obok siebie. Możesz również wybrać opcję **wbudowane** , aby wyświetlić widok w tekście zmian.
 

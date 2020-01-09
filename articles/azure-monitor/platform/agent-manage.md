@@ -4,15 +4,15 @@ description: W tym artykule opisano różne zadania zarządzania, które zwykle 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364785"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzanie agentem Log Analytics dla systemów Windows i Linux i obsługa go
 
@@ -58,7 +58,7 @@ Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Lo
 
 4. W oknie dialogowym **konfiguracja Microsoft Monitoring Agent** kliknij przycisk **zgadzam** się, aby zaakceptować umowę licencyjną.
 
-5. W oknie dialogowym **konfiguracja Microsoft Monitoring Agent** kliknij przycisk **Uaktualnij**. Na stronie stan zostanie wyświetlony postęp uaktualniania.
+5. W oknie dialogowym **Instalator programu Microsoft Monitoring Agent** kliknij przycisk **Uaktualnij**. Na stronie stanu wyświetlany będzie postęp uaktualnienia.
 
 6. Po **pomyślnym ukończeniu konfiguracji Microsoft Monitoring Agent.** Kliknij przycisk **Zakończ**.
 
@@ -66,9 +66,9 @@ Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Lo
 
 1. Zaloguj się na komputerze przy użyciu konta z uprawnieniami administracyjnymi.
 
-2. Aby wyodrębnić pliki instalacyjne agenta, w wierszu polecenia z podwyższonym poziomem uprawnień `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit o podanie ścieżki, do której zostaną wyodrębnione pliki. Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.
+2. Do wyodrębnienia plików instalacyjnych agenta z wiersza polecenia z podwyższonym poziomem uprawnień `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit o ścieżkę, do której mają zostać wyodrębnione pliki. Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.
 
-3. Uruchom następujące polecenie, gdzie D:\ jest lokalizacją pliku dziennika uaktualnienia.
+3. Uruchom następujące polecenie (w którym D:\ określa lokalizację pliku dziennika uaktualnienia).
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
@@ -225,7 +225,7 @@ Jeśli komputery z systemem Linux muszą komunikować się za pomocą serwera pr
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ```
 
-## <a name="uninstall-agent"></a>Odinstaluj agenta
+## <a name="uninstall-agent"></a>Odinstalowywanie agenta
 Aby odinstalować agenta systemu Windows lub Linux przy użyciu wiersza polecenia lub Kreatora instalacji, należy użyć jednej z poniższych procedur.
 
 ### <a name="windows-agent"></a>Agent systemu Windows

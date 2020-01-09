@@ -1,6 +1,6 @@
 ---
-title: Wywoływanie internetowego interfejsu API usługi Azure AD Protected ASP.NET — platforma tożsamości firmy Microsoft
-description: W tym przewodniku szybki start dowiesz się, jak wywołać interfejs API sieci Web ASP.NET chroniony przez Azure Active Directory z aplikacji klasycznej systemu Windows (WPF). Klient WPF uwierzytelnia użytkownika, żąda tokenu dostępu i wywołuje internetowy interfejs API.
+title: Wywoływanie ASP.NET internetowego interfejsu API chronionego przez platformę tożsamości firmy Microsoft
+description: W tym przewodniku szybki start dowiesz się, jak wywoływać interfejs API sieci Web ASP.NET chroniony przez platformę tożsamości firmy Microsoft z aplikacji klasycznej systemu Windows. Klient WPF uwierzytelnia użytkownika, żąda tokenu dostępu i wywołuje internetowy interfejs API.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963311"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424034"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Szybki Start: wywoływanie ASP.NET internetowego interfejsu API chronionego przez usługę Azure AD
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Szybki Start: wywoływanie interfejsu API sieci Web ASP.NET chronionego przez platformę tożsamości firmy Microsoft
 
-W tym przewodniku szybki start uwidaczniasz internetowy interfejs API i zabezpieczesz go tak, aby tylko uwierzytelniony użytkownik mógł uzyskać do niego dostęp. Ten przykład pokazuje, jak uwidocznić internetowy interfejs API ASP.NET, aby mógł akceptować tokeny wystawione przez konta osobiste (w tym outlook.com, live.com i inne), a także konta służbowe z dowolnej firmy lub organizacji zintegrowanej z Azure Active Directory.
+W tym przewodniku szybki start uwidaczniasz internetowy interfejs API i zabezpieczesz go tak, aby tylko uwierzytelniony użytkownik mógł uzyskać do niego dostęp. Ten przykład pokazuje, jak uwidocznić internetowy interfejs API ASP.NET, dzięki czemu może akceptować tokeny wystawione przez konta osobiste (w tym outlook.com, live.com i inne), a także konta służbowe z dowolnej firmy lub organizacji zintegrowanej z tożsamością firmy Microsoft. platformach.
 
 Przykład zawiera również klienta aplikacji klasycznych systemu Windows (WPF), który pokazuje, jak można zażądać tokenu dostępu w celu uzyskania dostępu do internetowego interfejsu API.
 
@@ -76,7 +76,7 @@ Jeśli chcesz zarejestrować aplikacje ręcznie, musisz najpierw przeprowadzić 
      - Zachowaj **stan** jako **włączony**
      - Wybierz pozycję **Dodaj zakres**
 
-### <a name="configure-the-service-and-client-projects-to-match-the-registered-web-api"></a>Skonfiguruj projekty usługi i klienta tak, aby były zgodne z zarejestrowanym interfejsem API sieci Web 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Skonfiguruj projekt usługi tak, aby był zgodny z zarejestrowanym interfejsem API sieci Web 
 
 1. Otwórz rozwiązanie w programie Visual Studio, a następnie otwórz plik **Web. config** w katalogu głównym projektu **TodoListService** .
 1. Zastąp wartość parametru `ida:ClientId` **identyfikatorem klienta (Identyfikator aplikacji)** z aplikacji właśnie zarejestrowanej w portalu rejestracji aplikacji.
@@ -104,7 +104,7 @@ W tym kroku skonfigurujesz projekt *TodoListClient* , rejestrując nową aplikac
    - Zmień **obsługiwane typy kont** na **konta w dowolnym katalogu organizacyjnym**.
    - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 1. Na stronie Przegląd aplikacji wybierz sekcję **uwierzytelnianie** .
-   - W sekcji **adresy URL przekierowania** | **sugerowanych adresów URL przekierowań dla klientów publicznych (Mobile, Desktop)** Sprawdź **nazwę urn: IETF: wg: OAuth: 2.0: OOB**
+   - W sekcji **identyfikatory URI przekierowania** | **sugerowane identyfikatory URI przekierowań dla klientów publicznych (Mobile, desktop)** Sprawdź **https://login.microsoftonline.com/common/oauth2/nativeclient**
    - Wybierz pozycję **Zapisz**.
 1. Wybierz sekcję **uprawnienia interfejsu API**
    - Kliknij przycisk **Dodaj uprawnienia** , a następnie

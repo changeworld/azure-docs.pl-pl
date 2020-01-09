@@ -2,17 +2,17 @@
 title: Co to jest platforma Azure Cloud Services | Microsoft Docs
 description: Dowiedz się, co to jest Cloud Services platformy Azure.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386854"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Omówienie Cloud Services platformy Azure
 Platforma Azure Cloud Services to przykład [platformy jako usługi](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Podobnie jak [Azure App Service](../app-service/overview.md), Technologia ta została zaprojektowana do obsługi aplikacji, które są skalowalne, niezawodne i niedrogie do działania. W taki sam sposób, w jaki App Service jest hostowany na maszynach wirtualnych, tak więc usługa Azure Cloud Services. Jednak masz większą kontrolę nad maszynami wirtualnymi. Możesz zainstalować własne oprogramowanie na maszynach wirtualnych korzystających z usługi Azure Cloud Services i uzyskać do nich dostęp zdalnie.
@@ -23,9 +23,9 @@ Większa kontrola oznacza także mniejszą łatwość użycia. O ile nie potrzeb
 
 Istnieją dwa typy ról Cloud Services platformy Azure. Jedyną różnicą między nimi jest sposób, w jaki Twoja rola jest hostowana na maszynach wirtualnych:
 
-* **Rola sieci Web**: Automatycznie wdraża i hostuje aplikację za poorednictwem usług IIS.
+* **Rola sieci Web**: automatycznie wdraża i hostuje aplikację za poorednictwem usług IIS.
 
-* **Rola procesu roboczego**: Program nie korzysta z usług IIS i uruchamia autonomiczną aplikację.
+* **Rola procesu roboczego**: nie korzysta z usług IIS i uruchamia autonomiczną aplikację.
 
 Przykładowo prosta aplikacja może używać tylko jednej roli sieci Web, która obsługuje witrynę sieci Web. Bardziej złożona aplikacja może używać roli sieci Web do obsługi żądań przychodzących od użytkowników, a następnie przekazać te żądania do roli procesu roboczego w celu przetworzenia. (Ta komunikacja może używać [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) lub [usługi Azure queue storage](../storage/common/storage-introduction.md)).
 
@@ -43,11 +43,14 @@ Usługa Azure Cloud Services udostępnia również monitorowanie. Podobnie jak V
 
 PaaS charakter platformy Azure Cloud Services ma inne konsekwencje. Jednym z najważniejszych jest to, że aplikacje skompilowane w tej technologii należy napisać tak, aby działały prawidłowo w przypadku awarii dowolnego wystąpienia roli sieci Web lub procesu roboczego. Aby to osiągnąć, aplikacja platformy Azure Cloud Services nie powinna zachować stanu w systemie plików własnych maszyn wirtualnych. W przeciwieństwie do maszyn wirtualnych utworzonych przy użyciu Virtual Machines zapisy wprowadzone do maszyn wirtualnych Cloud Services platformy Azure nie są trwałe. Nie ma niczego jak dysk danych Virtual Machines. Zamiast tego aplikacja Cloud Services platformy Azure powinna jawnie zapisywać wszystkie stany do Azure SQL Database, obiektów blob, tabel lub innych magazynów zewnętrznych. Tworzenie aplikacji w ten sposób ułatwia skalowanie i bardziej odporne na awarie, które są ważnymi celami Cloud Services platformy Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Tworzenie aplikacji usługi w chmurze w programie .NET](cloud-services-dotnet-get-started.md) 
 * [Tworzenie aplikacji usługi w chmurze w języku Node. js](cloud-services-nodejs-develop-deploy-app.md) 
 * [Tworzenie aplikacji usługi w chmurze w języku PHP](../cloud-services-php-create-web-role.md) 
 * [Tworzenie aplikacji usługi w chmurze w języku Python](cloud-services-python-ptvs.md)
+
+
+
 
 
 

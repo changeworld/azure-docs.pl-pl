@@ -1,25 +1,16 @@
 ---
-title: Service Fabric platformy Azure — omówienie API Management | Microsoft Docs
+title: Service Fabric platformy Azure z usługą API Management — Omówienie
 description: Ten artykuł zawiera wprowadzenie do korzystania z usługi Azure API Management jako bramy do aplikacji Service Fabric.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378114"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric z usługą Azure API Management — Omówienie
 
@@ -48,7 +39,7 @@ W tym scenariuszu interfejs użytkownika sieci Web jest nadal obsługiwany przez
 
 ## <a name="application-scenarios"></a>Scenariusze aplikacji
 
-Usługi w Service Fabric mogą być bezstanowe lub bezstanowe i mogą być partycjonowane przy użyciu jednego z trzech schematów: singleton, int-64 zakres i o nazwie. Rozwiązanie punktu końcowego usługi wymaga zidentyfikowania określonej partycji określonego wystąpienia usługi. Podczas rozpoznawania punktu końcowego usługi należy określić zarówno nazwę wystąpienia usługi (na przykład `fabric:/myapp/myservice`), jak i konkretną partycję usługi, z wyjątkiem sytuacji, gdy jest to partycja singleton.
+Usługi w Service Fabric mogą być bezstanowe lub bezstanowe i mogą być partycjonowane przy użyciu jednego z trzech schematów: singleton, int-64 zakres i o nazwie. Rozwiązanie punktu końcowego usługi wymaga zidentyfikowania określonej partycji określonego wystąpienia usługi. Podczas rozpoznawania punktu końcowego usługi należy określić zarówno nazwę wystąpienia usługi (na przykład `fabric:/myapp/myservice`) jak i konkretną partycję usługi, z wyjątkiem sytuacji, w której jest wymagana partycja singleton.
 
 Usługa Azure API Management może być używana z dowolną kombinacją usług bezstanowych, usług stanowych i dowolnego schematu partycjonowania.
 
@@ -57,19 +48,19 @@ Usługa Azure API Management może być używana z dowolną kombinacją usług b
 W najprostszym przypadku ruch jest przekazywany do wystąpienia usługi bezstanowej. Aby to osiągnąć, API Management operacja zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje do określonego wystąpienia usługi bezstanowej w Service Fabric zaplecza. Żądania wysyłane do tej usługi są wysyłane do losowego wystąpienia usługi.
 
 #### <a name="example"></a>Przykład
-W poniższym scenariuszu aplikacja Service Fabric zawiera usługę bezstanową o nazwie `fabric:/app/fooservice`, która udostępnia wewnętrzny interfejs API protokołu HTTP. Nazwa wystąpienia usługi jest dobrze znana i może być zakodowana bezpośrednio w API Management zasad przetwarzania przychodzącego. 
+W poniższym scenariuszu aplikacja Service Fabric zawiera usługę bezstanową o nazwie `fabric:/app/fooservice`, która uwidacznia wewnętrzny interfejs API protokołu HTTP. Nazwa wystąpienia usługi jest dobrze znana i może być zakodowana bezpośrednio w API Management zasad przetwarzania przychodzącego. 
 
 ![Service Fabric z usługą Azure API Management Topology — Omówienie][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>Wysyłanie ruchu do usługi stanowej
 
-Podobnie jak w przypadku scenariusza usługi bezstanowej, ruch może być przekazywany do wystąpienia usługi stanowej. W takim przypadku operacja API Management zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje żądanie na określoną partycję określonego wystąpienia usługi stanowej. Partycja, do której są mapowane każde żądanie, jest obliczana za pośrednictwem metody lambda przy użyciu danych wejściowych z przychodzącego żądania HTTP, takiego jak wartość w ścieżce URL. Zasady można skonfigurować do wysyłania żądań tylko do repliki podstawowej lub do losowej repliki dla operacji odczytu.
+Podobnie jak w przypadku scenariusza usługi bezstanowej, ruch może być przekazywany do wystąpienia usługi stanowej. W takim przypadku operacja API Management zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje żądanie na określoną partycję określonego wystąpienia usługi *stanowej* . Partycja, do której są mapowane każde żądanie, jest obliczana za pośrednictwem metody lambda przy użyciu danych wejściowych z przychodzącego żądania HTTP, takiego jak wartość w ścieżce URL. Zasady można skonfigurować do wysyłania żądań tylko do repliki podstawowej lub do losowej repliki dla operacji odczytu.
 
 #### <a name="example"></a>Przykład
 
-W poniższym scenariuszu aplikacja Service Fabric zawiera podzielonej usługi stanowej o nazwie `fabric:/app/userservice` , która uwidacznia wewnętrzny interfejs API protokołu HTTP. Nazwa wystąpienia usługi jest dobrze znana i może być zakodowana bezpośrednio w API Management zasad przetwarzania przychodzącego.  
+W poniższym scenariuszu aplikacja Service Fabric zawiera podzielonej usługi stanowej o nazwie `fabric:/app/userservice`, która uwidacznia wewnętrzny interfejs API protokołu HTTP. Nazwa wystąpienia usługi jest dobrze znana i może być zakodowana bezpośrednio w API Management zasad przetwarzania przychodzącego.  
 
-Usługa jest partycjonowana przy użyciu schematu partycji Int64 z dwiema partycjami i zakresem kluczy, który obejmuje `Int64.MinValue`. `Int64.MaxValue` Zasady zaplecza obliczają klucz partycji w tym zakresie przez przekonwertowanie `id` wartości podanej w ścieżce żądania adresu URL na 64-bitową liczbę całkowitą, chociaż w tym miejscu można użyć dowolnego algorytmu w celu obliczenia klucza partycji. 
+Usługa jest partycjonowana przy użyciu schematu partycji Int64 z dwiema partycjami i zakresem kluczy, który obejmuje `Int64.MinValue` `Int64.MaxValue`. Zasady zaplecza obliczają klucz partycji w tym zakresie przez przekonwertowanie wartości `id` podanej w ścieżce żądania adresu URL na 64-bitową liczbę całkowitą, chociaż w tym celu można użyć dowolnego algorytmu w celu obliczenia klucza partycji. 
 
 ![Service Fabric z usługą Azure API Management Topology — Omówienie][sf-apim-static-stateful]
 
@@ -85,16 +76,16 @@ W tym przykładzie nowe wystąpienie usługi bezstanowej jest tworzone dla każd
  
 - `fabric:/app/users/<username>`
 
-  Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry, ponieważ usługi są tworzone w odpowiedzi na dane wejściowe użytkownika lub administratora i dlatego nie mogą być zakodowane w zasadach APIM lub regułach routingu. Zamiast tego nazwa usługi, do której należy wysłać żądanie, jest generowana w definicji zasad zaplecza z `name` wartości podanej w ścieżce żądania adresu URL. Na przykład:
+  Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry, ponieważ usługi są tworzone w odpowiedzi na dane wejściowe użytkownika lub administratora i dlatego nie mogą być zakodowane w zasadach APIM lub regułach routingu. Zamiast tego nazwa usługi, do której należy wysłać żądanie, jest generowana w definicji zasad zaplecza z wartości `name` podanej w ścieżce żądania adresu URL. Przykład:
 
-  - Żądanie `/api/users/foo` skierowane do wystąpienia usługi`fabric:/app/users/foo`
-  - Żądanie `/api/users/bar` skierowane do wystąpienia usługi`fabric:/app/users/bar`
+  - Żądanie `/api/users/foo` jest kierowane do wystąpienia usługi `fabric:/app/users/foo`
+  - Żądanie `/api/users/bar` jest kierowane do wystąpienia usługi `fabric:/app/users/bar`
 
 ![Service Fabric z usługą Azure API Management Topology — Omówienie][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>Wysyłanie ruchu do wielu usług stanowych
 
-Podobnie jak w przypadku przykładowej usługi bezstanowej, operacja API Management może mapować żądania do więcej niż jednego wystąpienia usługi stanowej. w takim przypadku może być również konieczne przeprowadzenie rozpoznawania partycji dla każdego wystąpienia usługi stanowej.
+Podobnie jak w przypadku przykładowej usługi bezstanowej, operacja API Management może mapować żądania do więcej niż jednego wystąpienia usługi **stanowej** . w takim przypadku może być również konieczne przeprowadzenie rozpoznawania partycji dla każdego wystąpienia usługi stanowej.
 
 Aby to osiągnąć, API Management operacja zawiera zasady przetwarzania przychodzącego z Service Fabric zaplecza, które mapuje do wystąpienia usługi stanowej w Service Fabric zaplecza na podstawie wartości pobranych z przychodzącego żądania HTTP. Oprócz mapowania żądania do określonego wystąpienia usługi żądanie może być również mapowane na określoną partycję w ramach wystąpienia usługi i opcjonalnie na replikę podstawową lub losowo replikę pomocniczą w ramach partycji.
 
@@ -104,18 +95,18 @@ W tym przykładzie tworzone jest nowe wystąpienie usługi stanowej dla każdego
  
 - `fabric:/app/users/<username>`
 
-  Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry, ponieważ usługi są tworzone w odpowiedzi na dane wejściowe użytkownika lub administratora i dlatego nie mogą być zakodowane w zasadach APIM lub regułach routingu. Zamiast tego nazwa usługi, do której należy wysłać żądanie, jest generowana w definicji zasad zaplecza z `name` wartości podanej w polu Ścieżka żądania adresu URL. Na przykład:
+  Każda usługa ma unikatową nazwę, ale nazwy nie są znane z góry, ponieważ usługi są tworzone w odpowiedzi na dane wejściowe użytkownika lub administratora i dlatego nie mogą być zakodowane w zasadach APIM lub regułach routingu. Zamiast tego nazwa usługi, do której należy wysłać żądanie, jest generowana w definicji zasad zaplecza z wartości `name` podanej w ścieżce żądania adresu URL. Przykład:
 
-  - Żądanie `/api/users/foo` skierowane do wystąpienia usługi`fabric:/app/users/foo`
-  - Żądanie `/api/users/bar` skierowane do wystąpienia usługi`fabric:/app/users/bar`
+  - Żądanie `/api/users/foo` jest kierowane do wystąpienia usługi `fabric:/app/users/foo`
+  - Żądanie `/api/users/bar` jest kierowane do wystąpienia usługi `fabric:/app/users/bar`
 
-Każde wystąpienie usługi jest również podzielone na partycje przy użyciu schematu partycji Int64 z dwiema partycjami i zakresem kluczy, `Int64.MinValue` który `Int64.MaxValue`obejmuje. Zasady zaplecza obliczają klucz partycji w tym zakresie przez przekonwertowanie `id` wartości podanej w ścieżce żądania adresu URL na 64-bitową liczbę całkowitą, chociaż w tym miejscu można użyć dowolnego algorytmu w celu obliczenia klucza partycji. 
+Każde wystąpienie usługi jest również podzielone na partycje przy użyciu schematu partycji Int64 z dwiema partycjami i zakresem kluczy, który obejmuje `Int64.MinValue` do `Int64.MaxValue`. Zasady zaplecza obliczają klucz partycji w tym zakresie przez przekonwertowanie wartości `id` podanej w ścieżce żądania adresu URL na 64-bitową liczbę całkowitą, chociaż w tym celu można użyć dowolnego algorytmu w celu obliczenia klucza partycji. 
 
 ![Service Fabric z usługą Azure API Management Topology — Omówienie][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Postępuj [](service-fabric-tutorial-deploy-api-management.md) zgodnie z samouczkiem, aby skonfigurować pierwszy klaster Service Fabric z API Management i przepływać żądania przez API Management do usług.
+Postępuj zgodnie z [samouczkiem](service-fabric-tutorial-deploy-api-management.md) , aby skonfigurować pierwszy klaster Service Fabric z API Management i przepływać żądania przez API Management do usług.
 
 <!-- links -->
 

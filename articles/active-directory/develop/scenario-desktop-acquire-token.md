@@ -1,5 +1,5 @@
 ---
-title: Uzyskaj token dla aplikacji klasycznych, które wywołują interfejsy API sieci Web | Azure
+title: Pozyskiwanie tokenu do wywoływania internetowego interfejsu API (aplikacja klasyczna) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (Uzyskiwanie tokenu dla aplikacji |)
 services: active-directory
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920230"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423886"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — pozyskiwanie tokenu
 
@@ -38,7 +38,7 @@ Internetowy interfejs API jest definiowany przez `scopes`. Bez względu na to, c
 
 ### <a name="in-msalnet"></a>W MSAL.NET
 
-```CSharp
+```csharp
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
@@ -155,7 +155,7 @@ Poniższy przykład pokazuje minimalny kod, aby interaktywnie uzyskać token do 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>W MSAL.NET
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -184,7 +184,7 @@ W systemie Android należy również określić działanie nadrzędne (przy uży
 
 Interaktywny interfejs użytkownika jest ważny. `AcquireTokenInteractive` ma jeden określony opcjonalny parametr umożliwiający określenie, w przypadku platform obsługujących tę opcję, nadrzędny interfejs użytkownika. W przypadku użycia w aplikacji klasycznej `.WithParentActivityOrWindow` ma inny typ w zależności od platformy:
 
-```CSharp
+```csharp
 // net45
 WithParentActivityOrWindow(IntPtr windowPtr)
 WithParentActivityOrWindow(IWin32Window window)
@@ -202,7 +202,7 @@ Uwagi
 - W systemie Windows należy wywołać `AcquireTokenInteractive` z wątku interfejsu użytkownika, aby przeglądarka osadzona pobiera odpowiedni kontekst synchronizacji interfejsu użytkownika.  Nie wywoływanie z wątku interfejsu użytkownika może spowodować, że komunikaty nie wypompuje odpowiednio i/lub zakleszczania scenariuszy z interfejsem użytkownika. Jednym ze sposobów wywołania MSAL z wątku interfejsu użytkownika, jeśli nie jesteś w wątku interfejsu użytkownika, jest już używanie `Dispatcher` w WPF.
 - Jeśli używasz WPF, aby uzyskać okno z formantu WPF, możesz użyć klasy `WindowInteropHelper.Handle`. Wywołanie jest następnie z formantu WPF (`this`):
 
-  ```CSharp
+  ```csharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
                     .ExecuteAsync();
@@ -226,7 +226,7 @@ Klasa definiuje następujące stałe:
 
 Ten modyfikator jest używany w zaawansowanym scenariuszu, w którym użytkownik powinien wstępnie wyrazić zgodę na kilka zasobów z góry (i nie chce korzystać z powyższej zgody, która jest zwykle używana z MSAL.NET/platformą tożsamości firmy Microsoft). Aby uzyskać szczegółowe informacje [, zobacz How to: czy użytkownik ma zgodę na dostęp do kilku zasobów](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();
@@ -253,7 +253,7 @@ Hostem `end Url` zawsze jest `redirectUri`. Aby przechwycić `end Url` można:
 
 `WithCustomWebUi` to punkt rozszerzalności, który umożliwia udostępnienie własnego interfejsu użytkownika w publicznych aplikacjach klienckich oraz umożliwienie użytkownikowi przechodzenia przez punkt końcowy/Authorize dostawcy tożsamości i Zezwalanie na logowanie i wyrażanie zgody. MSAL.NET może, następnie wykorzystać kod uwierzytelniania i uzyskać token. Jest ono używane w programie Visual Studio do korzystania z aplikacji Electrons (na przykład do przesyłania opinii), które zapewniają interakcję sieci Web, ale pozostawiamy ją do MSAL.NET w celu wykonania większości zadań. Można go również użyć, jeśli chcesz zapewnić automatyzację interfejsu użytkownika. W publicznych aplikacjach klienckich MSAL.NET korzysta ze standardowego PKCE ([RFC 7636-testowego klucza do wymiany kodu przez klientów publicznych OAuth](https://tools.ietf.org/html/rfc7636)), aby zapewnić przestrzeganie zabezpieczeń: tylko MSAL.NET może zrealizować kod.
 
-  ```CSharp
+  ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
@@ -264,7 +264,7 @@ Aby móc używać `.WithCustomWebUI`, musisz:
   1. Zaimplementuj interfejs `ICustomWebUi` (zobacz [tutaj](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Zasadniczo należy wdrożyć jedną metodę `AcquireAuthorizationCodeAsync` akceptujący adres URL kodu autoryzacji (obliczony przez MSAL.NET), umożliwiając użytkownikowi przechodzenie przez interakcję z dostawcą tożsamości, a następnie powrót do adresu URL, za pomocą którego dostawca tożsamości wywołał implementację z powrotem (w tym kod autoryzacji). Jeśli masz problemy, implementacja powinna zgłosić wyjątek `MsalExtensionException`, aby dobrze współpracę z MSAL.
   2. W wywołaniu `AcquireTokenInteractive` można użyć modyfikatora `.WithCustomUI()` przekazanie wystąpienia niestandardowego interfejsu użytkownika sieci Web
 
-     ```CSharp
+     ```csharp
      result = await app.AcquireTokenInteractive(scopes)
                        .WithCustomWebUi(yourCustomWebUI)
                        .ExecuteAsync();
@@ -284,7 +284,7 @@ Z MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/mi
 
 Aby użyć tej struktury, można napisać coś w następujący sposób:
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 ...
 
@@ -443,7 +443,7 @@ Zwykle potrzebny jest tylko jeden parametr (`scopes`). Jednak w zależności od 
 
 Poniższy przykład przedstawia najbardziej aktualny przypadek, z objaśnieniami rodzaju wyjątków, które można uzyskać, i ich środki zaradcze
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -590,7 +590,7 @@ Obowiązują również następujące ograniczenia:
 
 W poniższym przykładzie przedstawiono uproszczony przypadek
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -631,7 +631,7 @@ static async Task GetATokenForGraph()
 
 Poniższy przykład przedstawia najbardziej aktualny przypadek, z objaśnieniami rodzaju wyjątków, które można uzyskać, i ich środki zaradcze
 
-```CSharp
+```csharp
 static async Task GetATokenForGraph()
 {
  string authority = "https://login.microsoftonline.com/contoso.com";
@@ -894,7 +894,7 @@ Interaktywne uwierzytelnianie w usłudze Azure AD wymaga przeglądarki sieci Web
 
 `IPublicClientApplication`zawiera metodę o nazwie `AcquireTokenWithDeviceCode`
 
-```CSharp
+```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
                             Func<DeviceCodeResult, Task> deviceCodeResultCallback)
 ```
@@ -908,7 +908,7 @@ Ta metoda przyjmuje jako parametry:
 
 Poniższy przykładowy kod przedstawia najbardziej aktualny przypadek, z objaśnieniami rodzaju wyjątków, jakie można uzyskać, oraz ich ograniczenia.
 
-```CSharp
+```csharp
 private const string ClientId = "<client_guid>";
 private const string Authority = "https://login.microsoftonline.com/contoso.com";
 private readonly string[] Scopes = new string[] { "user.read" };
@@ -1119,7 +1119,7 @@ Poniżej znajduje się przykład implementacji algorytmie niestandardowej serial
 
 Po skompilowaniu aplikacji można włączyć serializację, wywołując ``TokenCacheHelper.EnableSerialization()`` przekazanie aplikacji `UserTokenCache`
 
-```CSharp
+```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
     .Build();
 TokenCacheHelper.EnableSerialization(app.UserTokenCache);
@@ -1127,7 +1127,7 @@ TokenCacheHelper.EnableSerialization(app.UserTokenCache);
 
 Ta klasa pomocnika wygląda jak w poniższym fragmencie kodu:
 
-```CSharp
+```csharp
 static class TokenCacheHelper
  {
   public static void EnableSerialization(ITokenCache tokenCache)
@@ -1184,7 +1184,7 @@ Wersja zapoznawcza serializatora opartego na plikach pamięci podręcznej tokenu
 
 Jeśli chcesz zaimplementować serializacji pamięci podręcznej tokeny w formacie ujednoliconej pamięci podręcznej (wspólne dla ADAL.NET 4. x i MSAL.NET 2. x, a inne MSALs tej samej generacji lub starszej na tej samej platformie), możesz uzyskać dostęp do tego kodu. :
 
-```CSharp
+```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;
 string cacheFolder = Path.GetFullPath(appLocation) + @"..\..\..\..");
 string adalV3cacheFileName = Path.Combine(cacheFolder, "cacheAdalV3.bin");
@@ -1201,7 +1201,7 @@ FilesBasedTokenCacheHelper.EnableSerialization(app.UserTokenCache,
 
 Tym razem Klasa pomocnika wygląda następująco:
 
-```CSharp
+```csharp
 using System;
 using System.IO;
 using System.Security.Cryptography;

@@ -2,19 +2,15 @@
 title: Dołączanie rozwiązań Update Management, Change Tracking i spisu z maszyny wirtualnej platformy Azure
 description: Dowiedz się, jak dołączać maszynę wirtualną platformy Azure z rozwiązaniami Update Management, Change Tracking i spisu, które są częścią Azure Automation.
 services: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.service: automation
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421819"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączanie rozwiązań Update Management, Change Tracking i spisu z maszyny wirtualnej platformy Azure
 
@@ -61,7 +57,7 @@ Przejdź do swojego obszaru roboczego. W obszarze **Ogólne**wybierz pozycję **
 
 |Nazwa     |Kategoria  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Śledzenia zmian       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |
 
 Wybierz jedno z zapisanych wyszukiwań, aby wyświetlić zapytanie, które jest używane do wypełniania grupy. Na poniższej ilustracji przedstawiono zapytanie i jego wyniki:

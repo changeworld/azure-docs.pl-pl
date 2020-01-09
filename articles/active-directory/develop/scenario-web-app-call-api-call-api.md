@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de972c4efcfa544227649581d7c3441aae0bfb4f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68d62101c9b2c8055374f8fd0fcf694441081b4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423556"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — wywołuje internetowy interfejs API
 
@@ -41,7 +41,7 @@ Poniżej przedstawiono uproszczony kod akcji `HomeController`. Ten kod pobiera t
 }
 ```
 
-```CSharp
+```csharp
 public async Task<IActionResult> Profile()
 {
  var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);

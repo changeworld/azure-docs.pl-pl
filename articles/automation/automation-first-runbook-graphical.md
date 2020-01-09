@@ -3,19 +3,15 @@ title: Mój pierwszy graficzny element Runbook w Azure Automation
 description: Samouczek, który przeprowadzi Cię przez procesy tworzenia, testowania i publikowania prostego graficznego elementu Runbook.
 keywords: runbook, szablon runbook, automatyzacja runbook, azure runbook
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/13/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1cdd015d9f29c3fb672d626f32a485271e2757c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a93263cf968fc4804d7bbc59e15121d6061dd40a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366536"
 ---
 # <a name="my-first-graphical-runbook"></a>Mój pierwszy graficzny element Runbook
 
@@ -76,7 +72,7 @@ Przed opublikowaniem elementu runbook w celu udostępnienia go w środowisku pro
 
 1. Wybierz **okienko testowania** , aby otworzyć stronę testową.
 1. Kliknij opcję **Uruchom**, aby rozpocząć test. Powinna to być jedyna włączona opcja.
-1. Zostanie utworzone [zadanie elementu Runbook](automation-runbook-execution.md) i w okienku pojawi się jego stan.
+1. Zostanie utworzone [zadanie elementu Runbook](automation-runbook-execution.md) i w okienku zostanie wyświetlony jego stan.
 
    Początkowy stan zadania to *W kolejce*, który wskazuje, że trwa oczekiwanie na udostępnienie procesu roboczego elementu runbook w chmurze. Następnym stanem jest *Uruchamianie*, gdy proces roboczy pobiera zadanie, a następnie *Uruchomiono*, gdy element runbook faktycznie zacznie działać.
 
@@ -95,7 +91,7 @@ Nowo utworzony element runbook nadal działa w trybie roboczym. Aby można było
 
 1. Wybierz przycisk **Start** , a następnie pozycję **tak** po wyświetleniu monitu o uruchomienie elementu Runbook.
 1. Zostanie otwarta strona zadania dla zadania elementu Runbook, które zostało utworzone. Sprawdź, czy w polu **Stan zadania** jest widoczna informacja **Ukończono**.
-1. Gdy stan elementu Runbook zmieni się na *Ukończono*, kliknij pozycję **Dane wyjściowe**. Strona **wyjściowa** zostanie otwarta i będzie można zobaczyć *Hello World* w okienku.
+1. Gdy stanem elementu Runbook będzie *Ukończono*, kliknij pozycję **Dane wyjściowe**. Strona **wyjściowa** zostanie otwarta i będzie można zobaczyć *Hello World* w okienku.
 1. Zamknij stronę wyjściową.
 1. Kliknij pozycję **wszystkie dzienniki** , aby otworzyć stronę strumienie zadania elementu Runbook. W strumieniu danych wyjściowych powinien być widoczny tylko ciąg *Witaj, świecie*, ale mogą zostać wyświetlone inne strumienie zadania elementu runbook, takie jak Pełne informacje i Błąd, jeśli element runbook wykonuje w nich operacje zapisywania.
 1. Zamknij stronę wszystkie dzienniki i stronę zadania, aby powrócić do strony MyFirstRunbook-Graphic.

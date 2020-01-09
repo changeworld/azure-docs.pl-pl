@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób zarządzania danymi osobowymi przech
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7f8b40094b30a01e4189bcf04d4c194e5b0b4285
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932126"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394752"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w Log Analytics i Application Insights
 
@@ -73,7 +73,7 @@ Log Analytics to elastyczny magazyn, który jednocześnie określa schemat dla d
 
 ## <a name="how-to-export-and-delete-private-data"></a>Jak eksportować i usuwać dane prywatne
 
-Jak wspomniano wcześniej w [strategii dotyczącej obsługi danych osobowych](#strategy-for-personal-data-handling) , __zdecydowanie__ zaleca się, aby Jeśli to możliwe, aby zmienić strukturę zasad zbierania danych w celu wyłączenia zbierania danych prywatnych, zasłaniania lub anonymizingnia. w przeciwnym razie zmodyfikuj go, aby usunąć go z "Private". Obsługa danych spowoduje powstanie kosztów dla Ciebie i Twojego zespołu w celu zdefiniowania i zautomatyzowania strategii, skompilowania interfejsu dla klientów w celu korzystania z danych za pomocą i bieżących kosztów konserwacji. Dodatkowo jest to kosztowne kosztowo dla Log Analytics i Application Insights, a wiele wywołań interfejsu API współbieżnych zapytań lub przeczyszczania może mieć negatywny wpływ na wszystkie inne interakcje z funkcjami Log Analytics. Wspomniane w rzeczywistości istnieją pewne prawidłowe scenariusze, w których należy zebrać dane prywatne. W takich przypadkach dane powinny być obsługiwane zgodnie z opisem w tej sekcji.
+Jak wspomniano wcześniej w [strategii dotyczącej obsługi danych osobowych](#strategy-for-personal-data-handling) , __zdecydowanie__ zaleca się, aby można było zmienić strukturę zasad zbierania danych w celu wyłączenia zbierania danych prywatnych, zasłaniania lub anonymizing go albo w inny sposób, aby usunąć go z uznawania za "Private". Obsługa danych spowoduje powstanie kosztów dla Ciebie i Twojego zespołu w celu zdefiniowania i zautomatyzowania strategii, skompilowania interfejsu dla klientów w celu korzystania z danych za pomocą i bieżących kosztów konserwacji. Dodatkowo jest to kosztowne kosztowo dla Log Analytics i Application Insights, a wiele wywołań interfejsu API współbieżnych zapytań lub przeczyszczania może mieć negatywny wpływ na wszystkie inne interakcje z funkcjami Log Analytics. Wspomniane w rzeczywistości istnieją pewne prawidłowe scenariusze, w których należy zebrać dane prywatne. W takich przypadkach dane powinny być obsługiwane zgodnie z opisem w tej sekcji.
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
@@ -103,7 +103,7 @@ Po przypisaniu roli Azure Resource Manager dostępne są dwie nowe ścieżki int
 #### <a name="log-data"></a>Dane dziennika
 
 * [Po przeczyszczeniu](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) — pobiera parametry danych do usunięcia i zwraca identyfikator GUID odwołania 
-* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Na przykład:
+* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Przykład:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -115,7 +115,7 @@ Po przypisaniu roli Azure Resource Manager dostępne są dwie nowe ścieżki int
 #### <a name="application-data"></a>Dane aplikacji
 
 * [Po przeczyszczeniu](https://docs.microsoft.com/rest/api/application-insights/components/purge) — pobiera parametry danych do usunięcia i zwraca identyfikator GUID odwołania
-* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Na przykład:
+* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Przykład:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

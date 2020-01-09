@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji na platformie Azure | Microsoft Docs
+title: Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji na platformie Azure
 description: Dowiedz się, w jaki sposób wdrożyć maszynę wirtualną, na której zostanie uruchomiona skalowalna aplikacja korzystająca z usługi Azure Blob Storage
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 49689585b3f52bbee300ff68d2c2653f5e7ff8d0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 60bb227af7cc886bb35cbd045cc8a27cf82ae903
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372299"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Tworzenie maszyny wirtualnej i konta magazynu dla skalowalnej aplikacji
 
@@ -22,7 +22,7 @@ Część pierwsza serii zawiera informacje na temat wykonywania następujących 
 
 > [!div class="checklist"]
 > * Tworzenie konta magazynu
-> * Utwórz maszynę wirtualną
+> * Tworzenie maszyny wirtualnej
 > * Konfigurowanie rozszerzenia skryptu niestandardowego
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -55,7 +55,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
   -Kind Storage `
 ```
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 Utwórz konfigurację maszyny wirtualnej. Ta konfiguracja zawiera ustawienia, które są używane podczas wdrażania maszyny wirtualnej, takie jak obraz maszyny wirtualnej, rozmiar i konfiguracja uwierzytelniania. Podczas wykonywania tego kroku jest wyświetlany monit o poświadczenia. Wprowadzane wartości są konfigurowane jako nazwa użytkownika i hasło dla maszyny wirtualnej.
 
@@ -127,7 +127,7 @@ W części pierwszej serii opisano tworzenie konta magazynu, wdrażanie maszyny 
 
 > [!div class="checklist"]
 > * Tworzenie konta magazynu
-> * Utwórz maszynę wirtualną
+> * Tworzenie maszyny wirtualnej
 > * Konfigurowanie rozszerzenia skryptu niestandardowego
 
 Przejdź do drugiej części serii, która opisuje przekazywanie dużych ilości danych na konto magazynu przy użyciu ponawiania wykładniczego i funkcji równoległości.

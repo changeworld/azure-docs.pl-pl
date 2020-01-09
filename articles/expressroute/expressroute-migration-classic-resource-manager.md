@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2b74523f42a1f57805388aa8c60cf1ad5b1d1331
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b24400b2a6a2050fa74b23f936253046f96a9028
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436888"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrowanie usługi ExpressRoute skojarzonych sieci wirtualnych z wersji klasycznej do usługi Resource Manager
 
@@ -40,7 +40,7 @@ W tym artykule wyjaśniono, jak przeprowadzić migrację usługi ExpressRoute sk
 * Sieci wirtualne, bramy i skojarzonych z nimi wdrożeń w ramach sieci wirtualnej, które są dołączone do obwodu usługi ExpressRoute z tą samą subskrypcją mogą zostać zmigrowane do środowiska usługi Resource Manager, bez żadnych przestojów. Możesz wykonać kroki opisane w dalszej części przeprowadzić migrację zasobów, takich jak sieci wirtualne, bramy i maszyny wirtualne wdrożone w ramach sieci wirtualnej. Należy się upewnić, że sieci wirtualne są skonfigurowane prawidłowo przed migracją. 
 * Sieci wirtualne, bramy i skojarzonych z nimi wdrożeń w ramach sieci wirtualnej, które nie znajdują się w innej subskrypcji niż obwód usługi ExpressRoute wymaga pewien Przestój, aby ukończyć migrację. Ostatnia sekcja dokumentu w tym artykule opisano kroki, aby wykonać migrację zasobów.
 * Nie można przeprowadzić migracji sieci wirtualnej przy użyciu zarówno bramę usługi ExpressRoute, jak i bramy sieci VPN.
-* Migracja między subskrypcjami obwodu usługi ExpressRoute nie jest obsługiwana. Aby uzyskać więcej informacji, zobacz [Microsoft. Network Move support](../azure-resource-manager/move-support-resources.md#microsoftnetwork).
+* Migracja między subskrypcjami obwodu usługi ExpressRoute nie jest obsługiwana. Aby uzyskać więcej informacji, zobacz [Microsoft. Network Move support](../azure-resource-manager/management/move-support-resources.md#microsoftnetwork).
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Przenoszenie obwodu usługi ExpressRoute z wersji klasycznej do usługi Resource Manager
 Należy przenieść obwód usługi ExpressRoute z klasycznego środowiska usługi Resource Manager przed podjęciem próby migracji zasobów, które są dołączone do obwodu usługi ExpressRoute. Aby wykonać to zadanie, zobacz następujące artykuły:

@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407232"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności usługi Azure App Service
 
@@ -77,9 +77,9 @@ Istnieją dwa sposoby włączania monitorowania aplikacji na platformie Azure Ap
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-Obsługiwane są następujące wersje programu .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2
+Obsługiwane są następujące wersje programu .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
-Kierowanie całego środowiska z platformy .NET Core, samodzielnego wdrażania i ASP.NET Core 3,0 nie jest obecnie **obsługiwane** w przypadku monitorowania opartego na agentach/rozszerzeniach. ([Instrumentacja ręczna](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) za pośrednictwem kodu będzie działała we wszystkich poprzednich scenariuszach).
+Kierowanie całego środowiska z platformy .NET Core, samodzielnego wdrażania i aplikacji opartych na systemie Linux nie jest obecnie **obsługiwane** w przypadku monitorowania opartego na agentach/rozszerzeniach. ([Instrumentacja ręczna](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) za pośrednictwem kodu będzie działała we wszystkich poprzednich scenariuszach).
 
 1. **Wybierz pozycję Application Insights** w panelu sterowania platformy Azure dla usługi App Service.
 
@@ -92,7 +92,7 @@ Kierowanie całego środowiska z platformy .NET Core, samodzielnego wdrażania i
 
      ![Instrumentacja aplikacji internetowej](./media/azure-web-apps/create-resource-01.png)
 
-2. Po określeniu zasobu, który ma być używany, można wybrać, w jaki sposób Application Insights zbierać dane na platformę dla aplikacji. Program .NET Core oferuje **zalecaną kolekcję** lub **wyłączony** dla programów .net Core 2,0, 2,1 i 2,2.
+2. Po określeniu zasobu, który ma być używany, można wybrać, w jaki sposób Application Insights zbierać dane na platformę dla aplikacji. Program .NET Core oferuje **zalecaną kolekcję** lub **wyłączony** dla programów .net Core 2,0, 2,1, 2,2 i 3,0.
 
     ![Wybierz opcje na platformę](./media/azure-web-apps/choose-options-new-net-core.png)
 

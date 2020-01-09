@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform & OpenID Connect Connect Protocol | Azure
+title: OpenID Connect Connect Protocol — Microsoft Identity platform | Azure
 description: Tworzenie aplikacji sieci Web przy użyciu implementacji platformy tożsamości firmy Microsoft w ramach protokołu uwierzytelniania OpenID Connect Connect.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3778f31cb5dd68d3f3f49ed3cddf574b1cc3bd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 270fda72378b61e6011d5bbf4ce43496df045c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423226"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform i OpenID Connect Connect Protocol
 
@@ -91,7 +91,7 @@ Gdy aplikacja sieci Web wymaga uwierzytelnienia użytkownika, może kierować u�
 > [!IMPORTANT]
 > Aby można było pomyślnie zażądać tokenu identyfikatora z punktu końcowego/Authorization, Rejestracja aplikacji w [portalu rejestracji](https://portal.azure.com) musi mieć niejawne przyznanie id_tokens włączony na karcie uwierzytelnianie (co ustawia flagę `oauth2AllowIdTokenImplicitFlow` w [manifeście aplikacji](reference-app-manifest.md) na `true`). Jeśli nie jest włączona, zostanie zwrócony błąd `unsupported_response`: "podana wartość parametru wejściowego" response_type "nie jest dozwolona dla tego klienta. Oczekiwana wartość to "Code" "
 
-Na przykład:
+Przykład:
 
 ```
 // Line breaks are for legibility only.

@@ -10,14 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: 001a6d5ef742874698cd7a67014179a2f8528fc6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373251"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Co to jest protokół IPv6 dla usługi Azure Virtual Network? (Wersja zapoznawcza)
 
@@ -59,7 +59,7 @@ Protokół IPv6 dla sieci wirtualnej platformy Azure obejmuje następujące moż
     - Opcjonalne reguły ruchu wychodzącego zapewniające pełną kontrolę deklaratywną nad łącznością wychodzącą w celu skalowania i dostrajania tej możliwości do konkretnych potrzeb.
     - Opcjonalna wiele konfiguracji frontonu, które umożliwiają pojedynczemu modułowi równoważenia obciążenia używanie wielu publicznych adresów IP IPv6 — ten sam protokół frontonu i port mogą być ponownie używane między adresami frontonu.
     - Opcjonalne porty IPv6 mogą być ponownie używane w wystąpieniach zaplecza przy użyciu funkcji *zmiennoprzecinkowego adresu IP* reguł równoważenia obciążenia 
-- [Standardowa obsługa Load BALANCER wewnętrznego IPv6](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) do tworzenia odpornych aplikacji wielowarstwowych w ramach usługi Azure sieci wirtualnych.  
+- [Standardowa obsługa Load Balancer wewnętrznego IPv6](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) do tworzenia odpornych aplikacji wielowarstwowych w ramach usługi Azure sieci wirtualnych.  
 - Obsługa publicznej Load Balancer publicznych adresów IPv6 w celu zapewnienia zgodności ze starszymi wdrożeniami
 - [Publiczne adresy IP i zakresy adresów zastrzeżonego protokołu IPv6](ipv6-public-ip-address-prefix.md) zapewniają stabilne, przewidywalne adresy IPv6, które ułatwiają listy dozwolonych aplikacji hostowanych na platformie Azure dla Twojej firmy i klientów.
 - Publiczny adres IP na poziomie wystąpienia zapewnia łączność z Internetem IPv6 bezpośrednio z indywidualnymi maszynami wirtualnymi.

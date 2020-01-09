@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371823"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)
 
@@ -25,7 +25,7 @@ Sygnatura dostępu współdzielonego zapewnia bezpieczny dostęp delegowany do z
 
 Usługa Azure Storage obsługuje trzy typy sygnatur dostępu współdzielonego:
 
-- **Sygnatura dostępu współdzielonego użytkownika (wersja zapoznawcza).** Sygnatura dostępu współdzielonego delegowania użytkownika jest zabezpieczana za pomocą poświadczeń Azure Active Directory (Azure AD), a także uprawnień określonych dla sygnatury dostępu współdzielonego. Sygnatura dostępu współdzielonego użytkownika ma zastosowanie tylko do magazynu obiektów BLOB.
+- **Sygnatura dostępu współdzielonego użytkownika.** Sygnatura dostępu współdzielonego delegowania użytkownika jest zabezpieczana za pomocą poświadczeń Azure Active Directory (Azure AD), a także uprawnień określonych dla sygnatury dostępu współdzielonego. Sygnatura dostępu współdzielonego użytkownika ma zastosowanie tylko do magazynu obiektów BLOB.
 
     Aby uzyskać więcej informacji o funkcji sygnatury dostępu współdzielonego delegowania użytkowników, zobacz [Tworzenie skojarzeń zabezpieczeń dla delegowania użytkowników (API REST)](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -122,9 +122,9 @@ Aby rozpocząć pracę z sygnaturami dostępu współdzielonego, zapoznaj się z
 
 ### <a name="user-delegation-sas"></a>Sygnatura dostępu współdzielonego użytkownika
 
-- [Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell (wersja zapoznawcza)](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB przy użyciu platformy .NET (wersja zapoznawcza)](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB przy użyciu programu PowerShell](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB przy użyciu platformy .NET](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>SAS usługi
 

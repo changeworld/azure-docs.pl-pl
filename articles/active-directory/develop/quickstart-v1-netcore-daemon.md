@@ -1,5 +1,5 @@
 ---
-title: Pobieranie tokenów & wywoływanie Microsoft Graph interfejsów API z aplikacji konsolowych (v 1.0) | Azure
+title: Uzyskiwanie Microsoft Graph & wywołań tokenu (konsola .NET Core) (v 1.0) | Azure
 description: Tworzenie aplikacji demona .NET, która integruje się z usługą Azure AD & wywołuje chronione interfejsy API usługi Azure AD przy użyciu protokołu OAuth 2,0
 services: active-directory
 author: rwike77
@@ -14,14 +14,14 @@ ms.author: jmprieur
 ms.reviewer: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2858a0b14863195ee0f56c89fe2c55c9e63873de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d44dfe3eb03ff086d3785311c34ab1a6a5b3982a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424050"
 ---
-# <a name="quickstart-acquire-token-and-call-microsoft-graph-api-with-console-apps-identity-v10"></a>Szybki Start: uzyskiwanie tokenu i wywoływanie Microsoft Graph interfejsu API z tożsamością aplikacji konsolowej (v 1.0) 
+# <a name="quickstart-acquire-token-and-call-microsoft-graph-using-console-apps-identity-v10"></a>Szybki Start: uzyskiwanie tokenu i Wywołaj Microsoft Graph przy użyciu tożsamości aplikacji konsolowej (v 1.0)
 
 [Platforma tożsamości firmy Microsoft](v2-overview.md) to ewolucja platformy deweloperów Azure Active Directory (Azure AD). Dzięki niej deweloperzy mogą tworzyć aplikacje, które logują użytkowników przy użyciu wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania interfejsów API firmy Microsoft, takich jak Microsoft Graph, lub interfejsów API opracowanych przez deweloperów.
 

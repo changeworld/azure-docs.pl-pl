@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407701"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacje rozproszone
 
@@ -53,7 +53,7 @@ Wybierz pozycję **Zbadaj błędy** , aby uruchomić okienko błędy.
 
 ![Zrzut ekranu przedstawiający środowisko błędów](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Badanie wydajności
+### <a name="investigate-performance"></a>Zbadaj wydajność
 
 Aby rozwiązać problemy z wydajnością, wybierz pozycję **Zbadaj wydajność**.
 
@@ -69,13 +69,13 @@ Wybierz pozycję **Przejdź do szczegółów** , aby poznać kompleksowe środow
 
 ![Zrzut ekranu przedstawiający szczegółowe informacje o transakcji](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Wyświetl w analizie
+### <a name="view-logs-analytics"></a>Wyświetlanie dzienników (analiza)
 
-Aby kontynuować zapytania i zbadać dane aplikacji, kliknij przycisk **Wyświetl w analizie**.
+Aby kontynuować zapytania i zbadać dane aplikacji, kliknij pozycję **Wyświetl w obszarze Dzienniki (analiza)** .
 
-![Zrzut ekranu przedstawiający widok na przycisku analiza](media/app-map/view-in-analytics.png)
+![Zrzut ekranu przedstawiający widok na przycisku analiza](media/app-map/view-logs.png)
 
-![Zrzut ekranu przedstawiający środowisko analizy](media/app-map/analytics.png)
+![Zrzut ekranu przedstawiający środowisko analizy. Wykres liniowy podsumowuje średni czas trwania odpowiedzi żądania w ciągu ostatnich 12 godzin.](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>Alerty
 
@@ -230,7 +230,7 @@ Dla [oficjalnych definicji](https://github.com/Microsoft/ApplicationInsights-dot
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Alternatywnie **wystąpienie roli w chmurze** może być przydatne w scenariuszach, w których **Nazwa roli chmury** informuje o problemie w frontonie sieci Web, ale może być uruchomiony fronton sieci Web na wielu serwerach o zrównoważonym obciążeniu, dzięki czemu można Przechodzenie do szczegółów warstwy w bardziej szczegółowy sposób za pośrednictwem zapytań Kusto i wiedzą, czy problem wpływa na wszystkie serwery/wystąpienia frontonu internetowego, czy tylko jeden z nich może być bardzo ważny.
+Alternatywnie, **wystąpienie roli w chmurze** może być przydatne w scenariuszach, w których **Nazwa roli w chmurze** informuje o problemie w frontonie sieci Web, ale może być uruchomiony fronton sieci Web na wielu serwerach o zrównoważonym obciążeniu, dzięki czemu można bardziej szczegółowo przechodzenie do warstwy przy użyciu zapytań Kusto i wiedzieć, czy problem ma wpływ na wszystkie serwery/wystąpienia frontonu internetowego.
 
 Scenariusz, w którym warto zastąpić wartość wystąpienia roli w chmurze, może mieć miejsce, jeśli aplikacja działa w środowisku kontenerowym, w którym tylko wiedza na pojedynczym serwerze może nie być wystarczająco dużo informacji, aby zlokalizować dany problem.
 

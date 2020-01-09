@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423392"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Tworzenie wielodostępnego demona korzystającego z punktu końcowego platformy tożsamości firmy Microsoft
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Samouczek: Tworzenie demona wielodostępnego, która używa punktu końcowego platformy tożsamości firmy Microsoft
 
 W ramach tego samouczka nauczysz się używać platformy tożsamości firmy Microsoft do uzyskiwania dostępu do danych klientów firmy Microsoft w długotrwałym, nieinteraktywnym procesie. Demona Przykładowa używa [przydzielenia poświadczeń klienta OAuth2](v2-oauth2-client-creds-grant-flow.md) w celu uzyskania tokenu dostępu. Demon używa tokenu do wywoływania [Microsoft Graph](https://graph.microsoft.io) i dostępu do danych organizacji.
+
+> [!div class="checklist"]
+> * Integrowanie aplikacji demona z platformą tożsamości firmy Microsoft
+> * Przyznawanie uprawnień aplikacji bezpośrednio do aplikacji przez administratora
+> * Uzyskiwanie tokenu dostępu w celu wywołania interfejsu API Microsoft Graph
+> * Wywołaj interfejs API Microsoft Graph.
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Aplikacja została skompilowana jako aplikacja ASP.NET MVC. Używa ona oprogramowania OWIN OpenID Connect Connecter do logowania użytkowników.  
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Lub [Pobierz przykład w pliku zip](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>Rejestrowanie przykładowej aplikacji przy użyciu dzierżawy usługi Azure AD
+## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
-Ten przykład ma jeden projekt. Aby go zarejestrować, możesz:
+Ten przykład ma jeden projekt. Aby zarejestrować aplikację w dzierżawie usługi Azure AD, możesz:
 
-- Wykonaj kroki opisane w temacie [Rejestrowanie przykładu w dzierżawie Azure Active Directory](#register-the-sample-application-with-your-azure-ad-tenant) i [Skonfiguruj przykład do korzystania z dzierżawy usługi Azure AD](#choose-the-azure-ad-tenant).
+- Wykonaj kroki opisane w temacie [Rejestrowanie przykładu w dzierżawie Azure Active Directory](#register-your-application) i [Skonfiguruj przykład do korzystania z dzierżawy usługi Azure AD](#choose-the-azure-ad-tenant).
 - Użyj skryptów programu PowerShell, które:
   - *Automatycznie* Twórz aplikacje usługi Azure AD i powiązane obiekty (hasła, uprawnienia, zależności).
   - Zmodyfikuj pliki konfiguracyjne projektów programu Visual Studio.
@@ -237,7 +245,10 @@ Program Visual Studio opublikuje projekt i automatycznie otworzy przeglądarkę 
 1. Zapisz konfigurację.
 1. Dodaj ten sam adres URL na liście wartości menu **przekierowania identyfikatorów uri** ** > .** Jeśli masz wiele adresów URL przekierowania, upewnij się, że istnieje nowy wpis, który używa identyfikatora URI usługi App Service dla każdego adresu URL przekierowania.
 
-## <a name="community-help-and-support"></a>Pomoc i obsługa techniczna społeczności
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+Gdy nie jest już potrzebne, Usuń obiekt aplikacji, który został utworzony w kroku [zarejestruj aplikację](#register-your-application) .  Aby usunąć aplikację, postępuj zgodnie z instrukcjami w temacie [usuwanie aplikacji napisanej przez Ciebie lub w organizacji](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
+
+## <a name="get-help"></a>Uzyskiwanie pomocy
 
 Użyj [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) , aby uzyskać pomoc techniczną dla społeczności.
 Zadawaj pytania na Stack Overflow pierwsze i Przeglądaj istniejące problemy, aby zobaczyć, czy ktoś zażądał wcześniej pytania.

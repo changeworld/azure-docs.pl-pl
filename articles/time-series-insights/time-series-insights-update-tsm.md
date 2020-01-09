@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112295"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374745"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model szeregów czasowych w wersji zapoznawczej Azure Time Series Insights
 
@@ -24,6 +24,7 @@ W tym artykule opisano model szeregów czasowych, możliwości i sposób rozpocz
 > [!TIP]
 >  * Zapoznaj się z przykładem środowiska [demonstracyjnego farmy wiatrów firmy Contoso](https://insights.timeseries.azure.com/preview/samples) w przypadku modelu na żywo.
 > * Przeczytaj informacje o [Azure Time Series Insights Eksploratorze wersji zapoznawczej](time-series-insights-update-explorer.md) , aby dowiedzieć się, jak NAWIGOWAĆ po interfejsie użytkownika modelu szeregów czasowych.
+> * Dowiedz się, [jak korzystać z modelu szeregów czasowych](time-series-insights-update-how-to-tsm.md) przy użyciu programu Time Series Insights Web Explorer.
 
 ## <a name="summary"></a>Podsumowanie
 
@@ -48,11 +49,11 @@ Te ograniczenia ujawniły znaczenie narzędzi do agregowania i wizualizacji dany
 
 **Model szeregów czasowych zapewnia wygodne rozwiązanie** dla wielu scenariuszy napotkanych w tym fikcyjnym przykładzie:
 
-[Tworzenie wykresów modelu szeregów czasowych ![](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
+[przykład wykresu inteligentnego grafu ![modelem szeregów czasowych](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Model szeregów czasowych odgrywa istotną rolę w zapytaniach i nawigacji, ponieważ contextualizes dane przez umożliwienie porównań między zakresami czasu i między rodzajami czujników i urządzeń.
-* Dane są dodatkowo zaewidencjonowania, ponieważ dane utrwalane w modelu szeregów czasowych zachowują obliczenia zapytań szeregów czasowych jako zmienne i używają ich w czasie zapytania.
-* Model szeregów czasowych organizuje i agreguje dane w celu zwiększenia możliwości wizualizacji i zarządzania.
+* Model szeregów czasowych odgrywa istotną rolę w zapytaniach i nawigacji, ponieważ contextualizes dane przez umożliwienie porównań między zakresami czasu i między rodzajami czujników i urządzeń. (**A**) 
+* Dane są dodatkowo zaewidencjonowania, ponieważ dane utrwalane w modelu szeregów czasowych są zachowywane jako zmienne i są ponownie stosowane w czasie zapytania.
+* Model szeregów czasowych organizuje i agreguje dane w celu zwiększenia możliwości wizualizacji i zarządzania. (**B**) 
 
 ### <a name="key-capabilities"></a>Najważniejsze możliwości
 
@@ -72,7 +73,7 @@ Model szeregów czasowych ma trzy podstawowe składniki:
 
 Te składniki są łączone w celu określenia modelu szeregów czasowych i organizowania danych Azure Time Series Insights.
 
-[Omówienie modelu szeregów czasowych ![](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[Wykres przeglądowy modelu szeregów czasowych ![](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
 Model szeregów czasowych można utworzyć i zarządzać nim za pomocą interfejsu [Time Series Insights w wersji zapoznawczej](time-series-insights-update-how-to-tsm.md) . Ustawienia modelu szeregów czasowych mogą być zarządzane za pomocą [interfejsu API ustawień modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
@@ -90,7 +91,7 @@ Po skonfigurowaniu źródła zdarzeń dla środowiska Time Series Insights wyst�
 
 [Demonstracja farmy wiatrów firmy Contoso](https://insights.timeseries.azure.com/preview/samples) zawiera kilka przykładów wystąpienia na żywo.
 
-[wystąpienia modelu szeregów czasowych ![](media/v2-update-tsm/instance.png)](media/v2-update-tsm/instance.png#lightbox)
+[przykład ![wystąpienia modelu szeregów czasowych](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>Właściwości wystąpienia
 
@@ -112,18 +113,18 @@ Wystąpienia mają następującą reprezentację JSON:
 
 ```JSON
 {
-    "timeSeriesId": ["PU2"],
-    "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
-    "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
-    "description": "Pump #2",
-    "instanceFields": {
-        "Location": "Redmond",
-        "Fleet": "Fleet 5",
-        "Unit": "Pump Unit 3",
-        "Manufacturer": "Contoso",
-        "ScalePres": "0.54",
-        "scaleTemp": "0.54"
-    }
+  "timeSeriesId": ["PU2"],
+  "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
+  "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
+  "description": "Pump #2",
+  "instanceFields": {
+    "Location": "Redmond",
+    "Fleet": "Fleet 5",
+    "Unit": "Pump Unit 3",
+    "Manufacturer": "Contoso",
+    "ScalePres": "0.54",
+    "scaleTemp": "0.54"
+  }
 }
 ```
 
@@ -138,7 +139,7 @@ W danym środowisku Time Series Insights można skonfigurować wiele hierarchii.
 
 Interfejs klienta [demonstracji programu contoso wiatr farmy](https://insights.timeseries.azure.com/preview/samples) wyświetla standardowe wystąpienie i hierarchię typów.
 
-[Hierarchie modelu szeregów czasowych ![](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
+[przykład ![hierarchii modelu szeregów czasowych](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>Definicja hierarchii
 
@@ -215,7 +216,7 @@ W przypadku pól wystąpienia używanych w poprzedniej definicji i kilku szereg�
 | ID4 | "Building" = "1000", "piętro" = "10"  |
 | ID5 | Nie ustawiono żadnego z "kompilowania", "podłogi" lub "pokoju". |
 
-Szeregi czasowe **ID1** i **ID4** są wyświetlane jako część hierarchii **H1** w [Eksploratorze Azure Time Series Insights](time-series-insights-update-explorer.md) , ponieważ mają w pełni zdefiniowane i prawidłowo uporządkowane *kompilacje*, *piętro*i *pomieszczenie* wejściowe.
+Szeregi czasowe **ID1** i **ID4** są wyświetlane jako część hierarchii **H1** w [Eksploratorze Azure Time Series Insights](time-series-insights-update-explorer.md) , ponieważ mają w pełni zdefiniowane i prawidłowo uporządkowane parametry *kompilacji*, *podłogi*i *pokoju* .
 
 Inne są klasyfikowane jako *nienadrzędne wystąpienia* , ponieważ nie są zgodne z określoną hierarchią danych.
 
@@ -227,7 +228,7 @@ Typ może mieć co najmniej jednej zmiennej. Na przykład wystąpienie modelu sz
 
 [Demonstracja farmy wiatrów firmy Contoso](https://insights.timeseries.azure.com/preview/samples) umożliwia wizualizację kilku typów modelu szeregów czasowych skojarzonych z odpowiednimi wystąpieniami.
 
-[![typy modeli szeregów czasowych](media/v2-update-tsm/types.png)](media/v2-update-tsm/types.png#lightbox)
+[przykład ![typu modelu szeregów czasowych](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
 > Aby uzyskać pomoc dotyczącą Time Series Insights wystąpienia API i CRUD, zapoznaj się z artykułem [wykonywanie zapytań dotyczących danych](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) i [dokumentacją interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
@@ -241,7 +242,7 @@ Typy modeli szeregów czasowych są zdefiniowane przez **Identyfikator**, **nazw
 | id | Identyfikator UUID typu. |
 | name | Ciąg używany do podania nazwy dla typu. |
 | description | Opis ciągu dla typu. |
-| Modyfikacj | Określ zmienne skojarzone z typem. |
+| zmienne | Określ zmienne skojarzone z typem. |
 
 Typy są zgodne z następującym przykładem JSON:
 
@@ -295,7 +296,7 @@ Każda zmienna może być jednym z trzech *rodzajów*: *liczbowej*, *kategorii*i
 
 W poniższej tabeli przedstawiono właściwości, które są istotne dla poszczególnych rodzajów zmiennych.
 
-[![typy modeli szeregów czasowych](media/v2-update-tsm/variable-table.png)](media/v2-update-tsm/variable-table.png#lightbox)
+[![tabela zmiennych modelu szeregów czasowych](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>Zmienne liczbowe
 
@@ -342,7 +343,9 @@ Zmienne są zgodne z następującym przykładem JSON:
 ```JSON
 "Status": {
   "kind": "categorical",
-  "value": "toLong($event.[Status].Double)",
+  "value": {
+     "tsx": "toLong($event.[Status].Double)" 
+},
   "interpolation": {
     "kind": "step",
     "boundary": {
@@ -389,5 +392,7 @@ Zmienne są przechowywane w definicji typu w modelu szeregów czasowych i mogą 
 ## <a name="next-steps"></a>Następne kroki
 
 - Zobacz [Azure Time Series Insights w wersji zapoznawczej magazynu i transferu danych](./time-series-insights-update-storage-ingress.md)przychodzących.
+
 - Informacje na temat typowych operacji modelu szeregów czasowych w ramach [modelowania danych w programie Azure Time Series Insights Preview](./time-series-insights-update-how-to-tsm.md)
+
 - Zapoznaj się z dokumentacją nowej dokumentacji dotyczącej [modelu szeregów czasowych](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .

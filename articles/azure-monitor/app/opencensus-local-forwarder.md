@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Application Insights OpenCensus — moduł przekazujący śledzenie rozproszone (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Usługa Azure Application Insights OpenCensus — lokalna usługa przesyłania dalej (wersja zapoznawcza)
 description: Przekazuj OpenCensus rozproszone i rozpięte z języków, takich jak Python, i przejdź do platformy Azure Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406605"
 ---
 # <a name="local-forwarder-preview"></a>Lokalna usługa przesyłania dalej (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Lokalna usługa przesyłania dalej to [projekt Open Source w usłudze GitHub](ht
 Najprostszym sposobem uruchamiania lokalnego usługi przesyłania dalej w systemie Windows jest zainstalowanie jej jako usługi systemu Windows. Wydanie zawiera plik wykonywalny usługi systemu Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), który może być łatwo zarejestrowany w systemie operacyjnym.
 
 > [!NOTE]
-> Lokalna usługa przesyłania dalej wymaga co najmniej .NET Framework 4,7. Jeśli nie masz .NET Framework 4,7, usługa zostanie zainstalowana, ale nie zostanie uruchomiona. Aby uzyskać dostęp do najnowszej wersji .NET Framework, **[odwiedź stronę pobierania .NET Framework](
+> Lokalna usługa przesyłania dalej wymaga co najmniej .NET Framework 4,7. Jeśli nie masz .NET Framework 4,7, usługa zostanie zainstalowana, ale nie zostanie uruchomiona. Najnowsza wersja programu .NET Framework dostęp do **[odwiedź stronę pobierania programu .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Pobierz LF. Plik WindowsServiceHost. zip z [lokalnej strony wersji usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.
@@ -78,7 +78,7 @@ W przypadku niektórych przypadków użycia może być korzystne uruchomienie lo
   ```batchfile
   E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
   ```
-* własny zestaw plików binarnych platformy .NET Core dla platform x86 i x64. Nie wymaga to uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/win-x86/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+* własny zestaw plików binarnych platformy .NET Core dla platform x86 i x64. Nie wymaga to uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
   ```batchfile
   E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
   E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
@@ -93,7 +93,7 @@ Podobnie jak w przypadku systemu Windows, wydanie zawiera następujące wersje w
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* własny zestaw plików binarnych platformy .NET Core dla systemu Linux-64. To nie wymaga uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/Linux-x64/Publish/Microsoft.LocalForwarder.ConsoleHost*.
+* własny zestaw plików binarnych platformy .NET Core dla systemu Linux-64. To nie wymaga uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost
@@ -105,7 +105,7 @@ Wielu użytkowników systemu Linux będzie chcą uruchamiać lokalny moduł prze
 Na przykład Utwórzmy usługę demona przy użyciu systemu. Użyjemy wersji zależnej od struktury, ale ten sam można wykonać dla samego siebie.
 
 * Utwórz następujący plik usługi o nazwie *localforwarder. Service* i umieść go w usłudze */lib/systemd/system*.
-W tym przykładzie przyjęto założenie, że Twoja nazwa użytkownika to SAMPLE_USER i skopiowano pliki binarne zależne od platformy (z */ConsoleHost/Publish*) do */Home/SAMPLE_USER/LOCALFORWARDER_DIR*.
+W tym przykładzie przyjęto założenie, że nazwa użytkownika jest SAMPLE_USER i skopiowano pliki binarne zależne od platformy (z */ConsoleHost/Publish*) do */home/SAMPLE_USER/LOCALFORWARDER_DIR*.
 
 ```
 # localforwarder.service

@@ -1,7 +1,7 @@
 ---
-title: Jak utworzyć zestaw danych szkoleniowych modelu niestandardowego — aparat rozpoznawania formularza
+title: Jak utworzyć zestaw danych szkoleniowych dla niestandardowego aparatu rozpoznawania formularzy modelu
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak upewnić się, zestaw danych szkoleniowych zoptymalizowana pod kątem uczenia modelu rozpoznawania formularza.
+description: Dowiedz się, jak upewnić się, że zestaw danych szkoleniowych jest zoptymalizowany pod kątem szkolenia modelu aparatu rozpoznawania formularzy.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,40 +9,42 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 643f0d6dd3ee073bd19f8697346689523032ad9f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 71ad7c5dd3ad74082da552cd3c45142bc0c2d624
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380630"
 ---
-# <a name="build-a-training-data-set-for-a-custom-model"></a>Tworzenie szkoleniowy zestaw danych dla modelu niestandardowego
+# <a name="build-a-training-data-set-for-a-custom-model"></a>Tworzenie zestawu danych szkoleniowych dla modelu niestandardowego
 
-Korzystając z modelu niestandardowego formularza rozpoznawania możesz podać danych szkoleniowych, aby uczyć modelu formularzy specyficznych dla branży. Możesz uczyć model z pięciu wypełnione formularze lub pusty formularz (nazwa pliku musi zawierać słowo "puste"), oraz dwie formy wypełnione. Nawet jeśli masz za mało wypełnione formularze do jego trenowanie za pomocą, dodając pusty formularz do zestawu danych szkoleniowych zwiększa dokładność modelu.
+W przypadku korzystania z niestandardowego modelu aparatu rozpoznawania formularzy należy zapewnić własne dane szkoleniowe, aby model mógł nauczyć się na formularzach specyficznych dla branży. Możesz nauczyć model z pięcioma wypełnionymi formularzami lub pustym formularzem (w nazwie pliku musi znajdować się słowo "Empty") oraz dwie wypełnione formularze. Nawet jeśli masz wystarczającą liczbę wypełnionych formularzy do uczenia się, dodanie pustego formularza do zestawu danych szkoleniowych może poprawić dokładność modelu.
 
-## <a name="training-data-tips"></a>Porady dotyczące danych szkoleniowych
+Jeśli chcesz używać ręcznie etykietowanych danych szkoleniowych, należy zacząć od co najmniej pięciu form tego samego typu. Nadal można używać formularzy nieoznaczonych etykietami i pustego formularza w tym samym zestawie danych.
 
-Należy użyć zestawu danych, który jest zoptymalizowany do trenowania. Użyj następujących wskazówek, aby zagwarantować, że uzyskać najlepsze wyniki z [Train Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) operacji:
+## <a name="training-data-tips"></a>Wskazówki dotyczące danych szkoleniowych
 
-* Jeśli to możliwe zamiast oparte na tekście dokumentów PDF dokumentów na podstawie obrazu. Skanowanych dokumentów PDF są obsługiwane jako obrazy.
-* Użyj jeden pusty formularz i dwie formy wypełniane, jeśli je, które są dostępne.
-* W przypadku wypełnione formularze Użyj przykładów, które mają wszystkie pola wypełnione.
-* Używanie formularzy z różnymi wartościami w każdym polu.
-* W przypadku obrazów formularza niższej jakości, należy użyć większy zestaw danych (na przykład obrazy 10 – 15).
+Ważne jest, aby użyć zestawu danych, który jest zoptymalizowany do szkoleń. Skorzystaj z poniższych wskazówek, aby uzyskać najlepsze wyniki operacji dotyczącej [niestandardowego modelu uczenia](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) :
 
-## <a name="general-input-requirements"></a>Ogólne wymagania wprowadzania
+* Jeśli to możliwe, użyj tekstowych dokumentów PDF zamiast dokumentów opartych na obrazie. Skanowane pliki PDF są obsługiwane jako obrazy.
+* W przypadku formularzy wypełnionych Użyj przykładów, w których wypełniono wszystkie pola.
+* Używaj formularzy z różnymi wartościami w każdym polu.
+* Jeśli obrazy formularzy mają niższą jakość, użyj większego zestawu danych (na przykład obrazów 10-15).
+* Łączny rozmiar zestawu danych szkoleniowych może należeć do 500 stron.
 
-Upewnij się, że zestaw danych szkoleniowych następuje po danych wejściowych wymagania dla całej zawartości rozpoznawania formularza. 
+## <a name="general-input-requirements"></a>Ogólne wymagania dotyczące danych wejściowych
+
+Upewnij się, że zestaw danych szkoleniowych jest również zgodny z wymaganiami wejściowymi dla całej zawartości aparatu rozpoznawania formularzy. 
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-## <a name="upload-your-training-data"></a>Przekazywanie danych szkoleniowych
+## <a name="upload-your-training-data"></a>Przekaż swoje dane szkoleniowe
 
-Po użytkownik została utworzona, zestaw dokumentów formularz służący do celów szkoleniowych, musisz przekazać go do kontenera magazynu obiektów blob platformy Azure. Jeśli nie wiesz, jak utworzyć konto magazynu platformy Azure przy użyciu kontenera, następujące [usługi Azure Storage Przewodnik Szybki start dotyczący witryny Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+Po umieszczeniu zestawu dokumentów formularzy, które będą używane do szkoleń, należy przekazać je do kontenera magazynu obiektów blob platformy Azure. Jeśli nie wiesz, jak utworzyć konto usługi Azure Storage za pomocą kontenera, zapoznaj się z [przewodnikiem Szybki Start dla usługi Azure Storage, aby uzyskać Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
-### <a name="organize-your-data-in-subfolders-optional"></a>Organizowanie danych w podfolderach (opcjonalnie)
+### <a name="organize-your-data-in-subfolders-optional"></a>Organizuj dane w podfolderach (opcjonalnie)
 
-Domyślnie [Train Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) interfejsu API będzie używać tylko dokumenty formularza, które znajdują się w folderze głównym w kontenerze magazynu. Jednak możesz uczyć z danymi w podfolderach w przypadku określenia w wywołaniu interfejsu API. Zwykle treści [Train Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/TrainCustomModel) wywołanie ma następującą postać gdzie `<SAS URL>` jest adres URL sygnatury dostępu współdzielonego kontenera:
+Domyślnie interfejs API sieci [uczenia niestandardowego](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) będzie używać tylko dokumentów formularzy znajdujących się w katalogu głównym kontenera magazynu. Można jednak nauczyć się z danymi w podfolderach, jeśli określisz ją w wywołaniu interfejsu API. Zwykle treść wywołania [niestandardowego modelu uczenia](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) ma następującą formę, gdzie `<SAS URL>` jest adresem URL sygnatury dostępu współdzielonego kontenera:
 
 ```json
 {
@@ -50,7 +52,7 @@ Domyślnie [Train Model](https://westus2.dev.cognitive.microsoft.com/docs/servic
 }
 ```
 
-Jeśli dodasz następującą zawartość do treści żądania interfejsu API będzie jego trenowanie za pomocą dokumenty znajdujące się w jego podfolderach. `"prefix"` Pole jest opcjonalne i ograniczy szkoleniowy zestaw danych do plików, których ścieżki zaczynają się od podanego ciągu. Dlatego wartość `"Test"`, na przykład, spowoduje, że interfejs API, aby przyjrzeć się tylko pliki lub foldery, które zaczynają się od słowa "Test".
+Jeśli dodasz następującą zawartość do treści żądania, interfejs API będzie szkolić z dokumentami znajdującymi się w podfolderach. Pole `"prefix"` jest opcjonalne i ograniczy zestaw danych szkoleniowych do plików, których ścieżki zaczynają się podanym ciągiem. Na przykład wartość `"Test"`, spowoduje, że interfejs API będzie przeglądać tylko pliki lub foldery, które zaczynają się od słowa "test".
 
 ```json
 {
@@ -58,14 +60,15 @@ Jeśli dodasz następującą zawartość do treści żądania interfejsu API bę
   "sourceFilter": {
     "prefix": "<prefix string>",
     "includeSubFolders": true
-  }
+  },
+  "useLabelFile": false
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, wyjaśniono, jak można utworzyć zestaw danych szkoleniowych, postępuj zgodnie z przewodnika Szybki Start do trenowania modelu niestandardowego formularza rozpoznawania i rozpocząć korzystanie z niej na formularzach.
+Teraz, gdy wiesz już, jak utworzyć zestaw danych szkoleniowych, postępuj zgodnie z przewodnikiem Szybki Start, aby przeprowadzić uczenie niestandardowego modelu aparatu rozpoznawania formularzy i rozpocząć korzystanie z niego w formularzach.
 
-* [Szybki start: Uczenie modelu i wyodrębnić dane formularza za pomocą programu cURL](./quickstarts/curl-train-extract.md)
-* [Szybki start: Uczenie modelu i wyodrębnianie danych formularza przy użyciu interfejsu API REST przy użyciu języka Python](./quickstarts/python-train-extract.md)
-
+* [Szybki Start: uczenie modelu i wyodrębnianie danych z formularza przy użyciu Zwinięciea](./quickstarts/curl-train-extract.md)
+* [Szybki Start: uczenie modelu i wyodrębnianie danych formularza przy użyciu interfejsu API REST w języku Python](./quickstarts/python-train-extract.md)
+* [Uczenie się z etykietami przy użyciu interfejsu API REST i języka Python](./quickstarts/python-labeled-data.md)

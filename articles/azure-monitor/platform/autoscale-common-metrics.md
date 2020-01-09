@@ -1,19 +1,15 @@
 ---
 title: Często skalowane metryki
 description: Dowiedz się, które metryki są często używane do automatycznego skalowania Cloud Services, Virtual Machines i Web Apps.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129745"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364598"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor typowe metryki automatycznego skalowania
 
@@ -26,7 +22,7 @@ Automatyczne skalowanie Azure Monitor ma zastosowanie tylko do [Virtual Machine 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Metryki obliczeniowe dla maszyn wirtualnych opartych na Menedżer zasobów
 Domyślnie Virtual Machines Menedżer zasobów i Virtual Machine Scale Sets emitują podstawowe (na poziomie hosta) metryki. Ponadto po skonfigurowaniu zbierania danych diagnostycznych dla maszyny wirtualnej platformy Azure i VMSS rozszerzenie diagnostyki platformy Azure emituje także liczniki wydajności gościa (nazywane "metrykami systemu operacyjnego gościa").  Wszystkie te metryki są używane w regułach skalowania automatycznego.
 
-Możesz użyć interfejsu API `Get MetricDefinitions` /PoSH/interfejsu wiersza polecenia, aby wyświetlić metryki dostępne dla zasobu VMSS.
+Aby wyświetlić metryki dostępne dla zasobu VMSS, można użyć interfejsu API `Get MetricDefinitions`/PoSH/interfejsu wiersza polecenia.
 
 Jeśli korzystasz z zestawów skalowania maszyn wirtualnych i nie widzisz określonej metryki na liście, prawdopodobnie jest ona *wyłączona* w rozszerzeniu diagnostyki.
 
@@ -53,33 +49,33 @@ Można utworzyć alert dla następujących metryk:
 
 | Nazwa metryki | Jednostka |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Percent |
-| \Processor (_Total)\% uprzywilejowany czas |Percent |
-| \Processor (_Total)\% czas użytkownika |Percent |
-| \Processor Information (_Total) — częstotliwość \Processor |Count |
-| \System\Processes |Count |
-| \Process (_Total) liczba \Thread |Count |
-| \Process (_Total) liczba \Handle |Count |
-| \Memory\% zadeklarowane bajty w użyciu |Percent |
+| \Processor(_Total)\% Processor Time |Procent |
+| \Processor (_Total)\% uprzywilejowany czas |Procent |
+| \Processor (_Total)\% czas użytkownika |Procent |
+| \Processor Information (_Total) \Processor częstotliwość |Liczba |
+| \System\Processes |Liczba |
+| \Process (_Total) \Thread liczba wystąpień |Liczba |
+| \Process (_Total) \Handle liczba wystąpień |Liczba |
+| \Memory\% zadeklarowane bajty w użyciu |Procent |
 | \Memory\Available Bytes |Bajty |
 | \Memory\Committed bajty |Bajty |
 | Limit \Memory\Commit |Bajty |
 | \Memory\Pool stronicowane bajty |Bajty |
 | \Memory\Pool niestronicowane bajty |Bajty |
-| \PhysicalDisk (_Total)\% czas dysku |Percent |
-| \PhysicalDisk (_Total)\% czas odczytu dysku |Percent |
-| \PhysicalDisk (_Total)\% godzina zapisu na dysku |Percent |
-| \PhysicalDisk (_Total) \Bajty transferów/s |CountPerSecond |
+| \PhysicalDisk (_Total)\% czas dysku |Procent |
+| \PhysicalDisk (_Total)\% czas odczytu dysku |Procent |
+| \PhysicalDisk (_Total)\% godzina zapisu na dysku |Procent |
+| \PhysicalDisk (_Total) \Bajty transfery/s |CountPerSecond |
 | \PhysicalDisk (_Total) \Bajty odczyty/s |CountPerSecond |
 | \PhysicalDisk (_Total) \Bajty zapisy/s |CountPerSecond |
-| \PhysicalDisk (_Total) \Bajty bajtów/s |BytesPerSecond |
+| \PhysicalDisk (_Total) \Bajty bajty/s |BytesPerSecond |
 | \PhysicalDisk (_Total) \Bajty bajty odczytu/s |BytesPerSecond |
-| \PhysicalDisk (_Total) \Bajty zapisu bajtów/s |BytesPerSecond |
-| \PhysicalDisk (_Total) \Avg. Długość kolejki dysku |Count |
-| \PhysicalDisk (_Total) \Avg. Długość kolejki odczytu dysku |Count |
-| \PhysicalDisk (_Total) \Avg. Długość kolejki zapisu dysku |Count |
-| \Dysk logiczny (_Total)\% wolne miejsce |Percent |
-| \Dysk logiczny (_Total) \Wolne megabajtów |Count |
+| \PhysicalDisk (_Total) \Bajty Bajty zapisu/s |BytesPerSecond |
+| \PhysicalDisk (_Total) \Avg. Długość kolejki dysku |Liczba |
+| \PhysicalDisk (_Total) \Avg. Długość kolejki odczytu dysku |Liczba |
+| \PhysicalDisk (_Total) \Avg. Długość kolejki zapisu dysku |Liczba |
+| \Dysk logiczny (_Total)\% wolne miejsce |Procent |
+| \Dysk logiczny (_Total) \Wolne megabajty |Liczba |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Pomiar systemu operacyjnego gościa maszyny wirtualne z systemem Linux
 Podczas tworzenia maszyny wirtualnej na platformie Azure Diagnostyka jest domyślnie włączona przy użyciu rozszerzenia diagnostyki.
@@ -95,25 +91,25 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Nazwa metryki | Jednostka |
 | --- | --- |
 | \Memory\AvailableMemory |Bajty |
-| \Memory\PercentAvailableMemory |Percent |
+| \Memory\PercentAvailableMemory |Procent |
 | \Memory\UsedMemory |Bajty |
-| \Memory\PercentUsedMemory |Percent |
-| \Memory\PercentUsedByCache |Percent |
+| \Memory\PercentUsedMemory |Procent |
+| \Memory\PercentUsedByCache |Procent |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
 | \Memory\AvailableSwap |Bajty |
-| \Memory\PercentAvailableSwap |Percent |
+| \Memory\PercentAvailableSwap |Procent |
 | \Memory\UsedSwap |Bajty |
-| \Memory\PercentUsedSwap |Percent |
-| \Processor\PercentIdleTime |Percent |
-| \Processor\PercentUserTime |Percent |
-| \Processor\PercentNiceTime |Percent |
-| \Processor\PercentPrivilegedTime |Percent |
-| \Processor\PercentInterruptTime |Percent |
-| \Processor\PercentDPCTime |Percent |
-| \Processor\PercentProcessorTime |Percent |
-| \Processor\PercentIOWaitTime |Percent |
+| \Memory\PercentUsedSwap |Procent |
+| \Processor\PercentIdleTime |Procent |
+| \Processor\PercentUserTime |Procent |
+| \Processor\PercentNiceTime |Procent |
+| \Processor\PercentPrivilegedTime |Procent |
+| \Processor\PercentInterruptTime |Procent |
+| \Processor\PercentDPCTime |Procent |
+| \Processor\PercentProcessorTime |Procent |
+| \Processor\PercentIOWaitTime |Procent |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
@@ -123,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Sekundy |
 | \PhysicalDisk\AverageWriteTime |Sekundy |
 | \PhysicalDisk\AverageTransferTime |Sekundy |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageDiskQueueLength |Liczba |
 | \NetworkInterface\BytesTransmitted |Bajty |
 | \NetworkInterface\BytesReceived |Bajty |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Liczba |
+| \NetworkInterface\PacketsReceived |Liczba |
 | \NetworkInterface\BytesTotal |Bajty |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Liczba |
+| \NetworkInterface\TotalTxErrors |Liczba |
+| \NetworkInterface\TotalCollisions |Liczba |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Metryki często używanej sieci Web (farmy serwerów)
 Możesz również wykonywać automatyczne skalowanie na podstawie wspólnych metryk serwera sieci Web, takich jak długość kolejki http. Nazwa metryki to **HttpQueueLength**.  W poniższej sekcji przedstawiono dostępne metryki farmy serwerów (Web Apps).
@@ -147,17 +143,17 @@ Możesz otrzymywać alerty dotyczące tych metryk lub skalować je.
 
 | Nazwa metryki | Jednostka |
 | --- | --- |
-| CpuPercentage |Percent |
-| MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| CpuPercentage |Procent |
+| MemoryPercentage |Procent |
+| DiskQueueLength |Liczba |
+| HttpQueueLength |Liczba |
 | BytesReceived |Bajty |
 | BytesSent |Bajty |
 
 ## <a name="commonly-used-storage-metrics"></a>Często używane metryki magazynu
 Możesz skalować według długości kolejki magazynu, która jest liczbą komunikatów w kolejce magazynu. Długość kolejki magazynu jest specjalną metryką, a wartość progowa to liczba komunikatów na wystąpienie. Na przykład jeśli istnieją dwa wystąpienia i jeśli próg jest ustawiony na 100, skalowanie występuje, gdy całkowita liczba komunikatów w kolejce wynosi 200. Mogą to być 100 komunikatów na wystąpienie, 120 i 80, lub dowolną inną kombinację, która dodaje do 200 lub więcej.
 
-Skonfiguruj to ustawienie w Azure Portal w bloku **Ustawienia** . W przypadku zestawów skalowania maszyn wirtualnych można zaktualizować ustawienie skalowania automatycznego w szablonie Menedżer zasobów, aby użyć wartości metricname jako *APPROXIMATEMESSAGECOUNT* i przekazać identyfikator kolejki magazynu jako *metricResourceUri*.
+Skonfiguruj to ustawienie w Azure Portal w bloku **Ustawienia** . W przypadku zestawów skalowania maszyn wirtualnych można zaktualizować ustawienie skalowania automatycznego w szablonie Menedżer zasobów, aby użyć wartości *metricname* jako *APPROXIMATEMESSAGECOUNT* i przekazać identyfikator kolejki magazynu jako *metricResourceUri*.
 
 Na przykład przy użyciu klasycznego konta magazynu ustawienie skalowania automatycznego metricTrigger będzie obejmowało:
 
@@ -178,7 +174,7 @@ W przypadku konta magazynu (nieklasycznego) metricTrigger może obejmować:
 ## <a name="commonly-used-service-bus-metrics"></a>Często używane metryki Service Bus
 Możesz skalować Service Bus długość kolejki, czyli liczbę komunikatów w kolejce Service Bus. Długość kolejki Service Bus jest specjalną metryką, a wartość progowa to liczba komunikatów na wystąpienie. Na przykład jeśli istnieją dwa wystąpienia i jeśli próg jest ustawiony na 100, skalowanie występuje, gdy całkowita liczba komunikatów w kolejce wynosi 200. Mogą to być 100 komunikatów na wystąpienie, 120 i 80, lub dowolną inną kombinację, która dodaje do 200 lub więcej.
 
-W przypadku zestawów skalowania maszyn wirtualnych można zaktualizować ustawienie skalowania automatycznego w szablonie Menedżer zasobów, aby użyć wartości metricname jako *APPROXIMATEMESSAGECOUNT* i przekazać identyfikator kolejki magazynu jako *metricResourceUri*.
+W przypadku zestawów skalowania maszyn wirtualnych można zaktualizować ustawienie skalowania automatycznego w szablonie Menedżer zasobów, aby użyć wartości *metricname* jako *APPROXIMATEMESSAGECOUNT* i przekazać identyfikator kolejki magazynu jako *metricResourceUri*.
 
 ```
 "metricName": "MessageCount",

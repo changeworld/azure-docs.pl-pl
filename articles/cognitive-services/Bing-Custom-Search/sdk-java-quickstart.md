@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: wyszukiwanie niestandardowe Binga Biblioteka kliencka dla języka Java | Microsoft Docs'
-description: Rozpocznij pracę z biblioteką klienta wyszukiwanie niestandardowe Bing dla środowiska Java, żądając wyników wyszukiwania z wystąpienia wyszukiwanie niestandardowe Bing.
+title: 'Szybki Start: wyszukiwanie niestandardowe Binga Biblioteka kliencka dla języka Java'
+description: Rozpocznij pracę z biblioteką klienta wyszukiwanie niestandardowe Bing dla środowiska Java, żądając wyników wyszukiwania z wystąpienia wyszukiwanie niestandardowe Bing w tym przewodniku Szybki Start.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1060cceb9241d9c1c490f7e7f12490c734b0a78d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976064"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384557"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>Szybki Start: wyszukiwanie niestandardowe Binga Biblioteka kliencka dla języka Java
 

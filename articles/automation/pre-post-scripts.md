@@ -2,19 +2,15 @@
 title: Konfigurowanie skryptów przed i po wdrożeniu Update Management na platformie Azure
 description: W tym artykule opisano sposób konfigurowania i zarządzania skryptami wstępnymi i skryptami dla wdrożeń aktualizacji.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417799"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Zarządzanie skryptami wstępnymi i po nim
 
@@ -139,7 +135,7 @@ foreach($summary in $finalStatus)
 }
 ```
 
-## <a name="samples"></a>Przykłady
+## <a name="samples"></a>Samples
 
 Przykłady dla skryptów pre i po nim można znaleźć w [galerii centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) i w [Galeria programu PowerShell](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)lub zaimportować je za pomocą Azure Portal. Aby to zrobić, na koncie usługi Automation w obszarze **Automatyzacja procesów**wybierz pozycję **Galeria elementów Runbook**. Użyj **Update Management** filtru.
 

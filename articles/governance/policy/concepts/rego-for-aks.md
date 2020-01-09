@@ -3,12 +3,12 @@ title: Dowiedz się Azure Policy usługi Azure Kubernetes Service
 description: Dowiedz się, w jaki sposób Azure Policy używać usługi rego i Otwórz agenta zasad do zarządzania klastrami w usłudze Azure Kubernetes.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436390"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Opis Azure Policy usługi Azure Kubernetes Service
 
@@ -18,7 +18,7 @@ Rozszerzając użycie [strażnika](https://github.com/open-policy-agent/gatekeep
 > [!NOTE]
 > Azure Policy dla AKS jest w ograniczonej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby włączyć i używać Azure Policy dla AKS z klastrem AKS, wykonaj następujące czynności:
 
@@ -29,11 +29,11 @@ Aby włączyć i używać Azure Policy dla AKS z klastrem AKS, wykonaj następuj
 
 ## <a name="opt-in-for-preview"></a>Zgoda na wersję zapoznawczą
 
-Przed zainstalowaniem dodatku Azure Policy lub włączenia jakichkolwiek funkcji usługi subskrypcja musi włączyć dostawcę zasobów **Microsoft. ContainerService** i dostawcę zasobów **Microsoft. PolicyInsights** , a następnie zostać zatwierdzone do Dołącz do wersji zapoznawczej. Aby dołączyć do wersji zapoznawczej, wykonaj następujące kroki w Azure Portal lub w interfejsie wiersza polecenia platformy Azure:
+Przed zainstalowaniem Azure Policy dodatku lub włączenia dowolnych funkcji usługi subskrypcja musi umożliwić dostawcy zasobów **Microsoft. ContainerService** i **Microsoft. PolicyInsights** , a następnie zostać zatwierdzona w celu dołączenia do wersji zapoznawczej. Aby dołączyć do wersji zapoznawczej, wykonaj następujące kroki w Azure Portal lub w interfejsie wiersza polecenia platformy Azure:
 
 - Witryna Azure Portal:
 
-  1. Zarejestruj dostawców zasobów **Microsoft. ContainerService** i **Microsoft. PolicyInsights** . Aby uzyskać instrukcje, zobacz [dostawcy zasobów i ich typy](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+  1. Zarejestruj dostawców zasobów **Microsoft. ContainerService** i **Microsoft. PolicyInsights** . Aby uzyskać instrukcje, zobacz [dostawcy zasobów i ich typy](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
   1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając opcję **Wszystkie usługi** i następnie wyszukując i wybierając opcję **Zasada**.
 
@@ -123,7 +123,7 @@ Przed zainstalowaniem dodatku w klastrze AKS należy zainstalować rozszerzenie 
 
 Po zakończeniu wymagań wstępnych Zainstaluj dodatek Azure Policy w klastrze AKS, którym chcesz zarządzać.
 
-- Azure Portal
+- Portal Azure
 
   1. Uruchom usługę AKS w Azure Portal, klikając pozycję **wszystkie usługi**, a następnie wyszukując i wybierając pozycję **usługi Kubernetes Services**.
 
@@ -206,7 +206,7 @@ Aby wyświetlić dzienniki z kontenerów strażników, wykonaj kroki opisane w t
 
 Aby usunąć dodatek Azure Policy z klastra AKS, użyj Azure Portal lub interfejsu wiersza polecenia platformy Azure:
 
-- Azure Portal
+- Portal Azure
 
   1. Uruchom usługę AKS w Azure Portal, klikając pozycję **wszystkie usługi**, a następnie wyszukując i wybierając pozycję **usługi Kubernetes Services**.
 

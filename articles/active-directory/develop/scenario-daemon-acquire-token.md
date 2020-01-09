@@ -1,5 +1,5 @@
 ---
-title: Uzyskaj tokeny w aplikacjach demonów, które wywołują interfejsy API sieci Web — Microsoft Identity platform | Azure
+title: Uzyskiwanie tokenów do wywoływania internetowego interfejsu API (aplikacja demona) — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację demona, która wywołuje interfejsy API sieci Web (Uzyskiwanie tokenów)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 58952bdb58619693b31ee4705b6f9f704431657d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423957"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — pozyskiwanie tokenu
 
@@ -33,7 +33,7 @@ Zakresem żądania dla przepływu poświadczeń klienta jest nazwa zasobu, po kt
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
@@ -70,7 +70,7 @@ Aby uzyskać token dla aplikacji, użyj `AcquireTokenForClient` lub odpowiednika
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-```CSharp
+```csharp
 using Microsoft.Identity.Client;
 
 // With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the

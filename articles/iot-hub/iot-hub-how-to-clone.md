@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976149"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429155"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Jak sklonować usługę Azure IoT Hub do innego regionu
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono sposoby klonowania IoT Hub i podano pytania, które
 Aby sklonować centrum, potrzebna jest subskrypcja z dostępem administracyjnym do oryginalnego centrum. Nowe centrum można umieścić w nowej grupie zasobów i regionie, w tej samej subskrypcji co oryginalne centrum, a nawet w nowej subskrypcji. Nie można użyć tej samej nazwy, ponieważ nazwa centrum musi być globalnie unikatowa.
 
 > [!NOTE]
-> W tej chwili nie istnieje funkcja pierwszej klasy do klonowania Centrum IoT. Jest to przede wszystkim proces ręczny i dlatego jest dość podatne na błędy. Złożoność klonowania centrum jest bezpośrednio proporcjonalna do złożoności centrum. Na przykład klonowanie Centrum IoT bez routingu wiadomości jest dość proste. Po dodaniu routingu wiadomości jako tylko jednej złożoności klonowanie centrum będzie miało co najmniej kolejność bardziej skomplikowane. Jeśli również przeniesiesz zasoby używane dla punktów końcowych routingu, jest to kolejna kolejność magniture bardziej skomplikowane. 
+> Obecnie nie jest dostępna funkcja klonowania Centrum IoT Hub automatycznie. Jest to przede wszystkim proces ręczny i dlatego jest dość podatne na błędy. Złożoność klonowania centrum jest bezpośrednio proporcjonalna do złożoności centrum. Na przykład klonowanie Centrum IoT bez routingu wiadomości jest dość proste. Po dodaniu routingu wiadomości jako tylko jednej złożoności klonowanie centrum będzie miało co najmniej kolejność bardziej skomplikowane. Jeśli również przeniesiesz zasoby używane dla punktów końcowych routingu, jest to kolejna kolejność magniture bardziej skomplikowane. 
 
 ## <a name="things-to-consider"></a>Rzeczy do rozważenia
 
@@ -107,7 +107,7 @@ Ta sekcja zawiera szczegółowe instrukcje dotyczące migracji centrum.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Znajdź oryginalny centrum i wyeksportuj go do szablonu zasobu.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com). 
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). 
 
 1. Przejdź do pozycji **grupy zasobów** i wybierz grupę zasobów zawierającą centrum, które chcesz przenieść. Możesz również przejść do **zasobów** i znaleźć centrum. Wybierz centrum.
 
@@ -347,7 +347,7 @@ Teraz masz szablon, który spowoduje utworzenie nowego centrum, które będzie w
 
 Utwórz nowe centrum w nowej lokalizacji przy użyciu szablonu. W przypadku zasobów routingu, które mają zostać przeniesione, zasoby powinny zostać skonfigurowane w nowej lokalizacji, a odwołania w szablonie zaktualizowane do dopasowania. Jeśli nie przenosisz zasobów routingu, powinny one znajdować się w szablonie z zaktualizowanymi kluczami.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. Wybierz pozycję **Utwórz zasób**. 
 

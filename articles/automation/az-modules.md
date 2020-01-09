@@ -2,19 +2,15 @@
 title: Korzystanie z modułów Az w usłudze Azure Automation
 description: Ten artykuł zawiera informacje za pomocą polecenia AZ modules w Azure Automation
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/08/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 23869647b5ad04d24f0b700a1433482d4ae15fd3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418841"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Obsługa AZ module w Azure Automation
 

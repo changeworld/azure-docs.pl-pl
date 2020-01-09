@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414219"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Wskazówki dotyczące odzyskiwania po awarii dla avere vFXT dla platformy Azure
 
@@ -104,7 +104,7 @@ Aby uzyskać dostęp do kontenera kopii zapasowych z avere vFXT dla klastra plat
 1. W razie potrzeby utwórz nowy avere vFXT dla klastra platformy Azure w nieodpowiednim regionie.
 
    > [!TIP]
-   > Podczas tworzenia avere vFXT dla klastra platformy Azure można zapisać kopię szablonu i parametrów jego tworzenia. Jeśli zapiszesz te informacje podczas tworzenia klastra podstawowego, możesz użyć go do utworzenia zastępczego klastra z tymi samymi właściwościami. Na stronie [Walidacja i podsumowanie](avere-vfxt-deploy.md#validation-and-purchase) kliknij link **Pobierz szablon i parametry** . Zapisz informacje w pliku przed kliknięciem przycisku **OK** , aby utworzyć klaster.
+   > Podczas tworzenia avere vFXT dla klastra platformy Azure można zapisać kopię szablonu i parametrów jego tworzenia. Jeśli zapiszesz te informacje podczas tworzenia klastra podstawowego, możesz użyć go do utworzenia zastępczego klastra z tymi samymi właściwościami. Na stronie [Podsumowanie](avere-vfxt-deploy.md#validation-and-purchase) kliknij link **Pobierz szablon i parametry** . Przed utworzeniem klastra Zapisz informacje w pliku.
 
 1. Dodaj nowy plik w chmurze, który wskazuje na zduplikowany kontener obiektów BLOB.
 

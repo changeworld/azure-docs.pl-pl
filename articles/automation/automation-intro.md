@@ -2,24 +2,21 @@
 title: Omówienie usługi Azure Automation
 description: Dowiedz się, jak używać usługi Azure Automation do automatyzacji cyklu życia infrastruktury i aplikacji.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 keywords: azure automation, DSC, powershell, konfiguracja żądanego stanu, zarządzanie aktualizacjami, śledzenie zmian, spis, elementy runbook, python, graficzne
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421947"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Wprowadzenie do usługi Azure Automation
 
-Usługa Azure Automation udostępnia opartą na chmurze usługę automatyzacji i konfiguracji, która zapewnia spójne zarządzanie w środowiskach platformy Azure i w innych środowiskach. Obejmuje ona automatyzację procesów, zarządzanie aktualizacjami i funkcje konfiguracji. Usługa Azure Automation zapewnia pełną kontrolę podczas wdrażania, działania i likwidacji obciążeń i zasobów.
+Usługa Azure Automation oferuje opartą na chmurze usługę automatyzacji i konfiguracji, która zapewnia spójne zarządzanie w środowiskach platformy Azure i spoza niej. Obejmuje ona automatyzację procesów, zarządzanie aktualizacjami i funkcje konfiguracji. Usługa Azure Automation zapewnia pełną kontrolę podczas wdrażania, działania i likwidacji obciążeń i zasobów.
 Ten artykuł zawiera krótkie omówienie usługi Azure Automation i odpowiedzi na niektóre często zadawane pytania. Aby uzyskać więcej informacji o różnych możliwościach, odwiedź linki zawarte w tym omówieniu.
 
 ## <a name="azure-automation-capabilities"></a>Możliwości usługi Azure Automation
@@ -57,7 +54,7 @@ Usługa Azure Automation zawiera zestaw współdzielonych zasobów, które ułat
 
 Usługa Azure Automation umożliwia [integrację z kontrolą źródła](source-control-integration.md), która wspiera konfigurację jako kod, gdzie elementy Runbook i konfiguracje można sprawdzić w systemie kontroli źródła.
 
-### <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
+### <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
 Usługa Azure Automation obsługuje kontrolę dostępu na podstawie ról w celu kontrolowania dostępu do konta usługi Automation i jego zasobów. Aby dowiedzieć się więcej na temat konfiguracji kontroli dostępu na podstawie ról dla konta usługi Automation, elementów Runbook i zadań, zobacz temat [Kontrola dostępu oparta na rolach w usłudze Azure Automation](automation-role-based-access-control.md).
 
@@ -83,7 +80,7 @@ Usługa Azure Automation zarządza cyklem życia Twojej infrastruktury i aplikac
 
 Możesz przejrzeć ceny usługi Azure Automation na stronie [cennika](https://azure.microsoft.com/pricing/details/automation/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Create an automation account](automation-quickstart-create-account.md) (Tworzenie konta automatyzacji)

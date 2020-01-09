@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: baa3444773c41bc91de7e35d2c80f066b96b9ed5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374312"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co to jest program SQL Server na maszynach wirtualnych platformy Azure? (Windows)
 
@@ -103,14 +103,16 @@ Jeśli masz istniejącą bazę danych, najprawdopodobniej będziesz ją przenosi
 
 Azure Portal zawiera jedną stronę, na której można zarządzać [wszystkimi zasobami usługi Azure SQL, w](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) tym maszynami wirtualnymi SQL.
 
-Aby uzyskać dostęp do strony **zasobów SQL platformy Azure** , wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+Aby uzyskać dostęp do strony **zasoby SQL platformy Azure** , wybierz pozycję **Azure sql** w menu Azure Portal lub Wyszukaj i wybierz pozycję **Azure SQL** z dowolnej strony.
+
+![Wyszukiwanie w usłudze Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
 > **Usługa Azure SQL** zapewnia szybki i łatwy sposób dostępu do wszystkich baz danych SQL, pul elastycznych, serwerów baz danych, wystąpień zarządzanych SQL i maszyn wirtualnych SQL. Usługa Azure SQL nie jest usługą ani zasobem. 
 
 Aby zarządzać istniejącymi zasobami, wybierz żądany element z listy. Aby utworzyć nowe zasoby Azure SQL, wybierz pozycję **+ Dodaj**. 
 
-![Strona portalu Azure SQL](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+![Tworzenie zasobu usługi Azure SQL](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
 Po wybraniu **+ Dodaj**Wyświetl dodatkowe informacje o różnych opcjach, wybierając pozycję **Pokaż szczegóły** na dowolnym kafelku.
 

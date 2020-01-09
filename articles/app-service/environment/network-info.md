@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375019"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Zagadnienia dotyczące sieci dla App Service Environment #
 
@@ -71,7 +71,7 @@ Inne porty, z którymi należy się zapoznać, to porty aplikacji:
 
 | Eksploatacja | Porty |
 |----------|-------------|
-|  PROTOKÓŁ HTTP/HTTPS  | 80, 443 |
+|  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
 |  Zdalne debugowanie programu Visual Studio  |  4020, 4022, 4024 |
 |  Usługa Web Deploy | 8172 |
@@ -108,7 +108,7 @@ W przypadku zmiany ustawienia DNS sieci wirtualnej, w której znajduje się śro
 
 Oprócz zależności funkcjonalnych, istnieje kilka dodatkowych elementów związanych z korzystaniem z portalu. Niektóre funkcje w Azure Portal zależą od bezpośredniego dostępu do _witryny SCM_. Dla każdej aplikacji w Azure App Service istnieją dwa adresy URL. Pierwszy adres URL ma na celu uzyskanie dostępu do aplikacji. Drugim adresem URL jest dostęp do witryny SCM, która jest również nazywana _konsolą kudu_. Do funkcji korzystających z witryny SCM należą:
 
--   Zadania sieci Web
+-   Zadania WebJob
 -   Functions
 -   Przesyłanie strumieniowe dzienników
 -   Kudu
@@ -152,7 +152,7 @@ Sieciowych grup zabezpieczeń można skonfigurować za pomocą Azure Portal lub 
 
 Wymagane wpisy w sieciowej grupy zabezpieczeń, dla których środowisko ASE ma działać, mają na celu Zezwalanie na ruch:
 
-**Dotycząc**
+**Przychodzący**
 * ze znacznika usługi IP AppServiceManagement na portach 454 455
 * z modułu równoważenia obciążenia na porcie 16001
 * z podsieci środowiska ASE do podsieci środowiska ASE na wszystkich portach
@@ -168,7 +168,7 @@ Nie trzeba dodawać portu DNS, ponieważ reguły sieciowej grupy zabezpieczeń n
 
 | Eksploatacja | Porty |
 |----------|-------------|
-|  PROTOKÓŁ HTTP/HTTPS  | 80, 443 |
+|  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
 |  Zdalne debugowanie programu Visual Studio  |  4020, 4022, 4024 |
 |  Usługa Web Deploy | 8172 |
@@ -244,7 +244,7 @@ Kiedy punkty końcowe usługi są włączone w podsieci z wystąpieniem usługi 
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

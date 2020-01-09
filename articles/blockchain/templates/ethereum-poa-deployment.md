@@ -1,378 +1,237 @@
 ---
 title: Wdróż szablon rozwiązania typu "Weryfikacja urzędu certyfikacji Ethereum" na platformie Azure
 description: Użyj rozwiązania Ethereum The-Authority Consortium do wdrożenia i skonfigurowania wieloskładnikowej sieci Ethereum konsorcjum na platformie Azure
-ms.date: 04/08/2019
+ms.date: 12/18/2019
 ms.topic: article
 ms.reviewer: coborn
-ms.openlocfilehash: c3e449c1d6ebaf7c6cb2c35dc9f91d55f569447a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326169"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387681"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Wdróż szablon rozwiązania typu "Weryfikacja urzędu certyfikacji Ethereum" na platformie Azure
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Za pomocą [szablonu rozwiązania Ethereum weryfikacji urzędu certyfikacji w wersji zapoznawczej](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-blockchain.azure-blockchain-ethereum) można wdrażać, konfigurować i zarządzać wieloskładnikową siecią Ethereum z obsługą urzędu certyfikacji z minimalnymi możliwościami platformy Azure i Ethereum.
 
-[Szablon rozwiązania Azure Ethereum-of-Authority Consortium](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) został zaprojektowany, aby ułatwić wdrażanie, Konfigurowanie i nadzorowanie sieci Ethereumej z obsługą wieloskładnikowej organizacji z minimalnym użyciem platformy Azure i Ethereum.
+Szablon rozwiązania może być używany przez każdego członka konsorcjum do aprowizacji łańcucha bloków sieci Microsoft Azure za pomocą usług obliczeniowych, sieciowych i magazynowych. Każdy element sieci członkowski konsorcjum składa się z zestawu węzłów modułu sprawdzania o zrównoważonym obciążeniu, z którymi aplikacja lub użytkownik może współdziałać w celu przesyłania transakcji Ethereum.
 
-W przypadku kilku danych wejściowych użytkownika i wdrożenia pojedynczego kliknięcia za pośrednictwem Azure Portal każdy członek może zainicjować obsługę sieci przy użyciu Microsoft Azure usług obliczeniowych, sieciowych i magazynowych na całym świecie. Zawartość sieci każdego członka składa się z zestawu węzłów modułu sprawdzania z równoważeniem obciążenia, za pomocą których aplikacja lub użytkownik może współdziałać w celu przesyłania transakcji Ethereum.
+## <a name="choose-an-azure-blockchain-solution"></a>Wybierz rozwiązanie Azure łańcucha bloków
 
-## <a name="concepts"></a>Pojęcia
+Przed wybraniem opcji użycia szablonu rozwiązania do Ethereum weryfikacji dla urzędu certyfikacji Porównaj swój scenariusz z typowymi przypadkami użycia dostępnych opcji usługi Azure łańcucha bloków.
 
-### <a name="terminology"></a>Terminologia
+Opcja | Model usług | Typowy przypadek użycia
+-------|---------------|-----------------
+Szablony rozwiązań | IaaS | Szablony rozwiązań są Azure Resource Manager szablonów, których można użyć do aprowizacji w pełni skonfigurowanej topologii sieci łańcucha bloków. Szablony wdrażają i konfigurują Microsoft Azure usług obliczeniowych, sieci i magazynu dla danego typu sieci łańcucha bloków.
+[Usługa Azure łańcucha bloków](../service/overview.md) | PaaS | Usługa Azure łańcucha bloków w wersji zapoznawczej upraszcza tworzenie, zarządzanie i nadzór nad sieciami łańcucha bloków konsorcjum. Korzystaj z usługi Azure łańcucha bloków Service, aby uzyskać rozwiązania wymagające PaaS, zarządzania konsorcjum oraz prywatności umów i transakcji.
+[Usługa Azure łańcucha bloków Workbench](../workbench/overview.md) | IaaS i PaaS | Usługa Azure łańcucha bloków Workbench w wersji zapoznawczej to zbiór usług i funkcji platformy Azure, które ułatwiają tworzenie i wdrażanie aplikacji łańcucha bloków w celu udostępniania procesów i danych firmowych innym organizacjom. Użyj usługi Azure łańcucha bloków Workbench do tworzenia prototypów rozwiązania łańcucha bloków lub weryfikacji koncepcji łańcucha blokówowej aplikacji.
 
--   **Konsensus** — czynność synchronizowania danych w sieci rozproszonej przez weryfikację i Tworzenie bloków.
+## <a name="solution-architecture"></a>Architektura rozwiązania
 
--   **Członek konsorcjum** — jednostka, która uczestniczy w konsensusie w sieci łańcucha bloków.
-
--   **Administrator** — konto Ethereum, które jest używane do zarządzania uczestnictwem dla danego elementu członkowskiego konsorcjum.
-
--   **Moduł sprawdzania poprawności** — maszyna skojarzona z kontem Ethereum, która uczestniczy w konsensusie w imieniu administratora.
-
-### <a name="proof-of-authority"></a>Potwierdzenie urzędu
-
-W przypadku osób, które są nowe dla społeczności łańcucha bloków, wydanie tego rozwiązania jest świetną okazją do poznania się z technologią w łatwy i konfigurowalny sposób na platformie Azure. Test pracy jest mechanizmem odporności Sybil, który wykorzystuje koszty obliczeniowe do samodzielnego regulowania sieci i umożliwia uczciwe uczestnictwo. Dzięki temu można uzyskać doskonały dostęp do otwartych sieci łańcucha bloków, w których konkurs kryptowalucie podwyższa poziom bezpieczeństwa w sieci. Jednakże w sieciach prywatnych/konsorcjum podstawowy Eter nie ma wartości. Alternatywny protokół, potwierdzenie urzędu, jest bardziej odpowiedni dla dozwolonych sieci, w których wszyscy konsensusy są znani i wiarygodne. Bez konieczności wyszukiwania, potwierdzenie urzędu jest wydajniejsze i nadal utrzymują Byzantine odporność na uszkodzenia.
-
-### <a name="consortium-governance"></a>Zarządzanie konsorcjum
-
-Ponieważ potwierdzenie urzędu jest zależne od dozwolonej listy urzędów sieciowych w celu zapewnienia dobrej kondycji sieci, ważne jest, aby zapewnić sprawiedliwy mechanizm wprowadzania modyfikacji tej listy uprawnień. Każde wdrożenie jest dostarczane z zestawem inteligentnych kontraktów i portalu na potrzeby nadzoru w łańcuchu na tej liście dozwolonych. Gdy proponowana zmiana osiągnie większość głosów przez członków konsorcjum, zmiana zostanie wdrożona. Pozwala to na dodanie nowych i zagrożonych uczestników w przejrzysty sposób, który zachęca do uczciwej sieci.
-
-### <a name="admin-account"></a>Konto administratora
-
-Podczas wdrażania węzłów potwierdzenia urzędu zostanie wyświetlony monit o podanie adresu administratora Ethereum. Do wygenerowania i zabezpieczenia tego konta Ethereum można użyć kilku różnych mechanizmów. Po dodaniu tego adresu jako urzędu w sieci można użyć tego konta do uczestnictwa w ładu. To konto administratora służy również do delegowania jednomyślnego udziału w węzłach modułu sprawdzania poprawności, które są tworzone w ramach tego wdrożenia. Ponieważ używany jest tylko publiczny adres Ethereum, każdy administrator ma elastyczność do zabezpieczania swoich kluczy prywatnych w taki sposób, który jest zgodny z modelem zabezpieczeń.
-
-### <a name="validator-node"></a>Węzeł modułu sprawdzania poprawności
-
-W protokole dowodu uwierzytelniania węzły modułu sprawdzania poprawności przenoszą miejsce tradycyjnych węzłów Miner. Każdy moduł sprawdzania poprawności ma unikatową tożsamość Ethereum, która jest dodawana do listy uprawnień inteligentnych. Gdy moduł walidacji znajduje się na tej liście, może uczestniczyć w procesie tworzenia bloku. Aby dowiedzieć się więcej o tym procesie, zobacz dokumentację dotyczącej parzystości na [drodze do urzędu](https://wiki.parity.io/Aura). Każdy członek konsorcjum może zainicjować co najmniej dwa węzły modułu sprawdzania poprawności w pięciu regionach w celu zapewnienia nadmiarowości geograficznej. Węzły modułu sprawdzania poprawności komunikują się z innymi węzłami modułu sprawdzania poprawności w celu osiągnięcia konsensusu na stanie podstawowej księgi rozproszonej.
-Aby zapewnić sprawiedliwy udział w sieci, każdy członek konsorcjum nie będzie mógł używać więcej modułów sprawdzania poprawności niż pierwszy element członkowski w sieci (jeśli pierwszy element członkowski wdraża trzy walidatory, każdy element członkowski może mieć maksymalnie trzy moduły walidacji).
-
-### <a name="identity-store"></a>Magazyn tożsamości
-
-Ponieważ każdy element członkowski będzie miał jednocześnie wiele węzłów modułu sprawdzania poprawności, a każdy węzeł musi mieć dozwoloną tożsamość, ważne jest, aby moduły walidacji mogły bezpiecznie uzyskać unikatową aktywną tożsamość w sieci. Aby to ułatwić, utworzyliśmy magazyn tożsamości, który jest wdrażany w ramach subskrypcji każdej składowej, która bezpiecznie przechowuje wygenerowane tożsamości Ethereum. Po wdrożeniu kontener aranżacji wygeneruje klucz prywatny Ethereum dla każdego modułu sprawdzania poprawności i zapisze go w Azure Key Vault. Zanim węzeł z parzystością zostanie uruchomiony, najpierw uzyska dzierżawę w nieużywanej tożsamości, aby upewnić się, że tożsamość nie jest pobrana przez inny węzeł. Tożsamość jest udostępniana Klientowi, który nadaje mu uprawnienia do rozpoczęcia tworzenia bloków. W przypadku wystąpienia awarii na maszynie wirtualnej zostanie wydana dzierżawa tożsamości, dzięki czemu węzeł zastępczy wznowi swoją tożsamość w przyszłości.
-
-### <a name="bootnode-registrar"></a>Rejestrator Bootnode
-
-Aby zapewnić łatwość łączności, każdy element członkowski będzie obsługiwał zestaw informacji o połączeniu w [punkcie końcowym interfejsu API danych](#data-api). Te dane obejmują listę bootnodes, które są udostępniane jako węzły komunikacji równorzędnej dla członka dołączającego. W ramach tego interfejsu API danych utrzymujemy aktualną listę bootnode
-
-### <a name="bring-your-own-operator"></a>Przenoszenie własnego operatora
-
-Często członek konsorcjum będzie chciał uczestniczyć w nadzorze sieci, ale nie chce działać i utrzymywać infrastruktury. W przeciwieństwie do tradycyjnych systemów, posiadanie jednego operatora w całej sieci działa w oparciu o zdecentralizowany model systemów łańcucha bloków. Zamiast zatrudniać scentralizowaną pośrednią do obsługi sieci, każdy członek konsorcjum może delegować zarządzanie infrastrukturą do operatora wyboru. Pozwala to na model hybrydowy, w którym każdy element członkowski może korzystać z własnej infrastruktury lub operacji delegowania do innego partnera. Przepływ pracy delegowanej operacji działa w następujący sposób:
-
-1.  **Członek konsorcjum** generuje adres Ethereum (zawiera klucz prywatny)
-
-2.  **Członek konsorcjum** udostępnia publiczny adres Ethereum do **operatora**
-
-3.  Służy **do wdrażania i** konfigurowania węzłów modułu sprawdzania poprawności POA przy użyciu naszego rozwiązania Azure Resource Manager
-
-4.  **Operator** udostępnia punkt końcowy RPC i zarządzania do **członka konsorcjum**
-
-5.  **Członek konsorcjum** używa swojego klucza prywatnego do podpisywania żądania akceptującego **operator** węzłów modułu sprawdzania poprawności wdrożony do uczestnictwa w ich imieniu
-
-### <a name="azure-monitor"></a>Azure Monitor
-
-To rozwiązanie zawiera również Azure Monitor do śledzenia statystyk węzła i sieci. W przypadku deweloperów aplikacji zapewnia to wgląd w bazowe łańcucha bloków śledzenia statystyk generowania bloku. Operatorzy sieci mogą używać Azure Monitor, aby szybko wykrywać i zapobiegać awariom sieci za pomocą statystyk infrastruktury i dzienników queryable. Aby uzyskać więcej informacji, zobacz [monitorowanie usług](#service-monitoring).
-
-### <a name="deployment-architecture"></a>Architektura wdrożenia
-
-#### <a name="description"></a>Opis
-
-To rozwiązanie może wdrożyć pojedynczą lub wieloregionową sieć wieloskładnikowej Ethereum. Domyślnie punkty końcowe wywołania RPC i komunikacji równorzędnej są dostępne za pośrednictwem publicznego adresu IP, aby umożliwić uproszczoną łączność między subskrypcjami i chmurami. Zalecamy użycie [kontraktów z uprawnieniami](https://wiki.parity.io/Permissioning) do kontroli dostępu na poziomie aplikacji. Obsługujemy również sieci, które są wdrożone za pośrednictwem sieci VPN, które wykorzystują bramy VNet do łączności między subskrypcjami. Te wdrożenia są bardziej skomplikowane, dlatego zaleca się najpierw zacząć od publicznego modelu IP.
-
-#### <a name="consortium-member-overview"></a>Omówienie składowej konsorcjum
-
-Każde wdrożenie składowe konsorcjum obejmuje:
-
--   Virtual Machines do uruchamiania modułów walidacji PoA
-
--   Azure Load Balancer do dystrybuowania żądań usługi RPC, komunikacji równorzędnej i ładu DApp
-
--   Azure Key Vault zabezpieczania tożsamości modułu sprawdzania poprawności
-
--   Usługa Azure Storage do hostowania trwałych informacji o sieci i koordynowania dzierżawy
-
--   Azure Monitor agregowania dzienników i statystyk wydajności
-
--   Brama sieci wirtualnej (opcjonalnie) do zezwalania na połączenia VPN między prywatnym sieci wirtualnych
+Korzystając z szablonu rozwiązania Ethereum, można wdrożyć jedną lub wiele regionów opartych na wieloregionowej sieci konsorcjum Ethereum.
 
 ![Architektura wdrożenia](./media/ethereum-poa-deployment/deployment-architecture.png)
 
-Korzystamy z kontenerów platformy Docker w celu zapewnienia niezawodności i modularności. Używamy Azure Container Registry, aby hostować i obsługiwać obrazy z wersjami w ramach każdego wdrożenia. Obrazy kontenerów składają się z:
+Każde wdrożenie składowe konsorcjum obejmuje:
 
--   Orchestrator
+* Virtual Machines do uruchamiania modułów walidacji PoA
+* Azure Load Balancer do dystrybuowania żądań usługi RPC, komunikacji równorzędnej i ładu DApp
+* Azure Key Vault zabezpieczania tożsamości modułu sprawdzania poprawności
+* Usługa Azure Storage do hostowania trwałych informacji o sieci i koordynowania dzierżawy
+* Azure Monitor agregowania dzienników i statystyk wydajności
+* Brama sieci wirtualnej (opcjonalnie) do zezwalania na połączenia VPN między prywatnym sieci wirtualnych
 
-    -   Uruchamiany raz podczas wdrażania
+Domyślnie punkty końcowe wywołania RPC i komunikacji równorzędnej są dostępne za pośrednictwem publicznego adresu IP, aby umożliwić uproszczoną łączność między subskrypcjami i chmurami. W przypadku kontroli dostępu na poziomie aplikacji można użyć [kontraktów z uprawnieniami z parzystością](https://wiki.parity.io/Permissioning). Sieci, które są wdrożone za pośrednictwem sieci VPN, są obsługiwane w przypadku łączności między subskrypcjami. Ze względu na to, że wdrożenia VPN i sieci wirtualnych są bardziej skomplikowane, warto zacząć od publicznego modelu IP podczas tworzenia prototypów rozwiązania.
 
-    -   Generuje tożsamości i kontrakty ładu
+Kontenery platformy Docker są używane w celu zapewnienia niezawodności i modularności. Azure Container Registry służy do hostowania i obsługi obrazów z wersjami w ramach każdego wdrożenia. Obrazy kontenerów składają się z:
 
-    -   Przechowuje tożsamości w magazynie tożsamości
+* Orchestrator — generuje tożsamości i kontrakty ładu. Przechowuje tożsamości w magazynie tożsamości.
+* Parzystość klienta — dzierżawa jest tożsamość z magazynu tożsamości. Odnajduje i nawiązuje połączenie z elementami równorzędnymi.
+* Agent EthStats — zbiera dzienniki lokalne i statystyki za pośrednictwem wywołania RPC i wypycha informacje do Azure Monitor.
+* Ładu DApp — interfejs sieci Web służący do współpracy z kontraktami ładu.
 
--   Klient z parzystością
+### <a name="validator-nodes"></a>Węzły modułu sprawdzania poprawności
 
-    -   Dzierżawcy tożsamości z magazynu tożsamości
+W protokole dowodu uwierzytelniania węzły modułu sprawdzania poprawności przenoszą miejsce tradycyjnych węzłów Miner. Każdy moduł sprawdzania poprawności ma unikatową tożsamość Ethereum pozwalającą na uczestnictwo w procesie tworzenia bloku. Każdy członek konsorcjum może zainicjować co najmniej dwa węzły modułu sprawdzania poprawności w pięciu regionach w celu zapewnienia nadmiarowości geograficznej. Węzły modułu sprawdzania poprawności komunikują się z innymi węzłami modułu sprawdzania poprawności w celu osiągnięcia konsensusu na stanie podstawowej księgi rozproszonej. Aby zapewnić uczciwe uczestnictwo w sieci, każdy członek konsorcjum jest zabroniony do używania więcej modułów sprawdzania poprawności niż pierwszy element członkowski w sieci. Na przykład, jeśli pierwszy element członkowski wdraża trzy moduły walidacji, każdy element członkowski może mieć maksymalnie trzy moduły walidacji.
 
-    -   Odnajduje i nawiązuje połączenie z elementami równorzędnymi
+### <a name="identity-store"></a>Magazyn tożsamości
 
--   Agent EthStats
+Magazyn tożsamości jest wdrażany w ramach subskrypcji każdej składowej, która bezpiecznie przechowuje wygenerowane tożsamości Ethereum. Dla każdego modułu weryfikacji kontener aranżacji generuje klucz prywatny Ethereum i zapisuje go w Azure Key Vault.
 
-    -   Zbiera dzienniki lokalne i statystyki za pośrednictwem usługi RPC i wypchnięcia do Azure Monitor
+## <a name="deploy-ethereum-consortium-network"></a>Wdróż sieć Ethereum Consortium
 
--   DApp ładu
+W tym przewodniku przyjęto założenie, że tworzysz wielofirmową sieć konsorcjum Ethereum. Następujący przepływ jest przykładem wdrożenia wieloskładnikowego:
 
-    -   Interfejs sieci Web do współpracy z kontraktami ładu
+1. Trzy składowe generują konto Ethereum przy użyciu funkcji dbmask
+1. *Składowa A* wdraża Ethereum POA, dostarczając swój publiczny adres Ethereum
+1. *Członek A* zawiera adres URL konsorcjum do *składowej B* i *elementu członkowskiego C*
+1. *Składowa B* i *element członkowski C* Deploy, Ethereum POA, dostarczając swój adres publiczny Ethereum i adres URL konsorcjum *elementu członkowskiego*
+1. *Składowa* głosów w *członku B* jako administrator
+1. *Członek a* i *członek B* *zarówno prawo* głosujące jako administrator
 
-## <a name="how-to-guides"></a>Przewodniki z instrukcjami
-### <a name="governance-dapp"></a>DApp ładu
+W następnych sekcjach przedstawiono sposób konfigurowania zasięgu pierwszego elementu członkowskiego w sieci.
 
-W celu potwierdzenia uwierzytelnienia jest zdecentralizowane ładu. DApp ładu to zestaw wstępnie wdrożonych, [inteligentnych kontraktów](https://github.com/Azure-Samples/blockchain/tree/master/ethereum-on-azure/) i aplikacji sieci Web, które są używane do zarządzania władzami w sieci.
-Urzędy są podzielone na tożsamości administratora i węzły modułu sprawdzania poprawności.
-Administratorzy mogą delegować jednomyślne uczestnictwo w zestawie węzłów modułu sprawdzania poprawności. Administratorzy mogą również zagłosować innych administratorów do sieci lub z niej.
+### <a name="create-resource"></a>Utwórz zasób
 
-![dapp ładu](./media/ethereum-poa-deployment/governance-dapp.png)
+W [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób** w lewym górnym rogu.
 
--   **Zdecentralizowane zarządzanie —** Zmiany w urzędach sieciowych są zarządzane za pomocą głosowania w łańcuchu przez wybieranie administratorów.
+Wybierz pozycję **łańcucha bloków** > **Ethereum potwierdzenie z urzędu certyfikacji (wersja zapoznawcza)** .
 
--   **Delegowanie modułu weryfikacji —** Urzędy mogą zarządzać węzłami modułu sprawdzania poprawności skonfigurowanymi w każdym wdrożeniu PoA.
+### <a name="basics"></a>Podstawy
 
--   **Historia zmian podlegających inspekcji —** Każda zmiana jest rejestrowana w łańcucha bloków, zapewniając przejrzystość i inspekcję.
+W obszarze **podstawowe**Określ wartości parametrów standardowych dla każdego wdrożenia.
 
-#### <a name="getting-started-with-governance"></a>Wprowadzenie do ładu
-Aby wykonać dowolny rodzaj transakcji za pomocą DApp ładu, należy skorzystać z portfela Ethereum.  Najbardziej proste podejście polega na użyciu portfela w przeglądarce, takiego jak [Dbmasking](https://metamask.io); Jednak ponieważ są to inteligentne kontrakty wdrożone w sieci, możesz również zautomatyzować interakcje z kontraktem ładu.
+![Podstawy](./media/ethereum-poa-deployment/basic-blade.png)
 
-Po zainstalowaniu maski, przejdź do ładu DApp w przeglądarce.  Adres URL można znaleźć w wiadomości e-mail z potwierdzeniem wdrożenia lub za pośrednictwem Azure Portal w danych wyjściowych wdrożenia.  Jeśli nie masz zainstalowanej portfela w przeglądarce, nie będziesz w stanie wykonać żadnych akcji; jednak nadal można odczytać stan administratora.  
+Parametr | Opis | Przykładowa wartość
+----------|-------------|--------------
+Utwórz nową sieć lub Dołącz do istniejącej sieci | Można utworzyć nową sieć konsorcjum lub dołączyć do istniejącej sieci konsorcjum. Dołączenie do istniejącej sieci wymaga dodatkowych parametrów. | Tworzenie nowego elementu
+Adres e-mail | Otrzymasz powiadomienie e-mail po zakończeniu wdrożenia z informacjami o danym wdrożeniu. | Prawidłowy adres e-mail
+Nazwa użytkownika maszyny wirtualnej | Nazwa użytkownika administratora każdej wdrożonej maszyny wirtualnej | 1-64 znaków alfanumerycznych
+Typ uwierzytelniania | Metoda do uwierzytelnienia na maszynie wirtualnej. | Hasło
+Hasło | Hasło dla konta administratora dla każdej wdrożonej maszyny wirtualnej. Wszystkie maszyny wirtualne mają początkowo to samo hasło. Hasło można zmienić po zainicjowaniu obsługi administracyjnej. | 12-72 znaków 
+Subskrypcja | Subskrypcja, do której ma zostać wdrożona sieć konsorcjum |
+Grupa zasobów| Grupa zasobów, w której ma zostać wdrożona sieć konsorcjum. | myResourceGroup
+Lokalizacja | Region świadczenia usługi Azure dla grupy zasobów. | Zachodnie stany USA 2
 
-#### <a name="becoming-an-admin"></a>Stać się administratorem
-Jeśli jesteś pierwszym członkiem, który został wdrożony w sieci, zostanie automatycznie wyświetlony administrator, a węzły parzystości będą wyświetlane jako moduły walidacji.  Jeśli dołączysz do sieci, musisz otrzymać głos jako administratora z większością (ponad 50%) istniejącego zestawu administracyjnego.  Jeśli nie chcesz stać się administratorem, węzły nadal będą synchronizowane i weryfikują łańcucha bloków; nie będą jednak uczestniczyć w procesie tworzenia bloku. Aby rozpocząć proces głosowania jako administrator, kliknij pozycję __nominacja__ i wprowadź adres Ethereum oraz Alias.
+Kliknij przycisk **OK**.
 
-![Nominowanie](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
+### <a name="deployment-regions"></a>Regiony wdrożenia
 
-#### <a name="candidates"></a>Sugesti
-Wybranie karty __kandydatów__ spowoduje wyświetlenie bieżącego zestawu administratorów kandydujących.  Gdy kandydat osiągnie większość głosów od bieżących administratorów, kandydat zostanie podwyższony do administratora.  Aby zagłosować na kandydata, zaznacz wiersz i kliknij pozycję "Zagłosuj" u góry.  Jeśli zmienisz zdanie w głosowaniu, możesz wybrać kandydata i kliknąć pozycję "odwołaj głos".
+W obszarze *regiony wdrożenia*Określ liczbę regionów i lokalizacji dla każdego z nich. Można wdrożyć maksymalnie pięć regionów. Pierwszy region powinien odpowiadać lokalizacji grupy zasobów z sekcji *podstawowe* . W przypadku sieci programistycznych lub testowych można użyć jednego regionu na członka. W przypadku produkcji należy wdrożyć w dwóch lub większej liczbie regionów w celu zapewnienia wysokiej dostępności.
 
-![Sugesti](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
+![regiony wdrożenia](./media/ethereum-poa-deployment/deployment-regions.png)
 
+Parametr | Opis | Przykładowa wartość
+----------|-------------|--------------
+Liczba regionów|Liczba regionów do wdrożenia sieci konsorcjum| 2
+Pierwszy region | Pierwszy region wdrożenia sieci konsorcjum | Zachodnie stany USA 2
+Drugi region | Drugi region do wdrożenia sieci konsorcjum. Dodatkowe regiony są widoczne, gdy liczba regionów jest równa co najmniej dwa. | Wschodnie stany USA 2
 
-#### <a name="admins"></a>Administratorzy
-Na karcie __administratorzy__ zostanie wyświetlony bieżący zestaw administratorów i będzie można głosować.  Gdy administrator utraci więcej niż 50% obsługi, zostanie usunięty jako administrator w sieci.  Wszystkie węzły modułu sprawdzania poprawności, które są własnością tego administratora, utracą stan modułu sprawdzania poprawności i staną się węzłami transakcji w sieci.  Administrator może zostać usunięty z dowolnej liczby powodów; jednak przede wszystkim konsorcjum wyraża zgodę na zasady z góry.
+Kliknij przycisk **OK**.
 
-![Administratorzy](./media/ethereum-poa-deployment/governance-dapp-admins.png)
+### <a name="network-size-and-performance"></a>Rozmiar i wydajność sieci
 
-#### <a name="validators"></a>Modułów sprawdzania
-Po wybraniu karty __moduły sprawdzania poprawności__ w menu po lewej stronie zostaną wyświetlone bieżące wdrożone węzły parzystości dla tego wystąpienia i ich bieżący stan (typ węzła).  Każdy członek konsorcjum będzie miał inny zestaw modułów sprawdzania poprawności na tej liście, ponieważ ten widok reprezentuje aktualnie wdrożony element członkowski konsorcjum.  Jeśli jest to nowo wdrożone wystąpienie i nie dodano jeszcze modułów sprawdzania poprawności, zostanie wyświetlona opcja "Dodaj moduły sprawdzania poprawności".  Wybranie tej opcji spowoduje automatyczne wybranie zestawu węzłów parzystości o zrównoważonym regionie i przypisanie ich do zestawu modułów walidacji.  Jeśli wdrożono więcej węzłów niż dozwolona pojemność, pozostałe węzły staną się węzłami transakcji w sieci.
+W obszarze *rozmiar sieci i wydajność*Określ dane wejściowe rozmiaru sieci konsorcjum. Rozmiar magazynu węzła modułu sprawdzania poprawności określa potencjalną wielkość łańcucha bloków. Rozmiar można zmienić po wdrożeniu.
 
-Adres każdego modułu sprawdzania poprawności jest automatycznie przypisywany za pośrednictwem [magazynu tożsamości](#identity-store) na platformie Azure.  Jeśli węzeł ulegnie awarii, nastąpi jego tożsamość, co umożliwi przejście do innego węzła w ramach wdrożenia.  Dzięki temu konsensus uczestnictwo jest wysoce dostępny.
+![Rozmiar i wydajność sieci](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-![Modułów sprawdzania](./media/ethereum-poa-deployment/governance-dapp-validators.png)
+Parametr | Opis | Przykładowa wartość
+----------|-------------|--------------
+Liczba węzłów modułu sprawdzania z równoważeniem obciążenia | Liczba węzłów modułu sprawdzania poprawności do zainicjowania obsługi administracyjnej w ramach sieci. | 2
+Wydajność magazynu węzłów modułu sprawdzania poprawności | Typ dysku zarządzanego dla każdego ze wdrożonych węzłów modułu sprawdzania poprawności. Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Storage](https://azure.microsoft.com/pricing/details/managed-disks/) | Standardowa, SSD
+Rozmiar maszyny wirtualnej węzła modułu sprawdzania poprawności | Rozmiar maszyny wirtualnej używany dla węzłów modułu sprawdzania poprawności. Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Virtual](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) Machines | Standardowa D2 v3
 
-#### <a name="consortium-name"></a>Nazwa konsorcjum
-Każdy administrator może zaktualizować nazwę konsorcjum, która jest wyświetlana w górnej części strony.  Wybierz ikonę koła zębatego w lewym górnym rogu, aby zaktualizować nazwę konsorcjum.
+Warstwy maszyny wirtualnej i magazynu mają wpływ na wydajność sieci.  Skorzystaj z poniższej tabeli, aby uzyskać pomoc w zakresie kosztów:
 
-#### <a name="account-menu"></a>Menu konto
-W prawym górnym rogu jest alias konta Ethereum i identicon.  Jeśli jesteś administratorem, będziesz mieć możliwość zaktualizowania aliasu.
+Jednostka SKU maszyny wirtualnej|Warstwa magazynowania|Cena|Przepływność|Opóźnienie
+---|---|---|---|---
+F1|Standardowa, SSD|małą|małą|wysoka
+D2_v3|Standardowa, SSD|średni|średni|średni
+F16s|Premium, SSD|wysoka|wysoka|małą
 
-![Konto](./media/ethereum-poa-deployment/governance-dapp-account.png)
+Kliknij przycisk **OK**.
 
-### <a name="deploy-ethereum-proof-of-authority"></a>Wdróż Ethereum potwierdzenie urzędu certyfikacji
+### <a name="ethereum-settings"></a>Ustawienia Ethereum
 
-Oto przykład przepływu wdrożenia wielostronnego:
+W obszarze *Ustawienia Ethereum*Określ ustawienia konfiguracji związane z Ethereum.
 
-1.  Trzy składowe generują konto Ethereum przy użyciu funkcji dbmask
+![Ustawienia Ethereum](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-2.  *Składowa A* wdraża Ethereum POA, dostarczając swój publiczny adres Ethereum
+Parametr | Opis | Przykładowa wartość
+----------|-------------|--------------
+Identyfikator członka konsorcjum | Identyfikator skojarzony z każdym członkiem uczestniczącym w sieci konsorcjum. Służy do konfigurowania przestrzeni adresów IP w celu uniknięcia kolizji. W przypadku sieci prywatnej identyfikator elementu członkowskiego musi być unikatowy w różnych organizacjach w tej samej sieci.  Unikatowy identyfikator elementu członkowskiego jest wymagany nawet wtedy, gdy ta sama organizacja jest wdrażana w wielu regionach. Zanotuj wartość tego parametru, ponieważ musisz udostępnić go innym członkom, aby upewnić się, że nie ma kolizji. Prawidłowy zakres to od 0 do 255. | 0
+Identyfikator sieci | Identyfikator sieci dla wdrażanej sieci Ethereum. Każda sieć Ethereum ma swój własny identyfikator sieci, a 1 to identyfikator sieci publicznej. Prawidłowy zakres to od 5 do 999 999 999 | 10101010
+Adres Ethereum administratora | Adres konta Ethereum używany przez uczestnictwo w ładu PoA. W celu wygenerowania adresu Ethereum można użyć elementubinding. |
+Opcje zaawansowane | Opcje zaawansowane dla ustawień Ethereum | Włączenie
+Wdróż przy użyciu publicznego adresu IP | Jeśli wybrana jest prywatna sieć wirtualna, Sieć zostanie wdrożona za bramą sieci wirtualnej i zostanie usunięta funkcja dostępu równorzędnego. W przypadku prywatnej sieci wirtualnej wszystkie elementy członkowskie muszą używać bramy sieci wirtualnej, aby połączenie było zgodne. | Publiczny adres IP
+Limit blokowania gazu | Limit wychodzący z bloków wyjściowych sieci. | 50000000
+Okres ponownego pieczętowania bloku (s) | Częstotliwość tworzenia pustych bloków, gdy nie ma żadnych transakcji w sieci. Wyższa częstotliwość będzie miała szybszy wzrost, ale zwiększy się koszty magazynowania. | 15
+Kontrakt uprawnień transakcji | Kod bajtowy dla kontraktu uprawniającego do transakcji. Ogranicza wdrożenie i wykonywanie kontraktu inteligentnego do listy dozwolonych kont Ethereum. |
 
-3.  *Członek A* zawiera adres URL konsorcjum do *składowej B* i *elementu członkowskiego C*
+Kliknij przycisk **OK**.
 
-4.  *Składowa B* i *element członkowski C* Deploy, Ethereum POA, dostarczając swój adres publiczny Ethereum i adres URL konsorcjum *elementu członkowskiego*
+### <a name="monitoring"></a>Monitorowanie
 
-5.  *Składowa* głosów w *członku B* jako administrator
+Monitorowanie umożliwia skonfigurowanie zasobu dziennika dla sieci. Agent monitorowania zbiera i wyświetla użyteczne metryki i dzienniki z sieci, co zapewnia możliwość szybkiego sprawdzania kondycji sieci lub problemów z debugowaniem.
 
-6.  *Członek a* i *członek B* *zarówno prawo* głosujące jako administrator
+![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
-Ten proces wymaga subskrypcji platformy Azure, która może obsługiwać wdrażanie kilku maszyn wirtualnych i dysków zarządzanych. W razie potrzeby [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) , aby rozpocząć.
-
-Po zabezpieczeniu subskrypcji przejdź do Azure Portal. Wybierz pozycję "+", Marketplace (Zobacz wszystko) i Wyszukaj pozycję Ethereum PoA Consortium.
-
-Poniższa sekcja zawiera opis konfigurowania zasięgu pierwszego elementu członkowskiego w sieci. Przepływ wdrożenia jest podzielony na pięć kroków: podstawowe, regiony wdrożenia, rozmiar sieci i wydajność, Ethereum ustawienia, Azure Monitor.
-
-#### <a name="basics"></a>Podstawy
-
-W obszarze **podstawowe**Określ wartości parametrów standardowych dla dowolnego wdrożenia, takie jak subskrypcja, Grupa zasobów i podstawowe właściwości maszyny wirtualnej.
-
-Szczegółowy opis każdego z parametrów jest następujący:
-
-Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
----|---|---|---
-Utworzyć nową sieć lub dołączyć do istniejącej sieci?|Utwórz nową sieć lub Dołącz do istniejącej sieci konsorcjum|Utwórz nowe sprzężenie istniejące|Create New (Utwórz nowe)
-Adres e-mail (opcjonalnie)|Po zakończeniu wdrożenia z informacjami o danym wdrożeniu otrzymasz powiadomienie e-mail.|Prawidłowy adres e-mail|Nie dotyczy
-Nazwa użytkownika maszyny wirtualnej|Nazwa użytkownika administratora dla każdej wdrożonej maszyny wirtualnej (tylko znaki alfanumeryczne)|1-64 znaków|Nie dotyczy
-Typ uwierzytelniania|Metoda do uwierzytelnienia na maszynie wirtualnej.|Hasło lub klucz publiczny SSH|Hasło
-Hasło (typ uwierzytelniania = hasło)|Hasło dla konta administratora dla każdej wdrożonej maszyny wirtualnej.  Hasło musi zawierać 3 z następujących: 1 wielkie litery, 1 małe litery, cyfry 1 i 1 znak specjalny. Gdy wszystkie maszyny wirtualne mają początkowo to samo hasło, można zmienić hasło po aprowizacji.|12-72 znaków|Nie dotyczy
-Klucz SSH (typ uwierzytelniania = klucz publiczny)|Bezpieczny klucz powłoki używany do logowania zdalnego.||Nie dotyczy
-Subskrypcja|Subskrypcja, do której ma zostać wdrożona sieć konsorcjum||Nie dotyczy
-Grupa zasobów|Grupa zasobów, w której ma zostać wdrożona sieć konsorcjum.||Nie dotyczy
-Lokalizacja|Region świadczenia usługi Azure dla grupy zasobów.||Nie dotyczy
-
-Poniżej przedstawiono przykładowe wdrożenie: ![](./media/ethereum-poa-deployment/basic-blade.png) w warstwie Podstawowa
-
-#### <a name="deployment-regions"></a>Regiony wdrożenia
-
-Następnie w obszarze regiony wdrożenia Określ dane wejściowe dla liczby regionów w celu wdrożenia sieci konsorcjum i wyboru regionów świadczenia usługi Azure na podstawie liczby podanych regionów. Użytkownik może wdrożyć w maksymalnie 5 regionach. Zalecamy wybranie pierwszego regionu w celu dopasowania do lokalizacji grupy zasobów z sekcji podstawowe. W przypadku sieci programistycznych lub testowych zaleca się pojedynczy region na członka. W przypadku produkcji zalecamy wdrożenie w co najmniej dwóch regionach w celu zapewnienia wysokiej dostępności.
-
-Szczegółowy opis każdego z parametrów jest następujący:
-
-  Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
-  ---|---|---|---
-  Liczba regionów|Liczba regionów do wdrożenia sieci konsorcjum|1, 2, 3, 4, 5|1
-  Pierwszy region|Pierwszy region wdrożenia sieci konsorcjum|Wszystkie dozwolone regiony platformy Azure|Nie dotyczy
-  Drugi region|Drugi region do wdrożenia sieci konsorcjum (widoczne tylko wtedy, gdy wybrano liczbę regionów jako 2)|Wszystkie dozwolone regiony platformy Azure|Nie dotyczy
-  Trzeci region|Trzeci region do wdrożenia sieci konsorcjum (widoczne tylko wtedy, gdy wybrano liczbę regionów jako 3)|Wszystkie dozwolone regiony platformy Azure|Nie dotyczy
-  Czwarty region|Czwarty region do wdrożenia sieci konsorcjum (widoczne tylko wtedy, gdy wybrano liczbę regionów jako 4)|Wszystkie dozwolone regiony platformy Azure|Nie dotyczy
-  Piąty region|Piąty region do wdrożenia sieci konsorcjum (widoczne tylko wtedy, gdy wybrano liczbę regionów jako 5)|Wszystkie dozwolone regiony platformy Azure|Nie dotyczy
-
-Poniżej przedstawiono przykładowe wdrożenie: ![regionów wdrożenia](./media/ethereum-poa-deployment/deployment-regions.png)
-
-#### <a name="network-size-and-performance"></a>Rozmiar i wydajność sieci
-
-Następnie w obszarze "rozmiar sieci i wydajność" Określ dane wejściowe rozmiaru sieci konsorcjum, takie jak liczba i rozmiar węzłów modułu sprawdzania poprawności.
-Rozmiar magazynu węzła modułu sprawdzania poprawności będzie określać potencjalny rozmiar łańcucha bloków. Tę zmianę można zmienić po wdrożeniu.
-
-Szczegółowy opis każdego z parametrów jest następujący:
-
-  Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
-  ---|---|---|---
-  Liczba węzłów modułu sprawdzania z równoważeniem obciążenia|Liczba węzłów modułu sprawdzania poprawności do aprowizacji jako część sieci|2-15|2
-  Wydajność magazynu węzłów modułu sprawdzania poprawności|Typ dysku zarządzanego wykonującego kopię zapasową każdego ze wdrożonych węzłów modułu sprawdzania poprawności.|SSD w warstwie Standardowa lub Premium|Standardowa, SSD
-  Rozmiar maszyny wirtualnej węzła modułu sprawdzania poprawności|Rozmiar maszyny wirtualnej używany dla węzłów modułu sprawdzania poprawności.|Standard A, standard D, standard D-v2, standardowa F Series, standard DS i Standard FS|Standardowa D1 v2
-
-[Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/managed-disks/)
-
-[Szczegóły cennika maszyny wirtualnej](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
-
-Warstwa maszyny wirtualnej i magazynu będzie miała wpływ na wydajność sieci.  Zalecamy użycie następujących jednostek SKU na podstawie pożądanych kosztów:
-
-  Jednostka SKU maszyny wirtualnej|Warstwa magazynowania|Cena|Przepływność|Opóźnienie
-  ---|---|---|---|---
-  F1|Standardowa, SSD|małą|małą|wysokowydajn
-  D2_v3|Standardowa, SSD|Średniookresow|Średniookresow|Średniookresow
-  F16s|Premium, SSD|wysokowydajn|wysokowydajn|małą
-
-Poniżej przedstawiono przykładowe wdrożenie: ![rozmiaru i wydajności sieci](./media/ethereum-poa-deployment/network-size-and-performance.png)
-
-#### <a name="ethereum-settings"></a>Ustawienia Ethereum
-
-Następnie w obszarze Ustawienia Ethereum Określ ustawienia konfiguracji związane z Ethereum, takie jak identyfikator sieci i hasło konta Ethereum lub Genesis.
-
-Szczegółowy opis każdego z parametrów jest następujący:
-
-  Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
-  ---|---|---|---
-Identyfikator członka konsorcjum|Identyfikator skojarzony z każdym członkiem uczestniczącym w sieci konsorcjum używany do konfigurowania przestrzeni adresów IP w celu uniknięcia kolizji. W przypadku sieci prywatnej identyfikator elementu członkowskiego musi być unikatowy w różnych organizacjach w tej samej sieci.  Unikatowy identyfikator elementu członkowskiego jest wymagany nawet wtedy, gdy ta sama organizacja jest wdrażana w wielu regionach. Zanotuj wartość tego parametru, ponieważ musisz udostępnić go innym członkom, aby upewnić się, że nie ma kolizji.|0-255|Nie dotyczy
-Identyfikator sieci|Identyfikator sieci dla wdrażanej sieci Ethereum.  Każda sieć Ethereum ma swój własny identyfikator sieci, a 1 to identyfikator sieci publicznej.|5 – 999 999 999|10101010
-Adres Ethereum administratora|Adres konta usługi Ethereum, który jest używany przez uczestnictwo w ładu PoA.  Zalecamy użycie elementubinding do generowania adresu Ethereum.|42 znaków alfanumerycznych zaczynających się od 0x|Nie dotyczy
-Opcje zaawansowane|Opcje zaawansowane dla ustawień Ethereum|Włącz lub Wyłącz|Wyłączanie
-Publiczny adres IP (Opcje zaawansowane = Włącz)|Wdraża sieć za bramą sieci wirtualnej i usuwa dostęp do komunikacji równorzędnej. Jeśli ta opcja jest zaznaczona, wszyscy członkowie muszą używać bramy sieci wirtualnej, aby połączenie było zgodne.|Prywatna sieć wirtualna IP|Publiczny adres IP
-Limit liczby zablokowanych gazów (Opcje zaawansowane = Włącz)|Limit gazu bloku wyjściowego sieci|Wszystkie wartości liczbowe|50000000
-Okres ponownego pieczętowania bloku (s)|Częstotliwość tworzenia pustych bloków, gdy nie ma żadnych transakcji w sieci. Wyższa częstotliwość będzie miała szybszy wzrost, ale zwiększy się koszty magazynowania.|Wszystkie wartości liczbowe|15
-Kontrakt uprawnień transakcji (Opcje zaawansowane = Włącz)|Kod bajtowy dla kontraktu uprawniającego do transakcji. Ogranicza wdrożenie i wykonywanie kontraktu inteligentnego do listy dozwolonych kont Ethereum.|Kod bajtowy kontraktu|Nie dotyczy
-
-Poniżej przedstawiono przykładowe wdrożenie: ![ustawienia ethereum](./media/ethereum-poa-deployment/ethereum-settings.png)
-
-#### <a name="monitoring"></a>Monitorowanie
-
-Blok monitorowanie umożliwia skonfigurowanie Azure Monitor zasobów dzienników dla sieci. Agent monitorowania będzie zbierać przydatne metryki i dzienniki z sieci, co zapewnia możliwość szybkiego sprawdzania kondycji sieci lub problemów z debugowaniem.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-  Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
-  ---|---|---|---
-Monitorowanie|Opcja włączania monitorowania|Włącz lub Wyłącz|Włączanie
-Nawiązywanie połączenia z istniejącymi dziennikami Azure Monitor|Utwórz nowe wystąpienie dzienników Azure Monitor lub Przyłącz istniejące wystąpienie|Utwórz nową lub Dołącz do istniejącej|Tworzenie nowego elementu
-Monitoruj lokalizację (Połącz z istniejącymi dziennikami Azure Monitor = Utwórz nowe)|Region, w którym zostanie wdrożone nowe wystąpienie dzienników Azure Monitor|Wszystkie Azure Monitor regiony dzienników|Nie dotyczy
+Parametr | Opis | Przykładowa wartość
+----------|-------------|--------------
+Monitorowanie | Opcja włączania monitorowania | Włączenie
+Nawiązywanie połączenia z istniejącymi dziennikami Azure Monitor | Opcja tworzenia nowego wystąpienia dzienników Azure Monitor lub łączenia istniejącego wystąpienia | Tworzenie nowego elementu
+Lokalizacja | Region, w którym jest wdrożone nowe wystąpienie | Wschodnie stany USA
 Istniejący identyfikator obszaru roboczego usługi log Analytics (Połącz z istniejącymi dziennikami Azure Monitor = Dołącz istniejący)|Identyfikator obszaru roboczego istniejącego wystąpienia dzienników Azure Monitor||Nie dotyczy
 Istniejący klucz podstawowy usługi log Analytics (łączenie z istniejącymi dziennikami Azure Monitor = Połącz istniejące)|Klucz podstawowy używany do nawiązywania połączenia z istniejącym wystąpieniem dzienników Azure Monitor||Nie dotyczy
 
+Kliknij przycisk **OK**.
 
-Poniżej przedstawiono przykładowe wdrożenie: ![usługi Azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
+### <a name="summary"></a>Podsumowanie
 
-#### <a name="summary"></a>Podsumowanie
+Kliknij podsumowanie, aby przejrzeć określone dane wejściowe i uruchomić podstawową weryfikację przed wdrożeniem. Przed wdrożeniem można pobrać szablon i parametry.
 
-Kliknij blok podsumowania, aby przejrzeć określone dane wejściowe i uruchomić podstawową weryfikację przed wdrożeniem. Przed wdrożeniem programu można pobrać szablon i parametry.
+Wybierz pozycję **Utwórz** do wdrożenia.
 
-Przejrzyj warunki prawne i zachowania poufności informacji, a następnie kliknij pozycję "Kup", aby przeprowadzić wdrożenie. Jeśli wdrożenie obejmuje bramy sieci wirtualnej, wdrożenie zajmie od 45 do 50 minut.
+Jeśli wdrożenie obejmuje bramy sieci wirtualnej, wdrożenie może potrwać od 45 do 50 minut.
 
-#### <a name="post-deployment"></a>Po wdrożeniu
+## <a name="deployment-output"></a>Dane wyjściowe wdrożenia
 
-##### <a name="deployment-output"></a>Dane wyjściowe wdrożenia
+Po zakończeniu wdrażania można uzyskać dostęp do wymaganych parametrów przy użyciu Azure Portal.
 
-Po zakończeniu wdrażania możesz uzyskać dostęp do wymaganych parametrów za pośrednictwem wiadomości e-mail z potwierdzeniem lub za pośrednictwem Azure Portal. W tych parametrach znajdziesz następujące parametry:
+### <a name="confirmation-email"></a>Wiadomość e-mail z potwierdzeniem
 
--   Punkt końcowy RPC Ethereum
-
--   Adres URL pulpitu nawigacyjnego ładu
-
--   Adres URL Azure Monitor
-
--   Adres URL danych
-
--   Identyfikator zasobu bramy sieci wirtualnej (opcjonalnie)
-
-##### <a name="confirmation-email"></a>Wiadomość e-mail z potwierdzeniem
-
-Jeśli podano adres e-mail ([sekcja podstawy](#basics)), na adres e-mail zostanie wysłana wiadomość e-mail zawierająca informacje wyjściowe wdrożenia.
+Jeśli podano adres e-mail ([sekcja podstawy](#basics)), zostanie wysłana wiadomość e-mail zawierająca informacje o wdrożeniu i linki do tej dokumentacji.
 
 ![adres e-mail wdrożenia](./media/ethereum-poa-deployment/deployment-email.png)
 
-##### <a name="portal"></a>Portal
+### <a name="portal"></a>Portal
 
 Po pomyślnym zakończeniu wdrożenia i udostępnieniu wszystkich zasobów można wyświetlić parametry wyjściowe w grupie zasobów.
 
-1.  Lokalizowanie grupy zasobów w portalu
+1. Przejdź do grupy zasobów w portalu.
+1. Wybierz kolejno pozycje **przegląd > wdrożenia**.
 
-2.  Przejdź do *wdrożeń*
+    ![Przegląd grupy zasobów](./media/ethereum-poa-deployment/resource-group-overview.png)
 
-3.  Wybierz pierwsze wdrożenie o takiej samej nazwie jak grupa zasobów
+1. Wybierz pozycję **Microsoft-Azure-łańcucha bloków. Azure-łańcucha bloków-eter-...** wdrożenia.
+1. Wybierz sekcję dane **wyjściowe** .
 
-4.  Wybierz dane *wyjściowe*
+    ![Dane wyjściowe wdrożenia](./media/ethereum-poa-deployment/deployment-outputs.png)
 
-### <a name="growing-the-consortium"></a>Rosnąco konsorcjum
+## <a name="growing-the-consortium"></a>Rosnąco konsorcjum
 
-Aby rozszerzyć konsorcjum, należy najpierw połączyć sieć fizyczną.
-Przy użyciu publicznego wdrożenia opartego na protokole IP ten pierwszy krok jest bezproblemowy. W przypadku wdrażania za pośrednictwem sieci VPN zapoznaj się z sekcją [łączenie bramy sieci wirtualnej](#connecting-vnet-gateways) w celu nawiązania połączenia sieciowego w ramach wdrożenia nowego elementu członkowskiego.  Po zakończeniu wdrażania Użyj [DApp ładu](#governance-dapp) , aby zostać administratorem sieci.
+Aby rozszerzyć konsorcjum, należy najpierw połączyć sieć fizyczną. W przypadku wdrażania za pośrednictwem sieci VPN Zobacz sekcję [łączenie bramy sieci wirtualnej](#connecting-vnet-gateways) Konfigurowanie połączenia sieciowego w ramach wdrożenia nowego elementu członkowskiego. Po zakończeniu wdrożenia Użyj [DApp ładu](#governance-dapp) , aby zostać administratorem sieci.
 
-#### <a name="new-member-deployment"></a>Wdrożenie nowego elementu członkowskiego
+### <a name="new-member-deployment"></a>Wdrożenie nowego elementu członkowskiego
 
-1.  Udostępnij następujące informacje z przyłączanym członkiem. Te informacje można znaleźć w wiadomości e-mail po wdrożeniu lub w danych wyjściowych wdrożenia portalu.
+Udostępnij następujące informacje z przyłączanym członkiem. Informacje znajdują się w wiadomości e-mail po wdrożeniu lub w danych wyjściowych wdrożenia portalu.
 
-    -  Adres URL danych konsorcjum
+* Adres URL danych konsorcjum
+* Liczba wdrożonych węzłów
+* Identyfikator zasobu bramy sieci wirtualnej (w przypadku korzystania z sieci VPN)
 
-    -  Liczba wdrożonych węzłów
+Element członkowski wdrożenia powinien korzystać z tego samego szablonu rozwiązania Ethereum weryfikacji dla urzędu certyfikacji podczas wdrażania ich obecności w sieci przy użyciu następujących wskazówek:
 
-    -  Identyfikator zasobu bramy sieci wirtualnej (w przypadku korzystania z sieci VPN)
+* Wybierz **sprzężenie istniejące**
+* Wybierz tę samą liczbę węzłów modułu sprawdzania poprawności jako resztę elementów członkowskich w sieci, aby zapewnić rzetelną reprezentację
+* Użyj tego samego adresu administratora Ethereum
+* Użyj podanego *adresu URL danych konsorcjum* w *ustawieniach Ethereum*
+* Jeśli pozostała część sieci należy do sieci VPN, wybierz pozycję **prywatna sieć wirtualna** w sekcji Zaawansowane.
 
-2.  Element członkowski wdrożenia powinien korzystać z tego [samego rozwiązania](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) podczas wdrażania ich obecności w sieci z następującymi kwestiami:
+### <a name="connecting-vnet-gateways"></a>Łączenie bram sieci wirtualnej
 
-    -  Wybierz *sprzężenie istniejące*
+Ta sekcja jest wymagana tylko w przypadku wdrożenia przy użyciu prywatnej sieci wirtualnej. Jeśli używasz publicznych adresów IP, możesz pominąć tę sekcję.
 
-    -  Wybierz tę samą liczbę węzłów modułu sprawdzania poprawności jako resztę elementów członkowskich w sieci, aby zapewnić rzetelną reprezentację
+W przypadku sieci prywatnej różne elementy członkowskie są połączone za pośrednictwem połączeń bramy sieci wirtualnej. Zanim członek będzie mógł dołączyć do sieci i wyświetlić ruch związany z transakcjami, istniejący element członkowski musi wykonać ostateczną konfigurację na swojej bramie sieci VPN, aby zaakceptować połączenie. Węzły Ethereum należące do elementu członkowskiego sprzęgania nie będą działać, dopóki nie zostanie nawiązane połączenie. Aby zmniejszyć prawdopodobieństwo single point of failure, należy utworzyć nadmiarowe połączenia sieciowe w konsorcjum.
 
-    -  Użyj tego samego adresu Ethereum, który został podany w poprzednim kroku
+Po wdrożeniu nowego elementu członkowskiego istniejący element członkowski musi zakończyć połączenie dwukierunkowe przez skonfigurowanie połączenia bramy sieci wirtualnej z nowym członkiem. Istniejący element członkowski wymaga:
 
-    -  Przekaż podany *adres URL danych konsorcjum* na karcie *Ustawienia Ethereum*
+* Identyfikator zasobu bramy sieci wirtualnej łączący się z członkiem. Zobacz [dane wyjściowe wdrożenia](#deployment-output).
+* Klucz połączenia udostępnionego.
 
-    -  Jeśli pozostała część sieci należy do sieci VPN, wybierz pozycję *prywatna sieć wirtualna* w sekcji Zaawansowane.
-
-#### <a name="connecting-vnet-gateways"></a>Łączenie bram sieci wirtualnej
-
-Ten krok można zignorować, jeśli wdrożono go przy użyciu domyślnych ustawień publicznego adresu IP. W przypadku sieci prywatnej różne elementy członkowskie są połączone za pośrednictwem połączeń bramy sieci wirtualnej. Zanim członek będzie mógł dołączyć do sieci i wyświetlić ruch związany z transakcjami, istniejący element członkowski musi wykonać ostateczną konfigurację na swojej bramie sieci VPN, aby zaakceptować połączenie. Oznacza to, że węzły Ethereum należące do elementu członkowskiego sprzęgania nie będą działać, dopóki nie zostanie nawiązane połączenie. Zaleca się utworzenie nadmiarowych połączeń sieciowych (siatkę) do konsorcjum, aby zmniejszyć szanse single point of failure.
-
-Po wdrożeniu nowego elementu członkowskiego istniejący element członkowski musi zakończyć połączenie dwukierunkowe przez skonfigurowanie połączenia bramy sieci wirtualnej z nowym członkiem. Aby to osiągnąć, istniejący element członkowski będzie potrzebować:
-
-1.  Identyfikator zasobu bramy sieci wirtualnej łączący się z członkiem (Zobacz dane wyjściowe wdrożenia)
-
-2.  Współużytkowany klucz połączenia
-
-Istniejący element członkowski musi uruchomić następujący skrypt programu PowerShell, aby zakończyć połączenie. Zalecamy używanie Azure Cloud Shell znajdujących się w prawym górnym pasku nawigacyjnym w portalu.
+Istniejący element członkowski musi uruchomić następujący skrypt programu PowerShell, aby zakończyć połączenie. Możesz użyć Azure Cloud Shell znajdującego się w prawym górnym pasku nawigacyjnym w portalu.
 
 ![Usługa Cloud Shell](./media/ethereum-poa-deployment/cloud-shell.png)
 
@@ -406,27 +265,27 @@ $MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName
 New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
-### <a name="service-monitoring"></a>Monitorowanie usługi
+## <a name="service-monitoring"></a>Monitorowanie usługi
 
-Portal Azure Monitor można znaleźć, korzystając z linku w wiadomości e-mail dotyczącej wdrożenia lub lokalizowania parametru w obszarze dane wyjściowe wdrożenia \[portalu\_usługi OMS\_adres URL\].
+Portal Azure Monitor można znaleźć, korzystając z linku w wiadomości e-mail dotyczącej wdrożenia lub lokalizacji parametru w danych wyjściowych wdrożenia [OMS_PORTAL_URL].
 
 W portalu będzie najpierw wyświetlana statystyka sieci wysokiego poziomu i Omówienie węzła.
 
 ![Kategorie monitora](./media/ethereum-poa-deployment/monitor-categories.png)
 
-Wybranie **węzła przegląd** spowoduje przekierowanie do portalu w celu wyświetlenia statystyk infrastruktury poszczególnych węzłów.
+Wybór **węzła przegląd** przedstawia statystykę infrastruktury na węzeł.
 
 ![Statystyka węzła](./media/ethereum-poa-deployment/node-stats.png)
 
-Wybranie pozycji **Statystyka sieci** spowoduje przekierowanie do wyświetlania statystyk sieci Ethereum.
+Wybranie pozycji **Statystyka sieci** pokazuje statystykę sieci Ethereum.
 
 ![Statystyka sieci](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-kusto-queries"></a>Przykładowe zapytania Kusto
+### <a name="sample-kusto-queries"></a>Przykładowe zapytania Kusto
 
-Za tymi pulpitami nawigacyjnymi jest zestaw Queryable dzienników RAW. Możesz użyć tych dzienników nieprzetworzonych, aby dostosować pulpity nawigacyjne, zbadać błędy lub alerty dotyczące progu konfiguracji. Poniżej znajdziesz zestaw przykładowych zapytań, które mogą być uruchamiane w narzędziu do przeszukiwania dzienników:
+Możesz badać dzienniki monitorowania, aby zbadać błędy lub alerty dotyczące progów ustawień. Następujące zapytania są przykładami, które można uruchomić w narzędziu *Wyszukiwanie dzienników* :
 
-##### <a name="lists-blocks-that-have-been-reported-by-more-than-one-validator-useful-to-help-find-chain-forks"></a>Wyświetla listę bloków, które zostały zgłoszone przez więcej niż jeden moduł sprawdzania poprawności. Przydatne do znajdowania rozwidleniów łańcucha.
+Bloki list, które zostały zgłoszone przez więcej niż jedno zapytanie modułu sprawdzania poprawności, mogą być przydatne do znajdowania rozwidleniów łańcucha.
 
 ```sql
 MinedBlock_CL
@@ -434,7 +293,7 @@ MinedBlock_CL
 | where DistinctMiners > 1
 ```
 
-##### <a name="get-average-peer-count-for-a-specified-validator-node-averaged-over-5-minute-buckets"></a>Pobierz średnią liczbę elementów równorzędnych dla określonego węzła modułu sprawdzania poprawności średniej z 5 minut.
+Pobierz średnią liczbę elementów równorzędnych dla określonego węzła modułu sprawdzania poprawności średniego z 5-minutowych zasobników.
 
 ```sql
 let PeerCountRegex = @"Syncing with peers: (\d+) active, (\d+) confirmed, (\d+)";
@@ -446,72 +305,82 @@ ParityLog_CL
 | summarize avg(ActivePeers) by bin(TimeGenerated, 5m)
 ```
 
-### <a name="ssh-access"></a>Dostęp SSH
+## <a name="ssh-access"></a>Dostęp SSH
 
-Ze względów bezpieczeństwa dostęp do portu SSH jest domyślnie odrzucony przez regułę zabezpieczeń grupy sieciowej. Aby uzyskać dostęp do wystąpień maszyn wirtualnych w sieci PoA, należy zmienić tę regułę na \"Zezwalaj na\"
+Ze względów bezpieczeństwa dostęp do portu SSH jest domyślnie odrzucony przez regułę zabezpieczeń grupy sieciowej. Aby uzyskać dostęp do wystąpień maszyn wirtualnych w sieci PoA, należy zmienić następujące zabezpieczenia reguły, aby *zezwolić*.
 
-1.  Rozpocznij w sekcji Omówienie wdrożonej grupy zasobów z Azure Portal.
+1. Przejdź do sekcji **Omówienie** wdrożonej grupy zasobów w Azure Portal.
 
     ![Omówienie protokołu SSH](./media/ethereum-poa-deployment/ssh-overview.png)
 
-2.  Wybierz grupę zabezpieczeń sieci dla regionu maszyny wirtualnej, do której chcesz uzyskać dostęp.
+1. Wybierz **grupę zabezpieczeń sieci** dla regionu maszyny wirtualnej, do której chcesz uzyskać dostęp.
 
     ![sieciowej grupy zabezpieczeń SSH](./media/ethereum-poa-deployment/ssh-nsg.png)
 
-3.  Wybierz regułę\" \"Zezwalaj na używanie protokołu SSH
+1. Wybierz regułę **zezwalania na używanie protokołu SSH** .
 
     ![SSH — Zezwalaj](./media/ethereum-poa-deployment/ssh-allow.png)
 
-4.  Zmień\" akcji \"na Zezwalaj
+1. Zmień **akcję** na **Zezwalaj**
 
     ![Zezwalaj na włączanie protokołu SSH](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-5.  Kliknij pozycję \"Zapisz\" (zastosowanie zmian może potrwać kilka minut)
+1. Wybierz pozycję **Zapisz**. Zastosowanie zmian może potrwać kilka minut.
 
-Teraz można zdalnie łączyć się z maszynami wirtualnymi dla węzłów modułu sprawdzania poprawności za pośrednictwem protokołu SSH z podaną nazwą użytkownika administratora i hasła/klucza SSH.
-Polecenie SSH do uruchomienia w celu uzyskania dostępu do pierwszego węzła modułu sprawdzania poprawności znajduje się w parametrze wyjściowym wdrożenia szablonu jako "\_SSH, aby\_pierwszy\_licencji\_zbiorczej\_węzeł REGION1" (dla przykładowego wdrożenia: SSH-p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com). Aby przejść do dodatkowych węzłów transakcji, Zwiększ numer portu o jeden (na przykład pierwszy węzeł transakcji znajduje się na porcie 4000).
+Można zdalnie nawiązać połączenie z maszynami wirtualnymi dla węzłów modułu sprawdzania poprawności za pośrednictwem protokołu SSH z podaną nazwą użytkownika administratora i hasła/klucza SSH. Polecenie SSH, aby uzyskać dostęp do pierwszego węzła modułu sprawdzania poprawności, znajduje się na liście wyjściowej wdrożenia szablonu. Przykład:
 
-Jeśli wdrożono w więcej niż jednym regionie, należy zmienić powyższe polecenie na nazwę DNS lub adres IP modułu równoważenia obciążenia w tym regionie. Aby znaleźć nazwę DNS lub adres IP innych regionów, Znajdź zasób z konwencją nazewnictwa \*\*\*\*\*-lbpip-reg\#i Wyświetl nazwę DNS i właściwości adresu IP.
+``` bash
+ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
+```
 
-### <a name="azure-traffic-manager-load-balancing"></a>Równoważenie obciążenia Traffic Manager platformy Azure
+Aby przejść do dodatkowych węzłów transakcji, Zwiększ numer portu o jeden.
+
+Jeśli wdrożono w więcej niż jednym regionie, należy zmienić polecenie na nazwę DNS lub adres IP modułu równoważenia obciążenia w tym regionie. Aby znaleźć nazwę DNS lub adres IP innych regionów, Znajdź zasób z konwencją nazewnictwa **\*\*\*\*\*-lbpip-reg\#** i Wyświetl jego właściwości nazwy DNS i adresu IP.
+
+## <a name="azure-traffic-manager-load-balancing"></a>Równoważenie obciążenia Traffic Manager platformy Azure
 
 Usługa Azure Traffic Manager może pomóc w ograniczeniu przestoju i skrócić czas odpowiedzi sieci PoA przez kierowanie ruchu przychodzącego do wielu wdrożeń w różnych regionach. Wbudowane funkcje kontroli kondycji i automatycznego ponownego routingu pomagają zapewnić wysoką dostępność punktów końcowych RPC i zarządzanie DApp. Ta funkcja jest przydatna, jeśli wdrożono w wielu regionach i są gotowe do produkcji.
 
-Zastosowania usługi Traffic Manager:
-
--   Zwiększ dostępność sieci PoA przy użyciu automatycznej pracy awaryjnej.
-
--   Zwiększaj czas odpowiedzi sieci przez kierowanie użytkowników końcowych do lokalizacji platformy Azure z najniższym opóźnieniem sieci.
+Użyj Traffic Manager, aby poprawić dostępność sieci PoA przy użyciu automatycznej pracy awaryjnej. Możesz również użyć Traffic Manager, aby zwiększyć czas odpowiedzi sieci przez kierowanie użytkowników końcowych do lokalizacji platformy Azure z najniższym opóźnieniem sieci.
 
 Jeśli zdecydujesz się utworzyć profil Traffic Manager, możesz użyć nazwy DNS profilu, aby uzyskać dostęp do sieci. Po dodaniu innych członków konsorcjum do sieci Traffic Manager może również służyć do równoważenia obciążenia w ramach wdrożonych modułów walidacji.
 
-#### <a name="creating-a-traffic-manager-profile"></a>Tworzenie profilu Traffic Manager
+### <a name="creating-a-traffic-manager-profile"></a>Tworzenie profilu Traffic Manager
 
-Wyszukaj i wybierz \"profilu Traffic Manager\" po kliknięciu przycisku \"Utwórz zasób\" w Azure Portal.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób** w lewym górnym rogu.
+1. Wyszukaj **profil Traffic Manager**.
 
-![Wyszukaj w usłudze Azure Traffic Manager](./media/ethereum-poa-deployment/traffic-manager-search.png)
+    ![Wyszukaj w usłudze Azure Traffic Manager](./media/ethereum-poa-deployment/traffic-manager-search.png)
 
-Nadaj profilowi unikatową nazwę i wybierz grupę zasobów, która została utworzona podczas wdrażania PoA. Kliknij przycisk Utwórz, aby wdrożyć.
+    Nadaj profilowi unikatową nazwę i wybierz grupę zasobów, która została użyta do wdrożenia PoA.
 
-![Tworzenie Menedżera ruchu](./media/ethereum-poa-deployment/traffic-manager-create.png)
+1. Wybierz pozycję **Utwórz** do wdrożenia.
 
-Po jego wdrożeniu wybierz wystąpienie w grupie zasobów. Nazwę DNS, aby uzyskać dostęp do usługi Traffic Manager, można znaleźć na karcie Przegląd
+    ![Utwórz Traffic Manager](./media/ethereum-poa-deployment/traffic-manager-create.png)
 
-![Lokalizowanie usługi Traffic Manager DNS](./media/ethereum-poa-deployment/traffic-manager-dns.png)
+1. Po wdrożeniu wybierz wystąpienie w grupie zasobów. Nazwę DNS, aby uzyskać dostęp do usługi Traffic Manager, można znaleźć na karcie Przegląd.
 
-Wybierz kartę punkty końcowe i kliknij przycisk Dodaj. Określ unikatową nazwę punktu końcowego. Zmień docelowy typ zasobu na publiczny adres IP. Następnie wybierz publiczny adres IP pierwszego regionu\'usługi równoważenia obciążenia.
+    ![Lokalizowanie usługi Traffic Manager DNS](./media/ethereum-poa-deployment/traffic-manager-dns.png)
 
-![Routing Traffic Manager](./media/ethereum-poa-deployment/traffic-manager-routing.png)
+1. Wybierz kartę **punkty końcowe** i wybierz przycisk **Dodaj** .
+1. Określ unikatową nazwę punktu końcowego.
+1. W obszarze **Typ zasobu docelowego**wybierz pozycję **publiczny adres IP**.
+1. Wybierz publiczny adres IP modułu równoważenia obciążenia pierwszego regionu.
 
-Powtórz te czynności dla każdego regionu w wdrożonej sieci. Gdy punkty końcowe zostaną włączone \"stanie\", zostaną automatycznie załadowane i są bilansowane według nazwy DNS usługi Traffic Manager. Teraz można użyć tej nazwy DNS zamiast\_\[\_danych programu CONSORTIUM,\] parametr w innych krokach dokumentu.
+    ![Routing Traffic Manager](./media/ethereum-poa-deployment/traffic-manager-routing.png)
 
-### <a name="data-api"></a>Interfejs API danych
+Powtórz te czynności dla każdego regionu w wdrożonej sieci. Gdy punkty końcowe są w stanie **włączonym** , są one automatycznie ładowane i są bilansowane według nazwy DNS usługi Traffic Manager. Teraz można użyć tej nazwy DNS zamiast parametru [CONSORTIUM_DATA_URL] w innych krokach artykułu.
 
-Każdy członek konsorcjum hostuje informacje niezbędne do nawiązania połączenia z siecią przez inne osoby. Istniejący element członkowski dostarczy [CONSORTIUM_DATA_URL] przed wdrożeniem elementu członkowskiego. Po wdrożeniu członek łączący będzie pobierał informacje z interfejsu JSON w następującym punkcie końcowym:
+## <a name="data-api"></a>Interfejs API danych
+
+Każdy członek konsorcjum hostuje informacje niezbędne do nawiązania połączenia z siecią przez inne osoby. Aby zapewnić łatwość łączności, każdy element członkowski hostuje zestaw informacji o połączeniu w punkcie końcowym interfejsu API danych.
+
+Istniejący element członkowski zawiera [CONSORTIUM_DATA_URL] przed wdrożeniem elementu członkowskiego. Po wdrożeniu członek łączący będzie pobierał informacje z interfejsu JSON w następującym punkcie końcowym:
 
 `<CONSORTIUM_DATA_URL>/networkinfo`
 
-Odpowiedź będzie zawierać informacje przydatne do przyłączania elementów członkowskich (Genesis Block, walidator Set Contract ABI, bootnodes) i informacje przydatne dla istniejącego elementu członkowskiego (adresy walidatora). Zachęcamy do korzystania z tej standaryzacji w celu poszerzenia konsorcjum między dostawcami chmury. Ten interfejs API zwróci odpowiedź sformatowaną w formacie JSON o następującej strukturze:
+Odpowiedź zawiera informacje przydatne do przyłączania elementów członkowskich (Genesis Block, walidator Set Contract ABI, bootnodes) i informacje przydatne dla istniejącego elementu członkowskiego (adresy walidacji). Można użyć tej standaryzacji, aby zwiększyć konsorcjum między dostawcami chmury. Ten interfejs API zwraca odpowiedź sformatowaną w formacie JSON o następującej strukturze:
+
 ```json
 {
   "$id": "",
@@ -620,178 +489,236 @@ Odpowiedź będzie zawierać informacje przydatne do przyłączania elementów c
 }
 
 ```
-## <a name="tutorials"></a>Samouczki
 
-### <a name="programmatically-interacting-with-a-smart-contract"></a>Programistyczne współpracujące z kontraktem inteligentnym
+## <a name="governance-dapp"></a>DApp ładu
+
+W celu potwierdzenia uwierzytelnienia jest zdecentralizowane ładu. Ponieważ potwierdzenie urzędu jest zależne od dozwolonej listy urzędów sieciowych w celu zapewnienia dobrej kondycji sieci, ważne jest, aby zapewnić sprawiedliwy mechanizm wprowadzania modyfikacji tej listy uprawnień. Każde wdrożenie jest dostarczane z zestawem inteligentnych kontraktów i portalu na potrzeby nadzoru w łańcuchu na tej liście dozwolonych. Gdy proponowana zmiana osiągnie większość głosów przez członków konsorcjum, zmiana zostanie wdrożona. Głosowanie pozwala na dodawanie lub naruszenie przez uczestników nowych uczestników w przejrzysty sposób, który zachęca do uczciwej sieci.
+
+DApp ładu to zestaw wstępnie wdrożonych, [inteligentnych kontraktów](https://github.com/Azure-Samples/blockchain/tree/master/ledger/template/ethereum-on-azure/permissioning-contracts) i aplikacji sieci Web, które są używane do zarządzania władzami w sieci. Urzędy są podzielone na tożsamości administratora i węzły modułu sprawdzania poprawności.
+Administratorzy mogą delegować jednomyślne uczestnictwo w zestawie węzłów modułu sprawdzania poprawności. Administratorzy mogą również zagłosować innych administratorów do sieci lub z niej.
+
+![DApp ładu](./media/ethereum-poa-deployment/governance-dapp.png)
+
+* **Zdecentralizowane ładu:** Zmiany w urzędach sieciowych są zarządzane za pomocą głosowania w łańcuchu przez wybieranie administratorów.
+* **Delegowanie modułu weryfikacji:** Urzędy mogą zarządzać węzłami modułu sprawdzania poprawności skonfigurowanymi w każdym wdrożeniu PoA.
+* **Historia zmian podlegających inspekcji:** Każda zmiana jest rejestrowana w łańcucha bloków, zapewniając przejrzystość i inspekcję.
+
+### <a name="getting-started-with-governance"></a>Wprowadzenie do ładu
+
+Do wykonania dowolnego rodzaju transakcji za pomocą DApp ładu należy użyć portfela Ethereum. Najbardziej proste podejście polega na użyciu portfela w przeglądarce, takiego jak [Dbmasking](https://metamask.io); Jednak ponieważ te inteligentne kontrakty są wdrażane w sieci, można także zautomatyzować interakcje z umową ładu.
+
+Po zainstalowaniu maski, przejdź do ładu DApp w przeglądarce.  Adres URL można znaleźć za pomocą Azure Portal w danych wyjściowych wdrożenia.  Jeśli nie masz zainstalowanej portfela w przeglądarce, nie będzie można wykonywać żadnych akcji; można jednak wyświetlić stan administratora.  
+
+### <a name="becoming-an-admin"></a>Stać się administratorem
+
+Jeśli jesteś pierwszym członkiem, który został wdrożony w sieci, automatycznie staniesz się administratorem, a węzły parzystości są wyświetlane jako moduły walidacji. Jeśli dołączysz do sieci, musisz otrzymać głos jako administratora z większością (ponad 50%) istniejącego zestawu administracyjnego. Jeśli nie chcesz stać się administratorem, węzły nadal będą synchronizowane i weryfikują łańcucha bloków; jednak nie uczestniczą w procesie tworzenia bloku. Aby rozpocząć proces głosowania jako administrator, wybierz pozycję **nominacja** i wprowadź adres Ethereum oraz Alias.
+
+![Nominowanie](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
+
+### <a name="candidates"></a>Sugesti
+
+Wybranie karty **kandydatów** pokazuje bieżący zestaw administratorów kandydujących.  Gdy kandydat osiągnie większość głosów od bieżących administratorów, kandydat zostanie podwyższony do administratora.  Aby zagłosować na kandydata, zaznacz wiersz i wybierz pozycję **głos w**. Jeśli zmienisz zdanie w głosowaniu, wybierz kandydata i wybierz pozycję **odwołaj głos**.
+
+![Sugesti](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
+
+### <a name="admins"></a>Administratorzy
+
+Na karcie **administratorzy** jest wyświetlany bieżący zestaw administratorów, który umożliwia głosowanie.  Gdy administrator utraci więcej niż 50%, zostanie usunięty jako administrator w sieci. Wszystkie węzły modułu sprawdzania poprawności, które są w stanie utracić stan modułu sprawdzania poprawności i stają się węzłami transakcji w sieci. Administrator może zostać usunięty z dowolnej liczby powodów; jednak przede wszystkim konsorcjum wyraża zgodę na zasady z góry.
+
+![Administratorzy](./media/ethereum-poa-deployment/governance-dapp-admins.png)
+
+### <a name="validators"></a>Modułów sprawdzania
+
+Wybranie karty **moduły sprawdzania poprawności** powoduje wyświetlenie bieżących wdrożonych węzłów parzystości dla wystąpienia i ich bieżącego stanu (typ węzła). Każdy członek konsorcjum ma inny zestaw modułów sprawdzania poprawności na tej liście, ponieważ ten widok reprezentuje aktualnie wdrożony element członkowski konsorcjum. Jeśli wystąpienie jest nowo wdrożone i nie dodano żadnych modułów sprawdzania poprawności, uzyskasz możliwość **dodania modułów walidacji**. Dodanie modułów walidacji automatycznie wybiera zestaw węzłów parzystości z zrównoważonym regionem i przypisuje je do zestawu modułów walidacji. Jeśli wdrożono więcej węzłów niż dozwolona pojemność, pozostałe węzły stają się węzłami transakcji w sieci.
+
+Adres każdego modułu sprawdzania poprawności jest automatycznie przypisywany za pośrednictwem [magazynu tożsamości](#identity-store) na platformie Azure.  Jeśli węzeł ulegnie awarii, zwalnia jego tożsamość, umożliwiając innym węzłom wdrożenia. Ten proces zapewnia wysoką dostępność tego konsensusu.
+
+![Modułów sprawdzania](./media/ethereum-poa-deployment/governance-dapp-validators.png)
+
+### <a name="consortium-name"></a>Nazwa konsorcjum
+
+Każdy administrator może zaktualizować nazwę konsorcjum.  Wybierz ikonę koła zębatego w lewym górnym rogu, aby zaktualizować nazwę konsorcjum.
+
+### <a name="account-menu"></a>Menu konto
+
+W prawym górnym rogu jest alias konta Ethereum i identicon.  Jeśli jesteś administratorem, możesz zaktualizować alias.
+
+![Konto](./media/ethereum-poa-deployment/governance-dapp-account.png)
+
+## Programowanie Ethereum<a id="tutorials"></a>
+
+Aby kompilować, wdrażać i testować inteligentne kontrakty, poniżej przedstawiono kilka opcji, które można wziąć pod uwagę podczas opracowywania Ethereum:
+* [Pakiet Truffle](https://www.trufflesuite.com/docs/truffle/overview) — środowisko deweloperskie Ethereum oparte na kliencie
+* [Ethereum Remix](https://remix-ide.readthedocs.io/en/latest/index.html ) — środowisko programistyczne oparte na przeglądarce i lokalnej Ethereum
+
+### <a name="compile-deploy-and-execute-smart-contract"></a>Kompilowanie, wdrażanie i wykonywanie kontraktu inteligentnego
+
+W poniższym przykładzie utworzysz prosty kontrakt inteligentny. Użyj Truffle, aby skompilować i wdrożyć inteligentny kontrakt do sieci łańcucha bloków. Po wdrożeniu wywoływana jest funkcja kontraktu inteligentnego za pośrednictwem transakcji.
+
+#### <a name="prerequisites"></a>Wymagania wstępne
+
+* Zainstaluj środowisko [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Środowisko Python jest niezbędne dla Truffle i Web3. Wybierz opcję Zainstaluj, aby dołączyć Język Python do ścieżki.
+* Zainstaluj Truffle v 5.0.5 `npm install -g truffle@v5.0.5`. Truffle wymaga zainstalowania kilku narzędzi, w tym [Node. js](https://nodejs.org), [git](https://git-scm.com/). Aby uzyskać więcej informacji, zobacz [dokumentację Truffle](https://github.com/trufflesuite/truffle).
+
+### <a name="create-truffle-project"></a>Utwórz projekt Truffle
+
+Zanim będzie możliwe skompilowanie i wdrożenie kontraktu inteligentnego, należy utworzyć projekt Truffle.
+
+1. Otwórz wiersz polecenia lub powłokę.
+1. Utwórz folder o nazwie `HelloWorld`.
+1. Zmień katalog na nowy folder `HelloWorld`.
+1. Zainicjuj nowy projekt Truffle za pomocą polecenia `truffle init`.
+
+    ![Utwórz nowy projekt Truffle](./media/ethereum-poa-deployment/create-truffle-project.png)
+
+### <a name="add-a-smart-contract"></a>Dodawanie kontraktu inteligentnego
+
+Twórz inteligentne kontrakty w podkatalogu **kontraktów** projektu Truffle.
+
+1. Utwórz plik o nazwie `postBox.sol` w podkatalogu **kontrakts** projektu Truffle.
+1. Dodaj następujący kod kryjący do **postBox. peruwiański**.
+
+    ```javascript
+    pragma solidity ^0.5.0;
+    
+    contract postBox {
+        string message;
+        function postMsg(string memory text) public {
+            message = text;
+        }
+        function getMsg() public view returns (string memory) {
+            return message;
+        }
+    }
+    ```
+
+### <a name="deploy-smart-contract-using-truffle"></a>Wdrażanie kontraktu inteligentnego za pomocą Truffle
+
+Projekty Truffle zawierają plik konfiguracyjny łańcucha bloków szczegóły połączenia sieciowego. Zmodyfikuj plik konfiguracji w taki sposób, aby zawierał informacje o połączeniu dla sieci.
 
 > [!WARNING]
-> Nigdy nie wysyłaj klucza prywatnego Ethereum przez sieć! Upewnij się, że każda transakcja jest podpisana lokalnie, a podpisana transakcja jest wysyłana za pośrednictwem sieci.
+> Nigdy nie wysyłaj klucza prywatnego Ethereum przez sieć. Upewnij się, że każda transakcja jest podpisana lokalnie, a podpisana transakcja jest wysyłana za pośrednictwem sieci.
 
-W poniższym przykładzie używamy *ethereumjs-portfel* do wygenerowania adresu Ethereum, *ethereumjs-TX* do lokalnego logowania, a *web3* do wysłania pierwotnej transakcji do punktu końcowego RPC Ethereum.
+1. Potrzebujesz frazy dla [konta administratora Ethereum używanego podczas wdrażania sieci łańcucha bloków](#ethereum-settings). Jeśli do utworzenia konta użyto symboli, możesz pobrać wartość z maski. Wybierz ikonę konta administratora w prawym górnym rogu rozszerzenia dbmask i wybierz pozycję **ustawienia > zabezpieczenia & prywatność > Odsłoń słowa inicjatora**.
+1. Zastąp zawartość `truffle-config.js` w projekcie Truffle z następującą zawartością. Zastąp symbol zastępczy i wartości.
 
-Na potrzeby tego przykładu będziemy używać prostego kontraktu usługi Hello World dla świata:
+    ```javascript
+    const HDWalletProvider = require("truffle-hdwallet-provider");
+    const rpc_endpoint = "<Ethereum RPC endpoint>";
+    const mnemonic = "Twelve words you can find in MetaMask > Security & Privacy > Reveal Seed Words";
 
-```javascript
-pragma solidity ^0.4.11;
-contract postBox {
-    string message;
-    function postMsg(string text) public {
-        message = text;
-    }
-    function getMsg() public view returns (string) {
-        return message;
-    }
-}
-```
+    module.exports = {
+      networks: {
+        development: {
+          host: "localhost",
+          port: 8545,
+          network_id: "*" // Match any network id
+        },
+        poa: {
+          provider: new HDWalletProvider(mnemonic, rpc_endpoint),
+          network_id: 10101010,
+          gasPrice : 0
+        }
+      }
+    };
+    ```
 
-W tym przykładzie przyjęto założenie, że kontrakt został już wdrożony. Do wdrożenia kontraktu można użyć *solc* i *web3* . Najpierw zainstaluj następujące moduły węzła:
-```
-sudo npm install web3@0.20.2
-sudo npm install ethereumjs-tx@1.3.6
-sudo npm install ethereumjs-wallet@0.6.1
-```
-Ten skrypt nodeJS wykona następujące czynności:
+1. Ponieważ korzystamy z dostawcy portfela Truffle HD, zainstaluj moduł w projekcie za pomocą polecenia `npm install truffle-hdwallet-provider --save`.
 
--   Konstruowanie nieprzetworzonej transakcji: postMsg
+Truffle używa skryptów migracji do wdrożenia inteligentnych kontraktów w sieci łańcucha bloków. Do wdrożenia nowego kontraktu inteligentnego potrzebny jest skrypt migracji.
 
--   Podpisz transakcję przy użyciu wygenerowanego klucza prywatnego
+1. Dodaj nową migrację, aby wdrożyć nowy kontrakt. Utwórz `2_deploy_contracts.js` pliku w podkatalogu **migracji** projektu Truffle.
 
--   Prześlij podpisaną transakcję do sieci Ethereum
+    ``` javascript
+    var postBox = artifacts.require("postBox");
+    
+    module.exports = deployer => {
+        deployer.deploy(postBox);
+    };
+    ```
 
-```javascript
-var ethereumjs = require('ethereumjs-tx')
-var wallet = require('ethereumjs-wallet')
-var Web3 = require('web3')
+1. Wdróż w sieci PoA przy użyciu polecenia Truffle migracji. W wierszu polecenia w katalogu projektu Truffle Uruchom polecenie:
 
-// TODO Replace with your contract address
-var address = "0xfe53559f5f7a77125039a993e8d5d9c2901edc58";
-var abi = [{"constant": false,"inputs": [{"name": "text","type": "string"}],"name": "postMsg","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [],"name": "getMsg","outputs": [{"name": "","type": "string"}],"payable": false,"stateMutability": "view","type": "function"}];
+    ```javascript
+    truffle migrate --network poa
+    ```
 
-// Generate a new Ethereum account
-var account = wallet.generate();
-var accountAddress = account.getAddressString()
-var privateKey = account.getPrivateKey();
+### <a name="call-a-smart-contract-function"></a>Wywoływanie funkcji kontraktu inteligentnego
 
-// TODO Replace with your RPC endpoint
-var web3 = new Web3(new Web3.providers.HttpProvider(
-    "http://testzvdky-dns-reg1.eastus.cloudapp.azure.com:8545"));
+Po wdrożeniu kontraktu inteligentnego można wysłać transakcję, aby wywołać funkcję.
 
-// Get the current nonce of the account
-web3.eth.getTransactionCount(accountAddress, function (err, nonce) {
-   var data = web3.eth.contract(abi).at(address).postMsg.getData("Hello World");
-   var rawTx = {
-     nonce: nonce,
-     gasPrice: '0x00',
-     gasLimit: '0x2FAF080',
-     to: address,
-     value: '0x00',
-     data: data
-   }
-   var tx = new ethereumjs(rawTx);
+1. W katalogu projektu Truffle Utwórz nowy plik o nazwie `sendtransaction.js`.
+1. Dodaj następującą zawartość do **sendtransaction. js**.
 
-   tx.sign(privateKey);
+    ``` javascript
+    var postBox = artifacts.require("postBox");
+    
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the postBox smart contract")
+      postBox.deployed().then(function(instance) {
+        console.log("Calling postMsg function for contract ", instance.address);
+        return instance.postMsg("Hello, blockchain!");
+      }).then(function(result) {
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-   var raw = '0x' + tx.serialize().toString('hex');
-   web3.eth.sendRawTransaction(raw, function (txErr, transactionHash) {
-     console.log("TX Hash: " + transactionHash);
-     console.log("Error: " + txErr);
-   });
- });
-```
+1. Wykonaj skrypt przy użyciu polecenia Truffle Execute.
 
-### <a name="deploy-smart-contract-with-truffle"></a>Wdrażanie inteligentnego kontraktu z Truffle
+    ```javascript
+    truffle exec sendtransaction.js --network poa
+    ```
 
--   Instalowanie niezbędnych bibliotek
+    ![Wykonaj skrypt, aby wywołać funkcję za pośrednictwem transakcji](./media/ethereum-poa-deployment/send-transaction.png)
 
-```javascript
-npm init
+## <a name="webassembly-wasm-support"></a>Obsługa zestawu webassembly (WASM)
 
-npm install truffle-hdwallet-provider --save
-```
--   W Truffle. js Dodaj następujący kod, aby odblokować konto dbmaskę i skonfigurować węzeł PoA jako punkt wejścia, dostarczając frazę "symbol" (Maska/ustawienia/ujawnienie wyrazów)
+Obsługa zestawu webassembly jest już włączona dla nowo wdrożonych sieci PoA. Umożliwia ona programowanie aplikacji inteligentnych w dowolnym języku, który transstertuje zestaw sieci Web (Rust, C, C++). Aby uzyskać więcej informacji, zobacz: [Omówienie parzystości zestawu webassembly](https://wiki.parity.io/WebAssembly-Home) i [samouczek od firmy o parzystości technicznej](https://github.com/paritytech/pwasm-tutorial)
 
-```javascript
-var HDWalletProvider = require("truffle-hdwallet-provider");
+## <a name="faq"></a>Często zadawane pytania
 
-var rpc_endpoint = "XXXXXX";
-var mnemonic = "twelve words you can find in metamask/settings/reveal seed words";
+### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Zauważ, że w sieci nie wysłano wielu transakcji. Skąd pochodzą?
 
-module.exports = {
-  networks: {
-    development: {
-      host: "localhost",
-      port: 8545,
-      network_id: "*" // Match any network id
-    },
-    poa: {
-      provider: new HDWalletProvider(mnemonic, rpc_endpoint),
-      network_id: 3,
-      gasPrice : 0
-    }
-  }
-};
+Odblokowanie [osobistego interfejsu API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html)jest niebezpieczne. Botów nasłuchuje odblokowanych kont Ethereum i próbuje opróżnić środki. Bot zakłada, że te konta zawierają rzeczywiste i próbują być pierwszym, aby Siphon saldo. Nie należy włączać osobistego interfejsu API w sieci. Zamiast tego Przedstaw transakcje ręcznie przy użyciu portfela, takiego jak dbmaske lub programowo.
 
-```
-
--   Wdróż w sieci PoA
-
-```javascript
-$ truffle migrate --network poa
-```
-
-### <a name="debug-smart-contract-with-truffle"></a>Debuguj kontrakt inteligentny przy użyciu Truffle
-
-Truffle ma lokalną sieć projektową, która jest dostępna do debugowania kontraktu inteligentnego. Pełny samouczek można znaleźć [tutaj](https://truffleframework.com/tutorials/debugging-a-smart-contract).
-
-### <a name="webassembly-wasm-support"></a>Obsługa zestawu webassembly (WASM)
-
-Obsługa zestawu webassembly jest już włączona dla nowo wdrożonych sieci PoA. Umożliwia ona programowanie aplikacji inteligentnych w dowolnym języku, który transstertuje zestaw sieci Web (Rust, C, C++). Zobacz poniższe linki, aby uzyskać dodatkowe informacje
-
--   Przegląd parzystości zestawu webassembly-<https://wiki.parity.io/WebAssembly-Home>
-
--   Samouczek techniczny <https://github.com/paritytech/pwasm-tutorial> z parzystością
-
-## <a name="reference"></a>Dokumentacja
-
-### <a name="faq"></a>Często zadawane pytania
-
-#### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Zauważ, że w sieci jest wiele transakcji, które są niezgodne\'t Send. Skąd pochodzą?
-
-Odblokowanie [osobistego interfejsu API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html)jest niebezpieczne. Botów nasłuchuje odblokowanych kont Ethereum i próbuje opróżnić środki. Bot zakłada, że te konta zawierają rzeczywiste i próbują być pierwszym, aby Siphon saldo. Nie należy włączać osobistego interfejsu API w sieci. Zamiast tego Przedstaw transakcje ręcznie przy użyciu portfela, takiego jak dbmaskowanie, lub programowo, jak opisano w sekcji [programistyczne manipulowanie przy użyciu kontraktu inteligentnego](#programmatically-interacting-with-a-smart-contract).
-
-#### <a name="how-to-ssh-onto-a-vm"></a>Jak SSH na maszynę wirtualną?
+### <a name="how-to-ssh-onto-a-vm"></a>Jak SSH na maszynę wirtualną?
 
 Port SSH nie jest narażony ze względów bezpieczeństwa. Postępuj zgodnie z [tym przewodnikiem, aby włączyć port SSH](#ssh-access).
 
-#### <a name="how-do-i-set-up-an-audit-member-or-transaction-nodes"></a>Jak mogę skonfigurować członka lub węzły transakcji inspekcji?
+### <a name="how-do-i-set-up-an-audit-member-or-transaction-nodes"></a>Jak mogę skonfigurować członka lub węzły transakcji inspekcji?
 
-Węzły transakcji to zbiór klientów z parzystością, które są połączone z siecią, ale nie uczestniczą w konsensusie. Te węzły mogą nadal służyć do przesyłania transakcji Ethereum i odczytywania stanu kontraktu inteligentnego.
-Jest to również mechanizm zapewniający możliwość przeprowadzenia inspekcji do członków konsorcjum bez urzędu certyfikacji w sieci. Aby to osiągnąć, należy wykonać krok 2 od wzrostu konsorcjum.
+Węzły transakcji to zbiór klientów z parzystością, które są połączone z siecią, ale nie uczestniczą w konsensusie. Te węzły mogą nadal służyć do przesyłania transakcji Ethereum i odczytywania stanu kontraktu inteligentnego. Ten mechanizm działa w celu zapewnienia inspekcji dla członków konsorcjum bez urzędu certyfikacji w sieci. Aby to osiągnąć, postępuj zgodnie z instrukcjami w temacie [rozwój konsorcjum](#growing-the-consortium).
 
-#### <a name="why-are-metamask-transactions-taking-a-long-time"></a>Dlaczego transakcje związane z maską są długotrwałe?
+### <a name="why-are-metamask-transactions-taking-a-long-time"></a>Dlaczego transakcje związane z maską są długotrwałe?
 
-Aby zapewnić, że transakcje są odbierane w odpowiedniej kolejności, każda transakcja Ethereum ma przyrostowy identyfikator jednorazowy. Jeśli w innej sieci użyto konta w usłudze maskującej, należy zresetować wartość nonce. Kliknij ikonę ustawień (3-paskowe), ustawienia, zresetuj konto. Historia transakcji zostanie wyczyszczona, a teraz można ponownie przesłać transakcję.
+Aby zapewnić, że transakcje są odbierane w odpowiedniej kolejności, każda transakcja Ethereum ma przyrostowy identyfikator jednorazowy. Jeśli w innej sieci użyto konta w usłudze maskującej, należy zresetować wartość nonce. Kliknij ikonę ustawień (trzy paski), ustawienia, zresetuj konto. Historia transakcji zostanie wyczyszczona, a teraz można ponownie przesłać transakcję.
 
-#### <a name="do-i-need-to-specify-gas-fee-in-metamask"></a>Czy muszę określić opłatę za gaz w ramach maskowania?
+### <a name="do-i-need-to-specify-gas-fee-in-metamask"></a>Czy muszę określić opłatę za gaz w ramach maskowania?
 
 Eter nie jest celem w przypadku weryfikacji z urzędu certyfikacji. W związku z tym nie ma potrzeby określania opłaty za gaz podczas przesyłania transakcji w ramach maski.
 
-#### <a name="what-should-i-do-if-my-deployment-fails-due-to-failure-to-provision-azure-oms"></a>Co należy zrobić, jeśli moje wdrożenie nie powiedzie się z powodu niepowodzenia aprowizacji pakietu OMS platformy Azure?
+### <a name="what-should-i-do-if-my-deployment-fails-due-to-failure-to-provision-azure-oms"></a>Co należy zrobić, jeśli moje wdrożenie nie powiedzie się z powodu niepowodzenia aprowizacji pakietu OMS platformy Azure?
 
-Monitorowanie jest funkcją opcjonalną. W niektórych rzadkich przypadkach, gdy wdrożenie nie powiedzie się z powodu niemożności pomyślnego udostępnienia Azure Monitor zasobów, można je wdrożyć ponownie bez Azure Monitor.
+Monitorowanie jest funkcją opcjonalną. W niektórych rzadkich przypadkach, gdy wdrożenie nie powiedzie się z powodu niemożliwości pomyślnego zainicjowania obsługi zasobów Azure Monitor, można je wdrożyć ponownie bez Azure Monitor.
 
-#### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Czy publiczne wdrożenia adresów IP są zgodne z wdrożeniami w sieci prywatnej?
+### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Czy publiczne wdrożenia adresów IP są zgodne z wdrożeniami w sieci prywatnej?
 
-Nie, Komunikacja równorzędna wymaga komunikacji dwukierunkowej, dlatego cała sieć musi być publiczna lub prywatna.
+Nie. Komunikacja równorzędna wymaga komunikacji dwukierunkowej, dlatego cała sieć musi być publiczna lub prywatna.
 
-#### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Jaka jest oczekiwana przepływność transakcji dla potwierdzenia urzędu?
+### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Jaka jest oczekiwana przepływność transakcji dla potwierdzenia urzędu?
 
-Przepływność transakcji będzie wysoce zależna od typów transakcji i topologii sieci.  Przy użyciu prostych transakcji firma Microsoft testuje średnio 400 transakcji na sekundę z siecią wdrożoną w wielu regionach.
+Przepływność transakcji będzie wysoce zależna od typów transakcji i topologii sieci. Przy użyciu prostych transakcji firma Microsoft testuje średnio 400 transakcji na sekundę z siecią wdrożoną w wielu regionach.
 
-#### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Jak mogę subskrybować zdarzenia dotyczące kontraktu inteligentnego?
+### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Jak mogę subskrybować zdarzenia dotyczące kontraktu inteligentnego?
 
-Ethereum potwierdzenie urzędu obsługuje teraz sieci Web-Sockets.  Sprawdź swój adres e-mail wdrożenia lub dane wyjściowe wdrożenia, aby znaleźć adres URL i port gniazda sieci Web.
+Ethereum potwierdzenie urzędu obsługuje teraz sieci Web-Sockets.  Sprawdź dane wyjściowe wdrożenia, aby znaleźć adres URL i port gniazda sieci Web.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij pracę, korzystając z rozwiązania [Ethereum-of-Authority Consortium](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) .
+Więcej rozwiązań łańcucha bloków platformy Azure można znaleźć w [dokumentacji usługi Azure łańcucha bloków](https://docs.microsoft.com/azure/blockchain/).

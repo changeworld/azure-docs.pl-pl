@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378385"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnozuj opuszczone powiadomienia w usłudze Azure Notification Hubs
 
@@ -103,7 +103,7 @@ Każda partia jest wysyłana do usługi powiadomień wypychanych, która z kolei
 
 W takim przypadku Rejestracja błędów zostanie usunięta z bazy danych. Następnie ponów próbę dostarczenia powiadomienia dla pozostałych urządzeń w tej partii.
 
-Aby uzyskać więcej informacji o błędach dotyczących nieudanej próby dostarczenia na rejestrację, można użyć Notification Hubs interfejsów API REST [na potrzeby telemetrii komunikatów: Pobierz dane telemetryczne komunikatów powiadomień](https://msdn.microsoft.com/library/azure/mt608135.aspx) i [PNS opinię](https://msdn.microsoft.com/library/azure/mt705560.aspx). Aby uzyskać przykładowy kod, zobacz [przykład wysyłania w dalszej części](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Aby uzyskać więcej informacji o błędach dotyczących nieudanej próby dostarczenia na rejestrację, można użyć Notification Hubs interfejsów API REST [na potrzeby telemetrii komunikatów: Pobierz dane telemetryczne komunikatów powiadomień](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) i [PNS opinię](https://msdn.microsoft.com/library/azure/mt705560.aspx). Aby uzyskać przykładowy kod, zobacz [przykład wysyłania w dalszej części](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Problemy z usługą powiadomień wypychanych
 
@@ -127,7 +127,7 @@ Poniżej przedstawiono ścieżki umożliwiające zdiagnozowanie głównej przycz
 
 Sprawdź poświadczenia w odpowiednim portalu dla deweloperów usługi powiadomień wypychanych (APNs, FCM, usługa powiadomień systemu Windows itd.). Aby uzyskać więcej informacji, zobacz [Samouczek: wysyłanie powiadomień do platforma uniwersalna systemu Windows aplikacji przy użyciu usługi Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Portal Azure ####
 
 Aby przejrzeć i dopasować poświadczenia do tych, które zostały uzyskane z portalu dla deweloperów usługi powiadomień wypychanych, przejdź do karty **zasady dostępu** w Azure Portal.
 
@@ -168,7 +168,7 @@ Wielu klientów używa [eksploratora Service Bus](https://github.com/paolosalvat
 
 ### <a name="verify-message-notifications"></a>Weryfikuj powiadomienia o wiadomościach
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Portal Azure ####
 
 Aby wysłać testowe powiadomienie do klientów bez konieczności zapełniania i uruchamiania usługi, w obszarze **Pomoc techniczna i rozwiązywanie problemów**wybierz pozycję **wysyłanie testowe**.
 
@@ -196,7 +196,7 @@ Jeśli Twoje powiadomienie nie dotarło do urządzenia klienckiego, może wystą
 
 Aby uzyskać wgląd w błędy usługi powiadomień wypychanych, można użyć właściwości [EnableTestSend] . Ta właściwość jest włączana automatycznie podczas wysyłania wiadomości testowych z portalu lub klienta programu Visual Studio. Tej właściwości można użyć, aby wyświetlić szczegółowe informacje o debugowaniu, a także za pośrednictwem interfejsów API. Obecnie można używać go w zestawie SDK platformy .NET. Zostanie ona dodana do wszystkich zestawów SDK klienta ostatecznie.
 
-Aby użyć właściwości `EnableTestSend` z wywołaniem REST, Dołącz parametr ciągu zapytania o nazwie *test* do końca wywołania wysyłania. Na przykład:
+Aby użyć właściwości `EnableTestSend` z wywołaniem REST, Dołącz parametr ciągu zapytania o nazwie *test* do końca wywołania wysyłania. Przykład:
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -245,7 +245,7 @@ Ten komunikat oznacza, że poświadczenia skonfigurowane w Notification Hubs są
 
 ### <a name="review-telemetry"></a>Przejrzyj dane telemetryczne ###
 
-#### <a name="azure-portal"></a>Azure Portal ####
+#### <a name="azure-portal"></a>Portal Azure ####
 
 W portalu możesz zapoznać się z krótkim omówieniem wszystkich działań w centrum powiadomień.
 

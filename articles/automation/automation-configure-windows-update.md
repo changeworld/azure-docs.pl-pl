@@ -2,19 +2,15 @@
 title: Konfigurowanie ustawień Windows Update do pracy z platformą Azure Update Management
 description: W tym artykule opisano ustawienia Windows Update, które można skonfigurować do pracy z usługą Azure Update Management.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f6377012a2afd0fb36486edf0af0ac3591b5d1f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850418"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366859"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Skonfiguruj ustawienia Windows Update dla Update Management
 
@@ -47,7 +43,7 @@ Klucze rejestru wymienione w temacie [Konfigurowanie aktualizacji automatycznych
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Włącz aktualizacje dla innych produktów firmy Microsoft
 
-Domyślnie Windows Update udostępnia aktualizacje tylko dla systemu Windows. Jeśli włączysz ustawienie **Chcę otrzymywać aktualizacje dla innych produktów firmy Microsoft podczas aktualizacji systemu Windows** , uzyskasz także aktualizacje dla innych produktów, w tym poprawki zabezpieczeń dla Microsoft SQL Server i innego oprogramowania firmy Microsoft. Tej opcji nie można skonfigurować za pomocą zasady grupy. Uruchom następujące polecenie programu PowerShell w systemach, w których chcesz włączyć inne aktualizacje firmy Microsoft. Update Management będzie zgodne z tym ustawieniem.
+Domyślnie usługa Windows Update udostępnia aktualizacje tylko dla systemu Windows. Jeśli włączysz ustawienie **Chcę otrzymywać aktualizacje dla innych produktów firmy Microsoft podczas aktualizacji systemu Windows** , uzyskasz także aktualizacje dla innych produktów, w tym poprawki zabezpieczeń dla Microsoft SQL Server i innego oprogramowania firmy Microsoft. Tej opcji nie można skonfigurować za pomocą zasady grupy. Uruchom następujące polecenie programu PowerShell w systemach, w których chcesz włączyć inne aktualizacje firmy Microsoft. Update Management będzie zgodne z tym ustawieniem.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")

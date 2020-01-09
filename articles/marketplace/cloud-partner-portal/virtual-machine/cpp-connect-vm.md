@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 256952d06e8b417be9ab2bc3c6c8c6857d50e2ea
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817369"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432009"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną opartą na platformie Azure
 
@@ -31,24 +31,25 @@ W poniższym artykule szczegółowo opisano sposób używania wbudowanej obsług
 
 ## <a name="connect-to-a-linux-based-vm"></a>Nawiązywanie połączenia z maszyną wirtualną opartą na systemie Linux
 
-Aby można było połączyć maszynę wirtualną z systemem Linux, potrzebny jest klient protokołu Secure Shell Protocol (SSH).  W tej dyskusji zostanie [użyty bezpłatny prywatnego](https://www.ssh.com/ssh/putty/) terminala.
+Aby połączyć maszynę wirtualną z systemem Linux, musisz mieć klienta Secure Shell Protocol (SSH).  W tej dyskusji zostanie [użyty bezpłatny prywatnego](https://www.ssh.com/ssh/putty/) terminala.
 
-1. W bloku **maszyny wirtualne** [Azure Portal](https://ms.portal.azure.com)wybierz maszynę wirtualną, z którą chcesz nawiązać połączenie.  
-2. **Uruchom** maszynę wirtualną, jeśli nie została jeszcze uruchomiona.
-3. Kliknij nazwę maszyny wirtualnej, aby otworzyć jej stronę **przeglądu** .
-4. Zanotuj publiczny adres IP i nazwę DNS maszyny wirtualnej.  (Jeśli te wartości nie są ustawione, należy [utworzyć interfejs sieciowy](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)
+1. Przejdź do witryny [Azure Portal](https://ms.portal.azure.com). Wyszukaj i wybierz pozycję **maszyny wirtualne**. 
+2. Wybierz maszynę wirtualną, z którą chcesz nawiązać połączenie.  
+3. **Uruchom** maszynę wirtualną, jeśli jeszcze nie działa.
+4. Kliknij nazwę maszyny wirtualnej, aby otworzyć jej stronę **przeglądu** .
+5. Zanotuj publiczny adres IP i nazwę DNS maszyny wirtualnej.  (Jeśli te wartości nie są ustawione, należy [utworzyć interfejs sieciowy](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)
 
    ![Ustawienia przeglądu maszyny wirtualnej](./media/publishvm_019.png)
  
-5. Otwórz aplikację.  
-6. W oknie dialogowym Konfiguracja konfiguracji wprowadź adres IP lub nazwę DNS maszyny wirtualnej. 
+6. Otwórz aplikację.  
+7. W oknie dialogowym Konfiguracja konfiguracji wprowadź adres IP lub nazwę DNS maszyny wirtualnej. 
 
    ![Podano ustawienia terminalu](./media/publishvm_020.png)
  
-7. Kliknij przycisk **Otwórz** , aby otworzyć wystawcy Terminal.  
-8. Po wyświetleniu monitu wprowadź nazwę konta i hasło do konta maszyny wirtualnej z systemem Linux. 
+8. Kliknij przycisk **Otwórz** , aby otworzyć wystawcy Terminal.  
+9. Po wyświetleniu monitu wprowadź nazwę konta i hasło do konta maszyny wirtualnej z systemem Linux. 
 
-   Jeśli występują problemy z połączeniem, zapoznaj się z dokumentacją klienta SSH, na przykład [rozdział 10: typowe komunikaty o błędach](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+Jeśli występują problemy z połączeniem, zapoznaj się z dokumentacją klienta SSH, na przykład [rozdział 10: typowe komunikaty o błędach](https://www.ssh.com/ssh/putty/putty-manuals).
 
 Aby uzyskać więcej informacji, w tym o sposobach dodawania pulpitu do maszyny wirtualnej z systemem Linux z obsługą administracyjną, zobacz [Instalowanie i konfigurowanie pulpit zdalny do nawiązywania połączenia z maszyną wirtualną z systemem Linux na platformie Azure](../../../virtual-machines/linux/use-remote-desktop.md).
 

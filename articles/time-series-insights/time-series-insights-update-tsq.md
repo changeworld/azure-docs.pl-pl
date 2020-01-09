@@ -1,6 +1,6 @@
 ---
 title: Wykonywanie zapytania dotyczącego danych w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs
-description: Dowiedz się więcej na temat zapytań o dane w programie Azure Time Series Insights Preview.
+description: Omówienie pojęć związanych z wykonywaniem zapytań dotyczących danych i interfejsu API REST protokołu HTTP w programie Azure Time Series Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f44aa5c0a412dc53f4b1a5f127887257a1b0b550
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 53693c64ff03146619e17b276a1f817e69f5ed6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374582"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Wykonywanie zapytań o dane w podglądzie Azure Time Series Insights
 
@@ -39,8 +39,8 @@ Obsługiwane są następujące podstawowe interfejsy API.
 
 Dostępne są następujące interfejsy API środowiska:
 
-* [Pobierz interfejs API środowiska](/rest/api/time-series-insights/management/environments/get): zwraca listę środowisk, do których obiekt wywołujący ma autoryzację dostępu.
-* [Pobierz interfejs API dostępności środowiska](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): Zwraca rozkład liczby zdarzeń w `$ts`znacznika czasu zdarzenia. Ten interfejs API pomaga ustalić, czy istnieją jakieś zdarzenia w sygnaturze czasowej przez zwrócenie liczby zdarzeń, jeśli takie istnieją.
+* [Interfejs API środowiska Get](/rest/api/time-series-insights/management/environments/get)environments: zwraca listę środowisk, do których obiekt wywołujący ma autoryzację dostęp.
+* [Pobierz interfejs API dostępności środowisk](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): Zwraca rozkład liczby zdarzeń w `$ts`znacznika czasu zdarzenia. Ten interfejs API pomaga ustalić, czy istnieją jakieś zdarzenia w sygnaturze czasowej przez zwrócenie liczby zdarzeń, jeśli takie istnieją.
 * [Pobierz interfejs API schematu zdarzeń](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): zwraca metadane schematu zdarzenia dla danego zakresu wyszukiwania. Ten interfejs API pomaga pobrać wszystkie metadane i właściwości dostępne w schemacie dla danego przedziału wyszukiwania.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Model szeregów czasowych — interfejsy API zapytań (TSM-Q)

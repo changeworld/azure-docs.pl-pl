@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422358"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -38,9 +38,20 @@ Pobierz| [Pobierz Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=6157
 W trakcie tego procesu numer wersji wersji będzie wyświetlany jako "X" w pozycji pomocniczej numer wersji, jak w "1.3. X. 0" — oznacza to, że informacje o wersji w tym dokumencie są prawidłowe dla wszystkich wersji zaczynających się od "1,3". Po sfinalizowaniu procesu wydania numer wersji zostanie zaktualizowany do ostatnio wydanej wersji, a stan wydania zostanie zaktualizowany na "zwolnione do pobrania i Autouaktualnianie".
 Nie wszystkie wersje Azure AD Connect będą udostępniane do autouaktualniania. Stan wersji wskazuje, czy wersja jest udostępniona do autouaktualnienia, czy tylko do pobrania. Jeśli automatyczne uaktualnianie zostało włączone na serwerze Azure AD Connect, serwer zostanie automatycznie uaktualniony do najnowszej wersji Azure AD Connect wydanej na potrzeby automatycznego uaktualniania. Należy pamiętać, że nie wszystkie konfiguracje Azure AD Connect mogą być stosowane do autouaktualnienia. Skorzystaj z tego linku, aby dowiedzieć się więcej na temat [autouaktualniania](how-to-connect-install-automatic-upgrade.md)
 
+>[!IMPORTANT]
+> Od 1 listopada, 2020 rozpocznie się wdrożenie procesu wycofywania, dzięki czemu wersje Azure AD Connect wydane ponad 18 miesięcy temu będą przestarzałe. W tym momencie rozpocznie ten proces przez zaniechanie wszystkich wydań Azure AD Connect w wersji 1.1.751.0 (opublikowanej w dniu 4/12/2018) i starszej wersji, a my sprawdzimy, czy starsze wersje Azure AD Connect są dostępne za każdym razem, gdy są nowe wersje.
+>
+> Musisz upewnić się, że korzystasz z najnowszej wersji Azure AD Connect, aby uzyskać optymalne środowisko pomocy technicznej. 
+>
+>W przypadku uruchomienia przestarzałej wersji programu Azure AD Connect można nie mieć najnowszych poprawek zabezpieczeń, ulepszeń wydajności, narzędzi do rozwiązywania problemów i funkcji diagnostycznych oraz ulepszeń usług, a jeśli jest wymagana pomoc techniczna, firma Microsoft może nie być w stanie zapewnić usługa potrzebna w organizacji.
+>
+>Jeśli włączono Azure AD Connect do synchronizacji, wkrótce rozpocznie się automatyczne otrzymywanie powiadomień o kondycji, które ostrzegają o nadchodzących zastosowaniach, gdy korzystasz z jednej ze starszych wersji.
+>
+>Zapoznaj się z [tym artykułem](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) , aby dowiedzieć się więcej o tym, jak uaktualnić Azure AD Connect do najnowszej wersji.
+
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Stan wydania
-12/6/2019: wydanie do pobrania. Niedostępne przez funkcję autouaktualniania.
+12/9/2019: wydanie do pobrania. Niedostępne przez funkcję autouaktualniania.
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 - Zaktualizowano synchronizację skrótów haseł dla Azure AD Domain Services, aby poprawnie uwzględnić uzupełnienie w skrótach protokołu Kerberos.  Zapewni to poprawę wydajności podczas synchronizacji haseł z usługi AAD do Azure AD Domain Services.
 - Dodaliśmy obsługę niezawodnych sesji między agentem uwierzytelniania a usługą Service Bus.

@@ -1,19 +1,15 @@
 ---
 title: Wprowadzenie do skalowania automatycznego na platformie Azure
 description: Dowiedz się, jak skalować aplikację internetową zasobów, usługę w chmurze, maszynę wirtualną lub zestaw skalowania maszyn wirtualnych na platformie Azure.
-author: rajram
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: rajram
 ms.subservice: autoscale
-ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0a40496e4d496d0062c6ee7a6ab935c1ad9b35a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60788594"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396350"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Wprowadzenie do skalowania automatycznego na platformie Azure
 W tym artykule opisano sposób konfigurowania ustawień automatycznego skalowania dla zasobu w Microsoft Azure Portal.
@@ -25,17 +21,17 @@ Możesz odkryć wszystkie zasoby, dla których Skalowanie automatyczne ma zastos
 
 1. Otwórz [Azure Portal.][1]
 1. Kliknij ikonę Azure Monitor w lewym okienku.
-  ![Otwórz Azure Monitor][2]
+  ![otworzyć Azure Monitor][2]
 1. Kliknij pozycję **Automatyczne skalowanie** , aby wyświetlić wszystkie zasoby, dla których ma zastosowanie automatyczne skalowanie, wraz z bieżącym stanem automatycznego skalowania.
-  ![Odnajdź automatyczne skalowanie w Azure Monitor][3]
+  ![odnajdywanie skalowania automatycznego w Azure Monitor][3]
 
 Możesz użyć okienka filtr u góry, aby określić zakres w dół listy, aby wybrać zasoby w określonej grupie zasobów, określonych typach zasobów lub konkretnego zasobu.
 
 Dla każdego zasobu znajduje się bieżąca liczba wystąpień i stan skalowania automatycznego. Stan skalowania automatycznego to:
 
-- **Nie skonfigurowano**: Nie włączono jeszcze automatycznego skalowania dla tego zasobu.
-- **Włączone**: Włączono funkcję automatycznego skalowania dla tego zasobu.
-- **Wyłączone**: Wyłączono automatyczne skalowanie dla tego zasobu.
+- **Nie skonfigurowano**: nie włączono jeszcze funkcji automatycznego skalowania dla tego zasobu.
+- **Włączone**: włączono funkcję automatycznego skalowania dla tego zasobu.
+- **Wyłączone**: wyłączono automatyczne skalowanie dla tego zasobu.
 
 ## <a name="create-your-first-autoscale-setting"></a>Utwórz pierwsze ustawienie automatycznego skalowania
 
@@ -43,22 +39,22 @@ Teraz przejdźmy do prostego przewodnika krok po kroku, aby utworzyć pierwsze u
 
 1. Otwórz blok **Skalowanie automatyczne** w Azure monitor i wybierz zasób, który chcesz skalować. (W poniższych krokach użyto planu App Service skojarzonego z aplikacją sieci Web. Możesz [utworzyć swoją pierwszą aplikację sieci web ASP.NET na platformie Azure w ciągu 5 minut.][4]
 1. Należy pamiętać, że bieżąca liczba wystąpień to 1. Kliknij pozycję **Włącz automatyczne skalowanie**.
-  ![Ustawienie skalowania dla nowej aplikacji sieci Web][5]
+  ![ustawienia skalowania dla nowej aplikacji internetowej][5]
 1. Podaj nazwę ustawienia skalowania, a następnie kliknij pozycję **Dodaj regułę**. Zwróć uwagę na Opcje reguły skalowania, które są otwierane jako okienko kontekstowe po prawej stronie. Domyślnie powoduje to ustawienie opcji skalowanie liczby wystąpień o 1, jeśli wartość procentowa procesora CPU zasobu przekracza 70 procent. Pozostaw wartości domyślne, a następnie kliknij przycisk **Dodaj**.
-  ![Tworzenie ustawienia skalowania dla aplikacji sieci Web][6]
-1. Twoja pierwsza reguła skalowania została teraz utworzona. Należy pamiętać, że środowisko użytkownika zaleca najlepsze rozwiązania i stwierdza, że "zalecane jest posiadanie co najmniej jednej reguły skalowania". Aby to zrobić:
+  ![utworzyć ustawienia skalowania dla aplikacji internetowej][6]
+1. Twoja pierwsza reguła skalowania została teraz utworzona. Należy pamiętać, że środowisko użytkownika zaleca najlepsze rozwiązania i stwierdza, że "zalecane jest posiadanie co najmniej jednej reguły skalowania". W tym celu:
 
     a. Kliknij pozycję **Dodaj regułę**.
 
     b. Ustaw **operator** na wartość **mniejszą niż**.
 
-    c. Ustaw **próg** na **20**.
+    d. Ustaw **próg** na **20**.
 
     d. Ustaw **operację** , aby **zmniejszyć liczbę przez**.
 
    Teraz powinno być dostępne ustawienie skalowania, które umożliwia skalowanie w poziomie i skalowanie w zależności od użycia procesora CPU.
-   ![Skalowanie w oparciu o procesor CPU][8]
-1. Kliknij polecenie **Zapisz**.
+   Skalowanie ![oparte na PROCESORAch][8]
+1. Kliknij pozycję **Zapisz**.
 
 Gratulacje! Pomyślnie utworzono pierwsze ustawienie skalowania w celu automatycznego skalowania aplikacji sieci Web na podstawie użycia procesora CPU.
 
@@ -88,7 +84,7 @@ Oprócz skalowania opartego na procesorze CPU można ustawić skalę w różny s
 ### <a name="view-the-scale-history-of-your-resource"></a>Wyświetlanie historii skali zasobu
 Za każdym razem, gdy zasób jest skalowany w górę lub w dół, rejestrowane jest zdarzenie w dzienniku aktywności. Możesz wyświetlić historię skalowania zasobu w ciągu ostatnich 24 godzin, przełączając się na kartę **historia uruchamiania** .
 
-![Hist. przeb.][11]
+![Historia uruchamiania][11]
 
 Jeśli chcesz wyświetlić pełną historię skalowania (przez maksymalnie 90 dni), wybierz **pozycję kliknij tutaj, aby zobaczyć więcej szczegółów**. Zostanie otwarty dziennik aktywności z opcją automatycznego skalowania wstępnie wybraną dla zasobu i kategorii.
 
@@ -103,7 +99,7 @@ Zmiany w formacie JSON można wprowadzać bezpośrednio, w razie potrzeby. Te zm
 Mogą wystąpić sytuacje, w których chcesz wyłączyć bieżące ustawienie skalowania i ręcznie skalować zasób.
 
 Kliknij przycisk **Wyłącz automatyczne skalowanie** u góry.
-![Wyłącz automatyczne skalowanie][13]
+![wyłączyć automatyczne skalowanie][13]
 
 > [!NOTE]
 > Ta opcja powoduje wyłączenie konfiguracji. Można jednak wrócić do niego po ponownym włączeniu automatycznego skalowania.

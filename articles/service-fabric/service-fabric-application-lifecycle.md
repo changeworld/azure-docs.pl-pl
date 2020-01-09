@@ -1,98 +1,87 @@
 ---
-title: Cykl życia aplikacji w usłudze Service Fabric | Dokumentacja firmy Microsoft
-description: Zawiera opis tworzenia, wdrażania, testowania, uaktualnianie, obsługi i usuwania aplikacji usługi Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Cykl życia aplikacji w Service Fabric
+description: Opisuje tworzenie, wdrażanie, testowanie, uaktualnianie, konserwowanie i usuwanie Service Fabric aplikacji.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: beeb1f1512cf94582dd561fa768f2e8e6649d686
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378008"
 ---
-# <a name="service-fabric-application-lifecycle"></a>Cykl życia aplikacji usługi Service Fabric
-Zgodnie z innymi platformami aplikacji w usłudze Azure Service Fabric zwykle odbywa się przez następujące fazy: projektowania, rozwoju, testowania, wdrażanie, uaktualnianie, obsługi i usuwania. Usługa Service Fabric zapewnia najwyższej jakości pomoc techniczna dla całego cyklu życia aplikacji z aplikacji w chmurze, od projektowania do wdrażania, zarządzania infrastrukturą i konserwacji do ostatecznego wycofania. Model usługi umożliwia kilku różnych ról niezależnie uczestniczyć w cyklu życia aplikacji. Ten artykuł zawiera omówienie interfejsów API i jak są one używane przez różne role, w fazach cyklu życia aplikacji usługi Service Fabric.
+# <a name="service-fabric-application-lifecycle"></a>Cykl życia aplikacji Service Fabric
+Podobnie jak w przypadku innych platform, aplikacja na platformie Azure Service Fabric zwykle przechodzi przez następujące fazy: projektowanie, programowanie, testowanie, wdrażanie, uaktualnianie, konserwacja i usuwanie. Service Fabric zapewnia obsługę pierwszej klasy dla pełnego cyklu życia aplikacji w chmurze, od projektowania przez wdrażanie, codzienne zarządzanie i konserwację do ostatecznego wycofania. Model usług umożliwia wielu różnym rolom uczestnictwo niezależnie w cyklu życia aplikacji. Ten artykuł zawiera omówienie interfejsów API i ich użycia przez różne role w fazie cyklu życia Service Fabric aplikacji.
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="service-model-roles"></a>Usługi modelu ról
-Role usługi w modelu są:
+## <a name="service-model-roles"></a>Role modelu usług
+Role modelu usługi:
 
-* **Usługi dla deweloperów**: Rozwija modułowego i ogólny usług, które może być przeznaczenie i używany w wielu aplikacjach typu tej samej lub różnych typów. Na przykład usługa kolejki może służyć do tworzenia biletów aplikacji (Pomoc techniczna) lub aplikacji handlu elektronicznego (koszyka).
-* **Deweloper aplikacji**: Tworzy aplikacje dzięki integracji kolekcję usług, które spełniają pewne określone wymagania lub scenariuszy. Na przykład w witrynie sieci Web handlu elektronicznego może zintegrować "JSON bezstanowej frontonu usługi", "Usługa stanowa aukcji" i "Usługa stanowa kolejki" Tworzenie auctioning rozwiązania.
-* **Administrator aplikacji**: Podejmuje decyzje dotyczące konfiguracji aplikacji (wypełnianie za pomocą parametrów szablonu konfiguracji), wdrażania (mapowanie dostępnych zasobów i) i jakości usługi. Na przykład administrator aplikacji decyduje o języka ustawień regionalnych (w języku angielskim dla Stanów Zjednoczonych) lub w języku japońskim dla Japonii, na przykład aplikacji. Różne wdrożonej aplikacji może mieć różne ustawienia.
-* **Operator**: Wdraża aplikacje na podstawie konfiguracji aplikacji i wymaganiami określonymi przez administratora aplikacji. Na przykład operator aprowizuje i wdraża aplikację i gwarantuje, że jest on uruchomiony na platformie Azure. Operatory monitorować informacje o kondycji i wydajności aplikacji i obsługa infrastruktury fizycznej, zgodnie z potrzebami.
+* **Deweloper usługi**: opracowuje modularne i ogólne usługi, które mogą być przeznaczenie i używane w wielu aplikacjach tego samego typu lub różnych typów. Na przykład usługa kolejki może służyć do tworzenia aplikacji biletów (pomocy technicznej) lub aplikacji handlu elektronicznego (koszyk).
+* **Deweloper aplikacji**: tworzy aplikacje przez integrację kolekcji usług w celu spełnienia określonych wymagań lub scenariuszy. Na przykład witryna internetowa handlu elektronicznego może zintegrować usługę frontonu w formacie JSON, "" usługa stanowa aukcji "i" usługa stanowa kolejki "w celu utworzenia rozwiązania z licytacją.
+* **Administrator aplikacji**: podejmuje decyzje dotyczące konfiguracji aplikacji (wypełniając parametry szablonu konfiguracji), wdrożenie (mapowanie do dostępnych zasobów) i jakość usługi. Na przykład administrator aplikacji decyduje ustawienia regionalne języka (w języku angielskim dla Stany Zjednoczone lub japońskiego dla Japonii, na przykład) aplikacji. Inna wdrożona aplikacja może mieć inne ustawienia.
+* **Operator**: wdraża aplikacje na podstawie konfiguracji aplikacji i wymagań określonych przez administratora aplikacji. Na przykład operator inicjuje i wdraża aplikację i zapewnia jej działanie na platformie Azure. Operatory monitorują informacje o kondycji i wydajności aplikacji oraz przechowują infrastrukturę fizyczną zgodnie z wymaganiami.
 
-## <a name="develop"></a>Programowanie
-1. A *usługi dla deweloperów* opracowuje różnego rodzaju usług przy użyciu [elementów Reliable Actors](service-fabric-reliable-actors-introduction.md) lub [usług Reliable Services](service-fabric-reliable-services-introduction.md) model programowania.
-2. A *usługi dla deweloperów* deklaratywnie w tym artykule opisano typy usług opracowanych w pliku manifestu usługi składający się z co najmniej jednego pakietu kodu, konfiguracji i danych.
-3. *Deweloper aplikacji* następnie kompiluje aplikację przy użyciu różne typy usług.
-4. *Deweloper aplikacji* deklaratywne opisuje typ aplikacji w manifeście aplikacji przez odwołanie do manifestów usługi składników usług i odpowiednio zastępowanie i parametryzacja różnych ustawienia konfiguracji i wdrażania usług składowych.
+## <a name="develop"></a>Tworzenie
+1. *Deweloper usługi* opracowuje różne typy usług przy użyciu modelu programowania [Reliable Actors](service-fabric-reliable-actors-introduction.md) lub [Reliable Services](service-fabric-reliable-services-introduction.md) .
+2. *Deweloper usługi* deklaratywnie opisuje utworzone typy usług w pliku manifestu usługi składający się z co najmniej jednego kodu, konfiguracji i pakietów danych.
+3. *Deweloper aplikacji* kompiluje aplikację przy użyciu różnych typów usług.
+4. *Deweloper aplikacji* deklaratywnie opisuje typ aplikacji w manifeście aplikacji, odwołując się do manifestów usług składowych i odpowiednio zastępując i parametryzacja różne ustawienia konfiguracji i wdrażania usług składowych.
 
-Zobacz [rozpocząć pracę z elementami Reliable Actors](service-fabric-reliable-actors-get-started.md) i [wprowadzenie do usług Reliable Services](service-fabric-reliable-services-quick-start.md) przykłady.
+Zobacz Wprowadzenie do [Reliable Actors](service-fabric-reliable-actors-get-started.md) i [wprowadzenie do Reliable Services](service-fabric-reliable-services-quick-start.md) na potrzeby przykładów.
 
-## <a name="deploy"></a>Wdrażanie
-1. *Administrator aplikacji* dostosowanie typu aplikacji do konkretnej aplikacji do wdrożenia klastra usługi Service Fabric, określając odpowiednie parametry **ApplicationType** elementu w manifeście aplikacji.
-2. *Operator* przekazuje pakiet aplikacji do magazynu obrazów klastra przy użyciu [ **CopyApplicationPackage** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) lub [  **Kopiuj ServiceFabricApplicationPackage** polecenia cmdlet](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps). Pakiet aplikacji zawiera manifest aplikacji i kolekcji pakietów usługi. Usługa Service Fabric wdroży aplikacji za pomocą pakietu aplikacji, przechowywane w magazynie obrazu, który może być z magazynu obiektów blob platformy Azure lub usługi systemowe Service Fabric.
-3. *Operator* następnie Inicjuje obsługę typu aplikacji w klastrze docelowym z przy użyciu pakietu aplikacji przekazanych [ **ProvisionApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient),  [ **ServiceFabricApplicationType rejestru** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/register-servicefabricapplicationtype), lub [ **Aprowizowanie aplikacji** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/provision-an-application).
-4. Po zainicjowaniu obsługi administracyjnej aplikacji *operator* uruchomi aplikację za pomocą parametrów dostarczonych przez *administrator aplikacji* przy użyciu [  **CreateApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [ **New ServiceFabricApplication** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication), lub [ **tworzenia aplikacji**  Operacji REST](https://docs.microsoft.com/rest/api/servicefabric/create-an-application).
-5. Po wdrożeniu aplikacji *operator* używa [ **CreateServiceAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient), [ **New ServiceFabricService**  polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice), lub [ **żądania utworzenia usługi** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/create-a-service) do tworzenia nowych wystąpień usługi dla aplikacji na podstawie typów dostępne usługi.
-6. Aplikacja jest teraz uruchomiona w klastrze usługi Service Fabric.
+## <a name="deploy"></a>Implementacja
+1. Autorzy *aplikacji* , który ma zostać wdrożony dla konkretnej aplikacji do wdrożenia w klastrze Service Fabric przez określenie odpowiednich parametrów elementu **ApplicationType** w manifeście aplikacji.
+2. *Operator* przekazuje pakiet aplikacji do magazynu obrazów klastra przy użyciu [metody **CopyApplicationPackage** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) lub [polecenia cmdlet **copy-ServiceFabricApplicationPackage** ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps). Pakiet aplikacji zawiera manifest aplikacji i kolekcję pakietów usług. Service Fabric wdraża aplikacje z pakietu aplikacji przechowywanego w magazynie obrazów, który może być magazynem obiektów blob platformy Azure lub usługą systemową Service Fabric.
+3. Następnie *operator* Inicjuje obsługę typu aplikacji w klastrze docelowym z przekazanego pakietu aplikacji przy użyciu [metody **ProvisionApplicationAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **register-ServiceFabricApplicationType** ](https://docs.microsoft.com/powershell/module/servicefabric/register-servicefabricapplicationtype)i [operacji REST **aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/provision-an-application).
+4. Po zainicjowaniu obsługi aplikacji *operator* uruchamia aplikację za pomocą parametrów dostarczonych przez *administratora aplikacji* przy użyciu [metody **CreateApplicationAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **New-ServiceFabricApplication** ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication)lub [operacji REST **tworzenia aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/create-an-application).
+5. Po wdrożeniu aplikacji *operator* używa [metody **CreateServiceAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient), [polecenia cmdlet **New-ServiceFabricService** ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice)lub [operacji REST **usługi Create Service** ](https://docs.microsoft.com/rest/api/servicefabric/create-a-service) , aby utworzyć nowe wystąpienia usługi dla aplikacji na podstawie dostępnych typów usług.
+6. Aplikacja działa teraz w klastrze Service Fabric.
 
-Zobacz [wdrażania aplikacji](service-fabric-deploy-remove-applications.md) przykłady.
+Zobacz temat [wdrażanie aplikacji](service-fabric-deploy-remove-applications.md) na przykład.
 
-## <a name="test"></a>Testowanie
-1. Po wdrożeniu na lokalny klaster projektowy lub klastra testowego, *usługi dla deweloperów* uruchamia scenariusza testu trybu failover wbudowanej za pomocą [ **FailoverTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) i [ **FailoverTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) klas, lub [ **Invoke ServiceFabricFailoverTestScenario** polecenia cmdlet](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps). Scenariusz testu w trybie failover uruchamia określonej usługi za pośrednictwem ważne przejścia i trybu failover, aby upewnić się, że jest nadal dostępne i działają.
-2. *Usługi dla deweloperów* następnie uruchamia chaos wbudowany test scenariusza za pomocą [ **ChaosTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) i [  **ChaosTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) klas, lub [ **Invoke ServiceFabricChaosTestScenario** polecenia cmdlet](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). Scenariusz testów chaos losowo wywołuje wiele węzłów, pakiet kodu i usterek repliki do klastra.
-3. *Usługi dla deweloperów* [testy komunikacji między usługami](service-fabric-testability-scenarios-service-communication.md) tworzenie scenariuszy testowych, łączące replikami podstawowymi w całym klastrze.
+## <a name="test"></a>Test
+1. Po wdrożeniu w lokalnym klastrze projektowym lub w klastrze testowym *Deweloper usługi* uruchamia wbudowany Scenariusz testowania trybu failover przy użyciu klas [**FailoverTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) i [**FailoverTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) lub [polecenia cmdlet **Invoke-ServiceFabricFailoverTestScenario** ](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps). Scenariusz testowania trybu failover uruchamia określoną usługę za pomocą ważnych przejść i trybu failover, aby upewnić się, że jest ona nadal dostępna i działa.
+2. *Deweloper usługi* następnie uruchamia wbudowany Scenariusz testowania chaos przy użyciu klas [**ChaosTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) i [**ChaosTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) lub [polecenia cmdlet **Invoke-ServiceFabricChaosTestScenario** ](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). Scenariusz testu chaos losowo wywołuje wiele błędów węzła, pakietu kodu i repliki w klastrze.
+3. *Deweloper usług* [testuje komunikację między](service-fabric-testability-scenarios-service-communication.md) usługą, tworząc scenariusze testów, które przenoszą repliki podstawowe wokół klastra.
 
-Zobacz [Introduction to usługa analizy błędów](service-fabric-testability-overview.md) Aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji [, zobacz Wprowadzenie do usługi błędów analizy](service-fabric-testability-overview.md) .
 
 ## <a name="upgrade"></a>Uaktualnienie
-1. A *usługi dla deweloperów* aktualizacje składników usług wystąpień aplikacji i/lub poprawki usterek i zapewnia nowa wersja manifestu usługi.
-2. *Deweloper aplikacji* zastępuje parametryzuje dane ustawień konfiguracji i wdrażania usług spójne i zawiera nową wersję w manifeście aplikacji. Deweloper aplikacji następnie dołącza nowe wersje zestawu manifestów usługi do aplikacji i zawiera nową wersję typu aplikacji w pakiecie zaktualizowaną aplikację.
-3. *Administrator aplikacji* zawiera nową wersję typu aplikacji do aplikacji docelowej, aktualizując odpowiednie parametry.
-4. *Operator* przekazuje pakiet aplikacji do klastra obrazu magazynu przy użyciu [ **CopyApplicationPackage** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) lub [ **Kopiowania ServiceFabricApplicationPackage** polecenia cmdlet](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps). Pakiet aplikacji zawiera manifest aplikacji i kolekcji pakietów usługi.
-5. *Operator* aprowizuje nową wersję aplikacji w klastrze docelowym przy użyciu [ **ProvisionApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [  **Zarejestruj ServiceFabricApplicationType** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/register-servicefabricapplicationtype), lub [ **Aprowizowanie aplikacji** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/provision-an-application).
-6. *Operator* uaktualnień aplikacji docelowej, do nowego przy użyciu wersji [ **UpgradeApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [  **Start-ServiceFabricApplicationUpgrade** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade), lub [ **uaktualniania aplikacji** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/upgrade-an-application).
-7. *Operator* sprawdza, czy postęp uaktualnienia przy użyciu [ **GetApplicationUpgradeProgressAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [  **Get-ServiceFabricApplicationUpgrade** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricapplicationupgrade), lub [ **uzyskać postęp uaktualniania aplikacji** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/get-the-progress-of-an-application-upgrade1).
-8. Jeśli to konieczne, *operator* modyfikuje i ponowne zastosowanie parametrów bieżącej aplikacji uaktualnianie za pomocą [ **UpdateApplicationUpgradeAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [ **ServiceFabricApplicationUpgrade aktualizacji** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade), lub [ **uaktualnienia aplikacji aktualizacji** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/update-an-application-upgrade).
-9. Jeśli to konieczne, *operator* wycofanie bieżącej aplikacji uaktualnianie za pomocą [ **RollbackApplicationUpgradeAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [ **Start ServiceFabricApplicationRollback** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback), lub [ **uaktualnienia aplikacji wycofywania** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/rollback-an-application-upgrade).
-10. Usługa Service Fabric uaktualnia aplikacji docelowej, uruchomione w klastrze bez utraty dostępność dowolną z jego usług składowych.
+1. *Deweloper usługi* aktualizuje usługi składowe wystąpienia aplikacji i/lub naprawia błędy i udostępnia nową wersję manifestu usługi.
+2. *Deweloper aplikacji* zastępuje i parameterizes konfigurację oraz ustawienia wdrożenia spójnych usług i udostępnia nową wersję manifestu aplikacji. Deweloper aplikacji wprowadza nowe wersje manifestów usługi do aplikacji i udostępnia nową wersję typu aplikacji w zaktualizowanym pakiecie aplikacji.
+3. *Administrator aplikacji* obejmuje nową wersję typu aplikacji w aplikacji docelowej przez zaktualizowanie odpowiednich parametrów.
+4. *Operator* przekazuje zaktualizowany pakiet aplikacji do magazynu obrazów klastra przy użyciu [metody **CopyApplicationPackage** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) lub [polecenia cmdlet **copy-ServiceFabricApplicationPackage** ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps). Pakiet aplikacji zawiera manifest aplikacji i kolekcję pakietów usług.
+5. *Operator* Inicjuje nową wersję aplikacji w klastrze docelowym przy użyciu [metody **ProvisionApplicationAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **register-ServiceFabricApplicationType** ](https://docs.microsoft.com/powershell/module/servicefabric/register-servicefabricapplicationtype)lub w ramach [operacji REST **aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/provision-an-application).
+6. *Operator* uaktualnia aplikację docelową do nowej wersji przy użyciu metody [ **UpgradeApplicationAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **Start-ServiceFabricApplicationUpgrade** ](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade)lub [operacji REST **uaktualniania aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/upgrade-an-application).
+7. *Operator* sprawdza postęp uaktualniania przy użyciu [metody **GetApplicationUpgradeProgressAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **Get-ServiceFabricApplicationUpgrade** ](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricapplicationupgrade)lub [operacji REST **uaktualniania aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/get-the-progress-of-an-application-upgrade1).
+8. W razie potrzeby *operator* modyfikuje i ponownie stosuje parametry bieżącego uaktualnienia aplikacji przy użyciu [metody **UpdateApplicationUpgradeAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **Update-ServiceFabricApplicationUpgrade** ](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade)lub [operacji **aktualizacji REST uaktualniania aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/update-an-application-upgrade).
+9. W razie potrzeby *operator* wycofuje bieżące uaktualnienie aplikacji, korzystając z metody [ **RollbackApplicationUpgradeAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **Start-ServiceFabricApplicationRollback** ](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback)lub [operacji **wycofywania uaktualniania aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/rollback-an-application-upgrade).
+10. Service Fabric uaktualnia aplikację docelową działającą w klastrze bez utraty dostępności żadnej z jej usług składowych.
 
-Zobacz [samouczek dotyczący uaktualniania aplikacji](service-fabric-application-upgrade-tutorial.md) przykłady.
+Przykłady można znaleźć w [samouczku dotyczącym uaktualniania aplikacji](service-fabric-application-upgrade-tutorial.md) .
 
 ## <a name="maintain"></a>Obsługa
-1. Do uaktualnienia systemu operacyjnego i poprawki usługi Service Fabric z interfejsem do infrastruktury platformy Azure, aby zapewnić dostępność wszystkich aplikacji uruchomionych w klastrze.
-2. Do uaktualnienia i poprawki dla platformy Service Fabric usługi Service Fabric uaktualnia się bez utraty dostępność aplikacji działających w klastrze.
-3. *Administrator aplikacji* zatwierdza dodawania lub usuwania węzłów z klastra po przeanalizowaniu pojemności historyczne dane dotyczące użycia i przewidywaną przyszły popyt.
-4. *Operator* dodaje i usuwa węzły określonej przez *administrator aplikacji*.
-5. Po dodaniu nowych węzłów do lub istniejące węzły są usuwane z klastra, Usługa Service Fabric automatycznie równoważy obciążenia uruchomionych aplikacji we wszystkich węzłach w klastrze, aby osiągnąć optymalną wydajność.
+1. W przypadku uaktualnień i poprawek systemu operacyjnego Service Fabric interfejsów z infrastrukturą platformy Azure w celu zagwarantowania dostępności wszystkich aplikacji uruchomionych w klastrze.
+2. W przypadku uaktualnień i poprawek na platformie Service Fabric Service Fabric uaktualniane bez utraty dostępności żadnej aplikacji uruchomionej w klastrze.
+3. *Administrator aplikacji* zatwierdza Dodawanie lub usuwanie węzłów z klastra po analizie historycznych danych użycia pojemności i prognozowanie przyszłych zapotrzebowań.
+4. *Operator* dodaje i usuwa węzły określone przez *administratora aplikacji*.
+5. Gdy nowe węzły są dodawane do lub istniejące węzły są usuwane z klastra, Service Fabric automatycznie równoważyć obciążenie uruchomionych aplikacji we wszystkich węzłach w klastrze, aby osiągnąć optymalną wydajność.
 
 ## <a name="remove"></a>Usuń
-1. *Operator* można usunąć określonego wystąpienia usługi uruchomione w klastrze bez usuwania całej aplikacji przy użyciu [ **DeleteServiceAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient), [ **ServiceFabricService Usuń** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice), lub [ **żądania usunięcia usługi** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/delete-a-service).  
-2. *Operator* można również usunąć wystąpienie aplikacji i wszystkich swoich usług przy użyciu [ **DeleteApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [  **Usuń ServiceFabricApplication** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricapplication), lub [ **Usuń aplikację** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/delete-an-application).
-3. Po zatrzymaniu aplikacji i usług, *operator* można wstrzymał obsługi administracyjnej typu aplikacji przy użyciu [ **UnprovisionApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [ **ServiceFabricApplicationType Wyrejestruj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/unregister-servicefabricapplicationtype), lub [ **wstrzymał obsługi administracyjnej aplikacji** operacji REST](https://docs.microsoft.com/rest/api/servicefabric/unprovision-an-application). Cofnięcie aprowizacji typu aplikacji nie powoduje usunięcia pakietu aplikacji z ImageStore. Należy ręcznie usunąć pakiet aplikacji.
-4. *Operator* usuwa pakiet aplikacji z przy użyciu ImageStore [ **RemoveApplicationPackage** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) lub [  **Usuń ServiceFabricApplicationPackage** polecenia cmdlet](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps).
+1. *Operator* może usunąć określone wystąpienie uruchomionej usługi w klastrze bez usuwania całej aplikacji przy użyciu [metody **DeleteServiceAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient), [polecenia cmdlet **Remove-ServiceFabricService** ](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice)ani [operacji **usuwania REST usługi** ](https://docs.microsoft.com/rest/api/servicefabric/delete-a-service).  
+2. *Operator* może również usunąć wystąpienie aplikacji i wszystkie jego usługi przy użyciu [metody **DeleteApplicationAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **Remove-ServiceFabricApplication** ](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricapplication)lub [operacji **usuwania REST aplikacji** ](https://docs.microsoft.com/rest/api/servicefabric/delete-an-application).
+3. Po zatrzymaniu aplikacji i usług *operator* może anulować obsługę administracyjną typu aplikacji przy użyciu [metody **UnprovisionApplicationAsync** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [polecenia cmdlet **Unregister-ServiceFabricApplicationType** ](https://docs.microsoft.com/powershell/module/servicefabric/unregister-servicefabricapplicationtype)lub cofnięcia aprowizacji [ **aplikacji** REST](https://docs.microsoft.com/rest/api/servicefabric/unprovision-an-application). Cofnięcie aprowizacji typu aplikacji nie powoduje usunięcia pakietu aplikacji z magazynu ImageStore. Pakiet aplikacji należy usunąć ręcznie.
+4. *Operator* usuwa pakiet aplikacji z magazynu ImageStore za pomocą [metody **RemoveApplicationPackage** ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) lub [polecenia cmdlet **Remove-ServiceFabricApplicationPackage** ](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps).
 
-Zobacz [wdrażania aplikacji](service-fabric-deploy-remove-applications.md) przykłady.
+Zobacz temat [wdrażanie aplikacji](service-fabric-deploy-remove-applications.md) na przykład.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat tworzenia testowania i zarządzania aplikacjami usługi Service Fabric i usługi, zobacz:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat opracowywania i testowania Service Fabric aplikacji i usług oraz zarządzania nimi, zobacz:
 
 * [Reliable Actors](service-fabric-reliable-actors-introduction.md)
 * [Usługi Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)
 * [Uaktualnienie aplikacji](service-fabric-application-upgrade.md)
-* [Omówienie testowalności](service-fabric-testability-overview.md)
+* [Przegląd testowania](service-fabric-testability-overview.md)

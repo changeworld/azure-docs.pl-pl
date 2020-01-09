@@ -1,6 +1,6 @@
 ---
-title: Napisz aplikację sieci Web, która loguje się do użytkowników — platforma tożsamości firmy Microsoft | Azure
-description: Dowiedz się, jak utworzyć aplikację internetową, która loguje się do użytkowników (logowanie)
+title: Napisz aplikację sieci Web, która loguje się/out użytkowników — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak utworzyć aplikację sieci Web, która loguje użytkowników z/z zewnątrz
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6bb32ae29c533b8ea27bf68e012040a17bb36355
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423484"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Aplikacja internetowa, która loguje użytkowników: Logowanie i wylogowywanie
 
@@ -118,7 +118,7 @@ Kod dla `AccountController` jest dostępny w repozytorium ASP.NET Core w [Accoun
 
 W ASP.NET wylogowanie jest wyzwalane przez metodę `SignOut()` na kontrolerze (na przykład [elementu AccountController. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Ta metoda nie jest częścią ASP.NET Framework (w przeciwieństwie do co dzieje się w ASP.NET Core). Wysyła wyzwanie logowania OpenID Connect po zaproponowaniu identyfikatora URI przekierowania.
 
-```CSharp
+```csharp
 public void SignIn()
 {
     // Send an OpenID Connect sign-in request.
@@ -342,7 +342,7 @@ W ASP.NET wylogowanie jest wyzwalane przez metodę `SignOut()` na kontrolerze (n
 - Czyści pamięć podręczną.
 - Przekierowuje do strony, którą chce.
 
-```CSharp
+```csharp
 /// <summary>
 /// Send an OpenID Connect sign-out request.
 /// </summary>
@@ -396,7 +396,7 @@ Identyfikator URI po wylogowaniu umożliwia aplikacjom uczestnictwo w globalnym 
 
 ASP.NET Core OpenID Connect łączy oprogramowanie pośredniczące umożliwia aplikacji przechwycenie wywołania do platformy tożsamości firmy Microsoft `logout` punktu końcowego przez udostępnienie zdarzenia OpenID Connect Connect o nazwie `OnRedirectToIdentityProviderForSignOut`. Aby zapoznać się z przykładem sposobu subskrybowania tego zdarzenia (w celu wyczyszczenia pamięci podręcznej tokenów), zobacz [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156).
 
-```CSharp
+```csharp
     // Handling the global sign-out
     options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
     {
@@ -408,7 +408,7 @@ ASP.NET Core OpenID Connect łączy oprogramowanie pośredniczące umożliwia ap
 
 W ASP.NET można delegować do oprogramowania pośredniczącego w celu przeprowadzenia wylogowania, czyszcząc plik cookie sesji:
 
-```CSharp
+```csharp
 public class AccountController : Controller
 {
  ...

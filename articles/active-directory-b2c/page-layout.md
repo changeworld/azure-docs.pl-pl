@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425656"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Wybieranie układu strony w Azure Active Directory B2C przy użyciu zasad niestandardowych
 
@@ -30,9 +30,9 @@ W tym artykule omówiono sposób wybierania układu strony w Azure AD B2C przez 
 > [!NOTE]
 > Jeśli chcesz włączyć język JavaScript dla przepływów użytkownika, zobacz [wersje JavaScript i układ strony w Azure Active Directory B2C](user-flow-javascript-overview.md).
 
-## <a name="replace-datauri-values"></a>Zastąp wartości DataUri
+## <a name="replace-datauri-values"></a>Zastąp wartości Identyfikator URI
 
-W zasadach niestandardowych można [ContentDefinitions](contentdefinitions.md) , które definiują szablony HTML używane w podróży użytkownika. **ContentDefinition** zawiera **DataUri** , który odwołuje się do elementów strony dostarczonych przez Azure AD B2C. **LoadUri** jest ścieżką względną do zawartości HTML i CSS, którą dostarczasz.
+W przypadku zasad niestandardowych, konieczne może być [ContentDefinitions](contentdefinitions.md) definiują szablony HTML używane w podróży użytkownika. **ContentDefinition** zawiera **identyfikator URI** odwołujący się do elementów strony udostępniane przez usługę Azure AD B2C. **Parametr LoadUri** jest ścieżką względną do zawartości HTML i CSS, która należy podać.
 
 ```XML
 <ContentDefinition Id="api.idpselections">
@@ -46,11 +46,11 @@ W zasadach niestandardowych można [ContentDefinitions](contentdefinitions.md) ,
 </ContentDefinition>
 ```
 
-Aby wybrać układ strony, należy zmienić wartości **DataUri** w [ContentDefinitions](contentdefinitions.md) w zasadach. Przełączając od starych wartości **DataUri** do nowych wartości, wybierasz niezmienny pakiet. Zaletą korzystania z tego pakietu jest to, że wiadomo, że nie ulegnie zmianie i spowoduje nieoczekiwane zachowanie na stronie.
+Aby wybrać układ strony, należy zmienić wartości **DataUri** w [ContentDefinitions](contentdefinitions.md) w zasadach. Przełączając się ze starego **identyfikator URI** wartości z nowymi wartościami miar, w przypadku zaznaczenia niemodyfikowalny pakiet. Zaletą korzystania z tego pakietu jest to, że wiadomo, że nie ulegnie zmianie i spowoduje nieoczekiwane zachowanie na stronie.
 
-Aby skonfigurować układ strony, Skorzystaj z poniższej tabeli, aby znaleźć wartości **DataUri** .
+Aby określić układ strony w niestandardowych zasadach, które używają starej wartości **DataUri** , Wstaw `contract` między `elements` i typem strony (na przykład `selfasserted`) i określ numer wersji. Przykład:
 
-| Stara wartość DataUri | Nowa wartość DataUri |
+| Stara wartość identyfikator URI | Nowa wartość identyfikator URI |
 | ----------------- | ----------------- |
 | `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
@@ -68,17 +68,23 @@ Aby skonfigurować układ strony, Skorzystaj z poniższej tabeli, aby znaleźć 
 
 Pakiety układów stron są okresowo aktualizowane w celu uwzględnienia poprawek i ulepszeń w ich elementach strony. Następujący dziennik zmian określa zmiany wprowadzone w każdej wersji.
 
-### <a name="120"></a>1.2.0 
+### <a name="200"></a>2.0.0
+
+- Strona z własnym potwierdzeniem (`selfasserted`)
+  - Dodano obsługę [formantów wyświetlania](display-controls.md) w zasadach niestandardowych.
+
+### <a name="120"></a>1.2.0
+
 - Wszystkie strony
   - Poprawki ułatwień dostępu
   - Teraz możesz dodać atrybut `data-preload="true"` w tagach HTML, aby kontrolować kolejność ładowania dla CSS i JavaScript. Scenariusze obejmują:
-      - Użyj tej właściwości na linku CSS, aby załadować arkusz CSS w tym samym czasie co kod HTML, aby nie "migotać" między ładowaniem plików
-      - Ten atrybut pozwala kontrolować kolejność, w jakiej Tagi skryptu są pobierane i wykonywane przed załadowaniem strony
-  - Pole adresu e-mail jest teraz `type=email` i klawiatury przenośne zapewniają poprawne sugestie
+    - Użyj tej właściwości na linku CSS, aby załadować arkusz CSS w tym samym czasie co kod HTML, aby nie "migotać" między ładowaniem plików
+    - Ten atrybut pozwala kontrolować kolejność, w jakiej Tagi skryptu są pobierane i wykonywane przed załadowaniem strony
+  - Pole adresu e-mail jest teraz `type=email` a klawiatury przenośne zapewniają poprawne sugestie
   - Obsługa funkcji tłumaczenia dla programu Chrome
 - Ujednolicona i własna strona
-  - Pola username/email i Password używają teraz elementu HTML form.  Umożliwi to teraz prawidłowe zapisanie tych informacji w przeglądarkach Microsoft Edge i IE
-  
+  - Pola username/email i Password używają teraz elementu HTML form.  Umożliwi to teraz prawidłowe zapisanie tych informacji w przeglądarce Edge i IE
+
 ### <a name="110"></a>1.1.0
 
 - Strona wyjątku (globalexception)
@@ -107,4 +113,4 @@ Pakiety układów stron są okresowo aktualizowane w celu uwzględnienia poprawe
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji o sposobach dostosowywania interfejsu użytkownika aplikacji można znaleźć w temacie [Dostosowywanie interfejsu użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+Znajdź więcej informacji na temat w jaki sposób dostosować interfejs użytkownika aplikacji w [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).

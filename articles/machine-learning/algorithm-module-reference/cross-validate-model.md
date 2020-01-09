@@ -1,7 +1,7 @@
 ---
 title: 'Model krzyżowego sprawdzania poprawności: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu wielovalidate model w usłudze Azure Machine Learning, aby zweryfikować oszacowania parametrów dla modeli klasyfikacji lub regresji przez Partycjonowanie danych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu wielovalidate model w Azure Machine Learning do podawania krzyżowego szacunków parametrów dla modeli klasyfikacji lub regresji przez Partycjonowanie danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428564"
 ---
-# <a name="cross-validate-model"></a>Model krzyżowego sprawdzania poprawności
+# <a name="cross-validate-model"></a>Krzyżowa weryfikacja modelu
 
 W tym artykule opisano sposób korzystania z modułu weryfikacji krzyżowej w programie Azure Machine Learning Designer (wersja zapoznawcza). *Wzajemne sprawdzanie poprawności* jest techniką często używaną w uczeniu maszynowym do oceny zmienności zestawu danych i niezawodności dowolnego modelu przeszkolonego za pomocą tych danych.  
 
@@ -127,5 +127,5 @@ Moduł zawiera również następujące metryki dla każdego zgięcia, w zależno
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
 

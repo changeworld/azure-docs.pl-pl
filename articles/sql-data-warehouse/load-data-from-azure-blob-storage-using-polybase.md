@@ -11,12 +11,12 @@ ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5b33d8fc804d339d3808e5231998fbba41cd4ee9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8a7da1bf80025cfe9b59c42f3338254b86f2ff05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376345"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Samouczek: ładowanie danych z Nowego Jorku Taxicab do Azure SQL Data Warehouse
 
@@ -24,7 +24,7 @@ W tym samouczku pokazano, jak załadować Nowy Jork Taxicab danych z globalnego 
 
 > [!div class="checklist"]
 > * Tworzenie magazynu danych w witrynie Azure Portal
-> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Konfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
 > * Nawiązywanie połączenia z magazynem danych za pomocą programu SSMS
 > * Tworzenie użytkownika wyznaczonego do ładowania danych
 > * Tworzenie tabel zewnętrznych dla danych w usłudze Azure Blob Storage
@@ -45,7 +45,7 @@ Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Utwórz puste SQL Data Warehouse
 
-Azure SQL Data Warehouse jest tworzony za pomocą zdefiniowanego zestawu [zasoby obliczeniowe] pamięć-współbieżność-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
+Azure SQL Data Warehouse jest tworzony za pomocą zdefiniowanego zestawu [zasoby obliczeniowe] pamięć-współbieżność-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/management/overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
 
 Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse. 
 
@@ -152,7 +152,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
     | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
     | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Nazwa powinna wyglądać następująco: **mynewserver-20180430.Database.Windows.NET**. |
     | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-    | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
+    | Zaloguj się | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
     | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
 
     ![łączenie z serwerem](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -633,7 +633,7 @@ W tym samouczku przedstawiono sposób tworzenia magazynu danych i tworzenia uży
 Zostały wykonane następujące zadania:
 > [!div class="checklist"]
 > * Utworzenie magazynu danych w witrynie Azure Portal
-> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Konfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
 > * Nawiązanie połączenia z magazynem danych za pomocą programu SSMS
 > * Utworzenie użytkownika wyznaczonego do ładowania danych
 > * Utworzenie tabel zewnętrznych dla danych w usłudze Azure Storage Blob

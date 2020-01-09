@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6dced7106b59f0e5a05c7ed6ff3e3368978cb083
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407583"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Poziomy powiększenia i siatka kafelków
 
@@ -26,15 +26,15 @@ Aby zoptymalizować wydajność pobierania i wyświetlania mapy, mapa jest dziel
 
 <center>
 
-![Kafelek World](./media/zoom-levels-and-tile-grid/world0.png)</center>
+kafelek ![World](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 Poziom powiększenia 1 używa czterech kafelków do renderowania świata: 2 x 2 kwadrat
 
 <center>
 
-![Układ kafelków mapy 2x2](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+Układ kafelka mapy ![2x2](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
 
-Każdy dodatkowy poziom powiększenia — dzieli kafelki z poprzedniego, tworząc siatkę z 2 powiększenia x 2<sup></sup> <sup>powiększenia</sup>. Poziom powiększenia 22 to siatka 2<sup>22</sup> x 2<sup>22</sup>lub 4 194 304 x 4 194 304 (łącznie z 17 592 186 044 416 kafelków).
+Każdy dodatkowy poziom powiększenia — dzieli kafelki z poprzedniego, tworząc siatkę<sup>z 2 powiększenia x 2</sup> <sup>powiększenia</sup>. Poziom powiększenia 22 to siatka 2<sup>22</sup> x 2<sup>22</sup>lub 4 194 304 x 4 194 304 (łącznie z 17 592 186 044 416 kafelków).
 
 Azure Maps formanty interaktywnej mapy dla sieci Web i systemu Android obsługują poziom 25 poziomów powiększenia, numerowane od 0 do 24. Chociaż dane dróg będą dostępne tylko na poziomach powiększenia w przypadku, gdy kafelki są dostępne.
 
@@ -78,11 +78,11 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Ponieważ szerokość i wysokość mapy jest różna na każdym poziomie powiększenia, więc współrzędne pikseli. Piksel w lewym górnym rogu mapy zawsze ma współrzędne pikseli (0, 0). Piksel w prawym dolnym rogu mapy ma współrzędne pikseli *(szerokość-1, Wysokość-1)* lub odwołujące się do równań w poprzedniej sekcji *(tileSize \* 2<sup>zoom</sup>-1, tileSize \* 2<sup>zoom</sup>-1)* . Na przykład w przypadku używania kafelków z 512 kwadratowych na poziomie 2, współrzędne pikseli zakresu od (0, 0) do (2047, 2047), takie jak:
+Ponieważ szerokość i wysokość mapy jest różna na każdym poziomie powiększenia, więc współrzędne pikseli. Piksel w lewym górnym rogu mapy zawsze ma współrzędne pikseli (0, 0). Piksel w prawym dolnym rogu mapy ma współrzędne pikseli *(szerokość-1, Wysokość-1)* lub odwołujące się do równań w poprzedniej sekcji *(tileSize \* 2<sup>zoom</sup>— 1, tileSize \* 2<sup>zoom</sup>-1)* . Na przykład w przypadku używania kafelków z 512 kwadratowych na poziomie 2, współrzędne pikseli zakresu od (0, 0) do (2047, 2047), takie jak:
 
 <center>
 
-![Mapa pokazująca wymiary pikseli](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+Mapa ![pokazująca wymiary pikseli](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
 
 Uwzględniając wartości szerokości i długości geograficznej (w stopniach) i poziom szczegółowości, współrzędne XY można obliczyć w następujący sposób:
 
@@ -110,7 +110,7 @@ Każdy kafelek otrzymuje współrzędne XY względem zakresu od (0, 0) w lewym g
 
 <center>
 
-![Mapa współrzędnych kafelka](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+Mapa ![współrzędnych kafelków](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
 Mając na siebie parę współrzędnych pikseli wykresu, można łatwo określić współrzędne XY kafelka na kafelku zawierającym ten piksel:
 
@@ -126,7 +126,7 @@ Podczas określania stopnia powiększenia, który ma być używany, pamiętaj, �
 
 <center>
 
-![Skalowanie pokazu powiększenia](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+Skalowanie ![powiększenia](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
 Po określeniu poziomu powiększenia można obliczyć wartości x i y. Lewy górny kafelek w każdej siatce powiększenia to x = 0, y = 0; prawy dolny kafelek to x = 2<sup>zoom-1</sup>, y = 2<sup>powiększenie-1</sup>.
 
@@ -134,16 +134,16 @@ Oto siatka powiększenia dla poziomu powiększenia 1:
 
 <center>
 
-![Siatka powiększenia dla poziomu powiększenia 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+![powiększenia siatki dla poziomu powiększenia 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
 
 ## <a name="quadkey-indices"></a>Indeksy Quadkey
 
-Niektóre platformy mapowania używają konwencji nazewnictwa indeksowania quadkey, która łączy współrzędne ZY kafelków z jednowymiarowym ciągiem o nazwie QuadTree Keys lub "quadkeys". Każdy quadkey jednoznacznie identyfikuje pojedynczy kafelek na określonym poziomie szczegółowości i może być używany jako klucz w Common Database B — indeksy drzewa. Zestawy SDK Azure Maps obsługują nakładki warstw kafelków, które używają konwencji nazewnictwa quadkey, a także innych konwencji nazewnictwa, jak opisano w dokumencie [Dodawanie warstwy kafelków](map-add-tile-layer.md) .
+Niektóre platformy mapowania wykorzystują konwencję nazewnictwa `quadkey` indeksowania, która łączy współrzędne ZY kafelków z jednowymiarowym ciągiem o nazwie `quadtree` Keys lub `quadkeys`. Każdy `quadkey` jednoznacznie identyfikuje pojedynczy kafelek na określonym poziomie szczegółowości i może być używany jako klucz w typowej bazie danych B — indeksy drzewa. Zestawy SDK Azure Maps obsługują nakładki warstw kafelków, które używają konwencji nazewnictwa `quadkey` oprócz innych konwencji nazewnictwa, jak opisano w dokumencie [Dodawanie warstwy kafelków](map-add-tile-layer.md) .
 
 > [!NOTE]
-> Konwencja nazewnictwa quadkeys działa tylko dla poziomów powiększenia jednego lub większej. Zestaw Azure Maps SDK obsługuje poziom powiększenia 0, który jest jednym kafelkiem mapy dla całego świata. 
+> Konwencja nazewnictwa `quadkeys` działa tylko w przypadku poziomów powiększenia jednego lub większej liczby. Zestaw Azure Maps SDK obsługuje poziom powiększenia 0, który jest jednym kafelkiem mapy dla całego świata. 
 
-Aby przekonwertować współrzędne kafelka na quadkey, bity współrzędne Y i X są przeplatane, a wynik jest interpretowany jako numer Base-4 (z utrzymującymi się zerami) i konwertowane na ciąg. Na przykład współrzędne XY kafelka (3, 5) na poziomie 3 quadkey są określane w następujący sposób:
+Aby przekonwertować współrzędne kafelków na `quadkey`, bity współrzędne Y i X są przeplatane, a wynik jest interpretowany jako numer Base-4 (z utrzymującymi się zerami) i konwertowane na ciąg. Na przykład współrzędne XY kafelka (3, 5) na poziomie 3 `quadkey` są określane w następujący sposób:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -153,13 +153,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-Quadkeys mają kilka interesujących właściwości. Po pierwsze, Długość quadkey (liczba cyfr) jest równa poziomowi powiększenia odpowiedniego kafelka. Po drugie quadkey dowolnego kafelka rozpoczyna się od quadkey kafelka nadrzędnego (zawierający kafelek na poprzednim poziomie). Jak pokazano w poniższym przykładzie, kafelek 2 jest elementem nadrzędnym kafelków od 20 do 23:
+`Qquadkeys` mieć kilka interesujących właściwości. Najpierw długość `quadkey` (liczba cyfr) jest równa poziomowi powiększenia odpowiedniego kafelka. Po drugie `quadkey` dowolnego kafelka rozpoczyna się od `quadkey` kafelka nadrzędnego (zawierający kafelek na poprzednim poziomie). Jak pokazano w poniższym przykładzie, kafelek 2 jest elementem nadrzędnym kafelków od 20 do 23:
 
 <center>
 
-![Piramida kafelka Quadkey](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+![](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center> ostrosłupa kafelka Quadkey
 
-Na koniec quadkeys Podaj jednowymiarowy klucz indeksu, który zwykle zachowuje bliskość kafelków w obszarze wykresu. Innymi słowy, dwa kafelki, które mają w pobliżu współrzędne XY zwykle mają quadkeys, które są stosunkowo blisko siebie. Jest to ważne w przypadku optymalizowania wydajności bazy danych, ponieważ sąsiadujące kafelki są często żądane w grupach i pożądane jest zachowywanie tych kafelków na tych samych blokach dysków, aby zminimalizować liczbę operacji odczytu z dysku.
+Na koniec `quadkeys` zapewnić jednowymiarowy klucz indeksu, który zwykle zachowuje bliskość kafelków w obszarze wykresu. Innymi słowy, dwa kafelki, które mają w pobliżu współrzędne XY zwykle mają `quadkeys`, które są stosunkowo blisko siebie. Jest to ważne w przypadku optymalizowania wydajności bazy danych, ponieważ sąsiadujące kafelki są często żądane w grupach i pożądane jest zachowywanie tych kafelków na tych samych blokach dysków, aby zminimalizować liczbę operacji odczytu z dysku.
 
 ## <a name="tile-math-source-code"></a>Kod źródłowy kafelków matematycznych
 
@@ -422,6 +422,7 @@ namespace AzureMaps
             var sinLatitude = Math.Sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.Log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = MapSize(zoom, tileSize);
             tileX = (int)Math.Floor(Clip(x * mapSize + 0.5, 0, mapSize - 1) / tileSize);
             tileY = (int)Math.Floor(Clip(y * mapSize + 0.5, 0, mapSize - 1) / tileSize);
@@ -802,6 +803,7 @@ module AzureMaps {
             var sinLatitude = Math.sin(latitude * Math.PI / 180);
             var y = 0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI);
 
+            //tileSize needed in calculations as in rare cases the multiplying/rounding/dividing can make the difference of a pixel which can result in a completely different tile. 
             var mapSize = this.MapSize(zoom, tileSize);
 
             return {
@@ -945,7 +947,7 @@ module AzureMaps {
 
 > [!NOTE]
 > Interaktywne kontrolki mapy w zestawie Azure Maps SDK zawierają funkcje pomocnika do konwertowania między położeniami geograficznymi a pikselami ekranu. 
-> - [Zestaw SDK sieci Web: Mapuj obliczenia pikseli i pozycji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Zestaw SDK sieci Web: zamapuj obliczenia pikseli i pozycji](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Następne kroki
 

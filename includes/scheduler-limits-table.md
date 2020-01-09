@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
-ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: eb13d889cb72911e2268b7538a74336befe3320b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67183607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392394"
 ---
 W poniższej tabeli opisano wszystkie główne limity przydziału, limity, wartości domyślne i ograniczenia w usłudze Azure Scheduler.
 
-| Resource | Opis ograniczenia |
+| Zasób | Opis ograniczenia |
 | -------- | ----------------- |
 | **Rozmiar zadania** | Maksymalny rozmiar zadania to 16 000. Jeśli operacja PUT lub PATCH powoduje, że rozmiar zadania przekracza ten limit, zwracany jest kod stanu nieprawidłowego żądania 400. | 
 | **Kolekcje zadań** | Maksymalna liczba kolekcji zadań na subskrypcję platformy Azure to 200 000. | 
-| **Liczba zadań na kolekcję** | Domyślnie maksymalna liczba zadań to pięć zadań w bezpłatnej kolekcji zadań i 50 zadań w standardowej kolekcji zadań. <p>Można zmienić maksymalną liczbę zadań w kolekcji zadań. Wszystkie zadania w kolekcji zadań są ograniczone do wartości ustawionej w kolekcji zadań. Jeśli spróbujesz utworzyć więcej zadań niż maksymalny limit przydziału zadań, żądanie kończy się niepowodzeniem z kodem stanu konfliktu 409. | 
+| **Liczba zadań na kolekcję** | Domyślnie maksymalna liczba zadań to pięć zadań w bezpłatnej kolekcji zadań i 50 zadań w standardowej kolekcji zadań. Można zmienić maksymalną liczbę zadań w kolekcji zadań. Wszystkie zadania w kolekcji zadań są ograniczone do wartości ustawionej w kolekcji zadań. Jeśli spróbujesz utworzyć więcej zadań niż maksymalny limit przydziału zadań, żądanie kończy się niepowodzeniem z kodem stanu konfliktu 409. | 
 | **Czas rozpoczęcia** | Maksymalny "czas rozpoczęcia" wynosi 18 miesięcy. |
 | **Zakres cyklu** | Maksymalny zakres cyklów to 18 miesięcy. | 
 | **Częstotliwość** | Domyślnie maksymalny limit przydziału częstotliwości wynosi godzinę w bezpłatnej kolekcji zadań i jedną minutę w standardowej kolekcji zadań. <p>Maksymalna częstotliwość w kolekcji zadań może być mniejsza niż wartość maksymalna. Wszystkie zadania w kolekcji zadań są ograniczone do wartości ustawionej w kolekcji zadań. Jeśli podjęto próbę utworzenia zadania o wyższej częstotliwości niż maksymalna częstotliwość zbierania zadań, żądanie kończy się niepowodzeniem z kodem stanu konfliktu 409. | 

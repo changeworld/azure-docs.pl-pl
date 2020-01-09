@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428818"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Przegląd: Automatyzowanie wdrażania Azure Logic Apps przy użyciu szablonów Azure Resource Manager
 
-Gdy wszystko jest gotowe do automatyzowania tworzenia i wdrażania aplikacji logiki, można rozszerzyć podstawową definicję przepływu pracy aplikacji logiki do [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). Ten szablon definiuje infrastrukturę, zasoby, parametry i inne informacje o aprowizacji i wdrażaniu aplikacji logiki. Definiując parametry dla wartości, które różnią się w zależności od wdrożenia, znanego również jako *parametryzacja*, można wielokrotnie i spójnie wdrażać aplikacje logiki na podstawie różnych potrzeb związanych z wdrażaniem.
+Gdy wszystko jest gotowe do automatyzowania tworzenia i wdrażania aplikacji logiki, można rozszerzyć podstawową definicję przepływu pracy aplikacji logiki do [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). Ten szablon definiuje infrastrukturę, zasoby, parametry i inne informacje o aprowizacji i wdrażaniu aplikacji logiki. Definiując parametry dla wartości, które różnią się w zależności od wdrożenia, znanego również jako *parametryzacja*, można wielokrotnie i spójnie wdrażać aplikacje logiki na podstawie różnych potrzeb związanych z wdrażaniem.
 
-Na przykład w przypadku wdrażania w środowiskach na potrzeby programowania, testowania i produkcji można używać różnych parametrów połączenia dla każdego środowiska. Można zadeklarować parametry szablonu, które przyjmują różne parametry połączenia, a następnie przechowywać te ciągi w osobnym [pliku parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Dzięki temu można zmienić te wartości bez konieczności aktualizacji i ponownego wdrożenia szablonu. W scenariuszach, w których znajdują się wartości parametrów, które są poufne lub muszą być zabezpieczone, takie jak hasła i wpisy tajne, można przechowywać te wartości w [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) i mieć pliki parametrów pobierają te wartości. Jednak w tych scenariuszach wdrożenie zostanie wdrożone ponownie w celu pobrania bieżących wartości.
+Na przykład w przypadku wdrażania w środowiskach na potrzeby programowania, testowania i produkcji można używać różnych parametrów połączenia dla każdego środowiska. Można zadeklarować parametry szablonu, które przyjmują różne parametry połączenia, a następnie przechowywać te ciągi w osobnym [pliku parametrów](../azure-resource-manager/templates/parameter-files.md). Dzięki temu można zmienić te wartości bez konieczności aktualizacji i ponownego wdrożenia szablonu. W scenariuszach, w których znajdują się wartości parametrów, które są poufne lub muszą być zabezpieczone, takie jak hasła i wpisy tajne, można przechowywać te wartości w [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) i mieć pliki parametrów pobierają te wartości. Jednak w tych scenariuszach wdrożenie zostanie wdrożone ponownie w celu pobrania bieżących wartości.
 
 W tym omówieniu opisano atrybuty w Menedżer zasobów szablon, który zawiera definicję przepływu pracy aplikacji logiki. Zarówno szablon, jak i definicja przepływu pracy używają składni JSON, ale istnieją pewne różnice, ponieważ definicja przepływu pracy jest również zgodna ze [schematem języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md). Na przykład wyrażenia szablonów i wyrażenia definicji przepływu pracy różnią się w [odniesieniu do parametrów](#parameter-references) i wartości, które mogą być akceptowane.
 
@@ -30,7 +30,7 @@ Przykładowa aplikacja logiki w tym temacie używa [wyzwalacza programu Outlook 
 
 Aby uzyskać więcej informacji na temat szablonów Menedżer zasobów, zobacz następujące tematy:
 
-* [Struktura i składnia szablonu Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Struktura i składnia szablonu Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Najlepsze rozwiązania dotyczące szablonów usługi Azure Resource Manager](../azure-resource-manager/template-best-practices.md)
 * [Opracowywanie szablonów usługi Azure Resource Manager pozwalających zachować spójność w chmurze](../azure-resource-manager/templates-cloud-consistency.md)
 
@@ -45,7 +45,7 @@ Informacje o zasobach szablonu specyficzne dla aplikacji logiki, kont integracji
 
 ## <a name="template-structure"></a>Struktura szablonu
 
-Na najwyższym poziomie szablon Menedżer zasobów jest zgodny z tą strukturą, która jest w pełni opisana w temacie [Azure Resource Manager Struktura szablonu i składnia](../azure-resource-manager/resource-group-authoring-templates.md) :
+Na najwyższym poziomie szablon Menedżer zasobów jest zgodny z tą strukturą, która jest w pełni opisana w temacie [Azure Resource Manager Struktura szablonu i składnia](../azure-resource-manager/templates/template-syntax.md) :
 
 ```json
 {
@@ -63,8 +63,8 @@ W przypadku szablonu aplikacji logiki należy korzystać głównie z tych obiekt
 
 | Atrybut | Opis |
 |-----------|-------------|
-| `parameters` | Deklaruje [Parametry szablonu](../azure-resource-manager/resource-group-authoring-templates.md#parameters) do akceptowania wartości, które mają być używane podczas tworzenia i dostosowywania zasobów do wdrożenia na platformie Azure. Na przykład te parametry akceptują wartości w polu Nazwa i lokalizacja aplikacji logiki, połączenia i inne zasoby niezbędne do wdrożenia. Te wartości parametrów można przechowywać w [pliku parametrów](#template-parameter-files), który jest opisany w dalszej części tego tematu. Aby uzyskać ogólne informacje, zobacz [Parametry — struktura i składnia szablonu Menedżer zasobów](../azure-resource-manager/resource-group-authoring-templates.md#parameters). |
-| `resources` | Definiuje [zasoby](../azure-resource-manager/resource-group-authoring-templates.md#resources) , które mają zostać utworzone lub zaktualizowane i wdrożone w grupie zasobów platformy Azure, takie jak aplikacja logiki, połączenia, konta usługi Azure Storage itd. Ogólne informacje znajdują się w temacie [resources-Menedżer zasobów Template Structure i Syntax](../azure-resource-manager/resource-group-authoring-templates.md#resources). |
+| `parameters` | Deklaruje [Parametry szablonu](../azure-resource-manager/templates/template-syntax.md#parameters) do akceptowania wartości, które mają być używane podczas tworzenia i dostosowywania zasobów do wdrożenia na platformie Azure. Na przykład te parametry akceptują wartości w polu Nazwa i lokalizacja aplikacji logiki, połączenia i inne zasoby niezbędne do wdrożenia. Te wartości parametrów można przechowywać w [pliku parametrów](#template-parameter-files), który jest opisany w dalszej części tego tematu. Aby uzyskać ogólne informacje, zobacz [Parametry — struktura i składnia szablonu Menedżer zasobów](../azure-resource-manager/templates/template-syntax.md#parameters). |
+| `resources` | Definiuje [zasoby](../azure-resource-manager/templates/template-syntax.md#resources) , które mają zostać utworzone lub zaktualizowane i wdrożone w grupie zasobów platformy Azure, takie jak aplikacja logiki, połączenia, konta usługi Azure Storage itd. Ogólne informacje znajdują się w temacie [resources-Menedżer zasobów Template Structure i Syntax](../azure-resource-manager/templates/template-syntax.md#resources). |
 ||||
 
 Szablon aplikacji logiki używa tego formatu nazwy pliku:
@@ -78,7 +78,7 @@ Szablon aplikacji logiki używa tego formatu nazwy pliku:
 
 ## <a name="template-parameters"></a>Parametry szablonu
 
-Szablon aplikacji logiki ma wiele obiektów `parameters`, które istnieją na różnych poziomach i wykonują różne funkcje. Na przykład na najwyższego poziomu można zadeklarować [Parametry szablonu](../azure-resource-manager/resource-group-authoring-templates.md#parameters) dla wartości, aby akceptować i używać podczas wdrażania podczas tworzenia i wdrażania zasobów na platformie Azure, na przykład:
+Szablon aplikacji logiki ma wiele obiektów `parameters`, które istnieją na różnych poziomach i wykonują różne funkcje. Na przykład na najwyższego poziomu można zadeklarować [Parametry szablonu](../azure-resource-manager/templates/template-syntax.md#parameters) dla wartości, aby akceptować i używać podczas wdrażania podczas tworzenia i wdrażania zasobów na platformie Azure, na przykład:
 
 * Aplikacja logiki
 * Połączenia używane przez logikę do uzyskiwania dostępu do innych usług i systemów za pomocą [łączników zarządzanych](../connectors/apis-list.md)
@@ -86,7 +86,7 @@ Szablon aplikacji logiki ma wiele obiektów `parameters`, które istnieją na r�
 
   Na przykład jeśli aplikacja logiki korzysta z [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dla scenariuszy Business-to-Business (B2B), obiekt `parameters` najwyższego poziomu szablonu deklaruje parametr, który akceptuje identyfikator zasobu dla tego konta integracji.
 
-Poniżej przedstawiono ogólną strukturę i składnię definicji parametru, która jest w pełni opisana przez [Parametry-Menedżer zasobów strukturę i składnię szablonu](../azure-resource-manager/resource-group-authoring-templates.md#parameters):
+Poniżej przedstawiono ogólną strukturę i składnię definicji parametru, która jest w pełni opisana przez [Parametry-Menedżer zasobów strukturę i składnię szablonu](../azure-resource-manager/templates/template-syntax.md#parameters):
 
 ```json
 "<parameter-name>": {
@@ -147,7 +147,7 @@ Oprócz parametrów, które obsługują wartości, które są wrażliwe lub musz
 
 Aby zabezpieczyć parametry szablonu, zobacz następujące tematy:
 
-* [Zalecenia dotyczące zabezpieczeń dla parametrów szablonu](../azure-resource-manager/template-best-practices.md#parameters)
+* [Zalecenia dotyczące zabezpieczeń dla parametrów szablonu](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Parametry bezpiecznego szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 
@@ -169,7 +169,7 @@ Poniżej przedstawiono niektóre najlepsze rozwiązania dotyczące definiowania 
 
 * Uwzględnij atrybut `defaultValue`, który może określać puste wartości dla wszystkich parametrów, z wyjątkiem wartości, które są poufne lub muszą być zabezpieczone. Zawsze używaj zabezpieczonych parametrów dla nazw użytkowników, haseł i wpisów tajnych. Aby ukryć lub chronić poufne wartości parametrów, postępuj zgodnie ze wskazówkami w tych tematach:
 
-  * [Zalecenia dotyczące zabezpieczeń dla parametrów szablonu](../azure-resource-manager/template-best-practices.md#parameters)
+  * [Zalecenia dotyczące zabezpieczeń dla parametrów szablonu](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
   * [Parametry bezpiecznego szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -177,13 +177,13 @@ Poniżej przedstawiono niektóre najlepsze rozwiązania dotyczące definiowania 
 
 * Aby rozróżnić nazwy parametrów szablonu od nazw parametrów definicji przepływu pracy, można użyć opisowych nazw parametrów szablonu, na przykład: `TemplateFabrikamPassword`
 
-Aby uzyskać więcej najlepszych rozwiązań dotyczących szablonów, zobacz [najlepsze rozwiązania dotyczące parametrów szablonów](../azure-resource-manager/template-best-practices.md#parameters).
+Aby uzyskać więcej najlepszych rozwiązań dotyczących szablonów, zobacz [najlepsze rozwiązania dotyczące parametrów szablonów](../azure-resource-manager/templates/template-best-practices.md#parameters).
 
 <a name="template-parameter-files"></a>
 
 ## <a name="template-parameters-file"></a>Plik parametrów szablonu
 
-Aby podać wartości parametrów szablonu, Zapisz te wartości w [pliku parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). W ten sposób można użyć różnych plików parametrów w zależności od potrzeb wdrożenia. Oto format nazwy pliku do użycia:
+Aby podać wartości parametrów szablonu, Zapisz te wartości w [pliku parametrów](../azure-resource-manager/templates/parameter-files.md). W ten sposób można użyć różnych plików parametrów w zależności od potrzeb wdrożenia. Oto format nazwy pliku do użycia:
 
 * Nazwa pliku szablonu aplikacji logiki: **<*logiki-App-Name*>. JSON**
 * Nazwa pliku parametrów: **<*Logic-App-Name*>. Parameters. JSON**
@@ -267,8 +267,8 @@ Szablon zawiera `resources` obiektu, który jest tablicą zawierającą definicj
 
 Aby uzyskać ogólne informacje na temat zasobów szablonów i ich atrybutów, zobacz następujące tematy:
 
-* [Zasoby — struktura i składnia szablonu Menedżer zasobów](../azure-resource-manager/resource-group-authoring-templates.md#resources)
-* [Najlepsze rozwiązania dotyczące zasobów szablonów](../azure-resource-manager/template-best-practices.md#resources)
+* [Zasoby — struktura i składnia szablonu Menedżer zasobów](../azure-resource-manager/templates/template-syntax.md#resources)
+* [Najlepsze rozwiązania dotyczące zasobów szablonów](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 

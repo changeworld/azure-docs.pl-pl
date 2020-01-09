@@ -1,22 +1,21 @@
 ---
 title: Zarządzanie zestawu SDK platformy .NET dla usługi Azure Stream Analytics
 description: Rozpoczynanie pracy z usługą Stream Analytics Management .NET SDK. Dowiedz się, jak skonfigurować i uruchomić zadania usługi analytics. Utwórz projekt, danych wejściowych, danych wyjściowych i przekształcenia.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73b1392adb2beee9e60d078d865257889b3205f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426257"
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Zarządzanie zestawu SDK platformy .NET: Konfigurowanie i uruchamianie zadań analizy przy użyciu interfejsu API usługi Azure Stream Analytics dla platformy .NET
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Zarządzanie zestawu SDK platformy .NET: Konfigurowanie i uruchamianie zadań analizy przy użyciu interfejsu API usługi Azure Stream Analytics dla programu .NET
 Dowiedz się, jak skonfigurować i uruchomić zadania analizy przy użyciu interfejsu API analizy Stream dla platformy .NET przy użyciu zestawu SDK platformy .NET zarządzania. Konfigurowanie projektu i tworzenia źródeł wejściowych i wyjściowych, transformacji i rozpoczęcia zatrzymanie zadań. Dla zadań analizy przesyłanie strumieniowe danych z magazynu obiektów Blob lub Centrum zdarzeń.
 
 Zobacz [zarządzania dokumentacja Stream Analytics interfejsu API dla platformy .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
@@ -27,11 +26,11 @@ Usługa Azure Stream Analytics jest w pełni zarządzaną usługę, zapewniając
 > Zaktualizowaliśmy przykładowego kodu w tym artykule przy użyciu zestawu .NET SDK usługi Azure Stream Analytics Management v2.x wersji. Przykładowy kod za pomocą wersji zestawu SDK lagecy (1.x) używa, zobacz [Użyj v1.x zestawu .NET SDK zarządzania dla usługi Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed przystąpieniem do wykonywania w tym artykule, musisz mieć następujące wymagania:
+Przed rozpoczęciem pracy z tym artykułem należy spełnić następujące wymagania:
 
 * Zainstaluj program Visual Studio 2019 lub 2015.
 * Pobierz i zainstaluj [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Utwórz grupę zasobów platformy Azure w ramach subskrypcji. Poniższy przykład jest przykładowy skrypt programu Azure PowerShell. Uzyskać programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview);  
+* Utwórz grupę zasobów platformy Azure w ramach subskrypcji. Poniższy przykład to przykładowy skrypt Azure PowerShell. Uzyskać programu Azure PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview);  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +49,7 @@ Przed przystąpieniem do wykonywania w tym artykule, musisz mieć następujące 
 * Konfigurowanie źródła danych wejściowych i celem danych wyjściowych dla zadania nawiązać połączenie.
 
 ## <a name="set-up-a-project"></a>Konfigurowanie projektu
-Aby utworzyć zadanie usługi analytics, należy użyć interfejsu API analizy Stream dla platformy .NET, najpierw skonfiguruj projekt.
+Aby utworzyć zadanie analizy, użyj interfejsu API Stream Analytics dla platformy .NET, a następnie skonfiguruj projekt.
 
 1. Utwórz aplikację konsolową programu Visual Studio C# .NET.
 2. W konsoli Menedżera pakietów uruchom następujące polecenia, aby zainstalować pakiety NuGet. Pierwsza z nich jest usługi Azure Stream Analytics Management .NET SDK. Drugi służy do uwierzytelniania klienta usługi Azure.
@@ -211,7 +210,7 @@ Poniższy kod tworzy źródła danych wejściowych usługi Stream Analytics przy
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Utwórz obiekt docelowy danych wyjściowych usługi Stream Analytics
-Tworzenie obiektu docelowego dane wyjściowe jest podobne do tworzenia źródła danych wejściowych usługi Stream Analytics. Takie jak źródła danych wejściowych do określonego zadania powiązane są elementy docelowe danych wyjściowych. Aby użyć tej samej wartości docelowej danych wyjściowych dla różnych zadań, należy ponownie wywołaj metodę i określić innej nazwy zadania.
+Tworzenie elementu docelowego danych wyjściowych jest podobne do tworzenia źródła danych wejściowych Stream Analytics. Takie jak źródła danych wejściowych do określonego zadania powiązane są elementy docelowe danych wyjściowych. Aby użyć tej samej wartości docelowej danych wyjściowych dla różnych zadań, należy ponownie wywołaj metodę i określić innej nazwy zadania.
 
 Poniższy kod tworzy obiekt docelowy danych wyjściowych (usługa Azure SQL database). Można dostosować typ danych celem danych wyjściowych i/lub typu serializacji.
 
@@ -285,10 +284,10 @@ Uruchamianie zadania usługi Stream Analytics można zatrzymać, wywołując **z
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Znasz już podstawowe informacje dotyczące tworzenia i uruchamiać zadania analizy przy użyciu zestawu .NET SDK. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447872"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: Wyodrębnij powiązane z kontekstem dane z wypowiedź
 
 W tym samouczku znajdziesz powiązane elementy danych na podstawie kontekstu. Na przykład lokalizację początkową i docelową dla przeniesienia z jednego miasta do innego. Potrzebne mogą być oba elementy danych. Są one powiązane ze sobą.
 
 Roli można używać z dowolnym prekompilowanym lub niestandardowym typem jednostki i używanym w obu przykładach wyrażenia długości i wzorców.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -51,17 +49,22 @@ Rola powinna być używana, gdy dane jednostkowe mają zostać wyodrębnione:
 
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. Zaloguj się do portalu LUIS w wersji zapoznawczej przy użyciu adresu URL [https://preview.luis.ai](https://preview.luis.ai).
+
+1. Wybierz pozycję **Utwórz nową aplikację**, wprowadź nazwę `HumanResources` i Zachowaj domyślną kulturę, w **języku angielskim**. Opis pozostaw pusty.
+
+1. Wybierz pozycję **Done** (Gotowe).
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Tworzenie intencji przeniesienia pracowników między miastami
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Wybierz pozycję **Create new intent** (Utwórz nową intencję).
+1. Wybierz pozycję**Create new intent** (Utwórz nową intencję).
 
 1. Wprowadź ciąg `MoveEmployeeToCity` w wyświetlonym oknie dialogowym, a następnie wybierz pozycję **Done** (Gotowe).
 
-    ![Zrzut ekranu z wyskakującym oknem dialogowym Create new intent (Tworzenie nowej intencji)](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu przedstawiający okno dialogowe Tworzenie nowego celu z](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. Dodaj przykładowe wypowiedzi do intencji.
 
@@ -77,7 +80,8 @@ Rola powinna być używana, gdy dane jednostkowe mają zostać wyodrębnione:
     |Transfer Steve Standish from San Diego toward Bellevue (Transferuj Steve’a Standisha z San Diego do Bellevue) |
     |lift Tanner Thompson from Kansas city and shift to Chicago (Tannera Thompsona z Kansas City przenieś do Chicago)|
 
-    [![Zrzut ekranu usługi LUIS z nowymi wypowiedziami w intencji MoveEmployee](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu LUIS z nowymi wyrażenia długości w celu MoveEmployee](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Dodaj wstępnie utworzony obiekt geographyV2
 
@@ -87,16 +91,30 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 
 1. Wybierz pozycję **Dodaj prekompilowaną jednostkę**, a następnie wybierz pozycję `geo` na pasku wyszukiwania, aby przefiltrować wstępnie skompilowane jednostki.
 
-    ![Dodaj wstępnie utworzoną jednostkę geographyV2 do aplikacji](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![dodać wstępnie skompilowanej jednostki geographyV2 do aplikacji](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. Zaznacz pole wyboru i wybierz pozycję **gotowe**.
 1. Na liście **jednostki** wybierz **geographyV2** , aby otworzyć nową jednostkę.
 1. Dodaj dwie role, `Origin`i `Destination`.
 
-    ![Dodaj role do wstępnie skompilowanej jednostki](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Wybierz pozycję **intencje** z nawigacji po lewej stronie, a następnie wybierz opcję **MoveEmployeeToCity** . Zwróć uwagę na to, że nazwy miast są oznaczone wstępnie utworzoną jednostką **geographyV2**.
-1. W pierwszej wypowiedź listy wybierz lokalizację pochodzenia. Zostanie wyświetlone menu rozwijane. Na liście wybierz pozycję **geographyV2** , a następnie postępuj zgodnie z menu, aby wybrać **Źródło**.
-1. Użyj metody z poprzedniego kroku, aby oznaczyć wszystkie role lokalizacji we wszystkich wyrażenia długości.
+    > [!div class="mx-imgBorder"]
+    > ![dodać role do wstępnie skompilowanej jednostki](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+1. Wybierz pozycję **intencje** z nawigacji po lewej stronie, a następnie wybierz opcję **MoveEmployeeToCity** . Zwróć uwagę na to, że nazwy miast są oznaczone wstępnie utworzoną jednostką **geographyV2**.
+1. Na pasku narzędzi kontekstu wybierz **paletę Entity**.
+
+    > [!div class="mx-imgBorder"]
+    > ![Wybierz paletę jednostki z paska narzędzi zawartości](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Wybierz wstępnie utworzoną jednostkę, **geographyV2**, a następnie wybierz **Inspektor Entity**.
+1. W **Inspektorze jednostki**wybierz jedną rolę, **miejsce docelowe**. Spowoduje to zmianę kursora myszy. Użyj kursora, aby oznaczyć tekst we wszystkich wyrażenia długości, które są lokalizacją docelową.
+
+    > [!div class="mx-imgBorder"]
+    > ![wybierz rolę w palecie jednostek](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. Wróć do **inspektora jednostek**, przejdź do roli do **pochodzenia**. Użyj kursora, aby oznaczyć tekst we wszystkich wyrażenia długości, które są lokalizacją pierwotną.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Dodawanie przykładowych wypowiedzi do intencji None
 

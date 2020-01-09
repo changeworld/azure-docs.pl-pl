@@ -1,33 +1,33 @@
 ---
 title: Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell
 titleSuffix: Azure Storage
-description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego (wersja zapoznawcza) delegowania użytkowników z poświadczeniami Azure Active Directory przy użyciu programu
+description: Dowiedz się, jak utworzyć sygnaturę dostępu współdzielonego z poświadczeniami Azure Active Directory przy użyciu programu PowerShell.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371783"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell (wersja zapoznawcza)
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB przy użyciu programu PowerShell
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-W tym artykule pokazano, jak używać poświadczeń usługi Azure Active Directory (Azure AD) do tworzenia sygnatury dostępu współdzielonego delegowania użytkowników dla kontenera lub obiektu BLOB z Azure PowerShell (wersja zapoznawcza).
+W tym artykule pokazano, jak używać poświadczeń usługi Azure Active Directory (Azure AD) do tworzenia sygnatury dostępu współdzielonego delegowania użytkowników dla kontenera lub obiektu BLOB z Azure PowerShell.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
-## <a name="install-the-preview-module"></a>Instalowanie modułu podglądu
+## <a name="install-the-powershell-module"></a>Instalowanie modułu programu PowerShell
 
-Aby użyć programu PowerShell do utworzenia sygnatury dostępu współdzielonego użytkownika, należy najpierw zainstalować moduł AZ. Storage 1.3.1-Preview. Wykonaj następujące kroki, aby zainstalować moduł:
+W celu utworzenia sygnatury dostępu współdzielonego użytkownika w programie PowerShell należy zainstalować w wersji 1.10.0 lub nowszej modułu AZ. Storage. Wykonaj następujące kroki, aby zainstalować najnowszą wersję modułu:
 
 1. Odinstaluj wszystkie poprzednie instalacje Azure PowerShell:
 
@@ -48,23 +48,18 @@ Aby użyć programu PowerShell do utworzenia sygnatury dostępu współdzieloneg
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Zainstaluj moduł Azure Storage w wersji zapoznawczej obsługujący sygnaturę dostępu współdzielonego delegowania użytkowników:
+1. Upewnij się, że zainstalowano Azure PowerShell w wersji 3.2.0 lub nowszej. Uruchom następujące polecenie, aby zainstalować najnowszą wersję modułu programu PowerShell usługi Azure Storage:
 
     ```powershell
-    Install-Module Az.Storage `
-        –Repository PSGallery `
-        -RequiredVersion 1.3.1-preview `
-        –AllowPrerelease `
-        –AllowClobber `
-        –Force
+    Install-Module -Name Az.Storage -Repository PSGallery -Force
     ```
 
 1. Zamknij i ponownie otwórz okno programu PowerShell.
 
-Ponieważ program PowerShell domyślnie ładuje najnowszy moduł AZ. Storage, może być konieczne jawne załadowanie modułu 1.3.1-Preview podczas uruchamiania konsoli programu. Aby jawnie załadować moduł w wersji zapoznawczej, uruchom polecenie [Import-Module](/powershell/module/microsoft.powershell.core/import-module) :
+Aby sprawdzić, która wersja modułu AZ. Storage jest zainstalowana, uruchom następujące polecenie:
 
 ```powershell
-Import-Module Az.Storage -RequiredVersion 1.3.1
+Get-Module -ListAvailable -Name Az.Storage -Refresh
 ```
 
 Aby uzyskać więcej informacji o instalowaniu Azure PowerShell, zobacz [Install Azure PowerShell with PowerShellGet](/powershell/azure/install-az-ps).

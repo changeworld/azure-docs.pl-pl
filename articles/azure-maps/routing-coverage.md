@@ -1,6 +1,6 @@
 ---
-title: Pokrycie wyznaczaniem tras w usługi Azure Maps | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o pokrycie wyznaczaniem tras w usługi Azure Maps
+title: Pokrycie routingu w Azure Maps | Microsoft Docs
+description: Informacje na temat pokrycia routingu w Azure Maps
 author: jingjing-z
 ms.author: jinzh
 ms.date: 04/04/2019
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 0991a0df8d34ddbcebf3d4097c0219b47793120b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ca837d871dc439cadd1ca5b69bf9c7a5d12fddc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408363"
 ---
-# <a name="azure-maps-routing-coverage"></a>Usługi Azure Maps pokrycie routingiem
+# <a name="azure-maps-routing-coverage"></a>Pokrycie routingu Azure Maps
 
-Ten artykuł zawiera informacje o pokryciu dla usługi Azure Maps routingu. Podczas wyszukiwania optymalną trasę z lokalizacji, A do B usługi Azure Maps Podaj czas podróży wysokiej dokładne znajduje się w instrukcji dotyczących informacji i trasy podróży zaktualizowane na żywo. Trasy uwzględni konta dodatkowe wyszukiwane terminy, takie jak bieżącego ruchu, typu i warunki, aby uniknąć. Możliwość optymalizacji trasy zależy od regionu Azure Maps, ma różne poziomy informacji i dokładność w różnych regionach. Poniższa tabela zawiera listę regionów i jakiego rodzaju informacje możesz zażądać dla nich.
+Ten artykuł zawiera informacje o pokryciu dotyczące Azure Maps routingu. Podczas wyszukiwania optymalnej trasy z lokalizacji A do B Azure Maps mogą zapewnić wysoce dokładne czasy podróży, zaktualizowane informacje o podróży i instrukcje trasy. Trasa będzie uwzględniać dodatkowe terminy wyszukiwania, takie jak bieżący ruch, typ pojazdu i warunki, aby uniknąć. Możliwość optymalizacji trasy zależy od regionu, w którym Azure Maps ma różne poziomy informacji i dokładności dla różnych regionów. Poniższa tabela zawiera listę regionów i rodzaj informacji, z których można żądać ich.
  
-Zapoznaj się z objęcia [ **Geokodowania**](geocoding-coverage.md).       
-Zapoznaj się z objęcia [ **ruchu**](traffic-coverage.md).  
-Zapoznaj się z objęcia [ **renderowania**](render-coverage.md).
+Zapoznaj się z pokryciem [**geokodowania**](geocoding-coverage.md).       
+Zapoznaj się z pokryciem [**ruchu**](traffic-coverage.md).  
+Zapoznaj się z pokryciem [**renderowania**](render-coverage.md).
 <br>  
 **Legenda**
 
 | Symbol             | Znaczenie                                |
 |--------------------|----------------------------------------|
-| ✓                  | Kraj/region wyposażone w szczegółowe dane.   |
-| Ø                  | Kraj/region wyposażone w danych. |
-| Brak kraju | Nie podano danych Kraj/region.          |
+| ✓                  | Kraj/region dostarczany ze szczegółowymi danymi.   |
+| Ø                  | Kraj/region udostępniający uproszczone dane. |
+| Brak kraju | Nie podano danych kraju/regionu.          |
 
 <br>  
 
-Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
+Poniższa tabela zawiera informacje o pokryciu dotyczące Azure Maps routingu.
 <br>  
 
 
 ## <a name="africa"></a>Afryka
 
-| Kraj/region                 | Routing         | Routing ruchu | Truck Routing |
+| Kraj/region                 | Wyznaczanie tras         | Routing z ruchem | Routing ciężarówki |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
-| Algeria                        |        ✓       |                       |             |
+| Algieria                        |        ✓       |                       |             |
 | Angola                         |        ✓       |                       |             |
 | Benin                          |        ✓       |                       |             |
 | Botswana                       |        ✓       |                       |             |
@@ -49,19 +49,19 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Burundi                        |        ✓       |                       |             |
 | Kamerun                       |        ✓       |                       |             |
 | Wyspy Zielonego Przylądka                     |        ✓       |                       |             |
-| Kongo Brazzaville Kinszasa    |        ✓       |                       |             |
-| Kongo - Kinszasa                |        ✓       |                       |             |
+| Kongo — Brazzaville Kinszasa    |        ✓       |                       |             |
+| Kongo — Kinszasa                |        ✓       |                       |             |
 | Wybrzeże Kości Słoniowej (Côte d’Ivoire)                  |        ✓       |                       |             |
 | Egipt                          |        ✓       |         ✓            |             |
 | Gabon                          |        ✓       |                       |             |
 | Gambia                         |        ✓       |                       |             |
 | Ghana                          |        ✓       |                       |             |
-| Kenya                          |        ✓       |         ✓            |             |
+| Kenia                          |        ✓       |         ✓            |             |
 | Lesotho                        |        Ø        |         ✓            |             |
 | Malawi                         |        ✓       |                       |              |
 | Mali                           |        ✓       |                       |             |
 | Mauretania                     |        ✓       |                       |             |
-| Mauritius, Majotta i Reunion |        ✓      |                       |             |
+| Mauritius, Majotta i Réunion |        ✓      |                       |             |
 | Maroko                        |        ✓       |                       |             |
 | Mozambik                     |        ✓       |         ✓            |             |
 | Namibia                        |        ✓       |                       |             |
@@ -82,7 +82,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 
 ## <a name="americas"></a>Ameryki
 
-| Kraj/region                 | Routing         | Routing ruchu | Truck Routing |
+| Kraj/region                 | Wyznaczanie tras         | Routing z ruchem | Routing ciężarówki |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Argentyna                      |        ✓       |         ✓            |     ✓       |
 | Antigua i Barbuda            |        ✓       |                      |             |
@@ -96,7 +96,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Kostaryka                     |        ✓       |                      |             |
 | Kuba                           |        ✓       |                      |             |
 | Dominika                       |        ✓       |                      |             |
-| Republika Dominikańska             |        ✓       |                      |             |
+| Dominikana             |        ✓       |                      |             |
 | Ekwador                        |        ✓       |                      |             |
 | Salwador                    |        ✓       |                      |             |
 | Gujana Francuska                  |        ✓       |                      |             |
@@ -105,7 +105,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Gujana                         |        ✓       |                      |             |
 | Haiti                          |        ✓       |                      |             |
 | Honduras                       |        ✓       |                      |             |
-| Jamaica                        |        ✓       |                      |             |
+| Jamajka                        |        ✓       |                      |             |
 | Meksyk                         |        ✓       |         ✓            |     ✓      | 
 | Nikaragua                      |        ✓       |                      |             |
 | Panama                         |        ✓       |                      |             |
@@ -113,21 +113,21 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Peru                           |        ✓       |         ✓            |             |
 | Saint Kitts i Nevis            |        ✓       |                      |             |
 | Saint Lucia                      |        ✓       |                      |             |
-| Saint Vincent i Grenadyny       |        ✓       |                      |             |
+| Saint Vincent & Grenadyny       |        ✓       |                      |             |
 | Surinam                       |        ✓       |                      |             |
-| Trynidad i Tobago              |        ✓       |                      |             |
+| Trinidad & Tobago              |        ✓       |                      |             |
 | Stany Zjednoczone                  |        ✓       |         ✓            |     ✓      | 
 | \+ Samoa Amerykańskie                |        ✓       |                      |             |
 | \+ Mariany Północne      |        ✓       |                      |             |
 | +Puerto Rico                   |        ✓       |                      |             |
-| \+ USA Wyspy Dziewicze           |        ✓       |                      |             |
+| \+ Wyspy Dziewicze Stanów Zjednoczonych           |        ✓       |                      |             |
 | Urugwaj                        |        ✓       |         ✓            |     ✓      | 
 | Wenezuela                      |        ✓       |                      |             |
 
 
 ## <a name="asia-pacific"></a>Azja i Pacyfik
 
-| Kraj/region                 | Routing         | Routing ruchu | Truck Routing |
+| Kraj/region                 | Wyznaczanie tras         | Routing z ruchem | Routing ciężarówki |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Australia                      |        ✓       |         ✓            |     ✓       |
 | \+ Wyspa Bożego Narodzenia              |        ✓       |                      |             |
@@ -138,7 +138,8 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | SRA Hongkong                  |        ✓       |         ✓            |             |
 | Indie                          |        ✓       |         ✓            |             |
 | Indonezja                      |        ✓       |         ✓            |             |
-| Korea                          |        Ø       |                      |             |
+| Kazachstan                |        ✓       |                     |             |
+| Korea Południowa                          |        Ø       |                      |             |
 | Laos                           |        ✓       |                      |             |
 | SRA Makau                      |        ✓       |         ✓            |             |
 | Malezja                       |        ✓       |         ✓            |             |
@@ -148,12 +149,12 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Singapur                      |        ✓       |         ✓            |             |
 | Tajwan                         |        ✓       |         ✓            |             |
 | Tajlandia                       |        ✓       |         ✓            |             |
-| Vietnam                        |        ✓       |         ✓            |             |
+| Wietnam                        |        ✓       |         ✓            |             |
 
 
 ## <a name="europe"></a>Europa
 
-| Kraj/region                 | Routing         | Routing ruchu | Truck Routing |
+| Kraj/region                 | Wyznaczanie tras         | Routing z ruchem | Routing ciężarówki |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Albania                        |        ✓       |                      |             |
 | Andora                        |        ✓       |         ✓            |             |
@@ -165,17 +166,17 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Bułgaria                       |        ✓       |         ✓            |     ✓      | 
 | Chorwacja                        |        ✓       |         ✓            |     ✓      |
 | Cypr                         |        ✓       |                      |             |
-| Czechy                 |        ✓       |         ✓            |     ✓      |
+| Republika Czeska                 |        ✓       |         ✓            |     ✓      |
 | Dania                        |        ✓       |         ✓            |     ✓      |
-| +Faroe Islands                 |        ✓       |                      |             |
+| \+ Wyspy Owcze                 |        ✓       |                      |             |
 | Estonia                        |        ✓       |         ✓            |     ✓      |
 | Finlandia                        |        ✓       |         ✓            |     ✓      |
 | Francja                         |        ✓       |         ✓            |     ✓      | 
-| +Guadeloupe                    |        ✓       |                      |             |
+| \+ Gwadelupa                    |        ✓       |                      |             |
 | \+ Martynika                    |        ✓       |                      |             |
-| \+ Saint Barthélemy                |        ✓       |                      |             |
-| \+ Saint Martin                    |        ✓       |                      |             |
-| +St. Pierre & Miquelon         |        ✓       |                      |             |
+| \+ St. Barthélemy                |        ✓       |                      |             |
+| \+ St. Martin                    |        ✓       |                      |             |
+| \+ St. Pierre & Miquelon         |        ✓       |                      |             |
 | Gruzja                        |        ✓       |                      |             |
 | Niemcy                        |        ✓       |         ✓            |     ✓      | 
 | Grecja                         |        ✓       |         ✓            |     ✓      |  
@@ -192,11 +193,11 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Macedonia Północna                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Mołdawia                        |        ✓       |                      |             |
-| Monaco                         |        ✓       |         ✓            |             |
+| Monako                         |        ✓       |         ✓            |             |
 | Czarnogóra                     |        ✓       |                      |     ✓      | 
 | Holandia                    |        ✓       |         ✓            |     ✓      | 
 | +Aruba                         |        ✓       |                      |             | 
-| \+ Holandia Karaiby         |        ✓       |                      |             |
+| \+ Karaiby Holandia         |        ✓       |                      |             |
 | +Curaçao                       |        ✓       |                      |             |
 | \+ Sint Maarten                  |        ✓       |                      |             |
 | Norwegia                         |        ✓       |         ✓            |     ✓      | 
@@ -228,7 +229,7 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 
 ## <a name="middle-east"></a>Bliski Wschód
 
-| Kraj/region                 | Routing         | Routing ruchu | Truck Routing |
+| Kraj/region                 | Wyznaczanie tras         | Routing z ruchem | Routing ciężarówki |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Bahrajn                        |        ✓       |         ✓            |             |
 | Irak                           |        ✓       |                      |             |
@@ -243,6 +244,6 @@ Poniższa tabela zawiera informacje o pokryciu dla usługi Azure Maps routingu.
 | Jemen                          |        ✓       |                      |             |
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi Azure Maps routingu, zobacz [Routing](https://docs.microsoft.com/rest/api/maps/route) odwoływać się do strony.
+Aby uzyskać więcej informacji na temat routingu Azure Maps, zobacz strony referencyjne [routingu](https://docs.microsoft.com/rest/api/maps/route) .

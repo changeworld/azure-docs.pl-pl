@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: faeb4df915cc5c56e21d1857fe75a956d419c46e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397279"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Tworzenie klasycznego alertu metryki za pomocą szablonu usługi Resource Manager
-W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) w celu skonfigurowania alertów dotyczących metryk platformy Azure. Pozwala to na automatyczne Konfigurowanie alertów dotyczących zasobów podczas ich tworzenia w celu zapewnienia poprawnego monitorowania wszystkich zasobów.
+W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) w celu skonfigurowania alertów dotyczących metryk platformy Azure. Pozwala to na automatyczne Konfigurowanie alertów dotyczących zasobów podczas ich tworzenia w celu zapewnienia poprawnego monitorowania wszystkich zasobów.
 
 > [!NOTE]
 > 
@@ -182,7 +182,7 @@ Aby utworzyć alert przy użyciu szablonu Menedżer zasobów, utworzysz zasób t
 Informacje o schemacie i właściwościach reguły alertu [są dostępne tutaj](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Menedżer zasobów szablon dla zasobu z alertem dotyczącym klasycznej metryki
-Alert dla szablonu Menedżer zasobów najczęściej jest przydatny podczas tworzenia alertu podczas tworzenia zasobu. Można na przykład upewnić się, że reguła "procesor% > 80" jest skonfigurowana przy każdym wdrożeniu maszyny wirtualnej. W tym celu należy dodać regułę alertu jako zasób w tablicy zasobów dla szablonu maszyny wirtualnej i dodać zależność przy użyciu `dependsOn` właściwości do identyfikatora zasobu maszyny wirtualnej. Oto pełny przykład tworzenia maszyny wirtualnej z systemem Windows i dodawania alertu, który powiadamia administratorów subskrypcji, gdy użycie procesora spadnie powyżej 80%.
+Alert dla szablonu Menedżer zasobów najczęściej jest przydatny podczas tworzenia alertu podczas tworzenia zasobu. Można na przykład upewnić się, że reguła "procesor% > 80" jest skonfigurowana przy każdym wdrożeniu maszyny wirtualnej. W tym celu należy dodać regułę alertu jako zasób w tablicy zasobów dla szablonu maszyny wirtualnej i dodać zależność przy użyciu właściwości `dependsOn` do identyfikatora zasobu maszyny wirtualnej. Oto pełny przykład tworzenia maszyny wirtualnej z systemem Windows i dodawania alertu, który powiadamia administratorów subskrypcji, gdy użycie procesora spadnie powyżej 80%.
 
 ```json
 {

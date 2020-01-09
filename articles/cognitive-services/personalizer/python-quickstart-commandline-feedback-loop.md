@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Biblioteka kliencka programu Personalizacja dla języka Python | Microsoft Docs'
+title: 'Szybki Start: Biblioteka kliencka programu Personalizacja dla języka Python'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką klienta narzędzia Personalizacja dla języka Python za pomocą pętli szkoleniowej.
+description: W tym przewodniku szybki start pokazano, jak rozpocząć pracę z biblioteką klienta narzędzia Personalizacja dla języka Python za pomocą pętli szkoleniowej.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378946"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Szybki Start: Biblioteka kliencka programu Personalizacja dla języka Python
 

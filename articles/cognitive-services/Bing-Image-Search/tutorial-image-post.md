@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Wyodrębnienie szczegółów obrazu za pomocą interfejsu API C# REST i-wyszukiwanie obrazów Bing'
 titleSuffix: Azure Cognitive Services
-description: Przy użyciu tego artykułu możesz utworzyć aplikację w języku C#, która wyodrębnia szczegóły obrazu za pomocą interfejsu API wyszukiwania obrazów Bing.
+description: Skorzystaj z tego samouczka, C# aby utworzyć aplikację, która wyodrębnia szczegóły obrazu przy użyciu interfejs API wyszukiwania obrazów Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930685"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383879"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Samouczek: wyodrębnianie szczegółów obrazu przy użyciu interfejs API wyszukiwania obrazów Bing i języka C#
 
@@ -98,7 +98,7 @@ Odpowiedź JSON można następnie wydrukować w konsoli.
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>Używanie w żądaniu tokenu szczegółowych informacji obrazu
 
-Aby użyć tokenu `ImageInsightsToken` zwróconego z wynikami żądania `POST`, możesz dodać go do żądania `GET`. Na przykład:
+Aby użyć tokenu `ImageInsightsToken` zwróconego z wynikami żądania `POST`, możesz dodać go do żądania `GET`. Przykład:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2

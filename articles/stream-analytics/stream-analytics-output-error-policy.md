@@ -1,20 +1,19 @@
 ---
 title: Dane wyjściowe polityk błędów w usłudze Azure Stream Analytics
 description: Więcej informacji na temat obsługi zasady dostępne w usłudze Azure Stream Analytics błędów danych wyjściowych.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b31530966d2c5ca9a3f82f3e74ba349e66053a83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431622"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Zasady dotyczące błędów danych wyjściowych usługi Azure Stream Analytics
 W tym artykule opisano dane wyjściowe dane obsługi błędów, zasady, które można skonfigurować w usłudze Azure Stream Analytics.
@@ -28,11 +27,11 @@ Obsługa błędów danych dane wyjściowe, które zasady mają zastosowanie tylk
 Gdy wystąpi błąd, Azure Stream Analytics ponownych prób, zapisywania zdarzenia, dopóki nie zakończy się pomyślnie zapisu. Brak limitu czasu dla prób. Przetwarzania zdarzeń, która ponawia próbę po pewnym czasie wszystkich kolejnych zdarzeń są blokowane. Ta opcja jest błąd danych wyjściowych domyślną obsługę zasad.
 
 ## <a name="drop"></a>Porzuć
-Usługa Azure Stream Analytics będzie się zmniejszać dowolnego zdarzenia w danych wyjściowych, które powoduje błąd konwersji danych. Nie można odzyskać porzuconych zdarzeń do ponownego przetworzenia później.
+Usługa Azure Stream Analytics porzuci wszelkie zdarzenia wyjściowe powodujące błędy konwersji danych. Porzuconych zdarzeń nie można odzyskać na potrzeby ponownego przetwarzania później.
 
 
 Wszystkie błędy przejściowe (na przykład błędy sieci) zostaną ponowione niezależnie od konfiguracji zasad obsługi błędów, dane wyjściowe.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Przewodnik rozwiązywania problemów dla usługi Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)

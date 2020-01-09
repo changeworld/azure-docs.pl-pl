@@ -1,75 +1,74 @@
 ---
 title: Koncepcje odzyskiwania punktów kontrolnych i powtarzania w Azure Stream Analytics
-description: W tym artykule opisano pojęcia dotyczące odzyskiwania punktów kontrolnych i powtarzania zadań w Azure Stream Analytics.
-services: stream-analytics
+description: W tym artykule opisano punkt kontrolny i powtarzanie koncepcjach odzyskiwania zadania w usłudze Azure Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 26d8d8248c9dcc57edaaa4a90f87071ee61a70ce
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426402"
 ---
-# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Pojęcia dotyczące punktów kontrolnych i powtarzania w zadaniach Azure Stream Analytics
-W tym artykule opisano wewnętrzne punkty kontrolne i koncepcje powtarzania w programie Azure Stream Analytics oraz wpływ na odzyskiwanie zadań. Przy każdym uruchomieniu zadania Stream Analytics informacje o stanie są obsługiwane wewnętrznie. Informacje o stanie są zapisywane okresowo w punkcie kontrolnym. W niektórych scenariuszach informacje o punkcie kontrolnym są używane do odzyskiwania zadań, jeśli wystąpi błąd lub uaktualnienie zadania. W innych sytuacjach punkt kontrolny nie może być używany do odzyskiwania, a odtwarzanie jest konieczne.
+# <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Punkt kontrolny i powtarzanie pojęcia dotyczące zadań usługi Azure Stream Analytics
+W tym artykule opisano wewnętrzny punkt kontrolny i powtarzanie pojęcia w usłudze Azure Stream Analytics oraz wpływ, że te na zadania odzyskiwania. Każdym uruchomieniu zadania usługi Stream Analytics, informacje o stanie jest zachowywana wewnętrznie. Czy informacje o stanie zostanie zapisany w punkt kontrolny okresowo. W niektórych scenariuszach informacje punktu kontrolnego są używane dla zadania odzyskiwania, jeśli wystąpi błąd zadania lub uaktualnienie. W innych okolicznościach punktu kontrolnego nie może zostać użyty do odzyskiwania, a powtarzania jest konieczne.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Logika zapytań stanowych w elementach czasowych
-Jedną z unikatowych możliwości Azure Stream Analytics zadania jest wykonywanie przetwarzania stanowego, takiego jak agregacje okienkowe, sprzężenia czasowe i funkcje analityczne. Każdy z tych operatorów utrzymuje informacje o stanie, gdy zadanie jest uruchomione. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Logiki zapytania stanowych w elementach danych czasowych
+Jednym z unikatowych możliwości zadania usługi Azure Stream Analytics jest wykonanie stanowych przetwarzania, takich jak okresowymi danych czasowych sprzężeń i funkcji analitycznych danych czasowych. Każda z tych operatorów przechowuje informacje o stanie, gdy zadanie zostanie uruchomione. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 
 
-Koncepcja okna danych czasowych pojawia się w kilku Stream Analytics elementach zapytania:
-1. Zagregowane okna (Grupuj według wirowania, przeskoku i ruchomych okien)
+Koncepcja okno danych czasowych pojawia się w kilku elementów zapytań usługi Stream Analytics:
+1. Okna wartości zagregowanych (grupy przez z wirowania, przeskokiem i przesuwanie systemu windows)
 
-2. Sprzężenia czasowe (dołączanie za pomocą DATEDIFF)
+2. Sprzężenia danych czasowych (POŁĄCZ za pomocą funkcji DATEDIFF)
 
-3. Tymczasowe funkcje analityczne (isfirst, LAST i LAG z LIMITem czasu trwania)
+3. Funkcje analityczne danych czasowych (ISFIRST, LAST i OPÓŹNIENIEM przy użyciu LIMIT DURATION)
 
 
-## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Odzyskiwanie zadania z awarii węzła, w tym uaktualnienia systemu operacyjnego
-Za każdym razem, gdy zadanie Stream Analytics zostanie uruchomione, wewnętrznie jest skalowane do pracy w wielu węzłach procesu roboczego. Każdy węzeł procesu roboczego jest wyświetlany jako punkt kontrolny co kilka minut, co ułatwia odzyskiwanie systemu w przypadku wystąpienia awarii.
+## <a name="job-recovery-from-node-failure-including-os-upgrade"></a>Zadanie odzyskiwania po awarii węzła, w tym uaktualnienia systemu operacyjnego
+Każdym uruchomieniu zadania usługi Stream Analytics, wewnętrznie go jest skalowana w poziomie do pracy w wielu węzłach procesu roboczego. Stan każdego węzła procesu roboczego jest utworzono punkt kontrolny co kilka minut, co pomaga systemu, odzyskiwania, jeśli wystąpi błąd.
 
-Czasami dany węzeł procesu roboczego może zakończyć się niepowodzeniem lub może wystąpić uaktualnienie systemu operacyjnego dla tego węzła procesu roboczego. Aby automatycznie odzyskiwać, Stream Analytics uzyskuje nowy węzeł w dobrej kondycji, a poprzedni stan węzła procesu roboczego zostanie przywrócony z najnowszego dostępnego punktu kontrolnego. Aby wznowić pracę, konieczne jest niewielka ilość powtórzeń w celu przywrócenia stanu od momentu utworzenia punktu kontrolnego. Zwykle przerwy przywracania to zaledwie kilka minut. Po wybraniu wystarczającej liczby jednostek przesyłania strumieniowego zadanie powtarzania powinno być wykonywane szybko. 
+Czasami węzłem danego procesu roboczego może zakończyć się niepowodzeniem lub uaktualnienie systemu operacyjnego mogą wystąpić dla tego węzła procesu roboczego. Aby odzyskać automatycznie, Stream Analytics uzyskuje się nowy węzeł dobrej kondycji, a stan węzła poprzedniego procesu roboczego jest przywracany z najnowszy dostępny punkt kontrolny. Aby wznowić pracę, małą ilością powtórzeń jest niezbędne do przywrócenia stanu od momentu, gdy punkt kontrolny jest tworzony. Zazwyczaj przerwa przywracania jest tylko kilka minut. Po wybraniu wystarczającej liczby jednostek przesyłania strumieniowego dla zadania powtarzania powinna być sporządzona szybko. 
 
-W pełni równoległe zapytanie czas potrzebny na przechwycenie po awarii węzła procesu roboczego jest proporcjonalny do:
+W pełni równoległe zapytania czas, jaki zajmuje nadążyć po awarii węzła procesu roboczego jest proporcjonalna do:
 
-[współczynnik zdarzeń wejściowych] x [długość przerwy]/[liczba partycji przetwarzania]
+[zdarzenie wejściowe szybkość, z] x [długość przerwy] / [liczba partycji]
 
-Jeśli kiedykolwiek wystąpi duże opóźnienie przetwarzania z powodu awarii węzła i uaktualnienia systemu operacyjnego, należy rozważyć przeprowadzenie zapytania w pełni równoległe i przeskalowanie zadania w celu przydzielenia większej liczby jednostek przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [skalowanie zadania Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md).
+Jeśli kiedykolwiek zaobserwować opóźnienie przetwarzania z powodu awarii węzła i uaktualnienia systemu operacyjnego należy wziąć pod uwagę, dzięki czemu zapytania w pełni równoległe i skalowanie zadania do przydzielenia większej liczby jednostek przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [skalować zadania usługi Azure Stream Analytics, w celu zwiększenia przepływności](stream-analytics-scale-jobs.md).
 
-Bieżący Stream Analytics nie pokazuje raportu, gdy odbywa się ten rodzaj procesu odzyskiwania.
+Bieżący Stream Analytics nie wyświetla raport po odbywa się ten rodzaj procesu odzyskiwania.
 
-## <a name="job-recovery-from-a-service-upgrade"></a>Odzyskiwanie zadania z uaktualnienia usługi 
-Firma Microsoft czasami uaktualnia pliki binarne, które uruchamiają zadania Stream Analytics w usłudze platformy Azure. W tych godzinach zadania wykonywane przez użytkowników są uaktualnione do nowszej wersji, a zadanie zostanie ponownie uruchomione automatycznie. 
+## <a name="job-recovery-from-a-service-upgrade"></a>Zadanie odzyskiwania z uaktualniania usługi 
+Microsoft od czasu do czasu uaktualnia pliki binarne, które uruchamianie zadania usługi Stream Analytics w usłudze Azure service. W tych godzinach użytkowników uruchomionych zadań zostały zaktualizowane do nowszej wersji, a zadanie zostanie automatycznie ponownie uruchomiona. 
 
-Obecnie format punktu kontrolnego odzyskiwania nie jest zachowywany między uaktualnieniami. W związku z tym stan zapytania przesyłania strumieniowego musi być przywracany całkowicie przy użyciu techniki powtarzania. Aby umożliwić Stream Analytics zadania odtwarzania dokładnie tych samych danych wejściowych z wcześniej, należy ustawić zasady przechowywania dla danych źródłowych na co najmniej rozmiary okien w zapytaniu. Niewykonanie tej czynności może spowodować nieprawidłowe lub częściowe wyniki podczas uaktualniania usługi, ponieważ dane źródłowe mogą nie być przechowywane wystarczająco długo, aby uwzględnić pełny rozmiar okna.
+Obecnie format punktu kontrolnego odzyskiwania nie są zachowywane między uaktualnienia. Co w efekcie Stan przesyłania strumieniowego zapytania należy przywrócić wyłącznie przy użyciu techniki powtarzania. Aby umożliwić zadania usługi Stream Analytics do powtarzania dokładnie takie same dane wejściowe z wcześniej, jest ważne, aby ustawić zasady przechowywania dla źródła danych do co najmniej okna o rozmiarach w zapytaniu. Kończy się niepowodzeniem to zrobić może spowodować niepoprawne lub częściowe wyniki podczas uaktualniania usługi, ponieważ źródło danych nie mogą być przechowywane wystarczająco daleko obejmujący rozmiar okna pełną.
 
-Ogólnie rzecz biorąc, ilość wymaganego odtwarzania jest proporcjonalna do rozmiaru okna pomnożonego przez średnią częstotliwość zdarzeń. Przykładowo w przypadku zadania z szybkością wprowadzania 1000 zdarzeń na sekundę rozmiar okna o rozmiarze większym niż godzina jest traktowany jak rozmiar dużego powtórzenia. Do zainicjowania stanu może być konieczne ponowne przetworzenie danych do jednej godziny, aby umożliwić wygenerowanie pełnych i poprawnych wyników, co może spowodować opóźnione wyjście (Brak danych wyjściowych) przez dłuższy czas. Zapytania bez okien ani innych operatorów czasowych, takich jak `JOIN` lub `LAG`, nie będą odtwarzane.
+Ogólnie rzecz biorąc ilość powtórzeń, potrzebne jest proporcjonalny do rozmiaru okna pomnożona przez średni czas występowania zdarzeń. Na przykład dla zadania o częstotliwości wejściowych 1000 zdarzeń na sekundę rozmiar okna większy niż jedna godzina jest uważany za powtarzania duży rozmiar. Maksymalnie jedną godzinę danych może być konieczne należy ponownie przetworzony zainicjować stan, dzięki czemu można tworzyć pełne i poprawne wyniki, które mogą spowodować opóźnienie danych wyjściowych (Brak danych wyjściowych) dla niektórych dłuższy czas. Zapytania z nie systemu windows lub inne operatory czasowe, takich jak `JOIN` lub `LAG`, będzie mieć zero powtarzania.
 
-## <a name="estimate-replay-catch-up-time"></a>Oszacowanie czasu przechwytywania ponownego odtwarzania
-Aby oszacować długość opóźnienia z powodu uaktualnienia usługi, możesz wykonać tę technikę:
+## <a name="estimate-replay-catch-up-time"></a>Czas zapoznać się ze zmianami powtarzania szacowania
+Aby oszacować długość opóźnienia z powodu uaktualnienia usługi, możesz wykonać tej techniki:
 
-1. Załaduj dane wejściowe centrum zdarzeń z wystarczającą ilością danych, aby pokryć największy rozmiar okna w zapytaniu w oczekiwanym tempie zdarzeń. Sygnatura czasowa zdarzeń powinna być bliska godzinie zegara ściany w tym okresie, tak jakby była to na żywo źródło danych wejściowych. Na przykład jeśli w zapytaniu masz 3-dniowe okno, Wyślij zdarzenia do centrum zdarzeń przez trzy dni i Kontynuuj wysyłanie zdarzeń. 
+1. Ładowanie danych wejściowych Centrum zdarzeń z ilością danych wystarczającą do pokrycia największy rozmiar okna w zapytaniu, stawki oczekiwanego zdarzenia. Sygnatura czasowa zdarzenia powinny być zbliżone do czas zegarowy przez cały ten okres czasu, jako Jeśli jest na żywo dane wejściowe, źródła danych. Na przykład jeśli masz 3-dniowe okno w zapytaniu, wysyłanie zdarzeń do Centrum zdarzeń dla trzech dni i kontynuować wysyłanie zdarzeń. 
 
-2. Uruchom zadanie, używając **teraz** jako godziny rozpoczęcia. 
+2. Uruchom zadania za pomocą polecenia **teraz** jako czas rozpoczęcia. 
 
-3. Zmierz czas między czasem rozpoczęcia i po wygenerowaniu pierwszego danych wyjściowych. Czas pozostały do poprawienia opóźnienia zadania podczas uaktualniania usługi.
+3. Służy do pomiaru czasu między czasem rozpoczęcia i kiedy jest generowane wyjście pierwszego. Czas jest nierównej ile opóźnienie zadania, zostałyby naliczone podczas uaktualniania usługi.
 
-4. Jeśli opóźnienie jest zbyt długie, spróbuj podzielić zadanie na partycje i zwiększyć liczbę serwerów, aby obciążenie było rozłożone na więcej węzłów. Alternatywnie należy rozważyć zmniejszenie rozmiarów okna w kwerendzie i przeprowadzenie dalszej agregacji lub innego przetwarzania stanowego na podstawie danych wyjściowych wytwarzanych przez zadanie Stream Analytics w zlewie podrzędnym (na przykład przy użyciu usługi Azure SQL Database).
+4. Jeśli opóźnienie jest zbyt długa, spróbuj partycje zadania i zwiększyć liczbę SUs, dzięki czemu obciążenia są rozmieszczone na większą liczbę węzłów. Alternatywnie Rozważ zmniejszenie rozmiarów okna w zapytaniu i wykonać dalszą część agregacji lub innych stanowe, przetwarzanie danych wyjściowych wytworzonych przez zadania usługi Stream Analytics w podrzędnym ujściu (na przykład przy użyciu usługi Azure SQL database).
 
-Aby uzyskać ogólne problemy dotyczące stabilności usługi podczas uaktualniania zadań o znaczeniu krytycznym, należy rozważyć uruchomienie zduplikowanych zadań w sparowanych regionach platformy Azure. Aby uzyskać więcej informacji, zobacz temat [gwarancja Stream Analytics niezawodność zadania podczas aktualizacji usługi](stream-analytics-job-reliability.md).
+Usługi ogólne zaniepokoić stabilność podczas uaktualniania misji krytyczne zadania, należy wziąć pod uwagę uruchomionych zadań zduplikowane w sparowanych regionach platformy Azure. Aby uzyskać więcej informacji, zobacz [gwarancji Stream Analytics zadania niezawodność podczas aktualizacji usługi](stream-analytics-job-reliability.md).
 
-## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>Odzyskiwanie zadania z zainicjowanego przez użytkownika zatrzymywania i uruchamiania
-Aby edytować składnię zapytania w zadaniu przesyłania strumieniowego lub dostosować dane wejściowe i wyjściowe, należy zatrzymać zadanie, aby wprowadzić zmiany i uaktualnić projekt zadania. W takich scenariuszach, gdy użytkownik zatrzyma zadanie przesyłania strumieniowego i uruchomi je ponownie, scenariusz odzyskiwania jest podobny do uaktualnienia usługi. 
+## <a name="job-recovery-from-a-user-initiated-stop-and-start"></a>Zainicjowano zadania odzyskiwania przez użytkownika, Zatrzymaj i uruchom
+Aby edytować składnia zapytania w zadaniu przesyłania strumieniowego lub dostosować dane wejściowe i wyjściowe, zadanie musi zostać zatrzymana, aby wprowadzić zmiany i uaktualnić projekt zadania. W takich scenariuszach gdy użytkownik Zatrzymuje zadanie przesyłania strumieniowego i uruchamia go ponownie scenariusza odzyskiwania jest podobny do uaktualniania usługi. 
 
-Dane punktu kontrolnego nie mogą być używane do ponownego uruchomienia zadania zainicjowane przez użytkownika. Aby oszacować opóźnienie danych wyjściowych podczas takiego ponownego uruchomienia, Użyj tej samej procedury, jak opisano w poprzedniej sekcji, i Zastosuj podobne środki zaradcze, jeśli opóźnienie jest zbyt długie.
+Dane punktu kontrolnego nie można użyć do ponownego uruchomienia zadania inicjowane przez użytkownika. Aby oszacować opóźnienie danych wyjściowych, podczas ponownego uruchamiania, użyj tej samej procedury, zgodnie z opisem w poprzedniej sekcji i stosowane podobne środki zaradcze w przypadku, gdy opóźnienie jest za długa.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji na temat niezawodności i skalowalności, zobacz następujące artykuły:
-- [Samouczek: Konfigurowanie alertów dla zadań Azure Stream Analytics](stream-analytics-set-up-alerts.md)
-- [Skalowanie zadania Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
-- [Gwarancja Stream Analytics niezawodność zadania podczas aktualizacji usługi](stream-analytics-job-reliability.md)
+Aby uzyskać więcej informacji na temat niezawodności i skalowalności zobacz następujące artykuły:
+- [Samouczek: Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics](stream-analytics-set-up-alerts.md)
+- [Skalować zadania usługi Azure Stream Analytics, w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
+- [Zagwarantowania niezawodności zadania usługi Stream Analytics podczas aktualizacji usługi](stream-analytics-job-reliability.md)

@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 240329ba3dc50cef249716f951595fea0cdc67eb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769986"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432049"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą witryny Azure Portal
 
@@ -26,7 +26,7 @@ Otwórz witrynę [Azure Portal](https://portal.azure.com/) w przeglądarce inter
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Tworzenie serwera usługi Azure Database for MariaDB
 
-Serwer usługi Azure Database for MariaDB jest tworzony za pomocą zdefiniowanego zestawu [zasobów obliczeniowych i przestrzeni dyskowej](concepts-pricing-tiers.md). Serwer jest tworzony w ramach [grupy zasobów Azure](../azure-resource-manager/resource-group-overview.md).
+Serwer usługi Azure Database for MariaDB jest tworzony za pomocą zdefiniowanego zestawu [zasobów obliczeniowych i przestrzeni dyskowej](concepts-pricing-tiers.md). Serwer jest tworzony w ramach [grupy zasobów Azure](../azure-resource-manager/management/overview.md).
 
 Aby utworzyć serwer usługi Azure Database for MariaDB:
 
@@ -213,7 +213,7 @@ Aby nawiązać połączenia z serwerem za pomocą aplikacji MySQL Workbench:
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Zasoby, które zostały utworzone w ramach tego przewodnika Szybki start, możesz wyczyścić na dwa sposoby. Możesz usunąć [grupę zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md). Powoduje to usunięcie wszystkich zasobów w grupie zasobów. Jeśli chcesz zachować inne zasoby bez zmian, usuń tylko ten jeden zasób serwera.
+Zasoby, które zostały utworzone w ramach tego przewodnika Szybki start, możesz wyczyścić na dwa sposoby. Możesz usunąć [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md). Powoduje to usunięcie wszystkich zasobów w grupie zasobów. Jeśli chcesz zachować inne zasoby bez zmian, usuń tylko ten jeden zasób serwera.
 
 > [!TIP]
 > Inne przewodniki Szybki start w tej kolekcji bazują na tym przewodniku. Jeśli chcesz kontynuować pracę z przewodnikami Szybki start dotyczącymi usługi Azure Database for MariaDB, nie usuwaj zasobów utworzonych w tym przewodniku. Jeśli nie planujesz kontynuowania pracy, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki start.

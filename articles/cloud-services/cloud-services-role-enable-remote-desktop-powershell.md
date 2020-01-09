@@ -1,26 +1,27 @@
 ---
-title: Przy użyciu programu PowerShell Włącz Pulpit zdalny dla roli (Cloud Services platformy Azure)
+title: Włączanie Pulpit zdalny dla roli przy użyciu programu PowerShell
+titleSuffix: Azure Cloud Services
 description: Jak skonfigurować aplikację usługi w chmurze platformy Azure przy użyciu programu PowerShell, aby zezwolić na połączenia pulpitu zdalnego
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: cd36188cba91ad8a97e3f97896cf215a5f0220c2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.author: tagore
+ms.openlocfilehash: e4e8dca6c5359e865e6a17fc47fe47802b0ee9e6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298409"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386123"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Włączanie Podłączanie pulpitu zdalnego roli na platformie Azure Cloud Services przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [Program PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-> * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
+> * [Program Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 Pulpit zdalny umożliwia dostęp do pulpitu roli działającej na platformie Azure. Połączenia Pulpit zdalny można użyć do rozwiązywania problemów i diagnozowania problemów z aplikacją, gdy jest ona uruchomiona.
 
@@ -100,3 +101,5 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 [Jak skonfigurować Cloud Services](cloud-services-how-to-configure-portal.md)
+
+

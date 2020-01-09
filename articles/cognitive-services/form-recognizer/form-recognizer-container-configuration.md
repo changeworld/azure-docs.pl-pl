@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: a0b0d0d95e1ffd50faba19f1665ea5dae737b124
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5439ec0c0aab5b8c127b651147e4b25d27c58390
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379627"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurowanie kontenerów aparatów rozpoznawania formularzy
 
@@ -22,12 +22,15 @@ Korzystając z kontenerów usługi Azure form, można utworzyć architekturę ap
 
 Można skonfigurować środowisko uruchomieniowe kontenera aparatu rozpoznawania formularza za pomocą argumentów polecenia `docker run`. Ten kontener ma kilka wymaganych ustawień i kilka opcjonalnych ustawień. Aby uzyskać kilka przykładów, zobacz sekcję ["Przykładowe polecenia uruchamiania platformy Docker"](#example-docker-run-commands) . Ustawienia dotyczące rozliczeń dotyczą tylko kontenera.
 
+> [!IMPORTANT]
+> Kontenery aparatu rozpoznawania formularzy używają obecnie wersji 1,0 interfejsu API aparatu rozpoznawania. Możesz uzyskać dostęp do najnowszej wersji interfejsu API za pomocą usługi zarządzanej.
+
 ## <a name="configuration-settings"></a>Ustawienia konfiguracji
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> Ustawienia [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)i [`Eula`](#eula-setting) są używane razem. Należy podać prawidłowe wartości dla wszystkich trzech ustawień; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera przy użyciu tych ustawień konfiguracji, zobacz [rozliczenia](form-recognizer-container-howto.md#billing).
+> Ustawienia [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)i [`Eula`](#eula-setting) są używane razem. Należy podać prawidłowe wartości dla wszystkich trzech ustawień; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](form-recognizer-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Ustawienie konfiguracji ApiKey
 
@@ -35,7 +38,7 @@ Ustawienie `ApiKey` określa klucz zasobów platformy Azure, który służy do �
 
 To ustawienie można znaleźć w Azure Portal w obszarze **klucze**w obszarze **Zarządzanie zasobami aparatu rozpoznawania formularzy**.
 
-## <a name="applicationinsights-setting"></a>Ustawienie ApplicationInsights
+## <a name="applicationinsights-setting"></a>Ustawienie dotycząca usługi Application Insights
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
@@ -45,15 +48,15 @@ Ustawienie `Billing` określa identyfikator URI punktu końcowego dla zasobu _ap
 
 To ustawienie można znaleźć w Azure Portal w sekcji **Omówienie aparatu rozpoznawania formularzy**w obszarze **punkt końcowy**.
 
-|Wymagany| Nazwa | Typ danych | Opis |
+|Wymagane| Nazwa | Typ danych | Opis |
 |--|------|-----------|-------------|
 |Tak| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczenia. Aby uzyskać więcej informacji na temat uzyskiwania identyfikatora URI rozliczeń, zobacz [zbieranie wymaganych parametrów](form-recognizer-container-howto.md#gathering-required-parameters). Aby uzyskać więcej informacji i pełną listę regionalnych punktów końcowych, zobacz [niestandardowe nazwy domen poddomen dla Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
-## <a name="eula-setting"></a>Ustawienie umowy EULA
+## <a name="eula-setting"></a>Umowa licencyjna EULA ustawienie
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Ustawienia pozostały
+## <a name="fluentd-settings"></a>Ustawienia Fluentd
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -68,20 +71,20 @@ To ustawienie można znaleźć w Azure Portal w sekcji **Omówienie aparatu rozp
 
 ## <a name="mount-settings"></a>Ustawienia instalacji
 
-Użyj instalacji powiązań, aby odczytywać i zapisywać dane w kontenerze i z niego. Można określić instalację wejściową lub instalację wyjściową, określając opcję `--mount` w [poleceniu`docker run`](https://docs.docker.com/engine/reference/commandline/run/).
+Użyj powiązania instaluje do odczytu i zapisu danych do i z kontenera. Można określić instalację wejściową lub instalację wyjściową, określając opcję `--mount` w [poleceniu`docker run`](https://docs.docker.com/engine/reference/commandline/run/).
 
 Kontener rozpoznawania formularzy wymaga instalacji wejściowej i instalacji wyjściowej. Instalacja wejściowa może być tylko do odczytu i jest wymagana w celu uzyskania dostępu do danych używanych do szkolenia i oceniania. Instalacja wyjściowa musi być zapisywalna i służy do przechowywania modeli i danych tymczasowych.
 
-Dokładna składnia lokalizacji instalacji hosta różni się w zależności od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera hosta](form-recognizer-container-howto.md#the-host-computer) może być niedostępna z powodu konfliktu między uprawnieniami konta usługi platformy Docker a uprawnieniami do lokalizacji instalacji hosta.
+Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto lokalizacja instalacji [komputera hosta](form-recognizer-container-howto.md#the-host-computer) może być niedostępna z powodu konfliktu między uprawnieniami konta usługi platformy Docker a uprawnieniami do lokalizacji instalacji hosta.
 
-|Optional (Opcjonalność)| Nazwa | Typ danych | Opis |
+|Opcjonalne| Nazwa | Typ danych | Opis |
 |-------|------|-----------|-------------|
-|Wymagany| `Input` | Ciąg | Obiekt docelowy instalacji wejściowej. Wartość domyślna to `/input`.    <br><br>Przykład:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Wymagany| `Output` | Ciąg | Obiekt docelowy instalacji wyjściowej. Wartość domyślna to `/output`.  <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Wymagane| `Input` | Ciąg | Miejsce docelowe instalacji danych wejściowych. Wartością domyślną jest `/input`.    <br><br>Przykład:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Wymagane| `Output` | Ciąg | Miejsce docelowe instalacji danych wyjściowych. Wartością domyślną jest `/output`.  <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Przykładowe polecenia uruchamiania platformy Docker
+## <a name="example-docker-run-commands"></a>Przykład platformy docker, Uruchom polecenia
 
-W poniższych przykładach użyto ustawień konfiguracji, aby zilustrować sposób pisania i używania poleceń `docker run`. Gdy jest uruchomiona, kontener kontynuuje działanie, dopóki nie zostanie [zatrzymany](form-recognizer-container-howto.md#stop-the-container).
+W poniższych przykładach używane ustawienia konfiguracji, aby zilustrować, jak pisać i użyj `docker run` poleceń. Gdy jest uruchomiona, kontener kontynuuje działanie, dopóki nie zostanie [zatrzymany](form-recognizer-container-howto.md#stop-the-container).
 
 * **Znak kontynuacji wiersza**: polecenia platformy Docker w poniższych sekcjach używają ukośnika odwrotnego (\\) jako znaku kontynuacji wiersza. Zastąp lub Usuń ten znak, w zależności od wymagań systemu operacyjnego hosta.
 * **Kolejność**argumentów: nie zmieniaj kolejności argumentów, chyba że znasz kontenery Docker.
@@ -100,7 +103,7 @@ Aby uzyskać szczegółowe informacje na temat sposobu uzyskiwania tych wartośc
 [!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Aby uruchomić kontener, określ opcje `Eula`, `Billing`i `ApiKey`; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing-configuration-setting).
+> Aby uruchomić kontener, określ opcje `Eula`, `Billing`i `ApiKey`; w przeciwnym razie kontener nie zostanie uruchomiony. Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing-configuration-setting).
 
 ## <a name="form-recognizer-container-docker-examples"></a>Przykłady platformy Docker kontenera aparatu rozpoznawania formularzy
 

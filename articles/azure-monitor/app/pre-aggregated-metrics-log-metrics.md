@@ -8,14 +8,14 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: e0a0784c6331bdf4575f5c044c67cf9b4df3152f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406593"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metryki oparte na dzienniku i wstępnie zagregowane w Application Insights
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metryki oparte na dzienniku i metryki wstępnie zagregowane w usłudze Application Insights
 
 W tym artykule opisano różnicę między "tradycyjnymi" Application Insights metrykami opartymi na dziennikach i wstępnie zagregowanymi metrykami, które są obecnie dostępne w publicznej wersji zapoznawczej. Oba typy metryk są dostępne dla użytkowników Application Insights, a każda z nich ma unikatową wartość monitorowania kondycji aplikacji, diagnostyki i analizy. Deweloperzy, którzy tworzą instrumentację aplikacji, mogą zdecydować, który typ metryki jest najlepiej dostosowany do określonego scenariusza, w zależności od rozmiaru aplikacji, oczekiwanej ilości danych telemetrycznych i wymagań firmy dotyczących dokładności metryk i alertów.
 
@@ -41,13 +41,13 @@ Nowsze zestawy SDK ([Application Insights 2,7](https://www.nuget.org/packages/Mi
 
 W przypadku zestawów SDK, które nie implementują wstępnej agregacji (to jest starsze wersje zestawów Application Insights SDK lub Instrumentacji przeglądarki), zaplecze Application Insights nadal wypełnia nowe metryki przez agregowanie zdarzeń odebranych przez aplikację Punkt końcowy zbierania zdarzeń usługi Insights. Oznacza to, że chociaż nie korzystasz ze zmniejszonej ilości danych przesyłanych za pośrednictwem sieci, nadal możesz użyć wstępnie zagregowanych metryk i uzyskać lepszą wydajność i obsługę alertów w czasie niemal rzeczywistym przy użyciu zestawów SDK, które nie metryki przed agregacją podczas zbierania.
 
-Warto zauważyć, że punkt końcowy kolekcji wstępnie agreguje zdarzenia przed pobraniem próbek, co oznacza, że [pobieranie próbek](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) nie będzie miało wpływu na dokładność metryk przedzagregowanych, niezależnie od używanej wersji zestawu SDK z Aplikacja.  
+Warto zauważyć, że punkt końcowy kolekcji wstępnie agreguje zdarzenia przed pobraniem próbek, co oznacza, że [pobieranie próbek](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) nie będzie miało wpływu na dokładność metryk przedzagregowanych, niezależnie od używanej wersji zestawu SDK z aplikacją.  
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Używanie wstępnej agregacji z niestandardowymi metrykami Application Insights
 
 Można użyć wstępnej agregacji z metrykami niestandardowymi. Dwie główne korzyści to możliwość konfiguracji i alertu na wymiarze metryki niestandardowej oraz zmniejszenia ilości danych wysyłanych z zestawu SDK do punktu końcowego kolekcji Application Insights.
 
-Istnieje kilka [sposobów wysyłania niestandardowych metryk z zestawu SDK Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Jeśli Twoja wersja zestawu SDK oferuje metody [GetMetric i TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) , jest to preferowany sposób wysyłania metryk niestandardowych, ponieważ w tym przypadku wstępne agregacja występuje w ramach zestawu SDK, nie tylko zmniejszenie ilości danych przechowywanych na platformie Azure, ale również woluminu danych przesyłanych z zestawu SDK do Application Insights. W przeciwnym razie użyj metody [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) , która spowoduje wstępne agregowanie zdarzeń metryk podczas pozyskiwania danych.
+Istnieje kilka [sposobów wysyłania niestandardowych metryk z zestawu SDK Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Jeśli Twoja wersja zestawu SDK oferuje metody [GetMetric i TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) , jest to preferowany sposób wysyłania metryk niestandardowych, ponieważ w tym przypadku wstępne agregacja występuje w ramach zestawu SDK, nie tylko zmniejszenie ilości danych przechowywanych na platformie Azure, ale także ilości danych przesyłanych z zestawu sdk do Application Insights. W przeciwnym razie użyj metody [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) , która spowoduje wstępne agregowanie zdarzeń metryk podczas pozyskiwania danych.
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>Niestandardowe wymiary metryk i wstępne agregacja
 

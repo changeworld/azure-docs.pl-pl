@@ -4,16 +4,16 @@ description: Jak dostosować kanały telemetryczne w zestawach SDK Application I
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cef8a06fb7e4cfb713d6531f23df9ae9c5836b68
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cef35ae5cb2b66385332a3b1f9ebe177ea26a3e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406357"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Kanały telemetrii w Application Insights
 
@@ -146,7 +146,7 @@ Krótka odpowiedź polega na tym, że żaden z wbudowanych kanałów nie oferuje
 
 1. Elementy w pamięci są tracone po awarii aplikacji.
 
-1. Dane telemetryczne są tracone w trakcie dłuższych okresów problemów z siecią. Dane telemetryczne są przechowywane na dysku lokalnym podczas awarii sieci lub w przypadku wystąpienia problemów z zapleczem Application Insights. Jednak elementy starsze niż 24 godziny są odrzucane.
+1. Dane telemetryczne są tracone w trakcie dłuższych okresów problemów z siecią. Dane telemetryczne są przechowywane na dysku lokalnym podczas awarii sieci lub w przypadku wystąpienia problemów z zapleczem Application Insights. Jednak elementy starsze niż 48 godzin są odrzucane.
 
 1. Domyślne lokalizacje dysków do przechowywania danych telemetrycznych w systemie Windows to% LOCALAPPDATA% lub% TEMP%. Te lokalizacje są zwykle lokalne dla komputera. Jeśli aplikacja jest migrowana fizycznie z jednej lokalizacji do innej, wszystkie dane telemetryczne przechowywane w oryginalnej lokalizacji zostaną utracone.
 

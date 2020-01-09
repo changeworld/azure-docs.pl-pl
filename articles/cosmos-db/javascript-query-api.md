@@ -1,5 +1,5 @@
 ---
-title: Praca z interfejsem API zapytań zintegrowanym z językiem JavaScript w Azure Cosmos DB
+title: Współpraca z interfejsem API zintegrowanej kwerendy języka JavaScript w Azure Cosmos DB
 description: W tym artykule przedstawiono koncepcje dotyczące interfejsu API zapytań zintegrowanych z językiem JavaScript do tworzenia procedur składowanych i wyzwalaczy w Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 01e5e95da3c19c03d07c7f3c1d716f5f1e97de98
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445312"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Interfejs API zapytań JavaScript w Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Oprócz wydawania zapytań przy użyciu interfejsu API SQL w Azure Cosmos DB, [z
 
 Gdy się wewnątrz predykatu lub selektora funkcje, następujące konstrukcje JavaScript Pobierz automatycznie zoptymalizowane pod kątem uruchamiania bezpośrednio na indeksów usługi Azure Cosmos DB:
 
-- Operatory proste: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
+- Operatory proste: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
 - Literały, literał obiektu w tym: {}
 - var zwrotu
 
@@ -54,10 +54,10 @@ W poniższej tabeli przedstawiono różne zapytania SQL i odpowiednie zapytania 
 |**SQL**|**Interfejs API zapytań JavaScript**|**Opis**|
 |---|---|---|
 |WYBIERZ POZYCJĘ *<br>DOKUMENTACH| __.map(Function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc;<br>});|To powoduje wszystkie dokumenty (z podziałem na strony za pomocą tokenu kontynuacji) jako.|
-|WYBIERZ <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG,<br>&nbsp;&nbsp;&nbsp;docs. Actions <br>DOKUMENTACH|__.map(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty identyfikator, komunikat (alias do msg) i akcji z wszystkich dokumentów.|
+|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako komunikat<br>&nbsp;&nbsp;&nbsp;docs. Actions <br>DOKUMENTACH|__.map(Function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty identyfikator, komunikat (alias do msg) i akcji z wszystkich dokumentów.|
 |WYBIERZ POZYCJĘ *<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>});|Zapytania dotyczące dokumentów za pomocą predykat: identyfikator = "X998_Y998".|
-|WYBIERZ POZYCJĘ *<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (dokumentacja. Tagi, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Tags && x.Tags.indexOf(123) > -1;<br>});|Zapytania dotyczące dokumentów, które mają tagi i właściwość Tags jest tablicą, zawierającego wartość 123.|
-|WYBIERZ<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako komunikat<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Zapytania dotyczące dokumentów z predykatem, id = "X998_Y998", a następnie projekty identyfikatora i komunikatu (alias do komunikatu).|
+|WYBIERZ POZYCJĘ *<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Tagi, 123)|__.filter(function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Tags && x.Tags.indexOf(123) > -1;<br>});|Zapytania dotyczące dokumentów, które mają tagi i właściwość Tags jest tablicą, zawierającego wartość 123.|
+|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako komunikat<br>DOKUMENTACH<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identyfikator: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;komunikat: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Zapytania dotyczące dokumentów z predykatem, id = "X998_Y998", a następnie projekty identyfikatora i komunikatu (alias do komunikatu).|
 |Wybierz wartość tagu<br>DOKUMENTACH<br>Dołącz do dokumentów w tagu. Tagi<br>Klauzula ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć dokumentu. Tagi & & Array.isArray (doc. Znaczniki);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwróć doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|Filtry dla dokumentów, których właściwości tablicy, tagi, i sortuje wynikowy dokumenty _ts sygnatura czasowa systemu właściwości, a następnie projekty + spłaszcza tablica tagów.|
 
 ## <a name="next-steps"></a>Następne kroki

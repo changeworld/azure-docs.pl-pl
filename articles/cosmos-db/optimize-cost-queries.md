@@ -1,21 +1,21 @@
 ---
-title: Optymalizowanie jednostek żądań i kosztów w celu uruchamiania zapytań w Azure Cosmos DB
+title: Optymalizuj koszt i RU/s, aby uruchamiać zapytania w Azure Cosmos DB
 description: Dowiedz się, jak oszacować opłaty jednostkowe żądań dla zapytania i zoptymalizować zapytanie pod względem wydajności i kosztów.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445129"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optymalizowanie kosztu zapytania w Azure Cosmos DB
 
-Azure Cosmos DB oferuje bogaty zestaw operacji bazy danych, w tym relacyjne i hierarchiczne zapytania, które działają na elementach w kontenerze. Koszt związany z każdą z tych operacji różni się w zależności od procesora CPU, operacji we/wy i pamięci wymaganej do ukończenia tej operacji. Zamiast rozważać zasoby sprzętowe i zarządzać nimi, można traktować jednostkę żądania (RU) jako pojedynczą miarę dla zasobów wymaganych do wykonywania różnych operacji bazy danych w celu obsługi żądania. W tym artykule opisano, jak oszacować opłaty jednostkowe żądań dla zapytania i zoptymalizować zapytanie pod względem wydajności i kosztów. 
+Usługa Azure Cosmos DB oferuje bogaty zestaw operacji bazy danych, w tym zapytania relacyjne i hierarchiczne, które działają na elementach w kontenerze. Koszt związany z każdą z tych operacji zależy od procesora, danych We/Wy i pamięci wymaganej do wykonania danej operacji. Nie myśl o zasobach sprzętowych i zarządzaniu nimi — zamiast tego pomyśl o jednostce żądania (RU) jako pojedynczej mierze zasobów wymaganych do wykonywania różnych operacji bazy danych i obsługiwania żądań. W tym artykule opisano, jak oszacować opłaty za jednostki żądania dla zapytania i jak zoptymalizować zapytanie pod względem wydajności i kosztów. 
 
 Zapytania w Azure Cosmos DB są zwykle uporządkowane od najszybszego/najbardziej wydajnego do wolniejszego/mniej wydajnego w zakresie przepływności w następujący sposób:  
 
@@ -27,7 +27,7 @@ Zapytania w Azure Cosmos DB są zwykle uporządkowane od najszybszego/najbardzie
 
 * Zapytanie bez filtrów.
 
-Zapytania odczytujące dane z co najmniej jednej partycji powodują wyższe opóźnienia i zużywają większą liczbę jednostek żądania. Ponieważ każda partycja ma Automatyczne indeksowanie wszystkich właściwości, zapytanie może być obsługiwane efektywnie z indeksu. Można tworzyć zapytania, które używają wielu partycji szybciej, przy użyciu opcji równoległości. Aby dowiedzieć się więcej na temat partycjonowania i kluczy partycji, zobacz [partycjonowanie w Azure Cosmos DB](partitioning-overview.md).
+Zapytania odczytujące dane z co najmniej jednej partycji powodują wyższe opóźnienia i zużywają większą liczbę jednostek żądania. Ponieważ każda partycja ma Automatyczne indeksowanie wszystkich właściwości, zapytanie może być obsługiwane efektywnie z indeksu. Można tworzyć zapytania, które używają wielu partycji szybciej, przy użyciu opcji równoległości. Aby dowiedzieć się więcej na temat partycjonowania i klucze partycji, zobacz [partycjonowanie w usłudze Azure Cosmos DB](partitioning-overview.md).
 
 ## <a name="evaluate-request-unit-charge-for-a-query"></a>Oceń opłatę jednostkową żądania dla zapytania
 

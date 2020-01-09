@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438624"
 ---
-# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
+# <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: często zadawane pytania
 
 Rozwiązanie hybrydowe Microsoft Azure Data Box umożliwia wysyłanie terabajtów danych na platformę Azure w szybki, niedrogi i niezawodny sposób przy użyciu urządzenia do transferu. Często zadawane pytania zawierają pytania, które mogą się pojawić podczas korzystania z usługi Data Box w witrynie Azure Portal, oraz odpowiedzi na te pytania. 
 
@@ -24,8 +24,8 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 - Informacje o usłudze
 - Zamawianie urządzenia
 - Konfigurowanie i łączenie 
-- Śledź stan
-- Kopiuj dane 
+- Śledzenie stanu
+- Kopiowanie danych 
 - Dostawa urządzenia
 - Weryfikowanie i przekazywanie danych 
 - Pomoc techniczna dotycząca łańcucha nadzoru
@@ -89,7 +89,7 @@ A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworz
 ## <a name="configure-and-connect"></a>Konfigurowanie i łączenie
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>PYTANIE: Jak mogę odblokować urządzenie Data Box? 
-A.  W witrynie Azure Portal przejdź do zamówienia na urządzenie Data Box, a następnie wybierz pozycję **Szczegóły urządzenia**. Skopiuj hasło odblokowania. Użyj tego hasła, aby zalogować się do lokalnego internetowego interfejsu użytkownika na swoim urządzeniu Data Box. Aby uzyskać więcej informacji, zobacz [Samouczek: rozpakowywanie, podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia](data-box-deploy-set-up.md).
+A.  W witrynie Azure Portal przejdź do zamówienia na urządzenie Data Box, a następnie wybierz pozycję **Szczegóły urządzenia**. Skopiuj hasło odblokowania. Użyj tego hasła, aby zalogować się do lokalnego internetowego interfejsu użytkownika na swoim urządzeniu Data Box. Aby uzyskać więcej informacji, zobacz temat [Samouczek: rozpakowywanie, podłączanie kabli, łączenie urządzenia Azure Data Box](data-box-deploy-set-up.md).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>PYTANIE: Czy mogę użyć komputera-hosta z systemem Linux, aby nawiązać połączenie z urządzeniem Data Box i skopiować na nie dane?
 A.  Tak. Urządzenie Data Box może być łączone z klientami NFS i SMB. Aby uzyskać więcej informacji, przejdź do listy [Obsługiwane systemy operacyjne](data-box-system-requirements.md) komputera-hosta.
@@ -98,10 +98,10 @@ A.  Tak. Urządzenie Data Box może być łączone z klientami NFS i SMB. Aby uz
 A.  Zamówienie można anulować tylko po złożeniu zamówienia na urządzenie Data Box i przed jego przetworzeniem. Po przetworzeniu zamówienia na urządzenie Data Box nie można go już anulować. 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>PYTANIE: Czy mogę podłączyć urządzenie Data Box jednocześnie do wielu komputerów-hostów w celu transferu danych?
-A. Tak. Urządzenie Data Box można podłączyć do wielu komputerów-hostów na potrzeby transferu danych i można równolegle wykonywać wiele zadań kopiowania. Aby uzyskać więcej informacji, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box](data-box-deploy-copy-data.md).
+A. Tak. Urządzenie Data Box można podłączyć do wielu komputerów-hostów na potrzeby transferu danych i można równolegle wykonywać wiele zadań kopiowania. Aby uzyskać więcej informacji, zobacz temat [Samouczek: kopiowanie danych na urządzenie Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>PYTANIE: Czy mogę połączyć się obydwoma interfejsami 10 GbE na urządzeniu Data Box w celu przesyłania danych?
-A. Tak. Można jednocześnie podłączyć obydwa interfejsy 10 GbE na urządzeniu Data Box w celu kopiowania danych. Aby uzyskać więcej informacji na temat sposobu kopiowania danych, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box](data-box-deploy-copy-data.md).
+A. Tak. Można jednocześnie podłączyć obydwa interfejsy 10 GbE na urządzeniu Data Box w celu kopiowania danych. Aby uzyskać więcej informacji na temat sposobu kopiowania danych, przejdź do [samouczka: Kopiuj dane do Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -115,7 +115,7 @@ A.
 ### Q. I could not set up Data Box on a private network. Why would this be?
 A.-->
 
-### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>PYTANIE: Wskaźnik LED błędu systemu na przednim panelu operacyjnym świeci się. Co mam zrobić?
+### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>PYTANIE: Wskaźnik LED błędu systemu na przednim panelu operacyjnym świeci się. Co mamy zrobić?
 A. Jeśli wskaźnik LED błędu systemu świeci się, oznacza to, że system jest w złej kondycji. [Skontaktuj się z pomocą techniczną firmy Microsoft](data-box-disk-contact-microsoft-support.md), aby uzyskać informacje o kolejnych krokach.
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>PYTANIE: Nie mogę uzyskać dostępu do hasła odblokowania urządzenia Data Box w witrynie Azure Portal. Co może być powodem?
@@ -124,7 +124,7 @@ A. Jeśli nie możesz uzyskać dostępu do hasła odblokowania w witrynie Azure 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>PYTANIE: Czy na urządzeniu Data Box jest obsługiwana konfiguracja kanału portu? Jak wygląda sytuacja w przypadku wielościeżkowego we/wy (MPIO)?
 A. Nie obsługujemy konfiguracji kanału portu, konfiguracji wielościeżkowego we/wy (MPIO) ani konfiguracji sieci vLAN na urządzeniu Data Box.
 
-## <a name="track-status"></a>Śledź stan
+## <a name="track-status"></a>Śledzenie stanu
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>PYTANIE: Jak mogę śledzić stan urządzenia Data Box od momentu złożenia zamówienia do jego odesłania? 
 A.  Stan zamówienia urządzenia Data Box możesz śledzić w witrynie Azure Portal. Podczas tworzenia zamówienia jest również wyświetlany monit o podanie adresu e-mail do powiadomień. Jeśli go podasz, będziesz otrzymywać powiadomienia e-mail o każdej zmianie stanu zamówienia. Więcej informacji na temat [konfigurowania wiadomości e-mail z powiadomieniami](data-box-portal-ui-admin.md#edit-notification-details).
@@ -141,7 +141,7 @@ A. Możesz przejść do swojego zamówienia urządzenia Data Box w witrynie Azur
 A.  Urządzenie Data Box ma 80 TB pojemności magazynu do wykorzystania. W przypadku danych zajmujących od 40 TB do 80 TB możesz użyć pojedynczego urządzenia Data Box. W przypadku większych ilości danych, nieprzekraczających 500 TB, możesz zamówić wiele urządzeń Data Box. W przypadku danych przekraczających 500 TB zarejestruj się w usłudze Data Box Heavy.  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>PYTANIE: Jakie są maksymalne rozmiary blokowych obiektów blob i stronicowych obiektów blob obsługiwane przez urządzenia Data Box? 
-A.  Maksymalne rozmiary podlegają limitom usługi Azure Storage. Maksymalny rozmiar blokowego obiektu blob to około 4,768 TiB, a maksymalny rozmiar stronicowego obiektu blob to 8 TiB. Aby uzyskać więcej informacji, zobacz [Cele usługi Azure Storage dotyczące skalowalności i wydajności](../storage/common/storage-scalability-targets.md). 
+A.  Maksymalne rozmiary podlegają limitom usługi Azure Storage. Maksymalny rozmiar blokowego obiektu blob to około 4,768 TiB, a maksymalny rozmiar stronicowego obiektu blob to 8 TiB. Aby uzyskać więcej informacji, zobacz [elementy docelowe skalowalności i wydajności dla usługi BLOB Storage](../storage/blobs/scalability-targets.md).
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>PYTANIE: Skąd mam wiedzieć, że moje dane są bezpieczne podczas transportu? 
 A. Istnieje wiele funkcji zabezpieczeń wdrożonych w celu zapewnienia bezpieczeństwa urządzenia Data Box w czasie transportu. Niektóre z nich obejmują plomby umożliwiające wykrycie manipulacji, wykrywanie ingerencji w sprzęt i oprogramowanie, hasło odblokowania urządzenia. Aby uzyskać więcej informacji, przejdź do tematu [Zabezpieczenia i ochrona danych w usłudze Azure Data Box](data-box-security.md).
@@ -151,12 +151,12 @@ A.  Jeśli używasz klienta SMB, możesz skopiować dane na urządzenie za pomoc
 
 Jeśli używasz klienta NFS, możesz użyć narzędzia [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) lub [Ultracopier](https://ultracopier.first-world.info/). 
 
-Aby uzyskać więcej informacji, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box](data-box-deploy-copy-data.md).
+Aby uzyskać więcej informacji, zobacz temat [Samouczek: kopiowanie danych na urządzenie Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>PYTANIE: Czy istnieją jakieś porady dotyczące przyspieszania kopiowania danych?
 A.  Aby przyspieszyć proces kopiowania:
 
-- Użyj wielu strumieni kopiowania danych. Na przykład w narzędziu Robocopy włącz opcję kopiowania wielowątkowego. Aby uzyskać więcej informacji na temat konkretnego polecenia, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-deploy-copy-data.md).
+- Użyj wielu strumieni kopiowania danych. Na przykład w narzędziu Robocopy włącz opcję kopiowania wielowątkowego. Aby uzyskać więcej informacji na temat konkretnego polecenia, zobacz [Samouczek: kopiowanie danych na urządzenie Data Box i ich weryfikacja](data-box-deploy-copy-data.md).
 - Użyj wielu sesji.
 - Zamiast kopiować za pośrednictwem udziału sieciowego (gdzie szybkość sieci może narzucać ograniczenia), upewnij się, że dane znajdują się lokalnie na komputerze, do którego podłączono urządzenie Data Box.
 - Wykonaj test porównawczy wydajności komputera używanego do kopiowania danych. Pobierz [narzędzie Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) i za jego pomocą przeprowadź test porównawczy wydajności sprzętu serwera. Wybierz najnowszą kompilację x86 lub x64, wybierz kartę **artefakty** i Pobierz plik msi.
@@ -177,7 +177,7 @@ A.  Tak. Z urządzeniem Data Box obsługiwanych jest maksymalnie 10 kont magazyn
 
 <!--### Q. How do I schedule a pickup for my Data Box?--> 
 
-### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>PYTANIE: Urządzenie zostało dostarczone, ale wydaje się być uszkodzone. Co mam zrobić?
+### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>PYTANIE: Urządzenie zostało dostarczone, ale wydaje się być uszkodzone. Co mamy zrobić?
 A. Jeśli urządzenie zostało dostarczone uszkodzone lub istnieje dowód manipulowania przy nim, nie należy go używać. [Skontaktuj się z działem pomocy technicznej firmy Microsoft](data-box-disk-contact-microsoft-support.md) i jak najszybciej zwróć urządzenie. Aby otrzymać urządzenie zastępcze, można także utworzyć nowe zamówienie na urządzenie Data Box. W tym przypadku opłata za urządzenie zastępcze nie zostanie naliczona.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>PYTANIE: Czy mogę wybrać moją urządzenie Data Box zamówienie samodzielnie? Czy mogę zwrócić urządzenie Data Box za pośrednictwem wybranego przez siebie operatora?
@@ -200,7 +200,7 @@ A. Wszystkie urządzenia urządzenie Data Box są wysyłane z tego samego kraju,
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>PYTANIE: W regionie Wschodnie stany USA zamówiłem urządzenie Data Box, ale otrzymałem urządzenie, które było dostarczane z lokalizacji w zachodnich stanach USA. Gdzie należy zwrócić urządzenie?
 A. Firma Microsoft próbuje uzyskać urządzenie Data Box urządzenie tak szybko, jak to możliwe. Firma Microsoft ustala priorytety wysyłki od centrum danych znajdującego się najbliżej lokalizacji konta magazynu, ale wyśle Urządzenie z dowolnego centrum danych platformy Azure, które ma dostępny spis. Twoja urządzenie Data Box powinna zostać zwrócona do tej samej lokalizacji, z której zostało wysłane, tak jak jest wyświetlana w etykiecie wysyłkowej.
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>PYTANIE: Etykieta wysyłki zwrotnej nie jest widoczna na wyświetlaczu E-ink. Co mam zrobić?
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>PYTANIE: Etykieta wysyłki zwrotnej nie jest widoczna na wyświetlaczu E-ink. Co mamy zrobić?
 A. Jeśli na wyświetlaczu E-ink nie widać etykiety wysyłki zwrotnej, wykonaj następujące czynności:
 - Usuń starą etykietę wysyłkową i wszelkie nalepki z poprzedniej wysyłki.
 - Przejdź do swojego zamówienia w witrynie Azure Portal. Przejdź do pozycji **Przegląd** i wybierz pozycję **Pobierz etykietę wysyłkową**. Aby uzyskać więcej informacji, przejdź do sekcji [Pobierz etykietę wysyłkową](data-box-portal-admin.md#download-shipping-label).

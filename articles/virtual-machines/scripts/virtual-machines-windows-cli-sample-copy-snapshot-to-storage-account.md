@@ -1,5 +1,5 @@
 ---
-title: Przykład interfejsu wiersza polecenia platformy Azure — kopiowanie migawki do konta magazynu w innym regionie
+title: Kopiowanie migawki do konta magazynu w innym regionie — przykład interfejsu wiersza polecenia
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — eksportowanie/kopiowanie migawki jako dysku VHD na konto magazynu w tym samym lub innym regionie.
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 1e9ba52357703238c35d31823462d9ff3bd04c87
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 05868682708ee2f064addf698508b5e178424963
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040040"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375886"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Eksportowanie/kopiowanie migawki na konto magazynu w innym regionie przy użyciu interfejsu wiersza polecenia
 

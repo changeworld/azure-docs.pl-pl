@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 26516b99f3ffd9a16a24a4d5d1906ed781a8034a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951143"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396523"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
@@ -71,8 +71,8 @@ Wcześniej Azure Monitor metryki, Application Insights, Log Analytics i Service 
 
 | **Źródło monitora** | **Typ sygnału**  | **Opis** | 
 |-------------|----------------|-------------|
-| Kondycja usługi | Dziennik aktywności  | Nieobsługiwane. Zobacz [tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostępności sieci Web | Nieobsługiwane. Zobacz [alerty testu sieci Web](../../azure-monitor/app/monitor-web-app-availability.md). Dostępne dla każdej witryny sieci Web, która jest Instrumentacją do wysyłania danych do Application Insights. Otrzymuj powiadomienie, gdy dostępność lub czas odpowiedzi witryny sieci Web jest poniżej oczekiwań. |
+| Kondycja usługi | Dziennik aktywności  | Bez pomocy technicznej. Zobacz [tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Testy dostępności sieci Web | Bez pomocy technicznej. Zobacz [alerty testu sieci Web](../../azure-monitor/app/monitor-web-app-availability.md). Dostępne dla każdej witryny sieci Web, która jest Instrumentacją do wysyłania danych do Application Insights. Otrzymuj powiadomienie, gdy dostępność lub czas odpowiedzi witryny sieci Web jest poniżej oczekiwań. |
 
 ## <a name="manage-alerts"></a>Zarządzanie alertami
 Można ustawić stan alertu, aby określić, gdzie znajduje się w procesie rozwiązywania. Po spełnieniu kryteriów określonych w regule alertu jest tworzony lub uruchamiany alert, który ma stan *Nowy*. Stan można zmienić po potwierdzeniu alertu i po jego zamknięciu. Wszystkie zmiany stanu są przechowywane w historii alertu.
@@ -184,23 +184,23 @@ Użycie i Zarządzanie wystąpieniami alertów wymaga, aby użytkownik miał wbu
 
 Możesz chcieć programowo wykonywać zapytania dotyczące alertów generowanych w ramach subskrypcji. Może to być Tworzenie niestandardowych widoków poza Azure Portal lub analizowanie alertów w celu identyfikowania wzorców i trendów.
 
-Możesz wykonywać zapytania dotyczące alertów generowanych w ramach subskrypcji za pomocą [interfejsu API rest alert Management](https://aka.ms/alert-management-api) lub przy użyciu [interfejsu API REST usługi Azure Resource Graph dla alertów](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources).
+Możesz wykonywać zapytania dotyczące alertów generowanych w ramach subskrypcji za pomocą [interfejsu API REST usługi alert Management](https://aka.ms/alert-management-api) lub przy użyciu [grafu zasobów platformy Azure](../../governance/resource-graph/overview.md) i [interfejsu API REST dla zasobów](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources).
 
-[Interfejs API REST usługi Azure Resource Graph dla alertów](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)umożliwia wykonywanie zapytań o wystąpieniach alertów w odpowiedniej skali. Jest to zalecane, gdy konieczne jest zarządzanie alertami wygenerowanymi w wielu subskrypcjach. 
+Interfejs API REST grafu zasobów dla zasobów umożliwia wykonywanie zapytań o wystąpienia alertów w odpowiedniej skali. Jest to zalecane, gdy konieczne jest zarządzanie alertami wygenerowanymi w wielu subskrypcjach. 
 
-Następujące przykładowe żądanie do interfejsu API zwraca liczbę alertów w ramach jednej subskrypcji:
+Następujące przykładowe żądanie do interfejsu API REST grafu zasobów zwraca liczbę alertów w ramach jednej subskrypcji:
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
-  "options": {
-            "dataset":"alerts"
-  }
+  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
 }
 ```
+
+Wyniki tego zapytania dotyczącego wykresu zasobów można także zobaczyć w portalu przy użyciu Eksploratora Azure Resource Graph: [Portal.Azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+
 W celu uzyskania [odpowiednich pól można](alerts-common-schema-definitions.md#essentials) wysyłać zapytania do alertów.
 
 Użyj [interfejsu API REST alert Management](https://aka.ms/alert-management-api) , aby uzyskać więcej informacji na temat określonych alertów, w tym ich pól [kontekstu alertu](alerts-common-schema-definitions.md#alert-context) .

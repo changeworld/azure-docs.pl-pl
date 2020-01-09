@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436912"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie, metryki i alerty usługi ExpressRoute
 
@@ -24,7 +24,7 @@ Ten artykuł zawiera omówienie usługi ExpressRoute, monitorowanie, alerty i me
 
 ## <a name="expressroute-metrics"></a>Metryki ExpressRoute
 
-Aby wyświetlić **metryki**, przejdź do strony *Azure monitor* i kliknij pozycję *metryki*. Aby wyświetlić metryki **ExpressRoute** , pliker według typu zasobu *ExpressRoute obwody*. Aby wyświetlić metryki **Global REACH** , odfiltrować według typów zasobów *ExpressRoute obwody* i wybrać zasób obwodu usługi ExpressRoute, który ma Global REACH włączony. Aby wyświetlić metryki **ExpressRoute Direct** , należy filtrować typ zasobu według *portów ExpressRoute*. 
+Aby wyświetlić **metryki**, przejdź do strony *Azure monitor* i kliknij pozycję *metryki*. Aby wyświetlić metryki **ExpressRoute** , odfiltruj według typu zasobu *ExpressRoute obwody*. Aby wyświetlić metryki **Global REACH** , odfiltrować według typów zasobów *ExpressRoute obwody* i wybrać zasób obwodu usługi ExpressRoute, który ma Global REACH włączony. Aby wyświetlić metryki **ExpressRoute Direct** , należy filtrować typ zasobu według *portów ExpressRoute*. 
 
 Po wybraniu metryki zostanie zastosowana domyślna agregacja. Opcjonalnie można zastosować podział, który będzie zawierać metrykę z różnymi wymiarami.
 
@@ -33,14 +33,14 @@ Po wybraniu metryki zostanie zastosowana domyślna agregacja. Opcjonalnie można
 | --- | --- | --- | --- |
 |Dostępność protokołu ARP|Dostępność|<ui><li>Węzeł równorzędny (podstawowy/pomocniczy router ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej (prywatny/publiczny/Microsoft)</ui></li>|ExpressRoute|
 |Dostępność protokołu BGP|Dostępność|<ui><li> Węzeł równorzędny (podstawowy/pomocniczy router ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej</ui></li>|ExpressRoute|
-|BitsInPerSecond|Ruch|<ui><li> Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li>Link (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>Usługa ExpressRoute Direct|
+|BitsInPerSecond|Ruch|<ui><li> Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li>Link (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
 |BitsOutPerSecond|Ruch| <ui><li>Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li> Link (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute bezpośrednie</ui></li> |
 |GlobalReachBitsInPerSecond|Ruch|<ui><li>Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
 |GlobalReachBitsOutPerSecond|Ruch|<ui><li>Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
-|AdminState|Łączność fizyczna|Link|Usługa ExpressRoute Direct|
-|LineProtocol|Łączność fizyczna|Link|Usługa ExpressRoute Direct|
-|RxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|Usługa ExpressRoute Direct|
-|TxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|Usługa ExpressRoute Direct|
+|AdminState|Łączność fizyczna|Link|ExpressRoute Direct|
+|LineProtocol|Łączność fizyczna|Link|ExpressRoute Direct|
+|RxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|ExpressRoute Direct|
+|TxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|ExpressRoute Direct|
 >[!NOTE]
 >Użycie *GlobalGlobalReachBitsInPerSecond* i *GlobalGlobalReachBitsOutPerSecond* będzie widoczne tylko wtedy, gdy zostanie nawiązane co najmniej jedno połączenie Global REACH.
 >

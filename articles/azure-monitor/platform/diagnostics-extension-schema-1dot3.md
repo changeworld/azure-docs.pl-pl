@@ -4,24 +4,24 @@ description: Wersja schematu 1,3 i nowsza Diagnostyka platformy Azure wydana jak
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2018
-ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2a3ee9731ebeb3b002f4dd9f5b856e720bf719d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834746"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395089"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Diagnostyka Azure 1,3 i nowszy Schemat konfiguracji
 > [!NOTE]
 > Diagnostyka Azure rozszerzenie jest składnikiem używanym do zbierania liczników wydajności i innych statystyk z:
 > - Azure Virtual Machines
-> - Zestawy skali maszyn wirtualnych
-> - Service Fabric
+> - Virtual Machine Scale Sets
+> - Sieć szkieletowa usługi
 > - Cloud Services
-> - Grupy zabezpieczeń sieci
+> - Sieciowe grupy zabezpieczeń
 >
 > Ta strona ma zastosowanie tylko w przypadku korzystania z jednej z tych usług.
 
@@ -417,10 +417,10 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
 |**PublicConfig**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
-|**PrivateConfig**|Opcjonalny. Zobacz opis w innym miejscu na tej stronie.|  
+|**PrivateConfig**|Element opcjonalny. Zobacz opis w innym miejscu na tej stronie.|  
 |**IsEnabled**|Typu. Zobacz opis w innym miejscu na tej stronie.|  
 
-## <a name="publicconfig-element"></a>PublicConfig, element  
+## <a name="publicconfig-element"></a>PublicConfig Element  
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig*
 
  Opisuje publiczną konfigurację diagnostyki.  
@@ -432,7 +432,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 |**StorageType**|Może to być *tabela*, *obiekt BLOB*lub *TableAndBlob*. Tabela jest domyślna. Po wybraniu TableAndBlob dane diagnostyczne są zapisywane dwa razy do każdego typu.|  
 |**LocalResourceDirectory**|Katalog na maszynie wirtualnej, w której Agent monitorowania przechowuje dane zdarzenia. Jeśli nie, ustaw, domyślny katalog jest używany:<br /><br /> Dla roli proces roboczy/Sieć Web: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Wymagane atrybuty:<br /><br /> **ścieżka** - — katalog w systemie, który ma być używany przez Diagnostyka Azure.<br /><br /> - **expandEnvironment** — określa, czy zmienne środowiskowe są rozwinięte w nazwie ścieżki.|  
 
-## <a name="wadcfg-element"></a>WadCFG, element  
+## <a name="wadcfg-element"></a>WadCFG Element  
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG*
 
  Identyfikuje i konfiguruje dane telemetryczne, które mają być zbierane.  
@@ -441,13 +441,13 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration, element
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Wymagany
+ Wymagane
 
 |Atrybuty|Opis|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Maksymalna ilość miejsca na dysku lokalnym, która może być używana przez różne typy danych diagnostycznych zbieranych przez Diagnostyka Azure. Ustawienie domyślne to 4096 MB.<br />
 |**useProxyServer** | Skonfiguruj Diagnostyka Azure, aby używać ustawień serwera proxy jako ustawionych w ustawieniach programu IE.|
-|**ujścia** | Dodano w 1,5. Opcjonalny. Wskazuje lokalizację ujścia, aby wysłać również dane diagnostyczne dla wszystkich elementów podrzędnych, które obsługują ujścia. Przykładem ujścia jest Application Insights lub Event Hubs.|  
+|**ujścia** | Dodano w 1,5. Element opcjonalny. Wskazuje lokalizację ujścia, aby wysłać również dane diagnostyczne dla wszystkich elementów podrzędnych, które obsługują ujścia. Przykładem ujścia jest Application Insights lub Event Hubs.|  
 
 
 <br /> <br />
@@ -459,7 +459,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 |**Katalogi**|Zobacz opis w innym miejscu na tej stronie.|  
 |**EtwProviders**|Zobacz opis w innym miejscu na tej stronie.|  
 |**Metryki**|Zobacz opis w innym miejscu na tej stronie.|  
-|**Liczniki wydajności**|Zobacz opis w innym miejscu na tej stronie.|  
+|**PerformanceCounters**|Zobacz opis w innym miejscu na tej stronie.|  
 |**WindowsEventLog**|Zobacz opis w innym miejscu na tej stronie.|
 |**DockerSources**|Zobacz opis w innym miejscu na tej stronie. |
 
@@ -472,9 +472,9 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 |Atrybuty|Opis|  
 |----------------|-----------------|  
-|**containerName**|Opcjonalny. Nazwa kontenera obiektów BLOB na koncie usługi Azure Storage, która będzie używana do przechowywania zrzutów awaryjnych.|  
-|**crashDumpType**|Opcjonalny.  Konfiguruje Diagnostyka Azure w celu zbierania danych o minimalnych lub pełnych zrzutach awaryjnych.|  
-|**directoryQuotaPercentage**|Opcjonalny.  Określa wartość procentową **overallQuotaInMB** do zarezerwowania na Zrzuty awaryjne na maszynie wirtualnej.|  
+|**containerName**|Element opcjonalny. Nazwa kontenera obiektów BLOB na koncie usługi Azure Storage, która będzie używana do przechowywania zrzutów awaryjnych.|  
+|**crashDumpType**|Element opcjonalny.  Konfiguruje Diagnostyka Azure w celu zbierania danych o minimalnych lub pełnych zrzutach awaryjnych.|  
+|**directoryQuotaPercentage**|Element opcjonalny.  Określa wartość procentową **overallQuotaInMB** do zarezerwowania na Zrzuty awaryjne na maszynie wirtualnej.|  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
@@ -533,7 +533,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 
 
-## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration, element  
+## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwEventSourceProviderConfiguration*
 
  Konfiguruje kolekcję zdarzeń wygenerowanych z [klasy EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
@@ -545,7 +545,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 
 
-## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration, element  
+## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
 
 |Elementy podrzędne|Opis|  
@@ -580,7 +580,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 |Element podrzędny|Opis|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Wymagane są następujące atrybuty:<br /><br /> - **counterSpecifier** — Nazwa licznika wydajności. Na przykład `\Processor(_Total)\% Processor Time`. Aby uzyskać listę liczników wydajności na hoście, uruchom polecenie `typeperf`.<br /><br /> - **SampleRate** — częstotliwość próbkowania licznika.<br /><br /> Opcjonalny atrybut:<br /><br /> **Unit** — jednostka miary licznika.|
-|**ujścia** | Dodano w 1,5. Opcjonalny. Wskazuje lokalizację ujścia, aby również wysyłać dane diagnostyczne. Na przykład Azure Monitor lub Event Hubs.|    
+|**ujścia** | Dodano w 1,5. Element opcjonalny. Wskazuje lokalizację ujścia, aby również wysyłać dane diagnostyczne. Na przykład Azure Monitor lub Event Hubs.|    
 
 
 
@@ -594,7 +594,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 |Element podrzędny|Opis|  
 |-------------------|-----------------|  
-|**DataSource**|Dzienniki zdarzeń systemu Windows do zebrania. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzenia systemu Windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Aby zebrać wszystkie zdarzenia, określ wartość "*"|  
+|**DataSource**|Dzienniki zdarzeń systemu Windows do zebrania. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzenia systemu Windows, które mają być zbierane. Przykład:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Aby zebrać wszystkie zdarzenia, określ wartość "*"|  
 
 
 
@@ -608,10 +608,10 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Opcjonalny. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|**parametry**|Opcjonalny. Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to **undefined**, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
-|**scheduledTransferPeriod**|**trwania**|Opcjonalny. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
-|**ujścia** |**parametry**| Dodano w 1,5. Opcjonalny. Wskazuje lokalizację ujścia, aby również wysyłać dane diagnostyczne. Na przykład Application Insights lub Event Hubs.|  
+|**bufferQuotaInMB**|**unsignedInt**|Element opcjonalny. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
+|**scheduledTransferLogLevelFilter**|**string**|Element opcjonalny. Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to **undefined**, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
+|**scheduledTransferPeriod**|**Czas trwania**|Element opcjonalny. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**ujścia** |**string**| Dodano w 1,5. Element opcjonalny. Wskazuje lokalizację ujścia, aby również wysyłać dane diagnostyczne. Na przykład Application Insights lub Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
@@ -629,7 +629,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Fotografii**|Zobacz opis w innym miejscu na tej stronie.|  
+|**obiekt sink**|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="sink-element"></a>Element ujścia
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-ujścia*
@@ -640,12 +640,12 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
-|**Nazwij**|ciąg|Ciąg identyfikujący obiekt ujścianame.|  
+|**Nazwa**|string|Ciąg identyfikujący obiekt ujścianame.|  
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|ciąg|Używane tylko w przypadku wysyłania danych do Application Insights. Zawiera klucz Instrumentacji dla aktywnego konta Application Insights, do którego masz dostęp.|  
-|**Dyplomatyczn**|ciąg|Jeden dla każdego dodatkowego filtrowania, który przesyła strumieniowo|  
+|**Application Insights**|string|Używane tylko w przypadku wysyłania danych do Application Insights. Zawiera klucz Instrumentacji dla aktywnego konta Application Insights, do którego masz dostęp.|  
+|**Kanały**|string|Jeden dla każdego dodatkowego filtrowania, który przesyła strumieniowo|  
 
 ## <a name="channels-element"></a>Element Channels  
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-sink-Channels*
@@ -656,7 +656,7 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
-|**Ukierunkowan**|ciąg|Zobacz opis w innym miejscu na tej stronie.|  
+|**Channel**|string|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="channel-element"></a>Element kanału
  *Drzewo: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-ujścia-Channel*
@@ -667,8 +667,8 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
 |Atrybuty|Typ|Opis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**parametry**|Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to **undefined**, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
-|**Nazwij**|**parametry**|Unikatowa nazwa kanału, do którego odwołuje się|  
+|**logLevel**|**string**|Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to **undefined**, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
+|**Nazwa**|**string**|Unikatowa nazwa kanału, do którego odwołuje się|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig, element
@@ -676,13 +676,13 @@ Element najwyższego poziomu pliku konfiguracji diagnostyki.
 
  Dodano w wersji 1,3.  
 
- Optional (Opcjonalność)  
+ Opcjonalne  
 
  Przechowuje prywatne szczegóły konta magazynu (nazwa, klucz i punkt końcowy). Te informacje są wysyłane do maszyny wirtualnej, ale nie można z niej pobrać.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**StorageAccount**|Konto magazynu do użycia. Wymagane są następujące atrybuty<br /><br /> **nazwa** - — nazwa konta magazynu.<br /><br /> **klucz** - — klucz do konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy do uzyskiwania dostępu do konta magazynu. <br /><br /> -**sasToken** (dodano 1.8.1) — w konfiguracji prywatnej można określić token SAS zamiast klucza konta magazynu. Jeśli ta wartość jest określona, klucz konta magazynu jest ignorowany. <br />Wymagania dotyczące tokenu sygnatury dostępu współdzielonego: <br />-Obsługuje tylko token SAS konta <br />- *b*, typy usługi *t* są wymagane. <br /> wymagane są uprawnienia - *a*, *c*, *u*, *w* . <br /> - *c*, *o* typy zasobów są wymagane. <br /> — Obsługuje tylko protokół HTTPS <br /> — Czas rozpoczęcia i wygaśnięcia musi być prawidłowy.|  
+|**StorageAccount**|Konto magazynu do użycia. Wymagane są następujące atrybuty<br /><br /> **nazwa** - — nazwa konta magazynu.<br /><br /> **klucz** - — klucz do konta magazynu.<br /><br /> - **punkt końcowy** — punkt końcowy do uzyskiwania dostępu do konta magazynu. <br /><br /> -**sasToken** (dodano 1.8.1) — w konfiguracji prywatnej można określić token SAS zamiast klucza konta magazynu. Jeśli ta wartość jest określona, klucz konta magazynu jest ignorowany. <br />Wymagania dotyczące tokenu sygnatury dostępu współdzielonego: <br />-Obsługuje tylko token SAS konta <br />- *b*, typy usługi *t* są wymagane. <br /> - *a*, *c*, *u*, *w* wymagane są uprawnienia. <br /> - *c*, *o* typy zasobów są wymagane. <br /> — Obsługuje tylko protokół HTTPS <br /> — Czas rozpoczęcia i wygaśnięcia musi być prawidłowy.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled, element  

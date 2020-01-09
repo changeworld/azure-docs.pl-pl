@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682660"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438883"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzanie zestawów danych na dużą skalę przy użyciu Data Factory i usługi Batch
 > [!NOTE]
@@ -44,7 +44,7 @@ W usłudze Batch definiuje się zasoby obliczeniowe Azure do wykonywania aplikac
 Opcjonalnie, aby dowiedzieć się więcej o usłudze Batch, zapoznaj [się z dokumentacją zbiorczą](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Dlaczego warto wybrać usługę Azure Data Factory?
-Fabryka danych jest usługą integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych. Za pomocą Data Factory można tworzyć potoki danych zarządzanych, które przenoszą dane ze sklepów lokalnych i magazynów danych w chmurze do scentralizowanego magazynu danych. Przykładem jest usługa Azure Blob Storage. Data Factory służy do przetwarzania/przekształcania danych przy użyciu usług takich jak Azure HDInsight i Azure Machine Learning. Można również zaplanować uruchamianie potoków danych zgodnie z harmonogramem (na przykład co godzinę, codziennie i co tydzień). Możesz szybko monitorować potoki i zarządzać nimi, aby identyfikować problemy i podejmować działania.
+Fabryka danych Azure to usługa integracji danych oparta na chmurze, która organizuje i automatyzuje operacje przenoszenia oraz przekształcania danych. Za pomocą Data Factory można tworzyć potoki danych zarządzanych, które przenoszą dane ze sklepów lokalnych i magazynów danych w chmurze do scentralizowanego magazynu danych. Przykładem jest usługa Azure Blob Storage. Data Factory służy do przetwarzania/przekształcania danych przy użyciu usług takich jak Azure HDInsight i Azure Machine Learning. Można również zaplanować uruchamianie potoków danych zgodnie z harmonogramem (na przykład co godzinę, codziennie i co tydzień). Możesz szybko monitorować potoki i zarządzać nimi, aby identyfikować problemy i podejmować działania.
 
   Jeśli nie znasz Data Factory, następujące artykuły ułatwiają zrozumienie architektury/implementacji rozwiązania opisanego w tym artykule:  
 
@@ -93,7 +93,7 @@ Jeśli nie masz subskrypcji platformy Azure, możesz szybko utworzyć bezpłatne
 #### <a name="azure-storage-account"></a>Konto magazynu Azure
 Do przechowywania danych w tym samouczku służy konto magazynu. Jeśli nie masz konta magazynu, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md). Przykładowe rozwiązanie używa magazynu obiektów BLOB.
 
-#### <a name="azure-batch-account"></a>Konto Azure Batch
+#### <a name="azure-batch-account"></a>Konto usługi Azure Batch
 Utwórz konto usługi Batch przy użyciu [Azure Portal](https://portal.azure.com/). Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Batch i zarządzanie](../../batch/batch-account-create-portal.md)nim. Zanotuj nazwę konta i klucz konta w usłudze Batch. Możesz również użyć polecenia cmdlet [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) , aby utworzyć konto w usłudze Batch. Aby uzyskać instrukcje dotyczące korzystania z tego polecenia cmdlet, zobacz [Rozpoczynanie pracy z poleceniami cmdlet programu PowerShell usługi Batch](../../batch/batch-powershell-cmdlets-get-started.md).
 
 Przykładowe rozwiązanie używa partii (pośrednio za pośrednictwem potoku fabryki danych) do równoległego przetwarzania danych w puli węzłów obliczeniowych (zarządzanej kolekcji maszyn wirtualnych).
@@ -192,7 +192,7 @@ Metoda zawiera kilka najważniejszych składników, które należy zrozumieć:
 
    g. Wybierz przycisk **OK**, aby utworzyć projekt.
 
-1. Wybierz kolejno pozycje **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów**.
+1. Wybierz pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
 
 1. W konsoli Menedżera pakietów wykonaj następujące polecenie, aby zaimportować pakiet Microsoft. Azure. Management. datafactors:
 
@@ -556,11 +556,11 @@ Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką
 
    ![Nowy magazyn danych](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Zastąp **nazwę konta** nazwą konta magazynu. Zastąp **klucz konta** kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
+1. Zastąp **nazwę konta** nazwą konta magazynu. Zastąp **klucz konta** kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
-   ![Wdrożenie](./media/data-factory-data-processing-using-batch/image8.png)
+   ![Implementacja](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>Tworzenie połączonej usługi Azure Batch
 W tym kroku utworzysz połączoną usługę dla konta usługi Batch, która jest używana do uruchamiania niestandardowego działania usługi Data Factory.
@@ -667,21 +667,21 @@ W tym kroku utworzysz zestawy danych reprezentujące dane wejściowe i wyjściow
 
     | **Cinek** | **Godzina rozpoczęcia**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T**00**: 00:00 |
-    | 2         | 2015-11-16T**01**: 00:00 |
-    | 3         | 2015-11-16T**02**: 00:00 |
-    | 4         | 2015-11-16T**03**: 00:00 |
-    | 5         | 2015-11-16T**04**: 00:00 |
+    | 1         | 2015-11-16T**00**:00:00 |
+    | 2         | 2015-11-16T**01**:00:00 |
+    | 3         | 2015-11-16T**02**:00:00 |
+    | 4         | 2015-11-16T**03**:00:00 |
+    | 5         | 2015-11-16T**04**:00:00 |
 
     **FolderPath** jest obliczany przy użyciu części Year, month, Day i Hour czasu rozpoczęcia wycinka (**parametru slicestart**). Oto jak folder wejściowy jest mapowany na wycinek.
 
     | **Cinek** | **Godzina rozpoczęcia**          | **Folder wejściowy**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16 –**00** |
-    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16 –**01** |
-    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16 –**02** |
-    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16 –**03** |
-    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16 –**04** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
 1. Wybierz pozycję **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć tabelę **InputDataset** .
 
@@ -724,11 +724,11 @@ W tym kroku utworzysz kolejny zestaw danych typu AzureBlob do reprezentowania da
 
     | **Cinek** | **Godzina rozpoczęcia**          | **Plik wyjściowy**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16 –**00. txt** |
-    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16 –**01. txt** |
-    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16 –**02. txt** |
-    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16 –**03. txt** |
-    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16 –**04. txt** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
     Należy pamiętać, że wszystkie pliki w folderze wejściowym (na przykład 2015-11-16-00) są częścią wycinka o godzinie rozpoczęcia 2015-11-16-00. Po przetworzeniu tego wycinka działanie niestandardowe skanuje każdy plik i tworzy wiersz w pliku wyjściowym z liczbą wystąpień wyszukiwanego terminu "Microsoft". Jeśli w folderze 2015-11-16-00 znajdują się trzy pliki, w pliku wyjściowym 2015-11-16 -00. txt istnieją trzy wiersze.
 
@@ -847,7 +847,7 @@ Ten krok polega na przetestowaniu potoku przez upuszczenie plików do folderów 
 
 1. W bloku **OutputDataset** kliknij prawym przyciskiem myszy wycinek z ustawionym **czasem rozpoczęcia wycinka** na **11/16/2015 01:00:00 am**. Wybierz pozycję **Uruchom** , aby ponownie uruchomić/przetworzyć wycinek. Plasterek ma teraz pięć plików, a nie jeden plik.
 
-    ![Uruchom polecenie](./media/data-factory-data-processing-using-batch/image17.png)
+    ![Uruchamianie](./media/data-factory-data-processing-using-batch/image17.png)
 
 1. Po uruchomieniu wycinka, gdy jego stan jest **gotowy**, sprawdź zawartość pliku wyjściowego dla tego wycinka (**2015-11-16 -01. txt**). Plik wyjściowy zostanie wyświetlony w obszarze `mycontainer` w `outputfolder` w magazynie obiektów BLOB. Powinien istnieć wiersz dla każdego pliku wycinka.
 
@@ -913,7 +913,7 @@ Debugowanie składa się z kilku podstawowych technik.
 
    ![Lista plików zip działania niestandardowego](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Upewnij się, że element **AssemblyName** (. dll), **punkt wejścia** (MyDotNetActivityNS. packageFile.... ), (customactivitycontainer/. zip) i **packageLinkedService** (powinny wskazywać na Magazyn obiektów BLOB zawierający plik zip) jest ustawiony na poprawne wartości.
+1. Upewnij się, że plik **AssemblyName** (. dll), **punkt wejścia** (MyDotNetActivityNS. packageFile....... ), customactivitycontainer/. zip) i **packageLinkedService** (powinien wskazywać magazyn obiektów blob, który zawiera plik zip), są ustawione na poprawne wartości.
 
 1. Jeśli Naprawiono błąd i chcesz ponownie przetworzyć wycinek, kliknij prawym przyciskiem myszy wycinek w bloku **OutputDataset** i wybierz polecenie **Uruchom**.
 
@@ -960,11 +960,11 @@ Możesz zwiększyć ten przykład, aby dowiedzieć się więcej o funkcjach Data
 Po przeprowadzeniu danych można korzystać z nich za pomocą narzędzi online, takich jak Power BI. Poniżej znajdują się linki ułatwiające zrozumienie Power BI i sposobu korzystania z niego na platformie Azure:
 
 * [Eksplorowanie zestawu danych w Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Wprowadzenie do Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Wprowadzenie do programu Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Odśwież dane w Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure i Power BI: omówienie podstawowe](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Informacje
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Wprowadzenie do usługi Data Factory](data-factory-introduction.md)

@@ -1,18 +1,17 @@
 ---
 title: Pracuj z ciągami w zapytaniach dziennika Azure Monitor | Microsoft Docs
 description: Opisuje sposób edytowania, porównywania, wyszukiwania i wykonywania różnych operacji na ciągach w kwerendach dziennika Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397470"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Pracuj z ciągami w zapytaniach dziennika Azure Monitor
 
@@ -45,7 +44,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
 
-## <a name="string-comparisons"></a>Porównania ciągów
+## <a name="string-comparisons"></a>Porównanie ciągów
 
 Operator       |Opis                         |Z uwzględnieniem wielkości liter|Przykład (daje `true`)
 ---------------|------------------------------------|--------------|-----------------------
@@ -96,7 +95,7 @@ countof(text, search [, kind])
 - `search` — ciąg zwykły lub wyrażenie regularne, aby dopasować tekst wewnątrz tekstu.
 - `kind` - _normalne_ | _wyrażenia regularnego_ (wartość domyślna: Normal).
 
-### <a name="returns"></a>Typu
+### <a name="returns"></a>Zwraca
 
 Liczba określająca, ile razy można dopasować ciąg wyszukiwania w kontenerze. Dopasowania w postaci zwykłego ciągu mogą się pokrywać, gdy nie są zgodne wyrażenia regularne.
 
@@ -138,7 +137,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` — ciąg do wyszukania.
 - `typeLiteral` — opcjonalny literał typu (na przykład typeof (Long)). Jeśli jest podany, wyodrębniony podciąg jest konwertowany na ten typ.
 
-### <a name="returns"></a>Typu
+### <a name="returns"></a>Zwraca
 Podciąg dopasowany do wskazanej grupy przechwytywania grupa przechwytywania, opcjonalnie przekonwertowany na typeLiteral.
 Jeśli nie ma dopasowania lub konwersja typu nie powiedzie się, zwraca wartość null.
 
@@ -228,7 +227,7 @@ Wynik będzie:
 ```
 
 
-## <a name="replace"></a>stępować
+## <a name="replace"></a>replace
 
 Zamienia wszystkie dopasowania wyrażenia regularnego na inny ciąg. 
 
@@ -244,7 +243,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` — wyrażenie zastępcze zastąpienia dla dowolnego dopasowania wykonanego przez zgodne wyrażenie regularne. Użyj \ 0, aby odwołać się do całego dopasowania, \ 1 dla pierwszej grupy przechwytywania, \ 2 itd. dla kolejnych grup przechwytywania.
 - `input_text` — ciąg wejściowy do wyszukania.
 
-### <a name="returns"></a>Typu
+### <a name="returns"></a>Zwraca
 Tekst po zamianie wszystkich odpowiedników wyrażenia regularnego na oceny ponownego zapisu. Dopasowania nie nakładają się.
 
 ### <a name="examples"></a>Przykłady
@@ -320,7 +319,7 @@ print strlen("hello")   // result: 5
 ```
 
 
-## <a name="substring"></a>podciąg
+## <a name="substring"></a>podciągu
 
 Wyodrębnia podciąg z danego ciągu źródłowego, rozpoczynając od określonego indeksu. Opcjonalnie można określić długość żądanego podciągu.
 

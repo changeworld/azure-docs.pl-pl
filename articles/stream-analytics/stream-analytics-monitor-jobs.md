@@ -1,20 +1,18 @@
 ---
 title: Monitorowanie i programowe zarządzanie zadaniami usługi Azure Stream Analytics
 description: W tym artykule opisano, jak programowe monitorowanie zadań usługi Stream Analytics utworzone za pomocą interfejsów API REST, zestaw SDK usługi Azure lub programu PowerShell.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: bf84a5b89e4769e37c45714a30d5d98300a4328d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431667"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programowe tworzenie monitor zadania usługi Stream Analytics
 
@@ -22,9 +20,9 @@ W tym artykule przedstawiono sposób włączania monitorowania dla zadania usłu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed przystąpieniem do wykonywania tego procesu, musisz mieć następujące wymagania wstępne:
+Przed rozpoczęciem tego procesu należy spełnić następujące wymagania wstępne:
 
-* Visual Studio 2019 or 2015
+* Visual Studio 2019 lub 2015
 * [Zestaw Azure .NET SDK](https://azure.microsoft.com/downloads/) pobrane i zainstalowane
 * Istniejące zadanie usługi Stream Analytics, która musi mieć monitorowanie jest włączone
 
@@ -137,7 +135,7 @@ Poniższy kod zostanie skonfigurowany niezbędne zmiennych i zarządzania klient
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Włącz monitorowanie dla istniejącego zadania usługi Stream Analytics
 
-Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream Analytics. Pierwsza część kod wykonuje żądanie GET względem usługi Stream Analytics można pobrać informacji dotyczących określonego zadania usługi Stream Analytics. Używa ona *identyfikator* właściwości (pobieranymi z żądania GET) jako parametr do metody Put w drugiej połowie kod, który wysyła PUT żądanie do usługi Insights Włącz monitorowanie dla zadania usługi Stream Analytics.
+Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream Analytics. Pierwsza część kod wykonuje żądanie GET względem usługi Stream Analytics można pobrać informacji dotyczących określonego zadania usługi Stream Analytics. Używa właściwości *ID* (pobranej z żądania GET) jako parametru metody Put w drugiej połowie kodu, co spowoduje wysłanie żądania Put do usługi Insights w celu włączenia monitorowania dla zadania Stream Analytics.
 
 > [!WARNING]
 > Jeśli zostało wcześniej włączone monitorowanie dla innego zadania usługi Stream Analytics, za pośrednictwem witryny Azure portal lub programowo przy użyciu poniższego kodu, **firma Microsoft zaleca, aby zapewnić taką samą nazwę konta magazynu, który był używany podczas wcześniej włączone monitorowanie.**
@@ -169,11 +167,11 @@ Poniższy kod umożliwia monitorowanie **istniejących** zadania usługi Stream 
 >   ```
 
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="get-support"></a>Uzyskaj pomoc techniczną
 
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425384"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Włącz inspekcje zabezpieczeń dla Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ W poniższej tabeli przedstawiono scenariusze dla każdego typu zasobu doceloweg
 
 | Zasób docelowy | Scenariusz |
 |:---|:---|
-|Azure Storage| Tego celu należy używać, gdy głównym wymaganiem jest przechowywanie zdarzeń inspekcji zabezpieczeń w celach archiwalnych. Inne elementy docelowe mogą być używane do celów archiwalnych, ale te elementy docelowe zapewniają możliwości wykraczające poza podstawową potrzebę archiwizowania. Przed włączeniem zdarzeń inspekcji usługi Azure AD DS Security [Utwórz konto usługi Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
+|Azure Storage| Tego celu należy używać, gdy głównym wymaganiem jest przechowywanie zdarzeń inspekcji zabezpieczeń w celach archiwalnych. Inne elementy docelowe mogą być używane do celów archiwalnych, ale te elementy docelowe zapewniają możliwości wykraczające poza podstawową potrzebę archiwizowania. Przed włączeniem zdarzeń inspekcji usługi Azure AD DS Security należy najpierw [utworzyć konto usługi Azure Storage](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Tego celu należy używać, gdy głównym wymaganiem jest udostępnianie zdarzeń inspekcji zabezpieczeń za pomocą dodatkowego oprogramowania, takiego jak oprogramowanie do analizy danych lub informacje o zabezpieczeniach & oprogramowania do zarządzania zdarzeniami (SIEM). Przed włączeniem zdarzeń inspekcji usługi Azure AD DS Security [Utwórz centrum zdarzeń przy użyciu Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Obszar roboczy usługi Azure Log Analytics| Tego celu należy używać, gdy głównym wymaganiem jest analizowanie i przeglądanie bezpiecznych inspekcji bezpośrednio z Azure Portal. Przed włączeniem zdarzeń inspekcji usługi Azure AD DS Security należy [utworzyć log Analytics obszar roboczy w Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
@@ -173,7 +173,7 @@ Aby włączyć zdarzenia inspekcji usługi Azure AD DS Security przy użyciu Azu
 Obszary robocze analityczne dzienników umożliwiają wyświetlanie i analizowanie zdarzeń inspekcji zabezpieczeń przy użyciu Azure Monitor i języka zapytań Kusto. Ten język zapytań jest przeznaczony do użycia tylko do odczytu, który boasts możliwości analityczne, dzięki łatwemu do odczytu składni. Aby uzyskać więcej informacji na temat rozpoczynania pracy z językami zapytań Kusto, zobacz następujące artykuły:
 
 * [Dokumentacja usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
-* [Wprowadzenie do Log Analytics w Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
+* [Wprowadzenie do usługi Log Analytics w usłudze Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
 * [Wprowadzenie do zapytań dzienników w Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 * [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

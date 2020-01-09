@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8db70ccbabfc165dbe3f7b9a61dbe5023a87f708
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381056"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Obsługa języka i regionu dla usługi mowy
 
@@ -81,7 +81,7 @@ Neuronowych text-to-Speech to nowy typ syntezy mowy obsługiwanej przez głębok
 
 Głosy neuronowych mogą służyć do współdziałania z rozszerzenie czatbotów i asystentów głosowych bardziej naturalnych i atrakcyjnych, dzięki czemu można konwertować cyfrowe teksty, takie jak książki elektroniczne, na Audiobooks i ulepszać systemy nawigacyjne w samodzielnym zakresie. Podobnie jak naturalna prosodya i wyraźny zbiór wyrazów, głosy neuronowych znacząco zmniejszają zmęczenie nasłuchiwania, gdy użytkownicy współpracują z systemami AI.
 
-Aby zapoznać się z pełną listą głosów neuronowych i regionalnej dostępności, zobacz [regiony](regions.md#standard-and-neural-voices).
+Aby uzyskać więcej informacji na temat dostępności regionalnej, zobacz [regiony](regions.md#standard-and-neural-voices).
 
 Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka nazwa głosu
 --------|----------|--------|---------|------------
@@ -90,6 +90,8 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 `en-US` | English (US) | Kobieta | "Microsoft Server Speech zamiana tekstu na mowę Voice (EN-US, JessaNeural)" | "pl-US-JessaNeural"
 `it-IT` | Włoski (Włochy) | Kobieta |"Microsoft Server Speech zamiana tekstu na mowę Voice (ElsaNeural)" | "IT-ElsaNeural"
 `zh-CN` | Chiński (kontynent) | Kobieta | "Microsoft Server Speech zamiana tekstu na mowę Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
+
+Aby dowiedzieć się, jak można konfigurować i dostosowywać neuronowych głosów, zobacz Language [syntezowania znaczników](speech-synthesis-markup.md#adjust-speaking-styles).
 
 > [!NOTE]
 > Możesz użyć pełnego mapowania nazw usług lub krótkiej nazwy głosu w żądaniach syntezy mowy.
@@ -104,7 +106,7 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 `ar-SA` | Arabski (Arabia Saudyjska) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (ar-SA Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bułgarski | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (bg-BG Ivanowi)" | "BG-BG-Ivan"
 `ca-ES` | Kataloński | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (Kanada ES, HerenaRUS)" | "CA-ES-HerenaRUS"
-`cs-CZ` | czeski | Mężczyzna | "Microsoft Server mowy tekstu na głos mowy (cs-CZ, Jakub)" | "CS-CZ-Jakub"
+`cs-CZ` | Czeski | Mężczyzna | "Microsoft Server mowy tekstu na głos mowy (cs-CZ, Jakub)" | "CS-CZ-Jakub"
 `da-DK` | Duński | Kobieta | "Microsoft Server mowy Text na głos mowy (da-DK HelleRUS)" | "da-DK-HelleRUS"
 `de-AT` | Niemiecki (Austria) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (de-AT, Michael)" | "de-AT-Michael"
 `de-CH` | Niemiecki (Szwajcaria) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (de-CH, Karsten)" | "de-CH-Karsten"
@@ -212,7 +214,7 @@ Dostosowanie głosu jest dostępne dla `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-M
 | Chiński uproszczony      | `zh-Hans`          |
 | Chiński tradycyjny      | `zh-Hant`          |
 | Chorwacki      | `hr`          |
-| czeski      | `cs`          |
+| Czeski      | `cs`          |
 | Duński      | `da`          |
 | Holenderski      | `nl`          |
 | Polski      | `en`          |
@@ -220,8 +222,8 @@ Dostosowanie głosu jest dostępne dla `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-M
 | Fidżi      | `fj`          |
 | Filipino      | `fil`          |
 | Fiński      | `fi`          |
-| francuski      | `fr`          |
-| niemiecki      | `de`          |
+| Francuski      | `fr`          |
+| Niemiecki      | `de`          |
 | Grecki      | `el`          |
 | Haitański      | `ht`          |
 | Hebrajski      | `he`          |

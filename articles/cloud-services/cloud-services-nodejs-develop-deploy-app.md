@@ -3,18 +3,18 @@ title: Przewodnik Wprowadzenie dla języka Node.js
 description: Dowiedz się, jak utworzyć prostą aplikację internetową Node.js, a następnie wdrożyć ją do usługi w chmurze Azure.
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 81ad3bce6c7e331fd67fba60b35de6b8a37c5da9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386191"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Tworzenie i wdrażanie aplikacji Node.js do usługi w chmurze Azure
 
@@ -55,7 +55,7 @@ Wykonaj poniższe zadania w celu utworzenia nowego projektu Usługi w chmurze Az
 
     Polecenie cmdlet powoduje utworzenie następujących plików:
 
-   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** i **ServiceDefinition.csdef**: pliki specyficzne dla platformy Azure niezbędne do opublikowania aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie hostowanej usługi platformy Azure — omówienie].
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** i **ServiceDefinition.csdef**: specyficzne dla platformy Azure pliki niezbędne do publikowania aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie hostowanej usługi platformy Azure — omówienie].
    * **deploymentSettings.json**: przechowuje ustawienia lokalne, które są używane przez polecenia cmdlet programu Azure PowerShell dotyczące wdrożenia.
 4. Wprowadź poniższe polecenie, aby dodać nową rolę sieci Web:
 
@@ -82,7 +82,7 @@ Ten kod jest zasadniczo taki sam jak przykładowy kod „Hello World” w witryn
 ## <a name="deploy-the-application-to-azure"></a>Wdrażanie aplikacji na platformie Azure
 
 > [!NOTE]
-> Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub [zarejestrować się w celu uzyskania bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
+> Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub [zarejestrować się w celu uzyskania bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
 
 ### <a name="download-the-azure-publishing-settings"></a>Pobieranie ustawień publikowania na platformie Azure
 Aby wdrożyć aplikację na platformie Azure, należy najpierw pobrać ustawienia publikowania dla subskrypcji platformy Azure.
@@ -177,3 +177,6 @@ Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowi
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+
+
+

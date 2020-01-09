@@ -1,6 +1,7 @@
 ---
-title: Samouczek dotyczący używania konfiguracji aplikacji platformy Azure do zarządzania flag funkcji | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak zarządzać flag funkcji oddzielnie z poziomu aplikacji przy użyciu konfiguracji aplikacji platformy Azure.
+title: 'Samouczek: Zarządzanie flagami funkcji za pomocą usługi Azure App Configuration'
+titleSuffix: Azure App Configuration
+description: W tym samouczku dowiesz się, jak zarządzać flagami funkcji niezależnie od aplikacji przy użyciu konfiguracji aplikacji platformy Azure.
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,66 +15,66 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: b7fbf9add67a45c0db89fc11cee5c10bc537ab63
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 620cd6e1712a89e13bf876310c0d3248c4a4d1e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414006"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Samouczek: Zarządzanie flagami funkcji w konfiguracji aplikacji platformy Azure
 
-Można przechowywać wszystkie flagi funkcji w konfiguracji aplikacji platformy Azure i administrować nimi z jednego miejsca. Konfiguracja aplikacji ma portalu, interfejsu użytkownika o nazwie **funkcji Menedżera** który jest przeznaczony specjalnie dla flag funkcji. Konfiguracja aplikacji również natywnie obsługuje schemat danych flagi funkcji platformy .NET Core.
+Wszystkie flagi funkcji można przechowywać w konfiguracji aplikacji platformy Azure i administrować nimi z jednego miejsca. Konfiguracja aplikacji ma interfejs użytkownika portalu o nazwie **Menedżer funkcji** , który jest przeznaczony specjalnie dla flag funkcji. Konfiguracja aplikacji również natywnie obsługuje schemat danych flagi funkcji .NET Core.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Definiowanie i zarządzanie nimi flagi funkcji w konfiguracji aplikacji.
-> * Flagi funkcji dostępu z poziomu aplikacji.
+> * Zdefiniuj flagi funkcji w konfiguracji aplikacji i zarządzaj nimi.
+> * Dostęp do flag funkcji z aplikacji.
 
-## <a name="create-feature-flags"></a>Tworzenie flag funkcji
+## <a name="create-feature-flags"></a>Utwórz flagi funkcji
 
-Menedżer funkcji w witrynie Azure portal dla konfiguracji aplikacji zapewnia interfejs użytkownika do tworzenia i zarządzania flag funkcji, które można używać w aplikacjach.
+Menedżer funkcji w Azure Portal na potrzeby konfiguracji aplikacji zawiera interfejs użytkownika służący do tworzenia flag funkcji używanych w aplikacjach i zarządzania nimi.
 
 Aby dodać nową flagę funkcji:
 
-1. Wybierz **funkcji Menedżera** >  **+ Dodaj** dodać flagi funkcji.
+1. Wybierz pozycję **Menedżer funkcji** >  **+ Dodaj** , aby dodać flagę funkcji.
 
-    ![Lista flagi funkcji](./media/azure-app-configuration-feature-flags.png)
+    ![Lista flag funkcji](./media/azure-app-configuration-feature-flags.png)
 
-1. Wprowadź unikatową nazwę klucza flagi funkcji. Należy tę nazwę, aby odwoływać się Flaga w kodzie.
+1. Wprowadź unikatową nazwę klucza dla flagi funkcji. Ta nazwa jest potrzebna do odwoływania się do flagi w kodzie.
 
-1. Należy podać opis flagi funkcji.
+1. Jeśli chcesz, podaj opis flagi funkcji.
 
-1. Ustaw początkowy stan flagi funkcji. Ten stan jest zwykle *poza* lub *na*. *Na* stan zmieni się na *warunkowego* Jeśli dodasz filtr do flagi funkcji.
+1. Ustaw stan początkowy flagi funkcji. Ten stan jest zwykle *wyłączony* lub *włączony*. Stan *on* zmienia się na *Conditional* , jeśli dodasz filtr do flagi funkcji.
 
     ![Tworzenie flagi funkcji](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Jeśli stan jest wyświetlany *na*, wybierz opcję **+ Dodaj filtr** określić wszelkie dodatkowe warunki, aby zakwalifikować się stan. Wprowadź klucz wbudowanych lub niestandardowych filtr, a następnie wybierz **+ Dodaj parametr** do skojarzenia z jednego lub więcej parametrów z filtrem. Dostępne są następujące wbudowane filtry:
+1. Gdy stan jest *włączony*, wybierz pozycję **+ Dodaj filtr** , aby określić dodatkowe warunki do zakwalifikowania stanu. Wprowadź wbudowany lub niestandardowy klucz filtru, a następnie wybierz pozycję **+ Dodaj parametr** , aby skojarzyć jeden lub więcej parametrów z filtrem. Filtry wbudowane obejmują:
 
     | Klucz | Parametry JSON |
     |---|---|
-    | Microsoft.Percentage | {"Value": 0 – 100%} |
-    | Microsoft.TimeWindow | {"Start": Czas UTC, "Koniec": Czas UTC} |
+    | Microsoft.Percentage | {"Value": 0-100 procent} |
+    | Microsoft.TimeWindow | {"Start": czas UTC, "koniec": czas UTC} |
 
     ![Filtr flagi funkcji](./media/azure-app-configuration-feature-flag-filter.png)
 
-## <a name="update-feature-flag-states"></a>Aktualizowanie stanów flagi funkcji
+## <a name="update-feature-flag-states"></a>Aktualizuj Stany flagi funkcji
 
 Aby zmienić wartość stanu flagi funkcji:
 
-1. Wybierz **funkcji Menedżera**.
+1. Wybierz pozycję **Menedżer funkcji**.
 
-1. Po prawej stronie flagę funkcji, którą chcesz zmodyfikować, wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Edytuj**.
+1. Z prawej strony flagi funkcji, którą chcesz zmodyfikować, wybierz wielokropek ( **...** ), a następnie wybierz pozycję **Edytuj**.
 
-1. Ustaw nowy stan flagi funkcji.
+1. Ustaw nowy stan dla flagi funkcji.
 
-## <a name="access-feature-flags"></a>Dostęp do flag funkcji
+## <a name="access-feature-flags"></a>Flagi funkcji dostępu
 
-Flagi funkcji utworzone przez Menedżera funkcji są przechowywane i pobierane jako regularne wartości klucza. One poddawane prefiks przestrzeni nazw specjalnych `.appconfig.featureflag`. Aby wyświetlić podstawowych wartości kluczy, skorzystaj z Eksploratora konfiguracji. Aplikacja może pobrać te wartości przy użyciu dostawcy konfiguracji konfiguracji aplikacji, zestawów SDK, rozszerzenia wiersza polecenia i interfejsów API REST.
+Flagi funkcji utworzone przez program Feature Manager są przechowywane i pobierane jako zwykłe wartości klucza. Są one przechowywane w obszarze specjalnego prefiksu przestrzeni nazw `.appconfig.featureflag`. Aby wyświetlić wartości klucza bazowego, użyj Eksploratora konfiguracji. Aplikacja może pobrać te wartości przy użyciu dostawców konfiguracji aplikacji, zestawów SDK, rozszerzeń wiersza polecenia i interfejsów API REST.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób zarządzania flag funkcji i ich stany przy użyciu konfiguracji aplikacji. Aby uzyskać więcej informacji na temat obsługi funkcji zarządzania w konfiguracji i aplikacji platformy ASP.NET Core zobacz następujący artykuł:
+W tym samouczku przedstawiono sposób zarządzania flagami funkcji i ich Stanami przy użyciu konfiguracji aplikacji. Aby uzyskać więcej informacji na temat obsługi zarządzania funkcją w konfiguracji aplikacji i ASP.NET Core, zobacz następujący artykuł:
 
-* [Użyj flagi funkcji w aplikacji ASP.NET Core](./use-feature-flags-dotnet-core.md)
+* [Korzystanie z flag funkcji w aplikacji ASP.NET Core](./use-feature-flags-dotnet-core.md)

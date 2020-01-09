@@ -1,31 +1,24 @@
 ---
-title: Service Fabric Azure Resource Manager wdrożenia guardrails | Microsoft Docs
+title: Service Fabric wdrożenia Azure Resource Manager guardrails
 description: Ten artykuł zawiera omówienie typowych błędów wykonywanych podczas wdrażania klastra Service Fabric za pomocą Azure Resource Manager i sposobu ich unikania.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: gamonroy
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/30/2019
 ms.author: pepogors
-ms.openlocfilehash: 3ea6f850685a695644cfc3073fc939a58901658c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426735"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Podczas wdrażania klastra Service Fabric są umieszczane guardrails, co spowoduje niepowodzenie wdrożenia Azure Resource Manager w przypadku nieprawidłowej konfiguracji klastra. Poniższe sekcje zawierają omówienie typowych problemów z konfiguracją klastra oraz czynności wymagane w celu rozwiązania tych problemów. 
 
 ## <a name="durability-mismatch"></a>Niezgodność trwałości
-### <a name="overview"></a>Omówienie
+### <a name="overview"></a>Przegląd
 Wartość trwałości dla typu węzła Service Fabric jest definiowana w dwóch różnych częściach szablonu Azure Resource Manager. Sekcja rozszerzenia zestawu skalowania maszyn wirtualnych w ramach zasobu zestawu skalowania maszyn wirtualnych oraz sekcja typ węzła zasobu klastra Service Fabric. Wymagana jest zgodność wartości trwałości w tych sekcjach, w przeciwnym razie wdrażanie zasobów zakończy się niepowodzeniem.
 
 Poniższa sekcja zawiera przykład zgodności trwałości między ustawieniem trwałości rozszerzenia zestawu skalowania maszyn wirtualnych a ustawieniem trwałości typu węzła Service Fabric:  

@@ -2,24 +2,21 @@
 title: Tworzenie zadania obserwatora na koncie Azure Automation
 description: Dowiedz się, jak utworzyć zadanie obserwatora na koncie Azure Automation, aby obejrzeć nowe pliki utworzone w folderze.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419756"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Tworzenie zadań obserwatora Azure Automation w celu śledzenia zmian plików na komputerze lokalnym
 
 Azure Automation używa zadań obserwatora do oglądania zdarzeń i wyzwalania akcji za pomocą elementów Runbook programu PowerShell. Ten samouczek przeprowadzi Cię przez proces tworzenia zadania obserwatora do monitorowania po dodaniu nowego pliku do katalogu.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Importuj element Runbook obserwatora
@@ -54,7 +51,7 @@ Możesz również zaimportować ten element Runbook do konta usługi Automation 
 1. Otwórz konto usługi Automation, a następnie kliknij stronę **elementy Runbook** .
 2. Kliknij przycisk **Przeglądaj Galerię** .
 3. Wyszukaj frazę "element Runbook obserwatora", wybierz **element Runbook obserwatora, który wyszukuje nowe pliki w katalogu** , a następnie wybierz pozycję **Importuj**.
-  ![Importuj element Runbook usługi Automation z interfejsu użytkownika](media/automation-watchers-tutorial/importsourcewatcher.png)
+  ![zaimportować elementu Runbook usługi Automation z interfejsu użytkownika](media/automation-watchers-tutorial/importsourcewatcher.png)
 1. Nadaj elementowi Runbook nazwę i opis, a następnie wybierz pozycję **OK** , aby zaimportować element Runbook do konta usługi Automation.
 1. Wybierz pozycję **Edytuj** , a następnie kliknij pozycję **Publikuj**. Po wyświetleniu monitu wybierz pozycję **tak** , aby opublikować element Runbook.
 
@@ -81,7 +78,7 @@ Możesz również zaimportować ten element Runbook do konta usługi Automation 
 1. Przejdź do konta usługi Automation i wybierz pozycję **elementy Runbook** w kategorii **Automatyzacja procesu** .
 1. Kliknij przycisk **Przeglądaj Galerię** .
 1. Wyszukaj frazę "Akcja obserwatora" i wybierz **akcję obserwatora, która przetwarza zdarzenia wyzwalane przez element Runbook obserwatora** , a następnie wybierz pozycję **Importuj**.
-  ![Importuj element Runbook akcji z interfejsu użytkownika](media/automation-watchers-tutorial/importsourceaction.png)
+  ![elementu Runbook akcji importowania z interfejsu użytkownika](media/automation-watchers-tutorial/importsourceaction.png)
 1. Nadaj elementowi Runbook nazwę i opis, a następnie wybierz pozycję **OK** , aby zaimportować element Runbook do konta usługi Automation.
 1. Wybierz pozycję **Edytuj** , a następnie kliknij pozycję **Publikuj**. Po wyświetleniu monitu wybierz pozycję **tak** , aby opublikować element Runbook.
 

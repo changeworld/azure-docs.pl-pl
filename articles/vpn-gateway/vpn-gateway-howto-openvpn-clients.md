@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425792"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurowanie klientów OpenVPN dla platformy Azure VPN Gateway
 
@@ -63,7 +63,7 @@ Sprawdź, czy zostały wykonane kroki konfigurowania usługi OpenVPN dla bramy s
 
 1. Pobierz i zainstaluj klienta OpenVPN, taki jak [TunnelBlick](https://tunnelblick.net/downloads.html). 
 2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w Azure Portal lub przy użyciu polecenia "New-AzVpnClientConfiguration" w programie PowerShell.
-3. Rozpakuj profil. Otwórz plik konfiguracyjny vpnconfig. ovpn z folderu OpenVPN w Notatniku.
+3. Rozpakuj profil. Otwórz plik konfiguracyjny vpnconfig. ovpn z folderu OpenVPN w edytorze tekstów.
 4. W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Zobacz [Eksportowanie klucza publicznego,](vpn-gateway-certificates-point-to-site.md#cer) Aby uzyskać informacje na temat eksportowania certyfikatu w celu uzyskania zakodowanego klucza publicznego.
 5. W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Aby uzyskać informacje na temat sposobu wyodrębniania klucza prywatnego, zobacz [Eksportowanie klucza prywatnego](https://openvpn.net/community-resources/how-to/#pki) .
 6. Nie zmieniaj innych pól. Użyj konfiguracji wprowadzonej w danych wejściowych klienta, aby nawiązać połączenie z siecią VPN.
@@ -74,6 +74,39 @@ Sprawdź, czy zostały wykonane kroki konfigurowania usługi OpenVPN dla bramy s
 > [!IMPORTANT]
 >W przypadku protokołu OpenVPN obsługiwane są tylko systemy iOS 11,0 i nowsze oraz MacOS 10,13 i nowsze.
 >
+## <a name="iOS"></a>Klienci z systemem iOS
+
+1. Zainstaluj klienta OpenVPN (w wersji 2,4 lub nowszej) ze sklepu App Store.
+2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w Azure Portal lub przy użyciu polecenia "New-AzVpnClientConfiguration" w programie PowerShell.
+3. Rozpakuj profil. Otwórz plik konfiguracyjny vpnconfig. ovpn z folderu OpenVPN w edytorze tekstów.
+4. W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Zobacz [Eksportowanie klucza publicznego,](vpn-gateway-certificates-point-to-site.md#cer) Aby uzyskać informacje na temat eksportowania certyfikatu w celu uzyskania zakodowanego klucza publicznego.
+5. W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Aby uzyskać informacje na temat sposobu wyodrębniania klucza prywatnego, zobacz [Eksportowanie klucza prywatnego](https://openvpn.net/community-resources/how-to/#pki) .
+6. Nie zmieniaj innych pól.
+7. Wyślij pocztą e-mail plik profilu (. ovpn) na konto e-mail, które jest skonfigurowane w aplikacji poczty na telefonie iPhone. 
+8. Otwórz wiadomość e-mail w aplikacji poczty na telefonie iPhone i naciśnij załączony plik
+
+    ![Otwórz wiadomość e-mail](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. Naciśnij przycisk **więcej** , jeśli nie widzisz opcji **Kopiuj do OpenVPN**
+
+    ![Kopiuj do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. Naciśnij pozycję **Kopiuj do OpenVPN** 
+
+    ![Kopiuj do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. Naciśnij pozycję **Dodaj** na stronie **Importuj profil**
+
+    ![Kopiuj do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. Naciśnij pozycję **Dodaj** na stronie **zaimportowany profil**
+
+    ![Kopiuj do OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. Uruchom aplikację OpenVPN i przesuń przełącznik na stronę **profilu** w prawo, aby nawiązać połączenie
+
+    ![Łączenie](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Klienci z systemem Linux
 

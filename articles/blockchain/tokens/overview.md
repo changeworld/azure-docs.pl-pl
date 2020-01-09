@@ -4,12 +4,12 @@ description: Tokeny łańcucha bloków platformy Azure to platforma jako usługa
 ms.date: 11/04/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e7c106ffee8ea06c7c0ce738aa8be0aba96a38ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326083"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387177"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>Co to są tokeny usługi Azure Blockchain?
 
@@ -40,6 +40,14 @@ Aby uzyskać więcej informacji na temat zarządzania kontami usługi Azure ła�
 ## <a name="token-taxonomy-framework"></a>Struktura taksonomii tokenów
 
 Tokeny łańcucha bloków platformy Azure są oparte na opartych na standardach podstawach o nazwie platforma taksonomii tokenów (TTF). TTF to zestaw elementów dostarczanych utworzonych na podstawie grupy roboczej tokenu [taksonomii TTI (tokeny](https://entethalliance.org/participate/token-taxonomy-initiative/) ). Grupa robocza TTI definiuje taksonomię biznesową dla tokenów i ich zachowań, które mogą być stosowane do wszystkich głównych ksiąg, w tym Ethereum, kworum, przewodów i sieci szkieletowej. Celem grupy roboczej jest utworzenie struktury, która ma na celu ujednolicenie użycia tokenów z perspektywy biznesowej w celu utworzenia rozwiązań opartych na programie upraszczanie i zdemokratyzuj proces. Dzięki temu, że branża definiuje te tokeny i ich zachowanie na poziomie firmy, szczegółowa implementacja tokenów jest oddzielna od logiki biznesowej, która operuje na tokenach.
+
+## <a name="support-and-feedback"></a>Pomoc techniczna i opinie
+
+W przypadku usługi Azure łańcucha bloków News odwiedź [blog usługi Azure łańcucha bloków](https://azure.microsoft.com/blog/topics/blockchain/) , aby zachować aktualność w zakresie usług łańcucha bloków i uzyskać informacje od zespołu inżynierów ds. platformy Azure łańcucha bloków.
+
+Aby uzyskać dostęp do wersji zapoznawczej usługi Azure łańcucha bloków, [skontaktuj się z zespołem usługi Azure łańcucha bloków Tokens](https://aka.ms/PreviewForm).
+
+Aby przekazać opinie o produkcie lub zażądać nowych funkcji, Opublikuj głos na pomysł za pośrednictwem [forum opinii platformy Azure dla usługi łańcucha bloków](https://aka.ms/blockchainuservoice).
 
 ## <a name="next-steps"></a>Następne kroki
 

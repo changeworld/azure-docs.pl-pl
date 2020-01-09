@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 1f5f5f2064baa4b2821ccb7b9a2237e6aeeb86f5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 7cb3b4d6b490d09d14046465e0fc58526be5b045
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433847"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura łączności dla wystąpienia zarządzanego w Azure SQL Database
 
@@ -81,161 +81,13 @@ Po rozpoczęciu połączeń wewnątrz wystąpienia zarządzanego (podobnie jak w
 > [!NOTE]
 > Ruch kierowany do usług platformy Azure, które znajdują się w regionie wystąpienia zarządzanego, jest zoptymalizowany i z tego powodu nie jest przeznaczony dla publicznego adresu IP punktu końcowego zarządzania wystąpieniami zarządzanymi. Z tego powodu, jeśli musisz użyć reguł zapory opartych na protokole IP, najczęściej dla magazynu, usługa musi znajdować się w innym regionie niż wystąpienie zarządzane.
 
-## <a name="network-requirements"></a>Wymagania dotyczące sieci
-
-Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Podsieć musi mieć następującą charakterystykę:
-
-- **Dedykowana podsieć:** Podsieć wystąpienia zarządzanego nie może zawierać żadnej innej usługi w chmurze, która jest skojarzona z nią, i nie może być podsiecią bramy. Podsieć nie może zawierać żadnego zasobu, ale wystąpienia zarządzanego i nie można później dodać innych typów zasobów w podsieci.
-- **Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń):** SIECIOWEJ grupy zabezpieczeń, który jest skojarzony z siecią wirtualną, musi definiować [reguły zabezpieczeń dla ruchu przychodzącego](#mandatory-inbound-security-rules) i [reguły zabezpieczeń dla ruchu wychodzącego](#mandatory-outbound-security-rules) przed innymi regułami. Można użyć sieciowej grupy zabezpieczeń, aby kontrolować dostęp do punktu końcowego danych wystąpienia zarządzanego przez filtrowanie ruchu na porcie 1433 i port 11000-11999, gdy wystąpienie zarządzane jest skonfigurowane do przekierowania połączeń.
-- **Tabela zdefiniowana przez użytkownika trasa (UDR):** Tabela UDR, która jest skojarzona z siecią wirtualną, musi zawierać określone [wpisy](#user-defined-routes).
-- **Brak punktów końcowych usługi:** Żadna z punktów końcowych usługi nie powinna być skojarzona z podsiecią wystąpienia zarządzanego. Upewnij się, że opcja punkty końcowe usługi jest wyłączona podczas tworzenia sieci wirtualnej.
-- **Wystarczające adresy IP:** Podsieć wystąpienia zarządzanego musi mieć co najmniej 16 adresów IP. Zalecane minimum to 32 adresów IP. Aby uzyskać więcej informacji, zobacz [Określanie rozmiaru podsieci dla wystąpień zarządzanych](sql-database-managed-instance-determine-size-vnet-subnet.md). Wystąpienia zarządzane można wdrożyć w [istniejącej sieci](sql-database-managed-instance-configure-vnet-subnet.md) po jej skonfigurowaniu w celu spełnienia [wymagań sieci dla wystąpień zarządzanych](#network-requirements). W przeciwnym razie Utwórz [nową sieć i podsieć](sql-database-managed-instance-create-vnet-subnet.md).
-
-> [!IMPORTANT]
-> Nie można wdrożyć nowego wystąpienia zarządzanego, jeśli podsieć docelowa nie ma tych cech. Podczas tworzenia wystąpienia zarządzanego w podsieci są stosowane zasady konwersji sieci, które uniemożliwiają niezgodne zmiany konfiguracji sieci. Po usunięciu ostatniego wystąpienia z podsieci zostaną również usunięte zasady dotyczące opcji sieci.
-
-### <a name="mandatory-inbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu przychodzącego
-
-| Nazwa       |Port                        |Protokół|Element źródłowy           |Element docelowy|Akcja|
-|------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |MI PODSIEĆ  |Zezwalaj |
-|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
-|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwalaj |
-
-### <a name="mandatory-outbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu wychodzącego
-
-| Nazwa       |Port          |Protokół|Element źródłowy           |Element docelowy|Akcja|
-|------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwalaj |
-|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
-
-> [!IMPORTANT]
-> Upewnij się, że istnieje tylko jedna Reguła ruchu przychodzącego dla portów 9000, 9003, 1438, 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 443, 12000. Inicjowanie obsługi administracyjnej wystąpienia zarządzanego przy użyciu wdrożeń Azure Resource Manager zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są konfigurowane osobno dla każdego portu. Jeśli te porty są w oddzielnych regułach, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
-
-\* MI podsieć odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
-
-> [!IMPORTANT]
-> Chociaż wymagane reguły zabezpieczeń dla ruchu przychodzącego zezwalają na ruch z _dowolnego_ źródła na portach 9000, 9003, 1438, 1440 i 1452, te porty są chronione przez wbudowaną zaporę. Aby uzyskać więcej informacji, zobacz [Określanie adresu punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
-> [!NOTE]
-> Jeśli używasz replikacji transakcyjnej w wystąpieniu zarządzanym, a jeśli korzystasz z innej bazy danych wystąpienia jako Wydawca lub dystrybutor, otwórz port 445 (ruch wychodzący TCP) w regułach zabezpieczeń podsieci. Ten port zezwoli na dostęp do udziału plików platformy Azure.
-
-### <a name="user-defined-routes"></a>Trasy zdefiniowane przez użytkownika
-
-|Nazwa|Prefiks adresu|Następny przeskok|
-|----|--------------|-------|
-|subnet_to_vnetlocal|MI PODSIEĆ|Sieć wirtualna|
-|mi-13-64-11-skoku — Internet|13.64.0.0/11|Internet|
-|mi-13-96-13-skoku — Internet|13.96.0.0/13|Internet|
-|mi-13-104-14-skoku — Internet|13.104.0.0/14|Internet|
-|mi-20-8-skoku — Internet|20.0.0.0/8|Internet|
-|mi-23-96-13-skoku — Internet|23.96.0.0/13|Internet|
-|mi-40-64-10-skoku — Internet|40.64.0.0/10|Internet|
-|mi-42-159-16-skoku — Internet|42.159.0.0/16|Internet|
-|mi-51-8-skoku — Internet|51.0.0.0/8|Internet|
-|mi-52-8-skoku — Internet|52.0.0.0/8|Internet|
-|mi-64-4-18-skoku — Internet|64.4.0.0/18|Internet|
-|mi-65-52-14-skoku — Internet|65.52.0.0/14|Internet|
-|mi-66-119-144-20-skoku — Internet|66.119.144.0/20|Internet|
-|mi-70-37-17-skoku — Internet|70.37.0.0/17|Internet|
-|mi-70-37-128-18-skoku — Internet|70.37.128.0/18|Internet|
-|mi-91-190-216-21-skoku — Internet|91.190.216.0/21|Internet|
-|mi-94-245-64-18-skoku — Internet|94.245.64.0/18|Internet|
-|mi-103-9-8-22-skoku — Internet|103.9.8.0/22|Internet|
-|mi-103-25-156-22-skoku — Internet|103.25.156.0/22|Internet|
-|mi-103-36-96-22-skoku — Internet|103.36.96.0/22|Internet|
-|mi-103-255-140-22-skoku — Internet|103.255.140.0/22|Internet|
-|mi-104-40-13-skoku — Internet|104.40.0.0/13|Internet|
-|mi-104-146-15-skoku — Internet|104.146.0.0/15|Internet|
-|mi-104-208-13-skoku — Internet|104.208.0.0/13|Internet|
-|mi-111-221-16-20-skoku — Internet|111.221.16.0/20|Internet|
-|mi-111-221-64-18-skoku — Internet|111.221.64.0/18|Internet|
-|mi-129-75-16-skoku — Internet|129.75.0.0/16|Internet|
-|mi-131-253-16-skoku — Internet|131.253.0.0/16|Internet|
-|mi-132-245-16-skoku — Internet|132.245.0.0/16|Internet|
-|mi-134-170-16-skoku — Internet|134.170.0.0/16|Internet|
-|mi-134-177-16-skoku — Internet|134.177.0.0/16|Internet|
-|mi-137-116-15-skoku — Internet|137.116.0.0/15|Internet|
-|mi-137-135-16-skoku — Internet|137.135.0.0/16|Internet|
-|mi-138-91-16-skoku — Internet|138.91.0.0/16|Internet|
-|mi-138-196-16-skoku — Internet|138.196.0.0/16|Internet|
-|mi-139-217-16-skoku — Internet|139.217.0.0/16|Internet|
-|mi-139-219-16-skoku — Internet|139.219.0.0/16|Internet|
-|mi-141-251-16-skoku — Internet|141.251.0.0/16|Internet|
-|mi-146-147-16-skoku — Internet|146.147.0.0/16|Internet|
-|mi-147-243-16-skoku — Internet|147.243.0.0/16|Internet|
-|mi-150-171-16-skoku — Internet|150.171.0.0/16|Internet|
-|mi-150-242-48-22-skoku — Internet|150.242.48.0/22|Internet|
-|mi-157-54-15-skoku — Internet|157.54.0.0/15|Internet|
-|mi-157-56-14-skoku — Internet|157.56.0.0/14|Internet|
-|mi-157-60-16-skoku — Internet|157.60.0.0/16|Internet|
-|mi-167-220-16-skoku — Internet|167.220.0.0/16|Internet|
-|mi-168-61-16-skoku — Internet|168.61.0.0/16|Internet|
-|mi-168-62-15-skoku — Internet|168.62.0.0/15|Internet|
-|mi-191-232-13-skoku — Internet|191.232.0.0/13|Internet|
-|mi-192-32-16-skoku — Internet|192.32.0.0/16|Internet|
-|mi-192-48-225-24-skoku — Internet|192.48.225.0/24|Internet|
-|mi-192-84-159-24-skoku — Internet|192.84.159.0/24|Internet|
-|mi-192-84-160-23-skoku — Internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-skoku — Internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-skoku — Internet|192.100.103.0/24|Internet|
-|mi-192-197-157-24-skoku — Internet|192.197.157.0/24|Internet|
-|mi-193-149-64-19-skoku — Internet|193.149.64.0/19|Internet|
-|mi-193-221-113-24-skoku — Internet|193.221.113.0/24|Internet|
-|mi-194-69-96-19-skoku — Internet|194.69.96.0/19|Internet|
-|mi-194-110-197-24-skoku — Internet|194.110.197.0/24|Internet|
-|mi-198-105-232-22-skoku — Internet|198.105.232.0/22|Internet|
-|mi-198-200-130-24-skoku — Internet|198.200.130.0/24|Internet|
-|mi-198-206-164-24-skoku — Internet|198.206.164.0/24|Internet|
-|mi-199-60-28-24-skoku — Internet|199.60.28.0/24|Internet|
-|mi-199-74-210-24-skoku — Internet|199.74.210.0/24|Internet|
-|mi-199-103-90-23-skoku — Internet|199.103.90.0/23|Internet|
-|mi-199-103-122-24-skoku — Internet|199.103.122.0/24|Internet|
-|mi-199-242-32-20-skoku — Internet|199.242.32.0/20|Internet|
-|mi-199-242-48-21-skoku — Internet|199.242.48.0/21|Internet|
-|mi-202-89-224-20-skoku — Internet|202.89.224.0/20|Internet|
-|mi-204-13-120-21-skoku — Internet|204.13.120.0/21|Internet|
-|mi-204-14-180-22-skoku — Internet|204.14.180.0/22|Internet|
-|mi-204-79-135-24-skoku — Internet|204.79.135.0/24|Internet|
-|mi-204-79-179-24-skoku — Internet|204.79.179.0/24|Internet|
-|mi-204-79-181-24-skoku — Internet|204.79.181.0/24|Internet|
-|mi-204-79-188-24-skoku — Internet|204.79.188.0/24|Internet|
-|mi-204-79-195-24-skoku — Internet|204.79.195.0/24|Internet|
-|mi-204-79-196-23-skoku — Internet|204.79.196.0/23|Internet|
-|mi-204-79-252-24-skoku — Internet|204.79.252.0/24|Internet|
-|mi-204-152-18-23-skoku — Internet|204.152.18.0/23|Internet|
-|mi-204-152-140-23-skoku — Internet|204.152.140.0/23|Internet|
-|mi-204-231-192-24-skoku — Internet|204.231.192.0/24|Internet|
-|mi-204-231-194-23-skoku — Internet|204.231.194.0/23|Internet|
-|mi-204-231-197-24-skoku — Internet|204.231.197.0/24|Internet|
-|mi-204-231-198-23-skoku — Internet|204.231.198.0/23|Internet|
-|mi-204-231-200-21-skoku — Internet|204.231.200.0/21|Internet|
-|mi-204-231-208-20-skoku — Internet|204.231.208.0/20|Internet|
-|mi-204-231-236-24-skoku — Internet|204.231.236.0/24|Internet|
-|mi-205-174-224-20-skoku — Internet|205.174.224.0/20|Internet|
-|mi-206-138-168-21-skoku — Internet|206.138.168.0/21|Internet|
-|mi-206-191-224-19-skoku — Internet|206.191.224.0/19|Internet|
-|mi-207-46-16-skoku — Internet|207.46.0.0/16|Internet|
-|mi-207-68-128-18-skoku — Internet|207.68.128.0/18|Internet|
-|mi-208-68-136-21-skoku — Internet|208.68.136.0/21|Internet|
-|mi-208-76-44-22-skoku — Internet|208.76.44.0/22|Internet|
-|mi-208-84-21-skoku — Internet|208.84.0.0/21|Internet|
-|mi-209-240-192-19-skoku — Internet|209.240.192.0/19|Internet|
-|mi-213-199-128-18-skoku — Internet|213.199.128.0/18|Internet|
-|mi-216-32-180-22-skoku — Internet|216.32.180.0/22|Internet|
-|mi-216-220-208-20-skoku — Internet|216.220.208.0/20|Internet|
-||||
-
-Ponadto można dodać pozycje do tabeli tras, aby skierować ruch, który ma lokalne prywatne zakresy adresów IP jako miejsce docelowe za pomocą bramy sieci wirtualnej lub urządzenia sieci wirtualnej (urządzenie WUS).
-
-Jeśli sieć wirtualna zawiera niestandardowy system DNS, niestandardowy serwer DNS musi być w stanie rozpoznać publiczne rekordy DNS. Korzystanie z dodatkowych funkcji, takich jak uwierzytelnianie w usłudze Azure AD, może wymagać rozpoznawania dodatkowych nazw FQDN. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowego serwera DNS](sql-database-managed-instance-custom-dns.md).
-
-## <a name="service-aided-subnet-configuration-public-preview-in-east-us-and-west-us"></a>Konfiguracja podsieci wspomagana przez usługę (publiczna wersja zapoznawcza w regionach Wschodnie stany USA i zachodnie stany USA)
+## <a name="service-aided-subnet-configuration"></a>Konfiguracja podsieci z obsługą usług
 
 Aby rozwiązać wymagania dotyczące zabezpieczeń i możliwości zarządzania przez wystąpienie zarządzane przez klienta, przechodzą z ręcznego konfigurowania podsieci do usługi.
 
 Przy użyciu przystawki Zarządzanie podsieciami z obsługą administracyjną usługa ma pełną kontrolę nad ruchem danych (TDS), podczas gdy zarządzane wystąpienie jest odpowiedzialne za zapewnienie nieprzerwanego przepływu ruchu zarządzania w celu spełnienia warunków umowy SLA.
 
-### <a name="network-requirements-with-service-aided-subnet-configuration"></a>Wymagania sieciowe z konfiguracją podsieci z obsługą usług 
+### <a name="network-requirements"></a>Wymagania dotyczące sieci 
 
 Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Podsieć musi mieć następującą charakterystykę:
 
@@ -251,20 +103,20 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Obowiązkowe reguły zabezpieczeń dla ruchu przychodzącego z konfiguracją podsieci z obsługą usług 
 
-| Nazwa       |Port                        |Protokół|Element źródłowy           |Element docelowy|Akcja|
+| Nazwa       |Port                        |Protocol (Protokół)|Źródło           |Cel|Działanie|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Xmlmanagement    |MI PODSIEĆ  |Zezwalaj |
-|            |9000, 9003                  |TCP     |CorpnetSaw       |MI PODSIEĆ  |Zezwalaj |
-|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16|MI PODSIEĆ  |Zezwalaj |
-|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
-|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwalaj |
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Xmlmanagement    |MI PODSIEĆ  |Zezwól |
+|            |9000, 9003                  |TCP     |CorpnetSaw       |MI PODSIEĆ  |Zezwól |
+|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16, 94.245.87.0/24|MI PODSIEĆ  |Zezwól |
+|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
+|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwól |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Obowiązkowe reguły zabezpieczeń dla ruchu wychodzącego z konfiguracją podsieci z obsługą usług 
 
-| Nazwa       |Port          |Protokół|Element źródłowy           |Element docelowy|Akcja|
+| Nazwa       |Port          |Protocol (Protokół)|Źródło           |Cel|Działanie|
 |------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwalaj |
-|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwalaj |
+|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwól |
+|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Trasy zdefiniowane przez użytkownika z konfiguracją podsieci z obsługą usług 
 
@@ -426,6 +278,154 @@ Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Pods
 ||||
 
 \* MI podsieć odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
+
+Ponadto można dodać pozycje do tabeli tras, aby skierować ruch, który ma lokalne prywatne zakresy adresów IP jako miejsce docelowe za pomocą bramy sieci wirtualnej lub urządzenia sieci wirtualnej (urządzenie WUS).
+
+Jeśli sieć wirtualna zawiera niestandardowy system DNS, niestandardowy serwer DNS musi być w stanie rozpoznać publiczne rekordy DNS. Korzystanie z dodatkowych funkcji, takich jak uwierzytelnianie w usłudze Azure AD, może wymagać rozpoznawania dodatkowych nazw FQDN. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowego serwera DNS](sql-database-managed-instance-custom-dns.md).
+
+### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Przestarzałe Wymagania sieci bez konfiguracji podsieci z obsługą usług
+
+Wdróż wystąpienie zarządzane w dedykowanej podsieci w sieci wirtualnej. Podsieć musi mieć następującą charakterystykę:
+
+- **Dedykowana podsieć:** Podsieć wystąpienia zarządzanego nie może zawierać żadnej innej usługi w chmurze, która jest skojarzona z nią, i nie może być podsiecią bramy. Podsieć nie może zawierać żadnego zasobu, ale wystąpienia zarządzanego i nie można później dodać innych typów zasobów w podsieci.
+- **Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń):** SIECIOWEJ grupy zabezpieczeń, który jest skojarzony z siecią wirtualną, musi definiować [reguły zabezpieczeń dla ruchu przychodzącego](#mandatory-inbound-security-rules) i [reguły zabezpieczeń dla ruchu wychodzącego](#mandatory-outbound-security-rules) przed innymi regułami. Można użyć sieciowej grupy zabezpieczeń, aby kontrolować dostęp do punktu końcowego danych wystąpienia zarządzanego przez filtrowanie ruchu na porcie 1433 i port 11000-11999, gdy wystąpienie zarządzane jest skonfigurowane do przekierowania połączeń.
+- **Tabela zdefiniowana przez użytkownika trasa (UDR):** Tabela UDR, która jest skojarzona z siecią wirtualną, musi zawierać określone [wpisy](#user-defined-routes).
+- **Brak punktów końcowych usługi:** Żadna z punktów końcowych usługi nie powinna być skojarzona z podsiecią wystąpienia zarządzanego. Upewnij się, że opcja punkty końcowe usługi jest wyłączona podczas tworzenia sieci wirtualnej.
+- **Wystarczające adresy IP:** Podsieć wystąpienia zarządzanego musi mieć co najmniej 16 adresów IP. Zalecane minimum to 32 adresów IP. Aby uzyskać więcej informacji, zobacz [Określanie rozmiaru podsieci dla wystąpień zarządzanych](sql-database-managed-instance-determine-size-vnet-subnet.md). Wystąpienia zarządzane można wdrożyć w [istniejącej sieci](sql-database-managed-instance-configure-vnet-subnet.md) po jej skonfigurowaniu w celu spełnienia [wymagań sieci dla wystąpień zarządzanych](#network-requirements). W przeciwnym razie Utwórz [nową sieć i podsieć](sql-database-managed-instance-create-vnet-subnet.md).
+
+> [!IMPORTANT]
+> Nie można wdrożyć nowego wystąpienia zarządzanego, jeśli podsieć docelowa nie ma tych cech. Podczas tworzenia wystąpienia zarządzanego w podsieci są stosowane zasady konwersji sieci, które uniemożliwiają niezgodne zmiany konfiguracji sieci. Po usunięciu ostatniego wystąpienia z podsieci zostaną również usunięte zasady dotyczące opcji sieci.
+
+### <a name="mandatory-inbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu przychodzącego
+
+| Nazwa       |Port                        |Protocol (Protokół)|Źródło           |Cel|Działanie|
+|------------|----------------------------|--------|-----------------|-----------|------|
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |MI PODSIEĆ  |Zezwól |
+|mi_subnet   |Dowolne                         |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
+|health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|MI PODSIEĆ  |Zezwól |
+
+### <a name="mandatory-outbound-security-rules"></a>Obowiązkowe reguły zabezpieczeń dla ruchu wychodzącego
+
+| Nazwa       |Port          |Protocol (Protokół)|Źródło           |Cel|Działanie|
+|------------|--------------|--------|-----------------|-----------|------|
+|zarządzanie  |443, 12000    |TCP     |MI PODSIEĆ        |AzureCloud |Zezwól |
+|mi_subnet   |Dowolne           |Dowolne     |MI PODSIEĆ        |MI PODSIEĆ  |Zezwól |
+
+> [!IMPORTANT]
+> Upewnij się, że istnieje tylko jedna Reguła ruchu przychodzącego dla portów 9000, 9003, 1438, 1440, 1452 i jednej reguły ruchu wychodzącego dla portów 443, 12000. Inicjowanie obsługi administracyjnej wystąpienia zarządzanego przy użyciu wdrożeń Azure Resource Manager zakończy się niepowodzeniem, jeśli reguły ruchu przychodzącego i wychodzącego są konfigurowane osobno dla każdego portu. Jeśli te porty są w oddzielnych regułach, wdrożenie zakończy się niepowodzeniem z kodem błędu `VnetSubnetConflictWithIntendedPolicy`
+
+\* MI podsieć odnosi się do zakresu adresów IP podsieci w postaci 10. x. x. x/y. Te informacje można znaleźć w Azure Portal, we właściwościach podsieci.
+
+> [!IMPORTANT]
+> Chociaż wymagane reguły zabezpieczeń dla ruchu przychodzącego zezwalają na ruch z _dowolnego_ źródła na portach 9000, 9003, 1438, 1440 i 1452, te porty są chronione przez wbudowaną zaporę. Aby uzyskać więcej informacji, zobacz [Określanie adresu punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+> [!NOTE]
+> Jeśli używasz replikacji transakcyjnej w wystąpieniu zarządzanym, a jeśli korzystasz z innej bazy danych wystąpienia jako Wydawca lub dystrybutor, otwórz port 445 (ruch wychodzący TCP) w regułach zabezpieczeń podsieci. Ten port zezwoli na dostęp do udziału plików platformy Azure.
+
+### <a name="user-defined-routes"></a>Trasy zdefiniowane przez użytkownika
+
+|Nazwa|Prefiks adresu|Następny przeskok|
+|----|--------------|-------|
+|subnet_to_vnetlocal|MI PODSIEĆ|Sieć wirtualna|
+|mi-13-64-11-skoku — Internet|13.64.0.0/11|Internet|
+|mi-13-96-13-skoku — Internet|13.96.0.0/13|Internet|
+|mi-13-104-14-skoku — Internet|13.104.0.0/14|Internet|
+|mi-20-8-skoku — Internet|20.0.0.0/8|Internet|
+|mi-23-96-13-skoku — Internet|23.96.0.0/13|Internet|
+|mi-40-64-10-skoku — Internet|40.64.0.0/10|Internet|
+|mi-42-159-16-skoku — Internet|42.159.0.0/16|Internet|
+|mi-51-8-skoku — Internet|51.0.0.0/8|Internet|
+|mi-52-8-skoku — Internet|52.0.0.0/8|Internet|
+|mi-64-4-18-skoku — Internet|64.4.0.0/18|Internet|
+|mi-65-52-14-skoku — Internet|65.52.0.0/14|Internet|
+|mi-66-119-144-20-skoku — Internet|66.119.144.0/20|Internet|
+|mi-70-37-17-skoku — Internet|70.37.0.0/17|Internet|
+|mi-70-37-128-18-skoku — Internet|70.37.128.0/18|Internet|
+|mi-91-190-216-21-skoku — Internet|91.190.216.0/21|Internet|
+|mi-94-245-64-18-skoku — Internet|94.245.64.0/18|Internet|
+|mi-103-9-8-22-skoku — Internet|103.9.8.0/22|Internet|
+|mi-103-25-156-22-skoku — Internet|103.25.156.0/22|Internet|
+|mi-103-36-96-22-skoku — Internet|103.36.96.0/22|Internet|
+|mi-103-255-140-22-skoku — Internet|103.255.140.0/22|Internet|
+|mi-104-40-13-skoku — Internet|104.40.0.0/13|Internet|
+|mi-104-146-15-skoku — Internet|104.146.0.0/15|Internet|
+|mi-104-208-13-skoku — Internet|104.208.0.0/13|Internet|
+|mi-111-221-16-20-skoku — Internet|111.221.16.0/20|Internet|
+|mi-111-221-64-18-skoku — Internet|111.221.64.0/18|Internet|
+|mi-129-75-16-skoku — Internet|129.75.0.0/16|Internet|
+|mi-131-253-16-skoku — Internet|131.253.0.0/16|Internet|
+|mi-132-245-16-skoku — Internet|132.245.0.0/16|Internet|
+|mi-134-170-16-skoku — Internet|134.170.0.0/16|Internet|
+|mi-134-177-16-skoku — Internet|134.177.0.0/16|Internet|
+|mi-137-116-15-skoku — Internet|137.116.0.0/15|Internet|
+|mi-137-135-16-skoku — Internet|137.135.0.0/16|Internet|
+|mi-138-91-16-skoku — Internet|138.91.0.0/16|Internet|
+|mi-138-196-16-skoku — Internet|138.196.0.0/16|Internet|
+|mi-139-217-16-skoku — Internet|139.217.0.0/16|Internet|
+|mi-139-219-16-skoku — Internet|139.219.0.0/16|Internet|
+|mi-141-251-16-skoku — Internet|141.251.0.0/16|Internet|
+|mi-146-147-16-skoku — Internet|146.147.0.0/16|Internet|
+|mi-147-243-16-skoku — Internet|147.243.0.0/16|Internet|
+|mi-150-171-16-skoku — Internet|150.171.0.0/16|Internet|
+|mi-150-242-48-22-skoku — Internet|150.242.48.0/22|Internet|
+|mi-157-54-15-skoku — Internet|157.54.0.0/15|Internet|
+|mi-157-56-14-skoku — Internet|157.56.0.0/14|Internet|
+|mi-157-60-16-skoku — Internet|157.60.0.0/16|Internet|
+|mi-167-220-16-skoku — Internet|167.220.0.0/16|Internet|
+|mi-168-61-16-skoku — Internet|168.61.0.0/16|Internet|
+|mi-168-62-15-skoku — Internet|168.62.0.0/15|Internet|
+|mi-191-232-13-skoku — Internet|191.232.0.0/13|Internet|
+|mi-192-32-16-skoku — Internet|192.32.0.0/16|Internet|
+|mi-192-48-225-24-skoku — Internet|192.48.225.0/24|Internet|
+|mi-192-84-159-24-skoku — Internet|192.84.159.0/24|Internet|
+|mi-192-84-160-23-skoku — Internet|192.84.160.0/23|Internet|
+|mi-192-100-102-24-skoku — Internet|192.100.102.0/24|Internet|
+|mi-192-100-103-24-skoku — Internet|192.100.103.0/24|Internet|
+|mi-192-197-157-24-skoku — Internet|192.197.157.0/24|Internet|
+|mi-193-149-64-19-skoku — Internet|193.149.64.0/19|Internet|
+|mi-193-221-113-24-skoku — Internet|193.221.113.0/24|Internet|
+|mi-194-69-96-19-skoku — Internet|194.69.96.0/19|Internet|
+|mi-194-110-197-24-skoku — Internet|194.110.197.0/24|Internet|
+|mi-198-105-232-22-skoku — Internet|198.105.232.0/22|Internet|
+|mi-198-200-130-24-skoku — Internet|198.200.130.0/24|Internet|
+|mi-198-206-164-24-skoku — Internet|198.206.164.0/24|Internet|
+|mi-199-60-28-24-skoku — Internet|199.60.28.0/24|Internet|
+|mi-199-74-210-24-skoku — Internet|199.74.210.0/24|Internet|
+|mi-199-103-90-23-skoku — Internet|199.103.90.0/23|Internet|
+|mi-199-103-122-24-skoku — Internet|199.103.122.0/24|Internet|
+|mi-199-242-32-20-skoku — Internet|199.242.32.0/20|Internet|
+|mi-199-242-48-21-skoku — Internet|199.242.48.0/21|Internet|
+|mi-202-89-224-20-skoku — Internet|202.89.224.0/20|Internet|
+|mi-204-13-120-21-skoku — Internet|204.13.120.0/21|Internet|
+|mi-204-14-180-22-skoku — Internet|204.14.180.0/22|Internet|
+|mi-204-79-135-24-skoku — Internet|204.79.135.0/24|Internet|
+|mi-204-79-179-24-skoku — Internet|204.79.179.0/24|Internet|
+|mi-204-79-181-24-skoku — Internet|204.79.181.0/24|Internet|
+|mi-204-79-188-24-skoku — Internet|204.79.188.0/24|Internet|
+|mi-204-79-195-24-skoku — Internet|204.79.195.0/24|Internet|
+|mi-204-79-196-23-skoku — Internet|204.79.196.0/23|Internet|
+|mi-204-79-252-24-skoku — Internet|204.79.252.0/24|Internet|
+|mi-204-152-18-23-skoku — Internet|204.152.18.0/23|Internet|
+|mi-204-152-140-23-skoku — Internet|204.152.140.0/23|Internet|
+|mi-204-231-192-24-skoku — Internet|204.231.192.0/24|Internet|
+|mi-204-231-194-23-skoku — Internet|204.231.194.0/23|Internet|
+|mi-204-231-197-24-skoku — Internet|204.231.197.0/24|Internet|
+|mi-204-231-198-23-skoku — Internet|204.231.198.0/23|Internet|
+|mi-204-231-200-21-skoku — Internet|204.231.200.0/21|Internet|
+|mi-204-231-208-20-skoku — Internet|204.231.208.0/20|Internet|
+|mi-204-231-236-24-skoku — Internet|204.231.236.0/24|Internet|
+|mi-205-174-224-20-skoku — Internet|205.174.224.0/20|Internet|
+|mi-206-138-168-21-skoku — Internet|206.138.168.0/21|Internet|
+|mi-206-191-224-19-skoku — Internet|206.191.224.0/19|Internet|
+|mi-207-46-16-skoku — Internet|207.46.0.0/16|Internet|
+|mi-207-68-128-18-skoku — Internet|207.68.128.0/18|Internet|
+|mi-208-68-136-21-skoku — Internet|208.68.136.0/21|Internet|
+|mi-208-76-44-22-skoku — Internet|208.76.44.0/22|Internet|
+|mi-208-84-21-skoku — Internet|208.84.0.0/21|Internet|
+|mi-209-240-192-19-skoku — Internet|209.240.192.0/19|Internet|
+|mi-213-199-128-18-skoku — Internet|213.199.128.0/18|Internet|
+|mi-216-32-180-22-skoku — Internet|216.32.180.0/22|Internet|
+|mi-216-220-208-20-skoku — Internet|216.220.208.0/20|Internet|
+||||
 
 ## <a name="next-steps"></a>Następne kroki
 

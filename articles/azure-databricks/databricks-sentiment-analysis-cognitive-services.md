@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ff16458bb853323181ad8006e378a061572db463
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411132"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Samouczek: Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks
 
@@ -57,7 +57,7 @@ Aby spełnić te wymagania, wystarczy wykonać kroki opisane w artykule [Create 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Zaloguj się do [portalu Azure](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -77,7 +77,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
     |---------|---------|
     |**Nazwa obszaru roboczego**     | Podaj nazwę obszaru roboczego usługi Databricks.        |
     |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
-    |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). |
+    |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/management/overview.md). |
     |**Lokalizacja**     | Wybierz pozycję **East US 2** (Wschodnie stany USA 2). Inne dostępne regiony podano na stronie [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
     |**Warstwa cenowa**     |  Wybierz warstwę **Standardowa** lub **Premium**. Aby uzyskać więcej informacji o tych warstwach, zobacz [stronę usługi Databricks](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
@@ -160,7 +160,7 @@ W tym samouczku tweety są wysyłane do usługi Event Hubs za pomocą interfejs�
 
 W tym samouczku użyjemy [interfejsów API usługi Azure Cognitive Services analiza tekstu](../cognitive-services/text-analytics/overview.md) do uruchamiania analizy tonacji na strumieniu tweetów niemal w czasie rzeczywistym. Przed użyciem interfejsów API należy utworzyć konto usługi Azure Cognitive Services na platformie Azure i pobrać klucz dostępu, aby użyć interfejsów API analiza tekstu.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 2. Wybierz pozycję **+ Utwórz zasób**.
 
@@ -614,7 +614,7 @@ Powinny pojawić się dane wyjściowe podobne do następującego fragmentu kodu:
 
 Wartość bliższa **1** w kolumnie **Opinia** sugeruje zadowolenie z korzystania z platformy Azure. Wartość bliższa **0** sugeruje, że użytkownicy napotkali problemy podczas pracy z platformą Microsoft Azure.
 
-To wszystko! Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
+Gotowe. Za pomocą usługi Azure Databricks udało się przesłać strumień danych do usługi Azure Event Hubs, pobrać go przy użyciu łącznika usługi Event Hubs, a następnie przeprowadzić analizę tonacji na tym strumieniu w czasie niemal rzeczywistym.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

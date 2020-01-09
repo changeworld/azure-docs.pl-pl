@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Content Moderatora Biblioteka kliencka dla języka Java'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpocząć pracę z biblioteką kliencką Content Moderator Cognitive Services platformy Azure dla języka Java.
+description: W tym przewodniku szybki start dowiesz się, jak rozpocząć pracę z biblioteką kliencką Content Moderator Cognitive Services platformy Azure dla języka Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 53ac5c10672c433cb16d9ad326d936affe82a8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381940"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Szybki Start: Content Moderatora Biblioteka kliencka dla języka Java
 

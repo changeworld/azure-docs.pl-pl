@@ -4,15 +4,15 @@ description: Mapa jest funkcją Azure Monitor dla maszyn wirtualnych. Automatycz
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450722"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Użyj funkcji map Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza), aby zrozumieć składniki aplikacji
 W Azure Monitor dla maszyn wirtualnych można wyświetlić odnalezione składniki aplikacji na maszynach wirtualnych z systemem Windows i Linux, które działają na platformie Azure lub w środowisku. Można obserwować maszyny wirtualne na dwa sposoby. Wyświetl mapę bezpośrednio z maszyny wirtualnej lub Wyświetl mapę z Azure Monitor, aby wyświetlić składniki w różnych grupach maszyn wirtualnych. Ten artykuł pomoże Ci zrozumieć te dwie metody wyświetlania i sposób korzystania z funkcji map. 
@@ -115,13 +115,13 @@ Domyślnie mapa pokazuje ostatnie 30 minut. Aby zobaczyć, jak wyszukiwane są z
 ![Omówienie mapy maszyn wirtualnych Direct](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->Możesz również uzyskać dostęp do mapy dla określonego wystąpienia z widoku **wystąpień** dla zestawu skalowania maszyn wirtualnych. W sekcji **Ustawienia** przejdź do pozycji **wystąpienia**  > **Insights (wersja zapoznawcza)** .
+>Możesz również uzyskać dostęp do mapy dla określonego wystąpienia z widoku **wystąpień** dla zestawu skalowania maszyn wirtualnych. W sekcji **Ustawienia** przejdź do pozycji **wystąpienia** > **Insights (wersja zapoznawcza)** .
 
 ## <a name="view-a-map-from-azure-monitor"></a>Wyświetl mapę z Azure Monitor
 
 W Azure Monitor funkcja map zapewnia globalny widok maszyn wirtualnych i ich zależności. Aby uzyskać dostęp do funkcji map w Azure Monitor:
 
-1. W Azure Portal wybierz pozycję **Monitoruj**. 
+1. W witrynie Azure portal wybierz **Monitor**. 
 2. W sekcji **szczegółowe informacje** wybierz pozycję **Virtual Machines (wersja zapoznawcza)** .
 3. Wybierz kartę **Mapa** .
 

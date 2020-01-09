@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276ff1e5e9f709aa5b38d1efa4055dfe3baf3cc5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc92fb7bc5ddf451279e6c157f9e93aa7fe9a12a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919787"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423619"
 ---
 # <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Internetowy interfejs API wywołujący interfejsy API sieci Web — uzyskiwanie tokenu dla aplikacji
 
@@ -31,7 +31,7 @@ Po skompilowaniu obiektu aplikacji klienckiej Użyj go, aby uzyskać token, któ
 
 Oto przykład kodu, który zostanie wywołany w akcjach kontrolerów interfejsu API, wywołujący podrzędny interfejs API (o nazwie todolist).
 
-```CSharp
+```csharp
 private async Task GetTodoList(bool isAppStarting)
 {
  ...
@@ -54,7 +54,7 @@ private async Task GetTodoList(bool isAppStarting)
 
 Metoda `GetAccountIdentifier` używa oświadczeń skojarzonych z tożsamością użytkownika, dla którego internetowy interfejs API odebrał token JWT:
 
-```CSharp
+```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 {
  string userObjectId = GetObjectId(claimsPrincipal);

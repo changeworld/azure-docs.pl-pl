@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428725"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Tworzenie Azure Resource Manager szablonów w celu zautomatyzowania wdrożenia Azure Logic Apps
 
-Aby ułatwić automatyzację tworzenia i wdrażania aplikacji logiki, w tym artykule opisano sposoby tworzenia [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla aplikacji logiki. Aby zapoznać się z omówieniem struktury i składni szablonu zawierającego definicję przepływu pracy i inne zasoby niezbędne do wdrożenia, zobacz [Omówienie: Automatyzowanie wdrażania dla aplikacji logiki za pomocą szablonów Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md).
+Aby ułatwić automatyzację tworzenia i wdrażania aplikacji logiki, w tym artykule opisano sposoby tworzenia [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md) dla aplikacji logiki. Aby zapoznać się z omówieniem struktury i składni szablonu zawierającego definicję przepływu pracy i inne zasoby niezbędne do wdrożenia, zobacz [Omówienie: Automatyzowanie wdrażania dla aplikacji logiki za pomocą szablonów Azure Resource Manager](logic-apps-azure-resource-manager-templates-overview.md).
 
 Azure Logic Apps udostępnia [wstępnie utworzony szablon Azure Resource Manager aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , którego można użyć ponownie, nie tylko do tworzenia aplikacji logiki, ale także do definiowania zasobów i parametrów do użycia w ramach wdrożenia. Możesz użyć tego szablonu do własnych scenariuszy firmy lub dostosować szablon w celu spełnienia wymagań.
 
@@ -24,8 +24,8 @@ Azure Logic Apps udostępnia [wstępnie utworzony szablon Azure Resource Manager
 
 Aby uzyskać więcej informacji na temat szablonów Azure Resource Manager, zobacz następujące tematy:
 
-* [Struktura i składnia szablonu Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Struktura i składnia szablonu Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
+* [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Opracowywanie szablonów usługi Azure Resource Manager pozwalających zachować spójność w chmurze](../azure-resource-manager/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji na temat szablonów Azure Resource Manager, zoba
 
 Aby Najprostszym sposobem utworzyć prawidłowe, sparametryzowane szablony aplikacji logiki, które są głównie gotowe do wdrożenia, użyj programu Visual Studio (wersja bezpłatna lub nowsza) oraz narzędzi Azure Logic Apps Tools for Visual Studio. Następnie możesz [utworzyć aplikację logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) lub [znaleźć i pobrać istniejącą aplikację logiki z Azure Portal do programu Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-Pobierając aplikację logiki, uzyskasz szablon zawierający definicje aplikacji logiki oraz inne zasoby, takie jak połączenia. Szablon *parameterizes*również lub definiuje parametry dla, wartości używane do wdrażania aplikacji logiki i innych zasobów. Można podać wartości tych parametrów w osobnym pliku parametrów. Dzięki temu można łatwiej zmienić te wartości w zależności od potrzeb wdrożenia. Aby uzyskać więcej informacji, zobacz następujące tematy:
+Pobierając aplikację logiki, uzyskasz szablon zawierający definicje aplikacji logiki oraz inne zasoby, takie jak połączenia. Szablon *parameterizes*również lub definiuje parametry dla, wartości używane do wdrażania aplikacji logiki i innych zasobów. Można podać wartości tych parametrów w osobnym pliku parametrów. Dzięki temu można łatwiej zmienić te wartości w zależności od potrzeb wdrożenia. Aby uzyskać więcej informacji zobacz następujące tematy:
 
 * [Tworzenie aplikacji logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Zarządzanie aplikacjami logiki w programie Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)

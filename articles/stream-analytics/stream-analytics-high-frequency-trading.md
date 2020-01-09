@@ -1,20 +1,19 @@
 ---
 title: Handel o wysokiej częstotliwości przy użyciu Azure Stream Analytics
 description: Sposób przeprowadzania szkolenia i oceniania modelu regresji liniowej w ramach zadania usługi Azure Stream Analytics.
-services: stream-analytics
-author: zhongc
-ms.author: zhongc
-ms.reviewer: jasonh
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9d3c1a730c34632403669794bdd97f95e3b3662d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 06a4bdb8a8ee5d458347d30b53f740952151799e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426206"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Symulacja transakcji o wysokiej częstotliwości za pomocą usługi Stream Analytics
 Usługa Azure Stream Analytics umożliwia korzystanie z funkcji zdefiniowanych przez użytkownika (UDF) i agregatów zdefiniowanych przez użytkownika (UDA) napisanych w języku JavaScript. Połączenie tych możliwości z językiem SQL pozwala użytkownikom przeprowadzać zaawansowane analizy. Mogą one obejmować szkolenie i ocenianie w ramach uczenia maszynowego online oraz symulację procesów stanowych. W tym artykule opisano sposób przeprowadzania regresji liniowej w zadaniu usługi Azure Stream Analytics, które w sposób ciągły przeprowadza ocenianie i szkolenie w ramach scenariusza transakcji o wysokiej częstotliwości.
@@ -71,7 +70,7 @@ Nierównowaga wielkości zleceń (VOI, Volume Order Imbalance) to funkcja bież�
 
 Uczony model jest następnie używany do prognozowania zmian cen ofert dla bieżącej sesji giełdowej w czasie rzeczywistym. Jeśli prognozowana zmiana ceny jest wystarczająco duża, następuje transakcja handlowa. W zależności od ustawienia progu w ciągu sesji giełdowej można oczekiwać tysięcy transakcji powiązanych z jednym rodzajem akcji.
 
-![Definicja nierównowagi kolejności woluminów](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
+![Definicja nierównowagi kolejności woluminu](./media/stream-analytics-high-frequency-trading/volume-order-imbalance-formula.png)
 
 Teraz przedstawmy operacje szkolenia i prognozowania w zadaniu usługi Azure Stream Analytics.
 
@@ -203,7 +202,7 @@ modelInput AS (
 
 Ponieważ usługa Azure Stream Analytics nie ma wbudowanej funkcji regresji liniowej, używamy agregacji **SUM** i **AVG** do obliczania współczynników w modelu liniowym.
 
-![Formuła matematyczna regresji liniowej](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
+![Formuły matematyczne regresji liniowej](./media/stream-analytics-high-frequency-trading/linear-regression-formula.png)
 
 ```SQL
 modelagg AS (
@@ -451,9 +450,9 @@ SELECT
 FROM simulation /* output trade simulation to PBI */
 ```
 
-![Wizualizacja Power BI wykresu](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
+![Zamienia wizualizacji wykresu usługi Power BI](./media/stream-analytics-high-frequency-trading/trades-power-bi-chart.png)
 
-![Wizualizacja wykresu Power BI PNL](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
+![Wykres PNL usługi Power BI visual](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
 ## <a name="summary"></a>Podsumowanie

@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: Tworzenie jednostronicowej aplikacji wyszukiwania wideo Bing'
+title: 'Samouczek: tworzenie jednostronicowej aplikacji wyszukiwania wideo Bing'
 titleSuffix: Azure Cognitive Services
-description: Objaśnia sposób użycia interfejsu API wyszukiwania wideo Bing w jednostronicowej aplikacji internetowej.
+description: W tym samouczku wyjaśniono, jak używać interfejs API wyszukiwania wideo Bing w jednostronicowej aplikacji sieci Web.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382467"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Samouczek: Jednostronicowa aplikacja wyszukiwania wideo
+# <a name="tutorial-single-page-video-search-app"></a>Samouczek: jednostronicowa aplikacja wyszukiwania wideo
 Interfejs API wyszukiwania wideo Bing umożliwia wyszukiwanie w Internecie i uzyskiwanie wyników wideo odpowiadających zapytaniu wyszukiwania. W tym samouczku utworzymy jednostronicową aplikację internetową, która wyświetla wyniki wyszukiwania na stronie przy użyciu interfejsu API wyszukiwania Bing. Aplikacja zawiera składniki HTML, CSS i JavaScript.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -87,7 +87,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Tag HTML `<form>` `onsubmit` wywołuje funkcję `bingWebSearch`, aby zwrócić wyniki wyszukiwania. Funkcja `bingWebSearch` używa funkcji `getSubscriptionKey()` w celu uwierzytelnienia każdego zapytania. Jak pokazano w poprzedniej definicji, funkcja `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany w celu ciągłego użycia przez aplikację.
+Tag HTML `<form>``onsubmit` wywołuje funkcję `bingWebSearch`, aby zwrócić wyniki wyszukiwania. Funkcja `bingWebSearch` używa funkcji `getSubscriptionKey()` w celu uwierzytelnienia każdego zapytania. Jak pokazano w poprzedniej definicji, funkcja `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany w celu ciągłego używania przez aplikację.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
@@ -141,7 +141,7 @@ function bingSearchOptions(form) {
 Na przykład parametr `SafeSearch` w rzeczywistym wywołaniu interfejsu API może mieć wartość `strict`, `moderate`, lub `off`, przy czym `moderate` jest wartością domyślną. Jednak w naszym formularzu jest używane pole wyboru, które ma tylko dwa stany. Kod JavaScript konwertuje to ustawienie do wartości `strict` lub `off` (wartość `moderate` nie jest używana).
 
 ## <a name="performing-the-request"></a>Wykonywanie żądania
-Mając podane zapytanie, ciąg opcji i klucz interfejsu API, funkcja `BingWebSearch` używa obiektu `XMLHttpRequest`, aby wysłać żądanie do punktu końcowego wyszukiwania Bing.
+Mając podane zapytanie, ciąg opcji i klucz interfejsu API, funkcja `BingWebSearch` używa obiektu `XMLHttpRequest`, aby wysłać żądanie do punktu końcowego wyszukiwania Bing. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -261,7 +261,7 @@ Pomyślne żądanie HTTP *nie* oznacza wcale, że samo wyszukiwanie zakończyło
 
 Większość kodu w obu poprzednich funkcjach jest przeznaczona do obsługi błędów. Błędy mogą wystąpić na następujących etapach:
 
-|Etap|Potencjalne błędy|Obsługiwane przez|
+|Stage|Potencjalne błędy|Obsługiwane przez|
 |-|-|-|
 |Tworzenie obiektu żądania języka JavaScript|Nieprawidłowy adres URL|Blok `try`/`catch`|
 |Wykonywanie żądania|Błędy sieci, przerwane połączenia|Obsługa zdarzeń `error` i `abort`|
@@ -405,6 +405,6 @@ Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
 Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API wyszukiwania wideo Bing](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)

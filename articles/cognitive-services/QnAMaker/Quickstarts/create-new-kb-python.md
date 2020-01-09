@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 9114d491be1ae11623264c3beaf7c26f1fa143de
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 4aeee7ebf2c96166392d49d218f8ac5de6fe2709
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803140"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447585"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Python
 
-Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie i publikowanie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API. 
+Ten przewodnik Szybki start przeprowadzi Cię przez programowe tworzenie i publikowanie przykładowej bazy wiedzy usługi QnA Maker. Usługa QnA Maker automatycznie wyodrębnia pytania i odpowiedzi z częściowo ustrukturyzowanej zawartości, na przykład często zadawanych pytań, ze [źródeł danych](../Concepts/data-sources-supported.md). Model bazy wiedzy jest zdefiniowany w formacie JSON wysyłanym w treści żądania interfejsu API.
 
 Ten przewodnik Szybki start wywołuje interfejsy API usługi QnA Maker:
-* [Tworzenie bazy wiedzy](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Tworzenie bazy wiedzy](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [Pobieranie szczegółów operacji](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[Dokumentacja referencyjna](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python — przykład](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Środowisko Python w wersji 3.7](https://www.python.org/downloads/)
-* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal. 
-
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+* Musisz mieć [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Aby pobrać klucz i punkt końcowy (w tym nazwę zasobu), wybierz pozycję **Szybki Start** dla zasobu w Azure Portal.
 
 ## <a name="create-a-knowledge-base-python-file"></a>Tworzenie pliku Python bazy wiedzy
 
@@ -46,6 +46,13 @@ Na początku pliku `create-new-knowledge-base-3x.py` dodaj następujące wiersze
 
 ## <a name="add-the-required-constants"></a>Dodawanie wymaganych stałych
 Po poprzednich wymaganych zależnościach dodaj wymagane stałe umożliwiające dostęp do usługi QnA Maker. Zastąp wartość `<your-qna-maker-subscription-key>` i `<your-resource-name>` własnym kluczem QnA Maker i nazwą zasobu.
+
+W górnej części klasy program Dodaj wymagane stałe, aby uzyskać dostęp do QnA Maker.
+
+Ustaw następujące wartości:
+
+* `<your-qna-maker-subscription-key>` — **klucz** jest ciągiem znaków 32 i jest dostępny w Azure Portal na stronie szybkiego startu na QNA Maker zasobu. Ta wartość nie jest taka sama jak klucz punktu końcowego przewidywania.
+* `<your-resource-name>` — **nazwa zasobu** służy do KONSTRUOWANIA adresu URL tworzenia punktu końcowego na potrzeby tworzenia w formacie `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Nie jest to ten sam adres URL służący do wykonywania zapytań dotyczących punktu końcowego przewidywania.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 
@@ -63,11 +70,12 @@ Dodaj następującą funkcję, aby wyświetlić dane JSON w czytelnym formacie:
 
 ## <a name="add-function-to-create-kb"></a>Dodawanie funkcji tworzącej bazę wiedzy
 
-Dodaj następującą funkcję, aby wysłać żądanie POST HTTP w celu utworzenia bazy wiedzy. To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji w polu nagłówka **Location**. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania. 
+Dodaj następującą funkcję, aby wysłać żądanie POST HTTP w celu utworzenia bazy wiedzy.
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji w polu nagłówka **Location**. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona. `Ocp-Apim-Subscription-Key` to klucz usługi QnA Maker używany do uwierzytelniania.
 
 [!code-python[Add function to create KB](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=48-59 "Add function to create KB")]
 
-To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona. 
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera identyfikator operacji. Użyj tego identyfikatora operacji, aby określić, czy baza wiedzy została pomyślnie utworzona.
 
 ```JSON
 {
@@ -85,7 +93,7 @@ Poniższa funkcja sprawdza stan tworzenia, wysyłając identyfikator operacji na
 
 [!code-python[Add function to check creation status](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=61-67 "Add function to check creation status")]
 
-To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera stan operacji: 
+To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera stan operacji:
 
 ```JSON
 {
@@ -97,7 +105,7 @@ To wywołanie interfejsu API zwraca odpowiedź w formacie JSON, która zawiera s
 }
 ```
 
-Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia: 
+Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 
 ```JSON
 {
@@ -111,7 +119,7 @@ Powtarzaj wywołanie do momentu uzyskania stanu powodzenia lub niepowodzenia:
 ```
 
 ## <a name="add-main-code-block"></a>Dodawanie głównego bloku kodu
-Następująca pętla okresowo sonduje stan operacji tworzenia, dopóki operacja nie zostanie zakończona. 
+Następująca pętla okresowo sonduje stan operacji tworzenia, dopóki operacja nie zostanie zakończona.
 
 [!code-python[Add main code block](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=70-96 "Add main code block")]
 
@@ -125,7 +133,7 @@ python create-new-knowledge-base-3x.py
 
 Utworzoną bazę wiedzy można wyświetlić w portalu usługi QnA Maker, na stronie [My knowledge bases (Moje bazy wiedzy)](https://www.qnamaker.ai/Home/MyServices). Wybierz nazwę bazy wiedzy, na przykład „QnA Maker — FAQ”, aby ją wyświetlić.
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

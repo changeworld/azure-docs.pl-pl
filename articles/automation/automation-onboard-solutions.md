@@ -2,19 +2,15 @@
 title: Dołączanie rozwiązań aktualizacji i śledzenia zmian w usłudze Azure Automation
 description: Dowiedz się, jak dołączać rozwiązania aktualizacji i śledzenia zmian w usłudze Azure Automation.
 services: automation
-ms.service: automation
-author: eamonoreilly
-ms.author: eamono
-manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372829"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421844"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Dołączanie rozwiązań aktualizacji i śledzenia zmian w usłudze Azure Automation
 
@@ -37,7 +33,7 @@ Do wykonania czynności przedstawionych w tym samouczku są wymagane następują
 
 ## <a name="onboard-an-azure-vm"></a>Dołączanie maszyny wirtualnej platformy Azure
 
-Istnieje wiele sposobów dołączania maszyn. Rozwiązanie można dołączyć [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [z wyników przeglądania wielu maszyn](automation-onboard-solutions-from-browse.md) [z konta usługi Automation](automation-onboard-solutions-from-automation-account.md) lub przy użyciu elementu runbook. W tym samouczki przedstawiono procedurę włączania rozwiązania Update Management przy użyciu elementu runbook. Aby można było dołączać maszyny wirtualne platformy Azure na dużą skalę, do istniejącej maszyny wirtualnej należy dołączyć rozwiązanie Change tracking lub Update management. W tym kroku dołączysz maszynę wirtualną z rozwiązaniami Update management i Change tracking.
+Istnieje wiele sposobów na dołączenie maszyn, można dołączyć rozwiązanie [z maszyny wirtualnej](automation-onboard-solutions-from-vm.md), [przeglądać wiele maszyn](automation-onboard-solutions-from-browse.md) [z poziomu konta usługi Automation](automation-onboard-solutions-from-automation-account.md)lub przez element Runbook. W tym samouczki przedstawiono procedurę włączania rozwiązania Update Management przy użyciu elementu runbook. Aby można było dołączać maszyny wirtualne platformy Azure na dużą skalę, do istniejącej maszyny wirtualnej należy dołączyć rozwiązanie Change tracking lub Update management. W tym kroku dołączysz maszynę wirtualną z rozwiązaniami Update management i Change tracking.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Włączanie rozwiązania Change Tracking and Inventory
 
@@ -135,7 +131,7 @@ Aby można było uruchomić ten element runbook, musi być dołączone rozwiąza
 
 Aby usunąć maszynę wirtualną z Update Management:
 
-* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania w obszarze Konfiguracja zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
+* W obszarze roboczym Log Analytics Usuń maszynę wirtualną z zapisanego wyszukiwania `MicrosoftDefaultScopeConfig-Updates`konfiguracji zakresu. Zapisane wyszukiwania można znaleźć **ogólnie** w obszarze roboczym.
 * Usuń [program Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Następne kroki

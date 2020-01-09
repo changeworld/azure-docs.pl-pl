@@ -2,21 +2,17 @@
 title: Rozwiązywanie problemów ze zmianą w maszynie wirtualnej platformy Azure | Microsoft Docs
 description: Użyj śledzenia zmian, aby rozwiązać problemy ze zmianami w maszynie wirtualnej platformy Azure.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
 keywords: zmiana, śledzenie, automatyzacja
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 92f25d956bc8f1f930ae6ebbf7ee48c144bf8a30
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420632"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Rozwiązywanie problemów ze zmianami we własnym środowisku
 
@@ -42,7 +38,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * [Konto automatyzacji](automation-offering-get-started.md) do przechowywania obserwatora i elementów Runbook akcji oraz zadania obserwatora.
 * [Maszyna wirtualna](../virtual-machines/windows/quick-create-portal.md) do dołączenia.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -213,9 +209,9 @@ Poniższa ilustracja przedstawia przykładową wiadomość e-mail odebraną po z
 
 ![email](./media/automation-tutorial-troubleshoot-changes/email.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
+W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Dodawanie maszyny wirtualnej do śledzenia zmian i spisu

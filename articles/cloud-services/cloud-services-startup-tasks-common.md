@@ -3,17 +3,17 @@ title: Typowe zadania uruchamiania dla Cloud Services | Microsoft Docs
 description: Zawiera kilka przykładów typowych zadań uruchamiania, które można wykonać w roli sieci Web usług w chmurze lub roli proces roboczy.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 2eb299ad841444a3100eac207b225d5377959f85
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358953"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385800"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Typowe zadania uruchamiania usługi w chmurze
 W tym artykule przedstawiono kilka przykładów typowych zadań uruchamiania, które można wykonać w usłudze w chmurze. Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli. Operacje, które można wykonać, obejmują zainstalowanie składnika, zarejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchomienie długotrwałego procesu. 
@@ -25,7 +25,7 @@ Zapoznaj się z [tym artykułem](cloud-services-startup-tasks.md) , aby dowiedzi
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definiuj zmienne środowiskowe przed rozpoczęciem roli
-Jeśli potrzebujesz zmiennych środowiskowych zdefiniowanych dla określonego zadania, użyj elementu [Środowisko] wewnątrz elementu [Zadanie] .
+Jeśli potrzebujesz zmiennych środowiskowych zdefiniowanych dla określonego zadania, użyj elementu [Środowisko] wewnątrz elementu [Zadanie podrzędne] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -42,7 +42,7 @@ Jeśli potrzebujesz zmiennych środowiskowych zdefiniowanych dla określonego za
 </ServiceDefinition>
 ```
 
-Zmienne mogą również używać [prawidłowej wartości XPath platformy Azure](cloud-services-role-config-xpath.md) do odwoływania się do czegoś dotyczącego wdrożenia. Zamiast używać `value` atrybutu, zdefiniuj element podrzędny [RoleInstanceValue] .
+Zmienne mogą również używać [prawidłowej wartości XPath platformy Azure](cloud-services-role-config-xpath.md) do odwoływania się do czegoś dotyczącego wdrożenia. Zamiast korzystać z atrybutu `value`, zdefiniuj element podrzędny [RoleInstanceValue] .
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -67,7 +67,7 @@ Zmienna ERRORLEVEL zwrócona przez *Appcmd. exe* jest wymieniona w pliku Winerro
 ### <a name="example-of-managing-the-error-level"></a>Przykład zarządzania poziomem błędu
 Ten przykład dodaje sekcję kompresji i wpis kompresji dla formatu JSON do pliku *Web. config* , z obsługą błędów i rejestrowaniem.
 
-W tym miejscu są wyświetlane odpowiednie sekcje pliku ServiceDefinition [ServiceDefinition.csdef] , które obejmują ustawienie atrybutu `elevated` [kontekście wykonywania](/previous-versions/azure/reference/gg557552(v=azure.100)#task) , aby nadać programowi *Appcmd. exe* wystarczające uprawnienia do zmiany ustawień w  *Plik Web. config* :
+W tym miejscu są wyświetlane odpowiednie sekcje pliku [ServiceDefinition.csdef] , które obejmują ustawienie atrybutu [kontekście wykonywania](/previous-versions/azure/reference/gg557552(v=azure.100)#task) na `elevated`, aby nadać programowi *Appcmd. exe* wystarczające uprawnienia do zmiany ustawień w pliku *Web. config* :
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -119,9 +119,9 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Dodawanie reguł zapory
-Na platformie Azure istnieją efektywne dwie zapory. Pierwsza Zapora kontroluje połączenia między maszyną wirtualną a światem zewnętrznym. Ta zapora jest kontrolowana przez element [Punktów końcowych] w pliku [ServiceDefinition.csdef] .
+Na platformie Azure istnieją efektywne dwie zapory. Pierwsza Zapora kontroluje połączenia między maszyną wirtualną a światem zewnętrznym. Ta zapora jest kontrolowana przez element [Punkty końcowe] w pliku [ServiceDefinition.csdef] .
 
-Druga Zapora kontroluje połączenia między maszyną wirtualną a procesami w ramach tej maszyny wirtualnej. Tę zaporę można kontrolować za pomocą `netsh advfirewall firewall` narzędzia wiersza polecenia.
+Druga Zapora kontroluje połączenia między maszyną wirtualną a procesami w ramach tej maszyny wirtualnej. Tę zaporę można kontrolować za pomocą narzędzia wiersza polecenia `netsh advfirewall firewall`.
 
 Platforma Azure tworzy reguły zapory dla procesów uruchomionych w ramach ról. Na przykład po uruchomieniu usługi lub programu Platforma Azure automatycznie tworzy niezbędne reguły zapory, aby umożliwić tej usłudze komunikowanie się z Internetem. Jeśli jednak utworzysz usługę uruchomioną przez proces poza rolą (np. z usługą COM+ lub zaplanowanym zadaniem systemu Windows), musisz ręcznie utworzyć regułę zapory, aby zezwolić na dostęp do tej usługi. Te reguły zapory można utworzyć przy użyciu zadania uruchamiania.
 
@@ -138,7 +138,7 @@ Zadanie uruchamiania, które tworzy regułę zapory, musi mieć zadanie [kontek�
 </ServiceDefinition>
 ```
 
-Aby dodać regułę zapory, należy użyć odpowiednich `netsh advfirewall firewall` poleceń w pliku wsadowym uruchamiania. W tym przykładzie zadanie uruchamiania wymaga zabezpieczeń i szyfrowania dla portu TCP 80.
+Aby dodać regułę zapory, należy użyć odpowiednich poleceń `netsh advfirewall firewall` w pliku wsadowym uruchamiania. W tym przykładzie zadanie uruchamiania wymaga zabezpieczeń i szyfrowania dla portu TCP 80.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -197,7 +197,7 @@ Ta Przykładowa konfiguracja **zezwala** wszystkim adresom IP na dostęp do serw
 </system.webServer>
 ```
 
-Ta przykładowa  konfiguracja odmówi wszystkim adresom IP uzyskiwania dostępu do serwera z wyjątkiem dwóch zdefiniowanych.
+Ta Przykładowa konfiguracja **odmówi** wszystkim adresom IP uzyskiwania dostępu do serwera z wyjątkiem dwóch zdefiniowanych.
 
 ```xml
 <system.webServer>
@@ -244,11 +244,11 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>Tworzenie plików w magazynie lokalnym z poziomu zadania uruchamiania
 Zasobów magazynu lokalnego można użyć do przechowywania plików utworzonych przez zadanie uruchamiania, które są dostępne później przez aplikację.
 
-Aby utworzyć zasób magazynu lokalnego, Dodaj sekcję [LocalResources] do pliku ServiceDefinition [ServiceDefinition.csdef] , a następnie Dodaj element podrzędny [LOCALSTORAGE] . Nadaj zasobowi lokalnego magazynu unikatową nazwę i odpowiedni rozmiar zadania uruchamiania.
+Aby utworzyć zasób magazynu lokalnego, Dodaj sekcję [LocalResources] do pliku [ServiceDefinition.csdef] , a następnie Dodaj element podrzędny [LOCALSTORAGE] . Nadaj zasobowi lokalnego magazynu unikatową nazwę i odpowiedni rozmiar zadania uruchamiania.
 
 Aby użyć zasobu magazynu lokalnego w ramach zadania uruchamiania, należy utworzyć zmienną środowiskową, aby odwołać się do lokalizacji zasobów magazynu lokalnego. Następnie zadanie uruchamiania i aplikacja mogą odczytywać i zapisywać pliki w lokalnym magazynie zasobów magazynu.
 
-Odpowiednie sekcje pliku ServiceDefinition **. csdef** są przedstawione tutaj:
+Odpowiednie sekcje pliku **ServiceDefinition. csdef** są przedstawione tutaj:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -300,7 +300,7 @@ Zadanie uruchamiania może wykonywać różne kroki, gdy działa w chmurze w por
 
 Możliwość wykonywania różnych akcji na emulatorze obliczeniowym i w chmurze można osiągnąć przez utworzenie zmiennej środowiskowej w pliku [ServiceDefinition.csdef] . Następnie należy przetestować tę zmienną środowiskową dla wartości w zadaniu startowym.
 
-Aby utworzyć zmienną środowiskową, Dodaj element [Zmiennej]/[RoleInstanceValue] `/RoleEnvironment/Deployment/@emulated`i utwórz wartość XPath. Wartość zmiennej środowiskowej **% ComputeEmulatorRunning%** jest `true` uruchamiana w emulatorze obliczeniowym i `false` w przypadku uruchamiania w chmurze.
+Aby utworzyć zmienną środowiskową, należy dodać [Zmiennej]/elementu [RoleInstanceValue] i utworzyć wartość XPath `/RoleEnvironment/Deployment/@emulated`. Wartość zmiennej środowiskowej **% ComputeEmulatorRunning%** jest `true` podczas uruchamiania w emulatorze obliczeń i `false` w przypadku uruchamiania w chmurze.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -377,13 +377,13 @@ EXIT /B 0
 Poniżej przedstawiono niektóre najlepsze rozwiązania, które należy wykonać podczas konfigurowania zadania dla roli sieci Web lub procesu roboczego.
 
 ### <a name="always-log-startup-activities"></a>Zawsze Rejestruj działania uruchamiania
-Program Visual Studio nie oferuje debugera, który umożliwia przechodzenie do kolejnych plików wsadowych, dlatego warto uzyskać tyle danych na potrzeby operacji plików wsadowych, jak to możliwe. Rejestrowanie danych wyjściowych plików wsadowych, zarówno **stdout** , jak i **stderr**, może dać ważne informacje podczas próby debugowania i naprawiania plików wsadowych. Aby zalogować zarówno **stdout** , jak i **stderr** do pliku StartupLog. txt w katalogu wskazywanym przez zmienną środowiskową **% temp%** , Dodaj tekst `>>  "%TEMP%\\StartupLog.txt" 2>&1` do końca określonych wierszy, które mają być rejestrowane. Na przykład, aby wykonać plik Setup. exe w katalogu **% PathToApp1Install%** :
+Program Visual Studio nie oferuje debugera, który umożliwia przechodzenie do kolejnych plików wsadowych, dlatego warto uzyskać tyle danych na potrzeby operacji plików wsadowych, jak to możliwe. Rejestrowanie danych wyjściowych plików wsadowych, zarówno **stdout** , jak i **stderr**, może dać ważne informacje podczas próby debugowania i naprawiania plików wsadowych. Aby zalogować zarówno **stdout** , jak i **stderr** do pliku StartupLog. txt w katalogu wskazywanym przez zmienną środowiskową **% temp%** , należy dodać tekst `>>  "%TEMP%\\StartupLog.txt" 2>&1` na końcu określonych wierszy, które mają być rejestrowane. Na przykład, aby wykonać plik Setup. exe w katalogu **% PathToApp1Install%** :
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
 Aby uprościć kod XML, można utworzyć plik *cmd* otoki, który wywołuje wszystkie zadania uruchamiania programu wraz z rejestrowaniem i zapewnia, że każde zadanie podrzędne udostępnia te same zmienne środowiskowe.
 
-Może się okazać, że jest to irytujące użycie `>> "%TEMP%\StartupLog.txt" 2>&1` na końcu każdego zadania uruchamiania. Rejestrowanie zadań można wymusić, tworząc otokę, która obsługuje logowanie. Ta otoka wywołuje rzeczywisty plik wsadowy, który ma zostać uruchomiony. Wszystkie dane wyjściowe z docelowego pliku wsadowego zostaną przekierowane do pliku *Startuplog. txt* .
+Może się okazać, że jest to irytujące, aby użyć `>> "%TEMP%\StartupLog.txt" 2>&1` na końcu każdego zadania uruchamiania. Rejestrowanie zadań można wymusić, tworząc otokę, która obsługuje logowanie. Ta otoka wywołuje rzeczywisty plik wsadowy, który ma zostać uruchomiony. Wszystkie dane wyjściowe z docelowego pliku wsadowego zostaną przekierowane do pliku *Startuplog. txt* .
 
 Poniższy przykład pokazuje, jak przekierować wszystkie dane wyjściowe z pliku wsadowego uruchamiania. W tym przykładzie plik ServerDefinition. csdef tworzy zadanie uruchamiania wywołujące *logwrap. cmd*. *logwrap. cmd* wywołuje *Startup2. cmd*, przekierowując wszystkie dane wyjściowe do **% temp%\\StartupLog. txt**.
 
@@ -459,31 +459,31 @@ Przykładowe dane wyjściowe w pliku **StartupLog. txt** :
 ```
 
 > [!TIP]
-> Plik **StartupLog. txt** znajduje się w folderze *C:\Resources\temp\\{rolename} \RoleTemp* .
+> Plik **StartupLog. txt** znajduje się w folderze *C:\Resources\temp\\{role Identifier} \RoleTemp* .
 > 
 > 
 
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Ustaw kontekście wykonywania odpowiednio dla zadań uruchamiania
 Ustaw uprawnienia odpowiednio dla zadania uruchamiania. Czasami zadania uruchamiania muszą być uruchamiane z podniesionymi uprawnieniami nawet wtedy, gdy rola jest uruchomiona z normalnymi uprawnieniami.
 
-Atrybut [][zadanie] kontekście wykonywania ustawia poziom uprawnień zadania uruchamiania. Użycie `executionContext="limited"` oznacza, że zadanie uruchamiania ma ten sam poziom uprawnień co rola. Użycie `executionContext="elevated"` oznacza, że zadanie uruchamiania ma uprawnienia administratora, co umożliwia zadanie uruchamiania wykonywanie zadań administratora bez nadawania uprawnień administratora do roli.
+Atrybut [][zadanie podrzędne] kontekście wykonywania ustawia poziom uprawnień zadania uruchamiania. Przy użyciu `executionContext="limited"` oznacza, że zadanie uruchamiania ma ten sam poziom uprawnień co rola. Przy użyciu `executionContext="elevated"` oznacza, że zadanie uruchamiania ma uprawnienia administratora, co umożliwia wykonywanie zadań administratora przez zadanie uruchamiania bez nadawania uprawnień administratora do roli użytkownika.
 
 Przykładem zadania uruchamiania, które wymaga podniesionych uprawnień, jest zadanie uruchamiania, które używa narzędzia **Appcmd. exe** w celu skonfigurowania usług IIS. **Plik Appcmd. exe** wymaga `executionContext="elevated"`.
 
 ### <a name="use-the-appropriate-tasktype"></a>Użyj odpowiedniego zadania
-Atrybut [][zadanie] TaskType określa sposób wykonywania zadania uruchamiania. Istnieją trzy wartości: **proste**, **tła**i **pierwszego planu**. Zadania tła i pierwszego planu są uruchamiane asynchronicznie, a następnie proste zadania są wykonywane synchronicznie po jednym naraz.
+Atrybut [][zadanie podrzędne] TaskType określa sposób wykonywania zadania uruchamiania. Istnieją trzy wartości: **proste**, **tła**i **pierwszego planu**. Zadania tła i pierwszego planu są uruchamiane asynchronicznie, a następnie proste zadania są wykonywane synchronicznie po jednym naraz.
 
 Przy użyciu **prostych** zadań uruchamiania można ustawić kolejność wykonywania zadań w kolejności, w której zadania są wyświetlane w pliku ServiceDefinition. csdef. Jeśli **proste** zadanie kończy się niezerowym kodem zakończenia, procedura uruchamiania zostaje zatrzymana, a rola nie zostanie uruchomiona.
 
 Różnica między zadaniami uruchamiania w **tle** i zadaniami uruchamiania **pierwszego planu** polega na tym, że zadania na **pierwszym planie** zachowują rolę działającą do momentu zakończenia zadania **pierwszego planu** . Oznacza to również, że jeśli zadanie **pierwszego planu** zawiesza się lub ulega awarii, rola nie będzie odtwarzana do momentu wymuszonego zamknięcia zadania na **pierwszym planie** . Z tego powodu zadania w **tle** są zalecane w przypadku asynchronicznych zadań uruchamiania, chyba że jest potrzebna funkcja zadania **pierwszego planu** .
 
 ### <a name="end-batch-files-with-exit-b-0"></a>Zakończ pliki wsadowe z opcją EXIT/B 0
-Rola zostanie uruchomiona tylko wtedy, gdy **zmienna ERRORLEVEL** z każdego prostego zadania uruchamiania ma wartość zero. Nie wszystkie programy poprawnie ustawiają **ERRORLEVEL** (kod zakończenia), więc plik wsadowy powinien kończyć się, `EXIT /B 0` Jeśli wszystko działa prawidłowo.
+Rola zostanie uruchomiona tylko wtedy, gdy **zmienna ERRORLEVEL** z każdego prostego zadania uruchamiania ma wartość zero. Nie wszystkie programy poprawnie ustawiają **ERRORLEVEL** (kod zakończenia), więc plik wsadowy powinien kończyć się `EXIT /B 0`, jeśli wszystko działa prawidłowo.
 
 Brak `EXIT /B 0` na końcu pliku wsadowego uruchamiania jest powszechną przyczyną ról, które nie są uruchamiane.
 
 > [!NOTE]
-> Zauważyliśmy, że zagnieżdżone pliki wsadowe czasami zawieszają się podczas `/B` korzystania z parametru. Warto upewnić się, że ten problem zawieszający nie występuje, jeśli inny plik wsadowy wywoła bieżący plik wsadowy, na przykład w przypadku użycia [otoki dzienników](#always-log-startup-activities). W tym przypadku można `/B` pominąć parametr.
+> Zauważyliśmy, że zagnieżdżone pliki wsadowe czasami zawieszają się podczas korzystania z parametru `/B`. Warto upewnić się, że ten problem zawieszający nie występuje, jeśli inny plik wsadowy wywoła bieżący plik wsadowy, na przykład w przypadku użycia [otoki dzienników](#always-log-startup-activities). W tym przypadku można pominąć parametr `/B`.
 > 
 > 
 
@@ -491,7 +491,7 @@ Brak `EXIT /B 0` na końcu pliku wsadowego uruchamiania jest powszechną przyczy
 Nie wszystkie oddziałania ról obejmują ponowny rozruch, ale wszystkie odtwarzanie ról obejmują uruchamianie wszystkich zadań uruchamiania. Oznacza to, że zadania uruchamiania muszą być w stanie uruchamiać wiele razy między ponownymi uruchomieniami bez jakichkolwiek problemów. Ta sekcja została omówiona w [poprzedniej sekcji](#detect-that-your-task-has-already-run).
 
 ### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Przechowywanie plików, do których należy uzyskać dostęp w roli, przy użyciu magazynu lokalnego
-Jeśli chcesz skopiować lub utworzyć plik podczas zadania uruchamiania, które jest następnie dostępne dla roli, ten plik musi być umieszczony w magazynie lokalnym. Zapoznaj [](#create-files-in-local-storage-from-a-startup-task)się z poprzednią sekcją.
+Jeśli chcesz skopiować lub utworzyć plik podczas zadania uruchamiania, które jest następnie dostępne dla roli, ten plik musi być umieszczony w magazynie lokalnym. Zapoznaj się z [poprzednią sekcją](#create-files-in-local-storage-from-a-startup-task).
 
 ## <a name="next-steps"></a>Następne kroki
 Przejrzyj [model i pakiet usługi w](cloud-services-model-and-package.md) chmurze
@@ -501,14 +501,17 @@ Dowiedz się więcej na temat działania [zadań](cloud-services-startup-tasks.m
 [Utwórz i Wdróż](cloud-services-how-to-create-deploy-portal.md) pakiet usługi w chmurze.
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Zadanie]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Zadanie podrzędne]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Środowisko]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Zmiennej]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Punktów końcowych]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Punkty końcowe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+
+
+

@@ -1,19 +1,18 @@
 ---
 title: Przetwarzanie strumieni danych IoT w czasie rzeczywistym za pomocą Azure Stream Analytics
 description: Używanie tagów czujników IoT i strumieni danych z analizą strumieni i przetwarzaniem danych w czasie rzeczywistym
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 1cc9c6dbb700664e732a67245563e9a211456767
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426240"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Przetwarzanie strumieni danych IoT w czasie rzeczywistym za pomocą Azure Stream Analytics
 
@@ -63,7 +62,7 @@ Pobierz plik [HelloWorldASA-InputStream. JSON](https://github.com/Azure/azure-st
 
 Wybierz pozycję **zapytanie** w obszarze **topologia zadania** z menu po lewej stronie. Następnie wybierz pozycję **Przekaż przykładowe dane wejściowe**. Przekaż plik `HelloWorldASA-InputStream.json` i wybierz **przycisk OK**.
 
-![Kafelek zapytania pulpitu nawigacyjnego Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Stream Analytics pulpit nawigacyjny zapytania kafelka](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 Zwróć uwagę, że Podgląd danych jest automatycznie wypełniany w tabeli **podglądu danych wejściowych** .
 
@@ -84,11 +83,11 @@ FROM
 
 Wybierz **kwerendę testową** i Wyświetl wyniki w tabeli **wyników testu** .
 
-![Wyniki testu dla zapytania Stream Analyticsowego](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![Wyniki testu dla zapytania usługi Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Zapytanie: filtrowanie danych na podstawie warunku
 
-Spróbujmy przefiltrować wyniki na podstawie warunku. Chcemy wyświetlić wyniki tylko dla tych zdarzeń, które pochodzą z "czujnika".
+Spróbujmy przefiltrować wyniki na podstawie warunku. Chcielibyśmy wyświetlić wyniki tylko dla tych zdarzeń, które pochodzą z czujnika "sensorA".
 
 ```sql
 SELECT 

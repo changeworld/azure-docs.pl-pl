@@ -1,203 +1,203 @@
 ---
 title: VMware Monitoring rozwiązanie w Azure Monitor | Microsoft Docs
-description: Dowiedz się, w jaki sposób rozwiązanie VMware Monitoring może pomóc w zarządzaniu dziennikami i monitorowaniu hostów ESXi.
+description: Dowiedz się więcej o tym, jak to rozwiązanie monitorowanie VMware mogą ułatwić zarządzanie dziennikami i monitorowanie hostów ESXi.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dc453ad42312bb096aed1356d376b0906870a7b0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ac735c9131ebe7b7273d93a927cb4d4a8be24508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399191"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Rozwiązanie VMware Monitoring (przestarzałe) w Azure Monitor
 
-![Symbol VMware](./media/vmware/vmware-symbol.png)
+![Symbol programu VMware](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
-> Rozwiązanie VMware Monitoring zostało wycofane.  Klienci, którzy już zainstalowali rozwiązanie, mogą nadal z niego korzystać, ale nie można dodać VMware Monitoring do żadnych nowych obszarów roboczych.
+> To rozwiązanie monitorowanie VMware jest przestarzała.  Klienci, którzy już zainstalowano rozwiązania można nadal z niego korzystać, ale monitorowanie VMware nie można dodać do żadnych nowych obszarów roboczych.
 
-VMware Monitoring rozwiązanie w Azure Monitor to rozwiązanie, które ułatwia tworzenie scentralizowanego podejścia do rejestrowania i monitorowania dużych dzienników VMware. W tym artykule opisano sposób rozwiązywania problemów, przechwytywania i zarządzania hostami ESXi w jednej lokalizacji przy użyciu rozwiązania. Dzięki rozwiązaniu można zobaczyć szczegółowe dane dla wszystkich hostów ESXi w jednej lokalizacji. Można wyświetlić największe liczby zdarzeń, stan i trendy maszyn wirtualnych i hostów ESXi dostarczonych za pomocą dzienników hosta ESXi. Aby rozwiązać problemy, można wyświetlić i przeszukać scentralizowane dzienniki hosta ESXi. I można tworzyć alerty oparte na zapytaniach wyszukiwania w dziennikach.
+VMware Monitoring rozwiązanie w Azure Monitor to rozwiązanie, które ułatwia tworzenie scentralizowanego podejścia do rejestrowania i monitorowania dużych dzienników VMware. W tym artykule opisano, jak można rozwiązać, przechwytywania i zarządzać hostów ESXi w obrębie jednej lokalizacji za pomocą rozwiązania. Dzięki rozwiązaniu można poznać szczegółowe dane dla wszystkich hostów ESXi w obrębie jednej lokalizacji. Widać, liczby najważniejszych zdarzeń, stanu i trendów maszyn wirtualnych i ESXi hostów, oferowana w ramach dzienniki hostów ESXi. Można rozwiązać, wyświetlania i przeszukiwania scentralizowanych dzienników hostów ESXi. Ponadto możesz utworzyć alerty w oparciu o zapytań funkcji przeszukiwania dzienników.
 
-Rozwiązanie używa natywnej funkcji dziennika systemu hosta ESXi do wypychania danych do docelowej maszyny wirtualnej, która ma Log Analytics agenta. Jednak rozwiązanie nie zapisuje plików w dzienniku systemowym na docelowej maszynie wirtualnej. Agent Log Analytics otwiera port 1514 i nasłuchuje na tym. Po odebraniu danych Agent Log Analytics wypycha dane do Azure Monitor.
+Rozwiązanie korzysta z funkcji natywnej syslog hosta ESXi w celu wypychania danych do docelowej maszyny Wirtualnej, która ma agenta usługi Log Analytics. Jednak to rozwiązanie nie zapisywać pliki do usługi syslog w ramach docelowej maszyny Wirtualnej. Agent usługi Log Analytics otwiera port 1514 i nasłuchuje tej. Po odebraniu danych Agent Log Analytics wypycha dane do Azure Monitor.
 
-## <a name="install-and-configure-the-solution"></a>Instalowanie i Konfigurowanie rozwiązania
+## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
 * Dodaj rozwiązanie VMware Monitoring do subskrypcji przy użyciu procesu opisanego w artykule [Instalowanie rozwiązania monitorowania](../insights/solutions.md#install-a-monitoring-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Obsługiwane hosty VMware ESXi
-vSphere ESXi host 5,5, 6,0 i 6,5
+vSphere hosta ESXi 5.5, 6.0 i 6.5
 
-#### <a name="prepare-a-linux-server"></a>Przygotowywanie serwera z systemem Linux
-Utwórz maszynę wirtualną z systemem operacyjnym Linux, aby otrzymywać wszystkie dane dziennika systemu z hostów ESXi. [Agent log Analytics Linux](../learn/quick-collect-linux-computer.md) to punkt kolekcji dla wszystkich danych dziennika systemowego hosta ESXi. Do przesyłania dzienników do jednego serwera z systemem Linux można użyć wielu hostów ESXi, jak w poniższym przykładzie.
+#### <a name="prepare-a-linux-server"></a>Przygotowanie na serwerze z systemem Linux
+Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie dane usługi syslog hostów ESXi. [Agenta Log Analytics dla systemu Linux](../learn/quick-collect-linux-computer.md) to punkt kolekcji wszystkie dane usługi syslog hosta ESXi. Do przekazywania dzienników na jednym serwerze z systemem Linux, jak w poniższym przykładzie, można użyć wielu hostach ESXi.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-   ![przepływ dziennika systemowego](./media/vmware/diagram.png)
+   ![Przepływ usługi SYSLOG](./media/vmware/diagram.png)
 
-### <a name="configure-syslog-collection"></a>Konfigurowanie kolekcji dziennika systemowego
-1. Skonfiguruj przekazywanie dziennika systemowego do usługi VSphere. Aby uzyskać szczegółowe informacje ułatwiające skonfigurowanie przekazywania dziennika systemu, zobacz [Konfigurowanie dziennika systemowego na ESXi 5,0 i wyższych (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Przejdź do pozycji **Konfiguracja hosta ESXi** > **Software** > **Settings Advanced** > **dziennika**systemowego.
+### <a name="configure-syslog-collection"></a>Konfiguruj zbieranie dzienników systemowych
+1. Konfigurowanie przekazywania usługi syslog dla VSphere. Aby uzyskać szczegółowe informacje ułatwiające konfigurowanie przekazywania usługi syslog, zobacz [Konfigurowanie dziennika systemowego na ESXi 5.0 lub nowszym (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Przejdź do **konfiguracji hosta ESXi** > **oprogramowania** > **Zaawansowane ustawienia** > **Syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. W polu *Dziennik system. Global. logHost* Dodaj serwer z systemem Linux i numer portu *1514*. Na przykład `tcp://hostname:1514` lub `tcp://123.456.789.101:1514`
-1. Otwórz Zaporę hosta ESXi dla dziennika systemowego. **Konfiguracja hosta ESXi** > **oprogramowania** > **profilu zabezpieczeń** > **Zapora** i Otwórz **Właściwości**.  
+1. W *Syslog.global.logHost* pola, Dodaj serwer systemu Linux i numer portu *1514*. Na przykład `tcp://hostname:1514` lub `tcp://123.456.789.101:1514`
+1. Otwórz zaporę hosta ESXi, dla dziennika systemowego. **Konfiguracja hosta ESXi** > **oprogramowania** > **profil zabezpieczeń** > **zapory** , a następnie otwórz **Właściwości**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
-1. Sprawdź konsolę vSphere, aby sprawdzić, czy dziennik systemowy jest prawidłowo skonfigurowany. Na hoście ESXI upewnij się, że skonfigurowano port **1514** .
-1. Pobierz i Zainstaluj agenta Log Analytics dla systemu Linux na serwerze z systemem Linux. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją dla programu log Analytics Agent dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Po zainstalowaniu agenta Log Analytics dla systemu Linux przejdź do katalogu/etc/opt/Microsoft/omsagent/sysconf/omsagent.d i skopiuj plik vmware_esxi. conf do katalogu/etc/opt/Microsoft/omsagent/conf/omsagent.d, a następnie Zmień właściciela/grupę i uprawnienia do pliku. Na przykład:
+1. Sprawdź vSphere konsoli, aby sprawdzić, czy ten syslog nie jest prawidłowo skonfigurowany. Upewnij się na hoście ESXI, ten port **1514** jest skonfigurowany.
+1. Pobierz i zainstaluj agenta usługi Log Analytics dla systemu Linux na serwerze z systemem Linux. Aby uzyskać więcej informacji, zobacz [dokumentację dla agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
+1. Po agenta usługi Log Analytics dla systemu Linux jest zainstalowana, przejdź do katalogu /etc/opt/microsoft/omsagent/sysconf/omsagent.d i skopiuj vmware_esxi.conf plik do katalogu /etc/opt/microsoft/omsagent/conf/omsagent.d i zmiany właściciela/grupę i uprawnienia do pliku. Przykład:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Uruchom ponownie agenta Log Analytics dla systemu Linux, uruchamiając `sudo /opt/microsoft/omsagent/bin/service_control restart`.
-1. Przetestuj połączenie między serwerem z systemem Linux i hostem ESXi przy użyciu polecenia `nc` na hoście ESXi. Na przykład:
+1. Uruchom ponownie agenta usługi Log Analytics dla systemu Linux, uruchamiając `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+1. Przetestuj łączność między serwerze z systemem Linux i hosta ESXi przy użyciu `nc` polecenie na hoście ESXi. Przykład:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. W Azure Portal wykonaj zapytanie dziennika dla `VMware_CL`. Gdy Azure Monitor zbiera dane dziennika systemu, zachowuje format dziennika systemowego. W portalu są przechwytywane określone pola, takie jak *Nazwa hosta* i *procesname*.  
+1. W Azure Portal wykonaj zapytanie dziennika dla `VMware_CL`. Gdy Azure Monitor zbiera dane dziennika systemu, zachowuje format dziennika systemowego. W portalu, niektóre określonych pól są przechwytywane, takich jak *Hostname* i *ProcessName*.  
 
     ![type](./media/vmware/type.png)  
 
-    Jeśli wyniki przeszukiwania dzienników widoku są podobne do powyższego obrazu, można użyć pulpitu nawigacyjnego rozwiązania VMware Monitoring.  
+    Jeśli wyświetlanie wyników wyszukiwania dziennika są podobne do powyższej ilustracji, gotowe do użycia pulpit nawigacyjny rozwiązania monitorowanie VMware.  
 
 ## <a name="vmware-data-collection-details"></a>Szczegóły zbierania danych VMware
-Rozwiązanie VMware Monitoring zbiera różne metryki wydajności i dane dzienników z hostów ESXi przy użyciu agentów Log Analytics dla systemu Linux, które zostały włączone.
+To rozwiązanie monitorowanie VMware zbiera różne dane metryk i dzienników wydajności z hostów ESXi przy użyciu agentów usługi Log Analytics dla systemu Linux, które mają włączone.
 
-W poniższej tabeli przedstawiono metody zbierania danych oraz inne szczegóły dotyczące sposobu zbierania danych.
+W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dotyczące sposobu zbierania danych.
 
-| Platformach | Agent Log Analytics dla systemu Linux | Agent SCOM | Azure Storage | Czy SCOM jest wymagany? | Dane agenta SCOM wysyłane przez grupę zarządzania | częstotliwość zbierania |
+| Platforma | Log Analytics agent dla systemu Linux | Agenta programu SCOM | Azure Storage | SCOM wymagane? | Dane agenta programu SCOM wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |co 3 minuty |
 
-W poniższej tabeli przedstawiono przykłady pól danych zbieranych przez rozwiązanie VMware Monitoring:
+Poniższa tabela wyświetlanie przykładów pól danych zbieranych przez rozwiązanie monitorowanie VMware:
 
 | Nazwa pola | description |
 | --- | --- |
-| Device_s |Urządzenia magazynujące VMware |
+| Device_s |Urządzenia magazynujące programu VMware |
 | ESXIFailure_s |typy błędów |
-| EventTime_t |czas wystąpienia zdarzenia |
+| EventTime_t |Godzina wystąpienia zdarzenia |
 | HostName_s |Nazwa hosta ESXi |
-| Operation_s |Tworzenie maszyny wirtualnej lub usuwanie maszyny wirtualnej |
+| Operation_s |Tworzenie maszyny Wirtualnej lub Usuń maszynę Wirtualną |
 | ProcessName_s |Nazwa zdarzenia |
 | ResourceId_s |Nazwa hosta VMware |
 | ResourceLocation_s |VMware |
 | ResourceName_s |VMware |
 | ResourceType_s |Funkcja Hyper-V |
-| SCSIStatus_s |Stan SCSI VMware |
-| SyslogMessage_s |Dane dziennika systemu |
-| UserName_s |Użytkownik, który utworzył lub usunął maszynę wirtualną |
+| SCSIStatus_s |Stan VMware SCSI |
+| SyslogMessage_s |Dane usługi SYSLOG |
+| UserName_s |Użytkownik, który utworzeniu lub usunięciu maszyny Wirtualnej |
 | VMName_s |Nazwa maszyny wirtualnej |
-| Computer |komputer-host |
-| TimeGenerated |godzina wygenerowania danych |
-| DataCenter_s |Oprogramowanie VMware Datacenter |
-| StorageLatency_s |opóźnienie magazynu (MS) |
+| Computer (Komputer) |komputer-host |
+| TimeGenerated |czas wygenerowania danych |
+| DataCenter_s |Centrum danych VMware |
+| StorageLatency_s |Magazyn, opóźnienie (ms) |
 
-## <a name="vmware-monitoring-solution-overview"></a>Przegląd rozwiązania VMware Monitoring
-Kafelek VMware zostanie wyświetlony w obszarze roboczym Log Analytics. Zapewnia ogólny widok wszelkich błędów. Po kliknięciu kafelka przejdziesz do widoku pulpitu nawigacyjnego.
+## <a name="vmware-monitoring-solution-overview"></a>Monitorowanie VMware — Omówienie rozwiązania
+Na kafelku VMware pojawia się w obszarze roboczym usługi Log Analytics. Zapewnia ogólny widok wszystkich błędów. Po kliknięciu kafelka, przejdź do widoku pulpitu nawigacyjnego.
 
 ![kafelek](./media/vmware/tile.png)
 
-#### <a name="navigate-the-dashboard-view"></a>Nawigowanie w widoku pulpitu nawigacyjnego
-W widoku pulpitu nawigacyjnego **VMware** bloki są zorganizowane według:
+#### <a name="navigate-the-dashboard-view"></a>Przejdź do widoku pulpitu nawigacyjnego
+W **VMware** widoku pulpitu nawigacyjnego bloki są uporządkowane według:
 
-* Liczba Stanów niepowodzenia
-* Najpopularniejsze hosty według liczb zdarzeń
-* Najważniejsze zliczenia zdarzeń
+* Liczba stanu błędu
+* Najważniejsze hosta według liczb zdarzeń
+* Liczby najważniejszych zdarzeń
 * Działania maszyny wirtualnej
-* Zdarzenia dysku hosta ESXi
+* Zdarzenia dotyczące dysków hostów ESXi
 
 ![solution1](./media/vmware/solutionview1-1.png)
 
 ![solution2](./media/vmware/solutionview1-2.png)
 
-Kliknij dowolny blok, aby otworzyć okienko wyszukiwania Log Analytics, które zawiera szczegółowe informacje specyficzne dla bloku.
+Kliknij przycisk bloku, aby otworzyć okienko wyszukiwania usługi Log Analytics, która zawiera szczegółowe informacje specyficzne dla bloku.
 
 W tym miejscu można edytować zapytanie dziennika w celu zmodyfikowania go dla określonego elementu. Aby uzyskać szczegółowe informacje na temat tworzenia zapytań dziennika, zobacz [Znajdowanie danych przy użyciu zapytań dzienników w Azure monitor](../log-query/log-query-overview.md).
 
-#### <a name="find-esxi-host-events"></a>Znajdź zdarzenia hosta ESXi
-Pojedynczy Host ESXi generuje wiele dzienników w oparciu o ich procesy. Rozwiązanie VMware Monitoring pozwala na ich scentralizowane i podsumowywanie liczby zdarzeń. Ten scentralizowany widok pomaga zrozumieć, który host ESXi ma dużą ilość zdarzeń i jakie zdarzenia często występują w danym środowisku.
+#### <a name="find-esxi-host-events"></a>Znajdź wydarzenia hosta ESXi
+Jeden host ESXi generuje wiele dzienników, w oparciu o ich procesów. To rozwiązanie monitorowanie VMware centralizuje je i zawiera podsumowanie liczby zdarzeń. To scentralizowany widok pomaga zrozumieć, które hostów ESXi ma dużej liczby zdarzeń i jakie zdarzenia występują najczęściej w danym środowisku.
 
-![wydarzen](./media/vmware/events.png)
+![zdarzenie](./media/vmware/events.png)
 
-Możesz przejść do szczegółów, klikając hosta ESXi lub typ zdarzenia.
+Możesz przejść do dalszych klikając hosta ESXi lub typu zdarzenia.
 
-Po kliknięciu nazwy hosta ESXi można wyświetlić informacje z tego hosta ESXi. Jeśli chcesz zawęzić wyniki przy użyciu typu zdarzenia, Dodaj `“ProcessName_s=EVENT TYPE”` w zapytaniu wyszukiwania. W filtrze wyszukiwania można wybrać wartość **ProcessName** . Pozwala to zawęzić informacje dla Ciebie.
+Po kliknięciu nazwy hosta ESXi, możesz przeglądać informacje z tego hosta ESXi. Jeśli chcesz zawęzić wyniki z typem zdarzenia, należy dodać `“ProcessName_s=EVENT TYPE”` w zapytaniu wyszukiwania. Możesz wybrać **ProcessName** w filtrze wyszukiwania. Który zawęża informacje dla Ciebie.
 
-![prób](./media/vmware/eventhostdrilldown.png)
+![Przechodzenie do szczegółów](./media/vmware/eventhostdrilldown.png)
 
-#### <a name="find-high-vm-activities"></a>Znajdowanie działań o dużej maszynie wirtualnej
-Maszynę wirtualną można utworzyć i usunąć na dowolnym hoście ESXi. Pomaga administratorowi określić, ile maszyn wirtualnych tworzy Host ESXi. To z kolei pomaga zrozumieć planowanie wydajności i pojemności. Śledzenie zdarzeń aktywności maszyn wirtualnych jest niezwykle ważne w przypadku zarządzania środowiskiem.
+#### <a name="find-high-vm-activities"></a>Znajdź wysokiej działania maszyny Wirtualnej
+Maszyny wirtualne można tworzyć i usunięty na żadnym hoście ESXi. Jest to przydatne dla administratora zidentyfikować ile maszyn wirtualnych, które tworzy hosta ESXi. Tego umożliwiłoby, ułatwia zrozumienie wydajności i planowania pojemności. Rejestrowanie informacji o zdarzeń działania maszyny Wirtualnej jest niezwykle istotne w przypadku, gdy zarządzania środowiskiem.
 
-![prób](./media/vmware/vmactivities1.png)
+![Przechodzenie do szczegółów](./media/vmware/vmactivities1.png)
 
-Jeśli chcesz zobaczyć dodatkowe dane dotyczące tworzenia maszyny wirtualnej hosta ESXi, kliknij nazwę hosta ESXi.
+Jeśli chcesz wyświetlić dodatkowe dane tworzenia maszyny Wirtualnej hosta ESXi, kliknij nazwę hosta ESXi.
 
-![prób](./media/vmware/createvm.png)
+![Przechodzenie do szczegółów](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Typowe zapytania dzienników
-Rozwiązanie obejmuje inne przydatne zapytania, które mogą ułatwić Zarządzanie hostami ESXi, takimi jak duże miejsce do magazynowania, opóźnienie magazynu i awaria ścieżki.
+Rozwiązanie zawiera inne przydatne zapytania, które mogą pomóc Ci w zarządzaniu hostów ESXi, takie jak miejsce do magazynowania o wysokiej, opóźnienie magazynu i ścieżka błędu.
 
 ![— zapytania](./media/vmware/queries.png)
 
 
-#### <a name="save-queries"></a>Zapisz zapytania
-Zapisywanie zapytań dzienników jest standardową funkcją w Azure Monitor i ułatwia zachowanie wszelkich zapytań, które okazały się przydatne. Po utworzeniu kwerendy, która jest przydatna, Zapisz ją, klikając przycisk **Ulubione**. Zapisane zapytanie pozwala z łatwością użyć go później na stronie [mój pulpit nawigacyjny](../learn/tutorial-logs-dashboards.md) , na której można tworzyć własne niestandardowe pulpity nawigacyjne.
+#### <a name="save-queries"></a>Zapisywanie zapytań
+Zapisywanie zapytań dzienników jest standardową funkcją w Azure Monitor i ułatwia zachowanie wszelkich zapytań, które okazały się przydatne. Po utworzeniu zapytania, które możesz się przydać, zapisz go, klikając **ulubione**. Zapisane zapytanie pozwala z łatwością wykorzystać ją później [Mój pulpit nawigacyjny](../learn/tutorial-logs-dashboards.md) strony, w którym można utworzyć własne niestandardowe pulpity nawigacyjne.
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
-#### <a name="create-alerts-from-queries"></a>Tworzenie alertów z zapytań
-Po utworzeniu zapytań możesz chcieć użyć zapytań w celu wygenerowania alertów w przypadku wystąpienia określonych zdarzeń. Aby uzyskać informacje o sposobach tworzenia alertów, zobacz [alerty w log Analytics](../platform/alerts-overview.md) . Przykłady zapytań dotyczących alertów i innych przykładów zapytań można znaleźć w blogu [monitorowanie oprogramowania VMware przy użyciu log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) .
+#### <a name="create-alerts-from-queries"></a>Tworzenie alertów na podstawie zapytania
+Po utworzeniu zapytania, można użyć zapytań ostrzega w przypadku wystąpienia określonych zdarzeń. Zobacz [alertów w usłudze Log Analytics](../platform/alerts-overview.md) informacji o tym, jak tworzyć alerty. Przykłady alertów zapytania i inne przykłady zapytań, zobacz [monitorowanie VMware przy użyciu usługi Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) wpis w blogu.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co należy zrobić w ustawieniu hosta ESXi? Jaki wpływ będzie miał w bieżącym środowisku?
-Rozwiązanie używa natywnego mechanizmu przekazujący hosta ESXi. Do przechwycenia dzienników nie jest potrzebne żadne dodatkowe oprogramowanie firmy Microsoft na hoście ESXi. Powinien mieć niewielki wpływ na istniejące środowisko. Należy jednak skonfigurować przekazywanie dziennika systemowego, które jest funkcją ESXI.
+### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co muszę na ESXi hosta ustawienie? Jaki wpływ będzie miał na Moje bieżącego środowiska?
+Rozwiązanie używa natywnego Syslog hosta ESXi, mechanizm przekazywania. Nie potrzebujesz żadnego dodatkowego oprogramowania firmy Microsoft na hoście ESXi w celu przechwytywania dzienników. Powinien on mały wpływ na istniejącym środowiskiem. Jednakże należy ustawić przekazywania usługi syslog, czyli funkcji ESXI.
 
-### <a name="do-i-need-to-restart-my-esxi-host"></a>Czy muszę ponownie uruchomić mój Host ESXi?
-Nie. Ten proces nie wymaga ponownego uruchomienia. Czasami usługa vSphere nie aktualizuje prawidłowo dziennika systemowego. W takim przypadku Zaloguj się do hosta ESXi i ponownie załaduj dziennik systemowy. Ponownie nie trzeba ponownie uruchamiać hosta, więc ten proces nie zakłóca pracy w danym środowisku.
+### <a name="do-i-need-to-restart-my-esxi-host"></a>Należy ponownie uruchomić mój hosta ESXi?
+Nie. Ten proces nie wymaga ponownego uruchomienia komputera. Czasami vSphere, nie jest poprawnie aktualizowany syslog. W takim przypadku należy zalogować się na hoście ESXi i ponownie załaduj syslog. Nie trzeba ponownie, uruchom ponownie hosta, więc ten proces nie jest znaczący wpływ na środowisko.
 
-### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>Czy mogę zwiększyć lub zmniejszyć ilość danych dziennika wysyłanych do Log Analytics?
-Tak. Możesz użyć ustawień poziomu dziennika hosta ESXi w vSphere. Zbieranie dzienników opiera się na poziomie *informacji* . Aby przeprowadzić inspekcję tworzenia lub usuwania maszyn wirtualnych, należy zachować poziom *informacji* na hoście. Aby uzyskać więcej informacji, zobacz [bazę wiedzy programu VMware](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658).
+### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>Można zwiększyć lub zmniejszyć ilość danych dziennika wysyłane do usługi Log Analytics?
+Tak, możesz to zrobić. Umożliwia ustawienie poziomie dzienników hostów ESXi w vSphere. Zbieranie dzienników opiera się na *informacje* poziom. Tak, jeśli chcesz Przeprowadź inspekcję maszyn wirtualnych, tworzenie lub usuwanie należy zachować *informacje* poziomu na Hostd. Aby uzyskać więcej informacji, zobacz [VMware wiedzy](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658).
 
-### <a name="why-is-hostd-not-providing-data-to-log-analytics-my-log-setting-is-set-to-info"></a>Dlaczego hostowanie nie udostępnia danych do Log Analytics? Ustawienie mój dziennik jest ustawione na informacje.
-Wystąpił błąd ESXi hosta dla sygnatury czasowej dziennika systemowego. Aby uzyskać więcej informacji, zobacz [bazę wiedzy programu VMware](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202). Po zastosowaniu obejścia host powinien działać normalnie.
+### <a name="why-is-hostd-not-providing-data-to-log-analytics-my-log-setting-is-set-to-info"></a>Dlaczego Hostd nie dostarcza dane do usługi Log Analytics? Moje ustawienia dziennika jest równa informacji.
+Wystąpił błąd hosta ESXi sygnatury czasowej syslog. Aby uzyskać więcej informacji, zobacz [VMware wiedzy](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202). Po zastosowaniu obejścia Hostd powinny działać normalnie.
 
-### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Czy można mieć wiele ESXiów przekazujących dane dziennika systemowego do pojedynczej maszyny wirtualnej z omsagent?
-Tak. Można korzystać z wielu ESXi hostów przesyłanych dalej do pojedynczej maszyny wirtualnej z omsagent.
+### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Czy można mieć wiele hostów ESXi przekazywania danych z serwera syslog z jedną maszyną wirtualną za pomocą omsagent?
+Tak. Może mieć wiele hostów ESXi przekazywania z jedną maszyną wirtualną za pomocą omsagent.
 
-### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Dlaczego dane przepływają do Log Analytics?
-Może istnieć wiele przyczyn:
+### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Dlaczego nie widzisz dane trafiające do usługi Log Analytics?
+Może istnieć kilka przyczyn:
 
-* Host ESXi nie wypychanie danych do maszyny wirtualnej z systemem omsagent. Aby przetestować, wykonaj następujące czynności:
+* ESXi host nie jest poprawnie wypychanie danych do maszyny Wirtualnej z systemem omsagent. Aby przetestować, wykonaj następujące czynności:
 
-  1. Aby potwierdzić, zaloguj się do hosta ESXi za pomocą protokołu SSH i uruchom następujące polecenie: `nc -z ipaddressofVM 1514`
+  1. Aby upewnić się, zaloguj się na hoście ESXi przy użyciu protokołu ssh i uruchom następujące polecenie: `nc -z ipaddressofVM 1514`
 
-      Jeśli to się nie powiedzie, ustawienia vSphere w zaawansowanej konfiguracji prawdopodobnie nie są poprawne. Zobacz [Konfigurowanie kolekcji dziennika](#configure-syslog-collection) systemowego, aby uzyskać informacje na temat sposobu konfigurowania hosta ESXi na potrzeby przesyłania dalej dziennika systemowego.
-  1. Jeśli połączenie z portem dziennika systemowego zakończyło się pomyślnie, ale nie widzisz żadnych danych, Załaduj ponownie dziennik systemowy na hoście ESXi przy użyciu protokołu SSH, aby uruchomić następujące polecenie: `esxcli system syslog reload`
-* Maszyna wirtualna z agentem Log Analytics nie jest ustawiona poprawnie. Aby to przetestować, wykonaj następujące czynności:
+      Jeśli to się nie powiedzie, vSphere ustawień konfiguracji zaawansowanych prawdopodobnie nieprawidłowy. Zobacz [skonfigurować zbieranie dzienników systemowych](#configure-syslog-collection) informacji o tym, jak skonfigurować hosta ESXi na potrzeby przekazywania usługi syslog.
+  1. Jeśli łączność portu usługi syslog zakończy się pomyślnie, ale nadal nie widzisz żadnych danych, Załaduj ponownie syslog na hoście ESXi, za pomocą protokołu ssh wpisz następujące polecenie: `esxcli system syslog reload`
+* Maszyny Wirtualnej przy użyciu agenta usługi Log Analytics nie jest poprawnie ustawiony. Aby to przetestować, wykonaj następujące czynności:
 
-  1. Log Analytics nasłuchuje na porcie 1514. Aby sprawdzić, czy jest otwarty, uruchom następujące polecenie: `netstat -a | grep 1514`
-  1. Powinien zostać wyświetlony `1514/tcp` port otwarty. Jeśli nie, sprawdź, czy omsagent jest prawidłowo zainstalowany. Jeśli nie widzisz informacji o porcie, wówczas port dziennika systemu nie jest otwarty na maszynie wirtualnej.
+  1. Usługa log Analytics nasłuchuje na porcie 1514. Aby zweryfikować, że jest otwarty, uruchom następujące polecenie: `netstat -a | grep 1514`
+  1. Powinien zostać wyświetlony portu `1514/tcp` Otwórz. Jeśli tego nie zrobisz, sprawdź, czy omsagent jest poprawnie zainstalowany. Jeśli nie widzisz informacje o porcie syslog port nie jest otwarty na maszynie Wirtualnej.
 
-    a. Sprawdź, czy Log Analytics Agent jest uruchomiony przy użyciu `ps -ef | grep oms`. Jeśli nie jest uruchomiony, uruchom proces, uruchamiając polecenie `sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Sprawdź, czy agent usługi Log Analytics jest uruchomiony przy użyciu `ps -ef | grep oms`. Jeśli nie jest uruchomiona, należy uruchomić proces, za pomocą polecenia `sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Otwórz plik `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 
-     d. Sprawdź, czy odpowiednie ustawienie użytkownika i grupy jest prawidłowe, podobnie jak w przypadku: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     d. Sprawdź, czy prawidłowego użytkownika i ustawienia grupy jest prawidłowy, podobnie do: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-     d. Jeśli plik nie istnieje lub ustawienia użytkownika i grupy są błędne, wykonaj działania naprawcze, [przygotowując serwer z systemem Linux](#prepare-a-linux-server).
+     d. Jeśli plik nie istnieje lub nie użytkownika i ustawienia grupy jest nieprawidłowy, akcje naprawcze, [przygotowania serwera z systemem Linux](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Następne kroki
 * Użyj [zapytań dzienników](../log-query/log-query-overview.md) w log Analytics, aby wyświetlić szczegółowe dane hosta VMware.
-* [Utwórz własne pulpity nawigacyjne](../learn/tutorial-logs-dashboards.md) przedstawiające dane hosta VMware.
-* [Utwórz alerty](../platform/alerts-overview.md) w przypadku wystąpienia określonych zdarzeń hosta VMware.
+* [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) przedstawiający dane hosta VMware.
+* [Tworzenie alertów](../platform/alerts-overview.md) po wystąpieniu określonych zdarzeń hostów VMware.

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100708"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374263"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatyczne konfigurowanie grup dostępności na platformie Azure Virtual Machines: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatyczne konfigurowanie grup dostępności na platformie Azure Virtual Machines: Menedżer zasobów
 
 W tym samouczku pokazano, jak utworzyć SQL Server grupę dostępności, która używa Azure Resource Manager maszyn wirtualnych. W tym samouczku do konfigurowania szablonu są wykorzystywane usługi Azure. Możesz przejrzeć ustawienia domyślne, wpisać wymagane ustawienia i zaktualizować bloki w portalu w ramach tego samouczka.
 
@@ -65,23 +65,23 @@ Platforma Azure udostępnia obraz galerii dla całego rozwiązania. Aby zlokaliz
 1. Zaloguj się do Azure Portal przy użyciu swojego konta.
 2. W Azure Portal kliknij pozycję **Utwórz zasób** , aby otworzyć **nowe** okienko.
 3. W **nowym** okienku Wyszukaj funkcję **AlwaysOn**.
-   ![Znajdź szablon AlwaysOn](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
+   ![odnaleźć](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png) szablonu funkcji AlwaysOn
 4. W wynikach wyszukiwania odszukaj **SQL Server zawsze włączony klaster**.
-   ![Szablon AlwaysOn](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+   ](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png) szablon ![AlwaysOn
 5. W obszarze **Wybierz model wdrażania**wybierz pozycję **Menedżer zasobów**.
 
-### <a name="basics"></a>Ustawienia podstawowe
+### <a name="basics"></a>Podstawy
 Kliknij pozycję **podstawowe** i skonfiguruj następujące ustawienia:
 
 * **Nazwa użytkownika administratora** to konto użytkownika, które ma uprawnienia administratora domeny i jest członkiem stałej roli serwera sysadmin SQL Server na obu wystąpieniach SQL Server. Na potrzeby tego samouczka Użyj **administrator domeny**.
 * **Hasło** jest hasłem konta administratora domeny. Użyj złożonego hasła. Potwierdź hasło.
 * **Subskrypcja** to subskrypcja, którą usługa Azure Bill ma uruchamiać wszystkie wdrożone zasoby dla grupy dostępności. Jeśli Twoje konto ma wiele subskrypcji, możesz określić inną subskrypcję.
-* **Grupa zasobów** to nazwa grupy, do której należą wszystkie zasoby platformy Azure, które są tworzone przez ten szablon. Na potrzeby tego samouczka Użyj **języka SQL-ha-RG**. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+* **Grupa zasobów** to nazwa grupy, do której należą wszystkie zasoby platformy Azure, które są tworzone przez ten szablon. Na potrzeby tego samouczka Użyj **języka SQL-ha-RG**. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../../../azure-resource-manager/management/overview.md#resource-groups).
 * **Lokalizacja** to region platformy Azure, w którym samouczek tworzy zasoby. Wybierz region platformy Azure.
 
 Poniższy zrzut ekranu przedstawia kompletny blok **podstawy** :
 
-![Ustawienia podstawowe](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
+![Podstawy](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
 Kliknij przycisk **OK**.
 
@@ -165,7 +165,7 @@ Aby uzyskać dodatkowe informacje na temat miejsca do magazynowania i pul magazy
 
 Aby uzyskać więcej informacji o najlepszych rozwiązaniach dotyczących konfiguracji SQL Server, zobacz [najlepsze rozwiązania w zakresie wydajności dla SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md).
 
-### <a name="sql-server-settings"></a>Ustawienia serwera SQL Server
+### <a name="sql-server-settings"></a>Ustawienia programu SQL Server
 Na **SQL Server ustawienia**, przejrzyj i zmodyfikuj prefiks nazwy maszyny wirtualnej SQL Server, wersję SQL Server, SQL Server konto usługi i hasło oraz harmonogram konserwacji automatycznego stosowania poprawek SQL.
 
 * **Prefiks nazwy SQL Server** jest używany do utworzenia nazwy dla każdej SQL Serverj maszyny wirtualnej. W tym samouczku Użyj programu **SqlServer**. Szablon nazywa SQL Server maszyn wirtualnych *SqlServer-0* i *SqlServer-1*.
@@ -180,7 +180,7 @@ Na **SQL Server ustawienia**, przejrzyj i zmodyfikuj prefiks nazwy maszyny wirtu
 >
 >
 
-![Ustawienia serwera SQL Server](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/5-sql.png)
+![Ustawienia programu SQL Server](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/5-sql.png)
 
 Przejrzyj ustawienia, a następnie kliknij przycisk **OK**.
 
@@ -205,9 +205,9 @@ W celu uzyskania połączenia RDP z SQL Server wykonaj następujące kroki:
 1. Na pulpicie nawigacyjnym Azure Portal Sprawdź, czy wdrożenie zakończyło się pomyślnie.
 2. Kliknij pozycję **zasoby**.
 3. W bloku **zasoby** kliknij pozycję **SqlServer-0**, która jest nazwą komputera z maszynami wirtualnymi, na których działa SQL Server.
-4. W bloku dla programu **SqlServer-0**kliknij pozycję **Połącz**. Przeglądarka pyta, czy chcesz otworzyć lub zapisać obiekt połączenia zdalnego. Kliknij przycisk **Otwórz**.
+4. W bloku dla programu **SqlServer-0**kliknij pozycję **Połącz**. Przeglądarka pyta, czy chcesz otworzyć lub zapisać obiekt połączenia zdalnego. Kliknij przycisk **Open** (Otwórz).
 5. Podłączanie **pulpitu zdalnego** może ostrzec użytkownika o tym, że nie można zidentyfikować wydawcy tego połączenia zdalnego. Kliknij przycisk **Połącz**.
 6. Zabezpieczenia systemu Windows monitują o wprowadzenie poświadczeń w celu nawiązania połączenia z adresem IP podstawowego kontrolera domeny. Kliknij pozycję **Użyj innego konta**. W obszarze **Nazwa użytkownika**wpisz **contoso\DomainAdmin**. To konto zostało skonfigurowane podczas ustawiania nazwy użytkownika administratora w szablonie. Użyj złożonego hasła, które zostało wybrane podczas konfigurowania szablonu.
-7. **Pulpit zdalny** może ostrzec użytkownika o tym, że nie można uwierzytelnić komputera zdalnego ze względu na problemy z jego certyfikatem zabezpieczeń. Zostanie wyświetlona nazwa certyfikatu zabezpieczeń. Jeśli wykonano samouczek, nazwą jest **SqlServer-0.contoso.com**. Kliknij przycisk **Yes** (Tak).
+7. **Pulpit zdalny** może ostrzec użytkownika o tym, że nie można uwierzytelnić komputera zdalnego ze względu na problemy z jego certyfikatem zabezpieczeń. Zostanie wyświetlona nazwa certyfikatu zabezpieczeń. Jeśli wykonano samouczek, nazwą jest **SqlServer-0.contoso.com**. Kliknij przycisk **Tak**.
 
 Nawiązano połączenie z protokołem RDP z maszyną wirtualną SQL Server. Możesz otworzyć SQL Server Management Studio, nawiązać połączenie z domyślnym wystąpieniem SQL Server i sprawdzić, czy grupa dostępności została skonfigurowana.

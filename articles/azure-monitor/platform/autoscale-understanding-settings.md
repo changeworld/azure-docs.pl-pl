@@ -1,32 +1,28 @@
 ---
-title: Opis ustawień skalowania automatycznego w usłudze Azure Monitor
-description: Szczegółowy podział ustawień automatycznego skalowania i sposobie ich działania. Ma zastosowanie do maszyn wirtualnych, usług Cloud Services, Web Apps
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+title: Informacje o ustawieniach automatycznego skalowania w Azure Monitor
+description: Szczegółowy podział ustawień automatycznego skalowania i sposób ich działania. Dotyczy Virtual Machines, Cloud Services Web Apps
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364309"
 ---
 # <a name="understand-autoscale-settings"></a>Omówienie ustawień automatycznego skalowania
-Ustawienia automatycznego skalowania pomóc, upewnij się, że masz odpowiednią ilość zasobów do obsługi zmian obciążenia aplikacji. Można skonfigurować ustawienia automatycznego skalowania wyzwolenie oparciu metryki, które wskazują obciążenia lub wydajności lub wyzwalane w zaplanowanym czasie. Ten artykuł przedstawia szczegółowy widok anatomia ustawienia automatycznego skalowania. Artykuł zaczyna się od schematu i właściwości ustawienia, a następnie przeprowadzi typy innego profilu, które można skonfigurować. Na koniec, w tym artykule omówiono sposób funkcja automatycznego skalowania na platformie Azure ocenia profilu, który można wykonać w dowolnym momencie.
+Ustawienia automatycznego skalowania pomagają upewnić się, że dysponujesz odpowiednią ilością zasobów, aby obsłużyć wahanie obciążenia aplikacji. Można skonfigurować ustawienia skalowania automatycznego, które mają być wyzwalane na podstawie metryk, które wskazują obciążenie lub wydajność, lub wyzwalane w zaplanowanym dniu i o określonej godzinie. Ten artykuł zawiera szczegółowy opis ustawienia skalowania automatycznego. Artykuł zaczyna się od schematu i właściwości ustawienia, a następnie analizuje różne typy profilów, które można skonfigurować. W tym artykule omówiono sposób, w jaki funkcja skalowania automatycznego na platformie Azure szacuje profil do wykonania w danym momencie.
 
-## <a name="autoscale-setting-schema"></a>Schemat ustawień automatycznego skalowania
-Aby zilustrować schematu ustawienie skalowania automatycznego, służy następujące ustawienie automatycznego skalowania. Należy pamiętać, że to ustawienie automatycznego skalowania ma jest:
+## <a name="autoscale-setting-schema"></a>Schemat ustawień skalowania automatycznego
+Aby zilustrować schemat ustawienia skalowania automatycznego, używane jest następujące ustawienie skalowania automatycznego. Należy pamiętać, że to ustawienie automatycznego skalowania ma następujące znaczenie:
 - Jeden profil. 
-- Dwie reguły metryki, w tym profilu: jeden dla skalowania w poziomie i jeden skalowanie w pionie.
-  - Reguła skalowania w poziomie jest wyzwalany, gdy zestaw skalowania maszyn wirtualnych średnią wartość procentową procesora CPU metryka jest większy niż 85 procent dla ostatnich 10 minut.
-  - Reguły skalowania jest wyzwalany, gdy średnia zestawu skalowania maszyn wirtualnych jest mniej niż 60% w ciągu ostatnich minuty.
+- Dwie reguły metryk w tym profilu: jeden do skalowania w poziomie i jeden dla skalowania w poziomie.
+  - Reguła skalowania w poziomie jest wyzwalana, gdy średnia wartość procentowa CPU zestawu skalowania maszyn wirtualnych wynosi powyżej 85% w ciągu ostatnich 10 minut.
+  - Reguła skalowania w poziomie jest wyzwalana, gdy wartość średnia zestawu skalowania maszyn wirtualnych jest mniejsza niż 60% dla ostatniej minuty.
 
 > [!NOTE]
-> To ustawienie może mieć wiele profilów. Aby dowiedzieć się więcej, zobacz [profile](#autoscale-profiles) sekcji. Profil może być również wiele reguł skalowania w poziomie i zdefiniowanych reguł skalowania na zewnątrz. Aby dowiedzieć się, jak są obliczane, zobacz [oceny](#autoscale-evaluation) sekcji.
+> Ustawienie może mieć wiele profilów. Aby dowiedzieć się więcej, zobacz sekcję [Profile](#autoscale-profiles) . W profilu może być również zdefiniowanych wiele reguł skalowania w poziomie i reguł skalowania w poziomie. Aby zobaczyć, jak są oceniane, zobacz sekcję [Ocena](#autoscale-evaluation) .
 
 ```JSON
 {
@@ -89,39 +85,39 @@ Aby zilustrować schematu ustawienie skalowania automatycznego, służy następu
 }
 ```
 
-| `Section` | Nazwa elementu | Opis |
+| Sekcja | Nazwa elementu | Opis |
 | --- | --- | --- |
-| Ustawienie | id | Identyfikator zasobu Ustawienia skalowania automatycznego Ustawienia automatycznego skalowania są zasobami usługi Azure Resource Manager. |
+| Ustawienie | ID | Identyfikator zasobu ustawienia skalowania automatycznego. Ustawienia automatycznego skalowania są zasobem Azure Resource Manager. |
 | Ustawienie | name | Nazwa ustawienia skalowania automatycznego. |
-| Ustawienie | location | Lokalizacja ustawienie skalowania automatycznego. Ta lokalizacja może być inna niż lokalizacja zasobu jest skalowany. |
-| properties | targetResourceUri | Identyfikator zasobu zasobu jest skalowany. Może mieć tylko jedno ustawienie automatycznego skalowania dla każdego zasobu. |
-| properties | profiles | Ustawienia automatycznego skalowania składa się z co najmniej jeden profil. Przy każdym uruchomieniu aparat skalowania automatycznego, wykonywany jest jeden profil. |
-| profile | name | Nazwa profilu. Możesz wybrać dowolną nazwę, ułatwiające identyfikację profilu. |
-| profile | Capacity.Maximum | Maksymalna pojemność dozwolone. Zapewnia automatyczne skalowanie podczas wykonywania tego profilu, Skaluj zasób powyżej tej liczby. |
-| profile | Capacity.minimum | Pojemność minimalne dozwolone. Zapewnia automatyczne skalowanie podczas wykonywania tego profilu skalowania zasobu pod ten numer. |
-| profile | Capacity.default | Jeśli występuje problem z odczytem metryki zasobu (w tym przypadku Procesora "vmss1"), a bieżąca pojemność jest niższa wartość domyślna, skalowania automatycznego skalowania do domyślnego. To jest zapewnienie dostępności zasobów. Jeśli bieżąca pojemność jest już wyższa niż pojemność domyślna, automatycznego skalowania nie jest skalowany w. |
-| profile | rules | Automatyczne skalowanie jest skalowana automatycznie w miarę między maksymalne i minimalne możliwości, za pomocą reguł w profilu. Możesz mieć wiele reguł w profilu. Zwykle istnieją dwie reguły: jedną do określenia, kiedy do skalowania w poziomie, a druga do określenia, kiedy umożliwiającą skalowanie w pionie. |
-| rule | metricTrigger | Definiuje metryki warunku reguły. |
-| metricTrigger | metricName | Nazwa metryki. |
-| metricTrigger |  metricResourceUri | Identyfikator zasobu dla zasobu, który emituje metryki. W większości przypadków jest taka sama jak zasób jest skalowany. W niektórych przypadkach może być inny. Na przykład można skalować zestaw skalowania maszyn wirtualnych na podstawie liczby komunikatów w kolejce magazynu. |
-| metricTrigger | timeGrain | Czas trwania próbkowania metryk. Na przykład **TimeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy użyciu metody agregacji określonej w elemencie statystyk. |
-| metricTrigger | statistic | Metoda agregacji w okresie ziarna czasu. Na przykład **Statystyka = "Average"** i **timeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy średniej. Ta właściwość decyduje o tym, jak są próbkowane tak metrykę. |
-| metricTrigger | timeWindow | Ilość czasu, aby wyszukać metryki. Na przykład **timeWindow = "PT10M"** oznacza, że za każdym razem, gdy działa automatyczne skalowanie, wysyła zapytanie metryki dla ostatnich 10 minut. Przedział czasu umożliwia metryki będą normalizowane i zapobiega reagowaniu na przejściowe skoki. |
-| metricTrigger | timeAggregation | Metoda agregacji używana do agregowania próbkowanych metryk. Na przykład **TimeAggregation = "Average"** powinien zagregowanie próbkowanych metryk przy średniej. W przypadku poprzedniego pobierania dziesięć próbek 1 minutę, a średni je. |
-| rule | scaleAction | Działanie podejmowane w momencie wyzwolenia metricTrigger reguły. |
-| scaleAction | direction | "Zwiększ" do skalowania w poziomie lub "Zmniejsz" do skalowania do wewnątrz.|
-| scaleAction | value | Ile, aby zwiększyć lub zmniejszyć wydajność zasobu. |
-| scaleAction | cooldown | Ilość czasu oczekiwania po zakończeniu operacji skalowania przed ponownym skalowaniem. Na przykład jeśli **ochładzania = "PT10M"** , automatycznego skalowania nie jest podejmowana próba skalowania ponownie dla innego 10 minut. Ochładzania jest umożliwienie metryk w celu stabilizacji po dodawania lub usuwania wystąpień. |
+| Ustawienie | location | Lokalizacja ustawienia skalowania automatycznego. Ta lokalizacja może różnić się od lokalizacji skalowanego zasobu. |
+| properties | targetResourceUri | Identyfikator zasobu dla skalowanego zasobu. Dla każdego zasobu może istnieć tylko jedno ustawienie skalowania automatycznego. |
+| properties | profiles | Ustawienie automatycznego skalowania składa się z co najmniej jednego profilu. Za każdym razem, gdy działa silnik skalowania automatycznego, wykonuje jeden profil. |
+| profile | name | Nazwa profilu. Możesz wybrać dowolną nazwę, która pomoże zidentyfikować profil. |
+| profile | Pojemność. maksimum | Maksymalna dozwolona pojemność. Zapewnia to automatyczne skalowanie podczas wykonywania tego profilu, nie skaluje zasobu powyżej tej liczby. |
+| profile | Capacity.minimum | Minimalna dozwolona pojemność. Zapewnia to automatyczne skalowanie podczas wykonywania tego profilu, nie skaluje zasobu poniżej tej liczby. |
+| profile | Capacity.default | Jeśli wystąpił problem z odczytem metryki zasobów (w tym przypadku procesor "vmss1"), a bieżąca pojemność jest poniżej wartości domyślnej, Skalowanie automatyczne jest skalowane do wartości domyślnej. Ma to na celu zapewnienie dostępności zasobu. Jeśli bieżąca pojemność jest już wyższa niż domyślna pojemność, Skalowanie automatyczne nie jest skalowane. |
+| profile | rules | Skalowanie automatyczne automatycznie skaluje się między maksymalną i minimalną pojemnością przy użyciu reguł w profilu. W profilu może być wiele reguł. Zwykle istnieją dwie reguły: jeden do określenia, kiedy należy skalować w poziomie, i drugi, aby określić, kiedy ma być skalowane. |
+| rule | metricTrigger | Definiuje warunek metryki reguły. |
+| metricTrigger | MetricName | Nazwa metryki. |
+| metricTrigger |  metricResourceUri | Identyfikator zasobu, który emituje metrykę. W większości przypadków jest to taka sama jak w przypadku skalowanego zasobu. W niektórych przypadkach może się to różnić. Na przykład można skalować zestaw skalowania maszyn wirtualnych na podstawie liczby komunikatów w kolejce magazynu. |
+| metricTrigger | timeGrain | Czas trwania próbkowania metryki. Na przykład **TimeGrain = "PT1M"** oznacza, że metryki powinny być agregowane co 1 minutę przy użyciu metody agregacji określonej w elemencie Statistics. |
+| metricTrigger | statistic | Metoda agregacji w okresie timeGrain. Na przykład **Statystyka = "Average"** i **TIMEGRAIN = "PT1M"** oznacza, że metryki powinny być agregowane co 1 minutę, pobierając średnią. Ta właściwość określa sposób próbkowania metryki. |
+| metricTrigger | timeWindow | Ilość czasu, aby wyszukać metryki. Na przykład **timeWindow = "PT10M"** oznacza, że za każdym razem, gdy uruchamiane jest automatyczne skalowanie, bada metryki w ciągu ostatnich 10 minut. Przedział czasu umożliwia znormalizowanie metryk i pozwala uniknąć reakcji na przejścia przejściowe. |
+| metricTrigger | timeAggregation | Metoda agregacji używana do agregowania metryk próbkowanych. Na przykład **TimeAggregation = "Average"** powinna agregować metryki próbkowane, pobierając średnią. W poprzednim przypadku należy wziąć dziesięć próbek 1-minutowych i obliczyć ich średnią. |
+| rule | scaleAction | Akcja, która ma zostać podjęta po wyzwoleniu metricTrigger reguły. |
+| scaleAction | kierunek | "Zwiększ", aby skalować w poziomie lub "Zmniejsz" w celu skalowania w poziomie.|
+| scaleAction | wartość | Jak znacznie zwiększyć lub zmniejszyć pojemność zasobu. |
+| scaleAction | cooldown | Czas oczekiwania po operacji skalowania przed ponownym skalowaniem. Na przykład jeśli **cooldown = "PT10M"** , funkcja automatycznego skalowania nie próbuje ponownie skalować przez kolejne 10 minut. Cooldown to umożliwienie ustabilizowania metryk po dodaniu lub usunięciu wystąpień. |
 
-## <a name="autoscale-profiles"></a>Profile automatycznego skalowania
+## <a name="autoscale-profiles"></a>Profile skalowania automatycznego
 
 Istnieją trzy typy profilów automatycznego skalowania:
 
-- **Regularne profilu:** Najbardziej typowe profil. Jeśli nie ma potrzeby skalowania zasobu na podstawie dnia, tygodnia lub w określonym dniu, można użyć regularnych profilu. Następnie można skonfigurować ten profil przy użyciu reguł metryk, które określają, kiedy należy skalować w poziomie i kiedy umożliwiającą skalowanie w pionie. Powinien mieć tylko jeden profil regularnych zdefiniowane.
+- **Zwykły profil:** Najpopularniejszy profil. Jeśli nie musisz skalować zasobu na podstawie dnia tygodnia lub w określonym dniu, możesz użyć zwykłego profilu. Ten profil można następnie skonfigurować przy użyciu reguł metryk, które określają, kiedy skalować w poziomie i kiedy skalowanie ma być skalowane. Powinien być zdefiniowany tylko jeden profil regularny.
 
-    Profil przykład używany we wcześniejszej części tego artykułu znajduje się przykład regularne profilu. Należy zauważyć, że możliwe jest też możliwość ustawienia profilu skalowanie do liczby statycznych wystąpień zasobu bazy danych.
+    Przykładowy profil użyty wcześniej w tym artykule stanowi przykład zwykłego profilu. Należy zauważyć, że można również ustawić profil do skalowania do liczby wystąpień statycznych dla zasobu.
 
-- **Ustalona data profilu:** Ten profil jest przeznaczony dla przypadków specjalnych. Załóżmy na przykład, że masz ważne zdarzenie pojawi się na 26 grudnia 2017 r. (PST). Chcesz, aby minimalnej i maksymalnej pojemności zasobu różniły się na ten dzień, ale nadal skali na te same metryki. W takim przypadku należy dodać profil ustalona data do tego ustawienia listy profilów. Profil, który jest skonfigurowany do uruchamiania tylko dnia wydarzenia. Dla każdego dnia Skalowanie automatyczne używa regularnego profilu.
+- **Profil daty ustalonej:** Ten profil dotyczy specjalnych przypadków. Załóżmy na przykład, że masz ważne zdarzenie w dniu 26 grudnia 2017 (PST). Chcesz, aby minimalne i maksymalne pojemności zasobu były różne w danym dniu, ale nadal Skaluj te same metryki. W takim przypadku należy dodać profil daty ustalonej do listy profilów ustawień. Profil jest skonfigurowany do uruchamiania tylko w dniu zdarzenia. W przypadku każdego innego dnia automatyczne skalowanie używa zwykłego profilu.
 
     ``` JSON
     "profiles": [{
@@ -154,12 +150,12 @@ Istnieją trzy typy profilów automatycznego skalowania:
     ]
     ```
     
-- **Profil cyklu:** Ten typ profilu umożliwia upewnij się, że ten profil jest zawsze używana w określonym dniu tygodnia. Profile cyklu mają tylko czas rozpoczęcia. Działają aż do następnej profilu cyklu lub profil ustalona data ma ustawione uruchamianie. Ustawienia automatycznego skalowania za pomocą tylko jednego cyklu profilu uruchamia tego profilu, nawet jeśli istnieje profil regularnych zdefiniowane w tym samym kontekście. Dwa poniższe przykłady ilustrują, jak ten profil jest używany:
+- **Profil cyklu:** Ten typ profilu umożliwia upewnienie się, że ten profil jest zawsze używany w określonym dniu tygodnia. Profile cyklu mają tylko godzinę rozpoczęcia. Są one uruchamiane do momentu, gdy zostanie ustawiony profil następnego cyklu lub ustalonej daty. Ustawienie skalowania automatycznego z tylko jednym profilem cyklu powoduje uruchomienie tego profilu nawet w przypadku, gdy w tym samym ustawieniu jest zdefiniowany zwykły profil. Poniższe dwa przykłady ilustrują sposób korzystania z tego profilu:
 
-    **Przykład 1: Dni tygodnia, a weekendy**
+    **Przykład 1: dni tygodnia a weekendy**
     
-    Załóżmy, że w weekendy, chcesz maksymalnej pojemności to 4. W dni robocze ponieważ oczekują większe obciążenie ma maksymalnej pojemności do 10. W takim przypadku ustawienie zawiera dwa profile cyklu jego uruchomienie w weekendy, a druga w dni robocze.
-    Ustawienie wygląda następująco:
+    Załóżmy, że w weekendy potrzebujesz maksymalnej pojemności 4. W dniach tygodnia, ponieważ oczekujesz większej liczby obciążeń, Maksymalna pojemność wynosi 10. W takim przypadku Twoje ustawienie będzie zawierać dwa profile cyklu — jeden do uruchamiania w weekendy i drugi w dniach tygodnia.
+    To ustawienie wygląda następująco:
 
     ``` JSON
     "profiles": [
@@ -213,13 +209,13 @@ Istnieją trzy typy profilów automatycznego skalowania:
     }]
     ```
 
-    Poprzedni ustawienie pokazuje, że każdy profil cyklu ma zgodnie z harmonogramem. Ten harmonogram Określa, kiedy rozpoczyna się profil uruchamiania. Profil, który zatrzymuje, gdy nadszedł czas, aby uruchomić inny profil.
+    Powyższe ustawienie pokazuje, że każdy profil cyklu ma harmonogram. Ten harmonogram określa, kiedy zostanie uruchomiony profil. Profil zostaje zatrzymany, gdy jest czas na uruchomienie innego profilu.
 
-    Na przykład w poprzednim ustawieniu "weekdayProfile" ustawiono można uruchomić w poniedziałek o 12:00. Oznacza to tego profilu uruchamiania w poniedziałek o 12:00. Jest kontynuowany aż do Sobota o 12:00, kiedy "weekendProfile" zaplanowano uruchomienia.
+    Na przykład w poprzednim ustawieniu opcja "weekdayProfile" jest ustawiana jako uruchamiana w poniedziałek o godzinie 12:00. Oznacza to, że ten profil zaczyna działać w poniedziałek o godzinie 12:00. Kontynuuje do soboty o godzinie 12:00, gdy zaplanowano uruchomienie "weekendProfile".
 
     **Przykład 2: godziny pracy**
     
-    Załóżmy, że chcesz mieć jeden próg metryki w godzinach pracy (9:00 AM do 5:00 PM), a druga dla wszystkich pozostałych godzinach. To ustawienie będzie wyglądać następująco:
+    Załóżmy, że chcesz mieć jeden próg metryki w godzinach pracy (9:00 AM do 5:00 PM), a drugi dla pozostałych godzin. To ustawienie będzie wyglądać następująco:
     
     ``` JSON
     "profiles": [
@@ -273,41 +269,41 @@ Istnieją trzy typy profilów automatycznego skalowania:
     }]
     ```
     
-    Poprzedni ustawienie pokazuje "businessHoursProfile" rozpoczyna wykonywanie w poniedziałek o 9:00 i 17:00:00 w dalszym ciągu. Gdy "nonBusinessHoursProfile" zacznie działać. "nonBusinessHoursProfile" działa aż do 9:00:00 wtorek, a następnie "businessHoursProfile" przejmuje ponownie. To jest powtarzany do momentu piątek o godzinie 17:00. W tym momencie "nonBusinessHoursProfile" działa aż do poniedziałek o 9:00.
+    Powyższe ustawienie pokazuje, że "businessHoursProfile" zaczyna działać w poniedziałek o godzinie 9:00 AM i nadal 5:00 PM. Jest to wykonywane po uruchomieniu "nonBusinessHoursProfile". "NonBusinessHoursProfile" jest uruchamiany do 9:00 wtorek, a następnie ponownie trwa wykonywanie "businessHoursProfile". Powtarza się to do piątku o godzinie 5:00 PM. W tym momencie "nonBusinessHoursProfile" jest uruchamiany cały poniedziałek o godzinie 9:00.
     
 > [!Note]
-> Automatyczne skalowanie interfejsu użytkownika w witrynie Azure portal wymusza zakończenia dla cyklu profilów i rozpoczyna wykonywanie profilu domyślnego ustawienia skalowania automatycznego Between profile cyklu.
+> Interfejs użytkownika automatycznego skalowania w Azure Portal wymusza czasy zakończenia dla profilów cyklu i rozpoczyna uruchamianie domyślnego profilu ustawienia skalowania automatycznego w profilach cykli.
     
-## <a name="autoscale-evaluation"></a>Automatyczne skalowanie w wersji ewaluacyjnej
-Biorąc pod uwagę, że ustawienia automatycznego skalowania może mieć wiele profilów, a każdy profil może mieć wiele reguł metryk, ważne jest zrozumienie, jak są obliczane ustawienia automatycznego skalowania. Przy każdym uruchomieniu zadania automatycznego skalowania rozpoczyna, wybierając pozycję profil, który ma zastosowanie. Następnie funkcja automatycznego skalowania ocenia minimalne i maksymalne wartości i reguł metryk w profilu i decyduje, jeśli nie są wymagane akcje skalowania.
+## <a name="autoscale-evaluation"></a>Obliczanie automatycznego skalowania
+Uwzględniając, że ustawienia skalowania automatycznego mogą mieć wiele profilów, a każdy profil może mieć wiele reguł metryk, ważne jest, aby zrozumieć, jak jest oceniane ustawienie skalowania automatycznego. Za każdym razem, gdy uruchamiane jest zadanie automatycznego skalowania, rozpoczyna się od wybrania odpowiedniego profilu. Następnie funkcja automatycznego skalowania szacuje wartości minimalne i maksymalne oraz wszystkie reguły metryk w profilu i decyduje o konieczności wykonania akcji skalowania.
 
-### <a name="which-profile-will-autoscale-pick"></a>Profil, który wybierze automatycznego skalowania?
+### <a name="which-profile-will-autoscale-pick"></a>Który profil zostanie automatycznie przeskalowany?
 
-Funkcja automatycznego skalowania stosują następującą sekwencję, aby wybrać profil, który:
-1. Najpierw szuka żadnego profilu stałej dacie, który jest skonfigurowany do uruchamiania teraz. Jeśli, automatycznego skalowania, uruchomi go. Jeśli istnieje wiele profili stałej dacie, które powinien uruchamiać, automatycznego skalowania wybiera pierwszy z nich.
-2. W przypadku profile nie stałej dacie, automatycznego skalowania patrzy na profile cyklu. Jeśli zostanie znaleziony profilu cyklu, uruchamia go.
-3. Jeśli nie ma żadnych ustalona data lub profile cyklu, automatycznego skalowania uruchamia regularne profilu.
+Automatyczne skalowanie używa następującej sekwencji do wybrania profilu:
+1. Najpierw szuka dowolnego stałego profilu daty, który jest skonfigurowany do uruchamiania teraz. Jeśli jest, automatyczne skalowanie jest wykonywane. Jeśli istnieje wiele profilów dat stałych, które powinny być uruchamiane, funkcja automatycznego skalowania wybiera pierwszy.
+2. Jeśli nie ma żadnych stałych profilów dat, funkcja automatycznego skalowania wyszukuje profile cyklu. Jeśli zostanie znaleziony profil cyklu, zostanie on uruchomiony.
+3. Jeśli nie ma żadnych ustalonych profilów dat lub cykli, funkcja automatycznego skalowania uruchamia zwykły profil.
 
-### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Jak Autoscale evaluate wiele reguł
+### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Jak automatyczne skalowanie jest oceniane w wielu regułach?
 
-Po skalowania automatycznego okaże się, aby uruchomić profil, który, ocenia wszystkie reguły skalowania w poziomie w profilu (są to reguły z **kierunek = "Zwiększ"** ).
+Gdy funkcja automatycznego skalowania określi profil do uruchomienia, oblicza wszystkie reguły skalowania w poziomie w profilu (są to reguły z **kierunekem "Zwiększ"** ).
 
-Jeśli co najmniej jedna reguła skalowania w poziomie są wyzwalane, automatycznego skalowania oblicza nową pojemność ustalany na podstawie **scaleAction** każdego z tych zasad. Następnie go skaluje się do maksymalnej wartości tych możliwości, aby zapewnić dostępność usługi.
+Jeśli co najmniej jedna reguła skalowania w poziomie jest wyzwalana, funkcja automatycznego skalowania oblicza nową pojemność określoną przez **scaleAction** każdej z tych reguł. Następnie można skalować do maksymalnie tych pojemności, aby zapewnić dostępność usług.
 
-Na przykład załóżmy, że jest zestawu skalowania maszyn wirtualnych za pomocą bieżące możliwości oferowane przez 10. Istnieją dwie reguły skalowania w poziomie: jeden, który zwiększa pojemność 10 procent i taki, który zwiększa pojemność liczby 3. Pierwszą regułę mogłoby spowodować nową pojemność 11, a druga reguła mogłoby spowodować pojemność 13. Aby zapewnić dostępność usługi, automatycznego skalowania wybiera akcję, która powoduje maksymalną pojemność, więc drugiej reguły jest wybierany.
+Załóżmy na przykład, że istnieje zestaw skalowania maszyn wirtualnych z aktualną pojemnością 10. Istnieją dwie reguły skalowania w poziomie: jeden, który zwiększa wydajność o 10%, a drugi zwiększa pojemność o 3 zliczenia. Pierwsza reguła spowoduje powstanie nowej pojemności 11, a druga reguła spowoduje, że zostanie osiągnięta pojemność 13. W celu zapewnienia dostępności usługi funkcja automatycznego skalowania wybiera akcję, która skutkuje maksymalną pojemnością, więc zostanie wybrana druga reguła.
 
-Jeśli żadne reguły skalowania w poziomie są wyzwalane, automatycznego skalowania ocenia wszystkich skalowania na zewnątrz reguł (reguł z **kierunek = "Zmniejsz"** ). Automatyczne skalowanie wymaga tylko akcji skalowania na zewnątrz, jeśli wszystkie reguły skalowania na zewnątrz są wyzwalane.
+Jeśli nie zostanie wyzwolona żadna reguła skalowania w poziomie, funkcja automatycznego skalowania oceni wszystkie reguły skalowania (reguły z **kierunkiem "Zmniejsz"** ). Funkcja automatycznego skalowania przyjmuje tylko akcję skalowania, jeśli zostaną wyzwolone wszystkie reguły skalowania w poziomie.
 
-Automatyczne skalowanie oblicza nową pojemność ustalany na podstawie **scaleAction** każdego z tych zasad. Następnie wybiera akcję skalowania, która powoduje maksymalną liczbę tych możliwości, aby zapewnić dostępność usługi.
+Funkcja automatycznego skalowania oblicza nową pojemność określoną przez **scaleAction** każdej z tych reguł. Następnie wybiera akcję skalowania, która daje w wyniku maksymalną liczbę tych zdolności do zapewnienia dostępności usługi.
 
-Na przykład załóżmy, że jest zestawu skalowania maszyn wirtualnych za pomocą bieżące możliwości oferowane przez 10. Istnieją dwie reguły skalowania na zewnątrz: jedną, która zmniejsza pojemność o 50%, a drugie zmniejszona pojemność liczby 3. Pierwszą regułę mogłoby spowodować nową pojemność 5, a druga reguła mogłoby spowodować pojemności 7. Aby zapewnić dostępność usługi, automatycznego skalowania wybiera akcję, która powoduje maksymalną pojemność, więc drugiej reguły jest wybierany.
+Załóżmy na przykład, że istnieje zestaw skalowania maszyn wirtualnych z aktualną pojemnością 10. Istnieją dwie reguły skalowania: jeden, który zmniejsza pojemność o 50%, i jeden, który zmniejsza pojemność o 3 zliczenia. Pierwsza reguła spowoduje powstanie nowej pojemności 5, a druga reguła spowoduje zwiększenie pojemności 7. W celu zapewnienia dostępności usługi funkcja automatycznego skalowania wybiera akcję, która skutkuje maksymalną pojemnością, więc zostanie wybrana druga reguła.
 
-## <a name="next-steps"></a>Kolejne kroki
-Więcej informacji na temat automatycznego skalowania, odwołując się do następujących:
+## <a name="next-steps"></a>Następne kroki
+Więcej informacji na temat automatycznego skalowania można znaleźć w następujących tematach:
 
 * [Omówienie automatycznego skalowania](../../azure-monitor/platform/autoscale-overview.md)
-* [Usługa Azure Monitor skalowania automatycznego często używane metryki](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
-* [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [Azure Monitor metryki automatycznego skalowania](../../azure-monitor/platform/autoscale-common-metrics.md)
+* [Najlepsze rozwiązania dotyczące Azure Monitor automatycznego skalowania](../../azure-monitor/platform/autoscale-best-practices.md)
+* [Używanie akcji skalowania automatycznego do wysyłania powiadomień o alertach dotyczących wiadomości e-mail i elementów webhook](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
 

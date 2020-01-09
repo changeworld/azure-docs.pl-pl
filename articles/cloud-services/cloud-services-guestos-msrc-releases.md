@@ -10,17 +10,59 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/5/2019
+ms.date: 12/13/2019
 ms.author: raiye
-ms.openlocfilehash: 027fb5176ecf1fdb32119c933d1b44eaf9f82bb8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.openlocfilehash: 742f54ffb6c77d9f84582d6a68dff936fdbbe99c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386208"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
+
+## <a name="december-2019-guest-os"></a>System operacyjny gościa z grudnia 2019
+
+>[!NOTE]
+>System operacyjny gościa w grudniu jest obecnie wdrażany na maszynach wirtualnych usługi w chmurze skonfigurowanych do aktualizacji automatycznych. Po zakończeniu wprowadzania ta wersja zostanie udostępniona do ręcznego aktualizowania za pomocą plików Azure Portal i konfiguracji. W systemie operacyjnym gościa w grudniu uwzględniono następujące poprawki. Ta lista może ulec zmianie.
+
+| Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
+| --- | --- | --- | --- | --- |
+|  Rel 19-12  |  [4530692]  |  Zabezpieczenia Windows  | 2,93 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 2,93 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 3,80 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530698]  |  Zabezpieczenia Windows  | 3,80 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530730]  |  Zabezpieczenia Windows  | 4,73 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 4,73 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530689]  |  Najnowsza aktualizacja zbiorcza  | 5,38 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530715]  |  Najnowsza aktualizacja zbiorcza  | 6,14 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4525235]  |  Niezwiązane z zabezpieczeniami  | 2,93 | 12 listopada 2019 |
+|  Rel 19-12  |  [4531786]  |  Obsługa aktualizacji stosu  | 2,93 | 10 grudnia 2019 |
+|  Rel 19-12  |  [4525246]  |  Niezwiązane z zabezpieczeniami  | 3,80 | 12 listopada 2019 |
+|  Rel 19-12  |  [4523208]  |  Obsługa aktualizacji stosu  | 3.8 | 12 listopada 2019 |
+|  Rel 19-12  |  [4525243]  |  Niezwiązane z zabezpieczeniami  | 4,73 | 12 listopada 2019 |
+|  Rel 19-12  |  [4524445]  |  Obsługa aktualizacji stosu  | 4,73 | 12 listopada 2019 |
+|  Rel 19-12  |  [4520724]  |  Obsługa aktualizacji stosu  | 5,38 | 12 listopada 2019 |
+|  Rel 19-12  |  [4523204]  |  ServicingStackUpdate  | 6,14 | 12 listopada 2019 |
+
+[4530692]: https://support.microsoft.com/kb/4530692
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530698]: https://support.microsoft.com/kb/4530698
+[4530730]: https://support.microsoft.com/kb/4530730
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530689]: https://support.microsoft.com/kb/4530689
+[4530715]: https://support.microsoft.com/kb/4530715
+[4525235]: https://support.microsoft.com/kb/4525235
+[4531786]: https://support.microsoft.com/kb/4531786
+[4525246]: https://support.microsoft.com/kb/4525246
+[4523208]: https://support.microsoft.com/kb/4523208
+[4525243]: https://support.microsoft.com/kb/4525243
+[4524445]: https://support.microsoft.com/kb/4524445
+[4520724]: https://support.microsoft.com/kb/4520724
+[4523204]: https://support.microsoft.com/kb/4523204
+
 
 ## <a name="november-2019-guest-os"></a>System operacyjny gościa w listopadzie 2019
 

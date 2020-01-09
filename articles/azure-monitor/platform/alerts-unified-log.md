@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396493"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w Azure Monitor
 
@@ -31,7 +31,7 @@ Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w ce
 
 Reguły przeszukiwania dzienników są definiowane przez następujące szczegóły:
 
-- **Zapytanie dziennika**.  Zapytanie, które jest uruchamiane za każdym razem, gdy wyzwala regułę alertu.  Rekordy zwrócone przez to zapytanie są używane do określenia, czy alert ma zostać wyzwolony. Zapytanie analityczne może dotyczyć określonego obszaru roboczego Log Analytics lub Application Insights aplikacji, a nawet w [wielu log Analytics i Application Insights zasobach](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , pod warunkiem, że użytkownik ma dostęp, a także uprawnienia zapytania do wszystkich zasobów. 
+- **Zapytanie dziennika**.  zapytanie uruchamiane po każdym wyzwoleniu reguły alertu.  Rekordy zwrócone przez to zapytanie są używane do określenia, czy alert ma zostać wyzwolony. Zapytanie analityczne może dotyczyć określonego obszaru roboczego Log Analytics lub Application Insights aplikacji, a nawet w [wielu log Analytics i Application Insights zasobach](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , pod warunkiem, że użytkownik ma dostęp, a także uprawnienia zapytania do wszystkich zasobów. 
     > [!IMPORTANT]
     > Obsługa [zapytań między zasobami](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) w alertach dziennika Application Insights i rejestrowania alertów dotyczących [log Analytics skonfigurowanych tylko przy użyciu interfejsu API scheduledQueryRules](../../azure-monitor/platform/alerts-log-api-switch.md) .
 
@@ -134,11 +134,11 @@ Zobaczmy to zachowanie w działaniu z praktycznym przykładem. Załóżmy, że m
 W każdym przedziale czasowym system alertów platformy Azure oblicza warunek dotyczący *alertu contoso-log*.
 
 
-| Time    | Liczba rekordów zwracanych przez zapytanie przeszukiwania dzienników | Evalution warunku dziennika | Wynik 
+| Czas    | Liczba rekordów zwracanych przez zapytanie przeszukiwania dzienników | Evalution warunku dziennika | Wynik 
 | ------- | ----------| ----------| ------- 
 | 1:05 PM | 0 rekordów | 0 nie jest > 0, więc FALSE |  Alert nie jest wyzwalany. Nie wywołano żadnych akcji.
 | 1:10 PM | 2 rekordy | 2 > 0  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
-| 1:15 PM | 5 rekordów | 5 > 0, tak więc prawda  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
+| 13:15 | 5 rekordów | 5 > 0, tak więc prawda  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
 | 1:20 PM | 0 rekordów | 0 nie jest > 0, więc FALSE |  Alert nie jest wyzwalany. Nie wywołano żadnych akcji. Stan alertu pozostał aktywny.
 
 Jeśli na przykład użyto poprzedniego przypadku:
@@ -154,7 +154,7 @@ Cennik dotyczący alertów dotyczących dzienników znajduje się na stronie z [
 - Alerty dzienników dla Application Insights wyświetlane z dokładną nazwą alertu wraz z właściwościami grupy zasobów i alertu
 - Alerty dzienników dla Log Analytics wyświetlane z dokładną nazwą alertu wraz z właściwościami grupy zasobów i alertu; podczas tworzenia przy użyciu [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
 
-[Starsza wersja interfejsu API log Analytics](../../azure-monitor/platform/api-alerts.md) zawiera akcje alertów i harmonogramy w ramach log Analytics zapisanego wyszukiwania, a nie odpowiednie [zasoby platformy Azure](../../azure-resource-manager/resource-group-overview.md). W związku z tym, aby włączyć rozliczenia dla takich starszych alertów dziennika utworzonych dla Log Analytics przy użyciu Azure Portal **bez** [przełączania do nowego interfejsu API](../../azure-monitor/platform/alerts-log-api-switch.md) lub za pośrednictwem [starszych `microsoft.insights/scheduledqueryrules` log Analytics](../../azure-monitor/platform/api-alerts.md) Ukryte reguły pseudo alertów utworzone na potrzeby rozliczania na `microsoft.insights/scheduledqueryrules` jak pokazano jako `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` wraz z właściwościami grupy zasobów i alertów.
+[Starsza wersja interfejsu API log Analytics](../../azure-monitor/platform/api-alerts.md) zawiera akcje alertów i harmonogramy w ramach log Analytics zapisanego wyszukiwania, a nie odpowiednie [zasoby platformy Azure](../../azure-resource-manager/management/overview.md). W związku z tym, aby włączyć rozliczenia dla takich starszych alertów dziennika utworzonych dla Log Analytics przy użyciu Azure Portal **bez** [przełączania do nowego interfejsu API](../../azure-monitor/platform/alerts-log-api-switch.md) lub za pośrednictwem [starszych `microsoft.insights/scheduledqueryrules` log Analytics](../../azure-monitor/platform/api-alerts.md) Ukryte reguły pseudo alertów utworzone na potrzeby rozliczania na `microsoft.insights/scheduledqueryrules` jak pokazano jako `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` wraz z właściwościami grupy zasobów i alertów.
 
 > [!NOTE]
 > Jeśli istnieją nieprawidłowe znaki, takie jak `<, >, %, &, \, ?, /`, zostaną one zastąpione `_` w nazwie ukrytej reguły noalertu i w związku z tym również na rachunku na platformie Azure.

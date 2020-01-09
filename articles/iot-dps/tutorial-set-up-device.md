@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 337ac2f60809370e6a07b2b0403d21ef7230b034
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434578"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Samouczek: Konfigurowanie urządzenia do aprowizacji przy użyciu usługi Azure IoT Hub Device Provisioning Service
 
@@ -36,10 +36,11 @@ Jeśli nie znasz procesu automatycznego aprowizowania, przed kontynuowaniem zapo
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 lub nowszy z włączonym obciążeniem ["Programowanie aplikacji klasycznych C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) .
+Poniższe wymagania wstępne dotyczą środowiska projektowego systemu Windows. W systemie Linux lub macOS zapoznaj się z odpowiednią sekcją w sekcji [Przygotowywanie środowiska deweloperskiego](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) w dokumentacji zestawu SDK.
+
+* [Program Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 z włączonym obciążeniem ["Programowanie aplikacji klasycznych C++"](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) . Obsługiwane są również programy Visual Studio 2015 i Visual Studio 2017.
+
 * Zainstalowana najnowsza wersja usługi[Git](https://git-scm.com/download/).
-
-
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Kompilowanie specyficznej dla platformy wersji zestawu SDK
 
@@ -49,23 +50,26 @@ Zestaw SDK klienta usługi Device Provisioning ułatwia zaimplementowanie oprogr
 
     Ważne jest, aby wstępnie wymagane składniki (program Visual Studio oraz pakiet roboczy „Programowanie aplikacji klasycznych w języku C++”) były zainstalowane na tym komputerze **przed** uruchomieniem `CMake` instalacji. Gdy wymagania wstępne zostaną spełnione, a pobrane pliki zweryfikowane, zainstaluj system kompilacji CMake.
 
-1. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
-    
+2. Znajdź nazwę tagu dla [najnowszej wersji](https://github.com/Azure/azure-iot-sdk-c/releases/latest) zestawu SDK.
+
+3. Otwórz wiersz polecenia lub powłokę Git Bash. Uruchom następujące polecenia, aby sklonować najnowszą wersję repozytorium [usługi Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) w witrynie GitHub. Użyj znacznika znalezionego w poprzednim kroku jako wartości parametru `-b`:
+
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
+
     Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
-
-1. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu. 
+4. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu. Uruchom następujące polecenia w katalogu `azure-iot-sdk-c`:
 
     ```cmd/sh
-    cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-1. Skompiluj zestaw SDK dla platformy deweloperskiej w oparciu o mechanizmy zaświadczania, które będą używane. Użyj jednego z następujących poleceń (zwróć uwagę na dwa końcowe znaki kropki po każdym poleceniu). Po zakończeniu program CMake utworzy podkatalog `/cmake` z zawartością specyficzną dla urządzenia:
+5. Skompiluj zestaw SDK dla platformy deweloperskiej w oparciu o mechanizmy zaświadczania, które będą używane. Użyj jednego z następujących poleceń (zwróć uwagę na dwa końcowe znaki kropki po każdym poleceniu). Po zakończeniu program CMake utworzy podkatalog `/cmake` z zawartością specyficzną dla urządzenia:
  
     - Urządzenia korzystające z symulatora modułu TPM na potrzeby zaświadczania:
 
@@ -96,8 +100,9 @@ W zależności od tego, czy kompilowany zestaw SDK ma być używany na potrzeby 
 
 - W przypadku urządzenia X.509 należy uzyskać certyfikaty wystawione dla tego urządzenia. Usługa aprowizowania udostępnia dwa rodzaje wpisów rejestracji, które sterują dostępem do urządzeń przy użyciu mechanizmu zaświadczania X.509. Wymagane certyfikaty zależą od używanych typów rejestracji.
 
-    1. Rejestracje indywidualne: rejestracji dla pojedynczego określonego urządzenia. Ten typ wpisu rejestracji wymaga [certyfikatów jednostki końcowej „liścia”](concepts-security.md#end-entity-leaf-certificate).
-    1. Grupy rejestracji: ten typ wpisu rejestracji wymaga certyfikatów pośrednich lub certyfikatów głównych. Aby dowiedzieć się więcej, zobacz [Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    - Rejestracje indywidualne: rejestracji dla pojedynczego określonego urządzenia. Ten typ wpisu rejestracji wymaga [certyfikatów jednostki końcowej „liścia”](concepts-security.md#end-entity-leaf-certificate).
+    
+    - Grupy rejestracji: ten typ wpisu rejestracji wymaga certyfikatów pośrednich lub certyfikatów głównych. Aby dowiedzieć się więcej, zobacz [Sterowanie dostępem urządzenia do usługi aprowizacji za pomocą certyfikatów X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Symulowane urządzenia
 

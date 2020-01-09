@@ -2,19 +2,15 @@
 title: Uruchamianie Azure Automation elementu Runbook za pomocą elementu webhook
 description: Element webhook, który umożliwia klientowi uruchomienie elementu Runbook w Azure Automation z wywołania HTTP.  W tym artykule opisano sposób tworzenia elementu webhook oraz wywoływania go w celu uruchomienia elementu Runbook.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bc03425a64486e449b4df93ea187435a1e893dda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418970"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie Azure Automation elementu Runbook za pomocą elementu webhook
 
@@ -113,7 +109,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient otrzymuje jeden z następujących kodów powrotnych z żądania POST.
 
-| Kod | Tekst | Opis |
+| Code | Tekst | Opis |
 |:--- |:--- |:--- |
 | 202 |Zaakceptowano |Żądanie zostało zaakceptowane, a element Runbook został pomyślnie umieszczony w kolejce. |
 | 400 |Nieprawidłowe żądanie |Żądanie nie zostało zaakceptowane z jednego z następujących powodów: <ul> <li>Element webhook wygasł.</li> <li>Element webhook jest wyłączony.</li> <li>Token w adresie URL jest nieprawidłowy.</li>  </ul> |

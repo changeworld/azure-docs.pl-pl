@@ -1,5 +1,5 @@
 ---
-title: Dodawanie logowania do aplikacji sieci Web usługi Azure AD ASP.NET
+title: Dodawanie logowania do aplikacji sieci Web Microsoft Identity platform ASP.NET
 titleSuffix: Microsoft identity platform
 description: Implementowanie logowania firmy Microsoft w rozwiązaniu ASP.NET przy użyciu tradycyjnej aplikacji opartej na przeglądarce sieci Web i usługi OpenID Connect Connect Standard
 services: active-directory
@@ -17,18 +17,18 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423473"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania do firmy Microsoft do aplikacji sieci Web ASP.NET
 
 W tym przewodniku pokazano, jak zaimplementować logowanie do firmy Microsoft za pośrednictwem rozwiązania ASP.NET MVC przy użyciu tradycyjnej aplikacji opartej na przeglądarce sieci Web i usługi OpenID Connect Connect.
 
-Po ukończeniu tego przewodnika aplikacja będzie mogła akceptować logowania do kont osobistych za pomocą polubień outlook.com i live.com. Ponadto konta służbowe z dowolnej firmy lub organizacji zintegrowanej z usługą Azure Active Directory (Azure AD) będą mogły zalogować się do aplikacji.
+Po ukończeniu tego przewodnika aplikacja będzie mogła akceptować logowania do kont osobistych za pomocą polubień outlook.com i live.com. Ponadto konta służbowe z dowolnej firmy lub organizacji zintegrowanej z platformą tożsamości firmy Microsoft będą mogły zalogować się do aplikacji.
 
 > Ten przewodnik wymaga Microsoft Visual Studio 2019.  Nie masz tego programu?  [Pobierz bezpłatnie program Visual Studio 2019](https://www.visualstudio.com/downloads/).
 
@@ -106,7 +106,7 @@ Poniższe kroki służą do tworzenia klasy startowej OWIN oprogramowania pośre
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -115,7 +115,7 @@ Poniższe kroki służą do tworzenia klasy startowej OWIN oprogramowania pośre
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -175,7 +175,7 @@ Poniższe kroki służą do tworzenia klasy startowej OWIN oprogramowania pośre
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji
-> Parametry podane w pozycji *OpenIDConnectAuthenticationOptions* służą jako współrzędne dla aplikacji do komunikowania się z usługą Azure AD. Ponieważ program OpenID Connect Connecter używa plików cookie w tle, należy również skonfigurować uwierzytelnianie plików cookie jako powyższy kod. Wartość *ValidateIssuer* informuje OpenIdConnect, aby nie ograniczać dostępu do jednej konkretnej organizacji.
+> Parametry podane w *OpenIDConnectAuthenticationOptions* stanowią współrzędne dla aplikacji w celu komunikowania się z platformą tożsamości firmy Microsoft. Ponieważ program OpenID Connect Connecter używa plików cookie w tle, należy również skonfigurować uwierzytelnianie plików cookie jako powyższy kod. Wartość *ValidateIssuer* informuje OpenIdConnect, aby nie ograniczać dostępu do jednej konkretnej organizacji.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>dodawanie kontrolera do obsługi żądań logowania i wylogowania
@@ -270,7 +270,7 @@ W programie Visual Studio Utwórz nowy widok, aby dodać przycisk logowania i wy
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Więcej informacji
-> Ta strona dodaje przycisk logowania w formacie SVG z czarnym tłem:<br/>![Zaloguj się przy użyciu konta Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Aby uzyskać więcej przycisków logowania, przejdź do [wskazówek dotyczących znakowania](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "BWskazówki dotyczące Los).
+> Ta strona dodaje przycisk logowania w formacie SVG z czarnym tłem:<br/>![Zaloguj się przy użyciu konta Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Aby uzyskać więcej przycisków logowania, przejdź do [wskazówek dotyczących znakowania](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Wytyczne dotyczące oznaczania marką").
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Dodaj kontroler, aby wyświetlić oświadczenia użytkownika
@@ -407,7 +407,7 @@ Gdy wszystko będzie gotowe do uruchomienia testu, użyj konta usługi Azure AD 
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgoda w punkcie końcowym platformy tożsamości firmy Microsoft
->  Aplikacje integrowane z platformą tożsamości firmy Microsoft są zgodne z modelem autoryzacji, który umożliwia użytkownikom i administratorom kontrolę nad sposobem uzyskiwania dostępu do danych. Po uwierzytelnieniu użytkownika w usłudze Azure AD w celu uzyskania dostępu do tej aplikacji zostanie wyświetlony monit o zgodę na uprawnienia wymagane przez aplikację ("Wyświetl swój profil podstawowy" i "Obsługuj dostęp do danych, do których masz dostęp"). Po zaakceptowaniu tych uprawnień użytkownik będzie kontynuował działanie aplikacji. Jednak użytkownik może zamiast tego monitować o **wymaganą stronę zgody administratora** , jeśli wystąpi jeden z następujących sytuacji:
+>  Aplikacje integrowane z platformą tożsamości firmy Microsoft są zgodne z modelem autoryzacji, który umożliwia użytkownikom i administratorom kontrolę nad sposobem uzyskiwania dostępu do danych. Po uwierzytelnieniu użytkownika przy użyciu platformy tożsamości firmy Microsoft w celu uzyskania dostępu do tej aplikacji zostanie wyświetlony monit o zgodę na uprawnienia wymagane przez aplikację ("Wyświetl swój profil podstawowy" i "Obsługuj dostęp do danych, do których masz dostęp"). Po zaakceptowaniu tych uprawnień użytkownik będzie kontynuował działanie aplikacji. Jednak użytkownik może zamiast tego monitować o **wymaganą stronę zgody administratora** , jeśli wystąpi jeden z następujących sytuacji:
 >  > - Deweloper aplikacji dodaje wszelkie dodatkowe uprawnienia, które wymagają **zgody administratora**.
 >  > - Lub dzierżawy są skonfigurowane (w **aplikacjach dla przedsiębiorstw — > ustawienia użytkownika**), w których użytkownicy nie mogą wyrazić zgody na aplikacje uzyskujące dostęp do danych firmy w ich imieniu.
 >
@@ -433,7 +433,7 @@ Po przejściu do widoku kontrolera powinna zostać wyświetlona tabela zawieraj�
 |**Temat** |Temat |Ciąg, który jednoznacznie identyfikuje użytkownika w sieci Web|
 |**Tenant ID (Identyfikator dzierżawy)** |Identyfikator GUID | **Identyfikator GUID** , który jednoznacznie reprezentuje organizację usługi Azure AD użytkownika|
 
-Ponadto powinna zostać wyświetlona tabela wszystkich oświadczeń, które znajdują się w żądaniu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [listę oświadczeń, które znajdują się w tokenie identyfikatora usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Ponadto powinna zostać wyświetlona tabela wszystkich oświadczeń, które znajdują się w żądaniu uwierzytelniania. Aby uzyskać więcej informacji, zobacz [listę oświadczeń, które znajdują się w tokenie identyfikatora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Przetestuj dostęp do metody, która ma atrybut Autoryzuj (opcjonalnie)
 
@@ -459,7 +459,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Ogranicz, kto może logować się do aplikacji
 
-Domyślnie podczas kompilowania aplikacji utworzonej przez ten przewodnik aplikacja będzie akceptować logowania do kont osobistych (w tym outlook.com, live.com i innych), a także kont służbowych z dowolnej firmy lub organizacji zintegrowanej z usługą Usługa Azure AD. Jest to zalecana opcja dla aplikacji SaaS.
+Domyślnie podczas kompilowania aplikacji utworzonej przez ten przewodnik aplikacja będzie akceptować logowania do kont osobistych (w tym outlook.com, live.com i innych), a także kont służbowych z dowolnej firmy lub organizacji zintegrowanej z usługą Platforma tożsamości firmy Microsoft. Jest to zalecana opcja dla aplikacji SaaS.
 
 Aby ograniczyć dostęp użytkowników do logowania do aplikacji, dostępne są różne opcje.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438919"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 
@@ -70,7 +70,7 @@ W poniższej tabeli przedstawiono informacje o przepływności kopiowania w MB/s
         <td>128 GB</td>
     </tr>
     <tr>
-        <td>Sieć</td>
+        <td>Network (Sieć)</td>
         <td>Interfejs internetowy: 10 GB/s; Interfejs sieci intranet: 40 GB/s</td>
     </tr>
     </table>
@@ -416,7 +416,8 @@ W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Prze
 ## <a name="reference"></a>Informacje ogólne
 Poniżej znajdują się informacje dotyczące monitorowania wydajności i dostrajania dla niektórych obsługiwanych magazynów danych:
 
-* Usługa Azure Storage (w tym magazyn obiektów Blob i Table storage): [cele skalowalności usługi Azure Storage](../../storage/common/storage-scalability-targets.md) i [Lista kontrolna wydajności i skalowalności usługi Azure Storage](../../storage/common/storage-performance-checklist.md)
+* Azure Blob Storage: [elementy docelowe skalowalności i wydajności dla magazynu obiektów BLOB](../../storage/blobs/scalability-targets.md) i [wydajności i skalowalności dla usługi BLOB Storage](../../storage/blobs/storage-performance-checklist.md).
+* Azure Table Storage: [elementy docelowe skalowalności i wydajności dla magazynu tabel](../../storage/tables/scalability-targets.md) oraz [listę kontrolną wydajności i skalowalności w magazynie tabel](../../storage/tables/storage-performance-checklist.md).
 * Usługa Azure SQL Database: Możesz [monitorować wydajność](../../sql-database/sql-database-single-database-monitor.md) i sprawdź wartość procentowa jednostki (DTU) dla transakcji bazy danych
 * Usługa Azure SQL Data Warehouse: Jej możliwości jest mierzony w liczbę jednostek magazynu danych (dwu); zobacz [Zarządzaj obliczeniowa w usłudze Azure SQL Data Warehouse (omówienie)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [poziomy wydajności w usłudze Azure Cosmos DB](../../cosmos-db/performance-levels.md)

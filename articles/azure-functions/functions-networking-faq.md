@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 4534e20a1156f1d3550d247dfd15d9dc538e9d80
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409528"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Często zadawane pytania dotyczące sieci w Azure Functions
 
@@ -51,9 +51,7 @@ Korzystając z integracji z siecią wirtualną, można uzyskać dostęp do zasob
 
 Można zezwolić na wywoływanie wyzwalaczy HTTP z sieci wirtualnej przy użyciu [punktów końcowych usługi](./functions-networking-options.md#private-site-access). 
 
-Możesz również wyzwolić funkcję z zasobu w sieci wirtualnej, wdrażając aplikację funkcji w App Service Environment. Aby uzyskać szczegółowe informacje na temat używania App Service Environment, zobacz [Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia z App Service Environment](../app-service/environment/create-ilb-ase.md).
-
-Plan Premium i App Service obsługuje wyzwalacze protokołu HTTP z sieci wirtualnej, ale tylko środowisko App Service obsługują wszystkie inne typy wyzwalaczy funkcji za pośrednictwem sieci wirtualnej.
+Możesz również wyzwolić funkcję ze wszystkich innych zasobów w sieci wirtualnej, wdrażając aplikację funkcji do planu Premium, planu App Service lub App Service Environment. Aby uzyskać więcej informacji, zobacz [wyzwalacze sieci wirtualnej inne niż http](./functions-networking-options.md#virtual-network-triggers-non-http)
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Jak mogę wdrożyć aplikację funkcji w sieci wirtualnej?
 

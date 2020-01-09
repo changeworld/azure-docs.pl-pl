@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428881"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Eksportowanie przepływów z usługi Power Automate i wdrażanie w usłudze Azure Logic Apps
 
@@ -32,7 +32,7 @@ Aby rozszerzać i rozszerzać możliwości przepływu, można migrować ten prze
 
 1. Zaloguj się w usłudze [Automatyzacja](https://flow.microsoft.com)i wybierz pozycję **Moje przepływy**. Znajdź i wybierz swój przepływ. Na pasku narzędzi wybierz przycisk wielokropka ( **...** ). Wybierz pozycję **eksportuj** > **Logic Apps szablon (JSON)** .
 
-   ![Eksportuj przepływ](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
+   ![Eksportowanie przepływu](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
 1. Zapisz szablon w pożądanej lokalizacji.
 
@@ -81,7 +81,7 @@ Aby uzyskać więcej informacji, zobacz [zwiększanie do Azure Logic Apps](https
 
       Każde połączenie, które wymaga autoryzacji, zawiera ikonę ostrzeżenia:
 
-      ![ikona ostrzeżenia](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
+      ![Ikona ostrzeżenia](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
    1. Dla każdego kroku wymagającego autoryzowanego połączenia rozwiń ten krok, a następnie wybierz pozycję **Dodaj nowy**.
 
@@ -133,7 +133,7 @@ Jeśli skonfigurowano program Visual Studio z [wymaganiami wstępnymi](../logic-
 
 1. W Eksplorator rozwiązań otwórz menu skrótów projektu i wybierz polecenie **wdróż** > **nowe**. Po wyświetleniu monitu zaloguj się przy użyciu konta platformy Azure.
 
-1. Po wyświetleniu monitu potwierdź subskrypcję platformy Azure, grupę zasobów platformy Azure oraz inne ustawienia, które mają być używane do wdrażania, takie jak [plik parametrów](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) , który ma być używany do przekazywania wartości parametrów szablonu, a następnie wybierz pozycję **Wdróż**.
+1. Po wyświetleniu monitu potwierdź subskrypcję platformy Azure, grupę zasobów platformy Azure oraz inne ustawienia, które mają być używane do wdrażania, takie jak [plik parametrów](../azure-resource-manager/templates/parameter-files.md) , który ma być używany do przekazywania wartości parametrów szablonu, a następnie wybierz pozycję **Wdróż**.
 
    ![Potwierdź ustawienia wdrożenia](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 
@@ -141,7 +141,7 @@ Jeśli skonfigurowano program Visual Studio z [wymaganiami wstępnymi](../logic-
 
    ![Edytuj parametry wdrożenia](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Po rozpoczęciu wdrażania stan wdrożenia aplikacji zostanie wyświetlony w oknie **Dane wyjściowe** programu Visual Studio. Jeśli stan się nie pojawi, otwórz listę **Pokaż dane wyjściowe z** i wybierz grupę zasobów platformy Azure. Na przykład:
+   Po rozpoczęciu wdrażania stan wdrożenia aplikacji zostanie wyświetlony w oknie **Dane wyjściowe** programu Visual Studio. Jeśli stan się nie pojawi, otwórz listę **Pokaż dane wyjściowe z** i wybierz grupę zasobów platformy Azure. Przykład:
 
    ![Okno danych wyjściowych](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

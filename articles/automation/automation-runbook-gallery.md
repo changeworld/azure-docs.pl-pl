@@ -2,19 +2,15 @@
 title: Galeria elementów Runbook i modułów dla Azure Automation
 description: Elementy Runbook i moduły firmy Microsoft oraz społeczność są dostępne do zainstalowania i użycia w środowisku Azure Automationu.  W tym artykule opisano sposób uzyskiwania dostępu do tych zasobów i współtworzenia elementów Runbook w galerii.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52a0ab0a31600c1548283c7d899b17e497811b5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421480"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów dla Azure Automation
 

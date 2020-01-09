@@ -1,5 +1,5 @@
 ---
-title: Logowanie jednokrotne między aplikacjami ADAL i MSAL iOS/macOS — platforma tożsamości firmy Microsoft | Azure
+title: Logowanie jednokrotne między aplikacjami ADAL & MSAL (iOS/macOS) — Microsoft Identity platform | Azure
 description: ''
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13998982b778181febf99d8366eebd25482bc2bc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 201da533231eea4d597e660931e70e19a497d069
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423418"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Instrukcje: Logowanie jednokrotne między aplikacjami ADAL i MSAL w systemach macOS i iOS
 
@@ -208,7 +208,7 @@ Ponieważ `homeAccountId` nie jest dostępna w starszych wersjach ADAL, należy 
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Na przykład:
+Przykład:
 
 Cel-C:
 

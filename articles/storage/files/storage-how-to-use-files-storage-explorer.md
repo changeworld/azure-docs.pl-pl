@@ -1,5 +1,5 @@
 ---
-title: Przewodnik Szybki start dotyczący zarządzania udziałami plików platformy Azure za pomocą Eksploratora usługi Azure Storage
+title: Zarządzanie udziałami plików platformy Azure przy użyciu Eksplorator usługi Azure Storage
 description: W tym przewodniku Szybki start dowiesz się, jak zarządzać usługą Azure Files za pomocą Eksploratora usługi Azure Storage.
 author: roygara
 ms.service: storage
@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b034b3e7aa5fcb61cf83565f3e4c3b1c83f3610c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431818"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Szybki start: Tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą Eksploratora usługi Azure Storage
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą Eksploratora usługi Azure Storage
 W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z [udziałami plików platformy Azure](storage-files-introduction.md) przy użyciu Eksploratora usługi Azure Storage. Udziały plików platformy Azure są podobne do innych udziałów plików, ale są przechowywane w chmurze i obsługiwane przez platformę Azure. Udziały plików platformy Azure obsługują standardowy w branży protokół SMB i umożliwiają udostępnianie plików między wieloma maszynami, aplikacjami i wystąpieniami. 
 
 Eksplorator usługi Azure Storage to popularne narzędzie klienckie dostępne dla systemów Windows, macOS i Linux. Eksplorator usługi Storage służy do zarządzania udziałami plików platformy Azure i innymi zasobami magazynu.
@@ -33,8 +33,8 @@ Nie możesz używać Eksploratora usługi Storage do tworzenia nowych zasobów. 
 Przy pierwszym uruchomieniu Eksploratora usługi Storage jest wyświetlane okno **Eksplorator usługi Microsoft Azure Storage — nawiązywanie połączenia**. Eksplorator usługi Storage oferuje kilka sposobów nawiązywania połączenia z kontami magazynu: 
 
 - **Logowanie za pomocą konta platformy Azure**: możesz zalogować się przy użyciu poświadczeń użytkownika organizacji lub konta Microsoft. 
-- **Łączenie z konkretnym kontem magazynu przy użyciu parametrów połączenia lub tokenu SAS**: Parametry połączenia to specjalny ciąg zawierający nazwę konta magazynu i klucz konta magazynu/token SAS. Dzięki tokenowi Eksplorator usługi Storage uzyskuje dostęp do konta magazynu bezpośrednio (zamiast wyświetlania wszystkich kont magazynu na koncie platformy Azure). Aby dowiedzieć się więcej na temat parametrów połączenia, zobacz [Konfiguracja parametrów połączenia usługi Azure Storage](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Łączenie z konkretnym kontem magazynu przy użyciu nazwy i klucza konta magazynu**: Użyj nazwy i klucza konta magazynu do nawiązania połączenia z magazynem Azure Storage.
+- **Łączenie z określonym kontem magazynu za pomocą parametrów połączenia lub tokenu sygnatury dostępu współdzielonego**: parametry połączenia to specjalny ciąg zawierający nazwę konta magazynu oraz klucz konta magazynu lub token sygnatury dostępu współdzielonego. Dzięki tokenowi Eksplorator usługi Storage uzyskuje dostęp do konta magazynu bezpośrednio (zamiast wyświetlania wszystkich kont magazynu na koncie platformy Azure). Aby dowiedzieć się więcej na temat parametrów połączenia, zobacz [Konfiguracja parametrów połączenia usługi Azure Storage](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Nawiązywanie połączenia z konkretnym kontem magazynu za pomocą nazwy i klucza konta magazynu**: użyj nazwy i klucza konta magazynu do nawiązania połączenia z usługą Azure Storage.
 
 Na potrzeby tego przewodnika Szybki start zaloguj się przy użyciu konta platformy Azure. Wybierz pozycję **Dodaj konto platformy Azure**, a następnie wybierz pozycję **Zaloguj się**. Postępuj zgodnie z monitami, aby zalogować się na koncie platformy Azure.
 
@@ -66,7 +66,7 @@ Dodanie katalogu zapewnia strukturę hierarchiczną na potrzeby zarządzania udz
 
 Katalog *myDirectory* zostanie wyświetlony na karcie udziału plików *myshare*.
 
-### <a name="upload-a-file"></a>Przekaż plik 
+### <a name="upload-a-file"></a>Przekazywanie pliku 
 Istnieje możliwość przekazania pliku z maszyny lokalnej do nowego katalogu w udziale plików. Przekazywanie może obejmować cały folder lub pojedynczy plik.
 
 1. Wybierz z górnego menu polecenie **Przekaż**. Ta operacja udostępnia opcję przekazania folderu lub pliku.
@@ -75,7 +75,7 @@ Istnieje możliwość przekazania pliku z maszyny lokalnej do nowego katalogu w 
 
 Gdy skończysz, plik zostanie wyświetlony na liście w okienku *myDirectory*.
 
-### <a name="download-a-file"></a>Pobierz plik
+### <a name="download-a-file"></a>Pobieranie pliku
 Aby pobrać kopię pliku z udziału plików, kliknij prawym przyciskiem myszy plik, a następnie wybierz polecenie **Pobierz**. Wybierz, gdzie chcesz umieścić plik na maszynie lokalnej, a następnie wybierz polecenie **Zapisz**.
 
 Postęp pobierania będzie wyświetlany w okienku **Działania** na dole okna.

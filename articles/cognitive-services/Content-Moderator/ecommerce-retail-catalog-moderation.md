@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: umiarkowane obrazy produktów handlu elektronicznego — Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Skonfiguruj aplikację do analizowania i klasyfikowania obrazów produktów o określonych etykietach (przy użyciu usługi Azure przetwarzanie obrazów i Custom Vision). Oznacz niepożądane obrazy do dalszej weryfikacji (przy użyciu usługi Azure Content Moderator).
+description: W tym samouczku pokazano, jak skonfigurować aplikację do analizowania i klasyfikowania obrazów produktów za pomocą określonych etykiet (przy użyciu usługi Azure przetwarzanie obrazów i Custom Vision). Oznacz niepożądane obrazy do dalszej weryfikacji (przy użyciu usługi Azure Content Moderator).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382161"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Samouczek: umiarkowane obrazy produktów handlu elektronicznego za pomocą usługi Azure Content Moderator
 

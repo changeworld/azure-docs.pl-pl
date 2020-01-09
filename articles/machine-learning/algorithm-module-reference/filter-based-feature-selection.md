@@ -1,7 +1,7 @@
 ---
 title: 'Wybór funkcji oparty na filtrowaniu: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu wyboru funkcji opartego na filtrze w usłudze Azure Machine Learning, aby identyfikować funkcje w zestawie danych z największą potęgą predykcyjną.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu wyboru funkcji opartego na filtrze w Azure Machine Learning, aby identyfikować funkcje w zestawie danych z największą potęgą predykcyjną.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428522"
 ---
 # <a name="filter-based-feature-selection"></a>Wybór funkcji oparty na filtrze
 
@@ -135,5 +135,5 @@ Jeśli używasz korelacji Pearsona dla funkcji liczbowej i etykiety kategorii, w
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
 

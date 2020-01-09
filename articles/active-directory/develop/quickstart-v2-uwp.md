@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 996bc35820d35e031056207adeb707a7ea98a763
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c29aadfde6c0ab01b2e6ed2c9e4bcc59572bef57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424023"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Szybki start: wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji platformy UWP
 
@@ -51,13 +51,12 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak ap
 >      - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)** .
 >      - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 > 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
-> 1. Rozwiń sekcję **Desktop + Devices (urządzenia** ).  (Jeśli **komputery stacjonarne i urządzenia** nie są widoczne, najpierw kliknij górny baner, aby zobaczyć środowisko uwierzytelniania w wersji zapoznawczej).
-> 1. W sekcji **Identyfikator URI przekierowania** wybierz pozycję **Dodaj identyfikator URI**.  Typ **urn: IETF: wg: OAuth: 2.0: OOB**.
+> 1. W sekcji **identyfikatory URI przekierowania** | **sugerowane identyfikatory URI przekierowań dla klientów publicznych (Mobile, Desktop)** zaznacz pozycję **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > 1. Wybierz pozycję **Zapisz**.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>Krok 1. Konfigurowanie aplikacji
-> Aby kod przykładowy z tego samouczka działał, należy dodać identyfikator URI przekierowania w formacie **urn:ietf:wg:oauth:2.0:oob**.
+> Aby przykład kodu dla tego przewodnika Szybki Start działał, należy dodać identyfikator URI przekierowania jako **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Wprowadź tę zmianę automatycznie]()
 >

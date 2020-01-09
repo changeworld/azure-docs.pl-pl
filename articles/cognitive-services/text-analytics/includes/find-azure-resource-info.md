@@ -9,14 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/07/2019
 ms.author: aahi
-ms.openlocfilehash: 221bcdf3a98a48646bab5abf780dc2a69c8e10f2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: bce751da0e6f03d197951d2f207ac5c54d72c7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378771"
 ---
-> [!TIP]
+> [!IMPORTANT]
 > Aby znaleźć klucz i punkt końcowy na Azure Portal:
-> 1. Przejdź do zasobu platformy Azure pod https://portal.azure.com/ adresem.
+> 1. Przejdź do zasobu platformy Azure w https://portal.azure.com/.
 > 2. Kliknij pozycję **Szybki Start**, która znajduje się w obszarze **Zarządzanie zasobami**.
+>
+> Pamiętaj, aby usunąć swoje poświadczenia z kodu, gdy skończysz, i nigdy nie Publikuj ich publicznie. W przypadku produkcji należy rozważyć użycie bezpiecznego sposobu przechowywania poświadczeń i uzyskiwania do nich dostępu. Na przykład [Magazyn kluczy platformy Azure](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

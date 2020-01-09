@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0628de7c436836a8fdb5b00cac1d8e85963ba48e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a1dc089e1b64ed8d71db4c09405c8cc9a07d8bea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436981"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurowanie połączeń usługi ExpressRoute i lokacja-lokacja współistniejących przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -41,6 +41,7 @@ Ten artykuł zawiera instrukcje konfiguracji obu scenariuszy. Ten artykuł ma za
 * **Obsługiwana jest tylko brama sieci VPN oparta na trasach.** Należy użyć [bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)opartej na trasach. Można również użyć bramy sieci VPN opartej na trasach z połączeniem sieci VPN skonfigurowanym dla selektorów ruchu opartego na zasadach, zgodnie z opisem w temacie [łączenie z wieloma urządzeniami sieci VPN opartymi na zasadach](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 * **Dla bramy sieci VPN należy skonfigurować trasę statyczną.** Jeśli sieć lokalna jest połączona z usługą ExpressRoute oraz siecią VPN typu lokacja-lokacja, aby skierować połączenie sieci VPN typu lokacja-lokacja do publicznego Internetu, trzeba mieć skonfigurowaną trasę statyczną w sieci lokalnej.
 * **Jeśli nie zostanie określony, VPN Gateway domyślnie przyjmuje numer ASN 65515.** Usługa Azure VPN Gateway obsługuje protokół routingu BGP. Możesz określić ASN (numer AS) dla sieci wirtualnej, dodając przełącznik-ASN. Jeśli ten parametr nie zostanie określony, wartością domyślną jest 65515. Dla konfiguracji można użyć dowolnego numeru ASN, ale w przypadku wybrania czegoś innego niż 65515 należy zresetować bramę, aby ustawienie zaczęło obowiązywać.
+* **Podsieć bramy musi mieć wartość/27 lub być krótszym prefiksem**(na przykład/26,/25) lub podczas dodawania bramy sieci wirtualnej ExpressRoute zostanie wyświetlony komunikat o błędzie.
 
 ## <a name="configuration-designs"></a>Projekty konfiguracji
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Konfigurowanie sieci VPN typu lokacja-lokacja jako ścieżki pracy awaryjnej dla usługi ExpressRoute

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: aa14854807727506f5d697d7871c97e219c096a3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 7822045d4b3ce1feb1bfb43fbf1c2fc5a9a1c7fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950888"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425630"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny RESTful w zasadach niestandardowych Azure Active Directory B2C
 
@@ -61,6 +61,43 @@ Element **InputClaims** zawiera listę oświadczeń do wysłania do interfejsu A
 
 Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generować nowe przed wysłaniem do interfejsu API REST.
 
+## <a name="send-a-json-payload"></a>Wyślij ładunek JSON
+
+Profil techniczny interfejsu API REST umożliwia wysyłanie złożonego ładunku JSON do punktu końcowego.
+
+Aby wysłać złożony ładunek JSON:
+
+1. Kompiluj ładunek JSON przy użyciu transformacji oświadczeń [GenerateJson](json-transformations.md) .
+1. W profilu technicznym interfejsu API REST:
+    1. Dodaj transformację oświadczeń wejściowych z odwołaniem do przekształcenia oświadczeń `GenerateJson`.
+    1. Ustaw opcję metadanych `SendClaimsIn` na `body`
+    1. Ustaw opcję metadanych `ClaimUsedForRequestPayload` na nazwę żądania zawierającego ładunek JSON.
+    1. W ramach żądania wejściowego Dodaj odwołanie do żądania wejściowego zawierającego ładunek JSON.
+
+Poniższy przykład `TechnicalProfile` wysyła wiadomość e-mail weryfikacyjną przy użyciu usługi poczty e-mail innej firmy (w tym przypadku SendGrid).
+
+```XML
+<TechnicalProfile Id="SendGrid">
+  <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://api.sendgrid.com/v3/mail/send</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="ClaimUsedForRequestPayload">sendGridReqBody</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_SendGridApiKey" />
+  </CryptographicKeys>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="GenerateSendGridRequestBody" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="sendGridReqBody" />
+  </InputClaims>
+</TechnicalProfile>
+```
+
 ## <a name="output-claims"></a>Oświadczenia wyjściowe
 
 Element **OutputClaims** zawiera listę oświadczeń zwracanych przez interfejs API REST. Może być konieczne zamapowanie nazwy żądania zdefiniowanego w zasadach na nazwę zdefiniowaną w interfejsie API REST. Można również uwzględnić oświadczenia, które nie są zwracane przez dostawcę tożsamości interfejsu API REST, o ile atrybut `DefaultValue` jest ustawiony.
@@ -87,9 +124,10 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | ServiceUrl | Tak | Adres URL punktu końcowego interfejsu API REST. |
-| AuthenticationType | Tak | Typ uwierzytelniania wykonywanego przez dostawcę oświadczeń RESTful. Możliwe wartości: `None`, `Basic`lub `ClientCertificate`. Wartość `None` wskazuje, że interfejs API REST nie jest anonimowy. Wartość `Basic` wskazuje, że interfejs API REST jest zabezpieczony za pomocą uwierzytelniania podstawowego protokołu HTTP. Tylko zweryfikowani użytkownicy, w tym Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. Wartość `ClientCertificate` (zalecane) wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko usługi, które mają odpowiednie certyfikaty, takie jak Azure AD B2C, mogą uzyskać dostęp do usługi. |
+| AuthenticationType | Tak | Typ uwierzytelniania wykonywanego przez dostawcę oświadczeń RESTful. Możliwe wartości: `None`, `Basic`, `Bearer`lub `ClientCertificate`. Wartość `None` wskazuje, że interfejs API REST nie jest anonimowy. Wartość `Basic` wskazuje, że interfejs API REST jest zabezpieczony za pomocą uwierzytelniania podstawowego protokołu HTTP. Tylko zweryfikowani użytkownicy, w tym Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. Wartość `ClientCertificate` (zalecane) wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania za pomocą certyfikatu klienta. Do interfejsu API można uzyskać dostęp tylko do usług, które mają odpowiednie certyfikaty, na przykład Azure AD B2C. Wartość `Bearer` wskazuje, że interfejs API REST ogranicza dostęp przy użyciu tokenu okaziciela OAuth2 klienta. |
 | SendClaimsIn | Nie | Określa sposób, w jaki oświadczenia wejściowe są wysyłane do dostawcy oświadczeń RESTful. Możliwe wartości: `Body` (wartość domyślna), `Form`, `Header`lub `QueryString`. Wartość `Body` to żądanie wejściowe wysyłane w treści żądania w formacie JSON. Wartość `Form` jest wartością wejściową, która jest wysyłana w treści żądania w formacie wartości klucza "&". Wartość `Header` to żądanie wejściowe wysyłane w nagłówku żądania. Wartość `QueryString` to żądanie wejściowe wysyłane w ciągu zapytania żądania. |
 | ClaimsFormat | Nie | Określa format oświadczeń wyjściowych. Możliwe wartości: `Body` (wartość domyślna), `Form`, `Header`lub `QueryString`. Wartość `Body` to zgłoszenie wyjściowe wysyłane w treści żądania w formacie JSON. Wartość `Form` jest wynikiem zgłoszenia, który jest wysyłany w treści żądania w formacie wartości klucza "&" oddzielonym. Wartość `Header` to zgłoszenie wyjściowe wysyłane w nagłówku żądania. Wartość `QueryString` jest wynikiem zgłoszenia wysyłanego w ciągu zapytania żądania. |
+| ClaimUsedForRequestPayload| Nie | Nazwa żądania ciągu zawierającego ładunek do wysłania do interfejsu API REST. |
 | Debugujmode | Nie | Uruchamia profil techniczny w trybie debugowania. W trybie debugowania interfejs API REST może zwrócić więcej informacji. Zobacz sekcję zwracającą komunikat o błędzie. |
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
@@ -154,6 +192,27 @@ Jeśli typ uwierzytelniania jest ustawiony na `ClientCertificate`, element **Cry
 </TechnicalProfile>
 ```
 
+Jeśli typ uwierzytelniania jest ustawiony na `Bearer`, element **CryptographicKeys** zawiera następujący atrybut:
+
+| Atrybut | Wymagane | Opis |
+| --------- | -------- | ----------- |
+| BearerAuthenticationToken | Nie | Token okaziciela OAuth 2,0. |
+
+```XML
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
+    <Item Key="AuthenticationType">Bearer</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2cRestClientAccessToken" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
 ## <a name="returning-error-message"></a>Zwracany komunikat o błędzie
 
 Interfejs API REST może wymagać zwrócenia komunikatu o błędzie, takiego jak "nie znaleziono użytkownika w systemie CRM". W przypadku wystąpienia błędu interfejs API REST powinien zwrócić komunikat o błędzie HTTP 409 (kod stanu odpowiedzi konfliktu) z następującymi atrybutami:
@@ -197,24 +256,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="examples"></a>Przykłady:
+## <a name="next-steps"></a>Następne kroki
+
+Zobacz następujące artykuły, aby zapoznać się z przykładami dotyczącymi korzystania z profilu technicznego RESTful:
+
 - [Integruj wymianę oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika w trakcie sprawdzania poprawności danych wejściowych użytkownika](active-directory-b2c-custom-rest-api-netfw.md)
 - [Zabezpieczanie usług RESTful za pomocą uwierzytelniania podstawowego protokołu HTTP](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [Zabezpieczanie usługi RESTful przy użyciu certyfikatów klienta](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [Wskazówki: integruje wymianę oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika](active-directory-b2c-rest-api-validation-custom.md)
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

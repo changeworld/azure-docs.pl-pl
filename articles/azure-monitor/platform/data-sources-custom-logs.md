@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450660"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Niestandardowe dzienniki w Azure Monitor
 
@@ -24,7 +24,7 @@ Pliki dziennika do zebrania muszą być zgodne z następującymi kryteriami.
 
 - Dziennik musi mieć pojedynczy wpis na wiersz lub użyć sygnatury czasowej pasującej do jednego z następujących formatów na początku każdego wpisu.
 
-    RRRR-MM-DD GG: MM: SS<br>M/D/RRRR HH: MM: SS AM/PM<br>PN DD, rrrr HH: MM: SS<br />yyMMdd HH: mm: SS<br />ddMMyy HH: mm: SS<br />MMM d hh: mm: SS<br />DD/MMM/rrrr: gg: mm: SS ZZZ<br />RRRR-MM-DDTgg: mm: ssK
+    RRRR-MM-DD GG: MM: SS<br>M/D/RRRR HH: MM: SS AM/PM<br>PN DD, rrrr HH: MM: SS<br />yyMMdd HH: mm: SS<br />ddMMyy HH: mm: SS<br />MMM d hh: mm: SS<br />DD/MMM/rrrr: gg: mm: SS ZZZ<br />yyyy-MM-ddTHH:mm:ssK
 
 - Plik dziennika nie może zezwalać na cykliczne rejestrowanie ani obracanie dzienników, w którym plik jest zastępowany nowymi wpisami.
 - Plik dziennika musi używać kodowania ASCII lub UTF-8.  Inne formaty, takie jak UTF-16, nie są obsługiwane.
@@ -51,8 +51,8 @@ Aby zdefiniować niestandardowy plik dziennika, należy wykonać czynności opis
 Kreator dziennika niestandardowego działa w Azure Portal i umożliwia zdefiniowanie nowego dziennika niestandardowego do zbierania.
 
 1. W Azure Portal wybierz pozycję **log Analytics obszary robocze** > obszarze roboczym > **Ustawienia zaawansowane**.
-2. Kliknij pozycję **dane** > **dzienniki niestandardowe**.
-3. Domyślnie wszystkie zmiany konfiguracji są automatycznie wypychane do wszystkich agentów. W przypadku agentów systemu Linux plik konfiguracji jest wysyłany do programu zbierającego dane.
+2. Kliknij **dane** > **dzienniki niestandardowe**.
+3. Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów. W przypadku agentów systemu Linux plik konfiguracji jest wysyłany do programu zbierającego dane.
 4. Kliknij przycisk **Dodaj +** , aby otworzyć Kreatora dziennika niestandardowego.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Krok 2. Przekazywanie i analizowanie przykładowego dziennika
@@ -71,23 +71,23 @@ Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerate
 ### <a name="step-3-add-log-collection-paths"></a>Krok 3. Dodaj ścieżki zbierania dzienników
 Należy zdefiniować co najmniej jedną ścieżkę w agencie, w której można zlokalizować dziennik niestandardowy.  Możesz podać konkretną ścieżkę i nazwę pliku dziennika lub określić ścieżkę z symbolem wieloznacznym dla nazwy. Obsługuje to aplikacje, które tworzą nowy plik każdego dnia lub gdy jeden plik osiągnie określony rozmiar. Istnieje również możliwość udostępnienia wielu ścieżek dla jednego pliku dziennika.
 
-Na przykład aplikacja może utworzyć plik dziennika codziennie o dacie zawartej w nazwie w log20100316. txt. Wzorzec dla takiego dziennika może być *log\*.txt* , który zostanie zastosowany do każdego pliku dziennika, zgodnie ze schematem nazewnictwa aplikacji.
+Na przykład aplikacja może utworzyć plik dziennika codziennie o dacie zawartej w nazwie w log20100316. txt. Wzorzec dla takiego dziennika może być *dziennikiem\*. txt* , który będzie stosowany do każdego pliku dziennika, zgodnie ze schematem nazewnictwa aplikacji.
 
 Poniższa tabela zawiera przykłady prawidłowych wzorców do określenia różnych plików dziennika.
 
 | Opis | Ścieżka |
 |:--- |:--- |
 | Wszystkie pliki w *C:\LOGS* z rozszerzeniem txt w agencie systemu Windows |C:\Logs\\\*. txt |
-| Wszystkie pliki w *C:\LOGS* o nazwie rozpoczynającej się od nazwy log i. txt w agencie systemu Windows |C:\Logs\ log\*.txt |
+| Wszystkie pliki w *C:\LOGS* o nazwie rozpoczynającej się od nazwy log i. txt w agencie systemu Windows |C:\Logs\log\*.txt |
 | Wszystkie pliki w */var/log/Audit* z rozszerzeniem txt w agencie systemu Linux |/var/log/Audit/*. txt |
-| Wszystkie pliki w */var/log/Audit* o nazwie rozpoczynającej się od pliku log i rozszerzenia. txt w agencie systemu Linux |/var/log/Audit/log\*.txt |
+| Wszystkie pliki w */var/log/Audit* o nazwie rozpoczynającej się od pliku log i rozszerzenia. txt w agencie systemu Linux |/var/log/audit/log\*.txt |
 
 1. Wybierz pozycję Windows lub Linux, aby określić format ścieżki, który chcesz dodać.
 2. Wpisz ścieżkę i kliknij przycisk **+** .
 3. Powtórz ten proces dla każdej dodatkowej ścieżki.
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Podaj nazwę i opis dziennika
-Określona nazwa zostanie użyta dla typu dziennika zgodnie z powyższym opisem.  Będzie ona zawsze kończyć się _CLem w celu odróżnienia go jako dziennika niestandardowego.
+Określona nazwa zostanie użyta dla typu dziennika zgodnie z powyższym opisem.  Będzie ona zawsze kończyć się _CL, aby odróżnić ją jako dziennik niestandardowy.
 
 1. Wpisz nazwę dziennika.  Zostanie automatycznie udostępniony sufiks **\_CL** .
 2. Dodaj opcjonalny **Opis**.
@@ -123,7 +123,7 @@ Niestandardowe rekordy dziennika mają typ o podanej nazwie dziennika i właści
 | TimeGenerated |Data i godzina zebrania rekordu przez Azure Monitor.  Jeśli w dzienniku jest wykorzystywany ogranicznik oparty na czasie, to jest to czas uzyskany od wpisu. |
 | SourceSystem |Typ agenta, z którego zebrano rekord. <br> OpsManager — Agent systemu Windows, bezpośrednie połączenie lub System Center Operations Manager <br> Linux — Wszyscy agenci systemu Linux |
 | RawData |Pełny tekst zebranego wpisu. Najprawdopodobniej chcesz [przeanalizować te dane do poszczególnych właściwości](../log-query/parse-text.md). |
-| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  W przypadku innych agentów jest to AOI\<identyfikator obszaru roboczego\> |
+| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Przykładowe wskazówki dotyczące dodawania dziennika niestandardowego
@@ -146,7 +146,7 @@ Pliki dziennika znajdują się w *C:\MyApp\Logs*.  Nowy plik zostanie utworzony 
 ![Ścieżka do kolekcji dzienników](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>Podaj nazwę i opis dziennika
-Użyjemy nazwy *MyApp_CL* i wpisz **Opis**.
+Używamy nazwy *MyApp_CL* i wpisz **Opis**.
 
 ![Nazwa dziennika](media/data-sources-custom-logs/log-name.png)
 
@@ -170,4 +170,4 @@ W przypadkach, gdy dane nie mogą być zbierane z dziennikami niestandardowymi, 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Analizowanie danych tekstowych w Azure monitor](../log-query/parse-text.md) , aby poznać metody analizowania każdego zaimportowanego wpisu dziennika do wielu właściwości.
-* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.

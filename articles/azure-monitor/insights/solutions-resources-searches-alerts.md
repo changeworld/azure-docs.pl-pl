@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304931"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401760"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie Log Analytics zapisanych wyszukiwań i alertów do rozwiązania do zarządzania (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74304931"
 > W przykładach w tym artykule są używane parametry i zmienne, które są wymagane lub wspólne dla rozwiązań do zarządzania, a także opisane w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](solutions-creating.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że wiesz już, jak [utworzyć rozwiązanie do zarządzania](solutions-creating.md) i strukturę [Menedżer zasobów pliku szablonu](../../azure-resource-manager/resource-group-authoring-templates.md) i rozwiązania.
+W tym artykule przyjęto założenie, że wiesz już, jak [utworzyć rozwiązanie do zarządzania](solutions-creating.md) i strukturę [Menedżer zasobów pliku szablonu](../../azure-resource-manager/templates/template-syntax.md) i rozwiązania.
 
 
 ## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
@@ -112,11 +112,11 @@ Zapisane wyszukiwanie może mieć jeden lub więcej harmonogramów z każdym har
     }
 Właściwości zasobów harmonogramu są opisane w poniższej tabeli.
 
-| Nazwa elementu | Wymagany | Opis |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| dostępny       | Yes | Określa, czy alert jest włączony podczas jego tworzenia. |
-| interval      | Yes | Jak często zapytanie jest wykonywane w ciągu kilku minut. |
-| queryTimeSpan | Yes | Długość czasu w minutach, przez który należy obliczyć wyniki. |
+| włączony       | Tak | Określa, czy alert jest włączony podczas jego tworzenia. |
+| interval      | Tak | Jak często zapytanie jest wykonywane w ciągu kilku minut. |
+| queryTimeSpan | Tak | Długość czasu w minutach, przez który należy obliczyć wyniki. |
 
 Zasób harmonogramu powinien zależeć od zapisanego wyszukiwania, aby został utworzony przed harmonogramem.
 > [!NOTE]
@@ -164,35 +164,35 @@ Akcje alertów mają następującą strukturę. Obejmuje to typowe zmienne i par
 
 Właściwości zasobów akcji alertu są opisane w poniższych tabelach.
 
-| Nazwa elementu | Wymagany | Opis |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| `type` | Yes | Typ akcji.  Jest to **alert** dotyczący akcji alertów. |
-| `name` | Yes | Nazwa wyświetlana alertu.  Jest to nazwa wyświetlana w konsoli dla reguły alertu. |
+| `type` | Tak | Typ akcji.  Jest to **alert** dotyczący akcji alertów. |
+| `name` | Tak | Nazwa wyświetlana alertu.  Jest to nazwa wyświetlana w konsoli dla reguły alertu. |
 | `description` | Nie | Opcjonalny opis alertu. |
-| `severity` | Yes | Ważność rekordu alertu z następujących wartości:<br><br> **najistotniejsz**<br>**wyświetlania**<br>**informacyjną**
+| `severity` | Tak | Ważność rekordu alertu z następujących wartości:<br><br> **critical**<br>**ostrzeżenie**<br>**informacyjną**
 
 #### <a name="threshold"></a>Próg
 Ta sekcja jest wymagana. Definiuje właściwości dla progu alertu.
 
-| Nazwa elementu | Wymagany | Opis |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| `Operator` | Yes | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
-| `Value` | Yes | Wartość, aby porównać wyniki. |
+| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
+| `Value` | Tak | Wartość, aby porównać wyniki. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
 
-| Nazwa elementu | Wymagany | Opis |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| `TriggerCondition` | Yes | Określa, czy próg dotyczy całkowitej liczby naruszeń lub kolejnych naruszeń z następujących wartości:<br><br>**Łącznie<br>po kolei** |
-| `Operator` | Yes | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
-| `Value` | Yes | Liczba przypadków, gdy należy spełnić kryteria w celu wyzwolenia alertu. |
+| `TriggerCondition` | Tak | Określa, czy próg dotyczy całkowitej liczby naruszeń lub kolejnych naruszeń z następujących wartości:<br><br>**Łącznie<br>po kolei** |
+| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
+| `Value` | Tak | Liczba przypadków, gdy należy spełnić kryteria w celu wyzwolenia alertu. |
 
 
 #### <a name="throttling"></a>Ograniczanie przepływności
 Ta sekcja jest opcjonalna. Dołącz tę sekcję, jeśli chcesz pominąć alerty z tej samej reguły przez pewien czas po utworzeniu alertu.
 
-| Nazwa elementu | Wymagany | Opis |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | DurationInMinutes | Tak, jeśli uwzględniono ograniczenie elementu | Liczba minut, przez które mają zostać pominięte alerty po utworzeniu jednej z tych samych reguł alertów. |
 
@@ -201,13 +201,13 @@ Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechani
 
 Dla użytkownika, który został rozszerzony alerty na platformie Azure — harmonogram powinno zostać udostępnionych szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alert. Szczegóły poczty E-mail, adresy URL elementu webhook, szczegóły automatyzacji elementu Runbook i inne akcje muszą być zdefiniowane w grupie akcji najpierw przed utworzeniem alertu. jeden może utworzyć [grupę akcji z Azure monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyć [grupy akcji — szablon zasobu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Nazwa elementu | Wymagany | Opis |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| AzNsNotification | Yes | Identyfikator zasobu grupy akcji platformy Azure, która ma zostać skojarzona z alertem w celu podjęcia odpowiednich działań w przypadku spełnienia kryteriów alertów. |
+| AzNsNotification | Tak | Identyfikator zasobu grupy akcji platformy Azure, która ma zostać skojarzona z alertem w celu podjęcia odpowiednich działań w przypadku spełnienia kryteriów alertów. |
 | CustomEmailSubject | Nie | Niestandardowy wiersz tematu wiadomości e-mail wysyłanej do wszystkich adresów określonych w skojarzonej grupie akcji. |
 | CustomWebhookPayload | Nie | Dostosowany ładunek do wysłania do wszystkich punktów końcowych elementu webhook zdefiniowanych w skojarzonej grupie akcji. Format zależy od tego, co oczekuje element webhook, i powinien być prawidłowym serializowanym kodem JSON. |
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Przykład
 
 Poniżej znajduje się przykład rozwiązania, które obejmuje następujące zasoby:
 

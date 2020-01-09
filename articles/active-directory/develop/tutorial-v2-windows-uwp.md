@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2019
+ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0cafc439a24c10c4c5a678219a0e0dce84476ff
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e2a243b11c2789afe0b2eb7ffd8de032dc10d8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423332"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywoływanie interfejsu API Microsoft Graph z aplikacji platforma uniwersalna systemu Windows (XAML)
 
@@ -55,7 +55,7 @@ Ta sekcja zawiera instrukcje krok po kroku dotyczące integrowania aplikacji .NE
 Ten przewodnik tworzy aplikację, która wyświetla przycisk, który wykonuje zapytania interfejs API programu Graph i przycisk do wylogowania. Wyświetla również pola tekstowe, które zawierają wyniki wywołań.
 
 > [!NOTE]
-> Czy chcesz pobrać ten przykładowy projekt programu Visual Studio, zamiast tworzyć go? [Pobierz projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) i przejdź do kroku [rejestracji aplikacji](#register-your-application "akrok rejestracji plikacja ") , aby skonfigurować przykładowy kod przed jego uruchomieniem.
+> Czy chcesz pobrać ten przykładowy projekt programu Visual Studio, zamiast tworzyć go? [Pobierz projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) i przejdź do kroku [rejestracji aplikacji](#register-your-application "krok rejestracji aplikacji") , aby skonfigurować przykładowy kod przed jego uruchomieniem.
 
 ### <a name="create-your-application"></a>Tworzenie aplikacji
 
@@ -109,7 +109,7 @@ W tej sekcji pokazano, jak uzyskać token Microsoft Graph API przy użyciu progr
     using System.Threading.Tasks;
     ```
 
-1. Zastąp `MainPage` klasę następującym kodem:
+1. Zastąp klasę `MainPage` następującym kodem:
 
     ```csharp
     public sealed partial class MainPage : Page
@@ -206,21 +206,21 @@ W tej sekcji pokazano, jak uzyskać token Microsoft Graph API przy użyciu progr
 
 #### Interaktywnie Pobierz token użytkownika<a name="more-information"></a>
 
-`AcquireTokenInteractive` Metoda powoduje pojawienie się okna z monitowaniem użytkowników o zalogowanie się. Aplikacje zwykle wymagają od użytkowników logowania się interakcyjnie po raz pierwszy w celu uzyskania dostępu do chronionego zasobu. Może być również konieczne zalogowanie się, gdy operacja dyskretna uzyskiwania tokenu nie powiedzie się. Przykładem jest to, że hasło użytkownika wygasło.
+Metoda `AcquireTokenInteractive` powoduje pojawienie się okna z monitowaniem użytkowników o zalogowanie się. Aplikacje zwykle wymagają od użytkowników logowania się interakcyjnie po raz pierwszy w celu uzyskania dostępu do chronionego zasobu. Może być również konieczne zalogowanie się, gdy operacja dyskretna uzyskiwania tokenu nie powiedzie się. Przykładem jest to, że hasło użytkownika wygasło.
 
 #### <a name="get-a-user-token-silently"></a>Dyskretne pobieranie tokenu użytkownika
 
-`AcquireTokenSilent` Metoda obsługuje pozyskiwanie i odnawianie tokenów bez żadnej interakcji z użytkownikiem. Po `AcquireTokenInteractive` uruchomieniu po raz pierwszy i Monituj użytkownika o poświadczenia, `AcquireTokenSilent` Użyj metody, aby zażądać tokenów w celu późniejszego wywołania. Ta metoda uzyskuje tokeny w trybie dyskretnym. MSAL obsługuje pamięć podręczną i odnawianie tokenów.
+Metoda `AcquireTokenSilent` obsługuje pozyskiwanie i odnawianie tokenów bez żadnej interakcji z użytkownikiem. Gdy `AcquireTokenInteractive` jest uruchamiany po raz pierwszy i zostanie wyświetlony komunikat o poświadczeniach, należy użyć metody `AcquireTokenSilent` do żądania tokenów w celu późniejszego wywołania. Ta metoda uzyskuje tokeny w trybie dyskretnym. MSAL obsługuje pamięć podręczną i odnawianie tokenów.
 
-`AcquireTokenSilent` Ostatecznie Metoda kończy się niepowodzeniem. Przyczyny niepowodzenia obejmują użytkownika, który wylogowano lub zmienił hasło na innym urządzeniu. Gdy MSAL wykryje, że problem wymaga interaktywnej akcji, zgłasza `MsalUiRequiredException` wyjątek. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
+Wreszcie Metoda `AcquireTokenSilent` nie powiedzie się. Przyczyny niepowodzenia obejmują użytkownika, który wylogowano lub zmienił hasło na innym urządzeniu. Gdy MSAL wykryje, że problem wymaga interaktywnej akcji, zgłasza wyjątek `MsalUiRequiredException`. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 
-* Aplikacja zostanie natychmiast `AcquireTokenInteractive` wywołana. To wywołanie powoduje wyświetlenie monitu o zalogowanie użytkownika. Zwykle należy używać tej metody w przypadku aplikacji online, w przypadku których użytkownik nie ma dostępnej zawartości w trybie offline. Przykład wygenerowany przez tę konfigurację z przewodnikiem jest zgodny ze wzorcem. Zobaczysz ją w działaniu przy pierwszym uruchomieniu przykładu.
+* Aplikacja natychmiast wywołuje `AcquireTokenInteractive`. To wywołanie powoduje wyświetlenie monitu o zalogowanie użytkownika. Zwykle należy używać tej metody w przypadku aplikacji online, w przypadku których użytkownik nie ma dostępnej zawartości w trybie offline. Przykład wygenerowany przez tę konfigurację z przewodnikiem jest zgodny ze wzorcem. Zobaczysz ją w działaniu przy pierwszym uruchomieniu przykładu.
 
-   Ponieważ żaden użytkownik nie użył aplikacji, `accounts.FirstOrDefault()` zawiera wartość null i `MsalUiRequiredException` zgłasza wyjątek.
+   Ponieważ żaden użytkownik nie użył aplikacji, `accounts.FirstOrDefault()` zawiera wartość null i zgłasza wyjątek `MsalUiRequiredException`.
 
-   Kod w przykładzie przechwytuje wyjątek przez wywołanie `AcquireTokenInteractive`. To wywołanie powoduje wyświetlenie monitu o zalogowanie użytkownika.
+   Kod w próbce następnie obsługuje wyjątek przez wywołanie `AcquireTokenInteractive`. To wywołanie powoduje wyświetlenie monitu o zalogowanie użytkownika.
 
-* Twoja aplikacja prezentuje wizualne wskazanie użytkownikom, którzy muszą się zalogować. Następnie mogą wybrać odpowiedni czas na zalogowanie się. Aplikacja może ponowić próbę `AcquireTokenSilent` później. Użyj tej metody, jeśli użytkownicy mogą korzystać z innych funkcji aplikacji bez zakłóceń. Przykładem jest to, że zawartość w trybie offline jest dostępna w aplikacji. W takim przypadku użytkownicy mogą zdecydować się na zalogowanie się. Aplikacja może ponowić próbę `AcquireTokenSilent` , gdy sieć była tymczasowo niedostępna.
+* Twoja aplikacja prezentuje wizualne wskazanie użytkownikom, którzy muszą się zalogować. Następnie mogą wybrać odpowiedni czas na zalogowanie się. Aplikacja może ponowić próbę `AcquireTokenSilent` później. Użyj tej metody, jeśli użytkownicy mogą korzystać z innych funkcji aplikacji bez zakłóceń. Przykładem jest to, że zawartość w trybie offline jest dostępna w aplikacji. W takim przypadku użytkownicy mogą zdecydować się na zalogowanie się. Aplikacja może ponowić próbę `AcquireTokenSilent`, gdy sieć była tymczasowo niedostępna.
 
 ### <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Wywoływanie interfejsu API Microsoft Graph przy użyciu właśnie uzyskanego tokenu
 
@@ -254,11 +254,11 @@ Dodaj następującą nową metodę do *MainPage.XAML.cs*:
     }
    ```
 
- Ta metoda wysyła `GET` żądanie z interfejs API programu Graph przy `Authorization` użyciu nagłówka.
+ Ta metoda powoduje, że żądanie `GET` z interfejs API programu Graph przy użyciu nagłówka `Authorization`.
 
 #### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat tworzenia wywołania REST w ramach chronionego interfejsu API
 
-W tej przykładowej aplikacji `GetHttpContentWithToken` Metoda przetworzy żądanie HTTP `GET` względem chronionego zasobu, który wymaga tokenu. Następnie metoda zwraca zawartość do obiektu wywołującego. Ta metoda dodaje token uzyskany w nagłówku **autoryzacji http** . Dla tego przykładu zasób jest punktem końcowym usługi Microsoft Graph API, który wyświetla informacje o profilu użytkownika.
+W tej przykładowej aplikacji Metoda `GetHttpContentWithToken` przetworzy żądanie HTTP `GET` względem chronionego zasobu, który wymaga tokenu. Następnie metoda zwraca zawartość do obiektu wywołującego. Ta metoda dodaje token uzyskany w nagłówku **autoryzacji http** . Dla tego przykładu zasób **jest punktem** końcowym usługi Microsoft Graph API, który wyświetla informacje o profilu użytkownika.
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Dodawanie metody w celu wylogowania użytkownika
 
@@ -291,11 +291,11 @@ Aby wylogować użytkownika, Dodaj następującą metodę do *MainPage.XAML.cs*:
    ```
 
 > [!NOTE]
-> MSAL.NET używa metod asynchronicznych do pozyskiwania tokenów lub manipulowania kontami. Należy obsługiwać akcje interfejsu użytkownika w wątku interfejsu użytkownika. Jest to powód `Dispatcher.RunAsync` wywołania i środków ostrożności do wywołania `ConfigureAwait(false)`.
+> MSAL.NET używa metod asynchronicznych do pozyskiwania tokenów lub manipulowania kontami. Należy obsługiwać akcje interfejsu użytkownika w wątku interfejsu użytkownika. Jest to powód wywołania `Dispatcher.RunAsync` i środków ostrożności do wywoływania `ConfigureAwait(false)`.
 
 #### Więcej informacji na temat wylogowywania<a name="more-information-on-sign-out"></a>
 
-`SignOutButton_Click` Metoda usuwa użytkownika z pamięci podręcznej użytkownika MSAL. Ta metoda skutecznie informuje MSAL o zapomnieniu bieżącego użytkownika. Przyszłe żądanie uzyskania tokenu powiedzie się tylko wtedy, gdy jest ono interaktywne.
+Metoda `SignOutButton_Click` usuwa użytkownika z pamięci podręcznej użytkownika MSAL. Ta metoda skutecznie informuje MSAL o zapomnieniu bieżącego użytkownika. Przyszłe żądanie uzyskania tokenu powiedzie się tylko wtedy, gdy jest ono interaktywne.
 
 Aplikacja w tym przykładzie obsługuje jednego użytkownika. MSAL obsługuje scenariusze, w których użytkownik może zalogować się na więcej niż jednym koncie. Przykładem jest aplikacja poczty e-mail, w której użytkownik ma kilka kont.
 
@@ -320,7 +320,7 @@ Dodaj następującą metodę do *MainPage.XAML.cs* , aby wyświetlić podstawowe
 
 #### Więcej informacji<a name="more-information-1"></a>
 
-Tokeny identyfikatorów nabyte za pomocą programu **OpenID Connect Connect** również zawierają niewielki podzbiór informacji dotyczących użytkownika. `DisplayBasicTokenInfo`Wyświetla podstawowe informacje zawarte w tokenie. Te informacje obejmują nazwę wyświetlaną użytkownika i identyfikator. Zawiera również datę wygaśnięcia tokenu i ciąg, który reprezentuje token dostępu. W przypadku wybrania przycisku **Wywołaj Microsoft Graph interfejsu API** kilka razy zobaczysz, że ten sam token został ponownie użyty na potrzeby kolejnych żądań. Można także zobaczyć datę wygaśnięcia rozszerzoną, gdy MSAL zdecyduje, że czas odnowienia tokenu.
+Tokeny identyfikatorów nabyte za pomocą programu **OpenID Connect Connect** również zawierają niewielki podzbiór informacji dotyczących użytkownika. `DisplayBasicTokenInfo` wyświetla podstawowe informacje zawarte w tokenie. Te informacje obejmują nazwę wyświetlaną użytkownika i identyfikator. Zawiera również datę wygaśnięcia tokenu i ciąg, który reprezentuje token dostępu. W przypadku wybrania przycisku **Wywołaj Microsoft Graph interfejsu API** kilka razy zobaczysz, że ten sam token został ponownie użyty na potrzeby kolejnych żądań. Można także zobaczyć datę wygaśnięcia rozszerzoną, gdy MSAL zdecyduje, że czas odnowienia tokenu.
 
 ### <a name="display-message"></a>Wyświetl komunikat
 
@@ -340,11 +340,11 @@ Dodaj następującą nową metodę do *MainPage.XAML.cs*:
         }
    ```
 
-## <a name="register-your-application"></a>Zarejestruj swoją aplikację
+## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
 Teraz musisz zarejestrować aplikację:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Wybierz **usługi Azure Active Directory** > **rejestracje aplikacji**.
 1. Wybierz pozycję **Nowa rejestracja**. Wprowadź zrozumiałą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład *platformy UWP-App-Call-MSGraph*.
 1. W obszarze **obsługiwane typy kont**wybierz pozycję **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft (np. Skype, Xbox)** , a następnie wybierz pozycję **zarejestruj** , aby kontynuować.
@@ -353,7 +353,7 @@ Teraz musisz zarejestrować aplikację:
 Skonfiguruj uwierzytelnianie dla aplikacji:
 
 1. Wróć do [Azure Portal](https://portal.azure.com), w obszarze **Zarządzaj**wybierz pozycję **uwierzytelnianie**.
-1. Na liście **identyfikatorów URI przekierowania** dla opcji **Typ**wybierz pozycję **Klient publiczny (Mobile & Desktop)** i `urn:ietf:wg:oauth:2.0:oob` wprowadź **adres URI przekierowania**.
+1. W sekcji **identyfikatory URI przekierowania** | **sugerowane identyfikatory URI przekierowań dla klientów publicznych (Mobile, Desktop)** zaznacz pozycję **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Wybierz pozycję **Zapisz**.
 
 Skonfiguruj uprawnienia interfejsu API dla aplikacji:
@@ -376,7 +376,7 @@ Aby włączyć uwierzytelnianie zintegrowane systemu Windows, gdy jest ono używ
    * **Udostępnione certyfikaty użytkowników**
 
 > [!IMPORTANT]
-> [Zintegrowane uwierzytelnianie systemu Windows](https://aka.ms/msal-net-iwa) nie jest domyślnie skonfigurowane dla tego przykładu. Aplikacje, które `Enterprise Authentication` żądają lub `Shared User Certificates` możliwości wymagają wyższego poziomu weryfikacji w Sklepie Windows. Ponadto nie wszyscy deweloperzy chcą przeprowadzić wyższy poziom weryfikacji. Włącz to ustawienie tylko wtedy, gdy wymagane jest zintegrowane uwierzytelnianie systemu Windows z federacyjną domeną usługi Azure AD.
+> [Zintegrowane uwierzytelnianie systemu Windows](https://aka.ms/msal-net-iwa) nie jest domyślnie skonfigurowane dla tego przykładu. Aplikacje, które żądają możliwości `Enterprise Authentication` lub `Shared User Certificates`, wymagają wyższego poziomu weryfikacji w Sklepie Windows. Ponadto nie wszyscy deweloperzy chcą przeprowadzić wyższy poziom weryfikacji. Włącz to ustawienie tylko wtedy, gdy wymagane jest zintegrowane uwierzytelnianie systemu Windows z federacyjną domeną usługi Azure AD.
 
 ## <a name="test-your-code"></a>testowanie kodu
 
@@ -386,7 +386,7 @@ Aby przetestować aplikację, wybierz F5, aby uruchomić projekt w programie Vis
 
 Gdy wszystko będzie gotowe do przetestowania, wybierz pozycję **Wywołaj Microsoft Graph interfejs API**. Aby się zalogować, użyj konta organizacyjnego usługi Azure AD lub konto Microsoft, takiego jak live.com lub outlook.com. Podczas pierwszego uruchomienia tego użytkownika aplikacja wyświetli okno z prośbą o zalogowanie się użytkownika.
 
-### <a name="consent"></a>Wyraź zgodę
+### <a name="consent"></a>Posiadacz
 
 Po pierwszym zalogowaniu się do aplikacji jest wyświetlany ekran zgody podobny do poniższego. Wybierz pozycję **tak** , aby jawnie wyrazić zgodę na dostęp:
 
@@ -398,7 +398,7 @@ Informacje o profilu użytkownika zwracane przez wywołanie interfejsu API Micro
 
 ![Ekran wyników wywołań interfejsu API](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
 
-Widoczne są również podstawowe informacje o tokenie uzyskanym `AcquireTokenInteractive` za `AcquireTokenSilent` pośrednictwem lub w polu **Informacje o tokenie** :
+Widoczne są również podstawowe informacje o tokenie uzyskanym za pośrednictwem `AcquireTokenInteractive` lub `AcquireTokenSilent` w polu **Informacje o tokenie** :
 
 |Właściwość  |Format  |Opis |
 |---------|---------|---------|
@@ -407,9 +407,9 @@ Widoczne są również podstawowe informacje o tokenie uzyskanym `AcquireTokenIn
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Więcej informacji na temat zakresów i uprawnień delegowanych
 
-Interfejs API Microsoft Graph wymaga `user.read` zakresu odczytywania profilu użytkownika. Ten zakres jest domyślnie dodawany w każdej aplikacji, która jest zarejestrowana w portalu rejestracji aplikacji. Inne interfejsy API dla Microsoft Graph i niestandardowych interfejsów API dla serwera zaplecza mogą wymagać dodatkowych zakresów. Na przykład, Microsoft Graph API wymaga `Calendars.Read` zakresu, aby wyświetlić kalendarze użytkownika.
+Microsoft Graph API wymaga zakresu `user.read` do odczytu profilu użytkownika. Ten zakres jest domyślnie dodawany w każdej aplikacji, która jest zarejestrowana w portalu rejestracji aplikacji. Inne interfejsy API dla Microsoft Graph i niestandardowych interfejsów API dla serwera zaplecza mogą wymagać dodatkowych zakresów. Na przykład, Microsoft Graph API wymaga zakresu `Calendars.Read`, aby wyświetlić listę kalendarzy użytkownika.
 
-Aby uzyskać dostęp do kalendarzy użytkownika w kontekście aplikacji, Dodaj `Calendars.Read` delegowane uprawnienie do informacji o rejestracji aplikacji. Następnie Dodaj `Calendars.Read` zakres `acquireTokenSilent` do wywołania.
+Aby uzyskać dostęp do kalendarzy użytkownika w kontekście aplikacji, Dodaj uprawnienia delegowane `Calendars.Read` do informacji o rejestracji aplikacji. Następnie Dodaj zakres `Calendars.Read` do wywołania `acquireTokenSilent`.
 
 > [!NOTE]
 > Po zwiększeniu liczby zakresów użytkownicy mogą otrzymywać monity o dodatkowe przesłanie.
@@ -424,17 +424,17 @@ Po zalogowaniu się do aplikacji w federacyjnej domenie usługi Azure AD zostani
 * Nie znaleziono prawidłowych certyfikatów w magazynie certyfikatów użytkownika.
 * Spróbuj ponownie wybrać inną metodę uwierzytelniania.
 
-Przyczyna: Możliwości przedsiębiorstwa i certyfikatów nie są włączone.
+Przyczyna: możliwości przedsiębiorstwa i certyfikatów nie są włączone.
 
-Narzędzie Wykonaj kroki opisane w temacie [Włączanie uwierzytelniania zintegrowanego w domenach federacyjnych (opcjonalnie)](#enable-integrated-authentication-on-federated-domains-optional).
+Rozwiązanie: wykonaj kroki opisane w temacie [Włączanie uwierzytelniania zintegrowanego w domenach federacyjnych (opcjonalnie)](#enable-integrated-authentication-on-federated-domains-optional).
 
 ### <a name="issue-2"></a>Problem 2
 
 [Uwierzytelnianie zintegrowane można włączyć w domenach federacyjnych](#enable-integrated-authentication-on-federated-domains-optional) i próbować użyć usługi Windows Hello na komputerze z systemem Windows 10 w celu zalogowania się do środowiska z skonfigurowanym uwierzytelnianiem wieloskładnikowym. Zostanie wyświetlona lista certyfikatów. Jeśli jednak zdecydujesz się użyć numeru PIN, okno numeru PIN nigdy nie zostanie wyświetlone.
 
-Przyczyna: Ten problem to znane ograniczenie brokera uwierzytelniania w sieci Web w aplikacjach platformy UWP, które działają w systemie Windows 10 Desktop. Działa prawidłowo w systemie Windows 10 Mobile.
+Przyczyna: ten problem jest znanym ograniczeniem brokera uwierzytelniania w sieci Web w aplikacjach platformy UWP działających na komputerze stacjonarnym z systemem Windows 10. Działa prawidłowo w systemie Windows 10 Mobile.
 
-Obejście problemu: Wybierz pozycję **Zaloguj się z innymi opcjami**. Następnie wybierz pozycję **Zaloguj się przy użyciu nazwy użytkownika i hasła**. Wybierz pozycję **Podaj hasło**. Następnie przejdź przez proces uwierzytelniania telefonu.
+Obejście: wybierz pozycję **Zaloguj się z innymi opcjami**. Następnie wybierz pozycję **Zaloguj się przy użyciu nazwy użytkownika i hasła**. Wybierz pozycję **Podaj hasło**. Następnie przejdź przez proces uwierzytelniania telefonu.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

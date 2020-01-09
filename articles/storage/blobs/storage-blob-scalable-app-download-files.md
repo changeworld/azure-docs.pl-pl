@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372095"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Pobieranie dużych ilości danych losowych z usługi Azure Storage
 
@@ -27,7 +27,7 @@ Część trzecia serii zawiera informacje na temat wykonywania następujących c
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, konieczne jest ukończenie poprzedniego samouczka na temat usługi Storage: [Równolegle przekazuj duże ilości danych losowych do usługi Azure Storage][previous-tutorial].
+Aby ukończyć ten samouczek, musisz ukończyć poprzedni samouczek dotyczący magazynu: [przekazywanie dużych ilości danych losowych równolegle do usługi Azure Storage][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Tworzenie zdalnej sesji na maszynie wirtualnej
 

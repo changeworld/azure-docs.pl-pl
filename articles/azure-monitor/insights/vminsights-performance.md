@@ -4,15 +4,15 @@ description: Wydajność to funkcja Azure Monitor dla maszyn wirtualnych, która
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: f8879ac2d7827732112fa1a7504484209461b196
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399294"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak uzyskać Wykres wydajności przy użyciu Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -22,13 +22,13 @@ Azure Monitor dla maszyn wirtualnych obejmuje zestaw wykresów wydajności przez
 
 W Azure Monitor funkcja wydajność zapewnia widok wszystkich monitorowanych maszyn wirtualnych wdrożonych w grupach roboczych w ramach subskrypcji lub w środowisku użytkownika. Aby uzyskać dostęp z Azure Monitor, wykonaj następujące czynności. 
 
-1. W Azure Portal wybierz pozycję **Monitoruj**. 
+1. W witrynie Azure portal wybierz **Monitor**. 
 2. Wybierz pozycję **Virtual Machines (wersja zapoznawcza)** w sekcji **rozwiązania** .
 3. Wybierz kartę **wydajność** .
 
 ![Widok listy górnych wyników wydajności usługi VM Insights](./media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Na karcie **pierwsze N wykresów** , jeśli masz więcej niż jeden obszar roboczy log Analytics, wybierz obszar roboczy z włączonym rozwiązaniem w selektorze **obszaru roboczego** w górnej części strony. Selektor **grupy** zwróci subskrypcje, grupy zasobów, [grupy komputerów](../platform/computer-groups.md)i zestawy skalowania maszyn wirtualnych dla komputerów związanych z wybranym obszarem roboczym, za pomocą których można filtrować wyniki wyświetlane na wykresach na tej stronie i na innych stronach. Wybór dotyczy tylko funkcji wydajności i nie jest przenoszone do poziomu kondycji ani mapy.  
+Na karcie **pierwsze N wykresów** , jeśli masz więcej niż jeden obszar roboczy log Analytics, wybierz obszar roboczy z włączonym rozwiązaniem w selektorze **obszaru roboczego** w górnej części strony. Selektor **grupy** zwróci subskrypcje, grupy zasobów, [grupy komputerów](../platform/computer-groups.md)i zestawy skalowania maszyn wirtualnych na komputerach związanych z wybranym obszarem roboczym, za pomocą których można filtrować wyniki wyświetlane na wykresach na tej stronie oraz na innych stronach. Wybór dotyczy tylko funkcji wydajności i nie jest przenoszone do poziomu kondycji ani mapy.  
 
 Domyślnie wykresy przedstawiają ostatnie 24 godziny. Za pomocą selektora **TimeRange** można wykonać zapytanie o historyczne zakresy czasu o wartości do 30 dni, aby pokazać, jak wydajność jest wyszukiwana w przeszłości.
 
@@ -38,7 +38,7 @@ Na stronie zostaną wyświetlone pięć wykresów wykorzystania pojemności:
 * Dostępna pamięć — pokazuje pięć najważniejszych maszyn z najniższą średnią ilością dostępnej pamięci 
 * Używane miejsce na dysku logicznym%-pokazuje pięć najważniejszych maszyn z najwyższym średnim wykorzystanym miejscem na dysku (%) na wszystkich woluminach dysków 
 * Szybkość wysłania bajtów — pokazuje pięć najważniejszych maszyn z największą średnią ilością wysłanych bajtów 
-* Szybkość odbierania bajtów — pokazuje pięć najważniejszych maszyn z największą średnią ilością wysłanych bajtów 
+* Szybkość odbierania bajtów — pokazuje pięć najważniejszych maszyn z największą ilością odebranych bajtów 
 
 Kliknięcie ikony pinezki w prawym górnym rogu dowolnego z pięciu wykresów spowoduje Przypinanie wybranego wykresu do ostatnio oglądanego pulpitu nawigacyjnego platformy Azure.  Z poziomu pulpitu nawigacyjnego można zmieniać rozmiar wykresu i zmienić jego położenie. Wybranie wykresu z pulpitu nawigacyjnego spowoduje przekierowanie do Azure Monitor dla maszyn wirtualnych i załadowanie poprawnego zakresu i widoku.  
 
@@ -74,7 +74,7 @@ Aby wyświetlić wykorzystanie zasobów przez pojedynczą maszynę wirtualną w 
 
 Aby filtrować wyniki na określonej maszynie wirtualnej na liście, wprowadź jej nazwę w polu tekstowym **Wyszukaj według nazwy** .  
 
-Jeśli wolisz wyświetlić użycie z innej metryki wydajności, z listy rozwijanej **Metryka** wybierz **dostępną pamięć**, wartość **zajętego miejsca na dysku (%)** , **bajty odebrane przez sieć**lub bajty **wysłane przez sieć** i Wyświetl listę aktualizacji pokazujących zakres użycia dla tej metryki.  
+Jeśli wolisz przeglądać użycie z innej metryki wydajności, z listy rozwijanej **Metryka** wybierz **dostępną pamięć**, wartość **zajętego miejsca na dysku (%)** , **bajty odebrane przez sieć**lub bajty **wysłane przez sieć** oraz listę aktualizacji, aby pokazać zakres użycia tej metryki.  
 
 Wybranie maszyny wirtualnej z listy spowoduje otwarcie panelu **Właściwości** po prawej stronie strony i w tym miejscu można wybrać **szczegóły wydajności**.  Zostanie otwarta strona **szczegółów maszyny wirtualnej** i ma ona zakres dla tej maszyny wirtualnej, podobnie jak w przypadku uzyskiwania dostępu do usługi VM Insights bezpośrednio z maszyny wirtualnej platformy Azure.  
 
@@ -123,7 +123,7 @@ Kliknięcie ikony pinezki w prawym górnym rogu dowolnego z wykresów powoduje P
 
 Metryki wydajności włączone w ramach Azure Monitor dla maszyn wirtualnych nie obejmują wstępnie skonfigurowanych reguł alertów. Istnieją [alerty kondycji](vminsights-health.md#alerts) odpowiadające problemom z wydajnością wykrytym na maszynie wirtualnej platformy Azure, takie jak duże użycie procesora, mało dostępnej pamięci, mało miejsca na dysku itp.  Te alerty kondycji są jednak stosowane tylko do wszystkich maszyn wirtualnych włączonych dla Azure Monitor dla maszyn wirtualnych. 
 
-Jednak firma Microsoft może zbierać i przechowywać tylko podzbiór metryk wydajności, które są wymagane w obszarze roboczym Log Analytics. Jeśli strategia monitorowania wymaga analizy lub alertów, które zawierają inne metryki wydajności w celu efektywnego oceny pojemności lub kondycji maszyny wirtualnej, lub potrzebna jest elastyczność w celu określenia własnych kryteriów alertów lub logiki, można Skonfiguruj [zbieranie tych liczników wydajności](../platform/data-sources-performance-counters.md) w log Analytics i zdefiniuj [alerty dzienników](../platform/alerts-log.md). Chociaż Log Analytics umożliwia wykonywanie złożonej analizy z innymi typami danych i zapewnia dłuższe przechowywanie do obsługi analizy trendów, metryki z drugiej strony, są lekkie i mogą obsługiwać niemal scenariusze w czasie rzeczywistym. Są one zbierane przez [agenta diagnostyki platformy Azure](../../virtual-machines/windows/monitor.md) i przechowywane w magazynie metryk Azure monitor, co pozwala na tworzenie alertów o niższym opóźnieniu i niższych kosztach.
+Jednak firma Microsoft może zbierać i przechowywać tylko podzbiór metryk wydajności, które są wymagane w obszarze roboczym Log Analytics. Jeśli strategia monitorowania wymaga analizy lub alertów, które zawierają inne metryki wydajności w celu efektywnego oceny pojemności lub kondycji maszyny wirtualnej, lub potrzebna jest elastyczność w celu określenia własnych kryteriów alertów lub logiki, można skonfigurować [zbieranie tych liczników wydajności](../platform/data-sources-performance-counters.md) w log Analytics i definiować [alerty dzienników](../platform/alerts-log.md). Chociaż Log Analytics umożliwia wykonywanie złożonej analizy z innymi typami danych i zapewnia dłuższe przechowywanie do obsługi analizy trendów, metryki z drugiej strony, są lekkie i mogą obsługiwać niemal scenariusze w czasie rzeczywistym. Są one zbierane przez [agenta diagnostyki platformy Azure](../../virtual-machines/windows/monitor.md) i przechowywane w magazynie metryk Azure monitor, co pozwala na tworzenie alertów o niższym opóźnieniu i niższych kosztach.
 
 Zapoznaj się z omówieniem [zbierania metryk i dzienników przy użyciu Azure monitor](../platform/data-platform.md) , aby poznać podstawowe różnice i inne zagadnienia przed skonfigurowaniem zbierania tych dodatkowych metryk i reguł alertów.  
 

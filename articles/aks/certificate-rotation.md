@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 00d8546cb20d12c5f1a94bdcababa04a77c73133
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422296"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Obróć certyfikaty w usłudze Azure Kubernetes Service (AKS)
 
@@ -22,20 +22,7 @@ W tym artykule pokazano, jak obrócić certyfikaty w klastrze AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.76 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
-
-
-### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
-
-Aby skorzystać z tej funkcji, musisz mieć rozszerzenie interfejsu wiersza polecenia *AKS-Preview* w wersji 0.4.21 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+Ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.77 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 ## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS certyfikaty, urzędy certyfikacji i konta usług
 
@@ -51,7 +38,13 @@ AKS generuje i używa następujących certyfikatów, urzędów certyfikacji i ko
 * Klient `kubectl` ma certyfikat do komunikacji z klastrem AKS.
 
 > [!NOTE]
-> W przypadku klastrów AKS utworzonych przed Marzec 2019 istnieją certyfikaty, które wygasną po upływie dwóch lat. Każdy klaster utworzony po marcu 2019 lub dowolny klaster, który ma swoje certyfikaty, został obrócony, ma certyfikaty, które wygasną po 30 latach.
+> W przypadku klastrów AKS utworzonych przed Marzec 2019 istnieją certyfikaty, które wygasną po upływie dwóch lat. Każdy klaster utworzony po marcu 2019 lub dowolny klaster, który ma swoje certyfikaty, został obrócony, ma certyfikaty, które wygasną po 30 latach. Aby sprawdzić, kiedy klaster został utworzony, użyj `kubectl get nodes`, aby zobaczyć *wiek* pul węzłów.
+> 
+> Ponadto możesz sprawdzić datę wygaśnięcia certyfikatu klastra. Na przykład następujące polecenie wyświetla szczegóły certyfikatu dla klastra *myAKSCluster* .
+> ```console
+> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> openssl x509 -in my-cert.crt -text
+> ```
 
 ## <a name="rotate-your-cluster-certificates"></a>Obróć certyfikaty klastra
 
@@ -73,7 +66,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > Ukończenie `az aks rotate-certs` może potrwać do 30 minut. Jeśli polecenie zakończy się niepowodzeniem przed ukończeniem, użyj `az aks show`, aby sprawdzić, czy stan klastra to *rotacja certyfikatów*. Jeśli klaster jest w stanie niepowodzenia, uruchom ponownie `az aks rotate-certs`, aby ponownie obrócić certyfikaty.
 
-Sprawdź, czy stare certyfikaty nie są już prawidłowe, uruchamiając polecenie `kubectl`. Ponieważ certyfikaty używane przez `kubectl`nie zostały zaktualizowane, zostanie wyświetlony komunikat o błędzie.  Na przykład:
+Sprawdź, czy stare certyfikaty nie są już prawidłowe, uruchamiając polecenie `kubectl`. Ponieważ certyfikaty używane przez `kubectl`nie zostały zaktualizowane, zostanie wyświetlony komunikat o błędzie.  Przykład:
 
 ```console
 $ kubectl get no
@@ -86,7 +79,7 @@ Zaktualizuj certyfikat używany przez `kubectl`, uruchamiając `az aks get-crede
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Sprawdź, czy certyfikaty zostały zaktualizowane, uruchamiając polecenie `kubectl`, które zakończy się pomyślnie. Na przykład:
+Sprawdź, czy certyfikaty zostały zaktualizowane, uruchamiając polecenie `kubectl`, które zakończy się pomyślnie. Przykład:
 
 ```console
 kubectl get no

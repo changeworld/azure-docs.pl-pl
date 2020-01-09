@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372741"
 ---
 # <a name="vlans-and-subnets-overview"></a>Sieci VLAN i podsieci — Omówienie
 
@@ -38,7 +38,7 @@ Chmura prywatna jest tworzona jako izolowany środowisko VMware (hosty ESXi, vCe
 * Minimalna prefiks zakresu CIDR vSphere/sieci vSAN: **/24**
 * Maksymalna vSphere/sieci vSAN prefiks zakresu CIDR: **/21**
 
-> [!IMPORTANT]
+> [!CAUTION]
 > Adresy IP w zakresie CIDR vSphere/sieci vSAN są zarezerwowane do użytku przez infrastrukturę chmury prywatnej.  Nie używaj adresu IP z tego zakresu na żadnej maszynie wirtualnej.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>limity zakresu CIDR podsieci vSphere/sieci vSAN
@@ -58,7 +58,7 @@ Podczas tworzenia chmury prywatnej tworzone są następujące podsieci zarządza
 
 * **Zarządzanie systemem**. Sieć VLAN i podsieć dla sieci zarządzania ESXi hosty, serwer DNS, serwer vCenter.
 * **VMotion**. Sieć VLAN i podsieć dla sieci vMotion hostów ESXi.
-* **SIECI VSAN**. Sieć VLAN i podsieć dla sieci sieci vSAN hostów ESXi.
+* **Sieci vSAN**. Sieć VLAN i podsieć dla sieci sieci vSAN hostów ESXi.
 * **NsxtEdgeUplink1**. Sieci VLAN i podsieci dla połączeń sieci VLAN łączących się z siecią zewnętrzną.
 * **NsxtEdgeUplink2**. Sieci VLAN i podsieci dla połączeń sieci VLAN łączących się z siecią zewnętrzną.
 * **NsxtEdgeTransport**. Sieci VLAN i podsieci dla stref transportu sterują zasięgiem sieci warstwy 2 w NSX-T.

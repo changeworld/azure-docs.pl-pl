@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666430"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351276"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -47,7 +47,7 @@ Nie ma możliwości bezpośredniej kopii zapasowej całego konta magazynu. Możn
 
 1.  Zainstaluj narzędzie wiersza polecenia [AzCopy](storage-use-azcopy.md) . To narzędzie pomaga przenieść plik VHD między kontami magazynu.
 
-2.  Po zainstalowaniu programu AzCopy w systemie Windows za pomocą Instalatora Otwórz okno wiersza polecenia, a następnie przejdź do folderu instalacyjnego AzCopy na komputerze. Domyślnie AzCopy jest instalowany w folderze **% ProgramFiles (x86)% \ Microsoft SDKs\Azure\AzCopy** lub **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+2.  Po zainstalowaniu programu AzCopy w systemie Windows za pomocą Instalatora Otwórz okno wiersza polecenia, a następnie przejdź do folderu instalacyjnego AzCopy na komputerze. Domyślnie narzędzie AzCopy jest zainstalowane na **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** lub **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
 
 3.  Uruchom następujące polecenie, aby przenieść kontener. Należy zastąpić tekst wartościami rzeczywistymi.   
      
@@ -259,7 +259,7 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
 -   Użyj tokenu sygnatury dostępu współdzielonego (SAS), aby zapewnić dostęp do zasobu. 
 
--   Podaj użytkownikowi klucz podstawowy lub pomocniczy dla konta magazynu. Aby uzyskać więcej informacji, zobacz [Zarządzanie kontem magazynu](storage-account-manage.md#access-keys).
+-   Podaj użytkownikowi klucz podstawowy lub pomocniczy dla konta magazynu. Aby uzyskać więcej informacji, zobacz [Zarządzanie kluczami dostępu do konta magazynu](storage-account-keys-manage.md).
 
 -   Zmień zasady dostępu, aby zezwolić na dostęp anonimowy. Aby uzyskać więcej informacji, zobacz [udzielanie użytkownikom anonimowym uprawnień do kontenerów i obiektów BLOB](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 
@@ -275,9 +275,9 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
 -   W przypadku korzystania z magazynu Strefowo nadmiarowego lub magazynu geograficznie nadmiarowego nie można uzyskać dostępu do danych z regionu pomocniczego, chyba że zostanie zainicjowany tryb failover w tym regionie. Aby uzyskać więcej informacji na temat procesu przełączania do trybu failover, zobacz [odzyskiwanie po awarii i konto magazynu w trybie failover (wersja zapoznawcza) w usłudze Azure Storage](storage-disaster-recovery-guidance.md).
 
--   W przypadku korzystania z magazynu geograficznie nadmiarowego dostępnego do odczytu można w dowolnym momencie uzyskać dostęp do danych z regionu pomocniczego. Użyj jednej z następujących metod:  
+-   W przypadku korzystania z magazynu geograficznie nadmiarowego dostępnego do odczytu można w dowolnym momencie uzyskać dostęp do danych z regionu pomocniczego. Użyj jednej z poniższych metod:  
       
-    - **AzCopy**: Dołącz do nazwy konta magazynu w adresie URL **, aby uzyskać** dostęp do pomocniczego punktu końcowego. Na przykład:  
+    - **AzCopy**: Dołącz do nazwy konta magazynu w adresie URL **, aby uzyskać** dostęp do pomocniczego punktu końcowego. Przykład:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 

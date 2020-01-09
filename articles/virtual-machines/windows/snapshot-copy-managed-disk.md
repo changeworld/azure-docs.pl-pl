@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b564e20ca8aa5acd7fbd4ea69ac2b1cd72e66d5e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bc74a3eea1f99de6080788d6f3fddcac823092dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370905"
 ---
 # <a name="create-a-snapshot"></a>Tworzenie migawki
 
@@ -29,19 +29,20 @@ Jeśli zamierzasz utworzyć nową maszynę wirtualną przy użyciu migawki, zale
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal 
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Z menu po lewej stronie wybierz pozycję **Utwórz zasób**, a następnie wyszukaj i wybierz pozycję **migawka**.
+Aby utworzyć migawkę, wykonaj następujące czynności: 
+1.  Na [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób**.
+2. Wyszukaj i wybierz pozycję **migawka**.
 3. W oknie **migawki** wybierz pozycję **Utwórz**. Zostanie wyświetlone okno **Utwórz migawkę** .
 4. Wprowadź **nazwę** migawki.
-5. Wybierz istniejącą [grupę zasobów](../../azure-resource-manager/resource-group-overview.md#resource-groups) lub wprowadź nazwę nowej. 
+5. Wybierz istniejącą [grupę zasobów](../../azure-resource-manager/management/overview.md#resource-groups) lub wprowadź nazwę nowej. 
 6. Wybierz **lokalizację** centrum danych Azure.  
 7. W polu **dysk źródłowy**wybierz dysk zarządzany do utworzenia migawki.
 8. Wybierz **Typ konta** , który ma być używany do przechowywania migawki. Wybierz pozycję **Standard_HDD**, chyba że potrzebujesz, aby migawka była przechowywana na dysku o wysokiej wydajności.
 9. Wybierz pozycję **Utwórz**.
 
-## <a name="use-powershell"></a>Korzystanie z programu PowerShell
+## <a name="use-powershell"></a>Używanie programu PowerShell
 
-Poniższe kroki pokazują, jak skopiować dysk VHD, utworzyć konfigurację migawki i wykonać migawkę dysku za pomocą polecenia cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
+Poniższe kroki pokazują, jak skopiować dysk VHD i utworzyć konfigurację migawki. Następnie można wykonać migawkę dysku za pomocą polecenia cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
 
  
 

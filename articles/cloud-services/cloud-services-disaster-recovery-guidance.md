@@ -1,5 +1,6 @@
 ---
-title: Co zrobić w przypadku przerw w działaniu usługi platformy Azure mających wpływ na platformę Azure Cloud Services | Microsoft Docs
+title: Obsługa przerw w działaniu usługi platformy Azure mających wpływ na platformę Azure Cloud Services
+titleSuffix: Azure Cloud Services
 description: Dowiedz się, co należy zrobić w przypadku przerw w działaniu usługi platformy Azure mających wpływ na Cloud Services platformy Azure.
 services: cloud-services
 documentationcenter: ''
@@ -9,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: a014c3d5ada2024609e9262d8943090ac7b205c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f65b61d7265268b33d2c9a113503cc1b5a87db8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361215"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co zrobić w przypadku przerw w działaniu usługi platformy Azure mających wpływ na platformę Azure Cloud Services
 Firma Microsoft chce, aby upewnić się, że nasze usługi są zawsze dostępne dla Ciebie, gdy będą potrzebne. Siły wykraczające poza nasze kontrolki czasami wpływają na metody, które powodują nieplanowane zakłócenia usługi.

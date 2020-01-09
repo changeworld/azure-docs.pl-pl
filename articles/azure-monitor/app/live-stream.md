@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406747"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorowanie & diagnozowanie przy użyciu 1-sekundowego opóźnienia
 
@@ -35,7 +35,7 @@ Metryki na żywo są obecnie obsługiwane w przypadku aplikacji ASP.NET, ASP.NET
 
 ## <a name="get-started"></a>Rozpocznij
 
-1. Jeśli jeszcze nie [zainstalowano Application Insights](../../azure-monitor/azure-monitor-app-hub.md) w aplikacji sieci Web, zrób to teraz.
+1. Jeśli jeszcze nie [zainstalowano Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) w aplikacji sieci Web, zrób to teraz.
 2. Oprócz standardowych pakietów Application Insights [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) jest wymagany do włączenia strumienia metryk na żywo.
 3. **Zaktualizuj do najnowszej wersji** pakietu Application Insights. W programie Visual Studio kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zarządzaj pakietami NuGet**. Otwórz kartę **aktualizacje** i wybierz wszystkie pakiety Microsoft. ApplicationInsights. *.
 
@@ -157,7 +157,7 @@ W przypadku aplikacji funkcji platformy Azure (v2) Zabezpieczanie kanału za pom
 
 Utwórz klucz interfejsu API z poziomu zasobu Application Insights i przejdź do pozycji **Ustawienia aplikacji** dla aplikacja funkcji. Wybierz pozycję **Dodaj nowe ustawienie** i wprowadź nazwę `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` i wartość odpowiadającą kluczowi interfejsu API.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (wymaga Application Insights ASP.NET Core SDK 2.3.0 — wersja beta lub nowsza)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (wymaga Application Insights ASP.NET Core SDK 2.3.0 lub nowszego)
 
 Zmodyfikuj plik startup.cs w następujący sposób:
 

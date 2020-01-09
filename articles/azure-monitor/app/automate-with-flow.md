@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407539"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów Application Insights platformy Azure za pomocą łącznika dla Microsoft Flow
 
@@ -69,7 +69,7 @@ Jeśli pole połączenie nie pojawia się od razu, a zamiast tego nastąpi bezpo
 Kliknij przycisk **Utwórz**.
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5. Określanie typu zapytania i wykresu analitycznego
-To przykładowe zapytanie wybiera żądania zakończone niepowodzeniem w ciągu ostatniego dnia i skorelowanie ich z wyjątkami, które wystąpiły w ramach operacji. Analiza jest skorelowane z uwzględnieniem identyfikatora parametrów. Kwerenda następnie segmentuje wyniki przy użyciu algorytmu Autocluster.
+To przykładowe zapytanie wybiera żądania zakończone niepowodzeniem w ciągu ostatniego dnia i skorelowanie ich z wyjątkami, które wystąpiły w ramach operacji. Analiza jest skorelowane z uwzględnieniem identyfikatora operation_Id. Kwerenda następnie segmentuje wyniki przy użyciu algorytmu Autocluster.
 
 Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w analizie, zanim dodasz ją do przepływu.
 
@@ -117,9 +117,9 @@ Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w anal
 
 ### <a name="step-7-save-and-test-your-flow"></a>Krok 7. Zapisywanie i testowanie przepływu
 
-Kliknij przycisk **Save** (Zapisz).
+Kliknij pozycję **Zapisz**.
 
-Możesz poczekać na uruchomienie tej akcji przez wyzwalacz lub kliknąć przycisk ![beaker ikonę testu ](./media/automate-with-flow/testicon.png) **test** w górnej części.
+Możesz poczekać na uruchomienie tej akcji przez wyzwalacz lub kliknąć ![ikonę testu w zlewce](./media/automate-with-flow/testicon.png) **test** w górnej części.
 
 Po wybraniu **testu**:
 

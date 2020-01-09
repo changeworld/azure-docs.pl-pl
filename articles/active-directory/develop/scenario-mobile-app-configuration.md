@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423800"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
@@ -77,7 +77,7 @@ W poniższym akapicie wyjaśniono, jak utworzyć wystąpienie aplikacji dla plat
 
 W środowisku Xamarin lub platformy UWP Najprostszym sposobem tworzenia wystąpienia aplikacji jest następująca sytuacja, w której `ClientId` jest identyfikatorem GUID zarejestrowanej aplikacji.
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ Istnieją dodatkowe metody*parametrów* , które ustawiają element nadrzędny i
 
 W systemie Android należy przekazać działanie nadrzędne przed uruchomieniem interakcyjnego uwierzytelniania. W przypadku korzystania z brokera w systemie iOS należy przekazać plik viewcontroller. W ten sam sposób na platformy UWP można chcieć przekazać okno nadrzędne. Jest to możliwe podczas uzyskiwania tokenu, ale można również określić wywołanie zwrotne podczas tworzenia aplikacji, delegat zwraca UIParent.
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 W systemie Android zalecamy używanie `CurrentActivityPlugin` w [tym miejscu](https://github.com/jamesmontemagno/CurrentActivityPlugin).  Następnie kod konstruktora `PublicClientApplication` będzie wyglądać następująco:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -175,7 +175,7 @@ Wykonaj poniższe czynności, aby umożliwić aplikacji platformy Xamarin. iOS k
 
 Obsługa brokera jest włączana na podstawie`PublicClientApplication`. Jest on domyślnie wyłączony. W przypadku tworzenia `PublicClientApplication` za pomocą `PublicClientApplicationBuilder`należy użyć parametru `WithBroker()` (domyślnie ustawiono wartość true).
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 Gdy MSAL.NET wywołuje brokera, Broker będzie z kolei wywoływać z powrotem do aplikacji za pomocą metody `AppDelegate.OpenUrl`. Ponieważ MSAL będzie oczekiwać na odpowiedź z brokera, aplikacja musi współpracować, aby wywoływać MSAL.NET z powrotem. W tym celu należy zaktualizować plik `AppDelegate.cs`, aby zastąpić poniższą metodę.
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -219,16 +219,16 @@ Aby ustawić okno obiektu, wykonaj następujące czynności:
 **Na przykład:**
 
 W pliku `App.cs`:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 W pliku `AppDelegate.cs`:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 W wywołaniu tokenu pozyskiwania:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();

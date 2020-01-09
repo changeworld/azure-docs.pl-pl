@@ -1,6 +1,6 @@
 ---
-title: Szybki start — Azure Application Insights | Microsoft Docs
-description: Zawiera instrukcje umożliwiające szybkie skonfigurowanie ASP.NET Core aplikacji sieci Web na potrzeby monitorowania za pomocą Application Insights
+title: Szybki Start ASP.NET Core — Azure Monitor Application Insights
+description: Zawiera instrukcje umożliwiające szybkie skonfigurowanie ASP.NET Core aplikacji sieci Web na potrzeby monitorowania za pomocą Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ec39380409d5170efb56530c86a41d934e41728a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900567"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399028"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Rozpoczynanie monitorowania aplikacji internetowej ASP.NET Core
 
@@ -23,7 +23,7 @@ Ten przewodnik Szybki Start przeprowadzi Cię przez proces dodawania zestawu SDK
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 - [Zainstaluj program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
   - Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
@@ -53,14 +53,16 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
    | Ustawienia        |  Wartość           | Opis  |
    | ------------- |:-------------|:-----|
    | **Nazwa**      | Wartość unikatowa w skali globalnej | Nazwa identyfikująca monitorowaną aplikację |
-   | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów hostującej dane usługi App Insights |
+   | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów, w której mają być hostowane dane usługi App Insights. istnieje możliwość utworzenia nowej lub użycia istniejącej grupy zasobów. |
    | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
 2. Kliknij przycisk **Utwórz**.
 
+
+
 ## <a name="configure-app-insights-sdk"></a>Konfigurowanie zestawu SDK usługi App Insights
 
-1. Otwórz **projekt** aplikacji internetowej ASP.NET Core w programie Visual Studio, kliknij prawym przyciskiem myszy nazwę aplikacji w **Eksploratorze rozwiązań**, a następnie wybierz pozycję **Dodaj**  >  **Telemetria usługi Application Insights**.
+1. Otwórz **projekt** aplikacji internetowej ASP.NET Core w programie Visual Studio, kliknij prawym przyciskiem myszy nazwę aplikacji w **Eksploratorze rozwiązań**, a następnie wybierz pozycję **Dodaj** > **Telemetria usługi Application Insights**.
 
     ![Dodawanie telemetrii usługi Application Insights](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
@@ -70,7 +72,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 4. Wybierz **projekt** > **zarządzać pakietami NuGet** > **Źródło pakietów: nuget.org** > **zaktualizować** pakiety SDK Application Insights do najnowszej wersji.
 
-5. Wybierz pozycję **Debuguj**  >  **Uruchom bez debugowania** (Ctrl+F5), aby uruchomić aplikację
+5. Wybierz pozycję **Debuguj** > **Uruchom bez debugowania** (Ctrl+F5), aby uruchomić aplikację
 
     ![Menu Przegląd usługi Application Insights](./media/dotnetcore-quick-start/3debug.png)
 
@@ -106,6 +108,9 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Po zakończeniu testowania można usunąć grupę zasobów i wszystkie powiązane zasoby. W tym celu wykonaj poniższe kroki.
+
+> [!NOTE]
+> Jeśli użyto istniejącej grupy zasobów, poniższe instrukcje nie będą działać i konieczne będzie tylko usunięcie poszczególnych zasobów Application Insights. Należy pamiętać, że usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów underyling, które są członkami tej grupy.
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij pozycję **myResourceGroup**.
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę **myResourceGroup**, a następnie kliknij pozycję **Usuń**.

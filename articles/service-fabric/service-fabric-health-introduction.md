@@ -1,25 +1,16 @@
 ---
-title: Monitorowanie kondycji w Service Fabric | Microsoft Docs
+title: Monitorowanie kondycji w Service Fabric
 description: Wprowadzenie do modelu monitorowania kondycji usługi Azure Service Fabric, który umożliwia monitorowanie klastra i jego aplikacji i usług.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60949168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433901"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Wprowadzenie do monitorowania kondycji usługi Service Fabric
 Na platformie Azure Service Fabric wprowadzono model kondycji, który zapewnia rozbudowane, elastyczne i rozszerzalne oceny kondycji oraz raportowanie. Model umożliwia monitorowanie stanu klastra i usług działających w czasie niemal w czasie rzeczywistym. Możesz łatwo uzyskać informacje o kondycji i rozwiązać potencjalne problemy, zanim staną się one kaskadowe i powodują ogromne przestoje. W typowym modelu usługi wysyłają raporty na podstawie widoków lokalnych, a informacje te są agregowane w celu zapewnienia ogólnego widoku poziomu klastra.
@@ -32,7 +23,7 @@ Składniki Service Fabric korzystają z tego bogatego modelu kondycji, aby zgło
 > 
 
 ## <a name="health-store"></a>Magazyn kondycji
-Magazyn kondycji przechowuje informacje dotyczące kondycji jednostek w klastrze w celu łatwego pobierania i oceny. Jest ona zaimplementowana jako Service Fabric utrwalonej usługi stanowej w celu zapewnienia wysokiej dostępności i skalowalności. Magazyn kondycji jest częścią **sieci szkieletowej:/** aplikacji systemowej i jest dostępny, gdy klaster jest uruchomiony.
+Magazyn kondycji przechowuje informacje dotyczące kondycji jednostek w klastrze w celu łatwego pobierania i oceny. Jest ona zaimplementowana jako Service Fabric utrwalonej usługi stanowej w celu zapewnienia wysokiej dostępności i skalowalności. Magazyn kondycji jest częścią **sieci szkieletowej:/aplikacji systemowej** i jest dostępny, gdy klaster jest uruchomiony.
 
 ## <a name="health-entities-and-hierarchy"></a>Jednostki i hierarchia kondycji
 Jednostki kondycji są zorganizowane w hierarchii logicznej, która przechwytuje interakcje i zależności między różnymi jednostkami. Magazyn kondycji automatycznie kompiluje jednostki kondycji i hierarchię na podstawie raportów otrzymanych od składników Service Fabric.
@@ -41,7 +32,7 @@ Jednostki kondycji odzwierciedlają jednostki Service Fabric. (Na przykład **Je
 
 Jednostki kondycji i hierarchia umożliwiają efektywne zgłaszanie, debugowanie i monitorowanie klastra oraz aplikacji. Model kondycji zapewnia dokładną, *szczegółową* reprezentację kondycji wielu elementów w klastrze.
 
-![Jednostki kondycji.][1]
+![jednostek kondycji.][1]
 Jednostki kondycji zorganizowane w hierarchii na podstawie relacji nadrzędny-podrzędny.
 
 [1]: ./media/service-fabric-health-introduction/servicefabric-health-hierarchy.png
@@ -53,7 +44,7 @@ Jednostki kondycji są następujące:
 * **Aplikacja**. Reprezentuje kondycję wystąpienia aplikacji działającego w klastrze. Raporty kondycji aplikacji opisują warunki, które mają wpływ na ogólną kondycję aplikacji. Nie można ich zawęzić do poszczególnych elementów podrzędnych (usług lub wdrożonych aplikacji). Przykłady obejmują kompleksowe interakcje między różnymi usługami w aplikacji. Jednostka aplikacji jest identyfikowana przy użyciu nazwy aplikacji (URI).
 * **Usługa**. Reprezentuje kondycję usługi działającej w klastrze. Raporty kondycji usługi opisują warunki, które mają wpływ na ogólną kondycję usługi. Program reporter nie może zawęzić problemu do partycji lub repliki w złej kondycji. Przykłady obejmują konfigurację usługi (np. port lub zewnętrzny udział plików), która powoduje problemy dla wszystkich partycji. Jednostka usługi jest identyfikowana przy użyciu nazwy usługi (URI).
 * **Partycja**. Reprezentuje kondycję partycji usługi. Raporty kondycji partycji opisują warunki, które mają wpływ na cały zestaw replik. Przykłady obejmują, kiedy liczba replik jest mniejsza niż liczba docelowa i kiedy partycja jest w utracie kworum. Jednostka partycji jest identyfikowana przez identyfikator partycji (GUID).
-* Replika. Reprezentuje prawidłowość repliki usługi stanowej lub wystąpienia usługi bezstanowej. Replika jest najmniejszą jednostką, która może być raportowana przez licznik i składniki systemowe dla aplikacji. W przypadku usług stanowych przykłady obejmują replikę podstawową, która nie może replikować operacji do serwerów pomocniczych i spowalniać replikację. Ponadto wystąpienie bezstanowe może zgłaszać czas braku zasobów lub problemy z łącznością. Jednostka repliki jest identyfikowana przy użyciu identyfikatora partycji (GUID) i repliki lub identyfikatora wystąpienia (Long).
+* **Replika**. Reprezentuje prawidłowość repliki usługi stanowej lub wystąpienia usługi bezstanowej. Replika jest najmniejszą jednostką, która może być raportowana przez licznik i składniki systemowe dla aplikacji. W przypadku usług stanowych przykłady obejmują replikę podstawową, która nie może replikować operacji do serwerów pomocniczych i spowalniać replikację. Ponadto wystąpienie bezstanowe może zgłaszać czas braku zasobów lub problemy z łącznością. Jednostka repliki jest identyfikowana przy użyciu identyfikatora partycji (GUID) i repliki lub identyfikatora wystąpienia (Long).
 * **DeployedApplication**. Reprezentuje kondycję *aplikacji uruchomionej w węźle*. Wdrożone raporty kondycji aplikacji opisują warunki specyficzne dla aplikacji w węźle, którego nie można zawęzić do pakietów usług wdrożonych w tym samym węźle. Przykłady obejmują błędy, gdy nie można pobrać pakietu aplikacji w tym węźle i problemy z konfigurowaniem podmiotów zabezpieczeń aplikacji w węźle. Wdrożona aplikacja jest identyfikowana przez nazwę aplikacji (URI) i nazwę węzła (ciąg).
 * **DeployedServicePackage**. Reprezentuje kondycję pakietu usługi działającego w węźle w klastrze. Opisano w nim warunki dotyczące pakietu usługi, które nie mają wpływu na inne pakiety usług w tym samym węźle dla tej samej aplikacji. Przykłady obejmują pakiet kodu w pakiecie usługi, którego nie można uruchomić, oraz pakiet konfiguracyjny, którego nie można odczytać. Wdrożony pakiet usługi jest identyfikowany przez nazwę aplikacji (URI), nazwę węzła (ciąg), nazwę manifestu usługi (ciąg) i identyfikator aktywacji pakietu usługi (ciąg).
 
@@ -74,7 +65,7 @@ Możliwe są następujące [Stany kondycji](https://docs.microsoft.com/dotnet/ap
 * **OK**. Jednostka jest w dobrej kondycji. Nie ma żadnych znanych problemów dotyczących IT lub jego elementów podrzędnych (jeśli ma zastosowanie).
 * **Ostrzeżenie**. Jednostka ma pewne problemy, ale nadal może działać poprawnie. Na przykład występują opóźnienia, ale nie powodują jeszcze żadnych problemów funkcjonalnych. W niektórych przypadkach warunek ostrzegawczy może zostać naprawiony bez interwencji zewnętrznego. W takich przypadkach raporty kondycji zgłaszają świadomość i zapewniają wgląd w to, co się dzieje. W innych przypadkach warunek ostrzegawczy może obniżyć poziom poważnych problemów bez interwencji użytkownika.
 * **Błąd**. Jednostka jest w złej kondycji. Należy wykonać akcję, aby naprawić stan jednostki, ponieważ nie może ona działać prawidłowo.
-* **Nieznane**. Jednostka nie istnieje w magazynie kondycji. Ten wynik można uzyskać z zapytań rozproszonych, które scalają wyniki z wielu składników. Na przykład zapytanie Get node list przechodzi do **trybu failovermanager**, **Clustermanager**i HealthManager; zapytanie Get list aplikacji przechodzi do programu clustermanageri kondycji. Te zapytania scalają wyniki z wielu składników systemu. Jeśli inny składnik systemowy zwraca jednostkę, która nie jest obecna w magazynie kondycji, scalony wynik ma nieznany stan kondycji. Jednostka nie znajduje się w magazynie, ponieważ raporty kondycji nie zostały jeszcze przetworzone lub jednostka została oczyszczona po usunięciu.
+* **Nieznany**. Jednostka nie istnieje w magazynie kondycji. Ten wynik można uzyskać z zapytań rozproszonych, które scalają wyniki z wielu składników. Na przykład zapytanie Get node list przechodzi do **trybu failovermanager**, **Clustermanager**i **HealthManager**; zapytanie Get list aplikacji przechodzi do programu **clustermanager** i **kondycji**. Te zapytania scalają wyniki z wielu składników systemu. Jeśli inny składnik systemowy zwraca jednostkę, która nie jest obecna w magazynie kondycji, scalony wynik ma nieznany stan kondycji. Jednostka nie znajduje się w magazynie, ponieważ raporty kondycji nie zostały jeszcze przetworzone lub jednostka została oczyszczona po usunięciu.
 
 ## <a name="health-policies"></a>Zasady dotyczące kondycji
 Magazyn kondycji stosuje zasady dotyczące kondycji, aby określić, czy jednostka jest w dobrej kondycji na podstawie raportów i jego elementów podrzędnych.
@@ -188,7 +179,7 @@ Po przeprowadzeniu oceny wszystkich elementów podrzędnych przez magazyn kondyc
 ## <a name="health-reporting"></a>Raportowanie kondycji
 Składniki systemowe, aplikacje sieci szkieletowej systemu i wewnętrzne/zewnętrzne alarmy mogą raportować względem jednostek Service Fabric. Raporty umożliwiają *lokalne* Określanie kondycji monitorowanych jednostek na podstawie warunków, które są monitorowane. Nie muszą oni przeglądać stanu globalnego ani zagregowanych danych. Odpowiednie zachowanie ma na celu posiadanie prostych raportów, a nie złożone organizmy, które wymagają poszukania wielu rzeczy w celu wywnioskowania, jakie informacje należy wysłać.
 
-Aby wysłać dane o kondycji do magazynu kondycji, musi on identyfikować jednostkę, której to dotyczy, i utworzyć raport kondycji. Aby wysłać raport, użyj interfejsu API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , raportów usługi API Health, które są `Partition` `CodePackageActivationContext` uwidocznione na obiektach, poleceniach cmdlet programu PowerShell lub Rest.
+Aby wysłać dane o kondycji do magazynu kondycji, musi on identyfikować jednostkę, której to dotyczy, i utworzyć raport kondycji. Aby wysłać raport, należy użyć interfejsu API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , raportów usługi API Health uwidocznionych na `Partition` lub `CodePackageActivationContext` obiektów, poleceń cmdlet programu POWERSHELL i REST.
 
 ### <a name="health-reports"></a>Raporty dotyczące kondycji
 [Raporty kondycji](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) dla każdej jednostki w klastrze zawierają następujące informacje:
@@ -214,7 +205,7 @@ Aby wysłać dane o kondycji do magazynu kondycji, musi on identyfikować jednos
 Te cztery informacje--SourceId, identyfikator jednostki, właściwość i HealthState — są wymagane dla każdego raportu kondycji. Ciąg SourceId nie może rozpoczynać się od prefiksu "**System.** ", który jest zarezerwowany dla raportów systemowych. Dla tej samej jednostki istnieje tylko jeden raport dla tego samego źródła i właściwości. Wiele raportów dla tego samego źródła i właściwości przesłania siebie nawzajem, po stronie klienta kondycji (jeśli są przetwarzane w partii) lub po stronie magazynu kondycji. Zastąpienie jest oparte na numerach sekwencyjnych; nowsze raporty (z wyższymi numerami sekwencji) zamieniają starsze raporty.
 
 ### <a name="health-events"></a>Zdarzenia dotyczące kondycji
-Wewnętrznie magazyn kondycji przechowuje [zdarzenia](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent)dotyczące kondycji, które zawierają wszystkie informacje z raportów i dodatkowe metadane. Metadane obejmują czas przyznany przez raport klientowi kondycji i godzinę jego modyfikacji po stronie serwera. Zdarzenia dotyczące kondycji są zwracane przez [zapytania](service-fabric-view-entities-aggregated-health.md#health-queries)o kondycję.
+Wewnętrznie magazyn kondycji przechowuje [zdarzenia dotyczące kondycji](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent), które zawierają wszystkie informacje z raportów i dodatkowe metadane. Metadane obejmują czas przyznany przez raport klientowi kondycji i godzinę jego modyfikacji po stronie serwera. Zdarzenia dotyczące kondycji są zwracane przez [zapytania o kondycję](service-fabric-view-entities-aggregated-health.md#health-queries).
 
 Dodane metadane zawierają:
 
@@ -229,8 +220,8 @@ Pola przechodzenia stanu mogą służyć do inteligentniejszych alertów lub inf
 * Alert dotyczący tylko warunków, które zostały zmienione w ciągu ostatnich X minut. Jeśli raport został już z błędem przed określonym czasem, można go zignorować, ponieważ został już wcześniej zasygnalizowani.
 * Jeśli właściwość jest przełączana między ostrzeżeniem a błędem, ustal, jak długi czas został w złej kondycji (to znaczy nie OK). Na przykład alert, jeśli właściwość nie była w dobrej kondycji przez więcej niż pięć minut można przetłumaczyć na (HealthState! = OK i teraz-LastOkTransitionTime > 5 minut).
 
-## <a name="example-report-and-evaluate-application-health"></a>Przykład: Raportowanie i szacowanie kondycji aplikacji
-Poniższy przykład wysyła raport kondycji za pośrednictwem programu PowerShell w **sieci szkieletowej aplikacji:/WORDCOUNT** ze źródła. Raport kondycji zawiera informacje o właściwości kondycji "dostępność" w stanie kondycji błędów z nieskończoną TimeToLiveą. Następnie wysyła zapytanie do kondycji aplikacji, która zwraca zagregowane błędy stanu kondycji i raportowane zdarzenia dotyczące kondycji na liście zdarzeń dotyczących kondycji.
+## <a name="example-report-and-evaluate-application-health"></a>Przykład: raportowanie i szacowanie kondycji aplikacji
+Poniższy przykład wysyła raport kondycji za pośrednictwem programu PowerShell w **sieci szkieletowej aplikacji:/WORDCOUNT** **ze źródła.** Raport kondycji zawiera informacje o właściwości kondycji "dostępność" w stanie kondycji błędów z nieskończoną TimeToLiveą. Następnie wysyła zapytanie do kondycji aplikacji, która zwraca zagregowane błędy stanu kondycji i raportowane zdarzenia dotyczące kondycji na liście zdarzeń dotyczących kondycji.
 
 ```powershell
 PS C:\> Send-ServiceFabricApplicationHealthReport –ApplicationName fabric:/WordCount –SourceId "MyWatchdog" –HealthProperty "Availability" –HealthState Error

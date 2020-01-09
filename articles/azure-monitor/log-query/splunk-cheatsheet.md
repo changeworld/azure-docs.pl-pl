@@ -1,18 +1,17 @@
 ---
 title: Splunk Azure Monitor kwerendy dziennika | Microsoft Docs
 description: Pomoc dla użytkowników zaznajomionych z usługą Splunk w celu uczenia się zapytań dzienników Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397747"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk Azure Monitor zapytanie dziennika
 
@@ -24,15 +23,15 @@ W poniższej tabeli porównano koncepcje i struktury danych między Splunk i dzi
 
  | Pojęcie  | Splunk | Azure Monitor |  Komentarz
  | --- | --- | --- | ---
- | Jednostka wdrożenia  | hosta |  hosta |  Azure Monitor zezwala na dowolne zapytania między klastrami. Splunk nie. |
+ | Jednostka wdrożenia  | cluster |  cluster |  Azure Monitor zezwala na dowolne zapytania między klastrami. Splunk nie. |
  | Pamięć podręczna danych |  zasobników  |  Zasady pamięci podręcznej i przechowywania |  Kontroluje okres i poziom buforowania danych. To ustawienie ma bezpośredni wpływ na wydajność zapytań i koszt wdrożenia. |
- | Logiczna partycja danych  |  indeks  |  baza danych  |  Umożliwia logiczne rozdzielenie danych. Obie implementacje zezwalają na złożenie i łączenie między tymi partycjami. |
- | Metadane zdarzeń strukturalnych | ND | Tabele |  Splunk nie ma koncepcji uwidocznionej w języku wyszukiwania metadanych zdarzeń. Dzienniki Azure Monitor mają koncepcję tabeli, która zawiera kolumny. Każde wystąpienie zdarzenia jest zamapowane na wiersz. |
- | Rekord danych | wydarzen | wiersza |  Tylko zmiana terminologii. |
- | Atrybut rekordu danych | polami |  Kolumna |  W Azure Monitor jest to wstępnie zdefiniowane jako część struktury tabeli. W Splunk każde zdarzenie ma swój własny zestaw pól. |
- | Typ | typu |  typu |  Azure Monitor typy danych są bardziej jawne, ponieważ są ustawione w kolumnach. Obie funkcje umożliwiają dynamiczne działanie z typami danych i w przybliżeniu równoważnym zestawem elementów DataType, w tym obsługi JSON. |
- | Zapytanie i wyszukiwanie  | Wyszukiwania | query |  Pojęcia są zasadniczo takie same między Azure Monitor i Splunk. |
- | Czas pozyskiwania zdarzeń | Czas systemowy | ingestion_time() |  W Splunk każde zdarzenie pobiera sygnaturę czasową systemową, która jest indeksowana przez zdarzenie. W Azure Monitor można zdefiniować zasady o nazwie ingestion_time, które ujawniają kolumnę systemową, do której można odwoływać się za pomocą funkcji ingestion_time (). |
+ | Logiczna partycja danych  |  index  |  baza danych  |  Umożliwia logiczne rozdzielenie danych. Obie implementacje zezwalają na złożenie i łączenie między tymi partycjami. |
+ | Metadane zdarzeń strukturalnych | ND | table |  Splunk nie ma koncepcji uwidocznionej w języku wyszukiwania metadanych zdarzeń. Dzienniki Azure Monitor mają koncepcję tabeli, która zawiera kolumny. Każde wystąpienie zdarzenia jest zamapowane na wiersz. |
+ | Rekord danych | zdarzenie | wiersza |  Tylko zmiana terminologii. |
+ | Atrybut rekordu danych | pole |  Kolumny |  W Azure Monitor jest to wstępnie zdefiniowane jako część struktury tabeli. W Splunk każde zdarzenie ma swój własny zestaw pól. |
+ | Typy | typu |  typu |  Azure Monitor typy danych są bardziej jawne, ponieważ są ustawione w kolumnach. Obie funkcje umożliwiają dynamiczne działanie z typami danych i w przybliżeniu równoważnym zestawem elementów DataType, w tym obsługi JSON. |
+ | Zapytanie i wyszukiwanie  | search | query |  Pojęcia są zasadniczo takie same między Azure Monitor i Splunk. |
+ | Czas pozyskiwania zdarzeń | Czas systemowy | ingestion_time () |  W Splunk każde zdarzenie pobiera sygnaturę czasową systemową, która jest indeksowana przez zdarzenie. W Azure Monitor można zdefiniować zasady o nazwie ingestion_time, które ujawniają kolumnę systemową, do której można odwoływać się za pomocą funkcji ingestion_time (). |
 
 ## <a name="functions"></a>Functions
 
@@ -40,21 +39,21 @@ Poniższa tabela zawiera funkcje w Azure Monitor, które są równoważne z funk
 
 |Splunk | Azure Monitor |Komentarz
 |---|---|---
-|strcat | strcat()| jedno |
-|split  | Split () | jedno |
-|przypadku     | Jeśli ()   | jedno |
-|tonumber | ToDouble — ()<br>tolong()<br>ToInt — () | jedno |
-|prawym górnym<br>Dołu |ToUpper ()<br>ToLower ()|jedno |
-| stępować | Zamień () | jedno<br> Należy również zauważyć, że chociaż `replace()` przyjmuje trzy parametry w obu produktach, parametry są różne. |
-| substr — | podciąg () | jedno<br>Należy również zauważyć, że Splunk używa indeksów jednostronicowych. Azure Monitor notatki dotyczące indeksów liczonych od zera. |
-| ToLower |  ToLower () | jedno |
-| ToUpper | ToUpper () | jedno |
-| Spełnić | dopasowuje wyrażenie regularne |  dwóch  |
-| wyrażeń | dopasowuje wyrażenie regularne | W Splunk, `regex` jest operatorem. W Azure Monitor jest operatorem relacyjnym. |
+|strcat | strcat()| (1) |
+|split  | Split () | (1) |
+|if     | iff()   | (1) |
+|tonumber | todouble()<br>tolong()<br>ToInt — () | (1) |
+|prawym górnym<br>dołu |ToUpper ()<br>ToLower ()|(1) |
+| replace | Zamień () | (1)<br> Należy również pamiętać, że podczas `replace()` są trzy parametry w obu produktach, parametry są różne. |
+| substr — | podciąg () | (1)<br>Należy również zauważyć, że Splunk używa indeksów jednostronicowych. Azure Monitor notatki dotyczące indeksów liczonych od zera. |
+| tolower |  ToLower () | (1) |
+| toupper | ToUpper () | (1) |
+| {1&gt;dopasowanie&lt;1} | dopasowuje wyrażenie regularne |  (2)  |
+| regex | dopasowuje wyrażenie regularne | W Splunk, `regex` jest operatorem. W Azure Monitor jest operatorem relacyjnym. |
 | searchmatch | == | W Splunk, `searchmatch` umożliwia wyszukiwanie dokładnego ciągu.
-| wybranych | Rand ()<br>Rand (n) | Funkcja Splunk zwraca liczbę z przestawu od zera do 2<sup>31</sup>-1. Azure Monitor "zwraca liczbę z zakresu od 0,0 do 1,0 lub w przypadku podanego parametru, między 0 a n-1.
-| teraz | now() | jedno
-| relative_time | totimespan() | jedno<br>W Azure Monitor Splunk odpowiednik relative_time (datetimeVal, offsetVal) to datetimeVal + ToTimeSpan (offsetVal).<br>Na przykład <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> jest <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
+| losowe | rand()<br>Rand (n) | Funkcja Splunk zwraca liczbę z przestawu od zera do 2<sup>31</sup>-1. Azure Monitor "zwraca liczbę z zakresu od 0,0 do 1,0 lub w przypadku podanego parametru, między 0 a n-1.
+| teraz | now() | (1)
+| relative_time | totimespan() | (1)<br>W Azure Monitor Splunk odpowiednik relative_time (datetimeVal, offsetVal) to datetimeVal + ToTimeSpan (offsetVal).<br>Na przykład, <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> staje się <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
 (1) w Splunk funkcja jest wywoływana z operatorem `eval`. W Azure Monitor jest używany jako część `extend` lub `project`.<br>(2) w Splunk funkcja jest wywoływana z operatorem `eval`. W Azure Monitor może być używana z operatorem `where`.
 
@@ -67,7 +66,7 @@ Poniższe sekcje zawierają przykłady użycia różnych operatorów między Spl
 > Na potrzeby poniższego przykładu _reguła_ pola Splunk jest mapowana na tabelę w Azure monitor i domyślna sygnatura czasowa Splunk jest mapowana do kolumny Logs Analytics _ingestion_time ()_ .
 
 ### <a name="search"></a>Search
-W Splunk można pominąć słowo kluczowe `search` i określić ciąg bez cudzysłowu. W Azure Monitor należy uruchomić każde zapytanie z `find`, ciąg bez cudzysłowu jest nazwą kolumny, a wartość wyszukiwania musi być ciągiem ujętym w cudzysłów. 
+W Splunk można pominąć słowo kluczowe `search` i określić ciąg nieujęty w cudzysłów. W Azure Monitor należy uruchomić każde zapytanie z `find`, ciąg bez cudzysłowu jest nazwą kolumny, a wartość wyszukiwania musi być ciągiem ujętym w cudzysłów. 
 
 | |  | |
 |:---|:---|:---|
@@ -86,7 +85,7 @@ Zapytania dziennika Azure Monitor rozpoczynają się od tabelarycznego zestawu w
 
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>Pobieranie n zdarzeń/wierszy do inspekcji 
-Zapytania dziennika Azure Monitor obsługują również `take` jako alias `limit`. W Splunk, jeśli wyniki są uporządkowane, `head` zwróci pierwsze n wyników. W Azure Monitor, limit nie jest uporządkowany, ale zwraca pierwsze n znalezionych wierszy.
+Zapytania dziennika Azure Monitor obsługują również `take` jako alias do `limit`. W Splunk, jeśli wyniki są uporządkowane, `head` zwróci pierwsze n wyników. W Azure Monitor, limit nie jest uporządkowany, ale zwraca pierwsze n znalezionych wierszy.
 
 | |  | |
 |:---|:---|:---|
@@ -97,7 +96,7 @@ Zapytania dziennika Azure Monitor obsługują również `take` jako alias `limit
 
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>Pobieranie pierwszych n zdarzeń/wierszy uporządkowanych według pola/kolumny
-W przypadku końcowych wyników w Splunk jest używana `tail`. W Azure Monitor można określić kierunek porządkowania z `asc`.
+W przypadku końcowych wyników w Splunk używany `tail`. W Azure Monitor można określić kierunek porządkowania z `asc`.
 
 | |  | |
 |:---|:---|:---|
@@ -119,7 +118,7 @@ Splunk ma również funkcję `eval`, która nie jest porównywalna z operatorem 
 
 
 ### <a name="rename"></a>Zmiana nazwy 
-Azure Monitor używa operatora `project-rename`, aby zmienić nazwę pola. `project-rename` umożliwia wykonywanie zapytania z wykorzystaniem wstępnie skompilowanych indeksów dla pola. Splunk ma operator `rename`, aby wykonać tę samą czynność.
+Azure Monitor używa operatora `project-rename`, aby zmienić nazwę pola. `project-rename` zezwala, aby zapytanie korzystało ze wszystkich indeksów wstępnie skompilowanych dla pola. Splunk ma operator `rename`, aby zrobić to samo.
 
 | |  | |
 |:---|:---|:---|
@@ -131,12 +130,12 @@ Azure Monitor używa operatora `project-rename`, aby zmienić nazwę pola. `proj
 
 
 ### <a name="format-resultsprojection"></a>Formatuj wyniki/projekcję
-Splunk nie ma operatora podobnego do `project-away`. Za pomocą interfejsu użytkownika można odfiltrować pola.
+Splunk prawdopodobnie nie ma operatora podobnego do `project-away`. Za pomocą interfejsu użytkownika można odfiltrować pola.
 
 | |  | |
 |:---|:---|:---|
 | Splunk | **table** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Azure Monitor | **projektu**<br>**projekt — poza** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
+| Azure Monitor | **project**<br>**projekt — poza** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 | | |
 
 
@@ -168,7 +167,7 @@ W Splunk, aby sortować w kolejności rosnącej, należy użyć operatora `rever
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **porządku** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
+| Splunk | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
 | Azure Monitor | **Porządkuj według** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
 | | |
 
@@ -204,7 +203,7 @@ Zamiast tego można użyć `summarize arg_min()`, aby odwrócić kolejność wyb
 | |  | |
 |:---|:---|:---|
 | Splunk | **deduplikacji** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
-| Azure Monitor | **Podsumowanie arg_max ()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
+| Azure Monitor | **Podsumuj arg_max ()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 | | |
 
 

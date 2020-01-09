@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361669"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -36,7 +36,7 @@ Niektóre z kluczowych atrybutów niestandardowej funkcji HTTPS to:
 
 - Dostępne jest kompletne zarządzanie certyfikatami: użytkownik obsługuje wszystkie operacje nabywania certyfikatów i zarządzania nimi. Certyfikaty są automatycznie aprowizowane i odnawiane przed wygaśnięciem ważności, co powoduje wyeliminowanie ryzyka przerwania działania usługi z powodu wygaśnięcia ważności certyfikatu.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > - Włączanie protokołu HTTPS w domenie niestandardowej
 > - Używanie certyfikatu zarządzanego przez usługę CDN 
@@ -50,7 +50,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć profil usługi CDN i co najmniej jeden punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN](cdn-create-new-endpoint.md).
 
-Ponadto należy skojarzyć domenę niestandardową usługi Azure CDN w punkcie końcowym usługi CDN. Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie domeny niestandardowej do punktu końcowego usługi Azure CDN](cdn-map-content-to-custom-domain.md) 
+Ponadto należy skojarzyć domenę niestandardową usługi Azure CDN w punkcie końcowym usługi CDN. Aby uzyskać więcej informacji, zobacz [Samouczek: Dodawanie domeny niestandardowej do punktu końcowego Azure CDN](cdn-map-content-to-custom-domain.md).
 
 > [!IMPORTANT]
 > Certyfikaty zarządzane przez usługę CDN nie są dostępne dla domen głównych lub nadrzędnych. Jeśli Azure CDN domena niestandardowa jest domeną katalogu głównego lub wierzchołka, należy użyć funkcji Przenieś własny certyfikat. 
@@ -68,27 +68,29 @@ W przypadku korzystania z certyfikatu zarządzanego przez usługę Azure CDN mo�
 
 Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące kroki:
 
-1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do profilu usługi **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon**.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby znaleźć certyfikat zarządzany przez Azure CDN. Wyszukaj i wybierz pozycję **Profile sieci CDN**. 
 
-2. Na liście punktów końcowych usługi CDN wybierz punkt końcowy zawierający domenę niestandardową.
+2. Wybierz **standard Azure CDN firmy Microsoft**, **Azure CDN Standard from Akamai**, **Azure CDN Standard from Verizon**lub **Azure CDN Premium z profilu Verizon** .
+
+3. Na liście punktów końcowych usługi CDN wybierz punkt końcowy zawierający domenę niestandardową.
 
     ![Lista punktów końcowych](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
     Zostanie wyświetlona strona **Punkt końcowy**.
 
-3. Na liście domen niestandardowych wybierz domenę niestandardową, dla której chcesz włączyć protokół HTTPS.
+4. Na liście domen niestandardowych wybierz domenę niestandardową, dla której chcesz włączyć protokół HTTPS.
 
     ![Lista domen niestandardowych](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     Zostanie wyświetlona strona **Domena niestandardowa**.
 
-4. W obszarze typu zarządzania certyfikatem wybierz pozycję **Zarządzany przez usługę CDN**.
+5. W obszarze typu zarządzania certyfikatem wybierz pozycję **Zarządzany przez usługę CDN**.
 
-5. Wybierz pozycję **Wł.** , aby włączyć protokół HTTPS.
+6. Wybierz pozycję **Wł.** , aby włączyć protokół HTTPS.
 
     ![Stan protokołu HTTPS domeny niestandardowej](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
-6. Przejdź do kroku [Weryfikowanie domeny](#validate-the-domain).
+7. Przejdź do kroku [Weryfikowanie domeny](#validate-the-domain).
 
 
 # <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[Opcja 2: włączanie funkcji HTTPS przy użyciu własnego certyfikatu](#tab/option-2-enable-https-with-your-own-certificate)
@@ -134,7 +136,7 @@ Udziel usłudze Azure CDN uprawnień dostępu do certyfikatów (wpisów tajnych)
 
 4. Wybierz pozycję **uprawnienia tajne**, a następnie zaznacz pola wyboru dla opcji **Pobierz** i **Wyświetl** , aby umożliwić usłudze CDN wykonywanie tych uprawnień w celu uzyskania i wyświetlenia wpisów tajnych.
 
-5. Wybierz **OK**. 
+5. Kliknij przycisk **OK**. 
 
     Usługa Azure CDN ma teraz dostęp do tego magazynu kluczy i certyfikatów (kluczy tajnych), które są przechowywane w tym magazynie kluczy.
  
@@ -204,7 +206,7 @@ webmaster@&lt;nazwa-domeny.com&gt;
 hostmaster@&lt;nazwa-domeny.com&gt;  
 postmaster@&lt;nazwa-domeny.com&gt;  
 
-W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, dodaj verification@digicert.com do jego listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
+W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj verification@digicert.com do listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
     
 ![Wiadomość e-mail dotycząca weryfikacji domeny](./media/cdn-custom-ssl/domain-validation-email.png)
 
@@ -260,15 +262,17 @@ W poprzednich krokach protokół HTTPS został włączony w domenie niestandardo
 
 ### <a name="disable-the-https-feature"></a>Wyłączanie funkcji protokołu HTTPS 
 
-1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do profilu usługi **Azure CDN Standard from Microsoft**, **Azure CDN Standard from Verizon** lub **Azure CDN Premium from Verizon**.
+1. W [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję profile sieci **CDN**. 
 
-2. Na liście punktów końcowych kliknij punkt końcowy zawierający domenę niestandardową.
+2. Wybierz **standard Azure CDN firmy Microsoft**, **Azure CDN Standard from Verizon**lub **Azure CDN Premium z poziomu profilu Verizon** .
 
-3. Kliknij domenę niestandardową, w której chcesz wyłączyć protokół HTTPS.
+3. Na liście punktów końcowych wybierz punkt końcowy zawierający domenę niestandardową.
+
+4. Wybierz domenę niestandardową, dla której chcesz wyłączyć protokół HTTPS.
 
     ![Lista domen niestandardowych](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. Kliknij pozycję **Wył.** , aby wyłączyć protokół HTTPS, a następnie kliknij pozycję **Zastosuj**.
+5. Wybierz opcję **Wyłącz** , aby wyłączyć protokół https, a następnie wybierz pozycję **Zastosuj**.
 
     ![Okno niestandardowego protokołu HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
@@ -316,7 +320,7 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 
 7. *Jak działają odnowienia certyfikatów przy użyciu pakietu do przenoszenia własnego certyfikatu?*
 
-    Aby zapewnić, że nowszy certyfikat zostanie wdrożony w infrastrukturze PoP, po prostu Przekaż nowy certyfikat do magazynu kluczy platformy Azure, a następnie w ustawieniach protokołu SSL na Azure CDN wybierz najnowszą wersję certyfikatu i kliknij przycisk Zapisz. Azure CDN następnie propogate nowy zaktualizowany certyfikat. 
+    Aby zapewnić, że nowszy certyfikat zostanie wdrożony w infrastrukturze PoP, po prostu Przekaż nowy certyfikat do magazynu kluczy platformy Azure, a następnie w ustawieniach protokołu SSL na Azure CDN wybierz najnowszą wersję certyfikatu i kliknij przycisk Zapisz. Azure CDN następnie będzie propagowany nowy zaktualizowany certyfikat. 
 
 ## <a name="next-steps"></a>Następne kroki
 

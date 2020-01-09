@@ -4,15 +4,15 @@ description: Za pomocą Azure Monitor można użyć rozwiązania sprawdzania kon
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 7808ead7ec4191bdf17e3ab225aeaa909abd7d08
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900677"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401030"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Zoptymalizuj środowisko SQL za pomocą rozwiązania do sprawdzania kondycji SQL Server w Azure Monitor
 
@@ -34,7 +34,7 @@ Po dodaniu rozwiązania i zakończeniu oceny informacje podsumowujące dotycząc
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Rozwiązanie sprawdzania kondycji SQL wymaga obsługiwanej wersji programu .NET Framework 4 zainstalowanej na każdym komputerze, na którym zainstalowano Microsoft Monitoring Agent (MMA).  Agent MMA jest używany przez program System Center 2016 — Operations Manager i Operations Manager 2012 R2 i Azure Monitor.  
+* Rozwiązanie sprawdzania kondycji SQL wymaga obsługiwanej wersji programu .NET Framework 4.6.2 zainstalowanej na każdym komputerze, na którym zainstalowano Microsoft Monitoring Agent (MMA).  Agent MMA jest używany przez program System Center 2016 — Operations Manager i Operations Manager 2012 R2 i Azure Monitor.  
 * Rozwiązanie obsługuje SQL Server w wersji 2012, 2014 i 2016.
 * Log Analytics obszar roboczy, aby dodać rozwiązanie sprawdzania kondycji SQL z witryny Azure Marketplace w Azure Portal.  Aby można było zainstalować rozwiązanie, musisz być administratorem lub współautorem w subskrypcji platformy Azure.
 
@@ -47,7 +47,7 @@ Aby przeprowadzić kontrolę kondycji na serwerach SQL Server, wymagają one age
 
 1. Zainstaluj [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) , jeśli serwer nie jest jeszcze monitorowany przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
 2. Jeśli jest on monitorowany w programie System Center 2016 — Operations Manager lub Operations Manager 2012 R2, a grupa zarządzania nie jest zintegrowana z Azure Monitor, serwer może być wieloadresowy z Log Analytics do zbierania danych i przekazywania ich do usługi i nadal monitorowane przez Operations Manager.  
-3. W przeciwnym razie, jeśli grupa zarządzania Operations Manager jest zintegrowana z usługą, należy dodać kontrolery domeny dla zbierania danych przez usługę zgodnie z instrukcjami w obszarze [Dodawanie komputerów zarządzanych przez agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w obszary.  
+3. W przeciwnym razie, jeśli grupa zarządzania Operations Manager jest zintegrowana z usługą, należy dodać kontrolery domeny dla zbierania danych przez usługę zgodnie z instrukcjami w obszarze [Dodawanie komputerów zarządzanych przez agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w obszarze roboczym.  
 
 Agent na SQL Server, który raportuje do Operations Manager grupy zarządzania, zbiera dane, przesyła dalej do przypisanego do niego serwera zarządzania, a następnie jest wysyłany bezpośrednio z serwera zarządzania do Azure Monitor.  Dane nie są zapisywane w Operations Manager bazach danych.  
 
@@ -56,7 +56,7 @@ Jeśli SQL Server jest monitorowane przez Operations Manager, należy skonfiguro
 ## <a name="sql-health-check-data-collection-details"></a>Szczegóły zbierania danych sprawdzania kondycji SQL
 Sprawdzenie kondycji SQL zbiera dane z następujących źródeł przy użyciu dostępnego agenta:
 
-* Instrumentacja zarządzania Windows (WMI)
+* Windows Management Instrumentation (WMI)
 * Rejestr
 * Liczniki wydajności
 * SQL Server dynamiczne wyniki widoku zarządzania
@@ -79,14 +79,14 @@ Poniższe informacje służą do ustawiania konta Uruchom jako Operations Manage
 
 1. W Operations Manager Otwórz konsolę operacje, a następnie kliknij pozycję **Administracja**.
 2. W obszarze **Konfiguracja Uruchom jako**kliknij pozycję **Profile**, a następnie otwórz **SQL Assessment profil Uruchom jako**.
-3. Na stronie **konta Uruchom jako** kliknij przycisk **Dodaj**.
+3. Na stronie **Konta Uruchom jako** kliknij pozycję **Dodaj**.
 4. Wybierz konto Uruchom jako systemu Windows zawierające poświadczenia potrzebne do SQL Server lub kliknij pozycję **Nowy** , aby je utworzyć.
 
    > [!NOTE]
    > Typ konta Uruchom jako musi być w systemie Windows. Konto Uruchom jako musi być również częścią lokalnej grupy administratorów na wszystkich serwerach z systemem Windows hostującym wystąpienia SQL Server.
    >
    >
-5. Kliknij przycisk **Save** (Zapisz).
+5. Kliknij pozycję **Zapisz**.
 6. Zmodyfikuj i wykonaj następujące przykładowe polecenie T-SQL na każdym wystąpieniu SQL Server, aby przyznać minimalnym uprawnieniam wymaganym dla konta Uruchom jako, aby przeprowadzić kontrolę kondycji. Nie trzeba jednak tego robić, jeśli konto Uruchom jako jest już częścią roli serwera sysadmin w SQL Server wystąpieniach.
 
 ```
@@ -143,7 +143,7 @@ Waga dla każdego zalecenia jest wyrażona jako wartość procentowa łącznego 
 
 **Operacje i monitorowanie** — ten obszar koncentracji pokazuje zalecenia ułatwiające usprawnienie operacji IT, implementowanie konserwacji zapobiegawczej i maksymalizowanie wydajności.
 
-**Zarządzanie zmianami i konfiguracją** — ten obszar skupiania zawiera zalecenia pomagające w ochronie codziennych operacji. Upewnij się, że zmiany nie wpłyną negatywnie na infrastrukturę, ustal procedury kontroli zmian i śledź i Przeprowadź inspekcję systemu komputerów.
+**Zarządzanie zmianami i konfiguracją** — ten obszar skupiania zawiera zalecenia pomagające w ochronie codziennych operacji. Upewnij się, że zmiany nie wpłyną negatywnie na infrastrukturę, ustal procedury kontroli zmian oraz do śledzenia i inspekcji konfiguracji systemu.
 
 ### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Czy chcesz zwrócić uwagę na 100% w każdym obszarze fokusu?
 Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczeniach zdobytych przez inżynierów firmy Microsoft w tysiącach wizyt klientów. Jednak żadne dwie infrastruktury serwera nie są takie same, a konkretne zalecenia mogą być bardziej lub mniej odpowiednie dla użytkownika. Na przykład niektóre zalecenia dotyczące zabezpieczeń mogą być mniej istotne, jeśli maszyny wirtualne nie są dostępne w Internecie. Niektóre zalecenia dotyczące dostępności mogą być mniej istotne w przypadku usług zapewniających zbieranie i raportowanie danych ad hoc o niskim priorytecie. Problemy, które są ważne dla dorosłych firm, mogą być mniej ważne do uruchomienia. Możesz chcieć określić, które obszary koncentracji są priorytetami, a następnie sprawdzić, jak wyniki zmieniają się wraz z upływem czasu.
@@ -214,7 +214,7 @@ Jeśli masz zalecenia, które chcesz zignorować, możesz utworzyć plik tekstow
 
 *Jaka jest nazwa procesu, który wykonuje zbieranie danych?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Jak długo trwa zbieranie danych?*
 

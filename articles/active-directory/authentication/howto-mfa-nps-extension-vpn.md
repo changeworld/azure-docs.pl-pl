@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425399"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA przy użyciu rozszerzenia serwera zasad sieciowych dla platformy Azure
 
@@ -326,13 +326,13 @@ W ramach konfiguracji rozszerzenia serwera NPS należy podać poświadczenia adm
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny dzierżawy platformy Azure.
 
-2. W lewym okienku wybierz przycisk **Azure Active Directory** .
+2. W menu Azure Portal wybierz pozycję **Azure Active Directory**lub Wyszukaj i wybierz pozycję **Azure Active Directory** z dowolnej strony.
 
 3. Wybierz pozycję **Właściwości**.
 
 4. Aby skopiować identyfikator usługi Azure AD, wybierz przycisk **Kopiuj** .
 
-    ![Identyfikator katalogu usługi Azure AD w Azure Portal](./media/howto-mfa-nps-extension-vpn/image35.png)
+    ![Identyfikator katalogu usługi Azure AD w Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Instalowanie rozszerzenia serwera NPS
 

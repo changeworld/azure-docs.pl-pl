@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445264"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrowanie kontenerów bez partycjonowania do kontenerów partycjonowanych
 
@@ -117,6 +117,14 @@ Aby zapoznać się z kompletnym przykładem na temat ponownego partycjonowania d
 Starsza wersja zestawów SDK Azure Cosmos DB, takich jak v2. x. x i v1. x. x, nie obsługuje właściwości klucza partycji zdefiniowanej przez system. Dlatego w przypadku odczytywania definicji kontenera ze starszego zestawu SDK nie zawiera ona żadnej definicji klucza partycji i te kontenery będą działać dokładnie tak jak wcześniej. Aplikacje skompilowane przy użyciu starszej wersji zestawów SDK nadal pracują z niepodzielonym na partycje bez żadnych zmian. 
 
 Jeśli migrowany kontener jest używany przez najnowszą wersję zestawu SDK/v3 i rozpoczęto zapełnianie zdefiniowanego przez system klucza partycji w ramach nowych dokumentów, nie można już uzyskać dostępu do tych dokumentów ze starszych zestawów SDK.
+
+## <a name="known-issues"></a>Znane problemy
+
+**Wykonywanie zapytania dotyczącego liczby elementów, które zostały wstawione bez klucza partycji przy użyciu zestawu SDK v3, może wymagać wyższego zużycia przepływności**
+
+W przypadku wykonywania zapytań z zestawu v3 SDK dla elementów, które są wstawiane przy użyciu zestawu SDK V2 lub elementów wstawionych przy użyciu zestawu v3 SDK z parametrem `PartitionKey.None`, zapytanie Count może zużywać więcej RU/s, jeśli parametr `PartitionKey.None` został podany w FeedOptions. Firma Microsoft zaleca, aby nie podawać parametru `PartitionKey.None`, jeśli żadne inne elementy nie są wstawiane z kluczem partycji.
+
+Jeśli nowe elementy są wstawiane z różnymi wartościami klucza partycji, zapytanie o takie liczby elementów przez przekazanie odpowiedniego klucza w `FeedOptions` nie spowoduje żadnych problemów. Po wstawieniu nowych dokumentów z kluczem partycji, jeśli trzeba wykonać zapytanie tylko o liczbę dokumentów bez wartości klucza partycji, zapytanie może ponownie ponieść wyższy poziom RU/s podobne do regularnych kolekcji partycjonowanych.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,20 +1,21 @@
 ---
 title: Kompilowanie i wdrażanie aplikacji node. js Express na platformie Azure Cloud Services
+titleSuffix: Azure Cloud Services
 description: Kompilowanie i wdrażanie aplikacji Express. js w języku Node. js na platformie Azure Cloud Services
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360756"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Kompilowanie i wdrażanie aplikacji sieci Web w języku Node. js przy użyciu języka Express na platformie Azure Cloud Services
 
@@ -33,7 +34,7 @@ Wykonaj następujące kroki, aby utworzyć nowy projekt usługi w chmurze o nazw
 1. W **menu Start** lub **Start ekranu**Wyszukaj program **Windows PowerShell**. Na koniec kliknij prawym przyciskiem myszy program **Windows PowerShell** i wybierz polecenie **Uruchom jako administrator**.
    
     ![Ikona Azure PowerShell](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
-2. Zmień katalogi na katalog **c:\\Node** , a następnie wprowadź następujące polecenia, aby utworzyć nowe rozwiązanie o nazwie **expressapp** i rolę sieci Web o nazwie **WebRole1**:
+2. Zmień katalogi na katalog **c:\\węzła** , a następnie wprowadź następujące polecenia, aby utworzyć nowe rozwiązanie o nazwie **expressapp** i rolę sieci Web o nazwie **WebRole1**:
    
         PS C:\node> New-AzureServiceProject expressapp
         PS C:\Node\expressapp> Add-AzureNodeWebRole
@@ -44,7 +45,7 @@ Wykonaj następujące kroki, aby utworzyć nowy projekt usługi w chmurze o nazw
     > 
     > 
 
-## <a name="install-express"></a>Zainstaluj program Express
+## <a name="install-express"></a>Instalowanie platformy Express
 1. Zainstaluj Generator ekspresowy, wydając następujące polecenie:
    
         PS C:\node\expressapp> npm install express-generator -g
@@ -93,10 +94,10 @@ Zmodyfikuj teraz widok, aby wyświetlić komunikat "Witaj do Express na platform
    
    ![Zawartość pliku index. Jade.](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade jest domyślnym aparatem wyświetlania używanym przez aplikacje Express. Aby uzyskać więcej informacji na temat aparatu widoku Jade, [http://jade-lang.com][http://jade-lang.com]Zobacz.
+   Jade jest domyślnym aparatem wyświetlania używanym przez aplikacje Express. Aby uzyskać więcej informacji na temat aparatu widoku Jade, zobacz [http://jade-lang.com][http://jade-lang.com].
 2. Modyfikuj ostatni wiersz tekstu przez dołączenie **na platformie Azure**.
    
-   ![Plik index. Jade, Ostatni odczyt wiersza: p Witamy \#w {title} na platformie Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
+   ![Plik index. Jade, ostatni wiersz odczytuje: p Witamy w \#{title} na platformie Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. Zapisz plik i zamknij Notatnik.
 4. Odśwież przeglądarkę i zobaczysz zmiany.
    
@@ -119,5 +120,8 @@ Aby uzyskać więcej informacji, odwiedź stronę [Centrum deweloperów środowi
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
+
+
+
 
 

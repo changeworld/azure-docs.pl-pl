@@ -1,5 +1,5 @@
 ---
-title: Automatyzacja procesów Application Insights platformy Azure przy użyciu Logic Apps.
+title: Automatyzacja procesów Application Insights platformy Azure przy użyciu Logic Apps
 description: Dowiedz się, jak szybko zautomatyzować powtarzalne procesy przez dodanie łącznika Application Insights do aplikacji logiki.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407531"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatyzacja procesów Application Insights przy użyciu Logic Apps
 
@@ -63,7 +63,7 @@ Podaj nazwę połączenia, identyfikator aplikacji i klucz interfejsu API.
 ![Okno połączenia przepływu projektanta aplikacji logiki](./media/automate-with-logic-apps/7connection.png)
 
 ### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5. Określanie typu zapytania i wykresu analitycznego
-W poniższym przykładzie zapytanie wybiera żądania zakończone niepowodzeniem w ciągu ostatniego dnia i skorelowane z wyjątkami, które wystąpiły w ramach operacji. Analiza skorelowana z niepomyślnymi żądaniami na podstawie identyfikatora parametrów. Kwerenda następnie segmentuje wyniki przy użyciu algorytmu Autocluster. 
+W poniższym przykładzie zapytanie wybiera żądania zakończone niepowodzeniem w ciągu ostatniego dnia i skorelowane z wyjątkami, które wystąpiły w ramach operacji. Analiza skorelowana z niepomyślnymi żądaniami na podstawie identyfikatora operation_Id. Kwerenda następnie segmentuje wyniki przy użyciu algorytmu Autocluster. 
 
 Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w analizie, zanim dodasz ją do przepływu.
 
@@ -119,7 +119,7 @@ Podczas tworzenia własnych zapytań Sprawdź, czy działają prawidłowo w anal
       ![Ekran konfiguracji poczty e-mail pakietu Office 365](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>Krok 7. Zapisywanie i testowanie aplikacji logiki
-* Kliknij przycisk **Zapisz** , aby zapisać zmiany.
+* Kliknij przycisk **Zapisz** Aby zapisać zmiany.
 
 Możesz poczekać na uruchomienie aplikacji logiki przez wyzwalacz lub uruchomić aplikację logiki natychmiast, wybierając pozycję **Uruchom**.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364088"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wysyłanie metryk systemu operacyjnego gościa do Azure Monitor magazynu metryk przy użyciu szablonu Azure Resource Manager dla zestawu skalowania maszyn wirtualnych z systemem Windows
 
@@ -23,7 +23,7 @@ Korzystając z rozszerzenia Azure Monitor [Windows Diagnostyka Azure (funkcji wa
 
 W tym artykule opisano proces wysyłania metryk wydajności systemu operacyjnego gościa dla zestawu skalowania maszyn wirtualnych z systemem Windows do magazynu danych Azure Monitor. Począwszy od systemu Windows Diagnostyka Azure w wersji 1,11, można pisać metryki bezpośrednio do magazynu metryk Azure Monitor, gdzie standardowe metryki platformy są już zbierane. Przechowywanie ich w tej lokalizacji pozwala uzyskać dostęp do tych samych akcji, które są dostępne dla metryk platformy. Akcje obejmują generowanie alertów niemal w czasie rzeczywistym, tworzenie wykresów, routing, dostęp z interfejsu API REST i nie tylko. W przeszłości rozszerzenie systemu Windows Diagnostyka Azure zostało napisane do usługi Azure Storage, ale nie do Azure Monitor magazynu danych.  
 
-Jeśli jesteś nowym szablonem Menedżer zasobów, Dowiedz się więcej na temat [wdrożeń szablonów](../../azure-resource-manager/resource-group-overview.md) oraz ich struktury i składni.  
+Jeśli jesteś nowym szablonem Menedżer zasobów, Dowiedz się więcej na temat [wdrożeń szablonów](../../azure-resource-manager/management/overview.md) oraz ich struktury i składni.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

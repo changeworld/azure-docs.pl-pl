@@ -2,17 +2,17 @@
 title: Automatyczne skalowanie usługi w chmurze w portalu | Microsoft Docs
 description: Dowiedz się, jak za pomocą portalu skonfigurować reguły automatycznego skalowania dla roli sieci Web lub roli procesu roboczego usługi w chmurze na platformie Azure.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360841"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak skonfigurować Skalowanie automatyczne dla usługi w chmurze w portalu
 
@@ -41,7 +41,7 @@ Przed skonfigurowaniem skalowania aplikacji należy wziąć pod uwagę następuj
 Po wybraniu usługi w chmurze powinien być widoczny blok usługi w chmurze.
 
 1. W bloku usługa w chmurze na kafelku **role i wystąpienia** wybierz nazwę usługi w chmurze.   
-   **WAŻNE**: Pamiętaj, aby kliknąć rolę usługi w chmurze, a nie wystąpienia roli znajdującego się poniżej roli.
+   **Ważne**: Pamiętaj, aby kliknąć rolę usługi w chmurze, a nie wystąpienia roli znajdującego się poniżej roli.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Wybierz kafelek **Skala** .
@@ -66,7 +66,7 @@ Po skonfigurowaniu profilu i reguł Wybierz ikonę **Zapisz** u góry.
 #### <a name="profile"></a>Profil
 Profil ustawia minimalne i maksymalne wystąpienia skali, a także wtedy, gdy ten zakres skali jest aktywny.
 
-* **Stałego**
+* **Always** (Zawsze)
 
     Zawsze zachowuj dostęp do tego zakresu wystąpień.  
 
@@ -105,3 +105,6 @@ To ustawienie powoduje usunięcie automatycznego skalowania z roli, a następnie
 3. Wystąpienia roli do skalowania.
 
 Po skonfigurowaniu ustawień skalowania wybierz ikonę **Zapisz** u góry.
+
+
+

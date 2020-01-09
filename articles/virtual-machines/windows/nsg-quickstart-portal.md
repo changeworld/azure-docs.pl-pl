@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371415"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Jak otworzyć porty na maszynie wirtualnej przy użyciu Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
@@ -85,5 +85,5 @@ W przypadku aplikacji sieci Web o wysokiej dostępności Rozważ umieszczenie ma
 W tym artykule utworzono sieciową grupę zabezpieczeń, utworzoną regułę ruchu przychodzącego, która zezwala na ruch HTTP na porcie 80, a następnie skojarzono tę regułę z podsiecią. 
 
 Informacje na temat tworzenia bardziej szczegółowych środowisk można znaleźć w następujących artykułach:
-- [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+- [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 - [Grupy zabezpieczeń](../../virtual-network/security-overview.md)

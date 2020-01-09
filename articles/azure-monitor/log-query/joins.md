@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900280"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397843"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Sprzężenia w kwerendach dziennika Azure Monitor
 
@@ -83,13 +83,13 @@ Określ typ sprzężenia z argumentem _rodzaju_ . Każdy typ wykonuje różne do
 | Typ sprzężenia | Opis |
 |:---|:---|
 | innerunique | Jest to domyślny tryb sprzężenia. Najpierw zostaną znalezione wartości dopasowanej kolumny z lewej tabeli, a zduplikowane wartości są usuwane.  Następnie zestaw unikatowych wartości jest dopasowywany do prawej tabeli. |
-| fabryk | Tylko pasujące rekordy w obu tabelach są uwzględniane w wynikach. |
+| wewnętrzne | Tylko pasujące rekordy w obu tabelach są uwzględniane w wynikach. |
 | leftouter | Wszystkie rekordy w tabeli po lewej i pasujące rekordy w prawej tabeli są zawarte w wynikach. Niedopasowane właściwości wyjściowe zawierają wartości null.  |
 | leftanti | Rekordy z lewej strony, które nie mają dopasowań z prawej strony, są zawarte w wynikach. Tabela wyników zawiera tylko kolumny z tabeli po lewej. |
 | leftsemi | Rekordy z lewej strony, które mają dopasowania od prawej strony, są zawarte w wynikach. Tabela wyników zawiera tylko kolumny z tabeli po lewej. |
 
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 
 W celu uzyskania optymalnej wydajności należy rozważyć następujące kwestie:
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429120"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Wzbogacanie komunikatów dla komunikatów IoT Hub między urządzeniami a chmurą
 
@@ -54,7 +54,7 @@ Komunikaty mogą pochodzić z dowolnego źródła danych obsługiwanego przez [I
 
 Można dodawać wzbogacenia do komunikatów, które przechodzą do wbudowanego punktu końcowego IoT Hub, lub komunikatów, które są kierowane do niestandardowych punktów końcowych, takich jak Azure Blob Storage, Service Bus Queue lub Service Bus temat.
 
-Można dodać wzbogacanie do komunikatów, które są publikowane w Event Grid przez wybranie punktu końcowego jako Event Grid. Utworzymy domyślną trasę w IoT Hub do telemetrii urządzenia w oparciu o subskrypcję Event Grid. Ta pojedyncza trasa może obsłużyć wszystkie subskrypcje Event Grid. Można skonfigurować wzbogacenia usługi Event Grid (punkt po utworzeniu subskrypcji usługi Event Grid do telemetrii urządzenia). Aby uzyskać więcej informacji, zobacz [Centrum IoT i Event Grid](iot-hub-event-grid.md).
+Można dodać wzbogacanie do komunikatów, które są publikowane w Event Grid przez wybranie punktu końcowego jako Event Grid. Utworzymy domyślną trasę w IoT Hub do telemetrii urządzenia w oparciu o subskrypcję Event Grid. Ta pojedyncza trasa może obsłużyć wszystkie subskrypcje Event Grid. Można skonfigurować wzbogacenia punktu końcowego usługi Event Grid po utworzeniu subskrypcji usługi Event Grid na potrzeby telemetrii urządzenia. Aby uzyskać więcej informacji, zobacz [Centrum IoT i Event Grid](iot-hub-event-grid.md).
 
 Wzbogacania są stosowane w odniesieniu do punktu końcowego. Jeśli określisz pięć wzbogaceń dla określonego punktu końcowego, wszystkie komunikaty przechodzą do tego punktu końcowego będą znakowane z tymi samymi pięcioma wzbogacaniem.
 
@@ -64,7 +64,7 @@ Wzbogacania można skonfigurować przy użyciu następujących metod:
 | ----- | -----| 
 | Portal | [Azure Portal](https://portal.azure.com) | Zapoznaj się z [samouczkiem dotyczącym wzbogacania komunikatów](tutorial-message-enrichments.md) | 
 | Interfejs wiersza polecenia platformy Azure   | [AZ IoT Hub Message-wzbogacanie](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
-| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
+| Program Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 
 Dodanie wzbogacania komunikatów nie powoduje dodania opóźnienia do routingu komunikatów.
 

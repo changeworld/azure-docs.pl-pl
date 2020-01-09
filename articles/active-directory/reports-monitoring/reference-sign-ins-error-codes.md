@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429485"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -36,9 +36,13 @@ Gdy logowanie nie powiedzie się, zostanie wyświetlony kod błędu odpowiadają
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>Jak mogę wyświetlić nieudane operacje logowania? 
 
-Przejdź do [raportu logowania](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) w [Azure Portal](https://portal.azure.com).
+W menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Azure Active Directory**lub wyszukaj i wybierz pozycję **Azure Active Directory** z dowolnej strony.
 
-![Aktywność logowania](./media/reference-sign-ins-error-codes/61.png "Aktywność związana z logowaniem")
+![Wybierz Azure Active Directory](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Usługa Active Directory systemu Azure")
+
+W obszarze **monitorowanie**wybierz pozycję **logowania** , aby otworzyć [raport logowania](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
+
+![Aktywność logowania](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "Aktywność związana z logowaniem")
 
 Przefiltruj raport, aby wyświetlić wszystkie nieudane logowania, wybierając pozycję **Niepowodzenie** w polu listy rozwijanej **Stan logowania** .
 
@@ -179,7 +183,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |90010|Żądanie nie jest obsługiwane z różnych powodów. Na przykład żądanie jest wykonywane za pomocą nieobsługiwanej metody żądania (obsługiwana jest tylko Metoda POST) lub algorytm podpisywania tokenu, którego zażądano, nie jest obsługiwany. Skontaktuj się z deweloperem aplikacji.|
 |90014| Brak wymaganego pola dla komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że masz wszystkie wymagane parametry dla żądania logowania. |
 |90051| Nieprawidłowy token delegowania. Określono nieprawidłowy identyfikator chmury krajowej ({cloudId}).|
-|90072| Konto musi zostać najpierw dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
+|90072| Konto musi najpierw zostać dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
 |90094| Przydzielenie wymaga uprawnień administratora. Poproszenie administratora dzierżawy o zgodę na tę aplikację.|
 |500011| Nie znaleziono podmiotu zabezpieczeń o nazwie <site address> w dzierżawie o nazwie <tenant ID>. Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy.|
 |500021| Dzierżawca jest ograniczony przez firmowy serwer proxy. Odmawianie dostępu do zasobów.|

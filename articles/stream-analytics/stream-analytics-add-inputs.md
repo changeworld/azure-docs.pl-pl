@@ -1,46 +1,45 @@
 ---
-title: Zrozumienie danych wejściowych usługi Azure Stream Analytics
-description: W tym artykule opisano pojęcia danych wejściowych w zadaniu usługi Azure Stream Analytics, porównywanie przesyłania strumieniowego danych wejściowych wejściowych danych referencyjnych.
-services: stream-analytics
+title: Informacje o danych wejściowych dla Azure Stream Analytics
+description: W tym artykule opisano koncepcję danych wejściowych w zadaniu Azure Stream Analytics, porównując dane wejściowe przesyłania strumieniowego z danymi wejściowymi.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 87e260c97a748807929a0e7021e3efb2ae8f8e7b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426429"
 ---
-# <a name="understand-inputs-for-azure-stream-analytics"></a>Zrozumienie danych wejściowych usługi Azure Stream Analytics
+# <a name="understand-inputs-for-azure-stream-analytics"></a>Informacje o danych wejściowych dla Azure Stream Analytics
 
-Zadania usługi Azure Stream Analytics nawiązać połączenia danych wejściowych. Każdy dane wejściowe definiuje połączenie się z istniejącym źródłem danych. Stream Analytics akceptuje przychodzące dane z kilku rodzajów źródeł zdarzeń, w tym usługi Event Hubs, IoT Hub i Blob storage. Dane wejściowe odwołuje się nazwa wymienionej w kwerendzie SQL przesyłania strumieniowego, które piszesz dla każdego zadania. W zapytaniu Dołącz do wielu danych wejściowych mieszania danych lub do porównywania danych przesyłanych strumieniowo z wyszukiwania z danymi referencyjnymi i przekazywać wyniki do danych wyjściowych. 
+Azure Stream Analytics zadania łączą się z jednym lub wieloma danymi wejściowymi. Każde wejście definiuje połączenie z istniejącym źródłem danych. Stream Analytics akceptuje dane przychodzące z kilku rodzajów źródeł zdarzeń, w tym Event Hubs, IoT Hub i magazynu obiektów BLOB. Dane wejściowe są przywoływane przez nazwę w kwerendzie SQL przesyłania strumieniowego, które należy napisać dla każdego zadania. W zapytaniu można sprzęgać wiele danych wejściowych z danymi mieszanymi lub porównywać dane przesyłane strumieniowo z wyszukiwaniem w dane referencyjne i przekazywać wyniki do danych wyjściowych. 
 
-Stream Analytics ma najwyższej jakości Integracja z trzech rodzajów zasobów jako dane wejściowe:
+Stream Analytics ma integrację pierwszej klasy z trzema rodzajami zasobów jako danymi wejściowymi:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
 
-Te zasoby danych wejściowych może znajdować się w tej samej subskrypcji platformy Azure jako zadania usługi Stream Analytics lub z innej subskrypcji.
+Te zasoby wejściowe mogą być aktywne w ramach tej samej subskrypcji platformy Azure co zadanie Stream Analytics lub z innej subskrypcji.
 
-Możesz użyć [witryny Azure portal](stream-analytics-quick-create-portal.md#configure-job-input), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), i [programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md)do tworzenia, edytowania i przetestować dane wejściowe zadania usługi Stream Analytics.
+Za pomocą [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input), [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), [interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [interfejsu API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input)i [programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md) można tworzyć, edytować i testować dane wejściowe zadań Stream Analytics.
 
-## <a name="stream-and-reference-inputs"></a>Stream i odwołanie do danych wejściowych
-Ponieważ dane są wypychane do źródła danych, ma zużywane przez zadanie usługi Stream Analytics i przetwarzane w czasie rzeczywistym. Dane wejściowe są podzielone na dwa typy: dane strumienia danych wejściowych i odwoływać się do danych wejściowych.
+## <a name="stream-and-reference-inputs"></a>Dane wejściowe strumienia i odwołania
+Gdy dane są wypychane do źródła danych, są używane przez zadanie Stream Analytics i przetwarzane w czasie rzeczywistym. Istnieją dwa typy danych wejściowych: dane strumienia danych i dane referencyjne.
 
 ### <a name="data-stream-input"></a>Dane wejściowe strumienia danych
-Strumień danych jest niepowiązanego sekwencję zdarzeń, wraz z upływem czasu. Zadania usługi Stream Analytics mogą zawierać elementu wejściowego strumienia danych z co najmniej jeden. Usługa Event Hubs, IoT Hub i Blob storage są obsługiwane jako źródła wejściowego strumienia danych. Usługa Event Hubs są używane do zbierania strumieni zdarzeń z wielu urządzeń i usług. Te strumienie mogą obejmować, kanałów informacyjnych w mediach społecznościowych działania, handlu podstawowe informacje lub dane z czujników. Centra IoT Hub są zoptymalizowane do zbierania danych z połączonych urządzeń w scenariuszach Internetu rzeczy (IoT).  Magazyn obiektów blob może służyć jako źródło danych wejściowych dla zbiorczego dane są wprowadzane jako strumień, takich jak pliki dziennika.  
+Strumień danych to nieograniczona sekwencja zdarzeń w czasie. Zadania usługi Stream Analytics musza zawierać co najmniej jedne dane wejściowe strumienia danych. Jako źródła danych wejściowych strumienia danych są obsługiwane usługi Event Hubs, IoT Hub i Blob Storage. Event Hubs są używane do zbierania strumieni zdarzeń z wielu urządzeń i usług. Te strumienie mogą obejmować źródła działań mediów społecznościowych, informacje o handlu giełdowe lub dane z czujników. Centra IoT są zoptymalizowane pod kątem zbierania danych z połączonych urządzeń w scenariuszach Internet rzeczy (IoT).  Magazyn obiektów BLOB może być używany jako źródło danych wejściowych do pozyskiwania zbiorczych plików jako strumień, takich jak pliki dziennika.  
 
-Aby uzyskać więcej informacji na temat wejścia danych przesyłanych strumieniowo, zobacz [Stream dane jako dane wejściowe do usługi Stream Analytics](stream-analytics-define-inputs.md)
+Aby uzyskać więcej informacji na temat danych wejściowych przesyłania strumieniowego, zobacz [przesyłanie strumieniowe danych jako dane wejściowe do Stream Analytics](stream-analytics-define-inputs.md)
 
-### <a name="reference-data-input"></a>Wejściowych danych referencyjnych
-Stream Analytics obsługuje również znane jako dane wejściowe *dane referencyjne*. Dane referencyjne jest całkowicie statycznych lub zmieniają się powoli. Zazwyczaj służy do wykonywania korelacji i wyszukiwania. Na przykład można sprzęgnąć danych w wejściowego strumienia danych z danymi w danych referencyjnych, na ile wykona sprzężenie SQL, aby wyszukać wartości statyczne. Usługa Azure Blob storage i Azure SQL Database są obecnie obsługiwane jako źródeł danych wejściowych danych referencyjnych. Obiekty BLOB źródła danych referencyjnych mają limit wynosi 300 MB rozmiar, w zależności od złożoności zapytania i przydzielone jednostki przesyłania strumieniowego (zobacz [ograniczenie rozmiaru](stream-analytics-use-reference-data.md#size-limitation) części danych dokumentacji, aby uzyskać więcej informacji).
+### <a name="reference-data-input"></a>Dane wejściowe odwołania
+Stream Analytics obsługuje również dane wejściowe znane jako *informacje referencyjne*. Dane referencyjne są całkowicie statyczne lub zmieniają się powoli. Jest zazwyczaj używany do przeprowadzenia korelacji i wyszukiwania. Na przykład można przyłączyć dane danych wejściowych strumienia danych do danych w danych referencyjnych, podobnie jak w przypadku wykonywania sprzężenia SQL w celu wyszukania wartości statycznych. Magazyn obiektów blob platformy Azure i Azure SQL Database są obecnie obsługiwane jako źródła danych wejściowych. Źródłowe źródła danych referencyjne mają limit równy 300 MB, w zależności od złożoności zapytania i przydzieloną liczbę jednostek przesyłania strumieniowego (zobacz sekcję [ograniczenie rozmiaru](stream-analytics-use-reference-data.md#size-limitation) w dokumentacji danych referencyjnych, aby uzyskać więcej informacji).
 
-Aby uzyskać więcej informacji na temat wejścia danych referencyjnych, zobacz [Using danych referencyjnych dla wyszukiwania w usłudze Stream Analytics](stream-analytics-use-reference-data.md)
+Aby uzyskać więcej informacji na temat danych wejściowych referencyjnych, zobacz [Korzystanie z danych referencyjnych dla odnośników w Stream Analytics](stream-analytics-use-reference-data.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
+> [Szybki Start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)

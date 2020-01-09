@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i używanie plików zasobów — Azure Batch | Microsoft Docs
-description: Dowiedz się, jak tworzyć pliki zasobów Azure Batch z różnych źródeł danych wejściowych.
+title: Tworzenie i używanie plików zasobów — Azure Batch
+description: Dowiedz się, jak tworzyć pliki zasobów usługi Batch z różnych źródeł danych wejściowych. W tym artykule opisano kilka typowych metod tworzenia i umieszczania ich na maszynie wirtualnej.
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390054"
 ---
 # <a name="creating-and-using-resource-files"></a>Tworzenie i używanie plików zasobów
 
@@ -32,9 +32,9 @@ Istnieje kilka różnych opcji umożliwiających generowanie plików zasobów. P
 
 Opcje tworzenia pliku zasobów:
 
-- [Adres URL kontenera magazynu](#storage-container-url): Generuje plik zasobów z dowolnego kontenera magazynu na platformie Azure
-- [Nazwa kontenera magazynu](#storage-container-name): Generuje plik zasobów na podstawie nazwy kontenera na koncie usługi Azure Storage połączonym z usługą Batch
-- [Punkt końcowy sieci Web](#web-endpoint): Generuje plik zasobów na podstawie dowolnego prawidłowego adresu URL HTTP
+- [Adres URL kontenera magazynu](#storage-container-url): generuje plik zasobów z dowolnego kontenera magazynu na platformie Azure
+- [Nazwa kontenera magazynu](#storage-container-name): generuje plik zasobów na podstawie nazwy kontenera na koncie usługi Azure Storage połączonym z usługą Batch
+- [Punkt końcowy sieci Web](#web-endpoint): generuje plik zasobów z dowolnego prawidłowego adresu URL http
 
 ### <a name="storage-container-url"></a>Adres URL kontenera magazynu
 
@@ -53,9 +53,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> Aby uzyskać dostęp do kontenera, musisz mieć `Read` zarówno `List` uprawnienia, jak i `Read` dostęp do obiektów BLOB.
+> Aby uzyskać dostęp do kontenera, musisz mieć uprawnienia `Read` i `List`, podczas gdy z dostępem do obiektów BLOB jest wymagane uprawnienie `Read`.
 
-Po skonfigurowaniu uprawnień należy utworzyć token sygnatury dostępu współdzielonego i sformatować adres URL sygnatury dostępu współdzielonego, aby uzyskać dostęp do kontenera magazynu. Przy użyciu sformatowanego adresu URL sygnatury dostępu współdzielonego dla kontenera magazynu [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet)wygeneruj plik zasobów przy użyciu polecenia.
+Po skonfigurowaniu uprawnień należy utworzyć token sygnatury dostępu współdzielonego i sformatować adres URL sygnatury dostępu współdzielonego, aby uzyskać dostęp do kontenera magazynu. Przy użyciu sformatowanego adresu URL sygnatury dostępu współdzielonego dla kontenera magazynu wygeneruj plik zasobów z [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet).
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -106,7 +106,7 @@ Jeśli w zadaniu określono kilka plików zasobów, przetwarzanie wsadowe może 
 
 Jeśli nie ma możliwości zminimalizowania liczby plików potrzebnych do wykonania zadania, można zoptymalizować zadanie, tworząc jeden plik zasobu, który odwołuje się do kontenera magazynu plików zasobów. W tym celu należy umieścić pliki zasobów w kontenerze usługi Azure Storage i użyć różnych trybów "Container" plików zasobów. Użyj opcji prefiksu obiektu BLOB, aby określić kolekcje plików do pobrania dla zadań.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z [pakietami aplikacji](batch-application-packages.md) jako alternatywą dla plików zasobów.
 - Aby uzyskać więcej informacji o używaniu kontenerów dla plików zasobów, zobacz [obciążenia kontenerów](batch-docker-container-workloads.md).

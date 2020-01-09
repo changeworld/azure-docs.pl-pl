@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 90084864f9a93117a0f94dc1d36e6119e88ee335
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bb77182489e08795e5eb482740eed6c67d2f1627
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438945"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Samouczek: Tworzenie pierwszego potoku do przekształcania danych przy użyciu klastra Hadoop
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Z pokazanych powyżej wierszy przykładu pierwsza z nich (z 2016-01-01) jest zap
 Przed rozpoczęciem pracy z tym samouczkiem należy spełnić następujące wymagania wstępne:
 
 1. **Subskrypcja platformy Azure** — Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Zapoznaj się z artykułem [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/) , aby uzyskać bezpłatne konto próbne.
-2. **Azure Storage** — używasz konta usługi Azure Storage do przechowywania danych w tym samouczku. Jeśli nie masz konta usługi Azure Storage, zobacz artykuł [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) . Po utworzeniu konta magazynu Zanotuj **nazwę konta** i **klucz dostępu**. Zobacz [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
+2. **Azure Storage** — używasz konta usługi Azure Storage do przechowywania danych w tym samouczku. Jeśli nie masz konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) artykułu. Po utworzeniu konta magazynu Zanotuj **nazwę konta** i **klucz dostępu**. Aby uzyskać informacje na temat pobierania kluczy dostępu do konta magazynu, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
 3. Pobierz i przejrzyj plik zapytania programu Hive (**HQL**) znajdujący się w lokalizacji: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). To zapytanie przekształca dane wejściowe w celu wygenerowania danych wyjściowych. 
 4. Pobierz i przejrzyj przykładowy plik wejściowy (**Input. log**) znajdujący się w lokalizacji: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Utwórz kontener obiektów BLOB o nazwie **adfgetstarted** w BLOB Storage platformy Azure. 

@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401819"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Dodawanie Azure Automation zasobów do rozwiązania do zarządzania (wersja zapoznawcza)
 > [!NOTE]
@@ -31,7 +31,7 @@ W tym artykule założono, że znasz już poniższe informacje.
 
 - Jak [utworzyć rozwiązanie do zarządzania]( solutions-creating.md).
 - Struktura [pliku rozwiązania]( solutions-solution-file.md).
-- Jak [tworzyć szablony Menedżer zasobów](../../azure-resource-manager/resource-group-authoring-templates.md)
+- Jak [tworzyć szablony Menedżer zasobów](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Konto usługi Automation
 Wszystkie zasoby w Azure Automation są zawarte na [koncie usługi Automation](../../automation/automation-security-overview.md#automation-account-overview).  Zgodnie z opisem w [obszarze roboczym log Analytics i koncie usługi Automation]( solutions.md#log-analytics-workspace-and-automation-account) konto usługi Automation nie jest dołączone do rozwiązania do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, instalacja rozwiązania zakończy się niepowodzeniem.
@@ -107,7 +107,7 @@ W poniższej tabeli opisano właściwości zadań automatyzacji.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| elementu Runbook |Jednostka o pojedynczej nazwie o nazwie elementu Runbook do uruchomienia. |
+| runbook |Jednostka o pojedynczej nazwie o nazwie elementu Runbook do uruchomienia. |
 | parameters |Jednostka dla każdej wartości parametru wymaganej przez element Runbook. |
 
 Zadanie zawiera nazwę elementu Runbook i wszystkie wartości parametrów do wysłania do elementu Runbook.  Zadanie powinno [zależeć od]( solutions-solution-file.md#resources) elementu Runbook, który jest uruchamiany od momentu utworzenia elementu Runbook przed zadaniem.  Jeśli masz wiele elementów Runbook, które należy uruchomić, możesz zdefiniować ich kolejność, aby zadanie zależało od innych zadań, które powinny być uruchamiane jako pierwsze.
@@ -139,7 +139,7 @@ Właściwości zasobów certyfikatów są opisane w poniższej tabeli.
 | Właściwość | Opis |
 |:--- |:--- |
 | base64Value |Podstawowa wartość 64 dla certyfikatu. |
-| odcisk palca |Odcisk palca certyfikatu. |
+| thumbprint |Odcisk palca certyfikatu. |
 
 
 
@@ -165,7 +165,7 @@ Właściwości zasobów poświadczeń są opisane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Uż |Nazwa użytkownika dla poświadczenia. |
+| userName |Nazwa użytkownika dla poświadczenia. |
 | hasło |Hasło dla poświadczenia. |
 
 
@@ -236,8 +236,8 @@ W poniższej tabeli opisano właściwości harmonogramów zadań.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Nazwa harmonogramu |Jednostka o pojedynczej **nazwie** o nazwie harmonogramu. |
-| Nazwa elementu Runbook  |Jednostka o pojedynczej **nazwie** o nazwie elementu Runbook.  |
+| schedule name |Pojedynczy **name** jednostce o nazwie harmonogramu. |
+| runbook name  |Pojedynczy **name** jednostce o nazwie elementu runbook.  |
 
 
 
@@ -275,10 +275,10 @@ Jeśli ustawisz początkową wartość dla zmiennej, należy ją skonfigurować 
 
 | Typ danych | Opis | Przykład | Jest rozpoznawana jako |
 |:--|:--|:--|:--|
-| string   | Ujmij wartość w podwójne cudzysłowy.  | "\"Hello World \"" | "Hello World" |
-| przypada  | Wartość liczbowa z pojedynczymi cudzysłowami.| "64" | 64 |
-| wartość logiczna  | **wartość true** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być małymi literami. | oznacza | true |
-| datetime | Serializowana wartość daty.<br>Aby wygenerować tę wartość dla konkretnej daty, można użyć polecenia cmdlet ConvertTo-JSON w programie PowerShell.<br>Przykład: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378) \\/" | 2017-05-24 13:14:57 |
+| string   | Ujmij wartość w podwójne cudzysłowy.  | "\"Hello World\"" | "Hello World" |
+| numeric  | Wartość liczbowa z pojedynczymi cudzysłowami.| "64" | 64 |
+| wartość logiczna  | **wartość true** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być małymi literami. | "true" | true |
+| datetime | Serializowana wartość daty.<br>Aby wygenerować tę wartość dla konkretnej daty, można użyć polecenia cmdlet ConvertTo-JSON w programie PowerShell.<br>Przykład: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduły
 Twoje rozwiązanie do zarządzania nie musi definiować [modułów globalnych](../../automation/automation-integration-modules.md) używanych przez elementy Runbook, ponieważ będą zawsze dostępne na koncie usługi Automation.  Musisz dołączyć zasób dla dowolnego innego modułu używanego przez elementy Runbook.

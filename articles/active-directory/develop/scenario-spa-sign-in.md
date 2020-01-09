@@ -1,5 +1,5 @@
 ---
-title: Logowanie jednostronicowej aplikacji — platforma tożsamości firmy Microsoft | Azure
+title: Logowanie jednostronicowej aplikacji & logowania — platforma tożsamości firmy Microsoft | Azure
 description: Dowiedz się, jak utworzyć aplikację jednostronicową (logowanie)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2494a7ad89c9e9b3a525ddd04290a08eb3af58
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b3d7afdc634649ca3baf5f43d5e2376fb5d8b05d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423645"
 ---
-# <a name="single-page-application-sign-in"></a>Aplikacja jednostronicowa: Logowanie
+# <a name="single-page-application-sign-in-and-sign-out"></a>Aplikacja jednostronicowa: Logowanie i wylogowywanie
 
 Dowiedz się, jak dodać logowanie do kodu dla aplikacji jednostronicowej.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363510"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Przewodnik po interfejsie API REST usługi Azure Monitoring
 
@@ -97,7 +97,7 @@ Użyj [interfejsu API REST definicji metryk Azure monitor](https://docs.microsof
 
 **Metoda**: pobieranie
 
-**Identyfikator URI żądania**: https: \/ \/management. Azure.com/subscriptions/ *{Identyfikator subskrypcji}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Identyfikator URI żądania**: https:\/\/Management.Azure.com/subscriptions/ *{Identyfikator subskrypcji}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Na przykład aby pobrać definicje metryk dla konta usługi Azure Storage, żądanie będzie wyglądać w następujący sposób:
 
@@ -241,7 +241,7 @@ Użyj nazwy metryki "value" (nie "localizedValue") dla żadnych żądań filtrow
 
 **Metoda**: pobieranie
 
-**Identyfikator URI żądania**: https \://Management.Azure.com/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}* /Providers/Microsoft.Insights/Metrics? metricnamesd = *{Metric}* & TimeSpan = *{starttime/Endtime}* & $Filter = *{filter}* & ResultType = Metadata & API-Version = *{ apiVersion}*
+**Identyfikator URI żądania**: https\://Management.Azure.com/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{Rename}* /Providers/Microsoft.Insights/Metrics? metricnames = *{Metric}* & TimeSpan = *{starttime/Endtime}* & $Filter = {*Filter}* & ResultType = Metadata & API-Version = *{ apiVersion}*
 
 Na przykład, aby pobrać listę wartości wymiaru, które były emitowane dla metryki "requests" dla "transakcji", gdzie wymiar geotype = "Primary" w określonym przedziale czasu, żądanie będzie w następujący sposób:
 
@@ -314,7 +314,7 @@ Użyj nazwy metryki "value" (nie "localizedValue") dla żadnych żądań filtrow
 
 **Metoda**: pobieranie
 
-**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/{resource-*Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}* /Providers/ Microsoft. Insights/Metrics? metricnames = *{Metric}* & TimeSpan = *{StartTime/endtime}* & $Filter = *{Filter}* & interwał = *{timeGrain}* & agregacji = *{aggreation}* & API-Version = *{apiVersion}*
+**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/{resource-*Provider-Namespace}* / *{Resource-Type}* / *{zasobów-Name}* /Providers/Microsoft.Insights/Metrics? metricnames = *{Metric}* & TimeSpan = *{StartTime/Endtime}* & $Filter = *{Filter}* & interwał = *{timeGrain}* & agregacji = *{aggreation}* & Interfejs API-Version = *{apiVersion}*
 
 Na przykład aby pobrać 3 najpopularniejsze interfejsy API, w wartości malejącej o liczbę "Transactions" w 5-minutowym zakresie, gdzie GeotType było "Primary", żądanie może być następujące:
 
@@ -393,7 +393,7 @@ Użyj [interfejsu API REST definicji metryk Azure monitor](https://msdn.microsof
 
 **Metoda**: pobieranie
 
-**Identyfikator URI żądania**: https: \/ \/management. Azure.com/subscriptions/ *{Identyfikator subskrypcji}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
+**Identyfikator URI żądania**: https:\/\/Management.Azure.com/subscriptions/ *{Identyfikator subskrypcji}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{ResourceType}* / *{resourceName}* /Providers/Microsoft.Insights/metricDefinitions? API-Version = *{apiVersion}*
 
 Na przykład aby pobrać definicje metryk dla aplikacji logiki platformy Azure, żądanie będzie wyglądać w następujący sposób:
 
@@ -466,7 +466,7 @@ Po znalezieniu dostępnych definicji metryk można pobrać powiązane wartości 
 
 **Metoda**: pobieranie
 
-**Identyfikator URI żądania**: https://management.azure.com/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/{resource-*Provider-Namespace}* / *{Resource-Type}* / *{Resource-Name}* /Providers/ Microsoft. Insights/Metrics? $filter = *{Filter}* & API-Version = *{apiVersion}*
+**Identyfikator URI żądania**: *https://management.azure.com/subscriptions/ {Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/{resource-*Provider-Namespace}* / *{Resource-type}* / *{nazwa zasobu}* /Providers/Microsoft.Insights/Metrics? $Filter = *{Filter}* & API-Version = *{apiVersion}*
 
 Na przykład aby pobrać punkty danych metryki RunsSucceeded dla danego przedziału czasu i dla ziarna o godzinie 1 godziny, żądanie będzie w następujący sposób:
 
@@ -604,12 +604,12 @@ W przypadku poprzedniego kodu identyfikator zasobu, który ma być używany, to 
 
 Poniższa lista zawiera kilka przykładów formatów identyfikatorów zasobów dla różnych zasobów platformy Azure:
 
-* **IoT Hub** -/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.Devices/IotHubs/ *{IoT-Hub-Name}*
+* **IoT Hub** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
 * **Elastyczna Pula SQL** -/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.SQL/Servers/ *{Pool-DB}* /elasticpools/ *{SQL-Pool-Name}*
 * **SQL Database (V12)** —/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.SQL/Servers/ *{Server-Name}* /Databases/ *{Database-Name}*
-* **Service Bus** -/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.ServiceBus/ *{Namespace}* / *{ServiceBus-Name}*
+* **Service Bus** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{servicebus-name}*
 * **Zestawy skalowania maszyn wirtualnych** —/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.COMPUTE/virtualMachineScaleSets/ *{VM-Name}*
-* **Maszyny wirtualne** —/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.COMPUTE/virtualMachines/ *{VM-Name}*
+* **VMs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
 * **Event Hubs** /subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.EventHub/Namespaces/ *{EventHub-Namespace}*
 
 Istnieją alternatywne podejścia do pobierania identyfikatora zasobu, w tym przy użyciu Azure Resource Explorer, wyświetlania żądanego zasobu w Azure Portal oraz za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
@@ -620,7 +620,7 @@ Aby znaleźć identyfikator zasobu dla żądanego zasobu, pomocne podejście pol
 
 ![Alt "Azure Resource Explorer"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 Identyfikator zasobu można również uzyskać z Azure Portal. W tym celu przejdź do żądanego zasobu, a następnie wybierz pozycję Właściwości. Identyfikator zasobu jest wyświetlany w sekcji właściwości, jak pokazano na poniższym zrzucie ekranu:
 

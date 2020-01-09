@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425934"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Obciążenia SAP na platformie Azure: Lista kontrolna planowania i wdrażania
 
@@ -77,7 +77,7 @@ W tej fazie planujesz migrację obciążenia SAP na platformę Azure. Co najmnie
     - Konwencje nazewnictwa dla maszyn wirtualnych i innych składników infrastruktury i/lub nazw logicznych.
 5.  Kontrakt pomoc techniczna Premier firmy Microsoft. Zidentyfikuj firmę Microsoft Technical Account Manager (konsultant). Aby uzyskać wymagania dotyczące pomocy technicznej SAP, zobacz [uwagi dotyczące pomocy technicznej sap #2015553](https://launchpad.support.sap.com/#/notes/2015553).
 6.  Liczba subskrypcji platformy Azure i limit przydziału rdzeni dla subskrypcji. [Otwórz żądania obsługi, aby zwiększyć przydziały subskrypcji platformy Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) zgodnie z wymaganiami.
-7.  Planowanie zmniejszenia i migracji danych na potrzeby migrowania danych SAP na platformę Azure. W przypadku systemów SAP NetWeaver w systemie SAP zawarto wskazówki dotyczące ograniczania ilości dużych ilości danych. Zobacz [ten przewodnik SAP](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF) dotyczący zarządzania danymi w systemach SAP ERP. Część zawartości dotyczy również systemów NetWeaver i S/4HANA.
+7.  Planowanie zmniejszenia i migracji danych na potrzeby migrowania danych SAP na platformę Azure. W przypadku systemów SAP NetWeaver w systemie SAP zawarto wskazówki dotyczące ograniczania ilości dużych ilości danych. Zobacz [ten przewodnik SAP](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) dotyczący zarządzania danymi w systemach SAP ERP. Część zawartości dotyczy również systemów NetWeaver i S/4HANA.
 8.  Automatyczne podejście do wdrożenia. Celem automatyzacji wdrożeń infrastruktury na platformie Azure jest wdrożenie w sposób deterministyczny i uzyskanie deterministycznych wyników. Wielu klientów używa programu PowerShell lub skryptów opartych na interfejsie wiersza polecenia. Istnieją jednak różne technologie "open source", których można użyć do wdrożenia infrastruktury platformy Azure dla oprogramowania SAP, a nawet w przypadku instalowania programu SAP. Przykłady można znaleźć w witrynie GitHub:
     - [Automatyczne wdrożenia SAP w chmurze platformy Azure](https://github.com/Azure/sap-hana)
     - [Instalacja SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
@@ -122,7 +122,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
             -  Umieszczenie warstwy aplikacji SAP i SAP DBMS w różnych sieciach wirtualnych platformy Azure, które nie są połączone za pomocą komunikacji równorzędnej, nie jest obsługiwane.
             -  Aby zdefiniować trasy między warstwą aplikacji SAP i warstwą SAP DBMS, można użyć [grup zabezpieczeń aplikacji i zasad grupy zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/security-overview) .
         - Upewnij się, że [usługa Azure przyspieszone sieci](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jest włączona na maszynach wirtualnych używanych w warstwie aplikacji SAP i w warstwie systemu SAP DBMS. Należy pamiętać, że różne poziomy systemu operacyjnego są konieczne do obsługi przyspieszonej sieci na platformie Azure:
-            - System Windows Server 2012 R2 lub nowszy.
+            - Windows Server 2012 R2 lub nowszy.
             - SUSE Linux 12 z dodatkiem SP3 lub nowszym.
             - RHEL 7,4 lub nowszy.
             - Oracle Linux 7,5. Jeśli używasz jądra RHCKL, wymagana jest wersja 3.10.0-862.13.1. el7. Jeśli używasz jądra Oracle UEK, wymagana jest wersja 5.
@@ -244,7 +244,7 @@ W fazie go-Live Pamiętaj, aby postępować zgodnie z elementy PlayBook opracowa
         - Średni czas procesora CPU, każdy procesor (128 procesorów na maszynach wirtualnych M128)
         - Czas jądra procesora CPU, każdy pojedynczy procesor
         - Czas użytkownika procesora CPU, każdy pojedynczy procesor
-    - Rozmiar.
+    - Memory (pamięć).
         - Wolna pamięć
         - Strona pamięci na sekundę
         - Stronicowana pamięć/sekundę
@@ -255,7 +255,7 @@ W fazie go-Live Pamiętaj, aby postępować zgodnie z elementy PlayBook opracowa
         - Zapis na dysku w KB/s, na poszczególnych dyskach
         - Zapis na dysku/sekundę, na poszczególnych dyskach
         - Zapis na dysku w mikrosekundach/odczyt na poszczególnych dyskach
-    - NFS.
+    - Sieć —
         - Pakiety sieciowe w/s
         - Wychodzące pakiety sieciowe/s
         - Sieć KB na sekundę

@@ -2,19 +2,15 @@
 title: Automatyzowanie wdrożenia maszyny wirtualnej w Amazon Web Services
 description: W tym artykule pokazano, jak za pomocą Azure Automation zautomatyzować tworzenie maszyny wirtualnej usługi Amazon Web Service
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2a58d3e79301f277143d8c4b6e810a377a211b9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b149a21ef60b22c2e549c91007265ce99babdbe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420923"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scenariusz Azure Automation — Inicjowanie obsługi administracyjnej maszyny wirtualnej AWS
 W tym artykule dowiesz się, jak skorzystać z Azure Automation, aby zainicjować obsługę administracyjną maszyny wirtualnej w ramach subskrypcji usługi Amazon Web Service (AWS) i nadać maszynie wirtualnej konkretną nazwę, która AWS odnosi się do "tagowania".
@@ -104,6 +100,6 @@ Przed przejściem do testowania elementu Runbook należy sprawdzić kilka rzeczy
 * Aby rozpocząć pracę z graficznymi elementami Runbook, zobacz artykuł [My first graphical runbook](automation-first-runbook-graphical.md) (Mój pierwszy graficzny element Runbook).
 * Aby rozpocząć pracę z elementami Runbook przepływu pracy programu PowerShell, zobacz artykuł [My first PowerShell workflow runbook](automation-first-runbook-textual.md) (Mój pierwszy element Runbook przepływu pracy programu PowerShell).
 * Aby dowiedzieć się więcej na temat typów elementów Runbook, ich zalet i ograniczeń, zobacz [Azure Automation runbook types](automation-runbook-types.md) (Typy elementów Runbook usługi Azure Automation).
-* Aby uzyskać więcej informacji o funkcji obsługi skryptów programu PowerShell, zobacz [Native PowerShell script support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/) (Obsługa natywnych skryptów programu PowerShell w usłudze Azure Automation).
+* Aby uzyskać więcej informacji o funkcji obsługi skryptów programu PowerShell, zobacz artykuł [Native PowerShell script support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/) (Obsługa natywnych skryptów programu PowerShell w usłudze Azure Automation).
 
 

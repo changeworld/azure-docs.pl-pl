@@ -1,6 +1,6 @@
 ---
-title: Przykładowy skrypt interfejsu programu Azure PowerShell — kopiowanie (przenoszenie) dysków zarządzanych do tej samej lub innej subskrypcji
-description: Przykładowy skrypt interfejsu programu Azure PowerShell — kopiowanie (przenoszenie) dysków zarządzanych do tej samej lub innej subskrypcji
+title: Kopiuj dyski zarządzane do subskrypcji — przykład programu PowerShell
+description: Przykładowy skrypt Azure PowerShell — kopiowanie (lub przenoszenie) dysków zarządzanych do tej samej lub innej subskrypcji
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: bb473a2f543c1621b99904b5a58dc7fc6625f6fc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e655ce33c8952acab7228f4caae81f09c2d56ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375903"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Kopiowanie dysków zarządzanych do tej samej lub innej subskrypcji przy użyciu programu PowerShell
 

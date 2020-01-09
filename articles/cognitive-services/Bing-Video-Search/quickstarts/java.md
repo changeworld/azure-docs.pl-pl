@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 30234758761e06c65e621c7f512ed8cafa02e090
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382654"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Szybki Start: wyszukiwanie filmów wideo przy użyciu interfejsu API REST wyszukiwanie wideo Bing i środowiska Java
 
@@ -23,7 +23,7 @@ Ten przewodnik Szybki start umożliwia wykonanie pierwszego wywołania interfejs
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zestaw [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* [Zestaw Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * [Biblioteka Gson](https://github.com/google/gson)
 
@@ -59,7 +59,7 @@ Ten przewodnik Szybki start umożliwia wykonanie pierwszego wywołania interfejs
     }
     ```
 
-3. Utwórz nową metodę o nazwie `SearchVideos()` ze zmiennymi na potrzeby hosta i ścieżki punktu końcowego interfejsu API, kluczem subskrypcji i terminem wyszukiwania. Zwróci ona obiekt `SearchResults`. 
+3. Utwórz nową metodę o nazwie `SearchVideos()` ze zmiennymi na potrzeby hosta i ścieżki punktu końcowego interfejsu API, kluczem subskrypcji i terminem wyszukiwania. Zwróci ona obiekt `SearchResults`. `host` może być globalnym punktem końcowym lub [niestandardowym](../../../cognitive-services/cognitive-services-custom-subdomains.md) punktem końcowym domeny wyświetlanym w Azure Portal dla zasobu.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -248,6 +248,6 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 > [!div class="nextstepaction"]
 > [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
  [Co to jest interfejs API wyszukiwania wideo Bing?](../overview.md)

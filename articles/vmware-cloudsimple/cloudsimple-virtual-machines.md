@@ -1,5 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — Omówienie maszyn wirtualnych
+title: Omówienie usługi Virtual Machines
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Dowiedz się więcej na temat maszyn wirtualnych CloudSimple i ich korzyści.
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 213ab51dae20d281a1a0e0f8ea18f4bde888e64d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372793"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple maszyn wirtualnych — Omówienie
 

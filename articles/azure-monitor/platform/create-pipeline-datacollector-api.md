@@ -4,15 +4,15 @@ description: Korzystając z Azure Monitor interfejsu API modułu zbierającego d
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363969"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Tworzenie potoku danych za pomocą interfejsu API modułu zbierającego dane
 
@@ -21,7 +21,7 @@ ms.locfileid: "72932631"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>Przykładowy problem
-W pozostałej części tego artykułu sprawdzimy dane widoku strony w Application Insights. W naszym scenariuszu hipotetycznym chcemy skorelować informacje geograficzne zebrane domyślnie przez zestaw SDK Application Insights, aby uzyskać niestandardowe dane zawierające populację każdego kraju/regionu na świecie, z celem określenia miejsca, w którym należy się wystawić Większość dolarów marketingowych. 
+W pozostałej części tego artykułu sprawdzimy dane widoku strony w Application Insights. W naszym hipotetycznym scenariuszu chcemy skorelować informacje geograficzne zbierane domyślnie przez zestaw SDK Application Insights, aby uzyskać niestandardowe dane zawierające populację każdego kraju/regionu na świecie, z celem ustalenia, gdzie należy wystawić większość dolarów marketingowych. 
 
 W tym celu używamy publicznego źródła danych, takiego jak w przypadku w tym celu [prospektów dla Nieświatowej populacji](https://esa.un.org/unpd/wpp/) . Dane będą miały następujący prosty schemat:
 

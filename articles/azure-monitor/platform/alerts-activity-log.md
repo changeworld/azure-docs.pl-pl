@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364802"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dziennika aktywności oraz zarządzanie nimi za pomocą Azure Monitor  
 
@@ -32,7 +32,7 @@ Podczas tworzenia reguł alertów należy zapewnić następujące czynności:
 - Jeśli kategoria ma wartość "administracyjne", musisz określić co najmniej jedno z powyższych kryteriów w alercie. Nie można utworzyć alertu, który jest uaktywniany za każdym razem, gdy zdarzenie jest tworzone w dziennikach aktywności.
 
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal Azure
 
 Za pomocą Azure Portal można tworzyć i modyfikować reguły alertów dziennika aktywności. Środowisko jest zintegrowane z dziennikiem aktywności platformy Azure w celu zapewnienia bezproblemowego tworzenia alertów dla konkretnych interesujących Cię zdarzeń.
 
@@ -40,7 +40,7 @@ Za pomocą Azure Portal można tworzyć i modyfikować reguły alertów dziennik
 
 Wykonaj poniższą procedurę.
 
-1. W Azure Portal wybierz pozycję **monitoruj**  > **alerty**.
+1. W Azure Portal wybierz pozycję **monitoruj** > **alerty**.
 2. W lewym górnym rogu okna **alerty** wybierz pozycję **Nowa reguła alertu** .
 
      ![Nowa reguła alertu](media/alerts-activity-log/AlertsPreviewOption.png)
@@ -51,11 +51,11 @@ Wykonaj poniższą procedurę.
 
 3. W obszarze **Zdefiniuj warunek alertu**podaj następujące informacje, a następnie wybierz pozycję **gotowe**:
 
-   - **Obiekt docelowy alertu:** Aby wyświetlić i wybrać cel dla nowego alertu, użyj opcji **Filtruj według subskrypcji**  / **Filtr według typu zasobu**. Wybierz zasób lub grupę zasobów z wyświetlonej listy.
+   - **Obiekt docelowy alertu:** Aby wyświetlić i wybrać cel dla nowego alertu, użyj opcji **Filtruj według subskrypcji** / **Filtr według typu zasobu**. Wybierz zasób lub grupę zasobów z wyświetlonej listy.
 
      > [!NOTE]
      > 
-     > Dla sygnału dziennika aktywności można wybrać tylko [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) śledzony zasób, grupę zasobów lub całą subskrypcję. 
+     > Dla sygnału dziennika aktywności można wybrać tylko [Azure Resource Manager](../../azure-resource-manager/management/overview.md) śledzony zasób, grupę zasobów lub całą subskrypcję. 
 
      **Przykładowy widok docelowy alertu**
 
@@ -106,7 +106,7 @@ Prostą analogową dla zrozumienie warunków, w których można tworzyć reguły
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Wyświetlanie w Azure Portal i zarządzanie nimi
 
-1. W Azure Portal wybierz pozycję **monitoruj**  > **alerty**. Wybierz pozycję **Zarządzaj regułami alertów** w lewym górnym rogu okna.
+1. W Azure Portal wybierz pozycję **monitoruj** > **alerty**. Wybierz pozycję **Zarządzaj regułami alertów** w lewym górnym rogu okna.
 
     ![Zarządzaj regułami alertów](media/alerts-activity-log/manage-alert-rules.png)
 

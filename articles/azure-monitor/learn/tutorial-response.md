@@ -4,21 +4,21 @@ description: Ten samouczek pomaga w zrozumieniu alertów w usłudze Log Analytic
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: a30b7569c14aaccb40b357cc5acb82b0e32d2895
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 11ce572cdb8a04dac07689b37eef76f354475df3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365626"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Odpowiadanie na zdarzenia przy użyciu alertów platformy Azure Monitor
 Alerty platformy Azure Monitor mogą identyfikować ważne informacje w repozytorium usługi Log Analytics. Są one tworzone przy użyciu reguł alertów, które automatycznie uruchamiają przeszukiwanie dzienników w regularnych odstępach czasu. Jeśli wyniki przeszukiwania dzienników pasują do danych kryteriów, zostaje utworzony rekord alertu. Ponadto można go skonfigurować tak, aby generował automatyczną odpowiedź.  Ten samouczek jest kontynuacją samouczka [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](tutorial-logs-dashboards.md).   
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie reguły alertu
@@ -36,7 +36,7 @@ W poniższym przykładzie tworzona jest reguła alertu pomiaru metryki na podsta
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
 2. W okienku po lewej stronie wybierz pozycję **Alerty**, a następnie kliknij przycisk **Nowa reguła alertu** w górnej części strony, aby utworzyć nowy alert.<br><br> ![Tworzenie nowej reguły alertu](./media/tutorial-response/alert-rule-02.png)<br>
-3. W pierwszym kroku w sekcji **Utwórz alert** wybierzesz jako zasób obszar roboczy usługi Log Analytics, ponieważ jest to sygnał alertu oparty na dzienniku.  Filtruj wyniki: jeśli masz więcej subskrypcji, wybierz z listy rozwijanej **Subskrypcję** zawierającą maszynę wirtualną oraz obszar roboczy usługi Log Analytics, które zostały utworzone wcześniej.  Filtruj **Typ zasobu**, wybierając z listy rozwijanej pozycję **Log Analytics**.  Na końcu wybierz kolejno opcje **Zasób** **DefaultLAWorkspace**, a następnie kliknij przycisk **Gotowe**.<br><br> ![Zadanie tworzenia alertu — krok 1](./media/tutorial-response/alert-rule-03.png)<br>
+3. W pierwszym kroku w sekcji **Utwórz alert** wybierzesz jako zasób obszar roboczy usługi Log Analytics, ponieważ jest to sygnał alertu oparty na dzienniku.  Filtruj wyniki: jeśli masz więcej subskrypcji, wybierz z listy rozwijanej **Subskrypcję** zawierającą maszynę wirtualną oraz obszar roboczy usługi Log Analytics, które zostały utworzone wcześniej.  Filtruj **Typ zasobu**, wybierając z listy rozwijanej pozycję **Log Analytics**.  Na koniec wybierz DefaultLAWorkspace **zasobów** , a następnie kliknij przycisk **gotowe**.<br><br> ![Zadanie tworzenia alertu — krok 1](./media/tutorial-response/alert-rule-03.png)<br>
 4. W sekcji **Kryteria alertu** kliknij przycisk **Dodaj kryteria**, aby wybrać zapisane zapytanie, a następnie podaj logikę, zgodnie z którą działa reguła alertu.  W okienku **Konfigurowanie logiki sygnału** wybierz z listy pozycję *Maszyny wirtualne platformy Azure — użycie procesora*.  Okienko jest aktualizowane i zawiera ustawienia konfiguracji dla alertu.  W górnej części znajdują się wyniki z ostatnich 30 minut dla wybranego sygnału i samo zapytanie wyszukiwania.  
 5. Skonfiguruj alert przy użyciu następujących informacji:  
    a. Z listy rozwijanej **Na podstawie** wybierz pozycję **Pomiar metryki**.  Pomiar metryki utworzy alert dla każdego obiektu w zapytaniu z wartością, która przekracza określony próg.  

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: e5a3df82fae9d81a870d3dba929bc7e4cd4123d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438759"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Wprowadzenie do Azure Data Lake Storage Gen1 przy użyciu Azure Portal
 
@@ -30,9 +30,9 @@ Dowiedz się, jak za pomocą Azure Portal utworzyć konto Data Lake Storage Gen1
 
 Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mieć poniższe:
 
-* **Subskrypcja platformy Azure**. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Utwórz konto Data Lake Storage Gen1
+## <a name="create-a-data-lake-storage-gen1-account"></a>Tworzenie konta usługi Data Lake Storage Gen1
 
 1. Zaloguj się w nowej witrynie [Azure Portal](https://portal.azure.com).
 2. Kliknij pozycję **Utwórz zasób > > magazynu Data Lake Storage Gen1**.
@@ -42,7 +42,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 
    * **Nazwa**. Wprowadź unikatową nazwę konta Data Lake Storage Gen1.
    * **Subskrypcja**. Wybierz subskrypcję, w ramach której chcesz utworzyć nowe konto Data Lake Storage Gen1.
-   * **Grupa zasobów**. Wybierz istniejącą grupę zasobów lub użyj opcji **Utwórz nową**, aby utworzyć taką grupę. Grupa zasobów to kontener, który zawiera powiązane zasoby dla aplikacji. Aby uzyskać więcej informacji, zobacz [Grupy zasobów na platformie Azure](../azure-resource-manager/resource-group-overview.md#resource-groups).
+   * **Grupa zasobów**. Wybierz istniejącą grupę zasobów lub użyj opcji **Utwórz nową**, aby utworzyć taką grupę. Grupa zasobów to kontener, który zawiera powiązane zasoby dla aplikacji. Aby uzyskać więcej informacji, zobacz [Grupy zasobów na platformie Azure](../azure-resource-manager/management/overview.md#resource-groups).
    * **Lokalizacja**: Wybierz lokalizację, w której chcesz utworzyć konto Data Lake Storage Gen1.
    * **Ustawienia szyfrowania**. Dostępne są trzy opcje:
 
@@ -56,7 +56,7 @@ Przed przystąpieniem do wykonywania kroków opisanych w tym samouczku musisz mi
 
         Aby uzyskać więcej informacji, zobacz [szyfrowanie danych w Azure Data Lake Storage Gen1](./data-lake-store-encryption.md).
 
-4. Kliknij pozycję **Utwórz**. Jeśli wybrano opcję przypięcia konta do pulpitu nawigacyjnego, nastąpi powrót do pulpitu nawigacyjnego i zobaczysz postęp aprowizacji Data Lake Storage Gen1 konta. Po zainicjowaniu obsługi konta Data Lake Storage Gen1 zostanie wyświetlony blok konta.
+4. Kliknij przycisk **Utwórz**. Jeśli wybrano opcję przypięcia konta do pulpitu nawigacyjnego, nastąpi powrót do pulpitu nawigacyjnego i zobaczysz postęp aprowizacji Data Lake Storage Gen1 konta. Po zainicjowaniu obsługi konta Data Lake Storage Gen1 zostanie wyświetlony blok konta.
 
 ## <a name="assign-permissions-to-azure-key-vault"></a>Przypisywanie uprawnień do usługi Azure Key Vault
 
@@ -117,7 +117,7 @@ Kliknij ikonę wielokropka dla pliku, a następnie w menu podręcznym kliknij ak
 
 Dane przechowywane na koncie usługi Data Lake Storage Gen1 można zabezpieczyć za pomocą Azure Active Directory i kontroli dostępu (ACL). Aby uzyskać instrukcje, jak to zrobić, zobacz [Zabezpieczanie danych w Azure Data Lake Storage Gen1](data-lake-store-secure-data.md).
 
-## <a name="delete-your-account"></a>Usuwanie konta
+## <a name="delete-your-account"></a>Usuń konto
 
 Aby usunąć konto Data Lake Storage Gen1, w bloku Data Lake Storage Gen1 kliknij pozycję **Usuń**. W celu potwierdzenia akcji zostanie wyświetlony monit o wprowadzenie nazwy konta, które chcesz usunąć. Wprowadź nazwę konta, a następnie kliknij pozycję **Usuń**.
 

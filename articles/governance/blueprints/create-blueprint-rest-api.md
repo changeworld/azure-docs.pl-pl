@@ -3,12 +3,12 @@ title: 'Szybki Start: Tworzenie strategii przy użyciu interfejsu API REST'
 description: W tym przewodniku szybki start używasz planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów przy użyciu interfejsu API REST.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436596"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu interfejsu API REST
 
@@ -407,7 +407,9 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      > [!IMPORTANT]
      > Strategie nie zarządzają tożsamością przypisaną przez użytkownika. Użytkownicy są odpowiedzialni za przypisywanie wystarczających ról i uprawnień — w przeciwnym razie przypisanie strategii kończy się niepowodzeniem.
 
-## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+### <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
 Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, gdy zasoby artefaktu przestają być potrzebne. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następującą operację interfejsu API REST:
 
@@ -417,7 +419,7 @@ Strategię można usunąć z subskrypcji. Usunięcie często przeprowadza się, 
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>Usuwanie strategii
+### <a name="delete-a-blueprint"></a>Usuwanie strategii
 
 Aby usunąć samą strategię, wykonaj następującą operację interfejsu API REST:
 

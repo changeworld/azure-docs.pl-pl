@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398635"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
 
@@ -72,7 +72,7 @@ Usługa Application Insights zbiera informacje o wydajności różnych operacji 
 
     ![Porada dotycząca wydajności](media/tutorial-performance/6-perf-tip.png)
 
-8.  W celu dalszej analizy można kliknąć pozycję **Pobierz ślad** , aby pobrać śledzenie do programu Visual Studio.
+8.   W celu dalszej analizy można kliknąć pozycję **Pobierz ślad** , aby pobrać śledzenie. Te dane można wyświetlić przy użyciu [Narzędzia PerfView](https://github.com/Microsoft/perfview#perfview-overview).
 
 ## <a name="use-logs-data-for-server"></a>Użyj danych dzienników dla serwera
  Dzienniki udostępniają bogaty język zapytań, który pozwala analizować wszystkie dane zbierane przez Application Insights. Możesz jej używać do wykonywania głębokiej analizy danych żądań i wydajności.
@@ -87,7 +87,7 @@ Usługa Application Insights zbiera informacje o wydajności różnych operacji 
 ## <a name="identify-slow-client-operations"></a>Identyfikowanie wolnych operacji klienta
 Oprócz identyfikowania procesów serwera do zoptymalizowania, usługa Application Insights może analizować perspektywę przeglądarek klienta.  To może pomóc zidentyfikować potencjalne ulepszenia do składników klienta, a nawet zidentyfikować problemy z różnymi przeglądarkami i lokalizacjami.
 
-1. Wybierz pozycję **przeglądarka** w obszarze **Zbadaj** , a następnie kliknij pozycję **wydajność przeglądarki** lub wybierz pozycję **wydajność** w obszarze **Zbadaj** , a następnie przejdź do karty **przeglądarki** , klikając przycisk przełączania serwer/przeglądarka w prawym górnym rogu, aby Otwórz podsumowanie wydajności przeglądarki. Ma ono postać wizualnego podsumowania różnych danych telemetrycznych dla Twojej aplikacji z perspektywy przeglądarki.
+1. Wybierz pozycję **przeglądarka** w obszarze **Zbadaj** , a następnie kliknij pozycję **wydajność przeglądarki** lub wybierz pozycję **wydajność** w obszarze **Zbadaj** , a następnie przejdź do karty **przeglądarki** , klikając przycisk przełączania serwer/przeglądarka w prawym górnym rogu, aby otworzyć podsumowanie wydajności przeglądarki. Ma ono postać wizualnego podsumowania różnych danych telemetrycznych dla Twojej aplikacji z perspektywy przeglądarki.
 
     ![Podsumowanie informacji o przeglądarce](media/tutorial-performance/8-browser.png)
 
@@ -102,7 +102,7 @@ Podobnie jak w przypadku danych zbieranych pod kątem wydajności serwera, Appli
 
 2. Dzienniki są otwierane za pomocą zapytania dla każdego z widoków w panelu. Pierwsze zapytanie pokazuje czas trwania dla różnych wyświetleń stron w miarę upływu czasu.
 
-    ![zapytanie dzienników](media/tutorial-performance/10-page-view-logs.png)
+    ![Zapytanie dzienników](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Inteligentna diagnostyka to funkcja dzienników identyfikująca unikatowe wzorce w danych. Po kliknięciu na wykresie liniowym kropki funkcji Inteligentna diagnostyka uruchamiane jest to samo zapytanie, ale bez rekordów będących przyczyną anomalii. Szczegółowe informacje o tych rekordach są pokazywane w sekcji komentarza zapytania, więc można zidentyfikować właściwości tych wyświetleń strony, które powodują za długie czasy trwania.
 

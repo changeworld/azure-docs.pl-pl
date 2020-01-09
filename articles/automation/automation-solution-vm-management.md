@@ -2,19 +2,15 @@
 title: Start/Stop VMs during off-hours rozwiązanie
 description: To rozwiązanie do zarządzania MASZYNą wirtualną uruchamia i wstrzymuje Azure Resource Managere maszyny wirtualne zgodnie z harmonogramem i aktywnie monitoruje z Azure Monitor dzienników.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420805"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Start/Stop VMs during off-hours rozwiązanie w Azure Automation
 
@@ -109,7 +105,7 @@ Wykonaj następujące kroki, aby dodać rozwiązanie Start/Stop VMs during off-h
 
 2. Na stronie **Start/Stop VMS during off-hours** wybranego rozwiązania Przejrzyj informacje podsumowujące, a następnie kliknij przycisk **Utwórz**.
 
-   ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Portal Azure](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. Zostanie wyświetlona strona **Dodawanie rozwiązania** . Zostanie wyświetlony monit o skonfigurowanie rozwiązania przed zaimportowaniem go do subskrypcji usługi Automation.
 

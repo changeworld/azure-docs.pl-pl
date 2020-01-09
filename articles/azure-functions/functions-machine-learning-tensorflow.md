@@ -1,17 +1,17 @@
 ---
-title: Korzystanie z języka Python i TensorFlow w Azure Functions, aby przeprowadzić wnioskowanie dotyczące uczenia maszynowego
+title: Korzystanie z języka Python i TensorFlow na potrzeby uczenia maszynowego na platformie Azure
 description: W tym samouczku pokazano, jak zastosować modele uczenia maszynowego w programie TensorFlow w Azure Functions
 author: anthonychu
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e7c4e1bbd23d43d5e11ab8b26c3d4e1215b4946b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f8122a828f19c3daf6c23a866a99a214ee2c4427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230503"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409771"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Samouczek: stosowanie modeli uczenia maszynowego w Azure Functions przy użyciu języka Python i TensorFlow
 
@@ -113,7 +113,7 @@ Tworzony jest nowy folder o nazwie *klasyfikowanie* zawierający dwa pliki.
 - *\_\_init\_\_. PR*: plik dla funkcji Main
 - *Function. JSON*: plik opisujący wyzwalacz funkcji i jego powiązania wejściowe i wyjściowe
 
-### <a name="run-the-function"></a>Uruchom funkcję
+### <a name="run-the-function"></a>Uruchamianie funkcji
 
 Uruchom aplikację funkcji w terminalu ze aktywowanym środowiskiem wirtualnym języka Python.
 

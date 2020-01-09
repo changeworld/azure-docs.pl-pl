@@ -2,19 +2,15 @@
 title: Update Management rozwiązanie na platformie Azure
 description: W tym artykule opisano sposób korzystania z rozwiązania Update Management platformy Azure do zarządzania aktualizacjami komputerów z systemami Windows i Linux.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/03/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806545"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420351"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -92,8 +88,8 @@ W poniższej tabeli wymieniono nieobsługiwane systemy operacyjne:
 |System operacyjny  |Uwagi  |
 |---------|---------|
 |Klient systemu Windows     | Systemy operacyjne klienta (takich jak Windows 7 i Windows 10) nie są obsługiwane.        |
-|Windows Server 2016 Nano Server     | Nieobsługiwane.       |
-|Węzły usługi Azure Kubernetes | Nieobsługiwane. Użyj procesu poprawek opisanego w temacie [stosowanie aktualizacji zabezpieczeń i jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md)|
+|Windows Server 2016 Nano Server     | Bez pomocy technicznej.       |
+|Węzły usługi Azure Kubernetes | Bez pomocy technicznej. Użyj procesu poprawek opisanego w temacie [stosowanie aktualizacji zabezpieczeń i jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md)|
 
 ### <a name="client-requirements"></a>Wymagania dotyczące klientów
 
@@ -225,7 +221,7 @@ W poniższej tabeli wymieniono klasyfikacje aktualizacji w Update Management z d
 |Pakiety funkcji     | Nowe funkcje produktu dystrybuowane poza wydaniem produktu.        |
 |Dodatki Service Pack     | Zbiorczy zestaw poprawek, które są stosowane do aplikacji.        |
 |Aktualizacje definicji     | Aktualizacja dla wirusów lub innych plików definicji.        |
-|Narzędzia     | Narzędzie lub funkcja, która pomaga wykonać jedno lub więcej zadań.        |
+|narzędzia     | Narzędzie lub funkcja, która pomaga wykonać jedno lub więcej zadań.        |
 |Aktualizacje     | Aktualizacja aplikacji lub pliku, który jest aktualnie zainstalowany.        |
 
 ### <a name="linux-2"></a>Linux

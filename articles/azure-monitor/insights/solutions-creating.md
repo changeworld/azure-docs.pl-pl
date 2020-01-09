@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402050"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -60,7 +60,7 @@ Widoki w Log Analytics są używane do wizualizacji danych z repozytorium Log An
 
 
 ## <a name="create-solution-file"></a>Utwórz plik rozwiązania
-Po skonfigurowaniu i przetestowaniu składników, które będą częścią rozwiązania, można [utworzyć plik rozwiązania]( solutions-solution-file.md).  Składniki rozwiązania zostaną zaimplementowane w [szablonie Menedżer zasobów](../../azure-resource-manager/resource-group-authoring-templates.md) zawierającym [zasób rozwiązania]( solutions-solution-file.md#solution-resource) z relacjami do innych zasobów w pliku.  
+Po skonfigurowaniu i przetestowaniu składników, które będą częścią rozwiązania, można [utworzyć plik rozwiązania]( solutions-solution-file.md).  Składniki rozwiązania zostaną zaimplementowane w [szablonie Menedżer zasobów](../../azure-resource-manager/templates/template-syntax.md) zawierającym [zasób rozwiązania]( solutions-solution-file.md#solution-resource) z relacjami do innych zasobów w pliku.  
 
 
 ## <a name="test-your-solution"></a>Testowanie rozwiązania
@@ -76,5 +76,5 @@ Po zakończeniu i przetestowaniu rozwiązania można je udostępnić klientom za
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak [utworzyć plik rozwiązania]( solutions-solution-file.md) dla rozwiązania do zarządzania.
-* Poznaj szczegóły dotyczące [tworzenia szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
+* Poznaj szczegóły dotyczące [tworzenia szablonów Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md).
 * Przeszukaj [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates) , aby zapoznać się z przykładami różnych szablonów Menedżer zasobów.

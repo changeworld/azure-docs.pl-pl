@@ -1,26 +1,30 @@
 ---
 title: Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego
-description: Dowiedz się więcej o konfigurowaniu replikacji transakcyjnej w Azure SQL Database bazie danych wystąpienia zarządzanego
+description: Dowiedz się, jak skonfigurować replikację transakcyjną Azure SQL Database między wydawcą/dystrybutorem wystąpienia zarządzanego i subskrybentem wystąpienia zarządzanego.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: MashaMSFT
+ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: f303a363fd4d42889e7817273be5d5e5440a2293
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372480"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w Azure SQL Database bazie danych wystąpienia zarządzanego
 
 Replikacja transakcyjna umożliwia replikowanie danych do bazy danych wystąpienia zarządzanego Azure SQL Database z bazy danych SQL Server lub innej bazy danych wystąpienia. 
+
+W tym artykule pokazano, jak skonfigurować replikację między wydawcą/dystrybutorem wystąpienia zarządzanego i subskrybentem wystąpienia zarządzanego. 
+
+![Replikacja między dwoma wystąpieniami zarządzanymi](media/replication-with-sql-database-managed-instance/sqlmi-sqlmi-repl.png)
 
 Replikację transakcyjną można także użyć do wypychania zmian wprowadzonych w bazie danych wystąpienia w Azure SQL Database wystąpieniu zarządzanym, aby:
 
@@ -31,7 +35,8 @@ Replikację transakcyjną można także użyć do wypychania zmian wprowadzonych
 Replikacja transakcyjna jest w publicznej wersji zapoznawczej na [Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance.md). Wystąpienie zarządzane może hostować bazy danych wydawcy, dystrybutora i subskrybentów. Zobacz [konfiguracje replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md#common-configurations) dla dostępnych konfiguracji.
 
   > [!NOTE]
-  > Ten artykuł ma na celu umożliwienie użytkownikowi konfigurowania replikacji z wystąpieniem zarządzanym usługi Azure Database od końca do końca, rozpoczynając od tworzenia grupy zasobów. Jeśli masz już wdrożone wystąpienia zarządzane, przejdź do [kroku 4](#4---create-a-publisher-database) , aby utworzyć bazę danych wydawcy, lub [krok 6](#6---configure-distribution) , jeśli masz już wydawcę i bazę danych subskrybentów i są gotowe do rozpoczęcia konfigurowania replikacji.  
+  > - Ten artykuł ma na celu umożliwienie użytkownikowi konfigurowania replikacji z wystąpieniem zarządzanym usługi Azure Database od końca do końca, rozpoczynając od tworzenia grupy zasobów. Jeśli masz już wdrożone wystąpienia zarządzane, przejdź do [kroku 4](#4---create-a-publisher-database) , aby utworzyć bazę danych wydawcy, lub [krok 6](#6---configure-distribution) , jeśli masz już wydawcę i bazę danych subskrybentów i są gotowe do rozpoczęcia konfigurowania replikacji.  
+  > - W tym artykule konfiguruje wydawcę i dystrybutora na tym samym zarządzanym wystąpieniu. Aby umieścić dystrybutora w oddzielnym wystąpieniu, zapoznaj się z samouczkiem [Konfigurowanie replikacji między programem i dystrybutorem mi](sql-database-managed-instance-configure-replication-tutorial.md). 
 
 ## <a name="requirements"></a>Wymagania
 
@@ -67,10 +72,10 @@ Użyj [Azure Portal](https://portal.azure.com) , aby utworzyć grupę zasobów o
 
 ## <a name="2---create-managed-instances"></a>2 — Tworzenie wystąpień zarządzanych
 
-Użyj [Azure Portal](https://portal.azure.com) , aby utworzyć dwa [wystąpienia zarządzane](sql-database-managed-instance-create-tutorial-portal.md) w tej samej sieci wirtualnej i podsieci. Dwa zarządzane wystąpienia powinny mieć nazwę:
+Użyj [Azure Portal](https://portal.azure.com) , aby utworzyć dwa [wystąpienia zarządzane](sql-database-managed-instance-create-tutorial-portal.md) w tej samej sieci wirtualnej i podsieci. Na przykład Nazwij dwa wystąpienia zarządzane:
 
-- `sql-mi-pub`
-- `sql-mi-sub`
+- `sql-mi-pub` (wraz z niektórymi znakami dla losowości)
+- `sql-mi-sub` (wraz z niektórymi znakami dla losowości)
 
 Należy również [skonfigurować maszynę wirtualną platformy Azure do łączenia](sql-database-managed-instance-configure-vm.md) się z wystąpieniami zarządzanymi Azure SQL Database. 
 
@@ -80,9 +85,13 @@ Należy również [skonfigurować maszynę wirtualną platformy Azure do łącze
 
 Skopiuj ścieżkę udziału plików w formacie: `\\storage-account-name.file.core.windows.net\file-share-name`
 
+Przykład: `\\replstorage.file.core.windows.net\replshare`
+
 Skopiuj klucze dostępu do magazynu w formacie: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
- Aby uzyskać więcej informacji, zobacz temat [View and copy storage access keys](../storage/common/storage-account-manage.md#access-keys) (Wyświetlanie i kopiowanie kluczy dostępu kopiowania). 
+Przykład: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
+
+Aby uzyskać więcej informacji, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../storage/common/storage-account-keys-manage.md). 
 
 ## <a name="4---create-a-publisher-database"></a>4 — Tworzenie bazy danych wydawcy
 
@@ -160,8 +169,9 @@ Na `sql-mi-pub`wystąpieniu zarządzanym wydawcy Zmień wykonanie zapytania na t
 :setvar username loginUsedToAccessSourceManagedInstance
 :setvar password passwordUsedToAccessSourceManagedInstance
 :setvar file_storage "\\storage-account-name.file.core.windows.net\file-share-name"
+-- example: file_storage "\\replstorage.file.core.windows.net\replshare"
 :setvar file_storage_key "DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net"
-
+-- example: file_storage_key "DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net"
 
 USE [master]
 EXEC sp_adddistpublisher
@@ -173,6 +183,9 @@ EXEC sp_adddistpublisher
   @working_directory = N'$(file_storage)',
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
+
+   > [!NOTE]
+   > Upewnij się, że dla parametru file_storage są używane tylko ukośniki odwrotne (`\`). Użycie ukośnika (`/`) może spowodować błąd podczas nawiązywania połączenia z udziałem plików. 
 
 Ten skrypt konfiguruje lokalnego wydawcę na zarządzanym wystąpieniu, dodaje połączony serwer i tworzy zestaw zadań dla agenta SQL Server. 
 
@@ -322,10 +335,11 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Możesz wyczyścić zasoby platformy Azure, [usuwając zasoby wystąpienia zarządzanego z grupy zasobów](../azure-resource-manager/manage-resources-portal.md#delete-resources) , a następnie usuwając grupę zasobów `SQLMI-Repl`. 
+Możesz wyczyścić zasoby platformy Azure, [usuwając zasoby wystąpienia zarządzanego z grupy zasobów](../azure-resource-manager/management/manage-resources-portal.md#delete-resources) , a następnie usuwając grupę zasobów `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Zobacz też
 
 - [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md)
+- [Samouczek: Konfigurowanie replikacji transakcyjnej między wydawcą MI a subskrybentem SQL Server](sql-database-managed-instance-configure-replication-tutorial.md)
 - [Co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)

@@ -2,19 +2,15 @@
 title: Hybrydowy proces roboczy elementu runbook usługi Azure Automation (Windows)
 description: Ten artykuł zawiera informacje na temat instalowania Azure Automation hybrydowego procesu roboczego elementu Runbook, którego można użyć do uruchamiania elementów Runbook na komputerach z systemem Windows w lokalnym centrum danych lub w środowisku chmury.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 11/25/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: cd599fcfe403d64483e6b4db869b93b26f5db754
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 696885fa3e082ae7096954fb55b17da5b77788bc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418896"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
 
@@ -22,7 +18,13 @@ Za pomocą funkcji hybrydowego procesu roboczego elementu Runbook programu Azure
 
 ## <a name="installing-the-windows-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook systemu Windows
 
-Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook systemu Windows, można użyć dwóch metod. Zalecaną metodą jest użycie elementu Runbook usługi Automation w celu całkowitego zautomatyzowania procesu konfigurowania komputera z systemem Windows. Druga metoda to procedura krok po kroku, aby ręcznie zainstalować i skonfigurować rolę.
+Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook systemu Windows, można użyć jednej z trzech następujących metod:
+
+* W przypadku maszyn wirtualnych platformy Azure należy zainstalować agenta Log Analytics dla systemu Windows przy użyciu [rozszerzenia maszyny wirtualnej dla systemu Windows](../virtual-machines/extensions/oms-windows.md). Rozszerzenie instaluje agenta Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyny wirtualne w istniejącym obszarze roboczym Log Analytics przy użyciu szablonu Azure Resource Manager lub programu PowerShell. Po zainstalowaniu agenta można dodać maszynę wirtualną do grupy hybrydowych procesów roboczych elementu Runbook na Twoim koncie usługi Automation, wykonując **krok 4** w sekcji [wdrażanie ręczne](#manual-deployment) poniżej.
+
+* Użyj elementu Runbook usługi Automation, aby całkowicie zautomatyzować proces konfigurowania komputera z systemem Windows. Jest to zalecana metoda dla maszyn w centrum danych lub w innym środowisku chmury.
+
+* Postępuj zgodnie z procedurą krok po kroku, aby ręcznie zainstalować i skonfigurować rolę hybrydowego procesu roboczego elementu Runbook na maszynie wirtualnej spoza platformy Azure.
 
 > [!NOTE]
 > Aby zarządzać konfiguracją serwerów obsługujących rolę hybrydowego procesu roboczego elementu Runbook z konfiguracją żądanego stanu (DSC), należy dodać je jako węzły DSC.
@@ -39,13 +41,13 @@ Minimalne wymagania dla hybrydowego procesu roboczego elementu Runbook systemu W
 Aby uzyskać więcej wymagań sieci dla hybrydowego procesu roboczego elementu Runbook, zobacz [Konfigurowanie sieci](automation-hybrid-runbook-worker.md#network-planning).
 
 Aby uzyskać więcej informacji na temat dołączania serwerów do zarządzania za pomocą DSC, zobacz [dołączanie maszyn w celu zarządzania przez Azure Automation DSC](automation-dsc-onboarding.md).
-Jeśli włączysz [Update Management rozwiązanie](../operations-management-suite/oms-solution-update-management.md), każdy komputer z systemem Windows połączony z obszarem roboczym usługi Azure log Analytics zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook, aby obsługiwał elementy Runbook zawarte w tym rozwiązaniu. Nie jest on jednak zarejestrowany dla żadnych grup hybrydowych procesów roboczych, które są już zdefiniowane w Twoim koncie usługi Automation. 
+Po włączeniu [rozwiązania Update Management](../operations-management-suite/oms-solution-update-management.md)każdy komputer z systemem Windows połączony z obszarem roboczym log Analytics zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook w celu obsługi elementów Runbook zawartych w tym rozwiązaniu. Nie jest on jednak zarejestrowany dla żadnych grup hybrydowych procesów roboczych, które są już zdefiniowane w Twoim koncie usługi Automation. 
 
 Komputer można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, o ile używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcjonalność została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
 
 Po pomyślnym wdrożeniu programu Runbook Worker przejrzyj temat [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md) , aby dowiedzieć się, jak skonfigurować elementy Runbook do automatyzowania procesów w lokalnym centrum danych lub w innym środowisku chmury.
 
-### <a name="automated-deployment"></a>Automatyczne wdrażanie
+### <a name="automated-deployment"></a>Wdrożenie zautomatyzowane
 
 Wykonaj następujące kroki, aby zautomatyzować instalację i konfigurację roli hybrydowego procesu roboczego systemu Windows:
 
@@ -81,7 +83,7 @@ Wykonaj następujące kroki, aby zautomatyzować instalację i konfigurację rol
 
 5. Po zakończeniu działania skryptu na stronie **grupy hybrydowych procesów roboczych** zostanie wyświetlona nowa grupa i liczba członków. Jeśli jest to istniejąca Grupa, liczba członków jest zwiększana. Możesz wybrać grupę z listy na stronie **grupy hybrydowych procesów roboczych** i wybrać kafelek **hybrydowe procesy** robocze. Na stronie **hybrydowe procesy robocze** zobaczysz każdego członka grupy na liście.
 
-### <a name="manual-deployment"></a>Wdrażanie ręczne
+### <a name="manual-deployment"></a>Wdrożenie ręczne
 
 Wykonaj pierwsze dwa kroki w środowisku automatyzacji, a następnie powtórz pozostałe kroki dla każdego komputera podrzędnego.
 
@@ -89,29 +91,37 @@ Wykonaj pierwsze dwa kroki w środowisku automatyzacji, a następnie powtórz po
 
 #### <a name="1-create-a-log-analytics-workspace"></a>1. Utwórz obszar roboczy Log Analytics
 
-Jeśli nie masz jeszcze obszaru roboczego Log Analytics, utwórz go, korzystając z instrukcji w [obszarze Zarządzanie obszarem roboczym](../azure-monitor/platform/manage-access.md). Możesz użyć istniejącego obszaru roboczego, jeśli już istnieje.
+Jeśli nie masz jeszcze obszaru roboczego Log Analytics, przed utworzeniem obszaru roboczego zapoznaj się z tematem [wskazówki dotyczące projektowania dziennika Azure monitor](../azure-monitor/platform/design-logs-deployment.md) . 
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Dodaj rozwiązanie automatyzacji do obszaru roboczego Log Analytics
 
-Rozwiązanie Azure Monitor Automation Logs dodaje funkcje dla Azure Automation, w tym obsługę hybrydowego procesu roboczego elementu Runbook. Po dodaniu rozwiązania do obszaru roboczego automatycznie wypychanie składników procesu roboczego do komputera agenta, który zostanie zainstalowany w następnym kroku.
+Rozwiązanie Automation dodaje funkcjonalność dla Azure Automation, w tym obsługę hybrydowego procesu roboczego elementu Runbook. Po dodaniu rozwiązania do obszaru roboczego Log Analytics automatycznie wypychanie składników procesu roboczego do komputera agenta, który zostanie zainstalowany w następnym kroku.
 
-Aby dodać rozwiązanie Azure Monitor **usługi Automation** do obszaru roboczego, uruchom następujące polecenie programu PowerShell.
+Aby dodać rozwiązanie **Automation** do obszaru roboczego, uruchom następujące polecenie programu PowerShell.
 
 ```powershell-interactive
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
 ```
 
-#### <a name="3-install-the-microsoft-monitoring-agent"></a>3. Zainstaluj Microsoft Monitoring Agent
+#### <a name="3-install-the-log-analytics-agent-for-windows"></a>3. Zainstaluj agenta Log Analytics dla systemu Windows
 
-Microsoft Monitoring Agent łączy komputery z dziennikami Azure Monitor. Po zainstalowaniu agenta na komputerze lokalnym i nawiązaniu połączenia z obszarem roboczym program automatycznie pobiera składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
+Agent Log Analytics dla systemu Windows łączy komputery z obszarem roboczym Azure Monitor Log Analytics. Po zainstalowaniu agenta na komputerze i nawiązaniu połączenia z obszarem roboczym program automatycznie pobiera składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
 
-Aby zainstalować agenta na komputerze lokalnym, postępuj zgodnie z instrukcjami na stronie [łączenie komputerów z systemem Windows w celu Azure monitor dzienników](../log-analytics/log-analytics-windows-agent.md). Można powtórzyć ten proces dla wielu komputerów, aby dodać wielu procesów roboczych do środowiska.
+Aby zainstalować agenta na komputerze, postępuj zgodnie z instrukcjami na stronie [łączenie komputerów z systemem Windows w celu Azure monitor dzienników](../log-analytics/log-analytics-windows-agent.md). Można powtórzyć ten proces dla wielu komputerów, aby dodać wielu procesów roboczych do środowiska.
 
-Gdy Agent pomyślnie połączył się z dziennikami Azure Monitor, zostanie wyświetlony na karcie **podłączone źródła** na stronie **Ustawienia** usługi log Analytics. Można sprawdzić, czy Agent prawidłowo pobrał rozwiązanie automatyzacji, gdy ma folder o nazwie **AzureAutomationFiles** w folderze C:\Program Files\Microsoft monitoring Agent\Agent. Aby potwierdzić wersję hybrydowego procesu roboczego elementu Runbook, można przejść do katalogu C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation\ i zanotować podfolder \\*wersji* .
+Gdy Agent pomyślnie połączył się z obszarem roboczym Log Analytics, po kilku minutach można uruchomić następujące zapytanie, aby sprawdzić, czy wysyła dane pulsu do obszaru roboczego:
+
+```kusto
+Heartbeat 
+| where Category == "Direct Agent" 
+| where TimeGenerated > ago(30m)
+```
+
+W zwróconych wynikach wyszukiwania powinny być widoczne rekordy pulsu dla komputera, który wskazuje, że jest on połączony i zgłaszany do usługi. Rekord pulsu jest domyślnie przekazywany z każdego agenta do przypisanego do niego obszaru roboczego. Można sprawdzić, czy Agent prawidłowo pobrał rozwiązanie automatyzacji, gdy ma folder o nazwie **AzureAutomationFiles** w folderze C:\Program Files\Microsoft monitoring Agent\Agent. Aby potwierdzić wersję hybrydowego procesu roboczego elementu Runbook, można przejść do katalogu C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation\ i zanotować podfolder \\*wersji* .
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Zainstaluj środowisko Runbook i Połącz się z Azure Automation
 
-Po dodaniu agenta do dzienników Azure Monitor, rozwiązanie Automation wypycha moduł **HybridRegistration** PowerShell, który zawiera polecenie cmdlet **Add-HybridRunbookWorker** . To polecenie cmdlet służy do instalowania środowiska Runbook na komputerze i rejestrowania go w Azure Automation.
+W przypadku skonfigurowania agenta w celu raportowania do obszaru roboczego Log Analytics rozwiązanie Automation wypchnij moduł **HybridRegistration** PowerShell, który zawiera polecenie cmdlet **Add-HybridRunbookWorker** . To polecenie cmdlet służy do instalowania środowiska Runbook na komputerze i rejestrowania go w Azure Automation.
 
 Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenia, aby zaimportować moduł:
 

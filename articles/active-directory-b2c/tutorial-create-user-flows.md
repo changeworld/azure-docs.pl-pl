@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063398"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425501"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Samouczek: Tworzenie przepływów użytkowników w Azure Active Directory B2C
 
-W aplikacjach mogą istnieć przepływy [użytkowników](active-directory-b2c-reference-policies.md) , które umożliwiają użytkownikom rejestrowanie się, logowanie lub Zarządzanie profilem. Możesz tworzyć wiele przepływów użytkowników różnych typów w dzierżawie Azure Active Directory B2C (Azure AD B2C) i używać ich w aplikacjach zgodnie z potrzebami. Przepływy użytkowników mogą być ponownie używane między aplikacjami.
+W aplikacjach mogą istnieć [przepływy użytkowników](active-directory-b2c-reference-policies.md) , które umożliwiają użytkownikom rejestrowanie się, logowanie lub Zarządzanie profilem. Możesz tworzyć wiele przepływów użytkowników różnych typów w dzierżawie Azure Active Directory B2C (Azure AD B2C) i używać ich w aplikacjach zgodnie z potrzebami. Przepływy użytkowników mogą być ponownie używane między aplikacjami.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -40,13 +40,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przepływ użytkowników rejestracji i logowania obsługuje zarówno środowisko tworzenia konta, jak i logowania przy użyciu jednej konfiguracji. Użytkownicy Twojej aplikacji nie wyłączają właściwej ścieżki w zależności od kontekstu.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 
-    ![Filtr katalogu i subskrypcji z wybraną dzierżawą B2C](./media/tutorial-create-user-flows/switch-directories.PNG)
+    ![B2C dzierżawy, katalogu i subskrypcji, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
-1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-1. W menu po lewej stronie w obszarze **zasady**wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję **Nowy przepływ użytkownika**.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. W obszarze **zasady**wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję **Nowy przepływ użytkownika**.
 
     ![Strona przepływy użytkownika w portalu z wyróżnionym przyciskiem nowy przepływ użytkownika](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -68,7 +68,7 @@ Przepływ użytkowników rejestracji i logowania obsługuje zarówno środowisko
 ### <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
 1. Wybierz utworzony przepływ użytkownika, aby otworzyć jego stronę przeglądu, a następnie wybierz pozycję **Uruchom przepływ użytkownika**.
-1. W przypadku **aplikacji**wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. Powinien być pokazywany `https://jwt.ms` **adres URL odpowiedzi** .
+1. W przypadku **aplikacji**wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. **Adres URL odpowiedzi** powinien zawierać `https://jwt.ms`.
 1. Kliknij pozycję **Uruchom przepływ użytkownika**, a następnie wybierz pozycję **Utwórz konto teraz**.
 
     ![Uruchom stronę przepływu użytkownika w portalu z wyróżnionym przyciskiem Uruchom przepływ użytkownika](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
@@ -82,17 +82,17 @@ Przepływ użytkowników rejestracji i logowania obsługuje zarówno środowisko
 
 Jeśli chcesz umożliwić użytkownikom edytowanie ich profilu w aplikacji, Użyj profilu użytkownika edytującego profil.
 
-1. W menu po lewej stronie Przegląd Azure AD B2C dzierżawy wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję **Nowy przepływ użytkownika**.
-1. Wybierz pozycję **Edytowanie profilu** przepływ użytkownika na karcie zalecane.
+1. W menu strony Przegląd dzierżawy Azure AD B2C wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję **Nowy przepływ użytkownika**.
+1. Wybierz pozycję **Edytowanie profilu** przepływ użytkownika na karcie **zalecane** .
 1. Wprowadź **nazwę** przepływu użytkownika. Na przykład *profileediting1*.
 1. W przypadku **dostawców tożsamości**wybierz opcję **Logowanie do konta lokalnego**.
-1. W polu **atrybuty użytkownika**wybierz atrybuty, które mają być edytowane przez klienta w swoim profilu. Na przykład wybierz pozycję **Pokaż więcej**, a następnie wybierz zarówno atrybuty, jak i oświadczenia dotyczące **nazwy wyświetlanej** i **stanowiska.** Kliknij przycisk **OK**.
+1. W polu **atrybuty użytkownika**wybierz atrybuty, które mają być edytowane przez klienta w swoim profilu. Na przykład wybierz pozycję **Pokaż więcej**, a następnie wybierz zarówno atrybuty, **jak i oświadczenia**dotyczące **nazwy wyświetlanej** i stanowiska. Kliknij przycisk **OK**.
 1. Kliknij przycisk **Utwórz** , aby dodać przepływ użytkownika. Prefiks *B2C_1* jest automatycznie dołączany do nazwy.
 
 ### <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
 1. Wybierz utworzony przepływ użytkownika, aby otworzyć jego stronę przeglądu, a następnie wybierz pozycję **Uruchom przepływ użytkownika**.
-1. W przypadku **aplikacji**wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. Powinien być pokazywany `https://jwt.ms` **adres URL odpowiedzi** .
+1. W przypadku **aplikacji**wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. **Adres URL odpowiedzi** powinien zawierać `https://jwt.ms`.
 1. Kliknij pozycję **Uruchom przepływ użytkownika**, a następnie zaloguj się przy użyciu utworzonego wcześniej konta.
 1. Teraz można zmienić nazwę wyświetlaną i stanowisko użytkownika. Kliknij pozycję **Kontynuuj**. Token jest zwracany do `https://jwt.ms` i powinien być wyświetlony.
 
@@ -100,8 +100,8 @@ Jeśli chcesz umożliwić użytkownikom edytowanie ich profilu w aplikacji, Uży
 
 Aby umożliwić użytkownikom aplikacji Resetowanie hasła, należy użyć przepływu użytkownika resetowania hasła.
 
-1. W menu po lewej stronie wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję **Nowy przepływ użytkownika**.
-1. Wybierz przepływ użytkownika **resetowania hasła** na karcie zalecane.
+1. W menu przegląd Azure AD B2C dzierżawy wybierz pozycję **przepływy użytkownika (zasady)** , a następnie wybierz pozycję **Nowy przepływ użytkownika**.
+1. Wybierz przepływ użytkownika **resetowania hasła** na karcie **zalecane** .
 1. Wprowadź **nazwę** przepływu użytkownika. Na przykład *passwordreset1*.
 1. W przypadku **dostawców tożsamości**Włącz **Resetowanie hasła przy użyciu adresu e-mail**.
 1. W obszarze oświadczenia aplikacji kliknij przycisk **Pokaż więcej** i wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji. Na przykład wybierz pozycję **Identyfikator obiektu użytkownika**.
@@ -111,7 +111,7 @@ Aby umożliwić użytkownikom aplikacji Resetowanie hasła, należy użyć przep
 ### <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
 1. Wybierz utworzony przepływ użytkownika, aby otworzyć jego stronę przeglądu, a następnie wybierz pozycję **Uruchom przepływ użytkownika**.
-1. W przypadku **aplikacji**wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. Powinien być pokazywany `https://jwt.ms` **adres URL odpowiedzi** .
+1. W przypadku **aplikacji**wybierz aplikację sieci Web o nazwie *webapp1* , która została wcześniej zarejestrowana. **Adres URL odpowiedzi** powinien zawierać `https://jwt.ms`.
 1. Kliknij pozycję **Uruchom przepływ użytkownika**, Sprawdź adres e-mail konta, które zostało utworzone wcześniej, a następnie wybierz pozycję **Kontynuuj**.
 1. Masz teraz możliwość zmiany hasła dla użytkownika. Zmień hasło i wybierz pozycję **Kontynuuj**. Token jest zwracany do `https://jwt.ms` i powinien być wyświetlony.
 

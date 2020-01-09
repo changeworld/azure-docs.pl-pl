@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: samouczek jednostek złożonych — LUIS'
 titleSuffix: Azure Cognitive Services
-description: Dodaj złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
+description: W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447945"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Samouczek: grupowanie i wyodrębnianie powiązanych danych
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
@@ -28,8 +28,6 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 * Są ze sobą powiązane.
 * Używać różnych typów jednostek.
 * Te informacje należy grupować i przetwarzać jako całość w aplikacji klienckiej.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
@@ -46,9 +44,10 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 ## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 
-1.  Pobierz i Zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) z samouczka listy.
+1.  Pobierz i Zapisz [plik JSON aplikacji](
+https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json?raw=true) z samouczka listy.
 
-2. Zaimportuj plik JSON do nowej aplikacji.
+2. Zaimportuj plik JSON do nowej aplikacji przy użyciu [portalu Luis](https://www.luis.ai).
 
 3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `composite`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371398"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -56,16 +56,21 @@ Użyj poniższego polecenia, aby uruchomić test porównawczy wydajności.
 | **Składnia** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Przykład** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
+> [!TIP]
+> Ten przykład obejmuje argumenty ścieżki z pojedynczym cudzysłowem (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
+
 To polecenie uruchamia wzorzec wydajności przez przekazywanie danych testowych do określonego miejsca docelowego. Dane testowe są generowane w pamięci, przekazane do miejsca docelowego, a następnie usuwane z lokalizacji docelowej po zakończeniu testu. Można określić, ile plików ma być generowanych i jakie rozmiary mają być używane przez opcjonalne parametry polecenia.
+
+Aby uzyskać szczegółowe dokumenty referencyjne, zobacz [AzCopy kanapie](storage-ref-azcopy-bench.md).
 
 Aby wyświetlić szczegółowe wskazówki dotyczące pomocy dla tego polecenia, wpisz `azcopy bench -h` a następnie naciśnij klawisz ENTER.
 
 ### <a name="optimize-throughput"></a>Optymalizowanie przepływności
 
-Możesz użyć flagi `cap-mbps`, aby umieścić górną granicę współczynnika danych przepływności. Na przykład następujące polecenie powoduje wypróbowanie przepustowości w `10` megabitów (MB) na sekundę.
+Możesz użyć flagi `cap-mbps` w poleceniach, aby umieścić górny limit szybkości danych przepływności. Na przykład następujące polecenie wznawia przepływność zadań i `10` megabitów (MB) na sekundę. 
 
 ```azcopy
-azcopy --cap-mbps 10
+azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
 Przepływność może ulec zmniejszeniu podczas przesyłania małych plików. Przepustowość można zwiększyć, ustawiając zmienną środowiskową `AZCOPY_CONCURRENCY_VALUE`. Ta zmienna określa liczbę równoczesnych żądań, które mogą wystąpić.  
@@ -146,6 +151,9 @@ Użyj poniższego polecenia, aby wznowić zadanie zakończone niepowodzeniem lub
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
+
+> [!TIP]
+> Argumenty ścieżki otaczającej, takie jak token SAS, z pojedynczym cudzysłowem (' '). Używaj pojedynczych cudzysłowów we wszystkich powłokach poleceń z wyjątkiem powłoki poleceń systemu Windows (cmd. exe). Jeśli używasz powłoki poleceń systemu Windows (cmd. exe), ujmij argumenty ścieżki z podwójnymi cudzysłowami ("") zamiast pojedynczego cudzysłowu ("").
 
 Po wznowieniu zadania AzCopy przegląda plik planu zadań. Plik planu zawiera listę wszystkich plików, które zostały zidentyfikowane do przetwarzania podczas pierwszego utworzenia zadania. Po wznowieniu zadania AzCopy podejmie próbę przetransferowania wszystkich plików wymienionych w pliku planu, który nie został jeszcze przeniesiony.
 

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372214"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Tworzenie lub usuwanie kontenera w usłudze Azure Storage przy użyciu platformy .NET
 
@@ -126,7 +126,7 @@ Aby usunąć kontener w programie .NET, należy użyć jednej z następujących 
 
 Metody **delete** i **DeleteAsync** zgłaszają wyjątek, jeśli kontener nie istnieje.
 
-Metody **DeleteIfNotExists** i **DeleteIfNotExistsAsync** zwracają wartość logiczną wskazującą, czy kontener został usunięty. Jeśli określony kontener nie istnieje, wówczas te metody zwracają **wartość false** , aby wskazać, że kontener nie został usunięty.
+Metody **DeleteIfExists** i **DeleteIfExistsAsync** zwracają wartość logiczną wskazującą, czy kontener został usunięty. Jeśli określony kontener nie istnieje, wówczas te metody zwracają **wartość false** , aby wskazać, że kontener nie został usunięty.
 
 Po usunięciu kontenera nie można utworzyć kontenera o tej samej nazwie przez co najmniej 30 sekund i prawdopodobnie dłużej. Podczas usuwania kontenera próba utworzenia kontenera o takiej samej nazwie zakończy się niepowodzeniem z kodem błędu HTTP 409 (konflikt). Wszystkie inne operacje dotyczące kontenera lub obiektów blob, które zawiera, będą kończyć się niepowodzeniem z kodem błędu HTTP 404 (nie znaleziono), gdy kontener jest usuwany.
 

@@ -1,6 +1,6 @@
 ---
 title: Sprawdź stan, skonfiguruj rejestrowanie i Pobierz alerty
-description: Monitoruj stan, rejestruj dane diagnostyczne i Konfiguruj alerty dla Azure Logic Apps
+description: Monitorowanie stanu, Konfigurowanie rejestrowania i włączanie alertów w celu diagnozowania błędów i problemów w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/21/2017
-ms.openlocfilehash: ca1e2836ddfb38de640a5a90cf53e416b8923c04
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ce29d6eb7bfefea6d9030d4cbb162936ff60c83d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428797"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorowanie stanu, Konfigurowanie rejestrowania diagnostyki i włączanie alertów dla Azure Logic Apps
 
@@ -33,7 +33,7 @@ Aby otrzymywać powiadomienia o błędach lub innych możliwych problemach, skon
 
 2. Wybierz aplikację logiki, a następnie wybierz pozycję **Przegląd**.
 
-   Azure Portal pokazuje historię uruchamiania i historię wyzwalania dla aplikacji logiki. Na przykład:
+   Azure Portal pokazuje historię uruchamiania i historię wyzwalania dla aplikacji logiki. Przykład:
 
    ![Historia uruchamiania aplikacji logiki i historii wyzwalacza](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -47,7 +47,7 @@ Aby otrzymywać powiadomienia o błędach lub innych możliwych problemach, skon
 
 3. Aby wyświetlić kroki z określonego przebiegu, w obszarze **historia uruchamiania**wybierz opcję ten przebieg. 
 
-   Widok monitora przedstawia każdy krok w tym przebiegu. Na przykład:
+   Widok monitora przedstawia każdy krok w tym przebiegu. Przykład:
 
    ![Akcje dla określonego przebiegu](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -57,7 +57,7 @@ Aby otrzymywać powiadomienia o błędach lub innych możliwych problemach, skon
 
    Można na przykład uzyskać **Identyfikator korelacji**uruchomienia, który może być potrzebny, gdy UŻYJESZ [interfejsu API REST dla Logic Apps](https://docs.microsoft.com/rest/api/logic).
 
-5. Aby uzyskać szczegółowe informacje na temat określonego kroku, należy wybrać ten krok. Teraz możesz przejrzeć szczegóły, takie jak dane wejściowe, wyjścia i wszelkie błędy, które wystąpiły w tym kroku. Na przykład:
+5. Aby uzyskać szczegółowe informacje na temat określonego kroku, należy wybrać ten krok. Teraz możesz przejrzeć szczegóły, takie jak dane wejściowe, wyjścia i wszelkie błędy, które wystąpiły w tym kroku. Przykład:
 
    ![Szczegóły kroku](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -158,7 +158,7 @@ Wraz z Azure Monitorymi dziennikami możesz dołożyć, jak używać danych diag
 * [Archiwizowanie dzienników Diagnostyka Azure w usłudze Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Przesyłanie strumieniowe dzienników Diagnostyka Azure do platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Następnie można uzyskać monitorowanie w czasie rzeczywistym, korzystając z danych telemetrycznych i analiz z innych usług, takich jak [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [Power BI](../azure-monitor/platform/powerbi.md). Na przykład:
+Następnie można uzyskać monitorowanie w czasie rzeczywistym, korzystając z danych telemetrycznych i analiz z innych usług, takich jak [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [Power BI](../azure-monitor/platform/powerbi.md). Przykład:
 
 * [Przesyłanie strumieniowe danych z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analizowanie danych przesyłanych strumieniowo za pomocą Stream Analytics i tworzenie pulpitu nawigacyjnego analizy w czasie rzeczywistym w programie Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

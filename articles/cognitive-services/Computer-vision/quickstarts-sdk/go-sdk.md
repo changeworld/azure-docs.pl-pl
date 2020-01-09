@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: przetwarzanie obrazówa Biblioteka kliencka dla języka go | Microsoft Docs'
+title: 'Szybki Start: przetwarzanie obrazów bibliotekę kliencką dla języka go'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką klienta przetwarzanie obrazów dla języka go.
+description: Zacznij korzystać z biblioteki klienta przetwarzanie obrazów dla języka go w tym przewodniku Szybki Start.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/22/2019
 ms.author: pafarley
-ms.openlocfilehash: f05ef80d34d1c0635bdcdca244aacba6185565fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382313"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Szybki Start: przetwarzanie obrazów bibliotekę kliencką dla języka go
 

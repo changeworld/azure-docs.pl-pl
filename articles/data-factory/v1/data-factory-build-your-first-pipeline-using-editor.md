@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 012b13c440b8d0873e387c7d185803dc07852bf7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683017"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439011"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Samouczek: tworzenie pierwszej fabryki danych przy użyciu witryny Azure Portal
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Fabryka danych może obejmować jeden lub wiele potoków. Potok może obejmować
 
 Aby utworzyć fabrykę danych, wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. Wybierz pozycję **Nowy** > **Dane i analiza** > **Fabryka danych**.
 
@@ -110,7 +110,7 @@ W tym kroku opisano łączenie konta magazynu z fabryką danych. Na potrzeby teg
 
    ![Połączona usługa Storage](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Zastąp **nazwę konta** nazwą konta magazynu. Zastąp **klucz konta** kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zapoznaj się z informacjami na temat sposobów wyświetlania, kopiowania i ponownego generowania kluczy dostępu do magazynu podanymi w sekcji [Zarządzanie kontem magazynu](../../storage/common/storage-account-manage.md#access-keys).
+1. Zastąp **nazwę konta** nazwą konta magazynu. Zastąp **klucz konta** kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
 
 1. Wybierz przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
@@ -211,11 +211,11 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
    | Właściwość | Zagnieżdżone w | Opis |
    |:--- |:--- |:--- |
    | type | properties |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w magazynie obiektów blob. |
-   | linkedServiceName | Formatowanie |Odnosi się do utworzonego wcześniej elementu AzureStorageLinkedService. |
+   | linkedServiceName | format |Odnosi się do utworzonego wcześniej elementu AzureStorageLinkedService. |
    | folderPath | typeProperties | Określa kontener obiektów blob oraz folder, który zawiera wejściowe obiekty blob. | 
    | fileName | typeProperties |Ta właściwość jest opcjonalna. Jeśli pominiesz tę właściwość, zostaną wybrane wszystkie pliki z folderu folderPath. W tym samouczku zostanie przetworzony tylko plik input.log. |
-   | type | Formatowanie |Pliki dziennika są w formacie tekstowym, więc używana jest wartość **TextFormat**. |
-   | columnDelimiter | Formatowanie |Kolumny w plikach dziennika są rozdzielane przecinkami (`,`). |
+   | type | format |Pliki dziennika są w formacie tekstowym, więc używana jest wartość **TextFormat**. |
+   | columnDelimiter | format |Kolumny w plikach dziennika są rozdzielane przecinkami (`,`). |
    | frequency/interval | availability |Właściwość frequency (częstotliwość) jest ustawiona na wartość **Miesiąc**, a wartość interwału wynosi **1**, co oznacza, że wycinki wejściowe są dostępne co miesiąc. |
    | external | properties | Ta właściwość ma wartość **true** (prawda), jeśli dane wejściowe nie są generowane przez ten potok. W tym samouczku plik input.log nie jest generowany w tym potoku, dlatego możemy ustawić właściwość na **true**. |
 
@@ -434,7 +434,7 @@ W tym samouczku opisano tworzenie fabryki danych do przetwarzania danych przez u
 ## <a name="next-steps"></a>Następne kroki
 W tym artykule opisano tworzenie potoku za pomocą działania przekształcenia (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight na żądanie. Aby dowiedzieć się, jak skopiować dane z magazynu obiektów blob do bazy danych SQL za pomocą działania kopiowania, zobacz [Tutorial: Copy data from Blob storage to SQL Database (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database)](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 | Temat | Opis |
 |:--- |:--- |
 | [Potoki](data-factory-create-pipelines.md) |Ten artykuł ułatwia zapoznanie się z potokami i działaniami w usłudze Data Factory oraz ze sposobem konstruowania za ich pomocą kompletnych przepływów pracy opartych na danych na potrzeby scenariusza lub firmy. |

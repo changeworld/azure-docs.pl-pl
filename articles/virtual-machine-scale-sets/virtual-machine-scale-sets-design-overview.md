@@ -1,7 +1,7 @@
 ---
-title: Zagadnienia dotyczące projektu zestawów skalowania maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat zagadnień projektowych dotyczących usługi Azure Virtual Machine Scale Sets
-keywords: zestawy skalowania maszyn wirtualnych systemu Linux maszyny wirtualnej,
+title: Zagadnienia dotyczące projektowania Virtual Machine Scale Sets platformy Azure
+description: Poznaj zagadnienia dotyczące projektowania Virtual Machine Scale Sets platformy Azure. Porównaj funkcje zestawów skalowania z funkcjami maszyn wirtualnych.
+keywords: Maszyna wirtualna z systemem Linux, zestawy skalowania maszyn wirtualnych
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,62 +16,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4238e96465a1fd7ad3e73c62134437cd819fba8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618476"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359447"
 ---
-# <a name="design-considerations-for-scale-sets"></a>Zagadnienia dotyczące projektowania dla zestawów skalowania
-W tym artykule omówiono zagadnienia dotyczące projektowania dla zestawów skalowania maszyn wirtualnych. Aby dowiedzieć się, jak co to są zestawy skalowania maszyn wirtualnych, zapoznaj się [omówienie zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-overview.md).
+# <a name="design-considerations-for-scale-sets"></a>Zagadnienia dotyczące projektowania zestawów skalowania
+W tym artykule omówiono zagadnienia dotyczące projektowania Virtual Machine Scale Sets. Aby uzyskać informacje o tym, co Virtual Machine Scale Sets, zobacz [omówienie Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md).
 
-## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Kiedy należy używać skalowania zestawy zamiast maszyn wirtualnych?
-Ogólnie rzecz biorąc zestawy skalowania są przydatne w przypadku wdrożenia o wysokiej dostępności infrastruktury gdzie zestawu maszyn ma podobnej konfiguracji. Jednak niektóre funkcje są dostępne tylko w zestawach skalowania, podczas gdy inne funkcje są dostępne tylko w maszynach wirtualnych. Aby można było podjąć świadomą decyzję o tym, kiedy należy używać tych technologii, należy najpierw zapoznaj się niektóre z najczęściej używanych funkcji, które są dostępne w zestawach skalowania, ale nie maszyn wirtualnych:
+## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Kiedy używać zestawów skalowania zamiast maszyn wirtualnych?
+Ogólnie zestawy skalowania są przydatne do wdrażania infrastruktury o wysokiej dostępności, w której zestaw maszyn ma podobną konfigurację. Jednak niektóre funkcje są dostępne tylko w zestawach skalowania, a inne funkcje są dostępne tylko na maszynach wirtualnych. W celu podjęcia świadomej decyzji o tym, kiedy należy używać poszczególnych technologii, należy najpierw zapoznać się z najczęściej używanymi funkcjami, które są dostępne w zestawach skalowania, ale nie na maszynach wirtualnych:
 
 ### <a name="scale-set-specific-features"></a>Funkcje specyficzne dla zestawu skalowania
 
-- Po określeniu konfiguracji zestawu skalowania, możesz zaktualizować *pojemności* właściwości, aby wdrożyć więcej maszyn wirtualnych w sposób równoległy. Ten proces jest lepsza niż pisania skryptu do organizowania wdrożenie wielu maszyn wirtualnych z poszczególnych równolegle.
-- Możesz [Użyj skalowania automatycznego platformy Azure, aby automatycznie skalować zestaw skalowania](./virtual-machine-scale-sets-autoscale-overview.md) , ale nie do poszczególnych maszyn wirtualnych.
-- Możesz [maszyn wirtualnych w zestawie skalowania odtworzenia z obrazu](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) , ale [nie do poszczególnych maszyn wirtualnych](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Możesz [overprovision](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) zestawu skalowania maszyn wirtualnych do zwiększenia niezawodności i szybciej czas wdrażania. Nie można overprovision poszczególne maszyny wirtualne, chyba że napisany został kod niestandardowy do wykonania tej akcji.
-- Można określić [zasad uaktualniania](./virtual-machine-scale-sets-upgrade-scale-set.md) ułatwia wdrażanie uaktualnień na maszynach wirtualnych w zestawie skalowania. Z poszczególnymi maszynami wirtualnymi użytkownik musi organizować aktualizacje samodzielnie.
+- Po określeniu konfiguracji zestawu skalowania można zaktualizować właściwość *pojemności* , aby wdrożyć więcej maszyn wirtualnych równolegle. Ten proces jest lepszy niż pisanie skryptu w celu organizowania wdrożenia wielu pojedynczych maszyn wirtualnych równolegle.
+- Funkcja automatycznego [skalowania platformy Azure umożliwia automatyczne skalowanie zestawu skalowania,](./virtual-machine-scale-sets-autoscale-overview.md) ale nie poszczególnych maszyn wirtualnych.
+- Możesz odtworzyć [maszyny wirtualne zestawu skalowania](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) , ale [nie poszczególne maszyny wirtualne](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+- Za pośrednictwem maszyn wirtualnych z zestawem [skalowania](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) można nadmiernie zaalokować czas wdrażania. Nie można nadmiernie zainicjować obsługi administracyjnej poszczególnych maszyn wirtualnych, chyba że utworzysz kod niestandardowy w celu wykonania tej akcji.
+- Można określić [zasady uaktualniania](./virtual-machine-scale-sets-upgrade-scale-set.md) , aby ułatwić wdrażanie uaktualnień między maszynami wirtualnymi w zestawie skalowania. W przypadku pojedynczych maszyn wirtualnych należy samodzielnie zorganizować aktualizacje.
 
-### <a name="vm-specific-features"></a>Funkcje specyficzne dla maszyny Wirtualnej
+### <a name="vm-specific-features"></a>Funkcje specyficzne dla maszyny wirtualnej
 
 Niektóre funkcje są obecnie dostępne tylko na maszynach wirtualnych:
 
-- Można przechwycić obrazu z pojedynczej maszyny Wirtualnej, ale nie z maszyny Wirtualnej w zestawie skalowania.
-- Można przeprowadzić migrację poszczególnych maszyn wirtualnych z natywnych dysków do usługi managed disks, ale nie można migrować wystąpień maszyn wirtualnych w zestawie skalowania.
-- Można przydzielić publiczne adresy IP protokołu IPv6 poszczególnych maszyn wirtualnych wirtualnych kart interfejsu sieciowego (NIC), ale nie można to zrobić dla wystąpień maszyn wirtualnych w zestawie skalowania. Możesz przypisać publiczne adresy IP protokołu IPv6 można załadować równoważenia przed poszczególne maszyny wirtualne lub zestawu skalowania maszyn wirtualnych.
+- Możesz przechwycić obraz z pojedynczej maszyny wirtualnej, ale nie z maszyny wirtualnej w zestawie skalowania.
+- Pojedynczą maszynę wirtualną można migrować z dysków natywnych do usługi Managed disks, ale nie można migrować wystąpień maszyn wirtualnych w zestawie skalowania.
+- Publiczne adresy IP można przypisać do poszczególnych kart interfejsów sieci wirtualnej (nic), ale nie można tego zrobić dla wystąpień maszyn wirtualnych w zestawie skalowania. Publiczne adresy IP można przypisać do modułów równoważenia obciążenia przed indywidualnymi maszynami wirtualnymi lub maszynami wirtualnymi zestawów skalowania.
 
-## <a name="storage"></a>Magazyn
+## <a name="storage"></a>Usługa Storage
 
-### <a name="scale-sets-with-azure-managed-disks"></a>Zestawy skalowania z usługą Azure Managed Disks
-Zestawy skalowania mogą być tworzone za pomocą [usługi Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) zamiast kont tradycyjnego magazynu platformy Azure. Dyski zarządzane zapewniają następujące korzyści:
-- Nie trzeba wstępnie utworzyć zbiór kont magazynów platformy Azure dla maszyn wirtualnych w zestawie skalowania.
-- Można zdefiniować [dołączone dyski danych](virtual-machine-scale-sets-attached-disks.md) dla maszyn wirtualnych w zestawie skalowania jest ustawiony.
-- Zestawy skalowania można skonfigurować w celu [obsługuje maksymalnie 1000 maszyn wirtualnych w zestawie](virtual-machine-scale-sets-placement-groups.md). 
+### <a name="scale-sets-with-azure-managed-disks"></a>Zestawy skalowania przy użyciu usługi Azure Managed Disks
+Zestawy skalowania można tworzyć przy użyciu [usługi azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) zamiast tradycyjnych kont usługi Azure Storage. Managed Disks zapewnić następujące korzyści:
+- Nie trzeba wstępnie tworzyć zestawu kont usługi Azure Storage dla maszyn wirtualnych zestawu skalowania.
+- Można zdefiniować [Dołączone dyski danych](virtual-machine-scale-sets-attached-disks.md) dla maszyn wirtualnych w zestawie skalowania.
+- Zestawy skalowania można skonfigurować tak, aby [obsługiwały do 1 000 maszyn wirtualnych w zestawie](virtual-machine-scale-sets-placement-groups.md). 
 
-Jeśli masz istniejący szablon, możesz również [zaktualizować szablon, aby używać usługi Managed Disks](virtual-machine-scale-sets-convert-template-to-md.md).
+Jeśli masz istniejący szablon, możesz również [zaktualizować szablon, aby użyć Managed disks](virtual-machine-scale-sets-convert-template-to-md.md).
 
 ### <a name="user-managed-storage"></a>Magazyn zarządzany przez użytkownika
-Zestaw skalowania, która nie jest zdefiniowana za pomocą usługi Azure Managed Disks opiera się na kontach magazynu utworzonych przez użytkownika do przechowywania dysków systemu operacyjnego maszyn wirtualnych w zestawie. Stosunek 20 maszyn wirtualnych na jedno konto magazynu lub mniej jest zalecane w celu osiągnięcia maksymalnej we/wy, a także korzystać z _celi_ (patrz poniżej). Zalecane jest również rozprzestrzeniać się znaki początkowe nazw kont magazynu w alfabetu. Robi pomaga rozkładu obciążenia w różnych systemach wewnętrznych. 
+Zestaw skalowania, który nie jest zdefiniowany za pomocą usługi Azure Managed Disks, jest oparty na kontach magazynu utworzonych przez użytkownika do przechowywania dysków systemu operacyjnego maszyn wirtualnych w zestawie. Zalecany jest współczynnik 20 maszyn wirtualnych na konto magazynu lub mniej, aby można było osiągnąć maksymalną operację we/wy i korzystać z nadmiernego _udostępniania_ (zobacz poniżej). Zalecane jest również rozłożenie początkowych znaków nazw kont magazynu w alfabecie. Takie działanie pomaga rozłożyć obciążenie między różne systemy wewnętrzne. 
 
 
 ## <a name="overprovisioning"></a>Celi
-Zestawy skalowania obecnie domyślnie "nadmiarową aprowizację" maszyn wirtualnych. Za pomocą nadmiarową aprowizację, włączone skalowania Ustaw faktycznie obroty więcej maszyn wirtualnych, niż prosili o, a następnie usuwa niepotrzebne maszyny wirtualne po żądana liczba maszyn wirtualnych są pomyślnie aprowizowane. Zwiększa inicjowania obsługi administracyjnej współczynniki sukcesu oraz skraca czas wdrażania. Nie są rozliczane dla dodatkowych maszyn wirtualnych i uwzględniane limitów przydziału.
+Zestawy skalowania są obecnie domyślne dla maszyn wirtualnych o nadmiernej aprowizacji. Dzięki włączeniu nadmiarowego udostępniania zestaw skalowania faktycznie zmniejsza liczbę maszyn wirtualnych, niż jest to wymagane, a następnie usuwa dodatkowe maszyny wirtualne po pomyślnym zainicjowaniu żądanej liczby maszyn wirtualnych. Nadmierne Inicjowanie obsługi administracyjnej zwiększa szybkość inicjowania obsługi i skraca czas wdrażania. Nie są naliczane opłaty za dodatkowe maszyny wirtualne i nie są one wliczane do limitów przydziałów.
 
-Chociaż celi poprawić współczynnikach pomyślnego inicjowania obsługi administracyjnej, może to spowodować mylące zachowanie dla aplikacji, która nie jest przeznaczony do obsługi dodatkowych maszyn wirtualnych znajdujących się, a następnie znikaniu. Aby włączyć celi, upewnij się, masz następujące parametry w szablonie: `"overprovision": "false"`. Więcej szczegółów można znaleźć w [dokumentację interfejsu API REST zestawu skalowania](/rest/api/virtualmachinescalesets/create-or-update-a-set).
+Mimo że nadmierne Inicjowanie obsługi administracyjnej zwiększa częstotliwość powodzeń aprowizacji, może to spowodować mylące zachowanie aplikacji, która nie jest przeznaczona do obsługi dodatkowych maszyn wirtualnych, które są wyświetlane, a następnie znika. Aby wyłączyć nadmierne Inicjowanie obsługi administracyjnej, upewnij się, że w szablonie znajduje się następujący ciąg: `"overprovision": "false"`. Więcej szczegółów można znaleźć w [dokumentacji interfejsu API REST zestawu skalowania](/rest/api/virtualmachinescalesets/create-or-update-a-set).
 
-Jeśli zestaw skalowania korzysta z magazynu zarządzanych przez użytkowników, a następnie wyłącz celi, może mieć więcej niż 20 maszyn wirtualnych na jedno konto magazynu, ale nie zaleca się do ponad 40 ze względu na wydajność operacji We/Wy. 
+Jeśli zestaw skalowania korzysta z magazynu zarządzanego przez użytkownika i zostanie wyłączone przeprowadzenie nadmiernej aprowizacji, możesz mieć więcej niż 20 maszyn wirtualnych na konto magazynu, ale nie zaleca się więcej niż 40 z przyczyn związanych z wydajnością we/wy. 
 
-## <a name="limits"></a>Limits
-Zestaw skalowania, zbudowany na podstawie obrazu z witryny Marketplace (nazywane również obrazu platformy) i skonfigurowany do używania usługi Azure Managed Disks obsługuje pojemności do 1000 maszyn wirtualnych. Jeśli skonfigurujesz skalowania jest ustawiana na obsługuje ponad 100 maszyn wirtualnych, nie wszystkie scenariusze działać tak samo, (na przykład Równoważenie obciążenia). Aby uzyskać więcej informacji, zobacz [Praca z zestawami skalowania dużą maszynę wirtualną](virtual-machine-scale-sets-placement-groups.md). 
+## <a name="limits"></a>Limity
+Zestaw skalowania zbudowany na obrazie witryny Marketplace (znany również jako obraz platformy) i skonfigurowany do korzystania z platformy Azure Managed Disks obsługuje pojemności do 1 000 maszyn wirtualnych. Jeśli skonfigurujesz zestaw skalowania do obsługi ponad 100 maszyn wirtualnych, nie wszystkie scenariusze działają tak samo (na przykład Równoważenie obciążenia). Aby uzyskać więcej informacji, zobacz [Praca z dużymi zestawami skalowania maszyn wirtualnych](virtual-machine-scale-sets-placement-groups.md). 
 
-Zestaw skonfigurowany z użyciem kont magazynu zarządzanych przez użytkowników skalowania jest obecnie ograniczona do 100 maszyn wirtualnych (i 5 kont magazynu są zalecane w przypadku tej skali).
+Zestaw skalowania skonfigurowany przy użyciu kont magazynu zarządzanych przez użytkownika jest obecnie ograniczony do 100 maszyn wirtualnych, a dla tej skali zaleca się 5 kont magazynu.
 
-Zestaw skalowania oparty na obraz niestandardowy (po jednym utworzone przez użytkownika) może mieć pojemności do 600 maszyny wirtualne skonfigurowane przy użyciu usługi Azure Managed disks. Jeśli zestaw skalowania jest skonfigurowany z kontami magazynu zarządzanych przez użytkowników, musi utworzyć wszystkie dyski VHD dysku systemu operacyjnego w ramach jednego konta magazynu. W rezultacie zaleca się maksymalną liczbę maszyn wirtualnych w zestawie skalowania, oparta na obrazach niestandardowych i magazynu zarządzanych przez użytkowników wynosi 20. Jeśli wyłączysz celi, możesz przejść do 40.
+Zestaw skalowania zbudowany na obrazie niestandardowym (utworzonym przez Ciebie) może mieć pojemność do 600 maszyn wirtualnych po skonfigurowaniu usługi Azure Managed Disks. Jeśli zestaw skalowania jest skonfigurowany przy użyciu kont magazynu zarządzanych przez użytkownika, należy utworzyć wszystkie dyski VHD dysków systemu operacyjnego w ramach jednego konta magazynu. W związku z tym Maksymalna zalecana liczba maszyn wirtualnych w zestawie skalowania zbudowanym na obrazie niestandardowym i zarządzanym przez użytkownika magazynem wynosi 20. Jeśli wyłączysz opcję nadmiernej aprowizacji, możesz przejść do 40.
 
-Aby uzyskać więcej maszyn wirtualnych nie zezwolić na te limity, należy wdrożyć wiele zestawów skalowania, jak pokazano w [ten szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
+W przypadku większej liczby maszyn wirtualnych niż te limity Zezwalaj na wdrożenie wielu zestawów skalowania, jak pokazano w [tym szablonie](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 

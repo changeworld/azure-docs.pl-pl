@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428987"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurowanie kont laboratorium w Azure Lab Services 
 W Azure Lab Services konto laboratorium jest kontenerem dla zarządzanych typów laboratorium, takich jak pracownie. Administrator konfiguruje konto laboratorium przy użyciu Azure Lab Services i zapewnia dostęp do właścicieli laboratorium, którzy mogą tworzyć laboratoria na koncie. W tym artykule opisano sposób tworzenia konta laboratorium, wyświetlania wszystkich kont laboratorium lub usuwania konta laboratorium.
@@ -30,7 +30,7 @@ Aby połączyć sieć wirtualną jako sieć równorzędną z siecią wirtualną 
 
     ![Strona konfiguracji laboratoriów](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
 1. W przypadku **równorzędnej sieci wirtualnej**wybierz opcję **włączone** lub **wyłączone**. Wartość domyślna jest **wyłączona**. Aby włączyć równorzędną sieć wirtualną, wykonaj następujące czynności: 
-    1. Wybierz pozycję **włączone**.
+    1. Wybierz pozycję **Włączone**.
     2. Wybierz **sieć wirtualną** z listy rozwijanej. 
 3. Wybierz pozycję **Zapisz** na pasku narzędzi. 
 
@@ -133,6 +133,14 @@ Na stronie **Opcje logowania** wybierz pozycję **Zaloguj się za pomocą usług
 
 Na koniec są wyświetlane monity o utworzenie konto Microsoft połączonego z kontem usługi GitHub. Odbywa się to automatycznie po wybraniu **przycisku Dalej**przez instruktora.  Instruktor jest następnie natychmiast zalogowany i połączony z laboratorium klasy.
 
+## <a name="automatic-shutdown-of-vms-on-disconnect"></a>Automatyczne zamykanie maszyn wirtualnych przy rozłączaniu
+Można włączyć lub wyłączyć automatyczne zamykanie maszyn wirtualnych laboratorium systemu Windows (szablonu lub ucznia) po odłączeniu połączenia z pulpitem zdalnym. Możesz również określić, jak długo maszyny wirtualne powinny czekać, aby użytkownik mógł ponownie nawiązać połączenie przed automatycznym zamknięciem.
+
+![Ustawienie automatycznego zamykania na koncie laboratorium](../media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+
+To ustawienie ma zastosowanie do wszystkich laboratoriów utworzonych w ramach konta laboratorium. Właściciel laboratorium może zastąpić to ustawienie na poziomie laboratorium. Zmiana tego ustawienia na koncie laboratorium będzie miała wpływ tylko na laboratoria, które są tworzone po wprowadzeniu zmiany.
+
+Aby dowiedzieć się, jak właściciel laboratorium może skonfigurować to ustawienie na poziomie laboratorium, zobacz [ten artykuł](how-to-enable-shutdown-disconnect.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:

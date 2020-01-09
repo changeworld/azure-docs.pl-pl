@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f6a7f3e4e1470bc3788ceae68f035f68f05ae449
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423550"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — uzyskuje token dla aplikacji
 
@@ -33,7 +33,7 @@ Teraz, gdy masz już obiekt aplikacji klienta, użyjesz go, aby uzyskać token d
 
 Metody kontrolera są chronione przez atrybut `[Authorize]`, który wymusza uwierzytelnienie użytkowników w celu korzystania z aplikacji sieci Web. Oto kod, który wywołuje Microsoft Graph.
 
-```CSharp
+```csharp
 [Authorize]
 public class HomeController : Controller
 {
@@ -54,7 +54,7 @@ Usługa `ITokenAcquisition` jest wstrzykiwana przez ASP.NET za pomocą iniekcji 
 
 Poniżej przedstawiono uproszczony kod akcji HomeController, który pobiera token wywołujący Microsoft Graph.
 
-```CSharp
+```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token
@@ -153,7 +153,7 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 W przykładowym języku Python kod wywołujący program Microsoft Graph jest w [App. PR # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 
-Próbuje uzyskać token z pamięci podręcznej tokenów, a następnie wywołuje interfejs API EB po ustawieniu nagłówka autoryzacji. Jeśli nie jest to możliwe, ponowne znakowanie użytkownika.
+Próbuje uzyskać token z pamięci podręcznej tokenów, a następnie wywołuje internetowy interfejs API po ustawieniu nagłówka autoryzacji. Jeśli nie jest to możliwe, ponowne znakowanie użytkownika.
 
 ```python
 @app.route("/graphcall")

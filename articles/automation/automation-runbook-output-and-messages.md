@@ -2,19 +2,15 @@
 title: Dane wyjściowe i komunikaty elementu Runbook w Azure Automation
 description: Opisuje sposób tworzenia i pobierania komunikatów wyjściowych i błędów z elementów Runbook w programie Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: af199439fedddaef5b1bd3b219a60db697fb25ab
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 34246d66a48baec160a83411511ed78948c5dd8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421040"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe i komunikaty elementu Runbook w Azure Automation
 
@@ -22,7 +18,7 @@ Większość elementów Runbook Azure Automation ma pewną formę danych wyjści
 
 W poniższej tabeli przedstawiono krótki opis każdego ze strumieni i ich zachowanie w Azure Portal dla opublikowanych elementów Runbook i podczas [testowania elementu Runbook](automation-testing-runbook.md). Więcej szczegółowych informacji o każdym strumieniu znajduje się w kolejnych sekcjach.
 
-| Stream | Opis | Opublikowano | Testowanie |
+| Stream | Opis | Opublikowano | Test |
 |:--- |:--- |:--- |:--- |
 | Dane wyjściowe |Obiekty, które mają być używane przez inne elementy runbook. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
 | Ostrzeżenie |Komunikat ostrzegawczy przeznaczony dla użytkownika. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
@@ -186,7 +182,7 @@ W poniższej tabeli wymieniono zachowanie dla wartości zmiennych preferencji, k
 
 ## <a name="runbook-output"></a>Pobieranie danych wyjściowych i komunikatów elementu Runbook
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 Szczegóły zadania elementu Runbook można wyświetlić w Azure Portal z poziomu karty zadania elementu Runbook. W podsumowaniu zadania są wyświetlane parametry wejściowe i [strumień danych wyjściowych](#output-stream) , a także ogólne informacje o zadaniu i ewentualne wyjątki, jeśli wystąpią. Historia obejmuje komunikaty ze [strumienia wyjściowego](#output-stream) oraz [strumienie ostrzeżeń i błędów](#warning-and-error-streams) , a także pełne rekordy [strumieni](#verbose-stream) i [postępu](#progress-records) , jeśli element Runbook jest skonfigurowany pod kątem rejestrowania rekordów pełnych i informacji o postępie.
 

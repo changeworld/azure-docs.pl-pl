@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2019
-ms.openlocfilehash: a5ee03f6c42f076549856161a6ebe0b1888fe4aa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9281abaf7afd97573211ff20f15fa97b19724218
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365295"
 ---
 # <a name="writing-efficient-log-queries-in-azure-monitor"></a>Pisanie wydajnych zapytań dzienników w Azure Monitor
 Ten artykuł zawiera zalecenia dotyczące pisania wydajnych zapytań dzienników w Azure Monitor. Korzystając z tych strategii, można zagwarantować, że zapytania będą działać szybko i przy minimalnym przeniesieniu.
@@ -68,7 +68,7 @@ traces | where severityLevel > 0
 
 
 
-## <a name="string-comparisons"></a>Porównania ciągów
+## <a name="string-comparisons"></a>Porównanie ciągów
 Podczas [oceniania ciągów](/azure/kusto/query/datatypes-string-operators), zazwyczaj należy używać `has` zamiast `contains` podczas wyszukiwania pełnych tokenów. `has` jest wydajniejszy, ponieważ nie musi wyszukiwać podciągów.
 
 ## <a name="returned-columns"></a>Zwrócone kolumny

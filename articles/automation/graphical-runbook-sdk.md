@@ -2,19 +2,15 @@
 title: Przegląd zestawu SDK Azure Automation Grpahical Runbook
 description: W tym artykule opisano sposób korzystania z Azure Automation graficznego zestawu Runbook SDK
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/20/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a06c190931fdd0f49132f815b153c08ece68c9f3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849551"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418260"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Korzystanie z Azure Automation graficznego zestawu Runbook SDK
 

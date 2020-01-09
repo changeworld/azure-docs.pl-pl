@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429723"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -57,9 +57,15 @@ Raport logowania użytkownika zawiera odpowiedzi na następujące pytania:
 * Ilu użytkowników zalogowało się w ciągu tygodnia?
 * Jaki jest stan tych logowań?
 
-Zacznij od [Azure Portal](https://portal.azure.com). Aby uzyskać dostęp do raportu logowania, wybierz pozycję **logowania**, a następnie przejdź do **monitorowania.** Wyświetlanie rekordów logowania w portalu może potrwać do dwóch godzin.
+W menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Azure Active Directory**lub wyszukaj i wybierz pozycję **Azure Active Directory** z dowolnej strony.
 
-![Aktywność logowania](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Aktywność związana z logowaniem")
+![Wybierz Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Usługa Active Directory systemu Azure")
+
+W obszarze **monitorowanie**wybierz pozycję **logowania** , aby otworzyć [raport logowania](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
+
+![Aktywność logowania](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aktywność związana z logowaniem")
+
+Wyświetlanie rekordów logowania w portalu może potrwać do dwóch godzin.
 
 > [!IMPORTANT]
 > Raport logowania zawiera tylko logowania **interaktywne** , czyli logowania, w przypadku których użytkownik ręcznie loguje się przy użyciu nazwy użytkownika i hasła. Nieinteraktywne logowania, takie jak uwierzytelnianie między usługami, nie są wyświetlane w raporcie logowania. 
@@ -79,7 +85,7 @@ Możesz dostosować widok listy, klikając pozycję **Kolumny** na pasku narzęd
 
 ![Aktywność logowania](./media/concept-sign-ins/19.png "Aktywność związana z logowaniem")
 
-Okno dialogowe **kolumny** umożliwia dostęp do atrybutów, które można wybrać. W raporcie logowania można mieć tylko atrybuty, które nie mają relacji jeden-do-wielu z innymi atrybutami jako kolumna.
+Okno dialogowe **kolumny** umożliwia dostęp do atrybutów, które można wybrać. W raporcie logowania nie można mieć pól, które mają więcej niż jedną wartość dla danego żądania logowania jako kolumny. Dotyczy to na przykład wartości true dla szczegółów uwierzytelniania, danych dostępu warunkowego i lokalizacji sieciowej.   
 
 ![Aktywność logowania](./media/concept-sign-ins/columns.png "Aktywność związana z logowaniem")
 

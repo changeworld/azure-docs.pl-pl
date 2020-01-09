@@ -3,17 +3,17 @@ title: Obsługa zdarzeń cyklu życia usługi w chmurze | Microsoft Docs
 description: Dowiedz się, w jaki sposób można używać metod cyklu życia roli usługi w chmurze w programie .NET
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: fa4eebfa64a296e6830db3730de31ca9b0565678
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385817"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Dostosowywanie cyklu życia roli Sieć Web lub Proces roboczy na platformie .NET
 Podczas tworzenia roli procesu roboczego należy zwiększyć klasę [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) , która dostarcza metody umożliwiające przesłonięcie reakcji na zdarzenia cyklu życia. W przypadku ról sieci Web Ta klasa jest opcjonalna, dlatego należy jej użyć do reagowania na zdarzenia cyklu życia.
@@ -25,7 +25,7 @@ Podczas rozszerzania **RoleEntryPoint**należy mieć świadomość następujący
 
 * Metody [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) i [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) zwracają wartość logiczną, więc możliwe jest zwrócenie wartości **false** z tych metod.
   
-   Jeśli kod zwróci **wartość false**, proces roli jest nieoczekiwanie zakończony, bez uruchamiania sekwencji zamknięcia, która może być zainstalowana. Ogólnie rzecz biorąc, należy unikać zwracania **wartości false** z  metody OnStart.
+   Jeśli kod zwróci **wartość false**, proces roli jest nieoczekiwanie zakończony, bez uruchamiania sekwencji zamknięcia, która może być zainstalowana. Ogólnie rzecz biorąc, należy unikać zwracania **wartości false** z metody **OnStart** .
 * Każdy nieprzechwycony wyjątek w ramach przeciążenia metody **RoleEntryPoint** jest traktowany jako nieobsługiwany wyjątek.
   
    Jeśli wystąpi wyjątek w ramach jednej z metod cyklu życia, platforma Azure zgłosi zdarzenie [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) , a następnie proces zostanie przerwany. Po przełączeniu roli do trybu offline zostanie ona uruchomiona ponownie przez platformę Azure. Gdy wystąpi nieobsługiwany wyjątek, zdarzenie [zatrzymania](/previous-versions/azure/reference/ee758136(v=azure.100)) nie zostanie wywołane i Metoda **OnStop** nie zostanie wywołana.
@@ -38,9 +38,9 @@ Jeśli rola nie zostanie uruchomiona lub jest odtwarzana między Stanami inicjow
 > 
 
 ## <a name="onstart-method"></a>OnStart — metoda
-Metoda **OnStart** jest wywoływana, gdy wystąpienie roli jest przełączane w tryb online przez platformę Azure. Podczas wykonywania kodu OnStart wystąpienie roli jest oznaczone jako zajęte i żaden  ruch zewnętrzny nie zostanie skierowany do niego przez moduł równoważenia obciążenia. Można zastąpić tę metodę, aby wykonać pracę inicjalizacji, na przykład implementując procedury obsługi zdarzeń i uruchamiając [Diagnostyka Azure](cloud-services-how-to-monitor.md).
+Metoda **OnStart** jest wywoływana, gdy wystąpienie roli jest przełączane w tryb online przez platformę Azure. Podczas wykonywania kodu OnStart wystąpienie roli jest oznaczone jako **zajęte** i żaden ruch zewnętrzny nie zostanie skierowany do niego przez moduł równoważenia obciążenia. Można zastąpić tę metodę, aby wykonać pracę inicjalizacji, na przykład implementując procedury obsługi zdarzeń i uruchamiając [Diagnostyka Azure](cloud-services-how-to-monitor.md).
 
-Jeśli  funkcja OnStart zwróci **wartość true**, wystąpienie zostanie pomyślnie zainicjowane, a platforma Azure wywoła metodę **RoleEntryPoint. Run** . Jeśli  funkcja OnStart zwraca **wartość false**, rola kończy się natychmiast, bez wykonywania żadnych planowanych sekwencji zamknięcia.
+Jeśli funkcja **OnStart** zwróci **wartość true**, wystąpienie zostanie pomyślnie zainicjowane, a platforma Azure wywoła metodę **RoleEntryPoint. Run** . Jeśli funkcja **OnStart** zwraca **wartość false**, rola kończy się natychmiast, bez wykonywania żadnych planowanych sekwencji zamknięcia.
 
 Poniższy przykład kodu pokazuje, jak zastąpić metodę **OnStart** . Ta metoda konfiguruje i uruchamia monitor diagnostyczny, gdy wystąpienie roli zostanie uruchomione i skonfiguruje transfer danych rejestrowania do konta magazynu:
 
@@ -58,7 +58,7 @@ public override bool OnStart()
 }
 ```
 
-## <a name="onstop-method"></a>OnStop, Metoda
+## <a name="onstop-method"></a>OnStop — metoda
 Metoda **OnStop** jest wywoływana po wykonaniu wystąpienia roli w trybie offline przez platformę Azure i przed wyjściem z procesu. Można zastąpić tę metodę, aby wywołać kod wymagany dla wystąpienia roli w celu wyczyszczenia.
 
 > [!IMPORTANT]
@@ -66,14 +66,17 @@ Metoda **OnStop** jest wywoływana po wykonaniu wystąpienia roli w trybie offli
 > 
 > 
 
-## <a name="run-method"></a>Run — metoda
+## <a name="run-method"></a>Run — Metoda
 Można zastąpić metodę **Run** , aby zaimplementować długotrwały wątek dla wystąpienia roli.
 
 Zastępowanie metody **Run** nie jest wymagane; Domyślna implementacja uruchamia wątek, który w stanie uśpienia w nieskończoność. W przypadku zastąpienia metody **Run** kod powinien blokować czas nieokreślony. Jeśli metoda **Run** zwraca metodę, rola jest automatycznie odtwarzana; Innymi słowy, platforma Azure zgłasza zdarzenie **zatrzymania** i wywołuje metodę **OnStop** , aby można było wykonać sekwencje zamknięcia przed przełączeniem roli w tryb offline.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Implementowanie metod cyklu życia ASP.NET dla roli sieci Web
-Aby zarządzać sekwencjami inicjalizacji i zamykania dla roli sieci Web, można użyć metod cyklu życia ASP.NET (oprócz tych dostarczonych przez klasę **RoleEntryPoint** ). Może to być przydatne w przypadku przenoszenia istniejącej aplikacji ASP.NET na platformę Azure. Metody cyklu życia ASP.NET są wywoływane z poziomu metod **RoleEntryPoint** . Metoda **startowa aplikacji\_** jest wywoływana po zakończeniu metody **RoleEntryPoint. OnStart** . Metoda **Application\_End** jest wywoływana przed wywołaniem metody **RoleEntryPoint. OnStop** .
+Aby zarządzać sekwencjami inicjalizacji i zamykania dla roli sieci Web, można użyć metod cyklu życia ASP.NET (oprócz tych dostarczonych przez klasę **RoleEntryPoint** ). Może to być przydatne w przypadku przenoszenia istniejącej aplikacji ASP.NET na platformę Azure. Metody cyklu życia ASP.NET są wywoływane z poziomu metod **RoleEntryPoint** . Metoda **\_uruchamiania aplikacji** jest wywoływana po zakończeniu metody **RoleEntryPoint. OnStart** . Metoda **Application\_End** jest wywoływana przed wywołaniem metody **RoleEntryPoint. OnStop** .
 
 ## <a name="next-steps"></a>Następne kroki
 Dowiedz się, jak [utworzyć pakiet usługi w chmurze](cloud-services-model-and-package.md).
+
+
+
 

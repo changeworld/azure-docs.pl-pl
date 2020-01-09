@@ -3,12 +3,12 @@ title: Odzyskiwanie plików i folderów z kopii zapasowej maszyny wirtualnej pla
 description: W tym artykule dowiesz się, jak odzyskiwać pliki i foldery z punktu odzyskiwania maszyny wirtualnej platformy Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4fd5de0c199bfe104b8bb4f5b33b9ed8a86924f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392561"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -60,7 +60,7 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
     W przypadku uruchamiania skryptu na komputerze z ograniczonym dostępem upewnij się, że masz dostęp do:
 
     - download.microsoft.com
-    - Adresy URL usługi Recovery Name (nazwa geograficzna) odnoszą się do regionu, w którym znajduje się magazyn usługi Recovery Service) - <https://pod01-rec2.geo-name.backup.windowsazure.com> (w przypadku usługi Azure Public Georegiony) - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (w przypadku platformy Azure — Chiny) - <https://pod01-rec2.geo-name.backup.windowsazure.us> (dla platformy Azure dla instytucji rządowych) - (na platformie Azure (Niemcy)<https://pod01-rec2.geo-name.backup.windowsazure.de>
+    - Adresy URL usługi Recovery Name (nazwa geograficzna) odnoszą się do regionu, w którym znajduje się magazyn usługi Recovery Service) - <https://pod01-rec2.geo-name.backup.windowsazure.com> (w przypadku usługi Azure Public Georegiony) - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (w przypadku platformy Azure — Chiny) - <https://pod01-rec2.geo-name.backup.windowsazure.us> (dla platformy Azure dla instytucji rządowych) - (na platformie Azure (Niemcy)
     - Port wychodzący 3260
 
 > [!Note]
@@ -180,7 +180,7 @@ W poniższej tabeli przedstawiono zgodność między systemami operacyjnymi serw
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Dla systemu operacyjnego Linux
 
@@ -206,14 +206,14 @@ Skrypt wymaga również, aby składniki Python i bash były bezpiecznie wykonywa
 |Składnik | Wersja  |
 | --------------- | ---- |
 | bash | 4 i nowsze |
-| python | 2.6.6 i nowsze  |
+| Python | 2.6.6 i nowsze  |
 | TLS | 1,2 powinna być obsługiwana  |
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Odzyskiwanie plików z kopii zapasowych maszyn wirtualnych z dużymi dyskami
 
-W tej sekcji wyjaśniono, jak przeprowadzić odzyskiwanie plików z kopii zapasowych maszyn wirtualnych platformy Azure, których liczba dysków jest > 16, a każdy rozmiar dysku to > 4 TB.
+W tej sekcji wyjaśniono, jak przeprowadzić odzyskiwanie plików z kopii zapasowych maszyn wirtualnych platformy Azure, których liczba dysków jest > 16, a każdy rozmiar dysku to > 32 TB.
 
-Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowej, w przypadku użycia dużej liczby dysków (> 16) lub dużych dysków (> 4 TB) zalecane są następujące punkty akcji:
+Ponieważ proces odzyskiwania plików dołącza wszystkie dyski z kopii zapasowej, w przypadku użycia dużej liczby dysków (> 16) lub dużych dysków (> 32 TB każdego) są zalecane następujące punkty akcji:
 
 - Zachowaj oddzielny serwer przywracania (maszyny wirtualne D2v3 maszyny wirtualnej platformy Azure) do odzyskiwania plików. Można użyć tylko odzyskiwania plików, a następnie wyłączyć, gdy nie jest to wymagane. Przywracanie na oryginalnej maszynie nie jest zalecane, ponieważ ma znaczący wpływ na maszynę wirtualną.
 - Następnie uruchom skrypt jeden raz, aby sprawdzić, czy operacja odzyskiwania plików powiodła się.

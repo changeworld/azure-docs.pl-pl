@@ -8,14 +8,14 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e5625ad7c9997c172aef6ead41b7cfa9ede652dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098824"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438635"
 ---
-# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Często zadawane pytania
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: często zadawane pytania
 
 Rozwiązanie w chmurze Microsoft Azure Data Box Disk umożliwia wysyłanie terabajtów danych na platformę Azure w szybki, niedrogi i niezawodny sposób. Często zadawane pytania zawierają pytania, które mogą się pojawić podczas korzystania z usługi Data Box Disk w witrynie Azure Portal, oraz odpowiedzi na te pytania. 
 
@@ -23,7 +23,7 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 
 - Informacje o usłudze
 - Konfigurowanie i łączenie 
-- Śledź stan
+- Śledzenie stanu
 - Migrowanie danych 
 - Weryfikowanie i przekazywanie danych 
 
@@ -113,7 +113,7 @@ Po zakończeniu kopiowania i weryfikacji danych wykonaj następujące kroki, aby
 A.  Rozwiązanie Data Box Disk może zapewnić do 5 dysków o maksymalnej pojemności do wykorzystania wynoszącej 35 TB. Same dyski mają rozmiar 8 TB (przy czym rozmiar do wykorzystania to 7 TB).
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>PYTANIE: Jakie są maksymalne rozmiary blokowych obiektów blob i stronicowych obiektów blob obsługiwane przez urządzenia Data Box Disk ? 
-A.  Maksymalne rozmiary podlegają limitom usługi Azure Storage. Maksymalny rozmiar blokowego obiektu blob to około 4,768 TiB, a maksymalny rozmiar stronicowego obiektu blob to 8 TiB. Aby uzyskać więcej informacji, zobacz [Cele usługi Azure Storage dotyczące skalowalności i wydajności](../storage/common/storage-scalability-targets.md).
+A.  Maksymalne rozmiary podlegają limitom usługi Azure Storage. Maksymalny rozmiar blokowego obiektu blob to około 4,768 TiB, a maksymalny rozmiar stronicowego obiektu blob to 8 TiB. Aby uzyskać więcej informacji, zobacz [elementy docelowe skalowalności i wydajności dla usługi BLOB Storage](../storage/blobs/scalability-targets.md).
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>PYTANIE: Jaka jest szybkość transferu danych w przypadku urządzeń Data Box Disk?
 A. Podczas testowania dysków podłączonych za pomocą portu USB 3.0 ich wydajność doszła do poziomu 430 MB/s. Rzeczywista wartość różni się w zależności od rozmiaru pliku. Przy mniejszych plikach wydajność może być niższa.
@@ -127,7 +127,7 @@ A.  Dane możesz skopiować na dyski za pomocą narzędzia kopiowania SMB, takie
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>PYTANIE: Czy istnieją jakieś porady dotyczące przyspieszania kopiowania danych?
 A.  Aby przyspieszyć proces kopiowania:
 
-- Użyj wielu strumieni kopiowania danych. Na przykład w narzędziu Robocopy włącz opcję kopiowania wielowątkowego. Aby uzyskać więcej informacji na temat konkretnego polecenia, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Użyj wielu strumieni kopiowania danych. Na przykład w narzędziu Robocopy włącz opcję kopiowania wielowątkowego. Aby uzyskać więcej informacji na temat konkretnego polecenia, zobacz [Tutorial: Copy data to Azure Data Box Disk and verify (Samouczek: kopiowanie danych na urządzenie Data Box Disk i ich weryfikacja)](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Użyj wielu sesji.
 - Zamiast kopiować za pośrednictwem udziału sieciowego (gdzie szybkość sieci może powodować ograniczenia), upewnij się, że dane znajdują się lokalnie na komputerze, do którego podłączono dyski.
 - Przez cały proces kopiowania korzystaj z interfejsu USB 3.0 lub nowszego. Pobierz [narzędzie USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) i za jego pomocą zidentyfikuj kontrolery USB oraz urządzenia USB podłączone do komputera.
@@ -145,9 +145,9 @@ A.  Nie. Obecnie na potrzeby urządzeń Data Box Disk jest obsługiwane tylko je
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>PYTANIE: Jaki zestaw narzędzi jest dostępny dla moich danych na urządzeniach Data Box Disk?
 A. Zestaw narzędzi dostępny na urządzeniu Data Box Disk zawiera trzy narzędzia:
- - **Narzędzie do odblokowywania dysków Data Box Disk**: To narzędzie umożliwia odblokowywanie zaszyfrowanych dysków, które są wysyłane przez firmę Microsoft. W przypadku odblokowywania dysków za pomocą narzędzia musisz podać klucz dostępu udostępniony w zamówieniu urządzenia Data Box Disk w witrynie Azure Portal. 
- - **Narzędzie do walidacji urządzenia Data Box Disk**: To narzędzie umożliwia weryfikowanie rozmiaru, formatu i nazw obiektów blob zgodnie z konwencjami nazewnictwa platformy Azure. Generuje ono sumy kontrolne skopiowanych danych, które następnie są używane do weryfikowania danych przekazywanych na platformie Azure.
- - **Narzędzie do dzielenia i kopiowania dysków Data Box Disk**: To narzędzie jest stosowane w przypadku korzystania z wielu dysków i dużego zestawu danych, który należy podzielić i skopiować na wszystkie dyski. To narzędzie jest obecnie dostępne dla systemu Windows. To narzędzie nie jest obsługiwane w przypadku dysków zarządzanych. To narzędzie również sprawdza poprawność, gdy kopiuje dane. w związku z tym możesz pominąć krok walidacji podczas korzystania z tego narzędzia.
+ - **Narzędzie Data Box Disk odblokowywania**: Użyj tego narzędzia do odblokowania zaszyfrowanych dysków dostarczanych przez firmę Microsoft. W przypadku odblokowywania dysków za pomocą narzędzia musisz podać klucz dostępu udostępniony w zamówieniu urządzenia Data Box Disk w witrynie Azure Portal. 
+ - **Data Box Disk narzędzia sprawdzania poprawności**: Użyj tego narzędzia do sprawdzania poprawności rozmiaru, formatu i nazw obiektów BLOB zgodnie z konwencjami nazewnictwa platformy Azure. Generuje ono sumy kontrolne skopiowanych danych, które następnie są używane do weryfikowania danych przekazywanych na platformie Azure.
+ - **Narzędzie Data Box Disk Split Copy**: Użyj tego narzędzia, jeśli używasz wielu dysków i masz duży zestaw danych, który musi być podzielony i kopiowany na wszystkich dyskach. To narzędzie jest obecnie dostępne dla systemu Windows. To narzędzie nie jest obsługiwane w przypadku dysków zarządzanych. To narzędzie również sprawdza poprawność, gdy kopiuje dane. w związku z tym możesz pominąć krok walidacji podczas korzystania z tego narzędzia.
 
 Zestaw narzędzi jest dostępny dla systemów Windows i Linux. Zestaw narzędzi można pobrać w tym miejscu:
 - [Pobierz zestaw narzędzi dla dysków Data Box Disk dla systemu Windows](https://aka.ms/databoxdisktoolswin) 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064127"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367114"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w Azure Active Directory B2C
 
@@ -34,9 +34,9 @@ Aplikacje i organizacje mogą zdecydować się na zablokowanie małoletnich z u�
 
 Jeśli użytkownik jest zidentyfikowany jako pomocniczy, można ustawić przepływ użytkownika w Azure AD B2C na jedną z trzech opcji:
 
-- **Wyślij z powrotem id_token ze znakiem JWT do aplikacji**: Użytkownik jest zarejestrowany w katalogu, a token jest zwracany do aplikacji. Następnie aplikacja przechodzi przez zastosowanie reguł firmy. Na przykład aplikacja może kontynuować proces wyrażania zgody rodzicielskiej. Aby użyć tej metody, wybierz otrzymywanie oświadczeń **grupy wiekowej** i **consentProvidedForMinor** z aplikacji.
+- **Wysyłanie podpisanej JWT id_token z powrotem do aplikacji**: użytkownik jest zarejestrowany w katalogu, a token jest zwracany do aplikacji. Następnie aplikacja przechodzi przez zastosowanie reguł firmy. Na przykład aplikacja może kontynuować proces wyrażania zgody rodzicielskiej. Aby użyć tej metody, wybierz otrzymywanie oświadczeń **grupy wiekowej** i **consentProvidedForMinor** z aplikacji.
 
-- **Wyślij niepodpisany token JSON do aplikacji**: Azure AD B2C powiadamia aplikację, że użytkownik jest częścią podrzędną, i zapewnia status zgody użytkownika na dostęp rodzicielski. Następnie aplikacja przechodzi przez zastosowanie reguł firmy. Token JSON nie kończy pomyślnego uwierzytelnienia w aplikacji. Aplikacja musi przetworzyć nieuwierzytelniony użytkownik zgodnie z oświadczeniami zawartymi w tokenie JSON, które mogą zawierać **nazwę**, **adres e-mail**, **grupy wiekowej**i **consentProvidedForMinor**.
+- **Wyślij niepodpisany token JSON do aplikacji**: Azure AD B2C powiadamia aplikację, że użytkownik jest częścią podrzędną, i zapewnia stan zgody użytkownika na rodzica. Następnie aplikacja przechodzi przez zastosowanie reguł firmy. Token JSON nie kończy pomyślnego uwierzytelnienia w aplikacji. Aplikacja musi przetworzyć nieuwierzytelniony użytkownik zgodnie z oświadczeniami zawartymi w tokenie JSON, które mogą zawierać **nazwę**, **adres e-mail**, **grupy wiekowej**i **consentProvidedForMinor**.
 
 - **Zablokuj użytkownika**: Jeśli użytkownik jest niewielki i nie podano zgody rodzicielskiej, Azure AD B2C może powiadomić użytkownika o tym, że są one zablokowane. Nie wydano tokenu, dostęp jest zablokowany, a konto użytkownika nie jest tworzone podczas podróży rejestracji. Aby zaimplementować to powiadomienie, należy podać odpowiednią stronę zawartości HTML/CSS, aby poinformować użytkownika i przedstawić odpowiednie opcje. Aplikacja nie potrzebuje dalszych działań w przypadku nowych rejestracji.
 
@@ -54,9 +54,9 @@ Poniżej przedstawiono przykładowy przepływ użytkownika do zbierania zgody ro
 
 4. Aplikacja oferuje opcję elementu pomocniczego do odwołania.
 
-5. Gdy osoba nieletnia lub Dorosła wycofa zgodę, można użyć interfejs API programu Graph usługi Azure AD, aby zmienić **consentProvidedForMinor** na odmowa. Alternatywnie, aplikacja może zdecydować się na usunięcie niewielkiego, którego zgody zostało odwołane. Opcjonalnie można dostosować przepływ użytkowników, tak aby uwierzytelniona pomocnicza (lub nadrzędna, która korzysta z konta pomocniczego) mogła odwołać zgodę. Azure AD B2C rekordy **consentProvidedForMinor** jako **odmowa**.
+5. Gdy osoba nieletnia lub Dorosła wycofa zgodę, można użyć interfejs API programu Graph usługi Azure AD, aby zmienić **consentProvidedForMinor** na **odmowa**. Alternatywnie, aplikacja może zdecydować się na usunięcie niewielkiego, którego zgody zostało odwołane. Opcjonalnie można dostosować przepływ użytkowników, tak aby uwierzytelniona pomocnicza (lub nadrzędna, która korzysta z konta pomocniczego) mogła odwołać zgodę. Azure AD B2C rekordy **consentProvidedForMinor** jako **odmowa**.
 
-Aby uzyskać więcej informacji na temat **legalAgeGroupClassification**, **consentProvidedForMinor**i **grupy wiekowej**, zobacz [Typ zasobu użytkownika](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Aby uzyskać więcej informacji o atrybutach niestandardowych, zobacz [Używanie atrybutów niestandardowych do zbierania informacji o użytkownikach](active-directory-b2c-reference-custom-attr.md). W przypadku korzystania z rozszerzonych atrybutów przy użyciu interfejs API programu Graph usługi Azure AD należy użyć długiej wersji atrybutu, takiej jak *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Aby uzyskać więcej informacji na temat **legalAgeGroupClassification**, **consentProvidedForMinor**i **grupy wiekowej**, zobacz [Typ zasobu użytkownika](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Aby uzyskać więcej informacji o atrybutach niestandardowych, zobacz [Używanie atrybutów niestandardowych do zbierania informacji o użytkownikach](active-directory-b2c-reference-custom-attr.md). Podczas rozwiązywania atrybutów rozszerzonych za pomocą usługi Azure AD interfejs API programu Graph należy użyć długiej wersji atrybutu, takiej jak *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Zbierz dane dotyczące daty urodzenia i kraju/regionu
 
@@ -72,13 +72,13 @@ Poniższe kroki pokazują logikę, która jest używana do obliczania **grupy wi
 
     a. Oblicz datę, do której użytkownik musi zostać uznany za osobę dorosłą. Na przykład, jeśli bieżąca data to 14 marca 2015, a **MinorConsent** to 18, Data urodzenia nie może być późniejsza niż 14 marca 2000.
 
-    b. Porównaj minimalną datę urodzenia z rzeczywistą datą urodzenia. Jeśli minimalna Data urodzenia jest wcześniejsza niż data urodzenia użytkownika, obliczenie zwróci wartość pomocniczą jako obliczenie grupy wiekowej.
+    b. Porównaj minimalną datę urodzenia z rzeczywistą datą urodzenia. Jeśli minimalna Data urodzenia jest wcześniejsza niż data urodzenia użytkownika, obliczenie zwróci wartość **pomocniczą** jako obliczenie grupy wiekowej.
 
 3. Jeśli węzeł **MinorNoConsentRequired** jest obecny w elemencie Country, powtórz kroki od 2A do 2b przy użyciu wartości z **MinorNoConsentRequired**. Wyjście 2b zwraca **MinorNoConsentRequired** , jeśli minimalna Data urodzenia jest wcześniejsza niż data urodzenia użytkownika.
 
-4. Jeśli żadna z obliczeń nie zwraca wartości true,obliczenia zwracają wartość dorosłą.
+4. Jeśli żadna z obliczeń nie zwraca wartości true, obliczenia zwracają wartość **dorosłą**.
 
-Jeśli aplikacja ma niezawodne dane DOB lub kraju/regionu według innych metod, aplikacja może używać interfejs API programu Graph do aktualizowania rekordu użytkownika przy użyciu tych informacji. Na przykład:
+Jeśli aplikacja ma niezawodne dane DOB lub kraju/regionu według innych metod, aplikacja może używać interfejs API programu Graph do aktualizowania rekordu użytkownika przy użyciu tych informacji. Przykład:
 
 - Jeśli użytkownik jest znany jako osoba dorosła, należy zaktualizować atrybut katalogu **grupy wiekowej** wartością **dorosłą**.
 - Jeśli użytkownik jest znany jako pomocniczy, należy zaktualizować atrybut katalogu **grupy wiekowej** o wartości **mniejszości** i ustawić **consentProvidedForMinor**, zgodnie z potrzebami.
@@ -99,9 +99,9 @@ W poniższych krokach opisano sposób zarządzania warunkami użytkowania:
 
 3. Azure AD B2C przechowuje umowę warunki użytkowania i akceptację użytkownika. Za pomocą interfejs API programu Graph można wykonywać zapytania dotyczące stanu dowolnego użytkownika, odczytując atrybut rozszerzenia używany do rejestrowania odpowiedzi (na przykład **termsOfUseTestUpdateDateTime**). Można to zrobić za pomocą wbudowanych i niestandardowych przepływów użytkownika.
 
-4. Wymagaj akceptacji zaktualizowanych Warunków użytkowania, porównując datę akceptacji na datę najnowszej wersji warunków użytkowania. Daty można porównać tylko przy użyciu niestandardowego przepływu użytkownika. Użyj rozszerzonego atrybutu **extension_termsOfUseConsentDateTime**i porównaj wartość z **termsOfUseTextUpdateDateTime**. Jeśli akceptacja jest stara, Wymuś nową akceptację, wyświetlając ekran z własnymi potwierdzeń. W przeciwnym razie Zablokuj dostęp za pomocą logiki zasad.
+4. Wymagaj akceptacji zaktualizowanych Warunków użytkowania, porównując datę akceptacji na datę najnowszej wersji warunków użytkowania. Daty można porównać tylko przy użyciu niestandardowego przepływu użytkownika. Użyj atrybutu rozszerzonego **extension_termsOfUseConsentDateTime**i porównaj wartość z zakresem **termsOfUseTextUpdateDateTime**. Jeśli akceptacja jest stara, Wymuś nową akceptację, wyświetlając ekran z własnymi potwierdzeń. W przeciwnym razie Zablokuj dostęp za pomocą logiki zasad.
 
-5. Wymagaj akceptacji zaktualizowanych Warunków użytkowania, porównując numer wersji akceptacji z najnowszym zaakceptowanym numerem wersji. Numery wersji można porównać tylko przy użyciu niestandardowego przepływu użytkownika. Użyj rozszerzonego atrybutu **extension_termsOfUseConsentDateTime**i porównaj wartość z **extension_termsOfUseConsentVersion**. Jeśli akceptacja jest stara, Wymuś nową akceptację, wyświetlając ekran z własnymi potwierdzeń. W przeciwnym razie Zablokuj dostęp za pomocą logiki zasad.
+5. Wymagaj akceptacji zaktualizowanych Warunków użytkowania, porównując numer wersji akceptacji z najnowszym zaakceptowanym numerem wersji. Numery wersji można porównać tylko przy użyciu niestandardowego przepływu użytkownika. Użyj atrybutu rozszerzonego **extension_termsOfUseConsentDateTime**i porównaj wartość z zakresem **extension_termsOfUseConsentVersion**. Jeśli akceptacja jest stara, Wymuś nową akceptację, wyświetlając ekran z własnymi potwierdzeń. W przeciwnym razie Zablokuj dostęp za pomocą logiki zasad.
 
 Można przechwycić akceptację warunków użytkowania w następujących scenariuszach:
 
@@ -176,3 +176,4 @@ Poniżej znajduje się przykład zgody na wersje warunków użytkowania w ramach
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak usunąć i wyeksportować dane użytkowników, zobacz [Zarządzanie danymi użytkownika](manage-user-data.md).
+- Aby zapoznać się z przykładowymi zasadami niestandardowymi, które implementują monit dotyczący warunków użytkowania, zobacz [B2C IEF Custom Policy — Rejestracja i logowanie przy użyciu wiersza polecenia "warunki użytkowania"](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

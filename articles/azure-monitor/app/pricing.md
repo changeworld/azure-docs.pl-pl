@@ -8,14 +8,14 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406530"
 ---
-# <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
+# <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami usługi Application Insights
 
 > [!NOTE]
 > W tym artykule opisano sposób zrozumienia i kontrolowania kosztów Application Insights.  W powiązanym artykule, [monitorowaniu użycia i szacowanych kosztów](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) opisano sposób wyświetlania użycia i szacowane koszty w wielu funkcjach monitorowania platformy Azure dla różnych modeli cen.
@@ -40,7 +40,7 @@ Istnieją dwa podejścia do rozwiązania tego zagadnienia: użycie domyślnego m
 
 Przy [pobieraniu próbkowania](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)zestawu SDK ASP.NET wolumin danych jest dostosowywany automatycznie, aby zachować w ramach określonego maksymalnego natężenia ruchu dla domyślnego monitorowania Application Insights. Jeśli aplikacja tworzy niską ilość danych telemetrycznych, na przykład podczas debugowania lub z powodu niskiego użycia, elementy nie zostaną porzucone przez procesor próbkowania, o ile ilość poniżej skonfigurowanych zdarzeń na sekundę. W przypadku aplikacji o dużym nasileniu z domyślnym progiem pięciu zdarzeń na sekundę próbkowanie adaptacyjne ograniczy liczbę codziennych zdarzeń do 432 000. Przy użyciu typowego średniego rozmiaru zdarzenia o wartości 1 KB odpowiada to 13,4 GB danych telemetrycznych na każdy węzeł obsługujący aplikację (ponieważ próbkowanie jest wykonywane lokalnie dla każdego węzła). 
 
-W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)pozyskiwania, które próbki, gdy dane są odbierane przez Application Insights na podstawie procentu ilości danych do zachowania lub [próbkowania o stałym stopniu dla ASP.NET, ASP.NET Core i Java witryny internetowe](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) umożliwiające zmniejszenie ruchu wysyłanego z serwera sieci Web i przeglądarek sieci Web
+W przypadku zestawów SDK, które nie obsługują próbkowania adaptacyjnego, można zastosować [próbkowanie](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)pozyskiwania, które próbkuje, gdy dane są odbierane przez Application Insights na podstawie procentowej ilości danych do zatrzymywania, lub [próbkowania o stałym rozmiarze dla witryn sieci web ASP.NET, ASP.NET Core i Java](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) , aby zmniejszyć ruch wysyłany z serwera i przeglądarek sieci Web.
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Dowiedz się, co zbiera podobne odbiorcy
 
@@ -157,9 +157,9 @@ Możesz użyć dziennego limitu ilości, aby ograniczyć zbierane dane. Jeśli j
 
 Zamiast używać dziennego limitu ilości, użyj [próbkowania](../../azure-monitor/app/sampling.md) , aby dostosować ilość danych do żądanego poziomu. Następnie użyj dziennego limitu tylko jako "ostatniej", jeśli aplikacja nieoczekiwanie zacznie wysyłać znacznie wyższe ilości danych telemetrycznych.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Określ dzienny limit danych do zdefiniowania
+### <a name="identify-what-daily-data-limit-to-define"></a>Zidentyfikować jakie dzienny limit danych, aby zdefiniować
 
-Przejrzyj Application Insights użycie i szacowane koszty, aby zrozumieć trend pozyskiwania danych i co to jest dzienny limit ilości do zdefiniowania. Należy wziąć pod uwagę opiekę, ponieważ nie będzie można monitorować zasobów po osiągnięciu limitu. 
+Przejrzyj Application Insights użycie i szacowane koszty, aby zrozumieć trend pozyskiwania danych i co to jest dzienny limit ilości do zdefiniowania. Należy rozważyć ostrożnie, ponieważ nie będzie można monitorować swoje zasoby, po osiągnięciu limitu. 
 
 ### <a name="set-the-daily-cap"></a>Ustaw limit dzienny
 
@@ -195,7 +195,7 @@ Aby wykryć rzeczywistą częstotliwość próbkowania bez względu na to, gdzie
 
 W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekordów, które reprezentuje. Jest równa 1 + liczba poprzednich odrzuconych rekordów. 
 
-## <a name="change-the-data-retention-period"></a>Zmień okres przechowywania danych
+## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych
 
 Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu usługi Application Insights można wybrać inny okres przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
 
@@ -259,7 +259,7 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
 |:---------------------------------------|:----------------:|
 | 1 aplikacja używająca 3 wystąpień Azure App Service i 1 serwera wirtualnego | 4 |
 | 3 aplikacje działające na 2 maszynach wirtualnych; zasoby Application Insights dla tych aplikacji znajdują się w tej samej subskrypcji i w warstwie na węzeł | 2 | 
-| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13,33 | 
+| 4 aplikacje, których zasoby usługi Application Insights znajdują się w tej samej subskrypcji; Każda aplikacja uruchamia 2 wystąpienia w godzinach od 16 godzin szczytu i 4 wystąpienia w ciągu 8 godzin szczytu | 13.33 | 
 | Usługi w chmurze z 1 rolą proces roboczy i 1 rolą sieci Web, każdy uruchomiony 2 wystąpienia | 4 | 
 | Klaster programu Azure Service Fabric w systemie 5 z systemem 50 mikrousług; Każda mikrousługa z uruchomioną 3 wystąpieniami | 5|
 

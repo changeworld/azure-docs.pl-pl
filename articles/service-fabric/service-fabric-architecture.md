@@ -1,66 +1,58 @@
 ---
-title: Architektura usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Service Fabric to platforma systemów rozproszonych używana do tworzenia skalowalnych, niezawodnych i łatwych w zarządzaniu aplikacji w chmurze. W tym artykule przedstawiono architekturę usługi Service Fabric.
+title: Architektura Service Fabric platformy Azure
+description: Service Fabric to platforma systemów rozproszonych służąca do tworzenia skalowalnych, niezawodnych i łatwych w zarządzaniu aplikacji w chmurze. W tym artykule przedstawiono architekturę Service Fabric.
 services: service-fabric
-documentationcenter: .net
 author: rishirsinha
-manager: chackdan
-editor: rishirsinha
-ms.assetid: 6b554243-70cb-4c22-9b28-1a8b4703f45e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/12/2017
 ms.author: rsinha
-ms.openlocfilehash: a1e68e2e39ea6f1c8cf8669e2e02d8dacaf0f284
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 862332d31808c7ba372b93accb8f2b9a3524ba79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377892"
 ---
 # <a name="service-fabric-architecture"></a>Architektura usługi Service Fabric
-Usługa Service Fabric jest tworzone za pomocą warstwowej podsystemów. Podsystemy te umożliwiają pisanie aplikacji, które są:
+Service Fabric jest skompilowana przy użyciu podsystemów warstwowych. Te podsystemy umożliwiają pisanie aplikacji, które są następujące:
 
-* O wysokiej dostępności
+* Wysoka dostępność
 * Skalowalność
-* Łatwe w zarządzaniu
-* Sprawdzalnego działa zgodnie
+* Zarządzane
+* Weryfikowalne
 
-Na poniższym diagramie przedstawiono główne podsystemów usługi Service Fabric.
+Na poniższym diagramie przedstawiono główne podsystemy Service Fabric.
 
-![Diagram architektury usługi Service Fabric](media/service-fabric-architecture/service-fabric-architecture.png)
+![Diagram architektury Service Fabric](media/service-fabric-architecture/service-fabric-architecture.png)
 
-W rozproszonym systemie możliwość bezpiecznej komunikacji między węzłami w klastrze jest niezwykle istotne. Podstawową stosu jest podsystemu transportu, która zapewnia bezpiecznej komunikacji między węzłami. Powyżej transportu podsystemu zaletą podsystemu Federacji, który klastrów różnych węzłach w pojedynczą jednostkę (o nazwie klastry) tak, aby usługi Service Fabric można wykrywać błędy, wykonywanie lidera i zapewniają routing spójne. Podsystem niezawodność warstwowo podsystemu federacji jest odpowiedzialny za niezawodność usługi Service Fabric za pomocą mechanizmów, takich jak zarządzanie zasobami, replikacji i trybu failover. Podsystem Federacji źródłową również podsystemu hostingu i aktywacji, który umożliwia zarządzanie cyklem życia aplikacji w jednym węźle. Podsystemu zarządzania umożliwia zarządzanie cyklem życia aplikacji i usług. Podsystem testowania pomaga deweloperom aplikacji, przetestować swoich usług przy użyciu symulowanego usterek przed i po wdrożeniu aplikacji i usług na środowisko produkcyjne. Usługa Service Fabric udostępnia możliwość rozpoznać lokalizacji usługi przy użyciu jego podsystem komunikacji. Modele programowania aplikacji widoczne dla deweloperów przedstawiono nałożone na podstawie tych podsystemów, wraz z modelu aplikacji, aby włączyć narzędzia.
+W systemie rozproszonym Funkcja bezpiecznego komunikowania się między węzłami w klastrze jest niezwykle istotna. W bazie stosu jest podsystemem transportu, który zapewnia bezpieczną komunikację między węzłami. Powyżej podsystem transportu bazuje na podsystemie federacyjnym, w którym klastry są używane w jednej jednostce (nazwanych klastrach), dzięki czemu Service Fabric mogą wykrywać błędy, wykonywać wybór lidera i zapewniać spójny Routing. Podsystem niezawodności, warstwowy w ramach podsystemu federacyjnego, jest odpowiedzialny za niezawodność usług Service Fabric za pomocą takich mechanizmów jak replikacja, zarządzanie zasobami i przełączanie w tryb failover. Podsystem federacyjny również jest podsystemem hostingu i aktywacji, który zarządza cyklem życia aplikacji w jednym węźle. Podsystem zarządzania zarządza cyklem życia aplikacji i usług. Podsystem testowania ułatwia deweloperom aplikacji testowanie ich usług za pomocą symulowanych błędów przed i po wdrożeniu aplikacji i usług w środowiskach produkcyjnych. Service Fabric zapewnia możliwość rozpoznawania lokalizacji usługi za pomocą podsystemu komunikacji. Modele programowania aplikacji uwidocznione dla deweloperów są warstwami na podstawie tych podsystemów wraz z modelem aplikacji w celu włączenia narzędzi.
 
 ## <a name="transport-subsystem"></a>Podsystem transportu
-Podsystem transportu implementuje kanał komunikacyjny datagram point-to-point. Ten kanał jest używany do komunikacji w obrębie klastry usługi Service fabric i komunikacji między klaster usługi Service fabric i klientami. Obsługuje ona jednokierunkowe i wzorce komunikacji "żądanie-odpowiedź", które stanowi podstawę dla implementacji emisji i multiemisji w warstwie federacji. Podsystem transportu zabezpiecza komunikację przy użyciu X509 certyfikatów lub zabezpieczeń Windows. Podsystem ten jest używana wewnętrznie przez usługę Service Fabric i nie jest bezpośrednio dostępny dla deweloperów do programowania aplikacji.
+Podsystem transportu implementuje kanał komunikacji typu punkt-punkt. Ten kanał służy do komunikacji w ramach klastrów usługi Service Fabric i komunikacji między klastrem i klientami usługi Service Fabric. Obsługuje jednokierunkowe wzorce komunikacji z odpowiedzią na żądanie, które stanowią podstawę do implementowania emisji i multiemisji w warstwie federacyjnej. Podsystem transportu zabezpiecza komunikację przy użyciu certyfikatów x509 lub zabezpieczeń systemu Windows. Ten podsystem jest używany wewnętrznie przez Service Fabric i nie jest bezpośrednio dostępny dla deweloperów na potrzeby programowania aplikacji.
 
 ## <a name="federation-subsystem"></a>Podsystem Federacji
-Aby poprawić zestaw węzłów w rozproszonym systemie, musisz mieć spójny widok systemu. Podsystem federacyjnych używa podstawowych komunikacji, dostarczone przez podsystem transportu i odwzorowywały różnych węzłów w klastrze ujednoliconego pojedynczego go może poprawić. Zapewnia podstawowych systemów rozproszonych, wymagane przez inne podsystemy — wykrywanie awarii lidera i spójne routingu. Podsystem federacyjnej jest oparty na tabel skrótów rozproszonego przy użyciu 128-bitowej przestrzeni tokenu. Podsystem tworzy topologia pierścienia dla węzłów, z każdego węzła w pierścienia przydzielane podzbiór tokenu miejsca dla własności. Do wykrywania awarii warstwy używa był mechanizm dzierżawienia na podstawie serce kucie i postępowań arbitrażowych. Podsystem Federacji gwarantuje również za pośrednictwem skomplikowanych sprzężenia i protokoły wyjścia, które tylko jednego właściciela token istnieje w dowolnym momencie. Zapewnia to lidera i spójne gwarancje routingu.
+Aby przyczynić się do określenia zestawu węzłów w systemie rozproszonym, musisz mieć spójny widok systemu. Podsystem federacyjny korzysta z elementów podstawowych komunikacji dostarczonych przez podsystem transportu i tworzy różne węzły w pojedynczym ujednoliconym klastrze, którego może przyczynić się do tego. Zapewnia ona podstawowe systemy rozproszone, które są niezbędne przez inne podsystemy — wykrywanie awarii, wybór lidera i spójny Routing. Podsystem Federacji jest oparty na rozproszonych tabelach skrótów z 128-bitową przestrzenią tokenów. Podsystem tworzy topologię pierścienia na węzłach, przy czym każdy węzeł w pierścieniu jest przydzielony podzbiorem przestrzeni tokenów do własności. W przypadku wykrywania awarii warstwa używa mechanizmu dzierżawienia na podstawie pulsu i arbitrażu. Podsystem Federacji gwarantuje również, że w dowolnym momencie istnieje tylko jeden właściciel tokenu w ramach przyłączania i wyjazdu Intricate. Zapewnia to wybór lidera i spójne gwarancje routingu.
 
 ## <a name="reliability-subsystem"></a>Podsystem niezawodności
-Podsystem niezawodność udostępnia mechanizm do wysokiej dostępności stan usługi Service Fabric za pośrednictwem *replikatora*, *Menedżer trybu Failover*, i *zasobów Moduł równoważenia*.
+Podsystem niezawodności zapewnia mechanizm, aby zapewnić wysoką dostępność stanu usługi Service Fabric za pomocą *replikatora*, *Menedżer trybu failover*i *modułu zasobów*.
 
-* Replikator gwarantuje, czy zmiany stanu w replice podstawowej usługi będą automatycznie replikowane do repliki pomocnicze utrzymania spójności między replikę podstawową i pomocniczą zestawu replik usługi. Replikator jest odpowiedzialny za zarządzanie kworum między replikami zestawu replik. Współpracuje z usługą jednostki trybu failover, aby uzyskać listę operacji replikacji, a element reconfiguration agent dostarcza mu konfiguracji zestawu replik. Tę konfigurację wskazuje replik, które operacje mają być replikowane. Usługa Service Fabric udostępnia replikatora domyślny, o nazwie replikatora sieci szkieletowej, która może służyć przez interfejs API modelu się stan usługi, wysoko dostępne i niezawodne.
-* Menedżer trybu Failover gwarantuje, że jeśli węzły są dodawane do lub usunięte z klastra, obciążenia jest automatycznie rozpowszechniane dostępnych węzłów. W przypadku awarii węzła w klastrze klastra zostanie automatycznie ponownie skonfigurować repliki usługi w celu zapewnienia dostępności.
-* Menedżer zasobów umieszcza repliki usługi w domenie awarii klastra i gwarantuje, czy działają wszystkie jednostki trybu failover. Menedżer zasobów również równoważy zasobów usługi między bazowego obszaru udostępnionej puli węzłów klastra, aby osiągnąć optymalną jednolitego rozłożenia.
+* Replikator gwarantuje, że zmiany stanu w podstawowej replice usługi zostaną automatycznie zreplikowane do replik pomocniczych, zachowując spójność między podstawową i pomocniczą repliką w zestawie replik usługi. Replikator jest odpowiedzialny za zarządzanie kworum między replikami w zestawie replik. Współdziała z jednostką trybu failover, aby uzyskać listę operacji do replikacji, a agent rekonfiguracji udostępnia go konfiguracji zestawu replik. Ta konfiguracja wskazuje, które repliki muszą zostać zreplikowane. Service Fabric zapewnia domyślny Replikator o nazwie Replikator sieci szkieletowej, który może być używany przez interfejs API modelu programowania, aby zapewnić wysoką dostępność i niezawodność stanu usługi.
+* Menedżer trybu failover zapewnia, że po dodaniu węzłów do klastra lub usunięciu z niego, obciążenie zostanie automatycznie rozdystrybuowane między dostępnymi węzłami. Jeśli węzeł w klastrze ulegnie awarii, klaster automatycznie skonfiguruje repliki usługi, aby zachować dostępność.
+* Menedżer zasobów umieszcza repliki usługi w domenie niepowodzeń w klastrze i zapewnia, że wszystkie jednostki trybu failover działają. Menedżer zasobów również równoważy zasoby usługi w ramach podstawowej udostępnionej puli węzłów klastra, aby osiągnąć optymalny jednolity rozkład obciążenia.
 
-## <a name="management-subsystem"></a>Podsystemu zarządzania
-Podsystemu zarządzania zapewnia end-to-end usługi i zarządzanie cyklem życia aplikacji. Polecenia cmdlet programu PowerShell i interfejsów API administracyjne pozwalają aprowizować, wdrażanie, poprawki, uaktualniania i anulować ich aprowizację bez utraty dostępności. Podsystem management wykonuje to za pośrednictwem następujących usług.
+## <a name="management-subsystem"></a>Podsystem zarządzania
+Podsystem zarządzania oferuje kompleksowe usługi i zarządzanie cyklem życia aplikacji. Polecenia cmdlet programu PowerShell i administracyjne interfejsy API umożliwiają udostępnianie, wdrażanie, uaktualnianie i cofanie aprowizacji aplikacji bez utraty dostępności. Podsystem zarządzania wykonuje ten proces za pomocą następujących usług.
 
-* **Menedżer klastra**: Jest to podstawowa usługa, która współdziała z Menedżera trybu Failover z niezawodności do umieszczenia aplikacji w węzłach, na podstawie ograniczeń umieszczania usługi. Menedżer zasobów w podsystemie pracy awaryjnej zapewnia ograniczenia nigdy nie są uszkodzone. Menedżer klastra zarządza cyklem życia aplikacji z należy anulować aprowizację. Można zintegrować go z Menedżera kondycji, aby upewnić się, że dostępność aplikacji nie zostaną utracone z punktu widzenia semantycznego kondycji podczas uaktualniania.
-* **Menedżer kondycji**: Ta usługa umożliwia monitorowanie kondycji aplikacji, usług i obiektów klastra. Klaster jednostki (takie jak węzłów, usługa partycje i repliki) może zgłaszać informacje o kondycji, które następnie są agregowane w magazynie kondycji scentralizowany. Te informacje o kondycji zawiera migawkę kondycji ogólnej punktu w czasie usługi i rozproszone na wielu węzłach w klastrze, dzięki czemu możesz podjąć wszystkie wymagane akcje naprawcze węzłów. Zapytania kondycji interfejsów API umożliwiają zapytań dotyczących zdarzeń kondycji zgłoszone w podsystemie kondycji. Zapytania kondycji, które interfejsy API zwracają dane pierwotne kondycji, przechowywane w magazynie kondycji lub zagregowane, interpretuje dane kondycji dla obiektu określonego klastra.
-* **Obraz Store**: Ta usługa zapewnia magazyn i stopień rozproszenia danych binarnych aplikacji. Ta usługa zapewnia proste rozproszony magazyn plików gdzie aplikacje są przekazywane do i pobierane z.
+* **Menedżer klastra**: jest to podstawowa usługa, która współdziała z Menedżer trybu failover od niezawodności, aby umieścić aplikacje w węzłach na podstawie ograniczeń umieszczania usług. Menedżer zasobów w podsystemie pracy awaryjnej gwarantuje, że ograniczenia nigdy nie są przerywane. Menedżer klastra zarządza cyklem życia aplikacji z poziomu inicjowania obsługi administracyjnej. Integruje się z menedżerem kondycji, aby upewnić się, że dostępność aplikacji nie zostanie utracona z perspektywy dotyczącej kondycji semantycznej podczas uaktualniania.
+* **Menedżer kondycji**: Ta usługa umożliwia monitorowanie kondycji aplikacji, usług i jednostek klastra. Jednostki klastra (takie jak węzły, partycje usług i repliki) mogą raportować informacje o kondycji, które następnie są agregowane w scentralizowanym magazynie kondycji. Te informacje o kondycji zapewniają ogólną migawkę kondycji usług i węzłów rozproszonych między wieloma węzłami w klastrze, co umożliwia podejmowanie wymaganych działań naprawczych. Interfejsy API zapytań o kondycji umożliwiają wykonywanie zapytań dotyczących zdarzeń kondycji raportowanych do podsystemu kondycji. Interfejsy API zapytań o kondycji zwracają nieprzetworzone dane dotyczące kondycji przechowywane w magazynie kondycji lub zagregowane, interpretowane dane kondycji dla określonej jednostki klastra.
+* **Magazyn obrazów**: Ta usługa zapewnia magazyn i dystrybucję plików binarnych aplikacji. Ta usługa udostępnia prosty rozproszony magazyn plików, do którego aplikacje są przekazywane i pobierane z programu.
 
 ## <a name="hosting-subsystem"></a>Podsystem hostingu
-Menedżer klastra informuje o hostingu podsystemu (uruchomione w każdym węźle), usług, które musi zarządzać dla określonego węzła. Podsystem hostingu następnie zarządza cyklem życia aplikacji, w tym węźle. Współpracuje ze składnikami niezawodności i kondycji, aby upewnić się, że repliki są prawidłowo umieszczone i są w dobrej kondycji.
+Menedżer klastra informuje podsystem hostingu (uruchomiony w każdym węźle), które usługi muszą zarządzać dla określonego węzła. Podsystem hostingu następnie zarządza cyklem życia aplikacji w tym węźle. Współdziała ona ze składnikami niezawodności i kondycji, aby zapewnić, że repliki są prawidłowo rozmieszczone i są w dobrej kondycji.
 
 ## <a name="communication-subsystem"></a>Podsystem komunikacji
-Podsystem ten zapewnia niezawodną obsługę komunikatów w ramach odnajdywania klastra i usługi za pośrednictwem usługi nazewnictwa. Usługa nazewnictwa jest rozpoznawany jako nazwy usług lokalizacji w klastrze i umożliwia użytkownikom zarządzanie nazwy usługi i właściwości. Przy użyciu usługi nazewnictwa, klienci mogą bezpiecznie komunikować się z dowolnego węzła w klastrze, aby rozpoznać nazwę usługi i pobierania metadanych usługi. Użytkownicy usługi Service Fabric przy użyciu prostego interfejsu API klienta nazewnictwa, można tworzyć usługi i klienci z możliwością obsługi bieżącą lokalizację sieciową, pomimo dynamiki węzła lub ponownie zmiany rozmiaru klastra.
+Ten podsystem zapewnia niezawodne komunikaty w klastrze i odnajdowanie usług za pomocą usługi nazewnictwa. Usługa nazewnictwa rozwiązuje nazwy usług do lokalizacji w klastrze i umożliwia użytkownikom zarządzanie nazwami i właściwościami usług. Korzystając z usługi nazewnictwa, klienci mogą bezpiecznie komunikować się z dowolnym węzłem w klastrze w celu rozpoznania nazwy usługi i pobrania metadanych usługi. Przy użyciu prostego interfejsu API klienta nazw użytkownicy Service Fabric mogą opracowywać usługi i klientów z możliwością rozpoznawania bieżącej lokalizacji sieciowej, pomimo że węzeł dynamism lub zmianę rozmiarów klastra.
 
-## <a name="testability-subsystem"></a>Podsystem testowalności
-Testowalność to pakiet narzędzi zaprojektowane specjalnie w celu testowania usług oferowanych w usłudze Service Fabric. Narzędzia pozwalają dla deweloperów, łatwo wywoływać istotnych błędów i uruchamiaj scenariusze testowania do wykonywania, a następnie sprawdź liczne Stany i przejścia, które usługa będzie wystąpić w okresie swojego istnienia, wszystko to w sposób kontrolowany i bezpieczny. Testowalność zawiera także mechanizm do uruchomienia dłużej testy, które można wykonać iterację za pomocą różnych możliwych błędów bez utraty dostępności. Zapewnia to za pomocą środowiska testowego w środowisku produkcyjnym.
+## <a name="testability-subsystem"></a>Podsystem testowania
+Testowanie to pakiet narzędzi przeznaczony specjalnie do testowania usług opartych na Service Fabric. Narzędzia ułatwiają deweloperom łatwe wywoływanie błędów i uruchamianie scenariuszy testowych w celu wykonywania i weryfikowania licznych stanów i przejść, które usługa będzie działać w całym okresie istnienia, w sposób kontrolowany i bezpieczny. Możliwości testowania również zapewniają mechanizm do uruchamiania dłuższych testów, które mogą wykonywać iteracje różnych możliwych awarii bez utraty dostępności. Zapewnia to środowisko testowe w środowisku produkcyjnym.
 

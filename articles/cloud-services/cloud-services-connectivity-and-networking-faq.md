@@ -1,5 +1,6 @@
 ---
-title: Problemy z łącznością i siecią dla Microsoft Azure Cloud Services często zadawane pytania | Microsoft Docs
+title: Problemy dotyczące łączności i sieci
+titleSuffix: Azure Cloud Services
 description: Ten artykuł zawiera listę często zadawanych pytań dotyczących łączności i sieci dla Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386752"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z łącznością i siecią dla Cloud Services platformy Azure: Często zadawane pytania
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z łącznością i siecią dla platformy Azure Cloud Services: często zadawane pytania
 
 W tym artykule opisano często zadawane pytania dotyczące problemów z łącznością i siecią dla [usługi Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informacje o rozmiarze można znaleźć na [stronie Cloud Services rozmiaru maszyny wirtualnej](cloud-services-sizes-specs.md).
 
@@ -51,7 +52,7 @@ Może zostać wyświetlony komunikat o błędzie "to konto użytkownika wygasło
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com), przejdź do usługi w chmurze i wybierz kartę **pulpit zdalny** .
 
-2. Wybierz miejsce wdrożenia produkcyjnego lub **przejściowego** .
+2. Wybierz miejsce wdrożenia **produkcyjnego** lub **przejściowego** .
 
 3. Zmień datę **wygaśnięcia** , a następnie Zapisz konfigurację.
 
@@ -64,14 +65,14 @@ Używany algorytm dystrybucji to skrót 5 (źródłowy adres IP, port źródłow
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Jak można przekierować ruch przychodzący do domyślnego adresu URL mojej usługi w chmurze na niestandardowy adres URL?
 
-Moduł ponownego zapisywania adresów URL usług IIS może służyć do przekierowywania ruchu, który jest dostarczany do domyślnego adresu URL dla usługi w chmurze (na \*przykład. cloudapp.NET) do niestandardowej nazwy/adresu URL. Ponieważ moduł ponownego zapisywania adresu URL jest domyślnie włączony w rolach sieci Web, a jego reguły są konfigurowane w pliku Web. config aplikacji, jest on zawsze dostępny na maszynie wirtualnej niezależnie od ponownych uruchomień/odniesień. Aby uzyskać więcej informacji, zobacz:
+Moduł ponownego zapisywania adresów URL usług IIS może służyć do przekierowywania ruchu, który jest dostarczany do domyślnego adresu URL dla usługi w chmurze (na przykład \*. cloudapp.net) do niestandardowej nazwy/adresu URL. Ponieważ moduł ponownego zapisywania adresu URL jest domyślnie włączony w rolach sieci Web, a jego reguły są konfigurowane w pliku Web. config aplikacji, jest on zawsze dostępny na maszynie wirtualnej niezależnie od ponownych uruchomień/odniesień. Aby uzyskać więcej informacji, zobacz:
 
 - [Utwórz reguły ponownego zapisywania dla modułu ponownego zapisywania adresu URL](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Usuwanie linku domyślnego](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Jak zablokować lub wyłączyć ruch przychodzący do domyślnego adresu URL mojej usługi w chmurze?
 
-Można zapobiec przychodzącemu ruchowi do domyślnego adresu URL/nazwy usługi w chmurze (na przykład \*. cloudapp.NET). Ustaw nagłówek hosta na niestandardową nazwę DNS (na przykład www\.MyCloudService.com) w obszarze Konfiguracja powiązania witryny w pliku definicji usługi w chmurze (*. csdef), jak wskazano poniżej:
+Można zapobiec przychodzącemu ruchowi do domyślnego adresu URL/nazwy usługi w chmurze (na przykład \*. cloudapp.net). Ustaw nagłówek hosta na niestandardową nazwę DNS (na przykład www\.MyCloudService.com) w obszarze Konfiguracja powiązania witryny w pliku definicji usługi w chmurze (*. csdef), jak wskazano:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

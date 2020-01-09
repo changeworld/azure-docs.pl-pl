@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: quickstart
-ms.date: 06/27/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 6be3d95c06862529881be2cbf2e4d74b44908e67
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383723"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Wysyłanie zapytań do interfejsu API wyszukiwania wiadomości Bing
 
@@ -44,7 +44,7 @@ Zalecamy, aby wszystkie żądania pochodziły z serwera. Dystrybuowanie klucza w
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#clientip)
 - [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#location)
 
-Nagłówki lokalizacji i adresu IP klienta są ważne w przypadku, gdy ma być zwracana zawartość zależna od lokalizacji.
+Nagłówki adresu IP klienta i lokalizacji są ważne z punktu widzenia zwracania zawartości odpowiedniej dla danej lokalizacji.
 
 Aby uzyskać listę wszystkich nagłówków żądań i odpowiedzi, zobacz [Nagłówki](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headers).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 18bd531e122ed72aa1cc481d6cf76590412c73c6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374560"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu Azure Portal
 Jeśli maszyna wirtualna z systemem Windows na platformie Azure napotyka błąd rozruchu lub dysku, może być konieczne wykonanie kroków rozwiązywania problemów dotyczących wirtualnego dysku twardego. Typowym przykładem może być niepowodzenie aktualizacji aplikacji, która uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano sposób używania Azure Portal do łączenia wirtualnego dysku twardego z inną maszyną wirtualną z systemem Windows w celu usunięcia błędów, a następnie ponownego utworzenia oryginalnej maszyny wirtualnej. 
@@ -41,7 +41,7 @@ Migawka to pełna kopia tylko do odczytu wirtualnego dysku twardego (VHD). Zalec
 
 1. Przejdź do [Azure Portal](https://portal.azure.com). Wybierz pozycję **maszyny wirtualne** z paska bocznego, a następnie wybierz maszynę wirtualną, która ma problem.
 1. W okienku po lewej stronie wybierz pozycję **dyski**, a następnie wybierz nazwę dysku systemu operacyjnego.
-    ![Obraz przedstawiający nazwę dysku systemu operacyjnego](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+    ![obraz o nazwie dysku systemu operacyjnego](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
 1. Na stronie **Przegląd** dysku systemu operacyjnego, a następnie wybierz pozycję **Utwórz migawkę**.
 1. Utwórz migawkę w tej samej lokalizacji, w której znajduje się dysk systemu operacyjnego.
 
@@ -131,14 +131,14 @@ Azure Portal teraz obsługuje zmianę dysku systemu operacyjnego maszyny wirtual
 
 1. Przejdź do [Azure Portal](https://portal.azure.com). Wybierz pozycję **maszyny wirtualne** z paska bocznego, a następnie wybierz maszynę wirtualną, która ma problem.
 1. W okienku po lewej stronie wybierz pozycję **dyski**, a następnie wybierz pozycję **Zamień dysk systemu operacyjnego**.
-        ![Obraz dotyczący wymiany dysku systemu operacyjnego w Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+        ![obraz dotyczący dysku wymiany systemu operacyjnego w Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
 1. Wybierz nowy dysk, który został naprawiony, a następnie wpisz nazwę maszyny wirtualnej, aby potwierdzić zmianę. Jeśli dysk nie jest wyświetlany na liście, odczekaj 10% minut po odłączeniu dysku od maszyny wirtualnej rozwiązywania problemów. Upewnij się również, że dysk znajduje się w tej samej lokalizacji co maszyna wirtualna.
 1. Wybierz przycisk OK.
 
 ## <a name="next-steps"></a>Następne kroki
-Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [Rozwiązywanie problemów z połączeniami RDP z maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md). Problemy dotyczące uzyskiwania dostępu do aplikacji uruchomionych na maszynie wirtualnej można znaleźć w temacie Rozwiązywanie problemów z [łącznością aplikacji na maszynie wirtualnej z systemem Windows](troubleshoot-app-connection.md).
+Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [Rozwiązywanie problemów z połączeniami RDP z maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md). Problemy dotyczące uzyskiwania dostępu do aplikacji uruchomionych na maszynie wirtualnej można znaleźć [w temacie Rozwiązywanie problemów z łącznością aplikacji na maszynie wirtualnej z systemem Windows](troubleshoot-app-connection.md).
 
-Aby uzyskać więcej informacji o korzystaniu z Menedżer zasobów, zobacz [Azure Resource Manager omówienie](../../azure-resource-manager/resource-group-overview.md).
+Aby uzyskać więcej informacji o korzystaniu z Menedżer zasobów, zobacz [Azure Resource Manager omówienie](../../azure-resource-manager/management/overview.md).
 
 

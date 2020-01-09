@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408895"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Renderowanie niestandardowych danych na mapie rastrowej
 
@@ -22,12 +22,14 @@ W tym artykule wyjaśniono, jak używać [statycznej usługi obrazu](https://doc
 
 Aby renderować niestandardowe pinezki, etykiety i nakładki geometryczne, można użyć aplikacji programu Poster. Za pomocą [interfejsów API usługi danych](https://docs.microsoft.com/rest/api/maps/data) Azure Maps można przechowywać i renderować nakładki.
 
+> [!Tip]
+> Często jest znacznie bardziej kosztowne użycie zestawu SDK sieci Web Azure Maps do wyświetlania prostej mapy na stronie sieci Web niż w przypadku korzystania z usługi obrazu statycznego. Zestaw SDK sieci Web używa kafelków mapy, chyba że użytkownik Pans i powiększa mapę, często generują jedynie część transakcji na obciążenie mapy. Należy pamiętać, że zestaw SDK sieci Web Azure Maps zawiera opcje wyłączania panoramowania i powiększania. Ponadto zestaw SDK sieci Web Azure Maps zapewnia bogatszy zestaw opcji wizualizacji danych niż usługa sieci Web mapy statycznej.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps
 
-Aby wykonać procedury opisane w tym artykule, musisz najpierw utworzyć konto Azure Maps, postępując zgodnie z instrukcjami w sekcji [Zarządzanie kontem](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) , a następnie wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](./tutorial-search-location.md#getkey) , aby pobrać podstawowy klucz subskrypcji dla konta.
+Aby wykonać procedury opisane w tym artykule, należy najpierw utworzyć konto Azure Maps i uzyskać mapowanie klucza konta. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta Azure Maps, i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla Twojego konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Renderowanie pinezki z etykietami i obrazem niestandardowym

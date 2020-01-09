@@ -1,28 +1,18 @@
 ---
-title: Tworzenie aplikacji kontenera systemu Linux w usłudze Service Fabric na platformie Azure | Microsoft Docs
+title: Tworzenie aplikacji kontenera systemu Linux na Service Fabric na platformie Azure
 description: W tym przewodniku Szybki start skompilujesz obraz Docker za pomocą własnej aplikacji, wypchniesz obraz do rejestru kontenerów, a następnie wdrożysz kontener do klastra usługi Service Fabric.
-services: service-fabric
-documentationcenter: linux
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0f6e24d2790f78ab0ec7292640fda3ab30e03a03
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372690"
 ---
-# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Linux w usłudze Service Fabric
+# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: wdrażanie kontenerów systemu Linux w usłudze Service Fabric
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi.
 
@@ -189,11 +179,11 @@ az group delete --name $ResourceGroupName
 ```
 
 Po zakończeniu pracy z klastrem, możesz usunąć certyfikat ze swojego magazynu certyfikatów. Przykład:
-- W systemie Windows: Użyj [przystawki MMC certyfikatów](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Pamiętaj, aby wybrać pozycję **Moje konto użytkownika** podczas dodawania przystawki. Przejdź do pozycji `Certificates - Current User\Personal\Certificates` i usuń certyfikat.
-- Na komputerze Mac: Użyj aplikacji pęku kluczy.
-- W systemie Ubuntu: Wykonaj czynności, które zostały użyte do wyświetlenia certyfikatów, i usuń certyfikat.
+- W systemie Windows: użyj [przystawki MMC certyfikatów](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Pamiętaj, aby wybrać pozycję **Moje konto użytkownika** podczas dodawania przystawki. Przejdź do pozycji `Certificates - Current User\Personal\Certificates` i usuń certyfikat.
+- Na komputerze Mac: użyj aplikacji pęku kluczy.
+- W systemie Ubuntu: wykonaj czynności, które zostały użyte do wyświetlenia certyfikatów, i usuń certyfikat.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start aplikacja kontenera systemu Linux została wdrożona w klastrze usługi Service Fabric na platformie Azure i przeniesiona do trybu failover oraz przeskalowano ją w klastrze. Aby dowiedzieć się więcej o pracy z kontenerami systemu Linux w usłudze Service Fabric, przejdź do samouczka dla aplikacji kontenera systemu Linux.
 

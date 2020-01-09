@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae50c7cfcb5087903edd8dadca08c38ab1775e20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17538d383d7f796803c88d9490aa68ed75351445
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423279"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform i przepływ poświadczeń klienta OAuth 2,0
 
@@ -65,16 +65,21 @@ Ten typ autoryzacji jest typowy dla demonów i kont usług, które muszą uzyski
 
 ### <a name="application-permissions"></a>Uprawnienia aplikacji
 
-Zamiast używać list ACL, można użyć interfejsów API, aby uwidocznić zestaw uprawnień aplikacji. Uprawnienie aplikacji jest przyznawane aplikacji przez administratora organizacji i może być używane tylko w celu uzyskania dostępu do danych należących do tej organizacji i jej pracowników. Na przykład Microsoft Graph uwidacznia kilka uprawnień aplikacji, aby wykonać następujące czynności:
+Zamiast używać list ACL, można użyć interfejsów API, aby uwidocznić zestaw **uprawnień aplikacji**. Uprawnienie aplikacji jest przyznawane aplikacji przez administratora organizacji i może być używane tylko w celu uzyskania dostępu do danych należących do tej organizacji i jej pracowników. Na przykład Microsoft Graph uwidacznia kilka uprawnień aplikacji, aby wykonać następujące czynności:
 
 * Odczytaj pocztę we wszystkich skrzynkach pocztowych
 * Odczytuj i zapisuj wiadomości e-mail we wszystkich skrzynkach pocztowych
 * Wyślij wiadomość e-mail jako dowolny użytkownik
-* Odczyt danych katalogu
+* Odczytywanie danych katalogu
 
 Aby uzyskać więcej informacji o uprawnieniach aplikacji, przejdź do [Microsoft Graph](https://developer.microsoft.com/graph).
 
 Aby użyć uprawnień aplikacji w aplikacji, wykonaj kroki opisane w następnych sekcjach.
+
+
+> [!NOTE]
+> W przypadku uwierzytelniania jako aplikacji, w przeciwieństwie do użytkownika, nie można używać "uprawnień delegowanych" (zakresy, które są udzielane przez użytkownika).  Należy użyć "uprawnień aplikacji", znanych także jako "role", które są udzielane przez administratora aplikacji (lub przez internetowy interfejs API).    
+
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Zażądaj uprawnień w portalu rejestracji aplikacji
 

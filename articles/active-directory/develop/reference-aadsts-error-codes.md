@@ -1,5 +1,5 @@
 ---
-title: Kody błędów autoryzacji i uwierzytelniania usługi Azure AD | Azure
+title: Kody błędów autoryzacji & uwierzytelniania usługi Azure AD
 description: Dowiedz się więcej o kodach błędów AADSTS zwracanych z usługi tokenu zabezpieczeń (STS) usługi Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423967"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kody błędów autoryzacji i uwierzytelniania usługi Azure AD
 
@@ -133,6 +133,8 @@ Wyszukaj w liczbowej części zwróconego kodu błędu.  Na przykład jeśli wys
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers — kontrola sesji nie jest obsługiwana w przypadku użytkowników przekazujących. |
 | AADSTS50180 | Wymagana jest WindowsIntegratedAuthMissing zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego. |
 | AADSTS50187 | DeviceInformationNotProvided — usługa nie może wykonać uwierzytelniania urządzenia. |
+| AADSTS50196 | LoopDetected — wykryto pętlę klienta. Sprawdź logikę aplikacji, aby upewnić się, że buforowanie tokenów jest zaimplementowane i że warunki błędów są obsługiwane poprawnie.  Aplikacja spowodowała zbyt wiele tego samego żądania w zbyt krótkim czasie, co oznacza, że jest w stanie wadliwym lub jest abusively żądającym tokenów. |
+| AADSTS50199 | CmsiInterrupt — wymagana jest interakcja z użytkownikiem dla tego uwierzytelniania.  Ponieważ jest to błąd "interaction_required", klient powinien wykonać uwierzytelnianie interaktywne.  Dzieje się tak, ponieważ System WebView został użyty do zażądania tokenu dla aplikacji natywnej — użytkownik musi zostać poproszony o podanie monitu o zalogowanie się w aplikacji, w której zarejestrowano.|
 | AADSTS51000 | RequiredFeatureNotEnabled — funkcja jest wyłączona. |
 | AADSTS51001 | DomainHintMustbePresent — Wskazówka domeny musi być obecna przy użyciu lokalnego identyfikatora zabezpieczeń lub lokalnej nazwy UPN. |
 | AADSTS51004 | UserAccountNotInDirectory — konto użytkownika nie istnieje w katalogu. |

@@ -3,12 +3,27 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/19/2019
-ms.openlocfilehash: 0da406ca1b37e05a44ba0d0f3ca56c266dda0dac
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/11/2019
+ms.openlocfilehash: a678603d19b8da9ace8b519e19fc8ef2673621fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183564"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384726"
 ---
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) dostęp do interfejsu API automatycznego sugerowania Bing. Jeśli nie masz subskrypcji platformy Azure, możesz bezpłatnie utworzyć [konto](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). Zanim będzie można kontynuować, potrzebny będzie klucz dostępu podawany po aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+## <a name="create-an-azure-resource"></a>Tworzenie zasobu platformy Azure
+
+Zacznij korzystać z interfejs API automatycznego sugerowania Bing, tworząc jeden z poniższych zasobów platformy Azure.
+
+* [Utwórz zasób w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Nie jest wymagana żadna subskrypcja platformy Azure.
+    * Ważne przez siedem dni bezpłatnie. Po zarejestrowaniu się w [witrynie sieci Web platformy Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)będzie dostępny klucz wersji próbnej i punkt końcowy.
+
+* [Utwórz zasób automatyczne sugerowanie Bing](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7):
+    * Dostępne w Azure Portal do momentu usunięcia zasobu.
+    * Skorzystaj z warstwy cenowej bezpłatna do wypróbowania usługi i przeprowadź uaktualnienie później do warstwy płatnej dla środowiska produkcyjnego.
+    * Automatyczne sugerowanie Bing jest również oferowana w płatnych warstwach [zasobu wyszukiwanie Bing wersji 7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7).
+
+* [Tworzenie zasobu wielousługowego](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Dostępne w Azure Portal do momentu usunięcia zasobu.  
+    * Użyj tego samego klucza i punktu końcowego dla aplikacji w wielu Cognitive Services.

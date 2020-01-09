@@ -1,5 +1,5 @@
 ---
-title: Rejestrowanie aplikacji klasycznej, która wywołuje interfejsy API sieci Web — Microsoft Identity platform | Azure
+title: Rejestrowanie aplikacji klasycznych, które wywołują interfejsy API sieci Web — Microsoft Identity platform | Azure
 description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web (Rejestracja aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94f7f2dfdbf404a092773857a0f7727618cd429a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dabc96ef669f0c0c61a7bca4a16828294cf404df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423853"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web — Rejestracja aplikacji
 

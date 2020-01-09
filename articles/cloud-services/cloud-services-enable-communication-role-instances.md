@@ -3,18 +3,18 @@ title: Komunikacja dla ról w Cloud Services | Microsoft Docs
 description: Wystąpienia roli w Cloud Services mogą mieć punkty końcowe (http, https, TCP, UDP) zdefiniowane dla nich, które komunikują się z zewnętrznym lub innym wystąpieniem roli.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: gwallace
-ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386344"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Włączanie komunikacji dla wystąpień roli na platformie Azure
 Role usługi w chmurze komunikują się za poorednictwem połączeń wewnętrznych i zewnętrznych. Połączenia zewnętrzne są nazywane **wejściowymi punktami końcowymi** , gdy wewnętrzne połączenia są nazywane **wewnętrznymi punktami końcowymi**. W tym temacie opisano sposób modyfikowania [definicji usługi](cloud-services-model-and-package.md#csdef) w celu tworzenia punktów końcowych.
@@ -73,7 +73,7 @@ Można również użyć zakresu portów.
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a>Role procesu roboczego a Role sieci Web
+## <a name="worker-roles-vs-web-roles"></a>Role procesów roboczych a role sieci Web
 Istnieje jedna drobna różnica z punktami końcowymi podczas pracy z rolami procesów roboczych i sieci Web. Rola sieci Web musi mieć co najmniej jeden wejściowy punkt końcowy przy użyciu protokołu **http** .
 
 ```xml
@@ -253,7 +253,7 @@ Poniższy przykład kodu pokazuje definicje ról dla ról pokazanych na poprzedn
 > 
 > 
 
-Domyślnie po zdefiniowaniu wewnętrznego punktu końcowego komunikacja może przepływać z dowolnej roli do wewnętrznego punktu końcowego roli bez żadnych ograniczeń. Aby ograniczyć komunikację, należy dodać element **NetworkTrafficRules** do elementu ServiceDefinition  w pliku definicji usługi.
+Domyślnie po zdefiniowaniu wewnętrznego punktu końcowego komunikacja może przepływać z dowolnej roli do wewnętrznego punktu końcowego roli bez żadnych ograniczeń. Aby ograniczyć komunikację, należy dodać element **NetworkTrafficRules** do elementu **ServiceDefinition** w pliku definicji usługi.
 
 ### <a name="scenario-1"></a>Scenariusz 1
 Zezwalaj tylko na ruch sieciowy z **WebRole1** do **WorkerRole1**.
@@ -367,4 +367,7 @@ Odwołanie do schematu XML dla elementów użytych powyżej można znaleźć [tu
 
 ## <a name="next-steps"></a>Następne kroki
 Przeczytaj więcej na temat [modelu](cloud-services-model-and-package.md)usługi w chmurze.
+
+
+
 

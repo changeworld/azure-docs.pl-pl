@@ -1,6 +1,6 @@
 ---
-title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — uruchamianie zadania usługi Batch | Microsoft Docs
-description: Przykład skryptu interfejsu wiersza polecenia platformy Azure — uruchamianie zadania za pomocą usługi Batch
+title: Przykład skryptu interfejsu wiersza polecenia platformy Azure — uruchamianie zadania usługi Batch
+description: Ten skrypt tworzy zadanie usługi Batch i dodaje serię zadań podrzędnych do tego zadania. Demonstruje również sposób monitorowania zadania i jego zadań podrzędnych.
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -12,16 +12,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 12/12/2019
 ms.author: lahugh
-ms.openlocfilehash: a5e81393014dd70ae83f66e2a1d41f4de3c14205
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3fff556f91558f30389ac3548d699e3788719d59
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390033"
 ---
-# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Przykład użycia interfejsu wiersza polecenia: Uruchamianie zadania i zadań podrzędnych za pomocą usługi Azure Batch
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Przykład interfejsu wiersza polecenia: uruchamianie zadania i zadań podrzędnych za pomocą usługi Azure Batch
 
 Ten skrypt tworzy zadanie usługi Batch i dodaje serię zadań podrzędnych do tego zadania. Demonstruje również sposób monitorowania zadania i jego zadań podrzędnych. 
 

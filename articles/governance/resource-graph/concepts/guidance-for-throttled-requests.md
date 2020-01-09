@@ -1,14 +1,14 @@
 ---
 title: Wskazówki dotyczące ograniczonych żądań
-description: Dowiedz się więcej na temat równoległych zadań wsadowych, rozłożonych, podziałów i zapytań, aby uniknąć ograniczania żądań przez usługę Azure Resource Graph.
-ms.date: 11/21/2019
+description: Zapoznaj się z równoległym grupowaniem, rozłożeniem, stronicowaniem i wykonywaniem zapytań, aby uniknąć ograniczania żądań przez usługę Azure Resource Graph.
+ms.date: 12/02/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436078"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Wskazówki dotyczące żądań z ograniczeniami na wykresie zasobów platformy Azure
 
@@ -17,7 +17,7 @@ Podczas tworzenia programistycznego i częstego używania danych grafu zasobów 
 W tym artykule omówiono cztery obszary i wzorce związane z tworzeniem zapytań w usłudze Azure Resource Graph:
 
 - Omówienie nagłówków ograniczania
-- Wsadowe zapytania
+- Grupowanie zapytań
 - Rozłożenie zapytań
 - Wpływ na podział na strony
 
@@ -37,9 +37,9 @@ Aby zilustrować, jak działają nagłówki, przyjrzyjmy się odpowiedzi kwerend
 
 Aby zobaczyć przykład użycia nagłówków do _wycofywania_ na żądaniach zapytań, zobacz test in [Query in Parallel](#query-in-parallel).
 
-## <a name="batching-queries"></a>Wsadowe zapytania
+## <a name="grouping-queries"></a>Grupowanie zapytań
 
-Wsadowe zapytania według subskrypcji, grupy zasobów lub pojedynczego zasobu są wydajniejsze niż zapytania przekształcają. Koszt przydziału dla większego zapytania jest często mniejszy niż koszt przydziału dla wielu małych i przeznaczonych zapytań. Rozmiar wsadu zaleca się mniej niż _300_.
+Grupowanie zapytań według subskrypcji, grupy zasobów lub pojedynczego zasobu jest wydajniejsze niż zapytania przekształcają. Koszt przydziału dla większego zapytania jest często mniejszy niż koszt przydziału dla wielu małych i przeznaczonych zapytań. Zaleca się, aby rozmiar grupy był mniejszy niż _300_.
 
 - Przykład niezoptymalizowanego podejścia
 
@@ -62,19 +62,19 @@ Wsadowe zapytania według subskrypcji, grupy zasobów lub pojedynczego zasobu s�
   }
   ```
 
-- Przykład #1 zoptymalizowanego podejścia wsadowego
+- Przykład #1 zoptymalizowanego podejścia grupowania
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var subscriptionIds = /* A big list of subscriptionIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= subscriptionIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= subscriptionIds.Count / groupSize; ++i)
   {
-      var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
+      var currSubscriptionGroup = subscriptionIds.Skip(i * groupSize).Take(groupSize).ToList();
       var userQueryRequest = new QueryRequest(
-          subscriptions: currSubscriptionBatch,
+          subscriptions: currSubscriptionGroup,
           query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
@@ -85,21 +85,25 @@ Wsadowe zapytania według subskrypcji, grupy zasobów lub pojedynczego zasobu s�
   }
   ```
 
-- Przykład #2 zoptymalizowanego podejścia wsadowego
+- Przykład #2 zoptymalizowanego podejścia grupowania do pobierania wielu zasobów w jednym zapytaniu
+
+  ```kusto
+  Resources | where id in~ ({resourceIdGroup}) | project name, type
+  ```
 
   ```csharp
   // RECOMMENDED
   var header = /* your request header */
   var resourceIds = /* A big list of resourceIds */
 
-  const int batchSize = 100;
-  for (var i = 0; i <= resourceIds.Count / batchSize; ++i)
+  const int groupSize = 100;
+  for (var i = 0; i <= resourceIds.Count / groupSize; ++i)
   {
-      var resourceIdBatch = string.Join(",",
-          resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
+      var resourceIdGroup = string.Join(",",
+          resourceIds.Skip(i * groupSize).Take(groupSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIdGroup}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -149,12 +153,12 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Równoległe zapytanie
 
-Mimo że przetwarzanie wsadowe jest zalecane w porównaniu z przetwarzanie równoległe, istnieją przypadki, w których zapytania nie mogą być łatwo przetwarzane. W takich przypadkach możesz chcieć zbadać Wykres zasobów platformy Azure, wysyłając jednocześnie wiele zapytań. Poniżej przedstawiono przykład sposobu _wycofywania_ na podstawie nagłówków ograniczania w takich scenariuszach:
+Mimo że grupowanie jest zalecane w porównaniu z przetwarzanie równoległe, istnieją przypadki, w których zapytania nie mogą być łatwo pogrupowane. W takich przypadkach możesz chcieć zbadać Wykres zasobów platformy Azure, wysyłając jednocześnie wiele zapytań. Poniżej przedstawiono przykład sposobu _wycofywania_ na podstawie nagłówków ograniczania w takich scenariuszach:
 
 ```csharp
-IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
-// Run batches in parallel.
-await Task.WhenAll(queryBatches.Select(ExecuteQueries)).ConfigureAwait(false);
+IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
+// Run groups in parallel.
+await Task.WhenAll(queryGroup.Select(ExecuteQueries)).ConfigureAwait(false);
 
 async Task ExecuteQueries(IEnumerable<string> queries)
 {

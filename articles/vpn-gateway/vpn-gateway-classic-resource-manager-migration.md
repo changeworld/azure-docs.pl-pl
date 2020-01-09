@@ -1,6 +1,6 @@
 ---
-title: Klasyczne bramy sieci VPN do migracji usługi Resource Manager | Dokumentacja firmy Microsoft
-description: Ta strona zawiera omówienie sieci VPN bramy klasycznego do migracji usługi Resource Manager.
+title: VPN Gateway klasyczny do Menedżer zasobów migracji | Microsoft Docs
+description: Ta strona zawiera omówienie VPN Gateway klasycznej do Menedżer zasobów migracji.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: amsriva
-ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 966df2a01d0178c19c2ae6e698a6610bf0e321c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425821"
 ---
-# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Brama sieci VPN migracja z klasycznego do usługi Resource Manager
-Teraz można migrować bram sieci VPN z klasycznego modelu wdrażania usługi Resource Manager. Możesz dowiedzieć się więcej o usłudze Azure Resource Manager [funkcjach i korzyściach](../azure-resource-manager/resource-group-overview.md). W tym artykule będziemy szczegółowo opisują jak przeprowadzić migrację z wdrożeń klasycznych do nowszych modelu usługi Resource Manager na podstawie. 
+# <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway klasyczny do Menedżer zasobów migracji
+Bramy sieci VPN można teraz migrować z klasycznego do Menedżer zasobów model wdrażania. Więcej informacji o Azure Resource Manager [funkcjach i korzyściach](../azure-resource-manager/management/overview.md)można znaleźć w artykule. W tym artykule szczegółowo opisano sposób migrowania z wdrożeń klasycznych do nowszej wersji Menedżer zasobów opartej na modelu. 
 
-Bramy sieci VPN są migrowane w ramach migracji sieci wirtualnej z wersji klasycznej do usługi Resource Manager. Ta migracja odbywa się w czasie jednej sieci wirtualnej. Nie jest wymagane dodatkowe narzędzia lub wymagania wstępne dotyczące migracji. Kroki migracji są takie same, jak istniejące migracji sieci wirtualnej i są udokumentowane na [stronie migracji zasobów IaaS](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Brak przestojów ścieżki danych podczas migracji, a zatem istniejące obciążenia będą nadal działać bez utraty łączności lokalnej podczas migracji. Publiczny adres IP skojarzony z bramą sieci VPN nie zmienia się podczas procesu migracji. Oznacza to, że nie musisz ponownie skonfigurować router w środowisku lokalnym, po zakończeniu migracji.  
+Bramy sieci VPN są migrowane w ramach migracji wirtualnej z klasycznej do Menedżer zasobów. Ta migracja wykonuje jedną sieć wirtualną jednocześnie. Nie ma dodatkowych wymagań w zakresie narzędzi lub wymagań wstępnych migracji. Kroki migracji są identyczne z istniejącą migracją sieci wirtualnej i są udokumentowane na [stronie migracji zasobów IaaS](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Podczas migracji nie ma żadnego przestoju ścieżki danych i w ten sposób istniejące obciążenia byłyby nadal działać bez utraty łączności lokalnej podczas migracji. Publiczny adres IP skojarzony z bramą sieci VPN nie zmienia się w trakcie procesu migracji. Oznacza to, że nie trzeba ponownie konfigurować routera lokalnego po zakończeniu migracji.  
 
-Modelu w usłudze Resource Manager różni się od modelu klasycznego i składa się z bramy sieci wirtualnej i bramy sieci lokalnej i zasoby połączenia. Reprezentują one, bramy sieci VPN witryny lokalnej reprezentujących na przestrzeń adresów lokalnych i łączność między tymi dwoma odpowiednio. Po ukończeniu migracji bram nie będą dostępne w modelu klasycznym, a wszystkie operacje zarządzania na obiekty połączenia, bramy sieci lokalnej i bramy sieci wirtualnej muszą być wykonywane przy użyciu modelu usługi Resource Manager.
+Model w Menedżer zasobów różni się od modelu klasycznego i składa się z bram sieci wirtualnych, bram sieci lokalnej i zasobów połączeń. Reprezentują one samą bramę sieci VPN, lokację lokalną reprezentującą lokalnie lokalną przestrzeń adresową i łączność między nimi. Po zakończeniu migracji bramy nie będą dostępne w modelu klasycznym, a wszystkie operacje zarządzania na bramach sieci wirtualnej, bramach sieci lokalnej i obiektach połączeń należy wykonać przy użyciu modelu Menedżer zasobów.
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
-Najbardziej typowe scenariusze łączności sieci VPN są objęte z modelu klasycznego do migracji usługi Resource Manager. Obsługiwane scenariusze obejmują-
+Najczęstsze scenariusze łączności sieci VPN są objęte klasycznym Menedżer zasobów migracją. Obsługiwane scenariusze obejmują:
 
-* Polecenie łączność między lokacjami
-* Łączność między lokacjami z bramą sieci VPN jest podłączony do lokalizacji lokalnej
-* Łączność sieci wirtualnej między dwiema sieciami wirtualnymi przy użyciu bram sieci VPN typu sieć
-* Wiele sieci wirtualnych podłączone do tej samej lokalizacji lokalnej
-* Połączenia obejmujące wiele lokacji
-* Sieci wirtualne włączyć tunelowania wymuszonego
+* Wskaż łączność z lokacją
+* Łączność między lokacjami i VPN Gateway podłączonymi do lokalizacji lokalnej
+* Łączność między dwiema sieci wirtualnych przy użyciu bram sieci VPN
+* Wiele sieci wirtualnych połączonych z tą samą lokalizacją lokalną
+* Łączność między lokacjami
+* Wymuszone tunelowanie włączone sieci wirtualnych
 
-Dostępne są następujące scenariusze, które nie są obsługiwane-  
+Scenariusze, które nie są obsługiwane, to m.in.:  
 
-* Siecią wirtualną przy użyciu zarówno bramę usługi ExpressRoute, jak i bramy sieci VPN nie jest obecnie obsługiwane.
-* Scenariusze przesyłania, gdzie rozszerzenia maszyny Wirtualnej są podłączone do serwerów lokalnych. Ograniczeń połączeń sieci VPN przesyłane są szczegółowo opisane poniżej.
+* Sieć wirtualna z usługą ExpressRoute Gateway i VPN Gateway nie jest obecnie obsługiwana.
+* Scenariusze tranzytowe, w przypadku których rozszerzenia maszyn wirtualnych są połączone z serwerami lokalnymi. Ograniczenia dotyczące łączności między sieciami VPN są szczegółowo opisane poniżej.
 
 > [!NOTE]
-> Weryfikacja CIDR w modelu usługi Resource Manager jest bardziej rygorystyczne niż w modelu klasycznym. Przed migracją zapewniać zakresów adresów klasyczne, biorąc pod uwagę zgodność z prawidłowy format CIDR przed rozpoczęciem migracji. CIDR mogą być sprawdzone za pomocą dowolnego wspólnego moduły weryfikacji CIDR. Sieć wirtualna lub lokacji lokalnych z nieprawidłową zakresy CIDR, podczas migracji spowoduje w stanie niepowodzenia.
+> Walidacja CIDR w modelu Menedżer zasobów jest bardziej rygorystyczna niż w modelu klasycznym. Przed przeprowadzeniem migracji upewnij się, że klasyczne zakresy adresów są zgodne z prawidłowym formatem CIDR przed rozpoczęciem migracji. Można sprawdzić poprawność routingu CIDR przy użyciu wszelkich typowych modułów sprawdzania poprawności CIDR. Po przeprowadzeniu migracji Lokacje wirtualne lub lokalne z nieprawidłowymi zakresami CIDR spowodują niepowodzenie stanu.
 > 
 > 
 
-## <a name="vnet-to-vnet-connectivity-migration"></a>Sieć wirtualna migracji łączność w sieci wirtualnej
-Połączenie między sieciami w modelu klasycznym wirtualnymi osiągnięto, tworząc reprezentację połączonych sieci wirtualnej w lokacji lokalnej. Klienci musieli utworzyć dwie lokacje lokalne, które są reprezentowane z dwiema sieciami wirtualnymi, które są potrzebne do ze sobą połączone. Następnie zostały one połączone do odpowiednich sieci wirtualnych przy użyciu tunelu IPsec do ustanowienia połączenia między dwiema sieciami wirtualnymi. Ten model ma trudności możliwości zarządzania, ponieważ zmiany zakresu adresów w jednej sieci wirtualnej, również muszą być utrzymywane w reprezentacji odpowiednich lokacji lokalnej. W modelu usługi Resource Manager to rozwiązanie nie jest już potrzebny. Połączenie między dwiema sieciami wirtualnymi można bezpośrednio uzyskać przy użyciu typu połączenia "Vnet2Vnet" w zasobach połączenia. 
+## <a name="vnet-to-vnet-connectivity-migration"></a>Migracja połączeń z sieci wirtualnej do sieci wirtualnej
+Połączenie między sieciami wirtualnymi w klasycznych zostało osiągnięte przez utworzenie reprezentacji lokacji lokalnej połączonej sieci wirtualnej. Klienci musieli utworzyć dwie lokacje lokalne, które reprezentują dwie sieci wirtualnych, które muszą być połączone ze sobą. Następnie zostały one połączone z odpowiednim sieci wirtualnych przy użyciu tunelu IPsec w celu ustanowienia łączności między tymi dwoma sieci wirtualnych. Ten model ma problemy związane z zarządzaniem, ponieważ wszystkie zmiany zakresu adresów w jednej sieci wirtualnej muszą być również utrzymywane w odpowiedniej reprezentacji lokacji lokalnej. W modelu Menedżer zasobów to obejście nie jest już potrzebne. Połączenie między tymi dwoma sieci wirtualnych można uzyskać bezpośrednio przy użyciu typu połączenia "Vnet2Vnet" w zasobie połączenia. 
 
-![Zrzut ekranu z sieci wirtualnej do migracji sieci wirtualnej.](./media/vpn-gateway-migration/migration1.png)
+![Zrzut ekranu migracji sieci wirtualnej do sieci wirtualnej.](./media/vpn-gateway-migration/migration1.png)
 
-Podczas migracji sieci wirtualnej zostanie wykryte, że jednostki podłączone do bramy sieci VPN bieżącej sieci wirtualnej jest innej sieci wirtualnej i upewnij się, że po zakończeniu migracji w obu sieciach wirtualnych, nie będzie widział dwie lokacje lokalne reprezentujący do innej sieci wirtualnej. Opartych na modelu klasycznym dwóch bram sieci VPN, dwie lokacje lokalne i dwa połączenia między nimi jest przekształcana w modelu usługi Resource Manager przy użyciu dwóch bram sieci VPN i dwóch połączeń typu Vnet2Vnet.
+Podczas migracji sieci wirtualnej wykryjemy, że połączona jednostka z bieżącą wirtualną siecią VNet jest inną sieć wirtualną i upewnij się, że po zakończeniu migracji obydwu sieci wirtualnych nie będą już wyświetlane dwie lokacje lokalne reprezentujące drugą sieć wirtualną. Klasyczny model dwóch bram sieci VPN, dwie lokacje lokalne i dwa połączenia między nimi są przekształcane w model Menedżer zasobów z dwoma bramami sieci VPN i dwoma połączeniami typu Vnet2Vnet.
 
-## <a name="transit-vpn-connectivity"></a>Połączenie z siecią VPN przesyłania
-Taki sposób, że łączność lokalna dla sieci wirtualnej odbywa się przez połączenie z inną siecią wirtualną, podłączona bezpośrednio do serwera lokalnego, można skonfigurować bramy sieci VPN w topologii. Jest przesyłane połączenia sieci VPN, gdzie wystąpień w pierwszej sieci wirtualnej są podłączone do zasobów lokalnych za pośrednictwem przesyłania do bramy sieci VPN w sieci wirtualnej połączonej, podłączona bezpośrednio do serwera lokalnego. Aby uzyskać tę konfigurację w klasycznym modelu wdrażania, będziesz potrzebować do utworzenia lokacji lokalnej, która zawiera zagregowane prefiksy reprezentujących sieci połączonych i przestrzeń adresowa w środowisku lokalnym. Ta lokacja lokalna representational następnie jest podłączony do sieci wirtualnej w celu osiągnięcia przesyłania łączności. Ten model klasyczny również ma podobne trudności możliwości zarządzania, ponieważ każda zmiana w zakresie adresów lokalnych, również muszą być utrzymywane w lokacji lokalnej reprezentujących agregacji w sieci wirtualnej i lokalnej. Wprowadzenie obsługi protokołu BGP w bramach usługi Resource Manager obsługiwane upraszcza możliwości zarządzania, ponieważ połączone bramy można znaleźć tras ze ścieżki lokalnie bez ręcznej modyfikacji prefiksy.
+## <a name="transit-vpn-connectivity"></a>Tranzytowa łączność z siecią VPN
+Bramy sieci VPN można skonfigurować w topologii, tak aby łączność lokalna dla sieci wirtualnej była osiągana przez połączenie z inną siecią wirtualną, która jest bezpośrednio podłączona do lokalnego. Jest to tranzytowa łączność z siecią VPN, w której wystąpienia w pierwszej sieci wirtualnej są połączone z zasobami lokalnymi przez przetransferowanie do bramy sieci VPN w połączonej podsieci wirtualnej, która jest bezpośrednio podłączona do lokalnego. Aby osiągnąć tę konfigurację w klasycznym modelu wdrażania, należy utworzyć lokację lokalną, która ma zagregowane prefiksy reprezentujące zarówno połączoną sieć wirtualną, jak i lokalną przestrzeń adresową. Ta reprezentacja lokacji lokalnej jest następnie połączona z siecią wirtualną w celu uzyskania łączności tranzytowej. Ten model klasyczny ma także podobne wyzwania związane z zarządzaniem, ponieważ wszelkie zmiany w zakresie adresów lokalnych muszą być również utrzymywane w lokacji lokalnej reprezentującej zagregowaną sieć wirtualną i lokalną. Wprowadzenie obsługi protokołu BGP w Menedżer zasobów obsługiwanych bram upraszcza zarządzanie, ponieważ połączone bramy mogą uczyć się tras od lokalnych, bez konieczności ręcznej modyfikacji prefiksów.
 
-![Zrzut ekranu przedstawiający Scenariusz routingu tranzytowego.](./media/vpn-gateway-migration/migration2.png)
+![Zrzut ekranu scenariusza routingu tranzytowego.](./media/vpn-gateway-migration/migration2.png)
 
-Ponieważ firma Microsoft przekształcić sieci wirtualnej połączenie między sieciami wirtualnymi bez konieczności lokalnych witryn scenariusz przesyłania utraci łączność lokalnej sieci wirtualnej, która pośrednio jest podłączony do sieci lokalnej. Utrata łączności można zminimalizować w dwóch poniższych sposobów po zakończeniu migracji- 
+Ze względu na to, że przekształcamy sieć wirtualną na łączność sieci wirtualnej bez konieczności używania lokacji lokalnych, scenariusz przesyłania utraci łączność lokalną dla sieci wirtualnej, która jest połączona bezpośrednio z lokalną. Utrata łączności można wyeliminować na dwa sposoby, po zakończeniu migracji: 
 
-* Należy włączyć protokół BGP dla bram sieci VPN, które są połączone ze sobą oraz do serwera lokalnego. Włączanie protokołu BGP spowoduje przywrócenie łączności bez zmiany konfiguracji, ponieważ trasy są rozpoznane i anonsowane między bramami sieci wirtualnej. Należy pamiętać, że protokołu BGP opcja jest dostępna tylko w przypadku wersji SKU Standard i wyższych.
-* Ustanowić jawne połączenie z sieci wirtualnej objęte bramy sieci lokalnej reprezentujących lokalizacji lokalnej. To także wymaga zmiany konfiguracji na router lokalny, aby utworzyć i skonfigurować tunel protokołu IPsec.
+* Włącz protokół BGP na bramach sieci VPN połączonych ze sobą i lokalnymi. Włączenie protokołu BGP przywraca łączność bez żadnej innej zmiany konfiguracji od momentu, gdy trasy są rozwiązane i anonsowane między bramami sieci wirtualnej. Należy zauważyć, że opcja protokołu BGP jest dostępna tylko w jednostkach SKU w wersji Standard i wyższych.
+* Nawiąż jawne połączenie z bramą sieci lokalnej, która reprezentuje lokalizację lokalną. Wymaga to również zmiany konfiguracji na routerze lokalnym w celu utworzenia i skonfigurowania tunelu IPsec.
 
-## <a name="next-steps"></a>Kolejne kroki
-Po zapoznaniu się Obsługa migracji bramy sieci VPN, przejdź do [obsługiwanej przez platformę migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Resource Manager](../virtual-machines/windows/migration-classic-resource-manager-ps.md) na rozpoczęcie pracy.
+## <a name="next-steps"></a>Następne kroki
+Po zapoznaniu się z obsługą migracji za pomocą usługi VPN Gateway przejdź do obszaru [migracja zasobów IaaS z klasycznej do Menedżer zasobów](../virtual-machines/windows/migration-classic-resource-manager-ps.md) , aby rozpocząć pracę.
 

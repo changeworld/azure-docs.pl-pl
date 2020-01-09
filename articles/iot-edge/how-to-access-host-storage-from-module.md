@@ -4,16 +4,16 @@ description: Użyj zmiennych środowiskowych i Utwórz opcje, aby umożliwić do
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434518"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Zapewnianie modułom dostępu do magazynu lokalnego na urządzeniu
 
@@ -21,16 +21,16 @@ Oprócz przechowywania danych przy użyciu usług Azure Storage lub magazynu kon
 
 ## <a name="link-module-storage-to-device-storage"></a>Łączenie magazynu modułów z magazynem urządzeń
 
-Aby włączyć łącze z magazynu modułów do magazynu w systemie hosta, należy utworzyć zmienną środowiskową dla modułu, która wskazuje folder magazynu w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder magazynu z folderem na komputerze-hoście.
+Aby włączyć łącze z magazynu modułów do magazynu w systemie hosta, należy utworzyć zmienną środowiskową dla modułu, która wskazuje folder magazynu w kontenerze. Następnie użyj opcji tworzenia, aby powiązać ten folder storage do folderu na komputerze hosta.
 
-Na przykład jeśli chcesz włączyć Centrum IoT Edge do przechowywania wiadomości w lokalnym magazynie urządzenia i pobrać je później, możesz skonfigurować zmienne środowiskowe i opcje tworzenia w Azure Portal w obszarze **Konfigurowanie ustawień zaawansowanego środowiska uruchomieniowego Edge** sekcja.
+Na przykład jeśli chcesz włączyć Centrum IoT Edge do przechowywania wiadomości w lokalnym magazynie urządzenia i pobrać je później, możesz skonfigurować zmienne środowiskowe i opcje tworzenia w Azure Portal w sekcji **Ustawienia środowiska uruchomieniowego** .
 
 1. W przypadku agentów IoT Edge Hub i IoT Edge Dodaj zmienną środowiskową o nazwie **storageFolder** , która wskazuje katalog w module.
-1. Dla Centrum IoT Edge i agenta IoT Edge Dodaj powiązania, aby połączyć katalog lokalny na komputerze hosta z katalogiem w module. Na przykład:
+1. Dla Centrum IoT Edge i agenta IoT Edge Dodaj powiązania, aby połączyć katalog lokalny na komputerze hosta z katalogiem w module. Przykład:
 
    ![Dodawanie opcji tworzenia i zmiennych środowiskowych dla magazynu lokalnego](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-Lub można skonfigurować magazyn lokalny bezpośrednio w manifeście wdrożenia. Na przykład:
+Lub można skonfigurować magazyn lokalny bezpośrednio w manifeście wdrożenia. Przykład:
 
 ```json
 "systemModules": {
@@ -70,11 +70,11 @@ Lub można skonfigurować magazyn lokalny bezpośrednio w manifeście wdrożenia
 }
 ```
 
-Zastąp wartości `<HostStoragePath>` i `<ModuleStoragePath>` identyfikatorem magazynu hosta i modułu; obie wartości muszą być ścieżką bezwzględną.
+Zastąp `<HostStoragePath>` i `<ModuleStoragePath>` za pomocą ścieżki magazynu hosta i modułu; obie wartości muszą być ścieżką bezwzględną.
 
-Na przykład w systemie Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` oznacza, że katalog **/etc/iotedge/Storage** w systemie hosta jest mapowany do katalogu **/iotedge/Storage/** w kontenerze. W systemie Windows w innym przykładzie `"Binds":["C:\\temp:C:\\contemp"]` oznacza katalog **c: \\temp** w systemie hosta jest mapowany do katalogu **c: \\contemp** w kontenerze.
+Na przykład w systemie Linux `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` oznacza, że katalog **/etc/iotedge/Storage** w systemie hosta jest mapowany do katalogu **/iotedge/Storage/** w kontenerze. W systemie Windows, jako inny przykład, `"Binds":["C:\\temp:C:\\contemp"]` oznacza katalog **c:\\temp** w systemie hosta jest mapowany do katalogu **c:\\tymczasowe** w kontenerze.
 
-Ponadto na urządzeniach z systemem Linux upewnij się, że profil użytkownika dla modułu ma wymagane uprawnienia Odczyt, zapis i wykonywanie do katalogu systemu hosta. Powracanie do wcześniejszego przykładu włączenia IoT Edge centrum do przechowywania wiadomości w lokalnym magazynie urządzenia, należy przyznać uprawnienia do jego profilu użytkownika, UID 1000. (Agent IoT Edge działa jako element główny, więc nie potrzebuje dodatkowych uprawnień). Istnieje kilka sposobów zarządzania uprawnieniami katalogu w systemach Linux, w tym przy użyciu `chown` Aby zmienić właściciela katalogu, a następnie `chmod`, aby zmienić uprawnienia, takie jak:
+Ponadto na urządzeniach z systemem Linux upewnij się, że profil użytkownika dla modułu ma wymagane uprawnienia Odczyt, zapis i wykonywanie do katalogu systemu hosta. Powracanie do wcześniejszego przykładu włączenia IoT Edge centrum do przechowywania wiadomości w lokalnym magazynie urządzenia, należy przyznać uprawnienia do jego profilu użytkownika, UID 1000. (Agent IoT Edge działa jako element główny, więc nie potrzebuje dodatkowych uprawnień). Istnieje kilka sposobów zarządzania uprawnieniami katalogu w systemach Linux, w tym przy użyciu `chown` do zmiany właściciela katalogu, a następnie `chmod` zmiany uprawnień, takich jak:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

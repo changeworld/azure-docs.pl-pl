@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084138"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376294"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -132,7 +132,7 @@ Jeśli chcesz dodać dodatkową kartę sieciową do serwera konfiguracji, Dodaj 
 7. Wprowadź poświadczenia, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz pozycję **dodaj** > **Kontynuuj**. Podane tutaj poświadczenia zostały zapisane lokalnie.
 8. W obszarze **Skonfiguruj poświadczenia maszyny wirtualnej**wprowadź nazwę użytkownika i hasło maszyn wirtualnych, aby automatycznie zainstalować usługę mobilności podczas replikacji. W przypadku maszyn z **systemem Windows** konto musi mieć uprawnienia administratora lokalnego na maszynach, które mają być replikowane. W przypadku systemu **Linux**Podaj szczegóły konta głównego.
 9. Aby ukończyć rejestrację, wybierz pozycję **Zakończ konfigurację**.
-10. Po zakończeniu rejestracji Otwórz Azure Portal i sprawdź, czy serwer konfiguracji i serwer VMware znajdują się na liście **Recovery Services magazynu** > **Zarządzanie** > **Site Recovery infrastrukturą** >  **Serwery konfiguracji**.
+10. Po zakończeniu rejestracji Otwórz Azure Portal i sprawdź, czy serwer konfiguracji i serwer VMware znajdują się na liście **Recovery Services magazynu** > **Zarządzanie** > **Site Recovery infrastruktura** > **serwerów konfiguracji**.
 
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
@@ -141,6 +141,10 @@ Aby uaktualnić serwer konfiguracji do najnowszej wersji, zobacz [Zarządzanie s
 ## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
 
 Aby uniknąć przerw w trwającej replikacji, należy się upewnić, że adres IP serwera konfiguracji nie zmienia się po zarejestrowaniu serwera konfiguracji w magazynie. Aby dowiedzieć się więcej na temat typowych zadań zarządzania serwerem konfiguracji, zobacz [Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyny wirtualnej VMware](vmware-azure-manage-configuration-server.md).
+
+## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
+
+Zapoznaj się z naszym [artykułem rozwiązywania problemów](vmware-azure-troubleshoot-configuration-server.md) , aby rozwiązać problemy z łącznością &.
 
 ## <a name="faqs"></a>Często zadawane pytania
 
@@ -183,13 +187,11 @@ Aby uniknąć przerw w trwającej replikacji, należy się upewnić, że adres I
 
     Skonfiguruj serwer konfiguracji w środowisku lokalnym, korzystając z bezpośredniego wglądu w dane za pomocą programu v-Center i minimalizując opóźnienia transferu danych. Zaplanowane kopie zapasowe serwera konfiguracji można wykonać na potrzeby [powrotu po awarii](vmware-azure-manage-configuration-server.md#failback-requirements).
 
+* Czy mogę zmienić sterownik pamięci podręcznej na serwerze konfiguracji lub skalowalnym w poziomie serwerze przetwarzania?
+
+    Nie, nie można zmienić sterownika pamięci podręcznej po zakończeniu konfiguracji.
+
 Aby uzyskać więcej często zadawanych pytań na temat serwerów konfiguracji, zobacz [często zadawane pytania dotyczące serwera konfiguracji](vmware-azure-common-questions.md#configuration-server).
-
-## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów z wdrożeniem
-
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 

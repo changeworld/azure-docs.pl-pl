@@ -4,15 +4,15 @@ description: Korzystaj z diagnostyki platformy Azure na potrzeby debugowania, mi
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552146"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395369"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie Diagnostyka Azure
 Rozszerzenie Diagnostyka Azure jest agentem na platformie Azure, który umożliwia zbieranie danych diagnostycznych we wdrożonej aplikacji. Można użyć rozszerzenia diagnostyki z wielu różnych źródeł. Obecnie obsługiwane są role sieci Web i procesu roboczego usługi w chmurze Azure (klasycznej), Virtual Machines, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure mają różne metody diagnostyki. Zobacz [Omówienie monitorowania na platformie Azure](../../azure-monitor/overview.md).
@@ -27,7 +27,7 @@ Rozszerzenie Diagnostyka Azure może zbierać następujące typy danych:
 | --- | --- |
 | Metryki licznika wydajności |System operacyjny i niestandardowe liczniki wydajności |
 | Dzienniki aplikacji |Śledzenie komunikatów pisanych przez aplikację |
-| Dzienniki zdarzeń systemu Windows |Informacje wysyłane do systemu rejestrowania zdarzeń systemu Windows |
+| Dzienniki zdarzeń Windows |Informacje wysyłane do systemu rejestrowania zdarzeń systemu Windows |
 | Dzienniki zdarzeń platformy .NET |Kod pisania zdarzeń przy użyciu klasy [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) platformy .NET |
 | Dzienniki usług IIS |Informacje o witrynach sieci Web usług IIS |
 | [Dzienniki ETW oparte na manifestach](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Śledzenie zdarzeń dla zdarzeń systemu Windows generowanych przez dowolny proces. jedno |

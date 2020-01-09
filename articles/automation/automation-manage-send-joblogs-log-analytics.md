@@ -2,19 +2,15 @@
 title: Przekazywanie danych zadania usługi Azure Automation do dzienników usługi Azure Monitor
 description: W tym artykule pokazano, jak wysyłać strumienie zadań i stanów zadań elementu Runbook do Azure Monitor dzienników w celu zapewnienia dodatkowego wglądu i zarządzania.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: beb69edc57b5a13db0f6d2e5e1536804f3472aff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421915"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Przekazywanie strumieni zadań i stanu zadań z automatyzacji do dzienników Azure Monitor
 

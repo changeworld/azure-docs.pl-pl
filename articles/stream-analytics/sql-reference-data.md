@@ -1,31 +1,30 @@
 ---
 title: Używanie SQL Database danych referencyjnych w zadaniu Azure Stream Analytics
 description: W tym artykule opisano sposób użycia SQL Database jako referencyjne dane wejściowe dla zadania Azure Stream Analytics w Azure Portal i w programie Visual Studio.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426498"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Korzystanie z danych referencyjnych z SQL Database dla zadania Azure Stream Analytics
 
 Azure Stream Analytics obsługuje Azure SQL Database jako źródło danych wejściowych w celu uzyskania informacji referencyjnych. SQL Database jako dane referencyjne dla zadania Stream Analytics można użyć w Azure Portal i w programie Visual Studio przy użyciu narzędzi Stream Analytics. W tym artykule przedstawiono sposób wykonywania obu tych metod.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal Azure
 
 Wykonaj następujące kroki, aby dodać Azure SQL Database jako źródłowe źródło danych wejściowych przy użyciu Azure Portal:
 
 ### <a name="portal-prerequisites"></a>Wymagania wstępne portalu
 
-1. Utwórz zadanie Stream Analytics.
+1. Tworzenie zadania usługi Stream Analytics
 
 2. Utwórz konto magazynu, które będzie używane przez zadanie Stream Analytics.
 

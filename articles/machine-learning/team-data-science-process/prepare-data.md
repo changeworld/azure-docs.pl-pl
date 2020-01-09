@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74936041"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432152"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Zadania w celu przygotowania danych do rozszerzonego uczenia maszynowego
 Wstępne przetwarzanie i czyszczenie danych są ważne zadania, które zazwyczaj należy przeprowadzić przed zestawu danych można efektywnie używać uczenia maszynowego. Nieprzetworzone dane są często hałas i zawodnych i może brakować wartości. Przy użyciu tych danych do modelowania może spowodować wyświetlenie nieprawdziwych wyników. Te zadania są dostępne w ramach procesu do nauki o danych zespołu (TDSP) i zwykle należy wykonać początkową eksploracji zestawu danych używane do odnajdywania i planowanie wstępnego przetwarzania wymagane. Aby uzyskać szczegółowe instrukcje na temat procesu przetwarzania TDSP, zobacz kroki opisane w temacie [zespołu danych dla celów naukowych](overview.md).
 
-Wstępne przetwarzanie i czyszczenie zadań, takich jak zadanie eksploracji danych, mogą odbywać się w wielu różnych środowiskach, takich jak SQL lub Hive lub usługi Azure Machine Learning Studio, a za pomocą różnych narzędzi i języków, takich jak R lub Python, w którym dane są przechowywane w zależności oraz sposób jego sformatowania. Ponieważ przetwarzanie TDSP iteracyjne pochylone, te zadania mogą być wykonywane w różnych kroków w przepływie pracy procesu.
+Zadania wstępnego przetwarzania i czyszczenia, takie jak zadanie eksploracji danych, można wykonywać w różnych środowiskach, takich jak SQL lub Hive lub Azure Machine Learning Studio (klasyczny) oraz z różnymi narzędziami i językami, takimi jak R lub Python, w zależności od tego, gdzie dane jest przechowywany i jak jest sformatowany. Ponieważ przetwarzanie TDSP iteracyjne pochylone, te zadania mogą być wykonywane w różnych kroków w przepływie pracy procesu.
 
-W tym artykule wprowadzono różne koncepcje przetwarzania danych i zadania, które można podjąć przed lub po pozyskaniu danych do ML Studio platformy Azure (klasyczne).
+W tym artykule wprowadzono różne koncepcje przetwarzania danych i zadania, które można podjąć przed lub po pozyskaniu danych do Azure Machine Learning Studio (klasyczne).
 
-Przykład eksploracji i wstępnego przetwarzania danych w ramach platformy Azure ML Studio (klasyczny). Zobacz wideo dotyczące [przetwarzania wstępnego danych](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) .
+Przykład eksploracji i wstępnego przetwarzania danych w programie Azure Machine Learning Studio (klasyczny). Zobacz wideo dotyczące [przetwarzania wstępnego danych](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) .
 
 ## <a name="why-pre-process-and-clean-data"></a>Dlaczego wstępne przetwarzanie i czyszczenie danych?
 Rzeczywiste dane są zbierane z różnych źródeł i procesy i może zawierać nieprawidłowości lub uszkodzone dane pogarszania jakości zestawu danych. Problemy z jakością typowych danych, które powstają są:
@@ -51,7 +51,7 @@ Możemy sprawdzić ogólnej jakości danych, sprawdzając:
 
 Jeśli znajdziesz problemy z danymi, **kroki przetwarzania** są niezbędne, które często obejmuje czyszczenia brakujące wartości, normalizacji danych, dyskretyzacji, przetwarzanie tekstu, aby usunąć lub zamienić osadzone znaki, które mogą wpływać na danych wyrównanie, mieszane typy danych we wspólnych oraz inne pola.
 
-**Usługa Azure Machine Learning wykorzystuje dane tabelaryczne z dobrze sformułowany**.  Jeśli dane są już w formie tabelarycznej, przetwarzanie wstępne danych może być wykonywane bezpośrednio przy użyciu usługi Azure ML Studio (klasycznej) w Machine Learning.  Jeśli dane nie są w formie tabelarycznej, powiedz, który jest w formacie XML, analizowania może być wymagane w celu konwersji danych w formie tabelarycznej.  
+**Usługa Azure Machine Learning wykorzystuje dane tabelaryczne z dobrze sformułowany**.  Jeśli dane są już w formie tabelarycznej, przetwarzanie wstępne danych może być wykonywane bezpośrednio z Azure Machine Learning Studio (klasyczne) w Machine Learning.  Jeśli dane nie są w formie tabelarycznej, powiedz, który jest w formacie XML, analizowania może być wymagane w celu konwersji danych w formie tabelarycznej.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jakie są niektóre z najważniejszych zadań wstępne przetwarzanie danych?
 * **Czyszczenie danych**: Wypełnij lub brakujące wartości, wykrywanie i usuwanie danych hałas i elementy odstające.

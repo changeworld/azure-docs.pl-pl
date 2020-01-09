@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582398"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378215"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift — często zadawane pytania
 
@@ -121,7 +121,7 @@ Dziennik systemowy, dzienniki platformy Docker, dziennik i dmesg są obsługiwan
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Jak klient może uzyskać dostęp do metryk, takich jak procesor CPU/pamięć na poziomie węzła, aby podjąć działania w celu skalowania, debugowania problemów itp. Nie mogę uruchomić `kubectl top` w klastrze ARO.
 
-`kubectl top` nie jest dostępna w Red Hat OpenShift. Wymaga ona źródła metryk zapasowych, Heapster (przestarzałe) lub metryk — serwera (inkubacji lub alfa), nie są uwzględniane w stosie monitorowania OpenShift.
+Klienci mogą uzyskać dostęp do metryk procesora/pamięci na poziomie węzła przy użyciu polecenia `oc adm top nodes` lub `kubectl top nodes` z clusterrole klienta-administratora.  Klienci mogą również uzyskać dostęp do metryk procesora/pamięci `pods` za pomocą polecenia `oc adm top pods` lub `kubectl top pods`
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Co to jest domyślna konfiguracja usługi Scheduler pod kątem wypróbowania?
 
@@ -137,7 +137,7 @@ Aby uzyskać więcej informacji, zapoznaj się z tematem [Wybieranie odpowiednie
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>Czy istnieje sposób, aby zarządzać umieszczaniem pod?
 
-W przypadku oczekującej aktualizacji klienta klient będzie miał możliwość pobrania węzłów i etykiet.  Pozwoli to na docelową maszynę wirtualną w zestawie skalowania.
+Klienci mają możliwość uzyskiwania węzłów i wyświetlania etykiet jako administrator klienta.  Pozwoli to na docelową maszynę wirtualną w zestawie skalowania.
 
 Należy zachować ostrożność w przypadku używania określonych etykiet:
 
@@ -147,7 +147,7 @@ Należy zachować ostrożność w przypadku używania określonych etykiet:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Jaka jest maksymalna liczba zasobników w klastrze ARO?  Jaka jest maksymalna liczba zasobników na węzeł w wyliczeniu?
 
-Aby uzyskać więcej informacji, zapoznaj się z dokumentacją [OpenShift](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) . Red Hat OpenShift 3,11 ma limit 250-poniżej/węzłów, a wartość [ARO ma limit równy 20-obliczeniowy](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), dzięki czemu Maksymalna liczba numerów na sekundę obsługiwanych w klastrze ARO jest równa 250 * 20 = 5000.
+ W przypadku usługi Azure Red Hat OpenShift 3,11 obowiązuje limit 50-poniżej dla każdego węzła, który ma [limit równy 20-obliczeniowy](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), dzięki czemu Maksymalna liczba numerów jednostki jest obsługiwana w klastrze ARO do 50 * 20 = 1000.
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Czy można określić zakresy adresów IP do wdrożenia w prywatnej sieci wirtualnej, unikając konfliktów z innymi firmowymi sieci wirtualnych po utworzeniu komunikacji równorzędnej?
 

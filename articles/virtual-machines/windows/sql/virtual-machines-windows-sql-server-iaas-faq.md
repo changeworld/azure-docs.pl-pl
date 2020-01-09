@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: c3b4fabb319a3ea76ee62c8c699d4613184a4e76
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374084"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące SQL Server uruchomionych na maszynach wirtualnych z systemem Windows na platformie Azure
 
@@ -84,12 +84,12 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
 1. **Czy muszę płacić za licencję programu SQL Server na maszynie wirtualnej platformy Azure, jeśli używam jej tylko w trybie wstrzymania/trybie failover?**
 
-   Aby uzyskać bezpłatną licencję pasywną dla aktywnej pomocniczej grupy dostępności lub wystąpienia klastra trybu failover, należy spełnić wszystkie następujące kryteria, które opisano w [dokumencie Podręcznik licencjonowania](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf):
+   Aby uzyskać bezpłatną licencję pasywną dla aktywnej pomocniczej grupy dostępności lub wystąpienia klastra trybu failover, należy spełnić wszystkie następujące kryteria, zgodnie z opisem w [postanowień licencyjnych dotyczących produktu](https://www.microsoft.com/licensing/product-licensing/products):
 
    1. Masz możliwość przenoszenia [licencji](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) w ramach programu [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
-   1. Wystąpienie SQL Server pasywne nie obsługuje SQL Server danych do klientów ani nie uruchamia aktywnych obciążeń SQL Server. Jest on używany tylko do synchronizacji z serwerem podstawowym i w inny sposób utrzymują pasywną bazę danych w stanie rezerwy aktywnej. Jeśli obsługuje dane, takie jak raporty do klientów korzystających z aktywnych obciążeń SQL Server lub wykonywania dowolnego "pracy", takich jak dodatkowe kopie zapasowe z serwera pomocniczego, musi to być płatne wystąpienie SQL Server licencjonowane. 
+   1. Wystąpienie SQL Server pasywne nie obsługuje SQL Server danych do klientów ani nie uruchamia aktywnych obciążeń SQL Server. Jest on używany tylko do synchronizacji z serwerem podstawowym i w inny sposób utrzymują pasywną bazę danych w stanie rezerwy aktywnej. Jeśli obsługuje dane, takie jak raporty na klientach korzystających z aktywnych obciążeń SQL Server lub wykonywanie jakichkolwiek prac innych niż określone w warunkach produktu, musi to być płatne wystąpienie SQL Server licencjonowane. Następujące działanie jest dozwolone w wystąpieniu pomocniczym: sprawdzanie spójności bazy danych lub CheckDB, pełne kopie zapasowe, kopie zapasowe dziennika transakcji i monitorowanie danych użycia zasobów. Można również uruchomić podstawowe i odpowiednie wystąpienie odzyskiwania po awarii dla krótkich okresów testowania odzyskiwania po awarii co 90 dni. 
    1. Licencja na aktywną SQL Server jest objęta programem Software Assurance i umożliwia obsługę **jednego** pasywnego wystąpienia SQL Server awaryjnego, z maksymalnie taką samą ilością obliczeń jak licencjonowany aktywny serwer. 
-   1. Pomocnicza maszyna wirtualna SQL Server wykorzystuje [model licencji](virtual-machines-windows-sql-ahb.md)"BYOL" lub korzyść użycia hybrydowego platformy Azure (AHB). 
+   1. Pomocnicza maszyna wirtualna SQL Server wykorzystuje licencję [odzyskiwania po awarii](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) w Azure Portal.
 
 1. **Czy mogę zmienić maszynę wirtualną tak, aby używać mojej licencji programu SQL Server, jeśli została ona utworzona z jednego z obrazów z galerii w modelu płatności zgodnie z rzeczywistym użyciem?**
 
@@ -163,8 +163,8 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
 1. **Gdzie mogę uzyskać nośnik instalacyjny, aby zmienić wersję lub wersję SQL Server?**
 
-  Klienci posiadający [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) mogą uzyskać nośnik instalacyjny z [centrum licencjonowania zbiorowego](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klienci, którzy nie mają programu Software Assurance, mogą korzystać z nośnika instalacyjnego z poziomu obrazu maszyny wirtualnej SQL Server Marketplace z odpowiednią wersją.
-
+   Klienci posiadający [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) mogą uzyskać nośnik instalacyjny z [centrum licencjonowania zbiorowego](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klienci, którzy nie mają programu Software Assurance, mogą korzystać z nośnika instalacyjnego z poziomu obrazu maszyny wirtualnej SQL Server Marketplace z odpowiednią wersją.
+   
 1. **Jak są stosowane aktualizacje i dodatki Service Pack na maszynie wirtualnej SQL Server?**
 
    maszyny wirtualne zapewniają kontrolę nad maszyną hosta, w tym nad czasem i sposobem stosowania aktualizacji. W przypadku systemu operacyjnego można ręcznie zastosować aktualizacje systemu Windows lub włączyć usługę planowania o nazwie [zautomatyzowane stosowanie poprawek](virtual-machines-windows-sql-automated-patching.md). Usługa Automatyczne stosowanie poprawek instaluje wszelkie aktualizacje, które są oznaczone jako ważne, w tym aktualizacje programu SQL Server w tej kategorii. Inne, opcjonalne aktualizacje dla programu SQL Server należy zainstalować ręcznie.
@@ -172,6 +172,12 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 1. **Czy mogę uaktualnić wystąpienie SQL Server 2008/2008 R2 po zarejestrowaniu go u dostawcy zasobów maszyny wirtualnej SQL Server?**
 
    Tak. Możesz użyć dowolnego nośnika instalacyjnego, aby uaktualnić wersję i wydanie SQL Server, a następnie uaktualnić [tryb rozszerzenia SQL IaaS](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)) _bez agenta_ do _pełnego_. Dzięki temu będzie można uzyskać dostęp do wszystkich korzyści z rozszerzenia IaaS języka SQL, takich jak Zarządzanie portalem, zautomatyzowane kopie zapasowe i automatyczne stosowanie poprawek. 
+
+1. **Jak mogę uzyskać bezpłatne rozszerzone aktualizacje zabezpieczeń dla mojego końca wsparcia SQL Server 2008 i SQL Server 2008 R2?**
+
+   Możesz uzyskać [bezpłatne rozszerzone aktualizacje zabezpieczeń](virtual-machines-windows-sql-server-2008-eos-extend-support.md) , przenosząc SQL Server na maszynę wirtualną usługi Azure SQL. Aby uzyskać więcej informacji, zobacz [koniec opcji pomocy technicznej](/sql/sql-server/end-of-support/sql-server-end-of-life-overview). 
+  
+   
 
 ## <a name="general"></a>Ogólne
 

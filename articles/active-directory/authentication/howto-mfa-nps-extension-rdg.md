@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22efe84826684e37abee65d64df13d63081aa79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848344"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425444"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrowanie infrastruktury bramy usług pulpitu zdalnego przy użyciu rozszerzenia serwera zasad sieciowych (NPS) i Azure AD
 
@@ -120,11 +120,11 @@ Ta sekcja zawiera instrukcje dotyczące konfigurowania infrastruktury usług pul
 W ramach konfiguracji rozszerzenia serwera NPS musisz podać poświadczenia administratora i identyfikator usługi Azure AD dla dzierżawy usługi Azure AD. Poniższe kroki pokazują, jak można pobrać identyfikatora dzierżawy.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator globalny dzierżawy platformy Azure.
-1. Na lewym pasku nawigacyjnym wybierz **usługi Azure Active Directory** ikony.
+1. W menu Azure Portal wybierz pozycję **Azure Active Directory**lub Wyszukaj i wybierz pozycję **Azure Active Directory** z dowolnej strony.
 1. Wybierz pozycję **Właściwości**.
 1. W bloku właściwości, obok Identyfikatora katalogu kliknij **kopiowania** ikony, jak pokazano poniżej, aby skopiować identyfikator do Schowka.
 
-   ![Pobieranie identyfikatora katalogu z Azure Portal](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Pobieranie identyfikatora katalogu z Azure Portal](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Instalowanie rozszerzenia serwera NPS
 
@@ -193,7 +193,7 @@ Zasady autoryzacji połączeń usług pulpitu zdalnego (RD CAP) określenie wyma
 
    ![Wprowadź nazwę lub adres IP serwera NPS](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. Kliknij pozycję **Add** (Dodaj).
+1. Kliknij pozycję **Dodaj**.
 1. W **wspólny klucz tajny** okno dialogowe, wpisz wspólny klucz tajny, a następnie kliknij przycisk **OK**. Upewnij się, Zapisz ten wspólny klucz tajny i przechowuj w bezpiecznym miejscu rekordu.
 
    >[!NOTE]

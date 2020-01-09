@@ -3,18 +3,18 @@ title: Aplikacja Node. js korzystająca z programu Socket.io — Azure
 description: Dowiedz się, jak używać socket.io w aplikacji node. js hostowanej na platformie Azure.
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 0b515c630d8a3539cdab1df64b1925e9fcaf206e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360773"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Tworzenie aplikacji czatu środowiska Node. js przy użyciu usługi Socket.IO w usłudze w chmurze platformy Azure
 
@@ -37,10 +37,10 @@ W poniższych krokach opisano tworzenie projektu usługi w chmurze, który będz
 1. W **menu Start** lub **Start ekranu**Wyszukaj program **Windows PowerShell**. Na koniec kliknij prawym przyciskiem myszy program **Windows PowerShell** i wybierz polecenie **Uruchom jako administrator**.
    
     ![Ikona Azure PowerShell][powershell-menu]
-2. Utwórz katalog o nazwie **c:\\Node**. 
+2. Utwórz katalog o nazwie **c:\\** . 
    
         PS C:\> md node
-3. Zmień katalogi na katalog **c:\\Node**
+3. Zmień katalogi na katalog **c:\\węzła**
    
         PS C:\> cd node
 4. Wprowadź następujące polecenia, aby utworzyć nowe rozwiązanie o nazwie **ChatApp** i roli proces roboczy o nazwie **WorkerRole1**:
@@ -57,13 +57,13 @@ Dla tego projektu będziemy używać przykładu czatu z [Repozytorium GitHub Soc
 
 1. Utwórz kopię lokalną repozytorium za pomocą przycisku **Klonuj** . Możesz również użyć przycisku **zip** , aby pobrać projekt.
    
-   ![Wyświetlanie https://github.com/LearnBoost/socket.io/tree/master/examples/chat okna przeglądarki z wyróżnioną ikoną pobierania zip](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
-2. Przejdź do struktury katalogów lokalnego repozytorium do momentu, aż przytrzesz do katalogu **czatu przykładów\\** . Skopiuj zawartość tego katalogu do katalogu **C:\\\\Node ChatApp\\WorkerRole1** utworzonego wcześniej.
+   ![Okno przeglądarki z wyróżnioną https://github.com/LearnBoost/socket.io/tree/master/examples/chat z ikoną pobierania pliku ZIP](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
+2. Przejdź do struktury katalogów lokalnego repozytorium, dopóki nie zostaną dostarczone **przykłady\\katalogu rozmowy** . Skopiuj zawartość tego katalogu do **węzła C:\\,\\chatapp\\WorkerRole1** utworzony wcześniej.
    
-   ![Eksplorator, wyświetlając zawartość przykładowego\\katalogu rozmowy wyodrębnionego z archiwum][chat-contents]
+   ![Eksplorator, wyświetlając zawartość przykładów\\Directory czatu wyodrębnionych z archiwum][chat-contents]
    
-   Wyróżnione elementy na poniższym zrzucie ekranu to pliki skopiowane z **przykładowego\\katalogu czatu**
-3. W katalogu **C:\\Node\\ChatApp\\WorkerRole1** , usuń plik **Server. js** , a następnie zmień nazwę pliku **App. js** na **Server. js**. Spowoduje to usunięcie domyślnego pliku **Server. js** utworzonego wcześniej za pomocą polecenia cmdlet **Add-AzureNodeWorkerRole** i zastąpienie go plikiem aplikacji z przykładu rozmowy.
+   Na powyższym zrzucie ekranu znajdują się pliki skopiowane z **przykładów\\katalogu rozmowy**
+3. W **węźle C:\\\\chatapp\\WorkerRole1** Directory, usuń plik **Server. js** , a następnie zmień nazwę pliku **App. js** na **Server. js**. Spowoduje to usunięcie domyślnego pliku **Server. js** utworzonego wcześniej za pomocą polecenia cmdlet **Add-AzureNodeWorkerRole** i zastąpienie go plikiem aplikacji z przykładu rozmowy.
 
 ### <a name="modify-serverjs-and-install-modules"></a>Modyfikowanie programu Server. js i modułów instalacji
 Przed przetestowaniem aplikacji w emulatorze platformy Azure należy wprowadzić drobne modyfikacje. Wykonaj następujące kroki w pliku Server. js:
@@ -87,11 +87,11 @@ Przed przetestowaniem aplikacji w emulatorze platformy Azure należy wprowadzić
 
 Po zapisaniu zmian w programie **Server. js**wykonaj następujące kroki, aby zainstalować wymagane moduły, a następnie przetestuj aplikację w emulatorze platformy Azure:
 
-1. Przy użyciu **Azure PowerShell**zmień katalogi na katalog **C:\\Node\\ChatApp\\WorkerRole1** i użyj następującego polecenia, aby zainstalować moduły wymagane przez tę aplikację:
+1. Przy użyciu **Azure PowerShell**zmień katalogi na **węzeł C:\\\\ChatApp\\WorkerRole1** Directory i użyj następującego polecenia, aby zainstalować moduły wymagane przez tę aplikację:
    
        PS C:\node\chatapp\WorkerRole1> npm install
    
-   Spowoduje to zainstalowanie modułów wymienionych w pliku Package. JSON. Po zakończeniu wykonywania polecenia powinny zostać wyświetlone dane wyjściowe podobne do następujących:
+   Spowoduje to zainstalowanie modułów wymienionych w pliku Package. JSON. Po wykonaniu tego polecenia dane wyjściowe powinny wyglądać mniej więcej tak:
    
    ![Dane wyjściowe polecenia instalacji npm][The-output-of-the-npm-install-command]
 2. Ponieważ ten przykład był pierwotnie częścią repozytorium Socket.IO GitHub i bezpośrednio odwołuje się do biblioteki Socket.IO w ramach ścieżki względnej, w pliku Package. JSON nie ma odwołania Socket.IO, dlatego należy go zainstalować, wydając następujące polecenie:
@@ -104,7 +104,7 @@ Po zapisaniu zmian w programie **Server. js**wykonaj następujące kroki, aby za
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > Jeśli wystąpią problemy z uruchamianiem emulatora, np.: Start-AzureEmulator: Wystąpił nieoczekiwany błąd.  Szczegóły: Napotkano nieoczekiwany błąd obiektu komunikacji, system. ServiceModel. Channels. ServiceChannel, nie można użyć do komunikacji, ponieważ jest w stanie awarii.
+   > W przypadku wystąpienia problemów z uruchamianiem emulatora, np.: Start-AzureEmulator: Wystąpił nieoczekiwany błąd.  Szczegóły: napotkano nieoczekiwany błąd obiektu komunikacji, system. ServiceModel. Channels. ServiceChannel, nie można użyć do komunikacji, ponieważ jest w stanie awarii.
    > 
    > Zainstaluj ponownie AzureAuthoringTools v 2.7.1 i AzureComputeEmulator v 2,7 — upewnij się, że wersja jest zgodna.
 
@@ -166,5 +166,8 @@ Aby uzyskać więcej informacji, zobacz również [Centrum deweloperów środowi
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
+
+
+
 
 

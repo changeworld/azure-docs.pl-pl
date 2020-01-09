@@ -4,12 +4,12 @@ description: Omówienie usługi Azure łańcucha bloków Service
 ms.date: 11/21/2019
 ms.topic: overview
 ms.reviewer: janders
-ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455916"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387381"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co to jest usługa Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Usługa Azure łańcucha bloków to w pełni zarządzana usługa, która umożli
 * Wbudowane zarządzanie konsorcjum
 * Opracowywanie inteligentnych kontraktów przy użyciu znanych narzędzi programistycznych
 
-Usługa Azure łańcucha bloków Service została zaprojektowana do obsługi wielu protokołów finansowych. Obecnie zapewnia ona obsługę księgi [kworum](https://www.jpmorgan.com/Quorum) Ethereum przy użyciu mechanizmu [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) o konsensusie.
+Usługa Azure łańcucha bloków Service została zaprojektowana do obsługi wielu protokołów finansowych. Obecnie zapewnia ona obsługę księgi [kworum](https://www.goquorum.com/) Ethereum przy użyciu mechanizmu [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) o konsensusie.
 
 Powyższe możliwości prawie w ogóle nie wymagają administracji i są udostępniane bez żadnych dodatkowych kosztów. Możesz skupić się na tworzeniu aplikacji i logice biznesowej zamiast przydzielać czas i zasoby do zarządzania maszynami wirtualnymi i infrastrukturą. Ponadto możesz kontynuować tworzenie aplikacji przy użyciu narzędzi typu "open source" i wybranej platformy do dostarczania rozwiązań bez konieczności uczenia się nowych umiejętności.
 
@@ -67,10 +67,17 @@ Na podstawie księgi Ethereum kworum Open Source można opracowywać aplikacje d
 
 ## <a name="support-and-feedback"></a>Pomoc techniczna i opinie
 
-Potrzebujesz pomocy lub masz opinię?
+W przypadku usługi Azure łańcucha bloków News odwiedź [blog usługi Azure łańcucha bloków](https://azure.microsoft.com/blog/topics/blockchain/) , aby zachować aktualność w zakresie usług łańcucha bloków i uzyskać informacje od zespołu inżynierów ds. platformy Azure łańcucha bloków.
 
-* Odwiedź [blog platformy Azure łańcucha bloków](https://azure.microsoft.com/blog/topics/blockchain/), [społeczność techniczną firmy Microsoft](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)i [Forum usługi Azure łańcucha bloków](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
-* Aby przekazać opinię lub poprosić o nowe funkcje, utwórz wpis w platformie [UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service).
+Aby przekazać opinie o produkcie lub zażądać nowych funkcji, Opublikuj głos na pomysł za pośrednictwem [forum opinii platformy Azure dla usługi łańcucha bloków](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Pomoc techniczna społeczności
+
+Współpracuj z inżynierami firmy Microsoft i ekspertów społeczności Azure łańcucha bloków.
+
+* [Forum MSDN usługi Azure łańcucha bloków](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Społeczność techniczna firmy Microsoft](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 
 ## <a name="next-steps"></a>Następne kroki
 

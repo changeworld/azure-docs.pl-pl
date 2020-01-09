@@ -1,20 +1,19 @@
 ---
 title: Tworzenie rozwiązania IoT przy użyciu usługi Azure Stream Analytics
 description: Wprowadzenie do samouczka dotyczącego rozwiązania Stream Analytics IoT scenariusza budki
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426447"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Tworzenie rozwiązania IoT przy użyciu usługi Stream Analytics
 
@@ -36,7 +35,7 @@ Potrzebne są następujące wymagania wstępne do ukończenia tego rozwiązania:
 ## <a name="scenario-introduction-hello-toll"></a>Wprowadzenie do scenariusza: "Hello, płatny!"
 Płatny stacji jest typowym zjawiskiem. Użytkownik je napotka na wielu trasy szybkiego ruchu, mostków i tunele na całym świecie. Każda stacja płatny ma wiele kabiny płatny. Ręczne kabiny można zatrzymać płatne Opiekun płatny. Na automatyczne kabiny czujnika na górze każdej stoisku skanuje karty RFID, które jest umieszczone na szyby pojazdu, jak przekazać stoisku płatny. To ułatwia wizualizowanie przejście pojazdów przez te stacje płatny jako strumień zdarzeń, w którym można wykonać operacji interesujące.
 
-![Obraz samochodów na płatny kabiny](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
+![Zdjęcia samochodów w kabinach](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>Dane przychodzące
 To rozwiązanie działa z dwóch strumieni danych. Czujniki zainstalowane w wejścia i wyjścia z stacje płatny utworzyć pierwszy strumienia. Drugi strumień jest statyczny wyszukiwania zestawu danych, zawierającej dane rejestracyjne pojazdów.
@@ -44,7 +43,7 @@ To rozwiązanie działa z dwóch strumieni danych. Czujniki zainstalowane w wej�
 ### <a name="entry-data-stream"></a>Strumień danych wpisu
 Strumień danych wpis zawiera informacji na temat samochodów wejdzie z stacje płatny. Zakończ zdarzenia danych działają strumieniowo do kolejki usługi Centrum zdarzeń z aplikacji sieci Web zawarte w przykładowej aplikacji.
 
-| TollID | EntryTime | LicensePlate | Stan | Tworzenie | Modelowanie | VehicleType | VehicleWeight | Płatny | Tag |
+| TollID | EntryTime | LicensePlate | Stan | Tworzenie | Model | VehicleType | VehicleWeight | Płatny | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -62,7 +61,7 @@ Poniżej przedstawiono krótki opis kolumny:
 | LicensePlate |Numer rejestracyjny pojazdu |
 | Stan |Stan, w Stanach Zjednoczonych |
 | Tworzenie |Producent samochodów |
-| Modelowanie |Liczba modeli samochodów |
+| Model |Liczba modeli samochodów |
 | VehicleType |1 dla pojazdów pasażerskich lub 2 dla pojazdów komercyjnych |
 | WeightType |Masy pojazdu w tonach; 0 dla pojazdów pasażerskich |
 | Płatny |Wartość płatny w USD |
@@ -73,12 +72,12 @@ Stream data zakończenia zawiera informacje o samochodów, pozostawiając stacji
 
 | **TollId** | **ExitTime** | **LicensePlate** |
 | --- | --- | --- |
-| 1 |2014-09-10T12:03:00.0000000Z |JNB 7001 |
-| 1 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
-| 3 |2014-09-10T12:04:00.0000000Z |ABC 1004 |
-| 2 |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
-| 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
-| 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
+| 1 |2014-09-10T12:03:00.0000000 Z |JNB 7001 |
+| 1 |2014-09-10T12:03:00.0000000 Z |YXZ 1001 |
+| 3 |2014-09-10T12:04:00.0000000 Z |ABC 1004 |
+| 2 |2014-09-10T12:07:00.0000000 Z |XYZ 1003 |
+| 1 |2014-09-10T12:08:00.0000000 Z |BNJ 1007 |
+| 2 |2014-09-10T12:07:00.0000000 Z |CDE 1007 |
 
 Poniżej przedstawiono krótki opis kolumny:
 
@@ -91,7 +90,7 @@ Poniżej przedstawiono krótki opis kolumny:
 ### <a name="commercial-vehicle-registration-data"></a>Dane rejestracyjne pojazdów komercyjnych
 Rozwiązanie używa statycznego migawki bazy danych rejestracji pojazdów użytkowych. Te dane są zapisywane w formacie JSON w usłudze Azure blob storage, zawarte w przykładzie.
 
-| LicensePlate | Identyfikator | Wygaśnięcie |
+| LicensePlate | Identyfikator | Wygasłe |
 | --- | --- | --- |
 | SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
@@ -106,7 +105,7 @@ Poniżej przedstawiono krótki opis kolumny:
 | --- | --- |
 | LicensePlate |Numer rejestracyjny pojazdu |
 | Identyfikator |Identyfikator rejestracji pojazdu |
-| Wygaśnięcie |Stan rejestracji pojazdu: 0, jeśli rejestracja vehicle jest aktywny, 1, jeśli rejestracji wygasł. |
+| Wygasłe |Stan rejestracji pojazdu: 0, jeśli rejestracja vehicle jest aktywny, 1, jeśli rejestracji wygasł. |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Konfigurowanie środowiska usługi Azure Stream Analytics
 Aby wykonać to rozwiązanie, należy do subskrypcji Microsoft Azure. Jeśli nie masz konta platformy Azure, możesz to zrobić [żądań bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
@@ -114,7 +113,7 @@ Aby wykonać to rozwiązanie, należy do subskrypcji Microsoft Azure. Jeśli nie
 Należy koniecznie wykonaj kroki opisane w sekcji "Wyczyść konta platformy Azure" na końcu tego artykułu, aby można było optymalnie wykorzystać możliwości platformy Azure w wysokości.
 
 ## <a name="deploy-the-sample"></a>Wdrażanie przykładu
-Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz z kilkoma kliknięciami. Określenie rozwiązania znajduje się w repozytorium GitHub na [ https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
+Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz z kilkoma kliknięciami. Definicja rozwiązania jest hostowana w repozytorium GitHub w [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Wdrażanie szablonu TollApp w witrynie Azure portal
 1. Przeprowadzić wdrożenie w środowisku TollApp na platformie Azure, użyj tego linku, aby [wdrażania szablonu usługi Azure TollApp](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
@@ -172,7 +171,7 @@ Istnieje kilka zasobów, które można łatwo wdrożyć w grupie zasobów, wraz 
    - **Rejestracja** dane wejściowe są połączenia magazynu obiektów Blob platformy Azure, do pliku statycznego registration.json, używany do wyszukiwania, zgodnie z potrzebami. Ten wejściowych danych referencyjnych jest używany w późniejszym różnice składni zapytania.
 
 4. Sprawdź dane wyjściowe TollApp przykładowego zadania.
-   - **Usługa cosmos DB** danych wyjściowych jest kontenerem bazy danych Cosmos, który odbiera zdarzenia obiektu sink danych wyjściowych. Należy pamiętać, że te dane wyjściowe jest używany w w klauzuli zapytania przesyłania strumieniowego.
+   - **Cosmos DB** Output to kontener bazy danych Cosmos, który odbiera zdarzenia wyjściowego ujścia. Należy pamiętać, że te dane wyjściowe jest używany w w klauzuli zapytania przesyłania strumieniowego.
 
 ## <a name="start-the-tollapp-streaming-job"></a>Uruchamianie zadania przesyłania strumieniowego TollApp
 Wykonaj następujące kroki, aby uruchomić zadanie przesyłania strumieniowego:
@@ -186,7 +185,7 @@ Wykonaj następujące kroki, aby uruchomić zadanie przesyłania strumieniowego:
 ## <a name="review-the-cosmosdb-output-data"></a>Przejrzyj dane wyjściowe bazy danych cosmos DB
 1. Znajdź grupę zasobów, która zawiera zasoby TollApp.
 
-2. Wybierz konto usługi Azure Cosmos DB przy użyciu wzorca nazwy **tollapp\<losowych\>-cosmos**.
+2. Wybierz konto Azure Cosmos DB z wzorcem nazwy **tollapp\<losowo\>-Cosmos**.
 
 3. Wybierz **Eksplorator danych** nagłówek, aby otworzyć stronę Eksploratora danych.
 
@@ -284,7 +283,7 @@ Przykładowe dane wyjściowe:
 ```
 
 ## <a name="scale-out-the-job"></a>Skalowanie w poziomie zadania
-Usługa Azure Stream Analytics jest przeznaczony do elastyczne skalowanie, dzięki czemu może obsługiwać duże ilości danych. Zapytanie usługi Azure Stream Analytics można użyć **PARTITION BY** klauzuli, aby poinformować system tym, czy ten krok jest skalowana w poziomie. **PartitionId** to specjalne kolumna, która dodaje system jest zgodny z Identyfikatorem partycji danych wejściowych (Centrum zdarzeń).
+Usługa Azure Stream Analytics jest przeznaczony do elastyczne skalowanie, dzięki czemu może obsługiwać duże ilości danych. Zapytanie Azure Stream Analytics może użyć klauzuli **Partition by** , aby poinformować system, że ten krok skaluje się. **PartitionID** jest specjalną kolumną, którą system dodaje do identyfikatora partycji danych wejściowych (centrum zdarzeń).
 
 Aby skalować zapytanie do partycji, Edytuj składnia zapytania z następującym kodem:
 ```sql

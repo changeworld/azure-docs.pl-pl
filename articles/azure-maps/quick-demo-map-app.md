@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903175"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408420"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Szybki Start: Tworzenie mapy wyszukiwania interaktywnego za pomocą Azure Maps
 
@@ -26,24 +26,38 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
-## <a name="create-an-account-and-get-your-key"></a>Tworzenie konta i uzyskiwanie klucza
+<a id="createaccount"></a>
 
-1. W lewym górnym rogu witryny [Azure portal](https://portal.azure.com) wybierz pozycję **Utwórz zasób**.
-2. W polu **Wyszukaj w portalu Marketplace** wprowadź wartość **Maps**.
-3. Z listy **Wyniki** wybierz pozycję **Maps**. Wybierz przycisk **Utwórz** znajdujący się poniżej mapy.
-4. Na stronie **Tworzenie konta usługi Azure Maps** wprowadź następujące wartości:
-   - **Nazwa** nowego konta.
-   - **Subskrypcja**, która ma być używana dla tego konta.
-   - **Grupa zasobów** dla tego konta. Możesz wybrać pozycję **Utwórz nowe** lub **Użyj istniejącego** dla grupy zasobów.
-   - Wybierz **warstwę cenową**.
-   - Przeczytaj **licencję** i **zasady zachowania poufności informacji**. Zaznacz pole wyboru, aby zaakceptować warunki.
-   - Na koniec wybierz przycisk **Utwórz**.
+## <a name="create-an-account-with-azure-maps"></a>Tworzenie konta przy użyciu usługi Azure Maps
 
-     ![Tworzenie konta usługi Azure Maps w portalu](./media/quick-demo-map-app/create-account.png)
+Utwórz nowe konto usługi Maps, wykonując następujące czynności:
 
-5. Po pomyślnym utworzeniu konta otwórz je i znajdź sekcję ustawień menu konta. Wybierz pozycję **uwierzytelnianie** , aby wyświetlić klucze podstawowe i pomocnicze dla konta Azure Maps. Skopiuj wartość pola **Klucz podstawowy** do lokalnego schowka do użycia w następnej sekcji.
+1. W lewym górnym rogu witryny [Azure Portal](https://portal.azure.com) kliknij przycisk **Utwórz zasób**.
+2. W polu *Wyszukaj w portalu Marketplace* wpisz **Maps**.
+3. Z listy *Wyniki* wybierz pozycję **Maps**. Kliknij przycisk **Utwórz** znajdujący się poniżej mapy.
+4. Na stronie **Tworzenie konta usługi Maps** wprowadź następujące wartości:
+    * *Subskrypcja*, która ma być używana dla tego konta.
+    * Nazwa *grupy zasobów* dla tego konta. Można wybrać pozycję *Utwórz nowe* lub *Użyj istniejącego* dla grupy zasobów.
+    * *Nazwa* nowego konta.
+    * *Warstwa cenowa* dla tego konta.
+    * Zapoznaj się z *Licencją* oraz *Zasadami zachowania poufności informacji* i zaznacz pole wyboru, aby zaakceptować warunki.
+    * Kliknij przycisk **Utwórz**.
+
+![Tworzenie konta usługi Maps w portalu](./media/quick-demo-map-app/create-account.png)
+
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>Pobieranie klucza podstawowego konta
+
+Po pomyślnym utworzeniu konta usługi Maps pobierz klucz, który umożliwia wysyłanie zapytań do interfejsów API usługi Maps. Podczas wywoływania usług Azure Maps zalecamy użycie klucza podstawowego Twojego konta jako klucza subskrypcji.
+
+1. Otwórz konto usługi Maps w portalu.
+2. W sekcji Ustawienia wybierz pozycję **uwierzytelnianie**.
+3. Skopiuj **klucz podstawowy** do schowka. Zapisz go lokalnie — będzie używany w dalszej części tego samouczka.
+
+![Pobieranie klucza podstawowego w portalu](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Pobieranie aplikacji
 

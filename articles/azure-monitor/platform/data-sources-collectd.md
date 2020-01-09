@@ -4,15 +4,15 @@ description: Zebrany to demon Open Source systemu Linux, który okresowo zbiera 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932518"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395870"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Zbieraj dane z zebranych w agencie systemu Linux w Azure Monitor
 [Zebrany](https://collectd.org/) to demon Open Source systemu Linux, który okresowo zbiera metryki wydajności aplikacji i informacji o poziomie systemu. Przykładowe aplikacje obejmują wirtualna maszyna Java (JVM), MySQL Server i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych o wydajności z zebranych w Azure Monitor.
@@ -101,22 +101,22 @@ Poniżej przedstawiono podstawowe kroki konfigurowania kolekcji zbieranych danyc
 
 3. Uruchom ponownie zebrane i Log Analytics agenta dla systemu Linux przy użyciu następujących poleceń.
 
-    Usługa sudo została ponownie uruchomiona sudo/opt/Microsoft/omsagent/bin/service_control restart
+    Usługa sudo została ponownie uruchomiona sudo/opt/Microsoft/omsagent/bin/service_control ponownego uruchomienia
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Zebrane metryki do Azure Monitor konwersji schematu
 Aby zachować znany model między metrykami infrastruktury już zebranymi przez agenta Log Analytics dla systemu Linux i są używane nowe metryki zbierane przez zebrane następujące mapowanie schematu:
 
 | Pole metryki zebranej | Pole Azure Monitor |
 |:--|:--|
-| `host` | Computer |
+| `host` | Computer (Komputer) |
 | `plugin` | Brak |
-| `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** ma *wartość null* , InstanceName = " *_Total*" |
-| `type` | Obiektu |
-| `type_instance` | CounterName<br>Jeśli **type_instance** ma *wartość null* , CounterName =**blank** |
+| `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** ma *wartość null* , następnie InstanceName = " *_Total*" |
+| `type` | ObjectName |
+| `type_instance` | CounterName<br>Jeśli **type_instance** ma *wartość null* , CounterName =**puste** |
 | `dsnames[]` | CounterName |
 | `dstypes` | Brak |
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Następne kroki
-* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań. 
-* [Pola niestandardowe](custom-fields.md) służą do analizowania danych z rekordów dziennika systemowego do poszczególnych pól.
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Użyj [pól niestandardowych](custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.

@@ -3,19 +3,19 @@ title: Instalowanie platformy .NET na rolach usługi Azure Cloud Services | Micr
 description: W tym artykule opisano sposób ręcznej instalacji .NET Framework w roli sieć Web i proces roboczy usługi w chmurze
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
-ms.author: gwallace
-ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360994"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj platformę .NET na rolach usługi Azure Cloud Services
 W tym artykule opisano sposób instalowania wersji .NET Framework, które nie są dostępne w systemie operacyjnym gościa platformy Azure. Możesz użyć platformy .NET w systemie operacyjnym gościa, aby skonfigurować role sieci Web i proces roboczy usługi w chmurze.
@@ -35,8 +35,8 @@ Aby pobrać Instalatora sieci Web dla .NET Framework, wybierz wersję, którą c
 * [Instalator sieci Web platformy .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Aby dodać Instalatora dla roli *sieci Web* :
-  1. W **Eksplorator rozwiązań**, w obszarze **role** w projekcie usługi w chmurze, kliknij prawym przyciskiem myszy rolę *sieci Web* i wybierz polecenie **Dodaj** > **Nowy folder**. Utwórz folder o nazwie **bin**.
-  2. Kliknij prawym przyciskiem myszy folder bin i wybierz polecenie **Dodaj** > **istniejący element**. Wybierz Instalatora .NET i dodaj go do folderu bin.
+  1. W **Eksplorator rozwiązań**, w obszarze **role** w projekcie usługi w chmurze, kliknij prawym przyciskiem myszy rolę *sieci Web* , a następnie wybierz pozycję **Dodaj** > **Nowy folder**. Utwórz folder o nazwie **bin**.
+  2. Kliknij prawym przyciskiem myszy folder bin i wybierz polecenie **dodaj** > **istniejący element**. Wybierz Instalatora .NET i dodaj go do folderu bin.
   
 Aby dodać Instalatora dla roli *proces roboczy* :
 * Kliknij prawym przyciskiem myszy rolę *procesu roboczego* i wybierz pozycję **Dodaj** > **istniejący element**. Wybierz Instalatora .NET i dodaj go do roli. 
@@ -53,7 +53,7 @@ Gdy pliki są dodawane w ten sposób do folderu zawartości roli, są one automa
 ## <a name="define-startup-tasks-for-your-roles"></a>Definiowanie zadań uruchamiania dla ról
 Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli. Zainstalowanie .NET Framework w ramach zadania uruchamiania zapewnia, że struktura jest zainstalowana przed uruchomieniem kodu aplikacji. Aby uzyskać więcej informacji na temat zadań uruchamiania, zobacz [Uruchamianie zadań uruchamiania na platformie Azure](cloud-services-startup-tasks.md). 
 
-1. Dodaj następującą zawartość do pliku ServiceDefinition. csdef w węźle webrole  lub **rola procesu roboczego** dla wszystkich ról:
+1. Dodaj następującą zawartość do pliku ServiceDefinition. csdef w węźle **webrole** lub **rola procesu roboczego** dla wszystkich ról:
    
     ```xml
     <LocalResources>
@@ -73,7 +73,7 @@ Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli
     </Startup>
     ```
    
-    Poprzednia konfiguracja uruchamia polecenie `install.cmd` konsoli z uprawnieniami administratora w celu zainstalowania .NET Framework. Konfiguracja tworzy również element **LOCALSTORAGE** o nazwie **NETFXInstall**. Skrypt uruchamiania ustawia folder tymczasowy do korzystania z tego zasobu magazynu lokalnego. 
+    Poprzednia konfiguracja uruchamia konsolę `install.cmd` z uprawnieniami administratora w celu zainstalowania .NET Framework. Konfiguracja tworzy również element **LOCALSTORAGE** o nazwie **NETFXInstall**. Skrypt uruchamiania ustawia folder tymczasowy do korzystania z tego zasobu magazynu lokalnego. 
     
     > [!IMPORTANT]
     > Aby zapewnić poprawną instalację platformy, należy ustawić rozmiar tego zasobu na co najmniej 1 024 MB.
@@ -197,7 +197,7 @@ Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli
    EXIT /B 0
    ```
 
-3. Dodaj plik Install. cmd do każdej roli za pomocą polecenia **Dodaj** > **istniejący element** w **Eksplorator rozwiązań** zgodnie z opisem we wcześniejszej części tego tematu. 
+3. Dodaj plik Install. cmd do każdej roli przy użyciu opcji **dodaj** > **istniejący element** w **Eksplorator rozwiązań** , zgodnie z opisem we wcześniejszej części tego tematu. 
 
     Po zakończeniu tego kroku wszystkie role powinny mieć plik Instalatora .NET i plik Install. cmd.
 
@@ -220,9 +220,9 @@ Aby skonfigurować diagnostykę, Otwórz plik Diagnostics. wadcfgx i Dodaj nast�
 Ten plik XML konfiguruje diagnostykę do transferu plików w katalogu dziennika w zasobie **NETFXInstall** do konta magazynu diagnostyki w kontenerze obiektów BLOB **NetFx-Install** .
 
 ## <a name="deploy-your-cloud-service"></a>Wdrażanie usługi w chmurze
-Podczas wdrażania usługi w chmurze zadania uruchamiania instalują .NET Framework, jeśli nie zostały jeszcze zainstalowane. Twoje role usługi w chmurze są w  stanie zajętym podczas instalowania platformy. Jeśli instalacja struktury wymaga ponownego uruchomienia, role usługi mogą być również ponownie uruchomione. 
+Podczas wdrażania usługi w chmurze zadania uruchamiania instalują .NET Framework, jeśli nie zostały jeszcze zainstalowane. Twoje role usługi w chmurze są w stanie *zajętym* podczas instalowania platformy. Jeśli instalacja struktury wymaga ponownego uruchomienia, role usługi mogą być również ponownie uruchomione. 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 * [Instalowanie .NET Framework][Installing the .NET Framework]
 * [Ustal, które wersje .NET Framework są zainstalowane][How to: Determine Which .NET Framework Versions Are Installed]
 * [Rozwiązywanie problemów z instalacjami .NET Framework][Troubleshooting .NET Framework Installations]
@@ -234,3 +234,6 @@ Podczas wdrażania usługi w chmurze zadania uruchamiania instalują .NET Framew
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
+
+
+

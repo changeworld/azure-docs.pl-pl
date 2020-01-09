@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: testowanie wsadowe w celu znalezienia problemów — LUIS'
 titleSuffix: Azure Cognitive Services
-description: W tym samouczku przedstawiono sposób korzystania z testów wsadowych w celu znalezienia problemów przewidywania wypowiedź w aplikacji i ich rozwiązania.
+description: Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,223 +9,225 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/19/2019
 ms.author: diberry
-ms.openlocfilehash: 68a0016e034f4642c4e4ff166a1456f7ecf1ee3c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 54beb26554fd823c46f961b4cc7057f347ad343c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904227"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447968"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Samouczek: zestawy danych testów wsadowych
 
-W tym samouczku przedstawiono sposób korzystania z testów wsadowych w celu znalezienia problemów przewidywania wypowiedź w aplikacji i ich rozwiązania.  
+Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.
 
-Testowanie wsadowe umożliwia zweryfikowanie aktywnego, przeszkolonego stanu modelu z znanym zestawem oznaczonym przez wyrażenia długości i jednostek. W pliku wsadowym w formacie JSON Dodaj wyrażenia długości i ustaw etykiety jednostek, które są wymagane w ramach wypowiedź. 
+Testowanie usługi Batch umożliwia zweryfikowanie aktywny, skonfigurowanych pod kątem stanu modelu przy użyciu znanego zestawu etykietami wypowiedzi i jednostek. W pliku wsadowym w formacie JSON Dodawanie wypowiedzi i ustawić etykiety jednostki, które należy przewidzieć wewnątrz wypowiedź.
 
-Wymagania dotyczące testowania wsadowego:
+Wymagania dotyczące testowania usługi batch:
 
-* Maksymalnie 1000 wyrażenia długości na test. 
-* Brak duplikatów. 
-* Dozwolone typy jednostek: tylko jednostki połączone maszynowo proste i złożone. Testowanie wsadowe jest przydatne tylko w przypadku zamiarowych i nieopartych na maszynie.
+* Maksymalnie 1000 wypowiedzi na test.
+* Bez duplikatów.
+* Dozwolone typy jednostek: tylko jednostki połączone maszynowo proste i złożone. Testowanie usługi Batch przydaje się tylko do obrabiane do opanowania intencje i podmioty.
 
-W przypadku korzystania z aplikacji innej niż ten *samouczek nie należy używać* przykładowej wyrażenia długości już dodanej do zamiaru. 
+Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wypowiedzi przykład już dodany do intencji.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 
 **Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Importowanie aplikacji przykładowej
-> * Utwórz plik testu wsadowego 
-> * Uruchom test wsadowy
+> * Utwórz plik wsadowy testu
+> * Uruchom test usługi batch
 > * Przejrzyj wyniki testu
-> * Napraw błędy 
-> * Przetestowanie partii
+> * Usuń błędy
+> * Przetestowanie usługi batch
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 
-Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku.
 
 Wykonaj następujące czynności:
 
-1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json?raw=true).
+
 
 2. Zaimportuj plik JSON do nowej aplikacji.
 
-3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL. 
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
 
 4. Przeszkol aplikację.
 
 ## <a name="batch-file"></a>Plik wsadowy
 
-1. Utwórz `HumanResources-jobs-batch.json` w edytorze tekstu lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) go. 
+1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json?raw=true) go.
 
-2. W pliku wsadowym w formacie JSON Dodaj wyrażenia długości z **zamiarem** , który ma być przewidywany w teście. 
+2. W pliku wsadowym w formacie JSON, dodawanie wypowiedzi z **intencji** mają dostęp do przewidywanych w teście.
 
    [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
-## <a name="run-the-batch"></a>Uruchom zadanie wsadowe
+## <a name="run-the-batch"></a>Uruchom partię
 
-1. Na górnym pasku nawigacyjnym wybierz pozycję **test** . 
+1. Wybierz **testu** w górnym pasku nawigacyjnym.
 
-2. Wybierz pozycję **panel testowania partii** w panelu po prawej stronie. 
+2. Wybierz **Batch testowania panelu** w panelu po prawej stronie.
 
-    [![zrzut ekranu aplikacji LUIS z wyróżnionym panelem testów wsadowych](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
+    [![Zrzut ekranu usługi LUIS aplikacji za pomocą panelu testu partii wyróżniony](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
-3. Wybierz pozycję **Importuj zestaw danych**.
+3. Wybierz **Importowanie zestawu danych**.
 
-    [![zrzut ekranu aplikacji LUIS z wyróżnionym zestawem danych](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![zrzut ekranu aplikacji LUIS z wyróżnionym zestawem danych](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)
 
-4. Wybierz lokalizację pliku `HumanResources-jobs-batch.json`.
+4. Wybierz lokalizację pliku `HumanResources-jobs-batch.json` pliku.
 
-5. Nazwij zestaw danych `intents only` a następnie wybierz pozycję **gotowe**.
+5. Nazwij zestaw danych `intents only` i wybierz **gotowe**.
 
     ![Wybierz plik](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. Wybierz przycisk **Uruchom**. 
+6. Wybierz przycisk **Uruchom**.
 
-7. Wybierz pozycję **Zobacz wyniki**.
+7. Wybierz **wyniki**.
 
-8. Przejrzyj wyniki w grafie i legendzie.
+8. Przejrzyj wyniki w wykresu i legenda.
 
-    [![zrzut ekranu aplikacji LUIS z wynikami testów wsadowych](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
+    [![Zrzut ekranu usługi LUIS aplikacji za pomocą usługi batch, wyników testów](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png)](./media/luis-tutorial-batch-testing/hr-intents-only-results-1.png#lightbox)
 
-## <a name="review-batch-results"></a>Przejrzyj wyniki partii
+## <a name="review-batch-results"></a>Przejrzyj wyniki usługi batch
 
-Na wykresie wsadowym są wyświetlane cztery ćwiartki wyników. Na prawo od wykresu jest filtrem. Filtr zawiera intencje i jednostki. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punktu na wykresie, skojarzone wypowiedź są wyświetlane poniżej wykresu. 
+Wykres batch przedstawia cztery quadrants firmy Gartner wyników. Z prawej strony wykresu jest filtrem. Filtr zawiera intencje i jednostki. Po wybraniu [sekcji wykresu](luis-concept-batch-test.md#batch-test-results) lub punkt w obrębie wykresu skojarzone utterance(s) wyświetlane pod wykresem.
 
-Po umieszczeniu wskaźnika na wykresie kółkiem myszy może powiększyć lub zmniejszyć poziom wyświetlania na wykresie. Jest to przydatne w przypadku, gdy wiele punktów na wykresie jest ściśle klastrowane. 
+Podczas przesuwania wskaźnika w obrębie wykresu, kółka myszy można zwiększyć lub zmniejszyć wyświetlane na wykresie. Jest to przydatne, gdy istnieje wiele punktów na wykresie klastrowane ściśle ze sobą.
 
-Wykres znajduje się w czterech ćwiartkach z dwiema sekcjami wyświetlanymi w kolorze czerwonym. **Są to sekcje, na których należy się skoncentrować**. 
+Wykres jest w czterech quadrants firmy Gartner, przy użyciu dwóch sekcjach wyświetlane na czerwono. **Są to sekcje, aby skoncentrować się na**.
 
 ### <a name="getjobinformation-test-results"></a>Wyniki testu GetJobInformation
 
-Wyniki testu **GetJobInformation** wyświetlane w filtrze pokazują, że 2 z czterech prognoz zakończyło się powodzeniem. Wybierz nazwę **false negatywną** w lewym górnym rogu, aby zobaczyć wyrażenia długości pod wykresem. 
+**GetJobInformation** wyniki testów wyświetlane w filtrze pokazują, czy 2 cztery prognozy zakończyły się pomyślnie. Wybierz nazwę **false negatywną** w lewym górnym rogu, aby zobaczyć wyrażenia długości pod wykresem.
 
-Użyj klawiatury, Ctrl + E, aby przełączyć się do widoku etykiety, aby zobaczyć dokładny tekst wypowiedź użytkownika. 
+Użyj klawiatury, Ctrl + E, aby przełączyć się do widoku etykiety, aby zobaczyć dokładny tekst wypowiedź użytkownika.
 
-Wypowiedź `Is there a database position open in Los Colinas?` jest oznaczona jako _GetJobInformation_ , ale bieżący model przewiduje wypowiedź jako _ApplyForJob_. 
+Wypowiedź `Is there a database position open in Los Colinas?` jest oznaczona jako _GetJobInformation_ , ale bieżący model przewiduje wypowiedź jako _ApplyForJob_.
 
-Istnieją prawie trzy razy wiele przykładów dla **ApplyForJob** niż **GetJobInformation**. Taka nierówność przykładu wyrażenia długości jest ważona na rzecz intencji **ApplyForJob** , co powoduje nieprawidłowe prognozowanie. 
+Istnieją prawie trzy razy wiele przykładów dla **ApplyForJob** niż **GetJobInformation**. Taka nierówność przykładu wyrażenia długości jest ważona na rzecz intencji **ApplyForJob** , co powoduje nieprawidłowe prognozowanie.
 
-Zwróć uwagę, że oba intencje mają taką samą liczbę błędów. Nieprawidłowe prognozowanie w jednym zamiarze również ma wpływ na inne zamierzenia. Oba mają Błędy, ponieważ wyrażenia długości zostały nieprawidłowo przewidywalne dla jednego zamiaru, a także nieprawidłowo nieprzewidziane dla innego celu. 
+Należy zauważyć, że zarówno intencji mają ten sam liczbę błędów. Niepoprawne prognozowania w jednym profilu konwersji ma wpływ na inne zamiar także. Oba zawierają błędy, ponieważ wypowiedzi zostały nieprawidłowo przewidywany intencji jeden, a także niepoprawnie nie przewidywany inną intencji.
 
 <a name="fix-the-app"></a>
 
 ## <a name="how-to-fix-the-app"></a>Jak naprawić aplikację
 
-Celem tej sekcji jest zaplanowanie wszystkich wyrażenia długości prawidłowo przewidzianych dla **GetJobInformation** przez naprawianie aplikacji. 
+Celem tej sekcji jest wszystkie wypowiedzi poprawnie przewidzieć dla **GetJobInformation** Napraw aplikację.
 
-Pozornie szybka naprawa spowodowałaby dodanie tych plików wsadowych wyrażenia długości do poprawnego celu. To nie co chcesz zrobić. Chcesz, aby LUIS prawidłowo przewidzieć te wyrażenia długości bez dodawania ich jako przykładów. 
+Pozornie szybka poprawka będzie można dodać te wypowiedzi pliku wsadowego na intencje poprawne. To nie co chcesz zrobić. Chcesz, aby usługa LUIS można poprawnie przewidzieć te wypowiedzi bez dodawania ich przykłady.
 
-Możesz również zainteresować się usuwanie wyrażenia długości z **ApplyForJob** , dopóki liczba wypowiedź nie będzie taka sama jak **GetJobInformation**. Może to poprawić wyniki testu, ale utrudni LUIS przed przewidywaniam tego celu w następnym momencie. 
+Również być może zastanawiasz się o usuwaniu wypowiedzi z **ApplyForJob** aż ilość wypowiedź jest taka sama jak **GetJobInformation**. Który może naprawić wyniki testu, ale utrudniłoby usługi LUIS z precyzyjne Prognozowanie tym przeznaczeniem następnym razem.
 
 Poprawka polega na dodaniu więcej wyrażenia długości do **GetJobInformation**. Pamiętaj, aby zmienić wypowiedź długość, wybór wyrazów i rozmieszczenie wyrazów, zachowując znaczenie dla zamiaru szukania informacji o zadaniu, _nie_ ma zastosowania do tego zadania.
 
-### <a name="add-more-utterances"></a>Dodaj więcej wyrażenia długości
+### <a name="add-more-utterances"></a>Dodawanie wypowiedzi więcej
 
-1. Zamknij Panel test wsadowy, wybierając przycisk **test** w górnym panelu nawigacji. 
+1. Zamknij panel testu usługi batch, wybierając **Test** w górnym menu nawigacyjnym panelu.
 
-2. Wybierz pozycję **GetJobInformation** z listy intencje. 
+2. Wybierz **GetJobInformation** z listy opcji.
 
-3. Dodaj więcej wyrażenia długościów, które są zróżnicowane dla długości, wyboru wyrazu i rozmieszczenia wyrazów, pamiętając o uwzględnieniu warunków `resume`, `c.v.`i `apply`:
+3. Dodawanie wypowiedzi więcej, które są zróżnicowane dla długości, wybór programu word i rozmieszczenie programu word, upewniając się objął `resume`, `c.v.`, i `apply`:
 
-    |Przykład wyrażenia długości dla intencji **GetJobInformation**|
+    |Przykład wypowiedzi dla **GetJobInformation** intencji|
     |--|
-    |Czy nowe zadanie w hurtowni Stocker wymaga, aby mam zastosowanie z życiorysem?|
-    |Gdzie dzisiaj są zadania dotyczące podachu?|
-    |Słyszę, że było to zadanie kodowania medycznego wymagające wznowienia.|
-    |Podoba mi się zadanie, aby zapewnić dzieciom swoje c.v.s. |
-    |Oto moje wznowienie i poszukiwanie nowego wpisu na uczelni społecznościowej przy użyciu komputerów.|
-    |Jakie pozycje są dostępne w obszarze dzieci i opieka domowa?|
-    |Czy istnieje dział InterNIC na gazetie?|
-    |Moje C.v. pokazuje, że jest to dobre przy analizowaniu zakupów, budżetów i utraty pieniędzy. Czy istnieje coś dla tego typu pracy?|
-    |Gdzie są teraz zadania wiercenia ziemi?|
-    |Pracowałem 8 lat jako sterownik EMS. Nowe zadania?|
-    |Nowe zadania obsługi żywności wymagają aplikacji?|
-    |Ile nowych zadań służbowych jest dostępnych?|
-    |Czy istnieje nowy wpis w usłudze HR dla relacji robocizny i negocjacji?|
-    |Mam wzorce w zarządzaniu biblioteką i archiwum. Nowe pozycje?|
-    |Czy istnieją jakieś zadania zajmowania dla 13-letnich Olds w miejscowości dzisiaj?|
+    |Nowe zadanie w magazynie stocker wymaga czy mogę stosować z życiorysu?|
+    |Gdzie dziś znajdują się zadania konstrukcji dachów?|
+    |Podobno, że było medycznych zadanie kodowania, które wymaga życiorysu.|
+    |Chcę otrzymywać zadania, pomagając dzieci college zapisu ich c.v.s. |
+    |Oto życiorysem szukasz nowego wpisu w policealnej na komputerach.|
+    |Pozycje, które są dostępne w opiekę podrzędnych i w domu?|
+    |W gazet jest technicznej serii?|
+    |Moje doświadczeń Pokazuje, że jestem dobrze wykonywać analizy zakupów, budżetów i utratę pieniędzy. Czy jest coś dla tego typu elementu roboczego?|
+    |Gdzie są ziemi przechodzenia do szczegółów zadań teraz?|
+    |Prócz tego pracowałam 8 lat jako sterownik pakietu EMS. Żadne nowe zadania?|
+    |Nowe zadania obsługi żywności wymaga aplikacji?|
+    |Jak wiele nowych zadań roboczych yard są dostępne?|
+    |Dla negocjacji i relacje pracy jest opublikowany nowy wpis HR?|
+    |Mam wzorców zarządzania biblioteką i archiwum. Wszelkie nowe pozycje?|
+    |Dostępne są wszystkie zadania babysitting dla 13 wieku roku w mieście już dzisiaj?|
 
-    Nie oznaczaj jednostki **zadania** w wyrażenia długości. Ta część samouczka koncentruje się na tylko prognozie intencji.
+    Etykieta nie **zadania** jednostki w wypowiedzi. Ta część samouczka koncentruje się na tylko intencji prognozy.
 
-4. Nauczenie aplikacji przez wybranie opcji **uczenie** w prawym górnym rogu.
+4. Uczenie aplikacji, wybierając **Train** w górnym kierunku prawego paska nawigacyjnego.
 
-## <a name="verify-the-new-model"></a>Weryfikowanie nowego modelu
+## <a name="verify-the-new-model"></a>Sprawdź nowy model
 
-Aby sprawdzić, czy wyrażenia długości w teście wsadowym został prawidłowo przewidziany, uruchom ponownie test wsadowy.
+Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponownie uruchomić test usługi batch.
 
-1. Na górnym pasku nawigacyjnym wybierz pozycję **test** . Jeśli wyniki partii są nadal otwarte, wybierz pozycję **Powrót do listy**.  
+1. Wybierz **testu** w górnym pasku nawigacyjnym. Jeśli wyniki przetwarzania wsadowego są wciąż otwarty, wybierz opcję **powrót do listy**.
 
-1. Wybierz przycisk wielokropka (***...***) z prawej strony nazwy partii i wybierz polecenie **Uruchom**. Poczekaj, aż test wsadowy zostanie wykonany. Zwróć uwagę, że przycisk **Zobacz wyniki** jest teraz zielony. Oznacza to, że cała partia została uruchomiona pomyślnie.
+1. Wybierz przycisk wielokropka (***...***) z prawej strony nazwy partii i wybierz polecenie **Uruchom**. Zaczekaj, aż odbywa się badanie usługi batch. Należy zauważyć, że **wyniki** kolor zielony ma teraz przycisk. Oznacza to, że całą partię został uruchomiony pomyślnie.
 
-1. Wybierz pozycję **Zobacz wyniki**. Intencje powinny mieć zielony ikon z lewej strony nazw intencji. 
+1. Wybierz **wyniki**. Intencji powinien mieć zielony ikon po lewej stronie nazwy metody konwersji.
 
-## <a name="create-batch-file-with-entities"></a>Utwórz plik wsadowy z jednostkami 
+## <a name="create-batch-file-with-entities"></a>Utwórz plik wsadowy z jednostkami
 
-Aby sprawdzić jednostki w teście wsadowym, należy oznaczyć jednostki w pliku JSON w usłudze Batch. 
+Aby sprawdzić, czy jednostki w teście usługi batch, jednostki muszą oznaczone etykietą w pliku JSON usługi batch.
 
-Zróżnicowanie jednostek dla łącznej liczby wyrazów ([token](luis-glossary.md#token)) może mieć wpływ na jakość przewidywania. Upewnij się, że dane szkoleniowe dostarczane do zamiaru z etykietą wyrażenia długości zawierają różne długości jednostek. 
+Zmiany jednostki dla programu word całkowita ([tokenu](luis-glossary.md#token)) liczby mogą mieć wpływ na jakość prognozy. Upewnij się, że dane szkoleniowe dostarczane na intencje z etykietami wypowiedzi zawiera różne długości jednostki.
 
-Podczas pierwszego zapisywania i testowania plików wsadowych najlepiej zacząć korzystać z kilku wyrażenia długości i jednostek, które znasz, a także kilka niewłaściwie przewidzianych. Dzięki temu można szybko skupić się na obszarach problemów. Po przetestowaniu intencji **GetJobInformation** i **ApplyForJob** przy użyciu kilku różnych nazw zadań, które nie zostały przewidywalne, ten plik testu wsadowego został opracowany w celu sprawdzenia, czy występuje problem z przewidywaniam z określonymi wartościami dla jednostki **zadania** . 
+Po pierwsze pisaniu i testowaniu plików wsadowych, zaleca się rozpoczynać kilka wypowiedzi i jednostek, które znasz pracować, a także kilka namysłu może niepoprawnie przewidzieć. Ten pozwala skoncentrować się w sprawie obszarów problemów szybko. Po przetestowaniu **GetJobInformation** i **ApplyForJob** intencji przy użyciu kilku różnych zadań nazwy, które nie zostały przewidzieć, ten plik wsadowy w test został opracowany, aby sprawdzić, czy jest problem prognoz przy użyciu określonych wartości dla **zadania** jednostki.
 
-Wartość jednostki **zadania** , która znajduje się w wyrażenia długości testu, jest zwykle jednym lub dwoma słowami, z kilkoma przykładami więcej wyrazów. Jeśli _własne_ aplikacje kadrowe zwykle zawierają nazwy zadań wielu wyrazów, przykład wyrażenia długości z jednostką **zadania** w tej aplikacji nie działa prawidłowo.
+Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jednego lub dwóch słów o kilka przykładów jest więcej słów. Jeśli _własne_ aplikacji kadrowej zwykle zawiera nazwy zadania wiele słów, z etykietą wypowiedzi przykład **zadania** jednostki w tej aplikacji nie będzie działać poprawnie.
 
-1. Utwórz `HumanResources-entities-batch.json` w edytorze tekstu, takim jak [programu vscode](https://code.visualstudio.com/) , lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) go.
+1. Tworzenie `HumanResources-entities-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/) lub [Pobierz](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json?raw=true) go.
 
-2. W pliku wsadowym w formacie JSON Dodaj tablicę obiektów, które zawierają wyrażenia długości z **zamiarem** , który ma być przewidywany w teście, a także lokalizacje wszystkich jednostek w wypowiedź. Ponieważ jednostka jest oparta na tokenach, upewnij się, że uruchamiasz i zatrzymasz każdą jednostkę na znaku. Nie rozpoczynaj ani nie kończyj wypowiedź na miejscu. Powoduje to błąd podczas importowania pliku wsadowego.  
+2. W pliku wsadowym w formacie JSON, Dodaj tablicę obiektów, które zawierają wypowiedzi z **intencji** mają dostęp do przewidywanych w test, a także lokalizacje wszystkie jednostki w wypowiedź. Ponieważ jednostka jest oparte na tokenie, upewnij się, uruchamianie i zatrzymywanie każdej jednostki na znak. Nie rozpoczyna się lub kończy wypowiedź w miejscu. Powoduje to błąd podczas importowania pliku wsadowego.
 
    [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
-## <a name="run-the-batch-with-entities"></a>Uruchamianie partii z jednostkami
+## <a name="run-the-batch-with-entities"></a>Uruchom partię z jednostkami
 
-1. Na górnym pasku nawigacyjnym wybierz pozycję **test** . 
+1. Wybierz **testu** w górnym pasku nawigacyjnym.
 
-2. Wybierz pozycję **panel testowania partii** w panelu po prawej stronie. 
+2. Wybierz **Batch testowania panelu** w panelu po prawej stronie.
 
-3. Wybierz pozycję **Importuj zestaw danych**.
+3. Wybierz **Importowanie zestawu danych**.
 
 4. Wybierz lokalizację systemu plików `HumanResources-entities-batch.json` pliku.
 
-5. Nazwij zestaw danych `entities` a następnie wybierz pozycję **gotowe**.
+5. Nazwij zestaw danych `entities` i wybierz **gotowe**.
 
-6. Wybierz przycisk **Uruchom**. Poczekaj, aż test zostanie wykonany.
+6. Wybierz przycisk **Uruchom**. Zaczekaj, aż testu jest wykonywane.
 
-7. Wybierz pozycję **Zobacz wyniki**.
+7. Wybierz **wyniki**.
 
 ## <a name="review-entity-batch-results"></a>Przejrzyj wyniki partii jednostek
 
-Zostanie otwarty wykres ze wszystkimi intencjami, które zostały prawidłowo przewidywalne. Przewiń w dół do filtru po prawej stronie, aby znaleźć przewidywania jednostek z błędami. 
+Wykres zostanie otwarty przy użyciu wszystkich intencji poprawnie przewidzieć. Przewiń w dół do filtru po prawej stronie, aby znaleźć przewidywania jednostek z błędami.
 
-1. Wybierz jednostkę **zadania** w filtrze.
+1. Wybierz **zadania** jednostki w filtrze.
 
     ![Przewidywania jednostek błędów w filtrze](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
-    Wykres zmieni się, aby wyświetlić przewidywania jednostek. 
+    Aby wyświetlić prognozy jednostki zmiany wykresu.
 
-2. W dolnym lewym rogu wykresu wybierz opcję **fałszywa ujemna** . Następnie użyj kontrolki kombinacja kombinacji + E, aby przełączyć się do widoku tokenu. 
+2. Wybierz **fałszywie ujemny** w dolnym lewym quadrant wykresu. Następnie użyć klawiatury kombinacji control + E, aby przełączyć do widoku tokenu.
 
-    [Widok tokenu ![prognoz jednostek](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
-    
-    Przeglądanie wyrażenia długości poniżej wykresu ujawnia spójny błąd, gdy nazwa zadania zawiera `SQL`. Przeglądając przykład wyrażenia długości i listę fraz zadania, SQL jest używany tylko raz i tylko jako część większej nazwy zadania, `sql/oracle database administrator`.
+    [![Token widoku prognoz jednostki](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
 
-## <a name="fix-the-app-based-on-entity-batch-results"></a>Popraw aplikację na podstawie wyników partii jednostek
+    Przeglądanie wypowiedzi pod wykresem, co spowoduje wyświetlenie błędu spójne gdy nazwa zadania zawiera `SQL`. Przeglądanie wypowiedzi przykład i Job list frazy, SQL jest tylko użyty raz i tylko jako część nazwę zadania większych `sql/oracle database administrator`.
 
-Rozwiązanie aplikacji wymaga, aby LUIS prawidłowo określić wahania zadań SQL. Istnieje kilka opcji tej poprawki. 
+## <a name="fix-the-app-based-on-entity-batch-results"></a>Usuń aplikację na podstawie jednostki usługi batch wyników
 
-* Jawnie Dodaj więcej przykładowych wyrażenia długości, które używają języka SQL i etykietowania tych słów jako jednostki zadania. 
-* Jawnie Dodaj więcej zadań SQL do listy fraz
+Naprawianie aplikacji wymaga usługi LUIS do poprawnie określania wariantów zadań SQL. Dostępnych jest kilka opcji tej poprawki.
 
-Te zadania są pozostawione do wykonania.
+* Jawnie dodać więcej wypowiedzi przykład, w których korzystanie z programu SQL i oznaczać je jako element zadania.
+* Jawnie dodać więcej zadań SQL do listy fraz
 
-Dodanie [wzorca](luis-concept-patterns.md) przed prawidłową przewidywaniam jednostki nie powoduje rozwiązania problemu. Dzieje się tak, ponieważ wzorzec nie jest zgodny, dopóki nie zostaną wykryte wszystkie jednostki w wzorcu. 
+Te zadania są pozostawiane należy wykonać.
+
+Dodawanie [wzorzec](luis-concept-patterns.md) przed jednostki jest poprawnie przewidzieć, nie będzie można rozwiązać ten problem. Jest to spowodowane wzorzec nie będzie zgodne, dopóki nie zostaną wykryte wszystkich jednostek w wzorzec.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -233,8 +235,8 @@ Dodanie [wzorca](luis-concept-patterns.md) przed prawidłową przewidywaniam jed
 
 ## <a name="next-steps"></a>Następne kroki
 
-Samouczek użył testu wsadowego, aby znaleźć problemy z bieżącym modelem. Model został rozwiązany i ponownie przetestowany przy użyciu pliku wsadowego, aby sprawdzić, czy zmiana była poprawna.
+Samouczek umożliwia wyszukiwanie problemów z bieżącym modelem testu usługi batch. Model został rozwiązany i powtórnie testowane z pliku wsadowego, aby sprawdzić, czy zmiana była poprawna.
 
 > [!div class="nextstepaction"]
-> [Informacje o wzorcach](luis-tutorial-pattern.md)
+> [Więcej informacji na temat wzorców](luis-tutorial-pattern.md)
 

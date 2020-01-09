@@ -1,5 +1,5 @@
 ---
-title: Pola niestandardowe w Azure Monitor | Microsoft Docs
+title: Pola niestandardowe w Azure Monitor (wersja zapoznawcza) | Microsoft Docs
 description: Funkcja pól niestandardowych Azure Monitor umożliwia tworzenie własnych pól z możliwością wyszukiwania z rekordów w Log Analytics obszarze roboczym, które są dodawane do właściwości zebranego rekordu.  W tym artykule opisano proces tworzenia pola niestandardowego i zawiera szczegółowy przewodnik z przykładowym wydarzeniem.
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396881"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Tworzenie pól niestandardowych w obszarze roboczym Log Analytics w Azure Monitor
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Tworzenie pól niestandardowych w obszarze roboczym Log Analytics w Azure Monitor (wersja zapoznawcza)
 
 > [!NOTE]
 > W tym artykule opisano sposób analizowania danych tekstowych w obszarze roboczym Log Analytics w miarę ich zbierania. Zalecamy analizowanie danych tekstowych w filtrze zapytania po zebraniu zgodnie ze wskazówkami opisanymi w temacie [Analizowanie danych tekstowych w Azure monitor](../log-query/parse-text.md). Zapewnia kilka korzyści w porównaniu z użyciem pól niestandardowych.
@@ -93,7 +93,7 @@ Zostanie otwarty **Kreator wyodrębniania pól** , a pola **EventLog** i **Event
 
 ![Główny przykład](media/custom-fields/main-example.png)
 
-Wyróżnimy nazwę usługi we właściwości **RenderedDescription** i Użyj **usługi** , aby zidentyfikować nazwę usługi.  Pole niestandardowe będzie miało nazwę **Service_CF**. Typ pola w tym przypadku jest ciągiem, dlatego można pozostawić niezmieniony.
+Wyróżnimy nazwę usługi we właściwości **RenderedDescription** i Użyj **usługi** , aby zidentyfikować nazwę usługi.  Pole niestandardowe zostanie wywołane **Service_CF**. Typ pola w tym przypadku jest ciągiem, dlatego można pozostawić niezmieniony.
 
 ![Tytuł pola](media/custom-fields/field-title.png)
 
@@ -117,7 +117,7 @@ Teraz można uruchomić zapytanie, które weryfikuje **Service_CF** jest tworzon
 
 ![Liczba początkowa](media/custom-fields/initial-count.png)
 
-Po upływie pewnego czasu zostały zebrane nowe zdarzenia, zobaczymy, że pole **Service_CF** jest teraz dodawane do rekordów, które pasują do naszych kryteriów.
+Po upływie pewnego czasu zostaną zebrane nowe zdarzenia, zobaczymy, że pole **Service_CF** jest teraz dodawane do rekordów, które pasują do naszych kryteriów.
 
 ![Wyniki końcowe](media/custom-fields/final-results.png)
 

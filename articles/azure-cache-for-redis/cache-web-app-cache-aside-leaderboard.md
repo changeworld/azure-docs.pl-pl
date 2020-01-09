@@ -1,24 +1,24 @@
 ---
-title: Samouczek dotyczący tworzenia aplikacji sieci Web za pomocą usługi Azure cache for Redis, która używa wzorca z odkładaniem do pamięci podręcznej
-description: Dowiedz się, jak utworzyć aplikację internetową z usługą Azure Cache for Redis, która korzysta ze wzorca Odkładanie do pamięci podręcznej
+title: 'Samouczek: Tworzenie aplikacji sieci Web (w pamięci podręcznej) — pamięć podręczna platformy Azure dla Redis'
+description: Dowiedz się, jak utworzyć aplikację internetową za pomocą usługi Azure cache for Redis, która używa wzorca z możliwością buforowania.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411941"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Samouczek: tworzenie rankingu z odkładaniem do pamięci podręcznej na platformie ASP.NET
 
 W tym samouczku zaktualizujesz aplikację internetową platformy ASP.NET o nazwie *ContosoTeamStats*, utworzoną w ramach [przewodnika Szybki start platformy ASP.NET dla usługi Azure Cache for Redis](cache-web-app-howto.md), w taki sposób, aby zawierała ranking korzystający ze [wzorca odkładania do pamięci podręcznej](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) i usługi Azure Cache for Redis. Przykładowa aplikacja wyświetla listę statystyk zespołu z bazy danych i demonstruje różne sposoby korzystania z usługi Azure Cache for Redis do przechowywania danych w pamięci podręcznej i pobierania ich w celu podniesienia wydajności. Wykonanie instrukcji z samouczka umożliwi uzyskanie działającej aplikacji internetowej wykonującej odczyt i zapis w bazie danych, zoptymalizowanej przy użyciu usługi Azure Cache for Redis i hostowanej na platformie Azure.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Zwiększ przepływność danych i ogranicz obciążenie bazy danych, przechowując i pobierając dane przy użyciu usługi Azure Cache for Redis.
@@ -34,7 +34,7 @@ Do ukończenia tego samouczka niezbędne są:
 
 * Ten samouczek jest kontynuacją [przewodnika Szybki start platformy ASP.NET dla usługi Azure Cache for Redis](cache-web-app-howto.md). Jeśli jeszcze nie został on przez Ciebie ukończony, ukończ go najpierw.
 * Zainstaluj [program Visual Studio 2019](https://www.visualstudio.com/downloads/) z następującymi obciążeniami:
-    * ASP.NET i tworzenie aplikacji internetowych
+    * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
     * Programowanie na platformie Azure
     * Programowanie aplikacji klasycznych dla platformy .NET z użyciem programu SQL Server Express LocalDB lub [SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express).
 
@@ -691,7 +691,7 @@ W tym kroku samouczka opublikujesz aktualizacje aplikacji na platformie Azure w 
 
 1. Kliknij prawym przyciskiem myszy projekt **ContosoTeamStats** w programie Visual Studio i wybierz polecenie **Publikuj**.
 
-    ![Publikowanie](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Publikuj](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. Kliknij pozycję **Opublikuj**, aby użyć tego samego profilu publikowania, który został utworzony w ramach przewodnika Szybki start.
 
@@ -701,9 +701,9 @@ W tym kroku samouczka opublikujesz aktualizacje aplikacji na platformie Azure w 
 
     W poniższej tabeli opisano każdy link akcji z przykładowej aplikacji:
 
-    | Akcja | Opis |
+    | Działanie | Opis |
     | --- | --- |
-    | Create New (Utwórz nowe) |Tworzenie nowego zespołu. |
+    | Kliknięcie przycisku Nowe |Tworzenie nowego zespołu. |
     | Play Season (Odtwarzaj sezon) |Odtwarzanie sezonu gier, aktualizacja statystyk zespołu i czyszczenie nieaktualnych danych zespołu z pamięci podręcznej. |
     | Clear Cache (Wyczyść pamięć podręczną) |Czyszczenie statystyk zespołu z pamięci podręcznej. |
     | List from Cache (Lista z pamięci podręcznej) |Pobieranie statystyk zespołu z pamięci podręcznej. W przypadku braku trafienia pamięci podręcznej ładuje statystyki z bazy danych i zapisuje je w pamięci podręcznej do użytku następnym razem. |
@@ -727,7 +727,7 @@ Po zakończeniu pracy z przykładową aplikacją z samouczka możesz usunąć u�
 2. Wpisz nazwę grupy zasobów w polu tekstowym **Filtruj elementy...** .
 3. Kliknij pozycję **...** z prawej strony grupy zasobów i kliknij pozycję **Usuń grupę zasobów**.
 
-    ![Usuwanie](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
+    ![Usuń](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**.
 

@@ -3,20 +3,20 @@ title: Jak utworzyć i wdrożyć usługę w chmurze | Microsoft Docs
 description: Dowiedz się, jak utworzyć i wdrożyć usługę w chmurze przy użyciu Azure Portal.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359130"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386174"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak utworzyć i wdrożyć usługę w chmurze
-Azure Portal zapewnia dwa sposoby tworzenia i wdrażania usługi w chmurze: *Szybkie tworzenie* i *Tworzenie niestandardowe*.
+Azure Portal zapewnia dwa sposoby tworzenia i wdrażania usługi w chmurze: *szybkie tworzenie* i *Tworzenie niestandardowe*.
 
 W tym artykule wyjaśniono, jak za pomocą metody Quick Create utworzyć nową usługę w chmurze, a następnie za pomocą **przekazywania** przekazać i wdrożyć pakiet usługi w chmurze na platformie Azure. W przypadku korzystania z tej metody Azure Portal udostępnia wygodne linki do uzupełniania wszystkich wymagań zgodnie z rzeczywistym użyciem. Jeśli wszystko jest gotowe do wdrożenia usługi w chmurze podczas jej tworzenia, można wykonać obie czynności przy użyciu opcji tworzenie niestandardowe.
 
@@ -44,7 +44,7 @@ Trzy funkcje usługi w chmurze wymagają specjalnych konfiguracji przed wyekspor
 
 * Jeśli chcesz wdrożyć usługę w chmurze używającą SSL (SSL) do szyfrowania danych, [Skonfiguruj aplikację](cloud-services-configure-ssl-certificate-portal.md#modify) do obsługi protokołu SSL.
 * Jeśli chcesz skonfigurować połączenia Pulpit zdalny z wystąpieniami ról, [Skonfiguruj role](cloud-services-role-enable-remote-desktop-new-portal.md) dla Pulpit zdalny.
-* Jeśli chcesz skonfigurować pełne monitorowanie dla usługi w chmurze, Włącz Diagnostyka Azure dla usługi w chmurze. *Minimalne monitorowanie* (domyślny poziom monitorowania) używa liczników wydajności zebranych z systemów operacyjnych hosta dla wystąpień ról (maszyn wirtualnych). *Pełne monitorowanie* zbiera dodatkowe metryki na podstawie danych wydajności w wystąpieniach roli w celu zapewnienia bliższej analizy problemów występujących podczas przetwarzania aplikacji. Aby dowiedzieć się, jak włączyć Diagnostyka Azure, zobacz [Włączanie diagnostyki na platformie Azure](cloud-services-dotnet-diagnostics.md).
+* Jeśli chcesz skonfigurować pełne monitorowanie dla usługi w chmurze, Włącz Diagnostyka Azure dla usługi w chmurze. *Minimalne monitorowanie* (domyślny poziom monitorowania) używa liczników wydajności zebranych z systemów operacyjnych hosta dla wystąpień roli (maszyn wirtualnych). *Pełne monitorowanie* zbiera dodatkowe metryki na podstawie danych wydajności w wystąpieniach roli w celu zapewnienia bliższej analizy problemów występujących podczas przetwarzania aplikacji. Aby dowiedzieć się, jak włączyć Diagnostyka Azure, zobacz [Włączanie diagnostyki na platformie Azure](cloud-services-dotnet-diagnostics.md).
 
 Aby utworzyć usługę w chmurze z wdrożeniami ról sieci Web lub procesów roboczych, należy [utworzyć pakiet usługi](cloud-services-model-and-package.md#servicepackagecspkg).
 
@@ -72,7 +72,7 @@ Jeśli pakiet wdrożeniowy został [skonfigurowany do korzystania z certyfikató
 
 1. Wybierz pozycję **Certyfikaty**, a następnie w okienku **Dodawanie certyfikatów** wybierz plik certyfikatu SSL. pfx, a następnie podaj **hasło** dla certyfikatu.
 2. Kliknij pozycję **Dołącz certyfikat**, a następnie kliknij przycisk **OK** w okienku **Dodawanie certyfikatów** .
-3. Kliknij przycisk **Utwórz** w okienku **usługi w chmurze** . Gdy wdrożenie osiągnie stan gotowości  , można przejść do kolejnych kroków.
+3. Kliknij przycisk **Utwórz** w okienku **usługi w chmurze** . Gdy wdrożenie osiągnie stan **gotowości** , można przejść do kolejnych kroków.
 
     ![Publikowanie usługi w chmurze](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
@@ -86,8 +86,11 @@ Jeśli pakiet wdrożeniowy został [skonfigurowany do korzystania z certyfikató
 
 [TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Ogólna konfiguracja usługi w chmurze](cloud-services-how-to-configure-portal.md).
-* Skonfiguruj niestandardową [nazwę domeny](cloud-services-custom-domain-name-portal.md).
+* Skonfiguruj [niestandardową nazwę domeny](cloud-services-custom-domain-name-portal.md).
 * [Zarządzanie usługą w chmurze](cloud-services-how-to-manage-portal.md).
 * Skonfiguruj [Certyfikaty SSL](cloud-services-configure-ssl-certificate-portal.md).
+
+
+

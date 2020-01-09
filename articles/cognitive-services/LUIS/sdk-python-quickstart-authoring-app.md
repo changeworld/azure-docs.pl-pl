@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla języka Python'
 titleSuffix: Azure Cognitive Services
-description: Rozpocznij pracę z biblioteką kliencką LUIS dla języka Python. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.
+description: Rozpocznij pracę z biblioteką kliencką LUIS dla języka Python za pomocą tego przewodnika Szybki Start. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 398220306fad4dc3459446fa5f77371ac669dd7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422711"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381498"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Szybki Start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla języka Python
 

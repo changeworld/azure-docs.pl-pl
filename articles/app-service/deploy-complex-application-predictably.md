@@ -5,17 +5,17 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422130"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Udostępnianie i wdrażanie mikrousług na platformie Azure
 Ten samouczek pokazuje, jak zainicjować i wdrożyć aplikację składającą się z [mikrousług](https://en.wikipedia.org/wiki/Microservices) w [Azure App Service](https://azure.microsoft.com/services/app-service/) jako pojedynczą jednostkę i w sposób przewidywalny przy użyciu szablonów grup zasobów JSON i skryptów programu PowerShell. 
 
-Podczas aprowizacji i wdrażania aplikacji o dużej skali, które składają się z wysoce rozłączonych mikrousług, powtarzalność i przewidywalność są decydujące dla sukcesu. [Azure App Service](https://azure.microsoft.com/services/app-service/) umożliwia tworzenie mikrousług obejmujących aplikacje sieci Web, zaplecza mobilne i aplikacje interfejsu API. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) umożliwia zarządzanie wszystkimi mikrousługami jako jednostką wraz z zależnościami zasobów, takimi jak baza danych i ustawienia kontroli źródła. Teraz możesz również wdrożyć taką aplikację przy użyciu szablonów JSON i prostego skryptu programu PowerShell. 
+Podczas aprowizacji i wdrażania aplikacji o dużej skali, które składają się z wysoce rozłączonych mikrousług, powtarzalność i przewidywalność są decydujące dla sukcesu. [Azure App Service](https://azure.microsoft.com/services/app-service/) umożliwia tworzenie mikrousług obejmujących aplikacje sieci Web, zaplecza mobilne i aplikacje interfejsu API. [Azure Resource Manager](../azure-resource-manager/management/overview.md) umożliwia zarządzanie wszystkimi mikrousługami jako jednostką wraz z zależnościami zasobów, takimi jak baza danych i ustawienia kontroli źródła. Teraz możesz również wdrożyć taką aplikację przy użyciu szablonów JSON i prostego skryptu programu PowerShell. 
 
 ## <a name="what-you-will-do"></a>Co należy zrobić
 W samouczku zostanie wdrożona aplikacja obejmująca następujące możliwości:
@@ -29,7 +29,7 @@ W samouczku zostanie wdrożona aplikacja obejmująca następujące możliwości:
 W tym samouczku zostaną użyte następujące narzędzia. Ponieważ nie jest to obszerna dyskusja nad narzędziami, chcę przejść do kompleksowego scenariusza i po prostu przedstawić krótkie wprowadzenie do każdego z nich i gdzie można znaleźć więcej informacji na jego temat. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Szablony Azure Resource Manager (JSON)
-Za każdym razem, gdy tworzysz aplikację w Azure App Service, na przykład Azure Resource Manager używa szablonu JSON do tworzenia całej grupy zasobów z zasobami składników. Złożony szablon z [portalu Azure Marketplace](/azure/marketplace) może obejmować bazę danych, konta magazynu, plan App Service, samą aplikację, reguły alertów, ustawienia aplikacji, ustawienia automatycznego skalowania i wiele innych. wszystkie te szablony są dostępne dla użytkownika za pośrednictwem programu PowerShell. Aby uzyskać więcej informacji na temat szablonów Azure Resource Manager, zobacz [tworzenie Azure Resource Manager szablonów](../azure-resource-manager/resource-group-authoring-templates.md)
+Za każdym razem, gdy tworzysz aplikację w Azure App Service, na przykład Azure Resource Manager używa szablonu JSON do tworzenia całej grupy zasobów z zasobami składników. Złożony szablon z [portalu Azure Marketplace](/azure/marketplace) może obejmować bazę danych, konta magazynu, plan App Service, samą aplikację, reguły alertów, ustawienia aplikacji, ustawienia automatycznego skalowania i wiele innych. wszystkie te szablony są dostępne dla użytkownika za pośrednictwem programu PowerShell. Aby uzyskać więcej informacji na temat szablonów Azure Resource Manager, zobacz [tworzenie Azure Resource Manager szablonów](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Zestaw Azure SDK 2,6 dla programu Visual Studio
 Najnowszy zestaw SDK zawiera ulepszenia obsługi szablonów Menedżer zasobów w edytorze JSON. Możesz użyć tej funkcji, aby szybko utworzyć szablon grupy zasobów od podstaw lub otworzyć istniejący szablon JSON (na przykład pobrany szablon galerii) do modyfikacji, wypełnić plik parametrów, a nawet wdrożyć grupę zasobów bezpośrednio z zasobu platformy Azure Rozwiązaniu grupy.
@@ -105,7 +105,7 @@ Należy zauważyć, że `type` element określa ciąg dla planu App Service (jes
 > 
 > 
 
-#### <a name="sql-server"></a>Oprogramowanie SQL Server
+#### <a name="sql-server"></a>SQL Server
 Następnie kliknij zasób SQL Server o nazwie **SqlServer** w konspekcie JSON.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
@@ -117,7 +117,7 @@ Zwróć uwagę na następujące informacje o wyróżnionym kodzie JSON:
 * Zagnieżdżone zasoby wewnątrz `“resources”: […]`, w których zdefiniowano bazę danych i reguły zapory, mają element `dependsOn`, który określa identyfikator zasobu na poziomie głównym zasobu SQLServer. Oznacza to, że Azure Resource Manager, "przed utworzeniem tego zasobu, ten zasób musi już istnieć. a jeśli inny zasób jest zdefiniowany w szablonie, utwórz go najpierw.
   
   > [!NOTE]
-  > Aby uzyskać szczegółowe informacje na temat korzystania z funkcji `resourceId()`, zobacz [Azure Resource Manager funkcji szablonu](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid).
+  > Aby uzyskać szczegółowe informacje na temat korzystania z funkcji `resourceId()`, zobacz [Azure Resource Manager funkcji szablonu](../azure-resource-manager/templates/template-functions-resource.md#resourceid).
   > 
   > 
 * Wynikiem elementu `dependsOn` jest to, że Azure Resource Manager mogą wiedzieć, które zasoby mogą być tworzone równolegle, a zasoby muszą być tworzone sekwencyjnie. 
@@ -250,8 +250,8 @@ W DevOps, powtarzalność i przewidywalność to klucze do każdego pomyślnego 
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>Więcej zasobów
-* [Język szablonu Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Język szablonu Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
+* [Tworzenie szablonów Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Funkcje szablonu Azure Resource Manager](../azure-resource-manager/resource-group-template-functions.md)
 * [Wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md)
 * [Używanie programu Azure PowerShell z usługą Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
@@ -261,8 +261,8 @@ W DevOps, powtarzalność i przewidywalność to klucze do każdego pomyślnego 
 
 Aby dowiedzieć się więcej o składni i właściwościach JSON dla typów zasobów wdrożonych w tym artykule, zobacz:
 
-* [Microsoft. SQL/serwery](/azure/templates/microsoft.sql/servers)
-* [Microsoft. SQL/serwery/bazy danych](/azure/templates/microsoft.sql/servers/databases)
+* [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
+* [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
 * [Microsoft. SQL/serwery/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
 * [Microsoft. Web/dopuszczalna](/azure/templates/microsoft.web/serverfarms)
 * [Microsoft. Web/witryny](/azure/templates/microsoft.web/sites)

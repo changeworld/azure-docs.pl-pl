@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: f861303b7f3bc8d37caf6da0eaf2f4cef4b36ee5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425436"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Samouczek: Tworzenie zaufania lasu wychodzącego do domeny lokalnej w Azure Active Directory Domain Services (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ W środowiskach, w których nie można synchronizować skrótów haseł, lub mas
 
 ![Diagram zaufania lasów z usługi Azure AD DS do lokalnego AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj system DNS w lokalnym środowisku AD DS, aby zapewnić obsługę łączności z usługą Azure AD DS
@@ -43,6 +43,9 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
     * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
 * Azure Active Directory Domain Services zarządzana domena utworzona przy użyciu lasu zasobów i skonfigurowana w dzierżawie usługi Azure AD.
     * W razie konieczności [Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance-advanced].
+    
+    > [!IMPORTANT]
+    > Upewnij się, że tworzysz domenę zarządzaną platformy Azure AD DS przy użyciu lasu *zasobów* . Opcja domyślna powoduje utworzenie lasu *użytkownika* . Tylko lasy zasobów mogą tworzyć relacje zaufania w środowiskach Premium AD DS.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -82,6 +85,10 @@ Aby skonfigurować zaufanie przychodzące w domenie AD DS lokalnego, wykonaj nas
 1. Wybierz pozycję **Uruchom | Narzędzia administracyjne | Active Directory domen i relacji zaufania**
 1. Wybierz pozycję domena, na przykład *OnPrem.contoso.com*, a następnie wybierz pozycję **Właściwości** .
 1. Wybierz kartę **relacje zaufania** , a następnie pozycję **nowe zaufanie**
+
+   > [!NOTE]
+   > Jeśli nie widzisz opcji menu **relacje zaufania** , sprawdź w obszarze **Właściwości** *typu lasu*. Tylko lasy *zasobów* mogą tworzyć relacje zaufania. Jeśli typ lasu to *User*, nie można utworzyć relacji zaufania. Obecnie nie ma możliwości zmiany typu lasu domeny zarządzanej AD DS platformy Azure. Musisz usunąć i utworzyć ponownie domenę zarządzaną jako Las zasobów.
+
 1. Wprowadź nazwę w polu Nazwa domeny usługi Azure AD DS, na przykład *aadds.contoso.com*, a następnie wybierz przycisk **dalej** .
 1. Wybierz opcję utworzenia **zaufania lasu**, aby utworzyć **jeden ze sposobów: zaufanie przychodzące** .
 1. Wybierz, aby utworzyć relację zaufania **tylko dla tej domeny**. W następnym kroku utworzysz relację zaufania w Azure Portal dla domeny zarządzanej AD DS platformy Azure.
@@ -181,7 +188,7 @@ Korzystając z maszyny wirtualnej systemu Windows Server dołączonej do lasu za
 1. Wybierz pozycję *FileServerAccess* z listy **nazwy grup lub użytkowników** . Na liście **uprawnienia dla FileServerAccess** wybierz opcję *Zezwalaj* na uprawnienia **Modyfikacja** i **zapis** , a następnie wybierz przycisk **OK**.
 1. Wybierz kartę **udostępnianie** , a następnie wybierz pozycję **Udostępnianie zaawansowane...**
 1. Wybierz opcję **Udostępnij ten folder**, a następnie wprowadź nazwę zapamiętania udziału plików w polu **Nazwa udziału** , np. *CrossForestShare*.
-1. Wybierz pozycję **uprawnienia**. Na liście **uprawnienia dla wszystkich użytkowników** wybierz opcję **Zezwalaj** na uprawnienie **zmiana** .
+1. Wybierz pozycję **Uprawnienia**. Na liście **uprawnienia dla wszystkich użytkowników** wybierz opcję **Zezwalaj** na uprawnienie **zmiana** .
 1. Wybierz przycisk **OK** dwa razy, a następnie **Zamknij**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Weryfikowanie uwierzytelniania między lasami w ramach zasobu

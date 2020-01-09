@@ -1,6 +1,6 @@
 ---
-title: Szybki start — Azure Application Insights | Microsoft Docs
-description: Zawiera instrukcje umożliwiające szybkie skonfigurowanie aplikacji mobilnej do monitorowania za pomocą Application Insights i App Center
+title: Monitoruj aplikacje mobilne przy użyciu Azure Monitor Application Insights
+description: Zawiera instrukcje umożliwiające szybkie skonfigurowanie aplikacji mobilnej do monitorowania za pomocą Azure Monitor Application Insights i App Center
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: fe514e7a05701901759ab5453e1c1d02870da91d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398885"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Rozpoczęcie analizowania aplikacji mobilnej za pomocą Centrum aplikacji i usługi Application Insights
 

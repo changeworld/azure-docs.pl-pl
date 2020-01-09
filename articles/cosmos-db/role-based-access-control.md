@@ -1,17 +1,17 @@
 ---
-title: Kontrola dostępu oparta na rolach w Azure Cosmos DB z integracją Azure Active Directory
+title: Kontrola dostępu oparta na rolach w Azure Cosmos DB
 description: Dowiedz się, jak Azure Cosmos DB zapewnia ochronę bazy danych za pomocą integracji z usługą Active Directory (RBAC).
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: c7605bbc1824e2e859cc94296834daf4e4e0907b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445101"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Kontrola dostępu oparta na rolach w Azure Cosmos DB
 

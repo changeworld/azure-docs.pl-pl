@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 62a010480dc83561a11c6ee99c76f35b29e808c1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394702"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importuj Azure Monitor dane dziennika do Power BI
 
@@ -51,7 +51,7 @@ Power BI Desktop to aplikacja klasyczna, która umożliwia tworzenie zestawów d
 
 
 
-## <a name="publish-to-power-bi"></a>Publikuj w Power BI
+## <a name="publish-to-power-bi"></a>Publikowanie w usłudze Power BI
 Po opublikowaniu do Power BI zostanie utworzony zestaw danych i raport.  Jeśli utworzysz raport w Power BI Desktop, zostanie on opublikowany wraz z danymi.  Jeśli nie, zostanie utworzony pusty raport.  Raport można zmodyfikować w Power BI lub utworzyć nowy oparty na zestawie danych.
 
 1. Utwórz raport na podstawie danych.  Zapoznaj się z [dokumentacją Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) , jeśli nie znasz tego programu.  

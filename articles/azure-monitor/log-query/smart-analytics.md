@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 08a93c10a4214696d67f95cb862654d095899630
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 03a4b8df24a0ab1dbe3cfabd3ccf207005b0e186
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932959"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397618"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Przykłady Log Analytics Smart Analytics
 W tym artykule przedstawiono przykłady korzystania z funkcji inteligentnej analizy w programie Log Analytics do wykonywania analiz aktywności użytkownika. Za pomocą tych przykładów można analizować własne aplikacje monitorowane przez Application Insights lub użyć koncepcji w tych zapytaniach w celu uzyskania podobnej analizy innych danych. 
@@ -184,7 +184,7 @@ W tym przykładzie pokazano, jak utworzyć zautomatyzowany detektor dla przerw w
 Do oszacowania stanu usługi na podstawie danych dzienników śledzenia służą dwie techniki:
 
 - Użyj [marki z seriami](/azure/kusto/query/make-seriesoperator) , aby przekonwertować częściowo strukturalne dzienniki śledzenia danych na metrykę, która reprezentuje stosunek między dodatnią i ujemną linią śledzenia.
-- Użyj funkcji [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) i [series_fit_line](/azure/kusto/query/series-fit-linefunction) , aby wykonać zaawansowane wykrywanie skoku krok po analizie szeregów czasowych przy użyciu regresji liniowej 2-liniowej.
+- Użyj [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) i [series_fit_line](/azure/kusto/query/series-fit-linefunction) do przeprowadzenia zaawansowanego wykrywania skoku krok po analizie szeregów czasowych przy użyciu regresji liniowej 2-liniowej.
 
 ``` Kusto
 let startDate = startofday(datetime("2017-02-01"));

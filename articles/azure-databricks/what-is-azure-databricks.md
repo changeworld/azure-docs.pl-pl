@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410444"
 ---
 # <a name="what-is-azure-databricks"></a>Co to jest Azure Databricks?
 
@@ -37,7 +37,7 @@ Usługa Azure Databricks zapewnia pełny zestaw możliwości i technologii klast
 
 * **Przesyłanie strumieniowe**: przetwarzanie i analiza danych w czasie rzeczywistym dla aplikacji analitycznych i interakcyjnych. Integruje się z rozwiązaniami HDFS, Flume i Kafka.
 
-* **MLib**: biblioteka uczenia maszynowego (Machine Learning) składająca się ze wspólnych narzędzi i algorytmów uczenia się, w tym klasyfikacji, regresji, klastrowania, filtrowania z wykorzystaniem współpracy, zmniejszania wymiarowości, a także źródłowych typów pierwotnych optymalizacji.
+* **MLlib**: Biblioteka Machine Learning składająca się z typowych algorytmów uczenia i narzędzi, takich jak Klasyfikacja, regresja, klastrowanie, filtrowanie i współdziałanie, zmniejszenie liczby wymiarów, a także podstawowe elementy pierwotne optymalizacji.
 
 * **GraphX**: wykresy i obliczenia dotyczące wykresów do szerokiego zakresu zastosowań, od analizy poznawczej po eksplorację danych.
 
@@ -53,7 +53,7 @@ Usługa Azure Databricks bazuje na możliwościach platformy Spark, zapewniając
 
 ### <a name="fully-managed-apache-spark-clusters-in-the-cloud"></a>W pełni zarządzane klastry Apache Spark w chmurze
 
-Usługa Azure Databricks zapewnia bezpieczne i niezawodne środowisko produkcyjne w chmurze, zarządzane i obsługiwane przez ekspertów ds. platformy Spark. Możesz:
+Usługa Azure Databricks zapewnia bezpieczne i niezawodne środowisko produkcyjne w chmurze, zarządzane i obsługiwane przez ekspertów ds. platformy Spark. Przekonaj się:
 
 * Tworzyć klastry w ciągu sekund.
 * Dynamicznie automatycznie skalować klastry w górę i w dół, w tym klastry bezserwerowe, i udostępniać je między zespołami. 
@@ -86,7 +86,7 @@ Usługa Azure Databricks zapewnia zabezpieczenia klasy korporacyjnej platformy A
 * Dostęp oparty na rolach usługi Azure Databricks umożliwia określanie szczegółowych uprawnień do notesów, klastrów, zadań i danych.
 * Umowy SLA klasy korporacyjnej. 
 
-## <a name="integration-with-azure-services"></a>Integracja z usługami Azure
+## <a name="integration-with-azure-services"></a>Integracja z usługami platformy Azure
 
 Usługa Azure Databricks jest ściśle zintegrowana z bazami danych i magazynami platformy Azure: SQL Data Warehouse, Cosmos DB, Data Lake Store i Blob Storage. 
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d30b2001889a2555f736de0685fe23de1ea0e055
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438837"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Wywoływanie programów platformy Spark z potoków Azure Data Factory
 
@@ -63,7 +63,7 @@ Poniżej przedstawiono typowe kroki tworzenia potoku fabryki danych przy użyciu
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 Aby utworzyć fabrykę danych, wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 1. Wybierz pozycję **Nowy** > **Dane i analiza** > **Fabryka danych**.
 
@@ -105,7 +105,7 @@ W tym kroku opisano łączenie konta magazynu z fabryką danych. Zestaw danych t
 
    ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Zastąp **nazwę konta** i **klucz konta** nazwą i kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zapoznaj się z informacjami na temat sposobów wyświetlania, kopiowania i ponownego generowania kluczy dostępu do magazynu podanymi w sekcji [Zarządzanie kontem magazynu](../../storage/common/storage-account-manage.md#access-keys).
+1. Zastąp **nazwę konta** i **klucz konta** nazwą i kluczem dostępu do konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md).
 
 1. Aby wdrożyć połączoną usługę, wybierz pozycję **Wdróż** na pasku poleceń. Po pomyślnym wdrożeniu połączonej usługi okno Wersja robocza-1 zniknie. W widoku drzewa po lewej stronie pojawi się wartość **AzureStorageLinkedService**.
 
@@ -324,19 +324,19 @@ Poniżej znajduje się przykładowa definicja JSON potoku z działaniem Spark:
 
 W poniższej tabeli opisano właściwości JSON używane w definicji JSON.
 
-| Właściwość | Opis | Wymagany |
+| Właściwość | Opis | Wymagane |
 | -------- | ----------- | -------- |
 | name | Nazwa działania w potoku. | Tak |
 | description | Tekst opisujący działanie działania. | Nie |
 | type | Ta właściwość musi być ustawiona na HDInsightSpark. | Tak |
 | linkedServiceName | Nazwa połączonej usługi HDInsight, w której jest uruchamiany program Spark. | Tak |
-| Właściwość RootPath | Kontener obiektów blob i folder, który zawiera plik Spark. W nazwie pliku rozróżniana jest wielkość liter. | Tak |
+| rootPath | Kontener obiektów blob i folder, który zawiera plik Spark. W nazwie pliku rozróżniana jest wielkość liter. | Tak |
 | entryFilePath | Ścieżka względna do folderu głównego kodu/pakietu platformy Spark. | Tak |
-| Nazwą | Główna Klasa środowiska Java/Spark aplikacji. | Nie |
-| Argumentu | Lista argumentów wiersza polecenia do programu Spark. | Nie |
+| className | Główna Klasa środowiska Java/Spark aplikacji. | Nie |
+| arguments | Lista argumentów wiersza polecenia do programu Spark. | Nie |
 | proxyUser | Konto użytkownika służące do personifikacji w celu wykonania programu Spark. | Nie |
 | sparkConfig | Określ wartości dla właściwości konfiguracji platformy Spark wymienionych w temacie [Konfiguracja platformy Spark: właściwości aplikacji](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nie |
-| GetDebugInfo — | Określa, kiedy pliki dziennika platformy Spark są kopiowane do magazynu używanego przez klaster usługi HDInsight (lub) określonego przez sparkJobLinkedService. Dozwolone wartości to None, Always lub Failure. Wartość domyślna to None. | Nie |
+| getDebugInfo | Określa, kiedy pliki dziennika platformy Spark są kopiowane do magazynu używanego przez klaster usługi HDInsight (lub) określonego przez sparkJobLinkedService. Dozwolone wartości to None, Always lub Failure. Wartość domyślna to Brak. | Nie |
 | sparkJobLinkedService | Połączona usługa Storage, która przechowuje plik zadania platformy Spark, zależności i dzienniki. Jeśli nie określisz wartości tej właściwości, zostanie użyty magazyn skojarzony z klastrem usługi HDInsight. | Nie |
 
 ## <a name="folder-structure"></a>Struktura folderów
@@ -344,7 +344,7 @@ Działanie platformy Spark nie obsługuje skryptu wbudowanego jako działań zwi
 
 Utwórz następującą strukturę folderów w magazynie obiektów blob, do której odwołuje się połączona Usługa HDInsight. Następnie Przekaż pliki zależne do odpowiednich podfolderów w folderze głównym przedstawionym przez **entryFilePath**. Na przykład przekazanie plików Python do podfolderu pyFiles i plików jar do podfolderu Jars folderu głównego. W czasie wykonywania Usługa Data Factory oczekuje następującej struktury folderów w magazynie obiektów blob: 
 
-| Ścieżka | Opis | Wymagany | Typ |
+| Ścieżka | Opis | Wymagane | Typ |
 | ---- | ----------- | -------- | ---- |
 | . | Ścieżka katalogu głównego zadania platformy Spark w połączonej usłudze Storage. | Tak | Folder |
 | &lt;zdefiniowane przez użytkownika &gt; | Ścieżka wskazująca plik wpisu zadania Spark. | Tak | Plik |

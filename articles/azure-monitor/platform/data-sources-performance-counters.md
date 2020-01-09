@@ -4,15 +4,15 @@ description: Liczniki wydajności są zbierane przez Azure Monitor w celu przean
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932437"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363833"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Źródła danych wydajności systemów Windows i Linux w Azure Monitor
 Liczniki wydajności w systemach Windows i Linux zapewniają wgląd w wydajność składników sprzętowych, systemów operacyjnych i aplikacji.  Azure Monitor może zbierać liczniki wydajności w częstych odstępach czasu dla analizy prawie w czasie rzeczywistym (NRT), a także do agregowania danych dotyczących wydajności na potrzeby analizy i raportowania w dłuższym okresie.
@@ -52,7 +52,7 @@ Postępuj zgodnie z tą procedurą, aby dodać nowy licznik wydajności systemu 
 
 Postępuj zgodnie z tą procedurą, aby dodać nowy licznik wydajności systemu Linux do zebrania.
 
-1. Domyślnie wszystkie zmiany konfiguracji są automatycznie wypychane do wszystkich agentów.  W przypadku agentów systemu Linux plik konfiguracji jest wysyłany do programu zbierającego dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola wyboru *Zastosuj poniższą konfigurację do maszyn z systemem Linux* i postępuj zgodnie z poniższymi wskazówkami.
+1. Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów.  W przypadku agentów systemu Linux plik konfiguracji jest wysyłany do programu zbierającego dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola wyboru *Zastosuj poniższą konfigurację do maszyn z systemem Linux* i postępuj zgodnie z poniższymi wskazówkami.
 2. Wpisz nazwę licznika w polu tekstowym w *obiekcie format (wystąpienie) \Counter*.  Po rozpoczęciu wpisywania zostanie wyświetlona zgodna lista typowych liczników.  Możesz wybrać licznik z listy lub wpisać własny.  
 3. Kliknij przycisk **+** lub naciśnij klawisz **Enter** , aby dodać licznik do listy innych liczników dla obiektu.
 4. Wszystkie liczniki dla obiektu używają tego samego **interwału próbkowania**.  Wartość domyślna to 10 sekund.  Tę zmianę można zmienić na maksymalnie 1800 sekund (30 minut), jeśli chcesz zmniejszyć wymagania dotyczące magazynu zebranych danych wydajności.
@@ -77,7 +77,7 @@ Parametry w tym elemencie są opisane w poniższej tabeli.
 | Parametry | Opis |
 |:--|:--|
 | Nazwa\_obiektu | Nazwa obiektu dla kolekcji. |
-| wystąpienie\_wyrażenie regularne |  *Wyrażenie regularne* definiujące, które wystąpienia mają być zbierane. Wartość: `.*` określa wszystkie wystąpienia. Aby zbierać metryki procesora tylko dla \_wystąpienia całkowitego, można określić `_Total`. Aby zbierać metryki procesów tylko dla wystąpień z identyfikatorem "lub" SSHD, można określić: `(crond\|sshd)`. |
+| instance\_regex |  *Wyrażenie regularne* definiujące, które wystąpienia mają być zbierane. Wartość: `.*` określa wszystkie wystąpienia. Aby zbierać metryki procesora tylko dla \_wystąpienia całkowitego, można określić `_Total`. Aby zbierać metryki procesów tylko dla wystąpień z identyfikatorem "lub" SSHD, można określić: `(crond\|sshd)`. |
 | Nazwa\_licznika\_wyrażenie regularne | *Wyrażenie regularne* definiujące, które liczniki (dla obiektu) mają być zbierane. Aby zebrać wszystkie liczniki dla obiektu, określ: `.*`. Aby zebrać tylko liczniki przestrzeni wymiany dla obiektu pamięci, można na przykład określić: `.+Swap.+` |
 | interval | Częstotliwość, z jaką są zbierane liczniki obiektu. |
 
@@ -87,13 +87,13 @@ W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pl
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
 | Dysk logiczny | % Wolnego węzłów i |
-| Dysk logiczny | Wolne miejsce (%) |
+| Dysk logiczny | % Wolnego miejsca |
 | Dysk logiczny | % Użytych węzłów i |
-| Dysk logiczny | Zajęte miejsce (%) |
-| Dysk logiczny | Bajty odczytu dysku/s |
+| Dysk logiczny | Procent wykorzystania miejsca |
+| Dysk logiczny | Bajty odczytu z dysku/s |
 | Dysk logiczny | Odczyty dysku/s |
-| Dysk logiczny | Transfery dysku/s |
-| Dysk logiczny | Bajty zapisu dysku/s |
+| Dysk logiczny | Transfery dyskowe/s |
+| Dysk logiczny | Bajty zapisu na dysku/s |
 | Dysk logiczny | Zapisy dysku/s |
 | Dysk logiczny | Wolne megabajty |
 | Dysk logiczny | Bajty dysku logicznego/s |
@@ -105,17 +105,17 @@ W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pl
 | Pamięć | Dostępny obszar wymiany (MB) |
 | Pamięć | Odczyty stron/s |
 | Pamięć | Zapisy stron/s |
-| Pamięć | Stron/s |
+| Pamięć | Strony/s |
 | Pamięć | Używany obszar wymiany (MB) |
 | Pamięć | Używana pamięć (MB) |
-| Sieć | Całkowita liczba przesłanych bajtów |
-| Sieć | Całkowita liczba odebranych bajtów |
-| Sieć | Łączna liczba bajtów |
-| Sieć | Całkowita liczba przesłanych pakietów |
-| Sieć | Całkowita liczba odebranych pakietów |
-| Sieć | Całkowita liczba błędów odbierania |
-| Sieć | Całkowita liczba błędów transmisji |
-| Sieć | Łączna liczba kolizji |
+| Network (Sieć) | Całkowita liczba przesłanych bajtów |
+| Network (Sieć) | Całkowita liczba odebranych bajtów |
+| Network (Sieć) | Łączna liczba bajtów |
+| Network (Sieć) | Całkowita liczba przesłanych pakietów |
+| Network (Sieć) | Całkowita liczba odebranych pakietów |
+| Network (Sieć) | Całkowita liczba błędów odbierania |
+| Network (Sieć) | Całkowita liczba błędów transmisji |
+| Network (Sieć) | Łączna liczba kolizji |
 | Dysk fizyczny | Średni czas dysku w s/odczyt |
 | Dysk fizyczny | Średni czas dysku w s/transfer |
 | Dysk fizyczny | Średni czas dysku w s/zapis |
@@ -137,7 +137,7 @@ W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pl
 | System | Wolna pamięć wirtualna |
 | System | Procesy |
 | System | Rozmiar zapisany w plikach stronicowania |
-| System | Czas |
+| System | Czas pracy |
 | System | Użytkownicy |
 
 
@@ -183,12 +183,12 @@ Rekordy wydajności mają typ **wydajności** i mają właściwości opisane w p
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Computer |Komputer, z którego zostało zebrane zdarzenie. |
+| Computer (Komputer) |Komputer, który zostały zebrane zdarzenia. |
 | CounterName |Nazwa licznika wydajności |
 | CounterPath |Pełna ścieżka licznika w formularzu \\\\\<komputerze >\\obiekt (wystąpienie)\\licznik. |
 | CounterValue |Wartość liczbowa licznika. |
-| Nazwa InstanceName |Nazwa wystąpienia zdarzenia.  Puste, jeśli żadne wystąpienie nie jest. |
-| Obiektu |Nazwa obiektu wydajności |
+| InstanceName |Nazwa wystąpienia zdarzenia.  Puste, jeśli żadne wystąpienie nie jest. |
+| ObjectName |Nazwa obiektu wydajności |
 | SourceSystem |Typ agenta, z którego zostały zebrane dane. <br><br>OpsManager — Agent systemu Windows, bezpośrednie połączenie lub SCOM <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
 | TimeGenerated |Data i godzina próbkowania danych. |
 
@@ -202,16 +202,16 @@ W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, któr
 
 | Zapytanie | Opis |
 |:--- |:--- |
-| Wydajność |Wszystkie dane dotyczące wydajności |
+| Perf |Wszystkie dane dotyczące wydajności |
 | Wydajność &#124; , w której komputer = = "MójKomputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
 | Wydajność &#124; , gdzie CounterName = = "Bieżąca długość kolejki dysku" |Wszystkie dane dotyczące wydajności dla określonego licznika |
-| Wydajność &#124; , w której ObjectName = = "Processor" i CounterName = = "% Time procesora" i InstanceName = = &#124; "_TOTAL" podsumowuje AVGCPU = AVG (CounterValue) według komputera |Średnie użycie procesora CPU na wszystkich komputerach |
+| Wydajność &#124; , gdzie ObjectName = = "Processor" i CounterName = = "% Time procesora" i InstanceName = = " &#124; _TOTAL" podsumowuje AVGCPU = AVG (CounterValue) według komputera |Średnie użycie procesora CPU na wszystkich komputerach |
 | Wydajność &#124; , gdzie CounterName = = "% Time procesora &#124; " podsumowuje AggregatedValue = Max (CounterValue) według komputera |Maksymalne wykorzystanie procesora CPU na wszystkich komputerach |
 | Wydajność &#124; , gdzie ObjectName = = "dysk logiczny" i CounterName = = "Bieżąca długość kolejki dysku" i Computer = = "Moja ComputerName" &#124; podsumowuje AggregatedValue = AVG (CounterValue) przez InstanceName |Średnia bieżąca długość kolejki dysku we wszystkich wystąpieniach danego komputera |
 | Wydajność &#124; , gdzie CounterName = = "transfery dysku/ &#124; s" podsumowuje AggregatedValue = percentyl (CounterValue, 95) przez komputer |używany 95. percentyl transferu dysku/s na wszystkich komputerach |
-| Wydajność &#124; , gdzie CounterName = = "% Time procesora" i InstanceName = = "_Total &#124; " podsumowuje AggregatedValue = AVG (CounterValue) według bin (TimeGenerated, 1 godz), komputer |Średnia godzinowa użycia procesora CPU na wszystkich komputerach |
+| Wydajność &#124; , gdzie CounterName = = "% Time procesora" i InstanceName = = "_Total &#124; " podsumowuje AggregatedValue = AVG (CounterValue) według bin (TimeGenerated, 1 godz), Computer |Średnia godzinowa użycia procesora CPU na wszystkich komputerach |
 | Wydajność &#124; , gdzie Computer = = "MójKomputer" i CounterName startswith_cs "%" i InstanceName = = "_Total &#124; " podsumowuje AggregatedValue = percentyl (CounterValue, 70) według bin (TimeGenerated, 1 godz), CounterName | Co godzinę 70 percentyl każdego licznika% procent dla określonego komputera |
-| Wydajność &#124; , gdzie CounterName = = "% Time procesora" i InstanceName = = "_Total" i Computer = = "MójKomputer &#124; " podsumowuje ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = średnia (CounterValue), ["percentile75 (CounterValue)"] = percentyl (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) według bin (TimeGenerated, 1 godz), Computer |Średnia godzinowa, minimalna, maksymalna i 75-percentyl użycia procesora CPU dla określonego komputera |
+| Wydajność &#124; , gdzie CounterName = = "% Time procesora" i InstanceName = = "_Total" i Computer = = "MójKomputer &#124; " podsumowuje ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = percentyl (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) według bin (TimeGenerated, 1 godz), Computer |Średnia godzinowa, minimalna, maksymalna i 75-percentyl użycia procesora CPU dla określonego komputera |
 | Wydajność &#124; , gdzie ObjectName = = "MSSQL $ INST2: Databases" i InstanceName = = "Master" | Wszystkie dane dotyczące wydajności z obiektu wydajności bazy danych dla bazy danych Master z nazwanego wystąpienia SQL Server INST2.  
 
 
@@ -219,5 +219,5 @@ W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, któr
 
 ## <a name="next-steps"></a>Następne kroki
 * [Zbieraj liczniki wydajności z aplikacji systemu Linux, w](data-sources-linux-applications.md) tym MySQL i Apache HTTP Server.
-* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.  
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
 * Eksportuj zebrane dane do [Power BI](powerbi.md) , aby uzyskać dodatkowe wizualizacje i analizę.

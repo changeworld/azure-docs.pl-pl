@@ -4,15 +4,15 @@ description: Ten artykuł zawiera szczegółowe informacje dotyczące konfigurow
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395848"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Zbieranie liczników wydajności dla aplikacji systemu Linux w Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -45,7 +45,7 @@ Wpisy w pliku uwierzytelniania są opisane w poniższej tabeli.
 | Właściwość | Opis |
 |:--|:--|
 | Port | Reprezentuje bieżący port, na którym nasłuchuje wystąpienie MySQL. Port 0 Określa, że w przypadku wystąpienia domyślnego są używane następujące właściwości. |
-| Adres powiązania| Bieżący adres powiązania MySQL. |
+| Bind-Address| Bieżący adres powiązania MySQL. |
 | nazwa użytkownika| Użytkownik programu MySQL używany do monitorowania wystąpienia serwera MySQL. |
 | Hasło zakodowane w formacie base64| Hasło użytkownika monitorowania MySQL zakodowane w formacie base64. |
 | AutoUpdate| Określa, czy ponownie skanować pod kątem zmian w pliku my. cnf i zastępować plik uwierzytelniania MySQL OMI, gdy zostanie uaktualniony dostawca programu MySQL OMI. |
@@ -75,10 +75,10 @@ Poniższa tabela zawiera szczegółowe informacje na temat składni programu myc
 |:--|:--|:--|
 | Automatyczne *lub prawdziwe* | mycimprovauth — FAŁSZ | Określa, czy plik uwierzytelniania zostanie automatycznie zaktualizowany przy ponownym uruchomieniu lub aktualizacji. |
 | domyślne *powiązanie — hasło nazwy użytkownika* | mycimprovauth domyślnie 127.0.0.1 root PWD | Ustawia domyślne wystąpienie w pliku uwierzytelniania MySQL OMI.<br>Pole hasła powinno być wprowadzane w postaci zwykłego tekstu — hasło w pliku uwierzytelniania MySQL OMI będzie kodowane zgodnie z podstawową 64. |
-| Usuń *wartość domyślną lub port_num* | mycimprovauth 3308 | Usuwa określone wystąpienie przez domyślne lub przez numer portu. |
-| Pomoc | Pomoc mycimprov | Drukuje listę poleceń do użycia. |
-| drukowany | mycimprov druku | Drukuje łatwy do odczytania plik uwierzytelniania MySQL OMI. |
-| Aktualizowanie *powiązania port_num — hasło nazwy użytkownika* | mycimprov Update 3307 127.0.0.1 root PWD | Aktualizuje określone wystąpienie lub dodaje wystąpienie, jeśli nie istnieje. |
+| Usuń *domyślne lub port_num* | mycimprovauth 3308 | Usuwa określone wystąpienie przez domyślne lub przez numer portu. |
+| pomoc | Pomoc mycimprov | Drukuje listę poleceń do użycia. |
+| Drukuj | mycimprov druku | Drukuje łatwy do odczytania plik uwierzytelniania MySQL OMI. |
+| Aktualizacja port_num *powiązana — adres użytkownika hasła* | mycimprov Update 3307 127.0.0.1 root PWD | Aktualizuje określone wystąpienie lub dodaje wystąpienie, jeśli nie istnieje. |
 
 Następujące przykładowe polecenia definiują domyślne konto użytkownika dla serwera MySQL na hoście lokalnym.  Pole hasła powinno być wprowadzane w postaci zwykłego tekstu — hasło w pliku OMI uwierzytelniania MySQL zostanie zakodowane zgodnie z podstawową 64
 
@@ -95,7 +95,7 @@ Użytkownik programu MySQL wymaga dostępu do następujących zapytań w celu ze
 Użytkownik MySQL wymaga również WYBRANia dostępu do następujących tabel domyślnych.
 
 - information_schema
-- MySQL. 
+- mysql. 
 
 Te uprawnienia można udzielić, uruchamiając następujące polecenia.
 
@@ -162,4 +162,4 @@ Po skonfigurowaniu agenta Log Analytics dla systemu Linux w celu wysyłania dany
 
 ## <a name="next-steps"></a>Następne kroki
 * [Zbieraj liczniki wydajności](data-sources-performance-counters.md) z agentów systemu Linux.
-* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

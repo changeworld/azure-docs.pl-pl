@@ -1,5 +1,5 @@
 ---
-title: Weryfikuj zakresy i role aplikacji | Azure
+title: Weryfikuj zakresy & chroniony interfejs API sieci Web ról aplikacji | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć chroniony internetowy interfejs API i skonfigurować kod aplikacji.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20a7a5a0df87910d2093bfee47e46c9c1a06530
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2eb9cdf68bf5103776d50db28e9e6facc89c9278
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423690"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Chroniony internetowy interfejs API: weryfikowanie zakresów i ról aplikacji
 
@@ -42,7 +42,7 @@ Aby chronić ASP.NET/ASP.NET podstawowy interfejs API sieci Web, należy dodać 
 - Kontroler, jeśli chcesz, aby wszystkie akcje kontrolera były chronione
 - Akcja pojedynczego kontrolera dla interfejsu API
 
-```CSharp
+```csharp
     [Authorize]
     public class TodoListController : Controller
     {
@@ -59,7 +59,7 @@ Jednak ta ochrona jest za mała. Gwarantuje tylko, że rdzeń ASP.NET/ASP.NET sp
 
 Jeśli interfejs API jest wywoływany przez aplikację kliencką w imieniu użytkownika, musi zażądać tokenu okaziciela z określonymi zakresami dla interfejsu API. (Zobacz [Konfiguracja kodu | Token okaziciela](scenario-protected-web-api-app-configuration.md#bearer-token)).
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : Controller
 {
@@ -86,7 +86,7 @@ Metoda `VerifyUserHasAnyAcceptedScope` będzie wyglądać następująco:
 - Sprawdź, czy istnieje zgłoszenie o nazwie `http://schemas.microsoft.com/identity/claims/scope` lub `scp`.
 - Sprawdź, czy w ramach tego żądania znajduje się wartość zawierająca zakres oczekiwany przez interfejs API.
 
-```CSharp
+```csharp
     /// <summary>
     /// When applied to a <see cref="HttpContext"/>, verifies that the user authenticated in the 
     /// web API has any of the accepted scopes.
@@ -121,7 +121,7 @@ Ten [przykładowy kod](https://github.com/Azure-Samples/active-directory-dotnet-
 Jeśli internetowy interfejs API jest wywoływany przez [aplikację demona](scenario-daemon-overview.md), aplikacja powinna wymagać uprawnień aplikacji do internetowego interfejsu API. Zaobserwowano [udostępnianie uprawnień aplikacji (ról aplikacji)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) , które udostępnia interfejs API (na przykład rolę aplikacji `access_as_application`).
 Teraz musisz mieć swoje interfejsy API, aby sprawdzić, czy otrzymany token zawiera `roles` i czy to zastrzeżenie ma oczekiwaną wartość. Kod wykonujący tę weryfikację jest podobny do kodu, który weryfikuje uprawnienia delegowane, z tą różnicą, że zamiast testowania `scopes`, Akcja kontrolera przetestuje `roles`:
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -134,7 +134,7 @@ public class TodoListController : ApiController
 
 Metoda `ValidateAppRole()` może wyglądać następująco:
 
-```CSharp
+```csharp
 private void ValidateAppRole(string appRole)
 {
     //
@@ -161,7 +161,7 @@ Tym razem fragment kodu jest przeznaczony dla ASP.NET. W przypadku ASP.NET Core 
 
 Jeśli chcesz zezwolić na wywoływanie internetowego interfejsu API przez aplikacje demona, Dodaj warunek, gdy zostanie zweryfikowana rola aplikacji, że token jest tokenem tylko do aplikacji:
 
-```CSharp
+```csharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
 string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;

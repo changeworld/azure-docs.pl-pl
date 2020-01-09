@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795727"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359968"
 ---
 W tym artykule przedstawiono kilka często zadawanych pytań dotyczących usługi Azure Managed Disks i Azure SSD w warstwie Premium Disks.
 
@@ -169,7 +169,7 @@ Rezerwacja dysków Azure jest zakupionych dla określonego regionu i jednostki S
 **Co się stanie w przypadku wygaśnięcia rezerwacji z usługi Azure disks?**
 Powiadomienia e-mail będą wysyłane na 30 dni przed wygaśnięciem i od daty wygaśnięcia. Po wygaśnięciu rezerwacji wdrożone dyski będą nadal działać i opłaty są naliczane przy użyciu najnowszych [stawek płatności zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/managed-disks/)użyciem.
 
-## <a name="ultra-disks"></a>Ultra disks
+## <a name="ultra-disks"></a>Dyski w warstwie Ultra
 
 **Jak należy ustawić moją przepływność na dysku?**
 Jeśli nie masz pewności, w jaki sposób ustawić przepływność dysku, zalecamy rozpoczęcie od zagwarantowania, że rozmiar we/wy wynoszący 16 KiB i dostosowanie wydajności w trakcie monitorowania aplikacji. Formuła: przepływność w MB/s = liczba operacji we/wy * 16/1000.
@@ -398,7 +398,7 @@ Nie, nie można używać standardowego dysku Managed SSD o dowolnym rozmiarze z 
 
 **Jaki jest największy obsługiwany rozmiar dysku zarządzanego dla systemu operacyjnego i dysków z danymi?**
 
-Typ partycji obsługiwanej przez platformę Azure dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). Format MBR obsługuje rozmiar dysku do 2 TiB. Największym rozmiarem obsługiwanym przez platformę Azure w przypadku dysku z systemem operacyjnym jest 2 TiB. Platforma Azure obsługuje do 32 TiB dla zarządzanych dysków danych w globalnej platformie Azure, 4 TiB w ramach suwerennych chmur platformy Azure.
+Typ partycji obsługiwanej przez platformę Azure dla dysku systemu operacyjnego jest głównym rekordem rozruchowym (MBR). Format MBR obsługuje rozmiar dysku do 2 TiB. Największym rozmiarem obsługiwanym przez platformę Azure w przypadku dysku z systemem operacyjnym jest 2 TiB. Platforma Azure obsługuje do 32 TiB dla zarządzanych dysków danych.
 
 **Jaki jest największy niezarządzany rozmiar dysku dla systemu operacyjnego i dysków z danymi?**
 
@@ -441,7 +441,7 @@ Największy rozmiar dysku obsługiwany przez Azure Backup i Azure Site Recovery 
 
 **Jakie są zalecane rozmiary maszyn wirtualnych dla większych rozmiarów dysków (> 4 TiB) dla dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa w celu osiągnięcia zoptymalizowanych operacji we/wy na dysku?**
 
-Aby osiągnąć przepływność dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa duże rozmiary dysków (> 4 TiB) poza 500 IOPS i 60 MiB/s, zalecamy wdrożenie nowej maszyny wirtualnej z jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: Seria B, Seria DSv2, Dsv3, Seria ESv3 Maszyny wirtualne z serii Fsv2 i serii M, Seria GS, Seria NCv2, Seria Seria NCV3 i ls. Dołączanie dużych dysków do istniejących maszyn wirtualnych lub maszyn wirtualnych, które nie używają zalecanych rozmiarów, może obniżyć wydajność.
+Aby osiągnąć przepływność dysków SSD w warstwie Standardowa i HDD w warstwie Standardowa duże rozmiary dysków (> 4 TiB) poza 500 IOPS i 60 MiB/s, zalecamy wdrożenie nowej maszyny wirtualnej na podstawie jednego z następujących rozmiarów maszyn wirtualnych w celu zoptymalizowania wydajności: serii B, serii DSv2, serii Dsv3, ESv3 serii, serii FS, Seria Fsv2, serii M, Seria GS, Seria NCv2, Seria Seria NCV3 lub maszyny wirtualne z serii LS. Dołączanie dużych dysków do istniejących maszyn wirtualnych lub maszyn wirtualnych, które nie używają zalecanych rozmiarów, może obniżyć wydajność.
 
 **Jak uaktualnić moje dyski (> 4 TiB), które zostały wdrożone podczas większego rozmiaru dysku w wersji zapoznawczej w celu uzyskania większej liczby operacji we/wy & przepustowości?**
 

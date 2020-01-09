@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b8c2ca3bf919d70123b7b5b6d13c0301e0c1fd13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383582"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Szybki Start: wyszukiwanie wiadomości za pomocą zestawu SDK wyszukiwanie wiadomości Bing dla języka Java
 
@@ -57,7 +57,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>Tworzenie klienta wyszukiwania i przechowywanie poświadczeń
 
-1. Utwórz metodę o nazwie `getClient()`, która zwraca nowego klienta wyszukiwania `NewsSearchAPIImpl`. Dodaj swój punkt końcowy jako pierwszy parametr dla nowego obiektu `NewsSearchAPIImpl` oraz nowy obiekt `ServiceClientCredentials` do przechowywania poświadczeń.
+1. Utwórz metodę o nazwie `getClient()`, która zwraca nowego klienta wyszukiwania `NewsSearchAPIImpl`. Dodaj swój punkt końcowy jako pierwszy parametr dla nowego obiektu `NewsSearchAPIImpl` oraz nowy obiekt `ServiceClientCredentials` do przechowywania poświadczeń. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {

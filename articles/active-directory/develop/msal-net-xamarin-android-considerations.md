@@ -3,7 +3,7 @@ title: Uwagi dotyczące platformy Xamarin Android (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb28b8465bf74351c5c6efe9d80dcc01137be5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424149"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Zagadnienia specyficzne dla platformy Xamarin Android z MSAL.NET
 W tym artykule omówiono określone zagadnienia dotyczące korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
@@ -35,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 Możesz również ustawić tę wartość na poziomie PublicClientApplication (w MSAL 4.2 +) za pośrednictwem wywołania zwrotnego.
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -45,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 Zaleceniem jest użycie CurrentActivityPlugin [tutaj](https://github.com/jamesmontemagno/CurrentActivityPlugin).  Następnie kod konstruktora PublicClientApplication będzie wyglądać następująco:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -82,6 +82,23 @@ Ten wiersz zapewnia, że formant wraca do MSAL po zakończeniu interaktywnej cz�
          </intent-filter>
 </activity>
 ```
+
+Można też [utworzyć działanie w kodzie](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) , a nie edytować `AndroidManifest.xml`ręcznie. W tym celu należy utworzyć klasę, która ma atrybut `Activity` i `IntentFilter`. Klasa, która reprezentuje te same wartości powyższego kodu XML:
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3. X — manifest
+
+Kod wygenerowany przez XamarinForms 4.3. x ustawia atrybut `package` na `com.companyname.{appName}` w `AndroidManifest.xml`. Możesz chcieć zmienić wartość tak, aby była taka sama jak przestrzeń nazw `MainActivity.cs`, jeśli używasz `DataScheme` jako `msal{client_id}`.
 
 ## <a name="use-the-embedded-web-view-optional"></a>Użyj osadzonego widoku sieci Web (opcjonalnie)
 

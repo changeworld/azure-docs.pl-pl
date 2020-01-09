@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek 3: Wdrażanie modelu ryzyka kredytowego'
-titleSuffix: ML Studio (classic) - Azure
-description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w klasycznej wersji Azure Machine Learning Studio. Niniejszy samouczek jest trzecią częścią trzyczęściowej serii. Przedstawia on sposób wdrażania modelu w postaci usługi internetowej.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Szczegółowy Samouczek przedstawiający sposób tworzenia rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w Azure Machine Learning Studio (klasyczny). Niniejszy samouczek jest trzecią częścią trzyczęściowej serii. Przedstawia on sposób wdrażania modelu w postaci usługi internetowej.
 keywords: ryzyko kredytowe, rozwiązanie analizy predykcyjnej, ocena ryzyka, wdrażanie, usługa internetowa
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 4e8e8a114a06029ef9a81d92b60afd575bc9661f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432193"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Samouczek 3: Wdrażanie modelu ryzyka kredytowego — Azure Machine Learning Studio (klasyczny)
 
@@ -23,7 +23,7 @@ W tym samouczku szczegółowo przedstawiono proces opracowywania rozwiązania an
 
 Załóżmy, że chcesz przewidzieć ryzyko kredytowe osoby na podstawie informacji przekazanych we wniosku kredytowym.  
 
-Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Będziesz jej używać jako przykładu tworzenia rozwiązania do analizy predykcyjnej przy użyciu Microsoft Azure Machine Learning Studio (klasyczne). Będziesz używać klasycznej wersji Azure Machine Learning Studio i usługi sieci Web Machine Learning dla tego rozwiązania. 
+Ocena ryzyka kredytowego to złożony problem, ale w tym samouczku zostanie on nieco uproszczony. Będziesz jej używać jako przykładu tworzenia rozwiązania do analizy predykcyjnej przy użyciu Microsoft Azure Machine Learning Studio (klasyczne). Dla tego rozwiązania będziesz używać Azure Machine Learning Studio (klasyczny) i Machine Learning usługi sieci Web. 
 
 W tym trzyczęściowym samouczku zaczniesz od publicznie dostępnych danych ryzyka kredytowego.  Następnie wdrożysz i wytrenujesz model predykcyjny.  Na koniec wdrożysz model jako usługę internetową.
 
@@ -34,7 +34,7 @@ W [drugiej części samouczka](tutorial-part2-credit-risk-train.md) modele zosta
 W tej części samouczka zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Przygotowanie do wdrożenia
+> * Przygotowywanie do wdrażania
 > * Wdrażanie usługi sieci Web
 > * Testowanie usługi internetowej
 > * Zarządzanie usługą internetową
@@ -44,7 +44,7 @@ W tej części samouczka zostaną wykonane następujące czynności:
 
 Ukończona [druga część samouczka](tutorial-part2-credit-risk-train.md).
 
-## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
+## <a name="prepare-for-deployment"></a>Przygotowywanie do wdrażania
 Aby zapewnić innym osobom możliwość użycia modelu predykcyjnego, który został opracowany w ramach tego samouczka, możesz go wdrożyć jako usługę internetową na platformie Azure.
 
 Do tej pory były przeprowadzane eksperymenty z trenowaniem naszego modelu. Ale wdrożona usługa nie będzie już trenowana — będzie generowała nowe przewidywania, generując wyniki dla danych wejściowych użytkownika na podstawie naszego modelu. Zamierzamy więc przeprowadzić pewne przygotowania, aby przekonwertować ten eksperyment z eksperymentu ***szkoleniowego*** w eksperyment ***predykcyjny***. 
@@ -244,7 +244,7 @@ Aby uzyskać więcej informacji na temat korzystania z szablonów aplikacji inte
 W tym samouczku zostały wykonane następujące kroki:
 
 > [!div class="checklist"]
-> * Przygotowanie do wdrożenia
+> * Przygotowywanie do wdrażania
 > * Wdrażanie usługi sieci Web
 > * Testowanie usługi internetowej
 > * Zarządzanie usługą internetową

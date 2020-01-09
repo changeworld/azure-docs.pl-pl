@@ -2,17 +2,17 @@
 title: Łączenie usługi w chmurze z niestandardowym kontrolerem domeny | Microsoft Docs
 description: Dowiedz się, jak połączyć role sieci Web/proces roboczy z niestandardową domeną usługi AD przy użyciu programu PowerShell i rozszerzenia domeny usługi AD
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 97a24720e65539a68745a5a1bb3f13ce1cafb9be
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387024"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Łączenie ról Cloud Services platformy Azure z niestandardowym kontrolerem domeny usługi Active Directory hostowanym na platformie Azure
 Najpierw skonfigurujemy Virtual Network (VNet) na platformie Azure. Następnie dodamy kontroler domena usługi Active Directory (hostowany na maszynie wirtualnej platformy Azure) do sieci wirtualnej. Następnie dodamy istniejące role usługi w chmurze do wstępnie utworzonej sieci wirtualnej, a następnie nawiążesz połączenie z kontrolerem domeny.
@@ -26,7 +26,7 @@ Postępuj zgodnie z tym przewodnikiem krok po kroku, a jeśli napotkasz jakiekol
 
 Sieć, do której odwołuje się usługa w chmurze, musi być **klasyczną siecią wirtualną**.
 
-## <a name="create-a-virtual-network"></a>Tworzenie Virtual Network
+## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 Virtual Network można utworzyć na platformie Azure przy użyciu Azure Portal lub programu PowerShell. W tym samouczku jest używany program PowerShell. Aby utworzyć sieć wirtualną przy użyciu Azure Portal, zobacz [Tworzenie sieci wirtualnej](../virtual-network/quick-create-portal.md). W tym artykule opisano tworzenie sieci wirtualnej (Menedżer zasobów), ale należy utworzyć sieć wirtualną (klasyczną) dla usług Cloud Services. W tym celu w portalu wybierz pozycję **Utwórz zasób**, w polu **wyszukiwania** wpisz *sieć wirtualną* , a następnie naciśnij klawisz **Enter**. W wynikach wyszukiwania w obszarze **wszystko**wybierz pozycję **Sieć wirtualna**. W obszarze **Wybierz model wdrożenia**wybierz pozycję **klasyczny**, a następnie wybierz pozycję **Utwórz**. Następnie można wykonać kroki opisane w artykule.
 
 ```powershell
@@ -56,7 +56,7 @@ $vnetConfigPath = "<path-to-vnet-config>"
 Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utworzenie maszyny wirtualnej
 Po zakończeniu konfigurowania Virtual Network należy utworzyć kontroler domeny usługi AD. Na potrzeby tego samouczka skonfigurujemy kontroler domeny usługi AD na maszynie wirtualnej platformy Azure.
 
 W tym celu należy utworzyć maszynę wirtualną za pomocą programu PowerShell przy użyciu następujących poleceń:
@@ -149,3 +149,6 @@ Usługi w chmurze powinny być połączone z niestandardowym kontrolerem domeny.
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
+
+
+

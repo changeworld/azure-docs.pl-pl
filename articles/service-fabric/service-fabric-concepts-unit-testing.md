@@ -1,25 +1,14 @@
 ---
-title: Testy jednostkowe usług stanowych na platformie Azure Service Fabric | Microsoft Docs
+title: Usługi stanowe testowania jednostkowego na platformie Azure Service Fabric
 description: Poznaj koncepcje i praktyki testowania jednostkowego Service Fabric usług stanowych.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433906"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Testy jednostkowe usług stanowych w Service Fabric
 
@@ -51,13 +40,13 @@ Ponadto, jeśli wiele wystąpień umożliwia testom przełączanie ról każdego
 Menedżer stanu powinien być traktowany jako zasób zdalny i z tego powodu. Podczas imitacji menedżera stanu musi być używany magazyn w pamięci do śledzenia informacji zapisanych w Menedżerze Stanów, tak aby można go było odczytać i zweryfikować. Prostym sposobem na osiągnięcie tego jest utworzenie wystąpień makiety dla każdego typu niezawodnych kolekcji. W ramach tych imitacji należy użyć typu danych, który jest ściśle wyrównany do operacji wykonywanych względem tej kolekcji. Poniżej przedstawiono kilka sugerowanych typów danych dla każdej niezawodnej kolekcji
 
 - IReliableDictionary < TKey, TValue >-> System. Collections. współbieżne. ConcurrentDictionary < TKey, TValue >
-- IReliableQueue\<t >-> System. Collections. Generic.\<Queue T >
-- IReliableConcurrentQueue\<t >-> System. Collections. współbieżne\<. ConcurrentQueue T >
+- IReliableQueue\<T >-> System. Collections. Generic. Queue\<T >
+- IReliableConcurrentQueue\<T >-> System. Collections. współbieżne. ConcurrentQueue\<T >
 
 #### <a name="many-state-manager-instances-single-storage"></a>Wiele wystąpień Menedżera stanu, pojedynczy magazyn
 Jak wspomniano wcześniej, Menedżer stanu i niezawodne kolekcje powinny być traktowane jako zasób zdalny. W związku z tym te zasoby powinny i zostaną zamakietne w ramach testów jednostkowych. Jednak w przypadku uruchamiania wielu wystąpień usługi stanowej będzie to wyzwanie, aby zapewnić, że każdy z nich zostanie zsynchronizowany przez różne wystąpienia usługi stanowej. Gdy usługa stanowa jest uruchomiona w klastrze, Service Fabric dba o utrzymywanie zgodności każdego menedżera stanu repliki pomocniczej z repliką podstawową. W związku z tym testy powinny zachowywać się tak samo, aby mogły symulować zmiany ról.
 
-Prostą metodą tej synchronizacji jest użycie pojedynczego wzorca dla obiektu źródłowego, który przechowuje dane zapisane w każdej niezawodnej kolekcji. Na przykład jeśli usługa stanowa używa programu `IReliableDictionary<string, string>`. Menedżer stanu makiety powinien zwrócić makietę `IReliableDictionary<string, string>`. Ten makieta może używać `ConcurrentDictionary<string, string>` do śledzenia par klucz/wartość, które są zapisywane. `ConcurrentDictionary<string, string>` Powinien być pojedynczym używanym przez wszystkie wystąpienia menedżerów Stanów, które zostały przesłane do usługi.
+Prostą metodą tej synchronizacji jest użycie pojedynczego wzorca dla obiektu źródłowego, który przechowuje dane zapisane w każdej niezawodnej kolekcji. Na przykład jeśli usługa stanowa używa `IReliableDictionary<string, string>`. Menedżer stanu makiety powinien zwrócić makietę `IReliableDictionary<string, string>`. Ten makieta może używać `ConcurrentDictionary<string, string>` do śledzenia par klucz/wartość, które są zapisywane. `ConcurrentDictionary<string, string>` powinna być klasą pojedynczą używaną przez wszystkie wystąpienia menedżerów Stanów przekazaną do usługi.
 
 #### <a name="keep-track-of-cancellation-tokens"></a>Śledź tokeny anulowania
 Tokeny anulowania są istotnie, ale ogólnie niespotykanym aspektem usług stanowych. Gdy Service Fabric uruchamia replikę podstawową dla usługi stanowej, zostanie podany token anulowania. Ten token anulowania jest przeznaczony do sygnalizowania usługi po jej usunięciu lub obniżeniu do innej roli. Usługa stanowa powinna zatrzymać wszystkie operacje długotrwałe lub asynchroniczne, aby Service Fabric mógł ukończyć przepływ pracy zmiany roli.
@@ -79,7 +68,7 @@ Testy jednostkowe powinny być wykonywane ze zbyt dużą ilością kodu aplikacj
     Then the request should should return the "John Smith" employee
 ```
 
-Ten test potwierdza, że dane przechwytywane z jednej repliki są dostępne w replice pomocniczej po podwyższeniu poziomu do podstawowej. Przy założeniu, że niezawodna kolekcja jest magazynem zapasowym danych pracownika, nie można wychwycić potencjalnej awarii, która może zostać przechwycona przez `CommitAsync` ten test, jeśli kod aplikacji nie został wykonany w transakcji w celu zapisania nowego pracownika. W takim przypadku drugie żądanie pobrania pracowników nie zwróci pracownika dodanego przez pierwsze żądanie.
+Ten test potwierdza, że dane przechwytywane z jednej repliki są dostępne w replice pomocniczej po podwyższeniu poziomu do podstawowej. Przy założeniu, że niezawodna kolekcja jest magazynem zapasowym danych pracownika, nie można wychwycić potencjalnej awarii, która może zostać przechwycona przez ten test, jeśli kod aplikacji nie został wykonany `CommitAsync` w transakcji w celu zapisania nowego pracownika. W takim przypadku drugie żądanie pobrania pracowników nie zwróci pracownika dodanego przez pierwsze żądanie.
 
 ### <a name="acting"></a>Pośrednicząc
 #### <a name="mimic-service-fabric-replica-orchestration"></a>Naśladowanie Service Fabric aranżacji repliki
@@ -122,5 +111,5 @@ Długotrwałe lub asynchroniczne procesy, które powinny zostać zakończone, gd
 #### <a name="verify-which-replicas-should-serve-requests"></a>Sprawdź, które repliki powinny obpracować żądania
 Testy powinny mieć na celu potwierdzenie oczekiwanego zachowania, jeśli żądanie jest kierowane do repliki innej niż podstawowa. Service Fabric zapewnia możliwość obsługi żądań przez repliki pomocnicze. Jednak operacje zapisu w niezawodnych kolekcjach mogą wystąpić tylko w replice podstawowej. Jeśli aplikacja zaproponuje tylko repliki podstawowe do obsługi żądań lub tylko podzbiór żądań może być obsługiwany przez pomocniczą, wówczas testy powinny mieć wpływ na oczekiwane zachowanie zarówno dla przypadków dodatnich, jak i ujemnych. Negatywny przypadek, w którym żądanie jest kierowane do repliki, która nie powinna obsłużyć żądania, a dodatnia jest odwrotna.
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak jednostkowo przetestować [usługi stanowe](service-fabric-how-to-unit-test-stateful-services.md).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się, jak [jednostkowo przetestować usługi stanowe](service-fabric-how-to-unit-test-stateful-services.md).

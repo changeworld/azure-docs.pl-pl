@@ -2,17 +2,17 @@
 title: Jak zaktualizować usługę w chmurze | Microsoft Docs
 description: Dowiedz się, jak zaktualizować usługi w chmurze na platformie Azure. Dowiedz się, jak działa aktualizacja usługi w chmurze w celu zapewnienia dostępności.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: tagore
+ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360348"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak zaktualizować usługę w chmurze
 
@@ -47,18 +47,18 @@ W poniższej tabeli przedstawiono dozwolone zmiany usługi w trakcie aktualizacj
 
 | Zmiany dozwolone w hostingu, usługach i rolach | Aktualizacja w miejscu | Przemieszczanie (wymiana adresów VIP) | Usuń i ponownie Wdróż |
 | --- | --- | --- | --- |
-| Wersja systemu operacyjnego |Tak |Yes |Tak |
-| Poziom zaufania platformy .NET |Tak |Yes |Tak |
+| Wersja systemu operacyjnego |Tak |Tak |Tak |
+| Poziom zaufania platformy .NET |Tak |Tak |Tak |
 | Rozmiar maszyny wirtualnej<sup>1</sup> |Tak<sup>2</sup> |Tak |Tak |
 | Ustawienia magazynu lokalnego |Zwiększ tylko<sup>2</sup> |Tak |Tak |
-| Dodawanie lub usuwanie ról w usłudze |Tak |Yes |Tak |
-| Liczba wystąpień określonej roli |Tak |Yes |Tak |
+| Dodawanie lub usuwanie ról w usłudze |Tak |Tak |Tak |
+| Liczba wystąpień określonej roli |Tak |Tak |Tak |
 | Liczba lub typ punktów końcowych dla usługi |Tak<sup>2</sup> |Nie |Tak |
-| Nazwy i wartości ustawień konfiguracji |Tak |Yes |Tak |
-| Wartości (ale nie nazwy) ustawień konfiguracji |Tak |Yes |Tak |
-| Dodaj nowe certyfikaty |Tak |Yes |Tak |
-| Zmień istniejące certyfikaty |Tak |Yes |Tak |
-| Wdróż nowy kod |Tak |Yes |Tak |
+| Nazwy i wartości ustawień konfiguracji |Tak |Tak |Tak |
+| Wartości (ale nie nazwy) ustawień konfiguracji |Tak |Tak |Tak |
+| Dodaj nowe certyfikaty |Tak |Tak |Tak |
+| Zmień istniejące certyfikaty |Tak |Tak |Tak |
+| Wdróż nowy kod |Tak |Tak |Tak |
 
 <sup>1</sup> zmiana rozmiaru ograniczona do podzbioru rozmiarów dostępnych dla usługi w chmurze.
 
@@ -101,10 +101,10 @@ Podczas uaktualniania usługi z jednego wystąpienia do wielu wystąpień usług
 
 |Scenariusz|Dysk C|Stacja D|Stacja E|
 |--------|-------|-------|-------|
-|Ponowne uruchomienie maszyny wirtualnej|Naruszon|Naruszon|Naruszon|
-|Ponowny rozruch portalu|Naruszon|Naruszon|Zniszcz|
-|Odobrazowanie portalu|Naruszon|Zniszcz|Zniszcz|
-|Uaktualnianie w miejscu|Naruszon|Naruszon|Zniszcz|
+|Ponowne uruchomienie maszyny wirtualnej|Zachowane|Zachowane|Zachowane|
+|Ponowny rozruch portalu|Zachowane|Zachowane|Zniszcz|
+|Odobrazowanie portalu|Zachowane|Zniszcz|Zniszcz|
+|Uaktualnianie w miejscu|Zachowane|Zachowane|Zniszcz|
 |Migracja węzłów|Zniszcz|Zniszcz|Zniszcz|
 
 Należy pamiętać, że na powyższej liście dysk E: reprezentuje dysk główny roli i nie powinien być zakodowany na stałe. Zamiast tego należy użyć zmiennej środowiskowej **% RoleRoot%** do reprezentowania dysku.
@@ -124,17 +124,17 @@ Platforma Azure zapewnia elastyczność zarządzania usługami w trakcie aktuali
 Wycofanie aktualizacji w toku ma następujące skutki dla wdrożenia:
 
 * Wszystkie wystąpienia roli, które nie zostały jeszcze zaktualizowane lub uaktualnione do nowej wersji, nie są aktualizowane ani uaktualniane, ponieważ te wystąpienia mają już uruchomioną wersję docelową usługi.
-* Wszystkie wystąpienia roli, które zostały już zaktualizowane lub uaktualnione do nowej wersji pliku pakietu usługi (\*. cspkg) lub pliku\*konfiguracji usługi (. cscfg), są przywracane do wersji sprzed uaktualnienia tych plików.
+* Wszystkie wystąpienia roli, które zostały już zaktualizowane lub uaktualnione do nowej wersji pliku pakietu usługi (\*. cspkg) lub pliku konfiguracji usługi (\*. cscfg), są przywracane do wersji sprzed uaktualnienia tych plików.
 
 Ta funkcja jest zapewniana przez następujące funkcje:
 
-* Operacja [wycofania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) , która może zostać wywołana na aktualizacji konfiguracji (wyzwolona przez wywołanie [konfiguracji zmiany wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100))) lub uaktualnienie (wyzwolone przez wywołanie [wdrożenia uaktualnienia](/previous-versions/azure/reference/ee460793(v=azure.100))) o ile istnieje co najmniej jeden wystąpienie w usłudze, które nie zostało jeszcze zaktualizowane do nowej wersji.
+* Operacja [wycofania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) , która może zostać wywołana na aktualizacji konfiguracji (wyzwolona przez wywołanie [konfiguracji zmiany wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100))) lub uaktualnienie (wyzwolone przez wywołanie [wdrożenia uaktualnienia](/previous-versions/azure/reference/ee460793(v=azure.100))), o ile w usłudze istnieje co najmniej jedno wystąpienie, które nie zostało jeszcze zaktualizowane do nowej wersji.
 * Element zablokowany i element RollbackAllowed, które są zwracane jako część treści odpowiedzi operacji [Get Deployment](/previous-versions/azure/reference/ee460804(v=azure.100)) i [Get Cloud Service Properties](/previous-versions/azure/reference/ee460806(v=azure.100)) :
 
   1. Zablokowany element pozwala wykryć, kiedy można wywołać operację mutacji w danym wdrożeniu.
   2. Element RollbackAllowed umożliwia wykrycie, kiedy operacja [wycofywania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) może zostać wywołana dla danego wdrożenia.
 
-  Aby można było wykonać wycofywanie, nie trzeba sprawdzać zarówno elementów zablokowanych, jak i RollbackAllowed. Wystarczy potwierdzić, że RollbackAllowed ma wartość true. Te elementy są zwracane tylko wtedy, gdy te metody są wywoływane przy użyciu nagłówka żądania ustawionego na wartość "x-MS-Version: 2011-10-01 lub nowsza wersja. Aby uzyskać więcej informacji na temat nagłówków wersji, zobacz [przechowywanie wersji usługi Service Management](/previous-versions/azure/gg592580(v=azure.100)).
+  Aby można było wykonać wycofywanie, nie trzeba sprawdzać zarówno elementów zablokowanych, jak i RollbackAllowed. Wystarczy potwierdzić, że RollbackAllowed ma wartość true. Te elementy są zwracane tylko wtedy, gdy te metody są wywoływane przy użyciu nagłówka żądania ustawionego na wartość "x-MS-Version: 2011-10-01" lub nowszą. Aby uzyskać więcej informacji na temat nagłówków wersji, zobacz [przechowywanie wersji usługi Service Management](/previous-versions/azure/gg592580(v=azure.100)).
 
 Istnieją sytuacje, w których wycofanie aktualizacji lub uaktualnienia nie jest obsługiwane, są następujące:
 
@@ -142,9 +142,9 @@ Istnieją sytuacje, w których wycofanie aktualizacji lub uaktualnienia nie jest
 * Ograniczenia przydziałów — Jeśli aktualizacja była operacją skalowania w dół, nie ma już wystarczającego limitu przydziału obliczeń, aby ukończyć operację wycofywania. Z każdą subskrypcją platformy Azure jest skojarzony przydział, który określa maksymalną liczbę rdzeni, które mogą być używane przez wszystkie usługi hostowane należące do tej subskrypcji. Jeśli wykonanie wycofania danej aktualizacji spowodowałoby przekroczenie limitu przydziału, wówczas wycofanie nie zostanie włączone.
 * Sytuacja wyścigu — jeśli początkowa aktualizacja została ukończona, wycofywanie nie jest możliwe.
 
-Przykładem sytuacji, w której wycofywanie aktualizacji może być przydatne w przypadku korzystania z operacji [uaktualniania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) w trybie ręcznym w celu kontrolowania szybkości, z jaką zostanie wdrożone główne uaktualnienie w miejscu do usługi hostowanej na platformie Azure.
+Przykładem sytuacji, w której wycofywanie aktualizacji może być przydatne w przypadku korzystania z operacji uaktualniania wdrożenia w trybie ręcznym w celu kontrolowania szybkości, z jaką zostanie [wdrożone](/previous-versions/azure/reference/ee460793(v=azure.100)) główne uaktualnienie w miejscu do usługi hostowanej na platformie Azure.
 
-Podczas [wdrażania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) uaktualnienia należy wykonać w trybie ręcznym i rozpocząć sprawdzanie domen uaktualnienia. Jeśli w pewnym momencie jest monitorowane uaktualnienie, należy zauważyć, że niektóre wystąpienia roli w pierwszej badanej domenie uaktualnienia przestają odpowiadać, można wywołać operację [wycofywania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) do wdrożenia, co pozostawi nienaruszone wystąpienia, które nie zostały jeszcze uaktualnione i wycofać wystąpienia, które zostały uaktualnione do poprzedniego pakietu usługi i konfiguracji.
+Podczas [wdrażania wdrożenia](/previous-versions/azure/reference/ee460793(v=azure.100)) uaktualnienia należy wykonać w trybie ręcznym i rozpocząć sprawdzanie domen uaktualnienia. Jeśli w pewnym momencie jest monitorowane uaktualnienie, należy zauważyć, że niektóre wystąpienia roli w pierwszej domenie uaktualnienia przestaną reagować, można wywołać operację [wycofywania aktualizacji lub uaktualnienia](/previous-versions/azure/reference/hh403977(v=azure.100)) do wdrożenia, co spowoduje pozostawienie niezmienionej instancji, które nie zostały jeszcze uaktualnione i wycofał wystąpienia, które zostały uaktualnione do poprzedniego pakietu usługi i konfiguracji.
 
 <a name="multiplemutatingoperations"></a>
 
@@ -155,11 +155,11 @@ Po odebraniu wstępnego żądania zaktualizowania lub uaktualnienia usługi prze
 
 Zainicjowanie drugiej operacji aktualizacji, gdy pierwsza aktualizacja jest w toku, będzie działać podobnie jak operacja wycofywania. Jeśli druga aktualizacja działa w trybie automatycznym, pierwsza domena uaktualnienia zostanie uaktualniona natychmiast, prawdopodobnie prowadząc do wystąpienia z wielu domen uaktualnienia w tym samym punkcie w czasie.
 
-Operacje mutacji są następujące: [Zmień konfigurację wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100)), [Uaktualnij wdrożenie](/previous-versions/azure/reference/ee460793(v=azure.100)), [stan wdrożenia aktualizacji](/previous-versions/azure/reference/ee460808(v=azure.100)), [Usuń wdrożenie](/previous-versions/azure/reference/ee460815(v=azure.100))i [Wycofaj aktualizację lub uaktualnienie](/previous-versions/azure/reference/hh403977(v=azure.100)).
+Operacje zmieniania są następujące: [Zmień konfigurację wdrożenia](/previous-versions/azure/reference/ee460809(v=azure.100)), [wdrożenie uaktualnienia](/previous-versions/azure/reference/ee460793(v=azure.100)), [stan wdrożenia aktualizacji](/previous-versions/azure/reference/ee460808(v=azure.100)), [Usuń wdrożenie](/previous-versions/azure/reference/ee460815(v=azure.100))i [Wycofaj aktualizację lub uaktualnienie](/previous-versions/azure/reference/hh403977(v=azure.100)).
 
 Dwie operacje, [Uzyskiwanie wdrożenia](/previous-versions/azure/reference/ee460804(v=azure.100)) i [pobieranie właściwości usługi w chmurze](/previous-versions/azure/reference/ee460806(v=azure.100))zwracają zablokowaną flagę, która może zostać zbadana w celu ustalenia, czy można wywołać operację mutacji w danym wdrożeniu.
 
-Aby wywołać wersję tych metod, która zwraca flagę zablokowaną, należy ustawić nagłówek żądania na wartość "x-MS-Version: 2011-10-01 "lub nowszy. Aby uzyskać więcej informacji na temat nagłówków wersji, zobacz [przechowywanie wersji usługi Service Management](/previous-versions/azure/gg592580(v=azure.100)).
+Aby wywołać wersję tych metod, która zwraca flagę zablokowaną, należy ustawić nagłówek żądania na wartość "x-MS-Version: 2011-10-01" lub "nowsza". Aby uzyskać więcej informacji na temat nagłówków wersji, zobacz [przechowywanie wersji usługi Service Management](/previous-versions/azure/gg592580(v=azure.100)).
 
 <a name="distributiondfroles"></a>
 
@@ -183,3 +183,6 @@ Na poniższym diagramie przedstawiono sposób, w jaki usługa programu, która z
 [Jak zarządzać Cloud Services](cloud-services-how-to-manage-portal.md)  
 [Jak monitorować Cloud Services](cloud-services-how-to-monitor.md)  
 [Jak skonfigurować Cloud Services](cloud-services-how-to-configure-portal.md)  
+
+
+
