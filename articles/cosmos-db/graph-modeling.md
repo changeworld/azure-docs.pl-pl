@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873730"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500059"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelowanie danych programu Graph dla Azure Cosmos DB API Gremlin
 
@@ -23,7 +23,7 @@ Poniższy dokument został zaprojektowany, aby zapewnić zalecenia dotyczące mo
 Proces przedstawiony w tym przewodniku jest oparty na następujących założeniach:
  * Zidentyfikowano **jednostki** w miejscu problemu. Te jednostki mają być używane w sposób _niepodzielny_ dla każdego żądania. Innymi słowy, system bazy danych nie jest przeznaczony do pobierania danych pojedynczej jednostki w wielu żądaniach zapytań.
  * Istnieje zrozumienie **wymagań dotyczących odczytu i zapisu** dla systemu bazy danych. Wymagania te przeprowadzą optymalizację potrzebną dla modelu danych grafu.
- * Zasady [standardu grafu właściwości programu Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) są dobrze zrozumiałe.
+ * Zasady [standardu grafu właściwości programu Apache Tinkerpop](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) są dobrze zrozumiałe.
 
 ## <a name="when-do-i-need-a-graph-database"></a>Kiedy potrzebna jest baza danych grafu?
 
@@ -41,7 +41,7 @@ Następnym krokiem jest określenie, czy wykres ma być używany do celów anali
 
 ## <a name="how-to-use-graph-objects"></a>Jak używać obiektów grafów
 
-[Standardowy wykres właściwości Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) definiuje dwa typy obiektów **wierzchołków** i **krawędzi**. 
+[Standardowy wykres właściwości Apache Tinkerpop](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) definiuje dwa typy obiektów **wierzchołków** i **krawędzi**. 
 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące właściwości w obiektach grafu:
 

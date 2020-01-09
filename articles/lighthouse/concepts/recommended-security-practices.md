@@ -3,12 +3,12 @@ title: Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
 description: W przypadku korzystania z funkcji zarządzania zasobami delegowanymi przez platformę Azure ważne jest, aby uwzględnić zabezpieczenia i kontrolę dostępu.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463898"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456887"
 ---
 # <a name="recommended-security-practices"></a>Zalecane najlepsze rozwiązania dotyczące zabezpieczeń
 
@@ -30,10 +30,10 @@ Na przykład możesz chcieć użyć struktury podobnej do następujących:
 
 |Nazwa grupy  |Typ  |principalId  |Definicja roli  |Identyfikator definicji roli  |
 |---------|---------|---------|---------|---------|
-|Architektury     |Grupa użytkowników         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Architekci     |Grupa użytkowników         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |Ocena     |Grupa użytkowników         |\<principalId\>         |Czytelnik         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |Specjaliści dla maszyn wirtualnych     |Grupa użytkowników         |\<principalId\>         |Współautor maszyny wirtualnej         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Automatyzacja     |Główna nazwa usługi (SPN)         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Automation     |Główna nazwa usługi (SPN)         |\<principalId\>         |Współautor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Po utworzeniu tych grup można przypisywać użytkowników zgodnie z wymaganiami. Dodawać tylko użytkowników, którzy naprawdę muszą mieć dostęp. Pamiętaj o regularnym przeglądaniu członkostwa w grupach i usunięciu wszystkich użytkowników, którzy nie są już zarejestrowani.
 

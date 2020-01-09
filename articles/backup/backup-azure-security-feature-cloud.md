@@ -3,16 +3,16 @@ title: Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze
 description: Dowiedz się, jak używać funkcji zabezpieczeń w programie Azure Backup, aby tworzyć kopie zapasowe bardziej bezpieczne.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9a3c13856d3c130f2396488fed09313578dda79c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894032"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496928"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
-Obawy dotyczące problemów z zabezpieczeniami takich jak złośliwe oprogramowanie, oprogramowanie wymuszające okup oraz włamania wciąż rosną. Te problemy z zabezpieczeniami mogą być kosztowne, zarówno pod względem finansowym, jak i w kwestii danych. Aby ochronić przed takimi atakami, Azure Backup teraz zapewnia funkcje zabezpieczeń, które ułatwiają ochronę danych kopii zapasowej nawet po usunięciu. Jedną z tych funkcji jest usuwanie nietrwałe. W przypadku usuwania nietrwałego, nawet jeśli złośliwy aktor usuwa kopię zapasową maszyny wirtualnej (lub dane kopii zapasowej są przypadkowo usuwane), dane kopii zapasowej są przechowywane przez 14 dodatkowych dni, co pozwala na odzyskanie tego elementu kopii zapasowej bez utraty danych. Te dodatkowe 14 dni przechowywania danych kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem dla klienta.
+Obawy dotyczące problemów z zabezpieczeniami takich jak złośliwe oprogramowanie, oprogramowanie wymuszające okup oraz włamania wciąż rosną. Te problemy z zabezpieczeniami mogą być kosztowne, zarówno pod względem finansowym, jak i w kwestii danych. Aby ochronić przed takimi atakami, Azure Backup teraz zapewnia funkcje zabezpieczeń, które ułatwiają ochronę danych kopii zapasowej nawet po usunięciu. Jedną z tych funkcji jest usuwanie nietrwałe. W przypadku usuwania nietrwałego, nawet jeśli złośliwy aktor usuwa kopię zapasową maszyny wirtualnej (lub dane kopii zapasowej są przypadkowo usuwane), dane kopii zapasowej są przechowywane przez 14 dodatkowych dni, co pozwala na odzyskanie tego elementu kopii zapasowej bez utraty danych. Te dodatkowe 14 dni przechowywania danych kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem dla klienta. Platforma Azure szyfruje także wszystkie dane kopii zapasowej przechowywane przy użyciu [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) , aby dodatkowo zabezpieczyć dane.
 
 > [!NOTE]
 > Usuwanie nietrwałe chroni tylko usunięte dane kopii zapasowej. Jeśli maszyna wirtualna zostanie usunięta bez kopii zapasowej, funkcja usuwania nietrwałego nie będzie zachować danych. Wszystkie zasoby powinny być chronione za pomocą Azure Backup, aby zapewnić pełną odporność.
@@ -114,6 +114,11 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 "DeleteState" elementu kopii zapasowej zostanie przywrócony do "NotDeleted". Jednak ochrona jest nadal zatrzymana. Należy [wznowić wykonywanie kopii zapasowej,](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) aby ponownie włączyć ochronę.
 
+### <a name="soft-delete-for-vms-using-rest-api"></a>Usuwanie nietrwałe dla maszyn wirtualnych przy użyciu interfejsu API REST
+
+- Usuń kopie zapasowe przy użyciu interfejsu API REST, jak wspomniano [tutaj](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data).
+- Jeśli użytkownik chce cofnąć te operacje usuwania, należy zapoznać się z krokami opisanymi [tutaj](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data).
+
 ## <a name="disabling-soft-delete"></a>Wyłączanie usuwania nietrwałego
 
 Usuwanie nietrwałe jest domyślnie włączone dla nowo utworzonych magazynów w celu ochrony danych kopii zapasowej przed przypadkowym lub złośliwym usunięciem.  Wyłączenie tej funkcji nie jest zalecane. Jedyną okolicznością, w której należy rozważyć wyłączenie usuwania nietrwałego, jest to, że planujesz przeniesienie chronionych elementów do nowego magazynu i nie będzie można odczekać 14 dni przed usunięciem i ponownym włączeniem ochrony (na przykład w środowisku testowym). Tę funkcję można wyłączyć tylko przez administratora kopii zapasowej. Jeśli wyłączysz tę funkcję, wszystkie usunięcia chronionych elementów spowodują natychmiastowe usunięcie, bez możliwości przywrócenia. Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej funkcji pozostaną w stanie nietrwałego usunięcia. Jeśli chcesz trwale usunąć te elementy natychmiast, musisz cofnąć ich usunięcie i usunąć je ponownie, aby trwale usunąć.
@@ -146,6 +151,10 @@ EnhancedSecurityState  : Enabled
 SoftDeleteFeatureState : Disabled
 ```
 
+### <a name="disabling-soft-delete-using-rest-api"></a>Wyłączanie usuwania nietrwałego za pomocą interfejsu API REST
+
+Aby wyłączyć funkcję usuwania nietrwałego przy użyciu interfejsu API REST, zapoznaj się z krokami opisanymi [tutaj](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api).
+
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>Trwałe usuwanie nietrwałych usuniętych elementów kopii zapasowej
 
 Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej funkcji pozostaną w stanie nietrwałego usunięcia. Jeśli chcesz trwale usunąć te elementy natychmiast, usuń je i Usuń ponownie, aby uzyskać trwałe usunięcie.
@@ -154,7 +163,7 @@ Dane kopii zapasowej w stanie nietrwałego usunięcia przed wyłączeniem tej fu
 
 Wykonaj następujące kroki:
 
-1. Postępuj zgodnie z instrukcjami, aby [wyłączyć usuwanie nietrwałe](#disabling-soft-delete). 
+1. Postępuj zgodnie z instrukcjami, aby [wyłączyć usuwanie nietrwałe](#disabling-soft-delete).
 2. W Azure Portal przejdź do swojego magazynu, przejdź do **pozycji elementy kopii zapasowej** i wybierz nietrwałe usunięte maszyny wirtualne
 
 ![Wybierz nietrwałe usunięte maszyny wirtualne](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
@@ -215,6 +224,14 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
+### <a name="using-rest-api"></a>Używanie interfejsu API REST
+
+Jeśli elementy zostały usunięte przed wyłączeniem usuwania nietrwałego, zostaną one w stanie nieusuniętym. Aby natychmiast je usunąć, operacja usuwania musi zostać cofnięta, a następnie wykonana ponownie.
+
+1. Najpierw Cofnij operacje usuwania, wykonując kroki opisane [tutaj](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data).
+2. Następnie wyłącz funkcje usuwania nietrwałego za pomocą interfejsu API REST, wykonując kroki opisane [tutaj](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api).
+3. Następnie usuń kopie zapasowe przy użyciu interfejsu API REST, jak wspomniano [tutaj](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data).
+
 ## <a name="other-security-features"></a>Inne funkcje zabezpieczeń
 
 ### <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
@@ -223,7 +240,7 @@ Usługa Azure Storage automatycznie szyfruje dane podczas ich utrwalania w chmur
 
 W ramach platformy Azure dane przesyłane między usługą Azure Storage i magazynem są chronione za pośrednictwem protokołu HTTPS. Te dane pozostają w sieci szkieletowej platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage w przypadku przechowywanych danych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Aby uzyskać więcej informacji, zobacz [szyfrowanie usługi Azure Storage w przypadku przechowywanych danych](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).  Zapoznaj się z [Azure Backup często zadawanych](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) pytań, aby odpowiedzieć na pytania dotyczące szyfrowania.
 
 ### <a name="vm-encryption"></a>Szyfrowanie maszyny wirtualnej
 
@@ -237,7 +254,7 @@ Aby uzyskać więcej informacji, zobacz [używanie Access Control opartej na rol
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="soft-delete"></a>Usuwanie nietrwałe
+### <a name="for-soft-delete"></a>W przypadku usuwania nietrwałego
 
 #### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Czy muszę włączyć funkcję usuwania nietrwałego dla każdego magazynu?
 

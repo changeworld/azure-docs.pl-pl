@@ -1,6 +1,5 @@
 ---
-title: Tworzenie aplikacji Angular przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB — dodawanie funkcji CRUD do aplikacji
-titleSuffix: Azure Cosmos DB
+title: Dodawanie funkcji CRUD do aplikacji kątowej za pomocą interfejsu API Azure Cosmos DB dla MongoDB
 description: Część 6 z serii samouczków o tworzeniu aplikacji bazy danych MongoDB przy użyciu usługi Angular i języka Node dla usługi Azure Cosmos DB przy użyciu dokładnie tych samych interfejsów API, które były używane dla bazy danych MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 42015ca816f2744ef28660c5396db4cfd93a76f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766444"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441100"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Tworzenie aplikacji Angular przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB — dodawanie funkcji CRUD do aplikacji
 
@@ -24,7 +23,7 @@ Ten wieloczęściowy samouczek pokazuje, jak utworzyć nową aplikację napisan�
 
 > [!div class="checklist"]
 > * Tworzenie funkcji Post, Put i Delete dla usługi hero
-> * Uruchamianie aplikacji
+> * Uruchomienie aplikacji
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 

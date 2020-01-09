@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462089"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Samouczek: reagowanie na zdarzenia Azure Service Bus odbierane za pośrednictwem Azure Event Grid przy użyciu Azure Functions i Azure Logic Apps
 W tym samouczku dowiesz się, jak odpowiedzieć na zdarzenia Azure Service Bus, które są odbierane za pośrednictwem Azure Event Grid przy użyciu Azure Functions i Azure Logic Apps. Wykonaj następujące czynności:
@@ -50,7 +50,7 @@ Komunikat można wysłać do tematu usługi Service Bus za pomocą dowolnej meto
 3. Przejdź do projektu **MessageSender** i wybierz pozycję **Program.cs**.
 4. Podaj nazwę tematu Service Bus i parametry połączenia, które zostały uzyskane z poprzedniego kroku:
 
-    ```CSharp
+    ```csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
@@ -65,11 +65,11 @@ Przed rozpoczęciem pracy w całym scenariuszu należy skonfigurować co najmnie
 Następnie wykonaj następujące czynności: 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions v2](#tab/v2)
+# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
 
 1. Rozwiń pozycję **funkcje** w widoku drzewa, a następnie wybierz funkcję. Zastąp kod dla funkcji następującym kodem: 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     
     using System.Net;
@@ -131,7 +131,7 @@ Następnie wykonaj następujące czynności:
     2. Wybierz pozycję **~ 1** dla **wersji środowiska uruchomieniowego**. 
 2. Rozwiń pozycję **funkcje** w widoku drzewa, a następnie wybierz funkcję. Zastąp kod dla funkcji następującym kodem: 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using Newtonsoft.Json;
@@ -291,7 +291,7 @@ Połącz aplikację logiki z Azure Service Bus i Azure Event Grid, wykonując na
     5. Wprowadź **nazwę połączenia**. Na przykład: **Pobierz komunikaty z subskrypcji tematu**i wybierz Service Bus przestrzeni nazw. 
 
         ![Projektant Logic Apps — wybierz Service Bus przestrzeń nazw](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. Wybierz pozycję **RootManageSharedAccessKey**.
+    6. Wybierz **RootManageSharedAccessKey**.
 
         ![Projektant Logic Apps — wybierz klucz dostępu współdzielonego](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     7. Wybierz pozycję **Utwórz**. 

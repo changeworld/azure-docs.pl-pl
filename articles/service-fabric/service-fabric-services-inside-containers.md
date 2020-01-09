@@ -1,25 +1,15 @@
 ---
 title: Konteneryzowanie usługi Azure Service Fabric w systemie Windows
 description: Dowiedz się, jak konteneryzowanie Reliable Services Service Fabric i usługi Reliable Actors w systemie Windows.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466187"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Konteneryzowanie Reliable Services Service Fabric i Reliable Actors w systemie Windows
 
@@ -73,9 +63,9 @@ Ten dokument zawiera wskazówki dotyczące uruchamiania usługi w kontenerze sys
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Skrypt tworzy folder z artefaktami Docker w $dockerPackageOutputDirectoryPath. Zmodyfikuj wygenerowane pliku dockerfile na `expose` dowolne porty, Uruchom skrypty instalacyjne i tak dalej. na podstawie Twoich potrzeb.
+      Skrypt tworzy folder z artefaktami Docker w $dockerPackageOutputDirectoryPath. Zmodyfikuj wygenerowany pliku dockerfile tak, aby `expose` wszystkie porty, Uruchom skrypty instalacyjne i tak dalej. na podstawie Twoich potrzeb.
 
-6. Następnie musisz [skompilować](service-fabric-get-started-containers.md#Build-Containers) i wypchnąć [](service-fabric-get-started-containers.md#Push-Containers) pakiet kontenera Docker do repozytorium.
+6. Następnie musisz [skompilować](service-fabric-get-started-containers.md#Build-Containers) i [wypchnąć](service-fabric-get-started-containers.md#Push-Containers) pakiet kontenera Docker do repozytorium.
 
 7. Zmodyfikuj ApplicationManifest. XML i servicemanifest. XML w celu dodania obrazu kontenera, informacji o repozytorium, uwierzytelniania rejestru i mapowania portów do hosta. Aby zmodyfikować manifesty, zobacz [Tworzenie aplikacji kontenera Service Fabric platformy Azure](service-fabric-get-started-containers.md). Definicja pakietu kodu w manifeście usługi musi zostać zamieniona na odpowiedni obraz kontenera. Upewnij się, że punkt wejścia został zmieniony na typ ContainerHost.
 

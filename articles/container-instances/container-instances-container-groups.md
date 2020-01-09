@@ -4,12 +4,12 @@ description: Więcej informacji na temat grup kontenerów w Azure Container Inst
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442297"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Grupy kontenerów w Azure Container Instances
 
@@ -44,21 +44,19 @@ Aby zachować konfigurację grupy kontenerów, można wyeksportować konfiguracj
 
 ## <a name="resource-allocation"></a>Alokacja zasobów
 
-Azure Container Instances przydzielać zasoby, takie jak procesory CPU, pamięć i opcjonalnie [procesory GPU][gpus] (wersja zapoznawcza) do grupy kontenerów przez dodanie [żądań zasobów][resource-requests] wystąpień w grupie. Jeśli na przykład utworzysz grupę kontenerów z dwoma wystąpieniami, każdy z nich żąda 1 procesora CPU, Grupa kontenerów zostanie przypisana 2 procesory CPU.
+Azure Container Instances przydziela zasoby, takie jak procesory CPU, pamięć i opcjonalnie [procesory GPU][gpus] (wersja zapoznawcza) do grupy wielokontenerowej przez dodanie [żądań zasobów][resource-requests] wystąpień w grupie. Jeśli na przykład utworzysz grupę kontenerów z dwoma wystąpieniami, każdy z nich żąda 1 procesora CPU, Grupa kontenerów zostanie przypisana 2 procesory CPU.
 
 ### <a name="resource-usage-by-instances"></a>Użycie zasobów według wystąpień
 
-Każde wystąpienie kontenera ma przydzieloną zasoby określone w żądaniu zasobu. Jednak użycie zasobów przez wystąpienie kontenera w grupie zależy od sposobu skonfigurowania jego opcjonalnej właściwości [limitu zasobów][resource-limits] . Limit zasobów musi być mniejszy niż wartość właściwości obowiązkowego [żądania zasobu][resource-requests] .
+Każde wystąpienie kontenera w grupie ma przydzieloną zasoby określone w żądaniu zasobu. Jednak maksymalne zasoby używane przez wystąpienie w grupie mogą być różne w przypadku skonfigurowania jej opcjonalnej właściwości [limitu zasobów][resource-limits] . Limit zasobów wystąpienia musi być większy lub równy właściwości obowiązkowego [żądania zasobu][resource-requests] .
 
 * Jeśli nie określisz limitu zasobów, maksymalne użycie zasobów przez wystąpienie będzie takie samo jak jego żądanie zasobu.
 
-* W przypadku określenia limitu zasobów dla wystąpienia można dostosować użycie zasobów wystąpienia dla jego obciążenia, zmniejszając lub zwiększając użycie względem żądania zasobu. Maksymalny limit zasobów, który można ustawić, to łączna liczba zasobów przydzielono do grupy.
+* W przypadku określenia limitu dla wystąpienia maksymalne użycie wystąpienia może być większe niż żądanie, do ustawionego limitu. Analogicznie, użycie zasobów przez inne wystąpienia w grupie może ulec zmniejszeniu. Maksymalny limit zasobów, który można ustawić dla wystąpienia, to łączna liczba zasobów przypisywanych do grupy.
     
-Na przykład w grupie z dwoma wystąpieniami żądającym 1 procesora CPU jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugi procesor CPU.
+Na przykład w grupie z dwoma wystąpieniami, które żądają 1 procesora CPU, jeden z kontenerów może uruchamiać obciążenie, które wymaga więcej niż drugi procesor CPU.
 
-W tym scenariuszu można ustawić limit zasobów 0,5 CPU dla jednego wystąpienia i limit 2 procesorów CPU dla drugiego. Ta konfiguracja ogranicza użycie zasobów pierwszego kontenera do 0,5 procesora CPU, co pozwala drugiemu kontenerowi używać do pełnych 2 procesorów CPU, jeśli są dostępne.
-
-Aby uzyskać więcej informacji, zobacz Właściwość [ResourceRequirements][resource-requirements] w interfejsie API REST grup kontenerów.
+W tym scenariuszu można ustawić limit zasobów równy 2 procesor CPU dla tego wystąpienia. Ta konfiguracja umożliwia kontenerowi użycie do pełnych 2 procesorów CPU, jeśli są dostępne.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimalna i maksymalna alokacja
 

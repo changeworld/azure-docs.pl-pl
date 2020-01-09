@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: aacb8c951de1fb29dc08bdb6ef0b68b23966f326
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5cecc6e43dfeda3838ae52fdd0c028a7739ff227
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033869"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497944"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu PowerShell
 
@@ -30,7 +30,7 @@ Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym re
 
  
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -89,7 +89,7 @@ $vnet = New-AzVirtualNetwork -ResourceGroupName myResourceGroup -Location eastus
 
 # Create a public IP address in an availability zone and specify a DNS name
 $pip = New-AzPublicIpAddress -ResourceGroupName myResourceGroup -Location eastus2 -Zone 2 `
-    -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
+    -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)" -Sku Standard
 ```
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Tworzenie sieciowej grupy zabezpieczeń i reguły sieciowej grupy zabezpieczeń 

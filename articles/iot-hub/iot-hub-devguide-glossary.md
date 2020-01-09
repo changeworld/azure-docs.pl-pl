@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457156"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik warunków IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach IoT Hub.
@@ -43,14 +43,14 @@ Istnieją _zestawy SDK usługi_ dostępne dla wielu języków, które umożliwia
 ## <a name="azure-iot-tools"></a>Narzędzia usługi Azure IoT
 [Narzędzia Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) to międzyplatformowe rozszerzenie Visual Studio Code typu open-source, które ułatwia zarządzanie usługą Azure IoT Hub i urządzeniami w vs Code. Korzystając z narzędzi Azure IoT Tools, deweloperzy IoT mogą łatwo opracowywać projekt IoT w VS Code.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal Azure
 [Microsoft Azure Portal](https://portal.azure.com) to centralne miejsce, w którym można zainicjować obsługę zasobów platformy Azure i zarządzać nimi. Organizuje swoją _zawartość przy użyciu_bloków.
 
 ## <a name="azure-powershell"></a>Program Azure PowerShell
 [Azure PowerShell](/powershell/azure/overview) to zbiór poleceń cmdlet służących do zarządzania platformą Azure przy użyciu programu Windows PowerShell. Za pomocą poleceń cmdlet można tworzyć, testować i wdrażać rozwiązania i usługi dostarczane za pomocą platformy Azure oraz zarządzać nimi.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa. W jednej, skoordynowanej operacji można wdrożyć, zaktualizować lub usunąć zasoby dla rozwiązania.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) umożliwia współpracę z zasobami w rozwiązaniu jako Grupa. W jednej, skoordynowanej operacji można wdrożyć, zaktualizować lub usunąć zasoby dla rozwiązania.
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 [Service Bus](../service-bus/index.md) zapewnia komunikację w chmurze z obsługą komunikatów w przedsiębiorstwie i przekazywaniem komunikacji, która ułatwia łączenie rozwiązań lokalnych z chmurą. Niektóre samouczki IoT Hub korzystają z [kolejek](../service-bus-messaging/service-bus-messaging-overview.md)Service Busych.
@@ -70,7 +70,7 @@ Brama w chmurze umożliwia łączność urządzeń, które nie mogą łączyć s
 ## <a name="cloud-to-device"></a>Z chmury do urządzenia
 Odnosi się do komunikatów wysyłanych z usługi IoT Hub do podłączonego urządzenia. Często te komunikaty są poleceniami, które nakazują urządzeniu wykonanie akcji. Aby uzyskać więcej informacji, zobacz [wysyłanie i odbieranie komunikatów przy użyciu IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 W kontekście [automatycznej konfiguracji urządzeń](iot-hub-auto-device-config.md)konfiguracja w ramach IoT Hub definiuje żądaną konfigurację zestawu urządzeń bliźniaczych reprezentacji i zawiera zestaw metryk do raportowania stanu i postępu.
 
 ## <a name="connection-string"></a>Parametry połączenia
@@ -132,7 +132,7 @@ Inicjowanie obsługi administracyjnej urządzeń polega na dodaniu początkowych
 ## <a name="direct-method"></a>Metoda bezpośrednia
 [Metoda bezpośrednia](iot-hub-devguide-direct-methods.md) to sposób wyzwalania metody do wykonania na urządzeniu przez wywołanie interfejsu API w centrum IoT.
 
-## <a name="endpoint"></a>Endpoint
+## <a name="endpoint"></a>Punkt końcowy
 Centrum IoT udostępnia wiele [punktów końcowych](iot-hub-devguide-endpoints.md) , które umożliwiają aplikacjom łączenie się z usługą IoT Hub. Istnieją punkty końcowe dostępne dla urządzeń, które umożliwiają urządzeniom wykonywanie operacji, takich jak wysyłanie komunikatów [z urządzenia do chmury](#device-to-cloud) i otrzymywanie komunikatów [z chmury do urządzenia](#cloud-to-device) . Istnieją punkty końcowe zarządzania dostępne w ramach usług, które umożliwiają [aplikacjom zaplecza](#back-end-app) wykonywanie operacji, takich jak zarządzanie [tożsamościami urządzeń](#device-identity) i zarządzanie firmowymi urządzeniami. Istnieją [wbudowane punkty końcowe](#built-in-endpoints) dostępne w ramach usług służące do odczytywania komunikatów z urządzenia do chmury. Można utworzyć [niestandardowe punkty końcowe](#custom-endpoints) , aby odbierać komunikaty z urządzenia do chmury wysyłane przez [regułę routingu](#routing-rules).
 
 ## <a name="event-hubs-service"></a>Usługa Event Hubs
@@ -158,14 +158,14 @@ Komunikat interaktywny to komunikat z [chmury do urządzenia](#cloud-to-device) 
 
 [!INCLUDE [azure-iot-hub-edge-glossary-includes](../../includes/azure-iot-hub-edge-glossary-includes.md)]
 
-## <a name="iot-hub"></a>Usługa IoT Hub
+## <a name="iot-hub"></a>IoT Hub
 IoT Hub to w pełni zarządzana usługa platformy Azure, która umożliwia niezawodne i bezpieczne komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. Aby uzyskać więcej informacji, zobacz [co to jest platforma Azure IoT Hub?](about-iot-hub.md) Korzystając z [subskrypcji platformy Azure](#subscription), można utworzyć centra IoT do obsługi obciążeń związanych z wiadomościami IoT.
 
 ## <a name="iot-hub-metrics"></a>Metryki IoT Hub
 [Metryki IoT Hub](iot-hub-metrics.md) zapewniają dane dotyczące stanu centrów IoT w [ramach subskrypcji platformy Azure](#subscription). Metryki IoT Hub umożliwiają ocenę ogólnej kondycji usługi i podłączonych do niej urządzeń. Metryki IoT Hub mogą pomóc zobaczyć, co się dzieje z Twoim centrum IoT Hub, i zbadać problemy związane z główną przyczyną, bez konieczności kontaktowania się z pomocą techniczną platformy Azure.
 
 ## <a name="iot-hub-query-language"></a>Język zapytań IoT Hub
-[Język zapytań IoT Hub](iot-hub-devguide-query-language.md) to język przypominający SQL, który umożliwia wykonywanie zapytań do bliźniaczych reprezentacji [](#job) i urządzeń.
+[Język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md) jest języka przypominającego SQL, która pozwala przesyłać zapytania usługi [](#job) i bliźniacze reprezentacje urządzeń.
 
 ## <a name="iot-hub-resource-rest-api"></a>Interfejs API REST zasobów IoT Hub
 Za pomocą [interfejsu API REST zasobów IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) można zarządzać centrami IoT w [ramach subskrypcji platformy Azure](#subscription) wykonujących operacje, takie jak tworzenie, aktualizowanie i usuwanie centrów.
@@ -257,7 +257,7 @@ Urządzenia zbierają dane telemetryczne, takie jak szybkość wiatru lub temper
 Za pomocą usługi tokenu można zaimplementować mechanizm uwierzytelniania dla urządzeń. Używa [zasad dostępu współdzielonego](#shared-access-policy) IoT Hub z uprawnieniami **DeviceConnect** do tworzenia tokenów z *zakresem urządzeń* . Te tokeny umożliwiają urządzeniu łączenie się z Centrum IoT Hub. Urządzenie używa niestandardowego mechanizmu uwierzytelniania do uwierzytelniania za pomocą usługi tokenu. Jeśli urządzenie zostanie pomyślnie uwierzytelnione, usługa tokenów wystawia token sygnatury dostępu współdzielonego, aby urządzenie korzystało z Centrum IoT.
 
 ## <a name="twin-queries"></a>Zapytania bliźniaczye
-[Zapytania wieloosiowe urządzenia i modułu](iot-hub-devguide-query-language.md) używają języka zapytań IoT Hub, takich jak SQL, do pobierania informacji z urządzenia bliźniaczych reprezentacji lub modułu bliźniaczych reprezentacji. Możesz użyć tego samego IoT Hub języka zapytań, aby pobrać informacje o [](#job) działaniu w centrum IoT.
+[Zapytania wieloosiowe urządzenia i modułu](iot-hub-devguide-query-language.md) używają języka zapytań IoT Hub, takich jak SQL, do pobierania informacji z urządzenia bliźniaczych reprezentacji lub modułu bliźniaczych reprezentacji. Można użyć tego samego języka zapytań usługi IoT Hub można pobrać informacji o [](#job) działające w Twoim Centrum IoT hub.
 
 ## <a name="twin-synchronization"></a>Synchronizacja przędzy
 Synchronizacja przędzy używa [żądanych właściwości](#desired-properties) w urządzeniu bliźniaczych reprezentacji lub module bliźniaczych reprezentacji w celu skonfigurowania urządzeń lub modułów i pobrania przez nich [raportowanych właściwości](#reported-properties) do sklepu w ramach sznurka.

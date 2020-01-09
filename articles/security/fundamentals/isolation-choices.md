@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159757"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459174"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 System Azure umożliwia uruchamianie aplikacji i maszyn wirtualnych w ramach udostępnionej infrastruktury fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.
@@ -73,7 +73,7 @@ Usługa Azure RBAC ma trzy podstawowe role, które mają zastosowanie do wszystk
 
 - **Czytelnik** może wyświetlać istniejące zasoby platformy Azure.
 
-![Access Control oparte na rolach na platformie Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Kontrola dostępu oparta na rolach na platformie Azure](./media/isolation-choices/azure-isolation-fig3.png)
 
 Pozostałe role RBAC na platformie Azure umożliwiają zarządzanie określonymi zasobami platformy Azure. Na przykład rola współautor maszyny wirtualnej umożliwia użytkownikowi tworzenie maszyn wirtualnych i zarządzanie nimi. Nie daje im dostępu do Virtual Network platformy Azure lub podsieci, z którą nawiąże połączenie maszyna wirtualna.
 
@@ -149,7 +149,7 @@ Komunikacja między kontrolerem sieci szkieletowej a agentem jest jednokierunkow
 Izolacja rozciąga się od głównej maszyny wirtualnej z maszyn wirtualnych gościa i od siebie maszyn wirtualnych gościa. Węzły obliczeniowe są również izolowane od węzłów magazynu w celu zwiększenia ochrony.
 
 
-Funkcja hypervisor i system operacyjny hosta zapewniają filtry pakietów sieciowych w celu zagwarantowania, że niezaufane maszyny wirtualne nie mogą generować sfałszowanego ruchu ani odbierać do nich ruchu, skierować ruch do chronionych punktów końcowych infrastruktury lub Wyślij/Odbierz nieodpowiedni ruch emisji.
+Funkcja hypervisor i system operacyjny hosta zapewniają filtry pakietów sieciowych w celu zagwarantowania, że niezaufane maszyny wirtualne nie mogą generować sfałszowanego ruchu ani odbierać do nich ruchu, skierować ruch do chronionych punktów końcowych infrastruktury lub Wyślij/Odbierz niewłaściwy ruch emisji.
 
 
 ### <a name="additional-rules-configured-by-fabric-controller-agent-to-isolate-vm"></a>Dodatkowe reguły skonfigurowane przez agenta kontrolera sieci szkieletowej do izolowania maszyny wirtualnej
@@ -196,7 +196,7 @@ Dane magazynu IP mogą być chronione przed nieautoryzowanymi użytkownikami za 
 
 ### <a name="encryption"></a>Szyfrowanie
 Platforma Azure oferuje następujące typy szyfrowania do ochrony danych:
--   Szyfrowanie podczas przesyłania
+-   Szyfrowanie danych przesyłanych
 
 -   Szyfrowanie w spoczynku
 
@@ -205,7 +205,7 @@ Szyfrowanie podczas przesyłania jest mechanizmem ochrony danych przesyłanych m
 
 -   [Szyfrowanie na poziomie transportu](../../storage/common/storage-security-guide.md), takie jak https, podczas transferu danych do usługi Azure Storage lub z niej.
 
--   [Szyfrowanie przewodowe](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), takie jak szyfrowanie SMB 3,0 dla udziałów plików platformy Azure.
+-   [Szyfrowanie przewodowe](../../storage/common/storage-security-guide.md), takie jak szyfrowanie SMB 3,0 dla udziałów plików platformy Azure.
 
 -   [Szyfrowanie po stronie klienta](../../storage/common/storage-security-guide.md)umożliwia szyfrowanie danych przed ich przesłaniem do magazynu oraz odszyfrowanie danych po ich przeniesieniu poza magazyn.
 

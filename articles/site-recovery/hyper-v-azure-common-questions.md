@@ -1,18 +1,14 @@
 ---
 title: Często zadawane pytania dotyczące odzyskiwania po awarii funkcji Hyper-V z Azure Site Recovery
 description: W tym artykule podsumowano typowe pytania dotyczące konfigurowania odzyskiwania po awarii dla lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure przy użyciu witryny Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954057"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498192"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Często zadawane pytania — funkcja Hyper-V do odzyskiwania po awarii platformy Azure
 
@@ -78,7 +74,7 @@ Tak. Po utworzeniu magazynu w regionie firma Microsoft gwarantuje, że wszystkie
 Tak, obsługiwane są zarówno szyfrowanie podczas przesyłania, jak i [szyfrowanie na platformie Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) .
 
 
-## <a name="deployment"></a>Wdrożenie
+## <a name="deployment"></a>Wdrażanie
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Co mogę zrobić z replikacją funkcji Hyper-V do platformy Azure?
 
@@ -202,14 +198,17 @@ Site Recovery nie instaluje jawnie żadnych elementów na maszynach wirtualnych 
 ### <a name="how-do-i-fail-over-to-azure"></a>Jak mogę przełączenia w tryb failover na platformę Azure?
 
 Planowane lub nieplanowane przejście w tryb failover można uruchomić z lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure.
-    - Jeśli zostanie uruchomione planowane przejście w tryb failover, źródłowe maszyny wirtualne zostaną wyłączone w celu zapewnienia, że nie będzie miała miejsca utrata danych.
-    - Jeśli lokacja główna jest niedostępna, można uruchomić nieplanowaną pracę w trybie failover.
-    - Można przełączać się do trybu failover pojedynczej maszyny lub tworzyć plany odzyskiwania, aby organizować pracę awaryjną wielu maszyn.
-    - Uruchamiasz tryb failover. Po zakończeniu pierwszego etapu pracy w trybie failover powinno być możliwe wyświetlenie utworzonych maszyn wirtualnych repliki na platformie Azure. Jeśli jest to wymagane, do maszyny wirtualnej można przypisać publiczny adres IP. Następnie możesz zatwierdzić tryb failover, aby rozpocząć uzyskiwanie dostępu do obciążenia z repliki maszyny wirtualnej platformy Azure.
+
+- Jeśli zostanie uruchomione planowane przejście w tryb failover, źródłowe maszyny wirtualne zostaną wyłączone w celu zapewnienia, że nie będzie miała miejsca utrata danych.
+- Jeśli lokacja główna jest niedostępna, można uruchomić nieplanowaną pracę w trybie failover.
+- Można przełączać się do trybu failover pojedynczej maszyny lub tworzyć plany odzyskiwania, aby organizować pracę awaryjną wielu maszyn.
+- Tryb failover znajduje się w dwóch częściach:
+    - Po zakończeniu pierwszego etapu pracy w trybie failover powinno być możliwe wyświetlenie utworzonych maszyn wirtualnych repliki na platformie Azure. Jeśli jest to wymagane, do maszyny wirtualnej można przypisać publiczny adres IP.
+    - Następnie możesz zatwierdzić tryb failover, aby rozpocząć uzyskiwanie dostępu do obciążenia z repliki maszyny wirtualnej platformy Azure.
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Jak mogę dostęp do maszyn wirtualnych platformy Azure po przejściu w tryb failover?
-Po przejściu w tryb failover możesz uzyskiwać dostęp do maszyn wirtualnych platformy Azure za pośrednictwem bezpiecznego połączenia internetowego, za pośrednictwem sieci VPN typu lokacja-lokacja lub za pośrednictwem usługi Azure ExpressRoute. Aby nawiązać połączenie, należy przygotować wiele rzeczy. [Dowiedz się więcej](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Po przejściu w tryb failover możesz uzyskiwać dostęp do maszyn wirtualnych platformy Azure za pośrednictwem bezpiecznego połączenia internetowego, za pośrednictwem sieci VPN typu lokacja-lokacja lub za pośrednictwem usługi Azure ExpressRoute. Aby nawiązać połączenie, należy przygotować wiele rzeczy. [Dowiedz się więcej](failover-failback-overview.md#connect-to-azure-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>Czy dane są odporne na awarie?
 Platforma Azure została zaprojektowana z myślą o odporności danych. Site Recovery jest zaprojektowana w celu przełączenia w tryb failover do pomocniczego centrum danych platformy Azure zgodnie z umową SLA platformy Azure. W przypadku przejścia w tryb failover upewnijmy się, że Twoje metadane i magazyny pozostają w tym samym regionie geograficznym, który został wybrany dla Twojego magazynu.
@@ -232,4 +231,4 @@ Po ponownym uruchomieniu infrastruktury lokalnej można wrócić do trybu powrot
 5. Po niepomyślnym zakończeniu obciążeń należy włączyć replikację odwrotną, aby lokalne maszyny wirtualne zostały ponownie zreplikowane na platformę Azure.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Czy mogę powrócić po awarii do innej lokalizacji?
-Tak, po przełączeniu w tryb failover na platformę Azure możesz wrócić do innej lokalizacji, jeśli jest ona niedostępna. [Dowiedz się więcej](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
+Tak, po przełączeniu w tryb failover na platformę Azure możesz wrócić do innej lokalizacji, jeśli jest ona niedostępna. [Dowiedz się więcej](hyper-v-azure-failback.md#fail-back-to-an-alternate-location).

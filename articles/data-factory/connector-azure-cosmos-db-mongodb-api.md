@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 0b38bc3309d8cf265a554a10e36311f53e6fe8a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33cc4537a8339b9329a3be059c0e86a1ffe69941
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440806"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopiowanie danych do interfejsu API Azure Cosmos DB lub z usługi MongoDB przy użyciu Azure Data Factory
 
@@ -48,7 +48,7 @@ Następujące właściwości są obsługiwane dla interfejsu API Azure Cosmos DB
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** musi być ustawiona na wartość **CosmosDbMongoDbApi**. | Tak |
-| connectionString |Określ parametry połączenia dla interfejsu API Azure Cosmos DB dla MongoDB. Można go znaleźć w Azure Portal-> Cosmos DB w bloku > podstawowego lub pomocniczego, z wzorcem `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| connectionString |Określ parametry połączenia dla interfejsu API Azure Cosmos DB dla MongoDB. Można go znaleźć w Azure Portal-> Cosmos DB w bloku > podstawowego lub pomocniczego, z wzorcem `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/><br />Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację   `password`z parametrów połączenia. Aby uzyskać więcej informacji, zapoznaj się z [poświadczeniami przechowywania w Azure Key Vault](store-credentials-in-key-vault.md) .|Tak |
 | baza danych | Nazwa bazy danych, do której chcesz uzyskać dostęp. | Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
@@ -60,10 +60,7 @@ Następujące właściwości są obsługiwane dla interfejsu API Azure Cosmos DB
     "properties": {
         "type": "CosmosDbMongoDbApi",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-            },
+            "connectionString": "mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",
             "database": "myDatabase"
         },
         "connectVia": {
@@ -174,6 +171,9 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia*
 | writeBatchSize | Właściwość **writeBatchSize** określa rozmiar dokumentów do zapisu w każdej partii. Możesz spróbować zwiększyć wartość **writeBatchSize** , aby zwiększyć wydajność i zmniejszyć wartość w przypadku dużego rozmiaru dokumentu. |Nie<br />(wartość domyślna to **10 000**) |
 | writeBatchTimeout | Czas oczekiwania na zakończenie operacji wstawiania wsadowego przed przekroczeniem limitu czasu. Dozwolona wartość to TimeSpan. | Nie<br/>(wartość domyślna to **00:30:00** – 30 minut) |
 
+>[!TIP]
+>Aby zaimportować dokumenty JSON, należy zapoznać się z sekcją [Importowanie lub eksportowanie dokumentów JSON](#import-and-export-json-documents) . Aby skopiować dane w kształcie tabelarycznym, zapoznaj się z [mapowaniem schematu](#schema-mapping).
+
 **Przykład**
 
 ```json
@@ -206,18 +206,18 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia*
 ]
 ```
 
->[!TIP]
->Aby zaimportować dokumenty JSON, należy zapoznać się z sekcją [Importowanie lub eksportowanie dokumentów JSON](#import-or-export-json-documents) . Aby skopiować dane w kształcie tabelarycznym, zapoznaj się z [mapowaniem schematu](#schema-mapping).
-
-## <a name="import-or-export-json-documents"></a>Importowanie lub eksportowanie dokumentów JSON
+## <a name="import-and-export-json-documents"></a>Importowanie i eksportowanie dokumentów JSON
 
 Można użyć tego łącznika usługi Azure Cosmos DB, aby łatwo:
 
-* Zaimportuj dokumentów JSON z różnych źródeł do usługi Azure Cosmos DB, w tym z usługi Azure Blob storage, Azure Data Lake Store i inne magazyny oparte na plikach, które obsługuje usługę Azure Data Factory.
-* Eksportowanie dokumentów JSON z kolekcji usługi Azure Cosmos DB do różnych magazynów opartych na plikach.
 * Skopiuj dokumenty między dwie kolekcje usługi Azure Cosmos DB jako-to.
+* Zaimportuj dokumenty JSON z różnych źródeł do Azure Cosmos DB, w tym z MongoDB, Azure Blob Storage, Azure Data Lake Store i innych magazynów opartych na plikach, które Azure Data Factory obsługiwane przez program.
+* Eksportowanie dokumentów JSON z kolekcji usługi Azure Cosmos DB do różnych magazynów opartych na plikach.
 
-Aby uzyskać taką kopię schematu niezależny od, Pomiń sekcję "struktura" (nazywaną również *schematem*) w temacie zestaw danych i schemat w działaniu kopiowania.
+Aby osiągnąć kopiowania niezależny od schematów:
+
+* Korzystając z narzędzia do kopiowania danych wybierz **wyeksportować jako — pliki w formacie JSON lub kolekcję usługi Cosmos DB** opcji.
+* W przypadku korzystania z funkcji tworzenia działań wybierz format JSON z odpowiednim magazynem plików dla źródła lub ujścia.
 
 ## <a name="schema-mapping"></a>Mapowanie schematu
 

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459676"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Użyj tożsamości zarządzanej do uwierzytelniania zadania Azure Stream Analytics do Power BI (wersja zapoznawcza)
 
@@ -170,6 +170,29 @@ Teraz, gdy zadanie Stream Analytics zostało utworzone, można uzyskać dostęp 
 
    ![Dodawanie zadania Stream Analytics do Power BI obszaru roboczego](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>Korzystanie z Power BI poleceń cmdlet programu PowerShell
+
+1. Zainstaluj Power BI `MicrosoftPowerBIMgmt` poleceń cmdlet programu PowerShell.
+
+   > [!Important]
+   > Upewnij się, że używasz wersji 1.0.821 lub nowszej poleceń cmdlet.
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. Zaloguj się do Power BI.
+
+```powershell
+Login-PowerBI
+```
+
+3. Dodaj zadanie Stream Analytics jako współautor do obszaru roboczego.
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>Korzystanie z interfejsu API REST Power BI
 
 Zadanie Stream Analytics można również dodać jako współautor do obszaru roboczego za pomocą interfejsu API REST "Dodaj użytkownika grupy" bezpośrednio. Pełną dokumentację tego interfejsu API można znaleźć tutaj: [grupy — Dodaj użytkownika grupy](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
@@ -201,4 +224,4 @@ Poniżej przedstawiono ograniczenia tej funkcji:
 ## <a name="next-steps"></a>Następne kroki
 
 * [Power BI integrację pulpitu nawigacyjnego z Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [Poznanie danych wyjściowych z Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Zrozumieć dane wyjściowe z usługi Azure Stream Analytics](./stream-analytics-define-outputs.md)

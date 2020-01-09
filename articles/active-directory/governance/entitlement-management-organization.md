@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561918"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608741"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Dodawanie połączonej organizacji w zarządzaniu prawami usługi Azure AD
 
@@ -74,7 +74,7 @@ Wykonaj następujące kroki, aby dodać zewnętrzny katalog lub domenę usługi 
 1. Kliknij przycisk **Dodaj** , aby dodać katalog lub domenę usługi Azure AD. Obecnie można dodać tylko jeden katalog lub domenę usługi Azure AD na podłączoną organizację.
 
     > [!NOTE]
-    > Wszyscy użytkownicy z katalogu lub domeny usługi Azure AD będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z katalogiem, chyba że te domeny są blokowane przez listę dozwolonych i zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [Zezwalanie lub blokowanie zaproszeń użytkownikom B2B z określonych organizacji](../b2b/allow-deny-list.md).
+    > Wszyscy użytkownicy z katalogu lub domeny usługi Azure AD będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z katalogiem, chyba że te domeny są blokowane przez listę dozwolonych i zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom](../b2b/allow-deny-list.md).
 
 1. Po dodaniu katalogu lub domeny usługi Azure AD kliknij przycisk **Wybierz**.
 
@@ -112,5 +112,5 @@ Jeśli nie masz już relacji z zewnętrznym katalogiem lub domeną usługi Azure
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zarządzanie dostępem użytkowników zewnętrznych](entitlement-management-organization.md)
+- [Zarządzanie dostępem użytkowników zewnętrznych](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
 - [Dla użytkowników nieznajdujących się w katalogu](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

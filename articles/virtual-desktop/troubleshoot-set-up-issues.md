@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: MT
+ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459445"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
 W tym artykule opisano problemy podczas wstępnej instalacji dzierżawy usług pulpitu wirtualnego systemu Windows i infrastruktury puli powiązanych hostów sesji.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 
 Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby omówić usługę pulpitu wirtualnego systemu Windows z zespołem produktu i aktywnymi członkami społeczności.
 
@@ -59,7 +59,7 @@ Przykład nieprzetworzonego błędu:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Tworzenie maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows
 
-Maszyny wirtualne hosta sesji można tworzyć na kilka sposobów, ale Usługi pulpitu zdalnego/zespoły pulpitów wirtualnych systemu Windows obsługują tylko problemy z obsługą maszyn wirtualnych powiązane z szablonem Azure Resource Manager. Szablon Azure Resource Manager jest dostępny w [witrynie Azure Marketplace](https://azuremarketplace.microsoft.com/) i [GitHub](https://github.com/).
+Maszyny wirtualne hosta sesji można tworzyć na kilka sposobów, ale zespół pulpitów wirtualnych systemu Windows obsługuje tylko problemy z obsługą maszyn wirtualnych powiązane z ofertą [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) . Aby uzyskać więcej informacji, zobacz [problemy z używaniem pulpitu wirtualnego systemu Windows — Inicjowanie obsługi puli hostów Azure Marketplace oferta](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Problemy z używaniem pulpitu wirtualnego systemu Windows — Inicjowanie obsługi puli hostów Azure Marketplace oferta
 
@@ -87,6 +87,27 @@ Pulpit wirtualny systemu Windows — Inicjowanie obsługi administracyjnej szabl
     #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
+
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Błąd: Wystąpił błąd "wdrożenie szablonu jest nieprawidłowe"
+
+![Zrzut ekranu przedstawiający "Wdrażanie szablonu... nieprawidłowy "błąd"](media/troubleshooting-marketplace-validation-error-generic.png)
+
+Przed podjęciem określonego działania należy sprawdzić dziennik aktywności, aby zobaczyć szczegółowy błąd sprawdzania poprawności wdrożenia zakończonego niepowodzeniem.
+
+Aby wyświetlić błąd w dzienniku aktywności:
+
+1. Wyjdź z bieżącej oferty wdrażania w portalu Azure Marketplace.
+2. Na górnym pasku wyszukiwania Wyszukaj i wybierz pozycję **Dziennik aktywności**.
+3. Znajdź działanie o nazwie **Weryfikuj wdrożenie** o stanie **Niepowodzenie** i wybierz działanie.
+   ![zrzut ekranu przedstawiający działanie pojedynczego * * Weryfikuj wdrożenie * * dla działania z * * niepowodzeniem * * status](media/troubleshooting-marketplace-validation-error-activity-summary.png)
+
+4. Wybierz pozycję JSON, a następnie przewiń w dół do dolnej części ekranu, dopóki nie zobaczysz pola "statusMessage".
+   ![zrzut ekranu działania zakończonego niepowodzeniem z czerwonym prostokątem wokół właściwości statusMessage tekstu JSON.](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+Jeśli szablon operacji przekracza limit przydziału, możesz wykonać jedną z następujących czynności, aby rozwiązać ten problem:
+
+ - Uruchom witrynę Azure Marketplace z parametrami, które zostały użyte po raz pierwszy, ale ten czas wykorzystuje mniej maszyn wirtualnych i rdzeni maszyn wirtualnych.
+ - Otwórz link widoczny w polu **statusMessage** w przeglądarce, aby przesłać żądanie zwiększenia przydziału subskrypcji platformy Azure dla określonej jednostki SKU maszyny wirtualnej.
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure Resource Manager szablonu i błędów konfiguracji żądanego stanu (DSC) programu PowerShell
 
@@ -346,9 +367,10 @@ Jeśli uruchamiasz szablon Azure Resource Manager GitHub, podaj wartości nastę
 
 - Aby zapoznać się z omówieniem rozwiązywania problemów z pulpitem wirtualnym systemu Windows i ścieżkami eskalacji, zobacz [Omówienie rozwiązywania problemów, opinie i pomoc techniczna](troubleshoot-set-up-overview.md).
 - Aby rozwiązać problemy podczas konfigurowania maszyny wirtualnej w programie Virtual Desktop systemu Windows, zobacz [Konfiguracja maszyny wirtualnej hosta sesji](troubleshoot-vm-configuration.md).
-- Aby rozwiązać problemy z połączeniami klienta pulpitu wirtualnego systemu Windows, zobacz [pulpit zdalny połączenia klientów](troubleshoot-client-connection.md).
+- Aby rozwiązać problemy z połączeniami klienta pulpitu wirtualnego systemu Windows, zobacz [połączenia usługi pulpitu wirtualnego systemu Windows](troubleshoot-service-connection.md).
+- Aby rozwiązać problemy z Pulpit zdalny klientami, zobacz [Rozwiązywanie problemów z klientem pulpit zdalny](troubleshoot-client.md)
 - Aby rozwiązać problemy występujące podczas korzystania z programu PowerShell z pulpitem wirtualnym systemu Windows, zobacz [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
-- Aby dowiedzieć się więcej na temat usługi, zobacz [Środowisko pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Aby przejść przez samouczek dotyczący rozwiązywania problemów, zobacz [Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Aby dowiedzieć się więcej o akcjach inspekcji, zobacz [Inspekcja operacji przy użyciu Menedżer zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Aby dowiedzieć się więcej o akcjach dotyczących określania błędów podczas wdrażania, zobacz [Wyświetlanie operacji wdrażania](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Aby dowiedzieć się więcej na temat usługi, zobacz [Środowisko pulpitu wirtualnego systemu Windows](environment-setup.md).
+- Aby przejść przez samouczek dotyczący rozwiązywania problemów, zobacz [Samouczek: Rozwiązywanie problemów z wdrożeniami szablonów Menedżer zasobów](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Aby dowiedzieć się więcej o akcjach inspekcji, zobacz [Inspekcja operacji przy użyciu Menedżer zasobów](../azure-resource-manager/resource-group-audit.md).
+- Aby dowiedzieć się więcej o akcjach dotyczących określania błędów podczas wdrażania, zobacz [Wyświetlanie operacji wdrażania](../azure-resource-manager/resource-manager-deployment-operations.md).

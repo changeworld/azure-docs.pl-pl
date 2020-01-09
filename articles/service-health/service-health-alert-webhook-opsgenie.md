@@ -1,76 +1,74 @@
 ---
-title: Wysyłanie alertów dotyczących kondycji usługi platformy Azure za pomocą OpsGenie przy użyciu elementów webhook
-description: Uzyskaj Spersonalizowane powiadomienia dotyczące zdarzenia usługi service health do swojego wystąpienia OpsGenie.
-author: stephbaron
-ms.author: stbaron
-ms.topic: article
+title: Wysyłanie alertów usługi Azure Service Health za pomocą OpsGenie przy użyciu elementów webhook
+description: Uzyskaj spersonalizowane powiadomienia o zdarzeniach kondycji usługi do wystąpienia OpsGenie.
 ms.service: service-health
+ms.topic: article
 ms.date: 06/10/2019
-ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1f0ddb506b915697335ec71eab341a7cdb73dd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465235"
 ---
-# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Wysyłanie alertów dotyczących kondycji usługi platformy Azure za pomocą OpsGenie przy użyciu elementów webhook
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Wysyłanie alertów usługi Azure Service Health za pomocą OpsGenie przy użyciu elementów webhook
 
-W tym artykule pokazano, jak skonfigurować alerty dotyczące kondycji usługi platformy Azure za pomocą OpsGenie przy użyciu elementu webhook. Za pomocą [OpsGenie](https://www.opsgenie.com/)firmy integracji kondycji usługi platformy Azure, w przypadku przekazywania alertów usługi Azure Service Health, aby OpsGenie. OpsGenie można określić odpowiednie osoby do powiadomienia oparte na dyżurów harmonogramy, za pomocą poczty e-mail, wiadomości tekstowych (SMS), połączenia telefoniczne, iOS i powiadomienia wypychane w systemie Android i zamocowaniem alertów, dopóki ten alert zostanie potwierdzone lub zamknięte.
+W tym artykule opisano sposób konfigurowania alertów usługi Azure Service Health za pomocą OpsGenie przy użyciu elementu webhook. Za pomocą integracji Azure Service Health [OpsGenie](https://www.opsgenie.com/)można przesłać dalej Azure Service Health alerty do OpsGenie. OpsGenie może określić odpowiednie osoby do powiadamiania na podstawie harmonogramów związanych z wywołaniami, korzystania z poczty e-mail, wiadomości SMS, połączeń telefonicznych, powiadomień wypychanych systemu iOS & systemu Android oraz powiadamiania o alertach do momentu potwierdzenia lub zamknięcia alertu.
 
-## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>Tworzenie adresu URL usługi kondycji integracji w OpsGenie
-1.  Upewnij się, podpisali i zalogowano się do Twojej [OpsGenie](https://www.opsgenie.com/) konta.
+## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>Tworzenie adresu URL integracji usługi Service Health w OpsGenie
+1.  Upewnij się, że zarejestrowano Cię w usłudze i zalogowano się na koncie usługi [OpsGenie](https://www.opsgenie.com/) .
 
-1.  Przejdź do **integracje** sekcji OpsGenie.
+1.  Przejdź do sekcji **Integrations** w OpsGenie.
 
-    ![W sekcji "Integracja" w OpsGenie](./media/webhook-alerts/opsgenie-integrations-section.png)
+    ![Sekcja "Integrations" w OpsGenie](./media/webhook-alerts/opsgenie-integrations-section.png)
 
-1.  Wybierz **usługi Azure Service Health** przycisk integracji.
+1.  Wybierz przycisk **Azure Service Health** integrację.
 
-    !["Usługa Azure Service Health button" w OpsGenie](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
+    !["Azure Service Health przycisk" w OpsGenie](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
 
-1.  **Nazwa** swoje alert, a następnie określ **przypisane do zespołu** pola.
+1.  **Nazwij** alert i Określ pole **Assigned to Team** .
 
-1.  Wypełnianie pól, takich jak **adresatów**, **włączone**, i **Pomijaj powiadomienia**.
+1.  Wypełnij inne pola, takie jak **Adresaci**, **włączone**i **Pomijaj powiadomienia**.
 
-1.  Skopiuj i Zapisz **adresów URL integracji**, która już powinna zawierać Twoje `apiKey` dołączany na końcu.
+1.  Skopiuj i Zapisz **adres URL integracji**, który powinien już zawierać `apiKey` dołączony do końca.
 
-    !["Integracja z adresu URL" w OpsGenie](./media/webhook-alerts/opsgenie-integration-url.png)
+    !["Adres URL integracji" w OpsGenie](./media/webhook-alerts/opsgenie-integration-url.png)
 
-1.  Wybierz **Zapisz integracji**
+1.  Wybierz pozycję **Zapisz integrację**
 
-## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Utwórz alert przy użyciu OpsGenie w witrynie Azure portal
+## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Tworzenie alertu przy użyciu OpsGenie w Azure Portal
 ### <a name="for-a-new-action-group"></a>Dla nowej grupy akcji:
-1. Wykonaj kroki od 1 do 8 w [Tworzenie alertu na powiadomienie usługi kondycji dla nowej grupy akcji przy użyciu witryny Azure portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Wykonaj kroki od 1 do 8 w temacie [Tworzenie alertu w ramach powiadomienia o kondycji usługi dla nowej grupy akcji przy użyciu Azure Portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-1. Zdefiniuj na liście **akcje**:
+1. Zdefiniuj na liście **akcji**:
 
-    a. **Typ akcji:** *Element Webhook*
+    a. **Typ akcji:** *element webhook*
 
-    b. **Szczegóły:** OpsGenie **adresów URL integracji** zostanie zapisany wcześniej.
+    b. **Szczegóły:** **Adres URL integracji** OpsGenie, który został wcześniej zapisany.
 
-    c. **Nazwa:** Nazwy, aliasu lub identyfikator dla elementu Webhook.
+    d. **Nazwa:** Nazwa, alias lub identyfikator elementu webhook.
 
-1. Wybierz **Zapisz** po zakończeniu tworzenia alertu.
+1. Wybierz pozycję **Zapisz** po zakończeniu, aby utworzyć alert.
 
 ### <a name="for-an-existing-action-group"></a>Dla istniejącej grupy akcji:
-1. W [witryny Azure portal](https://portal.azure.com/), wybierz opcję **Monitor**.
+1. W [Azure Portal](https://portal.azure.com/)wybierz pozycję **Monitoruj**.
 
-1. W **ustawienia** zaznacz **grup akcji**.
+1. W sekcji **Ustawienia** wybierz pozycję **grupy akcji**.
 
 1. Znajdź i wybierz grupę akcji, którą chcesz edytować.
 
-1. Dodaj do listy **akcje**:
+1. Dodaj do listy **akcji**:
 
-    a. **Typ akcji:** *Element Webhook*
+    a. **Typ akcji:** *element webhook*
 
-    b. **Szczegóły:** OpsGenie **adresów URL integracji** zostanie zapisany wcześniej.
+    b. **Szczegóły:** **Adres URL integracji** OpsGenie, który został wcześniej zapisany.
 
-    c. **Nazwa:** Nazwy, aliasu lub identyfikator dla elementu Webhook.
+    d. **Nazwa:** Nazwa, alias lub identyfikator elementu webhook.
 
-1. Wybierz **Zapisz** po zakończeniu można zaktualizować grupy akcji.
+1. Wybierz pozycję **Zapisz** po zakończeniu, aby zaktualizować grupę akcji.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testowanie integracji usługi elementu webhook, za pomocą żądania HTTP POST
-1. Utwórz ładunek kondycji usługi, które mają zostać wysłane. Można znaleźć, ładunek elementu webhook przykład usługi kondycji w [alerty dzienników elementy Webhook dla aktywności platformy Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testowanie integracji elementu webhook za pośrednictwem żądania HTTP POST
+1. Utwórz ładunek kondycji usługi, który chcesz wysłać. Możesz znaleźć przykładowy ładunek elementu webhook kondycji usługi w [elementach webhook dla alertów dziennika aktywności platformy Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 1. Utwórz żądanie HTTP POST w następujący sposób:
 
@@ -81,12 +79,12 @@ W tym artykule pokazano, jak skonfigurować alerty dotyczące kondycji usługi p
 
     BODY        <service health payload>
     ```
-1. Powinien zostać wyświetlony `200 OK` odpowiedzi z komunikatem o stanie "" pomyślnie ukończono.
+1. Odpowiedź na komunikat o stanie "powodzenie" powinna zostać odebrana `200 OK`.
 
-1. Przejdź do [OpsGenie](https://www.opsgenie.com/) aby upewnić się, że integracji usługi zostało pomyślnie skonfigurowane.
+1. Przejdź do [OpsGenie](https://www.opsgenie.com/) , aby upewnić się, że integracja została pomyślnie skonfigurowana.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md).
-- Przegląd [schemat elementów webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../azure-monitor/platform/service-notifications.md).
-- Dowiedz się więcej o [grup akcji](../azure-monitor/platform/action-groups.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się, jak [skonfigurować powiadomienia elementu webhook dla istniejących systemów zarządzania problemami](service-health-alert-webhook-guide.md).
+- Przejrzyj [schemat elementu webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Dowiedz się więcej o [powiadomieniach o kondycji usługi](../azure-monitor/platform/service-notifications.md).
+- Dowiedz się więcej na temat [grup akcji](../azure-monitor/platform/action-groups.md).

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b94dbb81b2ab5b7e4421357ee81d6c3ea8e8d3c0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 816009bb7481d93fd53011d067ab56cecbe8e3ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440424"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazynów danych ODBC przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -56,7 +56,7 @@ Dla połączonej usługi ODBC są obsługiwane następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość: **ODBC** | Tak |
-| connectionString | Parametry połączenia z wyjątkiem części poświadczenia. Można określić parametry połączenia z wzorcem, takie jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć nazwy DSN systemu (nazwa źródła danych) skonfigurowanej na maszynie Integration Runtime z `"DSN=<name of the DSN on IR machine>;"` (należy odpowiednio określić część poświadczeń w połączonej usłudze).<br>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md).| Tak |
+| connectionString | Parametry połączenia z wyjątkiem części poświadczenia. Można określić parametry połączenia z wzorcem, takie jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć nazwy DSN systemu (nazwa źródła danych) skonfigurowanej na maszynie Integration Runtime z `"DSN=<name of the DSN on IR machine>;"` (należy odpowiednio określić część poświadczeń w połączonej usłudze).<br>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację   `password`z parametrów połączenia. Aby uzyskać więcej informacji, zapoznaj się z [poświadczeniami przechowywania w Azure Key Vault](store-credentials-in-key-vault.md) .| Tak |
 | authenticationType | Typ uwierzytelniania używany do nawiązywania połączenia z magazynem danych ODBC.<br/>Dozwolone wartości to: **podstawowe** i **anonimowe**. | Tak |
 | userName | Określ nazwę użytkownika w przypadku korzystania z uwierzytelniania podstawowego. | Nie |
 | hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
@@ -71,10 +71,7 @@ Dla połączonej usługi ODBC są obsługiwane następujące właściwości:
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
@@ -98,10 +95,7 @@ Dla połączonej usługi ODBC są obsługiwane następujące właściwości:
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Anonymous",
             "credential": {
                 "type": "SecureString",
@@ -261,10 +255,7 @@ Utwórz połączoną usługę ODBC, aby połączyć SAP HANA magazyn danych z us
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015"
-            },
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {

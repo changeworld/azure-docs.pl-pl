@@ -1,25 +1,16 @@
 ---
-title: Tworzenie usługi opartej na aktorze na platformie Azure Service Fabric | Microsoft Docs
+title: Tworzenie usługi opartej na aktorze na platformie Azure Service Fabric
 description: Dowiedz się, jak tworzyć, debugować i wdrażać pierwszą usługę opartą na C# aktorze przy użyciu Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466252"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Wprowadzenie do Reliable Actors
 > [!div class="op_single_selector"]
@@ -54,13 +45,13 @@ Rozwiązanie zawiera trzy projekty:
 
 * **Projekt interfejsu (HelloWorld. Interfaces)** . Ten projekt zawiera definicję interfejsu aktora. Interfejsy aktora można definiować w dowolnym projekcie z dowolną nazwą.  Interfejs definiuje kontrakt aktora, który jest współużytkowany przez implementację aktora i klientów wywołujących aktora.  Ze względu na to, że projekty klienta mogą być od niego zależne, zazwyczaj warto zdefiniować je w zestawie, który jest oddzielony od implementacji aktora.
 
-* **Projekt usługi aktora (HelloWorld)** . Ten projekt definiuje usługę Service Fabric, która będzie hostować aktora. Zawiera implementację aktora, *HelloWorld.cs*. Implementacja aktora to Klasa, która pochodzi od typu `Actor` podstawowego i implementuje interfejsy zdefiniowane w projekcie webaktor *. Interfaces* . Klasa aktora musi również implementować konstruktora, który akceptuje `ActorService` wystąpienie `ActorId` i i przekazuje je do klasy bazowej `Actor` .
+* **Projekt usługi aktora (HelloWorld)** . Ten projekt definiuje usługę Service Fabric, która będzie hostować aktora. Zawiera implementację aktora, *HelloWorld.cs*. Implementacja aktora to Klasa, która pochodzi od typu podstawowego `Actor` i implementuje interfejsy zdefiniowane w projekcie *webaktor. Interfaces* . Klasa aktora musi również implementować konstruktora, który akceptuje wystąpienie `ActorService` i `ActorId` i przekazuje je do podstawowej klasy `Actor`.
     
-    Ten projekt zawiera również *program.cs*, który rejestruje klasy aktora w środowisku uruchomieniowym `ActorRuntime.RegisterActorAsync<T>()`Service Fabric przy użyciu. `HelloWorld` Klasa jest już zarejestrowana. Wszystkie dodatkowe implementacje aktora dodane do projektu również muszą być zarejestrowane w `Main()` metodzie.
+    Ten projekt zawiera również *program.cs*, który rejestruje klasy aktora w środowisku uruchomieniowym Service Fabric przy użyciu `ActorRuntime.RegisterActorAsync<T>()`. Klasa `HelloWorld` jest już zarejestrowana. Wszystkie dodatkowe implementacje aktora dodane do projektu również muszą być zarejestrowane w metodzie `Main()`.
 
 ## <a name="customize-the-helloworld-actor"></a>Dostosowywanie aktora HelloWorld
 
-Szablon projektu definiuje niektóre metody w `IHelloWorld` interfejsie i implementuje je `HelloWorld` w implementacji aktora.  Zastąp te metody, aby usługa aktora zwracała prosty ciąg "Hello world".
+Szablon projektu definiuje niektóre metody w interfejsie `IHelloWorld` i implementuje je w implementacji aktora `HelloWorld`.  Zastąp te metody, aby usługa aktora zwracała prosty ciąg "Hello world".
 
 W projekcie *HelloWorld. Interfaces* w pliku *IHelloWorld.cs* Zastąp definicję interfejsu w następujący sposób:
 
@@ -95,7 +86,7 @@ Naciśnij **kombinację klawiszy Ctrl-Shift-B** , aby skompilować projekt i upe
 
 Utwórz prostą aplikację konsolową, która wywoła usługę aktora.
 
-1. Kliknij prawym przyciskiem myszy rozwiązanie w Eksplorator rozwiązań > **Dodaj** > **Nowy projekt..** ..
+1. Kliknij prawym przyciskiem myszy rozwiązanie w Eksplorator rozwiązań > **dodaj** > **Nowy projekt.** ...
 
 2. W obszarze typy projektów **platformy .NET Core** wybierz pozycję **Aplikacja konsolowa (.NET Core)** .  Nazwij projekt *ActorClient*.
     

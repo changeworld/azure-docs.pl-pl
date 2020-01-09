@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: e0c5ef9cd13b7ee3ada81e28f8512f621bf96190
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a61069b7477de4c5aea4d9b06365b38775310987
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440574"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiowanie danych z MongoDB za pomocą Azure Data Factory
 
@@ -49,7 +49,7 @@ Dla połączonej usługi MongoDB są obsługiwane następujące właściwości:
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type |Właściwość Type musi mieć wartość: **MongoDbV2** |Tak |
-| connectionString |Określ parametry połączenia MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Więcej informacji można znaleźć w [podręczniku MongoDB w parametrach połączenia](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br />Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak |
+| connectionString |Określ parametry połączenia MongoDB, np. `mongodb://[username:password@]host[:port][/[database][?options]]`. Więcej informacji można znaleźć w [podręczniku MongoDB w parametrach połączenia](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację   `password`z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . |Tak |
 | baza danych | Nazwa bazy danych, do której chcesz uzyskać dostęp. | Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
@@ -61,10 +61,7 @@ Dla połączonej usługi MongoDB są obsługiwane następujące właściwości:
     "properties": {
         "type": "MongoDbV2",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "mongodb://[username:password@]host[:port][/[database][?options]]"
-            },
+            "connectionString": "mongodb://[username:password@]host[:port][/[database][?options]]",
             "database": "myDatabase"
         },
         "connectVia": {

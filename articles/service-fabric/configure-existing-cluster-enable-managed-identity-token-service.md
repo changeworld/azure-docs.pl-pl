@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric — Skonfiguruj istniejący klaster Service Fabric platformy Azure, aby umożliwić obsługę tożsamości zarządzanych | Microsoft Docs
+title: Azure Service Fabric — Skonfiguruj istniejący klaster Service Fabric platformy Azure, aby umożliwić obsługę tożsamości zarządzanych
 description: W tym artykule opisano sposób konfigurowania istniejącego klastra Service Fabric platformy Azure w celu włączenia obsługi tożsamości zarządzanych
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: adc21358011454c8687998dc5d257052959b933b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 12/09/2019
+ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351607"
 ---
 # <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Skonfiguruj istniejący klaster Service Fabric platformy Azure, aby włączyć obsługę tożsamości zarządzanych (wersja zapoznawcza)
 Aby uzyskać dostęp do funkcji tożsamości zarządzanej dla aplikacji Service Fabric platformy Azure, należy najpierw włączyć **usługę tokenu tożsamości zarządzanej** w klastrze. Ta usługa jest odpowiedzialna za uwierzytelnianie aplikacji Service Fabric przy użyciu ich tożsamości zarządzanych i uzyskiwania tokenów dostępu w ich imieniu. Po włączeniu usługi zobaczysz ją w Service Fabric Explorer w sekcji **system** w okienku po lewej stronie, działając w obszarze Nazwa **sieci szkieletowej:/system/ManagedIdentityTokenService**.
@@ -42,7 +38,7 @@ Aby włączyć usługę tokenu tożsamości zarządzanej w istniejącym klastrze
 ]
 ```
 
-Aby zmiany zaczęły obowiązywać, należy również zmienić zasady uaktualniania, aby określić wymuszenie ponownego uruchomienia Service Fabric środowiska uruchomieniowego na każdym węźle w miarę postępu uaktualniania przez klaster. To ponowne uruchomienie zapewnia, że nowo włączona usługa systemu zostanie uruchomiona i uruchomiona w każdym węźle. W poniższym `forceRestart` fragmencie kodu jest to podstawowe ustawienie; Użyj istniejących wartości dla pozostałej części ustawień.  
+Aby zmiany zaczęły obowiązywać, należy również zmienić zasady uaktualniania, aby określić wymuszenie ponownego uruchomienia Service Fabric środowiska uruchomieniowego na każdym węźle w miarę postępu uaktualniania przez klaster. To ponowne uruchomienie zapewnia, że nowo włączona usługa systemu zostanie uruchomiona i uruchomiona w każdym węźle. W poniższym fragmencie kodu `forceRestart` jest to podstawowe ustawienie; Użyj istniejących wartości dla pozostałej części ustawień.  
 
 ```json
 "upgradeDescription": {
@@ -57,7 +53,7 @@ Aby zmiany zaczęły obowiązywać, należy również zmienić zasady uaktualnia
 ```
 
 > [!NOTE]
-> Po pomyślnym zakończeniu uaktualniania nie zapomnij wycofać tego `forceRestart` ustawienia, aby zminimalizować wpływ kolejnych uaktualnień. 
+> Po pomyślnym zakończeniu uaktualniania nie zapomnij wycofać ustawienia `forceRestart`, aby zminimalizować wpływ kolejnych uaktualnień. 
 
 ## <a name="errors-and-troubleshooting"></a>Błędy i rozwiązywanie problemów
 

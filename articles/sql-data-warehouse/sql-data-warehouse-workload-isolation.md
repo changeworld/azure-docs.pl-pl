@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cd1d57643f9a1eb7c50d0de06d42fbbcec085f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458783"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolacja grupy obciążeń SQL Data Warehouse (wersja zapoznawcza)
 
@@ -32,18 +32,18 @@ W poniższych sekcjach opisano sposób, w jaki grupy obciążeń zapewniają mo�
 
 Izolacja obciążenia oznacza, że zasoby są zarezerwowane wyłącznie dla grupy obciążenia.  Izolacja obciążenia jest uzyskiwana przez skonfigurowanie parametru MIN_PERCENTAGE_RESOURCE do wartości większej niż zero w składni [tworzenia grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  W przypadku obciążeń ciągłego wykonywania, które muszą być zgodne z ścisłą umowy SLA, izolacja gwarantuje, że zasoby są zawsze dostępne dla grupy obciążenia. 
 
-Konfigurowanie izolacji obciążeń niejawnie definiuje gwarantowany poziom współbieżności.  W przypadku MIN_PERCENTAGE_RESOURCE ustawionej na wartość 30% i REQUEST_MIN_RESOURCE_GRANT_PERCENT ustawionej na 2% poziom współbieżności jest gwarantowany dla grupy obciążenia.  Rozważmy poniższą metodę określania gwarantowanej współbieżności:
+Konfigurowanie izolacji obciążeń niejawnie definiuje gwarantowany poziom współbieżności. W przypadku MIN_PERCENTAGE_RESOURCE ustawionej na wartość 30% i REQUEST_MIN_RESOURCE_GRANT_PERCENT ustawionej na 2% poziom współbieżności jest gwarantowany dla grupy obciążenia.  Rozważmy poniższą metodę określania gwarantowanej współbieżności:
 
 [Gwarantowane współbieżność] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Istnieją określone minimalne wartości poziomu usługi dla min_percentage_resource.  Aby uzyskać więcej informacji, zobacz [efektywne wartości](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) w celu uzyskania dalszych szczegółów.
+> Istnieją określone minimalne wartości poziomu usługi dla min_percentage_resource.  Aby uzyskać więcej informacji, zobacz [efektywne wartości](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) w celu uzyskania dalszych szczegółów.
 
 W przypadku braku izolacji obciążeń żądania działają w [udostępnionej puli](#shared-pool-resources) zasobów.  Dostęp do zasobów w puli udostępnionej nie jest gwarantowany i jest przypisywany na podstawie [ważności](sql-data-warehouse-workload-importance.md) .
 
-Konfigurowanie izolacji obciążeń powinno odbywać się z zachowaniem ostrożności, ponieważ zasoby są przypisywane do grupy obciążeń, nawet jeśli w grupie obciążenia nie ma aktywnych żądań.  Zbyt konfiguracja izolacji może prowadzić do zmniejszenia całkowitego użycia systemu.
+Konfigurowanie izolacji obciążeń powinno odbywać się z zachowaniem ostrożności, ponieważ zasoby są przypisywane do grupy obciążeń, nawet jeśli w grupie obciążenia nie ma aktywnych żądań. Zbyt konfiguracja izolacji może prowadzić do zmniejszenia całkowitego użycia systemu.
 
-Użytkownicy powinni unikać rozwiązania do zarządzania obciążeniami, które konfigurują 100% izolacja obciążenia: 100% zostanie osiągnięty, gdy suma min_percentage_resource skonfigurowana dla wszystkich grup obciążeń równa 100%.  Ten typ konfiguracji jest nadmiernie restrykcyjny i sztywny, pozostawiając nieco wolnego miejsca dla żądań zasobów, które są przypadkowo nieprawidłowo klasyfikowane.  Istnieje możliwość zezwalania na wykonywanie jednego żądania z grup obciążeń, które nie są skonfigurowane do izolacji.  Zasoby przydzielone do tego żądania będą wyświetlane jako zero w systemach widoków DMV i pożyczą sobie poziom przydziału zasobów z zasobów zarezerwowanych systemowo.
+Użytkownicy powinni unikać rozwiązania do zarządzania obciążeniami, które konfigurują 100% izolacja obciążenia: 100% zostanie osiągnięty, gdy suma min_percentage_resource skonfigurowana dla wszystkich grup obciążeń równa 100%.  Ten typ konfiguracji jest nadmiernie restrykcyjny i sztywny, pozostawiając nieco wolnego miejsca dla żądań zasobów, które są przypadkowo nieprawidłowo klasyfikowane. Istnieje możliwość zezwalania na wykonywanie jednego żądania z grup obciążeń, które nie są skonfigurowane do izolacji. Zasoby przydzielone do tego żądania będą wyświetlane jako zero w systemach widoków DMV i pożyczą sobie poziom przydziału zasobów z zasobów zarezerwowanych systemowo.
 
 > [!NOTE] 
 > Aby zapewnić optymalne wykorzystanie zasobów, należy wziąć pod uwagę rozwiązanie do zarządzania obciążeniami, które wykorzystuje pewną izolację, aby zapewnić, że umowy SLA są spełnione i zmieszane z udostępnionymi zasobami, które są dostępne na podstawie [ważności obciążenia](sql-data-warehouse-workload-importance.md).
@@ -57,7 +57,7 @@ Konfigurowanie zawiera niejawnie zdefiniowanie maksymalnego poziomu współbież
 [Maks. współbieżność] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Efektywna CAP_PERCENTAGE_RESOURCE grupy obciążeń nie osiągnie 100%, gdy tworzone są grupy obciążeń z MIN_PERCENTAGE_RESOURCE na poziomie większym niż zero.  Zobacz sekcję [sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) , aby uzyskać efektywne wartości środowiska uruchomieniowego.
+> Efektywna CAP_PERCENTAGE_RESOURCE grupy obciążeń nie osiągnie 100%, gdy tworzone są grupy obciążeń z MIN_PERCENTAGE_RESOURCE na poziomie większym niż zero.  Zobacz sekcję [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) , aby uzyskać efektywne wartości środowiska uruchomieniowego.
 
 ## <a name="resources-per-request-definition"></a>Zasoby na definicję żądania
 
@@ -71,7 +71,7 @@ Tak jak w przypadku wybrania klasy zasobów, skonfigurowanie REQUEST_MIN_RESOURC
 Skonfigurowanie REQUEST_MAX_RESOURCE_GRANT_PERCENT do wartości większej niż REQUEST_MIN_RESOURCE_GRANT_PERCENT pozwala systemowi przydzielić więcej zasobów na żądanie.  Podczas planowania żądania system określa rzeczywistą alokację zasobów do żądania, która jest między REQUEST_MIN_RESOURCE_GRANT_PERCENT i REQUEST_MAX_RESOURCE_GRANT_PERCENT, na podstawie dostępności zasobów w puli udostępnionej i bieżącego obciążenia systemami.  Zasoby muszą znajdować się w [udostępnionej puli](#shared-pool-resources) zasobów po zaplanowaniu zapytania.  
 
 > [!NOTE] 
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT i REQUEST_MAX_RESOURCE_GRANT_PERCENT mają obowiązujące wartości, które są zależne od obowiązujących wartości MIN_PERCENTAGE_RESOURCE i CAP_PERCENTAGE_RESOURCE.  Zobacz sekcję [sys. dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) , aby uzyskać efektywne wartości środowiska uruchomieniowego.
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT i REQUEST_MAX_RESOURCE_GRANT_PERCENT mają obowiązujące wartości, które są zależne od obowiązujących wartości MIN_PERCENTAGE_RESOURCE i CAP_PERCENTAGE_RESOURCE.  Zobacz sekcję [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) , aby uzyskać efektywne wartości środowiska uruchomieniowego.
 
 ## <a name="execution-rules"></a>Reguły wykonywania
 

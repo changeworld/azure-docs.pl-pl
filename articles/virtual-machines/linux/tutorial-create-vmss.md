@@ -1,6 +1,6 @@
 ---
-title: Samouczek — Tworzenie zestawu skalowania maszyn wirtualnych dla systemu Linux na platformie Azure
-description: Z tego samouczka dowiesz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć i wdrożyć aplikację o wysokiej dostępności na maszynach wirtualnych z systemem Linux przy użyciu zestawu skalowania maszyn wirtualnych
+title: 'Samouczek: Tworzenie zestawu skalowania maszyn wirtualnych z systemem Windows'
+description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure do tworzenia i wdrażania aplikacji o wysokiej dostępności na maszynach wirtualnych z systemem Linux przy użyciu zestawu skalowania maszyn wirtualnych
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b9368da24af3b0fe08045ed869c752eefe3912fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 94e7bac3cbf3842375278a23bc39245425cda4b6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458657"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i wdrażanie aplikacji o wysokiej dostępności w systemie Linux za pomocą interfejsu wiersza polecenia platformy Azure
 

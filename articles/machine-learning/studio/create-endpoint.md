@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 891f680485ec3ee65c0bef102eb7f52cea0611c6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 57bc5739d8e6b1fa30482de69285c8895294cfa8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454759"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Utwórz punkty końcowe dla wdrożonych usług sieci Web Azure Machine Learning Studio (klasycznych)
 
@@ -27,7 +27,7 @@ Każdy punkt końcowy w usłudze sieci Web jest niezależnie kierowany, ogranicz
 
 ## <a name="add-endpoints-to-a-web-service"></a>Dodawanie punktów końcowych do usługi sieci Web
 
-Punkt końcowy można dodać do usługi sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning. Po utworzeniu punktu końcowego można go wykorzystać za pomocą synchronicznych interfejsów API, interfejsów API wsadowych i arkuszy programu Excel.
+Punkt końcowy można dodać do usługi sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning. Po utworzeniu punktu końcowego, możesz pobrać go za pośrednictwem synchronicznych interfejsów API, interfejsów API usługi batch i arkusze programu excel.
 
 > [!NOTE]
 > Jeśli dodano dodatkowe punkty końcowe do usługi sieci Web, nie można usunąć domyślnego punktu końcowego.
@@ -35,11 +35,11 @@ Punkt końcowy można dodać do usługi sieci Web przy użyciu portalu usług si
 1. W Machine Learning Studio (klasyczny), w lewej kolumnie nawigacyjnej kliknij pozycję usługi sieci Web.
 2. W dolnej części pulpitu nawigacyjnego usługi sieci Web kliknij pozycję **Zarządzaj punktami końcowymi**. Portal usług sieci Web Azure Machine Learning zostanie otwarty na stronie punkty końcowe usługi sieci Web.
 3. Kliknij przycisk **Nowy**.
-4. Wpisz nazwę i opis nowego punktu końcowego. Nazwy punktów końcowych muszą składać się z co najmniej 24 znaków i muszą składać się z małych liter lub cyfr. Wybierz poziom rejestrowania i czy włączono przykładowe dane. Aby uzyskać więcej informacji na temat rejestrowania, zobacz [Włączanie rejestrowania dla usług sieci web Machine Learning](web-services-logging.md).
+4. Wpisz nazwę i opis dla nowego punktu końcowego. Nazwy punktów końcowych musi być 24 znaków lub mniej długości i muszą składać się z małe litery lub cyfry. Wybierz poziom rejestrowania i czy jest włączony przykładowych danych. Aby uzyskać więcej informacji na temat rejestrowania, zobacz [Włączanie rejestrowania dla usług sieci web Machine Learning](web-services-logging.md).
 
 ## <a id="scaling"></a>Skalowanie usługi sieci Web przez dodanie dodatkowych punktów końcowych
 
-Domyślnie każda opublikowana usługa sieci Web jest skonfigurowana do obsługi 20 współbieżnych żądań i może mieć maksymalnie 200 współbieżnych żądań. Klasyczna wersja Azure Machine Learning Studio automatycznie optymalizuje ustawienie, aby zapewnić najlepszą wydajność usługi sieci Web, a wartość portalu jest ignorowana.
+Domyślnie każda opublikowana usługa sieci Web jest skonfigurowana do obsługi 20 współbieżnych żądań i może mieć maksymalnie 200 współbieżnych żądań. Azure Machine Learning Studio (klasyczny) automatycznie optymalizuje ustawienie, aby zapewnić najlepszą wydajność usługi sieci Web, a wartość portalu jest ignorowana.
 
 Jeśli planujesz wywołać interfejs API o wyższym obciążeniu niż wartość maksymalna liczba współbieżnych wywołań 200, będzie można utworzyć wiele punktów końcowych w tej samej usłudze sieci Web. Następnie można losowo rozłożyć obciążenie na wszystkie z nich.
 

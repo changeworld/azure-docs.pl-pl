@@ -9,16 +9,16 @@ editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2019
+ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 59afdb0e273511f3d8255a9c859b86f93e0b7269
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462410"
 ---
-# <a name="use-firewall-rules"></a>Korzystanie z reguł zapory
+# <a name="azure-service-bus---use-firewall-rules"></a>Azure Service Bus — używanie reguł zapory
 
 W przypadku scenariuszy, w których Azure Service Bus są dostępne tylko z niektórych dobrze znanych lokacji, reguły zapory umożliwiają skonfigurowanie reguł do akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
 
@@ -46,14 +46,14 @@ Reguły filtrowania adresów IP są stosowane w kolejności, a pierwsza reguła 
 > Zaufane usługi firmy Microsoft nie są obsługiwane, gdy są implementowane filtrowanie adresów IP (reguły zapory) i wkrótce zostaną udostępnione.
 >
 > Typowe scenariusze platformy Azure, które nie współpracują z filtrowaniem adresów IP (należy zauważyć, że lista **nie** jest wyczerpująca) —
-> - Usługa Azure Stream Analytics
+> - Azure Stream Analytics
 > - Integracja z usługą Azure Event Grid
 > - Trasy usługi Azure IoT Hub
 > - Device Explorer usługi Azure IoT
 >
 > Poniższe usługi firmy Microsoft muszą znajdować się w sieci wirtualnej
-> - Usługa Azure App Service
-> - Azure Functions
+> - Azure App Service
+> - Stan usługi Funkcje Azure
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie sieci wirtualnej i reguły zapory za pomocą szablonów Azure Resource Manager
 
@@ -64,13 +64,13 @@ Poniższy szablon Menedżer zasobów umożliwia dodanie reguły sieci wirtualnej
 
 Parametry szablonu:
 
-- **ipMask** to pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
+- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
 
 > [!NOTE]
 > Chociaż nie ma możliwych reguł Odmów, szablon Azure Resource Manager ma ustawioną akcję domyślną **"Zezwalaj"** , która nie ogranicza połączeń.
 > Podczas tworzenia reguł Virtual Network lub zapór należy zmienić wartość ***"DefaultAction"***
 > 
-> from
+> z
 > ```json
 > "defaultAction": "Allow"
 > ```

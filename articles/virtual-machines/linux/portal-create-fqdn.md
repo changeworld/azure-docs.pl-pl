@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d30f5a60bf19e9185d992b973414f58942f9954
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 256e1e60ec8f50df2faea64f31e88d00370b33c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458705"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Tworzenie w pełni kwalifikowanej nazwy domeny w Azure Portal dla maszyny wirtualnej z systemem Linux
 
@@ -36,5 +36,5 @@ Teraz można połączyć się zdalnie z maszyną wirtualną przy użyciu tej naz
 ## <a name="next-steps"></a>Następne kroki
 Teraz, gdy maszyna wirtualna ma publiczny adres IP i nazwę DNS, można wdrażać typowe struktury aplikacji lub usługi, takie jak Nginx, MongoDB, Docker itp.
 
-Więcej informacji na temat korzystania z [Menedżer zasobów](../../azure-resource-manager/resource-group-overview.md) można znaleźć w tematach dotyczących tworzenia wdrożeń platformy Azure.
+Więcej informacji na temat korzystania z [Menedżer zasobów](../../azure-resource-manager/management/overview.md) można znaleźć w tematach dotyczących tworzenia wdrożeń platformy Azure.
 

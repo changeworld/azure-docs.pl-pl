@@ -1,5 +1,6 @@
 ---
-title: Przykład zasad usługi Azure API Management — używanie OAuth2 do autoryzacji między bramą a zapleczem | Microsoft Docs
+title: Przykładowe zasady usługi Azure API Management — używanie OAuth2 do autoryzacji między bramą a zapleczem
+titleSuffix: Azure API Management
 description: Przykład zasad usługi Azure API Management — pokazuje, jak używać OAuth2 do autoryzacji między bramą a zapleczem. Pokazuje sposób uzyskiwania tokenu dostępu z usługi AAD i przekazywania go do zaplecza.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: fac10b728e4b7f09ec1019c3257f7c9e5d6e7714
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 09d51759c07e7dacc25d5b5ffce9698831c37a7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442366"
 ---
 # <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>Korzystanie z OAuth2 do autoryzacji między bramą a zapleczem
 

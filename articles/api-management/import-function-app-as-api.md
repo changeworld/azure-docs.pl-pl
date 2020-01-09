@@ -1,5 +1,6 @@
 ---
-title: Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management | Microsoft Docs
+title: Importowanie aplikacja funkcji platformy Azure jako interfejsu API w programie API Management
+titleSuffix: Azure API Management
 description: Ten samouczek przedstawia sposób importowania aplikacji funkcji platformy Azure do usługi Azure API Management jako interfejsu API.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442582"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
 
@@ -74,7 +75,7 @@ Aby utworzyć nowy interfejs API z poziomu aplikacji funkcji platformy Azure, wy
 
     ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-06.png)
 
-8. Kliknij pozycję **Utwórz**.
+8. Kliknij przycisk **Utwórz**.
 
 ## <a name="append-azure-function-app-to-api"></a> Dołączanie aplikacji funkcji platformy Azure do istniejącego interfejsu API
 

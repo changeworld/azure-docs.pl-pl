@@ -1,7 +1,7 @@
 ---
 title: Stosowanie przekształcenia SQL
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób używać modułu transformacji SQL w usłudze Azure Machine Learning, aby uruchomić zapytanie oprogramowania SQLite w wejściowych zestawach danych w celu przeprowadzenia transformacji.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, jak używać modułu przekształcenie SQL w Azure Machine Learning, aby uruchomić zapytanie oprogramowania SQLite w wejściowych zestawach danych w celu przeprowadzenia transformacji.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456527"
 ---
 # <a name="apply-sql-transformation"></a>Stosowanie przekształcenia SQL
 
@@ -64,4 +64,4 @@ Oprócz listy nieobsługiwanych funkcji dostępnych w oficjalnej witrynie progra
     
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

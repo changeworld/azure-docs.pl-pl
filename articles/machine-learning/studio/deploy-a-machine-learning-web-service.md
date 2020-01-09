@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851098"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454784"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Wdrażanie usługi sieci Web Azure Machine Learning Studio (klasycznej)
 
@@ -23,7 +23,7 @@ Azure Machine Learning Studio (klasyczny) umożliwia tworzenie i testowanie rozw
 
 Machine Learning Studio (klasyczne) usługi sieci Web zapewniają interfejs między aplikacją a modelem oceniania przepływu pracy Machine Learning Studio (klasycznym). Aplikacja zewnętrzna może komunikować się z modelem oceniania przepływu pracy Machine Learning Studio (klasyczny) w czasie rzeczywistym. Wywołanie usługi sieci Web Machine Learning Studio (klasycznej) zwraca wyniki prognozowania do aplikacji zewnętrznej. Wywołanie usługi sieci Web polega na przekazaniu klucza interfejsu API utworzonego podczas wdrażania tej usługi. Machine Learning Studio (klasyczny) usługa sieci Web jest oparta na architekturze REST, popularnej architektury dla projektów programowania w sieci Web.
 
-Klasyczna wersja Azure Machine Learning Studio ma dwa typy usług sieci Web:
+Azure Machine Learning Studio (klasyczny) ma dwa typy usług sieci Web:
 
 * Usługa żądanie-odpowiedź (RR): małe opóźnienia, wysoce skalowalna usługa, która ocenia pojedynczy rekord danych.
 * Usługa wykonywania wsadowego (BES): asynchroniczna usługa służąca do oceniania partii rekordów danych.
@@ -32,13 +32,13 @@ Dane wejściowe dla usługi BES przypominają dane wejściowe używane przez us�
 
 Z punktu widzenia wysokiego poziomu można wdrożyć model w trzech krokach:
 
-* **[Tworzenie eksperymentu szkoleniowego]** — w klasycznej wersji programu Studio można szkolić i testować model analizy predykcyjnej za pomocą dostarczonych danych szkoleniowych przy użyciu dużego zestawu wbudowanych algorytmów uczenia maszynowego.
+* **[Tworzenie eksperymentu szkoleniowego]** — w programie Studio (klasyczne) można uczenie i testowanie modelu analizy predykcyjnej przy użyciu danych szkoleniowych dostarczanych przez użytkownika przy użyciu dużego zestawu wbudowanych algorytmów uczenia maszynowego.
 * **[Przekonwertuj ją na eksperyment predykcyjny]** — po przeszkoleniu modelu z istniejącymi danymi i przygotowaniu się do korzystania z niego do oceny nowych danych możesz przygotować i usprawnić eksperymenty do prognoz.
 * **Wdrażanie** go jako **[Nowa usługa sieci web]** Web lub **[Klasyczna usługa sieci web]** — w przypadku wdrożenia eksperymentu predykcyjnego jako usługi sieci Web platformy Azure użytkownicy mogą wysyłać dane do modelu i odbierać przewidywania modeli.
 
 ## <a name="create-a-training-experiment"></a>Tworzenie eksperymentu szkolenia
 
-Aby przeprowadzić uczenie modelu analizy predykcyjnej, należy użyć klasycznej wersji Azure Machine Learning Studio do utworzenia eksperymentu szkoleniowego, w którym są uwzględniane różne moduły służące do ładowania danych szkoleniowych, przygotowywania danych w razie potrzeby, stosowania algorytmów uczenia maszynowego i Oceń wyniki. Możesz wykonywać iterację eksperymentu i próbować użyć różnych algorytmów uczenia maszynowego, aby porównać i oszacować wyniki.
+Aby przeprowadzić uczenie modelu analizy predykcyjnej, należy użyć Azure Machine Learning Studio (klasyczny) do utworzenia eksperymentu szkoleniowego, w którym można uwzględnić różne moduły do ładowania danych szkoleniowych, przygotować dane w razie potrzeby, zastosować algorytmy uczenia maszynowego i oszacować uzyskane. Możesz wykonywać iterację eksperymentu i próbować użyć różnych algorytmów uczenia maszynowego, aby porównać i oszacować wyniki.
 
 Proces tworzenia eksperymentów szkoleniowych i zarządzania nimi został szczegółowo omówiony w innym miejscu. Więcej informacji można znaleźć w tych artykułach:
 
@@ -95,9 +95,9 @@ Aby przetestować przy użyciu rekordów RR, w trybie widoku listy wprowadź odp
 
 ![Wprowadź odpowiednie wartości, aby przetestować usługę sieci Web](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
-Aby przetestować BES, kliknij pozycję **Batch**. Na stronie test wsadowy kliknij pozycję Przeglądaj w obszarze dane wejściowe i wybierz plik CSV zawierający odpowiednie przykładowe wartości. Jeśli nie masz pliku CSV i utworzysz eksperyment predykcyjny przy użyciu klasycznej wersji Machine Learning Studio, możesz pobrać zestaw danych dla eksperymentu predykcyjnego i użyć go.
+Aby przetestować BES, kliknij pozycję **Batch**. Na stronie test wsadowy kliknij pozycję Przeglądaj w obszarze dane wejściowe i wybierz plik CSV zawierający odpowiednie przykładowe wartości. Jeśli nie masz pliku CSV i utworzysz eksperyment predykcyjny przy użyciu Machine Learning Studio (klasyczny), możesz pobrać zestaw danych dla eksperymentu predykcyjnego i użyć go.
 
-Aby pobrać zestaw danych, Otwórz klasyczną wersję Machine Learning Studio. Otwórz eksperyment predykcyjny i kliknij prawym przyciskiem myszy dane wejściowe dla eksperymentu. Z menu kontekstowego wybierz pozycję **zestaw danych** , a następnie wybierz pozycję **Pobierz**.
+Aby pobrać zestaw danych, Otwórz Machine Learning Studio (klasyczny). Otwórz eksperyment predykcyjny i kliknij prawym przyciskiem myszy dane wejściowe dla eksperymentu. Z menu kontekstowego wybierz pozycję **zestaw danych** , a następnie wybierz pozycję **Pobierz**.
 
 ![Pobierz zestaw danych z kanwy programu Studio (klasycznej)](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
@@ -113,7 +113,7 @@ Na stronie **Konfiguracja** można zmienić opis, tytuł, zaktualizować klucz k
 
 ### <a name="access-your-new-web-service"></a>Uzyskaj dostęp do nowej usługi sieci Web
 
-Po wdrożeniu usługi sieci Web z klasycznej wersji Machine Learning Studio można wysłać dane do usługi i programowo odbierać odpowiedzi.
+Po wdrożeniu usługi sieci Web z Machine Learning Studio (klasycznej) można wysyłać dane do usługi i programowo odbierać odpowiedzi.
 
 Na stronie **Używanie** znajdują się wszystkie informacje potrzebne do uzyskania dostępu do usługi sieci Web. Na przykład klucz interfejsu API jest dostarczany, aby zezwolić na autoryzowany dostęp do usługi.
 
@@ -136,7 +136,7 @@ Cennik jest specyficzny dla regionu, dlatego należy zdefiniować plan rozliczen
 3. W przypadku planów za pośrednictwem strony widoku kliknij przycisk **New**.
 4. Z **subskrypcji** listy rozwijanej wybierz subskrypcję, w którym będzie przechowywany nowy plan.
 5. Z **Region** listę rozwijaną, wybierz region dla nowego planu. Zostaną wyświetlone opcje planu dla wybranego regionu **opcje planu** części strony.
-6. Z **grupy zasobów** listy rozwijanej wybierz zasób grupy dla tego planu. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+6. Z **grupy zasobów** listy rozwijanej wybierz zasób grupy dla tego planu. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 7. W **Nazwa planu** wpisz nazwę planu.
 8. W obszarze **opcje planu**, kliknij odpowiedni poziom rozliczeń dla nowego planu.
 9. Kliknij przycisk **Utwórz**.
@@ -149,7 +149,7 @@ Cennik jest specyficzny dla regionu, dlatego należy zdefiniować plan rozliczen
 4. W **nazwa usługi sieci Web**, wpisz nową nazwę dla usługi sieci web.
 5. W **opisu usługi internetowej**, wpisz opis usługi sieci web.
 6. Z **subskrypcji** listy rozwijanej wybierz subskrypcję, w której będą znajdować się nowej usługi sieci web.
-7. Z **grupy zasobów** listy rozwijanej wybierz zasób grupy dla usługi sieci web. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+7. Z **grupy zasobów** listy rozwijanej wybierz zasób grupy dla usługi sieci web. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 8. Z **Region** listę rozwijaną, wybierz region, w której ma zostać wdrożona usługa sieci web.
 9. Z **konta magazynu** listę rozwijaną, wybierz magazyn konta, w którym będzie przechowywany usługi sieci web.
 10. Z **Plan cenowy** listę rozwijaną, wybierz plan w regionie, który został wybrany w kroku 8.
@@ -169,9 +169,9 @@ Możesz przetestować usługę sieci Web w portalu usług sieci Web Machine Lear
 
 Aby przetestować usługę sieci Web odpowiedzi na żądanie, kliknij przycisk **Testuj** na pulpicie nawigacyjnym usługi sieci Web. Zostanie wyświetlone okno dialogowe z monitem o podanie danych wejściowych dla usługi. Są to kolumny oczekiwane przez eksperyment oceniania. Wprowadź zestaw danych, a następnie kliknij przycisk **OK**. Wyniki generowane przez usługę sieci Web są wyświetlane w dolnej części pulpitu nawigacyjnego.
 
-Możesz kliknąć link **test** Preview, aby przetestować usługę w klasycznej wersji portalu usług sieci Web Azure Machine Learning Studio, jak pokazano wcześniej w sekcji Nowa usługa sieci Web.
+Możesz kliknąć link **test** Preview, aby przetestować usługę w portalu usług sieci Web Azure Machine Learning Studio (klasyczny), jak pokazano wcześniej w sekcji Nowa usługa sieci Web.
 
-Aby przetestować usługę wykonywania wsadowego, kliknij link Podgląd **testowy** . Na stronie test wsadowy kliknij pozycję Przeglądaj w obszarze dane wejściowe i wybierz plik CSV zawierający odpowiednie przykładowe wartości. Jeśli nie masz pliku CSV i utworzysz eksperyment predykcyjny przy użyciu klasycznej wersji Machine Learning Studio, możesz pobrać zestaw danych dla eksperymentu predykcyjnego i użyć go.
+Aby przetestować usługę wykonywania wsadowego, kliknij link Podgląd **testowy** . Na stronie test wsadowy kliknij pozycję Przeglądaj w obszarze dane wejściowe i wybierz plik CSV zawierający odpowiednie przykładowe wartości. Jeśli nie masz pliku CSV i utworzysz eksperyment predykcyjny przy użyciu Machine Learning Studio (klasyczny), możesz pobrać zestaw danych dla eksperymentu predykcyjnego i użyć go.
 
 ![Testowanie usługi internetowej](./media/publish-a-machine-learning-web-service/figure-3.png)
 
@@ -187,7 +187,7 @@ Możesz również skonfigurować punkty końcowe usługi sieci Web w portalu us�
 
 ### <a name="access-your-classic-web-service"></a>Uzyskiwanie dostępu do klasycznej usługi sieci Web
 
-Po wdrożeniu usługi sieci Web z klasycznej wersji Machine Learning Studio można wysłać dane do usługi i programowo odbierać odpowiedzi.
+Po wdrożeniu usługi sieci Web z Azure Machine Learning Studio (klasycznej) można wysyłać dane do usługi i programowo odbierać odpowiedzi.
 
 Pulpit nawigacyjny zawiera wszystkie informacje potrzebne do uzyskania dostępu do usługi sieci Web. Na przykład klucz interfejsu API jest udostępniany w celu zezwolenia na dostęp do usługi, a strony pomocy interfejsu API są udostępniane, aby ułatwić rozpoczęcie pisania kodu.
 

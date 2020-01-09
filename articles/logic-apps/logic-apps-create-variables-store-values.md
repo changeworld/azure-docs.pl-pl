@@ -1,17 +1,17 @@
 ---
-title: Twórz zmienne do przechowywania wartości i zarządzaj nimi
-description: Jak przechowywać wartości i zarządzać nimi za pomocą zmiennych w Azure Logic Apps
+title: Twórz zmienne do przechowywania i przekazywania wartości oraz zarządzaj nimi
+description: Dowiedz się, jak przechowywać, zarządzać, używać i przekazywać wartości przy użyciu zmiennych w zautomatyzowanych zadaniach i przepływie pracy, które tworzysz przy użyciu Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456700"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Przechowywanie wartości i zarządzanie nimi przy użyciu zmiennych w Azure Logic Apps
 
@@ -72,7 +72,7 @@ Można utworzyć zmienną i zadeklarować jej typ danych i wartość początkow�
    | **Wartość** | Nie | <*wartość początkowa*> | Początkowa wartość zmiennej <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać wartość początkową dla zmiennej. |
    |||||
 
-   Na przykład:
+   Przykład:
 
    ![Zainicjuj zmienną](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -208,10 +208,10 @@ Aby *zwiększyć lub zwiększyć* zmienną przez wartość stałą, Dodaj akcję
    | Właściwość | Wymagane | Wartość |  Opis |
    |----------|----------|-------|--------------|
    | **Nazwa** | Tak | *Nazwa zmiennej* <> | Nazwa zmiennej do zwiększenia |
-   | **Wartość** | Nie | <*wartość przyrostu*> | Wartość używana do zwiększania wartości zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zwiększania zmiennej. |
+   | **Wartość** | Nie | <*increment-value*> | Wartość używana do zwiększania wartości zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zwiększania zmiennej. |
    ||||
 
-   Na przykład:
+   Przykład:
 
    ![Przykład wartości przyrostu](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
@@ -329,7 +329,7 @@ Poniżej przedstawiono właściwości akcji **zmniejszania zmiennej** :
 | Właściwość | Wymagane | Wartość |  Opis |
 |----------|----------|-------|--------------|
 | **Nazwa** | Tak | *Nazwa zmiennej* <> | Nazwa zmiennej do zmniejszenia | 
-| **Wartość** | Nie | <*wartość przyrostu*> | Wartość zmniejszania zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zmniejszenia wartości zmiennej. |
+| **Wartość** | Nie | <*increment-value*> | Wartość zmniejszania zmiennej. Wartość domyślna to 1. <p><p>**Porada**: Chociaż opcjonalna, ustaw tę wartość jako najlepsze rozwiązanie, aby zawsze znać konkretną wartość zmniejszenia wartości zmiennej. |
 ||||| 
 
 Jeśli przełączysz projektanta z edytorem widoku kodu, w tym miejscu zostanie wyświetlona Akcja **Zmniejsz zmienną** w definicji aplikacji logiki, która jest w formacie JSON.

@@ -1,30 +1,19 @@
 ---
-title: Samouczek dotyczący uaktualniania aplikacji Service Fabric | Microsoft Docs
+title: Samouczek dotyczący uaktualniania aplikacji Service Fabric
 description: W tym artykule omówiono środowisko wdrażania aplikacji Service Fabric, zmiany kodu i wdrażania uaktualnienia przy użyciu programu Visual Studio.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167373"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464825"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Samouczek uaktualniania aplikacji Service Fabric przy użyciu programu Visual Studio
 > [!div class="op_single_selector"]
 > * [Program PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
-> * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
+> * [Program Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
 
@@ -43,12 +32,12 @@ Wybranie pozycji **Publikuj** powoduje wyświetlenie okna podręcznego i można 
 
 Teraz możesz kliknąć przycisk **Publikuj** w oknie dialogowym. [Aby wyświetlić klaster i aplikację](service-fabric-visualizing-your-cluster.md), można użyć Service Fabric Explorer. Aplikacja obiektów wizualnych ma usługę sieci Web, do której można przejść, wpisując [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) na pasku adresu przeglądarki.  Powinny być widoczne 10 obiektów wizualizacji przenoszonych wokół ekranu.
 
-**Uwaga:** W przypadku wdrażania w profilu `Cloud.xml` (Azure Service Fabric) aplikacja powinna następnie być dostępna przy użyciu **protokołu http://{Servicefabricname}. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Upewnij się, że w Load Balancer skonfigurowano `8081/TCP` (Znajdź Load Balancer w tej samej grupie zasobów co wystąpienie Service Fabric).
+**Uwaga:** W przypadku wdrażania w usłudze `Cloud.xml` profile (Azure Service Fabric) aplikacja powinna być dostępna przy użyciu **protokołu http://{Servicefabricname}. { Region}. cloudapp. Azure. com: 8081/visualobjects/** . Upewnij się, że skonfigurowano `8081/TCP` w Load Balancer (Znajdź Load Balancer w tej samej grupie zasobów co wystąpienie Service Fabric).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2. Aktualizacja przykładu obiektów wizualnych
 Można zauważyć, że w wersji, która została wdrożona w kroku 1, obiekty wizualne nie są obracane. Uaktualnimy tę aplikację do jednego miejsca, w którym obiekty wizualne również są obracane.
 
-Wybierz projekt VisualObjects. ActorService w ramach rozwiązania VisualObjects i Otwórz plik **VisualObjectActor.cs** . W tym pliku przejdź do metody `MoveObject`, Dodaj komentarz do `visualObject.Move(false)` i Usuń komentarz `visualObject.Move(true)`. Ta zmiana kodu powoduje obrócenie obiektów po uaktualnieniu usługi.  **Teraz można skompilować (nie ponownie skompilować) rozwiązanie**, które kompiluje zmodyfikowane projekty. W przypadku wybrania opcji *Kompiluj ponownie wszystkie*należy zaktualizować wersje dla wszystkich projektów.
+Wybierz projekt VisualObjects. ActorService w ramach rozwiązania VisualObjects i Otwórz plik **VisualObjectActor.cs** . W tym pliku przejdź do metody `MoveObject`, Skomentuj `visualObject.Move(false)`i Usuń komentarz `visualObject.Move(true)`. Ta zmiana kodu powoduje obrócenie obiektów po uaktualnieniu usługi.  **Teraz można skompilować (nie ponownie skompilować) rozwiązanie**, które kompiluje zmodyfikowane projekty. W przypadku wybrania opcji *Kompiluj ponownie wszystkie*należy zaktualizować wersje dla wszystkich projektów.
 
 Potrzebujemy również wersji naszej aplikacji. Aby zmienić wersję po kliknięciu prawym przyciskiem myszy projektu **VisualObjects** , można użyć opcji **Edytuj wersje manifestu** programu Visual Studio. Wybranie tej opcji powoduje wyświetlenie okna dialogowego z wersjami w następujący sposób:
 

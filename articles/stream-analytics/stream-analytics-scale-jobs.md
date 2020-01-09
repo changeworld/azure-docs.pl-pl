@@ -1,50 +1,48 @@
 ---
-title: Skalowanie w górę i w zadaniach usługi Azure Stream Analytics
-description: W tym artykule opisano sposób skalować zadania usługi Stream Analytics, partycjonowanie danych wejściowych, dostosowywanie zapytania i ustawiając zadania jednostek przesyłania strumieniowego.
-services: stream-analytics
+title: Skalowanie w górę i w dół w Azure Stream Analytics zadaniach
+description: W tym artykule opisano sposób skalowania zadania Stream Analytics przez Partycjonowanie danych wejściowych, dostrajanie zapytania i Ustawianie jednostek przesyłania strumieniowego zadań.
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: fe4d37563af159f566bc3fb03a3cfe136e7cb734
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4f89fb07fbbff3beee66f80675bb5c3a32136807
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621726"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458758"
 ---
-# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalować zadania usługi Azure Stream Analytics, w celu zwiększenia przepływności
-W tym artykule pokazano, jak dostosowywanie zapytania usługi Stream Analytics w celu zwiększenia przepływności zadania usługi Stream Analytics. Następującymi wskazówkami umożliwia skalowanie zadania do obsługi wyższe obciążenie i korzystać z zalet więcej zasobów systemowych (np. większą przepustowość, więcej zasobów procesora CPU, więcej pamięci).
-Jako warunek wstępny może być konieczne przeczytaj następujące artykuły:
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalowanie zadania Azure Stream Analytics w celu zwiększenia przepływności
+W tym artykule opisano sposób dostrajania zapytania Stream Analytics, aby zwiększyć przepływność zadań analizy przesyłania strumieniowego. Poniższy przewodnik umożliwia skalowanie zadania w celu obsługi wyższego obciążenia i wykorzystanie większej ilości zasobów systemowych (takich jak większa przepustowość, więcej zasobów procesora CPU, więcej pamięci).
+Jako warunek wstępny może być konieczne zapoznanie się z następującymi artykułami:
 -   [Opis i dostosowywanie jednostek przesyłania strumieniowego](stream-analytics-streaming-unit-consumption.md)
--   [Tworzenie zadań równoległego](stream-analytics-parallelization.md)
+-   [Tworzenie zadań działania równoległego](stream-analytics-parallelization.md)
 
-## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Przypadek 1 — zapytania jest natury pełni równoległego partycjach danych wejściowych
-Jeśli zapytanie jest natury pełni równoległego partycjach danych wejściowych, należy wykonać następujące czynności:
-1.  Tworzenie zapytania do zaskakująco równoległymi przy użyciu **PARTITION BY** — słowo kluczowe. Zobacz więcej szczegółów w sekcji zaskakująco równoległymi zadaniami [na tej stronie](stream-analytics-parallelization.md).
-2.  W zależności od typów danych wyjściowych jest używany w zapytaniu, niektóre dane wyjściowe może albo nie może być równoległego, lub potrzebujesz dalszych zaskakująco równoległymi konfigurację. Na przykład danych wyjściowych SQL, SQL data Warehouse i usługi Power BI nie są równoległego. Dane wyjściowe są zawsze scalane przed wysłaniem do ujścia danych wyjściowych. Obiekty BLOB, tabel, Azure Data Lake Store, magistrali usług i funkcji platformy Azure automatycznie zrównoleglona. Bazy danych cosmos DB i Centrum zdarzeń musi mieć ustawiony na zgodny z konfiguracji PartitionKey **PARTITION BY** pola (zazwyczaj PartitionId). Dla Centrum zdarzeń należy też zwracać szczególną uwagę na jest zgodna z liczbą partycji dla wszystkich danych wejściowych i wszystkie dane wyjściowe, aby uniknąć cross-over między partycjami. 
-3.  Uruchamianie zapytania przy użyciu **6 SU** (czyli pełną pojemność pojedynczego węzła obliczeń) do pomiaru maksymalnego osiągalnej przepływności, i jeśli używasz **GROUP BY**, zmierzyć, jak wiele grup (kardynalności) zadanie może dojście. Poniżej przedstawiono ogólne objawy zadania osiągnięcia limitów zasobów systemowych.
-    - Metryki % SU wynosi ponad 80%. Oznacza to, pamięci, których użycie jest wysokie. Czynniki przyczyniające się do wzrostu tej metryki są opisane [tutaj](stream-analytics-streaming-unit-consumption.md). 
-    -   Sygnatura czasowa danych wyjściowych jest objęte względem czas zegarowy. W zależności od logiki kwerendy sygnatura czasowa danych wyjściowych może być przesunięcie logiki, od czas zegarowy. Jednak należy postępu w przybliżeniu tej samej stawki. Jeśli sygnatura czasowa danych wyjściowych jest objęte dalsze i dalsze tyle, jest wskaźnik, który jest overworking systemu. Może być to wynikiem podrzędnego dane wyjściowe obiektu sink ograniczania przepływności lub wysokie wykorzystanie procesora CPU. Nie firma Microsoft zapewnia metryki użycia procesora CPU w tej chwili, dlatego może być trudne do odróżniania dwóch.
-        - Jeśli problem będzie się z powodu dławienia ujścia, może być konieczne zwiększenie liczby partycji danych wyjściowych (i również dane wejściowe partycje zapewnienie w pełni równoległego zadania), lub zwiększ ilość zasobów obiektu sink (na przykład liczbę jednostek żądania dla usługi CosmosDB).
-    - W diagramie zadania znajduje się na partycji zaległości zdarzenie metryki dla każdego danych wejściowych. Jeśli Metryka zdarzenia zaległości stale rośnie, jest również wskazuje, że zasób systemowy jest ograniczony (albo z powodu ograniczania ujścia danych wyjściowych lub wysokie użycie procesora CPU).
-4.  Po określeniu limitów co 6 zadania SU może nawiązać połączenie, należy można ekstrapolację liniowo wydajnością przetwarzania zadania w miarę dodawania więcej SUs, przy założeniu, że nie masz żadnych wynikające z niesymetryczności danych, które sprawia, że niektóre partycji "gorącymi".
+## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Przypadek 1 — zapytanie jest z założenia całkowicie działania równoległego między partycjami wejściowymi
+Jeśli zapytanie jest z założenia w pełni działania równoległego między partycjami wejściowymi, można wykonać następujące czynności:
+1.  Utwórz zapytanie, aby było zaskakująco równoległe za pomocą słowa kluczowego **Partition by** . Więcej szczegółów znajduje się w sekcji zaskakująco Jobs Jobs [na tej stronie](stream-analytics-parallelization.md).
+2.  W zależności od typów danych wyjściowych używanych w zapytaniu niektóre dane wyjściowe mogą nie być działania równoległego lub muszą być zaskakująco równoległe w dalszej konfiguracji. Na przykład dane wyjściowe SQL, SQL DW i PowerBI nie są działania równoległego. Dane wyjściowe są zawsze scalane przed wysłaniem do ujścia danych wyjściowych. Obiekty blob, tabele, ADLS, Service Bus i funkcja platformy Azure są automatycznie równoległe. CosmosDB i centrum zdarzeń muszą mieć ustawioną konfigurację PartitionKey, aby dopasować ją do pola **Partition by** (zazwyczaj PartitionID). W przypadku centrum zdarzeń należy również zwrócić szczególną uwagę na liczbę partycji dla wszystkich danych wejściowych i wszystkich wyjść, aby uniknąć przekroczenia między partycjami. 
+3.  Uruchom zapytanie z **6 Su** (to jest pełna pojemność jednego węzła obliczeniowego), aby zmierzyć maksymalną osiągalną przepływność, a jeśli używasz funkcji **Grupuj według**, Zmierz liczbę grup (Kardynalność), które może obsłużyć zadanie. Poniżej znajdują się ogólne objawy działania, które ograniczają zasoby systemowe.
+    - Metryka użycia SU% jest ponad 80%. Oznacza to, że użycie pamięci jest wysokie. Czynniki, które przyczyniają się do zwiększenia tej metryki, zostały opisane [tutaj](stream-analytics-streaming-unit-consumption.md). 
+    -   Wyjściowa sygnatura czasowa jest uwzględniana w odniesieniu do zegara ściany. W zależności od logiki zapytania wyjściowa sygnatura czasowa może być przesunięta do logiki od czasu zegara ściany. Należy jednak postępować w przybliżeniu z tą samą szybkością. Jeśli sygnatura czasowa wyjściowa jest w dalszej i dalszej stopniu, jest wskaźnikiem, że system jest przesłonięty. Może to wynikać z przepływności wyjściowej wyjściowego ujścia lub wysokie wykorzystanie procesora CPU. W tej chwili nie udostępniamy metryki użycia procesora, więc może być trudne odróżnienie tych dwóch.
+        - Jeśli problem jest związany z ograniczaniem ujścia, może być konieczne zwiększenie liczby partycji wyjściowych (a także partycji wejściowych, aby zapewnić całkowite działania równoległego zadania) lub zwiększyć ilość zasobów ujścia (na przykład liczba jednostek żądań dla CosmosDB).
+    - Na diagramie zadań istnieje Metryka zdarzenia zaległości dla każdej partycji dla każdego danych wejściowych. Jeśli Metryka zdarzenia zaległości ciągle rośnie, jest również wskaźnikiem, że zasób systemowy jest ograniczony (z powodu ograniczania ujścia danych wyjściowych lub dużego procesora).
+4.  Po ustaleniu limitów, które mogą dotrzeć do 6 zadań SU, można wykonać ekstrapolację liniowo pojemności przetwarzania zadania podczas dodawania większej liczby usług SUs, przy założeniu, że nie ma żadnych pochylania danych, które powodują, że niektóre partycje "gorąca".
 
 > [!NOTE]
-> Wybierz odpowiednią liczbę jednostek przesyłania strumieniowego: Ponieważ usługi Stream Analytics tworzy węzeł przetwarzania dla każdego 6 SU dodane, najlepiej jest zapewnienie liczbę węzłów dzielnikiem liczby partycji danych wejściowych, dzięki czemu partycje mogą być równomiernie rozłożona na węzły.
-> Na przykład mieć mierzona z 6 SU zadania można osiągnąć 4 MB/s, takich jak przetwarzanie częstotliwość i liczba Twoich partycję danych wejściowych wynosi 4. Można uruchomić zadanie z 12 polecenia SU to osiągnąć szybkość przetwarzania w usłudze około 8 MB/s lub 24 SU, aby osiągnąć 16 MB/s. Następnie można zdecydować, kiedy należy zwiększyć liczbę SU zadania jaka wartość jako funkcja częstotliwość danych wejściowych.
+> Wybierz odpowiednią liczbę jednostek przesyłania strumieniowego: ponieważ Stream Analytics tworzy węzeł przetwarzania dla każdego z 6 dodanych SU, najlepiej jest określić liczbę węzłów jako dzielnik liczby partycji wejściowych, aby partycje mogły być równomiernie rozproszone w węzłach.
+> Załóżmy na przykład, że dane zadanie SU można osiągnąć 4 MB/s, a liczba partycji wejściowych to 4. Możesz uruchomić zadanie z 12 SU, aby osiągnąć około 8 MB/s szybkości przetwarzania lub 24 SU do osiągnięcia 16 MB/s. Następnie można określić, kiedy ma zostać zwiększony numer SU dla zadania, do jakiej wartości jako funkcja stawki wejściowej.
 
 
-## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>Przypadek 2 — Jeśli zapytanie nie jest zaskakująco równoległymi.
-Jeśli zapytanie nie jest zaskakująco równoległymi, możesz wykonać następujące czynności.
-1.  Rozpoczyna się od zapytania bez **PARTITION BY** aby, najpierw należy unikać podziału na partycje złożoności i uruchomić zapytania z 6 SU do pomiaru maksymalnego obciążenia, podobnie jak w [przypadek 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions).
-2.  Jeśli przewidywanego obciążenia można osiągnąć, w okresie przepływności, wszystko będzie gotowe. Alternatywnie można mierzyć to samo zadanie uruchomione w 3 SU i 1 jednostka wyszukiwania, aby dowiedzieć się z minimalną liczbą SU, który działa w przypadku danego scenariusza.
-3.  Jeśli nie można osiągnąć żądany przepływności, spróbuj przerwanie działania zapytania w wielu kroków, jeśli jest to możliwe, nie ma już wiele kroków i przydzielić SU do 6 dla każdego kroku w zapytaniu. Na przykład jeśli masz kroki 3, Przydziel 18 SU w opcji "Skalowanie".
-4.  Podczas uruchamiania takie zadania, Stream Analytics umieszcza każdego kroku na swój własny węzeł z dedykowanych zasobów SU 6. 
-5.  Jeśli nadal nie został osiągnięty urządzenie docelowe obciążenia, możesz spróbować użyć **PARTITION BY** od bliżej kroki w danych wejściowych. Aby uzyskać **GROUP BY** operator, który może nie być w sposób naturalny partitionable, można używać lokalnych/globalne wzorca agregacji do wykonania podzielonym na partycje **GROUP BY** następuje niepartycjonowana **GROUP BY** . Na przykład jeśli chcesz policzyć ile samochodów skończywszy na stoisku każdy płatny co 3 minuty, a ilość danych jest poza to, co może być obsługiwany przez 6 SU.
+## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>Przypadek 2 — Jeśli zapytanie nie jest zaskakująco równolegle.
+Jeśli zapytanie nie jest zaskakująco równolegle, możesz wykonać następujące czynności.
+1.  Zacznij od zapytania bez **partycji** , aby uniknąć złożoności partycjonowania, a następnie uruchom zapytanie z 6 Su, aby zmierzyć maksymalne obciążenie tak, jak w [przypadku 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions).
+2.  W przypadku osiągnięcia przewidywanego obciążenia w zakresie przepływności można wykonać te czynności. Alternatywnie możesz zdecydować się na zmierzenie tego samego zadania uruchomionego o godzinie 3 i 1 SU, aby dowiedzieć się, jaka jest minimalna liczba identyfikatorów SU, które działają w danym scenariuszu.
+3.  Jeśli nie można osiągnąć żądanej przepływności, spróbuj przerwać zapytanie w wielu krokach, jeśli jest to możliwe, jeśli nie ma już wielu kroków i Przydziel do 6 SU dla każdego kroku w zapytaniu. Na przykład jeśli masz 3 kroki, Przydziel 18-SU w opcji "Skaluj".
+4.  Podczas uruchamiania takiego zadania Stream Analytics każdy krok jest umieszczany w osobnym węźle z dedykowanym 6 zasobami SU. 
+5.  Jeśli nadal nie osiągnięto celu ładowania, możesz spróbować użyć **partycji** , rozpoczynając od kroków zbliżonych do danych wejściowych. Dla operatora **Grupuj według** , który nie może być naturalnie partycjonowany, można użyć wzorca zagregowanego lokalnego/globalnego do wykonywania partycjonowanej **grupy** , po której następuje niepartycjonowana **Grupa według**. Na przykład, jeśli chcesz policzyć liczbę samochodów przechodzących przez każdy z nich, co 3 minuty, a ilość danych przekracza to, co może być obsługiwane przez 6 SU.
 
 Zapytanie:
 
@@ -58,31 +56,31 @@ Zapytanie:
  FROM Step1
  GROUP BY TumblingWindow(minute, 3), TollBoothId
  ```
-W powyższym zapytaniu są zliczanie samochodów na stoisku płatny dla każdej partycji, a następnie dodanie liczby z wszystkie partycje ze sobą.
+W powyższym zapytaniu są zliczane samochody na każdą partycję, a następnie dodając licznik ze wszystkich partycji jednocześnie.
 
-Po podzielona na partycje, dla każdej partycji w tym kroku należy przydzielić maksymalnie 6 polecenia SU, każda partycja o 6 SU jest maksymalna, więc każda partycja można umieścić we własnej węzeł przetwarzania.
+Po podpisaniu na partycje, dla każdej partycji kroku, Przydziel do 6 SU, każda partycja o 6 SU jest maksymalna, więc każda partycja może zostać umieszczona w jego własnym węźle przetwarzania.
 
 > [!Note]
-> Jeśli zapytanie nie może zostać podzielona na partycje, dodanie dodatkowych SU w zapytaniu wielu kroków może nie zawsze poprawia przepływności. Jednym ze sposobów wydajność jest aby zmniejszyć wolumin na początkowe kroki przy użyciu lokalnego/globalne wzorca agregacji, zgodnie z powyższym opisem w kroku 5.
+> Jeśli zapytania nie można podzielić na partycje, dodanie dodatkowych wartości SU w zapytaniu wieloetapowym może nie zawsze zwiększyć przepływność. Jednym ze sposobów na uzyskanie wydajności jest zredukowanie ilości początkowej czynności przy użyciu lokalnego/globalnego wzorca agregacji, zgodnie z powyższym opisem w kroku 5.
 
-## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>Przypadek 3 — wiele niezależnych kwerend działają w ramach zadania.
-Dla niektórych niezależnego dostawcy oprogramowania zastosowań, gdzie jest bardziej wydajne do przetwarzania danych z wielu dzierżaw w jednym zadaniu, przy użyciu oddzielnych dane wejściowe i wyjściowe dla każdego dzierżawcy, użytkownik może pozostać uruchomiony jeszcze kilka (na przykład 20) niezależnych kwerend w jednym zadaniu. Zakłada się, jest stosunkowo małe obciążenie każdego takiego podzapytania. W takim przypadku możesz wykonać następujące czynności.
-1.  W tym przypadku nie używaj **PARTITION BY** w zapytaniu
-2.  Zmniejsz liczbę partycji danych wejściowych do najmniejszej możliwej wartości 2, korzystania z Centrum zdarzeń.
-3.  Uruchom zapytanie, za pomocą polecenia SU 6. Za pomocą oczekiwanego obciążenia dla każdej podzapytania należy dodać dowolną liczbę takich podzapytań jak to możliwe, dopóki zadanie jest osiągnięcia limitów zasobów systemowych. Zapoznaj się [przypadek 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) dla objawy w takiej sytuacji.
-4.  Po w przypadku osiągnięcia limitu podzapytania mierzony powyżej przystąpić do dodawania podzapytanie do nowego zadania. Liczba zadań do uruchomienia w zależności od liczby zapytań niezależnych powinna być dość liniowego, przy założeniu, że masz obciążenie pochylanie. Można następnie prognozy, ile 6 zadania polecenia SU, należy uruchomić w zależności od liczby dzierżawców, którą chcesz obsługiwać.
-5.  Jeśli sprzężenia danych odwołania z takich zapytań, union dane wejściowe razem przed dołączeniem o takiej samej odwołują się do danych. Następnie Podziel się zdarzenia, jeśli to konieczne. W przeciwnym razie każdego odwołania sprzężenia danych przechowuje kopie danych referencyjnych w pamięci, prawdopodobnie niepotrzebnie porotwórcze się użycia pamięci.
+## <a name="case-3---you-are-running-lots-of-independent-queries-in-a-job"></a>Przypadek 3 — w zadaniu jest uruchomionych wiele niezależnych zapytań.
+W przypadku niektórych przypadków użycia niezależnego dostawcy oprogramowania, w przypadku których jest bardziej opłacalne przetwarzanie danych z wielu dzierżawców w jednym zadaniu przy użyciu oddzielnych danych wejściowych i wyjściowych dla każdej dzierżawy, może się okazać, że w jednym zadaniu jest uruchomionych bardzo kilka (na przykład 20) niezależnych zapytań. Założenie to każde obciążenie tego podzapytania jest stosunkowo małe. W takim przypadku można wykonać następujące czynności.
+1.  W tym przypadku nie należy używać **partycji według** zapytania
+2.  Zmniejsz liczbę partycji wejściowych do najmniejszej możliwej wartości 2, jeśli używasz centrum zdarzeń.
+3.  Uruchom zapytanie z 6 SU. Przy oczekiwanym obciążeniu dla każdego podzapytania Dodaj możliwie jak najwięcej takich zapytań, aż do momentu, gdy zadanie zakończy limity zasobów systemowych. Jeśli tak się stanie, zapoznaj się z [przypadkiem 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) .
+4.  Po osiągnięciu powyższego limitu podzapytania należy rozpocząć dodawanie podzapytania do nowego zadania. Liczba zadań do uruchomienia jako funkcja liczby niezależnych zapytań powinna być dość liniowa, przy założeniu, że nie ma żadnego pochylenia obciążenia. Następnie można prognozować liczbę zadań SU, które należy uruchomić jako funkcję liczby dzierżawców, które chcesz obsłużyć.
+5.  W przypadku używania dołączania danych referencyjnych z takimi zapytaniami przed łączeniem z tymi samymi danymi referencyjnymi należy łączyć dane wejściowe. Następnie Podziel zdarzenia w razie potrzeby. W przeciwnym razie każde sprzężenie danych referencyjnych przechowuje kopię danych referencyjnych w pamięci, co sprawia, że nie jest to konieczne.
 
 > [!Note] 
-> Ilu dzierżawców do umieszczenia w poszczególnych zadaniach?
-> Ten wzorzec zapytania często ma dużą liczbę podzapytania i skutkuje bardzo dużych i złożonych topologii. Kontroler zadania nie można obsłużyć dużą topologii. Jako ogólną regułę można przyjąć pozostanie w obszarze 40 dzierżaw 1 zadanie SU i 60 dzierżaw 3 SU i 6 zadania SU. Gdy przekraczają pojemności kontrolera, zadanie nie zostanie pomyślnie uruchomiona.
+> Ile dzierżawców ma zostać umieszczonych w każdym zadaniu?
+> Ten wzorzec zapytania często zawiera dużą liczbę podzapytań i skutkuje bardzo dużą i złożoną topologią. Kontroler zadania może nie być w stanie obsłużyć takiej dużej topologii. Zgodnie z zasadą kciuka można utrzymywać w obszarze 40 dzierżaw za 1 zadanie SU i 60 dzierżawy dla 3 zadań Su i 6. W przypadku przekroczenia pojemności kontrolera zadanie nie zostanie uruchomione pomyślnie.
 
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

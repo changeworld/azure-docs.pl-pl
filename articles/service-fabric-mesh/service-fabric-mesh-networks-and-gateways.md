@@ -1,49 +1,40 @@
 ---
-title: Wprowadzenie do usługi Azure Service Fabric sieci | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sieci, bramy i routing ruchu inteligentne w usługi Service Fabric siatki.
-services: service-fabric-mesh
-documentationcenter: .net
+title: Wprowadzenie do usługi Azure Service Fabric Networking
+description: Informacje na temat sieci, bram i inteligentnego routingu ruchu w Service Fabric siatki.
 author: dkkapur
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459134"
 ---
-# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Wprowadzenie do sieci w aplikacji usługi Service Fabric siatki
-W tym artykule opisano różnego rodzaju moduły równoważenia obciążenia, jak połączyć sieć bramy za pomocą aplikacji do innych sieci i jak ruch jest przekierowywany między usługami w swoich aplikacjach.
+# <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Wprowadzenie do sieci w aplikacjach Service Fabric siatki
+W tym artykule opisano różne typy modułów równoważenia obciążenia, sposób łączenia sieci z aplikacjami z innymi sieciami oraz sposób kierowania ruchu między usługami w aplikacjach.
 
-## <a name="layer-4-vs-layer-7-load-balancers"></a>Warstwy 4 równoważenia obciążenia warstwy 7 programu vs
-Równoważenie obciążenia mogą być wykonywane w różnych warstwach w [OSI model](https://en.wikipedia.org/wiki/OSI_model) sieci, często w warstwie 4 (L4) i warstwy 7 (L7).  Zazwyczaj istnieją dwa typy usługi równoważenia obciążenia:
+## <a name="layer-4-vs-layer-7-load-balancers"></a>Moduły równoważenia obciążenia warstwy 4 vs warstwy 7
+Równoważenie obciążenia można przeprowadzić na różnych warstwach w [modelu osi](https://en.wikipedia.org/wiki/OSI_model) sieci, często w warstwach 4 (P4) i w warstwie 7 (P7).  Zazwyczaj istnieją dwa typy modułów równoważenia obciążenia:
 
-- Moduł równoważenia obciążenia P4 działa w warstwie transportowej sieci obsługuje dostarczanie pakietów nie w odniesieniu do zawartości pakietów. Tylko nagłówki pakietów są kontrolowane przez moduły równoważenia obciążenia, dzięki czemu równoważenia kryteriów jest ograniczony do adresów IP i portów. Na przykład klient nawiązuje połączenie TCP do modułu równoważenia obciążenia. Moduł równoważenia obciążenia przerywa połączenie (według odpowiada bezpośrednio na SYN), wybiera wewnętrznej bazy danych i tworzy nowe połączenie TCP do wewnętrznej bazy danych (wysyła nowe SYN). Moduł równoważenia obciążenia P4 zazwyczaj działa tylko na poziomie połączenia P4 TCP/UDP lub sesji. Dlatego Równoważenie obciążenia przekierowuje bajtów wokół i upewnia się, bajty z tej samej sesji likwidacji w tej samej wewnętrznej bazy danych. Moduł równoważenia obciążenia P4 nie rozpoznaje wszelkie szczegóły aplikacji bajtów, które jest przenoszona. Bajtów może być dowolnego protokołu aplikacji.
+- Moduł równoważenia obciążenia P4 działa w warstwie transportu sieciowego, która zajmuje się dostarczaniem pakietów bez względu na zawartość pakietów. Moduł równoważenia obciążenia sprawdza tylko nagłówki pakietów, więc kryteria równoważenia są ograniczone do adresów IP i portów. Na przykład klient nawiązuje połączenie TCP z usługą równoważenia obciążenia. Moduł równoważenia obciążenia kończy połączenie (przez odpowiadanie bezpośrednio na SYN), wybranie zaplecza i nawiązanie nowego połączenia TCP z zapleczem (wysyła nowy SYN). Moduł równoważenia obciążenia P4 zazwyczaj działa tylko na poziomie połączenia TCP/UDP P4 lub sesji. W tym celu równoważenie obciążenia przekierowuje bajty i zapewnia, że bajty z tej samej sesji są zawijane w tym samym zaplecze. Moduł równoważenia obciążenia P4 jest nieświadomy wszelkich szczegółów aplikacji przenoszonych przez ten program. Bajty mogą być dowolnymi protokołami aplikacji.
 
-- Moduł równoważenia obciążenia L7 działa w warstwie aplikacji, która zajmuje się zawartość każdego pakietu. Sprawdza ono zawartość pakietu, ponieważ sam protokołów, takich jak HTTP, HTTPS i WebSockets. Moduł równoważenia obciążenia daje możliwość wykonywania zaawansowanego routingu. Na przykład klient nawiązuje połączenie TCP protokołu HTTP/2 do modułu równoważenia obciążenia. Moduł równoważenia obciążenia, która jest następnie przechodzi nawiązać dwa połączenia wewnętrznej bazy danych. Gdy klient wysyła dwóch strumieni HTTP/2 do modułu równoważenia obciążenia, strumienia, jeden są wysyłane do wewnętrznej bazy danych jedną i strumienia dwa są wysyłane do zaplecza dwa. W związku z tym nawet Multipleksowanie klientów, którzy mają bardzo różne żądania obciążenia będzie być równoważone wydajnie w zaplecza. 
+- Moduł równoważenia obciążenia P7 działa w warstwie aplikacji, która zajmuje się zawartością każdego pakietu. Sprawdza zawartość pakietu, ponieważ rozumie protokoły takie jak HTTP, HTTPS lub WebSockets. Dzięki temu moduł równoważenia obciążenia może wykonywać zaawansowane Routing. Na przykład klient tworzy pojedyncze połączenie TCP/2 z usługą równoważenia obciążenia. Moduł równoważenia obciążenia następnie przechodzi do dwóch połączeń zaplecza. Gdy klient wysyła dwa strumienie protokołu HTTP/2 do modułu równoważenia obciążenia, strumień jeden jest wysyłany do zaplecza, a dwa strumienie są wysyłane do drugiego zaplecza. W ten sposób nawet multiplekser klientów, którzy znacznie różnią się obciążeniami żądań, będzie wydajnie zrównoważony przez założenia. 
 
 ## <a name="networks-and-gateways"></a>Sieci i bramy
-W [Model zasobów sieci szkieletowej usług](service-fabric-mesh-service-fabric-resources.md), zasobu sieciowego jest zasobem indywidualnie do wdrożenia, niezależnie od zasób aplikacji lub usługi, który może odwoływać się do niego jako ich zależności. Służy do tworzenia sieci dla aplikacji, która jest otwarta dla Internetu. Wiele usług z różnych aplikacji może być częścią tej samej sieci. Tej sieci prywatnej jest tworzony i zarządzany przez usługę Service Fabric i nie jest siecią wirtualną platformy Azure (VNET). Aplikacje mogą być dynamicznie dodawane i usuwane z zasobu sieciowego, który pozwala włączać i wyłączać połączenie między SIECIAMI. 
+W [modelu zasobów Service Fabric](service-fabric-mesh-service-fabric-resources.md)zasób sieciowy jest indywidualnie wdrażanym zasobem, niezależnie od zasobu aplikacji lub usługi, który może odwoływać się do niego jako zależność. Służy do tworzenia sieci dla aplikacji, które są otwarte dla Internetu. Wiele usług z różnych aplikacji może być częścią tej samej sieci. Ta sieć prywatna jest tworzona i zarządzana przez Service Fabric i nie jest siecią wirtualną platformy Azure. Aplikacje można dynamicznie dodawać i usuwać z zasobów sieciowych w celu włączenia i wyłączenia łączności sieci wirtualnej. 
 
-Brama jest używane do zestawiania dwie sieci. Wdraża zasobu bramy [proxy usługa Envoy](https://www.envoyproxy.io/) zapewniający P4 dla wszystkich protokołów i L7 routingu dla zaawansowanych routing aplikacji protokołu HTTP (S). Brama kieruje ruchem w sieci z poziomu zewnętrznej sieci i określa, które usługi na potrzeby kierowania ruchu do.  Zewnętrznej sieci może być siecią open (zasadniczo publicznej sieci internet) lub siecią wirtualną platformy Azure, która umożliwia łączenie się z innymi aplikacjami platformy Azure i zasobów. 
+Brama jest używana do mostkowania dwóch sieci. Zasób bramy wdraża [serwer proxy wysłannika](https://www.envoyproxy.io/) , który zapewnia Routing P4 dla dowolnego protokołu i routingu P7 dla zaawansowanego ROUTINGU aplikacji http (S). Brama kieruje ruch do sieci z sieci zewnętrznej i określa, do której usługi należy kierować ruchem.  Siecią zewnętrzną może być otwarta sieć (zasadniczo publiczny Internet) lub Sieć wirtualna platformy Azure, która umożliwia nawiązywanie połączeń z innymi aplikacjami i zasobami platformy Azure. 
 
-![Sieci i bramy][Image1]
+![Sieć i Brama][Image1]
 
-Po utworzeniu zasobu sieciowego przy użyciu `ingressConfig`, publiczny adres IP jest przypisany do zasobu sieciowego. Publiczny adres IP zostaną powiązane z okresem istnienia zasobu sieciowego.
+Gdy zasób sieciowy zostanie utworzony przy użyciu `ingressConfig`, publiczny adres IP jest przypisywany do zasobu sieciowego. Publiczny adres IP zostanie powiązany z okresem istnienia zasobu sieciowego.
 
-Po utworzeniu aplikacji siatki go odwoływać się istniejącego zasobu sieciowego. Można dodawać nowych portów publicznego lub istniejących portów mogą być usunięte z konfiguracji transferu danych przychodzących. Usuwania zasobu sieciowego zakończy się niepowodzeniem, jeśli zasób aplikacji jest do niego odwoływać. Aplikacja zostanie usunięta, usunięcie zasobu sieciowego.
+Gdy aplikacja siatkowa zostanie utworzona, powinna odwoływać się do istniejącego zasobu sieciowego. Nowe porty publiczne mogą być dodawane lub istniejące porty można usunąć z konfiguracji transferu danych przychodzących. Usunięcie zasobu sieciowego zakończy się niepowodzeniem, jeśli odwołuje się do niego zasób aplikacji. Po usunięciu aplikacji zasób sieciowy zostaje usunięty.
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 Aby dowiedzieć się więcej na temat usługi Service Fabric Mesh, zapoznaj się z omówieniem:
 - [Omówienie usługi Service Fabric Mesh](service-fabric-mesh-overview.md)
 

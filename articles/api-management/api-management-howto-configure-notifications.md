@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie powiadomień i szablonów wiadomości e-mail na platformie Azure API Management | Microsoft Docs
+title: Konfigurowanie powiadomień i szablonów wiadomości e-mail
+titleSuffix: Azure API Management
 description: Dowiedz się, jak skonfigurować powiadomienia i szablony wiadomości e-mail w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -12,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0477b1ba044004eaf95cc138bc2e19f40379566
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072479"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442677"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>How to configure notifications and email templates in Azure API Management
 API Management zapewnia możliwość konfigurowania powiadomień dla określonych zdarzeń oraz konfigurowania szablonów wiadomości e-mail używanych do komunikowania się z administratorami i deweloperami wystąpienia API Management. W tym artykule pokazano, jak skonfigurować powiadomienia dla dostępnych zdarzeń i zawiera omówienie konfigurowania szablonów wiadomości e-mail używanych dla tych zdarzeń.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz wystąpienia usługi API Management, wykonaj następujące czynności: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
+Jeśli nie masz wystąpienia usługi API Management, wykonaj następujące czynności: [Utwórz wystąpienie API Management platformy Azure](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

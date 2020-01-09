@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/19/2017
-ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/26/2019
+ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077089"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500079"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Łączenie narzędzi do skalowania i platformy Spark w usłudze HDInsight
 
@@ -21,17 +21,17 @@ W tym dokumencie przedstawiono sposób przewidywania opóźnień przybycia lotó
 
 Mimo że oba pakiety działają w aparacie wykonywania Spark Apache Hadoop, są blokowane z udostępniania danych w pamięci, ponieważ każdy z nich wymaga odpowiednich sesji platformy Spark. Dopóki ten problem nie zostanie rozwiązany w przyszłej wersji ML Server, obejście tego problemu będzie obsługiwać nienakładające się sesje platformy Spark oraz wymieniać dane za pośrednictwem plików pośrednich. Instrukcje te pokazują, że te wymagania są bezpośrednie do osiągnięcia.
 
-Ten przykład został początkowo udostępniony w porozmawiać o stratach 2016 przez Mario Inchiosa i Roni burd. Możesz to sprawdzić, [tworząc skalowalną platformę do nauki o danych w języku R](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
+Ten przykład został początkowo udostępniony w porozmawiać o stratach 2016 przez Mario Inchiosa i Roni burd. Możesz to sprawdzić, [tworząc skalowalną platformę do nauki o danych w języku R](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop).
 
 Kod został pierwotnie zapisany dla ML Server działającego w usłudze Spark w klastrze usługi HDInsight na platformie Azure. Jednak pojęcie dotyczące mieszania użycia platformy Spark i skalowania w jednym skrypcie jest również prawidłowe w kontekście środowisk lokalnych.
 
-W procedurach przedstawionych w tym dokumencie przyjęto założenie, że masz pośredni poziom wiedzy o języku R i jest to biblioteka [skalowania](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. W tym scenariuszu wprowadzasz do [platformy Spark](https://spark.apache.org/docs/2.1.0/sparkr.html) .
+W procedurach przedstawionych w tym dokumencie przyjęto założenie, że masz pośredni poziom wiedzy o języku R i jest to biblioteka [skalowania](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. W tym scenariuszu nastąpiło wprowadzenie do [platformy Spark](https://spark.apache.org/docs/2.1.0/sparkr.html) .
 
 ## <a name="the-airline-and-weather-datasets"></a>Zestawy danych linii lotniczych i pogody
 
 Dane dotyczące lotu są dostępne z [archiwów rządowych Stanów Zjednoczonych](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Jest on również dostępny jako plik zip z [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Dane o pogodzie mogą być pobierane jako pliki zip w postaci nieprzetworzonej według miesiąca, z [krajowego repozytorium administracji oceanicznej i atmosferycznej](https://www.ncdc.noaa.gov/orders/qclcd/). Na potrzeby tego przykładu Pobierz dane dla maja 2007 – grudzień 2012. Użyj godzinnych plików danych i `YYYYMMMstation.txt` plików w ramach każdego z Zips. 
+Dane o pogodzie mogą być pobierane jako pliki zip w postaci nieprzetworzonej według miesiąca, z [krajowego repozytorium administracji oceanicznej i atmosferycznej](https://www.ncdc.noaa.gov/orders/qclcd/). Na potrzeby tego przykładu Pobierz dane dla maja 2007 – grudzień 2012. Używaj plików danych godzinowych i plików `YYYYMMMstation.txt` w ramach każdego z Zips.
 
 ## <a name="setting-up-the-spark-environment"></a>Konfigurowanie środowiska Spark
 
@@ -80,7 +80,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Następnie Dodaj `Spark_Home` do ścieżki wyszukiwania dla pakietów języka R. Dodanie go do ścieżki wyszukiwania umożliwia korzystanie z programu Spark i Inicjowanie sesji platformy Spark:
+Następnie Dodaj `Spark_Home` do ścieżki wyszukiwania pakietów języka R. Dodanie go do ścieżki wyszukiwania umożliwia korzystanie z programu Spark i Inicjowanie sesji platformy Spark:
 
 ```
 #..setup for use of SparkR  
@@ -194,7 +194,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Importowanie danych linii lotniczych i pogody do ramek dataframes
 
-Teraz używamy funkcji Spark [. DF ()](https://spark.apache.org/docs/latest/api/R/read.df.html) do zaimportowania danych pogody i linii lotniczych do ramek dataframes. Ta funkcja, podobnie jak wiele innych metod Spark, jest wykonywana opóźnieniem, co oznacza, że są umieszczane w kolejce do wykonania, ale nie wykonywane do czasu wymagane.
+Teraz używamy funkcji Spark [. DF ()](https://spark.apache.org/docs/latest/api/R/read.df.html) do zaimportowania danych pogody i linii lotniczych do ramek dataframes. Ta funkcja, podobnie jak wiele innych metod Spark, jest wykonywana opóźnieniem, co oznacza, że są umieszczane w kolejce do wykonania, ale nie wykonywane do momentu, gdy są wymagane.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Ocenianie w innym miejscu
 
-Możemy również użyć modelu do oceniania danych na innej platformie. Zapisanie go do pliku usług pulpitu zdalnego, a następnie przetransferowanie i importowanie tego pulpitu zdalnego do docelowego środowiska oceniania, takiego jak MIcrosoft SQL Server R Services. Ważne jest, aby zapewnić, że poziomy współczynnika danych mają być oceniane jako zgodne z tymi, na których modelu został skompilowany. Takie dopasowanie można osiągnąć poprzez wyodrębnienie i zapisanie informacji o kolumnach skojarzonych z danymi modelowania za pośrednictwem `rxCreateColInfo()` funkcji skalowania, a następnie zastosowanie informacji o tej kolumnie do źródła danych wejściowych w celu przewidywania. W poniższym przykładzie zapiszemy kilka wierszy zestawu danych testowych i wyodrębnisz i użyjesz informacji o kolumnie z tego przykładu w skrypcie przewidywania:
+Możemy również użyć modelu do oceniania danych na innej platformie. Zapisanie go do pliku usług pulpitu zdalnego, a następnie przetransferowanie i importowanie tego pulpitu zdalnego do docelowego środowiska oceniania, takiego jak MIcrosoft SQL Server R Services. Ważne jest, aby zapewnić, że poziomy współczynnika danych mają być oceniane jako zgodne z tymi, na których modelu został skompilowany. Takie dopasowanie można osiągnąć poprzez wyodrębnienie i zapisanie informacji o kolumnach skojarzonych z danymi modelowania za pośrednictwem funkcji `rxCreateColInfo()` przez program skaler, a następnie zastosowanie informacji o tej kolumnie do źródła danych wejściowych w celu przewidywania. W poniższym przykładzie zapiszemy kilka wierszy zestawu danych testowych i wyodrębnisz i użyjesz informacji o kolumnie z tego przykładu w skrypcie przewidywania:
 
 ```
 # save the model and a sample of the test dataset 

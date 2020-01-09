@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell skryptu — Azure Cosmos DB utworzyć tabelę interfejs API tabel
+title: Skrypt programu PowerShell służący do tworzenia tabeli w Azure Cosmos DB interfejs API tabel
 description: Dowiedz się, jak za pomocą skryptu programu PowerShell zaktualizować przepływność dla bazy danych lub kontenera w Azure Cosmos DB interfejs API tabel
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 12a7c9cd6e1a9c1271aa73b9c2b2e1c834c743a7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b99d4ed9043e0411216b953829a40eb2ee71fc30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441297"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Tworzenie tabeli dla Azure Cosmos DB-interfejs API tabel
 

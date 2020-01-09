@@ -7,18 +7,35 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b597ecb67ab30c8617029fe741af1014444a9b70
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693154"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498101"
 ---
-# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Rozwiązywanie problemów z powrotem w środowisku lokalnym z platformy Azure
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Rozwiązywanie problemów z powrotem po awarii do lokacji lokalnej z platformy Azure
 
 W tym artykule opisano sposób rozwiązywania problemów, które mogą wystąpić w przypadku powrotu po awarii maszyn wirtualnych platformy Azure do lokalnej infrastruktury VMware po przejściu do trybu failover na platformie Azure przy użyciu [Azure Site Recovery](site-recovery-overview.md).
 
 Powrót po awarii dotyczy głównie dwóch głównych kroków. W pierwszym kroku po przejściu do trybu failover należy ponownie włączyć ochronę maszyn wirtualnych platformy Azure w środowisku lokalnym, aby umożliwić ich replikację. Drugim krokiem jest uruchomienie trybu failover z platformy Azure w celu powrotu po awarii do lokacji lokalnej.
+
+## <a name="common-issues"></a>Typowe problemy
+
+- W przypadku przeprowadzania odnajdywania vCenter użytkownika tylko do odczytu i ochrony maszyn wirtualnych ochrona kończy się powodzeniem, a tryb failover działa. W trakcie ochrony tryb failover nie powiedzie się, ponieważ nie można odnaleźć magazynów danych. Objaw polega na tym, że magazyny danych nie są wyświetlane na liście podczas jej ochrony. Aby rozwiązać ten problem, możesz zaktualizować poświadczenia vCenter przy użyciu odpowiedniego konta z uprawnieniami, a następnie ponowić zadanie.
+- W przypadku powrotu po awarii maszyny wirtualnej z systemem Linux i uruchomienia jej w środowisku lokalnym można zobaczyć, że pakiet Menedżera sieci został odinstalowany z komputera. Ta Dezinstalacja jest wykonywana, ponieważ pakiet Menedżera sieci jest usuwany podczas odzyskiwania maszyny wirtualnej na platformie Azure.
+- W przypadku skonfigurowania maszyny wirtualnej z systemem Linux przy użyciu statycznego adresu IP i przełączeniu w tryb failover na platformę Azure adres IP jest pobierany z serwera DHCP. Po przełączeniu w tryb failover do lokalnego, maszyna wirtualna będzie w dalszym ciągu używać protokołu DHCP w celu uzyskania adresu IP. Zaloguj się ręcznie na maszynie, a następnie w razie potrzeby ustaw adres IP z powrotem na adres statyczny. Maszyna wirtualna z systemem Windows może ponownie uzyskać swój statyczny adres IP.
+- Jeśli używasz wersji bezpłatnej programu ESXi 5,5 lub vSphere 6 funkcji hypervisor, tryb failover zakończy się pomyślnie, ale powrót po awarii nie powiedzie się. Aby włączyć powrót po awarii, Uaktualnij do wersji ewaluacyjnej programu.
+- Jeśli nie można skontaktować się z serwerem konfiguracji z serwera przetwarzania, należy użyć programu Telnet do sprawdzenia łączności z serwerem konfiguracji na porcie 443. Możesz również spróbować wysłać polecenie ping do serwera konfiguracji z serwera przetwarzania. Serwer przetwarzania powinien również mieć puls, gdy jest połączony z serwerem konfiguracji.
+- Serwer z systemem Windows Server 2008 R2 z dodatkiem SP1, który jest chroniony jako fizyczny serwer lokalny, nie może powrócić z powrotem z platformy Azure do lokacji lokalnej.
+- Nie można przeprowadzić powrotu po awarii w następujących okolicznościach:
+    - Maszyny wirtualne zostały zmigrowane na platformie Azure. [Dowiedz się więcej](migrate-overview.md#what-do-we-mean-by-migration).
+    - Maszyna wirtualna została przeniesiona do innej grupy zasobów.
+    - Maszyna wirtualna platformy Azure została usunięta.
+    - Ochrona maszyny wirtualnej została wyłączona.
+    - Maszyna wirtualna została utworzona ręcznie na platformie Azure. Maszyna powinna być początkowo chroniona lokalnie i przełączona w tryb failover na platformę Azure przed ponowną ochroną.
+    - Można się nie powieść tylko dla hosta ESXi. Nie można przeprowadzić powrotu po awarii maszyn wirtualnych VMware lub serwerów fizycznych do hostów funkcji Hyper-V, maszyn fizycznych ani stacji roboczych VMware.
+
 
 ## <a name="troubleshoot-reprotection-errors"></a>Rozwiązywanie problemów z błędami ochrony
 
@@ -65,7 +82,7 @@ Aby ponownie chronić maszynę wirtualną w trybie failover, maszyna wirtualna p
 
 **Magazyn danych nie jest dostępny z hosta ESXi.**
 
-Sprawdź [wymagania wstępne głównego elementu docelowego i obsługiwane magazyny danych](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) na potrzeby powrotu po awarii.
+Sprawdź [wymagania wstępne głównego elementu docelowego i obsługiwane magazyny danych](vmware-azure-prepare-failback.md#deploy-a-separate-master-target-server) na potrzeby powrotu po awarii.
 
 
 ## <a name="troubleshoot-failback-errors"></a>Rozwiązywanie błędów powrotu po awarii

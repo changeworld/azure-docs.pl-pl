@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457000"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Dodawanie Key Vault do aplikacji sieci Web przy użyciu usług połączonych programu Visual Studio
 
@@ -26,7 +26,7 @@ Aby uzyskać szczegółowe informacje o zmianach, które są połączone przez u
 
 - **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji, zarejestruj się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/pricing/free-trial/).
 - **Program Visual studio 2019 w wersji 16,3** lub nowszej albo **program Visual Studio 2017 w wersji 15,7** z zainstalowanym obciążeniem **programowaniem w sieci Web** . [Pobierz go teraz](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- W przypadku ASP.NET (nierdzeń) z programem Visual Studio 2017 potrzebne są narzędzia deweloperskie .NET Framework 4.7.1 lub nowsze, które nie są instalowane domyślnie. Aby je zainstalować, uruchom Instalator programu Visual Studio, wybierz opcję **Modyfikuj**, a następnie wybierz **poszczególne składniki**, następnie po prawej stronie rozwiń węzeł **ASP.NET i programowanie w sieci Web**, a następnie wybierz pozycję **.NET Framework narzędzia deweloperskie 4.7.1** .
+- W przypadku ASP.NET (nierdzeń) z programem Visual Studio 2017 potrzebne są narzędzia deweloperskie .NET Framework 4.7.1 lub nowsze, które nie są instalowane domyślnie. Aby je zainstalować, uruchom Instalator programu Visual Studio, wybierz opcję **Modyfikuj**, a następnie wybierz **poszczególne składniki**, następnie po prawej stronie rozwiń węzeł **ASP.NET i programowanie w sieci Web**, a następnie wybierz pozycję **.NET Framework 4.7.1 Development Tools**.
 - Projekt sieci Web ASP.NET 4.7.1 lub nowszy lub ASP.NET Core 2,0 lub nowszy.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Dodawanie obsługi Key Vault do projektu
@@ -112,7 +112,7 @@ Teraz możesz uzyskać dostęp do wpisów tajnych w kodzie. Następne kroki są 
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
 1. Następnie otwórz jeden z plików stronicowania, takich jak *index.cshtml.cs* , i Napisz następujący kod:
@@ -205,7 +205,7 @@ W tej sekcji przedstawiono dokładne zmiany wprowadzone w projekcie ASP.NET podc
 
 Ma wpływ na odwołania do pliku projektu i odwołania do pakietu NuGet.
 
-| Typ | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -241,7 +241,7 @@ W tej sekcji przedstawiono dokładne zmiany wprowadzone w projekcie ASP.NET podc
 
 Ma wpływ na odwołania do pliku projektu i `packages.config` (odwołania NuGet).
 
-| Typ | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

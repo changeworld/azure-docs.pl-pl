@@ -9,17 +9,19 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 01/09/2019
-ms.openlocfilehash: 734a9de3eaa44a149c10d1a268d09024f3ef279d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/19/2019
+ms.openlocfilehash: 09d4055ba98da2dd87efc9421402f2827a87ba16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440933"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Tworzenie wizualne w Azure Data Factory
 
 Środowisko interfejsu użytkownika Azure Data Factory (UX) umożliwia wizualne tworzenie i wdrażanie zasobów dla fabryki danych bez konieczności pisania kodu. Możesz przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, debugować iteracyjnie i wdrażać i monitorować uruchomienia potoków.
+
+Obecnie Azure Data Factory UX jest obsługiwane tylko w przeglądarkach Microsoft Edge i Google Chrome.
 
 ## <a name="authoring-canvas"></a>Kanwa tworzenia
 

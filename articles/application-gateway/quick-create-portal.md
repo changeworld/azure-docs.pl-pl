@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f5a20f80ea8eafa73cbef394dcfdde75087326b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442340"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal
 
@@ -25,17 +25,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu danych konta Azure.
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
+## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Zostanie wyświetlone okno **Nowe**.
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. Zostanie wyświetlone okno **Nowe**.
 
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Application Gateway** z listy **Polecane**.
 
-### <a name="basics-tab"></a>Karta podstawy
+### <a name="basics-tab"></a>Karta Podstawowe
 
 1. Na karcie **podstawowe** wprowadź następujące wartości następujących ustawień bramy aplikacji:
 
@@ -66,7 +66,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu da
 
 1. Na karcie **frontony** Sprawdź, czy **Typ adresu IP frontonu** jest ustawiony na wartość **Public**. <br>Adres IP frontonu można skonfigurować tak, aby był publiczny lub prywatny jak w przypadku użycia. W tym przykładzie wybrano publiczny adres IP frontonu.
    > [!NOTE]
-   > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Dla tej jednostki SKU w wersji 2 nie jest obecnie włączona tylko konfiguracja prywatnego adresu IP frontonu. Można skonfigurować publiczną i prywatną konfigurację adresu IP frontonu.
+   > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Tylko konfiguracja prywatnego adresu IP frontonu (tylko tryb ILB) nie jest obecnie włączona dla tej jednostki SKU w wersji 2. Można skonfigurować publiczną i prywatną konfigurację adresu IP frontonu.
 
 2. Wybierz opcję **Utwórz nowy** dla **publicznego adresu IP** i wprowadź *MYAGPUBLICIPADDRESS* dla nazwy publicznego adresu IP, a następnie wybierz przycisk **OK**. 
 
@@ -136,7 +136,7 @@ W tym celu wykonaj następujące czynności:
 
 ### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Zostanie wyświetlone okno **Nowe**.
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. Zostanie wyświetlone okno **Nowe**.
 2. Wybierz pozycję **obliczenia** , a następnie wybierz pozycję **Windows Server 2016 Datacenter** na **popularnej** liście. Zostanie wyświetlona strona **Tworzenie maszyny wirtualnej**.<br>Application Gateway może kierować ruch do dowolnego typu maszyny wirtualnej używanej w puli zaplecza. W tym przykładzie używane jest centrum danych systemu Windows Server 2016.
 3. Wprowadź następujące wartości na karcie **Podstawy** dla poniższych ustawień maszyny wirtualnej:
 

@@ -1,26 +1,17 @@
 ---
-title: Samouczek — uaktualnianie aplikacji uruchomionej w usłudze Azure Service Fabric Mesh | Microsoft Docs
+title: Samouczek — Uaktualnianie aplikacji działającej na platformie Azure Service Fabric siatką
 description: W tym samouczku dowiesz się, jak uaktualnić aplikację usługi Service Fabric uruchomioną w usłudze Service Fabric Mesh.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351729"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Samouczek: uaktualnianie aplikacji usługi Service Fabric uruchomionej w usłudze Service Fabric Mesh
 
@@ -45,7 +36,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Otwórz usługę [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) lub [zainstaluj lokalnie interfejs wiersza polecenia platformy Azure oraz interfejs wiersza polecenia usługi Service Fabric Mesh](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
@@ -77,7 +68,7 @@ Otwórz lokalnie plik parametrów [mesh_rp.windows.parameter.json](https://githu
 
 Zapisz zmiany w pliku parametrów.  
 
-Parametr *frontEndCpu* jest deklarowany w sekcji *parameters* [szablonu wdrożenia mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json):
+Parametr *frontEndCpu* jest deklarowany w sekcji *parameters*[szablonu wdrożenia mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json):
 
 ```json
 "frontEndCpu": {

@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Azure Relay w środowisku Node | Microsoft Docs
+title: Azure Relay Połączenia hybrydowe — żądania HTTP w węźle
 description: Napisz aplikację konsolową Node.js do obsługi żądań HTTP połączeń hybrydowych usługi Azure Relay w środowisku Node.
 services: service-bus-relay
 documentationcenter: node
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
-ms.openlocfilehash: e54a096bd27efddaa9eafb8619e787178550a6e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60553955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462027"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Wprowadzenie do żądań HTTP połączeń hybrydowych usługi Relay w środowisku Node
 
@@ -64,7 +64,7 @@ Aby wysyłać komunikaty do usługi Relay, możesz używać dowolnego klienta HT
 
 Gratulacje! Aplikacja typu end-to-end do obsługi połączeń hybrydowych korzystająca ze środowiska Node.js jest gotowa.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym przewodniku Szybki start utworzono aplikacje klienta i serwera w środowisku Node.js służące do wysyłania i odbierania komunikatów za pomocą protokołu HTTP. Funkcja połączeń hybrydowych usługi Azure Relay obsługuje również wysyłanie i odbieranie komunikatów przy użyciu obiektów WebSocket. Aby dowiedzieć się, jak używać obiektów WebSocket z funkcją połączeń hybrydowych usługi Azure Relay, zobacz [Przewodnik Szybki start dotyczący obiektów WebSocket](relay-hybrid-connections-node-get-started.md).
 
 W tym przewodniku Szybki start za pomocą środowiska Node.js utworzono aplikacje klienta i serwera. Aby dowiedzieć się, jak pisać aplikacje klienta i serwera na platformie .NET Framework, zobacz [Przewodnik Szybki start dotyczący obiektów WebSocket na platformie .NET](relay-hybrid-connections-dotnet-get-started.md) lub [Przewodnik Szybki start dotyczący protokołu HTTP na platformie .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md).

@@ -1,20 +1,16 @@
 ---
-title: Konteneryzowanie istniejącej aplikacji .NET dla usługi Service Fabric Mesh | Microsoft Docs
+title: Konteneryzowanie istniejącej aplikacji .NET dla usługi Service Fabric Mesh
 description: Dodaj obsługę aranżacji kontenera Service Fabric siatki do projektów ASP.NET i konsolowych, które korzystają z pełnego programu .NET Framework.
-services: service-fabric-mesh
-keywords: konteneryzowanie usługi Service Fabric Mesh
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686281"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462035"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Konteneryzowanie istniejącej aplikacji .NET dla usługi Service Fabric Mesh
 
@@ -27,7 +23,7 @@ W programie Visual Studio 2017 obsługę konteneryzacji można dodać do projekt
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz [utworzyć bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Upewnij się, że masz [skonfigurowane środowisko projektowe](service-fabric-mesh-howto-setup-developer-environment-sdk.md). Obejmuje to zainstalowanie środowiska uruchomieniowego usługi Service Fabric, zestawu SDK, platformy Docker i programu Visual Studio 2017 oraz utworzenie lokalnego klastra.
 

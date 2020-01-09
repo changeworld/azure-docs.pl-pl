@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091944"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498049"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Przeniesienie maszyn wirtualnych platformy Azure do innego regionu platformy Azure
 
@@ -81,7 +81,7 @@ Zgodnie z wymienionymi wcześniej [architekturami](#typical-architectures-for-a-
 
      ![Wdrożenie maszyny wirtualnej z jednym wystąpieniem w warstwach](media/move-vm-overview/single-zone.png)
 
-* **Maszyny wirtualne w poszczególnych warstwach wdrożone w zestawach dostępności**: maszyny wirtualne można skonfigurować w ramach zestawu dostępności w osobnym strefy dostępności po włączeniu replikacji dla maszyny wirtualnej przy użyciu Azure Site Recovery. Umowa SLA dla dostępności będzie 99,9% po zakończeniu operacji przenoszenia.
+* **Maszyny wirtualne w poszczególnych warstwach wdrożone w zestawach dostępności**: maszyny wirtualne można skonfigurować w ramach zestawu dostępności w osobnym strefy dostępności po włączeniu replikacji dla maszyny wirtualnej przy użyciu Azure Site Recovery. Umowa SLA dla dostępności będzie 99,99% po zakończeniu operacji przenoszenia.
 
      ![Wdrożenie maszyn wirtualnych w zestawach dostępności i Strefy dostępności](media/move-vm-overview/aset-azone.png)
 

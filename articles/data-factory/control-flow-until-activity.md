@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440367"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Do działania w Azure Data Factory
 Działanie until zapewnia te same funkcje, które struktura pętli do-until zawiera w językach programowania. Służy do wykonywania zestawu działań w pętli do momentu, gdy warunek skojarzony z działaniem zostanie obliczony na wartość true. W usłudze Data Factory można określić wartość limitu czasu działania Until. 
@@ -51,12 +51,12 @@ Działanie until zapewnia te same funkcje, które struktura pętli do-until zawi
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania `Until`. | Ciąg | Tak
 type | Musi być ustawiona na wartość **until**. | Ciąg | Tak
-wyrażenia | Wyrażenie, które musi oszacować do wartości true lub false. | Wyrażenia.  | Tak
-timeout | Pętla do-until przekroczy limit czasu po upływie określonego czasu. | parametry. `hh:mm:ss``d.hh:mm:ss` (lub). Wartość domyślna to 7 dni. Wartość maksymalna to: 90 dni. | Nie
+expression | Wyrażenie, które musi oszacować do wartości true lub false. | Wyrażenia.  | Tak
+timeout | Pętla do-until przekroczy limit czasu po upływie określonego czasu. | Ciąg. `hh:mm:ss``d.hh:mm:ss` (lub). Domyślna wartość to 7 dni. Wartość maksymalna to: 90 dni. | Nie
 Działania | Zestaw działań, które są wykonywane do momentu, gdy wyrażenie zwróci wartość `true`. | Tablica działań. |  Tak
 
 ## <a name="example-1"></a>Przykład 1
@@ -199,10 +199,7 @@ Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjścio
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

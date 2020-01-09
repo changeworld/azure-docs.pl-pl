@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 678096037da69bbddf95933e3fdf988f540ca4a6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819836"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462614"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych przy minimalnym przestoju
 
 Azure SQL Database umożliwia dynamiczne dodawanie większej liczby zasobów do bazy danych z minimalnym [czasem przestoju](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/); Jednak istnieje przedział czasu, w którym połączenie jest tracone do bazy danych przez krótki czas, co można wyeliminować przy użyciu logiki ponawiania.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Gdy zapotrzebowanie na aplikację rośnie od kilku urządzeń i klientów do milionów, Azure SQL Database skalowanie na bieżąco przy minimalnym przestoju. Skalowalność to jedna z najważniejszych cech PaaS, które umożliwiają dynamiczne dodawanie większej liczby zasobów do usługi w razie potrzeby. Azure SQL Database umożliwia łatwe zmienianie zasobów (mocy procesora CPU, pamięci, przepływności we/wy i magazynu) przyznanych do baz danych.
 
@@ -62,9 +62,9 @@ Inicjowanie działania skalowania w górę lub w dół w dowolnym z tych typów 
 
 ## <a name="alternative-scale-methods"></a>Alternatywne metody skalowania
 
-Skalowanie zasobów jest najłatwiejszym i najbardziej efektywnym sposobem poprawy wydajności bazy danych bez konieczności zmieniania kodu bazy danych ani aplikacji. W niektórych przypadkach nawet najwyższa warstwa usług, rozmiary obliczeniowe i optymalizacje wydajności mogą nie obsłużyć obciążenia na pomyślne i ekonomiczne. W takich przypadkach dostępne są następujące dodatkowe opcje skalowania bazy danych:
+Skalowanie zasobów jest najłatwiejszym i najbardziej efektywnym sposobem poprawy wydajności bazy danych bez zmiany kodu bazy danych lub aplikacji. W niektórych przypadkach nawet najwyższa warstwa usług, rozmiary obliczeniowe i optymalizacje wydajności mogą nie obsłużyć obciążenia w sposób skuteczny i ekonomiczny. W takim przypadku dostępne są następujące dodatkowe opcje skalowania bazy danych:
 
-- [Skalowanie](sql-database-read-scale-out.md) w poziomie do odczytu jest funkcją dostępną w miejscu, w którym jest pobierana jedna replika tylko do odczytu danych, w której można wykonywać żądania zapytań tylko do odczytu, takie jak raporty. Replika tylko do odczytu będzie obsługiwać obciążenie tylko do odczytu bez wpływu na użycie zasobów w podstawowej bazie danych.
+- [Skalowanie](sql-database-read-scale-out.md) w poziomie to dostępna funkcja, w której jest pobierana jedna replika tylko do odczytu danych, w której można wykonywać wysokie zapytania tylko do odczytu, takie jak raporty. Replika tylko do odczytu będzie obsługiwać obciążenie tylko do odczytu bez wpływu na użycie zasobów w podstawowej bazie danych.
 - [Fragmentowania Database](sql-database-elastic-scale-introduction.md) to zestaw technik, które umożliwiają dzielenie danych na kilka baz danych i ich niezależne skalowanie.
 
 ## <a name="next-steps"></a>Następne kroki

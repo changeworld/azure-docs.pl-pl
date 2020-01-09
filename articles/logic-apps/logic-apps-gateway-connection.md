@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815199"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456571"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Nawiązywanie połączenia z lokalnymi źródłami danych z Azure Logic Apps
 
@@ -45,7 +45,7 @@ W Azure Logic Apps lokalna Brama danych obsługuje [Łączniki lokalne](../conne
 * PostgreSQL
 * SAP
 * SharePoint Server
-* Oprogramowanie SQL Server
+* SQL Server
 * Teradata
 
 Azure Logic Apps obsługuje operacje odczytu i zapisu za pomocą bramy danych. Jednak te operacje mają [limity rozmiaru ładunku](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). Mimo że sama Brama nie wiąże się z dodatkowymi kosztami, [model cenowy Logic Apps](../logic-apps/logic-apps-pricing.md) ma zastosowanie do tych łączników i innych operacji w Azure Logic Apps.
@@ -82,7 +82,7 @@ Po zainstalowaniu bramy na komputerze lokalnym Utwórz zasób platformy Azure dl
    |----------|-------------|
    | **Nazwa zasobu** | Podaj nazwę zasobu bramy, która zawiera tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasy (`(`, `)`) lub kropki (`.`). |
    | **Subskrypcja** | Wybierz subskrypcję platformy Azure dla konta platformy Azure, która była używana na potrzeby instalacji bramy. Domyślna subskrypcja jest oparta na koncie platformy Azure użytym do zalogowania się. |
-   | **Grupa zasobów** | [Grupa zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) , której chcesz użyć |
+   | **Grupa zasobów** | [Grupa zasobów platformy Azure](../azure-resource-manager/management/overview.md) , której chcesz użyć |
    | **Lokalizacja** | Ten sam region lub lokalizacja, która została wybrana dla usługi bramy w chmurze podczas [instalacji bramy](../logic-apps/logic-apps-gateway-install.md). W przeciwnym razie instalacja bramy nie zostanie wyświetlona na liście **Nazwa instalacji** . Lokalizacja aplikacji logiki może różnić się od lokalizacji zasobów bramy. |
    | **Nazwa instalacji** | Wybierz instalację bramy, która zostanie wyświetlona na liście tylko wtedy, gdy spełnione są następujące warunki: <p><p>-Instalacja bramy używa tego samego regionu co zasób bramy, który chcesz utworzyć. <br>-Instalacja bramy nie jest połączona z innym zasobem bramy platformy Azure. <br>-Instalacja bramy jest połączona z tym samym kontem platformy Azure, które jest używane do tworzenia zasobu bramy. <br>— Twoje konto platformy Azure należy do pojedynczej [dzierżawy usługi Azure Active Directory (Azure AD) lub katalogu](../active-directory/fundamentals/active-directory-whatis.md#terminology) i jest to samo konto, które było używane podczas instalacji bramy. <p><p>Aby uzyskać więcej informacji, zobacz sekcję [często zadawane pytania](#faq) . |
    |||
@@ -150,7 +150,7 @@ Aby utworzyć inny zasób bramy, Połącz instalację bramy z innym zasobem bram
 
 1. Jeśli jeszcze tego nie zrobiono, w menu zasobów bramy wybierz pozycję **lokalna Brama danych**. Na pasku narzędzi zasobów bramy wybierz pozycję **Usuń**.
 
-   Na przykład:
+   Przykład:
 
    ![Usuwanie zasobu bramy na platformie Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 

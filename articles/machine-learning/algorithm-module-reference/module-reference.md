@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: peterclu
 ms.author: peterlu
-ms.date: 11/11/2019
-ms.openlocfilehash: 21577936f2487313683ac763b0c6c661c6c1f958
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 12/17/2019
+ms.openlocfilehash: df2e73138cec6c684d612543280871eb2d49b207
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456357"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Informacje o algorytmach & module dla projektanta Azure Machine Learning
 
@@ -30,23 +30,23 @@ Każdy moduł reprezentuje zestaw kodu, który może zostać uruchomiony niezale
 Moduły są zorganizowane według funkcjonalności:
 
 | Funkcjonalność | Opis | Moduł |
-| --- |--- | ---- |
-| Dane wejściowe i wyjściowe | Przenieś dane ze źródeł w chmurze do potoku. Zapisuj wyniki lub dane pośrednie w usłudze Azure Storage, w bazie danych SQL lub Hive, podczas uruchamiania potoku lub korzystaj z magazynu w chmurze, aby wymieniać dane między potokami.  | [Importuj dane](import-data.md) <br/> [Wprowadź dane ręcznie](enter-data-manually.md) <br/>[Eksportuj dane](export-data.md) |
-| Transformacja danych | Operacje na danych, które są unikatowe dla uczenia maszynowego, takie jak normalizowanie lub pakowania danych, Zmniejszanie liczby wymiarów i konwertowanie danych między różnymi formatami plików.| [Dodaj kolumny](add-columns.md) <br/> [Dodaj wiersze](add-rows.md) <br/> [Wyczyść brakujące dane](clean-missing-data.md) <br/> [Konwertuj na CSV](convert-to-csv.md) <br/> [Konwertuj na zestaw danych](convert-to-dataset.md) <br/> [Edytuj metadane](edit-metadata.md) <br/> [Dołącz dane](join-data.md) <br/> [Normalizowanie danych](normalize-data.md) <br/> [Usuń zduplikowane wiersze](remove-duplicate-rows.md) <br/> [Wybierz kolumny Przekształć](select-columns-transform.md) <br/> [Wybieranie kolumn w zestawie danych](select-columns-in-dataset.md) |
-| Próbkowanie | Podziel dane na jeden lub więcej podzestawów podzbiorów, aby uczenie i testowanie modeli uczenia maszynowego.  | [Model krzyżowego sprawdzania poprawności](cross-validate-model.md) <br/> [Partycja i przykład](partition-and-sample.md) <br/> [SMOTE](smote.md) <br/> [Podziel dane](split-data.md) |
-| Wybór funkcji | Wybierz podzestaw odpowiednich, przydatnych funkcji do użycia podczas tworzenia modelu analitycznego. | [Wybór funkcji oparty na filtrze](filter-based-feature-selection.md) <br/> [Ważność funkcji permutacji](permutation-feature-importance.md) |
-| Python i R | Napisz kod i Osadź go w module, aby zintegrować Języki Python i R z potokiem. | [Utwórz model języka Python](create-python-model.md) <br/> [Wykonaj skrypt języka Python](execute-python-script.md)   <br/>  [Wykonaj skrypt języka R](execute-r-script.md)
-| Analiza tekstu | Udostępniaj wyspecjalizowane narzędzia obliczeniowe służące do pracy z tekstem ze strukturą i bez struktury. | [Wyodrębnij funkcje N gramów z tekstu](extract-n-gram-features-from-text.md) <br/> [Mieszanie funkcji](feature-hashing.md) <br/> [Przetwarzaj wstępnie tekst](preprocess-text.md) |
+| --- |--- | --- |
+|  | **Przygotowanie danych**: | |
+| Wprowadzanie i wyprowadzanie danych | Przenieś dane ze źródeł w chmurze do potoku. Zapisuj wyniki lub dane pośrednie w usłudze Azure Storage, w bazie danych SQL lub Hive, podczas uruchamiania potoku lub korzystaj z magazynu w chmurze, aby wymieniać dane między potokami.  | [Wprowadź dane ręcznie](enter-data-manually.md) <br/> [Eksportuj dane](export-data.md) <br/> [Importuj dane](import-data.md) |
+| Transformacja danych | Operacje na danych, które są unikatowe dla uczenia maszynowego, takie jak normalizowanie lub pakowania danych, Zmniejszanie liczby wymiarów i konwertowanie danych między różnymi formatami plików.| [Dodaj kolumny](add-columns.md) <br/> [Dodawanie wierszy](add-rows.md) <br/> [Zastosuj operacje matematyczne](apply-math-operation.md) <br/> [Zastosuj transformację SQL](apply-sql-transformation.md) <br/> [Wyczyść brakujące dane](clean-missing-data.md) <br/> [Przytnij wartości](clip-values.md) <br/> [Konwertuj na CSV](convert-to-csv.md) <br/> [Konwertuj na zestaw danych](convert-to-dataset.md) <br/> [Edytuj metadane](edit-metadata.md) <br/> [Dołącz dane](join-data.md) <br/> [Normalizowanie danych](normalize-data.md) <br/> [Partycja i przykład](partition-and-sample.md)  <br/> [Usuń zduplikowane wiersze](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Wybierz kolumny Przekształć](select-columns-transform.md) <br/> [Wybieranie kolumn w zestawie danych](select-columns-in-dataset.md) <br/> [Podziel dane](split-data.md) |
+| Wybieranie funkcji | Wybierz podzestaw odpowiednich, przydatnych funkcji do użycia podczas tworzenia modelu analitycznego. | [Wybór funkcji oparty na filtrze](filter-based-feature-selection.md) <br/> [Ważność funkcji permutacji](permutation-feature-importance.md) |
+| Funkcje statystyczne | Zapewniają szeroką gamę metod statystycznych związanych z nauką danych. | [Podsumowywanie danych](summarize-data.md)|
 |  | **Algorytmy uczenia maszynowego**: | |
-| Klasyfikacja | Przewidywanie klasy.  Wybierz jeden z dwuklasowego algorytmu lub algorytmów wieloklasowych.| [Las decyzyjny wieloklasowej](multiclass-decision-forest.md) <br/> [Wieloklasowe drzewo decyzyjne](multiclass-boosted-decision-tree.md) <br/> [Wieloklasowa regresja logistyczna](multiclass-logistic-regression.md)  <br/> [Multiclass Neural Network](multiclass-neural-network.md) <br/> [Jeden i wszystkie wieloklasowe](one-vs-all-multiclass.md) <br/>  [Regresja logistyczna dla dwóch klas](two-class-logistic-regression.md)  <br/>[Średnia Perceptron średniej klasy](two-class-averaged-perceptron.md) <br/> [Dwuklasowe drzewo decyzyjne](two-class-boosted-decision-tree.md)  <br/> [Las decyzyjny dwóch klas](two-class-decision-forest.md)  <br/> [Sieć neuronowych z dwiema klasami](two-class-neural-network.md) <br/> [Maszyna wektorowa obsługi dwóch klas](two-class-support-vector-machine.md) | 
-| Usługę | Grupuj dane jednocześnie.| [K-oznacza klastrowanie](k-means-clustering.md)
-| Regresji | Przewidywanie wartości. | [Regresja drzewa decyzyjnej](boosted-decision-tree-regression.md) <br/> [Regresja lasu decyzyjnego](decision-forest-regression.md) <br/> [Regresja liniowa](linear-regression.md)  <br/> [Regresja sieci neuronowych](neural-network-regression.md)  <br/> |
-| Polecania | Kompiluj modele rekomendacji. | [Oceń zalecaną](evaluate-recommender.md) <br/> [Polecający wskaźnik SVD](score-svd-recommender.md) <br/> [Polecający pociąg](train-SVD-recommender.md) |
+| Regresja | Przewidywanie wartości. | [Regresja drzewa decyzyjnej](boosted-decision-tree-regression.md) <br/> [Regresja lasu decyzyjnego](decision-forest-regression.md) <br/> [Regresja liniowa](linear-regression.md)  <br/> [Regresja sieci neuronowych](neural-network-regression.md)  <br/> |
+| Klastrowanie | Grupuj dane jednocześnie.| [K-oznacza klastrowanie](k-means-clustering.md)
+| Klasyfikacja | Przewidywanie klasy.  Wybierz jeden z dwuklasowego algorytmu lub algorytmów wieloklasowych.| [Wieloklasowe drzewo decyzyjne](multiclass-boosted-decision-tree.md) <br/> [Las decyzyjny wieloklasowej](multiclass-decision-forest.md) <br/> [Wieloklasowa regresja logistyczna](multiclass-logistic-regression.md)  <br/> [Multiclass Neural Network](multiclass-neural-network.md) <br/> [Jeden i wszystkie wieloklasowe](one-vs-all-multiclass.md) <br/> [Średnia Perceptron średniej klasy](two-class-averaged-perceptron.md) <br/>  [Dwuklasowe drzewo decyzyjne](two-class-boosted-decision-tree.md)  <br/> [Las decyzyjny dwóch klas](two-class-decision-forest.md) <br/>  [Regresja logistyczna dla dwóch klas](two-class-logistic-regression.md) <br/> [Sieć neuronowych z dwiema klasami](two-class-neural-network.md) <br/> [Maszyna wektorowa obsługi dwóch klas](two-class-support-vector-machine.md) | 
 |  | **Kompiluj i Szacuj modele**: | |
-| Szkolenie   | Uruchom dane za pomocą algorytmu. | [Model uczenia](train-model.md)  <br/> [Model klastra uczenia](train-clustering-model.md) <br/>  [Dostrajanie parametrów modelu](tune-model-hyperparameters.md) |
-| Ocena modelu | Zmierz dokładność nauczonego modelu. |  [Oceń model](evaluate-model.md) |
-| Wynik | Zyskaj przewidywania od modelu, który właśnie został przeszkolony. | [Zastosuj transformację](apply-transformation.md)<br/>[Przypisywanie danych do klastrów](assign-data-to-clusters.md) <br/>[Model oceny](score-model.md) |
-| Funkcje statystyczne | Zapewniają szeroką gamę metod statystycznych związanych z nauką danych. | [Zastosuj operacje matematyczne](apply-math-operation.md) <br/> [Podsumowywanie danych](summarize-data.md)|
+| Trenowanie modelu | Uruchom dane za pomocą algorytmu. |  [Model klastra uczenia](train-clustering-model.md) <br/> [Model uczenia](train-model.md)  <br/> [Dostrajanie parametrów modelu](tune-model-hyperparameters.md) |
+| Ocenianie i ocenianie modelu | Zmierz dokładność nauczonego modelu. | [Zastosuj transformację](apply-transformation.md) <br/> [Przypisywanie danych do klastrów](assign-data-to-clusters.md) <br/> [Model krzyżowego sprawdzania poprawności](cross-validate-model.md) <br/> [Oceń model](evaluate-model.md) <br/> [Model oceny](score-model.md) |
+| Język Python | Napisz kod i Osadź go w module, aby zintegrować Język Python z potokiem. | [Utwórz model języka Python](create-python-model.md) <br/> [Wykonaj skrypt języka Python](execute-python-script.md) |
+| Język R | Napisz kod i Osadź go w module, aby zintegrować język R z potokiem. | [Wykonaj skrypt języka R](execute-r-script.md) |
+| Analiza tekstu | Udostępniaj wyspecjalizowane narzędzia obliczeniowe służące do pracy z tekstem ze strukturą i bez struktury. | [Wyodrębnij funkcje N gramów z tekstu](extract-n-gram-features-from-text.md) <br/> [Mieszanie funkcji](feature-hashing.md) <br/> [Przetwarzaj wstępnie tekst](preprocess-text.md) |
+| Zalecenie | Kompiluj modele rekomendacji. | [Oceń zalecaną](evaluate-recommender.md) <br/> [Polecający wskaźnik SVD](score-svd-recommender.md) <br/> [Polecający pociąg](train-SVD-recommender.md) |
 
 ## <a name="error-messages"></a>Komunikaty o błędach
 

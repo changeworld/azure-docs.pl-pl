@@ -1,5 +1,6 @@
 ---
-title: Przykład zasad usługi Azure API Management — wysyłanie informacji kontekstu żądania do usługi wewnętrznej bazy danych | Microsoft Docs
+title: Przykładowe zasady zarządzania interfejsem API — wysyłanie informacji kontekstu żądania do usługi zaplecza
+titleSuffix: Azure API Management
 description: Przykład zasad usługi Azure API Management — pokazuje, jak wysyłać informacje kontekstu żądania do usługi zaplecza.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: cc770ff700155f8ab32bbbd6737c9dad7bc6e664
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8cef989ca7ce8ee649c4f4aeb579c43bf8a8d6ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442408"
 ---
 # <a name="send-request-context-information-to-the-backend-service"></a>Wyślij informacje kontekstu żądania do usługi wewnętrznej bazy danych
 

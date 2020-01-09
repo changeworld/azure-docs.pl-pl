@@ -1,21 +1,21 @@
 ---
-title: Samouczek — jak powiązać usługę Azure cache for Redis z Twoją aplikacją w chmurze platformy Azure
+title: Samouczek — Powiązywanie usługi Azure cache for Redis z aplikacją w chmurze sieci Azure
 description: W tym samouczku pokazano, jak powiązać usługę Azure cache for Redis z aplikacją w chmurze platformy Azure
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 662d36f8a25f2f0a21d800b7b1a25e94b13908a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461491"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Samouczek: powiązywanie usług platformy Azure z Twoją aplikacją w chmurze Azure wiosną: Azure cache for Redis
+# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Powiązywanie usługi Azure cache for Redis z Twoją aplikacją w chmurze platformy Azure 
 
-Chmura sprężynowa platformy Azure umożliwia automatyczne powiązanie wybranych usług platformy Azure z aplikacjami zamiast ręcznego konfigurowania aplikacji do rozruchu ze sprężyną. W tym artykule pokazano, jak powiązać aplikację z usługą Azure cache for Redis.
+Zamiast ręcznego konfigurowania aplikacji do rozruchu sprężynowego można automatycznie powiązać wybrane usługi platformy Azure z aplikacjami za pomocą chmury sieci platformy Azure. W tym artykule pokazano, jak powiązać aplikację z usługą Azure cache for Redis.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,11 +23,11 @@ Chmura sprężynowa platformy Azure umożliwia automatyczne powiązanie wybranyc
 * Pamięć podręczna platformy Azure dla wystąpienia usługi Redis
 * Rozszerzenie chmury Azure wiosny dla interfejsu wiersza polecenia platformy Azure
 
-Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki opisane w tym [przewodniku szybki start](spring-cloud-quickstart-launch-app-portal.md) , aby wdrożyć swoją pierwszą aplikację w chmurze.
+Jeśli nie masz wdrożonego wystąpienia chmury sieci platformy Azure, wykonaj kroki opisane w [przewodniku szybki start dotyczącym wdrażania aplikacji w chmurze Azure wiosennej](spring-cloud-quickstart-launch-app-portal.md).
 
 ## <a name="bind-azure-cache-for-redis"></a>Powiązywanie pamięci podręcznej platformy Azure dla Redis
 
-1. Dodaj następującą zależność do `pom.xml` projektu
+1. Dodaj następującą zależność do pliku pliku pom. XML projektu:
 
     ```xml
     <dependency>
@@ -35,13 +35,15 @@ Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki o
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. Usuń `spring.redis.*` właściwości (jeśli istnieją) w pliku `application.properties`
+1. Usuń wszystkie `spring.redis.*` właściwości z pliku `application.properties`
 
 1. Zaktualizuj bieżące wdrożenie przy użyciu `az spring-cloud app update` lub Utwórz nowe wdrożenie przy użyciu `az spring-cloud app deployment create`.
 
-1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal. Znajdź **pulpit nawigacyjny aplikacji** i wybierz aplikację, która ma zostać powiązana z pamięcią podręczną platformy Azure dla Redis.  Ta sama aplikacja została zaktualizowana lub wdrożona w poprzednim kroku. Następnie wybierz `Service binding` i wybierz przycisk `Create service binding`. Wypełnij formularz, wybierając pozycję **Typ powiązania** `Azure Cache for Redis`, serwer Redis i opcję klucz podstawowy. 
+1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal. Przejdź do **pulpitu nawigacyjnego aplikacji** i wybierz aplikację, która ma zostać powiązana z usługą Azure cache for Redis. Ta aplikacja jest taka sama, która została zaktualizowana lub wdrożona w poprzednim kroku.
 
-1. Uruchom ponownie aplikację, a to powiązanie powinno teraz współpracować.
+1. Wybierz pozycję **powiązanie usługi** i wybierz pozycję **Utwórz powiązanie usługi**. Wypełnij formularz, wybierając wartość **Typ powiązania** **pamięć podręczna platformy Azure dla Redis**, pamięć podręczną platformy Azure dla serwera Redis i opcję klucz **podstawowy** .
+
+1. Uruchom ponownie aplikację. Powiązanie powinno teraz funkcjonować.
 
 1. Aby upewnić się, że powiązanie usługi jest prawidłowe, wybierz nazwę powiązania i sprawdź jej szczegóły. Pole `property` powinno wyglądać następująco:
     ```
@@ -53,7 +55,7 @@ Jeśli nie masz wdrożonego wystąpienia chmury Azure wiosennej, wykonaj kroki o
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób powiązania aplikacji w chmurze platformy Azure z usługą Azure Redis.  Aby dowiedzieć się więcej na temat powiązań usług z aplikacją, przejdź do samouczka dotyczącego wiązania aplikacji z bazą danych MySQL.
+W tym samouczku przedstawiono sposób powiązania aplikacji w chmurze platformy Azure z usługą Azure cache for Redis. Aby dowiedzieć się więcej na temat powiązań usług z aplikacją, przejdź do samouczka dotyczącego powiązania aplikacji z wystąpieniem Azure Database for MySQL.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak powiązać usługę Azure MySQL z usługą Azure wiosną w chmurze](spring-cloud-tutorial-bind-mysql.md).
+> [Dowiedz się, jak powiązać z wystąpieniem Azure Database for MySQL](spring-cloud-tutorial-bind-mysql.md)

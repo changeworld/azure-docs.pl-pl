@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456626"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Samouczek: Tworzenie zautomatyzowanych, cyklicznych przepływów pracy opartych na harmonogramach przy użyciu Azure Logic Apps
 
 W tym samouczku pokazano, jak utworzyć [aplikację logiki](../logic-apps/logic-apps-overview.md) i zautomatyzować cykliczny przepływ pracy, który jest uruchamiany zgodnie z harmonogramem. W szczególności Ta przykładowa aplikacja logiki jest uruchamiana każdego dnia tygodnia rano i sprawdza czas podróży, w tym ruch, między dwoma miejscami. Jeśli ten czas przekracza określony limit, aplikacja logiki wysyła wiadomość e-mail z informacją, ile zajmie podróż z uwzględnieniem dodatkowego czasu.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenia pustej aplikacji logiki.
@@ -58,7 +58,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
    |----------|-------|-------------|
    | **Nazwa** | LA-TravelTime | Nazwa aplikacji logiki, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "LA-TravelTime". |
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
-   | **Grupa zasobów** | LA-TravelTime-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md), która jest używana do organizowania powiązanych zasobów. W tym przykładzie zastosowano "LA-TravelTime-RG". |
+   | **Grupa zasobów** | LA-TravelTime-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md), która jest używana do organizowania powiązanych zasobów. W tym przykładzie zastosowano "LA-TravelTime-RG". |
    | **Lokalizacja** | Zachodnie stany USA | Region tnie, w którym mają być przechowywane informacje o aplikacji logiki. W tym przykładzie zastosowano "zachodnie stany USA". |
    | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. |
    ||||

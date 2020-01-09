@@ -4,12 +4,12 @@ description: Dowiedz się, jak zarządzać spisami dynamicznymi na platformie Az
 keywords: ansible, azure, devops, bash, cloudshell, dynamic inventory
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442784"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Samouczek: Konfigurowanie dynamicznych spisów zasobów platformy Azure przy użyciu rozwiązania ansible
 
@@ -32,7 +32,7 @@ Za pomocą rozwiązania Ansible można ściągać informacje o spisie z różnyc
 
 ## <a name="create-the-test-vms"></a>Tworzenie testowych maszyn wirtualnych
 
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otwórz usługę [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -228,7 +228,7 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
           become: yes
           tasks:
           - name: install nginx
-            apt: pkg=nginx state=installed
+            apt: pkg=nginx state=present
             notify:
             - start nginx
     
@@ -237,7 +237,7 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
               service: name=nginx state=started
     ```
 
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
 
 1. Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 8d7d4c8d7e01c6a4bfa644b84f03f8a2ea5bfd06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440315"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Jak uruchomić i zatrzymać Azure-SSIS Integration Runtime zgodnie z harmonogramem
 W tym artykule opisano sposób planowania uruchamiania i zatrzymywania Azure-SSIS Integration Runtime (IR) przy użyciu funkcji Azure Data Factory (ADF). Azure-SSIS IR to zasób obliczeniowy ADF przeznaczony do wykonywania pakietów SQL Server Integration Services (SSIS). Z uruchomionym Azure-SSIS IR jest związany koszt. W związku z tym zazwyczaj chcesz uruchomić swój IR tylko wtedy, gdy musisz wykonać pakiety usług SSIS na platformie Azure i zatrzymać środowisko IR, gdy nie jest już potrzebne. Do [ręcznego uruchamiania lub zatrzymywania środowiska IR](manage-azure-ssis-integration-runtime.md)można użyć interfejsu użytkownika ADF/app lub Azure PowerShell.
@@ -48,7 +48,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
 1. Zaloguj się w [portalu Azure](https://portal.azure.com/).    
 2. Kliknij przycisk **Nowy** w lewym menu, kliknij pozycję **Dane + analiza**, a następnie kliknij pozycję **Data Factory**. 
    
-   ![Nowy-> Fabryka danych](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
+   ![Nowy->Fabryka danych](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
    
 3. Na stronie **Nowa fabryka danych** wprowadź **wartość myazuressisdatafactory** w polu **Nazwa**. 
       
@@ -64,7 +64,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
    - Wybierz pozycję **Użyj istniejącej**, a następnie wybierz istniejącą grupę zasobów z listy rozwijanej. 
    - Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę nowej grupy zasobów.   
          
-   Aby dowiedzieć się więcej na temat grup zasobów, zobacz temat [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-overview.md) .
+   Aby dowiedzieć się więcej na temat grup zasobów, zobacz temat [Używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/management/overview.md) .
    
 6. W obszarze **wersja**wybierz pozycję **v2** .
 7. W polu **Lokalizacja**wybierz jedną z lokalizacji obsługiwanych do tworzenia APD z listy rozwijanej.
@@ -114,7 +114,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
     1. W obszarze **rola**wybierz pozycję **współautor**. 
     2. W obszarze **Przypisywanie dostępu do**wybierz pozycję **użytkownik, Grupa lub nazwa główna usługi Azure AD**. 
     3. W obszarze **Wybierz**Wyszukaj nazwę ADF i wybierz ją. 
-    4. Kliknij przycisk **Save** (Zapisz).
+    4. Kliknij pozycję **Zapisz**.
     
    ![Przypisanie roli tożsamości zarządzanego przez funkcję ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -126,7 +126,7 @@ Jeśli utworzysz trzeci wyzwalacz, który ma być uruchamiany codziennie o pół
 
 1. Wybierz pozycję **Uruchom test** na pasku narzędzi dla każdego potoku i Zobacz okno **danych wyjściowych** w dolnym okienku. 
 
-   ![Przebieg testu](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
+   ![Przebieg testowy](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
     
 2. Aby przetestować trzeci potok, uruchom SQL Server Management Studio (SSMS). W oknie **łączenie z serwerem** wykonaj następujące czynności. 
 

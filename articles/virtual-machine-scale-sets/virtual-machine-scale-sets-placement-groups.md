@@ -1,6 +1,6 @@
 ---
-title: Praca z dużymi zestawami skalowania maszyn wirtualnych platformy Azure | Microsoft Docs
-description: Informacje potrzebne do używania dużych zestawów skalowania maszyn wirtualnych platformy Azure
+title: Praca z dużymi Virtual Machine Scale Sets platformy Azure
+description: Co należy wiedzieć o dużych zestawach skalowania maszyn wirtualnych platformy Azure, aby móc używać ich w aplikacji.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rajsqr
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 839d889783a7ef3bcd602c37a4975ddeea4e2a16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326701"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459339"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Praca z dużymi zestawami skalowania maszyn wirtualnych
 Możliwe jest teraz tworzenie [zestawów skalowania maszyn wirtualnych platformy Azure](/azure/virtual-machine-scale-sets/) o pojemności do 1000 maszyn wirtualnych. W tym dokumencie _duży zestaw skalowania maszyn wirtualnych_ jest zdefiniowany jako zestaw skalowania umożliwiający skalowanie do ponad 100 maszyn wirtualnych. Ta funkcja jest ustawiana za pomocą właściwości zestawu skalowania (_singlePlacementGroup=False_). 
@@ -50,7 +50,7 @@ Podczas tworzenia zestawu skalowania w witrynie Azure Portal wystarczy określi�
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-Duży zestaw skalowania maszyn wirtualnych można utworzyć za pomocą polecenia [interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-cli) _az vmss create_. To polecenie ustawia inteligentne wartości domyślne, takie jak rozmiar podsieci, na podstawie argumentu _instance-count_:
+Duży zestaw skalowania maszyn wirtualnych można utworzyć za pomocą polecenia _AZ VMSS Create_ w [interfejsie użytkownika platformy Azure](https://github.com/Azure/azure-cli) . To polecenie ustawia inteligentne wartości domyślne, takie jak rozmiar podsieci, na podstawie argumentu _instance-count_:
 
 ```bash
 az group create -l southcentralus -n biginfra

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: af1b531ac1b38921a99284aad2108e4027d97f4c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091700"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351458"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -24,7 +24,7 @@ Możesz postępować zgodnie z Site Recovery powiadomieniami o aktualizacji w ka
 
 ## <a name="supported-updates"></a>Obsługiwane aktualizacje
 
-W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to najnowsza wydana wersja. Są one podsumowane w poniższej tabeli.
+W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to najnowsza wydana wersja. Podsumowanie dotyczące tych raportów można znaleźć w poniższej tabeli.
 
 **Aktualizacja** |  **Ujednolicona konfiguracja** | **Komórki jajowe serwera konfiguracji** | **Agent usługi mobilności** | **Dostawca Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
@@ -75,7 +75,7 @@ W przypadku odzyskiwania po awarii maszyn wirtualnych platformy Azure do regionu
 
 - Z wersji 9.30.5407.1 rozszerzenia usługi mobilności (dla maszyn wirtualnych platformy Azure) i agenta usługi mobilności (dla komputerów z oprogramowaniem VMware/Physical) w niektórych systemach operacyjnych maszyny musi być uruchomiona aktualizacja stosu obsługi i algorytm SHA-2. Szczegóły przedstawiono w poniższej tabeli.
 - Zainstaluj aktualizację i algorytm SHA-2 zgodnie z połączoną bazą wiedzy. Algorytm SHA-1 nie jest obsługiwany z września 2019 i jeśli podpisywanie kodu SHA-2 nie jest włączone, rozszerzenie agenta nie zostanie zainstalowane/uaktualnione zgodnie z oczekiwaniami.
-- Dowiedz się więcej o [uaktualnieniu algorytmu SHA-2 i wymaganiach](https://aka.ms/SHA-2KB).
+- Dowiedz się więcej o [uaktualnieniu i wymaganiach algorytmu SHA-2](https://aka.ms/SHA-2KB).
 
 **System operacyjny** | **Maszyna wirtualna platformy Azure** | **Maszyna wirtualna VMware/komputer fizyczny**
 --- | --- | ---
@@ -302,7 +302,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Funkcja** | **Szczegóły**
 --- | ---
 **Mapowanie sieci** | W przypadku odzyskiwania po awarii maszyny wirtualnej platformy Azure można teraz używać dowolnej dostępnej sieci docelowej po włączeniu replikacji. 
-**SSD w warstwie Standardowa** | Teraz można skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu [dysków SSD w warstwie Standardowa](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
+**Dysk SSD w warstwie Standardowa** | Teraz można skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu [dysków SSD w warstwie Standardowa](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
 **Bezpośrednie miejsca do magazynowania** | Odzyskiwanie po awarii można skonfigurować dla aplikacji działających w usłudze Azure VM Apps przy użyciu [bezpośrednie miejsca do magazynowania](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) w celu zapewnienia wysokiej dostępności.  Używanie Bezpośrednie miejsca do magazynowania (S2D) wraz z Site Recovery zapewnia kompleksową ochronę obciążeń maszyn wirtualnych platformy Azure. Funkcja S2D umożliwia hostowanie klastra gościa na platformie Azure. Jest to szczególnie przydatne w przypadku, gdy maszyna wirtualna obsługuje aplikację krytyczną, taką jak warstwa SAP ASCS, SQL Server lub serwer plików skalowalny w poziomie.
 
 
@@ -348,7 +348,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
  
 **Funkcja** | **Szczegóły**
 --- | ---
-**Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6.10/7.6 i nowych wersji jądra dla Ubuntu, Debian i SUSE.
+**Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 i Oracle Linux 7,6 oraz nowych wersji jądra dla Ubuntu, Debian i SUSE.
 
 
 ### <a name="update-rollup-31"></a>Pakiet zbiorczy aktualizacji 31 
@@ -364,7 +364,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Funkcja** | **Szczegóły**
 --- | ---
-**Obsługa systemu Linux** | Dodano obsługę dla Oracle Linux 6,8 i 6,9/7.0 oraz dla jądra UEK5.
+**Obsługa systemu Linux** |  Dodano pomoc techniczną dla Oracle Linux 6,8, Oracle Linux 6,9 i Oracle Linux 7,0 z jądrem zgodnym z systemem Red Hat oraz dla jądra w wersji 5 dla przedsiębiorstw (UEK).
 **LVM** | Dodano obsługę dla woluminów LVM i LVM2.<br/><br/> Katalog/Boot na partycji dysku i na woluminach LVM jest teraz obsługiwany.
 **Katalogi** | Dodano obsługę tych katalogów jako osobne partycje lub systemy plików, które nie znajdują się na tym samym dysku systemowym:<br/><br/> /(root),/Boot,/usr,/usr/local,/var,/etc.
 **Windows Server 2008** | Dodano obsługę dla dysków dynamicznych.
@@ -376,7 +376,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
-**Obsługa systemu Linux** | Obsługiwane zostało dodane dla Oracle Linux 6,8 i 6,9/7.0; i dla jądra UEK5.
+**Obsługa systemu Linux** | Dodano pomoc techniczną dla Oracle Linux 6,8, Oracle Linux 6,9 i Oracle Linux 7,0 z jądrem zgodnym z systemem Red Hat oraz dla jądra w wersji 5 dla przedsiębiorstw (UEK).
 **System plików BRTFS systemu Linux** | Obsługiwane przez maszyny wirtualne platformy Azure.
 **Maszyny wirtualne platformy Azure w strefach dostępności** | Replikację można włączyć w innym regionie dla maszyn wirtualnych platformy Azure wdrożonych w strefach dostępności. Teraz można włączyć replikację dla maszyny wirtualnej platformy Azure i ustawić docelowy tryb failover na jedno wystąpienie maszyny wirtualnej, maszynę wirtualną w zestawie dostępności lub maszynę wirtualną w strefie dostępności. To ustawienie nie ma wpływu na replikację. [Przeczytaj](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/) ogłoszenie.
 **Magazyn z obsługą zapory (Portal/program PowerShell)** | Dodano obsługę [kont magazynu obsługujących zaporę](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> Maszyny wirtualne platformy Azure z dyskami niezarządzanymi można replikować na konta magazynu z obsługą zapory w innym regionie świadczenia usługi Azure na potrzeby odzyskiwania po awarii.<br/><br/> Kont magazynu z obsługą zapory można używać jako docelowych kont magazynu dla dysków niezarządzanych.<br/><br/> Obsługiwane w portalu i przy użyciu programu PowerShell.

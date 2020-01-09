@@ -1,5 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — Monitoruj aktywność chmury prywatnej
+title: Monitoruj aktywność chmury prywatnej
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Opisuje informacje dostępne dla działania w ramach rozwiązania Azure VMware przez środowisko CloudSimple, w tym alerty, zdarzenia, zadania i inspekcje.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ddb3741c987e839fafb8bc222231547988d72f01
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459208"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Monitoruj rozwiązanie VMware według działania CloudSimple
 
 Dzienniki aktywności CloudSimple zapewniają wgląd w operacje wykonywane w portalu CloudSimple.  Lista zawiera alerty, zdarzenia, zadania i inspekcje.  Użyj dzienników aktywności, aby określić, kto i kiedy operacje zostały wykonane.  Dzienniki aktywności nie obejmują żadnych operacji odczytu wykonywanych przez użytkownika.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -48,15 +49,15 @@ W przypadku alertów dostępne są następujące kolumny informacji. Kliknij poz
 | Kolumna | Opis |
 ------------ | ------------- |
 | Typ alertu | Kategoria alertu.|
-| Time | Czas wystąpienia alertu. |
-| severity | Istotność alertu.|
+| Czas | Czas wystąpienia alertu. |
+| Ważność | Istotność alertu.|
 | Nazwa zasobu | Nazwa przypisana do zasobu, taka jak nazwa chmury prywatnej. |
 | Typ zasobu | Kategoria zasobu: Chmura prywatna, stojak w chmurze. |
 | Identyfikator zasobu | Identyfikator zasobu. |
 | Opis | Opis wyzwalania alertu. |
 | Potwierdzone | Wskazanie, czy alert został potwierdzony. |
 
-## <a name="events"></a>Events
+## <a name="events"></a>Wydarzenia
 
 Zdarzenia pokazują aktywność użytkownika i systemu w portalu CloudSimple. Na stronie zdarzenia jest wyświetlana aktywność skojarzona z określonym zasobem i ważność wpływu.
 
@@ -64,9 +65,9 @@ W przypadku alertów dostępne są następujące kolumny informacji. Kliknij poz
 
 | Kolumna | Opis |
 ------------ | ------------- |
-| Time | Data i godzina wystąpienia zdarzenia. |
+| Czas | Data i godzina wystąpienia zdarzenia. |
 | Typ zdarzenia | Kod liczbowy, który identyfikuje zdarzenie. |
-| severity | Ważność zdarzenia.|
+| Ważność | Ważność zdarzenia.|
 | Nazwa zasobu | Nazwa przypisana do zasobu, taka jak nazwa chmury prywatnej. |
 | Typ zasobu | Kategoria zasobu: Chmura prywatna, stojak w chmurze. |
 | Opis | Opis wyzwalania alertu. |
@@ -85,8 +86,8 @@ W przypadku alertów dostępne są następujące kolumny informacji. Kliknij poz
 | Nazwa zasobu | Nazwa przypisana do zasobu. |
 | Typ zasobu | Kategoria zasobu: Chmura prywatna, stojak w chmurze. |
 | Identyfikator zasobu | Identyfikator zasobu. |
-| Start | Godzina rozpoczęcia zadania. |
-| End | Godzina zakończenia zadania. |
+| Rozpocznij | Godzina rozpoczęcia zadania. |
+| Koniec | Godzina zakończenia zadania. |
 | Stan | Bieżący stan zadania. |
 | Upłynęło czasu | Czas trwania zadania (jeśli został ukończony) lub trwa jego wykonywanie (jeśli jest w toku). |
 | Opis | Opis zadania. |
@@ -99,14 +100,14 @@ W przypadku alertów dostępne są następujące kolumny informacji. Kliknij poz
 
 | Kolumna | Opis |
 ------------ | ------------- |
-| Time | Godzina wpisu inspekcji. |
+| Czas | Godzina wpisu inspekcji. |
 | Operacja | Akcja wykonywana przez zadanie. |
 | Użytkownik | Użytkownik przypisany do zadania. |
 | Nazwa zasobu | Nazwa przypisana do zasobu. |
 | Typ zasobu | Kategoria zasobu: Chmura prywatna, stojak w chmurze. |
 | Identyfikator zasobu | Identyfikator zasobu. |
 | Wynik | Wynik działania, na przykład **powodzenie**. |
-| Poświęcony czas | Czas na ukończenie zadania. |
+| Czas trwania | Czas na ukończenie zadania. |
 | Opis | Opis akcji. |
 
 ## <a name="next-steps"></a>Następne kroki

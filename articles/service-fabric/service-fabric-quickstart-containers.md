@@ -1,28 +1,18 @@
 ---
-title: Tworzenie aplikacji kontenera systemu Windows w usłudze Service Fabric na platformie Azure | Microsoft Docs
+title: Tworzenie aplikacji kontenera systemu Windows na Service Fabric na platformie Azure
 description: W tym przewodniku Szybki start utworzysz pierwszą aplikację kontenera systemu Windows w usłudze Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: jpconnock
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 096a398b8fc4f7f42dcc42feb7fe00b182d7649b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466266"
 ---
-# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Windows w usłudze Service Fabric
+# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Szybki start: wdrażanie kontenerów systemu Windows do usługi Service Fabric
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi.
 
@@ -100,7 +90,7 @@ W razie potrzeby zainstaluj program Azure PowerShell przy użyciu instrukcji dos
 
 Przed uruchomieniem poniższego skryptu programu PowerShell uruchom polecenie `Connect-AzAccount` w celu utworzenia połączenia z platformą Azure.
 
-Skopiuj poniższy skrypt do Schowka i otwórz program **Windows PowerShell ISE**.  Wklej tę zawartość w pustym oknie pliku Untitled1.ps1. Następnie podaj wartości zmiennych w skrypcie: `subscriptionId` `certfolder`, `certpwd` `adminuser` `adminpwd`,,, i tak dalej.  Katalog określony w zmiennej `certfolder` musi istnieć przed uruchomieniem skryptu.
+Skopiuj poniższy skrypt do Schowka i otwórz program **Windows PowerShell ISE**.  Wklej tę zawartość w pustym oknie pliku Untitled1.ps1. Następnie podaj wartości zmiennych w skrypcie: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`itd.  Katalog określony dla `certfolder` musi istnieć przed uruchomieniem skryptu.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
@@ -117,7 +107,7 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 Teraz zainstalujemy plik PFX w magazynie certyfikatów *CurrentUser\My* . Plik PFX będzie znajdować się w katalogu określonym za pomocą zmiennej środowiskowej `certfolder` w przedstawionym powyżej skrypcie programu PowerShell.
 
-Przejdź do tego katalogu, a następnie uruchom następujące polecenie programu PowerShell, zastępując nazwę pliku PFX znajdującego się w `certfolder` katalogu i hasło określone `certpwd` w zmiennej. W tym przykładzie jako bieżący katalog jest ustawiony katalog określony przez zmienną `certfolder` w skrypcie programu PowerShell. Z jego poziomu uruchamiane jest polecenie `Import-PfxCertificate`:
+Przejdź do tego katalogu, a następnie uruchom następujące polecenie programu PowerShell, zastępując nazwę pliku PFX znajdującego się w katalogu `certfolder` i hasło określone w zmiennej `certpwd`. W tym przykładzie jako bieżący katalog jest ustawiony katalog określony przez zmienną `certfolder` w skrypcie programu PowerShell. Z jego poziomu uruchamiane jest polecenie `Import-PfxCertificate`:
 
 ```powershell
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
@@ -148,13 +138,13 @@ Kliknij pozycję **Zaawansowane parametry połączenia**, a następnie zweryfiku
 
 ![Okno dialogowe Publikowanie](./media/service-fabric-quickstart-containers/publish-app.png)
 
-Kliknij przycisk **publikowania**.
+Kliknij przycisk **Opublikuj**.
 
 Każda aplikacja w klastrze musi mieć unikatową nazwę. W przypadku konfliktu nazw Zmień nazwę projektu programu Visual Studio i Wdróż go ponownie.
 
-Otwórz przeglądarkę i przejdź do adresu, który został umieszczony w polu **Punkt końcowy połączenia** w poprzednim kroku. Adres URL można opcjonalnie poprzedzić identyfikatorem schematu `http://` i dołączyć port `:80`. Na przykład http:\//mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
+Otwórz przeglądarkę i przejdź do adresu, który został umieszczony w polu **Punkt końcowy połączenia** w poprzednim kroku. Adres URL można opcjonalnie poprzedzić identyfikatorem schematu `http://` i dołączyć port `:80`. Na przykład http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
- Powinna zostać wyświetlona domyślna strona internetowa usług IIS: ![Domyślna strona internetowa usług IIS][iis-default]
+ Powinna zostać wyświetlona domyślna strona internetowa usługi IIS: ![domyślna strona internetowa usług IIS][iis-default]
 
 ## <a name="clean-up"></a>Czyszczenie
 

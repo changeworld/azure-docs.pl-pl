@@ -1,25 +1,16 @@
 ---
-title: Dowiedz się więcej o opcjach pomocy technicznej platformy Azure Service Fabric | Microsoft Docs
+title: Dowiedz się więcej o opcjach pomocy technicznej dla usługi Azure Service Fabric
 description: Obsługiwane wersje klastra platformy Azure Service Fabric i linki do biletów pomocy technicznej dotyczącej plików
-services: service-fabric
-documentationcenter: .net
 author: pkcsf
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ac36b1a538d5899613e19f157695d0bc333d9ece
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679058"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465617"
 ---
 # <a name="azure-service-fabric-support-options"></a>Opcje pomocy technicznej platformy Azure Service Fabric
 

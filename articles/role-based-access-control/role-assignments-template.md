@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462192"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Dodawanie przypisań ról przy użyciu usług Azure RBAC i szablonów Azure Resource Manager
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] oprócz używania Azure PowerShell lub interfejsu wiersza polecenia platformy Azure można przypisywać role przy użyciu [szablonów Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli trzeba spójnie i wielokrotnie wdrażać zasoby. W tym artykule opisano sposób przypisywania ról przy użyciu szablonów.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] oprócz używania Azure PowerShell lub interfejsu wiersza polecenia platformy Azure można przypisywać role przy użyciu [szablonów Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Szablony mogą być przydatne, jeśli trzeba spójnie i wielokrotnie wdrażać zasoby. W tym artykule opisano sposób przypisywania ról przy użyciu szablonów.
 
 ## <a name="get-object-ids"></a>Pobierz identyfikatory obiektów
 
@@ -64,7 +64,7 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>Dodawanie przypisania roli
+## <a name="add-a-role-assignment"></a>Dodaj przypisanie roli
 
 W celu udzielenia dostępu w ramach RBAC należy dodać przypisanie roli.
 
@@ -362,6 +362,6 @@ Poniżej przedstawiono przykład przypisania roli współautor do nowej jednostk
 ## <a name="next-steps"></a>Następne kroki
 
 - [Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Understand the structure and syntax of Azure Resource Manager Templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](../azure-resource-manager/templates/template-syntax.md)
 - [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](../azure-resource-manager/deploy-to-subscription.md)
 - [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

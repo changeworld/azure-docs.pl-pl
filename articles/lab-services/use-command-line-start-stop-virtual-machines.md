@@ -1,6 +1,6 @@
 ---
-title: Użyj narzędzia wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych usługi Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać narzędzi wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych w usłudze Azure DevTest Labs.
+title: Korzystanie z narzędzi wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak uruchamiać i zatrzymywać maszyny wirtualne w Azure DevTest Labs przy użyciu narzędzi wiersza polecenia.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,29 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e00de295a7f41bf0ff768c4f948a667bc188616
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456950"
 ---
-# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Użyj narzędzia wiersza polecenia do uruchamiania i zatrzymywania maszyn wirtualnych w usłudze Azure DevTest Labs
-W tym artykule pokazano, jak za pomocą programu Azure PowerShell lub wiersza polecenia platformy Azure uruchamianiem lub zatrzymywaniem maszyn wirtualnych w laboratorium Azure DevTest Labs. Można utworzyć skryptów programu PowerShell/interfejsu wiersza polecenia w celu zautomatyzowania tych operacji. 
+# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Uruchamianie i zatrzymywanie Azure DevTest Labs maszyn wirtualnych przy użyciu narzędzi wiersza polecenia
+W tym artykule pokazano, jak używać Azure PowerShell lub interfejsu wiersza polecenia platformy Azure do uruchamiania lub zatrzymywania maszyn wirtualnych w laboratorium w Azure DevTest Labs. Aby zautomatyzować te operacje, można utworzyć skrypty środowiska PowerShell/interfejsu wiersza polecenia. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Omówienie
-Usługa Azure DevTest Labs jest sposobem tworzenia środowiska deweloperskie i testowe szybkie, łatwe i zwarte. Umożliwia zarządzanie kosztami, szybko aprowizuj maszyny wirtualne i zminimalizować ilość odpadów.  Ma wbudowanych funkcji w witrynie Azure portal, które można konfigurować maszyny wirtualne w laboratorium, aby automatycznie uruchomić i zatrzymać w określonym czasie. 
+## <a name="overview"></a>Przegląd
+Azure DevTest Labs to sposób tworzenia szybkich, łatwych i oszczędnych środowisk deweloperskich i testowych. Umożliwia zarządzanie kosztami, szybkie Inicjowanie obsługi maszyn wirtualnych i minimalizowanie odpadów.  W Azure Portal są wbudowane funkcje, które umożliwiają skonfigurowanie maszyn wirtualnych w laboratorium do automatycznego uruchamiania i zatrzymywania w określonych godzinach. 
 
-Jednak w niektórych scenariuszach można zautomatyzować, uruchamianie i zatrzymywanie maszyn wirtualnych ze skryptów programu PowerShell/interfejsu wiersza polecenia. Oferuje on pewną elastyczność dzięki uruchamianie i zatrzymywanie poszczególnych maszyn w dowolnym momencie, a nie w określonym czasie. Poniżej przedstawiono niektóre sytuacje, w której działa pomocny byłby te zadania za pomocą skryptów.
+Jednak w niektórych scenariuszach można zautomatyzować uruchamianie i zatrzymywanie maszyn wirtualnych ze skryptów programu PowerShell/interfejsu wiersza polecenia. Zapewnia ona pewną elastyczność w zakresie uruchamiania i zatrzymywania poszczególnych maszyn w dowolnym momencie, a nie w określonych godzinach. Poniżej przedstawiono niektóre sytuacje, w których wykonywanie tych zadań przy użyciu skryptów byłoby przydatne.
 
-- Korzystając z 3-warstwowej jako część środowiska testowego, warstwy należy uruchomić w sekwencji. 
-- Wyłącz Maszynę wirtualną po spełnieniu kryteriów niestandardowych w celu zaoszczędzenia pieniędzy. 
-- Używać go jako zadanie w ramach przepływu pracy ciągłej integracji/ciągłego Dostarczania rozpoczynają się od początku przepływu, korzystanie z maszyn wirtualnych, jak tworzyć maszyny, przetestuj maszyny lub infrastruktury, a następnie Zatrzymaj maszyny wirtualne, gdy proces zostanie zakończony. Na przykład będą fabrycznie obrazu niestandardowego za pomocą usługi Azure DevTest Labs.  
+- W przypadku korzystania z aplikacji 3-warstwowej jako części środowiska testowego warstwy muszą zostać uruchomione w sekwencji. 
+- Wyłącz maszynę wirtualną w przypadku spełnienia kryteriów niestandardowych, aby zaoszczędzić pieniądze. 
+- Użyj jej jako zadania w ramach przepływu pracy ciągłej integracji/ciągłego wdrażania, aby zacząć od początku przepływu, użyj maszyn wirtualnych jako maszyn kompilacji, maszyn testowych lub infrastruktury, a następnie Zatrzymaj maszyny wirtualne po zakończeniu procesu. Przykładem może być niestandardowa fabryka obrazów z Azure DevTest Labs.  
 
-## <a name="azure-powershell"></a>Azure PowerShell
-Poniższy skrypt programu PowerShell uruchamia Maszynę wirtualną w laboratorium. [Wywoływanie AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) jest podstawowym fokus dla tego skryptu. **ResourceId** parametr jest w pełni kwalifikowanego Identyfikatora zasobu dla maszyny Wirtualnej w środowisku laboratoryjnym. **Akcji** parametr ma miejsce **Start** lub **zatrzymać** opcji ustawia się w zależności od tego, co jest potrzebne.
+## <a name="azure-powershell"></a>Program Azure PowerShell
+
+> [!NOTE]
+> Poniższy skrypt używa Azure PowerShell AZ module. 
+
+Poniższy skrypt programu PowerShell uruchamia maszynę wirtualną w laboratorium. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) jest podstawowym fokusem dla tego skryptu. Parametr **ResourceID** to w pełni kwalifikowany identyfikator zasobu dla maszyny wirtualnej w laboratorium. W parametrze **akcji** jest ustawiana opcja **uruchamiania** lub **zatrzymywania** w zależności od tego, co jest potrzebne.
 
 ```powershell
 # The id of the subscription
@@ -53,11 +57,7 @@ $vmAction = "Start"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
 # Get the lab information
-if ($(Get-Module -Name AzureRM).Version.Major -eq 6) {
-    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -Name $devTestLabName
-} else {
-    $devTestLab = Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceNameEquals $devTestLabName
-}
+$devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $devTestLabName
 
 # Start the VM and return a succeeded or failed status
 $returnStatus = Invoke-AzResourceAction `
@@ -75,7 +75,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-[Wiersza polecenia platformy Azure](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) automatyzacji, uruchamianie i zatrzymywanie maszyn wirtualnych z usługi DevTest Labs w inny sposób. Wiersza polecenia platformy Azure może być [zainstalowane](/cli/azure/install-azure-cli?view=azure-cli-latest) w różnych systemach operacyjnych. Poniższy skrypt zapewnia polecenia do uruchamiania i zatrzymywania maszyny Wirtualnej w laboratorium. 
+[Interfejs wiersza polecenia platformy Azure](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) jest innym sposobem automatyzacji uruchamiania i zatrzymywania maszyn wirtualnych z DevTest Labs. Interfejs wiersza polecenia platformy Azure można [zainstalować](/cli/azure/install-azure-cli?view=azure-cli-latest) w różnych systemach operacyjnych. Poniższy skrypt zawiera polecenia służące do uruchamiania i zatrzymywania maszyny wirtualnej w laboratorium. 
 
 ```azurecli
 # Sign in to Azure
@@ -92,5 +92,5 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujący artykuł w witrynie Azure portal można wykonywać następujące operacje: [Uruchom ponownie Maszynę wirtualną](devtest-lab-restart-vm.md).
+## <a name="next-steps"></a>Następne kroki
+Aby wykonać te operacje Azure Portal, zobacz następujący artykuł: [Uruchom ponownie maszynę wirtualną](devtest-lab-restart-vm.md).

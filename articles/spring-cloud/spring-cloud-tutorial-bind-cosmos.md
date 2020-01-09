@@ -6,97 +6,106 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7e796c6f8b2ae17ba267a19da1d909087163d99c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8eeb67419d2da90ff1e2d2beb8cb59a85c3bbacb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461620"
 ---
-# <a name="tutorial-bind-an-azure-cosmos-db-to-your-azure-spring-cloud-application"></a>Samouczek: Powiąż Azure Cosmos DB ze swoją aplikacją w chmurze platformy Azure
+# <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Powiązywanie bazy danych Azure Cosmos DB z aplikacją w chmurze platformy Azure
 
-Chmura sprężynowa platformy Azure umożliwia automatyczne powiązanie wybranych usług platformy Azure z aplikacjami zamiast ręcznego konfigurowania aplikacji do rozruchu ze sprężyną. W tym artykule pokazano, jak powiązać aplikację z Azure Cosmos DB.
+Zamiast ręcznego konfigurowania aplikacji do rozruchu sprężynowego można automatycznie powiązać wybrane usługi platformy Azure z aplikacjami za pomocą chmury sieci platformy Azure. W tym artykule pokazano, jak powiązać aplikację z bazą danych Azure Cosmos DB.
 
 Wymagania wstępne:
-* Wdrożone wystąpienie chmury Azure wiosennej.  Skorzystaj z naszego [przewodnika Szybki Start](spring-cloud-quickstart-launch-app-cli.md) , aby rozpocząć pracę.
+
+* Wdrożone wystąpienie chmury Azure wiosennej. Aby rozpocząć, Skorzystaj z naszego [przewodnika Szybki Start dotyczącego wdrażania za pośrednictwem interfejsu wiersza polecenia platformy Azure](spring-cloud-quickstart-launch-app-cli.md) .
 * Konto Azure Cosmos DB z minimalnym poziomem uprawnień współautor.
 
 ## <a name="bind-azure-cosmos-db"></a>Azure Cosmos DB powiązania
 
-Azure Cosmos DB ma pięć różnych typów interfejsów API, które obsługują powiązanie:
+Azure Cosmos DB ma pięć różnych typów interfejsów API, które obsługują powiązania. W poniższej procedurze pokazano, jak z nich korzystać:
 
-1. Tworzy bazę danych usługi Azure Cosmos DB. Zapoznaj się z [tym artykułem,](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) Aby uzyskać pomoc dotyczącą tworzenia bazy danych. Zapisz nazwę bazy danych. Nasza nazwa jest `testdb`.
+1. Tworzy bazę danych usługi Azure Cosmos DB. Zapoznaj się z przewodnikiem Szybki Start dotyczącym [tworzenia bazy danych](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) w celu uzyskania pomocy. 
 
-1. Dodaj jedną z następujących zależności w `pom.xml` aplikacji w chmurze, zgodnie z typem interfejsu API.
-    
-    #### <a name="api-type-core-sql"></a>Typ interfejsu API: rdzeń (SQL)
+1. Zapisz nazwę bazy danych. W przypadku tej procedury Nazwa bazy danych to **TestDB**.
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-cosmosdb-spring-boot-starter</artifactId>
-        <version>2.1.6</version>
-    </dependency>
-    ```
-    
-    #### <a name="api-type-mongodb"></a>Typ interfejsu API: MongoDB
+1. Dodaj jedną z następujących zależności do pliku pliku pom. XML aplikacji chmurowej ze sprężyną Azure. Wybierz zależność, która jest odpowiednia dla typu interfejsu API.
 
-    ```xml
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
-    ```
+    * Typ interfejsu API: rdzeń (SQL)
 
-    #### <a name="api-type-cassandra"></a>Typ interfejsu API: Cassandra
+      ```xml
+      <dependency>
+          <groupId>com.microsoft.azure</groupId>
+          <artifactId>azure-cosmosdb-spring-boot-starter</artifactId>
+          <version>2.1.6</version>
+      </dependency>
+      ```
 
-    ```xml
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-cassandra</artifactId>
-    </dependency>
-    ```
+    * Typ interfejsu API: MongoDB
 
-    #### <a name="api-type-gremlin-graph"></a>Typ interfejsu API: Gremlin (Graph)
+      ```xml
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-mongodb</artifactId>
+      </dependency>
+      ```
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.spring.data.gremlin</groupId>
-        <artifactId>spring-data-gremlin</artifactId>
-        <version>2.1.7</version>
-    </dependency>
-    ```
+    * Typ interfejsu API: Cassandra
 
-    #### <a name="api-type-azure-table"></a>Typ interfejsu API: tabela platformy Azure
+      ```xml
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-cassandra</artifactId>
+      </dependency>
+      ```
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-storage-spring-boot-starter</artifactId>
-        <version>2.0.5</version>
-    </dependency>
-    ```
+    * Typ interfejsu API: Gremlin (Graph)
 
-1. Zaktualizuj bieżące wdrożenie przy użyciu `az spring-cloud app update` lub Utwórz nowe wdrożenie dla tej zmiany przy użyciu `az spring-cloud app deployment create`.  Te polecenia spowodują aktualizację lub utworzenie aplikacji z nową zależnością.
+      ```xml
+      <dependency>
+          <groupId>com.microsoft.spring.data.gremlin</groupId>
+          <artifactId>spring-data-gremlin</artifactId>
+          <version>2.1.7</version>
+      </dependency>
+      ```
 
-1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal. Ta sama aplikacja została zaktualizowana lub wdrożona w poprzednim kroku. Znajdź **pulpit nawigacyjny aplikacji** i wybierz aplikację, która ma zostać powiązana z Cosmos DB. Następnie wybierz pozycję `Service binding` i wybierz przycisk `Create service binding`. Wypełnij formularz, wybierając **Typ powiązania** `Azure Cosmos DB`, typ interfejsu API, nazwę bazy danych i konto Azure Cosmos DB.
+    * Typ interfejsu API: tabela platformy Azure
+
+      ```xml
+      <dependency>
+          <groupId>com.microsoft.azure</groupId>
+          <artifactId>azure-storage-spring-boot-starter</artifactId>
+          <version>2.0.5</version>
+      </dependency>
+      ```
+
+1. Użyj `az spring-cloud app update`, aby zaktualizować bieżące wdrożenie, lub użyj `az spring-cloud app deployment create`, aby utworzyć nowe wdrożenie. Te polecenia spowodują aktualizację lub utworzenie aplikacji z nową zależnością.
+
+1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal. Przejdź do **pulpitu nawigacyjnego aplikacji** i wybierz aplikację, do której ma zostać utworzone powiązanie Azure Cosmos DB. Ta aplikacja jest taka sama, która została zaktualizowana lub wdrożona w poprzednim kroku.
+
+1. Wybierz pozycję **powiązanie usługi**, a następnie wybierz pozycję **Utwórz powiązanie usługi**. Aby wypełnić formularz, wybierz:
+   * Wartość **typu powiązania** **Azure Cosmos DB**.
+   * Typ interfejsu API.
+   * Nazwa bazy danych.
+   * Konto Azure Cosmos DB.
 
     > [!NOTE]
     > Jeśli używasz Cassandra, użyj przestrzeni kluczy dla nazwy bazy danych.
 
-1. Uruchom ponownie aplikację, wybierając przycisk **restart (Uruchom ponownie** ) na stronie aplikacji.
+1. Uruchom ponownie aplikację, wybierając pozycję **Uruchom ponownie** na stronie aplikacji.
 
-1. Aby upewnić się, że usługa jest powiązana prawidłowo, wybierz nazwę powiązania i sprawdź jej szczegóły. Pole `property` powinno wyglądać podobnie do tego:
+1. Aby upewnić się, że usługa jest powiązana prawidłowo, wybierz nazwę powiązania i sprawdź jej szczegóły. Pole `property` powinno wyglądać podobnie do tego przykładu:
 
     ```
-    azure.cosmosdb.uri=https:/<some account>.documents.azure.com:443
+    azure.cosmosdb.uri=https://<some account>.documents.azure.com:443
     azure.cosmosdb.key=abc******
     azure.cosmosdb.database=testdb
     ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób powiązania aplikacji w chmurze platformy Azure z usługą CosmosDB.  Aby dowiedzieć się, jak powiązać aplikację z Azure Redis Cache, przejdź do następnego samouczka.
+W tym samouczku przedstawiono sposób powiązania aplikacji w chmurze platformy Azure z bazą danych Azure Cosmos DB. Aby dowiedzieć się, jak powiązać aplikację z pamięcią podręczną platformy Azure dla pamięci podręcznej Redis, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Powiąż aplikację w chmurze platformy Azure z usługą Azure Redis Cache](spring-cloud-tutorial-bind-redis.md).
+> [Dowiedz się, jak utworzyć powiązanie z pamięcią podręczną Azure dla pamięci podręcznej Redis](spring-cloud-tutorial-bind-redis.md)

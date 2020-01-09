@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ef2db7f13ea5192634855b69a0d355e0f1e11ecb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035076"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458676"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Przekazywanie i Tworzenie maszyny wirtualnej z systemem Linux z dysku niestandardowego przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -101,7 +101,7 @@ Upewnij się, że masz zainstalowaną najnowszą wersję [interfejsu wiersza pol
 
 W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów zawarte `myResourceGroup`, `mystorageaccount`i `mydisks`.
 
-<a id="prepimage"></a>
+<a id="prepimage"> </a>
 
 ## <a name="prepare-the-disk-to-be-uploaded"></a>Przygotuj dysk do przekazania
 Platforma Azure obsługuje różne dystrybucje systemu Linux (zobacz [rozpowszechniane dystrybucje](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Poniższe artykuły przeprowadzą Cię przez proces przygotowywania różnych dystrybucji systemu Linux, które są obsługiwane na platformie Azure:
@@ -122,7 +122,7 @@ Zapoznaj się również z **[informacjami o instalacji systemu Linux](create-upl
 > 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-Grupy zasobów logicznie łączą wszystkie zasoby platformy Azure w celu obsługi maszyn wirtualnych, takich jak wirtualne sieci i magazyn. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie grup zasobów](../../azure-resource-manager/resource-group-overview.md). Przed przekazaniem niestandardowego dysku i utworzeniem maszyn wirtualnych należy najpierw utworzyć grupę zasobów za pomocą [AZ Group Create](/cli/azure/group).
+Grupy zasobów logicznie łączą wszystkie zasoby platformy Azure w celu obsługi maszyn wirtualnych, takich jak wirtualne sieci i magazyn. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie grup zasobów](../../azure-resource-manager/management/overview.md). Przed przekazaniem niestandardowego dysku i utworzeniem maszyn wirtualnych należy najpierw utworzyć grupę zasobów za pomocą [AZ Group Create](/cli/azure/group).
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Wyświetl listę kluczy konta magazynu
-Na platformie Azure generowane są 2 512-bitowe klucze dostępu dla każdego konta magazynu. Te klucze dostępu są używane podczas uwierzytelniania na koncie magazynu, na przykład w celu wykonania operacji zapisu. Przeczytaj więcej [na temat zarządzania dostępem do magazynu tutaj](../../storage/common/storage-account-manage.md#access-keys). Możesz wyświetlić klawisze dostępu za pomocą [AZ Storage account Keys list](/cli/azure/storage/account/keys).
+Na platformie Azure generowane są 2 512-bitowe klucze dostępu dla każdego konta magazynu. Te klucze dostępu są używane podczas uwierzytelniania na koncie magazynu, na przykład w celu wykonania operacji zapisu. Aby uzyskać więcej informacji na temat kluczy dostępu do konta magazynu, zobacz [Zarządzanie kluczami dostępu do konta magazynu](../../storage/common/storage-account-keys-manage.md). Możesz wyświetlić klawisze dostępu za pomocą [AZ Storage account Keys list](/cli/azure/storage/account/keys).
 
 Wyświetl klucze dostępu dla utworzonego konta magazynu:
 
@@ -204,7 +204,7 @@ Nadal trzeba określić lub odpowiedzieć na pytanie, wszystkie dodatkowe parame
 
 
 ## <a name="resource-manager-template"></a>Szablon usługi Resource Manager
-Szablony Azure Resource Manager są plikami JavaScript Object Notation (JSON), które definiują środowisko, które chcesz skompilować. Szablony są podzielone na różne dostawcy zasobów, takie jak obliczenia lub sieć. Możesz użyć istniejących szablonów lub napisać własny. Przeczytaj więcej na temat [używania Menedżer zasobów i szablonów](../../azure-resource-manager/resource-group-overview.md).
+Szablony Azure Resource Manager są plikami JavaScript Object Notation (JSON), które definiują środowisko, które chcesz skompilować. Szablony są podzielone na różne dostawcy zasobów, takie jak obliczenia lub sieć. Możesz użyć istniejących szablonów lub napisać własny. Przeczytaj więcej na temat [używania Menedżer zasobów i szablonów](../../azure-resource-manager/management/overview.md).
 
 W ramach dostawcy `Microsoft.Compute/virtualMachines` szablonu znajduje się węzeł `storageProfile` zawierający szczegóły konfiguracji maszyny wirtualnej. Dwa główne parametry do edycji to `image` i `vhd` identyfikatorów URI, które wskazują na dysk niestandardowy i nową maszynę wirtualną maszyny wirtualnej. Poniżej przedstawiono przykładowy kod JSON używany do użycia dysku niestandardowego:
 
@@ -224,7 +224,7 @@ W ramach dostawcy `Microsoft.Compute/virtualMachines` szablonu znajduje się wę
           }
 ```
 
-Możesz użyć [tego istniejącego szablonu, aby utworzyć maszynę wirtualną na podstawie niestandardowego obrazu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) lub przeczytać o [tworzeniu własnych szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md). 
+Możesz użyć [tego istniejącego szablonu, aby utworzyć maszynę wirtualną na podstawie niestandardowego obrazu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) lub przeczytać o [tworzeniu własnych szablonów Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md). 
 
 Po skonfigurowaniu szablonu Użyj polecenie [AZ Group Deployment Create](/cli/azure/group/deployment) , aby utworzyć maszyny wirtualne. Określ identyfikator URI szablonu JSON z parametrem `--template-uri`:
 
@@ -242,5 +242,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 ## <a name="next-steps"></a>Następne kroki
-Po przygotowaniu i przekazaniu niestandardowego dysku wirtualnego możesz przeczytać więcej na temat [używania Menedżer zasobów i szablonów](../../azure-resource-manager/resource-group-overview.md). Możesz również [dodać dysk z danymi](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) do nowych maszyn wirtualnych. Jeśli masz aplikacje uruchomione na maszynach wirtualnych, do których musisz uzyskać dostęp, pamiętaj, aby [otworzyć porty i punkty końcowe](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Po przygotowaniu i przekazaniu niestandardowego dysku wirtualnego możesz przeczytać więcej na temat [używania Menedżer zasobów i szablonów](../../azure-resource-manager/management/overview.md). Możesz również [dodać dysk z danymi](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) do nowych maszyn wirtualnych. Jeśli masz aplikacje uruchomione na maszynach wirtualnych, do których musisz uzyskać dostęp, pamiętaj, aby [otworzyć porty i punkty końcowe](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

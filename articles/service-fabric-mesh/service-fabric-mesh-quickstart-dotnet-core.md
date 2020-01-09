@@ -1,26 +1,17 @@
 ---
-title: Szybki start — wdrażanie aplikacji internetowej w usłudze Azure Service Fabric Mesh | Microsoft Docs
+title: Szybki Start — wdrażanie aplikacji sieci Web na platformie Azure Service Fabric siatką
 description: W tym przewodniku Szybki start opisano, jak utworzyć witrynę internetową platformy ASP.NET Core i opublikować ją w usłudze Azure Service Fabric Mesh za pomocą programu Visual Studio.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b30676e0c5782a95c629571cadead7bf58211789
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459069"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Szybki start: Tworzenie i wdrażanie aplikacji internetowych w usłudze Azure Service Fabric Mesh
 
@@ -34,7 +25,7 @@ Konieczna jest subskrypcja platformy Azure. Jeśli jej nie masz, możesz łatwo 
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Tworzenie projektu usługi Service Fabric Mesh
 
-Otwórz program Visual Studio, a następnie wybierz kolejno opcje **Plik** > **Nowy** > **Projekt...**.
+Otwórz program Visual Studio, a następnie wybierz kolejno opcje **Plik** > **Nowy** > **Projekt...** .
 
 W oknie dialogowym **Nowy projekt** w polu **Wyszukaj** u góry wpisz `mesh`. Wybierz szablon **Aplikacja Service Fabric Mesh**. Jeśli go nie widzisz, upewnij się, że zainstalowano zestaw SDK usługi Mesh i narzędzia VS w wersji zapoznawczej zgodnie z opisem w temacie [Konfigurowanie środowiska projektowego](service-fabric-mesh-howto-setup-developer-environment-sdk.md). 
 
@@ -76,11 +67,11 @@ Zostanie wyświetlone okno dialogowe **Publikowanie aplikacji usługi Service Fa
 
 Wybierz konto i subskrypcję platformy Azure. Wybierz **lokalizację**. W tym artykule jest używany region **Wschodnie stany USA**.
 
-W obszarze **Grupa zasobów** wybierz pozycję **\<Utwórz nową grupę zasobów...>**. Zostanie wyświetlone okno dialogowe **Tworzenie grupy zasobów**. Ustaw opcje **Nazwa grupy zasobów** i **Lokalizacja**.  W tym przewodniku Szybki start jest używana lokalizacja **Wschodnie stany USA** i nazwa grupy **sfmeshTutorial1RG** (jeśli w Twojej organizacji wiele osób korzysta z tej samej subskrypcji, wybierz unikatową nazwę grupy zasobów).  Naciśnij pozycję **Utwórz**, aby utworzyć grupę zasobów i wrócić do okna dialogowego publikowania.
+W obszarze **Grupa zasobów** wybierz pozycję **\<Utwórz nową grupę zasobów...>** . Zostanie wyświetlone okno dialogowe **Tworzenie grupy zasobów**. Ustaw opcje **Nazwa grupy zasobów** i **Lokalizacja**.  W tym przewodniku Szybki start jest używana lokalizacja **Wschodnie stany USA** i nazwa grupy **sfmeshTutorial1RG** (jeśli w Twojej organizacji wiele osób korzysta z tej samej subskrypcji, wybierz unikatową nazwę grupy zasobów).  Naciśnij pozycję **Utwórz**, aby utworzyć grupę zasobów i wrócić do okna dialogowego publikowania.
 
 ![Okno dialogowe nowej grupy zasobów usługi Service Fabric Mesh w programie Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-Po powrocie do okna **Publikowanie aplikacji usługi Service Fabric** w obszarze **Azure Container Registry** wybierz pozycję **\<Utwórz nowy rejestr kontenerów...>**. W oknie dialogowym **Tworzenie rejestru kontenerów** użyj unikatowej nazwy w polu **Nazwa rejestru kontenerów**. Podaj **lokalizację** (w tym przewodniku Szybki start jest używany region **Wschodnie stany USA**). Z listy rozwijanej wybierz **grupę zasobów** utworzoną w poprzednim kroku, na przykład **sfmeshTutorial1RG**. Ustaw **jednostkę SKU** na **Podstawowa**, a następnie naciśnij przycisk **Utwórz**, aby wrócić do okna dialogowego publikowania.
+Po powrocie do okna **Publikowanie aplikacji usługi Service Fabric** w obszarze **Azure Container Registry** wybierz pozycję **\<Utwórz nowy rejestr kontenerów...>** . W oknie dialogowym **Tworzenie rejestru kontenerów** użyj unikatowej nazwy w polu **Nazwa rejestru kontenerów**. Podaj **lokalizację** (w tym przewodniku Szybki start jest używany region **Wschodnie stany USA**). Z listy rozwijanej wybierz **grupę zasobów** utworzoną w poprzednim kroku, na przykład **sfmeshTutorial1RG**. Ustaw **jednostkę SKU** na **Podstawowa**, a następnie naciśnij przycisk **Utwórz**, aby wrócić do okna dialogowego publikowania.
 
 ![Okno dialogowe nowej grupy zasobów usługi Service Fabric Mesh w programie Visual Studio](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

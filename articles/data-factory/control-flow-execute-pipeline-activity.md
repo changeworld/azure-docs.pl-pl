@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440438"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Działanie wykonywania potoku w Azure Data Factory
 Działanie Execute Pipeline umożliwia potokowi Data Factory wywoływanie innego potoku.
@@ -59,15 +59,15 @@ Działanie Execute Pipeline umożliwia potokowi Data Factory wywoływanie innego
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania wykonywania potoku. | Ciąg | Tak
 type | Musi być ustawiona na: **ExecutePipeline**. | Ciąg | Tak
-Proces | Odwołanie do potoku do potoku zależnego, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **ReferenceName** i **Type**. Właściwość ReferenceName określa nazwę potoku odwołania. Właściwość Type musi być ustawiona na wartość PipelineReference. | PipelineReference | Tak
+proces | Odwołanie do potoku do potoku zależnego, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **ReferenceName** i **Type**. Właściwość ReferenceName określa nazwę potoku odwołania. Właściwość Type musi być ustawiona na wartość PipelineReference. | PipelineReference | Tak
 parameters | Parametry, które mają zostać przesłane do wywoływanego potoku | Obiekt JSON, który mapuje nazwy parametrów na wartości argumentów | Nie
 waitOnCompletion | Określa, czy wykonanie działania czeka na zakończenie zależnego wykonania potoku. Wartość domyślna to false. | Wartość logiczna | Nie
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Przykład
 Ten scenariusz ma dwa potoki:
 
 - **Potok główny** — ten potok ma jedno działanie Execute Pipeline, które wywołuje wywoływany potok. Potok główny przyjmuje dwa parametry: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
@@ -168,10 +168,7 @@ Ten scenariusz ma dwa potoki:
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }

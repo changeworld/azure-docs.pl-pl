@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 0c1ca054f9d28bb81c6f8acf6c0f43b134a596ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293770"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75499996"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Obsługa grafu Gremlin w usłudze Azure Cosmos DB
 Azure Cosmos DB obsługuje język przechodzenia wykresu [Apache Tinkerpop](https://tinkerpop.apache.org) , znany jako [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). Język Gremlin służy do tworzenia jednostek grafu (wierzchołków i krawędzi), modyfikacji właściwości w ramach tych elementów, wykonywania zapytań i przejść oraz usuwania elementów. 
@@ -23,11 +23,11 @@ W tym artykule udostępniamy Krótki przewodnik Gremlin i wyliczamy funkcje Grem
 
 W poniższej tabeli przedstawiono popularne sterowniki Gremlin, których można użyć do usługi Azure Cosmos DB:
 
-| Pobierz | Źródło | Wprowadzenie | Obsługiwana wersja łącznika |
+| Pobierz | Źródło | Getting Started | Obsługiwana wersja łącznika |
 | --- | --- | --- | --- |
 | [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Tworzenie grafu przy użyciu platformy .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Tworzenie grafu przy użyciu środowiska Java](create-graph-java.md) | 3.2.0+ |
-| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Tworzenie grafu przy użyciu platformy Node.js](create-graph-nodejs.md) | 3.3.4 + |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Tworzenie grafu przy użyciu platformy Node.js](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python w witrynie GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Tworzenie grafu przy użyciu środowiska Python](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP w witrynie GitHub](https://github.com/PommeVerte/gremlin-php) | [Tworzenie grafu przy użyciu środowiska PHP](create-graph-php.md) | 3.1.0 |
 | [Konsola Gremlin](https://tinkerpop.apache.org/downloads.html) | [Dokumentacja dotycząca witryny TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Tworzenie grafu przy użyciu Konsoli Gremlin](create-graph-gremlin-console.md) | 3.2.0 + |
@@ -48,7 +48,7 @@ W poniższej tabeli wymieniono funkcje struktury TinkerPop wdrażane przez usłu
 
 ## <a name="gremlin-wire-format-graphson"></a>Format połączeń Gremlin: GraphSON
 
-Usługa Azure Cosmos DB korzysta z [formatu GraphSON](http://tinkerpop.apache.org/docs/current/reference/#graphson) podczas zwracania wyników z operacji Gremlin. Azure Cosmos DB obecnie obsługuje wersję "GraphSONv2". GraphSON jest standardowym formatem środowiska Gremlin do przedstawiania wierzchołków, krawędzi i właściwości (jedno- i wielowartościowych) przy użyciu formatu JSON.
+Usługa Azure Cosmos DB korzysta z [formatu GraphSON](https://tinkerpop.apache.org/docs/current/reference/#graphson) podczas zwracania wyników z operacji Gremlin. Azure Cosmos DB obecnie obsługuje wersję "GraphSONv2". GraphSON jest standardowym formatem środowiska Gremlin do przedstawiania wierzchołków, krawędzi i właściwości (jedno- i wielowartościowych) przy użyciu formatu JSON.
 
 Na przykład poniższy fragment kodu przedstawia widok w formacie GraphSON wierzchołka *zwracanego do klienta* z usługi Azure Cosmos DB. 
 
@@ -113,7 +113,7 @@ Każda właściwość może przechowywać wiele wartości w tablicy.
 
 | Właściwość | Opis |
 | --- | --- |
-| `value` | Wartość właściwości
+| `value` | Wartość właściwości.
 
 ## <a name="gremlin-steps"></a>Kroki w środowisku Gremlin
 Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę Azure Cosmos DB. Aby uzyskać pełną dokumentację dotyczącą języka Gremlin, zobacz [odwołanie do struktury TinkerPop](https://tinkerpop.apache.org/docs/3.3.2/reference).
@@ -153,9 +153,9 @@ Teraz przyjrzyjmy się krokom w środowisku Gremlin obsługiwanym przez usługę
 | `TextP.startingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()`, aby dopasować właściwość do początku danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.endingWith(string)` |  Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()`, aby dopasować właściwość do końca danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `TextP.containing(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()`, aby dopasować właściwość do zawartości danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()` w celu dopasowania właściwości, która nie zaczyna się od danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()` w celu dopasowania właściwości, która nie kończy się podanym ciągiem | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()` w celu dopasowania właściwości, która nie zawiera danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()`, aby dopasować właściwość, która nie zaczyna się od danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()`, aby dopasować właściwość, która nie kończy się podanym ciągiem | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Funkcja filtrowania ciągów. Ta funkcja jest używana jako predykat dla kroku `has()`, aby dopasować właściwość, która nie zawiera danego ciągu | [Predykaty TextP](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Agreguje ścieżki z wierzchołka do drzewa | [krok tree](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Odwija iterator w ramach kroku| [krok unfold](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Scalanie wyników z wielu przejść| [krok union](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

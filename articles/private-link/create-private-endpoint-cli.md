@@ -2,17 +2,17 @@
 title: Szybki Start — tworzenie prywatnego punktu końcowego platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 description: Informacje o prywatnym punkcie końcowym platformy Azure w tym przewodniku Szybki Start
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 67513c2155e956e005b143c3049abe70a2f126f2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: dbcb833e6f8b90cebd3d013e58168558bcd96827
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459975"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Szybki Start: Tworzenie prywatnego punktu końcowego przy użyciu interfejsu wiersza polecenia platformy Azure
 Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych. W tym przewodniku szybki start dowiesz się, jak utworzyć MASZYNę wirtualną w sieci wirtualnej, SQL Database serwerze z prywatnym punktem końcowym przy użyciu interfejsu wiersza polecenia platformy Azure. Następnie można uzyskać dostęp do maszyny wirtualnej i bezpiecznie uzyskać dostęp do prywatnego zasobu linku (w tym przykładzie do prywatnego serwera Azure SQL Database). 
@@ -29,7 +29,7 @@ Przed utworzeniem dowolnego zasobu należy utworzyć grupę zasobów, która bę
 az group create --name myResourceGroup --location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Tworzenie Virtual Network
+## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 Utwórz Virtual Network za pomocą [AZ Network VNET Create](/cli/azure/network/vnet). W tym przykładzie tworzony jest domyślny Virtual Network o nazwie *myVirtualNetwork* z jedną podsiecią o nazwie Moja *podsieć*:
 
 ```azurecli-interactive
@@ -127,7 +127,7 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 
 1. Wybierz przycisk **Połącz**. Po wybraniu przycisku **Połącz** zostanie otwarta strona **Łączenie z maszyną wirtualną**.
 
-1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
+1. Wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
 
 1. Otwórz pobrany plik RDP *.
 

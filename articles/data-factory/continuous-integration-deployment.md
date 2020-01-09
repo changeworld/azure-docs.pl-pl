@@ -11,16 +11,16 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680029"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440541"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w Azure Data Factory
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Ciągła integracja to zwyczajowa metoda testowania każdej zmiany wykonywanej w bazie kodu, jak najszybciej, jak to możliwe. Ciągłe dostarczanie odbywa się przy testowaniu, który jest wykonywany podczas ciągłej integracji i wypycha zmiany do systemu przejściowego lub produkcyjnego.
 
@@ -56,11 +56,11 @@ Z listy rozwijanej **szablon ARM** wybierz pozycję **Eksportuj szablon ARM** , 
 
 W obszarze fabryki danych testowych i produkcyjnych wybierz pozycję **Importuj szablon ARM**. Ta akcja spowoduje przejście do Azure Portal, w którym można zaimportować wyeksportowany szablon. Wybierz opcję **Kompiluj własny szablon w edytorze,** aby otworzyć edytor szablonów Menedżer zasobów.
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![Wdrożenie niestandardowe Kompiluj własny szablon](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 Kliknij pozycję **Załaduj plik** i wybierz wygenerowany szablon Menedżer zasobów.
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![Szablon edycji wdrożenia niestandardowego](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 W okienku ustawienia wprowadź wartości konfiguracyjne, takie jak poświadczenia połączonej usługi. Gdy skończysz, kliknij przycisk **Kup** , aby wdrożyć szablon Menedżer zasobów.
 

@@ -1,50 +1,49 @@
 ---
-title: Wykrywanie anomalii w usłudze Azure Stream Analytics
+title: Wykrywanie anomalii w Azure Stream Analytics
 description: W tym artykule opisano sposób korzystania ze sobą usługi Azure Stream Analytics i Azure Machine Learning do wykrywania anomalii.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e2fd226f1c605821f0fd595832b2cbe26d994fb4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612333"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459607"
 ---
-# <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
+# <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w Azure Stream Analytics
 
-Dostępne w chmurze i usługi Azure IoT Edge, Azure Stream Analytics oferuje wbudowane usługi machine learning funkcje wykrywania anomalii zależności, które mogą służyć do monitorowania dwóch anomalie najczęściej występujące: tymczasowe i trwałe. Za pomocą **AnomalyDetection_SpikeAndDip** i **AnomalyDetection_ChangePoint** funkcje, możesz przeprowadzać wykrywanie anomalii bezpośrednio w ramach zadania usługi Stream Analytics.
+Dostępne zarówno w chmurze, jak i w Azure IoT Edge, Azure Stream Analytics oferuje wbudowane funkcje wykrywania anomalii oparte na uczeniu maszynowym, które mogą być używane do monitorowania dwóch najczęściej występujących anomalii: tymczasowych i trwałych. Za pomocą funkcji **AnomalyDetection_SpikeAndDip** i **AnomalyDetection_ChangePoint** można przeprowadzić wykrywanie anomalii bezpośrednio w zadaniu Stream Analytics.
 
-Modele uczenia maszynowego założono szeregów czasowych równomiernie próbkowane. Jeśli Szeregi czasowe nie jest jednolite, może wstawić etap agregacji za pomocą okna wirowania przed wywołaniem wykrywania anomalii.
+Modele uczenia maszynowego zakładają jednolite próbkowanie szeregów czasowych. Jeśli serie czasowe nie są jednolite, można wstawić krok agregacji z oknem wirowania przed wywołaniem wykrywania anomalii.
 
-Operacje uczenia maszyny nie obsługują sezonowości trendów lub wielu variate korelacji w tej chwili.
+Operacje uczenia maszynowego nie obsługują w tym momencie trendów sezonowości ani korelacji z variate.
 
-## <a name="model-behavior"></a>Zachowania modelu
+## <a name="model-behavior"></a>Zachowanie modelu
 
-Ogólnie rzecz biorąc dokładności modelu zwiększa większej ilości danych w ramach przesuwającego się okna. Dane w określonym oknie przewijania jest traktowany jako część jej normalny zakres wartości dla tego okresu. Model analizuje tylko migracji historii zdarzeń przesuwającego się okna do Sprawdź, czy bieżące zdarzenie jest nieprawidłowe. Przemieszcza się w ramach przesuwającego się okna, stare wartości jest wykluczony z szkoleń modelowych.
+Ogólnie dokładność modelu zwiększa się z większą ilością danych w oknie przesuwania. Dane w określonym oknie przesuwania są traktowane jako część jego normalnego zakresu wartości dla tego przedziału czasu. Model uwzględnia tylko historię zdarzeń w oknie przesuwania, aby sprawdzić, czy bieżące zdarzenie jest anomalią. W miarę przenoszenia okna przesuwania stare wartości są wykluczane z szkolenia modelu.
 
-Funkcje działają, ustanawiając niektórych zwykłym oparte na co ich zauważono pory. Elementy odstające są identyfikowane przez porównanie ustanowionych normalna, w ramach poziom ufności. Rozmiar okna powinna być oparta na zdarzeniach minimalne wymagane do nauczenia modelu do normalnego zachowania, tak aby w przypadku wystąpienia anomalii byłaby w stanie rozpoznać.
+Funkcje te działają przez ustanowienie pewnego normalnego, w oparciu o to, co się stało. Elementy odstające są identyfikowane przez porównanie z ustaloną normalną, na poziomie ufności. Rozmiar okna powinien opierać się na minimalnych zdarzeniach wymaganych do uczenia modelu do normalnego zachowania, dzięki czemu w przypadku wystąpienia anomalii będzie on mógł go rozpoznać.
 
-Model czas odpowiedzi zwiększa się z rozmiarem historii, ponieważ musi zostać porównane większa liczba przeszłych zdarzeń. Zalecane jest obejmujący tylko niezbędne liczbę zdarzeń w celu zapewnienia lepszej wydajności.
+Czas odpowiedzi modelu zwiększa się wraz z rozmiarem historii, ponieważ musi on być porównywany z większą liczbą przeszłych zdarzeń. Zaleca się uwzględnienie tylko niezbędnej liczby zdarzeń w celu zapewnienia lepszej wydajności.
 
-Luki w szeregu czasowym może być to wynikiem modelu nie odbiera zdarzenia w określonych punktach w czasie. Ta sytuacja jest obsługiwane przez usługę Stream Analytics przy użyciu przypisywania logiki. Rozmiar historii, a także czas trwania dla tego samego okna przewijania jest używane do obliczania średnia liczba zdarzeń powinny przybycie.
+Przerwy w szeregach czasowych mogą być wynikiem modelu, który nie otrzymuje zdarzeń w określonych punktach w czasie. Ta sytuacja jest obsługiwana przez Stream Analytics przy użyciu logiki do przypisywania. Rozmiar historii, a także czas trwania dla tego samego przesuwanego okna jest używany do obliczania średniej szybkości, z jaką zdarzenia są oczekiwane.
 
-Generatora anomalii [tutaj](https://aka.ms/asaanomalygenerator) może służyć do kanału informacyjnego usługi Iot Hub przy użyciu danych za pomocą różnych anomalii wzorców. Zadania usługi ASA można skonfigurować za pomocą tych funkcji wykrywania anomalii do odczytu z tej usługi Iot Hub i wykrywania anomalii.
+W [tym miejscu](https://aka.ms/asaanomalygenerator) jest dostępny Generator anomalii, który umożliwia strumieniowe korzystanie z danych z różnymi wzorcami anomalii. Zadanie ASA można skonfigurować przy użyciu tych funkcji wykrywania anomalii do odczytu z tego Centrum IoT Hub i wykrywania anomalii.
 
-## <a name="spike-and-dip"></a>Kolekcji i dip
+## <a name="spike-and-dip"></a>Wartości skokowe i DIP
 
-Tymczasowe anomalie w strumieniu zdarzeń serie czasu są znane jako gwałtowne wzrosty i spadki. Wzrostów i spadków można monitorować za pomocą operatora usługi Machine Learning na podstawie [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Tymczasowe anomalie w strumieniu zdarzeń szeregów czasowych są nazywane skokami i DIP. Wartości graniczne i wartości DIP można monitorować przy użyciu operatora Machine Learning, [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ).
 
-![Przykład kolekcji i dip anomalii](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
+![Przykład wzrostu i anomalii DIP](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-W tym samym metodzie przesuwanego okna, jeśli drugi kolekcji jest mniejszy niż pierwszy z nich, obliczanych wyników dla mniejszych kolekcji prawdopodobnie nie ma znaczenia wystarczająco dużo, w porównaniu do wyników dla pierwszej kolekcji w ramach poziom ufności określony. Możesz wypróbować, zmniejszyć poziom ufności modelu do wykrywania anomalii takie. Jednak w przypadku uruchomienia uzyskać zbyt wiele alertów, można użyć nowszej interwał ufności.
+W tym samym przedziale, jeśli drugi skok jest mniejszy niż pierwszy, obliczona Ocena dla mniejszego stopnia jest prawdopodobnie nieistotna w porównaniu z wynikiem pierwszego wzrostu w określonym poziomie ufności. Możesz spróbować zmniejszyć poziom ufności modelu, aby wykryć takie anomalie. Jeśli jednak zaczniesz otrzymywać zbyt wiele alertów, możesz użyć wyższego interwału ufności.
 
-Poniższe przykładowe zapytanie zakłada jednolitą stawkę wejściowych jedno zdarzenie na sekundę w 2-minutowy przesuwającego się okna z historią 120 zdarzeń. Końcowe instrukcji SELECT wyodrębnia i wyświetla wynik i anomalii stanu z poziomu ufności 95%.
+Poniższe przykładowe zapytanie przyjmuje jednolitą stawkę danych wejściowych jednego zdarzenia na sekundę w 2-minutowym przedziale czasowym z historią 120 zdarzeń. Końcowa instrukcja SELECT wyodrębnia i wyprowadza wynik i stan anomalii z poziomem ufności równym 95%.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -67,21 +66,21 @@ INTO output
 FROM AnomalyDetectionStep
 ```
 
-## <a name="change-point"></a>Zmień punkt
+## <a name="change-point"></a>Punkt zmiany
 
-Trwałe anomalie w strumieniu zdarzeń serii czasu są zmiany w rozkładu wartości w strumieniu zdarzeń, takich jak zmiany poziomu i trendów. W usłudze Stream Analytics, takie anomalie są wykrywane przy użyciu uczenia maszynowego na podstawie [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operatora.
+Trwałe anomalie w strumieniu zdarzeń szeregów czasowych są zmianami w dystrybucji wartości w strumieniu zdarzeń, takich jak zmiany poziomów i trendy. W Stream Analytics takie anomalie są wykrywane za pomocą operatora [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) opartego na Machine Learning.
 
-Trwałe zmiany trwać znacznie dłużej, niż gwałtowne wzrosty i spadki i wskazywać, że zdarzenia krytycznego. Trwałe zmiany nie są zwykle widoczne gołym okiem, ale może zostać wykryte za pomocą **AnomalyDetection_ChangePoint** operatora.
+Trwałe zmiany ostatnie znacznie dłużej niż skoki i DIP mogą wskazywać na katastrofalne zdarzenia. Trwałe zmiany nie są zwykle widoczne dla gołym okiem, ale mogą być wykrywane za pomocą operatora **AnomalyDetection_ChangePoint** .
 
-Poniższy rysunek jest przykładem zmiany poziomu:
+Na poniższym obrazie przedstawiono przykład zmiany poziomu:
 
-![Przykład zmiany poziomu anomalii](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
+![Przykład anomalii zmiany poziomu](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-level-change.png)
 
-Poniższej ilustracji przedstawiono przykładowy zmiany trendów:
+Na poniższej ilustracji przedstawiono przykład zmiany trendu:
 
-![Przykład trend zmiany anomalii](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
+![Przykład anomalii zmiany trendu](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-Poniższe przykładowe zapytanie zakłada jednolitą stawkę wejściowych jedno zdarzenie na sekundę w przesuwającego się okna 20 minut z rozmiarem historii zdarzeń 1200. Końcowe instrukcji SELECT wyodrębnia i wyświetla wynik i anomalii stanu z poziomu ufności 80%.
+Poniższe przykładowe zapytanie przyjmuje jednolitą stawkę danych wejściowych jednego zdarzenia na sekundę w oknie przesuwania 20 minut z rozmiarem historii 1200 zdarzeń. Końcowa instrukcja SELECT wyodrębnia i wyprowadza wynik i stan anomalii z poziomem ufności równym 80%.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -107,51 +106,51 @@ FROM AnomalyDetectionStep
 
 ## <a name="performance-characteristics"></a>Charakterystyki wydajności
 
-Wydajność tych modeli zależy od rozmiaru historii, czas trwania okna, obciążenie zdarzeniami i tego, czy funkcja poziomu Partycjonowanie jest używany. W tej sekcji omówiono te konfiguracje i przykłady dotyczące umożliwienia stawek pozyskiwania 1K i 5K 10 tys. zdarzeń na sekundę.
+Wydajność tych modeli zależy od rozmiaru historii, czasu trwania okna, obciążenia zdarzenia oraz tego, czy jest używane partycjonowanie poziomu funkcji. W tej sekcji omówiono te konfiguracje i przedstawiono przykłady, w których można utrzymywać stawki za pozyskiwanie, 5 K i 10 000 zdarzeń na sekundę.
 
-* **Rozmiar historii** -liniowo wykonywanie tych modeli **rozmiar historii**. Im dłużej rozmiar historii, tym dłużej modele wykonać, aby oceniać nowe zdarzenie. Jest to spowodowane modele Porównaj nowe zdarzenie z każdą z przeszłych zdarzeń w buforze historii.
-* **Czas trwania okna** — **czas trwania okna** powinny odzwierciedlać, jak długo trwa tyle zdarzenia są rejestrowane jako określony przez rozmiar historii. Bez wybranej liczby zdarzeń w oknie Azure Stream Analytics spowoduje naliczenie brakujące wartości. W związku z tym użycie procesora CPU jest funkcją wielkości historii.
-* **Obciążenie zdarzeniami** — większa **obciążenie zdarzeniami**, tym więcej pracy, jest wykonywane przez modele, które ma wpływ na użycie procesora CPU. Zadanie może być skalowana, dzięki czemu zaskakująco równoległymi, przy założeniu, że największy sens dla logikę biznesową w celu używania więcej partycji danych wejściowych.
-* **Funkcja poziomu partycjonowanie** - **partycjonowania na poziomie funkcji** odbywa się przy użyciu ```PARTITION BY``` w wywołaniu funkcji wykrywania anomalii. Tego rodzaju partycjonowanie dodaje obciążenie, ponieważ stan musi być zachowana dla wielu modeli, w tym samym czasie. Partycjonowania na poziomie funkcji jest używany w scenariuszach, takich jak partycjonowania na poziomie urządzenia.
+* **Rozmiar historii** — te modele są wykonywane liniowo z **rozmiarem historii**. Im dłuższy rozmiar historii, tym dłużej modele trwają do oceny nowego zdarzenia. Wynika to z faktu, że modele porównują nowe zdarzenie z każdym z ostatnich zdarzeń w buforze historii.
+* **Czas trwania okna** — **czas trwania okna** powinien odzwierciedlać, jak długo trwa odbieranie jak wielu zdarzeń określonych przez rozmiar historii. Bez tego, czy w oknie nie ma wielu zdarzeń, Azure Stream Analytics będzie mieć przypisane wartości. W związku z tym użycie procesora CPU jest funkcją rozmiaru historii.
+* **Obciążenie zdarzeniami** — im większa **obciążenie zdarzeń**, tym większa jest szybkość działania wykonywanego przez modele, która ma wpływ na użycie procesora CPU. Zadanie można skalować w poziomie, dzięki czemu zaskakująco się równolegle, zakładając, że logika biznesowa będzie używać większej liczby partycji wejściowych.
+* **Partycjonowanie** poziomu funkcji - **partycjonowanie poziomu funkcji** odbywa się przy użyciu ```PARTITION BY``` w wywołaniu funkcji wykrywania anomalii. Ten typ partycjonowania dodaje obciążenie, ponieważ stan musi być utrzymywany jednocześnie dla wielu modeli. Partycjonowanie na poziomie funkcji jest używane w scenariuszach takich jak partycjonowanie na poziomie urządzenia.
 
 ### <a name="relationship"></a>Relacja
-Rozmiar historii, czas trwania okna i łączna liczba zdarzeń obciążenia są powiązane w następujący sposób:
+Rozmiar historii, czas trwania okna oraz całkowite obciążenie zdarzeniami są powiązane w następujący sposób:
 
-windowDuration (w ms) = 1000 * historySize / (całkowita liczba danych wejściowych zdarzeń na s / opinia nabrała partycji)
+windowDuration (w MS) = 1000 * historySize/(całkowite zdarzenia wejściowe na sekundę/liczba partycji wejściowych)
 
-Podczas partycjonowania funkcji przez deviceId należy dodać "PARTYCJI przez deviceId", aby wywołanie funkcji wykrywania anomalii.
+Podczas partycjonowania funkcji za pomocą deviceId Dodaj "PARTITION BY deviceId" do wywołania funkcji wykrywania anomalii.
 
-### <a name="observations"></a>Uwagi
-Poniższa tabela zawiera uwagi przepływności dla pojedynczego węzła (6 SU) w przypadku niepartycjonowana:
+### <a name="observations"></a>Obserwacje
+Poniższa tabela zawiera obserwacje przepływności dla pojedynczego węzła (6 SU) dla przypadku niepartycjonowanego:
 
-| Rozmiar historii (zdarzenia) | Czas trwania okna (ms) | Łączna liczba zdarzeń wejściowych na sekundę |
+| Rozmiar historii (zdarzenia) | Czas trwania okna (MS) | Całkowita liczba zdarzeń wejściowych na sekundę |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2,200 |
-| 600 | 728 | 1,650 |
-| 6,000 | 10,910 | 1,100 |
+| 60 | 55 | 2200 |
+| 600 | 728 | 1 650 |
+| 6,000 | 10 910 | 1100 |
 
-Poniższa tabela zawiera uwagi przepływności dla pojedynczego węzła (6 SU) w przypadku partycjonowanego:
+Poniższa tabela zawiera obserwacje przepływności dla pojedynczego węzła (6 SU) dla podzielonego przypadku partycjonowania:
 
-| Rozmiar historii (zdarzenia) | Czas trwania okna (ms) | Łączna liczba zdarzeń wejściowych na sekundę | Liczba urządzeń |
+| Rozmiar historii (zdarzenia) | Czas trwania okna (MS) | Całkowita liczba zdarzeń wejściowych na sekundę | Liczba urządzeń |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1,091 | 1,100 | 10 |
-| 600 | 10,910 | 1,100 | 10 |
-| 6,000 | 218,182 | <550 | 10 |
-| 60 | 21,819 | 550 | 100 |
-| 600 | 218,182 | 550 | 100 |
-| 6,000 | 2,181,819 | <550 | 100 |
+| 60 | 1 091 | 1100 | 10 |
+| 600 | 10 910 | 1100 | 10 |
+| 6,000 | 218 182 | < 550 | 10 |
+| 60 | 21 819 | 550 | 100 |
+| 600 | 218 182 | 550 | 100 |
+| 6,000 | 2 181 819 | < 550 | 100 |
 
-Przykładowy kod służący do uruchomionych konfiguracjach niepartycjonowana powyżej znajduje się w [repozytorium przesyłania strumieniowego w skali](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) z przykładów dla platformy Azure. Ten kod tworzy zadanie usługi stream analytics za pomocą nie funkcji poziomu partycjonowania, który korzysta z Centrum zdarzeń jako dane wejściowe i wyjściowe. Ładowanie danych wejściowych jest generowana z użyciem klientów testowych. Każde zdarzenie w danych wejściowych to dokument json 1KB. Zdarzenia symulowanie urządzenia IoT wysyłają dane JSON (dla urządzeń z maksymalnie 1 K). Rozmiar historii, czas trwania okna i łączna liczba zdarzeń obciążenia są zróżnicowane na 2 partycjach danych wejściowych.
+Przykładowy kod do uruchamiania powyższej konfiguracji, która nie jest partycjonowana, znajduje się w [repozytorium przesyłania strumieniowego na](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh) platformie Azure. Kod tworzy zadanie usługi Stream Analytics bez partycjonowania poziomu funkcji, które używa centrum zdarzeń jako danych wejściowych i wyjściowych. Ładowanie danych wejściowych jest generowane przy użyciu klientów testowych. Każde zdarzenie wejściowe jest dokumentem JSON rozmiarze 1 KB. Zdarzenia symulują wysyłanie danych JSON przez urządzenie IoT (dla maksymalnie 1000 urządzeń). Rozmiar historii, czas trwania okna i całkowite obciążenie zdarzeń są różne dla dwóch partycji wejściowych.
 
 > [!Note]
-> Bardziej precyzyjne Kwota szacunkowa można dostosować w przykłady odpowiednio do scenariusza.
+> Aby uzyskać dokładniejsze oszacowanie, Dostosuj przykłady tak, aby pasowały do Twojego scenariusza.
 
-### <a name="identifying-bottlenecks"></a>Identyfikowania wąskich gardeł
-Okienko metryki w ramach zadania usługi Azure Stream Analytics służy do identyfikowania wąskich gardeł w potoku. Przegląd **zdarzenia wejścia/wyjścia** przepływności i ["Opóźnienie znaku wodnego"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) lub **zaległe zdarzenia** aby zobaczyć, jeśli zadanie jest Nadążanie za szybkość danych wejściowych. Centrum zdarzeń miar, poszukaj **ograniczenia żądań** i odpowiednio dostosować próg jednostki. Metryki usługi Cosmos DB można znaleźć **maksymalna liczba użytych jednostek RU/s na zakres kluczy partycji** równomiernie są używane w ramach przepływności, aby zapewnić zakresów kluczy partycji. W przypadku bazy danych SQL Azure, monitorować **we/wy dziennika** i **Procesora**.
+### <a name="identifying-bottlenecks"></a>Identyfikowanie wąskich gardeł
+Użyj okienka metryki w zadaniu Azure Stream Analytics, aby identyfikować wąskie gardła w potoku. Przejrzyj **zdarzenia wejściowe/wyjściowe** dla przepływności i ["opóźnienie znaku wodnego"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) lub **zaległe zdarzenia** , aby sprawdzić, czy zadanie jest zgodne z szybkością danych wejściowych. W przypadku metryk centrum zdarzeń należy poszukać **żądań z ograniczeniami** i odpowiednio dostosować jednostki progowe. W przypadku metryk Cosmos DB Sprawdź **maksymalną liczbę użytych jednostek ru/s na klucz partycji** w obszarze przepływność, aby upewnić się, że zakresy kluczy partycji są jednolicie używane. W przypadku usługi Azure SQL DB Monitoruj **operacje we/wy dziennika** i **procesora CPU**.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics przy użyciu usługi machine learning
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Wykrywanie anomalii przy użyciu uczenia maszynowego w Azure Stream Analytics
 
-Poniższy klip wideo pokazuje, jak i wykrywania anomalii w czasie rzeczywistym za pomocą funkcji uczenia maszyny w usłudze Azure Stream Analytics. 
+Poniższy film wideo demonstruje sposób wykrywania anomalii w czasie rzeczywistym za pomocą funkcji uczenia maszynowego w Azure Stream Analytics. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464999"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu failover SQL Server z udziałem plików w warstwie Premium na maszynach wirtualnych platformy Azure
 
@@ -84,7 +84,6 @@ Przed wykonaniem kroków opisanych w tym artykule należy dysponować:
    - Adres IP dla każdego FCIu.
 - System DNS skonfigurowany w sieci platformy Azure, wskazujący kontrolery domeny.
 - [Udział plików w warstwie Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) na podstawie przydziału magazynu bazy danych dla plików danych.
-- Udział plików dla kopii zapasowych, który różni się od udziału plików Premium używanego dla plików danych. Ten udział plików może mieć wartość standardowa lub Premium.
 
 Po spełnieniu tych wymagań wstępnych można rozpocząć tworzenie klastra trybu failover. Pierwszym krokiem jest utworzenie maszyn wirtualnych.
 
@@ -154,7 +153,7 @@ Po spełnieniu tych wymagań wstępnych można rozpocząć tworzenie klastra try
 
    | Przeznaczenie | Port TCP | Uwagi
    | ------ | ------ | ------
-   | Oprogramowanie SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
+   | SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
    | Sonda kondycji | 59999 | Dowolny otwarty port TCP. W późniejszym kroku należy skonfigurować [sondę kondycji](#probe) modułu równoważenia obciążenia oraz klaster, aby używać tego portu.
    | Udział plików | 445 | Port używany przez usługę udziału plików.
 

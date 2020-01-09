@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 04285de6fa7ef678e36767b7336f732ed9b45329
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679699"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440482"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Działanie Lookup w Azure Data Factory
 
@@ -25,7 +25,7 @@ Działanie Lookup może pobrać zestaw danych z dowolnych ze źródeł danych ob
 
 Działanie Lookup odczytuje i zwraca zawartość pliku konfiguracji lub tabeli. Zwraca również wynik wykonania zapytania lub procedury składowanej. Wyniki działania Lookup można użyć w kolejnych działaniach kopiowania lub przekształcania, jeśli jest to wartość singleton. Dane wyjściowe mogą być używane w działaniu ForEach, jeśli jest tablicą atrybutów.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
 Dla działania Lookup są obsługiwane następujące źródła danych. Największa liczba wierszy, które mogą być zwracane przez działanie Lookup, to 5 000, o rozmiarze do 2 MB. Obecnie najdłuższy czas trwania działania wyszukiwania przed upływem limitu czasu wynosi godzinę.
 
@@ -55,8 +55,8 @@ Dla działania Lookup są obsługiwane następujące źródła danych. Najwięks
 
 Nazwa | Opis | Typ | Wymagana?
 ---- | ----------- | ---- | --------
-Zestawu | Zawiera odwołanie do zestawu danych dla wyszukiwania. Pobierz szczegóły z sekcji **Właściwości zestawu danych** w każdym odpowiednim artykule łącznika. | Para klucz/wartość | Tak
-source | Zawiera właściwości źródła specyficzne dla zestawu danych, takie same jak źródło działania kopiowania. Pobierz szczegóły z sekcji **właściwości działania kopiowania** w każdym odpowiednim artykule łącznika. | Para klucz/wartość | Tak
+zestaw danych | Zawiera odwołanie do zestawu danych dla wyszukiwania. Pobierz szczegóły z sekcji **Właściwości zestawu danych** w każdym odpowiednim artykule łącznika. | Pary klucz wartość | Tak
+source | Zawiera właściwości źródła specyficzne dla zestawu danych, takie same jak źródło działania kopiowania. Pobierz szczegóły z sekcji **właściwości działania kopiowania** w każdym odpowiednim artykule łącznika. | Pary klucz wartość | Tak
 firstRowOnly | Wskazuje, czy zwrócić tylko pierwszy wiersz, czy wszystkie wiersze. | Wartość logiczna | Nie. Wartość domyślna to `true`.
 
 > [!NOTE]
@@ -238,10 +238,7 @@ To konto magazynu zawiera plik JSON z nazwami tabel SQL.
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
         }
     },
         "name": "AzureStorageLinkedService"
@@ -258,16 +255,13 @@ To wystąpienie Azure SQL Database zawiera dane, które mają zostać skopiowane
         "type": "AzureSqlDatabase",
         "description": "",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
         }
     }
 }
 ```
 
-### <a name="sourcetablejson"></a>sources. JSON
+### <a name="sourcetablejson"></a>sourcetable.json
 
 #### <a name="set-of-objects"></a>Zestaw obiektów
 

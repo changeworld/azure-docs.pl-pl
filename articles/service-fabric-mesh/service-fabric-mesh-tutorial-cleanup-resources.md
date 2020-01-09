@@ -1,26 +1,17 @@
 ---
-title: Samouczek — czyszczenie zasobów usługi Azure Service Fabric Mesh | Microsoft Docs
+title: Samouczek — Oczyszczanie zasobów siatki usługi Azure Service Fabric
 description: Dowiedz się, jak usunąć zasoby usługi Azure Service Fabric Mesh, aby uniknąć naliczania opłat za nieużywane już zasoby.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810492"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351871"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Samouczek: usuwanie zasobów platformy Azure
 
@@ -33,7 +24,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Ta seria samouczków zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * [Tworzenie aplikacji usługi Service Fabric Mesh w programie Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Debugowanie aplikacji usługi Service Fabric Mesh działającej w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Debugowanie aplikacji usługi Service Fabric Mesh w lokalnym klastrze projektowym](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Wdrażanie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * [Uaktualnianie aplikacji usługi Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 > * Czyszczenie zasobów usługi Service Fabric Mesh
@@ -62,9 +53,9 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-Alternatywnie możesz usunąć grupę zasobów **sfmeshTutorial1RG** [z poziomu portalu](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups). 
+Alternatywnie możesz usunąć grupę zasobów **sfmeshTutorial1RG**[z poziomu portalu](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups). 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, po zakończeniu publikowania aplikacji usługi Service Fabric Mesh na platformie Azure, spróbuj wykonać następujące czynności:
 

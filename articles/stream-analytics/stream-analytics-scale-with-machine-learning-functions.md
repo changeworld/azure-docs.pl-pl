@@ -1,19 +1,18 @@
 ---
 title: Skalowanie funkcji Machine Learning w Azure Stream Analytics
 description: W tym artykule opisano sposób skalowania Stream Analytics zadań korzystających z funkcji Machine Learning przez skonfigurowanie partycji i jednostek strumienia.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 28734e5eaa693ca4ee31603863b69605a1d92c88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dedffab0b17515cedc54569d5debf6d29b273644
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467874"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458753"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalowanie zadania Stream Analytics za pomocą funkcji Azure Machine Learning Studio (klasycznych)
 
@@ -90,7 +89,7 @@ Po drugiej opcji trzeba będzie udostępnić więcej usług SUs, aby mieć więc
 
 Przyjrzyjmy się skalowaniu przy użyciu następujących pomiarów opóźnienia dla każdego rozmiaru wsadu:
 
-| Opóźnienie | Rozmiar wsadu |
+| Opóźnienie | Rozmiar partii |
 | --- | --- |
 | 200 MS | 1000 — partie zdarzeń lub poniżej |
 | 250 MS | 5 000 — partie zdarzeń |
@@ -104,14 +103,14 @@ Poniżej znajduje się tabela przepływności zadania Stream Analytics dla róż
 
 | rozmiar wsadu (opóźnienie w ML) | 500 (200 ms) | 1 000 (200 ms) | 5 000 (250 MS) | 10 000 (300 ms) | 25 000 (500 ms) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2 500 |5000 |20 000 |30 000 |50 000 |
-| **3 usługi SUs** |2 500 |5000 |20 000 |30 000 |50 000 |
-| **6 usługi SUs** |2 500 |5000 |20 000 |30 000 |50 000 |
-| **12 usług SUs** |5000 |10 000 |40 000 |60 000 |100 000 |
-| **18 usług SUs** |7500 |15 000 |60 000 |90 000 |150 000 |
-| **24 usługi SUs** |10 000 |20 000 |80 000 |120 000 |200,000 |
-| **...** |... |... |... |... |... |
-| **60 usługi SUs** |25 000 |50 000 |200,000 |300 000 |500 000 |
+| **1 SU** |2,500 |5000 |20,000 |30,000 |50 000 |
+| **3 usługi SUs** |2,500 |5000 |20,000 |30,000 |50 000 |
+| **6 usługi SUs** |2,500 |5000 |20,000 |30,000 |50 000 |
+| **12 usług SUs** |5000 |10 000 |40,000 |60,000 |100 000 |
+| **18 usług SUs** |7500 |15 000 |60,000 |90,000 |150,000 |
+| **24 usługi SUs** |10 000 |20,000 |80,000 |120,000 |200,000 |
+| **…** |… |… |… |… |… |
+| **60 usługi SUs** |25,000 |50 000 |200,000 |300,000 |500,000 |
 
 Teraz warto już wiedzieć, jak działają funkcje Machine Learning w Stream Analytics. Możesz również zrozumieć, że Stream Analytics zadania "ściągania" ze źródeł danych, a każdy "ściągający" zwróci partię zdarzeń dla zadania Stream Analytics do przetworzenia. Jak ten model ściągania ma wpływ na żądania usługi sieci Web Machine Learning?
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799563"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459305"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Rozwiązania aplikacji Oracle integrujące Microsoft Azure i infrastrukturę chmurową Oracle (wersja zapoznawcza)
 
@@ -44,13 +44,13 @@ Aplikacje, które można uruchomić w konfiguracji obejmującej wiele chmur, obe
 * Aplikacje sieci sprzedaży firmy Oracle
 * Zarządzanie finansowe Oracle Hyperion
 
-Poniższy diagram przedstawia ogólny przegląd połączonego rozwiązania. Dla uproszczenia diagram pokazuje tylko warstwę aplikacji i warstwę danych. W zależności od architektury aplikacji rozwiązanie może zawierać dodatkowe warstwy, takie jak warstwa sieci Web na platformie Azure. Aby uzyskać więcej informacji, zobacz następujące sekcje.
+Poniższy diagram przedstawia ogólny przegląd połączonego rozwiązania. Dla uproszczenia diagram pokazuje tylko warstwę aplikacji i warstwę danych. W zależności od architektury aplikacji rozwiązanie może zawierać dodatkowe warstwy, takie jak warstwa sieci Web na platformie Azure. Aby uzyskać więcej informacji zobacz następujące sekcje.
 
 ![Omówienie rozwiązania OCI na platformie Azure](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-* Łączność między chmurami w wersji zapoznawczej jest ograniczona do regionów usługi Azure Wschodnie stany USA (Wschodnie) & Południowe Zjednoczone Królestwo (uksouth) oraz & Ashburn OCI (Południowe Zjednoczone Królestwo). Aby uzyskać Południowe Zjednoczone Królestwo, użyj domeny dostępności 1 (AD 1) w obszarze OCI podczas wdrażania połączeń wzajemnego dla małych opóźnień.
+* Łączność między chmurami w wersji zapoznawczej jest ograniczona do regionów platformy Azure — Wschodnie stany USA (Wschodnie), Południowe Zjednoczone Królestwo (uksouth) i Kanada Środkowa (canadacentral) oraz regionów OCI Ashburn (Wschodnie stany USA), Londyn (Południowe Zjednoczone Królestwo) i Toronto (Kanada Południowo-Wschodnia). Aby uzyskać Południowe Zjednoczone Królestwo, użyj domeny dostępności 1 (AD 1) w obszarze OCI podczas wdrażania połączeń wzajemnego dla małych opóźnień.
 
 ## <a name="networking"></a>Networking
 

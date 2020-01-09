@@ -1,6 +1,6 @@
 ---
 title: 'Szybki Start: Eksplorowanie środowiska demonstracyjnego w wersji zapoznawczej — Azure Time Series Insights | Microsoft Docs'
-description: Więcej informacji na temat Azure Time Series Insights środowiska demonstracyjne w wersji zapoznawczej za pomocą przykładowego samouczka
+description: Poznaj kluczowe funkcje środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/24/2019
-ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/20/2019
+ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014752"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497476"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Szybki Start: Eksplorowanie środowiska demonstracyjnego w wersji zapoznawczej Azure Time Series Insights
 
@@ -43,33 +43,33 @@ W Eksploratorze Time Series Insights w wersji zapoznawczej przedstawiono dane hi
    1. Zmień zakres widoku na **1/1/17 20:00:00.00 do 3/10/17 20:00:00.00 (UTC)** .
    1. Aby wybrać czujnik, wybierz pozycję **contoso roślina 1** > **W7** > **system generatora** > **GeneratorSpeed**. Następnie przejrzyj wyświetlane wartości.
 
-      [![W7 w firmie Contoso 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![W7 w firmie Contoso 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
 1. Niedawno firma Contoso wykryła pożar w turbinie **W7**. Opinie różnią się w zależności od tego, co spowodowało pożar. W Time Series Insights widzimy, że czujnik alertów o zapłonie został aktywowany podczas uruchamiania.
 
    1. Zmień zakres widoku na **3/9/17 20:00:00.00 do 3/10/17 20:00:00.00 (UTC)** .
    1. Wybierz pozycję **system bezpieczeństwa** > **FireAlert**.
 
-      [![firma Contoso znalazła ogień w programie wiatr turbin W7](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![firma Contoso znalazła ogień w programie wiatr turbin W7](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. Zapoznaj się z innymi zdarzeniami w czasie działania, aby zrozumieć, co się stało. Wykorzystanie ropy naftowej i aktywne ostrzeżenia, które zostały wprowadzone tuż przed pożarem.
 
    1. Wybierz **system przechyłów** > **HydraulicOilPressure**.
    1. Wybierz **system przechyłów** > **ActiveWarning**.
 
-      [![przeglądać inne zdarzenia w tym samym czasie](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![przeglądać inne zdarzenia w tym samym czasie](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
 1. Czujniki ropy naftowej i aktywne ostrzeżenia są napowietrzane bezpośrednio przed pożarem. Rozwiń wyświetlaną serię czasową, aby zobaczyć inne oznaki wskazujące na ogień. Obie czujniki zmieniają się w miarę upływu czasu. Wahania wskazują, że wzorzec trwały i worrisome.
 
     * Zmień zakres widoku na **2/24/17 20:00:00.00 do 3/10/17 20:00:00.00 (UTC)** .
 
-      [![nacisk oleju i aktywne czujniki ostrzeżeń również](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [![nacisk oleju i aktywne czujniki ostrzeżeń również](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
 
 1. Badanie dwóch lat danych historycznych ujawnia inne zdarzenie pożaru, które miało takie same wahania czujnika.
 
     * Zmień zakres widoku na **1/1/16 na 12/31/17** (wszystkie dane).
 
-      [![poszukaj wzorców historycznych](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [![poszukaj wzorców historycznych](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
 
 Korzystając z Time Series Insights i danych telemetrycznych czujnika, wykryliśmy długoterminowy trend ukryty w danych historycznych. Dzięki tym nowym szczegółowym informacjom możemy:
 
@@ -84,7 +84,7 @@ Korzystając z Time Series Insights i danych telemetrycznych czujnika, wykryliś
     1. Zmień zakres widoku na **6/1/17 20:00:00.00 do 7/1/17 20:00:00.00 (UTC)** .
     1. Wybierz pozycję **contoso roślina 1** > **W6** > **bezpieczeństwo systemu** > **VoltageActuatorSwitchWarning**.
 
-       [![zmienić zakres widoku i wybrać W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![zmienić zakres widoku i wybrać W6](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
 1. Ostrzeżenie wskazuje na problem z napięciem z generatora. Ogólne dane wyjściowe mocy generatora są w normalnych parametrach w bieżącym interwale. Zwiększając nasz interwał, zobaczymy inny wzorzec. Inicjał jest oczywisty.
 
@@ -92,20 +92,20 @@ Korzystając z Time Series Insights i danych telemetrycznych czujnika, wykryliś
     1. Wybierz **system generatora** > **ActivePower**.
     1. Zmień interwał na **3D**.
 
-       [![zmienić interwał na 3D](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [![zmienić interwał na 3D](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
 1. Zwiększając zakres czasu, możemy określić, czy problem został zatrzymany, czy nadal.
 
     * Zwiększ przedział czasu do 60 dni.
 
-      [![zwiększyć czas przedziału czasu do 60 dni](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [![zwiększyć czas przedziału czasu do 60 dni](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
 1. Inne punkty danych czujników można dodać, aby zapewnić większy kontekst. Im więcej czujników jest wyświetlanych, tym pełniejsze zrozumienie problemu jest. Ustawmy znacznik, aby zobaczyć rzeczywiste wartości. 
 
     1. Wybierz pozycję **system generatora**, a następnie wybierz pozycję trzy czujniki: **GridVoltagePhase1**, **GridVoltagePhase2**i **GridVoltagePhase3**.
     1. Ustaw znacznik na ostatnim punkcie danych w widocznym obszarze.
 
-       [![upuść znacznik](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [![upuść znacznik](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
 
     Dwie czujniki napięcia działają w sposób porównywalny i w ramach zwykłych parametrów. Wygląda na to, że czujnik **GridVoltagePhase3** jest przyczyna.
 
@@ -113,7 +113,7 @@ Korzystając z Time Series Insights i danych telemetrycznych czujnika, wykryliś
 
     * Zmień widok tak, aby wszystkie czujniki **systemu generatora** były nakładane na tę samą skalę wykresu.
 
-      [![zmienić wyświetlania, aby uwzględnić wszystko](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![zmienić wyświetlania, aby uwzględnić wszystko](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

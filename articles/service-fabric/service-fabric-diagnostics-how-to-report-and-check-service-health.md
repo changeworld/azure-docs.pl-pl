@@ -1,72 +1,63 @@
 ---
-title: Tworzenie raportów i sprawdzanie kondycji za pomocą usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Informacje o sposobie wysyłania raportów o kondycji z kodu usługi oraz sprawdzić kondycję usługi przy użyciu narzędzi monitorowania kondycji, udostępnianych przez usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Raportowanie i sprawdzanie kondycji za pomocą usługi Azure Service Fabric
+description: Dowiedz się, jak wysyłać raporty dotyczące kondycji z kodu usługi i jak sprawdzać kondycję usługi przy użyciu narzędzi do monitorowania kondycji udostępnianych przez usługę Azure Service Fabric.
 author: srrengar
-manager: mfussell
-editor: ''
-ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 0db341a9e36d61761321821de5631a564adea050
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464645"
 ---
 # <a name="report-and-check-service-health"></a>Tworzenie raportów i sprawdzanie kondycji usług
-W przypadku wystąpienia problemów z usług możliwość odpowiedzieć i rozwiązać zdarzenia i awarii zależy od możliwości, aby szybko wykrywać problemy. Jeśli raportów problemów i błędów do Menedżera kondycji usługi Azure Service Fabric z poziomu kodu usługi, możesz użyć standardowego kondycji narzędzia, które Usługa Service Fabric udostępnia, aby sprawdzić stan kondycji monitorowania.
+Gdy usługi napotykają problemy, zdolność do reagowania na zdarzenia i przestoje zależy od możliwości szybkiego wykrywania problemów. W przypadku zgłaszania problemów i błędów do programu Azure Service Fabric Health Manager z kodu usługi można użyć standardowych narzędzi do monitorowania kondycji, które Service Fabric zapewniają, aby sprawdzić stan kondycji.
 
 Istnieją trzy sposoby raportowania kondycji usługi:
 
-* Użyj [partycji](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) lub [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) obiektów.  
-  Możesz użyć `Partition` i `CodePackageActivationContext` obiektów kondycji elementów, które są częścią bieżącego kontekstu. Na przykład kod, który działa jako część repliki można raportować kondycję tylko dla tej repliki, partycji, który należy do i aplikacji, która jest częścią.
+* Użyj [partycji](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) lub obiektów [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) .  
+  Za pomocą obiektów `Partition` i `CodePackageActivationContext` można raportować kondycję elementów, które są częścią bieżącego kontekstu. Na przykład kod, który jest uruchamiany jako część repliki, może zgłosić kondycję tylko dla tej repliki, partycji, do której należy, i aplikacji, z którą jest częścią.
 * Użyj `FabricClient`.   
-  Możesz użyć `FabricClient` kondycję raportu z poziomu kodu usługi, jeśli klaster nie jest [bezpiecznego](service-fabric-cluster-security.md) lub jeśli usługa jest uruchomiona z uprawnieniami administratora. Większość scenariuszy w rzeczywistych warunkach nie używaj niezabezpieczonych klastrów lub podaj uprawnienia administratora. Za pomocą `FabricClient`, można raportować kondycję na każda jednostka, która jest częścią klastra. Najlepiej, jeśli jednak kod usługi powinien wysyłać tylko raporty, które są powiązane z własną kondycji.
-* Użyć interfejsów API REST w klaster, aplikacji, wdrożonej aplikacji, usługi, pakiet usługi, partycji, repliki lub poziomy węzła. To może służyć do raportowania kondycji z znajdujące się w kontenerze.
+  Za pomocą `FabricClient` można raportować kondycję kodu usługi, Jeśli klaster nie jest [zabezpieczony](service-fabric-cluster-security.md) lub jeśli usługa jest uruchomiona z uprawnieniami administratora. Większość scenariuszy rzeczywistych nie korzysta z klastrów niezabezpieczonych lub zapewniają uprawnienia administratora. Za pomocą `FabricClient`można raportować kondycję wszystkich jednostek, które są częścią klastra. W idealnym przypadku kod usługi powinien jednak wysyłać tylko raporty powiązane ze swoimi kondycjami.
+* Użyj interfejsów API REST na poziomie klastra, aplikacji, wdrożonej aplikacji, usługi, pakietu usług, partycji, repliki lub poziomu węzła. Ta wartość może służyć do raportowania kondycji z kontenera.
 
-W tym artykule przedstawiono przykład, w którym Raporty kondycji z kodem usługi. W przykładzie pokazano również, jak używać narzędzi dostarczanych przez usługę Service Fabric można sprawdzić stanu kondycji. Ten artykuł ma być krótkie wprowadzenie do monitorowania możliwości usługi Service Fabric kondycji. Aby uzyskać szczegółowe informacje można znaleźć serii szczegółowe artykuły na temat kondycji rozpoczynających się od łącza na końcu tego artykułu.
+W tym artykule przedstawiono przykład, który raportuje kondycję z kodu usługi. W przykładzie pokazano również, jak narzędzia dostarczone przez Service Fabric mogą służyć do sprawdzania stanu kondycji. Ten artykuł ma na celu szybkie wprowadzenie do możliwości monitorowania kondycji Service Fabric. Aby uzyskać bardziej szczegółowe informacje, możesz zapoznać się z serią szczegółowych artykułów dotyczących kondycji, które zaczynają się od linku na końcu tego artykułu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Musisz mieć zainstalowane następujące oprogramowanie:
+Musisz mieć zainstalowane następujące elementy:
 
-* Visual Studio 2015 lub Visual Studio 2019 r.
-* Zestaw SDK usługi Service Fabric
+* Visual Studio 2015 lub Visual Studio 2019
+* Zestaw SDK Service Fabric
 
-## <a name="to-create-a-local-secure-dev-cluster"></a>Aby utworzyć klaster lokalny dev bezpiecznego
+## <a name="to-create-a-local-secure-dev-cluster"></a>Aby utworzyć lokalny bezpieczny klaster programistyczny
 * Otwórz program PowerShell z uprawnieniami administratora i uruchom następujące polecenia:
 
-![Polecenia, które pokazują, jak utworzyć klaster bezpiecznego dev](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
+![Polecenia, które pokazują, jak utworzyć bezpieczny klaster deweloperów](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
 
-## <a name="to-deploy-an-application-and-check-its-health"></a>Aby wdrożyć aplikację i sprawdzić jego kondycję
+## <a name="to-deploy-an-application-and-check-its-health"></a>Aby wdrożyć aplikację i sprawdzić jej kondycję
 1. Otwórz program Visual Studio jako administrator.
-1. Utwórz projekt za pomocą **usługa stanowa** szablonu.
+1. Utwórz projekt przy użyciu szablonu **usługi stanowej** .
    
-    ![Tworzenie aplikacji usługi Service Fabric przy użyciu usługi stanowe](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
-1. Naciśnij klawisz **F5** do uruchamiania aplikacji w trybie debugowania. Aplikacja jest wdrażana w klastrze lokalnym.
-1. Po uruchomieniu aplikacji, kliknij prawym przyciskiem myszy ikonę Menedżer klastra lokalnego, w obszarze powiadomień i wybierz **Zarządzaj klastrem lokalnym** z menu skrótów, aby otworzyć narzędzie Service Fabric Explorer.
+    ![Tworzenie Service Fabric aplikacji z usługą stanową](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
+1. Naciśnij klawisz **F5** , aby uruchomić aplikację w trybie debugowania. Aplikacja jest wdrażana w klastrze lokalnym.
+1. Po uruchomieniu aplikacji kliknij prawym przyciskiem myszy ikonę Menedżera klastra lokalnego w obszarze powiadomień i wybierz polecenie **Zarządzaj klastrem lokalnym** z menu skrótów, aby otworzyć Service Fabric Explorer.
    
-    ![Otwórz narzędzie Service Fabric Explorer z obszaru powiadomień](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
-1. Kondycja aplikacji powinna być wyświetlana tak jak ten obraz. W tej chwili, aplikacja powinna być w dobrej kondycji bez błędów.
+    ![Otwórz Service Fabric Explorer z obszaru powiadomień](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
+1. Kondycja aplikacji powinna być wyświetlana w tym obrazie. W tej chwili aplikacja powinna działać w dobrej kondycji bez błędów.
    
-    ![Dobrej kondycji aplikacji w narzędziu Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
-1. Możesz również sprawdzić kondycję przy użyciu programu PowerShell. Możesz użyć ```Get-ServiceFabricApplicationHealth``` można użyć do sprawdzenia kondycji aplikacji, a ```Get-ServiceFabricServiceHealth``` do sprawdzenia kondycji usługi. Raport o kondycji dla tej samej aplikacji w programie PowerShell jest do tego obrazu.
+    ![Dobra kondycja w Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
+1. Kondycję można także sprawdzić przy użyciu programu PowerShell. Za pomocą ```Get-ServiceFabricApplicationHealth``` można sprawdzić kondycję aplikacji i można użyć ```Get-ServiceFabricServiceHealth``` do sprawdzenia kondycji usługi. Raport kondycji dla tej samej aplikacji w programie PowerShell znajduje się na tym obrazie.
    
-    ![Aplikacja działa prawidłowo w programie PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
+    ![Aplikacja w dobrej kondycji w programie PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
-## <a name="to-add-custom-health-events-to-your-service-code"></a>Aby dodać zdarzenia dotyczące kondycji niestandardowych do kodu usługi
-Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przykładowy kod. Poniższe kroki pokazują, jak zgłosić zdarzenia dotyczące kondycji niestandardowych w kodzie usługi. Raporty takie będą automatycznie wyświetlane w standardowych narzędzi w celu monitorowania kondycji, że Usługa Service Fabric udostępnia narzędzia Service Fabric Explorer, widok kondycji portalu platformy Azure i programu PowerShell.
+## <a name="to-add-custom-health-events-to-your-service-code"></a>Aby dodać niestandardowe zdarzenia dotyczące kondycji do kodu usługi
+Szablony projektów Service Fabric w programie Visual Studio zawierają przykładowy kod. Poniższe kroki pokazują, jak można raportować niestandardowe zdarzenia dotyczące kondycji z kodu usługi. Takie raporty są automatycznie wyświetlane w standardowych narzędziach do monitorowania kondycji, które zapewnia Service Fabric, takich jak Service Fabric Explorer, Azure Portal Health View i PowerShell.
 
-1. Otwórz ponownie aplikację, który został wcześniej utworzony w programie Visual Studio lub Utwórz nową aplikację za pomocą **usługa stanowa** szablonu programu Visual Studio.
-1. Otwórz plik Stateful1.cs i Znajdź `myDictionary.TryGetValueAsync` wywołania `RunAsync` metody. Widać, że ta metoda zwraca `result` zawierający bieżącą wartość licznika klucza logiki w tej aplikacji jest liczyć uruchomiona. Jeśli ta aplikacja była rzeczywistej aplikacji i braku wyniku reprezentowane awarię, będzie chciała Flaga tego zdarzenia.
-1. Aby zgłosić zdarzenie kondycji, jeśli brak wyniku reprezentuje błąd, należy dodać następujące kroki.
+1. Otwórz ponownie aplikację utworzoną wcześniej w programie Visual Studio lub Utwórz nową aplikację przy użyciu szablonu **usługi stanowej** programu Visual Studio.
+1. Otwórz plik Stateful1.cs i Znajdź wywołanie `myDictionary.TryGetValueAsync` w metodzie `RunAsync`. Można zobaczyć, że ta metoda zwraca `result`, która przechowuje bieżącą wartość licznika, ponieważ logika klucza w tej aplikacji ma mieć uruchomioną liczbę. Jeśli ta aplikacja była aplikacją rzeczywistą, a w przypadku braku wyniku nie można oflagować tego zdarzenia.
+1. Aby zgłosić zdarzenie kondycji, gdy brak wyniku reprezentuje błąd, należy dodać następujące kroki.
    
     a. Dodaj `System.Fabric.Health` przestrzeni nazw do pliku Stateful1.cs.
    
@@ -74,7 +65,7 @@ Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przyk
     using System.Fabric.Health;
     ```
    
-    b. Dodaj następujący kod po `myDictionary.TryGetValueAsync` wywołania
+    b. Dodaj następujący kod po wywołaniu `myDictionary.TryGetValueAsync`
    
     ```csharp
     if (!result.HasValue)
@@ -83,9 +74,9 @@ Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przyk
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-    Możemy raportować kondycję repliki, ponieważ jest zgłaszany z usługi stanowej. `HealthInformation` Parametr zapisuje informacje o problem z kondycją, który jest zgłaszany.
+    Raport o kondycji repliki jest raportowany przez usługę stanową. Parametr `HealthInformation` przechowuje informacje o raportowanym problemie kondycji.
    
-    Jeśli usługa bezstanowa została utworzona, użyj poniższego kodu
+    Jeśli utworzono usługę bezstanową, użyj poniższego kodu
    
     ```csharp
     if (!result.HasValue)
@@ -94,15 +85,15 @@ Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przyk
         this.Partition.ReportInstanceHealth(healthInformation);
     }
     ```
-1. Jeśli usługa jest uruchomiona z uprawnieniami administratora, lub jeśli klaster nie jest [bezpiecznego](service-fabric-cluster-security.md), można również użyć `FabricClient` raportów kondycji, jak pokazano w poniższych krokach.  
+1. Jeśli usługa jest uruchomiona z uprawnieniami administratora lub Jeśli klaster nie jest [zabezpieczony](service-fabric-cluster-security.md), można również użyć `FabricClient` do raportowania kondycji, jak pokazano w poniższych krokach.  
    
-    a. Tworzenie `FabricClient` wystąpienia po `var myDictionary` deklaracji.
+    a. Utwórz wystąpienie `FabricClient` po deklaracji `var myDictionary`.
    
     ```csharp
     var fabricClient = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
     ```
    
-    b. Dodaj następujący kod po `myDictionary.TryGetValueAsync` wywołania.
+    b. Dodaj następujący kod po wywołaniu `myDictionary.TryGetValueAsync`.
    
     ```csharp
     if (!result.HasValue)
@@ -114,7 +105,7 @@ Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przyk
         fabricClient.HealthManager.ReportHealth(replicaHealthReport);
     }
     ```
-1. Umożliwia symulowanie tego błędu i być widoczna w narzędzia do monitorowania kondycji. Aby symulować błąd, komentarz w pierwszym wierszu kodu, który dodano wcześniej raportowania kondycji. Po ujmiesz w komentarz wiersz pierwszy, kod będzie wyglądać podobnie jak w poniższym przykładzie.
+1. Symulujemy ten błąd i zobaczysz go w narzędziach do monitorowania kondycji. Aby symulować błąd, Skomentuj pierwszy wiersz w kodzie raportowania kondycji, który został dodany wcześniej. Po zapisaniu komentarza w pierwszym wierszu kod będzie wyglądał jak w poniższym przykładzie.
    
     ```csharp
     //if(!result.HasValue)
@@ -123,24 +114,24 @@ Szablony projektu usługi Service Fabric w programie Visual Studio zawiera przyk
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-   Ten kod jest uruchamiany raport o kondycji każdorazowo `RunAsync` wykonuje. Po wprowadzeniu zmian, naciśnij klawisz **F5** do uruchomienia aplikacji.
-1. Po uruchomieniu aplikacji Otwórz narzędzia Service Fabric Explorer, aby sprawdzić kondycję aplikacji. Tym razem narzędzia Service Fabric Explorer pokazuje, że aplikacja jest w złej kondycji. Aplikacja przedstawiono jako w złej kondycji, ponieważ błąd to zgłoszone od kodu, który dodano wcześniej.
+   Ten kod uruchamia Raport kondycji za każdym razem, gdy `RunAsync` wykonuje. Po wprowadzeniu zmiany naciśnij klawisz **F5** , aby uruchomić aplikację.
+1. Po uruchomieniu aplikacji otwórz Service Fabric Explorer, aby sprawdzić kondycję aplikacji. Tym razem Service Fabric Explorer pokazuje, że aplikacja jest w złej kondycji. Aplikacja jest wyświetlana jako zła kondycja, ponieważ wystąpił błąd zgłoszony przez dodany wcześniej kod.
    
-    ![Aplikacja w złej kondycji w narzędziu Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
-1. Jeśli wybierzesz repliki podstawowej w narzędziu Service Fabric Explorer, w widoku drzewa, zostanie wyświetlone **stan kondycji** wskazuje błąd, zbyt. Narzędzie Service Fabric Explorer wyświetla również szczegóły raportu kondycji, które zostały dodane do `HealthInformation` parametru w kodzie. Możesz zobaczyć tych samych raportów kondycji w programie PowerShell i witryny Azure portal.
+    ![Aplikacja w złej kondycji w Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
+1. W przypadku wybrania repliki podstawowej w widoku drzewa Service Fabric Explorer zostanie wyświetlony **stan kondycji** wskazujący błąd. Service Fabric Explorer również Wyświetla szczegóły raportu kondycji, które zostały dodane do parametru `HealthInformation` w kodzie. Te same raporty kondycji można zobaczyć w programie PowerShell i w Azure Portal.
    
-    ![Kondycja repliki w narzędziu Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
+    ![Kondycja repliki w Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
 
-Ten raport pozostaje w Menedżera kondycji, dopóki nie został zastąpiony przez inny raport, lub do momentu usunięcia tej repliki. Ponieważ firma Microsoft nie ustawiła prawidłowo `TimeToLive` dla tego raportu kondycji w `HealthInformation` obiektu raportu nigdy nie wygasa.
+Ten raport pozostaje w Menedżerze kondycji, dopóki nie zostanie zastąpiony przez inny raport lub dopóki ta replika nie zostanie usunięta. Ponieważ nie ustawił `TimeToLive` dla tego raportu kondycji w obiekcie `HealthInformation`, raport nigdy nie wygaśnie.
 
-Zaleca się, że kondycja powinny być raportowane na najbardziej szczegółowym poziomie, w tym przypadku jest repliką. Można również zgłosić kondycji `Partition`.
+Zalecamy, aby kondycja była raportowana na najbardziej szczegółowym poziomie, który jest w tym przypadku repliką. Możesz również zgłosić kondycję `Partition`.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-Raport kondycji na `Application`, `DeployedApplication`, i `DeployedServicePackage`, użyj `CodePackageActivationContext`.
+Aby zgłosić kondycję `Application`, `DeployedApplication`i `DeployedServicePackage`, użyj `CodePackageActivationContext`.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
@@ -148,8 +139,8 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Szczegółowe informacje dotyczące kondycji usługi Service Fabric](service-fabric-health-introduction.md)
-* [Interfejs API REST na potrzeby raportowania kondycji usługi](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [Interfejs API REST na potrzeby raportowania kondycji aplikacji](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
+## <a name="next-steps"></a>Następne kroki
+* [Głębokie szczegółowe na Service Fabric kondycji](service-fabric-health-introduction.md)
+* [Interfejs API REST dla kondycji usługi raportowania](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
+* [Interfejs API REST dla kondycji aplikacji raportowania](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
 

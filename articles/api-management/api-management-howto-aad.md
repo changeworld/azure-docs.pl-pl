@@ -1,5 +1,6 @@
 ---
-title: Autoryzuj konta dewelopera przy użyciu Azure Active Directory API Management platformy Azure | Microsoft Docs
+title: Autoryzuj konta dewelopera przy użyciu Azure Active Directory
+titleSuffix: Azure API Management
 description: Dowiedz się, jak autoryzować użytkowników przy użyciu Azure Active Directory w API Management.
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 067d4488b064ede572a4b3ad94c94fb1552c827d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454454"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442795"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzuj konta dewelopera przy użyciu Azure Active Directory na platformie Azure API Management
 
@@ -32,8 +33,8 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autoryzuj konta dewelopera przy użyciu usługi Azure AD
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
-2. Wybierz pozycję ![strzałkę](./media/api-management-howto-aad/arrow.png).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). 
+2. Wybierz ![strzałkę](./media/api-management-howto-aad/arrow.png).
 3. Wpisz w polu wyszukiwania **interfejs API** .
 4. Wybierz pozycję **API Management Services**.
 5. Wybierz swoje wystąpienie usługi API Management.
@@ -49,7 +50,7 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
    ![Procedura dodawania dostawcy tożsamości w Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. W przeglądarce Otwórz inną kartę. 
 11. Przejdź do [Rejestracje aplikacji Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908) , aby zarejestrować aplikację w Active Directory.
-12. W obszarze **Zarządzaj**wybierz pozycję **rejestracje aplikacji**.
+12. W obszarze **Zarządzanie** wybierz pozycję **Rejestracje aplikacji**.
 13. Wybierz pozycję **Nowa rejestracja**. Na stronie **zarejestruj aplikację** Ustaw wartości w następujący sposób:
     
 * Ustaw **nazwę** na opisową. na przykład *deweloper — Portal*
@@ -59,7 +60,7 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
 
 14.  Po zarejestrowaniu aplikacji Skopiuj **Identyfikator aplikacji (klienta)** ze strony **Przegląd** . 
 15. Wróć do wystąpienia API Management. W oknie **Dodawanie dostawcy tożsamości** wklej wartość **identyfikatora aplikacji (klienta)** do pola **Identyfikator klienta** .
-16. Przejdź z powrotem do konfiguracji usługi Azure AD, wybierz pozycję **certyfikaty & wpisy tajne** w obszarze **Zarządzaj**. Wybierz przycisk **nowy klucz tajny klienta** . Wprowadź wartość w polu **Opis**, wybierz dowolną opcję **wygaśnięcia** i wybierz pozycję **Dodaj**. Skopiuj wartość klucza tajnego klienta przed opuszczeniem strony. Będą one potrzebne w kolejnym kroku. 
+16. Przejdź z powrotem do konfiguracji usługi Azure AD, wybierz pozycję **certyfikaty & wpisy tajne** w obszarze **Zarządzaj**. Wybierz przycisk **Nowy klucz tajny klienta**. Wprowadź wartość w polu **Opis**, wybierz dowolną opcję w polu **Wygasa** i wybierz polecenie **Dodaj**. Skopiuj wartość klucza tajnego klienta przed opuszczeniem strony. Będą one potrzebne w kolejnym kroku. 
 17. W obszarze **Zarządzaj**wybierz pozycję **uwierzytelnianie** , a następnie pozycję **tokeny ID** w obszarze **niejawne udzielenie**
 18. Wróć do wystąpienia API Management, wklej wpis tajny do pola **klucz tajny klienta** .
 

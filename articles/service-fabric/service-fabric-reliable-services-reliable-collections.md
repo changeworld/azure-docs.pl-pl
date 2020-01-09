@@ -1,25 +1,14 @@
 ---
-title: Wprowadzenie do niezawodnych kolekcji w usłudze Azure Service Fabric stanowe usługi | Microsoft Docs
+title: Wprowadzenie do niezawodnych kolekcji
 description: Service Fabric usługi stanowe udostępniają niezawodne kolekcje, które umożliwiają pisanie aplikacji w chmurze o wysokiej dostępności i skalowalności.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak,zhol
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 1/3/2019
-ms.author: atsenthi
-ms.openlocfilehash: a7b30003fd02f8ab2e367311cdb3f56c80dbb4b2
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599267"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609727"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Wprowadzenie do niezawodnych kolekcji w usłudze Azure Service Fabric stanowe usługi
 
@@ -34,11 +23,11 @@ Kluczowa różnica między niezawodnymi kolekcjami i innymi technologiami wysoki
 
 Niezawodne Kolekcje można traktować jako naturalną ewolucję klas **System. Collections** : nowy zestaw kolekcji przeznaczony do obsługi aplikacji w chmurze i wielokomputerowych bez zwiększania złożoności dla deweloperów. W związku z tym niezawodne kolekcje są następujące:
 
-* Powtórzon Zmiany stanu są replikowane w celu zapewnienia wysokiej dostępności.
-* Trwale Dane są utrwalane na dysku w celu zapewnienia trwałości przed awariami na dużą skalę (na przykład w przypadku awarii w centrum danych).
+* Zreplikowane: zmiany stanu są replikowane w celu zapewnienia wysokiej dostępności.
+* Utrwalone: dane są utrwalane na dysku w celu zapewnienia trwałości przed awariami na dużą skalę (na przykład w przypadku awarii napięcia w centrum danych).
 * Ponieważ zapisy są utrwalane i replikowane, nie można utworzyć nietrwałej ReliableDictionary, ReliableQueue lub innej niezawodnej kolekcji, która zachowuje tylko dane w pamięci.
-* Komunikacji Interfejsy API są asynchroniczne, aby zapewnić, że wątki nie są blokowane podczas nanoszenia we/wy.
-* Transakcyjna Interfejsy API wykorzystują abstrakcję transakcji, dzięki czemu można łatwo zarządzać wieloma niezawodnymi kolekcjami w ramach usługi.
+* Asynchronicznie: interfejsy API są asynchroniczne, aby upewnić się, że wątki nie są blokowane podczas nanoszenia we/wy.
+* Transakcyjne: interfejsy API wykorzystują abstrakcję transakcji, dzięki czemu można łatwo zarządzać wieloma niezawodnymi kolekcjami w ramach usługi.
 
 Niezawodne kolekcje oferują Gwarancje silnej spójności, aby zapewnić łatwiejsze tworzenie informacji o stanie aplikacji.
 Silna spójność jest zapewniana przez zagwarantowanie, że zatwierdzenia transakcji kończą się tylko po zarejestrowaniu całej transakcji na większości kworum replik, łącznie z podstawowym.
@@ -46,15 +35,15 @@ Aby zapewnić słabą spójność, aplikacje mogą potwierdzić z powrotem do kl
 
 Niezawodne interfejsy API kolekcji to ewolucja współbieżnych kolekcji interfejsów API (znajdujących się w przestrzeni nazw **System. Collections. współbieżne** ):
 
-* Komunikacji Zwraca zadanie od, w przeciwieństwie do współbieżnych kolekcji, operacje są replikowane i utrwalane.
-* Brak parametrów out: Używa `ConditionalValue<T>` do`bool` zwracania wartości i zamiast parametrów out. `ConditionalValue<T>`przypomina, `Nullable<T>` ale nie musi być strukturą.
-* Akcja Używa obiektu transakcji, aby umożliwić użytkownikowi grupowanie akcji na wielu niezawodnych kolekcjach w transakcji.
+* Asynchroniczne: zwraca zadanie od, w przeciwieństwie do współbieżnych kolekcji, operacje są replikowane i utrwalane.
+* Brak parametrów out: używa `ConditionalValue<T>`, aby zwrócić `bool` i wartość zamiast parametrów out. `ConditionalValue<T>` przypomina `Nullable<T>`, ale nie musi być strukturą.
+* Transakcje: używa obiektu transakcji, aby umożliwić użytkownikowi grupowanie akcji na wielu niezawodnych kolekcjach w transakcji.
 
 Dzisiaj **firma Microsoft. servicefabric. Data. Collections** zawiera trzy Kolekcje:
 
-* [Niezawodny słownik](https://msdn.microsoft.com/library/azure/dn971511.aspx): Reprezentuje replikowany, transakcyjny i asynchroniczny zbiór par klucz/wartość. Podobnie jak w przypadku **ConcurrentDictionary**, zarówno klucz, jak i wartość mogą być dowolnego typu.
-* [](https://msdn.microsoft.com/library/azure/dn971527.aspx)Niezawodna Kolejka: Przedstawia zreplikowaną, transakcyjną i asynchronicznie rygorystyczną kolejkę First-In, First-Out (FIFO). Podobnie jak w przypadku **ConcurrentQueue**, wartość może być dowolnego typu.
-* [](service-fabric-reliable-services-reliable-concurrent-queue.md)Niezawodna Kolejka współbieżna: Reprezentuje zreplikowaną, transakcyjną i asynchroniczną kolejkę kolejności, w której można uzyskać wysoką przepływność. Podobnie jak w przypadku **ConcurrentQueue**, wartość może być dowolnego typu.
+* [Niezawodny słownik](https://msdn.microsoft.com/library/azure/dn971511.aspx): reprezentuje replikowany, transakcyjny i asynchroniczny zbiór par klucz/wartość. Podobnie jak w przypadku **ConcurrentDictionary**, zarówno klucz, jak i wartość mogą być dowolnego typu.
+* [Niezawodna Kolejka](https://msdn.microsoft.com/library/azure/dn971527.aspx): reprezentuje kolejkę z wbudowaną, transakcyjną i asynchroniczną, pierwszą kolejką (FIFO). Podobnie jak w przypadku **ConcurrentQueue**, wartość może być dowolnego typu.
+* [Niezawodna Kolejka współbieżna](service-fabric-reliable-services-reliable-concurrent-queue.md): reprezentuje zreplikowaną, transakcyjną i asynchroniczną kolejkę kolejności, w której ma być duża przepływność. Podobnie jak w przypadku **ConcurrentQueue**, wartość może być dowolnego typu.
 
 ## <a name="next-steps"></a>Następne kroki
 

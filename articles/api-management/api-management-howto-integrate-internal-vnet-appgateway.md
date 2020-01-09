@@ -1,5 +1,6 @@
 ---
-title: Jak używać usługi Azure API Management w Virtual Network z usługą Application Gateway | Microsoft Docs
+title: Jak używać API Management w Virtual Network z Application Gateway
+titleSuffix: Azure API Management
 description: Dowiedz się, jak zainstalować i skonfigurować usługę Azure API Management w ramach wewnętrznego Virtual Network za pomocą Application Gateway (WAF) jako frontonu
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442701"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrowanie API Management w wewnętrznej sieci wirtualnej z Application Gateway
 
@@ -119,7 +120,7 @@ $location = "West US"           # Azure region
 New-AzResourceGroup -Name $resGroupName -Location $location
 ```
 
-Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Będzie ona używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkie polecenia służące do tworzenia bramy aplikacji używają tej samej grupy zasobów.
+Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Będzie ona używana jako domyślna lokalizacja zasobów w danej grupie. Upewnij się, że wszystkie polecenia służące do tworzenia bramy aplikacji używają tej samej grupy zasobów.
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Tworzenie Virtual Network i podsieci dla bramy aplikacji
 

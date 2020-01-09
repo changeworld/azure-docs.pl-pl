@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 4a1e621570f3bf5fdb78a2fd7b29ce0d1b51187f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 679b59ac786f863c8a5f34aec71f51c5dc75a167
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951789"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608707"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Uczenie maszynowe w usłudze HDInsight
 
@@ -64,4 +64,4 @@ Aby pomóc w zapoznaniu się z swoją działalnością w ramach uczenia głębok
 
 * [Używanie Microsoft Cognitive Toolkit modelu uczenia głębokiego z klastrem Azure HDInsight Spark](spark/apache-spark-microsoft-cognitive-toolkit.md)
 * [Użyj Caffe na Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego](spark/apache-spark-deep-learning-caffe.md)
-* [Uczenie głębokie i platformy AI na Data Science Virtual Machine (DSVM)](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)
+* [Uczenie głębokie i platformy AI na Data Science Virtual Machine (DSVM)](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)

@@ -1,30 +1,19 @@
 ---
 title: ReliableConcurrentQueue na platformie Azure Service Fabric
 description: ReliableConcurrentQueue to kolejka o wysokiej przepływności, która umożliwia równoległe enqueues i dequeues.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: raja,tyadam,masnider,vturecek
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: atsenthi
-ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462727"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Wprowadzenie do ReliableConcurrentQueue na platformie Azure Service Fabric
 Niezawodna Kolejka współbieżna jest asynchroniczną, transakcyjną i replikowaną kolejką, która zapewnia wysoką współbieżność dla operacji na kolejce i w kolejce. Zaprojektowano w celu zapewnienia wysokiej przepływności i małych opóźnień dzięki złagodzeniu wymagań dotyczących ścisłej kolejności FIFO dostarczonej przez [niezawodną kolejkę](https://msdn.microsoft.com/library/azure/dn971527.aspx) , a zamiast tego zapewnia optymalną kolejność.
 
-## <a name="apis"></a>interfejsy API
+## <a name="apis"></a>Interfejsy API
 
 |Kolejka współbieżna                |Niezawodna kolejka współbieżna                                         |
 |--------------------------------|------------------------------------------------------------------|
@@ -40,7 +29,7 @@ Niezawodna Kolejka współbieżna zapewnia wyższą przepływność i mniejsze o
 
 Przykładowy przypadek użycia dla ReliableConcurrentQueue jest scenariuszem [kolejki komunikatów](https://en.wikipedia.org/wiki/Message_queue) . W tym scenariuszu co najmniej jeden producent wiadomości tworzy i dodaje elementy do kolejki, a co najmniej jeden odbiorca wiadomości pobiera komunikaty z kolejki i przetwarza je. Wielu producentów i konsumenci mogą działać niezależnie, korzystając z współbieżnych transakcji w celu przetworzenia kolejki.
 
-## <a name="usage-guidelines"></a>Wskazówki dotyczące użycia
+## <a name="usage-guidelines"></a>Zalecenia dotyczące użytkowania
 * Kolejka oczekuje, że elementy w kolejce mają niski okres przechowywania. Oznacza to, że elementy nie pozostają w kolejce przez długi czas.
 * Kolejka nie gwarantuje ścisłej kolejności FIFO.
 * Kolejka nie odczytuje własnych zapisów. Jeśli element znajduje się w kolejce transakcji, nie będzie widoczny dla dequeueer w ramach tej samej transakcji.
@@ -52,7 +41,7 @@ Przykładowy przypadek użycia dla ReliableConcurrentQueue jest scenariuszem [ko
 ## <a name="code-snippets"></a>Wstawki kodu
 Poczekaj, aż kilka fragmentów kodu i ich oczekiwanych danych wyjściowych. Obsługa wyjątków została zignorowana w tej sekcji.
 
-### <a name="instantiation"></a>Tworzenia wystąpienia
+### <a name="instantiation"></a>Tworzenie wystąpienia
 Tworzenie wystąpienia niezawodnej kolejki współbieżnej jest podobne do innych niezawodnych kolekcji.
 
 ```csharp

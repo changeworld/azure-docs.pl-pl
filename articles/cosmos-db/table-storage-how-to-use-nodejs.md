@@ -1,6 +1,6 @@
 ---
-title: Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu języka Node.js
-description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB.
+title: Korzystanie z usługi Azure Table Storage lub Azure Cosmos DB interfejs API tabel z poziomu środowiska Node. js
+description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a5246ed4018fd4d5bc38649d6a476bc82bcbbf7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308412"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441205"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak korzystać z usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB przy użyciu platformy Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym artykule przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługi Azure Storage Table lub usługi Azure Cosmos DB w aplikacji platformy Node.js.
 
 ## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
@@ -68,7 +68,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Dodawanie połączenia z usługą Azure Cosmos DB
-Aby dodać połączenie z usługą Azure Cosmos DB, utwórz obiekt **TableService** i określ nazwę konta, klucz podstawowy oraz punkt końcowy. Możesz skopiować te wartości z obszaru **Ustawienia** > **Parametry połączenia** w witrynie Azure Portal dla konta usługi Cosmos DB. Na przykład:
+Aby dodać połączenie z usługą Azure Cosmos DB, utwórz obiekt **TableService** i określ nazwę konta, klucz podstawowy oraz punkt końcowy. Możesz skopiować te wartości z obszaru **Ustawienia** > **Parametry połączenia** w witrynie Azure Portal dla konta usługi Cosmos DB. Przykład:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -94,7 +94,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 Element `result.created` ma wartość `true` w przypadku tworzenia nowej tabeli lub wartość `false`, jeśli tabela już istnieje. Element `response` zawiera informacje dotyczące żądania.
 
 ### <a name="filters"></a>Filtry
-Do operacji wykonywanych przy użyciu obiektu **TableService** można zastosować filtrowanie opcjonalne. Filtrowanie operacji może obejmować rejestrowanie, automatyczne ponawianie prób itd. Filtry to obiekty, które implementują metodę o następującej sygnaturze:
+Do operacji wykonywanych przy użyciu obiektu **TableService** można zastosować filtrowanie opcjonalne. Operacje filtrowania mogą obejmować rejestrowanie, automatyczne ponawianie prób itd. Filtry są obiektami implementującymi metodę z podpisem:
 
 ```javascript
 function handle (requestOptions, next)
@@ -198,7 +198,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Domyślnie podczas aktualizowania jednostki nie odbywa się sprawdzenie, czy aktualizowane dane zostały wcześniej zmodyfikowane przez inny proces. Aby obsługiwać równoczesne aktualizacje:
 >
 > 1. Pobierz tag ETag aktualizowanego obiektu. Ten tag jest zwracany jako część elementu `response` dla dowolnej operacji powiązanej z jednostką i można go pobrać za pośrednictwem elementu `response['.metadata'].etag`.
-> 2. Podczas wykonywania operacji aktualizowania jednostki dodaj informacje tagu ETag wcześniej pobrane do nowej jednostki. Na przykład:
+> 2. Podczas wykonywania operacji aktualizowania jednostki dodaj informacje tagu ETag wcześniej pobrane do nowej jednostki. Przykład:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Wykonaj operację aktualizacji. Jeśli jednostka została zmodyfikowana od czasu pobrania wartości tagu ETag, takiej jak inne wystąpienie aplikacji, element `error` jest zwracany wraz z informacją o tym, że warunek aktualizacji określony w żądaniu nie został spełniony.
@@ -365,7 +365,7 @@ dc.table.queryEntities(tableName,
 
 Jeśli sprawdzasz obiekt `continuationToken`, znajdziesz właściwości, takie jak `nextPartitionKey`, `nextRowKey` i `targetLocation`, które mogą służyć do iterowania w obrębie wszystkich wyników.
 
-Można również użyć `top` programu razem z `continuationToken` programem, aby ustawić rozmiar strony. 
+Można również użyć `top` i `continuationToken` do ustawienia rozmiaru strony. 
 
 ## <a name="work-with-shared-access-signatures"></a>Praca z sygnaturami dostępu współdzielonego
 Sygnatury dostępu współdzielonego (SAS) to bezpieczny sposób zapewnienia szczegółowego dostępu do tabel bez podawania kluczy ani nazwy konta usługi Storage. Sygnatury dostępu współdzielonego są często używane do udzielania ograniczonych praw dostępu do danych, takich jak zezwalanie aplikacji mobilnej na wykonywanie zapytań dotyczących rekordów.

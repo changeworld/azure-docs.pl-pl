@@ -1,26 +1,22 @@
 ---
-title: Terminologia dotycząca usługi Azure Service Fabric siatka | Microsoft Docs
+title: Terminologia dotycząca usługi Azure Service Fabric siatka
 description: W tym artykule szczegółowo opisano terminologię używaną przez usługę Azure Service Fabric siatkę, która pomaga lepiej zrozumieć terminy używane w dokumentacji.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351976"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologia dotycząca Service Fabric siatki
 
 Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. W tym artykule szczegółowo opisano terminologię używaną przez usługę Azure Service Fabric siatkę, która pomaga lepiej zrozumieć terminy używane w dokumentacji.
 
-## <a name="service-fabric"></a>Service Fabric
+## <a name="service-fabric"></a>Sieć szkieletowa usługi
 
 [Service Fabric](/azure/service-fabric/) to platforma systemów rozproszonych Open Source, która ułatwia pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi. Service Fabric jest koordynatorem, który ma uprawnienia Service Fabric siatką. Service Fabric udostępnia opcje tworzenia i uruchamiania aplikacji mikrousług. Możesz użyć dowolnej platformy, aby napisać usługi i wybrać miejsce uruchamiania aplikacji z wielu opcji środowiska.
 
@@ -72,14 +68,14 @@ Różne środowiska mają różne poziomy obsługi dla struktur i modeli wdraża
 
 | Typ aplikacji | Opisane przez | Azure Service Fabric Mesh | Klastry usługi Azure Service Fabric (każdy system operacyjny)| Klaster lokalny | Klaster autonomiczny |
 |---|---|---|---|---|---|
-| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | Obsługiwane |Nieobsługiwane | Windows — obsługiwane, Linux i Mac — nieobsługiwane | Windows — nieobsługiwane |
+| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | Obsługiwane |Brak obsługi | Windows — obsługiwane, Linux i Mac — nieobsługiwane | Windows — nieobsługiwane |
 |Aplikacje natywne Service Fabric | Natywny model aplikacji (XML) | Nieobsługiwane| Obsługiwane|Obsługiwane|Windows — obsługiwane|
 
 W poniższej tabeli opisano różne modele aplikacji i narzędzia, które istnieją dla nich w odniesieniu do Service Fabric.
 
 | Typ aplikacji | Opisane przez | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | VS 2017 |Nieobsługiwane |Nieobsługiwane | Tylko obsługiwane środowisko siatki | Nieobsługiwane|
+| Aplikacje siatki Service Fabric | Model zasobów (YAML & JSON) | VS 2017 |Brak obsługi |Brak obsługi | Tylko obsługiwane środowisko siatki | Nieobsługiwane|
 |Aplikacje natywne Service Fabric | Natywny model aplikacji (XML) | VS 2017 i VS 2015| Obsługiwane|Obsługiwane|Obsługiwane|Obsługiwane|
 
 ## <a name="next-steps"></a>Następne kroki

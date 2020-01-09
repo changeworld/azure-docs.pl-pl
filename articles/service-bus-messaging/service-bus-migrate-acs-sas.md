@@ -1,5 +1,5 @@
 ---
-title: Migrowanie z usługi Azure AD Access Control Service do sygnatury dostępu współdzielonego
+title: Azure Service Bus — migracja do autoryzacji sygnatury dostępu współdzielonego
 description: Dowiedz się więcej na temat migrowania z Azure Active Directory Access Control Service do autoryzacji sygnatury dostępu współdzielonego.
 services: service-bus-messaging
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: ae0dd3827e17cc63b4b698eb8d88a08799c7278f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fe0acedeb65f010f9af2ea55cd37e6fe3046d989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790348"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462165"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrowanie z Azure Active Directory Access Control Service do autoryzacji sygnatury dostępu współdzielonego
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus — migracja z Azure Active Directory Access Control Service do autoryzacji sygnatury dostępu współdzielonego
 
-Aplikacje Service Bus miały wcześniej możliwość korzystania z dwóch różnych modeli autoryzacji: modelu tokenu [sygnatury dostępu współdzielonego (SAS)](service-bus-sas.md) dostarczonego bezpośrednio przez Service Bus i modelu federacyjnego, w którym zarządzanie regułami autoryzacji jest zarządzane w ramach Access Control Service [Azure Active Directory](/azure/active-directory/) (ACS) i tokeny uzyskane z usługi ACS są przesyłane do Service Bus w celu autoryzowania dostępu do żądanych funkcji.
+Aplikacje Service Bus miały wcześniej możliwość korzystania z dwóch różnych modeli autoryzacji: modelu tokenu [sygnatury dostępu współdzielonego (SAS)](service-bus-sas.md) dostarczonego bezpośrednio przez Service Bus i modelu federacyjnego, w którym zarządzanie regułami autoryzacji jest zarządzane w ramach [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) i tokeny uzyskane z usługi ACS są przekazywane do Service Bus w celu autoryzowania dostępu do żądanych funkcji.
 
 Model autoryzacji usług ACS został zastąpiony przez [autoryzację SAS](service-bus-authentication-and-authorization.md) jako preferowany model, a cała dokumentacja, wskazówki i przykłady używają wyłącznie sygnatury dostępu współdzielonego. Ponadto nie można już tworzyć nowych przestrzeni nazw Service Bus, które są sparowane z usługą ACS.
 
@@ -47,13 +47,13 @@ Aby uzyskać pomoc dotyczącą migracji złożonych zestawów reguł, możesz sk
 
 ### <a name="unchanged-defaults"></a>Niezmienione wartości domyślne
 
-Jeśli aplikacja nie zmieniła wartości domyślnych usługi ACS, można zastąpić wszystkie [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) użycie przy użyciu obiektu [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) , a zamiast tego użyć wstępnie skonfigurowanej przestrzeni nazw **RootManageSharedAccessKey** konta **właściciela** ACS. Należy pamiętać, że nawet w przypadku konta **właściciela** ACS ta konfiguracja była (i nadal nie jest zalecana), ponieważ to konto/reguła zapewnia pełny urząd zarządzania względem przestrzeni nazw, w tym uprawnienia do usuwania wszystkich jednostek.
+Jeśli aplikacja nie zmieniła wartości domyślnych usługi ACS, można zastąpić wszystkie [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) użycie za pomocą obiektu [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) i użyć wstępnie skonfigurowanej przestrzeni nazw **RootManageSharedAccessKey** zamiast konta **właściciela** ACS. Należy pamiętać, że nawet w przypadku konta **właściciela** ACS ta konfiguracja była (i nadal nie jest zalecana), ponieważ to konto/reguła zapewnia pełny urząd zarządzania względem przestrzeni nazw, w tym uprawnienia do usuwania wszystkich jednostek.
 
 ### <a name="simple-rules"></a>Reguły proste
 
 Jeśli aplikacja używa niestandardowych tożsamości usług z prostymi regułami, migracja jest prosta w przypadku, gdy utworzona została tożsamość usługi ACS w celu zapewnienia kontroli dostępu dla określonej kolejki. W tym scenariuszu często występuje rozwiązanie w stylu SaaS, w którym każda kolejka jest używana jako most do witryny dzierżawy lub biura oddziału, a tożsamość usługi jest tworzona dla danej lokacji. W takim przypadku można migrować odpowiednią tożsamość usługi do reguły sygnatury dostępu współdzielonego bezpośrednio w kolejce. Nazwa tożsamości usługi może być nazwą reguły sygnatury dostępu współdzielonego, a klucz tożsamości usługi może być kluczem reguły sygnatury dostępu współdzielonego. Prawa reguły dostępu współdzielonego są następnie konfigurowane jako odpowiednik odpowiedniej reguły ACS dla jednostki.
 
-Nową i dodatkową konfigurację sygnatury dostępu współdzielonego można utworzyć w dowolnym istniejącym obszarze nazw federacyjnym z usługą ACS, a migracja z usługi ACS zostaje następnie wykonana przy użyciu [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) zamiast [ SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). Przestrzeń nazw nie musi być odłączona od usługi ACS.
+Nową i dodatkową konfigurację sygnatury dostępu współdzielonego można utworzyć w dowolnym istniejącym obszarze nazw federacyjnym z usługą ACS, a migracja z usługi ACS jest następnie wykonywana przy użyciu [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) zamiast [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider). Przestrzeń nazw nie musi być odłączona od usługi ACS.
 
 ### <a name="complex-rules"></a>Reguły złożone
 

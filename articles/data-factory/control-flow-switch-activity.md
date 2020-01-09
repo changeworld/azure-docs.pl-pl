@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679418"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440379"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Przełącz działanie w Azure Data Factory
 
@@ -65,11 +65,11 @@ Działanie Switch zapewnia te same funkcje, które instrukcja SWITCH zawiera w j
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagany
+Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
 name | Nazwa działania Switch. | Ciąg | Tak
 type | Należy ustawić, aby *Przełączać** | Ciąg | Tak
-wyrażenia | Wyrażenie, które musi obliczyć wartość ciągu | Wyrażenie z ciągiem typu wynikowego | Tak
+expression | Wyrażenie, które musi obliczyć wartość ciągu | Wyrażenie z ciągiem typu wynikowego | Tak
 padkach | Zestaw przypadków, które zawierają wartość i zestaw działań do wykonania, gdy wartość jest zgodna z oceną wyrażenia. Należy podać co najmniej jeden przypadek. Obowiązuje maksymalnie 25 przypadków. | Tablica obiektów Case | Tak
 defaultActivities | Zestaw działań, które są wykonywane, gdy szacowanie wyrażenia nie jest spełnione. | Tablica działań | Tak
 
@@ -236,10 +236,7 @@ Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjścio
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

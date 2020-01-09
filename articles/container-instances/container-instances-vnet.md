@@ -2,13 +2,14 @@
 title: Wdrażanie grupy kontenerów w usłudze Azure Virtual Network
 description: Dowiedz się, jak wdrażać grupy kontenerów w nowej lub istniejącej sieci wirtualnej platformy Azure.
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533265"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442252"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -45,8 +46,8 @@ Limity zasobów kontenera mogą różnić się od ograniczeń dla wystąpień ko
 ### <a name="unsupported-networking-scenarios"></a>Nieobsługiwane scenariusze sieci 
 
 * **Azure Load Balancer** — umieszczenie Azure Load Balancer przed wystąpieniami kontenerów w grupie kontenerów sieciowych nie jest obsługiwane
-* **Komunikacja równorzędna sieci wirtualnych** — nie można połączyć się z siecią wirtualną zawierającą podsieć delegowaną do Azure Container Instances do innej sieci wirtualnej
-* **Tabele tras** — trasy zdefiniowane przez użytkownika nie mogą być konfigurowane w podsieci delegowanej do Azure Container Instances
+* **Komunikacja równorzędna sieci wirtualnej** — Komunikacja równorzędna wirtualna nie będzie działała w przypadku ACI, jeśli sieć, do której jest używana Komunikacja równorzędna ACI, używa publicznej przestrzeni adresów IP. Aby Komunikacja równorzędna działała, Sieć równorzędna wymaga RFC1918 prywatnego obszaru IP. Ponadto obecnie można tylko połączyć sieć wirtualną z jedną inną siecią wirtualną
+* **Routing ruchu w sieci wirtualnej** — nie można skonfigurować tras klientów między publicznymi adresami IP. Trasy można skonfigurować w ramach prywatnego obszaru adresów IP delegowanej podsieci, w której są wdrażane zasoby ACI 
 * **Sieciowe grupy zabezpieczeń** — reguły zabezpieczeń dla ruchu wychodzącego w sieciowych grup zabezpieczeń zastosowane do podsieci delegowanej do Azure Container Instances nie są obecnie wymuszane 
 * **Public IP lub etykieta DNS** — grupy kontenerów wdrożone w sieci wirtualnej nie obsługują obecnie udostępniania kontenerów bezpośrednio w Internecie za pomocą publicznego adresu IP lub w pełni kwalifikowanej nazwy domeny
 * **Wewnętrzne rozpoznawanie nazw** — rozpoznawanie nazw dla zasobów platformy Azure w sieci wirtualnej za pośrednictwem wewnętrznego Azure DNS nie jest obsługiwane
@@ -63,7 +64,7 @@ Sieć wirtualna definiuje przestrzeń adresową, w której można utworzyć co n
 
 ### <a name="subnet-delegated"></a>Podsieć (delegowana)
 
-Podsieci umożliwiają segmentację sieci wirtualnej na oddzielne przestrzenie adresowe, które są używane przez zasoby platformy Azure, które znajdują się w nich. Należy utworzyć co najmniej jedną podsieć w ramach sieci wirtualnej.
+Podsieci sieci wirtualnej na segmenty na oddzielne przestrzenie adresowe można używać przez zasoby platformy Azure, które można umieścić w nich. Należy utworzyć co najmniej jedną podsieć w ramach sieci wirtualnej.
 
 Podsieć używana dla grup kontenerów może zawierać tylko grupy kontenerów. Podczas pierwszego wdrażania grupy kontenerów w podsieci usługa Azure deleguje tę podsieć do Azure Container Instances. Po delegowaniu ta podsieć może być używana tylko dla grup kontenerów. Jeśli podjęto próbę wdrożenia zasobów innych niż grupy kontenerów w delegowanej podsieci, operacja zakończy się niepowodzeniem.
 

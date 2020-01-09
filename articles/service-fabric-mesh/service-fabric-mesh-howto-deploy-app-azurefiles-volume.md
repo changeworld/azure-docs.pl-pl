@@ -1,25 +1,17 @@
 ---
-title: Używanie woluminu opartego na Azure Files w aplikacji Service Fabric siatki | Microsoft Docs
+title: Używanie woluminu opartego na Azure Files w aplikacji Service Fabric siatki
 description: Dowiedz się, jak przechowywać informacje o stanie w aplikacji sieci Service Fabricej na platformie Azure, instalując wolumin oparty na Azure Files w ramach usługi przy użyciu interfejsu wiersza polecenia platformy Azure.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e02afde27335e9a512d1e297880993b19fa4304e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e2172c1808ddf72c09bc08efe680ed497f960b75
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034716"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498000"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Zainstaluj wolumin oparty na Azure Files w aplikacji Service Fabric siatkę 
 
@@ -42,7 +34,7 @@ PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 
 Aby ukończyć ten artykuł, można użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. 
 
-Aby używać interfejsu wiersza polecenia platformy Azure lokalnie z tym artykułem `az --version` , upewnij się `azure-cli (2.0.43)`, że program zwraca co najmniej.  Zainstaluj (lub zaktualizuj) moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric siatka, wykonując te [instrukcje](service-fabric-mesh-howto-setup-cli.md).
+Aby użyć interfejsu wiersza polecenia platformy Azure lokalnie z tym artykułem, upewnij się, że `az --version` zwraca co najmniej `azure-cli (2.0.43)`.  Zainstaluj (lub zaktualizuj) moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric siatka, wykonując te [instrukcje](service-fabric-mesh-howto-setup-cli.md).
 
 Aby zalogować się do platformy Azure i ustawić subskrypcję:
 
@@ -65,7 +57,7 @@ az storage share create --name myshare --quota 2048 --connection-string $current
 ```
 
 ## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Pobierz nazwę i klucz konta magazynu oraz nazwę udziału plików
-Nazwa konta magazynu, klucz konta magazynu i nazwa udziału plików są przywoływane jako `<storageAccountName>`, `<storageAccountKey>`i `<fileShareName>` w poniższych sekcjach. 
+Nazwy konta magazynu, klucza konta magazynu i nazwy udziału plików są przywoływane jako `<storageAccountName>`, `<storageAccountKey>`i `<fileShareName>` w poniższych sekcjach. 
 
 Utwórz listę kont magazynu i uzyskaj nazwę konta magazynu z udziałem plików, którego chcesz użyć:
 ```azurecli-interactive
@@ -83,17 +75,17 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 Te wartości można również znaleźć w [Azure Portal](https://portal.azure.com):
-* `<storageAccountName>`-W obszarze **konta magazynu**nazwa konta magazynu użytego do utworzenia udziału plików.
-* `<storageAccountKey>`-Wybierz konto magazynu w obszarze **konta magazynu** , a następnie wybierz pozycję **klucze dostępu** i użyj wartości w obszarze **Klucz1**.
-* `<fileShareName>`— Wybierz konto magazynu w obszarze **konta magazynu** , a następnie wybierz pozycję **pliki**. Nazwa do użycia to nazwa utworzonego udziału plików.
+* `<storageAccountName>` **konta magazynu**, nazwa konta magazynu użytego do utworzenia udziału plików.
+* `<storageAccountKey>` — wybierz konto magazynu w obszarze **konta magazynu** , a następnie wybierz pozycję **klucze dostępu** i użyj wartości w obszarze **Klucz1**.
+* `<fileShareName>` — wybierz konto magazynu w obszarze **konta magazynu** , a następnie wybierz pozycję **pliki**. Nazwa do użycia to nazwa utworzonego udziału plików.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklarowanie zasobu woluminu i aktualizowanie zasobu usługi (JSON)
 
-Dodaj parametry `<fileShareName>`, i `<storageAccountKey>` wartości `<storageAccountName>`, które zostały znalezione w poprzednim kroku. 
+Dodaj parametry dla wartości `<fileShareName>`, `<storageAccountName>`i `<storageAccountKey>` znalezionych w poprzednim kroku. 
 
-Utwórz zasób woluminu jako element równorzędny zasobu aplikacji. Określ nazwę i dostawcę ("SFAzureFile", aby użyć woluminu na podstawie Azure Files). W `azureFileParameters`programie Określ parametry `<fileShareName>`, i `<storageAccountName>` `<storageAccountKey>` wartości, które zostały znalezione w poprzednim kroku.
+Utwórz zasób woluminu jako element równorzędny zasobu aplikacji. Określ nazwę i dostawcę ("SFAzureFile", aby użyć woluminu na podstawie Azure Files). W `azureFileParameters`Określ parametry wartości `<fileShareName>`, `<storageAccountName>`i `<storageAccountKey>`, które zostały znalezione w poprzednim kroku.
 
-Aby zainstalować wolumin w usłudze, należy dodać `volumeRefs` `codePackages` element do elementu usługi.  `name`jest IDENTYFIKATORem zasobu dla woluminu (lub parametrem szablonu wdrożenia dla zasobu woluminu) i nazwą woluminu zadeklarowanego w pliku zasobów woluminu. YAML.  `destinationPath`jest katalogiem lokalnym, do którego zostanie zainstalowany wolumin.
+Aby zainstalować wolumin w usłudze, należy dodać `volumeRefs` do elementu `codePackages` usługi.  `name` jest IDENTYFIKATORem zasobu dla woluminu (lub parametrem szablonu wdrożenia dla zasobu woluminu) i nazwą woluminu zadeklarowanego w pliku zasobów woluminu. YAML.  `destinationPath` jest katalogiem lokalnym, do którego zostanie zainstalowany wolumin.
 
 ```json
 {
@@ -203,7 +195,7 @@ Aby zainstalować wolumin w usłudze, należy dodać `volumeRefs` `codePackages`
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Zadeklaruj zasób woluminu i zaktualizuj zasób usługi (YAML)
 
-Dodaj nowy plik *Volume. YAML* w katalogu *zasobów aplikacji* dla aplikacji.  Określ nazwę i dostawcę ("SFAzureFile", aby użyć woluminu na podstawie Azure Files). `<fileShareName>`, `<storageAccountName>`, i `<storageAccountKey>` są wartościami znalezionymi w poprzednim kroku.
+Dodaj nowy plik *Volume. YAML* w katalogu *zasobów aplikacji* dla aplikacji.  Określ nazwę i dostawcę ("SFAzureFile", aby użyć woluminu na podstawie Azure Files). `<fileShareName>`, `<storageAccountName>`i `<storageAccountKey>` są wartościami znalezionymi w poprzednim kroku.
 
 ```yaml
 volume:
@@ -218,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Zaktualizuj plik *Service. YAML* w katalogu *zasobów usługi* , aby zainstalować wolumin w usłudze.  `volumeRefs` Dodaj element`codePackages` do elementu.  `name`jest IDENTYFIKATORem zasobu dla woluminu (lub parametrem szablonu wdrożenia dla zasobu woluminu) i nazwą woluminu zadeklarowanego w pliku zasobów woluminu. YAML.  `destinationPath`jest katalogiem lokalnym, do którego zostanie zainstalowany wolumin.
+Zaktualizuj plik *Service. YAML* w katalogu *zasobów usługi* , aby zainstalować wolumin w usłudze.  Dodaj element `volumeRefs` do elementu `codePackages`.  `name` jest IDENTYFIKATORem zasobu dla woluminu (lub parametrem szablonu wdrożenia dla zasobu woluminu) i nazwą woluminu zadeklarowanego w pliku zasobów woluminu. YAML.  `destinationPath` jest katalogiem lokalnym, do którego zostanie zainstalowany wolumin.
 
 ```yaml
 ## Service definition ##

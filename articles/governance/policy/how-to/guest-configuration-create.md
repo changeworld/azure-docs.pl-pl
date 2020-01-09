@@ -1,14 +1,14 @@
 ---
 title: Jak utworzyć zasady konfiguracji gościa
 description: Dowiedz się, jak utworzyć Azure Policy zasady konfiguracji gościa dla maszyn wirtualnych z systemem Windows lub Linux przy użyciu Azure PowerShell.
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873084"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608528"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
@@ -24,6 +24,9 @@ Aby utworzyć własną konfigurację weryfikacji stanu maszyny platformy Azure, 
 ## <a name="add-the-guestconfiguration-resource-module"></a>Dodawanie modułu zasobów GuestConfiguration
 
 Aby utworzyć zasady konfiguracji gościa, należy dodać moduł zasobów. Tego modułu zasobów można używać z zainstalowanym lokalnie programem PowerShell z programem [Azure Cloud Shell](https://shell.azure.com)lub z [obrazem Azure PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+
+> [!NOTE]
+> Gdy moduł **GuestConfiguration** działa w powyższych środowiskach, należy wykonać kroki w celu skompilowania konfiguracji DSC w programie Windows PowerShell 5,1.
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
@@ -59,6 +62,12 @@ Jeśli konfiguracja wymaga tylko zasobów, które są wbudowane z instalacją ag
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>Wymagania dotyczące zasobów niestandardowych konfiguracji gościa
 
 Gdy konfiguracja gościa przeprowadza inspekcję maszyny, najpierw działa `Test-TargetResource`, aby określić, czy jest w poprawnym stanie. Wartość logiczna zwrócona przez funkcję określa, czy stan Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny. Jeśli wartość logiczna jest `$false` dla dowolnego zasobu w konfiguracji, dostawca zostanie uruchomiony `Get-TargetResource`. Jeśli wartość logiczna jest `$true`, `Get-TargetResource` nie jest wywoływana.
+
+#### <a name="configuration-requirements"></a>Wymagania dotyczące konfiguracji
+
+Jedyną wymogiem dla konfiguracji gościa do korzystania z konfiguracji niestandardowej jest nazwa konfiguracji, która będzie spójna wszędzie tam, gdzie jest używana.  Dotyczy to również nazwy pliku zip pakietu zawartości, nazwy konfiguracji w pliku MOF przechowywanego wewnątrz pakietu zawartości oraz nazwy konfiguracji używanej w usłudze ARM jako nazwy przypisania gościa.
+
+#### <a name="get-targetresource-requirements"></a>Wymagania Get-TargetResource
 
 Funkcja `Get-TargetResource` ma specjalne wymagania dotyczące konfiguracji gościa, która nie jest wymagana w przypadku konfiguracji żądanego stanu systemu Windows.
 
@@ -96,7 +105,7 @@ Konfiguracja DSC dla konfiguracji gościa w systemie Linux używa zasobu `ChefIn
 
 W poniższym przykładzie jest tworzona konfiguracja o nazwie **linia bazowa**, importuje moduł zasobów **GuestConfiguration** i używa zasobu `ChefInSpecResource` Ustaw nazwę definicji specyfikacji na **Linux-patch-Baseline**:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ Konfiguracja DSC Azure Policy konfiguracji gościa jest używana tylko przez age
 
 Poniższy przykład tworzy konfigurację o nazwie **AuditBitLocker**, importuje moduł zasobów **GuestConfiguration** i używa tego zasobu `Service` do inspekcji dla uruchomionej usługi:
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 W przypadku zasad systemu Linux Uwzględnij Właściwość **AttributesYmlContent** w konfiguracji i Zastąp odpowiednie wartości. Agent konfiguracji gościa automatycznie tworzy plik YaML używany przez specyfikację do przechowywania atrybutów. Zobacz poniższy przykład.
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,7 +412,7 @@ Odpowiednie informacje na temat tworzenia kluczy GPG do użycia z maszynami z sy
 
 Po opublikowaniu zawartości Dodaj tag o nazwie `GuestConfigPolicyCertificateValidation` i wartości `enabled` do wszystkich maszyn wirtualnych, gdzie podpisywanie kodu powinno być wymagane. Ten tag można dostarczyć na dużą skalę przy użyciu Azure Policy. Zapoznaj się z przykładem [Zastosuj tag i jego wartość domyślną](../samples/apply-tag-default-value.md) . Po zastosowaniu tego tagu definicja zasad wygenerowana przy użyciu polecenia cmdlet `New-GuestConfigurationPolicy` włącza wymaganie za pośrednictwem rozszerzenia konfiguracji gościa.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>PRZEGLĄDANIA Rozwiązywanie problemów z przypisaniami zasad konfiguracji gościa
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Rozwiązywanie problemów z przypisaniami zasad konfiguracji gościa (Podgląd)
 
 Narzędzie jest dostępne w wersji zapoznawczej, aby pomóc w rozwiązywaniu problemów z przypisaniami konfiguracji gościa Azure Policy. Narzędzie jest w wersji zapoznawczej i zostało opublikowane w Galeria programu PowerShell jako nazwa modułu [Narzędzia do rozwiązywania problemów z konfiguracją gościa](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 

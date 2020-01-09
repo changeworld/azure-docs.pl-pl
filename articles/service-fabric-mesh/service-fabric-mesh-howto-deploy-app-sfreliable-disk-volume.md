@@ -1,25 +1,17 @@
 ---
-title: Użyj wysokiej dostępności Service Fabric niezawodnego woluminu dysku w aplikacji siatki Service Fabric platformy Azure | Microsoft Docs
+title: Service Fabric niezawodny wolumin dysku z siatką Service Fabric
 description: Dowiedz się, jak przechowywać informacje o stanie w aplikacji sieci Service Fabricej na platformie Azure, instalując Service Fabric niezawodny wolumin oparty na dyskach wewnątrz kontenera przy użyciu interfejsu wiersza polecenia platformy Azure.
-services: service-fabric-mesh
-documentationcenter: .net
 author: ashishnegi
-manager: raunakpandya
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036149"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497967"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Instalowanie wysokiej dostępności Service Fabric niezawodnego woluminu opartego na dyskach w aplikacji Service Fabric siatki 
 Typową metodą utrwalania stanu przy użyciu aplikacji kontenera jest używanie zdalnego magazynu, takiego jak usługa Azure File Storage lub baza danych, taka jak Azure Cosmos DB. Wiąże się to z istotnym opóźnieniem odczytu i zapisu sieci dla magazynu zdalnego.
@@ -29,13 +21,13 @@ Service Fabric niezawodny dysk zapewnia woluminy do odczytu lokalnego z zapisami
 
 W tym przykładzie aplikacja licznika ma usługę ASP.NET Core ze stroną sieci Web, która wyświetla wartość licznika w przeglądarce.
 
-`counterService` Okresowo odczytuje wartość licznika z pliku, zwiększa ją i zapisuje z powrotem do pliku. Plik jest przechowywany w folderze, który jest instalowany na woluminie, Service Fabric niezawodny dysk.
+`counterService` okresowo odczytuje wartość licznika z pliku, zwiększa ją i zapisuje z powrotem do pliku. Plik jest przechowywany w folderze, który jest instalowany na woluminie, Service Fabric niezawodny dysk.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać to zadanie, można użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Aby użyć interfejsu wiersza polecenia platformy Azure z tym artykułem `az --version` , upewnij się `azure-cli (2.0.43)`, że program zwraca co najmniej.  Zainstaluj (lub zaktualizuj) moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric siatka, wykonując te [instrukcje](service-fabric-mesh-howto-setup-cli.md).
+Aby wykonać to zadanie, można użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Aby użyć interfejsu wiersza polecenia platformy Azure z tym artykułem, upewnij się, że `az --version` zwraca co najmniej `azure-cli (2.0.43)`.  Zainstaluj (lub zaktualizuj) moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric siatka, wykonując te [instrukcje](service-fabric-mesh-howto-setup-cli.md).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do platformy Azure i wybierz swoją subskrypcję.
 
@@ -66,7 +58,7 @@ Możesz również zobaczyć stan wdrożenia za pomocą polecenia
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Zwróć uwagę na nazwę zasobu bramy, który ma typ zasobu `Microsoft.ServiceFabricMesh/gateways`jako. Ta wartość zostanie użyta w celu uzyskania publicznego adresu IP aplikacji.
+Zwróć uwagę na nazwę zasobu bramy, który ma typ zasobu jako `Microsoft.ServiceFabricMesh/gateways`. Ta wartość zostanie użyta w celu uzyskania publicznego adresu IP aplikacji.
 
 ## <a name="open-the-application"></a>Otwieranie aplikacji
 
@@ -75,11 +67,11 @@ Po pomyślnym wdrożeniu aplikacji Pobierz adres IP zasobu bramy dla aplikacji. 
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-Dane wyjściowe powinny mieć właściwość `ipAddress` , która jest publicznym adresem IP dla punktu końcowego usługi. Otwórz go w przeglądarce. Zostanie wyświetlona strona sieci Web z wartością licznika, która jest aktualizowana co sekundę.
+Dane wyjściowe powinny mieć Właściwość `ipAddress`, która jest publicznym adresem IP dla punktu końcowego usługi. Otwórz go w przeglądarce. Zostanie wyświetlona strona sieci Web z wartością licznika, która jest aktualizowana co sekundę.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Sprawdź, czy aplikacja może korzystać z woluminu
 
-Aplikacja tworzy plik o nazwie `counter.txt` w folderze woluminu wewnątrz. `counter/counterService` Zawartość tego pliku jest wartością licznika wyświetlaną na stronie sieci Web.
+Aplikacja tworzy plik o nazwie `counter.txt` w woluminie wewnątrz folderu `counter/counterService`. Zawartość tego pliku jest wartością licznika wyświetlaną na stronie sieci Web.
 
 ## <a name="delete-the-resources"></a>Usuń zasoby
 

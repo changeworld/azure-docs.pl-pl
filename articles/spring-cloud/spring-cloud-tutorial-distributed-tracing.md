@@ -6,103 +6,103 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7241287e0438d6da5efb517a89b984bff72848c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461481"
 ---
-# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Samouczek: używanie rozproszonego śledzenia w chmurze Azure wiosennej
+# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Korzystanie z rozproszonego śledzenia w chmurze Azure wiosennej
 
-Rozproszone narzędzia do śledzenia w chmurze sprężynowe umożliwiają łatwe debugowanie i monitorowanie złożonych problemów. Chmura sprężynowa platformy Azure integruje [chmurę Sleuth](https://spring.io/projects/spring-cloud-sleuth) z usługą Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) , aby zapewnić zaawansowane możliwości śledzenia rozproszonego z Azure Portal.
+Dzięki narzędziom do śledzenia rozproszonym w chmurze Azure wiosennej można łatwo debugować i monitorować złożone problemy. Chmura ze sprężyną systemu Azure integruje [chmurę z usługą Azure wiosną Sleuth](https://spring.io/projects/spring-cloud-sleuth) z [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)platformy Azure. Ta integracja zapewnia zaawansowane możliwości śledzenia rozproszonego na podstawie Azure Portal.
 
-W tym artykule dowiesz się, jak:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Włącz śledzenie rozproszone w Azure Portal
-> * Dodaj chmurę Sleuth do aplikacji
-> * Wyświetlanie map zależności dla aplikacji mikrousług
-> * Wyszukaj dane śledzenia przy użyciu różnych filtrów
+> * Włącz śledzenie rozproszone w Azure Portal.
+> * Dodaj do aplikacji Sleuth chmurę platformy Azure ze sprężyną.
+> * Wyświetl mapy zależności dla aplikacji mikrousług.
+> * Przeszukaj dane śledzenia przy użyciu różnych filtrów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W celu ukończenia tego samouczka:
-
-* Została już zainicjowana i uruchomiona usługa w chmurze Azure wiosną.  Wykonaj [ten przewodnik Szybki Start](spring-cloud-quickstart-launch-app-cli.md) , aby zainicjować obsługę administracyjną usługi w chmurze Azure wiosną i uruchomić ją.
+Do ukończenia tego samouczka potrzebna jest usługa w chmurze Azure wiosny, która jest już zainicjowana i uruchomiona. Ukończ [Przewodnik Szybki Start dotyczący wdrażania aplikacji za pośrednictwem interfejsu wiersza polecenia platformy Azure](spring-cloud-quickstart-launch-app-cli.md) w celu aprowizacji i uruchamiania usługi w chmurze Azure wiosennej.
     
 ## <a name="add-dependencies"></a>Dodaj zależności
 
-Zezwól nadawcy zipkin na wysyłanie do sieci Web, dodając następujący wiersz do pliku Application. Properties:
+1. Dodaj następujący wiersz do pliku Application. Properties:
 
-```xml
-spring.zipkin.sender.type = web
-```
+   ```xml
+   spring.zipkin.sender.type = web
+   ```
 
-Możesz pominąć następny krok, jeśli korzystasz z naszego [przewodnika po przygotowywanie aplikacji w chmurze platformy Azure](spring-cloud-tutorial-prepare-app-deployment.md). W przeciwnym razie przejdź do lokalnego środowiska deweloperskiego i edytuj plik `pom.xml`, aby uwzględnić zależność Sleuth chmury Wiosnowej:
+   Po tej zmianie nadawca Zipkin może wysłać do sieci Web.
 
-```xml
-<dependencyManagement>
+1. Pomiń ten krok, jeśli korzystasz [z naszego przewodnika przygotowującego aplikację w chmurze platformy Azure](spring-cloud-tutorial-prepare-app-deployment.md). W przeciwnym razie przejdź do lokalnego środowiska deweloperskiego i edytuj plik pliku pom. XML, aby uwzględnić następującą zależność Sleuth chmury Azure wiosną:
+
+    ```xml
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-sleuth</artifactId>
+                <version>${spring-cloud-sleuth.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth</artifactId>
-            <version>${spring-cloud-sleuth.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
     </dependencies>
-</dependencyManagement>
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-sleuth</artifactId>
-    </dependency>
-</dependencies>
-```
+    ```
 
-* Skompiluj i Wdróż ponownie dla usługi w chmurze Azure wiosny, aby odzwierciedlić te zmiany. 
+1. Skompiluj i Wdróż ponownie dla usługi w chmurze Azure wiosny, aby odzwierciedlić te zmiany.
 
 ## <a name="modify-the-sample-rate"></a>Modyfikuj częstotliwość próbkowania
-Możesz zmienić częstotliwość zbierania danych telemetrycznych, modyfikując częstotliwość próbkowania. Na przykład, jeśli chcesz próbkować połowę jak często, przejdź do pliku `application.properties` i zmień następujący wiersz:
+
+Możesz zmienić częstotliwość zbierania danych telemetrycznych, modyfikując częstotliwość próbkowania. Na przykład jeśli chcesz próbkować bardzo często, Otwórz plik Application. Properties i zmień następujący wiersz:
 
 ```xml
 spring.sleuth.sampler.probability=0.5
 ```
 
-Jeśli masz już skompilowaną i wdrożoną aplikację, możesz zmodyfikować częstotliwość próbkowania, dodając powyższy wiersz jako zmienną środowiskową w interfejsie wiersza polecenia platformy Azure lub w portalu. 
+Jeśli aplikacja została już skompilowana i wdrożona, można zmodyfikować częstotliwość próbkowania. Aby to zrobić, Dodaj poprzedni wiersz jako zmienną środowiskową w interfejsie wiersza polecenia platformy Azure lub w Azure Portal.
 
 ## <a name="enable-application-insights"></a>Włączanie usługi Application Insights
 
 1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal.
-1. W sekcji monitorowanie wybierz opcję **śledzenie rozproszone**.
+1. Na stronie **monitorowanie** wybierz opcję **śledzenie rozproszone**.
 1. Wybierz pozycję **Edytuj ustawienie** , aby edytować lub dodać nowe ustawienie.
-1. Utwórz nowe zapytanie usługi Application Insights lub Wybierz istniejące.
-1. Wybierz kategorię rejestrowania, którą chcesz monitorować, i określ czas przechowywania (w dniach).
+1. Utwórz nowe zapytanie Application Insights lub Wybierz istniejące.
+1. Wybierz kategorię rejestrowania, którą chcesz monitorować, a następnie określ czas przechowywania w dniach.
 1. Wybierz pozycję **Zastosuj** , aby zastosować nowe śledzenie.
 
-## <a name="view-application-map"></a>Wyświetl mapę aplikacji
+## <a name="view-the-application-map"></a>Wyświetlanie mapy aplikacji
 
-Wróć do strony śledzenie rozproszone i wybierz pozycję **Wyświetl mapę aplikacji**. Przejrzyj wizualną reprezentację ustawień aplikacji i monitorowania. Aby dowiedzieć się, jak używać mapy aplikacji, zobacz [ten artykuł](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
+Wróć do strony **śledzenie rozproszone** i wybierz pozycję **Wyświetl mapę aplikacji**. Przejrzyj wizualną reprezentację ustawień aplikacji i monitorowania. Aby dowiedzieć się, jak używać mapy aplikacji, zobacz Application [map: Klasyfikacja Distributed Applications](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
 
-## <a name="search"></a>Search
+## <a name="use-search"></a>Używanie wyszukiwania
 
-Użyj funkcji Search, aby wykonać zapytanie dotyczące innych określonych elementów telemetrii. Na stronie **śledzenie rozproszone** wybierz pozycję **Wyszukaj**. Aby uzyskać więcej informacji na temat korzystania z funkcji wyszukiwania, zobacz [ten artykuł](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
+Funkcja Search umożliwia wykonywanie zapytań dotyczących innych określonych elementów telemetrii. Na stronie **śledzenie rozproszone** wybierz pozycję **Wyszukaj**. Aby uzyskać więcej informacji na temat korzystania z funkcji wyszukiwania, zobacz [Używanie wyszukiwania w Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
 
-## <a name="application-insights-page"></a>Strona Application Insights
+## <a name="use-application-insights"></a>Użyj Application Insights
 
-Application Insights udostępnia możliwości monitorowania oprócz mapy aplikacji i wyszukiwania. Wyszukaj w Azure Portal nazwę aplikacji, a następnie Uruchom stronę Application Insights, aby uzyskać więcej informacji. Aby uzyskać więcej wskazówek na temat korzystania z tych narzędzi, [zapoznaj się z dokumentacją](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
-
+Application Insights udostępnia funkcje monitorowania oprócz mapy aplikacji i funkcji wyszukiwania. Wyszukaj w Azure Portal nazwę aplikacji, a następnie otwórz stronę Application Insights, aby znaleźć informacje dotyczące monitorowania. Aby uzyskać więcej wskazówek na temat korzystania z tych narzędzi, zapoznaj się z tematem [Azure monitor zapytania dziennika](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
 
 ## <a name="disable-application-insights"></a>Wyłącz Application Insights
 
 1. Przejdź do strony usługi w chmurze ze sprężyną Azure w Azure Portal.
-1. W sekcji monitorowanie kliknij pozycję **śledzenie rozproszone**.
-1. Kliknij przycisk **Wyłącz** , aby wyłączyć Application Insights
+1. W obszarze **monitorowanie**wybierz pozycję **śledzenie rozproszone**.
+1. Wybierz pozycję **Wyłącz** , aby wyłączyć Application Insights.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego samouczka nauczysz się, jak włączyć i zrozumieć rozproszone śledzenie w chmurze Azure wiosennej. Aby dowiedzieć się, jak powiązać aplikację z usługą Azure CosmosDB, przejdź do następnego samouczka.
+W tym samouczku przedstawiono sposób włączania i zrozumienia śledzenia rozproszonego w chmurze Azure wiosennej. Aby dowiedzieć się, jak powiązać aplikację z bazą danych Azure Cosmos DB, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak powiązać aplikację z usługą Azure CosmosDB](spring-cloud-tutorial-bind-cosmos.md).
+> [Dowiedz się, jak powiązać z bazą danych Azure Cosmos DB](spring-cloud-tutorial-bind-cosmos.md)

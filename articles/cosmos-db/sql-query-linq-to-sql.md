@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441251"
 ---
 # <a name="linq-to-sql-translation"></a>Tłumaczenie składni LINQ na język SQL
 
@@ -23,7 +23,7 @@ Dostawca zapytań obsługuje następujące wyrażenia skalarne:
 
 - Stałe wartości, w tym stałe wartości typów danych pierwotnych w czasie oceny zapytania.
   
-- Wyrażenia indeksu właściwości/tablicy odwołujące się do właściwości obiektu lub elementu tablicy. Na przykład:
+- Wyrażenia indeksu właściwości/tablicy odwołujące się do właściwości obiektu lub elementu tablicy. Przykład:
   
   ```
     family.Id;
@@ -64,7 +64,7 @@ Dostawca LINQ zawarty w zestawie SDK programu SQL .NET obsługuje następujące 
 - **OrderBy** i **OrderByDescending**: Przekształć do order by przy użyciu ASC lub DESC.
 - Operatory **Count**, **Sum**, **Min**, **Max** i **Average** na potrzeby agregacji oraz ich asynchroniczne odpowiedniki **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync** i **AverageAsync**.
 - **CompareTo**: operator tłumaczony na porównania zakresu. Często używane dla ciągów, ponieważ nie są one porównywalne w programie .NET.
-- **Zrób**: tłumaczy na najważniejsze SQL, aby ograniczyć wyniki zapytania.
+- **Pomiń** i **Zrób**: tłumaczy na przesunięcie SQL i limit ograniczenia wyników zapytania i dzielenia na strony.
 - **Funkcje matematyczne**: obsługuje translację z platformy .NET `Abs`, `Acos`, `Asin`, `Atan`, `Ceiling`, `Cos`, `Exp`, `Floor`, `Log`, `Log10`, `Pow`, `Round`, `Sign`, `Sin`, `Sqrt`, `Tan`, `Truncate` i do równoważnych funkcji wbudowanych języka SQL.
 - **Funkcje ciągów**: obsługuje tłumaczenie z platformy .NET `Concat`, `Contains`, `Count`, `EndsWith`,`IndexOf`, `Replace`, `Reverse`, `StartsWith`, `SubString`, `ToLower`, `ToUpper`, `TrimEnd`, `TrimStart` i do odpowiednich funkcji wbudowanych języka SQL.
 - **Funkcje tablicowe**: obsługuje tłumaczenie z platformy .NET `Concat`, `Contains`i `Count` do równoważnych funkcji wbudowanych języka SQL.

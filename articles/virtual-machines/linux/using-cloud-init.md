@@ -1,6 +1,6 @@
 ---
-title: Omówienie obsługi usługi Cloud-init dla maszyn wirtualnych z systemem Linux na platformie Azure
-description: Omówienie możliwości usługi Cloud-init w Microsoft Azure
+title: Omówienie obsługi funkcji Cloud-init dla maszyn wirtualnych z systemem Linux na platformie Azure
+description: Omówienie możliwości usługi Cloud-init w celu skonfigurowania maszyny wirtualnej w czasie aprowizacji na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b3f64d0629ba5d7aaf85b854e1ee8e5a1410f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873951"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458606"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Obsługa usługi Cloud-init dla maszyn wirtualnych w systemie Azure
 W tym artykule opisano obsługę funkcji [Cloud-init](https://cloudinit.readthedocs.io) w celu skonfigurowania maszyny wirtualnej lub zestawów skalowania maszyn wirtualnych w czasie aprowizacji na platformie Azure. Te skrypty usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure.  

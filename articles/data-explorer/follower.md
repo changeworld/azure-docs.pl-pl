@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440964"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Używanie bazy danych programu do uzupełniania w celu dołączania baz danych na platformie Azure Eksplorator danych
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Dołączanie bazy danych przy użyciu szablonu Azure Resource Manager
 
-W tej sekcji dowiesz się, jak dołączyć bazę danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). 
+W tej sekcji dowiesz się, jak dołączyć bazę danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). 
 
 ```json
 {
@@ -233,7 +233,7 @@ Aby sprawdzić, czy baza danych została pomyślnie dołączona, Znajdź dołąc
 
     ![Baza danych z flagami tylko do odczytu](media/follower/read-only-follower-database.png)
 
-Alternatywne
+Alternatywnie:
 
 1. Przejdź do klastra lidera i wybierz pozycję **bazy danych**
 2. Sprawdź, czy odpowiednie bazy danych są oznaczone jako **udostępniane innym osobom** > **tak**
@@ -377,8 +377,8 @@ Podczas dołączania bazy danych określ **"domyślny rodzaj modyfikacji**". Dom
 |**Natur** |**Opis**  |
 |---------|---------|
 |**Unii**     |   Dołączone podmioty zabezpieczeń bazy danych zawsze będą zawierać pierwotne podmioty zabezpieczeń bazy danych oraz dodatkowe nowe podmioty zabezpieczeń dodane do bazy danych programu do wykonania.      |
-|**Stępować**   |    Brak dziedziczenia podmiotów zabezpieczeń z oryginalnej bazy danych. Dla dołączonej bazy danych należy utworzyć nowe podmioty zabezpieczeń.     |
-|**Dawaj**   |   Dołączone podmioty zabezpieczeń bazy danych zawierają tylko główne bazy danych bez dodatkowych podmiotów zabezpieczeń.      |
+|**Zastąp**   |    Brak dziedziczenia podmiotów zabezpieczeń z oryginalnej bazy danych. Dla dołączonej bazy danych należy utworzyć nowe podmioty zabezpieczeń.     |
+|**Brak**   |   Dołączone podmioty zabezpieczeń bazy danych zawierają tylko główne bazy danych bez dodatkowych podmiotów zabezpieczeń.      |
 
 Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania autoryzowanych podmiotów zabezpieczeń, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).
 

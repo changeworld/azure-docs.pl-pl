@@ -1,26 +1,15 @@
 ---
-title: Tworzenie klastra usługi Service Fabric systemu Linux na platformie Azure | Microsoft Docs
+title: Tworzenie klastra Service Fabric systemu Linux na platformie Azure
 description: Dowiedz się, jak wdrożyć klaster usługi Service Fabric systemu Linux w istniejącej sieci wirtualnej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465398"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>wdrażanie klastra usługi Service Fabric systemu Linux w sieci wirtualnej platformy Azure
 
@@ -53,13 +42,13 @@ W zasobie **Microsoft.ServiceFabric/clusters** został wdrożony klaster systemu
 
 * Trzy typy węzła
 * pięć węzłów w podstawowym typie węzła (konfigurowalne w parametrach szablonu), jeden węzeł w każdym z innych typów węzłów
-* System operacyjny: Ubuntu 16.04 LTS (z możliwością konfiguracji w parametrach szablonu)
+* system operacyjny Ubuntu 16.04 LTS (z możliwością konfiguracji w parametrach szablonu)
 * Zabezpieczenie przy użyciu certyfikatu (z możliwością konfiguracji za pomocą parametrów szablonu)
 * [Usługa DNS](service-fabric-dnsservice.md) jest włączona
 * [Poziom trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster): Brązowy (z możliwością konfiguracji za pomocą parametrów szablonu)
 * [Poziom niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster): Srebrny (z możliwością konfiguracji za pomocą parametrów szablonu)
-* Punkt końcowy połączenia klienta: 19000 (z możliwością konfiguracji w parametrach szablonu)
-* Punkt końcowy bramy protokołu HTTP: 19080 (z możliwością konfiguracji w parametrach szablonu)
+* Punkt końcowy połączenia klienta: 19000 (z możliwością konfiguracji za pomocą parametrów szablonu)
+* Punkt końcowy bramy protokołu HTTP: 19080 (z możliwością konfiguracji za pomocą parametrów szablonu)
 
 ### <a name="azure-load-balancer"></a>Moduł równoważenia obciążenia platformy Azure
 
@@ -74,8 +63,8 @@ W zasobie **Microsoft.Network/loadBalancers** skonfigurowano moduł równoważen
 
 Nazwy sieci wirtualnej i podsieci są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu i skonfigurowane w zasobie **Microsoft.Network/virtualNetworks**:
 
-* Przestrzeń adresowa sieci wirtualnej: 10.0.0.0/16
-* Przestrzeń adresowa podsieci usługi Service Fabric: 10.0.2.0/24
+* przestrzeń adresowa sieci wirtualnej: 10.0.0.0/16
+* przestrzeń adresowa podsieci usługi Service Fabric: 10.0.2.0/24
 
 Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować zasób Microsoft.Network/loadBalancers, aby zezwolić na ruch przychodzący.
 
@@ -90,7 +79,7 @@ Plik parametrów [AzureDeploy. Parameters][parameters] deklaruje wiele wartości
 |clusterName|mojklastersf123| Nazwa klastra. |
 |location|southcentralus| Lokalizacja klastra. |
 |certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca SHA1 certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”. </p>|
-|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/MyCertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość magazynu źródłowego. Na przykład „/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”.</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
@@ -162,7 +151,7 @@ sfctl cluster health
 
 Jeśli nie przechodzisz od razu do następnego artykułu, rozważ [usunięcie klastra](service-fabric-cluster-delete.md), aby uniknąć naliczania opłat.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak [skalować klaster](service-fabric-tutorial-scale-cluster.md).
 

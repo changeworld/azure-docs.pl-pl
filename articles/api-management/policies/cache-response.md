@@ -1,5 +1,6 @@
 ---
-title: Przykład zasad usługi Azure API Management — Dodawanie możliwości do usługi wewnętrznej bazy danych | Microsoft Docs
+title: Przykładowe zasady zarządzania interfejsem API — Dodawanie funkcji do usługi zaplecza
+titleSuffix: Azure API Management
 description: Przykład zasad usługi Azure API Management — pokazuje, jak dodać możliwości do usługi zaplecza. Na przykład akceptowania nazwy miejsca zamiast współrzędnych geograficznych w interfejsie API prognozy pogody.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 705d7e44f64f8dc3bba669cd80dafdab078fcccc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e286f77009a17870332ed5caf1c66c18dd21d020
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442486"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>Dodawanie funkcji do usługi wewnętrznej bazy danych
 

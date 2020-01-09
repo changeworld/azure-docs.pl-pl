@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351338"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu usługi Azure Blob Storage
 
@@ -67,9 +67,9 @@ Istnieją dwa sposoby dodawania zasad za pomocą Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Widok listy Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-2. Wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje konto magazynu.
+2. W Azure Portal Wyszukaj i wybierz konto magazynu. 
 
 3. W obszarze **BLOB Service**wybierz pozycję **Zarządzanie cyklem życia** , aby wyświetlić lub zmienić reguły.
 
@@ -88,9 +88,9 @@ Istnieją dwa sposoby dodawania zasad za pomocą Azure Portal.
 9. Wybierz pozycję **Dodaj** , aby dodać nowe zasady.
 
 #### <a name="azure-portal-code-view"></a>Widok kodu Azure Portal
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-2. Wybierz pozycję **wszystkie zasoby** , a następnie wybierz swoje konto magazynu.
+2. W Azure Portal Wyszukaj i wybierz konto magazynu.
 
 3. W obszarze **BLOB Service**wybierz pozycję **Zarządzanie cyklem życia** , aby wyświetlić lub zmienić zasady.
 

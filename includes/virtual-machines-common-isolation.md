@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2251725597e44a15e421f33cc315be3fb1c7846f
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459157"
 ---
 Usługa Azure Compute oferuje różne rozmiary maszyn wirtualnych, które są izolowane pod kątem konkretnego rodzaju sprzętu i przeznaczone dla jednego klienta.  Te rozmiary maszyn wirtualnych są dostosowane do obciążeń wymagających wysokiego stopnia izolacji od innych klientów, a zwłaszcza obciążeń związanych z takimi elementami jak zgodność z przepisami i wymogi prawne.  Klienci mogą również dodatkowo podzielić zasoby tych izolowanych maszyn wirtualnych, korzystając z [pomocy technicznej platformy Azure dla zagnieżdżonych maszyn wirtualnych](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
@@ -21,7 +21,7 @@ Wykorzystanie wyizolowanego rozmiaru gwarantuje, że Twoja maszyna wirtualna bę
 * Standard_E64is_v3
 * Standard_E64i_v3
 * Standard_M128ms
-* Standard_GS5
+* Standardowa_GS5
 * Standard_G5
 * Standard_DS15_v2
 * Standard_D15_v2
@@ -30,7 +30,7 @@ Wykorzystanie wyizolowanego rozmiaru gwarantuje, że Twoja maszyna wirtualna bę
 Więcej informacji o każdym dostępnym rozmiarze izolowanym można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Wycofanie izolacji D15_v2/DS15_v2 15 lutego 2020
-Niedawno zapowiedziano w wersji zapoznawczej dedykowanego hosta platformy Azure, który umożliwia uruchamianie maszyn wirtualnych z systemem Linux i Windows w organizacji na serwerach fizycznych z jedną dzierżawą. Planujemy w pełni zastąpić izolowane maszyny wirtualne platformy Azure za pomocą dedykowanego hosta platformy Azure. Po **15 lutego 2020** maszyny wirtualne D15_v2/DS15_v2 platformy Azure nie będą już izolowane sprzętowo.
+Dedykowany Host platformy Azure jest teraz dostępny, co umożliwia uruchamianie maszyn wirtualnych z systemem Linux i Windows na serwerach fizycznych z jedną dzierżawą. Planujemy w pełni zastąpić izolowane maszyny wirtualne platformy Azure za pomocą dedykowanego hosta platformy Azure. Po **15 lutego 2020** maszyny wirtualne D15_v2/DS15_v2 platformy Azure nie będą już izolowane sprzętowo.
 
 ## <a name="how-does-this-affect-me"></a>Jak to wpłynie na mnie?
 Po 15 lutego 2020 nie będą już udzielane gwarancje izolacji dla D15_v2/DS15_v2 maszyn wirtualnych platformy Azure. 
@@ -40,7 +40,7 @@ Jeśli izolacja sprzętowa nie jest wymagana, nie trzeba wykonywać żadnych czy
 
 Jeśli dla Ciebie wymagana jest izolacja, przed 15 lutego 2020 należy:
 
-• [Migrowanie](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) obciążenia do dedykowanego hosta platformy Azure w wersji zapoznawczej
+• [Migrowanie](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) obciążenia na dedykowany Host platformy Azure.
 
 • [Zażądaj dostępu](https://aka.ms/D15iRequestAccess) do D15i_v2 i DS15i_v2 maszyny wirtualnej platformy Azure, aby uzyskać tę samą wydajność cenową. Ta opcja jest dostępna tylko w przypadku scenariuszy z opcją płatność zgodnie z rzeczywistym użyciem i jednoletnim scenariuszem wystąpienia zarezerwowanego.    
 
@@ -49,7 +49,7 @@ Jeśli dla Ciebie wymagana jest izolacja, przed 15 lutego 2020 należy:
 Aby uzyskać szczegółowe informacje, zobacz:
 
 ## <a name="timeline"></a>Oś czasu
-| Date | Akcja | 
+| Data | Działanie | 
 | --- | --- |
 | Lis 18, 2019  | Dostępność D/DS15i_v2 (PAYG, 1 – rok RI) |
 | 14 lutego 2020  | Ostatni dzień zakupu D/DS15i_v2 1 roku RI | 
@@ -76,7 +76,7 @@ Odp **.:** nie
 ### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>P: zakupione zostało już 1-lub 3-letnie wystąpienie zarezerwowane dla D15_v2 lub Ds15_v2. W jaki sposób rabat zostanie zastosowany do użycia maszyny wirtualnej?
 Odp **.: usługi**RIs zakupione przed 18 listopada, 2019 automatycznie rozszery zapotrzebowanie na nową wyizolowaną serię maszyn wirtualnych. 
 
-| WIĘZ |  Elastyczność rozmiaru wystąpienia | Uprawnienie do korzyści |   
+| RI |  Elastyczność rozmiaru wystąpienia | Uprawnienie do korzyści |   
 | --- | --- | --- |
 |   D15_v2  |   Wyłączone     |   D15_v2 i D15i_v2 |    
 |   D15_v2  |   Włączone  |   W przypadku serii D15_v2 i D15i_v2 zostanie wyświetlona korzyść z wystąpienia zarezerwowanego. |    
@@ -87,7 +87,7 @@ Podobnie w przypadku serii Dsv2.
 ### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>P: chcę zakupić dodatkowe zarezerwowane wystąpienia dla Dv2. Który z nich wybrać?
 Odp **.: wszystkie**usługi RIs zakupione po 18 listopada 2019 mają następujące zachowanie. 
 
-| WIĘZ |  Elastyczność rozmiaru wystąpienia | Uprawnienie do korzyści |   
+| RI |  Elastyczność rozmiaru wystąpienia | Uprawnienie do korzyści |   
 | --- | --- | --- |
 | D15_v2 |  Wyłączone |   Tylko D15_v2  
 | D15_v2 |  Włączone |    W przypadku serii D15_v2 zostanie wyświetlona korzyść z wystąpienia zarezerwowanego. Nowy D15i_v2 nie będzie uprawniony do skorzystania z korzyści z wystąpienia zarezerwowanego z tego typu. | 

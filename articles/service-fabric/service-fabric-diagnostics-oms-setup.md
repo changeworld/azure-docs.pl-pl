@@ -1,32 +1,23 @@
 ---
-title: Usługa Azure Service Fabric — skonfiguruj monitorowanie przy użyciu dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować dzienniki usługi Azure Monitor umożliwiające wizualizowanie i analizowanie zdarzeń do monitorowania klastrów usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Konfigurowanie monitorowania przy użyciu dzienników Azure Monitor
+description: Dowiedz się, jak skonfigurować Azure Monitor dzienników do wizualizacji i analizowania zdarzeń do monitorowania klastrów Service Fabric platformy Azure.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306862"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609931"
 ---
-# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Konfigurowanie dzienników usługi Azure Monitor dla klastra
+# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Konfigurowanie dzienników Azure Monitor dla klastra
 
-Dzienniki platformy Azure Monitor to nasze zalecenie, aby monitorować zdarzenia poziomu klastra. Można skonfigurować obszar roboczy usługi Log Analytics, za pośrednictwem usługi Azure Resource Manager, programu PowerShell lub portalu Azure Marketplace. Jeśli zachowasz zaktualizowany szablon usługi Resource Manager, który wdrożenia do użycia w przyszłości, należy użyć tego samego szablonu do skonfigurowania środowiska dzienniki usługi Azure Monitor. Wdrożenia za pośrednictwem witryny Marketplace jest łatwiejsze, jeśli masz już klaster, który został wdrożony z włączoną diagnostyką. Jeśli nie masz dostępu na poziomie subskrypcji na koncie, do której jest wdrażany z, należy wdrożyć przy użyciu programu PowerShell lub szablonu usługi Resource Manager.
+Dzienniki Azure Monitor to nasze zalecenie do monitorowania zdarzeń na poziomie klastra. Można skonfigurować obszar roboczy usługi Log Analytics, za pośrednictwem usługi Azure Resource Manager, programu PowerShell lub portalu Azure Marketplace. Jeśli zachowasz zaktualizowany szablon Menedżer zasobów wdrożenia do użytku w przyszłości, użyj tego samego szablonu, aby skonfigurować środowisko dzienników Azure Monitor. Wdrożenia za pośrednictwem witryny Marketplace jest łatwiejsze, jeśli masz już klaster, który został wdrożony z włączoną diagnostyką. Jeśli nie masz dostępu na poziomie subskrypcji na koncie, do której jest wdrażany z, należy wdrożyć przy użyciu programu PowerShell lub szablonu usługi Resource Manager.
 
 > [!NOTE]
-> Aby skonfigurować dzienniki usługi Azure Monitor do monitorowania klastra, musisz mieć włączone, aby wyświetlić zdarzenia z poziomu klastra lub poziom platformy diagnostyki. Zapoznaj się [jak konfigurowanie diagnostyki w klastrach Windows](service-fabric-diagnostics-event-aggregation-wad.md) i [sposób konfigurowania diagnostyki w klastrach systemu Linux](service-fabric-diagnostics-oms-syslog.md) Aby uzyskać więcej informacji
+> Aby skonfigurować Azure Monitor dzienników do monitorowania klastra, musisz mieć włączoną diagnostykę do wyświetlania zdarzeń na poziomie klastra lub na poziomie platformy. Zapoznaj się [jak konfigurowanie diagnostyki w klastrach Windows](service-fabric-diagnostics-event-aggregation-wad.md) i [sposób konfigurowania diagnostyki w klastrach systemu Linux](service-fabric-diagnostics-oms-syslog.md) Aby uzyskać więcej informacji
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,10 +40,10 @@ Jeśli chcesz dodać obszar roboczy usługi Log Analytics, po wdrożeniu klastra
 
 5. Po zakończeniu wybierz pozycję **Utwórz** ponownie w dolnej części okna Tworzenie analiza usługi Service Fabric. Upewnij się, że nowy obszar roboczy będzie wyświetlane w **obszaru roboczego pakietu OMS**. Ta akcja dodaje rozwiązania do obszaru roboczego, który został utworzony.
 
-Jeśli używasz Windows Kontynuuj poniższe kroki, aby nawiązać połączenie z dzienników usługi Azure Monitor na koncie magazynu przechowywania zdarzenia klastra. 
+W przypadku korzystania z systemu Windows wykonaj następujące kroki, aby połączyć dzienniki Azure Monitor z kontem magazynu, na którym są przechowywane zdarzenia klastra. 
 
 >[!NOTE]
->Rozwiązania analiza usługi Service Fabric jest obsługiwana tylko w przypadku klastrów Windows. W przypadku klastrów systemu Linux, zapoznaj się z artykułem na [sposób konfigurowania usługi Azure Monitor dzienników dla klastrów systemu Linux](service-fabric-diagnostics-oms-syslog.md).  
+>Rozwiązanie Service Fabric Analytics jest obsługiwane tylko w przypadku klastrów systemu Windows. W przypadku klastrów systemu Linux zapoznaj się z artykułem dotyczącym [konfigurowania dzienników Azure monitor dla klastrów systemu Linux](service-fabric-diagnostics-oms-syslog.md).  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Połącz obszar roboczy usługi Log Analytics z klastrem 
 
@@ -70,14 +61,14 @@ Jeśli używasz Windows Kontynuuj poniższe kroki, aby nawiązać połączenie z
 
 7. Wybierz **OK** nawiązać obszaru dzienniki usługi klastra.
 
-    ![Dodaj dzienniki konta magazynu do dzienników usługi Azure Monitor](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Dodawanie dzienników kont magazynu do dzienników Azure Monitor](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
 Konto teraz wyświetlane jako część konta magazynu dzienników w źródłach danych obszaru roboczego.
 
 Rozwiązania analiza usługi Service Fabric zostały dodane, w obszarze roboczym usługi Log Analytics, która jest teraz prawidłowo podłączone do klastra platformy oraz tabeli dziennika aplikacji. W ten sam sposób, można dodać dodatkowe źródła do obszaru roboczego.
 
 
-## <a name="deploy-azure-monitor-logs-with-azure-resource-manager"></a>Wdrażanie usługi Azure Monitor dzienników przy użyciu usługi Azure Resource Manager
+## <a name="deploy-azure-monitor-logs-with-azure-resource-manager"></a>Wdrażanie dzienników Azure Monitor przy użyciu Azure Resource Manager
 
 Podczas wdrażania klastra przy użyciu szablonu usługi Resource Manager szablon tworzy nowy obszar roboczy usługi Log Analytics, dodająca rozwiązanie usługi Service Fabric do obszaru roboczego i konfiguruje go do odczytywania danych z tabel odpowiedniego magazynu.
 
@@ -90,7 +81,7 @@ Możesz użyć i zmodyfikuj [ten przykładowy szablon](https://github.com/Azure-
 * Konfiguruje obszaru roboczego usługi Log Analytics do odczytywania zdarzeń z tych tabel
 
 
-Można wdrożyć tego szablonu jako uaktualniania przy użyciu usługi Resource Manager z klastrem przy użyciu `New-AzResourceGroupDeployment` interfejsu API w module programu Azure PowerShell. Przykładowe polecenie będzie następująca:
+Szablon można wdrożyć jako uaktualnienie Menedżer zasobów do klastra przy użyciu interfejsu API `New-AzResourceGroupDeployment` w module Azure PowerShell. Przykładowe polecenie będzie następująca:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
@@ -98,9 +89,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Template
 
 Usługa Azure Resource Manager wykryje, że to polecenie aktualizacji istniejącego zasobu. Przetwarza tylko zmiany między szablonu zachęcanie istniejącego wdrożenia i nowy szablon, pod warunkiem.
 
-## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Wdrażanie usługi Azure Monitor dzienników za pomocą programu Azure PowerShell
+## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Wdrażanie dzienników Azure Monitor przy użyciu Azure PowerShell
 
-Zasób log analytics za pośrednictwem programu PowerShell można także wdrożyć za pomocą `New-AzOperationalInsightsWorkspace` polecenia. Aby użyć tej metody, upewnij się, zainstalowano [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Użyj tego skryptu, aby utworzyć nowy obszar roboczy usługi Log Analytics i Dodawanie rozwiązania do usługi Service Fabric do niego: 
+Możesz również wdrożyć zasób usługi log Analytics za pomocą programu PowerShell przy użyciu polecenia `New-AzOperationalInsightsWorkspace`. Aby użyć tej metody, upewnij się, zainstalowano [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Użyj tego skryptu, aby utworzyć nowy obszar roboczy usługi Log Analytics i Dodawanie rozwiązania do usługi Service Fabric do niego: 
 
 ```powershell
 
@@ -126,11 +117,11 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ```
 
-Gdy wszystko będzie gotowe, wykonaj kroki opisane w poprzedniej sekcji, aby nawiązać połączenie na koncie magazynu odpowiednie dzienniki usługi Azure Monitor.
+Gdy skończysz, wykonaj kroki opisane w poprzedniej sekcji, aby połączyć Azure Monitor dzienniki z odpowiednim kontem magazynu.
 
-Można również dodać inne rozwiązania lub wprowadzić inne zmiany do swojego obszaru roboczego usługi Log Analytics przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [zarządzania usługi Azure Monitor loguje się przy użyciu programu PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+Można również dodać inne rozwiązania lub wprowadzić inne zmiany do swojego obszaru roboczego usługi Log Analytics przy użyciu programu PowerShell. Aby dowiedzieć się więcej, zobacz [Zarządzanie dziennikami Azure monitor przy użyciu programu PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Wdróż agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md) na węzły do zbierania liczników wydajności i zbieranie statystyk platformy docker i dzienniki kontenerów
-* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach dzienniki usługi Azure Monitor
-* [Projektant widoków umożliwia tworzenie niestandardowych widoków w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/view-designer.md)
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) , które są oferowane w ramach dzienników Azure monitor
+* [Używanie projektanta widoków do tworzenia widoków niestandardowych w dziennikach Azure Monitor](../azure-monitor/platform/view-designer.md)

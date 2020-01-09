@@ -1,25 +1,14 @@
 ---
-title: Zarządzanie zasobami Service Fabric platformy Azure dla kontenerów i usług | Microsoft Docs
+title: Nadzór nad zasobami dla kontenerów i usług
 description: Usługa Azure Service Fabric pozwala określić limity zasobów dla usług uruchomionych wewnątrz lub na zewnątrz kontenerów.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: atsenthi
-ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242932"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609456"
 ---
 # <a name="resource-governance"></a>Nadzór nad zasobami
 
@@ -206,7 +195,7 @@ Podczas stosowania nadzoru zasobów do Service Fabric usług gwarantuje, że te 
 * Węzły kończące się w złej kondycji
 * Nieodpowiadające interfejsy API zarządzania klastrem Service Fabric
 
-Aby zapobiec wystąpieniu tych sytuacji, Service Fabric umożliwia *wymuszenie limitów zasobów dla wszystkich Service Fabric usług użytkowników działających w węźle* (podlegających i niezarządzana) w celu zagwarantowania, że usługi użytkownika nigdy nie będą używać więcej niż określona ilość zasobów. Można to osiągnąć przez ustawienie wartości właściwości EnforceUserServiceMetricCapacities w sekcji PlacementAndLoadBalancing w ClusterManifest na true. To ustawienie jest domyślnie wyłączone.
+Aby zapobiec wystąpieniu tych sytuacji, Service Fabric umożliwia *wymuszenie limitów zasobów dla wszystkich Service Fabric usług użytkowników działających w węźle* (podlegających i niezarządzana) w celu zagwarantowania, że usługi użytkownika nigdy nie będą używać więcej niż określonej ilości zasobów. Można to osiągnąć przez ustawienie wartości właściwości EnforceUserServiceMetricCapacities w sekcji PlacementAndLoadBalancing w ClusterManifest na true. To ustawienie jest domyślnie wyłączone.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -217,7 +206,7 @@ Aby zapobiec wystąpieniu tych sytuacji, Service Fabric umożliwia *wymuszenie 
 Dodatkowe uwagi:
 
 * Wymuszanie limitu zasobów dotyczy tylko metryk zasobów `servicefabric:/_CpuCores` i `servicefabric:/_MemoryInMB`
-* Wymuszanie limitu zasobów działa tylko wtedy, gdy pojemność węzłów dla metryk zasobów jest dostępna do Service Fabric, za pomocą mechanizmu autowykrywania, lub przez użytkowników ręcznie określając pojemności węzła (zgodnie z opisem w temacie [Konfigurowanie klastra do włączania Sekcja ładu zasobów](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Jeśli nie skonfigurowano pojemności węzła, nie można użyć możliwości wymuszania limitu zasobów, ponieważ Service Fabric nie może znać ilości zasobów zarezerwowanych dla usług użytkownika. Service Fabric wystawia ostrzeżenia o kondycji, jeśli "EnforceUserServiceMetricCapacities" ma wartość true, ale pojemności węzła nie są skonfigurowane.
+* Wymuszanie limitu zasobów działa tylko wtedy, gdy pojemność węzłów dla metryk zasobów jest dostępna do Service Fabric, za pomocą mechanizmu autowykrywania, lub przez użytkowników ręcznie określając pojemności węzła (zgodnie z opisem w sekcji [Konfiguracja klastra dla włączania zarządzania zasobami](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Jeśli nie skonfigurowano pojemności węzła, nie można użyć możliwości wymuszania limitu zasobów, ponieważ Service Fabric nie może znać ilości zasobów zarezerwowanych dla usług użytkownika. Service Fabric wystawia ostrzeżenia o kondycji, jeśli "EnforceUserServiceMetricCapacities" ma wartość true, ale pojemności węzła nie są skonfigurowane.
 
 ## <a name="other-resources-for-containers"></a>Inne zasoby dla kontenerów
 

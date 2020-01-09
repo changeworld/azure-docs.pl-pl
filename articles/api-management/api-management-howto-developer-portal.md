@@ -1,5 +1,6 @@
 ---
-title: Omówienie portalu dla deweloperów Azure API Management — Azure API Management | Microsoft Docs
+title: Omówienie portalu dla deweloperów platformy Azure API Management
+titleSuffix: Azure API Management
 description: Dowiedz się więcej o portalu dla deweloperów w API Management.
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 2b69fdd7abefca360433fc9fb090569cba23febe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454392"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442589"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
@@ -135,7 +136,7 @@ Większość zmian konfiguracji (na przykład Sieć wirtualna, logowanie i warun
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Otrzymuję błąd CORS podczas korzystania z konsoli interaktywnej
 
-Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](api-management-cross-domain-policies.md#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie lub użyć symboli wieloznacznych `*`. Na przykład:
+Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](api-management-cross-domain-policies.md#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie lub użyć symboli wieloznacznych `*`. Przykład:
 
 ```XML
 <cors>

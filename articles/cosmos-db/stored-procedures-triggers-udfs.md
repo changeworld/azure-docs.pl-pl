@@ -1,5 +1,5 @@
 ---
-title: Praca z procedurami składowanymi, wyzwalaczami i funkcjami zdefiniowanymi przez użytkownika w programie Azure Cosmos DB
+title: Pracuj z procedurami składowanymi, wyzwalaczami i UDF w Azure Cosmos DB
 description: W tym artykule przedstawiono pojęcia, takie jak procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika w programie Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614060"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441239"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika
 
-Azure Cosmos DB zapewnia zintegrowane z językiem wykonywanie kodu JavaScript. W przypadku korzystania z interfejsu API SQL w Azure Cosmos DB można napisać **procedury składowane**, **wyzwalacze**i **funkcje zdefiniowane przez użytkownika (UDF)** w języku JavaScript. Można napisać logikę w języku JavaScript, która jest wykonywana w aparacie bazy danych. Można tworzyć i wykonywać wyzwalacze, procedury składowane i UDF przy użyciu [Azure Portal](https://portal.azure.com/), [zintegrowanego interfejsu API języka JavaScript w Azure Cosmos DB](javascript-query-api.md) lub [Cosmos DB zestaw SDK klienta interfejsu API SQL](how-to-use-stored-procedures-triggers-udfs.md).
+Usługa Azure Cosmos DB zapewnia zintegrowane z językiem, transakcyjne wykonywanie kodu języka JavaScript. W przypadku korzystania z interfejsu API SQL w Azure Cosmos DB można napisać **procedury składowane**, **wyzwalacze**i **funkcje zdefiniowane przez użytkownika (UDF)** w języku JavaScript. Logikę można napisać w języku JavaScript i wykonać ją w aparacie bazy danych. Można tworzyć i wykonywać wyzwalacze, procedury składowane i UDF przy użyciu [Azure Portal](https://portal.azure.com/), [zintegrowanego interfejsu API języka JavaScript w Azure Cosmos DB](javascript-query-api.md) lub [Cosmos DB zestaw SDK klienta interfejsu API SQL](how-to-use-stored-procedures-triggers-udfs.md).
 
 ## <a name="benefits-of-using-server-side-programming"></a>Zalety korzystania z programowania po stronie serwera
 
@@ -28,20 +28,20 @@ Pisanie procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytk
 
 * **Wydajność:** Dane JSON są wewnętrznie mapowane na system typów języka JavaScript. To mapowanie pozwala na wiele optymalizacji, takich jak materializację z opóźnieniem dokumentów JSON w puli buforów i udostępnienie ich na żądanie do wykonywanego kodu. Istnieją inne korzyści dotyczące wydajności związane z dostarczaniem logiki biznesowej do bazy danych programu, w tym:
 
-   * *Partie* Można grupować operacje, takie jak wstawiane i przesyłane zbiorczo. Koszty opóźnienia ruchu sieciowego i nakładu pracy magazynu w celu utworzenia oddzielnych transakcji są znacznie ograniczone.
+   * Tworzenie *partii:* Można grupować operacje, takie jak wstawiane i przesyłane zbiorczo. Koszty opóźnienia ruchu sieciowego i nakładu pracy magazynu w celu utworzenia oddzielnych transakcji są znacznie ograniczone.
 
    * *Kompilacja wstępna:* Procedury składowane, wyzwalacze i UDF są niejawnie wstępnie skompilowane w formacie kodu bajtowego w celu uniknięcia kosztów kompilacji w czasie każdego wywołania skryptu. Ze względu na wstępną kompilację, wywołanie procedur składowanych jest szybkie i ma niską wartość.
 
-   * *Czasem* Czasami Operacje wymagają mechanizmu wyzwalania, który może wykonać jedną lub więcej aktualizacji danych. Oprócz niepodzielenia można także skorzystać z wydajności po wykonaniu tej operacji po stronie serwera.
+   * *Sekwencjonowanie:* Czasami Operacje wymagają mechanizmu wyzwalania, który może wykonać jedną lub więcej aktualizacji danych. Oprócz niepodzielenia można także skorzystać z wydajności po wykonaniu tej operacji po stronie serwera.
 
-* **Encapsulation** Procedury składowane mogą służyć do grupowania logiki w jednym miejscu. Hermetyzacja dodaje warstwę abstrakcji na danych, co pozwala na rozdzielenie aplikacji niezależnie od danych. Ta warstwa abstrakcji jest przydatna, gdy dane są mniej schematowe i nie trzeba zarządzać dodawaniem dodatkowych logiki bezpośrednio do aplikacji. Streszczenie umożliwia zachowanie bezpieczeństwa danych przez usprawnienie dostępu ze skryptów.
+* **Hermetyzacja:** Procedury składowane mogą służyć do grupowania logiki w jednym miejscu. Hermetyzacja dodaje warstwę abstrakcji na danych, co pozwala na rozdzielenie aplikacji niezależnie od danych. Ta warstwa abstrakcji jest przydatna, gdy dane są mniej schematowe i nie trzeba zarządzać dodawaniem dodatkowych logiki bezpośrednio do aplikacji. Streszczenie umożliwia zachowanie bezpieczeństwa danych przez usprawnienie dostępu ze skryptów.
 
 > [!TIP]
 > Procedury składowane najlepiej nadają się do operacji zapisujących duże i wymagają transakcji w ramach wartości klucza partycji. Przy podejmowaniu decyzji o tym, czy należy używać procedur składowanych, Zoptymalizuj około hermetyzowania maksymalnej liczby możliwych zapisów. Ogólnie mówiąc, procedury składowane nie są najbardziej wydajnymi sposobami wykonywania dużej liczby operacji odczytu lub zapytań, dlatego przy użyciu procedur składowanych w celu przeprowadzenia wsadowej dużej liczby odczytów w celu zwrócenia ich klientowi nie zostanie nadana odpowiednia korzyść. W celu uzyskania najlepszej wydajności te operacje odczytujące duże informacje powinny być wykonywane po stronie klienta przy użyciu zestawu SDK Cosmos. 
 
 ## <a name="transactions"></a>Transakcje
 
-Transakcji w typowej bazy danych można zdefiniować za pomocą sekwencji operacji wykonywanych jako pojedynczą jednostką logiczną pracy. Każda transakcja zapewnia **gwarancje własności kwasowej**. KWAS jest dobrze znanym akronimem, który oznacza:Tomicity, **C**onsistency, **i**solation i **D**urability. 
+Transakcji w typowej bazy danych można zdefiniować za pomocą sekwencji operacji wykonywanych jako pojedynczą jednostką logiczną pracy. Każda transakcja zapewnia **gwarancje własności kwasowej**. KWAS jest dobrze znanym akronimem, który **oznacza: tomicity**, **C**onsistency, **i**solation i **D**urability. 
 
 * Niepodzielność gwarantuje, że wszystkie operacje wykonywane w ramach transakcji są traktowane jako jedna jednostka, a wszystkie z nich są zatwierdzone lub żadna z nich nie jest. 
 
@@ -59,11 +59,11 @@ Jeśli procedura składowana jest skojarzona z kontenerem usługi Azure Cosmos, 
 
 ### <a name="commit-and-rollback"></a>Zatwierdź i wycofywania
 
-Transakcje są natywnie zintegrowane z Azure Cosmos DB modelem programowania JavaScript. W ramach funkcji języka JavaScript wszystkie operacje są automatycznie zawijane w ramach jednej transakcji. Jeśli logika JavaScript w procedurze składowanej zakończy się bez żadnych wyjątków, wszystkie operacje w ramach transakcji zostaną zatwierdzone do bazy danych. Instrukcje, `BEGIN TRANSACTION` takie `COMMIT TRANSACTION` jak i (znane jako relacyjne bazy danych), są niejawne w Azure Cosmos DB. W przypadku wystąpienia dowolnego wyjątku ze skryptu środowisko uruchomieniowe JavaScript Azure Cosmos DB będzie wycofać całą transakcję. W związku z tym zgłaszanie wyjątku jest skutecznym odpowiednikiem `ROLLBACK TRANSACTION` w Azure Cosmos DB.
+Transakcje są natywnie zintegrowane z Azure Cosmos DB modelem programowania JavaScript. W ramach funkcji języka JavaScript wszystkie operacje są automatycznie zawijane w ramach jednej transakcji. Jeśli logika JavaScript w procedurze składowanej zakończy się bez żadnych wyjątków, wszystkie operacje w ramach transakcji zostaną zatwierdzone do bazy danych. Instrukcje, takie jak `BEGIN TRANSACTION` i `COMMIT TRANSACTION` (znane jako relacyjne bazy danych), są niejawne w Azure Cosmos DB. W przypadku wystąpienia dowolnego wyjątku ze skryptu środowisko uruchomieniowe JavaScript Azure Cosmos DB będzie wycofać całą transakcję. W związku z tym zgłaszanie wyjątku jest skutecznie równoważne `ROLLBACK TRANSACTION` w Azure Cosmos DB.
 
 ### <a name="data-consistency"></a>Spójność danych
 
-Procedury składowane i wyzwalacze są zawsze wykonywane dla repliki podstawowej kontenera usługi Azure Cosmos. Ta funkcja zapewnia, że odczyty z procedur [](consistency-levels-tradeoffs.md)składowanych zapewniają silną spójność. Zapytania używające funkcji zdefiniowanych przez użytkownika mogą być wykonywane na podstawowej lub dowolnej replice pomocniczej. Procedury składowane i wyzwalacze są przeznaczone do obsługi zapisów transakcyjnych, ponieważ logika tylko do odczytu jest najlepszym zaimplementowana jako logika po stronie aplikacji i zapytania przy użyciu [zestawów SDK interfejsu API programu SQL Azure Cosmos DB](sql-api-dotnet-samples.md). 
+Procedury składowane i wyzwalacze są zawsze wykonywane dla repliki podstawowej kontenera usługi Azure Cosmos. Ta funkcja zapewnia, że odczyty z procedur składowanych zapewniają [silną spójność](consistency-levels-tradeoffs.md). Zapytania używające funkcji zdefiniowanych przez użytkownika mogą być wykonywane na podstawowej lub dowolnej replice pomocniczej. Procedury składowane i wyzwalacze są przeznaczone do obsługi zapisów transakcyjnych, ponieważ logika tylko do odczytu jest najlepszym zaimplementowana jako logika po stronie aplikacji i zapytania przy użyciu [zestawów SDK interfejsu API programu SQL Azure Cosmos DB](sql-api-dotnet-samples.md). 
 
 ## <a name="bounded-execution"></a>Wykonanie ograniczonego
 
@@ -71,22 +71,22 @@ Wszystkie operacje Azure Cosmos DB muszą zakończyć się w określonym limicie
 
 Można upewnić się, że funkcje języka JavaScript kończą się w określonym czasie, lub zaimplementować model oparty na kontynuacji, aby wykonać zadanie wsadowe/wznowienia. Aby uprościć opracowywanie procedur składowanych i wyzwalaczy w celu obsługi limitów czasu, wszystkie funkcje w ramach kontenera usługi Azure Cosmos (na przykład tworzenie, Odczyt, aktualizowanie i usuwanie elementów) zwracają wartość logiczną, która reprezentuje, czy ta operacja będzie wykonanie. Jeśli ta wartość jest fałszywa, oznacza to, że procedura musi zajmować wykonywanie, ponieważ skrypt zużywa więcej czasu lub zainicjowaną przepływność od skonfigurowanej wartości. Operacje w kolejce przed pierwszą operacją niezaakceptowanych magazynu są gwarantowane do wykonania, jeśli procedura składowana kończy w czasie, a nie umieszcza w kolejce kolejnych żądań. W ten sposób operacje powinny być umieszczane w kolejce pojedynczo przy użyciu konwencji wywołania zwrotnego języka JavaScript do zarządzania przepływem sterowania skryptu. Ponieważ skrypty są wykonywane w środowisku po stronie serwera, są one ściśle regulowane. Skrypty, które wielokrotnie naruszają granice wykonywania, mogą być oznaczone jako nieaktywne i nie mogą być wykonywane i powinny być tworzone ponownie w celu uwzględnienia granic wykonania.
 
-Funkcje języka JavaScript są również uzależnione od przepustowości. [](request-units.md) Funkcje języka JavaScript mogą potencjalnie zakończyć korzystanie z dużej liczby jednostek żądania w krótkim czasie i mogą być ograniczone, jeśli osiągnięty zostanie limit wydajności aprowizacji. Należy pamiętać, że skrypty zużywają dodatkową przepływność poza przepływność poświęcaną na wykonywanie operacji bazy danych, mimo że operacje bazy danych są nieco tańsze niż wykonywanie tych samych operacji od klienta.
+Funkcje języka JavaScript są również uzależnione od [przepustowości.](request-units.md) Funkcje języka JavaScript mogą potencjalnie zakończyć korzystanie z dużej liczby jednostek żądania w krótkim czasie i mogą być ograniczone, jeśli osiągnięty zostanie limit wydajności aprowizacji. Należy pamiętać, że skrypty zużywają dodatkową przepływność poza przepływność poświęcaną na wykonywanie operacji bazy danych, mimo że operacje bazy danych są nieco tańsze niż wykonywanie tych samych operacji od klienta.
 
 ## <a name="triggers"></a>Wyzwalacze
 
-Azure Cosmos DB obsługuje dwa typy wyzwalaczy:
+Usługa Azure Cosmos DB obsługuje dwa typy wyzwalaczy:
 
 ### <a name="pre-triggers"></a>Wyzwalacze wstępne
 
-Azure Cosmos DB udostępnia wyzwalacze, które mogą być wywoływane przez wykonanie operacji na elemencie Cosmos platformy Azure. Na przykład można określić wyzwalacz wstępny podczas tworzenia elementu. W takim przypadku przed utworzeniem elementu wyzwalacz wstępny zostanie uruchomiony. Wstępne wyzwalaczy nie może mieć parametrów wejściowych. W razie potrzeby obiekt żądania może służyć do aktualizowania treści dokumentu z oryginalnego żądania. Jeśli zarejestrowano wyzwalaczami, użytkownicy mogą określić operacje, które można uruchomić z. Jeśli wyzwalacz został utworzony przy użyciu `TriggerOperation.Create`, oznacza to, że użycie wyzwalacza w operacji Replace nie będzie dozwolone. Aby zapoznać się z przykładami, zobacz artykuł [jak pisać wyzwalacze](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
+Usługa Azure Cosmos DB udostępnia wyzwalacze, które mogą być wywoływane przez wykonanie operacji w obrębie elementu usługi Azure Cosmos. Można na przykład wybrać wyzwalacz wykonywany przed operacją podczas tworzenia elementu. W takim przypadku wyzwalacz tego typu zostanie uruchomiony przed utworzeniem elementu. Wyzwalacze wykonywane przed operacją nie mogą mieć żadnych parametrów wejściowych. W razie potrzeby obiekt żądania może służyć do aktualizowania treści dokumentu z oryginalnego żądania. Podczas rejestrowania wyzwalaczy użytkownicy mogą określić operacje, z którymi można je uruchamiać. Jeśli wyzwalacz został utworzony przy użyciu `TriggerOperation.Create`, oznacza to, że użycie wyzwalacza w operacji Replace nie będzie dozwolone. Aby zapoznać się z przykładami, zobacz artykuł [jak pisać wyzwalacze](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
 
 ### <a name="post-triggers"></a>Wyzwalacze końcowe
 
 Podobnie jak przed wyzwalaczami, po wyzwalaczach są również kojarzone z operacją w elemencie Cosmos platformy Azure i nie wymagają żadnych parametrów wejściowych. Są one uruchamiane *po* zakończeniu operacji i dostęp do komunikatu odpowiedzi wysyłanego do klienta. Aby zapoznać się z przykładami, zobacz artykuł [jak pisać wyzwalacze](how-to-write-stored-procedures-triggers-udfs.md#triggers) .
 
 > [!NOTE]
-> Zarejestrowane wyzwalacze nie są uruchamiane automatycznie, gdy są wykonywane odpowiednie operacje (Tworzenie/usuwanie/zamienianie/aktualizowanie). Muszą być one jawnie wywoływane podczas wykonywania tych operacji. Aby dowiedzieć się więcej, zobacz artykuł [jak uruchamiać wyzwalacze](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) .
+> Zarejestrowane wyzwalacze nie są uruchamiane automatycznie, gdy są wykonywane odpowiednie operacje (Tworzenie/usuwanie/zamienianie/aktualizowanie). Należy je jawnie wywoływać podczas wykonywania tych operacji. Aby dowiedzieć się więcej, zobacz artykuł [jak uruchamiać wyzwalacze](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) .
 
 ## <a id="udfs"></a>Funkcje zdefiniowane przez użytkownika
 

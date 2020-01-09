@@ -1,24 +1,16 @@
 ---
-title: Konfigurowanie środowiska projektowego w systemie Mac OS X do pracy z usługą Azure Service Fabric | Microsoft Docs
-description: Zainstaluj środowisko uruchomieniowe, zestaw SDK i narzędzia oraz utwórz lokalny klaster projektowy. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji w systemie Mac OS X.
-services: service-fabric
-documentationcenter: linux
+title: Konfigurowanie środowiska deweloperskiego w systemie macOS
+description: Zainstaluj środowisko uruchomieniowe, zestaw SDK i narzędzia oraz utwórz lokalny klaster projektowy. Po ukończeniu tej konfiguracji będziesz gotowy do kompilowania aplikacji w witrynie macOS.
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2ce8d944e7334b071a4a48f38f8c4fafaeff4c47
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 178b8c120bc7a886eaca94d1551e489f96ba22b2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035279"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609880"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Konfigurowanie środowiska projektowego w systemie Mac OS X
 > [!div class="op_single_selector"]
@@ -52,7 +44,7 @@ Aby skonfigurować lokalny kontener platformy Docker i uruchomić w nim klaster 
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Możesz zaktualizować te ustawienia bezpośrednio w pliku daemon.json w ścieżce instalacji platformy Docker. Ustawienia konfiguracji demona można modyfikować bezpośrednio w programie Docker. Wybierz **ikonę platformy Docker**, a następnie wybierz pozycje **Preferencje**  >  **Demon**  >  **Zaawansowane**.
+    Możesz zaktualizować te ustawienia bezpośrednio w pliku daemon.json w ścieżce instalacji platformy Docker. Ustawienia konfiguracji demona można modyfikować bezpośrednio w programie Docker. Wybierz **ikonę platformy Docker**, a następnie wybierz pozycje **Preferencje** > **Demon** > **Zaawansowane**.
     
     >[!NOTE]
     >
@@ -109,7 +101,7 @@ Aby skonfigurować lokalny kontener platformy Docker i uruchomić w nim klaster 
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. Uruchomienie klastra zajmie trochę czasu. Gdy jest uruchomiony, można wyświetlić dzienniki przy użyciu poniższego polecenia lub przejść do pulpitu nawigacyjnego, aby wyświetlić kondycję [http://localhost:19080](http://localhost:19080)klastrów:
+5. Uruchomienie klastra zajmie trochę czasu. Gdy jest uruchomiony, można wyświetlić dzienniki przy użyciu poniższego polecenia lub przejść do pulpitu nawigacyjnego, aby wyświetlić [http://localhost:19080](http://localhost:19080)kondycji klastrów:
 
     ```bash 
     docker logs sftestcluster
@@ -174,7 +166,7 @@ Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które u
     ```
 
     > [!IMPORTANT]
-    > Bieżące wersje programu `brew cask install java` mogą instalować nowszą wersję programu JDK.
+    > Bieżące wersje programu `brew cask install java` mogą instalować nowszą wersję JDK.
     > Pamiętaj, aby zainstalować program JDK 8.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Wdrażanie aplikacji na komputerze Mac z poziomu terminalu

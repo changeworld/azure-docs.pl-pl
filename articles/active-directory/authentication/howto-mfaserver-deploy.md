@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848140"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608758"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Wprowadzenie do serwera Azure Multi-Factor Authentication
 
@@ -30,9 +30,6 @@ Ta strona obejmuje nową instalację serwera oraz jego konfigurację z uwzględn
 > Od 1 lipca 2019 firma Microsoft nie będzie już oferować serwera MFA dla nowych wdrożeń. Nowi klienci, którzy chcą wymagać uwierzytelniania wieloskładnikowego od użytkowników, powinni korzystać z usługi Azure Multi-Factor Authentication opartej na chmurze. Istniejący klienci, którzy aktywowali serwer usługi MFA przed 1 lipca, będą mogli pobrać najnowszą wersję, przyszłe aktualizacje i generować poświadczenia aktywacji w zwykły sposób.
 
 ## <a name="plan-your-deployment"></a>Planowanie wdrożenia
-
-> [!WARNING]
-> Począwszy od marca 2019 pobierania serwerów MFA będą dostępne tylko dla płatnych dzierżawców. Dzierżawy z bezpłatnymi/wersjami próbnymi nie będą już mogli pobierać ani generować poświadczeń aktywacji ani ich używać.
 
 Przed pobraniem serwera Azure Multi-Factor Authentication zastanów się, jakie są wymagania w zakresie obciążenia i wysokiej dostępności. Te informacje pozwolą podjąć decyzję dotyczącą sposobu i miejsca wdrożenia.
 
@@ -96,9 +93,6 @@ Jeśli nie używasz funkcji potwierdzania zdarzeń i użytkownicy nie korzystaj�
 
 ## <a name="download-the-mfa-server"></a>Pobieranie serwera MFA
 
-> [!WARNING]
-> Począwszy od marca 2019 pobierania serwerów MFA będą dostępne tylko dla płatnych dzierżawców. Dzierżawy z bezpłatnymi/wersjami próbnymi nie będą już mogli pobierać ani generować poświadczeń aktywacji ani ich używać.
-
 Aby pobrać serwer Azure Multi-Factor Authentication z witryny Azure Portal, wykonaj następujące czynności:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
@@ -122,6 +116,9 @@ Po pobraniu serwera możesz go zainstalować i skonfigurować. Sprawdź, czy ser
    ![Pomijanie przy użyciu Kreatora konfiguracji uwierzytelniania](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Na stronie, z której został pobrany serwer, kliknij przycisk **Generuj poświadczenia aktywacji**. Skopiuj uzyskane informacje do serwera Azure MFA, wpisując je w odpowiednich polach, a następnie kliknij przycisk **Aktywuj**.
+
+> [!NOTE]
+> Tylko Administratorzy globalni mogą generować poświadczenia aktywacji w Azure Portal.
 
 ## <a name="send-users-an-email"></a>Wysyłanie wiadomości e-mail do użytkowników
 

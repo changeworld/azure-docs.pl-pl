@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457056"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów z urządzenia do chmury w usłudze Azure IoT z rozproszonym śledzeniem (wersja zapoznawcza)
 
@@ -88,22 +88,23 @@ Te instrukcje dotyczą tworzenia przykładu w systemie Windows. W przypadku inny
 
 ### <a name="clone-the-source-code-and-initialize"></a>Klonuj kod źródłowy i zainicjuj
 
-1. Zainstaluj [pakiet C++"Programowanie aplikacji klasycznych"](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) dla programu Visual Studio 2015 lub 2017.
+1. Zainstaluj ["Programowanie aplikacji klasycznych" przy użyciu C++obciążenia](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) dla programu Visual Studio 2019. Obsługiwane są również programy Visual Studio 2017 i 2015.
 
 1. Zainstaluj [CMAKE](https://cmake.org/). Upewnij się, że znajduje się w `PATH`, wpisując `cmake -version` z poziomu wiersza polecenia.
 
-1. Otwórz wiersz polecenia lub powłokę Git Bash. Wykonaj następujące polecenie, aby sklonować repozytorium GitHub [zestawu SDK języka C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c):
+1. Otwórz wiersz polecenia lub powłokę Git Bash. Uruchom następujące polecenia, aby sklonować najnowszą wersję repozytorium [usługi Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) w witrynie GitHub:
 
     ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
+    git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Należy się spodziewać, że ukończenie operacji potrwa kilka minut.
 
-1. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu.
+1. Utwórz podkatalog `cmake` w katalogu głównym repozytorium Git, a następnie przejdź do tego folderu. Uruchom następujące polecenia w katalogu `azure-iot-sdk-c`:
 
     ```cmd
-    cd azure-iot-sdk-c    
     mkdir cmake
     cd cmake
     cmake ..

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442836"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Szybki start: tworzenie serwera — portal
 
@@ -25,7 +25,7 @@ W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Anal
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal 
 
-[Logowanie się do portalu](https://portal.azure.com)
+[Zaloguj się do portalu](https://portal.azure.com)
 
 
 ## <a name="create-a-server"></a>Tworzenie serwera
@@ -38,7 +38,7 @@ W tym przewodniku Szybki start opisano, jak utworzyć zasób serwera usług Anal
    
    * **Nazwa serwera**: wpisz unikatową nazwę, która będzie używana do odwoływania się do serwera. Nazwa serwera musi rozpoczynać się od małej litery i zawierać od 3 do 128 małych liter i cyfr. Odstępy i znaki specjalne są niedozwolone.
    * **Subskrypcja**: wybierz subskrypcję, z którą będzie skojarzony ten serwer.
-   * **Grupa zasobów**: utwórz nową grupę zasobów lub wybierz istniejącą. Grupy zasobów ułatwiają zarządzanie kolekcją zasobów platformy Azure. Aby dowiedzieć się więcej, zobacz [grupy zasobów](../azure-resource-manager/resource-group-overview.md).
+   * **Grupa zasobów**: utwórz nową grupę zasobów lub wybierz istniejącą. Grupy zasobów ułatwiają zarządzanie kolekcją zasobów platformy Azure. Aby dowiedzieć się więcej, zobacz [grupy zasobów](../azure-resource-manager/management/overview.md).
    * **Lokalizacja**: lokalizacja centrum danych Azure, w którym będzie hostowany ten serwer. Wybierz lokalizację najbliższą względem Twojej największej bazy użytkowników.
    * **Warstwa cenowa**: wybierz warstwę cenową. Jeśli testujesz tę funkcję i planujesz zainstalować przykładową modelową bazę danych, wybierz bezpłatną warstwę **D1**. Aby dowiedzieć się więcej, zobacz [cennik usług Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). 
    * **Administrator**: domyślnie jest to aktualnie zalogowane konto. Możesz wybrać inne konto w usłudze Azure Active Directory.

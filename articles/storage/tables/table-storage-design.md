@@ -1,6 +1,6 @@
 ---
-title: Projektowanie skalowalnych i wydajnych tabel w usłudze Azure table storage. | Microsoft Docs
-description: Projektowanie skalowalnych i wydajnych tabel w usłudze Azure table storage.
+title: Projektowanie skalowalnych i wydajnych tabel w usłudze Azure Table Storage. | Microsoft Docs
+description: Projektowanie skalowalnych i wydajnych tabel w usłudze Azure Table Storage.
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351177"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Projektowanie skalowalnych i wydajnych tabel
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Projektowanie skalowalnych i wydajnych tabel należy wziąć pod uwagę czynników, takich jak wydajność, skalowalność i kosztów. Jeśli wcześniej zostały tak zaprojektowane schematów dla relacyjnych baz danych, te zagadnienia są znane, ale podczas, gdy istnieją pewne podobieństwa między modelu magazynu usługi Azure Table i modeli relacyjnych, są również istotne różnice. Różnice te zwykle prowadzić do różnych projektów, które mogą wyglądać counter-intuitive lub jest on nieprawidłowy komuś zapoznać się z relacyjnych baz danych, ale ma sensu w przypadku projektowania dla magazynu klucz wartość NoSQL, takie jak usługa Azure Table. Wiele różnice w zakresie projektowania odzwierciedlają fakt, że usługa Table jest przeznaczona do obsługi chmury aplikacji w skali, które mogą zawierać miliardów jednostek (lub wiersze w terminologii relacyjnej bazy danych) danych lub w przypadku zestawów danych, który musi obsługiwać dużo transakcji woluminy. W związku z tym należy inaczej przemyśleć sposób przechowywania danych i zrozumienie sposobu działania usługi tabel. Dobrze zaprojektowana magazyn danych NoSQL, można włączyć rozwiązania do skalowania jeszcze więcej możliwości i przy niskich kosztach niż w przypadku rozwiązania, który korzysta z relacyjnej bazy danych. Ten przewodnik ułatwi Ci następujące tematy.  
+Aby zaprojektować skalowalne i wydajne tabele, należy wziąć pod uwagę czynniki takie jak wydajność, skalowalność i koszt. Jeśli wcześniej zaprojektowano schematy dla relacyjnych baz danych, te zagadnienia są znane, ale chociaż istnieją różne podobieństwa między modelem magazynu Table service platformy Azure i modeli relacyjnych, istnieją także istotne różnice. Te różnice zwykle prowadzą do różnych projektów, które mogą odszukać, że są one intuicyjne lub niewłaściwe dla kogoś, kto zna relacyjne bazy danych, ale warto mieć sens, jeśli projektujesz dla magazynu NoSQL klucz/wartość, takiego jak Table service platformy Azure. Wiele z różnic w projekcie odzwierciedla fakt, że Table service zaprojektowano w celu obsługi aplikacji w skali chmury, które mogą zawierać miliardy jednostek (lub wierszy w terminologii relacyjnej bazy danych) lub zestawy danych, które muszą obsługiwać wysoką transakcję objętości. W związku z tym należy myśleć o sposobie przechowywania danych i zrozumieć, jak działa Table service. Dobrze zaprojektowany magazyn danych NoSQL może pozwalać na skalowanie rozwiązania znacznie bardziej wydajnych i niższych kosztów niż rozwiązanie korzystające z relacyjnej bazy danych. Ten przewodnik ułatwi Ci następujące tematy.  
 
 ## <a name="about-the-azure-table-service"></a>O usłudze Azure Table
-W tej sekcji opisano niektóre z kluczowymi funkcjami usługi Table service, które są szczególnie istotne, aby projektowanie pod kątem wydajności i skalowalności. Jeśli jesteś nowym użytkownikiem usługi Azure Storage i Table service, najpierw zapoznaj się z [wprowadzenie do usługi Microsoft Azure Storage](../../storage/common/storage-introduction.md) i [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) przed odczytaniem w dalszej części tego artykułu. . Chociaż ten przewodnik koncentruje się na usłudze Table service, zawiera omówienie usług Azure, kolejek i obiektów Blob i jak można ich używać z usługą Table.  
+W tej sekcji opisano niektóre z kluczowymi funkcjami usługi Table service, które są szczególnie istotne, aby projektowanie pod kątem wydajności i skalowalności. Jeśli dopiero zaczynasz korzystać z usługi Azure Storage i Table service, najpierw Przeczytaj [wprowadzenie do Microsoft Azure Storage](../../storage/common/storage-introduction.md) i [Rozpocznij pracę z platformą Azure Table Storage przy użyciu platformy .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) przed przeczytaniem pozostałej części tego artykułu. Chociaż ten przewodnik znajduje się na Table service, zawiera omówienie usługi Azure Queue i BLOB Services oraz sposób ich używania z Table service.  
 
-Co to jest usługa Table service? Zgodnie z oczekiwaniami z nazwy, usłudze Table service używa formacie tabelarycznym do przechowywania danych. W terminologii każdy wiersz w tabeli reprezentuje jednostkę, a kolumny przechowywać różne właściwości tej jednostki. Każda jednostka ma pary kluczy do unikatowego identyfikowania i kolumnę sygnatur czasowych, z których korzysta usługa tabeli do śledzenia datę ostatniej aktualizacji jednostki. Sygnatura czasowa jest stosowane automatycznie, a następnie ręcznie nie można zastąpić sygnaturę czasową z dowolną wartość. Usługa Table service używa ostatniej modyfikacji sygnatura czasowa (LMT) do zarządzania optymistycznej współbieżności.  
+Co to jest usługa Table service? Zgodnie z oczekiwaniami z nazwy, usłudze Table service używa formacie tabelarycznym do przechowywania danych. W terminologii każdy wiersz w tabeli reprezentuje jednostkę, a kolumny przechowywać różne właściwości tej jednostki. Każda jednostka ma parę kluczy do unikatowego identyfikowania oraz kolumnę sygnatury czasowej używaną przez Table service do śledzenia czasu ostatniej aktualizacji jednostki. Sygnatura czasowa jest stosowana automatycznie i nie można ręcznie nadpisać sygnatury czasowej z dowolną wartością. Usługa Table service używa ostatniej modyfikacji sygnatura czasowa (LMT) do zarządzania optymistycznej współbieżności.  
 
 > [!NOTE]
-> Operacje interfejsu API REST usługi Table również zwracać **ETag** wartość, która pochodzi od LMT. Ten dokument używa terminy, element ETag i LMT zamiennie, ponieważ odnoszą się do tych samych danych.  
+> Operacje interfejsu API REST Table service zwracają również wartość **ETag** , która pochodzi od LMT. Ten dokument używa elementów ETag i LMT zamiennie, ponieważ odwołują się do tych samych danych źródłowych.  
 > 
 > 
 
@@ -50,7 +50,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Email</th>
+<th>Adres e-mail</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Email</th>
+<th>Adres e-mail</th>
 </tr>
 <tr>
 <td>Cze</td>
@@ -87,7 +87,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <td>
 <table>
 <tr>
-<th>Nazwa działu</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -98,7 +98,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 </td>
 </tr>
 <tr>
-<td>Sprzedaż</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -107,7 +107,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Email</th>
+<th>Adres e-mail</th>
 </tr>
 <tr>
 <td>Krzysztof</td>
@@ -121,26 +121,26 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 </table>
 
 
-Do tej pory tych danych zostanie wyświetlony podobny do tabeli w relacyjnej bazie danych podstawowych różnic obowiązkowe kolumn i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto każda właściwości zdefiniowane przez użytkownika, takie jak **FirstName** lub **wiek** ma typ danych, takie jak liczba całkowita lub ciąg, po prostu, takich jak kolumny w relacyjnej bazie danych. Mimo że w przeciwieństwie do relacyjnej bazy danych bez schematu charakter usługi Table service oznacza właściwości nie wymagają tych samych danych, wpisz dla każdej jednostki. Aby złożone typy danych są przechowywane w pojedynczej właściwości, należy użyć serializacji formatu JSON lub XML. Aby uzyskać więcej informacji na temat usługi, takie jak obsługiwane typy danych w tabelach, zakresów dat obsługiwanych, zasady nazewnictwa i ograniczeń związanych z rozmiarem, zobacz [opis modelu danych usługi Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Do tej pory te dane wyglądają podobnie do tabeli w relacyjnej bazie danych, a kluczowe różnice są obowiązkowymi kolumnami i możliwość przechowywania wielu typów jednostek w tej samej tabeli. Ponadto każda Właściwość zdefiniowana przez użytkownika, taka jak **FirstName** lub **Age** ma typ danych, na przykład liczba całkowita lub ciąg, podobnie jak kolumna w relacyjnej bazie danych. Mimo że w przeciwieństwie do relacyjnej bazy danych bez schematu charakter usługi Table service oznacza właściwości nie wymagają tych samych danych, wpisz dla każdej jednostki. Aby złożone typy danych są przechowywane w pojedynczej właściwości, należy użyć serializacji formatu JSON lub XML. Aby uzyskać więcej informacji na temat usługi, takie jak obsługiwane typy danych w tabelach, zakresów dat obsługiwanych, zasady nazewnictwa i ograniczeń związanych z rozmiarem, zobacz [opis modelu danych usługi Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Wybór **PartitionKey** i **RowKey** ma podstawowe znaczenie dla projektu dobre tabeli. Każda jednostka przechowywana w tabeli musi mieć unikatową kombinację **PartitionKey** i **RowKey**. Podobnie jak w przypadku kluczy w tabeli relacyjnej bazy danych, **PartitionKey** i **RowKey** wartości są indeksowane, aby utworzyć indeks klastrowany, aby umożliwić szybkie wyszukania. Jednak usługa Table service nie tworzy żadnych indeksów pomocniczych, więc **PartitionKey** i **RowKey** są tylko właściwości indeksowanych. Niektóre wzorce opisane w [wzorce projektowe oparte na tabeli](table-storage-design-patterns.md) pokazują, jak można obejść to ograniczenie jawnego.  
+Wybór **PartitionKey** i **RowKey** ma podstawowe znaczenie dla dobrego projektu tabeli. Każda jednostka przechowywana w tabeli musi mieć unikatową kombinację **PartitionKey** i **RowKey**. Podobnie jak w przypadku kluczy w tabeli relacyjnej bazy danych, wartości **PartitionKey** i **RowKey** są indeksowane w celu utworzenia indeksu klastrowanego umożliwiającego szybkie wyszukiwanie. Jednak Table service nie tworzy żadnych indeksów pomocniczych, więc **PartitionKey** i **RowKey** są jedynymi właściwościami indeksowanymi. Niektóre wzorce opisane w [wzorcach projektowych tabeli](table-storage-design-patterns.md) ilustrują, jak można obejść to oczywiste ograniczenie.  
 
-Tabela składa się z co najmniej jedną partycję i będzie wiele decyzji projektowych wprowadzeniu wokół wybierając odpowiedni **PartitionKey** i **RowKey** zoptymalizować swoje rozwiązanie. To rozwiązanie może składać się z pojedynczej tabeli, która zawiera wszystkie jednostki podzielony na partycje, ale zazwyczaj to rozwiązanie ma wiele tabel. Tabele ułatwiają logicznie organizowanie jednostek, ułatwiają zarządzanie dostępem do danych za pomocą listy kontroli dostępu i może usunąć całą tabelę przy użyciu operacji pojedynczy magazyn.  
+Tabela składa się z jednej lub kilku partycji, a wiele z podjętych decyzji projektowych będzie wokół wyboru odpowiednich **PartitionKey** i **RowKey** w celu zoptymalizowania rozwiązania. Rozwiązanie może składać się z pojedynczej tabeli, która zawiera wszystkie jednostki zorganizowane w partycje, ale zazwyczaj rozwiązanie ma wiele tabel. Tabele ułatwiają logicznie organizowanie jednostek, ułatwiają zarządzanie dostępem do danych za pomocą listy kontroli dostępu i może usunąć całą tabelę przy użyciu operacji pojedynczy magazyn.  
 
 ## <a name="table-partitions"></a>Partycje tabel
-Nazwa konta, nazwę tabeli i **PartitionKey** razem identyfikują partycji w ramach usługi magazynu, w której przechowuje jednostki w usłudze table service. A także bycie częścią schematu adresowania dla jednostek, partycje zdefiniować zakres transakcji (zobacz [transakcji grup jednostek](#entity-group-transactions) poniżej), i stanowią podstawę jak jest skalowana w usłudze table service. Aby uzyskać więcej informacji o partycji, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../../storage/common/storage-scalability-targets.md).  
+Nazwa konta, nazwę tabeli i **PartitionKey** razem identyfikują partycji w ramach usługi magazynu, w której przechowuje jednostki w usłudze table service. A także bycie częścią schematu adresowania dla jednostek, partycje zdefiniować zakres transakcji (zobacz [transakcji grup jednostek](#entity-group-transactions) poniżej), i stanowią podstawę jak jest skalowana w usłudze table service. Aby uzyskać więcej informacji o partycjach, zobacz [Lista kontrolna wydajności i skalowalności dla usługi Table Storage](storage-performance-checklist.md).  
 
-W usłudze Table service oddzielnego węzła usługi jeden lub więcej zakończą się partycji i skali usługi przez dynamiczne równoważenie obciążenia partycji na węzłach. Jeśli węzeł ma pod obciążeniem, usłudze table service można *podziału* zakresu partycji obsługiwanych przez ten węzeł na różnych węzłach; gdy zmniejszenia ruchu, usługa może *scalania* zakresu partycji z węzłów cichy na jednym węźle.  
+W Table service poszczególne usługi węzłów mają co najmniej jedną kompletną partycję, a usługa jest skalowana przez dynamiczne Równoważenie obciążenia partycji między węzłami. Jeśli węzeł ma pod obciążeniem, usłudze table service można *podziału* zakresu partycji obsługiwanych przez ten węzeł na różnych węzłach; gdy zmniejszenia ruchu, usługa może *scalania* zakresu partycji z węzłów cichy na jednym węźle.  
 
-Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Transakcje grupy jednostek
-W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego mechanizmu do wykonywania niepodzielnych aktualizacje w wielu jednostkach. EGTs są również czasami nazywane *partii transakcji*. EGTs może działać tylko na jednostek przechowywanych w tej samej partycji (czyli udział w tym samym kluczem partycji w danej tabeli). Aby w dowolnym momencie atomic transakcyjnych zachowanie jest wymagana w wielu jednostkach, upewnij się, że te jednostki są w tej samej partycji. Jest to często Przyczyna zachowaniem typów jednostek w tej samej tabeli (i partycji), a nie przy użyciu wielu tabel dla jednostek różnych typów. Pojedynczy EGT może operować na co najwyżej 100 jednostek.  Jeśli prześlesz wielu jednoczesnych EGTs do przetwarzania, jest ważne, aby upewnić się, że te EGTs nie działają na jednostkach, które są wspólne dla EGTs; w przeciwnym razie przetwarzania może być opóźnione.
+W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego mechanizmu do wykonywania niepodzielnych aktualizacje w wielu jednostkach. EGTs są czasami nazywane również *transakcjami wsadowymi*. EGTs może działać tylko na jednostkach przechowywanych w tej samej partycji (czyli udostępnić ten sam klucz partycji w danej tabeli). Aby w dowolnym momencie wymagać niepodzielnych zachowań transakcyjnych w wielu jednostkach, należy się upewnić, że te jednostki znajdują się w tej samej partycji. Jest to często Przyczyna zachowaniem typów jednostek w tej samej tabeli (i partycji), a nie przy użyciu wielu tabel dla jednostek różnych typów. Pojedynczy EGT może operować na co najwyżej 100 jednostek.  Jeśli przesyłasz wiele współbieżnych EGTs do przetwarzania, należy upewnić się, że te EGTs nie działają na jednostkach wspólnych dla EGTs; w przeciwnym razie przetwarzanie może być opóźnione.
 
-EGTs również wprowadzać potencjalnych kompromis umożliwiające ocenę w projekcie. Oznacza to za pomocą więcej partycji zwiększa skalowalność aplikacji, ponieważ platforma Azure oferuje więcej możliwości Równoważenie obciążenia żądań w węzłach. Jednak przy użyciu więcej partycji może ograniczyć możliwości aplikacji, aby wykonywać transakcje niepodzielne i obsługa silnej spójności danych. Ponadto są cele skalowalności określonego na poziomie partycji, które mogą ograniczać przepustowość transakcji, których można oczekiwać, że dla pojedynczego węzła. Aby uzyskać więcej informacji na temat cele skalowalności dla konta usługi Azure storage i table service, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](../../storage/common/storage-scalability-targets.md).   
+EGTs również wprowadza potencjalne rozwiązanie do szacowania w projekcie. Oznacza to, że użycie większej liczby partycji zwiększa skalowalność aplikacji, ponieważ platforma Azure ma więcej możliwości w przypadku żądań równoważenia obciążenia między węzłami. Jednak użycie większej liczby partycji może ograniczyć możliwość wykonywania przez aplikacje niepodzielnych transakcji i zapewnienia silnej spójności danych. Ponadto istnieją konkretne cele skalowalności na poziomie partycji, która może ograniczyć przepływność transakcji, które można oczekiwać dla jednego węzła. Aby uzyskać więcej informacji na temat celów skalowalności dla kont magazynu w warstwie Standardowa, zobacz [elementy docelowe skalowalności dla kont magazynu w warstwie Standardowa](../common/scalability-targets-standard-account.md). Aby uzyskać więcej informacji dotyczących skalowalności Table service, zobacz [cele skalowalności i wydajności dla usługi Table Storage](scalability-targets.md).
 
 ## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
-W poniższej tabeli opisano niektóre z kluczowych wartości pod uwagę podczas projektowania rozwiązania usługi tabeli:  
+W poniższej tabeli opisano niektóre kluczowe wartości, które należy wziąć pod uwagę podczas projektowania rozwiązania Table service:  
 
 | Całkowita pojemność konta usługi Azure storage | 500 TB |
 | --- | --- |
@@ -155,12 +155,12 @@ W poniższej tabeli opisano niektóre z kluczowych wartości pod uwagę podczas 
 Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ## <a name="cost-considerations"></a>Kwestie związane z kosztami
-Magazyn tabel jest względnie niedrogie ulepszenie, ale powinien zawierać szacowane koszty użycia pojemności i liczba transakcji w ramach oceny od wszelkich rozwiązań do tabeli usługi. Jednak w wielu scenariuszach nieznormalizowany lub zduplikowane dane są przechowywane w celu poprawy wydajności i skalowalności rozwiązania jest prawidłowy podejście. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Magazyn tabel jest stosunkowo niedrogi, ale należy uwzględnić oszacowania kosztów zarówno w przypadku użycia pojemności, jak i liczby transakcji w ramach oceny dowolnego Table service rozwiązania. Jednak w wielu scenariuszach przechowywanie nieznormalizowanych lub zduplikowanych danych w celu poprawy wydajności lub skalowalności rozwiązania jest prawidłowym podejściem. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Wzorce projektowe oparte na tabelę](table-storage-design-patterns.md)
-- [Modelowanie relacji](table-storage-design-modeling.md)
-- [Projektowanie pod kątem zapytań](table-storage-design-for-query.md)
-- [Szyfrowanie danych w tabeli](table-storage-design-encrypt-data.md)
-- [Projektowanie pod kątem modyfikacji danych](table-storage-design-for-modification.md)
+- [Wzorce projektowe tabeli](table-storage-design-patterns.md)
+- [Relacje modelowania](table-storage-design-modeling.md)
+- [Projektowanie na potrzeby wykonywania zapytań](table-storage-design-for-query.md)
+- [Szyfrowanie danych tabeli](table-storage-design-encrypt-data.md)
+- [Projektowanie na potrzeby modyfikacji danych](table-storage-design-for-modification.md)

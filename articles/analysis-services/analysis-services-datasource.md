@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707124"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442765"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w Azure Analysis Services
 
@@ -22,8 +22,8 @@ ms.locfileid: "74707124"
 
 |Źródło danych  |W pamięci  |Tryb DirectQuery  |Uwagi |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   Tak      |    Tak      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SQL Data Warehouse      |   Tak      |   Tak       |<sup>[dwóch](#azprovider)</sup>|
+|Baza danych SQL Azure      |   Tak      |    Tak      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure SQL Data Warehouse      |   Tak      |   Tak       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   Tak       |    Nie      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   Tak       |    Nie      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Tak        |  Nie        |<sup>[1](#tab1400a)</sup> |
@@ -45,34 +45,34 @@ Program <a name="gen2">5</a> ADLS Gen2 łącznik nie jest obecnie obsługiwany, 
 |Źródło danych | W pamięci | Tryb DirectQuery |Uwagi   |
 |  --- | --- | --- | --- |
 |Baza danych programu Access     |  Tak | Nie |  |
-|Usługa Active Directory     |  Tak | Nie | <sup>[ust](#tab1400b)</sup>  |
+|Usługa Active Directory     |  Tak | Nie | <sup>[6](#tab1400b)</sup>  |
 |Usługi analityczne     |  Tak | Nie |  |
 |System platformy analizy     |  Tak | Nie |  |
 |Plik CSV  |Tak | Nie |  |
-|Dynamics 365     |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Dynamics 365     |  Tak | Nie | <sup>[6](#tab1400b)</sup> |
 |Skoroszyt programu Excel     |  Tak | Nie |  |
-|Wymiana      |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
-|Folder      |Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Wymiana      |  Tak | Nie | <sup>[6](#tab1400b)</sup> |
+|Folder      |Tak | Nie | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |Tak | Nie |  |
-|Dokument JSON      |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
-|Wiersze z pliku binarnego      | Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Dokument JSON      |  Tak | Nie | <sup>[6](#tab1400b)</sup> |
+|Wiersze z pliku binarnego      | Tak | Nie | <sup>[6](#tab1400b)</sup> |
 |Baza danych MySQL     | Tak | Nie |  |
-|Źródło danych OData      |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Źródło danych OData      |  Tak | Nie | <sup>[6](#tab1400b)</sup> |
 |Zapytanie ODBC     | Tak | Nie |  |
 |OLE DB     |   Tak | Nie |  |
 |Oracle  | Tak  |Tak  | <sup>[9](#oracle)</sup> |
-|Baza danych PostgreSQL   | Tak | Nie | <sup>[ust](#tab1400b)</sup> |
-|Obiekty usług Salesforce|  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
-|Raporty usług Salesforce |Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Baza danych PostgreSQL   | Tak | Nie | <sup>[6](#tab1400b)</sup> |
+|Obiekty Salesforce|  Tak | Nie | <sup>[6](#tab1400b)</sup> |
+|Raporty usługi Salesforce |Tak | Nie | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  Tak | Nie |  |
-|SAP Business Warehouse    |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
-|Lista programu SharePoint      |   Tak | Nie | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|Oprogramowanie SQL Server |Tak   | Tak  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
-|Magazyn danych SQL Server |Tak   | Tak  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|Baza danych programu Sybase     |  Tak | Nie |  |
-|Teradata | Tak  | Tak  | <sup>[dziesięć](#teradata)</sup> |
+|SAP Business Warehouse    |  Tak | Nie | <sup>[6](#tab1400b)</sup> |
+|Listy programu SharePoint      |   Tak | Nie | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|SQL Server |Tak   | Tak  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|SQL Server Data Warehouse |Tak   | Tak  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Baza danych Sybase     |  Tak | Nie |  |
+|Teradata | Tak  | Tak  | <sup>[10](#teradata)</sup> |
 |Plik TXT  |Tak | Nie |  |
-|Tabela XML    |  Tak | Nie | <sup>[ust](#tab1400b)</sup> |
+|Tabela XML    |  Tak | Nie | <sup>[6](#tab1400b)</sup> |
 | | | |
 
 **Uwagi:**    
@@ -87,7 +87,7 @@ Połączenie z lokalnymi źródłami danych z serwera Azure Analysis Services wy
 
 ## <a name="understanding-providers"></a>Informacje o dostawcach
 
-Podczas tworzenia tabelarycznych projektów 1400 i wyższych modeli w programie Visual Studio domyślnie nie jest określany dostawca danych podczas nawiązywania połączenia ze źródłem danych przy użyciu polecenia **Pobierz dane**. Tabelaryczne 1400 i wyższe modele używają [Power Query](/power-query/power-query-what-is-power-query.md) łączników do zarządzania połączeniami, kwerendami danych i mashupy między źródłem danych i Analysis Services. Są one czasami określane jako połączenia ze źródłem danych ze *strukturą* w ramach tych ustawień właściwości połączenia. Można jednak włączyć starsze źródła danych. Po włączeniu programu można użyć **Kreatora importu tabeli** do łączenia się z niektórymi źródłami danych tradycyjnie obsługiwanymi w tabelarycznych 1200 i niższych modelach jako *starszych*lub źródeł danych *dostawcy* . W przypadku określenia źródła danych dostawcy można określić określonego dostawcę danych i inne zaawansowane właściwości połączenia. Można na przykład połączyć się z lokalnym magazynem danych SQL Server, a nawet Azure SQL Database jako starszym źródłem danych. Następnie można wybrać sterownik OLE DB dla dostawcy danych programu SQL Server MSOLEDBSQL. W takim przypadku wybranie dostawcy danych OLE DB może zapewnić lepszą wydajność w przypadku łącznika Power Query. 
+Podczas tworzenia tabelarycznych projektów 1400 i wyższych modeli w programie Visual Studio domyślnie nie jest określany dostawca danych podczas nawiązywania połączenia ze źródłem danych przy użyciu polecenia **Pobierz dane**. Tabelaryczne 1400 i wyższe modele używają [Power Query](/power-query/power-query-what-is-power-query) łączników do zarządzania połączeniami, kwerendami danych i mashupy między źródłem danych i Analysis Services. Są one czasami określane jako połączenia ze źródłem danych ze *strukturą* w ramach tych ustawień właściwości połączenia. Można jednak włączyć starsze źródła danych. Po włączeniu programu można użyć **Kreatora importu tabeli** do łączenia się z niektórymi źródłami danych tradycyjnie obsługiwanymi w tabelarycznych 1200 i niższych modelach jako *starszych*lub źródeł danych *dostawcy* . W przypadku określenia źródła danych dostawcy można określić określonego dostawcę danych i inne zaawansowane właściwości połączenia. Można na przykład połączyć się z lokalnym magazynem danych SQL Server, a nawet Azure SQL Database jako starszym źródłem danych. Następnie można wybrać sterownik OLE DB dla dostawcy danych programu SQL Server MSOLEDBSQL. W takim przypadku wybranie dostawcy danych OLE DB może zapewnić lepszą wydajność w przypadku łącznika Power Query. 
 
 W przypadku korzystania z Kreatora importu tabeli w programie Visual Studio połączenia z dowolnym źródłem danych wymagają dostawcy danych. Wybrano domyślnego dostawcę danych. W razie konieczności można zmienić dostawcę danych. Wybrany typ dostawcy może zależeć od wydajności, bez względu na to, czy model używa magazynu w pamięci lub zapytania bezpośredniego, a który Analysis Services platformę, do której zostanie wdrożony model.
 
@@ -106,7 +106,7 @@ Podobnie jak w przypadku tabelarycznych projektów modelu 1200, użyj **Kreatora
 ![Właściwości zaawansowane ze starszymi źródłami danych](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
 
-## <a name="impersonation"></a>Chodzi
+## <a name="impersonation"></a>Personifikacja
 W niektórych przypadkach może być konieczne określenie innego konta personifikacji. Konto personifikacji można określić w programie Visual Studio lub SSMS.
 
 Dla lokalnych źródeł danych:

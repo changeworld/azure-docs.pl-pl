@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c942661beea34e7a49223f4a8e4a4d6c0eb66e1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7532db883b6267c402e380d865c917d16a7052da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440631"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu Azure Data Factory
 
@@ -208,63 +208,6 @@ Następujące właściwości są obsługiwane w przypadku protokołu HTTP w obsz
 }
 ```
 
-### <a name="legacy-dataset-model"></a>Model starszego zestawu danych
-
->[!NOTE]
->Następujący model zestawu danych jest nadal obsługiwany w przypadku zapewnienia zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu wymienionego w powyższej sekcji, co przechodzenie do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
-
-| Właściwość | Opis | Wymagane |
-|:--- |:--- |:--- |
-| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **HttpFile**. | Tak |
-| relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. | Nie |
-| requestMethod | Metoda HTTP. Dozwolone wartości to **Get** (default) i **post**. | Nie |
-| additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
-| Elemencie requestbody | Treść żądania HTTP. | Nie |
-| format | Jeśli chcesz pobrać dane z punktu końcowego HTTP jako-is bez analizy, a następnie skopiować dane do magazynu opartego na plikach, Pomiń sekcję **Format** w definicjach zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować zawartość odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatu plików: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**i **ParquetFormat**. W obszarze **Format**ustaw właściwość **Type** na jedną z tych wartości. Aby uzyskać więcej informacji, zobacz [Format JSON](supported-file-formats-and-compression-codecs.md#json-format), [Format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [Format Avro](supported-file-formats-and-compression-codecs.md#avro-format), [Format Orc](supported-file-formats-and-compression-codecs.md#orc-format)i [Format Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Nie |
-| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Obsługiwane typy: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane poziomy: **optymalne** i **najszybszy**. |Nie |
-
-> [!NOTE]
-> Obsługiwany rozmiar ładunku żądania HTTP to około 500 KB. Jeśli rozmiar ładunku, który ma zostać przekazany do punktu końcowego sieci Web, jest większy niż 500 KB, należy rozważyć przetwarzanie wsadowe w mniejszych fragmentach.
-
-**Przykład 1: użycie metody get (domyślnie)**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        }
-    }
-}
-```
-
-**Przykład 2: użycie metody post**
-
-```json
-{
-    "name": "HttpSourceDataInput",
-    "properties": {
-        "type": "HttpFile",
-        "linkedServiceName": {
-            "referenceName": "<HTTP linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST HTTP request>"
-        }
-    }
-}
-```
-
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
 Ta sekcja zawiera listę właściwości obsługiwanych przez źródło HTTP.
@@ -327,10 +270,70 @@ Następujące właściwości są obsługiwane w przypadku protokołu HTTP w obsz
 ]
 ```
 
-#### <a name="legacy-source-model"></a>Starszy model źródłowy
+## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+
+## <a name="legacy-models"></a>Starsze modele
 
 >[!NOTE]
->Następujący model źródłowy kopiowania jest nadal obsługiwany w przypadku zapewnienia zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu wymienionego powyżej, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
+>Następujące modele są nadal obsługiwane w celu zapewnienia zgodności z poprzednimi wersjami. Użytkownik chce użyć nowego modelu wymienionego w powyższych sekcjach, przechodząc do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
+
+### <a name="legacy-dataset-model"></a>Model starszego zestawu danych
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **HttpFile**. | Tak |
+| relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. | Nie |
+| requestMethod | Metoda HTTP. Dozwolone wartości to **Get** (default) i **post**. | Nie |
+| additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
+| Elemencie requestbody | Treść żądania HTTP. | Nie |
+| format | Jeśli chcesz pobrać dane z punktu końcowego HTTP jako-is bez analizy, a następnie skopiować dane do magazynu opartego na plikach, Pomiń sekcję **Format** w definicjach zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować zawartość odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatu plików: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**i **ParquetFormat**. W obszarze **Format**ustaw właściwość **Type** na jedną z tych wartości. Aby uzyskać więcej informacji, zobacz [Format JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Format tekstu](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Format Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Format Orc](supported-file-formats-and-compression-codecs-legacy.md#orc-format)i [Format Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nie |
+| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Obsługiwane typy: **gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane poziomy: **optymalne** i **najszybszy**. |Nie |
+
+> [!NOTE]
+> Obsługiwany rozmiar ładunku żądania HTTP to około 500 KB. Jeśli rozmiar ładunku, który ma zostać przekazany do punktu końcowego sieci Web, jest większy niż 500 KB, należy rozważyć przetwarzanie wsadowe w mniejszych fragmentach.
+
+**Przykład 1: użycie metody get (domyślnie)**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        }
+    }
+}
+```
+
+**Przykład 2: użycie metody post**
+
+```json
+{
+    "name": "HttpSourceDataInput",
+    "properties": {
+        "type": "HttpFile",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+            "relativeUrl": "<relative url>",
+            "requestMethod": "Post",
+            "requestBody": "<body for POST HTTP request>"
+        }
+    }
+}
+```
+
+### <a name="legacy-copy-activity-source-model"></a>Model źródłowy starszego działania kopiowania
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -368,11 +371,6 @@ Następujące właściwości są obsługiwane w przypadku protokołu HTTP w obsz
     }
 ]
 ```
-
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
-
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
-
 
 ## <a name="next-steps"></a>Następne kroki
 

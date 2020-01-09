@@ -1,20 +1,16 @@
 ---
-title: Skalowalność aplikacji usługi Azure Service Fabric siatka | Microsoft Docs
+title: Skalowalność aplikacji usługi Azure Service Fabric w sieci
 description: Jedną z zalet wdrażania aplikacji do Service Fabric siatki jest możliwość łatwego skalowania usług — ręcznie lub za pomocą zasad skalowania automatycznego.
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458999"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Skalowanie aplikacji Service Fabric siatki
 
@@ -27,7 +23,7 @@ W szablonie wdrażania dla zasobu aplikacji każda usługa ma właściwość *re
 Przykłady ręcznego skalowania wystąpień usług można znaleźć [w temacie ręczne skalowanie usług w programie lub na zewnątrz](service-fabric-mesh-tutorial-template-scale-services.md).
 
 ## <a name="autoscaling-service-instances"></a>Automatyczne skalowanie wystąpień usługi
-Skalowanie automatyczne jest dodatkową możliwością Service Fabric do dynamicznego skalowania liczby wystąpień usługi (skalowanie w poziomie). Skalowanie automatyczne zapewnia doskonałą elastyczność i umożliwia inicjowanie obsługi lub usuwanie wystąpień usługi na podstawie użycia procesora lub pamięci.  Funkcja automatycznego skalowania umożliwia uruchamianie odpowiedniej liczby wystąpień usługi dla obciążenia i optymalizację pod kątem kosztów.
+Skalowanie automatyczne jest dodatkową możliwością Service Fabric do dynamicznego skalowania liczby wystąpień usługi (skalowanie w poziomie). Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej lub usuwania wystąpień usługi na podstawie użycia procesora CPU lub pamięci.  Funkcja automatycznego skalowania umożliwia uruchamianie odpowiedniej liczby wystąpień usługi dla obciążenia i optymalizację pod kątem kosztów.
 
 Zasady automatycznego skalowania są definiowane dla każdej usługi w pliku zasobów usługi. Każda zasada skalowania składa się z dwóch części:
 

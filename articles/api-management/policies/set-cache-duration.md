@@ -1,5 +1,6 @@
 ---
-title: Przykładowy czas trwania pamięci podręcznej odpowiedzi dla zasad usługi Azure API Management Microsoft Docs
+title: Przykładowe zasady zarządzania interfejsem API — Ustawianie czasu trwania pamięci podręcznej odpowiedzi
+titleSuffix: Azure API Management
 description: Przykład zasad usługi Azure API Management — pokazuje, jak ustawić czas trwania pamięci podręcznej odpowiedzi przy użyciu wartości maxAge w nagłówku kontroli pamięci podręcznej wysłanej przez zaplecze.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 67d2f334e2088d96543fabd3b99cac71d95630eb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3101c5695272e8fa6b577ad313897cbc1fa29629
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071970"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442396"
 ---
 # <a name="set-response-cache-duration"></a>Ustaw czas trwania pamięci podręcznej odpowiedzi
 

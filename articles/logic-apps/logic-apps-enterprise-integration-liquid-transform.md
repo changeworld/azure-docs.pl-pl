@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456647"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonaj zaawansowane przekształcenia JSON przy użyciu szablonów płynnych w Azure Logic Apps
 
@@ -29,14 +29,14 @@ Aby można było wykonać transformację płynną w aplikacji logiki, należy na
 
 * Podstawowe [konto integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Podstawowa wiedza na temat [języka z szablonem płynnym.](https://shopify.github.io/liquid/)
+* Podstawowa wiedza na temat [języka szablonu ciekłego](https://shopify.github.io/liquid/)
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Utwórz szablon płynny lub mapę dla konta integracji
 
 1. Na potrzeby tego przykładu Utwórz przykładowy szablon płynny opisany w tym kroku. W szablonie płynnym można używać [filtrów ciekłych](https://shopify.github.io/liquid/basics/introduction/#filters), które używają [DotLiquid](https://dotliquidmarkup.org/) i C# konwencji nazewnictwa. 
 
    > [!NOTE]
-   > Upewnij się, że nazwy filtrów używają *wielkości liter* w szablonie. W przeciwnym razie filtry nie będą działały.
+   > Upewnij się, że nazwy filtrów używają *wielkości liter* w szablonie. W przeciwnym razie filtry nie będą działały. Ponadto mapy mają [limity rozmiaru plików](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -57,7 +57,7 @@ Aby można było wykonać transformację płynną w aplikacji logiki, należy na
    }
    ```
 
-2. Zaloguj się do [portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania Znajdź i wybierz swoje konto integracji.
+2. Zaloguj się do [Portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania Znajdź i wybierz swoje konto integracji.
 
    ![Wybierz konto integracji](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -71,7 +71,7 @@ Aby można było wykonać transformację płynną w aplikacji logiki, należy na
    |----------|-------|-------------|
    | **Nazwa** | JsonToJsonTemplate | Nazwa mapy, która jest w tym przykładzie "JsonToJsonTemplate" | 
    | **Typ mapy** | **obrotow** | Typ mapy. W przypadku transformacji JSON do formatu JSON należy wybrać pozycję **Liquid**. | 
-   | **Zmapować** | "SimpleJsonToJsonTemplate. Liquid" | Istniejący szablon płynu lub plik mapy do użycia na potrzeby transformacji, czyli "SimpleJsonToJsonTemplate. Liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. |
+   | **Mapa** | "SimpleJsonToJsonTemplate.liquid" | Istniejący szablon płynu lub plik mapy do użycia na potrzeby transformacji, czyli "SimpleJsonToJsonTemplate. Liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. Limity rozmiaru mapy można znaleźć w temacie [limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    ||| 
 
    ![Dodaj szablon płynny](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: dcd75cfefd53b3c9104052146607869515e1c86e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 596f8334b647daf6fe3a15521f7caeecb0c0e303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534295"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462588"
 ---
-# <a name="use-azure-cli-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure dla plików & list ACL w Azure Data Lake Storage Gen2 (wersja zapoznawcza)
+# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
 W tym artykule pokazano, jak używać [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) do tworzenia katalogów, plików i uprawnień w ramach kont magazynu, które mają hierarchiczną przestrzeń nazw, oraz zarządzania nimi. 
 
@@ -27,7 +27,7 @@ W tym artykule pokazano, jak używać [interfejsu wiersza polecenia platformy Az
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
-> * Subskrypcja platformy Azure. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+> * Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 > * Konto magazynu z włączoną hierarchiczną przestrzenią nazw (SNS). Postępuj zgodnie z [tymi](data-lake-storage-quickstart-create-account.md) instrukcjami, aby je utworzyć.
 > * Interfejs wiersza polecenia platformy Azure w wersji `2.0.67` lub nowszej.
 
@@ -42,7 +42,7 @@ W tym artykule pokazano, jak używać [interfejsu wiersza polecenia platformy Az
    ```
    Jeśli wersja interfejsu wiersza polecenia platformy Azure jest niższa niż `2.0.67`, zainstaluj nowszą wersję. Zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. Zainstaluj rozszerzenie `storage-preview`.
+3. Należy zainstalować rozszerzenie `storage-preview`.
 
    ```azurecli
    az extension add -n storage-preview
@@ -98,7 +98,7 @@ Właściwości katalogu można wydrukować do konsoli za pomocą polecenia `az s
 az storage blob directory show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-directory"></a>Zmiana nazwy lub przeniesienie katalogu
+## <a name="rename-or-move-a-directory"></a>Zmienianie nazwy lub przenoszenie katalogu
 
 Zmień nazwę lub Przenieś katalog przy użyciu polecenia `az storage blob directory move`.
 
@@ -178,7 +178,7 @@ Właściwości pliku można wydrukować do konsoli za pomocą polecenia `az stor
 az storage blob show -c my-file-system -b my-file.txt --account-name mystorageaccount
 ```
 
-## <a name="rename-or-move-a-file"></a>Zmiana nazwy lub przeniesienie pliku
+## <a name="rename-or-move-a-file"></a>Zmienianie nazwy lub przenoszenie pliku
 
 Zmień nazwę lub Przenieś plik za pomocą polecenia `az storage blob move`.
 

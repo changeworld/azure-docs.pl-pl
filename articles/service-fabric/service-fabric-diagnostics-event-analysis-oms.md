@@ -1,97 +1,88 @@
 ---
-title: Dzienniki usługi Azure Analysis zdarzeń usługi Service Fabric z usługą Azure Monitor | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat wizualizowanie i analizowanie zdarzeń za pomocą dzienników usługi Azure Monitor do monitorowania i diagnostyki klastrów usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Analiza zdarzeń Service Fabric platformy Azure z dziennikami Azure Monitor
+description: Informacje na temat wizualizacji i analizowania zdarzeń przy użyciu dzienników Azure Monitor na potrzeby monitorowania i diagnostyki klastrów Service Fabric platformy Azure.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464740"
 ---
-# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analiza zdarzeń i wizualizacji przy użyciu dzienników usługi Azure Monitor
- Dzienniki platformy Azure Monitor zbiera i analizuje dane telemetryczne z aplikacji i usług w chmurze i udostępnia narzędzia do analizy ułatwiają maksymalne wykorzystanie ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania kwerend w dzienniki usługi Azure Monitor do uzyskiwania szczegółowych informacji i rozwiązywanie problemów z tym, co dzieje się w klastrze. Poniższe często zadawane pytania dotyczą:
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analiza zdarzeń i wizualizacja z dziennikami Azure Monitor
+ Dzienniki Azure Monitor zbierają i analizują dane telemetryczne z aplikacji i usług hostowanych w chmurze oraz udostępniają narzędzia do analizy ułatwiające maksymalizowanie ich dostępności i wydajności. W tym artykule opisano sposób uruchamiania zapytań w dziennikach Azure Monitor w celu uzyskania szczegółowych informacji i rozwiązywania problemów, co dzieje się w klastrze. Następujące często zadawane pytania są rozkierowane:
 
-* Jak rozwiązywać zdarzenia dotyczące kondycji?
-* Jak sprawdzić, kiedy węzeł ulegnie awarii?
-* Jak sprawdzić, jeśli Moja aplikacja usługi mają została zatrzymana lub uruchomiona?
+* Jak mogę rozwiązać problemy związane z kondycją?
+* Jak mogę wiedzieć, kiedy węzeł ulegnie awarii?
+* Jak mogę wiedzieć, czy usługi mojej aplikacji zostały uruchomione lub zatrzymane?
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="overview-of-the-log-analytics-workspace"></a>Omówienie obszaru roboczego usługi Log Analytics
+## <a name="overview-of-the-log-analytics-workspace"></a>Przegląd obszaru roboczego Log Analytics
 
 >[!NOTE] 
->Gdy magazynu diagnostyki jest domyślnie włączona w momencie tworzenia klastra, należy nadal ustawić obszaru roboczego usługi Log Analytics do odczytu z magazynu diagnostyki.
+>Mimo że magazyn diagnostyczny jest domyślnie włączony podczas tworzenia klastra, należy skonfigurować obszar roboczy Log Analytics do odczytywania z magazynu diagnostycznego.
 
-Usługa Azure Monitor rejestruje zbiera dane z zarządzanych zasobów, w tym tabeli usługi Azure storage lub agenta i przechowuje je w centralnym repozytorium. Dane można następnie używane do analizy, alertów i wizualizację lub dodatkowo eksportowania. Usługa Azure Monitor rejestruje obsługuje zdarzenia, dane dotyczące wydajności lub innych danych niestandardowych. Zapoznaj się z [kroki, aby skonfigurować rozszerzenie diagnostyki w celu agregowania zdarzeń](service-fabric-diagnostics-event-aggregation-wad.md) i [kroki, aby utworzyć obszar roboczy usługi Log Analytics do odczytu zdarzeń w magazynie](service-fabric-diagnostics-oms-setup.md) się upewnić, że dane będą przepływać do usługi Azure Monitor dzienniki.
+Dzienniki Azure Monitor zbierają dane z zarządzanych zasobów, w tym tabelę usługi Azure Storage lub agenta, i utrzymują je w centralnym repozytorium. Dane mogą być następnie używane do analizy, alertów i wizualizacji lub do dalszej eksportu. Dzienniki Azure Monitor obsługują zdarzenia, dane dotyczące wydajności lub inne dane niestandardowe. Zapoznaj [się z instrukcjami, aby skonfigurować rozszerzenie diagnostyki do agregowania zdarzeń](service-fabric-diagnostics-event-aggregation-wad.md) i [kroków w celu utworzenia log Analyticsego obszaru roboczego do odczytu ze zdarzeń w magazynie](service-fabric-diagnostics-oms-setup.md) , aby upewnić się, że dane przepływają do dzienników Azure monitor.
 
-Po odebraniu danych przez dzienniki usługi Azure Monitor, platforma Azure oferuje kilka *monitorowania rozwiązań* , które są to wstępnie spakowane zestawy rozwiązań lub operacyjne pulpity nawigacyjne mają być monitorowane dane przychodzące, dostosowane do kilku scenariuszy. Obejmują one *analiza usługi Service Fabric* rozwiązania i *kontenery* rozwiązania, które są dwie najbardziej odpowiednie do diagnostyki i monitorowania w przypadku korzystania z klastrów usługi Service Fabric. W tym artykule opisano, jak używać rozwiązania analiza usługi Service Fabric, który jest tworzony z obszarem roboczym.
+Po odebraniu danych przez dzienniki Azure Monitor, platforma Azure ma kilka *rozwiązań do monitorowania* , które są pakietami lub operacyjnymi pulpitami nawigacyjnymi do monitorowania danych przychodzących, które są dostosowane do kilku scenariuszy. Obejmują one rozwiązanie *Service Fabric Analytics* i rozwiązanie *kontenerów* , które są dwa z nich najbardziej odpowiednie do diagnostyki i monitorowania w przypadku korzystania z klastrów Service Fabric. W tym artykule opisano sposób korzystania z rozwiązania Service Fabric Analytics utworzonego za pomocą obszaru roboczego.
 
-## <a name="access-the-service-fabric-analytics-solution"></a>Dostęp do rozwiązania analiza usługi Service Fabric
+## <a name="access-the-service-fabric-analytics-solution"></a>Uzyskaj dostęp do rozwiązania Service Fabric Analytics
 
-W [witryny Azure Portal](https://portal.azure.com), przejdź do grupy zasobów, w którym utworzono rozwiązania analiza usługi Service Fabric.
+W [witrynie Azure Portal](https://portal.azure.com)przejdź do grupy zasobów, w której utworzono rozwiązanie Service Fabric Analytics.
 
-Wybierz zasób **ServiceFabric\<nameOfOMSWorkspace\>** .
+Wybierz **\>\<zasobów Servicefabric nameOfOMSWorkspace** .
 
-W `Summary`, zobaczysz Kafelki w formie wykresu dla każdego rozwiązania włączone, w tym dla usługi Service Fabric. Kliknij przycisk **usługi Service Fabric** wykres, aby kontynuować do rozwiązania analiza usługi Service Fabric.
+W `Summary`są wyświetlane kafelki w formie wykresu dla każdej z włączonych rozwiązań, w tym jeden dla Service Fabric. Kliknij wykres **Service Fabric** , aby kontynuować Service Fabric Analytics rozwiązanie.
 
-![Rozwiązania usługi Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+![Service Fabric rozwiązanie](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-Na poniższej ilustracji przedstawiono strony głównej rozwiązania analiza usługi Service Fabric. Ta strona główna zawiera widoku migawki, co się dzieje w klastrze.
+Na poniższej ilustracji przedstawiono stronę główną rozwiązania Service Fabric Analytics. Ta strona główna zawiera widok migawek, co dzieje się w klastrze.
 
-![Rozwiązania usługi Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Service Fabric rozwiązanie](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
- Włączenie diagnostyki po utworzeniu klastra można wyświetlić zdarzenia dla 
+ Jeśli po utworzeniu klastra włączono diagnostykę, można zobaczyć zdarzenia dla 
 
-* [Zdarzenia klastra usługi Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
-* [Elementy Reliable Actors zdarzeń modelu programowania](service-fabric-reliable-actors-diagnostics.md)
-* [Zdarzeń modelu programowania usług Reliable Services](service-fabric-reliable-services-diagnostics.md)
+* [Zdarzenia klastra Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
+* [Zdarzenia modelu programowania Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
+* [Zdarzenia modelu programowania Reliable Services](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Oprócz zdarzeń usługi Service Fabric gotowych, bardziej szczegółowe zdarzenia systemowe mogą być zbierane przez [aktualizowanie konfiguracji rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>Oprócz Service Fabric zdarzeń z pola, bardziej szczegółowe zdarzenia systemowe można zbierać, [aktualizując konfigurację rozszerzenia diagnostyki](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
-## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Wyświetl usługi Service Fabric zdarzenia, w tym akcje w węzłach
+## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Wyświetlanie zdarzeń Service Fabric, w tym akcji w węzłach
 
-Na stronie analiza usługi Service Fabric, kliknij wykres dla **usługi Service Fabric zdarzenia**.
+Na stronie Service Fabric Analytics kliknij Graf **Service Fabric zdarzeń**.
 
-![Kanał operacyjny rozwiązania usługi Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+![Kanał operacyjny rozwiązania Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-Kliknij przycisk **listy** Aby wyświetlić zdarzenia na liście. Jeden raz w tym miejscu zobaczysz wszystkie zdarzenia systemowe, które zostały zebrane. Odwołanie, są to aplikacje **WADServiceFabricSystemEventsTable** w usłudze Azure Storage konta i podobnie zdarzenia interfejsu reliable services i actors zostanie wyświetlony obok pochodzą z tych tabel odpowiednich.
+Kliknij pozycję **Lista** , aby wyświetlić zdarzenia na liście. W tym miejscu zostaną wyświetlone wszystkie zebrane zdarzenia systemowe. Z tego względu są one z **WADServiceFabricSystemEventsTable** na koncie usługi Azure Storage, a podobnie zdarzenia niezawodnych usług i aktorów, które zobaczysz, są z tych tabel.
     
 ![Kanał operacyjny zapytania](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-Można kliknąć ikonę lupy po lewej stronie i używaj języka zapytania Kusto można znaleźć, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane w węzłach w klastrze, można użyć następującego zapytania. Identyfikatory zdarzeń, poniżej znajdują się w [informacje o zdarzeniach kanał operacyjny](service-fabric-diagnostics-event-generation-operational.md).
+Alternatywnie możesz kliknąć lupę po lewej stronie i użyć języka zapytań Kusto, aby znaleźć to, czego szukasz. Na przykład aby znaleźć wszystkie akcje wykonywane na węzłach w klastrze, można użyć poniższego zapytania. Identyfikatory zdarzeń używane poniżej znajdują się w [dokumentacji zdarzenia dotyczącego kanału operacyjnego](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
 | where EventId < 25627 and EventId > 25619 
 ```
 
-Można tworzyć zapytania o wiele więcej pól, takich jak określonych węzłów (komputer) usługa systemowa (nazwa zadania).
+Można wykonać zapytanie dotyczące wielu innych pól, takich jak określone węzły (komputer) usługa systemowa (TASKNAME).
 
-## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Zdarzenia usługi Reliable Service widok usługi Service Fabric i aktora
+## <a name="view-service-fabric-reliable-service-and-actor-events"></a>Wyświetl Service Fabric niezawodne zdarzenia usługi i aktora
 
-Na stronie analiza usługi Service Fabric, kliknij wykres na **usług Reliable Services**.
+Na stronie Service Fabric Analytics kliknij wykres **Reliable Services**.
 
-![Usług Reliable Services usługi Service Fabric rozwiązania](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+![Reliable Services Service Fabric rozwiązania](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-Kliknij przycisk **listy** Aby wyświetlić zdarzenia na liście. W tym miejscu można wyświetlić zdarzenia z usług reliable services. Możesz zobaczyć różne zdarzenia dla, gdy runasync usługi zostanie rozpoczęte i zakończone, która zwykle ma miejsce na wdrażania i uaktualniania. 
+Kliknij pozycję **Lista** , aby wyświetlić zdarzenia na liście. W tym miejscu możesz zobaczyć zdarzenia z niezawodnych usług. Można zobaczyć różne zdarzenia dla momentu rozpoczęcia i ukończenia usługi RunAsync, która zwykle odbywa się w przypadku wdrożeń i uaktualnień. 
 
-![Zapytanie interfejsu Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+![Reliable Services zapytań](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Zdarzenia Reliable actors można wyświetlać w taki sposób, w podobny sposób. Aby skonfigurować więcej szczegółowych informacji o zdarzeniach do elementów reliable actors, musisz zmienić `scheduledTransferKeywordFilter` w konfiguracji rozszerzenia diagnostyki (pokazana poniżej). Szczegółowe informacje na podstawie wartości dla zostały one [informacje o zdarzeniach elementów reliable actors](service-fabric-reliable-actors-diagnostics.md#keywords).
+Niezawodne zdarzenia aktora można wyświetlać w podobny sposób. Aby skonfigurować bardziej szczegółowe zdarzenia dla niezawodnych aktorów, należy zmienić `scheduledTransferKeywordFilter` w konfiguracji dla rozszerzenia diagnostyki (pokazanego poniżej). Szczegółowe informacje na temat tych wartości znajdują się w [odniesieniu do zdarzeń niezawodnych aktorów](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -105,14 +96,14 @@ Zdarzenia Reliable actors można wyświetlać w taki sposób, w podobny sposób.
                 },
 ```
 
-Język zapytania Kusto jest skuteczna. Inne przydatne zapytanie, które można uruchomić polega na węzły, które generują większość zdarzeń. Zapytania w poniższy zrzut ekranu przedstawia zdarzenia operacyjne usługi Service Fabric, łącznie z określonej usługi i węzła.
+Język zapytań Kusto jest zaawansowany. Innym cennym zapytaniem, które można uruchomić, jest znalezienie, które węzły generują najwięcej zdarzeń. Zapytanie na poniższym zrzucie ekranu pokazuje Service Fabric zdarzenia operacyjne zagregowane z określoną usługą i węzłem.
 
-![Zdarzenia powiązane z zapytaniem na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![Zdarzenia zapytania na węzeł](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby włączyć liczniki wydajności do monitorowania tj infrastruktury, przejdź do [dodanie agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent zbiera dane liczników wydajności i dodaje je do swojego istniejącego obszaru roboczego.
-* W przypadku klastrów w środowisku lokalnym dzienniki usługi Azure Monitor oferuje bramy (do przodu serwer Proxy HTTP), który może służyć do wysyłania danych do usługi Azure Monitor dzienniki. Dowiedz się więcej o tym, że w [łączenie komputerów bez dostępu do Internetu z dzienników usługi Azure Monitor, przy użyciu bramy usługi Log Analytics](../azure-monitor/platform/gateway.md).
-* Konfigurowanie [automatyczne alerty](../log-analytics/log-analytics-alerts.md) ułatwiające wykrywanie i przeprowadzanie diagnostyki.
-* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) dostępnymi w ramach usługi Azure Monitor dzienników.
-* Uzyskuj bardziej szczegółowym omówieniem dzienniki usługi Azure Monitor i co oferuje, przeczytaj [co to jest dzienniki usługi Azure Monitor?](../operations-management-suite/operations-management-suite-overview.md).
+* Aby włączyć monitorowanie infrastruktury, np. liczniki wydajności, przejdź do [dodawania agenta log Analytics](service-fabric-diagnostics-oms-agent.md). Agent zbiera liczniki wydajności i dodaje je do istniejącego obszaru roboczego.
+* W przypadku klastrów lokalnych dzienniki Azure Monitor oferują bramę (serwer proxy przesyłania dalej HTTP), za pomocą której można wysyłać dane do dzienników Azure Monitor. Dowiedz się więcej na temat [łączenia komputerów bez dostępu do Internetu do dzienników Azure monitor przy użyciu bramy log Analytics](../azure-monitor/platform/gateway.md).
+* Skonfiguruj [Automatyczne alerty](../log-analytics/log-analytics-alerts.md) w celu ułatwienia wykrywania i diagnostyki.
+* Zapoznaj się z funkcjami [przeszukiwania dzienników i wykonywania zapytań](../log-analytics/log-analytics-log-searches.md) , które są oferowane w ramach dzienników Azure monitor.
+* Zapoznaj się z bardziej szczegółowym omówieniem dzienników Azure Monitor i ofert, które oferuje, Przeczytaj [co to jest Azure monitor Logs?](../operations-management-suite/operations-management-suite-overview.md).

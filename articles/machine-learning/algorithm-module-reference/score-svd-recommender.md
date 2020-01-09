@@ -1,7 +1,7 @@
 ---
 title: 'Polecający wskaźnik SVD: odwołanie do modułu'
-titleSuffix: Azure Machine Learning service
-description: Dowiedz się, w jaki sposób użyć modułu polecania "Ocena SVD" w usłudze Azure Machine Learning, aby wypróbować przewidywania rekomendacji dla zestawu danych.
+titleSuffix: Azure Machine Learning
+description: Dowiedz się, w jaki sposób używać modułu polecania "Ocena SVD" w Azure Machine Learning do oceny polecanych prognoz dla zestawu danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717222"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456337"
 ---
-# <a name="score-svd-recommender"></a>Polecający wskaźnik SVD
+# <a name="score-svd-recommender"></a>Wynik modułu poleceń SVD
 
 W tym artykule opisano sposób korzystania z modułu polecania "Score SVD" w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł służy do tworzenia prognoz przy użyciu przeszkolonego modelu rekomendacji opartego na algorytmie z rozkładem pojedynczego wartości (SVD).
 
@@ -123,4 +123,4 @@ Gdy operacjonalizować model, zazwyczaj zmienia się tryb prognozowania, aby zal
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218871"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440977"
 ---
 # <a name="understand-and-work-with-scopes"></a>Opis zakresów i praca z nimi
 
@@ -45,7 +45,7 @@ Platforma Azure obsługuje trzy zakresy zarządzania zasobami. Każdy zakres obs
 
     Typ zasobu: [Microsoft. resources/subscriptions](/rest/api/resources/subscriptions)
 
-- [**Grupy zasobów**](../azure-resource-manager/resource-group-overview.md#resource-groups) — logiczne grupowanie powiązanych zasobów dla rozwiązania platformy Azure, które współużytkują ten sam cykl życia. Na przykład zasoby, które są wdrażane i usuwane razem.
+- [**Grupy zasobów**](../azure-resource-manager/management/overview.md#resource-groups) — logiczne grupowanie powiązanych zasobów dla rozwiązania platformy Azure, które współużytkują ten sam cykl życia. Na przykład zasoby, które są wdrażane i usuwane razem.
 
     Typ zasobu: [Microsoft. resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
@@ -63,7 +63,7 @@ Cost Management obsługuje następujące wbudowane role dla każdego z następuj
 - [**Współautor Cost Management**](../role-based-access-control/built-in-roles.md#cost-management-contributor) — umożliwia wyświetlanie kosztów, zarządzanie konfiguracją kosztów i wyświetlanie zaleceń.
 - [**Cost Management Reader**](../role-based-access-control/built-in-roles.md#cost-management-reader) — może wyświetlać dane dotyczące kosztów, konfigurację kosztów i wyświetlać zalecenia.
 
-Współautor Cost Management jest zalecaną rolą najniższych uprawnień. Dzięki temu użytkownicy mogą tworzyć budżety i eksporty oraz zarządzać nimi w celu skuteczniejszego monitorowania i raportowania kosztów. Współautorzy Cost Management mogą również wymagać dodatkowych ról do obsługi kompleksowych scenariuszy zarządzania kosztami. Należy wziąć pod uwagę następujące scenariusze:
+Współautor Cost Management jest zalecaną rolą najniższych uprawnień. Dzięki temu użytkownicy mogą tworzyć budżety i eksporty oraz zarządzać nimi w celu skuteczniejszego monitorowania i raportowania kosztów. Współautorzy Cost Management mogą również wymagać dodatkowych ról do obsługi kompleksowych scenariuszy zarządzania kosztami. Poniżej przedstawiono przykładowe scenariusze:
 
 - **Postępuj w przypadku przekroczenia budżetów** — Cost Management Współautorzy potrzebują także dostępu do tworzenia grup akcji i/lub zarządzania nimi w celu automatycznego reagowania na nadwyżkowe. Rozważ przyznanie [współautora monitorowania](../role-based-access-control/built-in-roles.md#monitoring-contributor) do grupy zasobów zawierającej grupę akcji do użycia w przypadku przekroczenia progów budżetu. Automatyzacja określonych akcji wymaga dodatkowych ról dla określonych usług, takich jak Automatyzacja i Azure Functions.
 - **Planowanie eksportu danych kosztów** — współautorzy Cost Management muszą także mieć dostęp do zarządzania kontami magazynu, aby zaplanować eksport w celu skopiowania danych na konto magazynu. Rozważ przydzielenie [współautor konta magazynu](../role-based-access-control/built-in-roles.md#storage-account-contributor) do grupy zasobów zawierającej konto magazynu, w którym eksportowane są dane kosztów.
@@ -252,4 +252,4 @@ Cost Management jest obecnie obsługiwana w globalnych i [Azure Government](http
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Jeśli nie zostało to jeszcze zrobione z pierwszego przewodnika Szybki Start dla Cost Management, zapoznaj się z tematem [Rozpocznij analizowanie kosztów](quick-acm-cost-analysis.md).
+- Jeśli nie została już zakończona pierwszym przewodniku Szybki Start usługi Cost Management, zapoznaj się z adresem [zacząć analizować koszty](quick-acm-cost-analysis.md).

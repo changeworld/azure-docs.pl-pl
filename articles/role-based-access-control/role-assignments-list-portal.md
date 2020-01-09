@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 25e11ae1311df9d0392340b32e0691298f78ee1c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462243"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Wyświetlanie listy przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal
 
@@ -80,6 +80,32 @@ Aby wyświetlić listę dostępu dla użytkownika, grupy, nazwy głównej usług
     ![Okienko przypisania](./media/role-assignments-list-portal/check-access-assignments.png)
 
     W tym okienku są wyświetlane role przypisane do wybranego podmiotu zabezpieczeń i zakresu. Jeśli istnieją przypisania odmowy występujące w tym zakresie lub dziedziczone przez ten zakres, zostaną wyświetlone.
+
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Wyświetlanie listy przypisań ról dla tożsamości zarządzanej przypisanej przez system
+
+1. W Azure Portal Otwórz przypisaną przez system tożsamość zarządzaną.
+
+1. W menu po lewej stronie kliknij pozycję **tożsamość**.
+
+    ![Tożsamość zarządzana przypisana przez system](./media/role-assignments-list-portal/identity-system-assigned.png)
+
+1. W obszarze **przypisania ról**kliknij pozycję **Pokaż role RBAC platformy Azure przypisane do tej tożsamości zarządzanej**.
+
+    Zostanie wyświetlona lista ról przypisanych do wybranej tożsamości zarządzanej przypisanej przez system w różnych zakresach, takich jak grupa zarządzania, subskrypcja, Grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
+
+    ![Przypisania ról dla tożsamości zarządzanej przypisanej do systemu](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Wyświetl listę przypisań ról dla tożsamości zarządzanej przypisanej przez użytkownika
+
+1. W Azure Portal Otwórz przypisaną przez system tożsamość zarządzaną.
+
+1. Kliknij pozycję **zasoby platformy Azure**.
+
+    Zostanie wyświetlona lista ról przypisanych do wybranej tożsamości zarządzanej przypisanej przez użytkownika w różnych zakresach, takich jak grupa zarządzania, subskrypcja, Grupa zasobów lub zasób. Ta lista zawiera wszystkie przypisania ról, do których masz uprawnienia do odczytu.
+
+    ![Przypisania ról dla tożsamości zarządzanej przypisanej do systemu](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+
+1. Aby zmienić subskrypcję, kliknij listę **subskrypcje** .
 
 ## <a name="next-steps"></a>Następne kroki
 

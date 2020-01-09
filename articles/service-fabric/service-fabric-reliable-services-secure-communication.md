@@ -1,30 +1,21 @@
 ---
-title: Bezpieczna komunikacja zdalna usługi z C# usługą na platformie Azure Service Fabric | Microsoft Docs
+title: Bezpieczna komunikacja zdalna usługi z usługąC#
 description: Dowiedz się, jak zabezpieczyć komunikację zdalną usługi C# na podstawie komunikacji zdalnej dla niezawodnych usług uruchomionych w klastrze Service Fabric platformy Azure.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: c252ec31a64fa3a11973db7a8de0a440d8eed6f5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166571"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609625"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Bezpieczna komunikacja zdalna usługi w C# usłudze
 > [!div class="op_single_selector"]
-> * [C#w systemie Windows](service-fabric-reliable-services-secure-communication.md)
-> * [Język Java w systemie Linux](service-fabric-reliable-services-secure-communication-java.md)
+> * [C# w systemie Windows](service-fabric-reliable-services-secure-communication.md)
+> * [Java w systemie Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
@@ -99,7 +90,7 @@ Aby pomóc w zabezpieczeniu usługi w przypadku korzystania z usług zdalnych us
        ```
    2. Podaj je przy użyciu [pakietu konfiguracji](service-fabric-application-and-service-manifests.md):
 
-       Dodaj nazwę o nazwie `TransportSettings` w pliku Settings. XML.
+       Dodaj nazwaną sekcję `TransportSettings` w pliku Settings. XML.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -129,7 +120,7 @@ Aby pomóc w zabezpieczeniu usługi w przypadku korzystania z usług zdalnych us
        }
        ```
 
-        Jeśli dodasz sekcję `TransportSettings` w pliku Settings. XML, `FabricTransportRemotingListenerSettings` załaduje domyślnie wszystkie ustawienia z tej sekcji.
+        Jeśli dodasz sekcję `TransportSettings` w pliku Settings. XML, program `FabricTransportRemotingListenerSettings` domyślnie załaduje wszystkie ustawienia z tej sekcji.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -193,9 +184,9 @@ Aby pomóc w zabezpieczeniu usługi w przypadku korzystania z usług zdalnych us
 
     ```
 
-    Jeśli klient nie działa w ramach usługi, można utworzyć plik CLIENT_NAME. Settings. XML w tej samej lokalizacji, w której znajduje się CLIENT_NAME. exe. Następnie utwórz sekcję TransportSettings w tym pliku.
+    Jeśli klient nie działa w ramach usługi, można utworzyć plik client_name. Settings. XML w tej samej lokalizacji, w której znajduje się client_name. exe. Następnie utwórz sekcję TransportSettings w tym pliku.
 
-    Podobnie jak w przypadku dodania sekcji `TransportSettings` w ustawieniach klienta. XML/CLIENT_NAME. Settings. XML, `FabricTransportRemotingSettings` domyślnie ładuje wszystkie ustawienia z tej sekcji.
+    Podobnie jak w przypadku dodania sekcji `TransportSettings` w ustawieniach klienta. XML/client_name. Settings. XML, `FabricTransportRemotingSettings` domyślnie ładuje wszystkie ustawienia z tej sekcji.
 
     W takim przypadku poprzedni kod jest jeszcze bardziej uproszczony:  
 

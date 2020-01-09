@@ -1,63 +1,59 @@
 ---
-title: Dokumentacja usługi Azure Service Fabric siatki Maven | Dokumentacja firmy Microsoft
-description: Zawiera odwołanie do sposobu używania wtyczki Maven dla usługi Service Fabric siatki
-services: service-fabric-mesh
-keywords: narzędzia maven, java, interfejsu wiersza polecenia
+title: Informacje o Maven siatki platformy Azure Service Fabric
+description: Zawiera informacje dotyczące korzystania z wtyczki Maven dla siatki Service Fabric
 author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
-ms.service: service-fabric-mesh
-manager: subramar
-ms.openlocfilehash: 27651d19e276571cf49a0aa1a199ef35c87c3ba4
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459023"
 ---
-# <a name="maven-plugin-for-service-fabric-mesh"></a>Wtyczka maven Plugin for Service Fabric siatki
+# <a name="maven-plugin-for-service-fabric-mesh"></a>Wtyczka Maven dla Service Fabric siatki
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zestaw SDK Java
+- Zestaw Java SDK
 - Maven
-- Wiersza polecenia platformy Azure z rozszerzeniem siatki
+- Interfejs wiersza polecenia platformy Azure z rozszerzeniem siatki
 - Interfejs wiersza polecenia usługi Service Fabric
 
 ## <a name="goals"></a>Cele
 
 ### `azure-sfmesh:init`
-- Tworzy `servicefabric` folder, który zawiera `appresources` folder, który ma `application.yaml` pliku. 
+- Tworzy folder `servicefabric` zawierający folder `appresources`, który ma `application.yaml` plik. 
 
 ### `azure-sfmesh:addservice`
-- Tworzy folder wewnątrz `servicefabric` folder o nazwie usługi i tworzy plik YAML tej usługi. 
+- Tworzy folder w folderze `servicefabric` przy użyciu nazwy usługi i tworzy plik YAML usługi. 
 
 ### `azure-sfmesh:addnetwork`
-- Generuje `network` YAML o nazwie podanej sieci w `appresources` folderu 
+- Generuje `network` YAML z podaną nazwą sieciową w folderze `appresources` 
 
 ### `azure-sfmesh:addgateway`
-- Generuje `gateway` YAML o nazwie podanej bramy w `appresources` folderu 
+- Generuje `gateway` YAML z podaną nazwą bramy w folderze `appresources` 
 
 #### `azure-sfmesh:addvolume`
-- Generuje `volume` YAML o nazwie podanej woluminu w `appresources` folderu.
+- Generuje `volume` YAML o podanej nazwie woluminu w folderze `appresources`.
 
 ### `azure-sfmesh:addsecret`
-- Generuje `secret` YAML o podanej nazwie klucza tajnego w `appresources` folderu 
+- Generuje `secret` YAML o podanej nazwie klucza tajnego w folderze `appresources` 
 
 ### `azure-sfmesh:addsecretvalue`
-- Generuje `secretvalue` YAML o nazwie podanej wartości wpisu tajnego i wpisu tajnego w `appresources` folderu 
+- Generuje `secretvalue` YAML o podanej nazwie klucza tajnego i wartości klucza tajnego w folderze `appresources` 
 
 ### `azure-sfmesh:deploy`
-- Scala yamls z `servicefabric` folder i tworzy kod JSON szablonu usługi Azure Resource Manager w bieżącym folderze.
-- Służy do wdrażania wszystkich zasobów w środowisku usługi Azure Service Fabric siatki 
+- Scala yamls z folderu `servicefabric` i tworzy plik JSON szablonu Azure Resource Manager w bieżącym folderze.
+- Wdraża wszystkie zasoby w środowisku siatki usługi Azure Service Fabric 
 
 ### `azure-sfmesh:deploytocluster`
-- Tworzy folder (`meshDeploy`) zawierającą wdrożenia JSON Smb1sessionsetup wygenerowany na podstawie yamls, które mają zastosowanie w przypadku klastrów usługi Service Fabric
-- Służy do wdrażania wszystkich zasobów do klastra usługi Service Fabric
+- Tworzy folder (`meshDeploy`) zawierający dane JSON wdrożenia wygenerowane z yamls, które mają zastosowanie do Service Fabric klastrów
+- Wdraża wszystkie zasoby w klastrze Service Fabric
  
 
-## <a name="usage"></a>Sposób użycia
+## <a name="usage"></a>Użycie
 
 Aby używać wtyczki programu Maven w aplikacji Java programu Maven, dodaj poniższy fragment kodu do pliku pom.xml:
 
@@ -80,103 +76,103 @@ Aby używać wtyczki programu Maven w aplikacji Java programu Maven, dodaj poni�
 
 ## <a name="common-configuration"></a>Typowa konfiguracja
 
-Wtyczka Maven nie obsługuje obecnie typowe konfiguracje wtyczki usługi Maven na platformie Azure.
+Wtyczka Maven obecnie nie obsługuje wspólnych konfiguracji wtyczek Maven dla platformy Azure.
 
 ## <a name="how-to"></a>Instrukcje
 
-### <a name="initialize-maven-project-for-azure-service-fabric-mesh"></a>Zainicjuj projekt Maven dla usługi Azure Service Fabric siatki
+### <a name="initialize-maven-project-for-azure-service-fabric-mesh"></a>Zainicjuj projekt Maven dla siatki Service Fabric platformy Azure
 Uruchom następujące polecenie, aby utworzyć plik YAML zasobów aplikacji.
 
 ```cmd
 mvn azure-sfmesh:init -DapplicationName=helloworldserver
 ```
 
-- Tworzy folder o nazwie `servicefabric->appresources` w folderze głównym, który zawiera aplikację o nazwie YAML `app_helloworldserver`
+- Tworzy folder o nazwie `servicefabric->appresources` w folderze głównym zawierającym aplikację YAML o nazwie `app_helloworldserver`
 
-### <a name="add-resource-to-your-application"></a>Dodaj zasób do aplikacji
+### <a name="add-resource-to-your-application"></a>Dodawanie zasobu do aplikacji
 
 #### <a name="add-a-new-network-to-your-application"></a>Dodawanie nowej sieci do aplikacji
-Uruchom poniższe polecenie, aby utworzyć yaml zasobów sieciowych. 
+Uruchom poniższe polecenie, aby utworzyć zasób sieciowy YAML. 
 
 ```cmd
 mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
-- Tworzy sieć YAML w folderze `servicefabric->appresources` o nazwie `network_helloworldservicenetwork`
+- Tworzy YAML sieciowej w folderze `servicefabric->appresources` o nazwie `network_helloworldservicenetwork`
 
-#### <a name="add-a-new-service-to-your-application"></a>Dodaj nową usługę do aplikacji
-Uruchom poniższe polecenie, aby utworzyć yaml usługi. 
+#### <a name="add-a-new-service-to-your-application"></a>Dodawanie nowej usługi do aplikacji
+Uruchom poniższe polecenie, aby utworzyć YAML usługi. 
 
 ```cmd
 mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=helloworldservice -DimageName=helloworldserver:latest -DlistenerPort=8080 -DnetworkRef=helloworldservicenetwork
 ```
 
-- Tworzy usługę YAML w folderze `servicefabric->helloworldservice` o nazwie `service_helloworldservice` odwołujący się `helloworldservicenetwork` & `helloworldserver` aplikacji
-- Usługa będzie nasłuchiwać na porcie 8080
-- Jak przy użyciu usługi ***helloworldserver:latest*** postaci, w jakiej jest obraz kontenera.
+- Tworzy YAML usługi w `servicefabric->helloworldservice` folderze o nazwie `service_helloworldservice` odwołującej się do `helloworldservicenetwork` & aplikacji `helloworldserver`
+- Usługa nasłuchuje na porcie 8080
+- Usługa będzie używać ***helloworldserver: Najnowsza*** jako obrazu kontenera.
 
-#### <a name="add-a-new-gateway-resource-to-your-application"></a>Dodać nowego zasobu bramy aplikacji
-Uruchom poniższe polecenie, aby utworzyć yaml zasobów bramy. 
+#### <a name="add-a-new-gateway-resource-to-your-application"></a>Dodawanie nowego zasobu bramy do aplikacji
+Uruchom poniższe polecenie, aby utworzyć zasób bramy YAML. 
 
 ```cmd
 mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetwork=helloworldservicenetwork -DgatewayName=helloworldgateway -DlistenerName=helloworldserviceListener -DserviceName=helloworldservice -DsourceNetwork=open -DtcpPort=80
 ```
 
 - Tworzy nową bramę YAML w folderze `servicefabric->appresources` o nazwie `gateway_helloworldgateway`
-- Odwołania `helloworldservicelistener` jako odbiornik usługi, który nasłuchuje połączeń z tą bramą. Odwołuje się `helloworldservice` jako usługa, `helloworldservicenetwork` co sieć i `helloworldserver` co aplikacja. 
+- Odwołuje się `helloworldservicelistener` jako odbiornik usługi, który nasłuchuje wywołań z tej bramy. Odwołuje się również do `helloworldservice` jako usługi, `helloworldservicenetwork` jako sieci i `helloworldserver` jako aplikacja. 
 - Nasłuchuje żądań na porcie 80
 
 #### <a name="add-a-new-volume-to-your-application"></a>Dodawanie nowego woluminu do aplikacji
-Uruchom poniższe polecenie, aby utworzyć yaml zasobu woluminu. 
+Uruchom poniższe polecenie, aby utworzyć zasób woluminu YAML. 
 
 ```cmd
 mvn azure-sfmesh:addvolume -DvolumeAccountKey=key -DvolumeAccountName=name -DvolumeName=vol1 -DvolumeShareName=share
 ```
 
 - Tworzy wolumin YAML w folderze `servicefabric->appresources` o nazwie `volume_vol1`
-- Ustawia właściwości dla wymaganych parametrów `volumeAccountKey`, i `volumeShareName` tak jak powyżej
-- Aby uzyskać więcej informacji na temat sposobu ten wolumin utworzone z następującej, [Wdróż aplikację, korzystając z woluminu plików platformy Azure](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)
+- Ustawia właściwości wymaganych parametrów, `volumeAccountKey`i `volumeShareName` jak powyżej
+- Więcej informacji na temat sposobu odwoływania się do utworzonego woluminu można znaleźć w następujących tematach: [wdrażanie aplikacji przy użyciu woluminu Azure Files](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)
 
-#### <a name="add-a-new-secret-resource-to-your-application"></a>Dodaj nowy zasób wpisu tajnego aplikacji
-Uruchom poniższe polecenie, aby utworzyć yaml wpisu tajnego zasobów. 
+#### <a name="add-a-new-secret-resource-to-your-application"></a>Dodawanie nowego zasobu tajnego do aplikacji
+Uruchom poniższe polecenie, aby utworzyć tajne YAML zasobów. 
 
 ```cmd
 mvn azure-sfmesh:addsecret -DsecretName=secret1
 ```
 
-- Tworzy YAML wpisu tajnego w folderze `servicefabric->appresources` o nazwie `secret_secret1`
-- Aby uzyskać więcej informacji na temat sposobu ten wpis tajny utworzono z następującej, [zarządzania wpisami tajnymi](service-fabric-mesh-howto-manage-secrets.md)
+- Tworzy wpis tajny YAML w folderze `servicefabric->appresources` o nazwie `secret_secret1`
+- Aby uzyskać więcej informacji na temat sposobu odwoływania się do utworzonego klucza tajnego [,](service-fabric-mesh-howto-manage-secrets.md) zapoznaj się z poniższymi tematami.
 
-#### <a name="add-a-new-secretvalue-resource-to-your-application"></a>Dodaj nowy zasób secretvalue do aplikacji
-Uruchom poniższe polecenie, aby utworzyć yaml zasobów secretvalue. 
+#### <a name="add-a-new-secretvalue-resource-to-your-application"></a>Dodawanie nowego zasobu secretvalue do aplikacji
+Uruchom poniższe polecenie, aby utworzyć zasób secretvalue YAML. 
 
 ```cmd
 mvn azure-sfmesh:addsecretvalue -DsecretValue=someVal -DsecretValueName=secret1/v1
 ```
 
-- Utwórz secretvalue YAML w folderze `servicefabric->appresources` o nazwie `secretvalue_secret1_v1`
+- Tworzenie secretvalue YAML w folderze `servicefabric->appresources` o nazwie `secretvalue_secret1_v1`
 
 ### <a name="run-the-application-locally"></a>Uruchamianie aplikacji lokalnie
 
-Za pomocą celem `azure-sfmesh:deploytocluster`, możesz uruchomić aplikację lokalnie przy użyciu poniższego polecenia:
+Za pomocą `azure-sfmesh:deploytocluster`celu można uruchomić aplikację lokalnie przy użyciu poniższego polecenia:
 
 ```cmd
 mvn azure-sfmesh:deploytocluster
 ```
 
-Domyślnie ten cel wdrażania zasobów z lokalnym klastrem. Jeśli wdrażasz z lokalnym klastrem, przyjęto założenie, że możesz mieć lokalny klaster usługi Service Fabric działanie. Obecnie obsługiwane tylko na lokalny klaster usługi Service Fabric na potrzeby zasobów [Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).
+Domyślnie ten cel wdraża zasoby w lokalnym klastrze. W przypadku wdrażania w klastrze lokalnym zakłada się, że klaster Service Fabric jest uruchomiony lokalnie. Lokalny klaster Service Fabric dla zasobów jest obecnie obsługiwany tylko w [systemie Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).
 
-- Tworzy JSON Smb1sessionsetup z yamls, które mają zastosowanie w przypadku klastrów usługi Service Fabric
-- Następnie wdraża w punkcie końcowym klastra
+- Tworzy dane JSON z yamls, które mają zastosowanie do klastrów Service Fabric
+- Wdraża następnie do punktu końcowego klastra
 
-### <a name="deploy-application-to-azure-service-fabric-mesh"></a>Wdrażanie aplikacji w usłudze Azure Service Fabric siatki
+### <a name="deploy-application-to-azure-service-fabric-mesh"></a>Wdrażanie aplikacji na platformie Azure Service Fabric siatką
 
-Za pomocą celem `azure-sfmesh:deploy`, można wdrożyć środowisko siatki usługi Service Fabric, uruchamiając poniższe polecenie:
+Za pomocą `azure-sfmesh:deploy`celu można wdrożyć do środowiska Service Fabric siatkę, uruchamiając poniższe polecenie:
 
 ```cmd
 mvn azure-sfmesh:deploy -DresourceGroup=todoapprg -Dlocation=eastus
 ```
 
-- Tworzy grupę zasobów o nazwie `todoapprg` Jeśli nie istnieje.
-- Scalanie YAMLs tworzy kod JSON szablonu usługi Azure Resource Manager. 
-- Służy do wdrażania za pomocą pliku JSON do środowiska usługi Azure Service Fabric siatki.
+- Tworzy grupę zasobów o nazwie `todoapprg`, jeśli nie istnieje.
+- Tworzy plik JSON szablonu Azure Resource Manager przez scalenie YAMLs. 
+- Wdraża kod JSON w środowisku siatki usługi Azure Service Fabric.

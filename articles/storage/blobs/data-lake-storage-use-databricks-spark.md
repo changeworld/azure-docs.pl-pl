@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: bbe936fd572a8e23fb6e7c5da4a4bffef1c8bf7e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462577"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Samouczek: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -75,9 +75,9 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
     |---------|---------|
     |**Nazwa obszaru roboczego**     | Podaj nazwę obszaru roboczego usługi Databricks.  |
     |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
-    |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). |
+    |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md). |
     |**Lokalizacja**     | Wybierz pozycję **Zachodnie stany USA 2**. Inne dostępne regiony podano na stronie [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/).       |
-    |**Warstwa cenowa**     |  Wybierz opcję **Standardowa**.     |
+    |**Warstwa cenowa**     |  Wybierz pozycję **Standardowy**.     |
 
     ![Tworzenie obszaru roboczego Azure Databricks](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Tworzenie usługi Azure Databricks")
 
@@ -105,7 +105,7 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
 
 4. Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączać do niego notesy i uruchamiać zadania Spark.
 
-## <a name="ingest-data"></a>Pozyskiwanie danych
+## <a name="ingest-data"></a>Pobieranie danych
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopiowanie danych źródłowych na konto magazynu
 

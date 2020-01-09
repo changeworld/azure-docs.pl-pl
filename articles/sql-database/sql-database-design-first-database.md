@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459631"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Samouczek: projektowanie relacyjnej bazy danych w pojedynczej bazie danych w ramach Azure SQL Database przy użyciu programu SSMS
 
@@ -33,7 +33,7 @@ Baza danych Azure SQL Database to relacyjna baza danych oferowana jako usługa (
 > [!TIP]
 > Poniższy moduł Microsoft Learn umożliwia zapoznanie się z bezpłatnymi sposobami tworzenia [i konfigurowania aplikacji ASP.NET, która wysyła zapytanie do Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), w tym tworzenia prostej bazy danych.
 > [!NOTE]
-> Na potrzeby tego samouczka użyto pojedynczej bazy danych. Możesz także użyć bazy danych w puli elastycznej lub bazy danych wystąpienia w wystąpieniu zarządzanym. Aby uzyskać łączność z wystąpieniem zarządzanym, zobacz te Przewodniki Szybki Start: [Przewodnik Szybki Start: Konfigurowanie maszyny wirtualnej platformy Azure do nawiązywania połączenia z wystąpieniem zarządzanym Azure SQL Database](sql-database-managed-instance-configure-vm.md) i [Szybki Start: Konfigurowanie połączenia punkt-lokacja z Azure SQL Database Wystąpienie zarządzane z lokalnego](sql-database-managed-instance-configure-p2s.md).
+> Na potrzeby tego samouczka użyto pojedynczej bazy danych. Możesz także użyć bazy danych w puli elastycznej lub bazy danych wystąpienia w wystąpieniu zarządzanym. Aby uzyskać łączność z wystąpieniem zarządzanym, zobacz te Przewodniki Szybki Start: Przewodnik Szybki Start: [Konfigurowanie maszyny wirtualnej platformy Azure do nawiązywania połączenia z wystąpieniem zarządzanym Azure SQL Database](sql-database-managed-instance-configure-vm.md) i [Szybki Start: Konfigurowanie połączenia punkt-lokacja z Azure SQL Database zarządzanym lokalnie](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,15 +44,15 @@ Aby ukończyć kroki tego samouczka, upewnij się, że zainstalowano następują
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Tworzenie pustej pojedynczej bazy danych
 
-Pojedyncza baza danych usługi Azure SQL Database jest tworzona ze zdefiniowanym zestawem zasobów obliczeniowych i magazynu. Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) i jest zarządzana za pomocą [serwera baz danych](sql-database-servers.md).
+Pojedyncza baza danych usługi Azure SQL Database jest tworzona ze zdefiniowanym zestawem zasobów obliczeniowych i magazynu. Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/management/overview.md) i jest zarządzana za pomocą [serwera baz danych](sql-database-servers.md).
 
 Wykonaj poniższe kroki, aby utworzyć pustą pojedynczą bazę danych.
 
-1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
+1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**.
 2. Na stronie **Nowy** wybierz pozycję **Bazy danych** w sekcji Azure Marketplace, a następnie kliknij pozycję **Baza danych SQL** w sekcji **Polecane**.
 
    ![tworzenie pustej bazy danych](./media/sql-database-design-first-database/create-empty-database.png)
@@ -151,9 +151,9 @@ Nawiąż połączenie z pojedynczą bazą danych za pomocą programu [SQL Server
 
 Utwórz schemat bazy danych z czterema tabelami, które modelują system zarządzania studentami dla uczelni wyższych, korzystając z języka [Transact-SQL](/sql/t-sql/language-reference):
 
-- Person (Osoba)
-- Course (Zajęcia)
-- Student
+- Osoba
+- Kurs
+- Student/uczeń
 - Środki
 
 Na poniższym diagramie przedstawiono, jak te tabele są ze sobą powiązane. Niektóre z tych tabel odwołują się do kolumn w innych tabelach. Na przykład tabela *Student* odwołuje się do kolumny *PersonId* w tabeli *Person*. Zapoznaj się z tym diagramem, aby zrozumieć, jak tabele w tym samouczku są ze sobą powiązane. Szczegółowe omówienie tworzenia efektywnych tabel bazy danych znajduje się w temacie [Tworzenie efektywnych tabel bazy danych](https://msdn.microsoft.com/library/cc505842.aspx). Aby uzyskać informacje dotyczące wybierania typów danych, zobacz [Typy danych](/sql/t-sql/data-types/data-types-transact-sql).

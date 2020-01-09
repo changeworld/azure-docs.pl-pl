@@ -1,5 +1,5 @@
 ---
-title: Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
+title: Rozwiązywanie problemów występujących podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 description: Typowe problemy, obejścia i kroki diagnostyczne podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 author: ealsur
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064105"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441115"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 
@@ -78,12 +78,12 @@ Gdy funkcja platformy Azure otrzymuje zmiany, często przetwarza je i może opcj
 
 Jeśli w miejscu docelowym brakuje niektórych zmian, może to oznaczać, że wystąpił błąd podczas wykonywania funkcji platformy Azure po odebraniu zmian.
 
-W tym scenariuszu najlepszym sposobem działania jest dodanie `try/catch` bloków w kodzie i wewnątrz pętli, które mogą przetwarzać zmiany, wykrywanie wszelkich błędów dla określonego podzestawu elementów i ich odpowiednie obsłużenie (wysłanie ich do innego magazynu Analiza lub Ponów próbę). 
+W tym scenariuszu najlepszym sposobem działania jest dodanie bloków `try/catch` w kodzie i wewnątrz pętli, które mogą przetwarzać zmiany, wykrywanie wszelkich błędów dla określonego podzestawu elementów i ich odpowiednie obsłużenie (wysłanie ich do innego magazynu w celu dalszej analizy lub ponowienie próby). 
 
 > [!NOTE]
 > Wyzwalacz Azure Functions dla Cosmos DB domyślnie nie będzie próbować partii zmian, jeśli wystąpił nieobsługiwany wyjątek podczas wykonywania kodu. Oznacza to, że powodem, że zmiany nie dotarły do lokalizacji docelowej, jest to, że nie można ich przetworzyć.
 
-Jeśli okaże się, że niektóre zmiany nie zostały odebrane w ogóle przez wyzwalacz, najbardziej typowym scenariuszem jest **uruchomienie innej funkcji platformy Azure**. Może to być inna funkcja platformy Azure wdrożona na platformie Azure lub funkcja platformy Azure działająca lokalnie na komputerze dewelopera, który ma **dokładnie taką samą konfigurację** (te same kontenery monitorowane i dzierżawy), a ta funkcja platformy Azure służy do kradzieży podzbioru zmian, które oczekuje, że funkcja platformy Azure będzie przetwarzać.
+Jeśli okaże się, że niektóre zmiany nie zostały odebrane w ogóle przez wyzwalacz, najbardziej typowym scenariuszem jest **uruchomienie innej funkcji platformy Azure**. Może to być inna funkcja platformy Azure wdrożona na platformie Azure lub funkcja platformy Azure działająca lokalnie na komputerze dewelopera, który ma **dokładnie taką samą konfigurację** (te same kontenery monitorowane i dzierżawy), a ta funkcja platformy Azure służy do kradzieży podzbioru zmian, które mają być przetwarzane przez funkcję platformy Azure.
 
 Ponadto można sprawdzić poprawność scenariusza, Jeśli wiesz, ile wystąpień aplikacja funkcji platformy Azure jest uruchomionych. W przypadku inspekcji kontenera dzierżaw i policzania liczby elementów dzierżawy w ramach, różne wartości właściwości `Owner` muszą być równe liczbie wystąpień aplikacja funkcji. Jeśli jest więcej właścicieli niż znanych wystąpień aplikacji funkcji platformy Azure, oznacza to, że ci dodatkowi właściciele „kradną” zmiany.
 

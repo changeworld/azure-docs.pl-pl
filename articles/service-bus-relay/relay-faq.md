@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 066ac1080f7ea378efe1665e7ebc70e57118191c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422955"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459110"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay często zadawane pytania
 
@@ -47,15 +47,15 @@ Aby uzyskać pełne informacje na temat cennika usługi Relay, zapoznaj się z t
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Jak naliczane są opłaty za Połączenia hybrydowe?
 Poniżej przedstawiono trzy przykładowe scenariusze rozliczania dla Połączenia hybrydowe:
 
-*   Scenariusz 1:
+*   Scenariusz 1.
     *   Istnieje pojedynczy odbiornik, taki jak wystąpienie Menedżera Połączenia hybrydowe zainstalowane i działające w sposób ciągły przez cały miesiąc.
     *   W ciągu miesiąca wysyłasz 3 GB danych za pośrednictwem połączenia. 
     *   Łączna opłata wynosi $5.
-*   Scenariusz 2:
+*   Scenariusz 2.
     *   Istnieje pojedynczy odbiornik, taki jak wystąpienie Menedżera Połączenia hybrydowe zainstalowane i działające w sposób ciągły przez cały miesiąc.
     *   W ciągu miesiąca wysyłasz 10 GB danych za pośrednictwem połączenia.
     *   Łączna opłata wynosi $7,50. To jest $5 dla połączenia i pierwsze 5 GB + $2,50, aby uzyskać dodatkowe 5 GB danych.
-*   Scenariusz 3:
+*   Scenariusz 3.
     *   Istnieją dwa wystąpienia, a i B programu Połączenia hybrydowe Manager zainstalowane i ciągle działające przez cały miesiąc.
     *   W ciągu miesiąca wysyłasz 3 GB danych między połączeniem A.
     *   W ciągu miesiąca wysyłasz 6 GB danych między połączeniem B.
@@ -80,13 +80,13 @@ Wysyłanie komunikatu do przekaźnika Service Bus jest traktowane jako "pełny p
 Przekaźniki otwierane przy użyciu powiązania WCF **netTCPRelay** traktują komunikaty, które nie są pojedynczymi komunikatami, ale jako strumień danych przepływających przez system. W przypadku korzystania z tego powiązania tylko nadawca i odbiornik mają wgląd w ramki poszczególnych wysłanych i odebranych komunikatów. W przypadku przekaźników korzystających z powiązania **netTCPRelay** wszystkie dane są traktowane jako strumień służący do obliczania komunikatów rozliczanych. W takim przypadku Service Bus oblicza łączną ilość danych wysłanych lub odebranych za pośrednictwem poszczególnych przekaźników w oparciu o 5 minut. Następnie dzieli ten łączną ilość danych o 64 KB, aby określić liczbę płatnych komunikatów dla tego przekaźnika w tym okresie.
 
 ## <a name="quotas"></a>Przydziały
-| Nazwa limitu przydziału | Scope |  Uwagi | Value |
+| Nazwa przydziału | Zakres |  Uwagi | Wartość |
 | --- | --- | --- | --- |
 | Współbieżne detektory w przekaźniku |Jednostka |Kolejne żądania dla dodatkowych połączeń są odrzucane i występuje wyjątek przez wywoływany kod. |25 |
-| Współbieżne połączenia przekaźnikowe na wszystkie punkty końcowe przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5,000 |
+| Współbieżne połączenia przekaźnikowe na wszystkie punkty końcowe przekaźnika w przestrzeni nazw usługi |Przestrzeń nazw |- |5000 |
 | Punkty końcowe przekaźnika na przestrzeń nazw usługi |Przestrzeń nazw |- |10 000 |
 | Rozmiar komunikatu dla przekaźników [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) i [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) |Przestrzeń nazw |Komunikaty przychodzące, które przekraczają te przydziały, są odrzucane i występuje wyjątek przez wywoływany kod. |64 KB |
-| Rozmiar komunikatu dla przekaźników [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Przestrzeń nazw |Brak limitu rozmiaru komunikatu. |Nieograniczona liczba |
+| Rozmiar komunikatu dla przekaźników [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Przestrzeń nazw |Brak limitu rozmiaru komunikatu. |Bez ograniczeń |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Czy przekaźnik ma przydziały użycia?
 Domyślnie dla każdej usługi w chmurze firma Microsoft ustawia zagregowany miesięczny limit przydziału użycia obliczany we wszystkich subskrypcjach klienta. Zdajemy sobie sprawę, że w razie potrzeby może przekroczyć te limity. W dowolnym momencie możesz skontaktować się z obsługą klienta, aby poznać Twoje potrzeby i odpowiednio dostosować te limity. W przypadku Service Bus zagregowane przydziały użycia są następujące:
@@ -104,9 +104,9 @@ Nazwa przestrzeni nazw przekaźnika musi mieć długość od 6 do 50 znaków.
 
 Aby przenieść przestrzeń nazw z jednej subskrypcji platformy Azure do innej subskrypcji, możesz użyć [Azure Portal](https://portal.azure.com) lub użyć poleceń programu PowerShell. Aby przenieść przestrzeń nazw do innej subskrypcji, przestrzeń nazw musi już być aktywna. Użytkownik uruchamiający polecenia musi być użytkownikiem administratora zarówno w ramach subskrypcji źródłowej, jak i docelowej.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Portal Azure
 
-Aby użyć Azure Portal do migracji przestrzeni nazw Azure Relay z jednej subskrypcji do innej subskrypcji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Aby użyć Azure Portal do migracji przestrzeni nazw Azure Relay z jednej subskrypcji do innej subskrypcji, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -128,14 +128,14 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 Opis typowych wyjątków i sugerowanych czynności, które można wykonać, znajduje się w temacie [wyjątki przekaźnika][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Co to jest sygnatura dostępu współdzielonego i jakich języków można użyć do wygenerowania podpisu?
-Sygnatury dostępu współdzielonego (SAS) są mechanizmem uwierzytelniania opartym na bezpiecznych skrótach i identyfikatorach URI SHA-256. Aby uzyskać informacje o sposobach generowania własnych podpisów w węzłach Node. js, PHP, Python, Java, C#C i, zobacz [Service Bus Authentication z sygnaturami dostępu][Shared Access Signatures]współdzielonego.
+Sygnatury dostępu współdzielonego (SAS) są mechanizmem uwierzytelniania opartym na bezpiecznych skrótach i identyfikatorach URI SHA-256. Aby uzyskać informacje o sposobach generowania własnych podpisów w węzłach Node. js, PHP, Python, Java, C#C i, zobacz [Service Bus Authentication z sygnaturami dostępu współdzielonego][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Czy można dozwolonych punkty końcowe przekaźnika?
-Tak. Klient usługi Relay nawiązuje połączenia z usługą Azure Relay przy użyciu w pełni kwalifikowanych nazw domen. Klienci mogą dodać wpis dla `*.servicebus.windows.net` zapory, które obsługują listy dozwolonych DNS.
+Tak. Klient usługi Relay nawiązuje połączenia z usługą Azure Relay przy użyciu w pełni kwalifikowanych nazw domen. Klienci mogą dodać wpis dla `*.servicebus.windows.net` na zaporach, które obsługują listy dozwolonych DNS.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Tworzenie przestrzeni nazw](relay-create-namespace-portal.md)
-* [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
+* [Rozpoczęcie pracy z programem .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/

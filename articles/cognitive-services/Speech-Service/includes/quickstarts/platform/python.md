@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 095c591f63cb228b48681ffc67499820631bbaf5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
-ms.translationtype: MT
+ms.openlocfilehash: 37b0deba6531c8e714b8786f8c815cf323c310ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469591"
 ---
 W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla języka Python.
 
@@ -78,7 +78,7 @@ Jeśli pracujesz w usłudze macOS, może być konieczne uruchomienie następują
 python3 -m pip install --upgrade pip
 ```
 
-Po pomyślnym użyciu `pip` zainstalowania `azure-cognitiveservices-speech`można użyć zestawu Speech SDK przez zaimportowanie przestrzeni nazw do projektów języka Python. Na przykład:
+Po pomyślnym użyciu `pip` zainstalowania `azure-cognitiveservices-speech`można użyć zestawu Speech SDK przez zaimportowanie przestrzeni nazw do projektów języka Python. Przykład:
 
 ```py
 import azure.cognitiveservices.speech as speechsdk

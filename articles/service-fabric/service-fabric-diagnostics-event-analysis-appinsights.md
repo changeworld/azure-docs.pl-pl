@@ -1,25 +1,16 @@
 ---
-title: Analiza zdarzeń Service Fabric platformy Azure z Application Insights | Microsoft Docs
+title: Analiza zdarzeń Service Fabric platformy Azure z Application Insights
 description: Dowiedz się więcej na temat wizualizacji i analizowania zdarzeń przy użyciu Application Insights do monitorowania i diagnostyki klastrów Service Fabric platformy Azure.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 8e682a5c768ed4b3f35382c87528c1b0d11a3c3d
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464759"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analiza zdarzeń i wizualizacja przy użyciu Application Insights
 
@@ -31,7 +22,7 @@ Ten artykuł pomaga w rozwiązywaniu następujących typowych pytań:
 * Jak mogę Rozwiązywanie problemów z moją aplikacją, szczególnie w przypadku komunikacji między sobą?
 * Jak mogę uzyskać metryki dotyczące sposobu, w jaki działają usługi, na przykład czas ładowania strony, żądania HTTP?
 
-Celem tego artykułu jest przedstawienie informacji o sposobach uzyskiwania szczegółowych informacji i rozwiązywania problemów z poziomu Application Insights. Jeśli chcesz dowiedzieć się, jak skonfigurować i skonfigurować Application Insights przy użyciu Service Fabric, zapoznaj się z [](service-fabric-tutorial-monitoring-aspnet.md)tym samouczkiem.
+Celem tego artykułu jest przedstawienie informacji o sposobach uzyskiwania szczegółowych informacji i rozwiązywania problemów z poziomu Application Insights. Jeśli chcesz dowiedzieć się, jak skonfigurować i skonfigurować Application Insights przy użyciu Service Fabric, zapoznaj się z tym [samouczkiem](service-fabric-tutorial-monitoring-aspnet.md).
 
 ## <a name="monitoring-in-application-insights"></a>Monitorowanie w Application Insights
 
@@ -39,7 +30,7 @@ W przypadku korzystania z Service Fabric Program Application Insights ma rozbudo
 
 ![Przegląd Application Insights](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-W prawym panelu na powyższym obrazie istnieją dwa główne typy wpisów: żądania i zdarzenia. Żądania są wywołaniami w interfejsie API aplikacji za pośrednictwem żądań HTTP w tym przypadku, a zdarzenia są zdarzeniami niestandardowymi, które działają jako dane telemetryczne, można dodać gdziekolwiek w kodzie. Możesz dodatkowo zbadać instrumentację aplikacji w interfejsie [API Application Insights, aby uzyskać niestandardowe zdarzenia i metryki](../azure-monitor/app/api-custom-events-metrics.md). Kliknięcie żądania spowoduje wyświetlenie dalszych informacji, jak pokazano na poniższej ilustracji, w tym danych specyficznych dla Service Fabric, które są zbierane w Application Insights Service Fabric pakiecie NuGet. Te informacje są przydatne do rozwiązywania problemów i znajomości stanu aplikacji, a wszystkie te informacje są przeszukiwane w ramach Application Insights
+W prawym panelu na powyższym obrazie istnieją dwa główne typy wpisów: żądania i zdarzenia. Żądania są wywołaniami w interfejsie API aplikacji za pośrednictwem żądań HTTP w tym przypadku, a zdarzenia są zdarzeniami niestandardowymi, które działają jako dane telemetryczne, można dodać gdziekolwiek w kodzie. Możesz dodatkowo zbadać instrumentację aplikacji w [interfejsie API Application Insights, aby uzyskać niestandardowe zdarzenia i metryki](../azure-monitor/app/api-custom-events-metrics.md). Kliknięcie żądania spowoduje wyświetlenie dalszych informacji, jak pokazano na poniższej ilustracji, w tym danych specyficznych dla Service Fabric, które są zbierane w Application Insights Service Fabric pakiecie NuGet. Te informacje są przydatne do rozwiązywania problemów i znajomości stanu aplikacji, a wszystkie te informacje są przeszukiwane w ramach Application Insights
 
 ![Szczegóły żądania Application Insights](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
@@ -51,7 +42,7 @@ Aby dowiedzieć się więcej o możliwościach portalu Application Insights, prz
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Konfigurowanie Application Insights przy użyciu użyciu struktury eventflow
 
-Jeśli używasz użyciu struktury eventflow do agregowania zdarzeń, upewnij się, że zaimportowano `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`pakiet NuGet. Poniższy kod jest wymagany w sekcji dane *wyjściowe* pliku *eventFlowConfig. JSON*:
+Jeśli używasz użyciu struktury eventflow do agregowania zdarzeń, upewnij się, że zaimportowano pakiet NuGet `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`. Poniższy kod jest wymagany w sekcji dane *wyjściowe* pliku *eventFlowConfig. JSON*:
 
 ```json
 "outputs": [
@@ -70,7 +61,7 @@ Zaleca się używanie użyciu struktury eventflow i funkcji wad jako rozwiązań
 
 [Obsługa Application Insights mikrousług i kontenerów](https://azure.microsoft.com/blog/app-insights-microservices/) zawiera niektóre nowe funkcje, nad którymi pracujesz (obecnie w wersji beta), co pozwala na bardziej zaawansowane opcje monitorowania z Application Insights. Obejmują one śledzenie zależności (używane w tworzeniu AppMap wszystkich usług i aplikacji w klastrze oraz komunikację między nimi) oraz lepszą korelację śladów pochodzących z usług (pomaga w lepszym wykorzystaniu problemu w przepływie pracy Aplikacja lub usługa).
 
-Jeśli opracowujesz program w programie .NET i prawdopodobnie będziesz używać niektórych modeli programowania Service Fabric i wolisz korzystać z Application Insights jako platformy do wizualizacji i analizowania danych dotyczących zdarzeń i dzienników, zalecamy przechodzenie przez Application Insights Trasa zestawu SDK jako przepływ pracy monitorowania i diagnostyki. Zapoznaj się [](../azure-monitor/app/asp-net-trace-logs.md) z [tym](../azure-monitor/app/asp-net-more.md) tematem, aby rozpocząć pracę z usługą Application Insights w celu zbierania i wyświetlania dzienników.
+Jeśli opracowujesz program w programie .NET i prawdopodobnie będziesz używać niektórych modeli programowania Service Fabric i wolisz korzystać z Application Insights jako platformy do wizualizacji i analizowania danych dotyczących zdarzeń i dzienników, zalecamy przechodzenie przez Application Insights Trasa zestawu SDK jako przepływ pracy monitorowania i diagnostyki. Zapoznaj się z [tym](../azure-monitor/app/asp-net-more.md) tematem [, aby rozpocząć](../azure-monitor/app/asp-net-trace-logs.md) pracę z usługą Application Insights w celu zbierania i wyświetlania dzienników.
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Nawigowanie po zasobie Application Insights w Azure Portal
 

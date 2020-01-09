@@ -1,25 +1,14 @@
 ---
-title: Scenariusze i projektowanie aplikacji | Microsoft Docs
+title: Scenariusze i projektowanie aplikacji
 description: Omówienie kategorii aplikacji w chmurze w Service Fabric. Omawia projekt aplikacji, który korzysta z usług stanowych i bezstanowych.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 4/24/2019
-ms.author: atsenthi
-ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303505"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464914"
 ---
 # <a name="service-fabric-application-scenarios"></a>Scenariusze aplikacji Service Fabric
 Usługa Azure Service Fabric oferuje niezawodną i elastyczną platformę, w której można pisać i uruchamiać wiele rodzajów aplikacji i usług firmy. Te aplikacje i mikrousługi mogą być bezstanowe lub stanowe i są zrównoważone przez zasoby na maszynach wirtualnych w celu zmaksymalizowania wydajności. 
@@ -80,7 +69,7 @@ Oto przykładowa aplikacja korzystająca z usług stanowych: ![aplikacji, która
 * Odwiedź Centrum architektury platformy Azure, aby uzyskać wskazówki dotyczące [tworzenia mikrousług na platformie Azure](https://docs.microsoft.com/azure/architecture/microservices/).
 * Przejdź do [platformy Azure Service Fabric aplikacji i najlepszych](service-fabric-best-practices-overview.md) rozwiązań dotyczących projektowania aplikacji.
 
-* Zobacz również następujące tematy:
+* Zobacz też poniższe tematy:
   * [Więcej informacji o mikrousługach](service-fabric-overview-microservices.md)
   * [Definiowanie stanu usługi i zarządzanie nim](service-fabric-concepts-state.md)
   * [Dostępność usług Service Fabric Services](service-fabric-availability-services.md)

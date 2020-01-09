@@ -1,93 +1,84 @@
 ---
-title: Usługa Azure Service Fabric wydajności monitorowania | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat liczników wydajności do monitorowania i diagnostyki klastrów usługi Azure Service Fabric.
-services: service-fabric
-documentationcenter: .net
+title: Monitorowanie wydajności Service Fabric platformy Azure
+description: Dowiedz się więcej o licznikach wydajności służących do monitorowania i diagnostyki klastrów Service Fabric platformy Azure.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ee1608c40801f568b38ace4670b0d5ea7f73003c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464707"
 ---
 # <a name="performance-metrics"></a>Metryki wydajności
 
-Metryki powinny być zbierane, aby poznać wydajność klastra, a także aplikacje uruchomione w nim. W przypadku klastrów usługi Service Fabric firma Microsoft zaleca zbieranie następujących liczników wydajności.
+Metryki powinny być zbierane, aby zrozumieć wydajność klastra, a także uruchomione w nim aplikacje. W przypadku klastrów Service Fabric zalecamy zbieranie następujących liczników wydajności.
 
 ## <a name="nodes"></a>Węzły
 
-W przypadku komputerów w klastrze należy wziąć pod uwagę zbieranie następujących liczników wydajności, aby lepiej zrozumieć obciążenia na każdym komputerze i wprowadzić odpowiednie skalowanie decyzje dotyczące klastra.
+W przypadku maszyn w klastrze rozważ zebranie następujących liczników wydajności, aby lepiej zrozumieć obciążenie poszczególnych maszyn i podjąć odpowiednie decyzje dotyczące skalowania klastra.
 
 | Kategoria licznika | Nazwa licznika |
 | --- | --- |
 | Dysk logiczny | Wolne miejsce na dysku logicznym |
-| Dysk fizyczny (na dysku) | Średni Długość kolejki odczytu dysku |
-| Dysk fizyczny (na dysku) | Średni Długość kolejki zapisu dysku |
-| Dysk fizyczny (na dysku) | Średni Czas dysku w s/Odczyt |
-| Dysk fizyczny (na dysku) | Średni Dysku w s/Zapis |
-| Dysk fizyczny (na dysku) | Odczyty dysku/s |
-| Dysk fizyczny (na dysku) | Bajty odczytu z dysku/s |
-| Dysk fizyczny (na dysku) | Zapisy dysku/s |
-| Dysk fizyczny (na dysku) | Bajty zapisu na dysku/s |
-| Memory (Pamięć) | Dostępna pamięć (MB) |
-| Plik stronicowania | % Użycia |
-| Processor(Total) | Czas procesora (%) |
-| Proces (usługi) | Czas procesora (%) |
-| Proces (usługi) | Identyfikator procesu |
-| Proces (usługi) | Bajty prywatne |
-| Proces (usługi) | Liczba wątków |
-| Proces (usługi) | Bajty wirtualne |
-| Proces (usługi) | Zestaw roboczy |
-| Proces (usługi) | Zestaw roboczy — prywatny |
-| Interface(all-instances) sieci | Recd bajtów |
-| Interface(all-instances) sieci | Bajty wysłane |
-| Interface(all-instances) sieci | Łączna liczba bajtów |
-| Interface(all-instances) sieci | Długość kolejki wyjściowej |
-| Interface(all-instances) sieci | Usunięte pakiety wychodzące |
-| Interface(all-instances) sieci | Odebrane pakiety |
-| Interface(all-instances) sieci | Pakiety wychodzące z błędami |
-| Interface(all-instances) sieci | Odebrane pakiety z błędami |
+| Dysk fizyczny (na dysk) | Średnia długość kolejki odczytu dysku |
+| Dysk fizyczny (na dysk) | Średnia długość kolejki zapisu na dysku |
+| Dysk fizyczny (na dysk) | Średni czas dysku w s/odczyt |
+| Dysk fizyczny (na dysk) | Średni czas dysku w s/zapis |
+| Dysk fizyczny (na dysk) | Odczyty dysku/s |
+| Dysk fizyczny (na dysk) | Bajty odczytu z dysku/s |
+| Dysk fizyczny (na dysk) | Zapisy dysku/s |
+| Dysk fizyczny (na dysk) | Bajty zapisu na dysku/s |
+| Pamięć | Dostępna pamięć (MB) |
+| PagingFile | % Użycia |
+| Procesor (łącznie) | Czas procesora (%) |
+| Proces (według usługi) | Czas procesora (%) |
+| Proces (według usługi) | Identyfikator procesu |
+| Proces (według usługi) | Prywatne bajty |
+| Proces (według usługi) | Liczba wątków |
+| Proces (według usługi) | Bajty wirtualne |
+| Proces (według usługi) | Zestaw roboczy |
+| Proces (według usługi) | Zestaw roboczy — prywatny |
+| Interfejs sieciowy (wszystkie wystąpienia) | Bajty RECD |
+| Interfejs sieciowy (wszystkie wystąpienia) | Wysłane bajty |
+| Interfejs sieciowy (wszystkie wystąpienia) | Całkowita liczba bajtów |
+| Interfejs sieciowy (wszystkie wystąpienia) | Długość kolejki wyjściowej |
+| Interfejs sieciowy (wszystkie wystąpienia) | Odrzucone pakiety wychodzące |
+| Interfejs sieciowy (wszystkie wystąpienia) | Odebrane pakiety zostały odrzucone |
+| Interfejs sieciowy (wszystkie wystąpienia) | Błędy wychodzące pakietów |
+| Interfejs sieciowy (wszystkie wystąpienia) | Błędy odebrane pakietów |
 
-## <a name="net-applications-and-services"></a>Aplikacje platformy .NET i usługi
+## <a name="net-applications-and-services"></a>Aplikacje i usługi platformy .NET
 
-Zbierz następujące liczniki, Jeżeli wdrażasz usługi .NET do klastra. 
+Zbierz następujące liczniki, jeśli usługi platformy .NET są wdrażane w klastrze. 
 
 | Kategoria licznika | Nazwa licznika |
 | --- | --- |
-| Pamięć .NET CLR (na usługę) | Identyfikator procesu |
-| Pamięć .NET CLR (na usługę) | # Łączna liczba przydzielonych bajtów |
-| Pamięć .NET CLR (na usługę) | # Łączna liczba Zarezerwowane bajty |
-| Pamięć .NET CLR (na usługę) | Liczba bajtów we wszystkich Stertach |
-| Pamięć .NET CLR (na usługę) | Duży rozmiar sterty obiektów |
-| Pamięć .NET CLR (na usługę) | # Obsługuje GC |
-| Pamięć .NET CLR (na usługę) | # Pokolenia 0 |
-| Pamięć .NET CLR (na usługę) | # Pokolenia 1 |
-| Pamięć .NET CLR (na usługę) | # Pokolenia 2 |
-| Pamięć .NET CLR (na usługę) | % Czasu odzyskiwania pamięci |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Identyfikator procesu |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Liczba zadeklarowanych bajtów |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Liczba zarezerwowanych bajtów |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Liczba bajtów we wszystkich stertach |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Rozmiar sterty dla dużego obiektu |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Liczba dojść do # GC |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Liczba kolekcji generacji 0 |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Liczba kolekcji generacji 1 |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Liczba kolekcji generacji 2 |
+| Pamięć środowiska CLR platformy .NET (na usługę) | Czas (%) w GC |
 
-### <a name="service-fabrics-custom-performance-counters"></a>Usługa Service Fabric niestandardowych liczników wydajności
+### <a name="service-fabrics-custom-performance-counters"></a>Niestandardowe liczniki wydajności Service Fabric
 
-Usługa Service Fabric generuje rozległe niestandardowych liczników wydajności. Jeśli masz zainstalowany zestaw SDK, na komputerze Windows widać kompleksowej listy w Monitorze wydajności aplikacji (Start > Monitor wydajności). 
+Service Fabric generuje znaczną liczbę niestandardowych liczników wydajności. Jeśli masz zainstalowany zestaw SDK, możesz zobaczyć kompleksową listę na komputerze z systemem Windows w aplikacji monitora wydajności (Uruchom > Monitor wydajności). 
 
-W aplikacji jest wdrażany z klastrem, korzystając z elementów Reliable Actors, Dodaj liczniki z `Service Fabric Actor` i `Service Fabric Actor Method` kategorii (zobacz [diagnostyki usługi sieci szkieletowej Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
+W przypadku aplikacji wdrażanych w klastrze, jeśli używasz Reliable Actors, Dodaj liczniki z kategorii `Service Fabric Actor` i `Service Fabric Actor Method` (zobacz [Service Fabric Reliable Actors Diagnostics](service-fabric-reliable-actors-diagnostics.md)).
 
-Jeśli używasz usług Reliable Services lub zdalna komunikacja usług podobnie mamy `Service Fabric Service` i `Service Fabric Service Method` licznik kategorii, czy należy zbierać liczniki z adresem [monitorowanie za pomocą komunikacji zdalnej usługi](service-fabric-reliable-serviceremoting-diagnostics.md) i [niezawodne liczniki wydajności usług](service-fabric-reliable-services-diagnostics.md#performance-counters). 
+W przypadku korzystania z usług Reliable Services lub komunikacji zdalnej, firma Microsoft ma podobne `Service Fabric Service` i `Service Fabric Service Method` kategorie liczników, z których mają być zbierane liczniki, zobacz [monitorowanie z usługami zdalnymi](service-fabric-reliable-serviceremoting-diagnostics.md) i [niezawodnymi usługami](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 
-Jeśli korzystasz z elementami Reliable Collections, zalecamy dodanie `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` zbierać opóźnienie średni zatwierdzenia na transakcję metrykę.
+W przypadku korzystania z niezawodnych kolekcji zalecamy dodanie `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` w celu zebrania średniego opóźnienia zatwierdzania na metrykę transakcji.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [generowanie zdarzeń na poziomie platformy](service-fabric-diagnostics-event-generation-infra.md) w usłudze Service Fabric
-* Zbieraj metryki wydajności za pomocą [agenta usługi Log Analytics](service-fabric-diagnostics-oms-agent.md)
+* Dowiedz się więcej o [generowaniu zdarzeń na poziomie platformy](service-fabric-diagnostics-event-generation-infra.md) w Service Fabric
+* Zbieranie metryk wydajności za poorednictwem [agenta log Analytics](service-fabric-diagnostics-oms-agent.md)

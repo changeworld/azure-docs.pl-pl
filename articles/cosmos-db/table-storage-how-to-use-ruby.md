@@ -1,6 +1,6 @@
 ---
-title: Jak korzystać z usługi Azure Table Storage i interfejsu Table API usługi Azure Cosmos DB przy użyciu języka Ruby
-description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu API tabel usługi Azure Cosmos DB.
+title: Korzystanie z Azure Cosmos DB interfejs API tabel i platformy Azure Table Storage z użyciem języka Ruby
+description: Przechowywanie danych strukturalnych w chmurze za pomocą usługi Azure Table Storage lub interfejsu Table API usługi Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: ruby
@@ -9,18 +9,18 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0a2649db7639338b7b2714181b8caf670306f987
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441157"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Jak korzystać z usługi Azure Table Storage i interfejsu Table API usługi Azure Cosmos DB przy użyciu języka Ruby
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 W tym przewodniku przedstawiono sposób wykonywania typowych scenariuszy przy użyciu usługi Azure Table Storage oraz interfejsu Table API usługi Azure Cosmos DB. Przykłady są napisane w języku Ruby i korzystają z [biblioteki klienta usługi Azure Table Storage dla języka Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table). Przedstawione scenariusze obejmują **tworzenie i usuwanie tabel oraz wstawianie jednostek w tabeli i wykonywanie względem nich zapytań**.
 
 ## <a name="create-an-azure-service-account"></a>Tworzenie konta usługi Azure
@@ -71,7 +71,7 @@ table_client = Azure::Storage::Table::TableService.new(client: common_client)
 ```
 
 ## <a name="create-a-table"></a>Tworzenie tabeli
-Obiekt **Azure::Storage::Table::TableService** umożliwia pracę z tabelami i jednostkami. Aby utworzyć tabelę, użyj metody **create_table()**. W poniższym przykładzie zostanie utworzona tabela lub wyświetlony błąd, jeśli taki wystąpi.
+Obiekt **Azure::Storage::Table::TableService** umożliwia pracę z tabelami i jednostkami. Aby utworzyć tabelę, użyj metody **create_table()** . W poniższym przykładzie zostanie utworzona tabela lub wyświetlony błąd, jeśli taki wystąpi.
 
 ```ruby
 azure_table_service = Azure::Storage::Table::TableService.new
@@ -94,12 +94,12 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>Aktualizowanie jednostki
 Istnieje kilka metod aktualizowania istniejącej jednostki:
 
-* **update_entity():** Aktualizuje istniejącą jednostkę przez jej zastąpienie.
-* **merge_entity():** Aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką.
-* **insert_or_merge_entity():** Aktualizuje istniejącą jednostkę przez jej zastąpienie. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka:
-* **insert_or_replace_entity():** Aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka.
+* **update_entity():** aktualizuje istniejącą jednostkę przez zastąpienie jej.
+* **merge_entity():** aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką.
+* **insert_or_merge_entity():** aktualizuje istniejącą jednostkę przez zastąpienie jej. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka:
+* **insert_or_replace_entity():** aktualizuje istniejącą jednostkę przez scalenie nowych wartości właściwości z istniejącą jednostką. Jeśli żadna jednostka nie istnieje, zostanie wstawiona nowa jednostka.
 
-W poniższym przykładzie przedstawiono aktualizowanie jednostki przy użyciu metody **update_entity()**:
+W poniższym przykładzie przedstawiono aktualizowanie jednostki przy użyciu metody **update_entity()** :
 
 ```ruby
 entity = { "content" => "test entity with updated content",
@@ -107,7 +107,7 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-Jeśli podczas używania metod **update_entity()** i **merge_entity()** aktualizowana jednostka nie istnieje, operacja aktualizacji zakończy się niepowodzeniem. W związku z tym jeśli chcesz przechowywać jednostki niezależnie od tego, czy już istnieją, należy zamiast tego użyć metody **insert_or_replace_entity()** lub **insert_or_merge_entity()**.
+Jeśli podczas używania metod **update_entity()** i **merge_entity()** aktualizowana jednostka nie istnieje, operacja aktualizacji zakończy się niepowodzeniem. W związku z tym jeśli chcesz przechowywać jednostki niezależnie od tego, czy już istnieją, należy zamiast tego użyć metody **insert_or_replace_entity()** lub **insert_or_merge_entity()** .
 
 ## <a name="work-with-groups-of-entities"></a>Praca z grupami jednostek
 Czasami warto przesłać jednocześnie wiele operacji w partii, aby zapewnić niepodzielne przetwarzanie przez serwer. Aby to osiągnąć, należy najpierw utworzyć obiekt **Batch**, a następnie użyć metody **execute_batch()** względem obiektu **TableService**. W poniższym przykładzie przedstawiono przesyłanie dwóch jednostek w partii z właściwością RowKey o wartościach 2 i 3. Należy zauważyć, że działa to tylko dla jednostek o tej samej wartości właściwości PartitionKey.
@@ -123,7 +123,7 @@ results = azure_table_service.execute_batch(batch)
 ```
 
 ## <a name="query-for-an-entity"></a>Wykonywanie zapytania względem jednostki
-Aby wykonać zapytanie względem jednostki w tabeli, użyj metody **get_entity()**, przekazując nazwę tabeli oraz właściwości **PartitionKey** i **RowKey**.
+Aby wykonać zapytanie względem jednostki w tabeli, użyj metody **get_entity()** , przekazując nazwę tabeli oraz właściwości **PartitionKey** i **RowKey**.
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",
@@ -131,7 +131,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 ```
 
 ## <a name="query-a-set-of-entities"></a>Wykonywanie zapytania względem zestawu jednostek
-Aby wykonać zapytanie względem zestawu jednostek, utwórz obiekt skrótu zapytania, a następnie użyj metody **query_entities()**. W poniższym przykładzie przedstawiono pobieranie wszystkich jednostek o takiej samej wartości właściwości **PartitionKey**:
+Aby wykonać zapytanie względem zestawu jednostek, utwórz obiekt skrótu zapytania, a następnie użyj metody **query_entities()** . W poniższym przykładzie przedstawiono pobieranie wszystkich jednostek o takiej samej wartości właściwości **PartitionKey**:
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }
@@ -153,7 +153,7 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 ## <a name="delete-an-entity"></a>Usuwanie jednostki
-Aby usunąć jednostkę, użyj metody **delete_entity()**. Przekaż nazwę tabeli zawierającą jednostkę oraz właściwości PartitionKey i RowKey jednostki.
+Aby usunąć jednostkę, użyj metody **delete_entity()** . Przekaż nazwę tabeli zawierającą jednostkę oraz właściwości PartitionKey i RowKey jednostki.
 
 ```ruby
 azure_table_service.delete_entity("testtable", "test-partition-key", "1")
@@ -166,7 +166,7 @@ Aby usunąć tabelę, użyj metody **delete_table()** i przekaż nazwę tabeli, 
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
 * [Centrum deweloperów języka Ruby](https://azure.microsoft.com/develop/ruby/)

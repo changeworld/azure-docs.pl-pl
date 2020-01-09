@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: a0505b987deb67f93de6f6166154211359515ad7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807890"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456976"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Rozwiązywanie problemów występujących podczas stosowania artefaktów w Azure DevTest Labs maszynie wirtualnej
 Stosowanie artefaktów na maszynie wirtualnej może zakończyć się niepowodzeniem z różnych powodów. Ten artykuł przeprowadzi Cię przez niektóre metody, aby ułatwić identyfikację możliwych przyczyn.
@@ -66,10 +66,10 @@ Gdy artefakt zostanie rozsunięty, należy najpierw określić, gdzie jest zablo
     - Możesz uzyskać dostęp do dziennika aktywności z poziomu paska nawigacyjnego na stronie maszyny wirtualnej laboratorium. Po wybraniu tej opcji zobaczysz wpis dotyczący **zastosowania artefaktów do maszyny wirtualnej** (jeśli operacja Zastosuj artefakty została wyzwolona bezpośrednio) lub **Dodaj lub zmodyfikuj maszyny wirtualne** (jeśli operacja zastosowania artefaktów była częścią procesu tworzenia maszyny wirtualnej).
     - Wyszukaj błędy w ramach tych wpisów. Czasami błąd nie zostanie odpowiednio oznakowany i konieczne będzie zbadanie każdego wpisu.
     - Badając szczegóły dotyczące poszczególnych wpisów, należy sprawdzić zawartość ładunku JSON. W dolnej części tego dokumentu może zostać wyświetlony komunikat o błędzie.
-- **Podczas próby wykonania artefaktu**. Może to być spowodowane problemami z siecią lub magazynem. Aby uzyskać szczegółowe informacje, zobacz odpowiednią sekcję w dalszej części tego artykułu. Przyczyną może być również sposób tworzenia skryptu. Na przykład:
+- **Podczas próby wykonania artefaktu**. Może to być spowodowane problemami z siecią lub magazynem. Aby uzyskać szczegółowe informacje, zobacz odpowiednią sekcję w dalszej części tego artykułu. Przyczyną może być również sposób tworzenia skryptu. Przykład:
     - Skrypt programu PowerShell ma **obowiązkowe parametry**, ale jeden z nich nie przeszedł do niego wartości, ponieważ zezwalasz użytkownikowi na pozostawienie pustego elementu lub nie masz wartości domyślnej dla właściwości w pliku definicji artifactfile. JSON. Skrypt zostanie zasunięty, ponieważ oczekuje na dane wejściowe użytkownika.
     - Skrypt programu PowerShell **wymaga wprowadzenia danych przez użytkownika** w ramach wykonywania. Skrypty muszą być zapisane w taki sposób, aby działały w sposób cichy bez konieczności interwencji użytkownika.
-- **Agent maszyny wirtualnej trwa zbyt długo**. Gdy maszyna wirtualna jest uruchomiona po raz pierwszy lub gdy rozszerzenie niestandardowego skryptu zostanie zainstalowane w celu obsłużynia żądania zastosowania artefaktów, maszyna wirtualna może wymagać uaktualnienia agenta maszyny wirtualnej lub zaczekać na zainicjowanie agenta maszyny wirtualnej. Mogą istnieć usługi, od których zależy Agent maszyny wirtualnej, który zajmuje dużo czasu na zainicjowanie. W takich przypadkach zobacz [Omówienie agenta maszyny wirtualnej platformy Azure](/virtual-machines/extensions/agent-windows.md) , aby uzyskać dalsze Rozwiązywanie problemów.
+- **Agent maszyny wirtualnej trwa zbyt długo**. Gdy maszyna wirtualna jest uruchomiona po raz pierwszy lub gdy rozszerzenie niestandardowego skryptu zostanie zainstalowane w celu obsłużynia żądania zastosowania artefaktów, maszyna wirtualna może wymagać uaktualnienia agenta maszyny wirtualnej lub zaczekać na zainicjowanie agenta maszyny wirtualnej. Mogą istnieć usługi, od których zależy Agent maszyny wirtualnej, który zajmuje dużo czasu na zainicjowanie. W takich przypadkach zobacz [Omówienie agenta maszyny wirtualnej platformy Azure](../virtual-machines/extensions/agent-windows.md) , aby uzyskać dalsze Rozwiązywanie problemów.
 
 ### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Aby sprawdzić, czy artefakt nie został rozsunięty ze względu na skrypt
 
@@ -101,7 +101,7 @@ Gdy artefakt zostanie rozsunięty, należy najpierw określić, gdzie jest zablo
     W tym przykładzie można zobaczyć, że czas rozpoczęcia agenta maszyny wirtualnej trwał 10 minut i 20 sekund, ponieważ został wysłany puls. Przyczyną tego problemu jest uruchomienie usługi OOBE przez długi czas.
 
 > [!TIP]
-> Aby uzyskać ogólne informacje na temat rozszerzeń platformy Azure, zobacz [rozszerzenia i funkcje maszyny wirtualnej platformy Azure](/virtual-machines/extensions/overview.md).
+> Aby uzyskać ogólne informacje na temat rozszerzeń platformy Azure, zobacz [rozszerzenia i funkcje maszyny wirtualnej platformy Azure](../virtual-machines/extensions/overview.md).
 
 ## <a name="storage-errors"></a>Błędy magazynu
 DevTest Labs wymaga dostępu do konta magazynu laboratorium, które jest tworzone w celu buforowania artefaktów. Gdy DevTest Labs stosuje artefakt, odczyta konfigurację artefaktu i jego pliki ze skonfigurowanych repozytoriów. Domyślnie DevTest Labs konfiguruje dostęp do **publicznego repozytorium artefaktów**.

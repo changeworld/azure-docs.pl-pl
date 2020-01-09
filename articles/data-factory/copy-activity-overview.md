@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927542"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440330"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w Azure Data Factory
 
@@ -49,15 +49,13 @@ Aby skopiować dane ze źródła do ujścia, usługa, która uruchamia działani
 
 ### <a name="supported-file-formats"></a>Obsługiwane formaty plików
 
-Możesz użyć działania kopiowania, aby skopiować pliki w postaci między dwoma magazynami danych opartymi na plikach. W takim przypadku dane są kopiowane efektywnie bez serializacji ani deserializacji.
-
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Można na przykład wykonać następujące działania kopiowania:
+Możesz użyć działania kopiowania, aby skopiować pliki między dwoma magazynami danych opartymi na plikach. w takim przypadku dane są kopiowane efektywnie bez serializacji ani deserializacji. Ponadto można również analizować lub generować pliki danego formatu, na przykład, można wykonać następujące czynności:
 
-* Skopiuj dane z lokalnej bazy danych SQL Server i Zapisz dane do Azure Data Lake Storage Gen2 w formacie Parquet.
+* Skopiuj dane z lokalnej bazy danych SQL Server i Zapisz do Azure Data Lake Storage Gen2 w formacie Parquet.
 * Skopiuj pliki w formacie tekstu (CSV) z lokalnego systemu plików i Zapisz w usłudze Azure Blob Storage w formacie Avro.
-* Skopiuj pliki spakowane z lokalnego systemu plików, zdekompresuj je i Zapisz do Azure Data Lake Storage Gen2.
+* Skopiuj pliki spakowane z lokalnego systemu plików, Dekompresuj je na bieżąco i napisz wyodrębnione pliki do Azure Data Lake Storage Gen2.
 * Skopiuj dane w formacie skompresowanego tekstu (CSV) w usłudze Azure Blob Storage i Zapisz je w Azure SQL Database.
 * Wiele innych działań, które wymagają serializacji/deserializacji lub kompresji/dekompresji.
 
@@ -131,13 +129,14 @@ Następujący szablon działania kopiowania zawiera pełną listę obsługiwanyc
 | inputs | Określ utworzony zestaw danych, który wskazuje na dane źródłowe. Działanie kopiowania obsługuje tylko pojedyncze dane wejściowe. | Tak |
 | outputs | Określ utworzony zestaw danych, który wskazuje na dane ujścia. Działanie kopiowania obsługuje tylko pojedyncze dane wyjściowe. | Tak |
 | typeProperties | Określ właściwości, aby skonfigurować działanie kopiowania. | Tak |
-| source | Określ typ źródła kopiowania i odpowiednie właściwości do pobierania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
-| sink | Określ typ ujścia kopiowania i odpowiadające im właściwości zapisywania danych.<br/><br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
-| translator | Określ mapowania kolumn jawne ze źródła do ujścia. Ta właściwość ma zastosowanie, gdy domyślne zachowanie kopiowania nie spełnia Twoich potrzeb.<br/><br/>Aby uzyskać więcej informacji, zobacz [Mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md). | Nie |
-| dataIntegrationUnits | Określ miarę, która przedstawia ilość mocy używanej przez [środowisko Azure Integration Runtime](concepts-integration-runtime.md) do kopiowania danych. Te jednostki były wcześniej znane jako jednostki przenoszenia danych w chmurze (DMU). <br/><br/>Aby uzyskać więcej informacji, zobacz [jednostki integracji danych](copy-activity-performance.md#data-integration-units). | Nie |
-| parallelCopies | Określ równoległość, która ma być używana przez działanie kopiowania podczas odczytywania danych ze źródła i zapisywania danych do ujścia.<br/><br/>Aby uzyskać więcej informacji, zobacz [Kopiowanie równoległe](copy-activity-performance.md#parallel-copy). | Nie |
-| enableStaging<br/>stagingSettings | Określ, czy przemieścić dane tymczasowe w magazynie obiektów blob, zamiast bezpośrednio kopiować dane ze źródła do ujścia.<br/><br/>Aby uzyskać informacje na temat przydatnych scenariuszy i szczegółów konfiguracji, zobacz [przygotowane kopie](copy-activity-performance.md#staged-copy). | Nie |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wybierz sposób obsługi niezgodnych wierszy podczas kopiowania danych ze źródła do ujścia.<br/><br/>Aby uzyskać więcej informacji, zobacz [odporność na uszkodzenia](copy-activity-fault-tolerance.md). | Nie |
+| source | Określ typ źródła kopiowania i odpowiednie właściwości do pobierania danych.<br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
+| sink | Określ typ ujścia kopiowania i odpowiadające im właściwości zapisywania danych.<br/>Aby uzyskać więcej informacji, zobacz sekcję "właściwości działania kopiowania" w artykule łącznika wymienionym w temacie [obsługiwane magazyny i formaty danych](#supported-data-stores-and-formats). | Tak |
+| translator | Określ mapowania kolumn jawne ze źródła do ujścia. Ta właściwość ma zastosowanie, gdy domyślne zachowanie kopiowania nie spełnia Twoich potrzeb.<br/>Aby uzyskać więcej informacji, zobacz [Mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md). | Nie |
+| dataIntegrationUnits | Określ miarę, która przedstawia ilość mocy używanej przez [środowisko Azure Integration Runtime](concepts-integration-runtime.md) do kopiowania danych. Te jednostki były wcześniej znane jako jednostki przenoszenia danych w chmurze (DMU). <br/>Aby uzyskać więcej informacji, zobacz [jednostki integracji danych](copy-activity-performance.md#data-integration-units). | Nie |
+| parallelCopies | Określ równoległość, która ma być używana przez działanie kopiowania podczas odczytywania danych ze źródła i zapisywania danych do ujścia.<br/>Aby uzyskać więcej informacji, zobacz [Kopiowanie równoległe](copy-activity-performance.md#parallel-copy). | Nie |
+| Zachowaj | Określ, czy podczas kopiowania danych mają być zachowywane metadane/listy ACL. <br/>Aby uzyskać więcej informacji, zobacz [zachowywanie metadanych](copy-activity-preserve-metadata.md). |Nie |
+| enableStaging<br/>stagingSettings | Określ, czy przemieścić dane tymczasowe w magazynie obiektów blob, zamiast bezpośrednio kopiować dane ze źródła do ujścia.<br/>Aby uzyskać informacje na temat przydatnych scenariuszy i szczegółów konfiguracji, zobacz [przygotowane kopie](copy-activity-performance.md#staged-copy). | Nie |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wybierz sposób obsługi niezgodnych wierszy podczas kopiowania danych ze źródła do ujścia.<br/>Aby uzyskać więcej informacji, zobacz [odporność na uszkodzenia](copy-activity-fault-tolerance.md). | Nie |
 
 ## <a name="monitoring"></a>Monitorowanie
 
@@ -238,13 +237,9 @@ Szczegóły wykonania działania kopiowania i charakterystyki wydajności są r�
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>Mapowanie typu danych i schematu
+## <a name="incremental-copy"></a>Przyrostowa kopia
 
-Zobacz [Mapowanie schematu i typu danych,](copy-activity-schema-and-type-mapping.md) Aby uzyskać informacje o tym, jak działanie kopiowania mapuje dane źródłowe do ujścia.
-
-## <a name="fault-tolerance"></a>Odporność na uszkodzenia
-
-Domyślnie działanie kopiowania kończy kopiowanie danych i zwraca błąd, gdy wiersze danych źródłowych są niezgodne z wierszami danych ujścia. Aby pomyślnie wykonać kopię, można skonfigurować działanie kopiowania, aby pominąć i zarejestrować niezgodne wiersze i skopiować tylko zgodne dane. Aby uzyskać szczegółowe informacje, zobacz [odporność na błędy działania kopiowania](copy-activity-fault-tolerance.md) .
+Data Factory umożliwia przyrostowe kopiowanie danych różnicowych z magazynu danych źródłowych do magazynu danych ujścia. Aby uzyskać szczegółowe informacje, zobacz [Samouczek: przyrostowo Kopiuj dane](tutorial-incremental-copy-overview.md).
 
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
 
@@ -258,8 +253,17 @@ W tym przykładzie podczas wykonywania kopii Data Factory śledzi wysokie wykorz
 
 ![Kopiuj monitorowanie ze wskazówkami dotyczącymi dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Przyrostowa kopia
-Data Factory umożliwia przyrostowe kopiowanie danych różnicowych z magazynu danych źródłowych do magazynu danych ujścia. Aby uzyskać szczegółowe informacje, zobacz [Samouczek: przyrostowo Kopiuj dane](tutorial-incremental-copy-overview.md).
+## <a name="preserve-metadata-along-with-data"></a>Zachowywanie metadanych wraz z danymi
+
+Podczas kopiowania danych ze źródła do ujścia, w scenariuszach takich jak Data Lake Migration, można również zachować metadane i listy kontroli dostępu oraz dane za pomocą działania kopiowania. Aby uzyskać szczegółowe informacje, zobacz temat [zachowywanie metadanych](copy-activity-preserve-metadata.md) .
+
+## <a name="schema-and-data-type-mapping"></a>Mapowanie typu danych i schematu
+
+Zobacz [Mapowanie schematu i typu danych,](copy-activity-schema-and-type-mapping.md) Aby uzyskać informacje o tym, jak działanie kopiowania mapuje dane źródłowe do ujścia.
+
+## <a name="fault-tolerance"></a>Odporność na uszkodzenia
+
+Domyślnie działanie kopiowania kończy kopiowanie danych i zwraca błąd, gdy wiersze danych źródłowych są niezgodne z wierszami danych ujścia. Aby pomyślnie wykonać kopię, można skonfigurować działanie kopiowania, aby pominąć i zarejestrować niezgodne wiersze i skopiować tylko zgodne dane. Aby uzyskać szczegółowe informacje, zobacz [odporność na błędy działania kopiowania](copy-activity-fault-tolerance.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące Przewodniki Szybki Start, samouczków i przykładów:

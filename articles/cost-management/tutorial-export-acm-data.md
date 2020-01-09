@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Tworzenie eksportowanych danych i zarządzanie nimi z Azure Cost Management
+title: Samouczek — eksportowanie danych z Azure Cost Management
 description: W tym artykule pokazano, jak można tworzyć eksportowane Azure Cost Management dane i zarządzać nimi, aby można było ich używać w systemach zewnętrznych.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a462b3d165a596673049abbbb8b5b8d346f5fc9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d5f6bc4620d60d3eb776a6229450e02035b8290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441018"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Samouczek: eksportowanie danych i zarządzanie nimi
 
@@ -25,7 +25,7 @@ Obejrzyj, [jak zaplanować eksporty do magazynu za pomocą Azure Cost Management
 
 Przykłady w tym samouczku przeprowadzą Cię przez proces eksportowania danych zarządzania kosztami i sprawdzania, czy dane zostały pomyślnie wyeksportowane.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie codziennego eksportu
@@ -42,7 +42,7 @@ W przypadku kont usługi Azure Storage:
 - Niezależnie od uprawnień dotyczących eksportu, do zmiany skonfigurowanego konta magazynu wymagane są uprawnienia zapisu.
 - Twoje konto magazynu platformy Azure musi być skonfigurowane jako magazyn obiektów blob lub magazyn plików.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com/).
 
 ## <a name="create-a-daily-export"></a>Tworzenie codziennego eksportu
@@ -50,7 +50,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 Aby utworzyć lub wyświetlić eksport danych lub zaplanować eksport, otwórz żądany zakres w Azure Portal a następnie wybierz pozycję **Analiza kosztów** w menu. Na przykład przejdź do **subskrypcji**, wybierz subskrypcję z listy, a następnie wybierz pozycję **Analiza kosztów** w menu. W górnej części strony analiza kosztów kliknij przycisk **Eksportuj** , a następnie wybierz opcję eksportowania. Na przykład kliknij pozycję **Zaplanuj eksport**.  
 
 > [!NOTE]
-> - Poza subskrypcjami można tworzyć eksporty dla grup zasobów, kont, działów i rejestracji. Aby uzyskać więcej informacji na temat zakresów, zobacz [Opis i współpraca z zakresami](understand-work-scopes.md).
+> - Oprócz subskrypcji można tworzyć eksporty dla grup zasobów, kont, działów i rejestracji. Aby uzyskać więcej informacji na temat zakresów, zobacz [Opis i współpraca z zakresami](understand-work-scopes.md).
 >- Gdy logujesz się jako partner w zakresie konta rozliczeń lub dzierżawcy klienta, możesz wyeksportować dane do konta usługi Azure Storage połączonego z Twoim kontem magazynu partnerskiego. Należy jednak mieć aktywną subskrypcję w dzierżawie dostawcy usług kryptograficznych.
 >
 
@@ -83,7 +83,7 @@ Istnieją trzy typy opcji eksportu:
 
 **Niestandardowe** — umożliwia zaplanowanie cotygodniowych i comiesięcznych eksportów z opcjami od początku tygodnia i od początku miesiąca. *Początkowy eksport zostanie uruchomiony natychmiast.*
 
-Jeśli masz subskrypcję z płatnością zgodnie z rzeczywistym użyciem, MSDN lub Visual Studio, okres rozliczeniowy faktury może nie być wyrównany do miesiąca kalendarzowego. W przypadku tych typów subskrypcji i grup zasobów można utworzyć eksport wyrównany do okresu faktury lub miesięcy kalendarzowych. Aby utworzyć eksport wyrównany do miesiąca faktury, przejdź do **niestandardowego**, a następnie wybierz pozycję **rozliczenia — okres do daty**.  Aby utworzyć eksport wyrównany do miesiąca kalendarzowego, wybierz opcję **miesiąc-do-Data**.
+Jeśli masz subskrypcję z płatnością zgodnie z rzeczywistym użyciem, MSDN lub programu Visual Studio, okres rozliczeniowy na fakturze może nie być zgodny z miesiącem kalendarzowym. Dla tych typów subskrypcji i grup zasobów można utworzyć eksport zgodny z okresem na fakturze lub z miesiącami kalendarzowymi. Aby utworzyć eksport wyrównany do miesiąca faktury, przejdź do **niestandardowego**, a następnie wybierz pozycję **rozliczenia — okres do daty**.  Aby utworzyć eksport wyrównany do miesiąca kalendarzowego, wybierz opcję **miesiąc-do-Data**.
 >
 >
 

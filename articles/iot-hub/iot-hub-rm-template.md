@@ -1,6 +1,6 @@
 ---
-title: Tworzenie usługi Azure IoT Hub przy użyciu szablonu (.NET) | Dokumentacja firmy Microsoft
-description: Jak utworzyć Centrum IoT Hub przy użyciu programu C# za pomocą szablonu usługi Azure Resource Manager.
+title: Tworzenie IoT Hub platformy Azure przy użyciu szablonu (.NET) | Microsoft Docs
+description: Jak utworzyć IoT Hub z C# programem przy użyciu szablonu Azure Resource Manager.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,44 +9,44 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d9fe58457f9a74466128273dcffee08e17aeb75
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457039"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT przy użyciu szablonu usługi Azure Resource Manager (.NET)
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT Hub przy użyciu szablonu Azure Resource Manager (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Usługi Azure Resource Manager służy do tworzenia i zarządzania usługi Azure IoT hubs programowo. W tym samouczku dowiesz się, jak utworzyć Centrum IoT hub z programu C# za pomocą szablonu usługi Azure Resource Manager.
+Za pomocą Azure Resource Manager można programowo tworzyć centra Azure IoT Hub i zarządzać nimi. W tym samouczku przedstawiono sposób tworzenia Centrum IoT Hub z C# programu przy użyciu szablonu Azure Resource Manager.
 
 > [!NOTE]
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [Usługa Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
+> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano użycie Azure Resource Manager model wdrażania.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Program Visual Studio.
-* Aktywne konto platformy Azure. <br/>Jeśli go nie masz, możesz utworzyć [bezpłatne konto][lnk-free-trial] w zaledwie kilka minut.
-* [Konta usługi Azure Storage] [ lnk-storage-account] której możesz przechowywać pliki szablonu usługi Azure Resource Manager.
-* [Azure PowerShell 1.0] [ lnk-powershell-install] lub nowszej.
+* Aktywne konto platformy Azure. <br/>Jeśli nie masz konta, możesz utworzyć [bezpłatne konto][lnk-free-trial] w zaledwie kilka minut.
+* [Konto usługi Azure Storage][lnk-storage-account] , na którym można przechowywać pliki szablonów Azure Resource Manager.
+* [Azure PowerShell 1,0][lnk-powershell-install] lub nowszy.
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
-## <a name="prepare-your-visual-studio-project"></a>Przygotowanie projektu programu Visual Studio
+## <a name="prepare-your-visual-studio-project"></a>Przygotowywanie projektu programu Visual Studio
 
-1. W programie Visual Studio Utwórz projekt Visual C# Windows Classic Desktop za pomocą **Aplikacja konsoli (.NET Framework)** szablonu projektu. Nadaj projektowi nazwę **CreateIoTHub**.
+1. W programie Visual Studio Utwórz projekt programu C# Visual Desktop klasyczny systemu Windows przy użyciu szablonu projektu **aplikacja konsoli (.NET Framework)** . Nazwij projekt **CreateIoTHub**.
 
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nad projektem, a następnie kliknij przycisk **Zarządzaj pakietami NuGet**.
+2. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie kliknij polecenie **Zarządzaj pakietami NuGet**.
 
-3. Sprawdź w Menedżerze pakietów NuGet **Uwzględnij wersję wstępną**, a następnie na **Przeglądaj** strony wyszukiwanie **Microsoft.Azure.Management.ResourceManager**. Wybierz pakiet, kliknij przycisk **zainstalować**w **przeglądanie zmian** kliknij **OK**, następnie kliknij przycisk **akceptuję** zaakceptowania licencji.
+3. W Menedżerze pakietów NuGet zaznacz pole wyboru **Uwzględnij wersję wstępną**, a na stronie **Przeglądaj** Wyszukaj pozycję **Microsoft. Azure. Management. ResourceManager**. Wybierz pakiet, kliknij przycisk **Instaluj**, w obszarze **Przegląd zmian** kliknij przycisk **OK**, a następnie kliknij przycisk **Akceptuję** , aby zaakceptować licencje.
 
-4. W Menedżerze pakietów NuGet, wyszukaj **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Kliknij przycisk **zainstalować**w **przeglądanie zmian** kliknij **OK**, następnie kliknij przycisk **akceptuję** Aby zaakceptować licencję.
+4. W Menedżerze pakietów NuGet Wyszukaj ciąg **Microsoft. IdentityModel. clients. ActiveDirectory**.  Kliknij przycisk **Instaluj**, w obszarze **Przegląd zmian** kliknij przycisk **OK**, a następnie kliknij przycisk **Akceptuję** , aby zaakceptować licencję.
 
-5. W pliku Program.cs Zastąp istniejące **przy użyciu** instrukcji z następującym kodem:
+5. W Program.cs Zastąp istniejące instrukcje **using** następującym kodem:
 
     ```csharp
     using System;
@@ -56,7 +56,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
     using Microsoft.Rest;
     ```
 
-6. W pliku Program.cs Dodaj następujące zmienne statyczne, zastępując wartość symbolu zastępczego. Należy zanotować **ApplicationId**, **SubscriptionId**, **TenantId**, i **hasło** wcześniej w tym samouczku. **Nazwa konta magazynu Azure** jest nazwa konta usługi Azure Storage, w którym są przechowywane pliki szablonu usługi Azure Resource Manager. **Nazwa grupy zasobów** to nazwa grupy zasobów, możesz użyć podczas tworzenia Centrum IoT. Nazwa może zawierać wstępnie istniejącej lub nowej grupy zasobów. **Nazwa wdrożenia** jest nazwa wdrożenia, takich jak **Deployment_01**.
+6. W Program.cs Dodaj następujące zmienne statyczne, zastępując wartości symboli zastępczych. W tym samouczku zawarto uwagi na temat identyfikatora **aplikacji**, identyfikatora **subskrypcji**, **TenantId**i **hasła** . **Nazwa konta usługi Azure Storage** to nazwa konta usługi Azure Storage, na którym są przechowywane pliki szablonów Azure Resource Manager. **Nazwa grupy zasobów** to nazwa grupy zasobów, która jest używana podczas tworzenia Centrum IoT Hub. Nazwa może być istniejącą lub nową grupą zasobów. **Nazwa wdrożenia** to nazwa wdrożenia, taka jak **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -70,13 +70,13 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="submit-a-template-to-create-an-iot-hub"></a>Przesyłanie szablonu do utworzenia Centrum IoT
+## <a name="submit-a-template-to-create-an-iot-hub"></a>Prześlij szablon w celu utworzenia Centrum IoT Hub
 
-Tworzenie Centrum IoT w grupie zasobów przy użyciu pliku szablonu oraz parametrów JSON. Można również użyć szablonu usługi Azure Resource Manager do wprowadzania zmian w istniejącym Centrum IoT.
+Użyj szablonu i pliku parametrów JSON, aby utworzyć Centrum IoT w grupie zasobów. Możesz również użyć szablonu Azure Resource Manager, aby wprowadzić zmiany w istniejącym Centrum IoT.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt, kliknij przycisk **Dodaj**, a następnie kliknij przycisk **nowy element**. Dodaj plik JSON o nazwie **template.json** do projektu.
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, kliknij polecenie **Dodaj**, a następnie kliknij pozycję **nowy element**. Dodaj plik JSON o nazwie **Template. JSON** do projektu.
 
-2. Aby dodać standardowa usługi IoT hub do **wschodnie stany USA** regionu, Zastąp zawartość **template.json** przy użyciu następującej definicji zasobu. Aby uzyskać bieżącą listę regionów, które obsługują usługi IoT Hub, zobacz [stanu platformy Azure][lnk-status]:
+2. Aby dodać standardowe Centrum IoT do regionu **Wschodnie stany USA** , Zastąp zawartość pliku **Template. JSON** poniższą definicją zasobu. Aby zapoznać się z bieżącą listą regionów, które obsługują IoT Hub zobacz [Stan platformy Azure][lnk-status]:
 
     ```json
     {
@@ -112,9 +112,9 @@ Tworzenie Centrum IoT w grupie zasobów przy użyciu pliku szablonu oraz paramet
     }
     ```
 
-3. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt, kliknij przycisk **Dodaj**, a następnie kliknij przycisk **nowy element**. Dodaj plik JSON o nazwie **parameters.json** do projektu.
+3. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, kliknij polecenie **Dodaj**, a następnie kliknij pozycję **nowy element**. Dodaj plik JSON o nazwie **Parameters. JSON** do projektu.
 
-4. Zastąp zawartość **parameters.json** z następującymi informacjami parametr, który określa nazwę nowego centrum IoT, takich jak **{inicjały} mynewiothub**. Tak powinien on zawierać Twoje nazwisko lub inicjały musi być globalnie unikatowa nazwa Centrum IoT:
+4. Zastąp zawartość pliku **Parameters. JSON** następującymi informacjami o parametrach, które określają nazwę nowego centrum IoT, takiego jak **{Initials} mynewiothub**. Nazwa Centrum IoT musi być globalnie unikatowa, dlatego powinna zawierać nazwę lub inicjały:
 
     ```json
     {
@@ -127,15 +127,15 @@ Tworzenie Centrum IoT w grupie zasobów przy użyciu pliku szablonu oraz paramet
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. W **Eksploratora serwera**, a następnie nawiązać połączenie z subskrypcją platformy Azure i w ramach konta usługi Azure Storage Utwórz kontener o nazwie **szablony**. W **właściwości** panelu, ustaw **publicznego dostępu do odczytu** uprawnienia dla **szablony** kontener **obiektu Blob**.
+5. W **Eksplorator serwera**Połącz się z subskrypcją platformy Azure, a na koncie usługi Azure Storage Utwórz kontener o nazwie **templates**. W panelu **Właściwości ustaw właściwość** **publiczny dostęp do odczytu** dla kontenera **templates** na **obiekt BLOB**.
 
-6. W **Eksploratora serwera**, kliknij prawym przyciskiem myszy **szablony** kontenera, a następnie kliknij przycisk **kontenera obiektów Blob widoku**. Kliknij przycisk **przekazywanie obiektu Blob** przycisku, wybierz dwa pliki **parameters.json** i **templates.json**, a następnie kliknij przycisk **Otwórz** do przekazania Pliki JSON **szablony** kontenera. Adresy URL obiektów blob zawierający dane JSON to:
+6. W **Eksplorator serwera**kliknij prawym przyciskiem myszy kontener **szablonów** , a następnie kliknij polecenie **Wyświetl kontener obiektów BLOB**. Kliknij przycisk **Przekaż obiekt BLOB** , wybierz dwa pliki, **Parameters. JSON** i **Templates. JSON**, a następnie kliknij przycisk **Otwórz** , aby przekazać pliki JSON do kontenera **szablonów** . Adresy URL obiektów BLOB zawierających dane JSON to:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
-7. Dodaj następującą metodę do pliku Program.cs:
+7. Dodaj następującą metodę do Program.cs:
 
     ```csharp
     static void CreateIoTHub(ResourceManagementClient client)
@@ -144,7 +144,7 @@ Tworzenie Centrum IoT w grupie zasobów przy użyciu pliku szablonu oraz paramet
     }
     ```
 
-8. Dodaj następujący kod do **CreateIoTHub** metody do przesyłania plików szablonu oraz parametrów do usługi Azure Resource Manager:
+8. Dodaj następujący kod do metody **CreateIoTHub** w celu przesłania plików szablonów i parametrów do Azure Resource Manager:
 
     ```csharp
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -167,7 +167,7 @@ Tworzenie Centrum IoT w grupie zasobów przy użyciu pliku szablonu oraz paramet
         });
     ```
 
-9. Dodaj następujący kod do **CreateIoTHub** metoda, która wyświetla stan i klucze służące do nowego centrum IoT:
+9. Dodaj następujący kod do metody **CreateIoTHub** , która wyświetla stan i klucze dla nowego centrum IoT:
 
     ```csharp
     string state = createResponse.Properties.ProvisioningState;
@@ -180,41 +180,41 @@ Tworzenie Centrum IoT w grupie zasobów przy użyciu pliku szablonu oraz paramet
     Console.WriteLine(createResponse.Properties.Outputs);
     ```
 
-## <a name="complete-and-run-the-application"></a>Ukończenie, a następnie uruchom aplikację
+## <a name="complete-and-run-the-application"></a>Ukończ i uruchom aplikację
 
-Możesz teraz ukończyć aplikacji, wywołując **CreateIoTHub** metoda przed Kompiluj i uruchom go.
+Teraz możesz ukończyć aplikację, wywołując metodę **CreateIoTHub** przed kompilacją i uruchomieniem.
 
-1. Dodaj następujący kod na końcu **Main** metody:
+1. Dodaj następujący kod na końcu metody **Main** :
 
     ```csharp
     CreateIoTHub(client);
     Console.ReadLine();
     ```
 
-2. Kliknij przycisk **kompilacji** i następnie **Kompiluj rozwiązanie**. Usuń wszelkie błędy.
+2. Kliknij pozycję **kompilacja** , a następnie **Skompiluj rozwiązanie**. Popraw wszelkie błędy.
 
-3. Kliknij przycisk **debugowania** i następnie **Rozpocznij debugowanie** do uruchomienia aplikacji. Może upłynąć kilka minut, zanim uruchamiania wdrożenia.
+3. Kliknij pozycję **Debuguj** , a następnie **Rozpocznij debugowanie** , aby uruchomić aplikację. Uruchomienie wdrożenia może potrwać kilka minut.
 
-4. Aby sprawdzić, aplikacja dodaje nowe Centrum IoT hub, odwiedź stronę [witryny Azure portal] [ lnk-azure-portal] i wyświetlanie listy zasobów. Można również użyć **Get AzResource** polecenia cmdlet programu PowerShell.
+4. Aby sprawdzić, czy aplikacja dodała nowe centrum IoT Hub, odwiedź [Azure Portal][lnk-azure-portal] i Wyświetl listę zasobów. Alternatywnie możesz użyć polecenia cmdlet programu PowerShell **Get-AzResource** .
 
 > [!NOTE]
-> Ta przykładowa aplikacja dodaje S1 standardowa usługi IoT Hub dla którego stosowana jest stawka. Możesz usunąć Centrum IoT hub za pośrednictwem [witryny Azure portal] [ lnk-azure-portal] lub za pomocą **AzResource Usuń** polecenia cmdlet programu PowerShell po zakończeniu.
+> Ta przykładowa aplikacja dodaje standardowe IoT Hub S1, dla którego są naliczane opłaty. Możesz usunąć Centrum IoT za pośrednictwem [Azure Portal][lnk-azure-portal] lub przy użyciu polecenia cmdlet **Remove-AzResource** środowiska PowerShell po zakończeniu.
 
-## <a name="next-steps"></a>Kolejne kroki
-Po wdrożeniu usługi IoT hub przy użyciu szablonu usługi Azure Resource Manager z programem C#, warto dokładniej:
+## <a name="next-steps"></a>Następne kroki
+Teraz wdrożono Centrum IoT przy użyciu szablonu Azure Resource Manager z C# programem, warto dowiedzieć się więcej:
 
-* Przeczytaj o możliwości [interfejs API REST dostawcy zasobów usługi IoT Hub][lnk-rest-api].
-* Odczyt [Omówienie usługi Azure Resource Manager] [ lnk-azure-rm-overview] Aby dowiedzieć się więcej o możliwościach usługi Azure Resource Manager.
-* Składnię JSON i właściwości do użycia w szablonach, zobacz [typów zasobów Microsoft.Devices](/azure/templates/microsoft.devices/iothub-allversions).
+* Przeczytaj o możliwościach [interfejsu API REST dostawcy zasobów IoT Hub][lnk-rest-api].
+* Przeczytaj [Azure Resource Manager przegląd][lnk-azure-rm-overview] , aby dowiedzieć się więcej o możliwościach Azure Resource Manager.
+* Aby poznać składnię i właściwości JSON do użycia w szablonach, zobacz [typy zasobów Microsoft. Devices](/azure/templates/microsoft.devices/iothub-allversions).
 
-Aby dowiedzieć się więcej na temat tworzenia usługi IoT Hub, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat opracowywania IoT Hub, zobacz następujące artykuły:
 
 * [Wprowadzenie do zestawu SDK języka C][lnk-c-sdk]
-* [Zestawy SDK Azure IoT][lnk-sdks]
+* [Zestawy SDK usługi Azure IoT][lnk-sdks]
 
-Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
+Aby dowiedzieć się więcej o możliwościach IoT Hub, zobacz:
 
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
+* [Wdrażanie AI na urządzeniach brzegowych za pomocą Azure IoT Edge][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -222,7 +222,7 @@ Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

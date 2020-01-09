@@ -1,24 +1,19 @@
 ---
-title: Często zadawane pytania dotyczące siatki Service Fabric Azure | Microsoft Docs
+title: Często zadawane pytania dotyczące siatki Service Fabric platformy Azure
 description: Zapoznaj się z często zadawanymi pytaniami i odpowiedziami dotyczącymi usługi Azure Service Fabric siatką.
-services: service-fabric-mesh
-keywords: ''
-author: chackdan
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.service: service-fabric-mesh
-manager: jeanpaul.connock
-ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461991"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania dotyczące Service Fabric siatki
 
-Siatka Service Fabric platformy Azure to w pełni zarządzana usługa, która umożliwia deweloperom wdrażanie aplikacji mikrousług bez konieczności zarządzania maszynami wirtualnymi, magazynem lub siecią. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
+Usługa Azure Service Fabric Mesh to w pełni zarządzana usługa, która pozwala deweloperom na wdrażanie aplikacji mikrousług bez zarządzania maszynami wirtualnymi, magazynem i siecią. W tym artykule znajdują się odpowiedzi na często zadawane pytania.
 
 ## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak mogę zgłosić problem lub zadać pytanie?
 
@@ -47,9 +42,9 @@ Tak. Przydziały dla każdej subskrypcji są następujące:
 
 Obecnie ograniczono okres istnienia aplikacji na dwa dni. Jest to w celu zmaksymalizowania używania bezpłatnych rdzeni przyznanych do wersji zapoznawczej. W związku z tym można uruchamiać tylko danego wdrożenia w sposób ciągły przez 48 godzin, po upływie którego czas zostanie zamknięty.
 
-Jeśli zobaczysz ten problem, możesz sprawdzić, czy system zamknie go, uruchamiając polecenie `az mesh app show` w interfejsie wiersza polecenia platformy Azure. Sprawdź, czy zwraca `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Jeśli zobaczysz ten problem, możesz sprawdzić, czy system zamknie go, uruchamiając polecenie `az mesh app show` w interfejsie wiersza polecenia platformy Azure. Sprawdź, czy funkcja zwraca `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Na przykład: 
+Przykład: 
 
 ```cli
 ~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -86,12 +81,11 @@ W przypadku tworzenia aplikacji na komputerze z aktualizacją programu Windows U
 W przypadku tworzenia aplikacji na komputerze z aktualizacją 2018 (wersja 1803) z systemem Windows 10 kwietnia można użyć obrazów platformy Docker systemu Windows w wersji 1709 lub 1803 Windows.
 
 Następujące obrazy systemu operacyjnego kontenera mogą służyć do wdrażania usług:
-
 - Windows-windowsservercore i nanoserver
-    - System Windows Server 1709
-    - System Windows Server 1803
-    - System Windows Server 1809
-    - LTSC systemu Windows Server 2019
+    - Windows Server 1709
+    - System Windows Server w wersji 1803
+    - Windows Server 1809
+    - Windows Server 2019 LTSC
 - Linux
     - Brak znanych ograniczeń
 
@@ -110,7 +104,7 @@ Wychodzące zapytania DNS z kontenera do usługi DNS Service Fabric mogą kończ
 
 - Użyj aktualizacji Windows Update Creators (wersja 1709) lub nowszej jako obrazu podstawowego kontenera.
 - Jeśli sama nazwa usługi nie działa, spróbuj użyć w pełni kwalifikowanej nazwy: ServiceName. ApplicationName.
-- W pliku platformy Docker dla usługi Dodaj `EXPOSE <port>`, gdzie Port to port, na którym jest uwidaczniana usługa. Na przykład:
+- W pliku platformy Docker dla usługi Dodaj `EXPOSE <port>` gdzie port jest portem, na którym jest udostępniana usługa. Przykład:
 
 ```Dockerfile
 EXPOSE 80
@@ -126,7 +120,7 @@ Siatka Azure nie obsługuje obecnie rozpoznawania nazw DNS między aplikacjami.
 
 Inne znane problemy z usługą DNS dotyczące uruchamiania Service Fabric klastra projektowego w systemie Windows 10 można znaleźć w temacie: [debugowanie kontenerów systemu Windows](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) i [znanych problemów z usługą DNS](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
-### <a name="networking"></a>Obsługa sieci
+### <a name="networking"></a>Networking
 
 Translator adresów sieciowych usługi servicefabric może zniknąć podczas korzystania z aplikacji na komputerze lokalnym. Aby zdiagnozować, czy ten wystąpił, uruchom następujące polecenie w wierszu polecenia:
 
@@ -138,7 +132,7 @@ Spowoduje to rozwiązanie problemu, nawet jeśli aplikacja została już wdrożo
 
 W przypadku wszystkich aplikacji mogą wystąpić problemy z dostępnością procesora CPU i ograniczeniami. Aby wyeliminować:
 - Utwórz klaster z pięcioma węzłami.
-- Zmniejsz użycie procesora CPU w usługach w ramach wdrożonej aplikacji. Na przykład w pliku Service. YAML usługi Zmień wartość `cpu: 1.0` na `cpu: 0.5`
+- Zmniejsz użycie procesora CPU w usługach w ramach wdrożonej aplikacji. Na przykład w pliku Service. YAML usługi Zmień `cpu: 1.0` na `cpu: 0.5`
 
 Nie można wdrożyć wielu aplikacji w klastrze z jednym węzłem. Aby wyeliminować:
 - W przypadku wdrażania wielu aplikacji w klastrze lokalnym należy użyć pięciu węzłów klastra.

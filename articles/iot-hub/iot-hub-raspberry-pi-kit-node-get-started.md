@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457100"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Łączenie Raspberry Pi z platformą Azure IoT Hub (Node. js)
 
@@ -78,7 +78,7 @@ Następujące elementy są opcjonalne:
 > [!NOTE]
 > Jeśli nie masz elementów opcjonalnych, możesz użyć symulowanych danych czujników.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -148,7 +148,7 @@ W przypadku numerów PIN czujnika Użyj następujących okablowania:
 | Dioda LED VDD (PIN 18F)        | GPIO 24 (numer PIN 18)       | Biały kabel   |
 | Dioda LED GND (PIN 17F)        | GND (numer PIN 20)           | Czarny kabel   |
 
-Kliknij, aby wyświetlić [mapowania Raspberry Pi 2 & 3 kod PIN](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) dla odwołania.
+Kliknij, aby wyświetlić [mapowania Raspberry Pi 2 & 3 kod PIN](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) dla odwołania.
 
 Po pomyślnym nawiązaniu połączenia BME280 z Raspberry Pi powinna wyglądać tak jak poniżej.
 
@@ -244,9 +244,9 @@ Uruchom przykładową aplikację, uruchamiając następujące polecenie:
    > [!NOTE]
    > Upewnij się, że kopiujesz, wklejając parametry połączenia urządzenia do pojedynczego cudzysłowu.
 
-Powinny pojawić się następujące dane wyjściowe pokazujące dane czujnika i komunikaty wysyłane do centrum IoT Hub.
+Powinny zostać wyświetlone następujące dane wyjściowe pokazujące dane czujnika i komunikaty, które są wysyłane do Twojego centrum IoT.
 
-![Dane z czujnika danych wyjściowych wysyłane z Raspberry Pi do centrum IoT Hub](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
+![Dane wyjściowe — dane czujnika wysyłane z urządzenia Raspberry Pi do centrum IoT](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Odczytywanie komunikatów odebranych przez centrum
 

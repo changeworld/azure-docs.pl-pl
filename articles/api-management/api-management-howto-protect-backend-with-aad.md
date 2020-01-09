@@ -1,5 +1,6 @@
 ---
-title: Ochrona interfejsu API przy użyciu protokołu OAuth 2,0 z Azure Active Directory i API Management | Microsoft Docs
+title: Ochrona interfejsu API przy użyciu protokołu OAuth 2,0 z usługą AAD i API Management
+titleSuffix: Azure API Management
 description: Dowiedz się, jak chronić zaplecze interfejsu API sieci Web przy użyciu Azure Active Directory i API Management.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806331"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442516"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2,0 z Azure Active Directory i API Management
 
@@ -32,7 +33,7 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 * Publikowany interfejs API korzystający z wystąpienia API Management
 * Dzierżawa usługi Azure AD
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Poniżej przedstawiono krótkie omówienie kroków:
 
@@ -60,9 +61,7 @@ Aby chronić interfejs API za pomocą usługi Azure AD, pierwszy krok polega na 
 
 1. Na stronie **Przegląd** aplikacji Znajdź wartość **Identyfikator aplikacji (klienta)** i Zapisz ją jako nowszą.
 
-Po utworzeniu aplikacji Zanotuj **Identyfikator aplikacji**, który ma być używany w kolejnym kroku. 
-
-1. Wybierz opcję **Uwidocznij interfejs API** i kliknij pozycję **Zapisz i Kontynuuj,** aby utworzyć identyfikator URI aplikacji.
+1. Wybierz opcję **Uwidocznij interfejs API** i ustaw **Identyfikator URI aplikacji** z wartością domyślną. Zapisz tę wartość w późniejszym czasie.
 
 1. Na stronie **Dodawanie zakresu** Utwórz nowy zakres obsługiwany przez interfejs API. (np., Odczytaj), a następnie kliknij pozycję *Dodaj zakres* , aby utworzyć zakres. Powtórz ten krok, aby dodać wszystkie zakresy obsługiwane przez interfejs API.
 
@@ -80,7 +79,7 @@ Każda aplikacja kliencka, która wywołuje interfejs API, musi zostać zarejest
     - W sekcji **Nazwa** podaj znaczącą nazwę aplikacji, która będzie wyświetlana użytkownikom aplikacji, na przykład `client-app`. 
     - W sekcji **obsługiwane typy kont** wybierz pozycję **konta w dowolnym katalogu organizacyjnym**. 
 
-1. W sekcji **Identyfikator URI przekierowania** wybierz `Web` i wprowadź adres URL.`https://contoso5.portal.azure-api.net/signin`
+1. W sekcji **Identyfikator URI przekierowania** wybierz pozycję `Web` i wprowadź adres URL `https://contoso5.portal.azure-api.net/signin`
 
 1. Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację. 
 
@@ -100,13 +99,13 @@ Po zarejestrowaniu dwóch aplikacji do reprezentowania interfejsu API i konsoli 
 
 1. Przejdź do **rejestracje aplikacji**. 
 
-1. Wybierz `client-app`pozycję i na liście stron dla aplikacji przejdź do pozycji **interfejs API**.
+1. Wybierz pozycję `client-app`, a na liście stron dla aplikacji przejdź do pozycji **interfejs API**.
 
 1. Wybierz pozycję **Dodaj uprawnienie**.
 
 1. W obszarze **Wybierz interfejs API**Znajdź i wybierz `backend-app`.
 
-1. W obszarze **delegowane uprawnienia**wybierz odpowiednie uprawnienia `backend-app` , a następnie kliknij pozycję **Dodaj uprawnienia**.
+1. W obszarze **delegowane uprawnienia**wybierz odpowiednie uprawnienia, aby `backend-app` następnie kliknij pozycję **Dodaj uprawnienia**.
 
 1. Opcjonalnie na stronie **uprawnienia interfejsu API** kliknij pozycję **Udziel zgody administratorowi na < nazwę dzierżawy >** w dolnej części strony, aby przyznać zgodę w imieniu wszystkich użytkowników w tym katalogu. 
 
@@ -122,7 +121,7 @@ W tym przykładzie Konsola dewelopera jest aplikacją Client-App. W poniższych 
 
 1. Podaj **nazwę wyświetlaną** i **Opis**.
 
-1. W polu **adres URL strony rejestracji klienta**wprowadź wartość symbolu zastępczego, na `http://localhost`przykład. **Adres URL strony rejestracji klienta** wskazuje stronę, za pomocą której użytkownicy mogą tworzyć i konfigurować własne konta dla dostawców OAuth 2,0 obsługujących ten program. W tym przykładzie użytkownicy nie tworzą i nie konfigurują własnych kont, więc zamiast tego należy użyć symbolu zastępczego.
+1. W polu **adres URL strony rejestracji klienta**wprowadź wartość symbolu zastępczego, taką jak `http://localhost`. **Adres URL strony rejestracji klienta** wskazuje stronę, za pomocą której użytkownicy mogą tworzyć i konfigurować własne konta dla dostawców OAuth 2,0 obsługujących ten program. W tym przykładzie użytkownicy nie tworzą i nie konfigurują własnych kont, więc zamiast tego należy użyć symbolu zastępczego.
 
 1. W obszarze **typy przyzwoleń**wybierz pozycję **kod autoryzacji**.
 
@@ -150,9 +149,9 @@ W tym przykładzie Konsola dewelopera jest aplikacją Client-App. W poniższych 
 
 1. Wybierz pozycję **Utwórz**.
 
-1. Wróć do strony **Ustawienia** aplikacji klienta.
+1. Wróć do aplikacji klienckiej i wybierz pozycję **uwierzytelnianie**.
 
-1. Wybierz pozycję **adresy URL odpowiedzi**i wklej **redirect_url** w pierwszym wierszu. W tym przykładzie zastąpiono `https://localhost` adresem URL w pierwszym wierszu.  
+1. W obszarze **identyfikatory URI przekierowania**wybierz typ jako **Web**, wklej **redirect_url** w obszarze **Identyfikator URI przekierowania**, a następnie Zapisz.
 
 Po skonfigurowaniu serwera autoryzacji uwierzytelniania OAuth 2,0 Konsola dewelopera może uzyskać tokeny dostępu z usługi Azure AD. 
 
@@ -162,7 +161,7 @@ Następnym krokiem jest włączenie autoryzacji użytkownika OAuth 2,0 dla inter
 
 2. Wybierz interfejs API, który ma być chroniony. Można na przykład użyć `Echo API`.
 
-3. Przejdź do **ustawienia**.
+3. Przejdź do obszaru **Settings** (Ustawienia).
 
 4. W obszarze **zabezpieczenia**wybierz pozycję **OAuth 2,0**i wybierz skonfigurowany wcześniej serwer OAuth 2,0. 
 
@@ -181,7 +180,7 @@ Teraz, gdy autoryzacja użytkownika OAuth 2,0 jest włączona w interfejsie API,
 
 3. Z listy rozwijanej autoryzacja wybierz pozycję **kod autoryzacji** , a zostanie wyświetlony monit o zalogowanie się do dzierżawy usługi Azure AD. Jeśli użytkownik jest już zalogowany przy użyciu konta, może nie zostać wyświetlony monit.
 
-4. Po pomyślnym zalogowaniu `Authorization` do żądania zostanie dodany nagłówek z tokenem dostępu z usługi Azure AD. Poniżej znajduje się przykładowy token (kodowany algorytmem Base64):
+4. Po pomyślnym zalogowaniu do żądania zostanie dodany nagłówek `Authorization` z tokenem dostępu z usługi Azure AD. Poniżej znajduje się przykładowy token (kodowany algorytmem Base64):
 
    ```
    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
@@ -194,16 +193,16 @@ Teraz, gdy autoryzacja użytkownika OAuth 2,0 jest włączona w interfejsie API,
 
 W tym momencie, gdy użytkownik próbuje wykonać wywołanie z poziomu konsoli dewelopera, użytkownik zostanie poproszony o zalogowanie się. Konsola dewelopera uzyskuje token dostępu w imieniu użytkownika i zawiera token w żądaniu wykonywanym w interfejsie API.
 
-Jeśli jednak ktoś dzwoni do interfejsu API bez tokenu lub z nieprawidłowym tokenem? Na przykład spróbuj wywołać interfejs API bez `Authorization` nagłówka, połączenie będzie nadal się powtarzać. Przyczyną jest to, że API Management nie sprawdza poprawności tokenu dostępu w tym momencie. Po prostu przekazuje `Authorization` nagłówek do interfejsu API zaplecza.
+Jeśli jednak ktoś dzwoni do interfejsu API bez tokenu lub z nieprawidłowym tokenem? Na przykład spróbuj wywołać interfejs API bez nagłówka `Authorization`, a połączenie będzie nadal się powtarzać. Przyczyną jest to, że API Management nie sprawdza poprawności tokenu dostępu w tym momencie. Po prostu przekazuje nagłówek `Authorization` do interfejsu API zaplecza.
 
-Za pomocą [walidacji zasad JWT](api-management-access-restriction-policies.md#ValidateJWT) można wstępnie autoryzować żądania w API Management, sprawdzając tokeny dostępu dla każdego żądania przychodzącego. Jeśli żądanie nie ma prawidłowego tokenu, API Management ją zablokuje. Na przykład Dodaj następujące zasady do `<inbound>` sekcji `Echo API`zasady programu. Sprawdza to w tokenie dostępu i zwraca komunikat o błędzie, jeśli token jest nieprawidłowy. Aby uzyskać informacje na temat konfigurowania zasad, zobacz [Ustawianie lub edytowanie zasad](set-edit-policies.md).
+Za pomocą [walidacji zasad JWT](api-management-access-restriction-policies.md#ValidateJWT) można wstępnie autoryzować żądania w API Management, sprawdzając tokeny dostępu dla każdego żądania przychodzącego. Jeśli żądanie nie ma prawidłowego tokenu, API Management ją zablokuje. Na przykład Dodaj następujące zasady do sekcji zasady `<inbound>` w `Echo API`. Sprawdza to w tokenie dostępu i zwraca komunikat o błędzie, jeśli token jest nieprawidłowy. Aby uzyskać informacje na temat konfigurowania zasad, zobacz [Ustawianie lub edytowanie zasad](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID of backend-app}</value>
+            <value>{Application ID URI of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>
@@ -211,7 +210,7 @@ Za pomocą [walidacji zasad JWT](api-management-access-restriction-policies.md#V
 
 ## <a name="build-an-application-to-call-the-api"></a>Tworzenie aplikacji do wywoływania interfejsu API
 
-W tym przewodniku użyto konsoli dewelopera w API Management jako Przykładowa aplikacja kliencka do wywołania `Echo API` chronionego za pomocą protokołu OAuth 2,0. Aby dowiedzieć się więcej na temat tworzenia aplikacji i implementowania protokołu OAuth 2,0, zobacz [Azure Active Directory przykładów kodu](../active-directory/develop/sample-v1-code.md).
+W tym przewodniku użyto konsoli dewelopera w API Management jako Przykładowa aplikacja kliencka, która wywoła `Echo API` chroniony przez OAuth 2,0. Aby dowiedzieć się więcej na temat tworzenia aplikacji i implementowania protokołu OAuth 2,0, zobacz [Azure Active Directory przykładów kodu](../active-directory/develop/sample-v1-code.md).
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [Azure Active Directory i OAuth 2.0](../active-directory/develop/authentication-scenarios.md).

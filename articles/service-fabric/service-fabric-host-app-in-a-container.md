@@ -1,31 +1,20 @@
 ---
-title: Wdrażanie aplikacji .NET w kontenerze w usłudze Azure Service Fabric | Microsoft Docs
+title: Wdrażanie aplikacji .NET w kontenerze na platformie Azure Service Fabric
 description: Dowiedz się, jak konteneryzować istniejącą aplikację platformy .NET przy użyciu programu Visual Studio i jak debugować kontenery lokalnie w usłudze Service Fabric. Konteneryzowana aplikacja jest wypychana do usługi Azure Container Registry i wdrażana w klastrze usługi Service Fabric. Po wdrożeniu na platformie Azure aplikacja utrwala dane za pomocą usługi Azure SQL DB.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/08/2019
-ms.author: atsenthi
-ms.openlocfilehash: 6e088d9ae201dc5a09de45b2a528b77400d8a111
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d1602d292af24d8c0bc9139debb3967aa7183a06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463051"
 ---
-# <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: Wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
+# <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Samouczek: wdrażanie aplikacji .NET w kontenerze systemu Windows w usłudze Azure Service Fabric
 
 W tym samouczku przedstawiono sposób konteneryzacji istniejącej aplikacji ASP.NET i tworzenia z niej pakietu będącego aplikacją usługi Service Fabric.  Uruchom kontenery lokalnie w klastrze programistycznym usługi Service Fabric, a następnie wdróż aplikację na platformie Azure.  Aplikacja będzie utrwalać dane w usłudze [Azure SQL Database](/azure/sql-database/sql-database-technical-overview). 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konteneryzowanie istniejącej aplikacji za pomocą programu Visual Studio
@@ -42,7 +31,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 2. Zainstaluj program [Docker CE dla systemu Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), który umożliwia uruchamianie kontenerów w systemie Windows 10.
 3. Zainstaluj [środowisko uruchomieniowe usługi Service Fabric w wersji 6.2 lub nowszej](service-fabric-get-started.md) i [zestaw SDK usługi Service Fabric w wersji 3.1](service-fabric-get-started.md) lub nowszej.
 4. Zainstaluj [program Visual Studio 2019 w wersji 16,1](https://www.visualstudio.com/) lub nowszej przy użyciu obciążeń deweloperskich i **ASP.NET** na **platformie Azure** .
-5. Zainstaluj [Azure PowerShell][link-azure-powershell-install]
+5. Zainstaluj program [Azure PowerShell][link-azure-powershell-install]
  
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Pobieranie i uruchamianie aplikacji Fabrikam Fiber CallCenter
@@ -147,7 +136,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 ## <a name="create-a-service-fabric-cluster-on-azure"></a>Tworzenie klastra usługi Service Fabric na platformie Azure
 Aplikacje usługi Service Fabric działają w klastrze — połączonym z siecią zestawie maszyn wirtualnych lub fizycznych.  Przed wdrożeniem aplikacji na platformie Azure utwórz klaster usługi Service Fabric na platformie Azure.
 
-Możesz:
+Przekonaj się:
 - Utworzyć klaster testowy z poziomu programu Visual Studio. Ta opcja służy do tworzenia bezpiecznego klastra bezpośrednio z poziomu programu Visual Studio z preferowaną konfiguracją. 
 - [Utworzyć zabezpieczony klaster na podstawie szablonu](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
@@ -167,11 +156,11 @@ Podczas tworzenia klastra:
 
     a. Określ nazwę klastra w polu **Nazwa klastra**, a także subskrypcję i lokalizację, których chcesz użyć. Zanotuj nazwę grupy zasobów klastra.
 
-    b. Opcjonalnie: możesz zmodyfikować liczbę węzłów. Domyślne ustawienie to trzy węzły, czyli minimalna liczba wymagana do testowania scenariuszy usługi Service Fabric.
+    b. Opcjonalnie możesz zmodyfikować liczbę węzłów. Domyślne ustawienie to trzy węzły, czyli minimalna liczba wymagana do testowania scenariuszy usługi Service Fabric.
 
-    c. Wybierz kartę **Certyfikat**. Na tej karcie wpisz hasło zabezpieczające certyfikat klastra. Ten certyfikat pomaga zabezpieczyć klaster. Możesz również zmodyfikować ścieżkę, w której ma zostać zapisany certyfikat. Program Visual Studio może również automatycznie zaimportować certyfikat, ponieważ jest to krok wymagany do opublikowania aplikacji w klastrze.
+    d. Wybierz kartę **certyfikat** . Na tej karcie wpisz hasło, które zostanie użyte do zabezpieczenia certyfikatu klastra. Ten certyfikat pomaga zabezpieczyć klaster. Możesz również zmodyfikować ścieżkę, w której ma zostać zapisany certyfikat. Program Visual Studio może również automatycznie zaimportować certyfikat, ponieważ jest to krok wymagany do opublikowania aplikacji w klastrze.
 
-    d. Wybierz kartę **Szczegóły maszyny wirtualnej**. Określ hasło, którego chcesz używać dla maszyn wirtualnych wchodzących w skład klastra. Za pomocą nazwy użytkownika i hasła można zdalnie łączyć się z maszynami wirtualnymi. Należy również wybrać rozmiar maszyny wirtualnej oraz zmienić obraz maszyny wirtualnej, jeśli jest to konieczne. 
+    d. Wybierz kartę **Szczegóły maszyny wirtualnej** . Określ hasło, którego chcesz użyć dla Virtual Machines (VM), które tworzą klaster. Za pomocą nazwy użytkownika i hasła można zdalnie łączyć się z maszynami wirtualnymi. Należy również wybrać rozmiar maszyny wirtualnej oraz zmienić obraz maszyny wirtualnej, jeśli jest to konieczne. 
 
     > [!IMPORTANT]
     >Wybierz jednostkę SKU, która obsługuje uruchomione kontenery. System operacyjny Windows Server na węzłach klastra musi być zgodny z systemem operacyjnym Windows Server kontenera. Aby dowiedzieć się więcej, zobacz temat [Windows Server container OS and host OS compatibility](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility) (Zgodność między systemami operacyjnymi Windows Server kontenera i hosta). Domyślnie w tym samouczku zostanie utworzony obraz platformy Docker opartej na systemie Windows Server 2016 LTSC. Kontenery oparte na tym obrazie zostaną uruchomione na klastrach utworzonych za pomocą Windows Server 2016 Datacenter with Containers. Jednak jeśli utworzysz klaster lub użyjesz istniejącego klastra w oparciu o Windows Server Datacenter Core 1709 with Containers, zmień obraz systemu operacyjnego Windows Server, na którym jest oparty kontener. Otwórz plik **Dockerfile** w projekcie **FabrikamFiber.Web**, usuń komentarz dotyczący istniejącej instrukcji akcji `FROM` (na podstawie `windowsservercore-ltsc`) i usuń komentarz dotyczący instrukcji akcji `FROM` na podstawie `windowsservercore-1709`. 
@@ -235,7 +224,7 @@ Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze platformy Azure bez
 
 ![Publikowanie aplikacji][publish-app]
 
-Śledzenie postępu wdrażania w oknie danych wyjściowych.  Gdy aplikacja jest wdrażana, otwórz przeglądarkę, a następnie wpisz adres klastra i port aplikacji. Na przykład http:\//fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com:8659/.
+Śledzenie postępu wdrażania w oknie danych wyjściowych.  Gdy aplikacja jest wdrażana, otwórz przeglądarkę, a następnie wpisz adres klastra i port aplikacji. Na przykład http:\//fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Przykład internetowy dla firmy Fabrikam][fabrikam-web-page-deployed]
 

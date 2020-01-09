@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: korzystanie z kolejek Azure Service Bus w programie Node. js'
+title: Korzystanie z kolejek Azure Service Bus w programie Node. js przy użyciu pakietu Azure-SB
 description: 'Szybki Start: Dowiedz się, jak używać kolejek Service Bus na platformie Azure z poziomu aplikacji node. js.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462174"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Szybki Start: korzystanie z kolejek Service Bus na platformie Azure przy użyciu środowiska Node. js i pakietu Azure-SB
 
@@ -33,7 +33,7 @@ W ramach tego samouczka nauczysz się tworzyć aplikacje Node. js do wysyłania 
 Pakiet [Azure-SB](https://www.npmjs.com/package/azure-sb) używa [Service Bus interfejsów API REST w czasie wykonywania](/rest/api/servicebus/service-bus-runtime-rest). Możesz uzyskać szybsze środowisko przy użyciu nowego [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) , który używa szybszego [protokołu AMQP 1,0](service-bus-amqp-overview.md). Aby dowiedzieć się więcej o nowym pakiecie, zobacz [How to use Service Bus Queues with Node. js i @azure/service-bus Package](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package). w przeciwnym razie Kontynuuj odczytywanie, aby zobaczyć, jak korzystać z pakietu [platformy Azure](https://www.npmjs.com/package/azure) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Jeśli nie masz kolejki do współpracy z programem, postępuj zgodnie z instrukcjami w temacie [Use Azure Portal, aby utworzyć](service-bus-quickstart-portal.md) kolejkę Service Bus w celu utworzenia kolejki.
     1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
     2. Utwórz **przestrzeń nazw**Service Bus. 
@@ -135,7 +135,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Wysyłanie komunikatów do kolejki
-Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `sendQueueMessage` na obiekcie **ServiceBusService** . Komunikaty wysyłane do (i odbieranych z) Service Bus kolejki są obiektami **BrokeredMessage** i mają zestaw właściwości standardowych (takich jak **etykieta** i **TimeToLive**), słownik używany do przechowywania niestandardowych właściwości specyficznych dla aplikacji, a także treść dowolnych danych aplikacji. Aplikacja może ustawić treść komunikatu przez przekazanie ciągu jako wiadomości. Wszystkie wymagane właściwości standardowe są wypełniane wartościami domyślnymi.
+Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `sendQueueMessage` na obiekcie **ServiceBusService** . Komunikaty wysyłane do (i odbieranych z) Service Bus kolejki są obiektami **BrokeredMessage** i mają zestaw właściwości standardowych (takich jak **etykieta** i **TimeToLive**), słownik używany do przechowywania niestandardowych właściwości specyficznych dla aplikacji oraz treść dowolnych danych aplikacji. Aplikacja może ustawić treść komunikatu przez przekazanie ciągu jako wiadomości. Wszystkie wymagane właściwości standardowe są wypełniane wartościami domyślnymi.
 
 Poniższy przykład pokazuje, jak wysłać wiadomość testową do kolejki o nazwie `myqueue` przy użyciu `sendQueueMessage`:
 

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: a7bb26cdfec4042a1963f929f92e5505045124a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2f15008149de00ba232824280c69bcf4da978f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749244"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459266"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Tworzenie przestrzeni nazw usługi Relay za pomocą witryny Azure Portal
 
 Przestrzeń nazw jest kontenerem określania zakresu dla wszystkich składników usługi Azure Relay. W jednej przestrzeni nazw może znajdować się wiele usług Relay, a przestrzenie nazw często pełnią rolę kontenerów aplikacji. Obecnie istnieją dwa różne sposoby tworzenia przestrzeni nazw usługi Relay:
 
 1. Azure Portal (w tym artykule)
-2. Szablony usługi [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+2. Szablony usługi [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Tworzenie przestrzeni nazw w witrynie Azure Portal
 
@@ -34,9 +34,9 @@ Przestrzeń nazw jest kontenerem określania zakresu dla wszystkich składników
 
 Gratulacje! Przestrzeń nazw usługi Relay została utworzona.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Często zadawane pytania dotyczące usługi Relay](relay-faq.md)
-* [Wprowadzenie do programu .NET](relay-hybrid-connections-dotnet-get-started.md)
+* [Rozpoczęcie pracy z programem .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Wprowadzenie do programu Node](relay-hybrid-connections-node-get-started.md)
 

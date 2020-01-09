@@ -3,22 +3,22 @@ title: Wdrażanie Azure Policy do delegowanych subskrypcji na dużą skalę
 description: Dowiedz się, jak zarządzanie zasobami delegowanymi przez platformę Azure umożliwia wdrożenie definicji zasad i przypisania zasad dla wielu dzierżawców.
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463858"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456843"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Wdrażanie Azure Policy do delegowanych subskrypcji na dużą skalę
 
 Jako dostawca usług możesz dołączyć wielu dzierżawców klientów do zarządzania zasobami delegowanymi przez platformę Azure. Usługa [Azure Lighthouse](../overview.md) umożliwia dostawcom usług wykonywanie operacji na dużą skalę w wielu dzierżawcach, co sprawia, że zadania zarządzania są bardziej wydajne.
 
-W tym temacie przedstawiono sposób użycia [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) do wdrożenia definicji zasad i przypisania zasad dla wielu dzierżawców przy użyciu poleceń programu PowerShell. W tym przykładzie definicja zasad gwarantuje, że konta magazynu są zabezpieczone przez umożliwienie tylko ruchu HTTPS.
+W tym temacie przedstawiono sposób użycia [Azure Policy](../../governance/policy/index.yml) do wdrożenia definicji zasad i przypisania zasad dla wielu dzierżawców przy użyciu poleceń programu PowerShell. W tym przykładzie definicja zasad gwarantuje, że konta magazynu są zabezpieczone przez umożliwienie tylko ruchu HTTPS.
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Korzystanie z grafu zasobów platformy Azure do wykonywania zapytań w dzierżawach klientów
 
-Korzystając z [grafu zasobów platformy Azure](https://docs.microsoft.com/azure/governance/resource-graph/) , można wykonywać zapytania dotyczące wszystkich subskrypcji w dzierżawach klientów, którymi zarządzasz. W tym przykładzie określimy wszystkie konta magazynu w tych subskrypcjach, które nie wymagają obecnie ruchu HTTPS.  
+Korzystając z [grafu zasobów platformy Azure](../../governance/resource-graph/index.yml) , można wykonywać zapytania dotyczące wszystkich subskrypcji w dzierżawach klientów, którymi zarządzasz. W tym przykładzie określimy wszystkie konta magazynu w tych subskrypcjach, które nie wymagają obecnie ruchu HTTPS.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
+- Dowiedz się więcej na temat [Azure Policy](../../governance/policy/index.yml).
 - Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](../concepts/cross-tenant-management-experience.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: jak używać tematów Azure Service Bus i subskrypcji za pomocą środowiska Node. js'
+title: Korzystanie z Azure Service Bus tematów i subskrypcji z pakietem Azure/Service-Bus w języku Node. js
 description: 'Szybki Start: informacje na temat używania Service Bus tematów i subskrypcji na platformie Azure z poziomu aplikacji node. js.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 80ca9589e7181518874dc26a9a42b57774f60498
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3955b67bd0fd40eb903543a240795ed8bc36b3b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462116"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Szybki Start: jak używać tematów Service Bus i subskrypcji za pomocą środowiska Node. js i pakietu Azure-SB
 > [!div class="op_multi_selector" title1="Język programowania" title2="Uaktualniający środowiska Node. js"]
@@ -41,7 +41,7 @@ Scenariusze omówione poniżej obejmują:
 Aby uzyskać więcej informacji na temat tematów i subskrypcji, zobacz sekcję [następne kroki](#next-steps) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Wykonaj kroki opisane w [przewodniku szybki start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) w celu utworzenia **przestrzeni nazw** Service Bus i pobrania **parametrów połączenia**.
 
     > [!NOTE]

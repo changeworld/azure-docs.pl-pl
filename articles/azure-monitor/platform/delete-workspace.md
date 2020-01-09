@@ -4,15 +4,15 @@ description: Dowiedz się, jak usunąć obszar roboczy Log Analytics, jeśli zos
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/28/2019
-ms.openlocfilehash: b8fdefb5e8555e90b5c9065672f4593e5bf98e06
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 2b54dd5161312a081d439b3e10d2cb4bf9014d52
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326509"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496526"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
 
@@ -20,7 +20,10 @@ W tym artykule wyjaśniono koncepcję nietrwałego usunięcia obszaru roboczego 
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Zagadnienia dotyczące usuwania obszaru roboczego
 
-Po usunięciu obszaru roboczego Log Analytics jest wykonywana operacja usuwania nietrwałego umożliwiająca odzyskanie obszaru roboczego, w tym jego danych i podłączonych agentów w ciągu 14 dni, bez względu na to, czy usunięcie było przypadkowe czy celowe. Po okresie usuwania nieodzyskiwalnego obszar roboczy i jego dane nie są możliwe do odzyskania — dane są umieszczane w kolejce do trwałego usunięcia w ciągu 30 dni, a nazwa obszaru roboczego jest dostępna i można jej użyć do utworzenia nowego obszaru roboczego.
+Po usunięciu obszaru roboczego Log Analytics jest wykonywana operacja usuwania nietrwałego umożliwiająca odzyskanie obszaru roboczego, w tym jego danych i podłączonych agentów w ciągu 14 dni, bez względu na to, czy usunięcie było przypadkowe czy celowe. Po okresie niemożliwym do usunięcia nie można odzyskać zasobu obszaru roboczego i jego danych — dane są umieszczane w kolejce do trwałego usunięcia i całkowicie przeczyszczone w ciągu 30 dni. Nazwa obszaru roboczego jest "wydana" i można go użyć do utworzenia nowego obszaru roboczego.
+
+> [!NOTE]
+> Nie można wyłączyć zachowania nietrwałego usuwania. Wkrótce dodamy opcję przesłaniania usuwania nietrwałego w przypadku używania tagu "Force" w operacji usuwania.
 
 Należy zachować ostrożność podczas usuwania obszaru roboczego, ponieważ mogą istnieć ważne dane i konfiguracja, które mogą negatywnie wpłynąć na działanie usługi. Zapoznaj się z agentami, rozwiązaniami i innymi usługami i źródłami platformy Azure, które przechowują dane w Log Analytics, na przykład:
 
@@ -41,7 +44,7 @@ Operacja usuwania obszaru roboczego służy do usuwania obszaru roboczego Mened�
 
 Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)lub w [Azure Portal](https://portal.azure.com).
 
-### <a name="delete-workspace-in-azure-portal"></a>Usuwanie obszaru roboczego w Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 1. Aby się zalogować, przejdź do [Azure Portal](https://portal.azure.com). 
 2. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
@@ -49,6 +52,11 @@ Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.m
    Opcja usuwania ![z okienka właściwości obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace.png)
 4. Gdy zostanie wyświetlone okno komunikatu potwierdzenia z prośbą o potwierdzenie usunięcia obszaru roboczego, kliknij przycisk **tak**.
    ![potwierdzić usunięcie obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+```
 
 ## <a name="recover-workspace"></a>Odzyskiwanie obszaru roboczego
 

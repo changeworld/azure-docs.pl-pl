@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: jak używać tematów Azure Service Bus i subskrypcji za pomocą środowiska Node. js'
+title: Korzystanie z tematów i subskrypcji platformy Azure/usługi Service Bus z platformą Node. js
 description: 'Szybki Start: informacje na temat używania Service Bus tematów i subskrypcji na platformie Azure z poziomu aplikacji node. js.'
 services: service-bus-messaging
 documentationcenter: nodejs
@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 160f9831a23ed16fc33ddbbb9b4e07a5627a3f9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721666"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462129"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Szybki Start: jak używać tematów Service Bus i subskrypcji z pakietem Node. js i usługą Azure/Service-Bus
 > [!div class="op_multi_selector" title1="Język programowania" title2="Uaktualniający środowiska Node. js"]
@@ -29,7 +29,7 @@ ms.locfileid: "73721666"
 W ramach tego samouczka nauczysz się pisać program Node. js w celu wysyłania komunikatów do Service Bus tematu i odbierania komunikatów z subskrypcji Service Bus przy użyciu nowego pakietu [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Ten pakiet używa szybszego [protokołu AMQP 1,0](service-bus-amqp-overview.md) , podczas gdy starszy pakiet [platformy Azure-SB](https://www.npmjs.com/package/azure-sb) używany [Service Bus interfejsów API czasu wykonywania REST](/rest/api/servicebus/service-bus-runtime-rest). Przykłady są zapisywane w języku JavaScript.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Jeśli nie masz tematu i subskrypcji do współpracy z programem, wykonaj czynności opisane w [Azure Portal Użyj, aby utworzyć tematy Service Bus i subskrypcje](service-bus-quickstart-topics-subscriptions-portal.md) , aby je utworzyć. Zanotuj parametry połączenia dla wystąpienia Service Bus i nazwy utworzonego tematu i subskrypcji. Będziemy używać tych wartości w przykładach.
 
 > [!NOTE]

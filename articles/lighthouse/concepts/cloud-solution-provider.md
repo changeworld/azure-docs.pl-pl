@@ -1,14 +1,14 @@
 ---
 title: Zagadnienia dotyczące programu Cloud Solution Provider
 description: W przypadku partnerów programu CSP delegowane zarządzanie zasobami systemu Azure pomaga zwiększyć bezpieczeństwo i kontrolę dzięki włączeniu szczegółowych uprawnień.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7e1e371d8c31c45828ee0565545cb40145b40e92
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456914"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse i program dostawcy rozwiązań w chmurze
 
@@ -34,9 +34,9 @@ Aby dołączać subskrypcję utworzoną za pomocą programu CSP, wykonaj kroki o
 ![Zarządzanie dzierżawcą przy użyciu AOBO i zarządzania zasobami delegowanymi przez platformę Azure](../media/csp-2.jpg)
 
 > [!NOTE]
-> Na [stronie **moi klienci** w Azure Portal](../how-to/view-manage-customers.md) teraz znajduje się sekcja **dostawca rozwiązań w chmurze (wersja zapoznawcza)** , która wyświetla informacje o rozliczeniach i zasoby dla klientów programu CSP, którzy [podpisali umowę klienta firmy Microsoft (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) i są objęte planem platformy Azure. Aby uzyskać więcej informacji, zobacz artykuł Wprowadzenie [do rozliczeń umowy partnerskiej firmy Microsoft](https://docs.microsoft.com/azure/billing/mpa-overview).
+> Na [stronie **moi klienci** w Azure Portal](../how-to/view-manage-customers.md) teraz znajduje się sekcja **dostawca rozwiązań w chmurze (wersja zapoznawcza)** , która wyświetla informacje o rozliczeniach i zasoby dla klientów programu CSP, którzy [podpisali umowę klienta firmy Microsoft (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) i są [objęte planem platformy Azure](https://docs.microsoft.com/partner-center/azure-plan-get-started). Aby uzyskać więcej informacji, zobacz artykuł Wprowadzenie [do rozliczeń umowy partnerskiej firmy Microsoft](../../billing/mpa-overview.md).
 >
-> Klienci korzystający z programu CSP mogą pojawić się w tej sekcji niezależnie od tego, czy zostały dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli są one dostępne, pojawią się również w sekcji **klienci** zgodnie z opisem w temacie [Wyświetlanie i zarządzanie klientami oraz delegowanymi zasobami](../how-to/view-manage-customers.md).
+> Klienci korzystający z programu CSP mogą pojawić się w tej sekcji bez względu na to, czy zostały również dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Jeśli są one dostępne, pojawią się również w sekcji **klienci** zgodnie z opisem w temacie [Wyświetlanie i zarządzanie klientami oraz delegowanymi zasobami](../how-to/view-manage-customers.md). Podobnie klient dostawcy usług kryptograficznych nie musi być widoczny w sekcji **dostawca rozwiązań w chmurze (wersja zapoznawcza)** w obszarze **moi klienci** w celu dodania ich do zarządzania zasobami delegowanymi przez platformę Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

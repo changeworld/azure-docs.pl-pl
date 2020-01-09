@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure przy u
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową bazy danych SAP HANA na maszynach wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: ed47f18c9dabc685d6fbe02804562ef86a93190a
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: MT
+ms.openlocfilehash: 3246f6cf8046e0a0c5795059ad3448b70130e7e1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285791"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496959"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
 
@@ -21,7 +21,7 @@ W tym artykule dowiesz się jak:
 >
 > * Tworzenie i Konfigurowanie magazynu
 > * Odnajdywanie baz danych
-> * Skonfiguruj kopie zapasowe
+> * Skonfigurowanie funkcji tworzenia kopii zapasowych
 > * Uruchamianie zadania tworzenia kopii zapasowej na żądanie
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -41,11 +41,17 @@ W przypadku wszystkich operacji maszyna wirtualna SAP HANA wymaga łączności z
 Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
 
 * W portalu Zarejestruj swój identyfikator subskrypcji dla dostawcy usług Recovery Services, wykonując [ten artykuł](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-* Dla programu PowerShell uruchom to polecenie cmdlet. Powinna zostać zakończona jako "zarejestrowane".
+* Dla modułu "AZ" w programie PowerShell uruchom to polecenie cmdlet. Powinna zostać zakończona jako "zarejestrowane".
 
     ```powershell
     Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
+* Jeśli używasz modułu "AzureRM" w programie PowerShell, Uruchom to polecenie cmdlet. Powinna zostać zakończona jako "zarejestrowane".
+
+    ```powershell
+    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
+    ```
+    
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -71,7 +77,7 @@ Teraz Włącz tworzenie kopii zapasowej.
 
 1. W kroku 2 kliknij pozycję **Konfiguruj kopię zapasową**.
 
-    ![Skonfiguruj kopię zapasową](./media/backup-azure-sap-hana-database/configure-backup.png)
+    ![Konfigurowanie usługi Backup](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. W obszarze **Wybierz elementy do utworzenia kopii zapasowej**wybierz wszystkie bazy danych, które mają być chronione > **OK**.
 
     ![Wybierz elementy do utworzenia kopii zapasowej](./media/backup-azure-sap-hana-database/select-items.png)
@@ -132,6 +138,9 @@ Określ ustawienia zasad w następujący sposób:
 
 9. Kliknij przycisk **OK** , aby zapisać zasady i wrócić do głównego menu **zasad kopii zapasowych** .
 10. Po zdefiniowaniu zasad tworzenia kopii zapasowej kliknij przycisk **OK**.
+
+> [!NOTE]
+> Każda kopia zapasowa dziennika jest łańcuchem do poprzedniej pełnej kopii zapasowej w celu utworzenia łańcucha odzyskiwania. Ta pełna kopia zapasowa zostanie zachowana do momentu wygaśnięcia ostatniej kopii zapasowej dziennika. Może to oznaczać, że pełna kopia zapasowa jest przechowywana przez dodatkowy okres, aby upewnić się, że wszystkie dzienniki mogą zostać odzyskane. Załóżmy, że użytkownik dysponuje tygodniową pełną kopią zapasową, różnicą dzienną i 2-godzinnymi dziennikami. Wszystkie z nich są przechowywane przez 30 dni. Jednak tydzień pełny może być naprawdę oczyszczony/usunięty tylko po udostępnieniu kolejnej pełnej kopii zapasowej, tj. po upływie 30 dni. Załóżmy, że cotygodniowe pełne kopie zapasowe odbywają się na LIS 16. Zgodnie z zasadami przechowywania należy je zachować do 16 grudnia. Ostatnia kopia zapasowa dziennika dla tego stanu jest wykonywana przed następnym zaplanowanym zaplanowaną godziną. Do momentu udostępnienia tego dziennika do grudnia 22 nie można usunąć. W związku z tym do gru.
 
 ## <a name="run-an-on-demand-backup"></a>Uruchamianie kopii zapasowej na żądanie
 

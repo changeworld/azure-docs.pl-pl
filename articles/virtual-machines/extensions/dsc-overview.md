@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176645"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497282"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do programu obsługi rozszerzenia konfiguracji żądanego stanu platformy Azure
 
@@ -82,7 +82,7 @@ Te informacje mogą być widoczne w [Azure Portal](../../automation/automation-d
 
 W polu Nazwa konfiguracji węzła upewnij się, że konfiguracja węzła istnieje w obszarze Konfiguracja stanu platformy Azure.  Jeśli tak nie jest, wdrożenie rozszerzenia zwróci błąd.  Upewnij się również, że używasz nazwy *konfiguracji węzła* , a nie konfiguracji.
 Konfiguracja jest definiowana w skrypcie, który jest używany [do kompilowania konfiguracji węzła (plik MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
-Nazwa będzie zawsze konfiguracją, po której następuje okres `.` i `localhost` lub określoną nazwę komputera.
+Nazwa będzie zawsze konfiguracją, po której następuje okres `.` i `localhost` lub konkretnej nazwy komputera.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozszerzenie DSC w szablonach Menedżer zasobów
 
@@ -115,7 +115,7 @@ Ważne informacje dotyczące Menedżer zasobów poleceń cmdlet rozszerzenia DSC
 
 Rozszerzenie DSC platformy Azure może używać dokumentów konfiguracji DSC do bezpośredniego konfigurowania maszyn wirtualnych platformy Azure podczas wdrażania. Ten krok nie rejestruje węzła do automatyzacji. Węzeł *nie* jest zarządzany centralnie.
 
-Poniższy przykład pokazuje prosty przykład konfiguracji. Zapisz konfigurację lokalnie jako IisInstall. ps1.
+Poniższy przykład pokazuje prosty przykład konfiguracji. Zapisz konfigurację lokalnie jako iisInstall. ps1.
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-Poniższe polecenia umieszczają skrypt IisInstall. ps1 na określonej maszynie wirtualnej. Polecenia również wykonują konfigurację, a następnie raportują stan ponownie.
+Poniższe polecenia umieszczają skrypt iisInstall. ps1 na określonej maszynie wirtualnej. Polecenia również wykonują konfigurację, a następnie raportują stan ponownie.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -143,7 +143,7 @@ Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupN
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
-## <a name="azure-cli-deployment"></a>Wdrożenie interfejsu wiersza polecenia platformy Azure
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
 Przy użyciu interfejsu wiersza polecenia platformy Azure można wdrożyć rozszerzenie DSC na istniejącej maszynie wirtualnej.
 
@@ -176,7 +176,7 @@ az vm extension set \
 Aby skonfigurować DSC w portalu:
 
 1. Przejdź do maszyny wirtualnej.
-2. W obszarze **Ustawienia**wybierz pozycję **rozszerzenia**.
+2. W obszarze **Ustawienia** wybierz pozycję **Rozszerzenia**.
 3. Na utworzonej nowej stronie wybierz pozycję **+ Dodaj**, a następnie wybierz pozycję **Konfiguracja żądanego stanu programu PowerShell**.
 4. Kliknij pozycję **Utwórz** w dolnej części strony informacje o rozszerzeniu.
 
@@ -198,7 +198,7 @@ Portal zbiera następujące dane wejściowe:
 
 - **Automatycznie uaktualniaj wersję pomocniczą**: to pole jest mapowane **na przełącznik** autouzupełniania w poleceniach cmdlet i włącza rozszerzenie do automatycznej aktualizacji do najnowszej wersji podczas instalacji. **Tak** nakazuje programowi obsługi rozszerzenia użycie najnowszej dostępnej wersji, a wartość **nie** spowoduje wymuszenie instalacji określonej **wersji** . Wybranie opcji **tak** nie **jest** tak samo, jak w przypadku wybrania opcji **nie**.
 
-## <a name="logs"></a>Dziennik
+## <a name="logs"></a>Dzienniki
 
 Dzienniki rozszerzenia są przechowywane w następującej lokalizacji: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 

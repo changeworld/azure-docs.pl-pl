@@ -1,24 +1,16 @@
 ---
-title: Przykłady manifestu aplikacji niezawodnych usług Azure Service Fabric
+title: Przykłady manifestu aplikacji niezawodnych usług
 description: Dowiedz się, jak skonfigurować ustawienia manifestu aplikacji i usługi dla niezawodnych usług Service Fabric aplikacji.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013230"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609829"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Przykłady manifestu aplikacji i usługi Reliable Services
 Poniżej przedstawiono przykłady manifestów aplikacji i usług dla Service Fabric aplikacji z frontonem sieci Web ASP.NET Core i zapasowym zapleczem. Te przykłady przedstawiają, jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usług są oparte na Service Fabric manifestach [szybkiego startu programu .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) .
@@ -286,7 +278,7 @@ W sposób deklaratywny opisano typ i wersję aplikacji. Co najmniej jeden manife
 ### <a name="parameters-element"></a>Element parameters
 Deklaruje parametry, które są używane w manifeście aplikacji. Wartość tych parametrów można podać podczas tworzenia wystąpienia aplikacji i może służyć do przesłaniania ustawień konfiguracji aplikacji lub usługi. Aby uzyskać więcej informacji, zobacz [element parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Element parametru
+### <a name="parameter-element"></a>Element Parameter
 Parametr aplikacji, który ma być używany w tym manifeście. Wartość parametru można zmienić podczas tworzenia wystąpienia aplikacji lub, jeśli nie zostanie podana wartość, zostanie użyta wartość domyślna. Aby uzyskać więcej informacji, zobacz [element parametru](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
 ### <a name="servicemanifestimport-element"></a>ServiceManifestImport, element
@@ -340,7 +332,7 @@ Opisuje podmioty zabezpieczeń (użytkowników, grupy) wymagane przez tę aplika
 ### <a name="groups-element"></a>Groups, element
 Deklaruje zestaw grup jako podmioty zabezpieczeń, do których można odwoływać się w zasadach. Grupy są przydatne, jeśli istnieje wielu użytkowników dla różnych punktów wejścia usługi i że muszą mieć pewne typowe uprawnienia, które są dostępne na poziomie grupy. Aby uzyskać więcej informacji, zobacz [grupy element](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
 
-### <a name="group-element"></a>Element grupy
+### <a name="group-element"></a>Group, element
 Deklaruje grupę jako podmiot zabezpieczeń, do której można odwoływać się zasady. Aby uzyskać więcej informacji, zobacz [element Group](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInGroupselement)
 
 ### <a name="membership-element"></a>Element Membership
@@ -361,7 +353,7 @@ Można dodać użytkowników do dowolnej istniejącej grupy członkostwa, aby mo
 ### <a name="systemgroup-element"></a>Element systemowy
 Grupa systemowa, do której zostanie dodany użytkownik.  Grupa systemowa musi być zdefiniowana w sekcji grup. Aby uzyskać więcej informacji, zobacz [element System](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement) .
 
-### <a name="group-element"></a>Element grupy
+### <a name="group-element"></a>Group, element
 Grupa, do której ma zostać dodany użytkownik.  Grupa musi być zdefiniowana w sekcji grup. Aby uzyskać więcej informacji, zobacz [element Group](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
 ### <a name="policies-element"></a>Element zasad

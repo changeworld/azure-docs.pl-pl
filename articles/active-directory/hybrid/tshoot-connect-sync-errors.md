@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213027"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609200"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Rozwiązywanie problemów z błędami podczas synchronizacji
 Błędy mogą wystąpić, gdy dane tożsamości są synchronizowane z systemu Windows Server Active Directory (AD DS) do Azure Active Directory (Azure AD). Ten artykuł zawiera omówienie różnych typów błędów synchronizacji, niektóre możliwe scenariusze, które powodują te błędy, oraz potencjalne sposoby naprawienia błędów. Ten artykuł zawiera typowe typy błędów i może nie obejmować wszystkich możliwych błędów.
@@ -194,7 +194,7 @@ W przypadku synchronizowanego użytkownika sufiks UserPrincipalName został zmie
 3. Domeny contoso.com i fabrikam.com są domenami federacyjnymi z Azure Active Directory.
 4. Element userPrincipalName Roberta nie zostanie zaktualizowany i spowoduje to błąd synchronizacji "FederatedDomainChangeError".
 
-#### <a name="how-to-fix"></a>Jak naprawić
+#### <a name="how-to-fix"></a>Jak rozwiązać problem
 Jeśli sufiks UserPrincipalName użytkownika został zaktualizowany z bob@**contoso.com** do roberta\@**fabrikam.com**, gdzie **contoso.com** i **fabrikam.com** są **domenami federacyjnymi**, wykonaj następujące kroki, aby naprawić błąd synchronizacji
 
 1. Zaktualizuj element UserPrincipalName użytkownika w usłudze Azure AD, bob@contoso.com do bob@contoso.onmicrosoft.com. Możesz użyć następującego polecenia programu PowerShell z modułem Azure AD PowerShell: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
@@ -218,7 +218,7 @@ Gdy atrybut przekracza dozwolony limit rozmiaru, limit długości lub limit licz
 3. Ustawienie thumbnailPhoto Roberta w Active Directory jest zbyt duże, aby można je było synchronizować w usłudze Azure AD.
 4. Podczas automatycznego wypełniania atrybutu ProxyAddresses w Active Directory obiekt ma zbyt wiele przypisanych ProxyAddresses.
 
-### <a name="how-to-fix"></a>Jak naprawić
+### <a name="how-to-fix"></a>Jak rozwiązać problem
 1. Upewnij się, że atrybut powodujący błąd znajduje się w dozwolonym ograniczeniu.
 
 ## <a name="existing-admin-role-conflict"></a>Konflikt istniejącej roli administratora
@@ -234,13 +234,13 @@ Azure AD Connect nie może być niedozwolony dla obiektu użytkownika z lokalnej
 ![Istniejący administrator](media/tshoot-connect-sync-errors/existingadmin.png)
 
 
-### <a name="how-to-fix"></a>Jak naprawić
-Aby rozwiązać ten problem, wykonaj jedną z następujących czynności:
+### <a name="how-to-fix"></a>Jak rozwiązać problem
+Aby rozwiązać ten problem, należy wykonać następujące czynności:
 
- - Usuń konto usługi Azure AD (właściciela) ze wszystkich ról administratora. 
- - **Usuń trwale** obiekt z kwarantanny w chmurze. 
- - Następny cykl synchronizacji zajmie się niezależnym przełączaniem użytkownika lokalnego do konta w chmurze (ponieważ użytkownik chmury nie jest już globalnie dostępny). 
- - Przywróć członkostwo ról dla właściciela. 
+1. Usuń konto usługi Azure AD (właściciela) ze wszystkich ról administratora. 
+2. **Usuń trwale** obiekt z kwarantanny w chmurze. 
+3. Następny cykl synchronizacji zajmie się niezależnym przełączaniem użytkownika lokalnego do konta w chmurze (ponieważ użytkownik chmury nie jest już globalnie dostępny). 
+4. Przywróć członkostwo ról dla właściciela. 
 
 >[!NOTE]
 >Rolę administracyjną można przypisać do istniejącego obiektu użytkownika ponownie po zakończeniu niepotrzebnego dopasowania między obiektem lokalnym użytkownika a obiektem użytkownika usługi Azure AD.

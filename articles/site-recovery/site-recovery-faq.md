@@ -1,18 +1,14 @@
 ---
 title: Ogólne pytania dotyczące usługi Azure Site Recovery
 description: W tym artykule omówiono popularne pytania dotyczące Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078538"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497537"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Ogólne pytania dotyczące Azure Site Recovery
 
@@ -158,7 +154,7 @@ Nasz partner, Riverbed, zawiera szczegółowe wskazówki dotyczące pracy z Azur
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Czy można używać ExpressRoute do replikowania maszyn wirtualnych na platformę Azure?
 Tak, [ExpressRoute może służyć](concepts-expressroute-with-site-recovery.md) do replikowania lokalnych maszyn wirtualnych na platformę Azure.
 
-- Azure Site Recovery replikuje dane do usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [komunikację równorzędną firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) lub używać istniejącej [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) (przestarzałe dla nowych obwodów) do używania ExpressRoute do replikacji Site Recovery.
+- Azure Site Recovery replikuje dane do usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [komunikację równorzędną firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) lub używać istniejącej [publicznej komunikacji równorzędnej](../expressroute/about-public-peering.md) (przestarzałe dla nowych obwodów) do używania ExpressRoute do replikacji Site Recovery.
 - Komunikacja równorzędna firmy Microsoft jest zalecaną domeną routingu na potrzeby replikacji.
 - Replikacja nie jest obsługiwana w przypadku prywatnej komunikacji równorzędnej.
 - Jeśli chronisz maszyny wirtualne lub maszyny fizyczne, upewnij się, że zostały spełnione także [wymagania dotyczące sieci](vmware-azure-configuration-server-requirements.md#network-requirements) dla serwera konfiguracji. Serwer konfiguracji wymaga połączenia z określonymi adresami URL w celu aranżacji replikacji Site Recovery. Nie można użyć ExpressRoute dla tej łączności.
@@ -219,9 +215,9 @@ Aby zautomatyzować, można użyć lokalnego programu Orchestrator lub Operation
 Tak. odzyskiwanie lokalizacji alternatywnej można użyć do powrotu po awarii do innego hosta z platformy Azure.
 
 * [Dla maszyn wirtualnych VMware](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Dla maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-failback.md#perform-failback)
+* [Dla maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
-## <a name="automation"></a>Automatyzacja
+## <a name="automation"></a>Automation
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Czy można zautomatyzować scenariusze Site Recovery przy użyciu zestawu SDK?
 Tak. Przepływy pracy usługi Site Recovery można zautomatyzować przy użyciu interfejsu API REST, programu PowerShell lub zestawu SDK platformy Azure. Obecnie obsługiwane scenariusze wdrażania Site Recovery przy użyciu programu PowerShell:

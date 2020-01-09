@@ -1,7 +1,7 @@
 ---
-title: Szybki start — tworzenie zestawu skalowania maszyn wirtualnych w witrynie Azure Portal | Microsoft Docs
-description: Dowiedz się, jak szybko utworzyć zestaw skalowania maszyn wirtualnych w witrynie Azure Portal
-services: virtual-machine-scale-sets
+title: Szybki Start — Tworzenie zestawu skalowania maszyn wirtualnych w Azure Portal
+description: Rozpocznij pracę z wdrożeniami, Dowiedz się, jak szybko utworzyć maszynę wirtualną skalowanie Azure Portal.
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351140"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Szybki start: tworzenie zestawu skalowania maszyn wirtualnych w witrynie Azure Portal
 
@@ -44,8 +44,8 @@ Najpierw utwórz publiczny podstawowy moduł równoważenia obciążenia przy u�
     | Grupa zasobów | Wybierz pozycję **Utwórz nowy** i wpisz *myVMSSResourceGroup* w polu tekstowym.|
     | Nazwa           | *myLoadBalancer*         |
     | Region         | Wybierz pozycję **Wschodnie stany USA**.       |
-    | Typ          | wybierz pozycję **Publiczny**.       |
-    | SKU           | Wybierz opcję **Standardowa**.       |
+    | Typ          | Wybierz pozycję **Publiczna**.       |
+    | JSZ           | Wybierz pozycję **Standardowy**.       |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP  | *MyPip*   |
     | Przypisanie| Statyczny |

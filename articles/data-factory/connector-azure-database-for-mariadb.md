@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 00fdeb71cec5995a229c5408429a0369d4317b66
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20e84b584fa4d654500efc47786fa8db0cd9c238
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931662"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440803"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Kopiowanie danych z Azure Database for MariaDB przy użyciu Azure Data Factory 
 
@@ -46,7 +46,7 @@ Następujące właściwości są obsługiwane dla Azure Database for MariaDB po�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type musi mieć wartość: **AzureMariaDB** | Tak |
-| connectionString | Parametry połączenia w celu nawiązania połączenia z Azure Database for MariaDB. Można go znaleźć z Azure Portal-> parametry połączenia Azure Database for MariaDB->-> ADO.NET. <br/>Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory. Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `pwd` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
+| connectionString | Parametry połączenia w celu nawiązania połączenia z Azure Database for MariaDB. Można go znaleźć z Azure Portal-> parametry połączenia Azure Database for MariaDB->-> ADO.NET. <br/> Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `pwd` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
@@ -57,10 +57,7 @@ Następujące właściwości są obsługiwane dla Azure Database for MariaDB po�
     "properties": {
         "type": "AzureMariaDB",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
-            }
+            "connectionString": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; Pwd={your_password}; SslMode=Preferred;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,10 +75,7 @@ Następujące właściwości są obsługiwane dla Azure Database for MariaDB po�
     "properties": {
         "type": "AzureMariaDB",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;"
-            },
+            "connectionString": "Server={your_server}.mariadb.database.azure.com; Port=3306; Database={your_database}; Uid={your_user}@{your_server}; SslMode=Preferred;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 

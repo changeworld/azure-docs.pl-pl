@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fbd658d610fba27bdaed2af4bc27ed40a138fac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008030"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608384"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrowanie dzienników Azure Active Directory z usługą ArcSight przy użyciu Azure Monitor
 
@@ -36,7 +36,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 * Centrum zdarzeń platformy Azure, które zawiera dzienniki aktywności usługi Azure AD. Dowiedz się, jak [przesyłać strumieniowo dzienniki aktywności do centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 * Skonfigurowane wystąpienie ArcSight dziennika systemu SmartConnector demona (SmartConnector) lub ArcSight Load Balancer. Jeśli zdarzenia są wysyłane do ArcSight Load Balancer, są w związku z tym wysyłane do SmartConnector przez Load Balancer.
 
-Pobierz i Otwórz [Przewodnik konfiguracji dla usługi ArcSight SmartConnector dla Azure monitor centrum zdarzeń](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf). Ten przewodnik zawiera kroki, które należy wykonać, aby zainstalować i skonfigurować ArcSight SmartConnector dla Azure Monitor. 
+Pobierz i Otwórz [Przewodnik konfiguracji dla usługi ArcSight SmartConnector dla Azure monitor centrum zdarzeń](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292). Ten przewodnik zawiera kroki, które należy wykonać, aby zainstalować i skonfigurować ArcSight SmartConnector dla Azure Monitor. 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Integrowanie dzienników usługi Azure AD z usługą ArcSight
 
@@ -47,7 +47,7 @@ Pobierz i Otwórz [Przewodnik konfiguracji dla usługi ArcSight SmartConnector d
 
 2. Postępuj zgodnie z instrukcjami w sekcji **wdrażanie łącznika** przewodnika po konfiguracji, aby wdrożyć łącznik. W tej sekcji omówiono sposób pobierania i wyodrębniania łącznika, konfigurowania właściwości aplikacji i uruchamiania skryptu wdrażania z wyodrębnionego folderu. 
 
-3. Wykonaj kroki opisane w sekcji **Weryfikowanie wdrożenia na platformie Azure** , aby upewnić się, że łącznik został skonfigurowany i działa prawidłowo. Sprawdź następujące kwestie:
+3. Wykonaj kroki opisane w sekcji **Weryfikowanie wdrożenia na platformie Azure** , aby upewnić się, że łącznik został skonfigurowany i działa prawidłowo. Sprawdź następujące informacje:
     * Wymagane funkcje platformy Azure są tworzone w ramach subskrypcji platformy Azure.
     * Dzienniki usługi Azure AD są przesyłane strumieniowo do poprawnej lokalizacji docelowej. 
     * Ustawienia aplikacji z wdrożenia są utrwalane w ustawieniach aplikacji w aplikacjach funkcji platformy Azure. 
@@ -59,4 +59,4 @@ Pobierz i Otwórz [Przewodnik konfiguracji dla usługi ArcSight SmartConnector d
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Przewodnik konfiguracji programu ArcSight SmartConnector dla centrum zdarzeń Azure Monitor](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Przewodnik konfiguracji programu ArcSight SmartConnector dla centrum zdarzeń Azure Monitor](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

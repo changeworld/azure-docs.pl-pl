@@ -2,17 +2,17 @@
 title: Szybki Start — zarządzanie prywatnymi punktami końcowymi na platformie Azure
 description: Dowiedz się, jak utworzyć prywatny punkt końcowy przy użyciu Azure Portal w tym przewodniku Szybki Start
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899862"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459935"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Szybki Start: Tworzenie prywatnego punktu końcowego przy użyciu Azure Portal
 
@@ -20,9 +20,6 @@ Prywatny punkt końcowy to podstawowy blok konstrukcyjny dla prywatnego linku na
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-
-> [!NOTE]
-> Prywatne punkty końcowe są niedozwolone w połączeniu z punktami końcowymi usługi w tej samej podsieci.
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
@@ -183,7 +180,7 @@ Po utworzeniu **myVm**Połącz się z nim za pośrednictwem Internetu w następu
 
 1. Wybierz przycisk **Połącz**. Po wybraniu przycisku **Połącz** zostanie otwarta strona **Łączenie z maszyną wirtualną**.
 
-1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
+1. Wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
 
 1. Otwórz *pobrany plik RDP* .
 

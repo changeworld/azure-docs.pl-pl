@@ -1,5 +1,6 @@
 ---
-title: Konfigurowanie niestandardowej nazwy domeny dla wystąpienia usługi Azure API Management | Microsoft Docs
+title: Skonfiguruj niestandardową nazwę domeny dla wystąpienia usługi Azure API Management
+titleSuffix: Azure API Management
 description: W tym temacie opisano, jak skonfigurować niestandardową nazwę domeny dla wystąpienia usługi Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -11,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442546"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny
 
@@ -73,7 +74,7 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
     >
     > Jeśli certyfikat jest ustawiony na automatyczne obracanie, API Management automatycznie pobierze najnowszą wersję bez żadnego przestoju usługi (Jeśli warstwa API Management ma umowę SLA-i. e. we wszystkich warstwach poza warstwą dewelopera).
 
-1. Kliknij przycisk Zastosuj.
+1. Kliknij pozycję Zastosuj.
 
     > [!NOTE]
     > Proces przypisywania certyfikatu może potrwać 15 minut lub dłużej w zależności od rozmiaru wdrożenia. Jednostka SKU dla deweloperów ma przestoje, a w przypadku wersji podstawowa i wyższa nie ma przestojów.

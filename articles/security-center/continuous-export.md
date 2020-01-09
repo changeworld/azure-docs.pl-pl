@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f994f4ec6d41fa0aab37e36d713eaefb22e85b28
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459190"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Eksportowanie alertów zabezpieczeń i zaleceń (wersja zapoznawcza)
 
@@ -41,7 +41,7 @@ Za pomocą tych narzędzi możesz:
 
 1. W obszarze "Eksportuj element docelowy" Wybierz miejsce, w którym chcesz zapisać dane. Dane można zapisywać w miejscu docelowym w innej subskrypcji (na przykład w centralnym wystąpieniu centrum zdarzeń lub w centralnym obszarze roboczym Log Analytics).
 
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 ## <a name="continuous-export-through-azure-event-hubs"></a>Eksport ciągły za pomocą usługi Azure Event Hubs  
 
@@ -50,6 +50,8 @@ Za pomocą tych narzędzi możesz:
 
 > [!NOTE]
 > Jeśli wcześniej wyeksportowano Security Center alerty do SIEM przy użyciu dziennika aktywności platformy Azure, Poniższa procedura zastępuje tę metodologię.
+
+Aby wyświetlić schematy zdarzeń wyeksportowanych typów danych, odwiedź [schematy zdarzeń centrum zdarzeń](https://aka.ms/ASCAutomationSchemas).
 
 ### <a name="to-integrate-with-a-siem"></a>Aby zintegrować z usługą SIEM 
 
@@ -66,13 +68,17 @@ Jeśli używasz funkcji **wskaźnikowej platformy Azure**, Użyj dostępnego w t
 Ponadto jeśli chcesz automatycznie przenieść ciągłe wyeksportowane dane ze skonfigurowanego centrum zdarzeń na platformę Azure Eksplorator danych, Skorzystaj z instrukcji w temacie pozyskiwanie [danych z centrum zdarzeń w usłudze azure Eksplorator danych](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub).
 
 
-## <a name="continuous-export-to-log-analytics-workspace"></a>Eksport ciągły do obszaru roboczego Log Analytics
+## <a name="continuous-export-to-a-log-analytics-workspace"></a>Eksport ciągły do obszaru roboczego Log Analytics
 
 Aby wyeksportować do obszaru roboczego Log Analytics, musisz mieć Security Centere warstwy Bezpłatna lub standardowa Log Analytics dostępne w obszarze roboczym. Jeśli używasz Azure Portal, rozwiązanie Security Center warstwy Bezpłatna jest automatycznie włączane po włączeniu eksportu ciągłego. Jeśli jednak konfigurujesz ustawienia eksportu ciągłego programowo, musisz ręcznie wybrać warstwę cenową dla wymaganego obszaru roboczego z poziomu **ustawień & cenowych**.  
 
-Alerty zabezpieczeń i zalecenia są przechowywane odpowiednio w tabelach *SecurityAlert* i *SecurityRecommendations* . Nazwa rozwiązania Log Analytics zawierającego te tabele zależy od tego, czy korzystasz z warstwy Bezpłatna, czy standardowa (zobacz [Cennik](security-center-pricing.md)): Security lub SecurityCenterFree.
+### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabele i schematy
+
+Alerty zabezpieczeń i zalecenia są przechowywane odpowiednio w tabelach *SecurityAlert* i *SecurityRecommendations* . Nazwa rozwiązania Log Analytics zawierającego te tabele zależy od tego, czy korzystasz z warstwy Bezpłatna, czy standardowa (zobacz [Cennik](security-center-pricing.md)): zabezpieczenia ("Security and Audit") lub SecurityCenterFree.
 
 ![Tabela * SecurityAlert * w Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
+
+Aby wyświetlić schematy zdarzeń wyeksportowanych typów danych, odwiedź [log Analytics schematy tabel](https://aka.ms/ASCAutomationSchemas).
 
 ###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Wyświetlanie wyeksportowanych alertów zabezpieczeń i zaleceń w Azure Monitor
 
@@ -86,7 +92,7 @@ Aby wyświetlić alerty i zalecenia z Security Center w Azure Monitor, skonfigur
 
     ![Strona alertów Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
-1. Na stronie Tworzenie reguły Skonfiguruj nową regułę (w taki sam sposób jak w przypadku konfigurowania [reguły alertu dziennika w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log):
+1. Na stronie Tworzenie reguły Skonfiguruj nową regułę (w taki sam sposób jak w przypadku konfigurowania [reguły alertu dziennika w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)):
 
     * W obszarze **zasób**wybierz obszar roboczy log Analytics, do którego wyeksportowano alerty zabezpieczeń i zalecenia.
 
@@ -104,7 +110,7 @@ Aby pobrać raport CSV dotyczący alertów lub zaleceń, Otwórz stronę **alert
 [![pobierać dane alertów jako plik CSV](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
-> Te raporty zawierają alerty i zalecenia dotyczące zasobów z aktualnie wybranych subskrypcji w filtrze katalogów i subskrypcji w witrynie Azure Portal: ![filtr wybierania katalogu i subskrypcji](./media/continuous-export/filter-for-export-csv.png)
+> Te raporty zawierają alerty i zalecenia dotyczące zasobów z aktualnie wybranych subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -115,3 +121,4 @@ W przypadku pokrewnego materiału zapoznaj się z następującą dokumentacją:
 - [Dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Dokumentacja usługi Azure wskaźnikowego](https://docs.microsoft.com/azure/sentinel/)
 - [Dokumentacja usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Schematy automatyzacji przepływu pracy i typy danych eksportu ciągłego](https://aka.ms/ASCAutomationSchemas)

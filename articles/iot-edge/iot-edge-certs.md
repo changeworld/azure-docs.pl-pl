@@ -4,18 +4,18 @@ description: Usługa Azure IoT Edge używa certyfikatu, aby zweryfikować, urzą
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 09/13/2018
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0aa70e591c7aac977fe13ed638f8ee56b88e4bd1
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457280"
 ---
-# <a name="azure-iot-edge-certificate-usage-detail"></a>Szczegóły użycia certyfikatów w usłudze Azure IoT Edge
+# <a name="understand-how-azure-iot-edge-uses-certificates"></a>Dowiedz się, jak Azure IoT Edge używa certyfikatów
 
 Certyfikaty IoT Edge są używane w modułach i podrzędnych urządzeniach IoT do weryfikowania tożsamości i poprawności modułu środowiska uruchomieniowego [centrum IoT Edge](iot-edge-runtime.md#iot-edge-hub) , z którym się łączą. Tych weryfikacji włączenia protokołu TLS (transport layer zabezpieczeń) bezpiecznego połączenia między środowiska uruchomieniowego, moduły i urządzeń IoT. Takich jak usługi IoT Hub sam IoT Edge wymaga bezpiecznego i szyfrowane połączenie z IoT podrzędne (lub liści) urządzeń i moduły usługi IoT Edge. Aby nawiązać bezpieczne połączenie TLS, moduł IoT Edge Hub przedstawia łańcuch certyfikatów serwera do łączenia klientów, aby zweryfikować swoją tożsamość.
 
@@ -51,7 +51,7 @@ W każdym przypadku producenta używa certyfikat pośredniego urzędu certyfikac
 
 ### <a name="device-ca-certificate"></a>Certyfikat dostępu Warunkowego do urządzeń
 
-Certyfikat urzędu certyfikacji urządzenia jest generowany na podstawie i podpisem ostatecznego certyfikat pośredniego urzędu certyfikacji w procesie. Ten certyfikat jest instalowany na urządzeniu IoT Edge, najlepiej w bezpiecznym magazynie, takim jak sprzętowy moduł zabezpieczeń (HSM). Ponadto certyfikat urzędu certyfikacji urządzenia jednoznacznie identyfikuje urządzenia usługi IoT Edge. W przypadku IoT Edge certyfikat urzędu certyfikacji urządzenia może wystawić inne certyfikaty. Na przykład certyfikat urzędu certyfikacji urządzenia wystawia certyfikaty urządzeń liściowych, które są używane do uwierzytelniania urządzeń w [usłudze Azure IoT Device](../iot-dps/about-iot-dps.md)Provisioning.
+Certyfikat urzędu certyfikacji urządzenia jest generowany na podstawie i podpisem ostatecznego certyfikat pośredniego urzędu certyfikacji w procesie. Ten certyfikat jest instalowany na urządzeniu IoT Edge, najlepiej w bezpiecznym magazynie, takim jak sprzętowy moduł zabezpieczeń (HSM). Ponadto certyfikat urzędu certyfikacji urządzenia jednoznacznie identyfikuje urządzenia usługi IoT Edge. Certyfikat urzędu certyfikacji urządzenia może podpisać inne certyfikaty. 
 
 ### <a name="iot-edge-workload-ca"></a>Obciążenie usługi IoT Edge urzędu certyfikacji
 
@@ -78,29 +78,7 @@ Ponieważ procesy produkcyjne i operacyjne są rozdzielone, podczas przygotowywa
 
 ## <a name="devtest-implications"></a>Tworzenie i testowanie skutków
 
-Aby ułatwić sobie projektowanie i przetestować scenariusze, firma Microsoft udostępnia zestaw [skrypty wygody](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) generowania nieprodukcyjnych certyfikatów odpowiednich dla usługi IoT Edge w scenariuszu przezroczystej bramy. Przykłady działania skryptów, zobacz [Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md).
-
-Te skrypty generować certyfikaty, które należy wykonać strukturę łańcucha certyfikatów, które są opisane w tym artykule. Następujące polecenia generowania "certyfikat głównego urzędu certyfikacji" i jednym "certyfikat pośredniego urzędu certyfikacji".
-
-```bash
-./certGen.sh create_root_and_intermediate 
-```
-
-```Powershell
-New-CACertsCertChain rsa 
-```
-
-Podobnie te polecenia Generuj "Certyfikat urzędu certyfikacji urządzenia".
-
-```bash
-./certGen.sh create_edge_device_ca_certificate "<gateway device name>"
-```
-
-```Powershell
-New-CACertsEdgeDeviceCA "<gateway device name>"
-```
-
-* **Nazwaurządzenia\> bramy przeniesiona do tych skryptów nie powinna być taka sama jak parametr "hostname" w pliku config. YAML. \<** Skrypty te pomagają uniknąć wszelkich problemów, dołączając ciąg ". ca" do  **\<\> nazwy urządzenia bramy** , aby zapobiec kolizji nazw na wypadek, gdyby Użytkownik ustawił IoT Edge przy użyciu tej samej nazwy w obu miejscach. Jednak dobrym sposobem jest unikanie używania tej samej nazwy.
+Aby ułatwić sobie projektowanie i przetestować scenariusze, firma Microsoft udostępnia zestaw [skrypty wygody](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) generowania nieprodukcyjnych certyfikatów odpowiednich dla usługi IoT Edge w scenariuszu przezroczystej bramy. Przykłady działania skryptów znajdują się w temacie [Create demonstracyjne Certificates to test IoT Edge Features](how-to-create-test-certificates.md).
 
 >[!Tip]
 > Aby połączyć urządzenia IoT "liścia" urządzeniami i aplikacje, które używają nasz zestaw SDK urządzeń IoT za pomocą usługi IoT Edge, należy dodać opcjonalny parametr GatewayHostName się na końcu parametry połączenia urządzenia. Po wygenerowaniu certyfikatu serwera Centrum usługi Edge jest on oparty na nazwę hosta z config.yaml wersję dolnym — z uwzględnieniem wielkości liter, w związku z tym, nazw do dopasowania i weryfikację certyfikatu TLS powiodło się, które należy wprowadzić parametr GatewayHostName w małymi literami.
@@ -120,8 +98,8 @@ Możesz zobaczyć hierarchię głębokość certyfikatu reprezentowane na zrzuci
 | Certyfikat urzędu certyfikacji obciążenia     | iotedge obciążenia z urzędu certyfikacji                                                                                       |
 | Certyfikat serwera IoT Edge Hub | iotedgegw.Local (odpowiada nazwę hosta z config.yaml)                                                |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Omówienie modułów usługi Azure IoT Edge](iot-edge-modules.md)
 
-[Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy](how-to-create-transparent-gateway.md)
+[Konfigurowanie urządzenia usługi IoT Edge, aby działało jako przezroczysta brama](how-to-create-transparent-gateway.md)

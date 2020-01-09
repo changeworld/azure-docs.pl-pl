@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: daeb09acd11d727b11ad8a7b98d97ff90fddc6d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457069"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Przydziały IoT Hub i ograniczanie przepustowości
 
@@ -44,7 +44,7 @@ W poniższej tabeli przedstawiono wymuszone ograniczenia. Wartości odnoszą si�
 | Wysłane z chmury do urządzenia<sup>1</sup> | 1,67 operacji wysyłania/s/jednostkę (100 komunikatów/min/jednostka) | 1,67 operacji wysyłania/s/jednostkę (100 operacji wysyłania/min/jednostka) | 83,33 operacji wysyłania/s/jednostkę (5 000 operacji wysyłania/min/jednostka) |
 | Odebrane z chmury do urządzenia<sup>1</sup> <br/> (tylko w przypadku, gdy urządzenie używa protokołu HTTPS)| 16,67 operacji odbioru/s/jednostkę (1 000 operacji odbioru/min/jednostka) | 16,67 operacji odbioru/s/jednostkę (1 000 operacji odbioru/min/jednostka) | 833,33 operacji odbioru/s/jednostkę (50 000 operacji odbioru/min/jednostka) |
 | Przekazywanie plików | 1,67 liczba inicjacji przekazywania plików na sekundę/jednostkę (100/min/jednostka) | 1,67 liczba inicjacji przekazywania plików na sekundę/jednostkę (100/min/jednostka) | 83,33 liczba inicjacji przekazywania plików na sekundę/jednostkę (5000/min/jednostka) |
-| Metody bezpośrednie<sup>1</sup> | 160KB/s/jednostka<sup>2</sup> | 480KB/s/jednostka<sup>2</sup> | 24MB/s/jednostka<sup>2</sup> | 
+| Metody bezpośrednie<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/sec/unit<sup>2</sup> | 
 | Zapytania | 20/min/jednostkę | 20/min/jednostkę | 1000/min/jednostkę |
 | Sznury (urządzenia i moduły) — odczyt<sup>1</sup> | 100/s | Wyższa z 100/s lub 10/s/jednostkę | 500/sek/jednostkę |
 | Aktualizacje bliźniaczye (urządzenie i moduł)<sup>1</sup> | 50/s | Ponad 50/s lub 5/s/jednostkę | 250/sek/jednostkę |
@@ -101,11 +101,11 @@ IoT Hub wymusza inne limity operacyjne:
 | Dodatkowe punkty końcowe | Płatne centra jednostek SKU mogą mieć 10 dodatkowych punktów końcowych. Bezpłatne centra SKU mogą mieć jeden dodatkowy punkt końcowy. |
 | Zapytania routingu komunikatów | Płatne centra jednostek SKU mogą mieć 100 zapytań routingu. Bezpłatne centra SKU mogą mieć pięć zapytań routingu. |
 | Wzbogacenia wiadomości | Płatne centra jednostek SKU mogą mieć maksymalnie 10 wzbogacania komunikatów. Bezpłatne centra SKU mogą mieć maksymalnie 2 wzbogacanie komunikatów.|
-| Obsługa komunikatów przesyłanych z urządzeń do chmury | Maksymalny rozmiar komunikatu 256 KB |
+| Obsługa komunikatów z urządzenia do chmury | Maksymalny rozmiar komunikatu 256 KB |
 | Obsługa komunikatów z chmury do urządzeń<sup>1</sup> | Maksymalny rozmiar komunikatu 64 KB. Maksymalna liczba oczekujących komunikatów do dostarczenia to 50 na urządzenie. |
 | Metoda bezpośrednia<sup>1</sup> | Maksymalny rozmiar ładunku metody bezpośredniej to 128 KB. |
-| Automatyczne konfiguracje urządzeń<sup>1</sup> | 100 konfiguracje na płatne centra SKU. 20 konfiguracji na bezpłatne centrum SKU. |
-| IoT Edge wdrożeń automatycznych<sup>1</sup> | 20 modułów na wdrożenie. 100 wdrożeń na płatne centra SKU. 10 wdrożeń na bezpłatne centrum SKU. |
+| Automatyczne konfiguracje urządzeń i modułów<sup>1</sup> | 100 konfiguracje na płatne centra SKU. 20 konfiguracji na bezpłatne centrum SKU. |
+| IoT Edge wdrożeń automatycznych<sup>1</sup> | 20 modułów na wdrożenie. 100 wdrożenia (w tym wdrożenia warstwowe) na płatne centra SKU. 10 wdrożeń na bezpłatne centrum SKU. |
 | Bliźniaczych reprezentacji<sup>1</sup> | Maksymalny rozmiar żądanych właściwości i raportowane sekcje są 32 KB każdego z nich. Maksymalny rozmiar sekcji tagów to 8 KB. |
 
 <sup>1</sup> Ta funkcja nie jest dostępna w warstwie Podstawowa IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać właściwy IoT Hub](iot-hub-scaling.md).

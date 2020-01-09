@@ -1,14 +1,14 @@
 ---
 title: Wyświetlanie klientów i delegowanych zasobów oraz zarządzanie nimi
 description: Jako dostawca usług korzystający z funkcji zarządzania zasobami delegowanymi przez platformę Azure możesz wyświetlić wszystkie delegowane zasoby i subskrypcje klientów, przechodząc do moich klientów w Azure Portal.
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456834"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Wyświetlanie klientów i delegowanych zasobów oraz zarządzanie nimi
 
@@ -16,7 +16,9 @@ Dostawcy usług korzystający z funkcji [zarządzania zasobami delegowanymi prze
 
 Aby uzyskać dostęp do strony **moi klienci** w Azure Portal, wybierz pozycję **wszystkie usługi**, a następnie wyszukaj pozycję **moi klienci** i wybierz ją. Można ją również znaleźć, wpisując "My Customers" w polu wyszukiwania w górnej części Azure Portal.
 
-Należy pamiętać, że w górnej części strony **moi klienci** są wyświetlane tylko informacje o klientach, którzy mają delegowane subskrypcje lub grupy zasobów. Jeśli pracujesz z innymi klientami (na przykład za pomocą [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview)), nie zobaczysz tutaj informacji o tych klientach, chyba że połączysz swoje zasoby w celu zarządzania delegowanymi zasobami. Na stronie, w sekcji **dostawca rozwiązań w chmurze (wersja zapoznawcza)** przedstawiono informacje o rozliczeniach i zasoby dla klientów programu CSP, którzy [podpisali umowę klienta firmy Microsoft (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) i są objęte planem platformy Azure, niezależnie od tego, czy zostały one dołączone Zarządzanie zasobami delegowanymi przez platformę Azure. Aby uzyskać więcej informacji, zobacz artykuł Wprowadzenie [do rozliczeń umowy partnerskiej firmy Microsoft](https://docs.microsoft.com/azure/billing/mpa-overview).
+Należy pamiętać, że na stronie **moi klienci** są wyświetlane tylko informacje **o klientach** , którzy mają delegowane subskrypcje lub grupy zasobów. Jeśli pracujesz z innymi klientami (na przykład za pomocą [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview)), nie zobaczysz informacji o klientach w sekcji **Customers** , chyba że dołączysz swoje zasoby do zarządzania zasobami delegowanymi przez platformę Azure.
+
+Na tej stronie oddzielna sekcja o nazwie **dostawca rozwiązań w chmurze (wersja zapoznawcza)** zawiera informacje o rozliczeniach i zasoby dla klientów programu CSP, którzy [podpisali umowę klienta firmy Microsoft (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) i są [objęte planem platformy Azure](https://docs.microsoft.com/partner-center/azure-plan-get-started). Aby uzyskać więcej informacji, zobacz artykuł Wprowadzenie [do rozliczeń umowy partnerskiej firmy Microsoft](../../billing/mpa-overview.md). Należy zauważyć, że tacy klienci korzystający z programu CSP są wyświetlani w tej sekcji, niezależnie od tego, czy zostały również dołączone do zarządzania zasobami delegowanymi przez platformę Azure. Podobnie klient dostawcy usług kryptograficznych nie musi być widoczny w sekcji **dostawca rozwiązań w chmurze (wersja zapoznawcza)** w obszarze **moi klienci** w celu dodania ich do zarządzania zasobami delegowanymi przez platformę Azure.
 
 > [!NOTE]
 > Klienci mogą wyświetlać informacje o dostawcach usług, przechodząc do **dostawców usług** w Azure Portal. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i zarządzanie dostawcami usług](view-manage-service-providers.md).
@@ -28,7 +30,7 @@ Aby wyświetlić szczegóły klienta, wybierz pozycję **klienci** po lewej stro
 Dla każdego klienta zobaczysz nazwę klienta, identyfikator klienta (identyfikator dzierżawy) i ofertę skojarzoną z zaangażowaniem. W kolumnie **delegacje** zostanie wyświetlona liczba delegowanych subskrypcji i/lub liczba delegowanych grup zasobów.
 
 > [!IMPORTANT]
-> Aby można było wyświetlić delegowanie, użytkownicy muszą mieć przyznaną rolę [czytelnika](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika) w procesie dołączania.
+> Aby można było wyświetlić delegowanie, użytkownicy muszą mieć przyznaną rolę [czytelnika](../../role-based-access-control/built-in-roles.md#reader) (lub inną wbudowaną rolę, która obejmuje dostęp do czytnika) w procesie dołączania.
 
 Filtry w górnej części strony pozwalają sortować i grupować informacje o kliencie lub filtrować według określonych klientów, ofert lub słów kluczowych.
 

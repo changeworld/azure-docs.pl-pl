@@ -4,73 +4,16 @@ description: Informacje o sposobach zarządzania kopiami zapasowymi agenta Micro
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665597"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497005"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Zarządzanie kopiami zapasowymi agentów Microsoft Azure Recovery Services (MARS) za pomocą usługi Azure Backup
 
 W tym artykule opisano sposób zarządzania plikami i folderami, których kopię zapasową utworzono przy użyciu agenta Microsoft Azure Recovery Services.
-
-## <a name="create-a-backup-policy"></a>Tworzenie zasad kopii zapasowych
-
-Zasady tworzenia kopii zapasowych określają, kiedy należy wykonać migawki danych w celu utworzenia punktów odzyskiwania oraz jak długo mają być przechowywane punkty odzyskiwania. Zasady tworzenia kopii zapasowej można skonfigurować przy użyciu agenta MARS.
-
-Utwórz zasady w następujący sposób:
-
-1. Po pobraniu i zarejestrowaniu agenta MARS Uruchom konsolę agenta. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.  
-2. W obszarze **Akcje**kliknij pozycję **Zaplanuj kopię zapasową**.
-
-    ![Planowanie tworzenia kopii zapasowej systemu Windows Server](./media/backup-configure-vault/schedule-first-backup.png)
-3. W Kreatorze harmonogramu tworzenia kopii zapasowych > **wprowadzenie**kliknij przycisk **dalej**.
-4. W obszarze **Wybierz elementy do wykonania kopii zapasowej**kliknij pozycję **Dodaj elementy**.
-
-    ![Wybierz elementy do utworzenia kopii zapasowej](./media/backup-azure-manage-mars/select-item-to-backup.png)
-
-5. W obszarze **Wybierz elementy**wybierz, co chcesz utworzyć kopię zapasową, a następnie kliknij przycisk **OK**.
-
-    ![Wybrane elementy do utworzenia kopii zapasowej](./media/backup-azure-manage-mars/selected-items-to-backup.png)
-
-6. Na stronie **Wybierz elementy do wykonania kopii zapasowej** kliknij przycisk **dalej**.
-7. Na stronie **Określanie harmonogramu tworzenia kopii zapasowych** Określ, kiedy mają być wykonywane codziennie lub cotygodniowe kopie zapasowe. Następnie kliknij przycisk **Next** (Dalej).
-
-    - Punkt odzyskiwania jest tworzony podczas tworzenia kopii zapasowej.
-    - Liczba punktów odzyskiwania utworzonych w danym środowisku zależy od harmonogramu tworzenia kopii zapasowych.
-
-8. Codzienne kopie zapasowe można zaplanować maksymalnie trzy razy dziennie. Na przykład zrzut ekranu przedstawia dwie codzienne kopie zapasowe, jeden o północy i jeden o godzinie 6:00 PM.
-
-    ![Dzienny harmonogram](./media/backup-configure-vault/day-schedule.png)
-
-9. Można uruchamiać cotygodniowe kopie zapasowe. Na przykład zrzut ekranu pokazuje kopie zapasowe wykonane każdą alternatywną niedzielę & środę o godzinie 9:30 AM i 1:00 AM.
-
-    ![Harmonogram tygodniowy](./media/backup-configure-vault/week-schedule.png)
-
-10. Na stronie **Wybierz zasady przechowywania** Określ, w jaki sposób mają być przechowywane historyczne kopie danych. Następnie kliknij przycisk **Next** (Dalej).
-
-    - Ustawienia przechowywania określają, które punkty odzyskiwania mają być przechowywane, oraz czas ich przechowywania.
-    - Na przykład po ustawieniu dziennego ustawienia przechowywania należy wskazać, że w określonym czasie przechowywania najnowszy punkt odzyskiwania będzie przechowywany przez określoną liczbę dni. Innym przykładem może być określenie miesięcznych zasad przechowywania, które wskazują, że punkt odzyskiwania utworzony na 30. miesiąca powinien być przechowywany przez 12 miesięcy.
-    - Dzienne i cotygodniowe przechowywanie punktów odzyskiwania zwykle pokrywa się z harmonogramem tworzenia kopii zapasowych. Oznacza to, że gdy kopia zapasowa jest wyzwalana zgodnie z harmonogramem, punkt odzyskiwania utworzony w ramach kopii zapasowej jest przechowywany przez czas określony w zasadach przechowywania dziennego lub tygodniowego.
-    - Na przykład na poniższym zrzucie ekranu: — codzienne kopie zapasowe o północy i 6:00 PM są przechowywane przez siedem dni.
-            -Kopie zapasowe wykonane w sobotę o północy i 6:00 PM są przechowywane przez cztery tygodnie.
-            -Kopie zapasowe wykonane w sobotę w ciągu ostatniego tygodnia miesiąca o północy i 6:00 PM są przechowywane przez 12 miesięcy.
-            -Kopie zapasowe wykonane w sobotę w ostatnim tygodniu marca są przechowywane przez 10 lat.
-
-    ![Przykład przechowywania](./media/backup-configure-vault/retention-example.png)
-
-11. W obszarze **Wybierz typ początkowej kopii zapasowej** Zdecyduj, czy chcesz pobrać początkową kopię zapasową za pośrednictwem sieci, lub Użyj kopii zapasowej offline (Aby uzyskać więcej informacji na temat odwołania do kopii zapasowej offline, zobacz ten [artykuł](backup-azure-backup-import-export.md)). Aby pobrać początkową kopię zapasową za pośrednictwem sieci, wybierz opcję **automatycznie przez sieć** , a następnie kliknij przycisk **dalej**.
-
-    ![Typ początkowej kopii zapasowej](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
-
-12. W obszarze **potwierdzenie**Przejrzyj informacje, a następnie kliknij przycisk **Zakończ**.
-    ![Potwierdź typ kopii zapasowej](./media/backup-azure-manage-mars/confirm-backup-type.png)
-
-13. Po ukończeniu harmonogramu tworzenia kopii zapasowej przez kreatora kliknij przycisk **Zamknij**.
-  ![potwierdzić proces modyfikowania kopii zapasowej](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
-
-Należy utworzyć zasady na każdym komputerze, na którym zainstalowano agenta.
 
 ## <a name="modify-a-backup-policy"></a>Modyfikowanie zasad tworzenia kopii zapasowych
 
@@ -83,7 +26,7 @@ Podczas modyfikowania zasad tworzenia kopii zapasowych można dodać nowe elemen
   - Ponowne wybieranie tych elementów powoduje, że nowe kopie zapasowe nie są stosowane do starych kopii zapasowych.
   - Odwybór całego woluminu zachowuje poprzednią kopię zapasową bez żadnego zakresu modyfikowania zasad przechowywania.
 - **Ustawienia wykluczania** używają tej opcji, aby wykluczyć konkretne elementy z kopii zapasowej.
-  
+
 ### <a name="add-new-items-to-existing-policy"></a>Dodawanie nowych elementów do istniejących zasad
 
 1. W obszarze **Akcje**kliknij pozycję **Zaplanuj kopię zapasową**.
@@ -158,13 +101,18 @@ Istnieją dwa sposoby na zatrzymanie ochrony kopii zapasowych plików i folderó
 ### <a name="stop-protection-and-retain-backup-data"></a>Zatrzymywanie ochrony i zachowywanie danych kopii zapasowej
 
 1. Otwórz konsolę zarządzania MARS, przejdź do **okienka Akcje**, a **następnie wybierz pozycję Zaplanuj kopię zapasową**.
-    ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/mars-actions.png)
+
+    ![Zmodyfikuj lub Zatrzymaj zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/mars-actions.png)
 1. Na stronie **Wybierz element zasad** wybierz pozycję **Modyfikuj harmonogram tworzenia kopii zapasowych plików i folderów** , a następnie kliknij przycisk **dalej**.
-    ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Na stronie **Modyfikuj lub Zatrzymaj zaplanowaną kopię zapasową** wybierz pozycję **Zatrzymaj przy użyciu tego harmonogramu tworzenia kopii zapasowych, ale przechowuj przechowywane kopie zapasowe do momentu ponownego aktywowania harmonogramu**. Następnie wybierz opcję **Dalej**.  
-    ![zmodyfikować lub zatrzymać zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. W obszarze **Wstrzymaj zaplanowaną kopię zapasową** Przejrzyj informacje, a następnie kliknij przycisk **Zakończ** ![zmodyfikować lub zatrzymać zaplanowane kopie zapasowe.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. w obszarze **Modyfikuj proces tworzenia kopii zapasowej** Sprawdź, czy harmonogram wykonywania kopii zapasowej jest w stanie powodzenie i kliknij przycisk **Zamknij** , aby zakończyć.
+
+    ![Zmodyfikuj lub Zatrzymaj zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
+1. Na stronie **Modyfikuj lub Zatrzymaj zaplanowaną kopię zapasową** wybierz pozycję **Zatrzymaj przy użyciu tego harmonogramu tworzenia kopii zapasowych, ale przechowuj przechowywane kopie zapasowe do momentu ponownego aktywowania harmonogramu**. Następnie wybierz opcję **Dalej**.
+
+    ![Zmodyfikuj lub Zatrzymaj zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
+1. W obszarze **Wstrzymaj zaplanowaną kopię zapasową** Przejrzyj informacje i kliknij przycisk **Zakończ**.
+
+    ![Zmodyfikuj lub Zatrzymaj zaplanowaną kopię zapasową.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. W obszarze **Modyfikuj proces tworzenia kopii zapasowej** Sprawdź, czy harmonogram wykonywania kopii zapasowej jest w stanie powodzenie i kliknij przycisk **Zamknij** , aby zakończyć.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Zatrzymywanie ochrony i usuwanie danych kopii zapasowej
 
@@ -194,15 +142,34 @@ Po usunięciu lokalnych elementów kopii zapasowej wykonaj kolejne kroki z porta
 Jeśli ochrona zostanie zatrzymana podczas zachowywania danych i podjęta zostanie decyzja o wznowieniu ochrony, można ponownie włączyć harmonogram tworzenia kopii zapasowych przy użyciu opcji Modyfikuj zasady tworzenia kopii zapasowych.
 
 1. W obszarze **Akcje** wybierz pozycję **Zaplanuj kopię zapasową**.
-1. Wybierz pozycję **Włącz ponownie harmonogram tworzenia kopii zapasowych. Możesz również zmodyfikować elementy lub godziny tworzenia kopii zapasowej** , a następnie kliknąć przycisk **dalej**.
-    ![usunąć infrastrukturę tworzenia kopii zapasowych.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
+1. Wybierz pozycję **Włącz ponownie harmonogram tworzenia kopii zapasowych. Możesz również zmodyfikować elementy lub godziny tworzenia kopii zapasowej** , a następnie kliknąć przycisk **dalej**.<br>
+
+    ![Usuń infrastrukturę tworzenia kopii zapasowych.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
 1. W obszarze **Wybierz elementy do utworzenia kopii zapasowej**kliknij przycisk **dalej**.
-    ![usunąć infrastrukturę tworzenia kopii zapasowych.](./media/backup-azure-manage-mars/re-enable-next.png)
+
+    ![Usuń infrastrukturę tworzenia kopii zapasowych.](./media/backup-azure-manage-mars/re-enable-next.png)
 1. W obszarze **Określ harmonogram kopii zapasowych**Określ harmonogram kopii zapasowych, a następnie kliknij przycisk **dalej**.
 1. W obszarze **Wybierz zasady przechowywania**Określ czas trwania przechowywania i kliknij przycisk **dalej**.
-1. Na koniec **ekranu,** Przejrzyj szczegóły zasad i kliknij przycisk **Zakończ**.
+1. Na koniec na ekranie **potwierdzenia** Przejrzyj szczegóły zasad, a następnie kliknij przycisk **Zakończ**.
+
+## <a name="re-generate-passphrase"></a>Wygeneruj ponownie hasło
+
+Hasło jest używane do szyfrowania i odszyfrowywania danych podczas tworzenia kopii zapasowej lub przywracania lokalnego lub maszyny lokalnej przy użyciu agenta MARS na platformie lub z platformy Azure. Jeśli utracisz lub nie pamiętasz hasła, możesz ponownie wygenerować hasło (pod warunkiem, że maszyna jest nadal zarejestrowana w magazynie Recovery Services i jest konfigurowana kopia zapasowa), wykonując następujące czynności:
+
+- Z poziomu konsoli agenta MARS przejdź do **okienka Akcje** , > **Zmień właściwości** >. Następnie przejdź do **karty szyfrowanie**.<br>
+- Zaznacz pole wyboru **Zmień hasło** .<br>
+- Wprowadź nowe hasło lub kliknij pozycję **Generuj hasło**.
+- Kliknij przycisk **Przeglądaj** , aby zapisać nowe hasło.
+
+    ![Generuj hasło.](./media/backup-azure-manage-mars/passphrase.png)
+- Kliknij przycisk **OK** , aby zastosować zmiany.  Jeśli [Funkcja zabezpieczenia](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) jest włączona na Azure Portal magazynu Recovery Services, zostanie wyświetlony monit o wprowadzenie numeru PIN zabezpieczeń. Aby odebrać kod PIN, wykonaj kroki opisane w tym [artykule](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations).<br>
+- Wklej zabezpieczający numer PIN z portalu, a następnie kliknij przycisk **OK** , aby zastosować zmiany.<br>
+
+    ![Generuj hasło.](./media/backup-azure-manage-mars/passphrase2.png)
+- Upewnij się, że hasło jest bezpiecznie zapisane w lokalizacji alternatywnej (innej niż maszyna źródłowa), najlepiej w Azure Key Vault. Śledź wszystkie hasła, jeśli masz kopię zapasową wielu maszyn z agentami MARS.
+
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać informacje o obsługiwanych scenariuszach i ograniczeniach, zapoznaj się z [macierzą pomocy technicznej dla usługi Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
+- Aby uzyskać informacje o obsługiwanych scenariuszach i ograniczeniach, zapoznaj się z [matrycą pomocy technicznej dla agenta Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
 - Dowiedz się więcej [na temat zachowania przechowywania zasad tworzenia kopii zapasowej na żądanie](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).

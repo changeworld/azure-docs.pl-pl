@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 62b42a39e2ce2c86d7f17c611e89d60bc583640e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 43110036c685cd17ba912766dd8ec19aa274e7c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459519"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Dostosowywanie Remote Desktop Protocol właściwości dla puli hostów
 
@@ -26,6 +26,18 @@ Najpierw [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualneg
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
+## <a name="default-rdp-properties"></a>Domyślne właściwości protokołu RDP
+
+Domyślnie publikowane pliki RDP zawierają następujące właściwości:
+
+|Właściwości RDP | Komputery stacjonarne | RemoteApps |
+|---|---| --- |
+| Tryb z obsługą kilku monitorów | Enabled (Włączony) | ND |
+| Przekierowania dysków włączone | Dyski, schowek, drukarki, porty COM, urządzenia USB i karty inteligentne| Dyski, schowek i drukarki |
+| Tryb zdalny audio | Odtwórz lokalnie | Odtwórz lokalnie |
+
+Wszystkie właściwości niestandardowe zdefiniowane dla puli hostów przesłonią te wartości domyślne.
+
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>Dodaj lub Edytuj pojedynczą niestandardową Właściwość RDP
 
 Aby dodać lub edytować pojedynczą niestandardową Właściwość RDP, uruchom następujące polecenie cmdlet programu PowerShell:
@@ -33,6 +45,7 @@ Aby dodać lub edytować pojedynczą niestandardową Właściwość RDP, uruchom
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
 ```
+
 ![Zrzut ekranu poleceń cmdlet programu PowerShell Get-RDSRemoteApp z wyróżnioną nazwą i przyjaznymi nazwami.](media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Dodawanie lub Edytowanie wielu niestandardowych właściwości RDP
@@ -43,6 +56,7 @@ Aby dodać lub edytować wiele niestandardowych właściwości RDP, uruchom nast
 $properties="<property1>;<property2>;<property3>"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
+
 ![Zrzut ekranu poleceń cmdlet programu PowerShell Get-RDSRemoteApp z wyróżnioną nazwą i przyjaznymi nazwami.](media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>Zresetuj wszystkie niestandardowe właściwości RDP
@@ -52,11 +66,12 @@ Możesz zresetować pojedyncze niestandardowe właściwości protokołu RDP do w
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
+
 ![Zrzut ekranu poleceń cmdlet programu PowerShell Get-RDSRemoteApp z wyróżnioną nazwą i przyjaznymi nazwami.](media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, po dostosowaniu właściwości RDP dla danej puli hostów, można zalogować się do klienta pulpitu wirtualnego systemu Windows, aby przetestować je w ramach sesji użytkownika. Aby to zrobić, przejdź do programu Windows Virtual Desktop how-Toss:
+Teraz, po dostosowaniu właściwości RDP dla danej puli hostów, można zalogować się do klienta pulpitu wirtualnego systemu Windows, aby przetestować je w ramach sesji użytkownika. Te następne dwie porady informują Cię, jak nawiązać połączenie z sesją przy użyciu wybranego przez siebie klienta:
 
-- [Łączenie z systemem Windows 10 i Windows 7](connect-windows-7-and-10.md)
-- [Nawiązywanie połączenia z przeglądarki sieci Web](connect-web.md)
+- [Nawiązywanie połączenia z klientem klasycznym systemu Windows](connect-windows-7-and-10.md)
+- [Nawiązywanie połączenia z klientem sieci Web](connect-web.md)

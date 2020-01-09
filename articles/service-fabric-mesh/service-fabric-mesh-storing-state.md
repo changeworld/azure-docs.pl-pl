@@ -1,43 +1,39 @@
 ---
-title: Stan opcji magazynu na platformie Azure Usługa Service Fabric siatki | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat niezawodne przechowywanie stanu w usługi Service Fabric siatki działających na platformie Azure Usługa Service Fabric siatki.
-services: service-fabric-mesh
-keywords: ''
+title: Opcje magazynu stanu na platformie Azure Service Fabric siatkę
+description: Dowiedz się więcej na temat niezawodnego przechowywania stanu w aplikacjach Service Fabric siatki działających na platformie Azure Service Fabric siatkę.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352343"
 ---
-# <a name="state-management-with-service-fabric"></a>Zarządzanie stanem przy użyciu usługi Service Fabric
+# <a name="state-management-with-service-fabric"></a>Zarządzanie stanem za pomocą Service Fabric
 
-Usługa Service Fabric obsługuje wiele różnych opcji do przechowywania stanów. Aby uzyskać omówienie wzorców zarządzania stanu i Service Fabric, zobacz [pojęcia dotyczące usługi Service Fabric: Stan](/azure/service-fabric/service-fabric-concepts-state). Te te same pojęcia mają zastosowanie tego, czy usługi działają wewnątrz lub na zewnątrz usługi Service Fabric siatki. 
+Service Fabric obsługuje wiele różnych opcji magazynu Stanów. Omówienie pojęć dotyczących wzorców zarządzania stanów i Service Fabric można znaleźć w temacie [Service Fabric koncepcje: stan](/azure/service-fabric/service-fabric-concepts-state). Wszystkie te same koncepcje dotyczą tego, czy usługi są uruchamiane w sieci Service Fabric lub poza nią. 
 
-Za pomocą usługi Service Fabric siatki można łatwo wdrożyć nową aplikację i połączyć ją z istniejącym magazynem danych hostowanych na platformie Azure. Poza używaniem dowolną zdalną bazą danych, istnieje kilka opcji do przechowywania danych, w zależności od tego, czy usługa życzy magazynu lokalnego lub zdalnego. 
+Za pomocą Service Fabric siatki możesz łatwo wdrożyć nową aplikację i połączyć ją z istniejącym magazynem danych hostowanym na platformie Azure. Oprócz korzystania ze zdalnej bazy danych istnieje kilka opcji przechowywania danych, zależnie od tego, czy usługa żąda magazynu lokalnego czy zdalnego. 
 
 ## <a name="volumes"></a>Woluminy
 
-Kontenery często należy użyć dysków tymczasowych. Dyski tymczasowe są jednak tymczasowych, więc uzyskiwanie nowego dysku tymczasowego i utracić informacji w przypadku awarii kontenera. Jest również był trudny do udostępniania informacji na temat dyski tymczasowe z innych kontenerów. Woluminy są katalogów, która ma zostać zainstalowany wewnątrz wystąpienia kontenera, które umożliwia utrwalanie stanu. Woluminy pozwalają magazynu plików ogólnego przeznaczenia i pozwala na odczyt/zapis plików za pomocą dysku normalnych operacji We/Wy plikowych interfejsów API. Zasobu woluminu w tym artykule opisano sposób instalacji katalogu i magazynu zapasowego. Można wybrać usługę Azure File storage lub Service Fabric woluminu dysku do przechowywania danych.
+Kontenery często używają dysków tymczasowych. Dyski tymczasowe są nieulotne, jednak dzięki temu otrzymujesz nowy dysk tymczasowy i utracisz informacje w przypadku awarii kontenera. Trudno jest również udostępniać informacje na dyskach tymczasowych innym kontenerom. Woluminy są katalogami, które są instalowane w ramach wystąpień kontenera, których można użyć do utrwalania stanu. Woluminy zapewniają magazyn plików ogólnego przeznaczenia i umożliwiają odczytywanie i zapisywanie plików przy użyciu standardowych interfejsów API plików we/wy dysku. Zasób woluminu zawiera opis sposobu instalowania katalogu i magazynu zapasowego do użycia. Możesz wybrać magazyn plików platformy Azure lub Service Fabric dysk woluminu do przechowywania danych.
 
 ![Woluminy][image3]
 
-### <a name="service-fabric-reliable-volume"></a>Usługa Service Fabric Reliable woluminu
+### <a name="service-fabric-reliable-volume"></a>Service Fabric niezawodny wolumin
 
-Usługa Service Fabric Reliable woluminu jest używany do zainstalowania woluminu lokalnego do kontenera sterownik woluminu platformy Docker. Odczyty i zapisy są operacje lokalne i fast. Dane są replikowane do węzłów pomocniczych, dzięki czemu o wysokiej dostępności. Tryb failover jest również szybkie. Kontener ulegnie awarii, go nie powiedzie się za pośrednictwem do węzła, który ma już kopię danych. Aby uzyskać przykład, zobacz [sposób wdrażania aplikacji za pomocą usługi Service Fabric Reliable woluminu](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
+Service Fabric niezawodny wolumin to sterownik woluminu platformy Docker służący do instalowania woluminu lokalnego w kontenerze. Operacje odczytu i zapisu są operacjami lokalnymi i szybko. Dane są replikowane do węzłów pomocniczych, co zapewnia wysoką dostępność. Tryb failover jest również szybki. Gdy kontener ulega awarii, przejdzie do trybu failover w węźle, który ma już kopię danych. Aby zapoznać się z przykładem, zobacz [jak wdrożyć aplikację przy użyciu Service Fabric niezawodnego woluminu](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md).
 
-### <a name="azure-files-volume"></a>Usługa Azure Files woluminu
+### <a name="azure-files-volume"></a>Wolumin Azure Files
 
-Azure woluminu plików jest używane do instalowania udziału plików platformy Azure do kontenera sterownik woluminu platformy Docker. Usługa Azure Files storage korzysta z magazynu w sieci, więc odczytuje i zapisuje odbywać się za pośrednictwem sieci. W porównaniu do usługi Service Fabric Reliable woluminu magazynu usługi Azure Files jest mniej wydajna, ale udostępnia opcję tańsze i w pełni wiarygodnych danych. Aby uzyskać przykład, zobacz [sposób wdrażania aplikacji za pomocą woluminu plików platformy Azure](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
+Wolumin Azure Files to sterownik woluminu platformy Docker używany do instalowania udziału Azure Files w kontenerze. Azure Files Storage korzysta z magazynu sieciowego, więc operacje odczytu i zapisu odbywają się za pośrednictwem sieci. W porównaniu do Service Fabric niezawodnego woluminu Azure Files magazyn jest mniej wydajny, ale udostępnia tańszą i w pełni niezawodny opcję danych. Aby zapoznać się z przykładem, zobacz [jak wdrożyć aplikację przy użyciu woluminu Azure Files](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać informacji na temat modelu aplikacji, zobacz [zasobów usługi Service Fabric](service-fabric-mesh-service-fabric-resources.md)
+Informacje o modelu aplikacji można znaleźć w temacie [Service Fabric Resources](service-fabric-mesh-service-fabric-resources.md)
 
 [image3]: ./media/service-fabric-mesh-storing-state/volumes.png

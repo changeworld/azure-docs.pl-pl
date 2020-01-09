@@ -1,22 +1,23 @@
 ---
 title: Aplikacja .NET dla nieinterakcyjnego uwierzytelniania — Azure HDInsight
 description: Dowiedz się, jak tworzyć nieinteraktywne uwierzytelnianie Microsoft .NET aplikacji w usłudze Azure HDInsight.
-ms.reviewer: jasonh
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0781d9fd58e079517b3f3dc8fba06fb448a8fa19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 12/23/2019
+ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494919"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500130"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
-Aplikację usługi Azure HDInsight można Microsoft .NET uruchomić w ramach własnej tożsamości aplikacji (nieinteraktywnej) lub w obszarze tożsamość zalogowanego użytkownika aplikacji (interaktywnie). W tym artykule pokazano, jak utworzyć aplikację .NET z nieinteraktywnym uwierzytelnianiem w celu nawiązania połączenia z platformą Azure i zarządzania usługą HDInsight. Przykład aplikacji interaktywnej zawiera temat [nawiązywanie połączenia z usługą Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
+
+Uruchom aplikację usługi HDInsight Microsoft .NET Azure w ramach własnej tożsamości aplikacji (nieinteraktywnej) lub w obszarze tożsamość zalogowanego użytkownika aplikacji (Interactive). W tym artykule pokazano, jak utworzyć aplikację .NET z nieinteraktywnym uwierzytelnianiem w celu nawiązania połączenia z platformą Azure i zarządzania usługą HDInsight. Przykład aplikacji interaktywnej zawiera temat [nawiązywanie połączenia z usługą Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight).
 
 W aplikacji nieinteraktywnej platformy .NET potrzebne są:
 
@@ -25,20 +26,21 @@ W aplikacji nieinteraktywnej platformy .NET potrzebne są:
 * Klucz tajny aplikacji usługi Azure AD. Zobacz [Pobieranie klucza uwierzytelniania aplikacji](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* HDInsight An klaster. Zobacz [samouczek wprowadzający](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+
+HDInsight An klaster. Zobacz [samouczek wprowadzający](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Przypisywanie roli do aplikacji usługi Azure AD
-Przypisywanie [roli](../role-based-access-control/built-in-roles.md)do aplikacji usługi Azure AD w celu udzielenia uprawnień do wykonywania akcji. Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone do niższych poziomów zakresu. (Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że aplikacja może odczytać grupę zasobów i wszystkie znajdujące się w niej zasoby). W tym artykule ustawisz zakres na poziomie grupy zasobów. Aby uzyskać więcej informacji, zobacz [Korzystanie z przypisań ról w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](../role-based-access-control/role-assignments-portal.md).
+
+Przypisywanie [roli](../role-based-access-control/built-in-roles.md)do aplikacji usługi Azure AD w celu udzielenia uprawnień do wykonywania akcji. Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone do niższych poziomów zakresu. Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że aplikacja może odczytać grupę zasobów i wszystkie znajdujące się w niej zasoby. W tym artykule ustawisz zakres na poziomie grupy zasobów. Aby uzyskać więcej informacji, zobacz [Korzystanie z przypisań ról w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](../role-based-access-control/role-assignments-portal.md).
 
 **Aby dodać rolę właściciela do aplikacji usługi Azure AD**
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. W menu po lewej stronie wybierz pozycję **Grupy zasobów**.
-3. Wybierz grupę zasobów, w której zostanie uruchomione zapytanie programu Hive w dalszej części tego artykułu. Jeśli masz dużą liczbę grup zasobów, możesz użyć filtru, aby znaleźć żądany obiekt.
-4. W menu Grupa zasobów wybierz pozycję **Kontrola dostępu (IAM)** .
-5. Wybierz kartę **przypisania ról** , aby wyświetlić bieżące przypisania ról.
-6. W górnej części strony wybierz pozycję **Dodaj przypisanie roli**.
-7. Postępuj zgodnie z instrukcjami, aby dodać rolę właściciela do aplikacji usługi Azure AD. Po pomyślnym dodaniu roli aplikacja zostanie wyświetlona w obszarze roli właściciela. 
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Przejdź do grupy zasobów, w której znajduje się klaster usługi HDInsight w dalszej części tego artykułu. Jeśli masz dużą liczbę grup zasobów, możesz użyć filtru, aby znaleźć żądany obiekt.
+1. W menu Grupa zasobów wybierz pozycję **Kontrola dostępu (IAM)** .
+1. Wybierz kartę **przypisania ról** , aby wyświetlić bieżące przypisania ról.
+1. W górnej części strony wybierz pozycję **+ Dodaj**.
+1. Postępuj zgodnie z instrukcjami, aby dodać rolę właściciela do aplikacji usługi Azure AD. Po pomyślnym dodaniu roli aplikacja zostanie wyświetlona w obszarze roli właściciela.
 
 ## <a name="develop-an-hdinsight-client-application"></a>Tworzenie aplikacji klienckiej usługi HDInsight
 
@@ -117,8 +119,8 @@ Przypisywanie [roli](../role-based-access-control/built-in-roles.md)do aplikacji
     }
     ```
 
-
 ## <a name="next-steps"></a>Następne kroki
+
 * [Utwórz Azure Active Directory aplikację i nazwę główną usługi w Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 * Dowiedz się, jak [uwierzytelniać jednostkę usługi za pomocą Azure Resource Manager](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 * Dowiedz się więcej o [Access Control opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/role-assignments-portal.md).
