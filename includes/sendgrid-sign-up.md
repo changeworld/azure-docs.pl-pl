@@ -1,24 +1,24 @@
 ---
-author: erikre
+author: georgewallace
 ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: erikre
-ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: gwallace
+ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463546"
 ---
-W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatnych wiadomości e-mail. Pozwala to uzyskać dostęp do zaawansowanych raportów i analiz oraz [wszystkich interfejsów API][all APIs] (np. sieci Web, protokołu SMTP, zdarzeń czy analizy). Informacje o dodatkowych usługach SendGrid można znaleźć na stronie z [rozwiązaniami usługi SendGrid][SendGrid Solutions].
+W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatnych wiadomości e-mail. Te 25 000 bezpłatne miesięczne wiadomości e-mail zapewniają dostęp do zaawansowanych raportów i analiz oraz [wszystkich interfejsów API][all APIs] (sieci Web, SMTP, Event, Parse itd.). Aby uzyskać informacje na temat dodatkowych usług udostępnianych przez usługę SendGrid, odwiedź stronę [rozwiązania SendGrid][SendGrid Solutions] .
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Aby utworzyć konto usługi SendGrid
-1. Zaloguj się w witrynie [Azure Portal][Azure portal].
-2. W menu po lewej stronie kliknij **Utwórz zasób**.
+1. Zaloguj się do [Portalu Azure][Azure portal].
+2. W menu Azure Portal lub stronie głównej wybierz pozycję **Utwórz zasób**.
 
     ![command-bar-new][command-bar-new]
-3. Kliknij kolejno pozycje **Dodatki** i **Dostarczanie poczty e-mail przy użyciu usługi SendGrid**.
+3. Wyszukaj i wybierz pozycję **SendGrid**.
 
     ![sendgrid-store][sendgrid-store]
 4. Wypełnij formularz rejestracji i wybierz pozycję **Utwórz**.
@@ -34,11 +34,11 @@ W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatny
 10. Wprowadź **kod promocyjny**, jeśli go masz.
 11. Wprowadź **informacje kontaktowe**.
 12. Zapoznaj się z **postanowieniami prawnymi** i zaakceptuj je.
-13. Po potwierdzeniu zakupu zobaczysz okno podręczne z informacją o **pomyślnym zakończeniu wdrożenia**. Twoje konto pojawi się na liście w sekcji **Wszystkie zasoby**.
+13. Po potwierdzeniu zakupu zobaczysz okno podręczne **wdrożenia** , które zostanie wyświetlone i zobaczysz Twoje konto.
 
     ![all-resources][all-resources]
 
-    Po zakończeniu zakupu i kliknięciu przycisku **Zarządzaj** w celu rozpoczęcia procesu weryfikacji adresu e-mail otrzymasz wiadomość e-mail od zespołu SendGrid z monitem o potwierdzenie konta. Jeśli wiadomość e-mail nie dotarła do Ciebie lub masz problemy z weryfikacją konta, zobacz zbiór często zadawanych pytań.
+    Po zakończeniu zakupu i kliknięciu przycisku **Zarządzaj** w celu rozpoczęcia procesu weryfikacji adresu e-mail otrzymasz wiadomość e-mail od zespołu SendGrid z monitem o potwierdzenie konta. Jeśli nie otrzymasz tej wiadomości e-mail lub masz problemy z weryfikacją konta, zapoznaj się z naszymi często zadawanymi pytaniami.
 
     ![manage][manage]
 
@@ -72,11 +72,11 @@ W każdym miesiącu klienci platformy Azure mogą odblokować 25 000 bezpłatny
     ![key][key]
 2. Hasło zostało wcześniej ustawione podczas konfiguracji. Aby wprowadzić zmiany, możesz wybrać opcję **Zmień hasło** lub **Resetuj hasło**.
 
-Aby zarządzać ustawieniami dostarczania poczty e-mail, kliknij przycisk **Zarządzaj**. Nastąpi przekierowanie do pulpitu nawigacyjnego usługi SendGrid.
+Aby zarządzać ustawieniami dostarczania poczty e-mail, kliknij przycisk **Zarządzaj**. Spowoduje to przekierowanie do pulpitu nawigacyjnego SendGrid.
 
 ![manage][manage]
 
-Aby uzyskać więcej informacji na temat wysyłania wiadomości e-mail za pośrednictwem usługi SendGrid, odwiedź stronę [omówienie interfejsu API usługi poczty E-mail][Email API Overview].
+Aby uzyskać więcej informacji na temat wysyłania wiadomości e-mail za pośrednictwem usługi SendGrid, przejdź do [omówienia interfejsu API poczty e-mail][Email API Overview].
 
 <!--images-->
 

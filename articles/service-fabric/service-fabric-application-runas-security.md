@@ -1,25 +1,14 @@
 ---
-title: Uruchom usługę Service Fabric platformy Azure w obszarze System i konta zabezpieczeń lokalnych | Microsoft Docs
+title: Uruchamianie usługi w ramach systemu i lokalnych kont zabezpieczeń
 description: Dowiedz się, jak uruchomić aplikację Service Fabricową w ramach systemu i kont zabezpieczeń lokalnych.  Utwórz podmioty zabezpieczeń i Zastosuj zasady Uruchom jako, aby bezpiecznie uruchamiać usługi.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8b0ddc619a7e840b0379a790bd21e7beae812109
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600048"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610129"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Uruchamianie usługi jako konta użytkownika lokalnego lub lokalnego konta systemowego
 Za pomocą usługi Azure Service Fabric można zabezpieczyć aplikacje działające w klastrze pod różnymi kontami użytkowników. Domyślnie aplikacje Service Fabric są uruchamiane w ramach konta, w ramach którego działa proces Fabric. exe. Service Fabric oferuje również możliwość uruchamiania aplikacji na koncie użytkownika lokalnego lub systemu. Obsługiwane typy kont systemu lokalnego to **LocalUser**, **NetworkService**, **LocalService**i **LocalSystem**.  Jeśli używasz Service Fabric w klastrze autonomicznym systemu Windows, możesz uruchomić usługę w obszarze [Active Directory konta domeny](service-fabric-run-service-as-ad-user-or-group.md) lub [konta usług zarządzane przez grupę](service-fabric-run-service-as-gmsa.md).
@@ -183,7 +172,7 @@ Poniższy przykład manifestu usługi pokazuje, jak włączyć przekierowywanie 
 ```
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Omówienie modelu aplikacji](service-fabric-application-model.md)
 * [Określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md)
 * [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)

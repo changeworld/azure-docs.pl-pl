@@ -1,6 +1,6 @@
 ---
-title: Przełączanie między wyświetlaniem i Edytuj tryb dla raportów w kolekcji obszarów roboczych usługi Power BI | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przełączać się między widoku, a i raportów w ramach kolekcji obszarów roboczych usługi Power BI.
+title: Przełączanie między trybami wyświetlania i edycji raportów
+description: Dowiedz się, jak przełączać się między trybami wyświetlania i edytowania raportów w obszarze Power BI kolekcje obszarów roboczych.
 services: power-bi-workspace-collections
 ms.service: power-bi-embedded
 author: rkarlin
@@ -8,26 +8,26 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 327f2fdcd4d1bc9e71e3aabb3541c6fd30f02811
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b2696560b5d5013fe337b51ec61cbfac9e512610
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357668"
 ---
-# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Przełączanie między wyświetlaniem i Edytuj tryb dla raportów w kolekcji obszarów roboczych usługi Power BI
+# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Przełączanie między trybami wyświetlania i edycji raportów w Power BI kolekcje obszarów roboczych
 
-Dowiedz się, jak przełączać się między widoku, a i raportów w ramach kolekcji obszarów roboczych usługi Power BI.
+Dowiedz się, jak przełączać się między trybami wyświetlania i edytowania raportów w obszarze Power BI kolekcje obszarów roboczych.
 
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
 ## <a name="creating-an-access-token"></a>Tworzenie tokenu dostępu
 
-Musisz utworzyć token dostępu, który daje możliwość wyświetlania i edytowania raportu. Aby edytować i zapisać raport, musisz mieć **Report.ReadWrite** token uprawnień. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie i autoryzowanie w kolekcji obszarów roboczych usługi Power BI](app-token-flow.md).
+Należy utworzyć token dostępu, który umożliwia wyświetlanie i edytowanie raportu. Do edytowania i zapisywania raportu potrzebne jest uprawnienie **Zgłoś. ReadWrite** . Aby uzyskać więcej informacji, zobacz [uwierzytelnianie i autoryzacja w Power BI kolekcje obszarów roboczych](app-token-flow.md).
 
 > [!NOTE]
-> Dzięki temu można zapisać zmian do istniejącego raportu. Jeśli chcesz również funkcję obsługi **Zapisz jako**, musisz podać dodatkowe uprawnienia. Aby uzyskać więcej informacji, zobacz [zakresy](app-token-flow.md#scopes).
+> Pozwala to edytować i zapisywać zmiany w istniejącym raporcie. W przypadku użycia również funkcji **Zapisz jako**, należy podać dodatkowe uprawnienia. Aby uzyskać więcej informacji, zobacz [zakresy](app-token-flow.md#scopes).
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -39,9 +39,9 @@ PowerBIToken embedToken = PowerBIToken.CreateReportEmbedTokenForCreation(workspa
 var token = embedToken.Generate("{access key}");
 ```
 
-## <a name="embed-configuration"></a>Osadzanie konfiguracji
+## <a name="embed-configuration"></a>Osadź konfigurację
 
-Musisz podać uprawnienia i viewMode, aby można było wyświetlić zapisywania przycisku w trybie edycji. Aby uzyskać więcej informacji, zobacz [osadzić szczegóły konfiguracji](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Aby wyświetlić przycisk Zapisz w trybie edycji, należy podać uprawnienia i element ViewMode. Aby uzyskać więcej informacji, zobacz [Osadź szczegóły konfiguracji](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Na przykład w języku JavaScript:
 
@@ -77,11 +77,11 @@ Na przykład w języku JavaScript:
     </script>
 ```
 
-Oznacza to, aby osadzić raport w trybie widoku na podstawie **viewMode** zostanie ustawiona **modeli. ViewMode.View**.
+Wskazuje to na osadzenie raportu w trybie widoku w oparciu o zestaw **ViewMode** ustawiony na **models. ViewMode. View**.
 
-## <a name="view-mode"></a>Tryb wyświetlania
+## <a name="view-mode"></a>Tryb widoku
 
-Następujący kod JavaScript umożliwia przełączanie do trybu wyświetlania, jeśli jesteś w trybie edycji.
+Aby przełączyć się do trybu widoku, można użyć poniższego kodu JavaScript.
 
 ```javascript
 // Get a reference to the embedded report HTML element
@@ -97,7 +97,7 @@ report.switchMode("view");
 
 ## <a name="edit-mode"></a>Tryb edycji
 
-Następujący kod JavaScript służy do przełączania do trybu edycji, jeśli jesteś w trybie.
+Aby przełączyć się do trybu edycji, można użyć poniższego kodu JavaScript.
 
 ```javascript
 // Get a reference to the embedded report HTML element
@@ -118,7 +118,7 @@ report.switchMode("edit");
 [Authenticating and authorizing with Power BI Workspace Collections (Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI)](app-token-flow.md)  
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Przykład osadzania skryptu JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[Repozytorium Git języka CSharp usługi Power BI](https://github.com/Microsoft/PowerBI-CSharp)  
-[Repozytorium Git w węźle usługi Power BI](https://github.com/Microsoft/PowerBI-Node)  
+[Power BI — CSharp repozytorium git](https://github.com/Microsoft/PowerBI-CSharp)  
+[Repozytorium Git w węźle usługi PowerBI](https://github.com/Microsoft/PowerBI-Node)  
 
 Masz więcej pytań? [Dołącz do społeczności użytkowników usługi Power BI](https://community.powerbi.com/)

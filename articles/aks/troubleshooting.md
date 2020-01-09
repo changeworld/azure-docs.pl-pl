@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 08/13/2018
+ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5652c5035c2e4cd35ac6943ef90c8bcc02b95dba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442890"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
@@ -23,7 +23,7 @@ W przypadku tworzenia klastrów usługi Azure Kubernetes Service (AKS) lub zarz�
 Wypróbuj [oficjalny przewodnik dotyczący rozwiązywania problemów z klastrami Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Istnieje również [Przewodnik rozwiązywania problemów](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)Opublikowany przez inżyniera firmy Microsoft w celu rozwiązywania problemów z planami, węzłami, klastrami i innymi funkcjami.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Otrzymuję błąd "Przekroczono limit przydziału" podczas tworzenia lub uaktualniania. Co mam zrobić? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Otrzymuję błąd "Przekroczono limit przydziału" podczas tworzenia lub uaktualniania. Co mamy zrobić? 
 
 Musisz [zażądać rdzeni](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
@@ -32,7 +32,7 @@ Musisz [zażądać rdzeni](https://docs.microsoft.com/azure/azure-supportability
 Ustawienie Maksymalna liczba sztuk na węzeł domyślnie jest 30, Jeśli klaster AKS jest wdrażany w Azure Portal.
 Ustawienie maksymalny rozmiar poszczególnych węzłów domyślnie 110 w przypadku wdrażania klastra AKS w interfejsie wiersza polecenia platformy Azure. (Upewnij się, że używasz najnowszej wersji interfejsu wiersza polecenia platformy Azure). To ustawienie domyślne można zmienić przy użyciu flagi `–-max-pods` w poleceniu `az aks create`.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra AKS przy użyciu zaawansowanej sieci. Co mam zrobić?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra AKS przy użyciu zaawansowanej sieci. Co mamy zrobić?
 
 Jeśli używana jest usługa Azure CNI (Advanced Network), AKS przydziela adresy IP na podstawie skonfigurowanego węzła "Max-Binding". W oparciu o skonfigurowaną maksymalną liczbę zasobników na węzeł rozmiar podsieci musi być większy niż iloczyn liczby węzłów i maksymalne ustawienie pod na węzeł. Poniższe równanie zawiera opis:
 
@@ -40,7 +40,7 @@ Rozmiar podsieci > liczbę węzłów w klastrze (biorąc pod uwagę przyszłe wy
 
 Aby uzyskać więcej informacji, zobacz [Planowanie adresów IP w klastrze](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mój pod jest zablokowany w trybie CrashLoopBackOff. Co mam zrobić?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mój pod jest zablokowany w trybie CrashLoopBackOff. Co mamy zrobić?
 
 Może istnieć różne przyczyny zablokowania w tym trybie. Możesz zajrzeć do:
 
@@ -53,17 +53,17 @@ Aby uzyskać więcej informacji na temat rozwiązywania problemów, zobacz [debu
 
 Niestety włączenie kontroli dostępu opartej na rolach (RBAC) w istniejących klastrach nie jest obecnie obsługiwane. Należy jawnie utworzyć nowe klastry. W przypadku korzystania z interfejsu wiersza polecenia RBAC jest domyślnie włączone. Jeśli używasz portalu AKS, przycisk przełączania umożliwiający włączenie RBAC jest dostępny w przepływie pracy tworzenia.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Po utworzeniu klastra z włączoną funkcją RBAC przy użyciu interfejsu wiersza polecenia platformy Azure z wartościami domyślnymi lub Azure Portal, a teraz widzimy wiele ostrzeżeń na pulpicie nawigacyjnym Kubernetes. Pulpit nawigacyjny służący do pracy bez żadnych ostrzeżeń. Co mam zrobić?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Po utworzeniu klastra z włączoną funkcją RBAC przy użyciu interfejsu wiersza polecenia platformy Azure z wartościami domyślnymi lub Azure Portal, a teraz widzimy wiele ostrzeżeń na pulpicie nawigacyjnym Kubernetes. Pulpit nawigacyjny służący do pracy bez żadnych ostrzeżeń. Co mamy zrobić?
 
 Przyczyną ostrzeżeń na pulpicie nawigacyjnym jest to, że klaster jest teraz włączony przy użyciu RBAC i dostęp do niego jest domyślnie wyłączony. Ogólnie rzecz biorąc, to podejście jest dobrym rozwiązaniem, ponieważ domyślne narażenie pulpitu nawigacyjnego na wszystkich użytkowników klastra może prowadzić do zagrożeń bezpieczeństwa. Jeśli nadal chcesz włączyć pulpit nawigacyjny, postępuj zgodnie z instrukcjami w [tym wpisie w blogu](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nie można nawiązać połączenia z pulpitem nawigacyjnym. Co mam zrobić?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nie można nawiązać połączenia z pulpitem nawigacyjnym. Co mamy zrobić?
 
 Najprostszym sposobem uzyskania dostępu do usługi poza klastrem jest uruchomienie `kubectl proxy`, które serwery proxy żądania wysyłane do portu localhost 8001 do serwera interfejsu API Kubernetes. Z tego miejsca serwer interfejsu API może być serwerem proxy usługi: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Jeśli pulpit nawigacyjny Kubernetes nie jest widoczny, sprawdź, czy `kube-proxy` pod działaniem w przestrzeni nazw `kube-system`. Jeśli nie jest w stanie uruchomionym, Usuń element pod, a zostanie uruchomiony ponownie.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę pobrać dzienników przy użyciu dzienników polecenia kubectl lub nie mogę nawiązać połączenia z serwerem interfejsu API. Otrzymuję komunikat "błąd z serwera: błąd podczas wybierania numeru zaplecza: wybierz TCP...". Co mam zrobić?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nie mogę pobrać dzienników przy użyciu dzienników polecenia kubectl lub nie mogę nawiązać połączenia z serwerem interfejsu API. Otrzymuję komunikat "błąd z serwera: błąd podczas wybierania numeru zaplecza: wybierz TCP...". Co mamy zrobić?
 
 Upewnij się, że domyślna grupa zabezpieczeń sieci nie jest modyfikowana i że dla połączenia z serwerem interfejsu API jest otwarty zarówno port 22, jak i 9000. Sprawdź, czy `tunnelfront` pod jest uruchomiony w przestrzeni nazw *polecenia-system* przy użyciu polecenia `kubectl get pods --namespace kube-system`. Jeśli tak nie jest, Wymuś usunięcie elementu pod i zostanie on ponownie uruchomiony.
 
@@ -79,7 +79,7 @@ Ten błąd występuje, gdy klastry wchodzą w stan niepowodzenia z wielu powodó
 
 1. Dopóki klaster nie będzie `failed` stanie, operacje `upgrade` i `scale` nie powiedzie się. Typowe problemy główne i rozwiązania obejmują:
     * Skalowanie z **niewystarczającym limitem przydziału obliczeń (CRP)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj następujące [kroki, aby zażądać zwiększenia przydziału obliczeń](../azure-supportability/resource-manager-core-quotas-request.md) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
-    * Skalowanie klastra przy użyciu zaawansowanej sieci i **niewystarczającej liczby zasobów podsieci (sieci)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj [następujące kroki, aby zażądać zwiększenia przydziału zasobów](../azure-resource-manager/resource-manager-quota-errors.md#solution) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
+    * Skalowanie klastra przy użyciu zaawansowanej sieci i **niewystarczającej liczby zasobów podsieci (sieci)** . Aby rozwiązać ten problem, należy najpierw skalować klaster z powrotem do stanu stabilnego celu w ramach limitu przydziału. Następnie wykonaj [następujące kroki, aby zażądać zwiększenia przydziału zasobów](../azure-resource-manager/templates/error-resource-quota.md#solution) przed ponowną próbą skalowania w górę poza początkowymi limitami przydziału.
 2. Po usunięciu podstawowej przyczyny niepowodzenia uaktualnienia klaster powinien działać w stanie sukces. Po zweryfikowaniu stanu, ponów próbę wykonania oryginalnej operacji.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Otrzymuję błędy podczas próby uaktualnienia lub skalowania stanu, w którym mój klaster jest aktualnie uaktualniany lub nie przeprowadzono uaktualnienia
@@ -155,8 +155,8 @@ Sprawdź, czy ustawienia nie powodują konfliktu z żadnym z wymaganych lub opcj
 
 | Wersja Kubernetes | Zalecana wersja |
 | -- | :--: |
-| 1,12 | 1.12.9 lub nowszy |
-| 1,13 | 1.13.6 lub nowszy |
+| 1.12 | 1.12.9 lub nowszy |
+| 1.13 | 1.13.6 lub nowszy |
 | 1,14 | 1.14.2 lub nowszy |
 
 
@@ -164,8 +164,8 @@ Sprawdź, czy ustawienia nie powodują konfliktu z żadnym z wymaganych lub opcj
 
 | Wersja Kubernetes | Zalecana wersja |
 | -- | :--: |
-| 1,12 | 1.12.0 lub nowszy |
-| 1,13 | 1.13.0 lub nowszy |
+| 1.12 | 1.12.0 lub nowszy |
+| 1.13 | 1.13.0 lub nowszy |
 | 1,14 | 1.14.0 lub nowszy |
 
 
@@ -173,14 +173,14 @@ Sprawdź, czy ustawienia nie powodują konfliktu z żadnym z wymaganych lub opcj
 
 W programie Kubernetes w wersji 1,10, MountVolume. WaitForAttach może zakończyć się niepowodzeniem przy ponownej instalacji dysku platformy Azure.
 
-W systemie Linux może zostać wyświetlony nieprawidłowy błąd formatu DevicePath. Na przykład:
+W systemie Linux może zostać wyświetlony nieprawidłowy błąd formatu DevicePath. Przykład:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-W systemie Windows może zostać wyświetlony nieprawidłowy błąd numeru DevicePath (LUN). Na przykład:
+W systemie Windows może zostać wyświetlony nieprawidłowy błąd numeru DevicePath (LUN). Przykład:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -193,7 +193,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.2 lub nowszy |
 | 1,11 | 1.11.0 lub nowszy |
-| 1,12 i nowsze | Nie dotyczy |
+| 1,12 i nowsze | ND |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Niepowodzenie podczas ustawiania identyfikatorów UID i GID w mountOptions dla dysku platformy Azure
 
@@ -226,7 +226,7 @@ spec:
   >[!NOTE]
   > Ponieważ GID i UID są domyślnie instalowane jako root lub 0. Jeśli gid lub UID są ustawione jako spoza katalogu głównego, na przykład 1000, Kubernetes będzie używać `chown` do zmiany wszystkich katalogów i plików znajdujących się na tym dysku. Ta operacja może być czasochłonna i może spowodować, że instalacja dysku będzie bardzo niska.
 
-* Użyj `chown` w initContainers, aby ustawić GID i UID. Na przykład:
+* Użyj `chown` w initContainers, aby ustawić GID i UID. Przykład:
 
 ```yaml
 initContainers:
@@ -240,7 +240,7 @@ initContainers:
 
 ### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Wystąpił błąd podczas usuwania usługi Azure Disk PersistentVolumeClaim używanej przez element pod
 
-Jeśli spróbujesz usunąć PersistentVolumeClaim dysku platformy Azure, który jest używany przez element pod, może zostać wyświetlony błąd. Na przykład:
+Jeśli spróbujesz usunąć PersistentVolumeClaim dysku platformy Azure, który jest używany przez element pod, może zostać wyświetlony błąd. Przykład:
 
 ```console
 $ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
@@ -265,9 +265,9 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.10 lub nowszy |
 | 1,11 | 1.11.5 lub nowszy |
-| 1,12 | 1.12.3 lub nowszy |
-| 1,13 | 1.13.0 lub nowszy |
-| 1,14 i nowsze | Nie dotyczy |
+| 1.12 | 1.12.3 lub nowszy |
+| 1.13 | 1.13.0 lub nowszy |
+| 1,14 i nowsze | ND |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, czekając kilka minut i ponawiając próbę.
 
@@ -286,9 +286,9 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.12 lub nowszy |
 | 1,11 | 1.11.6 lub nowszy |
-| 1,12 | 1.12.4 lub nowszy |
-| 1,13 | 1.13.0 lub nowszy |
-| 1,14 i nowsze | Nie dotyczy |
+| 1.12 | 1.12.4 lub nowszy |
+| 1.13 | 1.13.0 lub nowszy |
+| 1,14 i nowsze | ND |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, wykonując następujące czynności:
 
@@ -296,7 +296,7 @@ Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego prob
 
 ### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Dysk platformy Azure oczekuje na odłączenie w nieskończoność
 
-W niektórych przypadkach, jeśli operacja odłączenia dysku platformy Azure zakończy się niepowodzeniem przy pierwszej próbie, nie zostanie ponowiona operacja odłączenia i pozostanie ona dołączona do oryginalnej maszyny wirtualnej węzła. Ten błąd może wystąpić podczas przesuwania dysku z jednego węzła do drugiego. Na przykład:
+W niektórych przypadkach, jeśli operacja odłączenia dysku platformy Azure zakończy się niepowodzeniem przy pierwszej próbie, nie zostanie ponowiona operacja odłączenia i pozostanie ona dołączona do oryginalnej maszyny wirtualnej węzła. Ten błąd może wystąpić podczas przesuwania dysku z jednego węzła do drugiego. Przykład:
 
 ```console
 [Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
@@ -307,9 +307,9 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | Wersja Kubernetes | Stała wersja |
 | -- | :--: |
 | 1,11 | 1.11.9 lub nowszy |
-| 1,12 | 1.12.7 lub nowszy |
-| 1,13 | 1.13.4 lub nowszy |
-| 1,14 i nowsze | Nie dotyczy |
+| 1.12 | 1.12.7 lub nowszy |
+| 1.13 | 1.13.4 lub nowszy |
+| 1,14 i nowsze | ND |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, ręcznie odłączając dysk.
 
@@ -321,10 +321,10 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 
 | Wersja Kubernetes | Stała wersja |
 | -- | :--: |
-| 1,12 | 1.12.9 lub nowszy |
-| 1,13 | 1.13.6 lub nowszy |
+| 1.12 | 1.12.9 lub nowszy |
+| 1.13 | 1.13.6 lub nowszy |
 | 1,14 | 1.14.2 lub nowszy |
-| 1,15 i nowsze | Nie dotyczy |
+| 1,15 i nowsze | ND |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, a maszyna wirtualna węzła ma przestarzałą listę dysków, możesz rozwiązać ten problem, odłączając wszystkie nieistniejące dyski z maszyny wirtualnej jako pojedynczą operację zbiorczą. **Pojedyncze odłączenie nieistniejących dysków może zakończyć się niepowodzeniem.**
 
@@ -341,10 +341,10 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 
 | Wersja Kubernetes | Stała wersja |
 | -- | :--: |
-| 1,12 | 1.12.10 lub nowszy |
-| 1,13 | 1.13.8 lub nowszy |
+| 1.12 | 1.12.10 lub nowszy |
+| 1.13 | 1.13.8 lub nowszy |
 | 1,14 | 1.14.4 lub nowszy |
-| 1,15 i nowsze | Nie dotyczy |
+| 1,15 i nowsze | ND |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, a maszyna wirtualna w węźle jest w stanie awarii, możesz rozwiązać problem, ręcznie aktualizując stan maszyny wirtualnej przy użyciu jednego z poniższych elementów:
 
@@ -364,16 +364,16 @@ Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego prob
  
 | Wersja Kubernetes | Zalecana wersja |
 | -- | :--: |
-| 1,12 | 1.12.6 lub nowszy |
-| 1,13 | 1.13.4 lub nowszy |
+| 1.12 | 1.12.6 lub nowszy |
+| 1.13 | 1.13.4 lub nowszy |
 | 1,14 | 1.14.0 lub nowszy |
 
 ### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Jakie wersje Kubernetes mają Azure Files być obsługiwane w chmurze suwerennej?
 
 | Wersja Kubernetes | Zalecana wersja |
 | -- | :--: |
-| 1,12 | 1.12.0 lub nowszy |
-| 1,13 | 1.13.0 lub nowszy |
+| 1.12 | 1.12.0 lub nowszy |
+| 1.13 | 1.13.0 lub nowszy |
 | 1,14 | 1.14.0 lub nowszy |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Jakie są domyślne mountOptions w przypadku korzystania z Azure Files?
@@ -459,9 +459,9 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 
 | Wersja Kubernetes | Stała wersja |
 | -- | :--: |
-| 1,12 | 1.12.6 lub nowszy |
-| 1,13 | 1.13.4 lub nowszy |
-| 1,14 i nowsze | Nie dotyczy |
+| 1.12 | 1.12.6 lub nowszy |
+| 1.13 | 1.13.4 lub nowszy |
+| 1,14 i nowsze | ND |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure Files instalacji nie powiodła się z powodu zmiany klucza konta magazynu
 
@@ -469,16 +469,30 @@ Jeśli klucz konta magazynu został zmieniony, mogą pojawić się błędy insta
 
 Problem można rozwiązać, ręcznie aktualizując pole *azurestorageaccountkey* w kluczu tajnym systemu Azure za pomocą klucza konta magazynu zakodowanego w formacie base64.
 
-Aby zakodować klucz konta magazynu w formacie Base64, można użyć `base64`. Na przykład:
+Aby zakodować klucz konta magazynu w formacie Base64, można użyć `base64`. Przykład:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Aby zaktualizować plik tajny platformy Azure, użyj `kubectl edit secret`. Na przykład:
+Aby zaktualizować plik tajny platformy Azure, użyj `kubectl edit secret`. Przykład:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
 ```
 
 Po kilku minutach węzeł agenta ponowi próbę instalacji pliku platformy Azure przy użyciu zaktualizowanego klucza magazynu.
+
+### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>Skalowanie automatycznego skalowania klastra nie powiodło się z powodu błędu nie można naprawić rozmiarów grup węzłów
+
+Jeśli klaster automatycznego skalowania nie jest skalowany w górę i w dół, a w [dziennikach automatycznego skalowania klastra][view-master-logs]zobaczysz błąd podobny do poniższego.
+
+```console
+E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
+```
+
+Ten błąd występuje ze względu na sytuację wyścigu w przypadku nadrzędnego skalowania klastra, w którym program automatyczne skalowanie klastra zakończy się inną wartością niż ta, która znajduje się w klastrze. Aby uzyskać dostęp do tego stanu, wystarczy wyłączyć i ponownie włączyć [Automatyczne skalowanie klastra][cluster-autoscaler].
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

@@ -1,20 +1,19 @@
 ---
 title: Wiele klastrów usługi HDInsight & jedno konto Azure Data Lake Storage
 description: Dowiedz się, jak używać więcej niż jednego klastra usługi HDInsight z jednym kontem Data Lake Storage
-keywords: Magazyn usługi HDInsight, system plików HDFS, dane strukturalne, dane bez struktury, Usługa Data Lake Store
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498186"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495744"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Używanie wielu klastrów usługi HDInsight z kontem Azure Data Lake Storage
 
@@ -23,22 +22,21 @@ Data Lake Storage obsługuje nieograniczony magazyn, który sprawia, że nie tyl
 
 Ten artykuł zawiera zalecenia dla administratora Data Lake Storage w celu skonfigurowania jednego i udostępnionego konta Data Lake Storage, które może być używane w wielu **aktywnych** klastrach usługi HDInsight. Te zalecenia dotyczą hostingu wielu bezpiecznych i niezabezpieczonych klastrów Apache Hadoop na współużytkowanym koncie Data Lake Storage.
 
-
 ## <a name="data-lake-storage-file-and-folder-level-acls"></a>Data Lake Storage listy ACL na poziomie plików i folderów
 
 W pozostałej części tego artykułu założono, że masz dobrą wiedzę na temat list ACL na poziomie plików i folderów w Azure Data Lake Storage, które opisano szczegółowo w temacie [Kontrola dostępu w Azure Data Lake Storage](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Konfiguracja Data Lake Storage dla wielu klastrów usługi HDInsight
+
 Poinformuj nas o dwóch poziomach hierarchii folderów, aby wyjaśnić zalecenia dotyczące używania wielu klastrów usługi HDInsight z kontem Data Lake Storage. Weź pod uwagę, że masz konto Data Lake Storage o strukturze folderów **/Clusters/Finance**. W tej strukturze wszystkie klastry wymagane przez organizację finansową mogą używać/Clusters/Finance jako lokalizacji przechowywania. W przyszłości, jeśli inna organizacja, powiedzmy, chce utworzyć klastry usługi HDInsight przy użyciu tego samego konta Data Lake Storage, mogą tworzyć/Clusters/Marketing. Na razie Użyjmy już **/Clusters/Finance**.
 
-Aby umożliwić efektywne korzystanie z tej struktury folderów przez klastry usługi HDInsight, administrator Data Lake Storage musi przypisać odpowiednie uprawnienia, zgodnie z opisem w tabeli. Uprawnienia wyświetlane w tabeli odpowiadają listom kontroli dostępu i nie są domyślnymi listami ACL. 
-
+Aby umożliwić efektywne korzystanie z tej struktury folderów przez klastry usługi HDInsight, administrator Data Lake Storage musi przypisać odpowiednie uprawnienia, zgodnie z opisem w tabeli. Uprawnienia wyświetlane w tabeli odpowiadają listom kontroli dostępu i nie są domyślnymi listami ACL.
 
 |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Nazwany użytkownik | Uprawnienia nazwanego użytkownika | Nazwana grupa | Uprawnienia grupy nazwanej |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |Administratora |Administratora  |Nazwa główna usługi |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |Administratora |Administratora |Nazwa główna usługi |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |Administratora |FINGRP  |Nazwa główna usługi |RWX  |-  |-     |
+|/ | rwxr-x--x  |admin |admin  |Jednostka usługi |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |admin |admin |Jednostka usługi |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |admin |FINGRP  |Jednostka usługi |rwx  |-  |-     |
 
 W tabeli,
 
@@ -57,9 +55,7 @@ Niektóre kluczowe kwestie, które należy wziąć pod uwagę.
 
     |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Nazwany użytkownik | Uprawnienia nazwanego użytkownika | Nazwana grupa | Uprawnienia grupy nazwanej |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/clusters/finanace/ fincluster01 | rwxr-x---  |Jednostka usługi |FINGRP  |- |-  |-   |-  | 
-   
-
+    |/clusters/finanace/ fincluster01 | rwxr-x---  |Jednostka usługi |FINGRP  |- |-  |-   |-  |
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>Zalecenia dotyczące danych wejściowych i wyjściowych zadania
 
@@ -71,9 +67,9 @@ Limit liczby klastrów, które mogą współużytkować pojedyncze konto Data La
 
 ## <a name="support-for-default-acls"></a>Obsługa domyślnych list ACL
 
-Podczas tworzenia jednostki usługi z dostępem do określonego użytkownika (jak pokazano w powyższej tabeli) zaleca się, aby **nie** dodawać użytkownika nazwanego z domyślnym listą ACL. Inicjowanie dostępu użytkownika o nazwie przy użyciu domyślnych list ACL skutkuje przypisaniem uprawnień 770 dla użytkownika, grupy będącej właścicielem i innych użytkowników. Mimo że ta wartość domyślna 770 nie ma uprawnień od użytkownika będącego właścicielem (7) lub będących właścicielem grupy (7), odbierze wszystkie uprawnienia dla innych (0). W wyniku tego występuje znany problem z konkretnym przypadkiem użycia, który został szczegółowo omówiony w sekcji [znane problemy i obejścia](#known-issues-and-workarounds) .
+Podczas tworzenia jednostki usługi z dostępem do określonego użytkownika (jak pokazano w powyższej tabeli) zaleca się, aby **nie** dodawać użytkownika nazwanego z domyślnym listą ACL. Inicjowanie dostępu użytkownika o nazwie przy użyciu domyślnych list ACL skutkuje przypisaniem uprawnień 770 dla użytkownika, grupy będącej właścicielem i innych użytkowników. Ta wartość domyślna 770 nie ma uprawnień od użytkownika będącego właścicielem (7) lub należących do grupy (7), więc odbierze wszystkie uprawnienia dla innych (0). W wyniku tego występuje znany problem z konkretnym przypadkiem użycia, który został szczegółowo omówiony w sekcji [znane problemy i obejścia](#known-issues-and-workarounds) .
 
-## <a name="known-issues-and-workarounds"></a>Znane problemy i rozwiązania
+## <a name="known-issues-and-workarounds"></a>Znane problemy i ich rozwiązania
 
 Ta sekcja zawiera listę znanych problemów dotyczących używania usługi HDInsight z usługą Data Lake Storage i ich obejścia.
 
@@ -85,12 +81,13 @@ Te ustawienia mają wpływ na jeden przypadek użycia usługi HDInsight przechwy
 
     Resource XXXX is not publicly accessible and as such cannot be part of the public cache.
 
-Jak określono w połączonej wcześniej JIRA PRZĘDZy, podczas lokalizowania zasobów publicznych lokalizator sprawdza, czy wszystkie żądane zasoby są rzeczywiście publiczne, sprawdzając ich uprawnienia do zdalnego systemu plików. Wszystkie LocalResource, które nie pasują do tego warunku, są odrzucane dla lokalizacji. Sprawdzanie uprawnień, obejmuje dostęp do odczytu do pliku dla "inne". W tym scenariuszu nie jest wykonywane wstępne działanie podczas hostowania klastrów usługi HDInsight na Azure Data Lake, ponieważ Azure Data Lake nie zezwala na dostęp do innych użytkowników na poziomie folderu głównego.
+Jak określono w połączonej wcześniej JIRA PRZĘDZy, podczas lokalizowania zasobów publicznych lokalizator sprawdza, czy wszystkie żądane zasoby są rzeczywiście publiczne, sprawdzając ich uprawnienia do zdalnego systemu plików. Wszystkie LocalResource, które nie pasują do tego warunku, są odrzucane dla lokalizacji. Sprawdzanie uprawnień, obejmuje dostęp do odczytu do pliku dla "inne". Ten scenariusz nie działa w przypadku hostowania klastrów usługi HDInsight na Azure Data Lake, ponieważ Azure Data Lake nie zezwala na dostęp do innych użytkowników na poziomie folderu głównego.
 
 #### <a name="workaround"></a>Obejście
+
 Ustaw uprawnienia do odczytu dla **innych użytkowników** w hierarchii, na przykład w **/** , **/Clusters** i **/Clusters/Finance** , jak pokazano w powyższej tabeli.
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
-* [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)
